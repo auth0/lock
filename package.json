@@ -12,7 +12,7 @@
     "browser"
   ],
   "scripts": {
-    "example": "echo \"open http://localhost:3000\" && yarnify widget -o widget/yarn.js && grunt example"
+    "example": "echo \"open http://localhost:3000\" && grunt example"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,12 @@
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
   "dependencies": {
-    "auth0.js": "https://github.com/auth0/auth0.js/tarball/master",
-    "grunt-cli": "~0.1.9"
+    "grunt-cli": "~0.1.9",
+    "bonzo": "~1.3.6",
+    "qwery": "~3.4.1",
+    "auth0-js": "~0.1.5",
+    "browserify-ejs": "0.0.2",
+    "grunt": "~0.4.1"
   },
   "devDependencies": {
     "browserify": "~2.33.0",

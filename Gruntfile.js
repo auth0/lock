@@ -12,8 +12,12 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'build/auth0-widget.js': ['index.js']
+        },
+        options: {
+          transform: ['browserify-ejs'],
+          debug: true
         }
-      }
+      },
     },
     uglify: {
       min: {
@@ -34,7 +38,7 @@ module.exports = function (grunt) {
     },
     watch: {
       another: {
-        files: ['node_modules', 'index.js', 'widget/*.js'],
+        files: ['node_modules', 'index.js', 'widget/index.js', 'widget/js/*.js', 'widget/html/*.html', 'widget/css/*.css'],
         tasks: ['build']
       }
     }

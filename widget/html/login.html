@@ -1,4 +1,109 @@
-<div class="login">
-  <div class="title"></div>
-  <div class="body"></div>
+<div class="mode signin">
+    <div class="popup">
+      	<div class="overlay">
+        	<div id="onestep" class="panel onestep">
+          		<header class="header">
+            		<div class="image" style="display: none">
+            			<img src="">
+            		</div>
+            		<h1>Sign In</h1>
+		            <h2 class="error" style="display: none">&nbsp;</h2>
+		            <h2 class="success" style="display: none">&nbsp;</h2>
+		            <a class="close">Close</a>
+          		</header>
+
+          		<div class="loggedin" style="display: none">
+		            <form>
+						<span class="centered last-time"></span>
+						<div class="strategy"></div>
+						<div class="emailPassword" style="display:none">
+							<div class="email">
+								<span class="email-readonly"></span>
+								<input name="email" type="email" value="" disabled placeholder="Email" title="Email" style="display:none">
+							</div>
+							<div class="password">
+								<input name="password" type="password" value="" autofocus placeholder="Password" title="Password">
+							</div>
+							<div class="action">
+								<button type="submit" class="zocial primary next" style="width: 100%;">Sign In</button>
+							  	<button type="submit" class="spinner" style="display: none"></button>
+							  	<label class="create-account"><a href="javascript: {}" class="forgot-pass">Forgot your password?</a></label>
+							</div>
+						</div>
+						<span class="centered all">Show all</span>
+		            </form>
+          		</div>
+
+	          	<div class="notloggedin">
+		            <form>
+		            	<div class="iconlist" style="display: none"><p style="display:none">... or sign in using</p></div>
+		              	<div class="separator" style="display: none"><span>or</span></div>
+		              	<div class="emailPassword">
+		                	<div class="email">
+		                  		<input name="email" id="signin_easy_email" type="email" value="" required placeholder="Email" title="Email">
+		                	</div>
+		                	<div class="password" style="display:none">
+		                  		<input name="password" id="signin_easy_password" type="password" value="" placeholder="Password" title="Password">
+		                	</div>
+			                <div class="action">
+			                  	<button type="submit" class="zocial primary next" style="width: 100%;">Sign In</button>
+			                  	<button type="submit" class="spinner" style="display: none"></button>
+			                  	<label class="create-account"><a href="javascript: {}" class="sign-up">Sign Up</a><span class="divider" style="display:none">&nbsp;•&nbsp;</span><a href="javascript: {}" class="forgot-pass">Forgot your password?</a></label>
+			                </div>
+		              	</div>
+		            </form>
+	          	</div>
+
+	          	<div class="signup">
+		            <form>
+		              	<div class="header"></div>
+		              	<div class="emailPassword">
+		                	<div class="email">
+		                  		<input name="email" id="signup_easy_email" type="email" value="" required placeholder="Email" title="Email">
+		                	</div>
+		                	<div class="password">
+		                  		<input name="password" id="signup_easy_password" type="password" value="" required placeholder="Create a Password" title="Password">
+		                	</div>
+			                <div class="action">
+			                  	<button type="submit" class="zocial primary next" style="width: 100%;">Sign Up</button>
+			                  	<button type="submit" class="spinner" style="display: none"></button>
+			                  	<div class="footer"></div>
+			                  	<div class="options">
+			                    	<a href="javascript: {}" class="centered cancel">Cancel</a>
+			                  	</div>
+			                </div>
+		              	</div>
+		            </form>
+	          	</div>
+
+				<div class="reset">
+					<form id="change_password">
+					  	<div class="header"></div>
+					  	<div class="emailPassword">
+					    	<div class="email">
+					      		<input name="email" id="reset_easy_email" type="email" value="" required placeholder="Email" title="Email">
+					    	</div>
+					    	<div class="password">
+					      		<input name="password" id="reset_easy_password" type="password" value="" required placeholder="New Password" title="New Password">
+					    	</div>
+					    	<div class="repeatPassword">
+					      		<input name="repeat_password" id="reset_easy_repeat_password" type="password" value="" required placeholder="Confirm New Password" title="Confirm New Password">
+					    	</div>
+					    	<div class="action">
+					      		<button type="submit" class="zocial primary next" style="width: 100%;">Send</button>
+					      		<button type="submit" class="spinner" style="display: none"></button>
+					      		<div class="options">
+					        		<a href="javascript: {}" class="centered cancel">Cancel</a>
+					      		</div>
+					    	</div>
+					  	</div>
+					</form>
+				</div>
+
+          		<footer>
+            		<span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>
+          		</footer>
+        	</div>
+      	</div>
+    </div>
 </div>
