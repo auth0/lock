@@ -8,10 +8,6 @@ var insertCss = require('insert-css');
 
 var loginTmpl = require('./widget/html/login.html');
 
-var $ = function (selector, root) {
-  return bonzo(qwery(selector, root));
-};
-
 domready(function () {
   var options = {
     domain:      'mdocs.auth0.com',
@@ -53,8 +49,7 @@ domready(function () {
       'fitbit': { css: 'fitbit', name: 'Fitbit', social: true }
   };
 
-  var _auth0Strategy, _signInData, _hasLoggedInBefore;
-  var _cookies = {};
+  var _auth0Strategy, _hasLoggedInBefore;
   var _client = {
     strategies: [
       {
@@ -81,7 +76,11 @@ domready(function () {
   };
 
   // helper methods
-  var _setTop = function(onTop, element) {
+  var $ = function (selector, root) {
+    return bonzo(qwery(selector, root));
+  };
+
+  var _setTop = function (onTop, element) {
     if (!onTop) {
       setTimeout(function() {
         element.css({
@@ -99,6 +98,10 @@ domready(function () {
 
   var _isAuth0Conn = function (strategy) {
     return strategy === 'auth0' || strategy === 'auth0-adldap';
+  };
+
+  var _isAdLdapConn = function (connection) {
+    return connection === 'adldap';
   };
 
   var _areThereAnySocialConn = function () {
@@ -130,6 +133,19 @@ domready(function () {
     }
   };
 
+  var _getAuth0Connection = function() {
+    // if specified, use it, otherwise return first
+    if (options['userPwdConnectionName']) {
+      for (var i in _auth0Strategy.connections) {
+        if (_auth0Strategy.connections[i].name === options['userPwdConnectionName']) {
+          return _auth0Strategy.connections[i];
+        }
+      }
+    }
+
+    return _auth0Strategy ? _auth0Strategy.connections[0] : null;
+  };
+
   var _redirect = function (url) {
     window.location = url;
   };
@@ -147,7 +163,7 @@ domready(function () {
     return container;
   };
 
-  var _toggleSpinner = function(container) {
+  var _toggleSpinner = function (container) {
     container = container || _getActiveLoginView();
     var spinner = $('.spinner', container);
     var signin = $('.zocial.primary', container);
@@ -167,8 +183,77 @@ domready(function () {
     }
   };
 
-  var _signInEnterprise = function () {
-    console.log('TODO: _signInEnterprise');
+  var _signInEnterprise = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var container = _getActiveLoginView();
+    var form = $('form', container);
+    var valid = true;
+
+    var emailD = $('.email', form),
+        emailE = $('input[name=email]', form),
+        emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.exec(emailE.val().toLowerCase()),
+        emailP = /^\s*$/.test(emailE.val()),
+        domain, url, email = null, strategy;
+
+    for (var s in _client.strategies) {
+      strategy = _client.strategies[s];
+
+      if (_isAuth0Conn(strategy.name)) continue;
+
+      for (var c in strategy.connections) {
+        if(!emailP && emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
+          domain = strategy.connections[c].domain;
+          url = strategy.connections[c].url;
+          email = emailE.val();
+          break;
+        }
+      }
+
+      if (domain) break;
+    }
+
+    if (emailP) {
+      // _showError(global.tlite.find(self._signInOptions['strategyEmailEmpty']));
+    } 
+    else if (!emailM) {
+      // _showError(global.tlite.find(self._signInOptions['strategyEmailInvalid']));
+    } 
+    else if (!domain) {
+      if (_auth0Strategy) {
+        return _signInWithAuth0(emailE.val());
+      }
+
+      if (emailM && emailM.slice(-2)[0] === 'gmail.com') {
+        return _signInSocial('google-oauth2');
+      }
+
+      // _showError(global.tlite.find(self._signInOptions['strategyDomainInvalid'], { domain: emailM && emailM.slice(-2)[0] }));
+    }
+
+    valid &= (!domain && !emailD.addClass('invalid')) || (!!domain && !!emailD.removeClass('invalid'));
+
+    if (valid) {
+      _redirect(url);
+    }
+  };
+
+  var _signInWithAuth0 = function (userName, signInPassword) {
+    _toggleSpinner();
+
+    var container = _getActiveLoginView();
+    var connection  = _getAuth0Connection();
+    
+    auth0.login({
+      connection: connection.name,
+      username: _isAdLdapConn(connection.name) ? userName.replace('@' + connection.domain, '') : userName,
+      password: signInPassword || $('.password input', container).val()
+    }, 
+    function (err) {
+      if (err) alert(err);
+      _toggleSpinner();
+    });
   };
 
   // initialize
