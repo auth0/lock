@@ -14,7 +14,7 @@ module.exports = function (grunt) {
           'build/auth0-widget.js': ['index.js']
         },
         options: {
-          transform: ['browserify-ejs'],
+          transform: ['browserify-ejs', 'brfs'],
           debug: true
         }
       },

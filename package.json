@@ -21,24 +21,24 @@
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
   "dependencies": {
-    "grunt-cli": "~0.1.9",
     "bonzo": "~1.3.6",
     "qwery": "~3.4.1",
-    "auth0-js": "~0.1.5",
-    "browserify-ejs": "0.0.2",
-    "grunt": "~0.4.1"
+    "auth0-js": "~0.1.5"
   },
   "devDependencies": {
     "browserify": "~2.33.0",
     "domready": "~0.2.12",
     "yarnify": "~0.5.1",
-    "grunt": "~0.4.0",
-    "grunt-cli": "~0.1.6",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
     "grunt-contrib-connect": "~0.1.2",
     "grunt-contrib-watch": "~0.2.0",
     "grunt-browserify": "~1.2.8",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-copy": "~0.4.1"
+    "grunt-contrib-copy": "~0.4.1",
+    "browserify-ejs": "0.0.2",
+    "insert-css": "0.0.0",
+    "brfs": "0.0.8"
   }
 }

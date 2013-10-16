@@ -2,6 +2,8 @@ var domready  = require('domready');
 var Auth0     = require('auth0-js');
 var qwery     = require('qwery');
 var bonzo     = require('bonzo');
+var fs        = require('fs');
+var insertCss = require('insert-css');
 
 var loginTmpl = require('./widget/html/login.html');
 
@@ -22,7 +24,10 @@ domready(function () {
     return bonzo(qwery(selector, root));
   };
 
+  var loginCss = fs.readFileSync(__dirname + '/widget/css/login.css');
+  insertCss(loginCss);
+
   var div = document.createElement('div');
-  div.innerHTML = loginTmpl({ message: 'FIN' });
+  div.innerHTML = loginTmpl({});
   document.body.appendChild(div);
 });
