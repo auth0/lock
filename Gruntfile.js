@@ -31,12 +31,18 @@ module.exports = function (grunt) {
         files: {
           'example/auth0-widget.js': 'build/auth0-widget.js',
           'example/img/close.png': 'widget/img/close.png',
-          'example/img/spinner.gif': 'widget/img/spinner.gif'
+          'example/img/spinner.gif': 'widget/img/spinner.gif',
+          'example/font/opensans.woff': 'widget/font/opensans.woff',
+          'example/font/zocial-regular-webfont.dev.svg': 'widget/font/zocial-regular-webfont.dev.svg',
+          'example/font/zocial-regular-webfont.eot': 'widget/font/zocial-regular-webfont.eot',
+          'example/font/zocial-regular-webfont.svg': 'widget/font/zocial-regular-webfont.svg',
+          'example/font/zocial-regular-webfont.ttf': 'widget/font/zocial-regular-webfont.ttf',
+          'example/font/zocial-regular-webfont.woff': 'widget/font/zocial-regular-webfont.woff'
         }
       }
     },
     clean: {
-      build: ["build/", "example/auth0-widget.js"],
+      build: ["build/", "example/auth0-widget.js", "example/img/", "example/font/"],
     },
     watch: {
       another: {
