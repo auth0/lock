@@ -29,7 +29,9 @@ module.exports = function (grunt) {
     copy: {
       example: {
         files: {
-          'example/auth0-widget.js': 'build/auth0-widget.js'
+          'example/auth0-widget.js': 'build/auth0-widget.js',
+          'example/img/close.png': 'widget/img/close.png',
+          'example/img/spinner.gif': 'widget/img/spinner.gif'
         }
       }
     },

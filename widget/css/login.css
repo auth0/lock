@@ -1,11 +1,3 @@
-.mode {
-  display: none;
-}
-
-.popup {
-  display: block;
-}
-
 .popup .overlay {
   position: fixed;
   left: 0;
@@ -302,7 +294,7 @@ background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
 
 .popup .panel header a.close {
   height: 12px;
-  background: url("sdk/img/close.png") 50% 50% no-repeat;
+  background: url("img/close.png") 50% 50% no-repeat;
   background-size: 12px 12px;
   right: 19px;
   top: 21px;
@@ -323,7 +315,7 @@ background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
 .action .spinner {
   width: 100%;
   background-color: #6A777F;
-  background-image: url('sdk/img/spinner.gif');
+  background-image: url('img/spinner.gif');
   background-repeat: no-repeat;
   background-position: center;
   margin: 0;

@@ -11,7 +11,8 @@ domready(function () {
   var options = {
     domain:      'mdocs.auth0.com',
     clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
-    callbackURL: 'http://localhost:3000/'
+    callbackURL: 'http://localhost:3000/',
+    mode:        'notloggedin'
   };
 
   var auth0 = Auth0({
@@ -24,10 +25,14 @@ domready(function () {
     return bonzo(qwery(selector, root));
   };
 
+  // initialize
   var loginCss = fs.readFileSync(__dirname + '/widget/css/login.css');
   insertCss(loginCss);
 
   var div = document.createElement('div');
-  div.innerHTML = loginTmpl({});
+  div.innerHTML = loginTmpl({
+    mode: options.mode
+  });
+
   document.body.appendChild(div);
 });

@@ -12,7 +12,8 @@
 		            <a class="close">Close</a>
           		</header>
 
-          		<div class="loggedin" style="display: none">
+          		<% if (mode === 'loggedin') { %>
+          		<div class="loggedin">
 		            <form>
 						<span class="centered last-time"></span>
 						<div class="strategy"></div>
@@ -33,17 +34,17 @@
 						<span class="centered all">Show all</span>
 		            </form>
           		</div>
-
+          		<% } else if (mode === 'notloggedin') { %>
 	          	<div class="notloggedin">
 		            <form>
 		            	<div class="iconlist" style="display: none"><p style="display:none">... or sign in using</p></div>
 		              	<div class="separator" style="display: none"><span>or</span></div>
 		              	<div class="emailPassword">
 		                	<div class="email">
-		                  		<input name="email" id="signin_easy_email" type="email" value="" required placeholder="Email" title="Email">
+		                  		<input name="email" id="signin_easy_email" type="email" required placeholder="Email" title="Email">
 		                	</div>
 		                	<div class="password" style="display:none">
-		                  		<input name="password" id="signin_easy_password" type="password" value="" placeholder="Password" title="Password">
+		                  		<input name="password" id="signin_easy_password" type="password" placeholder="Password" title="Password">
 		                	</div>
 			                <div class="action">
 			                  	<button type="submit" class="zocial primary next" style="width: 100%;">Sign In</button>
@@ -53,7 +54,7 @@
 		              	</div>
 		            </form>
 	          	</div>
-
+	          	<% } else if (mode === 'signup') { %>
 	          	<div class="signup">
 		            <form>
 		              	<div class="header"></div>
@@ -75,7 +76,7 @@
 		              	</div>
 		            </form>
 	          	</div>
-
+	          	<% } else if (mode === 'reset') { %>
 				<div class="reset">
 					<form id="change_password">
 					  	<div class="header"></div>
@@ -99,7 +100,7 @@
 					  	</div>
 					</form>
 				</div>
-
+				<% } %>
           		<footer>
             		<span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>
           		</footer>
