@@ -59,21 +59,20 @@ domready(function () {
         name: 'google-oauth2',
         social: true,
         connections: [
-          { domain: '', name: '' }
+          { domain: '', name: 'google-oauth2' }
         ]
       },
       {
         name: 'github',
         social: true,
         connections: [
-          { domain: '', name: '' }
+          { domain: '', name: 'github' }
         ]
       },
       {
-        name: 'twitter',
-        social: true,
+        name: 'auth0',
         connections: [
-          { domain: '', name: '' }
+          { domain: '', name: 'Username-Password-Authentication' }
         ]
       }
     ]
@@ -95,16 +94,34 @@ domready(function () {
     }
   };
 
+  // helper methods
   var _isAuth0Conn = function (strategy) {
     return strategy === 'auth0' || strategy === 'auth0-adldap';
   };
 
-  var _getLoggedinView = function() {
-    return $('.loggedin');
+  var _areThereAnySocialConn = function () {
+    for (var s in _client.strategies) {
+      if (_strategies[_client.strategies[s].name] && _strategies[_client.strategies[s].name].social) {
+        return true;
+      }
+    }
+
+    return false;
   };
 
-  var _getNotLoggedinView = function() {
-    return $('.notloggedin');
+  var _areThereAnyEnterpriseOrDbConn = function() {
+    for (var s in _client.strategies) {
+      if (_strategies[_client.strategies[s].name] && 
+          !_strategies[_client.strategies[s].name].social) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  var redirect = function (url) {
+    window.location = url;
   };
 
   // initialize
@@ -141,23 +158,98 @@ domready(function () {
       }
     }
 
+    // TODO: add event (click) to login with social connection
+
     showSignIn();
   };
 
   var showSignIn = function () {
-    // TODO: if no social connections and one enterprise connection only, redirect
-    // TODO: change labels text
+    // if no social connections and one enterprise connection only, redirect
+    if (!_areThereAnySocialConn() && 
+      _client.strategies.length === 1 &&
+      _client.strategies[0].name !== 'auth0' &&
+      _client.strategies[0].connections.length === 1) {
+      
+      redirect(_client.strategies[0].connections[0].url);
+    }
 
-    // TODO: support options.theme
-    // TODO: show/hide show icon
-    // TODO: hide divider dot if there are one of two
-    // TODO: placeholders and buttons
-    // TODO: show email, password, separator and button if there are enterprise/db connections
+    // labels text
+    options = options || {};
+    options['onestep'] = typeof options['onestep'] !== 'undefined' ? options['onestep'] : false;
+    options['top'] = options['top'] || false;
+    options['title'] = options['title'] || 'Sign In';
+    options['strategyButtonTemplate'] = options['strategyButtonTemplate'] || "{name}";
+    options['allButtonTemplate'] = options['allButtonTemplate'] || "Show all";
+    options['strategyBack'] = options['strategyBack'] || "Back";
+    options['strategyEmailLabel'] = options['strategyEmailLabel'] || "Email:";
+    options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
+    options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
+
+    options['icon'] = options['icon'] || "img/logo-32.png";
+    options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
+    options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
+    options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
+    options['signupText'] = options['signupText'] || 'Sign Up';
+    options['forgotText'] = options['forgotText'] || 'Forgot your password?';
+    options['useAppSignInCallback'] = typeof options['useAppSignInCallback'] !== 'undefined' ? options['useAppSignInCallback'] : false;
+    options['signInButtonText'] = options['signInButtonText'] || 'Sign In';
+    options['emailPlaceholder'] = options['emailPlaceholder'] || 'Email';
+    options['passwordPlaceholder'] = options['passwordPlaceholder'] || 'Password';
+    options['separatorText'] = options['separatorText'] || 'or';
+    options['serverErrorText'] = options['serverErrorText'] || 'There was an error processing the sign in.';
+    options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
+    options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
+    options['socialBigButtons'] = typeof options['socialBigButtons'] !== 'undefined' ? options['socialBigButtons'] : !_areThereAnyEnterpriseOrDbConn();
+    options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
+    options['returnUserLabel'] = options['returnUserLabel'] || 'Last time you signed in using...';
+    options['wrongEmailPasswordErrorText'] = options['wrongEmailPasswordErrorText'] || 'Wrong email or password.';
+
+    // theme
+    if (options.theme) {
+      $('html').addClass('theme-' + options.theme);
+    }
+
+    $('.panel a.close').css('display', options.standalone ? 'none' : 'block');
+
+    // show icon
+    if (options.showIcon) {
+      $('.panel .image img').attr('src', options.icon);
+      $('.panel .image').css('display', options.showIcon ? 'block' : 'none');
+    }
+
+    // hide divider dot if there are one of two
+    $('.panel .create-account .divider')
+      .css('display', options.showEmail && options.showSignup && options.showForgot ? '' : 'none');
+
+    $('div.panel input').each(function (e) { e.value = ''; });
+
+    // placeholders and buttons
+    $('.panel .zocial.primary').html(options.signInButtonText);
+    $('.panel .email input').attr('placeholder', options.emailPlaceholder);
+    $('.panel .password input').attr('placeholder', options.passwordPlaceholder);
+    $('.panel .separator span').html(options.separatorText);
+
+    // show email, password, separator and button if there are enterprise/db connections
+    var anyEnterpriseOrDbConnection = _areThereAnyEnterpriseOrDbConn();
+    var anySocialConnection = _areThereAnySocialConn();
+
+    $('.panel .email input').css('display', options.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+    $('.panel .zocial.primary').css('display', options.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+    $('.panel .password input').css('display', options.showEmail && options.showPassword && anyEnterpriseOrDbConnection ? '' : 'none');
+    $('.panel .create-account .forgot-pass').css('display', options.showEmail && options.showForgot && anyEnterpriseOrDbConnection ? '' : 'none');
+    $('.panel .create-account .sign-up').css('display', options.showEmail && options.showSignup && anyEnterpriseOrDbConnection ? '' : 'none');
+    $('.panel .separator').css('display', options.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
+    $('.panel .last-time').html(options.returnUserLabel);
+
     // TODO: show placeholders for IE9
 
+    // activate panel
     $('div.panel').removeClass('active');
     $('div.overlay').addClass('active');
     $('div.panel.onestep').addClass('active');
+
+    $('.popup h1').html(options.title);
+    $('.popup .invalid').removeClass('invalid');
 
     _setTop(options.top, $('div.panel.onestep'));
   };

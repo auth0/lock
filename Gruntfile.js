@@ -31,6 +31,7 @@ module.exports = function (grunt) {
         files: {
           'example/auth0-widget.js': 'build/auth0-widget.js',
           'example/img/close.png': 'widget/img/close.png',
+          'example/img/logo-32.png': 'widget/img/logo-32.png',
           'example/img/spinner.gif': 'widget/img/spinner.gif',
           'example/font/opensans.woff': 'widget/font/opensans.woff',
           'example/font/zocial-regular-webfont.dev.svg': 'widget/font/zocial-regular-webfont.dev.svg',
