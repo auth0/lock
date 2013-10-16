@@ -96,6 +96,18 @@ domready(function () {
     }
   };
 
+  var _showError = function (error) {
+    $('.signin h1').css('display', 'none');
+    $('.signin .success').css('display', 'none');
+    $('.signin .error').html(error).css('display', '');
+  };
+
+  var _showSuccess = function (message) {
+    $('.signin h1').css('display', 'none');
+    $('.signin .error').css('display', 'none');
+    $('.signin .success').html(message).css('display', '');
+  };
+
   var _isAuth0Conn = function (strategy) {
     return strategy === 'auth0' || strategy === 'auth0-adldap';
   };
