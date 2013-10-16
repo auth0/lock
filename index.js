@@ -49,7 +49,7 @@ domready(function () {
       'fitbit': { css: 'fitbit', name: 'Fitbit', social: true }
   };
 
-  var _auth0Strategy, _hasLoggedInBefore;
+  var _auth0Strategy, _auth0ConnectionParams, _hasLoggedInBefore;
   var _client = {
     strategies: [
       {
@@ -245,12 +245,17 @@ domready(function () {
     var container = _getActiveLoginView();
     var connection  = _getAuth0Connection();
     
-    auth0.login({
+    var loginOptions = {
       connection: connection.name,
       username: _isAdLdapConn(connection.name) ? userName.replace('@' + connection.domain, '') : userName,
       password: signInPassword || $('.password input', container).val()
-    }, 
-    function (err) {
+    };
+
+    for (var k in _auth0ConnectionParams) {
+      loginOptions[k] = _auth0ConnectionParams[k];
+    }
+
+    auth0.login(loginOptions, function (err) {
       if (err) alert(err);
       _toggleSpinner();
     });
