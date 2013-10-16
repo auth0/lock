@@ -2,6 +2,7 @@ var domready  = require('domready');
 var Auth0     = require('auth0-js');
 var qwery     = require('qwery');
 var bonzo     = require('bonzo');
+var bean      = require('bean');
 var fs        = require('fs');
 var insertCss = require('insert-css');
 
@@ -52,7 +53,8 @@ domready(function () {
       'fitbit': { css: 'fitbit', name: 'Fitbit', social: true }
   };
 
-  var _auth0Strategy;
+  var _auth0Strategy, _signInData, _hasLoggedInBefore;
+  var _cookies = {};
   var _client = {
     strategies: [
       {
@@ -78,11 +80,12 @@ domready(function () {
     ]
   };
 
+  // helper methods
   var _setTop = function(onTop, element) {
     if (!onTop) {
       setTimeout(function() {
         element.css({
-          'marginTop': '-' + (element[0].offsetHeight / 2) + 'px',
+          'marginTop': '-' + (element.offset().height / 2) + 'px',
           'top': '50%'
         });
       }, 1);
@@ -94,7 +97,6 @@ domready(function () {
     }
   };
 
-  // helper methods
   var _isAuth0Conn = function (strategy) {
     return strategy === 'auth0' || strategy === 'auth0-adldap';
   };
@@ -120,17 +122,69 @@ domready(function () {
     return false;
   };
 
-  var redirect = function (url) {
+  var _getConfiguredStrategy = function (name) {
+    for (var s in _client.strategies) {
+      if (_client.strategies[s] && _client.strategies[s].name === name) {
+        return _client.strategies[s];
+      }
+    }
+  };
+
+  var _redirect = function (url) {
     window.location = url;
+  };
+
+  var _hideSignIn = function (cb) {
+    $('div.overlay').removeClass('active');
+    setTimeout(function () {
+      $('html').removeClass('mode-signin');
+      if (cb) cb();
+    }, 500);
+  };
+
+  var _getActiveLoginView = function() {
+    var container = _hasLoggedInBefore ? $('.loggedin') : $('.notloggedin');
+    return container;
+  };
+
+  var _toggleSpinner = function(container) {
+    container = container || _getActiveLoginView();
+    var spinner = $('.spinner', container);
+    var signin = $('.zocial.primary', container);
+
+    spinner.css('display', spinner.css('display') === 'none' ? '' : 'none');
+    signin.css('display', signin.css('display') === 'none' ? '' : 'none');
+  };
+
+  var _signInSocial = function (target) {
+    var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
+    var strategy = _getConfiguredStrategy(strategyName);
+
+    if (strategy) {
+      auth0.login({
+        connection: strategy.connections[0].name
+      });
+    }
+  };
+
+  var _signInEnterprise = function () {
+    console.log('TODO: _signInEnterprise');
   };
 
   // initialize
   var initialize = function () {
-    // TODO: add event (keypress) to close popup with ESC key
-    // TODO: add event (click) to close popup with close button
-    // TODO: add event (submit) to login with signIn button
     // TODO: support css option for non free subscriptions
-    
+
+    bean.on($('.popup .panel.onestep a.close')[0], 'click', _hideSignIn);
+    bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', _signInEnterprise);
+    bean.on($('html')[0], 'keyup', function (e) {
+      if ($('html').hasClass('mode-signin')) {
+        if ((e.which == 27 || e.keycode == 27) && !options.standalone) {
+          _hideSignIn(); // close popup with ESC key
+        }
+      }
+    });
+
     // load social buttons
     var list = $('.popup .panel.onestep .iconlist');
     for (var s in _client.strategies) {
@@ -158,19 +212,25 @@ domready(function () {
       }
     }
 
-    // TODO: add event (click) to login with social connection
+    $('.popup .panel.onestep .iconlist span').each(function (button) {
+      bean.on(button, 'click', function (e) {
+        _signInSocial(e.target);
+      });
+    });
 
     showSignIn();
   };
 
   var showSignIn = function () {
+    $('html').addClass('mode-signin');
+
     // if no social connections and one enterprise connection only, redirect
     if (!_areThereAnySocialConn() && 
       _client.strategies.length === 1 &&
       _client.strategies[0].name !== 'auth0' &&
       _client.strategies[0].connections.length === 1) {
       
-      redirect(_client.strategies[0].connections[0].url);
+      _redirect(_client.strategies[0].connections[0].url);
     }
 
     // labels text
