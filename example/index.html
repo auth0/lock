@@ -1,8 +1,19 @@
 <html>
 <head>
     <title>Test auth0-widget</title>
-    <script src="auth0-widget.js"></script>
 </head>
 <body>
+	<script src="auth0-widget.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+		$(function () {
+		    // do stuff after DOM has loaded
+		    window.Auth0.signIn({
+			    domain:      'mdocs.auth0.com',
+			    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
+			    callbackURL: 'http://localhost:3000/'
+		  	});
+		});
+	</script>
 </body>
 </html>

@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "browserify": "~2.33.0",
-    "domready": "~0.2.12",
     "yarnify": "~0.5.1",
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.9",
