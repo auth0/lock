@@ -71,6 +71,12 @@ domready(function () {
         connections: [
           { domain: '', name: 'Username-Password-Authentication' }
         ]
+      },
+      {
+        name: 'google-apps',
+        connections: [
+          { domain: 'contoso.com', name: 'contoso' }
+        ]
       }
     ]
   };
@@ -151,12 +157,13 @@ domready(function () {
     var emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                       .exec(email.toLowerCase());
 
-    for(var s in _client.strategies) {
+    for (var s in _client.strategies) {
       var strategy = _client.strategies[s];
       if (_isAuth0Conn(strategy.name)) continue;
 
-      for(var c in strategy.connections) {
+      for (var c in strategy.connections) {
         if (emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
+          output = output || {};
           output.domain = strategy.connections[c].domain;
           return true;
         }
@@ -198,15 +205,15 @@ domready(function () {
   };
 
   var _showOrHidePassword = function () {
-    var mailField = $('.notloggedin .email input').first();
-    var pwdField  = $('.notloggedin .password input');
-    pwdField.removeAttr('required');
-
+    var mailField = $('.notloggedin .email input');
+    var pwdField  = $('.notloggedin .password input').first();
+    
     var isEnterpriseConnection = _isEnterpriseConnection(mailField.val());
 
     if (isEnterpriseConnection) {
-      pwdField.attr('disabled', '');
+      pwdField.attr('disabled', true);
       pwdField.attr('placeholder', '');
+      pwdField.removeAttr('required');
     } else {
       pwdField.removeAttr('disabled');
       pwdField.attr('required', true);
@@ -408,6 +415,8 @@ domready(function () {
       if (_isAuth0Conn(strategy.name) && strategy.connections.length > 0) {
         _auth0Strategy = strategy;
         $('.create-account, .password').css('display', 'block');
+
+        bean.on($('.notloggedin .email input')[0], 'input', _showOrHidePassword);
       }
 
       if (_strategies[strategy.name] && _strategies[strategy.name].social) {
