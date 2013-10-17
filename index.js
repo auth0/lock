@@ -12,8 +12,7 @@ domready(function () {
   var options = {
     domain:      'mdocs.auth0.com',
     clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
-    callbackURL: 'http://localhost:3000/',
-    mode:        'notloggedin'
+    callbackURL: 'http://localhost:3000/'
   };
 
   var auth0 = Auth0({
@@ -80,6 +79,10 @@ domready(function () {
     return bonzo(qwery(selector, root));
   };
 
+  var _redirect = function (url) {
+    global.window.location = url;
+  };
+
   var _setTop = function (onTop, element) {
     if (!onTop) {
       setTimeout(function() {
@@ -110,6 +113,12 @@ domready(function () {
 
   var _isAuth0Conn = function (strategy) {
     return strategy === 'auth0' || strategy === 'auth0-adldap';
+  };
+
+  var _setTitle = function(title) {
+    $('.signin .error').css('display', 'none');
+    $('.signin .success').css('display', 'none');
+    $('.signin h1').html(title).css('display', '');
   };
 
   var _isAdLdapConn = function (connection) {
@@ -158,10 +167,6 @@ domready(function () {
     return _auth0Strategy ? _auth0Strategy.connections[0] : null;
   };
 
-  var _redirect = function (url) {
-    window.location = url;
-  };
-
   var _hideSignIn = function (cb) {
     $('div.overlay').removeClass('active');
     setTimeout(function () {
@@ -182,6 +187,67 @@ domready(function () {
 
     spinner.css('display', spinner.css('display') === 'none' ? '' : 'none');
     signin.css('display', signin.css('display') === 'none' ? '' : 'none');
+  };
+
+  var _setLoginView = function(opts) {
+    _hasLoggedInBefore = opts.isReturningUser;
+    _setTitle(options['title']);
+
+    $('.loggedin').css('display', 'none');
+    $('.notloggedin').css('display', 'none');
+    $('.signup').css('display', 'none');
+    $('.reset').css('display', 'none');
+
+    $('.loggedin').css('display', opts.isReturningUser ? '' : 'none');
+    $('.notloggedin').css('display', opts.isReturningUser ? 'none' : '');
+
+    _setTop(options.top, $('.signin div.panel.onestep'));
+    $('.notloggedin .email input').first().focus();
+  };
+
+  var _showLoggedInExperience = function() {
+    var strategy = _cookies.signin.strategy;
+    _setLoginView({ isReturningUser: !!strategy });
+
+    if (!strategy) return;
+
+    var loginView = _getActiveLoginView();
+    bean.on($('form', loginView)[0], 'submit', _signInEnterprise);
+    
+    var button;
+    if (strategy !== 'auth0') {
+      button = bonzo('<span></span>')
+            .attr('tabindex', 0)
+            .attr('data-strategy', strategy)
+            .attr('title', _strategies[strategy].name)
+            .addClass('zocial').addClass('block')
+            .addClass(_strategies[strategy].css)
+            .addClass(_strategies[strategy].imageicon ? 'image-icon' : '');
+            //.html(global.tlite.find("{name}", { name: _strategies[strategy].name}));
+      
+      bean.on(button, 'click', _showSignInOptions(e.target));
+
+      $('.strategy span', loginView).each(function (el) { if (el) el.remove(); });
+      $('.strategy', loginView).append(button);
+    }
+
+    $('.all', loginView).html(options['allButtonTemplate']);
+
+    bean.on($('.all', loginView), 'click', function () {
+      _setLoginView({ isReturningUser: false });
+    });
+
+    if (_cookies.signin.email) {
+      if (strategy === 'auth0') {
+        $('.email-readonly', loginView).html(_cookies.signin.email); 
+        $('.email input', loginView).css('display', 'none');
+        $('.emailPassword', loginView).css('display', '');
+      } 
+      else if (_isEnterprise(strategy)) {
+        button.html(_cookies.signin.email || _strategies[strategy].name)
+              .attr('title', _cookies.signin.email || _strategies[strategy].name);
+      }
+    }
   };
 
   var _signInSocial = function (target) {
@@ -305,7 +371,7 @@ domready(function () {
           .addClass('zocial').addClass('icon')
           .addClass(_strategies[strategy.name].css)
           .addClass(_strategies[strategy.name].imageicon ? 'image-icon' : '');
-          //.setHtml(global.tlite.find("{name}", { name: _strategies[strategy.name].name}));
+          //.html(global.tlite.find("{name}", { name: _strategies[strategy.name].name}));
 
         list.append(button);
         list.css('display', 'block');
@@ -413,7 +479,27 @@ domready(function () {
     $('.popup h1').html(options.title);
     $('.popup .invalid').removeClass('invalid');
 
+    // if user logged in show logged in experience
+    /* if (_cookies.signin && options['enableReturnUserExperience']) {
+      _showLoggedInExperience();
+    } */
+
+    if (options['socialBigButtons']) {
+      $('.popup .panel.onestep .iconlist span').removeClass('icon').addClass('block');
+    } else {
+      $('.popup .panel.onestep .iconlist span').addClass('icon').removeClass('block');
+    }
+
+    $('div.panel.onestep h1').html(options['title']);
+    $('div.panel.onestep').addClass('active');
+
     _setTop(options.top, $('div.panel.onestep'));
+
+    /* if (_cookies.signin && _cookies.signin.email) {
+      $('div.panel.onestep input').set('value', _cookies.signin.email);
+    } */
+
+    _setLoginView({ isReturningUser: false });
   };
 
   // load
@@ -424,9 +510,7 @@ domready(function () {
   insertCss(fs.readFileSync(__dirname + '/widget/css/normalize.css'));
 
   var div = document.createElement('div');
-  div.innerHTML = loginTmpl({
-    mode: options.mode
-  });
+  div.innerHTML = loginTmpl({});
 
   document.body.appendChild(div);
 

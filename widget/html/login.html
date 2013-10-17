@@ -12,7 +12,6 @@
 		            <a class="close">Close</a>
           		</header>
 
-          		<% if (mode === 'loggedin') { %>
           		<div class="loggedin">
 		            <form>
 						<span class="centered last-time"></span>
@@ -34,7 +33,7 @@
 						<span class="centered all">Show all</span>
 		            </form>
           		</div>
-          		<% } else if (mode === 'notloggedin') { %>
+
 	          	<div class="notloggedin">
 		            <form>
 		            	<div class="iconlist" style="display: none"><p style="display:none">... or sign in using</p></div>
@@ -54,7 +53,7 @@
 		              	</div>
 		            </form>
 	          	</div>
-	          	<% } else if (mode === 'signup') { %>
+
 	          	<div class="signup">
 		            <form>
 		              	<div class="header"></div>
@@ -76,7 +75,7 @@
 		              	</div>
 		            </form>
 	          	</div>
-	          	<% } else if (mode === 'reset') { %>
+
 				<div class="reset">
 					<form id="change_password">
 					  	<div class="header"></div>
@@ -100,7 +99,7 @@
 					  	</div>
 					</form>
 				</div>
-				<% } %>
+				
           		<footer>
             		<span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>
           		</footer>
