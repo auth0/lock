@@ -251,7 +251,7 @@ domready(function () {
     $('.notloggedin .email input').first().focus();
   };
 
-  var _showLoggedInExperience = function(e) {
+  var _showLoggedInExperience = function() {
     var strategy = _ssoData.lastUsedConnection.strategy;
     _setLoginView({ isReturningUser: !!strategy });
 
@@ -271,7 +271,7 @@ domready(function () {
         .addClass(_strategies[strategy].imageicon ? 'image-icon' : '')
         .html(_strategies[strategy].name);
       
-      bean.on(button, 'click', function (e) { _showSignInOptions(e.target); });
+      bean.on(button[0], 'click', function (e) { _signInSocial(e.target); });
 
       $('.strategy span', loginView).each(function (el) { if (el) el.remove(); });
       $('.strategy', loginView).append(button);
@@ -279,7 +279,7 @@ domready(function () {
 
     $('.all', loginView).html(_options['allButtonTemplate']);
 
-    bean.on($('.all', loginView), 'click', function () {
+    bean.on($('.all', loginView)[0], 'click', function () {
       _setLoginView({ isReturningUser: false });
     });
 
@@ -417,8 +417,8 @@ domready(function () {
           .attr('title', _strategies[strategy.name].name)
           .addClass('zocial').addClass('icon')
           .addClass(_strategies[strategy.name].css)
-          .addClass(_strategies[strategy.name].imageicon ? 'image-icon' : '');
-          //.html(global.tlite.find("{name}", { name: _strategies[strategy.name].name}));
+          .addClass(_strategies[strategy.name].imageicon ? 'image-icon' : '')
+          .html(_strategies[strategy.name].name);
 
         list.append(button);
         list.css('display', 'block');
