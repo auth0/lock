@@ -1,8 +1,0 @@
-html.button {
-  overflow: hidden;
-}
-
-html.button body {
- overflow: hidden;
- width: 600px; /* fix firefox width inline block issue */
-}

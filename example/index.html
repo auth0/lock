@@ -8,11 +8,14 @@
 	<script>
 		$(function () {
 		    // do stuff after DOM has loaded
-		    window.Auth0.signIn({
-			    domain:      'mdocs.auth0.com',
+		    var widget = new Auth0Widget({
+				domain:      'mdocs.auth0.com',
 			    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
 			    callbackURL: 'http://localhost:3000/'
-		  	});
+			});
+
+		    // var connections = widget.client.getConnections();
+			widget.show({});
 		});
 	</script>
 </body>

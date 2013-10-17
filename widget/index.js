@@ -2,6 +2,7 @@ var Auth0js   = require('auth0-js');
 var qwery     = require('qwery');
 var bonzo     = require('bonzo');
 var bean      = require('bean');
+var xtend     = require('xtend');
 
 var loginTmpl = require('./html/login.html');
 
@@ -9,11 +10,12 @@ var $ = function (selector, root) {
   return bonzo(qwery(selector, root));
 };
 
-function Auth0 () {
-  if (!(this instanceof Auth0)) {
-    return new Auth0();
+function Auth0Widget (options) {
+  if (!(this instanceof Auth0Widget)) {
+    return new Auth0Widget(options);
   }
 
+  this._options = options;
   this._strategies = {
     'google-openid': { css: 'google', name: 'Google OpenId', social: true },
     'google-apps': { css: 'google', name: 'Google Apps', social: false },
@@ -44,11 +46,11 @@ function Auth0 () {
 }
 
 // helper methods
-Auth0.prototype._redirect = function (url) {
+Auth0Widget.prototype._redirect = function (url) {
   global.window.location = url;
 };
 
-Auth0.prototype._setTop = function (onTop, element) {
+Auth0Widget.prototype._setTop = function (onTop, element) {
   if (!onTop) {
     setTimeout(function() {
       element.css({
@@ -64,33 +66,33 @@ Auth0.prototype._setTop = function (onTop, element) {
   }
 };
 
-Auth0.prototype._showError = function (error) {
+Auth0Widget.prototype._showError = function (error) {
   $('.signin h1').css('display', 'none');
   $('.signin .success').css('display', 'none');
   $('.signin .error').html(error).css('display', '');
 };
 
-Auth0.prototype._showSuccess = function (message) {
+Auth0Widget.prototype._showSuccess = function (message) {
   $('.signin h1').css('display', 'none');
   $('.signin .error').css('display', 'none');
   $('.signin .success').html(message).css('display', '');
 };
 
-Auth0.prototype._isAuth0Conn = function (strategy) {
+Auth0Widget.prototype._isAuth0Conn = function (strategy) {
   return strategy === 'auth0' || strategy === 'auth0-adldap';
 };
 
-Auth0.prototype._setTitle = function(title) {
+Auth0Widget.prototype._setTitle = function(title) {
   $('.signin .error').css('display', 'none');
   $('.signin .success').css('display', 'none');
   $('.signin h1').html(title).css('display', '');
 };
 
-Auth0.prototype._isAdLdapConn = function (connection) {
+Auth0Widget.prototype._isAdLdapConn = function (connection) {
   return connection === 'adldap';
 };
 
-Auth0.prototype._areThereAnySocialConn = function () {
+Auth0Widget.prototype._areThereAnySocialConn = function () {
   for (var s in this._client.strategies) {
     if (this._strategies[this._client.strategies[s].name] && this._strategies[this._client.strategies[s].name].social) {
       return true;
@@ -100,7 +102,7 @@ Auth0.prototype._areThereAnySocialConn = function () {
   return false;
 };
 
-Auth0.prototype._areThereAnyEnterpriseOrDbConn = function() {
+Auth0Widget.prototype._areThereAnyEnterpriseOrDbConn = function() {
   for (var s in this._client.strategies) {
     if (this._strategies[this._client.strategies[s].name] && 
         !this._strategies[this._client.strategies[s].name].social) {
@@ -111,7 +113,7 @@ Auth0.prototype._areThereAnyEnterpriseOrDbConn = function() {
   return false;
 };
 
-Auth0.prototype._isEnterpriseConnection = function (email, output) {
+Auth0Widget.prototype._isEnterpriseConnection = function (email, output) {
   var emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                     .exec(email.toLowerCase());
 
@@ -131,7 +133,7 @@ Auth0.prototype._isEnterpriseConnection = function (email, output) {
   return false;
 };
 
-Auth0.prototype._isEnterpriseStrategy = function (strategy) { 
+Auth0Widget.prototype._isEnterpriseStrategy = function (strategy) { 
   for (var s in this._strategies) {
     if (s === strategy && !this._strategies[s].social) { 
       return true; 
@@ -141,7 +143,7 @@ Auth0.prototype._isEnterpriseStrategy = function (strategy) {
   return false; 
 };
 
-Auth0.prototype._getConfiguredStrategy = function (name) {
+Auth0Widget.prototype._getConfiguredStrategy = function (name) {
   for (var s in this._client.strategies) {
     if (this._client.strategies[s] && this._client.strategies[s].name === name) {
       return this._client.strategies[s];
@@ -149,11 +151,11 @@ Auth0.prototype._getConfiguredStrategy = function (name) {
   }
 };
 
-Auth0.prototype._getAuth0Connection = function() {
+Auth0Widget.prototype._getAuth0Connection = function() {
   // if specified, use it, otherwise return first
-  if (this._options['userPwdConnectionName']) {
+  if (this._signinOptions['userPwdConnectionName']) {
     for (var i in this._auth0Strategy.connections) {
-      if (this._auth0Strategy.connections[i].name === this._options['userPwdConnectionName']) {
+      if (this._auth0Strategy.connections[i].name === this._signinOptions['userPwdConnectionName']) {
         return this._auth0Strategy.connections[i];
       }
     }
@@ -162,7 +164,7 @@ Auth0.prototype._getAuth0Connection = function() {
   return this._auth0Strategy ? this._auth0Strategy.connections[0] : null;
 };
 
-Auth0.prototype._showOrHidePassword = function () {
+Auth0Widget.prototype._showOrHidePassword = function () {
   var mailField = $('.notloggedin .email input');
   var pwdField  = $('.notloggedin .password input').first();
   
@@ -178,7 +180,7 @@ Auth0.prototype._showOrHidePassword = function () {
   }
 };
 
-Auth0.prototype._hideSignIn = function (cb) {
+Auth0Widget.prototype._hideSignIn = function (cb) {
   $('div.overlay').removeClass('active');
   setTimeout(function () {
     $('html').removeClass('mode-signin');
@@ -186,12 +188,12 @@ Auth0.prototype._hideSignIn = function (cb) {
   }, 500);
 };
 
-Auth0.prototype._getActiveLoginView = function() {
+Auth0Widget.prototype._getActiveLoginView = function() {
   var container = this._hasLoggedInBefore ? $('.loggedin') : $('.notloggedin');
   return container;
 };
 
-Auth0.prototype._toggleSpinner = function (container) {
+Auth0Widget.prototype._toggleSpinner = function (container) {
   container = container || this._getActiveLoginView();
   var spinner = $('.spinner', container);
   var signin = $('.zocial.primary', container);
@@ -200,9 +202,9 @@ Auth0.prototype._toggleSpinner = function (container) {
   signin.css('display', signin.css('display') === 'none' ? '' : 'none');
 };
 
-Auth0.prototype._setLoginView = function(options) {
+Auth0Widget.prototype._setLoginView = function(options) {
   this._hasLoggedInBefore = options.isReturningUser;
-  this._setTitle(this._options['title']);
+  this._setTitle(this._signinOptions['title']);
 
   $('.loggedin').css('display', 'none');
   $('.notloggedin').css('display', 'none');
@@ -212,11 +214,11 @@ Auth0.prototype._setLoginView = function(options) {
   $('.loggedin').css('display', options.isReturningUser ? '' : 'none');
   $('.notloggedin').css('display', options.isReturningUser ? 'none' : '');
 
-  this._setTop(this._options.top, $('.signin div.panel.onestep'));
+  this._setTop(this._signinOptions.top, $('.signin div.panel.onestep'));
   $('.notloggedin .email input').first().focus();
 };
 
-Auth0.prototype._showLoggedInExperience = function() {
+Auth0Widget.prototype._showLoggedInExperience = function() {
   var self = this;
   var strategy = this._ssoData.lastUsedConnection.strategy;
   this._setLoginView({ isReturningUser: !!strategy });
@@ -243,7 +245,7 @@ Auth0.prototype._showLoggedInExperience = function() {
     $('.strategy', loginView).append(button);
   }
 
-  $('.all', loginView).html(this._options['allButtonTemplate']);
+  $('.all', loginView).html(this._signinOptions['allButtonTemplate']);
 
   bean.on($('.all', loginView)[0], 'click', function () {
     self._setLoginView({ isReturningUser: false });
@@ -263,7 +265,7 @@ Auth0.prototype._showLoggedInExperience = function() {
 };
 
 // sign in methods
-Auth0.prototype._signInSocial = function (target) {
+Auth0Widget.prototype._signInSocial = function (target) {
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
   var strategy = this._getConfiguredStrategy(strategyName);
 
@@ -274,7 +276,7 @@ Auth0.prototype._signInSocial = function (target) {
   }
 };
 
-Auth0.prototype._signInEnterprise = function (e) {
+Auth0Widget.prototype._signInEnterprise = function (e) {
   e.preventDefault();
   e.stopPropagation();
 
@@ -330,7 +332,7 @@ Auth0.prototype._signInEnterprise = function (e) {
   }
 };
 
-Auth0.prototype._signInWithAuth0 = function (userName, signInPassword) {
+Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   this._toggleSpinner();
 
   var self = this;
@@ -354,7 +356,7 @@ Auth0.prototype._signInWithAuth0 = function (userName, signInPassword) {
 };
 
 // initialize
-Auth0.prototype._initialize = function () {
+Auth0Widget.prototype._initialize = function () {
   // TODO: support css option for non free subscriptions
 
   var self = this;
@@ -362,7 +364,7 @@ Auth0.prototype._initialize = function () {
   bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
   bean.on($('html')[0], 'keyup', function (e) {
     if ($('html').hasClass('mode-signin')) {
-      if ((e.which == 27 || e.keycode == 27) && !self._options.standalone) {
+      if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
         self._hideSignIn(); // close popup with ESC key
       }
     }
@@ -406,7 +408,7 @@ Auth0.prototype._initialize = function () {
   this._showSignIn();
 };
 
-Auth0.prototype._showSignIn = function () {
+Auth0Widget.prototype._showSignIn = function () {
   $('html').addClass('mode-signin');
 
   // if no social connections and one enterprise connection only, redirect
@@ -419,7 +421,7 @@ Auth0.prototype._showSignIn = function () {
   }
 
   // labels text
-  var options = this._options || {};
+  var options = this._signinOptions || {};
   options['onestep'] = typeof options['onestep'] !== 'undefined' ? options['onestep'] : false;
   options['top'] = options['top'] || false;
   options['title'] = options['title'] || 'Sign In';
@@ -518,13 +520,13 @@ Auth0.prototype._showSignIn = function () {
   this._setLoginView({ isReturningUser: this._ssoData.sso });
 };
 
-Auth0.prototype.signIn = function (options) {
+Auth0Widget.prototype.show = function (signinOptions) {
   var self = this;
-  this._options = options;
+  this._signinOptions = xtend(this._options, signinOptions);
   this._auth0 = Auth0js({
-    clientID:     this._options.clientID, 
-    callbackURL:  this._options.callbackURL,
-    domain:       this._options.domain
+    clientID:     this._signinOptions.clientID, 
+    callbackURL:  this._signinOptions.callbackURL,
+    domain:       this._signinOptions.domain
   });
 
   // TODO: set client
@@ -572,4 +574,4 @@ Auth0.prototype.signIn = function (options) {
   });
 };
 
-module.exports = Auth0;
+module.exports = Auth0Widget;
