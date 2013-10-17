@@ -16,6 +16,12 @@ function Auth0Widget (options) {
   }
 
   this._options = options;
+  this._auth0 = Auth0js({
+    clientID:     this._options.clientID, 
+    callbackURL:  this._options.callbackURL,
+    domain:       this._options.domain
+  });
+  
   this._strategies = {
     'google-openid': { css: 'google', name: 'Google OpenId', social: true },
     'google-apps': { css: 'google', name: 'Google Apps', social: false },
@@ -518,6 +524,10 @@ Auth0Widget.prototype._showSignIn = function () {
 
   this._setTop(options.top, $('div.panel.onestep'));
   this._setLoginView({ isReturningUser: this._ssoData.sso });
+};
+
+Auth0Widget.prototype.getClient = function () {
+  return this._auth0;
 };
 
 Auth0Widget.prototype.show = function (signinOptions) {
