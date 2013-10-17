@@ -9,46 +9,47 @@ var insertCss = require('insert-css');
 var loginTmpl = require('./widget/html/login.html');
 
 domready(function () {
-  var options = {
+  var _options = {
     domain:      'mdocs.auth0.com',
     clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
     callbackURL: 'http://localhost:3000/'
   };
 
   var auth0 = Auth0({
-    clientID:     options.clientID, 
-    callbackURL:  options.callbackURL,
-    domain:       options.domain
+    clientID:     _options.clientID, 
+    callbackURL:  _options.callbackURL,
+    domain:       _options.domain
   });
 
   var _strategies = {
-      'google-openid': { css: 'google', name: 'Google OpenId', social: true },
-      'google-apps': { css: 'google', name: 'Google Apps', social: false },
-      'google-oauth2': { css: 'googleplus', name: 'Google', social: true },
-      'facebook': { css: 'facebook', name: 'Facebook', social: true },
-      'windowslive': { css: 'windows', name: 'Microsoft Account', social: true },
-      'linkedin': { css: 'linkedin', name: 'LinkedIn', social: true },
-      'github': { css: 'github', name: 'GitHub', social: true },
-      'paypal': { css: 'paypal', name: 'PayPal', social: true },
-      'twitter': { css: 'twitter', name: 'Twitter', social: true },
-      'amazon': { css: 'amazon', name: 'Amazon', social: true },
-      'vkontakte': { css: 'vk', name: 'vKontakte', social: true },
-      'yandex': { css: 'yandex', name: 'Yandex', social: true },
-      'office365': { css: 'office365', name: 'Office365', social: false },
-      'waad': { css: 'waad', name: 'Windows Azure AD', social: false },
-      'adfs': { css: 'windows', name: 'ADFS', social: false },
-      'samlp': { css: 'guest', name: 'SAML', social: false },
-      'ad': { css: 'windows', name: 'AD / LDAP', social: false },
-      'custom': { css: 'guest', name: 'Custom Auth', social: false },
-      'auth0': { css: 'guest', name: 'Auth0', social: false },
-      'auth0-adldap': { css: 'guest', name: 'AD/LDAP', social: false },
-      'thirtysevensignals': { css: 'thirtysevensignals', name: '37 Signals', social: true },
-      'box': { css: 'box', name: 'Box', social: true, imageicon: true },
-      'salesforce': { css: 'salesforce', name: 'Salesforce', social: true },
-      'fitbit': { css: 'fitbit', name: 'Fitbit', social: true }
+    'google-openid': { css: 'google', name: 'Google OpenId', social: true },
+    'google-apps': { css: 'google', name: 'Google Apps', social: false },
+    'google-oauth2': { css: 'googleplus', name: 'Google', social: true },
+    'facebook': { css: 'facebook', name: 'Facebook', social: true },
+    'windowslive': { css: 'windows', name: 'Microsoft Account', social: true },
+    'linkedin': { css: 'linkedin', name: 'LinkedIn', social: true },
+    'github': { css: 'github', name: 'GitHub', social: true },
+    'paypal': { css: 'paypal', name: 'PayPal', social: true },
+    'twitter': { css: 'twitter', name: 'Twitter', social: true },
+    'amazon': { css: 'amazon', name: 'Amazon', social: true },
+    'vkontakte': { css: 'vk', name: 'vKontakte', social: true },
+    'yandex': { css: 'yandex', name: 'Yandex', social: true },
+    'office365': { css: 'office365', name: 'Office365', social: false },
+    'waad': { css: 'waad', name: 'Windows Azure AD', social: false },
+    'adfs': { css: 'windows', name: 'ADFS', social: false },
+    'samlp': { css: 'guest', name: 'SAML', social: false },
+    'mscrm': { css: 'guest', name: 'Dynamics CRM', social: false },
+    'ad': { css: 'windows', name: 'AD / LDAP', social: false },
+    'custom': { css: 'guest', name: 'Custom Auth', social: false },
+    'auth0': { css: 'guest', name: 'Auth0', social: false },
+    'auth0-adldap': { css: 'guest', name: 'AD/LDAP', social: false },
+    'thirtysevensignals': { css: 'thirtysevensignals', name: '37 Signals', social: true },
+    'box': { css: 'box', name: 'Box', social: true, imageicon: true },
+    'salesforce': { css: 'salesforce', name: 'Salesforce', social: true },
+    'fitbit': { css: 'fitbit', name: 'Fitbit', social: true }
   };
 
-  var _auth0Strategy, _auth0ConnectionParams, _hasLoggedInBefore;
+  var _auth0Strategy, _auth0ConnectionParams, _hasLoggedInBefore, _ssoData;
   var _client = {
     strategies: [
       {
@@ -146,6 +147,35 @@ domready(function () {
     return false;
   };
 
+  var _isEnterpriseConnection = function (email, output) {
+    var emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                      .exec(email.toLowerCase());
+
+    for(var s in _client.strategies) {
+      var strategy = _client.strategies[s];
+      if (_isAuth0Conn(strategy.name)) continue;
+
+      for(var c in strategy.connections) {
+        if (emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
+          output.domain = strategy.connections[c].domain;
+          return true;
+        }
+      }
+    }
+
+    return false;
+  };
+
+  var _isEnterpriseStrategy = function (strategy) { 
+    for (var s in _strategies) {
+      if (s === strategy && !_strategies[s].social) { 
+        return true; 
+      } 
+    } 
+
+    return false; 
+  };
+
   var _getConfiguredStrategy = function (name) {
     for (var s in _client.strategies) {
       if (_client.strategies[s] && _client.strategies[s].name === name) {
@@ -156,15 +186,31 @@ domready(function () {
 
   var _getAuth0Connection = function() {
     // if specified, use it, otherwise return first
-    if (options['userPwdConnectionName']) {
+    if (_options['userPwdConnectionName']) {
       for (var i in _auth0Strategy.connections) {
-        if (_auth0Strategy.connections[i].name === options['userPwdConnectionName']) {
+        if (_auth0Strategy.connections[i].name === _options['userPwdConnectionName']) {
           return _auth0Strategy.connections[i];
         }
       }
     }
 
     return _auth0Strategy ? _auth0Strategy.connections[0] : null;
+  };
+
+  var _showOrHidePassword = function () {
+    var mailField = $('.notloggedin .email input').first();
+    var pwdField  = $('.notloggedin .password input');
+    pwdField.removeAttr('required');
+
+    var isEnterpriseConnection = _isEnterpriseConnection(mailField.val());
+
+    if (isEnterpriseConnection) {
+      pwdField.attr('disabled', '');
+      pwdField.attr('placeholder', '');
+    } else {
+      pwdField.removeAttr('disabled');
+      pwdField.attr('required', true);
+    }
   };
 
   var _hideSignIn = function (cb) {
@@ -189,24 +235,24 @@ domready(function () {
     signin.css('display', signin.css('display') === 'none' ? '' : 'none');
   };
 
-  var _setLoginView = function(opts) {
-    _hasLoggedInBefore = opts.isReturningUser;
-    _setTitle(options['title']);
+  var _setLoginView = function(options) {
+    _hasLoggedInBefore = options.isReturningUser;
+    _setTitle(_options['title']);
 
     $('.loggedin').css('display', 'none');
     $('.notloggedin').css('display', 'none');
     $('.signup').css('display', 'none');
     $('.reset').css('display', 'none');
 
-    $('.loggedin').css('display', opts.isReturningUser ? '' : 'none');
-    $('.notloggedin').css('display', opts.isReturningUser ? 'none' : '');
+    $('.loggedin').css('display', options.isReturningUser ? '' : 'none');
+    $('.notloggedin').css('display', options.isReturningUser ? 'none' : '');
 
-    _setTop(options.top, $('.signin div.panel.onestep'));
+    _setTop(_options.top, $('.signin div.panel.onestep'));
     $('.notloggedin .email input').first().focus();
   };
 
-  var _showLoggedInExperience = function() {
-    var strategy = _cookies.signin.strategy;
+  var _showLoggedInExperience = function(e) {
+    var strategy = _ssoData.lastUsedConnection.strategy;
     _setLoginView({ isReturningUser: !!strategy });
 
     if (!strategy) return;
@@ -216,40 +262,41 @@ domready(function () {
     
     var button;
     if (strategy !== 'auth0') {
-      button = bonzo('<span></span>')
-            .attr('tabindex', 0)
-            .attr('data-strategy', strategy)
-            .attr('title', _strategies[strategy].name)
-            .addClass('zocial').addClass('block')
-            .addClass(_strategies[strategy].css)
-            .addClass(_strategies[strategy].imageicon ? 'image-icon' : '');
-            //.html(global.tlite.find("{name}", { name: _strategies[strategy].name}));
+      button = bonzo(bonzo.create('<span></span>'))
+        .attr('tabindex', 0)
+        .attr('data-strategy', strategy)
+        .attr('title', _strategies[strategy].name)
+        .addClass('zocial').addClass('block')
+        .addClass(_strategies[strategy].css)
+        .addClass(_strategies[strategy].imageicon ? 'image-icon' : '')
+        .html(_strategies[strategy].name);
       
-      bean.on(button, 'click', _showSignInOptions(e.target));
+      bean.on(button, 'click', function (e) { _showSignInOptions(e.target); });
 
       $('.strategy span', loginView).each(function (el) { if (el) el.remove(); });
       $('.strategy', loginView).append(button);
     }
 
-    $('.all', loginView).html(options['allButtonTemplate']);
+    $('.all', loginView).html(_options['allButtonTemplate']);
 
     bean.on($('.all', loginView), 'click', function () {
       _setLoginView({ isReturningUser: false });
     });
 
-    if (_cookies.signin.email) {
+    if (_ssoData.lastUsedUsername) {
       if (strategy === 'auth0') {
-        $('.email-readonly', loginView).html(_cookies.signin.email); 
+        $('.email-readonly', loginView).html(_ssoData.lastUsedUsername); 
         $('.email input', loginView).css('display', 'none');
         $('.emailPassword', loginView).css('display', '');
       } 
-      else if (_isEnterprise(strategy)) {
-        button.html(_cookies.signin.email || _strategies[strategy].name)
-              .attr('title', _cookies.signin.email || _strategies[strategy].name);
+      else if (_isEnterpriseStrategy(strategy)) {
+        button.html(_ssoData.lastUsedUsername || _strategies[strategy].name)
+              .attr('title', _ssoData.lastUsedUsername || _strategies[strategy].name);
       }
     }
   };
 
+  // sign in methods
   var _signInSocial = function (target) {
     var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
     var strategy = _getConfiguredStrategy(strategyName);
@@ -347,7 +394,7 @@ domready(function () {
     bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', _signInEnterprise);
     bean.on($('html')[0], 'keyup', function (e) {
       if ($('html').hasClass('mode-signin')) {
-        if ((e.which == 27 || e.keycode == 27) && !options.standalone) {
+        if ((e.which == 27 || e.keycode == 27) && !_options.standalone) {
           _hideSignIn(); // close popup with ESC key
         }
       }
@@ -402,7 +449,7 @@ domready(function () {
     }
 
     // labels text
-    options = options || {};
+    var options = _options || {};
     options['onestep'] = typeof options['onestep'] !== 'undefined' ? options['onestep'] : false;
     options['top'] = options['top'] || false;
     options['title'] = options['title'] || 'Sign In';
@@ -480,9 +527,9 @@ domready(function () {
     $('.popup .invalid').removeClass('invalid');
 
     // if user logged in show logged in experience
-    /* if (_cookies.signin && options['enableReturnUserExperience']) {
+    if (_ssoData.sso && options['enableReturnUserExperience']) {
       _showLoggedInExperience();
-    } */
+    }
 
     if (options['socialBigButtons']) {
       $('.popup .panel.onestep .iconlist span').removeClass('icon').addClass('block');
@@ -493,13 +540,12 @@ domready(function () {
     $('div.panel.onestep h1').html(options['title']);
     $('div.panel.onestep').addClass('active');
 
+    if (_ssoData.sso && _ssoData.lastUsedUsername) {
+      $('div.panel.onestep input').val(_ssoData.lastUsedUsername);
+    }
+
     _setTop(options.top, $('div.panel.onestep'));
-
-    /* if (_cookies.signin && _cookies.signin.email) {
-      $('div.panel.onestep input').set('value', _cookies.signin.email);
-    } */
-
-    _setLoginView({ isReturningUser: false });
+    _setLoginView({ isReturningUser: _ssoData.sso });
   };
 
   // load
@@ -512,7 +558,9 @@ domready(function () {
   var div = document.createElement('div');
   div.innerHTML = loginTmpl({});
 
-  document.body.appendChild(div);
-
-  initialize();
+  auth0.getSSOData(function (err, ssoData) {
+    _ssoData = ssoData;
+    document.body.appendChild(div);
+    initialize();
+  });
 });
