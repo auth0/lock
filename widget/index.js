@@ -1,4 +1,4 @@
-var Auth0js   = require('auth0-js');
+var Auth0     = require('auth0-js');
 var qwery     = require('qwery');
 var bonzo     = require('bonzo');
 var bean      = require('bean');
@@ -16,7 +16,7 @@ function Auth0Widget (options) {
   }
 
   this._options = options;
-  this._auth0 = Auth0js({
+  this._auth0 = new Auth0({
     clientID:     this._options.clientID, 
     callbackURL:  this._options.callbackURL,
     domain:       this._options.domain
@@ -526,6 +526,35 @@ Auth0Widget.prototype._showSignIn = function () {
   this._setLoginView({ isReturningUser: this._ssoData.sso });
 };
 
+Auth0Widget.prototype._getConfiguredStrategies = function (conns) {
+  var strategies = [];
+  for (var conn in conns) {
+    if (typeof(conns[conn].status) !== 'undefined' && !conns[conn].status) continue;
+
+    var strategy = strategies.filter(function (s) { 
+      return s.name === conns[conn].strategy; 
+    })[0];
+
+    if (!strategy) {
+      strategy = {
+        name: conns[conn].strategy,
+        connections: []
+      };
+
+      strategies.push(strategy);
+    }
+
+    var connData = {
+      name: conns[conn].name,
+      domain: conns[conn].domain
+    };
+
+    strategy.connections.push(connData);
+  }
+
+  return strategies;
+};
+
 Auth0Widget.prototype.getClient = function () {
   return this._auth0;
 };
@@ -533,54 +562,32 @@ Auth0Widget.prototype.getClient = function () {
 Auth0Widget.prototype.show = function (signinOptions) {
   var self = this;
   this._signinOptions = xtend(this._options, signinOptions);
-  this._auth0 = Auth0js({
+  this._auth0 = new Auth0({
     clientID:     this._signinOptions.clientID, 
     callbackURL:  this._signinOptions.callbackURL,
     domain:       this._signinOptions.domain
   });
 
-  // TODO: set client
-  this._client = {
-    strategies: [
-      {
-        name: 'google-oauth2',
-        social: true,
-        connections: [
-          { domain: '', name: 'google-oauth2' }
-        ]
-      },
-      {
-        name: 'github',
-        social: true,
-        connections: [
-          { domain: '', name: 'github' }
-        ]
-      },
-      {
-        name: 'auth0',
-        connections: [
-          { domain: '', name: 'Username-Password-Authentication' }
-        ]
-      },
-      {
-        name: 'google-apps',
-        connections: [
-          { domain: 'contoso.com', name: 'contoso' }
-        ]
-      }
-    ]
-  };
-
   // TODO: set auth0 connection parameters
   this._auth0ConnectionParams = null;
 
-  var div = document.createElement('div');
-  div.innerHTML = loginTmpl({});
+  // get configured strategies/connections
+  this._auth0.getConnections(function (err, connections) {
+    self._client = {
+      strategies: self._getConfiguredStrategies(connections)
+    };
 
-  this._auth0.getSSOData(function (err, ssoData) {
-    self._ssoData = ssoData;
-    document.body.appendChild(div);
-    self._initialize();
+    // get SSO data
+    self._auth0.getSSOData(function (err, ssoData) {
+      self._ssoData = ssoData;
+      
+      // widget container
+      var div = document.createElement('div');
+      div.innerHTML = loginTmpl({});
+      document.body.appendChild(div);
+      
+      self._initialize();
+    });
   });
 };
 
