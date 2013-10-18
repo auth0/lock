@@ -573,8 +573,22 @@ Auth0Widget.prototype.show = function (signinOptions) {
 
   // get configured strategies/connections
   this._auth0.getConnections(function (err, connections) {
+    var allowedConnections = [];
+
+    // use only specified connections
+    if (self._signinOptions.connections) {
+      for (var i in connections) {
+        if (self._signinOptions.connections.indexOf(connections[i].name) > -1) {
+          allowedConnections.push(connections[i]);
+        }
+      }
+    }
+    else {
+      allowedConnections = connections;
+    }
+
     self._client = {
-      strategies: self._getConfiguredStrategies(connections)
+      strategies: self._getConfiguredStrategies(allowedConnections)
     };
 
     // get SSO data
