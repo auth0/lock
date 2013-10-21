@@ -38,6 +38,7 @@
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-less": "~0.7.0",
     "browserify-ejs": "0.0.2",
     "insert-css": "0.0.0",
     "brfs": "0.0.8"

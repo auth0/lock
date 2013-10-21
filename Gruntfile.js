@@ -26,6 +26,16 @@ module.exports = function (grunt) {
         }
       }
     },
+    less: {
+      dist: {
+        options: {
+          paths: ["widget/css"]
+        },
+        files: {
+          "widget/css/main.css": "widget/css/main.less"
+        }
+      }
+    },
     copy: {
       example: {
         files: {
@@ -42,11 +52,11 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["build/", "example/auth0-widget.js", "example/img/", "example/font/"],
+      build: ["build/", "widget/css/main.css", "example/auth0-widget.js", "example/img/", "example/font/"],
     },
     watch: {
       another: {
-        files: ['node_modules', 'index.js', 'widget/index.js', 'widget/html/*.html', 'widget/css/*.css'],
+        files: ['node_modules', 'index.js', 'widget/index.js', 'widget/html/*.html', 'widget/css/*.less'],
         tasks: ['build']
       }
     }
@@ -57,6 +67,6 @@ module.exports = function (grunt) {
     if (key !== "grunt" && key.indexOf("grunt") === 0) grunt.loadNpmTasks(key);
   }
 
-  grunt.registerTask("build",   ["clean", "browserify:dist", "uglify:min", "copy:example"]);
+  grunt.registerTask("build",   ["clean", "less:dist", "browserify:dist", "uglify:min", "copy:example"]);
   grunt.registerTask("example", ["connect:example", "build", "watch"]);
 };
