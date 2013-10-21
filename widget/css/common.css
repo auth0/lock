@@ -1,8 +1,3 @@
-html, body {
-  padding: 0;
-  margin: 0;
-}
-
 .zocial.auth0:before {
   content: "?";
 }
