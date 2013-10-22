@@ -29,7 +29,8 @@ module.exports = function (grunt) {
     less: {
       dist: {
         options: {
-          paths: ["widget/css"]
+          paths: ["widget/css"],
+          yuicompress: true
         },
         files: {
           "widget/css/main.css": "widget/css/main.less"
