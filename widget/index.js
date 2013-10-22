@@ -94,6 +94,16 @@ Auth0Widget.prototype._setTitle = function(title) {
   $('.signin h1').html(title).css('display', '');
 };
 
+Auth0Widget.prototype._parseResponseMessage = function (responseText, defaultValue) {
+  try {
+    var msjObj = JSON.parse(responseText);
+    return this._signInOptions[msjObj.code] || msjObj.description || defaultValue;
+  }
+  catch (e) {
+    return defaultValue || responseText;
+  }
+};
+
 Auth0Widget.prototype._isAdLdapConn = function (connection) {
   return connection === 'adldap';
 };
@@ -356,7 +366,10 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   }
 
   this._auth0.login(loginOptions, function (err) {
-    if (err) alert(err);
+    if (err) {
+      self._showError(self._parseResponseMessage(err, self._signinOptions['wrongEmailPasswordErrorText']));
+    }
+
     self._toggleSpinner();
   });
 };
@@ -423,7 +436,7 @@ Auth0Widget.prototype._showSignIn = function () {
     this._client.strategies[0].name !== 'auth0' &&
     this._client.strategies[0].connections.length === 1) {
     
-    this._redirect(_client.strategies[0].connections[0].url);
+    this._redirect(this._client.strategies[0].connections[0].url);
   }
 
   // labels text
