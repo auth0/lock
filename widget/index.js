@@ -314,10 +314,10 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   }
 
   if (emailP) {
-    // _showError(global.tlite.find(self._signInOptions['strategyEmailEmpty']));
+    this._showError(this._signinOptions['strategyEmailEmpty']);
   } 
   else if (!emailM) {
-    // _showError(global.tlite.find(self._signInOptions['strategyEmailInvalid']));
+    this._showError(this._signinOptions['strategyEmailInvalid']);
   } 
   else if (!domain) {
     if (this._auth0Strategy) {
@@ -328,7 +328,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
       return this._signInSocial('google-oauth2');
     }
 
-    // _showError(global.tlite.find(self._signInOptions['strategyDomainInvalid'], { domain: emailM && emailM.slice(-2)[0] }));
+    this._showError(this._signinOptions['strategyDomainInvalid'], { domain: emailM && emailM.slice(-2)[0] });
   }
 
   valid &= (!domain && !emailD.addClass('invalid')) || (!!domain && !!emailD.removeClass('invalid'));
