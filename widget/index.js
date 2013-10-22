@@ -438,7 +438,7 @@ Auth0Widget.prototype._showSignIn = function () {
   options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
   options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
 
-  options['icon'] = options['icon'] || "img/logo-32.png";
+  options['icon'] = options['icon'] || "https://s3.amazonaws.com/assets.auth0.com/w2/img/logo-32.png";
   options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
   options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
   options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
