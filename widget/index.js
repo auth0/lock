@@ -241,8 +241,9 @@ Auth0Widget.prototype._setLoginView = function(options) {
     this._setTop(this._signinOptions.top, $('.signin div.panel.onestep'));
 
     try { 
-      $('.notloggedin .email input').first().focus(); 
-    } catch(e) {}  
+      if (options.isReturningUser) $('.loggedin .password input').first().focus();
+      else $('.notloggedin .email input').first().focus();
+    } catch(e) {}
     
     return;
   }
