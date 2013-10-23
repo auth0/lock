@@ -545,7 +545,11 @@ Auth0Widget.prototype._showSignIn = function () {
     this._client.strategies[0].name !== 'auth0' &&
     this._client.strategies[0].connections.length === 1) {
     
-    this._redirect(this._client.strategies[0].connections[0].url);
+    this._auth0.login({
+      connection: this._client.strategies[0].connections[0].name
+    });
+
+    return;
   }
 
   // labels text
