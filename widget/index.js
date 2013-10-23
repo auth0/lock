@@ -4,8 +4,9 @@ var bonzo     = require('bonzo');
 var bean      = require('bean');
 var xtend     = require('xtend');
 
-var loginTmpl = require('./html/login.html');
+var mainTmpl = require('./html/main.html');
 
+var prefix = 'auth0-widget';
 var $ = function (selector, root) {
   return bonzo(qwery(selector, root));
 };
@@ -193,7 +194,7 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 Auth0Widget.prototype._hideSignIn = function (cb) {
   $('div.overlay').removeClass('active');
   setTimeout(function () {
-    $('html').removeClass('mode-signin');
+    $('#auth0-widget').removeClass('mode-signin');
     if (cb) cb();
   }, 500);
 };
@@ -221,13 +222,16 @@ Auth0Widget.prototype._showResetExperience = function() {
 };
 
 Auth0Widget.prototype._setLoginView = function(options) {
+  options = options || {};
+
   $('.loggedin').css('display', 'none');
   $('.notloggedin').css('display', 'none');
   $('.signup').css('display', 'none');
   $('.reset').css('display', 'none');
+  $('.signin input[type=password]').val('');
 
   if (!options.mode) {
-    this._hasLoggedInBefore = options.isReturningUser;
+    this._hasLoggedInBefore = !!options.isReturningUser;
     this._setTitle(this._signinOptions['title']);
 
     $('.loggedin').css('display', options.isReturningUser ? '' : 'none');
@@ -260,6 +264,8 @@ Auth0Widget.prototype._setLoginView = function(options) {
     container.css('display', '');
 
     try { 
+      var email = $('.notloggedin .email input').val();
+      $('.email input', container).val(email);
       $('.email input', container).first().focus();
     } catch(e) {}
   }
@@ -295,7 +301,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   $('.all', loginView).html(this._signinOptions['allButtonTemplate']);
 
   bean.on($('.all', loginView)[0], 'click', function () {
-    self._setLoginView({ isReturningUser: false });
+    self._setLoginView();
   });
 
   if (this._ssoData.lastUsedUsername) {
@@ -434,12 +440,42 @@ Auth0Widget.prototype._signUpWithAuth0 = function (e) {
 };
 
 Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
-  var container = $('.popup .panel.onestep .reset');
-
   e.preventDefault();
   e.stopPropagation();
 
-  alert('TODO');
+  var self = this;
+  var container = $('.popup .panel.onestep .reset');
+  var email = $('.email input', container).val();
+  var password = $('.password input', container).val();
+  var connection  = this._getAuth0Connection();
+
+  this._toggleSpinner(container);
+
+  this._auth0.changePassword({
+    connection: connection.name,
+    username:   email,
+    password:   password
+  }, 
+  function (err) {
+    self._toggleSpinner(container);
+
+    $('.password input', container).val('');
+    $('.repeatPassword input', container).val('');
+
+    if (err) {
+      self._showError(self._parseResponseMessage(err, self._signinOptions['resetServerErrorText']));
+      return;
+    }
+
+    $('.email input', container).val('');
+
+    try { 
+      $('.email input', container).first().focus(); 
+    } catch(e) {}  
+
+    self._setLoginView();
+    self._showSuccess(self._signinOptions['resetSuccessText']);
+  });
 };
 
 // initialize
@@ -452,7 +488,7 @@ Auth0Widget.prototype._initialize = function () {
   bean.on($('.popup .panel.onestep .signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
   bean.on($('.popup .panel.onestep .reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
   bean.on($('html')[0], 'keyup', function (e) {
-    if ($('html').hasClass('mode-signin')) {
+    if ($('#auth0-widget').hasClass('mode-signin')) {
       if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
         self._hideSignIn(); // close popup with ESC key
       }
@@ -499,7 +535,7 @@ Auth0Widget.prototype._initialize = function () {
 
 Auth0Widget.prototype._showSignIn = function () {
   var self = this;
-  $('html').addClass('mode-signin');
+  $('#auth0-widget').addClass('mode-signin');
 
   // if no social connections and one enterprise connection only, redirect
   if (!this._areThereAnySocialConn() && 
@@ -610,7 +646,9 @@ Auth0Widget.prototype._showSignIn = function () {
       .attr('target', '_parent');
   } 
   else {
-    bean.on($('.panel .create-account .forgot-pass')[0], 'click', function (e) { self._showResetExperience(e); });
+    $('.panel .create-account .forgot-pass').each(function (elem) {
+      bean.on(elem, 'click', function (e) { self._showResetExperience(e); });
+    });
   }
 
   // hide divider dot if there are one of two
@@ -644,7 +682,7 @@ Auth0Widget.prototype._showSignIn = function () {
   $('.panel .signup .password input').attr('placeholder', options.signupPasswordPlaceholder);
 
   $('.panel .signup .options .cancel').html(options['signupCancelButtonText']);
-  bean.on($('.panel .signup .options .cancel')[0], 'click', function () { self._setLoginView({ isReturningUser: false }); });
+  bean.on($('.panel .signup .options .cancel')[0], 'click', function () { self._setLoginView(); });
 
   $('.panel .signup .header')
     .html(options.signupHeaderText)
@@ -671,7 +709,7 @@ Auth0Widget.prototype._showSignIn = function () {
   });
 
   $('.panel .reset .options .cancel').html(options.resetCancelButtonText);
-  bean.on($('.panel .reset .options .cancel')[0], 'click', function () { self._setLoginView({ isReturningUser: false }); });
+  bean.on($('.panel .reset .options .cancel')[0], 'click', function () { self._setLoginView(); });
 
   $('.panel .reset .header')
     .html(options.resetHeaderText)
@@ -794,7 +832,7 @@ Auth0Widget.prototype.show = function (signinOptions) {
       
       // widget container
       var div = document.createElement('div');
-      div.innerHTML = loginTmpl({});
+      div.innerHTML = mainTmpl();
       document.body.appendChild(div);
       
       self._initialize();
