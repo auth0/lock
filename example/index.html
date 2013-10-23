@@ -3,6 +3,8 @@
     <title>Test auth0-widget</title>
 </head>
 <body>
+	<button id="login-button">Login</button>
+
 	<script src="auth0-widget.js"></script>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script>
@@ -14,11 +16,17 @@
 			    callbackURL: 'http://localhost:3000/'
 			});
 
-			widget.show({ 
+			var widgetOption = { 
 				resources: { "title": "Sign In with Auth0" },
 				connections: ['github', 'google-oauth2', 'mdocs.io', 'qraftlabs.com', 'invalid-conn'] 
-			});
-		});
+			};
+
+			widget.show(widgetOption);
+
+			$('#login-button').on('click', function () {
+				widget.show(widgetOption);
+            });
+        });
 	</script>
 </body>
 </html>

@@ -743,7 +743,8 @@ Auth0Widget.prototype._showSignIn = function () {
   }
 
   $('div.panel.onestep h1').html(options['title']);
-  $('div.panel.onestep').addClass('active');
+
+  // TODO: support _signinOptions.container
 
   if (this._ssoData.sso && this._ssoData.lastUsedUsername) {
     $('div.panel.onestep input').val(this._ssoData.lastUsedUsername);
