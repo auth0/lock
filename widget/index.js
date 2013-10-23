@@ -762,6 +762,7 @@ Auth0Widget.prototype._showSignIn = function () {
 
   if (this._ssoData.sso && this._ssoData.lastUsedUsername) {
     $('div.panel.onestep input').val(this._ssoData.lastUsedUsername);
+    this._showOrHidePassword();
   }
 
   this._setTop(options.top, $('div.panel.onestep'));
