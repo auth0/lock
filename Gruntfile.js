@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         files: {
-          'build/auth0-widget.js': ['index.js', 'widget/js/placeholders.min.js']
+          'build/auth0-widget.js': ['widget/js/arrays.js', 'widget/js/placeholders.js', 'index.js']
         },
         options: {
           transform: ['browserify-ejs', 'brfs'],

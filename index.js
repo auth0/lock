@@ -1,6 +1,5 @@
 var fs          = require('fs');
-var insertCss   = require('insert-css');
-
+var insertCss   = require('./vendor/insert-css');
 var Auth0Widget = require('./widget');
 
 insertCss(fs.readFileSync(__dirname + '/widget/css/main.css'));

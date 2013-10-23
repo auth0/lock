@@ -674,7 +674,7 @@ Auth0Widget.prototype._showSignIn = function () {
 
   $('.panel .signup .email input').each(function (i) { 
       i.setAttribute('placeholder', options.signupEmailPlaceholder);
-      i.addEventListener('input', function() {
+      bean.on(i, 'input', function() {
         var output = {};
         if (self._isEnterpriseConnection(this.value, output)) {
           var warningText = options.signupEnterpriseEmailWarningText.replace(/{domain}/g, output.domain);
@@ -705,7 +705,7 @@ Auth0Widget.prototype._showSignIn = function () {
 
   $('.panel .reset .repeatPassword input').each(function (i) { 
       i.setAttribute('placeholder', options.resetRepeatPasswordPlaceholder);
-      i.addEventListener('input', function() {
+      bean.on(i, 'input', function() {
         if ($('.panel .reset .password input').val() != this.value) {
           this.setCustomValidity(options.resetEnterSamePasswordText);
         } else {
