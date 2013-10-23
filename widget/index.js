@@ -732,8 +732,6 @@ Auth0Widget.prototype._showSignIn = function () {
   $('.panel .separator').css('display', options.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
   $('.panel .last-time').html(options.returnUserLabel);
 
-  // TODO: show placeholders for IE9
-
   // activate panel
   $('div.panel').removeClass('active');
   $('div.overlay').addClass('active');
