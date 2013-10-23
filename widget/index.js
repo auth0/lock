@@ -546,15 +546,11 @@ Auth0Widget.prototype._showSignIn = function () {
   }
 
   // labels text
-  // TODO: take text from '/strings/{language}.json'
-  var options = this._signinOptions || {};
+  var options = xtend(this._signinOptions, this._signinOptions.resources);
   options['onestep'] = typeof options['onestep'] !== 'undefined' ? options['onestep'] : false;
   options['top'] = options['top'] || false;
   options['title'] = options['title'] || 'Sign In';
-  options['strategyButtonTemplate'] = options['strategyButtonTemplate'] || "{name}";
   options['allButtonTemplate'] = options['allButtonTemplate'] || "Show all";
-  options['strategyBack'] = options['strategyBack'] || "Back";
-  options['strategyEmailLabel'] = options['strategyEmailLabel'] || "Email:";
   options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
   options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
 
@@ -564,7 +560,6 @@ Auth0Widget.prototype._showSignIn = function () {
   options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
   options['signupText'] = options['signupText'] || 'Sign Up';
   options['forgotText'] = options['forgotText'] || 'Forgot your password?';
-  options['useAppSignInCallback'] = typeof options['useAppSignInCallback'] !== 'undefined' ? options['useAppSignInCallback'] : false;
   options['signInButtonText'] = options['signInButtonText'] || 'Sign In';
   options['emailPlaceholder'] = options['emailPlaceholder'] || 'Email';
   options['passwordPlaceholder'] = options['passwordPlaceholder'] || 'Password';

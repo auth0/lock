@@ -14,7 +14,10 @@
 			    callbackURL: 'http://localhost:3000/'
 			});
 
-			widget.show({ connections: ['github', 'google-oauth2', 'mdocs.io', 'qraftlabs.com', 'invalid-conn'] });
+			widget.show({ 
+				resources: { "title": "Sign In with Auth0" },
+				connections: ['github', 'google-oauth2', 'mdocs.io', 'qraftlabs.com', 'invalid-conn'] 
+			});
 		});
 	</script>
 </body>
