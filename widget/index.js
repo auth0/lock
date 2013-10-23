@@ -73,12 +73,14 @@ Auth0Widget.prototype._setTop = function (onTop, element) {
 };
 
 Auth0Widget.prototype._showError = function (error) {
+  if (!error) return;
   $('.signin h1').css('display', 'none');
   $('.signin .success').css('display', 'none');
   $('.signin .error').html(error).css('display', '');
 };
 
 Auth0Widget.prototype._showSuccess = function (message) {
+  if (!message) return;
   $('.signin h1').css('display', 'none');
   $('.signin .error').css('display', 'none');
   $('.signin .success').html(message).css('display', '');
@@ -313,8 +315,8 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
       $('.emailPassword', loginView).css('display', '');
     } 
     else if (this._isEnterpriseStrategy(strategy)) {
-      button.html(_ssoData.lastUsedUsername || this._strategies[strategy].name)
-            .attr('title', _ssoData.lastUsedUsername || this._strategies[strategy].name);
+      button.html(this._ssoData.lastUsedUsername || this._strategies[strategy].name)
+            .attr('title', this._ssoData.lastUsedUsername || this._strategies[strategy].name);
     }
   }
 };
@@ -343,7 +345,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
       emailE = $('input[name=email]', form),
       emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.exec(emailE.val().toLowerCase()),
       emailP = /^\s*$/.test(emailE.val()),
-      domain, url, email = null, strategy;
+      domain, connection, email = null, strategy;
 
   for (var s in this._client.strategies) {
     strategy = this._client.strategies[s];
@@ -353,7 +355,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
     for (var c in strategy.connections) {
       if(!emailP && emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
         domain = strategy.connections[c].domain;
-        url = strategy.connections[c].url;
+        connection = strategy.connections[c].name;
         email = emailE.val();
         break;
       }
@@ -377,13 +379,17 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
       return this._signInSocial('google-oauth2');
     }
 
-    this._showError(this._signinOptions['strategyDomainInvalid'], { domain: emailM && emailM.slice(-2)[0] });
+    this._showError(
+      this._signinOptions['strategyDomainInvalid']
+          .replace('{domain}', emailM ? emailM.slice(-2)[0] : ''));
   }
 
   valid &= (!domain && !emailD.addClass('invalid')) || (!!domain && !!emailD.removeClass('invalid'));
 
   if (valid) {
-    this._redirect(url);
+    this._auth0.login({
+      connection: connection
+    });
   }
 };
 
@@ -560,6 +566,7 @@ Auth0Widget.prototype._showSignIn = function () {
   options['allButtonTemplate'] = options['allButtonTemplate'] || "Show all";
   options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
   options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
+  options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
 
   options['icon'] = options['icon'] || "https://s3.amazonaws.com/assets.auth0.com/w2/img/logo-32.png";
   options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
