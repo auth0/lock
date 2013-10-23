@@ -6,9 +6,8 @@ var xtend     = require('xtend');
 
 var mainTmpl = require('./html/main.html');
 
-var prefix = 'auth0-widget';
 var $ = function (selector, root) {
-  return bonzo(qwery(selector, root));
+  return bonzo(qwery('#auth0-widget ' + (selector || ''), root));
 };
 
 function Auth0Widget (options) {
@@ -194,7 +193,7 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 Auth0Widget.prototype._hideSignIn = function (cb) {
   $('div.overlay').removeClass('active');
   setTimeout(function () {
-    $('#auth0-widget').removeClass('mode-signin');
+    $().removeClass('mode-signin');
     if (cb) cb();
   }, 500);
 };
@@ -487,8 +486,8 @@ Auth0Widget.prototype._initialize = function () {
   bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
   bean.on($('.popup .panel.onestep .signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
   bean.on($('.popup .panel.onestep .reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
-  bean.on($('html')[0], 'keyup', function (e) {
-    if ($('#auth0-widget').hasClass('mode-signin')) {
+  bean.on(qwery('html')[0], 'keyup', function (e) {
+    if ($().hasClass('mode-signin')) {
       if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
         self._hideSignIn(); // close popup with ESC key
       }
@@ -535,7 +534,7 @@ Auth0Widget.prototype._initialize = function () {
 
 Auth0Widget.prototype._showSignIn = function () {
   var self = this;
-  $('#auth0-widget').addClass('mode-signin');
+  $().addClass('mode-signin');
 
   // if no social connections and one enterprise connection only, redirect
   if (!this._areThereAnySocialConn() && 
@@ -605,7 +604,7 @@ Auth0Widget.prototype._showSignIn = function () {
 
   // theme
   if (options.theme) {
-    $('html').addClass('theme-' + options.theme);
+    $().addClass('theme-' + options.theme);
   }
 
   $('.panel a.close').css('display', options.standalone ? 'none' : 'block');
