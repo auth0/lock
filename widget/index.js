@@ -184,6 +184,7 @@ Auth0Widget.prototype._showOrHidePassword = function () {
     pwdField.removeAttr('required');
   } else {
     pwdField.removeAttr('disabled');
+    pwdField.attr('placeholder', this._signinOptions['passwordPlaceholder']);
     pwdField.attr('required', true);
   }
 };
