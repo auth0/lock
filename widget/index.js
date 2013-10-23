@@ -192,8 +192,10 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 
 Auth0Widget.prototype._hideSignIn = function (cb) {
   $('div.overlay').removeClass('active');
+
   setTimeout(function () {
     $().removeClass('mode-signin');
+    $().css('display', 'none');
     if (cb) cb();
   }, 500);
 };
@@ -482,7 +484,7 @@ Auth0Widget.prototype._initialize = function () {
   // TODO: support css option for non free subscriptions
 
   var self = this;
-  bean.on($('.popup .panel.onestep a.close')[0], 'click', this._hideSignIn);
+  bean.on($('.popup .panel.onestep a.close')[0], 'click', function () { self._hideSignIn(); });
   bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
   bean.on($('.popup .panel.onestep .signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
   bean.on($('.popup .panel.onestep .reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
@@ -825,6 +827,9 @@ Auth0Widget.prototype.show = function (signinOptions) {
     self._auth0.getSSOData(function (err, ssoData) {
       self._ssoData = ssoData;
       
+      // remove widget container (if exist)
+      $().parent().remove();
+
       // widget container
       var div = document.createElement('div');
       div.innerHTML = mainTmpl();
