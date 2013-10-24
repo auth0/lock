@@ -1,0 +1,8 @@
+{
+  "name": "mocha",
+  "version": "1.7.4",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/visionmedia/mocha.git"
+  }
+}

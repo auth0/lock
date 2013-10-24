@@ -12,6 +12,9 @@
     "browser"
   ],
   "scripts": {
+    "dev": "grunt dev",
+    "test": "(cd test ; testem ci)",
+    "test-phantom": "./test-phantom",
     "example": "echo \"open http://localhost:3000\" && grunt example",
     "example_https": "echo \"open https://localhost:3000\" && grunt example_https"
   },
@@ -42,6 +45,10 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.7.0",
     "browserify-ejs": "0.0.2",
-    "brfs": "0.0.8"
+    "brfs": "0.0.8",
+    "mocha-phantomjs": "~3.1.4",
+    "browserstack-cli": "~0.2.14",
+    "rimraf": "~2.2.2",
+    "testem": "~0.5.4"
   }
 }

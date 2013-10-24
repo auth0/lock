@@ -3,6 +3,13 @@ var fs = require('fs');
 module.exports = function (grunt) {
   grunt.initConfig({
     connect: {
+      test: {
+        options: {
+          base: "test",
+          hostname: '0.0.0.0',
+          port: 9999
+        }
+      },
       example: {
         options: {
           base: 'example',
@@ -52,7 +59,8 @@ module.exports = function (grunt) {
     copy: {
       example: {
         files: {
-          'example/auth0-widget.js': 'build/auth0-widget.js'
+          'example/auth0-widget.js':  'build/auth0-widget.js',
+          'test/auth0-widget.js':     'build/auth0-widget.js'
         }
       }
     },
@@ -75,4 +83,5 @@ module.exports = function (grunt) {
   grunt.registerTask("build",         ["clean", "less:dist", "browserify:dist", "uglify:min", "copy:example"]);
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
+  grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
 };
