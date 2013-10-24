@@ -24,6 +24,10 @@ describe('Auth0-Widget', function () {
         { name: 'dbTest', strategy: 'auth0', status: true, domain: '', showSignup: true, showForgot: true }
       ]);
     };
+
+    client.getSSOData = function (callback) {
+      callback(null, { sso: false });
+    };
   });
 
   afterEach(function () {
@@ -33,10 +37,6 @@ describe('Auth0-Widget', function () {
 
   describe('Sign In', function () {
     it('should show only notloggedin view if SSO data is not present', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
       widget.show(function () {
         expect($('#auth0-widget .notloggedin').css('display')).to.equal('block');
         expect($('#auth0-widget .loggedin').css('display')).to.equal('none');
@@ -66,12 +66,9 @@ describe('Auth0-Widget', function () {
     });
 
     it('should signin with social connection', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
-      client._redirect = function (the_url) {
-        expect(the_url.split('?')[0]).to.contain('https://' + domain + '/authorize');
+      client.login = function (options) {
+        expect(options.connection).to.equal('google-oauth2');
+        expect(options.username).to.not.exist;
         done();
       };
 
@@ -81,10 +78,6 @@ describe('Auth0-Widget', function () {
     });
 
     it('should signin with database connection', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
       client.login = function (options) {
         expect(options.connection).to.equal('dbTest');
         expect(options.username).to.equal('john@fabrikam.com');
@@ -100,20 +93,9 @@ describe('Auth0-Widget', function () {
     });
 
     it('should signin with enterprise connection', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
-      client._redirect = function (the_url) {
-        expect(the_url.split('?')[0]).to.contain('https://' + domain + '/authorize');
-
-        var parsed = {};
-        the_url.split('?')[1].replace(
-          new RegExp("([^?=&]+)(=([^&]*))?", "g"),
-          function($0, $1, $2, $3) { parsed[$1] = decodeURIComponent($3); }
-        );
-
-        expect(parsed.connection).to.equal('contoso');
+      client.login = function (options) {
+        expect(options.connection).to.equal('contoso');
+        expect(options.username).to.not.exist;
         done();
       };
 
@@ -124,12 +106,8 @@ describe('Auth0-Widget', function () {
     });
   });
 
-  describe('Sign Up with auth0 connection', function () {
+  describe('Sign Up with database connection', function () {
     it('should show only signup view when user clicks on signup button', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
       widget.show(function () {
         $('#auth0-widget .notloggedin .emailPassword .action a.sign-up')[0].click();
         expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
@@ -141,10 +119,6 @@ describe('Auth0-Widget', function () {
     });
 
     it('should call auth0.signup', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
       client.signup = function (options) {
         expect(options.connection).to.equal('dbTest');
         expect(options.username).to.equal('john@fabrikam.com');
@@ -161,12 +135,8 @@ describe('Auth0-Widget', function () {
     });
   });
 
-  describe('Change Password with auth0 connection', function () {
+  describe('Change Password with database connection', function () {
     it('should show reset view when user clicks on change password button', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
       widget.show(function () {
         $('#auth0-widget .notloggedin .emailPassword .action a.forgot-pass')[0].click();
         expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
@@ -178,10 +148,6 @@ describe('Auth0-Widget', function () {
     });
 
     it('should call auth0.changePassword', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { sso: false });
-      };
-
       client.changePassword = function (options) {
         expect(options.connection).to.equal('dbTest');
         expect(options.username).to.equal('john@fabrikam.com');
