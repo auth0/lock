@@ -7,7 +7,7 @@
  * the package.json file points to index.js.
  */
 var Auth0Widget = require('./widget');
-var insertCss   = require('./vendor/insert-css');
+var insertCss   = require('./lib/insert-css');
 var fs          = require('fs');
 
 insertCss(fs.readFileSync(__dirname + '/widget/css/main.css'));
