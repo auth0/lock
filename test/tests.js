@@ -125,11 +125,78 @@ describe('Auth0-Widget', function () {
   });
 
   describe('Sign Up with auth0 connection', function () {
-    // TODO
+    it('should show only signup view when user clicks on signup button', function (done) {
+      client.getSSOData = function (callback) {
+        callback(null, { sso: false });
+      };
+
+      widget.show(function () {
+        $('#auth0-widget .notloggedin .emailPassword .action a.sign-up')[0].click();
+        expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
+        expect($('#auth0-widget .loggedin').css('display')).to.equal('none');
+        expect($('#auth0-widget .signup').css('display')).to.equal('block');
+        expect($('#auth0-widget .reset').css('display')).to.equal('none');
+        done();
+      });
+    });
+
+    it('should call auth0.signup', function (done) {
+      client.getSSOData = function (callback) {
+        callback(null, { sso: false });
+      };
+
+      client.signup = function (options) {
+        expect(options.connection).to.equal('dbTest');
+        expect(options.username).to.equal('john@fabrikam.com');
+        expect(options.password).to.equal('xyz');
+        done();
+      };
+
+      widget.show(function () {
+        $('#auth0-widget .notloggedin .emailPassword .action a.sign-up')[0].click();
+        $('#auth0-widget .signup .emailPassword .email input').val('john@fabrikam.com');
+        $('#auth0-widget .signup .emailPassword .password input').val('xyz');
+        $('#auth0-widget .signup .emailPassword .action button.primary').trigger('click');
+      });
+    });
   });
 
   describe('Change Password with auth0 connection', function () {
-    // TODO
+    it('should show reset view when user clicks on change password button', function (done) {
+      client.getSSOData = function (callback) {
+        callback(null, { sso: false });
+      };
+
+      widget.show(function () {
+        $('#auth0-widget .notloggedin .emailPassword .action a.forgot-pass')[0].click();
+        expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
+        expect($('#auth0-widget .loggedin').css('display')).to.equal('none');
+        expect($('#auth0-widget .signup').css('display')).to.equal('none');
+        expect($('#auth0-widget .reset').css('display')).to.equal('block');
+        done();
+      });
+    });
+
+    it('should call auth0.changePassword', function (done) {
+      client.getSSOData = function (callback) {
+        callback(null, { sso: false });
+      };
+
+      client.changePassword = function (options) {
+        expect(options.connection).to.equal('dbTest');
+        expect(options.username).to.equal('john@fabrikam.com');
+        expect(options.password).to.equal('xyz');
+        done();
+      };
+
+      widget.show(function () {
+        $('#auth0-widget .notloggedin .emailPassword .action a.forgot-pass')[0].click();
+        $('#auth0-widget .reset .emailPassword .email input').val('john@fabrikam.com');
+        $('#auth0-widget .reset .emailPassword .password input').val('xyz');
+        $('#auth0-widget .reset .emailPassword .repeatPassword input').val('xyz');
+        $('#auth0-widget .reset .emailPassword .action button.primary').trigger('click');
+      });
+    });
   });
 
 });
