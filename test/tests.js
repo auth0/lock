@@ -6,13 +6,6 @@ describe('Auth0-Widget', function () {
 
   describe('Sign In', function () {
     it('should work', function (done) {
-      var widget = new Auth0Widget({
-        domain:      'mdocs.auth0.com',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
-        callbackURL: 'http://localhost:3000/'
-      });
-
-      widget.show();
       done();
     });
   });
