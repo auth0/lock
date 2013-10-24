@@ -45,6 +45,14 @@ widget.show({
 });
 ~~~
 
+## Develop
+
+Run `npm run dev` and point your browser to `http://localhost:9999/` to run the test suite.
+
+## Browser Compatibility
+
+We are using [BrowserStack](http://browserstack.com) and [Travis-CI](http://travis-ci.org) to run the test suite on multiple browsers on every push.
+
 ## License 
 
 The MIT License (MIT)
