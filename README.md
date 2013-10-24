@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/auth0/auth0.js.png)](https://travis-ci.org/auth0/auth0-widget.js)
+
 [![Auth0](http://blog.auth0.com.s3.amazonaws.com/logo-290x200-letters.png)](http://auth0.com)
 
 [Auth0](http://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
