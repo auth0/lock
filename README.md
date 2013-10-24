@@ -1,4 +1,49 @@
-[TODO: add description]
+[![Auth0](http://blog.auth0.com.s3.amazonaws.com/logo-290x200-letters.png)](http://auth0.com)
+
+[Auth0](http://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
+
+The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
+* Having a professional looking login dialog that displays well on any resolution and device.
+* Finding the right icons for popular social providers.
+* Remembering what was the identity provider the user chose the last time.
+* Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
+* Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
+
+## Example
+
+The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed, then execute `npm run example` from the root of this project.
+
+## Usage
+
+Take `auth0-widget.js` or `auth0-widget.min.js` from the `build` directory and import it to your page.
+
+### Initialize:
+
+Construct a new instance of the Auth0 Widget as follows:
+
+~~~html
+<script src="auth0-widget.min.js"></script>
+<script type="text/javascript">
+  var widget = new Auth0Widget({
+    domain:       'mine.auth0.com',
+    clientID:     'dsa7d77dsa7d7', 
+    callbackURL:  'http://my-app.com/callback'
+  });
+  
+  // ...
+</script>
+~~~
+
+### Show Widget:
+
+Trigger the login widget as follows:
+
+~~~html
+widget.show({
+  resources: { title: "Sign In with Auth0" },               // OPTIONAL: specify custom text for labels
+  connections: ['contoso.com', 'facebook', 'google-oauth2'] // OPTIONAL: specify connections
+});
+~~~
 
 ## License 
 
