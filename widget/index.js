@@ -800,14 +800,14 @@ Auth0Widget.prototype.getClient = function () {
   return this._auth0;
 };
 
-Auth0Widget.prototype.show = function (signinOptions) {
+Auth0Widget.prototype.show = function (signinOptions, callback) {
+  if (typeof signinOptions === 'function') {
+    callback = signinOptions;
+    signinOptions = {};
+  }
+
   var self = this;
   this._signinOptions = xtend(this._options, signinOptions);
-  this._auth0 = new Auth0({
-    clientID:     this._signinOptions.clientID, 
-    callbackURL:  this._signinOptions.callbackURL,
-    domain:       this._signinOptions.domain
-  });
 
   // TODO: set auth0 connection parameters
   this._auth0ConnectionParams = null;
@@ -845,6 +845,8 @@ Auth0Widget.prototype.show = function (signinOptions) {
       document.body.appendChild(div);
       
       self._initialize();
+
+      if (callback && typeof callback === 'function') callback();
     });
   });
 };
