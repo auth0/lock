@@ -20,6 +20,7 @@ describe('Auth0-Widget', function () {
     client.getConnections = function (callback) {
       callback(null, [
         { name: 'google-oauth2', strategy: 'google-oauth2', status: true },
+        { name: 'facebook', strategy: 'facebook', status: true },
         { name: 'contoso', strategy: 'adfs', status: true, domain: 'contoso.com' },
         { name: 'adldap', strategy: 'auth0-adldap', status: true, domain: 'litware.com' },
         { name: 'dbTest', strategy: 'auth0', status: true, domain: '', showSignup: true, showForgot: true }
