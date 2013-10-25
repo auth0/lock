@@ -759,8 +759,6 @@ Auth0Widget.prototype._showSignIn = function () {
 
   $('div.panel.onestep h1').html(options['title']);
 
-  // TODO: support _signinOptions.container
-
   if (this._ssoData.sso && this._ssoData.lastUsedUsername) {
     $('div.panel.onestep input').val(this._ssoData.lastUsedUsername);
     this._showOrHidePassword();
@@ -846,9 +844,17 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
       $().parent().remove();
 
       // widget container
-      var div = document.createElement('div');
-      div.innerHTML = mainTmpl();
-      document.body.appendChild(div);
+      if (self._signinOptions.container) {
+        var specifiedContainer = document.getElementById(self._signinOptions.container);
+        specifiedContainer.innerHTML = mainTmpl();
+      }
+      else {
+        var div = document.createElement('div');
+        div.innerHTML = mainTmpl();
+        document.body.appendChild(div);
+      }
+
+      // TODO: support _signinOptions.container
       
       self._initialize();
 
