@@ -35,36 +35,47 @@ describe('Auth0-Widget', function () {
     removeWidget();
   });
 
+  it('should hide widget when user close it', function (done) {
+    widget.show(function () {
+      $('#auth0-widget header a.close')[0].click();
+
+      setTimeout(function () {
+        expect($('#auth0-widget').css('display')).to.equal('none');
+        done();
+      }, 700);
+    });
+  });
+
+  it('should show only notloggedin view if SSO data is not present', function (done) {
+    widget.show(function () {
+      expect($('#auth0-widget .notloggedin').css('display')).to.equal('block');
+      expect($('#auth0-widget .loggedin').css('display')).to.equal('none');
+      expect($('#auth0-widget .signup').css('display')).to.equal('none');
+      expect($('#auth0-widget .reset').css('display')).to.equal('none');
+      done();
+    });
+  });
+
+  it('should show only loggedin view with SSO data if it is present', function (done) {
+    client.getSSOData = function (callback) {
+      callback(null, { 
+        sso: true, 
+        lastUsedUsername: 'john@fabrikam.com', 
+        lastUsedConnection: { strategy: 'auth0', connection: 'dbTest' }
+      });
+    };
+
+    widget.show(function () {
+      expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
+      expect($('#auth0-widget .loggedin').css('display')).to.equal('block');
+      expect($('#auth0-widget .signup').css('display')).to.equal('none');
+      expect($('#auth0-widget .reset').css('display')).to.equal('none');
+      expect($('#auth0-widget .loggedin .email input').val()).to.equal('john@fabrikam.com');
+      done();
+    });
+  });
+
   describe('Sign In', function () {
-    it('should show only notloggedin view if SSO data is not present', function (done) {
-      widget.show(function () {
-        expect($('#auth0-widget .notloggedin').css('display')).to.equal('block');
-        expect($('#auth0-widget .loggedin').css('display')).to.equal('none');
-        expect($('#auth0-widget .signup').css('display')).to.equal('none');
-        expect($('#auth0-widget .reset').css('display')).to.equal('none');
-        done();
-      });
-    });
-
-    it('should show only loggedin view with SSO data if it is present', function (done) {
-      client.getSSOData = function (callback) {
-        callback(null, { 
-          sso: true, 
-          lastUsedUsername: 'john@fabrikam.com', 
-          lastUsedConnection: { strategy: 'auth0', connection: 'dbTest' }
-        });
-      };
-
-      widget.show(function () {
-        expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
-        expect($('#auth0-widget .loggedin').css('display')).to.equal('block');
-        expect($('#auth0-widget .signup').css('display')).to.equal('none');
-        expect($('#auth0-widget .reset').css('display')).to.equal('none');
-        expect($('#auth0-widget .loggedin .email input').val()).to.equal('john@fabrikam.com');
-        done();
-      });
-    });
-
     it('should signin with social connection', function (done) {
       client.login = function (options) {
         expect(options.connection).to.equal('google-oauth2');
