@@ -21,6 +21,7 @@ describe('Auth0-Widget', function () {
       callback(null, [
         { name: 'google-oauth2', strategy: 'google-oauth2', status: true },
         { name: 'contoso', strategy: 'adfs', status: true, domain: 'contoso.com' },
+        { name: 'adldap', strategy: 'auth0-adldap', status: true, domain: 'litware.com' },
         { name: 'dbTest', strategy: 'auth0', status: true, domain: '', showSignup: true, showForgot: true }
       ]);
     };
@@ -88,7 +89,7 @@ describe('Auth0-Widget', function () {
       });
     });
 
-    it('should signin with database connection', function (done) {
+    it('should signin with database connection (auth0 strategy)', function (done) {
       client.login = function (options) {
         expect(options.connection).to.equal('dbTest');
         expect(options.username).to.equal('john@fabrikam.com');
@@ -99,6 +100,29 @@ describe('Auth0-Widget', function () {
       widget.show(function () {
         $('#auth0-widget .notloggedin .emailPassword .email input').val('john@fabrikam.com');
         $('#auth0-widget .notloggedin .emailPassword .password input').val('xyz');
+        $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
+      });
+    });
+
+    it('should signin with adldap connection (auth0-adldap strategy)', function (done) {
+      client.getConnections = function (callback) {
+        callback(null, [
+          { name: 'google-oauth2', strategy: 'google-oauth2', status: true },
+          { name: 'contoso', strategy: 'adfs', status: true, domain: 'contoso.com' },
+          { name: 'adldap', strategy: 'auth0-adldap', status: true, domain: 'litware.com' }
+        ]);
+      };
+
+      client.login = function (options) {
+        expect(options.connection).to.equal('adldap');
+        expect(options.username).to.equal('peter');
+        expect(options.password).to.equal('zzz');
+        done();
+      };
+
+      widget.show(function () {
+        $('#auth0-widget .notloggedin .emailPassword .email input').val('peter@litware.com');
+        $('#auth0-widget .notloggedin .emailPassword .password input').val('zzz');
         $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
       });
     });

@@ -397,7 +397,6 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   var container = this._getActiveLoginView();
   var connection  = this._getAuth0Connection();
   
-  // TODO: support auth0-adldap
   var loginOptions = {
     connection: connection.name,
     username: this._isAdLdapConn(connection.name) ? userName.replace('@' + connection.domain, '') : userName,
