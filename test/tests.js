@@ -104,6 +104,22 @@ describe('Auth0-Widget', function () {
         $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
       });
     });
+
+    it('should signin automatically if no social connections and only one enterprise connection', function (done) {
+      client.login = function (options) {
+        expect(options.connection).to.equal('contoso');
+        expect(options.username).to.not.exist;
+        done();
+      };
+
+      client.getConnections = function (callback) {
+        callback(null, [
+          { name: 'contoso', strategy: 'adfs', status: true, domain: 'contoso.com' }
+        ]);
+      };
+
+      widget.show();
+    });
   });
 
   describe('Sign Up with database connection', function () {
