@@ -162,14 +162,20 @@ Auth0Widget.prototype._getConfiguredStrategy = function (name) {
 Auth0Widget.prototype._getAuth0Connection = function() {
   // if specified, use it, otherwise return first
   if (this._signinOptions['userPwdConnectionName']) {
-    for (var i in this._auth0Strategy.connections) {
-      if (this._auth0Strategy.connections[i].name === this._signinOptions['userPwdConnectionName']) {
-        return this._auth0Strategy.connections[i];
+    for (var i in this._auth0Strategies) {
+      for (var j in this._auth0Strategies[i].connections) {
+        if (this._auth0Strategies[j].connections[j].name === this._signinOptions['userPwdConnectionName']) {
+          return this._auth0Strategies[i].connections[j];
+        }
       }
     }
   }
 
-  return this._auth0Strategy ? this._auth0Strategy.connections[0] : null;
+  // By default, if exists, return auth0 connection (db-conn)
+  var defaultStrategy = this._auth0Strategies.filter(function (s) { return s.name === 'auth0'; })[0];
+  return this._auth0Strategies.length > 0 ? 
+    (defaultStrategy ? defaultStrategy.connections[0] : this._auth0Strategies[0].connections[0]) :
+    null;
 };
 
 Auth0Widget.prototype._showOrHidePassword = function () {
@@ -368,7 +374,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
     this._showError(this._signinOptions['strategyEmailInvalid']);
   } 
   else if (!domain) {
-    if (this._auth0Strategy) {
+    if (this._auth0Strategies.length > 0) {
       return this._signInWithAuth0(emailE.val());
     }
 
@@ -506,7 +512,7 @@ Auth0Widget.prototype._initialize = function () {
     var strategy = this._client.strategies[s];
 
     if (this._isAuth0Conn(strategy.name) && strategy.connections.length > 0) {
-      this._auth0Strategy = strategy;
+      this._auth0Strategies.push(strategy);
       $('.create-account, .password').css('display', 'block');
 
       bean.on($('.notloggedin .email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
@@ -807,6 +813,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
   var self = this;
   this._signinOptions = xtend(this._options, signinOptions);
+  this._auth0Strategies = [];
 
   // TODO: set auth0 connection parameters
   this._auth0ConnectionParams = null;

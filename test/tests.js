@@ -105,14 +105,6 @@ describe('Auth0-Widget', function () {
     });
 
     it('should signin with adldap connection (auth0-adldap strategy)', function (done) {
-      client.getConnections = function (callback) {
-        callback(null, [
-          { name: 'google-oauth2', strategy: 'google-oauth2', status: true },
-          { name: 'contoso', strategy: 'adfs', status: true, domain: 'contoso.com' },
-          { name: 'adldap', strategy: 'auth0-adldap', status: true, domain: 'litware.com' }
-        ]);
-      };
-
       client.login = function (options) {
         expect(options.connection).to.equal('adldap');
         expect(options.username).to.equal('peter');
@@ -120,7 +112,9 @@ describe('Auth0-Widget', function () {
         done();
       };
 
-      widget.show(function () {
+      widget.show({ 
+        userPwdConnectionName: 'adldap' 
+      }, function () {
         $('#auth0-widget .notloggedin .emailPassword .email input').val('peter@litware.com');
         $('#auth0-widget .notloggedin .emailPassword .password input').val('zzz');
         $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
