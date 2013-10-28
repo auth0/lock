@@ -4,8 +4,9 @@
 </head>
 <body>
 	<button id="login-button">Login</button>
+	<button id="login-button-inside-div">Login inside DIV</button>
 
-	<div id="root" style="width: 380px; margin: 40px; height: 500px; background-color: pink;">
+	<div id="root" style="width: 380px; margin: 20px; height: 500px; background-color: pink;">
 	    embeded area
 	</div>
 
@@ -13,23 +14,22 @@
 	<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script>
 		$(function () {
-		    // do stuff after DOM has loaded
 		    var widget = new Auth0Widget({
 				domain:      'mdocs.auth0.com',
 			    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
 			    callbackURL: 'http://localhost:3000/'
 			});
 
-			var widgetOption = { 
-				resources: { "title": "Sign In with Auth0" },
-				connections: ['qraftlabs.com', 'mdocs.io', 'google-oauth2'],
-				//container: 'root'
-			};
-
-			// widget.show(widgetOption);
-
 			$('#login-button').on('click', function () {
-				widget.show(widgetOption);
+				widget.show();
+            });
+
+            $('#login-button-inside-div').on('click', function () {
+				widget.show({ 
+					resources: { "title": "Sign In with Auth0" },
+					connections: ['qraftlabs.com', 'mdocs.io', 'google-oauth2'],
+					container: 'root'
+				});
             });
         });
 	</script>
