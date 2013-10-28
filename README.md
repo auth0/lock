@@ -46,6 +46,7 @@ widget.show(options, callback);
 * __container__: The id of the DIV where the widget will be contained.
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
+* __extraParameters__: JSON object to send extra parameters when starting a login.
 * __resources__: JSON object that contains your customized text labels. As a reference, you can take a look at the example app (example/strings/es-ES.json) which customizes all of the supported labels to Spanish.
 
 ~~~javascript
@@ -53,6 +54,9 @@ widget.show({
   connections: ['facebook', 'google-oauth2', 'twitter', 'Username-Password-Authentication', 'fabrikam.com'],
   resources: {
     title: "Sign In with Auth0"
+  },
+  extraParameters: {
+    state: "foo"
   },
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
