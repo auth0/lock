@@ -90,6 +90,19 @@ describe('Auth0-Widget', function () {
       });
     });
 
+    it('should signin with social connection specifying extraParameters', function (done) {
+      client.login = function (options) {
+        expect(options.state).to.equal('foo');
+        expect(options.connection).to.equal('google-oauth2');
+        expect(options.username).to.not.exist;
+        done();
+      };
+
+      widget.show({ extraParameters: { state: 'foo' } }, function () {
+        $('#auth0-widget .notloggedin .iconlist span[data-strategy="google-oauth2"]').trigger('click');
+      });
+    });
+
     it('should signin with database connection (auth0 strategy)', function (done) {
       client.login = function (options) {
         expect(options.connection).to.equal('dbTest');
@@ -99,6 +112,22 @@ describe('Auth0-Widget', function () {
       };
 
       widget.show(function () {
+        $('#auth0-widget .notloggedin .emailPassword .email input').val('john@fabrikam.com');
+        $('#auth0-widget .notloggedin .emailPassword .password input').val('xyz');
+        $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
+      });
+    });
+
+    it('should signin with database connection (auth0 strategy) specifying extraParameters', function (done) {
+      client.login = function (options) {
+        expect(options.state).to.equal('foo');
+        expect(options.connection).to.equal('dbTest');
+        expect(options.username).to.equal('john@fabrikam.com');
+        expect(options.password).to.equal('xyz');
+        done();
+      };
+
+      widget.show({ extraParameters: { state: 'foo' } }, function () {
         $('#auth0-widget .notloggedin .emailPassword .email input').val('john@fabrikam.com');
         $('#auth0-widget .notloggedin .emailPassword .password input').val('xyz');
         $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
@@ -130,6 +159,20 @@ describe('Auth0-Widget', function () {
       };
 
       widget.show(function () {
+        $('#auth0-widget .notloggedin .emailPassword .email input').val('mary@contoso.com');
+        $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
+      });
+    });
+
+    it('should signin with enterprise connection specifying extraParameters', function (done) {
+      client.login = function (options) {
+        expect(options.state).to.equal('foo');
+        expect(options.connection).to.equal('contoso');
+        expect(options.username).to.not.exist;
+        done();
+      };
+
+      widget.show({ extraParameters: { state: 'foo' } }, function () {
         $('#auth0-widget .notloggedin .emailPassword .email input').val('mary@contoso.com');
         $('#auth0-widget .notloggedin .emailPassword .action button.primary').trigger('click');
       });

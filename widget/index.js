@@ -326,13 +326,13 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
 
 // sign in methods
 Auth0Widget.prototype._signInSocial = function (target) {
+  var self = this;
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
   var strategy = this._getConfiguredStrategy(strategyName);
 
   if (strategy) {
-    this._auth0.login({
-      connection: strategy.connections[0].name
-    });
+    var loginOptions = xtend({ connection: strategy.connections[0].name }, self._signinOptions.extraParameters);
+    this._auth0.login(loginOptions);
   }
 };
 
@@ -340,6 +340,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   e.preventDefault();
   e.stopPropagation();
 
+  var self = this;
   var container = this._getActiveLoginView();
   var form = $('form', container);
   var valid = true;
@@ -390,9 +391,8 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   valid &= (!domain && !emailD.addClass('invalid')) || (!!domain && !!emailD.removeClass('invalid'));
 
   if (valid) {
-    this._auth0.login({
-      connection: connection
-    });
+    var loginOptions = xtend({ connection: connection }, self._signinOptions.extraParameters);
+    this._auth0.login(loginOptions);
   }
 };
 
@@ -409,9 +409,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     password: signInPassword || $('.password input', container).val()
   };
 
-  for (var k in this._auth0ConnectionParams) {
-    loginOptions[k] = this._auth0ConnectionParams[k];
-  }
+  loginOptions = xtend(loginOptions, self._signinOptions.extraParameters);
 
   this._auth0.login(loginOptions, function (err) {
     if (err) {
@@ -554,9 +552,11 @@ Auth0Widget.prototype._showSignIn = function () {
     this._client.strategies[0].name !== 'auth0' &&
     this._client.strategies[0].connections.length === 1) {
     
-    this._auth0.login({
-      connection: this._client.strategies[0].connections[0].name
-    });
+    var loginOptions = xtend({
+      connection: self._client.strategies[0].connections[0].name
+    }, 
+    self._signinOptions.extraParameters);
+    self._auth0.login(loginOptions);
 
     return;
   }
@@ -813,9 +813,6 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   var self = this;
   this._signinOptions = xtend(this._options, signinOptions);
   this._auth0Strategies = [];
-
-  // TODO: set auth0 connection parameters
-  this._auth0ConnectionParams = null;
 
   // get configured strategies/connections
   this._auth0.getConnections(function (err, connections) {
