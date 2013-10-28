@@ -69,7 +69,7 @@ module.exports = function (grunt) {
     },
     watch: {
       another: {
-        files: ['node_modules', 'standalone.js', 'widget/index.js', 'widget/html/*.html', 'widget/js/*.js', 'widget/css/*.less'],
+        files: ['node_modules', 'standalone.js', 'widget/index.js', 'widget/html/*.html', 'widget/js/*.js', 'widget/css/*.less', 'widget/css/themes/*.less'],
         tasks: ['build']
       }
     }

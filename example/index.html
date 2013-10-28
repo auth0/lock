@@ -5,6 +5,10 @@
 <body>
 	<button id="login-button">Login</button>
 
+	<div id="root" style="width: 380px; margin: 40px; height: 500px; background-color: pink;">
+	    embeded area
+	</div>
+
 	<script src="auth0-widget.js"></script>
 	<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script>
@@ -18,7 +22,8 @@
 
 			var widgetOption = { 
 				resources: { "title": "Sign In with Auth0" },
-				connections: ['qraftlabs.com', 'mdocs.io', 'google-oauth2'] 
+				connections: ['qraftlabs.com', 'mdocs.io', 'google-oauth2'],
+				//container: 'root'
 			};
 
 			// widget.show(widgetOption);

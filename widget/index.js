@@ -616,7 +616,7 @@ Auth0Widget.prototype._showSignIn = function () {
 
   // theme
   if (options.theme) {
-    $().addClass('theme-' + options.theme);
+    $('.signin').addClass('theme-' + options.theme);
   }
 
   $('.panel a.close').css('display', options.standalone ? 'none' : 'block');
@@ -742,6 +742,7 @@ Auth0Widget.prototype._showSignIn = function () {
   $('div.panel').removeClass('active');
   $('div.overlay').addClass('active');
   $('div.panel.onestep').addClass('active');
+  $('div.overlay').css('position', self._signinOptions.container ? 'inherit' : 'fixed');
 
   $('.popup h1').html(options.title);
   $('.popup .invalid').removeClass('invalid');
@@ -845,6 +846,9 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
       // widget container
       if (self._signinOptions.container) {
+        self._signinOptions.theme = 'static';
+        self._signinOptions.standalone = true;
+
         var specifiedContainer = document.getElementById(self._signinOptions.container);
         specifiedContainer.innerHTML = mainTmpl();
       }
@@ -853,8 +857,6 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
         div.innerHTML = mainTmpl();
         document.body.appendChild(div);
       }
-
-      // TODO: support _signinOptions.container
       
       self._initialize();
 
