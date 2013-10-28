@@ -11,10 +11,6 @@ The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't hav
 * Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
 * Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
 
-## Example
-
-The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed, then execute `npm run example` from the root of this project.
-
 ## Usage
 
 Take `auth0-widget.js` or `auth0-widget.min.js` from the `build` directory and import it to your page.
@@ -87,6 +83,10 @@ widget.show({
   }
 });
 ~~~
+
+## Example
+
+The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed, then execute `npm run example` from the root of this project.
 
 ## Develop
 
