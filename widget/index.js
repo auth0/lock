@@ -841,9 +841,6 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     self._auth0.getSSOData(function (err, ssoData) {
       self._ssoData = ssoData;
       
-      // remove widget container (if exist)
-      $().parent().remove();
-
       // widget container
       if (self._signinOptions.container) {
         self._signinOptions.theme = 'static';
@@ -853,6 +850,9 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
         specifiedContainer.innerHTML = mainTmpl();
       }
       else {
+        // remove widget container (if exist)
+        $().parent().remove();
+
         var div = document.createElement('div');
         div.innerHTML = mainTmpl();
         document.body.appendChild(div);
