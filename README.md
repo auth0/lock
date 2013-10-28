@@ -36,7 +36,9 @@ Construct a new instance of the Auth0 Widget as follows:
 
 To invoke the widget, use the `show` method:
 
-~~~html
+~~~javascript
+widget.show();
+// or
 widget.show(options, callback);
 ~~~
 
