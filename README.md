@@ -38,18 +38,49 @@ Construct a new instance of the Auth0 Widget as follows:
 
 ### Show Widget:
 
-Trigger the login widget as follows:
+To invoke the widget, use the `show` method:
 
 ~~~html
+widget.show(options, callback);
+~~~
+
+#### Options
+
+* __connections__: Array of enabled connections that will be used for the widget- _Default: all enabled connections_.
+* __resources__: JSON object that contains your customized text labels. As a reference, you can take a look at the example app which customizes all of the supported labels to Spanish.
+* __container__: The id of the DIV where the widget will be contained.
+* __icon__: Icon url. _Recommended: 32x32_.
+* __showIcon__: Show/Hide widget icon. _Default: false_.
+
+~~~javascript
 widget.show({
-  resources: { title: "Sign In with Auth0" },               // OPTIONAL: specify custom text for labels
-  connections: ['contoso.com', 'facebook', 'google-oauth2'] // OPTIONAL: specify connections
+  connections: ['facebook', 'google-oauth2', 'twitter', 'Username-Password-Authentication', 'fabrikam.com'],
+  resources: {
+    "title": "Sign In with Auth0"
+  },
+  container: 'root',
+  icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
+  showIcon: true
+},
+funcion () {
+  // The Auth0 Widget is now loaded.
 });
 ~~~
 
 ## Develop
 
 Run `npm run dev` and point your browser to `http://localhost:9999/` to run the test suite.
+
+## Anatomy of the Auth0 Login Widget
+
+![](https://docs.auth0.com/img/widget-numbered.png)
+
+1. The __title__ of the widget. You can optionally show a 32x32 icon (from options.icon).
+2. The __social buttons__ will be shown if you have at least one social connection enabled.
+3. The __Email__ field will be shown if you have at least one enterprise connection enabled. The __Password__ field will be shown if you have a Database connection. 
+4. The __Sign Up__ and __Forgot Password__ links will be shown if you have a Database connection. 
+
+> **How does enterprise SSO work?** Consider a user that enters john@**fabrikam.com**. If there's an enterprise connection with an associated domain "**fabrikam.com**", then the password field will be hidden. When the user clicks on __Sign In__, he/she will be redirected to the corresponding identity provider (Google Apps, AD, Windows Azure AD, etc.) where that domain is registered. If the user is already logged in with the Identity Provider, then Single Sign On will happen.
 
 ## Browser Compatibility
 
