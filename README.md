@@ -50,7 +50,7 @@ widget.show(options, callback);
 * __container__: The id of the DIV where the widget will be contained.
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
-* __resources__: JSON object that contains your customized text labels. As a reference, you can take a look at the example app which customizes all of the supported labels to Spanish.
+* __resources__: JSON object that contains your customized text labels. As a reference, you can take a look at the example app (example/strings/es-ES.json) which customizes all of the supported labels to Spanish.
 
 ~~~javascript
 widget.show({
