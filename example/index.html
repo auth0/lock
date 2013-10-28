@@ -4,6 +4,7 @@
 </head>
 <body>
 	<button id="login-button">Login</button>
+	<button id="login-button-spanish">Login (Spanish)</button>
 	<button id="login-button-inside-div">Login inside DIV</button>
 
 	<div id="root" style="width: 380px; margin: 20px; height: 500px; background-color: pink;">
@@ -24,11 +25,18 @@
 				widget.show();
             });
 
+            $('#login-button-spanish').on('click', function () {
+            	$.getJSON('strings/es-ES.json', function (resources) {
+            		widget.show({ 
+						resources: 		resources
+					});
+            	});
+            });
+
             $('#login-button-inside-div').on('click', function () {
-				widget.show({ 
-					resources: { "title": "Sign In with Auth0" },
-					connections: ['qraftlabs.com', 'mdocs.io', 'google-oauth2'],
-					container: 'root'
+            	widget.show({ 
+					connections: 	['qraftlabs.com', 'mdocs.io', 'google-oauth2'],
+					container: 		'root'
 				});
             });
         });
