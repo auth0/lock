@@ -572,7 +572,7 @@ Auth0Widget.prototype._showSignIn = function () {
   options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
   options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
 
-  options['icon'] = options['icon'] || "https://s3.amazonaws.com/assets.auth0.com/w2/img/logo-32.png";
+  options['icon'] = options['icon'] || "https://d19p4zemcycm7a.cloudfront.net/w2/img/logo-32.png";
   options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
   options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
   options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
