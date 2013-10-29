@@ -3,8 +3,9 @@ var qwery     = require('qwery');
 var bonzo     = require('bonzo');
 var bean      = require('bean');
 var xtend     = require('xtend');
+var _         = require('./js/underscore-min');
 
-var mainTmpl = require('./html/main.html');
+var mainTmpl  = require('./html/main.html');
 
 var $ = function (selector, root) {
   return bonzo(qwery('#auth0-widget ' + (selector || ''), root));
@@ -172,7 +173,7 @@ Auth0Widget.prototype._getAuth0Connection = function() {
   }
 
   // By default, if exists, return auth0 connection (db-conn)
-  var defaultStrategy = this._auth0Strategies.filter(function (s) { return s.name === 'auth0'; })[0];
+  var defaultStrategy = _.filter(this._auth0Strategies, function (s) { return s.name === 'auth0'; })[0];
   return this._auth0Strategies.length > 0 ? 
     (defaultStrategy ? defaultStrategy.connections[0] : this._auth0Strategies[0].connections[0]) :
     null;
@@ -774,7 +775,7 @@ Auth0Widget.prototype._getConfiguredStrategies = function (conns) {
   for (var conn in conns) {
     if (typeof(conns[conn].status) !== 'undefined' && !conns[conn].status) continue;
 
-    var strategy = strategies.filter(function (s) { 
+    var strategy = _.filter(strategies, function (s) { 
       return s.name === conns[conn].strategy; 
     })[0];
 
@@ -821,7 +822,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     // use only specified connections
     if (self._signinOptions.connections) {
       for (var i in connections) {
-        if (self._signinOptions.connections.indexOf(connections[i].name) > -1) {
+        if (_.contains(self._signinOptions.connections, connections[i].name)) {
           allowedConnections.push(connections[i]);
         }
       }

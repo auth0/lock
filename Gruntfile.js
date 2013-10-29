@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         files: {
-          'build/auth0-widget.js': ['widget/js/arrays.js', 'widget/js/placeholders.js', 'standalone.js']
+          'build/auth0-widget.js': ['widget/js/underscore-min.js', 'widget/js/placeholders.js', 'standalone.js']
         },
         options: {
           transform: ['browserify-ejs', 'brfs'],
