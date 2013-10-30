@@ -3,7 +3,7 @@ var qwery     = require('qwery');
 var bonzo     = require('bonzo');
 var bean      = require('bean');
 var xtend     = require('xtend');
-var _         = require('./js/underscore-min');
+var _         = require('underscore');
 
 var mainTmpl  = require('./html/main.html');
 
