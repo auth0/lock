@@ -263,9 +263,15 @@ Auth0Widget.prototype._setLoginView = function(options) {
     self._setTop();
 
     try { 
+      $('input', container).each(function (elem) {
+        elem.focus(); // workaround to enable password placeholders with placeholders.js
+      });
+
       if (options.isReturningUser) $('.loggedin .password input').first().focus();
       else $('.notloggedin .email input').first().focus();
-    } catch(e) {}
+    } catch(e) {
+      console.log(e);
+    }
     
     return;
   }
@@ -293,9 +299,16 @@ Auth0Widget.prototype._setLoginView = function(options) {
 
     try { 
       var email = $('.notloggedin .email input').val();
+
+      $('input', container).each(function (elem) {
+        elem.focus(); // workaround to enable password placeholders with placeholders.js
+      });
+
       $('.email input', container).val(email);
       $('.email input', container).first().focus();
-    } catch(e) {}
+    } catch(e) {
+      console.log(e);
+    }
   }
 };
 
