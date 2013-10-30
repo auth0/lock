@@ -53,8 +53,10 @@ function Auth0Widget (options) {
 }
 
 // helper methods
-Auth0Widget.prototype._setTop = function (onTop, element) {
-  if (!onTop) {
+Auth0Widget.prototype._setTop = function () {
+  var element = $('.signin div.panel.onestep');
+
+  if (!this._signinOptions.top) {
     setTimeout(function() {
       element.css({
         'marginTop': '-' + (element.offset().height / 2) + 'px',
@@ -228,9 +230,15 @@ Auth0Widget.prototype._showResetExperience = function() {
   this._setLoginView({ mode: 'reset' });
 };
 
+Auth0Widget.prototype._showLoadingExperience = function() {
+  this._setLoginView({ mode: 'loading' });
+};
+
 Auth0Widget.prototype._setLoginView = function(options) {
+  var self = this;
   options = options || {};
 
+  $('.loading').css('display', 'none');
   $('.loggedin').css('display', 'none');
   $('.notloggedin').css('display', 'none');
   $('.signup').css('display', 'none');
@@ -241,10 +249,8 @@ Auth0Widget.prototype._setLoginView = function(options) {
     this._hasLoggedInBefore = !!options.isReturningUser;
     this._setTitle(this._signinOptions['title']);
 
-    $('.loggedin').css('display', options.isReturningUser ? '' : 'none');
-    $('.notloggedin').css('display', options.isReturningUser ? 'none' : '');
-
-    this._setTop(this._signinOptions.top, $('.signin div.panel.onestep'));
+    $(options.isReturningUser ? '.loggedin' : '.notloggedin').css('display', '');
+    self._setTop();
 
     try { 
       if (options.isReturningUser) $('.loggedin .password input').first().focus();
@@ -257,6 +263,10 @@ Auth0Widget.prototype._setLoginView = function(options) {
   var container;
 
   switch (options.mode) {
+    case 'loading':
+      this._setTitle('Please wait...');
+      container = $('.loading').first();
+      break;
     case 'signup':
       this._setTitle(this._signinOptions['signupTitle']);
       container = $('.signup').first();
@@ -268,7 +278,7 @@ Auth0Widget.prototype._setLoginView = function(options) {
   }
 
   if (container) {
-    this._setTop(this._signinOptions.top, $('.signin div.panel.onestep'));
+    this._setTop();
     container.css('display', '');
 
     try { 
@@ -493,6 +503,9 @@ Auth0Widget.prototype._initialize = function () {
   // TODO: support css option for non free subscriptions
 
   var self = this;
+  $().addClass('mode-signin');
+
+  // buttons actions
   bean.on($('.popup .panel.onestep a.close')[0], 'click', function () { self._hideSignIn(); });
   bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
   bean.on($('.popup .panel.onestep .signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
@@ -504,6 +517,132 @@ Auth0Widget.prototype._initialize = function () {
       }
     }
   });
+
+  // labels text
+  var options = xtend(this._signinOptions, this._signinOptions.resources);
+  options['title'] = options['title'] || 'Sign In';
+  options['allButtonTemplate'] = options['allButtonTemplate'] || "Show all";
+  options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
+  options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
+  options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
+
+  options['icon'] = options['icon'] || "https://d19p4zemcycm7a.cloudfront.net/w2/img/logo-32.png";
+  options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
+  options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
+  options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
+  options['signupText'] = options['signupText'] || 'Sign Up';
+  options['forgotText'] = options['forgotText'] || 'Forgot your password?';
+  options['signInButtonText'] = options['signInButtonText'] || 'Sign In';
+  options['emailPlaceholder'] = options['emailPlaceholder'] || 'Email';
+  options['passwordPlaceholder'] = options['passwordPlaceholder'] || 'Password';
+  options['separatorText'] = options['separatorText'] || 'or';
+  options['serverErrorText'] = options['serverErrorText'] || 'There was an error processing the sign in.';
+  options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
+  options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
+  options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
+  options['returnUserLabel'] = options['returnUserLabel'] || 'Last time you signed in using...';
+  options['wrongEmailPasswordErrorText'] = options['wrongEmailPasswordErrorText'] || 'Wrong email or password.';
+
+  // signup
+  options['signupTitle'] = options['signupTitle'] || 'Sign Up';
+  options['signupButtonText'] = options['signupButtonText'] || 'Sign Up';
+  options['signupEmailPlaceholder'] = options['signupEmailPlaceholder'] || 'Email';
+  options['signupPasswordPlaceholder'] = options['signupPasswordPlaceholder'] || 'Create a Password';
+  options['signupCancelButtonText'] = options['signupCancelButtonText'] || 'Cancel';
+  options['signupHeaderText'] = typeof options['signupHeaderText'] !== 'undefined' ? options['signupHeaderText'] : 'Please enter your email and password';
+  options['signupFooterText'] = typeof options['signupFooterText'] !== 'undefined' ? options['signupFooterText'] : 'By clicking "Sign Up", you agree to our terms of service and privacy policy.';
+  options['signupEnterpriseEmailWarningText'] = options['signupEnterpriseEmailWarningText'] || 'This domain {domain} has been configured for Single Sign On and you can\'t create an account. Try signing in instead.';
+  options['signupServerErrorText'] = options['signupServerErrorText'] || 'There was an error processing the sign up.';
+
+  // reset
+  options['resetTitle'] = options['resetTitle'] || 'Reset Password';
+  options['resetButtonText'] = options['resetButtonText'] || 'Send';
+  options['resetEmailPlaceholder'] = options['resetEmailPlaceholder'] || 'Email';
+  options['resetPasswordPlaceholder'] = options['resetPasswordPlaceholder'] || 'New Password';
+  options['resetRepeatPasswordPlaceholder'] = options['resetRepeatPasswordPlaceholder'] || 'Confirm New Password';
+  options['resetCancelButtonText'] = options['resetCancelButtonText'] || 'Cancel';
+  options['resetSuccessText'] = options['resetSuccessText'] || 'We\'ve just sent you an email to reset your password.';
+  options['resetEnterSamePasswordText'] = options['resetEnterSamePasswordText'] || 'Please enter the same password.';
+  options['resetHeaderText'] = typeof options['resetHeaderText'] !== 'undefined' ? options['resetHeaderText'] : 'Please enter your email and the new password. We will send you an email to confirm the password change.';
+  options['resetServerErrorText'] = options['resetServerErrorText'] || 'There was an error processing the reset password.';
+
+  this._signinOptions = options;
+
+  // theme
+  if (this._signinOptions.theme) {
+    $('.signin').addClass('theme-' + this._signinOptions.theme);
+  }
+
+  $('.panel a.close').css('display', this._signinOptions.standalone ? 'none' : 'block');
+
+  // show icon
+  if (this._signinOptions.showIcon) {
+    $('.panel .image img').attr('src', this._signinOptions.icon);
+    $('.panel .image').css('display', this._signinOptions.showIcon ? 'block' : 'none');
+  }
+
+  // activate panel
+  $('div.panel').removeClass('active');
+  $('div.overlay').addClass('active');
+  $('div.panel.onestep').addClass('active');
+
+  if (self._signinOptions.container) {
+    $('div.active').removeClass('overlay');
+  }
+
+  $('.popup h1').html(this._signinOptions.title);
+  $('.popup .invalid').removeClass('invalid');
+
+  $('div.panel.onestep h1').html(this._signinOptions['title']);
+
+  // show loading
+  self._showLoadingExperience();
+ 
+  // get configured strategies/connections
+  self._auth0.getConnections(function (err, connections) {
+    var allowedConnections = [];
+
+    // use only specified connections
+    if (self._signinOptions.connections) {
+      for (var i in connections) {
+        if (_.contains(self._signinOptions.connections, connections[i].name)) {
+          allowedConnections.push(connections[i]);
+        }
+      }
+    }
+    else {
+      allowedConnections = connections;
+    }
+
+    self._client = {
+      strategies: self._getConfiguredStrategies(allowedConnections)
+    };
+
+    // get SSO data
+    self._auth0.getSSOData(function (err, ssoData) {
+      self._ssoData = ssoData;
+      self._resolveLoginView();
+    });
+  });
+};
+
+Auth0Widget.prototype._resolveLoginView = function () {
+  var self = this;
+
+  // if no social connections and one enterprise connection only, redirect
+  if (!this._areThereAnySocialConn() && 
+    this._client.strategies.length === 1 &&
+    this._client.strategies[0].name !== 'auth0' &&
+    this._client.strategies[0].connections.length === 1) {
+    
+    var loginOptions = xtend({
+      connection: self._client.strategies[0].connections[0].name
+    }, 
+    self._signinOptions.extraParameters);
+    self._auth0.login(loginOptions);
+
+    return;
+  }
 
   // load social buttons
   var list = $('.popup .panel.onestep .iconlist');
@@ -540,121 +679,40 @@ Auth0Widget.prototype._initialize = function () {
     });
   });
 
-  this._showSignIn();
-};
-
-Auth0Widget.prototype._showSignIn = function () {
-  var self = this;
-  $().addClass('mode-signin');
-
-  // if no social connections and one enterprise connection only, redirect
-  if (!this._areThereAnySocialConn() && 
-    this._client.strategies.length === 1 &&
-    this._client.strategies[0].name !== 'auth0' &&
-    this._client.strategies[0].connections.length === 1) {
-    
-    var loginOptions = xtend({
-      connection: self._client.strategies[0].connections[0].name
-    }, 
-    self._signinOptions.extraParameters);
-    self._auth0.login(loginOptions);
-
-    return;
-  }
-
-  // labels text
-  var options = xtend(this._signinOptions, this._signinOptions.resources);
-  options['onestep'] = typeof options['onestep'] !== 'undefined' ? options['onestep'] : false;
-  options['top'] = options['top'] || false;
-  options['title'] = options['title'] || 'Sign In';
-  options['allButtonTemplate'] = options['allButtonTemplate'] || "Show all";
-  options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
-  options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
-  options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
-
-  options['icon'] = options['icon'] || "https://d19p4zemcycm7a.cloudfront.net/w2/img/logo-32.png";
-  options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
-  options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
-  options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
-  options['signupText'] = options['signupText'] || 'Sign Up';
-  options['forgotText'] = options['forgotText'] || 'Forgot your password?';
-  options['signInButtonText'] = options['signInButtonText'] || 'Sign In';
-  options['emailPlaceholder'] = options['emailPlaceholder'] || 'Email';
-  options['passwordPlaceholder'] = options['passwordPlaceholder'] || 'Password';
-  options['separatorText'] = options['separatorText'] || 'or';
-  options['serverErrorText'] = options['serverErrorText'] || 'There was an error processing the sign in.';
-  options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
-  options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
-  options['socialBigButtons'] = typeof options['socialBigButtons'] !== 'undefined' ? options['socialBigButtons'] : !this._areThereAnyEnterpriseOrDbConn();
-  options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
-  options['returnUserLabel'] = options['returnUserLabel'] || 'Last time you signed in using...';
-  options['wrongEmailPasswordErrorText'] = options['wrongEmailPasswordErrorText'] || 'Wrong email or password.';
-
-  // signup
-  options['signupTitle'] = options['signupTitle'] || 'Sign Up';
-  options['signupButtonText'] = options['signupButtonText'] || 'Sign Up';
-  options['signupEmailPlaceholder'] = options['signupEmailPlaceholder'] || 'Email';
-  options['signupPasswordPlaceholder'] = options['signupPasswordPlaceholder'] || 'Create a Password';
-  options['signupCancelButtonText'] = options['signupCancelButtonText'] || 'Cancel';
-  options['signupHeaderText'] = typeof options['signupHeaderText'] !== 'undefined' ? options['signupHeaderText'] : 'Please enter your email and password';
-  options['signupFooterText'] = typeof options['signupFooterText'] !== 'undefined' ? options['signupFooterText'] : 'By clicking "Sign Up", you agree to our terms of service and privacy policy.';
-  options['signupEnterpriseEmailWarningText'] = options['signupEnterpriseEmailWarningText'] || 'This domain {domain} has been configured for Single Sign On and you can\'t create an account. Try signing in instead.';
-  options['signupServerErrorText'] = options['signupServerErrorText'] || 'There was an error processing the sign up.';
-
-  // reset
-  options['resetTitle'] = options['resetTitle'] || 'Reset Password';
-  options['resetButtonText'] = options['resetButtonText'] || 'Send';
-  options['resetEmailPlaceholder'] = options['resetEmailPlaceholder'] || 'Email';
-  options['resetPasswordPlaceholder'] = options['resetPasswordPlaceholder'] || 'New Password';
-  options['resetRepeatPasswordPlaceholder'] = options['resetRepeatPasswordPlaceholder'] || 'Confirm New Password';
-  options['resetCancelButtonText'] = options['resetCancelButtonText'] || 'Cancel';
-  options['resetSuccessText'] = options['resetSuccessText'] || 'We\'ve just sent you an email to reset your password.';
-  options['resetEnterSamePasswordText'] = options['resetEnterSamePasswordText'] || 'Please enter the same password.';
-  options['resetHeaderText'] = typeof options['resetHeaderText'] !== 'undefined' ? options['resetHeaderText'] : 'Please enter your email and the new password. We will send you an email to confirm the password change.';
-  options['resetServerErrorText'] = options['resetServerErrorText'] || 'There was an error processing the reset password.';
-
-  this._signinOptions = options;
-
-  // theme
-  if (options.theme) {
-    $('.signin').addClass('theme-' + options.theme);
-  }
-
-  $('.panel a.close').css('display', options.standalone ? 'none' : 'block');
-
-  // show icon
-  if (options.showIcon) {
-    $('.panel .image img').attr('src', options.icon);
-    $('.panel .image').css('display', options.showIcon ? 'block' : 'none');
+  this._signinOptions.socialBigButtons = typeof this._signinOptions['socialBigButtons'] !== 'undefined' ? this._signinOptions['socialBigButtons'] : !this._areThereAnyEnterpriseOrDbConn();
+  if (this._signinOptions.socialBigButtons) {
+    $('.popup .panel.onestep .iconlist span').removeClass('icon').addClass('block');
+  } else {
+    $('.popup .panel.onestep .iconlist span').addClass('icon').removeClass('block');
   }
 
   // show signup/forgot links
   var auth0Conn = this._getAuth0Connection();
   if (auth0Conn) {
-    options.showSignup = auth0Conn.showSignup;
-    options.showForgot = auth0Conn.showForgot;
+    this._signinOptions.showSignup = auth0Conn.showSignup;
+    this._signinOptions.showForgot = auth0Conn.showForgot;
   }
   
   $('.panel .create-account .sign-up')
-    .css('display', options.showSignup ? '' : 'none')
-    .html(options.signupText);
+    .css('display', this._signinOptions.showSignup ? '' : 'none')
+    .html(this._signinOptions.signupText);
 
   $('.panel .create-account .forgot-pass')
-    .css('display', options.showForgot ? '' : 'none')
-    .html(options.forgotText);
+    .css('display', this._signinOptions.showForgot ? '' : 'none')
+    .html(this._signinOptions.forgotText);
 
-  if (options.signupLink) {
+  if (this._signinOptions.signupLink) {
     $('.panel .create-account .sign-up')
-      .attr('href', options.signupLink)
+      .attr('href', this._signinOptions.signupLink)
       .attr('target', '_parent');
   } 
   else {
     bean.on($('.panel .create-account .sign-up')[0], 'click', function (e) { self._showSignUpExperience(e); });
   }
 
-  if (options.forgotLink) {
+  if (this._signinOptions.forgotLink) {
     $('.panel .create-account .forgot-pass')
-      .attr('href', options.forgotLink)
+      .attr('href', this._signinOptions.forgotLink)
       .attr('target', '_parent');
   } 
   else {
@@ -665,25 +723,25 @@ Auth0Widget.prototype._showSignIn = function () {
 
   // hide divider dot if there are one of two
   $('.panel .create-account .divider')
-    .css('display', options.showEmail && options.showSignup && options.showForgot ? '' : 'none');
+    .css('display', self._signinOptions.showEmail && self._signinOptions.showSignup && self._signinOptions.showForgot ? '' : 'none');
 
   $('div.panel input').each(function (e) { e.value = ''; });
 
   // placeholders and buttons
-  $('.panel .zocial.primary').html(options.signInButtonText);
-  $('.panel .email input').attr('placeholder', options.emailPlaceholder);
-  $('.panel .password input').attr('placeholder', options.passwordPlaceholder);
-  $('.panel .separator span').html(options.separatorText);
+  $('.panel .zocial.primary').html(self._signinOptions.signInButtonText);
+  $('.panel .email input').attr('placeholder', self._signinOptions.emailPlaceholder);
+  $('.panel .password input').attr('placeholder', self._signinOptions.passwordPlaceholder);
+  $('.panel .separator span').html(self._signinOptions.separatorText);
 
   // signup
-  $('.panel .signup .zocial.primary').html(options.signupButtonText);
+  $('.panel .signup .zocial.primary').html(self._signinOptions.signupButtonText);
 
   $('.panel .signup .email input').each(function (i) { 
-      i.setAttribute('placeholder', options.signupEmailPlaceholder);
+      i.setAttribute('placeholder', self._signinOptions.signupEmailPlaceholder);
       bean.on(i, 'input', function() {
         var output = {};
         if (self._isEnterpriseConnection(this.value, output)) {
-          var warningText = options.signupEnterpriseEmailWarningText.replace(/{domain}/g, output.domain);
+          var warningText = self._signinOptions.signupEnterpriseEmailWarningText.replace(/{domain}/g, output.domain);
           this.setCustomValidity(warningText);
         } else {
           this.setCustomValidity('');
@@ -691,85 +749,68 @@ Auth0Widget.prototype._showSignIn = function () {
       });
   });
 
-  $('.panel .signup .password input').attr('placeholder', options.signupPasswordPlaceholder);
+  $('.panel .signup .password input').attr('placeholder', self._signinOptions.signupPasswordPlaceholder);
 
-  $('.panel .signup .options .cancel').html(options['signupCancelButtonText']);
+  $('.panel .signup .options .cancel').html(self._signinOptions['signupCancelButtonText']);
   bean.on($('.panel .signup .options .cancel')[0], 'click', function () { self._setLoginView(); });
 
   $('.panel .signup .header')
-    .html(options.signupHeaderText)
-    .attr('display', options.signupHeaderText ? '' : 'none');
+    .html(self._signinOptions.signupHeaderText)
+    .attr('display', self._signinOptions.signupHeaderText ? '' : 'none');
 
   $('.panel .signup .footer')
-    .html(options.signupFooterText)
-    .attr('display', options.signupFooterText ? '' : 'none');
+    .html(self._signinOptions.signupFooterText)
+    .attr('display', self._signinOptions.signupFooterText ? '' : 'none');
 
   // reset
-  $('.panel .reset .zocial.primary').html(options.resetButtonText);
-  $('.panel .reset .email input').attr('placeholder', options.resetEmailPlaceholder);
-  $('.panel .reset .password input').attr('placeholder', options.resetPasswordPlaceholder);
+  $('.panel .reset .zocial.primary').html(self._signinOptions.resetButtonText);
+  $('.panel .reset .email input').attr('placeholder', self._signinOptions.resetEmailPlaceholder);
+  $('.panel .reset .password input').attr('placeholder', self._signinOptions.resetPasswordPlaceholder);
 
   $('.panel .reset .repeatPassword input').each(function (i) { 
-      i.setAttribute('placeholder', options.resetRepeatPasswordPlaceholder);
+      i.setAttribute('placeholder', self._signinOptions.resetRepeatPasswordPlaceholder);
       bean.on(i, 'input', function() {
         if ($('.panel .reset .password input').val() != this.value) {
-          this.setCustomValidity(options.resetEnterSamePasswordText);
+          this.setCustomValidity(self._signinOptions.resetEnterSamePasswordText);
         } else {
           this.setCustomValidity('');
         }
       });
   });
 
-  $('.panel .reset .options .cancel').html(options.resetCancelButtonText);
+  $('.panel .reset .options .cancel').html(self._signinOptions.resetCancelButtonText);
   bean.on($('.panel .reset .options .cancel')[0], 'click', function () { self._setLoginView(); });
 
   $('.panel .reset .header')
-    .html(options.resetHeaderText)
-    .attr('display', options.resetHeaderText ? '' : 'none');
+    .html(self._signinOptions.resetHeaderText)
+    .attr('display', self._signinOptions.resetHeaderText ? '' : 'none');
 
   // show email, password, separator and button if there are enterprise/db connections
-  var anyEnterpriseOrDbConnection = this._areThereAnyEnterpriseOrDbConn();
-  var anySocialConnection = this._areThereAnySocialConn();
+  var anyEnterpriseOrDbConnection = self._areThereAnyEnterpriseOrDbConn();
+  var anySocialConnection = self._areThereAnySocialConn();
 
-  $('.panel .email input').css('display', options.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .zocial.primary').css('display', options.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .password input').css('display', options.showEmail && options.showPassword && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .create-account .forgot-pass').css('display', options.showEmail && options.showForgot && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .create-account .sign-up').css('display', options.showEmail && options.showSignup && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .separator').css('display', options.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
-  $('.panel .last-time').html(options.returnUserLabel);
-
-  // activate panel
-  $('div.panel').removeClass('active');
-  $('div.overlay').addClass('active');
-  $('div.panel.onestep').addClass('active');
-
-  if (self._signinOptions.container) {
-    $('div.active').removeClass('overlay');
-  }
-
-  $('.popup h1').html(options.title);
-  $('.popup .invalid').removeClass('invalid');
+  $('.panel .email input').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.panel .zocial.primary').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.panel .password input').css('display', self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.panel .create-account .forgot-pass').css('display', self._signinOptions.showEmail && self._signinOptions.showForgot && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.panel .create-account .sign-up').css('display', self._signinOptions.showEmail && this._signinOptions.showSignup && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.panel .separator').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
+  $('.panel .last-time').html(self._signinOptions.returnUserLabel);
 
   // if user logged in show logged in experience
-  if (this._ssoData.sso && options['enableReturnUserExperience']) {
-    this._showLoggedInExperience();
+  if (self._ssoData.sso) {
+    if (self._ssoData.lastUsedUsername) {
+      $('div.panel.onestep input').val(self._ssoData.lastUsedUsername);
+      self._showOrHidePassword();
+    }
+
+    if (self._signinOptions['enableReturnUserExperience']) { 
+      self._showLoggedInExperience();
+      return;
+    }
   }
 
-  if (options['socialBigButtons']) {
-    $('.popup .panel.onestep .iconlist span').removeClass('icon').addClass('block');
-  } else {
-    $('.popup .panel.onestep .iconlist span').addClass('icon').removeClass('block');
-  }
-
-  $('div.panel.onestep h1').html(options['title']);
-
-  if (this._ssoData.sso && this._ssoData.lastUsedUsername) {
-    $('div.panel.onestep input').val(this._ssoData.lastUsedUsername);
-    this._showOrHidePassword();
-  }
-
-  this._setLoginView({ isReturningUser: this._ssoData.sso });
+  self._setLoginView({ isReturningUser: self._ssoData.sso });
 };
 
 Auth0Widget.prototype._getConfiguredStrategies = function (conns) {
@@ -814,55 +855,29 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   }
 
   var self = this;
-  this._signinOptions = xtend(this._options, signinOptions);
-  this._auth0Strategies = [];
+  self._signinOptions = xtend(self._options, signinOptions);
+  self._auth0Strategies = [];
 
-  // get configured strategies/connections
-  this._auth0.getConnections(function (err, connections) {
-    var allowedConnections = [];
+  // widget container
+  if (self._signinOptions.container) {
+    self._signinOptions.theme = 'static';
+    self._signinOptions.standalone = true;
+    self._signinOptions.top = true;
 
-    // use only specified connections
-    if (self._signinOptions.connections) {
-      for (var i in connections) {
-        if (_.contains(self._signinOptions.connections, connections[i].name)) {
-          allowedConnections.push(connections[i]);
-        }
-      }
-    }
-    else {
-      allowedConnections = connections;
-    }
+    var specifiedContainer = document.getElementById(self._signinOptions.container);
+    specifiedContainer.innerHTML = mainTmpl();
+  }
+  else {
+    // remove widget container (if exist)
+    $().parent().remove();
 
-    self._client = {
-      strategies: self._getConfiguredStrategies(allowedConnections)
-    };
-
-    // get SSO data
-    self._auth0.getSSOData(function (err, ssoData) {
-      self._ssoData = ssoData;
-      
-      // widget container
-      if (self._signinOptions.container) {
-        self._signinOptions.theme = 'static';
-        self._signinOptions.standalone = true;
-        self._signinOptions.top = true;
-
-        var specifiedContainer = document.getElementById(self._signinOptions.container);
-        specifiedContainer.innerHTML = mainTmpl();
-      }
-      else {
-        // remove widget container (if exist)
-        $().parent().remove();
-
-        var div = document.createElement('div');
-        div.innerHTML = mainTmpl();
-        document.body.appendChild(div);
-      }
-      
-      self._initialize();
-
-      if (callback && typeof callback === 'function') callback();
-    });
+    var div = document.createElement('div');
+    div.innerHTML = mainTmpl();
+    document.body.appendChild(div);
+  }
+  
+  self._initialize(function () {
+    if (callback && typeof callback === 'function') callback();
   });
 };
 

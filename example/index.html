@@ -23,7 +23,7 @@
 			});
 
 			$('#login-button').on('click', function () {
-				widget.show();
+				widget.show({ resources: { title: 'Sign In with Auth0' } });
             });
 
             $('#login-button-inside-container').on('click', function () {
