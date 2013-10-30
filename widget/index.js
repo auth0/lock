@@ -743,7 +743,10 @@ Auth0Widget.prototype._showSignIn = function () {
   $('div.panel').removeClass('active');
   $('div.overlay').addClass('active');
   $('div.panel.onestep').addClass('active');
-  $('div.overlay').css('position', self._signinOptions.container ? 'inherit' : 'fixed');
+
+  if (self._signinOptions.container) {
+    $('div.active').removeClass('overlay');
+  }
 
   $('.popup h1').html(options.title);
   $('.popup .invalid').removeClass('invalid');
@@ -842,6 +845,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
       if (self._signinOptions.container) {
         self._signinOptions.theme = 'static';
         self._signinOptions.standalone = true;
+        self._signinOptions.top = true;
 
         var specifiedContainer = document.getElementById(self._signinOptions.container);
         specifiedContainer.innerHTML = mainTmpl();
