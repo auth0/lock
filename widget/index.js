@@ -55,12 +55,14 @@ function Auth0Widget (options) {
 // helper methods
 Auth0Widget.prototype._setTop = function () {
   var element = $('.signin div.panel.onestep');
-
+  
   if (!this._signinOptions.top) {
     setTimeout(function() {
-      element.css({
-        'marginTop': '-' + (element.offset().height / 2) + 'px',
-        'top': '50%'
+      element.css({ 
+        //'marginTop': '-' + (element.offset().height / 2) + 'px',
+        //'top': '50%'
+        'marginTop': '2px', 
+        'top': '15%' 
       });
     }, 1);
   } else {
