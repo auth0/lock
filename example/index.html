@@ -4,7 +4,9 @@
 </head>
 <body>
 	<button id="login-button">Login</button>
-	<button id="login-button-spanish">Login (Spanish)</button>
+	<button id="login-button-inside-container">Login (inside a DIV, spanish labels)</button>
+
+	<div id="login-container" style="background-color: pink;"></div>
 
 	<h3>User Info</h3>
 	<pre><code id="userinfo">Not logged in yet</code></pre>
@@ -13,7 +15,27 @@
 	<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script>
 		$(function () {
-		    var access_token = /access_token=([^&]*)/g.exec(window.location.hash);
+	        var widget = new Auth0Widget({
+				domain:      'mdocs.auth0.com',
+			    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
+			    callbackURL: 'http://localhost:3000/'
+			});
+
+			$('#login-button').on('click', function () {
+				widget.show();
+            });
+
+            $('#login-button-inside-container').on('click', function () {
+            	$.getJSON('strings/es-ES.json', function (resources) {
+            		widget.show({ 
+						resources: 	resources,
+						container: 	'login-container'
+					});
+            	});
+            });
+
+            // After login
+            var access_token = /access_token=([^&]*)/g.exec(window.location.hash);
 	        if (access_token) {
 	        	$('#userinfo').text('Loading profile...');
 	            $.ajax({
@@ -28,24 +50,6 @@
 	                }
 	            });
 	        }
-
-	        var widget = new Auth0Widget({
-				domain:      'mdocs.auth0.com',
-			    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
-			    callbackURL: 'http://localhost:3000/'
-			});
-
-			$('#login-button').on('click', function () {
-				widget.show();
-            });
-
-            $('#login-button-spanish').on('click', function () {
-            	$.getJSON('strings/es-ES.json', function (resources) {
-            		widget.show({ 
-						resources: 		resources
-					});
-            	});
-            });
         });
 	</script>
 </body>

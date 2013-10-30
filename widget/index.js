@@ -766,7 +766,6 @@ Auth0Widget.prototype._showSignIn = function () {
     this._showOrHidePassword();
   }
 
-  this._setTop(options.top, $('div.panel.onestep'));
   this._setLoginView({ isReturningUser: this._ssoData.sso });
 };
 
