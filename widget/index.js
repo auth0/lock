@@ -501,7 +501,7 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
 };
 
 // initialize
-Auth0Widget.prototype._initialize = function () {
+Auth0Widget.prototype._initialize = function (cb) {
   // TODO: support css option for non free subscriptions
 
   var self = this;
@@ -624,6 +624,8 @@ Auth0Widget.prototype._initialize = function () {
     self._auth0.getSSOData(function (err, ssoData) {
       self._ssoData = ssoData;
       self._resolveLoginView();
+
+      if (cb && typeof cb === 'function') cb();
     });
   });
 };
@@ -878,9 +880,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     document.body.appendChild(div);
   }
   
-  self._initialize(function () {
-    if (callback && typeof callback === 'function') callback();
-  });
+  self._initialize(callback);
 };
 
 module.exports = Auth0Widget;
