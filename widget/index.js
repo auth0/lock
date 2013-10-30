@@ -73,6 +73,14 @@ Auth0Widget.prototype._setTop = function () {
   }
 };
 
+Auth0Widget.prototype._setCustomValidity = function (input, message) {
+  if (!input) return;
+  if (input.setCustomValidity) {
+    input.setCustomValidity(message);
+  }
+  // TODO: support setCustomValidity in IE9
+};
+
 Auth0Widget.prototype._showError = function (error) {
   if (!error) return;
   $('.signin h1').css('display', 'none');
@@ -746,9 +754,9 @@ Auth0Widget.prototype._resolveLoginView = function () {
         var output = {};
         if (self._isEnterpriseConnection(this.value, output)) {
           var warningText = self._signinOptions.signupEnterpriseEmailWarningText.replace(/{domain}/g, output.domain);
-          this.setCustomValidity(warningText);
+          self._setCustomValidity(this, warningText);
         } else {
-          this.setCustomValidity('');
+          self._setCustomValidity(this, '');
         }
       });
   });
@@ -775,9 +783,9 @@ Auth0Widget.prototype._resolveLoginView = function () {
       i.setAttribute('placeholder', self._signinOptions.resetRepeatPasswordPlaceholder);
       bean.on(i, 'input', function() {
         if ($('.panel .reset .password input').val() != this.value) {
-          this.setCustomValidity(self._signinOptions.resetEnterSamePasswordText);
+          self._setCustomValidity(this, self._signinOptions.resetEnterSamePasswordText);
         } else {
-          this.setCustomValidity('');
+          self._setCustomValidity(this, '');
         }
       });
   });
