@@ -824,7 +824,8 @@ Auth0Widget.prototype._resolveLoginView = function () {
 
   // if user logged in show logged in experience
   if (self._ssoData.sso) {
-    if (self._ssoData.lastUsedUsername) {
+    if (self._ssoData.lastUsedUsername &&
+        self._isEnterpriseStrategy(self._ssoData.lastUsedConnection.strategy)) {
       $('div.panel.onestep input').val(self._ssoData.lastUsedUsername);
       self._showOrHidePassword();
     }
