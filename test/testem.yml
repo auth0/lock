@@ -1,47 +1,48 @@
 test_page: index.html
 
 on_start:
-  command: "PORT=<port> ./run-browserstack"
-  wait_for_text: Tunnel is running
+  command: /usr/bin/java -jar $HOME/.browserstack/BrowserStackTunnel.jar $BROWSERSTACK_KEY localhost,<port>,0 -force
+  wait_for_text: Press Ctrl-C to exit
+  wait_for_text_timeout: 9000
 
 launchers:
 
   bs_firefox:
-    command: browserstack launch --attach firefox:22.0 <url>
+    command: browserstack launch --timeout 60 --attach firefox:22.0 <url>
     protocol: browser
 
   bs_chrome:
-    command: browserstack launch --attach chrome:28.0 <url>
+    command: browserstack launch --timeout 60 --attach chrome:28.0 <url>
     protocol: browser
 
   bs_safari_51:
-    command: browserstack launch --attach safari:5.1 <url>
+    command: browserstack launch --timeout 60 --attach safari:5.1 <url>
     protocol: browser
 
   bs_ie_8:
-    command: browserstack launch --attach ie:8.0 <url>
+    command: browserstack launch --timeout 60 --attach ie:8.0 <url>
     protocol: browser
 
   bs_ie_9:
-    command: browserstack launch --attach ie:9.0 <url>
+    command: browserstack launch --timeout 60 --attach ie:9.0 <url>
     protocol: browser
 
   bs_ie_10:
-    command: browserstack launch --attach ie:10.0 <url>
+    command: browserstack launch --timeout 60 --attach ie:10.0 <url>
     protocol: browser
 
   bs_android_23:
-    command: browserstack launch --attach "Motorola Photon 4G" <url>
+    command: browserstack launch --timeout 60 --attach "Motorola Photon 4G" <url>
     protocol: browser
 
   bs_android_41:
-    command: browserstack launch --attach "Samsung Galaxy S III" <url>
+    command: browserstack launch --timeout 60 --attach "Samsung Galaxy S III" <url>
     protocol: browser
 
   bs_iphone_5:
-    command: browserstack launch --attach "iPhone 5" <url>
+    command: browserstack launch --timeout 60 --attach "iPhone 5" <url>
     protocol: browser
 
-launch_in_ci: [bs_ie_8, bs_iphone_5]
+launch_in_ci: [bs_chrome, bs_firefox, bs_ie_8, bs_ie_9, bs_ie_10, bs_iphone_5, bs_android_41]
 
 launch_in_dev: []

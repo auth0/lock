@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         },
         options: {
           transform: ['browserify-ejs', 'brfs'],
-          debug: true
+          debug: false
         }
       },
     },

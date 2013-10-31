@@ -280,7 +280,7 @@ Auth0Widget.prototype._setLoginView = function(options) {
 
   switch (options.mode) {
     case 'loading':
-      this._setTitle('Please wait...');
+      this._setTitle(this._signinOptions['loadingTitle']);
       container = $('.loading').first();
       break;
     case 'signup':
@@ -543,7 +543,8 @@ Auth0Widget.prototype._initialize = function (cb) {
 
   // labels text
   var options = xtend(this._signinOptions, this._signinOptions.resources);
-  options['title'] = options['title'] || 'Sign In';
+  options['title'] = options['title'] || "Sign In";
+  options['loadingTitle'] = options['loadingTitle'] || "Please wait...";
   options['allButtonTemplate'] = options['allButtonTemplate'] || "Show all";
   options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
   options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";

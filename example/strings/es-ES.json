@@ -1,5 +1,6 @@
 {
 	"title": "Inicie Sesión",
+    "loadingTitle": "Espere por favor...",
     "signInButtonText": "Ingresar", 
     "emailPlaceholder": "Correo", 
     "passwordPlaceholder": "Contraseña",

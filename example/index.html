@@ -4,13 +4,13 @@
 </head>
 <body>
 	<button id="login-button">Login</button>
-	<button id="login-button-inside-container">Login (inside a DIV, spanish labels)</button>
+	<button id="login-button-inside-container">Login (inside a DIV with spanish labels)</button>
 
 	<br><br>
 	<div id="login-container" style="width: 350px;"></div>
 
 	<h3>User Info</h3>
-	<pre><code id="userinfo">Not logged in yet</code></pre>
+	<pre><code id="userinfo">Not logged in yet.</code></pre>
 
 	<script src="auth0-widget.js"></script>
 	<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -35,22 +35,10 @@
             	});
             });
 
-            // After login
-            var access_token = /access_token=([^&]*)/g.exec(window.location.hash);
-	        if (access_token) {
-	        	$('#userinfo').text('Loading profile...');
-	            $.ajax({
-	                url: 'https://api.auth0.com/userinfo?access_token=' + access_token[1],
-	                dataType: 'json',
-	                success: function (data, status, jqHXR) {
-	                    $('#userinfo').text(JSON.stringify(data, 0, 2));
-	                },
-	                error: function (resp) {
-	                    if (resp.status == 401) $('#userinfo').text('Unauthorized');
-	                    else $('#userinfo').text('Error');
-	                }
-	            });
-	        }
+            // After login, show user profile
+            widget.getClient().parseHash(function (profile, id_token, access_token, state) {
+		      $('#userinfo').text(JSON.stringify(profile, 0, 2));
+		    });
         });
 	</script>
 </body>

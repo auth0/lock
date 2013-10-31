@@ -27,7 +27,7 @@
   "dependencies": {
     "bonzo": "~1.3.6",
     "qwery": "~3.4.1",
-    "auth0-js": "~0.2.0",
+    "auth0-js": "~0.2.1",
     "bean": "~1.0.4",
     "xtend": "~2.1.1",
     "underscore": "~1.5.2"
@@ -48,7 +48,6 @@
     "browserify-ejs": "0.0.2",
     "brfs": "0.0.8",
     "mocha-phantomjs": "~3.1.4",
-    "browserstack-cli": "~0.2.14",
     "rimraf": "~2.2.2",
     "testem": "~0.5.4"
   }
