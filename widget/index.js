@@ -541,9 +541,9 @@ Auth0Widget.prototype._initialize = function (cb) {
     }
   });
 
-  // assets from cdn
-  $('.popup .panel header a.close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
-  $('.action .spinner').css('background-image', 'url(' + self._signinOptions.cdn + 'img/spinner.gif)');
+  // assets
+  $('.popup .panel header a.close').css('background-image', 'url(' + self._signinOptions.assetsUrl + 'img/close.png)');
+  $('.action .spinner').css('background-image', 'url(' + self._signinOptions.assetsUrl + 'img/spinner.gif)');
 
   // labels text
   var options = xtend(this._signinOptions, this._signinOptions.resources);
@@ -554,8 +554,8 @@ Auth0Widget.prototype._initialize = function (cb) {
   options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
   options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
 
-  options['icon'] = options['icon'] || self._signinOptions.cdn + "img/logo-32.png";
-  options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
+  options['icon'] = options['icon'] || self._signinOptions.assetsUrl + "img/logo-32.png";
+  options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : true;
   options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
   options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
   options['signupText'] = options['signupText'] || 'Sign Up';
@@ -887,7 +887,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
   var self = this;
   self._signinOptions = xtend(self._options, signinOptions);
-  self._signinOptions.cdn = self._signinOptions.cdn || 'https://d19p4zemcycm7a.cloudfront.net/w2/'; 
+  self._signinOptions.assetsUrl = self._signinOptions.assetsUrl || 'https://d19p4zemcycm7a.cloudfront.net/w2/'; 
   self._auth0Strategies = [];
 
   // widget container
