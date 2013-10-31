@@ -44,7 +44,7 @@ widget.show(options, callback);
 
 #### Options
 
-* __connections__: Array of enabled connections that will be used for the widget- _Default: all enabled connections_.
+* __connections__: Array of enabled connections that will be used for the widget. _Default: all enabled connections_.
 * __container__: The id of the DIV where the widget will be contained.
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
