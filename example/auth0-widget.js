@@ -5957,7 +5957,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
 
   options['icon'] = options['icon'] || self._signinOptions.assetsUrl + "img/logo-32.png";
-  options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : true;
+  options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
   options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
   options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
   options['signupText'] = options['signupText'] || 'Sign Up';
