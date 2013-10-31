@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+var exec = require('child_process').exec;
+
+var testem_proc = exec('testem ci', function (err) {
+  console.log(err);
+  process.exit(0);
+});
+
+var dot_interval;
+function start_dots() {
+  dot_interval = setInterval(function () {
+    process.stdout.write('.');
+  }, 5000);
+}
+
+function restart_dots() {
+  clearInterval(dot_interval);
+  start_dots();
+}
+
+testem_proc.stdout.on('data', function (data) {
+  restart_dots();
+  process.stdout.write(data);
+});
+
+testem_proc.stderr.pipe(process.stderr);
+
+start_dots();

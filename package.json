@@ -13,8 +13,8 @@
   ],
   "scripts": {
     "dev": "grunt dev",
-    "test": "(cd test ; testem ci)",
-    "test-phantom": "./test-phantom",
+    "test": "(cd test ; ./run-tests)",
+    "test-phantom": "(cd test ; testem ci -l PhantomJS)",
     "example": "echo \"open http://localhost:3000\" && grunt example",
     "example_https": "echo \"open https://localhost:3000\" && grunt example_https"
   },
