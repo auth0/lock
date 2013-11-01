@@ -39,12 +39,12 @@ describe('Auth0-Widget', function () {
 
   it('should hide widget when user close it', function (done) {
     widget.show(function () {
-      $('#auth0-widget header a.close')[0].click();
+      bean.fire($('#auth0-widget header a.close')[0], 'click');
 
       setTimeout(function () {
         expect($('#auth0-widget').css('display')).to.equal('none');
         done();
-      }, 700);
+      }, 600);
     });
   });
 
@@ -86,7 +86,7 @@ describe('Auth0-Widget', function () {
       };
 
       widget.show(function () {
-        $('#auth0-widget .notloggedin .iconlist span[data-strategy="google-oauth2"]').trigger('click');
+        bean.fire($('#auth0-widget .notloggedin .iconlist span[data-strategy="google-oauth2"]')[0], 'click');
       });
     });
 
@@ -99,7 +99,7 @@ describe('Auth0-Widget', function () {
       };
 
       widget.show({ extraParameters: { state: 'foo' } }, function () {
-        $('#auth0-widget .notloggedin .iconlist span[data-strategy="google-oauth2"]').trigger('click');
+        bean.fire($('#auth0-widget .notloggedin .iconlist span[data-strategy="google-oauth2"]')[0], 'click');
       });
     });
 
@@ -198,7 +198,7 @@ describe('Auth0-Widget', function () {
   describe('Sign Up with database connection', function () {
     it('should show only signup view when user clicks on signup button', function (done) {
       widget.show(function () {
-        $('#auth0-widget .notloggedin .emailPassword .action a.sign-up')[0].click();
+        bean.fire($('#auth0-widget .notloggedin .emailPassword .action a.sign-up')[0], 'click');
         expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
         expect($('#auth0-widget .loggedin').css('display')).to.equal('none');
         expect($('#auth0-widget .signup').css('display')).to.equal('block');
@@ -216,7 +216,7 @@ describe('Auth0-Widget', function () {
       };
 
       widget.show(function () {
-        $('#auth0-widget .notloggedin .emailPassword .action a.sign-up')[0].click();
+        bean.fire($('#auth0-widget .notloggedin .emailPassword .action a.sign-up')[0], 'click');
         $('#auth0-widget .signup .emailPassword .email input').val('john@fabrikam.com');
         $('#auth0-widget .signup .emailPassword .password input').val('xyz');
         $('#auth0-widget .signup .emailPassword .action button.primary').trigger('click');
@@ -227,7 +227,7 @@ describe('Auth0-Widget', function () {
   describe('Change Password with database connection', function () {
     it('should show reset view when user clicks on change password button', function (done) {
       widget.show(function () {
-        $('#auth0-widget .notloggedin .emailPassword .action a.forgot-pass')[0].click();
+        bean.fire($('#auth0-widget .notloggedin .emailPassword .action a.forgot-pass')[0], 'click');
         expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
         expect($('#auth0-widget .loggedin').css('display')).to.equal('none');
         expect($('#auth0-widget .signup').css('display')).to.equal('none');
@@ -245,7 +245,7 @@ describe('Auth0-Widget', function () {
       };
 
       widget.show(function () {
-        $('#auth0-widget .notloggedin .emailPassword .action a.forgot-pass')[0].click();
+        bean.fire($('#auth0-widget .notloggedin .emailPassword .action a.forgot-pass')[0], 'click');
         $('#auth0-widget .reset .emailPassword .email input').val('john@fabrikam.com');
         $('#auth0-widget .reset .emailPassword .password input').val('xyz');
         $('#auth0-widget .reset .emailPassword .repeatPassword input').val('xyz');

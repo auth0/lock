@@ -12,11 +12,7 @@
     "browser"
   ],
   "scripts": {
-    "dev": "grunt dev",
-    "test": "(cd test ; ./run-tests)",
-    "test-phantom": "(cd test ; testem ci -l PhantomJS)",
-    "example": "echo \"open http://localhost:3000\" && grunt example",
-    "example_https": "echo \"open https://localhost:3000\" && grunt example_https"
+    "test": "grunt integration"
   },
   "repository": {
     "type": "git",
@@ -35,9 +31,9 @@
   "devDependencies": {
     "browserify": "~2.33.0",
     "uglify-js": "~2.4.0",
-    "yarnify": "~0.5.1",
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.9",
+    "grunt-exec": "~0.4.2",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-watch": "~0.2.0",
     "grunt-browserify": "~1.2.8",
@@ -45,10 +41,12 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.7.0",
+    "grunt-s3": "~0.2.0-alpha.3",
     "browserify-ejs": "0.0.2",
     "brfs": "0.0.8",
-    "mocha-phantomjs": "~3.1.4",
     "rimraf": "~2.2.2",
-    "testem": "~0.5.4"
+    "testem": "~0.5.4",
+    "expect.js": "~0.2.0",
+    "mocha": "~1.13.0"
   }
 }

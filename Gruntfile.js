@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     connect: {
       test: {
         options: {
-          base: "test",
+          // base: "test",
           hostname: '0.0.0.0',
           port: 9999
         }
@@ -60,8 +60,24 @@ module.exports = function (grunt) {
       example: {
         files: {
           'example/auth0-widget.js':  'build/auth0-widget.js',
-          'test/auth0-widget.js':     'build/auth0-widget.js'
         }
+      }
+    },
+    exec: {
+      'test-phantom': {
+        cmd: 'testem -f testem_dev.yml ci -l PhantomJS',
+        stdout: true,
+        stderr: true
+      },
+      'test-desktop': {
+        cmd: 'testem ci -l bs_chrome,bs_firefox,bs_ie_8,bs_ie_9,bs_ie_10',
+        stdout: true,
+        stderr: true
+      },
+      'test-mobile': {
+        cmd: 'testem ci -l bs_iphone_5', //disable ,bs_android_41: is not working
+        stdout: true,
+        stderr: true
       }
     },
     clean: {
@@ -71,6 +87,30 @@ module.exports = function (grunt) {
       another: {
         files: ['node_modules', 'standalone.js', 'widget/index.js', 'widget/html/*.html', 'widget/js/*.js', 'widget/css/*.less', 'widget/css/themes/*.less'],
         tasks: ['build']
+      }
+    },
+    s3: {
+      options: {
+        key:    process.env.S3_KEY,
+        secret: process.env.S3_SECRET,
+        bucket: process.env.S3_BUCKET,
+        access: 'public-read',
+        headers: {
+          'Cache-Control': 'public, max-age=300',
+        }
+      },
+      publish: {
+        upload: [
+          {
+            src:  'build/auth0.min.js',
+            dest: 'w2/auth0-widget.min.js',
+            options: { gzip: true }
+          },
+          {
+            src:  'build/auth0.js',
+            dest: 'w2/auth0-widget.js'
+          },
+        ]
       }
     }
   });
@@ -84,4 +124,7 @@ module.exports = function (grunt) {
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
+  grunt.registerTask("test",          ["exec:test-phantom"]);
+  grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
+  grunt.registerTask("cdn",           ["s3"]);
 };
