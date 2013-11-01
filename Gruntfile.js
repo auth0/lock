@@ -37,6 +37,15 @@ module.exports = function (grunt) {
           debug: false
         }
       },
+      debug: {
+        files: {
+          'build/auth0-widget.debug.js': ['widget/js/placeholders.js', 'standalone.js']
+        },
+        options: {
+          transform: ['browserify-ejs', 'brfs'],
+          debug: true
+        }
+      },
     },
     uglify: {
       min: {
@@ -120,7 +129,7 @@ module.exports = function (grunt) {
     if (key !== "grunt" && key.indexOf("grunt") === 0) grunt.loadNpmTasks(key);
   }
 
-  grunt.registerTask("build",         ["clean", "less:dist", "browserify:dist", "uglify:min", "copy:example"]);
+  grunt.registerTask("build",         ["clean", "less:dist", "browserify:dist", "browserify:debug", "uglify:min", "copy:example"]);
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);

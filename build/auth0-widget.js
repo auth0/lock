@@ -5458,10 +5458,6 @@ Auth0Widget.prototype._showSuccess = function (message) {
   $('.signin .success').html(message).css('display', '');
 };
 
-Auth0Widget.prototype._isAuth0Conn = function (strategy) {
-  return strategy === 'auth0' || strategy === 'auth0-adldap';
-};
-
 Auth0Widget.prototype._setTitle = function(title) {
   $('.signin .error').css('display', 'none');
   $('.signin .success').css('display', 'none');
@@ -5478,7 +5474,7 @@ Auth0Widget.prototype._isAdLdapConn = function (connection) {
 
 Auth0Widget.prototype._areThereAnySocialConn = function () {
   for (var s in this._client.strategies) {
-    if (this._strategies[this._client.strategies[s].name] && this._strategies[this._client.strategies[s].name].social) {
+    if (this._client.strategies[s] && this._client.strategies[s].social) {
       return true;
     }
   }
@@ -5488,8 +5484,7 @@ Auth0Widget.prototype._areThereAnySocialConn = function () {
 
 Auth0Widget.prototype._areThereAnyEnterpriseOrDbConn = function() {
   for (var s in this._client.strategies) {
-    if (this._strategies[this._client.strategies[s].name] &&
-        !this._strategies[this._client.strategies[s].name].social) {
+    if (this._client.strategies[s] && !this._client.strategies[s].social) {
       return true;
     }
   }
@@ -5503,7 +5498,7 @@ Auth0Widget.prototype._isEnterpriseConnection = function (email, output) {
 
   for (var s in this._client.strategies) {
     var strategy = this._client.strategies[s];
-    if (this._isAuth0Conn(strategy.name)) continue;
+    if (strategy.userAndPass) continue;
 
     for (var c in strategy.connections) {
       if (emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
@@ -5511,16 +5506,6 @@ Auth0Widget.prototype._isEnterpriseConnection = function (email, output) {
         output.domain = strategy.connections[c].domain;
         return true;
       }
-    }
-  }
-
-  return false;
-};
-
-Auth0Widget.prototype._isEnterpriseStrategy = function (strategy) {
-  for (var s in this._strategies) {
-    if (s === strategy && !this._strategies[s].social) {
-      return true;
     }
   }
 
@@ -5677,7 +5662,8 @@ Auth0Widget.prototype._setLoginView = function(options) {
 
 Auth0Widget.prototype._showLoggedInExperience = function() {
   var self = this;
-  var strategy = this._ssoData.lastUsedConnection.strategy;
+  var strategy_name = this._ssoData.lastUsedConnection.strategy;
+  var strategy = this._strategies[strategy_name];
   this._setLoginView({ isReturningUser: !!strategy });
 
   if (!strategy) return;
@@ -5689,12 +5675,12 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   if (strategy !== 'auth0') {
     button = bonzo(bonzo.create('<span></span>'))
       .attr('tabindex', 0)
-      .attr('data-strategy', strategy)
-      .attr('title', this._strategies[strategy].name)
+      .attr('data-strategy', strategy_name)
+      .attr('title', strategy.title)
       .addClass('zocial').addClass('block')
-      .addClass(this._strategies[strategy].css)
-      .addClass(this._strategies[strategy].imageicon ? 'image-icon' : '')
-      .html(this._strategies[strategy].name);
+      .addClass(strategy.css)
+      .addClass(strategy.imageicon ? 'image-icon' : '')
+      .html(strategy.title);
 
     bean.on(button[0], 'click', function (e) { self._signInSocial(e.target); });
 
@@ -5714,9 +5700,9 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
       $('.email input', loginView).css('display', 'none');
       $('.emailPassword', loginView).css('display', '');
     }
-    else if (this._isEnterpriseStrategy(strategy)) {
-      button.html(this._ssoData.lastUsedUsername || this._strategies[strategy].name)
-            .attr('title', this._ssoData.lastUsedUsername || this._strategies[strategy].name);
+    else if (!strategy.social) {
+      button.html(this._ssoData.lastUsedUsername || strategy.title)
+            .attr('title', this._ssoData.lastUsedUsername || strategy.title);
     }
   }
 };
@@ -5751,7 +5737,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   for (var s in this._client.strategies) {
     strategy = this._client.strategies[s];
 
-    if (this._isAuth0Conn(strategy.name)) continue;
+    if (strategy.userAndPass) continue;
 
     for (var c in strategy.connections) {
       if(!emailP && emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
@@ -6042,22 +6028,22 @@ Auth0Widget.prototype._resolveLoginView = function () {
   for (var s in this._client.strategies) {
     var strategy = this._client.strategies[s];
 
-    if (this._isAuth0Conn(strategy.name) && strategy.connections.length > 0) {
+    if (strategy.userAndPass && strategy.connections.length > 0) {
       this._auth0Strategies.push(strategy);
       $('.create-account, .password').css('display', 'block');
 
       bean.on($('.notloggedin .email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
     }
 
-    if (this._strategies[strategy.name] && this._strategies[strategy.name].social) {
+    if (strategy.social) {
       var button = bonzo(bonzo.create('<span></span>'))
         .attr('tabindex', 0)
         .attr('data-strategy', strategy.name)
-        .attr('title', this._strategies[strategy.name].name)
+        .attr('title', strategy.title)
         .addClass('zocial').addClass('icon')
-        .addClass(this._strategies[strategy.name].css)
-        .addClass(this._strategies[strategy.name].imageicon ? 'image-icon' : '')
-        .html(this._strategies[strategy.name].name);
+        .addClass(strategy.css)
+        .addClass(strategy.imageicon ? 'image-icon' : '')
+        .html(strategy.title);
 
       list.append(button);
       list.css('display', 'block');
@@ -6193,7 +6179,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   // if user logged in show logged in experience
   if (self._ssoData.sso) {
     if (self._ssoData.lastUsedUsername &&
-        self._isEnterpriseStrategy(self._ssoData.lastUsedConnection.strategy)) {
+        self._strategies[self._ssoData.lastUsedConnection.strategy].social) {
       $('div.panel.onestep input').val(self._ssoData.lastUsedUsername);
       self._showOrHidePassword();
     }
@@ -6209,19 +6195,20 @@ Auth0Widget.prototype._resolveLoginView = function () {
 
 Auth0Widget.prototype._getConfiguredStrategies = function (conns) {
   var strategies = [];
+  var self = this;
   for (var conn in conns) {
     if (typeof(conns[conn].status) !== 'undefined' && !conns[conn].status) continue;
 
+    var strategy_name = conns[conn].strategy;
     var strategy = _.filter(strategies, function (s) {
-      return s.name === conns[conn].strategy;
+      return s.name === strategy_name;
     })[0];
 
     if (!strategy) {
-      strategy = {
-        name: conns[conn].strategy,
-        connections: []
-      };
-
+      strategy = xtend({
+        connections: [],
+        name: strategy_name,
+      }, self._strategies[strategy_name]);
       strategies.push(strategy);
     }
 
@@ -6276,137 +6263,241 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
 module.exports = Auth0Widget;
 
+<<<<<<< HEAD
 },{"./html/main.html":25,"./strategies":28,"auth0-js":5,"bean":13,"bonzo":14,"qwery":16,"underscore":17,"xtend":19}],27:[function(require,module,exports){
+=======
+},{"./html/main.html":25,"./strategies":28,"auth0-js":2,"bean":13,"bonzo":14,"qwery":16,"underscore":17,"xtend":19}],27:[function(require,module,exports){
+>>>>>>> minor
 /* Placeholders.js v3.0.0 */
 (function(t){"use strict";function e(t,e,r){return t.addEventListener?t.addEventListener(e,r,!1):t.attachEvent?t.attachEvent("on"+e,r):void 0}function r(t,e){var r,n;for(r=0,n=t.length;n>r;r++)if(t[r]===e)return!0;return!1}function n(t,e){var r;t.createTextRange?(r=t.createTextRange(),r.move("character",e),r.select()):t.selectionStart&&(t.focus(),t.setSelectionRange(e,e))}function a(t,e){try{return t.type=e,!0}catch(r){return!1}}t.Placeholders={Utils:{addEventListener:e,inArray:r,moveCaret:n,changeType:a}}})(this),function(t){"use strict";function e(){}function r(t,e){var r,n,a=!!e&&t.value!==e,u=t.value===t.getAttribute(V);return(a||u)&&"true"===t.getAttribute(D)?(t.removeAttribute(D),t.value=t.value.replace(t.getAttribute(V),""),t.className=t.className.replace(R,""),n=t.getAttribute(z),n&&(t.setAttribute("maxLength",n),t.removeAttribute(z)),r=t.getAttribute(I),r&&(t.type=r),!0):!1}function n(t){var e,r,n=t.getAttribute(V);return""===t.value&&n?(t.setAttribute(D,"true"),t.value=n,t.className+=" "+k,r=t.getAttribute(z),r||(t.setAttribute(z,t.maxLength),t.removeAttribute("maxLength")),e=t.getAttribute(I),e?t.type="text":"password"===t.type&&K.changeType(t,"text")&&t.setAttribute(I,"password"),!0):!1}function a(t,e){var r,n,a,u,i;if(t&&t.getAttribute(V))e(t);else for(r=t?t.getElementsByTagName("input"):p,n=t?t.getElementsByTagName("textarea"):b,i=0,u=r.length+n.length;u>i;i++)a=r.length>i?r[i]:n[i-r.length],e(a)}function u(t){a(t,r)}function i(t){a(t,n)}function l(t){return function(){m&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)?K.moveCaret(t,0):r(t)}}function o(t){return function(){n(t)}}function c(t){return function(e){return f=t.value,"true"===t.getAttribute(D)&&f===t.getAttribute(V)&&K.inArray(C,e.keyCode)?(e.preventDefault&&e.preventDefault(),!1):void 0}}function s(t){return function(){r(t,f),""===t.value&&(t.blur(),K.moveCaret(t,0))}}function d(t){return function(){t===document.activeElement&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)&&K.moveCaret(t,0)}}function g(t){return function(){u(t)}}function v(t){t.form&&(L=t.form,L.getAttribute(P)||(K.addEventListener(L,"submit",g(L)),L.setAttribute(P,"true"))),K.addEventListener(t,"focus",l(t)),K.addEventListener(t,"blur",o(t)),m&&(K.addEventListener(t,"keydown",c(t)),K.addEventListener(t,"keyup",s(t)),K.addEventListener(t,"click",d(t))),t.setAttribute(U,"true"),t.setAttribute(V,E),(m||t!==document.activeElement)&&n(t)}var p,b,m,h,f,A,y,E,x,L,T,N,S,w=["text","search","url","tel","email","password","number","textarea"],C=[27,33,34,35,36,37,38,39,40,8,46],B="#ccc",k="placeholdersjs",R=RegExp("(?:^|\\s)"+k+"(?!\\S)"),V="data-placeholder-value",D="data-placeholder-active",I="data-placeholder-type",P="data-placeholder-submit",U="data-placeholder-bound",j="data-placeholder-focus",q="data-placeholder-live",z="data-placeholder-maxlength",F=document.createElement("input"),G=document.getElementsByTagName("head")[0],H=document.documentElement,J=t.Placeholders,K=J.Utils;if(J.nativeSupport=void 0!==F.placeholder,!J.nativeSupport){for(p=document.getElementsByTagName("input"),b=document.getElementsByTagName("textarea"),m="false"===H.getAttribute(j),h="false"!==H.getAttribute(q),A=document.createElement("style"),A.type="text/css",y=document.createTextNode("."+k+" { color:"+B+"; }"),A.styleSheet?A.styleSheet.cssText=y.nodeValue:A.appendChild(y),G.insertBefore(A,G.firstChild),S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E&&(E=E.nodeValue,E&&K.inArray(w,T.type)&&v(T));x=setInterval(function(){for(S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E?(E=E.nodeValue,E&&K.inArray(w,T.type)&&(T.getAttribute(U)||v(T),(E!==T.getAttribute(V)||"password"===T.type&&!T.getAttribute(I))&&("password"===T.type&&!T.getAttribute(I)&&K.changeType(T,"text")&&T.setAttribute(I,"password"),T.value===T.getAttribute(V)&&(T.value=E),T.setAttribute(V,E)))):T.getAttribute(D)&&(r(T),T.removeAttribute(V));h||clearInterval(x)},100)}J.disable=J.nativeSupport?e:u,J.enable=J.nativeSupport?e:i}(this);
 },{}],28:[function(require,module,exports){
 module.exports = {
     'google-openid': {
         css: 'google',
+<<<<<<< HEAD
         name: 'Google OpenId',
+=======
+        title: 'Google OpenId',
+>>>>>>> minor
         social: true
     },
     'google-apps': {
         css: 'google',
+<<<<<<< HEAD
         name: 'Google Apps',
+=======
+        title: 'Google Apps',
+>>>>>>> minor
         social: false
     },
     'google-oauth2': {
         css: 'googleplus',
+<<<<<<< HEAD
         name: 'Google',
+=======
+        title: 'Google',
+>>>>>>> minor
         social: true
     },
     'facebook': {
         css: 'facebook',
+<<<<<<< HEAD
         name: 'Facebook',
+=======
+        title: 'Facebook',
+>>>>>>> minor
         social: true
     },
     'windowslive': {
         css: 'windows',
+<<<<<<< HEAD
         name: 'Microsoft Account',
+=======
+        title: 'Microsoft Account',
+>>>>>>> minor
         social: true
     },
     'linkedin': {
         css: 'linkedin',
+<<<<<<< HEAD
         name: 'LinkedIn',
+=======
+        title: 'LinkedIn',
+>>>>>>> minor
         social: true
     },
     'github': {
         css: 'github',
+<<<<<<< HEAD
         name: 'GitHub',
+=======
+        title: 'GitHub',
+>>>>>>> minor
         social: true
     },
     'paypal': {
         css: 'paypal',
+<<<<<<< HEAD
         name: 'PayPal',
+=======
+        title: 'PayPal',
+>>>>>>> minor
         social: true
     },
     'twitter': {
         css: 'twitter',
+<<<<<<< HEAD
         name: 'Twitter',
+=======
+        title: 'Twitter',
+>>>>>>> minor
         social: true
     },
     'amazon': {
         css: 'amazon',
+<<<<<<< HEAD
         name: 'Amazon',
+=======
+        title: 'Amazon',
+>>>>>>> minor
         social: true
     },
     'vkontakte': {
         css: 'vk',
+<<<<<<< HEAD
         name: 'vKontakte',
+=======
+        title: 'vKontakte',
+>>>>>>> minor
         social: true
     },
     'yandex': {
         css: 'yandex',
+<<<<<<< HEAD
         name: 'Yandex',
+=======
+        title: 'Yandex',
+>>>>>>> minor
         social: true
     },
     'office365': {
         css: 'office365',
+<<<<<<< HEAD
         name: 'Office365',
+=======
+        title: 'Office365',
+>>>>>>> minor
         social: false
     },
     'waad': {
         css: 'waad',
+<<<<<<< HEAD
         name: 'Windows Azure AD',
+=======
+        title: 'Windows Azure AD',
+>>>>>>> minor
         social: false
     },
     'adfs': {
         css: 'windows',
+<<<<<<< HEAD
         name: 'ADFS',
+=======
+        title: 'ADFS',
+>>>>>>> minor
         social: false
     },
     'samlp': {
         css: 'guest',
+<<<<<<< HEAD
         name: 'SAML',
+=======
+        title: 'SAML',
+>>>>>>> minor
         social: false
     },
     'mscrm': {
         css: 'guest',
+<<<<<<< HEAD
         name: 'Dynamics CRM',
+=======
+        title: 'Dynamics CRM',
+>>>>>>> minor
         social: false
     },
     'ad': {
         css: 'windows',
+<<<<<<< HEAD
         name: 'AD / LDAP',
+=======
+        title: 'AD / LDAP',
+>>>>>>> minor
         social: false
     },
     'custom': {
         css: 'guest',
+<<<<<<< HEAD
         name: 'Custom Auth',
+=======
+        title: 'Custom Auth',
+>>>>>>> minor
         social: false
     },
     'auth0': {
         css: 'guest',
+<<<<<<< HEAD
         name: 'Auth0',
+=======
+        title: 'Auth0',
+>>>>>>> minor
         social: false,
         userAndPass: true
     },
     'auth0-adldap': {
         css: 'guest',
+<<<<<<< HEAD
         name: 'AD/LDAP',
+=======
+        title: 'AD/LDAP',
+>>>>>>> minor
         social: false,
         userAndPass: true
     },
     'thirtysevensignals': {
         css: 'thirtysevensignals',
+<<<<<<< HEAD
         name: '37 Signals',
+=======
+        title: '37 Signals',
+>>>>>>> minor
         social: true
     },
     'box': {
         css: 'box',
+<<<<<<< HEAD
         name: 'Box',
+=======
+        title: 'Box',
+>>>>>>> minor
         social: true,
         imageicon: true
     },
     'salesforce': {
         css: 'salesforce',
+<<<<<<< HEAD
         name: 'Salesforce',
+=======
+        title: 'Salesforce',
+>>>>>>> minor
         social: true
     },
     'fitbit': {
         css: 'fitbit',
+<<<<<<< HEAD
         name: 'Fitbit',
+=======
+        title: 'Fitbit',
+>>>>>>> minor
         social: true
     }
 };

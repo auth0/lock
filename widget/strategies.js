@@ -1,130 +1,130 @@
 module.exports = {
     'google-openid': {
         css: 'google',
-        name: 'Google OpenId',
+        title: 'Google OpenId',
         social: true
     },
     'google-apps': {
         css: 'google',
-        name: 'Google Apps',
+        title: 'Google Apps',
         social: false
     },
     'google-oauth2': {
         css: 'googleplus',
-        name: 'Google',
+        title: 'Google',
         social: true
     },
     'facebook': {
         css: 'facebook',
-        name: 'Facebook',
+        title: 'Facebook',
         social: true
     },
     'windowslive': {
         css: 'windows',
-        name: 'Microsoft Account',
+        title: 'Microsoft Account',
         social: true
     },
     'linkedin': {
         css: 'linkedin',
-        name: 'LinkedIn',
+        title: 'LinkedIn',
         social: true
     },
     'github': {
         css: 'github',
-        name: 'GitHub',
+        title: 'GitHub',
         social: true
     },
     'paypal': {
         css: 'paypal',
-        name: 'PayPal',
+        title: 'PayPal',
         social: true
     },
     'twitter': {
         css: 'twitter',
-        name: 'Twitter',
+        title: 'Twitter',
         social: true
     },
     'amazon': {
         css: 'amazon',
-        name: 'Amazon',
+        title: 'Amazon',
         social: true
     },
     'vkontakte': {
         css: 'vk',
-        name: 'vKontakte',
+        title: 'vKontakte',
         social: true
     },
     'yandex': {
         css: 'yandex',
-        name: 'Yandex',
+        title: 'Yandex',
         social: true
     },
     'office365': {
         css: 'office365',
-        name: 'Office365',
+        title: 'Office365',
         social: false
     },
     'waad': {
         css: 'waad',
-        name: 'Windows Azure AD',
+        title: 'Windows Azure AD',
         social: false
     },
     'adfs': {
         css: 'windows',
-        name: 'ADFS',
+        title: 'ADFS',
         social: false
     },
     'samlp': {
         css: 'guest',
-        name: 'SAML',
+        title: 'SAML',
         social: false
     },
     'mscrm': {
         css: 'guest',
-        name: 'Dynamics CRM',
+        title: 'Dynamics CRM',
         social: false
     },
     'ad': {
         css: 'windows',
-        name: 'AD / LDAP',
+        title: 'AD / LDAP',
         social: false
     },
     'custom': {
         css: 'guest',
-        name: 'Custom Auth',
+        title: 'Custom Auth',
         social: false
     },
     'auth0': {
         css: 'guest',
-        name: 'Auth0',
+        title: 'Auth0',
         social: false,
         userAndPass: true
     },
     'auth0-adldap': {
         css: 'guest',
-        name: 'AD/LDAP',
+        title: 'AD/LDAP',
         social: false,
         userAndPass: true
     },
     'thirtysevensignals': {
         css: 'thirtysevensignals',
-        name: '37 Signals',
+        title: '37 Signals',
         social: true
     },
     'box': {
         css: 'box',
-        name: 'Box',
+        title: 'Box',
         social: true,
         imageicon: true
     },
     'salesforce': {
         css: 'salesforce',
-        name: 'Salesforce',
+        title: 'Salesforce',
         social: true
     },
     'fitbit': {
         css: 'fitbit',
-        name: 'Fitbit',
+        title: 'Fitbit',
         social: true
     }
 };
