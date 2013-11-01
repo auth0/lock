@@ -77,24 +77,48 @@ describe('Auth0-Widget', function () {
     });
   });
 
-  it('should use domain as assetsUrl if domain is not *.auth0.com', function () {
-    var widget = new Auth0Widget({
-      domain:      'abc.contoso.com',
-      clientID:    clientID, 
-      callbackURL: callbackURL
+  describe('When assetsUrl option is not specified', function () {
+    it('should use domain as assetsUrl if domain is not *.auth0.com', function () {
+      var widget = new Auth0Widget({
+        domain:      'abc.contoso.com',
+        clientID:    clientID, 
+        callbackURL: callbackURL
+      });
+
+      expect(widget._options.assetsUrl).to.equal('https://abc.contoso.com/');
     });
 
-    expect(widget._options.assetsUrl).to.equal('https://abc.contoso.com/');
+    it('should use default assetsUrl if domain is *.auth0.com', function () {
+      var widget = new Auth0Widget({
+        domain:      'abc.auth0.com',
+        clientID:    clientID, 
+        callbackURL: callbackURL
+      });
+
+      expect(widget._options.assetsUrl).to.equal('https://s3.amazonaws.com/assets.auth0.com/');
+    });
   });
 
-  it('should use default assetsUrl if domain is *.auth0.com', function () {
-    var widget = new Auth0Widget({
-      domain:      'abc.auth0.com',
-      clientID:    clientID, 
-      callbackURL: callbackURL
+  describe('When cdn option is not specified', function () {
+    it('should use domain as cdn if domain is not *.auth0.com', function () {
+      var widget = new Auth0Widget({
+        domain:      'abc.contoso.com',
+        clientID:    clientID, 
+        callbackURL: callbackURL
+      });
+
+      expect(widget._options.cdn).to.equal('https://abc.contoso.com/');
     });
 
-    expect(widget._options.assetsUrl).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
+    it('should use default cdn if domain is *.auth0.com', function () {
+      var widget = new Auth0Widget({
+        domain:      'abc.auth0.com',
+        clientID:    clientID, 
+        callbackURL: callbackURL
+      });
+
+      expect(widget._options.cdn).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
+    });
   });
 
   describe('Sign In', function () {

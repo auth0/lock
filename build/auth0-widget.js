@@ -5419,6 +5419,12 @@ function Auth0Widget (options) {
 
   if (!this._options.assetsUrl) {
     this._options.assetsUrl = endsWith(this._options.domain, '.auth0.com') ?
+      'https://s3.amazonaws.com/assets.auth0.com/' :
+      'https://' + this._options.domain + '/';
+  }
+
+  if (!this._options.cdn) {
+    this._options.cdn = endsWith(this._options.domain, '.auth0.com') ?
       'https://d19p4zemcycm7a.cloudfront.net/w2/' :
       'https://' + this._options.domain + '/';
   }
@@ -5899,9 +5905,9 @@ Auth0Widget.prototype._initialize = function (cb) {
     }
   });
 
-  // assets
-  $('.popup .panel header a.close').css('background-image', 'url(' + self._signinOptions.assetsUrl + 'img/close.png)');
-  $('.action .spinner').css('background-image', 'url(' + self._signinOptions.assetsUrl + 'img/spinner.gif)');
+  // images from cdn
+  $('.popup .panel header a.close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
+  $('.action .spinner').css('background-image', 'url(' + self._signinOptions.cdn + 'img/spinner.gif)');
 
   // labels text
   var options = xtend(this._signinOptions, this._signinOptions.resources);
@@ -5912,7 +5918,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
   options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
 
-  options['icon'] = options['icon'] || self._signinOptions.assetsUrl + "img/logo-32.png";
+  options['icon'] = options['icon'] || self._signinOptions.cdn + "img/logo-32.png";
   options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
   options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
   options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
