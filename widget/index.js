@@ -11,19 +11,28 @@ var $ = function (selector, root) {
   return bonzo(qwery('#auth0-widget ' + (selector || ''), root));
 };
 
+var endsWith = function (str, suffix) {
+  return str.indexOf(suffix, str.length - suffix.length) !== -1;
+};
+
 function Auth0Widget (options) {
   if (!(this instanceof Auth0Widget)) {
     return new Auth0Widget(options);
   }
 
   this._options = options;
+  this._strategies = strategies;
   this._auth0 = new Auth0({
     clientID:     this._options.clientID,
     callbackURL:  this._options.callbackURL,
     domain:       this._options.domain
   });
 
-  this._strategies = strategies;
+  if (!this._options.assetsUrl) {
+    this._options.assetsUrl = endsWith(this._options.domain, '.auth0.com') ?
+      'https://d19p4zemcycm7a.cloudfront.net/w2/' :
+      'https://' + this._options.domain + '/';
+  }
 }
 
 // helper methods
@@ -848,7 +857,6 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
   var self = this;
   self._signinOptions = xtend(self._options, signinOptions);
-  self._signinOptions.assetsUrl = self._signinOptions.assetsUrl || 'https://d19p4zemcycm7a.cloudfront.net/w2/';
   self._auth0Strategies = [];
 
   // widget container

@@ -77,6 +77,26 @@ describe('Auth0-Widget', function () {
     });
   });
 
+  it('should use domain as assetsUrl if domain is not *.auth0.com', function () {
+    var widget = new Auth0Widget({
+      domain:      'abc.contoso.com',
+      clientID:    clientID, 
+      callbackURL: callbackURL
+    });
+
+    expect(widget._options.assetsUrl).to.equal('https://abc.contoso.com/');
+  });
+
+  it('should use default assetsUrl if domain is *.auth0.com', function () {
+    var widget = new Auth0Widget({
+      domain:      'abc.auth0.com',
+      clientID:    clientID, 
+      callbackURL: callbackURL
+    });
+
+    expect(widget._options.assetsUrl).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
+  });
+
   describe('Sign In', function () {
     it('should signin with social connection', function (done) {
       client.login = function (options) {
