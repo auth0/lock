@@ -14,16 +14,80 @@ module.exports = function (css) {
 };
 
 },{}],2:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var assert_required   = require('./lib/assert_required');
-var base64_url_decode = require('./lib/base64_url_decode');
+var json_parse = require('./json_parse');
+
+function LoginError(status, details) {
+  var obj;
+
+  if (typeof details == 'string') {
+    try {
+      obj = json_parse(details);
+    } catch (er) {
+      obj = {message: details};
+    }
+  } else {
+    obj = details;
+  }
+
+  var err = Error.call(this, obj.description || obj.message || obj.error);
+
+  err.status = status;
+  err.name = obj.code;
+  err.code = obj.code;
+  err.details = obj;
+
+  if (status === 0) {
+    err.code = "Unknown";
+    err.message = "Unknown error.";
+  }
+
+  return err;
+}
+
+if (Object && Object.create) {
+  LoginError.prototype = Object.create(Error.prototype, {
+    constructor: { value: LoginError }
+  });
+}
+
+module.exports = LoginError;
+},{"./json_parse":6}],3:[function(require,module,exports){
+module.exports = function (obj, prop) {
+  if (!obj[prop]) {
+    throw new Error(prop + ' is required.');
+  }
+};
+},{}],4:[function(require,module,exports){
+var Base64 = require('Base64');
+
+module.exports = function(str) {
+  var output = str.replace("-", "+").replace("_", "/");
+  switch (output.length % 4) {
+    case 0:
+      break;
+    case 2:
+      output += "==";
+      break;
+    case 3:
+      output += "=";
+      break;
+    default:
+      throw "Illegal base64url string!";
+  }
+  return Base64.atob(output);
+};
+},{"Base64":8}],5:[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var assert_required   = require('./assert_required');
+var base64_url_decode = require('./base64_url_decode');
 var qs                = require('qs');
+var xtend             = require('xtend');
 var reqwest           = require('reqwest');
 
 var jsonp             = require('jsonp');
 
-var use_jsonp         = require('./lib/use_jsonp');
-var LoginError        = require('./lib/LoginError');
-var json_parse        = require('./lib/json_parse');
+var use_jsonp         = require('./use_jsonp');
+var LoginError        = require('./LoginError');
+var json_parse        = require('./json_parse');
 
 function Auth0 (options) {
   if (!(this instanceof Auth0)) {
@@ -58,6 +122,13 @@ Auth0.prototype._isAdLdapConnection = function (connection) {
   return connection === 'adldap';
 };
 
+Auth0.prototype._getDefaultParameters = function () {
+  return {
+    response_type: 'code',
+    scope:         'openid profile'
+  };
+};
+
 Auth0.prototype.parseHash = function (callback) {
   if(!window.location.hash.match(/access_token/)) return;
   var hash = window.location.hash.substr(1);
@@ -71,22 +142,15 @@ Auth0.prototype.parseHash = function (callback) {
 Auth0.prototype.signup = function (options, callback) {
   var self = this;
 
-  var query = {
-    response_type: 'token',
-    client_id:     this._clientID,
-    connection:    options.connection,
-    redirect_uri:  this._callbackURL,
-    scope:         'openid profile'
-  };
-
-  if (options.state) {
-    query.state = options.state;
-  }
-
-  query.email = options.username || options.email;
-  query.password = options.password;
-
-  query.tenant = this._domain.split('.')[0];
+  var query = xtend(
+    this._getDefaultParameters(), 
+    options,
+    { 
+      client_id: this._clientID, 
+      redirect_uri: this._callbackURL, 
+      email: options.username || options.email,
+      tenant: this._domain.split('.')[0]
+    });
 
   function success () {
     if ('auto_login' in options && !options.auto_login) {
@@ -178,17 +242,10 @@ Auth0.prototype.login = function (options, callback) {
     return this.loginWithUsernamePassword(options, callback);
   }
 
-  var query = {
-    response_type: 'token',
-    client_id:     this._clientID,
-    connection:    options.connection,
-    redirect_uri:  this._callbackURL,
-    scope:         'openid profile'
-  };
-
-  if (options.state) {
-    query.state = options.state;
-  }
+  var query = xtend(
+    this._getDefaultParameters(), 
+    options,
+    { client_id: this._clientID, redirect_uri: this._callbackURL });
 
   this._redirect('https://' + this._domain + '/authorize?' + qs.stringify(query));
 };
@@ -196,22 +253,15 @@ Auth0.prototype.login = function (options, callback) {
 Auth0.prototype.loginWithUsernamePassword = function (options, callback) {
   var self = this;
 
-  var query = {
-    response_type: 'token',
-    client_id:     this._clientID,
-    connection:    options.connection,
-    redirect_uri:  this._callbackURL,
-    scope:         'openid profile'
-  };
-
-  if (options.state) {
-    query.state = options.state;
-  }
-
-  query.username = options.username || options.email;
-  query.password = options.password;
-
-  query.tenant = this._domain.split('.')[0];
+  var query = xtend(
+    this._getDefaultParameters(), 
+    options,
+    { 
+      client_id: this._clientID, 
+      redirect_uri: this._callbackURL, 
+      username: options.username || options.email,
+      tenant: this._domain.split('.')[0]
+    });
 
   function return_error (error) {
     if (callback)      return callback(error);
@@ -278,77 +328,14 @@ Auth0.prototype.getConnections = function (callback) {
 
 module.exports = Auth0;
 
-},{"./lib/LoginError":3,"./lib/assert_required":4,"./lib/base64_url_decode":5,"./lib/json_parse":6,"./lib/use_jsonp":7,"jsonp":10,"qs":11,"reqwest":12}],3:[function(require,module,exports){
-var json_parse = require('./json_parse');
-
-function LoginError(status, details) {
-  var obj;
-
-  if (typeof details == 'string') {
-    try {
-      obj = json_parse(details);
-    } catch (er) {
-      obj = {message: details};      
-    }
-  } else {
-    obj = details;
-  }
-
-  var err = Error.call(this, obj.description || obj.message || obj.error);
-
-  err.status = status;
-  err.name = obj.code;
-  err.code = obj.code;
-  err.details = obj;
-  
-  if (status === 0) {
-    err.code = "Unknown";
-    err.message = "Unknown error.";
-  }
-
-  return err;
-}
-
-if (Object && Object.create) {
-  LoginError.prototype = Object.create(Error.prototype, { 
-    constructor: { value: LoginError } 
-  });
-}
-
-module.exports = LoginError;
-},{"./json_parse":6}],4:[function(require,module,exports){
-module.exports = function (obj, prop) {
-  if (!obj[prop]) {
-    throw new Error(prop + ' is required.');
-  }
-};
-},{}],5:[function(require,module,exports){
-var Base64 = require('Base64');
-
-module.exports = function(str) {
-  var output = str.replace("-", "+").replace("_", "/");
-  switch (output.length % 4) {
-    case 0:
-      break;
-    case 2:
-      output += "==";
-      break;
-    case 3:
-      output += "=";
-      break;
-    default:
-      throw "Illegal base64url string!";
-  }
-  return Base64.atob(output);
-};
-},{"Base64":8}],6:[function(require,module,exports){
+},{"./LoginError":2,"./assert_required":3,"./base64_url_decode":4,"./json_parse":6,"./use_jsonp":7,"jsonp":10,"qs":11,"reqwest":12,"xtend":19}],6:[function(require,module,exports){
 module.exports = function (str) {
   return window.JSON ? window.JSON.parse(str) : eval('(' + str + ')');
 };
 },{}],7:[function(require,module,exports){
 module.exports = function () {
   var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : null;
-  
+
   if (xhr && 'withCredentials' in xhr) {
     return false;
   }
@@ -5406,7 +5393,7 @@ var bonzo     = require('bonzo');
 var bean      = require('bean');
 var xtend     = require('xtend');
 var _         = require('underscore');
-
+var strategies= require('./strategies');
 var mainTmpl  = require('./html/main.html');
 
 var $ = function (selector, root) {
@@ -5425,33 +5412,7 @@ function Auth0Widget (options) {
     domain:       this._options.domain
   });
 
-  this._strategies = {
-    'google-openid': { css: 'google', name: 'Google OpenId', social: true },
-    'google-apps': { css: 'google', name: 'Google Apps', social: false },
-    'google-oauth2': { css: 'googleplus', name: 'Google', social: true },
-    'facebook': { css: 'facebook', name: 'Facebook', social: true },
-    'windowslive': { css: 'windows', name: 'Microsoft Account', social: true },
-    'linkedin': { css: 'linkedin', name: 'LinkedIn', social: true },
-    'github': { css: 'github', name: 'GitHub', social: true },
-    'paypal': { css: 'paypal', name: 'PayPal', social: true },
-    'twitter': { css: 'twitter', name: 'Twitter', social: true },
-    'amazon': { css: 'amazon', name: 'Amazon', social: true },
-    'vkontakte': { css: 'vk', name: 'vKontakte', social: true },
-    'yandex': { css: 'yandex', name: 'Yandex', social: true },
-    'office365': { css: 'office365', name: 'Office365', social: false },
-    'waad': { css: 'waad', name: 'Windows Azure AD', social: false },
-    'adfs': { css: 'windows', name: 'ADFS', social: false },
-    'samlp': { css: 'guest', name: 'SAML', social: false },
-    'mscrm': { css: 'guest', name: 'Dynamics CRM', social: false },
-    'ad': { css: 'windows', name: 'AD / LDAP', social: false },
-    'custom': { css: 'guest', name: 'Custom Auth', social: false },
-    'auth0': { css: 'guest', name: 'Auth0', social: false },
-    'auth0-adldap': { css: 'guest', name: 'AD/LDAP', social: false },
-    'thirtysevensignals': { css: 'thirtysevensignals', name: '37 Signals', social: true },
-    'box': { css: 'box', name: 'Box', social: true, imageicon: true },
-    'salesforce': { css: 'salesforce', name: 'Salesforce', social: true },
-    'fitbit': { css: 'fitbit', name: 'Fitbit', social: true }
-  };
+  this._strategies = strategies;
 }
 
 // helper methods
@@ -6315,8 +6276,139 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
 module.exports = Auth0Widget;
 
-},{"./html/main.html":25,"auth0-js":2,"bean":13,"bonzo":14,"qwery":16,"underscore":17,"xtend":19}],27:[function(require,module,exports){
+},{"./html/main.html":25,"./strategies":28,"auth0-js":5,"bean":13,"bonzo":14,"qwery":16,"underscore":17,"xtend":19}],27:[function(require,module,exports){
 /* Placeholders.js v3.0.0 */
 (function(t){"use strict";function e(t,e,r){return t.addEventListener?t.addEventListener(e,r,!1):t.attachEvent?t.attachEvent("on"+e,r):void 0}function r(t,e){var r,n;for(r=0,n=t.length;n>r;r++)if(t[r]===e)return!0;return!1}function n(t,e){var r;t.createTextRange?(r=t.createTextRange(),r.move("character",e),r.select()):t.selectionStart&&(t.focus(),t.setSelectionRange(e,e))}function a(t,e){try{return t.type=e,!0}catch(r){return!1}}t.Placeholders={Utils:{addEventListener:e,inArray:r,moveCaret:n,changeType:a}}})(this),function(t){"use strict";function e(){}function r(t,e){var r,n,a=!!e&&t.value!==e,u=t.value===t.getAttribute(V);return(a||u)&&"true"===t.getAttribute(D)?(t.removeAttribute(D),t.value=t.value.replace(t.getAttribute(V),""),t.className=t.className.replace(R,""),n=t.getAttribute(z),n&&(t.setAttribute("maxLength",n),t.removeAttribute(z)),r=t.getAttribute(I),r&&(t.type=r),!0):!1}function n(t){var e,r,n=t.getAttribute(V);return""===t.value&&n?(t.setAttribute(D,"true"),t.value=n,t.className+=" "+k,r=t.getAttribute(z),r||(t.setAttribute(z,t.maxLength),t.removeAttribute("maxLength")),e=t.getAttribute(I),e?t.type="text":"password"===t.type&&K.changeType(t,"text")&&t.setAttribute(I,"password"),!0):!1}function a(t,e){var r,n,a,u,i;if(t&&t.getAttribute(V))e(t);else for(r=t?t.getElementsByTagName("input"):p,n=t?t.getElementsByTagName("textarea"):b,i=0,u=r.length+n.length;u>i;i++)a=r.length>i?r[i]:n[i-r.length],e(a)}function u(t){a(t,r)}function i(t){a(t,n)}function l(t){return function(){m&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)?K.moveCaret(t,0):r(t)}}function o(t){return function(){n(t)}}function c(t){return function(e){return f=t.value,"true"===t.getAttribute(D)&&f===t.getAttribute(V)&&K.inArray(C,e.keyCode)?(e.preventDefault&&e.preventDefault(),!1):void 0}}function s(t){return function(){r(t,f),""===t.value&&(t.blur(),K.moveCaret(t,0))}}function d(t){return function(){t===document.activeElement&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)&&K.moveCaret(t,0)}}function g(t){return function(){u(t)}}function v(t){t.form&&(L=t.form,L.getAttribute(P)||(K.addEventListener(L,"submit",g(L)),L.setAttribute(P,"true"))),K.addEventListener(t,"focus",l(t)),K.addEventListener(t,"blur",o(t)),m&&(K.addEventListener(t,"keydown",c(t)),K.addEventListener(t,"keyup",s(t)),K.addEventListener(t,"click",d(t))),t.setAttribute(U,"true"),t.setAttribute(V,E),(m||t!==document.activeElement)&&n(t)}var p,b,m,h,f,A,y,E,x,L,T,N,S,w=["text","search","url","tel","email","password","number","textarea"],C=[27,33,34,35,36,37,38,39,40,8,46],B="#ccc",k="placeholdersjs",R=RegExp("(?:^|\\s)"+k+"(?!\\S)"),V="data-placeholder-value",D="data-placeholder-active",I="data-placeholder-type",P="data-placeholder-submit",U="data-placeholder-bound",j="data-placeholder-focus",q="data-placeholder-live",z="data-placeholder-maxlength",F=document.createElement("input"),G=document.getElementsByTagName("head")[0],H=document.documentElement,J=t.Placeholders,K=J.Utils;if(J.nativeSupport=void 0!==F.placeholder,!J.nativeSupport){for(p=document.getElementsByTagName("input"),b=document.getElementsByTagName("textarea"),m="false"===H.getAttribute(j),h="false"!==H.getAttribute(q),A=document.createElement("style"),A.type="text/css",y=document.createTextNode("."+k+" { color:"+B+"; }"),A.styleSheet?A.styleSheet.cssText=y.nodeValue:A.appendChild(y),G.insertBefore(A,G.firstChild),S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E&&(E=E.nodeValue,E&&K.inArray(w,T.type)&&v(T));x=setInterval(function(){for(S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E?(E=E.nodeValue,E&&K.inArray(w,T.type)&&(T.getAttribute(U)||v(T),(E!==T.getAttribute(V)||"password"===T.type&&!T.getAttribute(I))&&("password"===T.type&&!T.getAttribute(I)&&K.changeType(T,"text")&&T.setAttribute(I,"password"),T.value===T.getAttribute(V)&&(T.value=E),T.setAttribute(V,E)))):T.getAttribute(D)&&(r(T),T.removeAttribute(V));h||clearInterval(x)},100)}J.disable=J.nativeSupport?e:u,J.enable=J.nativeSupport?e:i}(this);
+},{}],28:[function(require,module,exports){
+module.exports = {
+    'google-openid': {
+        css: 'google',
+        name: 'Google OpenId',
+        social: true
+    },
+    'google-apps': {
+        css: 'google',
+        name: 'Google Apps',
+        social: false
+    },
+    'google-oauth2': {
+        css: 'googleplus',
+        name: 'Google',
+        social: true
+    },
+    'facebook': {
+        css: 'facebook',
+        name: 'Facebook',
+        social: true
+    },
+    'windowslive': {
+        css: 'windows',
+        name: 'Microsoft Account',
+        social: true
+    },
+    'linkedin': {
+        css: 'linkedin',
+        name: 'LinkedIn',
+        social: true
+    },
+    'github': {
+        css: 'github',
+        name: 'GitHub',
+        social: true
+    },
+    'paypal': {
+        css: 'paypal',
+        name: 'PayPal',
+        social: true
+    },
+    'twitter': {
+        css: 'twitter',
+        name: 'Twitter',
+        social: true
+    },
+    'amazon': {
+        css: 'amazon',
+        name: 'Amazon',
+        social: true
+    },
+    'vkontakte': {
+        css: 'vk',
+        name: 'vKontakte',
+        social: true
+    },
+    'yandex': {
+        css: 'yandex',
+        name: 'Yandex',
+        social: true
+    },
+    'office365': {
+        css: 'office365',
+        name: 'Office365',
+        social: false
+    },
+    'waad': {
+        css: 'waad',
+        name: 'Windows Azure AD',
+        social: false
+    },
+    'adfs': {
+        css: 'windows',
+        name: 'ADFS',
+        social: false
+    },
+    'samlp': {
+        css: 'guest',
+        name: 'SAML',
+        social: false
+    },
+    'mscrm': {
+        css: 'guest',
+        name: 'Dynamics CRM',
+        social: false
+    },
+    'ad': {
+        css: 'windows',
+        name: 'AD / LDAP',
+        social: false
+    },
+    'custom': {
+        css: 'guest',
+        name: 'Custom Auth',
+        social: false
+    },
+    'auth0': {
+        css: 'guest',
+        name: 'Auth0',
+        social: false,
+        userAndPass: true
+    },
+    'auth0-adldap': {
+        css: 'guest',
+        name: 'AD/LDAP',
+        social: false,
+        userAndPass: true
+    },
+    'thirtysevensignals': {
+        css: 'thirtysevensignals',
+        name: '37 Signals',
+        social: true
+    },
+    'box': {
+        css: 'box',
+        name: 'Box',
+        social: true,
+        imageicon: true
+    },
+    'salesforce': {
+        css: 'salesforce',
+        name: 'Salesforce',
+        social: true
+    },
+    'fitbit': {
+        css: 'fitbit',
+        name: 'Fitbit',
+        social: true
+    }
+};
 },{}]},{},[27,24])
 ;
