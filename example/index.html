@@ -19,7 +19,8 @@
 	        var widget = new Auth0Widget({
 				domain:      'mdocs.auth0.com',
 			    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
-			    callbackURL: 'http://localhost:3000/'
+			    callbackURL: 'http://localhost:3000/',
+			    extraParameters: { response_type: 'token' }
 			});
 
 			$('#login-button').on('click', function () {

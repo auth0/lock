@@ -283,7 +283,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   bean.on($('form', loginView)[0], 'submit', function (e) { self._signInEnterprise(e); });
 
   var button;
-  if (strategy !== 'auth0') {
+  if (strategy_name !== 'auth0') {
     button = bonzo(bonzo.create('<span></span>'))
       .attr('tabindex', 0)
       .attr('data-strategy', strategy_name)
@@ -306,7 +306,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   });
 
   if (this._ssoData.lastUsedUsername) {
-    if (strategy === 'auth0') {
+    if (strategy_name === 'auth0') {
       $('.email-readonly', loginView).html(this._ssoData.lastUsedUsername);
       $('.email input', loginView).css('display', 'none');
       $('.emailPassword', loginView).css('display', '');
@@ -790,7 +790,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   // if user logged in show logged in experience
   if (self._ssoData.sso) {
     if (self._ssoData.lastUsedUsername &&
-        self._strategies[self._ssoData.lastUsedConnection.strategy].social) {
+        !self._strategies[self._ssoData.lastUsedConnection.strategy].social) {
       $('div.panel.onestep input').val(self._ssoData.lastUsedUsername);
       self._showOrHidePassword();
     }

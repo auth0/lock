@@ -1035,7 +1035,7 @@ function decode(str) {
 }
 
 },{}],12:[function(require,module,exports){
-/*! version: 0.9.3 */
+/*! version: 0.9.1 */
 /*!
   * Reqwest! A general purpose XHR connection manager
   * (c) Dustin Diaz 2013
@@ -1050,7 +1050,7 @@ function decode(str) {
 
   var win = window
     , doc = document
-    , twoHundo = /^(20\d|1223)$/
+    , twoHundo = /^20\d$/
     , byTag = 'getElementsByTagName'
     , readyState = 'readyState'
     , contentType = 'Content-Type'
@@ -1572,7 +1572,7 @@ function decode(str) {
       // If traditional, encode the "old" way (the way 1.3.2 or older
       // did it), otherwise encode params recursively.
       for (prefix in o) {
-        if (o.hasOwnProperty(prefix)) buildParams(prefix, o[prefix], traditional, add)
+        buildParams(prefix, o[prefix], traditional, add)
       }
     }
 
@@ -5672,7 +5672,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   bean.on($('form', loginView)[0], 'submit', function (e) { self._signInEnterprise(e); });
 
   var button;
-  if (strategy !== 'auth0') {
+  if (strategy_name !== 'auth0') {
     button = bonzo(bonzo.create('<span></span>'))
       .attr('tabindex', 0)
       .attr('data-strategy', strategy_name)
@@ -5695,7 +5695,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   });
 
   if (this._ssoData.lastUsedUsername) {
-    if (strategy === 'auth0') {
+    if (strategy_name === 'auth0') {
       $('.email-readonly', loginView).html(this._ssoData.lastUsedUsername);
       $('.email input', loginView).css('display', 'none');
       $('.emailPassword', loginView).css('display', '');
@@ -6179,7 +6179,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   // if user logged in show logged in experience
   if (self._ssoData.sso) {
     if (self._ssoData.lastUsedUsername &&
-        self._strategies[self._ssoData.lastUsedConnection.strategy].social) {
+        !self._strategies[self._ssoData.lastUsedConnection.strategy].social) {
       $('div.panel.onestep input').val(self._ssoData.lastUsedUsername);
       self._showOrHidePassword();
     }
