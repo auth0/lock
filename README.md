@@ -96,18 +96,7 @@ The example directory has a ready-to-go app. In order to run it you need [node](
 
 ## Develop
 
-Run `npm run dev` and point your browser to `http://localhost:9999/` to run the test suite.
-
-## Anatomy of the Auth0 Login Widget
-
-![](https://docs.auth0.com/img/widget-numbered.png)
-
-1. The __title__ of the widget. You can optionally show a 32x32 icon (from options.icon).
-2. The __social buttons__ will be shown if you have at least one social connection enabled.
-3. The __Email__ field will be shown if you have at least one enterprise connection enabled. The __Password__ field will be shown if you have a Database connection. 
-4. The __Sign Up__ and __Forgot Password__ links will be shown if you have a Database connection. 
-
-> **How does enterprise SSO work?** Consider a user that enters john@**fabrikam.com**. If there's an enterprise connection with an associated domain "**fabrikam.com**", then the password field will be hidden. When the user clicks on __Sign In__, he/she will be redirected to the corresponding identity provider (Google Apps, AD, Windows Azure AD, etc.) where that domain is registered. If the user is already logged in with the Identity Provider, then Single Sign On will happen.
+Run `npm run dev` and point your browser to `http://localhost:9999/test_harness.html` to run the test suite.
 
 ## Browser Compatibility
 
