@@ -29,19 +29,38 @@ function Auth0Widget (options) {
   });
 
   if (!this._options.assetsUrl) {
+    // use domain as assetsUrl if domain is not *.auth0.com
     this._options.assetsUrl = endsWith(this._options.domain, '.auth0.com') ?
       'https://s3.amazonaws.com/assets.auth0.com/' :
       'https://' + this._options.domain + '/';
   }
 
   if (!this._options.cdn) {
+    // use domain as cdn if domain is not *.auth0.com
     this._options.cdn = endsWith(this._options.domain, '.auth0.com') ?
       'https://d19p4zemcycm7a.cloudfront.net/w2/' :
       'https://' + this._options.domain + '/';
   }
+
+  this._getApp();
 }
 
 // helper methods
+Auth0Widget.prototype._getApp = function () {
+  var self = this;
+  global.window.Auth0 = global.window.Auth0 || {};
+  global.window.Auth0.setClient = function (client) { 
+    self._client = client;
+  };
+
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = this._options.assetsUrl + 'client/' + this._options.clientID + '.js';
+
+  var firstScript = document.getElementsByTagName('script')[0];
+  firstScript.parentNode.insertBefore(script, firstScript);
+};
+
 Auth0Widget.prototype._setTop = function () {
   var element = $('.signin div.panel.onestep');
 
@@ -358,17 +377,18 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
       emailE = $('input[name=email]', form),
       emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.exec(emailE.val().toLowerCase()),
       emailP = /^\s*$/.test(emailE.val()),
-      domain, connection, email = null, strategy;
+      domain, connection, email = null, strategy, clientStrategy;
 
   for (var s in this._client.strategies) {
-    strategy = this._client.strategies[s];
+    clientStrategy = this._client.strategies[s];
+    strategy = this._strategies[clientStrategy.name];
 
     if (strategy.userAndPass) continue;
 
-    for (var c in strategy.connections) {
-      if(!emailP && emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
-        domain = strategy.connections[c].domain;
-        connection = strategy.connections[c].name;
+    for (var c in clientStrategy.connections) {
+      if(!emailP && emailM && emailM.slice(-2)[0] == clientStrategy.connections[c].domain) {
+        domain = clientStrategy.connections[c].domain;
+        connection = clientStrategy.connections[c].name;
         email = emailE.val();
         break;
       }
@@ -601,33 +621,35 @@ Auth0Widget.prototype._initialize = function (cb) {
   // show loading
   self._showLoadingExperience();
 
-  // get configured strategies/connections
-  self._auth0.getConnections(function (err, connections) {
-    var allowedConnections = [];
-
+  if (self._signinOptions.connections) {
     // use only specified connections
-    if (self._signinOptions.connections) {
-      for (var i in connections) {
-        if (_.contains(self._signinOptions.connections, connections[i].name)) {
-          allowedConnections.push(connections[i]);
+    var allowedStrategiesAndConnections = [];
+
+    for (var i in self._client.strategies) {
+      var strategy = self._client.strategies[i];
+
+      for (var j in strategy.connections) {
+        if (_.contains(self._signinOptions.connections, strategy.connections[j].name)) {
+          var alreadyIncluded = _.filter(allowedStrategiesAndConnections, function (s) { return s.name === strategy.name; })[0];
+
+          if (alreadyIncluded) alreadyIncluded.connections.push(strategy.connections[j]);
+          else allowedStrategiesAndConnections.push({
+            name: strategy.name,
+            connections: [strategy.connections[j]]
+          });
         }
       }
     }
-    else {
-      allowedConnections = connections;
-    }
 
-    self._client = {
-      strategies: self._getConfiguredStrategies(allowedConnections)
-    };
+    self._client.strategies = allowedStrategiesAndConnections;
+  }
 
-    // get SSO data
-    self._auth0.getSSOData(function (err, ssoData) {
-      self._ssoData = ssoData;
-      self._resolveLoginView();
+  // get SSO data
+  self._auth0.getSSOData(function (err, ssoData) {
+    self._ssoData = ssoData;
+    self._resolveLoginView();
 
-      if (cb && typeof cb === 'function') cb();
-    });
+    if (cb && typeof cb === 'function') cb();
   });
 };
 
@@ -652,10 +674,11 @@ Auth0Widget.prototype._resolveLoginView = function () {
   // load social buttons
   var list = $('.popup .panel.onestep .iconlist');
   for (var s in this._client.strategies) {
-    var strategy = this._client.strategies[s];
+    var clientStrategy = self._client.strategies[s];
+    var strategy = self._strategies[clientStrategy.name];
 
-    if (strategy.userAndPass && strategy.connections.length > 0) {
-      this._auth0Strategies.push(strategy);
+    if (strategy.userAndPass && clientStrategy.connections.length > 0) {
+      this._auth0Strategies.push(clientStrategy);
       $('.create-account, .password').css('display', 'block');
 
       bean.on($('.notloggedin .email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
@@ -664,7 +687,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     if (strategy.social) {
       var button = bonzo(bonzo.create('<span></span>'))
         .attr('tabindex', 0)
-        .attr('data-strategy', strategy.name)
+        .attr('data-strategy', clientStrategy.name)
         .attr('title', strategy.title)
         .addClass('zocial').addClass('icon')
         .addClass(strategy.css)
@@ -817,38 +840,6 @@ Auth0Widget.prototype._resolveLoginView = function () {
   }
 
   self._setLoginView({ isReturningUser: self._ssoData.sso });
-};
-
-Auth0Widget.prototype._getConfiguredStrategies = function (conns) {
-  var strategies = [];
-  var self = this;
-  for (var conn in conns) {
-    if (typeof(conns[conn].status) !== 'undefined' && !conns[conn].status) continue;
-
-    var strategy_name = conns[conn].strategy;
-    var strategy = _.filter(strategies, function (s) {
-      return s.name === strategy_name;
-    })[0];
-
-    if (!strategy) {
-      strategy = xtend({
-        connections: [],
-        name: strategy_name,
-      }, self._strategies[strategy_name]);
-      strategies.push(strategy);
-    }
-
-    var connData = {
-      name: conns[conn].name,
-      domain: conns[conn].domain,
-      showSignup: conns[conn].showSignup,
-      showForgot: conns[conn].showForgot
-    };
-
-    strategy.connections.push(connData);
-  }
-
-  return strategies;
 };
 
 Auth0Widget.prototype.getClient = function () {

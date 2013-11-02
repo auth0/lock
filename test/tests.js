@@ -10,6 +10,48 @@ describe('Auth0-Widget', function () {
   };
 
   beforeEach(function () {
+    Auth0Widget.prototype._getApp = function () {
+      this._client = {
+        strategies: [
+          {
+            "name": "facebook",
+            "connections": [{ "name": "facebook", "domain": "" }]
+          },
+          {
+            "name": "twitter",
+            "connections": [{ "name": "twitter", "domain": "" }]
+          },
+          {
+            "name": "google-oauth2",
+            "connections": [{ "name": "google-oauth2", "domain": "" }]
+          },
+          {
+            "name": "adfs",
+            "connections": [{ "name": "contoso", "domain": "contoso.com" }]
+          },
+          {
+            "name": "auth0-adldap",
+            "connections": [{ "name": "adldap", "domain": "litware.com" }]
+          },
+          {
+            "name": "auth0",
+            "connections": [
+              { "name": "dbTest", "domain": "", "showSignup": true, "showForgot": true },
+              { "name": "Username-Password-Authentication", "domain": "" }
+            ]
+          },
+          {
+            "name": "google-apps",
+            "connections": [
+              { "name": "google-app1", "domain": "" }, 
+              { "name": "google-app2", "domain": "" },
+              { "name": "google-app3", "domain": "" }
+            ]
+          }
+        ]
+      };
+    };
+
     widget = new Auth0Widget({
       domain:      domain,
       clientID:    clientID, 
@@ -17,16 +59,6 @@ describe('Auth0-Widget', function () {
     });
 
     client = widget.getClient();
-    client.getConnections = function (callback) {
-      callback(null, [
-        { name: 'google-oauth2', strategy: 'google-oauth2', status: true },
-        { name: 'facebook', strategy: 'facebook', status: true },
-        { name: 'contoso', strategy: 'adfs', status: true, domain: 'contoso.com' },
-        { name: 'adldap', strategy: 'auth0-adldap', status: true, domain: 'litware.com' },
-        { name: 'dbTest', strategy: 'auth0', status: true, domain: '', showSignup: true, showForgot: true }
-      ]);
-    };
-
     client.getSSOData = function (callback) {
       callback(null, { sso: false });
     };
@@ -73,6 +105,34 @@ describe('Auth0-Widget', function () {
       expect($('#auth0-widget .signup').css('display')).to.equal('none');
       expect($('#auth0-widget .reset').css('display')).to.equal('none');
       expect($('#auth0-widget .loggedin .email input').val()).to.equal('john@fabrikam.com');
+      done();
+    });
+  });
+
+  it('should use only specified connections', function (done) {
+    widget.show({
+      connections: ['twitter', 'google-oauth2', 'invalid-connection', 'google-app1', 'dbTest', 'google-app3']
+    },
+    function () {
+      expect(widget._client.strategies.length).to.equal(4);
+
+      expect(widget._client.strategies[0].name).to.equal('twitter');
+      expect(widget._client.strategies[0].connections.length).to.equal(1);
+      expect(widget._client.strategies[0].connections[0].name).to.equal('twitter');
+      
+      expect(widget._client.strategies[1].name).to.equal('google-oauth2');
+      expect(widget._client.strategies[1].connections.length).to.equal(1);
+      expect(widget._client.strategies[1].connections[0].name).to.equal('google-oauth2');
+      
+      expect(widget._client.strategies[2].name).to.equal('auth0');
+      expect(widget._client.strategies[2].connections.length).to.equal(1);
+      expect(widget._client.strategies[2].connections[0].name).to.equal('dbTest');
+      
+      expect(widget._client.strategies[3].name).to.equal('google-apps');
+      expect(widget._client.strategies[3].connections.length).to.equal(2);
+      expect(widget._client.strategies[3].connections[0].name).to.equal('google-app1');
+      expect(widget._client.strategies[3].connections[1].name).to.equal('google-app3');
+
       done();
     });
   });
@@ -229,13 +289,7 @@ describe('Auth0-Widget', function () {
         done();
       };
 
-      client.getConnections = function (callback) {
-        callback(null, [
-          { name: 'contoso', strategy: 'adfs', status: true, domain: 'contoso.com' }
-        ]);
-      };
-
-      widget.show();
+      widget.show({ connections: ['contoso'] });
     });
   });
 
