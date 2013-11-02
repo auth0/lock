@@ -377,18 +377,17 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
       emailE = $('input[name=email]', form),
       emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.exec(emailE.val().toLowerCase()),
       emailP = /^\s*$/.test(emailE.val()),
-      domain, connection, email = null, strategy, clientStrategy;
+      domain, connection, email = null, strategy;
 
   for (var s in this._client.strategies) {
-    clientStrategy = this._client.strategies[s];
-    strategy = this._strategies[clientStrategy.name];
+    strategy = self._client.strategies[s];
 
     if (strategy.userAndPass) continue;
 
-    for (var c in clientStrategy.connections) {
-      if(!emailP && emailM && emailM.slice(-2)[0] == clientStrategy.connections[c].domain) {
-        domain = clientStrategy.connections[c].domain;
-        connection = clientStrategy.connections[c].name;
+    for (var c in strategy.connections) {
+      if(!emailP && emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
+        domain = strategy.connections[c].domain;
+        connection = strategy.connections[c].name;
         email = emailE.val();
         break;
       }
@@ -534,11 +533,11 @@ Auth0Widget.prototype._initialize = function (cb) {
     }
   });
 
-  if (self._client.subscription !== 'free') {
+  if (self._client.subscription && self._client.subscription !== 'free') {
     // TODO: support css option for non free subscriptions
 
     // hide footer
-    $('footer').css('display', 'none');
+    //$('footer').addClass('hide');
   }
 
   // images from cdn
@@ -649,6 +648,12 @@ Auth0Widget.prototype._initialize = function (cb) {
     self._client.strategies = allowedStrategiesAndConnections;
   }
 
+  // merge strategies info
+  for (var s in self._client.strategies) {
+    var strategy_name = self._client.strategies[s].name;
+    self._client.strategies[s] = xtend(self._client.strategies[s], self._strategies[strategy_name]);
+  }
+
   // get SSO data
   self._auth0.getSSOData(function (err, ssoData) {
     self._ssoData = ssoData;
@@ -678,12 +683,11 @@ Auth0Widget.prototype._resolveLoginView = function () {
 
   // load social buttons
   var list = $('.popup .panel.onestep .iconlist');
-  for (var s in this._client.strategies) {
-    var clientStrategy = self._client.strategies[s];
-    var strategy = self._strategies[clientStrategy.name];
+  for (var s in self._client.strategies) {
+    var strategy = self._client.strategies[s];
 
-    if (strategy.userAndPass && clientStrategy.connections.length > 0) {
-      this._auth0Strategies.push(clientStrategy);
+    if (strategy.userAndPass && strategy.connections.length > 0) {
+      self._auth0Strategies.push(strategy);
       $('.create-account, .password').css('display', 'block');
 
       bean.on($('.notloggedin .email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
@@ -692,7 +696,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     if (strategy.social) {
       var button = bonzo(bonzo.create('<span></span>'))
         .attr('tabindex', 0)
-        .attr('data-strategy', clientStrategy.name)
+        .attr('data-strategy', strategy.name)
         .attr('title', strategy.title)
         .addClass('zocial').addClass('icon')
         .addClass(strategy.css)
