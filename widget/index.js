@@ -518,8 +518,6 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
 
 // initialize
 Auth0Widget.prototype._initialize = function (cb) {
-  // TODO: support css option for non free subscriptions
-
   var self = this;
   $().addClass('mode-signin');
 
@@ -535,6 +533,13 @@ Auth0Widget.prototype._initialize = function (cb) {
       }
     }
   });
+
+  if (self._client.subscription !== 'free') {
+    // TODO: support css option for non free subscriptions
+
+    // hide footer
+    $('footer').css('display', 'none');
+  }
 
   // images from cdn
   $('.popup .panel header a.close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
