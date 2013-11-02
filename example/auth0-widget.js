@@ -5438,7 +5438,7 @@ function Auth0Widget (options) {
 Auth0Widget.prototype._getApp = function () {
   var self = this;
   global.window.Auth0 = global.window.Auth0 || {};
-  global.window.Auth0.setClient = function (client) { 
+  global.window.Auth0.setClient = function (client) {
     self._client = client;
   };
 
@@ -5926,7 +5926,7 @@ Auth0Widget.prototype._initialize = function (cb) {
     // TODO: support css option for non free subscriptions
 
     // hide footer
-    //$('footer').addClass('hide');
+    $('footer').addClass('hide');
   }
 
   // images from cdn
