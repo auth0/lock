@@ -90,7 +90,7 @@ describe('Auth0-Widget', function () {
     });
   });
 
-  it('should show only loggedin view with SSO data if it is present', function (done) {
+  it('should show only loggedin view with SSO data (enterprise) if it is present', function (done) {
     client.getSSOData = function (callback) {
       callback(null, { 
         sso: true, 
@@ -108,6 +108,26 @@ describe('Auth0-Widget', function () {
       done();
     });
   });
+
+  it('should show only loggedin view with SSO data (social) if it is present', function (done) {
+      client.getSSOData = function (callback) {
+        callback(null, { 
+          sso: true, 
+          lastUsedUsername: 'john@gmail.com', 
+          lastUsedConnection: { strategy: 'google-oauth2', connection: 'google-oauth2' }
+        });
+      };
+
+      widget.show(function () {
+        expect($('#auth0-widget .notloggedin').css('display')).to.equal('none');
+        expect($('#auth0-widget .loggedin').css('display')).to.equal('block');
+        expect($('#auth0-widget .signup').css('display')).to.equal('none');
+        expect($('#auth0-widget .reset').css('display')).to.equal('none');
+        expect($('#auth0-widget .loggedin .strategy span').html()).to.equal('john@gmail.com');
+        expect($('#auth0-widget .loggedin .strategy span').attr('title')).to.equal('john@gmail.com');
+        done();
+      });
+    });
 
   it('should use only specified connections', function (done) {
     widget.show({
