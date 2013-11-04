@@ -5456,10 +5456,10 @@ Auth0Widget.prototype._setTop = function () {
   if (!this._signinOptions.top) {
     setTimeout(function() {
       element.css({
-        //'marginTop': '-' + (element.offset().height / 2) + 'px',
-        //'top': '50%'
-        'marginTop': '2px',
-        'top': '15%'
+        'marginTop': '-' + (element.offset().height / 2) + 'px',
+        'top': '50%'
+        //'marginTop': '2px',
+        //'top': '15%'
       });
     }, 1);
   } else {
@@ -6269,6 +6269,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   if (self._signinOptions.container) {
     self._signinOptions.theme = 'static';
     self._signinOptions.standalone = true;
+    self._signinOptions.top = true;
 
     var specifiedContainer = document.getElementById(self._signinOptions.container);
     specifiedContainer.innerHTML = mainTmpl();
@@ -6281,8 +6282,6 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     div.innerHTML = mainTmpl();
     document.body.appendChild(div);
   }
-
-  self._signinOptions.top = !!self._signinOptions.standalone;
 
   self._initialize(callback);
 };
