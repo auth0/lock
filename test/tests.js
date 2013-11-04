@@ -58,7 +58,7 @@ describe('Auth0-Widget', function () {
       callbackURL: callbackURL
     });
 
-    client = widget.getClient();
+    client = widget._auth0;
     client.getSSOData = function (callback) {
       callback(null, { sso: false });
     };

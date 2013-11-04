@@ -6251,8 +6251,8 @@ Auth0Widget.prototype._resolveLoginView = function () {
   self._setLoginView({ isReturningUser: self._ssoData.sso });
 };
 
-Auth0Widget.prototype.getClient = function () {
-  return this._auth0;
+Auth0Widget.prototype.parseHash = function (callback) {
+  this._auth0.parseHash(callback);
 };
 
 Auth0Widget.prototype.show = function (signinOptions, callback) {
@@ -6269,7 +6269,6 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   if (self._signinOptions.container) {
     self._signinOptions.theme = 'static';
     self._signinOptions.standalone = true;
-    self._signinOptions.top = true;
 
     var specifiedContainer = document.getElementById(self._signinOptions.container);
     specifiedContainer.innerHTML = mainTmpl();
@@ -6282,6 +6281,8 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     div.innerHTML = mainTmpl();
     document.body.appendChild(div);
   }
+
+  self._signinOptions.top = !!self._signinOptions.standalone;
 
   self._initialize(callback);
 };

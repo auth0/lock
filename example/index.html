@@ -37,7 +37,7 @@
             });
 
             // After login, show user profile
-            widget.getClient().parseHash(function (profile, id_token, access_token, state) {
+            widget.parseHash(function (profile, id_token, access_token, state) {
 		      $('#userinfo').text(JSON.stringify(profile, 0, 2));
 		    });
         });
