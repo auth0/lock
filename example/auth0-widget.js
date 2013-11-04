@@ -5909,6 +5909,19 @@ Auth0Widget.prototype._initialize = function (cb) {
   var self = this;
   $().addClass('mode-signin');
 
+  // wait for setClient()
+  if (!self._client) {
+    var args  = arguments;
+    var setClient = global.window.Auth0.setClient;
+    
+    global.window.Auth0.setClient = function () {
+        setClient.apply(this, arguments);
+        self._initialize.apply(self, args);
+    };
+
+    return;
+  }
+
   // buttons actions
   bean.on($('.popup .panel.onestep a.close')[0], 'click', function () { self._hideSignIn(); });
   bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
@@ -5923,9 +5936,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   });
 
   if (self._client.subscription && self._client.subscription !== 'free') {
-    // TODO: support css option for non free subscriptions
-
-    // hide footer
+    // hide footer for non free subscriptions
     $('footer').addClass('hide');
   }
 
