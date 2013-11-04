@@ -321,11 +321,11 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
     button = bonzo(bonzo.create('<span></span>'))
       .attr('tabindex', 0)
       .attr('data-strategy', strategy_name)
-      .attr('title', strategy.title)
+      .attr('title', this._ssoData.lastUsedUsername || strategy.title)
       .addClass('zocial').addClass('block')
       .addClass(strategy.css)
       .addClass(strategy.imageicon ? 'image-icon' : '')
-      .html(strategy.title);
+      .html(this._ssoData.lastUsedUsername || strategy.title);
 
     bean.on(button[0], 'click', function (e) { self._signInSocial(e.target); });
 
