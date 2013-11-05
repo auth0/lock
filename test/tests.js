@@ -302,7 +302,7 @@ describe('Auth0-Widget', function () {
       });
     });
 
-    it('should signin automatically if no social connections and only one enterprise connection', function (done) {
+    it('should signin automatically if exists only one enterprise connection (but not userAndPass strategy)', function (done) {
       client.login = function (options) {
         expect(options.connection).to.equal('contoso');
         expect(options.username).to.not.exist;
@@ -310,6 +310,16 @@ describe('Auth0-Widget', function () {
       };
 
       widget.show({ connections: ['contoso'] });
+    });
+
+    it('should signin automatically if exists only one social connection', function (done) {
+      client.login = function (options) {
+        expect(options.connection).to.equal('google-oauth2');
+        expect(options.username).to.not.exist;
+        done();
+      };
+
+      widget.show({ connections: ['google-oauth2'] });
     });
   });
 

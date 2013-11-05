@@ -679,10 +679,9 @@ Auth0Widget.prototype._initialize = function (cb) {
 Auth0Widget.prototype._resolveLoginView = function () {
   var self = this;
 
-  // if no social connections and one enterprise connection only, redirect
-  if (!this._areThereAnySocialConn() &&
-    this._client.strategies.length === 1 &&
-    this._client.strategies[0].name !== 'auth0' &&
+  // if one connection only (but no userAndPass connection), redirect
+  if (this._client.strategies.length === 1 &&
+    !this._client.strategies[0].userAndPass &&
     this._client.strategies[0].connections.length === 1) {
 
     var loginOptions = xtend({
