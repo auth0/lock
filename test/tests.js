@@ -124,7 +124,7 @@ describe('Auth0-Widget', function () {
         expect($('#auth0-widget .signup').css('display')).to.equal('none');
         expect($('#auth0-widget .reset').css('display')).to.equal('none');
         expect($('#auth0-widget .loggedin .strategy span').html()).to.equal('john@gmail.com');
-        expect($('#auth0-widget .loggedin .strategy span').attr('title')).to.equal('john@gmail.com');
+        expect($('#auth0-widget .loggedin .strategy span').attr('title')).to.equal('john@gmail.com (Google)');
         done();
       });
     });

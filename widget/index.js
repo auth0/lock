@@ -321,7 +321,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
     button = bonzo(bonzo.create('<span></span>'))
       .attr('tabindex', 0)
       .attr('data-strategy', strategy_name)
-      .attr('title', this._ssoData.lastUsedUsername || strategy.title)
+      .attr('title', this._ssoData.lastUsedUsername + ' (' + strategy.title + ')')
       .addClass('zocial').addClass('block')
       .addClass(strategy.css)
       .addClass(strategy.imageicon ? 'image-icon' : '')
