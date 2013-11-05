@@ -135,5 +135,5 @@ module.exports = function (grunt) {
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["s3"]);
+  grunt.registerTask("cdn",           ["build", "s3"]);
 };
