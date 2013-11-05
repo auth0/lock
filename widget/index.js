@@ -4,8 +4,8 @@ var bonzo       = require('bonzo');
 var bean        = require('bean');
 var xtend       = require('xtend');
 var _           = require('underscore');
-var strategies  = require('./strategies');
-var utils       = require('./utils');
+var strategies  = require('./js/strategies');
+var utils       = require('./js/utils');
 var mainTmpl    = require('./html/main.html');
 
 var $ = function (selector, root) {
