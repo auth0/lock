@@ -1,18 +1,15 @@
-var Auth0     = require('auth0-js');
-var qwery     = require('qwery');
-var bonzo     = require('bonzo');
-var bean      = require('bean');
-var xtend     = require('xtend');
-var _         = require('underscore');
-var strategies= require('./strategies');
-var mainTmpl  = require('./html/main.html');
+var Auth0       = require('auth0-js');
+var qwery       = require('qwery');
+var bonzo       = require('bonzo');
+var bean        = require('bean');
+var xtend       = require('xtend');
+var _           = require('underscore');
+var strategies  = require('./strategies');
+var utils       = require('./utils');
+var mainTmpl    = require('./html/main.html');
 
 var $ = function (selector, root) {
   return bonzo(qwery('#auth0-widget ' + (selector || ''), root));
-};
-
-var endsWith = function (str, suffix) {
-  return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
 function Auth0Widget (options) {
@@ -30,14 +27,14 @@ function Auth0Widget (options) {
 
   if (!this._options.assetsUrl) {
     // use domain as assetsUrl if domain is not *.auth0.com
-    this._options.assetsUrl = endsWith(this._options.domain, '.auth0.com') ?
+    this._options.assetsUrl = this._isAuth0Domain() ?
       'https://s3.amazonaws.com/assets.auth0.com/' :
       'https://' + this._options.domain + '/';
   }
 
   if (!this._options.cdn) {
     // use domain as cdn if domain is not *.auth0.com
-    this._options.cdn = endsWith(this._options.domain, '.auth0.com') ?
+    this._options.cdn = this._isAuth0Domain() ?
       'https://d19p4zemcycm7a.cloudfront.net/w2/' :
       'https://' + this._options.domain + '/';
   }
@@ -59,6 +56,11 @@ Auth0Widget.prototype._getApp = function () {
 
   var firstScript = document.getElementsByTagName('script')[0];
   firstScript.parentNode.insertBefore(script, firstScript);
+};
+
+Auth0Widget.prototype._isAuth0Domain = function () {
+  var domainUrl = utils.parseUrl('https://' + this._options.domain);
+  return utils.endsWith(domainUrl.hostname, '.auth0.com');
 };
 
 Auth0Widget.prototype._setTop = function () {

@@ -170,7 +170,7 @@ describe('Auth0-Widget', function () {
 
     it('should use default assetsUrl if domain is *.auth0.com', function () {
       var widget = new Auth0Widget({
-        domain:      'abc.auth0.com',
+        domain:      'abc.auth0.com:3000',
         clientID:    clientID, 
         callbackURL: callbackURL
       });
