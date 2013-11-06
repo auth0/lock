@@ -113,12 +113,12 @@ module.exports = function (grunt) {
         upload: [
           {
             src:  'build/auth0-widget.min.js',
-            dest: 'w2/auth0-widget-v' + pkg.version + '.min.js',
+            dest: 'w2/auth0-widget-' + pkg.version + '.min.js',
             options: { gzip: true }
           },
           {
             src:  'build/auth0-widget.js',
-            dest: 'w2/auth0-widget-v' + pkg.version + '.js'
+            dest: 'w2/auth0-widget-' + pkg.version + '.js'
           },
         ]
       }
