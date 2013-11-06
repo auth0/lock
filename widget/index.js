@@ -190,7 +190,7 @@ Auth0Widget.prototype._showOrHidePassword = function () {
   var mailField = $('.notloggedin .email input');
   var pwdField  = $('.notloggedin .password input').first();
 
-  var isEnterpriseConnection = this._isEnterpriseConnection(mailField.val());
+  var isEnterpriseConnection = this._isEnterpriseConnection(mailField.val() || '');
 
   if (isEnterpriseConnection) {
     pwdField.attr('disabled', true);
@@ -526,7 +526,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   if (!self._client) {
     var args  = arguments;
     var setClient = global.window.Auth0.setClient;
-    
+
     global.window.Auth0.setClient = function () {
         setClient.apply(this, arguments);
         self._initialize.apply(self, args);
@@ -863,8 +863,8 @@ Auth0Widget.prototype._resolveLoginView = function () {
   self._setLoginView({ isReturningUser: self._ssoData.sso });
 };
 
-Auth0Widget.prototype.parseHash = function (callback) {
-  this._auth0.parseHash(callback);
+Auth0Widget.prototype.parseHash = function (hash, callback) {
+  this._auth0.parseHash(hash, callback);
 };
 
 Auth0Widget.prototype.show = function (signinOptions, callback) {
@@ -874,7 +874,10 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   }
 
   var self = this;
-  self._signinOptions = xtend(self._options, signinOptions);
+  self._signinOptions = xtend({}, self._options, signinOptions);
+  self._signinOptions.extraParameters = {
+    state: self._signinOptions.state || undefined
+  };
   self._auth0Strategies = [];
 
   // widget container

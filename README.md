@@ -24,10 +24,10 @@ Construct a new instance of the Auth0 Widget as follows:
 <script type="text/javascript">
   var widget = new Auth0Widget({
     domain:       'mine.auth0.com',
-    clientID:     'dsa7d77dsa7d7', 
+    clientID:     'dsa7d77dsa7d7',
     callbackURL:  'http://my-app.com/callback'
   });
-  
+
   // ...
 </script>
 ~~~
@@ -48,7 +48,6 @@ widget.show(options, callback);
 * __container__: The id of the DIV where the widget will be contained.
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
-* __extraParameters__: JSON object to send extra parameters when starting a login.
 * __resources__: JSON object that contains your customized text labels. As a reference, you can take a look at the example app (example/strings/es-ES.json) which customizes all of the supported labels to Spanish.
 
 ~~~javascript
@@ -63,8 +62,7 @@ widget.show({
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
   showIcon: true
-},
-funcion () {
+}, funcion () {
   // The Auth0 Widget is now loaded.
 });
 ~~~
@@ -75,7 +73,7 @@ You can also customize the error messages that will be displayed on certain situ
 ~~~javascript
 widget.show({
   resources: {
-    // ... other properties ... 
+    // ... other properties ...
     // wrongEmailPasswordErrorText, serverErrorText, signupEnterpriseEmailWarningText, signupServerErrorText and resetServerErrorText are used only if you have a Database connection
     wrongEmailPasswordErrorText: 'Custom error message for invalid user/pass.',
     serverErrorText: 'There was an error processing the sign in.',
@@ -90,6 +88,26 @@ widget.show({
 });
 ~~~
 
+## Single Page Applications
+
+You can handle the authorization process client-side as follows:
+
+~~~javascript
+<script type="text/javascript">
+  var widget = new Auth0Widget({
+    domain:       'mine.auth0.com',
+    clientID:     'dsa7d77dsa7d7',
+    callbackURL:  'http://my-app.com/',
+    callbackOnLocationHash: true
+  });
+
+  auth0.parseHash(window.location.hash, function (profile, id_token, access_token, state) {
+    alert('hello ' + profile.name);
+    //use id_token to call your rest api
+  });
+</script>
+~~~
+
 ## Example
 
 The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed, then execute `npm run example` from the root of this project.
@@ -102,7 +120,7 @@ Run `npm run dev` and point your browser to `http://localhost:9999/test_harness.
 
 We are using [BrowserStack](http://browserstack.com) and [Travis-CI](http://travis-ci.org) to run the test suite on multiple browsers on every push.
 
-## License 
+## License
 
 The MIT License (MIT)
 

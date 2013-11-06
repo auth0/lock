@@ -101,10 +101,7 @@ function Auth0 (options) {
   this._clientID = options.clientID;
   this._callbackURL = options.callbackURL;
   this._domain = options.domain;
-  if (options.success) {
-    this.parseHash(options.success);
-  }
-  this._failure = options.failure;
+  this._callbackOnLocationHash = false || options.callbackOnLocationHash;
 }
 
 Auth0.prototype._redirect = function (url) {
@@ -122,16 +119,16 @@ Auth0.prototype._isAdLdapConnection = function (connection) {
   return connection === 'adldap';
 };
 
-Auth0.prototype._getDefaultParameters = function () {
+Auth0.prototype._getMode = function () {
   return {
-    response_type: 'code',
-    scope:         'openid profile'
+    scope: 'openid profile',
+    response_type: this._callbackOnLocationHash ? 'token' : 'code'
   };
 };
 
-Auth0.prototype.parseHash = function (callback) {
-  if(!window.location.hash.match(/access_token/)) return;
-  var hash = window.location.hash.substr(1);
+Auth0.prototype.parseHash = function (hash, callback) {
+  if(!hash.match(/access_token/)) return;
+  hash = hash.substr(1);
   var parsed_qs = qs.parse(hash);
   var id_token = parsed_qs.id_token;
   var encoded = id_token.split('.')[1];
@@ -143,11 +140,11 @@ Auth0.prototype.signup = function (options, callback) {
   var self = this;
 
   var query = xtend(
-    this._getDefaultParameters(), 
+    this._getMode(),
     options,
-    { 
-      client_id: this._clientID, 
-      redirect_uri: this._callbackURL, 
+    {
+      client_id: this._clientID,
+      redirect_uri: this._callbackURL,
       email: options.username || options.email,
       tenant: this._domain.split('.')[0]
     });
@@ -162,8 +159,8 @@ Auth0.prototype.signup = function (options, callback) {
 
   function fail (status, resp) {
     var error = new LoginError(status, resp);
-    if (callback)      return callback(error);
-    if (self._failure) return self._failure(error);
+    if (callback) return callback(error);
+    throw error;
   }
 
   if (use_jsonp()) {
@@ -201,14 +198,10 @@ Auth0.prototype.changePassword = function (options, callback) {
     password:       options.password
   };
 
-  function success () {
-    if (callback) callback();
-  }
 
   function fail (status, resp) {
     var error = new LoginError(status, resp);
     if (callback)      return callback(error);
-    if (self._failure) return self._failure(error);
   }
 
   if (use_jsonp()) {
@@ -220,7 +213,7 @@ Auth0.prototype.changePassword = function (options, callback) {
         return fail(0, err);
       }
       return resp.status == 200 ?
-              success() :
+              callback() :
               fail(resp.status, resp.err);
     });
   }
@@ -230,7 +223,7 @@ Auth0.prototype.changePassword = function (options, callback) {
     method:  'post',
     type:    'html',
     data:    query,
-    success: success,
+    success: callback,
     crossOrigin: true
   }).fail(function (err) {
     fail(err.status, err.responseText);
@@ -243,7 +236,7 @@ Auth0.prototype.login = function (options, callback) {
   }
 
   var query = xtend(
-    this._getDefaultParameters(), 
+    this._getMode(),
     options,
     { client_id: this._clientID, redirect_uri: this._callbackURL });
 
@@ -254,19 +247,14 @@ Auth0.prototype.loginWithUsernamePassword = function (options, callback) {
   var self = this;
 
   var query = xtend(
-    this._getDefaultParameters(), 
+    this._getMode(),
     options,
-    { 
-      client_id: this._clientID, 
-      redirect_uri: this._callbackURL, 
+    {
+      client_id: this._clientID,
+      redirect_uri: this._callbackURL,
       username: options.username || options.email,
       tenant: this._domain.split('.')[0]
     });
-
-  function return_error (error) {
-    if (callback)      return callback(error);
-    if (self._failure) return self._failure(error);
-  }
 
   var endpoint = this._isAdLdapConnection(query.connection) ?
     '/adldap/login' : '/dbconnections/login';
@@ -277,14 +265,19 @@ Auth0.prototype.loginWithUsernamePassword = function (options, callback) {
       timeout: 15000
     }, function (err, resp) {
       if (err) {
-        return return_error(err);
+        return callback(err);
       }
       if('error' in resp) {
         var error = new LoginError(resp.status, resp.error);
-        return return_error(error);
+        return callback(error);
       }
       self._renderAndSubmitWSFedForm(resp.form);
     });
+  }
+
+  function return_error (error) {
+    if (callback) return callback(error);
+    throw error;
   }
 
   reqwest({
@@ -1035,7 +1028,7 @@ function decode(str) {
 }
 
 },{}],12:[function(require,module,exports){
-/*! version: 0.9.1 */
+/*! version: 0.9.3 */
 /*!
   * Reqwest! A general purpose XHR connection manager
   * (c) Dustin Diaz 2013
@@ -1050,7 +1043,7 @@ function decode(str) {
 
   var win = window
     , doc = document
-    , twoHundo = /^20\d$/
+    , twoHundo = /^(20\d|1223)$/
     , byTag = 'getElementsByTagName'
     , readyState = 'readyState'
     , contentType = 'Content-Type'
@@ -1572,7 +1565,7 @@ function decode(str) {
       // If traditional, encode the "old" way (the way 1.3.2 or older
       // did it), otherwise encode params recursively.
       for (prefix in o) {
-        buildParams(prefix, o[prefix], traditional, add)
+        if (o.hasOwnProperty(prefix)) buildParams(prefix, o[prefix], traditional, add)
       }
     }
 
@@ -5579,7 +5572,7 @@ Auth0Widget.prototype._showOrHidePassword = function () {
   var mailField = $('.notloggedin .email input');
   var pwdField  = $('.notloggedin .password input').first();
 
-  var isEnterpriseConnection = this._isEnterpriseConnection(mailField.val());
+  var isEnterpriseConnection = this._isEnterpriseConnection(mailField.val() || '');
 
   if (isEnterpriseConnection) {
     pwdField.attr('disabled', true);
@@ -5915,7 +5908,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   if (!self._client) {
     var args  = arguments;
     var setClient = global.window.Auth0.setClient;
-    
+
     global.window.Auth0.setClient = function () {
         setClient.apply(this, arguments);
         self._initialize.apply(self, args);
@@ -6252,8 +6245,8 @@ Auth0Widget.prototype._resolveLoginView = function () {
   self._setLoginView({ isReturningUser: self._ssoData.sso });
 };
 
-Auth0Widget.prototype.parseHash = function (callback) {
-  this._auth0.parseHash(callback);
+Auth0Widget.prototype.parseHash = function (hash, callback) {
+  this._auth0.parseHash(hash, callback);
 };
 
 Auth0Widget.prototype.show = function (signinOptions, callback) {
@@ -6263,7 +6256,10 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   }
 
   var self = this;
-  self._signinOptions = xtend(self._options, signinOptions);
+  self._signinOptions = xtend({}, self._options, signinOptions);
+  self._signinOptions.extraParameters = {
+    state: self._signinOptions.state || undefined
+  };
   self._auth0Strategies = [];
 
   // widget container
