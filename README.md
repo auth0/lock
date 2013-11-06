@@ -99,7 +99,7 @@ You can handle the authorization process client-side as follows:
     callbackOnLocationHash: true
   });
 
-  auth0.parseHash(window.location.hash, function (profile, id_token, access_token, state) {
+  widget.parseHash(window.location.hash, function (profile, id_token, access_token, state) {
     alert('hello ' + profile.name);
     //use id_token to call your rest api
   });
