@@ -117,7 +117,7 @@ module.exports = function (grunt) {
             options: { gzip: true }
           },
           {
-            src:  'build/auth0-widget.js',
+            src:  'build/auth0-widget.debug.js',
             dest: 'w2/auth0-widget-' + pkg.version + '.js'
           },
         ]
