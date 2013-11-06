@@ -56,9 +56,6 @@ widget.show({
   resources: {
     title: "Sign In with Auth0"
   },
-  extraParameters: {
-    state: "foo"
-  },
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
   showIcon: true
