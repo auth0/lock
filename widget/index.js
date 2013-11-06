@@ -887,9 +887,8 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     self._signinOptions.top = true;
 
     var specifiedContainer = document.getElementById(self._signinOptions.container);
-    specifiedContainer.innerHTML = mainTmpl();
-  }
-  else {
+    specifiedContainer.innerHTML = mainTmpl({embedded: true});
+  } else {
     // remove widget container (if exist)
     $().parent().remove();
 

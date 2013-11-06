@@ -26,7 +26,8 @@
     "auth0-js": "~1.0.0",
     "bean": "~1.0.4",
     "xtend": "~2.1.1",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "i18next-clientscript": "https://github.com/jamuhl/i18next/tarball/master"
   },
   "devDependencies": {
     "browserify": "~2.35.0",

@@ -7,7 +7,7 @@
 	<button id="login-button-inside-container">Login (inside a DIV with spanish labels)</button>
 
 	<br><br>
-	<div id="login-container" style="width: 345px;"></div>
+	<div id="login-container" style="width: 500px; height: 500px; background-color: blueviolet;"></div>
 
 	<h3>User Info</h3>
 	<pre><code id="userinfo">Not logged in yet.</code></pre>
@@ -37,7 +37,7 @@
             });
 
             // After login, show user profile
-            widget.parseHash(function (profile, id_token, access_token, state) {
+            widget.parseHash(window.location.hash, function (profile, id_token, access_token, state) {
 		      $('#userinfo').text(JSON.stringify(profile, 0, 2));
 		    });
         });
