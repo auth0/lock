@@ -5404,7 +5404,8 @@ function Auth0Widget (options) {
   this._auth0 = new Auth0({
     clientID:     this._options.clientID,
     callbackURL:  this._options.callbackURL,
-    domain:       this._options.domain
+    domain:       this._options.domain,
+    callbackOnLocationHash: this._options.callbackOnLocationHash
   });
 
   if (!this._options.assetsUrl) {

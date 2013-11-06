@@ -71,7 +71,7 @@ describe('Auth0-Widget', function () {
   });
 
   it('should initialize client with callbackOnLocationHash', function () {
-    expect(client._callbackOnLocationHash).to.be.true;
+    expect(client._callbackOnLocationHash).to.be(true);
   });
 
   it('should hide widget when user close it', function (done) {
