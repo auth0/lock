@@ -87,7 +87,7 @@ You can handle the authorization process client-side as follows:
 __Note 1:__ most of the translations are machine generated, please help us to move this forward.
 __Note 1:__ the widget doesn't support right to left.
 
-From version `1.2.0` we added support for internationalization:
+Version `1.2.0` we added support for internationalization:
 
 ![](http://s3.amazonaws.com/blog.auth0.com/login_langs.gif)
 
@@ -121,15 +121,15 @@ where dict can be a string matching the name of the file in the `i18n` folder or
 
 ## Example
 
-The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed, then execute `npm run example` from the root of this project.
+The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed and grunt (npm i grunt -g), then execute `grunt example` from the root of this project.
 
 ## Develop
 
-Run `npm run dev` and point your browser to `http://localhost:9999/test_harness.html` to run the test suite.
+Run `grunt dev` and point your browser to `http://localhost:9999/test_harness.html` to run the test suite.
 
 ## Browser Compatibility
 
-We are using [BrowserStack](http://browserstack.com) and [Travis-CI](http://travis-ci.org) to run the test suite on multiple browsers on every push.
+We are using [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers on every push.
 
 ## License
 
