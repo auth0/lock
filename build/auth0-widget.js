@@ -5975,7 +5975,7 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
-var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= title %>\"\n\t\tclass=\"zocial icon <%= css %> <%= locals.imageicon ? 'image-icon' : '' %>\" dir=\"ltr\">\n\t<%= title %>\n</span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/button.ejs" };
+var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= title %>\"\n\t\tclass=\"zocial icon <%= css %> <%= locals.imageicon ? 'image-icon' : '' %>\" dir=\"ltr\"><%= title %></span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/button.ejs" };
 function rethrow(err, str, filename, lineno){
   var lines = str.split('\n')
     , start = Math.max(lineno - 3, 0)
@@ -6002,7 +6002,7 @@ function rethrow(err, str, filename, lineno){
 try {
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=2,  name )), '"\n		title="', escape((__stack.lineno=3,  title )), '"\n		class="zocial icon ', escape((__stack.lineno=4,  css )), ' ', escape((__stack.lineno=4,  locals.imageicon ? 'image-icon' : '' )), '" dir="ltr">\n	', escape((__stack.lineno=5,  title )), '\n</span>'); })();
+ buf.push('<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=2,  name )), '"\n		title="', escape((__stack.lineno=3,  title )), '"\n		class="zocial icon ', escape((__stack.lineno=4,  css )), ' ', escape((__stack.lineno=4,  locals.imageicon ? 'image-icon' : '' )), '" dir="ltr">', escape((__stack.lineno=4,  title )), '</span>'); })();
 } 
 return buf.join('');
 } catch (err) {
@@ -6018,7 +6018,7 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
-var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= username ? (username + ' (' + title + ')') : title %>\"\n\t\tclass=\"zocial block <%= css %> <%= locals.imageicon ? 'image-icon' : '' %>\">\n\t<%= username || title %>\n</span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/loggedin_button.ejs" };
+var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= username ? (username + ' (' + title + ')') : title %>\"\n\t\tclass=\"zocial block <%= css %> <%= locals.imageicon ? 'image-icon' : '' %>\"><%= username || title %></span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/loggedin_button.ejs" };
 function rethrow(err, str, filename, lineno){
   var lines = str.split('\n')
     , start = Math.max(lineno - 3, 0)
@@ -6045,7 +6045,7 @@ function rethrow(err, str, filename, lineno){
 try {
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=2,  name )), '"\n		title="', escape((__stack.lineno=3,  username ? (username + ' (' + title + ')') : title )), '"\n		class="zocial block ', escape((__stack.lineno=4,  css )), ' ', escape((__stack.lineno=4,  locals.imageicon ? 'image-icon' : '' )), '">\n	', escape((__stack.lineno=5,  username || title )), '\n</span>'); })();
+ buf.push('<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=2,  name )), '"\n		title="', escape((__stack.lineno=3,  username ? (username + ' (' + title + ')') : title )), '"\n		class="zocial block ', escape((__stack.lineno=4,  css )), ' ', escape((__stack.lineno=4,  locals.imageicon ? 'image-icon' : '' )), '">', escape((__stack.lineno=4,  username || title )), '</span>'); })();
 } 
 return buf.join('');
 } catch (err) {
