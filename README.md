@@ -104,7 +104,6 @@ You can call instantiate the widget with the `dict` option:
 
 where dict can be a string matching the name of the file in the `i18n` folder or it could be an object literal as follows:
 
-
 ~~~javascript
   var widget = new Auth0Widget({
     domain:       'mine.auth0.com',

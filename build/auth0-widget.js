@@ -319,7 +319,8 @@ module.exports.getDict = function ( langOrDict ) {
   }
 
   if ( typeof langOrDict === 'string' ) {
-    return new Dictionary(dics_data[langOrDict]);
+    var dict = dics_data[langOrDict] || dics_data[langOrDict.split('-')[0]];
+    return new Dictionary(dict);
   } else {
     return new Dictionary(langOrDict);
   }
