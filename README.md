@@ -49,40 +49,16 @@ widget.show(options, callback);
 * __container__: The id of the DIV where the widget will be contained.
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
-* __resources__: JSON object that contains your customized text labels. As a reference, you can take a look at the example app (example/strings/es-ES.json) which customizes all of the supported labels to Spanish.
+* __dict__: the dictionary see below i18n.
 
 ~~~javascript
 widget.show({
   connections: ['facebook', 'google-oauth2', 'twitter', 'Username-Password-Authentication', 'fabrikam.com'],
-  resources: {
-    title: "Sign In with Auth0"
-  },
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
   showIcon: true
 }, funcion () {
   // The Auth0 Widget is now loaded.
-});
-~~~
-
-#### Customizing error messages
-You can also customize the error messages that will be displayed on certain situations:
-
-~~~javascript
-widget.show({
-  resources: {
-    // ... other properties ...
-    // wrongEmailPasswordErrorText, serverErrorText, signupEnterpriseEmailWarningText, signupServerErrorText and resetServerErrorText are used only if you have a Database connection
-    wrongEmailPasswordErrorText: 'Custom error message for invalid user/pass.',
-    serverErrorText: 'There was an error processing the sign in.',
-    signupEnterpriseEmailWarningText: 'This domain {domain} has been configured for Single Sign On and you can\'t create an account. Try signing in instead.',
-    signupServerErrorText: 'There was an unhandled error processing the sign up.',
-    resetServerErrorText: 'There was an unhandled error processing the change password.',
-    // strategyDomainInvalid is shown if the email does not have a matching enterprise connection
-    strategyDomainInvalid: 'The domain {domain} has not been setup.',
-    // strategyEmailInvalid is shown if the email is not valid
-    strategyEmailInvalid: 'The email is invalid.'
-  }
 });
 ~~~
 
