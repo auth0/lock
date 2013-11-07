@@ -1,0 +1,37 @@
+<div class="loggedin">
+    <form>
+        <span class="centered last-time"><%= i18n.t('signin:returnUserLabel') %></span>
+        <div class="strategy"></div>
+        <div class="emailPassword" style="display:none">
+            <div class="email">
+                <span class="email-readonly"></span>
+                <input name="email"
+                       type="email"
+                       value=""
+                       disabled
+                       placeholder="<%= i18n.t('signin:emailPlaceholder') %>"
+                       title="<%= i18n.t('signin:emailPlaceholder') %>"
+                       style="display:none">
+            </div>
+            <div class="password">
+                <input name="password" type="password" value=""
+                       autofocus
+                       placeholder="<%= i18n.t('signin:passwordPlaceholder') %>"
+                       title="<%= i18n.t('signin:passwordPlaceholder') %>">
+            </div>
+            <div class="action">
+                <% if (options.showSignup !== false) { %>
+                <button type="submit" class="zocial primary next" style="width: 100%;"><%= i18n.t('signin:signupText') %></button>
+                <button type="submit" class="spinner"></button>
+                <% } %>
+                <% if (options.showForgot !== false) { %>
+                <label class="create-account">
+                  <a href="<%= options.forgotLink || 'javascript: {}' %>"
+                    class="forgot-pass">i18n.t('signin:forgotText')</a>
+                </label>
+                <% } %>
+            </div>
+        </div>
+        <span class="centered all"><%= i18n.t('signin:all') %></span>
+    </form>
+</div>

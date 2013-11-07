@@ -1,0 +1,31 @@
+<div id="auth0-widget" class="cleanslate" dir="auto">
+    <div class="signin <%= locals && locals.embedded ? 'embedded' : '' %> <%= options.theme ? ('theme-' + options.theme) : '' %>">
+        <div class="popup">
+            <div class="overlay">
+                <div id="onestep" class="panel onestep">
+                    <header class="header">
+                        <div class="image" style="display: <%= !options.showIcon ? 'none' : 'block' %>">
+                            <img src="<%= options.icon || '' %>">
+                        </div>
+                        <h1><%= i18n.t('signin:title') %></h1>
+                        <h2 class="error" style="display: none">&nbsp;</h2>
+                        <h2 class="success" style="display: none">&nbsp;</h2>
+                        <a class="close" style="display: <%= options.standalone ? 'none' : 'block' %>;"><%= i18n.t('close') %></a>
+                    </header>
+
+                    <div class="loading"></div>
+
+
+                    <% include modes/loggedin %>
+                    <% include modes/signin %>
+                    <% include modes/signup %>
+                    <% include modes/reset %>
+
+                    <footer>
+                        <span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

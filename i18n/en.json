@@ -1,0 +1,44 @@
+{
+  "loadingTitle":                  "Please wait...",
+  "close":                         "Close",
+  "signin": {
+    "title":                       "Sign In",
+    "action":                      "Sign In",
+    "all":                         "Show all",
+    "strategyEmailEmpty":          "The email is empty.",
+    "strategyEmailInvalid":        "The email is invalid.",
+    "strategyDomainInvalid":       "The domain {domain} has not been setup.",
+    "signupText":                  "Sign Up",
+    "forgotText":                  "Forgot your password?",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Password",
+    "separatorText":               "or",
+    "serverErrorText":             "There was an error processing the sign in.",
+    "returnUserLabel":             "Last time you signed in using...",
+    "wrongEmailPasswordErrorText": "Wrong email or password.",
+    "or":                          "... or sign in using"
+  },
+  "signup": {
+    "title":                       "Sign Up",
+    "action":                      "Sign Up",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Create a Password",
+    "cancelAction":                "Cancel",
+    "headerText":                  "Please enter your email and password",
+    "footerText":                  "By clicking \"Sign Up\", you agree to our terms of service and privacy policy.",
+    "enterpriseEmailWarningText":  "This domain {domain} has been configured for Single Sign On and you can't create an account. Try signing in instead.",
+    "serverErrorText":             "There was an error processing the sign up."
+  },
+  "reset": {
+    "title":                       "Reset Password",
+    "action":                      "Send",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "New Password",
+    "repeatPasswordPlaceholder":   "Confirm New Password",
+    "cancelAction":                "Cancel",
+    "successText":                 "We've just sent you an email to reset your password.",
+    "enterSamePasswordText":       "Please enter the same password.",
+    "headerText":                  "Please enter your email and the new password. We will send you an email to confirm the password change.",
+    "serverErrorText":             "There was an error processing the reset password."
+  }
+}

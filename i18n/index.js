@@ -1,0 +1,52 @@
+var dics_data = {
+  'ar': require('./ar.json'),
+  'de': require('./de.json'),
+  'en': require('./en.json'),
+  'es': require('./es.json'),
+  'fr-FR': require('./fr-FR.json'),
+  'he': require('./he.json'),
+  'it': require('./it.json'),
+  'ja': require('./ja.json'),
+  'nl-NL': require('./nl-NL.json'),
+  'pt': require('./pt.json'),
+  'ru': require('./ru.json'),
+  'zh': require('./zh.json')
+};
+
+var default_dict = dics_data['en'];
+
+function findProp(o, s) {
+    s = s.replace(/\[(\w+)\]/g, ':$1'); // convert indexes to properties
+    s = s.replace(/^\:/, '');           // strip a leading dot
+    var a = s.split(':');
+    while (a.length) {
+        var n = a.shift();
+        if (n in o) {
+            o = o[n];
+        } else {
+            return;
+        }
+    }
+    return o;
+}
+
+function Dictionary (data) {
+  this._data = data;
+}
+
+Dictionary.prototype.t = function (key) {
+  return findProp(this._data, key) || findProp(default_dict, key);
+};
+
+module.exports.getDict = function ( langOrDict ) {
+
+  if (!langOrDict) {
+    return new Dictionary(default_dict);
+  }
+
+  if ( typeof langOrDict === 'string' ) {
+    return new Dictionary(dics_data[langOrDict]);
+  } else {
+    return new Dictionary(langOrDict);
+  }
+};

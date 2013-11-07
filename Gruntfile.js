@@ -34,7 +34,7 @@ module.exports = function (grunt) {
           'build/auth0-widget.js': ['widget/js/placeholders.js', 'standalone.js']
         },
         options: {
-          transform: ['browserify-ejs', 'brfs'],
+          transform: ['ejsify', 'brfs'],
           debug: false
         }
       },
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
           'build/auth0-widget.debug.js': ['widget/js/placeholders.js', 'standalone.js']
         },
         options: {
-          transform: ['browserify-ejs', 'brfs'],
+          transform: ['ejsify', 'brfs'],
           debug: true
         }
       },
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
     copy: {
       example: {
         files: {
-          'example/auth0-widget.js':  'build/auth0-widget.js',
+          'example/auth0-widget.js':  'build/auth0-widget.debug.js',
         }
       }
     },
@@ -95,7 +95,14 @@ module.exports = function (grunt) {
     },
     watch: {
       another: {
-        files: ['node_modules', 'standalone.js', 'widget/index.js', 'widget/html/*.html', 'widget/js/*.js', 'widget/css/*.less', 'widget/css/themes/*.less'],
+        files: ['node_modules',
+                'standalone.js',
+                'widget/index.js',
+                'widget/html/**',
+                'widget/js/*.js',
+                'widget/css/*.less',
+                'widget/css/themes/*.less',
+                'i18n/*'],
         tasks: ['build']
       }
     },

@@ -3,44 +3,67 @@
     <title>Test auth0-widget</title>
 </head>
 <body>
-	<button id="login-button">Login</button>
-	<button id="login-button-inside-container">Login (inside a DIV with spanish labels)</button>
+    <button id="login-button">Login</button>
+    <button id="login-button-inside-container">Login (inside a DIV with spanish labels)</button>
+    <button id="login-button-all">Login all</button>
 
-	<br><br>
-	<div id="login-container" style="width: 500px; height: 500px; background-color: blueviolet;"></div>
+    <br><br>
+    <div id="login-container" style="width: 500px; height: 500px; background-color: blueviolet;"></div>
 
-	<h3>User Info</h3>
-	<pre><code id="userinfo">Not logged in yet.</code></pre>
+    <h3>User Info</h3>
+    <pre><code id="userinfo">Not logged in yet.</code></pre>
 
-	<script src="auth0-widget.js"></script>
-	<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script>
-		$(function () {
-	        var widget = new Auth0Widget({
-				domain:      'mdocs.auth0.com',
-			    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 
-			    callbackURL: 'http://localhost:3000/',
-			    extraParameters: { response_type: 'token' }
-			});
+    <script src="auth0-widget.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#login-button-all').on('click', function () {
+                var langs = ['ar', 'de', 'en', 'es', 'fr-FR', 'he', 'it', 'ja', 'nl-NL', 'pt', 'ru', 'zh'];
+                var i = setInterval(function () {
+                    var l = langs.shift();
+                    if (!l) return clearInterval(i);
+                    (new Auth0Widget({
+                        domain:      'mdocs.auth0.com',
+                        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                        callbackURL: 'http://localhost:3000/',
+                        callbackOnLocationHash: true,
+                        dict: l,
+                        enableReturnUserExperience: false
+                    })).show();
+                }, 3000);
+            });
 
-			$('#login-button').on('click', function () {
-				widget.show({ resources: { title: 'Sign In with Auth0' } });
+            var widget = new Auth0Widget({
+                domain:      'mdocs.auth0.com',
+                clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                callbackURL: 'http://localhost:3000/',
+                callbackOnLocationHash: true,
+            });
+
+            $('#login-button').on('click', function () {
+                widget.show({
+                    resources: { title: 'Sign In with Auth0' },
+                    enableReturnUserExperience: false
+                });
             });
 
             $('#login-button-inside-container').on('click', function () {
-            	$.getJSON('strings/es-ES.json', function (resources) {
-            		widget.show({ 
-						resources: 	resources,
-						container: 	'login-container'
-					});
-            	});
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true,
+                });
+                widget.show({
+                    container:  'login-container'
+                });
             });
 
             // After login, show user profile
             widget.parseHash(window.location.hash, function (profile, id_token, access_token, state) {
-		      $('#userinfo').text(JSON.stringify(profile, 0, 2));
-		    });
+              $('#userinfo').text(JSON.stringify(profile, 0, 2));
+            });
         });
-	</script>
+    </script>
 </body>
 </html>

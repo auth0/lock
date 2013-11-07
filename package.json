@@ -27,7 +27,7 @@
     "bean": "~1.0.4",
     "xtend": "~2.1.1",
     "underscore": "~1.5.2",
-    "i18next-clientscript": "https://github.com/jamuhl/i18next/tarball/master"
+    "ejsify": "0.0.2"
   },
   "devDependencies": {
     "browserify": "~2.35.0",
@@ -43,7 +43,6 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.7.0",
     "grunt-s3": "~0.2.0-alpha.3",
-    "browserify-ejs": "0.0.2",
     "brfs": "0.0.8",
     "rimraf": "~2.2.2",
     "testem": "~0.5.4",

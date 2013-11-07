@@ -1,0 +1,44 @@
+{
+  "loadingTitle": "Veuillez patienter...",
+  "close": "Fermer",
+  "signin": {
+    "title": "Connexion",
+    "action": "Connexion",
+    "all": "Afficher tout",
+    "strategyEmailEmpty": "L'email est vide.",
+    "strategyEmailInvalid": "L'email n'est pas valide.",
+    "strategyDomainInvalid": "Le domaine {domain} n'a pas été le programme d'installation.",
+    "signupText": "Inscrivez-vous",
+    "forgotText": "Vous avez oublié votre mot de passe ?",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Mot de passe",
+    "separatorText": "ou",
+    "serverErrorText": "Il y avait une erreur de traitement de la connexion.",
+    "returnUserLabel": "La dernière fois vous connecté à l'aide...",
+    "wrongEmailPasswordErrorText": "Faux email ou mot de passe.",
+    "or": "... ou connectez-vous à l'aide"
+  },
+  "signup": {
+    "title": "Inscrivez-vous",
+    "action": "Inscrivez-vous",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Créer un mot de passe",
+    "cancelAction": "Annuler",
+    "headerText": "Veuillez entrer votre courriel et mot de passe",
+    "footerText": "En cliquant sur « S'inscrire », vous acceptez nos conditions de service et politique de confidentialité.",
+    "enterpriseEmailWarningText": "Ce domaine {domain} a été configuré pour le Single Sign On et vous ne pouvez pas créer un compte. Essayez de vous connecter à la place.",
+    "serverErrorText": "Il y avait une erreur de traitement le signe vers le haut."
+  },
+  "reset": {
+    "title": "Réinitialiser mot de passe",
+    "action": "Envoyer",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Nouveau mot de passe",
+    "repeatPasswordPlaceholder": "Confirmer le nouveau mot de passe",
+    "cancelAction": "Annuler",
+    "successText": "Nous avons juste envoyé un mail pour réinitialiser votre mot de passe.",
+    "enterSamePasswordText": "S'il vous plaît entrez le même mot de passe.",
+    "headerText": "Veuillez entrer votre email et le mot de passe. Nous vous enverrons un email pour confirmer le changement de mot de passe.",
+    "serverErrorText": "Il y avait une erreur de traitement de réinitialiser le mot de passe."
+  }
+}

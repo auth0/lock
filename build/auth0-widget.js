@@ -1,4 +1,606 @@
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "الرجاء الانتظار...",
+  "close": "قم بإغلاق",
+  "signin": {
+    "title": "تسجيل الدخول",
+    "action": "تسجيل الدخول",
+    "all": "إظهار الكل",
+    "strategyEmailEmpty": "رسالة البريد الإلكتروني فارغاً.",
+    "strategyEmailInvalid": "البريد الإلكتروني غير صالح.",
+    "strategyDomainInvalid": "{المجال} لم يكن الإعداد.",
+    "signupText": "التسجيل",
+    "forgotText": "هل نسيت كلمة المرور الخاصة بك؟",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "كلمة المرور",
+    "separatorText": "أو",
+    "serverErrorText": "حدث خطأ أثناء معالجة تسجيل الدخول.",
+    "returnUserLabel": "آخر مرة قمت بتسجيل الدخول باستخدام...",
+    "wrongEmailPasswordErrorText": "البريد الإلكتروني غير صحيح أو كلمة المرور.",
+    "or": ".. أو قم بتسجيل الدخول باستخدام"
+  },
+  "signup": {
+    "title": "التسجيل",
+    "action": "التسجيل",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "إنشاء كلمة مرور",
+    "cancelAction": "إلغاء الأمر",
+    "headerText": "الرجاء إدخال البريد الإلكتروني وكلمة المرور الخاصة بك",
+    "footerText": "بواسطة النقر فوق \"التسجيل\"، أنت توافق على شروط سياسة الخصوصية والخدمة.",
+    "enterpriseEmailWarningText": "هذا المجال {المجال} قد تم تكوينه لتسجيل الدخول، ولا يمكن أن تقوم بإنشاء حساب. حاول تسجيل الدخول بدلاً من ذلك.",
+    "serverErrorText": "حدث خطأ أثناء معالجة العلامة التسجيل."
+  },
+  "reset": {
+    "title": "إعادة تعيين كلمة المرور",
+    "action": "إرسال",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "كلمة المرور الجديدة",
+    "repeatPasswordPlaceholder": "تأكيد كلمة المرور الجديدة",
+    "cancelAction": "إلغاء الأمر",
+    "successText": "لقد أرسلنا فقط لك رسالة بريد إلكتروني إعادة تعيين كلمة المرور الخاصة بك.",
+    "enterSamePasswordText": "الرجاء إدخال كلمة المرور نفسها.",
+    "headerText": "الرجاء إدخال البريد الإلكتروني الخاص بك وكلمة المرور الجديدة. وسوف نرسل لك رسالة بالبريد إلكتروني لتأكيد تغيير كلمة المرور.",
+    "serverErrorText": "حدث خطأ أثناء معالجة إعادة تعيين كلمة المرور."
+  }
+}
+},{}],2:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Bitte warten...",
+  "close": "Schließen",
+  "signin": {
+    "title": "Anmelden",
+    "action": "Anmelden",
+    "all": "Alle anzeigen",
+    "strategyEmailEmpty": "Die e-Mail ist leer.",
+    "strategyEmailInvalid": "Die e-Mail ist ungültig.",
+    "strategyDomainInvalid": "{domain} wurde nicht eingerichtet.",
+    "signupText": "Anmelden",
+    "forgotText": "Passwort vergessen?",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Passwort",
+    "separatorText": "oder",
+    "serverErrorText": "Gab es Fehler beim Verarbeiten der anmelden.",
+    "returnUserLabel": "Letzte Mal unterschrieben Sie bei der Verwendung...",
+    "wrongEmailPasswordErrorText": "Falsche e-Mail oder Passwort.",
+    "or": "... oder melden Sie sich mit"
+  },
+  "signup": {
+    "title": "Anmelden",
+    "action": "Anmelden",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Erstellen Sie ein Kennwort",
+    "cancelAction": "Abbrechen",
+    "headerText": "Bitte geben Sie Ihre e-Mail und Passwort",
+    "footerText": "Durch Klicken auf \"Anmelden\", stimmen Sie unseren Nutzungsbedingungen oder Datenschutzrichtlinien.",
+    "enterpriseEmailWarningText": "Diese Domäne {domain} für Single Sign On konfiguriert wurde und Sie können ein Konto erstellen. Versuchen Sie stattdessen sich anzumelden.",
+    "serverErrorText": "Gab es Fehler beim Verarbeiten der Zeichens auf."
+  },
+  "reset": {
+    "title": "Passwort zurücksetzen",
+    "action": "Senden",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Neues Passwort",
+    "repeatPasswordPlaceholder": "Neues Kennwort bestätigen",
+    "cancelAction": "Abbrechen",
+    "successText": "Wir haben Sie nur eine e-Mail zum Zurücksetzen Ihres Passworts geschickt.",
+    "enterSamePasswordText": "Bitte geben Sie das gleiche Kennwort.",
+    "headerText": "Bitte geben Sie Ihre e-Mail und das neue Kennwort. Wir senden Ihnen eine e-Mail zur Bestätigung der Passwortänderung.",
+    "serverErrorText": "Gab es Fehler beim Verarbeiten des Kennworts zurücksetzen."
+  }
+}
+},{}],3:[function(require,module,exports){
+module.exports={
+  "loadingTitle":                  "Please wait...",
+  "close":                         "Close",
+  "signin": {
+    "title":                       "Sign In",
+    "action":                      "Sign In",
+    "all":                         "Show all",
+    "strategyEmailEmpty":          "The email is empty.",
+    "strategyEmailInvalid":        "The email is invalid.",
+    "strategyDomainInvalid":       "The domain {domain} has not been setup.",
+    "signupText":                  "Sign Up",
+    "forgotText":                  "Forgot your password?",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Password",
+    "separatorText":               "or",
+    "serverErrorText":             "There was an error processing the sign in.",
+    "returnUserLabel":             "Last time you signed in using...",
+    "wrongEmailPasswordErrorText": "Wrong email or password.",
+    "or":                          "... or sign in using"
+  },
+  "signup": {
+    "title":                       "Sign Up",
+    "action":                      "Sign Up",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Create a Password",
+    "cancelAction":                "Cancel",
+    "headerText":                  "Please enter your email and password",
+    "footerText":                  "By clicking \"Sign Up\", you agree to our terms of service and privacy policy.",
+    "enterpriseEmailWarningText":  "This domain {domain} has been configured for Single Sign On and you can't create an account. Try signing in instead.",
+    "serverErrorText":             "There was an error processing the sign up."
+  },
+  "reset": {
+    "title":                       "Reset Password",
+    "action":                      "Send",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "New Password",
+    "repeatPasswordPlaceholder":   "Confirm New Password",
+    "cancelAction":                "Cancel",
+    "successText":                 "We've just sent you an email to reset your password.",
+    "enterSamePasswordText":       "Please enter the same password.",
+    "headerText":                  "Please enter your email and the new password. We will send you an email to confirm the password change.",
+    "serverErrorText":             "There was an error processing the reset password."
+  }
+}
+},{}],4:[function(require,module,exports){
+module.exports={
+  "loadingTitle":                  "Por favor espere...",
+  "close":                         "Cerrar",
+  "signin": {
+    "title":                       "Iniciar sesion",
+    "action":                      "Ingresar",
+    "all":                         "Mostrar todas",
+    "strategyEmailEmpty":          "El email esta vacío.",
+    "strategyEmailInvalid":        "El email no es válido.",
+    "strategyDomainInvalid":       "El dominio {domain} no esta configurado.",
+    "signupText":                  "Registrarse",
+    "forgotText":                  "Olvidé mi contraseña",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Contraseña",
+    "separatorText":               "o",
+    "serverErrorText":             "Hubo un error al iniciar sesión.",
+    "returnUserLabel":             "La ultima vez inició sesión con...",
+    "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
+    "or":                          "... o inicie sesión usando"
+  },
+  "signup": {
+    "title":                       "Registrarse",
+    "action":                      "Registrar",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Contraseña",
+    "cancelAction":                "Cancelar",
+    "headerText":                  "Por favor ingrese email y contraseña",
+    "footerText":                  "Al presionar \"Sign Up\", usted acepta la política de privacidad y los terminos y condiciones.",
+    "enterpriseEmailWarningText":  "El dominio {domain} ha sido configurado para Single Sign On y no puede crear una cuenta. Intente iniciar sesión directamente.",
+    "serverErrorText":             "Hubo un error al procesar su registro."
+  },
+  "reset": {
+    "title":                       "Resetear Contraseña",
+    "action":                      "Enviar",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Nueva Contraseña",
+    "repeatPasswordPlaceholder":   "Confirme nueva contraseña",
+    "cancelAction":                "Cancelar",
+    "successText":                 "Hemos enviado un email para completar el reseteo de su contraseña.",
+    "enterSamePasswordText":       "Por favor ingrese la misma contraseña.",
+    "headerText":                  "Por favor ingrese su email y la nueva contraseña. Enviaremos un email para confirmar el cambio.",
+    "serverErrorText":             "Hubo un error al resetear su contraseña."
+  }
+}
+},{}],5:[function(require,module,exports){
+module.exports={
+  "loadingTitle": "Veuillez patienter...",
+  "close": "Fermer",
+  "signin": {
+    "title": "Connexion",
+    "action": "Connexion",
+    "all": "Afficher tout",
+    "strategyEmailEmpty": "L'email est vide.",
+    "strategyEmailInvalid": "L'email n'est pas valide.",
+    "strategyDomainInvalid": "Le domaine {domain} n'a pas été le programme d'installation.",
+    "signupText": "Inscrivez-vous",
+    "forgotText": "Vous avez oublié votre mot de passe ?",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Mot de passe",
+    "separatorText": "ou",
+    "serverErrorText": "Il y avait une erreur de traitement de la connexion.",
+    "returnUserLabel": "La dernière fois vous connecté à l'aide...",
+    "wrongEmailPasswordErrorText": "Faux email ou mot de passe.",
+    "or": "... ou connectez-vous à l'aide"
+  },
+  "signup": {
+    "title": "Inscrivez-vous",
+    "action": "Inscrivez-vous",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Créer un mot de passe",
+    "cancelAction": "Annuler",
+    "headerText": "Veuillez entrer votre courriel et mot de passe",
+    "footerText": "En cliquant sur « S'inscrire », vous acceptez nos conditions de service et politique de confidentialité.",
+    "enterpriseEmailWarningText": "Ce domaine {domain} a été configuré pour le Single Sign On et vous ne pouvez pas créer un compte. Essayez de vous connecter à la place.",
+    "serverErrorText": "Il y avait une erreur de traitement le signe vers le haut."
+  },
+  "reset": {
+    "title": "Réinitialiser mot de passe",
+    "action": "Envoyer",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Nouveau mot de passe",
+    "repeatPasswordPlaceholder": "Confirmer le nouveau mot de passe",
+    "cancelAction": "Annuler",
+    "successText": "Nous avons juste envoyé un mail pour réinitialiser votre mot de passe.",
+    "enterSamePasswordText": "S'il vous plaît entrez le même mot de passe.",
+    "headerText": "Veuillez entrer votre email et le mot de passe. Nous vous enverrons un email pour confirmer le changement de mot de passe.",
+    "serverErrorText": "Il y avait une erreur de traitement de réinitialiser le mot de passe."
+  }
+}
+},{}],6:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "חכה בבקשה...",
+  "close": "סגור",
+  "signin": {
+    "title": "הירשם",
+    "action": "הירשם",
+    "all": "הצג הכל",
+    "strategyEmailEmpty": "הדוא ל הוא ריק.",
+    "strategyEmailInvalid": "הדוא ל אינו חוקי.",
+    "strategyDomainInvalid": "התחום {domain} לא היתה תוכנית ההתקנה.",
+    "signupText": "הירשם",
+    "forgotText": "שכחת הסיסמא?",
+    "emailPlaceholder": "דוא",
+    "passwordPlaceholder": "סיסמה",
+    "separatorText": "או",
+    "serverErrorText": "אירעה שגיאה בעיבוד הכניסה.",
+    "returnUserLabel": "בפעם האחרונה נכנסת באמצעות...",
+    "wrongEmailPasswordErrorText": "הדוא\"ל טועה או סיסמה.",
+    "or": ". או כניסה באמצעות"
+  },
+  "signup": {
+    "title": "הירשם",
+    "action": "הירשם",
+    "emailPlaceholder": "דוא",
+    "passwordPlaceholder": "צור סיסמה",
+    "cancelAction": "ביטול",
+    "headerText": "הזינו את כתובת המייל והסיסמא",
+    "footerText": "על ידי לחיצה על \"Sign Up\", אתה מסכים לתנאים שלנו של מדיניות שירות ופרטיות.",
+    "enterpriseEmailWarningText": "תחום זה, {domain} נקבעה עבור כניסה יחידה, אין באפשרותך ליצור חשבון. נסה להיכנס במקום.",
+    "serverErrorText": "אירעה שגיאה בעיבוד את השלט למעלה."
+  },
+  "reset": {
+    "title": "איפוס סיסמה",
+    "action": "שלח",
+    "emailPlaceholder": "דוא",
+    "passwordPlaceholder": "סיסמה חדשה",
+    "repeatPasswordPlaceholder": "אשר סיסמה חדשה",
+    "cancelAction": "ביטול",
+    "successText": "אנחנו פשוט לשלוח לך דואר אלקטרוני כדי לאפס את הסיסמה שלך.",
+    "enterSamePasswordText": "הזינו בבקשה את אותה סיסמה.",
+    "headerText": "אנא הזן את הדואר האלקטרוני שלך ואת הסיסמה החדשה. אנו נשלח לך הודעת דואר אלקטרוני כדי לאשר שינוי הסיסמה.",
+    "serverErrorText": "אירעה שגיאה בעיבוד איפוס הסיסמה."
+  }
+}
+},{}],7:[function(require,module,exports){
+var dics_data = {
+  'ar': require('./ar.json'),
+  'de': require('./de.json'),
+  'en': require('./en.json'),
+  'es': require('./es.json'),
+  'fr-FR': require('./fr-FR.json'),
+  'he': require('./he.json'),
+  'it': require('./it.json'),
+  'ja': require('./ja.json'),
+  'nl-NL': require('./nl-NL.json'),
+  'pt': require('./pt.json'),
+  'ru': require('./ru.json'),
+  'zh': require('./zh.json')
+};
+
+var default_dict = dics_data['en'];
+
+function findProp(o, s) {
+    s = s.replace(/\[(\w+)\]/g, ':$1'); // convert indexes to properties
+    s = s.replace(/^\:/, '');           // strip a leading dot
+    var a = s.split(':');
+    while (a.length) {
+        var n = a.shift();
+        if (n in o) {
+            o = o[n];
+        } else {
+            return;
+        }
+    }
+    return o;
+}
+
+function Dictionary (data) {
+  this._data = data;
+}
+
+Dictionary.prototype.t = function (key) {
+  return findProp(this._data, key) || findProp(default_dict, key);
+};
+
+module.exports.getDict = function ( langOrDict ) {
+
+  if (!langOrDict) {
+    return new Dictionary(default_dict);
+  }
+
+  if ( typeof langOrDict === 'string' ) {
+    return new Dictionary(dics_data[langOrDict]);
+  } else {
+    return new Dictionary(langOrDict);
+  }
+};
+},{"./ar.json":1,"./de.json":2,"./en.json":3,"./es.json":4,"./fr-FR.json":5,"./he.json":6,"./it.json":8,"./ja.json":9,"./nl-NL.json":10,"./pt.json":11,"./ru.json":12,"./zh.json":13}],8:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Attendere prego...",
+  "close": "Chiudere",
+  "signin": {
+    "title": "Accedi",
+    "action": "Accedi",
+    "all": "Visualizza tutti",
+    "strategyEmailEmpty": "L'email è vuota.",
+    "strategyEmailInvalid": "L'email non è valido.",
+    "strategyDomainInvalid": "Il dominio {domain} non è stata l'installazione.",
+    "signupText": "Registrati",
+    "forgotText": "Hai dimenticato la password?",
+    "emailPlaceholder": "Posta elettronica",
+    "passwordPlaceholder": "Password",
+    "separatorText": "o",
+    "serverErrorText": "C'è stato un errore durante l'elaborazione il segno in.",
+    "returnUserLabel": "Ultima volta che hai eseguito utilizzando...",
+    "wrongEmailPasswordErrorText": "Email errato o password.",
+    "or": "... oppure accedi usando"
+  },
+  "signup": {
+    "title": "Registrati",
+    "action": "Registrati",
+    "emailPlaceholder": "Posta elettronica",
+    "passwordPlaceholder": "Creare una Password",
+    "cancelAction": "Annulla",
+    "headerText": "Inserisci la tua email e la password",
+    "footerText": "Cliccando su \"Registrati\", acconsenti ai nostri termini di servizio e privacy policy.",
+    "enterpriseEmailWarningText": "Questo dominio {domain} è stato configurato per il Single Sign On e non è possibile creare un account. Prova ad accedere invece.",
+    "serverErrorText": "C'è stato un errore durante l'elaborazione il segno fino."
+  },
+  "reset": {
+    "title": "Reimpostare la Password",
+    "action": "Invia",
+    "emailPlaceholder": "Posta elettronica",
+    "passwordPlaceholder": "Nuova Password",
+    "repeatPasswordPlaceholder": "Conferma nuova Password",
+    "cancelAction": "Annulla",
+    "successText": "Noi abbiamo appena inviato un'e-mail per reimpostare la password.",
+    "enterSamePasswordText": "Inserisci la stessa password.",
+    "headerText": "Inserisci il tuo indirizzo email e la password nuova. Ti invieremo un'email per confermare la modifica della password.",
+    "serverErrorText": "C'è stato un errore durante l'elaborazione il password reset."
+  }
+}
+},{}],9:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "お待ちください。。。",
+  "close": "閉じる",
+  "signin": {
+    "title": "サインイン",
+    "action": "サインイン",
+    "all": "すべて表示します。",
+    "strategyEmailEmpty": "電子メールが空です。",
+    "strategyEmailInvalid": "電子メールは有効です。",
+    "strategyDomainInvalid": "{ドメイン} セットアップされていません。",
+    "signupText": "サインアップ",
+    "forgotText": "パスワードをお忘れですか？",
+    "emailPlaceholder": "電子メール",
+    "passwordPlaceholder": "パスワード",
+    "separatorText": "または",
+    "serverErrorText": "サインインを処理中にエラーがありました。",
+    "returnUserLabel": "最後の時間を使用してをサインインして.",
+    "wrongEmailPasswordErrorText": "間違ったメール アドレスまたはパスワードです。",
+    "or": "... またはを使用してサインイン"
+  },
+  "signup": {
+    "title": "サインアップ",
+    "action": "サインアップ",
+    "emailPlaceholder": "電子メール",
+    "passwordPlaceholder": "パスワードを作成します。",
+    "cancelAction": "キャンセル",
+    "headerText": "あなたのメール アドレスとパスワードを入力してください。",
+    "footerText": "クリックして「サインアップ」、サービスおよびプライバシー ポリシーの利用規約に同意します。",
+    "enterpriseEmailWarningText": "このドメイン {} が構成されているシングル サインオン ・ アカウントを作成することはできません。代わりにサインインしてください。",
+    "serverErrorText": "符号を処理中にエラーがありました。"
+  },
+  "reset": {
+    "title": "パスワードのリセット",
+    "action": "送信",
+    "emailPlaceholder": "電子メール",
+    "passwordPlaceholder": "新しいパスワード",
+    "repeatPasswordPlaceholder": "新しいパスワードを確認します。",
+    "cancelAction": "キャンセル",
+    "successText": "我々 はちょうどあなたのパスワードをリセットするメールを送信しました。",
+    "enterSamePasswordText": "同じパスワードを入力してください。",
+    "headerText": "あなたのメール アドレスと新しいパスワードを入力してください。我々 は、パスワードの変更を確認するためにメールが送信されます。",
+    "serverErrorText": "パスワードのリセットを処理中にエラーがありました。"
+  }
+}
+},{}],10:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Een ogenblik geduld...",
+  "close": "Sluiten",
+  "signin": {
+    "title": "Aanmelden",
+    "action": "Aanmelden",
+    "all": "Toon alle",
+    "strategyEmailEmpty": "De e-mail is leeg.",
+    "strategyEmailInvalid": "De e-mail is ongeldig.",
+    "strategyDomainInvalid": "Het domein {domain} heeft niet opstelling geweest.",
+    "signupText": "Aanmelden",
+    "forgotText": "Vergat uw wachtwoord?",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Wachtwoord",
+    "separatorText": "of",
+    "serverErrorText": "Er is een fout opgetreden verwerking van het teken in.",
+    "returnUserLabel": "Laatste keer dat u ondertekend bij het gebruik van...",
+    "wrongEmailPasswordErrorText": "Verkeerde e-mail of wachtwoord.",
+    "or": "... of Meld u aan met"
+  },
+  "signup": {
+    "title": "Aanmelden",
+    "action": "Aanmelden",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Een wachtwoord maken",
+    "cancelAction": "Annuleren",
+    "headerText": "Voer je email en wachtwoord",
+    "footerText": "Door te klikken op \"Sign Up\", gaat u akkoord met onze gebruiksvoorwaarden en het privacybeleid.",
+    "enterpriseEmailWarningText": "Dit domein {domain} is geconfigureerd voor eenmalige aanmelding en u kunt een account maken. Probeer aan te melden in plaats daarvan.",
+    "serverErrorText": "Er is een fout opgetreden verwerking het teken omhoog."
+  },
+  "reset": {
+    "title": "Reset wachtwoord",
+    "action": "Verzenden",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Nieuw wachtwoord",
+    "repeatPasswordPlaceholder": "Bevestig het nieuwe wachtwoord",
+    "cancelAction": "Annuleren",
+    "successText": "We hebben net stuurde u een e-mail om uw wachtwoord te resetten.",
+    "enterSamePasswordText": "Voer hetzelfde wachtwoord.",
+    "headerText": "Voer uw e-mailadres en het nieuwe wachtwoord. Wij sturen u een e-mail ter bevestiging van de wachtwoordwijziging.",
+    "serverErrorText": "Er is een fout opgetreden verwerking van het wachtwoord opnieuw instellen."
+  }
+}
+},{}],11:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Aguarde...",
+  "close": "Fechar",
+  "signin": {
+    "title": "Entrar",
+    "action": "Entrar",
+    "all": "Mostrar todos",
+    "strategyEmailEmpty": "O e-mail é vazio.",
+    "strategyEmailInvalid": "O email é inválido.",
+    "strategyDomainInvalid": "O domínio {domain} não foi a instalação.",
+    "signupText": "Inscrição",
+    "forgotText": "Esqueceu sua senha?",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Senha",
+    "separatorText": "ou",
+    "serverErrorText": "Houve um erro ao processar o sinal em.",
+    "returnUserLabel": "Da última vez que você assinou usando...",
+    "wrongEmailPasswordErrorText": "Senha ou e-mail errado.",
+    "or": "... ou Cadastre-se no uso de"
+  },
+  "signup": {
+    "title": "Inscrição",
+    "action": "Inscrição",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Crie uma senha",
+    "cancelAction": "Cancelar",
+    "headerText": "Por favor, digite seu e-mail e senha",
+    "footerText": "Clicando em \"Sign Up\", você concorda com nossos termos de serviço e política de privacidade.",
+    "enterpriseEmailWarningText": "Este domínio {domain} tiver sido configurado para Sign-On único e você não pode criar uma conta. Tente entrar em vez disso.",
+    "serverErrorText": "Houve um erro ao processar o sinal de cima."
+  },
+  "reset": {
+    "title": "Redefinir senha",
+    "action": "Enviar",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Nova senha",
+    "repeatPasswordPlaceholder": "Confirmar nova senha",
+    "cancelAction": "Cancelar",
+    "successText": "Só te enviamos um e-mail para redefinir sua senha.",
+    "enterSamePasswordText": "Por favor digite a mesma senha.",
+    "headerText": "Por favor, digite seu e-mail e a senha nova. Nós lhe enviaremos um e-mail para confirmar a alteração de senha.",
+    "serverErrorText": "Houve um erro ao processar a redefinir a senha."
+  }
+}
+},{}],12:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Подождите...",
+  "close": "Закрыть",
+  "signin": {
+    "title": "Войти",
+    "action": "Войти",
+    "all": "Показать все",
+    "strategyEmailEmpty": "Электронная почта является пустым.",
+    "strategyEmailInvalid": "Электронной почты является недействительным.",
+    "strategyDomainInvalid": "{domain} не было установки.",
+    "signupText": "Регистрация",
+    "forgotText": "Забыли ваш пароль?",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Пароль",
+    "separatorText": "или",
+    "serverErrorText": "Произошла ошибка при обработке входа.",
+    "returnUserLabel": "Последний раз вы подписали в использовании...",
+    "wrongEmailPasswordErrorText": "Неправильный адрес или пароль.",
+    "or": "... или войдите с помощью"
+  },
+  "signup": {
+    "title": "Регистрация",
+    "action": "Регистрация",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Создайте пароль",
+    "cancelAction": "Отмена",
+    "headerText": "Пожалуйста, введите свой email и пароль",
+    "footerText": "Нажав «Зарегистрироваться», вы соглашаетесь на наши условия обслуживания и политика конфиденциальности.",
+    "enterpriseEmailWarningText": "Этот домен {domain} был настроен для единого входа и нельзя создать учетную запись. Попробуйте войти в вместо этого.",
+    "serverErrorText": "Произошла ошибка при обработке знак вверх."
+  },
+  "reset": {
+    "title": "Сброс пароля",
+    "action": "Отправить",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Новый пароль",
+    "repeatPasswordPlaceholder": "Подтвердите новый пароль",
+    "cancelAction": "Отмена",
+    "successText": "Мы только что отправил вам по электронной почте, чтобы сбросить ваш пароль.",
+    "enterSamePasswordText": "Пожалуйста, введите тот же пароль.",
+    "headerText": "Пожалуйста, введите ваш адрес электронной почты и новый пароль. Мы вышлем вам по электронной почте для подтверждения изменения пароля.",
+    "serverErrorText": "Произошла ошибка при обработке сброса пароля."
+  }
+}
+},{}],13:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "请稍候。。。",
+  "close": "关闭",
+  "signin": {
+    "title": "登录",
+    "action": "登录",
+    "all": "全部显示",
+    "strategyEmailEmpty": "电子邮件是空的。",
+    "strategyEmailInvalid": "电子邮件是无效的。",
+    "strategyDomainInvalid": "指定域 {domain} 尚未安装。",
+    "signupText": "登记",
+    "forgotText": "忘记了您的密码吗？",
+    "emailPlaceholder": "电子邮件",
+    "passwordPlaceholder": "密码",
+    "separatorText": "或",
+    "serverErrorText": "处理所示的标志时出错。",
+    "returnUserLabel": "最后一次你在使用签署...",
+    "wrongEmailPasswordErrorText": "错误的电子邮件或密码。",
+    "or": "...或使用登录"
+  },
+  "signup": {
+    "title": "登记",
+    "action": "登记",
+    "emailPlaceholder": "电子邮件",
+    "passwordPlaceholder": "创建一个密码",
+    "cancelAction": "取消",
+    "headerText": "请输入您的电子邮件和密码",
+    "footerText": "点击\"注册\"，您必须同意我们的使用条款服务和隐私策略。",
+    "enterpriseEmailWarningText": "指定此域 {domain} 已配置为单一登录和您不能创建一个帐户。请尝试登录相反。",
+    "serverErrorText": "处理标志向上时出错。"
+  },
+  "reset": {
+    "title": "重置密码",
+    "action": "发送",
+    "emailPlaceholder": "电子邮件",
+    "passwordPlaceholder": "新密码",
+    "repeatPasswordPlaceholder": "确认新密码",
+    "cancelAction": "取消",
+    "successText": "我们刚刚已经向您发送一封电子邮件，重置您的密码。",
+    "enterSamePasswordText": "请输入相同的密码。",
+    "headerText": "请输入您的电子邮件和新的密码。我们将向您发送邮件以确认密码更改。",
+    "serverErrorText": "处理重置密码时出错。"
+  }
+}
+},{}],14:[function(require,module,exports){
 module.exports = function (css) {
     var head = document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
@@ -13,7 +615,7 @@ module.exports = function (css) {
     head.appendChild(style);
 };
 
-},{}],2:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 var json_parse = require('./json_parse');
 
 function LoginError(status, details) {
@@ -51,13 +653,13 @@ if (Object && Object.create) {
 }
 
 module.exports = LoginError;
-},{"./json_parse":6}],3:[function(require,module,exports){
+},{"./json_parse":19}],16:[function(require,module,exports){
 module.exports = function (obj, prop) {
   if (!obj[prop]) {
     throw new Error(prop + ' is required.');
   }
 };
-},{}],4:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var Base64 = require('Base64');
 
 module.exports = function(str) {
@@ -76,7 +678,7 @@ module.exports = function(str) {
   }
   return Base64.atob(output);
 };
-},{"Base64":8}],5:[function(require,module,exports){
+},{"Base64":21}],18:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var assert_required   = require('./assert_required');
 var base64_url_decode = require('./base64_url_decode');
 var qs                = require('qs');
@@ -321,11 +923,11 @@ Auth0.prototype.getConnections = function (callback) {
 
 module.exports = Auth0;
 
-},{"./LoginError":2,"./assert_required":3,"./base64_url_decode":4,"./json_parse":6,"./use_jsonp":7,"jsonp":10,"qs":11,"reqwest":12,"xtend":19}],6:[function(require,module,exports){
+},{"./LoginError":15,"./assert_required":16,"./base64_url_decode":17,"./json_parse":19,"./use_jsonp":20,"jsonp":23,"qs":24,"reqwest":25,"xtend":32}],19:[function(require,module,exports){
 module.exports = function (str) {
   return window.JSON ? window.JSON.parse(str) : eval('(' + str + ')');
 };
-},{}],7:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = function () {
   var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : null;
 
@@ -335,7 +937,7 @@ module.exports = function () {
 
   return 'XDomainRequest' in window && window.location.protocol === 'http:';
 };
-},{}],8:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 ;(function () {
 
   var
@@ -392,7 +994,7 @@ module.exports = function () {
 
 }());
 
-},{}],9:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 
 /**
  * Expose `debug()` as the module.
@@ -531,7 +1133,7 @@ try {
   if (window.localStorage) debug.enable(localStorage.debug);
 } catch(e){}
 
-},{}],10:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 
 /**
  * Module dependencies
@@ -617,7 +1219,7 @@ function jsonp(url, opts, fn){
   target.parentNode.insertBefore(script, target);
 };
 
-},{"debug":9}],11:[function(require,module,exports){
+},{"debug":22}],24:[function(require,module,exports){
 /**
  * Object#toString() ref for stringify().
  */
@@ -1027,7 +1629,7 @@ function decode(str) {
   }
 }
 
-},{}],12:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /*! version: 0.9.3 */
 /*!
   * Reqwest! A general purpose XHR connection manager
@@ -1626,7 +2228,7 @@ function decode(str) {
   return reqwest
 });
 
-},{}],13:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /*!
   * Bean - copyright (c) Jacob Thornton 2011-2012
   * https://github.com/fat/bean
@@ -2368,7 +2970,7 @@ function decode(str) {
 
   return bean
 });
-},{}],14:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 /*!
   * Bonzo: DOM Utility (c) Dustin Diaz 2012
   * https://github.com/ded/bonzo
@@ -3523,13 +4125,13 @@ function decode(str) {
   return bonzo
 }); // the only line we care about using a semi-colon. placed here for concatenation tools
 
-},{}],15:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 
 // not implemented
 // The reason for having an empty file and not throwing is to allow
 // untraditional implementation of this module.
 
-},{}],16:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /*!
   * @preserve Qwery - A Blazing Fast query selector engine
   * https://github.com/ded/qwery
@@ -3900,7 +4502,7 @@ function decode(str) {
   return qwery
 });
 
-},{}],17:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 //     Underscore.js 1.5.2
 //     http://underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -5178,7 +5780,7 @@ function decode(str) {
 
 }).call(this);
 
-},{}],18:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 module.exports = hasKeys
 
 function hasKeys(source) {
@@ -5187,7 +5789,7 @@ function hasKeys(source) {
         typeof source === "function")
 }
 
-},{}],19:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 var Keys = require("object-keys")
 var hasKeys = require("./has-keys")
 
@@ -5214,7 +5816,7 @@ function extend() {
     return target
 }
 
-},{"./has-keys":18,"object-keys":21}],20:[function(require,module,exports){
+},{"./has-keys":31,"object-keys":34}],33:[function(require,module,exports){
 var hasOwn = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
 
@@ -5256,11 +5858,11 @@ module.exports = function forEach(obj, fn) {
 };
 
 
-},{}],21:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = Object.keys || require('./shim');
 
 
-},{"./shim":23}],22:[function(require,module,exports){
+},{"./shim":36}],35:[function(require,module,exports){
 var toString = Object.prototype.toString;
 
 module.exports = function isArguments(value) {
@@ -5278,7 +5880,7 @@ module.exports = function isArguments(value) {
 };
 
 
-},{}],23:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 (function () {
 	"use strict";
 
@@ -5342,7 +5944,7 @@ module.exports = function isArguments(value) {
 }());
 
 
-},{"./foreach":20,"./isArguments":22}],24:[function(require,module,exports){
+},{"./foreach":33,"./isArguments":35}],37:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};/*
  *
  * This is used to build the bundle with browserify.
@@ -5364,8 +5966,8 @@ if (typeof global.window.define == 'function' && global.window.define.amd) {
   global.window.Auth0Widget = Auth0Widget;
 }
 
-},{"./lib/insert-css":1,"./widget":26,"fs":15}],25:[function(require,module,exports){
-module.exports=(function() {var t = function anonymous(locals, filters, escape) {
+},{"./lib/insert-css":14,"./widget":41,"fs":28}],38:[function(require,module,exports){
+module.exports = (function anonymous(locals, filters, escape) {
 escape = escape || function (html){
   return String(html)
     .replace(/&(?!\w+;)/g, '&amp;')
@@ -5373,13 +5975,135 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
+var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= title %>\"\n\t\tclass=\"zocial icon <%= css %> <%= locals.imageicon ? 'image-icon' : '' %>\" dir=\"ltr\">\n\t<%= title %>\n</span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/button.ejs" };
+function rethrow(err, str, filename, lineno){
+  var lines = str.split('\n')
+    , start = Math.max(lineno - 3, 0)
+    , end = Math.min(lines.length, lineno + 3);
+
+  // Error context
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+  
+  throw err;
+}
+try {
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<div id="auth0-widget" class="cleanslate">\n	<div class="signin ', escape((2,  locals && locals.embedded ? 'embedded' : '' )), '">\n	    <div class="popup">\n	      	<div class="overlay">\n	        	<div id="onestep" class="panel onestep">\n	          		<header class="header">\n	            		<div class="image" style="display: none">\n	            			<img src="">\n	            		</div>\n	            		<h1>Sign In</h1>\n			            <h2 class="error" style="display: none">&nbsp;</h2>\n			            <h2 class="success" style="display: none">&nbsp;</h2>\n			            <a class="close">Close</a>\n	          		</header>\n\n	          		<div class="loading"></div>\n\n	          		<div class="loggedin">\n			            <form>\n							<span class="centered last-time"></span>\n							<div class="strategy"></div>\n							<div class="emailPassword" style="display:none">\n								<div class="email">\n									<span class="email-readonly"></span>\n									<input name="email" type="email" value="" disabled placeholder="Email" title="Email" style="display:none">\n								</div>\n								<div class="password">\n									<input name="password" type="password" value="" autofocus placeholder="Password" title="Password">\n								</div>\n								<div class="action">\n									<button type="submit" class="zocial primary next" style="width: 100%;">Sign In</button>\n								  	<button type="submit" class="spinner" style="display: none"></button>\n								  	<label class="create-account"><a href="javascript: {}" class="forgot-pass">Forgot your password?</a></label>\n								</div>\n							</div>\n							<span class="centered all">Show all</span>\n			            </form>\n	          		</div>\n\n		          	<div class="notloggedin">\n			            <form>\n			            	<div class="iconlist" style="display: none"><p style="display:none">... or sign in using</p></div>\n			              	<div class="separator" style="display: none"><span>or</span></div>\n			              	<div class="emailPassword">\n			                	<div class="email">\n			                  		<input name="email" id="signin_easy_email" type="email" required placeholder="Email" title="Email">\n			                	</div>\n			                	<div class="password" style="display:none">\n			                  		<input name="password" id="signin_easy_password" type="password" placeholder="Password" title="Password">\n			                	</div>\n				                <div class="action">\n				                  	<button type="submit" class="zocial primary next" style="width: 100%;">Sign In</button>\n				                  	<button type="submit" class="spinner" style="display: none"></button>\n				                  	<label class="create-account"><a href="javascript: {}" class="sign-up">Sign Up</a><span class="divider" style="display:none">&nbsp;•&nbsp;</span><a href="javascript: {}" class="forgot-pass">Forgot your password?</a></label>\n				                </div>\n			              	</div>\n			            </form>\n		          	</div>\n\n		          	<div class="signup">\n			            <form>\n			              	<div class="header"></div>\n			              	<div class="emailPassword">\n			                	<div class="email">\n			                  		<input name="email" id="signup_easy_email" type="email" value="" required placeholder="Email" title="Email">\n			                	</div>\n			                	<div class="password">\n			                  		<input name="password" id="signup_easy_password" type="password" value="" required placeholder="Create a Password" title="Password">\n			                	</div>\n				                <div class="action">\n				                  	<button type="submit" class="zocial primary next" style="width: 100%;">Sign Up</button>\n				                  	<button type="submit" class="spinner" style="display: none"></button>\n				                  	<div class="footer"></div>\n				                  	<div class="options">\n				                    	<a href="javascript: {}" class="centered cancel">Cancel</a>\n				                  	</div>\n				                </div>\n			              	</div>\n			            </form>\n		          	</div>\n\n					<div class="reset">\n						<form id="change_password">\n						  	<div class="header"></div>\n						  	<div class="emailPassword">\n						    	<div class="email">\n						      		<input name="email" id="reset_easy_email" type="email" value="" required placeholder="Email" title="Email">\n						    	</div>\n						    	<div class="password">\n						      		<input name="password" id="reset_easy_password" type="password" value="" required placeholder="New Password" title="New Password">\n						    	</div>\n						    	<div class="repeatPassword">\n						      		<input name="repeat_password" id="reset_easy_repeat_password" type="password" value="" required placeholder="Confirm New Password" title="Confirm New Password">\n						    	</div>\n						    	<div class="action">\n						      		<button type="submit" class="zocial primary next" style="width: 100%;">Send</button>\n						      		<button type="submit" class="spinner" style="display: none"></button>\n						      		<div class="options">\n						        		<a href="javascript: {}" class="centered cancel">Cancel</a>\n						      		</div>\n						    	</div>\n						  	</div>\n						</form>\n					</div>\n					\n	          		<footer>\n	            		<span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>\n	          		</footer>\n	        	</div>\n	      	</div>\n	    </div>\n	</div>\n</div>\n'); })();
+ buf.push('<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=2,  name )), '"\n		title="', escape((__stack.lineno=3,  title )), '"\n		class="zocial icon ', escape((__stack.lineno=4,  css )), ' ', escape((__stack.lineno=4,  locals.imageicon ? 'image-icon' : '' )), '" dir="ltr">\n	', escape((__stack.lineno=5,  title )), '\n</span>'); })();
 } 
 return buf.join('');
-}; return function(l) { return t(l) }}())
-},{}],26:[function(require,module,exports){
+} catch (err) {
+  rethrow(err, __stack.input, __stack.filename, __stack.lineno);
+}
+})
+},{}],39:[function(require,module,exports){
+module.exports = (function anonymous(locals, filters, escape) {
+escape = escape || function (html){
+  return String(html)
+    .replace(/&(?!\w+;)/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+};
+var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= username ? (username + ' (' + title + ')') : title %>\"\n\t\tclass=\"zocial block <%= css %> <%= locals.imageicon ? 'image-icon' : '' %>\">\n\t<%= username || title %>\n</span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/loggedin_button.ejs" };
+function rethrow(err, str, filename, lineno){
+  var lines = str.split('\n')
+    , start = Math.max(lineno - 3, 0)
+    , end = Math.min(lines.length, lineno + 3);
+
+  // Error context
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+  
+  throw err;
+}
+try {
+var buf = [];
+with (locals || {}) { (function(){ 
+ buf.push('<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=2,  name )), '"\n		title="', escape((__stack.lineno=3,  username ? (username + ' (' + title + ')') : title )), '"\n		class="zocial block ', escape((__stack.lineno=4,  css )), ' ', escape((__stack.lineno=4,  locals.imageicon ? 'image-icon' : '' )), '">\n	', escape((__stack.lineno=5,  username || title )), '\n</span>'); })();
+} 
+return buf.join('');
+} catch (err) {
+  rethrow(err, __stack.input, __stack.filename, __stack.lineno);
+}
+})
+},{}],40:[function(require,module,exports){
+module.exports = (function anonymous(locals, filters, escape) {
+escape = escape || function (html){
+  return String(html)
+    .replace(/&(?!\w+;)/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+};
+var __stack = { lineno: 1, input: "<div id=\"auth0-widget\" class=\"cleanslate\" dir=\"auto\">\n    <div class=\"signin <%= locals && locals.embedded ? 'embedded' : '' %> <%= options.theme ? ('theme-' + options.theme) : '' %>\">\n        <div class=\"popup\">\n            <div class=\"overlay\">\n                <div id=\"onestep\" class=\"panel onestep\">\n                    <header class=\"header\">\n                        <div class=\"image\" style=\"display: <%= !options.showIcon ? 'none' : 'block' %>\">\n                            <img src=\"<%= options.icon || '' %>\">\n                        </div>\n                        <h1><%= i18n.t('signin:title') %></h1>\n                        <h2 class=\"error\" style=\"display: none\">&nbsp;</h2>\n                        <h2 class=\"success\" style=\"display: none\">&nbsp;</h2>\n                        <a class=\"close\" style=\"display: <%= options.standalone ? 'none' : 'block' %>;\"><%= i18n.t('close') %></a>\n                    </header>\n\n                    <div class=\"loading\"></div>\n\n\n                    <% include modes/loggedin %>\n                    <% include modes/signin %>\n                    <% include modes/signup %>\n                    <% include modes/reset %>\n\n                    <footer>\n                        <span>Powered by <a href=\"http://auth0.com\" target=\"_new\">Auth0</a></span>\n                    </footer>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/main.ejs" };
+function rethrow(err, str, filename, lineno){
+  var lines = str.split('\n')
+    , start = Math.max(lineno - 3, 0)
+    , end = Math.min(lines.length, lineno + 3);
+
+  // Error context
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+  
+  throw err;
+}
+try {
+var buf = [];
+with (locals || {}) { (function(){ 
+ buf.push('<div id="auth0-widget" class="cleanslate" dir="auto">\n    <div class="signin ', escape((__stack.lineno=2,  locals && locals.embedded ? 'embedded' : '' )), ' ', escape((__stack.lineno=2,  options.theme ? ('theme-' + options.theme) : '' )), '">\n        <div class="popup">\n            <div class="overlay">\n                <div id="onestep" class="panel onestep">\n                    <header class="header">\n                        <div class="image" style="display: ', escape((__stack.lineno=7,  !options.showIcon ? 'none' : 'block' )), '">\n                            <img src="', escape((__stack.lineno=8,  options.icon || '' )), '">\n                        </div>\n                        <h1>', escape((__stack.lineno=10,  i18n.t('signin:title') )), '</h1>\n                        <h2 class="error" style="display: none">&nbsp;</h2>\n                        <h2 class="success" style="display: none">&nbsp;</h2>\n                        <a class="close" style="display: ', escape((__stack.lineno=13,  options.standalone ? 'none' : 'block' )), ';">', escape((__stack.lineno=13,  i18n.t('close') )), '</a>\n                    </header>\n\n                    <div class="loading"></div>\n\n\n                    ' + (function(){var buf = [];
+ buf.push('<div class="loggedin">\n    <form>\n        <span class="centered last-time">', escape((__stack.lineno=3,  i18n.t('signin:returnUserLabel') )), '</span>\n        <div class="strategy"></div>\n        <div class="emailPassword" style="display:none">\n            <div class="email">\n                <span class="email-readonly"></span>\n                <input name="email"\n                       type="email"\n                       value=""\n                       disabled\n                       placeholder="', escape((__stack.lineno=12,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=13,  i18n.t('signin:emailPlaceholder') )), '"\n                       style="display:none">\n            </div>\n            <div class="password">\n                <input name="password" type="password" value=""\n                       autofocus\n                       placeholder="', escape((__stack.lineno=19,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=20,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="action">\n                ');__stack.lineno=23; if (options.showSignup !== false) { ; buf.push('\n                <button type="submit" class="zocial primary next" style="width: 100%;">', escape((__stack.lineno=24,  i18n.t('signin:signupText') )), '</button>\n                <button type="submit" class="spinner"></button>\n                ');__stack.lineno=26; } ; buf.push('\n                ');__stack.lineno=27; if (options.showForgot !== false) { ; buf.push('\n                <label class="create-account">\n                  <a href="', escape((__stack.lineno=29,  options.forgotLink || 'javascript: {}' )), '"\n                    class="forgot-pass">i18n.t(\'signin:forgotText\')</a>\n                </label>\n                ');__stack.lineno=32; } ; buf.push('\n            </div>\n        </div>\n        <span class="centered all">', escape((__stack.lineno=35,  i18n.t('signin:all') )), '</span>\n    </form>\n</div>');
+return buf.join('');})() + '\n                    ' + (function(){var buf = [];
+ buf.push('<div class="notloggedin">\n    <form>\n        <div class="iconlist" style="display: none"><p style="display:none">', escape((__stack.lineno=3,  i18n.t('signin:or') )), '</p></div>\n        <div class="separator" style="display: none"><span>', escape((__stack.lineno=4,  i18n.t('signin:separatorText') )), '</span></div>\n        <div class="emailPassword">\n            ');__stack.lineno=6; if (options.showEmail !== false) { ; buf.push('\n            <div class="email">\n                <input name="email"\n                       id="signin_easy_email"\n                       type="email"\n                       required\n                       placeholder="', escape((__stack.lineno=12,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=13,  i18n.t('signin:emailPlaceholder') )), '">\n            </div>\n            ');__stack.lineno=15; } ; buf.push('\n            <div class="password" style="display:none">\n                <input name="password"\n                       id="signin_easy_password"\n                       type="password"\n                       placeholder="', escape((__stack.lineno=20,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=21,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="action">\n                <button type="submit" class="zocial primary next" style="width: 100%;">', escape((__stack.lineno=24,  i18n.t('signin:action') )), '</button>\n                <button type="submit" class="spinner" style="display: none"></button>\n                <label class="create-account">\n                    ');__stack.lineno=27; if (options.showSignup !== false) { ; buf.push('\n                    <a href="', escape((__stack.lineno=28,  options.signupLink || 'javascript: {}' )), '"\n                      class="sign-up">\n                      ', escape((__stack.lineno=30,  i18n.t('signin:signupText') )), '\n                    </a>\n                    <span class="divider">&nbsp;•&nbsp;</span>\n                    ');__stack.lineno=33; } ; buf.push('\n                    ');__stack.lineno=34; if (options.showForgot !== false) { ; buf.push('\n                    <a href="', escape((__stack.lineno=35,  options.forgotLink || 'javascript: {}' )), '"\n                      class="forgot-pass">', escape((__stack.lineno=36,  i18n.t('signin:forgotText') )), '</a>\n                    ');__stack.lineno=37; } ; buf.push('\n                </label>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n                    ' + (function(){var buf = [];
+ buf.push('<div class="signup">\n    <form>\n        <div class="header">', escape((__stack.lineno=3,  i18n.t('signup:headerText') )), '</div>\n        <div class="emailPassword">\n            <div class="email">\n                <input name="email" id="signup_easy_email"\n                       type="email" value="" required\n                       placeholder="', escape((__stack.lineno=8,  i18n.t('signup:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=9,  i18n.t('signup:emailPlaceholder') )), '">\n            </div>\n            <div class="password">\n                <input name="password" id="signup_easy_password"\n                       type="password" value="" required\n                       placeholder="', escape((__stack.lineno=14,  i18n.t('signup:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=15,  i18n.t('signup:passwordPlaceholder') )), '">\n            </div>\n            <div class="action">\n                <button type="submit" class="zocial primary next" style="width: 100%;">', escape((__stack.lineno=18,  i18n.t('signup:action') )), '</button>\n                <button type="submit" class="spinner" style="display: none"></button>\n                <div class="footer"></div>\n                <div class="options">\n                    <a href="javascript: {}" class="centered cancel">', escape((__stack.lineno=22,  i18n.t('signup:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n                    ' + (function(){var buf = [];
+ buf.push('<div class="reset">\n    <form id="change_password">\n        <div class="header">', escape((__stack.lineno=3,  i18n.t('reset:headerText') )), '</div>\n        <div class="emailPassword">\n            <div class="email">\n                <input name="email"\n                       id="reset_easy_email"\n                       type="email"\n                       value=""\n                       required\n                       placeholder="', escape((__stack.lineno=11,  i18n.t('reset:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=12,  i18n.t('reset:emailPlaceholder') )), '">\n            </div>\n            <div class="password">\n                <input name="password"\n                        id="reset_easy_password"\n                        type="password"\n                        value=""\n                        required\n                        placeholder="', escape((__stack.lineno=20,  i18n.t('reset:passwordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=21,  i18n.t('reset:passwordPlaceholder') )), '">\n            </div>\n            <div class="repeatPassword">\n                <input name="repeat_password"\n                    id="reset_easy_repeat_password"\n                    type="password" value=""\n                    required\n                        placeholder="', escape((__stack.lineno=28,  i18n.t('reset:repeatPasswordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=29,  i18n.t('reset:repeatPasswordPlaceholder') )), '">\n            </div>\n            <div class="action">\n                <button type="submit" class="zocial primary next" style="width: 100%;">', escape((__stack.lineno=32,  i18n.t('reset:action') )), '</button>\n                <button type="submit" class="spinner" style="display: none"></button>\n                <div class="options">\n                    <a href="javascript: {}" class="centered cancel">', escape((__stack.lineno=35,  i18n.t('reset:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n\n                    <footer>\n                        <span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>\n                    </footer>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n'); })();
+} 
+return buf.join('');
+} catch (err) {
+  rethrow(err, __stack.input, __stack.filename, __stack.lineno);
+}
+})
+},{}],41:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var Auth0       = require('auth0-js');
 var qwery       = require('qwery');
 var bonzo       = require('bonzo');
@@ -5388,7 +6112,10 @@ var xtend       = require('xtend');
 var _           = require('underscore');
 var strategies  = require('./js/strategies');
 var utils       = require('./js/utils');
-var mainTmpl    = require('./html/main.html');
+var mainTmpl    = require('./html/main.ejs');
+var buttonTmpl  = require('./html/button.ejs');
+var loggedinBtnTmpl = require('./html/loggedin_button.ejs');
+var i18n        = require('../i18n');
 
 var $ = function (selector, root) {
   return bonzo(qwery('#auth0-widget ' + (selector || ''), root));
@@ -5398,6 +6125,8 @@ function Auth0Widget (options) {
   if (!(this instanceof Auth0Widget)) {
     return new Auth0Widget(options);
   }
+
+  this._dict = i18n.getDict(options.dict);
 
   this._options = options;
   this._strategies = strategies;
@@ -5577,11 +6306,9 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 
   if (isEnterpriseConnection) {
     pwdField.attr('disabled', true);
-    pwdField.attr('placeholder', '');
     pwdField.removeAttr('required');
   } else {
     pwdField.removeAttr('disabled');
-    pwdField.attr('placeholder', this._signinOptions['passwordPlaceholder']);
     pwdField.attr('required', true);
   }
 };
@@ -5635,7 +6362,7 @@ Auth0Widget.prototype._setLoginView = function(options) {
 
   if (!options.mode) {
     this._hasLoggedInBefore = !!options.isReturningUser;
-    this._setTitle(this._signinOptions['title']);
+    this._setTitle(this._dict.t('signin:title'));
 
     $(options.isReturningUser ? '.loggedin' : '.notloggedin').css('display', '');
     self._setTop();
@@ -5658,15 +6385,15 @@ Auth0Widget.prototype._setLoginView = function(options) {
 
   switch (options.mode) {
     case 'loading':
-      this._setTitle(this._signinOptions['loadingTitle']);
+      this._setTitle(this._dict.t('loadingTitle'));
       container = $('.loading').first();
       break;
     case 'signup':
-      this._setTitle(this._signinOptions['signupTitle']);
+      this._setTitle(this._dict.t('signup:title'));
       container = $('.signup').first();
       break;
     case 'reset':
-      this._setTitle(this._signinOptions['resetTitle']);
+      this._setTitle(this._dict.t('reset:title'));
       container = $('.reset').first();
       break;
   }
@@ -5703,14 +6430,13 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
 
   var button;
   if (strategy_name !== 'auth0') {
-    button = bonzo(bonzo.create('<span></span>'))
-      .attr('tabindex', 0)
-      .attr('data-strategy', strategy_name)
-      .attr('title', this._ssoData.lastUsedUsername + ' (' + strategy.title + ')')
-      .addClass('zocial').addClass('block')
-      .addClass(strategy.css)
-      .addClass(strategy.imageicon ? 'image-icon' : '')
-      .html(this._ssoData.lastUsedUsername || strategy.title);
+    button = bonzo.create(loggedinBtnTmpl({
+      name: strategy_name,
+      title: strategy.title,
+      css: strategy.css,
+      imageicon: strategy.imageicon,
+      username: this._ssoData.lastUsedUsername
+    }));
 
     bean.on(button[0], 'click', function (e) { self._signInSocial(e.target); });
 
@@ -5782,10 +6508,10 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   }
 
   if (emailP) {
-    this._showError(this._signinOptions['strategyEmailEmpty']);
+    this._showError(this._dict.t('signin:strategyEmailEmpty'));
   }
   else if (!emailM) {
-    this._showError(this._signinOptions['strategyEmailInvalid']);
+    this._showError(this._dict.t('signin:strategyEmailInvalid'));
   }
   else if (!domain) {
     if (this._auth0Strategies.length > 0) {
@@ -5797,7 +6523,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
     }
 
     this._showError(
-      this._signinOptions['strategyDomainInvalid']
+      this._dict.t('signin:strategyDomainInvalid')
           .replace('{domain}', emailM ? emailM.slice(-2)[0] : ''));
   }
 
@@ -5826,7 +6552,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   this._auth0.login(loginOptions, function (err) {
     if (err) {
-      self._showError(self._parseResponseMessage(err, self._signinOptions['wrongEmailPasswordErrorText']));
+      self._showError(self._parseResponseMessage(err, self._dict.t('signin:wrongEmailPasswordErrorText')));
     }
 
     self._toggleSpinner();
@@ -5849,14 +6575,12 @@ Auth0Widget.prototype._signUpWithAuth0 = function (e) {
     connection: connection.name,
     username:   email,
     password:   password
-  },
-  function (err) {
+  }, function (err) {
     if (err) {
-      self._showError(self._parseResponseMessage(err, self._signinOptions['signupServerErrorText']));
+      self._showError(self._parseResponseMessage(err, self._dict.t('signup:serverErrorText')));
       self._toggleSpinner(container);
       return;
     }
-
     return self._signInWithAuth0(email, password);
   });
 };
@@ -5877,15 +6601,14 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
     connection: connection.name,
     username:   email,
     password:   password
-  },
-  function (err) {
+  }, function (err) {
     self._toggleSpinner(container);
 
     $('.password input', container).val('');
     $('.repeatPassword input', container).val('');
 
     if (err) {
-      self._showError(self._parseResponseMessage(err, self._signinOptions['resetServerErrorText']));
+      self._showError(self._parseResponseMessage(err, self._dict.t('reset:serverErrorText')));
       return;
     }
 
@@ -5942,67 +6665,11 @@ Auth0Widget.prototype._initialize = function (cb) {
 
   // labels text
   var options = xtend(this._signinOptions, this._signinOptions.resources);
-  options['title'] = options['title'] || "Sign In";
-  options['loadingTitle'] = options['loadingTitle'] || "Please wait...";
-  options['allButtonTemplate'] = options['allButtonTemplate'] || "Show all";
-  options['strategyEmailEmpty'] = options['strategyEmailEmpty'] || "The email is empty.";
-  options['strategyEmailInvalid'] = options['strategyEmailInvalid'] || "The email is invalid.";
-  options['strategyDomainInvalid'] = options['strategyDomainInvalid'] || "The domain {domain} has not been setup.";
-
-  options['icon'] = options['icon'] || self._signinOptions.cdn + "img/logo-32.png";
-  options['showIcon'] = typeof options['showIcon'] !== 'undefined' ? options['showIcon'] : false;
-  options['showSignup'] = typeof options['showSignup'] !== 'undefined' ? options['showSignup'] : true;
-  options['showForgot'] = typeof options['showForgot'] !== 'undefined' ? options['showForgot'] : true;
-  options['signupText'] = options['signupText'] || 'Sign Up';
-  options['forgotText'] = options['forgotText'] || 'Forgot your password?';
-  options['signInButtonText'] = options['signInButtonText'] || 'Sign In';
-  options['emailPlaceholder'] = options['emailPlaceholder'] || 'Email';
-  options['passwordPlaceholder'] = options['passwordPlaceholder'] || 'Password';
-  options['separatorText'] = options['separatorText'] || 'or';
-  options['serverErrorText'] = options['serverErrorText'] || 'There was an error processing the sign in.';
   options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
   options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
   options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
-  options['returnUserLabel'] = options['returnUserLabel'] || 'Last time you signed in using...';
-  options['wrongEmailPasswordErrorText'] = options['wrongEmailPasswordErrorText'] || 'Wrong email or password.';
-
-  // signup
-  options['signupTitle'] = options['signupTitle'] || 'Sign Up';
-  options['signupButtonText'] = options['signupButtonText'] || 'Sign Up';
-  options['signupEmailPlaceholder'] = options['signupEmailPlaceholder'] || 'Email';
-  options['signupPasswordPlaceholder'] = options['signupPasswordPlaceholder'] || 'Create a Password';
-  options['signupCancelButtonText'] = options['signupCancelButtonText'] || 'Cancel';
-  options['signupHeaderText'] = typeof options['signupHeaderText'] !== 'undefined' ? options['signupHeaderText'] : 'Please enter your email and password';
-  options['signupFooterText'] = typeof options['signupFooterText'] !== 'undefined' ? options['signupFooterText'] : 'By clicking "Sign Up", you agree to our terms of service and privacy policy.';
-  options['signupEnterpriseEmailWarningText'] = options['signupEnterpriseEmailWarningText'] || 'This domain {domain} has been configured for Single Sign On and you can\'t create an account. Try signing in instead.';
-  options['signupServerErrorText'] = options['signupServerErrorText'] || 'There was an error processing the sign up.';
-
-  // reset
-  options['resetTitle'] = options['resetTitle'] || 'Reset Password';
-  options['resetButtonText'] = options['resetButtonText'] || 'Send';
-  options['resetEmailPlaceholder'] = options['resetEmailPlaceholder'] || 'Email';
-  options['resetPasswordPlaceholder'] = options['resetPasswordPlaceholder'] || 'New Password';
-  options['resetRepeatPasswordPlaceholder'] = options['resetRepeatPasswordPlaceholder'] || 'Confirm New Password';
-  options['resetCancelButtonText'] = options['resetCancelButtonText'] || 'Cancel';
-  options['resetSuccessText'] = options['resetSuccessText'] || 'We\'ve just sent you an email to reset your password.';
-  options['resetEnterSamePasswordText'] = options['resetEnterSamePasswordText'] || 'Please enter the same password.';
-  options['resetHeaderText'] = typeof options['resetHeaderText'] !== 'undefined' ? options['resetHeaderText'] : 'Please enter your email and the new password. We will send you an email to confirm the password change.';
-  options['resetServerErrorText'] = options['resetServerErrorText'] || 'There was an error processing the reset password.';
 
   this._signinOptions = options;
-
-  // theme
-  if (this._signinOptions.theme) {
-    $('.signin').addClass('theme-' + this._signinOptions.theme);
-  }
-
-  $('.panel a.close').css('display', this._signinOptions.standalone ? 'none' : 'block');
-
-  // show icon
-  if (this._signinOptions.showIcon) {
-    $('.panel .image img').attr('src', this._signinOptions.icon);
-    $('.panel .image').css('display', this._signinOptions.showIcon ? 'block' : 'none');
-  }
 
   // activate panel
   $('div.panel').removeClass('active');
@@ -6050,13 +6717,18 @@ Auth0Widget.prototype._initialize = function (cb) {
     self._client.strategies[s] = xtend(self._client.strategies[s], self._strategies[strategy_name]);
   }
 
-  // get SSO data
-  self._auth0.getSSOData(function (err, ssoData) {
+  function finish(err, ssoData){
     self._ssoData = ssoData;
     self._resolveLoginView();
-
     if (cb && typeof cb === 'function') cb();
-  });
+  }
+
+  // get SSO data
+  if (this._signinOptions.enableReturnUserExperience === false) {
+    finish(null, {});
+  } else {
+    self._auth0.getSSOData(finish);
+  }
 };
 
 Auth0Widget.prototype._resolveLoginView = function () {
@@ -6089,14 +6761,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     }
 
     if (strategy.social) {
-      var button = bonzo(bonzo.create('<span></span>'))
-        .attr('tabindex', 0)
-        .attr('data-strategy', strategy.name)
-        .attr('title', strategy.title)
-        .addClass('zocial').addClass('icon')
-        .addClass(strategy.css)
-        .addClass(strategy.imageicon ? 'image-icon' : '')
-        .html(strategy.title);
+      var button = bonzo.create(buttonTmpl(strategy));
 
       list.append(button);
       list.css('display', 'block');
@@ -6125,55 +6790,23 @@ Auth0Widget.prototype._resolveLoginView = function () {
     this._signinOptions.showForgot = auth0Conn.showForgot;
   }
 
-  $('.panel .create-account .sign-up')
-    .css('display', this._signinOptions.showSignup ? '' : 'none')
-    .html(this._signinOptions.signupText);
-
-  $('.panel .create-account .forgot-pass')
-    .css('display', this._signinOptions.showForgot ? '' : 'none')
-    .html(this._signinOptions.forgotText);
-
-  if (this._signinOptions.signupLink) {
-    $('.panel .create-account .sign-up')
-      .attr('href', this._signinOptions.signupLink)
-      .attr('target', '_parent');
-  }
-  else {
+  if (!this._signinOptions.signupLink) {
     bean.on($('.panel .create-account .sign-up')[0], 'click', function (e) { self._showSignUpExperience(e); });
   }
 
-  if (this._signinOptions.forgotLink) {
-    $('.panel .create-account .forgot-pass')
-      .attr('href', this._signinOptions.forgotLink)
-      .attr('target', '_parent');
-  }
-  else {
+  if (!this._signinOptions.forgotLink) {
     $('.panel .create-account .forgot-pass').each(function (elem) {
       bean.on(elem, 'click', function (e) { self._showResetExperience(e); });
     });
   }
 
-  // hide divider dot if there are one of two
-  $('.panel .create-account .divider')
-    .css('display', self._signinOptions.showEmail && self._signinOptions.showSignup && self._signinOptions.showForgot ? '' : 'none');
-
   $('div.panel input').each(function (e) { e.value = ''; });
 
-  // placeholders and buttons
-  $('.panel .zocial.primary').html(self._signinOptions.signInButtonText);
-  $('.panel .email input').attr('placeholder', self._signinOptions.emailPlaceholder);
-  $('.panel .password input').attr('placeholder', self._signinOptions.passwordPlaceholder);
-  $('.panel .separator span').html(self._signinOptions.separatorText);
-
-  // signup
-  $('.panel .signup .zocial.primary').html(self._signinOptions.signupButtonText);
-
   $('.panel .signup .email input').each(function (i) {
-      i.setAttribute('placeholder', self._signinOptions.signupEmailPlaceholder);
       bean.on(i, 'input', function() {
         var output = {};
         if (self._isEnterpriseConnection(this.value, output)) {
-          var warningText = self._signinOptions.signupEnterpriseEmailWarningText.replace(/{domain}/g, output.domain);
+          var warningText = self._dict.t('signup:enterpriseEmailWarningText').replace(/{domain}/g, output.domain);
           self._setCustomValidity(this, warningText);
         } else {
           self._setCustomValidity(this, '');
@@ -6181,41 +6814,19 @@ Auth0Widget.prototype._resolveLoginView = function () {
       });
   });
 
-  $('.panel .signup .password input').attr('placeholder', self._signinOptions.signupPasswordPlaceholder);
-
-  $('.panel .signup .options .cancel').html(self._signinOptions['signupCancelButtonText']);
   bean.on($('.panel .signup .options .cancel')[0], 'click', function () { self._setLoginView(); });
 
-  $('.panel .signup .header')
-    .html(self._signinOptions.signupHeaderText)
-    .attr('display', self._signinOptions.signupHeaderText ? '' : 'none');
-
-  $('.panel .signup .footer')
-    .html(self._signinOptions.signupFooterText)
-    .attr('display', self._signinOptions.signupFooterText ? '' : 'none');
-
-  // reset
-  $('.panel .reset .zocial.primary').html(self._signinOptions.resetButtonText);
-  $('.panel .reset .email input').attr('placeholder', self._signinOptions.resetEmailPlaceholder);
-  $('.panel .reset .password input').attr('placeholder', self._signinOptions.resetPasswordPlaceholder);
-
   $('.panel .reset .repeatPassword input').each(function (i) {
-      i.setAttribute('placeholder', self._signinOptions.resetRepeatPasswordPlaceholder);
       bean.on(i, 'input', function() {
         if ($('.panel .reset .password input').val() != this.value) {
-          self._setCustomValidity(this, self._signinOptions.resetEnterSamePasswordText);
+          self._setCustomValidity(this, self._dict.t('reset:enterSamePasswordText'));
         } else {
           self._setCustomValidity(this, '');
         }
       });
   });
 
-  $('.panel .reset .options .cancel').html(self._signinOptions.resetCancelButtonText);
   bean.on($('.panel .reset .options .cancel')[0], 'click', function () { self._setLoginView(); });
-
-  $('.panel .reset .header')
-    .html(self._signinOptions.resetHeaderText)
-    .attr('display', self._signinOptions.resetHeaderText ? '' : 'none');
 
   // show email, password, separator and button if there are enterprise/db connections
   var anyEnterpriseOrDbConnection = self._areThereAnyEnterpriseOrDbConn();
@@ -6224,10 +6835,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   $('.panel .email input').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
   $('.panel .zocial.primary').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
   $('.panel .password input').css('display', self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .create-account .forgot-pass').css('display', self._signinOptions.showEmail && self._signinOptions.showForgot && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .create-account .sign-up').css('display', self._signinOptions.showEmail && this._signinOptions.showSignup && anyEnterpriseOrDbConnection ? '' : 'none');
   $('.panel .separator').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
-  $('.panel .last-time').html(self._signinOptions.returnUserLabel);
 
   // if user logged in show logged in experience
   if (self._ssoData.sso) {
@@ -6259,7 +6867,8 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   var self = this;
   self._signinOptions = xtend({}, self._options, signinOptions);
   self._signinOptions.extraParameters = {
-    state: self._signinOptions.state || undefined
+    state:         self._signinOptions.state || undefined,
+    access_token:  self._signinOptions.access_token || undefined,
   };
   self._auth0Strategies = [];
 
@@ -6270,13 +6879,20 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     self._signinOptions.top = true;
 
     var specifiedContainer = document.getElementById(self._signinOptions.container);
-    specifiedContainer.innerHTML = mainTmpl({embedded: true});
+    specifiedContainer.innerHTML = mainTmpl({
+      embedded: true,
+      i18n:     this._dict,
+      options:  self._signinOptions
+    });
   } else {
     // remove widget container (if exist)
     $().parent().remove();
 
     var div = document.createElement('div');
-    div.innerHTML = mainTmpl();
+    div.innerHTML = mainTmpl({
+      i18n:    this._dict,
+      options: self._signinOptions
+    });
     document.body.appendChild(div);
   }
 
@@ -6285,10 +6901,10 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
 module.exports = Auth0Widget;
 
-},{"./html/main.html":25,"./js/strategies":28,"./js/utils":29,"auth0-js":5,"bean":13,"bonzo":14,"qwery":16,"underscore":17,"xtend":19}],27:[function(require,module,exports){
+},{"../i18n":7,"./html/button.ejs":38,"./html/loggedin_button.ejs":39,"./html/main.ejs":40,"./js/strategies":43,"./js/utils":44,"auth0-js":18,"bean":26,"bonzo":27,"qwery":29,"underscore":30,"xtend":32}],42:[function(require,module,exports){
 /* Placeholders.js v3.0.0 */
 (function(t){"use strict";function e(t,e,r){return t.addEventListener?t.addEventListener(e,r,!1):t.attachEvent?t.attachEvent("on"+e,r):void 0}function r(t,e){var r,n;for(r=0,n=t.length;n>r;r++)if(t[r]===e)return!0;return!1}function n(t,e){var r;t.createTextRange?(r=t.createTextRange(),r.move("character",e),r.select()):t.selectionStart&&(t.focus(),t.setSelectionRange(e,e))}function a(t,e){try{return t.type=e,!0}catch(r){return!1}}t.Placeholders={Utils:{addEventListener:e,inArray:r,moveCaret:n,changeType:a}}})(this),function(t){"use strict";function e(){}function r(t,e){var r,n,a=!!e&&t.value!==e,u=t.value===t.getAttribute(V);return(a||u)&&"true"===t.getAttribute(D)?(t.removeAttribute(D),t.value=t.value.replace(t.getAttribute(V),""),t.className=t.className.replace(R,""),n=t.getAttribute(z),n&&(t.setAttribute("maxLength",n),t.removeAttribute(z)),r=t.getAttribute(I),r&&(t.type=r),!0):!1}function n(t){var e,r,n=t.getAttribute(V);return""===t.value&&n?(t.setAttribute(D,"true"),t.value=n,t.className+=" "+k,r=t.getAttribute(z),r||(t.setAttribute(z,t.maxLength),t.removeAttribute("maxLength")),e=t.getAttribute(I),e?t.type="text":"password"===t.type&&K.changeType(t,"text")&&t.setAttribute(I,"password"),!0):!1}function a(t,e){var r,n,a,u,i;if(t&&t.getAttribute(V))e(t);else for(r=t?t.getElementsByTagName("input"):p,n=t?t.getElementsByTagName("textarea"):b,i=0,u=r.length+n.length;u>i;i++)a=r.length>i?r[i]:n[i-r.length],e(a)}function u(t){a(t,r)}function i(t){a(t,n)}function l(t){return function(){m&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)?K.moveCaret(t,0):r(t)}}function o(t){return function(){n(t)}}function c(t){return function(e){return f=t.value,"true"===t.getAttribute(D)&&f===t.getAttribute(V)&&K.inArray(C,e.keyCode)?(e.preventDefault&&e.preventDefault(),!1):void 0}}function s(t){return function(){r(t,f),""===t.value&&(t.blur(),K.moveCaret(t,0))}}function d(t){return function(){t===document.activeElement&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)&&K.moveCaret(t,0)}}function g(t){return function(){u(t)}}function v(t){t.form&&(L=t.form,L.getAttribute(P)||(K.addEventListener(L,"submit",g(L)),L.setAttribute(P,"true"))),K.addEventListener(t,"focus",l(t)),K.addEventListener(t,"blur",o(t)),m&&(K.addEventListener(t,"keydown",c(t)),K.addEventListener(t,"keyup",s(t)),K.addEventListener(t,"click",d(t))),t.setAttribute(U,"true"),t.setAttribute(V,E),(m||t!==document.activeElement)&&n(t)}var p,b,m,h,f,A,y,E,x,L,T,N,S,w=["text","search","url","tel","email","password","number","textarea"],C=[27,33,34,35,36,37,38,39,40,8,46],B="#ccc",k="placeholdersjs",R=RegExp("(?:^|\\s)"+k+"(?!\\S)"),V="data-placeholder-value",D="data-placeholder-active",I="data-placeholder-type",P="data-placeholder-submit",U="data-placeholder-bound",j="data-placeholder-focus",q="data-placeholder-live",z="data-placeholder-maxlength",F=document.createElement("input"),G=document.getElementsByTagName("head")[0],H=document.documentElement,J=t.Placeholders,K=J.Utils;if(J.nativeSupport=void 0!==F.placeholder,!J.nativeSupport){for(p=document.getElementsByTagName("input"),b=document.getElementsByTagName("textarea"),m="false"===H.getAttribute(j),h="false"!==H.getAttribute(q),A=document.createElement("style"),A.type="text/css",y=document.createTextNode("."+k+" { color:"+B+"; }"),A.styleSheet?A.styleSheet.cssText=y.nodeValue:A.appendChild(y),G.insertBefore(A,G.firstChild),S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E&&(E=E.nodeValue,E&&K.inArray(w,T.type)&&v(T));x=setInterval(function(){for(S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E?(E=E.nodeValue,E&&K.inArray(w,T.type)&&(T.getAttribute(U)||v(T),(E!==T.getAttribute(V)||"password"===T.type&&!T.getAttribute(I))&&("password"===T.type&&!T.getAttribute(I)&&K.changeType(T,"text")&&T.setAttribute(I,"password"),T.value===T.getAttribute(V)&&(T.value=E),T.setAttribute(V,E)))):T.getAttribute(D)&&(r(T),T.removeAttribute(V));h||clearInterval(x)},100)}J.disable=J.nativeSupport?e:u,J.enable=J.nativeSupport?e:i}(this);
-},{}],28:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = {
     'google-openid': {
         css: 'google',
@@ -6419,7 +7035,7 @@ module.exports = {
         social: true
     }
 };
-},{}],29:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = {
   parseUrl: function (url) {
     var parser = document.createElement('a');
@@ -6432,5 +7048,5 @@ module.exports = {
   }
 };
 
-},{}]},{},[27,24])
+},{}]},{},[42,37])
 ;

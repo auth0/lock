@@ -1,0 +1,42 @@
+<div class="notloggedin">
+    <form>
+        <div class="iconlist" style="display: none"><p style="display:none"><%= i18n.t('signin:or') %></p></div>
+        <div class="separator" style="display: none"><span><%= i18n.t('signin:separatorText') %></span></div>
+        <div class="emailPassword">
+            <% if (options.showEmail !== false) { %>
+            <div class="email">
+                <input name="email"
+                       id="signin_easy_email"
+                       type="email"
+                       required
+                       placeholder="<%= i18n.t('signin:emailPlaceholder') %>"
+                       title="<%= i18n.t('signin:emailPlaceholder') %>">
+            </div>
+            <% } %>
+            <div class="password" style="display:none">
+                <input name="password"
+                       id="signin_easy_password"
+                       type="password"
+                       placeholder="<%= i18n.t('signin:passwordPlaceholder') %>"
+                       title="<%= i18n.t('signin:passwordPlaceholder') %>">
+            </div>
+            <div class="action">
+                <button type="submit" class="zocial primary next" style="width: 100%;"><%= i18n.t('signin:action') %></button>
+                <button type="submit" class="spinner" style="display: none"></button>
+                <label class="create-account">
+                    <% if (options.showSignup !== false) { %>
+                    <a href="<%= options.signupLink || 'javascript: {}' %>"
+                      class="sign-up">
+                      <%= i18n.t('signin:signupText') %>
+                    </a>
+                    <span class="divider">&nbsp;•&nbsp;</span>
+                    <% } %>
+                    <% if (options.showForgot !== false) { %>
+                    <a href="<%= options.forgotLink || 'javascript: {}' %>"
+                      class="forgot-pass"><%= i18n.t('signin:forgotText') %></a>
+                    <% } %>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>

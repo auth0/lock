@@ -106,6 +106,43 @@ You can handle the authorization process client-side as follows:
 </script>
 ~~~
 
+## i18n
+
+__Note 1:__ most of the translations are machine generated, please help us to move this forward.
+__Note 1:__ the widget doesn't support right to left.
+
+From version `1.2.0` we added support for internationalization:
+
+![](http://s3.amazonaws.com/blog.auth0.com/login_langs.gif)
+
+You can call instantiate the widget with the `dict` option:
+
+~~~javascript
+  var widget = new Auth0Widget({
+    domain:       'mine.auth0.com',
+    clientID:     'dsa7d77dsa7d7',
+    callbackURL:  'http://my-app.com/',
+    dict:         'es'
+  });
+~~~
+
+where dict can be a string matching the name of the file in the `i18n` folder or it could be an object literal as follows:
+
+
+~~~javascript
+  var widget = new Auth0Widget({
+    domain:       'mine.auth0.com',
+    clientID:     'dsa7d77dsa7d7',
+    callbackURL:  'http://my-app.com/',
+    dict:         {
+      "loadingTitle": "loading...",
+      "close": "close",
+      "signin": {
+      ..//same as in i18n json files
+    }
+  });
+~~~
+
 ## Example
 
 The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed, then execute `npm run example` from the root of this project.

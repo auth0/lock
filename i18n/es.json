@@ -1,0 +1,44 @@
+{
+  "loadingTitle":                  "Por favor espere...",
+  "close":                         "Cerrar",
+  "signin": {
+    "title":                       "Iniciar sesion",
+    "action":                      "Ingresar",
+    "all":                         "Mostrar todas",
+    "strategyEmailEmpty":          "El email esta vacío.",
+    "strategyEmailInvalid":        "El email no es válido.",
+    "strategyDomainInvalid":       "El dominio {domain} no esta configurado.",
+    "signupText":                  "Registrarse",
+    "forgotText":                  "Olvidé mi contraseña",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Contraseña",
+    "separatorText":               "o",
+    "serverErrorText":             "Hubo un error al iniciar sesión.",
+    "returnUserLabel":             "La ultima vez inició sesión con...",
+    "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
+    "or":                          "... o inicie sesión usando"
+  },
+  "signup": {
+    "title":                       "Registrarse",
+    "action":                      "Registrar",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Contraseña",
+    "cancelAction":                "Cancelar",
+    "headerText":                  "Por favor ingrese email y contraseña",
+    "footerText":                  "Al presionar \"Sign Up\", usted acepta la política de privacidad y los terminos y condiciones.",
+    "enterpriseEmailWarningText":  "El dominio {domain} ha sido configurado para Single Sign On y no puede crear una cuenta. Intente iniciar sesión directamente.",
+    "serverErrorText":             "Hubo un error al procesar su registro."
+  },
+  "reset": {
+    "title":                       "Resetear Contraseña",
+    "action":                      "Enviar",
+    "emailPlaceholder":            "Email",
+    "passwordPlaceholder":         "Nueva Contraseña",
+    "repeatPasswordPlaceholder":   "Confirme nueva contraseña",
+    "cancelAction":                "Cancelar",
+    "successText":                 "Hemos enviado un email para completar el reseteo de su contraseña.",
+    "enterSamePasswordText":       "Por favor ingrese la misma contraseña.",
+    "headerText":                  "Por favor ingrese su email y la nueva contraseña. Enviaremos un email para confirmar el cambio.",
+    "serverErrorText":             "Hubo un error al resetear su contraseña."
+  }
+}

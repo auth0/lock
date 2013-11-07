@@ -1,0 +1,40 @@
+<div class="reset">
+    <form id="change_password">
+        <div class="header"><%= i18n.t('reset:headerText') %></div>
+        <div class="emailPassword">
+            <div class="email">
+                <input name="email"
+                       id="reset_easy_email"
+                       type="email"
+                       value=""
+                       required
+                       placeholder="<%= i18n.t('reset:emailPlaceholder') %>"
+                       title="<%= i18n.t('reset:emailPlaceholder') %>">
+            </div>
+            <div class="password">
+                <input name="password"
+                        id="reset_easy_password"
+                        type="password"
+                        value=""
+                        required
+                        placeholder="<%= i18n.t('reset:passwordPlaceholder') %>"
+                        title="<%= i18n.t('reset:passwordPlaceholder') %>">
+            </div>
+            <div class="repeatPassword">
+                <input name="repeat_password"
+                    id="reset_easy_repeat_password"
+                    type="password" value=""
+                    required
+                        placeholder="<%= i18n.t('reset:repeatPasswordPlaceholder') %>"
+                        title="<%= i18n.t('reset:repeatPasswordPlaceholder') %>">
+            </div>
+            <div class="action">
+                <button type="submit" class="zocial primary next" style="width: 100%;"><%= i18n.t('reset:action') %></button>
+                <button type="submit" class="spinner" style="display: none"></button>
+                <div class="options">
+                    <a href="javascript: {}" class="centered cancel"><%= i18n.t('reset:cancelAction') %></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
