@@ -1,3 +1,5 @@
+require('../lib/insert-css');
+
 var Auth0       = require('auth0-js');
 var qwery       = require('qwery');
 var bonzo       = require('bonzo');
@@ -12,7 +14,7 @@ var loggedinBtnTmpl = require('./html/loggedin_button.ejs');
 var i18n        = require('../i18n');
 
 var $ = function (selector, root) {
-  return bonzo(qwery('#auth0-widget ' + (selector || ''), root));
+  return bonzo(qwery('#a0-widget ' + (selector || ''), root));
 };
 
 function Auth0Widget (options) {
@@ -70,7 +72,7 @@ Auth0Widget.prototype._isAuth0Domain = function () {
 };
 
 Auth0Widget.prototype._setTop = function () {
-  var element = $('.signin div.panel.onestep');
+  var element = $('.a0-signin div.a0-panel.a0-onestep');
 
   if (!this._signinOptions.top) {
     setTimeout(function() {
@@ -99,22 +101,22 @@ Auth0Widget.prototype._setCustomValidity = function (input, message) {
 
 Auth0Widget.prototype._showError = function (error) {
   if (!error) return;
-  $('.signin h1').css('display', 'none');
-  $('.signin .success').css('display', 'none');
-  $('.signin .error').html(error).css('display', '');
+  $('.a0-signin h1').css('display', 'none');
+  $('.a0-signin .a0-success').css('display', 'none');
+  $('.a0-signin .a0-error').html(error).css('display', '');
 };
 
 Auth0Widget.prototype._showSuccess = function (message) {
   if (!message) return;
   $('.signin h1').css('display', 'none');
-  $('.signin .error').css('display', 'none');
-  $('.signin .success').html(message).css('display', '');
+  $('.a0-signin .a0-error').css('display', 'none');
+  $('.a0-signin .a0-success').html(message).css('display', '');
 };
 
 Auth0Widget.prototype._setTitle = function(title) {
-  $('.signin .error').css('display', 'none');
-  $('.signin .success').css('display', 'none');
-  $('.signin h1').html(title).css('display', '');
+  $('.a0-signin .a0-error').css('display', 'none');
+  $('.a0-signin .a0-success').css('display', 'none');
+  $('.a0-signin h1').html(title).css('display', '');
 };
 
 Auth0Widget.prototype._parseResponseMessage = function (responseObj, defaultValue) {
@@ -193,8 +195,8 @@ Auth0Widget.prototype._getAuth0Connection = function() {
 };
 
 Auth0Widget.prototype._showOrHidePassword = function () {
-  var mailField = $('.notloggedin .email input');
-  var pwdField  = $('.notloggedin .password input').first();
+  var mailField = $('.a0-notloggedin .a0-email input');
+  var pwdField  = $('.a0-notloggedin .a0-password input').first();
 
   var isEnterpriseConnection = this._isEnterpriseConnection(mailField.val() || '');
 
@@ -208,24 +210,24 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 };
 
 Auth0Widget.prototype._hideSignIn = function (cb) {
-  $('div.overlay').removeClass('active');
+  $('div.a0-overlay').removeClass('a0-active');
 
   setTimeout(function () {
-    $().removeClass('mode-signin');
+    $().removeClass('a0-mode-signin');
     $().css('display', 'none');
     if (cb) cb();
   }, 500);
 };
 
 Auth0Widget.prototype._getActiveLoginView = function() {
-  var container = this._hasLoggedInBefore ? $('.loggedin') : $('.notloggedin');
+  var container = this._hasLoggedInBefore ? $('.a0-loggedin') : $('.a0-notloggedin');
   return container;
 };
 
 Auth0Widget.prototype._toggleSpinner = function (container) {
   container = container || this._getActiveLoginView();
-  var spinner = $('.spinner', container);
-  var signin = $('.zocial.primary', container);
+  var spinner = $('.a0-spinner', container);
+  var signin = $('.a0-zocial.a0-primary', container);
 
   spinner.css('display', spinner.css('display') === 'none' ? '' : 'none');
   signin.css('display', signin.css('display') === 'none' ? '' : 'none');
@@ -247,18 +249,18 @@ Auth0Widget.prototype._setLoginView = function(options) {
   var self = this;
   options = options || {};
 
-  $('.loading').css('display', 'none');
-  $('.loggedin').css('display', 'none');
-  $('.notloggedin').css('display', 'none');
-  $('.signup').css('display', 'none');
-  $('.reset').css('display', 'none');
-  $('.signin input[type=password]').val('');
+  $('.a0-loading').css('display', 'none');
+  $('.a0-loggedin').css('display', 'none');
+  $('.a0-notloggedin').css('display', 'none');
+  $('.a0-signup').css('display', 'none');
+  $('.a0-reset').css('display', 'none');
+  $('.a0-signin input[type=password]').val('');
 
   if (!options.mode) {
     this._hasLoggedInBefore = !!options.isReturningUser;
     this._setTitle(this._dict.t('signin:title'));
 
-    $(options.isReturningUser ? '.loggedin' : '.notloggedin').css('display', '');
+    $(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin').css('display', '');
     self._setTop();
 
     try {
@@ -266,8 +268,8 @@ Auth0Widget.prototype._setLoginView = function(options) {
         elem.focus(); // workaround to enable password placeholders with placeholders.js
       });
 
-      if (options.isReturningUser) $('.loggedin .password input').first().focus();
-      else $('.notloggedin .email input').first().focus();
+      if (options.isReturningUser) $('.a0-loggedin .a0-password input').first().focus();
+      else $('.a0-notloggedin .a0-email input').first().focus();
     } catch(e) {
       console.log(e);
     }
@@ -280,15 +282,15 @@ Auth0Widget.prototype._setLoginView = function(options) {
   switch (options.mode) {
     case 'loading':
       this._setTitle(this._dict.t('loadingTitle'));
-      container = $('.loading').first();
+      container = $('.a0-loading').first();
       break;
     case 'signup':
       this._setTitle(this._dict.t('signup:title'));
-      container = $('.signup').first();
+      container = $('.a0-signup').first();
       break;
     case 'reset':
       this._setTitle(this._dict.t('reset:title'));
-      container = $('.reset').first();
+      container = $('.a0-reset').first();
       break;
   }
 
@@ -297,14 +299,14 @@ Auth0Widget.prototype._setLoginView = function(options) {
     container.css('display', '');
 
     try {
-      var email = $('.notloggedin .email input').val();
+      var email = $('.a0-notloggedin .email input').val();
 
       $('input', container).each(function (elem) {
         elem.focus(); // workaround to enable password placeholders with placeholders.js
       });
 
-      $('.email input', container).val(email);
-      $('.email input', container).first().focus();
+      $('.a0-email input', container).val(email);
+      $('.a0-email input', container).first().focus();
     } catch(e) {
       console.log(e);
     }
@@ -334,27 +336,26 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
 
     bean.on(button[0], 'click', function (e) { self._signInSocial(e.target); });
 
-    $('.strategy span', loginView).each(function (el) { if (el) el.remove(); });
-    $('.strategy', loginView).append(button);
+    $('.a0-strategy span', loginView).each(function (el) { if (el) el.remove(); });
+    $('.a0-strategy', loginView).append(button);
   }
 
-  $('.all', loginView).html(this._signinOptions['allButtonTemplate']);
-
-  bean.on($('.all', loginView)[0], 'click', function () {
+  bean.on($('.a0-all', loginView)[0], 'click', function () {
     self._setLoginView();
   });
 
   if (this._ssoData.lastUsedUsername) {
     if (strategy_name === 'auth0') {
-      $('.email-readonly', loginView).html(this._ssoData.lastUsedUsername);
-      $('.email input', loginView).css('display', 'none');
-      $('.emailPassword', loginView).css('display', '');
+      $('.a0-email-readonly', loginView).html(this._ssoData.lastUsedUsername);
+      $('.a0-email input', loginView).css('display', 'none');
+      $('.a0-emailPassword', loginView).css('display', '');
     }
     else if (!strategy.social) {
       button.html(this._ssoData.lastUsedUsername || strategy.title)
             .attr('title', this._ssoData.lastUsedUsername || strategy.title);
     }
   }
+  $('.a0-spinner', loginView).css('display', 'none');
 };
 
 // sign in methods
@@ -378,7 +379,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var form = $('form', container);
   var valid = true;
 
-  var emailD = $('.email', form),
+  var emailD = $('.a0-email', form),
       emailE = $('input[name=email]', form),
       emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.exec(emailE.val().toLowerCase()),
       emailP = /^\s*$/.test(emailE.val()),
@@ -421,7 +422,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
           .replace('{domain}', emailM ? emailM.slice(-2)[0] : ''));
   }
 
-  valid &= (!domain && !emailD.addClass('invalid')) || (!!domain && !!emailD.removeClass('invalid'));
+  valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
 
   if (valid) {
     var loginOptions = xtend({ connection: connection }, self._signinOptions.extraParameters);
@@ -439,7 +440,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   var loginOptions = {
     connection: connection.name,
     username: this._isAdLdapConn(connection.name) ? userName.replace('@' + connection.domain, '') : userName,
-    password: signInPassword || $('.password input', container).val()
+    password: signInPassword || $('.a0-password input', container).val()
   };
 
   loginOptions = xtend(loginOptions, self._signinOptions.extraParameters);
@@ -458,9 +459,9 @@ Auth0Widget.prototype._signUpWithAuth0 = function (e) {
   e.stopPropagation();
 
   var self = this;
-  var container = $('.popup .panel.onestep .signup');
-  var email = $('.email input', container).val();
-  var password = $('.password input', container).val();
+  var container = $('.a0-popup .a0-panel.a0-onestep .a0-signup');
+  var email = $('.a0-email input', container).val();
+  var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
 
   this._toggleSpinner(container);
@@ -484,9 +485,9 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
   e.stopPropagation();
 
   var self = this;
-  var container = $('.popup .panel.onestep .reset');
-  var email = $('.email input', container).val();
-  var password = $('.password input', container).val();
+  var container = $('.a0-popup .a0-panel.a0-onestep .a0-reset');
+  var email = $('.a0-email input', container).val();
+  var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
 
   this._toggleSpinner(container);
@@ -498,18 +499,18 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
   }, function (err) {
     self._toggleSpinner(container);
 
-    $('.password input', container).val('');
-    $('.repeatPassword input', container).val('');
+    $('.a0-password input', container).val('');
+    $('.a0-repeatPassword input', container).val('');
 
     if (err) {
       self._showError(self._parseResponseMessage(err, self._dict.t('reset:serverErrorText')));
       return;
     }
 
-    $('.email input', container).val('');
+    $('.a0-email input', container).val('');
 
     try {
-      $('.email input', container).first().focus();
+      $('.a0-email input', container).first().focus();
     } catch(e) {}
 
     self._setLoginView();
@@ -520,7 +521,7 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
 // initialize
 Auth0Widget.prototype._initialize = function (cb) {
   var self = this;
-  $().addClass('mode-signin');
+  $().addClass('a0-mode-signin');
 
   // wait for setClient()
   if (!self._client) {
@@ -536,10 +537,10 @@ Auth0Widget.prototype._initialize = function (cb) {
   }
 
   // buttons actions
-  bean.on($('.popup .panel.onestep a.close')[0], 'click', function () { self._hideSignIn(); });
-  bean.on($('.popup .panel.onestep .notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
-  bean.on($('.popup .panel.onestep .signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
-  bean.on($('.popup .panel.onestep .reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
+  bean.on($('.a0-popup .a0-panel.a0-onestep a.a0-close')[0], 'click', function () { self._hideSignIn(); });
+  bean.on($('.a0-popup .a0-panel.a0-onestep .a0-notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
+  bean.on($('.a0-popup .a0-panel.a0-onestep .a0-signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
+  bean.on($('.a0-popup .a0-panel.a0-onestep .a0-reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
   bean.on(qwery('html')[0], 'keyup', function (e) {
     if ($().hasClass('mode-signin')) {
       if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
@@ -550,12 +551,12 @@ Auth0Widget.prototype._initialize = function (cb) {
 
   if (self._client.subscription && self._client.subscription !== 'free') {
     // hide footer for non free subscriptions
-    $('footer').addClass('hide');
+    $('footer').addClass('a0-hide');
   }
 
   // images from cdn
-  $('.popup .panel header a.close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
-  $('.action .spinner').css('background-image', 'url(' + self._signinOptions.cdn + 'img/spinner.gif)');
+  $('.a0-popup .a0-panel header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
+  $('.a0-action .a0-spinner').css('background-image', 'url(' + self._signinOptions.cdn + 'img/spinner.gif)');
 
   // labels text
   var options = xtend(this._signinOptions, this._signinOptions.resources);
@@ -566,18 +567,18 @@ Auth0Widget.prototype._initialize = function (cb) {
   this._signinOptions = options;
 
   // activate panel
-  $('div.panel').removeClass('active');
-  $('div.overlay').addClass('active');
-  $('div.panel.onestep').addClass('active');
+  $('div.a0-panel').removeClass('a0-active');
+  $('div.a0-overlay').addClass('a0-active');
+  $('div.a0-panel.a0-onestep').addClass('a0-active');
 
   if (self._signinOptions.container) {
-    $('div.active').removeClass('overlay');
+    $('div.a0-active').removeClass('a0-overlay');
   }
 
-  $('.popup h1').html(this._signinOptions.title);
-  $('.popup .invalid').removeClass('invalid');
+  $('.a0-popup h1').html(this._signinOptions.title);
+  $('.a0-popup .a0-invalid').removeClass('a0-invalid');
 
-  $('div.panel.onestep h1').html(this._signinOptions['title']);
+  $('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
 
   // show loading
   self._showLoadingExperience();
@@ -643,15 +644,15 @@ Auth0Widget.prototype._resolveLoginView = function () {
   }
 
   // load social buttons
-  var list = $('.popup .panel.onestep .iconlist');
+  var list = $('.a0-popup .a0-panel.a0-onestep .a0-iconlist');
   for (var s in self._client.strategies) {
     var strategy = self._client.strategies[s];
 
     if (strategy.userAndPass && strategy.connections.length > 0) {
       self._auth0Strategies.push(strategy);
-      $('.create-account, .password').css('display', 'block');
+      $('.a0-create-account, .a0-password').css('display', 'block');
 
-      bean.on($('.notloggedin .email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
+      bean.on($('.a0-notloggedin .a0-email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
     }
 
     if (strategy.social) {
@@ -660,22 +661,20 @@ Auth0Widget.prototype._resolveLoginView = function () {
       list.append(button);
       list.css('display', 'block');
 
-      $('.popup .panel.onestep .separator').css('display', 'block');
+      $('.a0-popup .a0-panel.a0-onestep .a0-separator').css('display', 'block');
     }
   }
 
-  $('.popup .panel.onestep .iconlist span').each(function (button) {
+  $('.a0-popup .a0-panel.a0-onestep .a0-iconlist span').each(function (button) {
     bean.on(button, 'click', function (e) {
       self._signInSocial(e.target);
     });
   });
 
   this._signinOptions.socialBigButtons = typeof this._signinOptions['socialBigButtons'] !== 'undefined' ? this._signinOptions['socialBigButtons'] : !this._areThereAnyEnterpriseOrDbConn();
-  if (this._signinOptions.socialBigButtons) {
-    $('.popup .panel.onestep .iconlist span').removeClass('icon').addClass('block');
-  } else {
-    $('.popup .panel.onestep .iconlist span').addClass('icon').removeClass('block');
-  }
+  $('.a0-popup .a0-panel.a0-onestep .a0-iconlist span')
+    .toggleClass('a0-icon', !this._signinOptions.socialBigButtons)
+    .toggleClass('a0-block', this._signinOptions.socialBigButtons);
 
   // show signup/forgot links
   var auth0Conn = this._getAuth0Connection();
@@ -685,18 +684,18 @@ Auth0Widget.prototype._resolveLoginView = function () {
   }
 
   if (!this._signinOptions.signupLink) {
-    bean.on($('.panel .create-account .sign-up')[0], 'click', function (e) { self._showSignUpExperience(e); });
+    bean.on($('.a0-panel .a0-create-account .a0-sign-up')[0], 'click', function (e) { self._showSignUpExperience(e); });
   }
 
   if (!this._signinOptions.forgotLink) {
-    $('.panel .create-account .forgot-pass').each(function (elem) {
+    $('.a0-panel .a0-create-account .a0-forgot-pass').each(function (elem) {
       bean.on(elem, 'click', function (e) { self._showResetExperience(e); });
     });
   }
 
-  $('div.panel input').each(function (e) { e.value = ''; });
+  $('div.a0-panel input').each(function (e) { e.value = ''; });
 
-  $('.panel .signup .email input').each(function (i) {
+  $('.a0-panel .a0-signup .a0-email input').each(function (i) {
       bean.on(i, 'input', function() {
         var output = {};
         if (self._isEnterpriseConnection(this.value, output)) {
@@ -708,11 +707,13 @@ Auth0Widget.prototype._resolveLoginView = function () {
       });
   });
 
-  bean.on($('.panel .signup .options .cancel')[0], 'click', function () { self._setLoginView(); });
+  $('.a0-panel .a0-options .a0-cancel').each(function (e) {
+    bean.on(e, 'click', function () { self._setLoginView(); });
+  });
 
-  $('.panel .reset .repeatPassword input').each(function (i) {
+  $('.a0-panel .a0-reset .a0-repeatPassword input').each(function (i) {
       bean.on(i, 'input', function() {
-        if ($('.panel .reset .password input').val() != this.value) {
+        if ($('.a0-panel .a0-reset .a0-password input').val() != this.value) {
           self._setCustomValidity(this, self._dict.t('reset:enterSamePasswordText'));
         } else {
           self._setCustomValidity(this, '');
@@ -720,22 +721,21 @@ Auth0Widget.prototype._resolveLoginView = function () {
       });
   });
 
-  bean.on($('.panel .reset .options .cancel')[0], 'click', function () { self._setLoginView(); });
 
   // show email, password, separator and button if there are enterprise/db connections
   var anyEnterpriseOrDbConnection = self._areThereAnyEnterpriseOrDbConn();
   var anySocialConnection = self._areThereAnySocialConn();
 
-  $('.panel .email input').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .zocial.primary').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .password input').css('display', self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.panel .separator').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
+  $('.a0-panel .a0-email input').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.a0-panel .a0-zocial.a0-primary').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.a0-panel .a0-password input').css('display', self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.a0-panel .a0-separator').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
 
   // if user logged in show logged in experience
   if (self._ssoData.sso) {
     if (self._ssoData.lastUsedUsername &&
         !self._strategies[self._ssoData.lastUsedConnection.strategy].social) {
-      $('div.panel.onestep input').val(self._ssoData.lastUsedUsername);
+      $('div.a0-panel.a0-onestep input').val(self._ssoData.lastUsedUsername);
       self._showOrHidePassword();
     }
 

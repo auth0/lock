@@ -1,5 +1,6 @@
 var fs = require('fs');
 var pkg = require('./package');
+var cssPrefix = require('css-prefix');
 
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -23,15 +24,18 @@ module.exports = function (grunt) {
           port:  3000,
           protocol: 'https',
           hostname: '*',
-          cert: fs.readFileSync(__dirname + '/https_test_certs/server.crt').toString(),
-          key:  fs.readFileSync(__dirname + '/https_test_certs/server.key').toString()
+          cert: fs.readFileSync(__dirname + '/test/https_test_certs/server.crt').toString(),
+          key:  fs.readFileSync(__dirname + '/test/https_test_certs/server.key').toString()
         }
       }
     },
     browserify: {
       dist: {
         files: {
-          'build/auth0-widget.js': ['widget/js/placeholders.js', 'standalone.js']
+          'build/auth0-widget.js': [
+            'widget/js/placeholders.js',
+            'standalone.js'
+          ]
         },
         options: {
           transform: ['ejsify', 'brfs'],
@@ -59,10 +63,26 @@ module.exports = function (grunt) {
       dist: {
         options: {
           paths: ["widget/css"],
-          yuicompress: true
         },
         files: {
           "widget/css/main.css": "widget/css/main.less"
+        }
+      }
+    },
+    prefix: {
+      css: {
+        src: 'widget/css/main.css',
+        dest: 'widget/css/main.css',
+        prefix: 'a0-'
+      }
+    },
+    cssmin: {
+      minify: {
+        options: {
+          keepSpecialComments: 0
+        },
+        files: {
+          'widget/css/main.min.css': ['widget/css/main.css']
         }
       }
     },
@@ -91,7 +111,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["build/", "widget/css/main.css", "example/auth0-widget.js"]
+      build: ["build/", "widget/css/main.css", "widget/css/main.min.css", "example/auth0-widget.js"]
     },
     watch: {
       another: {
@@ -132,12 +152,18 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerMultiTask('prefix', 'Prefix css.', function() {
+    var css = fs.readFileSync(__dirname + '/' + this.data.src, 'utf8');
+    var prefixed = cssPrefix(this.data.prefix, css.toString());
+    fs.writeFileSync(__dirname + '/' + this.data.dest, prefixed);
+  });
+
   // Loading dependencies
   for (var key in grunt.file.readJSON("package.json").devDependencies) {
     if (key !== "grunt" && key.indexOf("grunt") === 0) grunt.loadNpmTasks(key);
   }
 
-  grunt.registerTask("build",         ["clean", "less:dist", "browserify:dist", "browserify:debug", "uglify:min", "copy:example"]);
+  grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "cssmin:minify", "browserify:dist", "browserify:debug", "uglify:min", "copy:example"]);
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);

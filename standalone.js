@@ -7,10 +7,6 @@
  * the package.json file points to index.js.
  */
 var Auth0Widget = require('./widget');
-var insertCss   = require('./lib/insert-css');
-var fs          = require('fs');
-
-insertCss(fs.readFileSync(__dirname + '/widget/css/main.css'));
 
 // use amd or just throught to window object.
 if (typeof global.window.define == 'function' && global.window.define.amd) {

@@ -1,10 +1,10 @@
-<div class="loggedin">
+<div class="a0-loggedin">
     <form>
-        <span class="centered last-time"><%= i18n.t('signin:returnUserLabel') %></span>
-        <div class="strategy"></div>
-        <div class="emailPassword" style="display:none">
-            <div class="email">
-                <span class="email-readonly"></span>
+        <span class="a0-centered a0-last-time"><%= i18n.t('signin:returnUserLabel') %></span>
+        <div class="a0-strategy"></div>
+        <div class="a0-emailPassword" style="display:none">
+            <div class="a0-email">
+                <span class="a0-email-readonly"></span>
                 <input name="email"
                        type="email"
                        value=""
@@ -13,25 +13,25 @@
                        title="<%= i18n.t('signin:emailPlaceholder') %>"
                        style="display:none">
             </div>
-            <div class="password">
+            <div class="a0-password">
                 <input name="password" type="password" value=""
                        autofocus
                        placeholder="<%= i18n.t('signin:passwordPlaceholder') %>"
                        title="<%= i18n.t('signin:passwordPlaceholder') %>">
             </div>
-            <div class="action">
+            <div class="a0-action">
                 <% if (options.showSignup !== false) { %>
-                <button type="submit" class="zocial primary next" style="width: 100%;"><%= i18n.t('signin:signupText') %></button>
-                <button type="submit" class="spinner"></button>
+                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;"><%= i18n.t('signin:signupText') %></button>
+                <button type="submit" class="a0-spinner"></button>
                 <% } %>
                 <% if (options.showForgot !== false) { %>
-                <label class="create-account">
+                <label class="a0-create-account">
                   <a href="<%= options.forgotLink || 'javascript: {}' %>"
-                    class="forgot-pass">i18n.t('signin:forgotText')</a>
+                    class="a0-forgot-pass"><%= i18n.t('signin:forgotText') %></a>
                 </label>
                 <% } %>
             </div>
         </div>
-        <span class="centered all"><%= i18n.t('signin:all') %></span>
+        <span class="a0-centered a0-all"><%= i18n.t('signin:all') %></span>
     </form>
 </div>

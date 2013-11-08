@@ -1,19 +1,19 @@
-<div id="auth0-widget" class="cleanslate" dir="auto">
-    <div class="signin <%= locals && locals.embedded ? 'embedded' : '' %> <%= options.theme ? ('theme-' + options.theme) : '' %>">
-        <div class="popup">
-            <div class="overlay">
-                <div id="onestep" class="panel onestep">
-                    <header class="header">
-                        <div class="image" style="display: <%= !options.showIcon ? 'none' : 'block' %>">
+<div id="a0-widget" dir="auto">
+    <div class="a0-signin <%= locals && locals.embedded ? 'a0-embedded' : '' %> <%= options.theme ? ('a0-theme-' + options.theme) : '' %>">
+        <div class="a0-popup">
+            <div class="a0-overlay">
+                <div id="a0-onestep" class="a0-panel a0-onestep">
+                    <header class="a0-header">
+                        <div class="a0-image" style="display: <%= !options.showIcon ? 'none' : 'block' %>">
                             <img src="<%= options.icon || '' %>">
                         </div>
                         <h1><%= i18n.t('signin:title') %></h1>
-                        <h2 class="error" style="display: none">&nbsp;</h2>
-                        <h2 class="success" style="display: none">&nbsp;</h2>
-                        <a class="close" style="display: <%= options.standalone ? 'none' : 'block' %>;"><%= i18n.t('close') %></a>
+                        <h2 class="a0-error" style="display: none">&nbsp;</h2>
+                        <h2 class="a0-success" style="display: none">&nbsp;</h2>
+                        <a class="a0-close" style="display: <%= options.standalone ? 'none' : 'block' %>;"><%= i18n.t('close') %></a>
                     </header>
 
-                    <div class="loading"></div>
+                    <div class="a0-loading"></div>
 
 
                     <% include modes/loggedin %>
