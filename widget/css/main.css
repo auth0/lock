@@ -209,15 +209,23 @@ Credit to @guillermovs for suggesting
 
 #a0-widget input,
 #a0-widget header,
+#a0-widget footer,
 #a0-widget button,
-#a0-widget a {
+#a0-widget a,
+#a0-widget form,
+#a0-widget h1,
+#a0-widget h2,
+#a0-widget h3,
+#a0-widget label,
+#a0-widget span {
+  font-smooth: never;
+  -webkit-font-smoothing: auto;
   alignment-baseline: baseline;
   -webkit-animation: none 0 ease 0 1 normal;
   animation: none 0 ease 0 1 normal;
   -webkit-animation-play-state: running;
   animation-play-state: running;
   appearance: normal;
-  azimuth: center;
   -webkit-backface-visibility: visible;
   -ms-backface-visibility: visible;
   backface-visibility: visible;
@@ -311,7 +319,7 @@ Credit to @guillermovs for suggesting
   crop: auto;
   cursor: auto;
   direction: auto;
-  display: inline;
+  display: auto;
   dominant-baseline: auto;
   drop-initial-after-adjust: text-after-edge;
   drop-initial-after-align: baseline;
@@ -353,7 +361,7 @@ Credit to @guillermovs for suggesting
   inline-box-align: last;
   left: auto;
   letter-spacing: normal;
-  line-height: inherit;
+  line-height: normal;
   line-stacking: inline-line-height exclude-ruby consider-shifts;
   list-style: disc outside none;
   margin: 0;
@@ -375,7 +383,7 @@ Credit to @guillermovs for suggesting
   nav-up: auto;
   opacity: 1;
   orphans: 2;
-  outline: invert none medium;
+  outline: invert none medium !important;
   outline-offset: 0;
   overflow: visible;
   overflow-style: auto;
@@ -951,6 +959,14 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-zocial {
   font-smoothing: antialiased;
+}
+
+#a0-widget label {
+  font-family: sans-serif;
+}
+
+#a0-widget .a0-zocial {
+  font-size: 16px;
 }
 
 #a0-widget .a0-popup .a0-overlay {

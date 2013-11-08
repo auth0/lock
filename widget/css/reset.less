@@ -1,9 +1,10 @@
-input, header, button, a {
+input, header, footer, button, a, form, h1, h2, h3, label, span {
+	font-smooth: never;
+	-webkit-font-smoothing: auto;
 	alignment-baseline: baseline;
 	animation: none 0 ease 0 1 normal;
 	animation-play-state: running;
 	appearance: normal;
-	azimuth: center;
 	backface-visibility: visible;
 	background: none 0 0 auto repeat scroll padding-box transparent;
 	background-color: transparent;
@@ -50,7 +51,7 @@ input, header, button, a {
 	crop: auto;
 	cursor: auto;
 	direction: auto;
-	display: inline;
+	display: auto;
 	dominant-baseline: auto;
 	drop-initial-after-adjust: text-after-edge;
 	drop-initial-after-align: baseline;
@@ -71,6 +72,7 @@ input, header, button, a {
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
+	// font-smoothing: auto;
 	font: normal normal 100% "Helvetica Neue", Arial, sans-serif;
 	grid-columns: none;
 	grid-rows: none;
@@ -89,7 +91,7 @@ input, header, button, a {
 	inline-box-align: last;
 	left: auto;
 	letter-spacing: normal;
-	line-height: inherit;
+	line-height: normal;
 	line-stacking: inline-line-height exclude-ruby consider-shifts;
 	list-style: disc outside none;
 	margin: 0;
@@ -111,7 +113,7 @@ input, header, button, a {
 	nav-up: auto;
 	opacity: 1;
 	orphans: 2;
-	outline: invert none medium;
+	outline: invert none medium !important;
 	outline-offset: 0;
 	overflow: visible;
 	overflow-style: auto;
