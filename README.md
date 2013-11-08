@@ -117,6 +117,13 @@ where dict can be a string matching the name of the file in the `i18n` folder or
     }
   });
 ~~~
+## Customize the look and feel
+
+Apply your own style to the elements.
+
+All classes and ids are prefixed with `a0-` to avoid conflicts with your own stylesheets.
+
+Send us an screenshot! We would love to see what you can do.
 
 ## Example
 
