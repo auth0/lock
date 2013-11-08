@@ -69,7 +69,16 @@ module.exports = function (grunt) {
         }
       }
     },
-    prefix: {
+    autoprefixer: {
+      options: {
+
+      },
+      main: {
+        src:  'widget/css/main.css',
+        dest: 'widget/css/main.css',
+      },
+    },
+    prefix: { //this adds "a0-" to every class and id
       css: {
         src: 'widget/css/main.css',
         dest: 'widget/css/main.css',
@@ -163,7 +172,8 @@ module.exports = function (grunt) {
     if (key !== "grunt" && key.indexOf("grunt") === 0) grunt.loadNpmTasks(key);
   }
 
-  grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "cssmin:minify", "browserify:dist", "browserify:debug", "uglify:min", "copy:example"]);
+  grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
+                                       "browserify:dist", "browserify:debug", "uglify:min", "copy:example"]);
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
