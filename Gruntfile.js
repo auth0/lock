@@ -38,7 +38,7 @@ module.exports = function (grunt) {
           ]
         },
         options: {
-          transform: ['ejsify', 'brfs'],
+          // transform: ['ejsify', 'brfs'],
           debug: false
         }
       },
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
           'build/auth0-widget.debug.js': ['widget/js/placeholders.js', 'standalone.js']
         },
         options: {
-          transform: ['ejsify', 'brfs'],
+          // transform: ['ejsify', 'brfs'],
           debug: true
         }
       },
