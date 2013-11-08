@@ -49,7 +49,6 @@ widget.show(options, callback);
 * __container__: The id of the DIV where the widget will be contained.
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
-* __dict__: the dictionary see below i18n.
 
 ~~~javascript
 widget.show({
