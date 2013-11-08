@@ -1194,6 +1194,7 @@ Credit to @guillermovs for suggesting
   color: #41444a;
   font-weight: bold;
   border-bottom: 1px solid #DDE3E6;
+  text-align: left;
 }
 
 #a0-widget .a0-popup .a0-panel header a {
