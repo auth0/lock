@@ -216,7 +216,7 @@ Credit to @guillermovs for suggesting
 #a0-widget h1,
 #a0-widget h2,
 #a0-widget h3,
-#a0-widget label,
+#a0-widget form label,
 #a0-widget span {
   font-smooth: never;
   -webkit-font-smoothing: auto;
@@ -339,7 +339,7 @@ Credit to @guillermovs for suggesting
   font-stretch: normal;
   font-style: normal;
   font-variant: normal;
-  font-weight: normal;
+  font-weight: 200;
   font: normal normal 100% "Helvetica Neue", Arial, sans-serif;
   grid-columns: none;
   grid-rows: none;
@@ -958,7 +958,7 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-zocial {
-  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 #a0-widget label {
@@ -967,6 +967,12 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-zocial {
   font-size: 16px;
+}
+
+#a0-widget .a0-next {
+  text-shadow: none;
+  font-weight: bold;
+  font-family: 'Lucida Grande', Tahoma, sans-serif;
 }
 
 #a0-widget .a0-popup .a0-overlay {
@@ -1391,6 +1397,16 @@ Credit to @guillermovs for suggesting
   margin-bottom: 22px;
   position: relative;
   z-index: 5;
+}
+
+#a0-widget form span {
+  font-size: 16px;
+}
+
+#a0-widget form label a {
+  color: #7F8899;
+  font-weight: bold;
+  text-shadow: 0 1px 0 white;
 }
 
 #a0-widget form label {
