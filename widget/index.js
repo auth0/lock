@@ -764,6 +764,10 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     state:         self._signinOptions.state || undefined,
     access_token:  self._signinOptions.access_token || undefined,
   };
+  if (self._signinOptions.scope) {
+    self._signinOptions.extraParameters.scope =
+      self._signinOptions.scope;
+  }
   self._auth0Strategies = [];
 
   // widget container
