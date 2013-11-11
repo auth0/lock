@@ -5974,7 +5974,7 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
-var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= title %>\"\n\t\tclass=\"a0-zocial a0-icon a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>\" dir=\"ltr\"><%= title %></span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/button.ejs" };
+var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= title %>\"\n\t\tclass=\"a0-zocial a0-icon a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>\" dir=\"ltr\"><%= title %></span>", filename: "/Users/sebas/Documents/Projects/auth0-widget.js/widget/html/button.ejs" };
 function rethrow(err, str, filename, lineno){
   var lines = str.split('\n')
     , start = Math.max(lineno - 3, 0)
@@ -6017,7 +6017,7 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
-var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= username ? (username + ' (' + title + ')') : title %>\"\n\t\tclass=\"a0-zocial a0-block a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>\"><%= username || title %></span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/loggedin_button.ejs" };
+var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= username ? (username + ' (' + title + ')') : title %>\"\n\t\tclass=\"a0-zocial a0-block a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>\"><%= username || title %></span>", filename: "/Users/sebas/Documents/Projects/auth0-widget.js/widget/html/loggedin_button.ejs" };
 function rethrow(err, str, filename, lineno){
   var lines = str.split('\n')
     , start = Math.max(lineno - 3, 0)
@@ -6060,7 +6060,7 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
-var __stack = { lineno: 1, input: "<div id=\"a0-widget\" class=\"a0-widget\" dir=\"auto\">\n    <div class=\"a0-signin <%= locals && locals.embedded ? 'a0-embedded' : '' %> <%= options.theme ? ('a0-theme-' + options.theme) : '' %>\">\n        <div class=\"a0-popup\">\n            <div class=\"a0-overlay\">\n                <div id=\"a0-onestep\" class=\"a0-panel a0-onestep\">\n                    <header class=\"a0-header\">\n                        <div class=\"a0-image\" style=\"display: <%= !options.showIcon ? 'none' : 'block' %>\">\n                            <img src=\"<%= options.icon || '' %>\">\n                        </div>\n                        <h1><%= i18n.t('signin:title') %></h1>\n                        <h2 class=\"a0-error\" style=\"display: none\">&nbsp;</h2>\n                        <h2 class=\"a0-success\" style=\"display: none\">&nbsp;</h2>\n                        <a class=\"a0-close\" style=\"display: <%= options.standalone ? 'none' : 'block' %>;\"><%= i18n.t('close') %></a>\n                    </header>\n\n                    <div class=\"a0-loading\"></div>\n\n\n                    <% include modes/loggedin %>\n                    <% include modes/signin %>\n                    <% include modes/signup %>\n                    <% include modes/reset %>\n\n                    <footer>\n                        <span>Powered by <a href=\"http://auth0.com\" target=\"_new\">Auth0</a></span>\n                    </footer>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/main.ejs" };
+var __stack = { lineno: 1, input: "<div id=\"a0-widget\" class=\"a0-widget\" dir=\"auto\">\n    <div class=\"a0-signin <%= locals && locals.embedded ? 'a0-embedded' : '' %> <%= options.theme ? ('a0-theme-' + options.theme) : '' %>\">\n        <div class=\"a0-popup\">\n            <div class=\"a0-overlay\">\n                <div id=\"a0-onestep\" class=\"a0-panel a0-onestep\">\n                    <header class=\"a0-header\">\n                        <div class=\"a0-image\" style=\"display: <%= !options.showIcon ? 'none' : 'block' %>\">\n                            <img src=\"<%= options.icon || '' %>\">\n                        </div>\n                        <h1><%= i18n.t('signin:title') %></h1>\n                        <h2 class=\"a0-error\" style=\"display: none\">&nbsp;</h2>\n                        <h2 class=\"a0-success\" style=\"display: none\">&nbsp;</h2>\n                        <a class=\"a0-close\" style=\"display: <%= options.standalone ? 'none' : 'block' %>;\"><%= i18n.t('close') %></a>\n                    </header>\n\n                    <div class=\"a0-loading\"></div>\n\n\n                    <% include modes/loggedin %>\n                    <% include modes/signin %>\n                    <% include modes/signup %>\n                    <% include modes/reset %>\n\n                    <footer>\n                        <span>Powered by <a href=\"http://auth0.com\" target=\"_new\">Auth0</a></span>\n                    </footer>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n", filename: "/Users/sebas/Documents/Projects/auth0-widget.js/widget/html/main.ejs" };
 function rethrow(err, str, filename, lineno){
   var lines = str.split('\n')
     , start = Math.max(lineno - 3, 0)
@@ -6872,6 +6872,14 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   if (self._signinOptions.scope) {
     self._signinOptions.extraParameters.scope =
       self._signinOptions.scope;
+  }
+  if (self._signinOptions.protocol) {
+    self._signinOptions.extraParameters.protocol =
+      self._signinOptions.protocol;
+  }
+  if (self._signinOptions.request_id) {
+    self._signinOptions.extraParameters.request_id =
+      self._signinOptions.request_id;
   }
   self._auth0Strategies = [];
 

@@ -772,6 +772,10 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     self._signinOptions.extraParameters.protocol =
       self._signinOptions.protocol;
   }
+  if (self._signinOptions.request_id) {
+    self._signinOptions.extraParameters.request_id =
+      self._signinOptions.request_id;
+  }
   self._auth0Strategies = [];
 
   // widget container
