@@ -768,6 +768,10 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     self._signinOptions.extraParameters.scope =
       self._signinOptions.scope;
   }
+  if (self._signinOptions.protocol) {
+    self._signinOptions.extraParameters.protocol =
+      self._signinOptions.protocol;
+  }
   self._auth0Strategies = [];
 
   // widget container
