@@ -146,8 +146,8 @@ describe('auth0-Widget', function () {
   it('should use only specified connections', function (done) {
     widget.show({
       connections: ['twitter', 'google-oauth2', 'invalid-connection', 'google-app1', 'dbTest', 'google-app3']
-    },
-    function () {
+    }).on('transition_mode', function (mode) {
+      if(mode !== 'signin') return;
       expect(widget._client.strategies.length).to.equal(4);
 
       expect(widget._client.strategies[0].name).to.equal('twitter');
@@ -216,6 +216,10 @@ describe('auth0-Widget', function () {
   });
 
   describe('Sign In', function () {
+    afterEach(function () {
+      widget.removeAllListeners('transition_mode');
+    });
+
     it('should signin with social connection', function (done) {
       client.login = function (options) {
         expect(options.connection).to.equal('google-oauth2');
@@ -223,7 +227,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show(function () {
+      widget.show().on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
         bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');
       });
     });
@@ -236,7 +241,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show({ state: 'foo' }, function () {
+      widget.show({ state: 'foo' }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
         bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');
       });
     });
@@ -249,7 +255,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show(function () {
+      widget.show({ state: 'foo' }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
@@ -265,7 +272,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show({ state: 'foo' }, function () {
+      widget.show({ state: 'foo' }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
@@ -282,7 +290,8 @@ describe('auth0-Widget', function () {
 
       widget.show({
         userPwdConnectionName: 'adldap'
-      }, function () {
+      }).on('transition_mode', function(mode) {
+        if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('peter@litware.com');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-password input').val('zzz');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
@@ -296,7 +305,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show(function () {
+      widget.show().on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       });
@@ -310,7 +320,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show({ state: 'foo' }, function () {
+      widget.show({ state: 'foo' }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       });
@@ -341,7 +352,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show(function () {
+      widget.show().on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
         bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
         $('#a0-widget .a0-signup .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-widget .a0-signup .a0-emailPassword .a0-password input').val('xyz');
@@ -373,7 +385,8 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show(function () {
+      widget.show().on('transition_mode', function (mode) {
+        if (mode === 'reset') return;
         bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
         $('#a0-widget .a0-reset .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-widget .a0-reset .a0-emailPassword .a0-password input').val('xyz');

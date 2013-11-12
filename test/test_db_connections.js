@@ -30,12 +30,20 @@ describe('db connections', function () {
 
     afterEach(function () {
       $('#a0-widget').parents('div').remove();
+      global.window.location.hash = '';
+      global.window.Auth0 = null;
     });
   });
 
   describe('when username or password is wrong', function () {
     after(function () {
       $('#a0-widget').parents('div').remove();
+      global.window.location.hash = '';
+      global.window.Auth0 = null;
+    });
+
+    afterEach(function () {
+      this.auth0.removeAllListeners('transition_mode');
     });
 
     before(function (done) {
@@ -58,6 +66,7 @@ describe('db connections', function () {
         bean.fire(form, 'submit');
       });
     });
+
 
     // the test fails on IE9 but it does works. It looks like a timing issue.
     // it('email should have focus', function () {

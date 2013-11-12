@@ -72,7 +72,9 @@ Auth0Widget.prototype._getApp = function () {
 
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = this._options.assetsUrl + 'client/' + this._options.clientID + '.js';
+  script.src = this._options.assetsUrl +
+               'client/' + this._options.clientID + '.js' +
+               '?t' + Date.now().toString();
 
   var firstScript = document.getElementsByTagName('script')[0];
   firstScript.parentNode.insertBefore(script, firstScript);
