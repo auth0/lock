@@ -1,4 +1,4 @@
-<div class="a0-loggedin">
+<div class="a0-loggedin a0-mode" style="display: none;">
     <form>
         <span class="a0-centered a0-last-time"><%= i18n.t('signin:returnUserLabel') %></span>
         <div class="a0-strategy"></div>
@@ -14,16 +14,16 @@
                        style="display:none">
             </div>
             <div class="a0-password">
-                <input name="password" type="password" value=""
+                <label class="a0-sad-placeholder">
+                  <%= i18n.t('signin:passwordPlaceholder') %>
+                </label>
+                <input name="password" type="password"
                        autofocus
                        placeholder="<%= i18n.t('signin:passwordPlaceholder') %>"
                        title="<%= i18n.t('signin:passwordPlaceholder') %>">
             </div>
             <div class="a0-action">
-                <% if (options.showSignup !== false) { %>
                 <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;"><%= i18n.t('signin:action') %></button>
-                <button type="submit" class="a0-spinner"></button>
-                <% } %>
                 <% if (options.showForgot !== false) { %>
                 <label class="a0-create-account">
                   <a href="<%= options.forgotLink || 'javascript: {}' %>"

@@ -66,6 +66,7 @@ describe('auth0-Widget', function () {
   });
 
   afterEach(function () {
+    widget.removeAllListeners('transition_mode');
     global.window.location.hash = '';
     removeWidget();
   });
@@ -75,24 +76,27 @@ describe('auth0-Widget', function () {
   });
 
   it('should hide widget when user close it', function (done) {
-    widget.show(function () {
+    widget.show();
+    widget.on('transition_mode', function (mode) {
+      if (mode !== 'signin') return;
       bean.fire($('#a0-widget header a.a0-close')[0], 'click');
-
-      setTimeout(function () {
-        expect($('#a0-widget').css('display')).to.equal('none');
-        done();
-      }, 600);
+    }).on('closed', function () {
+      expect($('#a0-widget').css('display')).to.equal('none');
+      done();
     });
   });
 
   it('should show only notloggedin view if SSO data is not present', function (done) {
-    widget.show(function () {
-      expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('block');
-      expect($('#a0-widget .a0-loggedin').css('display')).to.equal('none');
-      expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
-      expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
-      done();
-    });
+    widget
+      .show()
+      .on('transition_mode', function (mode) {
+        if (mode !== 'signin') return;
+        expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('block');
+        expect($('#a0-widget .a0-loggedin').css('display')).to.equal('none');
+        expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
+        expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
+        done();
+      });
   });
 
   it('should show only loggedin view with SSO data (enterprise) if it is present', function (done) {
@@ -104,14 +108,17 @@ describe('auth0-Widget', function () {
       });
     };
 
-    widget.show(function () {
-      expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
-      expect($('#a0-widget .a0-loggedin').css('display')).to.equal('block');
-      expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
-      expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
-      expect($('#a0-widget .a0-loggedin .a0-email input').val()).to.equal('john@fabrikam.com');
-      done();
-    });
+    widget
+      .show()
+      .on('transition_mode', function (mode) {
+        if (mode !== 'signin') return;
+        expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
+        expect($('#a0-widget .a0-loggedin').css('display')).to.equal('block');
+        expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
+        expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
+        expect($('#a0-widget .a0-loggedin .a0-email input').val()).to.equal('john@fabrikam.com');
+        done();
+      });
   });
 
   it('should show only loggedin view with SSO data (social) if it is present', function (done) {
@@ -123,16 +130,18 @@ describe('auth0-Widget', function () {
         });
       };
 
-      widget.show(function () {
-        expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-loggedin').css('display')).to.equal('block');
-        expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-loggedin .a0-strategy span').html()).to.equal('john@gmail.com');
-        expect($('#a0-widget .a0-loggedin .a0-strategy span').attr('title')).to.equal('john@gmail.com (Google)');
-        done();
-      });
-    });
+      widget.show()
+            .on('transition_mode', function (mode) {
+              if (mode !== 'signin') return;
+              expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
+              expect($('#a0-widget .a0-loggedin').css('display')).to.equal('block');
+              expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
+              expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
+              expect($('#a0-widget .a0-loggedin .a0-strategy span').html()).to.equal('john@gmail.com');
+              expect($('#a0-widget .a0-loggedin .a0-strategy span').attr('title')).to.equal('john@gmail.com (Google)');
+              done();
+            });
+  });
 
   it('should use only specified connections', function (done) {
     widget.show({
@@ -306,37 +315,21 @@ describe('auth0-Widget', function () {
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       });
     });
-
-    it('should signin automatically if exists only one enterprise connection (but not userAndPass strategy)', function (done) {
-      client.login = function (options) {
-        expect(options.connection).to.equal('contoso');
-        expect(options.username).to.not.exist;
-        done();
-      };
-
-      widget.show({ connections: ['contoso'] });
-    });
-
-    it('should signin automatically if exists only one social connection', function (done) {
-      client.login = function (options) {
-        expect(options.connection).to.equal('google-oauth2');
-        expect(options.username).to.not.exist;
-        done();
-      };
-
-      widget.show({ connections: ['google-oauth2'] });
-    });
   });
 
   describe('Sign Up with database connection', function () {
+
     it('should show only signup view when user clicks on signup button', function (done) {
-      widget.show(function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
-        expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-loggedin').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-signup').css('display')).to.equal('block');
-        expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
-        done();
+      widget.show().on('transition_mode', function transition (mode) {
+        if (mode === 'signin') {
+          bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
+        } else if (mode === 'signup') {
+          expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
+          expect($('#a0-widget .a0-loggedin').css('display')).to.equal('none');
+          expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
+          expect($('#a0-widget .a0-signup').css('display')).to.equal('block');
+          done();
+        }
       });
     });
 
@@ -359,13 +352,16 @@ describe('auth0-Widget', function () {
 
   describe('Change Password with database connection', function () {
     it('should show reset view when user clicks on change password button', function (done) {
-      widget.show(function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
-        expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-loggedin').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-reset').css('display')).to.equal('block');
-        done();
+      widget.show().on('transition_mode', function (mode) {
+        if (mode === 'signin') {
+          bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
+        } else if (mode === 'reset') {
+          expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
+          expect($('#a0-widget .a0-loggedin').css('display')).to.equal('none');
+          expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
+          expect($('#a0-widget .a0-reset').css('display')).to.equal('block');
+          done();
+        }
       });
     });
 

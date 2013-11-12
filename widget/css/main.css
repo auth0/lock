@@ -501,11 +501,14 @@
   -webkit-font-smoothing: auto;
   alignment-baseline: baseline;
   -webkit-animation: none 0 ease 0 1 normal;
+  -moz-animation: none 0 ease 0 1 normal;
   animation: none 0 ease 0 1 normal;
   -webkit-animation-play-state: running;
+  -moz-animation-play-state: running;
   animation-play-state: running;
   appearance: normal;
   -webkit-backface-visibility: visible;
+  -moz-backface-visibility: visible;
   -ms-backface-visibility: visible;
   backface-visibility: visible;
   background: none 0 0 auto repeat scroll padding-box transparent;
@@ -673,9 +676,11 @@
   page-break-inside: auto;
   page-policy: start;
   -webkit-perspective: none;
+  -moz-perspective: none;
   -ms-perspective: none;
   perspective: none;
   -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
   -ms-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%;
   position: static;
@@ -707,15 +712,19 @@
   text-wrap: normal;
   top: auto;
   -webkit-transform: none;
+  -moz-transform: none;
   -ms-transform: none;
   transform: none;
   -webkit-transform-origin: 50% 50% 0;
+  -moz-transform-origin: 50% 50% 0;
   -ms-transform-origin: 50% 50% 0;
   transform-origin: 50% 50% 0;
   -webkit-transform-style: flat;
+  -moz-transform-style: flat;
   -ms-transform-style: flat;
   transform-style: flat;
   -webkit-transition: all 0 ease 0;
+  -moz-transition: all 0 ease 0;
   transition: all 0 ease 0;
   unicode-bidi: normal;
   vertical-align: baseline;
@@ -732,6 +741,10 @@
 }
 
 #a0-widget {
+  /*
+ * Created By: Ahmed Bouhuolia
+ * Twitter: http://twitter.com/abouolia
+ */
   /*!
 	Zocial Butons
 	http://zocial.smcllns.com
@@ -771,14 +784,22 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-theme-static .a0-popup .a0-panel {
   background: none;
   -webkit-box-shadow: 0 0 0 1px rgba(14, 41, 57, 0.12), 0 2px 5px rgba(14, 41, 57, 0.44), inset 0 -1px 2px rgba(14, 41, 57, 0.15);
-  -ms-box-shadow: 0 0 0 1px rgba(14, 41, 57, 0.12), 0 2px 5px rgba(14, 41, 57, 0.44), inset 0 -1px 2px rgba(14, 41, 57, 0.15);
-  -o-box-shadow: 0 0 0 1px rgba(14, 41, 57, 0.12), 0 2px 5px rgba(14, 41, 57, 0.44), inset 0 -1px 2px rgba(14, 41, 57, 0.15);
   box-shadow: 0 0 0 1px rgba(14, 41, 57, 0.12), 0 2px 5px rgba(14, 41, 57, 0.44), inset 0 -1px 2px rgba(14, 41, 57, 0.15);
   background: #ffffff;
 }
 
 #a0-widget .a0-theme-static .a0-popup .a0-panel:after {
   display: none;
+}
+
+@-moz-keyframes showPanel {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes showPanel {
@@ -808,6 +829,16 @@ Credit to @guillermovs for suggesting
 
   100% {
     opacity: 1;
+  }
+}
+
+@-moz-keyframes hidePanel {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 
@@ -842,7 +873,7 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-theme-static .a0-separator span {
-  background: #fff;
+  background: transparent;
 }
 
 #a0-widget .a0-embedded .a0-popup .a0-panel {
@@ -853,6 +884,293 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-embedded .a0-popup .a0-panel header {
   display: none;
+}
+
+#a0-widget .a0-spinner-css {
+  margin: -30px 0 0 -30px;
+  height: 60px;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  border-radius: 999px;
+}
+
+#a0-widget .a0-spinner-css:after {
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 0px;
+  top: 0px;
+  margin: 6px;
+  background: #fafafa;
+  opacity: 1;
+  border-radius: 999px;
+}
+
+#a0-widget .a0-spinner-css .a0-side {
+  height: 60px;
+  width: 30px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+}
+
+#a0-widget .a0-spinner-css .a0-side > .a0-fill {
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  background: #747e85;
+  border-radius: 999px;
+  animation: cssSpinnerRight 2s infinite linear;
+  -webkit-animation: cssSpinnerRight 2s infinite linear;
+  -moz-animation: cssSpinnerRight 2s infinite linear;
+}
+
+#a0-widget .a0-spinner-css .a0-side.a0-sp_right {
+  left: 30px;
+  border-radius: 0px 999px 999px 0px;
+}
+
+#a0-widget .a0-spinner-css .a0-side.a0-sp_right > .a0-fill {
+  right: 0;
+  border-right: 30px solid #fafafa;
+}
+
+#a0-widget .a0-spinner-css .a0-side.a0-sp_left {
+  left: 0;
+  border-radius: 999px 0px 0px 999px;
+}
+
+#a0-widget .a0-spinner-css .a0-side.a0-sp_left > .a0-fill {
+  left: 0;
+  border-left: 30px solid #fafafa;
+  animation: cssSpinnerLeft 2s infinite linear;
+  -webkit-animation: cssSpinnerLeft 2s infinite linear;
+  -moz-animation: cssSpinnerLeft 2s infinite linear;
+}
+
+@-webkit-keyframes cssSpinnerRight {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  20% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  70% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(360deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes cssSpinnerLeft {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  35% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes cssSpinnerRight {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+
+  20% {
+    -moz-transform: rotate(90deg);
+  }
+
+  25% {
+    -moz-transform: rotate(180deg);
+  }
+
+  50% {
+    -moz-transform: rotate(180deg);
+  }
+
+  70% {
+    -moz-transform: rotate(270deg);
+  }
+
+  75% {
+    -moz-transform: rotate(360deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes cssSpinnerLeft {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+
+  25% {
+    -moz-transform: rotate(0deg);
+  }
+
+  35% {
+    -moz-transform: rotate(90deg);
+  }
+
+  50% {
+    -moz-transform: rotate(180deg);
+  }
+
+  75% {
+    -moz-transform: rotate(180deg);
+  }
+
+  80% {
+    -moz-transform: rotate(270deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@keyframes cssSpinnerRight {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  20% {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  70% {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cssSpinnerLeft {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  35% {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 #a0-widget .a0-zocial,
@@ -928,6 +1246,7 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-zocial {
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(49%, rgba(255, 255, 255, 0.05)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(255, 255, 255, 0.1)), color-stop(49%, rgba(255, 255, 255, 0.05)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));
@@ -936,6 +1255,7 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-zocial:hover,
 #a0-widget .a0-zocial:focus {
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), color-stop(49%, rgba(255, 255, 255, 0.15)), color-stop(51%, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.15)));
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
   background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(255, 255, 255, 0.15)), color-stop(51%, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.15)));
@@ -943,6 +1263,7 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-zocial:active {
+  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, transparent), to(rgba(0, 0, 0, 0.1)));
   background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-gradient(linear, bottom left, top left, from(rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, transparent), to(rgba(0, 0, 0, 0.1)));
@@ -980,8 +1301,9 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-zocial.a0-twitter:focus .a0-zocial.a0-twitter:hover,
 #a0-widget .a0-zocial.a0-salesforce:focus .a0-zocial.a0-salesforce:hover {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), color-stop(49%, rgba(255, 255, 255, 0.2)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(255, 255, 255, 0.5)), color-stop(49%, rgba(255, 255, 255, 0.2)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));
+  background-image: -webkit-gradient(linear, top left, bottom left, from(top), color-stop(rgba(255, 255, 255, 0.5)), color-stop(49%, rgba(255, 255, 255, 0.2)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));
   background-image: linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
 }
 
@@ -994,6 +1316,7 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-zocial.a0-wikipedia:active,
 #a0-widget .a0-zocial.a0-salesforce:active {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.1)));
+  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-gradient(linear, bottom left, top left, from(rgba(255, 255, 255, 0)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.1)));
   background-image: linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
@@ -1286,8 +1609,17 @@ Credit to @guillermovs for suggesting
   font-family: 'Lucida Grande', Tahoma, sans-serif;
 }
 
+#a0-widget .a0-popup .a0-centrix {
+  padding: 0;
+  vertical-align: middle;
+  display: table-cell;
+  margin: 0;
+}
+
 #a0-widget .a0-popup .a0-overlay {
-  position: fixed;
+  margin: 0;
+  display: table;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
@@ -1295,20 +1627,21 @@ Credit to @guillermovs for suggesting
   overflow: hidden;
   z-index: 9999;
   font-weight: 200;
-  -moz-user-select: none;
-  -khtml-user-select: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
   user-select: none;
   background: #000;
   background: rgba(0, 0, 0, 0.8);
   background: -webkit-radial-gradient(50% 50%, ellipse closest-corner, rgba(0, 0, 0, 0.45) 1%, rgba(0, 0, 0, 0.8) 100%);
+  background: -moz-radial-gradient(50% 50%, ellipse closest-corner, rgba(0, 0, 0, 0.45) 1%, rgba(0, 0, 0, 0.8) 100%);
   background: radial-gradient(50% 50%, ellipse closest-corner, rgba(0, 0, 0, 0.45) 1%, rgba(0, 0, 0, 0.8) 100%);
   opacity: 0;
   -webkit-transition: 400ms opacity ease;
+  -moz-transition: 400ms opacity ease;
   transition: 400ms opacity ease;
   -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
@@ -1318,12 +1651,8 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-popup .a0-overlay .a0-panel {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  position: absolute;
-  left: 50%;
   display: none;
+  margin: 0 auto;
 }
 
 #a0-widget .a0-popup .a0-overlay .a0-panel.a0-active {
@@ -1338,19 +1667,18 @@ Credit to @guillermovs for suggesting
   -webkit-animation-timing-function: ease;
   -webkit-animation-name: hidePanel;
   width: 280px;
-  margin: 0 0 0 -140px;
 }
 
-#a0-widget .a0-popup .a0-email {
+#a0-widget .a0-email {
   margin-bottom: 14px;
 }
 
-#a0-widget .a0-popup .a0-password,
-#a0-widget .a0-popup .a0-repeatPassword {
+#a0-widget .a0-password,
+#a0-widget .a0-repeatPassword {
   margin-bottom: 14px;
 }
 
-#a0-widget .a0-popup .a0-email-readonly {
+#a0-widget .a0-email-readonly {
   text-align: center;
   display: inherit;
   color: #41444a;
@@ -1375,6 +1703,18 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-panel .a0-loading {
   height: 70px;
+}
+
+@-moz-keyframes showPanel {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.95) translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1) translate3d(0, 0, 0);
+  }
 }
 
 @-webkit-keyframes showPanel {
@@ -1413,6 +1753,16 @@ Credit to @guillermovs for suggesting
   }
 }
 
+@-moz-keyframes hidePanel {
+  0% {
+    -webkit-transform: scale(1) translate3d(0, 0, 0);
+  }
+
+  100% {
+    -webkit-transform: scale(0.98) translate3d(0, 0, 0);
+  }
+}
+
 @-webkit-keyframes hidePanel {
   0% {
     -webkit-transform: scale(1) translate3d(0, 0, 0);
@@ -1446,6 +1796,7 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-popup .a0-panel {
   background: #fafafa;
   background-image: -webkit-linear-gradient(#ffffff, #fafafa);
+  background-image: -moz-linear-gradient(#ffffff, #fafafa);
   background-image: -webkit-gradient(linear, top left, bottom left, from(#ffffff), to(#fafafa));
   background-image: linear-gradient(#ffffff, #fafafa);
   z-index: 10;
@@ -1475,6 +1826,7 @@ Credit to @guillermovs for suggesting
   border-radius: 6px 6px 0 0;
   background: #f1f4f6;
   background-image: -webkit-linear-gradient(#f1f4f6, #e9edf0);
+  background-image: -moz-linear-gradient(#f1f4f6, #e9edf0);
   background-image: -webkit-gradient(linear, top left, bottom left, from(#f1f4f6), to(#e9edf0));
   background-image: linear-gradient(#f1f4f6, #e9edf0);
   border-bottom: 1px solid rgba(40, 69, 85, 0.11);
@@ -1488,6 +1840,7 @@ Credit to @guillermovs for suggesting
   left: 0;
   right: 0;
   background-image: -webkit-linear-gradient(rgba(40, 69, 85, 0), rgba(40, 69, 85, 0.1));
+  background-image: -moz-linear-gradient(rgba(40, 69, 85, 0), rgba(40, 69, 85, 0.1));
   background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(40, 69, 85, 0)), to(rgba(40, 69, 85, 0.1)));
   background-image: linear-gradient(rgba(40, 69, 85, 0), rgba(40, 69, 85, 0.1));
 }
@@ -1500,6 +1853,7 @@ Credit to @guillermovs for suggesting
   left: 0;
   right: 0;
   background-image: -webkit-linear-gradient(left, #e9edf0, rgba(241, 244, 246, 0), #e9edf0);
+  background-image: -moz-linear-gradient(left, #e9edf0, rgba(241, 244, 246, 0), #e9edf0);
   background-image: -webkit-gradient(linear, top left, top right, from(#e9edf0), color-stop(rgba(241, 244, 246, 0)), to(#e9edf0));
   background-image: linear-gradient(left, #e9edf0, rgba(241, 244, 246, 0), #e9edf0);
 }
@@ -1650,7 +2004,6 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-create-account {
-  display: none;
   margin-top: 20px;
   text-align: center;
 }
@@ -1983,7 +2336,6 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-popup .a0-overlay .a0-onestep {
   width: 345px;
-  margin: 0 0 0 -172px;
 }
 
 @media (max-width: 280px) {
@@ -2092,6 +2444,60 @@ Credit to @guillermovs for suggesting
   #a0-widget .a0-popup .a0-password,
   #a0-widget .a0-popup .a0-repeatPassword {
     margin-bottom: 5px;
+  }
+}
+
+@-moz-keyframes orbit {
+  0% {
+    opacity: 1;
+    z-index: 99;
+    -moz-transform: rotate(180deg);
+    -moz-animation-timing-function: ease-out;
+  }
+
+  7% {
+    opacity: 1;
+    -moz-transform: rotate(300deg);
+    -moz-animation-timing-function: linear;
+    -moz-origin: 0%;
+  }
+
+  30% {
+    opacity: 1;
+    -moz-transform: rotate(410deg);
+    -moz-animation-timing-function: ease-in-out;
+    -moz-origin: 7%;
+  }
+
+  39% {
+    opacity: 1;
+    -moz-transform: rotate(645deg);
+    -moz-animation-timing-function: linear;
+    -moz-origin: 30%;
+  }
+
+  70% {
+    opacity: 1;
+    -moz-transform: rotate(770deg);
+    -moz-animation-timing-function: ease-out;
+    -moz-origin: 39%;
+  }
+
+  75% {
+    opacity: 1;
+    -moz-transform: rotate(900deg);
+    -moz-animation-timing-function: ease-out;
+    -moz-origin: 70%;
+  }
+
+  76% {
+    opacity: 0;
+    -moz-transform: rotate(900deg);
+  }
+
+  100% {
+    opacity: 0;
+    -moz-transform: rotate(900deg);
   }
 }
 
@@ -2208,18 +2614,22 @@ Credit to @guillermovs for suggesting
     opacity: 1;
     z-index: 99;
     -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
     -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 
   7% {
     opacity: 1;
     -webkit-transform: rotate(300deg);
+    -moz-transform: rotate(300deg);
     -ms-transform: rotate(300deg);
     transform: rotate(300deg);
     -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
     animation-timing-function: linear;
     origin: 0%;
   }
@@ -2227,9 +2637,11 @@ Credit to @guillermovs for suggesting
   30% {
     opacity: 1;
     -webkit-transform: rotate(410deg);
+    -moz-transform: rotate(410deg);
     -ms-transform: rotate(410deg);
     transform: rotate(410deg);
     -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
     origin: 7%;
   }
@@ -2237,9 +2649,11 @@ Credit to @guillermovs for suggesting
   39% {
     opacity: 1;
     -webkit-transform: rotate(645deg);
+    -moz-transform: rotate(645deg);
     -ms-transform: rotate(645deg);
     transform: rotate(645deg);
     -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
     animation-timing-function: linear;
     origin: 30%;
   }
@@ -2247,9 +2661,11 @@ Credit to @guillermovs for suggesting
   70% {
     opacity: 1;
     -webkit-transform: rotate(770deg);
+    -moz-transform: rotate(770deg);
     -ms-transform: rotate(770deg);
     transform: rotate(770deg);
     -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
     origin: 39%;
   }
@@ -2257,9 +2673,11 @@ Credit to @guillermovs for suggesting
   75% {
     opacity: 1;
     -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
     -ms-transform: rotate(900deg);
     transform: rotate(900deg);
     -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
     origin: 70%;
   }
@@ -2267,6 +2685,7 @@ Credit to @guillermovs for suggesting
   76% {
     opacity: 0;
     -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
     -ms-transform: rotate(900deg);
     transform: rotate(900deg);
   }
@@ -2274,6 +2693,7 @@ Credit to @guillermovs for suggesting
   100% {
     opacity: 0;
     -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
     -ms-transform: rotate(900deg);
     transform: rotate(900deg);
   }
@@ -2281,4 +2701,27 @@ Credit to @guillermovs for suggesting
 
 #a0-widget input[disabled] {
   background-color: #d9dee0;
+}
+
+#a0-widget #a0-onestep {
+  overflow: hidden;
+  height: auto;
+  -webkit-transition: height 100ms ease-in;
+  -moz-transition: height 100ms ease-in;
+  transition: height 100ms ease-in;
+}
+
+#a0-widget #a0-onestep.a0-disable-transition {
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+#a0-widget #a0-onestep .a0-loading {
+  min-height: 110px;
+}
+
+#a0-widget .a0-spin-container {
+  position: relative;
+  top: 50%;
 }

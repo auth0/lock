@@ -1,14 +1,20 @@
-<div class="a0-signup">
+<div class="a0-signup a0-mode" style="display: none;">
     <form>
         <div class="a0-header"><%= i18n.t('signup:headerText') %></div>
         <div class="a0-emailPassword">
             <div class="a0-email">
+                <label for="a0-signup_easy_email" class="a0-sad-placeholder">
+                  <%= i18n.t('signup:emailPlaceholder') %>
+                </label>
                 <input name="email" id="a0-signup_easy_email"
                        type="email" value="" required
                        placeholder="<%= i18n.t('signup:emailPlaceholder') %>"
                        title="<%= i18n.t('signup:emailPlaceholder') %>">
             </div>
             <div class="a0-password">
+                <label for="a0-signup_easy_password" class="a0-sad-placeholder">
+                  <%= i18n.t('signup:passwordPlaceholder') %>
+                </label>
                 <input name="password" id="a0-signup_easy_password"
                        type="password" value="" required
                        placeholder="<%= i18n.t('signup:passwordPlaceholder') %>"
@@ -16,7 +22,6 @@
             </div>
             <div class="a0-action">
                 <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;"><%= i18n.t('signup:action') %></button>
-                <button type="submit" class="a0-spinner" style="display: none"></button>
                 <div class="a0-footer"></div>
                 <div class="a0-options">
                     <a href="javascript: {}" class="a0-centered a0-cancel"><%= i18n.t('signup:cancelAction') %></a>

@@ -1,8 +1,11 @@
-<div class="a0-reset">
+<div class="a0-reset a0-mode" style="display: none;">
     <form id="a0-change_password">
         <div class="a0-header"><%= i18n.t('reset:headerText') %></div>
         <div class="a0-emailPassword">
             <div class="a0-email">
+                <label for="a0-reset_easy_email" class="a0-sad-placeholder">
+                  <%= i18n.t('reset:emailPlaceholder') %>
+                </label>
                 <input name="email"
                        id="a0-reset_easy_email"
                        type="email"
@@ -12,6 +15,9 @@
                        title="<%= i18n.t('reset:emailPlaceholder') %>">
             </div>
             <div class="a0-password">
+                <label for="a0-reset_easy_password" class="a0-sad-placeholder">
+                  <%= i18n.t('reset:passwordPlaceholder') %>
+                </label>
                 <input name="password"
                         id="a0-reset_easy_password"
                         type="password"
@@ -21,6 +27,9 @@
                         title="<%= i18n.t('reset:passwordPlaceholder') %>">
             </div>
             <div class="a0-repeatPassword">
+                <label for="a0-reset_easy_repeat_password" class="a0-sad-placeholder">
+                  <%= i18n.t('reset:repeatPasswordPlaceholder') %>
+                </label>
                 <input name="repeat_password"
                     id="a0-reset_easy_repeat_password"
                     type="password" value=""
@@ -30,7 +39,6 @@
             </div>
             <div class="a0-action">
                 <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;"><%= i18n.t('reset:action') %></button>
-                <button type="submit" class="a0-spinner" style="display: none"></button>
                 <div class="a0-options">
                     <a href="javascript: {}" class="a0-centered a0-cancel"><%= i18n.t('reset:cancelAction') %></a>
                 </div>

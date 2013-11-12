@@ -2,28 +2,8 @@
     <div class="a0-signin <%= locals && locals.embedded ? 'a0-embedded' : '' %> <%= options.theme ? ('a0-theme-' + options.theme) : '' %>">
         <div class="a0-popup">
             <div class="a0-overlay">
-                <div id="a0-onestep" class="a0-panel a0-onestep">
-                    <header class="a0-header">
-                        <div class="a0-image" style="display: <%= !options.showIcon ? 'none' : 'block' %>">
-                            <img src="<%= options.icon || '' %>">
-                        </div>
-                        <h1><%= i18n.t('signin:title') %></h1>
-                        <h2 class="a0-error" style="display: none">&nbsp;</h2>
-                        <h2 class="a0-success" style="display: none">&nbsp;</h2>
-                        <a class="a0-close" style="display: <%= options.standalone ? 'none' : 'block' %>;"><%= i18n.t('close') %></a>
-                    </header>
-
-                    <div class="a0-loading"></div>
-
-
-                    <% include modes/loggedin %>
-                    <% include modes/signin %>
-                    <% include modes/signup %>
-                    <% include modes/reset %>
-
-                    <footer>
-                        <span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>
-                    </footer>
+                <div class="a0-centrix">
+                    <% include widget %>
                 </div>
             </div>
         </div>
