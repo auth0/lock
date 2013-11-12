@@ -2725,3 +2725,13 @@ Credit to @guillermovs for suggesting
   position: relative;
   top: 50%;
 }
+
+#a0-widget .a0-spin-img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin-left: -16px;
+  margin-top: -16px;
+}

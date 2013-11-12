@@ -12,6 +12,9 @@
     <% } %>
 
     <div class="a0-loading a0-mode">
+        <% if (locals.alt_spinner) { %>
+        <div class="a0-spin-img" style="background-image: url('<%= locals.alt_spinner %>')"></div>
+        <% } else { %>
         <div class="a0-spin-container">
             <div class="a0-spinner-css">
               <span class="a0-side a0-sp_left">
@@ -22,6 +25,7 @@
               </span>
             </div>
         </div>
+        <% } %>
     </div>
 
 

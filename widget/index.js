@@ -19,6 +19,8 @@ var i18n                 = require('../i18n');
 var hasTransitions       = require('has-transitions');
 var placeholderSupported = require('./js/placeholderSupported');
 
+var object_create = require('./js/Object.create');
+
 var $ = function (selector, root) {
   return bonzo(qwery('#a0-widget ' + (selector || ''), root));
 };
@@ -58,7 +60,7 @@ function Auth0Widget (options) {
   EventEmitter.call(this);
 }
 
-Auth0Widget.prototype = Object.create(EventEmitter.prototype);
+Auth0Widget.prototype = object_create(EventEmitter.prototype);
 
 // helper methods
 Auth0Widget.prototype._getApp = function () {
@@ -685,7 +687,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     showForgot: (this._signinOptions.showForgot !== false) && ((auth0Conn && auth0Conn.showForgot) || this._signinOptions.forgotLink),
     i18n: this._dict,
     signupLink: this._signinOptions.signupLink,
-    forgotLink: this._signinOptions.forgotLink,
+    forgotLink: this._signinOptions.forgotLink
   }));
 
   $('.a0-db-actions').append(actions);
@@ -767,7 +769,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   self._signinOptions = xtend({}, self._options, signinOptions);
   self._signinOptions.extraParameters = {
     state:         self._signinOptions.state || undefined,
-    access_token:  self._signinOptions.access_token || undefined,
+    access_token:  self._signinOptions.access_token || undefined
   };
   if (self._signinOptions.scope) {
     self._signinOptions.extraParameters.scope =
@@ -793,7 +795,8 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     specifiedContainer.innerHTML = embTmpl({
       embedded: true,
       i18n:     this._dict,
-      options:  self._signinOptions
+      options:  self._signinOptions,
+      alt_spinner: !hasTransitions() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
     });
   } else {
     // remove widget container (if exist)
@@ -802,7 +805,8 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     var div = document.createElement('div');
     div.innerHTML = mainTmpl({
       i18n:    this._dict,
-      options: self._signinOptions
+      options: self._signinOptions,
+      alt_spinner: !hasTransitions() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
     });
     document.body.appendChild(div);
   }
