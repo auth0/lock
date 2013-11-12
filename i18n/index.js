@@ -10,6 +10,7 @@ var dics_data = {
   'nl-NL': require('./nl-NL.json'),
   'pt': require('./pt.json'),
   'ru': require('./ru.json'),
+  'tlh': require('./tlh.json'),
   'zh': require('./zh.json')
 };
 

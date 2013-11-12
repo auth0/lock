@@ -284,6 +284,7 @@ var dics_data = {
   'nl-NL': require('./nl-NL.json'),
   'pt': require('./pt.json'),
   'ru': require('./ru.json'),
+  'tlh': require('./tlh.json'),
   'zh': require('./zh.json')
 };
 
@@ -325,7 +326,7 @@ module.exports.getDict = function ( langOrDict ) {
     return new Dictionary(langOrDict);
   }
 };
-},{"./ar.json":1,"./de.json":2,"./en.json":3,"./es.json":4,"./fr-FR.json":5,"./he.json":6,"./it.json":8,"./ja.json":9,"./nl-NL.json":10,"./pt.json":11,"./ru.json":12,"./zh.json":13}],8:[function(require,module,exports){
+},{"./ar.json":1,"./de.json":2,"./en.json":3,"./es.json":4,"./fr-FR.json":5,"./he.json":6,"./it.json":8,"./ja.json":9,"./nl-NL.json":10,"./pt.json":11,"./ru.json":12,"./tlh.json":13,"./zh.json":14}],8:[function(require,module,exports){
 module.exports={
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "Attendere prego...",
@@ -558,6 +559,52 @@ module.exports={
 },{}],13:[function(require,module,exports){
 module.exports={
   "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "DubelmoHchugh loS.",
+  "close": "SoQmoH",
+  "signin": {
+    "title": "qI'",
+    "action": "qI'",
+    "all": "cha' Hoch",
+    "strategyEmailEmpty": "chIm email.",
+    "strategyEmailInvalid": "email invalid.",
+    "strategyDomainInvalid": "{domain} yer wej setup.",
+    "signupText": "qI'",
+    "forgotText": "mu'wIj lIj?",
+    "emailPlaceholder": "email",
+    "passwordPlaceholder": "mu'wIj",
+    "separatorText": "ghap",
+    "serverErrorText": "Qagh qaStaHvIS qI' mIw tu'lu'.",
+    "returnUserLabel": "Qav poH qI' SoH qaStaHvIS lo'.",
+    "wrongEmailPasswordErrorText": "QIH email pagh mu'wIj.",
+    "or": "... pagh qI' qaStaHvIS yIlo'"
+  },
+  "signup": {
+    "title": "qI'",
+    "action": "qI'",
+    "emailPlaceholder": "email",
+    "passwordPlaceholder": "mu'wIj chenmoH",
+    "cancelAction": "qIl",
+    "headerText": "nuqneH email mu'wIj je",
+    "footerText": "ghuy'cha' \"qI' Ha'\": clicking, jIQochbe' SoH wabmey ngoch chavmoH 'ej privacy.",
+    "enterpriseEmailWarningText": "configured {domain} yer Vas qI' 'ej account pagh chenmoH SoH. nID, qI' instead.",
+    "serverErrorText": "Qagh qI' mIw Ha' tu'lu'."
+  },
+  "reset": {
+    "title": "mu'wIj reset",
+    "action": "ngeH",
+    "emailPlaceholder": "email",
+    "passwordPlaceholder": "mu'wIj chu'",
+    "repeatPasswordPlaceholder": "mu'wIj chu' confirm",
+    "cancelAction": "qIl",
+    "successText": "jIboQqang reset mu'wIj neH ngeH SoH maH.",
+    "enterSamePasswordText": "DubelmoHchugh mu'wIj rap 'el.",
+    "headerText": "nuqneH email chu' mu'wIj je. jIboQqang mu'wIj choH confirm ngeH SoH maH.",
+    "serverErrorText": "Qagh reset mu'wIj mIw tu'lu'."
+  }
+}
+},{}],14:[function(require,module,exports){
+module.exports={
+  "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "请稍候。。。",
   "close": "关闭",
   "signin": {
@@ -601,7 +648,7 @@ module.exports={
     "serverErrorText": "处理重置密码时出错。"
   }
 }
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 
 function insert (css) {
     var head = document.getElementsByTagName('head')[0];
@@ -618,8 +665,8 @@ function insert (css) {
 };
 
 var fs = require('fs');
-insert(".a0-widget article,.a0-widget aside,.a0-widget details,.a0-widget figcaption,.a0-widget figure,.a0-widget footer,.a0-widget header,.a0-widget hgroup,.a0-widget nav,.a0-widget section,.a0-widget summary{display:block}.a0-widget audio,.a0-widget canvas,.a0-widget video{display:inline-block;*display:inline;*zoom:1}.a0-widget audio:not([controls]){display:none;height:0}.a0-widget [hidden]{display:none}.a0-widget html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}.a0-widget a,.a0-widget button,.a0-widget div,.a0-widget h1,.a0-widget h2,.a0-widget html,.a0-widget input,.a0-widget select,.a0-widget span,.a0-widget textarea{font-family:sans-serif}.a0-widget body{margin:0}.a0-widget a:focus{outline:thin dotted}.a0-widget a:active,.a0-widget a:hover{outline:0}.a0-widget h4{font-size:1em;margin:1.33em 0}.a0-widget h5{font-size:.83em;margin:1.67em 0}.a0-widget h6{font-size:.75em;margin:2.33em 0}.a0-widget abbr[title]{border-bottom:1px dotted}.a0-widget b,.a0-widget strong{font-weight:700}.a0-widget blockquote{margin:1em 40px}.a0-widget dfn{font-style:italic}.a0-widget mark{background:#ff0;color:#000}.a0-widget p,.a0-widget pre{margin:1em 0}.a0-widget code,.a0-widget kbd,.a0-widget pre,.a0-widget samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}.a0-widget pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}.a0-widget q{quotes:none}.a0-widget q:after,.a0-widget q:before{content:'';content:none}.a0-widget small{font-size:80%}.a0-widget sub,.a0-widget sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.a0-widget sup{top:-.5em}.a0-widget sub{bottom:-.25em}.a0-widget dl,.a0-widget menu,.a0-widget ol,.a0-widget ul{margin:1em 0}.a0-widget dd{margin:0 0 0 40px}.a0-widget menu,.a0-widget ol,.a0-widget ul{padding:0 0 0 40px}.a0-widget nav ol,.a0-widget nav ul{list-style:none;list-style-image:none}.a0-widget img{border:0;-ms-interpolation-mode:bicubic}.a0-widget svg:not(:root){overflow:hidden}.a0-widget figure,.a0-widget form{margin:0}.a0-widget fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}.a0-widget legend{border:0;padding:0;white-space:normal;*margin-left:-7px}.a0-widget button,.a0-widget input,.a0-widget select,.a0-widget textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}.a0-widget button,.a0-widget html input[type=button],.a0-widget input[type=reset],.a0-widget input[type=submit]{-webkit-appearance:button;cursor:pointer;*overflow:visible}.a0-widget button[disabled],.a0-widget input[disabled]{cursor:default}.a0-widget input[type=checkbox],.a0-widget input[type=radio]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0;*height:13px;*width:13px}.a0-widget input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}.a0-widget input[type=search]::-webkit-search-cancel-button,.a0-widget input[type=search]::-webkit-search-decoration{-webkit-appearance:none}.a0-widget button::-moz-focus-inner,.a0-widget input::-moz-focus-inner{border:0;padding:0}.a0-widget textarea{overflow:auto;vertical-align:top}.a0-widget table{border-collapse:collapse;border-spacing:0}.a0-widget a,.a0-widget button,.a0-widget footer,.a0-widget form,.a0-widget form label,.a0-widget h1,.a0-widget h2,.a0-widget h3,.a0-widget header,.a0-widget input,.a0-widget span{font-smooth:never;-webkit-font-smoothing:auto;alignment-baseline:baseline;-webkit-animation:none 0 ease 0 1 normal;animation:none 0 ease 0 1 normal;-webkit-animation-play-state:running;animation-play-state:running;appearance:normal;-webkit-backface-visibility:visible;-ms-backface-visibility:visible;backface-visibility:visible;background:none 0 0 auto repeat scroll padding-box transparent;background-color:transparent;background-image:none;baseline-shift:baseline;binding:none;bleed:6pt;bookmark-label:content();bookmark-level:none;bookmark-state:open;bookmark-target:none;border:0 none transparent;border-radius:0;bottom:auto;-webkit-box-align:stretch;-webkit-align-items:stretch;-moz-box-align:stretch;-ms-flex-align:stretch;box-align:stretch;box-decoration-break:slice;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:normal;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:normal;box-direction:normal;-webkit-box-flex:0;-webkit-flex:0;-moz-box-flex:0;-ms-flex:0;box-flex:0;box-flex-group:1;box-lines:single;-webkit-box-ordinal-group:2;-webkit-order:1;-moz-box-ordinal-group:2;-ms-flex-order:1;box-ordinal-group:1;box-orient:inline-axis;-webkit-box-pack:start;-webkit-justify-content:start;-moz-box-pack:start;-ms-flex-pack:start;box-pack:start;-webkit-box-shadow:none;box-shadow:none;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-break-after:auto;-moz-break-after:auto;break-after:auto;-webkit-break-before:auto;-moz-break-before:auto;break-before:auto;-webkit-break-inside:auto;-moz-break-inside:auto;break-inside:auto;caption-side:top;clear:none;clip:auto;color:inherit;color-profile:auto;-webkit-column-count:auto;-moz-column-count:auto;column-count:auto;-webkit-column-fill:balance;-moz-column-fill:balance;column-fill:balance;-webkit-column-gap:normal;-moz-column-gap:normal;column-gap:normal;-webkit-column-rule:medium medium #1f1f1f;-moz-column-rule:medium medium #1f1f1f;column-rule:medium medium #1f1f1f;-webkit-column-span:1;-moz-column-span:1;column-span:1;-webkit-column-width:auto;-moz-column-width:auto;column-width:auto;-webkit-columns:auto auto;-moz-columns:auto auto;columns:auto auto;content:normal;counter-increment:none;counter-reset:none;crop:auto;cursor:auto;direction:auto;display:auto;dominant-baseline:auto;drop-initial-after-adjust:text-after-edge;drop-initial-after-align:baseline;drop-initial-before-adjust:text-before-edge;drop-initial-before-align:caps-height;drop-initial-size:auto;drop-initial-value:initial;elevation:level;empty-cells:show;fit:fill;fit-position:0 0;float:none;float-offset:0 0;font-size-adjust:none;font-stretch:normal;font:normal normal 100% \"Helvetica Neue\",Arial,sans-serif;grid-columns:none;grid-rows:none;hanging-punctuation:none;height:auto;hyphenate-after:auto;hyphenate-before:auto;hyphenate-character:auto;hyphenate-lines:no-limit;hyphenate-resource:none;-webkit-hyphens:manual;-moz-hyphens:manual;-ms-hyphens:manual;hyphens:manual;icon:auto;image-orientation:auto;image-rendering:auto;image-resolution:normal;inline-box-align:last;left:auto;letter-spacing:normal;line-height:normal;line-stacking:inline-line-height exclude-ruby consider-shifts;list-style:disc outside none;margin:0;marks:none;marquee-direction:forward;marquee-loop:1;marquee-play-count:1;marquee-speed:normal;marquee-style:scroll;max-height:none;max-width:none;min-height:0;min-width:0;move-to:normal;nav-down:auto;nav-index:auto;nav-left:auto;nav-right:auto;nav-up:auto;opacity:1;orphans:2;outline:invert none medium!important;outline-offset:0;overflow:visible;overflow-style:auto;padding:0;page:auto;page-break-after:auto;page-break-before:auto;page-break-inside:auto;page-policy:start;-webkit-perspective:none;-ms-perspective:none;perspective:none;-webkit-perspective-origin:50% 50%;-ms-perspective-origin:50% 50%;perspective-origin:50% 50%;position:static;presentation-level:0;punctuation-trim:none;quotes:none;rendering-intent:auto;resize:none;right:auto;rotation:0;rotation-point:50% 50%;ruby-align:auto;ruby-overhang:none;ruby-position:before;ruby-span:none;size:auto;string-set:none;table-layout:auto;text-align:auto;text-align-last:start;text-decoration:none;text-emphasis:none;text-height:auto;text-indent:0;text-justify:auto;text-outline:0;text-shadow:none;text-transform:none;text-wrap:normal;top:auto;-webkit-transform:none;-ms-transform:none;transform:none;-webkit-transform-origin:50% 50% 0;-ms-transform-origin:50% 50% 0;transform-origin:50% 50% 0;-webkit-transform-style:flat;-ms-transform-style:flat;transform-style:flat;-webkit-transition:all 0 ease 0;transition:all 0 ease 0;unicode-bidi:normal;vertical-align:baseline;visibility:visible;white-space:normal;white-space-collapse:collapse;widows:2;width:auto;word-break:normal;word-spacing:normal;word-wrap:normal;z-index:auto;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}#a0-widget .a0-theme-static .a0-popup .a0-overlay{background:rgba(255,255,255,0);background-color:transparent}#a0-widget .a0-theme-static .a0-popup .a0-panel{-webkit-box-shadow:0 0 0 1px rgba(14,41,57,.12),0 2px 5px rgba(14,41,57,.44),inset 0 -1px 2px rgba(14,41,57,.15);-ms-box-shadow:0 0 0 1px rgba(14,41,57,.12),0 2px 5px rgba(14,41,57,.44),inset 0 -1px 2px rgba(14,41,57,.15);-o-box-shadow:0 0 0 1px rgba(14,41,57,.12),0 2px 5px rgba(14,41,57,.44),inset 0 -1px 2px rgba(14,41,57,.15);box-shadow:0 0 0 1px rgba(14,41,57,.12),0 2px 5px rgba(14,41,57,.44),inset 0 -1px 2px rgba(14,41,57,.15);background:#fff}#a0-widget .a0-theme-static .a0-popup .a0-panel:after{display:none}@-webkit-keyframes showPanel{0%{opacity:0}100%{opacity:1}}@-ms-keyframes showPanel{0%{opacity:0}100%{opacity:1}}@keyframes showPanel{0%{opacity:0}100%{opacity:1}}@-webkit-keyframes hidePanel{0%{opacity:1}100%{opacity:0}}@-ms-keyframes hidePanel{0%{opacity:1}100%{opacity:0}}@keyframes hidePanel{0%{opacity:1}100%{opacity:0}}#a0-widget .a0-theme-static .a0-separator span{background:#fff}#a0-widget .a0-embedded .a0-popup .a0-panel{box-shadow:none;-webkit-box-shadow:none;border-radius:0}#a0-widget .a0-embedded .a0-popup .a0-panel header{display:none}#a0-widget .a0-zocial,#a0-widget a.a0-zocial{border:1px solid #777;border-color:rgba(0,0,0,.2);border-bottom-color:#333;border-bottom-color:rgba(0,0,0,.4);color:#fff;-webkit-box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);cursor:pointer;display:inline-block;font:700 100%/2.1 \"Lucida Grande\",Tahoma,sans-serif;padding:0 .22em 0 0;text-align:left;text-decoration:none;text-shadow:0 1px 0 rgba(0,0,0,.5);white-space:nowrap;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;position:relative;border-radius:.3em}#a0-widget .a0-zocial.a0-primary{text-align:center}#a0-widget .a0-zocial:before{content:\"\";border-right:.075em solid rgba(0,0,0,.1);float:left;font:120%/1.65 zocial;font-style:normal;font-weight:400;margin:0 .5em 0 0;padding:0 .5em;text-align:center;text-decoration:none;text-transform:none;-webkit-box-shadow:.075em 0 0 rgba(255,255,255,.25);box-shadow:.075em 0 0 rgba(255,255,255,.25);-moz-font-smoothing:antialiased;-webkit-font-smoothing:antialiased;font-smoothing:antialiased}#a0-widget .a0-zocial:active{outline:0}#a0-widget .a0-zocial.a0-icon{overflow:hidden;max-width:2.4em;padding-left:0;padding-right:0;max-height:2.15em;white-space:nowrap}#a0-widget .a0-zocial.a0-icon:before{padding:0;width:2em;height:2em;-webkit-box-shadow:none;box-shadow:none;border:0}#a0-widget .a0-zocial{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.1)),color-stop(49%,rgba(255,255,255,.05)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.1)));background-image:-webkit-linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.05) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,top left,bottom left,from(rgba(255,255,255,.1)),color-stop(49%,rgba(255,255,255,.05)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.1)));background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.05) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1))}#a0-widget .a0-zocial:focus,#a0-widget .a0-zocial:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.15)),color-stop(49%,rgba(255,255,255,.15)),color-stop(51%,rgba(0,0,0,.1)),to(rgba(0,0,0,.15)));background-image:-webkit-linear-gradient(rgba(255,255,255,.15) 49%,rgba(0,0,0,.1) 51%,rgba(0,0,0,.15));background-image:-webkit-gradient(linear,top left,bottom left,from(rgba(255,255,255,.15)),color-stop(51%,rgba(0,0,0,.1)),to(rgba(0,0,0,.15)));background-image:linear-gradient(rgba(255,255,255,.15) 49%,rgba(0,0,0,.1) 51%,rgba(0,0,0,.15))}#a0-widget .a0-zocial:active{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.1)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,transparent),to(rgba(0,0,0,.1)));background-image:-webkit-linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0) 30%,transparent 50%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,bottom left,top left,from(rgba(255,255,255,.1)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,transparent),to(rgba(0,0,0,.1)));background-image:linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0) 30%,transparent 50%,rgba(0,0,0,.1))}#a0-widget .a0-zocial.a0-dropbox,#a0-widget .a0-zocial.a0-github,#a0-widget .a0-zocial.a0-gmail,#a0-widget .a0-zocial.a0-openid,#a0-widget .a0-zocial.a0-salesforce,#a0-widget .a0-zocial.a0-secondary,#a0-widget .a0-zocial.a0-stackoverflow{border:1px solid #aaa;border-color:rgba(0,0,0,.3);border-bottom-color:#777;border-bottom-color:rgba(0,0,0,.5);-webkit-box-shadow:inset 0 .08em 0 rgba(255,255,255,.7),inset 0 0 .08em rgba(255,255,255,.5);box-shadow:inset 0 .08em 0 rgba(255,255,255,.7),inset 0 0 .08em rgba(255,255,255,.5);text-shadow:0 1px 0 rgba(255,255,255,.8)}#a0-widget .a0-zocial.a0-dropbox:focus,#a0-widget .a0-zocial.a0-dropbox:hover,#a0-widget .a0-zocial.a0-github:focus,#a0-widget .a0-zocial.a0-github:hover,#a0-widget .a0-zocial.a0-gmail:focus,#a0-widget .a0-zocial.a0-gmail:hover,#a0-widget .a0-zocial.a0-openid:focus,#a0-widget .a0-zocial.a0-openid:hover,#a0-widget .a0-zocial.a0-salesforce:focus .a0-zocial.a0-salesforce:hover,#a0-widget .a0-zocial.a0-secondary:focus,#a0-widget .a0-zocial.a0-secondary:hover,#a0-widget .a0-zocial.a0-stackoverflow:focus,#a0-widget .a0-zocial.a0-stackoverflow:hover,#a0-widget .a0-zocial.a0-twitter:focus .a0-zocial.a0-twitter:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.5)),color-stop(49%,rgba(255,255,255,.2)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.15)));background-image:-webkit-linear-gradient(top,rgba(255,255,255,.5),rgba(255,255,255,.2) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.15));background-image:-webkit-gradient(linear,top left,bottom left,from(rgba(255,255,255,.5)),color-stop(49%,rgba(255,255,255,.2)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.15)));background-image:linear-gradient(top,rgba(255,255,255,.5),rgba(255,255,255,.2) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.15))}#a0-widget .a0-zocial.a0-dropbox:active,#a0-widget .a0-zocial.a0-github:active,#a0-widget .a0-zocial.a0-gmail:active,#a0-widget .a0-zocial.a0-openid:active,#a0-widget .a0-zocial.a0-salesforce:active,#a0-widget .a0-zocial.a0-secondary:active,#a0-widget .a0-zocial.a0-stackoverflow:active,#a0-widget .a0-zocial.a0-wikipedia:active{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,rgba(0,0,0,0)),to(rgba(0,0,0,.1)));background-image:-webkit-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,0) 30%,rgba(0,0,0,0) 50%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,bottom left,top left,from(rgba(255,255,255,0)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,rgba(0,0,0,0)),to(rgba(0,0,0,.1)));background-image:linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,0) 30%,rgba(0,0,0,0) 50%,rgba(0,0,0,.1))}#a0-widget .a0-zocial.a0-amazon:before{content:\"a\"}#a0-widget .a0-zocial.a0-dropbox:before{content:\"d\";color:#1f75cc}#a0-widget .a0-zocial.a0-facebook:before{content:\"f\"}#a0-widget .a0-zocial.a0-github:before{content:\"\\00E8\"}#a0-widget .a0-zocial.a0-gmail:before{content:\"m\";color:red}#a0-widget .a0-zocial.a0-google:before{content:\"G\"}#a0-widget .a0-zocial.a0-googleplus:before{content:\"+\"}#a0-widget .a0-zocial.a0-guest:before{content:\"?\"}#a0-widget .a0-zocial.a0-ie:before{content:\"6\"}#a0-widget .a0-zocial.a0-linkedin:before{content:\"L\"}#a0-widget .a0-zocial.a0-openid:before{content:\"o\";color:#ff921d}#a0-widget .a0-zocial.a0-paypal:before{content:\"$\"}#a0-widget .a0-zocial.a0-stackoverflow:before{content:\"\\00EC\";color:#ff7a15}#a0-widget .a0-zocial.a0-twitter:before{content:\"T\"}#a0-widget .a0-zocial.a0-vk:before{content:\"N\"}#a0-widget .a0-zocial.a0-windows:before{content:\"W\"}#a0-widget .a0-zocial.a0-yahoo:before{content:\"Y\"}#a0-widget .a0-zocial.a0-amazon{background-color:#ffad1d;color:#030037;text-shadow:0 1px 0 rgba(255,255,255,.5)}#a0-widget .a0-zocial.a0-dropbox{background-color:#fff;color:#312c2a}#a0-widget .a0-zocial.a0-facebook{background-color:#4863ae}#a0-widget .a0-zocial.a0-github{background-color:#fbfbfb;color:#050505}#a0-widget .a0-zocial.a0-gmail{background-color:#efefef;color:#222}#a0-widget .a0-zocial.a0-google{background-color:#4e6cf7}#a0-widget .a0-zocial.a0-googleplus{background-color:#dd4b39}#a0-widget .a0-zocial.a0-guest{background-color:#1b4d6d}#a0-widget .a0-zocial.a0-ie{background-color:#00a1d9}#a0-widget .a0-zocial.a0-linkedin{background-color:#0083a8}#a0-widget .a0-zocial.a0-openid{background-color:#f5f5f5;color:#333}#a0-widget .a0-zocial.a0-paypal{background-color:#fff;color:#32689a;text-shadow:0 1px 0 rgba(255,255,255,.5)}#a0-widget .a0-zocial.a0-twitter{background-color:#46c0fb}#a0-widget .a0-zocial.a0-vk{background-color:#45688E}#a0-widget button:-moz-focus-inner{border:0;padding:0}@font-face{font-family:zocial;src:url(https://d19p4zemcycm7a.cloudfront.net/w2/font/zocial-regular-webfont.eot)}@font-face{font-family:zocial;src:url(data:application/font-woff;charset=utf-8;base64,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) format('woff'),url(https://d19p4zemcycm7a.cloudfront.net/w2/font/zocial-regular-webfont.ttf) format('truetype'),url(https://d19p4zemcycm7a.cloudfront.net/w2/font/zocial-regular-webfont.svg#zocialregular) format('svg');font-weight:400;font-style:normal}#a0-widget .a0-zocial.a0-auth0:before{content:\"?\"}#a0-widget .a0-zocial.a0-auth0{background-color:#ff4500;width:auto}#a0-widget .a0-zocial.a0-block{display:block;margin:10px 0;text-overflow:ellipsis;overflow:hidden}#a0-widget .a0-zocial.a0-primary,#a0-widget .a0-zocial.a0-secondary{width:100%;margin:0;padding:0;font-size:14px;line-height:42px}#a0-widget .a0-zocial.a0-primary:before,#a0-widget .a0-zocial.a0-secondary:before{display:none}#a0-widget .a0-zocial.a0-primary{background-color:#747e85}#a0-widget .a0-zocial.a0-secondary{background-color:#f0f0eb;color:#222;text-shadow:0 1px 0 rgba(255,255,255,.8)}#a0-widget .a0-zocial{-webkit-font-smoothing:antialiased}#a0-widget label{font-family:sans-serif}#a0-widget .a0-zocial{font-size:16px}#a0-widget .a0-next{text-shadow:none;font-weight:700;font-family:'Lucida Grande',Tahoma,sans-serif}#a0-widget .a0-popup .a0-overlay{position:fixed;left:0;top:0;width:100%;height:100%;overflow:hidden;z-index:9999;font-weight:200;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;background:#000;background:rgba(0,0,0,.8);background:-webkit-radial-gradient(50% 50%,ellipse closest-corner,rgba(0,0,0,.45) 1%,rgba(0,0,0,.8) 100%);background:radial-gradient(50% 50%,ellipse closest-corner,rgba(0,0,0,.45) 1%,rgba(0,0,0,.8) 100%);opacity:0;-webkit-transition:400ms opacity ease;transition:400ms opacity ease;-webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}#a0-widget .a0-popup .a0-overlay.a0-active{opacity:1}#a0-widget .a0-popup .a0-overlay .a0-panel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;left:50%;display:none}#a0-widget .a0-popup .a0-overlay .a0-panel.a0-active{display:block;-webkit-animation-duration:400ms;-webkit-animation-timing-function:ease;-webkit-animation-name:showPanel}#a0-widget .a0-popup .a0-overlay .a0-panel{-webkit-animation-duration:400ms;-webkit-animation-timing-function:ease;-webkit-animation-name:hidePanel;width:280px;margin:0 0 0 -140px}#a0-widget .a0-popup .a0-email,#a0-widget .a0-popup .a0-password,#a0-widget .a0-popup .a0-repeatPassword{margin-bottom:14px}#a0-widget .a0-popup .a0-email-readonly{text-align:center;display:inherit;color:#41444a;font-weight:700;margin-bottom:25px}#a0-widget .a0-panel .a0-reset .a0-header,#a0-widget .a0-panel .a0-signup .a0-header{margin-bottom:15px;font-size:14px;color:#41444a}#a0-widget .a0-panel .a0-signup .a0-footer{margin-bottom:15px;font-size:12px;color:#41444a;text-align:left;margin-top:10px}#a0-widget .a0-panel .a0-loading{height:70px}@-webkit-keyframes showPanel{0%{opacity:0;-webkit-transform:scale(0.95) translate3d(0,0,0)}100%{opacity:1;-webkit-transform:scale(1) translate3d(0,0,0)}}@-ms-keyframes showPanel{0%{opacity:0;-webkit-transform:scale(0.95) translate3d(0,0,0)}100%{opacity:1;-webkit-transform:scale(1) translate3d(0,0,0)}}@keyframes showPanel{0%{opacity:0;-webkit-transform:scale(0.95) translate3d(0,0,0)}100%{opacity:1;-webkit-transform:scale(1) translate3d(0,0,0)}}@-webkit-keyframes hidePanel{0%{-webkit-transform:scale(1) translate3d(0,0,0)}100%{-webkit-transform:scale(0.98) translate3d(0,0,0)}}@-ms-keyframes hidePanel{0%{-webkit-transform:scale(1) translate3d(0,0,0)}100%{-webkit-transform:scale(0.98) translate3d(0,0,0)}}@keyframes hidePanel{0%{-webkit-transform:scale(1) translate3d(0,0,0)}100%{-webkit-transform:scale(0.98) translate3d(0,0,0)}}#a0-widget .a0-popup .a0-panel{background:#fafafa;background-image:-webkit-linear-gradient(#fff,#fafafa);background-image:-webkit-gradient(linear,top left,bottom left,from(#fff),to(#fafafa));background-image:linear-gradient(#fff,#fafafa);z-index:10;-webkit-box-shadow:0 0 1px 1px rgba(0,0,0,.2),0 10px 27px rgba(0,0,0,.7);box-shadow:0 0 1px 1px rgba(0,0,0,.2),0 10px 27px rgba(0,0,0,.7);border-radius:6px;-webkit-touch-callout:none}#a0-widget .a0-popup .a0-panel:after{content:\"\";position:absolute;left:0;right:0;top:0;bottom:0;z-index:1;-webkit-box-shadow:inset 0 -1px 2px rgba(82,93,112,.4);box-shadow:inset 0 -1px 2px rgba(82,93,112,.4)}#a0-widget .a0-popup .a0-panel header{display:block;position:relative;min-height:65px;overflow:hidden;border-radius:6px 6px 0 0;background:#f1f4f6;background-image:-webkit-linear-gradient(#f1f4f6,#e9edf0);background-image:-webkit-gradient(linear,top left,bottom left,from(#f1f4f6),to(#e9edf0));background-image:linear-gradient(#f1f4f6,#e9edf0);border-bottom:1px solid rgba(40,69,85,.11)}#a0-widget .a0-popup .a0-panel header:before{content:'';position:absolute;height:5px;bottom:-1px;left:0;right:0;background-image:-webkit-linear-gradient(rgba(40,69,85,0),rgba(40,69,85,.1));background-image:-webkit-gradient(linear,top left,bottom left,from(rgba(40,69,85,0)),to(rgba(40,69,85,.1)));background-image:linear-gradient(rgba(40,69,85,0),rgba(40,69,85,.1))}#a0-widget .a0-popup .a0-panel header:after{content:'';position:absolute;height:4px;bottom:0;left:0;right:0;background-image:-webkit-linear-gradient(left,#e9edf0,rgba(241,244,246,0),#e9edf0);background-image:-webkit-gradient(linear,top left,top right,from(#e9edf0),color-stop(rgba(241,244,246,0)),to(#e9edf0));background-image:linear-gradient(left,#e9edf0,rgba(241,244,246,0),#e9edf0)}#a0-widget .a0-popup .a0-panel header h1{padding:21px 20px;margin:0;font-size:18px;color:#41444a;font-weight:700;border-bottom:1px solid #DDE3E6;text-align:left}#a0-widget .a0-popup .a0-panel header a{display:block;overflow:hidden;text-indent:200%;position:absolute;width:12px;opacity:.4;padding:5px;z-index:5}#a0-widget .a0-popup .a0-panel header a:hover{opacity:.66}#a0-widget .a0-popup .a0-panel header a:active{opacity:1}#a0-widget .a0-popup .a0-panel header a.a0-close{height:12px;background-repeat:no-repeat;background-position:50% 50%;-webkit-background-size:12px 12px;background-size:12px 12px;right:19px;top:21px;cursor:pointer}#a0-widget .a0-popup .a0-panel header a.a0-close:hover{opacity:.66}#a0-widget .a0-popup .a0-panel header img{height:32px;margin:16px 10px 10px 20px;position:relative;float:left}#a0-widget .a0-action .a0-spinner{width:100%;background-color:#6A777F;background-repeat:no-repeat;background-position:center;margin:0;height:44px;border:1px solid #777;border-color:rgba(0,0,0,.2);border-bottom-color:#333;border-bottom-color:rgba(0,0,0,.4);-webkit-box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;border-radius:.3em}#a0-widget .a0-popup .a0-panel footer{display:block;position:relative;border-radius:0 0 5px 5px;height:25px;line-height:25px;vertical-align:middle;margin:0 15px;border-top:1px solid #DDE3E6;z-index:5}#a0-widget .a0-popup .a0-panel footer.a0-hide{height:1px;border-top:0}#a0-widget .a0-popup .a0-panel footer.a0-hide span{display:none}#a0-widget .a0-popup .a0-panel footer span{font-size:10px;color:#666}#a0-widget .a0-popup .a0-panel footer a{font-size:9px;color:#333;font-weight:700;text-decoration:none;cursor:pointer}#a0-widget .a0-iconlist,#a0-widget .a0-list{margin:25px 0;position:relative;z-index:5}#a0-widget .a0-iconlist:after,#a0-widget .a0-iconlist:before,#a0-widget .a0-list:after,#a0-widget .a0-list:before{display:table;content:\"\"}#a0-widget .a0-iconlist:after,#a0-widget .a0-list:after{clear:both}#a0-widget .a0-list span{display:block;margin:10px 0;cursor:pointer}#a0-widget .a0-iconlist{text-align:center}#a0-widget .a0-iconlist span{margin:0 2px}#a0-widget .a0-forgot-pass{font-size:12px;color:#666;font-weight:400}#a0-widget .a0-create-account{display:none;margin-top:20px;text-align:center}#a0-widget .a0-create-account a{font-size:12px;color:#6d6d6d;text-decoration:none}#a0-widget .a0-create-account a:hover{text-decoration:underline}#a0-widget .a0-loggedin span.a0-centered.a0-all{color:#008CDD;cursor:pointer}#a0-widget .a0-loggedin span.a0-centered{text-align:center;padding:5px 0;margin:15px 0 5px;font-size:13px;display:block}#a0-widget .a0-loggedin span.a0-centered.a0-all:hover{text-decoration:underline}#a0-widget .a0-reset .a0-options a.a0-cancel,#a0-widget .a0-signup .a0-options a.a0-cancel{color:#008CDD;cursor:pointer;text-decoration:none}#a0-widget .a0-reset .a0-options a.a0-cancel:hover,#a0-widget .a0-signup .a0-options a.a0-cancel:hover{text-decoration:underline}#a0-widget .a0-reset .a0-options,#a0-widget .a0-signup .a0-options{text-align:center;padding:5px 0;margin:15px 0 5px;font-size:13px;display:block}#a0-widget form{margin:30px!important;margin-bottom:22px;position:relative;z-index:5}#a0-widget form span{font-size:16px}#a0-widget form label a{color:#7F8899;font-weight:700;text-shadow:0 1px 0 #fff}#a0-widget form label{display:block;color:#7F8899;font-size:13px;font-weight:700;margin:0 0 7px;text-shadow:0 1px 0 #fff;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}#a0-widget form input{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:100%;font-size:18px;padding:10px 12px;border:1px solid #B4BECD;border-top-color:#B0BACA;border-bottom-color:#D3D9E2;-webkit-box-shadow:inset 0 1px 2px rgba(130,137,150,.23),0 1px 0 rgba(255,255,255,.85);box-shadow:inset 0 1px 2px rgba(130,137,150,.23),0 1px 0 rgba(255,255,255,.85);border-radius:4px;margin:0;font-family:'Helvetica Neue',Helvetica,Arial Geneva,sans-serif}#a0-widget .a0-placeholder{color:#ccc}#a0-widget form input:focus{border-color:#5695DB #70A7E4 #89B8EC;outline:0;-webkit-box-shadow:inset 0 1px 2px rgba(70,123,181,.35),0 0 4px #5695db;box-shadow:inset 0 1px 2px rgba(70,123,181,.35),0 0 4px #5695db}#a0-widget form .a0-invalid input{outline:0;border-color:#FF7076;border-top-color:#FF5C61;-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,.2),0 0 4px 0 rgba(255,0,0,.5);box-shadow:inset 0 1px 2px rgba(0,0,0,.2),0 0 4px 0 rgba(255,0,0,.5)}#a0-widget header .a0-error{padding:9px 0;margin:10px auto;width:70%;font-size:14px;line-height:13px;color:#b95353;text-align:center}#a0-widget header .a0-success{padding:9px 0;margin:10px auto;width:70%;font-size:14px;line-height:13px;color:#0fad29;text-align:center}#a0-widget form .a0-note{display:block;color:#7F8899;font-size:13px;font-weight:700;margin:0 0 7px;text-shadow:0 1px 0 #fff;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}#a0-widget form .a0-note a{color:#008CDD;text-decoration:none}#a0-widget form .a0-invalid .a0-error{visibility:visible}#a0-widget form button{display:block;margin:20px 0 0;cursor:pointer;width:100%}#a0-widget .a0-action{text-align:right;margin:0 30px 30px;position:relative;z-index:5}#a0-widget form .a0-action{margin:0}#a0-widget .a0-action button{width:auto}#a0-widget .a0-separator{position:relative;text-align:center;margin:0 0 25px}#a0-widget .a0-separator:before{content:\"\";display:block;border-top:1px solid #7F8899;width:200px;left:50%;margin-left:-100px;height:1px;position:absolute;top:50%;z-index:1}#a0-widget .a0-separator span{background:#fafafa;padding:0 10px;position:relative;z-index:5;color:#7F8899;font-size:13px;font-weight:700;text-shadow:0 1px 0 #fff}#a0-widget span.a0-back{display:block;color:#008CDD;text-align:center;padding:5px 0;margin:15px 0 5px;font-size:13px;cursor:pointer;position:relative;z-index:5;outline:0}#a0-widget span.a0-back:hover{text-decoration:underline}#a0-widget .a0-signin .a0-panel.a0-strategies .a0-list .a0-email{display:block;color:#7F8899;font-size:13px;font-weight:700;margin:0 0 7px;text-shadow:0 1px 0 #fff;text-align:center}#a0-widget .a0-zocial.a0-office365:before{content:\"W\"}#a0-widget .a0-zocial.a0-office365{background-color:#00ACED;color:#fff}#a0-widget .a0-zocial.a0-waad:before{content:\"z\"}#a0-widget .a0-zocial.a0-waad{background-color:#00ADEF;color:#fff}#a0-widget .a0-zocial.a0-thirtysevensignals:before{content:\"b\"}#a0-widget .a0-zocial.a0-thirtysevensignals{background-color:#6AC071;color:#fff}#a0-widget .a0-zocial.a0-box:before{content:\"x\"}#a0-widget .a0-zocial.a0-box{background-color:#267bb6;color:#fff}#a0-widget .a0-zocial.a0-salesforce:before{content:\"*\"}#a0-widget .a0-zocial.a0-salesforce{background-color:#fff;color:red}#a0-widget .a0-zocial.a0-windows{background-color:#2672EC;color:#fff}#a0-widget .a0-zocial.a0-fitbit:before{content:\"#\"}#a0-widget .a0-zocial.a0-fitbit{background-color:#45C2C5;color:#fff}#a0-widget .a0-zocial.a0-yandex:before{content:\"&\"}#a0-widget .a0-zocial.a0-yandex{background-color:red;color:#fff}#a0-widget .a0-zocial.a0-renren:before{content:\"r\"}#a0-widget .a0-zocial.a0-renren{background-color:#0056B5;color:#fff}#a0-widget .a0-zocial.a0-baidu:before{content:\"u\"}#a0-widget .a0-zocial.a0-baidu{background-color:#2832E1;color:#fff}#a0-widget .a0-popup .a0-overlay .a0-onestep{width:345px;margin:0 0 0 -172px}@media (max-width:280px){#a0-widget .a0-popup .a0-overlay .a0-panel{width:240px;margin:0 0 0 -120px}#a0-widget .a0-signin .a0-popup .a0-panel.a0-strategies .a0-list,#a0-widget form{margin:12px}#a0-widget form input{padding:5px}#a0-widget .a0-popup .a0-panel header{margin:0;padding:0}#a0-widget .a0-popup .a0-panel header h1{padding:14px 16px;margin:0;font-size:22px}#a0-widget .a0-popup .a0-panel header a.a0-close{right:14px;top:16px}}@media (min-width:281px) and (max-width:340px){#a0-widget .a0-popup .a0-overlay .a0-panel{margin:0;left:0;height:100%;width:100%;border-radius:0}#a0-widget .a0-popup .a0-zocial,#a0-widget .a0-popup a.a0-zocial{font-size:18px}#a0-widget .a0-signin .a0-popup .a0-panel.a0-strategies .a0-list{margin:15px}#a0-widget form{margin:15px 25px}#a0-widget form input{padding:6px;font-size:18px}#a0-widget .a0-popup .a0-panel header{margin:0;padding:0;min-height:32px}#a0-widget .a0-popup .a0-panel header h1{padding:12px 16px;margin-top:1px;font-size:20px}#a0-widget .a0-popup .a0-panel header img{height:32px;margin:9px 10px 6px 18px}#a0-widget .a0-zocial.a0-primary{line-height:34px}#a0-widget .a0-action .a0-spinner{height:34px}#a0-widget .a0-create-account{margin-top:20px}#a0-widget .a0-popup .a0-email,#a0-widget .a0-popup .a0-password,#a0-widget .a0-popup .a0-repeatPassword{margin-bottom:5px}}@-webkit-keyframes orbit{0%{opacity:1;z-index:99;-webkit-transform:rotate(180deg);-webkit-animation-timing-function:ease-out}7%{opacity:1;-webkit-transform:rotate(300deg);-webkit-animation-timing-function:linear;-webkit-origin:0}30%{opacity:1;-webkit-transform:rotate(410deg);-webkit-animation-timing-function:ease-in-out;-webkit-origin:7%}39%{opacity:1;-webkit-transform:rotate(645deg);-webkit-animation-timing-function:linear;-webkit-origin:30%}70%{opacity:1;-webkit-transform:rotate(770deg);-webkit-animation-timing-function:ease-out;-webkit-origin:39%}75%{opacity:1;-webkit-transform:rotate(900deg);-webkit-animation-timing-function:ease-out;-webkit-origin:70%}100%,76%{opacity:0;-webkit-transform:rotate(900deg)}}@-ms-keyframes orbit{0%{opacity:1;z-index:99;-ms-transform:rotate(180deg);-ms-animation-timing-function:ease-out}7%{opacity:1;-ms-transform:rotate(300deg);-ms-animation-timing-function:linear;-ms-origin:0}30%{opacity:1;-ms-transform:rotate(410deg);-ms-animation-timing-function:ease-in-out;-ms-origin:7%}39%{opacity:1;-ms-transform:rotate(645deg);-ms-animation-timing-function:linear;-ms-origin:30%}70%{opacity:1;-ms-transform:rotate(770deg);-ms-animation-timing-function:ease-out;-ms-origin:39%}75%{opacity:1;-ms-transform:rotate(900deg);-ms-animation-timing-function:ease-out;-ms-origin:70%}100%,76%{opacity:0;-ms-transform:rotate(900deg)}}@keyframes orbit{0%{opacity:1;z-index:99;-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}7%{opacity:1;-webkit-transform:rotate(300deg);-ms-transform:rotate(300deg);transform:rotate(300deg);-webkit-animation-timing-function:linear;animation-timing-function:linear;origin:0}30%{opacity:1;-webkit-transform:rotate(410deg);-ms-transform:rotate(410deg);transform:rotate(410deg);-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;origin:7%}39%{opacity:1;-webkit-transform:rotate(645deg);-ms-transform:rotate(645deg);transform:rotate(645deg);-webkit-animation-timing-function:linear;animation-timing-function:linear;origin:30%}70%{opacity:1;-webkit-transform:rotate(770deg);-ms-transform:rotate(770deg);transform:rotate(770deg);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;origin:39%}75%{opacity:1;-webkit-transform:rotate(900deg);-ms-transform:rotate(900deg);transform:rotate(900deg);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;origin:70%}100%,76%{opacity:0;-webkit-transform:rotate(900deg);-ms-transform:rotate(900deg);transform:rotate(900deg)}}#a0-widget input[disabled]{background-color:#d9dee0}");
-},{"fs":28}],15:[function(require,module,exports){
+insert(".a0-widget article,.a0-widget aside,.a0-widget details,.a0-widget figcaption,.a0-widget figure,.a0-widget footer,.a0-widget header,.a0-widget hgroup,.a0-widget nav,.a0-widget section,.a0-widget summary{display:block}.a0-widget audio,.a0-widget canvas,.a0-widget video{display:inline-block;*display:inline;*zoom:1}.a0-widget audio:not([controls]){display:none;height:0}.a0-widget [hidden]{display:none}.a0-widget html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}.a0-widget a,.a0-widget button,.a0-widget div,.a0-widget h1,.a0-widget h2,.a0-widget html,.a0-widget input,.a0-widget select,.a0-widget span,.a0-widget textarea{font-family:sans-serif}.a0-widget body{margin:0}.a0-widget a:focus{outline:thin dotted}.a0-widget a:active,.a0-widget a:hover{outline:0}.a0-widget h4{font-size:1em;margin:1.33em 0}.a0-widget h5{font-size:.83em;margin:1.67em 0}.a0-widget h6{font-size:.75em;margin:2.33em 0}.a0-widget abbr[title]{border-bottom:1px dotted}.a0-widget b,.a0-widget strong{font-weight:700}.a0-widget blockquote{margin:1em 40px}.a0-widget dfn{font-style:italic}.a0-widget mark{background:#ff0;color:#000}.a0-widget p,.a0-widget pre{margin:1em 0}.a0-widget code,.a0-widget kbd,.a0-widget pre,.a0-widget samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}.a0-widget pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}.a0-widget q{quotes:none}.a0-widget q:after,.a0-widget q:before{content:'';content:none}.a0-widget small{font-size:80%}.a0-widget sub,.a0-widget sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.a0-widget sup{top:-.5em}.a0-widget sub{bottom:-.25em}.a0-widget dl,.a0-widget menu,.a0-widget ol,.a0-widget ul{margin:1em 0}.a0-widget dd{margin:0 0 0 40px}.a0-widget menu,.a0-widget ol,.a0-widget ul{padding:0 0 0 40px}.a0-widget nav ol,.a0-widget nav ul{list-style:none;list-style-image:none}.a0-widget img{border:0;-ms-interpolation-mode:bicubic}.a0-widget svg:not(:root){overflow:hidden}.a0-widget figure,.a0-widget form{margin:0}.a0-widget fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}.a0-widget legend{border:0;padding:0;white-space:normal;*margin-left:-7px}.a0-widget button,.a0-widget input,.a0-widget select,.a0-widget textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}.a0-widget button,.a0-widget html input[type=button],.a0-widget input[type=reset],.a0-widget input[type=submit]{-webkit-appearance:button;cursor:pointer;*overflow:visible}.a0-widget button[disabled],.a0-widget input[disabled]{cursor:default}.a0-widget input[type=checkbox],.a0-widget input[type=radio]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0;*height:13px;*width:13px}.a0-widget input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}.a0-widget input[type=search]::-webkit-search-cancel-button,.a0-widget input[type=search]::-webkit-search-decoration{-webkit-appearance:none}.a0-widget button::-moz-focus-inner,.a0-widget input::-moz-focus-inner{border:0;padding:0}.a0-widget textarea{overflow:auto;vertical-align:top}.a0-widget table{border-collapse:collapse;border-spacing:0}.a0-widget a,.a0-widget button,.a0-widget footer,.a0-widget form,.a0-widget form label,.a0-widget h1,.a0-widget h2,.a0-widget h3,.a0-widget header,.a0-widget input,.a0-widget span{font-smooth:never;-webkit-font-smoothing:auto;alignment-baseline:baseline;-webkit-animation:none 0 ease 0 1 normal;-moz-animation:none 0 ease 0 1 normal;animation:none 0 ease 0 1 normal;-webkit-animation-play-state:running;-moz-animation-play-state:running;animation-play-state:running;appearance:normal;-webkit-backface-visibility:visible;-moz-backface-visibility:visible;-ms-backface-visibility:visible;backface-visibility:visible;background:none 0 0 auto repeat scroll padding-box transparent;background-color:transparent;background-image:none;baseline-shift:baseline;binding:none;bleed:6pt;bookmark-label:content();bookmark-level:none;bookmark-state:open;bookmark-target:none;border:0 none transparent;border-radius:0;bottom:auto;-webkit-box-align:stretch;-webkit-align-items:stretch;-moz-box-align:stretch;-ms-flex-align:stretch;box-align:stretch;box-decoration-break:slice;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:normal;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:normal;box-direction:normal;-webkit-box-flex:0;-webkit-flex:0;-moz-box-flex:0;-ms-flex:0;box-flex:0;box-flex-group:1;box-lines:single;-webkit-box-ordinal-group:2;-webkit-order:1;-moz-box-ordinal-group:2;-ms-flex-order:1;box-ordinal-group:1;box-orient:inline-axis;-webkit-box-pack:start;-webkit-justify-content:start;-moz-box-pack:start;-ms-flex-pack:start;box-pack:start;-webkit-box-shadow:none;box-shadow:none;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-break-after:auto;-moz-break-after:auto;break-after:auto;-webkit-break-before:auto;-moz-break-before:auto;break-before:auto;-webkit-break-inside:auto;-moz-break-inside:auto;break-inside:auto;caption-side:top;clear:none;clip:auto;color:inherit;color-profile:auto;-webkit-column-count:auto;-moz-column-count:auto;column-count:auto;-webkit-column-fill:balance;-moz-column-fill:balance;column-fill:balance;-webkit-column-gap:normal;-moz-column-gap:normal;column-gap:normal;-webkit-column-rule:medium medium #1f1f1f;-moz-column-rule:medium medium #1f1f1f;column-rule:medium medium #1f1f1f;-webkit-column-span:1;-moz-column-span:1;column-span:1;-webkit-column-width:auto;-moz-column-width:auto;column-width:auto;-webkit-columns:auto auto;-moz-columns:auto auto;columns:auto auto;content:normal;counter-increment:none;counter-reset:none;crop:auto;cursor:auto;direction:auto;display:auto;dominant-baseline:auto;drop-initial-after-adjust:text-after-edge;drop-initial-after-align:baseline;drop-initial-before-adjust:text-before-edge;drop-initial-before-align:caps-height;drop-initial-size:auto;drop-initial-value:initial;elevation:level;empty-cells:show;fit:fill;fit-position:0 0;float:none;float-offset:0 0;font-size-adjust:none;font-stretch:normal;font:normal normal 100% \"Helvetica Neue\",Arial,sans-serif;grid-columns:none;grid-rows:none;hanging-punctuation:none;height:auto;hyphenate-after:auto;hyphenate-before:auto;hyphenate-character:auto;hyphenate-lines:no-limit;hyphenate-resource:none;-webkit-hyphens:manual;-moz-hyphens:manual;-ms-hyphens:manual;hyphens:manual;icon:auto;image-orientation:auto;image-rendering:auto;image-resolution:normal;inline-box-align:last;left:auto;letter-spacing:normal;line-height:normal;line-stacking:inline-line-height exclude-ruby consider-shifts;list-style:disc outside none;margin:0;marks:none;marquee-direction:forward;marquee-loop:1;marquee-play-count:1;marquee-speed:normal;marquee-style:scroll;max-height:none;max-width:none;min-height:0;min-width:0;move-to:normal;nav-down:auto;nav-index:auto;nav-left:auto;nav-right:auto;nav-up:auto;opacity:1;orphans:2;outline:invert none medium!important;outline-offset:0;overflow:visible;overflow-style:auto;padding:0;page:auto;page-break-after:auto;page-break-before:auto;page-break-inside:auto;page-policy:start;-webkit-perspective:none;-moz-perspective:none;-ms-perspective:none;perspective:none;-webkit-perspective-origin:50% 50%;-moz-perspective-origin:50% 50%;-ms-perspective-origin:50% 50%;perspective-origin:50% 50%;position:static;presentation-level:0;punctuation-trim:none;quotes:none;rendering-intent:auto;resize:none;right:auto;rotation:0;rotation-point:50% 50%;ruby-align:auto;ruby-overhang:none;ruby-position:before;ruby-span:none;size:auto;string-set:none;table-layout:auto;text-align:auto;text-align-last:start;text-decoration:none;text-emphasis:none;text-height:auto;text-indent:0;text-justify:auto;text-outline:0;text-shadow:none;text-transform:none;text-wrap:normal;top:auto;-webkit-transform:none;-moz-transform:none;-ms-transform:none;transform:none;-webkit-transform-origin:50% 50% 0;-moz-transform-origin:50% 50% 0;-ms-transform-origin:50% 50% 0;transform-origin:50% 50% 0;-webkit-transform-style:flat;-moz-transform-style:flat;-ms-transform-style:flat;transform-style:flat;-webkit-transition:all 0 ease 0;-moz-transition:all 0 ease 0;transition:all 0 ease 0;unicode-bidi:normal;vertical-align:baseline;visibility:visible;white-space:normal;white-space-collapse:collapse;widows:2;width:auto;word-break:normal;word-spacing:normal;word-wrap:normal;z-index:auto;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}#a0-widget .a0-theme-static .a0-popup .a0-overlay{background:rgba(255,255,255,0);background-color:transparent}#a0-widget .a0-theme-static .a0-popup .a0-panel{-webkit-box-shadow:0 0 0 1px rgba(14,41,57,.12),0 2px 5px rgba(14,41,57,.44),inset 0 -1px 2px rgba(14,41,57,.15);box-shadow:0 0 0 1px rgba(14,41,57,.12),0 2px 5px rgba(14,41,57,.44),inset 0 -1px 2px rgba(14,41,57,.15);background:#fff}#a0-widget .a0-theme-static .a0-popup .a0-panel:after{display:none}@-moz-keyframes showPanel{0%{opacity:0}100%{opacity:1}}@-webkit-keyframes showPanel{0%{opacity:0}100%{opacity:1}}@-ms-keyframes showPanel{0%{opacity:0}100%{opacity:1}}@keyframes showPanel{0%{opacity:0}100%{opacity:1}}@-moz-keyframes hidePanel{0%{opacity:1}100%{opacity:0}}@-webkit-keyframes hidePanel{0%{opacity:1}100%{opacity:0}}@-ms-keyframes hidePanel{0%{opacity:1}100%{opacity:0}}@keyframes hidePanel{0%{opacity:1}100%{opacity:0}}#a0-widget .a0-theme-static .a0-separator span{background:0 0}#a0-widget .a0-embedded .a0-popup .a0-panel{box-shadow:none;-webkit-box-shadow:none;border-radius:0}#a0-widget .a0-embedded .a0-popup .a0-panel header{display:none}#a0-widget .a0-spinner-css{margin:-30px 0 0 -30px;height:60px;width:60px;top:50%;left:50%;position:absolute;border-radius:999px}#a0-widget .a0-spinner-css:after{content:\"\";position:absolute;width:48px;height:48px;left:0;top:0;margin:6px;background:#fafafa;opacity:1;border-radius:999px}#a0-widget .a0-spinner-css .a0-side{height:60px;width:30px;position:absolute;overflow:hidden;top:0}#a0-widget .a0-spinner-css .a0-side>.a0-fill{position:absolute;width:30px;height:60px;background:#747e85;border-radius:999px;animation:cssSpinnerRight 2s infinite linear;-webkit-animation:cssSpinnerRight 2s infinite linear;-moz-animation:cssSpinnerRight 2s infinite linear}#a0-widget .a0-spinner-css .a0-side.a0-sp_right{left:30px;border-radius:0 999px 999px 0}#a0-widget .a0-spinner-css .a0-side.a0-sp_right>.a0-fill{right:0;border-right:30px solid #fafafa}#a0-widget .a0-spinner-css .a0-side.a0-sp_left{left:0;border-radius:999px 0 0 999px}#a0-widget .a0-spinner-css .a0-side.a0-sp_left>.a0-fill{left:0;border-left:30px solid #fafafa;animation:cssSpinnerLeft 2s infinite linear;-webkit-animation:cssSpinnerLeft 2s infinite linear;-moz-animation:cssSpinnerLeft 2s infinite linear}@-webkit-keyframes cssSpinnerRight{0%{-webkit-transform:rotate(0deg)}20%{-webkit-transform:rotate(90deg)}25%,50%{-webkit-transform:rotate(180deg)}70%{-webkit-transform:rotate(270deg)}100%,75%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes cssSpinnerLeft{0%,25%{-webkit-transform:rotate(0deg)}35%{-webkit-transform:rotate(90deg)}50%,75%{-webkit-transform:rotate(180deg)}80%{-webkit-transform:rotate(270deg)}100%{-webkit-transform:rotate(360deg)}}@-moz-keyframes cssSpinnerRight{0%{-moz-transform:rotate(0deg)}20%{-moz-transform:rotate(90deg)}25%,50%{-moz-transform:rotate(180deg)}70%{-moz-transform:rotate(270deg)}100%,75%{-moz-transform:rotate(360deg)}}@-moz-keyframes cssSpinnerLeft{0%,25%{-moz-transform:rotate(0deg)}35%{-moz-transform:rotate(90deg)}50%,75%{-moz-transform:rotate(180deg)}80%{-moz-transform:rotate(270deg)}100%{-moz-transform:rotate(360deg)}}@keyframes cssSpinnerRight{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg)}20%{-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}25%,50%{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}70%{-webkit-transform:rotate(270deg);-moz-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg)}100%,75%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes cssSpinnerLeft{0%,25%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg)}35%{-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}50%,75%{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}80%{-webkit-transform:rotate(270deg);-moz-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg)}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}#a0-widget .a0-zocial,#a0-widget a.a0-zocial{border:1px solid #777;border-color:rgba(0,0,0,.2);border-bottom-color:#333;border-bottom-color:rgba(0,0,0,.4);color:#fff;-webkit-box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);cursor:pointer;display:inline-block;font:700 100%/2.1 \"Lucida Grande\",Tahoma,sans-serif;padding:0 .22em 0 0;text-align:left;text-decoration:none;text-shadow:0 1px 0 rgba(0,0,0,.5);white-space:nowrap;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;position:relative;border-radius:.3em}#a0-widget .a0-zocial.a0-primary{text-align:center}#a0-widget .a0-zocial:before{content:\"\";border-right:.075em solid rgba(0,0,0,.1);float:left;font:120%/1.65 zocial;font-style:normal;font-weight:400;margin:0 .5em 0 0;padding:0 .5em;text-align:center;text-decoration:none;text-transform:none;-webkit-box-shadow:.075em 0 0 rgba(255,255,255,.25);box-shadow:.075em 0 0 rgba(255,255,255,.25);-moz-font-smoothing:antialiased;-webkit-font-smoothing:antialiased;font-smoothing:antialiased}#a0-widget .a0-zocial:active{outline:0}#a0-widget .a0-zocial.a0-icon{overflow:hidden;max-width:2.4em;padding-left:0;padding-right:0;max-height:2.15em;white-space:nowrap}#a0-widget .a0-zocial.a0-icon:before{padding:0;width:2em;height:2em;-webkit-box-shadow:none;box-shadow:none;border:0}#a0-widget .a0-zocial{background-image:-moz-linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.05) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.1)),color-stop(49%,rgba(255,255,255,.05)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.1)));background-image:-webkit-linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.05) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,top left,bottom left,from(rgba(255,255,255,.1)),color-stop(49%,rgba(255,255,255,.05)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.1)));background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.05) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1))}#a0-widget .a0-zocial:focus,#a0-widget .a0-zocial:hover{background-image:-moz-linear-gradient(rgba(255,255,255,.15) 49%,rgba(0,0,0,.1) 51%,rgba(0,0,0,.15));background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.15)),color-stop(49%,rgba(255,255,255,.15)),color-stop(51%,rgba(0,0,0,.1)),to(rgba(0,0,0,.15)));background-image:-webkit-linear-gradient(rgba(255,255,255,.15) 49%,rgba(0,0,0,.1) 51%,rgba(0,0,0,.15));background-image:-webkit-gradient(linear,top left,bottom left,from(rgba(255,255,255,.15)),color-stop(51%,rgba(0,0,0,.1)),to(rgba(0,0,0,.15)));background-image:linear-gradient(rgba(255,255,255,.15) 49%,rgba(0,0,0,.1) 51%,rgba(0,0,0,.15))}#a0-widget .a0-zocial:active{background-image:-moz-linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0) 30%,transparent 50%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.1)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,transparent),to(rgba(0,0,0,.1)));background-image:-webkit-linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0) 30%,transparent 50%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,bottom left,top left,from(rgba(255,255,255,.1)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,transparent),to(rgba(0,0,0,.1)));background-image:linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0) 30%,transparent 50%,rgba(0,0,0,.1))}#a0-widget .a0-zocial.a0-dropbox,#a0-widget .a0-zocial.a0-github,#a0-widget .a0-zocial.a0-gmail,#a0-widget .a0-zocial.a0-openid,#a0-widget .a0-zocial.a0-salesforce,#a0-widget .a0-zocial.a0-secondary,#a0-widget .a0-zocial.a0-stackoverflow{border:1px solid #aaa;border-color:rgba(0,0,0,.3);border-bottom-color:#777;border-bottom-color:rgba(0,0,0,.5);-webkit-box-shadow:inset 0 .08em 0 rgba(255,255,255,.7),inset 0 0 .08em rgba(255,255,255,.5);box-shadow:inset 0 .08em 0 rgba(255,255,255,.7),inset 0 0 .08em rgba(255,255,255,.5);text-shadow:0 1px 0 rgba(255,255,255,.8)}#a0-widget .a0-zocial.a0-dropbox:focus,#a0-widget .a0-zocial.a0-dropbox:hover,#a0-widget .a0-zocial.a0-github:focus,#a0-widget .a0-zocial.a0-github:hover,#a0-widget .a0-zocial.a0-gmail:focus,#a0-widget .a0-zocial.a0-gmail:hover,#a0-widget .a0-zocial.a0-openid:focus,#a0-widget .a0-zocial.a0-openid:hover,#a0-widget .a0-zocial.a0-salesforce:focus .a0-zocial.a0-salesforce:hover,#a0-widget .a0-zocial.a0-secondary:focus,#a0-widget .a0-zocial.a0-secondary:hover,#a0-widget .a0-zocial.a0-stackoverflow:focus,#a0-widget .a0-zocial.a0-stackoverflow:hover,#a0-widget .a0-zocial.a0-twitter:focus .a0-zocial.a0-twitter:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.5)),color-stop(49%,rgba(255,255,255,.2)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.15)));background-image:-moz-linear-gradient(top,rgba(255,255,255,.5),rgba(255,255,255,.2) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.15));background-image:-webkit-linear-gradient(top,rgba(255,255,255,.5),rgba(255,255,255,.2) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.15));background-image:-webkit-gradient(linear,top left,bottom left,from(top),color-stop(rgba(255,255,255,.5)),color-stop(49%,rgba(255,255,255,.2)),color-stop(51%,rgba(0,0,0,.05)),to(rgba(0,0,0,.15)));background-image:linear-gradient(top,rgba(255,255,255,.5),rgba(255,255,255,.2) 49%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.15))}#a0-widget .a0-zocial.a0-dropbox:active,#a0-widget .a0-zocial.a0-github:active,#a0-widget .a0-zocial.a0-gmail:active,#a0-widget .a0-zocial.a0-openid:active,#a0-widget .a0-zocial.a0-salesforce:active,#a0-widget .a0-zocial.a0-secondary:active,#a0-widget .a0-zocial.a0-stackoverflow:active,#a0-widget .a0-zocial.a0-wikipedia:active{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,rgba(0,0,0,0)),to(rgba(0,0,0,.1)));background-image:-moz-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,0) 30%,rgba(0,0,0,0) 50%,rgba(0,0,0,.1));background-image:-webkit-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,0) 30%,rgba(0,0,0,0) 50%,rgba(0,0,0,.1));background-image:-webkit-gradient(linear,bottom left,top left,from(rgba(255,255,255,0)),color-stop(30%,rgba(255,255,255,0)),color-stop(50%,rgba(0,0,0,0)),to(rgba(0,0,0,.1)));background-image:linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,0) 30%,rgba(0,0,0,0) 50%,rgba(0,0,0,.1))}#a0-widget .a0-zocial.a0-amazon:before{content:\"a\"}#a0-widget .a0-zocial.a0-dropbox:before{content:\"d\";color:#1f75cc}#a0-widget .a0-zocial.a0-facebook:before{content:\"f\"}#a0-widget .a0-zocial.a0-github:before{content:\"\\00E8\"}#a0-widget .a0-zocial.a0-gmail:before{content:\"m\";color:red}#a0-widget .a0-zocial.a0-google:before{content:\"G\"}#a0-widget .a0-zocial.a0-googleplus:before{content:\"+\"}#a0-widget .a0-zocial.a0-guest:before{content:\"?\"}#a0-widget .a0-zocial.a0-ie:before{content:\"6\"}#a0-widget .a0-zocial.a0-linkedin:before{content:\"L\"}#a0-widget .a0-zocial.a0-openid:before{content:\"o\";color:#ff921d}#a0-widget .a0-zocial.a0-paypal:before{content:\"$\"}#a0-widget .a0-zocial.a0-stackoverflow:before{content:\"\\00EC\";color:#ff7a15}#a0-widget .a0-zocial.a0-twitter:before{content:\"T\"}#a0-widget .a0-zocial.a0-vk:before{content:\"N\"}#a0-widget .a0-zocial.a0-windows:before{content:\"W\"}#a0-widget .a0-zocial.a0-yahoo:before{content:\"Y\"}#a0-widget .a0-zocial.a0-amazon{background-color:#ffad1d;color:#030037;text-shadow:0 1px 0 rgba(255,255,255,.5)}#a0-widget .a0-zocial.a0-dropbox{background-color:#fff;color:#312c2a}#a0-widget .a0-zocial.a0-facebook{background-color:#4863ae}#a0-widget .a0-zocial.a0-github{background-color:#fbfbfb;color:#050505}#a0-widget .a0-zocial.a0-gmail{background-color:#efefef;color:#222}#a0-widget .a0-zocial.a0-google{background-color:#4e6cf7}#a0-widget .a0-zocial.a0-googleplus{background-color:#dd4b39}#a0-widget .a0-zocial.a0-guest{background-color:#1b4d6d}#a0-widget .a0-zocial.a0-ie{background-color:#00a1d9}#a0-widget .a0-zocial.a0-linkedin{background-color:#0083a8}#a0-widget .a0-zocial.a0-openid{background-color:#f5f5f5;color:#333}#a0-widget .a0-zocial.a0-paypal{background-color:#fff;color:#32689a;text-shadow:0 1px 0 rgba(255,255,255,.5)}#a0-widget .a0-zocial.a0-twitter{background-color:#46c0fb}#a0-widget .a0-zocial.a0-vk{background-color:#45688E}#a0-widget button:-moz-focus-inner{border:0;padding:0}@font-face{font-family:zocial;src:url(https://d19p4zemcycm7a.cloudfront.net/w2/font/zocial-regular-webfont.eot)}@font-face{font-family:zocial;src:url(data:application/font-woff;charset=utf-8;base64,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) format('woff'),url(https://d19p4zemcycm7a.cloudfront.net/w2/font/zocial-regular-webfont.ttf) format('truetype'),url(https://d19p4zemcycm7a.cloudfront.net/w2/font/zocial-regular-webfont.svg#zocialregular) format('svg');font-weight:400;font-style:normal}#a0-widget .a0-zocial.a0-auth0:before{content:\"?\"}#a0-widget .a0-zocial.a0-auth0{background-color:#ff4500;width:auto}#a0-widget .a0-zocial.a0-block{display:block;margin:10px 0;text-overflow:ellipsis;overflow:hidden}#a0-widget .a0-zocial.a0-primary,#a0-widget .a0-zocial.a0-secondary{width:100%;margin:0;padding:0;font-size:14px;line-height:42px}#a0-widget .a0-zocial.a0-primary:before,#a0-widget .a0-zocial.a0-secondary:before{display:none}#a0-widget .a0-zocial.a0-primary{background-color:#747e85}#a0-widget .a0-zocial.a0-secondary{background-color:#f0f0eb;color:#222;text-shadow:0 1px 0 rgba(255,255,255,.8)}#a0-widget .a0-zocial{-webkit-font-smoothing:antialiased}#a0-widget label{font-family:sans-serif}#a0-widget .a0-zocial{font-size:16px}#a0-widget .a0-next{text-shadow:none;font-weight:700;font-family:'Lucida Grande',Tahoma,sans-serif}#a0-widget .a0-popup .a0-centrix{padding:0;vertical-align:middle;display:table-cell;margin:0}#a0-widget .a0-popup .a0-overlay{margin:0;display:table;position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;z-index:9999;font-weight:200;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#000;background:rgba(0,0,0,.8);background:-webkit-radial-gradient(50% 50%,ellipse closest-corner,rgba(0,0,0,.45) 1%,rgba(0,0,0,.8) 100%);background:-moz-radial-gradient(50% 50%,ellipse closest-corner,rgba(0,0,0,.45) 1%,rgba(0,0,0,.8) 100%);background:radial-gradient(50% 50%,ellipse closest-corner,rgba(0,0,0,.45) 1%,rgba(0,0,0,.8) 100%);opacity:0;-webkit-transition:400ms opacity ease;-moz-transition:400ms opacity ease;transition:400ms opacity ease;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}#a0-widget .a0-popup .a0-overlay.a0-active{opacity:1}#a0-widget .a0-popup .a0-overlay .a0-panel{display:none;margin:0 auto}#a0-widget .a0-popup .a0-overlay .a0-panel.a0-active{display:block;-webkit-animation-duration:400ms;-webkit-animation-timing-function:ease;-webkit-animation-name:showPanel}#a0-widget .a0-popup .a0-overlay .a0-panel{-webkit-animation-duration:400ms;-webkit-animation-timing-function:ease;-webkit-animation-name:hidePanel;width:280px}#a0-widget .a0-email,#a0-widget .a0-password,#a0-widget .a0-repeatPassword{margin-bottom:14px}#a0-widget .a0-email-readonly{text-align:center;display:inherit;color:#41444a;font-weight:700;margin-bottom:25px}#a0-widget .a0-panel .a0-reset .a0-header,#a0-widget .a0-panel .a0-signup .a0-header{margin-bottom:15px;font-size:14px;color:#41444a}#a0-widget .a0-panel .a0-signup .a0-footer{margin-bottom:15px;font-size:12px;color:#41444a;text-align:left;margin-top:10px}#a0-widget .a0-panel .a0-loading{height:70px}@-moz-keyframes showPanel{0%{opacity:0;-webkit-transform:scale(0.95) translate3d(0,0,0)}100%{opacity:1;-webkit-transform:scale(1) translate3d(0,0,0)}}@-webkit-keyframes showPanel{0%{opacity:0;-webkit-transform:scale(0.95) translate3d(0,0,0)}100%{opacity:1;-webkit-transform:scale(1) translate3d(0,0,0)}}@-ms-keyframes showPanel{0%{opacity:0;-webkit-transform:scale(0.95) translate3d(0,0,0)}100%{opacity:1;-webkit-transform:scale(1) translate3d(0,0,0)}}@keyframes showPanel{0%{opacity:0;-webkit-transform:scale(0.95) translate3d(0,0,0)}100%{opacity:1;-webkit-transform:scale(1) translate3d(0,0,0)}}@-moz-keyframes hidePanel{0%{-webkit-transform:scale(1) translate3d(0,0,0)}100%{-webkit-transform:scale(0.98) translate3d(0,0,0)}}@-webkit-keyframes hidePanel{0%{-webkit-transform:scale(1) translate3d(0,0,0)}100%{-webkit-transform:scale(0.98) translate3d(0,0,0)}}@-ms-keyframes hidePanel{0%{-webkit-transform:scale(1) translate3d(0,0,0)}100%{-webkit-transform:scale(0.98) translate3d(0,0,0)}}@keyframes hidePanel{0%{-webkit-transform:scale(1) translate3d(0,0,0)}100%{-webkit-transform:scale(0.98) translate3d(0,0,0)}}#a0-widget .a0-popup .a0-panel{background:#fafafa;background-image:-webkit-linear-gradient(#fff,#fafafa);background-image:-moz-linear-gradient(#fff,#fafafa);background-image:-webkit-gradient(linear,top left,bottom left,from(#fff),to(#fafafa));background-image:linear-gradient(#fff,#fafafa);z-index:10;-webkit-box-shadow:0 0 1px 1px rgba(0,0,0,.2),0 10px 27px rgba(0,0,0,.7);box-shadow:0 0 1px 1px rgba(0,0,0,.2),0 10px 27px rgba(0,0,0,.7);border-radius:6px;-webkit-touch-callout:none}#a0-widget .a0-popup .a0-panel:after{content:\"\";position:absolute;left:0;right:0;top:0;bottom:0;z-index:1;-webkit-box-shadow:inset 0 -1px 2px rgba(82,93,112,.4);box-shadow:inset 0 -1px 2px rgba(82,93,112,.4)}#a0-widget .a0-popup .a0-panel header{display:block;position:relative;min-height:65px;overflow:hidden;border-radius:6px 6px 0 0;background:#f1f4f6;background-image:-webkit-linear-gradient(#f1f4f6,#e9edf0);background-image:-moz-linear-gradient(#f1f4f6,#e9edf0);background-image:-webkit-gradient(linear,top left,bottom left,from(#f1f4f6),to(#e9edf0));background-image:linear-gradient(#f1f4f6,#e9edf0);border-bottom:1px solid rgba(40,69,85,.11)}#a0-widget .a0-popup .a0-panel header:before{content:'';position:absolute;height:5px;bottom:-1px;left:0;right:0;background-image:-webkit-linear-gradient(rgba(40,69,85,0),rgba(40,69,85,.1));background-image:-moz-linear-gradient(rgba(40,69,85,0),rgba(40,69,85,.1));background-image:-webkit-gradient(linear,top left,bottom left,from(rgba(40,69,85,0)),to(rgba(40,69,85,.1)));background-image:linear-gradient(rgba(40,69,85,0),rgba(40,69,85,.1))}#a0-widget .a0-popup .a0-panel header:after{content:'';position:absolute;height:4px;bottom:0;left:0;right:0;background-image:-webkit-linear-gradient(left,#e9edf0,rgba(241,244,246,0),#e9edf0);background-image:-moz-linear-gradient(left,#e9edf0,rgba(241,244,246,0),#e9edf0);background-image:-webkit-gradient(linear,top left,top right,from(#e9edf0),color-stop(rgba(241,244,246,0)),to(#e9edf0));background-image:linear-gradient(left,#e9edf0,rgba(241,244,246,0),#e9edf0)}#a0-widget .a0-popup .a0-panel header h1{padding:21px 20px;margin:0;font-size:18px;color:#41444a;font-weight:700;border-bottom:1px solid #DDE3E6;text-align:left}#a0-widget .a0-popup .a0-panel header a{display:block;overflow:hidden;text-indent:200%;position:absolute;width:12px;opacity:.4;padding:5px;z-index:5}#a0-widget .a0-popup .a0-panel header a:hover{opacity:.66}#a0-widget .a0-popup .a0-panel header a:active{opacity:1}#a0-widget .a0-popup .a0-panel header a.a0-close{height:12px;background-repeat:no-repeat;background-position:50% 50%;-webkit-background-size:12px 12px;background-size:12px 12px;right:19px;top:21px;cursor:pointer}#a0-widget .a0-popup .a0-panel header a.a0-close:hover{opacity:.66}#a0-widget .a0-popup .a0-panel header img{height:32px;margin:16px 10px 10px 20px;position:relative;float:left}#a0-widget .a0-action .a0-spinner{width:100%;background-color:#6A777F;background-repeat:no-repeat;background-position:center;margin:0;height:44px;border:1px solid #777;border-color:rgba(0,0,0,.2);border-bottom-color:#333;border-bottom-color:rgba(0,0,0,.4);-webkit-box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);box-shadow:inset 0 .08em 0 rgba(255,255,255,.4),inset 0 0 .1em rgba(255,255,255,.9);-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;border-radius:.3em}#a0-widget .a0-popup .a0-panel footer{display:block;position:relative;border-radius:0 0 5px 5px;height:25px;line-height:25px;vertical-align:middle;margin:0 15px;border-top:1px solid #DDE3E6;z-index:5}#a0-widget .a0-popup .a0-panel footer.a0-hide{height:1px;border-top:0}#a0-widget .a0-popup .a0-panel footer.a0-hide span{display:none}#a0-widget .a0-popup .a0-panel footer span{font-size:10px;color:#666}#a0-widget .a0-popup .a0-panel footer a{font-size:9px;color:#333;font-weight:700;text-decoration:none;cursor:pointer}#a0-widget .a0-iconlist,#a0-widget .a0-list{margin:25px 0;position:relative;z-index:5}#a0-widget .a0-iconlist:after,#a0-widget .a0-iconlist:before,#a0-widget .a0-list:after,#a0-widget .a0-list:before{display:table;content:\"\"}#a0-widget .a0-iconlist:after,#a0-widget .a0-list:after{clear:both}#a0-widget .a0-list span{display:block;margin:10px 0;cursor:pointer}#a0-widget .a0-iconlist{text-align:center}#a0-widget .a0-iconlist span{margin:0 2px}#a0-widget .a0-forgot-pass{font-size:12px;color:#666;font-weight:400}#a0-widget .a0-create-account{margin-top:20px;text-align:center}#a0-widget .a0-create-account a{font-size:12px;color:#6d6d6d;text-decoration:none}#a0-widget .a0-create-account a:hover{text-decoration:underline}#a0-widget .a0-loggedin span.a0-centered.a0-all{color:#008CDD;cursor:pointer}#a0-widget .a0-loggedin span.a0-centered{text-align:center;padding:5px 0;margin:15px 0 5px;font-size:13px;display:block}#a0-widget .a0-loggedin span.a0-centered.a0-all:hover{text-decoration:underline}#a0-widget .a0-reset .a0-options a.a0-cancel,#a0-widget .a0-signup .a0-options a.a0-cancel{color:#008CDD;cursor:pointer;text-decoration:none}#a0-widget .a0-reset .a0-options a.a0-cancel:hover,#a0-widget .a0-signup .a0-options a.a0-cancel:hover{text-decoration:underline}#a0-widget .a0-reset .a0-options,#a0-widget .a0-signup .a0-options{text-align:center;padding:5px 0;margin:15px 0 5px;font-size:13px;display:block}#a0-widget form{margin:30px!important;margin-bottom:22px;position:relative;z-index:5}#a0-widget form span{font-size:16px}#a0-widget form label a{color:#7F8899;font-weight:700;text-shadow:0 1px 0 #fff}#a0-widget form label{display:block;color:#7F8899;font-size:13px;font-weight:700;margin:0 0 7px;text-shadow:0 1px 0 #fff;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}#a0-widget form input{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:100%;font-size:18px;padding:10px 12px;border:1px solid #B4BECD;border-top-color:#B0BACA;border-bottom-color:#D3D9E2;-webkit-box-shadow:inset 0 1px 2px rgba(130,137,150,.23),0 1px 0 rgba(255,255,255,.85);box-shadow:inset 0 1px 2px rgba(130,137,150,.23),0 1px 0 rgba(255,255,255,.85);border-radius:4px;margin:0;font-family:'Helvetica Neue',Helvetica,Arial Geneva,sans-serif}#a0-widget .a0-placeholder{color:#ccc}#a0-widget form input:focus{border-color:#5695DB #70A7E4 #89B8EC;outline:0;-webkit-box-shadow:inset 0 1px 2px rgba(70,123,181,.35),0 0 4px #5695db;box-shadow:inset 0 1px 2px rgba(70,123,181,.35),0 0 4px #5695db}#a0-widget form .a0-invalid input{outline:0;border-color:#FF7076;border-top-color:#FF5C61;-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,.2),0 0 4px 0 rgba(255,0,0,.5);box-shadow:inset 0 1px 2px rgba(0,0,0,.2),0 0 4px 0 rgba(255,0,0,.5)}#a0-widget header .a0-error{padding:9px 0;margin:10px auto;width:70%;font-size:14px;line-height:13px;color:#b95353;text-align:center}#a0-widget header .a0-success{padding:9px 0;margin:10px auto;width:70%;font-size:14px;line-height:13px;color:#0fad29;text-align:center}#a0-widget form .a0-note{display:block;color:#7F8899;font-size:13px;font-weight:700;margin:0 0 7px;text-shadow:0 1px 0 #fff;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}#a0-widget form .a0-note a{color:#008CDD;text-decoration:none}#a0-widget form .a0-invalid .a0-error{visibility:visible}#a0-widget form button{display:block;margin:20px 0 0;cursor:pointer;width:100%}#a0-widget .a0-action{text-align:right;margin:0 30px 30px;position:relative;z-index:5}#a0-widget form .a0-action{margin:0}#a0-widget .a0-action button{width:auto}#a0-widget .a0-separator{position:relative;text-align:center;margin:0 0 25px}#a0-widget .a0-separator:before{content:\"\";display:block;border-top:1px solid #7F8899;width:200px;left:50%;margin-left:-100px;height:1px;position:absolute;top:50%;z-index:1}#a0-widget .a0-separator span{background:#fafafa;padding:0 10px;position:relative;z-index:5;color:#7F8899;font-size:13px;font-weight:700;text-shadow:0 1px 0 #fff}#a0-widget span.a0-back{display:block;color:#008CDD;text-align:center;padding:5px 0;margin:15px 0 5px;font-size:13px;cursor:pointer;position:relative;z-index:5;outline:0}#a0-widget span.a0-back:hover{text-decoration:underline}#a0-widget .a0-signin .a0-panel.a0-strategies .a0-list .a0-email{display:block;color:#7F8899;font-size:13px;font-weight:700;margin:0 0 7px;text-shadow:0 1px 0 #fff;text-align:center}#a0-widget .a0-zocial.a0-office365:before{content:\"W\"}#a0-widget .a0-zocial.a0-office365{background-color:#00ACED;color:#fff}#a0-widget .a0-zocial.a0-waad:before{content:\"z\"}#a0-widget .a0-zocial.a0-waad{background-color:#00ADEF;color:#fff}#a0-widget .a0-zocial.a0-thirtysevensignals:before{content:\"b\"}#a0-widget .a0-zocial.a0-thirtysevensignals{background-color:#6AC071;color:#fff}#a0-widget .a0-zocial.a0-box:before{content:\"x\"}#a0-widget .a0-zocial.a0-box{background-color:#267bb6;color:#fff}#a0-widget .a0-zocial.a0-salesforce:before{content:\"*\"}#a0-widget .a0-zocial.a0-salesforce{background-color:#fff;color:red}#a0-widget .a0-zocial.a0-windows{background-color:#2672EC;color:#fff}#a0-widget .a0-zocial.a0-fitbit:before{content:\"#\"}#a0-widget .a0-zocial.a0-fitbit{background-color:#45C2C5;color:#fff}#a0-widget .a0-zocial.a0-yandex:before{content:\"&\"}#a0-widget .a0-zocial.a0-yandex{background-color:red;color:#fff}#a0-widget .a0-zocial.a0-renren:before{content:\"r\"}#a0-widget .a0-zocial.a0-renren{background-color:#0056B5;color:#fff}#a0-widget .a0-zocial.a0-baidu:before{content:\"u\"}#a0-widget .a0-zocial.a0-baidu{background-color:#2832E1;color:#fff}#a0-widget .a0-popup .a0-overlay .a0-onestep{width:345px}@media (max-width:280px){#a0-widget .a0-popup .a0-overlay .a0-panel{width:240px;margin:0 0 0 -120px}#a0-widget .a0-signin .a0-popup .a0-panel.a0-strategies .a0-list,#a0-widget form{margin:12px}#a0-widget form input{padding:5px}#a0-widget .a0-popup .a0-panel header{margin:0;padding:0}#a0-widget .a0-popup .a0-panel header h1{padding:14px 16px;margin:0;font-size:22px}#a0-widget .a0-popup .a0-panel header a.a0-close{right:14px;top:16px}}@media (min-width:281px) and (max-width:340px){#a0-widget .a0-popup .a0-overlay .a0-panel{margin:0;left:0;height:100%;width:100%;border-radius:0}#a0-widget .a0-popup .a0-zocial,#a0-widget .a0-popup a.a0-zocial{font-size:18px}#a0-widget .a0-signin .a0-popup .a0-panel.a0-strategies .a0-list{margin:15px}#a0-widget form{margin:15px 25px}#a0-widget form input{padding:6px;font-size:18px}#a0-widget .a0-popup .a0-panel header{margin:0;padding:0;min-height:32px}#a0-widget .a0-popup .a0-panel header h1{padding:12px 16px;margin-top:1px;font-size:20px}#a0-widget .a0-popup .a0-panel header img{height:32px;margin:9px 10px 6px 18px}#a0-widget .a0-zocial.a0-primary{line-height:34px}#a0-widget .a0-action .a0-spinner{height:34px}#a0-widget .a0-create-account{margin-top:20px}#a0-widget .a0-popup .a0-email,#a0-widget .a0-popup .a0-password,#a0-widget .a0-popup .a0-repeatPassword{margin-bottom:5px}}@-moz-keyframes orbit{0%{opacity:1;z-index:99;-moz-transform:rotate(180deg);-moz-animation-timing-function:ease-out}7%{opacity:1;-moz-transform:rotate(300deg);-moz-animation-timing-function:linear;-moz-origin:0}30%{opacity:1;-moz-transform:rotate(410deg);-moz-animation-timing-function:ease-in-out;-moz-origin:7%}39%{opacity:1;-moz-transform:rotate(645deg);-moz-animation-timing-function:linear;-moz-origin:30%}70%{opacity:1;-moz-transform:rotate(770deg);-moz-animation-timing-function:ease-out;-moz-origin:39%}75%{opacity:1;-moz-transform:rotate(900deg);-moz-animation-timing-function:ease-out;-moz-origin:70%}100%,76%{opacity:0;-moz-transform:rotate(900deg)}}@-webkit-keyframes orbit{0%{opacity:1;z-index:99;-webkit-transform:rotate(180deg);-webkit-animation-timing-function:ease-out}7%{opacity:1;-webkit-transform:rotate(300deg);-webkit-animation-timing-function:linear;-webkit-origin:0}30%{opacity:1;-webkit-transform:rotate(410deg);-webkit-animation-timing-function:ease-in-out;-webkit-origin:7%}39%{opacity:1;-webkit-transform:rotate(645deg);-webkit-animation-timing-function:linear;-webkit-origin:30%}70%{opacity:1;-webkit-transform:rotate(770deg);-webkit-animation-timing-function:ease-out;-webkit-origin:39%}75%{opacity:1;-webkit-transform:rotate(900deg);-webkit-animation-timing-function:ease-out;-webkit-origin:70%}100%,76%{opacity:0;-webkit-transform:rotate(900deg)}}@-ms-keyframes orbit{0%{opacity:1;z-index:99;-ms-transform:rotate(180deg);-ms-animation-timing-function:ease-out}7%{opacity:1;-ms-transform:rotate(300deg);-ms-animation-timing-function:linear;-ms-origin:0}30%{opacity:1;-ms-transform:rotate(410deg);-ms-animation-timing-function:ease-in-out;-ms-origin:7%}39%{opacity:1;-ms-transform:rotate(645deg);-ms-animation-timing-function:linear;-ms-origin:30%}70%{opacity:1;-ms-transform:rotate(770deg);-ms-animation-timing-function:ease-out;-ms-origin:39%}75%{opacity:1;-ms-transform:rotate(900deg);-ms-animation-timing-function:ease-out;-ms-origin:70%}100%,76%{opacity:0;-ms-transform:rotate(900deg)}}@keyframes orbit{0%{opacity:1;z-index:99;-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);-webkit-animation-timing-function:ease-out;-moz-animation-timing-function:ease-out;animation-timing-function:ease-out}7%{opacity:1;-webkit-transform:rotate(300deg);-moz-transform:rotate(300deg);-ms-transform:rotate(300deg);transform:rotate(300deg);-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;animation-timing-function:linear;origin:0}30%{opacity:1;-webkit-transform:rotate(410deg);-moz-transform:rotate(410deg);-ms-transform:rotate(410deg);transform:rotate(410deg);-webkit-animation-timing-function:ease-in-out;-moz-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;origin:7%}39%{opacity:1;-webkit-transform:rotate(645deg);-moz-transform:rotate(645deg);-ms-transform:rotate(645deg);transform:rotate(645deg);-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;animation-timing-function:linear;origin:30%}70%{opacity:1;-webkit-transform:rotate(770deg);-moz-transform:rotate(770deg);-ms-transform:rotate(770deg);transform:rotate(770deg);-webkit-animation-timing-function:ease-out;-moz-animation-timing-function:ease-out;animation-timing-function:ease-out;origin:39%}75%{opacity:1;-webkit-transform:rotate(900deg);-moz-transform:rotate(900deg);-ms-transform:rotate(900deg);transform:rotate(900deg);-webkit-animation-timing-function:ease-out;-moz-animation-timing-function:ease-out;animation-timing-function:ease-out;origin:70%}100%,76%{opacity:0;-webkit-transform:rotate(900deg);-moz-transform:rotate(900deg);-ms-transform:rotate(900deg);transform:rotate(900deg)}}#a0-widget input[disabled]{background-color:#d9dee0}#a0-widget #a0-onestep{overflow:hidden;height:auto;-webkit-transition:height 100ms ease-in;-moz-transition:height 100ms ease-in;transition:height 100ms ease-in}#a0-widget #a0-onestep.a0-disable-transition{-webkit-transition:none;-moz-transition:none;transition:none}#a0-widget #a0-onestep .a0-loading{min-height:110px}#a0-widget .a0-spin-container{position:relative;top:50%}");
+},{"fs":31}],16:[function(require,module,exports){
 var json_parse = require('./json_parse');
 
 function LoginError(status, details) {
@@ -657,13 +704,13 @@ if (Object && Object.create) {
 }
 
 module.exports = LoginError;
-},{"./json_parse":19}],16:[function(require,module,exports){
+},{"./json_parse":20}],17:[function(require,module,exports){
 module.exports = function (obj, prop) {
   if (!obj[prop]) {
     throw new Error(prop + ' is required.');
   }
 };
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var Base64 = require('Base64');
 
 module.exports = function(str) {
@@ -682,7 +729,7 @@ module.exports = function(str) {
   }
   return Base64.atob(output);
 };
-},{"Base64":21}],18:[function(require,module,exports){
+},{"Base64":22}],19:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var assert_required   = require('./assert_required');
 var base64_url_decode = require('./base64_url_decode');
 var qs                = require('qs');
@@ -927,11 +974,11 @@ Auth0.prototype.getConnections = function (callback) {
 
 module.exports = Auth0;
 
-},{"./LoginError":15,"./assert_required":16,"./base64_url_decode":17,"./json_parse":19,"./use_jsonp":20,"jsonp":23,"qs":24,"reqwest":25,"xtend":32}],19:[function(require,module,exports){
+},{"./LoginError":16,"./assert_required":17,"./base64_url_decode":18,"./json_parse":20,"./use_jsonp":21,"jsonp":24,"qs":25,"reqwest":26,"xtend":37}],20:[function(require,module,exports){
 module.exports = function (str) {
   return window.JSON ? window.JSON.parse(str) : eval('(' + str + ')');
 };
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = function () {
   var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : null;
 
@@ -941,7 +988,7 @@ module.exports = function () {
 
   return 'XDomainRequest' in window && window.location.protocol === 'http:';
 };
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 ;(function () {
 
   var
@@ -998,7 +1045,7 @@ module.exports = function () {
 
 }());
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 
 /**
  * Expose `debug()` as the module.
@@ -1137,7 +1184,7 @@ try {
   if (window.localStorage) debug.enable(localStorage.debug);
 } catch(e){}
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 
 /**
  * Module dependencies
@@ -1223,7 +1270,7 @@ function jsonp(url, opts, fn){
   target.parentNode.insertBefore(script, target);
 };
 
-},{"debug":22}],24:[function(require,module,exports){
+},{"debug":23}],25:[function(require,module,exports){
 /**
  * Object#toString() ref for stringify().
  */
@@ -1633,7 +1680,7 @@ function decode(str) {
   }
 }
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /*! version: 0.9.3 */
 /*!
   * Reqwest! A general purpose XHR connection manager
@@ -2232,7 +2279,7 @@ function decode(str) {
   return reqwest
 });
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 /*!
   * Bean - copyright (c) Jacob Thornton 2011-2012
   * https://github.com/fat/bean
@@ -2974,7 +3021,7 @@ function decode(str) {
 
   return bean
 });
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /*!
   * Bonzo: DOM Utility (c) Dustin Diaz 2012
   * https://github.com/ded/bonzo
@@ -4129,13 +4176,1110 @@ function decode(str) {
   return bonzo
 }); // the only line we care about using a semi-colon. placed here for concatenation tools
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
+
+
+//
+// The shims in this file are not fully implemented shims for the ES5
+// features, but do work for the particular usecases there is in
+// the other modules.
+//
+
+var toString = Object.prototype.toString;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+// Array.isArray is supported in IE9
+function isArray(xs) {
+  return toString.call(xs) === '[object Array]';
+}
+exports.isArray = typeof Array.isArray === 'function' ? Array.isArray : isArray;
+
+// Array.prototype.indexOf is supported in IE9
+exports.indexOf = function indexOf(xs, x) {
+  if (xs.indexOf) return xs.indexOf(x);
+  for (var i = 0; i < xs.length; i++) {
+    if (x === xs[i]) return i;
+  }
+  return -1;
+};
+
+// Array.prototype.filter is supported in IE9
+exports.filter = function filter(xs, fn) {
+  if (xs.filter) return xs.filter(fn);
+  var res = [];
+  for (var i = 0; i < xs.length; i++) {
+    if (fn(xs[i], i, xs)) res.push(xs[i]);
+  }
+  return res;
+};
+
+// Array.prototype.forEach is supported in IE9
+exports.forEach = function forEach(xs, fn, self) {
+  if (xs.forEach) return xs.forEach(fn, self);
+  for (var i = 0; i < xs.length; i++) {
+    fn.call(self, xs[i], i, xs);
+  }
+};
+
+// Array.prototype.map is supported in IE9
+exports.map = function map(xs, fn) {
+  if (xs.map) return xs.map(fn);
+  var out = new Array(xs.length);
+  for (var i = 0; i < xs.length; i++) {
+    out[i] = fn(xs[i], i, xs);
+  }
+  return out;
+};
+
+// Array.prototype.reduce is supported in IE9
+exports.reduce = function reduce(array, callback, opt_initialValue) {
+  if (array.reduce) return array.reduce(callback, opt_initialValue);
+  var value, isValueSet = false;
+
+  if (2 < arguments.length) {
+    value = opt_initialValue;
+    isValueSet = true;
+  }
+  for (var i = 0, l = array.length; l > i; ++i) {
+    if (array.hasOwnProperty(i)) {
+      if (isValueSet) {
+        value = callback(value, array[i], i, array);
+      }
+      else {
+        value = array[i];
+        isValueSet = true;
+      }
+    }
+  }
+
+  return value;
+};
+
+// String.prototype.substr - negative index don't work in IE8
+if ('ab'.substr(-1) !== 'b') {
+  exports.substr = function (str, start, length) {
+    // did we get a negative start, calculate how much it is from the beginning of the string
+    if (start < 0) start = str.length + start;
+
+    // call the original function
+    return str.substr(start, length);
+  };
+} else {
+  exports.substr = function (str, start, length) {
+    return str.substr(start, length);
+  };
+}
+
+// String.prototype.trim is supported in IE9
+exports.trim = function (str) {
+  if (str.trim) return str.trim();
+  return str.replace(/^\s+|\s+$/g, '');
+};
+
+// Function.prototype.bind is supported in IE9
+exports.bind = function () {
+  var args = Array.prototype.slice.call(arguments);
+  var fn = args.shift();
+  if (fn.bind) return fn.bind.apply(fn, args);
+  var self = args.shift();
+  return function () {
+    fn.apply(self, args.concat([Array.prototype.slice.call(arguments)]));
+  };
+};
+
+// Object.create is supported in IE9
+function create(prototype, properties) {
+  var object;
+  if (prototype === null) {
+    object = { '__proto__' : null };
+  }
+  else {
+    if (typeof prototype !== 'object') {
+      throw new TypeError(
+        'typeof prototype[' + (typeof prototype) + '] != \'object\''
+      );
+    }
+    var Type = function () {};
+    Type.prototype = prototype;
+    object = new Type();
+    object.__proto__ = prototype;
+  }
+  if (typeof properties !== 'undefined' && Object.defineProperties) {
+    Object.defineProperties(object, properties);
+  }
+  return object;
+}
+exports.create = typeof Object.create === 'function' ? Object.create : create;
+
+// Object.keys and Object.getOwnPropertyNames is supported in IE9 however
+// they do show a description and number property on Error objects
+function notObject(object) {
+  return ((typeof object != "object" && typeof object != "function") || object === null);
+}
+
+function keysShim(object) {
+  if (notObject(object)) {
+    throw new TypeError("Object.keys called on a non-object");
+  }
+
+  var result = [];
+  for (var name in object) {
+    if (hasOwnProperty.call(object, name)) {
+      result.push(name);
+    }
+  }
+  return result;
+}
+
+// getOwnPropertyNames is almost the same as Object.keys one key feature
+//  is that it returns hidden properties, since that can't be implemented,
+//  this feature gets reduced so it just shows the length property on arrays
+function propertyShim(object) {
+  if (notObject(object)) {
+    throw new TypeError("Object.getOwnPropertyNames called on a non-object");
+  }
+
+  var result = keysShim(object);
+  if (exports.isArray(object) && exports.indexOf(object, 'length') === -1) {
+    result.push('length');
+  }
+  return result;
+}
+
+var keys = typeof Object.keys === 'function' ? Object.keys : keysShim;
+var getOwnPropertyNames = typeof Object.getOwnPropertyNames === 'function' ?
+  Object.getOwnPropertyNames : propertyShim;
+
+if (new Error().hasOwnProperty('description')) {
+  var ERROR_PROPERTY_FILTER = function (obj, array) {
+    if (toString.call(obj) === '[object Error]') {
+      array = exports.filter(array, function (name) {
+        return name !== 'description' && name !== 'number' && name !== 'message';
+      });
+    }
+    return array;
+  };
+
+  exports.keys = function (object) {
+    return ERROR_PROPERTY_FILTER(object, keys(object));
+  };
+  exports.getOwnPropertyNames = function (object) {
+    return ERROR_PROPERTY_FILTER(object, getOwnPropertyNames(object));
+  };
+} else {
+  exports.keys = keys;
+  exports.getOwnPropertyNames = getOwnPropertyNames;
+}
+
+// Object.getOwnPropertyDescriptor - supported in IE8 but only on dom elements
+function valueObject(value, key) {
+  return { value: value[key] };
+}
+
+if (typeof Object.getOwnPropertyDescriptor === 'function') {
+  try {
+    Object.getOwnPropertyDescriptor({'a': 1}, 'a');
+    exports.getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  } catch (e) {
+    // IE8 dom element issue - use a try catch and default to valueObject
+    exports.getOwnPropertyDescriptor = function (value, key) {
+      try {
+        return Object.getOwnPropertyDescriptor(value, key);
+      } catch (e) {
+        return valueObject(value, key);
+      }
+    };
+  }
+} else {
+  exports.getOwnPropertyDescriptor = valueObject;
+}
+
+},{}],30:[function(require,module,exports){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var util = require('util');
+
+function EventEmitter() {
+  this._events = this._events || {};
+  this._maxListeners = this._maxListeners || undefined;
+}
+module.exports = EventEmitter;
+
+// Backwards-compat with node 0.10.x
+EventEmitter.EventEmitter = EventEmitter;
+
+EventEmitter.prototype._events = undefined;
+EventEmitter.prototype._maxListeners = undefined;
+
+// By default EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful default which helps finding memory leaks.
+EventEmitter.defaultMaxListeners = 10;
+
+// Obviously not all Emitters should be limited to 10. This function allows
+// that to be increased. Set to zero for unlimited.
+EventEmitter.prototype.setMaxListeners = function(n) {
+  if (!util.isNumber(n) || n < 0)
+    throw TypeError('n must be a positive number');
+  this._maxListeners = n;
+  return this;
+};
+
+EventEmitter.prototype.emit = function(type) {
+  var er, handler, len, args, i, listeners;
+
+  if (!this._events)
+    this._events = {};
+
+  // If there is no 'error' event listener then throw.
+  if (type === 'error') {
+    if (!this._events.error ||
+        (util.isObject(this._events.error) && !this._events.error.length)) {
+      er = arguments[1];
+      if (er instanceof Error) {
+        throw er; // Unhandled 'error' event
+      } else {
+        throw TypeError('Uncaught, unspecified "error" event.');
+      }
+      return false;
+    }
+  }
+
+  handler = this._events[type];
+
+  if (util.isUndefined(handler))
+    return false;
+
+  if (util.isFunction(handler)) {
+    switch (arguments.length) {
+      // fast cases
+      case 1:
+        handler.call(this);
+        break;
+      case 2:
+        handler.call(this, arguments[1]);
+        break;
+      case 3:
+        handler.call(this, arguments[1], arguments[2]);
+        break;
+      // slower
+      default:
+        len = arguments.length;
+        args = new Array(len - 1);
+        for (i = 1; i < len; i++)
+          args[i - 1] = arguments[i];
+        handler.apply(this, args);
+    }
+  } else if (util.isObject(handler)) {
+    len = arguments.length;
+    args = new Array(len - 1);
+    for (i = 1; i < len; i++)
+      args[i - 1] = arguments[i];
+
+    listeners = handler.slice();
+    len = listeners.length;
+    for (i = 0; i < len; i++)
+      listeners[i].apply(this, args);
+  }
+
+  return true;
+};
+
+EventEmitter.prototype.addListener = function(type, listener) {
+  var m;
+
+  if (!util.isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  if (!this._events)
+    this._events = {};
+
+  // To avoid recursion in the case that type === "newListener"! Before
+  // adding it to the listeners, first emit "newListener".
+  if (this._events.newListener)
+    this.emit('newListener', type,
+              util.isFunction(listener.listener) ?
+              listener.listener : listener);
+
+  if (!this._events[type])
+    // Optimize the case of one listener. Don't need the extra array object.
+    this._events[type] = listener;
+  else if (util.isObject(this._events[type]))
+    // If we've already got an array, just append.
+    this._events[type].push(listener);
+  else
+    // Adding the second element, need to change to array.
+    this._events[type] = [this._events[type], listener];
+
+  // Check for listener leak
+  if (util.isObject(this._events[type]) && !this._events[type].warned) {
+    var m;
+    if (!util.isUndefined(this._maxListeners)) {
+      m = this._maxListeners;
+    } else {
+      m = EventEmitter.defaultMaxListeners;
+    }
+
+    if (m && m > 0 && this._events[type].length > m) {
+      this._events[type].warned = true;
+      console.error('(node) warning: possible EventEmitter memory ' +
+                    'leak detected. %d listeners added. ' +
+                    'Use emitter.setMaxListeners() to increase limit.',
+                    this._events[type].length);
+      console.trace();
+    }
+  }
+
+  return this;
+};
+
+EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+EventEmitter.prototype.once = function(type, listener) {
+  if (!util.isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  function g() {
+    this.removeListener(type, g);
+    listener.apply(this, arguments);
+  }
+
+  g.listener = listener;
+  this.on(type, g);
+
+  return this;
+};
+
+// emits a 'removeListener' event iff the listener was removed
+EventEmitter.prototype.removeListener = function(type, listener) {
+  var list, position, length, i;
+
+  if (!util.isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  if (!this._events || !this._events[type])
+    return this;
+
+  list = this._events[type];
+  length = list.length;
+  position = -1;
+
+  if (list === listener ||
+      (util.isFunction(list.listener) && list.listener === listener)) {
+    delete this._events[type];
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+
+  } else if (util.isObject(list)) {
+    for (i = length; i-- > 0;) {
+      if (list[i] === listener ||
+          (list[i].listener && list[i].listener === listener)) {
+        position = i;
+        break;
+      }
+    }
+
+    if (position < 0)
+      return this;
+
+    if (list.length === 1) {
+      list.length = 0;
+      delete this._events[type];
+    } else {
+      list.splice(position, 1);
+    }
+
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+  }
+
+  return this;
+};
+
+EventEmitter.prototype.removeAllListeners = function(type) {
+  var key, listeners;
+
+  if (!this._events)
+    return this;
+
+  // not listening for removeListener, no need to emit
+  if (!this._events.removeListener) {
+    if (arguments.length === 0)
+      this._events = {};
+    else if (this._events[type])
+      delete this._events[type];
+    return this;
+  }
+
+  // emit removeListener for all listeners on all events
+  if (arguments.length === 0) {
+    for (key in this._events) {
+      if (key === 'removeListener') continue;
+      this.removeAllListeners(key);
+    }
+    this.removeAllListeners('removeListener');
+    this._events = {};
+    return this;
+  }
+
+  listeners = this._events[type];
+
+  if (util.isFunction(listeners)) {
+    this.removeListener(type, listeners);
+  } else {
+    // LIFO order
+    while (listeners.length)
+      this.removeListener(type, listeners[listeners.length - 1]);
+  }
+  delete this._events[type];
+
+  return this;
+};
+
+EventEmitter.prototype.listeners = function(type) {
+  var ret;
+  if (!this._events || !this._events[type])
+    ret = [];
+  else if (util.isFunction(this._events[type]))
+    ret = [this._events[type]];
+  else
+    ret = this._events[type].slice();
+  return ret;
+};
+
+EventEmitter.listenerCount = function(emitter, type) {
+  var ret;
+  if (!emitter._events || !emitter._events[type])
+    ret = 0;
+  else if (util.isFunction(emitter._events[type]))
+    ret = 1;
+  else
+    ret = emitter._events[type].length;
+  return ret;
+};
+},{"util":32}],31:[function(require,module,exports){
 
 // not implemented
 // The reason for having an empty file and not throwing is to allow
 // untraditional implementation of this module.
 
-},{}],29:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var shims = require('_shims');
+
+var formatRegExp = /%[sdj%]/g;
+exports.format = function(f) {
+  if (!isString(f)) {
+    var objects = [];
+    for (var i = 0; i < arguments.length; i++) {
+      objects.push(inspect(arguments[i]));
+    }
+    return objects.join(' ');
+  }
+
+  var i = 1;
+  var args = arguments;
+  var len = args.length;
+  var str = String(f).replace(formatRegExp, function(x) {
+    if (x === '%%') return '%';
+    if (i >= len) return x;
+    switch (x) {
+      case '%s': return String(args[i++]);
+      case '%d': return Number(args[i++]);
+      case '%j':
+        try {
+          return JSON.stringify(args[i++]);
+        } catch (_) {
+          return '[Circular]';
+        }
+      default:
+        return x;
+    }
+  });
+  for (var x = args[i]; i < len; x = args[++i]) {
+    if (isNull(x) || !isObject(x)) {
+      str += ' ' + x;
+    } else {
+      str += ' ' + inspect(x);
+    }
+  }
+  return str;
+};
+
+/**
+ * Echos the value of a value. Trys to print the value out
+ * in the best way possible given the different types.
+ *
+ * @param {Object} obj The object to print out.
+ * @param {Object} opts Optional options object that alters the output.
+ */
+/* legacy: obj, showHidden, depth, colors*/
+function inspect(obj, opts) {
+  // default options
+  var ctx = {
+    seen: [],
+    stylize: stylizeNoColor
+  };
+  // legacy...
+  if (arguments.length >= 3) ctx.depth = arguments[2];
+  if (arguments.length >= 4) ctx.colors = arguments[3];
+  if (isBoolean(opts)) {
+    // legacy...
+    ctx.showHidden = opts;
+  } else if (opts) {
+    // got an "options" object
+    exports._extend(ctx, opts);
+  }
+  // set default options
+  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
+  if (isUndefined(ctx.depth)) ctx.depth = 2;
+  if (isUndefined(ctx.colors)) ctx.colors = false;
+  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
+  if (ctx.colors) ctx.stylize = stylizeWithColor;
+  return formatValue(ctx, obj, ctx.depth);
+}
+exports.inspect = inspect;
+
+
+// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+inspect.colors = {
+  'bold' : [1, 22],
+  'italic' : [3, 23],
+  'underline' : [4, 24],
+  'inverse' : [7, 27],
+  'white' : [37, 39],
+  'grey' : [90, 39],
+  'black' : [30, 39],
+  'blue' : [34, 39],
+  'cyan' : [36, 39],
+  'green' : [32, 39],
+  'magenta' : [35, 39],
+  'red' : [31, 39],
+  'yellow' : [33, 39]
+};
+
+// Don't use 'blue' not visible on cmd.exe
+inspect.styles = {
+  'special': 'cyan',
+  'number': 'yellow',
+  'boolean': 'yellow',
+  'undefined': 'grey',
+  'null': 'bold',
+  'string': 'green',
+  'date': 'magenta',
+  // "name": intentionally not styling
+  'regexp': 'red'
+};
+
+
+function stylizeWithColor(str, styleType) {
+  var style = inspect.styles[styleType];
+
+  if (style) {
+    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
+           '\u001b[' + inspect.colors[style][1] + 'm';
+  } else {
+    return str;
+  }
+}
+
+
+function stylizeNoColor(str, styleType) {
+  return str;
+}
+
+
+function arrayToHash(array) {
+  var hash = {};
+
+  shims.forEach(array, function(val, idx) {
+    hash[val] = true;
+  });
+
+  return hash;
+}
+
+
+function formatValue(ctx, value, recurseTimes) {
+  // Provide a hook for user-specified inspect functions.
+  // Check that value is an object with an inspect function on it
+  if (ctx.customInspect &&
+      value &&
+      isFunction(value.inspect) &&
+      // Filter out the util module, it's inspect function is special
+      value.inspect !== exports.inspect &&
+      // Also filter out any prototype objects using the circular check.
+      !(value.constructor && value.constructor.prototype === value)) {
+    var ret = value.inspect(recurseTimes);
+    if (!isString(ret)) {
+      ret = formatValue(ctx, ret, recurseTimes);
+    }
+    return ret;
+  }
+
+  // Primitive types cannot have properties
+  var primitive = formatPrimitive(ctx, value);
+  if (primitive) {
+    return primitive;
+  }
+
+  // Look up the keys of the object.
+  var keys = shims.keys(value);
+  var visibleKeys = arrayToHash(keys);
+
+  if (ctx.showHidden) {
+    keys = shims.getOwnPropertyNames(value);
+  }
+
+  // Some type of object without properties can be shortcutted.
+  if (keys.length === 0) {
+    if (isFunction(value)) {
+      var name = value.name ? ': ' + value.name : '';
+      return ctx.stylize('[Function' + name + ']', 'special');
+    }
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    }
+    if (isDate(value)) {
+      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+    }
+    if (isError(value)) {
+      return formatError(value);
+    }
+  }
+
+  var base = '', array = false, braces = ['{', '}'];
+
+  // Make Array say that they are Array
+  if (isArray(value)) {
+    array = true;
+    braces = ['[', ']'];
+  }
+
+  // Make functions say that they are functions
+  if (isFunction(value)) {
+    var n = value.name ? ': ' + value.name : '';
+    base = ' [Function' + n + ']';
+  }
+
+  // Make RegExps say that they are RegExps
+  if (isRegExp(value)) {
+    base = ' ' + RegExp.prototype.toString.call(value);
+  }
+
+  // Make dates with properties first say the date
+  if (isDate(value)) {
+    base = ' ' + Date.prototype.toUTCString.call(value);
+  }
+
+  // Make error with message first say the error
+  if (isError(value)) {
+    base = ' ' + formatError(value);
+  }
+
+  if (keys.length === 0 && (!array || value.length == 0)) {
+    return braces[0] + base + braces[1];
+  }
+
+  if (recurseTimes < 0) {
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    } else {
+      return ctx.stylize('[Object]', 'special');
+    }
+  }
+
+  ctx.seen.push(value);
+
+  var output;
+  if (array) {
+    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
+  } else {
+    output = keys.map(function(key) {
+      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
+    });
+  }
+
+  ctx.seen.pop();
+
+  return reduceToSingleString(output, base, braces);
+}
+
+
+function formatPrimitive(ctx, value) {
+  if (isUndefined(value))
+    return ctx.stylize('undefined', 'undefined');
+  if (isString(value)) {
+    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
+                                             .replace(/'/g, "\\'")
+                                             .replace(/\\"/g, '"') + '\'';
+    return ctx.stylize(simple, 'string');
+  }
+  if (isNumber(value))
+    return ctx.stylize('' + value, 'number');
+  if (isBoolean(value))
+    return ctx.stylize('' + value, 'boolean');
+  // For some reason typeof null is "object", so special case here.
+  if (isNull(value))
+    return ctx.stylize('null', 'null');
+}
+
+
+function formatError(value) {
+  return '[' + Error.prototype.toString.call(value) + ']';
+}
+
+
+function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
+  var output = [];
+  for (var i = 0, l = value.length; i < l; ++i) {
+    if (hasOwnProperty(value, String(i))) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          String(i), true));
+    } else {
+      output.push('');
+    }
+  }
+
+  shims.forEach(keys, function(key) {
+    if (!key.match(/^\d+$/)) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          key, true));
+    }
+  });
+  return output;
+}
+
+
+function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
+  var name, str, desc;
+  desc = shims.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+  if (desc.get) {
+    if (desc.set) {
+      str = ctx.stylize('[Getter/Setter]', 'special');
+    } else {
+      str = ctx.stylize('[Getter]', 'special');
+    }
+  } else {
+    if (desc.set) {
+      str = ctx.stylize('[Setter]', 'special');
+    }
+  }
+
+  if (!hasOwnProperty(visibleKeys, key)) {
+    name = '[' + key + ']';
+  }
+  if (!str) {
+    if (shims.indexOf(ctx.seen, desc.value) < 0) {
+      if (isNull(recurseTimes)) {
+        str = formatValue(ctx, desc.value, null);
+      } else {
+        str = formatValue(ctx, desc.value, recurseTimes - 1);
+      }
+      if (str.indexOf('\n') > -1) {
+        if (array) {
+          str = str.split('\n').map(function(line) {
+            return '  ' + line;
+          }).join('\n').substr(2);
+        } else {
+          str = '\n' + str.split('\n').map(function(line) {
+            return '   ' + line;
+          }).join('\n');
+        }
+      }
+    } else {
+      str = ctx.stylize('[Circular]', 'special');
+    }
+  }
+  if (isUndefined(name)) {
+    if (array && key.match(/^\d+$/)) {
+      return str;
+    }
+    name = JSON.stringify('' + key);
+    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
+      name = name.substr(1, name.length - 2);
+      name = ctx.stylize(name, 'name');
+    } else {
+      name = name.replace(/'/g, "\\'")
+                 .replace(/\\"/g, '"')
+                 .replace(/(^"|"$)/g, "'");
+      name = ctx.stylize(name, 'string');
+    }
+  }
+
+  return name + ': ' + str;
+}
+
+
+function reduceToSingleString(output, base, braces) {
+  var numLinesEst = 0;
+  var length = shims.reduce(output, function(prev, cur) {
+    numLinesEst++;
+    if (cur.indexOf('\n') >= 0) numLinesEst++;
+    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
+  }, 0);
+
+  if (length > 60) {
+    return braces[0] +
+           (base === '' ? '' : base + '\n ') +
+           ' ' +
+           output.join(',\n  ') +
+           ' ' +
+           braces[1];
+  }
+
+  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+}
+
+
+// NOTE: These type checking functions intentionally don't use `instanceof`
+// because it is fragile and can be easily faked with `Object.create()`.
+function isArray(ar) {
+  return shims.isArray(ar);
+}
+exports.isArray = isArray;
+
+function isBoolean(arg) {
+  return typeof arg === 'boolean';
+}
+exports.isBoolean = isBoolean;
+
+function isNull(arg) {
+  return arg === null;
+}
+exports.isNull = isNull;
+
+function isNullOrUndefined(arg) {
+  return arg == null;
+}
+exports.isNullOrUndefined = isNullOrUndefined;
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+exports.isNumber = isNumber;
+
+function isString(arg) {
+  return typeof arg === 'string';
+}
+exports.isString = isString;
+
+function isSymbol(arg) {
+  return typeof arg === 'symbol';
+}
+exports.isSymbol = isSymbol;
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+exports.isUndefined = isUndefined;
+
+function isRegExp(re) {
+  return isObject(re) && objectToString(re) === '[object RegExp]';
+}
+exports.isRegExp = isRegExp;
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg;
+}
+exports.isObject = isObject;
+
+function isDate(d) {
+  return isObject(d) && objectToString(d) === '[object Date]';
+}
+exports.isDate = isDate;
+
+function isError(e) {
+  return isObject(e) && objectToString(e) === '[object Error]';
+}
+exports.isError = isError;
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+exports.isFunction = isFunction;
+
+function isPrimitive(arg) {
+  return arg === null ||
+         typeof arg === 'boolean' ||
+         typeof arg === 'number' ||
+         typeof arg === 'string' ||
+         typeof arg === 'symbol' ||  // ES6 symbol
+         typeof arg === 'undefined';
+}
+exports.isPrimitive = isPrimitive;
+
+function isBuffer(arg) {
+  return arg && typeof arg === 'object'
+    && typeof arg.copy === 'function'
+    && typeof arg.fill === 'function'
+    && typeof arg.binarySlice === 'function'
+  ;
+}
+exports.isBuffer = isBuffer;
+
+function objectToString(o) {
+  return Object.prototype.toString.call(o);
+}
+
+
+function pad(n) {
+  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+}
+
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+              'Oct', 'Nov', 'Dec'];
+
+// 26 Feb 16:19:34
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+              pad(d.getMinutes()),
+              pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()], time].join(' ');
+}
+
+
+// log is just a thin wrapper to console.log that prepends a timestamp
+exports.log = function() {
+  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+};
+
+
+/**
+ * Inherit the prototype methods from one constructor into another.
+ *
+ * The Function.prototype.inherits from lang.js rewritten as a standalone
+ * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * during bootstrapping this function needs to be rewritten using some native
+ * functions as prototype setup using normal JavaScript does not work as
+ * expected during bootstrapping (see mirror.js in r114903).
+ *
+ * @param {function} ctor Constructor function which needs to inherit the
+ *     prototype.
+ * @param {function} superCtor Constructor function to inherit prototype from.
+ */
+exports.inherits = function(ctor, superCtor) {
+  ctor.super_ = superCtor;
+  ctor.prototype = shims.create(superCtor.prototype, {
+    constructor: {
+      value: ctor,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+};
+
+exports._extend = function(origin, add) {
+  // Don't do anything if add isn't an object
+  if (!add || !isObject(add)) return origin;
+
+  var keys = shims.keys(add);
+  var i = keys.length;
+  while (i--) {
+    origin[keys[i]] = add[keys[i]];
+  }
+  return origin;
+};
+
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+},{"_shims":29}],33:[function(require,module,exports){
+/**
+ * This will store the property that the current
+ * browser uses for transitionDuration
+ */
+var property;
+
+/**
+ * The properties we'll check on an element
+ * to determine if it actually has transitions
+ * We use duration as this is the only property
+ * needed to technically have transitions
+ * @type {Array}
+ */
+var types = [
+  "transitionDuration",
+  "MozTransitionDuration",
+  "webkitTransitionDuration",
+  "msTransitionDuration",
+  "KhtmlTransitionDuration",
+  "OTransitionDuration"
+];
+
+/**
+ * Determine the correct property for this browser
+ * just once so we done need to check every time
+ */
+while(types.length) {
+  var type = types.shift();
+  if(type in document.body.style) {
+    property = type;
+  }
+}
+
+/**
+ * Determine if the browser supports transitions or
+ * if an element has transitions at all.
+ * @param  {Element}  el Optional. Returns browser support if not included
+ * @return {Boolean}
+ */
+function hasTransitions(el){
+  if(!property) {
+    return false; // No browser support for transitions
+  }
+  if(!el) {
+    return property != null; // We just want to know if browsers support it
+  }
+  var duration = getComputedStyle(el)[property];
+  return duration !== "" && parseFloat(duration) !== 0; // Does this element have transitions?
+}
+
+module.exports = hasTransitions;
+
+},{}],34:[function(require,module,exports){
 /*!
   * @preserve Qwery - A Blazing Fast query selector engine
   * https://github.com/ded/qwery
@@ -4506,7 +5650,7 @@ function decode(str) {
   return qwery
 });
 
-},{}],30:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 //     Underscore.js 1.5.2
 //     http://underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -5784,7 +6928,7 @@ function decode(str) {
 
 }).call(this);
 
-},{}],31:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = hasKeys
 
 function hasKeys(source) {
@@ -5793,7 +6937,7 @@ function hasKeys(source) {
         typeof source === "function")
 }
 
-},{}],32:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var Keys = require("object-keys")
 var hasKeys = require("./has-keys")
 
@@ -5820,7 +6964,7 @@ function extend() {
     return target
 }
 
-},{"./has-keys":31,"object-keys":34}],33:[function(require,module,exports){
+},{"./has-keys":36,"object-keys":39}],38:[function(require,module,exports){
 var hasOwn = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
 
@@ -5862,11 +7006,11 @@ module.exports = function forEach(obj, fn) {
 };
 
 
-},{}],34:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = Object.keys || require('./shim');
 
 
-},{"./shim":36}],35:[function(require,module,exports){
+},{"./shim":41}],40:[function(require,module,exports){
 var toString = Object.prototype.toString;
 
 module.exports = function isArguments(value) {
@@ -5884,7 +7028,7 @@ module.exports = function isArguments(value) {
 };
 
 
-},{}],36:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 (function () {
 	"use strict";
 
@@ -5948,7 +7092,7 @@ module.exports = function isArguments(value) {
 }());
 
 
-},{"./foreach":33,"./isArguments":35}],37:[function(require,module,exports){
+},{"./foreach":38,"./isArguments":40}],42:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};/*
  *
  * This is used to build the bundle with browserify.
@@ -5965,7 +7109,7 @@ if (typeof global.window.define == 'function' && global.window.define.amd) {
 } else if (global.window) {
   global.window.Auth0Widget = Auth0Widget;
 }
-},{"./widget":41}],38:[function(require,module,exports){
+},{"./widget":48}],43:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape) {
 escape = escape || function (html){
   return String(html)
@@ -5974,7 +7118,11 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
+<<<<<<< HEAD
 var __stack = { lineno: 1, input: "<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= title %>\"\n\t\tclass=\"a0-zocial a0-icon a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>\" dir=\"ltr\"><%= title %></span>", filename: "/Users/sebas/Documents/Projects/auth0-widget.js/widget/html/button.ejs" };
+=======
+var __stack = { lineno: 1, input: "<% var icon_class = !use_big_buttons ? 'a0-icon' : 'a0-block' %>\n<span tabindex=\"0\"\n\t\tdata-strategy=\"<%= name %>\"\n\t\ttitle=\"<%= title %>\"\n\t\tclass=\"a0-zocial <%= icon_class %> a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>\" dir=\"ltr\"><%= title %></span>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/button.ejs" };
+>>>>>>> big refactoring, introduce transitions
 function rethrow(err, str, filename, lineno){
   var lines = str.split('\n')
     , start = Math.max(lineno - 3, 0)
@@ -6001,14 +7149,14 @@ function rethrow(err, str, filename, lineno){
 try {
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=2,  name )), '"\n		title="', escape((__stack.lineno=3,  title )), '"\n		class="a0-zocial a0-icon a0-', escape((__stack.lineno=4,  css )), ' ', escape((__stack.lineno=4,  locals.imageicon ? 'a0-image-icon' : '' )), '" dir="ltr">', escape((__stack.lineno=4,  title )), '</span>'); })();
+ buf.push('');__stack.lineno=1; var icon_class = !use_big_buttons ? 'a0-icon' : 'a0-block' ; buf.push('\n<span tabindex="0"\n		data-strategy="', escape((__stack.lineno=3,  name )), '"\n		title="', escape((__stack.lineno=4,  title )), '"\n		class="a0-zocial ', escape((__stack.lineno=5,  icon_class )), ' a0-', escape((__stack.lineno=5,  css )), ' ', escape((__stack.lineno=5,  locals.imageicon ? 'a0-image-icon' : '' )), '" dir="ltr">', escape((__stack.lineno=5,  title )), '</span>'); })();
 } 
 return buf.join('');
 } catch (err) {
   rethrow(err, __stack.input, __stack.filename, __stack.lineno);
 }
 })
-},{}],39:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape) {
 escape = escape || function (html){
   return String(html)
@@ -6051,7 +7199,7 @@ return buf.join('');
   rethrow(err, __stack.input, __stack.filename, __stack.lineno);
 }
 })
-},{}],40:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape) {
 escape = escape || function (html){
   return String(html)
@@ -6060,7 +7208,11 @@ escape = escape || function (html){
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 };
+<<<<<<< HEAD
 var __stack = { lineno: 1, input: "<div id=\"a0-widget\" class=\"a0-widget\" dir=\"auto\">\n    <div class=\"a0-signin <%= locals && locals.embedded ? 'a0-embedded' : '' %> <%= options.theme ? ('a0-theme-' + options.theme) : '' %>\">\n        <div class=\"a0-popup\">\n            <div class=\"a0-overlay\">\n                <div id=\"a0-onestep\" class=\"a0-panel a0-onestep\">\n                    <header class=\"a0-header\">\n                        <div class=\"a0-image\" style=\"display: <%= !options.showIcon ? 'none' : 'block' %>\">\n                            <img src=\"<%= options.icon || '' %>\">\n                        </div>\n                        <h1><%= i18n.t('signin:title') %></h1>\n                        <h2 class=\"a0-error\" style=\"display: none\">&nbsp;</h2>\n                        <h2 class=\"a0-success\" style=\"display: none\">&nbsp;</h2>\n                        <a class=\"a0-close\" style=\"display: <%= options.standalone ? 'none' : 'block' %>;\"><%= i18n.t('close') %></a>\n                    </header>\n\n                    <div class=\"a0-loading\"></div>\n\n\n                    <% include modes/loggedin %>\n                    <% include modes/signin %>\n                    <% include modes/signup %>\n                    <% include modes/reset %>\n\n                    <footer>\n                        <span>Powered by <a href=\"http://auth0.com\" target=\"_new\">Auth0</a></span>\n                    </footer>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n", filename: "/Users/sebas/Documents/Projects/auth0-widget.js/widget/html/main.ejs" };
+=======
+var __stack = { lineno: 1, input: "<label class=\"a0-create-account\">\n  <% if (showSignup) { %>\n  <a href=\"<%= locals.signupLink || 'javascript: {}' %>\"\n    class=\"a0-sign-up\">\n    <%= i18n.t('signin:signupText') %>\n  </a>\n  <% } %>\n  <% if (showSignup && showForgot) { %>\n  <span class=\"a0-divider\">&nbsp;•&nbsp;</span>\n  <% } %>\n  <% if (showForgot) { %>\n  <a href=\"<%= locals.forgotLink || 'javascript: {}' %>\"\n    class=\"a0-forgot-pass\"><%= i18n.t('signin:forgotText') %></a>\n  <% } %>\n</label>", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/login_actions.ejs" };
+>>>>>>> big refactoring, introduce transitions
 function rethrow(err, str, filename, lineno){
   var lines = str.split('\n')
     , start = Math.max(lineno - 3, 0)
@@ -6087,24 +7239,121 @@ function rethrow(err, str, filename, lineno){
 try {
 var buf = [];
 with (locals || {}) { (function(){ 
- buf.push('<div id="a0-widget" class="a0-widget" dir="auto">\n    <div class="a0-signin ', escape((__stack.lineno=2,  locals && locals.embedded ? 'a0-embedded' : '' )), ' ', escape((__stack.lineno=2,  options.theme ? ('a0-theme-' + options.theme) : '' )), '">\n        <div class="a0-popup">\n            <div class="a0-overlay">\n                <div id="a0-onestep" class="a0-panel a0-onestep">\n                    <header class="a0-header">\n                        <div class="a0-image" style="display: ', escape((__stack.lineno=7,  !options.showIcon ? 'none' : 'block' )), '">\n                            <img src="', escape((__stack.lineno=8,  options.icon || '' )), '">\n                        </div>\n                        <h1>', escape((__stack.lineno=10,  i18n.t('signin:title') )), '</h1>\n                        <h2 class="a0-error" style="display: none">&nbsp;</h2>\n                        <h2 class="a0-success" style="display: none">&nbsp;</h2>\n                        <a class="a0-close" style="display: ', escape((__stack.lineno=13,  options.standalone ? 'none' : 'block' )), ';">', escape((__stack.lineno=13,  i18n.t('close') )), '</a>\n                    </header>\n\n                    <div class="a0-loading"></div>\n\n\n                    ' + (function(){var buf = [];
- buf.push('<div class="a0-loggedin">\n    <form>\n        <span class="a0-centered a0-last-time">', escape((__stack.lineno=3,  i18n.t('signin:returnUserLabel') )), '</span>\n        <div class="a0-strategy"></div>\n        <div class="a0-emailPassword" style="display:none">\n            <div class="a0-email">\n                <span class="a0-email-readonly"></span>\n                <input name="email"\n                       type="email"\n                       value=""\n                       disabled\n                       placeholder="', escape((__stack.lineno=12,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=13,  i18n.t('signin:emailPlaceholder') )), '"\n                       style="display:none">\n            </div>\n            <div class="a0-password">\n                <input name="password" type="password" value=""\n                       autofocus\n                       placeholder="', escape((__stack.lineno=19,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=20,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                ');__stack.lineno=23; if (options.showSignup !== false) { ; buf.push('\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=24,  i18n.t('signin:action') )), '</button>\n                <button type="submit" class="a0-spinner"></button>\n                ');__stack.lineno=26; } ; buf.push('\n                ');__stack.lineno=27; if (options.showForgot !== false) { ; buf.push('\n                <label class="a0-create-account">\n                  <a href="', escape((__stack.lineno=29,  options.forgotLink || 'javascript: {}' )), '"\n                    class="a0-forgot-pass">', escape((__stack.lineno=30,  i18n.t('signin:forgotText') )), '</a>\n                </label>\n                ');__stack.lineno=32; } ; buf.push('\n            </div>\n        </div>\n        <span class="a0-centered a0-all">', escape((__stack.lineno=35,  i18n.t('signin:all') )), '</span>\n    </form>\n</div>');
-return buf.join('');})() + '\n                    ' + (function(){var buf = [];
- buf.push('<div class="a0-notloggedin">\n    <form>\n        <div class="a0-iconlist" style="display: none"><p style="display:none">', escape((__stack.lineno=3,  i18n.t('signin:or') )), '</p></div>\n        <div class="a0-separator" style="display: none"><span>', escape((__stack.lineno=4,  i18n.t('signin:separatorText') )), '</span></div>\n        <div class="a0-emailPassword">\n            ');__stack.lineno=6; if (options.showEmail !== false) { ; buf.push('\n            <div class="a0-email">\n                <input name="email"\n                       id="a0-signin_easy_email"\n                       type="email"\n                       required\n                       placeholder="', escape((__stack.lineno=12,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=13,  i18n.t('signin:emailPlaceholder') )), '">\n            </div>\n            ');__stack.lineno=15; } ; buf.push('\n            <div class="a0-password" style="display:none">\n                <input name="password"\n                       id="a0-signin_easy_password"\n                       type="password"\n                       placeholder="', escape((__stack.lineno=20,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=21,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=24,  i18n.t('signin:action') )), '</button>\n                <button type="submit" class="a0-spinner" style="display: none"></button>\n                <label class="a0-create-account">\n                    ');__stack.lineno=27; if (options.showSignup !== false) { ; buf.push('\n                    <a href="', escape((__stack.lineno=28,  options.signupLink || 'javascript: {}' )), '"\n                      class="a0-sign-up">\n                      ', escape((__stack.lineno=30,  i18n.t('signin:signupText') )), '\n                    </a>\n                    <span class="a0-divider">&nbsp;•&nbsp;</span>\n                    ');__stack.lineno=33; } ; buf.push('\n                    ');__stack.lineno=34; if (options.showForgot !== false) { ; buf.push('\n                    <a href="', escape((__stack.lineno=35,  options.forgotLink || 'javascript: {}' )), '"\n                      class="a0-forgot-pass">', escape((__stack.lineno=36,  i18n.t('signin:forgotText') )), '</a>\n                    ');__stack.lineno=37; } ; buf.push('\n                </label>\n            </div>\n        </div>\n    </form>\n</div>');
-return buf.join('');})() + '\n                    ' + (function(){var buf = [];
- buf.push('<div class="a0-signup">\n    <form>\n        <div class="a0-header">', escape((__stack.lineno=3,  i18n.t('signup:headerText') )), '</div>\n        <div class="a0-emailPassword">\n            <div class="a0-email">\n                <input name="email" id="a0-signup_easy_email"\n                       type="email" value="" required\n                       placeholder="', escape((__stack.lineno=8,  i18n.t('signup:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=9,  i18n.t('signup:emailPlaceholder') )), '">\n            </div>\n            <div class="a0-password">\n                <input name="password" id="a0-signup_easy_password"\n                       type="password" value="" required\n                       placeholder="', escape((__stack.lineno=14,  i18n.t('signup:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=15,  i18n.t('signup:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=18,  i18n.t('signup:action') )), '</button>\n                <button type="submit" class="a0-spinner" style="display: none"></button>\n                <div class="a0-footer"></div>\n                <div class="a0-options">\n                    <a href="javascript: {}" class="a0-centered a0-cancel">', escape((__stack.lineno=22,  i18n.t('signup:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
-return buf.join('');})() + '\n                    ' + (function(){var buf = [];
- buf.push('<div class="a0-reset">\n    <form id="a0-change_password">\n        <div class="a0-header">', escape((__stack.lineno=3,  i18n.t('reset:headerText') )), '</div>\n        <div class="a0-emailPassword">\n            <div class="a0-email">\n                <input name="email"\n                       id="a0-reset_easy_email"\n                       type="email"\n                       value=""\n                       required\n                       placeholder="', escape((__stack.lineno=11,  i18n.t('reset:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=12,  i18n.t('reset:emailPlaceholder') )), '">\n            </div>\n            <div class="a0-password">\n                <input name="password"\n                        id="a0-reset_easy_password"\n                        type="password"\n                        value=""\n                        required\n                        placeholder="', escape((__stack.lineno=20,  i18n.t('reset:passwordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=21,  i18n.t('reset:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-repeatPassword">\n                <input name="repeat_password"\n                    id="a0-reset_easy_repeat_password"\n                    type="password" value=""\n                    required\n                        placeholder="', escape((__stack.lineno=28,  i18n.t('reset:repeatPasswordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=29,  i18n.t('reset:repeatPasswordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=32,  i18n.t('reset:action') )), '</button>\n                <button type="submit" class="a0-spinner" style="display: none"></button>\n                <div class="a0-options">\n                    <a href="javascript: {}" class="a0-centered a0-cancel">', escape((__stack.lineno=35,  i18n.t('reset:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
-return buf.join('');})() + '\n\n                    <footer>\n                        <span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>\n                    </footer>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n'); })();
+ buf.push('<label class="a0-create-account">\n  ');__stack.lineno=2; if (showSignup) { ; buf.push('\n  <a href="', escape((__stack.lineno=3,  locals.signupLink || 'javascript: {}' )), '"\n    class="a0-sign-up">\n    ', escape((__stack.lineno=5,  i18n.t('signin:signupText') )), '\n  </a>\n  ');__stack.lineno=7; } ; buf.push('\n  ');__stack.lineno=8; if (showSignup && showForgot) { ; buf.push('\n  <span class="a0-divider">&nbsp;•&nbsp;</span>\n  ');__stack.lineno=10; } ; buf.push('\n  ');__stack.lineno=11; if (showForgot) { ; buf.push('\n  <a href="', escape((__stack.lineno=12,  locals.forgotLink || 'javascript: {}' )), '"\n    class="a0-forgot-pass">', escape((__stack.lineno=13,  i18n.t('signin:forgotText') )), '</a>\n  ');__stack.lineno=14; } ; buf.push('\n</label>'); })();
 } 
 return buf.join('');
 } catch (err) {
   rethrow(err, __stack.input, __stack.filename, __stack.lineno);
 }
 })
-},{}],41:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};require('../lib/insert-css');
+},{}],46:[function(require,module,exports){
+module.exports = (function anonymous(locals, filters, escape) {
+escape = escape || function (html){
+  return String(html)
+    .replace(/&(?!\w+;)/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+};
+var __stack = { lineno: 1, input: "<div id=\"a0-widget\" class=\"a0-widget\" dir=\"auto\">\n    <div class=\"a0-signin <%= locals && locals.embedded ? 'a0-embedded' : '' %> <%= options.theme ? ('a0-theme-' + options.theme) : '' %>\">\n        <div class=\"a0-popup\">\n            <div class=\"a0-overlay\">\n                <div class=\"a0-centrix\">\n                    <% include widget %>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/main.ejs" };
+function rethrow(err, str, filename, lineno){
+  var lines = str.split('\n')
+    , start = Math.max(lineno - 3, 0)
+    , end = Math.min(lines.length, lineno + 3);
 
+  // Error context
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+  
+  throw err;
+}
+try {
+var buf = [];
+with (locals || {}) { (function(){ 
+ buf.push('<div id="a0-widget" class="a0-widget" dir="auto">\n    <div class="a0-signin ', escape((__stack.lineno=2,  locals && locals.embedded ? 'a0-embedded' : '' )), ' ', escape((__stack.lineno=2,  options.theme ? ('a0-theme-' + options.theme) : '' )), '">\n        <div class="a0-popup">\n            <div class="a0-overlay">\n                <div class="a0-centrix">\n                    ' + (function(){var buf = [];
+ buf.push('<div id="a0-onestep" class="a0-panel a0-onestep">\n    ');__stack.lineno=2; if (!locals.embedded) { ; buf.push('\n    <header class="a0-header">\n        <div class="a0-image" style="display: ', escape((__stack.lineno=4,  !options.showIcon ? 'none' : 'block' )), '">\n            <img src="', escape((__stack.lineno=5,  options.icon || '' )), '">\n        </div>\n        <h1>', escape((__stack.lineno=7,  i18n.t('signin:title') )), '</h1>\n        <h2 class="a0-error" style="display: none">&nbsp;</h2>\n        <h2 class="a0-success" style="display: none">&nbsp;</h2>\n        <a class="a0-close" style="display: ', escape((__stack.lineno=10,  options.standalone ? 'none' : 'block' )), ';">', escape((__stack.lineno=10,  i18n.t('close') )), '</a>\n    </header>\n    ');__stack.lineno=12; } ; buf.push('\n\n    <div class="a0-loading a0-mode">\n        <div class="a0-spin-container">\n            <div class="a0-spinner-css">\n              <span class="a0-side a0-sp_left">\n                <span class="a0-fill"></span>\n              </span>\n              <span class="a0-side a0-sp_right">\n                <span class="a0-fill"></span>\n              </span>\n            </div>\n        </div>\n    </div>\n\n\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-loggedin a0-mode" style="display: none;">\n    <form>\n        <span class="a0-centered a0-last-time">', escape((__stack.lineno=3,  i18n.t('signin:returnUserLabel') )), '</span>\n        <div class="a0-strategy"></div>\n        <div class="a0-emailPassword" style="display:none">\n            <div class="a0-email">\n                <span class="a0-email-readonly"></span>\n                <input name="email"\n                       type="email"\n                       value=""\n                       disabled\n                       placeholder="', escape((__stack.lineno=12,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=13,  i18n.t('signin:emailPlaceholder') )), '"\n                       style="display:none">\n            </div>\n            <div class="a0-password">\n                <label class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=18,  i18n.t('signin:passwordPlaceholder') )), '\n                </label>\n                <input name="password" type="password"\n                       autofocus\n                       placeholder="', escape((__stack.lineno=22,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=23,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=26,  i18n.t('signin:action') )), '</button>\n                ');__stack.lineno=27; if (options.showForgot !== false) { ; buf.push('\n                <label class="a0-create-account">\n                  <a href="', escape((__stack.lineno=29,  options.forgotLink || 'javascript: {}' )), '"\n                    class="a0-forgot-pass">', escape((__stack.lineno=30,  i18n.t('signin:forgotText') )), '</a>\n                </label>\n                ');__stack.lineno=32; } ; buf.push('\n            </div>\n        </div>\n        <span class="a0-centered a0-all">', escape((__stack.lineno=35,  i18n.t('signin:all') )), '</span>\n    </form>\n</div>');
+return buf.join('');})() + '\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-notloggedin a0-mode" style="display: none;">\n    <form>\n        <div class="a0-iconlist" style="display: none"><p style="display:none">', escape((__stack.lineno=3,  i18n.t('signin:or') )), '</p></div>\n        <div class="a0-separator" style="display: none"><span>', escape((__stack.lineno=4,  i18n.t('signin:separatorText') )), '</span></div>\n        <div class="a0-emailPassword">\n            ');__stack.lineno=6; if (options.showEmail !== false) { ; buf.push('\n            <div class="a0-email">\n                <label for="a0-signin_easy_email" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=9,  i18n.t('signin:emailPlaceholder') )), '\n                </label>\n                <input name="email"\n                       id="a0-signin_easy_email"\n                       type="email"\n                       required\n                       placeholder="', escape((__stack.lineno=15,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=16,  i18n.t('signin:emailPlaceholder') )), '">\n            </div>\n            ');__stack.lineno=18; } ; buf.push('\n            <div class="a0-password" style="display:none">\n                <label for="a0-signin_easy_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=21,  i18n.t('signin:passwordPlaceholder') )), '\n                </label>\n                <input name="password"\n                       id="a0-signin_easy_password"\n                       type="password"\n                       placeholder="', escape((__stack.lineno=26,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=27,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=30,  i18n.t('signin:action') )), '</button>\n                <div class="a0-db-actions">\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-signup a0-mode" style="display: none;">\n    <form>\n        <div class="a0-header">', escape((__stack.lineno=3,  i18n.t('signup:headerText') )), '</div>\n        <div class="a0-emailPassword">\n            <div class="a0-email">\n                <label for="a0-signup_easy_email" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=7,  i18n.t('signup:emailPlaceholder') )), '\n                </label>\n                <input name="email" id="a0-signup_easy_email"\n                       type="email" value="" required\n                       placeholder="', escape((__stack.lineno=11,  i18n.t('signup:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=12,  i18n.t('signup:emailPlaceholder') )), '">\n            </div>\n            <div class="a0-password">\n                <label for="a0-signup_easy_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=16,  i18n.t('signup:passwordPlaceholder') )), '\n                </label>\n                <input name="password" id="a0-signup_easy_password"\n                       type="password" value="" required\n                       placeholder="', escape((__stack.lineno=20,  i18n.t('signup:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=21,  i18n.t('signup:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=24,  i18n.t('signup:action') )), '</button>\n                <div class="a0-footer"></div>\n                <div class="a0-options">\n                    <a href="javascript: {}" class="a0-centered a0-cancel">', escape((__stack.lineno=27,  i18n.t('signup:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-reset a0-mode" style="display: none;">\n    <form id="a0-change_password">\n        <div class="a0-header">', escape((__stack.lineno=3,  i18n.t('reset:headerText') )), '</div>\n        <div class="a0-emailPassword">\n            <div class="a0-email">\n                <label for="a0-reset_easy_email" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=7,  i18n.t('reset:emailPlaceholder') )), '\n                </label>\n                <input name="email"\n                       id="a0-reset_easy_email"\n                       type="email"\n                       value=""\n                       required\n                       placeholder="', escape((__stack.lineno=14,  i18n.t('reset:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=15,  i18n.t('reset:emailPlaceholder') )), '">\n            </div>\n            <div class="a0-password">\n                <label for="a0-reset_easy_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=19,  i18n.t('reset:passwordPlaceholder') )), '\n                </label>\n                <input name="password"\n                        id="a0-reset_easy_password"\n                        type="password"\n                        value=""\n                        required\n                        placeholder="', escape((__stack.lineno=26,  i18n.t('reset:passwordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=27,  i18n.t('reset:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-repeatPassword">\n                <label for="a0-reset_easy_repeat_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=31,  i18n.t('reset:repeatPasswordPlaceholder') )), '\n                </label>\n                <input name="repeat_password"\n                    id="a0-reset_easy_repeat_password"\n                    type="password" value=""\n                    required\n                        placeholder="', escape((__stack.lineno=37,  i18n.t('reset:repeatPasswordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=38,  i18n.t('reset:repeatPasswordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=41,  i18n.t('reset:action') )), '</button>\n                <div class="a0-options">\n                    <a href="javascript: {}" class="a0-centered a0-cancel">', escape((__stack.lineno=43,  i18n.t('reset:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n\n    <footer>\n        <span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>\n    </footer>\n</div>');
+return buf.join('');})() + '\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n'); })();
+} 
+return buf.join('');
+} catch (err) {
+  rethrow(err, __stack.input, __stack.filename, __stack.lineno);
+}
+})
+},{}],47:[function(require,module,exports){
+module.exports = (function anonymous(locals, filters, escape) {
+escape = escape || function (html){
+  return String(html)
+    .replace(/&(?!\w+;)/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+};
+var __stack = { lineno: 1, input: "<div id=\"a0-widget\" class=\"a0-widget\" dir=\"auto\">\n    <div class=\"a0-signin a0-embedded <%= options.theme ? ('a0-theme-' + options.theme) : '' %>\">\n        <% include widget %>\n    </div>\n</div>\n", filename: "/Users/jfroma/Projects/auth0/auth0-widget.js/widget/html/main_embedded.ejs" };
+function rethrow(err, str, filename, lineno){
+  var lines = str.split('\n')
+    , start = Math.max(lineno - 3, 0)
+    , end = Math.min(lines.length, lineno + 3);
+
+  // Error context
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+  
+  throw err;
+}
+try {
+var buf = [];
+with (locals || {}) { (function(){ 
+ buf.push('<div id="a0-widget" class="a0-widget" dir="auto">\n    <div class="a0-signin a0-embedded ', escape((__stack.lineno=2,  options.theme ? ('a0-theme-' + options.theme) : '' )), '">\n        ' + (function(){var buf = [];
+ buf.push('<div id="a0-onestep" class="a0-panel a0-onestep">\n    ');__stack.lineno=2; if (!locals.embedded) { ; buf.push('\n    <header class="a0-header">\n        <div class="a0-image" style="display: ', escape((__stack.lineno=4,  !options.showIcon ? 'none' : 'block' )), '">\n            <img src="', escape((__stack.lineno=5,  options.icon || '' )), '">\n        </div>\n        <h1>', escape((__stack.lineno=7,  i18n.t('signin:title') )), '</h1>\n        <h2 class="a0-error" style="display: none">&nbsp;</h2>\n        <h2 class="a0-success" style="display: none">&nbsp;</h2>\n        <a class="a0-close" style="display: ', escape((__stack.lineno=10,  options.standalone ? 'none' : 'block' )), ';">', escape((__stack.lineno=10,  i18n.t('close') )), '</a>\n    </header>\n    ');__stack.lineno=12; } ; buf.push('\n\n    <div class="a0-loading a0-mode">\n        <div class="a0-spin-container">\n            <div class="a0-spinner-css">\n              <span class="a0-side a0-sp_left">\n                <span class="a0-fill"></span>\n              </span>\n              <span class="a0-side a0-sp_right">\n                <span class="a0-fill"></span>\n              </span>\n            </div>\n        </div>\n    </div>\n\n\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-loggedin a0-mode" style="display: none;">\n    <form>\n        <span class="a0-centered a0-last-time">', escape((__stack.lineno=3,  i18n.t('signin:returnUserLabel') )), '</span>\n        <div class="a0-strategy"></div>\n        <div class="a0-emailPassword" style="display:none">\n            <div class="a0-email">\n                <span class="a0-email-readonly"></span>\n                <input name="email"\n                       type="email"\n                       value=""\n                       disabled\n                       placeholder="', escape((__stack.lineno=12,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=13,  i18n.t('signin:emailPlaceholder') )), '"\n                       style="display:none">\n            </div>\n            <div class="a0-password">\n                <label class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=18,  i18n.t('signin:passwordPlaceholder') )), '\n                </label>\n                <input name="password" type="password"\n                       autofocus\n                       placeholder="', escape((__stack.lineno=22,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=23,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=26,  i18n.t('signin:action') )), '</button>\n                ');__stack.lineno=27; if (options.showForgot !== false) { ; buf.push('\n                <label class="a0-create-account">\n                  <a href="', escape((__stack.lineno=29,  options.forgotLink || 'javascript: {}' )), '"\n                    class="a0-forgot-pass">', escape((__stack.lineno=30,  i18n.t('signin:forgotText') )), '</a>\n                </label>\n                ');__stack.lineno=32; } ; buf.push('\n            </div>\n        </div>\n        <span class="a0-centered a0-all">', escape((__stack.lineno=35,  i18n.t('signin:all') )), '</span>\n    </form>\n</div>');
+return buf.join('');})() + '\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-notloggedin a0-mode" style="display: none;">\n    <form>\n        <div class="a0-iconlist" style="display: none"><p style="display:none">', escape((__stack.lineno=3,  i18n.t('signin:or') )), '</p></div>\n        <div class="a0-separator" style="display: none"><span>', escape((__stack.lineno=4,  i18n.t('signin:separatorText') )), '</span></div>\n        <div class="a0-emailPassword">\n            ');__stack.lineno=6; if (options.showEmail !== false) { ; buf.push('\n            <div class="a0-email">\n                <label for="a0-signin_easy_email" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=9,  i18n.t('signin:emailPlaceholder') )), '\n                </label>\n                <input name="email"\n                       id="a0-signin_easy_email"\n                       type="email"\n                       required\n                       placeholder="', escape((__stack.lineno=15,  i18n.t('signin:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=16,  i18n.t('signin:emailPlaceholder') )), '">\n            </div>\n            ');__stack.lineno=18; } ; buf.push('\n            <div class="a0-password" style="display:none">\n                <label for="a0-signin_easy_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=21,  i18n.t('signin:passwordPlaceholder') )), '\n                </label>\n                <input name="password"\n                       id="a0-signin_easy_password"\n                       type="password"\n                       placeholder="', escape((__stack.lineno=26,  i18n.t('signin:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=27,  i18n.t('signin:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=30,  i18n.t('signin:action') )), '</button>\n                <div class="a0-db-actions">\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-signup a0-mode" style="display: none;">\n    <form>\n        <div class="a0-header">', escape((__stack.lineno=3,  i18n.t('signup:headerText') )), '</div>\n        <div class="a0-emailPassword">\n            <div class="a0-email">\n                <label for="a0-signup_easy_email" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=7,  i18n.t('signup:emailPlaceholder') )), '\n                </label>\n                <input name="email" id="a0-signup_easy_email"\n                       type="email" value="" required\n                       placeholder="', escape((__stack.lineno=11,  i18n.t('signup:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=12,  i18n.t('signup:emailPlaceholder') )), '">\n            </div>\n            <div class="a0-password">\n                <label for="a0-signup_easy_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=16,  i18n.t('signup:passwordPlaceholder') )), '\n                </label>\n                <input name="password" id="a0-signup_easy_password"\n                       type="password" value="" required\n                       placeholder="', escape((__stack.lineno=20,  i18n.t('signup:passwordPlaceholder') )), '"\n                       title="', escape((__stack.lineno=21,  i18n.t('signup:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=24,  i18n.t('signup:action') )), '</button>\n                <div class="a0-footer"></div>\n                <div class="a0-options">\n                    <a href="javascript: {}" class="a0-centered a0-cancel">', escape((__stack.lineno=27,  i18n.t('signup:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n    ' + (function(){var buf = [];
+ buf.push('<div class="a0-reset a0-mode" style="display: none;">\n    <form id="a0-change_password">\n        <div class="a0-header">', escape((__stack.lineno=3,  i18n.t('reset:headerText') )), '</div>\n        <div class="a0-emailPassword">\n            <div class="a0-email">\n                <label for="a0-reset_easy_email" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=7,  i18n.t('reset:emailPlaceholder') )), '\n                </label>\n                <input name="email"\n                       id="a0-reset_easy_email"\n                       type="email"\n                       value=""\n                       required\n                       placeholder="', escape((__stack.lineno=14,  i18n.t('reset:emailPlaceholder') )), '"\n                       title="', escape((__stack.lineno=15,  i18n.t('reset:emailPlaceholder') )), '">\n            </div>\n            <div class="a0-password">\n                <label for="a0-reset_easy_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=19,  i18n.t('reset:passwordPlaceholder') )), '\n                </label>\n                <input name="password"\n                        id="a0-reset_easy_password"\n                        type="password"\n                        value=""\n                        required\n                        placeholder="', escape((__stack.lineno=26,  i18n.t('reset:passwordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=27,  i18n.t('reset:passwordPlaceholder') )), '">\n            </div>\n            <div class="a0-repeatPassword">\n                <label for="a0-reset_easy_repeat_password" class="a0-sad-placeholder">\n                  ', escape((__stack.lineno=31,  i18n.t('reset:repeatPasswordPlaceholder') )), '\n                </label>\n                <input name="repeat_password"\n                    id="a0-reset_easy_repeat_password"\n                    type="password" value=""\n                    required\n                        placeholder="', escape((__stack.lineno=37,  i18n.t('reset:repeatPasswordPlaceholder') )), '"\n                        title="', escape((__stack.lineno=38,  i18n.t('reset:repeatPasswordPlaceholder') )), '">\n            </div>\n            <div class="a0-action">\n                <button type="submit" class="a0-zocial a0-primary a0-next" style="width: 100%;">', escape((__stack.lineno=41,  i18n.t('reset:action') )), '</button>\n                <div class="a0-options">\n                    <a href="javascript: {}" class="a0-centered a0-cancel">', escape((__stack.lineno=43,  i18n.t('reset:cancelAction') )), '</a>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>');
+return buf.join('');})() + '\n\n    <footer>\n        <span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>\n    </footer>\n</div>');
+return buf.join('');})() + '\n    </div>\n</div>\n'); })();
+} 
+return buf.join('');
+} catch (err) {
+  rethrow(err, __stack.input, __stack.filename, __stack.lineno);
+}
+})
+},{}],48:[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};require('../lib/insert-css');
 var Auth0       = require('auth0-js');
 var qwery       = require('qwery');
 var bonzo       = require('bonzo');
@@ -6114,9 +7363,16 @@ var _           = require('underscore');
 var strategies  = require('./js/strategies');
 var utils       = require('./js/utils');
 var mainTmpl    = require('./html/main.ejs');
+var embTmpl     = require('./html/main_embedded.ejs');
 var buttonTmpl  = require('./html/button.ejs');
-var loggedinBtnTmpl = require('./html/loggedin_button.ejs');
-var i18n        = require('../i18n');
+
+var EventEmitter = require('events').EventEmitter;
+
+var loggedinBtnTmpl      = require('./html/loggedin_button.ejs');
+var loginActionsTmpl     = require('./html/login_actions.ejs');
+var i18n                 = require('../i18n');
+var hasTransitions       = require('has-transitions');
+var placeholderSupported = require('./js/placeholderSupported');
 
 var $ = function (selector, root) {
   return bonzo(qwery('#a0-widget ' + (selector || ''), root));
@@ -6153,7 +7409,11 @@ function Auth0Widget (options) {
   }
 
   this._getApp();
+
+  EventEmitter.call(this);
 }
+
+Auth0Widget.prototype = Object.create(EventEmitter.prototype);
 
 // helper methods
 Auth0Widget.prototype._getApp = function () {
@@ -6176,26 +7436,6 @@ Auth0Widget.prototype._isAuth0Domain = function () {
   return utils.endsWith(domainUrl.hostname, '.auth0.com');
 };
 
-Auth0Widget.prototype._setTop = function () {
-  var element = $('.a0-signin div.a0-panel.a0-onestep');
-
-  if (!this._signinOptions.top) {
-    setTimeout(function() {
-      element.css({
-        'marginTop': '-' + (element.offset().height / 2) + 'px',
-        'top': '50%'
-        //'marginTop': '2px',
-        //'top': '15%'
-      });
-    }, 1);
-  } else {
-    element.css({
-      'marginTop': '2px',
-      'top': '0'
-    });
-  }
-};
-
 Auth0Widget.prototype._setCustomValidity = function (input, message) {
   if (!input) return;
   if (input.setCustomValidity) {
@@ -6206,22 +7446,23 @@ Auth0Widget.prototype._setCustomValidity = function (input, message) {
 
 Auth0Widget.prototype._showError = function (error) {
   if (!error) return;
-  $('.a0-signin h1').css('display', 'none');
-  $('.a0-signin .a0-success').css('display', 'none');
-  $('.a0-signin .a0-error').html(error).css('display', '');
+  $('h1').css('display', 'none');
+  $('.a0-success').css('display', 'none');
+  $('.a0-error').html(error).css('display', '');
+  this.emit('login_error', error);
 };
 
 Auth0Widget.prototype._showSuccess = function (message) {
   if (!message) return;
   $('.signin h1').css('display', 'none');
-  $('.a0-signin .a0-error').css('display', 'none');
-  $('.a0-signin .a0-success').html(message).css('display', '');
+  $('.a0-error').css('display', 'none');
+  $('.a0-success').html(message).css('display', '');
 };
 
 Auth0Widget.prototype._setTitle = function(title) {
-  $('.a0-signin .a0-error').css('display', 'none');
-  $('.a0-signin .a0-success').css('display', 'none');
-  $('.a0-signin h1').html(title).css('display', '');
+  $('.a0-error').css('display', 'none');
+  $('.a0-success').css('display', 'none');
+  $('h1').html(title).css('display', '');
 };
 
 Auth0Widget.prototype._parseResponseMessage = function (responseObj, defaultValue) {
@@ -6315,27 +7556,24 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 };
 
 Auth0Widget.prototype._hideSignIn = function (cb) {
+  var self = this;
+  this._currentPane = null;
+
   $('div.a0-overlay').removeClass('a0-active');
 
   setTimeout(function () {
     $().removeClass('a0-mode-signin');
     $().css('display', 'none');
     if (cb) cb();
+    self.emit('closed');
   }, 500);
 };
 
 Auth0Widget.prototype._getActiveLoginView = function() {
-  var container = this._hasLoggedInBefore ? $('.a0-loggedin') : $('.a0-notloggedin');
+  var container = this._currentPane.hasClass('a0-loggedin') ?
+                    $('.a0-loggedin') :
+                    $('.a0-notloggedin');
   return container;
-};
-
-Auth0Widget.prototype._toggleSpinner = function (container) {
-  container = container || this._getActiveLoginView();
-  var spinner = $('.a0-spinner', container);
-  var signin = $('.a0-zocial.a0-primary', container);
-
-  spinner.css('display', spinner.css('display') === 'none' ? '' : 'none');
-  signin.css('display', signin.css('display') === 'none' ? '' : 'none');
 };
 
 Auth0Widget.prototype._showSignUpExperience = function() {
@@ -6350,84 +7588,118 @@ Auth0Widget.prototype._showLoadingExperience = function() {
   this._setLoginView({ mode: 'loading' });
 };
 
-Auth0Widget.prototype._setLoginView = function(options) {
+Auth0Widget.prototype._transitionMode = function(options, callback) {
   var self = this;
-  options = options || {};
 
-  $('.a0-loading').css('display', 'none');
-  $('.a0-loggedin').css('display', 'none');
-  $('.a0-notloggedin').css('display', 'none');
-  $('.a0-signup').css('display', 'none');
-  $('.a0-reset').css('display', 'none');
-  $('.a0-signin input[type=password]').val('');
-
-  if (!options.mode) {
-    this._hasLoggedInBefore = !!options.isReturningUser;
-    this._setTitle(this._dict.t('signin:title'));
-
-    $(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin').css('display', '');
-    self._setTop();
-
-    try {
-      $('input', container).each(function (elem) {
-        elem.focus(); // workaround to enable password placeholders with placeholders.js
-      });
-
-      if (options.isReturningUser) $('.a0-loggedin .a0-password input').first().focus();
-      else $('.a0-notloggedin .a0-email input').first().focus();
-    } catch(e) {
-      console.log(e);
-    }
-
-    return;
+  if(!self._currentPane && options.mode === 'loading') {
+    self._currentPane = $('.a0-loading');
+    self.emit('transition_mode', 'loading');
+    return callback(null, self._currentPane);
   }
 
-  var container;
+  self._currentPane = self._currentPane || $('.a0-loading');
+  options = options || {};
 
-  switch (options.mode) {
-    case 'loading':
-      this._setTitle(this._dict.t('loadingTitle'));
-      container = $('.a0-loading').first();
+  var mode = options.mode || null;
+  var newPane, title;
+
+  switch (mode) {
+    case null:
+      title = this._dict.t('signin:title');
+      newPane = $(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin');
+      break;
+   case 'loading':
+      title = this._dict.t('signin:title');
+      newPane = $('.a0-loading').first();
       break;
     case 'signup':
-      this._setTitle(this._dict.t('signup:title'));
-      container = $('.a0-signup').first();
-      break;
     case 'reset':
-      this._setTitle(this._dict.t('reset:title'));
-      container = $('.a0-reset').first();
+      title = this._dict.t(options.mode + ':title');
+      newPane = $('.a0-' + options.mode).first();
       break;
   }
 
-  if (container) {
-    this._setTop();
-    container.css('display', '');
-
-    try {
-      var email = $('.a0-notloggedin .email input').val();
-
-      $('input', container).each(function (elem) {
-        elem.focus(); // workaround to enable password placeholders with placeholders.js
-      });
-
-      $('.a0-email input', container).val(email);
-      $('.a0-email input', container).first().focus();
-    } catch(e) {
-      console.log(e);
-    }
+  if (!hasTransitions()) {
+    self._setTitle(title);
+    self._currentPane.hide();
+    self._currentPane = newPane.show();
+    setTimeout(function () {
+      self.emit('transition_mode', mode || 'signin');
+    }, 0);
+    return callback(null, self._currentPane);
   }
+
+  var pane_container = $('.a0-onestep');
+  var original_height = pane_container
+                          .addClass('a0-disable-transition')
+                          .css('height', 'auto')
+                          .dim().height;
+
+  pane_container.css('min-height', original_height.toString() + 'px');
+
+  //do not hide yet
+  self._currentPane
+      .css('position', 'absolute')
+      .css('left', '-1000px');
+
+  newPane
+    .show()
+    .css('visibility', 'hidden');
+
+  pane_container.css('min-height', '');
+
+  var new_height = pane_container.dim().height;
+
+  pane_container.css('min-height', original_height.toString() + 'px');
+
+  newPane.css('visibility', '').hide();
+
+  self._currentPane
+      .css('position', '')
+      .css('left', '')
+      .show();
+
+  pane_container
+    .css('height', original_height.toString() + 'px')
+    .css('min-height', '');
+
+  setTimeout(function () {
+    pane_container.removeClass('a0-disable-transition');
+    setTimeout(function () {
+      bean.on(pane_container[0], 'transitionend', function () {
+        bean.off(pane_container[0], 'transitionend');
+        self._setTitle(title);
+        self._currentPane.hide();
+        self._currentPane = newPane.show();
+        setTimeout(function () {
+          self.emit('transition_mode', mode || 'signin');
+          callback(null, self._currentPane);
+        }, 10);
+      });
+      pane_container.css('height', new_height.toString() + 'px');
+    }, 10);
+  }, 10);
+};
+
+Auth0Widget.prototype._setLoginView = function(options, callback) {
+  this._transitionMode(options, function (err, currentPane) {
+    $('input', currentPane).first().focus();
+    if (callback) callback();
+  });
 };
 
 Auth0Widget.prototype._showLoggedInExperience = function() {
   var self = this;
   var strategy_name = this._ssoData.lastUsedConnection.strategy;
   var strategy = this._strategies[strategy_name];
-  this._setLoginView({ isReturningUser: !!strategy });
 
   if (!strategy) return;
 
-  var loginView = this._getActiveLoginView();
-  bean.on($('form', loginView)[0], 'submit', function (e) { self._signInEnterprise(e); });
+  var loginView = $('.a0-loggedin');
+
+  bean.on($('form', loginView)[0], 'submit', function (e) {
+    self._signInEnterprise(e);
+  });
 
   var button;
   if (strategy_name !== 'auth0') {
@@ -6439,32 +7711,34 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
       username: this._ssoData.lastUsedUsername
     }));
 
-    bean.on(button[0], 'click', function (e) { self._signInSocial(e.target); });
-
     $('.a0-strategy span', loginView).each(function (el) { if (el) el.remove(); });
     $('.a0-strategy', loginView).append(button);
+    bean.on(button[0], 'click', function (e) {
+      self._signInSocial(e.target);
+    });
   }
 
   bean.on($('.a0-all', loginView)[0], 'click', function () {
     self._setLoginView();
   });
 
-  if (this._ssoData.lastUsedUsername) {
-    if (strategy_name === 'auth0') {
-      $('.a0-email-readonly', loginView).html(this._ssoData.lastUsedUsername);
-      $('.a0-email input', loginView).css('display', 'none');
-      $('.a0-emailPassword', loginView).css('display', '');
-    }
-    else if (!strategy.social) {
-      button.html(this._ssoData.lastUsedUsername || strategy.title)
-            .attr('title', this._ssoData.lastUsedUsername || strategy.title);
-    }
+  if (this._ssoData.lastUsedUsername && strategy_name === 'auth0') {
+    $('.a0-email-readonly', loginView)
+      .html(this._ssoData.lastUsedUsername);
+
+    $('.a0-email input', loginView)
+      .val(this._ssoData.lastUsedUsername)
+      .hide();
+
+    $('.a0-emailPassword', loginView).show();
   }
-  $('.a0-spinner', loginView).css('display', 'none');
+
+  this._setLoginView({ isReturningUser: !!strategy });
 };
 
 // sign in methods
-Auth0Widget.prototype._signInSocial = function (target) {
+Auth0Widget.prototype._signInSocial = function (e) {
+  var target = e.target || e;
   var self = this;
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
   var strategy = this._getConfiguredStrategy(strategyName);
@@ -6479,10 +7753,13 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   e.preventDefault();
   e.stopPropagation();
 
+
   var self = this;
   var container = this._getActiveLoginView();
   var form = $('form', container);
   var valid = true;
+
+  this._setLoginView({ mode: 'loading' });
 
   var emailD = $('.a0-email', form),
       emailE = $('input[name=email]', form),
@@ -6536,15 +7813,15 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
 };
 
 Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
-  this._toggleSpinner();
-
   var self = this;
   var container = this._getActiveLoginView();
   var connection  = this._getAuth0Connection();
 
   var loginOptions = {
     connection: connection.name,
-    username: this._isAdLdapConn(connection.name) ? userName.replace('@' + connection.domain, '') : userName,
+    username: this._isAdLdapConn(connection.name) ?
+                userName.replace('@' + connection.domain, '') :
+                userName,
     password: signInPassword || $('.a0-password input', container).val()
   };
 
@@ -6552,10 +7829,10 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   this._auth0.login(loginOptions, function (err) {
     if (err) {
-      self._showError(self._parseResponseMessage(err, self._dict.t('signin:wrongEmailPasswordErrorText')));
+      self._setLoginView({}, function () {
+        self._showError(self._parseResponseMessage(err, self._dict.t('signin:wrongEmailPasswordErrorText')));
+      });
     }
-
-    self._toggleSpinner();
   });
 };
 
@@ -6564,12 +7841,10 @@ Auth0Widget.prototype._signUpWithAuth0 = function (e) {
   e.stopPropagation();
 
   var self = this;
-  var container = $('.a0-popup .a0-panel.a0-onestep .a0-signup');
+  var container = $('.a0-onestep .a0-signup');
   var email = $('.a0-email input', container).val();
   var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
-
-  this._toggleSpinner(container);
 
   this._auth0.signup({
     connection: connection.name,
@@ -6578,7 +7853,6 @@ Auth0Widget.prototype._signUpWithAuth0 = function (e) {
   }, function (err) {
     if (err) {
       self._showError(self._parseResponseMessage(err, self._dict.t('signup:serverErrorText')));
-      self._toggleSpinner(container);
       return;
     }
     return self._signInWithAuth0(email, password);
@@ -6590,19 +7864,16 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
   e.stopPropagation();
 
   var self = this;
-  var container = $('.a0-popup .a0-panel.a0-onestep .a0-reset');
+  var container = $('.a0-onestep .a0-reset');
   var email = $('.a0-email input', container).val();
   var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
-
-  this._toggleSpinner(container);
 
   this._auth0.changePassword({
     connection: connection.name,
     username:   email,
     password:   password
   }, function (err) {
-    self._toggleSpinner(container);
 
     $('.a0-password input', container).val('');
     $('.a0-repeatPassword input', container).val('');
@@ -6642,10 +7913,12 @@ Auth0Widget.prototype._initialize = function (cb) {
   }
 
   // buttons actions
-  bean.on($('.a0-popup .a0-panel.a0-onestep a.a0-close')[0], 'click', function () { self._hideSignIn(); });
-  bean.on($('.a0-popup .a0-panel.a0-onestep .a0-notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
-  bean.on($('.a0-popup .a0-panel.a0-onestep .a0-signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
-  bean.on($('.a0-popup .a0-panel.a0-onestep .a0-reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
+  if (!self._signinOptions.standalone) {
+    bean.on($('.a0-onestep a.a0-close')[0], 'click', function () { self._hideSignIn(); });
+  }
+  bean.on($('.a0-onestep .a0-notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
+  bean.on($('.a0-onestep .a0-signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
+  bean.on($('.a0-onestep .a0-reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
   bean.on(qwery('html')[0], 'keyup', function (e) {
     if ($().hasClass('mode-signin')) {
       if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
@@ -6660,8 +7933,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   }
 
   // images from cdn
-  $('.a0-popup .a0-panel header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
-  $('.a0-action .a0-spinner').css('background-image', 'url(' + self._signinOptions.cdn + 'img/spinner.gif)');
+  $(' header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
 
   // labels text
   var options = xtend(this._signinOptions, this._signinOptions.resources);
@@ -6680,7 +7952,7 @@ Auth0Widget.prototype._initialize = function (cb) {
     $('div.a0-active').removeClass('a0-overlay');
   }
 
-  $('.a0-popup h1').html(this._signinOptions.title);
+  $('.a0-popup h1').html(this._dict.t('signin:title'));
   $('.a0-popup .a0-invalid').removeClass('a0-invalid');
 
   $('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
@@ -6734,71 +8006,61 @@ Auth0Widget.prototype._initialize = function (cb) {
 Auth0Widget.prototype._resolveLoginView = function () {
   var self = this;
 
-  // if one connection only (but no userAndPass connection), redirect
-  if (this._client.strategies.length === 1 &&
-    !this._client.strategies[0].userAndPass &&
-    this._client.strategies[0].connections.length === 1) {
-
-    var loginOptions = xtend({
-      connection: self._client.strategies[0].connections[0].name
-    },
-    self._signinOptions.extraParameters);
-    self._auth0.login(loginOptions);
-
-    return;
-  }
+  var use_big_buttons = this._signinOptions['socialBigButtons'] || !this._areThereAnyEnterpriseOrDbConn();
 
   // load social buttons
-  var list = $('.a0-popup .a0-panel.a0-onestep .a0-iconlist');
+  var list = $('.a0-notloggedin .a0-iconlist');
   for (var s in self._client.strategies) {
     var strategy = self._client.strategies[s];
 
     if (strategy.userAndPass && strategy.connections.length > 0) {
       self._auth0Strategies.push(strategy);
-      $('.a0-create-account, .a0-password').css('display', 'block');
-
       bean.on($('.a0-notloggedin .a0-email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
     }
 
     if (strategy.social) {
-      var button = bonzo.create(buttonTmpl(strategy));
-
-      list.append(button);
-      list.css('display', 'block');
-
-      $('.a0-popup .a0-panel.a0-onestep .a0-separator').css('display', 'block');
+      var m = xtend({}, strategy, {use_big_buttons: use_big_buttons});
+      var button = bonzo.create(buttonTmpl(m));
+      list.append(button)
+          .css('display', 'block');
+      $('.a0-onestep .a0-separator').css('display', 'block');
     }
   }
 
-  $('.a0-popup .a0-panel.a0-onestep .a0-iconlist span').each(function (button) {
-    bean.on(button, 'click', function (e) {
-      self._signInSocial(e.target);
+  $('span', list).each(function (el) {
+    bean.on(el, 'click', function (e) {
+      self._signInSocial(e);
     });
   });
 
-  this._signinOptions.socialBigButtons = typeof this._signinOptions['socialBigButtons'] !== 'undefined' ? this._signinOptions['socialBigButtons'] : !this._areThereAnyEnterpriseOrDbConn();
-  $('.a0-popup .a0-panel.a0-onestep .a0-iconlist span')
-    .toggleClass('a0-icon', !this._signinOptions.socialBigButtons)
-    .toggleClass('a0-block', this._signinOptions.socialBigButtons);
-
   // show signup/forgot links
   var auth0Conn = this._getAuth0Connection();
-  if (auth0Conn) {
-    this._signinOptions.showSignup = auth0Conn.showSignup;
-    this._signinOptions.showForgot = auth0Conn.showForgot;
-  }
+  var actions = bonzo.create(loginActionsTmpl({
+    showSignup: (this._signinOptions.showSignup !== false) && ((auth0Conn && auth0Conn.showSignup) || this._signinOptions.signupLink),
+    showForgot: (this._signinOptions.showForgot !== false) && ((auth0Conn && auth0Conn.showForgot) || this._signinOptions.forgotLink),
+    i18n: this._dict,
+    signupLink: this._signinOptions.signupLink,
+    forgotLink: this._signinOptions.forgotLink,
+  }));
 
-  if (!this._signinOptions.signupLink) {
-    bean.on($('.a0-panel .a0-create-account .a0-sign-up')[0], 'click', function (e) { self._showSignUpExperience(e); });
-  }
+  $('.a0-db-actions').append(actions);
 
-  if (!this._signinOptions.forgotLink) {
-    $('.a0-panel .a0-create-account .a0-forgot-pass').each(function (elem) {
-      bean.on(elem, 'click', function (e) { self._showResetExperience(e); });
+  var signup_btn = $('.a0-sign-up')[0];
+  if (!this._signinOptions.signupLink && signup_btn) {
+    bean.on(signup_btn, 'click', function (e) {
+      self._showSignUpExperience(e);
     });
   }
 
-  $('div.a0-panel input').each(function (e) { e.value = ''; });
+  if (!this._signinOptions.forgotLink) {
+    $('.a0-forgot-pass').each(function (el) {
+      bean.on(el, 'click', function (e) {
+        self._showResetExperience(e);
+      });
+    });
+  }
+
+  $('.a0-panel input').val('');
 
   $('.a0-panel .a0-signup .a0-email input').each(function (i) {
       bean.on(i, 'input', function() {
@@ -6831,23 +8093,15 @@ Auth0Widget.prototype._resolveLoginView = function () {
   var anyEnterpriseOrDbConnection = self._areThereAnyEnterpriseOrDbConn();
   var anySocialConnection = self._areThereAnySocialConn();
 
-  $('.a0-panel .a0-email input').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.a0-panel .a0-zocial.a0-primary').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.a0-panel .a0-password input').css('display', self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.a0-panel .a0-separator').css('display', self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
+  $('.a0-panel .a0-email input').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.a0-panel .a0-zocial.a0-primary').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.a0-panel .a0-password').show(self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? 'block' : 'none');
+  $('.a0-panel .a0-separator').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
 
   // if user logged in show logged in experience
-  if (self._ssoData.sso) {
-    if (self._ssoData.lastUsedUsername &&
-        !self._strategies[self._ssoData.lastUsedConnection.strategy].social) {
-      $('div.a0-panel.a0-onestep input').val(self._ssoData.lastUsedUsername);
-      self._showOrHidePassword();
-    }
-
-    if (self._signinOptions['enableReturnUserExperience']) {
-      self._showLoggedInExperience();
-      return;
-    }
+  if (self._ssoData.sso && self._signinOptions['enableReturnUserExperience']) {
+    self._showLoggedInExperience();
+    return;
   }
 
   self._setLoginView({ isReturningUser: self._ssoData.sso });
@@ -6856,6 +8110,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
 Auth0Widget.prototype.parseHash = function (hash, callback) {
   this._auth0.parseHash(hash, callback);
 };
+
 
 Auth0Widget.prototype.show = function (signinOptions, callback) {
   if (typeof signinOptions === 'function') {
@@ -6890,7 +8145,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     self._signinOptions.top = true;
 
     var specifiedContainer = document.getElementById(self._signinOptions.container);
-    specifiedContainer.innerHTML = mainTmpl({
+    specifiedContainer.innerHTML = embTmpl({
       embedded: true,
       i18n:     this._dict,
       options:  self._signinOptions
@@ -6907,15 +8162,25 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     document.body.appendChild(div);
   }
 
+  if (placeholderSupported) {
+    $('.a0-sad-placeholder').remove();
+  }
+
   self._initialize(callback);
+
+  return self;
 };
 
 module.exports = Auth0Widget;
 
-},{"../i18n":7,"../lib/insert-css":14,"./html/button.ejs":38,"./html/loggedin_button.ejs":39,"./html/main.ejs":40,"./js/strategies":43,"./js/utils":44,"auth0-js":18,"bean":26,"bonzo":27,"qwery":29,"underscore":30,"xtend":32}],42:[function(require,module,exports){
-/* Placeholders.js v3.0.0 */
-(function(t){"use strict";function e(t,e,r){return t.addEventListener?t.addEventListener(e,r,!1):t.attachEvent?t.attachEvent("on"+e,r):void 0}function r(t,e){var r,n;for(r=0,n=t.length;n>r;r++)if(t[r]===e)return!0;return!1}function n(t,e){var r;t.createTextRange?(r=t.createTextRange(),r.move("character",e),r.select()):t.selectionStart&&(t.focus(),t.setSelectionRange(e,e))}function a(t,e){try{return t.type=e,!0}catch(r){return!1}}t.Placeholders={Utils:{addEventListener:e,inArray:r,moveCaret:n,changeType:a}}})(this),function(t){"use strict";function e(){}function r(t,e){var r,n,a=!!e&&t.value!==e,u=t.value===t.getAttribute(V);return(a||u)&&"true"===t.getAttribute(D)?(t.removeAttribute(D),t.value=t.value.replace(t.getAttribute(V),""),t.className=t.className.replace(R,""),n=t.getAttribute(z),n&&(t.setAttribute("maxLength",n),t.removeAttribute(z)),r=t.getAttribute(I),r&&(t.type=r),!0):!1}function n(t){var e,r,n=t.getAttribute(V);return""===t.value&&n?(t.setAttribute(D,"true"),t.value=n,t.className+=" "+k,r=t.getAttribute(z),r||(t.setAttribute(z,t.maxLength),t.removeAttribute("maxLength")),e=t.getAttribute(I),e?t.type="text":"password"===t.type&&K.changeType(t,"text")&&t.setAttribute(I,"password"),!0):!1}function a(t,e){var r,n,a,u,i;if(t&&t.getAttribute(V))e(t);else for(r=t?t.getElementsByTagName("input"):p,n=t?t.getElementsByTagName("textarea"):b,i=0,u=r.length+n.length;u>i;i++)a=r.length>i?r[i]:n[i-r.length],e(a)}function u(t){a(t,r)}function i(t){a(t,n)}function l(t){return function(){m&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)?K.moveCaret(t,0):r(t)}}function o(t){return function(){n(t)}}function c(t){return function(e){return f=t.value,"true"===t.getAttribute(D)&&f===t.getAttribute(V)&&K.inArray(C,e.keyCode)?(e.preventDefault&&e.preventDefault(),!1):void 0}}function s(t){return function(){r(t,f),""===t.value&&(t.blur(),K.moveCaret(t,0))}}function d(t){return function(){t===document.activeElement&&t.value===t.getAttribute(V)&&"true"===t.getAttribute(D)&&K.moveCaret(t,0)}}function g(t){return function(){u(t)}}function v(t){t.form&&(L=t.form,L.getAttribute(P)||(K.addEventListener(L,"submit",g(L)),L.setAttribute(P,"true"))),K.addEventListener(t,"focus",l(t)),K.addEventListener(t,"blur",o(t)),m&&(K.addEventListener(t,"keydown",c(t)),K.addEventListener(t,"keyup",s(t)),K.addEventListener(t,"click",d(t))),t.setAttribute(U,"true"),t.setAttribute(V,E),(m||t!==document.activeElement)&&n(t)}var p,b,m,h,f,A,y,E,x,L,T,N,S,w=["text","search","url","tel","email","password","number","textarea"],C=[27,33,34,35,36,37,38,39,40,8,46],B="#ccc",k="placeholdersjs",R=RegExp("(?:^|\\s)"+k+"(?!\\S)"),V="data-placeholder-value",D="data-placeholder-active",I="data-placeholder-type",P="data-placeholder-submit",U="data-placeholder-bound",j="data-placeholder-focus",q="data-placeholder-live",z="data-placeholder-maxlength",F=document.createElement("input"),G=document.getElementsByTagName("head")[0],H=document.documentElement,J=t.Placeholders,K=J.Utils;if(J.nativeSupport=void 0!==F.placeholder,!J.nativeSupport){for(p=document.getElementsByTagName("input"),b=document.getElementsByTagName("textarea"),m="false"===H.getAttribute(j),h="false"!==H.getAttribute(q),A=document.createElement("style"),A.type="text/css",y=document.createTextNode("."+k+" { color:"+B+"; }"),A.styleSheet?A.styleSheet.cssText=y.nodeValue:A.appendChild(y),G.insertBefore(A,G.firstChild),S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E&&(E=E.nodeValue,E&&K.inArray(w,T.type)&&v(T));x=setInterval(function(){for(S=0,N=p.length+b.length;N>S;S++)T=p.length>S?p[S]:b[S-p.length],E=T.attributes.placeholder,E?(E=E.nodeValue,E&&K.inArray(w,T.type)&&(T.getAttribute(U)||v(T),(E!==T.getAttribute(V)||"password"===T.type&&!T.getAttribute(I))&&("password"===T.type&&!T.getAttribute(I)&&K.changeType(T,"text")&&T.setAttribute(I,"password"),T.value===T.getAttribute(V)&&(T.value=E),T.setAttribute(V,E)))):T.getAttribute(D)&&(r(T),T.removeAttribute(V));h||clearInterval(x)},100)}J.disable=J.nativeSupport?e:u,J.enable=J.nativeSupport?e:i}(this);
-},{}],43:[function(require,module,exports){
+},{"../i18n":7,"../lib/insert-css":15,"./html/button.ejs":43,"./html/loggedin_button.ejs":44,"./html/login_actions.ejs":45,"./html/main.ejs":46,"./html/main_embedded.ejs":47,"./js/placeholderSupported":49,"./js/strategies":50,"./js/utils":51,"auth0-js":19,"bean":27,"bonzo":28,"events":30,"has-transitions":33,"qwery":34,"underscore":35,"xtend":37}],49:[function(require,module,exports){
+function placeholderIsSupported() {
+  var test = document.createElement('input');
+  return ('placeholder' in test);
+}
+
+module.exports = placeholderIsSupported();
+},{}],50:[function(require,module,exports){
 module.exports = {
     'google-openid': {
         css: 'google',
@@ -7046,7 +8311,7 @@ module.exports = {
         social: true
     }
 };
-},{}],44:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 module.exports = {
   parseUrl: function (url) {
     var parser = document.createElement('a');
@@ -7059,5 +8324,5 @@ module.exports = {
   }
 };
 
-},{}]},{},[42,37])
+},{}]},{},[42])
 ;

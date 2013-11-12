@@ -8,12 +8,13 @@ module.exports = function (grunt) {
       test: {
         options: {
           // base: "test",
-          hostname: '0.0.0.0',
+          hostname: '*',
           port: 9999
         }
       },
       example: {
         options: {
+          hostname: '*',
           base: 'example',
           port: 3000
         }
@@ -33,7 +34,6 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'build/auth0-widget.js': [
-            'widget/js/placeholders.js',
             'standalone.js'
           ]
         },
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
       },
       debug: {
         files: {
-          'build/auth0-widget.debug.js': ['widget/js/placeholders.js', 'standalone.js']
+          'build/auth0-widget.debug.js': ['standalone.js']
         },
         options: {
           // transform: ['ejsify', 'brfs'],
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
     },
     autoprefixer: {
       options: {
-
+        browsers: ['> 1%', 'last 2 versions', 'ff 15', 'opera 12.1', 'ie 8']
       },
       main: {
         src:  'widget/css/main.css',

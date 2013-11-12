@@ -1,0 +1,15 @@
+<label class="a0-create-account">
+  <% if (showSignup) { %>
+  <a href="<%= locals.signupLink || 'javascript: {}' %>"
+    class="a0-sign-up">
+    <%= i18n.t('signin:signupText') %>
+  </a>
+  <% } %>
+  <% if (showSignup && showForgot) { %>
+  <span class="a0-divider">&nbsp;•&nbsp;</span>
+  <% } %>
+  <% if (showForgot) { %>
+  <a href="<%= locals.forgotLink || 'javascript: {}' %>"
+    class="a0-forgot-pass"><%= i18n.t('signin:forgotText') %></a>
+  <% } %>
+</label>
