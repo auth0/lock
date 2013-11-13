@@ -459,7 +459,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   if (valid) {
     this._setLoginView({ mode: 'loading' }, function () {
       var loginOptions = xtend({ connection: connection }, self._signinOptions.extraParameters);
-      this._auth0.login(loginOptions);
+      self._auth0.login(loginOptions);
     });
   }
 };
