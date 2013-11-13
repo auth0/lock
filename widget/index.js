@@ -457,9 +457,10 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
 
   if (valid) {
-    this._setLoginView({ mode: 'loading' });
-    var loginOptions = xtend({ connection: connection }, self._signinOptions.extraParameters);
-    this._auth0.login(loginOptions);
+    this._setLoginView({ mode: 'loading' }, function () {
+      var loginOptions = xtend({ connection: connection }, self._signinOptions.extraParameters);
+      this._auth0.login(loginOptions);
+    });
   }
 };
 
@@ -478,12 +479,14 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   loginOptions = xtend(loginOptions, self._signinOptions.extraParameters);
 
-  this._auth0.login(loginOptions, function (err) {
-    if (err) {
-      self._setLoginView({}, function () {
-        self._showError(self._parseResponseMessage(err, self._dict.t('signin:wrongEmailPasswordErrorText')));
-      });
-    }
+ this._setLoginView({ mode: 'loading' }, function (){
+    self._auth0.login(loginOptions, function (err) {
+      if (err) {
+        self._setLoginView({}, function () {
+          self._showError(self._parseResponseMessage(err, self._dict.t('signin:wrongEmailPasswordErrorText')));
+        });
+      }
+    });
   });
 };
 
