@@ -21,6 +21,8 @@ var placeholderSupported = require('./js/placeholderSupported');
 
 var object_create = require('./js/Object.create');
 
+var transition_end = require('./js/transition_end');
+
 var $ = function (selector, root) {
   return bonzo(qwery('#a0-widget ' + (selector || ''), root));
 };
@@ -314,8 +316,8 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
   setTimeout(function () {
     pane_container.removeClass('a0-disable-transition');
     setTimeout(function () {
-      bean.on(pane_container[0], 'transitionend', function () {
-        bean.off(pane_container[0], 'transitionend');
+      transition_end.on(pane_container[0], function () {
+        transition_end.off(pane_container[0]);
         self._setTitle(title);
         self._currentPane.hide();
         self._currentPane = newPane.show();

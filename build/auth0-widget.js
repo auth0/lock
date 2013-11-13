@@ -7369,6 +7369,8 @@ var placeholderSupported = require('./js/placeholderSupported');
 
 var object_create = require('./js/Object.create');
 
+var transition_end = require('./js/transition_end');
+
 var $ = function (selector, root) {
   return bonzo(qwery('#a0-widget ' + (selector || ''), root));
 };
@@ -7662,8 +7664,8 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
   setTimeout(function () {
     pane_container.removeClass('a0-disable-transition');
     setTimeout(function () {
-      bean.on(pane_container[0], 'transitionend', function () {
-        bean.off(pane_container[0], 'transitionend');
+      transition_end.on(pane_container[0], function () {
+        transition_end.off(pane_container[0]);
         self._setTitle(title);
         self._currentPane.hide();
         self._currentPane = newPane.show();
@@ -8180,7 +8182,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
 
 module.exports = Auth0Widget;
 
-},{"../i18n":7,"../lib/insert-css":15,"./html/button.ejs":43,"./html/loggedin_button.ejs":44,"./html/login_actions.ejs":45,"./html/main.ejs":46,"./html/main_embedded.ejs":47,"./js/Object.create":49,"./js/placeholderSupported":50,"./js/strategies":51,"./js/utils":52,"auth0-js":19,"bean":27,"bonzo":28,"events":30,"has-transitions":33,"qwery":34,"underscore":35,"xtend":37}],49:[function(require,module,exports){
+},{"../i18n":7,"../lib/insert-css":15,"./html/button.ejs":43,"./html/loggedin_button.ejs":44,"./html/login_actions.ejs":45,"./html/main.ejs":46,"./html/main_embedded.ejs":47,"./js/Object.create":49,"./js/placeholderSupported":50,"./js/strategies":51,"./js/transition_end":52,"./js/utils":53,"auth0-js":19,"bean":27,"bonzo":28,"events":30,"has-transitions":33,"qwery":34,"underscore":35,"xtend":37}],49:[function(require,module,exports){
 //ie9 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create#Polyfill
 module.exports = Object.create || (function(){
   function F(){}
@@ -8332,6 +8334,35 @@ module.exports = {
     }
 };
 },{}],52:[function(require,module,exports){
+var transitionendNames = [
+    'transitionend',
+    'webkitTransitionEnd',
+    'MozTransitionEnd',
+    'oTransitionEnd'
+];
+
+var bean = require('bean');
+
+module.exports.on = function (el, callback) {
+  function subscribe(name) {
+    bean.on(el, name, function (e) {
+      callback(e);
+    });
+  }
+  for (var i = 0; i < transitionendNames.length; i++) {
+    subscribe(transitionendNames[i]);
+  }
+};
+
+module.exports.off = function (el) {
+  function subscribe(name) {
+    bean.off(el, name);
+  }
+  for (var i = 0; i < transitionendNames.length; i++) {
+    subscribe(transitionendNames[i]);
+  }
+};
+},{"bean":27}],53:[function(require,module,exports){
 module.exports = {
   parseUrl: function (url) {
     var parser = document.createElement('a');
