@@ -35,7 +35,7 @@ describe('db connections', function () {
     });
   });
 
-  describe('when username or password is empty', function () {
+  describe.skip('when username or password is empty', function () {
     after(function () {
       $('#a0-widget').parents('div').remove();
       global.window.location.hash = '';
