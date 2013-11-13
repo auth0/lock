@@ -103,7 +103,7 @@ Auth0Widget.prototype._showError = function (error) {
 
 Auth0Widget.prototype._showSuccess = function (message) {
   if (!message) return;
-  $('.signin h1').css('display', 'none');
+  $('.a0-header h1').css('display', 'none');
   $('.a0-error').css('display', 'none');
   $('.a0-success').html(message).css('display', '');
 };
@@ -518,6 +518,8 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
   var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
 
+  self._setLoginView({ mode: 'loading' });
+
   this._auth0.changePassword({
     connection: connection.name,
     username:   email,
@@ -538,8 +540,9 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
       $('.a0-email input', container).first().focus();
     } catch(e) {}
 
-    self._setLoginView();
-    self._showSuccess(self._signinOptions['resetSuccessText']);
+    self._setLoginView({}, function () {
+      self._showSuccess(self._dict.t('reset:successText'));
+    });
   });
 };
 
