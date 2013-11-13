@@ -5,6 +5,11 @@
   margin: 0;
 }
 
+.popup .overlay.ie8-overlay {
+  background: none;
+  background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png')
+}
+
 .popup .overlay {
   margin: 0;
   display: table;
@@ -218,7 +223,7 @@
   box-shadow: inset 0 -1px 2px rgba(82,93,112,0.4);
 }
 
-.popup .panel header {
+.popup .panel .header {
 display: block;
 position: relative;
 min-height: 65px;
@@ -235,7 +240,7 @@ background-image: linear-gradient(#f1f4f6, #e9edf0);
 border-bottom: 1px solid rgba(40,69,85,0.11);
 }
 
-.popup .panel header:before {
+.popup .panel .header:before {
   content: '';
   position: absolute;
   height: 5px;
@@ -249,7 +254,7 @@ border-bottom: 1px solid rgba(40,69,85,0.11);
   background-image: linear-gradient(rgba(40,69,85,0), rgba(40,69,85,0.1));
 }
 
-.popup .panel header:after {
+.popup .panel .header:after {
 content: '';
 position: absolute;
 height: 4px;
@@ -263,7 +268,7 @@ background-image: -o-linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0
 background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
 }
 
-.popup .panel header h1 {
+.popup .panel .header h1 {
   padding: 21px 20px;
   margin: 0;
   font-size: 18px;
@@ -273,7 +278,7 @@ background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
   text-align: left;
 }
 
-.popup .panel header a {
+.popup .panel .header a {
   display: block;
   overflow: hidden;
   text-indent: 200%;
@@ -284,15 +289,15 @@ background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
   z-index: 5;
 }
 
-.popup .panel header a:hover {
+.popup .panel .header a:hover {
   opacity: 0.66;
 }
 
-.popup .panel header a:active {
+.popup .panel .header a:active {
   opacity: 1;
 }
 
-.popup .panel header a.close {
+.popup .panel .header a.close {
   height: 12px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -302,11 +307,11 @@ background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
   cursor: pointer;
 }
 
-.popup .panel header a.close:hover {
+.popup .panel .header a.close:hover {
   opacity: 0.66;
 }
 
-.popup .panel header img {
+.popup .panel .header img {
   height: 32px;
   margin: 16px 10px 10px 20px;
   position: relative;
@@ -334,7 +339,7 @@ background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
   border-radius: .3em;
 }
 
-.popup .panel footer {
+.popup .panel .footer {
   display: block;
   position: relative;
   -moz-border-radius: 0 0 5px 5px;
@@ -348,21 +353,21 @@ background-image: linear-gradient(left, #e9edf0, rgba(241,244,246,0), #e9edf0);
   z-index: 5;
 }
 
-.popup .panel footer.hide {
+.popup .panel .footer.hide {
   height: 1px;
   border-top: 0px;
 }
 
-.popup .panel footer.hide span {
+.popup .panel .footer.hide span {
   display: none;
 }
 
-.popup .panel footer span {
+.popup .panel .footer span {
   font-size: 10px;
   color: #666;
 }
 
-.popup .panel footer a {
+.popup .panel .footer a {
   font-size: 9px;
   color: #333;
   font-weight: bold;
@@ -530,7 +535,7 @@ form .invalid input {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 4px 0 rgba(255, 0, 0, 0.5);
 }
 
-header .error {
+.header .error {
   padding: 9px 0px;
   margin: 10px auto;
   width: 70%;
@@ -540,7 +545,7 @@ header .error {
   text-align: center;
 }
 
-header .success {
+.header .success {
   padding: 9px 0px;
   margin: 10px auto;
   width: 70%;
@@ -698,16 +703,16 @@ span.back:hover {
   form input {
     padding: 5px;
   }
-  .popup .panel header {
+  .popup .panel .header {
     margin: 0;
     padding: 0;
   }
-  .popup .panel header h1 {
+  .popup .panel .header h1 {
     padding: 14px 16px;
     margin: 0;
     font-size: 22px;
   }
-  .popup .panel header a.close {
+  .popup .panel .header a.close {
     right: 14px;
     top: 16px;
   }
@@ -734,18 +739,18 @@ span.back:hover {
     padding: 6px;
     font-size: 18px;
   }
-  .popup .panel header {
+  .popup .panel .header {
     margin: 0;
     padding: 0;
     min-height: 32px;
   }
-  .popup .panel header h1 {
+  .popup .panel .header h1 {
     padding: 12px 16px;
     margin-top: 1px;
     font-size: 20px;
   }
 
-  .popup .panel header img {
+  .popup .panel .header img {
     height: 32px;
     margin: 9px 10px 6px 18px;
   }

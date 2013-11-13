@@ -1,6 +1,6 @@
 <div id="a0-onestep" class="a0-panel a0-onestep">
     <% if (!locals.embedded) { %>
-    <header class="a0-header">
+    <div class="a0-header">
         <div class="a0-image" style="display: <%= !options.showIcon ? 'none' : 'block' %>">
             <img src="<%= options.icon || '' %>">
         </div>
@@ -8,7 +8,7 @@
         <h2 class="a0-error" style="display: none">&nbsp;</h2>
         <h2 class="a0-success" style="display: none">&nbsp;</h2>
         <a class="a0-close" style="display: <%= options.standalone ? 'none' : 'block' %>;"><%= i18n.t('close') %></a>
-    </header>
+    </div>
     <% } %>
 
     <div class="a0-loading a0-mode">
@@ -34,7 +34,7 @@
     <% include modes/signup %>
     <% include modes/reset %>
 
-    <footer>
+    <div class='a0-footer'>
         <span>Powered by <a href="http://auth0.com" target="_new">Auth0</a></span>
-    </footer>
+    </div>
 </div>

@@ -79,7 +79,7 @@ describe('auth0-Widget', function () {
     widget.show();
     widget.on('transition_mode', function (mode) {
       if (mode !== 'signin') return;
-      bean.fire($('#a0-widget header a.a0-close')[0], 'click');
+      bean.fire($('#a0-widget a.a0-close')[0], 'click');
     }).on('closed', function () {
       expect($('#a0-widget').css('display')).to.equal('none');
       done();
