@@ -411,8 +411,6 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var form = $('form', container);
   var valid = true;
 
-  this._setLoginView({ mode: 'loading' });
-
   var emailD = $('.a0-email', form),
       emailE = $('input[name=email]', form),
       emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.exec(emailE.val().toLowerCase()),
@@ -459,6 +457,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
 
   if (valid) {
+    this._setLoginView({ mode: 'loading' });
     var loginOptions = xtend({ connection: connection }, self._signinOptions.extraParameters);
     this._auth0.login(loginOptions);
   }
