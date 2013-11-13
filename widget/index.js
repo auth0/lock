@@ -71,10 +71,9 @@ Auth0Widget.prototype._getApp = function () {
   };
 
   var script = document.createElement('script');
-  script.type = 'text/javascript';
   script.src = this._options.assetsUrl +
                'client/' + this._options.clientID + '.js' +
-               '?t' + Date.now().toString();
+               '?t' + (+new Date); //Date.now() doesnt work on ie.
 
   var firstScript = document.getElementsByTagName('script')[0];
   firstScript.parentNode.insertBefore(script, firstScript);
@@ -332,7 +331,9 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
 
 Auth0Widget.prototype._setLoginView = function(options, callback) {
   this._transitionMode(options, function (err, currentPane) {
-    $('input', currentPane).first().focus();
+    try {
+      $('input', currentPane).first().focus();
+    } catch(e){}
     if (callback) callback();
   });
 };
@@ -581,11 +582,11 @@ Auth0Widget.prototype._initialize = function (cb) {
 
   if (self._client.subscription && self._client.subscription !== 'free') {
     // hide footer for non free subscriptions
-    $('footer').addClass('a0-hide');
+    $('.a0-footer').addClass('a0-hide');
   }
 
   // images from cdn
-  $(' header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
+  $('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
 
   // labels text
   var options = xtend(this._signinOptions, this._signinOptions.resources);
@@ -814,6 +815,10 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
       alt_spinner: !hasTransitions() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
     });
     document.body.appendChild(div);
+
+    if ($('.a0-overlay').css("background-image").indexOf("radial") < 0) {
+      $('.a0-overlay').addClass('a0-ie8-overlay');
+    }
   }
 
   if (placeholderSupported) {

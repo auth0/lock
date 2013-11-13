@@ -98,7 +98,8 @@ module.exports = function (grunt) {
     copy: {
       example: {
         files: {
-          'example/auth0-widget.js':  'build/auth0-widget.debug.js',
+          'example/auth0-widget.min.js': 'build/auth0-widget.min.js',
+          'example/auth0-widget.js':     'build/auth0-widget.debug.js'
         }
       }
     },
