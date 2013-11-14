@@ -1837,7 +1837,7 @@ Credit to @guillermovs for suggesting
   border-bottom: 1px solid rgba(40, 69, 85, 0.11);
 }
 
-#a0-widget .a0-popup .a0-panel .a0-header:before {
+#a0-widget .a0-popup .a0-panel .a0-top-header:before {
   content: '';
   position: absolute;
   height: 5px;
@@ -1850,7 +1850,7 @@ Credit to @guillermovs for suggesting
   background-image: linear-gradient(rgba(40, 69, 85, 0), rgba(40, 69, 85, 0.1));
 }
 
-#a0-widget .a0-popup .a0-panel .a0-header:after {
+#a0-widget .a0-popup .a0-panel .a0-top-header:after {
   content: '';
   position: absolute;
   height: 4px;

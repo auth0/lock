@@ -61,9 +61,6 @@ function Auth0Widget (options) {
 
   EventEmitter.call(this);
   var self = this;
-  this.on('transition_mode', function (mode) {
-    self.emit(mode + '_ready');
-  });
 }
 
 Auth0Widget.prototype = object_create(EventEmitter.prototype);
@@ -249,6 +246,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
   if(!self._currentPane && options.mode === 'loading') {
     self._currentPane = $('.a0-loading');
     self.emit('transition_mode', 'loading');
+    self.emit('loading_ready');
     return callback(null, self._currentPane);
   }
 
@@ -280,6 +278,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
     self._currentPane = newPane.show();
     setTimeout(function () {
       self.emit('transition_mode', mode || 'signin');
+      self.emit((mode || 'signin') + '_ready');
     }, 0);
     return callback(null, self._currentPane);
   }
@@ -328,6 +327,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
         self._currentPane = newPane.show();
         setTimeout(function () {
           self.emit('transition_mode', mode || 'signin');
+          self.emit((mode || 'signin') + '_ready');
           callback(null, self._currentPane);
         }, 10);
       });

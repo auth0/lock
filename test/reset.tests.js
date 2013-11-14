@@ -1,7 +1,7 @@
 describe('reset', function () {
   afterEach(function () {
     this.auth0.removeAllListeners('transition_mode');
-    $('#a0-widget').parents('div').remove();
+    $('#a0-widget').remove();
     global.window.location.hash = '';
     global.window.Auth0 = null;
   });
