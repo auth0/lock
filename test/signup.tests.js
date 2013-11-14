@@ -21,7 +21,7 @@ describe('sign up', function () {
     }).once('signup_ready', function () {
       $('#a0-signup_easy_email').val('pepo@example.com');
       $('#a0-signup_easy_password').val('123');
-      auth0.on('loading_ready', function () {
+      auth0.once('loading_ready', function () {
         expect($('#a0-widget h1').html()).to.be(auth0._dict.t('signup:title'));
         auth0._hideSignIn(function () {
           done();

@@ -8,7 +8,7 @@ on_start:
 launchers:
 
   bs_firefox:
-    command: browserstack launch --timeout 120 --attach firefox:22.0 <url>/test_harness.html
+    command: browserstack launch --timeout 120 --attach firefox:24.0 <url>/test_harness.html
     protocol: browser
 
   bs_chrome:
