@@ -2,6 +2,16 @@ var fs = require('fs');
 var pkg = require('./package');
 var cssPrefix = require('css-prefix');
 
+var minor_version = pkg.version.replace(/\.\d$/, '');
+var major_version = pkg.version.replace(/\.\d\.\d$/, '');
+var path = require('path');
+
+function  rename_release (v) {
+  return function (d, f) {
+    return path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + "$1.js"));
+  };
+}
+
 module.exports = function (grunt) {
   grunt.initConfig({
     connect: {
@@ -31,23 +41,11 @@ module.exports = function (grunt) {
       }
     },
     browserify: {
-      dist: {
-        files: {
-          'build/auth0-widget.js': [
-            'standalone.js'
-          ]
-        },
-        options: {
-          // transform: ['ejsify', 'brfs'],
-          debug: false
-        }
-      },
       debug: {
         files: {
-          'build/auth0-widget.debug.js': ['standalone.js']
+          'build/auth0-widget.js': ['standalone.js']
         },
         options: {
-          // transform: ['ejsify', 'brfs'],
           debug: true
         }
       },
@@ -99,8 +97,15 @@ module.exports = function (grunt) {
       example: {
         files: {
           'example/auth0-widget.min.js': 'build/auth0-widget.min.js',
-          'example/auth0-widget.js':     'build/auth0-widget.debug.js'
+          'example/auth0-widget.js':     'build/auth0-widget.js'
         }
+      },
+      release: {
+        files: [
+          { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(pkg.version) },
+          { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(minor_version) },
+          { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(major_version) }
+        ]
       }
     },
     exec: {
@@ -149,15 +154,27 @@ module.exports = function (grunt) {
       publish: {
         upload: [
           {
-            src:  'build/auth0-widget.min.js',
-            dest: 'w2/auth0-widget-' + pkg.version + '.min.js',
+            src:  'release/*',
+            dest: 'w2/',
             options: { gzip: true }
-          },
-          {
-            src:  'build/auth0-widget.debug.js',
-            dest: 'w2/auth0-widget-' + pkg.version + '.js'
-          },
+          }
         ]
+      }
+    },
+    invalidate_cloudfront: {
+      options: {
+        key:          process.env.S3_KEY,
+        secret:       process.env.S3_SECRET,
+        distribution: process.env.CDN_DISTRIBUTION
+      },
+      production: {
+        files: [{
+          expand: true,
+          cwd: 'release/',
+          src: ['**/*'],
+          filter: 'isFile',
+          dest: 'w2/'
+        }]
       }
     }
   });
@@ -174,11 +191,11 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
-                                       "browserify:dist", "browserify:debug", "uglify:min", "copy:example"]);
+                                       "browserify:debug", "uglify:min", "copy:example"]);
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["build", "s3"]);
+  grunt.registerTask("cdn",           ["build", "s3", "invalidate_cloudfront:production"]);
 };
