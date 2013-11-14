@@ -170,7 +170,7 @@ module.exports = function (grunt) {
       production: {
         files: [{
           expand: true,
-          cwd: 'release/',
+          cwd: './release/',
           src: ['**/*'],
           filter: 'isFile',
           dest: 'w2/'
@@ -197,5 +197,5 @@ module.exports = function (grunt) {
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["build", "s3", "invalidate_cloudfront:production"]);
+  grunt.registerTask("cdn",           ["build", "copy:release", "s3:publish", "invalidate_cloudfront:production"]);
 };
