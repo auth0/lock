@@ -7880,7 +7880,7 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
   var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
 
-  self._setLoginView({ mode: 'loading' }, function () {
+  self._setLoginView({ mode: 'loading', title: 'reset' }, function () {
     self._auth0.changePassword({
       connection: connection.name,
       username:   email,
