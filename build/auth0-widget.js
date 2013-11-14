@@ -7851,7 +7851,8 @@ Auth0Widget.prototype._signUpWithAuth0 = function (e) {
   this._auth0.signup({
     connection: connection.name,
     username:   email,
-    password:   password
+    password:   password,
+    auto_login: false
   }, function (err) {
     if (err) {
       self._showError(self._parseResponseMessage(err, self._dict.t('signup:serverErrorText')));
