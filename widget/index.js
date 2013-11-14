@@ -524,30 +524,32 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
   var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
 
-  self._setLoginView({ mode: 'loading' });
+  self._setLoginView({ mode: 'loading' }, function () {
+    self._auth0.changePassword({
+      connection: connection.name,
+      username:   email,
+      password:   password
+    }, function (err) {
 
-  this._auth0.changePassword({
-    connection: connection.name,
-    username:   email,
-    password:   password
-  }, function (err) {
+      $('.a0-password input', container).val('');
+      $('.a0-repeatPassword input', container).val('');
 
-    $('.a0-password input', container).val('');
-    $('.a0-repeatPassword input', container).val('');
+      if (err) {
+        return self._setLoginView({ mode: 'reset' }, function () {
+          self._showError(self._parseResponseMessage(err, self._dict.t('reset:serverErrorText')));
+          return;
+        });
+      }
 
-    if (err) {
-      self._showError(self._parseResponseMessage(err, self._dict.t('reset:serverErrorText')));
-      return;
-    }
+      $('.a0-email input', container).val('');
 
-    $('.a0-email input', container).val('');
+      try {
+        $('.a0-email input', container).first().focus();
+      } catch(e) {}
 
-    try {
-      $('.a0-email input', container).first().focus();
-    } catch(e) {}
-
-    self._setLoginView({}, function () {
-      self._showSuccess(self._dict.t('reset:successText'));
+      self._setLoginView({}, function () {
+        self._showSuccess(self._dict.t('reset:successText'));
+      });
     });
   });
 };

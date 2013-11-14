@@ -388,6 +388,8 @@ describe('auth0-Widget', function () {
       widget.show().on('transition_mode', function (mode) {
         if (mode !== 'signin') return;
         bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
+      }).on('transition_mode', function (mode) {
+        if (mode !== 'reset') return;
         $('#a0-widget .a0-reset .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-widget .a0-reset .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-widget .a0-reset .a0-emailPassword .a0-repeatPassword input').val('xyz');
