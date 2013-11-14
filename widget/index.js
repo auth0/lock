@@ -790,6 +790,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
   domready(function () {
     self._show(signinOptions, callback);
   });
+  return self;
 };
 
 Auth0Widget.prototype._show = function (signinOptions, callback) {
