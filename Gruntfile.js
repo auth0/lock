@@ -2,13 +2,14 @@ var fs = require('fs');
 var pkg = require('./package');
 var cssPrefix = require('css-prefix');
 
-var minor_version = pkg.version.replace(/\.\d$/, '');
-var major_version = pkg.version.replace(/\.\d\.\d$/, '');
+var minor_version = pkg.version.replace(/\.(\d)*$/, '');
+var major_version = pkg.version.replace(/\.(\d)*\.(\d)*$/, '');
 var path = require('path');
 
 function  rename_release (v) {
   return function (d, f) {
-    return path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + "$1.js"));
+    var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + "$1.js"));
+    return dest;
   };
 }
 
@@ -126,7 +127,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["build/", "widget/css/main.css", "widget/css/main.min.css", "example/auth0-widget.js"]
+      build: ["release/", "build/", "widget/css/main.css", "widget/css/main.min.css", "example/auth0-widget.js"]
     },
     watch: {
       another: {
@@ -151,11 +152,33 @@ module.exports = function (grunt) {
           'Cache-Control': 'public, max-age=300',
         }
       },
+      clean: {
+        del: [
+          {
+            src:     'w2/auth0-widget-' + pkg.version + '.js',
+          },
+          {
+            src:     'w2/auth0-widget-' + pkg.version + '.min.js',
+          },
+          {
+            src:     'w2/auth0-widget-' + major_version + '.js',
+          },
+          {
+            src:     'w2/auth0-widget-' + major_version + '.min.js',
+          },
+          {
+            src:     'w2/auth0-widget-' + minor_version + '.js',
+          },
+          {
+            src:     'w2/auth0-widget-' + minor_version + '.min.js',
+          }
+        ]
+      },
       publish: {
         upload: [
           {
-            src:  'release/*',
-            dest: 'w2/',
+            src:     'release/*',
+            dest:    'w2/',
             options: { gzip: true }
           }
         ]
@@ -197,5 +220,5 @@ module.exports = function (grunt) {
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["build", "copy:release", "s3:publish", "invalidate_cloudfront:production"]);
+  grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "invalidate_cloudfront:production"]);
 };
