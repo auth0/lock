@@ -95,7 +95,7 @@ describe('db connections', function () {
         enableReturnUserExperience: false
       });
 
-      auth0.on('login_error', function () {
+      auth0.on('_error', function () {
           done();
       });
 

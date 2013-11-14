@@ -60,6 +60,10 @@ function Auth0Widget (options) {
   this._getApp();
 
   EventEmitter.call(this);
+  var self = this;
+  this.on('transition_mode', function (mode) {
+    self.emit(mode + '_ready');
+  });
 }
 
 Auth0Widget.prototype = object_create(EventEmitter.prototype);
@@ -99,7 +103,7 @@ Auth0Widget.prototype._showError = function (error) {
   $('h1').css('display', 'none');
   $('.a0-success').css('display', 'none');
   $('.a0-error').html(error).css('display', '');
-  this.emit('login_error', error);
+  this.emit('_error', error);
 };
 
 Auth0Widget.prototype._showSuccess = function (message) {
@@ -116,6 +120,7 @@ Auth0Widget.prototype._setTitle = function(title) {
 };
 
 Auth0Widget.prototype._parseResponseMessage = function (responseObj, defaultValue) {
+  if (responseObj.status === 500) return defaultValue;
   return this._signinOptions[responseObj.code] || responseObj.message || defaultValue;
 };
 
@@ -259,7 +264,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
       newPane = $(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin');
       break;
    case 'loading':
-      title = this._dict.t('signin:title');
+      title = options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title');
       newPane = $('.a0-loading').first();
       break;
     case 'signup':
@@ -500,17 +505,20 @@ Auth0Widget.prototype._signUpWithAuth0 = function (e) {
   var password = $('.a0-password input', container).val();
   var connection  = this._getAuth0Connection();
 
-  this._auth0.signup({
-    connection: connection.name,
-    username:   email,
-    password:   password,
-    auto_login: false
-  }, function (err) {
-    if (err) {
-      self._showError(self._parseResponseMessage(err, self._dict.t('signup:serverErrorText')));
-      return;
-    }
-    return self._signInWithAuth0(email, password);
+  this._setLoginView({mode: 'loading', title: 'signup'}, function () {
+    self._auth0.signup({
+      connection: connection.name,
+      username:   email,
+      password:   password,
+      auto_login: false
+    }, function (err) {
+      if (err) {
+        return self._setLoginView({mode: 'signup'}, function () {
+          self._showError(self._parseResponseMessage(err, self._dict.t('signup:serverErrorText')));
+        });
+      }
+      return self._signInWithAuth0(email, password);
+    });
   });
 };
 
@@ -576,9 +584,9 @@ Auth0Widget.prototype._initialize = function (cb) {
   if (!self._signinOptions.standalone) {
     bean.on($('.a0-onestep a.a0-close')[0], 'click', function () { self._hideSignIn(); });
   }
-  bean.on($('.a0-onestep .a0-notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
-  bean.on($('.a0-onestep .a0-signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
-  bean.on($('.a0-onestep .a0-reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
+  bean.on($('.a0-notloggedin form')[0], 'submit', function (e) { self._signInEnterprise(e); });
+  bean.on($('.a0-signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
+  bean.on($('.a0-reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
   bean.on(qwery('html')[0], 'keyup', function (e) {
     if ($().hasClass('mode-signin')) {
       if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {

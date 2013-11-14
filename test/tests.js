@@ -352,9 +352,9 @@ describe('auth0-Widget', function () {
         done();
       };
 
-      widget.show().on('transition_mode', function (mode) {
-        if(mode !== 'signin') return;
+      widget.show().on('signin_ready', function () {
         bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
+      }).on('signup_ready', function () {
         $('#a0-widget .a0-signup .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-widget .a0-signup .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-widget .a0-signup .a0-emailPassword .a0-action button.a0-primary').trigger('click');
