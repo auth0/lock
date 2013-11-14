@@ -831,7 +831,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     });
     document.body.appendChild(div);
 
-    if ($('.a0-overlay').css("background-image").indexOf("radial") < 0) {
+    if ($('.a0-overlay').css("background-image").indexOf("radial")) {
       $('.a0-overlay').addClass('a0-ie8-overlay');
     }
   }

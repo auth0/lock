@@ -776,7 +776,8 @@ Credit to @guillermovs for suggesting
 @charset "UTF-8";
 
 
-#a0-widget .a0-theme-static .a0-popup .a0-overlay {
+#a0-widget .a0-theme-static .a0-popup .a0-overlay,
+#a0-widget .a0-theme-static .a0-popup .a0-overlay.a0-ie8-overlay {
   background: rgba(255, 255, 255, 0);
   background-color: transparent;
 }
