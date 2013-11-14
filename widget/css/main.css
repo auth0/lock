@@ -2345,6 +2345,23 @@ Credit to @guillermovs for suggesting
 }
 
 @media (max-width: 280px) {
+  #a0-widget .a0-popup #a0-onestep {
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+  }
+
+  #a0-widget .a0-popup #a0-onestep {
+    height: 100%;
+  }
+
+  #a0-widget .a0-popup .a0-centrix {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
   #a0-widget .a0-popup .a0-overlay .a0-panel {
     width: 240px;
     margin: 0 0 0 -120px;
@@ -2388,6 +2405,23 @@ Credit to @guillermovs for suggesting
 }
 
 @media (min-width: 281px) and (max-width: 340px) {
+  #a0-widget .a0-popup #a0-onestep {
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+  }
+
+  #a0-widget .a0-popup #a0-onestep {
+    height: 100%;
+  }
+
+  #a0-widget .a0-popup .a0-centrix {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
   #a0-widget .a0-popup .a0-overlay .a0-panel {
     margin: 0;
     left: 0;

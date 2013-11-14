@@ -28,9 +28,9 @@ var $ = function (selector, root) {
   return bonzo(qwery('#a0-widget ' + (selector || ''), root));
 };
 
-function hasTransitions () {
+function hasTransitions (el) {
   //defer this. prevent errors if the script is placed on the <head>
-  return require('has-transitions')();
+  return require('has-transitions')(el);
 }
 
 function Auth0Widget (options) {
@@ -278,7 +278,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
       break;
   }
 
-  if (!hasTransitions()) {
+  if (!hasTransitions() || !hasTransitions($('#a0-onestep')[0])){
     self._setTitle(title);
     self._currentPane.hide();
     self._currentPane = newPane.show();
