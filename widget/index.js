@@ -844,7 +844,7 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
     });
     document.body.appendChild(div);
 
-    if (!$('.a0-overlay').css("background-image").indexOf("radial")) {
+    if (!~$('.a0-overlay').css("background-image").indexOf("radial")) {
       $('.a0-overlay').addClass('a0-ie8-overlay');
     }
   }
