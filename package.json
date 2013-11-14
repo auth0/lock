@@ -29,7 +29,8 @@
     "underscore": "~1.5.2",
     "ejsify": "0.0.2",
     "css-prefix": "0.0.2",
-    "has-transitions": "https://github.com/jfromaniello/has-transitions/tarball/patch-1"
+    "has-transitions": "https://github.com/jfromaniello/has-transitions/tarball/patch-1",
+    "domready": "~0.2.13"
   },
   "devDependencies": {
     "browserify": "~2.35.0",

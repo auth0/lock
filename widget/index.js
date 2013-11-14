@@ -16,16 +16,22 @@ var EventEmitter = require('events').EventEmitter;
 var loggedinBtnTmpl      = require('./html/loggedin_button.ejs');
 var loginActionsTmpl     = require('./html/login_actions.ejs');
 var i18n                 = require('../i18n');
-var hasTransitions       = require('has-transitions');
 var placeholderSupported = require('./js/placeholderSupported');
 
 var object_create = require('./js/Object.create');
 
 var transition_end = require('./js/transition_end');
 
+var domready = require('domready');
+
 var $ = function (selector, root) {
   return bonzo(qwery('#a0-widget ' + (selector || ''), root));
 };
+
+function hasTransitions () {
+  //defer this. prevent errors if the script is placed on the <head>
+  return require('has-transitions')();
+}
 
 function Auth0Widget (options) {
   if (!(this instanceof Auth0Widget)) {
@@ -779,8 +785,14 @@ Auth0Widget.prototype.parseHash = function (hash, callback) {
   this._auth0.parseHash(hash, callback);
 };
 
-
 Auth0Widget.prototype.show = function (signinOptions, callback) {
+  var self = this;
+  domready(function () {
+    self._show(signinOptions, callback);
+  });
+};
+
+Auth0Widget.prototype._show = function (signinOptions, callback) {
   if (typeof signinOptions === 'function') {
     callback = signinOptions;
     signinOptions = {};
@@ -831,7 +843,7 @@ Auth0Widget.prototype.show = function (signinOptions, callback) {
     });
     document.body.appendChild(div);
 
-    if ($('.a0-overlay').css("background-image").indexOf("radial")) {
+    if (!$('.a0-overlay').css("background-image").indexOf("radial")) {
       $('.a0-overlay').addClass('a0-ie8-overlay');
     }
   }
