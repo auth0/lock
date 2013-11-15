@@ -2345,6 +2345,12 @@ Credit to @guillermovs for suggesting
 }
 
 @media (max-width: 280px) {
+  #a0-widget .a0-signup .a0-options a.a0-cancel,
+  #a0-widget .a0-create-account a,
+  #a0-widget .a0-reset .a0-options {
+    font-size: 16px;
+  }
+
   #a0-widget .a0-popup .a0-panel .a0-header a.a0-close {
     visibility: hidden;
   }
@@ -2409,6 +2415,12 @@ Credit to @guillermovs for suggesting
 }
 
 @media (min-width: 281px) and (max-width: 340px) {
+  #a0-widget .a0-signup .a0-options a.a0-cancel,
+  #a0-widget .a0-create-account a,
+  #a0-widget .a0-reset .a0-options {
+    font-size: 16px;
+  }
+
   #a0-widget .a0-popup .a0-panel .a0-header a.a0-close {
     visibility: hidden;
   }
@@ -2782,4 +2794,8 @@ Credit to @guillermovs for suggesting
   height: 32px;
   margin-left: -16px;
   margin-top: -16px;
+}
+
+#a0-widget .a0-popup .a0-panel .a0-instructions {
+  margin-bottom: 12px;
 }
