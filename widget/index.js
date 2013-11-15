@@ -33,6 +33,14 @@ function hasTransitions (el) {
   return require('has-transitions')(el);
 }
 
+function setfocus (el) {
+  var use_set_focus = window.matchMedia( "(min-width: 340px)" ).matches;
+  if (!use_set_focus) return;
+  try{
+    el.focus();
+  }catch(er) {}
+}
+
 function Auth0Widget (options) {
   if (!(this instanceof Auth0Widget)) {
     return new Auth0Widget(options);
@@ -344,9 +352,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
 
 Auth0Widget.prototype._setLoginView = function(options, callback) {
   this._transitionMode(options, function (err, currentPane) {
-    try {
-      $('input', currentPane).first().focus();
-    } catch(e){}
+    setfocus($('input', currentPane).first());
     if (callback) callback();
   });
 };
@@ -557,10 +563,7 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
 
       $('.a0-email input', container).val('');
 
-      try {
-        $('.a0-email input', container).first().focus();
-      } catch(e) {}
-
+      setfocus($('.a0-email input', container).first())
       self._setLoginView({}, function () {
         self._showSuccess(self._dict.t('reset:successText'));
       });
