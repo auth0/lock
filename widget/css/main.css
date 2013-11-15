@@ -2344,76 +2344,6 @@ Credit to @guillermovs for suggesting
   width: 345px;
 }
 
-@media (max-width: 280px) {
-  #a0-widget .a0-signup .a0-options a.a0-cancel,
-  #a0-widget .a0-create-account a,
-  #a0-widget .a0-reset .a0-options {
-    font-size: 16px;
-  }
-
-  #a0-widget .a0-popup .a0-panel .a0-header a.a0-close {
-    visibility: hidden;
-  }
-
-  #a0-widget .a0-popup #a0-onestep {
-    -webkit-transition: none;
-    -moz-transition: none;
-    transition: none;
-  }
-
-  #a0-widget .a0-popup #a0-onestep {
-    height: 100%;
-  }
-
-  #a0-widget .a0-popup .a0-centrix {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  #a0-widget .a0-popup .a0-overlay .a0-panel {
-    width: 240px;
-    margin: 0 0 0 -120px;
-  }
-
-  #a0-widget .a0-popup .a0-zocial,
-  #a0-widget .a0-popup a.a0-zocial {
-    /*
-    it doesnt look right.
-     font-size: 9px;
-     */
-  }
-
-  #a0-widget .a0-signin .a0-popup .a0-panel.a0-strategies .a0-list {
-    margin: 12px;
-  }
-
-  #a0-widget form {
-    margin: 12px;
-  }
-
-  #a0-widget form input {
-    padding: 5px;
-  }
-
-  #a0-widget .a0-popup .a0-panel .a0-header {
-    margin: 0;
-    padding: 0;
-  }
-
-  #a0-widget .a0-popup .a0-panel .a0-header h1 {
-    padding: 14px 16px;
-    margin: 0;
-    font-size: 22px;
-  }
-
-  #a0-widget .a0-popup .a0-panel .a0-header a.a0-close {
-    right: 14px;
-    top: 16px;
-  }
-}
-
 @media (min-width: 281px) and (max-width: 340px) {
   #a0-widget .a0-signup .a0-options a.a0-cancel,
   #a0-widget .a0-create-account a,
@@ -2798,4 +2728,9 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-popup .a0-panel .a0-instructions {
   margin-bottom: 12px;
+}
+
+#a0-widget .a0-collapse-social {
+  height: 120px;
+  overflow: hidden;
 }

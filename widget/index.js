@@ -6,7 +6,6 @@ var bean        = require('bean');
 var xtend       = require('xtend');
 var _           = require('underscore');
 var strategies  = require('./js/strategies');
-var utils       = require('./js/utils');
 var mainTmpl    = require('./html/main.ejs');
 var embTmpl     = require('./html/main_embedded.ejs');
 var buttonTmpl  = require('./html/button.ejs');
@@ -16,17 +15,19 @@ var EventEmitter = require('events').EventEmitter;
 var loggedinBtnTmpl      = require('./html/loggedin_button.ejs');
 var loginActionsTmpl     = require('./html/login_actions.ejs');
 var i18n                 = require('../i18n');
-var placeholderSupported = require('./js/placeholderSupported');
 
-var object_create = require('./js/Object.create');
-
-var transition_end = require('./js/transition_end');
 
 var domready = require('domready');
 
 var $ = function (selector, root) {
   return bonzo(qwery('#a0-widget ' + (selector || ''), root));
 };
+
+//browser incompatibilities fixes
+var placeholderSupported = require('./pf/placeholderSupported');
+var object_create = require('./pf/Object.create');
+var transition_end = require('./pf/transition_end');
+var utils = require('./pf/utils');
 
 function hasTransitions (el) {
   //defer this. prevent errors if the script is placed on the <head>
@@ -779,6 +780,11 @@ Auth0Widget.prototype._resolveLoginView = function () {
   if (self._ssoData.sso && self._signinOptions['enableReturnUserExperience']) {
     self._showLoggedInExperience();
     return;
+  }
+
+  if (window.matchMedia && !window.matchMedia( "(min-width: 340px)" ).matches) {
+    var clean_login_onfocus = require('./js/clean_login_onfocus');
+    clean_login_onfocus.hook($);
   }
 
   self._setLoginView({ isReturningUser: self._ssoData.sso });
