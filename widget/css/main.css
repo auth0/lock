@@ -2345,6 +2345,10 @@ Credit to @guillermovs for suggesting
 }
 
 @media (max-width: 280px) {
+  #a0-widget .a0-popup .a0-panel .a0-header a.a0-close {
+    visibility: hidden;
+  }
+
   #a0-widget .a0-popup #a0-onestep {
     -webkit-transition: none;
     -moz-transition: none;
@@ -2405,6 +2409,10 @@ Credit to @guillermovs for suggesting
 }
 
 @media (min-width: 281px) and (max-width: 340px) {
+  #a0-widget .a0-popup .a0-panel .a0-header a.a0-close {
+    visibility: hidden;
+  }
+
   #a0-widget .a0-popup #a0-onestep {
     -webkit-transition: none;
     -moz-transition: none;
