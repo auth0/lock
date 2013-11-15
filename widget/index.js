@@ -34,7 +34,7 @@ function hasTransitions (el) {
 }
 
 function setfocus (el) {
-  var use_set_focus = window.matchMedia( "(min-width: 340px)" ).matches;
+  var use_set_focus = !window.matchMedia || window.matchMedia( "(min-width: 340px)" ).matches;
   if (!use_set_focus) return;
   try{
     el.focus();
