@@ -3,7 +3,6 @@ var Auth0       = require('auth0-js');
 var qwery       = require('qwery');
 var bonzo       = require('bonzo');
 var bean        = require('bean');
-var xtend       = require('xtend');
 var _           = require('underscore');
 var strategies  = require('./js/strategies');
 var mainTmpl    = require('./html/main.ejs');
@@ -414,7 +413,7 @@ Auth0Widget.prototype._signInSocial = function (e) {
   var strategy = this._getConfiguredStrategy(strategyName);
 
   if (strategy) {
-    var loginOptions = xtend({ connection: strategy.connections[0].name }, self._signinOptions.extraParameters);
+    var loginOptions = _.extend({}, { connection: strategy.connections[0].name }, self._signinOptions.extraParameters);
     this._auth0.login(loginOptions);
   }
 };
@@ -476,7 +475,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
 
   if (valid) {
     this._setLoginView({ mode: 'loading' }, function () {
-      var loginOptions = xtend({ connection: connection }, self._signinOptions.extraParameters);
+      var loginOptions = _.extend({}, { connection: connection }, self._signinOptions.extraParameters);
       self._auth0.login(loginOptions);
     });
   }
@@ -495,7 +494,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     password: signInPassword || $('.a0-password input', container).val()
   };
 
-  loginOptions = xtend(loginOptions, self._signinOptions.extraParameters);
+  loginOptions = _.extend({}, loginOptions, self._signinOptions.extraParameters);
 
  this._setLoginView({ mode: 'loading' }, function (){
     self._auth0.login(loginOptions, function (err) {
@@ -564,7 +563,7 @@ Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
 
       $('.a0-email input', container).val('');
 
-      setfocus($('.a0-email input', container).first())
+      setfocus($('.a0-email input', container).first());
       self._setLoginView({}, function () {
         self._showSuccess(self._dict.t('reset:successText'));
       });
@@ -612,7 +611,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   $('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
 
   // labels text
-  var options = xtend(this._signinOptions, this._signinOptions.resources);
+  var options = _.extend({}, this._signinOptions, this._signinOptions.resources);
   options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
   options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
   options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
@@ -637,32 +636,21 @@ Auth0Widget.prototype._initialize = function (cb) {
   self._showLoadingExperience();
 
   if (self._signinOptions.connections) {
-    // use only specified connections
-    var allowedStrategiesAndConnections = [];
-
-    for (var i in self._client.strategies) {
-      var strategy = self._client.strategies[i];
-
-      for (var j in strategy.connections) {
-        if (_.contains(self._signinOptions.connections, strategy.connections[j].name)) {
-          var alreadyIncluded = _.filter(allowedStrategiesAndConnections, function (s) { return s.name === strategy.name; })[0];
-
-          if (alreadyIncluded) alreadyIncluded.connections.push(strategy.connections[j]);
-          else allowedStrategiesAndConnections.push({
-            name: strategy.name,
-            connections: [strategy.connections[j]]
-          });
-        }
-      }
-    }
-
-    self._client.strategies = allowedStrategiesAndConnections;
+    self._client.strategies = _.chain(self._client.strategies)
+                                .map(function (s) {
+                                  s.connections = _.filter(s.connections, function (c) {
+                                    return _.contains(self._signinOptions.connections, c.name);
+                                  });
+                                  return s;
+                                }).filter(function (s) {
+                                  return s.connections.length > 0;
+                                }).value();
   }
 
   // merge strategies info
   for (var s in self._client.strategies) {
     var strategy_name = self._client.strategies[s].name;
-    self._client.strategies[s] = xtend(self._client.strategies[s], self._strategies[strategy_name]);
+    self._client.strategies[s] = _.extend({}, self._client.strategies[s], self._strategies[strategy_name]);
   }
 
   function finish(err, ssoData){
@@ -695,7 +683,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     }
 
     if (strategy.social) {
-      var m = xtend({}, strategy, {use_big_buttons: use_big_buttons});
+      var m = _.extend({}, strategy, {use_big_buttons: use_big_buttons});
       var button = bonzo.create(buttonTmpl(m));
       list.append(button)
           .css('display', 'block');
@@ -807,7 +795,7 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
   }
 
   var self = this;
-  self._signinOptions = xtend({}, self._options, signinOptions);
+  self._signinOptions = _.extend({}, self._options, signinOptions);
   self._signinOptions.extraParameters = {
     state:         self._signinOptions.state || undefined,
     access_token:  self._signinOptions.access_token || undefined
@@ -851,7 +839,7 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
     });
     document.body.appendChild(div);
 
-    if (!~$('.a0-overlay').css("background-image").indexOf("radial")) {
+    if (!~$('.a0-overlay').css('background-image').indexOf("radial")) {
       $('.a0-overlay').addClass('a0-ie8-overlay');
     }
   }

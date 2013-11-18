@@ -25,7 +25,6 @@
     "qwery": "~3.4.1",
     "auth0-js": "~1.1.1",
     "bean": "~1.0.4",
-    "xtend": "~2.1.1",
     "underscore": "~1.5.2",
     "ejsify": "0.0.2",
     "css-prefix": "0.0.2",
