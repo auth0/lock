@@ -1625,7 +1625,7 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-popup .a0-overlay {
   margin: 0;
   display: table;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;

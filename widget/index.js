@@ -598,10 +598,8 @@ Auth0Widget.prototype._initialize = function (cb) {
   bean.on($('.a0-signup form')[0], 'submit', function (e) { self._signUpWithAuth0(e); });
   bean.on($('.a0-reset form')[0], 'submit', function (e) { self._resetPasswordWithAuth0(e); });
   bean.on(qwery('html')[0], 'keyup', function (e) {
-    if ($().hasClass('mode-signin')) {
-      if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
-        self._hideSignIn(); // close popup with ESC key
-      }
+    if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
+      self._hideSignIn(); // close popup with ESC key
     }
   });
 
