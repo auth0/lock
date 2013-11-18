@@ -15,6 +15,7 @@ var loggedinBtnTmpl      = require('./html/loggedin_button.ejs');
 var loginActionsTmpl     = require('./html/login_actions.ejs');
 var i18n                 = require('../i18n');
 
+var email_parser = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 var domready = require('domready');
 
@@ -140,70 +141,51 @@ Auth0Widget.prototype._isAdLdapConn = function (connection) {
 };
 
 Auth0Widget.prototype._areThereAnySocialConn = function () {
-  for (var s in this._client.strategies) {
-    if (this._client.strategies[s] && this._client.strategies[s].social) {
-      return true;
-    }
-  }
-
-  return false;
+  return !!_.findWhere(this._client.strategies, {social: true});
 };
 
 Auth0Widget.prototype._areThereAnyEnterpriseOrDbConn = function() {
-  for (var s in this._client.strategies) {
-    if (this._client.strategies[s] && !this._client.strategies[s].social) {
-      return true;
-    }
-  }
-
-  return false;
+  return !!_.findWhere(this._client.strategies, {social: false});
 };
 
 Auth0Widget.prototype._isEnterpriseConnection = function (email, output) {
-  var emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                    .exec(email.toLowerCase());
+  var emailM = email_parser.exec(email.toLowerCase());
 
-  for (var s in this._client.strategies) {
-    var strategy = this._client.strategies[s];
-    if (strategy.userAndPass) continue;
+  var email_domain = emailM.slice(-2)[0];
+  if (!emailM) return false;
 
-    for (var c in strategy.connections) {
-      if (emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
-        output = output || {};
-        output.domain = strategy.connections[c].domain;
-        return true;
-      }
-    }
+  var conn = _.chain(this._client.strategies)
+              .where({userAndPass: false})
+              .pluck('connections')
+              .flatten()
+              .findWhere({domain: email_domain})
+              .value();
+
+  if (conn && output) {
+    output.domain = conn.domain;
   }
 
-  return false;
+  return !!conn;
 };
 
 Auth0Widget.prototype._getConfiguredStrategy = function (name) {
-  for (var s in this._client.strategies) {
-    if (this._client.strategies[s] && this._client.strategies[s].name === name) {
-      return this._client.strategies[s];
-    }
-  }
+  return _.findWhere(this._client.strategies, {name: name});
 };
 
 Auth0Widget.prototype._getAuth0Connection = function() {
   // if specified, use it, otherwise return first
   if (this._signinOptions['userPwdConnectionName']) {
-    for (var i in this._auth0Strategies) {
-      for (var j in this._auth0Strategies[i].connections) {
-        if (this._auth0Strategies[j].connections[j].name === this._signinOptions['userPwdConnectionName']) {
-          return this._auth0Strategies[i].connections[j];
-        }
-      }
-    }
+    return _.chain(this._auth0Strategies)
+            .pluck('connections')
+            .flatten()
+            .findWhere({name: this._signinOptions['userPwdConnectionName']})
+            .value();
   }
 
   // By default, if exists, return auth0 connection (db-conn)
-  var defaultStrategy = _.filter(this._auth0Strategies, function (s) { return s.name === 'auth0'; })[0];
-  return this._auth0Strategies.length > 0 ?
-    (defaultStrategy ? defaultStrategy.connections[0] : this._auth0Strategies[0].connections[0]) :
-    null;
+  var defaultStrategy = _.findWhere(this._auth0Strategies, { name: 'auth0' });
+  return defaultStrategy && defaultStrategy.connections.length > 0 ?
+         defaultStrategy.connections[0] : null;
 };
 
 Auth0Widget.prototype._showOrHidePassword = function () {
@@ -428,47 +410,44 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var form = $('form', container);
   var valid = true;
 
-  var emailD = $('.a0-email', form),
-      emailE = $('input[name=email]', form),
-      emailM = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.exec(emailE.val().toLowerCase()),
-      emailP = /^\s*$/.test(emailE.val()),
-      domain, connection, email = null, strategy;
+  var emailD = $('.a0-email', form);
+  var email_input = $('input[name=email]', form);
+  var email_parsed = email_parser.exec(email_input.val().toLowerCase());
+  var email = null, domain, connection;
 
-  for (var s in this._client.strategies) {
-    strategy = self._client.strategies[s];
-
-    if (strategy.userAndPass) continue;
-
-    for (var c in strategy.connections) {
-      if(!emailP && emailM && emailM.slice(-2)[0] == strategy.connections[c].domain) {
-        domain = strategy.connections[c].domain;
-        connection = strategy.connections[c].name;
-        email = emailE.val();
-        break;
-      }
-    }
-
-    if (domain) break;
+  if (/^\s*$/.test(email_input.val())) {
+    return this._showError(this._dict.t('signin:strategyEmailEmpty'));
   }
 
-  if (emailP) {
-    this._showError(this._dict.t('signin:strategyEmailEmpty'));
+  if (!email_parsed) {
+    return this._showError(this._dict.t('signin:strategyEmailInvalid'));
   }
-  else if (!emailM) {
-    this._showError(this._dict.t('signin:strategyEmailInvalid'));
-  }
-  else if (!domain) {
+
+  var input_email_domain = email_parsed.slice(-2)[0];
+
+  var conn_obj = _.chain(this._client.strategies)
+    .where({userAndPass: undefined})
+    .pluck('connections')
+    .flatten()
+    .findWhere({domain: input_email_domain})
+    .value();
+
+  if (conn_obj) {
+    domain = conn_obj.domain;
+    email = email_input.val();
+    connection = conn_obj.name;
+  } else {
     if (this._auth0Strategies.length > 0) {
-      return this._signInWithAuth0(emailE.val());
+      return this._signInWithAuth0(email_input.val());
     }
 
-    if (emailM && emailM.slice(-2)[0] === 'gmail.com') {
+    if (input_email_domain === 'gmail.com') {
       return this._signInSocial('google-oauth2');
     }
 
     this._showError(
       this._dict.t('signin:strategyDomainInvalid')
-          .replace('{domain}', emailM ? emailM.slice(-2)[0] : ''));
+          .replace('{domain}', input_email_domain));
   }
 
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
@@ -674,21 +653,24 @@ Auth0Widget.prototype._resolveLoginView = function () {
 
   // load social buttons
   var list = $('.a0-notloggedin .a0-iconlist');
-  for (var s in self._client.strategies) {
-    var strategy = self._client.strategies[s];
 
-    if (strategy.userAndPass && strategy.connections.length > 0) {
-      self._auth0Strategies.push(strategy);
-      bean.on($('.a0-notloggedin .a0-email input')[0], 'input', function (e) { self._showOrHidePassword(e); });
-    }
+  _.chain(self._client.strategies)
+     .where({social: true})
+     .map(function (s) { return  _.extend({}, s, {use_big_buttons: use_big_buttons}); })
+     .each(function (s) { return list.append(buttonTmpl(s)); });
 
-    if (strategy.social) {
-      var m = _.extend({}, strategy, {use_big_buttons: use_big_buttons});
-      var button = bonzo.create(buttonTmpl(m));
-      list.append(button)
-          .css('display', 'block');
-      $('.a0-onestep .a0-separator').css('display', 'block');
-    }
+  if( _.where(self._client.strategies, {social: true}).length > 0 ) {
+    $('.a0-onestep .a0-separator').css('display', 'block');
+  }
+
+  self._auth0Strategies = _.chain(self._client.strategies)
+                            .filter(function (s) { return s.userAndPass && s.connections.length > 0 })
+                            .value();
+
+  if (self._auth0Strategies.length > 0){
+    bean.on($('.a0-notloggedin .a0-email input')[0], 'input', function (e) {
+      self._showOrHidePassword(e);
+    });
   }
 
   $('span', list).each(function (el) {
