@@ -6,8 +6,10 @@
 <body>
     <button id="login-button">Login</button>
     <button id="login-button-inside-container">Login (inside a DIV with spanish labels)</button>
-    <button id="login-button-all">Login all</button>
+    <button id="login-button-all">Login all languages</button>
 
+    <button id="signup-button">Show SignUp</button>
+    <button id="reset-button">Show Reset Password</button>
     <br><br>
     <div id="login-container" style="width: 500px; height: 500px; background-color: blueviolet;"></div>
 
@@ -42,7 +44,15 @@
             });
 
             $('#login-button').on('click', function () {
-                widget.show({});
+                widget.signin({});
+            });
+
+            $('#signup-button').on('click', function () {
+                widget.signup({});
+            });
+
+            $('#reset-button').on('click', function () {
+                widget.reset({});
             });
 
             $('#login-button-inside-container').on('click', function () {

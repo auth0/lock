@@ -29,6 +29,8 @@ signup.submit = function (widget, connectionName, email, password) {
 signup.bind = function (widget) {
   var list = $('.a0-signup .a0-iconlist').html('');
 
+  $('.a0-signup .a0-options').show(widget._openWith ? 'none' : 'block');
+
   _.chain(widget._client.strategies)
      .where({social: true})
      .map(function (s) { return  _.extend({}, s, {use_big_buttons: false}); })

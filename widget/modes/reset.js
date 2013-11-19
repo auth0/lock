@@ -31,6 +31,8 @@ reset.submit = function (widget, connectionName, username, password) {
 };
 
 reset.bind = function (widget) {
+  $('.a0-reset .a0-options').show(widget._openWith ? 'none' : 'block');
+
   var form = $('.a0-reset form')
     .a0_off('submit')
     .a0_on('submit', function (e) {

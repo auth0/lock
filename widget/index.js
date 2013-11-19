@@ -229,6 +229,9 @@ Auth0Widget.prototype._showResetExperience = function() {
 };
 
 Auth0Widget.prototype._showLoadingExperience = function() {
+  if (this._openWith) {
+    return this._setLoginView({ mode: 'loading', title: this._openWith.toLowerCase() });
+  }
   this._setLoginView({ mode: 'loading' });
 };
 
@@ -236,6 +239,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
   var self = this;
 
   if(!self._currentPane && options.mode === 'loading') {
+    self._setTitle(options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title'));
     self._currentPane = $('.a0-loading');
     self.emit('transition_mode', 'loading');
     self.emit('loading_ready');
@@ -506,9 +510,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   }
 
   // buttons actions
-  if (!self._signinOptions.standalone) {
-    $('.a0-onestep a.a0-close').a0_on('click', function () { self._hideSignIn(); });
-  }
+  $('.a0-onestep a.a0-close').a0_on('click', function () { self._hideSignIn(); });
   $('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
   $('').a0_on('keyup', function (e) {
     if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
@@ -569,6 +571,9 @@ Auth0Widget.prototype._initialize = function (cb) {
 
   function finish(err, ssoData){
     self._ssoData = ssoData;
+    if (self._openWith) {
+      return self['_show' + self._openWith + 'Experience']();
+    }
     self._resolveLoginView();
     if (cb && typeof cb === 'function') cb();
   }
@@ -680,7 +685,17 @@ Auth0Widget.prototype.parseHash = function (hash, callback) {
   this._auth0.parseHash(hash, callback);
 };
 
-Auth0Widget.prototype.show = function (signinOptions, callback) {
+Auth0Widget.prototype.reset = function (signinOptions, callback) {
+  this._openWith = 'Reset';
+  return this.signin(signinOptions, callback);
+};
+
+Auth0Widget.prototype.signup = function (signinOptions, callback) {
+  this._openWith = 'SignUp';
+  return this.signin(signinOptions, callback);
+};
+
+Auth0Widget.prototype.show = Auth0Widget.prototype.signin = function (signinOptions, callback) {
   var self = this;
   $(function () {
     self._show(signinOptions, callback);
@@ -695,24 +710,13 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
   }
 
   var self = this;
+
   self._signinOptions = _.extend({}, self._options, signinOptions);
-  self._signinOptions.extraParameters = {
-    state:         self._signinOptions.state || undefined,
-    access_token:  self._signinOptions.access_token || undefined
-  };
-  if (self._signinOptions.scope) {
-    self._signinOptions.extraParameters.scope =
-      self._signinOptions.scope;
-  }
-  if (self._signinOptions.protocol) {
-    self._signinOptions.extraParameters.protocol =
-      self._signinOptions.protocol;
-  }
-  if (self._signinOptions.request_id) {
-    self._signinOptions.extraParameters.request_id =
-      self._signinOptions.request_id;
-  }
-  self._auth0Strategies = [];
+
+  self._signinOptions.extraParameters = utils.extract(self._signinOptions,
+                                                [ 'state', 'access_token',
+                                                  'scope', 'protocol',
+                                                  'request_id' ]);
 
   // widget container
   if (self._signinOptions.container) {

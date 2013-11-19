@@ -38,9 +38,9 @@ Construct a new instance of the Auth0 Widget as follows:
 To invoke the widget, use the `show` method:
 
 ~~~javascript
-widget.show();
+widget.signin();
 // or
-widget.show(options, callback);
+widget.signin(options, callback);
 ~~~
 
 #### Options
@@ -51,7 +51,7 @@ widget.show(options, callback);
 * __showIcon__: Show/Hide widget icon. _Default: false_.
 
 ~~~javascript
-widget.show({
+widget.signin({
   connections: ['facebook', 'google-oauth2', 'twitter', 'Username-Password-Authentication', 'fabrikam.com'],
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
@@ -59,6 +59,18 @@ widget.show({
 }, funcion () {
   // The Auth0 Widget is now loaded.
 });
+~~~
+
+## `signup` and `reset`
+
+It is also possible to start the widget in the __Sign Up mode__ or __Reset Password__ mode as follows:
+
+~~~javascript
+widget.signup(/* [same as the .signin method] */)
+
+// or
+
+widget.reset(/* [same as the .signin method] */)
 ~~~
 
 ## Single Page Applications
@@ -84,7 +96,6 @@ You can handle the authorization process client-side as follows:
 ## i18n
 
 __Note 1:__ most of the translations are machine generated, please help us to move this forward.
-__Note 1:__ the widget doesn't support right to left.
 
 Version `1.2.0` we added support for internationalization:
 
@@ -116,6 +127,7 @@ where dict can be a string matching the name of the file in the `i18n` folder or
     }
   });
 ~~~
+
 ## Customize the look and feel
 
 Apply your own style to the elements.
