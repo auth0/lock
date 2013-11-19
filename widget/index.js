@@ -16,6 +16,7 @@ var i18n                 = require('../i18n');
 var email_parser = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 var signup = require('./modes/signup');
+var reset = require('./modes/reset');
 
 var $ = require('./js/bonzo_qwery');
 var is_small_screen = require('./js/is_small_screen');
@@ -132,10 +133,6 @@ Auth0Widget.prototype._parseResponseMessage = function (responseObj, defaultValu
   return this._signinOptions[responseObj.code] || responseObj.message || defaultValue;
 };
 
-Auth0Widget.prototype._isAdLdapConn = function (connection) {
-  return connection === 'adldap';
-};
-
 Auth0Widget.prototype._areThereAnySocialConn = function () {
   return !!_.findWhere(this._client.strategies, {social: true});
 };
@@ -227,6 +224,7 @@ Auth0Widget.prototype._showSignUpExperience = function() {
 };
 
 Auth0Widget.prototype._showResetExperience = function() {
+  reset.bind(this);
   this._setLoginView({ mode: 'reset' });
 };
 
@@ -470,7 +468,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   var loginOptions = {
     connection: connection.name,
-    username: this._isAdLdapConn(connection.name) ?
+    username: connection.name === 'adldap' ?
                 userName.replace('@' + connection.domain, '') :
                 userName,
     password: signInPassword || $('.a0-password input', container).val()
@@ -485,43 +483,6 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
           self._showError(self._parseResponseMessage(err, self._dict.t('signin:wrongEmailPasswordErrorText')));
         });
       }
-    });
-  });
-};
-
-Auth0Widget.prototype._resetPasswordWithAuth0 = function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  var self = this;
-  var container = $('.a0-onestep .a0-reset');
-  var email = $('.a0-email input', container).val();
-  var password = $('.a0-password input', container).val();
-  var connection  = this._getAuth0Connection();
-
-  self._setLoginView({ mode: 'loading', title: 'reset' }, function () {
-    self._auth0.changePassword({
-      connection: connection.name,
-      username:   email,
-      password:   password
-    }, function (err) {
-
-      $('.a0-password input', container).val('');
-      $('.a0-repeatPassword input', container).val('');
-
-      if (err) {
-        return self._setLoginView({ mode: 'reset' }, function () {
-          self._showError(self._parseResponseMessage(err, self._dict.t('reset:serverErrorText')));
-          return;
-        });
-      }
-
-      $('.a0-email input', container).val('');
-
-      setfocus($('.a0-email input', container).first());
-      self._setLoginView({}, function () {
-        self._showSuccess(self._dict.t('reset:successText'));
-      });
     });
   });
 };
@@ -549,7 +510,6 @@ Auth0Widget.prototype._initialize = function (cb) {
     $('.a0-onestep a.a0-close').a0_on('click', function () { self._hideSignIn(); });
   }
   $('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
-  $('.a0-reset form').a0_on('submit', function (e) { self._resetPasswordWithAuth0(e); });
   $('').a0_on('keyup', function (e) {
     if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
       self._hideSignIn(); // close popup with ESC key
@@ -692,15 +652,6 @@ Auth0Widget.prototype._resolveLoginView = function () {
   $('.a0-panel .a0-options .a0-cancel').a0_on('click', function () {
     self._setLoginView();
   });
-
-  $('.a0-panel .a0-reset .a0-repeatPassword input').a0_on('input', function() {
-    if ($('.a0-panel .a0-reset .a0-password input').val() != this.value) {
-      self._setCustomValidity(this, self._dict.t('reset:enterSamePasswordText'));
-    } else {
-      self._setCustomValidity(this, '');
-    }
-  });
-
 
   // show email, password, separator and button if there are enterprise/db connections
   var anyEnterpriseOrDbConnection = self._areThereAnyEnterpriseOrDbConn();
