@@ -12,6 +12,10 @@ reset.submit = function (widget, connectionName, username, password) {
       password:   password
     }, function (err) {
 
+      if ( $()[0] !== widget._node ) {
+        return console.log && console.log('this password reset was triggered from another node instance', arguments);
+      }
+
       $('.a0-password input', container).val('');
       $('.a0-repeatPassword input', container).val('');
 

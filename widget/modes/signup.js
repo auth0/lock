@@ -9,6 +9,7 @@ var signup = module.exports;
 
 
 signup.submit = function (widget, connectionName, email, password) {
+
   widget._setLoginView({mode: 'loading', title: 'signup'}, function () {
     widget._auth0.signup({
       connection: connectionName,
@@ -16,6 +17,11 @@ signup.submit = function (widget, connectionName, email, password) {
       password:   password,
       auto_login: false
     }, function (err) {
+
+      if ( $()[0] !== widget._node ) {
+        return console.log && console.log('this password reset was triggered from another node instance', arguments);
+      }
+
       if (err) {
         return widget._setLoginView({mode: 'signup'}, function () {
           widget._showError(widget._parseResponseMessage(err, widget._dict.t('signup:serverErrorText')));

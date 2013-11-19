@@ -1,13 +1,14 @@
 describe('reset', function () {
-  afterEach(function (done) {
+  afterEach(function () {
+    $('#a0-widget').remove();
     this.auth0.removeAllListeners('transition_mode');
     $('#a0-widget').remove();
     global.window.location.hash = '';
     global.window.Auth0 = null;
-    setTimeout(done, 1000);
   });
 
   beforeEach(function () {
+    $('#a0-widget').parents('div').remove();
     this.auth0 = new Auth0Widget({
       domain:      'mdocs.auth0.com',
       callbackURL: 'http://localhost:3000/',
@@ -25,9 +26,7 @@ describe('reset', function () {
 
       auth0.on('loading_ready', function () {
         expect($('#a0-widget h1').html()).to.be(auth0._dict.t('reset:title'));
-        auth0._hideSignIn(function () {
-          done();
-        });
+        done();
       });
 
       bean.fire($('.a0-reset form')[0], 'submit');

@@ -200,6 +200,7 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 Auth0Widget.prototype._hideSignIn = function (cb) {
   var self = this;
   this._currentPane = null;
+  this._node = null;
 
   $('div.a0-overlay').removeClass('a0-active');
 
@@ -209,6 +210,8 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
     if (cb) cb();
     self.emit('closed');
   }, 500);
+
+  return self;
 };
 
 Auth0Widget.prototype._getActiveLoginView = function() {
@@ -747,6 +750,8 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
       $('.a0-overlay').addClass('a0-ie8-overlay');
     }
   }
+
+  self._node = $()[0];
 
   if (placeholderSupported) {
     $('.a0-sad-placeholder').remove();
