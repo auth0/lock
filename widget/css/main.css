@@ -2415,6 +2415,18 @@ Credit to @guillermovs for suggesting
 }
 
 @media (min-width: 281px) and (max-width: 340px) {
+  #a0-widget .a0-panel .a0-loading {
+    height: 100%;
+  }
+
+  #a0-widget .a0-loading .a0-spin-container {
+    top: 37%;
+  }
+
+  #a0-widget .a0-loading .a0-spin-img {
+    top: 40%;
+  }
+
   #a0-widget .a0-signup .a0-options a.a0-cancel,
   #a0-widget .a0-create-account a,
   #a0-widget .a0-reset .a0-options {

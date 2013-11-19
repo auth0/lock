@@ -1,10 +1,11 @@
 //fails in chrome 28- BrowserStack.
-describe.skip('sign up', function () {
-  afterEach(function () {
+describe('sign up', function () {
+  afterEach(function (done) {
     this.auth0.removeAllListeners('transition_mode');
     $('#a0-widget').parents('div').remove();
     global.window.location.hash = '';
     global.window.Auth0 = null;
+    setTimeout(done, 1000);
   });
 
   beforeEach(function () {
@@ -48,7 +49,21 @@ describe.skip('sign up', function () {
         bean.fire($('.a0-signup form')[0], 'submit');
       });
     });
+  });
 
+
+  it('should signin with social connection', function (done) {
+    this.auth0._auth0.login = function (options) {
+      expect(options.connection).to.equal('google-oauth2');
+      expect(options.username).to.not.exist;
+      done();
+    };
+
+    this.auth0.show().on('signin_ready', function (mode) {
+      bean.fire($('#a0-widget .a0-sign-up')[0], 'click');
+    }).on('signup_ready', function() {
+      bean.fire($('.a0-signup span[data-strategy="google-oauth2"]')[0], 'click');
+    });
   });
 
 });

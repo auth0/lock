@@ -1,9 +1,10 @@
 describe('reset', function () {
-  afterEach(function () {
+  afterEach(function (done) {
     this.auth0.removeAllListeners('transition_mode');
     $('#a0-widget').remove();
     global.window.location.hash = '';
     global.window.Auth0 = null;
+    setTimeout(done, 1000);
   });
 
   beforeEach(function () {
