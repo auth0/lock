@@ -1562,6 +1562,7 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-zocial.a0-block {
+  text-align: center;
   display: block;
   margin: 10px 0;
   text-overflow: ellipsis;

@@ -690,15 +690,24 @@ Auth0Widget.prototype.parseHash = function (hash, callback) {
 
 Auth0Widget.prototype.reset = function (signinOptions, callback) {
   this._openWith = 'Reset';
-  return this.signin(signinOptions, callback);
+  var self = this;
+  $(function () {
+    self._show(signinOptions, callback);
+  });
+  return self;
 };
 
 Auth0Widget.prototype.signup = function (signinOptions, callback) {
   this._openWith = 'SignUp';
-  return this.signin(signinOptions, callback);
+  var self = this;
+  $(function () {
+    self._show(signinOptions, callback);
+  });
+  return self;
 };
 
 Auth0Widget.prototype.show = Auth0Widget.prototype.signin = function (signinOptions, callback) {
+  this._openWith = null;
   var self = this;
   $(function () {
     self._show(signinOptions, callback);
