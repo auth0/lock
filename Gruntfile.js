@@ -51,13 +51,13 @@ module.exports = function (grunt) {
         }
       },
     },
-    uglify: {
-      min: {
-        files: {
-          'build/auth0-widget.min.js': ['build/auth0-widget.js']
-        }
-      }
-    },
+    // uglify: {
+    //   min: {
+    //     files: {
+    //       'build/auth0-widget.min.js': ['build/auth0-widget.js']
+    //     }
+    //   }
+    // },
     less: {
       dist: {
         options: {
@@ -110,6 +110,11 @@ module.exports = function (grunt) {
       }
     },
     exec: {
+      'uglify': {
+        cmd: 'node_modules/.bin/uglifyjs build/auth0-widget.js  --ascii-only > build/auth0-widget.min.js',
+        stdout: true,
+        stderr: true
+      },
       'test-phantom': {
         cmd: 'testem -f testem_dev.yml ci -l PhantomJS',
         stdout: true,
@@ -216,7 +221,7 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
-                                       "browserify:debug", "uglify:min", "copy:example"]);
+                                       "browserify:debug", "exec:uglify", "copy:example"]);
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
