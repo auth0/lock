@@ -111,7 +111,7 @@ module.exports = function (grunt) {
     },
     exec: {
       'uglify': {
-        cmd: 'node_modules/.bin/uglifyjs build/auth0-widget.js  --ascii-only > build/auth0-widget.min.js',
+        cmd: 'node_modules/.bin/uglifyjs build/auth0-widget.js  -b beautify=false,ascii_only=true > build/auth0-widget.min.js',
         stdout: true,
         stderr: true
       },
