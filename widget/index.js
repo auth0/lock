@@ -241,7 +241,7 @@ Auth0Widget.prototype._showLoadingExperience = function() {
 Auth0Widget.prototype._transitionMode = function(options, callback) {
   var self = this;
 
-  if(!self._currentPane && options.mode === 'loading') {
+  if((!self._currentPane || self._currentPane.hasClass('a0-loading')) && options.mode === 'loading') {
     self._setTitle(options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title'));
     self._currentPane = $('.a0-loading');
     self.emit('transition_mode', 'loading');
@@ -566,11 +566,16 @@ Auth0Widget.prototype._initialize = function (cb) {
                                 }).value();
   }
 
+
   // merge strategies info
   for (var s in self._client.strategies) {
     var strategy_name = self._client.strategies[s].name;
     self._client.strategies[s] = _.extend({}, self._client.strategies[s], self._strategies[strategy_name]);
   }
+
+  self._auth0Strategies = _.chain(self._client.strategies)
+                            .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
+                            .value();
 
   function finish(err, ssoData){
     self._ssoData = ssoData;
@@ -605,10 +610,6 @@ Auth0Widget.prototype._resolveLoginView = function () {
   if( _.where(self._client.strategies, {social: true}).length > 0 ) {
     $('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').show();
   }
-
-  self._auth0Strategies = _.chain(self._client.strategies)
-                            .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
-                            .value();
 
   if (self._auth0Strategies.length > 0){
     $('.a0-notloggedin .a0-email input').a0_on('input', function (e) {
