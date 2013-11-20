@@ -151,6 +151,7 @@ module.exports = function (grunt) {
         access: 'public-read',
         headers: {
           'Cache-Control': 'public, max-age=300',
+          'Content-Type': 'application/javascript; charset=UTF-8'
         }
       },
       clean: {
