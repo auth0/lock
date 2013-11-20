@@ -357,40 +357,26 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
     self._signInEnterprise(e);
   });
 
-  var button;
-  if (strategy_name !== 'auth0') {
-    button = $.create(loggedinBtnTmpl({
-      name: strategy_name,
-      title: strategy.title,
-      css: strategy.css,
-      imageicon: strategy.imageicon,
-      username: this._ssoData.lastUsedUsername
-    }));
+  var button = $.create(loggedinBtnTmpl({
+    name: strategy_name,
+    title: strategy.title,
+    css: strategy.css,
+    imageicon: strategy.imageicon,
+    username: this._ssoData.lastUsedUsername
+  }));
 
-    $('.a0-strategy span', loginView).remove();
+  $('.a0-strategy span', loginView).remove();
 
-    $('.a0-strategy', loginView)
-      .append(button);
+  $('.a0-strategy', loginView)
+    .append(button);
 
-    $('.a0-strategy span', loginView).a0_on('click', function (e) {
-      self._signInSocial(e.target);
-    });
-  }
+  $('.a0-strategy span', loginView).a0_on('click', function (e) {
+    self._signInSocial(e.target);
+  });
 
   $('.a0-all', loginView).a0_on('click', function () {
     self._setLoginView();
   });
-
-  if (this._ssoData.lastUsedUsername && strategy_name === 'auth0') {
-    $('.a0-email-readonly', loginView)
-      .html(this._ssoData.lastUsedUsername);
-
-    $('.a0-email input', loginView)
-      .val(this._ssoData.lastUsedUsername)
-      .hide();
-
-    $('.a0-emailPassword', loginView).show();
-  }
 
   this._setLoginView({ isReturningUser: !!strategy });
 };

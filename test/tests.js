@@ -99,28 +99,6 @@ describe('auth0-Widget', function () {
       });
   });
 
-  it('should show only loggedin view with SSO data (enterprise) if it is present', function (done) {
-    client.getSSOData = function (callback) {
-      callback(null, {
-        sso: true,
-        lastUsedUsername: 'john@fabrikam.com',
-        lastUsedConnection: { strategy: 'auth0', connection: 'dbTest' }
-      });
-    };
-
-    widget
-      .show()
-      .on('transition_mode', function (mode) {
-        if (mode !== 'signin') return;
-        expect($('#a0-widget .a0-notloggedin').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-loggedin').css('display')).to.equal('block');
-        expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
-        expect($('#a0-widget .a0-loggedin .a0-email input').val()).to.equal('john@fabrikam.com');
-        done();
-      });
-  });
-
   it('should show only loggedin view with SSO data (social) if it is present', function (done) {
       client.getSSOData = function (callback) {
         callback(null, {
