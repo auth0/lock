@@ -16,6 +16,8 @@
   position: fixed;
   left: 0;
   top: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -29,7 +31,7 @@
   background: -ms-radial-gradient(50% 50%, ellipse closest-corner, rgba(0,0,0,0.45) 1%, rgba(0,0,0,0.8) 100%);
   background: radial-gradient(50% 50%, ellipse closest-corner, rgba(0,0,0,0.45) 1%, rgba(0,0,0,0.8) 100%);
   opacity: 0;
-  transition: 400ms opacity ease;
+  transition: 300ms opacity ease-out;
   transform: translate3d(0, 0, 0);
 }
 
@@ -1149,3 +1151,18 @@ input[disabled]{
   margin-bottom: 12px;
 }
 
+input::-webkit-input-placeholder {
+  color: #9da4ad;
+}
+
+input:-moz-placeholder {
+  color: #9da4ad;
+}
+
+input::-moz-placeholder {
+  color: #9da4ad;
+}
+
+input:-ms-input-placeholder {
+  color: #9da4ad;
+}

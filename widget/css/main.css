@@ -1561,7 +1561,42 @@ Credit to @guillermovs for suggesting
   width: auto;
 }
 
+#a0-widget .a0-zocial.a0-block:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#a0-widget .a0-zocial.a0-block .a0-mail {
+  height: 36px;
+  display: block;
+  margin-top: 0px;
+  padding-top: 7px;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Lucida Grande', Tahoma, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+  overflow: hidden;
+  padding: 7px;
+  text-anchor: start;
+  text-decoration: none solid #ffffff;
+  text-indent: 0px;
+  text-overflow: ellipsis;
+  text-rendering: auto;
+  text-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 0px;
+  text-transform: none;
+  word-break: normal;
+  word-spacing: 0px;
+  word-wrap: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
 #a0-widget .a0-zocial.a0-block {
+  height: 33px;
+  padding-left: 37px;
   display: block;
   margin: 10px 0;
   text-overflow: ellipsis;
@@ -1628,6 +1663,8 @@ Credit to @guillermovs for suggesting
   position: fixed;
   left: 0;
   top: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -1643,9 +1680,9 @@ Credit to @guillermovs for suggesting
   background: -moz-radial-gradient(50% 50%, ellipse closest-corner, rgba(0, 0, 0, 0.45) 1%, rgba(0, 0, 0, 0.8) 100%);
   background: radial-gradient(50% 50%, ellipse closest-corner, rgba(0, 0, 0, 0.45) 1%, rgba(0, 0, 0, 0.8) 100%);
   opacity: 0;
-  -webkit-transition: 400ms opacity ease;
-  -moz-transition: 400ms opacity ease;
-  transition: 400ms opacity ease;
+  -webkit-transition: 300ms opacity ease-out;
+  -moz-transition: 300ms opacity ease-out;
+  transition: 300ms opacity ease-out;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -2810,4 +2847,20 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-popup .a0-panel .a0-instructions {
   margin-bottom: 12px;
+}
+
+#a0-widget input::-webkit-input-placeholder {
+  color: #9da4ad;
+}
+
+#a0-widget input:-moz-placeholder {
+  color: #9da4ad;
+}
+
+#a0-widget input::-moz-placeholder {
+  color: #9da4ad;
+}
+
+#a0-widget input:-ms-input-placeholder {
+  color: #9da4ad;
 }

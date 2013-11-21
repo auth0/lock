@@ -371,7 +371,8 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
     .append(button);
 
   $('.a0-strategy span', loginView).a0_on('click', function (e) {
-    self._signInSocial(e.target);
+    e.preventDefault();
+    self._signInSocial(strategy_name);
   });
 
   $('.a0-all', loginView).a0_on('click', function () {
@@ -742,7 +743,8 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
     });
     document.body.appendChild(div);
 
-    if (!~$('.a0-overlay').css('background-image').indexOf("radial")) {
+    if (!~$('.a0-overlay').css('background-image').indexOf("radial") &&
+          !~navigator.appVersion.indexOf("MSIE 10")) {
       $('.a0-overlay').addClass('a0-ie8-overlay');
     }
   }
