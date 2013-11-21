@@ -8,6 +8,8 @@
     <button id="login-button-inside-container">Login (inside a DIV with spanish labels)</button>
     <button id="login-button-all">Login all languages</button>
 
+    <button id="logout-button">Logout</button>
+
     <button id="signup-button">Show SignUp</button>
     <button id="reset-button">Show Reset Password</button>
     <br><br>
@@ -45,6 +47,10 @@
 
             $('#login-button').on('click', function () {
                 widget.signin({});
+            });
+
+            $('#logout-button').on('click', function () {
+                widget.logout({ returnTo: 'http://localhost:3000' });
             });
 
             $('#signup-button').on('click', function () {

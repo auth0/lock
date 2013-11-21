@@ -758,4 +758,8 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
   return self;
 };
 
+Auth0Widget.prototype.logout = function (query) {
+  this._auth0.logout(query);
+};
+
 module.exports = Auth0Widget;
