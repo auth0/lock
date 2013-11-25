@@ -178,7 +178,7 @@ describe('auth0-Widget', function () {
         callbackURL: callbackURL
       });
 
-      expect(widget._options.cdn).to.equal('https://abc.contoso.com/');
+      expect(widget._options.cdn).to.equal('https://abc.contoso.com/w2/');
     });
 
     it('should use default cdn if domain is *.auth0.com', function () {

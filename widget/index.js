@@ -65,7 +65,7 @@ function Auth0Widget (options) {
     // use domain as cdn if domain is not *.auth0.com
     this._options.cdn = this._isAuth0Domain() ?
       'https://d19p4zemcycm7a.cloudfront.net/w2/' :
-      'https://' + this._options.domain + '/';
+      'https://' + this._options.domain + '/w2/';
   }
 
   this._getApp();
