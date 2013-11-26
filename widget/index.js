@@ -658,15 +658,15 @@ Auth0Widget.prototype._resolveLoginView = function () {
   $('.a0-panel .a0-password').show(self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? 'block' : 'none');
   $('.a0-panel .a0-separator').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
 
+  if (is_small_screen()) {
+    var collapse_onfocus = require('./js/collapse_onfocus');
+    collapse_onfocus.hook($('.a0-notloggedin form input'), $('.a0-collapse-social'));
+  }
+
   // if user logged in show logged in experience
   if (self._ssoData.sso && self._signinOptions['enableReturnUserExperience']) {
     self._showLoggedInExperience();
     return;
-  }
-
-  if (is_small_screen()) {
-    var collapse_onfocus = require('./js/collapse_onfocus');
-    collapse_onfocus.hook($('.a0-notloggedin form input'), $('.a0-collapse-social'));
   }
 
   self._setLoginView({ isReturningUser: self._ssoData.sso });

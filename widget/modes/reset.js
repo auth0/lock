@@ -1,6 +1,8 @@
 var $ = require('../js/bonzo_qwery');
-
 var reset = module.exports;
+
+var is_small_screen = require('../js/is_small_screen');
+var collapse_onfocus = require('../js/collapse_onfocus');
 
 reset.submit = function (widget, connectionName, username, password) {
   var container = $('.a0-reset form');
@@ -46,6 +48,10 @@ reset.bind = function (widget) {
       var connection  = widget._getAuth0Connection();
       reset.submit(widget, connection.name, username, password);
     });
+
+  if (is_small_screen()) {
+    collapse_onfocus.hook($('.a0-reset form input'), $('.a0-collapse-reset'));
+  }
 
   $('.a0-repeatPassword input', form)
     .a0_off('input')

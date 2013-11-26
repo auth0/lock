@@ -20,5 +20,11 @@ module.exports.hook = function (inputs, collapsible) {
     .a0_off('blur.collapse_onfocus')
     .a0_on('blur.collapse_onfocus', on_blur)
     .a0_off('focus.collapse_onfocus')
-    .a0_on('focus.collapse_onfocus', on_focus);
+    .a0_on('focus.collapse_onfocus', on_focus)
+    .a0_off('touchstart.ts_collapse_onfocus')
+    .a0_on('touchstart.ts_collapse_onfocus', function (e) {
+      setTimeout(function () {
+        e.target.focus();
+      }, 0);
+    });
 };
