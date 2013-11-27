@@ -87,7 +87,8 @@ module.exports = {
     'ad': {
         css: 'windows',
         title: 'AD / LDAP',
-        social: false
+        social: false,
+        userAndPass: true
     },
     'custom': {
         css: 'guest',

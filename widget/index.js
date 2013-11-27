@@ -176,8 +176,10 @@ Auth0Widget.prototype._getAuth0Connection = function() {
             .value();
   }
 
-  // By default, if exists, return auth0 connection (db-conn)
+  // By default, if exists, return auth0 connection (db-conn) or first
   var defaultStrategy = _.findWhere(this._auth0Strategies, { name: 'auth0' });
+  defaultStrategy = defaultStrategy || (this._auth0Strategies.length > 0 ? this._auth0Strategies[0] : null);
+
   return defaultStrategy && defaultStrategy.connections.length > 0 ?
          defaultStrategy.connections[0] : null;
 };
