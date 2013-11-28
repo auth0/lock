@@ -471,7 +471,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   var loginOptions = {
     connection: connection.name,
-    username: connection.name === 'adldap' ?
+    username: connection.domain ?
                 userName.replace('@' + connection.domain, '') :
                 userName,
     password: signInPassword || $('.a0-password input', container).val()
