@@ -99,6 +99,10 @@ Auth0Widget.prototype._isAuth0Domain = function () {
   return utils.endsWith(domainUrl.hostname, '.auth0.com');
 };
 
+Auth0Widget.prototype._ignoreEmailValidations = function (input) {
+  return input.attr('type') !== 'email';
+};
+
 Auth0Widget.prototype._setCustomValidity = function (input, message) {
   if (!input) return;
   if (input.setCustomValidity) {
@@ -412,15 +416,18 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
   var email = null, domain, connection;
 
-  if (/^\s*$/.test(email_input.val())) {
-    return this._showError(this._dict.t('signin:strategyEmailEmpty'));
+  if (!this._ignoreEmailValidations(email_input)) {
+
+    if (/^\s*$/.test(email_input.val())) {
+      return this._showError(this._dict.t('signin:strategyEmailEmpty'));
+    }
+
+    if (!email_parsed) {
+      return this._showError(this._dict.t('signin:strategyEmailInvalid'));
+    }
   }
 
-  if (!email_parsed) {
-    return this._showError(this._dict.t('signin:strategyEmailInvalid'));
-  }
-
-  var input_email_domain = email_parsed.slice(-2)[0];
+  var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
   var conn_obj = _.chain(this._client.strategies)
     .where({userAndPass: undefined})
