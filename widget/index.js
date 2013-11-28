@@ -149,7 +149,7 @@ Auth0Widget.prototype._isEnterpriseConnection = function (email, output) {
   var email_domain = emailM.slice(-2)[0];
 
   var conn = _.chain(this._client.strategies)
-              .where({userAndPass: false})
+              .where({userAndPass: undefined})
               .pluck('connections')
               .flatten()
               .findWhere({domain: email_domain})
