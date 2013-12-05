@@ -1603,6 +1603,10 @@ Credit to @guillermovs for suggesting
   overflow: hidden;
 }
 
+#a0-widget .a0-notloggedin .a0-zocial.a0-block {
+  padding-left: 52px;
+}
+
 #a0-widget .a0-zocial.a0-primary,
 #a0-widget .a0-zocial.a0-secondary {
   width: 100%;
