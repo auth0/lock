@@ -5,19 +5,19 @@
   "signin": {
     "title": "Aanmelden",
     "action": "Aanmelden",
-    "all": "Toon alle",
-    "strategyEmailEmpty": "De e-mail is leeg.",
-    "strategyEmailInvalid": "De e-mail is ongeldig.",
-    "strategyDomainInvalid": "Het domein {domain} heeft niet opstelling geweest.",
+    "all": "Toon alles",
+    "strategyEmailEmpty": "Het veld e-mail is leeg.",
+    "strategyEmailInvalid": "Het veld e-mail is ongeldig.",
+    "strategyDomainInvalid": "Het domein {domain} is niet geactiveerd.",
     "signupText": "Aanmelden",
-    "forgotText": "Vergat uw wachtwoord?",
+    "forgotText": "Wachtwoord vergeten?",
     "emailPlaceholder": "E-mail",
     "passwordPlaceholder": "Wachtwoord",
     "separatorText": "of",
-    "serverErrorText": "Er is een fout opgetreden verwerking van het teken in.",
-    "returnUserLabel": "Laatste keer dat u ondertekend bij het gebruik van...",
-    "wrongEmailPasswordErrorText": "Verkeerde e-mail of wachtwoord.",
-    "or": "... of Meld u aan met"
+    "serverErrorText": "Er is een fout opgetreden tijdens het inloggen.",
+    "returnUserLabel": "De laatste keer logde je in met...",
+    "wrongEmailPasswordErrorText": "Verkeerd e-mail of wachtwoord.",
+    "or": "... of meld u aan met"
   },
   "signup": {
     "title": "Aanmelden",
@@ -25,21 +25,21 @@
     "emailPlaceholder": "E-mail",
     "passwordPlaceholder": "Een wachtwoord maken",
     "cancelAction": "Annuleren",
-    "headerText": "Voer je email en wachtwoord",
-    "footerText": "Door te klikken op \"Sign Up\", gaat u akkoord met onze gebruiksvoorwaarden en het privacybeleid.",
-    "enterpriseEmailWarningText": "Dit domein {domain} is geconfigureerd voor eenmalige aanmelding en u kunt een account maken. Probeer aan te melden in plaats daarvan.",
-    "serverErrorText": "Er is een fout opgetreden verwerking het teken omhoog."
+    "headerText": "Voer je email en wachtwoord in",
+    "footerText": "Door te klikken op \"Aanmelden\", gaat u akkoord met onze gebruiksvoorwaarden en het privacybeleid.",
+    "enterpriseEmailWarningText": "Dit domein {domain} is geconfigureerd voor eenmalige aanmelding en u kunt geen account aanmaken. Probeer u aan te melden in plaats daarvan.",
+    "serverErrorText": "Er is een fout opgetreden bij de verwerking van uw aanmelding."
   },
   "reset": {
-    "title": "Reset wachtwoord",
+    "title": "Wachtwoord resetten",
     "action": "Verzenden",
     "emailPlaceholder": "E-mail",
     "passwordPlaceholder": "Nieuw wachtwoord",
     "repeatPasswordPlaceholder": "Bevestig het nieuwe wachtwoord",
     "cancelAction": "Annuleren",
-    "successText": "We hebben net stuurde u een e-mail om uw wachtwoord te resetten.",
-    "enterSamePasswordText": "Voer hetzelfde wachtwoord.",
-    "headerText": "Voer uw e-mailadres en het nieuwe wachtwoord. Wij sturen u een e-mail ter bevestiging van de wachtwoordwijziging.",
-    "serverErrorText": "Er is een fout opgetreden verwerking van het wachtwoord opnieuw instellen."
+    "successText": "We hebben u zojuist een e-mail gestuurd om uw wachtwoord te resetten.",
+    "enterSamePasswordText": "Voer hetzelfde wachtwoord in.",
+    "headerText": "Voer uw e-mailadres en het nieuwe wachtwoord in. Wij sturen u een e-mail ter bevestiging van de wachtwoordswijziging.",
+    "serverErrorText": "Er is een fout opgetreden bij de verwerking van het nieuwe wachtwoord."
   }
 }
