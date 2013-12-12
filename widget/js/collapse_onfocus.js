@@ -25,6 +25,6 @@ module.exports.hook = function (inputs, collapsible) {
     .a0_on('touchstart.ts_collapse_onfocus', function (e) {
       setTimeout(function () {
         e.target.focus();
-      }, 0);
+      }, 500);
     });
 };
