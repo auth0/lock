@@ -2010,6 +2010,15 @@ Credit to @guillermovs for suggesting
   cursor: pointer;
 }
 
+#a0-widget .a0-panel .a0-footer.a0-hide {
+  height: 1px;
+  border-top: 0px;
+}
+
+#a0-widget .a0-panel .a0-footer.a0-hide span {
+  display: none;
+}
+
 #a0-widget .a0-list,
 #a0-widget .a0-iconlist {
   margin: 25px 0;
