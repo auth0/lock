@@ -681,6 +681,29 @@ Auth0Widget.prototype._resolveLoginView = function () {
   self._setLoginView({ isReturningUser: self._ssoData.sso });
 };
 
+Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
+  var defaultTemplate = embTmpl({
+    embedded:     true,
+    i18n:         this._dict,
+    options:      signinOptions,
+    alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
+  });
+
+  switch (signinOptions.containerMode) {
+    case 'pro':
+      return mainTmpl({
+        expand:       true, // cover the entire container
+        i18n:         this._dict,
+        options:      signinOptions,
+        alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
+      });
+    case 'plain':
+      return defaultTemplate;
+  }
+
+  return defaultTemplate;
+};
+
 Auth0Widget.prototype.parseHash = function (hash, callback) {
   this._auth0.parseHash(hash, callback);
 };
@@ -734,12 +757,7 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
     self._signinOptions.top = true;
 
     var specifiedContainer = document.getElementById(self._signinOptions.container);
-    specifiedContainer.innerHTML = embTmpl({
-      embedded: true,
-      i18n:     this._dict,
-      options:  self._signinOptions,
-      alt_spinner: !has_animations() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
-    });
+    specifiedContainer.innerHTML = self._getEmbededTemplate(self._signinOptions);
   } else {
     // remove widget container (if exist)
     $().parent().remove();

@@ -5,7 +5,8 @@
 </head>
 <body>
     <button id="login-button">Login</button>
-    <button id="login-button-inside-container">Login (inside a DIV with spanish labels)</button>
+    <button id="login-button-inside-container-plain">Login (inside a DIV - plain mode)</button>
+    <button id="login-button-inside-container-pro">Login (inside a DIV - pro mode)</button>
     <button id="login-button-all">Login all languages</button>
 
     <button id="logout-button">Logout</button>
@@ -61,16 +62,28 @@
                 widget.reset({});
             });
 
-            $('#login-button-inside-container').on('click', function () {
+            $('#login-button-inside-container-plain').on('click', function () {
                 var widget = new Auth0Widget({
                     domain:      'mdocs.auth0.com',
                     clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
                     callbackURL: 'http://localhost:3000/',
-                    callbackOnLocationHash: true
+                    callbackOnLocationHash: true,
+                    dict:        'it'
                 });
-                widget.show({
-                    container:  'login-container'
+
+                widget.show({ container: 'login-container' });
+            });
+
+            $('#login-button-inside-container-pro').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true,
+                    dict:        'es'
                 });
+
+                widget.show({ container: 'login-container', containerMode: 'pro' });
             });
 
             // After login, show user profile
