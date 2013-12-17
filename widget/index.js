@@ -682,26 +682,19 @@ Auth0Widget.prototype._resolveLoginView = function () {
 };
 
 Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
-  var defaultTemplate = embTmpl({
-    embedded:     true,
-    i18n:         this._dict,
-    options:      signinOptions,
-    alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
-  });
-
-  switch (signinOptions.containerMode) {
-    case 'pro':
-      return mainTmpl({
-        expand:       true, // cover the entire container
-        i18n:         this._dict,
-        options:      signinOptions,
-        alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
-      });
-    case 'plain':
-      return defaultTemplate;
-  }
-
-  return defaultTemplate;
+  return signinOptions.chrome ?
+    mainTmpl({
+      expand:       true, // cover the entire container
+      i18n:         this._dict,
+      options:      signinOptions,
+      alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
+    }) :
+    embTmpl({
+      embedded:     true,
+      i18n:         this._dict,
+      options:      signinOptions,
+      alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
+    });
 };
 
 Auth0Widget.prototype.parseHash = function (hash, callback) {

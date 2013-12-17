@@ -5,8 +5,8 @@
 </head>
 <body>
     <button id="login-button">Login</button>
-    <button id="login-button-inside-container-plain">Login (inside a DIV - plain mode)</button>
-    <button id="login-button-inside-container-pro">Login (inside a DIV - pro mode)</button>
+    <button id="login-button-inside-container">Login (inside a DIV)</button>
+    <button id="login-button-inside-container-chrome">Login (inside a DIV - chrome)</button>
     <button id="login-button-all">Login all languages</button>
 
     <button id="logout-button">Logout</button>
@@ -14,7 +14,7 @@
     <button id="signup-button">Show SignUp</button>
     <button id="reset-button">Show Reset Password</button>
     <br><br>
-    <div id="login-container" style="width: 500px; height: 500px; background-color: blueviolet;"></div>
+    <div id="login-container" style="width: 500px; height: 500px;"></div>
 
     <h3>User Info</h3>
     <pre><code id="userinfo">Not logged in yet.</code></pre>
@@ -62,7 +62,7 @@
                 widget.reset({});
             });
 
-            $('#login-button-inside-container-plain').on('click', function () {
+            $('#login-button-inside-container').on('click', function () {
                 var widget = new Auth0Widget({
                     domain:      'mdocs.auth0.com',
                     clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
@@ -74,7 +74,7 @@
                 widget.show({ container: 'login-container' });
             });
 
-            $('#login-button-inside-container-pro').on('click', function () {
+            $('#login-button-inside-container-chrome').on('click', function () {
                 var widget = new Auth0Widget({
                     domain:      'mdocs.auth0.com',
                     clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
@@ -83,7 +83,7 @@
                     dict:        'es'
                 });
 
-                widget.show({ container: 'login-container', containerMode: 'pro' });
+                widget.show({ container: 'login-container', chrome: true });
             });
 
             // After login, show user profile
