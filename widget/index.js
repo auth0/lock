@@ -607,11 +607,9 @@ Auth0Widget.prototype._resolveLoginView = function () {
     $('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').show();
   }
 
-  if (self._auth0Strategies.length > 0){
-    $('.a0-notloggedin .a0-email input').a0_on('input', function (e) {
-      self._showOrHidePassword(e);
-    });
-  }
+  $('.a0-notloggedin .a0-email input').a0_on('input', function (e) {
+    self._showOrHidePassword(e);
+  });
 
   $('span', list).a0_on('click', function (e) {
     self._signInSocial(e);

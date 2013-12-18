@@ -5,6 +5,9 @@
 </head>
 <body>
     <button id="login-button">Login</button>
+    <button id="login-button-only-socials">Login (only socials)</button>
+    <button id="login-button-only-userpass">Login (only user/pass)</button>
+    <button id="login-button-only-enterprise">Login (only enterprise)</button>
     <button id="login-button-inside-container">Login (inside a DIV)</button>
     <button id="login-button-inside-container-chrome">Login (inside a DIV - chrome)</button>
     <button id="login-button-all">Login all languages</button>
@@ -48,6 +51,18 @@
 
             $('#login-button').on('click', function () {
                 widget.signin({});
+            });
+
+            $('#login-button-only-socials').on('click', function () {
+                widget.signin({ connections: ['github', 'google-oauth2', 'windowslive'] });
+            });
+
+            $('#login-button-only-userpass').on('click', function () {
+                widget.signin({ connections: ['foobar'] });
+            });
+
+            $('#login-button-only-enterprise').on('click', function () {
+                widget.signin({ connections: ['qraftlabs.com'] });
             });
 
             $('#logout-button').on('click', function () {
