@@ -145,6 +145,10 @@ Auth0Widget.prototype._areThereAnyEnterpriseOrDbConn = function() {
   return !!_.findWhere(this._client.strategies, {social: false});
 };
 
+Auth0Widget.prototype._areThereAnyDbConn = function() {
+  return !!_.findWhere(this._client.strategies, {userAndPass: true});
+};
+
 Auth0Widget.prototype._isEnterpriseConnection = function (email, output) {
   var emailM = email_parser.exec(email.toLowerCase());
 
@@ -659,10 +663,11 @@ Auth0Widget.prototype._resolveLoginView = function () {
   // show email, password, separator and button if there are enterprise/db connections
   var anyEnterpriseOrDbConnection = self._areThereAnyEnterpriseOrDbConn();
   var anySocialConnection = self._areThereAnySocialConn();
+  var anyDbConnection = self._areThereAnyDbConn();
 
   $('.a0-panel .a0-email input').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
   $('.a0-panel .a0-zocial.a0-primary').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.a0-panel .a0-password').show(self._signinOptions.showEmail && self._signinOptions.showPassword && anyEnterpriseOrDbConnection ? 'block' : 'none');
+  $('.a0-panel .a0-password').show(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection ? 'block' : 'none');
   $('.a0-panel .a0-separator').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
 
   if (is_small_screen()) {
