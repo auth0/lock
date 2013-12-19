@@ -123,6 +123,11 @@ module.exports = {
         title: 'Salesforce',
         social: true
     },
+    'salesforce-sandbox': {
+        css: 'salesforce',
+        title: 'Salesforce (sandbox)',
+        social: true
+    },
     'fitbit': {
         css: 'fitbit',
         title: 'Fitbit',
