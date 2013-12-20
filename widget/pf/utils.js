@@ -14,12 +14,12 @@ module.exports = {
   extract: function (obj, props) {
     var pre = _.pick(obj, props);
 
-    return _.pairs(pre)
+    return _.chain(_.pairs(pre))
             .filter(function (pair) {
               return typeof pair[1] !== 'undefined';
             }).reduce(function (r, current) {
               r[current[0]] = current[1];
               return r;
-            }, {});
+            }, {}).value();
   }
 };
