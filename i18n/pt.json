@@ -12,6 +12,7 @@
     "signupText": "Inscrição",
     "forgotText": "Esqueceu sua senha?",
     "emailPlaceholder": "Email",
+    "usernamePlaceholder": "Nome de Usuário",
     "passwordPlaceholder": "Senha",
     "separatorText": "ou",
     "serverErrorText": "Houve um erro ao processar o sinal em.",

@@ -12,6 +12,7 @@
     "signupText": "登记",
     "forgotText": "忘记了您的密码吗？",
     "emailPlaceholder": "电子邮件",
+    "usernamePlaceholder": "用户名",
     "passwordPlaceholder": "密码",
     "separatorText": "或",
     "serverErrorText": "处理所示的标志时出错。",

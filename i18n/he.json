@@ -12,6 +12,7 @@
     "signupText": "הירשם",
     "forgotText": "שכחת הסיסמא?",
     "emailPlaceholder": "דוא",
+    "usernamePlaceholder": "שם משתמש",
     "passwordPlaceholder": "סיסמה",
     "separatorText": "או",
     "serverErrorText": "אירעה שגיאה בעיבוד הכניסה.",

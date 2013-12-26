@@ -11,6 +11,7 @@
     "signupText":                  "Registrarse",
     "forgotText":                  "Olvidé mi contraseña",
     "emailPlaceholder":            "Email",
+    "usernamePlaceholder":         "Nombre de usuario",
     "passwordPlaceholder":         "Contraseña",
     "separatorText":               "o",
     "serverErrorText":             "Hubo un error al iniciar sesión.",

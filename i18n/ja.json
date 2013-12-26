@@ -12,6 +12,7 @@
     "signupText": "サインアップ",
     "forgotText": "パスワードをお忘れですか？",
     "emailPlaceholder": "電子メール",
+    "usernamePlaceholder": "ユーザ名",
     "passwordPlaceholder": "パスワード",
     "separatorText": "または",
     "serverErrorText": "サインインを処理中にエラーがありました。",

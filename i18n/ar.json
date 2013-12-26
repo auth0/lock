@@ -12,6 +12,7 @@
     "signupText": "التسجيل",
     "forgotText": "هل نسيت كلمة المرور الخاصة بك؟",
     "emailPlaceholder": "البريد الإلكتروني",
+    "usernamePlaceholder": "اسم المستخدم",
     "passwordPlaceholder": "كلمة المرور",
     "separatorText": "أو",
     "serverErrorText": "حدث خطأ أثناء معالجة تسجيل الدخول.",

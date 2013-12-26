@@ -11,6 +11,7 @@
     "signupText":                  "Sign Up",
     "forgotText":                  "Forgot your password?",
     "emailPlaceholder":            "Email",
+    "usernamePlaceholder":         "Username",
     "passwordPlaceholder":         "Password",
     "separatorText":               "or",
     "serverErrorText":             "There was an error processing the sign in.",

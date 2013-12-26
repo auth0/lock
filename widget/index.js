@@ -174,6 +174,13 @@ Auth0Widget.prototype._getConfiguredStrategy = function (name) {
   return _.findWhere(this._client.strategies, {name: name});
 };
 
+Auth0Widget.prototype._getStrategy = function (connName) {
+  return _.chain(this._client.strategies)
+          .filter(function (s) {
+            return _.findWhere(s.connections, {name: connName});
+          }).value()[0];
+};
+
 Auth0Widget.prototype._getAuth0Connection = function() {
   // if specified, use it, otherwise return first
   if (this._signinOptions['userPwdConnectionName']) {
@@ -620,7 +627,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   });
 
   // show signup/forgot links
-  var auth0Conn = this._getAuth0Connection();
+  var auth0Conn = this._getAuth0Connection() || {};
   var actions = $.create(loginActionsTmpl({
     showSignup: (this._signinOptions.showSignup !== false) && ((auth0Conn && auth0Conn.showSignup) || this._signinOptions.signupLink),
     showForgot: (this._signinOptions.showForgot !== false) && ((auth0Conn && auth0Conn.showForgot) || this._signinOptions.forgotLink),
@@ -628,6 +635,25 @@ Auth0Widget.prototype._resolveLoginView = function () {
     signupLink: this._signinOptions.signupLink,
     forgotLink: this._signinOptions.forgotLink
   }));
+
+  // username_style
+  var auth0ConnStrategy = this._getStrategy(auth0Conn.name) || {};
+
+  if (!this._signinOptions.username_style && 
+      (auth0ConnStrategy.name === 'ad' || auth0ConnStrategy.name === 'auth0-adldap')) {
+    this._signinOptions.username_style = 'username';
+  }
+
+  if (this._signinOptions.username_style === 'username') {
+    // set username mode
+    var placeholder = this._dict.t('signin:usernamePlaceholder');
+    $('.a0-notloggedin .a0-email input')
+      .attr('type', 'text')
+      .attr('title', placeholder)
+      .attr('placeholder', placeholder);
+
+    $('.a0-notloggedin .a0-email label').text(placeholder);
+  }
 
   $('.a0-db-actions').append(actions);
 

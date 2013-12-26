@@ -12,6 +12,7 @@
     "signupText": "Anmelden",
     "forgotText": "Passwort vergessen?",
     "emailPlaceholder": "E-Mail",
+    "usernamePlaceholder": "Benutzername",
     "passwordPlaceholder": "Passwort",
     "separatorText": "oder",
     "serverErrorText": "Gab es Fehler beim Verarbeiten der anmelden.",

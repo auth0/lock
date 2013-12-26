@@ -12,6 +12,7 @@
     "signupText": "Регистрация",
     "forgotText": "Забыли ваш пароль?",
     "emailPlaceholder": "E-mail",
+    "usernamePlaceholder": "Имя пользователя",
     "passwordPlaceholder": "Пароль",
     "separatorText": "или",
     "serverErrorText": "Произошла ошибка при обработке входа.",

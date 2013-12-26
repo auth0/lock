@@ -12,6 +12,7 @@
     "signupText": "Aanmelden",
     "forgotText": "Wachtwoord vergeten?",
     "emailPlaceholder": "E-mail",
+    "usernamePlaceholder": "Usernamea",
     "passwordPlaceholder": "Wachtwoord",
     "separatorText": "of",
     "serverErrorText": "Er is een fout opgetreden tijdens het inloggen.",

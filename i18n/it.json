@@ -12,6 +12,7 @@
     "signupText": "Registrati",
     "forgotText": "Hai dimenticato la password?",
     "emailPlaceholder": "Posta elettronica",
+    "usernamePlaceholder": "Nome utente",
     "passwordPlaceholder": "Password",
     "separatorText": "o",
     "serverErrorText": "C'è stato un errore durante l'elaborazione il segno in.",

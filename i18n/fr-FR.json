@@ -11,6 +11,7 @@
     "signupText": "Inscrivez-vous",
     "forgotText": "Vous avez oublié votre mot de passe ?",
     "emailPlaceholder": "Email",
+    "usernamePlaceholder": "Nom d'utilisateur",
     "passwordPlaceholder": "Mot de passe",
     "separatorText": "ou",
     "serverErrorText": "Il y avait une erreur de traitement de la connexion.",
