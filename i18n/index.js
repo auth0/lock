@@ -9,6 +9,7 @@ var dics_data = {
   'ja': require('./ja.json'),
   'nl-NL': require('./nl-NL.json'),
   'pt': require('./pt.json'),
+  'pt-BR': require('./pt-BR.json'),
   'ru': require('./ru.json'),
   'tlh': require('./tlh.json'),
   'zh': require('./zh.json')
