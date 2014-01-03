@@ -726,6 +726,10 @@ Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
     });
 };
 
+Auth0Widget.prototype.getClient = function () {
+  return this._auth0;
+};
+
 Auth0Widget.prototype.parseHash = function (hash, callback) {
   this._auth0.parseHash(hash, callback);
 };
