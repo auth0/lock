@@ -771,11 +771,13 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
 
   self._signinOptions = _.extend({}, self._options, signinOptions);
 
-  self._signinOptions.extraParameters = utils.extract(self._signinOptions,
-                                                [ 'state', 'access_token',
-                                                  'scope', 'protocol',
-                                                  'request_id' ]);
+  var extra = utils.extract(self._signinOptions,
+                            [ 'state', 'access_token',
+                              'scope', 'protocol',
+                              'request_id' ]);
 
+  self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
+  
   // widget container
   if (self._signinOptions.container) {
     self._signinOptions.theme = 'static';

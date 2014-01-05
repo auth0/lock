@@ -303,6 +303,18 @@ describe('auth0-Widget', function () {
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       });
     });
+
+    it('should send extraParameters to login', function (done) {
+      client.login = function (options) {
+        expect(options.access_type).to.equal('offline');
+        done();
+      };
+
+      widget.show({ extraParameters: { access_type: 'offline' } }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');     
+      });
+    });
   });
 
   describe('Sign Up with database connection', function () {
