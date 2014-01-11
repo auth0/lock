@@ -2,7 +2,5 @@
 		data-strategy="<%= name %>"
 		title="<%= username ? (username + ' (' + title + ')') : title %>"
 		class="a0-zocial a0-block a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>">
-	<span class="a0-mail">
-		<%= username || title %>
-	</span>
+	<%= username || title %>
 </span>

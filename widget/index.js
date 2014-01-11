@@ -382,6 +382,8 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
     username: this._ssoData.lastUsedUsername
   }));
 
+  $('.a0-last-time').html(this._dict.t('signin:returnUserLabel'));
+
   $('.a0-strategy span', loginView).remove();
 
   $('.a0-strategy', loginView)
@@ -399,15 +401,57 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   this._setLoginView({ isReturningUser: !!strategy });
 };
 
+Auth0Widget.prototype._showAdInDomainExperience = function() {
+  var self = this;
+  var connection = this._ssoData.connection;
+  var strategy = this._strategies['ad'];
+
+  if (!strategy) return;
+
+  var loginView = $('.a0-loggedin');
+
+  $('form', loginView).a0_on('submit', function (e) {
+    self._signInEnterprise(e);
+  });
+
+  var button = $.create(buttonTmpl({
+    use_big_buttons: true,
+    name: 'ad',
+    title: this._dict.t('windowsAuthTitle').replace('{connection}', connection),
+    css: strategy.css,
+    imageicon: strategy.imageicon,
+  }));
+
+  $('.a0-last-time').html(this._dict.t('signin:domainUserLabel'));
+
+  $('.a0-strategy span', loginView).remove();
+
+  $('.a0-strategy', loginView)
+    .append(button);
+
+  $('.a0-strategy span', loginView).a0_on('click', function (e) {
+    e.preventDefault();
+    self._signInSocial('ad', connection);
+  });
+
+  $('.a0-all', loginView).a0_on('click', function () {
+    self._setLoginView();
+  });
+
+  this._setLoginView({ isReturningUser: !!strategy });
+};
+
 // sign in methods
-Auth0Widget.prototype._signInSocial = function (e) {
+Auth0Widget.prototype._signInSocial = function (e, connection) {
   var target = e.target || e;
   var self = this;
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
   var strategy = this._getConfiguredStrategy(strategyName);
 
+  var connection_name = connection || strategy.connections[0].name;
+
   if (strategy) {
-    var loginOptions = _.extend({}, { connection: strategy.connections[0].name }, self._signinOptions.extraParameters);
+    var loginOptions = _.extend({}, { connection: connection_name }, self._signinOptions.extraParameters);
     this._auth0.login(loginOptions);
   }
 };
@@ -593,11 +637,15 @@ Auth0Widget.prototype._initialize = function (cb) {
     if (cb && typeof cb === 'function') cb();
   }
 
+  var is_any_ad = _.some(self._client.strategies, function (s) {
+    return s.name === 'ad' && s.connections.length > 0;
+  });
+
   // get SSO data
-  if (this._signinOptions.enableReturnUserExperience === false) {
+  if (this._signinOptions.enableReturnUserExperience === false && !is_any_ad) {
     finish(null, {});
   } else {
-    self._auth0.getSSOData(finish);
+    self._auth0.getSSOData(is_any_ad, finish);
   }
 };
 
@@ -639,7 +687,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   // username_style
   var auth0ConnStrategy = this._getStrategy(auth0Conn.name) || {};
 
-  if (!this._signinOptions.username_style && 
+  if (!this._signinOptions.username_style &&
       (auth0ConnStrategy.name === 'ad' || auth0ConnStrategy.name === 'auth0-adldap')) {
     this._signinOptions.username_style = 'username';
   }
@@ -701,11 +749,18 @@ Auth0Widget.prototype._resolveLoginView = function () {
     collapse_onfocus.hook($('.a0-notloggedin form input'), $('.a0-collapse-social'));
   }
 
-  // if user logged in show logged in experience
-  if (self._ssoData.sso && self._signinOptions['enableReturnUserExperience']) {
-    self._showLoggedInExperience();
+  // if user in AD ip range
+  if (self._ssoData && self._ssoData.connection) {
+    self._showAdInDomainExperience();
     return;
+  } else {
+    // if user logged in show logged in experience
+    if (self._ssoData.sso && self._signinOptions['enableReturnUserExperience']) {
+      self._showLoggedInExperience();
+      return;
+    }
   }
+
 
   self._setLoginView({ isReturningUser: self._ssoData.sso });
 };
@@ -777,7 +832,7 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
                               'request_id' ]);
 
   self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
-  
+
   // widget container
   if (self._signinOptions.container) {
     self._signinOptions.theme = 'static';

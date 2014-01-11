@@ -60,7 +60,7 @@ describe('auth0-Widget', function () {
     });
 
     client = widget._auth0;
-    client.getSSOData = function (callback) {
+    client.getSSOData = function (withAd, callback) {
       callback(null, { sso: false });
     };
   });
@@ -100,7 +100,7 @@ describe('auth0-Widget', function () {
   });
 
   it('should show only loggedin view with SSO data (social) if it is present', function (done) {
-      client.getSSOData = function (callback) {
+      client.getSSOData = function (withAd, callback) {
         callback(null, {
           sso: true,
           lastUsedUsername: 'john@gmail.com',
@@ -312,7 +312,7 @@ describe('auth0-Widget', function () {
 
       widget.show({ extraParameters: { access_type: 'offline' } }).on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');     
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');
       });
     });
   });

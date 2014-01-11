@@ -1,6 +1,7 @@
 {
   "loadingTitle":                  "Please wait...",
   "close":                         "Close",
+  "windowsAuthTitle":              "Windows Authentication",
   "signin": {
     "title":                       "Sign In",
     "action":                      "Sign In",
@@ -16,6 +17,7 @@
     "separatorText":               "or",
     "serverErrorText":             "There was an error processing the sign in.",
     "returnUserLabel":             "Last time you signed in using...",
+    "domainUserLabel":             "You are connected from your corporate network...",
     "wrongEmailPasswordErrorText": "Wrong email or password.",
     "or":                          "... or sign in using"
   },
