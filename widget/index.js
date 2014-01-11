@@ -762,7 +762,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   }
 
 
-  self._setLoginView({ isReturningUser: self._ssoData.sso });
+  self._setLoginView({ isReturningUser: self._ssoData.sso && self._signinOptions['enableReturnUserExperience'] !== false});
 };
 
 Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
