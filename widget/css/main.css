@@ -1512,21 +1512,6 @@ Credit to @guillermovs for suggesting
   color: #fff;
 }
 
-#a0-widget .a0-zocial.a0-box {
-  background-color: #267bb6;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-salesforce {
-  background-color: #fff;
-  color: #ff0000;
-}
-
-#a0-widget .a0-zocial.a0-windows {
-  background-color: #2672EC;
-  color: #fff;
-}
-
 #a0-widget .a0-zocial.a0-yahoo {
   background-color: #a200c2;
   color: #fff;
@@ -1535,11 +1520,6 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-zocial.a0-stackoverflow:before {
   content: "\00EC";
   color: #ff7a15;
-}
-
-#a0-widget .a0-zocial.a0-waad {
-  background-color: #00ADEF;
-  color: #fff;
 }
 
 #a0-widget .a0-zocial.a0-thirtysevensignals {
@@ -2365,92 +2345,6 @@ Credit to @guillermovs for suggesting
   margin: 0 0 7px 0;
   text-shadow: 0 1px 0 white;
   text-align: center;
-}
-
-#a0-widget .a0-zocial.a0-office365:before {
-  content: "W";
-}
-
-#a0-widget .a0-zocial.a0-office365 {
-  background-color: #00ACED;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-waad:before {
-  content: "z";
-}
-
-#a0-widget .a0-zocial.a0-waad {
-  background-color: #00ADEF;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-thirtysevensignals:before {
-  content: "b";
-}
-
-#a0-widget .a0-zocial.a0-thirtysevensignals {
-  background-color: #6AC071;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-box:before {
-  content: "x";
-}
-
-#a0-widget .a0-zocial.a0-box {
-  background-color: #267bb6;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-salesforce:before {
-  content: "*";
-}
-
-#a0-widget .a0-zocial.a0-salesforce {
-  background-color: #fff;
-  color: #ff0000;
-}
-
-#a0-widget .a0-zocial.a0-windows {
-  background-color: #2672EC;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-fitbit:before {
-  content: "#";
-}
-
-#a0-widget .a0-zocial.a0-fitbit {
-  background-color: #45C2C5;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-yandex:before {
-  content: "&";
-}
-
-#a0-widget .a0-zocial.a0-yandex {
-  background-color: #FF0000;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-renren:before {
-  content: "r";
-}
-
-#a0-widget .a0-zocial.a0-renren {
-  background-color: #0056B5;
-  color: #fff;
-}
-
-#a0-widget .a0-zocial.a0-baidu:before {
-  content: "u";
-}
-
-#a0-widget .a0-zocial.a0-baidu {
-  background-color: #2832E1;
-  color: #fff;
 }
 
 #a0-widget .a0-popup .a0-overlay .a0-onestep {
