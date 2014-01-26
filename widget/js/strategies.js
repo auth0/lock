@@ -132,5 +132,20 @@ module.exports = {
         css: 'fitbit',
         title: 'Fitbit',
         social: true
+    },
+    'baidu': {
+        css: 'baidu',
+        title: 'Baidu',
+        social: true
+    },
+    'renren': {
+        css: 'renren',
+        title: 'RenRen',
+        social: true
+    },
+    'yahoo': {
+        css: 'yahoo',
+        title: 'Yahoo!',
+        social: true
     }
 };
