@@ -619,7 +619,7 @@ Auth0Widget.prototype._initialize = function (cb) {
 
 
   // merge strategies info
-  for (var s in self._client.strategies) {
+  for (var s = 0; s < self.client.strategies.length; s++) {
     var strategy_name = self._client.strategies[s].name;
     self._client.strategies[s] = _.extend({}, self._client.strategies[s], self._strategies[strategy_name]);
   }
