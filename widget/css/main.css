@@ -486,7 +486,6 @@
   border-spacing: 0;
 }
 
-.a0-widget input,
 .a0-widget header,
 .a0-widget footer,
 .a0-widget button,
@@ -497,8 +496,10 @@
 .a0-widget h3,
 .a0-widget form label,
 .a0-widget span,
-.a0-widget body input[type="email"],
-.a0-widget body input[type="password"] {
+.a0-widget input[type="button"],
+.a0-widget input[type="text"],
+.a0-widget input[type="email"],
+.a0-widget input[type="password"] {
   font-smooth: never;
   -webkit-font-smoothing: auto;
   alignment-baseline: baseline;
