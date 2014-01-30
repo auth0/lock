@@ -496,7 +496,9 @@
 .a0-widget h2,
 .a0-widget h3,
 .a0-widget form label,
-.a0-widget span {
+.a0-widget span,
+.a0-widget body input[type="email"],
+.a0-widget body input[type="password"] {
   font-smooth: never;
   -webkit-font-smoothing: auto;
   alignment-baseline: baseline;
