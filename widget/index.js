@@ -355,8 +355,9 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
 };
 
 Auth0Widget.prototype._setLoginView = function(options, callback) {
+  var self = this;
   this._transitionMode(options, function (err, currentPane) {
-    setfocus($('input', currentPane).first());
+    if (!self._signinOptions.container) setfocus($('input', currentPane).first());
     if (callback) callback();
   });
 };
