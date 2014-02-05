@@ -18,7 +18,8 @@
     "serverErrorText": "Houve um erro ao processar o sinal em.",
     "returnUserLabel": "Da última vez que você assinou usando...",
     "wrongEmailPasswordErrorText": "Senha ou e-mail errado.",
-    "or": "... ou Cadastre-se no uso de"
+    "or": "... ou Cadastre-se no uso de",
+    "loadingMessage": "Entrar com {connection}..."
   },
   "signup": {
     "title": "Inscrição",

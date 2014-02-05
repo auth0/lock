@@ -18,7 +18,8 @@
     "serverErrorText": "אירעה שגיאה בעיבוד הכניסה.",
     "returnUserLabel": "בפעם האחרונה נכנסת באמצעות...",
     "wrongEmailPasswordErrorText": "הדוא\"ל טועה או סיסמה.",
-    "or": ". או כניסה באמצעות"
+    "or": ". או כניסה באמצעות",
+    "loadingMessage": "כניסה עם {connection}..."
   },
   "signup": {
     "title": "הירשם",

@@ -18,7 +18,8 @@
     "serverErrorText": "Gab es Fehler beim Verarbeiten der anmelden.",
     "returnUserLabel": "Letzte Mal unterschrieben Sie bei der Verwendung...",
     "wrongEmailPasswordErrorText": "Falsche e-Mail oder Passwort.",
-    "or": "... oder melden Sie sich mit"
+    "or": "... oder melden Sie sich mit",
+    "loadingMessage": "Bei der Anmeldung mit {connection}..."
   },
   "signup": {
     "title": "Anmelden",

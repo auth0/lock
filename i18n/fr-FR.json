@@ -17,7 +17,8 @@
     "serverErrorText": "Il y avait une erreur de traitement de la connexion.",
     "returnUserLabel": "La dernière fois vous connecté à l'aide...",
     "wrongEmailPasswordErrorText": "Faux email ou mot de passe.",
-    "or": "... ou connectez-vous à l'aide"
+    "or": "... ou connectez-vous à l'aide",
+    "loadingMessage": "Connexion à l'aide {connection}..."
   },
   "signup": {
     "title": "Inscrivez-vous",

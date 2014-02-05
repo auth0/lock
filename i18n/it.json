@@ -18,7 +18,8 @@
     "serverErrorText": "C'è stato un errore durante l'elaborazione il segno in.",
     "returnUserLabel": "Ultima volta che hai eseguito utilizzando...",
     "wrongEmailPasswordErrorText": "Email errato o password.",
-    "or": "... oppure accedi usando"
+    "or": "... oppure accedi usando",
+    "loadingMessage": "Accedi con {connection}..."
   },
   "signup": {
     "title": "Registrati",

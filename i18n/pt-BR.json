@@ -17,7 +17,8 @@
     "serverErrorText": "Houve um erro ao efetuar o login.",
     "returnUserLabel": "Da última vez que você fez login usando...",
     "wrongEmailPasswordErrorText": "E-mail ou senha inválidos.",
-    "or": "... ou entre usando"
+    "or": "... ou entre usando",
+    "loadingMessage": "Entrar com {connection}..."
   },
   "signup": {
     "title": "Cadastre-se",

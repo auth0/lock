@@ -18,7 +18,8 @@
     "serverErrorText": "Er is een fout opgetreden tijdens het inloggen.",
     "returnUserLabel": "De laatste keer logde je in met...",
     "wrongEmailPasswordErrorText": "Verkeerd e-mail of wachtwoord.",
-    "or": "... of meld u aan met"
+    "or": "... of meld u aan met",
+    "loadingMessage": "Aanmelden met {connection}..."
   },
   "signup": {
     "title": "Aanmelden",
