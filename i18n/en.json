@@ -19,7 +19,8 @@
     "returnUserLabel":             "Last time you signed in using...",
     "domainUserLabel":             "You are connected from your corporate network...",
     "wrongEmailPasswordErrorText": "Wrong email or password.",
-    "or":                          "... or sign in using"
+    "or":                          "... or sign in using",
+    "loadingMessage":              "Signing In with {connection}..."
   },
   "signup": {
     "title":                       "Sign Up",

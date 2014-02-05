@@ -520,7 +520,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
 
   if (valid) {
-    var loadingMessage = 'Signing In with ' + connection + '...';
+    var loadingMessage = self._dict.t('signin:loadingMessage').replace('{connection}', connection);
     this._setLoginView({ mode: 'loading', message: loadingMessage }, function () {
       var loginOptions = _.extend({}, { connection: connection }, self._signinOptions.extraParameters);
       self._auth0.login(loginOptions);
@@ -543,7 +543,10 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   loginOptions = _.extend({}, loginOptions, self._signinOptions.extraParameters);
 
-  var loadingMessage = 'Signing In with ' + connection.name + '...';
+  var strategy = self._getStrategy(connection.name) || {};
+  var loadingMessage = strategy.name !== 'auth0' ? // dont show loading message for dbConnections
+    self._dict.t('signin:loadingMessage').replace('{connection}', connection.name) : '';
+
   this._setLoginView({ mode: 'loading', message: loadingMessage }, function (){
     self._auth0.login(loginOptions, function (err) {
       if (err) {
