@@ -767,19 +767,14 @@ Auth0Widget.prototype._resolveLoginView = function () {
 };
 
 Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
-  return signinOptions.chrome ?
-    mainTmpl({
-      expand:       true, // cover the entire container
-      i18n:         this._dict,
-      options:      signinOptions,
-      alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
-    }) :
-    embTmpl({
-      embedded:     true,
-      i18n:         this._dict,
-      options:      signinOptions,
-      alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
-    });
+  var options = {
+    expand:       true, // cover the entire container
+    i18n:         this._dict,
+    options:      signinOptions,
+    alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
+  };
+
+  return signinOptions.chrome ? mainTmpl(options) : embTmpl(options);
 };
 
 Auth0Widget.prototype.getClient = function () {
