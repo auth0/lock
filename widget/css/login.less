@@ -94,6 +94,10 @@
   height: 70px;
 }
 
+.panel .loading.with-message {
+  height: 170px;
+}
+
 @-moz-keyframes showPanel {
   0% {
     opacity: 0;
@@ -1124,6 +1128,21 @@ input[disabled]{
   position: relative;
   // left: 50%;
   top: 50%;
+}
+
+.loading.with-message .spin-container {
+  top: 37%;
+}
+
+.spin-message {
+  text-align:center;
+  position:relative;
+  top:50px;
+}
+
+.spin-message span {
+  font-size:14px;
+  color:#41444a;
 }
 
 .spin-img {

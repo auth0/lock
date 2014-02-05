@@ -257,6 +257,7 @@ Auth0Widget.prototype._showLoadingExperience = function() {
 
 Auth0Widget.prototype._transitionMode = function(options, callback) {
   var self = this;
+  $('.a0-loading').removeClass('a0-with-message');
 
   if((!self._currentPane || self._currentPane.hasClass('a0-loading')) && options.mode === 'loading') {
     self._setTitle(options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title'));
@@ -280,6 +281,12 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
    case 'loading':
       title = options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title');
       newPane = $('.a0-loading').first();
+      
+      // set loading message
+      if (options.message) {
+        newPane.addClass('a0-with-message');
+        $('.a0-spin-message span', newPane).html(options.message.replace('-', ' '));
+      }
       break;
     case 'signup':
     case 'reset':
@@ -513,7 +520,8 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
 
   if (valid) {
-    this._setLoginView({ mode: 'loading' }, function () {
+    var loadingMessage = 'Signing In with ' + connection + '...';
+    this._setLoginView({ mode: 'loading', message: loadingMessage }, function () {
       var loginOptions = _.extend({}, { connection: connection }, self._signinOptions.extraParameters);
       self._auth0.login(loginOptions);
     });
@@ -535,7 +543,8 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   loginOptions = _.extend({}, loginOptions, self._signinOptions.extraParameters);
 
- this._setLoginView({ mode: 'loading' }, function (){
+  var loadingMessage = 'Signing In with ' + connection.name + '...';
+  this._setLoginView({ mode: 'loading', message: loadingMessage }, function (){
     self._auth0.login(loginOptions, function (err) {
       if (err) {
         self._setLoginView({}, function () {

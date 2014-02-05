@@ -1798,6 +1798,10 @@ Credit to @guillermovs for suggesting
   height: 70px;
 }
 
+#a0-widget .a0-panel .a0-loading.a0-with-message {
+  height: 170px;
+}
+
 @-moz-keyframes showPanel {
   0% {
     opacity: 0;
@@ -2806,6 +2810,21 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-spin-container {
   position: relative;
   top: 50%;
+}
+
+#a0-widget .a0-loading.a0-with-message .a0-spin-container {
+  top: 37%;
+}
+
+#a0-widget .a0-spin-message {
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+
+#a0-widget .a0-spin-message span {
+  font-size: 14px;
+  color: #41444a;
 }
 
 #a0-widget .a0-spin-img {
