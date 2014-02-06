@@ -296,7 +296,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
    case 'loading':
       title = options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title');
       newPane = $('.a0-loading').first();
-      
+
       // set loading message
       if (options.message) {
         newPane.addClass('a0-with-message');
@@ -666,7 +666,8 @@ Auth0Widget.prototype._initialize = function (cb) {
   }
 
   var is_any_ad = _.some(self._client.strategies, function (s) {
-    return s.name === 'ad' && s.connections.length > 0;
+    return (s.name === 'ad' || s.name === 'auth0-adldap') &&
+            s.connections.length > 0;
   });
 
   // get SSO data
