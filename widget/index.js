@@ -427,7 +427,9 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
 Auth0Widget.prototype._showAdInDomainExperience = function() {
   var self = this;
   var connection = this._ssoData.connection;
-  var strategy = this._strategies['ad'];
+  //this could be ad or auth0-adldap
+  var strategy_name = this._ssoData.strategy;
+  var strategy = this._strategies[strategy_name];
 
   if (!strategy) return;
 
@@ -439,7 +441,7 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 
   var button = $.create(buttonTmpl({
     use_big_buttons: true,
-    name: 'ad',
+    name: strategy_name,
     title: this._dict.t('windowsAuthTitle').replace('{connection}', connection),
     css: strategy.css,
     imageicon: strategy.imageicon,
@@ -454,7 +456,7 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 
   $('.a0-strategy span', loginView).a0_on('click', function (e) {
     e.preventDefault();
-    self._signInSocial('ad', connection);
+    self._signInSocial(strategy_name, connection);
   });
 
   $('.a0-all', loginView).a0_on('click', function () {
