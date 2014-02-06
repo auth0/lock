@@ -181,7 +181,7 @@ Auth0Widget.prototype._getStrategy = function (connName) {
           }).value()[0];
 };
 
-Auth0Widget.prototype._getAuth0Connection = function() {
+Auth0Widget.prototype._getAuth0Connection = function(userName) {
   // if specified, use it, otherwise return first
   if (this._signinOptions['userPwdConnectionName']) {
     return _.chain(this._auth0Strategies)
@@ -189,6 +189,21 @@ Auth0Widget.prototype._getAuth0Connection = function() {
             .flatten()
             .findWhere({name: this._signinOptions['userPwdConnectionName']})
             .value();
+  }
+
+  var domain = userName && ~userName.indexOf('@') ? userName.split('@')[1] : '';
+
+  if (userName && domain && this._client.strategies) {
+    //there is still a chance that the connection might be
+    //adldap and with domain
+    var conn = _.chain(this._client.strategies)
+                .pluck('connections')
+                .flatten()
+                .findWhere({domain: domain})
+                .value();
+    if (conn) {
+      return conn;
+    }
   }
 
   // By default, if exists, return auth0 connection (db-conn) or first
@@ -531,7 +546,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
 Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   var self = this;
   var container = this._getActiveLoginView();
-  var connection  = this._getAuth0Connection();
+  var connection  = this._getAuth0Connection(userName);
 
   var loginOptions = {
     connection: connection.name,

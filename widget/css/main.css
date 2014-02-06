@@ -778,6 +778,7 @@ Credit to @guillermovs for suggesting
 
 @charset "UTF-8";
 
+
 #a0-widget .a0-theme-static .a0-popup .a0-overlay,
 #a0-widget .a0-theme-static .a0-popup .a0-overlay.a0-ie8-overlay {
   background: rgba(255, 255, 255, 0);
@@ -1252,6 +1253,7 @@ Credit to @guillermovs for suggesting
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(49%, rgba(255, 255, 255, 0.05)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
+  background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(255, 255, 255, 0.1)), color-stop(49%, rgba(255, 255, 255, 0.05)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));
   background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
 }
 
@@ -1260,7 +1262,7 @@ Credit to @guillermovs for suggesting
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), color-stop(49%, rgba(255, 255, 255, 0.15)), color-stop(51%, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.15)));
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), color-stop(51%, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.15)));
+  background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(255, 255, 255, 0.15)), color-stop(51%, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.15)));
   background-image: linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
 }
 
@@ -1268,7 +1270,7 @@ Credit to @guillermovs for suggesting
   background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, transparent), to(rgba(0, 0, 0, 0.1)));
   background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
-  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, transparent), to(rgba(0, 0, 0, 0.1)));
+  background-image: -webkit-gradient(linear, bottom left, top left, from(rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, transparent), to(rgba(0, 0, 0, 0.1)));
   background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
 }
 
@@ -1305,7 +1307,7 @@ Credit to @guillermovs for suggesting
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), color-stop(49%, rgba(255, 255, 255, 0.2)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));
   background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(rgba(255, 255, 255, 0.5)), color-stop(49%, rgba(255, 255, 255, 0.2)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));
+  background-image: -webkit-gradient(linear, top left, bottom left, from(top), color-stop(rgba(255, 255, 255, 0.5)), color-stop(49%, rgba(255, 255, 255, 0.2)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));
   background-image: linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
 }
 
@@ -1320,7 +1322,7 @@ Credit to @guillermovs for suggesting
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.1)));
   background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
   background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
-  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.1)));
+  background-image: -webkit-gradient(linear, bottom left, top left, from(rgba(255, 255, 255, 0)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.1)));
   background-image: linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
 }
 
@@ -1894,7 +1896,7 @@ Credit to @guillermovs for suggesting
   background: #fafafa;
   background-image: -webkit-linear-gradient(#ffffff, #fafafa);
   background-image: -moz-linear-gradient(#ffffff, #fafafa);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#fafafa));
+  background-image: -webkit-gradient(linear, top left, bottom left, from(#ffffff), to(#fafafa));
   background-image: linear-gradient(#ffffff, #fafafa);
   z-index: 10;
   -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2), 0 10px 27px rgba(0, 0, 0, 0.7);
@@ -1924,7 +1926,7 @@ Credit to @guillermovs for suggesting
   background: #f1f4f6;
   background-image: -webkit-linear-gradient(#f1f4f6, #e9edf0);
   background-image: -moz-linear-gradient(#f1f4f6, #e9edf0);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f1f4f6), to(#e9edf0));
+  background-image: -webkit-gradient(linear, top left, bottom left, from(#f1f4f6), to(#e9edf0));
   background-image: linear-gradient(#f1f4f6, #e9edf0);
   border-bottom: 1px solid rgba(40, 69, 85, 0.11);
 }
@@ -1938,7 +1940,7 @@ Credit to @guillermovs for suggesting
   right: 0;
   background-image: -webkit-linear-gradient(rgba(40, 69, 85, 0), rgba(40, 69, 85, 0.1));
   background-image: -moz-linear-gradient(rgba(40, 69, 85, 0), rgba(40, 69, 85, 0.1));
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(40, 69, 85, 0)), to(rgba(40, 69, 85, 0.1)));
+  background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(40, 69, 85, 0)), to(rgba(40, 69, 85, 0.1)));
   background-image: linear-gradient(rgba(40, 69, 85, 0), rgba(40, 69, 85, 0.1));
 }
 
@@ -1951,7 +1953,7 @@ Credit to @guillermovs for suggesting
   right: 0;
   background-image: -webkit-linear-gradient(left, #e9edf0, rgba(241, 244, 246, 0), #e9edf0);
   background-image: -moz-linear-gradient(left, #e9edf0, rgba(241, 244, 246, 0), #e9edf0);
-  background-image: -webkit-gradient(linear, left top, right top, from(#e9edf0), color-stop(rgba(241, 244, 246, 0)), to(#e9edf0));
+  background-image: -webkit-gradient(linear, top left, top right, from(#e9edf0), color-stop(rgba(241, 244, 246, 0)), to(#e9edf0));
   background-image: linear-gradient(left, #e9edf0, rgba(241, 244, 246, 0), #e9edf0);
 }
 

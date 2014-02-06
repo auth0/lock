@@ -225,7 +225,7 @@ module.exports = function (grunt) {
   grunt.registerTask("example",       ["connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
-  grunt.registerTask("test",          ["exec:test-phantom"]);
+  grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
   grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "invalidate_cloudfront:production"]);
 };
