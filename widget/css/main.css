@@ -2429,10 +2429,6 @@ Credit to @guillermovs for suggesting
 }
 
 @media (min-width: 281px) and (max-width: 340px) {
-  #a0-widget .a0-panel .a0-loading {
-    height: 100%;
-  }
-
   #a0-widget .a0-loading .a0-spin-container {
     top: 37%;
   }
