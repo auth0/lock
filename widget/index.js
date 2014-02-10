@@ -615,6 +615,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
   options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
   options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
+  options['enableADRealmDiscovery'] = typeof options['enableADRealmDiscovery'] !== 'undefined' ? options['enableADRealmDiscovery'] : true;
 
   this._signinOptions = options;
 
@@ -673,7 +674,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   });
 
   // get SSO data
-  if (this._signinOptions.enableReturnUserExperience === false && !is_any_ad) {
+  if (this._signinOptions.enableReturnUserExperience === false && (!is_any_ad || self._openWith || this._signinOptions.enableADRealmDiscovery === false)) {
     finish(null, {});
   } else {
     self._auth0.getSSOData(is_any_ad, finish);
