@@ -64,7 +64,8 @@ module.exports = function (grunt) {
           paths: ["widget/css"],
         },
         files: {
-          "widget/css/main.css": "widget/css/main.less"
+          "widget/css/main.css": "widget/css/main.less",
+          "widget/css/zocial.css": "widget/css/zocial.less"
         }
       }
     },
@@ -90,7 +91,8 @@ module.exports = function (grunt) {
           keepSpecialComments: 0
         },
         files: {
-          'widget/css/main.min.css': ['widget/css/main.css']
+          'widget/css/main.min.css': ['widget/css/main.css'],
+          'widget/css/zocial.min.css': ['widget/css/zocial.css']
         }
       }
     },
@@ -105,7 +107,9 @@ module.exports = function (grunt) {
         files: [
           { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(pkg.version) },
           { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(minor_version) },
-          { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(major_version) }
+          { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(major_version) },
+          { 'release/css/zocial.css': 'widget/css/zocial.css' },
+          { 'release/css/zocial.min.css': 'widget/css/zocial.min.css' }
         ]
       }
     },
@@ -137,7 +141,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["release/", "build/", "widget/css/main.css", "widget/css/main.min.css", "example/auth0-widget.js"]
+      build: ["release/", "build/", "widget/css/main.css", "widget/css/main.min.css", "widget/css/zocial.css", "widget/css/zocial.min.css", "example/auth0-widget.js"]
     },
     watch: {
       another: {
@@ -178,6 +182,12 @@ module.exports = function (grunt) {
           },
           {
             src:     'w2/auth0-widget-' + minor_version + '.min.js',
+          },
+          {
+            src:     'w2/css/zocial.css'
+          },
+          {
+            src:     'w2/css/zocial.min.css'
           }
         ]
       },
