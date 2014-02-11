@@ -285,6 +285,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
   self._currentPane = self._currentPane || $('.a0-loading');
   options = options || {};
 
+  var currentEmail = $('.a0-email input', self._currentPane).val();
   var mode = options.mode || null;
   var newPane, title;
 
@@ -307,6 +308,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
     case 'reset':
       title = this._dict.t(options.mode + ':title');
       newPane = $('.a0-' + options.mode).first();
+      $('.a0-email input', newPane).val(currentEmail || '');
       break;
   }
 
