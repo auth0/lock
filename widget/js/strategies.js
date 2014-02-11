@@ -147,5 +147,10 @@ module.exports = {
         css: 'yahoo',
         title: 'Yahoo!',
         social: true
+    },
+    'aol': {
+        css: 'aol',
+        title: 'Aol',
+        social: true
     }
 };
