@@ -293,6 +293,10 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
     case null:
       title = this._dict.t('signin:title');
       newPane = $(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin');
+      if (self._currentPane.hasClass('a0-reset') || self._currentPane.hasClass('a0-loading')) {
+        // reset password field
+        $('.a0-password input', newPane).val('');
+      }
       break;
    case 'loading':
       title = options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title');
