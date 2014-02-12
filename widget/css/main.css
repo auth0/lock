@@ -2410,7 +2410,8 @@ Credit to @guillermovs for suggesting
   }
 
   #a0-widget .a0-popup .a0-panel .a0-header a.a0-close {
-    visibility: hidden;
+    /*visibility: hidden;*/
+    top: 16px;
   }
 
   #a0-widget .a0-popup #a0-onestep {
