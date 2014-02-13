@@ -132,11 +132,6 @@ Auth0Widget.prototype._setTitle = function(title) {
   $('h1').html(title).css('display', '');
 };
 
-Auth0Widget.prototype._parseResponseMessage = function (responseObj, defaultValue) {
-  if (responseObj.status === 500) return defaultValue;
-  return this._signinOptions[responseObj.code] || responseObj.message || defaultValue;
-};
-
 Auth0Widget.prototype._areThereAnySocialConn = function () {
   return !!_.findWhere(this._client.strategies, {social: true});
 };
@@ -574,7 +569,9 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     self._auth0.login(loginOptions, function (err) {
       if (err) {
         self._setLoginView({}, function () {
-          self._showError(self._parseResponseMessage(err, self._dict.t('signin:wrongEmailPasswordErrorText')));
+          self._showError(err.status === 401 ?
+            self._dict.t('signin:wrongEmailPasswordErrorText') :
+            self._dict.t('signin:serverErrorText'));
         });
       }
     });
