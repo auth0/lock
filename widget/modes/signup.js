@@ -24,7 +24,9 @@ signup.submit = function (widget, connectionName, email, password) {
 
       if (err) {
         return widget._setLoginView({mode: 'signup'}, function () {
-          widget._showError(widget._parseResponseMessage(err, widget._dict.t('signup:serverErrorText')));
+          widget._showError(err.status === 400 ? 
+            widget._dict.t('signup:userExistsErrorText') :
+            widget._dict.t('signup:serverErrorText'));
         });
       }
       return widget._signInWithAuth0(email, password);
