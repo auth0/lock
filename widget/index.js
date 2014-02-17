@@ -691,13 +691,23 @@ Auth0Widget.prototype._resolveLoginView = function () {
 
   // load social buttons
   var list = $('.a0-notloggedin .a0-iconlist');
+  var socialStrategies = _.chain(self._client.strategies).where({social: true});
 
-  _.chain(self._client.strategies)
-     .where({social: true})
-     .map(function (s) { return  _.extend({}, s, {use_big_buttons: use_big_buttons}); })
-     .each(function (s) { return list.append(buttonTmpl(s)); });
+  if (self._signinOptions.connections) {
+    // sort social strategies based on options.connections array order
+    var connections = self._signinOptions.connections;
+    socialStrategies = socialStrategies.map(function (s) {
+      var n = connections.indexOf(s.connections[0].name);
+      connections[n] = '';
+      return [n, s];
+    }).sort().map(function (x) { return x[1]; });
+  }
 
-  if( _.where(self._client.strategies, {social: true}).length > 0 ) {
+  socialStrategies
+    .map(function (s) { return  _.extend({}, s, {use_big_buttons: use_big_buttons}); })
+    .each(function (s) { return list.append(buttonTmpl(s)); });
+
+  if (_.where(self._client.strategies, {social: true}).length > 0) {
     $('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').show();
   }
 
