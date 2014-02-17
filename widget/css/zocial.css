@@ -229,6 +229,18 @@ a.zocial {
 .zocial.aol:before {
   content: "l";
 }
+.zocial.renren:before {
+  content: "r";
+}
+.zocial.baidu:before {
+  content: "u";
+}
+.zocial.fitbit:before {
+  content: "#";
+}
+.zocial.yandex:before {
+  content: "&";
+}
 /* Button background and text color */
 .zocial.amazon {
   background-color: #ffad1d;
@@ -314,6 +326,22 @@ a.zocial {
 }
 .zocial.aol {
   background-color: #0861A8;
+  color: #fff;
+}
+.zocial.renren {
+  background-color: #0056B5;
+  color: #fff;
+}
+.zocial.baidu {
+  background-color: #2832E1;
+  color: #fff;
+}
+.zocial.fitbit {
+  background-color: #45C2C5;
+  color: #fff;
+}
+.zocial.yandex {
+  background-color: #FF0000;
   color: #fff;
 }
 /*

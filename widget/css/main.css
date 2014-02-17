@@ -1417,6 +1417,22 @@ Credit to @guillermovs for suggesting
   content: "l";
 }
 
+#a0-widget .a0-zocial.a0-renren:before {
+  content: "r";
+}
+
+#a0-widget .a0-zocial.a0-baidu:before {
+  content: "u";
+}
+
+#a0-widget .a0-zocial.a0-fitbit:before {
+  content: "#";
+}
+
+#a0-widget .a0-zocial.a0-yandex:before {
+  content: "&";
+}
+
 #a0-widget .a0-zocial.a0-amazon {
   background-color: #ffad1d;
   color: #030037;
@@ -1523,6 +1539,26 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-zocial.a0-aol {
   background-color: #0861A8;
+  color: #fff;
+}
+
+#a0-widget .a0-zocial.a0-renren {
+  background-color: #0056B5;
+  color: #fff;
+}
+
+#a0-widget .a0-zocial.a0-baidu {
+  background-color: #2832E1;
+  color: #fff;
+}
+
+#a0-widget .a0-zocial.a0-fitbit {
+  background-color: #45C2C5;
+  color: #fff;
+}
+
+#a0-widget .a0-zocial.a0-yandex {
+  background-color: #FF0000;
   color: #fff;
 }
 
