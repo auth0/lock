@@ -385,6 +385,15 @@ Auth0Widget.prototype._setLoginView = function(options, callback) {
   });
 };
 
+Auth0Widget.prototype._getLoggedInAuthParams = function (strategy, ssoData) {
+  switch (strategy) {
+    case 'google-oauth2':
+      return {login_hint:ssoData.lastUsedUsername};
+    default:
+      return {};
+  }
+};
+
 Auth0Widget.prototype._showLoggedInExperience = function() {
   var self = this;
   var strategy_name = this._ssoData.lastUsedConnection.strategy;
@@ -415,7 +424,10 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
 
   $('.a0-strategy span', loginView).a0_on('click', function (e) {
     e.preventDefault();
-    self._signInSocial(strategy_name);
+    self._signInSocial(
+      strategy_name,
+      null,
+      self._getLoggedInAuthParams(strategy_name, self._ssoData));
   });
 
   $('.a0-all', loginView).a0_on('click', function () {
@@ -468,7 +480,7 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 };
 
 // sign in methods
-Auth0Widget.prototype._signInSocial = function (e, connection) {
+Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
   var target = e.target || e;
   var self = this;
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
@@ -477,7 +489,7 @@ Auth0Widget.prototype._signInSocial = function (e, connection) {
   var connection_name = connection || strategy.connections[0].name;
 
   if (strategy) {
-    var loginOptions = _.extend({}, { connection: connection_name }, self._signinOptions.extraParameters);
+    var loginOptions = _.extend({}, { connection: connection_name }, self._signinOptions.extraParameters, extraParams);
     this._auth0.login(loginOptions);
   }
 };
