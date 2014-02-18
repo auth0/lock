@@ -21,6 +21,7 @@
     "loadingMessage": "Connexion à l'aide {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "Inscrivez-vous",
     "action": "Inscrivez-vous",
     "emailPlaceholder": "Email",

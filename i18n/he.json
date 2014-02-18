@@ -22,6 +22,7 @@
     "loadingMessage": "כניסה עם {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "הירשם",
     "action": "הירשם",
     "emailPlaceholder": "דוא",

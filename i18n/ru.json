@@ -22,6 +22,7 @@
     "loadingMessage": "Подписание В с {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "Регистрация",
     "action": "Регистрация",
     "emailPlaceholder": "E-mail",

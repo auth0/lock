@@ -22,6 +22,7 @@
     "loadingMessage": "Ukubhalisela In nge {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "qI'",
     "action": "qI'",
     "emailPlaceholder": "email",

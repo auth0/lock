@@ -22,6 +22,7 @@
     "loadingMessage": "Accedi con {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "Registrati",
     "action": "Registrati",
     "emailPlaceholder": "Posta elettronica",

@@ -23,6 +23,7 @@
     "loadingMessage":              "Signing In with {connection}..."
   },
   "signup": {
+    "description":                 "",
     "title":                       "Sign Up",
     "action":                      "Sign Up",
     "emailPlaceholder":            "Email",

@@ -22,6 +22,7 @@
     "loadingMessage": "Aanmelden met {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "Aanmelden",
     "action": "Aanmelden",
     "emailPlaceholder": "E-mail",

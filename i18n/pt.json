@@ -22,6 +22,7 @@
     "loadingMessage": "Entrar com {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "Inscrição",
     "action": "Inscrição",
     "emailPlaceholder": "Email",

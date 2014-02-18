@@ -22,6 +22,7 @@
     "loadingMessage": "でサインイン {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "サインアップ",
     "action": "サインアップ",
     "emailPlaceholder": "電子メール",

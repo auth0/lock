@@ -22,6 +22,7 @@
     "loadingMessage": "التوقيع في مع {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "التسجيل",
     "action": "التسجيل",
     "emailPlaceholder": "البريد الإلكتروني",

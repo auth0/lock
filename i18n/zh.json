@@ -22,6 +22,7 @@
     "loadingMessage": "签约与 {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "登记",
     "action": "登记",
     "emailPlaceholder": "电子邮件",

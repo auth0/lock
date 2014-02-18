@@ -21,6 +21,7 @@
     "loadingMessage":              "Iniciando sesión con {connection}..."
   },
   "signup": {
+    "description":                 "",
     "title":                       "Registrarse",
     "action":                      "Registrar",
     "emailPlaceholder":            "Email",

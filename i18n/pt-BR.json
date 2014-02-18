@@ -21,6 +21,7 @@
     "loadingMessage": "Entrar com {connection}..."
   },
   "signup": {
+    "description": "",
     "title": "Cadastre-se",
     "action": "Cadastre-se",
     "emailPlaceholder": "E-mail",
