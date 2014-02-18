@@ -648,9 +648,6 @@ Auth0Widget.prototype._initialize = function (cb) {
 
   $('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
 
-  // show loading
-  self._showLoadingExperience();
-
   if (self._signinOptions.connections) {
     self._client.strategies = _.chain(self._client.strategies)
                                 .map(function (s) {
@@ -673,6 +670,13 @@ Auth0Widget.prototype._initialize = function (cb) {
   self._auth0Strategies = _.chain(self._client.strategies)
                             .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
                             .value();
+
+  var auth0Conn = this._getAuth0Connection() || {};
+  if (self._openWith === 'SignUp' && !auth0Conn.showSignup && !self._signinOptions.signupLink) self._openWith = null;
+  if (self._openWith === 'Reset' && !auth0Conn.showForgot && !self._signinOptions.forgotLink) self._openWith = null;
+
+  // show loading
+  self._showLoadingExperience();
 
   function finish(err, ssoData){
     self._ssoData = ssoData;
