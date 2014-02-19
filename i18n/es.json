@@ -16,6 +16,7 @@
     "separatorText":               "o",
     "serverErrorText":             "Hubo un error al iniciar sesión.",
     "returnUserLabel":             "La ultima vez inició sesión con...",
+    "domainUserLabel":             "Usted se encuentra conectado desde su red corporativa...",
     "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
     "or":                          "... o inicie sesión usando",
     "loadingMessage":              "Iniciando sesión con {connection}..."
