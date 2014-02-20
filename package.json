@@ -52,7 +52,7 @@
     "mocha": "~1.13.0",
     "grunt-contrib-cssmin": "~0.7.0",
     "grunt-autoprefixer": "~0.4.0",
-    "grunt-invalidate-cloudfront": "~0.1.2"
+    "grunt-maxcdn": "https://github.com/siacomuzzi/grunt-maxcdn/tarball/0.0.1"
   },
   "browserify": {
     "transform": [

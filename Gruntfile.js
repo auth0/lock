@@ -201,21 +201,26 @@ module.exports = function (grunt) {
         ]
       }
     },
-    invalidate_cloudfront: {
-      options: {
-        key:          process.env.S3_KEY,
-        secret:       process.env.S3_SECRET,
-        distribution: process.env.CDN_DISTRIBUTION
+    maxcdn: {
+      purgeCache: {
+        options: {
+          companyAlias:   process.env.MAXCDN_COMPANY_ALIAS,
+          consumerKey:    process.env.MAXCDN_CONSUMER_KEY,
+          consumerSecret: process.env.MAXCDN_CONSUMER_SECRET,
+          zone_id:        process.env.MAXCDN_ZONE_ID,
+          method:         'delete'
+        },
+        files: [
+          { dest:     'w2/auth0-widget-' + pkg.version + '.js', },
+          { dest:     'w2/auth0-widget-' + pkg.version + '.min.js', },
+          { dest:     'w2/auth0-widget-' + major_version + '.js', },
+          { dest:     'w2/auth0-widget-' + major_version + '.min.js', },
+          { dest:     'w2/auth0-widget-' + minor_version + '.js', },
+          { dest:     'w2/auth0-widget-' + minor_version + '.min.js', },
+          { dest:     'w2/css/zocial.css' },
+          { dest:     'w2/css/zocial.min.css' }
+        ],
       },
-      production: {
-        files: [{
-          expand: true,
-          cwd: './release/',
-          src: ['**/*'],
-          filter: 'isFile',
-          dest: 'w2/'
-        }]
-      }
     }
   });
 
@@ -237,5 +242,5 @@ module.exports = function (grunt) {
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "invalidate_cloudfront:production"]);
+  grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
 };
