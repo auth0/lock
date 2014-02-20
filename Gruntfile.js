@@ -107,9 +107,7 @@ module.exports = function (grunt) {
         files: [
           { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(pkg.version) },
           { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(minor_version) },
-          { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(major_version) },
-          { 'release/css/zocial.css': 'widget/css/zocial.css' },
-          { 'release/css/zocial.min.css': 'widget/css/zocial.min.css' }
+          { expand: true, flatten: true, src: 'build/*', dest: 'release/', rename: rename_release(major_version) }
         ]
       }
     },
@@ -182,12 +180,6 @@ module.exports = function (grunt) {
           },
           {
             src:     'w2/auth0-widget-' + minor_version + '.min.js',
-          },
-          {
-            src:     'w2/css/zocial.css'
-          },
-          {
-            src:     'w2/css/zocial.min.css'
           }
         ]
       },
@@ -216,9 +208,7 @@ module.exports = function (grunt) {
           { dest:     'w2/auth0-widget-' + major_version + '.js', },
           { dest:     'w2/auth0-widget-' + major_version + '.min.js', },
           { dest:     'w2/auth0-widget-' + minor_version + '.js', },
-          { dest:     'w2/auth0-widget-' + minor_version + '.min.js', },
-          { dest:     'w2/css/zocial.css' },
-          { dest:     'w2/css/zocial.min.css' }
+          { dest:     'w2/auth0-widget-' + minor_version + '.min.js', }
         ],
       },
     }
