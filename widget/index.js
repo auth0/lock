@@ -487,9 +487,12 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
   var strategy = this._getConfiguredStrategy(strategyName);
 
   var connection_name = connection || strategy.connections[0].name;
-
   if (strategy) {
-    var loginOptions = _.extend({}, { connection: connection_name }, self._signinOptions.extraParameters, extraParams);
+    var loginOptions = _.extend({}, {
+      connection: connection_name,
+      popup: self._signinOptions.popup,
+      popupOptions: self._signinOptions.popupOptions
+    }, self._signinOptions.extraParameters, extraParams);
     this._auth0.login(loginOptions);
   }
 };
@@ -552,7 +555,11 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   if (valid) {
     var loadingMessage = self._dict.t('signin:loadingMessage').replace('{connection}', connection);
     this._setLoginView({ mode: 'loading', message: loadingMessage }, function () {
-      var loginOptions = _.extend({}, { connection: connection }, self._signinOptions.extraParameters);
+      var loginOptions = _.extend({}, {
+        connection: connection,
+        popup: self._signinOptions.popup,
+        popupOptions: self._signinOptions.popupOptions
+      }, self._signinOptions.extraParameters);
       self._auth0.login(loginOptions);
     });
   }
@@ -568,7 +575,9 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     username: connection.domain ?
                 userName.replace('@' + connection.domain, '') :
                 userName,
-    password: signInPassword || $('.a0-password input', container).val()
+    password: signInPassword || $('.a0-password input', container).val(),
+    popup: self._signinOptions.popup,
+    popupOptions: self._signinOptions.popupOptions
   };
 
   loginOptions = _.extend({}, loginOptions, self._signinOptions.extraParameters);
