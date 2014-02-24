@@ -586,6 +586,16 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   var loadingMessage = strategy.name !== 'auth0' ? // dont show loading message for dbConnections
     self._dict.t('signin:loadingMessage').replace('{connection}', connection.name) : '';
 
+  if (self._signinOptions.popup) {
+    self._auth0.login(loginOptions, function (err) {
+      if (err) {
+        self._showError(err.status === 401 ?
+          self._dict.t('signin:wrongEmailPasswordErrorText') :
+          self._dict.t('signin:serverErrorText'));
+      }
+    });
+  }
+
   this._setLoginView({ mode: 'loading', message: loadingMessage }, function (){
     self._auth0.login(loginOptions, function (err) {
       if (err) {
