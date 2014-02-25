@@ -152,5 +152,20 @@ module.exports = {
         css: 'aol',
         title: 'Aol',
         social: true
+    },
+    'wordpress': {
+        css: 'wordpress',
+        title: 'Wordpress',
+        social: true
+    },
+    'dwolla': {
+        css: 'dwolla',
+        title: 'Dwolla',
+        social: true
+    },
+    'shopify': {
+        css: 'shopify',
+        title: 'Shopify',
+        social: true
     }
 };
