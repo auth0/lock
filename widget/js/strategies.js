@@ -153,6 +153,11 @@ module.exports = {
         title: 'Aol',
         social: true
     },
+    'yammer': {
+        css: 'yammer',
+        title: 'Yammer',
+        social: true
+    },
     'wordpress': {
         css: 'wordpress',
         title: 'Wordpress',
