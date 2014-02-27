@@ -250,6 +250,9 @@ a.zocial {
 .zocial.shopify:before {
   content: "s";
 }
+.zocial.yammer:before {
+  content: "!";
+}
 /* Button background and text color */
 .zocial.amazon {
   background-color: #ffad1d;
@@ -364,6 +367,10 @@ a.zocial {
 .zocial.shopify {
   background-color: #fbfbfb;
   color: #9CC24C;
+}
+.zocial.yammer {
+  background-color: 0072c6;
+  color: #fff;
 }
 /*
 The Miscellaneous Buttons

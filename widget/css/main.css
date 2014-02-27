@@ -1445,6 +1445,10 @@ Credit to @guillermovs for suggesting
   content: "s";
 }
 
+#a0-widget .a0-zocial.a0-yammer:before {
+  content: "!";
+}
+
 #a0-widget .a0-zocial.a0-amazon {
   background-color: #ffad1d;
   color: #030037;
@@ -1587,6 +1591,11 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-zocial.a0-shopify {
   background-color: #fbfbfb;
   color: #9CC24C;
+}
+
+#a0-widget .a0-zocial.a0-yammer {
+  background-color: 0072c6;
+  color: #fff;
 }
 
 #a0-widget .a0-zocial.a0-primary,
