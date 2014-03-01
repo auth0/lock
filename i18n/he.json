@@ -29,7 +29,7 @@
     "passwordPlaceholder": "צור סיסמה",
     "cancelAction": "ביטול",
     "headerText": "הזינו את כתובת המייל והסיסמא",
-    "footerText": "על ידי לחיצה על \"Sign Up\", אתה מסכים לתנאים שלנו של מדיניות שירות ופרטיות.",
+    "footerText": "",
     "enterpriseEmailWarningText": "תחום זה, {domain} נקבעה עבור כניסה יחידה, אין באפשרותך ליצור חשבון. נסה להיכנס במקום.",
     "serverErrorText": "אירעה שגיאה בעיבוד את השלט למעלה."
   },

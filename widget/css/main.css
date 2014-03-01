@@ -1824,12 +1824,20 @@ Credit to @guillermovs for suggesting
   color: #41444a;
 }
 
-#a0-widget .a0-panel .a0-signup .a0-footer {
+#a0-widget .a0-panel .a0-signup .a0-signup-footer {
   margin-bottom: 15px;
   font-size: 12px;
   color: #41444a;
   text-align: left;
   margin-top: 10px;
+}
+
+#a0-widget .a0-panel a {
+  color: #4183c4;
+}
+
+#a0-widget .a0-panel a:hover {
+  text-decoration: underline;
 }
 
 #a0-widget .a0-panel .a0-loading {

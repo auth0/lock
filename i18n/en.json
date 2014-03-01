@@ -30,7 +30,7 @@
     "passwordPlaceholder":         "Create a Password",
     "cancelAction":                "Cancel",
     "headerText":                  "Please enter your email and password",
-    "footerText":                  "By clicking \"Sign Up\", you agree to our terms of service and privacy policy.",
+    "footerText":                  "",
     "enterpriseEmailWarningText":  "This domain {domain} has been configured for Single Sign On and you can't create an account. Try signing in instead.",
     "serverErrorText":             "There was an error processing the sign up.",
     "userExistsErrorText":         "The user already exists.",

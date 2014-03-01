@@ -29,7 +29,7 @@
     "passwordPlaceholder": "パスワードを作成します。",
     "cancelAction": "キャンセル",
     "headerText": "あなたのメール アドレスとパスワードを入力してください。",
-    "footerText": "クリックして「サインアップ」、サービスおよびプライバシー ポリシーの利用規約に同意します。",
+    "footerText": "",
     "enterpriseEmailWarningText": "このドメイン {} が構成されているシングル サインオン ・ アカウントを作成することはできません。代わりにサインインしてください。",
     "serverErrorText": "符号を処理中にエラーがありました。"
   },

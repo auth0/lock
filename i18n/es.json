@@ -29,7 +29,7 @@
     "passwordPlaceholder":         "Contraseña",
     "cancelAction":                "Cancelar",
     "headerText":                  "Por favor ingrese email y contraseña",
-    "footerText":                  "Al presionar \"Sign Up\", usted acepta la política de privacidad y los términos y condiciones.",
+    "footerText":                  "",
     "enterpriseEmailWarningText":  "El dominio {domain} ha sido configurado para Single Sign On y no puede crear una cuenta. Intente iniciar sesión directamente.",
     "serverErrorText":             "Hubo un error al procesar su registro.",
     "userExistsErrorText":         "El usuario ya existe.",

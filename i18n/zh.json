@@ -29,7 +29,7 @@
     "passwordPlaceholder": "创建一个密码",
     "cancelAction": "取消",
     "headerText": "请输入您的电子邮件和密码",
-    "footerText": "点击\"注册\"，您必须同意我们的使用条款服务和隐私策略。",
+    "footerText": "",
     "enterpriseEmailWarningText": "指定此域 {domain} 已配置为单一登录和您不能创建一个帐户。请尝试登录相反。",
     "serverErrorText": "处理标志向上时出错。"
   },

@@ -29,7 +29,7 @@
     "passwordPlaceholder": "mu'wIj chenmoH",
     "cancelAction": "qIl",
     "headerText": "nuqneH email mu'wIj je",
-    "footerText": "ghuy'cha' \"qI' Ha'\": clicking, jIQochbe' SoH wabmey ngoch chavmoH 'ej privacy.",
+    "footerText": "",
     "enterpriseEmailWarningText": "configured {domain} yer Vas qI' 'ej account pagh chenmoH SoH. nID, qI' instead.",
     "serverErrorText": "Qagh qI' mIw Ha' tu'lu'."
   },

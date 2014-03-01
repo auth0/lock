@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Crie uma senha",
     "cancelAction": "Cancelar",
     "headerText": "Por favor, digite seu e-mail e senha",
-    "footerText": "Clicando em \"Sign Up\", você concorda com nossos termos de serviço e política de privacidade.",
+    "footerText": "",
     "enterpriseEmailWarningText": "Este domínio {domain} tiver sido configurado para Sign-On único e você não pode criar uma conta. Tente entrar em vez disso.",
     "serverErrorText": "Houve um erro ao processar o sinal de cima."
   },
