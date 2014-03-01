@@ -172,5 +172,10 @@ module.exports = {
         css: 'shopify',
         title: 'Shopify',
         social: true
+    },
+    'miicard': {
+        css: 'miicard',
+        title: 'miiCard',
+        social: true
     }
 };
