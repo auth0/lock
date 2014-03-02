@@ -177,5 +177,20 @@ module.exports = {
         css: 'miicard',
         title: 'miiCard',
         social: true
+    },
+    'soundcloud': {
+        css: 'soundcloud',
+        title: 'Soundcloud',
+        social: true
+    },
+    'ebay': {
+        css: 'ebay',
+        title: 'ebay',
+        social: true
+    },
+    'evernote': {
+        css: 'evernote',
+        title: 'Evernote',
+        social: true
     }
 };
