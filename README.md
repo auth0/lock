@@ -86,7 +86,7 @@ You can handle the authorization process client-side as follows:
     callbackOnLocationHash: true
   });
 
-  widget.parseHash(window.location.hash, function (profile, id_token, access_token, state) {
+  widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
     alert('hello ' + profile.name);
     //use id_token to call your rest api
   });
