@@ -192,5 +192,10 @@ module.exports = {
         css: 'evernote',
         title: 'Evernote',
         social: true
+    },
+    'sharepoint': {
+        css: 'sharepoint',
+        title: 'SharePoint Apps',
+        social: true
     }
 };
