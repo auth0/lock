@@ -1,6 +1,6 @@
 {
   "name": "auth0-widget.js",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "Auth0 Login Widget",
   "main": "./widget/index.js",
   "keywords": [
