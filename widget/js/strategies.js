@@ -79,6 +79,16 @@ module.exports = {
         title: 'SAML',
         social: false
     },
+    'pingfederate': {
+        css: 'guest',
+        title: 'Ping Federate',
+        social: false
+    },
+    'ip': {
+        css: 'guest',
+        title: 'IP Address',
+        social: false
+    },
     'mscrm': {
         css: 'guest',
         title: 'Dynamics CRM',
