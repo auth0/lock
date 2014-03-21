@@ -426,7 +426,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
     e.preventDefault();
     self._signInSocial(
       strategy_name,
-      null,
+      self._ssoData.lastUsedConnection && self._ssoData.lastUsedConnection.name,
       self._getLoggedInAuthParams(strategy_name, self._ssoData));
   });
 
