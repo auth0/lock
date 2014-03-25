@@ -206,6 +206,6 @@ module.exports = {
     'sharepoint': {
         css: 'sharepoint',
         title: 'SharePoint Apps',
-        social: true
+        social: false
     }
 };
