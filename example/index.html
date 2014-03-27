@@ -6,6 +6,7 @@
 <body>
     <button id="login-button">Login</button>
     <button id="login-button-only-socials">Login (only socials)</button>
+    <button id="login-button-only-socials-popup">Login (only socials w/popup)</button>
     <button id="login-button-only-userpass">Login (only user/pass)</button>
     <button id="login-button-only-enterprise">Login (only enterprise)</button>
     <button id="login-button-inside-container">Login (inside a DIV)</button>
@@ -55,6 +56,10 @@
 
             $('#login-button-only-socials').on('click', function () {
                 widget.signin({ connections: ['github', 'google-oauth2', 'windowslive'] });
+            });
+
+            $('#login-button-only-socials-popup').on('click', function () {
+                widget.signin({ popup: true, connections: ['github', 'google-oauth2', 'windowslive'] });
             });
 
             $('#login-button-only-userpass').on('click', function () {
