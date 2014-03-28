@@ -865,14 +865,12 @@ Auth0Widget.prototype.getClient = function () {
   return this._auth0;
 };
 
-// obsolete
-Auth0Widget.prototype.parseHash = function (hash, callback) {
-  console.warn('parseHash is obselete, use getProfile instead');
-  this._auth0.parseHash(hash, callback);
+Auth0Widget.prototype.parseHash = function (hash) {
+  return this._auth0.parseHash(hash);
 };
 
-Auth0Widget.prototype.getProfile = function (hash, callback) {
-  this._auth0.getProfile(hash, callback);
+Auth0Widget.prototype.getProfile = function (token, callback) {
+  this._auth0.getProfile(token, callback);
 };
 
 Auth0Widget.prototype.reset = function (signinOptions, callback) {
@@ -958,10 +956,6 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
 
 Auth0Widget.prototype.logout = function (query) {
   this._auth0.logout(query);
-};
-
-Auth0Widget.prototype.inCallback = function () {
-  return this._auth0.inCallback();
 };
 
 module.exports = Auth0Widget;

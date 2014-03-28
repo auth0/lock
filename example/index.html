@@ -101,20 +101,18 @@
                 widget.show({ container: 'login-container', chrome: true });
             });
 
+            var result = widget.parseHash(window.location.hash);
+
+            if (result) {
             // After login, show user profile
-            widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
+            widget.getProfile(result, function (err, profile, id_token, access_token, state) {
+               window.location.hash = "";
+              if (err) {
+                alert(err);
+                return;
+              }
               $('#userinfo').text(JSON.stringify(profile, 0, 2));
             });
-            if (widget.inCallback()) {
-                // After login, show user profile
-                widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
-                  if (err) {
-                    alert(err);
-                    return;
-                  }
-
-                  $('#userinfo').text(JSON.stringify(profile, 0, 2));
-                });
             }
         });
     </script>

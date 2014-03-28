@@ -192,20 +192,6 @@ describe('auth0-Widget', function () {
     });
   });
 
-  describe('inCallback', function () {
-    it('should wrap auth0.js method', function (done) {
-      var mock = {
-        inCallback: function () {
-          done();
-        }
-      };
-
-      widget._auth0 = mock;
-
-      widget.inCallback();
-    });
-  });
-
   describe('Sign In', function () {
     afterEach(function () {
       widget.removeAllListeners('transition_mode');
