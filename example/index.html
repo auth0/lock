@@ -110,6 +110,17 @@
             widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
               $('#userinfo').text(JSON.stringify(profile, 0, 2));
             });
+            if (widget.inCallback()) {
+                // After login, show user profile
+                widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
+                  if (err) {
+                    alert(err);
+                    return;
+                  }
+
+                  $('#userinfo').text(JSON.stringify(profile, 0, 2));
+                });
+            }
         });
     </script>
 </body>
