@@ -21,7 +21,7 @@ Take `auth0-widget.js` or `auth0-widget.min.js` from the `build` directory and i
 Construct a new instance of the Auth0 Widget as follows:
 
 ~~~html
-<script src="auth0-widget.min.js"></script>
+<script src="http://cdn.auth0.com/w2/auth0-widget-3.0.4.js"></script>
 <script type="text/javascript">
   var widget = new Auth0Widget({
     domain:       'mine.auth0.com',
@@ -85,11 +85,20 @@ You can handle the authorization process client-side as follows:
     callbackURL:  'http://my-app.com/',
     callbackOnLocationHash: true
   });
-
-  widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
-    alert('hello ' + profile.name);
-    //use id_token to call your rest api
-  });
+  
+  var result = widget.parseHash(window.location.hash);
+  
+  // Result is not null when is called with a valid callback URL
+  if (result) {
+    widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
+      if (err) {
+        // Handle authentication error
+        return;
+      }
+      alert('hello ' + profile.name);
+      //use id_token to call your rest api
+    });
+  }
 </script>
 ~~~
 
