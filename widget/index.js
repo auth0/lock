@@ -960,4 +960,8 @@ Auth0Widget.prototype.logout = function (query) {
   this._auth0.logout(query);
 };
 
+Auth0Widget.prototype.inCallback = function () {
+  return this._auth0.inCallback();
+};
+
 module.exports = Auth0Widget;
