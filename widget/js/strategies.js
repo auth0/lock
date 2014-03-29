@@ -207,5 +207,10 @@ module.exports = {
         css: 'sharepoint',
         title: 'SharePoint Apps',
         social: false
+    },
+    'weibo': {
+        css: 'weibo',
+        title: 'Weibo',
+        social: false
     }
 };
