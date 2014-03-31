@@ -211,6 +211,11 @@ module.exports = {
     'weibo': {
         css: 'weibo',
         title: 'Weibo',
-        social: false
+        social: true
+    },
+    'instagram': {
+        css: 'instagram',
+        title: 'Instagram',
+        social: true
     }
 };
