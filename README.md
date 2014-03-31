@@ -90,7 +90,7 @@ You can handle the authorization process client-side as follows:
   
   // Result is not null when is called with a valid callback URL
   if (result) {
-    widget.getProfile(window.location.hash, function (err, profile, id_token, access_token, state) {
+    widget.getProfile(result, function (err, profile, id_token, access_token, state) {
       if (err) {
         // Handle authentication error
         return;
