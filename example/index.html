@@ -103,9 +103,9 @@
 
             var result = widget.parseHash(window.location.hash);
 
-            if (result) {
+            if (result && result.id_token) {
             // After login, show user profile
-            widget.getProfile(result, function (err, profile, id_token, access_token, state) {
+            widget.getProfile(result.id_token, function (err, profile) {
                window.location.hash = "";
               if (err) {
                 alert(err);
