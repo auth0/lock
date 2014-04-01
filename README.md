@@ -89,14 +89,14 @@ You can handle the authorization process client-side as follows:
   var result = widget.parseHash(window.location.hash);
   
   // Result is not null when is called with a valid callback URL
-  if (result) {
-    widget.getProfile(result, function (err, profile, id_token, access_token, state) {
+  if (result && result.id_token) {
+    widget.getProfile(result.id_token, function (err, profile) {
       if (err) {
         // Handle authentication error
         return;
       }
       alert('hello ' + profile.name);
-      //use id_token to call your rest api
+      //use result.id_token to call your rest api
     });
   }
 </script>
