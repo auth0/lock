@@ -113,7 +113,9 @@
               }
               $('#userinfo').text(JSON.stringify(profile, 0, 2));
             });
-            }
+            } else if (result && result.error) {
+            alert('error: ' + result.error);
+          }
         });
     </script>
 </body>

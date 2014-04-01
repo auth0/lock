@@ -98,6 +98,8 @@ You can handle the authorization process client-side as follows:
       alert('hello ' + profile.name);
       //use result.id_token to call your rest api
     });
+  } else if (result && result.error) {
+    alert('error: ' + result.error);
   }
 </script>
 ~~~
