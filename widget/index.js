@@ -51,6 +51,7 @@ function Auth0Widget (options) {
     clientID:     this._options.clientID,
     callbackURL:  this._options.callbackURL,
     domain:       this._options.domain,
+    forceJSONP:   this._options.forceJSONP,
     callbackOnLocationHash: this._options.callbackOnLocationHash
   });
 
