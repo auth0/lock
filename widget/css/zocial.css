@@ -26,22 +26,20 @@ a.zocial {
   padding: 0;
   margin-bottom: 10px;
 }
-.zocial.primary {
-  text-align: center;
-}
 .zocial span,
 a.zocial span {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 11px;
   letter-spacing: 1px;
-  line-height: 4px;
+  line-height: 40px;
   display: inline-block;
-  margin-left: 6px;
+  margin-left: 8px;
 }
 .zocial:before {
   font: 14px zocial;
   font-weight: normal;
+  float: left;
   display: inline-block;
   line-height: 40px;
   width: 40px;
