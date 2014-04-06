@@ -10,45 +10,42 @@
 /* Button structure */
 .zocial,
 a.zocial {
-  border: 1px solid #777;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-bottom-color: #333;
-  border-bottom-color: rgba(0, 0, 0, 0.4);
   color: #fff;
-  -moz-box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.4), inset 0 0 0.1em rgba(255, 255, 255, 0.9);
-  -webkit-box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.4), inset 0 0 0.1em rgba(255, 255, 255, 0.9);
-  box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.4), inset 0 0 0.1em rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  display: inline-block;
-  font: bold 100%/2.1 "Lucida Grande", Tahoma, sans-serif;
-  padding: 0 0.22em 0 0;
   text-align: left;
   text-decoration: none;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
   white-space: nowrap;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
   position: relative;
-  -moz-border-radius: .3em;
-  -webkit-border-radius: .3em;
-  border-radius: .3em;
+  display: block;
+  -moz-border-radius: .3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 0;
+  margin-bottom: 10px;
 }
 .zocial.primary {
   text-align: center;
-  padding: 0 0.98em 0 0;
+}
+.zocial span,
+a.zocial span {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 4px;
+  display: inline-block;
+  margin-left: 10px;
 }
 .zocial:before {
-  content: "";
-  float: left;
-  font: 120%/1.65 zocial;
-  font-style: normal;
+  font: 14px zocial;
   font-weight: normal;
-  margin: 0 0.5em 0 0;
-  padding: 0 0.5em;
+  display: inline-block;
+  line-height: 40px;
+  width: 40px;
   text-align: center;
-  text-decoration: none;
-  text-transform: none;
+  background: rgba(0, 0, 0, 0.3);
   -moz-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
@@ -60,107 +57,16 @@ a.zocial {
 /* Buttons can be displayed as standalone icons by adding a class of "icon" */
 .zocial.icon {
   overflow: hidden;
-  max-width: 2.4em;
-  padding-left: 0;
-  padding-right: 0;
-  max-height: 2.15em;
   white-space: nowrap;
 }
 .zocial.icon:before {
-  padding: 0;
-  width: 2em;
-  height: 2em;
   box-shadow: none;
   border: none;
 }
 /* Gradients */
-.zocial {
-  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
-  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
-  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(49%, rgba(255, 255, 255, 0.05)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
-  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
-}
-.zocial:hover,
-.zocial:focus {
-  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), color-stop(49%, rgba(255, 255, 255, 0.15)), color-stop(51%, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.15)));
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
-  background-image: linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
-}
-.zocial:active {
-  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
-  background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
-  background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, transparent), to(rgba(0, 0, 0, 0.1)));
-  background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
-  background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 30%, transparent 50%, rgba(0, 0, 0, 0.1));
-}
 /* Adjustments for light background buttons */
-.zocial.dropbox,
-.zocial.github,
-.zocial.gmail,
-.zocial.openid,
-.zocial.secondary,
-.zocial.weibo,
-.zocial.stackoverflow,
-.zocial.miicard,
-.zocial.salesforce {
-  border: 1px solid #aaa;
-  border-color: rgba(0, 0, 0, 0.3);
-  border-bottom-color: #777;
-  border-bottom-color: rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.7), inset 0 0 0.08em rgba(255, 255, 255, 0.5);
-  -webkit-box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.7), inset 0 0 0.08em rgba(255, 255, 255, 0.5);
-  box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.7), inset 0 0 0.08em rgba(255, 255, 255, 0.5);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}
 /* :hover adjustments for light background buttons */
-.zocial.dropbox:focus,
-.zocial.dropbox:hover,
-.zocial.github:focus,
-.zocial.github:hover,
-.zocial.gmail:focus,
-.zocial.gmail:hover,
-.zocial.openid:focus,
-.zocial.openid:hover,
-.zocial.secondary:focus,
-.zocial.secondary:hover,
-.zocial.stackoverflow:focus,
-.zocial.stackoverflow:hover,
-.zocial.twitter:focus .zocial.twitter:hover,
-.zocial.miicard:focus,
-.zocial.miicard:hover,
-.zocial.weibo:focus,
-.zocial.weibo:hover,
-.zocial.salesforce:focus .zocial.salesforce:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), color-stop(49%, rgba(255, 255, 255, 0.2)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.15));
-}
 /* :active adjustments for light background buttons */
-.zocial.dropbox:active,
-.zocial.github:active,
-.zocial.gmail:active,
-.zocial.openid:active,
-.zocial.secondary:active,
-.zocial.weibo:active,
-.zocial.stackoverflow:active,
-.zocial.wikipedia:active,
-.zocial.salesforce:active {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(30%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.1)));
-  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
-  background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
-  background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
-  background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
-  background-image: linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1));
-}
 /* Button icon and color */
 /* Icon characters are stored in unicode private area */
 .zocial.amazon:before {
@@ -285,7 +191,6 @@ a.zocial {
 .zocial.amazon {
   background-color: #ffad1d;
   color: #030037;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .zocial.dropbox {
   background-color: #fff;
@@ -295,7 +200,7 @@ a.zocial {
   background-color: #4863ae;
 }
 .zocial.github {
-  background-color: #fbfbfb;
+  background-color: #eee;
   color: #050505;
 }
 .zocial.wordpress {
@@ -332,7 +237,6 @@ a.zocial {
 .zocial.paypal {
   background-color: #fff;
   color: #32689a;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .zocial.twitter {
   background-color: #46c0fb;

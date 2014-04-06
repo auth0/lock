@@ -642,7 +642,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   }
 
   // images from cdn
-  $('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
+  // $('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
 
   // labels text
   var options = _.extend({}, this._signinOptions, this._signinOptions.resources);

@@ -1,5 +1,9 @@
 <% var icon_class = !use_big_buttons ? 'a0-icon' : 'a0-block' %>
-<span tabindex="0"
+<div tabindex="0"
 		data-strategy="<%= name %>"
 		title="<%= title %>"
-		class="a0-zocial <%= icon_class %> a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>" dir="ltr"><%= title %></span>
+		class="a0-zocial <%= icon_class %> a0-<%= css %> <%= locals.imageicon ? 'a0-image-icon' : '' %>" dir="ltr">
+
+
+	<span>Login with <%= title %></span>
+</div>
