@@ -62,6 +62,7 @@
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   font-size: 13px;
   position: relative;
+  color: #4d4d4d;
 }
 
 .panel h1{
@@ -70,9 +71,35 @@
   margin-bottom: 20px;
 }
 
-// .panel input {
+.panel .email input, .panel .password input{
+  border: 1px solid #ccc;
+  width: 98%;
+  padding: 15px 1%; 
+  border-radius: 0;
+}
 
-// }
+.panel .email input{
+  border-bottom: 0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.panel .password{
+  // border-top: 0;
+  margin-bottom: 20px;
+}
+
+.panel .password input{
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.logo{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
 
 .logo svg{
   width: 20px;

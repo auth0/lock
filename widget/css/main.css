@@ -1201,11 +1201,12 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-zocial span,
 #a0-widget a.a0-zocial span {
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 12px;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 1px;
   line-height: 4px;
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 6px;
 }
 
 #a0-widget .a0-zocial:before {
@@ -1678,12 +1679,43 @@ Credit to @guillermovs for suggesting
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
   font-size: 13px;
   position: relative;
+  color: #4d4d4d;
 }
 
 #a0-widget .a0-panel h1 {
   font-size: 30px;
   font-weight: 100;
   margin-bottom: 20px;
+}
+
+#a0-widget .a0-panel .a0-email input,
+#a0-widget .a0-panel .a0-password input {
+  border: 1px solid #ccc;
+  width: 98%;
+  padding: 15px 1%;
+  border-radius: 0;
+}
+
+#a0-widget .a0-panel .a0-email input {
+  border-bottom: 0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+#a0-widget .a0-panel .a0-password {
+  margin-bottom: 20px;
+}
+
+#a0-widget .a0-panel .a0-password input {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+#a0-widget .a0-logo {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
 }
 
 #a0-widget .a0-logo svg {
