@@ -1574,25 +1574,18 @@ Credit to @guillermovs for suggesting
   color: #fff;
 }
 
-#a0-widget .a0-zocial.a0-primary,
-#a0-widget .a0-zocial.a0-secondary {
-  margin: 0.1em 0;
-  padding: 0 1em;
-}
-
 #a0-widget .a0-zocial.a0-primary:before,
 #a0-widget .a0-zocial.a0-secondary:before {
   display: none;
 }
 
 #a0-widget .a0-zocial.a0-primary {
-  background-color: #333;
+  background-color: #16214D;
 }
 
 #a0-widget .a0-zocial.a0-secondary {
-  background-color: #f0f0eb;
+  background-color: #D0D2D3;
   color: #222;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 #a0-widget button:-moz-focus-inner {
@@ -1709,6 +1702,19 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-close svg {
   width: 16px;
   height: 16px;
+}
+
+#a0-widget button.a0-primary {
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block !important;
+  width: 100% !important;
+  float: none;
+  min-width: auto;
+  letter-spacing: 1px;
+  padding: 20px 0;
 }
 
 @-moz-keyframes showPanel {

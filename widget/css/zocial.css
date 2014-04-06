@@ -336,22 +336,16 @@ The Miscellaneous Buttons
 These button have no icons and can be general purpose buttons while ensuring consistent button style
 Credit to @guillermovs for suggesting
 */
-.zocial.primary,
-.zocial.secondary {
-  margin: 0.1em 0;
-  padding: 0 1em;
-}
 .zocial.primary:before,
 .zocial.secondary:before {
   display: none;
 }
 .zocial.primary {
-  background-color: #333;
+  background-color: #16214D;
 }
 .zocial.secondary {
-  background-color: #f0f0eb;
+  background-color: #D0D2D3;
   color: #222;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 /* Any browser-specific adjustments */
 button:-moz-focus-inner {
