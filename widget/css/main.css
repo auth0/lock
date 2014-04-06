@@ -1736,6 +1736,17 @@ Credit to @guillermovs for suggesting
   height: 16px;
 }
 
+#a0-widget .a0-separator {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  color: #999;
+}
+
+#a0-widget .a0-separator span {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 #a0-widget button.a0-primary {
   padding: 20px;
   text-align: center;
