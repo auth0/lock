@@ -1688,7 +1688,7 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-panel h1 {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 100;
   margin-bottom: 20px;
 }
@@ -1698,14 +1698,14 @@ Credit to @guillermovs for suggesting
   margin: auto;
   display: inline-block;
   margin-bottom: 10px;
-  line-height: 100px;
+  line-height: 60px;
   border-radius: 100px;
-  padding: 14px;
+  padding: 12px;
 }
 
 #a0-widget .a0-panel .a0-avatar svg {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
 }
 
 #a0-widget .a0-panel .a0-avatar svg path {
@@ -1767,8 +1767,8 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-panel .a0-close svg {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
 }
 
 #a0-widget .a0-panel .a0-email input {
@@ -1787,9 +1787,10 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-separator {
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin-bottom: 6px;
+  margin-top: 14px;
   color: #999;
+  font-size: 12px;
 }
 
 #a0-widget .a0-separator span {
