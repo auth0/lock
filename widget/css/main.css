@@ -4275,24 +4275,6 @@
   background: #0b1025;
 }
 
-#a0-widget #a0-change_password .a0-password {
-  margin-bottom: 0;
-}
-
-#a0-widget #a0-change_password .a0-password input {
-  border-bottom: 0;
-  border-radius: 0;
-}
-
-#a0-widget #a0-change_password .a0-repeatPassword {
-  margin-bottom: 20px;
-}
-
-#a0-widget #a0-change_password .a0-repeatPassword input {
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
 #a0-widget .a0-theme-static .a0-popup .a0-overlay,
 #a0-widget .a0-theme-static .a0-popup .a0-overlay.a0-ie8-overlay {
   background: rgba(255, 255, 255, 0);
@@ -4999,21 +4981,6 @@
   text-transform: uppercase;
 }
 
-#a0-widget button.a0-primary {
-  padding: 20px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block !important;
-  width: 100% !important;
-  float: none;
-  min-width: auto;
-  letter-spacing: 1px;
-  padding: 20px 0;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
 #a0-widget .a0-action {
   margin-bottom: 10px;
 }
@@ -5428,4 +5395,27 @@
 
 #a0-widget input:-ms-input-placeholder {
   color: #9da4ad;
+}
+
+#a0-widget #a0-change_password .a0-password {
+  margin-bottom: 0;
+}
+
+#a0-widget #a0-change_password .a0-password input {
+  border-bottom: 0;
+  border-radius: 0;
+}
+
+#a0-widget #a0-change_password .a0-repeatPassword {
+  margin-bottom: 20px;
+}
+
+#a0-widget #a0-change_password .a0-repeatPassword input {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+#a0-widget .a0-signin .a0-panel .a0-email input#a0-signin_easy_email {
+  border-radius: 3px;
+  border-bottom: 1px  #ccc solid;
 }
