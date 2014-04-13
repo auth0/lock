@@ -4223,12 +4223,13 @@ Credit to @guillermovs for suggesting
 */
 }
 
-#a0-widget html,
-#a0-widget body,
-#a0-widget input,
-#a0-widget p {
+#a0-widget * {
   font-family: "proxima_nova_rgregular" !important;
   font-smoothing: antialiased;
+}
+
+#a0-widget body {
+  color: #4d4d4d;
 }
 
 #a0-widget h1,
