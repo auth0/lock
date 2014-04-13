@@ -793,7 +793,9 @@ Credit to @guillermovs for suggesting
 
 @charset "UTF-8";
 
-#a0-widget body {
+#a0-widget html,
+#a0-widget body,
+#a0-widget input {
   font-family: "proxima_nova_rgregular";
 }
 
@@ -812,6 +814,7 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-theme-static .a0-popup .a0-overlay,
 #a0-widget .a0-theme-static .a0-popup .a0-overlay.a0-ie8-overlay {
+  background: rgba(255, 255, 255, 0);
   background-color: transparent;
 }
 
@@ -1646,10 +1649,6 @@ Credit to @guillermovs for suggesting
   font-style: normal;
 }
 
-#a0-widget .a0-panel {
-  font-family: proxima_nova_rgregular;
-}
-
 #a0-widget .a0-popup .a0-centrix {
   padding: 0;
   vertical-align: middle;
@@ -1717,7 +1716,7 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-panel {
   text-align: center;
   background: white;
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
@@ -1795,6 +1794,10 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-panel .a0-logo svg {
   width: 20px;
   height: 20px;
+}
+
+#a0-widget .a0-panel .a0-header {
+  margin-bottom: 10px;
 }
 
 #a0-widget .a0-panel .a0-close {
