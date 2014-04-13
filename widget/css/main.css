@@ -743,20 +743,35 @@
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
+@font-face {
+  font-family: 'proxima_nova_rgregular';
+  src: url('proxima-font/proximanova-regular-webfont.eot');
+  src: url('proxima-font/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), url('proxima-font/proximanova-regular-webfont.woff') format('woff'), url('proxima-font/proximanova-regular-webfont.ttf') format('truetype'), url('proxima-font/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima_novathin';
+  src: url('proxima-font/proxima_nova_thin-webfont.eot');
+  src: url('proxima-font/proxima_nova_thin-webfont.eot?#iefix') format('embedded-opentype'), url('proxima-font/proxima_nova_thin-webfont.woff') format('woff'), url('proxima-font/proxima_nova_thin-webfont.ttf') format('truetype'), url('proxima-font/proxima_nova_thin-webfont.svg#proxima_novathin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima_novasemibold';
+  src: url('proxima-font/proximanova-semibold-webfont.eot');
+  src: url('proxima-font/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('proxima-font/proximanova-semibold-webfont.woff') format('woff'), url('proxima-font/proximanova-semibold-webfont.ttf') format('truetype'), url('proxima-font/proximanova-semibold-webfont.svg#proxima_novasemibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #a0-widget {
   /*
  * Created By: Ahmed Bouhuolia
  * Twitter: http://twitter.com/abouolia
  */
-  /*!
-  Zocial Butons
-  http://zocial.smcllns.com
-  by Sam Collins (@smcllns)
-  License: http://opensource.org/licenses/mit-license.php
-  
-  You are free to use and modify, as long as you keep this license comment intact or link back to zocial.smcllns.com on your site.
-*/
-  /* Button structure */
   /* Buttons can be displayed as standalone icons by adding a class of "icon" */
   /* Gradients */
   /* Adjustments for light background buttons */
@@ -778,16 +793,30 @@ Credit to @guillermovs for suggesting
 
 @charset "UTF-8";
 
+#a0-widget body {
+  font-family: "proxima_nova_rgregular";
+}
+
+#a0-widget h1,
+#a0-widget h2,
+#a0-widget h3 {
+  font-family: "proxima_novathin";
+}
+
+#a0-widget a {
+  font-family: "proxima_novasemibold";
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+
 #a0-widget .a0-theme-static .a0-popup .a0-overlay,
 #a0-widget .a0-theme-static .a0-popup .a0-overlay.a0-ie8-overlay {
-  background: rgba(255, 255, 255, 0);
   background-color: transparent;
 }
 
 #a0-widget .a0-theme-static .a0-popup .a0-panel {
   background: none;
-  -webkit-box-shadow: 0 0 0 1px rgba(14, 41, 57, 0.12), 0 2px 5px rgba(14, 41, 57, 0.44), inset 0 -1px 2px rgba(14, 41, 57, 0.15);
-  box-shadow: 0 0 0 1px rgba(14, 41, 57, 0.12), 0 2px 5px rgba(14, 41, 57, 0.44), inset 0 -1px 2px rgba(14, 41, 57, 0.15);
   background: #ffffff;
 }
 
@@ -1179,7 +1208,6 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-zocial,
 #a0-widget a.a0-zocial {
   color: #fff;
-  cursor: pointer;
   text-align: left;
   text-decoration: none;
   white-space: nowrap;
@@ -1192,6 +1220,8 @@ Credit to @guillermovs for suggesting
   border-radius: 3px;
   padding: 0;
   margin-bottom: 6px;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 #a0-widget .a0-zocial:hover {
@@ -1206,7 +1236,18 @@ Credit to @guillermovs for suggesting
   letter-spacing: 1px;
   line-height: 40px;
   display: inline-block;
-  margin-left: 8px;
+  padding-left: 8px;
+  padding-left: 4%;
+  width: 86%;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+
+#a0-widget .a0-zocial:hover span,
+#a0-widget a.a0-zocial:hover span {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #a0-widget .a0-zocial:before {
@@ -1215,12 +1256,10 @@ Credit to @guillermovs for suggesting
   float: left;
   display: inline-block;
   line-height: 40px;
-  width: 40px;
+  width: 16%;
+  cursor: pointer;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
-  -moz-font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
 }
 
 #a0-widget .a0-zocial:active {

@@ -3,8 +3,8 @@
   "close":                         "Close",
   "windowsAuthTitle":              "Windows Authentication",
   "signin": {
-    "title":                       "Sign In",
-    "action":                      "Sign In",
+    "title":                       "Login",
+    "action":                      "Access",
     "all":                         "Show all",
     "strategyEmailEmpty":          "The email is empty.",
     "strategyEmailInvalid":        "The email is invalid.",

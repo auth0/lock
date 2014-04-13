@@ -1,17 +1,7 @@
 @charset "UTF-8";
-/*!
-  Zocial Butons
-  http://zocial.smcllns.com
-  by Sam Collins (@smcllns)
-  License: http://opensource.org/licenses/mit-license.php
-  
-  You are free to use and modify, as long as you keep this license comment intact or link back to zocial.smcllns.com on your site.
-*/
-/* Button structure */
 .zocial,
 a.zocial {
   color: #fff;
-  cursor: pointer;
   text-align: left;
   text-decoration: none;
   white-space: nowrap;
@@ -25,6 +15,8 @@ a.zocial {
   border-radius: 3px;
   padding: 0;
   margin-bottom: 6px;
+  cursor: pointer;
+  overflow: hidden;
 }
 .zocial:hover {
   opacity: 1;
@@ -37,7 +29,15 @@ a.zocial span {
   letter-spacing: 1px;
   line-height: 40px;
   display: inline-block;
-  margin-left: 8px;
+  padding-left: 8px;
+  padding-left: 4%;
+  width: 86%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.zocial:hover span,
+a.zocial:hover span {
+  background: rgba(0, 0, 0, 0.2);
 }
 .zocial:before {
   font: 14px zocial;
@@ -45,12 +45,10 @@ a.zocial span {
   float: left;
   display: inline-block;
   line-height: 40px;
-  width: 40px;
+  width: 16%;
+  cursor: pointer;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
-  -moz-font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
 }
 .zocial:active {
   outline: none;
