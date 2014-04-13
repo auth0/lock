@@ -1,165 +1,155 @@
-/*
- * Created By: Ahmed Bouhuolia
- * Twitter: http://twitter.com/abouolia
- */
+@-webkit-keyframes fade {
+  from {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+  }
 
-// Variables Spinner
-@color_bg: #fafafa;
-@color_border_spinner: #747E85;
-@size_spinner: 60px;
-@size_border_spinner: 12px;
-@time_loop: 2s;
+  to {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+    opacity: 0.2;
+  }
+}
+@keyframes fade {
+  from {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+  }
 
-.spinner-css{
+  to {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+    opacity: 0.2;
+  }
+}
+.spinner-css {
   position: absolute;
-  margin: -@size_spinner / 2  0 0 -@size_spinner / 2;
-  height: @size_spinner;
-  width: @size_spinner;
+  width: 20px;
+  height: 20px;
+  display: block;
   top: 50%;
   left: 50%;
+  margin: -10px 0 0 -10px;
+}
+.spinner-css .se {
+  width: 7%;
+  height: 25%;
+  background: black;
   position: absolute;
-  border-radius: 999px;
-  -webkit-border-radius: 999px;
-  -moz-border-radius: 999px;
-
-  &:after{
-    content: "";
-    position: absolute;
-    width: @size_spinner - @size_border_spinner;
-    height: @size_spinner - @size_border_spinner;
-    left: 0px;
-    top: 0px;
-    margin: @size_border_spinner / 2;
-    background: @color_bg;
-    opacity: 1;
-    border-radius: 999px;
-    -webkit-border-radius: 999px;
-    -moz-border-radius: 999px;
-  }
-  .side{
-    height: @size_spinner;
-    width: @size_spinner / 2;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-
-    > .fill{
-      position: absolute;
-      width: @size_spinner / 2;
-      height: @size_spinner;
-      background: @color_border_spinner;
-      border-radius: 999px;
-      -webkit-border-radius: 999px;
-      -moz-border-radius: 999px;
-      animation: cssSpinnerRight @time_loop infinite linear;
-      -webkit-animation: cssSpinnerRight @time_loop infinite linear;
-      -moz-animation: cssSpinnerRight @time_loop infinite linear;
-      -o-animation: cssSpinnerRight @time_loop infinite linear;
-    }
-    &.sp_right{
-      left: @size_spinner / 2 ;
-      border-radius: 0px 999px 999px 0px;
-      -webkit-border-radius: 0px 999px 999px 0px;
-      -moz-border-radius: 0px 999px 999px 0px;
-
-      > .fill{
-        right: 0;
-        border-right: @size_spinner / 2 solid @color_bg;
-      }
-    }
-    &.sp_left{
-      left: 0;
-      border-radius: 999px 0px 0px 999px;
-      -webkit-border-radius:999px 0px 0px 999px;
-      -moz-border-radius: 999px 0px 0px 999px;
-
-      > .fill{
-        left: 0;
-        border-left: @size_spinner / 2 solid @color_bg;
-        animation: cssSpinnerLeft @time_loop infinite linear;
-        -webkit-animation: cssSpinnerLeft @time_loop infinite linear;
-        -moz-animation: cssSpinnerLeft @time_loop infinite linear;
-        -o-animation: cssSpinnerLeft @time_loop infinite linear;
-      }
-    }
-  }
+  left: 33.3%;
+  top: 37%;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
-@-webkit-keyframes cssSpinnerRight{
-  0% {-webkit-transform:rotate(0deg)}
-  20% {-webkit-transform:rotate(90deg)}
-  25% {-webkit-transform:rotate(180deg)}
-  50% {-webkit-transform:rotate(180deg)}
-  70% {-webkit-transform:rotate(270deg)}
-  75% {-webkit-transform:rotate(360deg)}
-  100% {-webkit-transform:rotate(360deg)}
+.spinner-css .b1 {
+  -moz-transform: rotate(0deg) translate(0, -142%);
+  -ms-transform: rotate(0deg) translate(0, -142%);
+  -webkit-transform: rotate(0deg) translate(0, -142%);
+  transform: rotate(0deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0s;
+  -webkit-animation: fade 0.75s infinite 0s;
+  animation: fade 0.75s infinite 0s;
 }
-
-@-webkit-keyframes cssSpinnerLeft{
-  0% {-webkit-transform:rotate(0deg)}
-  25% {-webkit-transform:rotate(0deg)}
-  35% {-webkit-transform:rotate(90deg)}
-  50% {-webkit-transform:rotate(180deg)}
-  75% {-webkit-transform:rotate(180deg)}
-  80% {-webkit-transform:rotate(270deg)}
-  100% {-webkit-transform:rotate(360deg)}
+.spinner-css .b2 {
+  -moz-transform: rotate(30deg) translate(0, -142%);
+  -ms-transform: rotate(30deg) translate(0, -142%);
+  -webkit-transform: rotate(30deg) translate(0, -142%);
+  transform: rotate(30deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.0625s;
+  -webkit-animation: fade 0.75s infinite 0.0625s;
+  animation: fade 0.75s infinite 0.0625s;
 }
-
-@-moz-keyframes cssSpinnerRight{
-  0% {-moz-transform:rotate(0deg)}
-  20% {-moz-transform:rotate(90deg)}
-  25% {-moz-transform:rotate(180deg)}
-  50% {-moz-transform:rotate(180deg)}
-  70% {-moz-transform:rotate(270deg)}
-  75% {-moz-transform:rotate(360deg)}
-  100% {-moz-transform:rotate(360deg)}
+.spinner-css .b3 {
+  -moz-transform: rotate(60deg) translate(0, -142%);
+  -ms-transform: rotate(60deg) translate(0, -142%);
+  -webkit-transform: rotate(60deg) translate(0, -142%);
+  transform: rotate(60deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.125s;
+  -webkit-animation: fade 0.75s infinite 0.125s;
+  animation: fade 0.75s infinite 0.125s;
 }
-
-@-moz-keyframes cssSpinnerLeft{
-  0% {-moz-transform:rotate(0deg)}
-  25% {-moz-transform:rotate(0deg)}
-  35% {-moz-transform:rotate(90deg)}
-  50% {-moz-transform:rotate(180deg)}
-  75% {-moz-transform:rotate(180deg)}
-  80% {-moz-transform:rotate(270deg)}
-  100% {-moz-transform:rotate(360deg)}
+.spinner-css .b4 {
+  -moz-transform: rotate(90deg) translate(0, -142%);
+  -ms-transform: rotate(90deg) translate(0, -142%);
+  -webkit-transform: rotate(90deg) translate(0, -142%);
+  transform: rotate(90deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.1875s;
+  -webkit-animation: fade 0.75s infinite 0.1875s;
+  animation: fade 0.75s infinite 0.1875s;
 }
-
-@-o-keyframes cssSpinnerRight{
-	0% {-o-transform:rotate(0deg)}
-  	20% {-o-transform:rotate(90deg)}
-	25% {-o-transform:rotate(180deg)}
-	50% {-o-transform:rotate(180deg)}
-  	70% {-o-transform:rotate(270deg)}
-	75% {-o-transform:rotate(360deg)}
-	100% {-o-transform:rotate(360deg)}
+.spinner-css .b5 {
+  -moz-transform: rotate(120deg) translate(0, -142%);
+  -ms-transform: rotate(120deg) translate(0, -142%);
+  -webkit-transform: rotate(120deg) translate(0, -142%);
+  transform: rotate(120deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.25s;
+  -webkit-animation: fade 0.75s infinite 0.25s;
+  animation: fade 0.75s infinite 0.25s;
 }
-
-@-o-keyframes cssSpinnerLeft{
-  0% {-o-transform:rotate(0deg)}
-  25% {-o-transform:rotate(0deg)}
-  35% {-o-transform:rotate(90deg)}
-  50% {-o-transform:rotate(180deg)}
-  75% {-o-transform:rotate(180deg)}
-  80% {-o-transform:rotate(270deg)}
-  100% {-o-transform:rotate(360deg)}
+.spinner-css .b6 {
+  -moz-transform: rotate(150deg) translate(0, -142%);
+  -ms-transform: rotate(150deg) translate(0, -142%);
+  -webkit-transform: rotate(150deg) translate(0, -142%);
+  transform: rotate(150deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.3125s;
+  -webkit-animation: fade 0.75s infinite 0.3125s;
+  animation: fade 0.75s infinite 0.3125s;
 }
-
-@keyframes cssSpinnerRight{
-  0% {transform:rotate(0deg)}
-  20% {transform:rotate(90deg)}
-  25% {transform:rotate(180deg)}
-  50% {transform:rotate(180deg)}
-  70% {transform:rotate(270deg)}
-  75% {transform:rotate(360deg)}
-  100% {transform:rotate(360deg)}
+.spinner-css .b7 {
+  -moz-transform: rotate(180deg) translate(0, -142%);
+  -ms-transform: rotate(180deg) translate(0, -142%);
+  -webkit-transform: rotate(180deg) translate(0, -142%);
+  transform: rotate(180deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.375s;
+  -webkit-animation: fade 0.75s infinite 0.375s;
+  animation: fade 0.75s infinite 0.375s;
 }
-
-@keyframes cssSpinnerLeft{
-  0% {transform:rotate(0deg)}
-  25% {transform:rotate(0deg)}
-  35% {transform:rotate(90deg)}
-  50% {transform:rotate(180deg)}
-  75% {transform:rotate(180deg)}
-  80% {transform:rotate(270deg)}
-  100% {transform:rotate(360deg)}
+.spinner-css .b8 {
+  -moz-transform: rotate(210deg) translate(0, -142%);
+  -ms-transform: rotate(210deg) translate(0, -142%);
+  -webkit-transform: rotate(210deg) translate(0, -142%);
+  transform: rotate(210deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.4375s;
+  -webkit-animation: fade 0.75s infinite 0.4375s;
+  animation: fade 0.75s infinite 0.4375s;
+}
+.spinner-css .b9 {
+  -moz-transform: rotate(240deg) translate(0, -142%);
+  -ms-transform: rotate(240deg) translate(0, -142%);
+  -webkit-transform: rotate(240deg) translate(0, -142%);
+  transform: rotate(240deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.5s;
+  -webkit-animation: fade 0.75s infinite 0.5s;
+  animation: fade 0.75s infinite 0.5s;
+}
+.spinner-css .b10 {
+  -moz-transform: rotate(270deg) translate(0, -142%);
+  -ms-transform: rotate(270deg) translate(0, -142%);
+  -webkit-transform: rotate(270deg) translate(0, -142%);
+  transform: rotate(270deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.5625s;
+  -webkit-animation: fade 0.75s infinite 0.5625s;
+  animation: fade 0.75s infinite 0.5625s;
+}
+.spinner-css .b11 {
+  -moz-transform: rotate(300deg) translate(0, -142%);
+  -ms-transform: rotate(300deg) translate(0, -142%);
+  -webkit-transform: rotate(300deg) translate(0, -142%);
+  transform: rotate(300deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.625s;
+  -webkit-animation: fade 0.75s infinite 0.625s;
+  animation: fade 0.75s infinite 0.625s;
+}
+.spinner-css .b12 {
+  -moz-transform: rotate(330deg) translate(0, -142%);
+  -ms-transform: rotate(330deg) translate(0, -142%);
+  -webkit-transform: rotate(330deg) translate(0, -142%);
+  transform: rotate(330deg) translate(0, -142%);
+  -moz-animation: fade 0.75s infinite 0.6875s;
+  -webkit-animation: fade 0.75s infinite 0.6875s;
+  animation: fade 0.75s infinite 0.6875s;
 }

@@ -768,10 +768,6 @@
 }
 
 #a0-widget {
-  /*
- * Created By: Ahmed Bouhuolia
- * Twitter: http://twitter.com/abouolia
- */
   /* Buttons can be displayed as standalone icons by adding a class of "icon" */
   /* Gradients */
   /* Adjustments for light background buttons */
@@ -810,6 +806,18 @@ Credit to @guillermovs for suggesting
   -webkit-transition: background-color 0.2s ease;
   -moz-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
+}
+
+#a0-widget .a0-logo {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
+
+#a0-widget .a0-logo img {
+  width: 20px;
+  height: 20px;
 }
 
 #a0-widget .a0-theme-static .a0-popup .a0-overlay,
@@ -919,293 +927,6 @@ Credit to @guillermovs for suggesting
 
 #a0-widget .a0-embedded .a0-popup .a0-panel .a0-header {
   display: none;
-}
-
-#a0-widget .a0-spinner-css {
-  margin: -30px 0 0 -30px;
-  height: 60px;
-  width: 60px;
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  border-radius: 999px;
-}
-
-#a0-widget .a0-spinner-css:after {
-  content: "";
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  left: 0px;
-  top: 0px;
-  margin: 6px;
-  background: #fafafa;
-  opacity: 1;
-  border-radius: 999px;
-}
-
-#a0-widget .a0-spinner-css .a0-side {
-  height: 60px;
-  width: 30px;
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-}
-
-#a0-widget .a0-spinner-css .a0-side > .a0-fill {
-  position: absolute;
-  width: 30px;
-  height: 60px;
-  background: #747e85;
-  border-radius: 999px;
-  animation: cssSpinnerRight 2s infinite linear;
-  -webkit-animation: cssSpinnerRight 2s infinite linear;
-  -moz-animation: cssSpinnerRight 2s infinite linear;
-}
-
-#a0-widget .a0-spinner-css .a0-side.a0-sp_right {
-  left: 30px;
-  border-radius: 0px 999px 999px 0px;
-}
-
-#a0-widget .a0-spinner-css .a0-side.a0-sp_right > .a0-fill {
-  right: 0;
-  border-right: 30px solid #fafafa;
-}
-
-#a0-widget .a0-spinner-css .a0-side.a0-sp_left {
-  left: 0;
-  border-radius: 999px 0px 0px 999px;
-}
-
-#a0-widget .a0-spinner-css .a0-side.a0-sp_left > .a0-fill {
-  left: 0;
-  border-left: 30px solid #fafafa;
-  animation: cssSpinnerLeft 2s infinite linear;
-  -webkit-animation: cssSpinnerLeft 2s infinite linear;
-  -moz-animation: cssSpinnerLeft 2s infinite linear;
-}
-
-@-webkit-keyframes cssSpinnerRight {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-
-  20% {
-    -webkit-transform: rotate(90deg);
-  }
-
-  25% {
-    -webkit-transform: rotate(180deg);
-  }
-
-  50% {
-    -webkit-transform: rotate(180deg);
-  }
-
-  70% {
-    -webkit-transform: rotate(270deg);
-  }
-
-  75% {
-    -webkit-transform: rotate(360deg);
-  }
-
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes cssSpinnerLeft {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-
-  25% {
-    -webkit-transform: rotate(0deg);
-  }
-
-  35% {
-    -webkit-transform: rotate(90deg);
-  }
-
-  50% {
-    -webkit-transform: rotate(180deg);
-  }
-
-  75% {
-    -webkit-transform: rotate(180deg);
-  }
-
-  80% {
-    -webkit-transform: rotate(270deg);
-  }
-
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@-moz-keyframes cssSpinnerRight {
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-
-  20% {
-    -moz-transform: rotate(90deg);
-  }
-
-  25% {
-    -moz-transform: rotate(180deg);
-  }
-
-  50% {
-    -moz-transform: rotate(180deg);
-  }
-
-  70% {
-    -moz-transform: rotate(270deg);
-  }
-
-  75% {
-    -moz-transform: rotate(360deg);
-  }
-
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-moz-keyframes cssSpinnerLeft {
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-
-  25% {
-    -moz-transform: rotate(0deg);
-  }
-
-  35% {
-    -moz-transform: rotate(90deg);
-  }
-
-  50% {
-    -moz-transform: rotate(180deg);
-  }
-
-  75% {
-    -moz-transform: rotate(180deg);
-  }
-
-  80% {
-    -moz-transform: rotate(270deg);
-  }
-
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@keyframes cssSpinnerRight {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  20% {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-
-  25% {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-
-  50% {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-
-  70% {
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-  }
-
-  75% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes cssSpinnerLeft {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  25% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  35% {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-
-  50% {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-
-  75% {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-
-  80% {
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-  }
-
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
 }
 
 #a0-widget .a0-zocial,
@@ -1782,18 +1503,6 @@ Credit to @guillermovs for suggesting
 #a0-widget .a0-panel .a0-email input:focus,
 #a0-widget .a0-panel .a0-password input:focus {
   background: #f9f9f9;
-}
-
-#a0-widget .a0-panel .a0-logo {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-}
-
-#a0-widget .a0-panel .a0-logo svg {
-  width: 20px;
-  height: 20px;
 }
 
 #a0-widget .a0-panel .a0-header {
