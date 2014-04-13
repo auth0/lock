@@ -331,22 +331,6 @@ a.zocial:hover span {
   background-color: #25537B;
   color: #fff;
 }
-/*
-The Miscellaneous Buttons
-These button have no icons and can be general purpose buttons while ensuring consistent button style
-Credit to @guillermovs for suggesting
-*/
-.zocial.primary:before,
-.zocial.secondary:before {
-  display: none;
-}
-.zocial.primary {
-  background-color: #16214D;
-}
-.zocial.secondary {
-  background-color: #D0D2D3;
-  color: #222;
-}
 /* Any browser-specific adjustments */
 button:-moz-focus-inner {
   border: 0;

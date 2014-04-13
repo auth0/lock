@@ -4212,11 +4212,6 @@
   /* Button icon and color */
   /* Icon characters are stored in unicode private area */
   /* Button background and text color */
-  /*
-The Miscellaneous Buttons
-These button have no icons and can be general purpose buttons while ensuring consistent button style
-Credit to @guillermovs for suggesting
-*/
   /* Any browser-specific adjustments */
   /* Reference icons from font-files
 ** Base 64-encoded version recommended to resolve cross-site font-loading issues
@@ -4238,7 +4233,8 @@ Credit to @guillermovs for suggesting
   font-family: "proxima_novathin" !important;
 }
 
-#a0-widget a {
+#a0-widget a,
+#a0-widget button {
   font-family: "proxima_novasemibold" !important;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -4251,8 +4247,32 @@ Credit to @guillermovs for suggesting
 }
 
 #a0-widget .a0-logo img {
-  width: 20px;
   height: 20px;
+  width: auto;
+}
+
+#a0-widget button.a0-primary {
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block !important;
+  width: 100% !important;
+  float: none;
+  min-width: auto;
+  letter-spacing: 1px;
+  padding: 20px 0;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  background-color: #16214D;
+  color: white;
+  cursor: pointer;
+  display: block;
+  border-radius: 3px;
+}
+
+#a0-widget button.a0-primary:hover {
+  background: #0b1025;
 }
 
 #a0-widget #a0-change_password .a0-password {
@@ -4792,20 +4812,6 @@ Credit to @guillermovs for suggesting
   color: #fff;
 }
 
-#a0-widget .a0-zocial.a0-primary:before,
-#a0-widget .a0-zocial.a0-secondary:before {
-  display: none;
-}
-
-#a0-widget .a0-zocial.a0-primary {
-  background-color: #16214D;
-}
-
-#a0-widget .a0-zocial.a0-secondary {
-  background-color: #D0D2D3;
-  color: #222;
-}
-
 #a0-widget button:-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -4976,10 +4982,6 @@ Credit to @guillermovs for suggesting
   border-top-right-radius: 3px;
 }
 
-#a0-widget .a0-emailPassword .a0-password {
-  margin-bottom: 20px;
-}
-
 #a0-widget .a0-panel .a0-password input {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -5009,6 +5011,7 @@ Credit to @guillermovs for suggesting
   letter-spacing: 1px;
   padding: 20px 0;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 #a0-widget .a0-action {

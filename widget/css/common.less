@@ -13,7 +13,7 @@ h1,h2,h3{
     font-family: "proxima_novathin"!important;
 }
 
-a{
+a,button{
 	font-family: "proxima_novasemibold"!important;
 	transition: all 0.2s ease;
 }
@@ -23,7 +23,30 @@ a{
 	padding: 10px 0;
 	display: block;
 	img{
-		width: 20px;
 		height: 20px;
+		width: auto;
+	}
+}
+
+button.primary{
+	padding: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	display: block !important;
+	width: 100% !important;
+	float: none;
+	min-width: auto;
+	letter-spacing: 1px;
+	padding: 20px 0;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	background-color: #16214D;
+	color: white;
+	cursor: pointer;
+	display: block;
+	border-radius: 3px;
+	&:hover{
+		background: #0b1025
 	}
 }
