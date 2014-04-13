@@ -57,7 +57,7 @@
 .panel{
   text-align: center;
   background: white;
-  padding: 20px 20px 10px 20px;
+  padding: 20px 20px 0 20px;
   border-radius: 3px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   font-size: 13px;
@@ -75,36 +75,29 @@
     margin: auto;
     display: inline-block;
     margin-bottom: 10px;
-    line-height: 60px;
-    border-radius: 100px;
-    padding: 12px;
-    svg {
-      width: 26px;
-      height: 26px;
-      path{
-        fill: #EB5424;
-      }
+    padding: 14px 14px 13px 14px;
+    border-radius: 100%;
+    i{
+      color: #EB5424;
+      font-size: 30px;
     }
   }
 
 
-  .email, .password{
+  .email, .password, .repeatPassword{
     position: relative;
 
-    svg{
-      width: 16px;
-      height: 16px;
+    i{
+      font-size: 14px;
       z-index: 10000;
-      top: 16px;
+      top: 19px;
       left: 16px;
       position: absolute;
-      path{
-        fill: #999;
-      }
+      color: #999;
     }
   }
 
-  .email  input, .password input{
+  .email  input, .password input, .repeatPassword input{
     border: 1px solid #ccc;
     padding: 16px 10px; 
     border-radius: 0;
@@ -126,11 +119,12 @@
     right: 20px;
     display: block;
     cursor: pointer;
+    font-size: 16px;
+    color: #999;
   }
 
-  .close svg{
-    width: 12px;
-    height: 12px;
+  .close:hover{
+    color: #333;
   }
 }
 
@@ -149,11 +143,6 @@
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-
-
-
-
-
 
 .separator {
   margin-bottom: 6px;
@@ -177,6 +166,15 @@ button.primary{
   min-width: auto;
   letter-spacing: 1px;
   padding: 20px 0;
+  margin-bottom: 10px;
+}
+
+button.primary:hover{
+  // background-color: #
+}
+
+.action{
+  margin-bottom: 20px;
 }
 
 @-moz-keyframes showPanel {
