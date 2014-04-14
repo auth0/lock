@@ -349,3 +349,17 @@ button:-moz-focus-inner {
   font-weight: normal;
   font-style: normal;
 }
+@media screen and (max-height: 800px) {
+  .zocial {
+    width: auto;
+    display: inline-block;
+    margin: 0 6px;
+  }
+  .zocial:before {
+    width: 40px;
+    background-color: transparent;
+  }
+  .zocial span {
+    display: none;
+  }
+}
