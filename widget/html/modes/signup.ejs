@@ -7,26 +7,30 @@
         </div>
         <div class="a0-header"><%= i18n.t('signup:headerText') %></div>
         <div class="a0-emailPassword">
-            <div class="a0-email">
-                <label for="a0-signup_easy_email" class="a0-sad-placeholder">
-                  <%= i18n.t('signup:emailPlaceholder') %>
-                </label>
-                <i class="a0-icon-budicon-300"></i>
-                <input name="email" id="a0-signup_easy_email"
-                       type="email" value="" required
-                       placeholder="<%= i18n.t('signup:emailPlaceholder') %>"
-                       title="<%= i18n.t('signup:emailPlaceholder') %>">
-            </div>
-            <div class="a0-password">
-                <label for="a0-signup_easy_password" class="a0-sad-placeholder">
-                  <%= i18n.t('signup:passwordPlaceholder') %>
-                </label>
+            <div class="a0-inputs">
+              <div class="a0-email">
+                  <label for="a0-signup_easy_email" class="a0-sad-placeholder">
+                    <%= i18n.t('signup:emailPlaceholder') %>
+                  </label>
+                  <i class="a0-icon-budicon-300"></i>
+                  <input name="email" id="a0-signup_easy_email"
+                         type="email" value="" required
+                         placeholder="<%= i18n.t('signup:emailPlaceholder') %>"
+                         title="<%= i18n.t('signup:emailPlaceholder') %>">
+              </div>
+              <div class="a0-password">
+                  <label for="a0-signup_easy_password" class="a0-sad-placeholder">
+                    <%= i18n.t('signup:passwordPlaceholder') %>
+                  </label>
 
-                <i class="a0-icon-budicon-285"></i>
-                <input name="password" id="a0-signup_easy_password"
-                       type="password" value="" required
-                       placeholder="<%= i18n.t('signup:passwordPlaceholder') %>"
-                       title="<%= i18n.t('signup:passwordPlaceholder') %>">
+                  <i class="a0-icon-budicon-285"></i>
+                  <input name="password" id="a0-signup_easy_password"
+                         type="password" value="" required
+                         placeholder="<%= i18n.t('signup:passwordPlaceholder') %>"
+                         title="<%= i18n.t('signup:passwordPlaceholder') %>">
+              </div>
+
+              
             </div>
             <div class="a0-action">
                 <button type="submit" class="a0-zocial a0-primary a0-next"><%= i18n.t('signup:action') %></button>

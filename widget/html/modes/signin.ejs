@@ -1,44 +1,50 @@
 <div class="a0-notloggedin a0-mode" style="display: none;">
     <form>
-        <div class="a0-collapse-social">
-          <div class="a0-iconlist" style="display: none"><p style="display:none"><%= i18n.t('signin:or') %></p></div>
-          <div class="a0-separator" style="display: none"><span><%= i18n.t('signin:separatorText') %></span></div>
+      <div class="a0-collapse-social">
+        <div class="a0-iconlist" style="display: none"><p style="display:none"><%= i18n.t('signin:or') %></p></div>
+        <div class="a0-separator" style="display: none"><span><%= i18n.t('signin:separatorText') %></span></div>
+      </div>
+      <div class="a0-emailPassword">
+        <div class="a0-inputs">
+          <% if (options.showEmail !== false) { %>
+            
+          <div class="a0-email">
+              <label for="a0-signin_easy_email" class="a0-sad-placeholder">
+                <%= i18n.t('signin:emailPlaceholder') %>
+              </label>
+
+              <i class="a0-icon-budicon-300"></i>
+
+              <input name="email"
+                     id="a0-signin_easy_email"
+                     type="email"
+                     required
+                     placeholder="<%= i18n.t('signin:emailPlaceholder') %>"
+                     title="<%= i18n.t('signin:emailPlaceholder') %>">
+          </div>
+          <% } %>
+          <div class="a0-password" style="display:none">
+              <label for="a0-signin_easy_password" class="a0-sad-placeholder">
+                <%= i18n.t('signin:passwordPlaceholder') %>
+              </label>
+
+              <i class="a0-icon-budicon-285"></i>
+
+              <input name="password"
+                     id="a0-signin_easy_password"
+                     type="password"
+                     placeholder="<%= i18n.t('signin:passwordPlaceholder') %>"
+                     title="<%= i18n.t('signin:passwordPlaceholder') %>">
+          </div>
+
         </div>
-        <div class="a0-emailPassword">
-            <% if (options.showEmail !== false) { %>
-            <div class="a0-email">
-                <label for="a0-signin_easy_email" class="a0-sad-placeholder">
-                  <%= i18n.t('signin:emailPlaceholder') %>
-                </label>
+        <!-- .a0-inputs -->
 
-                <i class="a0-icon-budicon-300"></i>
-
-                <input name="email"
-                       id="a0-signin_easy_email"
-                       type="email"
-                       required
-                       placeholder="<%= i18n.t('signin:emailPlaceholder') %>"
-                       title="<%= i18n.t('signin:emailPlaceholder') %>">
-            </div>
-            <% } %>
-            <div class="a0-password" style="display:none">
-                <label for="a0-signin_easy_password" class="a0-sad-placeholder">
-                  <%= i18n.t('signin:passwordPlaceholder') %>
-                </label>
-
-                <i class="a0-icon-budicon-285"></i>
-
-                <input name="password"
-                       id="a0-signin_easy_password"
-                       type="password"
-                       placeholder="<%= i18n.t('signin:passwordPlaceholder') %>"
-                       title="<%= i18n.t('signin:passwordPlaceholder') %>">
-            </div>
-            <div class="a0-action">
-                <button type="submit" class="a0-primary a0-next"><%= i18n.t('signin:action') %></button>
-                <div class="a0-db-actions">
-                </div>
+        <div class="a0-action">
+            <button type="submit" class="a0-primary a0-next"><%= i18n.t('signin:action') %></button>
+            <div class="a0-db-actions">
             </div>
         </div>
+      </div>
     </form>
 </div>
