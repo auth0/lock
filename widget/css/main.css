@@ -4964,6 +4964,7 @@
 #a0-widget .a0-inputs {
   border: 1px solid #ccc;
   border-radius: 3px;
+  overflow: hidden;
 }
 
 #a0-widget .a0-panel .a0-email input {
