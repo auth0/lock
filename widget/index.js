@@ -750,7 +750,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     self._showOrHidePassword(e);
   });
 
-  $('span', list).a0_on('click', function (e) {
+  $('.a0-zocial', list).a0_on('click', function (e) {
     self._signInSocial(e);
   });
 
