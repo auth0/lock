@@ -746,7 +746,7 @@
 }
 
 @font-face {
-  font-family: 'proxima_nova_rgregular';
+  font-family: 'proxima_nova';
   src: url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-regular-webfont.eot');
   src: url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-regular-webfont.woff') format('woff'), url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-regular-webfont.ttf') format('truetype'), url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
   font-weight: normal;
@@ -754,25 +754,25 @@
 }
 
 @font-face {
-  font-family: 'proxima_novathin';
+  font-family: 'proxima_nova';
   src: url('https://cdn.auth0.com/w2/font/proxima-font/proxima_nova_thin-webfont.eot');
   src: url('https://cdn.auth0.com/w2/font/proxima-font/proxima_nova_thin-webfont.eot?#iefix') format('embedded-opentype'), url('https://cdn.auth0.com/w2/font/proxima-font/proxima_nova_thin-webfont.woff') format('woff'), url('https://cdn.auth0.com/w2/font/proxima-font/proxima_nova_thin-webfont.ttf') format('truetype'), url('https://cdn.auth0.com/w2/font/proxima-font/proxima_nova_thin-webfont.svg#proxima_novathin') format('svg');
-  font-weight: normal;
+  font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'proxima_novasemibold';
+  font-family: 'proxima_nova';
   src: url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-semibold-webfont.eot');
   src: url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-semibold-webfont.woff') format('woff'), url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-semibold-webfont.ttf') format('truetype'), url('https://cdn.auth0.com/w2/font/proxima-font/proximanova-semibold-webfont.svg#proxima_novasemibold') format('svg');
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: "budicon-font";
-  src: url("https://cdn.auth0.com/w2/font/budicon/budicon/fonts/budicon-font.eot");
-  src: url("https://cdn.auth0.com/w2/font/budicon/budicon/fonts/budicon-font.eot?#iefix") format("embedded-opentype"), url("https://cdn.auth0.com/w2/font/budicon/budicon/fonts/budicon-font.woff") format("woff"), url("https://cdn.auth0.com/w2/font/budicon/budicon/fonts/budicon-font.ttf") format("truetype"), url("https://cdn.auth0.com/w2/font/budicon/fonts/budicon-font.svg#budicon-font") format("svg");
+  src: url("https://cdn.auth0.com/w2/font/budicon/fonts/budicon-font.eot");
+  src: url("https://cdn.auth0.com/w2/font/budicon/fonts/budicon-font.eot?#iefix") format("embedded-opentype"), url("https://cdn.auth0.com/w2/font/budicon/fonts/budicon-font.woff") format("woff"), url("https://cdn.auth0.com/w2/font/budicon/fonts/budicon-font.ttf") format("truetype"), url("https://cdn.auth0.com/w2/font/budicon/fonts/budicon-font.svg#budicon-font") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4219,7 +4219,7 @@
 }
 
 #a0-widget * {
-  font-family: "proxima_nova_rgregular" !important;
+  font-family: "proxima_nova" !important;
   font-smoothing: antialiased;
 }
 
@@ -4230,15 +4230,74 @@
 #a0-widget h1,
 #a0-widget h2,
 #a0-widget h3 {
-  font-family: "proxima_novathin" !important;
+  font-family: "proxima_nova" !important;
 }
 
 #a0-widget a,
 #a0-widget button {
-  font-family: "proxima_novasemibold" !important;
+  font-family: "proxima_nova" !important;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+#a0-widget .a0-panel {
+  text-align: center;
+  background: white;
+  padding: 20px 20px 0 20px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+  position: relative;
+  color: #4d4d4d;
+}
+
+#a0-widget .a0-panel h1 {
+  font-size: 24px;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+#a0-widget .a0-panel .a0-avatar {
+  background: #D0D2D3;
+  margin: auto;
+  display: inline-block;
+  margin-bottom: 10px;
+  border-radius: 100%;
+  width: 58px;
+  height: 58px;
+}
+
+#a0-widget .a0-panel .a0-avatar i {
+  color: #EB5424;
+  font-size: 30px;
+  display: block;
+  padding-top: 15px;
+}
+
+#a0-widget .a0-panel {
+  display: block;
+  -webkit-animation-name: appear;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: once;
+  -webkit-animation-timing-function: ease-in;
+}
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#a0-widget .a0-error {
+  color: red;
+  font-weight: bold;
 }
 
 #a0-widget .a0-logo {
@@ -4890,38 +4949,6 @@
   -webkit-animation-timing-function: ease;
   -webkit-animation-name: hidePanel;
   width: 280px;
-}
-
-#a0-widget .a0-panel {
-  text-align: center;
-  background: white;
-  padding: 20px 20px 0 20px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
-  font-size: 13px;
-  position: relative;
-  color: #4d4d4d;
-}
-
-#a0-widget .a0-panel h1 {
-  font-size: 24px;
-  font-weight: 100;
-  margin-bottom: 20px;
-}
-
-#a0-widget .a0-panel .a0-avatar {
-  background: #D0D2D3;
-  margin: auto;
-  display: inline-block;
-  margin-bottom: 10px;
-  padding: 14px 14px 13px 14px;
-  border-radius: 100%;
-}
-
-#a0-widget .a0-panel .a0-avatar i {
-  color: #EB5424;
-  font-size: 30px;
 }
 
 #a0-widget .a0-panel .a0-password {

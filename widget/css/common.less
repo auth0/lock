@@ -1,7 +1,7 @@
 // General Rules
 
 *{
-	font-family: "proxima_nova_rgregular" !important;
+	font-family: "proxima_nova" !important;
 	font-smoothing: antialiased; 
 }
 
@@ -10,14 +10,69 @@ body{
 }
 
 h1,h2,h3{
-    font-family: "proxima_novathin"!important;
+    font-family: "proxima_nova"!important;
 }
 
 a,button{
-	font-family: "proxima_novasemibold"!important;
+	font-family: "proxima_nova"!important;
 	transition: all 0.2s ease;
+	font-weight: bold;
 }
 
+.panel{
+	text-align: center;
+	background: white;
+	padding: 20px 20px 0 20px;
+	border-radius: 3px;
+	box-shadow: 0 1px 10px rgba(0,0,0,.4);
+	font-size: 13px;
+	position: relative;
+	color: #4d4d4d;
+
+	h1{
+		font-size: 24px;
+		font-weight: 100;
+		margin-bottom: 20px;
+	}
+
+	.avatar{
+		background: #D0D2D3;
+		margin: auto;
+		display: inline-block;
+		margin-bottom: 10px;
+		border-radius: 100%;
+		width: 58px;
+		height: 58px;
+		i{
+			color: #EB5424;
+			font-size: 30px;
+			display: block;
+			padding-top: 15px;
+		}
+	}
+}
+
+.panel {
+    display: block;
+    -webkit-animation-name: appear;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: once;
+    -webkit-animation-timing-function: ease-in;
+}
+
+@-webkit-keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.error{
+	color: red;
+	font-weight: bold;
+}
 
 .logo{
 	margin-top: 10px;
