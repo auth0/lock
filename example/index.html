@@ -17,10 +17,12 @@
     <button id="signup-button">Show SignUp</button>
     <button id="reset-button">Show Reset Password</button>
     <br><br>
-    <div id="login-container" style="width: 500px; height: 500px;"></div>
+    <div id="userinfo-container" style="float: left; width: 40%; padding: 0 2%;">
+        <h3>User Info</h3>
+        <pre><code id="userinfo">Not logged in yet.</code></pre>
+    </div>
+    <div id="login-container" style="float: left; width: 40%; max-width: 500px; min-width: 360px; min-height: 500px; padding: 0 2%; margin-top: 20px;"></div>
 
-    <h3>User Info</h3>
-    <pre><code id="userinfo">Not logged in yet.</code></pre>
     <script src="auth0-widget.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
