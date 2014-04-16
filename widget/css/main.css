@@ -4467,8 +4467,7 @@
 }
 
 #a0-widget .a0-zocial span,
-#a0-widget a.a0-zocial span,
-#a0-widget .a0-strategy span.a0-zocial {
+#a0-widget a.a0-zocial span {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 11px;
@@ -4481,6 +4480,11 @@
   -webkit-transition: background-color 0.2s ease;
   -moz-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
+}
+
+#a0-widget .a0-strategy div.a0-zocial span {
+  text-transform: lowercase;
+  font-size: 12px;
 }
 
 #a0-widget .a0-zocial:hover span,

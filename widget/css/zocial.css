@@ -22,8 +22,7 @@ a.zocial {
   opacity: 1;
 }
 .zocial span,
-a.zocial span,
-.strategy span.zocial {
+a.zocial span {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 11px;
@@ -34,6 +33,10 @@ a.zocial span,
   width: 86%;
   cursor: pointer;
   transition: background-color 0.2s ease;
+}
+.strategy div.zocial span {
+  text-transform: lowercase;
+  font-size: 12px;
 }
 .zocial:hover span,
 a.zocial:hover span {
