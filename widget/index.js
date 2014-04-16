@@ -417,12 +417,12 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
 
   $('.a0-last-time').html(this._dict.t('signin:returnUserLabel'));
 
-  $('.a0-strategy span', loginView).remove();
+  $('.a0-strategy div', loginView).remove();
 
   $('.a0-strategy', loginView)
     .append(button);
 
-  $('.a0-strategy span', loginView).a0_on('click', function (e) {
+  $('.a0-strategy div', loginView).a0_on('click', function (e) {
     e.preventDefault();
     self._signInSocial(
       strategy_name,
@@ -462,12 +462,12 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 
   $('.a0-last-time').html(this._dict.t('signin:domainUserLabel'));
 
-  $('.a0-strategy span', loginView).remove();
+  $('.a0-strategy div', loginView).remove();
 
   $('.a0-strategy', loginView)
     .append(button);
 
-  $('.a0-strategy span', loginView).a0_on('click', function (e) {
+  $('.a0-strategy div', loginView).a0_on('click', function (e) {
     e.preventDefault();
     self._signInSocial(strategy_name, connection);
   });

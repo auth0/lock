@@ -22,14 +22,14 @@ a.zocial {
   opacity: 1;
 }
 .zocial span,
-a.zocial span {
+a.zocial span,
+.strategy span.zocial {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 11px;
   letter-spacing: 1px;
   line-height: 40px;
   display: inline-block;
-  padding-left: 8px;
   padding-left: 4%;
   width: 86%;
   cursor: pointer;
@@ -62,6 +62,9 @@ a.zocial:hover span {
 .zocial.icon:before {
   box-shadow: none;
   border: none;
+}
+.strategy {
+  margin: 10px 0;
 }
 /* Gradients */
 /* Adjustments for light background buttons */
