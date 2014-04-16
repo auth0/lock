@@ -5434,6 +5434,16 @@
   margin-bottom: 12px;
 }
 
+#a0-widget .a0-strategy {
+  margin: 10px 0;
+}
+
+#a0-widget .a0-strategy span {
+  line-height: 40px;
+  display: inline-block;
+  padding-right: 20px;
+}
+
 #a0-widget input::-webkit-input-placeholder {
   color: #9da4ad;
 }
