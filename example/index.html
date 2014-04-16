@@ -107,17 +107,16 @@
 
             if (result && result.id_token) {
             // After login, show user profile
-            widget.getProfile(result.id_token, function (err, profile) {
-               window.location.hash = "";
-              if (err) {
-                alert(err);
-                return;
-              }
-              $('#userinfo').text(JSON.stringify(profile, 0, 2));
-            });
+                widget.getProfile(result.id_token, function (err, profile) {
+                    window.location.hash = "";
+                    if (err) {
+                        return alert(err);
+                    }
+                    $('#userinfo').text(JSON.stringify(profile, 0, 2));
+                });
             } else if (result && result.error) {
-            alert('error: ' + result.error);
-          }
+                alert('error: ' + result.error);
+            }
         });
     </script>
 </body>
