@@ -2077,6 +2077,6 @@
   border-bottom: 1px solid #ccc;
 }
 
-#a0-widget .a0-a0-inputs input:last-child {
+#a0-widget .a0-inputs input:last-child {
   border-bottom: 0 !important;
 }
