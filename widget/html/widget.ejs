@@ -5,16 +5,17 @@
             <img src="<%= options.icon || '' %>">
         </div>
         <div class="a0-avatar">
-            <i class="a0-avatar-guest a0-icon-budicon-290"></i>    
+            <i class="a0-avatar-guest a0-icon-budicon-2"></i>    
         </div>
         <h1><%= i18n.t('signin:title') %></h1>
         <h2 class="a0-error" style="display: none">&nbsp;</h2>
         <h2 class="a0-success" style="display: none">&nbsp;</h2>
-        <a class="a0-close a0-icon-budicon-471" style="display: <%= options.standalone ? 'none' : 'block' %>;">
+        <a class="a0-close a0-icon-budicon-3" style="display: <%= options.standalone ? 'none' : 'block' %>;">
             
         </a>
     </div>
     <% } %>
+
 
     <div class="a0-loading a0-mode">
         <% if (locals.alt_spinner) { %>
@@ -45,7 +46,7 @@
     <div class='a0-footer'>
 
         <a href="http://auth0.com" target="_new" class="a0-logo">
-            <img src="https://auth0.com/auth0-styleguide/img/badge.png"/>    
+            <i class="a0-icon-badge"></i>    
         </a>
     </div>
 </div>
