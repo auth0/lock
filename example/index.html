@@ -43,39 +43,80 @@
                 }, 3000);
             });
 
-            var widget = new Auth0Widget({
-                domain:      'mdocs.auth0.com',
-                clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-                callbackURL: 'http://localhost:3000/',
-                callbackOnLocationHash: true
-                // enableReturnUserExperience: false
-            });
-
             $('#login-button').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true
+                    // enableReturnUserExperience: false
+                });
                 widget.signin({});
             });
 
             $('#login-button-only-socials').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true
+                    // enableReturnUserExperience: false
+                });
                 widget.signin({ connections: ['github', 'google-oauth2', 'windowslive'] });
             });
 
             $('#login-button-only-userpass').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true
+                    // enableReturnUserExperience: false
+                });
                 widget.signin({ connections: ['foobar'] });
             });
 
             $('#login-button-only-enterprise').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true
+                    // enableReturnUserExperience: false
+                });
                 widget.signin({ connections: ['qraftlabs.com'] });
             });
 
             $('#logout-button').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true
+                    // enableReturnUserExperience: false
+                });
                 widget.logout({ returnTo: 'http://localhost:3000' });
             });
 
             $('#signup-button').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true
+                    // enableReturnUserExperience: false
+                });
                 widget.signup({});
             });
 
             $('#reset-button').on('click', function () {
+                var widget = new Auth0Widget({
+                    domain:      'mdocs.auth0.com',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    callbackURL: 'http://localhost:3000/',
+                    callbackOnLocationHash: true
+                    // enableReturnUserExperience: false
+                });
                 widget.reset({});
             });
 
