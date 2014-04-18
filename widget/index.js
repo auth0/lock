@@ -20,6 +20,7 @@ var reset = require('./modes/reset');
 
 var $ = require('./js/bonzo_qwery');
 var is_small_screen = require('./js/is_small_screen');
+var get_viewport = require('./js/get_viewport');
 
 //browser incompatibilities fixes
 var placeholderSupported = require('./pf/placeholderSupported');
@@ -373,6 +374,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
         }, 10);
       });
       pane_container.css('height', new_height.toString() + 'px');
+      if (new_height >= get_viewport().height) pane_container.addClass('a0-equal-viewport');
     }, 10);
   }, 10);
 };
