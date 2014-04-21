@@ -2076,7 +2076,3 @@
   border-bottom-left-radius: 3px;
   border-bottom: 1px solid #ccc;
 }
-
-#a0-widget .a0-inputs input:last-child {
-  border-bottom: 0 !important;
-}
