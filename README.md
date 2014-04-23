@@ -1,4 +1,4 @@
-[![Auth0](https://auth0.com/auth0-styleguide/img/logo.png)](http://auth0.com)
+[![Auth0](https://i.cloudup.com/1vaSVATKTL.png)](http://auth0.com)
 
 [![Build Status](https://auth0-tc-hub.herokuapp.com/bt23/status.png)](https://auth0-tc-hub.herokuapp.com/bt23)
 [![NPM version](https://badge.fury.io/js/auth0-widget.js.png)](http://badge.fury.io/js/auth0-widget.js)
