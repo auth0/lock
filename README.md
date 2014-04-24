@@ -1,9 +1,9 @@
 [![Build Status](https://auth0-tc-hub.herokuapp.com/bt23/status.png)](https://auth0-tc-hub.herokuapp.com/bt23)
 [![NPM version](https://badge.fury.io/js/auth0-widget.js.png)](http://badge.fury.io/js/auth0-widget.js)
 
-[![Auth0](http://blog.auth0.com.s3.amazonaws.com/logo-290x200-letters.png)](http://auth0.com)
+[![Auth0](https://s3.amazonaws.com/assets.auth0.com/logo/logo-180.png)](http://auth0.com)
 
-[Auth0](http://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
+[Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
 
 The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
 * Having a professional looking login dialog that displays well on any resolution and device.
