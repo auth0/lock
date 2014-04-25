@@ -17,17 +17,18 @@ a,button{
 .panel{
 	text-align: center;
 	background: white;
-	padding: 20px 20px 0 20px;
+	padding: 20px 20px 30px 20px;
 	border-radius: 3px;
 	box-shadow: 0 1px 10px rgba(0,0,0,.4);
 	font-size: 13px;
 	position: relative;
 	color: #4d4d4d;
-    display: block;
-    -webkit-animation-name: appear;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: once;
-    -webkit-animation-timing-function: ease-in;
+  width: 320px;
+	display: block;
+	-webkit-animation-name: appear;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: once;
+	-webkit-animation-timing-function: ease-in;
 
 
 	h1{
@@ -51,117 +52,24 @@ a,button{
 			padding-top: 15px;
 		}
 	}
-}
 
-
-
-
-.error{
-	color: red;
-	font-weight: bold;
-}
-
-.logo{
-	margin-top: 20px;
-	position: absolute;
-	bottom: 10px;
-	right: 0;
-	left: 0;
-	display: block;
-	i{
-		color: #EB5424;
-		font-size: 18px;
-	}
-}
-
-button.primary{
-	padding: 20px;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: bold;
-	display: block !important;
-	width: 100% !important;
-	float: none;
-	min-width: auto;
-	letter-spacing: 1px;
-	padding: 20px 0;
-	margin-bottom: 10px;
-	margin-top: 20px;
-	background-color: #16214D;
-	color: white;
-	cursor: pointer;
-	display: block;
-	border-radius: 3px;
-	&:hover{
-		background: #0b1025
-	}
-}
-
-
-
-.popup {
-
-	.centrix {
-	  padding: 0;
-	  vertical-align: middle;
-	  display: table-cell;
-	  margin: 0;
+	.error{
+		color: red;
+		font-weight: bold;
 	}
 
-	.overlay.ie8-overlay {
-	  background: none;
-	  background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png')
+	.logo{
+		margin-top: 20px;
+		position: absolute;
+		bottom: 10px;
+		right: 0;
+		left: 0;
+		display: block;
+		i{
+			color: #EB5424;
+			font-size: 18px;
+		}
 	}
-
-	.overlay {
-	  margin: 0;
-	  display: table;
-	  position: fixed;
-	  left: 0;
-	  top: 0;
-	  bottom: 0;
-	  right: 0;
-	  width: 100%;
-	  height: 100%;
-	  overflow: hidden;
-	  z-index: 9999;
-	  font-weight: 200;
-	  user-select: none;
-	  background: #000;
-	  background: rgba(0,0,0,0.8);
-	  opacity: 0;
-	  transition: 300ms opacity ease-out;
-	  transform: translate3d(0, 0, 0);
-	}
-
-	.overlay.active {
-	  opacity: 1;
-	}
-
-	.overlay .panel {
-	  display: none;
-	  margin: 0 auto;
-	}
-
-	.overlay .panel.active {
-	  display: block;
-	  -webkit-animation-duration: 400ms;
-	  -webkit-animation-timing-function: ease;
-	  -webkit-animation-name: showPanel;
-	}
-
-	.overlay .panel {
-	  -webkit-animation-duration: 400ms;
-	  -webkit-animation-timing-function: ease;
-	  -webkit-animation-name: hidePanel;
-	  width: 280px;
-	}
-
-}
-
-
-
-.panel{
 
 	.instructions {
 	  margin-bottom: 12px;
@@ -228,6 +136,31 @@ button.primary{
     margin-bottom: 10px;
   }
 
+
+	button.primary{
+		padding: 20px;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		display: block !important;
+		width: 100% !important;
+		float: none;
+		min-width: auto;
+		letter-spacing: 1px;
+		padding: 20px 0;
+		margin-bottom: 10px;
+		margin-top: 20px;
+		background-color: #16214D;
+		color: white;
+		cursor: pointer;
+		display: block;
+		border-radius: 3px;
+		&:hover{
+			background: #0b1025
+		}
+	}
+
+
   .close{
     position: absolute;
     top: 20px;
@@ -241,13 +174,70 @@ button.primary{
   .close:hover{
     color: #333;
   }
-  .db-actions, .options{
-    margin-bottom: 40px;
-  }
+
 }
 
-// .panel
 
+
+
+.popup {
+
+	.centrix {
+	  padding: 0;
+	  vertical-align: middle;
+	  display: table-cell;
+	  margin: 0;
+	}
+
+	.overlay.ie8-overlay {
+	  background: none;
+	  background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png')
+	}
+
+	.overlay {
+	  margin: 0;
+	  display: table;
+	  position: fixed;
+	  left: 0;
+	  top: 0;
+	  bottom: 0;
+	  right: 0;
+	  width: 100%;
+	  height: 100%;
+	  overflow: hidden;
+	  z-index: 9999;
+	  font-weight: 200;
+	  user-select: none;
+	  background: #000;
+	  background: rgba(0,0,0,0.8);
+	  opacity: 0;
+	  transition: 300ms opacity ease-out;
+	  transform: translate3d(0, 0, 0);
+	}
+
+	.overlay.active {
+	  opacity: 1;
+	}
+
+	.overlay .panel {
+	  display: none;
+	  margin: 0 auto;
+	}
+
+	.overlay .panel.active {
+	  display: block;
+	  -webkit-animation-duration: 400ms;
+	  -webkit-animation-timing-function: ease;
+	  -webkit-animation-name: showPanel;
+	}
+
+	.overlay .panel {
+	  -webkit-animation-duration: 400ms;
+	  -webkit-animation-timing-function: ease;
+	  -webkit-animation-name: hidePanel;
+	}
+
+}
 
 button.primary:hover{
   // background-color: #
@@ -258,16 +248,6 @@ button.primary:hover{
 }
 
 
-.popup .overlay .onestep {
-}
-
-@media (max-width: 280px) {
-
-}
-
-@media  (min-width: 281px) and (max-width: 340px) {
- 
-}
 
 @-moz-keyframes orbit {
   0% {
@@ -549,8 +529,8 @@ input[disabled]{
 }
 
 #onestep {
-  overflow: hidden;
-  height: auto;
+  // overflow: hidden;
+  // height: auto;
   transition: height 100ms ease-in;
 }
 
@@ -608,6 +588,30 @@ input::-moz-placeholder {
 input:-ms-input-placeholder {
   color: #9da4ad;
 }
+
+
+
+
+/*=====================================
+=            Media Queries            =
+=====================================*/
+
+@media (max-width: 280px) {
+
+}
+
+@media  (min-width: 281px) and (max-width: 340px) {
+ .panel{
+ 	position: fixed;
+ 	top: 0;
+ 	right: 0;
+ 	bottom: 0;
+ 	z-index: -1;
+ 	left: 0;
+ 	border-radius: 0;
+ }
+}
+
 
 
 /*==================================
@@ -722,5 +726,6 @@ input:-ms-input-placeholder {
     -webkit-transform: scale(0.98) translate3d(0, 0, 0);
   }
 }
+
 
 
