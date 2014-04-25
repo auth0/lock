@@ -15,7 +15,7 @@ html
               a(href='/')
                 img(src='https://auth0.com/auth0-styleguide/img/logo.png')
                 span Auth0
-         
+
           #bs-example-navbar-collapse-1
             ul.nav.navbar-nav.navbar-right
               li.li-docs
@@ -23,7 +23,7 @@ html
               li
                 a.signin-button.btn.btn-sm.signup(href='https://app.auth0.com', target='_blank') Open your dashboard
 
-            
+
     .site-content
       .container.branding-page
         .breadcrumb
@@ -52,52 +52,52 @@ html
             .sidebar-box
               strong Demos
               ul
-                li 
+                li
                   a#login-button
                     i
                     | Login
-                li 
+                li
                   a#login-button-only-socials
                     i
                     | Login (only socials)
-                
-                li 
+
+                li
                   a#login-button-only-userpass
                     i
                     | Login (only user/pass)
-                
-                li 
+
+                li
                   a#login-button-only-enterprise
                     i
                     | Login (only enterprise)
-                
+
                 li
                     a#login-button-inside-container
                         i
                         | Login (inside a DIV)
-                
-                li 
+
+                li
                     a#login-button-inside-container-chrome
                         i
                         | Login (inside a DIV - chrome)
-                
-                li 
+
+                li
                     a#login-button-all
                         i
                         | Login all languages
-                
 
-                li 
+
+                li
                     a#logout-button
                         i
                         | Logout
-                
-                li 
+
+                li
                     a#signup-button
                         i
                         | Show SignUp
-                
-                li 
+
+                li
                     a#reset-button
                         i
                         | Show Reset Password
@@ -107,14 +107,14 @@ html
             h1 Widget
             p
               | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac erat lectus. Vestibulum non accumsan turpis, ut tristique libero. Pellentesque tincidunt leo vel mauris rutrum, sit amet pretium dui imperdiet.
-            
+
 
             #userinfo-container
               h3 User Info
-              pre.
-                
+              pre Not logged in yet
+
             #login-container(style='float: left; width: 42%; max-width: 500px; min-width: 360px; min-height: 500px; padding: 0 2%; margin-top: 20px;')
-    
+
 
 
     script(src='auth0-widget.js')
@@ -241,7 +241,7 @@ html
       if (err) {
       return alert(err);
       }
-      $('#userinfo').text(JSON.stringify(profile, 0, 2));
+      $('#userinfo-container pre').text(JSON.stringify(profile, 0, 2));
       });
       } else if (result && result.error) {
       alert('error: ' + result.error);
