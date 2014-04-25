@@ -13,9 +13,6 @@ a,button{
 	transition: all 0.2s ease;
 	font-weight: bold;
 }
-.testing{
-	font-family: 'auth0' !important;
-}
 
 .panel{
 	text-align: center;
@@ -26,16 +23,18 @@ a,button{
 	font-size: 13px;
 	position: relative;
 	color: #4d4d4d;
+    display: block;
+    -webkit-animation-name: appear;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: once;
+    -webkit-animation-timing-function: ease-in;
+
 
 	h1{
 		font-size: 24px;
 		font-weight: 100;
 		margin-bottom: 20px;
 	}
-
-
-
-
 
 	.avatar{
 		background: #D0D2D3;
@@ -54,13 +53,6 @@ a,button{
 	}
 }
 
-.panel {
-    display: block;
-    -webkit-animation-name: appear;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: once;
-    -webkit-animation-timing-function: ease-in;
-}
 
 @-webkit-keyframes appear {
     from {
@@ -78,6 +70,10 @@ a,button{
 
 .logo{
 	margin-top: 20px;
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+	left: 0;
 	display: block;
 	i{
 		color: #EB5424;

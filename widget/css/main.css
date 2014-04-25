@@ -842,10 +842,6 @@
   font-weight: bold;
 }
 
-#a0-widget .a0-testing {
-  font-family: 'auth0' !important;
-}
-
 #a0-widget .a0-panel {
   text-align: center;
   background: white;
@@ -856,6 +852,11 @@
   font-size: 13px;
   position: relative;
   color: #4d4d4d;
+  display: block;
+  -webkit-animation-name: appear;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: once;
+  -webkit-animation-timing-function: ease-in;
 }
 
 #a0-widget .a0-panel h1 {
@@ -881,14 +882,6 @@
   padding-top: 15px;
 }
 
-#a0-widget .a0-panel {
-  display: block;
-  -webkit-animation-name: appear;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: once;
-  -webkit-animation-timing-function: ease-in;
-}
-
 @-webkit-keyframes appear {
   from {
     opacity: 0;
@@ -906,6 +899,10 @@
 
 #a0-widget .a0-logo {
   margin-top: 20px;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  left: 0;
   display: block;
 }
 
@@ -1075,7 +1072,6 @@
   text-transform: uppercase;
   font-weight: 400;
   font-size: 11px;
-  letter-spacing: 1px;
   line-height: 40px;
   display: inline-block;
   padding-left: 4%;
@@ -1615,6 +1611,11 @@
 
 #a0-widget .a0-panel .a0-close:hover {
   color: #333;
+}
+
+#a0-widget .a0-panel .a0-db-actions,
+#a0-widget .a0-panel .a0-options {
+  margin-bottom: 40px;
 }
 
 #a0-widget .a0-inputs {
