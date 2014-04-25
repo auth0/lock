@@ -826,10 +826,8 @@ Auth0Widget.prototype._resolveLoginView = function () {
   $('.a0-panel .a0-password').show(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection ? 'block' : 'none');
   $('.a0-panel .a0-separator').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
 
-
-  if(!(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection)){
-    $('.a0-panel .a0-password').parent('a0-inputs').hide();
-  }
+  $('.a0-panel .a0-inputs').show(anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.a0-panel .a0-action').show(anyEnterpriseOrDbConnection ? '' : 'none');
 
   if (is_small_screen()) {
     var collapse_onfocus = require('./js/collapse_onfocus');
