@@ -483,7 +483,7 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 
 // sign in methods
 Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
-  var target = e.target || e;
+  var target = e.currentTarget || e.delegateTarget || e.target || e;
   var self = this;
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
   var strategy = this._getConfiguredStrategy(strategyName);
