@@ -1004,6 +1004,16 @@
   background: #0b1025;
 }
 
+#a0-widget .a0-panel .a0-all {
+  display: block;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#a0-widget .a0-panel .a0-all:hover {
+  color: black;
+}
+
 #a0-widget .a0-panel .a0-close {
   position: absolute;
   top: 20px;
