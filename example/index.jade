@@ -17,11 +17,12 @@ html
                 span Auth0
 
           #bs-example-navbar-collapse-1
-            ul.nav.navbar-nav.navbar-right
-              li.li-docs
-                a(href='https://auth0.com/docs') Documentation
-              li
-                a.signin-button.btn.btn-sm.signup(href='https://app.auth0.com', target='_blank') Open your dashboard
+            .navbar-right
+              ul.nav.navbar-nav
+                li.li-docs
+                  a(href='https://auth0.com/docs') Documentation
+                li
+                  a.signin-button.btn.btn-sm.signup(href='https://app.auth0.com', target='_blank') Open your dashboard
 
 
     .site-content
@@ -110,7 +111,7 @@ html
 
 
             #userinfo-container
-              h3 User Info
+              h5 User Info
               pre Not logged in yet
 
             #login-container(style='float: left; width: 42%; max-width: 500px; min-width: 360px; min-height: 500px; padding: 0 2%; margin-top: 20px;')
