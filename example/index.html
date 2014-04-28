@@ -3,25 +3,23 @@
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Test auth0-widget</title>
     <link rel="stylesheet" type="text/css" href="https://auth0.com/app.css"/>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0"/>
   </head>
-  <body>
+  <body class="a0-no-overflow">
     <header class="site-header">
       <nav role="navigation" class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
             <h1 class="navbar-brand"><a href="/"><img src="https://auth0.com/auth0-styleguide/img/logo.png"/><span>Auth0</span></a></h1>
           </div>
-          <div id="bs-example-navbar-collapse-1">
-            <div class="navbar-right">
-              <ul class="nav navbar-nav">
-                <li class="li-docs"><a href="https://auth0.com/docs">Documentation</a></li>
-                <li><a href="https://app.auth0.com" target="_blank" class="signin-button btn btn-sm signup">Open your dashboard</a></li>
-              </ul>
-            </div>
+          <div class="navbar-right">
+            <ul class="nav navbar-nav">
+              <li class="li-docs"><a href="https://auth0.com/docs">Documentation</a></li>
+              <li><a href="https://app.auth0.com" target="_blank" class="signin-button btn btn-sm signup">Open your dashboard</a></li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -42,7 +40,7 @@
           </ul>
         </div>
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-md-3">
             <div class="sidebar-box"><strong>Demos</strong>
               <ul>
                 <li><a id="login-button"><i></i>Login</a></li>
@@ -65,7 +63,7 @@
               <h5>User Info</h5>
               <pre>Not logged in yet</pre>
             </div>
-            <div id="login-container" style="float: left; width: 42%; max-width: 500px; min-width: 360px; min-height: 500px; padding: 0 2%; margin-top: 20px;"></div>
+            <div id="login-container" style="float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;"></div>
           </div>
         </div>
       </div>

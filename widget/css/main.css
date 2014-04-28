@@ -847,7 +847,8 @@
   font-size: 13px;
   position: relative;
   color: #4d4d4d;
-  width: 320px;
+  max-width: 320px;
+  min-width: 280px;
   display: block;
   -webkit-animation-name: appear;
   -webkit-animation-duration: 1s;
@@ -1178,7 +1179,7 @@
   color: #9da4ad;
 }
 
-@media (min-width: 281px) and (max-width: 340px) {
+@media screen and (max-width: 480px) {
   #a0-widget .a0-centrix {
     position: fixed;
     top: 0;
@@ -1189,11 +1190,26 @@
     background: white;
     z-index: 100000;
     border-radius: 0;
+    height: 100%;
+    overflow-y: scroll;
   }
 
   #a0-widget .a0-centrix .a0-panel {
     -webkit-box-shadow: none;
     box-shadow: none;
+  }
+
+  #a0-widget .a0-centrix .a0-panel .a0-db-actions,
+  #a0-widget .a0-centrix .a0-panel .a0-options {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-height: 480px) {
+  #a0-widget .a0-panel .a0-avatar,
+  #a0-widget .a0-panel .a0-avatar-guest {
+    display: none;
   }
 }
 
@@ -1377,9 +1393,9 @@
   padding-left: 4%;
   width: 86%;
   cursor: pointer;
-  -webkit-transition: background-color 0.2s ease;
-  -moz-transition: background-color 0.2s ease;
-  transition: background-color 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 #a0-widget .a0-strategy div.a0-zocial span {
@@ -1388,7 +1404,8 @@
 }
 
 #a0-widget .a0-zocial:hover span,
-#a0-widget a.a0-zocial:hover span {
+#a0-widget a.a0-zocial:hover span,
+#a0-widget a.a0-zocial {
   background: rgba(0, 0, 0, 0.2);
 }
 
@@ -1402,6 +1419,9 @@
   cursor: pointer;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 #a0-widget .a0-zocial:active {
@@ -1778,7 +1798,7 @@
   font-style: normal;
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 700px) and (max-width: 480px) {
   #a0-widget .a0-zocial {
     width: auto;
     display: inline-block;
@@ -1790,9 +1810,17 @@
     background-color: transparent;
   }
 
+  #a0-widget .a0-zocial:hover:before {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   #a0-widget .a0-zocial span {
     display: none;
   }
+}
+
+#a0-widget #a0-change_password {
+  margin-top: -10px;
 }
 
 #a0-widget #a0-change_password .a0-password {
@@ -2158,4 +2186,8 @@
   100% {
     -webkit-transform: scale(0.98) translate3d(0, 0, 0);
   }
+}
+
+.a0-no-overflow {
+  overflow: hidden;
 }

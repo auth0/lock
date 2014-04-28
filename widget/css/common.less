@@ -14,7 +14,8 @@
   font-size: 13px;
   position: relative;
   color: #4d4d4d;
-  width: 320px;
+  max-width: 320px;
+  min-width: 280px;
   display: block;
   -webkit-animation-name: appear;
   -webkit-animation-duration: 1s;
@@ -342,11 +343,9 @@ input:-ms-input-placeholder {
 =            Media Queries            =
 =====================================*/
 
-@media (max-width: 280px) {
 
-}
 
-@media  (min-width: 281px) and (max-width: 340px) {
+@media screen and (max-width: 480px) {
  .centrix{
  	position: fixed;
  	top: 0;
@@ -357,13 +356,28 @@ input:-ms-input-placeholder {
   background: white;
   z-index: 100000;
  	border-radius: 0;
-
+  height: 100%;
+  overflow-y:scroll;
   .panel{
     box-shadow: none;
+    .db-actions, .options{
+      margin-top: 20px;
+      font-size: 14px;
+    }
   }
  }
 }
 
 
+
+@media screen and (max-height: 480px) {
+  .panel{
+  
+    .avatar, .avatar-guest{
+      display: none;
+    }
+
+  } 
+}
 
 

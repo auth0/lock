@@ -1,4 +1,4 @@
-<label class="a0-create-account">
+<div class="a0-create-account">
   <% if (showSignup) { %>
   <a href="<%= locals.signupLink || 'javascript: {}' %>"
     class="a0-sign-up">
@@ -12,4 +12,4 @@
   <a href="<%= locals.forgotLink || 'javascript: {}' %>"
     class="a0-forgot-pass"><%= i18n.t('signin:forgotText') %></a>
   <% } %>
-</label>
+</div>
