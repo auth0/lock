@@ -355,7 +355,7 @@ button:-moz-focus-inner {
   font-weight: normal;
   font-style: normal;
 }
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 700px) and (max-width: 480px) {
   .zocial {
     width: auto;
     display: inline-block;

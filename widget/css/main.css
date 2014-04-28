@@ -847,7 +847,8 @@
   font-size: 13px;
   position: relative;
   color: #4d4d4d;
-  width: 320px;
+  max-width: 320px;
+  min-width: 280px;
   display: block;
   -webkit-animation-name: appear;
   -webkit-animation-duration: 1s;
@@ -1178,7 +1179,7 @@
   color: #9da4ad;
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 480px) {
   #a0-widget .a0-centrix {
     position: fixed;
     top: 0;
@@ -1783,7 +1784,7 @@
   font-style: normal;
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 700px) and (max-width: 480px) {
   #a0-widget .a0-zocial {
     width: auto;
     display: inline-block;

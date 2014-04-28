@@ -14,7 +14,8 @@
   font-size: 13px;
   position: relative;
   color: #4d4d4d;
-  width: 320px;
+  max-width: 320px;
+  min-width: 280px;
   display: block;
   -webkit-animation-name: appear;
   -webkit-animation-duration: 1s;
@@ -342,11 +343,7 @@ input:-ms-input-placeholder {
 =            Media Queries            =
 =====================================*/
 
-@media (max-width: 280px) {
-
-}
-
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 480px) {
  .centrix{
  	position: fixed;
  	top: 0;
