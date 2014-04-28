@@ -829,6 +829,14 @@
   content: "e";
 }
 
+#a0-widget .a0-show {
+  display: block;
+}
+
+#a0-widget .a0-hide {
+  display: none;
+}
+
 #a0-widget .a0-panel {
   text-align: center;
   background: white;
@@ -845,7 +853,12 @@
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: once;
   -webkit-animation-timing-function: ease-in;
+  -webkit-transition: all 2s ease-in-out;
   /*==========  Forms  ==========*/
+}
+
+#a0-widget .a0-panel .a0-mode {
+  -webkit-transition: all 2s ease-in-out;
 }
 
 #a0-widget .a0-panel *,
@@ -916,7 +929,7 @@
 }
 
 #a0-widget .a0-panel .a0-instructions {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 #a0-widget .a0-panel .a0-password {
@@ -1166,14 +1179,21 @@
 }
 
 @media (min-width: 281px) and (max-width: 340px) {
-  #a0-widget .a0-panel {
+  #a0-widget .a0-centrix {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     z-index: -1;
     left: 0;
+    background: white;
+    z-index: 100000;
     border-radius: 0;
+  }
+
+  #a0-widget .a0-centrix .a0-panel {
+    -webkit-box-shadow: none;
+    box-shadow: none;
   }
 }
 

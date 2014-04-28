@@ -1,3 +1,10 @@
+.show{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
 .panel{
   text-align: center;
   background: white;
@@ -13,6 +20,11 @@
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: once;
   -webkit-animation-timing-function: ease-in;
+  -webkit-transition: all 2s ease-in-out;
+
+  .mode{
+    -webkit-transition: all 2s ease-in-out;
+  }
 
   *, input{
     font-family: "proxima_nova";
@@ -74,7 +86,7 @@
   }
 
   .instructions {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
   }
 
   /*==========  Forms  ==========*/
@@ -335,14 +347,20 @@ input:-ms-input-placeholder {
 }
 
 @media  (min-width: 281px) and (max-width: 340px) {
- .panel{
+ .centrix{
  	position: fixed;
  	top: 0;
  	right: 0;
  	bottom: 0;
  	z-index: -1;
  	left: 0;
+  background: white;
+  z-index: 100000;
  	border-radius: 0;
+
+  .panel{
+    box-shadow: none;
+  }
  }
 }
 
