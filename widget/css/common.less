@@ -343,6 +343,8 @@ input:-ms-input-placeholder {
 =            Media Queries            =
 =====================================*/
 
+
+
 @media screen and (max-width: 480px) {
  .centrix{
  	position: fixed;
@@ -355,12 +357,27 @@ input:-ms-input-placeholder {
   z-index: 100000;
  	border-radius: 0;
   height: 100%;
+  overflow-y:scroll;
   .panel{
     box-shadow: none;
+    .db-actions, .options{
+      margin-top: 20px;
+      font-size: 14px;
+    }
   }
  }
 }
 
 
+
+@media screen and (max-height: 480px) {
+  .panel{
+  
+    .avatar, .avatar-guest{
+      display: none;
+    }
+
+  } 
+}
 
 
