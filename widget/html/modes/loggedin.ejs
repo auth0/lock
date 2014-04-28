@@ -1,8 +1,8 @@
-<div class="a0-loggedin a0-mode" style="display: none;">
+<div class="a0-loggedin a0-mode a0-hide">
     <form>
         <span class="a0-centered a0-last-time"><%= i18n.t('signin:returnUserLabel') %></span>
         <div class="a0-strategy"></div>
-        <div class="a0-emailPassword" style="display:none">
+        <div class="a0-emailPassword a0-hide">
             <div class="a0-email">
                 <span class="a0-email-readonly"></span>
                 <input name="email"
@@ -11,7 +11,7 @@
                        disabled
                        placeholder="<%= i18n.t('signin:emailPlaceholder') %>"
                        title="<%= i18n.t('signin:emailPlaceholder') %>"
-                       style="display:none">
+                       class="a0-hide">
             </div>
             <div class="a0-password">
                 <label class="a0-sad-placeholder">

@@ -314,8 +314,8 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
 
   if (!hasTransitions() || !hasTransitions($('#a0-onestep')[0])){
     self._setTitle(title);
-    self._currentPane.hide();
-    self._currentPane = newPane.show();
+    self._currentPane.toggleClass('a0-hide', true);
+    self._currentPane = newPane.toggleClass('a0-hide', false);
     setTimeout(function () {
       self.emit('transition_mode', mode || 'signin');
       self.emit((mode || 'signin') + '_ready');
@@ -337,7 +337,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
       .css('left', '-1000px');
 
   newPane
-    .show()
+    .toggleClass('a0-hide', false)
     .css('visibility', 'hidden');
 
   pane_container.css('min-height', '');
@@ -346,12 +346,12 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
 
   pane_container.css('min-height', original_height.toString() + 'px');
 
-  newPane.css('visibility', '').hide();
+  newPane.css('visibility', '').toggleClass('a0-hide', true);
 
   self._currentPane
       .css('position', '')
       .css('left', '')
-      .show();
+      .toggleClass('a0-hide', false);
 
   pane_container
     .css('height', original_height.toString() + 'px')
@@ -365,8 +365,8 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
         if (!pane_container[0]) return;
         transition_end.off(pane_container[0]);
         self._setTitle(title);
-        self._currentPane.hide();
-        self._currentPane = newPane.show();
+        self._currentPane.toggleClass('a0-hide', true);
+        self._currentPane = newPane.toggleClass('a0-hide', false);
         setTimeout(function () {
           self.emit('transition_mode', mode || 'signin');
           self.emit((mode || 'signin') + '_ready');
@@ -640,7 +640,7 @@ Auth0Widget.prototype._initialize = function (cb) {
 
   if (self._client.subscription && self._client.subscription !== 'free') {
     // hide footer for non free subscriptions
-    $('.a0-footer').addClass('a0-hide');
+    $('.a0-footer').toggleClass('a0-hide', true);
   }
 
   // images from cdn
@@ -745,7 +745,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     .each(function (s) { return list.append(buttonTmpl(s)); });
 
   if (_.where(self._client.strategies, {social: true}).length > 0) {
-    $('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').show();
+    $('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').toggleClass('a0-hide', false);
   }
 
   $('.a0-notloggedin .a0-email input').a0_on('input', function (e) {
@@ -821,13 +821,13 @@ Auth0Widget.prototype._resolveLoginView = function () {
   var anySocialConnection = self._areThereAnySocialConn();
   var anyDbConnection = self._areThereAnyDbConn();
 
-  $('.a0-panel .a0-email input').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.a0-panel .a0-zocial.a0-primary').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.a0-panel .a0-password').show(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection ? 'block' : 'none');
-  $('.a0-panel .a0-separator').show(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection ? '' : 'none');
+  $('.a0-panel .a0-email input').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
+  $('.a0-panel .a0-zocial.a0-primary').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
+  $('.a0-panel .a0-password').toggleClass('a0-hide', !(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection));
+  $('.a0-panel .a0-separator').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection));
 
-  $('.a0-panel .a0-inputs').show(anyEnterpriseOrDbConnection ? '' : 'none');
-  $('.a0-panel .a0-action').show(anyEnterpriseOrDbConnection ? '' : 'none');
+  $('.a0-panel .a0-inputs').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
+  $('.a0-panel .a0-action').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
 
   if (is_small_screen()) {
     var collapse_onfocus = require('./js/collapse_onfocus');
