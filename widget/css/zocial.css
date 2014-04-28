@@ -31,14 +31,15 @@ a.zocial span {
   padding-left: 4%;
   width: 86%;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 .strategy div.zocial span {
   text-transform: lowercase;
   font-size: 12px;
 }
 .zocial:hover span,
-a.zocial:hover span {
+a.zocial:hover span,
+a.zocial {
   background: rgba(0, 0, 0, 0.2);
 }
 .zocial:before {
@@ -51,6 +52,7 @@ a.zocial:hover span {
   cursor: pointer;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
 .zocial:active {
   outline: none;
@@ -362,6 +364,9 @@ button:-moz-focus-inner {
   .zocial:before {
     width: 40px;
     background-color: transparent;
+  }
+  .zocial:hover:before {
+    background-color: rgba(0, 0, 0, 0.4);
   }
   .zocial span {
     display: none;

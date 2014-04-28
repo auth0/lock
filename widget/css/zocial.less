@@ -7,7 +7,6 @@ a.zocial {
   text-align: left;
   text-decoration: none;
   white-space: nowrap;
-  
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
@@ -37,7 +36,7 @@ a.zocial span{
   padding-left: 4%;
   width: 86%;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .strategy div.zocial span{
@@ -45,7 +44,7 @@ a.zocial span{
   font-size: 12px;
 }
 
-.zocial:hover span, a.zocial:hover span {
+.zocial:hover span, a.zocial:hover span, a.zocial {
   background: rgba(0,0,0,.2);
 
 }
@@ -60,6 +59,7 @@ a.zocial span{
   cursor: pointer;
   text-align: center;
   background: rgba(0,0,0,.3);
+  transition: all 0.2s ease;
 }
 
 .zocial:active {
@@ -252,6 +252,13 @@ button:-moz-focus-inner {
     &:before {
       width: 40px;
       background-color: transparent;
+
+    }
+
+    &:hover{
+      &:before{
+        background-color: rgba(0,0,0,.4);
+      }
     }
 
     span{
