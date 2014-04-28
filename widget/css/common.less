@@ -5,10 +5,11 @@
 .hide{
   display: none;
 }
+
 .panel{
   text-align: center;
   background: white;
-  padding: 20px 20px 30px 20px;
+  padding: 20px ;
   border-radius: 3px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   font-size: 13px;
@@ -17,14 +18,12 @@
   max-width: 320px;
   min-width: 280px;
   display: block;
-  -webkit-animation-name: appear;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: once;
-  -webkit-animation-timing-function: ease-in;
-  -webkit-transition: all 2s ease-in-out;
 
   .mode{
-    -webkit-transition: all 2s ease-in-out;
+    -webkit-animation-name: appear;
+    -webkit-animation-duration: .2s;
+    -webkit-animation-iteration-count: once;
+    -webkit-animation-timing-function: ease-in;
   }
 
   *, input{
@@ -88,6 +87,7 @@
 
   .instructions {
     margin-bottom: 20px;
+    line-height: 18px;
   }
 
   /*==========  Forms  ==========*/
@@ -190,7 +190,7 @@
     display: block;
     cursor: pointer;
     font-size: 16px;
-    color: #999;
+    color: #ccc;
   }
 
   .close:hover{

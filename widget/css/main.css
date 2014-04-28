@@ -840,7 +840,7 @@
 #a0-widget .a0-panel {
   text-align: center;
   background: white;
-  padding: 20px 20px 30px 20px;
+  padding: 20px;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
@@ -850,16 +850,14 @@
   max-width: 320px;
   min-width: 280px;
   display: block;
-  -webkit-animation-name: appear;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: once;
-  -webkit-animation-timing-function: ease-in;
-  -webkit-transition: all 2s ease-in-out;
   /*==========  Forms  ==========*/
 }
 
 #a0-widget .a0-panel .a0-mode {
-  -webkit-transition: all 2s ease-in-out;
+  -webkit-animation-name: appear;
+  -webkit-animation-duration: .2s;
+  -webkit-animation-iteration-count: once;
+  -webkit-animation-timing-function: ease-in;
 }
 
 #a0-widget .a0-panel *,
@@ -931,6 +929,7 @@
 
 #a0-widget .a0-panel .a0-instructions {
   margin-bottom: 20px;
+  line-height: 18px;
 }
 
 #a0-widget .a0-panel .a0-password {
@@ -1039,7 +1038,7 @@
   display: block;
   cursor: pointer;
   font-size: 16px;
-  color: #999;
+  color: #ccc;
 }
 
 #a0-widget .a0-panel .a0-close:hover {
