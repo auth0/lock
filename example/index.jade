@@ -20,7 +20,7 @@ html
           .navbar-right
             ul.nav.navbar-nav
               li.li-docs
-                a(href='https://auth0.com/docs') Documentation
+                a(href='https://docs.auth0.com/login-widget2') Documentation
               li
                 a.signin-button.btn.btn-sm.signup(href='https://app.auth0.com', target='_blank') Open your dashboard
 
@@ -39,7 +39,7 @@ html
             li
               a(href='http://twitter.com/authzero', target='_blank') Twitter
             li
-              a(href='http://github.com/auth0', target='_blank') Github
+              a(href='https://github.com/auth0/widget', target='_blank') Github
             li
               a(href='http://chat.auth0.com', target='_blank') Chat With Us
             li
@@ -48,6 +48,14 @@ html
 
         .row
           .col-md-3
+            .sidebar-box 
+              strong Widget 
+              ul 
+                li 
+                  a(href="")
+                    i 
+                    span Documentation
+
             .sidebar-box
               strong Demos
               ul
@@ -104,13 +112,24 @@ html
 
           .col-xs-9.text-content
             h1 Widget
-            p
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac erat lectus. Vestibulum non accumsan turpis, ut tristique libero. Pellentesque tincidunt leo vel mauris rutrum, sit amet pretium dui imperdiet.
+
+            p The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
+
+            ul 
+              li Having a professional looking login dialog that displays well on any resolution and device.
+              li Finding the right icons for popular social providers.
+              li Remembering what was the identity provider the user chose the last time.
+              li Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
+              li Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
+
+            h4 Including the Login Widget on your page
+            p Add the script tag to your page to get started with Auth0 Login Widget.
+            pre &lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;
 
 
-            #userinfo-container
-              h5 User Info
-              pre Not logged in yet
+
+            h4 User Info
+            pre Not logged in yet
 
             #login-container(style='float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;')
 

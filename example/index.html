@@ -17,7 +17,7 @@
           </div>
           <div class="navbar-right">
             <ul class="nav navbar-nav">
-              <li class="li-docs"><a href="https://auth0.com/docs">Documentation</a></li>
+              <li class="li-docs"><a href="https://docs.auth0.com/login-widget2">Documentation</a></li>
               <li><a href="https://app.auth0.com" target="_blank" class="signin-button btn btn-sm signup">Open your dashboard</a></li>
             </ul>
           </div>
@@ -34,13 +34,18 @@
           </ul>
           <ul class="external-links">
             <li><a href="http://twitter.com/authzero" target="_blank">Twitter</a></li>
-            <li><a href="http://github.com/auth0" target="_blank">Github</a></li>
+            <li><a href="https://github.com/auth0/widget" target="_blank">Github</a></li>
             <li><a href="http://chat.auth0.com" target="_blank">Chat With Us</a></li>
             <li><a href="mailto:support@auth0.com" target="_blank">Contact Us</a></li>
           </ul>
         </div>
         <div class="row">
           <div class="col-md-3">
+            <div class="sidebar-box"> <strong>Widget </strong>
+              <ul> 
+                <li> <a href=""><i> </i><span>Documentation</span></a></li>
+              </ul>
+            </div>
             <div class="sidebar-box"><strong>Demos</strong>
               <ul>
                 <li><a id="login-button"><i></i>Login</a></li>
@@ -58,11 +63,19 @@
           </div>
           <div class="col-xs-9 text-content">
             <h1>Widget</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac erat lectus. Vestibulum non accumsan turpis, ut tristique libero. Pellentesque tincidunt leo vel mauris rutrum, sit amet pretium dui imperdiet.</p>
-            <div id="userinfo-container">
-              <h5>User Info</h5>
-              <pre>Not logged in yet</pre>
-            </div>
+            <p>The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:</p>
+            <ul> 
+              <li>Having a professional looking login dialog that displays well on any resolution and device.</li>
+              <li>Finding the right icons for popular social providers.</li>
+              <li>Remembering what was the identity provider the user chose the last time.</li>
+              <li>Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).</li>
+              <li>Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)</li>
+            </ul>
+            <h4>Including the Login Widget on your page</h4>
+            <p>Add the script tag to your page to get started with Auth0 Login Widget.</p>
+            <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
+            <h4>User Info</h4>
+            <pre>Not logged in yet</pre>
             <div id="login-container" style="float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;"></div>
           </div>
         </div>
