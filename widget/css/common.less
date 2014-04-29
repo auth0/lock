@@ -1,3 +1,9 @@
+/**
+*
+* General Widget CSS
+*
+**/
+
 .show{
   display: block;
 }
@@ -5,6 +11,11 @@
 .hide{
   display: none;
 }
+
+
+/*=============================
+=            Panel            =
+=============================*/
 
 .panel{
   text-align: center;
@@ -172,6 +183,37 @@
     }
   }
 
+  button.primary:hover{
+    // background-color: #
+  }
+
+  input[disabled]{
+    background-color: rgb(217, 222, 224);
+  }
+
+  .action{
+    margin-bottom: 10px;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #9da4ad;
+  }
+
+  input:-moz-placeholder {
+    color: #9da4ad;
+  }
+
+  input::-moz-placeholder {
+    color: #9da4ad;
+  }
+
+  input:-ms-input-placeholder {
+    color: #9da4ad;
+  }
+
+  /*-----  End of forms  ------*/
+  
+
   .all{
     display: block;
     cursor: pointer;
@@ -197,8 +239,39 @@
     color: #333;
   }
 
+
+  /*==========  Forgot Password  ==========*/
+  
+  #change_password{
+    margin-top: -10px;
+    .password{
+      margin-bottom: 0;
+      input{
+        border-bottom: 1px solid #ccc;
+        border-radius: 0;
+      }
+
+    }
+    .reset_easy_password{
+      input{
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+  /*-----  End of Forgot Password  ------*/
+  
+  
+
 }
 
+/*-----  End of Panel  ------*/
+
+
+/*===============================
+=            Overlay            =
+===============================*/
 .popup {
 
 	.centrix {
@@ -245,33 +318,16 @@
 
 	.overlay .panel.active {
 	  display: block;
-	  -webkit-animation-duration: 400ms;
-	  -webkit-animation-timing-function: ease;
-	  -webkit-animation-name: showPanel;
-	}
-
-	.overlay .panel {
-	  -webkit-animation-duration: 400ms;
-	  -webkit-animation-timing-function: ease;
-	  -webkit-animation-name: hidePanel;
 	}
 
 }
 
+/*-----  End of Overlay  ------*/
 
 
 
-button.primary:hover{
-  // background-color: #
-}
 
-input[disabled]{
-  background-color: rgb(217, 222, 224);
-}
 
-.action{
-  margin-bottom: 10px;
-}
 
 
 
@@ -320,21 +376,8 @@ input[disabled]{
   margin-top: -16px;
 }
 
-input::-webkit-input-placeholder {
-  color: #9da4ad;
-}
 
-input:-moz-placeholder {
-  color: #9da4ad;
-}
 
-input::-moz-placeholder {
-  color: #9da4ad;
-}
-
-input:-ms-input-placeholder {
-  color: #9da4ad;
-}
 
 
 
