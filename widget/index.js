@@ -114,21 +114,20 @@ Auth0Widget.prototype._setCustomValidity = function (input, message) {
 
 Auth0Widget.prototype._showError = function (error) {
   if (!error) return;
-  $('h1').css('display', 'none');
-  $('.a0-success').css('display', 'none');
-  $('.a0-error').html(error).css('display', '');
+  $('.a0-panel').removeClass('a0-swing').addClass('a0-animated a0-swing');
+  $('.a0-success').addClass('a0-hide');
+  $('.a0-error').html(error).removeClass('a0-hide');
   this.emit('_error', error);
 };
 
 Auth0Widget.prototype._showSuccess = function (message) {
   if (!message) return;
-  $('.a0-header h1').css('display', 'none');
   $('.a0-error').css('display', 'none');
   $('.a0-success').html(message).css('display', '');
 };
 
 Auth0Widget.prototype._setTitle = function(title) {
-  $('.a0-error').css('display', 'none');
+  // $('.a0-error').css('display', 'none');
   $('.a0-success').css('display', 'none');
   $('h1').html(title).css('display', '');
 };
