@@ -129,13 +129,47 @@
     left: 0;
     bottom: 0;
     top: 0;
+    background: #fff;
 
     &:focus{
-      background: #f9f9f9;
+      background: #fff;
     }
 
   }
 
+  input::-webkit-input-placeholder {
+    color: #9da4ad;
+    -webkit-transition: color .2s ease-in;
+  }
+
+  input:-moz-placeholder {
+    color: #9da4ad;
+  }
+
+  input::-moz-placeholder {
+    color: #9da4ad;
+  }
+
+  input:-ms-input-placeholder {
+    color: #9da4ad;
+  }
+
+
+  input:focus::-webkit-input-placeholder {
+    color: #666;
+  }
+
+  input:focus:-moz-placeholder {
+    color: #666;
+  }
+
+  input:focus::-moz-placeholder {
+    color: #666;
+  }
+
+  input:focus:-ms-input-placeholder {
+    color: #666;
+  }
 
   .inputs{
     border: 1px solid #ccc;
@@ -200,45 +234,36 @@
     margin-bottom: 10px;
   }
 
-  input::-webkit-input-placeholder {
-    color: #9da4ad;
-  }
-
-  input:-moz-placeholder {
-    color: #9da4ad;
-  }
-
-  input::-moz-placeholder {
-    color: #9da4ad;
-  }
-
-  input:-ms-input-placeholder {
-    color: #9da4ad;
-  }
-
-
-
-  .errors-form{
-    color: red;
+  &.errors{
     // border-color: red;
 
     &.errors-global{
       border-color: red;
     }
 
-    .error{
-
+    .error-input{
 
       i {
         color: red;
       }
 
       span{
-        position: fixed;
-        top: 0;
-        right: 10px;
-        line-height: 48px;
+        position: absolute;
+        top: 15px;
+        right: 14px;
+        font-size: 9px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: red;
+        border: 1px solid red;
+        padding: 4px 6px 4px 7px;
+        border-radius: 3px;
         display: block;
+        z-index: 10000;
+      }
+
+      input{
+        color: red;
       }
 
       input::-webkit-input-placeholder {

@@ -5,10 +5,10 @@
         <div class="a0-separator a0-hide"><span><%= i18n.t('signin:separatorText') %></span></div>
       </div>
       <div class="a0-emailPassword">
-        <div class="a0-inputs a0-errors-form">
+        <div class="a0-inputs">
           <% if (options.showEmail !== false) { %>
 
-          <div class="a0-email a0-error">
+          <div class="a0-email">
               <label for="a0-signin_easy_email" class="a0-sad-placeholder">
                 <%= i18n.t('signin:emailPlaceholder') %>
               </label>
@@ -21,11 +21,9 @@
                      required
                      placeholder="<%= i18n.t('signin:emailPlaceholder') %>"
                      title="<%= i18n.t('signin:emailPlaceholder') %>">
-
-              <span>Invalid</span>
           </div>
           <% } %>
-          <div class="a0-password a0-hide a0-error">
+          <div class="a0-password a0-hide">
               <label for="a0-signin_easy_password" class="a0-sad-placeholder">
                 <%= i18n.t('signin:passwordPlaceholder') %>
               </label>
@@ -37,9 +35,6 @@
                      type="password"
                      placeholder="<%= i18n.t('signin:passwordPlaceholder') %>"
                      title="<%= i18n.t('signin:passwordPlaceholder') %>">
-
-              <span>Invalid</span>
-
           </div>
 
         </div>

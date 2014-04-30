@@ -2,6 +2,7 @@
   "loadingTitle":                  "Please wait...",
   "close":                         "Close",
   "windowsAuthTitle":              "Windows Authentication",
+  "invalid":                       "Invalid",
   "signin": {
     "title":                       "Login",
     "action":                      "Access",

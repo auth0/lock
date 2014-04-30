@@ -6944,12 +6944,46 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   left: 0;
   bottom: 0;
   top: 0;
+  background: #fff;
 }
 
 #a0-widget .a0-panel .a0-email input:focus,
 #a0-widget .a0-panel .a0-password input:focus,
 #a0-widget .a0-panel .a0-repeatPassword input:focus {
-  background: #f9f9f9;
+  background: #fff;
+}
+
+#a0-widget .a0-panel input::-webkit-input-placeholder {
+  color: #9da4ad;
+  -webkit-transition: color 0.2s ease-in;
+}
+
+#a0-widget .a0-panel input:-moz-placeholder {
+  color: #9da4ad;
+}
+
+#a0-widget .a0-panel input::-moz-placeholder {
+  color: #9da4ad;
+}
+
+#a0-widget .a0-panel input:-ms-input-placeholder {
+  color: #9da4ad;
+}
+
+#a0-widget .a0-panel input:focus::-webkit-input-placeholder {
+  color: #666;
+}
+
+#a0-widget .a0-panel input:focus:-moz-placeholder {
+  color: #666;
+}
+
+#a0-widget .a0-panel input:focus::-moz-placeholder {
+  color: #666;
+}
+
+#a0-widget .a0-panel input:focus:-ms-input-placeholder {
+  color: #666;
 }
 
 #a0-widget .a0-panel .a0-inputs {
@@ -7013,55 +7047,46 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 10px;
 }
 
-#a0-widget .a0-panel input::-webkit-input-placeholder {
-  color: #9da4ad;
-}
-
-#a0-widget .a0-panel input:-moz-placeholder {
-  color: #9da4ad;
-}
-
-#a0-widget .a0-panel input::-moz-placeholder {
-  color: #9da4ad;
-}
-
-#a0-widget .a0-panel input:-ms-input-placeholder {
-  color: #9da4ad;
-}
-
-#a0-widget .a0-panel .a0-errors-form {
-  color: red;
-}
-
-#a0-widget .a0-panel .a0-errors-form.a0-errors-global {
+#a0-widget .a0-panel.a0-errors.a0-errors-global {
   border-color: red;
 }
 
-#a0-widget .a0-panel .a0-errors-form .a0-error i {
+#a0-widget .a0-panel.a0-errors .a0-error-input i {
   color: red;
 }
 
-#a0-widget .a0-panel .a0-errors-form .a0-error span {
-  position: fixed;
-  top: 0;
-  right: 10px;
-  line-height: 48px;
+#a0-widget .a0-panel.a0-errors .a0-error-input span {
+  position: absolute;
+  top: 15px;
+  right: 14px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: red;
+  border: 1px solid red;
+  padding: 4px 6px 4px 7px;
+  border-radius: 3px;
   display: block;
+  z-index: 10000;
 }
 
-#a0-widget .a0-panel .a0-errors-form .a0-error input::-webkit-input-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input {
   color: red;
 }
 
-#a0-widget .a0-panel .a0-errors-form .a0-error input:-moz-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input::-webkit-input-placeholder {
   color: red;
 }
 
-#a0-widget .a0-panel .a0-errors-form .a0-error input::-moz-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input:-moz-placeholder {
   color: red;
 }
 
-#a0-widget .a0-panel .a0-errors-form .a0-error input:-ms-input-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input::-moz-placeholder {
+  color: red;
+}
+
+#a0-widget .a0-panel.a0-errors .a0-error-input input:-ms-input-placeholder {
   color: red;
 }
 

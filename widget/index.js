@@ -568,7 +568,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
     }
 
     if (!email_parsed && !email_empty) {
-      this._focusError(email_input, this._dict.t('signin:strategyEmailInvalid'));
+      this._focusError(email_input, this._dict.t('invalid'));
       has_errors = true;
     }
 
