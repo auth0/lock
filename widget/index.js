@@ -115,8 +115,13 @@ Auth0Widget.prototype._setCustomValidity = function (input, message) {
 Auth0Widget.prototype._showError = function (error) {
 
   // if no error, clean error span
-  if (!error) return $('.a0-error').html('').addClass('a0-hide');
+  if (!error) {
+    return $('.a0-error').html('').addClass('a0-hide'),
+      $('').removeClass('a0-errors');
+  }
+
   // else, show and render error message
+  $('').addClass('a0-errors');
   $('.a0-panel').removeClass('a0-swing').addClass('a0-animated a0-shake');
   $('.a0-success').addClass('a0-hide');
   $('.a0-error').html(error).removeClass('a0-hide');
@@ -539,7 +544,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var email_input = $('input[name=email]', form);
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
   var email_empty = /^\s*$/.test(email_input.val());
-  var email = null, domain, connection;
+  var email = null, domain, connection, has_errors = false;
 
   // Clean error container
   this._showError();
@@ -548,21 +553,21 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
 
     if (email_empty) {
       this._focusError(email_input);
-      error = true;
+      has_errors = true;
     }
 
     if (!email_parsed && !email_empty) {
       this._focusError(email_input, this._dict.t('signin:strategyEmailInvalid'));
-      error = true;
+      has_errors = true;
     }
 
     if (password_empty) {
       this._focusError(password_input);
-      error = true;
+      has_errors = true;
     };
   }
 
-  if (error) return error;
+  if (has_errors) return;
 
   var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
@@ -610,6 +615,8 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   var self = this;
   var container = this._getActiveLoginView();
   var connection  = this._getAuth0Connection(userName);
+  var email_input = $('input[name=email]', container);
+  var password_input = $('input[name=password]', container);
 
   var loginOptions = {
     connection: connection.name,
@@ -633,9 +640,10 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   if (self._signinOptions.popup) {
     return self._auth0.login(loginOptions, function (err) {
       if (err) {
-        self._showError(err.status === 401 ?
-          self._dict.t('signin:wrongEmailPasswordErrorText') :
-          self._dict.t('signin:serverErrorText'));
+        if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
+        // self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+        self._focusError(email_input);
+        self._focusError(password_input);
       }
     });
   }
@@ -644,9 +652,11 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     self._auth0.login(loginOptions, function (err) {
       if (err) {
         self._setLoginView({}, function () {
-          self._showError(err.status === 401 ?
-            self._dict.t('signin:wrongEmailPasswordErrorText') :
-            self._dict.t('signin:serverErrorText'));
+          if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
+
+          self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+          self._focusError(email_input);
+          self._focusError(password_input);
         });
       }
     });
