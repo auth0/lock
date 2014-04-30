@@ -134,16 +134,17 @@ Auth0Widget.prototype._showSuccess = function (message) {
 Auth0Widget.prototype._focusError = function(input, message) {
   // remove all `_focusError` resources
   if (!arguments.length) {
-    $('.a0-error-invalid').removeClass('a0-error-invalid');
-    // $('.a0-error-email').removeClass('a0-error-email');
-    // $('.a0-error-password').removeClass('a0-error-password');
+    $('').removeClass('a0-errors');
+    $('.a0-error-input').removeClass('a0-error-input');
     $('.a0-error-message').remove();
     return
   }
 
-  input.parent()
-    .addClass('a0-error-invalid')
-    // .addClass('a0-error-' + input.getAttribute('name'));
+  $('').addClass('a0-errors');
+
+  input
+    .parent()
+    .addClass('a0-error-input')
 
   if (!message) return;
   input.parent()
