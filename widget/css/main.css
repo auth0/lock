@@ -6919,6 +6919,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-widget .a0-panel .a0-password,
 #a0-widget .a0-panel .a0-repeatPassword {
   position: relative;
+  height: 50px;
 }
 
 #a0-widget .a0-panel .a0-email i,
@@ -6936,9 +6937,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-widget .a0-panel .a0-password input,
 #a0-widget .a0-panel .a0-repeatPassword input {
   padding: 16px 10px;
-  border-radius: 0;
   padding-left: 40px;
-  width: 100%;
+  border-radius: 0;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
 }
 
 #a0-widget .a0-panel .a0-email input:focus,
@@ -7028,17 +7033,36 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: red;
 }
 
+#a0-widget .a0-panel .a0-errors-form.a0-errors-global {
+  border-color: red;
+}
+
 #a0-widget .a0-panel .a0-errors-form .a0-error i {
-  color: green;
+  color: red;
 }
 
 #a0-widget .a0-panel .a0-errors-form .a0-error span {
   position: fixed;
   top: 0;
-  left: 30px;
-  line-height: 30px;
+  right: 10px;
+  line-height: 48px;
   display: block;
-  background: white;
+}
+
+#a0-widget .a0-panel .a0-errors-form .a0-error input::-webkit-input-placeholder {
+  color: red;
+}
+
+#a0-widget .a0-panel .a0-errors-form .a0-error input:-moz-placeholder {
+  color: red;
+}
+
+#a0-widget .a0-panel .a0-errors-form .a0-error input::-moz-placeholder {
+  color: red;
+}
+
+#a0-widget .a0-panel .a0-errors-form .a0-error input:-ms-input-placeholder {
+  color: red;
 }
 
 #a0-widget .a0-panel .a0-all {
