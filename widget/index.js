@@ -39,6 +39,18 @@ function setfocus (el) {
   try{ el.focus(); } catch(er) {}
 }
 
+function animation_shake() {
+  $('.a0-panel')
+    .removeClass('a0-swing')
+    .addClass('a0-errors')
+    .addClass('a0-animated a0-shake');
+}
+
+function animation_shake_reset() {
+  $('.a0-animated').removeClass('a0-animated');
+  $('.a0-shake').removeClass('a0-shake');
+}
+
 function Auth0Widget (options) {
   if (!(this instanceof Auth0Widget)) {
     return new Auth0Widget(options);
@@ -114,19 +126,18 @@ Auth0Widget.prototype._setCustomValidity = function (input, message) {
 
 Auth0Widget.prototype._showError = function (error) {
 
-  // if no error, clean error span
+  // if no error, clean
   if (!error) {
-    return $('.a0-error').html('').addClass('a0-hide'),
-      $('.a0-errors').removeClass('a0-errors'),
-      // reset animations
-      $('.a0-animated').removeClass('a0-animated'),
-      $('.a0-shake').removeClass('a0-shake');
+    // reset errors
+    $('.a0-error').html('').addClass('a0-hide');
+    $('.a0-errors').removeClass('a0-errors');
+    // reset animations
+    return animation_shake_reset();
   }
 
   // else, show and render error message
-  $('.a0-panel')
-    .removeClass('a0-swing')
-    .addClass('a0-errors a0-animated a0-shake');
+  setTimeout(animation_shake, 0);
+
   $('.a0-success').addClass('a0-hide');
   $('.a0-error').html(error).removeClass('a0-hide');
   this.emit('_error', error);
@@ -148,15 +159,11 @@ Auth0Widget.prototype._focusError = function(input, message) {
     $('.a0-error-input').removeClass('a0-error-input');
     $('.a0-error-message').remove();
     // reset animations
-    $('.a0-animated').removeClass('a0-animated');
-    $('.a0-shake').removeClass('a0-shake');
-    return;
+    return animation_shake_reset();;
   }
 
   // animation
-  $('.a0-panel')
-    .removeClass('a0-swing')
-    .addClass('a0-errors a0-animated a0-shake');
+  setTimeout(animation_shake, 0);
 
   input
     .parent()
