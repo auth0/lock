@@ -594,6 +594,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
     this._showError(
       this._dict.t('signin:strategyDomainInvalid')
           .replace('{domain}', input_email_domain));
+    this._focusError(email_input);
   }
 
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
@@ -641,6 +642,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     return self._auth0.login(loginOptions, function (err) {
       if (err) {
         if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
+
         // self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
         self._focusError(email_input);
         self._focusError(password_input);
@@ -654,7 +656,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
         self._setLoginView({}, function () {
           if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
 
-          self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+          // self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
           self._focusError(email_input);
           self._focusError(password_input);
         });
