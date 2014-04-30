@@ -113,10 +113,11 @@ Auth0Widget.prototype._setCustomValidity = function (input, message) {
 };
 
 Auth0Widget.prototype._showError = function (error) {
+
   // if no error, clean error span
   if (!error) return $('.a0-error').html('').addClass('a0-hide');
   // else, show and render error message
-  $('.a0-panel').removeClass('a0-swing').addClass('a0-animated a0-swing');
+  $('.a0-panel').removeClass('a0-swing').addClass('a0-animated a0-shake');
   $('.a0-success').addClass('a0-hide');
   $('.a0-error').html(error).removeClass('a0-hide');
   this.emit('_error', error);
@@ -151,7 +152,7 @@ Auth0Widget.prototype._focusError = function(input, message) {
 
 Auth0Widget.prototype._setTitle = function(title) {
   // $('.a0-error').css('display', 'none');
-  $('.a0-success').css('display', 'none');
+  // $('.a0-success').css('display', 'none');
   $('h1').html(title).css('display', '');
 };
 

@@ -77,11 +77,6 @@
     }
   }
 
-  .error{
-    color: red;
-    font-weight: bold;
-  }
-
   .logo{
     margin-top: 20px;
     position: absolute;
@@ -113,6 +108,7 @@
 
   .email, .password, .repeatPassword{
     position: relative;
+    height: 50px;
 
     i{
       font-size: 14px;
@@ -126,13 +122,18 @@
 
   .email  input, .password input, .repeatPassword input{
     padding: 16px 10px; 
-    border-radius: 0;
     padding-left: 40px;
-    width: 100%;
+    border-radius: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
 
     &:focus{
       background: #f9f9f9;
     }
+
   }
 
 
@@ -213,6 +214,50 @@
 
   input:-ms-input-placeholder {
     color: #9da4ad;
+  }
+
+
+
+  .errors-form{
+    color: red;
+    // border-color: red;
+
+    &.errors-global{
+      border-color: red;
+    }
+
+    .error{
+
+
+      i {
+        color: red;
+      }
+
+      span{
+        position: fixed;
+        top: 0;
+        right: 10px;
+        line-height: 48px;
+        display: block;
+      }
+
+      input::-webkit-input-placeholder {
+        color: red;
+      }
+
+      input:-moz-placeholder {
+        color: red;
+      }
+
+      input::-moz-placeholder {
+        color: red;
+      }
+
+      input:-ms-input-placeholder {
+        color: red;
+      }
+
+    }
   }
 
   /*-----  End of forms  ------*/
