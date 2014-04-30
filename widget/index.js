@@ -547,7 +547,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   if (!this._ignoreEmailValidations(email_input)) {
 
     if (email_empty) {
-      this._focusError(email_input, this._dict.t('signin:strategyEmailEmpty'));
+      this._focusError(email_input);
       error = true;
     }
 
