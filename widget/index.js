@@ -113,7 +113,9 @@ Auth0Widget.prototype._setCustomValidity = function (input, message) {
 };
 
 Auth0Widget.prototype._showError = function (error) {
-  if (!error) return;
+  // if no error, clean error span
+  if (!error) return $('.a0-error').html('').addClass('a0-hide');
+  // else, show and render error message
   $('.a0-panel').removeClass('a0-swing').addClass('a0-animated a0-swing');
   $('.a0-success').addClass('a0-hide');
   $('.a0-error').html(error).removeClass('a0-hide');
@@ -121,9 +123,11 @@ Auth0Widget.prototype._showError = function (error) {
 };
 
 Auth0Widget.prototype._showSuccess = function (message) {
-  if (!message) return;
-  $('.a0-error').css('display', 'none');
-  $('.a0-success').html(message).css('display', '');
+  // if no message, clean success span
+  if (!message) return $('.a0-success').html('').addClass('a0-hide');
+  // else, show and render success message
+  $('.a0-error').addClass('a0-hide');
+  $('.a0-success').html(message).removeClass('a0-hide');
 };
 
 Auth0Widget.prototype._setTitle = function(title) {
@@ -513,6 +517,8 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
   var email = null, domain, connection;
 
+  // Clean error container
+  this._showError();
   if (!this._ignoreEmailValidations(email_input)) {
 
     if (/^\s*$/.test(email_input.val())) {
@@ -587,6 +593,8 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   var loadingMessage = strategy.name !== 'auth0' ? // dont show loading message for dbConnections
     self._dict.t('signin:loadingMessage').replace('{connection}', connection.name) : '';
 
+  // Clean error container
+  self._showError();
   if (self._signinOptions.popup) {
     self._auth0.login(loginOptions, function (err) {
       if (err) {
