@@ -130,6 +130,25 @@ Auth0Widget.prototype._showSuccess = function (message) {
   $('.a0-success').html(message).removeClass('a0-hide');
 };
 
+Auth0Widget.prototype._focusError = function(input, message) {
+  // remove all `_focusError` resources
+  if (!arguments.length) {
+    $('.a0-error-invalid').removeClass('a0-error-invalid');
+    // $('.a0-error-email').removeClass('a0-error-email');
+    // $('.a0-error-password').removeClass('a0-error-password');
+    $('.a0-error-message').remove();
+    return
+  }
+
+  input.parent()
+    .addClass('a0-error-invalid')
+    // .addClass('a0-error-' + input.getAttribute('name'));
+
+  if (!message) return;
+  input.parent()
+    .append($.create('<span class="a0-error-message">' + message + '</span>'));
+};
+
 Auth0Widget.prototype._setTitle = function(title) {
   // $('.a0-error').css('display', 'none');
   $('.a0-success').css('display', 'none');
@@ -513,22 +532,35 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var valid = true;
 
   var emailD = $('.a0-email', form);
+  var password_input = $('input[name=password]', form);
+  var password_empty = /^\s*$/.test(password_input.val());
   var email_input = $('input[name=email]', form);
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
+  var email_empty = /^\s*$/.test(email_input.val());
   var email = null, domain, connection;
 
   // Clean error container
   this._showError();
+  this._focusError();
   if (!this._ignoreEmailValidations(email_input)) {
 
-    if (/^\s*$/.test(email_input.val())) {
-      return this._showError(this._dict.t('signin:strategyEmailEmpty'));
+    if (email_empty) {
+      this._focusError(email_input, this._dict.t('signin:strategyEmailEmpty'));
+      error = true;
     }
 
-    if (!email_parsed) {
-      return this._showError(this._dict.t('signin:strategyEmailInvalid'));
+    if (!email_parsed && !email_empty) {
+      this._focusError(email_input, this._dict.t('signin:strategyEmailInvalid'));
+      error = true;
     }
+
+    if (password_empty) {
+      this._focusError(password_input);
+      error = true;
+    };
   }
+
+  if (error) return error;
 
   var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
