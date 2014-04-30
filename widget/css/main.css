@@ -6887,11 +6887,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   padding-top: 15px;
 }
 
-#a0-widget .a0-panel .a0-error {
-  color: red;
-  font-weight: bold;
-}
-
 #a0-widget .a0-panel .a0-logo {
   margin-top: 20px;
   position: absolute;
@@ -7027,6 +7022,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-panel input:-ms-input-placeholder {
   color: #9da4ad;
+}
+
+#a0-widget .a0-panel .a0-errors-form {
+  color: red;
+}
+
+#a0-widget .a0-panel .a0-errors-form .a0-error i {
+  color: green;
+}
+
+#a0-widget .a0-panel .a0-errors-form .a0-error span {
+  position: fixed;
+  top: 0;
+  left: 30px;
+  line-height: 30px;
+  display: block;
+  background: white;
 }
 
 #a0-widget .a0-panel .a0-all {
