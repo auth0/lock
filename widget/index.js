@@ -629,8 +629,9 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 
   // Clean error container
   self._showError();
+  self._focusError();
   if (self._signinOptions.popup) {
-    self._auth0.login(loginOptions, function (err) {
+    return self._auth0.login(loginOptions, function (err) {
       if (err) {
         self._showError(err.status === 401 ?
           self._dict.t('signin:wrongEmailPasswordErrorText') :
