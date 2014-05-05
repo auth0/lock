@@ -6946,6 +6946,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   bottom: 0;
   top: 0;
   background: #fff;
+  max-width: 228px;
+  width: 100%;
 }
 
 #a0-widget .a0-panel .a0-email input:focus,
@@ -7132,7 +7134,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-widget .a0-panel #a0-change_password .a0-reset_easy_password input {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  border-bottom: 1px solid #ccc;
 }
 
 #a0-widget .a0-popup .a0-centrix {
