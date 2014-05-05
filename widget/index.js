@@ -567,6 +567,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   // Clean error container
   this._showError();
   this._focusError();
+
   if (!this._ignoreEmailValidations(email_input)) {
 
     if (email_empty) {
