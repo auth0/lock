@@ -20,7 +20,7 @@ signup.submit = function (widget, connectionName, email, password) {
     }, function (err) {
 
       if ( $()[0] !== widget._node ) {
-        return console.log && console.log('this password reset was triggered from another node instance', arguments);
+        return console.log && console.log('this signup was triggered from another node instance', arguments);
       }
 
       if (err) {
