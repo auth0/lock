@@ -79,6 +79,7 @@ function valid(form, widget) {
   var password_input = $('input[name=password]', form);
   var password_empty = empty.test(password_input.val());
   var repeat_password_input = $('input[name=repeat_password]', form);
+  var repeat_password_empty = empty.test(repeat_password_input.val());
 
   // asume valid by default
   // and reset errors
@@ -97,6 +98,11 @@ function valid(form, widget) {
 
   if (password_empty) {
     widget._focusError(password_input);
+    ok = false;
+  };
+
+  if (repeat_password_empty) {
+    widget._focusError(repeat_password_input);
     ok = false;
   };
 
