@@ -1,5 +1,5 @@
 <div class="a0-reset a0-mode a0-hide">
-    <form id="a0-change_password" class="form-reset-password">
+    <form id="a0-change_password" class="form-reset-password" novalidate>
         <div class="a0-collapse-reset">
             <div class="a0-header a0-instructions"><%= i18n.t('reset:headerText') %></div>
         </div>
@@ -34,7 +34,7 @@
                     <label for="a0-reset_easy_repeat_password" class="a0-sad-placeholder">
                       <%= i18n.t('reset:repeatPasswordPlaceholder') %>
                     </label>
-                  <i class="a0-icon-budicon"></i>
+                    <i class="a0-icon-budicon"></i>
                     <input name="repeat_password"
                            id="a0-reset_easy_repeat_password"
                            type="password" value=""
