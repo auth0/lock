@@ -80,6 +80,11 @@ function valid(form, widget) {
   var password_input = $('input[name=password]', form);
   var password_empty = empty.test(password_input.val());
 
+  // asume valid by default
+  // and reset errors
+  widget._showError();
+  widget._focusError();
+
   if (email_empty) {
     widget._focusError(email_input);
     ok = false;
