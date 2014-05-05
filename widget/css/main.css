@@ -6911,7 +6911,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 20px;
 }
 
-#a0-widget .a0-panel .a0-password {
+#a0-widget .a0-panel .a0-password,
+#a0-widget .a0-panel .a0-repeatPassword {
   border-top: 1px solid #ccc;
 }
 
@@ -7125,7 +7126,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-panel #a0-change_password .a0-password input {
-  border-bottom: 1px solid #ccc;
   border-radius: 0;
 }
 
