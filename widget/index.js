@@ -265,10 +265,10 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 
   if (isEnterpriseConnection) {
     pwdField.attr('disabled', true);
-    pwdField.removeAttr('required');
+    // pwdField.removeAttr('required');
   } else {
     pwdField.removeAttr('disabled');
-    pwdField.attr('required', true);
+    // pwdField.attr('required', true);
   }
 };
 
@@ -559,6 +559,8 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var emailD = $('.a0-email', form);
   var password_input = $('input[name=password]', form);
   var password_empty = /^\s*$/.test(password_input.val());
+  var password_disabled = password_input.attr('disabled');
+  var password_required = self._signinOptions.showEmail && self._signinOptions.showPassword && self._areThereAnyDbConn();
   var email_input = $('input[name=email]', form);
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
   var email_empty = /^\s*$/.test(email_input.val());
@@ -579,12 +581,12 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
       this._focusError(email_input, this._dict.t('invalid'));
       has_errors = true;
     }
-
-    if (password_empty) {
-      this._focusError(password_input);
-      has_errors = true;
-    };
   }
+
+  if (password_empty && password_required && !password_disabled) {
+    this._focusError(password_input);
+    has_errors = true;
+  };
 
   if (has_errors) return;
 
