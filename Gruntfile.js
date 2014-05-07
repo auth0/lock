@@ -26,7 +26,7 @@ module.exports = function (grunt) {
       example: {
         options: {
           hostname: '*',
-          base: 'example',
+          base: ['example/build', 'build'],
           port: 3000
         }
       },
@@ -38,6 +38,13 @@ module.exports = function (grunt) {
           hostname: '*',
           cert: fs.readFileSync(__dirname + '/test/https_test_certs/server.crt').toString(),
           key:  fs.readFileSync(__dirname + '/test/https_test_certs/server.key').toString()
+        }
+      }
+    },
+    jade: {
+      example: {
+        files: {
+          "example/build/index.html": "example/index.jade"
         }
       }
     },
@@ -66,6 +73,11 @@ module.exports = function (grunt) {
         files: {
           "widget/css/main.css": "widget/css/main.less",
           "widget/css/zocial.css": "widget/css/zocial.less"
+        }
+      },
+      example: {
+        files: {
+          "example/build/index.css": "example/index.less"
         }
       }
     },
@@ -226,8 +238,8 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
-                                       "browserify:debug", "exec:uglify", "copy:example"]);
-  grunt.registerTask("example",       ["connect:example", "build", "watch"]);
+                                       "browserify:debug", "exec:uglify"]);
+  grunt.registerTask("example",       ["jade:example", "connect:example", "less:example", "build", "watch"]);
   grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
