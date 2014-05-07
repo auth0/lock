@@ -1,0 +1,28 @@
+
+<html>
+  <head>
+    <title>Test auth0-widget</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!-- <meta name="viewport" content="width=device-width"/>-->
+  </head>
+  <body>
+    <script src="auth0-widget.js"></script>
+    <script>
+      var widget = new Auth0Widget({
+        domain:      'mdocs.auth0.com',
+        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+        callbackURL: 'http://localhost:3000/',
+      });
+      
+      widget.show({
+        theme: 'static'
+      });
+      
+      widget.parseHash(window.location.hash, function (profile, id_token, access_token, state) {
+        $('#userinfo').text(JSON.stringify(profile, 0, 2));
+      });
+    </script>
+  </body>
+</html>

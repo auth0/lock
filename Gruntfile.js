@@ -47,7 +47,8 @@ module.exports = function (grunt) {
           pretty: true
         },
         files: {
-          "example/build/index.html": "example/index.jade"
+          "example/build/index.html": "example/index.jade",
+          "example/build/login.html": "example/login.jade"
         }
       }
     },
