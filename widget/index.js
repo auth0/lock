@@ -471,7 +471,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
   $('.a0-strategy', loginView)
     .append(button);
 
-  $('.a0-strategy div', loginView).a0_on('click', function (e) {
+  $('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
     e.preventDefault();
     self._signInSocial(
       strategy_name,
@@ -516,7 +516,7 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
   $('.a0-strategy', loginView)
     .append(button);
 
-  $('.a0-strategy div', loginView).a0_on('click', function (e) {
+  $('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
     e.preventDefault();
     self._signInSocial(strategy_name, connection);
   });
@@ -827,7 +827,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     self._showOrHidePassword(e);
   });
 
-  $('.a0-zocial', list).a0_on('click', function (e) {
+  $('.a0-zocial[data-strategy]', list).a0_on('click', function (e) {
     self._signInSocial(e);
   });
 
