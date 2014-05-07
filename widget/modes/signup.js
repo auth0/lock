@@ -48,7 +48,7 @@ signup.bind = function (widget) {
     $('.a0-signup .a0-separator, .a0-signup .a0-iconlist').show();
   }
 
-  $('span', list).a0_on('click', function (e) {
+  $('.a0-zocial[data-strategy]', list).a0_on('click', function (e) {
     widget._signInSocial(e);
   });
 
