@@ -43,6 +43,9 @@ module.exports = function (grunt) {
     },
     jade: {
       example: {
+        options: {
+          pretty: true
+        },
         files: {
           "example/build/index.html": "example/index.jade"
         }
