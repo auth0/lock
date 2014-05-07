@@ -285,6 +285,8 @@ describe('auth0-Widget', function () {
       widget.show().on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
+        // we need this to check if password is ignored or not in validation
+        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input'));
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       });
     });
