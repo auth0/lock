@@ -316,7 +316,7 @@ describe('auth0-Widget', function () {
 
       widget.show({ extraParameters: { access_type: 'offline' } }).on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       });
     });
   });
