@@ -6902,7 +6902,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-panel .a0-footer {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 #a0-widget .a0-panel .a0-footer .a0-logo {
@@ -7311,6 +7311,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #a0-widget .a0-centrix .a0-panel .a0-options {
     margin-top: 20px;
     font-size: 14px;
+  }
+
+  #a0-widget .a0-centrix .a0-panel .a0-footer {
+    margin-top: 40px;
   }
 }
 
