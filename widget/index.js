@@ -881,9 +881,9 @@ Auth0Widget.prototype._resolveLoginView = function () {
     var output = {};
     if (self._isEnterpriseConnection(this.value, output)) {
       var warningText = self._dict.t('signup:enterpriseEmailWarningText').replace(/{domain}/g, output.domain);
-      self._setCustomValidity(this, warningText);
+      // self._setCustomValidity(this, warningText);
     } else {
-      self._setCustomValidity(this, '');
+      // self._setCustomValidity(this, '');
     }
   });
 
