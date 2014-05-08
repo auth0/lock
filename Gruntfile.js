@@ -164,6 +164,10 @@ module.exports = function (grunt) {
                 'widget/**/*',
                 'i18n/*'],
         tasks: ['build']
+      },
+      example: {
+        files: ['example/*'],
+        tasks: ['jade:example', "less:example"]
       }
     },
     s3: {
