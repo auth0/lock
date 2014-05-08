@@ -6810,7 +6810,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-hide {
-  display: none;
+  display: none !important;
 }
 
 #a0-widget .a0-panel {
@@ -6868,6 +6868,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-panel .a0-header {
   margin-bottom: 10px;
+}
+
+#a0-widget .a0-panel .a0-image {
+  margin: auto;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+#a0-widget .a0-panel .a0-image img {
+  width: auto;
+  max-height: 58px;
 }
 
 #a0-widget .a0-panel .a0-avatar {
