@@ -13,7 +13,8 @@ var loggedinBtnTmpl      = require('./html/loggedin_button.ejs');
 var loginActionsTmpl     = require('./html/login_actions.ejs');
 var i18n                 = require('../i18n');
 
-var email_parser = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+var regex = require('./js/regex');
+var email_parser = regex.email_parser;
 
 var signup = require('./modes/signup');
 var reset = require('./modes/reset');
@@ -567,25 +568,24 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
 
   var emailD = $('.a0-email', form);
   var password_input = $('input[name=password]', form);
-  var password_empty = /^\s*$/.test(password_input.val());
+  var password_empty = regex_empty.test(password_input.val());
   var password_disabled = password_input.attr('disabled');
   var password_required = self._signinOptions.showEmail && self._signinOptions.showPassword && self._areThereAnyDbConn();
   var email_input = $('input[name=email]', form);
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
-  var email_empty = /^\s*$/.test(email_input.val());
+  var email_empty = regex_empty.test(email_input.val());
   var email = null, domain, connection, has_errors = false;
 
   // Clean error container
   this._showError();
   this._focusError();
 
+  if (email_empty) {
+    this._focusError(email_input);
+    has_errors = true;
+  }
+
   if (!this._ignoreEmailValidations(email_input)) {
-
-    if (email_empty) {
-      this._focusError(email_input);
-      has_errors = true;
-    }
-
     if (!email_parsed && !email_empty) {
       this._focusError(email_input, this._dict.t('invalid'));
       has_errors = true;
