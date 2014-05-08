@@ -82,8 +82,13 @@
               <p>Add the script tag to your page to get started with Auth0 Login Widget.</p>
               <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
               <h4>User Info</h4>
-              <pre>Not logged in yet</pre>
-              <div id="login-container" style="float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;"></div>
+              <div class="row">
+                <div id="login-container" style="float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;"></div>
+              </div>
+              <hr>
+              <div id="userinfo">
+                <pre>Not logged in yet</pre>
+              </div>
             </div>
           </div>
         </div>
@@ -273,7 +278,8 @@
                   if (err) {
                       return alert(err);
                   }
-                  $('#userinfo-container pre').text(JSON.stringify(profile, 0, 2));
+                  console.log(profile);
+                  $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
               });
           } else if (result && result.error) {
               alert('error: ' + result.error);
