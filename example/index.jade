@@ -1,28 +1,27 @@
 extend layout.jade
 
 block content
-  .col-md-8.col-sm-8.text-content
-    h1 Widget
+  .col-sm-9
+    .text-content
+        h1 Widget
 
-    p The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
+        p The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
 
-    ul
-      li Having a professional looking login dialog that displays well on any resolution and device.
-      li Finding the right icons for popular social providers.
-      li Remembering what was the identity provider the user chose the last time.
-      li Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
-      li Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
+        ul
+          li Having a professional looking login dialog that displays well on any resolution and device.
+          li Finding the right icons for popular social providers.
+          li Remembering what was the identity provider the user chose the last time.
+          li Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
+          li Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
 
-    h4 Including the Login Widget on your page
-    p Add the script tag to your page to get started with Auth0 Login Widget.
-    pre &lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;
+        h4 Including the Login Widget on your page
+        p Add the script tag to your page to get started with Auth0 Login Widget.
+        pre &lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;
 
+        h4 User Info
+        pre Not logged in yet
 
-
-    h4 User Info
-    pre Not logged in yet
-
-    #login-container(style='float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;')
+        #login-container(style='float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;')
 
 
 block scripts

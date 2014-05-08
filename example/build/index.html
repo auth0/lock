@@ -4,10 +4,11 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Test auth0-widget</title>
-    <link rel="stylesheet" type="text/css" href="https://auth0.com/app.css"/>
+    <link rel="stylesheet" type="text/css" href="//auth0.com/app.css"/>
     <link rel="stylesheet" type="text/css" href="/index.css"/>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0"/>
-  </head>
+  </head><!--[if IE 9]>
+    <style>.sidebar-box ul a i{display: none}</style>
+  <![endif]-->
   <body>
     <header class="site-header">
       <nav role="navigation" class="navbar navbar-default">
@@ -40,7 +41,7 @@
           </ul>
         </div>
         <div class="row">
-          <div class="col-md-4 col-sm-4">
+          <div class="col-sm-3">
             <div class="sidebar-box"><strong>Widget</strong>
               <ul>
                 <li><a href=""><i></i><span>Documentation</span></a></li>
@@ -64,22 +65,24 @@
               </ul>
             </div>
           </div>
-          <div class="col-md-8 col-sm-8 text-content">
-            <h1>Widget</h1>
-            <p>The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:</p>
-            <ul>
-              <li>Having a professional looking login dialog that displays well on any resolution and device.</li>
-              <li>Finding the right icons for popular social providers.</li>
-              <li>Remembering what was the identity provider the user chose the last time.</li>
-              <li>Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).</li>
-              <li>Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)</li>
-            </ul>
-            <h4>Including the Login Widget on your page</h4>
-            <p>Add the script tag to your page to get started with Auth0 Login Widget.</p>
-            <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
-            <h4>User Info</h4>
-            <pre>Not logged in yet</pre>
-            <div id="login-container" style="float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;"></div>
+          <div class="col-sm-9">
+            <div class="text-content">
+              <h1>Widget</h1>
+              <p>The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:</p>
+              <ul>
+                <li>Having a professional looking login dialog that displays well on any resolution and device.</li>
+                <li>Finding the right icons for popular social providers.</li>
+                <li>Remembering what was the identity provider the user chose the last time.</li>
+                <li>Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).</li>
+                <li>Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)</li>
+              </ul>
+              <h4>Including the Login Widget on your page</h4>
+              <p>Add the script tag to your page to get started with Auth0 Login Widget.</p>
+              <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
+              <h4>User Info</h4>
+              <pre>Not logged in yet</pre>
+              <div id="login-container" style="float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;"></div>
+            </div>
           </div>
         </div>
       </div>

@@ -13,6 +13,37 @@
 }
 
 
+
+/*===============================================
+=            No Placeholder Fallback            =
+===============================================*/
+.sad-placeholder{
+  display: none;
+}
+
+.no-placeholder-support{
+  .sad-placeholder{
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 14px 0 10px 0;
+  }
+
+  .inputs{
+    border: 0 !important;
+
+    .email, .password, .repeatPassword{border: 0;}
+
+    .input-box{
+      border: 1px solid #ccc;
+      input{
+        border: 0 !important;
+      }
+    }
+  }
+}
+
+
 /*=============================
 =            Panel            =
 =============================*/
@@ -28,6 +59,7 @@
   max-width: 320px;
   min-width: 280px;
   display: block;
+
 
   .mode{
     -webkit-animation-name: fadein;
@@ -117,16 +149,18 @@
   }
 
   .email, .password, .repeatPassword{
-    position: relative;
-    height: 50px;
+    .input-box{
+      position: relative;
+      height: 50px;
 
-    i{
-      font-size: 14px;
-      z-index: 10000;
-      top: 18px;
-      left: 16px;
-      position: absolute;
-      color: #999;
+      i{
+        font-size: 14px;
+        z-index: 10000;
+        top: 18px;
+        left: 16px;
+        position: absolute;
+        color: #999;
+      }
     }
   }
 

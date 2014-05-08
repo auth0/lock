@@ -3,10 +3,13 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     title Test auth0-widget
-    link(rel='stylesheet', type='text/css', href='https://auth0.com/app.css')
+    link(rel='stylesheet', type='text/css', href='//auth0.com/app.css')
     link(rel='stylesheet', type='text/css', href='/index.css')
-    meta(name='viewport', content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0')
+    //- meta(name='viewport', content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0')
 
+  | <!--[if IE 9]>
+  |   <style>.sidebar-box ul a i{display: none}</style>
+  | <![endif]-->
   body
     header.site-header
       nav.navbar.navbar-default(role='navigation')
@@ -47,7 +50,7 @@ html
 
 
         .row
-          .col-md-4.col-sm-4
+          .col-sm-3
             .sidebar-box
               strong Widget
               ul

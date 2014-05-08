@@ -1025,8 +1025,8 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
 
   self._node = $()[0];
 
-  if (placeholderSupported) {
-    $('.a0-sad-placeholder').remove();
+  if (!placeholderSupported) {
+    $('.a0-overlay').addClass('a0-no-placeholder-support');
   }
 
   self._initialize(callback);
