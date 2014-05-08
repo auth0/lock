@@ -72,6 +72,19 @@ block scripts
                 domain: 'mdocs.auth0.com',
                 clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
                 callbackURL: 'http://localhost:3000/',
+                callbackOnLocationHash: true,
+                username_style: 'username'
+                // enableReturnUserExperience: false
+            });
+            widget.signin({
+                connections: ['foobar']
+            });
+        });
+        $('#login-button-only-emailpass').on('click', function() {
+            var widget = new Auth0Widget({
+                domain: 'mdocs.auth0.com',
+                clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                callbackURL: 'http://localhost:3000/',
                 callbackOnLocationHash: true
                 // enableReturnUserExperience: false
             });
