@@ -32,7 +32,7 @@ module.exports = function (grunt) {
       },
       example_https: {
         options: {
-          base:  "example",
+          base:  ['example/build', 'build'],
           port:  3000,
           protocol: 'https',
           hostname: '*',
@@ -243,8 +243,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
                                        "browserify:debug", "exec:uglify"]);
-  grunt.registerTask("example",       ["jade:example", "connect:example", "less:example", "build", "watch"]);
-  grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
+  grunt.registerTask("example",       ["jade:example", "less:example", "connect:example", "build", "watch"]);
+  grunt.registerTask("example_https", ["jade:example", "less:example", "connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
