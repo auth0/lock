@@ -26,29 +26,18 @@ module.exports = function (grunt) {
       example: {
         options: {
           hostname: '*',
-          base: ['example/build', 'build'],
+          base: ['example', 'example/build', 'build'],
           port: 3000
         }
       },
       example_https: {
         options: {
-          base:  ['example/build', 'build'],
+          base: ['example', 'example/build', 'build'],
           port:  3000,
           protocol: 'https',
           hostname: '*',
           cert: fs.readFileSync(__dirname + '/test/https_test_certs/server.crt').toString(),
           key:  fs.readFileSync(__dirname + '/test/https_test_certs/server.key').toString()
-        }
-      }
-    },
-    jade: {
-      example: {
-        options: {
-          pretty: true
-        },
-        files: {
-          "example/build/index.html": "example/index.jade",
-          "example/build/login.html": "example/login.jade"
         }
       }
     },
@@ -167,7 +156,7 @@ module.exports = function (grunt) {
       },
       example: {
         files: ['example/*'],
-        tasks: ['jade:example', "less:example"]
+        tasks: ["less:example"]
       }
     },
     s3: {
@@ -247,8 +236,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
                                        "browserify:debug", "exec:uglify"]);
-  grunt.registerTask("example",       ["jade:example", "less:example", "connect:example", "build", "watch"]);
-  grunt.registerTask("example_https", ["jade:example", "less:example", "connect:example_https", "build", "watch"]);
+  grunt.registerTask("example",       ["less:example", "connect:example", "build", "watch"]);
+  grunt.registerTask("example_https", ["less:example", "connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
