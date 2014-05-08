@@ -713,8 +713,8 @@ Auth0Widget.prototype._initialize = function (cb) {
     }
   });
 
-  if (self._client.subscription && self._client.subscription !== 'free') {
-    // hide footer for non free subscriptions
+  if (self._client.subscription && !~['free', 'dev'].indexOf(self._client.subscription)) {
+    // hide footer for non free/dev subscriptions
     $('.a0-footer').toggleClass('a0-hide', true);
   }
 
