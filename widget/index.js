@@ -716,6 +716,7 @@ Auth0Widget.prototype._initialize = function (cb) {
   if (self._client.subscription && !~['free', 'dev'].indexOf(self._client.subscription)) {
     // hide footer for non free/dev subscriptions
     $('.a0-footer').toggleClass('a0-hide', true);
+    $('.a0-free-subscription').removeClass('a0-free-subscription');
   }
 
   // images from cdn
