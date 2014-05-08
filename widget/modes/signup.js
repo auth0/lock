@@ -24,11 +24,13 @@ signup.submit = function (widget, connectionName, email, password) {
       }
 
       if (err) {
-        return widget._setLoginView({mode: 'signup'}, function () {
-          if (400 === err.status) return widget._showError(widget._dict.t('signup:userExistsErrorText'));
-          widget._showError(widget._dict.t('signup:serverErrorText'));
-        });
+        // set error message before view refresh
+        // to avoid wrong resizing calculations
+        if (400 === err.status) return widget._showError(widget._dict.t('signup:userExistsErrorText'));
+        widget._showError(widget._dict.t('signup:serverErrorText'));
+        return widget._setLoginView({mode: 'signup'});
       }
+
       return widget._signInWithAuth0(email, password);
     });
   });

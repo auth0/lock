@@ -25,17 +25,19 @@ reset.submit = function (widget, connectionName, username, password) {
       $('.a0-repeatPassword input', container).val('');
 
       if (err) {
-        return widget._setLoginView({ mode: 'reset' }, function () {
-          if (400 === err.status) return widget._showError(widget._dict.t('reset:userDoesNotExistErrorText'));
-          widget._showError(widget._dict.t('reset:serverErrorText'));
-        });
+        // set error message before view refresh
+        // to avoid wrong resizing calculations
+        if (400 === err.status) return widget._showError(widget._dict.t('reset:userDoesNotExistErrorText'));
+        widget._showError(widget._dict.t('reset:serverErrorText'));
+        return widget._setLoginView({ mode: 'reset' });
       }
 
       $('.a0-email input', container).val('');
 
-      widget._setLoginView({}, function () {
-        widget._showSuccess(widget._dict.t('reset:successText'));
-      });
+      // set success message before view refresh
+      // to avoid wrong resizing calculations
+      widget._showSuccess(widget._dict.t('reset:successText'));
+      widget._setLoginView({});
     });
   });
 };
