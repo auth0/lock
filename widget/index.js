@@ -298,11 +298,17 @@ Auth0Widget.prototype._getActiveLoginView = function() {
 
 Auth0Widget.prototype._showSignUpExperience = function() {
   signup.bind(this);
+  this._showSuccess();
+  this._showError();
+  this._focusError();
   this._setLoginView({ mode: 'signup' });
 };
 
 Auth0Widget.prototype._showResetExperience = function() {
   reset.bind(this);
+  this._showSuccess();
+  this._showError();
+  this._focusError();
   this._setLoginView({ mode: 'reset' });
 };
 
@@ -310,6 +316,9 @@ Auth0Widget.prototype._showLoadingExperience = function() {
   if (this._openWith) {
     return this._setLoginView({ mode: 'loading', title: this._openWith.toLowerCase() });
   }
+  this._showSuccess();
+  this._showError();
+  this._focusError();
   this._setLoginView({ mode: 'loading' });
 };
 
