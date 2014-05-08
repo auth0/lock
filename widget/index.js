@@ -889,6 +889,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   });
 
   $('.a0-panel .a0-options .a0-cancel').a0_on('click', function () {
+    self._showSuccess();
     self._showError();
     self._focusError();
     self._setLoginView();
