@@ -20,7 +20,8 @@
     "domainUserLabel":             "You are connected from your corporate network...",
     "wrongEmailPasswordErrorText": "Wrong email or password.",
     "or":                          "... or sign in using",
-    "loadingMessage":              "Signing In with {connection}..."
+    "loadingMessage":              "Signing In with {connection}...",
+    "popupCredentials":             "Enter your credentials in the pop-up window"
   },
   "signup": {
     "description":                 "",
