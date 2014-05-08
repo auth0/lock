@@ -498,6 +498,9 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
     // If we are in popup mode and callbackOnLocationHash was specified
     // we need to pass a callback.
     if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
+      if (!self._signinOptions.popupCallback) {
+        throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
+      }
       var loadingMessage = self._dict.t('signin:popupCredentials');;
       self._setLoginView({ mode: 'loading', message: loadingMessage}, function (){
         self._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
