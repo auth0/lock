@@ -568,12 +568,12 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
 
   var emailD = $('.a0-email', form);
   var password_input = $('input[name=password]', form);
-  var password_empty = regex_empty.test(password_input.val());
+  var password_empty = regex.empty.test(password_input.val());
   var password_disabled = password_input.attr('disabled');
   var password_required = self._signinOptions.showEmail && self._signinOptions.showPassword && self._areThereAnyDbConn();
   var email_input = $('input[name=email]', form);
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
-  var email_empty = regex_empty.test(email_input.val());
+  var email_empty = regex.empty.test(email_input.val());
   var email = null, domain, connection, has_errors = false;
 
   // Clean error container
