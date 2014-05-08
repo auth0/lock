@@ -21,7 +21,7 @@
     "wrongEmailPasswordErrorText": "Wrong email or password.",
     "or":                          "... or sign in using",
     "loadingMessage":              "Signing In with {connection}...",
-    "popupCredentials":             "Enter your credentials in the Pop-up"
+    "popupCredentials":             "Enter your credentials in the pop-up window"
   },
   "signup": {
     "description":                 "",
