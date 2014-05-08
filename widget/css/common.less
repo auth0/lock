@@ -13,37 +13,6 @@
 }
 
 
-
-/*===============================================
-=            No Placeholder Fallback            =
-===============================================*/
-.sad-placeholder{
-  display: none;
-}
-
-.no-placeholder-support{
-  .sad-placeholder{
-    display: block;
-    text-align: left;
-    font-weight: bold;
-    margin: 14px 0 10px 0;
-  }
-
-  .inputs{
-    border: 0 !important;
-
-    .email, .password, .repeatPassword{border: 0;}
-
-    .input-box{
-      border: 1px solid #ccc;
-      input{
-        border: 0 !important;
-      }
-    }
-  }
-}
-
-
 /*=============================
 =            Panel            =
 =============================*/
@@ -119,18 +88,23 @@
     }
   }
 
-  .logo{
-    margin-top: 20px;
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-    left: 0;
-    display: block;
-    i{
-      color: #EB5424;
-      font-size: 18px;
+  .footer{
+    margin-top: 30px;
+    .logo{
+      margin-top: 20px;
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      left: 0;
+      display: block;
+      i{
+        color: #EB5424;
+        font-size: 18px;
+      }
     }
   }
+
+
 
   .instructions {
     margin-bottom: 20px;
@@ -279,6 +253,8 @@
     margin-bottom: 10px;
   }
 
+  .success{color: green}
+
   &.errors{
     // border-color: red;
 
@@ -359,6 +335,7 @@
   .close:hover{
     color: #333;
   }
+
 
 
   /*==========  Forgot Password  ==========*/
@@ -489,7 +466,34 @@
   margin-top: -16px;
 }
 
+/*===============================================
+=            No Placeholder Fallback            =
+===============================================*/
+.sad-placeholder{
+  display: none;
+}
 
+.no-placeholder-support{
+  .sad-placeholder{
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 14px 0 10px 0;
+  }
+
+  .inputs{
+    border: 0 !important;
+
+    .email, .password, .repeatPassword{border: 0;}
+
+    .input-box{
+      border: 1px solid #ccc;
+      input{
+        border: 0 !important;
+      }
+    }
+  }
+}
 
 
 /*=====================================

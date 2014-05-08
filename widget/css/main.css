@@ -782,9 +782,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 * General Widget CSS
 *
 **/
-  /*===============================================
-=            No Placeholder Fallback            =
-===============================================*/
   /*=============================
 =            Panel            =
 =============================*/
@@ -793,6 +790,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 =            Overlay            =
 ===============================*/
   /*-----  End of Overlay  ------*/
+  /*===============================================
+=            No Placeholder Fallback            =
+===============================================*/
   /*=====================================
 =            Media Queries            =
 =====================================*/
@@ -6816,35 +6816,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: none !important;
 }
 
-#a0-widget .a0-sad-placeholder {
-  display: none;
-}
-
-#a0-widget .a0-no-placeholder-support .a0-sad-placeholder {
-  display: block;
-  text-align: left;
-  font-weight: bold;
-  margin: 14px 0 10px 0;
-}
-
-#a0-widget .a0-no-placeholder-support .a0-inputs {
-  border: 0 !important;
-}
-
-#a0-widget .a0-no-placeholder-support .a0-inputs .a0-email,
-#a0-widget .a0-no-placeholder-support .a0-inputs .a0-password,
-#a0-widget .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
-  border: 0;
-}
-
-#a0-widget .a0-no-placeholder-support .a0-inputs .a0-input-box {
-  border: 1px solid #ccc;
-}
-
-#a0-widget .a0-no-placeholder-support .a0-inputs .a0-input-box input {
-  border: 0 !important;
-}
-
 #a0-widget .a0-panel {
   text-align: center;
   background: white;
@@ -6930,7 +6901,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   padding-top: 15px;
 }
 
-#a0-widget .a0-panel .a0-logo {
+#a0-widget .a0-panel .a0-footer {
+  margin-top: 30px;
+}
+
+#a0-widget .a0-panel .a0-footer .a0-logo {
   margin-top: 20px;
   position: absolute;
   bottom: 10px;
@@ -6939,7 +6914,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
 }
 
-#a0-widget .a0-panel .a0-logo i {
+#a0-widget .a0-panel .a0-footer .a0-logo i {
   color: #EB5424;
   font-size: 18px;
 }
@@ -7091,6 +7066,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-panel .a0-action {
   margin-bottom: 10px;
+}
+
+#a0-widget .a0-panel .a0-success {
+  color: #008000;
 }
 
 #a0-widget .a0-panel.a0-errors.a0-errors-global {
@@ -7277,6 +7256,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   height: 32px;
   margin-left: -16px;
   margin-top: -16px;
+}
+
+#a0-widget .a0-sad-placeholder {
+  display: none;
+}
+
+#a0-widget .a0-no-placeholder-support .a0-sad-placeholder {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin: 14px 0 10px 0;
+}
+
+#a0-widget .a0-no-placeholder-support .a0-inputs {
+  border: 0 !important;
+}
+
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-email,
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-password,
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
+  border: 0;
+}
+
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-input-box {
+  border: 1px solid #ccc;
+}
+
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-input-box input {
+  border: 0 !important;
 }
 
 @media screen and (max-width: 480px) {
