@@ -50,6 +50,7 @@
             <div class="sidebar-box"><strong>Demos</strong>
               <ul>
                 <li><a id="login-button"><i></i>Login</a></li>
+                <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
                 <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
                 <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
                 <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
@@ -95,6 +96,16 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  callbackURL: 'http://localhost:3000/',
+                  callbackOnLocationHash: true
+                  // enableReturnUserExperience: false
+              });
+              widget.signin({});
+          });
+          $('#login-button-copyrighted').on('click', function() {
+              var widget = new Auth0Widget({
+                  domain: 'auth0-demo.auth0.com',
+                  clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
@@ -245,7 +256,7 @@
               });
               widget.reset({});
           });
-          
+
           var widget = new Auth0Widget({
               domain: 'mdocs.auth0.com',
               clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
@@ -267,7 +278,7 @@
               alert('error: ' + result.error);
           }
       });
-      
+
     </script>
   </body>
 </html>
