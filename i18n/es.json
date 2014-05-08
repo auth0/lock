@@ -20,7 +20,7 @@
     "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
     "or":                          "... o inicie sesión usando",
     "loadingMessage":              "Iniciando sesión con {connection}...",
-    "popupCredentials":            "Ingrese sus credenciales en el popup"
+    "popupCredentials":            "Ingrese sus credenciales en la ventana emergente"
   },
   "signup": {
     "description":                 "",
