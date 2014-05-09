@@ -3,7 +3,9 @@
 [![Build Status](https://auth0-tc-hub.herokuapp.com/bt23/status.png)](https://auth0-tc-hub.herokuapp.com/bt23)
 [![NPM version](https://badge.fury.io/js/auth0-widget.js.png)](http://badge.fury.io/js/auth0-widget.js)
 
-[Auth0](http://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
+[![Auth0](https://s3.amazonaws.com/assets.auth0.com/logo/logo-180.png)](http://auth0.com)
+
+[Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
 
 The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
 * Having a professional looking login dialog that displays well on any resolution and device.
@@ -21,7 +23,7 @@ Take `auth0-widget.js` or `auth0-widget.min.js` from the `build` directory and i
 Construct a new instance of the Auth0 Widget as follows:
 
 ~~~html
-<script src="http://cdn.auth0.com/w2/auth0-widget-3.0.4.js"></script>
+<script src="http://cdn.auth0.com/w2/auth0-widget-3.0.10.js"></script>
 <script type="text/javascript">
   var widget = new Auth0Widget({
     domain:       'mine.auth0.com',
@@ -85,9 +87,9 @@ You can handle the authorization process client-side as follows:
     callbackURL:  'http://my-app.com/',
     callbackOnLocationHash: true
   });
-  
+
   var result = widget.parseHash(window.location.hash);
-  
+
   // Result is not null when is called with a valid callback URL
   if (result && result.id_token) {
     widget.getProfile(result.id_token, function (err, profile) {
@@ -158,6 +160,54 @@ Run `grunt dev` and point your browser to `http://localhost:9999/test_harness.ht
 ## Browser Compatibility
 
 We are using [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers on every push.
+
+### Run integration tests
+
+Remove previously existing instances of `browserstack-cli`:
+
+```sh
+npm remove -g browserstack-cli
+```
+
+Install the following `browserstack-cli` fork:
+
+```sh
+npm install -g https://github.com/jfromaniello/browserstack-cli/tarball/master
+```
+Remove the old `~/.browserstack` folder to download the jarfile again:
+
+```sh
+rm -rf ~/.browserstack
+```
+
+Setup browserstack:
+```sh
+browserstack setup
+```
+
+There, you will be prompted for `Username`, `Password`, `Tunnel private key` and `Tunnel API key`. Reach out to somebody at Auth0 in order to get those credentials.
+
+Finally, after doing that, to run the tests:
+
+```sh
+npm test
+```
+
+#### Troubleshooting
+
+* Problem: **message: Invalid or corrupt jarfile `~/.browserstack/BrowserStackTunnel.jar`**
+  
+  Solution: Remove `~/.browserstack` and run ` browserstack setup` again.
+* Problem: **message: Timed out without seeing Press Ctrl-C to exit**
+  
+  Solution: That means there is an issue with a running java process. Do:
+  
+  ```sh
+  ps | egrep java
+  ```
+  
+  Kill the java process, run `npm test` again and it should be solved.
+
 
 ## License
 

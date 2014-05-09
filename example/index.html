@@ -53,6 +53,7 @@
                 <li><a id="login-button"><i></i>Login</a></li>
                 <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
                 <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
+                <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
                 <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
                 <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
                 <li><a id="login-button-only-enterprise"><i></i>Login (only enterprise)</a></li>
@@ -90,7 +91,7 @@
               <div class="clearfix">
                 <div id="login-container" style="float: left; max-width: 360px; min-width: 240px; min-height: 500px; margin-top: 20px;"></div>
               </div>
-   
+
             </div>
           </div>
         </div>
@@ -103,7 +104,7 @@
           $('#login-button').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
@@ -123,7 +124,7 @@
           $('#login-button-only-socials').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
@@ -132,35 +133,51 @@
                   connections: ['github', 'google-oauth2', 'windowslive']
               });
           });
+          $('#login-button-popup-only-socials').on('click', function () {
+            var widget = new Auth0Widget({
+                domain: 'mdocs.auth0.com',
+                clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+                callbackURL: 'http://localhost:3000/',
+                callbackOnLocationHash: true
+                // enableReturnUserExperience: false
+            });
+            widget.signin({ popup: true, connections: ['github', 'google-oauth2', 'windowslive'] }, null, function (err, profile) {
+              if (err) {
+                $('#userinfo pre').text('Error: ' + err.message);
+                return;
+              }
+              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            });
+          });
           $('#login-button-only-userpass').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true,
                   username_style: 'username'
                   // enableReturnUserExperience: false
               });
               widget.signin({
-                  connections: ['foobar']
+                  connections: ['mdocs.io']
               });
           });
           $('#login-button-only-emailpass').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
               });
               widget.signin({
-                  connections: ['foobar']
+                  connections: ['mdocs.io']
               });
           });
           $('#login-button-only-enterprise').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
@@ -172,7 +189,7 @@
           $('#login-button-customicon').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true,
                   showIcon: true,
@@ -183,7 +200,7 @@
           $('#login-button-nosignup-noforgot').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true,
                   showSignup: false,
@@ -194,7 +211,7 @@
           $('#login-button-inside-container').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true,
                   dict: 'it'
@@ -206,7 +223,7 @@
           $('#login-button-inside-container-chrome').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true,
                   dict: 'es'
@@ -223,7 +240,7 @@
                   if (!l) return clearInterval(i);
                   (new Auth0Widget({
                       domain: 'mdocs.auth0.com',
-                      clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                      clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                       callbackURL: 'http://localhost:3000/',
                       callbackOnLocationHash: true,
                       dict: l,
@@ -234,7 +251,7 @@
           $('#logout-button').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
@@ -246,7 +263,7 @@
           $('#signup-button').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true,
                   username_style: 'username'
@@ -257,7 +274,7 @@
           $('#reset-button').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
-                  clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
@@ -267,7 +284,7 @@
 
           var widget = new Auth0Widget({
               domain: 'mdocs.auth0.com',
-              clientID: '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
               callbackURL: 'http://localhost:3000/',
               callbackOnLocationHash: true
               // enableReturnUserExperience: false
@@ -278,7 +295,7 @@
               widget.getProfile(result.id_token, function(err, profile) {
                   window.location.hash = "";
                   if (err) {
-                      return alert(err);
+                    return alert(err);
                   }
                   console.log(profile);
                   $('#userinfo pre').text(JSON.stringify(profile, 0, 2));

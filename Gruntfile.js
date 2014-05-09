@@ -197,7 +197,7 @@ module.exports = function (grunt) {
           {
             src:     'release/*',
             dest:    'w2/',
-            options: { gzip: true }
+            options: { gzip: false }
           }
         ]
       }
