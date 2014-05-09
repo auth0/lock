@@ -159,6 +159,52 @@ Run `grunt dev` and point your browser to `http://localhost:9999/test_harness.ht
 
 We are using [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers on every push.
 
+### Run integration tests
+
+Remove previously existing instances of `browserstack-cli`:
+
+```sh
+npm remove -g browserstack-cli
+```
+
+Install the following `browserstack-cli` fork:
+
+```sh
+npm install -g https://github.com/jfromaniello/browserstack-cli/tarball/master
+```
+Remove the old `~/.browserstack` folder to download the jarfile again:
+
+```sh
+rm -rf ~/.browserstack
+```
+
+Setup browserstack:
+```sh
+browserstack setup
+```
+
+There, you will be prompted for `Username`, `Password`, `Tunnel private key` and `Tunnel API key`. Reach out to somebody at Auth0 in order to get those credentials.
+
+Finally, after doing that, to run the tests:
+
+```sh
+npm test
+```
+
+#### Troubleshooting
+
+* Problem: **message: Invalid or corrupt jarfile `~/.browserstack/BrowserStackTunnel.jar`**
+  Solution: Remove `~/.browserstack` and run ` browserstack setup` again.
+* Problem: **message: Timed out without seeing Press Ctrl-C to exit**
+  Solution: That means there is an issue with a running java process. Do:
+  
+  ```sh
+  ps | egrep java
+  ```
+  
+  Kill the java process, run `npm test` again and it should be solved.
+
+
 ## License
 
 The MIT License (MIT)
