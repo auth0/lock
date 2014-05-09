@@ -2,7 +2,7 @@
   "loadingTitle":                  "Por favor espere...",
   "close":                         "Cerrar",
   "invalid":                       "Inválido",
-  "mustMatch":                     "No es igual",
+  "mustMatch":                     "Debe coincidir",
   "loginSocialButton":             "Ingresar con {connection:title}",
   "signupSocialButton":            "Registrarse con {connection:title}",
   "signin": {
