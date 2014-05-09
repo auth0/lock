@@ -565,9 +565,11 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
         self._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
           var args = Array.prototype.slice.call(arguments, 0);
           if (err) {
-            self._setLoginView({}, function () {
-              self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
-            });
+            // set error message before view refresh
+            // to avoid wrong resizing calculations
+            // XXX: This message is only displayed on popup mode
+            self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+            self._setLoginView({});
           } else {
             self._hideSignIn();
           }
@@ -696,8 +698,6 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     return self._auth0.login(loginOptions, function (err) {
       if (err) {
         if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
-
-        // self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
         self._focusError(email_input);
         self._focusError(password_input);
       }
@@ -707,10 +707,10 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   this._setLoginView({ mode: 'loading', message: loadingMessage }, function (){
     self._auth0.login(loginOptions, function (err) {
       if (err) {
+        // set error message before view refresh
+        // to avoid wrong resizing calculations
+        if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
         self._setLoginView({}, function () {
-          if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
-
-          // self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
           self._focusError(email_input);
           self._focusError(password_input);
         });
@@ -1019,7 +1019,7 @@ Auth0Widget.prototype.signup = function (signinOptions, callback) {
  *
  * @param {Object}   signinOptions         options to be passed to auth0.js
  * @param {function} widgetLoadedCallback  callback to be executed when widget loads
- * @param {function} popupCallback         callback to be executed after 
+ * @param {function} popupCallback         callback to be executed after
  *                                         successful login on popup mode and
  *                                         callbackOnLocationHash is true too.
  */
