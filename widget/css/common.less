@@ -502,31 +502,27 @@
 =====================================*/
 
 @media screen and (max-width: 480px) {
- .centrix{
- 	position: fixed;
- 	top: 0;
- 	right: 0;
- 	bottom: 0;
- 	z-index: -1;
- 	left: 0;
-  background: white;
-  z-index: 100000;
- 	border-radius: 0;
-  height: 100%;
-  overflow-y:scroll;
-  .panel{
-    box-shadow: none;
-    .db-actions, .options{
-      margin-top: 20px;
-      font-size: 14px;
-    }
 
-    .footer{
-      margin-top: 40px;
-    }
-
+  .ie8-overlay{
+    background: none !important;
   }
- }
+  .centrix{
+    vertical-align: top !important;
+    .panel{
+      box-shadow: none;
+      backgrouond: green;
+
+      .db-actions, .options{
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .footer{
+        margin-top: 40px;
+      }
+
+    }
+  }
 }
 
 @media screen and (max-height: 470px) {
@@ -534,7 +530,5 @@
     .avatar, .avatar-guest{
       display: none;
     }
-
-
   }
 }

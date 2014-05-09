@@ -11,3 +11,19 @@
 	@import "common.less";
 	@import "spinner.less";
 }
+
+@media screen and (max-width: 480px) {
+	#widget{
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: -1;
+		left: 0;
+		background: white;
+		z-index: 100000;
+		border-radius: 0;
+		height: 1000px !important;
+		overflow-y: scroll;
+		opacity: 1;
+	}
+}

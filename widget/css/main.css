@@ -7292,23 +7292,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 @media screen and (max-width: 480px) {
+  #a0-widget .a0-ie8-overlay {
+    background: none !important;
+  }
+
   #a0-widget .a0-centrix {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    left: 0;
-    background: white;
-    z-index: 100000;
-    border-radius: 0;
-    height: 100%;
-    overflow-y: scroll;
+    vertical-align: top !important;
   }
 
   #a0-widget .a0-centrix .a0-panel {
     -webkit-box-shadow: none;
     box-shadow: none;
+    backgrouond: green;
   }
 
   #a0-widget .a0-centrix .a0-panel .a0-db-actions,
@@ -7361,5 +7356,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   to {
     -webkit-transform: rotateY(360deg);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #a0-widget {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    left: 0;
+    background: white;
+    z-index: 100000;
+    border-radius: 0;
+    height: 1000px !important;
+    overflow-y: scroll;
+    opacity: 1;
   }
 }
