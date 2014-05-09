@@ -755,6 +755,11 @@ Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
   // images from cdn
   // $('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
 
+  // disable double tap
+  $('').a0_on('touchstart', function catcher(ev) {
+    if (ev.touches.length < 2) ev.preventDefault();
+  });
+
   // labels text
   var options = _.extend({}, this._signinOptions, this._signinOptions.resources);
   options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
