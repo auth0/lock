@@ -65,6 +65,7 @@ function Auth0Widget (options) {
     clientID:     this._options.clientID,
     callbackURL:  this._options.callbackURL,
     domain:       this._options.domain,
+    forceJSONP:   this._options.forceJSONP,
     callbackOnLocationHash: this._options.callbackOnLocationHash
   });
 
@@ -545,14 +546,37 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
   var strategy = this._getConfiguredStrategy(strategyName);
 
-  var connection_name = connection || strategy.connections[0].name;
+  var connectionName = connection || strategy.connections[0].name;
   if (strategy) {
     var loginOptions = _.extend({}, {
-      connection: connection_name,
+      connection: connectionName,
       popup: self._signinOptions.popup,
       popupOptions: self._signinOptions.popupOptions
     }, self._signinOptions.extraParameters, extraParams);
-    this._auth0.login(loginOptions);
+
+    // If we are in popup mode and callbackOnLocationHash was specified
+    // we need to pass a callback.
+    if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
+      if (!self._signinOptions.popupCallback) {
+        throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
+      }
+      var loadingMessage = self._dict.t('signin:popupCredentials');;
+      self._setLoginView({ mode: 'loading', message: loadingMessage}, function (){
+        self._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
+          var args = Array.prototype.slice.call(arguments, 0);
+          if (err) {
+            self._setLoginView({}, function () {
+              self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+            });
+          } else {
+            self._hideSignIn();
+          }
+          self._signinOptions.popupCallback.apply(null, args);
+        });
+      });
+    } else {
+      this._auth0.login(loginOptions);
+    }
   }
 };
 
@@ -696,7 +720,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 };
 
 // initialize
-Auth0Widget.prototype._initialize = function (cb) {
+Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
   var self = this;
   $().addClass('a0-mode-signin');
 
@@ -790,7 +814,7 @@ Auth0Widget.prototype._initialize = function (cb) {
       return self['_show' + self._openWith + 'Experience']();
     }
     self._resolveLoginView();
-    if (cb && typeof cb === 'function') cb();
+    if (widgetLoadedCallback && typeof widgetLoadedCallback === 'function') widgetLoadedCallback();
   }
 
   var is_any_ad = _.some(self._client.strategies, function (s) {
@@ -990,24 +1014,34 @@ Auth0Widget.prototype.signup = function (signinOptions, callback) {
   return self;
 };
 
-Auth0Widget.prototype.show = Auth0Widget.prototype.signin = function (signinOptions, callback) {
+/**
+ * Displays the Auth0 Widget.
+ *
+ * @param {Object}   signinOptions         options to be passed to auth0.js
+ * @param {function} widgetLoadedCallback  callback to be executed when widget loads
+ * @param {function} popupCallback         callback to be executed after 
+ *                                         successful login on popup mode and
+ *                                         callbackOnLocationHash is true too.
+ */
+Auth0Widget.prototype.show = Auth0Widget.prototype.signin = function (signinOptions, widgetLoadedCallback, popupCallback) {
   this._openWith = null;
   var self = this;
   $(function () {
-    self._show(signinOptions, callback);
+    self._show(signinOptions, widgetLoadedCallback, popupCallback);
   });
   return self;
 };
 
-Auth0Widget.prototype._show = function (signinOptions, callback) {
+Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, popupCallback) {
   if (typeof signinOptions === 'function') {
-    callback = signinOptions;
+    widgetLoadedCallback = signinOptions;
+    callback = widgetLoadedCallback;
     signinOptions = {};
   }
 
   var self = this;
 
-  self._signinOptions = _.extend({}, self._options, signinOptions);
+  self._signinOptions = _.extend({popupCallback: popupCallback}, self._options, signinOptions);
 
   var extra = utils.extract(self._signinOptions,
                             [ 'state', 'access_token',
@@ -1048,7 +1082,7 @@ Auth0Widget.prototype._show = function (signinOptions, callback) {
     $('.a0-overlay').addClass('a0-no-placeholder-support');
   }
 
-  self._initialize(callback);
+  self._initialize(widgetLoadedCallback);
 
   return self;
 };

@@ -26,6 +26,7 @@
     "or":                          "... or sign in using",
     "loadingMessage":              "Signing In with {connection}...",
     "use":                         "Use",
+    "popupCredentials":            "Enter your credentials in the pop-up window"
   },
   "signup": {
     "description":                 "",

@@ -53,6 +53,7 @@
                 <li><a id="login-button"><i></i>Login</a></li>
                 <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
                 <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
+                <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
                 <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
                 <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
                 <li><a id="login-button-only-enterprise"><i></i>Login (only enterprise)</a></li>
@@ -131,6 +132,15 @@
               widget.signin({
                   connections: ['github', 'google-oauth2', 'windowslive']
               });
+          });
+          $('#login-button-popup-only-socials').on('click', function () {
+            widget.signin({ popup: true, connections: ['github', 'google-oauth2', 'windowslive'] }, null, function (err, profile) {
+              if (err) {
+                $('#userinfo').text('Error: ' + err.message);
+                return;
+              }
+              $('#userinfo').text(JSON.stringify(profile, 0, 2));
+            });
           });
           $('#login-button-only-userpass').on('click', function() {
               var widget = new Auth0Widget({
@@ -278,7 +288,7 @@
               widget.getProfile(result.id_token, function(err, profile) {
                   window.location.hash = "";
                   if (err) {
-                      return alert(err);
+                    return alert(err);
                   }
                   console.log(profile);
                   $('#userinfo pre').text(JSON.stringify(profile, 0, 2));

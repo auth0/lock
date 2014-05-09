@@ -23,7 +23,8 @@
     "domainUserLabel":             "Usted se encuentra conectado desde su red corporativa...",
     "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
     "or":                          "... o inicie sesión usando",
-    "loadingMessage":              "Iniciando sesión con {connection}..."
+    "loadingMessage":              "Iniciando sesión con {connection}...",
+    "popupCredentials":            "Ingrese sus credenciales en la ventana emergente"
   },
   "signup": {
     "description":                 "",

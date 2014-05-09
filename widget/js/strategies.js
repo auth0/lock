@@ -145,12 +145,12 @@ module.exports = {
     },
     'baidu': {
         css: 'baidu',
-        title: 'Baidu',
+        title: '百度',
         social: true
     },
     'renren': {
         css: 'renren',
-        title: 'RenRen',
+        title: '人人',
         social: true
     },
     'yahoo': {
@@ -210,7 +210,7 @@ module.exports = {
     },
     'weibo': {
         css: 'weibo',
-        title: 'Weibo',
+        title: '新浪微博',
         social: true
     },
     'instagram': {
