@@ -42,9 +42,15 @@ signup.bind = function (widget) {
   $('.a0-signup .a0-options').show(widget._openWith ? 'none' : 'block');
 
   _.chain(widget._client.strategies)
-     .where({social: true})
-     .map(function (s) { return  _.extend({}, s, {use_big_buttons: false}); })
-     .each(function (s) { return list.append(buttonTmpl(s)); });
+    .where({social: true})
+    .map(function (s) {
+      var e = {
+        use_big_buttons: false,
+        title: widget._dict.t('signupSocialButton').replace('{connection:title}', s.title)
+      }
+      return  _.extend({}, s, e);
+    })
+    .each(function (s) { return list.append(buttonTmpl(s)); });
 
   if (_.where(widget._client.strategies, {social: true}).length > 0) {
     $('.a0-signup .a0-separator, .a0-signup .a0-iconlist').show();

@@ -826,7 +826,13 @@ Auth0Widget.prototype._resolveLoginView = function () {
   }
 
   socialStrategies
-    .map(function (s) { return  _.extend({}, s, {use_big_buttons: use_big_buttons}); })
+    .map(function (s) {
+      var e = {
+        use_big_buttons: use_big_buttons,
+        title: self._dict.t('loginSocialButton').replace('{connection:title}', s.title)
+      }
+      return  _.extend({}, s, e);
+    })
     .each(function (s) { return list.append(buttonTmpl(s)); });
 
   if (_.where(self._client.strategies, {social: true}).length > 0) {

@@ -4,6 +4,8 @@
   "windowsAuthTitle":              "Windows Authentication",
   "invalid":                       "Invalid",
   "mustMatch":                     "Must match",
+  "loginSocialButton":             "Login with {connection:title}",
+  "signupSocialButton":             "Signup with {connection:title}",
   "signin": {
     "title":                       "Login",
     "action":                      "Access",
