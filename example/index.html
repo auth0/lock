@@ -134,12 +134,19 @@
               });
           });
           $('#login-button-popup-only-socials').on('click', function () {
+            var widget = new Auth0Widget({
+                domain: 'mdocs.auth0.com',
+                clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+                callbackURL: 'http://localhost:3000/',
+                callbackOnLocationHash: true
+                // enableReturnUserExperience: false
+            });
             widget.signin({ popup: true, connections: ['github', 'google-oauth2', 'windowslive'] }, null, function (err, profile) {
               if (err) {
-                $('#userinfo').text('Error: ' + err.message);
+                $('#userinfo pre').text('Error: ' + err.message);
                 return;
               }
-              $('#userinfo').text(JSON.stringify(profile, 0, 2));
+              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
             });
           });
           $('#login-button-only-userpass').on('click', function() {
