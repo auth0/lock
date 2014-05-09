@@ -27,8 +27,11 @@ reset.submit = function (widget, connectionName, username, password) {
       if (err) {
         // set error message before view refresh
         // to avoid wrong resizing calculations
-        if (400 === err.status) return widget._showError(widget._dict.t('reset:userDoesNotExistErrorText'));
-        widget._showError(widget._dict.t('reset:serverErrorText'));
+        if (400 === err.status) {
+          widget._showError(widget._dict.t('reset:userDoesNotExistErrorText'));
+        } else {
+          widget._showError(widget._dict.t('reset:serverErrorText'));
+        }
         return widget._setLoginView({ mode: 'reset' });
       }
 

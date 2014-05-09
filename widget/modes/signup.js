@@ -26,9 +26,12 @@ signup.submit = function (widget, connectionName, email, password) {
       if (err) {
         // set error message before view refresh
         // to avoid wrong resizing calculations
-        if (400 === err.status) return widget._showError(widget._dict.t('signup:userExistsErrorText'));
-        widget._showError(widget._dict.t('signup:serverErrorText'));
-        return widget._setLoginView({mode: 'signup'});
+        if (400 === err.status) {
+          widget._showError(widget._dict.t('signup:userExistsErrorText'))
+        } else {
+          widget._showError(widget._dict.t('signup:serverErrorText'));
+        }
+        return widget._setLoginView({ mode: 'signup' });
       }
 
       return widget._signInWithAuth0(email, password);

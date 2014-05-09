@@ -697,7 +697,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   if (self._signinOptions.popup) {
     return self._auth0.login(loginOptions, function (err) {
       if (err) {
-        if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
+        if (err.status !== 401) self._showError(self._dict.t('signin:serverErrorText'));
         self._focusError(email_input);
         self._focusError(password_input);
       }
@@ -709,7 +709,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
       if (err) {
         // set error message before view refresh
         // to avoid wrong resizing calculations
-        if (err.status !== 401) return self._showError(self._dict.t('signin:serverErrorText'));
+        if (err.status !== 401) self._showError(self._dict.t('signin:serverErrorText'));
         self._setLoginView({}, function () {
           self._focusError(email_input);
           self._focusError(password_input);
