@@ -6819,8 +6819,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-buttons-actions {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 #a0-widget .a0-btn-small {
@@ -6830,7 +6829,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border: 1px solid #f1f1f1;
   padding: 4px 10px 4px 11px;
   margin: 0 5px;
-  margin-bottom: 10px;
   border-radius: 100px;
   display: inline-block;
 }
@@ -7087,10 +7085,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background-color: #d9dee0;
 }
 
-#a0-widget .a0-panel .a0-action {
-  margin-bottom: 10px;
-}
-
 #a0-widget .a0-panel .a0-success {
   color: #008000;
 }
@@ -7333,7 +7327,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-db-actions,
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-options {
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 14px;
   }
 
