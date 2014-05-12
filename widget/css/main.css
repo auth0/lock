@@ -7316,6 +7316,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     background: none !important;
   }
 
+  .a0-widget-container #a0-onestep {
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+  }
+
   .a0-widget-container .a0-popup .a0-overlay {
     display: block;
     overflow: auto;
@@ -7331,6 +7337,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .a0-widget-container .a0-popup .a0-centrix .a0-panel {
     -webkit-box-shadow: none;
     box-shadow: none;
+    background: white;
+    min-heigh: 300px;
   }
 
   .a0-widget-container .a0-popup .a0-centrix .a0-panel .a0-db-actions,
