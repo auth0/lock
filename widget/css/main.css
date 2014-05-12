@@ -6811,6 +6811,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: none !important;
 }
 
+.a0-widget-container .a0-buttons-actions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.a0-widget-container .a0-btn-small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid #f1f1f1;
+  padding: 4px 10px 4px 11px;
+  margin: 0 5px;
+  border-radius: 100px;
+  display: inline-block;
+}
+
+.a0-widget-container .a0-btn-small:hover {
+  background: #f1f1f1;
+}
+
 .a0-widget-container .a0-panel {
   text-align: center;
   background: white;
