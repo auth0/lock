@@ -5,6 +5,7 @@
 </head>
 <body>
     <button id="login-button">Login</button>
+    <button id="login-button-popup">Login Popup</button>
     <button id="login-button-popup-only-socials">Login Popup (only socials)</button>
     <button id="login-button-only-socials">Login (only socials)</button>
     <button id="login-button-only-userpass">Login (only user/pass)</button>
@@ -54,6 +55,16 @@
                 widget.signin({});
             });
 
+            $('#login-button-popup').on('click', function () {
+                widget.signin({popup: true}, null, function (err, profile) {
+                  if (err) {
+                    $('#userinfo').text('Error: ' + err.message);
+                    return;
+                  }
+                  $('#userinfo').text(JSON.stringify(profile, 0, 2));
+                });
+            });
+
             $('#login-button-popup-only-socials').on('click', function () {
                 widget.signin({ popup: true, connections: ['github', 'google-oauth2', 'windowslive'] }, null, function (err, profile) {
                   if (err) {
@@ -65,16 +76,18 @@
                 });
 
             $('#login-button-only-socials').on('click', function () {
-                widget.signin({ connections: ['github', 'google-oauth2', 'windowslive'] });
+                widget.signin({ connections: 'google-oauth2' });
             });
 
             $('#login-button-only-userpass').on('click', function () {
                 widget.signin({ connections: ['foobar'] });
             });
 
-            $('#login-button-only-enterprise').on('click', function () {
-                widget.signin({ connections: ['qraftlabs.com'] });
-            });
+//            $('#login-button-only-enterprise').on('click', function () {
+//                widget.signin({ popup: true, connections: ['qraftlabs.com'] }, null, function (err, profile) {
+//
+//                });
+//            });
 
             $('#logout-button').on('click', function () {
                 widget.logout({ returnTo: 'http://localhost:3000' });
@@ -91,7 +104,7 @@
             $('#login-button-inside-container').on('click', function () {
                 var widget = new Auth0Widget({
                     domain:      'mdocs.auth0.com',
-                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    clientID:    'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                     callbackURL: 'http://localhost:3000/',
                     callbackOnLocationHash: true,
                     dict:        'it'
@@ -103,7 +116,7 @@
             $('#login-button-inside-container-chrome').on('click', function () {
                 var widget = new Auth0Widget({
                     domain:      'mdocs.auth0.com',
-                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+                    clientID:    'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                     callbackURL: 'http://localhost:3000/',
                     callbackOnLocationHash: true,
                     dict:        'es'

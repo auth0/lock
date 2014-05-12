@@ -480,6 +480,41 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
   this._setLoginView({ isReturningUser: !!strategy });
 };
 
+Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCallback, extraParams) {
+  var self = this;
+
+  extraParams = extraParams || {};
+      
+  var loginOptions = _.extend({}, {
+        connection: connectionName,
+        popup: self._signinOptions.popup,
+        popupOptions: self._signinOptions.popupOptions
+      }, self._signinOptions.extraParameters, extraParams);
+  if (!popupCallback) {
+    throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
+  }
+  var loadingMessage = self._dict.t('signin:popupCredentials');
+  self._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
+    var args = Array.prototype.slice.call(arguments, 0);
+    if (err) {
+      self._setLoginView({}, function () {
+        // Closed window
+        if (err.message === 'User closed the popup window') {
+          self._showError(self._dict.t('signin:userClosedPopup'));
+
+        // Permissions not granted
+        } else if (err.message === 'access_denied') {
+          self._showError(self._dict.t('signin:userConsentFailed'));
+        }
+      });
+    } else {
+      self._hideSignIn();
+    }
+    self._signinOptions.popupCallback.apply(null, args);
+  });
+  self._setLoginView({ mode: 'loading', message: loadingMessage});
+};
+
 // sign in methods
 Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
   var target = e.target || e;
@@ -488,34 +523,19 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
   var strategy = this._getConfiguredStrategy(strategyName);
 
   var connectionName = connection || strategy.connections[0].name;
-  if (strategy) {
-    var loginOptions = _.extend({}, {
-      connection: connectionName,
-      popup: self._signinOptions.popup,
-      popupOptions: self._signinOptions.popupOptions
-    }, self._signinOptions.extraParameters, extraParams);
 
+  if (strategy) {
     // If we are in popup mode and callbackOnLocationHash was specified
     // we need to pass a callback.
     if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
-      if (!self._signinOptions.popupCallback) {
-        throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
-      }
-      var loadingMessage = self._dict.t('signin:popupCredentials');;
-      self._setLoginView({ mode: 'loading', message: loadingMessage}, function (){
-        self._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
-          var args = Array.prototype.slice.call(arguments, 0);
-          if (err) {
-            self._setLoginView({}, function () {
-              self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
-            });
-          } else {
-            self._hideSignIn();
-          }
-          self._signinOptions.popupCallback.apply(null, args);
-        });
-      });
+      this._signInPopupNoRedirect(connectionName, self._signinOptions.popupCallback, extraParams);
     } else {
+      var loginOptions = _.extend({}, {
+        connection: connectionName,
+        popup: self._signinOptions.popup,
+        popupOptions: self._signinOptions.popupOptions
+      }, self._signinOptions.extraParameters, extraParams);
+
       this._auth0.login(loginOptions);
     }
   }
@@ -556,6 +576,8 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
     .findWhere({domain: input_email_domain})
     .value();
 
+
+  // Gets suffix
   if (conn_obj) {
     domain = conn_obj.domain;
     email = email_input.val();
@@ -577,15 +599,19 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
 
   if (valid) {
-    var loadingMessage = self._dict.t('signin:loadingMessage').replace('{connection}', connection);
-    this._setLoginView({ mode: 'loading', message: loadingMessage }, function () {
-      var loginOptions = _.extend({}, {
-        connection: connection,
-        popup: self._signinOptions.popup,
-        popupOptions: self._signinOptions.popupOptions
-      }, self._signinOptions.extraParameters);
-      self._auth0.login(loginOptions);
-    });
+    if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
+      this._signInPopupNoRedirect(connection, self._signinOptions.popupCallback);
+    } else {
+      var loadingMessage = self._dict.t('signin:loadingMessage').replace('{connection}', connection);
+      this._setLoginView({ mode: 'loading', message: loadingMessage }, function () {
+        var loginOptions = _.extend({}, {
+          connection: connection,
+          popup: self._signinOptions.popup,
+          popupOptions: self._signinOptions.popupOptions
+        }, self._signinOptions.extraParameters);
+        self._auth0.login(loginOptions);
+      });
+    }
   }
 };
 
@@ -599,7 +625,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     username: connection.domain ?
                 userName.replace('@' + connection.domain, '') :
                 userName,
-    password: signInPassword || $('.a0-password input', container).val(),
+    password: signInPassword || $('.a0-password input', container).val(),
     popup: self._signinOptions.popup,
     popupOptions: self._signinOptions.popupOptions
   };
@@ -611,14 +637,24 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     self._dict.t('signin:loadingMessage').replace('{connection}', connection.name) : '';
 
   if (self._signinOptions.popup) {
-    self._auth0.login(loginOptions, function (err) {
-      if (err) {
-        self._showError(err.status === 401 ?
-          self._dict.t('signin:wrongEmailPasswordErrorText') :
-          self._dict.t('signin:serverErrorText'));
-      }
-    });
+    if (self._signinOptions.sso) {
+      // popup + sso = redirect
+      self._auth0.login(loginOptions, function (err) {
+        if (err) {
+          self._showError(err.status === 401 ?
+                          self._dict.t('signin:wrongEmailPasswordErrorText') :
+                          self._dict.t('signin:serverErrorText'));
+        }
+      });
+    } else {
+      // popup without sso = no redirect (ajax, not setting cookie)
+      this._signInPopupNoRedirect(connection.name, self._signinOptions.popupCallback);
+    }
+
+    return;
   }
+
+  // TODO: Handle sso case without popup
 
   this._setLoginView({ mode: 'loading', message: loadingMessage }, function (){
     self._auth0.login(loginOptions, function (err) {
