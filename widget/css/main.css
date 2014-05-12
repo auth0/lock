@@ -7296,8 +7296,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     background: none !important;
   }
 
+  #a0-widget .a0-overlay {
+    display: block !important;
+    overflow-y: auto !important;
+    position: static;
+  }
+
   #a0-widget .a0-centrix {
     vertical-align: top !important;
+    display: block !important;
   }
 
   #a0-widget .a0-centrix .a0-panel {
@@ -7360,7 +7367,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     z-index: -1;
     left: 0;
     bottom: 0;
-    min-height: 600px;
     background: white;
     z-index: 100000;
     border-radius: 0;
