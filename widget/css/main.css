@@ -6787,25 +6787,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-style: normal;
 }
 
-@media screen and (max-height: 700px) and (max-width: 480px) {
-  #a0-widget .a0-zocial {
-    width: auto;
-    display: inline-block;
-    margin: 0 6px;
-  }
+#a0-widget .a0-equal-viewport .a0-zocial {
+  width: auto;
+  display: inline-block;
+  margin: 0 6px;
+}
 
-  #a0-widget .a0-zocial:before {
-    width: 40px;
-    background-color: transparent;
-  }
+#a0-widget .a0-equal-viewport .a0-zocial:before {
+  width: 40px;
+  background-color: transparent;
+}
 
-  #a0-widget .a0-zocial:hover:before {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+#a0-widget .a0-equal-viewport .a0-zocial:hover:before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
-  #a0-widget .a0-zocial span {
-    display: none;
-  }
+#a0-widget .a0-equal-viewport .a0-zocial span {
+  display: none;
 }
 
 #a0-widget .a0-show {
@@ -7299,7 +7297,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #a0-widget .a0-overlay {
     display: block !important;
     overflow-y: auto !important;
-    position: static;
+    position: static !important;
   }
 
   #a0-widget .a0-centrix {
@@ -7310,7 +7308,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #a0-widget .a0-centrix .a0-panel {
     -webkit-box-shadow: none;
     box-shadow: none;
-    backgrouond: green;
   }
 
   #a0-widget .a0-centrix .a0-panel .a0-db-actions,
@@ -7360,13 +7357,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 @media screen and (max-width: 480px) {
+  body.a0-widget-open > * {
+    display: none;
+  }
+
+  body.a0-widget-open .a0-widget-container {
+    display: block;
+  }
+
   #a0-widget {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    left: 0;
-    bottom: 0;
     background: white;
     z-index: 100000;
     border-radius: 0;

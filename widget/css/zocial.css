@@ -355,20 +355,18 @@ button:-moz-focus-inner {
   font-weight: normal;
   font-style: normal;
 }
-@media screen and (max-height: 700px) and (max-width: 480px) {
-  .zocial {
-    width: auto;
-    display: inline-block;
-    margin: 0 6px;
-  }
-  .zocial:before {
-    width: 40px;
-    background-color: transparent;
-  }
-  .zocial:hover:before {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  .zocial span {
-    display: none;
-  }
+.equal-viewport .zocial {
+  width: auto;
+  display: inline-block;
+  margin: 0 6px;
+}
+.equal-viewport .zocial:before {
+  width: 40px;
+  background-color: transparent;
+}
+.equal-viewport .zocial:hover:before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.equal-viewport .zocial span {
+  display: none;
 }

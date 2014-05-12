@@ -1,6 +1,10 @@
 body {
   font-family: "Helvetica Neue", "Lucida Grande", "Arial";
 }
+html,
+body {
+  overflow-y: hidden !important;
+}
 h1,
 h2,
 h3 {
@@ -14,9 +18,7 @@ h3 {
 pre {
   border: 0;
   padding: 20px;
-}
-.container {
-  min-width: 1200px;
+  font-size: 12px;
 }
 @media screen and (max-width: 600px) {
   .breadcrumb ul.external-links {
