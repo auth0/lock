@@ -6784,22 +6784,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-style: normal;
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial {
+.a0-widget-container .a0-equal-viewport .a0-zocial,
+.a0-widget-container .a0-zocial.a0-icon {
   width: auto;
   display: inline-block;
   margin: 0 6px;
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial:before {
+.a0-widget-container .a0-equal-viewport .a0-zocial:before,
+.a0-widget-container .a0-zocial.a0-icon:before {
   width: 40px;
   background-color: transparent;
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial:hover:before {
+.a0-widget-container .a0-equal-viewport .a0-zocial:hover:before,
+.a0-widget-container .a0-zocial.a0-icon:hover:before {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial span {
+.a0-widget-container .a0-equal-viewport .a0-zocial span,
+.a0-widget-container .a0-zocial.a0-icon span {
   display: none;
 }
 
@@ -6823,6 +6827,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border: 1px solid #f1f1f1;
   padding: 4px 10px 4px 11px;
   margin: 0 5px;
+  margin-bottom: 20px;
   border-radius: 100px;
   display: inline-block;
 }

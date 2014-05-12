@@ -355,18 +355,22 @@ button:-moz-focus-inner {
   font-weight: normal;
   font-style: normal;
 }
-.equal-viewport .zocial {
+.equal-viewport .zocial,
+.zocial.icon {
   width: auto;
   display: inline-block;
   margin: 0 6px;
 }
-.equal-viewport .zocial:before {
+.equal-viewport .zocial:before,
+.zocial.icon:before {
   width: 40px;
   background-color: transparent;
 }
-.equal-viewport .zocial:hover:before {
+.equal-viewport .zocial:hover:before,
+.zocial.icon:hover:before {
   background-color: rgba(0, 0, 0, 0.4);
 }
-.equal-viewport .zocial span {
+.equal-viewport .zocial span,
+.zocial.icon span {
   display: none;
 }

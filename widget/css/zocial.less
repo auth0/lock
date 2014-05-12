@@ -243,28 +243,25 @@ button:-moz-focus-inner {
 }
 
 
-.equal-viewport{
-  .zocial{
-    width: auto;
-    display: inline-block;
-    margin: 0 6px;
+.equal-viewport .zocial, .zocial.icon{
+  width: auto;
+  display: inline-block;
+  margin: 0 6px;
 
-    &:before {
-      width: 40px;
-      background-color: transparent;
+  &:before {
+    width: 40px;
+    background-color: transparent;
 
+  }
+
+  &:hover{
+    &:before{
+      background-color: rgba(0,0,0,.4);
     }
+  }
 
-    &:hover{
-      &:before{
-        background-color: rgba(0,0,0,.4);
-      }
-    }
-
-    span{
-      display: none;
-    }
-
+  span{
+    display: none;
   }
 
 }
