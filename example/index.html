@@ -54,6 +54,7 @@
                 <li><a id="login-button"><i></i>Login</a></li>
                 <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
                 <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
+                <li><a id="login-button-popup"><i></i>Login Popup</a></li>
                 <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
                 <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
                 <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
@@ -130,6 +131,23 @@
                   connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
               });
           });
+          $('#login-button-popup').on('click', function () {
+              var widget = new Auth0Widget({
+                  domain: 'mdocs.auth0.com',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+                  callbackURL: 'http://localhost:3000/',
+                  callbackOnLocationHash: true
+                  // enableReturnUserExperience: false
+              });
+              widget.signin({popup: true}, null, function (err, profile) {
+                if (err) {
+                  $('#userinfo').text('Error: ' + err.message);
+                  return;
+                }
+                $('#userinfo').text(JSON.stringify(profile, 0, 2));
+              });
+          });
+
           $('#login-button-popup-only-socials').on('click', function () {
             var widget = new Auth0Widget({
                 domain: 'mdocs.auth0.com',

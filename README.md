@@ -198,9 +198,14 @@ npm test
 * Problem: **message: Invalid or corrupt jarfile `~/.browserstack/BrowserStackTunnel.jar`**
   
   Solution: Remove `~/.browserstack` and run ` browserstack setup` again.
+
 * Problem: **message: Timed out without seeing Press Ctrl-C to exit**
   
-  Solution: That means there is an issue with a running java process. Do:
+  Solution: Are you uploading something big? Browserstack may need more upload bandwidth.
+
+* Problem: **message: Timed out without seeing Press Ctrl-C to exit**
+  
+  Solution: That means there might be an issue with a running java process. Do:
   
   ```sh
   ps | egrep java
