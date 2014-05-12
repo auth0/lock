@@ -431,12 +431,13 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
           self.emit('transition_mode', mode || 'signin');
           self.emit((mode || 'signin') + '_ready');
           callback(null, self._currentPane);
-        }, 0);
+          pane_container.css('height','');
+        }, 10);
       });
       pane_container.css('height', new_height.toString() + 'px');
       if (new_height >= get_viewport().height) pane_container.addClass('a0-equal-viewport');
-    }, 0);
-  }, 0);
+    }, 10);
+  }, 10);
 };
 
 Auth0Widget.prototype._setLoginView = function(options, callback) {
