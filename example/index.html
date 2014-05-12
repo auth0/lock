@@ -76,7 +76,7 @@
                 });
 
             $('#login-button-only-socials').on('click', function () {
-                widget.signin({ connections: 'google-oauth2' });
+                widget.signin({ connections: ['github', 'google-oauth2', 'windowslive'] });
             });
 
             $('#login-button-only-userpass').on('click', function () {
@@ -104,7 +104,7 @@
             $('#login-button-inside-container').on('click', function () {
                 var widget = new Auth0Widget({
                     domain:      'mdocs.auth0.com',
-                    clientID:    'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
                     callbackURL: 'http://localhost:3000/',
                     callbackOnLocationHash: true,
                     dict:        'it'
@@ -116,7 +116,7 @@
             $('#login-button-inside-container-chrome').on('click', function () {
                 var widget = new Auth0Widget({
                     domain:      'mdocs.auth0.com',
-                    clientID:    'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+                    clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
                     callbackURL: 'http://localhost:3000/',
                     callbackOnLocationHash: true,
                     dict:        'es'
