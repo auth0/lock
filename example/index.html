@@ -141,10 +141,10 @@
               });
               widget.signin({popup: true}, null, function (err, profile) {
                 if (err) {
-                  $('#userinfo').text('Error: ' + err.message);
+                  $('#userinfo pre').text('Error: ' + err.message);
                   return;
                 }
-                $('#userinfo').text(JSON.stringify(profile, 0, 2));
+                $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
               });
           });
 
