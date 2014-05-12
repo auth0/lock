@@ -20,6 +20,7 @@ var signup = require('./modes/signup');
 var reset = require('./modes/reset');
 
 var $ = require('./js/bonzo_qwery');
+var bonzo = require('bonzo');
 var is_small_screen = require('./js/is_small_screen');
 var get_viewport = require('./js/get_viewport');
 
@@ -286,6 +287,7 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
     $().css('display', 'none');
     if (cb) cb();
     self.emit('closed');
+    bonzo(document.body).removeClass('a0-widget-open');
   }, 500);
 
   return self;
@@ -1063,6 +1065,7 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     $().parent().remove();
 
     var div = document.createElement('div');
+    bonzo(div).addClass('a0-widget-container');
     div.innerHTML = mainTmpl({
       i18n:    this._dict,
       options: self._signinOptions,
@@ -1082,8 +1085,8 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     $('.a0-overlay').addClass('a0-no-placeholder-support');
   }
 
+  bonzo(document.body).addClass('a0-widget-open');
   self._initialize(widgetLoadedCallback);
-
   return self;
 };
 
