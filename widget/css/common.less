@@ -12,6 +12,30 @@
   display: none !important;
 }
 
+.buttons-actions{
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+
+}
+
+
+.btn-small{
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid #f1f1f1;
+  padding: 4px 10px 4px 11px; 
+  margin: 0 5px;
+  border-radius: 100px;
+  display: inline-block;
+
+  &:hover{
+    background: #f1f1f1;
+  }
+}
+
 
 /*=============================
 =            Panel            =
@@ -503,32 +527,45 @@
 
 @media screen and (max-width: 480px) {
 
+
+
+
   .ie8-overlay{
     background: none !important;
   }
 
-  .overlay{
-    display: block !important;
-    overflow-y: auto !important;
-    position: static !important;
-  }
-  .centrix{
-    vertical-align: top !important;
-    display: block !important;
-    .panel{
-      box-shadow: none;
+  .popup{
 
-      .db-actions, .options{
-        margin-top: 20px;
-        font-size: 14px;
-      }
-
-      .footer{
-        margin-top: 40px;
-      }
-
+    .overlay{
+      display: block;
+      overflow: auto;
+      position: static;
     }
+
+    .centrix{
+      vertical-align: top;
+      display: block;
+      position: static;
+      .panel{
+        box-shadow: none;
+
+        .db-actions, .options{
+          margin-top: 20px;
+          font-size: 14px;
+        }
+
+        .footer{
+          margin-top: 40px;
+        }
+
+      }
+    }
+    // .centrix
+
+
   }
+
+
 }
 
 @media screen and (max-height: 470px) {
