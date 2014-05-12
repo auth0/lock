@@ -112,7 +112,8 @@
                   domain: 'auth0-demo.auth0.com',
                   clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
                   callbackURL: 'http://localhost:3000/',
-                  callbackOnLocationHash: true
+                  callbackOnLocationHash: true,
+                  socialBigButtons: true
                   // enableReturnUserExperience: false
               });
               widget.signin({});
@@ -122,11 +123,11 @@
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
-                  callbackOnLocationHash: true
+                  callbackOnLocationHash: true,
                   // enableReturnUserExperience: false
               });
               widget.signin({
-                  connections: ['github', 'google-oauth2', 'windowslive']
+                  connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
               });
           });
           $('#login-button-popup-only-socials').on('click', function () {
@@ -137,7 +138,10 @@
                 callbackOnLocationHash: true
                 // enableReturnUserExperience: false
             });
-            widget.signin({ popup: true, connections: ['github', 'google-oauth2', 'windowslive'] }, null, function (err, profile) {
+            widget.signin({
+              popup: true,
+              connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
+            }, null, function (err, profile) {
               if (err) {
                 $('#userinfo pre').text('Error: ' + err.message);
                 return;
