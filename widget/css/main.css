@@ -1,4 +1,4 @@
-.a0-widget-container {
+.a0-widget {
   /*! normalize.css v1.0.1 | MIT License | git.io/normalize */
   /* ==========================================================================
    HTML5 display definitions
@@ -176,94 +176,40 @@
   /*
  * Remove most spacing between table cells.
  */
-  /*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license
-
-Copyright (c) 2013 Daniel Eden
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /*==================================
-=            Animations            =
-==================================*/
-  /*==========  Appear  ==========*/
-  /*==========  showPanel  ==========*/
-  /*==========  hidePanel  ==========*/
-  /* Buttons can be displayed as standalone icons by adding a class of "icon" */
-  /* Adjustments for light background buttons */
-  /* :hover adjustments for light background buttons */
-  /* :active adjustments for light background buttons */
-  /* Button icon and color */
-  /* Icon characters are stored in unicode private area */
-  /* Button background and text color */
-  /* Any browser-specific adjustments */
-  /* Reference icons from font-files
-** Base 64-encoded version recommended to resolve cross-site font-loading issues
-*/
-  /**
-*
-* General Widget CSS
-*
-**/
-  /*=============================
-=            Panel            =
-=============================*/
-  /*-----  End of Panel  ------*/
-  /*===============================
-=            Overlay            =
-===============================*/
-  /*-----  End of Overlay  ------*/
-  /*===============================================
-=            No Placeholder Fallback            =
-===============================================*/
-  /*=====================================
-=            Media Queries            =
-=====================================*/
 }
 
-@charset "UTF-8";
-
-.a0-widget-container article,
-.a0-widget-container aside,
-.a0-widget-container details,
-.a0-widget-container figcaption,
-.a0-widget-container figure,
-.a0-widget-container footer,
-.a0-widget-container header,
-.a0-widget-container hgroup,
-.a0-widget-container nav,
-.a0-widget-container section,
-.a0-widget-container summary {
+.a0-widget article,
+.a0-widget aside,
+.a0-widget details,
+.a0-widget figcaption,
+.a0-widget figure,
+.a0-widget footer,
+.a0-widget header,
+.a0-widget hgroup,
+.a0-widget nav,
+.a0-widget section,
+.a0-widget summary {
   display: block;
 }
 
-.a0-widget-container audio,
-.a0-widget-container canvas,
-.a0-widget-container video {
+.a0-widget audio,
+.a0-widget canvas,
+.a0-widget video {
   display: inline-block;
   *display: inline;
   *zoom: 1;
 }
 
-.a0-widget-container audio:not([controls]) {
+.a0-widget audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-.a0-widget-container [hidden] {
+.a0-widget [hidden] {
   display: none;
 }
 
-.a0-widget-container html {
+.a0-widget html {
   font-size: 100%;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -272,183 +218,183 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /* 2 */
 }
 
-.a0-widget-container html,
-.a0-widget-container button,
-.a0-widget-container input,
-.a0-widget-container select,
-.a0-widget-container textarea,
-.a0-widget-container h1,
-.a0-widget-container h2,
-.a0-widget-container div,
-.a0-widget-container span,
-.a0-widget-container a {
+.a0-widget html,
+.a0-widget button,
+.a0-widget input,
+.a0-widget select,
+.a0-widget textarea,
+.a0-widget h1,
+.a0-widget h2,
+.a0-widget div,
+.a0-widget span,
+.a0-widget a {
   font-family: sans-serif;
 }
 
-.a0-widget-container body {
+.a0-widget body {
   margin: 0;
 }
 
-.a0-widget-container a:focus {
+.a0-widget a:focus {
   outline: thin dotted;
 }
 
-.a0-widget-container a:active,
-.a0-widget-container a:hover {
+.a0-widget a:active,
+.a0-widget a:hover {
   outline: 0;
 }
 
-.a0-widget-container h1 {
+.a0-widget h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-.a0-widget-container h2 {
+.a0-widget h2 {
   font-size: 1.5em;
   margin: 0.83em 0;
 }
 
-.a0-widget-container h3 {
+.a0-widget h3 {
   font-size: 1.17em;
   margin: 1em 0;
 }
 
-.a0-widget-container h4 {
+.a0-widget h4 {
   font-size: 1em;
   margin: 1.33em 0;
 }
 
-.a0-widget-container h5 {
+.a0-widget h5 {
   font-size: 0.83em;
   margin: 1.67em 0;
 }
 
-.a0-widget-container h6 {
+.a0-widget h6 {
   font-size: 0.75em;
   margin: 2.33em 0;
 }
 
-.a0-widget-container abbr[title] {
+.a0-widget abbr[title] {
   border-bottom: 1px dotted;
 }
 
-.a0-widget-container b,
-.a0-widget-container strong {
+.a0-widget b,
+.a0-widget strong {
   font-weight: bold;
 }
 
-.a0-widget-container blockquote {
+.a0-widget blockquote {
   margin: 1em 40px;
 }
 
-.a0-widget-container dfn {
+.a0-widget dfn {
   font-style: italic;
 }
 
-.a0-widget-container mark {
+.a0-widget mark {
   background: #ff0;
   color: #000;
 }
 
-.a0-widget-container p,
-.a0-widget-container pre {
+.a0-widget p,
+.a0-widget pre {
   margin: 1em 0;
 }
 
-.a0-widget-container code,
-.a0-widget-container kbd,
-.a0-widget-container pre,
-.a0-widget-container samp {
+.a0-widget code,
+.a0-widget kbd,
+.a0-widget pre,
+.a0-widget samp {
   font-family: monospace, serif;
   _font-family: 'courier new', monospace;
   font-size: 1em;
 }
 
-.a0-widget-container pre {
+.a0-widget pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-.a0-widget-container q {
+.a0-widget q {
   quotes: none;
 }
 
-.a0-widget-container q:before,
-.a0-widget-container q:after {
+.a0-widget q:before,
+.a0-widget q:after {
   content: '';
   content: none;
 }
 
-.a0-widget-container small {
+.a0-widget small {
   font-size: 80%;
 }
 
-.a0-widget-container sub,
-.a0-widget-container sup {
+.a0-widget sub,
+.a0-widget sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-.a0-widget-container sup {
+.a0-widget sup {
   top: -0.5em;
 }
 
-.a0-widget-container sub {
+.a0-widget sub {
   bottom: -0.25em;
 }
 
-.a0-widget-container dl,
-.a0-widget-container menu,
-.a0-widget-container ol,
-.a0-widget-container ul {
+.a0-widget dl,
+.a0-widget menu,
+.a0-widget ol,
+.a0-widget ul {
   margin: 1em 0;
 }
 
-.a0-widget-container dd {
+.a0-widget dd {
   margin: 0 0 0 40px;
 }
 
-.a0-widget-container menu,
-.a0-widget-container ol,
-.a0-widget-container ul {
+.a0-widget menu,
+.a0-widget ol,
+.a0-widget ul {
   padding: 0 0 0 40px;
 }
 
-.a0-widget-container nav ul,
-.a0-widget-container nav ol {
+.a0-widget nav ul,
+.a0-widget nav ol {
   list-style: none;
   list-style-image: none;
 }
 
-.a0-widget-container img {
+.a0-widget img {
   border: 0;
   /* 1 */
   -ms-interpolation-mode: bicubic;
   /* 2 */
 }
 
-.a0-widget-container svg:not(:root) {
+.a0-widget svg:not(:root) {
   overflow: hidden;
 }
 
-.a0-widget-container figure {
+.a0-widget figure {
   margin: 0;
 }
 
-.a0-widget-container form {
+.a0-widget form {
   margin: 0;
 }
 
-.a0-widget-container fieldset {
+.a0-widget fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
 
-.a0-widget-container legend {
+.a0-widget legend {
   border: 0;
   /* 1 */
   padding: 0;
@@ -458,10 +404,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /* 3 */
 }
 
-.a0-widget-container button,
-.a0-widget-container input,
-.a0-widget-container select,
-.a0-widget-container textarea {
+.a0-widget button,
+.a0-widget input,
+.a0-widget select,
+.a0-widget textarea {
   font-size: 100%;
   /* 1 */
   margin: 0;
@@ -472,15 +418,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /* 3 */
 }
 
-.a0-widget-container button,
-.a0-widget-container input {
+.a0-widget button,
+.a0-widget input {
   line-height: normal;
 }
 
-.a0-widget-container button,
-.a0-widget-container html input[type="button"],
-.a0-widget-container input[type="reset"],
-.a0-widget-container input[type="submit"] {
+.a0-widget button,
+.a0-widget html input[type="button"],
+.a0-widget input[type="reset"],
+.a0-widget input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -489,13 +435,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /* 4 */
 }
 
-.a0-widget-container button[disabled],
-.a0-widget-container input[disabled] {
+.a0-widget button[disabled],
+.a0-widget input[disabled] {
   cursor: default;
 }
 
-.a0-widget-container input[type="checkbox"],
-.a0-widget-container input[type="radio"] {
+.a0-widget input[type="checkbox"],
+.a0-widget input[type="radio"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -508,7 +454,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /* 3 */
 }
 
-.a0-widget-container input[type="search"] {
+.a0-widget input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
@@ -517,43 +463,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   box-sizing: content-box;
 }
 
-.a0-widget-container input[type="search"]::-webkit-search-cancel-button,
-.a0-widget-container input[type="search"]::-webkit-search-decoration {
+.a0-widget input[type="search"]::-webkit-search-cancel-button,
+.a0-widget input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-.a0-widget-container button::-moz-focus-inner,
-.a0-widget-container input::-moz-focus-inner {
+.a0-widget button::-moz-focus-inner,
+.a0-widget input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-.a0-widget-container textarea {
+.a0-widget textarea {
   overflow: auto;
   /* 1 */
   vertical-align: top;
   /* 2 */
 }
 
-.a0-widget-container table {
+.a0-widget table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-.a0-widget-container header,
-.a0-widget-container footer,
-.a0-widget-container button,
-.a0-widget-container a,
-.a0-widget-container form,
-.a0-widget-container h1,
-.a0-widget-container h2,
-.a0-widget-container h3,
-.a0-widget-container form label,
-.a0-widget-container span,
-.a0-widget-container input[type="button"],
-.a0-widget-container input[type="text"],
-.a0-widget-container input[type="email"],
-.a0-widget-container input[type="password"] {
+.a0-widget header,
+.a0-widget footer,
+.a0-widget button,
+.a0-widget a,
+.a0-widget form,
+.a0-widget h1,
+.a0-widget h2,
+.a0-widget h3,
+.a0-widget form label,
+.a0-widget span,
+.a0-widget input[type="button"],
+.a0-widget input[type="text"],
+.a0-widget input[type="email"],
+.a0-widget input[type="password"] {
   font-smooth: never;
   -webkit-font-smoothing: auto;
   alignment-baseline: baseline;
@@ -797,6 +743,63 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
+#a0-widget {
+  /*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license
+
+Copyright (c) 2013 Daniel Eden
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /*==================================
+=            Animations            =
+==================================*/
+  /*==========  Appear  ==========*/
+  /*==========  showPanel  ==========*/
+  /*==========  hidePanel  ==========*/
+  /* Buttons can be displayed as standalone icons by adding a class of "icon" */
+  /* Adjustments for light background buttons */
+  /* :hover adjustments for light background buttons */
+  /* :active adjustments for light background buttons */
+  /* Button icon and color */
+  /* Icon characters are stored in unicode private area */
+  /* Button background and text color */
+  /* Any browser-specific adjustments */
+  /* Reference icons from font-files
+** Base 64-encoded version recommended to resolve cross-site font-loading issues
+*/
+  /**
+*
+* General Widget CSS
+*
+**/
+  /*=============================
+=            Panel            =
+=============================*/
+  /*-----  End of Panel  ------*/
+  /*===============================
+=            Overlay            =
+===============================*/
+  /*-----  End of Overlay  ------*/
+  /*===============================================
+=            No Placeholder Fallback            =
+===============================================*/
+  /*=====================================
+=            Media Queries            =
+=====================================*/
+}
+
+@charset "UTF-8";
+
 @font-face {
   font-family: 'auth0';
   src: url(data:application/x-font-woff;charset=utf-8;base64,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) format('woff');
@@ -825,8 +828,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-style: normal;
 }
 
-.a0-widget-container [class^="a0-icon-"]:before,
-.a0-widget-container [class*=" a0-icon-"]:before {
+#a0-widget [class^="a0-icon-"]:before,
+#a0-widget [class*=" a0-icon-"]:before {
   font-family: 'auth0' !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -838,27 +841,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -moz-osx-font-smoothing: grayscale;
 }
 
-.a0-widget-container .a0-icon-badge:before {
+#a0-widget .a0-icon-badge:before {
   content: "a";
 }
 
-.a0-widget-container .a0-icon-budicon:before {
+#a0-widget .a0-icon-budicon:before {
   content: "b";
 }
 
-.a0-widget-container .a0-icon-budicon-1:before {
+#a0-widget .a0-icon-budicon-1:before {
   content: "c";
 }
 
-.a0-widget-container .a0-icon-budicon-2:before {
+#a0-widget .a0-icon-budicon-2:before {
   content: "d";
 }
 
-.a0-widget-container .a0-icon-budicon-3:before {
+#a0-widget .a0-icon-budicon-3:before {
   content: "e";
 }
 
-.a0-widget-container .a0-animated {
+#a0-widget .a0-animated {
   -webkit-animation-duration: 1s;
   -moz-animation-duration: 1s;
   animation-duration: 1s;
@@ -867,13 +870,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation-fill-mode: both;
 }
 
-.a0-widget-container .a0-animated.a0-infinite {
+#a0-widget .a0-animated.a0-infinite {
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
 }
 
-.a0-widget-container .a0-animated.a0-hinge {
+#a0-widget .a0-animated.a0-hinge {
   -webkit-animation-duration: 2s;
   -moz-animation-duration: 2s;
   animation-duration: 2s;
@@ -942,7 +945,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounce {
+#a0-widget .a0-bounce {
   -webkit-animation-name: bounce;
   -moz-animation-name: bounce;
   animation-name: bounce;
@@ -978,7 +981,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-flash {
+#a0-widget .a0-flash {
   -webkit-animation-name: flash;
   -moz-animation-name: flash;
   animation-name: flash;
@@ -1047,7 +1050,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-pulse {
+#a0-widget .a0-pulse {
   -webkit-animation-name: pulse;
   -moz-animation-name: pulse;
   animation-name: pulse;
@@ -1154,7 +1157,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rubberBand {
+#a0-widget .a0-rubberBand {
   -webkit-animation-name: rubberBand;
   -moz-animation-name: rubberBand;
   animation-name: rubberBand;
@@ -1223,7 +1226,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-shake {
+#a0-widget .a0-shake {
   -webkit-animation-name: shake;
   -moz-animation-name: shake;
   animation-name: shake;
@@ -1330,7 +1333,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-swing {
+#a0-widget .a0-swing {
   -webkit-transform-origin: top center;
   -ms-transform-origin: top center;
   -moz-transform-origin: top center;
@@ -1441,7 +1444,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-tada {
+#a0-widget .a0-tada {
   -webkit-animation-name: tada;
   -moz-animation-name: tada;
   animation-name: tada;
@@ -1586,7 +1589,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-wobble {
+#a0-widget .a0-wobble {
   -webkit-animation-name: wobble;
   -moz-animation-name: wobble;
   animation-name: wobble;
@@ -1683,7 +1686,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceIn {
+#a0-widget .a0-bounceIn {
   -webkit-animation-name: bounceIn;
   -moz-animation-name: bounceIn;
   animation-name: bounceIn;
@@ -1777,7 +1780,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceInDown {
+#a0-widget .a0-bounceInDown {
   -webkit-animation-name: bounceInDown;
   -moz-animation-name: bounceInDown;
   animation-name: bounceInDown;
@@ -1871,7 +1874,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceInLeft {
+#a0-widget .a0-bounceInLeft {
   -webkit-animation-name: bounceInLeft;
   -moz-animation-name: bounceInLeft;
   animation-name: bounceInLeft;
@@ -1965,7 +1968,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceInRight {
+#a0-widget .a0-bounceInRight {
   -webkit-animation-name: bounceInRight;
   -moz-animation-name: bounceInRight;
   animation-name: bounceInRight;
@@ -2059,7 +2062,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceInUp {
+#a0-widget .a0-bounceInUp {
   -webkit-animation-name: bounceInUp;
   -moz-animation-name: bounceInUp;
   animation-name: bounceInUp;
@@ -2153,7 +2156,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceOut {
+#a0-widget .a0-bounceOut {
   -webkit-animation-name: bounceOut;
   -moz-animation-name: bounceOut;
   animation-name: bounceOut;
@@ -2228,7 +2231,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceOutDown {
+#a0-widget .a0-bounceOutDown {
   -webkit-animation-name: bounceOutDown;
   -moz-animation-name: bounceOutDown;
   animation-name: bounceOutDown;
@@ -2303,7 +2306,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceOutLeft {
+#a0-widget .a0-bounceOutLeft {
   -webkit-animation-name: bounceOutLeft;
   -moz-animation-name: bounceOutLeft;
   animation-name: bounceOutLeft;
@@ -2378,7 +2381,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceOutRight {
+#a0-widget .a0-bounceOutRight {
   -webkit-animation-name: bounceOutRight;
   -moz-animation-name: bounceOutRight;
   animation-name: bounceOutRight;
@@ -2453,7 +2456,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-bounceOutUp {
+#a0-widget .a0-bounceOutUp {
   -webkit-animation-name: bounceOutUp;
   -moz-animation-name: bounceOutUp;
   animation-name: bounceOutUp;
@@ -2489,7 +2492,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeIn {
+#a0-widget .a0-fadeIn {
   -webkit-animation-name: fadeIn;
   -moz-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -2545,7 +2548,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInDown {
+#a0-widget .a0-fadeInDown {
   -webkit-animation-name: fadeInDown;
   -moz-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -2601,7 +2604,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInDownBig {
+#a0-widget .a0-fadeInDownBig {
   -webkit-animation-name: fadeInDownBig;
   -moz-animation-name: fadeInDownBig;
   animation-name: fadeInDownBig;
@@ -2657,7 +2660,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInLeft {
+#a0-widget .a0-fadeInLeft {
   -webkit-animation-name: fadeInLeft;
   -moz-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
@@ -2713,7 +2716,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInLeftBig {
+#a0-widget .a0-fadeInLeftBig {
   -webkit-animation-name: fadeInLeftBig;
   -moz-animation-name: fadeInLeftBig;
   animation-name: fadeInLeftBig;
@@ -2769,7 +2772,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInRight {
+#a0-widget .a0-fadeInRight {
   -webkit-animation-name: fadeInRight;
   -moz-animation-name: fadeInRight;
   animation-name: fadeInRight;
@@ -2825,7 +2828,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInRightBig {
+#a0-widget .a0-fadeInRightBig {
   -webkit-animation-name: fadeInRightBig;
   -moz-animation-name: fadeInRightBig;
   animation-name: fadeInRightBig;
@@ -2881,7 +2884,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInUp {
+#a0-widget .a0-fadeInUp {
   -webkit-animation-name: fadeInUp;
   -moz-animation-name: fadeInUp;
   animation-name: fadeInUp;
@@ -2937,7 +2940,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeInUpBig {
+#a0-widget .a0-fadeInUpBig {
   -webkit-animation-name: fadeInUpBig;
   -moz-animation-name: fadeInUpBig;
   animation-name: fadeInUpBig;
@@ -2973,7 +2976,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOut {
+#a0-widget .a0-fadeOut {
   -webkit-animation-name: fadeOut;
   -moz-animation-name: fadeOut;
   animation-name: fadeOut;
@@ -3029,7 +3032,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutDown {
+#a0-widget .a0-fadeOutDown {
   -webkit-animation-name: fadeOutDown;
   -moz-animation-name: fadeOutDown;
   animation-name: fadeOutDown;
@@ -3085,7 +3088,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutDownBig {
+#a0-widget .a0-fadeOutDownBig {
   -webkit-animation-name: fadeOutDownBig;
   -moz-animation-name: fadeOutDownBig;
   animation-name: fadeOutDownBig;
@@ -3141,7 +3144,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutLeft {
+#a0-widget .a0-fadeOutLeft {
   -webkit-animation-name: fadeOutLeft;
   -moz-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft;
@@ -3197,7 +3200,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutLeftBig {
+#a0-widget .a0-fadeOutLeftBig {
   -webkit-animation-name: fadeOutLeftBig;
   -moz-animation-name: fadeOutLeftBig;
   animation-name: fadeOutLeftBig;
@@ -3253,7 +3256,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutRight {
+#a0-widget .a0-fadeOutRight {
   -webkit-animation-name: fadeOutRight;
   -moz-animation-name: fadeOutRight;
   animation-name: fadeOutRight;
@@ -3309,7 +3312,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutRightBig {
+#a0-widget .a0-fadeOutRightBig {
   -webkit-animation-name: fadeOutRightBig;
   -moz-animation-name: fadeOutRightBig;
   animation-name: fadeOutRightBig;
@@ -3365,7 +3368,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutUp {
+#a0-widget .a0-fadeOutUp {
   -webkit-animation-name: fadeOutUp;
   -moz-animation-name: fadeOutUp;
   animation-name: fadeOutUp;
@@ -3421,7 +3424,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-fadeOutUpBig {
+#a0-widget .a0-fadeOutUpBig {
   -webkit-animation-name: fadeOutUpBig;
   -moz-animation-name: fadeOutUpBig;
   animation-name: fadeOutUpBig;
@@ -3568,7 +3571,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-animated.a0-flip {
+#a0-widget .a0-animated.a0-flip {
   -webkit-backface-visibility: visible;
   -ms-backface-visibility: visible;
   -moz-backface-visibility: visible;
@@ -3666,7 +3669,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-flipInX {
+#a0-widget .a0-flipInX {
   -webkit-backface-visibility: visible !important;
   -ms-backface-visibility: visible !important;
   -moz-backface-visibility: visible !important;
@@ -3764,7 +3767,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-flipInY {
+#a0-widget .a0-flipInY {
   -webkit-backface-visibility: visible !important;
   -ms-backface-visibility: visible !important;
   -moz-backface-visibility: visible !important;
@@ -3824,7 +3827,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-flipOutX {
+#a0-widget .a0-flipOutX {
   -webkit-animation-name: flipOutX;
   -moz-animation-name: flipOutX;
   animation-name: flipOutX;
@@ -3884,7 +3887,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-flipOutY {
+#a0-widget .a0-flipOutY {
   -webkit-backface-visibility: visible !important;
   -ms-backface-visibility: visible !important;
   -moz-backface-visibility: visible !important;
@@ -3988,7 +3991,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-lightSpeedIn {
+#a0-widget .a0-lightSpeedIn {
   -webkit-animation-name: lightSpeedIn;
   -moz-animation-name: lightSpeedIn;
   animation-name: lightSpeedIn;
@@ -4047,7 +4050,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-lightSpeedOut {
+#a0-widget .a0-lightSpeedOut {
   -webkit-animation-name: lightSpeedOut;
   -moz-animation-name: lightSpeedOut;
   animation-name: lightSpeedOut;
@@ -4126,7 +4129,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateIn {
+#a0-widget .a0-rotateIn {
   -webkit-animation-name: rotateIn;
   -moz-animation-name: rotateIn;
   animation-name: rotateIn;
@@ -4202,7 +4205,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateInDownLeft {
+#a0-widget .a0-rotateInDownLeft {
   -webkit-animation-name: rotateInDownLeft;
   -moz-animation-name: rotateInDownLeft;
   animation-name: rotateInDownLeft;
@@ -4278,7 +4281,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateInDownRight {
+#a0-widget .a0-rotateInDownRight {
   -webkit-animation-name: rotateInDownRight;
   -moz-animation-name: rotateInDownRight;
   animation-name: rotateInDownRight;
@@ -4354,7 +4357,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateInUpLeft {
+#a0-widget .a0-rotateInUpLeft {
   -webkit-animation-name: rotateInUpLeft;
   -moz-animation-name: rotateInUpLeft;
   animation-name: rotateInUpLeft;
@@ -4430,7 +4433,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateInUpRight {
+#a0-widget .a0-rotateInUpRight {
   -webkit-animation-name: rotateInUpRight;
   -moz-animation-name: rotateInUpRight;
   animation-name: rotateInUpRight;
@@ -4506,7 +4509,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateOut {
+#a0-widget .a0-rotateOut {
   -webkit-animation-name: rotateOut;
   -moz-animation-name: rotateOut;
   animation-name: rotateOut;
@@ -4582,7 +4585,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateOutDownLeft {
+#a0-widget .a0-rotateOutDownLeft {
   -webkit-animation-name: rotateOutDownLeft;
   -moz-animation-name: rotateOutDownLeft;
   animation-name: rotateOutDownLeft;
@@ -4658,7 +4661,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateOutDownRight {
+#a0-widget .a0-rotateOutDownRight {
   -webkit-animation-name: rotateOutDownRight;
   -moz-animation-name: rotateOutDownRight;
   animation-name: rotateOutDownRight;
@@ -4734,7 +4737,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateOutUpLeft {
+#a0-widget .a0-rotateOutUpLeft {
   -webkit-animation-name: rotateOutUpLeft;
   -moz-animation-name: rotateOutUpLeft;
   animation-name: rotateOutUpLeft;
@@ -4810,7 +4813,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rotateOutUpRight {
+#a0-widget .a0-rotateOutUpRight {
   -webkit-animation-name: rotateOutUpRight;
   -moz-animation-name: rotateOutUpRight;
   animation-name: rotateOutUpRight;
@@ -4863,7 +4866,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideInDown {
+#a0-widget .a0-slideInDown {
   -webkit-animation-name: slideInDown;
   -moz-animation-name: slideInDown;
   animation-name: slideInDown;
@@ -4916,7 +4919,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideInLeft {
+#a0-widget .a0-slideInLeft {
   -webkit-animation-name: slideInLeft;
   -moz-animation-name: slideInLeft;
   animation-name: slideInLeft;
@@ -4969,7 +4972,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideInRight {
+#a0-widget .a0-slideInRight {
   -webkit-animation-name: slideInRight;
   -moz-animation-name: slideInRight;
   animation-name: slideInRight;
@@ -5022,7 +5025,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideOutLeft {
+#a0-widget .a0-slideOutLeft {
   -webkit-animation-name: slideOutLeft;
   -moz-animation-name: slideOutLeft;
   animation-name: slideOutLeft;
@@ -5075,7 +5078,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideOutRight {
+#a0-widget .a0-slideOutRight {
   -webkit-animation-name: slideOutRight;
   -moz-animation-name: slideOutRight;
   animation-name: slideOutRight;
@@ -5128,7 +5131,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideOutUp {
+#a0-widget .a0-slideOutUp {
   -webkit-animation-name: slideOutUp;
   -moz-animation-name: slideOutUp;
   animation-name: slideOutUp;
@@ -5184,7 +5187,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideInUp {
+#a0-widget .a0-slideInUp {
   -webkit-animation-name: slideInUp;
   -moz-animation-name: slideInUp;
   animation-name: slideInUp;
@@ -5237,7 +5240,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-slideOutDown {
+#a0-widget .a0-slideOutDown {
   -webkit-animation-name: slideOutDown;
   -moz-animation-name: slideOutDown;
   animation-name: slideOutDown;
@@ -5422,7 +5425,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-hinge {
+#a0-widget .a0-hinge {
   -webkit-animation-name: hinge;
   -moz-animation-name: hinge;
   animation-name: hinge;
@@ -5478,7 +5481,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rollIn {
+#a0-widget .a0-rollIn {
   -webkit-animation-name: rollIn;
   -moz-animation-name: rollIn;
   animation-name: rollIn;
@@ -5534,7 +5537,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-rollOut {
+#a0-widget .a0-rollOut {
   -webkit-animation-name: rollOut;
   -moz-animation-name: rollOut;
   animation-name: rollOut;
@@ -5580,7 +5583,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomIn {
+#a0-widget .a0-zoomIn {
   -webkit-animation-name: zoomIn;
   -moz-animation-name: zoomIn;
   animation-name: zoomIn;
@@ -5652,7 +5655,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomInDown {
+#a0-widget .a0-zoomInDown {
   -webkit-animation-name: zoomInDown;
   -moz-animation-name: zoomInDown;
   animation-name: zoomInDown;
@@ -5724,7 +5727,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomInLeft {
+#a0-widget .a0-zoomInLeft {
   -webkit-animation-name: zoomInLeft;
   -moz-animation-name: zoomInLeft;
   animation-name: zoomInLeft;
@@ -5796,7 +5799,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomInRight {
+#a0-widget .a0-zoomInRight {
   -webkit-animation-name: zoomInRight;
   -moz-animation-name: zoomInRight;
   animation-name: zoomInRight;
@@ -5868,7 +5871,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomInUp {
+#a0-widget .a0-zoomInUp {
   -webkit-animation-name: zoomInUp;
   -moz-animation-name: zoomInUp;
   animation-name: zoomInUp;
@@ -5936,7 +5939,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomOut {
+#a0-widget .a0-zoomOut {
   -webkit-animation-name: zoomOut;
   -moz-animation-name: zoomOut;
   animation-name: zoomOut;
@@ -6010,7 +6013,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomOutDown {
+#a0-widget .a0-zoomOutDown {
   -webkit-animation-name: zoomOutDown;
   -moz-animation-name: zoomOutDown;
   animation-name: zoomOutDown;
@@ -6084,7 +6087,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomOutLeft {
+#a0-widget .a0-zoomOutLeft {
   -webkit-animation-name: zoomOutLeft;
   -moz-animation-name: zoomOutLeft;
   animation-name: zoomOutLeft;
@@ -6158,7 +6161,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomOutRight {
+#a0-widget .a0-zoomOutRight {
   -webkit-animation-name: zoomOutRight;
   -moz-animation-name: zoomOutRight;
   animation-name: zoomOutRight;
@@ -6232,7 +6235,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zoomOutUp {
+#a0-widget .a0-zoomOutUp {
   -webkit-animation-name: zoomOutUp;
   -moz-animation-name: zoomOutUp;
   animation-name: zoomOutUp;
@@ -6346,8 +6349,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-.a0-widget-container .a0-zocial,
-.a0-widget-container a.a0-zocial {
+#a0-widget .a0-zocial,
+#a0-widget a.a0-zocial {
   color: #fff;
   text-align: left;
   text-decoration: none;
@@ -6365,12 +6368,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   overflow: hidden;
 }
 
-.a0-widget-container .a0-zocial:hover {
+#a0-widget .a0-zocial:hover {
   opacity: 1;
 }
 
-.a0-widget-container .a0-zocial span,
-.a0-widget-container a.a0-zocial span {
+#a0-widget .a0-zocial span,
+#a0-widget a.a0-zocial span {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 11px;
@@ -6384,18 +6387,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transition: all 0.2s ease;
 }
 
-.a0-widget-container .a0-strategy div.a0-zocial span {
+#a0-widget .a0-strategy div.a0-zocial span {
   text-transform: lowercase;
   font-size: 12px;
 }
 
-.a0-widget-container .a0-zocial:hover span,
-.a0-widget-container a.a0-zocial:hover span,
-.a0-widget-container a.a0-zocial {
+#a0-widget .a0-zocial:hover span,
+#a0-widget a.a0-zocial:hover span,
+#a0-widget a.a0-zocial {
   background: rgba(0, 0, 0, 0.2);
 }
 
-.a0-widget-container .a0-zocial:before {
+#a0-widget .a0-zocial:before {
   font: 14px zocial;
   font-weight: normal;
   float: left;
@@ -6410,364 +6413,364 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transition: all 0.2s ease;
 }
 
-.a0-widget-container .a0-zocial:active {
+#a0-widget .a0-zocial:active {
   outline: none;
   /* outline is visible on :focus */
 }
 
-.a0-widget-container .a0-zocial.a0-icon {
+#a0-widget .a0-zocial.a0-icon {
   overflow: hidden;
   white-space: nowrap;
 }
 
-.a0-widget-container .a0-zocial.a0-icon:before {
+#a0-widget .a0-zocial.a0-icon:before {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
 }
 
-.a0-widget-container .a0-strategy {
+#a0-widget .a0-strategy {
   margin: 10px 0;
 }
 
-.a0-widget-container .a0-zocial.a0-amazon:before {
+#a0-widget .a0-zocial.a0-amazon:before {
   content: "a";
 }
 
-.a0-widget-container .a0-zocial.a0-dropbox:before {
+#a0-widget .a0-zocial.a0-dropbox:before {
   content: "d";
   color: #1f75cc;
 }
 
-.a0-widget-container .a0-zocial.a0-facebook:before {
+#a0-widget .a0-zocial.a0-facebook:before {
   content: "f";
 }
 
-.a0-widget-container .a0-zocial.a0-github:before {
+#a0-widget .a0-zocial.a0-github:before {
   content: "\00E8";
 }
 
-.a0-widget-container .a0-zocial.a0-gmail:before {
+#a0-widget .a0-zocial.a0-gmail:before {
   content: "m";
   color: #f00;
 }
 
-.a0-widget-container .a0-zocial.a0-google:before {
+#a0-widget .a0-zocial.a0-google:before {
   content: "G";
 }
 
-.a0-widget-container .a0-zocial.a0-googleplus:before {
+#a0-widget .a0-zocial.a0-googleplus:before {
   content: "+";
 }
 
-.a0-widget-container .a0-zocial.a0-guest:before {
+#a0-widget .a0-zocial.a0-guest:before {
   content: "?";
 }
 
-.a0-widget-container .a0-zocial.a0-ie:before {
+#a0-widget .a0-zocial.a0-ie:before {
   content: "6";
 }
 
-.a0-widget-container .a0-zocial.a0-linkedin:before {
+#a0-widget .a0-zocial.a0-linkedin:before {
   content: "L";
 }
 
-.a0-widget-container .a0-zocial.a0-openid:before {
+#a0-widget .a0-zocial.a0-openid:before {
   content: "o";
   color: #ff921d;
 }
 
-.a0-widget-container .a0-zocial.a0-paypal:before {
+#a0-widget .a0-zocial.a0-paypal:before {
   content: "$";
 }
 
-.a0-widget-container .a0-zocial.a0-stackoverflow:before {
+#a0-widget .a0-zocial.a0-stackoverflow:before {
   content: "\00EC";
   color: #ff7a15;
 }
 
-.a0-widget-container .a0-zocial.a0-twitter:before {
+#a0-widget .a0-zocial.a0-twitter:before {
   content: "T";
 }
 
-.a0-widget-container .a0-zocial.a0-vk:before {
+#a0-widget .a0-zocial.a0-vk:before {
   content: "N";
 }
 
-.a0-widget-container .a0-zocial.a0-windows:before {
+#a0-widget .a0-zocial.a0-windows:before {
   content: "W";
 }
 
-.a0-widget-container .a0-zocial.a0-yahoo:before {
+#a0-widget .a0-zocial.a0-yahoo:before {
   content: "Y";
 }
 
-.a0-widget-container .a0-zocial.a0-office365:before {
+#a0-widget .a0-zocial.a0-office365:before {
   content: "z";
 }
 
-.a0-widget-container .a0-zocial.a0-thirtysevensignals:before {
+#a0-widget .a0-zocial.a0-thirtysevensignals:before {
   content: "b";
 }
 
-.a0-widget-container .a0-zocial.a0-salesforce:before {
+#a0-widget .a0-zocial.a0-salesforce:before {
   content: "*";
 }
 
-.a0-widget-container .a0-zocial.a0-waad:before {
+#a0-widget .a0-zocial.a0-waad:before {
   content: "z";
 }
 
-.a0-widget-container .a0-zocial.a0-box:before {
+#a0-widget .a0-zocial.a0-box:before {
   content: "x";
 }
 
-.a0-widget-container .a0-zocial.a0-aol:before {
+#a0-widget .a0-zocial.a0-aol:before {
   content: "l";
 }
 
-.a0-widget-container .a0-zocial.a0-renren:before {
+#a0-widget .a0-zocial.a0-renren:before {
   content: "r";
 }
 
-.a0-widget-container .a0-zocial.a0-baidu:before {
+#a0-widget .a0-zocial.a0-baidu:before {
   content: "u";
 }
 
-.a0-widget-container .a0-zocial.a0-fitbit:before {
+#a0-widget .a0-zocial.a0-fitbit:before {
   content: "#";
 }
 
-.a0-widget-container .a0-zocial.a0-yandex:before {
+#a0-widget .a0-zocial.a0-yandex:before {
   content: "&";
 }
 
-.a0-widget-container .a0-zocial.a0-wordpress:before {
+#a0-widget .a0-zocial.a0-wordpress:before {
   content: "w";
 }
 
-.a0-widget-container .a0-zocial.a0-dwolla:before {
+#a0-widget .a0-zocial.a0-dwolla:before {
   content: "D";
 }
 
-.a0-widget-container .a0-zocial.a0-shopify:before {
+#a0-widget .a0-zocial.a0-shopify:before {
   content: "s";
 }
 
-.a0-widget-container .a0-zocial.a0-yammer:before {
+#a0-widget .a0-zocial.a0-yammer:before {
   content: "!";
 }
 
-.a0-widget-container .a0-zocial.a0-miicard:before {
+#a0-widget .a0-zocial.a0-miicard:before {
   content: "m";
 }
 
-.a0-widget-container .a0-zocial.a0-soundcloud:before {
+#a0-widget .a0-zocial.a0-soundcloud:before {
   content: "t";
 }
 
-.a0-widget-container .a0-zocial.a0-evernote:before {
+#a0-widget .a0-zocial.a0-evernote:before {
   content: "n";
 }
 
-.a0-widget-container .a0-zocial.a0-ebay:before {
+#a0-widget .a0-zocial.a0-ebay:before {
   content: "e";
 }
 
-.a0-widget-container .a0-zocial.a0-sharepoint:before {
+#a0-widget .a0-zocial.a0-sharepoint:before {
   content: "p";
 }
 
-.a0-widget-container .a0-zocial.a0-weibo:before {
+#a0-widget .a0-zocial.a0-weibo:before {
   content: "S";
 }
 
-.a0-widget-container .a0-zocial.a0-instagram:before {
+#a0-widget .a0-zocial.a0-instagram:before {
   content: "i";
 }
 
-.a0-widget-container .a0-zocial.a0-amazon {
+#a0-widget .a0-zocial.a0-amazon {
   background-color: #ffad1d;
   color: #030037;
 }
 
-.a0-widget-container .a0-zocial.a0-dropbox {
+#a0-widget .a0-zocial.a0-dropbox {
   background-color: #fff;
   color: #312c2a;
 }
 
-.a0-widget-container .a0-zocial.a0-facebook {
+#a0-widget .a0-zocial.a0-facebook {
   background-color: #4863ae;
 }
 
-.a0-widget-container .a0-zocial.a0-github {
+#a0-widget .a0-zocial.a0-github {
   background-color: #eee;
   color: #050505;
 }
 
-.a0-widget-container .a0-zocial.a0-wordpress {
+#a0-widget .a0-zocial.a0-wordpress {
   background-color: #1e8cbe;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-dwolla {
+#a0-widget .a0-zocial.a0-dwolla {
   background-color: #F5891F;
   color: #fbfbfb;
 }
 
-.a0-widget-container .a0-zocial.a0-gmail {
+#a0-widget .a0-zocial.a0-gmail {
   background-color: #efefef;
   color: #222;
 }
 
-.a0-widget-container .a0-zocial.a0-google {
+#a0-widget .a0-zocial.a0-google {
   background-color: #4e6cf7;
 }
 
-.a0-widget-container .a0-zocial.a0-googleplus {
+#a0-widget .a0-zocial.a0-googleplus {
   background-color: #dd4b39;
 }
 
-.a0-widget-container .a0-zocial.a0-guest {
+#a0-widget .a0-zocial.a0-guest {
   background-color: #1b4d6d;
 }
 
-.a0-widget-container .a0-zocial.a0-ie {
+#a0-widget .a0-zocial.a0-ie {
   background-color: #00a1d9;
 }
 
-.a0-widget-container .a0-zocial.a0-linkedin {
+#a0-widget .a0-zocial.a0-linkedin {
   background-color: #0083a8;
 }
 
-.a0-widget-container .a0-zocial.a0-openid {
+#a0-widget .a0-zocial.a0-openid {
   background-color: #f5f5f5;
   color: #333;
 }
 
-.a0-widget-container .a0-zocial.a0-paypal {
+#a0-widget .a0-zocial.a0-paypal {
   background-color: #fff;
   color: #32689a;
 }
 
-.a0-widget-container .a0-zocial.a0-twitter {
+#a0-widget .a0-zocial.a0-twitter {
   background-color: #46c0fb;
 }
 
-.a0-widget-container .a0-zocial.a0-vk {
+#a0-widget .a0-zocial.a0-vk {
   background-color: #45688E;
 }
 
-.a0-widget-container .a0-zocial.a0-windows {
+#a0-widget .a0-zocial.a0-windows {
   background-color: #0052a4;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-office365 {
+#a0-widget .a0-zocial.a0-office365 {
   background-color: #00ACED;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-waad {
+#a0-widget .a0-zocial.a0-waad {
   background-color: #00ADEF;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-thirtysevensignals {
+#a0-widget .a0-zocial.a0-thirtysevensignals {
   background-color: #6AC071;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-box {
+#a0-widget .a0-zocial.a0-box {
   background-color: #267bb6;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-salesforce {
+#a0-widget .a0-zocial.a0-salesforce {
   background-color: #fff;
   color: #ff0000;
 }
 
-.a0-widget-container .a0-zocial.a0-windows {
+#a0-widget .a0-zocial.a0-windows {
   background-color: #2672EC;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-yahoo {
+#a0-widget .a0-zocial.a0-yahoo {
   background-color: #a200c2;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-aol {
+#a0-widget .a0-zocial.a0-aol {
   background-color: #0861A8;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-renren {
+#a0-widget .a0-zocial.a0-renren {
   background-color: #0056B5;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-baidu {
+#a0-widget .a0-zocial.a0-baidu {
   background-color: #2832E1;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-fitbit {
+#a0-widget .a0-zocial.a0-fitbit {
   background-color: #45C2C5;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-yandex {
+#a0-widget .a0-zocial.a0-yandex {
   background-color: #FF0000;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-shopify {
+#a0-widget .a0-zocial.a0-shopify {
   background-color: #9CC24C;
   color: #fbfbfb;
 }
 
-.a0-widget-container .a0-zocial.a0-yammer {
+#a0-widget .a0-zocial.a0-yammer {
   background-color: #0072c6;
   color: #fdfdfd;
 }
 
-.a0-widget-container .a0-zocial.a0-miicard {
+#a0-widget .a0-zocial.a0-miicard {
   background-color: #C7EAFF;
   color: #303030;
 }
 
-.a0-widget-container .a0-zocial.a0-soundcloud {
+#a0-widget .a0-zocial.a0-soundcloud {
   background-color: #ff4500;
 }
 
-.a0-widget-container .a0-zocial.a0-evernote {
+#a0-widget .a0-zocial.a0-evernote {
   background-color: #6bb130;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-ebay {
+#a0-widget .a0-zocial.a0-ebay {
   background-color: #000098;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-sharepoint {
+#a0-widget .a0-zocial.a0-sharepoint {
   background-color: #0072C6;
   color: #fff;
 }
 
-.a0-widget-container .a0-zocial.a0-weibo {
+#a0-widget .a0-zocial.a0-weibo {
   background-color: #faf6f1;
   color: #e6162d;
 }
 
-.a0-widget-container .a0-zocial.a0-instagram {
+#a0-widget .a0-zocial.a0-instagram {
   background-color: #25537B;
   color: #fff;
 }
 
-.a0-widget-container button:-moz-focus-inner {
+#a0-widget button:-moz-focus-inner {
   border: 0;
   padding: 0;
 }
@@ -6784,43 +6787,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-style: normal;
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial,
-.a0-widget-container .a0-zocial.a0-icon {
+#a0-widget .a0-equal-viewport .a0-zocial,
+#a0-widget .a0-zocial.a0-icon {
   width: auto;
   display: inline-block;
   margin: 0 6px;
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial:before,
-.a0-widget-container .a0-zocial.a0-icon:before {
+#a0-widget .a0-equal-viewport .a0-zocial:before,
+#a0-widget .a0-zocial.a0-icon:before {
   width: 40px;
   background-color: transparent;
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial:hover:before,
-.a0-widget-container .a0-zocial.a0-icon:hover:before {
+#a0-widget .a0-equal-viewport .a0-zocial:hover:before,
+#a0-widget .a0-zocial.a0-icon:hover:before {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.a0-widget-container .a0-equal-viewport .a0-zocial span,
-.a0-widget-container .a0-zocial.a0-icon span {
+#a0-widget .a0-equal-viewport .a0-zocial span,
+#a0-widget .a0-zocial.a0-icon span {
   display: none;
 }
 
-.a0-widget-container .a0-show {
+#a0-widget .a0-show {
   display: block;
 }
 
-.a0-widget-container .a0-hide {
+#a0-widget .a0-hide {
   display: none !important;
 }
 
-.a0-widget-container .a0-buttons-actions {
+#a0-widget .a0-buttons-actions {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.a0-widget-container .a0-btn-small {
+#a0-widget .a0-btn-small {
   font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -6832,11 +6835,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: inline-block;
 }
 
-.a0-widget-container .a0-btn-small:hover {
+#a0-widget .a0-btn-small:hover {
   background: #f1f1f1;
 }
 
-.a0-widget-container .a0-panel {
+#a0-widget .a0-panel {
   text-align: center;
   background: white;
   padding: 20px;
@@ -6855,27 +6858,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /*-----  End of Forgot Password  ------*/
 }
 
-.a0-widget-container .a0-panel .a0-mode {
+#a0-widget .a0-panel .a0-mode {
   -webkit-animation-name: fadein;
   -webkit-animation-duration: .2s;
   -webkit-animation-iteration-count: once;
   -webkit-animation-timing-function: ease-in;
 }
 
-.a0-widget-container .a0-panel *,
-.a0-widget-container .a0-panel input {
+#a0-widget .a0-panel *,
+#a0-widget .a0-panel input {
   font-family: "proxima_nova";
   font-smoothing: antialiased;
 }
 
-.a0-widget-container .a0-panel h1,
-.a0-widget-container .a0-panel h2,
-.a0-widget-container .a0-panel h3 {
+#a0-widget .a0-panel h1,
+#a0-widget .a0-panel h2,
+#a0-widget .a0-panel h3 {
   font-family: "proxima_nova" !important;
 }
 
-.a0-widget-container .a0-panel a,
-.a0-widget-container .a0-panel button {
+#a0-widget .a0-panel a,
+#a0-widget .a0-panel button {
   font-family: "proxima_nova" !important;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -6883,28 +6886,28 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-weight: bold;
 }
 
-.a0-widget-container .a0-panel h1 {
+#a0-widget .a0-panel h1 {
   font-size: 24px;
   font-weight: 100;
   margin-bottom: 20px;
 }
 
-.a0-widget-container .a0-panel .a0-header {
+#a0-widget .a0-panel .a0-header {
   margin-bottom: 10px;
 }
 
-.a0-widget-container .a0-panel .a0-image {
+#a0-widget .a0-panel .a0-image {
   margin: auto;
   display: inline-block;
   margin-bottom: 10px;
 }
 
-.a0-widget-container .a0-panel .a0-image img {
+#a0-widget .a0-panel .a0-image img {
   width: auto;
   max-height: 58px;
 }
 
-.a0-widget-container .a0-panel .a0-avatar {
+#a0-widget .a0-panel .a0-avatar {
   background: #D0D2D3;
   margin: auto;
   display: inline-block;
@@ -6914,18 +6917,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   height: 58px;
 }
 
-.a0-widget-container .a0-panel .a0-avatar i {
+#a0-widget .a0-panel .a0-avatar i {
   color: #EB5424;
   font-size: 30px;
   display: block;
   padding-top: 15px;
 }
 
-.a0-widget-container .a0-panel .a0-footer {
+#a0-widget .a0-panel .a0-footer {
   margin-top: 20px;
 }
 
-.a0-widget-container .a0-panel .a0-footer .a0-logo {
+#a0-widget .a0-panel .a0-footer .a0-logo {
   margin-top: 20px;
   position: absolute;
   bottom: 10px;
@@ -6934,36 +6937,36 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
 }
 
-.a0-widget-container .a0-panel .a0-footer .a0-logo i {
+#a0-widget .a0-panel .a0-footer .a0-logo i {
   color: #EB5424;
   font-size: 18px;
 }
 
-.a0-widget-container .a0-panel .a0-instructions {
+#a0-widget .a0-panel .a0-instructions {
   margin-bottom: 20px;
   line-height: 18px;
 }
 
-.a0-widget-container .a0-panel .a0-last-time {
+#a0-widget .a0-panel .a0-last-time {
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-.a0-widget-container .a0-panel .a0-password,
-.a0-widget-container .a0-panel .a0-repeatPassword {
+#a0-widget .a0-panel .a0-password,
+#a0-widget .a0-panel .a0-repeatPassword {
   border-top: 1px solid #ccc;
 }
 
-.a0-widget-container .a0-panel .a0-email .a0-input-box,
-.a0-widget-container .a0-panel .a0-password .a0-input-box,
-.a0-widget-container .a0-panel .a0-repeatPassword .a0-input-box {
+#a0-widget .a0-panel .a0-email .a0-input-box,
+#a0-widget .a0-panel .a0-password .a0-input-box,
+#a0-widget .a0-panel .a0-repeatPassword .a0-input-box {
   position: relative;
   height: 50px;
 }
 
-.a0-widget-container .a0-panel .a0-email .a0-input-box i,
-.a0-widget-container .a0-panel .a0-password .a0-input-box i,
-.a0-widget-container .a0-panel .a0-repeatPassword .a0-input-box i {
+#a0-widget .a0-panel .a0-email .a0-input-box i,
+#a0-widget .a0-panel .a0-password .a0-input-box i,
+#a0-widget .a0-panel .a0-repeatPassword .a0-input-box i {
   font-size: 14px;
   z-index: 10000;
   top: 18px;
@@ -6972,9 +6975,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #999;
 }
 
-.a0-widget-container .a0-panel .a0-email input,
-.a0-widget-container .a0-panel .a0-password input,
-.a0-widget-container .a0-panel .a0-repeatPassword input {
+#a0-widget .a0-panel .a0-email input,
+#a0-widget .a0-panel .a0-password input,
+#a0-widget .a0-panel .a0-repeatPassword input {
   padding: 16px 10px;
   padding-left: 40px;
   border-radius: 0;
@@ -6988,75 +6991,75 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   width: 100%;
 }
 
-.a0-widget-container .a0-panel .a0-email input:focus,
-.a0-widget-container .a0-panel .a0-password input:focus,
-.a0-widget-container .a0-panel .a0-repeatPassword input:focus {
+#a0-widget .a0-panel .a0-email input:focus,
+#a0-widget .a0-panel .a0-password input:focus,
+#a0-widget .a0-panel .a0-repeatPassword input:focus {
   background: #fff;
 }
 
-.a0-widget-container .a0-panel input::-webkit-input-placeholder {
+#a0-widget .a0-panel input::-webkit-input-placeholder {
   color: #9da4ad;
   -webkit-transition: color 0.2s ease-in;
 }
 
-.a0-widget-container .a0-panel input:-moz-placeholder {
+#a0-widget .a0-panel input:-moz-placeholder {
   color: #9da4ad;
 }
 
-.a0-widget-container .a0-panel input::-moz-placeholder {
+#a0-widget .a0-panel input::-moz-placeholder {
   color: #9da4ad;
 }
 
-.a0-widget-container .a0-panel input:-ms-input-placeholder {
+#a0-widget .a0-panel input:-ms-input-placeholder {
   color: #9da4ad;
 }
 
-.a0-widget-container .a0-panel input:focus::-webkit-input-placeholder {
+#a0-widget .a0-panel input:focus::-webkit-input-placeholder {
   color: #666;
 }
 
-.a0-widget-container .a0-panel input:focus:-moz-placeholder {
+#a0-widget .a0-panel input:focus:-moz-placeholder {
   color: #666;
 }
 
-.a0-widget-container .a0-panel input:focus::-moz-placeholder {
+#a0-widget .a0-panel input:focus::-moz-placeholder {
   color: #666;
 }
 
-.a0-widget-container .a0-panel input:focus:-ms-input-placeholder {
+#a0-widget .a0-panel input:focus:-ms-input-placeholder {
   color: #666;
 }
 
-.a0-widget-container .a0-panel .a0-inputs {
+#a0-widget .a0-panel .a0-inputs {
   border: 1px solid #ccc;
   border-radius: 3px;
   overflow: hidden;
 }
 
-.a0-widget-container .a0-panel .a0-email input {
+#a0-widget .a0-panel .a0-email input {
   border-bottom: 0;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 
-.a0-widget-container .a0-panel .a0-password input {
+#a0-widget .a0-panel .a0-password input {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 
-.a0-widget-container .a0-panel .a0-separator {
+#a0-widget .a0-panel .a0-separator {
   margin-bottom: 6px;
   margin-top: 14px;
   color: #999;
   font-size: 12px;
 }
 
-.a0-widget-container .a0-panel .a0-separator span {
+#a0-widget .a0-panel .a0-separator span {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.a0-widget-container .a0-panel button.a0-primary {
+#a0-widget .a0-panel button.a0-primary {
   padding: 20px;
   text-align: center;
   text-transform: uppercase;
@@ -7076,35 +7079,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-radius: 3px;
 }
 
-.a0-widget-container .a0-panel button.a0-primary:hover {
+#a0-widget .a0-panel button.a0-primary:hover {
   background: #0b1025;
 }
 
-.a0-widget-container .a0-panel input[disabled] {
+#a0-widget .a0-panel input[disabled] {
   background-color: #d9dee0;
 }
 
-.a0-widget-container .a0-panel .a0-action {
+#a0-widget .a0-panel .a0-action {
   margin-bottom: 10px;
 }
 
-.a0-widget-container .a0-panel .a0-success {
+#a0-widget .a0-panel .a0-success {
   color: #008000;
 }
 
-.a0-widget-container .a0-panel .a0-error {
+#a0-widget .a0-panel .a0-error {
   color: #ff0000;
 }
 
-.a0-widget-container .a0-panel.a0-errors.a0-errors-global {
+#a0-widget .a0-panel.a0-errors.a0-errors-global {
   border-color: red;
 }
 
-.a0-widget-container .a0-panel.a0-errors .a0-error-input i {
+#a0-widget .a0-panel.a0-errors .a0-error-input i {
   color: red;
 }
 
-.a0-widget-container .a0-panel.a0-errors .a0-error-input span {
+#a0-widget .a0-panel.a0-errors .a0-error-input span {
   position: absolute;
   top: 15px;
   right: 14px;
@@ -7119,27 +7122,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   z-index: 10000;
 }
 
-.a0-widget-container .a0-panel.a0-errors .a0-error-input input {
+#a0-widget .a0-panel.a0-errors .a0-error-input input {
   color: red;
 }
 
-.a0-widget-container .a0-panel.a0-errors .a0-error-input input::-webkit-input-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input::-webkit-input-placeholder {
   color: red;
 }
 
-.a0-widget-container .a0-panel.a0-errors .a0-error-input input:-moz-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input:-moz-placeholder {
   color: red;
 }
 
-.a0-widget-container .a0-panel.a0-errors .a0-error-input input::-moz-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input::-moz-placeholder {
   color: red;
 }
 
-.a0-widget-container .a0-panel.a0-errors .a0-error-input input:-ms-input-placeholder {
+#a0-widget .a0-panel.a0-errors .a0-error-input input:-ms-input-placeholder {
   color: red;
 }
 
-.a0-widget-container .a0-panel .a0-close {
+#a0-widget .a0-panel .a0-close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -7149,40 +7152,40 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #ccc;
 }
 
-.a0-widget-container .a0-panel .a0-close:hover {
+#a0-widget .a0-panel .a0-close:hover {
   color: #333;
 }
 
-.a0-widget-container .a0-panel #a0-change_password {
+#a0-widget .a0-panel #a0-change_password {
   margin-top: -10px;
 }
 
-.a0-widget-container .a0-panel #a0-change_password .a0-password {
+#a0-widget .a0-panel #a0-change_password .a0-password {
   margin-bottom: 0;
 }
 
-.a0-widget-container .a0-panel #a0-change_password .a0-password input {
+#a0-widget .a0-panel #a0-change_password .a0-password input {
   border-radius: 0;
 }
 
-.a0-widget-container .a0-panel #a0-change_password .a0-reset_easy_password input {
+#a0-widget .a0-panel #a0-change_password .a0-reset_easy_password input {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
 
-.a0-widget-container .a0-popup .a0-centrix {
+#a0-widget .a0-popup .a0-centrix {
   padding: 0;
   vertical-align: middle;
   display: table-cell;
   margin: 0;
 }
 
-.a0-widget-container .a0-popup .a0-overlay.a0-ie8-overlay {
+#a0-widget .a0-popup .a0-overlay.a0-ie8-overlay {
   background: none;
   background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png');
 }
 
-.a0-widget-container .a0-popup .a0-overlay {
+#a0-widget .a0-popup .a0-overlay {
   margin: 0;
   display: table;
   position: fixed;
@@ -7211,56 +7214,56 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transform: translate3d(0, 0, 0);
 }
 
-.a0-widget-container .a0-popup .a0-overlay.a0-active {
+#a0-widget .a0-popup .a0-overlay.a0-active {
   opacity: 1;
 }
 
-.a0-widget-container .a0-popup .a0-overlay .a0-panel {
+#a0-widget .a0-popup .a0-overlay .a0-panel {
   display: none;
   margin: 0 auto;
 }
 
-.a0-widget-container .a0-popup .a0-overlay .a0-panel.a0-active {
+#a0-widget .a0-popup .a0-overlay .a0-panel.a0-active {
   display: block;
 }
 
-.a0-widget-container #a0-onestep {
+#a0-widget #a0-onestep {
   -webkit-transition: height 100ms ease-in;
   -moz-transition: height 100ms ease-in;
   transition: height 100ms ease-in;
 }
 
-.a0-widget-container #a0-onestep.a0-disable-transition {
+#a0-widget #a0-onestep.a0-disable-transition {
   -webkit-transition: none;
   -moz-transition: none;
   transition: none;
 }
 
-.a0-widget-container #a0-onestep .a0-loading {
+#a0-widget #a0-onestep .a0-loading {
   min-height: 110px;
 }
 
-.a0-widget-container .a0-spin-container {
+#a0-widget .a0-spin-container {
   position: relative;
   top: 50%;
 }
 
-.a0-widget-container .a0-loading.a0-with-message .a0-spin-container {
+#a0-widget .a0-loading.a0-with-message .a0-spin-container {
   top: 37%;
 }
 
-.a0-widget-container .a0-spin-message {
+#a0-widget .a0-spin-message {
   text-align: center;
   position: relative;
   top: 60px;
 }
 
-.a0-widget-container .a0-spin-message span {
+#a0-widget .a0-spin-message span {
   font-size: 14px;
   color: #41444a;
 }
 
-.a0-widget-container .a0-spin-img {
+#a0-widget .a0-spin-img {
   position: relative;
   top: 50%;
   left: 50%;
@@ -7270,76 +7273,76 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-top: -16px;
 }
 
-.a0-widget-container .a0-sad-placeholder {
+#a0-widget .a0-sad-placeholder {
   display: none;
 }
 
-.a0-widget-container .a0-no-placeholder-support .a0-sad-placeholder {
+#a0-widget .a0-no-placeholder-support .a0-sad-placeholder {
   display: block;
   text-align: left;
   font-weight: bold;
   margin: 14px 0 10px 0;
 }
 
-.a0-widget-container .a0-no-placeholder-support .a0-inputs {
+#a0-widget .a0-no-placeholder-support .a0-inputs {
   border: 0 !important;
 }
 
-.a0-widget-container .a0-no-placeholder-support .a0-inputs .a0-email,
-.a0-widget-container .a0-no-placeholder-support .a0-inputs .a0-password,
-.a0-widget-container .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-email,
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-password,
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
   border: 0;
 }
 
-.a0-widget-container .a0-no-placeholder-support .a0-inputs .a0-input-box {
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-input-box {
   border: 1px solid #ccc;
 }
 
-.a0-widget-container .a0-no-placeholder-support .a0-inputs .a0-input-box input {
+#a0-widget .a0-no-placeholder-support .a0-inputs .a0-input-box input {
   border: 0 !important;
 }
 
 @media screen and (max-width: 480px) {
-  .a0-widget-container .a0-ie8-overlay {
+  #a0-widget .a0-ie8-overlay {
     background: none !important;
   }
 
-  .a0-widget-container #a0-onestep {
+  #a0-widget #a0-onestep {
     -webkit-transition: none;
     -moz-transition: none;
     transition: none;
   }
 
-  .a0-widget-container .a0-popup .a0-overlay {
+  #a0-widget .a0-popup .a0-overlay {
     display: block;
     overflow: auto;
     position: static;
   }
 
-  .a0-widget-container .a0-popup .a0-centrix {
+  #a0-widget .a0-popup .a0-centrix {
     vertical-align: top;
     display: block;
     position: static;
   }
 
-  .a0-widget-container .a0-popup .a0-centrix .a0-panel {
+  #a0-widget .a0-popup .a0-centrix .a0-panel {
     -webkit-box-shadow: none;
     box-shadow: none;
     background: white;
   }
 
-  .a0-widget-container .a0-popup .a0-centrix .a0-panel .a0-db-actions,
-  .a0-widget-container .a0-popup .a0-centrix .a0-panel .a0-options {
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-db-actions,
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-options {
     margin-top: 20px;
     font-size: 14px;
   }
 
-  .a0-widget-container .a0-popup .a0-centrix .a0-panel .a0-footer {
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-footer {
     margin-top: 40px;
   }
 }
 
-.a0-widget-container .a0-spinner-css {
+#a0-widget .a0-spinner-css {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7352,7 +7355,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-animation: spinner 2s ease-in-out 0s infinite;
 }
 
-.a0-widget-container .a0-spinner-css:after {
+#a0-widget .a0-spinner-css:after {
   content: '';
   position: absolute;
   display: block;
