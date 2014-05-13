@@ -6940,6 +6940,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-size: 18px;
 }
 
+#a0-widget .a0-panel .a0-signup-footer {
+  margin-top: 10px;
+  opacity: .7;
+}
+
+#a0-widget .a0-panel .a0-signup-footer small {
+  font-size: 70%;
+}
+
 #a0-widget .a0-panel .a0-instructions {
   margin-bottom: 20px;
   line-height: 18px;
