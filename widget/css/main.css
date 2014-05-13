@@ -6951,6 +6951,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   opacity: .7;
 }
 
+#a0-widget .a0-panel .a0-signup-footer a {
+  text-decoration: underline;
+}
+
 #a0-widget .a0-panel .a0-signup-footer small {
   font-size: 70%;
 }
