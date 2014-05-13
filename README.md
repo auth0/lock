@@ -1,7 +1,7 @@
 [![Build Status](https://auth0-tc-hub.herokuapp.com/bt23/status.png)](https://auth0-tc-hub.herokuapp.com/bt23)
 [![NPM version](https://badge.fury.io/js/auth0-widget.js.png)](http://badge.fury.io/js/auth0-widget.js)
 
-[![Auth0](https://s3.amazonaws.com/assets.auth0.com/logo/logo-180.png)](http://auth0.com)
+[![Auth0](https://i.cloudup.com/ABJmQsqSfj.png)](http://auth0.com)
 
 <img src="https://i.cloudup.com/fKuIOiaPrL.png" />
 
