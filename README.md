@@ -3,8 +3,6 @@
 
 [![Auth0](https://i.cloudup.com/ABJmQsqSfj.png)](http://auth0.com)
 
-<img src="https://i.cloudup.com/fKuIOiaPrL.png" />
-
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
 
 The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
