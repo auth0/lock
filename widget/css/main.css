@@ -6366,6 +6366,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 6px;
   cursor: pointer;
   overflow: hidden;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 #a0-widget .a0-zocial:hover {
@@ -6413,9 +6416,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transition: all 0.2s ease;
 }
 
-#a0-widget .a0-zocial:active {
+#a0-widget .a0-zocial:active,
+#a0-widget .a0-zocial:focus {
   outline: none;
   /* outline is visible on :focus */
+  opacity: .4;
 }
 
 #a0-widget .a0-zocial.a0-icon {
@@ -6850,6 +6855,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   max-width: 320px;
   min-width: 280px;
   display: block;
+  overflow: hidden;
   /*==========  Forms  ==========*/
   /*-----  End of forms  ------*/
   /*==========  Forgot Password  ==========*/
@@ -6858,7 +6864,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-panel .a0-mode {
   -webkit-animation-name: fadein;
-  -webkit-animation-duration: .2s;
+  -webkit-animation-duration: .3s;
   -webkit-animation-iteration-count: once;
   -webkit-animation-timing-function: ease-in;
 }
@@ -7231,9 +7237,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget #a0-onestep {
-  -webkit-transition: height 100ms ease-in;
-  -moz-transition: height 100ms ease-in;
-  transition: height 100ms ease-in;
+  -webkit-transition: height 50ms ease-in;
+  -moz-transition: height 50ms ease-in;
+  transition: height 50ms ease-in;
 }
 
 #a0-widget #a0-onestep.a0-disable-transition {
