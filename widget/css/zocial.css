@@ -17,6 +17,7 @@ a.zocial {
   margin-bottom: 6px;
   cursor: pointer;
   overflow: hidden;
+  transition: opacity 0.2s ease;
 }
 .zocial:hover {
   opacity: 1;
@@ -54,9 +55,11 @@ a.zocial {
   background: rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
 }
-.zocial:active {
+.zocial:active,
+.zocial:focus {
   outline: none;
   /* outline is visible on :focus */
+  opacity: .4;
 }
 /* Buttons can be displayed as standalone icons by adding a class of "icon" */
 .zocial.icon {

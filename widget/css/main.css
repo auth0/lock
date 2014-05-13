@@ -6366,6 +6366,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 6px;
   cursor: pointer;
   overflow: hidden;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 #a0-widget .a0-zocial:hover {
@@ -6413,9 +6416,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transition: all 0.2s ease;
 }
 
-#a0-widget .a0-zocial:active {
+#a0-widget .a0-zocial:active,
+#a0-widget .a0-zocial:focus {
   outline: none;
   /* outline is visible on :focus */
+  opacity: .4;
 }
 
 #a0-widget .a0-zocial.a0-icon {

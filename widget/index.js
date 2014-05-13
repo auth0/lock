@@ -737,7 +737,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
       });
     } else {
       // popup without sso = no redirect (ajax, not setting cookie)
-      this._signInPopupNoRedirect(connection.name, self._signinOptions.popupCallback);
+      this._signInPopupNoRedirect(connection.name, self._signinOptions.popupCallback, loginOptions);
     }
 
     return;

@@ -112,7 +112,7 @@
               var widget = new Auth0Widget({
                   domain: 'auth0-demo.auth0.com',
                   clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: 'http://localhost:3000',
                   callbackOnLocationHash: true,
                   socialBigButtons: true
                   // enableReturnUserExperience: false
@@ -307,19 +307,39 @@
               callbackOnLocationHash: true
               // enableReturnUserExperience: false
           });
+          var widget2 = new Auth0Widget({
+              domain: 'auth0-demo.auth0.com',
+              clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
+              callbackURL: 'http://localhost:3000/',
+              callbackOnLocationHash: true
+              // enableReturnUserExperience: false
+          });
           var result = widget.parseHash(window.location.hash);
+          var result2 = widget2.parseHash(window.location.hash);
           if (result && result.id_token) {
-              // After login, show user profile
-              widget.getProfile(result.id_token, function(err, profile) {
-                  window.location.hash = "";
-                  if (err) {
-                    return alert(err);
-                  }
-                  console.log(profile);
-                  $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
-              });
-          } else if (result && result.error) {
+            // After login, show user profile
+            widget.getProfile(result.id_token, function(err, profile) {
+                window.location.hash = "";
+                if (err) {
+                  return alert(err);
+                }
+                console.log(profile);
+                $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            });
+          } else if (result2 && result2.id_token) {
+            // After login, show user profile
+            widget.getProfile(result2.id_token, function(err, profile) {
+                window.location.hash = "";
+                if (err) {
+                  return alert(err);
+                }
+                console.log(profile);
+                $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            });
+          } else if (result && result.error && /invalid_token/.test(result2.error)) {
               alert('error: ' + result.error);
+          } else if (result2 && result2.error && /invalid_token/.test(result.error)) {
+              alert('error: ' + result2.error);
           }
       });
 
