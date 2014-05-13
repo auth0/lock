@@ -3,13 +3,30 @@
 	@import "reset.less";
 }
 
-#widget {
-	@import "themes/static.less";
-	@import "themes/embedded.less";
-
-	@import "spinner.less";
-
+#widget{
+	@import "fonts.less";
+	@import "animate.less";
+	@import "keyframes.less";
 	@import "zocial.less";
 	@import "common.less";
-	@import "login.less";
+	@import "spinner.less";
+}
+
+@media screen and (max-width: 480px) {
+	body.widget-open{
+
+		& > *{
+			display: none;
+		}
+
+		.widget-container{
+			display: block;
+		}
+
+	}
+
+	.widget-container{
+		background: white;
+		opacity: 1;
+	}
 }

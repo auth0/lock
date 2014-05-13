@@ -1,3 +1,5 @@
+[![Auth0](https://i.cloudup.com/1vaSVATKTL.png)](http://auth0.com)
+
 [![Build Status](https://auth0-tc-hub.herokuapp.com/bt23/status.png)](https://auth0-tc-hub.herokuapp.com/bt23)
 [![NPM version](https://badge.fury.io/js/auth0-widget.js.png)](http://badge.fury.io/js/auth0-widget.js)
 
@@ -85,9 +87,9 @@ You can handle the authorization process client-side as follows:
     callbackURL:  'http://my-app.com/',
     callbackOnLocationHash: true
   });
-  
+
   var result = widget.parseHash(window.location.hash);
-  
+
   // Result is not null when is called with a valid callback URL
   if (result && result.id_token) {
     widget.getProfile(result.id_token, function (err, profile) {

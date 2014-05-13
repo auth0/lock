@@ -1,15 +1,15 @@
-<label class="a0-create-account">
+<div class="a0-create-account a0-buttons-actions">
   <% if (showSignup) { %>
   <a href="<%= locals.signupLink || 'javascript: {}' %>"
-    class="a0-sign-up">
+    class="a0-sign-up a0-btn-small">
     <%= i18n.t('signin:signupText') %>
   </a>
   <% } %>
   <% if (showSignup && showForgot) { %>
-  <span class="a0-divider">&nbsp;•&nbsp;</span>
+  <span class="a0-divider"></span>
   <% } %>
   <% if (showForgot) { %>
   <a href="<%= locals.forgotLink || 'javascript: {}' %>"
-    class="a0-forgot-pass"><%= i18n.t('signin:forgotText') %></a>
+    class="a0-forgot-pass  a0-btn-small"><%= i18n.t('signin:forgotText') %></a>
   <% } %>
-</label>
+</div>

@@ -21,6 +21,7 @@ describe('reset', function () {
     var auth0 = this.auth0.show().once('signin_ready', function () {
       bean.fire($('#a0-widget .a0-forgot-pass')[0], 'click');
     }).once('reset_ready', function () {
+      $('#a0-reset_easy_email').val('ohmy@mandatory.com');
       $('#a0-reset_easy_password').val('123');
       $('#a0-reset_easy_repeat_password').val('123');
 

@@ -1,0 +1,33 @@
+body {
+  font-family: "Helvetica Neue", "Lucida Grande", "Arial";
+}
+h1,
+h2,
+h3 {
+  font-weight: 100;
+  font-family: "Helvetica Neue", "Lucida Grande", "Arial";
+}
+.sidebar-box ul a {
+  font-size: 13px;
+  cursor: pointer;
+}
+pre {
+  border: 0;
+  padding: 20px;
+  font-size: 12px;
+}
+@media screen and (max-width: 600px) {
+  .breadcrumb ul.external-links {
+    float: left;
+  }
+  .breadcrumb ul.external-links li {
+    margin-left: 0;
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  .sidebar-box {
+    max-width: 100%;
+    background: #f1f1f1;
+  }
+}

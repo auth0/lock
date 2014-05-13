@@ -1,165 +1,66 @@
-/*
- * Created By: Ahmed Bouhuolia
- * Twitter: http://twitter.com/abouolia
- */
-
-// Variables Spinner
-@color_bg: #fafafa;
-@color_border_spinner: #747E85;
-@size_spinner: 60px;
-@size_border_spinner: 12px;
-@time_loop: 2s;
-
 .spinner-css{
   position: absolute;
-  margin: -@size_spinner / 2  0 0 -@size_spinner / 2;
-  height: @size_spinner;
-  width: @size_spinner;
   top: 50%;
   left: 50%;
-  position: absolute;
-  border-radius: 999px;
-  -webkit-border-radius: 999px;
-  -moz-border-radius: 999px;
-
-  &:after{
-    content: "";
+  margin: -2.5em;
+  display:block;
+  width: 5em;
+  font-size: 30px;
+  color: #D0D2D3;
+  border-radius: 2.5em 0 2.5em 2.5em;
+  -webkit-animation: spinner 2s ease-in-out 0s infinite;
+  //-webkit-transform: rotateY(30deg);
+  &:after {
+    content: '';
     position: absolute;
-    width: @size_spinner - @size_border_spinner;
-    height: @size_spinner - @size_border_spinner;
-    left: 0px;
-    top: 0px;
-    margin: @size_border_spinner / 2;
-    background: @color_bg;
-    opacity: 1;
-    border-radius: 999px;
-    -webkit-border-radius: 999px;
-    -moz-border-radius: 999px;
-  }
-  .side{
-    height: @size_spinner;
-    width: @size_spinner / 2;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-
-    > .fill{
-      position: absolute;
-      width: @size_spinner / 2;
-      height: @size_spinner;
-      background: @color_border_spinner;
-      border-radius: 999px;
-      -webkit-border-radius: 999px;
-      -moz-border-radius: 999px;
-      animation: cssSpinnerRight @time_loop infinite linear;
-      -webkit-animation: cssSpinnerRight @time_loop infinite linear;
-      -moz-animation: cssSpinnerRight @time_loop infinite linear;
-      -o-animation: cssSpinnerRight @time_loop infinite linear;
-    }
-    &.sp_right{
-      left: @size_spinner / 2 ;
-      border-radius: 0px 999px 999px 0px;
-      -webkit-border-radius: 0px 999px 999px 0px;
-      -moz-border-radius: 0px 999px 999px 0px;
-
-      > .fill{
-        right: 0;
-        border-right: @size_spinner / 2 solid @color_bg;
-      }
-    }
-    &.sp_left{
-      left: 0;
-      border-radius: 999px 0px 0px 999px;
-      -webkit-border-radius:999px 0px 0px 999px;
-      -moz-border-radius: 999px 0px 0px 999px;
-
-      > .fill{
-        left: 0;
-        border-left: @size_spinner / 2 solid @color_bg;
-        animation: cssSpinnerLeft @time_loop infinite linear;
-        -webkit-animation: cssSpinnerLeft @time_loop infinite linear;
-        -moz-animation: cssSpinnerLeft @time_loop infinite linear;
-        -o-animation: cssSpinnerLeft @time_loop infinite linear;
-      }
-    }
+    display: block;
+    width: 1.8em;
+    background: white;
+    top: 2.5em;
+    left: 1.6em;
+    font-family: auth0 !important;
+    content:"a";
   }
 }
-@-webkit-keyframes cssSpinnerRight{
-  0% {-webkit-transform:rotate(0deg)}
-  20% {-webkit-transform:rotate(90deg)}
-  25% {-webkit-transform:rotate(180deg)}
-  50% {-webkit-transform:rotate(180deg)}
-  70% {-webkit-transform:rotate(270deg)}
-  75% {-webkit-transform:rotate(360deg)}
-  100% {-webkit-transform:rotate(360deg)}
+
+@-webkit-keyframes spinner {
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+  }
 }
 
-@-webkit-keyframes cssSpinnerLeft{
-  0% {-webkit-transform:rotate(0deg)}
-  25% {-webkit-transform:rotate(0deg)}
-  35% {-webkit-transform:rotate(90deg)}
-  50% {-webkit-transform:rotate(180deg)}
-  75% {-webkit-transform:rotate(180deg)}
-  80% {-webkit-transform:rotate(270deg)}
-  100% {-webkit-transform:rotate(360deg)}
-}
+// @keyframes rotate {
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+// body {
+//   background: #ddd;
+//   padding: 100px;
+// }
 
-@-moz-keyframes cssSpinnerRight{
-  0% {-moz-transform:rotate(0deg)}
-  20% {-moz-transform:rotate(90deg)}
-  25% {-moz-transform:rotate(180deg)}
-  50% {-moz-transform:rotate(180deg)}
-  70% {-moz-transform:rotate(270deg)}
-  75% {-moz-transform:rotate(360deg)}
-  100% {-moz-transform:rotate(360deg)}
-}
-
-@-moz-keyframes cssSpinnerLeft{
-  0% {-moz-transform:rotate(0deg)}
-  25% {-moz-transform:rotate(0deg)}
-  35% {-moz-transform:rotate(90deg)}
-  50% {-moz-transform:rotate(180deg)}
-  75% {-moz-transform:rotate(180deg)}
-  80% {-moz-transform:rotate(270deg)}
-  100% {-moz-transform:rotate(360deg)}
-}
-
-@-o-keyframes cssSpinnerRight{
-	0% {-o-transform:rotate(0deg)}
-  	20% {-o-transform:rotate(90deg)}
-	25% {-o-transform:rotate(180deg)}
-	50% {-o-transform:rotate(180deg)}
-  	70% {-o-transform:rotate(270deg)}
-	75% {-o-transform:rotate(360deg)}
-	100% {-o-transform:rotate(360deg)}
-}
-
-@-o-keyframes cssSpinnerLeft{
-  0% {-o-transform:rotate(0deg)}
-  25% {-o-transform:rotate(0deg)}
-  35% {-o-transform:rotate(90deg)}
-  50% {-o-transform:rotate(180deg)}
-  75% {-o-transform:rotate(180deg)}
-  80% {-o-transform:rotate(270deg)}
-  100% {-o-transform:rotate(360deg)}
-}
-
-@keyframes cssSpinnerRight{
-  0% {transform:rotate(0deg)}
-  20% {transform:rotate(90deg)}
-  25% {transform:rotate(180deg)}
-  50% {transform:rotate(180deg)}
-  70% {transform:rotate(270deg)}
-  75% {transform:rotate(360deg)}
-  100% {transform:rotate(360deg)}
-}
-
-@keyframes cssSpinnerLeft{
-  0% {transform:rotate(0deg)}
-  25% {transform:rotate(0deg)}
-  35% {transform:rotate(90deg)}
-  50% {transform:rotate(180deg)}
-  75% {transform:rotate(180deg)}
-  80% {transform:rotate(270deg)}
-  100% {transform:rotate(360deg)}
-}
+// /* The default for nice browsers */
+// .spinner {
+//   width: 20px;
+//   height: 20px;
+//   background: url("http://media.24ways.org/2009/15/assets/img/spinner.png") no-repeat center center;
+//   background-size: 20px;
+//   animation-name: rotate;
+//   animation-duration: 1s;
+//   animation-iteration-count: infinite;
+//   animation-timing-function: linear;
+//   /* If Canvas is on IE9, it adds the .ie9 class to the body tag, so ... */
+//   /* If you want a large spinner */
+// }
+// .ie9 .spinner {
+//   background: url("best-best-crappy-gif-you-can-find") no-repeat center center;
+//   background-size: auto;
+// }
+// .spinner.spinner-large {
+//   width: 40px;
+//   height: 40px;
+//   background-size: 40px;
+// }

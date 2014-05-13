@@ -115,7 +115,7 @@ describe('auth0-Widget', function () {
               expect($('#a0-widget .a0-loggedin').css('display')).to.equal('block');
               expect($('#a0-widget .a0-signup').css('display')).to.equal('none');
               expect($('#a0-widget .a0-reset').css('display')).to.equal('none');
-              expect($('#a0-widget .a0-loggedin .a0-strategy span').attr('title')).to.equal('john@gmail.com (Google)');
+              expect($('#a0-widget .a0-loggedin .a0-strategy [data-strategy]').attr('title')).to.equal('john@gmail.com (Google)');
               done();
             });
   });
@@ -206,7 +206,7 @@ describe('auth0-Widget', function () {
 
       widget.show().on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       });
     });
 
@@ -220,7 +220,7 @@ describe('auth0-Widget', function () {
 
       widget.show({ state: 'foo' }).on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       });
     });
 
@@ -285,6 +285,8 @@ describe('auth0-Widget', function () {
       widget.show().on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
+        // we need this to check if password is ignored or not in validation
+        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       });
     });
@@ -300,6 +302,8 @@ describe('auth0-Widget', function () {
       widget.show({ state: 'foo' }).on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
+        // we need this to check if password is ignored or not in validation
+        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       });
     });
@@ -312,7 +316,7 @@ describe('auth0-Widget', function () {
 
       widget.show({ extraParameters: { access_type: 'offline' } }).on('transition_mode', function (mode) {
         if(mode !== 'signin') return;
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist span[data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       });
     });
   });

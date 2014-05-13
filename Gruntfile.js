@@ -26,13 +26,13 @@ module.exports = function (grunt) {
       example: {
         options: {
           hostname: '*',
-          base: 'example',
+          base: ['example', 'example/build', 'build'],
           port: 3000
         }
       },
       example_https: {
         options: {
-          base:  "example",
+          base: ['example', 'example/build', 'build'],
           port:  3000,
           protocol: 'https',
           hostname: '*',
@@ -66,6 +66,11 @@ module.exports = function (grunt) {
         files: {
           "widget/css/main.css": "widget/css/main.less",
           "widget/css/zocial.css": "widget/css/zocial.less"
+        }
+      },
+      example: {
+        files: {
+          "example/build/index.css": "example/index.less"
         }
       }
     },
@@ -148,6 +153,10 @@ module.exports = function (grunt) {
                 'widget/**/*',
                 'i18n/*'],
         tasks: ['build']
+      },
+      example: {
+        files: ['example/*'],
+        tasks: ["less:example"]
       }
     },
     s3: {
@@ -226,9 +235,9 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
-                                       "browserify:debug", "exec:uglify", "copy:example"]);
-  grunt.registerTask("example",       ["connect:example", "build", "watch"]);
-  grunt.registerTask("example_https", ["connect:example_https", "build", "watch"]);
+                                       "browserify:debug", "exec:uglify"]);
+  grunt.registerTask("example",       ["less:example", "connect:example", "build", "watch"]);
+  grunt.registerTask("example_https", ["less:example", "connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);

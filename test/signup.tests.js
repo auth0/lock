@@ -58,7 +58,7 @@ describe('sign up', function () {
     this.auth0.show().on('signin_ready', function (mode) {
       bean.fire($('#a0-widget .a0-sign-up')[0], 'click');
     }).on('signup_ready', function() {
-      bean.fire($('.a0-signup span[data-strategy="google-oauth2"]')[0], 'click');
+      bean.fire($('.a0-signup [data-strategy="google-oauth2"]')[0], 'click');
     });
   });
 

@@ -21,15 +21,15 @@
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
   "dependencies": {
-    "bonzo": "~1.3.6",
-    "qwery": "~3.4.1",
     "auth0-js": "~2.1.3",
     "bean": "~1.0.4",
-    "underscore": "~1.5.2",
-    "ejsify": "0.0.2",
+    "bonzo": "~1.3.6",
+    "qwery": "~3.4.1",
     "css-prefix": "0.0.2",
+    "domready": "~0.2.13",
+    "ejsify": "0.0.2",
     "has-transitions": "https://github.com/jfromaniello/has-transitions/tarball/patch-1",
-    "domready": "~0.2.13"
+    "underscore": "~1.5.2"
   },
   "devDependencies": {
     "browserify": "~2.35.0",
