@@ -66,6 +66,7 @@
                 <li><a id="login-button-all"><i></i>Login (all languages)</a></li>
                 <li><a id="logout-button"><i></i>Logout</a></li>
                 <li><a id="signup-button"><i></i>Show SignUp</a></li>
+                <li><a id="signup-button-footer-text"><i></i>Show SignUp (footer text)</a></li>
                 <li><a id="reset-button"><i></i>Show Reset Password</a></li>
               </ul>
             </div>
@@ -272,7 +273,6 @@
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true
-                  // enableReturnUserExperience: false
               });
               widget.logout({
                   returnTo: 'http://localhost:3000'
@@ -283,9 +283,21 @@
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
                   callbackURL: 'http://localhost:3000/',
+                  callbackOnLocationHash: true
+              });
+              widget.signup({});
+          });
+          $('#signup-button-footer-text').on('click', function() {
+              var widget = new Auth0Widget({
+                  domain: 'mdocs.auth0.com',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+                  callbackURL: 'http://localhost:3000/',
                   callbackOnLocationHash: true,
-                  username_style: 'username'
-                  // enableReturnUserExperience: false
+                  dict: {
+                    signup: {
+                      footerText: 'By signing up, you agree to our <a href="/terms" target="_new">Terms of service</a> and <a href="/privacy" target="_new">Privacy policy</a>'
+                    }
+                  }
               });
               widget.signup({});
           });
