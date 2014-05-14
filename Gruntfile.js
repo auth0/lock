@@ -20,6 +20,7 @@ module.exports = function (grunt) {
         options: {
           // base: "test",
           hostname: '*',
+          base: ['.', 'example', 'example/build', 'build'],
           port: 9999
         }
       },
