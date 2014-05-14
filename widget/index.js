@@ -285,9 +285,9 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
   setTimeout(function () {
     $().removeClass('a0-mode-signin');
     $().css('display', 'none');
+    bonzo(document.body).removeClass('a0-widget-open');
     if (cb) cb();
     self.emit('closed');
-    bonzo(document.body).removeClass('a0-widget-open');
   }, 500);
 
   return self;
