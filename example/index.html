@@ -103,7 +103,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
               });
@@ -113,7 +113,7 @@
               var widget = new Auth0Widget({
                   domain: 'auth0-demo.auth0.com',
                   clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
-                  callbackURL: 'http://localhost:3000',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   socialBigButtons: true
                   // enableReturnUserExperience: false
@@ -124,7 +124,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   // enableReturnUserExperience: false
               });
@@ -136,7 +136,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
               });
@@ -153,7 +153,7 @@
             var widget = new Auth0Widget({
                 domain: 'mdocs.auth0.com',
                 clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                callbackURL: 'http://localhost:3000/',
+                callbackURL: window.location.href,
                 callbackOnLocationHash: true
                 // enableReturnUserExperience: false
             });
@@ -172,7 +172,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   username_style: 'username'
                   // enableReturnUserExperience: false
@@ -185,7 +185,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
               });
@@ -197,7 +197,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
               });
@@ -209,7 +209,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   showIcon: true,
                   icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png'
@@ -220,7 +220,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   showSignup: false,
                   showForgot: false
@@ -231,7 +231,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   dict: 'it'
               });
@@ -243,7 +243,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   dict: 'es'
               });
@@ -260,7 +260,7 @@
                   (new Auth0Widget({
                       domain: 'mdocs.auth0.com',
                       clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                      callbackURL: 'http://localhost:3000/',
+                      callbackURL: window.location.href,
                       callbackOnLocationHash: true,
                       dict: l,
                       enableReturnUserExperience: false
@@ -271,18 +271,18 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true
               });
               widget.logout({
-                  returnTo: 'http://localhost:3000'
+                  returnTo: window.location.href
               });
           });
           $('#signup-button').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true
               });
               widget.signup({});
@@ -291,7 +291,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   dict: {
                     signup: {
@@ -305,7 +305,7 @@
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
                   clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-                  callbackURL: 'http://localhost:3000/',
+                  callbackURL: window.location.href,
                   callbackOnLocationHash: true
                   // enableReturnUserExperience: false
               });
@@ -315,14 +315,14 @@
           var widget = new Auth0Widget({
               domain: 'mdocs.auth0.com',
               clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-              callbackURL: 'http://localhost:3000/',
+              callbackURL: window.location.href,
               callbackOnLocationHash: true
               // enableReturnUserExperience: false
           });
           var widget2 = new Auth0Widget({
               domain: 'auth0-demo.auth0.com',
               clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
-              callbackURL: 'http://localhost:3000/',
+              callbackURL: window.location.href,
               callbackOnLocationHash: true
               // enableReturnUserExperience: false
           });
