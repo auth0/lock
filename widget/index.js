@@ -1124,7 +1124,10 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     $('.a0-overlay').addClass('a0-no-placeholder-support');
   }
 
-  bonzo(document.body).addClass('a0-widget-open');
+  if (!self._signinOptions.container) {
+    bonzo(document.body).addClass('a0-widget-open');
+  }
+
   self._initialize(widgetLoadedCallback);
   return self;
 };
