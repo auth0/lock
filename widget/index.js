@@ -1091,6 +1091,10 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
 
   self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
 
+  // remove widget container (if exist)
+  $('.a0-widget-container').remove();
+  $().remove();
+
   // widget container
   if (self._signinOptions.container) {
     self._signinOptions.theme = 'static';
@@ -1100,8 +1104,6 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     var specifiedContainer = document.getElementById(self._signinOptions.container);
     specifiedContainer.innerHTML = self._getEmbededTemplate(self._signinOptions);
   } else {
-    // remove widget container (if exist)
-    $().parent().remove();
 
     var div = document.createElement('div');
     bonzo(div).addClass('a0-widget-container');
