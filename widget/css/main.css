@@ -7195,7 +7195,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-popup .a0-overlay.a0-ie8-overlay {
   background: none;
-  background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png');
+  background-image: url('//s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png');
 }
 
 #a0-widget .a0-popup .a0-overlay {
@@ -7216,7 +7216,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -ms-user-select: none;
   user-select: none;
   background: #000;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   -webkit-transition: 300ms opacity ease-out;
   -moz-transition: 300ms opacity ease-out;
@@ -7316,7 +7316,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 @media screen and (max-width: 480px) {
-  #a0-widget .a0-ie8-overlay {
+  #a0-widget .a0-overlay {
     background: none !important;
   }
 
