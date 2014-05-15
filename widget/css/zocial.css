@@ -202,8 +202,8 @@ a.zocial {
   color: #030037;
 }
 .zocial.dropbox {
-  background-color: #fff;
-  color: #312c2a;
+  background-color: #007ee5;
+  color: #fff;
 }
 .zocial.facebook {
   background-color: #4863ae;
@@ -244,7 +244,7 @@ a.zocial {
   color: #333;
 }
 .zocial.paypal {
-  background-color: #fff;
+  background-color: #eee;
   color: #32689a;
 }
 .zocial.twitter {
@@ -274,7 +274,7 @@ a.zocial {
   color: #fff;
 }
 .zocial.salesforce {
-  background-color: #fff;
+  background-color: #eee;
   color: #ff0000;
 }
 .zocial.windows {

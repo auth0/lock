@@ -6600,8 +6600,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-zocial.a0-dropbox {
-  background-color: #fff;
-  color: #312c2a;
+  background-color: #007ee5;
+  color: #fff;
 }
 
 #a0-widget .a0-zocial.a0-facebook {
@@ -6654,7 +6654,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-zocial.a0-paypal {
-  background-color: #fff;
+  background-color: #eee;
   color: #32689a;
 }
 
@@ -6692,7 +6692,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-zocial.a0-salesforce {
-  background-color: #fff;
+  background-color: #eee;
   color: #ff0000;
 }
 
