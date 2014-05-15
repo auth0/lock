@@ -22,7 +22,6 @@ var reset = require('./modes/reset');
 var $ = require('./js/bonzo_qwery');
 var bonzo = require('bonzo');
 var is_small_screen = require('./js/is_small_screen');
-var is_old_ie = require('./js/is_old_ie');
 var get_viewport = require('./js/get_viewport');
 
 //browser incompatibilities fixes
@@ -1114,10 +1113,6 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
       alt_spinner: !has_animations() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
     });
     document.body.appendChild(div);
-
-    if (!~$('.a0-overlay').css('background-image').indexOf("radial") && is_old_ie()) {
-      $('.a0-overlay').addClass('a0-ie8-overlay');
-    }
 
   }
 
