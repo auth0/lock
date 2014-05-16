@@ -81,28 +81,24 @@ You can handle the authorization process client-side as follows:
 
 ~~~javascript
 <script type="text/javascript">
-  var widget = new Auth0Widget({
-    domain:       'mine.auth0.com',
-    clientID:     'dsa7d77dsa7d7',
-    callbackURL:  'http://my-app.com/',
-    callbackOnLocationHash: true
-  });
 
-  var result = widget.parseHash(window.location.hash);
-
-  // Result is not null when is called with a valid callback URL
-  if (result && result.id_token) {
-    widget.getProfile(result.id_token, function (err, profile) {
+  function callback(err, profile, id_token, access_token, state) {
       if (err) {
         // Handle authentication error
         return;
       }
       alert('hello ' + profile.name);
       //use result.id_token to call your rest api
-    });
-  } else if (result && result.error) {
-    alert('error: ' + result.error);
   }
+
+  var widget = new Auth0Widget({
+    domain:       'mine.auth0.com',
+    clientID:     'dsa7d77dsa7d7',
+    callbackURL:  'http://my-app.com/',
+    callbackOnLocationHash: true
+  });
+  
+  widget.signin({popup: true}, null, callback)
 </script>
 ~~~
 
