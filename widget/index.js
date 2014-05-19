@@ -546,6 +546,9 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 
 Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCallback, extraParams) {
   var self = this;
+  var container = this._getActiveLoginView();
+  var email_input = $('input[name=email]', container);
+  var password_input = $('input[name=password]', container);
 
   extraParams = extraParams || {};
 
@@ -571,6 +574,11 @@ Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCa
       } else if (err.message === 'access_denied') {
         // Permissions not granted
         self._showError(self._dict.t('signin:userConsentFailed'));
+      } else if (err.status !== 401) {
+        self._showError(self._dict.t('signin:serverErrorText'));
+      } else {
+        self._focusError(email_input);
+        self._focusError(password_input);
       }
       self._setLoginView({});
     } else {
