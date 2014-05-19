@@ -217,5 +217,20 @@ module.exports = {
         css: 'instagram',
         title: 'Instagram',
         social: true
+    },
+    'thecity': {
+        css: 'thecity',
+        title: 'The City',
+        social: true
+    },
+    'thecity-sandbox': {
+        css: 'thecity',
+        title: 'The City (sandbox)',
+        social: true
+    },
+    'planningcenter': {
+        css: 'planningcenter',
+        title: 'Planning Center',
+        social: true
     }
 };
