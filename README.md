@@ -58,7 +58,7 @@ widget.signin({
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
   showIcon: true
-}, funcion () {
+}, function () {
   // The Auth0 Widget is now loaded.
 });
 ~~~
