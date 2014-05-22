@@ -1,12 +1,19 @@
 <div id="a0-onestep" class="a0-panel a0-onestep a0-free-subscription">
     <% if (!locals.embedded) { %>
     <div class="a0-header a0-top-header">
+
+        <div class="a0-bg-gradient">
+            
+        </div>
+
         <div class="a0-image <%= !options.showIcon ? 'a0-hide' : '' %>">
             <img src="<%= options.icon || '' %>">
         </div>
+
         <div class="a0-avatar <%= options.showIcon ? 'a0-hide' : '' %>">
             <i class="a0-avatar-guest a0-icon-budicon-2"></i>
         </div>
+        
         <h1><%= i18n.t('signin:title') %></h1>
         <h2 class="a0-error a0-hide">&nbsp;</h2>
         <h2 class="a0-success a0-hide">&nbsp;</h2>
