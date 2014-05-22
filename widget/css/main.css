@@ -6884,7 +6884,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   position: absolute;
   display: block;
   width: 1.8em;
-  background: white;
   top: 2.5em;
   left: 1.6em;
   font-family: "auth0" !important;
@@ -7393,7 +7392,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .a0-widget .a0-panel .a0-avatar {
   background-color: transparent;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .a0-widget .a0-panel .a0-avatar i {
@@ -7411,6 +7410,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .a0-widget .a0-panel button.a0-primary {
   background: rgba(0, 0, 0, 0.4);
   border-radius: 100px;
+  width: 80%;
 }
 
 @media screen and (max-width: 480px) {
