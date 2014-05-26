@@ -19,5 +19,5 @@ node_modules
 
 release
 
-# Sourcemap
-build/auth0-widget.js.map
+# Sourcemaps
+build/auth0-widget-*.js.map

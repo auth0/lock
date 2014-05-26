@@ -43,14 +43,24 @@ module.exports = function (grunt) {
       }
     },
     browserify: {
-      debug: {
-        files: {
-          'build/auth0-widget.js': ['standalone.js']
-        },
-        options: {
+      options: {
+        bundleOptions: {
           debug: true
         }
       },
+      debug: {
+        files: {
+          'build/auth0-widget.js': ['standalone.js']
+        }
+      },
+    },
+
+    /* Remove source maps from auth0-widget.js (so build is location independent) */
+    exorcise: {
+      debug: {
+        dest: 'build/auth0-widget-' + pkg.version + '.js.map',
+        src: ['build/auth0-widget.js']
+      }
     },
     // uglify: {
     //   min: {
@@ -106,7 +116,8 @@ module.exports = function (grunt) {
       example: {
         files: {
           'example/auth0-widget.min.js': 'build/auth0-widget.min.js',
-          'example/auth0-widget.js':     'build/auth0-widget.js'
+          'example/auth0-widget.js':     'build/auth0-widget.js',
+          'example/auth0-widget.js.map': 'build/auth0-widget.js.map'
         }
       },
       release: {
@@ -173,24 +184,13 @@ module.exports = function (grunt) {
       },
       clean: {
         del: [
-          {
-            src:     'w2/auth0-widget-' + pkg.version + '.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + pkg.version + '.min.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + major_version + '.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + major_version + '.min.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + minor_version + '.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + minor_version + '.min.js',
-          }
+          { src:     'w2/auth0-widget-' + pkg.version + '.js', },
+          { src:     'w2/auth0-widget-' + pkg.version + '.js.map', },
+          { src:     'w2/auth0-widget-' + pkg.version + '.min.js', },
+          { src:     'w2/auth0-widget-' + major_version + '.js', },
+          { src:     'w2/auth0-widget-' + major_version + '.min.js', },
+          { src:     'w2/auth0-widget-' + minor_version + '.js', },
+          { src:     'w2/auth0-widget-' + minor_version + '.min.js', }
         ]
       },
       publish: {
@@ -221,6 +221,7 @@ module.exports = function (grunt) {
         },
         files: [
           { dest:     'w2/auth0-widget-' + pkg.version + '.js', },
+          { dest:     'w2/auth0-widget-' + pkg.version + '.js.map', },
           { dest:     'w2/auth0-widget-' + pkg.version + '.min.js', },
           { dest:     'w2/auth0-widget-' + major_version + '.js', },
           { dest:     'w2/auth0-widget-' + major_version + '.min.js', },
@@ -243,7 +244,7 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
-                                       "browserify:debug", "exec:uglify"]);
+                                       "browserify:debug", "exorcise", "exec:uglify"]);
   grunt.registerTask("example",       ["less:example", "connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["less:example", "connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
