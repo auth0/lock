@@ -49,12 +49,13 @@
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.2.0",
     "grunt-exec": "~0.4.2",
-    "grunt-exorcise": "^0.1.0",
     "grunt-maxcdn": "https://github.com/siacomuzzi/grunt-maxcdn/tarball/0.0.1",
     "grunt-s3": "~0.2.0-alpha.3",
     "mocha": "~1.13.0",
+    "mold-source-map": "^0.3.0",
     "rimraf": "~2.2.2",
     "testem": "~0.5.4",
+    "through": "^2.3.4",
     "uglify-js": "~2.4.0"
   },
   "browserify": {
