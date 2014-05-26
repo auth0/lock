@@ -27,7 +27,7 @@
     "qwery": "~3.4.1",
     "css-prefix": "0.0.2",
     "domready": "~0.2.13",
-    "ejsify": "0.0.2",
+    "ejsify": "0.1.0",
     "has-transitions": "https://github.com/jfromaniello/has-transitions/tarball/patch-1",
     "underscore": "~1.5.2"
   },
