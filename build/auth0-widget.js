@@ -8959,4 +8959,4 @@ module.exports = {
 },{"underscore":41}]},{},[42])
 
 
-//# sourceMappingURL=auth0-widget-4.0.11.js.map
+//# sourceMappingURL=auth0-widget-4.0.12.js.map
