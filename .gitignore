@@ -18,3 +18,6 @@ npm-debug.log
 node_modules
 
 release
+
+# Sourcemap
+build/auth0-widget.js.map
