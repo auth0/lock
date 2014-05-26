@@ -203,6 +203,13 @@ module.exports = function (grunt) {
         ]
       }
     },
+    /* Check if the repository is clean after build. If the version found in the build folder was not updated
+     * this will make the build fail. */
+    checkrepo: {
+      cdn: {
+        clean: true
+      }
+    },
     maxcdn: {
       purgeCache: {
         options: {
@@ -242,5 +249,5 @@ module.exports = function (grunt) {
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
+  grunt.registerTask("cdn",           ["build", "copy:release", "checkrepo", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
 };
