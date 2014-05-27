@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "brfs": "0.0.8",
-    "browserify": "~4.1.5",
+    "browserify": "4.1.5",
     "browserstack-cli": "0.3.1",
     "expect.js": "~0.2.0",
     "grunt": "^0.4.5",
