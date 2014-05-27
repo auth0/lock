@@ -20,6 +20,7 @@ module.exports = function (grunt) {
         options: {
           // base: "test",
           hostname: '*',
+          base: ['.', 'example', 'example/build', 'build'],
           port: 9999
         }
       },
@@ -42,15 +43,32 @@ module.exports = function (grunt) {
       }
     },
     browserify: {
+      options: {
+        bundleOptions: {
+          debug: true
+        },
+
+        // Convert absolute sourcemap filepaths to relative ones using mold-source-map.
+        postBundleCB: function(err, src, cb) {
+          var through = require('through');
+          var stream = through().pause().queue(src).end();
+          var buffer = '';
+          stream.pipe(require('mold-source-map').transformSourcesRelativeTo(__dirname)).pipe(through(function(chunk) {
+            buffer += chunk.toString();
+          }, function() {
+            cb(err, buffer);
+          }));
+          stream.resume();
+        }
+
+      },
       debug: {
         files: {
           'build/auth0-widget.js': ['standalone.js']
-        },
-        options: {
-          debug: true
         }
       },
     },
+
     // uglify: {
     //   min: {
     //     files: {
@@ -172,24 +190,12 @@ module.exports = function (grunt) {
       },
       clean: {
         del: [
-          {
-            src:     'w2/auth0-widget-' + pkg.version + '.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + pkg.version + '.min.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + major_version + '.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + major_version + '.min.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + minor_version + '.js',
-          },
-          {
-            src:     'w2/auth0-widget-' + minor_version + '.min.js',
-          }
+          { src:     'w2/auth0-widget-' + pkg.version + '.js', },
+          { src:     'w2/auth0-widget-' + pkg.version + '.min.js', },
+          { src:     'w2/auth0-widget-' + major_version + '.js', },
+          { src:     'w2/auth0-widget-' + major_version + '.min.js', },
+          { src:     'w2/auth0-widget-' + minor_version + '.js', },
+          { src:     'w2/auth0-widget-' + minor_version + '.min.js', }
         ]
       },
       publish: {
@@ -200,6 +206,13 @@ module.exports = function (grunt) {
             options: { gzip: false }
           }
         ]
+      }
+    },
+    /* Check if the repository is clean after build. If the version found in the build folder was not updated
+     * this will make the build fail. */
+    checkrepo: {
+      cdn: {
+        clean: true
       }
     },
     maxcdn: {
@@ -241,5 +254,5 @@ module.exports = function (grunt) {
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("test",          ["build", "exec:test-phantom"]);
   grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
+  grunt.registerTask("cdn",           ["build", "copy:release", "checkrepo", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
 };

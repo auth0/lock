@@ -285,9 +285,9 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
   setTimeout(function () {
     $().removeClass('a0-mode-signin');
     $().css('display', 'none');
+    bonzo(document.body).removeClass('a0-widget-open');
     if (cb) cb();
     self.emit('closed');
-    bonzo(document.body).removeClass('a0-widget-open');
   }, 500);
 
   return self;
@@ -433,13 +433,13 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
           callback(null, self._currentPane);
           // XXX: safari flickers when changing height property
           if (is_small_screen()) pane_container.css('height','auto');
-        }, 0);
+        }, 10);
       });
       pane_container.css('height', new_height.toString() + 'px');
 
       if (new_height >= get_viewport().height) pane_container.addClass('a0-equal-viewport');
-    }, 0);
-  }, 0);
+    }, 10);
+  }, 10);
 };
 
 Auth0Widget.prototype._setLoginView = function(options, callback) {
@@ -546,6 +546,9 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 
 Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCallback, extraParams) {
   var self = this;
+  var container = this._getActiveLoginView();
+  var email_input = $('input[name=email]', container);
+  var password_input = $('input[name=password]', container);
 
   extraParams = extraParams || {};
 
@@ -571,6 +574,11 @@ Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCa
       } else if (err.message === 'access_denied') {
         // Permissions not granted
         self._showError(self._dict.t('signin:userConsentFailed'));
+      } else if (err.status !== 401) {
+        self._showError(self._dict.t('signin:serverErrorText'));
+      } else {
+        self._focusError(email_input);
+        self._focusError(password_input);
       }
       self._setLoginView({});
     } else {
@@ -1091,6 +1099,10 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
 
   self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
 
+  // remove widget container (if exist)
+  $('.a0-widget-container').remove();
+  $().remove();
+
   // widget container
   if (self._signinOptions.container) {
     self._signinOptions.theme = 'static';
@@ -1100,8 +1112,6 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     var specifiedContainer = document.getElementById(self._signinOptions.container);
     specifiedContainer.innerHTML = self._getEmbededTemplate(self._signinOptions);
   } else {
-    // remove widget container (if exist)
-    $().parent().remove();
 
     var div = document.createElement('div');
     bonzo(div).addClass('a0-widget-container');
@@ -1112,10 +1122,6 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     });
     document.body.appendChild(div);
 
-    if (!~$('.a0-overlay').css('background-image').indexOf("radial") &&
-          !~navigator.appVersion.indexOf("MSIE 10")) {
-      $('.a0-overlay').addClass('a0-ie8-overlay');
-    }
   }
 
   self._node = $()[0];
@@ -1124,7 +1130,10 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     $('.a0-overlay').addClass('a0-no-placeholder-support');
   }
 
-  bonzo(document.body).addClass('a0-widget-open');
+  if (!self._signinOptions.container) {
+    bonzo(document.body).addClass('a0-widget-open');
+  }
+
   self._initialize(widgetLoadedCallback);
   return self;
 };

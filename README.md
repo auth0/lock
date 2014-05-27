@@ -3,7 +3,7 @@
 [![Build Status](https://auth0-tc-hub.herokuapp.com/bt23/status.png)](https://auth0-tc-hub.herokuapp.com/bt23)
 [![NPM version](https://badge.fury.io/js/auth0-widget.js.png)](http://badge.fury.io/js/auth0-widget.js)
 
-[![Auth0](https://s3.amazonaws.com/assets.auth0.com/logo/logo-180.png)](http://auth0.com)
+[![Auth0](https://i.cloudup.com/fKuIOiaPrL.png)](http://auth0.com)
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
 
@@ -23,7 +23,7 @@ Take `auth0-widget.js` or `auth0-widget.min.js` from the `build` directory and i
 Construct a new instance of the Auth0 Widget as follows:
 
 ~~~html
-<script src="http://cdn.auth0.com/w2/auth0-widget-3.0.10.js"></script>
+<script src="http://cdn.auth0.com/w2/auth0-widget-4.0.js"></script>
 <script type="text/javascript">
   var widget = new Auth0Widget({
     domain:       'mine.auth0.com',
@@ -58,7 +58,7 @@ widget.signin({
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
   showIcon: true
-}, funcion () {
+}, function () {
   // The Auth0 Widget is now loaded.
 });
 ~~~
@@ -81,28 +81,24 @@ You can handle the authorization process client-side as follows:
 
 ~~~javascript
 <script type="text/javascript">
-  var widget = new Auth0Widget({
-    domain:       'mine.auth0.com',
-    clientID:     'dsa7d77dsa7d7',
-    callbackURL:  'http://my-app.com/',
-    callbackOnLocationHash: true
-  });
 
-  var result = widget.parseHash(window.location.hash);
-
-  // Result is not null when is called with a valid callback URL
-  if (result && result.id_token) {
-    widget.getProfile(result.id_token, function (err, profile) {
+  function callback(err, profile, id_token, access_token, state) {
       if (err) {
         // Handle authentication error
         return;
       }
       alert('hello ' + profile.name);
       //use result.id_token to call your rest api
-    });
-  } else if (result && result.error) {
-    alert('error: ' + result.error);
   }
+
+  var widget = new Auth0Widget({
+    domain:       'mine.auth0.com',
+    clientID:     'dsa7d77dsa7d7',
+    callbackURL:  'http://my-app.com/',
+    callbackOnLocationHash: true
+  });
+  
+  widget.signin({popup: true}, null, callback)
 </script>
 ~~~
 
