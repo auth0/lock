@@ -1,20 +1,14 @@
 .widget {
 	@import "normalize.less";
 	@import "reset.less";
-}
-
-#widget{
-	@import "fonts.less";
-	@import "animate.less";
 	@import "keyframes.less";
 	@import "zocial.less";
 	@import "common.less";
-	@import "spinner.less";
+	@import "themes/default.less";
 }
 
 @media screen and (max-width: 480px) {
 	body.widget-open{
-
 		& > *{
 			display: none;
 		}
@@ -22,7 +16,6 @@
 		.widget-container{
 			display: block;
 		}
-
 	}
 
 	.widget-container{

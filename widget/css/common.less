@@ -12,439 +12,19 @@
   display: none !important;
 }
 
-.buttons-actions{
-  margin-top: 20px;
-}
-
-.btn-small{
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 1px solid #f1f1f1;
-  padding: 4px 10px 4px 11px;
-  margin: 0 5px;
-  border-radius: 100px;
-  display: inline-block;
-
-  &:hover{
-    background: #f1f1f1;
-  }
-}
-
-
-/*=============================
-=            Panel            =
-=============================*/
 .panel{
-  text-align: center;
   background: white;
-  padding: 20px ;
-  border-radius: 3px;
-  box-shadow: 0 1px 10px rgba(0,0,0,.4);
-  font-size: 13px;
-  position: relative;
-  color: #4d4d4d;
   max-width: 320px;
   min-width: 280px;
-  display: block;
   overflow: hidden;
-
-
-  .mode{
-    -webkit-animation-name: fadein;
-    -webkit-animation-duration: .3s;
-    -webkit-animation-iteration-count: once;
-    -webkit-animation-timing-function: ease-in;
-  }
-
-  *, input{
-    font-family: "proxima_nova";
-    font-smoothing: antialiased;
-  }
-
-  h1,h2,h3{
-      font-family: "proxima_nova"!important;
-  }
-
-  a, button{
-    font-family: "proxima_nova"!important;
-    transition: all 0.2s ease;
-    font-weight: bold;
-  }
-
-  h1{
-    font-size: 24px;
-    font-weight: 100;
-    margin-bottom: 20px;
-  }
-
-  .header{
-    margin-bottom: 10px;
-  }
-
-  .image {
-    margin: auto;
-    display: inline-block;
-    margin-bottom: 10px;
-    img {
-      width: auto;
-      max-height: 58px;
-    }
-  }
-
-  .avatar{
-    background: #D0D2D3;
-    margin: auto;
-    display: inline-block;
-    margin-bottom: 10px;
-    border-radius: 100%;
-    width: 58px;
-    height: 58px;
-    i{
-      color: #EB5424;
-      font-size: 30px;
-      display: block;
-      padding-top: 15px;
-    }
-  }
-
-  .footer{
-    margin-top: 20px;
-    .logo{
-      margin-top: 20px;
-      position: absolute;
-      bottom: 10px;
-      right: 0;
-      left: 0;
-      display: block;
-      i{
-        color: #EB5424;
-        font-size: 18px;
-      }
-    }
-  }
-
-  .signup-footer {
-    margin-top: 10px;
-    opacity: .7;
-    a {
-      text-decoration: underline;
-    }
-    small {
-      font-size: 70%;
-    }
-  }
-
-  .instructions {
-    margin-bottom: 20px;
-    line-height: 18px;
-  }
-
-  .last-time{
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  /*==========  Forms  ==========*/
-
-  .password, .repeatPassword{
-    border-top: 1px solid #ccc;
-  }
-
-  .email, .password, .repeatPassword{
-    .input-box{
-      position: relative;
-      height: 50px;
-
-      i{
-        font-size: 14px;
-        z-index: 10000;
-        top: 18px;
-        left: 16px;
-        position: absolute;
-        color: #999;
-      }
-    }
-  }
-
-  .email  input, .password input, .repeatPassword input{
-    padding: 16px 10px;
-    padding-left: 40px;
-    border-radius: 0;
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    background: #fff;
-    max-width: 228px;
-    width:100%;
-    &:focus{
-      background: #fff;
-    }
-
-  }
-
-  input::-webkit-input-placeholder {
-    color: #9da4ad;
-    -webkit-transition: color .2s ease-in;
-  }
-
-  input:-moz-placeholder {
-    color: #9da4ad;
-  }
-
-  input::-moz-placeholder {
-    color: #9da4ad;
-  }
-
-  input:-ms-input-placeholder {
-    color: #9da4ad;
-  }
-
-
-  input:focus::-webkit-input-placeholder {
-    color: #666;
-  }
-
-  input:focus:-moz-placeholder {
-    color: #666;
-  }
-
-  input:focus::-moz-placeholder {
-    color: #666;
-  }
-
-  input:focus:-ms-input-placeholder {
-    color: #666;
-  }
-
-  .inputs{
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .email input{
-    border-bottom: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-  }
-
-  .password input{
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
-
-  .separator {
-    margin-bottom: 6px;
-    margin-top: 14px;
-    color: #999;
-    font-size: 12px;
-    span{
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-  }
-
-  button.primary{
-    padding: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: block !important;
-    width: 100% !important;
-    float: none;
-    min-width: auto;
-    letter-spacing: 1px;
-    padding: 20px 0;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    background-color: #16214D;
-    color: white;
-    cursor: pointer;
-    display: block;
-    border-radius: 3px;
-    &:hover{
-      background: #0b1025
-    }
-  }
-
-  button.primary:hover{
-    // background-color: #
-  }
-
-  input[disabled]{
-    background-color: rgb(217, 222, 224);
-  }
-
-  .success{color: green}
-  .error{color: red}
-
-  &.errors{
-    // border-color: red;
-
-    &.errors-global{
-      border-color: red;
-    }
-
-    .error-input{
-
-      i {
-        color: red;
-      }
-
-      span{
-        position: absolute;
-        top: 15px;
-        right: 14px;
-        font-size: 9px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: red;
-        border: 1px solid red;
-        padding: 4px 6px 4px 7px;
-        border-radius: 3px;
-        display: block;
-        z-index: 10000;
-      }
-
-      input{
-        color: red;
-      }
-
-      input::-webkit-input-placeholder {
-        color: red;
-      }
-
-      input:-moz-placeholder {
-        color: red;
-      }
-
-      input::-moz-placeholder {
-        color: red;
-      }
-
-      input:-ms-input-placeholder {
-        color: red;
-      }
-
-    }
-  }
-
-  /*-----  End of forms  ------*/
-
-
-  .close{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: block;
-    cursor: pointer;
-    font-size: 16px;
-    color: #ccc;
-  }
-
-  .close:hover{
-    color: #333;
-  }
-
-
-
-  /*==========  Forgot Password  ==========*/
-
-  #change_password{
-    margin-top: -10px;
-    .password{
-      margin-bottom: 0;
-      input{
-        // border-bottom: 1px solid #ccc;
-        border-radius: 0;
-      }
-
-    }
-    .reset_easy_password{
-      input{
-        border-bottom-right-radius: 3px;
-        border-bottom-left-radius: 3px;
-        // border-bottom: 1px solid #ccc;
-      }
-    }
-  }
-  /*-----  End of Forgot Password  ------*/
-
-}
-
-/*-----  End of Panel  ------*/
-
-
-/*===============================
-=            Overlay            =
-===============================*/
-.popup {
-
-	.centrix {
-	  padding: 0;
-	  vertical-align: middle;
-	  display: table-cell;
-	  margin: 0;
-	}
-
-	.overlay.ie8-overlay {
-	  background: none;
-	  background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png')
-	}
-
-	.overlay {
-	  margin: 0;
-	  display: table;
-	  position: fixed;
-	  left: 0;
-	  top: 0;
-	  bottom: 0;
-	  right: 0;
-	  width: 100%;
-	  height: 100%;
-	  overflow: hidden;
-	  z-index: 9999;
-	  font-weight: 200;
-	  user-select: none;
-	  background: #000;
-	  background: rgba(0,0,0,0.8);
-	  opacity: 0;
-	  transition: 300ms opacity ease-out;
-	  transform: translate3d(0, 0, 0);
-	}
-
-	.overlay.active {
-	  opacity: 1;
-	}
-
-	.overlay .panel {
-	  display: none;
-	  margin: 0 auto;
-	}
-
-	.overlay .panel.active {
-	  display: block;
-	}
-
-}
-
-/*-----  End of Overlay  ------*/
-
-
-#onestep {
-  // overflow: hidden;
-  // height: auto;
   transition: height 50ms ease-in;
 }
 
-#onestep.disable-transition {
+.panel.disable-transition {
   transition: none;
 }
 
-#onestep .loading {
+.panel .loading {
   min-height: 110px;
 }
 
@@ -479,89 +59,56 @@
   margin-top: -16px;
 }
 
-/*===============================================
-=            No Placeholder Fallback            =
-===============================================*/
-.sad-placeholder{
+/*===============================
+=            Overlay            =
+===============================*/
+
+.overlay.ie8-overlay {
+  background: none;
+  background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png')
+}
+
+.overlay {
+  margin: 0;
+  display: table;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 9999;
+  font-weight: 200;
+  user-select: none;
+  background: #000;
+  background: rgba(0,0,0,0.8);
+  opacity: 0;
+  transition: 300ms opacity ease-out;
+  transform: translate3d(0, 0, 0);
+
+
+  .centrix {
+    padding: 0;
+    vertical-align: middle;
+    display: table-cell;
+    margin: 0;
+  }
+}
+
+.overlay.active {
+  opacity: 1;
+}
+
+.overlay .panel {
   display: none;
+  margin: 0 auto;
 }
 
-.no-placeholder-support{
-  .sad-placeholder{
-    display: block;
-    text-align: left;
-    font-weight: bold;
-    margin: 14px 0 10px 0;
-  }
-
-  .inputs{
-    border: 0 !important;
-
-    .email, .password, .repeatPassword{border: 0;}
-
-    .input-box{
-      border: 1px solid #ccc;
-      input{
-        border: 0 !important;
-      }
-    }
-  }
+.overlay .panel.active {
+  display: block;
 }
 
 
-/*=====================================
-=            Media Queries            =
-=====================================*/
-
-@media screen and (max-width: 480px) {
-
-  .ie8-overlay{
-    background: none !important;
-  }
-
-  #onestep{
-    transition: none;
-  }
-
-  .popup{
-
-    .overlay{
-      display: block;
-      overflow: auto;
-      position: static;
-    }
-
-    .centrix{
-      vertical-align: top;
-      display: block;
-      position: static;
-      .panel{
-        box-shadow: none;
-        background: white;
-
-        .db-actions, .options{
-          margin-top: 30px;
-          font-size: 14px;
-        }
-
-        .footer{
-          margin-top: 40px;
-        }
-
-      }
-    }
-    // .centrix
-
-
-  }
-
-
-}
-
-@media screen and (max-height: 470px) {
-  .panel{
-    .avatar, .avatar-guest{
-      // display: none;
-    }
-  }
-}
+/*-----  End of Overlay  ------*/
