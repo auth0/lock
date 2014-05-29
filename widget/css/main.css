@@ -770,9 +770,6 @@
 =            Overlay            =
 ===============================*/
   /*-----  End of Overlay  ------*/
-  /*=====================================
-=            Media Queries            =
-=====================================*/
   /*==========  Includes  ==========*/
   /*!
 Animate.css - http://daneden.me/animate
@@ -799,6 +796,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /*===============================================
 =            No Placeholder Fallback            =
 ===============================================*/
+  /*=====================================
+=            Media Queries            =
+=====================================*/
 }
 
 @charset "UTF-8";
@@ -1505,47 +1505,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-overlay .a0-panel.a0-active {
   display: block;
-}
-
-@media screen and (max-width: 480px) {
-  #a0-widget .a0-ie8-overlay {
-    background: none !important;
-  }
-
-  #a0-widget #a0-onestep {
-    -webkit-transition: none;
-    -moz-transition: none;
-    transition: none;
-  }
-
-  #a0-widget .a0-popup .a0-overlay {
-    display: block;
-    overflow: auto;
-    position: static;
-    background: white;
-  }
-
-  #a0-widget .a0-popup .a0-centrix {
-    vertical-align: top;
-    display: block;
-    position: static;
-  }
-
-  #a0-widget .a0-popup .a0-centrix .a0-panel {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    background: white;
-  }
-
-  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-db-actions,
-  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-options {
-    margin-top: 30px;
-    font-size: 14px;
-  }
-
-  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-footer {
-    margin-top: 40px;
-  }
 }
 
 #a0-widget .a0-animated {
@@ -7401,6 +7360,59 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-no-placeholder-support .a0-inputs .a0-input-box input {
   border: 0 !important;
+}
+
+@media screen and (max-width: 480px) {
+  #a0-widget .a0-ie8-overlay {
+    background: none !important;
+  }
+
+  #a0-widget #a0-onestep {
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+  }
+
+  #a0-widget .a0-popup .a0-overlay {
+    display: block;
+    overflow: auto;
+    position: static;
+    background: white;
+  }
+
+  #a0-widget .a0-popup .a0-centrix {
+    vertical-align: top;
+    display: block;
+    position: static;
+  }
+
+  #a0-widget .a0-popup .a0-centrix .a0-panel {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: white;
+  }
+
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-mode {
+    padding: 10px;
+  }
+
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-header {
+    margin-top: 0;
+  }
+
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-close {
+    top: 14px;
+  }
+
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-db-actions,
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-options {
+    margin-top: 30px;
+    font-size: 14px;
+  }
+
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-footer {
+    margin-top: 40px;
+  }
 }
 
 @media screen and (max-width: 480px) {

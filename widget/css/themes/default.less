@@ -499,3 +499,63 @@
     }
   }
 }
+
+
+
+
+/*=====================================
+=            Media Queries            =
+=====================================*/
+
+@media screen and (max-width: 480px) {
+
+  .ie8-overlay{
+    background: none !important;
+  }
+
+  #onestep{
+    transition: none;
+  }
+
+  .popup{
+
+    .overlay{
+      display: block;
+      overflow: auto;
+      position: static;
+      background: white;
+    }
+
+    .centrix{
+      vertical-align: top;
+      display: block;
+      position: static;
+      .panel{
+        box-shadow: none;
+        background: white;
+
+        .mode{
+          padding: 10px;
+        }
+        .header{
+          margin-top: 0;
+        }
+
+        .close{
+          top: 14px;
+        }
+
+        .db-actions, .options{
+          margin-top: 30px;
+          font-size: 14px;
+        }
+
+        .footer{
+          margin-top: 40px;
+        }
+
+      }
+    }
+    // .centrix
+  }
+}
