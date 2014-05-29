@@ -7060,6 +7060,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin: auto;
   display: inline-block;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 #a0-widget .a0-panel .a0-image img {
@@ -7392,6 +7393,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-mode {
     padding: 10px;
+  }
+
+  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-image {
+    margin-top: 10px;
   }
 
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-avatar {
