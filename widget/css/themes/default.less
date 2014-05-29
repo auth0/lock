@@ -155,7 +155,7 @@
     -webkit-animation-duration: .3s;
     -webkit-animation-iteration-count: once;
     -webkit-animation-timing-function: ease-in;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
   }
 
   *, input{
@@ -170,15 +170,17 @@
     font-weight: bold;
   }
 
-  h1{
-    font-size: 24px;
-    font-weight: 100;
-    margin-bottom: 0;
-  }
+
 
   .header{
     margin-bottom: 0;
-    margin-top: 20px;
+    margin-top: 0;
+    h1{
+      font-size: 24px;
+      font-weight: 100;
+      margin-bottom: 10px;
+    }
+    
   }
 
   .image {
@@ -199,6 +201,7 @@
     border-radius: 100%;
     width: 60px;
     height: 60px;
+    margin-top: 20px;
     i{
       color: #EB5424;
       font-size: 28px;
@@ -346,7 +349,7 @@
     min-width: auto;
     letter-spacing: 1px;
     padding: 20px 0;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-top: 20px;
     background-color: #16214D;
     color: white;
@@ -442,7 +445,6 @@
   /*==========  Forgot Password  ==========*/
 
   #change_password{
-    margin-top: -10px;
     .password{
       margin-bottom: 0;
       input{
@@ -450,6 +452,13 @@
         border-radius: 0;
       }
 
+    }
+
+    .collapse-reset{
+      .instructions{
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
     }
     .reset_easy_password{
       input{
@@ -537,12 +546,13 @@
         .mode{
           padding: 10px;
         }
-        .header{
-          margin-top: 0;
+        .header.instructions{
+          // margin-top: 10px;
         }
 
         .close{
           top: 14px;
+          right: 10px;
         }
 
         .db-actions, .options{

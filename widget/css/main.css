@@ -7033,7 +7033,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-animation-duration: .3s;
   -webkit-animation-iteration-count: once;
   -webkit-animation-timing-function: ease-in;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 }
 
 #a0-widget .a0-panel *,
@@ -7049,15 +7049,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-weight: bold;
 }
 
-#a0-widget .a0-panel h1 {
-  font-size: 24px;
-  font-weight: 100;
-  margin-bottom: 0;
-}
-
 #a0-widget .a0-panel .a0-header {
   margin-bottom: 0;
-  margin-top: 20px;
+  margin-top: 0;
+}
+
+#a0-widget .a0-panel .a0-header h1 {
+  font-size: 24px;
+  font-weight: 100;
+  margin-bottom: 10px;
 }
 
 #a0-widget .a0-panel .a0-image {
@@ -7079,6 +7079,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-radius: 100%;
   width: 60px;
   height: 60px;
+  margin-top: 20px;
 }
 
 #a0-widget .a0-panel .a0-avatar i {
@@ -7234,7 +7235,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   min-width: auto;
   letter-spacing: 1px;
   padding: 20px 0;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   margin-top: 20px;
   background-color: #16214D;
   color: white;
@@ -7316,16 +7317,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #333;
 }
 
-#a0-widget .a0-panel #a0-change_password {
-  margin-top: -10px;
-}
-
 #a0-widget .a0-panel #a0-change_password .a0-password {
   margin-bottom: 0;
 }
 
 #a0-widget .a0-panel #a0-change_password .a0-password input {
   border-radius: 0;
+}
+
+#a0-widget .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 #a0-widget .a0-panel #a0-change_password .a0-reset_easy_password input {
@@ -7396,12 +7398,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     padding: 10px;
   }
 
-  #a0-widget .a0-popup .a0-centrix .a0-panel .a0-header {
-    margin-top: 0;
-  }
-
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-close {
     top: 14px;
+    right: 10px;
   }
 
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-db-actions,
