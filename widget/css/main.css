@@ -7316,8 +7316,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-panel .a0-signup-footer small {
-  margin-top: 10px
-    display: block;
+  margin-top: 10px;
+  display: block;
 }
 
 #a0-widget .a0-panel #a0-change_password .a0-password {
