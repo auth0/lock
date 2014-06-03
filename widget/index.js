@@ -1,5 +1,7 @@
 require('../lib/insert-css');
 
+var pkg = require('../package.json');
+
 var Auth0       = require('auth0-js');
 var _           = require('underscore');
 var strategies  = require('./js/strategies');
@@ -89,6 +91,8 @@ function Auth0Widget (options) {
   EventEmitter.call(this);
   var self = this;
 }
+
+Auth0Widget.version = pkg.version;
 
 Auth0Widget.prototype = object_create(EventEmitter.prototype);
 
