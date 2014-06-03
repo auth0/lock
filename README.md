@@ -96,7 +96,7 @@ You can handle the authorization process client-side as follows:
     callbackURL:  'http://my-app.com/',
     callbackOnLocationHash: true
   });
-  
+
   widget.signin({popup: true}, null, callback)
 </script>
 ~~~
@@ -191,21 +191,21 @@ npm test
 #### Troubleshooting
 
 * Problem: **message: Invalid or corrupt jarfile `~/.browserstack/BrowserStackTunnel.jar`**
-  
+
   Solution: Remove `~/.browserstack` and run ` browserstack setup` again.
 
 * Problem: **message: Timed out without seeing Press Ctrl-C to exit**
-  
+
   Solution: Are you uploading something big? Browserstack may need more upload bandwidth.
 
 * Problem: **message: Timed out without seeing Press Ctrl-C to exit**
-  
+
   Solution: That means there might be an issue with a running java process. Do:
-  
+
   ```sh
   ps | egrep java
   ```
-  
+
   Kill the java process, run `npm test` again and it should be solved.
 
 
