@@ -1,6 +1,6 @@
 {
   "name": "auth0-widget.js",
-  "version": "4.0.28",
+  "version": "4.0.29",
   "dependencies": {
     "auth0-js": {
       "version": "2.1.5",
