@@ -1,0 +1,114 @@
+{
+  "name": "auth0-widget.js",
+  "version": "4.0.28",
+  "dependencies": {
+    "auth0-js": {
+      "version": "2.1.5",
+      "from": "auth0-js@~2.1.5",
+      "dependencies": {
+        "qs": {
+          "version": "0.6.5",
+          "from": "https://github.com/jfromaniello/node-querystring/tarball/master",
+          "resolved": "https://github.com/jfromaniello/node-querystring/tarball/master"
+        },
+        "Base64": {
+          "version": "0.1.4",
+          "from": "Base64@~0.1.3"
+        },
+        "reqwest": {
+          "version": "0.9.7",
+          "from": "reqwest@~0.9.0"
+        },
+        "debug": {
+          "version": "0.7.3",
+          "from": "https://github.com/jfromaniello/debug/tarball/master",
+          "resolved": "https://github.com/jfromaniello/debug/tarball/master"
+        },
+        "jsonp": {
+          "version": "0.0.3",
+          "from": "jsonp@0.0.3",
+          "resolved": "https://registry.npmjs.org/jsonp/-/jsonp-0.0.3.tgz"
+        },
+        "xtend": {
+          "version": "2.1.2",
+          "from": "xtend@~2.1.1",
+          "dependencies": {
+            "object-keys": {
+              "version": "0.4.0",
+              "from": "object-keys@~0.4.0"
+            }
+          }
+        }
+      }
+    },
+    "bean": {
+      "version": "1.0.6",
+      "from": "bean@~1.0.4"
+    },
+    "bonzo": {
+      "version": "1.3.7",
+      "from": "bonzo@~1.3.6"
+    },
+    "css-prefix": {
+      "version": "0.0.2",
+      "from": "css-prefix@0.0.2",
+      "dependencies": {
+        "cssp": {
+          "version": "1.0.6",
+          "from": "cssp@~1.0.5",
+          "dependencies": {
+            "ometajs": {
+              "version": "3.1.19",
+              "from": "ometajs@~ 3.1.x",
+              "dependencies": {
+                "coa": {
+                  "version": "0.3.9",
+                  "from": "coa@0.3.x"
+                },
+                "q": {
+                  "version": "0.8.12",
+                  "from": "q@0.8.x"
+                },
+                "uglify-js": {
+                  "version": "1.3.5",
+                  "from": "uglify-js@1.3.x"
+                }
+              }
+            }
+          }
+        },
+        "traverse": {
+          "version": "0.6.6",
+          "from": "traverse@~0.6.1"
+        }
+      }
+    },
+    "domready": {
+      "version": "0.2.13",
+      "from": "domready@~0.2.13"
+    },
+    "ejsify": {
+      "version": "0.1.0",
+      "from": "ejsify@0.1.0",
+      "dependencies": {
+        "ejs": {
+          "version": "0.8.8",
+          "from": "ejs@~0.8.3"
+        }
+      }
+    },
+    "has-transitions": {
+      "version": "0.3.0",
+      "from": "https://github.com/jfromaniello/has-transitions/tarball/patch-1",
+      "resolved": "https://github.com/jfromaniello/has-transitions/tarball/patch-1"
+    },
+    "qwery": {
+      "version": "3.4.2",
+      "from": "qwery@~3.4.1"
+    },
+    "underscore": {
+      "version": "1.5.2",
+      "from": "underscore@~1.5.2"
+    }
+  }
+}
