@@ -11,6 +11,9 @@ var signup = module.exports;
 
 
 signup.submit = function (widget, connectionName, email, password) {
+  var form = $('.a0-signup form');
+  var password_input = $('input[name=password]', form);
+
   widget._setLoginView({mode: 'loading', title: 'signup'}, function () {
     widget._auth0.signup({
       connection: connectionName,
@@ -27,7 +30,12 @@ signup.submit = function (widget, connectionName, email, password) {
         // set error message before view refresh
         // to avoid wrong resizing calculations
         if (400 === err.status) {
-          widget._showError(widget._dict.t('signup:userExistsErrorText'))
+          if ('invalid_password' === err.name) {
+            widget._focusError(password_input, widget._dict.t('invalid'));
+            widget._showError(widget._dict.t('signup:invalidPassword'));
+          } else {
+            widget._showError(widget._dict.t('signup:userExistsErrorText'));
+          }
         } else {
           widget._showError(widget._dict.t('signup:serverErrorText'));
         }

@@ -41,6 +41,7 @@
     "enterpriseEmailWarningText":  "This domain {domain} has been configured for Single Sign On and you can't create an account. Try signing in instead.",
     "serverErrorText":             "There was an error processing the sign up.",
     "userExistsErrorText":         "The user already exists.",
+    "invalidPassword":             "Password is too weak."
   },
   "reset": {
     "title":                       "Reset Password",
