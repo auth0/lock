@@ -24,17 +24,18 @@
     "auth0-js": "^2.1.6",
     "bean": "~1.0.4",
     "bonzo": "~1.3.6",
+    "brfs": "0.0.8",
     "css-prefix": "0.0.2",
     "domready": "~0.2.13",
-    "has-transitions": "https://github.com/jfromaniello/has-transitions/tarball/patch-1",
-    "qwery": "~3.4.1",
-    "underscore": "~1.5.2",
     "ejsify": "0.1.0",
+    "has-transitions": "https://github.com/jfromaniello/has-transitions/tarball/patch-1",
+    "opentip": "^2.4.3",
     "packageify": "^0.2.0",
-    "brfs": "0.0.8"
+    "qwery": "~3.4.1",
+    "underscore": "~1.5.2"
   },
   "devDependencies": {
-    "browserify": "4.1.5",
+    "browserify": "4.1.10",
     "browserstack-cli": "0.3.1",
     "expect.js": "~0.2.0",
     "grunt": "^0.4.5",
