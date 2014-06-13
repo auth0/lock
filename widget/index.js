@@ -41,16 +41,16 @@ function setfocus (el) {
   try{ el.focus(); } catch(er) {}
 }
 
-function animation_shake() {
-  $('.a0-panel')
+function animation_shake(context) {
+  $('.a0-panel', context)
     .removeClass('a0-swing')
     .addClass('a0-errors')
     .addClass('a0-animated a0-shake');
 }
 
-function animation_shake_reset() {
-  $('.a0-animated').removeClass('a0-animated');
-  $('.a0-shake').removeClass('a0-shake');
+function animation_shake_reset(context) {
+  $('.a0-animated', context).removeClass('a0-animated');
+  $('.a0-shake', context).removeClass('a0-shake');
 }
 
 function Auth0Widget (options) {
@@ -141,11 +141,11 @@ Auth0Widget.prototype._showError = function (error) {
     this._$('.a0-error').html('').addClass('a0-hide');
     this._$('.a0-errors').removeClass('a0-errors');
     // reset animations
-    return animation_shake_reset();
+    return animation_shake_reset(this._container);
   }
 
   // else, show and render error message
-  setTimeout(animation_shake, 0);
+  setTimeout(animation_shake, 0, this._container);
 
   this._$('.a0-success').addClass('a0-hide');
   this._$('.a0-error').html(error).removeClass('a0-hide');
@@ -168,11 +168,11 @@ Auth0Widget.prototype._focusError = function(input, message) {
     this._$('.a0-error-input').removeClass('a0-error-input');
     this._$('.a0-error-message').remove();
     // reset animations
-    return animation_shake_reset();;
+    return animation_shake_reset(this._container);;
   }
 
   // animation
-  setTimeout(animation_shake, 0);
+  setTimeout(animation_shake, 0, this._container);
 
   input
     .parent()
