@@ -370,6 +370,8 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
     case 'reset':
       title = this._dict.t(options.mode + ':title');
       newPane = $('.a0-' + options.mode).first();
+      // XXX Hack, when coming from loading currentPane does not contain email.
+      currentEmail = currentEmail || $('.a0-email input', newPane).val();
       $('.a0-email input', newPane).val(currentEmail || '');
       break;
   }
