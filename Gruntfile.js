@@ -50,9 +50,11 @@ module.exports = function (grunt) {
 
         // Convert absolute sourcemap filepaths to relative ones using mold-source-map.
         postBundleCB: function(err, src, cb) {
+          if (err) { return cb(err); }
           var through = require('through');
           var stream = through().pause().queue(src).end();
           var buffer = '';
+
           stream.pipe(require('mold-source-map').transformSourcesRelativeTo(__dirname)).pipe(through(function(chunk) {
             buffer += chunk.toString();
           }, function() {
