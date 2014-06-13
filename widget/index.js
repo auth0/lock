@@ -95,6 +95,10 @@ Auth0Widget.version = require('package.version');
 Auth0Widget.prototype = object_create(EventEmitter.prototype);
 
 // helper methods
+Auth0Widget.prototype._$ = function(selector, context) {
+  return $(selector, context || this._container);
+};
+
 Auth0Widget.prototype._getApp = function () {
   var self = this;
   global.window.Auth0 = global.window.Auth0 || {};
@@ -134,8 +138,8 @@ Auth0Widget.prototype._showError = function (error) {
   // if no error, clean
   if (!error) {
     // reset errors
-    $('.a0-error').html('').addClass('a0-hide');
-    $('.a0-errors').removeClass('a0-errors');
+    this._$('.a0-error').html('').addClass('a0-hide');
+    this._$('.a0-errors').removeClass('a0-errors');
     // reset animations
     return animation_shake_reset();
   }
@@ -143,26 +147,26 @@ Auth0Widget.prototype._showError = function (error) {
   // else, show and render error message
   setTimeout(animation_shake, 0);
 
-  $('.a0-success').addClass('a0-hide');
-  $('.a0-error').html(error).removeClass('a0-hide');
+  this._$('.a0-success').addClass('a0-hide');
+  this._$('.a0-error').html(error).removeClass('a0-hide');
   this.emit('_error', error);
 };
 
 Auth0Widget.prototype._showSuccess = function (message) {
   // if no message, clean success span
-  if (!message) return $('.a0-success').html('').addClass('a0-hide');
+  if (!message) return this._$('.a0-success').html('').addClass('a0-hide');
   // else, show and render success message
-  $('.a0-error').addClass('a0-hide');
-  $('.a0-success').html(message).removeClass('a0-hide');
+  this._$('.a0-error').addClass('a0-hide');
+  this._$('.a0-success').html(message).removeClass('a0-hide');
 };
 
 Auth0Widget.prototype._focusError = function(input, message) {
   // remove all `_focusError` resources
   if (!arguments.length) {
     // reset errors
-    $('.a0-errors').removeClass('a0-errors');
-    $('.a0-error-input').removeClass('a0-error-input');
-    $('.a0-error-message').remove();
+    this._$('.a0-errors').removeClass('a0-errors');
+    this._$('.a0-error-input').removeClass('a0-error-input');
+    this._$('.a0-error-message').remove();
     // reset animations
     return animation_shake_reset();;
   }
@@ -176,13 +180,13 @@ Auth0Widget.prototype._focusError = function(input, message) {
 
   if (!message) return;
   input.parent()
-    .append($.create('<span class="a0-error-message">' + message + '</span>'));
+    .append(this._$.create('<span class="a0-error-message">' + message + '</span>'));
 };
 
 Auth0Widget.prototype._setTitle = function(title) {
-  // $('.a0-error').css('display', 'none');
-  // $('.a0-success').css('display', 'none');
-  $('h1').html(title).css('display', '');
+  // this._$('.a0-error').css('display', 'none');
+  // this._$('.a0-success').css('display', 'none');
+  this._$('h1').html(title).css('display', '');
 };
 
 Auth0Widget.prototype._areThereAnySocialConn = function () {
@@ -263,8 +267,8 @@ Auth0Widget.prototype._getAuth0Connection = function(userName) {
 };
 
 Auth0Widget.prototype._showOrHidePassword = function () {
-  var mailField = $('.a0-notloggedin .a0-email input');
-  var pwdField  = $('.a0-notloggedin .a0-password input').first();
+  var mailField = this._$('.a0-notloggedin .a0-email input');
+  var pwdField  = this._$('.a0-notloggedin .a0-password input').first();
 
   var isEnterpriseConnection = this._isEnterpriseConnection(mailField.val() || '');
 
@@ -279,26 +283,34 @@ Auth0Widget.prototype._showOrHidePassword = function () {
 
 Auth0Widget.prototype._hideSignIn = function (cb) {
   var self = this;
+
+  this._$('div.a0-overlay').removeClass('a0-active');
+
+  this._$().removeClass('a0-mode-signin');
+  this._$().css('display', 'none');
+  bonzo(document.body).removeClass('a0-widget-open');
+
+  if (this._signinOptions.container) {
+    // remove `#a0-widget`
+    this._$().remove();
+  } else {
+    // remove `.a0-widget-container`
+    this._$().parent('.a0-widget-container').remove();
+  }
+
   this._currentPane = null;
-  this._node = null;
+  this._container = null;
 
-  $('div.a0-overlay').removeClass('a0-active');
-
-  setTimeout(function () {
-    $().removeClass('a0-mode-signin');
-    $().css('display', 'none');
-    bonzo(document.body).removeClass('a0-widget-open');
-    if (cb) cb();
-    self.emit('closed');
-  }, 500);
+  if (cb) cb();
+  this.emit('closed');
 
   return self;
 };
 
 Auth0Widget.prototype._getActiveLoginView = function() {
   var container = this._currentPane.hasClass('a0-loggedin') ?
-                    $('.a0-loggedin') :
-                    $('.a0-notloggedin');
+                    this._$('.a0-loggedin') :
+                    this._$('.a0-notloggedin');
   return container;
 };
 
@@ -330,51 +342,51 @@ Auth0Widget.prototype._showLoadingExperience = function() {
 
 Auth0Widget.prototype._transitionMode = function(options, callback) {
   var self = this;
-  $('.a0-loading').removeClass('a0-with-message');
+  this._$('.a0-loading').removeClass('a0-with-message');
 
   if((!self._currentPane || self._currentPane.hasClass('a0-loading')) && options.mode === 'loading') {
     self._setTitle(options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title'));
-    self._currentPane = $('.a0-loading');
+    self._currentPane = this._$('.a0-loading');
     self.emit('transition_mode', 'loading');
     self.emit('loading_ready');
     return callback(null, self._currentPane);
   }
 
-  self._currentPane = self._currentPane || $('.a0-loading');
+  self._currentPane = self._currentPane || this._$('.a0-loading');
   options = options || {};
 
-  var currentEmail = $('.a0-email input', self._currentPane).val();
+  var currentEmail = this._$('.a0-email input', self._currentPane).val();
   var mode = options.mode || null;
   var newPane, title;
 
   switch (mode) {
     case null:
       title = this._dict.t('signin:title');
-      newPane = $(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin');
+      newPane = this._$(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin');
       if (self._currentPane.hasClass('a0-reset') || self._currentPane.hasClass('a0-loading')) {
         // reset password field
-        $('.a0-password input', newPane).val('');
+        this._$('.a0-password input', newPane).val('');
       }
       break;
    case 'loading':
       title = options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title');
-      newPane = $('.a0-loading').first();
+      newPane = this._$('.a0-loading').first();
 
       // set loading message
       if (options.message) {
         newPane.addClass('a0-with-message');
-        $('.a0-spin-message span', newPane).html(options.message.replace('-', ' '));
+        this._$('.a0-spin-message span', newPane).html(options.message.replace('-', ' '));
       }
       break;
     case 'signup':
     case 'reset':
       title = this._dict.t(options.mode + ':title');
-      newPane = $('.a0-' + options.mode).first();
-      $('.a0-email input', newPane).val(currentEmail || '');
+      newPane = this._$('.a0-' + options.mode).first();
+      this._$('.a0-email input', newPane).val(currentEmail || '');
       break;
   }
 
-  if (!hasTransitions() || !hasTransitions($('#a0-onestep')[0])){
+  if (!hasTransitions() || !hasTransitions(this._$('#a0-onestep')[0])){
     self._setTitle(title);
     self._currentPane.toggleClass('a0-hide', true);
     self._currentPane = newPane.toggleClass('a0-hide', false);
@@ -385,7 +397,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
     return callback(null, self._currentPane);
   }
 
-  var pane_container = $('.a0-onestep');
+  var pane_container = this._$('.a0-onestep');
   var original_height = pane_container
                           .addClass('a0-disable-transition')
                           .css('height', 'auto')
@@ -447,7 +459,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
 Auth0Widget.prototype._setLoginView = function(options, callback) {
   var self = this;
   this._transitionMode(options, function (err, currentPane) {
-    if (!self._signinOptions._avoidInitialFocus) setfocus($('input', currentPane).first());
+    if (!self._signinOptions._avoidInitialFocus) setfocus(self._$('input', currentPane).first());
     if (callback) callback();
   });
 };
@@ -468,9 +480,9 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
 
   if (!strategy) return;
 
-  var loginView = $('.a0-loggedin');
+  var loginView = this._$('.a0-loggedin');
 
-  $('form', loginView).a0_on('submit', function (e) {
+  this._$('form', loginView).a0_on('submit', function (e) {
     self._signInEnterprise(e);
   });
 
@@ -482,14 +494,14 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
     username: this._ssoData.lastUsedUsername
   }));
 
-  $('.a0-last-time').html(this._dict.t('signin:returnUserLabel'));
+  this._$('.a0-last-time').html(this._dict.t('signin:returnUserLabel'));
 
-  $('.a0-strategy div', loginView).remove();
+  this._$('.a0-strategy div', loginView).remove();
 
-  $('.a0-strategy', loginView)
+  this._$('.a0-strategy', loginView)
     .append(button);
 
-  $('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
+  this._$('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
     e.preventDefault();
     self._signInSocial(
       strategy_name,
@@ -497,7 +509,7 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
       self._getLoggedInAuthParams(strategy_name, self._ssoData));
   });
 
-  $('.a0-all', loginView).a0_on('click', function () {
+  this._$('.a0-all', loginView).a0_on('click', function () {
     self._setLoginView();
   });
 
@@ -513,9 +525,9 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 
   if (!strategy) return;
 
-  var loginView = $('.a0-loggedin');
+  var loginView = this._$('.a0-loggedin');
 
-  $('form', loginView).a0_on('submit', function (e) {
+  this._$('form', loginView).a0_on('submit', function (e) {
     self._signInEnterprise(e);
   });
 
@@ -527,19 +539,19 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
     imageicon: strategy.imageicon,
   }));
 
-  $('.a0-last-time').html(this._dict.t('signin:domainUserLabel'));
+  this._$('.a0-last-time').html(this._dict.t('signin:domainUserLabel'));
 
-  $('.a0-strategy div', loginView).remove();
+  this._$('.a0-strategy div', loginView).remove();
 
-  $('.a0-strategy', loginView)
+  this._$('.a0-strategy', loginView)
     .append(button);
 
-  $('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
+  this._$('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
     e.preventDefault();
     self._signInSocial(strategy_name, connection);
   });
 
-  $('.a0-all', loginView).a0_on('click', function () {
+  this._$('.a0-all', loginView).a0_on('click', function () {
     self._setLoginView();
   });
 
@@ -549,8 +561,8 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
 Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCallback, extraParams) {
   var self = this;
   var container = this._getActiveLoginView();
-  var email_input = $('input[name=email]', container);
-  var password_input = $('input[name=password]', container);
+  var email_input = this._$('input[name=email]', container);
+  var password_input = this._$('input[name=password]', container);
 
   extraParams = extraParams || {};
 
@@ -624,15 +636,15 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
 
   var self = this;
   var container = this._getActiveLoginView();
-  var form = $('form', container);
+  var form = this._$('form', container);
   var valid = true;
 
-  var emailD = $('.a0-email', form);
-  var password_input = $('input[name=password]', form);
+  var emailD = this._$('.a0-email', form);
+  var password_input = this._$('input[name=password]', form);
   var password_empty = regex.empty.test(password_input.val());
   var password_disabled = password_input.attr('disabled');
   var password_required = self._signinOptions.showEmail && self._signinOptions.showPassword && self._areThereAnyDbConn();
-  var email_input = $('input[name=email]', form);
+  var email_input = this._$('input[name=email]', form);
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
   var email_empty = regex.empty.test(email_input.val());
   var email = null, domain, connection, has_errors = false;
@@ -713,15 +725,15 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   var self = this;
   var container = this._getActiveLoginView();
   var connection  = this._getAuth0Connection(userName);
-  var email_input = $('input[name=email]', container);
-  var password_input = $('input[name=password]', container);
+  var email_input = this._$('input[name=email]', container);
+  var password_input = this._$('input[name=password]', container);
 
   var loginOptions = {
     connection: connection.name,
     username: connection.domain ?
                 userName.replace('@' + connection.domain, '') :
                 userName,
-    password: signInPassword || $('.a0-password input', container).val(),
+    password: signInPassword || this._$('.a0-password input', container).val(),
     popup: self._signinOptions.popup,
     popupOptions: self._signinOptions.popupOptions
   };
@@ -773,7 +785,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 // initialize
 Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
   var self = this;
-  $().addClass('a0-mode-signin');
+  this._$().addClass('a0-mode-signin');
 
   // wait for setClient()
   if (!self._client) {
@@ -789,9 +801,9 @@ Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
   }
 
   // buttons actions
-  $('.a0-onestep a.a0-close').a0_on('click', function () { self._hideSignIn(); });
-  $('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
-  $('').a0_on('keyup', function (e) {
+  this._$('.a0-onestep a.a0-close').a0_on('click', function () { self._hideSignIn(); });
+  this._$('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
+  this._$('').a0_on('keyup', function (e) {
     if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
       self._hideSignIn(); // close popup with ESC key
     }
@@ -799,12 +811,12 @@ Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
 
   if (self._client.subscription && !~['free', 'dev'].indexOf(self._client.subscription)) {
     // hide footer for non free/dev subscriptions
-    $('.a0-footer').toggleClass('a0-hide', true);
-    $('.a0-free-subscription').removeClass('a0-free-subscription');
+    this._$('.a0-footer').toggleClass('a0-hide', true);
+    this._$('.a0-free-subscription').removeClass('a0-free-subscription');
   }
 
   // images from cdn
-  // $('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
+  // this._$('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
 
   // labels text
   var options = _.extend({}, this._signinOptions, this._signinOptions.resources);
@@ -816,18 +828,18 @@ Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
   this._signinOptions = options;
 
   // activate panel
-  $('div.a0-panel').removeClass('a0-active');
-  $('div.a0-overlay').addClass('a0-active');
-  $('div.a0-panel.a0-onestep').addClass('a0-active');
+  this._$('div.a0-panel').removeClass('a0-active');
+  this._$('div.a0-overlay').addClass('a0-active');
+  this._$('div.a0-panel.a0-onestep').addClass('a0-active');
 
   if (self._signinOptions.container) {
-    $('div.a0-active').removeClass('a0-overlay');
+    this._$('div.a0-active').removeClass('a0-overlay');
   }
 
-  $('.a0-popup h1').html(this._dict.t('signin:title'));
-  $('.a0-popup .a0-invalid').removeClass('a0-invalid');
+  this._$('.a0-popup h1').html(this._dict.t('signin:title'));
+  this._$('.a0-popup .a0-invalid').removeClass('a0-invalid');
 
-  $('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
+  this._$('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
 
   if (self._signinOptions.connections) {
     self._client.strategies = _.chain(self._client.strategies)
@@ -887,7 +899,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   var use_big_buttons = this._signinOptions['socialBigButtons'] || !this._areThereAnyEnterpriseOrDbConn();
 
   // load social buttons
-  var list = $('.a0-notloggedin .a0-iconlist');
+  var list = this._$('.a0-notloggedin .a0-iconlist');
   var socialStrategies = _.chain(self._client.strategies).where({social: true});
 
   if (self._signinOptions.connections) {
@@ -911,14 +923,14 @@ Auth0Widget.prototype._resolveLoginView = function () {
     .each(function (s) { return list.append(buttonTmpl(s)); });
 
   if (_.where(self._client.strategies, {social: true}).length > 0) {
-    $('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').toggleClass('a0-hide', false);
+    this._$('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').toggleClass('a0-hide', false);
   }
 
-  $('.a0-notloggedin .a0-email input').a0_on('input', function (e) {
+  this._$('.a0-notloggedin .a0-email input').a0_on('input', function (e) {
     self._showOrHidePassword(e);
   });
 
-  $('.a0-zocial[data-strategy]', list).a0_on('click', function (e) {
+  this._$('.a0-zocial[data-strategy]', list).a0_on('click', function (e) {
     self._signInSocial(e);
   });
 
@@ -943,17 +955,17 @@ Auth0Widget.prototype._resolveLoginView = function () {
   if (this._signinOptions.username_style === 'username') {
     // set username mode
     var placeholder = this._dict.t('signin:usernamePlaceholder');
-    $('.a0-notloggedin .a0-email input')
+    this._$('.a0-notloggedin .a0-email input')
       .attr('type', 'text')
       .attr('title', placeholder)
       .attr('placeholder', placeholder);
 
-    $('.a0-notloggedin .a0-email label').text(placeholder);
+    this._$('.a0-notloggedin .a0-email label').text(placeholder);
   }
 
-  $('.a0-db-actions').append(actions);
+  this._$('.a0-db-actions').append(actions);
 
-  var signup_btn = $('.a0-sign-up');
+  var signup_btn = this._$('.a0-sign-up');
   if (!this._signinOptions.signupLink && signup_btn.length > 0) {
     signup_btn.a0_on('click', function (e) {
       self._showSignUpExperience(e);
@@ -961,14 +973,14 @@ Auth0Widget.prototype._resolveLoginView = function () {
   }
 
   if (!this._signinOptions.forgotLink) {
-    $('.a0-forgot-pass').a0_on('click', function (e) {
+    this._$('.a0-forgot-pass').a0_on('click', function (e) {
       self._showResetExperience(e);
     });
   }
 
-  $('.a0-panel input').val('');
+  this._$('.a0-panel input').val('');
 
-  $('.a0-panel .a0-signup .a0-email input').a0_on('input', function() {
+  this._$('.a0-panel .a0-signup .a0-email input').a0_on('input', function() {
     var output = {};
     if (self._isEnterpriseConnection(this.value, output)) {
       var warningText = self._dict.t('signup:enterpriseEmailWarningText').replace(/{domain}/g, output.domain);
@@ -978,7 +990,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
     }
   });
 
-  $('.a0-panel .a0-options .a0-cancel').a0_on('click', function () {
+  this._$('.a0-panel .a0-options .a0-cancel').a0_on('click', function () {
     self._showSuccess();
     self._showError();
     self._focusError();
@@ -990,17 +1002,17 @@ Auth0Widget.prototype._resolveLoginView = function () {
   var anySocialConnection = self._areThereAnySocialConn();
   var anyDbConnection = self._areThereAnyDbConn();
 
-  $('.a0-panel .a0-email input').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
-  $('.a0-panel .a0-zocial.a0-primary').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
-  $('.a0-panel .a0-password').toggleClass('a0-hide', !(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection));
-  $('.a0-panel .a0-separator').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection));
+  this._$('.a0-panel .a0-email input').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
+  this._$('.a0-panel .a0-zocial.a0-primary').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
+  this._$('.a0-panel .a0-password').toggleClass('a0-hide', !(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection));
+  this._$('.a0-panel .a0-separator').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection));
 
-  $('.a0-panel .a0-inputs').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
-  $('.a0-panel .a0-action').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
+  this._$('.a0-panel .a0-inputs').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
+  this._$('.a0-panel .a0-action').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
 
   if (is_small_screen()) {
     var collapse_onfocus = require('./js/collapse_onfocus');
-    collapse_onfocus.hook($('.a0-notloggedin form input'), $('.a0-collapse-social'));
+    collapse_onfocus.hook(this._$('.a0-notloggedin form input'), this._$('.a0-collapse-social'));
   }
 
   // if user in AD ip range
@@ -1050,7 +1062,7 @@ Auth0Widget.prototype.getProfile = function (token, callback) {
 Auth0Widget.prototype.reset = function (signinOptions, callback) {
   this._openWith = 'Reset';
   var self = this;
-  $(function () {
+  this._$(function () {
     self._show(signinOptions, callback);
   });
   return self;
@@ -1059,7 +1071,7 @@ Auth0Widget.prototype.reset = function (signinOptions, callback) {
 Auth0Widget.prototype.signup = function (signinOptions, callback) {
   this._openWith = 'SignUp';
   var self = this;
-  $(function () {
+  this._$(function () {
     self._show(signinOptions, callback);
   });
   return self;
@@ -1077,7 +1089,7 @@ Auth0Widget.prototype.signup = function (signinOptions, callback) {
 Auth0Widget.prototype.show = Auth0Widget.prototype.signin = function (signinOptions, widgetLoadedCallback, popupCallback) {
   this._openWith = null;
   var self = this;
-  $(function () {
+  this._$(function () {
     self._show(signinOptions, widgetLoadedCallback, popupCallback);
   });
   return self;
@@ -1101,10 +1113,6 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
 
   self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
 
-  // remove widget container (if exist)
-  $('.a0-widget-container').remove();
-  $().remove();
-
   // widget container
   if (self._signinOptions.container) {
     self._signinOptions.theme = 'static';
@@ -1113,6 +1121,7 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
 
     var specifiedContainer = document.getElementById(self._signinOptions.container);
     specifiedContainer.innerHTML = self._getEmbededTemplate(self._signinOptions);
+    self._container = specifiedContainer;
   } else {
 
     var div = document.createElement('div');
@@ -1123,13 +1132,11 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
       alt_spinner: !has_animations() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
     });
     document.body.appendChild(div);
-
+    self._container = div;
   }
 
-  self._node = $()[0];
-
   if (!placeholderSupported) {
-    $('.a0-overlay').addClass('a0-no-placeholder-support');
+    this._$('.a0-overlay').addClass('a0-no-placeholder-support');
   }
 
   if (!self._signinOptions.container) {
