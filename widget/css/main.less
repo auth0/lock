@@ -1,27 +1,27 @@
 .widget {
-	@import "normalize.less";
-	@import "reset.less";
+  @import "normalize.less";
+  @import "reset.less";
 }
 #widget{
-	@import "keyframes.less";
-	@import "zocial.less";
-	@import "common.less";
-	@import "themes/default.less";
+  @import "keyframes.less";
+  @import "zocial.less";
+  @import "common.less";
+  @import "themes/default.less";
 }
 
 @media screen and (max-width: 480px) {
-	body.widget-open{
-		& > *{
-			display: none;
-		}
+  body.widget-open{
+    & > *{
+      display: none;
+    }
 
-		.widget-container{
-			display: block;
-		}
-	}
+    .widget-container{
+      display: block;
+    }
+  }
 
-	.widget-container{
-		background: white;
-		opacity: 1;
-	}
+  .widget-container{
+    background: white;
+    opacity: 1;
+  }
 }
