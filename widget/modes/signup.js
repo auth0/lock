@@ -19,7 +19,9 @@ signup.submit = function (widget, connectionName, email, password) {
       auto_login: false
     }, function (err) {
 
-      if ( $()[0] !== widget._node ) {
+      // This is now dummy, and should no longer exist since all
+      // dom events keep a reference to widget._container
+      if ( !widget._container || widget._$()[0] !== widget._container.childNodes[0] ) {
         return console && console.log && console.log('this signup was triggered from another node instance', arguments);
       }
 
@@ -40,9 +42,9 @@ signup.submit = function (widget, connectionName, email, password) {
 };
 
 signup.bind = function (widget) {
-  var list = $('.a0-signup .a0-iconlist').html('');
+  var list = widget._$('.a0-signup .a0-iconlist').html('');
 
-  $('.a0-signup .a0-options').show(widget._openWith ? 'none' : 'block');
+  widget._$('.a0-signup .a0-options').show(widget._openWith ? 'none' : 'block');
 
   _.chain(widget._client.strategies)
     .where({social: true})
@@ -56,27 +58,27 @@ signup.bind = function (widget) {
     .each(function (s) { return list.append(buttonTmpl(s)); });
 
   if (_.where(widget._client.strategies, {social: true}).length > 0) {
-    $('.a0-signup .a0-separator, .a0-signup .a0-iconlist').show();
+    widget._$('.a0-signup .a0-separator, .a0-signup .a0-iconlist').show();
   }
 
-  $('.a0-zocial[data-strategy]', list).a0_on('click', function (e) {
+  widget._$('.a0-zocial[data-strategy]', list).a0_on('click', function (e) {
     widget._signInSocial(e);
   });
 
-  var form = $('.a0-signup form')
+  var form = widget._$('.a0-signup form')
     .a0_off('submit')
     .a0_on('submit', function (e) {
       e.preventDefault();
       var connection  = widget._getAuth0Connection();
-      var email = $('.a0-email input', form).val();
-      var password = $('.a0-password input', form).val();
+      var email = widget._$('.a0-email input', form).val();
+      var password = widget._$('.a0-password input', form).val();
 
       if (!valid(form, widget)) return;
       signup.submit(widget, connection.name, email, password);
     });
 
   if (is_small_screen()) {
-    collapse_onfocus.hook($('.a0-signup form input'), $('.a0-collapse-social-signup'));
+    collapse_onfocus.hook(widget._$('.a0-signup form input'), widget._$('.a0-collapse-social-signup'));
   }
 
   return signup;
@@ -84,10 +86,10 @@ signup.bind = function (widget) {
 
 function valid(form, widget) {
   var ok = true;
-  var email_input = $('input[name=email]', form);
+  var email_input = widget._$('input[name=email]', form);
   var email_empty = empty.test(email_input.val());
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
-  var password_input = $('input[name=password]', form);
+  var password_input = widget._$('input[name=password]', form);
   var password_empty = empty.test(password_input.val());
 
   // asume valid by default
