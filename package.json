@@ -9,7 +9,7 @@
     "openid",
     "authentication",
     "jwt",
-    "brow ser"
+    "browser"
   ],
   "scripts": {
     "test": "grunt integration"

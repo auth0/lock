@@ -1,14 +1,8 @@
 //fails in chrome 28- BrowserStack.
 describe('sign up', function () {
-  afterEach(function () {
-    $('#a0-widget').remove();
-    this.auth0.removeAllListeners('transition_mode');
-    global.window.location.hash = '';
-    global.window.Auth0 = null;
-  });
 
   beforeEach(function () {
-    $('#a0-widget').remove();
+    if (this.auth0) this.auth0._hideSignIn();
     this.auth0 = new Auth0Widget({
       domain:      'mdocs.auth0.com',
       callbackURL: 'http://localhost:3000/',
@@ -17,6 +11,12 @@ describe('sign up', function () {
     });
   });
 
+  afterEach(function () {
+    this.auth0.removeAllListeners('transition_mode');
+    this.auth0._hideSignIn();
+    global.window.location.hash = '';
+    global.window.Auth0 = null;
+  });
 
   it('should show the loading pane', function (done) {
     var auth0 = this.auth0.show().once('signup_ready', function () {

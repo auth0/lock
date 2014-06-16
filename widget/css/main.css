@@ -7132,7 +7132,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-widget .a0-panel .a0-password .a0-input-box i,
 #a0-widget .a0-panel .a0-repeatPassword .a0-input-box i {
   font-size: 14px;
-  z-index: 10000;
+  z-index: 1000;
   top: 18px;
   left: 16px;
   position: absolute;

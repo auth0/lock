@@ -75,13 +75,13 @@ describe('auth0-Widget', function () {
     expect(client._callbackOnLocationHash).to.be(true);
   });
 
-  it('should hide widget when user close it', function (done) {
+  it('should remove widget when user close it', function (done) {
     widget.show();
     widget.on('transition_mode', function (mode) {
       if (mode !== 'signin') return;
       bean.fire($('#a0-widget a.a0-close')[0], 'click');
     }).on('closed', function () {
-      expect($('#a0-widget').css('display')).to.equal('none');
+      expect($('#a0-widget').length).to.equal(0);
       done();
     });
   });
