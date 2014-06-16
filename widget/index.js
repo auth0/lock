@@ -290,10 +290,10 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
   this._$().css('display', 'none');
   bonzo(document.body).removeClass('a0-widget-open');
 
-  if (this._signinOptions.container) {
+  if (this._container && this._signinOptions.container) {
     // remove `#a0-widget`
     this._$().remove();
-  } else {
+  } else if(this._container) {
     // remove `.a0-widget-container`
     this._$().parent('.a0-widget-container').remove();
   }
