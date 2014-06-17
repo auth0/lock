@@ -143,7 +143,7 @@ a.zocial {
   content: "*";
 }
 .zocial.waad:before {
-  content: "z";
+  content: "W";
 }
 .zocial.box:before {
   content: "x";
