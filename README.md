@@ -150,7 +150,9 @@ The example directory has a ready-to-go app. In order to run it you need [node](
 
 ## Develop
 
-Run `grunt dev` and point your browser to `http://localhost:9999/test_harness.html` to run the test suite.
+To run the tests that don't require [BrowserStack](http://browserstack.com), first install `npm install -g testem` and then run `grunt test`.
+
+To run the entire test suite run `grunt dev` and point your browser to `http://localhost:9999/test_harness.html`.
 
 ## Browser Compatibility
 
