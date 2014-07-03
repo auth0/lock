@@ -50,13 +50,19 @@ widget.signin(options, callback);
 * __container__: The id of the DIV where the widget will be contained.
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
+* __connection_scopes__: Scopes to request to each identity provider that are not configured for the connection.
 
 ~~~javascript
 widget.signin({
   connections: ['facebook', 'google-oauth2', 'twitter', 'Username-Password-Authentication', 'fabrikam.com'],
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
-  showIcon: true
+  showIcon: true,
+  connection_scopes: { 
+    'facebook': ['public_profile', 'user_friends'],
+    'google-oauth2': ['https://www.googleapis.com/auth/orkut'],
+    // none for twitter
+  }
 }, function () {
   // The Auth0 Widget is now loaded.
 });
