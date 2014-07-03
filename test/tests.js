@@ -223,6 +223,24 @@ describe('auth0-Widget', function () {
         bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       });
     });
+    
+    it('should signin with social connection specifying connection_scope', function (done) {
+      var connection_scope = ['grant1', 'grant2', 'grant3'];
+      
+      client.login = function (options) {
+        console.log(options);
+        expect(options.state).to.equal('foo');
+        expect(options.connection).to.equal('google-oauth2');
+        expect(options.username).to.not.exist;
+        expect(options.connection_scope).to.equal(connection_scope);
+        done();
+      };
+
+      widget.show({ state: 'foo', connection_scope: connection_scope }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+      });
+    });
 
     it('should signin with database connection (auth0 strategy)', function (done) {
       client.login = function (options) {
