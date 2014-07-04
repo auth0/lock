@@ -22,7 +22,7 @@ Take `auth0-widget.js` or `auth0-widget.min.js` from the `build` directory and i
 Construct a new instance of the Auth0 Widget as follows:
 
 ~~~html
-<script src="http://cdn.auth0.com/w2/auth0-widget-4.0.js"></script>
+<script src="http://cdn.auth0.com/w2/auth0-widget-4.1.js"></script>
 <script type="text/javascript">
   var widget = new Auth0Widget({
     domain:       'mine.auth0.com',
