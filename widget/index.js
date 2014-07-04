@@ -613,7 +613,14 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
   var strategy = this._getConfiguredStrategy(strategyName);
 
   var connectionName = connection || strategy.connections[0].name;
-
+  // use extraParameters because it is used in all branches to set loginOptions
+  var extra = self._signinOptions.extraParameters;
+  
+  if (extra.connection_scopes) {
+    // if no connection_scope was set for the connection we are ok with sending undefined
+    extra.connection_scope = extra.connection_scopes[connectionName];
+  }
+  
   if (strategy) {
     // If we are in popup mode and callbackOnLocationHash was specified
     // we need to pass a callback.
@@ -1116,7 +1123,7 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
   var extra = utils.extract(self._signinOptions,
                             [ 'state', 'access_token',
                               'scope', 'protocol',
-                              'request_id' ]);
+                              'request_id', 'connection_scopes' ]);
 
   self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
 

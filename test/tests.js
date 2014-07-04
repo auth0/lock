@@ -223,6 +223,49 @@ describe('auth0-Widget', function () {
         bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       });
     });
+    
+    it('should signin with social connection specifying connection_scope if one is provided', function (done) {
+      var connection_scopes = { 
+        'twitter': ['grant1', 'grant2'], 
+        'google-oauth2': ['grant3'] };
+      var connections = ['twitter', 'google-oauth2'];
+      
+      client.login = function (options) {
+        expect(options.connection).to.equal('twitter');
+        expect(options.username).to.not.exist;
+        expect(options.connection_scope.length).to.equal(2);
+        expect(options.connection_scope[0]).to.equal('grant1');
+        expect(options.connection_scope[1]).to.equal('grant2');
+        expect(options.connection_scopes).to.not.exist;
+        
+        done();
+      };
+
+      widget.show({ connections: connections, connection_scopes: connection_scopes }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="twitter"]')[0], 'click');
+      });
+    });
+    
+    it('should signin with social connection with undefined connection_scope if one is not provided (does not throw)', function (done) {
+      var connection_scopes = { 
+        'twitter': ['grant1', 'grant2'] };
+      var connections = ['twitter', 'google-oauth2'];
+      
+      client.login = function (options) {
+        expect(options.connection).to.equal('google-oauth2');
+        expect(options.username).to.not.exist;
+        expect(options.connection_scope).to.not.exist;
+        expect(options.connection_scopes).to.not.exist;
+        
+        done();
+      };
+
+      widget.show({ connections: connections, connection_scopes: connection_scopes }).on('transition_mode', function (mode) {
+        if(mode !== 'signin') return;
+        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+      });
+    });
 
     it('should signin with database connection (auth0 strategy)', function (done) {
       client.login = function (options) {
