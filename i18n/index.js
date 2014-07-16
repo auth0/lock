@@ -14,6 +14,7 @@ var dics_data = {
   'pt-BR': require('./pt-BR.json'),
   'ru': require('./ru.json'),
   'tlh': require('./tlh.json'),
+  'tr': require('./tr.json'),
   'zh': require('./zh.json')
 };
 
