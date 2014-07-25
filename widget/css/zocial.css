@@ -376,7 +376,7 @@ button:-moz-focus-inner {
 .zocial.icon {
   width: auto;
   display: inline-block;
-  margin: 0 6px;
+  margin: 6px;
 }
 .equal-viewport .zocial:before,
 .zocial.icon:before {

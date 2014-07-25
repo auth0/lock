@@ -1376,7 +1376,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-widget .a0-zocial.a0-icon {
   width: auto;
   display: inline-block;
-  margin: 0 6px;
+  margin: 6px;
 }
 
 #a0-widget .a0-equal-viewport .a0-zocial:before,
@@ -1405,8 +1405,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-panel {
   background: white;
-  max-width: 320px;
-  min-width: 280px;
+  width: 280px;
   overflow: hidden;
   -webkit-transition: height 50ms ease-in;
   -moz-transition: height 50ms ease-in;
@@ -7399,7 +7398,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-mode {
-    padding: 10px;
+    padding: 0 20px 20px 20px;
   }
 
   #a0-widget .a0-popup .a0-centrix .a0-panel .a0-image {
@@ -7418,7 +7417,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 
   #a0-widget .a0-popup .a0-centrix .a0-panel h1 {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   #a0-widget .a0-popup .a0-centrix .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
