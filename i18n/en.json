@@ -14,7 +14,7 @@
     "strategyEmailInvalid":        "The email is invalid.",
     "strategyDomainInvalid":       "The domain {domain} has not been setup.",
     "signupText":                  "Sign Up",
-    "forgotText":                  "Forgot your password?",
+    "forgotText":                  "Reset password",
     "emailPlaceholder":            "Email",
     "usernamePlaceholder":         "Username",
     "passwordPlaceholder":         "Password",
