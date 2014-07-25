@@ -815,7 +815,7 @@ Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
   }
 
   // buttons actions
-  this._$('.a0-onestep a.a0-close').a0_on('click', function () { self._hideSignIn(); });
+  this._$('.a0-onestep a.a0-close').a0_on('click', function (e) { e.preventDefault(); self._hideSignIn(); });
   this._$('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
   this._$('').a0_on('keyup', function (e) {
     if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
