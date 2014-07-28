@@ -25,12 +25,12 @@ var is_small_screen = require('./lib/js/is_small_screen');
 var get_viewport = require('./lib/js/get_viewport');
 
 //browser incompatibilities fixes
-var placeholderSupported = require('./lib/pf/placeholderSupported');
-var object_create = require('./lib/pf/Object.create');
-var transition_end = require('./lib/pf/transition_end');
-var utils = require('./lib/pf/utils');
+var placeholderSupported = require('./lib/supports-placeholder');
+var has_animations = require('./lib/supports-animation');
+var transition_end = require('./lib/transition-end');
+var object_create = require('./lib/object-create');
+var utils = require('./lib/utils');
 var trim = require('trim');
-var has_animations = require('./lib/pf/has_animations');
 
 function hasTransitions (el) {
   //defer this. prevent errors if the script is placed on the <head>
