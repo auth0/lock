@@ -81,11 +81,11 @@ module.exports = function (grunt) {
     less: {
       dist: {
         options: {
-          paths: ["widget/css"],
+          paths: ["lib/css"],
         },
         files: {
-          "widget/css/main.css": "widget/css/main.less",
-          "widget/css/zocial.css": "widget/css/zocial.less"
+          "lib/css/main.css": "lib/css/main.less",
+          "lib/css/zocial.css": "lib/css/zocial.less"
         }
       },
       example: {
@@ -99,14 +99,14 @@ module.exports = function (grunt) {
         browsers: ['> 1%', 'last 2 versions', 'ff 15', 'opera 12.1', 'ie 8']
       },
       main: {
-        src:  'widget/css/main.css',
-        dest: 'widget/css/main.css',
+        src:  'lib/css/main.css',
+        dest: 'lib/css/main.css',
       },
     },
     prefix: { //this adds "a0-" to every class and id
       css: {
-        src: 'widget/css/main.css',
-        dest: 'widget/css/main.css',
+        src: 'lib/css/main.css',
+        dest: 'lib/css/main.css',
         prefix: 'a0-'
       }
     },
@@ -116,8 +116,8 @@ module.exports = function (grunt) {
           keepSpecialComments: 0
         },
         files: {
-          'widget/css/main.min.css': ['widget/css/main.css'],
-          'widget/css/zocial.min.css': ['widget/css/zocial.css']
+          'lib/css/main.min.css': ['lib/css/main.css'],
+          'lib/css/zocial.min.css': ['lib/css/zocial.css']
         }
       }
     },
@@ -164,13 +164,13 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["release/", "build/", "widget/css/main.css", "widget/css/main.min.css", "widget/css/zocial.css", "widget/css/zocial.min.css", "example/auth0-widget.js"]
+      build: ["release/", "build/", "lib/css/main.css", "lib/css/main.min.css", "lib/css/zocial.css", "lib/css/zocial.min.css", "example/auth0-widget.js"]
     },
     watch: {
       another: {
         files: ['node_modules',
                 'standalone.js',
-                'widget/**/*',
+                'lib/**/*',
                 'i18n/*'],
         tasks: ['build']
       },

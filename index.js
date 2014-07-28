@@ -1,36 +1,36 @@
-require('../lib/insert-css');
+require('./lib/insert-css');
 
 var Auth0       = require('auth0-js');
 var _           = require('underscore');
-var strategies  = require('./js/strategies');
-var mainTmpl    = require('./html/main.ejs');
-var embTmpl     = require('./html/main_embedded.ejs');
-var buttonTmpl  = require('./html/button.ejs');
+var strategies  = require('./lib/js/strategies');
+var mainTmpl    = require('./lib/html/main.ejs');
+var embTmpl     = require('./lib/html/main_embedded.ejs');
+var buttonTmpl  = require('./lib/html/button.ejs');
 
 var EventEmitter = require('events').EventEmitter;
 
-var loggedinBtnTmpl      = require('./html/loggedin_button.ejs');
-var loginActionsTmpl     = require('./html/login_actions.ejs');
-var i18n                 = require('../i18n');
+var loggedinBtnTmpl      = require('./lib/html/loggedin_button.ejs');
+var loginActionsTmpl     = require('./lib/html/login_actions.ejs');
+var i18n                 = require('./i18n');
 
-var regex = require('./js/regex');
+var regex = require('./lib/js/regex');
 var email_parser = regex.email_parser;
 
-var signup = require('./modes/signup');
-var reset = require('./modes/reset');
+var signup = require('./lib/modes/signup');
+var reset = require('./lib/modes/reset');
 
-var $ = require('./js/bonzo_qwery');
+var $ = require('./lib/js/bonzo_qwery');
 var bonzo = require('bonzo');
-var is_small_screen = require('./js/is_small_screen');
-var get_viewport = require('./js/get_viewport');
+var is_small_screen = require('./lib/js/is_small_screen');
+var get_viewport = require('./lib/js/get_viewport');
 
 //browser incompatibilities fixes
-var placeholderSupported = require('./pf/placeholderSupported');
-var object_create = require('./pf/Object.create');
-var transition_end = require('./pf/transition_end');
-var utils = require('./pf/utils');
+var placeholderSupported = require('./lib/pf/placeholderSupported');
+var object_create = require('./lib/pf/Object.create');
+var transition_end = require('./lib/pf/transition_end');
+var utils = require('./lib/pf/utils');
 var trim = require('trim');
-var has_animations = require('./pf/has_animations');
+var has_animations = require('./lib/pf/has_animations');
 
 function hasTransitions (el) {
   //defer this. prevent errors if the script is placed on the <head>
@@ -1026,7 +1026,7 @@ Auth0Widget.prototype._resolveLoginView = function () {
   this.query('.a0-panel .a0-action').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
 
   if (is_small_screen()) {
-    var collapse_onfocus = require('./js/collapse_onfocus');
+    var collapse_onfocus = require('./lib/js/collapse_onfocus');
     collapse_onfocus.hook(this.query('.a0-notloggedin form input'), this.query('.a0-collapse-social'));
   }
 
