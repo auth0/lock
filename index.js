@@ -61,8 +61,13 @@ function Auth0Widget (options) {
 
   this._dict = i18n.getDict(options.dict);
 
+  this._locals = {
+    i18n: this._dict
+  };
+
   this._options = options;
   this._strategies = strategies;
+
   this._auth0 = new Auth0({
     clientID:     this._options.clientID,
     callbackURL:  this._options.callbackURL,
@@ -88,7 +93,6 @@ function Auth0Widget (options) {
   this._getApp();
 
   EventEmitter.call(this);
-  var self = this;
 }
 
 Auth0Widget.version = require('package.version');
@@ -99,6 +103,11 @@ Auth0Widget.prototype = object_create(EventEmitter.prototype);
 Auth0Widget.prototype.query = function(selector, context) {
   return $(selector, context || this._container);
 };
+
+Auth0Widget.prototype.render = function(tmpl, locals) {
+  var _locals = _.extend({}, this._locals, locals);
+  return tmpl(_locals);
+}
 
 Auth0Widget.prototype._getApp = function () {
   var self = this;
@@ -951,13 +960,15 @@ Auth0Widget.prototype._resolveLoginView = function () {
 
   // show signup/forgot links
   var auth0Conn = this._getAuth0Connection() || {};
-  var actions = $.create(loginActionsTmpl({
+
+  var locals = {
     showSignup: (this._signinOptions.showSignup !== false) && ((auth0Conn && auth0Conn.showSignup) || this._signinOptions.signupLink),
     showForgot: (this._signinOptions.showForgot !== false) && ((auth0Conn && auth0Conn.showForgot) || this._signinOptions.forgotLink),
-    i18n: this._dict,
     signupLink: this._signinOptions.signupLink,
     forgotLink: this._signinOptions.forgotLink
-  }));
+  };
+
+  var actions = $.create(this.render(loginActionsTmpl, locals));
 
   // username_style
   var auth0ConnStrategy = this._getStrategy(auth0Conn.name) || {};
@@ -1050,19 +1061,14 @@ Auth0Widget.prototype._resolveLoginView = function () {
 };
 
 Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
-  return signinOptions.chrome ?
-    mainTmpl({
-      expand:       true, // cover the entire container
-      i18n:         this._dict,
+  var locals = {
       options:      signinOptions,
       alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
-    }) :
-    embTmpl({
-      embedded:     true,
-      i18n:         this._dict,
-      options:      signinOptions,
-      alt_spinner:  !has_animations() ? (signinOptions.cdn + 'img/ajax-loader.gif') : null
-    });
+  };
+
+  return signinOptions.chrome
+    ? this.render(mainTmpl, _.extend(locals, { expand: true })) // cover the entire container
+    : this.render(embTmpl, _.extend(locals, { embedded: true }))
 };
 
 Auth0Widget.prototype.getClient = function () {
@@ -1137,6 +1143,7 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
 
   // widget container
   if (self._signinOptions.container) {
+
     self._signinOptions.theme = 'static';
     self._signinOptions.standalone = true;
     self._signinOptions.top = true;
@@ -1144,16 +1151,21 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
     var specifiedContainer = document.getElementById(self._signinOptions.container);
     specifiedContainer.innerHTML = self._getEmbededTemplate(self._signinOptions);
     self._container = specifiedContainer;
-  } else {
 
+  } else {
     var div = document.createElement('div');
+
     bonzo(div).addClass('a0-widget-container');
-    div.innerHTML = mainTmpl({
-      i18n:    this._dict,
+
+    var locals = {
       options: self._signinOptions,
       alt_spinner: !has_animations() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
-    });
+    };
+
+    div.innerHTML = this.render(mainTmpl, locals);
+
     document.body.appendChild(div);
+
     self._container = div;
   }
 
