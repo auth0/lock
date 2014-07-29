@@ -170,6 +170,7 @@ module.exports = function (grunt) {
       another: {
         files: ['node_modules',
                 'standalone.js',
+                'index.js',
                 'lib/**/*',
                 'i18n/*'],
         tasks: ['build']
