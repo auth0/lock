@@ -16,8 +16,9 @@ var i18n                 = require('./i18n');
 var regex = require('./lib/js/regex');
 var email_parser = regex.email_parser;
 
-var signup = require('./lib/modes/signup');
-var reset = require('./lib/modes/reset');
+var SigninPanel = require('./lib/mode-signin');
+var signup = require('./lib/mode-signup');
+var reset = require('./lib/mode-reset');
 
 var $ = require('./lib/js/bonzo_qwery');
 var bonzo = require('bonzo');
@@ -1185,4 +1186,220 @@ Auth0Widget.prototype.logout = function (query) {
   this._auth0.logout(query);
 };
 
+Auth0Widget.prototype.showSignin = function(options, callback) {
+  // should tweak some `only signin` display configs
+  // and then call display with 'signin' mode
+  this.display('signin', options, callback);
+  return this;
+}
+
+/**
+ * Display the `widget`, and call `mode` boot
+ *
+ * @private
+ */
+
+Auth0Widget.prototype.display = function(mode, options, callback) {
+
+  this._signinOptions = _.extend({ popupCallback: callback }, this._options, options);
+
+  // here we tweak general display options
+  // like allowing SSO and stuff
+  var extra = utils.extract(this._signinOptions,
+                            [ 'state', 'access_token',
+                              'scope', 'protocol',
+                              'request_id', 'connection_scopes' ]);
+
+  this._signinOptions.extraParameters = _.extend({}, extra, this._signinOptions.extraParameters);
+
+  // this will evaluate options and render `Auth0Widget`'s container
+  var self = this;
+  this.initialize(function() {
+    if ('signin' === mode) {
+      self._signinPanel(options, callback);
+    };
+  });
+
+  return this;
+}
+
+Auth0Widget.prototype.initialize = function(done) {
+
+  this.renderContainer();
+
+  if (!placeholderSupported) {
+    this.query('.a0-overlay').addClass('a0-no-placeholder-support');
+  }
+
+  if (!this._signinOptions.container) {
+    bonzo(document.body).addClass('a0-widget-open');
+  }
+
+  var self = this;
+  this.query().addClass('a0-mode-signin');
+
+  // wait for setClient()
+  if (!self._client) {
+    var args  = arguments;
+    var setClient = global.window.Auth0.setClient;
+
+    global.window.Auth0.setClient = function () {
+      setClient.apply(this, arguments);
+      self.initialize.apply(self, args);
+    };
+
+    return;
+  }
+
+  // buttons actions
+  this.query('.a0-onestep a.a0-close').a0_on('click', function (e) { e.preventDefault(); self._hideSignIn(); });
+  this.query('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
+  this.query('').a0_on('keyup', function (e) {
+    if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
+      self._hideSignIn(); // close popup with ESC key
+    }
+  });
+
+  if (self._client.subscription && !~['free', 'dev'].indexOf(self._client.subscription)) {
+    // hide footer for non free/dev subscriptions
+    this.query('.a0-footer').toggleClass('a0-hide', true);
+    this.query('.a0-free-subscription').removeClass('a0-free-subscription');
+  }
+
+  // images from cdn
+  // this.query('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
+
+  // labels text
+  var options = _.extend({}, this._signinOptions, this._signinOptions.resources);
+  options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
+  options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
+  options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
+  options['enableADRealmDiscovery'] = typeof options['enableADRealmDiscovery'] !== 'undefined' ? options['enableADRealmDiscovery'] : true;
+
+  this._signinOptions = options;
+
+  // activate panel
+  this.query('div.a0-panel').removeClass('a0-active');
+  this.query('div.a0-overlay').addClass('a0-active');
+  this.query('div.a0-panel.a0-onestep').addClass('a0-active');
+
+  if (self._signinOptions.container) {
+    this.query('div.a0-active').removeClass('a0-overlay');
+  }
+
+  this.query('.a0-popup h1').html(this._dict.t('signin:title'));
+  this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
+
+  this.query('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
+
+  if (self._signinOptions.connections) {
+    self._client.strategies = _.chain(self._client.strategies)
+                                .map(function (s) {
+                                  s.connections = _.filter(s.connections, function (c) {
+                                    return _.contains(self._signinOptions.connections, c.name);
+                                  });
+                                  return s;
+                                }).filter(function (s) {
+                                  return s.connections.length > 0;
+                                }).value();
+  }
+
+
+  // merge strategies info
+  for (var s = 0; s < self._client.strategies.length; s++) {
+    var strategy_name = self._client.strategies[s].name;
+    self._client.strategies[s] = _.extend({}, self._client.strategies[s], self._strategies[strategy_name]);
+  }
+
+  self._auth0Strategies = _.chain(self._client.strategies)
+                            .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
+                            .value();
+
+  var auth0Conn = this._getAuth0Connection() || {};
+  if (self._openWith === 'SignUp' && !auth0Conn.showSignup && !self._signinOptions.signupLink) self._openWith = null;
+  if (self._openWith === 'Reset' && !auth0Conn.showForgot && !self._signinOptions.forgotLink) self._openWith = null;
+
+  // show loading
+  self._showLoadingExperience();
+
+  function finish(err, ssoData){
+    self._ssoData = ssoData;
+    // if (self._openWith) {
+    //   return self['_show' + self._openWith + 'Experience']();
+    // }
+    // self._resolveLoginView();
+    // if (widgetLoadedCallback && typeof widgetLoadedCallback === 'function') widgetLoadedCallback();
+    done();
+    self.emit('shown');
+  }
+
+  var is_any_ad = _.some(self._client.strategies, function (s) {
+    return (s.name === 'ad' || s.name === 'auth0-adldap') &&
+            s.connections.length > 0;
+  });
+
+  // get SSO data
+  if (this._signinOptions.enableReturnUserExperience === false && (!is_any_ad || self._openWith || this._signinOptions.enableADRealmDiscovery === false)) {
+    finish(null, {});
+  } else {
+    self._auth0.getSSOData(is_any_ad, finish);
+  }
+
+
+  return this;
+}
+
+Auth0Widget.prototype._signinPanel = function (options, callback) {
+  var self = this;
+  var signin = SigninPanel(this, { options: options || {} });
+
+  this.query('.a0-mode-container').html(signin.create());
+
+  this.query('.a0-mode.a0-hide').removeClass('a0-hide');
+  // signin.on('submit', this.setLoadingMode);
+  // signin.on('error', function(errors) {
+  //   // errors are already saved in `signin` instance
+  //   self.unsetLoadinMode();
+  //   self.query('.a0-panel').html(signin.create());
+  // });
+
+  // signin.on('success', function() {
+  //   self.hide();  // will unset loading mode
+  //                 // and destroy and detach
+  //                 // widget container from DOM
+  // });
+
+  this.emit('signin_ready');
+}
+
+Auth0Widget.prototype.renderContainer = function() {
+  if (this._container) return;
+
+  // widget container
+  if (this._signinOptions.container) {
+    this._signinOptions.theme = 'static';
+    this._signinOptions.standalone = true;
+    this._signinOptions.top = true;
+
+    var specifiedContainer = document.getElementById(this._signinOptions.container);
+    specifiedContainer.innerHTML = this._getEmbededTemplate(this._signinOptions);
+    this._container = specifiedContainer;
+
+  } else {
+    var div = document.createElement('div');
+
+    bonzo(div).addClass('a0-widget-container');
+    var locals = {
+      options: this._signinOptions,
+      alt_spinner: !has_animations() ? (this._signinOptions.cdn + 'img/ajax-loader.gif') : null
+    };
+
+    div.innerHTML = this.render(mainTmpl, locals);
+
+    document.body.appendChild(div);
+    this._container = div;
+  }
+
+  return this;
+}
 module.exports = Auth0Widget;
