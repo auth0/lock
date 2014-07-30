@@ -51,6 +51,7 @@
             </div>
             <div class="sidebar-box"><strong>Demos</strong>
               <ul>
+                <li><a id="new-login"><i></i>New Login</a></li>
                 <li><a id="login-button"><i></i>Login</a></li>
                 <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
                 <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
@@ -99,6 +100,16 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
       $(function() {
+          $('#new-login').on('click', function() {
+              var widget = new Auth0Widget({
+                  domain: 'mdocs.auth0.com',
+                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+                  callbackURL: window.location.href,
+                  callbackOnLocationHash: true
+                  // enableReturnUserExperience: false
+              });
+              widget.showSignin({});
+          });
           $('#login-button').on('click', function() {
               var widget = new Auth0Widget({
                   domain: 'mdocs.auth0.com',
