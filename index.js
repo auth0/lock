@@ -19,6 +19,8 @@ var email_parser = regex.email_parser;
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
+var LoggedinPanel = require('./lib/mode-loggedin');
+var KerberosPanel = require('./lib/mode-kerberos');
 var signup = require('./lib/mode-signup/deprecated');
 var reset = require('./lib/mode-reset/deprecated');
 
@@ -299,7 +301,6 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
 
   this.query('div.a0-overlay').removeClass('a0-active');
 
-  this.query().removeClass('a0-mode-signin');
   this.query().css('display', 'none');
   bonzo(document.body).removeClass('a0-widget-open');
 
@@ -815,7 +816,6 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
 // initialize
 Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
   var self = this;
-  this.query().addClass('a0-mode-signin');
 
   // wait for setClient()
   if (!self._client) {
@@ -1187,10 +1187,39 @@ Auth0Widget.prototype.logout = function (query) {
   this._auth0.logout(query);
 };
 
+/**
+ * Override old widget with new methods
+ */
+
+Auth0Widget.prototype.show = function(options, callback) {
+  // should tweak some `only signin` display configs
+  // and then call display with 'signin' mode
+  options = _.extend({ mode: 'signin' }, options);
+  this.display(options, callback);
+  return this;
+}
+
 Auth0Widget.prototype.showSignin = function(options, callback) {
   // should tweak some `only signin` display configs
   // and then call display with 'signin' mode
-  this.display('signin', options, callback);
+  options = _.extend({ mode: 'signin', showForgot: false, showSignup: false }, options);
+  this.display(options, callback);
+  return this;
+}
+
+Auth0Widget.prototype.showSignup = function(options, callback) {
+  // should tweak some `only signin` display configs
+  // and then call display with 'signin' mode
+  options = _.extend({ mode: 'signup', showForgot: false, showSignup: false }, options);
+  this.display(options, callback);
+  return this;
+}
+
+Auth0Widget.prototype.showReset = function(options, callback) {
+  // should tweak some `only signin` display configs
+  // and then call display with 'signin' mode
+  options = _.extend({ mode: 'reset', showForgot: false, showSignup: false }, options);
+  this.display(options, callback);
   return this;
 }
 
@@ -1200,7 +1229,7 @@ Auth0Widget.prototype.showSignin = function(options, callback) {
  * @private
  */
 
-Auth0Widget.prototype.display = function(mode, options, callback) {
+Auth0Widget.prototype.display = function(options, callback) {
 
   this._signinOptions = _.extend({ popupCallback: callback }, this._options, options);
 
@@ -1215,11 +1244,34 @@ Auth0Widget.prototype.display = function(mode, options, callback) {
 
   // this will evaluate options and render `Auth0Widget`'s container
   var self = this;
-  this.initialize(function() {
-    if ('signin' === mode) {
+
+  this.initialize(oninitialized);
+
+  function oninitialized() {
+    if ('signin' === options.mode) {
+      // if user in AD ip range
+      if (self._ssoData && self._ssoData.connection) {
+        return self._kerberosPanel(options, callback);
+      }
+
+      // if user logged in show logged in experience
+      if (self._ssoData && self._ssoData.sso && !!self._signinOptions.enableReturnUserExperience) {
+        return self._loggedinPanel(options, callback);
+      }
+
+      // otherwise, just show signin
       self._signinPanel(options, callback);
     };
-  });
+
+    if ('signup' === options.mode) {
+      self._signupPanel(options, callback);
+    };
+
+    if ('reset' === options.mode) {
+      self._resetPanel(options, callback);
+    };
+
+  }
 
   return this;
 }
@@ -1237,7 +1289,6 @@ Auth0Widget.prototype.initialize = function(done) {
   }
 
   var self = this;
-  this.query().addClass('a0-mode-signin');
 
   // wait for setClient()
   if (!self._client) {
@@ -1254,7 +1305,7 @@ Auth0Widget.prototype.initialize = function(done) {
 
   // buttons actions
   this.query('.a0-onestep a.a0-close').a0_on('click', function (e) { e.preventDefault(); self._hideSignIn(); });
-  this.query('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
+  // this.query('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
   this.query('').a0_on('keyup', function (e) {
     if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
       self._hideSignIn(); // close popup with ESC key
@@ -1267,17 +1318,12 @@ Auth0Widget.prototype.initialize = function(done) {
     this.query('.a0-free-subscription').removeClass('a0-free-subscription');
   }
 
-  // images from cdn
-  // this.query('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
-
   // labels text
-  var options = _.extend({}, this._signinOptions, this._signinOptions.resources);
+  var options = this._signinOptions =  _.extend({}, this._signinOptions, this._signinOptions.resources);
   options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
   options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
   options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
   options['enableADRealmDiscovery'] = typeof options['enableADRealmDiscovery'] !== 'undefined' ? options['enableADRealmDiscovery'] : true;
-
-  this._signinOptions = options;
 
   // activate panel
   this.query('div.a0-panel').removeClass('a0-active');
@@ -1295,14 +1341,16 @@ Auth0Widget.prototype.initialize = function(done) {
 
   if (self._signinOptions.connections) {
     self._client.strategies = _.chain(self._client.strategies)
-                                .map(function (s) {
-                                  s.connections = _.filter(s.connections, function (c) {
-                                    return _.contains(self._signinOptions.connections, c.name);
-                                  });
-                                  return s;
-                                }).filter(function (s) {
-                                  return s.connections.length > 0;
-                                }).value();
+      .map(function (s) {
+        s.connections = _.filter(s.connections, function (c) {
+          return _.contains(self._signinOptions.connections, c.name);
+        });
+        return s;
+      })
+      .filter(function (s) {
+        return s.connections.length > 0;
+      })
+      .value();
   }
 
 
@@ -1313,39 +1361,41 @@ Auth0Widget.prototype.initialize = function(done) {
   }
 
   self._auth0Strategies = _.chain(self._client.strategies)
-                            .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
-                            .value();
+    .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
+    .value();
 
   var auth0Conn = this._getAuth0Connection() || {};
   if (self._openWith === 'SignUp' && !auth0Conn.showSignup && !self._signinOptions.signupLink) self._openWith = null;
   if (self._openWith === 'Reset' && !auth0Conn.showForgot && !self._signinOptions.forgotLink) self._openWith = null;
 
   // show loading
+  // should be replaced by _loadingPanel
   self._showLoadingExperience();
 
-  function finish(err, ssoData){
-    self._ssoData = ssoData;
-    // if (self._openWith) {
-    //   return self['_show' + self._openWith + 'Experience']();
-    // }
-    // self._resolveLoginView();
-    // if (widgetLoadedCallback && typeof widgetLoadedCallback === 'function') widgetLoadedCallback();
-    done();
-    self.emit('shown');
-  }
-
   var is_any_ad = _.some(self._client.strategies, function (s) {
-    return (s.name === 'ad' || s.name === 'auth0-adldap') &&
-            s.connections.length > 0;
+    return (s.name === 'ad' || s.name === 'auth0-adldap') && s.connections.length > 0;
   });
 
-  // get SSO data
-  if (this._signinOptions.enableReturnUserExperience === false && (!is_any_ad || self._openWith || this._signinOptions.enableADRealmDiscovery === false)) {
-    finish(null, {});
-  } else {
-    self._auth0.getSSOData(is_any_ad, finish);
+  function finish(err, ssoData) {
+    // XXX: maybe we should parse the errors here.
+    // Just a thought...
+    console.log(ssoData);
+    self._ssoData = ssoData;
+    done();
+    self.emit('shown'); // maybe missplaced?
   }
 
+  // do not get SSO data on signup or reset modes
+  if (~['reset', 'signup'].indexOf(this._signinOptions.mode)) {
+    return finish(null, {}), this;
+  };
+
+  if (false === this._signinOptions.enableReturnUserExperience && (!is_any_ad || this._signinOptions.enableADRealmDiscovery === false)) {
+    return finish(null, {}), this;
+  };
+
+  // get SSO data and then render
+  self._auth0.getSSOData(is_any_ad, finish);
 
   return this;
 }
@@ -1370,7 +1420,7 @@ Auth0Widget.prototype._signinPanel = function (options, callback) {
   //                 // widget container from DOM
   // });
 
-  this.emit('signin_ready');
+  this.emit('signin ready');
 }
 
 Auth0Widget.prototype._signupPanel = function (options, callback) {
@@ -1394,7 +1444,7 @@ Auth0Widget.prototype._signupPanel = function (options, callback) {
   //                 // widget container from DOM
   // });
 
-  this.emit('signup_ready');
+  this.emit('signup ready');
 }
 
 Auth0Widget.prototype._resetPanel = function (options, callback) {
@@ -1418,7 +1468,83 @@ Auth0Widget.prototype._resetPanel = function (options, callback) {
   //                 // widget container from DOM
   // });
 
-  this.emit('reset_ready');
+  this.emit('reset ready');
+}
+
+Auth0Widget.prototype._loadingPanel = function (options, callback) {
+  var self = this;
+  var panel = ResetPanel(this, { options: options || {} });
+
+  // Here we should check what title to render
+  // from the current mode (?)
+  // for submits mostly
+  // XXX: check code upside
+  this._setTitle('');
+
+  this.query('.a0-mode-container').html(panel.create());
+
+  // panel.on('submit', this.setLoadingMode);
+  // panel.on('error', function(errors) {
+  //   // errors are already saved in `signin` instance
+  //   self.unsetLoadinMode();
+  //   self.query('.a0-panel').html(signin.create());
+  // });
+
+  // panel.on('success', function() {
+  //   self.hide();  // will unset loading mode
+  //                 // and destroy and detach
+  //                 // widget container from DOM
+  // });
+
+  this.emit('loading ready');
+}
+
+Auth0Widget.prototype._loggedinPanel = function (options, callback) {
+  var self = this;
+  var panel = LoggedinPanel(this, { options: options || {} });
+
+  this._setTitle(this._dict.t('signin:title'));
+
+  this.query('.a0-mode-container').html(panel.create());
+
+  // panel.on('submit', this.setLoadingMode);
+  // panel.on('error', function(errors) {
+  //   // errors are already saved in `signin` instance
+  //   self.unsetLoadinMode();
+  //   self.query('.a0-panel').html(signin.create());
+  // });
+
+  // panel.on('success', function() {
+  //   self.hide();  // will unset loading mode
+  //                 // and destroy and detach
+  //                 // widget container from DOM
+  // });
+
+  this.emit('loggedin ready');
+}
+
+Auth0Widget.prototype._kerberosPanel = function (options, callback) {
+  var self = this;
+  var panel = KerberosPanel(this, { options: options || {} });
+
+  this._setTitle(this._dict.t('signin:title'));
+
+  this.query('.a0-mode-container').html(panel.create());
+
+  // panel.on('submit', this.setLoadingMode);
+  // panel.on('error', function(errors) {
+  //   // errors are already saved in `signin` instance
+  //   self.unsetLoadinMode();
+  //   self.query('.a0-panel').html(signin.create());
+  // });
+
+  // panel.on('success', function() {
+  //   self.hide();  // will unset loading mode
+  //                 // and destroy and detach
+  //                 // widget container from DOM
+  // });
+
+  this.emit('kerberos ready');
 }
 
 Auth0Widget.prototype.renderContainer = function() {
