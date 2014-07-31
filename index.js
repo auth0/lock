@@ -17,8 +17,10 @@ var regex = require('./lib/js/regex');
 var email_parser = regex.email_parser;
 
 var SigninPanel = require('./lib/mode-signin');
-var signup = require('./lib/mode-signup');
-var reset = require('./lib/mode-reset');
+var SignupPanel = require('./lib/mode-signup');
+var ResetPanel = require('./lib/mode-reset');
+var signup = require('./lib/mode-signup/deprecated');
+var reset = require('./lib/mode-reset/deprecated');
 
 var $ = require('./lib/js/bonzo_qwery');
 var bonzo = require('bonzo');
@@ -830,7 +832,6 @@ Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
 
   // buttons actions
   this.query('.a0-onestep a.a0-close').a0_on('click', function (e) { e.preventDefault(); self._hideSignIn(); });
-  this.query('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
   this.query('').a0_on('keyup', function (e) {
     if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
       self._hideSignIn(); // close popup with ESC key
@@ -1351,25 +1352,73 @@ Auth0Widget.prototype.initialize = function(done) {
 
 Auth0Widget.prototype._signinPanel = function (options, callback) {
   var self = this;
-  var signin = SigninPanel(this, { options: options || {} });
+  var panel = SigninPanel(this, { options: options || {} });
 
-  this.query('.a0-mode-container').html(signin.create());
+  this._setTitle(this._dict.t('signin:title'));
+  this.query('.a0-mode-container').html(panel.create());
 
-  this.query('.a0-mode.a0-hide').removeClass('a0-hide');
-  // signin.on('submit', this.setLoadingMode);
-  // signin.on('error', function(errors) {
+  // panel.on('submit', this.setLoadingMode);
+  // panel.on('error', function(errors) {
   //   // errors are already saved in `signin` instance
   //   self.unsetLoadinMode();
   //   self.query('.a0-panel').html(signin.create());
   // });
 
-  // signin.on('success', function() {
+  // panel.on('success', function() {
   //   self.hide();  // will unset loading mode
   //                 // and destroy and detach
   //                 // widget container from DOM
   // });
 
   this.emit('signin_ready');
+}
+
+Auth0Widget.prototype._signupPanel = function (options, callback) {
+  var self = this;
+  var panel = SignupPanel(this, { options: options || {} });
+
+  this._setTitle(this._dict.t('signup:title'));
+
+  this.query('.a0-mode-container').html(panel.create());
+
+  // panel.on('submit', this.setLoadingMode);
+  // panel.on('error', function(errors) {
+  //   // errors are already saved in `signin` instance
+  //   self.unsetLoadinMode();
+  //   self.query('.a0-panel').html(signin.create());
+  // });
+
+  // panel.on('success', function() {
+  //   self.hide();  // will unset loading mode
+  //                 // and destroy and detach
+  //                 // widget container from DOM
+  // });
+
+  this.emit('signup_ready');
+}
+
+Auth0Widget.prototype._resetPanel = function (options, callback) {
+  var self = this;
+  var panel = ResetPanel(this, { options: options || {} });
+
+  this._setTitle(this._dict.t('reset:title'));
+
+  this.query('.a0-mode-container').html(panel.create());
+
+  // panel.on('submit', this.setLoadingMode);
+  // panel.on('error', function(errors) {
+  //   // errors are already saved in `signin` instance
+  //   self.unsetLoadinMode();
+  //   self.query('.a0-panel').html(signin.create());
+  // });
+
+  // panel.on('success', function() {
+  //   self.hide();  // will unset loading mode
+  //                 // and destroy and detach
+  //                 // widget container from DOM
+  // });
+
+  this.emit('reset_ready');
 }
 
 Auth0Widget.prototype.renderContainer = function() {
@@ -1402,4 +1451,5 @@ Auth0Widget.prototype.renderContainer = function() {
 
   return this;
 }
+
 module.exports = Auth0Widget;
