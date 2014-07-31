@@ -21,6 +21,7 @@ var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
 var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
+var LoadingPanel = require('./lib/mode-loading');
 var signup = require('./lib/mode-signup/deprecated');
 var reset = require('./lib/mode-reset/deprecated');
 
@@ -322,10 +323,7 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
 };
 
 Auth0Widget.prototype._getActiveLoginView = function() {
-  var container = this._currentPane.hasClass('a0-loggedin') ?
-                    this.query('.a0-loggedin') :
-                    this.query('.a0-notloggedin');
-  return container;
+  return this.query('.a0-loggedin:not(.a0-hide), .a0-notloggedin:not(.a0-hide)');
 };
 
 Auth0Widget.prototype._showSignUpExperience = function() {
@@ -1305,7 +1303,8 @@ Auth0Widget.prototype.initialize = function(done) {
 
   // buttons actions
   this.query('.a0-onestep a.a0-close').a0_on('click', function (e) { e.preventDefault(); self._hideSignIn(); });
-  // this.query('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
+  // this one below should be on mode-signin module bindAll method
+  this.query('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
   this.query('').a0_on('keyup', function (e) {
     if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
       self._hideSignIn(); // close popup with ESC key
@@ -1365,12 +1364,13 @@ Auth0Widget.prototype.initialize = function(done) {
     .value();
 
   var auth0Conn = this._getAuth0Connection() || {};
+  // _openWith no longer should matter!!!
+  // XXX: Book to remove soon
   if (self._openWith === 'SignUp' && !auth0Conn.showSignup && !self._signinOptions.signupLink) self._openWith = null;
   if (self._openWith === 'Reset' && !auth0Conn.showForgot && !self._signinOptions.forgotLink) self._openWith = null;
 
   // show loading
-  // should be replaced by _loadingPanel
-  self._showLoadingExperience();
+  self._loadingPanel({});
 
   var is_any_ad = _.some(self._client.strategies, function (s) {
     return (s.name === 'ad' || s.name === 'auth0-adldap') && s.connections.length > 0;
@@ -1379,7 +1379,6 @@ Auth0Widget.prototype.initialize = function(done) {
   function finish(err, ssoData) {
     // XXX: maybe we should parse the errors here.
     // Just a thought...
-    console.log(ssoData);
     self._ssoData = ssoData;
     done();
     self.emit('shown'); // maybe missplaced?
@@ -1473,13 +1472,13 @@ Auth0Widget.prototype._resetPanel = function (options, callback) {
 
 Auth0Widget.prototype._loadingPanel = function (options, callback) {
   var self = this;
-  var panel = ResetPanel(this, { options: options || {} });
+  var panel = LoadingPanel(this, { options: options || {} });
 
   // Here we should check what title to render
   // from the current mode (?)
   // for submits mostly
   // XXX: check code upside
-  this._setTitle('');
+  this._setTitle(this._dict.t(options.mode || 'signin' + ':title'));
 
   this.query('.a0-mode-container').html(panel.create());
 
