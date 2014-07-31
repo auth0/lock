@@ -84,8 +84,7 @@ module.exports = function (grunt) {
           paths: ["lib/css"],
         },
         files: {
-          "lib/css/main.css": "lib/css/main.less",
-          "lib/css/zocial.css": "lib/css/zocial.less"
+          "lib/css/main.css": "lib/css/main.less"
         }
       },
       example: {
@@ -116,8 +115,7 @@ module.exports = function (grunt) {
           keepSpecialComments: 0
         },
         files: {
-          'lib/css/main.min.css': ['lib/css/main.css'],
-          'lib/css/zocial.min.css': ['lib/css/zocial.css']
+          'lib/css/main.min.css': ['lib/css/main.css']
         }
       }
     },
@@ -164,7 +162,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["release/", "build/", "lib/css/main.css", "lib/css/main.min.css", "lib/css/zocial.css", "lib/css/zocial.min.css", "example/auth0-widget.js"]
+      build: ["release/", "build/", "lib/css/main.css", "lib/css/main.min.css", "example/auth0-widget.js"]
     },
     watch: {
       another: {
