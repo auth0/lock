@@ -1,4 +1,4 @@
-.a0-widget {
+#a0-widget {
   /*! normalize.css v1.0.1 | MIT License | git.io/normalize */
   /* ==========================================================================
    HTML5 display definitions
@@ -176,40 +176,97 @@
   /*
  * Remove most spacing between table cells.
  */
+  /*==================================
+=            Animations            =
+==================================*/
+  /*==========  Appear  ==========*/
+  /*==========  showPanel  ==========*/
+  /*==========  hidePanel  ==========*/
+  /* Buttons can be displayed as standalone icons by adding a class of "icon" */
+  /* Adjustments for light background buttons */
+  /* :hover adjustments for light background buttons */
+  /* :active adjustments for light background buttons */
+  /* Button icon and color */
+  /* Icon characters are stored in unicode private area */
+  /* Button background and text color */
+  /* Any browser-specific adjustments */
+  /* Reference icons from font-files
+** Base 64-encoded version recommended to resolve cross-site font-loading issues
+*/
+  /**
+*
+* General Widget CSS
+*
+**/
+  /*===============================
+=            Overlay            =
+===============================*/
+  /*-----  End of Overlay  ------*/
+  /*==========  Includes  ==========*/
+  /*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license
+
+Copyright (c) 2013 Daniel Eden
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /*==========  Spinner  ==========*/
+  /*-----  End of Spinner  ------*/
+  /*==========  Fonts  ==========*/
+  /*-----  End of Fonts  ------*/
+  /*==========  Panel  ==========*/
+  /*-----  End of Panel  ------*/
+  /*===============================================
+=            No Placeholder Fallback            =
+===============================================*/
+  /*=====================================
+=            Media Queries            =
+=====================================*/
 }
 
-.a0-widget article,
-.a0-widget aside,
-.a0-widget details,
-.a0-widget figcaption,
-.a0-widget figure,
-.a0-widget footer,
-.a0-widget header,
-.a0-widget hgroup,
-.a0-widget nav,
-.a0-widget section,
-.a0-widget summary {
+@charset "UTF-8";
+
+#a0-widget article,
+#a0-widget aside,
+#a0-widget details,
+#a0-widget figcaption,
+#a0-widget figure,
+#a0-widget footer,
+#a0-widget header,
+#a0-widget hgroup,
+#a0-widget nav,
+#a0-widget section,
+#a0-widget summary {
   display: block;
 }
 
-.a0-widget audio,
-.a0-widget canvas,
-.a0-widget video {
+#a0-widget audio,
+#a0-widget canvas,
+#a0-widget video {
   display: inline-block;
   *display: inline;
   *zoom: 1;
 }
 
-.a0-widget audio:not([controls]) {
+#a0-widget audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-.a0-widget [hidden] {
+#a0-widget [hidden] {
   display: none;
 }
 
-.a0-widget html {
+#a0-widget html {
   font-size: 100%;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -218,183 +275,183 @@
   /* 2 */
 }
 
-.a0-widget html,
-.a0-widget button,
-.a0-widget input,
-.a0-widget select,
-.a0-widget textarea,
-.a0-widget h1,
-.a0-widget h2,
-.a0-widget div,
-.a0-widget span,
-.a0-widget a {
+#a0-widget html,
+#a0-widget button,
+#a0-widget input,
+#a0-widget select,
+#a0-widget textarea,
+#a0-widget h1,
+#a0-widget h2,
+#a0-widget div,
+#a0-widget span,
+#a0-widget a {
   font-family: sans-serif;
 }
 
-.a0-widget body {
+#a0-widget body {
   margin: 0;
 }
 
-.a0-widget a:focus {
+#a0-widget a:focus {
   outline: thin dotted;
 }
 
-.a0-widget a:active,
-.a0-widget a:hover {
+#a0-widget a:active,
+#a0-widget a:hover {
   outline: 0;
 }
 
-.a0-widget h1 {
+#a0-widget h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-.a0-widget h2 {
+#a0-widget h2 {
   font-size: 1.5em;
   margin: 0.83em 0;
 }
 
-.a0-widget h3 {
+#a0-widget h3 {
   font-size: 1.17em;
   margin: 1em 0;
 }
 
-.a0-widget h4 {
+#a0-widget h4 {
   font-size: 1em;
   margin: 1.33em 0;
 }
 
-.a0-widget h5 {
+#a0-widget h5 {
   font-size: 0.83em;
   margin: 1.67em 0;
 }
 
-.a0-widget h6 {
+#a0-widget h6 {
   font-size: 0.75em;
   margin: 2.33em 0;
 }
 
-.a0-widget abbr[title] {
+#a0-widget abbr[title] {
   border-bottom: 1px dotted;
 }
 
-.a0-widget b,
-.a0-widget strong {
+#a0-widget b,
+#a0-widget strong {
   font-weight: bold;
 }
 
-.a0-widget blockquote {
+#a0-widget blockquote {
   margin: 1em 40px;
 }
 
-.a0-widget dfn {
+#a0-widget dfn {
   font-style: italic;
 }
 
-.a0-widget mark {
+#a0-widget mark {
   background: #ff0;
   color: #000;
 }
 
-.a0-widget p,
-.a0-widget pre {
+#a0-widget p,
+#a0-widget pre {
   margin: 1em 0;
 }
 
-.a0-widget code,
-.a0-widget kbd,
-.a0-widget pre,
-.a0-widget samp {
+#a0-widget code,
+#a0-widget kbd,
+#a0-widget pre,
+#a0-widget samp {
   font-family: monospace, serif;
   _font-family: 'courier new', monospace;
   font-size: 1em;
 }
 
-.a0-widget pre {
+#a0-widget pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-.a0-widget q {
+#a0-widget q {
   quotes: none;
 }
 
-.a0-widget q:before,
-.a0-widget q:after {
+#a0-widget q:before,
+#a0-widget q:after {
   content: '';
   content: none;
 }
 
-.a0-widget small {
+#a0-widget small {
   font-size: 80%;
 }
 
-.a0-widget sub,
-.a0-widget sup {
+#a0-widget sub,
+#a0-widget sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-.a0-widget sup {
+#a0-widget sup {
   top: -0.5em;
 }
 
-.a0-widget sub {
+#a0-widget sub {
   bottom: -0.25em;
 }
 
-.a0-widget dl,
-.a0-widget menu,
-.a0-widget ol,
-.a0-widget ul {
+#a0-widget dl,
+#a0-widget menu,
+#a0-widget ol,
+#a0-widget ul {
   margin: 1em 0;
 }
 
-.a0-widget dd {
+#a0-widget dd {
   margin: 0 0 0 40px;
 }
 
-.a0-widget menu,
-.a0-widget ol,
-.a0-widget ul {
+#a0-widget menu,
+#a0-widget ol,
+#a0-widget ul {
   padding: 0 0 0 40px;
 }
 
-.a0-widget nav ul,
-.a0-widget nav ol {
+#a0-widget nav ul,
+#a0-widget nav ol {
   list-style: none;
   list-style-image: none;
 }
 
-.a0-widget img {
+#a0-widget img {
   border: 0;
   /* 1 */
   -ms-interpolation-mode: bicubic;
   /* 2 */
 }
 
-.a0-widget svg:not(:root) {
+#a0-widget svg:not(:root) {
   overflow: hidden;
 }
 
-.a0-widget figure {
+#a0-widget figure {
   margin: 0;
 }
 
-.a0-widget form {
+#a0-widget form {
   margin: 0;
 }
 
-.a0-widget fieldset {
+#a0-widget fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
 
-.a0-widget legend {
+#a0-widget legend {
   border: 0;
   /* 1 */
   padding: 0;
@@ -404,10 +461,10 @@
   /* 3 */
 }
 
-.a0-widget button,
-.a0-widget input,
-.a0-widget select,
-.a0-widget textarea {
+#a0-widget button,
+#a0-widget input,
+#a0-widget select,
+#a0-widget textarea {
   font-size: 100%;
   /* 1 */
   margin: 0;
@@ -418,15 +475,15 @@
   /* 3 */
 }
 
-.a0-widget button,
-.a0-widget input {
+#a0-widget button,
+#a0-widget input {
   line-height: normal;
 }
 
-.a0-widget button,
-.a0-widget html input[type="button"],
-.a0-widget input[type="reset"],
-.a0-widget input[type="submit"] {
+#a0-widget button,
+#a0-widget html input[type="button"],
+#a0-widget input[type="reset"],
+#a0-widget input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -435,13 +492,13 @@
   /* 4 */
 }
 
-.a0-widget button[disabled],
-.a0-widget input[disabled] {
+#a0-widget button[disabled],
+#a0-widget input[disabled] {
   cursor: default;
 }
 
-.a0-widget input[type="checkbox"],
-.a0-widget input[type="radio"] {
+#a0-widget input[type="checkbox"],
+#a0-widget input[type="radio"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -454,7 +511,7 @@
   /* 3 */
 }
 
-.a0-widget input[type="search"] {
+#a0-widget input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
@@ -463,43 +520,43 @@
   box-sizing: content-box;
 }
 
-.a0-widget input[type="search"]::-webkit-search-cancel-button,
-.a0-widget input[type="search"]::-webkit-search-decoration {
+#a0-widget input[type="search"]::-webkit-search-cancel-button,
+#a0-widget input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-.a0-widget button::-moz-focus-inner,
-.a0-widget input::-moz-focus-inner {
+#a0-widget button::-moz-focus-inner,
+#a0-widget input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-.a0-widget textarea {
+#a0-widget textarea {
   overflow: auto;
   /* 1 */
   vertical-align: top;
   /* 2 */
 }
 
-.a0-widget table {
+#a0-widget table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-.a0-widget header,
-.a0-widget footer,
-.a0-widget button,
-.a0-widget a,
-.a0-widget form,
-.a0-widget h1,
-.a0-widget h2,
-.a0-widget h3,
-.a0-widget form label,
-.a0-widget span,
-.a0-widget input[type="button"],
-.a0-widget input[type="text"],
-.a0-widget input[type="email"],
-.a0-widget input[type="password"] {
+#a0-widget header,
+#a0-widget footer,
+#a0-widget button,
+#a0-widget a,
+#a0-widget form,
+#a0-widget h1,
+#a0-widget h2,
+#a0-widget h3,
+#a0-widget form label,
+#a0-widget span,
+#a0-widget input[type="button"],
+#a0-widget input[type="text"],
+#a0-widget input[type="email"],
+#a0-widget input[type="password"] {
   font-smooth: never;
   -webkit-font-smoothing: auto;
   alignment-baseline: baseline;
@@ -742,66 +799,6 @@
   z-index: auto;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
-
-#a0-widget {
-  /*==================================
-=            Animations            =
-==================================*/
-  /*==========  Appear  ==========*/
-  /*==========  showPanel  ==========*/
-  /*==========  hidePanel  ==========*/
-  /* Buttons can be displayed as standalone icons by adding a class of "icon" */
-  /* Adjustments for light background buttons */
-  /* :hover adjustments for light background buttons */
-  /* :active adjustments for light background buttons */
-  /* Button icon and color */
-  /* Icon characters are stored in unicode private area */
-  /* Button background and text color */
-  /* Any browser-specific adjustments */
-  /* Reference icons from font-files
-** Base 64-encoded version recommended to resolve cross-site font-loading issues
-*/
-  /**
-*
-* General Widget CSS
-*
-**/
-  /*===============================
-=            Overlay            =
-===============================*/
-  /*-----  End of Overlay  ------*/
-  /*==========  Includes  ==========*/
-  /*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license
-
-Copyright (c) 2013 Daniel Eden
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /*==========  Spinner  ==========*/
-  /*-----  End of Spinner  ------*/
-  /*==========  Fonts  ==========*/
-  /*-----  End of Fonts  ------*/
-  /*==========  Panel  ==========*/
-  /*-----  End of Panel  ------*/
-  /*===============================================
-=            No Placeholder Fallback            =
-===============================================*/
-  /*=====================================
-=            Media Queries            =
-=====================================*/
-}
-
-@charset "UTF-8";
 
 @-webkit-keyframes appear {
   from {
