@@ -1,8 +1,9 @@
-.widget {
+#widget{
+  // reset and normalize
   @import "normalize.less";
   @import "reset.less";
-}
-#widget{
+
+  // Widget styles
   @import "keyframes.less";
   @import "zocial.less";
   @import "common.less";
@@ -10,17 +11,17 @@
 }
 
 @media screen and (max-width: 480px) {
-  body.widget-open{
+  body.widget-open {
     & > *{
       display: none;
     }
 
-    .widget-container{
+    .widget-container {
       display: block;
     }
   }
 
-  .widget-container{
+  .widget-container {
     background: white;
     opacity: 1;
   }
