@@ -585,16 +585,21 @@ Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCa
         popup: self._signinOptions.popup,
         popupOptions: self._signinOptions.popupOptions
       }, self._signinOptions.extraParameters, extraParams);
+
   if (!popupCallback) {
     throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
   }
-  var loadingMessage = self._dict.t('signin:popupCredentials');
+
+  var message = self._dict.t('signin:popupCredentials');
+  this._loadingPanel({ mode: 'signin', message: message });
+
   self._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
     var args = Array.prototype.slice.call(arguments, 0);
     if (err) {
-      // set error message before view refresh
-      // to avoid wrong resizing calculations
-      // XXX: This message is only displayed on popup mode
+      // display signin
+      self._signinPanel(self._signinOptions);
+
+      // render errors
       if (err.message === 'User closed the popup window') {
         // Closed window
         self._showError(self._dict.t('signin:userClosedPopup'));
@@ -609,13 +614,11 @@ Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCa
         self._focusError(email_input);
         self._focusError(password_input);
       }
-      self._setLoginView({});
     } else {
       self._hideSignIn();
     }
     self._signinOptions.popupCallback.apply(null, args);
   });
-  self._setLoginView({ mode: 'loading', message: loadingMessage});
 };
 
 // sign in methods
@@ -731,15 +734,16 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
     if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
       this._signInPopupNoRedirect(connection, self._signinOptions.popupCallback);
     } else {
-      var loadingMessage = self._dict.t('signin:loadingMessage').replace('{connection}', connection);
-      this._setLoginView({ mode: 'loading', message: loadingMessage }, function () {
-        var loginOptions = _.extend({}, {
-          connection: connection,
-          popup: self._signinOptions.popup,
-          popupOptions: self._signinOptions.popupOptions
-        }, self._signinOptions.extraParameters);
-        self._auth0.login(loginOptions);
-      });
+      var message = self._dict.t('signin:loadingMessage').replace('{connection}', connection);
+      this._loadingPanel({ mode: 'signin', message: message });
+
+      var loginOptions = _.extend({}, {
+        connection: connection,
+        popup: self._signinOptions.popup,
+        popupOptions: self._signinOptions.popupOptions
+      }, self._signinOptions.extraParameters);
+
+      self._auth0.login(loginOptions);
     }
   }
 };
@@ -764,12 +768,11 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   loginOptions = _.extend({}, loginOptions, self._signinOptions.extraParameters);
 
   var strategy = self._getStrategy(connection.name) || {};
-  var loadingMessage = strategy.name !== 'auth0' ? // dont show loading message for dbConnections
-    self._dict.t('signin:loadingMessage').replace('{connection}', connection.name) : '';
 
   // Clean error container
   self._showError();
   self._focusError();
+
   if (self._signinOptions.popup) {
     if (self._signinOptions.sso) {
       // popup + sso = redirect
@@ -792,23 +795,31 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   }
 
   // TODO: Handle sso case without popup
+  var message = strategy.name !== 'auth0' // dont show loading message for dbConnections
+    ? self._dict.t('signin:loadingMessage').replace('{connection}', connection.name)
+    : '';
 
-  this._setLoginView({ mode: 'loading', message: loadingMessage }, function (){
-    self._auth0.login(loginOptions, function (err) {
-      if (err) {
-        // set error message before view refresh
-        // to avoid wrong resizing calculations
-        if (err.status !== 401) {
-          self._showError(err.message || self._dict.t('signin:serverErrorText'));
-        }
-        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
-        self._setLoginView({}, function () {
-          self._focusError(email_input);
-          self._focusError(password_input);
-        });
+
+  this._loadingPanel({ mode: 'signin', message: message });
+
+  self._auth0.login(loginOptions, function (err) {
+    if (err) {
+      // display signin
+      self._signinPanel(self._signinOptions);
+
+      // render error messages
+      if (err.status !== 401) {
+        self._showError(err.message || self._dict.t('signin:serverErrorText'));
       }
-    });
+
+      self.on('signin ready', function() {
+        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+        self._focusError(email_input);
+        self._focusError(password_input);
+      })
+    }
   });
+
 };
 
 // initialize
@@ -1404,7 +1415,8 @@ Auth0Widget.prototype._signinPanel = function (options, callback) {
   var panel = SigninPanel(this, { options: options || {} });
 
   this._setTitle(this._dict.t('signin:title'));
-  this.query('.a0-mode-container').html(panel.create());
+  this.setPanel(panel);
+
 
   // panel.on('submit', this.setLoadingMode);
   // panel.on('error', function(errors) {
@@ -1428,7 +1440,7 @@ Auth0Widget.prototype._signupPanel = function (options, callback) {
 
   this._setTitle(this._dict.t('signup:title'));
 
-  this.query('.a0-mode-container').html(panel.create());
+  this.setPanel(panel);
 
   // panel.on('submit', this.setLoadingMode);
   // panel.on('error', function(errors) {
@@ -1452,7 +1464,7 @@ Auth0Widget.prototype._resetPanel = function (options, callback) {
 
   this._setTitle(this._dict.t('reset:title'));
 
-  this.query('.a0-mode-container').html(panel.create());
+  this.setPanel(panel);
 
   // panel.on('submit', this.setLoadingMode);
   // panel.on('error', function(errors) {
@@ -1478,9 +1490,19 @@ Auth0Widget.prototype._loadingPanel = function (options, callback) {
   // from the current mode (?)
   // for submits mostly
   // XXX: check code upside
-  this._setTitle(this._dict.t(options.mode || 'signin' + ':title'));
 
-  this.query('.a0-mode-container').html(panel.create());
+  if (options.title) {
+    this._setTitle(this._dict.t(options.title + ':title'));
+  } else {
+    this._setTitle(this._dict.t((options.mode || 'signin') + ':title'));
+  }
+
+  this.setPanel(panel);
+
+  if (options.message) {
+    panel.query('').addClass('a0-with-message');
+    panel.query('.a0-spin-message span').html(options.message.replace('-', ' '));
+  };
 
   // panel.on('submit', this.setLoadingMode);
   // panel.on('error', function(errors) {
@@ -1504,7 +1526,7 @@ Auth0Widget.prototype._loggedinPanel = function (options, callback) {
 
   this._setTitle(this._dict.t('signin:title'));
 
-  this.query('.a0-mode-container').html(panel.create());
+  this.setPanel(panel);
 
   // panel.on('submit', this.setLoadingMode);
   // panel.on('error', function(errors) {
@@ -1528,7 +1550,7 @@ Auth0Widget.prototype._kerberosPanel = function (options, callback) {
 
   this._setTitle(this._dict.t('signin:title'));
 
-  this.query('.a0-mode-container').html(panel.create());
+  this.setPanel(panel);
 
   // panel.on('submit', this.setLoadingMode);
   // panel.on('error', function(errors) {
@@ -1544,6 +1566,14 @@ Auth0Widget.prototype._kerberosPanel = function (options, callback) {
   // });
 
   this.emit('kerberos ready');
+}
+
+Auth0Widget.prototype.setPanel = function(panel) {
+  var el = 'function' === typeof panel.render
+    ? panel.render()
+    : panel;
+
+  this.query('.a0-mode-container').html(el);
 }
 
 Auth0Widget.prototype.renderContainer = function() {
