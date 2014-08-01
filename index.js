@@ -602,6 +602,7 @@ Auth0Widget.prototype.getProfile = function (token, callback) {
   this._auth0.getProfile(token, callback);
 };
 
+<<<<<<< HEAD
 Auth0Widget.prototype.reset = function (signinOptions, widgetLoadedCallback, popupCallback) {
   this._openWith = 'Reset';
   var self = this;
@@ -623,6 +624,8 @@ Auth0Widget.prototype.signup = function (signinOptions, widgetLoadedCallback, po
   return self;
 };
 
+=======
+>>>>>>> Code improves at index.js
 Auth0Widget.prototype.logout = function (query) {
   this._auth0.logout(query);
 };
@@ -721,6 +724,7 @@ Auth0Widget.prototype.display = function(options, callback) {
 }
 
 Auth0Widget.prototype.initialize = function(done) {
+  var self = this;
 
   this.renderContainer();
 
@@ -731,8 +735,6 @@ Auth0Widget.prototype.initialize = function(done) {
   if (!this._signinOptions.container) {
     bonzo(document.body).addClass('a0-widget-open');
   }
-
-  var self = this;
 
   // wait for setClient()
   if (!self._client) {
@@ -774,6 +776,7 @@ Auth0Widget.prototype.initialize = function(done) {
   options['enableADRealmDiscovery'] = typeof options['enableADRealmDiscovery'] !== 'undefined' ? options['enableADRealmDiscovery'] : true;
 
   // activate panel
+  // XXX: (?) this I don't get... why remove and add?
   this.query('div.a0-panel').removeClass('a0-active');
   this.query('div.a0-overlay').addClass('a0-active');
   this.query('div.a0-panel.a0-onestep').addClass('a0-active');
@@ -787,6 +790,11 @@ Auth0Widget.prototype.initialize = function(done) {
 
   this.query('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
 
+  // after pre-setting classes and dom handlers
+  // emit as shown
+  this.emit('shown');
+
+  // then, continue setting up the mode
   if (self._signinOptions.connections) {
     self._client.strategies = _.chain(self._client.strategies)
       .map(function (s) {
@@ -811,12 +819,6 @@ Auth0Widget.prototype.initialize = function(done) {
   self._auth0Strategies = _.chain(self._client.strategies)
     .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
     .value();
-
-  var auth0Conn = this._getAuth0Connection() || {};
-  // _openWith no longer should matter!!!
-  // XXX: Book to remove soon
-  if (self._openWith === 'SignUp' && !auth0Conn.showSignup && !self._signinOptions.signupLink) self._openWith = null;
-  if (self._openWith === 'Reset' && !auth0Conn.showForgot && !self._signinOptions.forgotLink) self._openWith = null;
 
   // show loading
   self._loadingPanel({});
@@ -965,8 +967,6 @@ Auth0Widget.prototype.renderContainer = function() {
     this._container.innerHTML = this.render(mainTmpl, locals);
     document.body.appendChild(this._container);
   }
-
-  this.emit('shown');
 
   return this;
 }
