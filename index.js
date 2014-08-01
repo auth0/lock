@@ -119,7 +119,7 @@ Auth0Widget.prototype._getApp = function () {
   global.window.Auth0 = global.window.Auth0 || {};
   global.window.Auth0.setClient = function (client) {
     self._client = client;
-    self.emit('client_initialized', client);
+    self.emit('client initialized', client);
   };
 
   var script = document.createElement('script');
@@ -623,89 +623,18 @@ Auth0Widget.prototype.signup = function (signinOptions, widgetLoadedCallback, po
   return self;
 };
 
-/**
- * Displays the Auth0 Widget.
- *
- * @param {Object}   signinOptions         options to be passed to auth0.js
- * @param {function} widgetLoadedCallback  callback to be executed when widget loads
- * @param {function} popupCallback         callback to be executed after
- *                                         successful login on popup mode and
- *                                         callbackOnLocationHash is true too.
- */
-Auth0Widget.prototype.show = Auth0Widget.prototype.signin = function (signinOptions, widgetLoadedCallback, popupCallback) {
-  this._openWith = null;
-  var self = this;
-  this.query(function () {
-    self._show(signinOptions, widgetLoadedCallback, popupCallback);
-  });
-  return self;
-};
-
-Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, popupCallback) {
-  if (typeof signinOptions === 'function') {
-    widgetLoadedCallback = signinOptions;
-    callback = widgetLoadedCallback;
-    signinOptions = {};
-  }
-
-  var self = this;
-
-  self._signinOptions = _.extend({popupCallback: popupCallback}, self._options, signinOptions);
-
-  var extra = utils.extract(self._signinOptions,
-                            [ 'state', 'access_token',
-                              'scope', 'protocol', 'device',
-                              'request_id', 'connection_scopes', 'nonce',
-                              'offline_mode' ]);
-
-  self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
-
-  // widget container
-  if (self._signinOptions.container) {
-
-    self._signinOptions.theme = 'static';
-    self._signinOptions.standalone = true;
-    self._signinOptions.top = true;
-
-    var specifiedContainer = document.getElementById(self._signinOptions.container);
-    specifiedContainer.innerHTML = self._getEmbededTemplate(self._signinOptions);
-    self._container = specifiedContainer;
-
-  } else {
-    var div = document.createElement('div');
-
-    bonzo(div).addClass('a0-widget-container');
-
-    var locals = {
-      options: self._signinOptions,
-      alt_spinner: !has_animations() ? (self._signinOptions.cdn + 'img/ajax-loader.gif') : null
-    };
-
-    div.innerHTML = this.render(mainTmpl, locals);
-
-    document.body.appendChild(div);
-
-    self._container = div;
-  }
-
-  if (!placeholderSupported) {
-    this.query('.a0-overlay').addClass('a0-no-placeholder-support');
-  }
-
-  if (!self._signinOptions.container) {
-    bonzo(document.body).addClass('a0-widget-open');
-  }
-
-  self._initialize(widgetLoadedCallback);
-  return self;
-};
-
 Auth0Widget.prototype.logout = function (query) {
   this._auth0.logout(query);
 };
 
+
 /**
- * Override old widget with new methods
+ * Displays the Auth0 Widget.
+ *
+ * @param {Object} signinOptions           options to be passed to auth0.js
+ * @param {function} callback              callback to be executed after
+ *                                         successful login if popup mode is on
+ *                                         and callbackOnLocationHash as well.
  */
 
 Auth0Widget.prototype.show = function(options, callback) {
@@ -752,10 +681,8 @@ Auth0Widget.prototype.display = function(options, callback) {
 
   // here we tweak general display options
   // like allowing SSO and stuff
-  var extra = utils.extract(this._signinOptions,
-                            [ 'state', 'access_token',
-                              'scope', 'protocol',
-                              'request_id', 'connection_scopes' ]);
+  var params = [ 'state', 'access_token', 'scope', 'protocol', 'request_id', 'connection_scopes' ];
+  var extra = utils.extract(this._signinOptions, params);
 
   this._signinOptions.extraParameters = _.extend({}, extra, this._signinOptions.extraParameters);
 
@@ -903,7 +830,7 @@ Auth0Widget.prototype.initialize = function(done) {
     // Just a thought...
     self._ssoData = ssoData;
     done();
-    self.emit('shown'); // maybe missplaced?
+    self.emit('ready');
   }
 
   // do not get SSO data on signup or reset modes
@@ -1011,30 +938,35 @@ Auth0Widget.prototype.setPanel = function(panel, name) {
 Auth0Widget.prototype.renderContainer = function() {
   if (this._container) return this;
 
+  var cid = this._signinOptions.container;
+
   // widget container
-  if (this._signinOptions.container) {
+  if (cid) {
     this._signinOptions.theme = 'static';
     this._signinOptions.standalone = true;
     this._signinOptions.top = true;
 
-    var specifiedContainer = document.getElementById(this._signinOptions.container);
-    specifiedContainer.innerHTML = this._getEmbededTemplate(this._signinOptions);
-    this._container = specifiedContainer;
+    this._container = document.getElementById(cid);
+    if (!this._container) throw new Error('Not found element with \'id\' ' + cid);
+
+    this._container.innerHTML = this._getEmbededTemplate(this._signinOptions);
 
   } else {
-    var div = document.createElement('div');
+    this._container = document.createElement('div');
+    bonzo(this._container).addClass('a0-widget-container');
 
-    bonzo(div).addClass('a0-widget-container');
     var locals = {
       options: this._signinOptions,
-      alt_spinner: !has_animations() ? (this._signinOptions.cdn + 'img/ajax-loader.gif') : null
+      alt_spinner: !has_animations()
+        ? (this._signinOptions.cdn + 'img/ajax-loader.gif')
+        : null
     };
 
-    div.innerHTML = this.render(mainTmpl, locals);
-
-    document.body.appendChild(div);
-    this._container = div;
+    this._container.innerHTML = this.render(mainTmpl, locals);
+    document.body.appendChild(this._container);
   }
+
+  this.emit('shown');
 
   return this;
 }
