@@ -294,30 +294,6 @@ Auth0Widget.prototype._showOrHidePassword = function () {
   }
 };
 
-Auth0Widget.prototype._hideSignIn = function (cb) {
-  var self = this;
-
-  this.query('div.a0-overlay').removeClass('a0-active');
-
-  this.query().css('display', 'none');
-  bonzo(document.body).removeClass('a0-widget-open');
-
-  if (this._container && this._signinOptions.container) {
-    // remove `#a0-widget`
-    this.query().remove();
-  } else if(this._container) {
-    // remove `.a0-widget-container`
-    this.query().parent('.a0-widget-container').remove();
-  }
-
-  this._container = null;
-
-  if (cb) cb();
-  this.emit('hidden');
-
-  return self;
-};
-
 Auth0Widget.prototype._getActiveLoginView = function() {
   return this.query('.a0-loggedin:not(.a0-hide), .a0-notloggedin:not(.a0-hide)');
 };
@@ -374,7 +350,7 @@ Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCa
         self._focusError(password_input);
       }
     } else {
-      self._hideSignIn();
+      self.hide();
     }
     self._signinOptions.popupCallback.apply(null, args);
   });
@@ -648,29 +624,29 @@ Auth0Widget.prototype.show = function(options, callback) {
   return this;
 }
 
-Auth0Widget.prototype.showSignin = function(options, callback) {
-  // should tweak some `only signin` display configs
-  // and then call display with 'signin' mode
-  options = _.extend({ mode: 'signin', showForgot: false, showSignup: false }, options);
-  this.display(options, callback);
-  return this;
-}
+Auth0Widget.prototype.hide = function (callback) {
+  var self = this;
 
-Auth0Widget.prototype.showSignup = function(options, callback) {
-  // should tweak some `only signin` display configs
-  // and then call display with 'signin' mode
-  options = _.extend({ mode: 'signup', showForgot: false, showSignup: false }, options);
-  this.display(options, callback);
-  return this;
-}
+  this.query('div.a0-overlay').removeClass('a0-active');
 
-Auth0Widget.prototype.showReset = function(options, callback) {
-  // should tweak some `only signin` display configs
-  // and then call display with 'signin' mode
-  options = _.extend({ mode: 'reset', showForgot: false, showSignup: false }, options);
-  this.display(options, callback);
-  return this;
-}
+  this.query().css('display', 'none');
+  bonzo(document.body).removeClass('a0-widget-open');
+
+  if (this._container && this._signinOptions.container) {
+    // remove `#a0-widget`
+    this.query().remove();
+  } else if(this._container) {
+    // remove `.a0-widget-container`
+    this.query().parent('.a0-widget-container').remove();
+  }
+
+  this._container = null;
+
+  if ('function' === typeof callback) callback();
+  this.emit('hidden');
+
+  return self;
+};
 
 /**
  * Display the `widget`, and call `mode` boot
@@ -752,13 +728,13 @@ Auth0Widget.prototype.initialize = function(done) {
   // buttons actions
   this.query('.a0-onestep a.a0-close').a0_on('click', function (e) {
     stop(e);
-    self._hideSignIn();
+    self.hide();
   });
 
   // close popup with ESC key
   if (!self._signinOptions.standalone) {
     this.query('').a0_on('keyup', function (e) {
-      if ((e.which == 27 || e.keycode == 27)) self._hideSignIn();
+      if ((e.which == 27 || e.keycode == 27)) self.hide();
     });
   };
 
