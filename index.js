@@ -22,8 +22,6 @@ var ResetPanel = require('./lib/mode-reset');
 var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
-var signup = require('./lib/mode-signup/deprecated');
-var reset = require('./lib/mode-reset/deprecated');
 
 var $ = require('./lib/js/bonzo_qwery');
 var bonzo = require('bonzo');
@@ -35,6 +33,7 @@ var placeholderSupported = require('./lib/supports-placeholder');
 var has_animations = require('./lib/supports-animation');
 var transition_end = require('./lib/transition-end');
 var object_create = require('./lib/object-create');
+var stop = require('./lib/stop-event');
 var utils = require('./lib/utils');
 var trim = require('trim');
 
@@ -200,8 +199,6 @@ Auth0Widget.prototype._focusError = function(input, message) {
 };
 
 Auth0Widget.prototype._setTitle = function(title) {
-  // this.query('.a0-error').css('display', 'none');
-  // this.query('.a0-success').css('display', 'none');
   this.query('h1').html(title).css('display', '');
 };
 
@@ -313,169 +310,16 @@ Auth0Widget.prototype._hideSignIn = function (cb) {
     this.query().parent('.a0-widget-container').remove();
   }
 
-  this._currentPane = null;
   this._container = null;
 
   if (cb) cb();
-  this.emit('closed');
+  this.emit('hidden');
 
   return self;
 };
 
 Auth0Widget.prototype._getActiveLoginView = function() {
   return this.query('.a0-loggedin:not(.a0-hide), .a0-notloggedin:not(.a0-hide)');
-};
-
-Auth0Widget.prototype._showSignUpExperience = function() {
-  signup.bind(this);
-  this._showSuccess();
-  this._showError();
-  this._focusError();
-  this._setLoginView({ mode: 'signup' });
-};
-
-Auth0Widget.prototype._showResetExperience = function() {
-  reset.bind(this);
-  this._showSuccess();
-  this._showError();
-  this._focusError();
-  this._setLoginView({ mode: 'reset' });
-};
-
-Auth0Widget.prototype._showLoadingExperience = function() {
-  if (this._openWith) {
-    return this._setLoginView({ mode: 'loading', title: this._openWith.toLowerCase() });
-  }
-  this._showSuccess();
-  this._showError();
-  this._focusError();
-  this._setLoginView({ mode: 'loading' });
-};
-
-Auth0Widget.prototype._transitionMode = function(options, callback) {
-  var self = this;
-  this.query('.a0-loading').removeClass('a0-with-message');
-
-  if((!self._currentPane || self._currentPane.hasClass('a0-loading')) && options.mode === 'loading') {
-    self._setTitle(options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title'));
-    self._currentPane = this.query('.a0-loading');
-    self.emit('transition_mode', 'loading');
-    self.emit('loading_ready');
-    return callback(null, self._currentPane);
-  }
-
-  self._currentPane = self._currentPane || this.query('.a0-loading');
-  options = options || {};
-
-  var currentEmail = this.query('.a0-email input', self._currentPane).val();
-  var mode = options.mode || null;
-  var newPane, title;
-
-  switch (mode) {
-    case null:
-      title = this._dict.t('signin:title');
-      newPane = this.query(options.isReturningUser ? '.a0-loggedin' : '.a0-notloggedin');
-      if (self._currentPane.hasClass('a0-reset') || self._currentPane.hasClass('a0-loading')) {
-        // reset password field
-        this.query('.a0-password input', newPane).val('');
-      }
-      break;
-   case 'loading':
-      title = options.title ? this._dict.t(options.title + ':title') : this._dict.t('signin:title');
-      newPane = this.query('.a0-loading').first();
-
-      // set loading message
-      if (options.message) {
-        newPane.addClass('a0-with-message');
-        this.query('.a0-spin-message span', newPane).html(options.message.replace('-', ' '));
-      }
-      break;
-    case 'signup':
-    case 'reset':
-      title = this._dict.t(options.mode + ':title');
-      newPane = this.query('.a0-' + options.mode).first();
-      // XXX Hack, when coming from loading currentPane does not contain email.
-      currentEmail = currentEmail || $('.a0-email input', newPane).val();
-      this.query('.a0-email input', newPane).val(currentEmail || '');
-      break;
-  }
-
-  if (!hasTransitions() || !hasTransitions(this.query('#a0-onestep')[0])){
-    self._setTitle(title);
-    self._currentPane.toggleClass('a0-hide', true);
-    self._currentPane = newPane.toggleClass('a0-hide', false);
-    setTimeout(function () {
-      self.emit('transition_mode', mode || 'signin');
-      self.emit((mode || 'signin') + '_ready');
-    }, 0);
-    return callback(null, self._currentPane);
-  }
-
-  var pane_container = this.query('.a0-onestep');
-  var original_height = pane_container
-                          .addClass('a0-disable-transition')
-                          .css('height', 'auto')
-                          .dim().height;
-
-  pane_container.css('min-height', original_height.toString() + 'px');
-
-  //do not hide yet
-  self._currentPane
-      .css('position', 'absolute')
-      .css('left', '-1000px');
-
-  newPane
-    .toggleClass('a0-hide', false)
-    .css('visibility', 'hidden');
-
-  pane_container.css('min-height', '');
-
-  var new_height = pane_container.dim().height;
-
-  pane_container.css('min-height', original_height.toString() + 'px');
-
-  newPane.css('visibility', '').toggleClass('a0-hide', true);
-
-  self._currentPane
-      .css('position', '')
-      .css('left', '')
-      .toggleClass('a0-hide', false);
-
-  pane_container
-    .css('height', original_height.toString() + 'px')
-    .css('min-height', '');
-
-  setTimeout(function () {
-    pane_container.removeClass('a0-disable-transition');
-    setTimeout(function () {
-      if (!pane_container[0]) return;
-      transition_end.on(pane_container[0], function () {
-        if (!pane_container[0]) return;
-        transition_end.off(pane_container[0]);
-        self._setTitle(title);
-        self._currentPane.toggleClass('a0-hide', true);
-        self._currentPane = newPane.toggleClass('a0-hide', false);
-        setTimeout(function () {
-          self.emit('transition_mode', mode || 'signin');
-          self.emit((mode || 'signin') + '_ready');
-          callback(null, self._currentPane);
-          // XXX: safari flickers when changing height property
-          if (is_small_screen()) pane_container.css('height','auto');
-        }, 10);
-      });
-      pane_container.css('height', new_height.toString() + 'px');
-
-      if (new_height >= get_viewport().height) pane_container.addClass('a0-equal-viewport');
-    }, 10);
-  }, 10);
-};
-
-Auth0Widget.prototype._setLoginView = function(options, callback) {
-  var self = this;
-  this._transitionMode(options, function (err, currentPane) {
-    if (!self._signinOptions._avoidInitialFocus) setfocus(self.query('input', currentPane).first());
-    if (callback) callback();
-  });
 };
 
 Auth0Widget.prototype._getLoggedInAuthParams = function (strategy, ssoData) {
@@ -485,91 +329,6 @@ Auth0Widget.prototype._getLoggedInAuthParams = function (strategy, ssoData) {
     default:
       return {};
   }
-};
-
-Auth0Widget.prototype._showLoggedInExperience = function() {
-  var self = this;
-  var strategy_name = this._ssoData.lastUsedConnection.strategy;
-  var strategy = this._strategies[strategy_name];
-
-  if (!strategy) return;
-
-  var loginView = this.query('.a0-loggedin');
-
-  this.query('form', loginView).a0_on('submit', function (e) {
-    self._signInEnterprise(e);
-  });
-
-  var button = $.create(loggedinBtnTmpl({
-    name: strategy_name,
-    title: strategy.title,
-    css: strategy.css,
-    imageicon: strategy.imageicon,
-    username: this._ssoData.lastUsedUsername
-  }));
-
-  this.query('.a0-last-time').html(this._dict.t('signin:returnUserLabel'));
-
-  this.query('.a0-strategy div', loginView).remove();
-
-  this.query('.a0-strategy', loginView)
-    .append(button);
-
-  this.query('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
-    e.preventDefault();
-    self._signInSocial(
-      strategy_name,
-      self._ssoData.lastUsedConnection && self._ssoData.lastUsedConnection.name,
-      self._getLoggedInAuthParams(strategy_name, self._ssoData));
-  });
-
-  this.query('.a0-all', loginView).a0_on('click', function () {
-    self._setLoginView();
-  });
-
-  this._setLoginView({ isReturningUser: !!strategy });
-};
-
-Auth0Widget.prototype._showAdInDomainExperience = function() {
-  var self = this;
-  var connection = this._ssoData.connection;
-  //this could be ad or auth0-adldap
-  var strategy_name = this._ssoData.strategy;
-  var strategy = this._strategies[strategy_name];
-
-  if (!strategy) return;
-
-  var loginView = this.query('.a0-loggedin');
-
-  this.query('form', loginView).a0_on('submit', function (e) {
-    self._signInEnterprise(e);
-  });
-
-  var button = $.create(buttonTmpl({
-    use_big_buttons: true,
-    name: strategy_name,
-    title: this._dict.t('windowsAuthTitle').replace('{connection}', connection),
-    css: strategy.css,
-    imageicon: strategy.imageicon,
-  }));
-
-  this.query('.a0-last-time').html(this._dict.t('signin:domainUserLabel'));
-
-  this.query('.a0-strategy div', loginView).remove();
-
-  this.query('.a0-strategy', loginView)
-    .append(button);
-
-  this.query('.a0-strategy .a0-zocial[data-strategy]', loginView).a0_on('click', function (e) {
-    e.preventDefault();
-    self._signInSocial(strategy_name, connection);
-  });
-
-  this.query('.a0-all', loginView).a0_on('click', function () {
-    self._setLoginView();
-  });
-
-  this._setLoginView({ isReturningUser: !!strategy });
 };
 
 Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCallback, extraParams) {
@@ -655,9 +414,7 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
 };
 
 Auth0Widget.prototype._signInEnterprise = function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-
+  stop(e);
 
   var self = this;
   var container = this._getActiveLoginView();
@@ -820,255 +577,6 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
     }
   });
 
-};
-
-// initialize
-Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
-  var self = this;
-
-  // wait for setClient()
-  if (!self._client) {
-    var args  = arguments;
-    var setClient = global.window.Auth0.setClient;
-
-    global.window.Auth0.setClient = function () {
-      setClient.apply(this, arguments);
-      self._initialize.apply(self, args);
-    };
-
-    return;
-  }
-
-  // buttons actions
-  this.query('.a0-onestep a.a0-close').a0_on('click', function (e) { e.preventDefault(); self._hideSignIn(); });
-  this.query('').a0_on('keyup', function (e) {
-    if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
-      self._hideSignIn(); // close popup with ESC key
-    }
-  });
-
-  if (self._client.subscription && !~['free', 'dev'].indexOf(self._client.subscription)) {
-    // hide footer for non free/dev subscriptions
-    this.query('.a0-footer').toggleClass('a0-hide', true);
-    this.query('.a0-free-subscription').removeClass('a0-free-subscription');
-  }
-
-  // images from cdn
-  // this.query('.a0-header a.a0-close').css('background-image', 'url(' + self._signinOptions.cdn + 'img/close.png)');
-
-  // labels text
-  var options = _.extend({}, this._signinOptions, this._signinOptions.resources);
-  options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
-  options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
-  options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
-  options['enableADRealmDiscovery'] = typeof options['enableADRealmDiscovery'] !== 'undefined' ? options['enableADRealmDiscovery'] : true;
-
-  this._signinOptions = options;
-
-  // activate panel
-  this.query('div.a0-panel').removeClass('a0-active');
-  this.query('div.a0-overlay').addClass('a0-active');
-  this.query('div.a0-panel.a0-onestep').addClass('a0-active');
-
-  if (self._signinOptions.container) {
-    this.query('div.a0-active').removeClass('a0-overlay');
-  }
-
-  this.query('.a0-popup h1').html(this._dict.t('signin:title'));
-  this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
-
-  this.query('div.a0-panel.a0-onestep h1').html(this._signinOptions['title']);
-
-  if (self._signinOptions.connections) {
-    self._client.strategies = _.chain(self._client.strategies)
-                                .map(function (s) {
-                                  s.connections = _.filter(s.connections, function (c) {
-                                    return _.contains(self._signinOptions.connections, c.name);
-                                  });
-                                  return s;
-                                }).filter(function (s) {
-                                  return s.connections.length > 0;
-                                }).value();
-  }
-
-
-  // merge strategies info
-  for (var s = 0; s < self._client.strategies.length; s++) {
-    var strategy_name = self._client.strategies[s].name;
-    self._client.strategies[s] = _.extend({}, self._client.strategies[s], self._strategies[strategy_name]);
-  }
-
-  self._auth0Strategies = _.chain(self._client.strategies)
-                            .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
-                            .value();
-
-  var auth0Conn = this._getAuth0Connection() || {};
-  if (self._openWith === 'SignUp' && !auth0Conn.showSignup && !self._signinOptions.signupLink) self._openWith = null;
-  if (self._openWith === 'Reset' && !auth0Conn.showForgot && !self._signinOptions.forgotLink) self._openWith = null;
-
-  // show loading
-  self._showLoadingExperience();
-
-  function finish(err, ssoData){
-    self._ssoData = ssoData;
-    self._resolveLoginView();
-    if (widgetLoadedCallback && typeof widgetLoadedCallback === 'function') widgetLoadedCallback();
-  }
-
-  var is_any_ad = _.some(self._client.strategies, function (s) {
-    return (s.name === 'ad' || s.name === 'auth0-adldap') &&
-            s.connections.length > 0;
-  });
-
-  // get SSO data
-  if (this._signinOptions.enableReturnUserExperience === false && (!is_any_ad || self._openWith || this._signinOptions.enableADRealmDiscovery === false)) {
-    finish(null, {});
-  } else {
-    self._auth0.getSSOData(is_any_ad, finish);
-  }
-};
-
-Auth0Widget.prototype._resolveLoginView = function () {
-  var self = this;
-
-  var use_big_buttons = this._signinOptions['socialBigButtons'] || !this._areThereAnyEnterpriseOrDbConn();
-
-  // load social buttons
-  var list = this.query('.a0-notloggedin .a0-iconlist');
-  var socialStrategies = _.chain(self._client.strategies).where({social: true});
-
-  if (self._signinOptions.connections) {
-    // sort social strategies based on options.connections array order
-    var connections = self._signinOptions.connections;
-    socialStrategies = socialStrategies.map(function (s) {
-      var n = connections.indexOf(s.connections[0].name);
-      connections[n] = '';
-      return [n, s];
-    }).sort().map(function (x) { return x[1]; });
-  }
-
-  socialStrategies
-    .map(function (s) {
-      var e = {
-        use_big_buttons: use_big_buttons,
-        title: self._dict.t('loginSocialButton').replace('{connection:title}', s.title)
-      }
-      return  _.extend({}, s, e);
-    })
-    .each(function (s) { return list.append(buttonTmpl(s)); });
-
-  if (_.where(self._client.strategies, {social: true}).length > 0) {
-    this.query('.a0-notloggedin .a0-separator, .a0-notloggedin .a0-iconlist').toggleClass('a0-hide', false);
-  }
-
-  this.query('.a0-notloggedin .a0-email input').a0_on('input', function (e) {
-    self._showOrHidePassword(e);
-  });
-
-  this.query('.a0-zocial[data-strategy]', list).a0_on('click', function (e) {
-    self._signInSocial(e);
-  });
-
-  // show signup/forgot links
-  var auth0Conn = this._getAuth0Connection() || {};
-
-  var locals = {
-    showSignup: (this._signinOptions.showSignup !== false) && ((auth0Conn && auth0Conn.showSignup) || this._signinOptions.signupLink),
-    showForgot: (this._signinOptions.showForgot !== false) && ((auth0Conn && auth0Conn.showForgot) || this._signinOptions.forgotLink),
-    signupLink: this._signinOptions.signupLink,
-    forgotLink: this._signinOptions.forgotLink
-  };
-
-  var actions = $.create(this.render(loginActionsTmpl, locals));
-
-  // username_style
-  var auth0ConnStrategy = this._getStrategy(auth0Conn.name) || {};
-
-  if (!this._signinOptions.username_style &&
-      (auth0ConnStrategy.name === 'ad' || auth0ConnStrategy.name === 'auth0-adldap')) {
-    this._signinOptions.username_style = 'username';
-  }
-
-  if (this._signinOptions.username_style === 'username') {
-    // set username mode
-    var placeholder = this._dict.t('signin:usernamePlaceholder');
-    this.query('.a0-notloggedin .a0-email input')
-      .attr('type', 'text')
-      .attr('title', placeholder)
-      .attr('placeholder', placeholder);
-
-    this.query('.a0-notloggedin .a0-email label').text(placeholder);
-  }
-
-  this.query('.a0-db-actions').append(actions);
-
-  var signup_btn = this.query('.a0-sign-up');
-  if (!this._signinOptions.signupLink && signup_btn.length > 0) {
-    signup_btn.a0_on('click', function (e) {
-      self._showSignUpExperience(e);
-    });
-  }
-
-  if (!this._signinOptions.forgotLink) {
-    this.query('.a0-forgot-pass').a0_on('click', function (e) {
-      self._showResetExperience(e);
-    });
-  }
-
-  this.query('.a0-panel input').val('');
-
-  this.query('.a0-panel .a0-signup .a0-email input').a0_on('input', function() {
-    var output = {};
-    if (self._isEnterpriseConnection(this.value, output)) {
-      var warningText = self._dict.t('signup:enterpriseEmailWarningText').replace(/{domain}/g, output.domain);
-      // self._setCustomValidity(this, warningText);
-    } else {
-      // self._setCustomValidity(this, '');
-    }
-  });
-
-  this.query('.a0-panel .a0-options .a0-cancel').a0_on('click', function () {
-    self._showSuccess();
-    self._showError();
-    self._focusError();
-    self._setLoginView();
-  });
-
-  // show email, password, separator and button if there are enterprise/db connections
-  var anyEnterpriseOrDbConnection = self._areThereAnyEnterpriseOrDbConn();
-  var anySocialConnection = self._areThereAnySocialConn();
-  var anyDbConnection = self._areThereAnyDbConn();
-
-  this.query('.a0-panel .a0-email input').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
-  this.query('.a0-panel .a0-zocial.a0-primary').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection));
-  this.query('.a0-panel .a0-password').toggleClass('a0-hide', !(self._signinOptions.showEmail && self._signinOptions.showPassword && anyDbConnection));
-  this.query('.a0-panel .a0-separator').toggleClass('a0-hide', !(self._signinOptions.showEmail && anyEnterpriseOrDbConnection && anySocialConnection));
-
-  this.query('.a0-panel .a0-inputs').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
-  this.query('.a0-panel .a0-action').toggleClass('a0-hide', !anyEnterpriseOrDbConnection);
-
-  if (is_small_screen()) {
-    var collapse_onfocus = require('./lib/js/collapse_onfocus');
-    collapse_onfocus.hook(this.query('.a0-notloggedin form input'), this.query('.a0-collapse-social'));
-  }
-
-  if (self._openWith) {
-    return self['_show' + self._openWith + 'Experience']();
-  }
-
-  // if user in AD ip range
-  if (self._ssoData && self._ssoData.connection) {
-    self._showAdInDomainExperience();
-    return;
-  } else {
-    // if user logged in show logged in experience
-    if (self._ssoData.sso && self._signinOptions['enableReturnUserExperience']) {
-      self._showLoggedInExperience();
-      return;
-    }
-  }
-
-  self._setLoginView({ isReturningUser: self._ssoData.sso && self._signinOptions['enableReturnUserExperience'] !== false});
 };
 
 Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
@@ -1313,14 +821,17 @@ Auth0Widget.prototype.initialize = function(done) {
   }
 
   // buttons actions
-  this.query('.a0-onestep a.a0-close').a0_on('click', function (e) { e.preventDefault(); self._hideSignIn(); });
-  // this one below should be on mode-signin module bindAll method
-  this.query('.a0-notloggedin form').a0_on('submit', function (e) { self._signInEnterprise(e); });
-  this.query('').a0_on('keyup', function (e) {
-    if ((e.which == 27 || e.keycode == 27) && !self._signinOptions.standalone) {
-      self._hideSignIn(); // close popup with ESC key
-    }
+  this.query('.a0-onestep a.a0-close').a0_on('click', function (e) {
+    stop(e);
+    self._hideSignIn();
   });
+
+  // close popup with ESC key
+  if (!self._signinOptions.standalone) {
+    this.query('').a0_on('keyup', function (e) {
+      if ((e.which == 27 || e.keycode == 27)) self._hideSignIn();
+    });
+  };
 
   if (self._client.subscription && !~['free', 'dev'].indexOf(self._client.subscription)) {
     // hide footer for non free/dev subscriptions
@@ -1417,7 +928,6 @@ Auth0Widget.prototype._signinPanel = function (options, callback) {
   this._setTitle(this._dict.t('signin:title'));
   this.setPanel(panel);
 
-
   // panel.on('submit', this.setLoadingMode);
   // panel.on('error', function(errors) {
   //   // errors are already saved in `signin` instance
@@ -1430,8 +940,6 @@ Auth0Widget.prototype._signinPanel = function (options, callback) {
   //                 // and destroy and detach
   //                 // widget container from DOM
   // });
-
-  this.emit('signin ready');
 }
 
 Auth0Widget.prototype._signupPanel = function (options, callback) {
@@ -1441,21 +949,6 @@ Auth0Widget.prototype._signupPanel = function (options, callback) {
   this._setTitle(this._dict.t('signup:title'));
 
   this.setPanel(panel);
-
-  // panel.on('submit', this.setLoadingMode);
-  // panel.on('error', function(errors) {
-  //   // errors are already saved in `signin` instance
-  //   self.unsetLoadinMode();
-  //   self.query('.a0-panel').html(signin.create());
-  // });
-
-  // panel.on('success', function() {
-  //   self.hide();  // will unset loading mode
-  //                 // and destroy and detach
-  //                 // widget container from DOM
-  // });
-
-  this.emit('signup ready');
 }
 
 Auth0Widget.prototype._resetPanel = function (options, callback) {
@@ -1465,31 +958,11 @@ Auth0Widget.prototype._resetPanel = function (options, callback) {
   this._setTitle(this._dict.t('reset:title'));
 
   this.setPanel(panel);
-
-  // panel.on('submit', this.setLoadingMode);
-  // panel.on('error', function(errors) {
-  //   // errors are already saved in `signin` instance
-  //   self.unsetLoadinMode();
-  //   self.query('.a0-panel').html(signin.create());
-  // });
-
-  // panel.on('success', function() {
-  //   self.hide();  // will unset loading mode
-  //                 // and destroy and detach
-  //                 // widget container from DOM
-  // });
-
-  this.emit('reset ready');
 }
 
 Auth0Widget.prototype._loadingPanel = function (options, callback) {
   var self = this;
   var panel = LoadingPanel(this, { options: options || {} });
-
-  // Here we should check what title to render
-  // from the current mode (?)
-  // for submits mostly
-  // XXX: check code upside
 
   if (options.title) {
     this._setTitle(this._dict.t(options.title + ':title'));
@@ -1503,21 +976,6 @@ Auth0Widget.prototype._loadingPanel = function (options, callback) {
     panel.query('').addClass('a0-with-message');
     panel.query('.a0-spin-message span').html(options.message.replace('-', ' '));
   };
-
-  // panel.on('submit', this.setLoadingMode);
-  // panel.on('error', function(errors) {
-  //   // errors are already saved in `signin` instance
-  //   self.unsetLoadinMode();
-  //   self.query('.a0-panel').html(signin.create());
-  // });
-
-  // panel.on('success', function() {
-  //   self.hide();  // will unset loading mode
-  //                 // and destroy and detach
-  //                 // widget container from DOM
-  // });
-
-  this.emit('loading ready');
 }
 
 Auth0Widget.prototype._loggedinPanel = function (options, callback) {
@@ -1527,21 +985,6 @@ Auth0Widget.prototype._loggedinPanel = function (options, callback) {
   this._setTitle(this._dict.t('signin:title'));
 
   this.setPanel(panel);
-
-  // panel.on('submit', this.setLoadingMode);
-  // panel.on('error', function(errors) {
-  //   // errors are already saved in `signin` instance
-  //   self.unsetLoadinMode();
-  //   self.query('.a0-panel').html(signin.create());
-  // });
-
-  // panel.on('success', function() {
-  //   self.hide();  // will unset loading mode
-  //                 // and destroy and detach
-  //                 // widget container from DOM
-  // });
-
-  this.emit('loggedin ready');
 }
 
 Auth0Widget.prototype._kerberosPanel = function (options, callback) {
@@ -1551,33 +994,22 @@ Auth0Widget.prototype._kerberosPanel = function (options, callback) {
   this._setTitle(this._dict.t('signin:title'));
 
   this.setPanel(panel);
-
-  // panel.on('submit', this.setLoadingMode);
-  // panel.on('error', function(errors) {
-  //   // errors are already saved in `signin` instance
-  //   self.unsetLoadinMode();
-  //   self.query('.a0-panel').html(signin.create());
-  // });
-
-  // panel.on('success', function() {
-  //   self.hide();  // will unset loading mode
-  //                 // and destroy and detach
-  //                 // widget container from DOM
-  // });
-
-  this.emit('kerberos ready');
 }
 
-Auth0Widget.prototype.setPanel = function(panel) {
+Auth0Widget.prototype.setPanel = function(panel, name) {
   var el = 'function' === typeof panel.render
     ? panel.render()
     : panel;
+  var pname = 'function' === typeof panel.render
+    ? panel.name
+    : (name || 'signin');
 
   this.query('.a0-mode-container').html(el);
+  this.emit('%s ready'.replace('%s', pname));
 }
 
 Auth0Widget.prototype.renderContainer = function() {
-  if (this._container) return;
+  if (this._container) return this;
 
   // widget container
   if (this._signinOptions.container) {
