@@ -820,8 +820,12 @@ Auth0Widget.prototype.initialize = function(done) {
     .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
     .value();
 
+  var auth0Conn = this._getAuth0Connection() || {};
+  if (this._signinOptions.mode === 'signup' && !auth0Conn.showSignup) this._signinOptions.mode = 'signin';
+  if (this._signinOptions.mode === 'reset' && !auth0Conn.showForgot) this._signinOptions.mode = 'signin';
+
   // show loading
-  self._loadingPanel({});
+  this._loadingPanel(self._signinOptions);
 
   var is_any_ad = _.some(self._client.strategies, function (s) {
     return (s.name === 'ad' || s.name === 'auth0-adldap') && s.connections.length > 0;
