@@ -348,7 +348,10 @@
                   enableReturnUserExperience: false
                 }))
                 .on('ready', function() {
-                  setTimeout(next, 1000);
+                  var self = this;
+                  setTimeout(function() {
+                    self.hide(next);
+                  }, 1500);
                 })
                 .show();
               }
