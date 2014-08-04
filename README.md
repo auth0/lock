@@ -228,6 +228,12 @@ To get a release to work, you need to follow these simple commands
 
   # release new version
   $ ./bin/version {patch,minor,major}
+
+  # update remote repository
+  $ git push origin master --tags
+
+  # ... and then npm (you might wan't to wait tests pass on CI)
+  $ npm publish
 ```
 
 That's it!
