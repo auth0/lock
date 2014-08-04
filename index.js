@@ -511,6 +511,10 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
       // popup + sso = redirect
       self._auth0.login(loginOptions, function (err) {
         if (err) {
+          // display signin
+          self._signinPanel(self._signinOptions);
+
+          // display errors
           if (err.status !== 401) {
             self._showError(err.message || self._dict.t('signin:serverErrorText'));
           }
@@ -578,30 +582,6 @@ Auth0Widget.prototype.getProfile = function (token, callback) {
   this._auth0.getProfile(token, callback);
 };
 
-<<<<<<< HEAD
-Auth0Widget.prototype.reset = function (signinOptions, widgetLoadedCallback, popupCallback) {
-  this._openWith = 'Reset';
-  var self = this;
-  var displayOptions = _.extend({ showForgot: false, showSignup: false }, signinOptions);
-
-  this.query(function () {
-    self._show(displayOptions, widgetLoadedCallback, popupCallback);
-  });
-  return self;
-};
-
-Auth0Widget.prototype.signup = function (signinOptions, widgetLoadedCallback, popupCallback) {
-  this._openWith = 'SignUp';
-  var self = this;
-  var displayOptions = _.extend({ showForgot: false, showSignup: false }, signinOptions);
-  this.query(function () {
-    self._show(displayOptions, widgetLoadedCallback, popupCallback);
-  });
-  return self;
-};
-
-=======
->>>>>>> Code improves at index.js
 Auth0Widget.prototype.logout = function (query) {
   this._auth0.logout(query);
 };
