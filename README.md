@@ -58,7 +58,7 @@ widget.signin({
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
   showIcon: true,
-  connection_scopes: { 
+  connection_scopes: {
     'facebook': ['public_profile', 'user_friends'],
     'google-oauth2': ['https://www.googleapis.com/auth/orkut'],
     // none for twitter
@@ -152,7 +152,7 @@ Send us an screenshot! We would love to see what you can do.
 
 ## Example
 
-The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed and grunt (npm i grunt -g), then execute `grunt example` from the root of this project.
+The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed and **grunt** (`npm i grunt -g`), then execute `grunt example` from the root of this project.
 
 ## Develop
 
@@ -216,6 +216,21 @@ npm test
 
   Kill the java process, run `npm test` again and it should be solved.
 
+## Releases
+
+To get a release to work, you need to follow these simple commands
+
+```
+  # clear and update dependencies
+  $ rm -rf node_modules
+  $ npm cache clean
+  $ npm i
+
+  # release new version
+  $ ./bin/version {patch,minor,major}
+```
+
+That's it!
 
 ## License
 
