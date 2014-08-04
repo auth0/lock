@@ -306,11 +306,10 @@ Auth0Widget.prototype._getLoggedInAuthParams = function (strategy, ssoData) {
   }
 };
 
-Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCallback, extraParams) {
+Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCallback, extraParams, panel) {
   var self = this;
-  var container = this._getActiveLoginView();
-  var email_input = this.query('input[name=email]', container);
-  var password_input = this.query('input[name=password]', container);
+  var email_input = panel.query('input[name=email]');
+  var password_input = panel.query('input[name=password]');
 
   extraParams = extraParams || {};
 
@@ -320,43 +319,49 @@ Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCa
         popupOptions: self._signinOptions.popupOptions
       }, self._signinOptions.extraParameters, extraParams);
 
-  if (!popupCallback) {
+  if (!self._signinOptions.popupCallback) {
     throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
   }
 
   var message = self._dict.t('signin:popupCredentials');
   this._loadingPanel({ mode: 'signin', message: message });
 
-  self._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
+  this._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
     var args = Array.prototype.slice.call(arguments, 0);
-    if (err) {
-      // display signin
-      self._signinPanel(self._signinOptions);
-
-      // render errors
-      if (err.message === 'User closed the popup window') {
-        // Closed window
-        self._showError(self._dict.t('signin:userClosedPopup'));
-
-      } else if (err.message === 'access_denied') {
-        // Permissions not granted
-        self._showError(self._dict.t('signin:userConsentFailed'));
-      } else if (err.status !== 401) {
-        self._showError(self._dict.t('signin:serverErrorText'));
-      } else {
-        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
-        self._focusError(email_input);
-        self._focusError(password_input);
-      }
-    } else {
-      self.hide();
+    if (!err) {
+      self._signinOptions.popupCallback.apply(null, args);
+      return self.hide();
     }
+
+    // XXX: Maybe check if panel.name === 'signin'?
+    // In case called from signup-mode, I don't want to
+    // display the signup form again, but the signin instead
+
+    // display signin
+    self.setPanel(panel);
+
+    // render errors
+    if (err.message === 'User closed the popup window') {
+      // Closed window
+      self._showError(self._dict.t('signin:userClosedPopup'));
+
+    } else if (err.message === 'access_denied') {
+      // Permissions not granted
+      self._showError(self._dict.t('signin:userConsentFailed'));
+    } else if (err.status !== 401) {
+      self._showError(self._dict.t('signin:serverErrorText'));
+    } else {
+      self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+      self._focusError(email_input);
+      self._focusError(password_input);
+    }
+
     self._signinOptions.popupCallback.apply(null, args);
+
   });
 };
 
-// sign in methods
-Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
+Auth0Widget.prototype._signinSocial = function (e, connection, extraParams, panel) {
   var target = e.currentTarget || e.delegateTarget || e.target || e;
   var self = this;
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
@@ -375,7 +380,7 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
     // If we are in popup mode and callbackOnLocationHash was specified
     // we need to pass a callback.
     if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
-      this._signInPopupNoRedirect(connectionName, self._signinOptions.popupCallback, extraParams);
+      this._signinPopupNoRedirect(connectionName, self._signinOptions.popupCallback, extraParams, panel);
     } else {
       var loginOptions = _.extend({}, {
         connection: connectionName,
@@ -388,20 +393,16 @@ Auth0Widget.prototype._signInSocial = function (e, connection, extraParams) {
   }
 };
 
-Auth0Widget.prototype._signInEnterprise = function (e) {
-  stop(e);
-
+Auth0Widget.prototype._signin = function (panel) {
   var self = this;
-  var container = this._getActiveLoginView();
-  var form = this.query('form', container);
   var valid = true;
 
-  var emailD = this.query('.a0-email', form);
-  var password_input = this.query('input[name=password]', form);
+  var emailD = panel.query('.a0-email');
+  var password_input = panel.query('input[name=password]');
   var password_empty = regex.empty.test(password_input.val());
   var password_disabled = password_input.attr('disabled');
   var password_required = self._signinOptions.showEmail && self._signinOptions.showPassword && self._areThereAnyDbConn();
-  var email_input = this._$('input[name=email]', form);
+  var email_input = panel.query('input[name=email]');
   var email_value = trim(email_input.val());
   var email_parsed = email_parser.exec(email_value.toLowerCase());
   var email_empty = regex.empty.test(email_value);
@@ -433,101 +434,109 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
   var conn_obj = _.chain(this._client.strategies)
-    .where({userAndPass: undefined})
+    .where({ userAndPass: undefined })
     .pluck('connections')
     .flatten()
-    .findWhere({domain: input_email_domain})
+    .findWhere({ domain: input_email_domain })
     .value();
 
-
   // Gets suffix
-  if (conn_obj) {
-    domain = conn_obj.domain;
-    email = email_input.val();
-    connection = conn_obj.name;
-  } else {
+  if (!conn_obj) {
     if (this._auth0Strategies.length > 0) {
-      return this._signInWithAuth0(email_input.val());
+      return this._signinWithAuth0(panel);
     }
 
     if (input_email_domain === 'gmail.com') {
-      return this._signInSocial('google-oauth2');
+      return this._signinSocial('google-oauth2', null, null, panel);
     }
 
-    this._showError(
-      this._dict.t('signin:strategyDomainInvalid')
-          .replace('{domain}', input_email_domain));
+    var message = this._dict.t('signin:strategyDomainInvalid');
+    message = message.replace('{domain}', input_email_domain);
+
+    this._showError(message);
     this._focusError(email_input);
-  }
+
+    return;
+  };
+
+  domain = conn_obj.domain;
+  email = email_input.val();
+  connection = conn_obj.name;
 
   valid &= (!domain && !emailD.addClass('a0-invalid')) || (!!domain && !!emailD.removeClass('a0-invalid'));
 
-  if (valid) {
-    if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
-      this._signInPopupNoRedirect(connection, self._signinOptions.popupCallback);
-    } else {
-      var message = self._dict.t('signin:loadingMessage').replace('{connection}', connection);
-      this._loadingPanel({ mode: 'signin', message: message });
+  if (!valid) return;
 
-      var loginOptions = _.extend({}, {
-        connection: connection,
-        popup: self._signinOptions.popup,
-        popupOptions: self._signinOptions.popupOptions
-      }, self._signinOptions.extraParameters);
-
-      self._auth0.login(loginOptions);
-    }
+  if (this._signinOptions.popup && this._options.callbackOnLocationHash) {
+    return this._signinPopupNoRedirect(connection, this._signinOptions.popupCallback, panel);
   }
+
+  var message = this._dict.t('signin:loadingMessage').replace('{connection}', connection);
+  this._loadingPanel({ mode: 'signin', message: message });
+
+  var loginOptions = _.extend({}, {
+    connection: connection,
+    popup: this._signinOptions.popup,
+    popupOptions: this._signinOptions.popupOptions
+  }, this._signinOptions.extraParameters);
+
+  this._auth0.login(loginOptions);
 };
 
-Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
+Auth0Widget.prototype._signinWithAuth0 = function (panel) {
   var self = this;
-  var container = this._getActiveLoginView();
-  var connection  = this._getAuth0Connection(userName);
-  var email_input = this.query('input[name=email]', container);
-  var password_input = this.query('input[name=password]', container);
+  var email_input = panel.query('input[name=email]');
+  var password_input = panel.query('input[name=password]');
+  var username = email_input.val();
+  var password = password_input.val();
+  var connection  = this._getAuth0Connection(username);
 
   var loginOptions = {
     connection: connection.name,
-    username: connection.domain ?
-                userName.replace('@' + connection.domain, '') :
-                userName,
-    password: signInPassword || this.query('.a0-password input', container).val(),
+    username: connection.domain
+      ? username.replace('@' + connection.domain, '')
+      : username,
+    password: password,
     popup: self._signinOptions.popup,
     popupOptions: self._signinOptions.popupOptions
   };
 
   loginOptions = _.extend({}, loginOptions, self._signinOptions.extraParameters);
 
-  var strategy = self._getStrategy(connection.name) || {};
+  var strategy = this._getStrategy(connection.name) || {};
 
   // Clean error container
-  self._showError();
-  self._focusError();
+  this._showError();
+  this._focusError();
 
-  if (self._signinOptions.popup) {
-    if (self._signinOptions.sso) {
-      // popup + sso = redirect
-      self._auth0.login(loginOptions, function (err) {
-        if (err) {
-          // display signin
-          self._signinPanel(self._signinOptions);
-
-          // display errors
-          if (err.status !== 401) {
-            self._showError(err.message || self._dict.t('signin:serverErrorText'));
-          }
-          self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
-          self._focusError(email_input);
-          self._focusError(password_input);
-        }
-      });
-    } else {
-      // popup without sso = no redirect (ajax, not setting cookie)
-      this._signInPopupNoRedirect(connection.name, self._signinOptions.popupCallback, loginOptions);
+  if (this._signinOptions.popup) {
+    // popup without sso = no redirect (ajax, not setting cookie)
+    if (!this._signinOptions.sso) {
+      return this._signinPopupNoRedirect(connection.name, self._signinOptions.popupCallback, loginOptions, panel);
     }
 
-    return;
+    // popup + sso = redirect
+    return this._auth0.login(loginOptions, function (err) {
+      if (!err) return;
+
+      // XXX: Maybe check if panel.name === 'signin'?
+      // In case called from signup-mode, I don't want to
+      // display the signup form again, but the signin instead
+
+      // display signin
+      self.setPanel(panel);
+
+      // display errors
+      self._focusError(email_input);
+      self._focusError(password_input);
+
+      if (err.status !== 401) {
+        self._showError(err.message || self._dict.t('signin:serverErrorText'));
+      } else {
+        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+      }
+    });
+
   }
 
   // TODO: Handle sso case without popup
@@ -539,23 +548,25 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
   this._loadingPanel({ mode: 'signin', message: message });
 
   self._auth0.login(loginOptions, function (err) {
-    if (err) {
-      // display signin
-      self._signinPanel(self._signinOptions);
+    if (!err) return;
 
-      // render error messages
-      if (err.status !== 401) {
-        self._showError(err.message || self._dict.t('signin:serverErrorText'));
-      }
+    // XXX: Maybe check if panel.name === 'signin'?
+    // In case called from signup-mode, I don't want to
+    // display the signup form again, but the signin instead
 
-      self.on('signin ready', function() {
-        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
-        self._focusError(email_input);
-        self._focusError(password_input);
-      })
+    // display signin
+    self.setPanel(panel);
+
+    // display errors
+    self._focusError(email_input);
+    self._focusError(password_input);
+
+    if (err.status !== 401) {
+      self._showError(err.message || self._dict.t('signin:serverErrorText'));
+    } else {
+      self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
     }
   });
-
 };
 
 Auth0Widget.prototype._getEmbededTemplate = function (signinOptions) {
