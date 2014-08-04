@@ -203,6 +203,11 @@ module.exports = {
         title: 'Evernote',
         social: true
     },
+    'evernote-sandbox': {
+        css: 'evernote',
+        title: 'Evernote (sandbox)',
+        social: true
+    },
     'sharepoint': {
         css: 'sharepoint',
         title: 'SharePoint Apps',
