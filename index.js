@@ -49,7 +49,6 @@ function setfocus (el) {
 
 function animation_shake(context) {
   $('.a0-panel', context)
-    .removeClass('a0-swing')
     .addClass('a0-errors')
     .addClass('a0-animated a0-shake');
 }
