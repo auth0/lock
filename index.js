@@ -323,6 +323,11 @@ Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCa
     throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
   }
 
+  // Clean error container
+  this._showError();
+  this._focusError();
+
+  // set loading message
   var message = self._dict.t('signin:popupCredentials');
   this._loadingPanel({ mode: 'signin', message: message });
 
