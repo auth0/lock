@@ -1,17 +1,14 @@
 require('./lib/insert-css');
 
-var Auth0       = require('auth0-js');
-var _           = require('underscore');
-var strategies  = require('./lib/js/strategies');
-var mainTmpl    = require('./lib/html/main.ejs');
-var embTmpl     = require('./lib/html/main_embedded.ejs');
-var buttonTmpl  = require('./lib/html/button.ejs');
+var Auth0 = require('auth0-js');
+var _ = require('underscore');
+var strategies = require('./lib/js/strategies');
+var mainTmpl = require('./lib/html/main.ejs');
+var embTmpl = require('./lib/html/main_embedded.ejs');
 
 var EventEmitter = require('events').EventEmitter;
 
-var loggedinBtnTmpl      = require('./lib/html/loggedin_button.ejs');
-var loginActionsTmpl     = require('./lib/html/login_actions.ejs');
-var i18n                 = require('./i18n');
+var i18n = require('./i18n');
 
 var regex = require('./lib/js/regex');
 var email_parser = regex.email_parser;
@@ -26,7 +23,6 @@ var LoadingPanel = require('./lib/mode-loading');
 var $ = require('./lib/js/bonzo_qwery');
 var bonzo = require('bonzo');
 var is_small_screen = require('./lib/js/is_small_screen');
-var get_viewport = require('./lib/js/get_viewport');
 
 //browser incompatibilities fixes
 var placeholderSupported = require('./lib/supports-placeholder');
