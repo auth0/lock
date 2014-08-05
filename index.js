@@ -306,98 +306,6 @@ Auth0Widget.prototype._getLoggedInAuthParams = function (strategy, ssoData) {
   }
 };
 
-Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCallback, extraParams, panel) {
-  var self = this;
-  var email_input = panel.query('input[name=email]');
-  var password_input = panel.query('input[name=password]');
-
-  extraParams = extraParams || {};
-
-  var loginOptions = _.extend({}, {
-        connection: connectionName,
-        popup: self._signinOptions.popup,
-        popupOptions: self._signinOptions.popupOptions
-      }, self._signinOptions.extraParameters, extraParams);
-
-  if (!self._signinOptions.popupCallback) {
-    throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
-  }
-
-  // Clean error container
-  this._showError();
-  this._focusError();
-
-  // set loading message
-  var message = self._dict.t('signin:popupCredentials');
-  this._loadingPanel({ mode: 'signin', message: message });
-
-  this._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
-    var args = Array.prototype.slice.call(arguments, 0);
-    if (!err) {
-      self._signinOptions.popupCallback.apply(null, args);
-      return self.hide();
-    }
-
-    // XXX: Maybe check if panel.name === 'signin'?
-    // In case called from signup-mode, I don't want to
-    // display the signup form again, but the signin instead
-
-    // display signin
-    self.setPanel(panel);
-
-    // render errors
-    if (err.message === 'User closed the popup window') {
-      // Closed window
-      self._showError(self._dict.t('signin:userClosedPopup'));
-
-    } else if (err.message === 'access_denied') {
-      // Permissions not granted
-      self._showError(self._dict.t('signin:userConsentFailed'));
-    } else if (err.status !== 401) {
-      self._showError(self._dict.t('signin:serverErrorText'));
-    } else {
-      self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
-      self._focusError(email_input);
-      self._focusError(password_input);
-    }
-
-    self._signinOptions.popupCallback.apply(null, args);
-
-  });
-};
-
-Auth0Widget.prototype._signinSocial = function (e, connection, extraParams, panel) {
-  var target = e.currentTarget || e.delegateTarget || e.target || e;
-  var self = this;
-  var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
-  var strategy = this._getConfiguredStrategy(strategyName);
-
-  var connectionName = connection || strategy.connections[0].name;
-  // use extraParameters because it is used in all branches to set loginOptions
-  var extra = self._signinOptions.extraParameters;
-
-  if (extra.connection_scopes) {
-    // if no connection_scope was set for the connection we are ok with sending undefined
-    extra.connection_scope = extra.connection_scopes[connectionName];
-  }
-
-  if (strategy) {
-    // If we are in popup mode and callbackOnLocationHash was specified
-    // we need to pass a callback.
-    if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
-      this._signinPopupNoRedirect(connectionName, self._signinOptions.popupCallback, extraParams, panel);
-    } else {
-      var loginOptions = _.extend({}, {
-        connection: connectionName,
-        popup: self._signinOptions.popup,
-        popupOptions: self._signinOptions.popupOptions
-      }, self._signinOptions.extraParameters, extraParams);
-
-      this._auth0.login(loginOptions);
-    }
-  }
-};
-
 Auth0Widget.prototype._signin = function (panel) {
   var self = this;
   var valid = true;
@@ -571,6 +479,97 @@ Auth0Widget.prototype._signinWithAuth0 = function (panel) {
     } else {
       self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
     }
+  });
+};
+
+Auth0Widget.prototype._signinSocial = function (e, connection, extraParams, panel) {
+  var target = e.currentTarget || e.delegateTarget || e.target || e;
+  var self = this;
+  var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
+  var strategy = this._getConfiguredStrategy(strategyName);
+
+  var connectionName = connection || strategy.connections[0].name;
+  // use extraParameters because it is used in all branches to set loginOptions
+  var extra = self._signinOptions.extraParameters;
+
+  if (extra.connection_scopes) {
+    // if no connection_scope was set for the connection we are ok with sending undefined
+    extra.connection_scope = extra.connection_scopes[connectionName];
+  }
+
+  if (strategy) {
+    // If we are in popup mode and callbackOnLocationHash was specified
+    // we need to pass a callback.
+    if (self._signinOptions.popup && self._options.callbackOnLocationHash) {
+      this._signinPopupNoRedirect(connectionName, self._signinOptions.popupCallback, extraParams, panel);
+    } else {
+      var loginOptions = _.extend({}, {
+        connection: connectionName,
+        popup: self._signinOptions.popup,
+        popupOptions: self._signinOptions.popupOptions
+      }, self._signinOptions.extraParameters, extraParams);
+
+      this._auth0.login(loginOptions);
+    }
+  }
+};
+
+Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCallback, extraParams, panel) {
+  var self = this;
+  var email_input = panel.query('input[name=email]');
+  var password_input = panel.query('input[name=password]');
+
+  extraParams = extraParams || {};
+
+  var loginOptions = _.extend({}, {
+        connection: connectionName,
+        popup: self._signinOptions.popup,
+        popupOptions: self._signinOptions.popupOptions
+      }, self._signinOptions.extraParameters, extraParams);
+
+  if (!self._signinOptions.popupCallback) {
+    throw new Error('Popup mode needs a callback to be executed after authentication success or failure.');
+  }
+
+  // Clean error container
+  this._showError();
+  this._focusError();
+
+  // set loading message
+  var message = self._dict.t('signin:popupCredentials');
+  this._loadingPanel({ mode: 'signin', message: message });
+
+  this._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
+    var args = Array.prototype.slice.call(arguments, 0);
+    if (!err) {
+      self._signinOptions.popupCallback.apply(null, args);
+      return self.hide();
+    }
+
+    // XXX: Maybe check if panel.name === 'signin'?
+    // In case called from signup-mode, I don't want to
+    // display the signup form again, but the signin instead
+
+    // display signin
+    self.setPanel(panel);
+
+    // render errors
+    if (err.message === 'User closed the popup window') {
+      // Closed window
+      self._showError(self._dict.t('signin:userClosedPopup'));
+
+    } else if (err.message === 'access_denied') {
+      // Permissions not granted
+      self._showError(self._dict.t('signin:userConsentFailed'));
+    } else if (err.status !== 401) {
+      self._showError(self._dict.t('signin:serverErrorText'));
+    } else {
+      self._focusError(email_input);
+      self._focusError(password_input);
+    }
+
+    self._signinOptions.popupCallback.apply(null, args);
+
   });
 };
 
