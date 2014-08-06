@@ -42,7 +42,8 @@ reset.submit = function (widget, connectionName, username, password) {
       // set success message before view refresh
       // to avoid wrong resizing calculations
       widget._showSuccess(widget._dict.t('reset:successText'));
-      widget._setLoginView({});
+
+      return widget._setLoginView();
     });
   });
 };

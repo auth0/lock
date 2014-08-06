@@ -460,7 +460,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
 
 Auth0Widget.prototype._setLoginView = function(options, callback) {
   var self = this;
-  this._transitionMode(options, function (err, currentPane) {
+  this._transitionMode(options || {}, function (err, currentPane) {
     if (!self._signinOptions._avoidInitialFocus) setfocus(self._$('input', currentPane).first());
     if (callback) callback();
   });
@@ -887,9 +887,6 @@ Auth0Widget.prototype._initialize = function (widgetLoadedCallback) {
 
   function finish(err, ssoData){
     self._ssoData = ssoData;
-    if (self._openWith) {
-      return self['_show' + self._openWith + 'Experience']();
-    }
     self._resolveLoginView();
     if (widgetLoadedCallback && typeof widgetLoadedCallback === 'function') widgetLoadedCallback();
   }
@@ -1029,6 +1026,10 @@ Auth0Widget.prototype._resolveLoginView = function () {
     collapse_onfocus.hook(this._$('.a0-notloggedin form input'), this._$('.a0-collapse-social'));
   }
 
+  if (self._openWith) {
+    return self['_show' + self._openWith + 'Experience']();
+  }
+
   // if user in AD ip range
   if (self._ssoData && self._ssoData.connection) {
     self._showAdInDomainExperience();
@@ -1040,7 +1041,6 @@ Auth0Widget.prototype._resolveLoginView = function () {
       return;
     }
   }
-
 
   self._setLoginView({ isReturningUser: self._ssoData.sso && self._signinOptions['enableReturnUserExperience'] !== false});
 };
