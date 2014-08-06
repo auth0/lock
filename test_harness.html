@@ -23,9 +23,11 @@
   </script>
 
   <script src="/test/vendor/jquery-1.10.1.min.js"></script>
-  <script src="/test/signup.tests.js"></script>
+  <!-- The order of this scripts matters -->
+  <!-- Since the mockup of Auth0.js lib is made in order -->
+  <script src="/test/db_connections.tests.js"></script>
   <script src="/test/reset.tests.js"></script>
-  <script src="/test/db_connections.test.js"></script>
+  <script src="/test/signup.tests.js"></script>
   <script src="/test/tests.js"></script>
 
   <script>

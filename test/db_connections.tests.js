@@ -6,13 +6,12 @@ describe('db connections', function () {
         callbackURL: 'http://localhost:3000/',
         clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
         enableReturnUserExperience: false,
-        showSignup: false
-      }).show().on('transition_mode', function (mode) {
-        if (mode !== 'signin') return;
+        disableSignupAction: true
+      }).once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(0);
         expect($('.a0-divider').length).to.equal(0);
         done();
-      });
+      }).show();
     });
 
     it('should show signup', function (done) {
@@ -21,11 +20,10 @@ describe('db connections', function () {
         callbackURL: 'http://localhost:3000/',
         clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
         enableReturnUserExperience: false,
-      }).show().on('transition_mode', function (mode) {
-        if (mode !== 'signin') return;
+      }).once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(1);
         done();
-      });
+      }).show();
     });
 
     afterEach(function () {
@@ -42,10 +40,6 @@ describe('db connections', function () {
       global.window.Auth0 = null;
     });
 
-    afterEach(function () {
-      this.auth0.removeAllListeners('transition_mode');
-    });
-
     before(function () {
       this.auth0 = new Auth0Widget({
         domain:      'mdocs.auth0.com',
@@ -57,13 +51,14 @@ describe('db connections', function () {
 
     //fails on ie9
     it.skip('should not change to loading', function (done) {
-      var auth0 = this.auth0.show().on('transition_mode', function (mode) {
-        if (mode !== 'signin') return;
+      var auth0 = this.auth0
+
+      auth0
+      .once('ready', function () {
         $('#a0-signin_easy_email').val('');
         $('#a0-signin_easy_password').val('');
 
-        auth0.on('transition_mode', function (mode) {
-          if (mode !== 'loading') return;
+        auth0.once('loading ready', function () {
           done(new Error('do not change to loading'));
         });
         setTimeout(function () {
@@ -71,7 +66,8 @@ describe('db connections', function () {
         }, 500);
         var form = $('.a0-notloggedin form')[0];
         bean.fire(form, 'submit');
-      });
+      })
+      .show();
     });
 
   });
@@ -83,41 +79,46 @@ describe('db connections', function () {
       global.window.Auth0 = null;
     });
 
-    afterEach(function () {
-      this.auth0.removeAllListeners('transition_mode');
-    });
-
     before(function (done) {
-      var auth0 = this.auth0 = new Auth0Widget({
+      this.auth0 = new Auth0Widget({
         domain:      'mdocs.auth0.com',
         callbackURL: 'http://localhost:3000/',
         clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
         enableReturnUserExperience: false
       });
-
-      auth0.on('_error', function () {
-          done();
-      });
-
-      auth0.show().on('transition_mode', function (mode) {
-        if (mode !== 'signin') return;
-        $('#a0-signin_easy_email').val('j@j.com');
-        $('#a0-signin_easy_password').val('te');
-        var form = $('.a0-notloggedin form')[0];
-        bean.fire(form, 'submit');
-      });
+      done();
     });
 
 
-    // the test fails on IE9 but it does works. It looks like a timing issue.
+    // the test fails on IE9 but it does work. It looks like a timing issue.
     // it('email should have focus', function () {
     //   var email_has_focus = $('#a0-signin_easy_email').is(':focus');
     //   expect(email_has_focus).to.be.ok();
     // });
 
-    it('should display error', function () {
+    it('should display error', function (done) {
       var error = $('.a0-signin .a0-error').html();
-      expect(error).to.equal(this.auth0._dict.t('signin:wrongEmailPasswordErrorText'));
+      var auth0 = this.auth0;
+      var submitted = false;
+      auth0
+      .once('ready', function () {
+        $('#a0-signin_easy_email').val('j@j.com');
+        $('#a0-signin_easy_password').val('yy');
+        var form = $('.a0-notloggedin form')[0];
+        bean.fire(form, 'submit');
+        submitted = true;
+      })
+      .on('signin ready', function() {
+        if (!submitted) return;
+        setTimeout(function() {
+          expect($('.a0-email .a0-input-box').hasClass('a0-error-input')).to.equal(true);
+          expect($('.a0-password .a0-input-box').hasClass('a0-error-input')).to.equal(true);
+          done();
+        }, 0);
+      })
+      .showSignin({
+        connections: [ 'foobar' ]
+      });
     });
   });
 });
