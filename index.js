@@ -924,6 +924,7 @@ Auth0Widget.prototype._getClientStrategyByConnectionName = function (connName) {
 
 /**
  * Get resolved Auth0 connection to signin by `userName`
+ * XXX: No idea what logic this follows...
  *
  * @param {String} userName
  * @return {Object}
