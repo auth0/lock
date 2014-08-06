@@ -10,7 +10,7 @@ require('./lib/insert-css');
 
 var Auth0 = require('auth0-js');
 var _ = require('underscore');
-var strategies = require('./lib/js/strategies');
+var strategies = require('./lib/strategies');
 var mainTmpl = require('./lib/html/main.ejs');
 var embTmpl = require('./lib/html/main_embedded.ejs');
 
