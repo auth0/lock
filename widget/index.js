@@ -1076,8 +1076,9 @@ Auth0Widget.prototype.getProfile = function (token, callback) {
 Auth0Widget.prototype.reset = function (signinOptions, widgetLoadedCallback, popupCallback) {
   this._openWith = 'Reset';
   var self = this;
+  var displayOptions = _.extend({ showForgot: false, showSignup: false }, signinOptions);
   this._$(function () {
-    self._show(signinOptions, widgetLoadedCallback, popupCallback);
+    self._show(displayOptions, widgetLoadedCallback, popupCallback);
   });
   return self;
 };
@@ -1085,8 +1086,9 @@ Auth0Widget.prototype.reset = function (signinOptions, widgetLoadedCallback, pop
 Auth0Widget.prototype.signup = function (signinOptions, widgetLoadedCallback, popupCallback) {
   this._openWith = 'SignUp';
   var self = this;
+  var displayOptions = _.extend({ showForgot: false, showSignup: false }, signinOptions);
   this._$(function () {
-    self._show(signinOptions, widgetLoadedCallback, popupCallback);
+    self._show(displayOptions, widgetLoadedCallback, popupCallback);
   });
   return self;
 };
