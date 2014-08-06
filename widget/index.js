@@ -1124,7 +1124,7 @@ Auth0Widget.prototype._show = function (signinOptions, widgetLoadedCallback, pop
 
   var extra = utils.extract(self._signinOptions,
                             [ 'state', 'access_token',
-                              'scope', 'protocol',
+                              'scope', 'protocol', 'device',
                               'request_id', 'connection_scopes', 'nonce' ]);
 
   self._signinOptions.extraParameters = _.extend({}, extra, self._signinOptions.extraParameters);
