@@ -135,7 +135,7 @@
               callbackOnLocationHash: true
             });
             trackEvents(widget);
-            widget.show({ mode: 'signup', showSignup: false, showForgot: false });
+            widget.showSignup();
           });
           $('#new-reset').on('click', function() {
             var widget = new Auth0Widget({
@@ -145,7 +145,7 @@
               callbackOnLocationHash: true
             });
             trackEvents(widget);
-            widget.show({ mode: 'reset', showSignup: false, showForgot: false });
+            widget.showReset();
           });
           $('#login-button').on('click', function() {
             var widget = new Auth0Widget({
@@ -156,7 +156,7 @@
             });
 
             trackEvents(widget);
-            widget.show({ showSignup: false, showForgot: false });
+            widget.showSignin();
           });
           $('#login-button-copyrighted').on('click', function() {
             var widget = new Auth0Widget({
@@ -168,7 +168,7 @@
             });
 
             trackEvents(widget);
-            widget.show({ showSignup: false, showForgot: false });
+            widget.showSignin();
           });
           $('#login-button-only-socials').on('click', function() {
             var widget = new Auth0Widget({
@@ -179,9 +179,7 @@
             });
 
             trackEvents(widget);
-            widget.show({
-              showSignup: false,
-              showForgot: false,
+            widget.showSignin({
               connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
             });
           });
@@ -195,9 +193,7 @@
             });
 
             trackEvents(widget);
-            widget.show({
-              showSignup: false,
-              showForgot: false,
+            widget.showSignin({
               popup: true
             }, onlogin);
 
@@ -218,9 +214,7 @@
             });
 
             trackEvents(widget);
-            widget.show({
-              showSignup: false,
-              showForgot: false,
+            widget.showSignin({
               popup: true,
               connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
             }, function (err, profile) {
@@ -242,9 +236,7 @@
             });
 
             trackEvents(widget);
-            widget.show({
-              showSignup: false,
-              showForgot: false,
+            widget.showSignin({
               connections: ['mdocs.io']
             });
           });
@@ -257,9 +249,7 @@
             });
 
             trackEvents(widget);
-            widget.show({
-              showSignup: false,
-              showForgot: false,
+            widget.showSignin({
               connections: ['mdocs.io']
             });
           });
@@ -272,9 +262,7 @@
             });
 
             trackEvents(widget);
-            widget.show({
-              showSignup: false,
-              showForgot: false,
+            widget.showSignin({
               connections: ['qraftlabs.com']
             });
           });
@@ -290,7 +278,7 @@
             });
 
             trackEvents(widget);
-            widget.show({ showSignup: false, showForgot: false });
+            widget.showSignin();
 
           });
           $('#login-button-nosignup-noforgot').on('click', function() {
@@ -302,7 +290,7 @@
             });
 
             trackEvents(widget);
-            widget.show({ showSignup: false, showForgot: false });
+            widget.showSignin();
           });
           $('#login-button-inside-container').on('click', function() {
             var widget = new Auth0Widget({
@@ -380,7 +368,7 @@
             });
 
             trackEvents(widget);
-            widget.show({ mode: 'signup', showSignup: false, showForgot: false });
+            widget.showSignup();
           });
           $('#signup-button-footer-text').on('click', function() {
             var widget = new Auth0Widget({
@@ -396,7 +384,7 @@
             });
 
             trackEvents(widget);
-            widget.show({ mode: 'signup', showSignup: false, showForgot: false });
+            widget.showSignup();
           });
           $('#reset-button').on('click', function() {
             var widget = new Auth0Widget({
@@ -407,7 +395,7 @@
             });
 
             trackEvents(widget);
-            widget.show({ mode: 'reset', showSignup: false, showForgot: false });
+            widget.showReset();
           });
 
           var widget = new Auth0Widget({
