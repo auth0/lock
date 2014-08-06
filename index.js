@@ -18,7 +18,7 @@ var EventEmitter = require('events').EventEmitter;
 
 var i18n = require('./i18n');
 
-var regex = require('./lib/js/regex');
+var regex = require('./lib/regex');
 var email_parser = regex.email_parser;
 
 var SigninPanel = require('./lib/mode-signin');
