@@ -306,7 +306,7 @@ Auth0Widget.prototype.display = function(options, callback) {
 
   // here we tweak general display options
   // like allowing SSO and stuff
-  var params = [ 'state', 'access_token', 'scope', 'protocol', 'request_id', 'connection_scopes' ];
+  var params = [ 'state', 'access_token', 'scope', 'protocol', 'device','request_id', 'connection_scopes', 'nonce' ];
   var extra = utils.extract(this.displayOptions, params);
 
   this.displayOptions.extraParameters = _.extend({}, extra, this.displayOptions.extraParameters);
