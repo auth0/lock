@@ -8,13 +8,16 @@ require('./lib/insert-css');
  * Module dependencies.
  */
 
-var Auth0 = require('auth0-js');
+var bonzo = require('bonzo');
 var _ = require('underscore');
+var Auth0 = require('auth0-js');
+var domready = require('domready');
+var EventEmitter = require('events').EventEmitter;
+
 var strategies = require('./lib/strategies');
 var mainTmpl = require('./lib/html/main.ejs');
 var embTmpl = require('./lib/html/main_embedded.ejs');
 
-var EventEmitter = require('events').EventEmitter;
 
 var i18n = require('./i18n');
 
@@ -28,11 +31,10 @@ var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
 
-var $ = require('./lib/js/bonzo_qwery');
-var bonzo = require('bonzo');
-var is_small_screen = require('./lib/js/is_small_screen');
+var $ = require('./lib/bonzo-augmented');
 
 //browser incompatibilities fixes
+var is_small_screen = require('./lib/is-small-screen');
 var placeholderSupported = require('./lib/supports-placeholder');
 var has_animations = require('./lib/supports-animation');
 var transition_end = require('./lib/transition-end');
