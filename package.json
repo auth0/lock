@@ -32,7 +32,8 @@
     "opentip": "^2.4.3",
     "packageify": "^0.2.0",
     "qwery": "~3.4.1",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "trim": "0.0.1"
   },
   "devDependencies": {
     "browserify": "4.2.1",

@@ -7,8 +7,8 @@ var is_small_screen = require('../js/is_small_screen');
 var regex = require('../js/regex');
 var empty = regex.empty;
 var email_parser = regex.email_parser;
+var trim = require('trim');
 var signup = module.exports;
-
 
 signup.submit = function (widget, connectionName, email, password) {
   var form = $('.a0-signup form');
@@ -95,10 +95,12 @@ signup.bind = function (widget) {
 function valid(form, widget) {
   var ok = true;
   var email_input = widget._$('input[name=email]', form);
-  var email_empty = empty.test(email_input.val());
-  var email_parsed = email_parser.exec(email_input.val().toLowerCase());
+  var email = trim(email_input.val());
+  var email_empty = empty.test(email);
+  var email_parsed = email_parser.exec(email.toLowerCase());
   var password_input = widget._$('input[name=password]', form);
-  var password_empty = empty.test(password_input.val());
+  var password = password_input.val();
+  var password_empty = empty.test(password);
 
   // asume valid by default
   // and reset errors
