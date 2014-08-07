@@ -655,7 +655,7 @@ Auth0Widget.prototype._signInEnterprise = function (e) {
   var password_disabled = password_input.attr('disabled');
   var password_required = self._signinOptions.showEmail && self._signinOptions.showPassword && self._areThereAnyDbConn();
   var email_input = this._$('input[name=email]', form);
-  var email_value = email_input.val();
+  var email_value = trim(email_input.val());
   var email_parsed = email_parser.exec(email_value.toLowerCase());
   var email_empty = regex.empty.test(email_value);
   var email = null, domain, connection, has_errors = false;
