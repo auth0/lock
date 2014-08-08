@@ -969,29 +969,6 @@ Auth0Widget.prototype._getAuth0Connection = function(userName) {
 };
 
 /**
- * Show or hide password input for `SigninPanel` resolved
- * by if it's or it's not an enterprise connection
- * XXX: This should be moved to `SigninPanel` view
- *
- * @private
- */
-
-Auth0Widget.prototype._showOrHidePassword = function () {
-  var mailField = this.query('.a0-notloggedin .a0-email input');
-  var pwdField  = this.query('.a0-notloggedin .a0-password input').first();
-
-  var isEnterpriseConnection = this._isEnterpriseConnection(mailField.val() || '');
-
-  if (isEnterpriseConnection) {
-    pwdField.attr('disabled', true);
-    // pwdField.removeAttr('required');
-  } else {
-    pwdField.removeAttr('disabled');
-    // pwdField.attr('required', true);
-  }
-};
-
-/**
  * Get Loggedin auth parameters from `strategy` and `ssoData`
  *
  * @param {String} strategy
@@ -1022,37 +999,10 @@ Auth0Widget.prototype._signin = function (panel) {
   var valid = true;
 
   var emailD = panel.query('.a0-email');
-  var password_input = panel.query('input[name=password]');
-  var password_empty = regex.empty.test(password_input.val());
-  var password_disabled = password_input.attr('disabled');
-  var password_required = self.displayOptions.showEmail && self.displayOptions.showPassword && self._areThereAnyDbConn();
   var email_input = panel.query('input[name=email]');
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
-  var email_empty = regex.empty.test(email_input.val());
+
   var email = null, domain, connection, has_errors = false;
-
-  // Clean error container
-  this._showError();
-  this._focusError();
-
-  if (email_empty) {
-    this._focusError(email_input);
-    has_errors = true;
-  }
-
-  if (!this._ignoreEmailValidations(email_input)) {
-    if (!email_parsed && !email_empty) {
-      this._focusError(email_input, this._dict.t('invalid'));
-      has_errors = true;
-    }
-  }
-
-  if (password_empty && password_required && !password_disabled) {
-    this._focusError(password_input);
-    has_errors = true;
-  };
-
-  if (has_errors) return;
 
   var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
