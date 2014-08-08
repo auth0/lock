@@ -7208,8 +7208,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-widget .a0-panel .a0-separator {
-  margin-bottom: 6px;
-  margin-top: 14px;
+  margin-bottom: 10px;
+  margin-top: 6px;
   color: #999;
   font-size: 12px;
 }
@@ -7253,6 +7253,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-widget .a0-panel .a0-error {
   color: #ff0000;
+}
+
+#a0-widget .a0-panel .a0-error,
+#a0-widget .a0-panel .a0-success {
+  margin-bottom: 10px;
 }
 
 #a0-widget .a0-panel.a0-errors.a0-errors-global {

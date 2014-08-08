@@ -594,6 +594,7 @@ Auth0Widget.prototype._signInPopupNoRedirect = function (connectionName, popupCa
       } else if (err.status !== 401) {
         self._showError(self._dict.t('signin:serverErrorText'));
       } else {
+        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
         self._focusError(email_input);
         self._focusError(password_input);
       }
@@ -766,6 +767,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
           if (err.status !== 401) {
             self._showError(err.message || self._dict.t('signin:serverErrorText'));
           }
+          self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
           self._focusError(email_input);
           self._focusError(password_input);
         }
@@ -788,7 +790,7 @@ Auth0Widget.prototype._signInWithAuth0 = function (userName, signInPassword) {
         if (err.status !== 401) {
           self._showError(err.message || self._dict.t('signin:serverErrorText'));
         }
-
+        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
         self._setLoginView({}, function () {
           self._focusError(email_input);
           self._focusError(password_input);
