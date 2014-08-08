@@ -117,12 +117,15 @@ Auth0Widget.prototype = object_create(EventEmitter.prototype);
  *
  * @param {String} selector
  * @param {NodeElement} context
- * @return {BonzoQwery}
+ * @return {BonzoAugmented}
  * @public
  */
 
 Auth0Widget.prototype.query = function(selector, context) {
-  return $(selector, context || this._container);
+  if ('string' === typeof selector) {
+    return $(selector, context || this._container);
+  }
+  return $('#a0-widget', selector || this._container);
 };
 
 /**
@@ -256,7 +259,6 @@ Auth0Widget.prototype.showReset = function(options, callback) {
 
 Auth0Widget.prototype.hide = function (callback) {
   var self = this;
-
   this.query('div.a0-overlay').removeClass('a0-active');
 
   this.query().css('display', 'none');
