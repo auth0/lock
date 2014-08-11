@@ -29,7 +29,7 @@ describe('reset', function () {
 
       auth0
       .once('loading ready', function () {
-        expect($('#a0-widget h1').html()).to.be(auth0._dict.t('reset:title'));
+        expect($('#a0-widget h1').html()).to.be(auth0.options.i18n.t('reset:title'));
         done();
       });
 

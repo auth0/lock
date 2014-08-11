@@ -11,7 +11,7 @@ describe('auth0-Widget', function () {
 
   beforeEach(function () {
     Auth0Widget.prototype._getApp = function () {
-      this._client = {
+      this.$client = {
         strategies: [
           {
             "name": "facebook",
@@ -59,7 +59,7 @@ describe('auth0-Widget', function () {
       callbackOnLocationHash: true
     });
 
-    client = widget._auth0;
+    client = widget.$auth0;
     client.getSSOData = function (withAd, callback) {
       callback(null, { sso: false });
     };
@@ -123,24 +123,24 @@ describe('auth0-Widget', function () {
   it('should use only specified connections', function (done) {
     widget
     .once('ready', function () {
-      expect(widget._client.strategies.length).to.equal(4);
+      expect(widget.$client.strategies.length).to.equal(4);
 
-      expect(widget._client.strategies[0].name).to.equal('twitter');
-      expect(widget._client.strategies[0].connections.length).to.equal(1);
-      expect(widget._client.strategies[0].connections[0].name).to.equal('twitter');
+      expect(widget.$client.strategies[0].name).to.equal('twitter');
+      expect(widget.$client.strategies[0].connections.length).to.equal(1);
+      expect(widget.$client.strategies[0].connections[0].name).to.equal('twitter');
 
-      expect(widget._client.strategies[1].name).to.equal('google-oauth2');
-      expect(widget._client.strategies[1].connections.length).to.equal(1);
-      expect(widget._client.strategies[1].connections[0].name).to.equal('google-oauth2');
+      expect(widget.$client.strategies[1].name).to.equal('google-oauth2');
+      expect(widget.$client.strategies[1].connections.length).to.equal(1);
+      expect(widget.$client.strategies[1].connections[0].name).to.equal('google-oauth2');
 
-      expect(widget._client.strategies[2].name).to.equal('auth0');
-      expect(widget._client.strategies[2].connections.length).to.equal(1);
-      expect(widget._client.strategies[2].connections[0].name).to.equal('dbTest');
+      expect(widget.$client.strategies[2].name).to.equal('auth0');
+      expect(widget.$client.strategies[2].connections.length).to.equal(1);
+      expect(widget.$client.strategies[2].connections[0].name).to.equal('dbTest');
 
-      expect(widget._client.strategies[3].name).to.equal('google-apps');
-      expect(widget._client.strategies[3].connections.length).to.equal(2);
-      expect(widget._client.strategies[3].connections[0].name).to.equal('google-app1');
-      expect(widget._client.strategies[3].connections[1].name).to.equal('google-app3');
+      expect(widget.$client.strategies[3].name).to.equal('google-apps');
+      expect(widget.$client.strategies[3].connections.length).to.equal(2);
+      expect(widget.$client.strategies[3].connections[0].name).to.equal('google-app1');
+      expect(widget.$client.strategies[3].connections[1].name).to.equal('google-app3');
 
       done();
     })

@@ -28,7 +28,7 @@ describe('sign up', function () {
       $('#a0-signup_easy_email').val('pepo@example.com');
       $('#a0-signup_easy_password').val('123');
       auth0.once('loading ready', function () {
-        expect($('#a0-widget h1').html()).to.be(auth0._dict.t('signup:title'));
+        expect($('#a0-widget h1').html()).to.be(auth0.options.i18n.t('signup:title'));
         done();
       });
       bean.fire($('.a0-signup form')[0], 'submit');
@@ -41,7 +41,7 @@ describe('sign up', function () {
 
     auth0
     .once('_error', function () {
-      expect($('.a0-error').html()).to.be(auth0._dict.t('signup:serverErrorText'));
+      expect($('.a0-error').html()).to.be(auth0.options.i18n.t('signup:serverErrorText'));
       done();
     })
     .once('signin ready', function () {
@@ -57,7 +57,7 @@ describe('sign up', function () {
 
 
   it('should signin with social connection', function (done) {
-    this.auth0._auth0.login = function (options) {
+    this.auth0.$auth0.login = function (options) {
       expect(options.connection).to.equal('google-oauth2');
       expect(options.username).to.not.exist;
       done();
