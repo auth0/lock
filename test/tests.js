@@ -10,7 +10,7 @@ describe('auth0-Widget', function () {
   };
 
   beforeEach(function () {
-    Auth0Widget.prototype._getApp = function () {
+    Auth0Widget.prototype.getClientConfiguration = function () {
       this.$client = {
         strategies: [
           {
@@ -157,7 +157,7 @@ describe('auth0-Widget', function () {
         callbackURL: callbackURL
       });
 
-      expect(widget._options.assetsUrl).to.equal('https://abc.contoso.com/');
+      expect(widget.$options.assetsUrl).to.equal('https://abc.contoso.com/');
     });
 
     it('should use default assetsUrl if domain is *.auth0.com', function () {
@@ -167,7 +167,7 @@ describe('auth0-Widget', function () {
         callbackURL: callbackURL
       });
 
-      expect(widget._options.assetsUrl).to.equal('https://s3.amazonaws.com/assets.auth0.com/');
+      expect(widget.$options.assetsUrl).to.equal('https://s3.amazonaws.com/assets.auth0.com/');
     });
   });
 
@@ -179,7 +179,7 @@ describe('auth0-Widget', function () {
         callbackURL: callbackURL
       });
 
-      expect(widget._options.cdn).to.equal('https://abc.contoso.com/w2/');
+      expect(widget.$options.cdn).to.equal('https://abc.contoso.com/w2/');
     });
 
     it('should use default cdn if domain is *.auth0.com', function () {
@@ -189,7 +189,7 @@ describe('auth0-Widget', function () {
         callbackURL: callbackURL
       });
 
-      expect(widget._options.cdn).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
+      expect(widget.$options.cdn).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
     });
   });
 
@@ -341,7 +341,6 @@ describe('auth0-Widget', function () {
         expect(options.username).to.not.exist;
         done();
       };
-
       widget
       .once('ready', function () {
         $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
