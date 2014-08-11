@@ -432,13 +432,14 @@ Auth0Widget.prototype.initialize = function(done) {
   var self = this;
   var options = this.options;
   var i18n = options.i18n;
-  var args  = arguments;
-  var setClient = global.window.Auth0.setClient;
 
   // Monkey patch to wait for Auth0.setClient()
   // to be sure we have client's configuration
   // before continuing
   if (_.isEmpty(this.$client)) {
+    var args  = arguments;
+    var setClient = global.window.Auth0.setClient;
+
     global.window.Auth0.setClient = function () {
       setClient.apply(this, arguments);
       self.initialize.apply(self, args);
