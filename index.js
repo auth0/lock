@@ -496,7 +496,7 @@ Auth0Widget.prototype.initialize = function(options, done) {
   function finish(err, ssoData) {
     // XXX: maybe we should parse the errors here.
     // Just a thought...
-    this.$ssoData = ssoData;
+    self.$ssoData = ssoData;
     done();
     self.emit('ready');
   }
