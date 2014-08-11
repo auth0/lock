@@ -1,24 +1,32 @@
 //fails in chrome 28- BrowserStack.
 describe('sign up', function () {
 
-  beforeEach(function () {
-    if (this.auth0) this.auth0.hide();
-    this.auth0 = new Auth0Widget({
-      domain:      'mdocs.auth0.com',
-      callbackURL: 'http://localhost:3000/',
-      clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-      rememberLastLogin: false
-    });
+  beforeEach(function (done) {
+    var self = this;
+    this.options = { rememberLastLogin: false };
+
+
+    if (!this.auth0) return onhidden();
+
+    this.auth0.hide(onhidden);
+    function onhidden() {
+      self.auth0 = new Auth0Widget({
+        domain:      'mdocs.auth0.com',
+        callbackURL: 'http://localhost:3000/',
+        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
+      });
+
+      done();
+    }
   });
 
   afterEach(function () {
-    this.auth0.hide();
     global.window.location.hash = '';
     global.window.Auth0 = null;
   });
 
   it('should show the loading pane', function (done) {
-    var auth0 = this.auth0
+    var auth0 = this.auth0;
 
     auth0
     .once('signin ready', function () {
@@ -33,11 +41,11 @@ describe('sign up', function () {
       });
       bean.fire($('.a0-signup form')[0], 'submit');
     })
-    .show();
+    .show(this.options);
   });
 
   it('should not change to loading when server returns error', function (done) {
-    var auth0 = this.auth0
+    var auth0 = this.auth0;
 
     auth0
     .once('_error', function () {
@@ -52,7 +60,7 @@ describe('sign up', function () {
       $('#a0-signup_easy_password').val('123');
       bean.fire($('.a0-signup form')[0], 'submit');
     })
-    .show();
+    .show(this.options);
   });
 
 
@@ -70,7 +78,7 @@ describe('sign up', function () {
     .once('signup ready', function() {
       bean.fire($('.a0-signup [data-strategy="google-oauth2"]')[0], 'click');
     })
-    .show();
+    .show(this.options);
   });
 
 });
