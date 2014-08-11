@@ -86,8 +86,7 @@ describe('db connections', function () {
       this.auth0 = new Auth0Widget({
         domain:      'mdocs.auth0.com',
         callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-        rememberLastLogin: false
+        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
       });
       done();
     });
@@ -120,7 +119,8 @@ describe('db connections', function () {
         }, 0);
       })
       .showSignin({
-        connections: [ 'foobar' ]
+        connections: [ 'foobar' ],
+        rememberLastLogin: false
       });
     });
   });
