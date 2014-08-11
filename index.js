@@ -204,7 +204,6 @@ Auth0Widget.prototype.render = function(tmpl, locals) {
 Auth0Widget.prototype.insert = function() {
   if (this.$container) return this;
   var options = this.options;
-
   var cid = options.container;
 
   // widget container
@@ -380,13 +379,13 @@ Auth0Widget.prototype.display = function(options, callback) {
   var opts = _.extend({ popupCallback: callback }, options);
 
   // Instantiate OptionsManager as `this.options`
-  this.options = new OptionsManager(this, options);
+  this.options = new OptionsManager(this, opts);
 
   // Start by render widget's container
   this.insert();
 
   // Initialize widget's view
-  this.initialize(opts, oninitialized);
+  this.initialize(oninitialized);
 
   // and right after that render mode
   function oninitialized() {
@@ -429,16 +428,17 @@ Auth0Widget.prototype.display = function(options, callback) {
  * @private
  */
 
-Auth0Widget.prototype.initialize = function(options, done) {
+Auth0Widget.prototype.initialize = function(done) {
   var self = this;
+  var options = this.options;
+  var i18n = options.i18n;
+  var args  = arguments;
+  var setClient = global.window.Auth0.setClient;
 
   // Monkey patch to wait for Auth0.setClient()
   // to be sure we have client's configuration
   // before continuing
   if (_.isEmpty(this.$client)) {
-    var args  = arguments;
-    var setClient = global.window.Auth0.setClient;
-
     global.window.Auth0.setClient = function () {
       setClient.apply(this, arguments);
       self.initialize.apply(self, args);
@@ -446,9 +446,6 @@ Auth0Widget.prototype.initialize = function(options, done) {
 
     return;
   }
-
-  var options = this.options;
-  var i18n = options.i18n;
 
   if (!placeholderSupported) {
     this.query('.a0-overlay')
