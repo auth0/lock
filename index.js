@@ -12,15 +12,14 @@ var bonzo = require('bonzo');
 var _ = require('underscore');
 var Auth0 = require('auth0-js');
 var domready = require('domready');
+var $ = require('./lib/bonzo-augmented');
 var EventEmitter = require('events').EventEmitter;
 
 var strategies = require('./lib/strategies');
 var mainTmpl = require('./lib/html/main.ejs');
 var embTmpl = require('./lib/html/main_embedded.ejs');
 
-
-var i18n = require('./i18n');
-
+var required = require('./lib/assert-required');
 var regex = require('./lib/regex');
 var email_parser = regex.email_parser;
 
@@ -31,17 +30,17 @@ var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
 
-var $ = require('./lib/bonzo-augmented');
+var OptionsManager = require('./lib/options-manager');
 
 //browser incompatibilities fixes
 var is_small_screen = require('./lib/is-small-screen');
 var placeholderSupported = require('./lib/supports-placeholder');
 var has_animations = require('./lib/supports-animation');
-var transition_end = require('./lib/transition-end');
-var object_create = require('./lib/object-create');
+var ocreate = require('./lib/object-create');
 var stop = require('./lib/stop-event');
 var utils = require('./lib/utils');
 var trim = require('trim');
+var bind = require('./lib/bind');
 
 /**
  * Expose `Auth0Widget` constructor
@@ -54,6 +53,16 @@ module.exports = Auth0Widget;
  * resolving `options`.
  *
  * @param {Object} options
+ *   Auth0.js client options:
+ *     - clientID
+ *     - domain
+ *     - callbackURL
+ *     - forceJSONP
+ *     - callbackOnLocationHash
+ *
+ *   Optional premise installs options:
+ *     - cdn
+ *     - assetsUrl
  * @return {Auth0Widget}
  * @constructor
  */
@@ -63,39 +72,47 @@ function Auth0Widget (options) {
     return new Auth0Widget(options);
   }
 
-  this._dict = i18n.getDict(options.dict);
+  // validate required options
+  required('clientID', options);
+  required('domain', options);
 
-  this._locals = {
-    i18n: this._dict
-  };
+  // Instance properties and options
+  this.$options = _.extend({}, options);
 
-  this._options = options;
-  this._strategies = strategies;
+  // Holds copy for all suppported strategies
+  this.$strategies = strategies;
 
-  this._auth0 = new Auth0({
-    clientID:     this._options.clientID,
-    callbackURL:  this._options.callbackURL,
-    domain:       this._options.domain,
-    forceJSONP:   this._options.forceJSONP,
-    callbackOnLocationHash: this._options.callbackOnLocationHash
+  // Holds auth0-js' instance
+  this.$auth0 = new Auth0({
+    clientID:     this.$options.clientID,
+    callbackURL:  this.$options.callbackURL,
+    domain:       this.$options.domain,
+    forceJSONP:   this.$options.forceJSONP,
+    callbackOnLocationHash: this.$options.callbackOnLocationHash
   });
 
-  if (!this._options.assetsUrl) {
-    // use domain as assetsUrl if domain is not *.auth0.com
-    this._options.assetsUrl = this._isAuth0Domain() ?
-      'https://s3.amazonaws.com/assets.auth0.com/' :
-      'https://' + this._options.domain + '/';
-  }
+  // use domain as assetsUrl if no assetsUrl provided
+  // and domain is not *.auth0.com. Fallback to S3 url
+  this.$options.assetsUrl = this.$options.assetsUrl || this.isAuth0Domain()
+    ? 'https://s3.amazonaws.com/assets.auth0.com/'
+    : 'https://' + this.$options.domain + '/';
 
-  if (!this._options.cdn) {
-    // use domain as cdn if domain is not *.auth0.com
-    this._options.cdn = this._isAuth0Domain() ?
-      'https://d19p4zemcycm7a.cloudfront.net/w2/' :
-      'https://' + this._options.domain + '/w2/';
-  }
+  this.$options.cdn = this.$options.cdn || this.isAuth0Domain()
+    ? 'https://d19p4zemcycm7a.cloudfront.net/w2/'
+    : 'https://' + this.$options.domain + '/w2/';
 
-  this._getApp();
+  // holds client's connections configuration
+  // retrieved from S3 or CDN/assetsUrl provided
+  this.$client = {};
+  this.getClientConfiguration();
 
+  // Holds SSO Data for return user experience
+  this.$ssoData = null;
+
+  // Holds widget's DOM `$container` ref
+  this.$container = null;
+
+  // Initiate `EventEmitter`
   EventEmitter.call(this);
 }
 
@@ -109,11 +126,43 @@ Auth0Widget.version = require('package.version');
  * Inherit from `EventEmitter`
  */
 
-Auth0Widget.prototype = object_create(EventEmitter.prototype);
+Auth0Widget.prototype = ocreate(EventEmitter.prototype);
+
+/**
+ * Get client configuration.
+ * XXX: Why not use jsonp? that woudld allow the
+ * global namespace definition to be optional...
+ *
+ * @return {Auth0Widget}
+ * @private
+ */
+
+Auth0Widget.prototype.getClientConfiguration = function () {
+  var self = this;
+
+  // Monkey patch Auth.setClient
+  global.window.Auth0 = global.window.Auth0 || {};
+  global.window.Auth0.setClient = function (client) {
+    self.$client = _.extend(self.$client, client);
+    self.emit('client initialized', client);
+  };
+
+  var script = document.createElement('script');
+  script.src = this.$options.assetsUrl
+    + 'client/'
+    + this.$options.clientID
+    + '.js'
+    + '?t' + (+new Date);
+
+  var firstScript = document.getElementsByTagName('script')[0];
+  firstScript.parentNode.insertBefore(script, firstScript);
+
+  return this;
+};
 
 /**
  * Query for elements by `selector` within optional `context`.
- * Last defaults to widget's instance `_container`.
+ * Last defaults to widget's instance `$container`.
  *
  * @param {String} selector
  * @param {NodeElement} context
@@ -123,9 +172,9 @@ Auth0Widget.prototype = object_create(EventEmitter.prototype);
 
 Auth0Widget.prototype.query = function(selector, context) {
   if ('string' === typeof selector) {
-    return $(selector, context || this._container);
+    return $(selector, context || this.$container);
   }
-  return $('#a0-widget', selector || this._container);
+  return $('#a0-widget', selector || this.$container);
 };
 
 /**
@@ -139,37 +188,53 @@ Auth0Widget.prototype.query = function(selector, context) {
  */
 
 Auth0Widget.prototype.render = function(tmpl, locals) {
-  var _locals = _.extend({}, this._locals, locals);
+  var _locals = _.extend({}, this.options, locals);
   return tmpl(_locals);
 }
 
 /**
- * Get client configuration.
- * XXX: Why not use jsonp? that woudld allow the
- * global namespace definition to be optional...
+ * Render widget container to DOM
+ * XXX: consider renaming!
  *
+ * @param {Object} options
  * @return {Auth0Widget}
  * @private
  */
 
-Auth0Widget.prototype._getApp = function () {
-  var self = this;
-  global.window.Auth0 = global.window.Auth0 || {};
-  global.window.Auth0.setClient = function (client) {
-    self._client = client;
-    self.emit('client initialized', client);
-  };
+Auth0Widget.prototype.insert = function() {
+  if (this.$container) return this;
+  var options = this.options;
 
-  var script = document.createElement('script');
-  script.src = this._options.assetsUrl +
-               'client/' + this._options.clientID + '.js' +
-               '?t' + (+new Date); //Date.now() doesnt work on ie.
+  var cid = options.container;
 
-  var firstScript = document.getElementsByTagName('script')[0];
-  firstScript.parentNode.insertBefore(script, firstScript);
+  // widget container
+  if (cid) {
+    options.theme = 'static';
+    options.standalone = true;
+    options.top = true;
+
+    this.$container = document.getElementById(cid);
+    if (!this.$container) throw new Error('Not found element with \'id\' ' + cid);
+
+    this.$container.innerHTML = this._getEmbededTemplate();
+
+  } else {
+    this.$container = document.createElement('div');
+    bonzo(this.$container).addClass('a0-widget-container');
+
+    var locals = {
+      options: options,
+      alt_spinner: !has_animations()
+        ? (this.$options.cdn + 'img/ajax-loader.gif')
+        : null
+    };
+
+    this.$container.innerHTML = this.render(mainTmpl, locals);
+    document.body.appendChild(this.$container);
+  }
 
   return this;
-};
+}
 
 /**
  * Show the widget resolving `options`
@@ -259,20 +324,24 @@ Auth0Widget.prototype.showReset = function(options, callback) {
 
 Auth0Widget.prototype.hide = function (callback) {
   var self = this;
-  this.query('div.a0-overlay').removeClass('a0-active');
 
-  this.query().css('display', 'none');
+  // XXX: unnecesary code since widget gets
+  // removed from DOM every time it's hidden
+
+  // this.query('div.a0-overlay').removeClass('a0-active');
+  // this.query().css('display', 'none');
+
   bonzo(document.body).removeClass('a0-widget-open');
 
-  if (this._container && this.displayOptions.container) {
+  if (this.$container && this.options.container) {
     // remove `#a0-widget`
     this.query().remove();
-  } else if(this._container) {
+  } else if(this.$container) {
     // remove `.a0-widget-container`
     this.query().parent('.a0-widget-container').remove();
   }
 
-  this._container = null;
+  this.$container = null;
 
   if ('function' === typeof callback) callback();
   this.emit('hidden');
@@ -289,7 +358,7 @@ Auth0Widget.prototype.hide = function (callback) {
  */
 
 Auth0Widget.prototype.logout = function (query) {
-  this._auth0.logout(query);
+  this.$auth0.logout(query);
   return this;
 };
 
@@ -305,30 +374,31 @@ Auth0Widget.prototype.logout = function (query) {
  */
 
 Auth0Widget.prototype.display = function(options, callback) {
-
-  this.displayOptions = _.extend({ popupCallback: callback }, this._options, options);
-
-  // here we tweak general display options
-  // like allowing SSO and stuff
-  var params = [ 'state', 'access_token', 'scope', 'protocol', 'device','request_id', 'connection_scopes', 'nonce' ];
-  var extra = utils.extract(this.displayOptions, params);
-
-  this.displayOptions.extraParameters = _.extend({}, extra, this.displayOptions.extraParameters);
-
-  // this will evaluate options and render `Auth0Widget`'s container
   var self = this;
 
-  this.initialize(oninitialized);
+  // pre-format options
+  var opts = _.extend({ popupCallback: callback }, options);
 
+  // Instantiate OptionsManager as `this.options`
+  this.options = new OptionsManager(this, options);
+
+  // Start by render widget's container
+  this.insert();
+
+  // Initialize widget's view
+  this.initialize(opts, oninitialized);
+
+  // and right after that render mode
   function oninitialized() {
+
     if ('signin' === options.mode) {
       // if user in AD ip range
-      if (self._ssoData && self._ssoData.connection) {
+      if (self.$ssoData && self.$ssoData.connection) {
         return self._kerberosPanel(options, callback);
       }
 
       // if user logged in show logged in experience
-      if (self._ssoData && self._ssoData.sso && !!self.displayOptions.enableReturnUserExperience) {
+      if (self.$ssoData && self.$ssoData.sso && !!self.options.enableReturnUserExperience) {
         return self._loggedinPanel(options, callback);
       }
 
@@ -359,21 +429,13 @@ Auth0Widget.prototype.display = function(options, callback) {
  * @private
  */
 
-Auth0Widget.prototype.initialize = function(done) {
+Auth0Widget.prototype.initialize = function(options, done) {
   var self = this;
 
-  this.renderContainer();
-
-  if (!placeholderSupported) {
-    this.query('.a0-overlay').addClass('a0-no-placeholder-support');
-  }
-
-  if (!this.displayOptions.container) {
-    bonzo(document.body).addClass('a0-widget-open');
-  }
-
-  // wait for setClient()
-  if (!self._client) {
+  // Monkey patch to wait for Auth0.setClient()
+  // to be sure we have client's configuration
+  // before continuing
+  if (_.isEmpty(this.$client)) {
     var args  = arguments;
     var setClient = global.window.Auth0.setClient;
 
@@ -385,107 +447,75 @@ Auth0Widget.prototype.initialize = function(done) {
     return;
   }
 
+  var options = this.options;
+  var i18n = options.i18n;
+
+  if (!placeholderSupported) {
+    this.query('.a0-overlay')
+      .addClass('a0-no-placeholder-support');
+  }
+
   // buttons actions
-  this.query('.a0-onestep a.a0-close').a0_on('click', function (e) {
-    stop(e);
-    self.hide();
-  });
+  this.query('.a0-onestep a.a0-close').a0_on('click', bind(this.oncloseclick, this));
 
   // close popup with ESC key
-  if (!self.displayOptions.standalone) {
-    this.query('').a0_on('keyup', function (e) {
-      if ((e.which == 27 || e.keycode == 27)) self.hide();
-    });
+  if (!options.standalone) {
+    this.query('').a0_on('keyup', bind(this.onescpressed, this));
   };
 
-  if (self._client.subscription && !~['free', 'dev'].indexOf(self._client.subscription)) {
+  if (options._isFreeSubscription()) {
     // hide footer for non free/dev subscriptions
     this.query('.a0-footer').toggleClass('a0-hide', true);
     this.query('.a0-free-subscription').removeClass('a0-free-subscription');
   }
 
-  // labels text
-  var options = this.displayOptions =  _.extend({}, this.displayOptions, this.displayOptions.resources);
-  options['showEmail'] = typeof options['showEmail'] !== 'undefined' ? options['showEmail'] : true;
-  options['showPassword'] = typeof options['showPassword'] !== 'undefined' ? options['showPassword'] : true;
-  options['enableReturnUserExperience'] = typeof options['enableReturnUserExperience'] !== 'undefined' ? options['enableReturnUserExperience'] : true;
-  options['enableADRealmDiscovery'] = typeof options['enableADRealmDiscovery'] !== 'undefined' ? options['enableADRealmDiscovery'] : true;
-
   // activate panel
   // XXX: (?) this I don't get... why remove and add?
   this.query('div.a0-panel').removeClass('a0-active');
   this.query('div.a0-overlay').addClass('a0-active');
-  this.query('div.a0-panel.a0-onestep').addClass('a0-active');
+  this.query('.a0-panel.a0-onestep').addClass('a0-active');
 
-  if (self.displayOptions.container) {
-    this.query('div.a0-active').removeClass('a0-overlay');
+  if (!options.container) {
+    bonzo(document.body).addClass('a0-widget-open');
+  } else {
+    this.query('.a0-active').removeClass('a0-overlay');
   }
 
-  this.query('.a0-popup h1').html(this._dict.t('signin:title'));
+  this.query('.a0-popup h1').html(i18n.t('signin:title'));
   this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
 
-  this.query('div.a0-panel.a0-onestep h1').html(this.displayOptions['title']);
+  this.query('.a0-panel.a0-onestep h1').html(options.title);
 
   // after pre-setting classes and dom handlers
   // emit as shown
   this.emit('shown');
 
-  // then, continue setting up the mode
-  if (self.displayOptions.connections) {
-    self._client.strategies = _.chain(self._client.strategies)
-      .map(function (s) {
-        s.connections = _.filter(s.connections, function (c) {
-          return _.contains(self.displayOptions.connections, c.name);
-        });
-        return s;
-      })
-      .filter(function (s) {
-        return s.connections.length > 0;
-      })
-      .value();
-  }
-
-
-  // merge strategies info
-  for (var s = 0; s < self._client.strategies.length; s++) {
-    var strategy_name = self._client.strategies[s].name;
-    self._client.strategies[s] = _.extend({}, self._client.strategies[s], self._strategies[strategy_name]);
-  }
-
-  self._auth0Strategies = _.chain(self._client.strategies)
-    .filter(function (s) { return s.userAndPass && s.connections.length > 0; })
-    .value();
-
-  var auth0Conn = this._getAuth0Connection() || {};
-  if (this.displayOptions.mode === 'signup' && !auth0Conn.showSignup) this.displayOptions.mode = 'signin';
-  if (this.displayOptions.mode === 'reset' && !auth0Conn.showForgot) this.displayOptions.mode = 'signin';
-
   // show loading
-  this._loadingPanel(self.displayOptions);
-
-  var is_any_ad = _.some(self._client.strategies, function (s) {
-    return (s.name === 'ad' || s.name === 'auth0-adldap') && s.connections.length > 0;
-  });
+  this._loadingPanel(options);
 
   function finish(err, ssoData) {
     // XXX: maybe we should parse the errors here.
     // Just a thought...
-    self._ssoData = ssoData;
+    this.$ssoData = ssoData;
     done();
     self.emit('ready');
   }
 
   // do not get SSO data on signup or reset modes
-  if (~['reset', 'signup'].indexOf(this.displayOptions.mode)) {
+  var notSigninMode = ~['reset', 'signup'].indexOf(options.mode);
+  if (notSigninMode) {
     return finish(null, {}), this;
   };
 
-  if (false === this.displayOptions.enableReturnUserExperience && (!is_any_ad || this.displayOptions.enableADRealmDiscovery === false)) {
+  var disabledReturnUserExperience = false === options.enableReturnUserExperience
+    && (!options._isThereAnyADConnection() || false === options.enableADRealmDiscovery)
+
+  if (disabledReturnUserExperience) {
     return finish(null, {}), this;
   };
 
   // get SSO data and then render
-  self._auth0.getSSOData(is_any_ad, finish);
+  this.$auth0.getSSOData(options._isThereAnyADConnection(), finish);
 
   return this;
 }
@@ -517,7 +547,7 @@ Auth0Widget.prototype._signinPanel = function (options) {
   //                 // widget container from DOM
   // });
 
-  this._setTitle(this._dict.t('signin:title'));
+  this._setTitle(this.options.i18n.t('signin:title'));
 
   this.setPanel(panel);
 
@@ -538,7 +568,7 @@ Auth0Widget.prototype._signupPanel = function (options) {
   var self = this;
   var panel = SignupPanel(this, { options: options || {} });
 
-  this._setTitle(this._dict.t('signup:title'));
+  this._setTitle(this.options.i18n.t('signup:title'));
 
   this.setPanel(panel);
 
@@ -558,7 +588,7 @@ Auth0Widget.prototype._resetPanel = function (options) {
   var self = this;
   var panel = ResetPanel(this, { options: options || {} });
 
-  this._setTitle(this._dict.t('reset:title'));
+  this._setTitle(this.options.i18n.t('reset:title'));
 
   this.setPanel(panel);
 
@@ -579,9 +609,9 @@ Auth0Widget.prototype._loadingPanel = function (options) {
   var panel = LoadingPanel(this, { options: options || {} });
 
   if (options.title) {
-    this._setTitle(this._dict.t(options.title + ':title'));
+    this._setTitle(this.options.i18n.t(options.title + ':title'));
   } else {
-    this._setTitle(this._dict.t((options.mode || 'signin') + ':title'));
+    this._setTitle(this.options.i18n.t((options.mode || 'signin') + ':title'));
   }
 
   this.setPanel(panel);
@@ -607,7 +637,7 @@ Auth0Widget.prototype._loggedinPanel = function (options) {
   var self = this;
   var panel = LoggedinPanel(this, { options: options || {} });
 
-  this._setTitle(this._dict.t('signin:title'));
+  this._setTitle(this.options.i18n.t('signin:title'));
 
   this.setPanel(panel);
 
@@ -627,7 +657,7 @@ Auth0Widget.prototype._kerberosPanel = function (options) {
   var self = this;
   var panel = KerberosPanel(this, { options: options || {} });
 
-  this._setTitle(this._dict.t('signin:title'));
+  this._setTitle(this.options.i18n.t('signin:title'));
 
   this.setPanel(panel);
 
@@ -655,58 +685,17 @@ Auth0Widget.prototype.setPanel = function(panel, name) {
   this.emit('%s ready'.replace('%s', pname));
 }
 
-/**
- * Render widget container to DOM
- * XXX: consider renaming!
- *
- * @return {Auth0Widget}
- * @private
- */
-
-Auth0Widget.prototype.renderContainer = function() {
-  if (this._container) return this;
-
-  var cid = this.displayOptions.container;
-
-  // widget container
-  if (cid) {
-    this.displayOptions.theme = 'static';
-    this.displayOptions.standalone = true;
-    this.displayOptions.top = true;
-
-    this._container = document.getElementById(cid);
-    if (!this._container) throw new Error('Not found element with \'id\' ' + cid);
-
-    this._container.innerHTML = this._getEmbededTemplate();
-
-  } else {
-    this._container = document.createElement('div');
-    bonzo(this._container).addClass('a0-widget-container');
-
-    var locals = {
-      options: this.displayOptions,
-      alt_spinner: !has_animations()
-        ? (this.displayOptions.cdn + 'img/ajax-loader.gif')
-        : null
-    };
-
-    this._container.innerHTML = this.render(mainTmpl, locals);
-    document.body.appendChild(this._container);
-  }
-
-  return this;
-}
 
 /**
- * Resolve whether instance `_options.domain` is an
+ * Resolve whether instance `$options.domain` is an
  * Auth0's domain or not
  *
  * @return {Boolean}
  * @private
  */
 
-Auth0Widget.prototype._isAuth0Domain = function () {
-  var domainUrl = utils.parseUrl('https://' + this._options.domain);
+Auth0Widget.prototype.isAuth0Domain = function () {
+  var domainUrl = utils.parseUrl('https://' + this.$options.domain);
   return utils.endsWith(domainUrl.hostname, '.auth0.com');
 };
 
@@ -720,23 +709,6 @@ Auth0Widget.prototype._isAuth0Domain = function () {
 
 Auth0Widget.prototype._ignoreEmailValidations = function (input) {
   return input.attr('type') !== 'email';
-};
-
-/**
- * Set custom validity to `input` with `message`
- * XXX: We should disable this since it's not x-browser
- * and support our own massage tip component
- *
- * @param {NodeElement} input
- * @param {String} message
- * @private
- */
-Auth0Widget.prototype._setCustomValidity = function (input, message) {
-  if (!input) return;
-  if (input.setCustomValidity) {
-    input.setCustomValidity(message);
-  }
-  // TODO: support setCustomValidity in IE9
 };
 
 /**
@@ -754,11 +726,11 @@ Auth0Widget.prototype._showError = function (message) {
     this.query('.a0-error').html('').addClass('a0-hide');
     this.query('.a0-errors').removeClass('a0-errors');
     // reset animations
-    return animation_shake_reset(this._container);
+    return animation_shake_reset(this.$container);
   }
 
   // else, show and render error message
-  setTimeout(animation_shake, 0, this._container);
+  setTimeout(animation_shake, 0, this.$container);
 
   this.query('.a0-success').addClass('a0-hide');
   this.query('.a0-error').html(message).removeClass('a0-hide');
@@ -800,11 +772,11 @@ Auth0Widget.prototype._focusError = function(input, message) {
     this.query('.a0-error-input').removeClass('a0-error-input');
     this.query('.a0-error-message').remove();
     // reset animations
-    return animation_shake_reset(this._container);;
+    return animation_shake_reset(this.$container);;
   }
 
   // animation
-  setTimeout(animation_shake, 0, this._container);
+  setTimeout(animation_shake, 0, this.$container);
 
   input
     .parent()
@@ -827,166 +799,6 @@ Auth0Widget.prototype._setTitle = function(title) {
 };
 
 /**
- * Resolve whether are there or not any
- * social connections within client
- * strategies
- *
- * @return {Boolean}
- * @private
- */
-
-Auth0Widget.prototype._areThereAnySocialConn = function () {
-  return !!_.findWhere(this._client.strategies, {social: true});
-};
-
-/**
- * Resolve whether are there or not any
- * enterprise or Databse connection within
- * client strategies
- *
- * @return {Boolean}
- * @private
- */
-
-Auth0Widget.prototype._areThereAnyEnterpriseOrDbConn = function() {
-  return !!_.findWhere(this._client.strategies, {social: false});
-};
-
-/**
- * Resolve whether are there or not any
- * database connection within client strategies
- *
- * @return {Boolean}
- * @private
- */
-
-Auth0Widget.prototype._areThereAnyDbConn = function() {
-  return !!_.findWhere(this._client.strategies, {userAndPass: true});
-};
-
-/**
- * Resolves wether `email`'s domain belongs to
- * an enterprise connection or not, and alters
- * `output` object in the way...
- *
- * @param {String} email
- * @param {Object} output
- * @return {Boolean}
- * @private
- */
-
-Auth0Widget.prototype._isEnterpriseConnection = function (email, output) {
-  var emailM = email_parser.exec(email.toLowerCase());
-
-  if (!emailM) return false;
-
-  var email_domain = emailM.slice(-2)[0];
-
-  var conn = _.chain(this._client.strategies)
-              .where({userAndPass: undefined})
-              .pluck('connections')
-              .flatten()
-              .findWhere({domain: email_domain})
-              .value();
-
-  if (conn && output) {
-    output.domain = conn.domain;
-  }
-
-  return !!conn;
-};
-
-/**
- * Get configured client strategy by strategy `name`
- *
- * @param {String} name
- * @return {Object}
- * @private
- */
-
-Auth0Widget.prototype._getClientStrategyByName = function (name) {
-  return _.findWhere(this._client.strategies, { name: name });
-};
-
-/**
- * Get client strategy by connection `connName`
- * XXX: Check that there may exist 2 connection with same name
- * but at different strategies... in that case this is wrong,
- * and it should also accept a strategy name as second parameter
- *
- * @param {String} connName
- * @return {Object}
- * @private
- */
-
-Auth0Widget.prototype._getClientStrategyByConnectionName = function (connName) {
-  return _.chain(this._client.strategies)
-    .filter(function (s) {
-      return _.findWhere(s.connections, { name: connName });
-    }).value()[0];
-};
-
-/**
- * Get resolved Auth0 connection to signin by `userName`
- * XXX: No idea what logic this follows...
- *
- * @param {String} userName
- * @return {Object}
- * @private
- */
-
-Auth0Widget.prototype._getAuth0Connection = function(userName) {
-  // if specified, use it, otherwise return first
-  if (this.displayOptions['userPwdConnectionName']) {
-    return _.chain(this._auth0Strategies)
-            .pluck('connections')
-            .flatten()
-            .findWhere({ name: this.displayOptions['userPwdConnectionName'] })
-            .value();
-  }
-
-  var domain = userName && ~userName.indexOf('@') ? userName.split('@')[1] : '';
-
-  if (userName && domain && this._client.strategies) {
-    //there is still a chance that the connection might be
-    //adldap and with domain
-    var conn = _.chain(this._client.strategies)
-                .pluck('connections')
-                .flatten()
-                .findWhere({domain: domain})
-                .value();
-    if (conn) {
-      return conn;
-    }
-  }
-
-  // By default, if exists, return auth0 connection (db-conn) or first
-  var defaultStrategy = _.findWhere(this._auth0Strategies, { name: 'auth0' });
-  defaultStrategy = defaultStrategy || (this._auth0Strategies.length > 0 ? this._auth0Strategies[0] : null);
-
-  return defaultStrategy && defaultStrategy.connections.length > 0 ?
-         defaultStrategy.connections[0] : null;
-};
-
-/**
- * Get Loggedin auth parameters from `strategy` and `ssoData`
- *
- * @param {String} strategy
- * @param {Object} ssoData
- * @return {Object}
- * @private
- */
-
-Auth0Widget.prototype._getLoggedInAuthParams = function (strategy, ssoData) {
-  switch (strategy) {
-    case 'google-oauth2':
-      return { login_hint: ssoData.lastUsedUsername };
-    default:
-      return {};
-  }
-};
-
-/**
  * Signin entry point method for resolving
  * username and password connections or enterprise
  *
@@ -1006,7 +818,7 @@ Auth0Widget.prototype._signin = function (panel) {
 
   var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
-  var conn_obj = _.chain(this._client.strategies)
+  var conn_obj = _.chain(this.$client.strategies)
     .where({ userAndPass: undefined })
     .pluck('connections')
     .flatten()
@@ -1015,7 +827,7 @@ Auth0Widget.prototype._signin = function (panel) {
 
   // Gets suffix
   if (!conn_obj) {
-    if (this._auth0Strategies.length > 0) {
+    if (this.options.auth0Strategies.length > 0) {
       return this._signinWithAuth0(panel);
     }
 
@@ -1023,7 +835,7 @@ Auth0Widget.prototype._signin = function (panel) {
       return this._signinSocial('google-oauth2', null, null, panel);
     }
 
-    var message = this._dict.t('signin:strategyDomainInvalid');
+    var message = this.options.i18n.t('signin:strategyDomainInvalid');
     message = message.replace('{domain}', input_email_domain);
 
     this._showError(message);
@@ -1042,20 +854,20 @@ Auth0Widget.prototype._signin = function (panel) {
   // There has to be an action!
   if (!valid) return;
 
-  if (this.displayOptions.popup && this._options.callbackOnLocationHash) {
-    return this._signinPopupNoRedirect(connection, this.displayOptions.popupCallback, panel);
+  if (this.options.popup && this.$options.callbackOnLocationHash) {
+    return this._signinPopupNoRedirect(connection, this.options.popupCallback, panel);
   }
 
-  var message = this._dict.t('signin:loadingMessage').replace('{connection}', connection);
+  var message = this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection);
   this._loadingPanel({ mode: 'signin', message: message });
 
   var loginOptions = _.extend({}, {
     connection: connection,
-    popup: this.displayOptions.popup,
-    popupOptions: this.displayOptions.popupOptions
-  }, this.displayOptions.extraParameters);
+    popup: this.options.popup,
+    popupOptions: this.options.popupOptions
+  }, this.options.extraParameters);
 
-  this._auth0.login(loginOptions);
+  this.$auth0.login(loginOptions);
 };
 
 /**
@@ -1067,11 +879,12 @@ Auth0Widget.prototype._signin = function (panel) {
 
 Auth0Widget.prototype._signinWithAuth0 = function (panel) {
   var self = this;
+  var options = this.options;
   var email_input = panel.query('input[name=email]');
   var password_input = panel.query('input[name=password]');
   var username = email_input.val();
   var password = password_input.val();
-  var connection  = this._getAuth0Connection(username);
+  var connection  = options._getAuth0Connection(username);
 
   var loginOptions = {
     connection: connection.name,
@@ -1079,33 +892,37 @@ Auth0Widget.prototype._signinWithAuth0 = function (panel) {
       ? username.replace('@' + connection.domain, '')
       : username,
     password: password,
-    popup: self.displayOptions.popup,
-    popupOptions: self.displayOptions.popupOptions
+    popup: self.options.popup,
+    popupOptions: self.options.popupOptions
   };
 
-  loginOptions = _.extend({}, loginOptions, self.displayOptions.extraParameters);
+  // We might be loosing some instance parameters here
+  // XXX: An options method to get $auth0 login options
+  // resolved from existing options combined with instance
+  // may be a good idea...
+  loginOptions = _.extend({}, loginOptions, this.options.extraParameters);
 
-  var strategy = this._getClientStrategyByConnectionName(connection.name) || {};
+  var strategy = options._getClientStrategyByConnectionName(connection.name) || {};
 
   // Clean error container
   this._showError();
   this._focusError();
 
-  if (this.displayOptions.popup) {
+  if (this.options.popup) {
     // popup without sso = no redirect (ajax, not setting cookie)
-    if (!this.displayOptions.sso) {
-      return this._signinPopupNoRedirect(connection.name, self.displayOptions.popupCallback, loginOptions, panel);
+    if (!this.options.sso) {
+      return this._signinPopupNoRedirect(connection.name, this.options.popupCallback, loginOptions, panel);
     }
 
     // popup + sso = redirect
-    return this._auth0.login(loginOptions, function (err) {
+    // XXX: This call to $auth0.signin is exact the same as the last one
+    // in this code's flow...
+    // Why call this here? I mean, Why the extra code flow?
+    // No options are tweaked in betweeen...
+    return this.$auth0.login(loginOptions, function (err) {
       if (!err) return;
 
-      // XXX: Maybe check if panel.name === 'signin'?
-      // In case called from signup-mode, I don't want to
-      // display the signup form again, but the signin instead
-
-      // display signin
+      // display `panel`
       self.setPanel(panel);
 
       // display errors
@@ -1113,9 +930,9 @@ Auth0Widget.prototype._signinWithAuth0 = function (panel) {
       self._focusError(password_input);
 
       if (err.status !== 401) {
-        self._showError(err.message || self._dict.t('signin:serverErrorText'));
+        self._showError(err.message || self.options.i18n.t('signin:serverErrorText'));
       } else {
-        self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+        self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
       }
     });
 
@@ -1123,20 +940,16 @@ Auth0Widget.prototype._signinWithAuth0 = function (panel) {
 
   // TODO: Handle sso case without popup
   var message = strategy.name !== 'auth0' // dont show loading message for dbConnections
-    ? self._dict.t('signin:loadingMessage').replace('{connection}', connection.name)
+    ? this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection.name)
     : '';
 
 
   this._loadingPanel({ mode: 'signin', message: message });
 
-  self._auth0.login(loginOptions, function (err) {
+  this.$auth0.login(loginOptions, function (err) {
     if (!err) return;
 
-    // XXX: Maybe check if panel.name === 'signin'?
-    // In case called from signup-mode, I don't want to
-    // display the signup form again, but the signin instead
-
-    // display signin
+    // display `panel`
     self.setPanel(panel);
 
     // display errors
@@ -1144,9 +957,9 @@ Auth0Widget.prototype._signinWithAuth0 = function (panel) {
     self._focusError(password_input);
 
     if (err.status !== 401) {
-      self._showError(err.message || self._dict.t('signin:serverErrorText'));
+      self._showError(err.message || self.options.i18n.t('signin:serverErrorText'));
     } else {
-      self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+      self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
     }
   });
 };
@@ -1164,12 +977,14 @@ Auth0Widget.prototype._signinWithAuth0 = function (panel) {
 Auth0Widget.prototype._signinSocial = function (e, connection, extraParams, panel) {
   var target = e.currentTarget || e.delegateTarget || e.target || e;
   var self = this;
+  var options = panel.options;
   var strategyName = typeof target === 'string' ? target : target.getAttribute('data-strategy');
-  var strategy = this._getClientStrategyByName(strategyName);
+  var strategy = options._getClientStrategyByName(strategyName);
 
   var connectionName = connection || strategy.connections[0].name;
-  // use extraParameters because it is used in all branches to set loginOptions
-  var extra = self.displayOptions.extraParameters;
+
+  // use extraParameters
+  var extra = self.options.extraParameters;
 
   if (extra.connection_scopes) {
     // if no connection_scope was set for the connection we are ok with sending undefined
@@ -1179,16 +994,16 @@ Auth0Widget.prototype._signinSocial = function (e, connection, extraParams, pane
   if (strategy) {
     // If we are in popup mode and callbackOnLocationHash was specified
     // we need to pass a callback.
-    if (self.displayOptions.popup && self._options.callbackOnLocationHash) {
-      this._signinPopupNoRedirect(connectionName, self.displayOptions.popupCallback, extraParams, panel);
+    if (self.options.popup && self.$options.callbackOnLocationHash) {
+      this._signinPopupNoRedirect(connectionName, self.options.popupCallback, extraParams, panel);
     } else {
       var loginOptions = _.extend({}, {
         connection: connectionName,
-        popup: self.displayOptions.popup,
-        popupOptions: self.displayOptions.popupOptions
-      }, self.displayOptions.extraParameters, extraParams);
+        popup: self.options.popup,
+        popupOptions: self.options.popupOptions
+      }, self.options.extraParameters, extraParams);
 
-      this._auth0.login(loginOptions);
+      this.$auth0.login(loginOptions);
     }
   }
 };
@@ -1208,16 +1023,16 @@ Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCa
   var self = this;
   var email_input = panel.query('input[name=email]');
   var password_input = panel.query('input[name=password]');
-  var displayOptions = this.displayOptions;
-  var callback = displayOptions.popupCallback;
+  var options = this.options;
+  var callback = options.popupCallback;
 
   extraParams = extraParams || {};
 
   var loginOptions = _.extend({}, {
         connection: connectionName,
-        popup: self.displayOptions.popup,
-        popupOptions: self.displayOptions.popupOptions
-      }, displayOptions.extraParameters, extraParams);
+        popup: self.options.popup,
+        popupOptions: self.options.popupOptions
+      }, options.extraParameters, extraParams);
 
   if ('function' !== typeof callback) {
     throw new Error('Popup mode needs a callback function to be executed after authentication success or failure.');
@@ -1228,10 +1043,10 @@ Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCa
   this._focusError();
 
   // set loading message
-  var message = self._dict.t('signin:popupCredentials');
+  var message = self.options.i18n.t('signin:popupCredentials');
   this._loadingPanel({ mode: 'signin', message: message });
 
-  this._auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
+  this.$auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
     var args = Array.prototype.slice.call(arguments, 0);
     if (!err) return callback.apply(self, args), self.hide();
 
@@ -1245,15 +1060,15 @@ Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCa
     // render errors
     if (err.message === 'User closed the popup window') {
       // Closed window
-      self._showError(self._dict.t('signin:userClosedPopup'));
+      self._showError(self.options.i18n.t('signin:userClosedPopup'));
 
     } else if (err.message === 'access_denied') {
       // Permissions not granted
-      self._showError(self._dict.t('signin:userConsentFailed'));
+      self._showError(self.options.i18n.t('signin:userConsentFailed'));
     } else if (err.status !== 401) {
-      self._showError(self._dict.t('signin:serverErrorText'));
+      self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else {
-      self._showError(self._dict.t('signin:wrongEmailPasswordErrorText'));
+      self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
       self._focusError(email_input);
       self._focusError(password_input);
     }
@@ -1263,14 +1078,14 @@ Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCa
 };
 
 /**
- * Get DOM embeded compiled template resolved by `displayOptions`
+ * Get DOM embeded compiled template resolved by `options`
  *
  * @return {NodeElement}
  * @public
  */
 
 Auth0Widget.prototype._getEmbededTemplate = function () {
-  var options = this.displayOptions;
+  var options = this.options;
 
   var locals = {
       options: options,
@@ -1290,7 +1105,7 @@ Auth0Widget.prototype._getEmbededTemplate = function () {
  */
 
 Auth0Widget.prototype.getClient = function () {
-  return this._auth0;
+  return this.$auth0;
 };
 
 /**
@@ -1302,7 +1117,7 @@ Auth0Widget.prototype.getClient = function () {
  */
 
 Auth0Widget.prototype.parseHash = function (hash) {
-  return this._auth0.parseHash(hash);
+  return this.$auth0.parseHash(hash);
 };
 
 /**
@@ -1315,9 +1130,32 @@ Auth0Widget.prototype.parseHash = function (hash) {
  */
 
 Auth0Widget.prototype.getProfile = function (token, callback) {
-  this._auth0.getProfile(token, callback);
+  this.$auth0.getProfile(token, callback);
   return this;
 };
+
+/**
+ * Handle `e` when .a0-close is clicked
+ *
+ * @param {Event} e
+ * @private
+ */
+
+Auth0Widget.prototype.oncloseclick = function(e) {
+  stop(e);
+  this.hide();
+}
+
+/**
+ * Handle `e` when keypressed ESC
+ *
+ * @param {Event} e
+ * @private
+ */
+
+Auth0Widget.prototype.onescpressed = function(e) {
+  if ((e.which == 27 || e.keycode == 27)) this.hide();
+}
 
 /**
  * Private helpers
@@ -1352,7 +1190,7 @@ function setfocus (el) {
 
 /**
  * Add animate css class to shake `a0-panel`
- * on errorors... withing widget's `_container`
+ * on errorors... withing widget's `$container`
  * (by `context`) element...
  *
  * @param {NodeElement} context
@@ -1367,7 +1205,7 @@ function animation_shake(context) {
 
 /**
  * Restore animate css classes stop shaking `a0-panel`
- * after errors reset... withing widget's `_container`
+ * after errors reset... withing widget's `$container`
  * (by `context`) element...
  *
  * @param {NodeElement} context
