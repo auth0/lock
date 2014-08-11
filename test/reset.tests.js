@@ -11,7 +11,7 @@ describe('reset', function () {
       domain:      'mdocs.auth0.com',
       callbackURL: 'http://localhost:3000/',
       clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-      enableReturnUserExperience: false
+      rememberLastLogin: false
     });
   });
 

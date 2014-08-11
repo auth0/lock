@@ -397,7 +397,7 @@ Auth0Widget.prototype.display = function(options, callback) {
       }
 
       // if user logged in show logged in experience
-      if (self.$ssoData && self.$ssoData.sso && !!self.options.enableReturnUserExperience) {
+      if (self.$ssoData && self.$ssoData.sso && !!self.options.rememberLastLogin) {
         return self._loggedinPanel(options, callback);
       }
 
@@ -504,7 +504,7 @@ Auth0Widget.prototype.initialize = function(done) {
     return finish(null, {}), this;
   };
 
-  var disabledReturnUserExperience = false === options.enableReturnUserExperience
+  var disabledReturnUserExperience = false === options.rememberLastLogin
     && (!options._isThereAnyADConnection() || false === options.enableADRealmDiscovery)
 
   if (disabledReturnUserExperience) {

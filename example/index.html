@@ -109,7 +109,7 @@
               clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
               callbackURL: window.location.href,
               callbackOnLocationHash: true,
-              enableReturnUserExperience: false
+              rememberLastLogin: false
             });
 
             trackEvents(widget);
@@ -333,7 +333,7 @@
                   callbackURL: window.location.href,
                   callbackOnLocationHash: true,
                   dict: l,
-                  enableReturnUserExperience: false
+                  rememberLastLogin: false
                 }))
                 .on('ready', function() {
                   var self = this;

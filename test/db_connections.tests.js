@@ -1,33 +1,36 @@
 describe('db connections', function () {
-  describe('init options', function () {
-    it('can disable signup', function (done) {
-      new Auth0Widget({
+  describe('.show() options', function () {
+    it('should disable signup', function (done) {
+      this.widget = new Auth0Widget({
         domain:      'mdocs.auth0.com',
         callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-        enableReturnUserExperience: false,
-        disableSignupAction: true
+        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
       }).once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(0);
         expect($('.a0-divider').length).to.equal(0);
         done();
-      }).show();
+      }).show({
+        disableSignupAction: true,
+        rememberLastLogin: false
+      });
     });
 
     it('should show signup', function (done) {
-      new Auth0Widget({
+      this.widget = new Auth0Widget({
         domain:      'mdocs.auth0.com',
         callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-        enableReturnUserExperience: false,
+        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
       }).once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(1);
         done();
-      }).show();
+      }).show({
+        rememberLastLogin: false
+      });
     });
 
     afterEach(function () {
-      $('#a0-widget').parents('div').remove();
+      this.widget.hide();
+      this.widget = null;
       global.window.location.hash = '';
       global.window.Auth0 = null;
     });
@@ -45,7 +48,7 @@ describe('db connections', function () {
         domain:      'mdocs.auth0.com',
         callbackURL: 'http://localhost:3000/',
         clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-        enableReturnUserExperience: false
+        rememberLastLogin: false
       });
     });
 
@@ -84,7 +87,7 @@ describe('db connections', function () {
         domain:      'mdocs.auth0.com',
         callbackURL: 'http://localhost:3000/',
         clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-        enableReturnUserExperience: false
+        rememberLastLogin: false
       });
       done();
     });
