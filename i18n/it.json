@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Attendere prego...",
+  "close": "Chiudere",
+  "signin": {
+    "title": "Accedi",
+    "action": "Accedi",
+    "all": "Visualizza tutti",
+    "strategyEmailEmpty": "L'email è vuota.",
+    "strategyEmailInvalid": "L'email non è valido.",
+    "strategyDomainInvalid": "Il dominio {domain} non è stata l'installazione.",
+    "signupText": "Registrati",
+    "forgotText": "Hai dimenticato la password?",
+    "emailPlaceholder": "Posta elettronica",
+    "usernamePlaceholder": "Nome utente",
+    "passwordPlaceholder": "Password",
+    "separatorText": "o",
+    "serverErrorText": "C'è stato un errore durante l'elaborazione il segno in.",
+    "returnUserLabel": "Ultima volta che hai eseguito utilizzando...",
+    "wrongEmailPasswordErrorText": "Email errato o password.",
+    "or": "... oppure accedi usando",
+    "loadingMessage": "Accedi con {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "Registrati",
+    "action": "Registrati",
+    "emailPlaceholder": "Posta elettronica",
+    "passwordPlaceholder": "Creare una Password",
+    "cancelAction": "Annulla",
+    "headerText": "Inserisci la tua email e la password",
+    "footerText": "",
+    "enterpriseEmailWarningText": "Questo dominio {domain} è stato configurato per il Single Sign On e non è possibile creare un account. Prova ad accedere invece.",
+    "serverErrorText": "C'è stato un errore durante l'elaborazione il segno fino."
+  },
+  "reset": {
+    "title": "Reimpostare la Password",
+    "action": "Invia",
+    "emailPlaceholder": "Posta elettronica",
+    "passwordPlaceholder": "Nuova Password",
+    "repeatPasswordPlaceholder": "Conferma nuova Password",
+    "cancelAction": "Annulla",
+    "successText": "Noi abbiamo appena inviato un'e-mail per reimpostare la password.",
+    "enterSamePasswordText": "Inserisci la stessa password.",
+    "headerText": "Inserisci il tuo indirizzo email e la password nuova. Ti invieremo un'email per confermare la modifica della password.",
+    "serverErrorText": "C'è stato un errore durante l'elaborazione il password reset."
+  }
+}

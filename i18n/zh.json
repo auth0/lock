@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "请稍候。。。",
+  "close": "关闭",
+  "signin": {
+    "title": "登录",
+    "action": "登录",
+    "all": "全部显示",
+    "strategyEmailEmpty": "电子邮件是空的。",
+    "strategyEmailInvalid": "电子邮件是无效的。",
+    "strategyDomainInvalid": "指定域 {domain} 尚未安装。",
+    "signupText": "登记",
+    "forgotText": "忘记了您的密码吗？",
+    "emailPlaceholder": "电子邮件",
+    "usernamePlaceholder": "用户名",
+    "passwordPlaceholder": "密码",
+    "separatorText": "或",
+    "serverErrorText": "处理所示的标志时出错。",
+    "returnUserLabel": "最后一次你在使用签署...",
+    "wrongEmailPasswordErrorText": "错误的电子邮件或密码。",
+    "or": "...或使用登录",
+    "loadingMessage": "签约与 {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "登记",
+    "action": "登记",
+    "emailPlaceholder": "电子邮件",
+    "passwordPlaceholder": "创建一个密码",
+    "cancelAction": "取消",
+    "headerText": "请输入您的电子邮件和密码",
+    "footerText": "",
+    "enterpriseEmailWarningText": "指定此域 {domain} 已配置为单一登录和您不能创建一个帐户。请尝试登录相反。",
+    "serverErrorText": "处理标志向上时出错。"
+  },
+  "reset": {
+    "title": "重置密码",
+    "action": "发送",
+    "emailPlaceholder": "电子邮件",
+    "passwordPlaceholder": "新密码",
+    "repeatPasswordPlaceholder": "确认新密码",
+    "cancelAction": "取消",
+    "successText": "我们刚刚已经向您发送一封电子邮件，重置您的密码。",
+    "enterSamePasswordText": "请输入相同的密码。",
+    "headerText": "请输入您的电子邮件和新的密码。我们将向您发送邮件以确认密码更改。",
+    "serverErrorText": "处理重置密码时出错。"
+  }
+}

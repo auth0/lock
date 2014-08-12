@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "お待ちください。。。",
+  "close": "閉じる",
+  "signin": {
+    "title": "サインイン",
+    "action": "サインイン",
+    "all": "すべて表示します。",
+    "strategyEmailEmpty": "電子メールが空です。",
+    "strategyEmailInvalid": "電子メールは有効です。",
+    "strategyDomainInvalid": "{ドメイン} セットアップされていません。",
+    "signupText": "サインアップ",
+    "forgotText": "パスワードをお忘れですか？",
+    "emailPlaceholder": "電子メール",
+    "usernamePlaceholder": "ユーザ名",
+    "passwordPlaceholder": "パスワード",
+    "separatorText": "または",
+    "serverErrorText": "サインインを処理中にエラーがありました。",
+    "returnUserLabel": "最後の時間を使用してをサインインして.",
+    "wrongEmailPasswordErrorText": "間違ったメール アドレスまたはパスワードです。",
+    "or": "... またはを使用してサインイン",
+    "loadingMessage": "でサインイン {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "サインアップ",
+    "action": "サインアップ",
+    "emailPlaceholder": "電子メール",
+    "passwordPlaceholder": "パスワードを作成します。",
+    "cancelAction": "キャンセル",
+    "headerText": "あなたのメール アドレスとパスワードを入力してください。",
+    "footerText": "",
+    "enterpriseEmailWarningText": "このドメイン {} が構成されているシングル サインオン ・ アカウントを作成することはできません。代わりにサインインしてください。",
+    "serverErrorText": "符号を処理中にエラーがありました。"
+  },
+  "reset": {
+    "title": "パスワードのリセット",
+    "action": "送信",
+    "emailPlaceholder": "電子メール",
+    "passwordPlaceholder": "新しいパスワード",
+    "repeatPasswordPlaceholder": "新しいパスワードを確認します。",
+    "cancelAction": "キャンセル",
+    "successText": "我々 はちょうどあなたのパスワードをリセットするメールを送信しました。",
+    "enterSamePasswordText": "同じパスワードを入力してください。",
+    "headerText": "あなたのメール アドレスと新しいパスワードを入力してください。我々 は、パスワードの変更を確認するためにメールが送信されます。",
+    "serverErrorText": "パスワードのリセットを処理中にエラーがありました。"
+  }
+}

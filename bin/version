@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var read = fs.readFileSync;
+var write = fs.writeFileSync;
+var exec = require('child_process').exec;
+
+var change = process.argv.pop();
+var pkg_file = __dirname + '/../package.json';
+
+var pkg = JSON.parse(read(pkg_file, 'utf8'));
+
+var version = pkg.version.split('.').map(function (d) {
+  return parseInt(d, 10);
+});
+
+switch (change) {
+  case 'patch':
+    version[2]++;
+    break;
+  case 'minor':
+    version[2] = 0;
+    version[1]++;
+    break;
+  case 'major':
+    version[2] = 0;
+    version[1] = 0;
+    version[0]++;
+    break;
+  default:
+    console.error('unknown option ' + change);
+    console.error('options are: patch, minor, major');
+    return process.exit(1);
+}
+
+var version_string = version.join('.');
+
+console.log('Version is now', version_string);
+
+pkg.version = version_string;
+
+write(pkg_file, JSON.stringify(pkg, null, 2));
+
+var build = exec('grunt build', function (err) {
+  if (err) {
+    return process.exit(1);
+  }
+
+  var commit = exec('git commit -am "' + version_string + '" && git tag -a v' + version_string + ' -m "' + version_string + '"', function (err) {
+    if (err) {
+      return process.exit(1);
+    }
+  });
+
+  commit.stdout.pipe(process.stdout);
+  commit.stderr.pipe(process.stderr);
+});
+
+build.stdout.pipe(process.stdout);
+build.stderr.pipe(process.stderr);

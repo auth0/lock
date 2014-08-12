@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "الرجاء الانتظار...",
+  "close": "قم بإغلاق",
+  "signin": {
+    "title": "تسجيل الدخول",
+    "action": "تسجيل الدخول",
+    "all": "إظهار الكل",
+    "strategyEmailEmpty": "رسالة البريد الإلكتروني فارغاً.",
+    "strategyEmailInvalid": "البريد الإلكتروني غير صالح.",
+    "strategyDomainInvalid": "{المجال} لم يكن الإعداد.",
+    "signupText": "التسجيل",
+    "forgotText": "هل نسيت كلمة المرور الخاصة بك؟",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "usernamePlaceholder": "اسم المستخدم",
+    "passwordPlaceholder": "كلمة المرور",
+    "separatorText": "أو",
+    "serverErrorText": "حدث خطأ أثناء معالجة تسجيل الدخول.",
+    "returnUserLabel": "آخر مرة قمت بتسجيل الدخول باستخدام...",
+    "wrongEmailPasswordErrorText": "البريد الإلكتروني غير صحيح أو كلمة المرور.",
+    "or": ".. أو قم بتسجيل الدخول باستخدام",
+    "loadingMessage": "التوقيع في مع {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "التسجيل",
+    "action": "التسجيل",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "إنشاء كلمة مرور",
+    "cancelAction": "إلغاء الأمر",
+    "headerText": "الرجاء إدخال البريد الإلكتروني وكلمة المرور الخاصة بك",
+    "footerText": "",
+    "enterpriseEmailWarningText": "هذا المجال {المجال} قد تم تكوينه لتسجيل الدخول، ولا يمكن أن تقوم بإنشاء حساب. حاول تسجيل الدخول بدلاً من ذلك.",
+    "serverErrorText": "حدث خطأ أثناء معالجة العلامة التسجيل."
+  },
+  "reset": {
+    "title": "إعادة تعيين كلمة المرور",
+    "action": "إرسال",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "كلمة المرور الجديدة",
+    "repeatPasswordPlaceholder": "تأكيد كلمة المرور الجديدة",
+    "cancelAction": "إلغاء الأمر",
+    "successText": "لقد أرسلنا فقط لك رسالة بريد إلكتروني إعادة تعيين كلمة المرور الخاصة بك.",
+    "enterSamePasswordText": "الرجاء إدخال كلمة المرور نفسها.",
+    "headerText": "الرجاء إدخال البريد الإلكتروني الخاص بك وكلمة المرور الجديدة. وسوف نرسل لك رسالة بالبريد إلكتروني لتأكيد تغيير كلمة المرور.",
+    "serverErrorText": "حدث خطأ أثناء معالجة إعادة تعيين كلمة المرور."
+  }
+}

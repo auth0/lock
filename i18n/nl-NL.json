@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Een ogenblik geduld...",
+  "close": "Sluiten",
+  "signin": {
+    "title": "Aanmelden",
+    "action": "Aanmelden",
+    "all": "Toon alles",
+    "strategyEmailEmpty": "Het veld e-mail is leeg.",
+    "strategyEmailInvalid": "Het veld e-mail is ongeldig.",
+    "strategyDomainInvalid": "Het domein {domain} is niet geactiveerd.",
+    "signupText": "Aanmelden",
+    "forgotText": "Wachtwoord vergeten?",
+    "emailPlaceholder": "E-mail",
+    "usernamePlaceholder": "Usernamea",
+    "passwordPlaceholder": "Wachtwoord",
+    "separatorText": "of",
+    "serverErrorText": "Er is een fout opgetreden tijdens het inloggen.",
+    "returnUserLabel": "De laatste keer logde je in met...",
+    "wrongEmailPasswordErrorText": "Verkeerd e-mail of wachtwoord.",
+    "or": "... of meld u aan met",
+    "loadingMessage": "Aanmelden met {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "Aanmelden",
+    "action": "Aanmelden",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Een wachtwoord maken",
+    "cancelAction": "Annuleren",
+    "headerText": "Voer je email en wachtwoord in",
+    "footerText": "",
+    "enterpriseEmailWarningText": "Dit domein {domain} is geconfigureerd voor eenmalige aanmelding en u kunt geen account aanmaken. Probeer u aan te melden in plaats daarvan.",
+    "serverErrorText": "Er is een fout opgetreden bij de verwerking van uw aanmelding."
+  },
+  "reset": {
+    "title": "Wachtwoord resetten",
+    "action": "Verzenden",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Nieuw wachtwoord",
+    "repeatPasswordPlaceholder": "Bevestig het nieuwe wachtwoord",
+    "cancelAction": "Annuleren",
+    "successText": "We hebben u zojuist een e-mail gestuurd om uw wachtwoord te resetten.",
+    "enterSamePasswordText": "Voer hetzelfde wachtwoord in.",
+    "headerText": "Voer uw e-mailadres en het nieuwe wachtwoord in. Wij sturen u een e-mail ter bevestiging van de wachtwoordswijziging.",
+    "serverErrorText": "Er is een fout opgetreden bij de verwerking van het nieuwe wachtwoord."
+  }
+}

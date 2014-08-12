@@ -1,0 +1,69 @@
+{
+  "name": "auth0-lock",
+  "version": "0.1.0",
+  "description": "Auth0 Lock",
+  "main": "./index.js",
+  "keywords": [
+    "auth0",
+    "auth",
+    "openid",
+    "authentication",
+    "jwt",
+    "browser"
+  ],
+  "scripts": {
+    "test": "grunt integration"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/auth0/lock"
+  },
+  "author": "Auth0 <support@auth0.com> (http://auth0.com)",
+  "license": "MIT",
+  "dependencies": {
+    "auth0-js": "^3.1.0",
+    "bean": "~1.0.4",
+    "bonzo": "~1.3.6",
+    "sizzle": "^2.0.0",
+    "domready": "~0.2.13",
+    "has-transitions": "https://github.com/jfromaniello/has-transitions/tarball/patch-1",
+    "underscore": "~1.5.2"
+  },
+  "devDependencies": {
+    "brfs": "0.0.8",
+    "ejsify": "0.1.0",
+    "css-prefix": "0.0.2",
+    "packageify": "^0.2.0",
+    "browserify": "4.2.1",
+    "browserstack-cli": "0.3.1",
+    "expect.js": "~0.2.0",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "~0.4.0",
+    "grunt-browserify": "~2.1.0",
+    "grunt-checkrepo": "git+https://github.com/auth0/grunt-checkrepo.git",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-exec": "~0.4.2",
+    "grunt-maxcdn": "https://github.com/siacomuzzi/grunt-maxcdn/tarball/0.0.1",
+    "grunt-s3": "~0.2.0-alpha.3",
+    "mocha": "~1.13.0",
+    "mold-source-map": "^0.3.0",
+    "rimraf": "~2.2.2",
+    "testem": "^0.6.17",
+    "through": "^2.3.4",
+    "uglify-js": "~2.4.0"
+  },
+  "browserify": {
+    "transform": [
+      "ejsify",
+      "brfs",
+      "packageify"
+    ]
+  }
+}

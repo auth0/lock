@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "חכה בבקשה...",
+  "close": "סגור",
+  "signin": {
+    "title": "הירשם",
+    "action": "הירשם",
+    "all": "הצג הכל",
+    "strategyEmailEmpty": "הדוא ל הוא ריק.",
+    "strategyEmailInvalid": "הדוא ל אינו חוקי.",
+    "strategyDomainInvalid": "התחום {domain} לא היתה תוכנית ההתקנה.",
+    "signupText": "הירשם",
+    "forgotText": "שכחת הסיסמא?",
+    "emailPlaceholder": "דוא",
+    "usernamePlaceholder": "שם משתמש",
+    "passwordPlaceholder": "סיסמה",
+    "separatorText": "או",
+    "serverErrorText": "אירעה שגיאה בעיבוד הכניסה.",
+    "returnUserLabel": "בפעם האחרונה נכנסת באמצעות...",
+    "wrongEmailPasswordErrorText": "הדוא\"ל טועה או סיסמה.",
+    "or": ". או כניסה באמצעות",
+    "loadingMessage": "כניסה עם {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "הירשם",
+    "action": "הירשם",
+    "emailPlaceholder": "דוא",
+    "passwordPlaceholder": "צור סיסמה",
+    "cancelAction": "ביטול",
+    "headerText": "הזינו את כתובת המייל והסיסמא",
+    "footerText": "",
+    "enterpriseEmailWarningText": "תחום זה, {domain} נקבעה עבור כניסה יחידה, אין באפשרותך ליצור חשבון. נסה להיכנס במקום.",
+    "serverErrorText": "אירעה שגיאה בעיבוד את השלט למעלה."
+  },
+  "reset": {
+    "title": "איפוס סיסמה",
+    "action": "שלח",
+    "emailPlaceholder": "דוא",
+    "passwordPlaceholder": "סיסמה חדשה",
+    "repeatPasswordPlaceholder": "אשר סיסמה חדשה",
+    "cancelAction": "ביטול",
+    "successText": "אנחנו פשוט לשלוח לך דואר אלקטרוני כדי לאפס את הסיסמה שלך.",
+    "enterSamePasswordText": "הזינו בבקשה את אותה סיסמה.",
+    "headerText": "אנא הזן את הדואר האלקטרוני שלך ואת הסיסמה החדשה. אנו נשלח לך הודעת דואר אלקטרוני כדי לאשר שינוי הסיסמה.",
+    "serverErrorText": "אירעה שגיאה בעיבוד איפוס הסיסמה."
+  }
+}

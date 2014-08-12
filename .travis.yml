@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- 0.8
+env:
+  global:
+  - secure: eiM5A7iFp5yFvr1MS48yeVKmKbqiOe9NqCPCSaIlE0jxXt5HCPGL+vaxQENoqMWtNnsXE4zHe+rjL1NgV/aTSRxFyqzZxKwIzuhd1T/ZZgjBnl/P1Z4Gzbz38uDKUs2c0cjkeL09OFKYsxn2DWms5JdKavrUY7ofo2gTfJiV5oY=
+  - secure: luWU912ChnfjbQBz/xkZ4IDyP/dJLBWtcwgLHfIRhG/EfNQlHAcE9J9Uj9mxomzu4PsRFeFVea51S2P9adO9c7EUWn2hUq+4O58FFiAOVRQAN1pXfrxqHK6SuFpZs/bDeb8QKBdB/3OL37/uWzT9chdZ6qQIYhMiGwe2Ad1LqI8=
+  - secure: C9vPiGKUxs06+UX3JKrZ6C6u/6WnbfYI8sp1mVE8xcUa5daYrha0ihf0NuMXd1hckbsSmrNZvUHvusJRpVrOr+HitUmmQL34VFKwNcxH3B6937wIWGv2LcVlib9tIpSKeA1TZUC6uMhitrbbu4RYaAB9snaPjdmwtanvaFKA35Q=
+notifications:
+  hipchat:
+    rooms:
+    - a0f91742edafa39a4b75894d00d1f6@launch area
+    template:
+    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}
+      (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
+    format: html

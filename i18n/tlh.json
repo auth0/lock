@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "DubelmoHchugh loS.",
+  "close": "SoQmoH",
+  "signin": {
+    "title": "qI'",
+    "action": "qI'",
+    "all": "cha' Hoch",
+    "strategyEmailEmpty": "chIm email.",
+    "strategyEmailInvalid": "email invalid.",
+    "strategyDomainInvalid": "{domain} yer wej setup.",
+    "signupText": "qI'",
+    "forgotText": "mu'wIj lIj?",
+    "emailPlaceholder": "email",
+    "usernamePlaceholder": "tus neeg siv lub npe",
+    "passwordPlaceholder": "mu'wIj",
+    "separatorText": "ghap",
+    "serverErrorText": "Qagh qaStaHvIS qI' mIw tu'lu'.",
+    "returnUserLabel": "Qav poH qI' SoH qaStaHvIS lo'.",
+    "wrongEmailPasswordErrorText": "QIH email pagh mu'wIj.",
+    "or": "... pagh qI' qaStaHvIS yIlo'",
+    "loadingMessage": "Ukubhalisela In nge {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "qI'",
+    "action": "qI'",
+    "emailPlaceholder": "email",
+    "passwordPlaceholder": "mu'wIj chenmoH",
+    "cancelAction": "qIl",
+    "headerText": "nuqneH email mu'wIj je",
+    "footerText": "",
+    "enterpriseEmailWarningText": "configured {domain} yer Vas qI' 'ej account pagh chenmoH SoH. nID, qI' instead.",
+    "serverErrorText": "Qagh qI' mIw Ha' tu'lu'."
+  },
+  "reset": {
+    "title": "mu'wIj reset",
+    "action": "ngeH",
+    "emailPlaceholder": "email",
+    "passwordPlaceholder": "mu'wIj chu'",
+    "repeatPasswordPlaceholder": "mu'wIj chu' confirm",
+    "cancelAction": "qIl",
+    "successText": "jIboQqang reset mu'wIj neH ngeH SoH maH.",
+    "enterSamePasswordText": "DubelmoHchugh mu'wIj rap 'el.",
+    "headerText": "nuqneH email chu' mu'wIj je. jIboQqang mu'wIj choH confirm ngeH SoH maH.",
+    "serverErrorText": "Qagh reset mu'wIj mIw tu'lu'."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "loadingTitle": "Veuillez patienter...",
+  "close": "Fermer",
+  "windowsAuthTitle": "Connexion Windows",
+  "signin": {
+    "title": "Connexion",
+    "action": "Connexion",
+    "all": "Afficher tout",
+    "strategyEmailEmpty": "Le courriel est vide.",
+    "strategyEmailInvalid": "Le courriel n'est pas valide.",
+    "strategyDomainInvalid": "Le domaine {domain} n'a pas été configuré.",
+    "signupText": "Inscrivez-vous",
+    "forgotText": "Vous avez oublié votre mot de passe ?",
+    "emailPlaceholder": "Courriel",
+    "usernamePlaceholder": "Nom d'utilisateur",
+    "passwordPlaceholder": "Mot de passe",
+    "separatorText": "ou",
+    "serverErrorText": "Erreur lors de la connexion.",
+    "returnUserLabel": "Lors de votre dernière connexion vous avez utilisé...",
+    "domainUserLabel": "Vous êtes connecté depuis le réseau de votre entreprise...",
+    "wrongEmailPasswordErrorText": "Courriel ou mot de passe incorrect.",
+    "or": "... ou connectez-vous à l'aide de",
+    "loadingMessage": "Connexion à l'aide de {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "Inscrivez-vous",
+    "action": "Inscrivez-vous",
+    "emailPlaceholder": "Courriel",
+    "passwordPlaceholder": "Créer un mot de passe",
+    "cancelAction": "Annuler",
+    "headerText": "Veuillez entrer votre courriel et mot de passe",
+    "footerText": "",
+    "enterpriseEmailWarningText": "Ce domaine {domain} a été configuré pour le Single Sign On et vous ne pouvez pas créer de compte. Essayez de vous connecter à un compte existant.",
+    "serverErrorText": "Erreur lors de l'inscription.",
+    "userExistsErrorText": "Cet utilisateur existe déjà."
+  },
+  "reset": {
+    "title": "Réinitialiser votre mot de passe",
+    "action": "Envoyer",
+    "emailPlaceholder": "Courriel",
+    "passwordPlaceholder": "Nouveau mot de passe",
+    "repeatPasswordPlaceholder": "Confirmer le nouveau mot de passe",
+    "cancelAction": "Annuler",
+    "successText": "Vous allez recevoir sous quelques minutes un courriel vous indiquant comment réinitialiser votre mot de passe.",
+    "enterSamePasswordText": "S'il vous plaît entrez le même mot de passe.",
+    "headerText": "Veuillez saisir votre courriel et mot de passe. Nous vous enverrons un courriel pour confirmer le changement de mot de passe.",
+    "serverErrorText": "Erreur de traitement los de réinitialisation du mot de passe.",
+    "userDoesNotExistErrorText": "Utilisateur introuvable."
+  }
+}

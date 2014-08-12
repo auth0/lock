@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Bitte warten...",
+  "close": "Schließen",
+  "signin": {
+    "title": "Anmelden",
+    "action": "Anmelden",
+    "all": "Alle anzeigen",
+    "strategyEmailEmpty": "Die e-Mail ist leer.",
+    "strategyEmailInvalid": "Die e-Mail ist ungültig.",
+    "strategyDomainInvalid": "{domain} wurde nicht eingerichtet.",
+    "signupText": "Anmelden",
+    "forgotText": "Passwort vergessen?",
+    "emailPlaceholder": "E-Mail",
+    "usernamePlaceholder": "Benutzername",
+    "passwordPlaceholder": "Passwort",
+    "separatorText": "oder",
+    "serverErrorText": "Gab es Fehler beim Verarbeiten der anmelden.",
+    "returnUserLabel": "Letzte Mal unterschrieben Sie bei der Verwendung...",
+    "wrongEmailPasswordErrorText": "Falsche e-Mail oder Passwort.",
+    "or": "... oder melden Sie sich mit",
+    "loadingMessage": "Bei der Anmeldung mit {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "Anmelden",
+    "action": "Anmelden",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Erstellen Sie ein Kennwort",
+    "cancelAction": "Abbrechen",
+    "headerText": "Bitte geben Sie Ihre e-Mail und Passwort",
+    "footerText": "Durch Klicken auf \"Anmelden\", stimmen Sie unseren Nutzungsbedingungen oder Datenschutzrichtlinien.",
+    "enterpriseEmailWarningText": "Diese Domäne {domain} für Single Sign On konfiguriert wurde und Sie können ein Konto erstellen. Versuchen Sie stattdessen sich anzumelden.",
+    "serverErrorText": "Gab es Fehler beim Verarbeiten der Zeichens auf."
+  },
+  "reset": {
+    "title": "Passwort zurücksetzen",
+    "action": "Senden",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Neues Passwort",
+    "repeatPasswordPlaceholder": "Neues Kennwort bestätigen",
+    "cancelAction": "Abbrechen",
+    "successText": "Wir haben Sie nur eine e-Mail zum Zurücksetzen Ihres Passworts geschickt.",
+    "enterSamePasswordText": "Bitte geben Sie das gleiche Kennwort.",
+    "headerText": "Bitte geben Sie Ihre e-Mail und das neue Kennwort. Wir senden Ihnen eine e-Mail zur Bestätigung der Passwortänderung.",
+    "serverErrorText": "Gab es Fehler beim Verarbeiten des Kennworts zurücksetzen."
+  }
+}

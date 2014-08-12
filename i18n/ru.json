@@ -1,0 +1,57 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "//": "Some improvements by human :)",
+  "loadingTitle":                   "Подождите...",
+  "close":                          "Закрыть",
+  "windowsAuthTitle":               "Windows аутентификация",
+  "invalid":                        "Неверный",
+  "mustMatch":                      "Должны совпадать",
+  "loginSocialButton":              "Вход через {connection:title}",
+  "signupSocialButton":             "Регистрация через {connection:title}",
+  "signin": {
+    "title":                        "Войти",
+    "action":                       "Войти",
+    "all":                          "Показать все",
+    "strategyEmailEmpty":           "Email пустой.",
+    "strategyEmailInvalid":         "Email недействителен.",
+    "strategyDomainInvalid":        "Домен {domain} не был установлен.",
+    "signupText":                   "Регистрация",
+    "forgotText":                   "Забыли ваш пароль?",
+    "emailPlaceholder":             "Email",
+    "usernamePlaceholder":          "Имя пользователя",
+    "passwordPlaceholder":          "Пароль",
+    "separatorText":                "или",
+    "serverErrorText":              "Произошла ошибка при обработке входа.",
+    "returnUserLabel":              "Последний раз вы заходили через...",
+    "wrongEmailPasswordErrorText":  "Неправильный email или пароль.",
+    "or":                           "... или войдите с помощью",
+    "loadingMessage":               "Вход через {connection}..."
+  },
+  "signup": {
+    "description":                  "",
+    "title":                        "Регистрация",
+    "action":                       "Регистрация",
+    "emailPlaceholder":             "Email",
+    "passwordPlaceholder":          "Создайте пароль",
+    "cancelAction":                 "Отмена",
+    "headerText":                   "Пожалуйста, введите свой email и пароль",
+    "footerText":                    "",
+    "enterpriseEmailWarningText":   "Этот домен {domain} был настроен для единого входа и нельзя создать учетную запись, попробуйте войти.",
+    "serverErrorText":              "Произошла ошибка при обработке регистрации.",
+    "userExistsErrorText":          "Пользователь существует."
+  },
+  "reset": {
+    "title":                        "Сброс пароля",
+    "action":                       "Отправить",
+    "emailPlaceholder":             "Email",
+    "passwordPlaceholder":          "Новый пароль",
+    "repeatPasswordPlaceholder":    "Подтвердите новый пароль",
+    "cancelAction":                 "Отмена",
+    "successText":                  "Мы отправили вам email для сброса пароля.",
+    "enterSamePasswordText":        "Пожалуйста, введите тот же пароль.",
+    "headerText":                   "Пожалуйста, введите ваш email и новый пароль. Мы вышлем email для подтверждения изменения пароля.",
+    "serverErrorText":              "Произошла ошибка при обработке сброса пароля.",
+    "userDoesNotExistErrorText":    "Пользователь не существует."
+
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "loadingTitle": "Carregando...",
+  "close": "Fechar",
+  "signin": {
+    "title": "Entrar",
+    "action": "Entrar",
+    "all": "Mostrar todos",
+    "strategyEmailEmpty": "O e-mail deve ser preenchido.",
+    "strategyEmailInvalid": "O email é inválido.",
+    "strategyDomainInvalid": "O domínio {domain} não foi informado.",
+    "signupText": "Registe-se",
+    "forgotText": "Esqueceu sua senha?",
+    "emailPlaceholder": "E-mail",
+    "usernamePlaceholder": "Nome de Usuário",
+    "passwordPlaceholder": "Senha",
+    "separatorText": "ou",
+    "serverErrorText": "Houve um erro ao efetuar o login.",
+    "returnUserLabel": "Da última vez que você fez login usando...",
+    "wrongEmailPasswordErrorText": "E-mail ou senha inválidos.",
+    "or": "... ou entre usando",
+    "loadingMessage": "Entrar com {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "Cadastre-se",
+    "action": "Cadastre-se",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Crie uma senha",
+    "cancelAction": "Cancelar",
+    "headerText": "Por favor, digite seu e-mail e senha",
+    "footerText": "",
+    "enterpriseEmailWarningText": "Este domínio {domain} foi configurado para Sign-On único e você não pode criar uma conta. Tente fazer o login em vez disso.",
+    "serverErrorText": "Houve um erro ao efetuar o login."
+  },
+  "reset": {
+    "title": "Redefinir senha",
+    "action": "Enviar",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Nova senha",
+    "repeatPasswordPlaceholder": "Confirmar nova senha",
+    "cancelAction": "Cancelar",
+    "successText": "Já enviamos um e-mail para redefinir sua senha.",
+    "enterSamePasswordText": "Por favor digite a mesma senha.",
+    "headerText": "Por favor, digite seu e-mail e a senha nova. Nós lhe enviaremos um e-mail para confirmar a alteração de senha.",
+    "serverErrorText": "Houve um erro ao redefinir a senha."
+  }
+}
