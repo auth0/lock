@@ -67,14 +67,14 @@ module.exports = Auth0Widget;
  * @constructor
  */
 
-function Auth0Widget (options) {
+function Auth0Widget (clientID, domain, options) {
   if (!(this instanceof Auth0Widget)) {
     return new Auth0Widget(options);
   }
 
   // validate required options
-  required('clientID', options);
-  required('domain', options);
+  if ('string' !== typeof clientID) throw new Error('`ClientID` required as first parameter.');
+  if ('string' !== typeof domain) throw new Error('`domain` required as second parameter.');
 
   // Instance properties and options
   this.$options = _.extend({}, options);
@@ -385,32 +385,31 @@ Auth0Widget.prototype.display = function(options, callback) {
   this.insert();
 
   // Initialize widget's view
-  this.initialize(oninitialized);
+  this.initialize(bind(oninitialized, this));
 
   // and right after that render mode
   function oninitialized() {
-
-    if ('signin' === options.mode) {
+    if ('signin' === this.options.mode) {
       // if user in AD ip range
-      if (self.$ssoData && self.$ssoData.connection) {
-        return self._kerberosPanel(options, callback);
+      if (this.$ssoData && this.$ssoData.connection) {
+        return this._kerberosPanel(this.options, callback);
       }
 
       // if user logged in show logged in experience
-      if (self.$ssoData && self.$ssoData.sso && !!self.options.rememberLastLogin) {
-        return self._loggedinPanel(options, callback);
+      if (this.$ssoData && this.$ssoData.sso && !!this.options.rememberLastLogin) {
+        return this._loggedinPanel(this.options, callback);
       }
 
       // otherwise, just show signin
-      self._signinPanel(options, callback);
+      this._signinPanel(this.options, callback);
     };
 
-    if ('signup' === options.mode) {
-      self._signupPanel(options, callback);
+    if ('signup' === this.options.mode) {
+      this._signupPanel(this.options, callback);
     };
 
-    if ('reset' === options.mode) {
-      self._resetPanel(options, callback);
+    if ('reset' === this.options.mode) {
+      this._resetPanel(this.options, callback);
     };
 
   }
