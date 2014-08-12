@@ -49,29 +49,29 @@
                 <li><a href="https://docs.auth0.com/login-widget2"><i></i><span>Documentation</span></a></li>
               </ul>
             </div>
-            <div class="sidebar-box"><strong>Demos</strong>
+            <div class="sidebar-box">
+              <strong>Basic examples</strong>
               <ul>
-                <li><a id="new-show"><i></i>New Show</a></li>
-                <li><a id="new-login"><i></i>New Login</a></li>
-                <li><a id="new-signup"><i></i>New Signup</a></li>
-                <li><a id="new-reset"><i></i>New Reset</a></li>
+                <li><a id="show-button"><i></i>Full Login</a></li>
                 <li><a id="login-button"><i></i>Login</a></li>
-                <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
+                <li><a id="signup-button"><i></i>Signup</a></li>
+                <li><a id="reset-button"><i></i>Reset password</a></li>
+                <li><a id="logout-button"><i></i>Logout</a></li>
+              </ul>
+              <hr />
+              <strong>Advanced examples</strong>
+              <ul>
                 <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
-                <li><a id="login-button-popup"><i></i>Login Popup</a></li>
-                <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
+                <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
                 <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
                 <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
                 <li><a id="login-button-only-enterprise"><i></i>Login (only enterprise)</a></li>
+                <li><a id="login-button-popup"><i></i>Login Popup</a></li>
+                <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
                 <li><a id="login-button-customicon"><i></i>Login (custom icon)</a></li>
-                <li><a id="login-button-nosignup-noforgot"><i></i>Login (no signup nor forgot)</a></li>
                 <li><a id="login-button-inside-container"><i></i>Login (inside a DIV)</a></li>
-                <li><a id="login-button-inside-container-chrome"><i></i>Login (inside a DIV - chrome)</a></li>
                 <li><a id="login-button-all"><i></i>Login (all languages)</a></li>
-                <li><a id="logout-button"><i></i>Logout</a></li>
-                <li><a id="signup-button"><i></i>Show SignUp</a></li>
                 <li><a id="signup-button-footer-text"><i></i>Show SignUp (footer text)</a></li>
-                <li><a id="reset-button"><i></i>Show Reset Password</a></li>
               </ul>
             </div>
           </div>
@@ -114,7 +114,7 @@
             }
           }
 
-          $('#new-show').on('click', function() {
+          $('#show-button').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
@@ -124,49 +124,7 @@
             });
 
             trackEvents(widget);
-            widget.show({
-              rememberLastLogin: false
-            });
-          });
-
-          $('#new-login').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-            trackEvents(widget);
-            widget.showLogin({
-              rememberLastLogin: false
-            });
-          });
-
-          $('#new-signup').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.showSignup();
-          });
-
-          $('#new-reset').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.showReset();
+            widget.show();
           });
 
           $('#login-button').on('click', function() {
@@ -180,6 +138,47 @@
 
             trackEvents(widget);
             widget.showSignin();
+          });
+
+          $('#signup-button').on('click', function() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
+            });
+
+            trackEvents(widget);
+            widget.showSignup();
+          });
+
+          $('#reset-button').on('click', function() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
+            });
+
+            trackEvents(widget);
+            widget.showReset();
+          });
+
+          $('#logout-button').on('click', function() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
+            });
+
+            trackEvents(widget);
+            widget.logout({
+              returnTo: window.location.href
+            });
           });
 
           $('#login-button-copyrighted').on('click', function() {
@@ -209,50 +208,6 @@
             trackEvents(widget);
             widget.showSignin({
               connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
-            });
-          });
-
-          $('#login-button-popup').on('click', function () {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.showSignin({
-              popup: true
-            }, onlogin);
-
-            function onlogin (err, profile) {
-              if (err) {
-                return $('#userinfo pre').text('Error: ' + err.message);
-              }
-              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
-            }
-          });
-
-          $('#login-button-popup-only-socials').on('click', function () {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.showSignin({
-              popup: true,
-              connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
-            }, function (err, profile) {
-              if (err) {
-                $('#userinfo pre').text('Error: ' + err.message);
-                return;
-              }
-              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
             });
           });
 
@@ -302,6 +257,51 @@
             });
           });
 
+
+          $('#login-button-popup').on('click', function () {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
+            });
+
+            trackEvents(widget);
+            widget.showSignin({
+              popup: true
+            }, onlogin);
+
+            function onlogin (err, profile) {
+              if (err) {
+                return $('#userinfo pre').text('Error: ' + err.message);
+              }
+              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            }
+          });
+
+          $('#login-button-popup-only-socials').on('click', function () {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
+            });
+
+            trackEvents(widget);
+            widget.showSignin({
+              popup: true,
+              connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
+            }, function (err, profile) {
+              if (err) {
+                $('#userinfo pre').text('Error: ' + err.message);
+                return;
+              }
+              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            });
+          });
+
           $('#login-button-customicon').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
@@ -316,19 +316,6 @@
               showIcon: true,
               icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png'
             });
-          });
-
-          $('#login-button-nosignup-noforgot').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.showSignin();
           });
 
           $('#login-button-inside-container').on('click', function() {
@@ -392,34 +379,6 @@
               next();
           });
 
-          $('#logout-button').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.logout({
-              returnTo: window.location.href
-            });
-          });
-
-          $('#signup-button').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.showSignup();
-          });
-
           $('#signup-button-footer-text').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
@@ -438,19 +397,6 @@
             widget.showSignup({
               dict: dict
             });
-          });
-
-          $('#reset-button').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Widget(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            trackEvents(widget);
-            widget.showReset();
           });
 
           var cid = credentials.mdocs.clientID;
