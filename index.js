@@ -79,15 +79,19 @@ function Auth0Widget (clientID, domain, options) {
   // Instance properties and options
   this.$options = _.extend({}, options);
 
+  // Save clientID and domain in $options
+  this.$options.clientID = clientID;
+  this.$options.domain = domain;
+
   // Holds copy for all suppported strategies
   this.$strategies = strategies;
 
   // Holds auth0-js' instance
   this.$auth0 = new Auth0({
     clientID:     this.$options.clientID,
-    callbackURL:  this.$options.callbackURL,
     domain:       this.$options.domain,
     forceJSONP:   this.$options.forceJSONP,
+    callbackURL:  this.$options.callbackURL,
     callbackOnLocationHash: this.$options.callbackOnLocationHash
   });
 
