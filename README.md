@@ -116,47 +116,33 @@ Log out loggedin user with optional query parameters for the `GET` request.
 
 ### User configurable
 
-- **connections**: [Array] - Filter configured connections for the Auth0's application by `connections` list.
-
-- **container**: [String] - Element's id to insert the widget in DOM.
-
-- **dict**: [String|Object] Supported language alias ( eg: `es`|`it`|`pt`) or dictionary object with [supported](https://github.com/auth0/lock/blob/master/i18n/en.json) keys. Defaults to `en`.
-
-- **disableSignupAction**: [Boolean] - Force hide signup button action. Defaults to `false` on `.show`, and `true` on every other `.show*()` action.
-
-- **signupLink**: [String] - Set `signup` button action link to `signupLink`. When set, forces `disableSignupAction` to `false`.
-
-- **disableResetAction**: [Boolean] - Force hide reset button action. Defaults to `false` on `.show`, and `true` on every other `.show*()` action.
-
-- **resetLink**: [String] - Set `reset` button action link to `forgotLink`. When set, forces `disableResetAction` to `false`.
-
-- **focusInput**: [Boolean] - Resolves whether focus or not the *email|username* input when shown. Defaults to `false` when mobile or embeded mode, `true` in other cases.
-
-- **popup**: [Boolean] - Enable popup mode. Defaults to `false`. When a `callback` is provided it's set to `true` and enables `no-redirect` mode for signing in.
-
-- **popupOptions**: [Object] - Options for the `window.open` parameters.
-
-- **extraParameters**: [Object] - List of parameters for `auth0.js` API call request.
-
-- **sso**: [Boolean] -  Sets a cookie used for single sign on. This only applies to Database Connections when using `popup: true`. The cookie will be used later to show the "Last time you signed in with ..."
-
-- **closable**: [Boolean] - Enable/disable closable feature when not embeded in DOM. Defaults to `true`.
-
-- **rememberLastLogin**: [Boolean] - Ask for SSO data and enable **last time you signed in with[...]** message. Defaults to `true`
-
-- **enableADRealmDiscovery**: [Boolean] - ???
-
-- **username_style**: [String] - Set `username` input `type` to either `username` or `email`. Defaults to `email`.
-
-- **title**: [String] - Set widget's heading to `title`.
-
-- **socialBigButtons**: [Boolean] - Force large social buttons insted of icons. Defaults to `true` for less than 4, and `false` for more than 3.
-
-- **userPwdConnectionName**: [String] - When multiple database connections enabled force `signin`/`signup`/`reset` to the one described here. If not provided, defaults to the first on list of connections. Shall be renamed to just `forceDatabase`.
+| Name                    | Type            | Description
+|:----------------------- |:---------------:|:------------
+| connections             | [Array]         | Filter configured connections for the Auth0's application by `connections` list.
+| container               | [String]        | Element's id to insert the widget in DOM.
+| dict                    | [String|Object] | Supported language alias ( eg: `es`|`it`|`pt`) or dictionary object with [supported](https://github.com/auth0/lock/blob/mastei18n/en.json) keys. Defaults to `en`.
+| disableSignupAction     | [Boolean]       | Force hide signup button action. Defaults to `false` on `.show`, and `true` on every other `.show*()` action.
+| signupLink              | [String]        | Set `signup` button action link to `signupLink`. When set, forces `disableSignupAction` to `false`.
+| disableResetAction      | [Boolean]       | Force hide reset button action. Defaults to `false` on `.show`, and `true` on every other `.show*()` action.
+| resetLink               | [String]        | Set `reset` button action link to `forgotLink`. When set, forces `disableResetAction` to `false`.
+| focusInput              | [Boolean]       | Resolves whether focus or not the *email|username* input when shown. Defaults to `false` when mobile or embeded mode, `true` iother cases.
+| popup                   | [Boolean]       | Enable popup mode. Defaults to `false`. When a `callback` is provided it's set to `true` and enables `no-redirect` mode fosigning in.
+| popupOptions            | [Object]        | Options for the `window.open` parameters.
+| extraParameters         | [Object]        | List of parameters for `auth0.js` API call request.
+| sso                     | [Boolean]       |  Sets a cookie used for single sign on. This only applies to Database Connections when using `popup: true`. The cookie will bused later to show the "Last time you signed in with ..."
+| closable                | [Boolean]       | Enable/disable closable feature when not embeded in DOM. Defaults to `true`.
+| rememberLastLogin       | [Boolean]       | Ask for SSO data and enable **last time you signed in with[...]** message. Defaults to `true`
+| enableADRealmDiscovery  | [Boolean]       | ???
+| username_style          | [String]        | Set `username` input `type` to either `username` or `email`. Defaults to `email`.
+| title                   | [String]        | Set widget's heading to `title`.
+| socialBigButtons        | [Boolean]       | Force large social buttons insted of icons. Defaults to `true` for less than 4, and `false` for more than 3.
+| userPwdConnectionName   | [String]        | When multiple database connections enabled force `signin`/`signup`/`reset` to the one described here. If not provided, defaultto the first on list of connections. Shall be renamed to just `forceDatabase`. |
 
 ### Internally resolved
 
-- **popupCallback** - [Function] - Internally setted from `callback` parameter.
+| Name                    | Type            | Description
+|:----------------------- |:---------------:|:------------
+| popupCallback           | [Function]      | Internally setted from `callback` parameter.
 
 ## Customize the look and feel
 
