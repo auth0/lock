@@ -42,22 +42,17 @@ Or take `auth0-lock.js` ( minified: `auth0-lock.min.js`) from the `build` direct
 var clientID = 'xxxxxx';
 var domain = '<account>.auth0.com';
 
+// Initialize Auth0Lock with your `clientID` and `domain` only
 var lock = new Auth0Lock(clientID, domain);
 
-// Or with options
+lock.show();
+
+// Or configure with instance options like...
 var lock = new Auth0Lock(clientID, domain, {
   forceJSONP: true,
-  callbackOnLocationHash: true',
+  callbackOnLocationHash: true,
   callbackURL: 'http://my-app.com/callback'
 });
-
-// And then you can handle to show and hide Auth0Lock
-lock.show();    // show with default options
-lock.showSignin();  // ... only signin
-lock.showSignup();  // ... only signup
-lock.showReset();   // ... only reset
-lock.hide();        // hide
-lock.logout();      // logout
 
 ```
 
