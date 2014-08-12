@@ -207,15 +207,12 @@ Auth0Widget.prototype.render = function(tmpl, locals) {
 
 Auth0Widget.prototype.insert = function() {
   if (this.$container) return this;
+
   var options = this.options;
   var cid = options.container;
 
   // widget container
   if (cid) {
-    options.theme = 'static';
-    options.standalone = true;
-    options.top = true;
-
     this.$container = document.getElementById(cid);
     if (!this.$container) throw new Error('Not found element with \'id\' ' + cid);
 
