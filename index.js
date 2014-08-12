@@ -16,8 +16,7 @@ var $ = require('./lib/bonzo-augmented');
 var EventEmitter = require('events').EventEmitter;
 
 var strategies = require('./lib/strategies');
-var mainTmpl = require('./lib/html/main.ejs');
-var embTmpl = require('./lib/html/main_embedded.ejs');
+var template = require('./lib/html/main.ejs');
 
 var required = require('./lib/assert-required');
 var regex = require('./lib/regex');
@@ -29,7 +28,6 @@ var ResetPanel = require('./lib/mode-reset');
 var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
-
 var OptionsManager = require('./lib/options-manager');
 
 //browser incompatibilities fixes
@@ -210,26 +208,27 @@ Auth0Widget.prototype.insert = function() {
 
   var options = this.options;
   var cid = options.container;
+  var locals = {
+    options: options,
+    alt_spinner: !has_animations()
+      ? (this.$options.cdn + 'img/ajax-loader.gif')
+      : null
+  };
 
   // widget container
   if (cid) {
     this.$container = document.getElementById(cid);
     if (!this.$container) throw new Error('Not found element with \'id\' ' + cid);
 
-    this.$container.innerHTML = this._getEmbededTemplate();
+    this.$container.innerHTML = this.render(template, locals);
 
   } else {
     this.$container = document.createElement('div');
     bonzo(this.$container).addClass('a0-widget-container');
 
-    var locals = {
-      options: options,
-      alt_spinner: !has_animations()
-        ? (this.$options.cdn + 'img/ajax-loader.gif')
-        : null
-    };
 
-    this.$container.innerHTML = this.render(mainTmpl, locals);
+
+    this.$container.innerHTML = this.render(template, locals);
     document.body.appendChild(this.$container);
   }
 
@@ -442,10 +441,8 @@ Auth0Widget.prototype.initialize = function(done) {
     return;
   }
 
-  if (!placeholderSupported) {
-    this.query('.a0-overlay')
-      .addClass('a0-no-placeholder-support');
-  }
+  this.query('.a0-overlay')
+    .toggleClass('a0-no-placeholder-support', !placeholderSupported);
 
   // buttons actions
   this.query('.a0-onestep a.a0-close').a0_on('click', bind(this.oncloseclick, this));
@@ -1067,26 +1064,6 @@ Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCa
 
     return callback.apply(null, args);
   });
-};
-
-/**
- * Get DOM embeded compiled template resolved by `options`
- *
- * @return {NodeElement}
- * @public
- */
-
-Auth0Widget.prototype._getEmbededTemplate = function () {
-  var options = this.options;
-
-  var locals = {
-      options: options,
-      alt_spinner:  !has_animations() ? (options.cdn + 'img/ajax-loader.gif') : null
-  };
-
-  return options.chrome
-    ? this.render(mainTmpl, _.extend(locals, { expand: true })) // cover the entire container
-    : this.render(embTmpl, _.extend(locals, { embedded: true }))
 };
 
 /**
