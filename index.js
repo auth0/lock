@@ -323,16 +323,10 @@ Auth0Widget.prototype.showReset = function(options, callback) {
  */
 
 Auth0Widget.prototype.hide = function (callback) {
-  var self = this;
-
-  // XXX: unnecesary code since widget gets
-  // removed from DOM every time it's hidden
-
-  // this.query('div.a0-overlay').removeClass('a0-active');
-  // this.query().css('display', 'none');
-
+  // immediatelly hide widget
   bonzo(document.body).removeClass('a0-widget-open');
 
+  // Remove widget and/or it's container
   if (this.$container && this.options.container) {
     // remove `#a0-widget`
     this.query().remove();
