@@ -103,54 +103,77 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
     <script>
       $(function() {
-          $('#new-show').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
+          var credentials = {
+            mdocs: {
               clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+              domain: 'mdocs.auth0.com'
+            },
+            free: {
+              clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
+              domain: 'auth0-demo.auth0.com'
+            }
+          }
+
+          $('#new-show').on('click', function() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              rememberLastLogin: false
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
             widget.show({
-              // connections: ['mdocs.io', 'qraftlabs.com']
+              rememberLastLogin: false
             });
           });
+
           $('#new-login').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
             trackEvents(widget);
-            widget.show({ showSignup: false, showForgot: false });
+            widget.showLogin({
+              rememberLastLogin: false
+            });
           });
+
           $('#new-signup').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
+
             trackEvents(widget);
             widget.showSignup();
           });
+
           $('#new-reset').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
+
             trackEvents(widget);
             widget.showReset();
           });
+
           $('#login-button').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -158,24 +181,29 @@
             trackEvents(widget);
             widget.showSignin();
           });
+
           $('#login-button-copyrighted').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'auth0-demo.auth0.com',
-              clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
+            var cid = credentials.free.clientID;
+            var domain = credentials.free.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              socialBigButtons: true
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
-            widget.showSignin();
+            widget.showSignin({
+              socialBigButtons: true
+            });
           });
+
           $('#login-button-only-socials').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
@@ -185,9 +213,10 @@
           });
 
           $('#login-button-popup').on('click', function () {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -206,9 +235,10 @@
           });
 
           $('#login-button-popup-only-socials').on('click', function () {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -227,23 +257,26 @@
           });
 
           $('#login-button-only-userpass').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              username_style: 'username'
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
             widget.showSignin({
+              username_style: 'username',
               connections: ['mdocs.io']
             });
           });
+
           $('#login-button-only-emailpass').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -253,10 +286,12 @@
               connections: ['mdocs.io']
             });
           });
+
           $('#login-button-only-enterprise').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -268,23 +303,26 @@
           });
 
           $('#login-button-customicon').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              showIcon: true,
-              icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png'
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
-            widget.showSignin();
-
+            widget.showSignin({
+              showIcon: true,
+              icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png'
+            });
           });
+
           $('#login-button-nosignup-noforgot').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -292,48 +330,52 @@
             trackEvents(widget);
             widget.showSignin();
           });
+
           $('#login-button-inside-container').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              dict: 'it'
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
             widget.show({
+              dict: 'it',
               container: 'login-container'
             });
           });
+
           $('#login-button-inside-container-chrome').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              dict: 'es'
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
             widget.show({
+              dict: 'es',
               container: 'login-container',
               chrome: true
             });
           });
+
           $('#login-button-all').on('click', function() {
               var langs = ['ar', 'de', 'en', 'es', 'fr-FR', 'he', 'it', 'ja', 'nl-NL', 'pt', 'ru', 'zh'];
+              var cid = credentials.mdocs.clientID;
+              var domain = credentials.mdocs.domain;
 
               function next() {
                 var l = langs.shift();
                 if (!l) return;
-                (new Auth0Widget({
-                  domain: 'mdocs.auth0.com',
-                  clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+
+                (new Auth0Widget(cid, domain, {
                   callbackURL: window.location.href,
-                  callbackOnLocationHash: true,
-                  dict: l,
-                  rememberLastLogin: false
+                  callbackOnLocationHash: true
                 }))
                 .on('ready', function() {
                   var self = this;
@@ -341,15 +383,20 @@
                     self.hide(next);
                   }, 1500);
                 })
-                .show();
+                .show({
+                  dict: l,
+                  rememberLastLogin: false
+                });
               }
 
               next();
           });
+
           $('#logout-button').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -359,10 +406,12 @@
               returnTo: window.location.href
             });
           });
+
           $('#signup-button').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -370,26 +419,32 @@
             trackEvents(widget);
             widget.showSignup();
           });
+
           $('#signup-button-footer-text').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              dict: {
-                signup: {
-                  footerText: 'By signing up, you agree to our <a href="/terms" target="_new">Terms of service</a> and <a href="/privacy" target="_new">Privacy policy</a>'
-                }
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+            var dict = {
+              signup: {
+                footerText: 'By signing up, you agree to our <a href="/terms" target="_new">Terms of service</a> and <a href="/privacy" target="_new">Privacy policy</a>'
               }
+            };
+
+            var widget = new Auth0Widget(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
             });
 
             trackEvents(widget);
-            widget.showSignup();
+            widget.showSignup({
+              dict: dict
+            });
           });
+
           $('#reset-button').on('click', function() {
-            var widget = new Auth0Widget({
-              domain: 'mdocs.auth0.com',
-              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Widget(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -398,15 +453,18 @@
             widget.showReset();
           });
 
-          var widget = new Auth0Widget({
-            domain: 'mdocs.auth0.com',
-            clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+          var cid = credentials.mdocs.clientID;
+          var domain = credentials.mdocs.domain;
+
+          var widget = new Auth0Widget(cid, domain, {
             callbackURL: window.location.href,
             callbackOnLocationHash: true
           });
-          var widget2 = new Auth0Widget({
-            domain: 'auth0-demo.auth0.com',
-            clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
+
+          var cid2 = credentials.free.clientID;
+          var domain2 = credentials.free.domain;
+
+          var widget = new Auth0Widget(cid2, domain2, {
             callbackURL: window.location.href,
             callbackOnLocationHash: true
           });
@@ -429,19 +487,19 @@
             // After login, show user profile
             widget.getProfile(result2.id_token, function(err, profile) {
               window.location.hash = "";
+
               if (err) {
                 return alert(err);
               }
+
               console.log(profile);
               $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
             });
 
           } else if (result && result.error && /invalid_token/.test(result2.error)) {
-              alert('error: ' + result.error);
-
+            alert('error: ' + result.error);
           } else if (result2 && result2.error && /invalid_token/.test(result.error)) {
-              alert('error: ' + result2.error);
-
+            alert('error: ' + result2.error);
           }
 
           function trackEvents(widget) {
