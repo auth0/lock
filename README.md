@@ -1,6 +1,6 @@
-# Auth0 Lock
 [![Auth0](https://i.cloudup.com/9sk1vhcfbS.png)](http://auth0.com)
 
+# Auth0 Lock
 [![NPM version](https://badge.fury.io/js/auth0-lock.js.png)](http://badge.fury.io/js/auth0-lock.js)
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
