@@ -11,7 +11,7 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 * Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
 * Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
 
-[![Auth0](https://i.cloudup.com/fKuIOiaPrL.png)](http://auth0.com)
+[![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
 
 ## Install
 
