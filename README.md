@@ -63,21 +63,26 @@ lock.logout();      // logout
 
 ## API
 
-### **Auth0Lock(clientID, domain[, options])**
+### Auth0Lock(clientID, domain[, options])
 
-Initialize `Auth0Lock` for `clientID` and `domain` with `options.
+Initialize `Auth0Lock` for `clientID` and `domain` with `options`.
 
+- Required parameters:
 
-#### Required parameters:
-- **clientID**: [String] - Your application clientID in Auth0.
-- **domain**: [String] - Your Auth0 domain. Usually ```<account>.auth0.com```.
+| Name                    | Type            | Description
+|:----------------------- |:---------------:|:------------
+| clientID                | [String]        | Your application clientID in Auth0.
+| domain                  | [String]        | Your Auth0 domain. Usually ```<account>.auth0.com```.
 
-#### Options:
-- **callbackURL**: [Boolean] - the url auth0 will redirect back after authentication.
-- **callbackOnLocationHash**: [Boolean] - `true` for Single Page Applications, otherwise `false`. Default is `false`.
-- **forceJSONP**: [Boolean] - Force JSONP requests for all `auth0-js` instance requests. Default is `false`
-- **cdn**: [String] - Use as CDN base url. Defaults to `domain` if it doesn't equal `*.auth0.com`
-- **assetsUrl**: [String] Use as assets base url. Defaults to `domain` if it doesn't equal `*.auth0.com`
+- Options:
+
+| Name                    | Type            | Description
+|:----------------------- |:---------------:|:------------
+| callbackURL             | [Boolean]       | The url auth0 will redirect back after authentication.
+| callbackOnLocationHash  | [Boolean]       | Should be set to `true` for Single Page Applications, otherwise `false`. Default is `false`.
+| forceJSONP              | [Boolean]       | Force JSONP requests for all `auth0-js` instance requests. Default is `false`
+| cdn                     | [String]        | Use as CDN base url. Defaults to `domain` if it doesn't equal `*.auth0.com`
+| assetsUrl               | [String]        | Use as assets base url. Defaults to `domain` if it doesn't equal `*.auth0.com`
 
 ### **.show(options[, callback])**
 
