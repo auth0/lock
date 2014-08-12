@@ -1,4 +1,5 @@
-# Auth0Lock
+# Auth0 Lock
+[![Auth0](https://i.cloudup.com/9sk1vhcfbS.png)](http://auth0.com)
 
 [![NPM version](https://badge.fury.io/js/auth0-lock.js.png)](http://badge.fury.io/js/auth0-lock.js)
 
