@@ -209,6 +209,13 @@ module.exports = function (grunt) {
         ]
       }
     },
+    /* Checks for outdated npm dependencies before release. */
+    outdated: {
+      release: {
+        development: false
+      }
+    },
+
     /* Check if the repository is clean after build. If the version found in the build folder was not updated
      * this will make the build fail. */
     checkrepo: {
