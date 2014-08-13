@@ -1149,20 +1149,6 @@ Auth0Lock.prototype.focusInput = function() {
  */
 
 /**
- * Prevent errors if the script is placed on the <head>
- * and there is no body yet loaded
- *
- * XXX: Could this be called with `domready` core dependency?
- *
- * @param {NodeElement} el
- * @private
- */
-
-function hasTransitions (el) {
-  return require('has-transitions')(el);
-}
-
-/**
  * Add animate css class to shake `a0-panel`
  * on errorors... withing widget's `$container`
  * (by `context`) element...
