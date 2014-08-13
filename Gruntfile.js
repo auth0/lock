@@ -191,19 +191,29 @@ module.exports = function (grunt) {
       },
       clean: {
         del: [
-          { src:     'w2/auth0-lock-' + pkg.version + '.js', },
-          { src:     'w2/auth0-lock-' + pkg.version + '.min.js', },
-          { src:     'w2/auth0-lock-' + major_version + '.js', },
-          { src:     'w2/auth0-lock-' + major_version + '.min.js', },
-          { src:     'w2/auth0-lock-' + minor_version + '.js', },
-          { src:     'w2/auth0-lock-' + minor_version + '.min.js', }
+          { src: 'auth0-lock/' + pkg.version + '/auth0-lock.js', },
+          { src: 'auth0-lock/' + pkg.version + '/auth0-lock.min.js', },
+          { src: 'auth0-lock/' + major_version + '/auth0-lock.js', },
+          { src: 'auth0-lock/' + major_version + '/auth0-lock.min.js', },
+          { src: 'auth0-lock/' + minor_version + '/auth0-lock.js', },
+          { src: 'auth0-lock/' + minor_version + '/auth0-lock.min.js', }
         ]
       },
       publish: {
         upload: [
           {
             src:     'release/*',
-            dest:    'w2/',
+            dest:    'auth0-lock/' + pkg.version + '/',
+            options: { gzip: false }
+          },
+          {
+            src:     'release/*',
+            dest:    'auth0-lock/' + major_version + '/',
+            options: { gzip: false }
+          },
+          {
+            src:     'release/*',
+            dest:    'auth0-lock/' + minor_version + '/',
             options: { gzip: false }
           }
         ]
@@ -223,6 +233,7 @@ module.exports = function (grunt) {
         clean: true
       }
     },
+    /* Purge MAXCDN cache. */
     maxcdn: {
       purgeCache: {
         options: {
@@ -233,12 +244,12 @@ module.exports = function (grunt) {
           method:         'delete'
         },
         files: [
-          { dest:     'w2/auth0-lock-' + pkg.version + '.js', },
-          { dest:     'w2/auth0-lock-' + pkg.version + '.min.js', },
-          { dest:     'w2/auth0-lock-' + major_version + '.js', },
-          { dest:     'w2/auth0-lock-' + major_version + '.min.js', },
-          { dest:     'w2/auth0-lock-' + minor_version + '.js', },
-          { dest:     'w2/auth0-lock-' + minor_version + '.min.js', }
+          { dest:     'auth0-lock/' + pkg.version + '/auth0-lock.js', },
+          { dest:     'auth0-lock/' + pkg.version + '/auth0-lock.min.js', },
+          { dest:     'auth0-lock/' + major_version + '/auth0-lock.js', },
+          { dest:     'auth0-lock/' + major_version + '/auth0-lock.min.js', },
+          { dest:     'auth0-lock/' + minor_version + '/auth0-lock.js', },
+          { dest:     'auth0-lock/' + minor_version + '/auth0-lock.min.js', }
         ],
       },
     }
