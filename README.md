@@ -55,7 +55,13 @@ Or our CDN:
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
 // and deploy it
-lock.show();
+var login = document.querySelector('a#login')
+
+login.onclick = function (e) {
+  e.preventDefault();
+  lock.show();
+}
+
 ```
 
 ## API
@@ -67,10 +73,7 @@ Initialize `Auth0Lock` with `clientID` and account's `domain`.
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-document.querySelector('a#login').onclick = function (e) {
-  e.preventDefault();
-  lock.show();
-}
+lock.show();
 ```
 
 Allow `options` to be passed to configure `auth0-js` lib dependency and other internals.
