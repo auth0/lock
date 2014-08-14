@@ -43,40 +43,44 @@ With our CDN:
 
 ## Usage
 
-```javascript
-var clientID = 'xxxxxx';
-var domain = '<account>.auth0.com';
+```js
+// Initialize Auth0Lock with your `clientID` and `domain`
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-// Initialize Auth0Lock with your `clientID` and `domain` only
-var lock = new Auth0Lock(clientID, domain);
-
+// and deploy it
 lock.show();
-
-// Or configure with instance options like...
-var lock = new Auth0Lock(clientID, domain, {
-  forceJSONP: true,
-  callbackOnLocationHash: true,
-  callbackURL: 'http://my-app.com/callback'
-});
-
 ```
 
 ## API
 
 ### Auth0Lock(clientID, domain[, options])
 
-Initialize `Auth0Lock` with `clientID` and account's `domain`. Also allow for `options` to be passed to configure `auth0-js` lib dependency.
+Initialize `Auth0Lock` with `clientID` and account's `domain`.
 
-> Note: For a full detail of initialization configuration check the [wiki][initialization-configuration] article on this topic.
-
-```
+```js
   var lock = new Auth0Lock('clientID', 'domain');
 
-  document.querySelector('a#login').onclick = function(e) {
+  document.querySelector('a#login').onclick = function (e) {
     e.preventDefault();
     lock.show();
   }
 ```
+
+Allow `options` to be passed to configure `auth0-js` lib dependency and other internals.
+
+```js
+  // Or configure with instance options like...
+
+  var lock = new Auth0Lock(clientID, domain, {
+    callbackOnLocationHash: true,
+    callbackURL: 'http://my-app.com/callback',
+    forceJSONP: true
+  });
+
+```
+
+> Note: For a full detail on the initialization configuration check the [wiki][initialization-configuration] article for this topic.
+
 
 ### **.show(options[, callback])**
 
@@ -84,7 +88,7 @@ Open the widget on `signin` mode  with `signup` and `reset` button actions if en
 
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
-```
+```js
   var lock = new Auth0Lock('clientID', 'domain');
 
   // normal display
@@ -103,7 +107,7 @@ Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` b
 
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
-```
+```js
   var lock = new Auth0Lock('clientID', 'domain');
 
   // normal display
@@ -123,7 +127,7 @@ Open the widget on `signup` mode, but withouht the bottom `cancel` button action
 
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
-```
+```js
   var lock = new Auth0Lock('clientID', 'domain');
 
   // normal display
@@ -143,7 +147,7 @@ Open the widget on `reset` mode, but withouht the bottom `cancel` button action 
 
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
-```
+```js
   var lock = new Auth0Lock('clientID', 'domain');
 
   // normal display
@@ -162,7 +166,7 @@ Open the widget on `reset` mode, but withouht the bottom `cancel` button action 
 
 Close the widget and invoke `callback` if defined.
 
-```
+```js
   var lock = new Auth0Lock('clientID', 'domain');
 
   // normal display
@@ -179,7 +183,7 @@ Close the widget and invoke `callback` if defined.
 
 Log out loggedin user with optional query parameters for the `GET` request.
 
-```
+```js
   var lock = new Auth0Lock('clientID', 'domain');
 
   // Call logout with query parameters
