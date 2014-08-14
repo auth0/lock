@@ -92,7 +92,7 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 > Note: For a full detail on the initialization configuration check the [wiki][initialization-configuration] article for this topic.
 
 
-### **.show(options[, callback])**
+### .show(options[, callback])
 
 Open the widget on `signin` mode  with `signup` and `reset` button actions if enabled for the connection configuration.
 
@@ -111,7 +111,7 @@ lock.show(options, function(profile, token) {
 })
 ```
 
-### **.showSignin(options[, callback])**
+### .showSignin(options[, callback])
 
 Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` button actions.
 
@@ -131,7 +131,7 @@ lock.show(options, function(profile, token) {
 ```
 > Usefull when your site has custom *signup*, and *reset* links at a different form.
 
-### **.showSignup(options[, callback])**
+### .showSignup(options[, callback])
 
 Open the widget on `signup` mode, but withouht the bottom `cancel` button action to go back to `signin`.
 
@@ -151,7 +151,7 @@ lock.show(options, function(profile, token) {
 ```
 > Usefull when your site has custom *signup*, and *reset* links at a different form.
 
-### **.showReset(options[, callback])**
+### .showReset(options[, callback])
 
 Open the widget on `reset` mode, but withouht the bottom `cancel` button action to go back to `signin`.
 
@@ -172,7 +172,7 @@ lock.show(options, function(profile, token) {
 
 > Usefull when your site has custom *signup*, and *reset* links at a different form.
 
-### **.hide([callback])**
+### .hide([callback])
 
 Close the widget and invoke `callback` if defined.
 
@@ -189,7 +189,7 @@ lock.show(options, function(profile, token) {
 })
 ```
 
-### **.logout([query])**
+### .logout([query])
 
 Log out loggedin user with optional query parameters for the `GET` request.
 
