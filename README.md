@@ -1,7 +1,12 @@
 [![Auth0](https://i.cloudup.com/9sk1vhcfbS.png)](http://auth0.com)
 
 # Auth0 Lock
-[![NPM version](https://badge.fury.io/js/auth0-lock.js.png)](http://badge.fury.io/js/auth0-lock.js)
+[![NPM version][npm-image]][npm-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Dependency Status][david-image]][david-url]
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
+
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
 
@@ -206,6 +211,17 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
 ## License
 
 MIT
+
+[npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/auth0-lock
+[coveralls-image]: https://img.shields.io/coveralls/auth0/lock.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/auth0/lock?branch=master
+[david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
+[david-url]: https://david-dm.org/auth0-lock
+[license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
+[license-url]: LICENSE
+[downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/auth0-lock
 
 [initialization-configuration]: https://github.com/auth0/lock/wiki/Initialization-configuration
 [ui-customization]: https://github.com/auth0/lock/wiki/UI-customization
