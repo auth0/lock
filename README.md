@@ -71,7 +71,7 @@ Initialize `Auth0Lock` with `clientID` and account's `domain`. Also allow for `o
   }
 ```
 
-> Note: For a full detail of initialization configuration check the [wiki](initialization-configuration) article on this topic.
+> Note: For a full detail of initialization configuration check the [wiki][initialization-configuration] article on this topic.
 
 
 ### **.show(options[, callback])**
