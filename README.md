@@ -7,7 +7,6 @@
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
 
-
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
 
 The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to worry about:
@@ -18,6 +17,8 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 * Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
 
 [![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
+
+> Note: if you are using `auth0-widget` < v6.0.0, check this [repository](https://github.com/auth0/widget) instead for propper documentation.
 
 ## Install
 
