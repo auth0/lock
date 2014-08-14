@@ -12,7 +12,9 @@
     "browser"
   ],
   "scripts": {
-    "test": "grunt integration"
+    "test": "grunt integration",
+    "test-desktop": " grunt exec:test-desktop",
+    "test-mobile": " grunt exec:test-mobile"
   },
   "repository": {
     "type": "git",
