@@ -60,28 +60,38 @@ var lock = new Auth0Lock(clientID, domain, {
 
 ### Auth0Lock(clientID, domain[, options])
 
-Initialize `Auth0Lock` for `clientID` and `domain` with `options`.
+Initialize `Auth0Lock` with `clientID` and account's `domain`. Also allow for `options` to be passed to configure `auth0-js` lib dependency.
 
-- Required parameters:
+```
+  var lock = new Auth0Lock('clientID', 'domain');
 
-| Name                    | Type            | Description
-|:----------------------- |:---------------:|:------------
-| clientID                | [String]        | Your application clientID in Auth0.
-| domain                  | [String]        | Your Auth0 domain. Usually ```<account>.auth0.com```.
+  document.querySelector('a#login').onclick = function(e) {
+    e.preventDefault();
+    lock.show();
+  }
+```
 
-- Options:
+> Note: For a full detail of initialization configuration check the [wiki]() article on this topic.
 
-| Name                    | Type            | Description
-|:----------------------- |:---------------:|:------------
-| callbackURL             | [Boolean]       | The url auth0 will redirect back after authentication.
-| callbackOnLocationHash  | [Boolean]       | Should be set to `true` for Single Page Applications, otherwise `false`. Default is `false`.
-| forceJSONP              | [Boolean]       | Force JSONP requests for all `auth0-js` instance requests. Default is `false`
-| cdn                     | [String]        | Use as CDN base url. Defaults to `domain` if it doesn't equal `*.auth0.com`
-| assetsUrl               | [String]        | Use as assets base url. Defaults to `domain` if it doesn't equal `*.auth0.com`
 
 ### **.show(options[, callback])**
 
-Open the widget on `signin` mode  with `signup` and `reset` button actions if enabled on connection configuration.
+Open the widget on `signin` mode  with `signup` and `reset` button actions if enabled for the connection configuration.
+
+```
+  var lock = new Auth0Lock('clientID', 'domain');
+
+  // normal display
+  lock.show(options);
+
+  // no page redirect trigger
+  // useful for single page applications
+  lock.show(options, function(profile, token) {
+
+  })
+```
+
+> Note: For a full detail of initialization configuration check the [wiki]() article on this topic.
 
 
 ### **.showSignin(options[, callback])**
@@ -112,113 +122,14 @@ Close the widget and invoke `callback` if defined.
 
 Log out loggedin user with optional query parameters for the `GET` request.
 
-
-## Options:
-
-### User configurable
-
-| Name                    | Type            | Description
-|:----------------------- |:---------------:|:------------
-| connections             | [Array]         | Filter configured connections for the Auth0's application by `connections` list.
-| container               | [String]        | Element's id to insert the widget in DOM.
-| dict                    | [String|Object] | Supported language alias ( eg: `es`|`it`|`pt`) or dictionary object with [supported](https://github.com/auth0/lock/blob/mastei18n/en.json) keys. Defaults to `en`.
-| disableSignupAction     | [Boolean]       | Force hide signup button action. Defaults to `false` on `.show`, and `true` on every other `.show*()` action.
-| signupLink              | [String]        | Set `signup` button action link to `signupLink`. When set, forces `disableSignupAction` to `false`.
-| disableResetAction      | [Boolean]       | Force hide reset button action. Defaults to `false` on `.show`, and `true` on every other `.show*()` action.
-| resetLink               | [String]        | Set `reset` button action link to `forgotLink`. When set, forces `disableResetAction` to `false`.
-| focusInput              | [Boolean]       | Resolves whether focus or not the *email|username* input when shown. Defaults to `false` when mobile or embeded mode, `true` iother cases.
-| popup                   | [Boolean]       | Enable popup mode. Defaults to `false`. When a `callback` is provided it's set to `true` and enables `no-redirect` mode fosigning in.
-| popupOptions            | [Object]        | Options for the `window.open` parameters.
-| extraParameters         | [Object]        | List of parameters for `auth0.js` API call request.
-| sso                     | [Boolean]       |  Sets a cookie used for single sign on. This only applies to Database Connections when using `popup: true`. The cookie will bused later to show the "Last time you signed in with ..."
-| closable                | [Boolean]       | Enable/disable closable feature when not embeded in DOM. Defaults to `true`.
-| rememberLastLogin       | [Boolean]       | Ask for SSO data and enable **last time you signed in with[...]** message. Defaults to `true`
-| enableADRealmDiscovery  | [Boolean]       | ???
-| username_style          | [String]        | Set `username` input `type` to either `username` or `email`. Defaults to `email`.
-| title                   | [String]        | Set widget's heading to `title`.
-| socialBigButtons        | [Boolean]       | Force large social buttons insted of icons. Defaults to `true` for less than 4, and `false` for more than 3.
-| userPwdConnectionName   | [String]        | When multiple database connections enabled force `signin`/`signup`/`reset` to the one described here. If not provided, defaultto the first on list of connections. Shall be renamed to just `forceDatabase`. |
-
-### Internally resolved
-
-| Name                    | Type            | Description
-|:----------------------- |:---------------:|:------------
-| popupCallback           | [Function]      | Internally setted from `callback` parameter.
-
-## Customize the look and feel
-
-Apply your own style to the elements.
-
-All classes and ids are prefixed with `a0-` to avoid conflicts with your own stylesheets.
-
-Send us an screenshot! We would love to see what you can do.
-
-## Example
+## Run examples
 
 The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed and **grunt** (`npm i grunt -g`), then execute `grunt example` from the root of this project.
 
 ## Browser Compatibility
 
-We are using [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers on every push.
-
-## Development
-
-To run the tests that don't require [BrowserStack](http://browserstack.com), first install `npm install -g testem` and then run `grunt test`.
-
-To run the entire test suite run `grunt dev` and point your browser to `http://localhost:9999/test_harness.html`.
-
-
-### Run integration tests
-
-Remove previously existing instances of `browserstack-cli`:
-
-```sh
-npm remove -g browserstack-cli
-```
-
-Install the following `browserstack-cli` fork:
-
-```sh
-npm install -g https://github.com/jfromaniello/browserstack-cli/tarball/master
-```
-Remove the old `~/.browserstack` folder to download the jarfile again:
-
-```sh
-rm -rf ~/.browserstack
-```
-
-Setup browserstack:
-```sh
-browserstack setup
-```
-
-There, you will be prompted for `Username`, `Password`, `Tunnel private key` and `Tunnel API key`. Reach out to somebody at Auth0 in order to get those credentials.
-
-Finally, after doing that, to run the tests:
-
-```sh
-npm test
-```
-
-#### Troubleshooting
-
-* Problem: **message: Invalid or corrupt jarfile `~/.browserstack/BrowserStackTunnel.jar`**
-
-  Solution: Remove `~/.browserstack` and run ` browserstack setup` again.
-
-* Problem: **message: Timed out without seeing Press Ctrl-C to exit**
-
-  Solution: Are you uploading something big? Browserstack may need more upload bandwidth.
-
-* Problem: **message: Timed out without seeing Press Ctrl-C to exit**
-
-  Solution: That means there might be an issue with a running java process. Do:
-
-  ```sh
-  ps | egrep java
-  ```
-
-  Kill the java process, run `npm test` again and it should be solved.
+We use [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers at every push.
+We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
 
 ## Releases
 
@@ -242,7 +153,17 @@ To get a release to work, you need to follow these simple commands
 
 That's it!
 
+## Resources
+
+* [UI customization](ui-customization) for the `Auth0Lock`.
+* [Development](development-notes) notes.
+* [Release process](release-notes) notes.
+
+
 ## License
 
 MIT
 
+![ui-customization](https://github.com/auth0/lock/wiki/UI-customization)
+![development-notes](https://github.com/auth0/lock/wiki/Development-notes)
+![release-notes](https://github.com/auth0/lock/wiki/Release-notes)
