@@ -37,8 +37,8 @@ module.exports = function (grunt) {
           port:  3000,
           protocol: 'https',
           hostname: '*',
-          cert: fs.readFileSync(__dirname + '/test/https_test_certs/server.crt').toString(),
-          key:  fs.readFileSync(__dirname + '/test/https_test_certs/server.key').toString()
+          cert: fs.readFileSync(__dirname + '/test/support/https-certs/server.crt').toString(),
+          key:  fs.readFileSync(__dirname + '/test/support/https-certs/server.key').toString()
         }
       }
     },
