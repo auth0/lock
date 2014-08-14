@@ -51,6 +51,7 @@ widget.signin(options, callback);
 * __icon__: Icon url. _Recommended: 32x32_.
 * __showIcon__: Show/Hide widget icon. _Default: false_.
 * __connection_scopes__: Scopes to request to each identity provider that are not configured for the connection.
+* __offline_mode__: If set, the `refresh_token` will be returned after a successful login.
 
 ~~~javascript
 widget.signin({
@@ -58,6 +59,7 @@ widget.signin({
   container: 'root',
   icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
   showIcon: true,
+  offline_mode: true,
   connection_scopes: {
     'facebook': ['public_profile', 'user_friends'],
     'google-oauth2': ['https://www.googleapis.com/auth/orkut'],
@@ -65,6 +67,8 @@ widget.signin({
   }
 }, function () {
   // The Auth0 Widget is now loaded.
+}, function(profile, id_token, access_token, state, refresh_token) {
+
 });
 ~~~
 
