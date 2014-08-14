@@ -36,10 +36,15 @@ bower install auth0-lock
 With our CDN:
 
 ```html
+<!-- Latest major release -->
+<script src="http://cdn.auth0.com/auth0/lock/6/auth0-lock.min.js"></script>
+<!-- Latest minor release -->
+<script src="http://cdn.auth0.com/auth0/lock/6.0/auth0-lock.min.js"></script>
+<!-- Latest patch release -->
 <script src="http://cdn.auth0.com/auth0/lock/6.0.0/auth0-lock.min.js"></script>
 ```
 
-> Note: You can also download the compiled builds from this repo for latest [auth0-lock.js][download1] and [auth0-lock.min.js][download2]. Although this is **not recomended**, you should get any stable release from the previous install ways.
+> Note: You can also download the compiled builds from this repo for latest [auth0-lock.js][download1] and [auth0-lock.min.js][download2]. Although this is **not recomended**, and you should always get any stable release from the previous install methods.
 
 ## Usage
 
