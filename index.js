@@ -1135,7 +1135,6 @@ Auth0Lock.prototype.onescpressed = function(e) {
 Auth0Lock.prototype.focusInput = function() {
   if (this.options._focusDisabled()) return this;
 
-  debugger;
   var el = this.query('input').first();
   try{
     el.focus();
