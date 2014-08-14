@@ -23,23 +23,23 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 
 With [npm](https://npmjs.org):
 
-```
-  npm install auth0-lock
+```sh
+npm install auth0-lock
 ```
 
 With bower:
 
-```
-  bower install auth0-lock
+```sh
+bower install auth0-lock
 ```
 
 With our CDN:
 
 ```html
-<script src="http://cdn.auth0.com/w2/auth0-lock-1.0.js"></script>
+<script src="http://cdn.auth0.com/auth0/lock/6.0.0/auth0-lock.min.js"></script>
 ```
 
-Or take `auth0-lock.js` ( minified: `auth0-lock.min.js`) from the `build` directory and add it to your HTML.
+> Note: You can also download the compiled builds from this repo for latest [auth0-lock.js][download1] and [auth0-lock.min.js][download2]. Although this is **not recomended**, you should get any stable release from the previous install ways.
 
 ## Usage
 
@@ -182,14 +182,8 @@ Log out loggedin user with optional query parameters for the `GET` request.
 ```
   var lock = new Auth0Lock('clientID', 'domain');
 
-  // normal display
-  lock.show(options);
-
-  // no page redirect trigger
-  // useful for single page applications
-  lock.show(options, function(profile, token) {
-
-  })
+  // Call logout with query parameters
+  lock.logout({ ref: window.location.href });
 ```
 
 ## Run examples
@@ -207,10 +201,10 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
 
+<!-- Variables -->
 
-## License
-
-MIT
+[download1]: https://raw.github.com/auth0/lock/master/build/auth0-lock.js
+[download2]: https://raw.github.com/auth0/lock/master/build/auth0-lock.min.js
 
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
