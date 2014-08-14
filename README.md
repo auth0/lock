@@ -62,6 +62,8 @@ var lock = new Auth0Lock(clientID, domain, {
 
 Initialize `Auth0Lock` with `clientID` and account's `domain`. Also allow for `options` to be passed to configure `auth0-js` lib dependency.
 
+> Note: For a full detail of initialization configuration check the [wiki][initialization-configuration] article on this topic.
+
 ```
   var lock = new Auth0Lock('clientID', 'domain');
 
@@ -71,12 +73,11 @@ Initialize `Auth0Lock` with `clientID` and account's `domain`. Also allow for `o
   }
 ```
 
-> Note: For a full detail of initialization configuration check the [wiki][initialization-configuration] article on this topic.
-
-
 ### **.show(options[, callback])**
 
 Open the widget on `signin` mode  with `signup` and `reset` button actions if enabled for the connection configuration.
+
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
 ```
   var lock = new Auth0Lock('clientID', 'domain');
@@ -91,36 +92,100 @@ Open the widget on `signin` mode  with `signup` and `reset` button actions if en
   })
 ```
 
-> Note: For a full detail of initialization configuration check the [wiki]() article on this topic.
-
-
 ### **.showSignin(options[, callback])**
 
 Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` button actions.
 
-> Usefull when your site has custom *signup*, and *reset* links at a different form.
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
+```
+  var lock = new Auth0Lock('clientID', 'domain');
+
+  // normal display
+  lock.show(options);
+
+  // no page redirect trigger
+  // useful for single page applications
+  lock.show(options, function(profile, token) {
+
+  })
+```
+> Usefull when your site has custom *signup*, and *reset* links at a different form.
 
 ### **.showSignup(options[, callback])**
 
 Open the widget on `signup` mode, but withouht the bottom `cancel` button action to go back to `signin`.
 
-> Usefull when your site has custom *signup*, and *reset* links at a different form.
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
+```
+  var lock = new Auth0Lock('clientID', 'domain');
+
+  // normal display
+  lock.show(options);
+
+  // no page redirect trigger
+  // useful for single page applications
+  lock.show(options, function(profile, token) {
+
+  })
+```
+> Usefull when your site has custom *signup*, and *reset* links at a different form.
 
 ### **.showReset(options[, callback])**
 
 Open the widget on `reset` mode, but withouht the bottom `cancel` button action to go back to `signin`.
 
->Usefull when your site has custom *signup*, and *reset* links at a different form.
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
+
+```
+  var lock = new Auth0Lock('clientID', 'domain');
+
+  // normal display
+  lock.show(options);
+
+  // no page redirect trigger
+  // useful for single page applications
+  lock.show(options, function(profile, token) {
+
+  })
+```
+
+> Usefull when your site has custom *signup*, and *reset* links at a different form.
 
 ### **.hide([callback])**
 
 Close the widget and invoke `callback` if defined.
 
+```
+  var lock = new Auth0Lock('clientID', 'domain');
+
+  // normal display
+  lock.show(options);
+
+  // no page redirect trigger
+  // useful for single page applications
+  lock.show(options, function(profile, token) {
+
+  })
+```
+
 ### **.logout([query])**
 
 Log out loggedin user with optional query parameters for the `GET` request.
+
+```
+  var lock = new Auth0Lock('clientID', 'domain');
+
+  // normal display
+  lock.show(options);
+
+  // no page redirect trigger
+  // useful for single page applications
+  lock.show(options, function(profile, token) {
+
+  })
+```
 
 ## Run examples
 
@@ -131,40 +196,18 @@ The example directory has a ready-to-go app. In order to run it you need [node](
 We use [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers at every push.
 We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
 
-## Releases
-
-To get a release to work, you need to follow these simple commands
-
-```
-  # clear and update dependencies
-  $ rm -rf node_modules
-  $ npm cache clean
-  $ npm i
-
-  # release new version
-  $ ./bin/version {patch,minor,major}
-
-  # update remote repository
-  $ git push origin master --tags
-
-  # ... and then npm (you might wan't to wait tests pass on CI)
-  $ npm publish
-```
-
-That's it!
-
 ## Resources
 
-* [UI customization](ui-customization) for the `Auth0Lock`.
-* [Development](development-notes) notes.
-* [Release process](release-notes) notes.
+* [UI customization][ui-customization] for the `Auth0Lock`.
+* [Development][development-notes] notes.
+* [Release process][release-process] notes.
 
 
 ## License
 
 MIT
 
-[initialization-configuration][https://github.com/auth0/lock/wiki/Initialization-configuration]
-[ui-customization][https://github.com/auth0/lock/wiki/UI-customization]
-[development-notes][https://github.com/auth0/lock/wiki/Development-notes]
-[release-notes][https://github.com/auth0/lock/wiki/Release-notes]
+[initialization-configuration]: https://github.com/auth0/lock/wiki/Initialization-configuration
+[ui-customization]: https://github.com/auth0/lock/wiki/UI-customization
+[development-notes]: https://github.com/auth0/lock/wiki/Development-notes
+[release-process]: https://github.com/auth0/lock/wiki/Release-process
