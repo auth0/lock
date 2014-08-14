@@ -21,19 +21,19 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 
 ## Install
 
-With [npm](https://npmjs.org):
+From [npm](https://npmjs.org):
 
 ```sh
 npm install auth0-lock
 ```
 
-With bower:
+From [bower](http://bower.io):
 
 ```sh
 bower install auth0-lock
 ```
 
-With our CDN:
+Or our CDN:
 
 ```html
 <!-- Latest major release -->
@@ -65,24 +65,24 @@ lock.show();
 Initialize `Auth0Lock` with `clientID` and account's `domain`.
 
 ```js
-  var lock = new Auth0Lock('clientID', 'domain');
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-  document.querySelector('a#login').onclick = function (e) {
-    e.preventDefault();
-    lock.show();
-  }
+document.querySelector('a#login').onclick = function (e) {
+  e.preventDefault();
+  lock.show();
+}
 ```
 
 Allow `options` to be passed to configure `auth0-js` lib dependency and other internals.
 
 ```js
-  // Or configure with instance options like...
+// Or configure with instance options like...
 
-  var lock = new Auth0Lock(clientID, domain, {
-    callbackOnLocationHash: true,
-    callbackURL: 'http://my-app.com/callback',
-    forceJSONP: true
-  });
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
+  callbackOnLocationHash: true,
+  callbackURL: 'http://my-app.com/callback',
+  forceJSONP: true
+});
 
 ```
 
@@ -96,16 +96,16 @@ Open the widget on `signin` mode  with `signup` and `reset` button actions if en
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
 ```js
-  var lock = new Auth0Lock('clientID', 'domain');
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-  // normal display
-  lock.show(options);
+// normal display
+lock.show(options);
 
-  // no page redirect trigger
-  // useful for single page applications
-  lock.show(options, function(profile, token) {
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-  })
+})
 ```
 
 ### **.showSignin(options[, callback])**
@@ -115,16 +115,16 @@ Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` b
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
 ```js
-  var lock = new Auth0Lock('clientID', 'domain');
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-  // normal display
-  lock.show(options);
+// normal display
+lock.show(options);
 
-  // no page redirect trigger
-  // useful for single page applications
-  lock.show(options, function(profile, token) {
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-  })
+})
 ```
 > Usefull when your site has custom *signup*, and *reset* links at a different form.
 
@@ -135,16 +135,16 @@ Open the widget on `signup` mode, but withouht the bottom `cancel` button action
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
 ```js
-  var lock = new Auth0Lock('clientID', 'domain');
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-  // normal display
-  lock.show(options);
+// normal display
+lock.show(options);
 
-  // no page redirect trigger
-  // useful for single page applications
-  lock.show(options, function(profile, token) {
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-  })
+})
 ```
 > Usefull when your site has custom *signup*, and *reset* links at a different form.
 
@@ -155,16 +155,16 @@ Open the widget on `reset` mode, but withouht the bottom `cancel` button action 
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
 ```js
-  var lock = new Auth0Lock('clientID', 'domain');
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-  // normal display
-  lock.show(options);
+// normal display
+lock.show(options);
 
-  // no page redirect trigger
-  // useful for single page applications
-  lock.show(options, function(profile, token) {
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-  })
+})
 ```
 
 > Usefull when your site has custom *signup*, and *reset* links at a different form.
@@ -174,16 +174,16 @@ Open the widget on `reset` mode, but withouht the bottom `cancel` button action 
 Close the widget and invoke `callback` if defined.
 
 ```js
-  var lock = new Auth0Lock('clientID', 'domain');
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-  // normal display
-  lock.show(options);
+// normal display
+lock.show(options);
 
-  // no page redirect trigger
-  // useful for single page applications
-  lock.show(options, function(profile, token) {
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-  })
+})
 ```
 
 ### **.logout([query])**
@@ -191,10 +191,10 @@ Close the widget and invoke `callback` if defined.
 Log out loggedin user with optional query parameters for the `GET` request.
 
 ```js
-  var lock = new Auth0Lock('clientID', 'domain');
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-  // Call logout with query parameters
-  lock.logout({ ref: window.location.href });
+// Call logout with query parameters
+lock.logout({ ref: window.location.href });
 ```
 
 ## Run examples
