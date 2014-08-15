@@ -191,30 +191,45 @@ module.exports = function (grunt) {
       },
       clean: {
         del: [
-          { src: 'auth0-lock/' + pkg.version + '/auth0-lock.js', },
-          { src: 'auth0-lock/' + pkg.version + '/auth0-lock.min.js', },
-          { src: 'auth0-lock/' + major_version + '/auth0-lock.js', },
-          { src: 'auth0-lock/' + major_version + '/auth0-lock.min.js', },
-          { src: 'auth0-lock/' + minor_version + '/auth0-lock.js', },
-          { src: 'auth0-lock/' + minor_version + '/auth0-lock.min.js', }
+          { src: 'js/lock-' + pkg.version + '.js' },
+          { src: 'js/lock-' + pkg.version + '.min.js' },
+          { src: 'js/lock-' + major_version + '.js' },
+          { src: 'js/lock-' + major_version + '.min.js' },
+          { src: 'js/lock-' + minor_version + '.js' },
+          { src: 'js/lock-' + minor_version + '.min.js' }
         ]
       },
       publish: {
         upload: [
           {
-            src:     'release/*',
-            dest:    'auth0-lock/' + pkg.version + '/',
-            options: { gzip: false }
+            src: 'release/auth0-lock.js',
+            dest: 'js/lock-' + pkg.version + '.js',
+            gzip: false
           },
           {
-            src:     'release/*',
-            dest:    'auth0-lock/' + major_version + '/',
-            options: { gzip: false }
+            src: 'release/auth0-lock.min.js',
+            dest: 'js/lock-' + pkg.version + '.min.js',
+            gzip: false
           },
           {
-            src:     'release/*',
-            dest:    'auth0-lock/' + minor_version + '/',
-            options: { gzip: false }
+            src: 'release/auth0-lock.js',
+            dest: 'js/lock-' + major_version + '.js',
+            gzip: false
+          },
+          {
+            src: 'release/auth0-lock.min.js',
+            dest: 'js/lock-' + major_version + '.min.js',
+            gzip: false
+          },
+          {
+            src: 'release/auth0-lock.js',
+            dest: 'js/lock-' + minor_version + '.js',
+            gzip: false
+          },
+          {
+            src: 'release/auth0-lock.min.js',
+            dest: 'js/lock-' + minor_version + '.min.js',
+            gzip: false
           }
         ]
       }
@@ -244,12 +259,12 @@ module.exports = function (grunt) {
           method:         'delete'
         },
         files: [
-          { dest:     'auth0-lock/' + pkg.version + '/auth0-lock.js', },
-          { dest:     'auth0-lock/' + pkg.version + '/auth0-lock.min.js', },
-          { dest:     'auth0-lock/' + major_version + '/auth0-lock.js', },
-          { dest:     'auth0-lock/' + major_version + '/auth0-lock.min.js', },
-          { dest:     'auth0-lock/' + minor_version + '/auth0-lock.js', },
-          { dest:     'auth0-lock/' + minor_version + '/auth0-lock.min.js', }
+          { dest: 'js/lock-' + pkg.version + '.js' },
+          { dest: 'js/lock-' + pkg.version + '.min.js' },
+          { dest: 'js/lock-' + major_version + '.js' },
+          { dest: 'js/lock-' + major_version + '.min.js' },
+          { dest: 'js/lock-' + minor_version + '.js' },
+          { dest: 'js/lock-' + minor_version + '.min.js' }
         ],
       },
     }
