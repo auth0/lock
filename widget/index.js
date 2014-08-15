@@ -555,7 +555,8 @@ Auth0Widget.prototype._showAdInDomainExperience = function() {
     self._signInSocial(strategy_name, connection);
   });
 
-  this._$('.a0-all', loginView).a0_on('click', function () {
+  this._$('.a0-all', loginView).a0_on('click', function (e) {
+    e.preventDefault();
     self._setLoginView();
   });
 
