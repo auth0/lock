@@ -512,7 +512,8 @@ Auth0Widget.prototype._showLoggedInExperience = function() {
       self._getLoggedInAuthParams(strategy_name, self._ssoData));
   });
 
-  this._$('.a0-all', loginView).a0_on('click', function () {
+  this._$('.a0-all', loginView).a0_on('click', function (e) {
+    e.preventDefault();
     self._setLoginView();
   });
 
