@@ -19,6 +19,4 @@ node_modules
 build/*
 
 # other paths to ignore
-test
-example
 bin
