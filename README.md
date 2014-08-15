@@ -1,247 +1,238 @@
-[![Auth0](https://i.cloudup.com/1vaSVATKTL.png)](http://auth0.com)
+[![Auth0](https://i.cloudup.com/9sk1vhcfbS.png)](http://auth0.com)
 
-[![NPM version](https://badge.fury.io/js/auth0-widget.js.png)](http://badge.fury.io/js/auth0-widget.js)
+# Auth0 Lock
+[![NPM version][npm-image]][npm-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Dependency Status][david-image]][david-url]
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
 
-[![Auth0](https://i.cloudup.com/fKuIOiaPrL.png)](http://auth0.com)
+[Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
 
-[Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Office365, Google Apps, Salesforce.
-
-The Auth0 Login Widget makes it easy to integrate SSO in your app. You won't have to worry about:
+The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to worry about:
 * Having a professional looking login dialog that displays well on any resolution and device.
 * Finding the right icons for popular social providers.
 * Remembering what was the identity provider the user chose the last time.
 * Solving the home realm discovery challenge with enterprise users (i.e.: asking the enterprise user the email, and redirecting to the right enterprise identity provider).
 * Implementing a standard sign in protocol (OpenID Connect / OAuth2 Login)
 
+[![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
+
+> Note: if you are using `auth0-widget` < v6.0.0, check this [repository](https://github.com/auth0/widget) instead for propper documentation.
+
+## Install
+
+From [npm](https://npmjs.org):
+
+```sh
+npm install auth0-lock
+```
+
+From [bower](http://bower.io):
+
+```sh
+bower install auth0-lock
+```
+
+Or our CDN:
+
+```html
+<!-- Latest major release -->
+<script src="http://cdn.auth0.com/auth0-lock/6/auth0-lock.min.js"></script>
+
+<!-- Latest minor release -->
+<script src="http://cdn.auth0.com/auth0-lock/6.0/auth0-lock.min.js"></script>
+
+<!-- Latest patch release -->
+<script src="http://cdn.auth0.com/auth0-lock/6.0.0/auth0-lock.min.js"></script>
+```
+
+> Note: You can also download the compiled builds from this repo for latest [auth0-lock.js][download1] and [auth0-lock.min.js][download2]. Although this is **not recomended**, and you should always get any stable release from the previous install methods.
+
 ## Usage
 
-Take `auth0-widget.js` or `auth0-widget.min.js` from the `build` directory and import it to your page.
+```js
+// Initialize Auth0Lock with your `clientID` and `domain`
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-### Initialize:
+// and deploy it
+var login = document.querySelector('a#login')
 
-Construct a new instance of the Auth0 Widget as follows:
+login.onclick = function (e) {
+  e.preventDefault();
+  lock.show();
+}
 
-~~~html
-<script src="http://cdn.auth0.com/w2/auth0-widget-4.1.js"></script>
-<script type="text/javascript">
-  var widget = new Auth0Widget({
-    domain:       'mine.auth0.com',
-    clientID:     'dsa7d77dsa7d7',
-    callbackURL:  'http://my-app.com/callback'
-  });
+```
 
-  // ...
-</script>
-~~~
+## API
 
-### Show Widget:
+### Auth0Lock(clientID, domain[, options])
 
-To invoke the widget, use the `show` method:
+Initialize `Auth0Lock` with `clientID` and account's `domain`.
 
-~~~javascript
-widget.signin();
-// or
-widget.signin(options, callback);
-~~~
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-#### Options
+lock.show();
+```
 
-* __connections__: Array of enabled connections that will be used for the widget. _Default: all enabled connections_.
-* __container__: The id of the DIV where the widget will be contained.
-* __icon__: Icon url. _Recommended: 32x32_.
-* __showIcon__: Show/Hide widget icon. _Default: false_.
-* __connection_scopes__: Scopes to request to each identity provider that are not configured for the connection.
-* __offline_mode__: If set, the `refresh_token` will be returned after a successful login.
+Allow `options` to be passed to configure `auth0-js` lib dependency and other internals.
 
-~~~javascript
-widget.signin({
-  connections: ['facebook', 'google-oauth2', 'twitter', 'Username-Password-Authentication', 'fabrikam.com'],
-  container: 'root',
-  icon: 'https://s3.amazonaws.com/assets.fabrikam.com/w2/img/logo-32.png',
-  showIcon: true,
-  offline_mode: true,
-  connection_scopes: {
-    'facebook': ['public_profile', 'user_friends'],
-    'google-oauth2': ['https://www.googleapis.com/auth/orkut'],
-    // none for twitter
-  }
-}, function () {
-  // The Auth0 Widget is now loaded.
-}, function(profile, id_token, access_token, state, refresh_token) {
+```js
+// Or configure with instance options like...
 
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
+  callbackOnLocationHash: true,
+  callbackURL: 'http://my-app.com/callback',
+  forceJSONP: true
 });
-~~~
 
-## `signup` and `reset`
+```
 
-It is also possible to start the widget in the __Sign Up mode__ or __Reset Password__ mode as follows:
+> Note: For a full detail on the initialization configuration check the [wiki][initialization-configuration] article for this topic.
 
-~~~javascript
-widget.signup(/* [same as the .signin method] */)
 
-// or
+### .show(options[, callback])
 
-widget.reset(/* [same as the .signin method] */)
-~~~
+Open the widget on `signin` mode  with `signup` and `reset` button actions if enabled for the connection configuration.
 
-## Single Page Applications
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
-You can handle the authorization process client-side as follows:
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-~~~javascript
-<script type="text/javascript">
+// normal display
+lock.show(options);
 
-  function callback(err, profile, id_token, access_token, state) {
-      if (err) {
-        // Handle authentication error
-        return;
-      }
-      alert('hello ' + profile.name);
-      //use result.id_token to call your rest api
-  }
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-  var widget = new Auth0Widget({
-    domain:       'mine.auth0.com',
-    clientID:     'dsa7d77dsa7d7',
-    callbackURL:  'http://my-app.com/',
-    callbackOnLocationHash: true
-  });
+})
+```
 
-  widget.signin({popup: true}, null, callback)
-</script>
-~~~
+### .showSignin(options[, callback])
 
-## i18n
+Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` button actions.
 
-__Note 1:__ most of the translations are machine generated, please help us to move this forward.
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
-Version `1.2.0` we added support for internationalization:
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-![](http://s3.amazonaws.com/blog.auth0.com/login_langs.gif)
+// normal display
+lock.show(options);
 
-You can call instantiate the widget with the `dict` option:
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-~~~javascript
-  var widget = new Auth0Widget({
-    domain:       'mine.auth0.com',
-    clientID:     'dsa7d77dsa7d7',
-    callbackURL:  'http://my-app.com/',
-    dict:         'es'
-  });
-~~~
+})
+```
+> Usefull when your site has custom *signup*, and *reset* links at a different form.
 
-where dict can be a string matching the name of the file in the `i18n` folder or it could be an object literal as follows:
+### .showSignup(options[, callback])
 
-~~~javascript
-  var widget = new Auth0Widget({
-    domain:       'mine.auth0.com',
-    clientID:     'dsa7d77dsa7d7',
-    callbackURL:  'http://my-app.com/',
-    dict:         {
-      "loadingTitle": "loading...",
-      "close": "close",
-      "signin": {
-      ..//same as in i18n json files
-    }
-  });
-~~~
+Open the widget on `signup` mode, but withouht the bottom `cancel` button action to go back to `signin`.
 
-## Customize the look and feel
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
-Apply your own style to the elements.
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-All classes and ids are prefixed with `a0-` to avoid conflicts with your own stylesheets.
+// normal display
+lock.show(options);
 
-Send us an screenshot! We would love to see what you can do.
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
 
-## Example
+})
+```
+> Usefull when your site has custom *signup*, and *reset* links at a different form.
+
+### .showReset(options[, callback])
+
+Open the widget on `reset` mode, but withouht the bottom `cancel` button action to go back to `signin`.
+
+> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
+
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
+
+// normal display
+lock.show(options);
+
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
+
+})
+```
+
+> Usefull when your site has custom *signup*, and *reset* links at a different form.
+
+### .hide([callback])
+
+Close the widget and invoke `callback` if defined.
+
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
+
+// normal display
+lock.show(options);
+
+// no page redirect trigger
+// useful for single page applications
+lock.show(options, function(profile, token) {
+
+})
+```
+
+### .logout([query])
+
+Log out loggedin user with optional query parameters for the `GET` request.
+
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
+
+// Call logout with query parameters
+lock.logout({ ref: window.location.href });
+```
+
+## Run examples
 
 The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed and **grunt** (`npm i grunt -g`), then execute `grunt example` from the root of this project.
 
-## Develop
-
-To run the tests that don't require [BrowserStack](http://browserstack.com), first install `npm install -g testem` and then run `grunt test`.
-
-To run the entire test suite run `grunt dev` and point your browser to `http://localhost:9999/test_harness.html`.
-
 ## Browser Compatibility
 
-We are using [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers on every push.
+We use [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers at every push.
+We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
 
-### Run integration tests
+## Resources
 
-Remove previously existing instances of `browserstack-cli`:
+* [UI customization][ui-customization] for the `Auth0Lock`.
+* [Development][development-notes] notes.
+* [Release process][release-process] notes.
 
-```sh
-npm remove -g browserstack-cli
-```
+<!-- Variables -->
 
-Install the following `browserstack-cli` fork:
+[download1]: https://raw.github.com/auth0/lock/master/build/auth0-lock.js
+[download2]: https://raw.github.com/auth0/lock/master/build/auth0-lock.min.js
 
-```sh
-npm install -g https://github.com/jfromaniello/browserstack-cli/tarball/master
-```
-Remove the old `~/.browserstack` folder to download the jarfile again:
+[npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/auth0-lock
+[coveralls-image]: https://img.shields.io/coveralls/auth0/lock.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/auth0/lock?branch=master
+[david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
+[david-url]: https://david-dm.org/auth0-lock
+[license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
+[license-url]: LICENSE
+[downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/auth0-lock
 
-```sh
-rm -rf ~/.browserstack
-```
-
-Setup browserstack:
-```sh
-browserstack setup
-```
-
-There, you will be prompted for `Username`, `Password`, `Tunnel private key` and `Tunnel API key`. Reach out to somebody at Auth0 in order to get those credentials.
-
-Finally, after doing that, to run the tests:
-
-```sh
-npm test
-```
-
-#### Troubleshooting
-
-* Problem: **message: Invalid or corrupt jarfile `~/.browserstack/BrowserStackTunnel.jar`**
-
-  Solution: Remove `~/.browserstack` and run ` browserstack setup` again.
-
-* Problem: **message: Timed out without seeing Press Ctrl-C to exit**
-
-  Solution: Are you uploading something big? Browserstack may need more upload bandwidth.
-
-* Problem: **message: Timed out without seeing Press Ctrl-C to exit**
-
-  Solution: That means there might be an issue with a running java process. Do:
-
-  ```sh
-  ps | egrep java
-  ```
-
-  Kill the java process, run `npm test` again and it should be solved.
-
-## Releases
-
-To get a release to work, you need to follow these simple commands
-
-```
-  # clear and update dependencies
-  $ rm -rf node_modules
-  $ npm cache clean
-  $ npm i
-
-  # release new version
-  $ ./bin/version {patch,minor,major}
-
-  # update remote repository
-  $ git push origin master --tags
-
-  # ... and then npm (you might wan't to wait tests pass on CI)
-  $ npm publish
-```
-
-That's it!
-
-## License
-
-MIT
+[initialization-configuration]: https://github.com/auth0/lock/wiki/Initialization-configuration
+[ui-customization]: https://github.com/auth0/lock/wiki/UI-customization
+[development-notes]: https://github.com/auth0/lock/wiki/Development-notes
+[release-process]: https://github.com/auth0/lock/wiki/Release-process

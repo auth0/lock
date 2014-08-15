@@ -1,4 +1,4 @@
-describe('auth0-Widget', function () {
+describe('Auth0Lock', function () {
 
   var domain =      'abc.auth0.com';
   var clientID =    '123456789';
@@ -6,11 +6,11 @@ describe('auth0-Widget', function () {
   var widget, client;
 
   var removeWidget = function () {
-    $('#a0-widget').remove();
+    $('#a0-lock').remove();
   };
 
   beforeEach(function () {
-    Auth0Widget.prototype.getClientConfiguration = function () {
+    Auth0Lock.prototype.getClientConfiguration = function () {
       this.$client = {
         strategies: [
           {
@@ -52,9 +52,7 @@ describe('auth0-Widget', function () {
       };
     };
 
-    widget = new Auth0Widget({
-      domain:      domain,
-      clientID:    clientID,
+    widget = new Auth0Lock(clientID, domain, {
       callbackURL: callbackURL,
       callbackOnLocationHash: true
     });
@@ -77,10 +75,10 @@ describe('auth0-Widget', function () {
   it('should remove widget when user close it', function (done) {
     widget
     .once('ready', function () {
-      bean.fire($('#a0-widget a.a0-close')[0], 'click');
+      bean.fire($('#a0-lock a.a0-close')[0], 'click');
     })
     .once('hidden', function () {
-      expect($('#a0-widget').length).to.equal(0);
+      expect($('#a0-lock').length).to.equal(0);
       done();
     })
     .show();
@@ -89,10 +87,10 @@ describe('auth0-Widget', function () {
   it('should show only notloggedin view if SSO data is not present', function (done) {
     widget
     .once('ready', function () {
-      expect($('#a0-widget .a0-notloggedin')[0]).to.exist;
-      expect($('#a0-widget .a0-loggedin')[0]).to.not.exist;
-      expect($('#a0-widget .a0-signup')[0]).to.not.exist;
-      expect($('#a0-widget .a0-reset')[0]).to.not.exist;
+      expect($('#a0-lock .a0-notloggedin')[0]).to.exist;
+      expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;
+      expect($('#a0-lock .a0-signup')[0]).to.not.exist;
+      expect($('#a0-lock .a0-reset')[0]).to.not.exist;
       done();
     })
     .show();
@@ -110,11 +108,11 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        expect($('#a0-widget .a0-notloggedin')[0]).to.not.exist;
-        expect($('#a0-widget .a0-loggedin')[0]).to.exist;
-        expect($('#a0-widget .a0-signup')[0]).to.not.exist;
-        expect($('#a0-widget .a0-reset')[0]).to.not.exist;
-        expect($('#a0-widget .a0-loggedin .a0-strategy [data-strategy]').attr('title')).to.equal('john@gmail.com (Google)');
+        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
+        expect($('#a0-lock .a0-loggedin')[0]).to.exist;
+        expect($('#a0-lock .a0-signup')[0]).to.not.exist;
+        expect($('#a0-lock .a0-reset')[0]).to.not.exist;
+        expect($('#a0-lock .a0-loggedin .a0-strategy [data-strategy]').attr('title')).to.equal('john@gmail.com (Google)');
         done();
       })
       .show();
@@ -150,20 +148,18 @@ describe('auth0-Widget', function () {
   });
 
   describe('When assetsUrl option is not specified', function () {
-    it('should use domain as assetsUrl if domain is not *.auth0.com', function () {
-      var widget = new Auth0Widget({
-        domain:      'abc.contoso.com',
-        clientID:    clientID,
+    beforeEach(function() {
+      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
         callbackURL: callbackURL
       });
+    });
 
-      expect(widget.$options.assetsUrl).to.equal('https://abc.contoso.com/');
+    it('should use domain as assetsUrl if domain is not *.auth0.com', function () {
+      expect(this.widget.$options.assetsUrl).to.equal('https://abc.contoso.com/');
     });
 
     it('should use default assetsUrl if domain is *.auth0.com', function () {
-      var widget = new Auth0Widget({
-        domain:      'abc.auth0.com:3000',
-        clientID:    clientID,
+      var widget = new Auth0Lock(clientID, 'abc.auth0.com:3000', {
         callbackURL: callbackURL
       });
 
@@ -173,19 +169,11 @@ describe('auth0-Widget', function () {
 
   describe('When cdn option is not specified', function () {
     it('should use domain as cdn if domain is not *.auth0.com', function () {
-      var widget = new Auth0Widget({
-        domain:      'abc.contoso.com',
-        clientID:    clientID,
-        callbackURL: callbackURL
-      });
-
-      expect(widget.$options.cdn).to.equal('https://abc.contoso.com/w2/');
+      expect(this.widget.$options.cdn).to.equal('https://abc.contoso.com/w2/');
     });
 
     it('should use default cdn if domain is *.auth0.com', function () {
-      var widget = new Auth0Widget({
-        domain:      'abc.auth0.com',
-        clientID:    clientID,
+      var widget = new Auth0Lock(clientID, 'abc.auth0.com', {
         callbackURL: callbackURL
       });
 
@@ -203,7 +191,7 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
       .show();
     });
@@ -218,7 +206,7 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function (mode) {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
       .show({ state: 'foo' });
     });
@@ -231,7 +219,7 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
       .show({ offline_mode: true });
     });
@@ -255,7 +243,7 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="twitter"]')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="twitter"]')[0], 'click');
       })
       .show({ connections: connections, connection_scopes: connection_scopes });
     });
@@ -276,7 +264,7 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
       .show({ connections: connections, connection_scopes: connection_scopes });
     });
@@ -291,9 +279,9 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show({ state: 'foo' });
     });
@@ -309,9 +297,9 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show({ state: 'foo' });
     });
@@ -326,9 +314,9 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function() {
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('peter@litware.com');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-password input').val('zzz');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('peter@litware.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('zzz');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show({
         userPwdConnectionName: 'adldap'
@@ -343,10 +331,10 @@ describe('auth0-Widget', function () {
       };
       widget
       .once('ready', function () {
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
         // we need this to check if password is ignored or not in validation
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show();
     });
@@ -361,10 +349,10 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
         // we need this to check if password is ignored or not in validation
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
-        $('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show({ state: 'foo' });
     });
@@ -377,7 +365,7 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
       .show({ extraParameters: { access_type: 'offline' } });
     });
@@ -388,13 +376,13 @@ describe('auth0-Widget', function () {
     it('should show only signup view when user clicks on signup button', function (done) {
       widget
       .once('signin ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
       })
       .once('signup ready', function (){
-        expect($('#a0-widget .a0-notloggedin')[0]).to.not.exist;
-        expect($('#a0-widget .a0-loggedin')[0]).to.not.exist;
-        expect($('#a0-widget .a0-reset')[0]).to.not.exist;
-        expect($('#a0-widget .a0-signup')[0]).to.exist;
+        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
+        expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;
+        expect($('#a0-lock .a0-reset')[0]).to.not.exist;
+        expect($('#a0-lock .a0-signup')[0]).to.exist;
         done();
       })
       .show();
@@ -410,12 +398,12 @@ describe('auth0-Widget', function () {
 
       widget
       .once('signin ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
       })
       .once('signup ready', function () {
-        $('#a0-widget .a0-signup .a0-emailPassword .a0-email input').val('john@fabrikam.com');
-        $('#a0-widget .a0-signup .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-widget .a0-signup .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-signup .a0-emailPassword .a0-email input').val('john@fabrikam.com');
+        $('#a0-lock .a0-signup .a0-emailPassword .a0-password input').val('xyz');
+        $('#a0-lock .a0-signup .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show();
     });
@@ -425,13 +413,13 @@ describe('auth0-Widget', function () {
     it('should show reset view when user clicks on change password button', function (done) {
       widget
       .once('signin ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
       })
       .once('reset ready',function () {
-        expect($('#a0-widget .a0-notloggedin')[0]).to.not.exist;;
-        expect($('#a0-widget .a0-loggedin')[0]).to.not.exist;;
-        expect($('#a0-widget .a0-signup')[0]).to.not.exist;;
-        expect($('#a0-widget .a0-reset')[0]).to.exist;;
+        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;;
+        expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;;
+        expect($('#a0-lock .a0-signup')[0]).to.not.exist;;
+        expect($('#a0-lock .a0-reset')[0]).to.exist;;
         done();
       })
       .show();
@@ -447,13 +435,13 @@ describe('auth0-Widget', function () {
 
       widget
       .once('ready', function () {
-        bean.fire($('#a0-widget .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
       })
       .once('reset ready', function () {
-        $('#a0-widget .a0-reset .a0-emailPassword .a0-email input').val('john@fabrikam.com');
-        $('#a0-widget .a0-reset .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-widget .a0-reset .a0-emailPassword .a0-repeatPassword input').val('xyz');
-        $('#a0-widget .a0-reset .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-reset .a0-emailPassword .a0-email input').val('john@fabrikam.com');
+        $('#a0-lock .a0-reset .a0-emailPassword .a0-password input').val('xyz');
+        $('#a0-lock .a0-reset .a0-emailPassword .a0-repeatPassword input').val('xyz');
+        $('#a0-lock .a0-reset .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show();
     });

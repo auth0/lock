@@ -35,26 +35,72 @@ switch (change) {
 
 var version_string = version.join('.');
 
-console.log('Version is now', version_string);
+/**
+ * Start sequence by checking outdated dependencies
+ */
 
-pkg.version = version_string;
+checkoutdated();
 
-write(pkg_file, JSON.stringify(pkg, null, 2));
+/**
+ * Check for outdated deps before releasing
+ */
 
-var build = exec('grunt build', function (err) {
-  if (err) {
+function checkoutdated() {
+  var outdated = exec('grunt outdated', onoutdated);
+  outdated.stdout.pipe(process.stdout);
+  outdated.stderr.pipe(process.stderr);
+
+  function onoutdated(err) {
+    if (!err) return bump();
     return process.exit(1);
   }
+}
 
-  var commit = exec('git commit -am "' + version_string + '" && git tag -a v' + version_string + ' -m "' + version_string + '"', function (err) {
-    if (err) {
-      return process.exit(1);
-    }
-  });
+/**
+ * Bump version in package.json
+ */
 
+function bump() {
+  console.log('Version is now', version_string);
+  pkg.version = version_string;
+  write(pkg_file, JSON.stringify(pkg, null, 2));
+  build();
+}
+
+/**
+ * Run build task with latest changes
+ */
+
+function build() {
+  var build = exec('grunt build', onbuild);
+  build.stdout.pipe(process.stdout);
+  build.stderr.pipe(process.stderr);
+
+  function onbuild(err) {
+    if (!err) return gitrelease();
+    return process.exit(1);
+  }
+}
+
+/**
+ * Release to github
+ */
+
+function gitrelease() {
+  var command = 'git commit -am "'
+    + version_string
+    + '" && git tag -a v'
+    + version_string
+    + ' -m "'
+    + version_string
+    + '"';
+
+  var commit = exec(command, oncommit);
   commit.stdout.pipe(process.stdout);
   commit.stderr.pipe(process.stderr);
-});
 
-build.stdout.pipe(process.stdout);
-build.stderr.pipe(process.stderr);
+  function oncommit(err) {
+    if (!err) return process.exit(0);
+    return process.exit(1);
+  }
+}

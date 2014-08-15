@@ -31,7 +31,6 @@ var LoadingPanel = require('./lib/mode-loading');
 var OptionsManager = require('./lib/options-manager');
 
 //browser incompatibilities fixes
-var is_small_screen = require('./lib/is-small-screen');
 var placeholderSupported = require('./lib/supports-placeholder');
 var has_animations = require('./lib/supports-animation');
 var ocreate = require('./lib/object-create');
@@ -41,13 +40,13 @@ var trim = require('trim');
 var bind = require('./lib/bind');
 
 /**
- * Expose `Auth0Widget` constructor
+ * Expose `Auth0Lock` constructor
  */
 
-module.exports = Auth0Widget;
+module.exports = Auth0Lock;
 
 /**
- * Create `Auth0Widget` instance
+ * Create `Auth0Lock` instance
  * resolving `options`.
  *
  * @param {Object} options
@@ -61,13 +60,13 @@ module.exports = Auth0Widget;
  *   Optional premise installs options:
  *     - cdn
  *     - assetsUrl
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @constructor
  */
 
-function Auth0Widget (clientID, domain, options) {
-  if (!(this instanceof Auth0Widget)) {
-    return new Auth0Widget(options);
+function Auth0Lock (clientID, domain, options) {
+  if (!(this instanceof Auth0Lock)) {
+    return new Auth0Lock(options);
   }
 
   // validate required options
@@ -119,27 +118,27 @@ function Auth0Widget (clientID, domain, options) {
 }
 
 /**
- * Expose current `Auth0Widget`'s version
+ * Expose current `Auth0Lock`'s version
  */
 
-Auth0Widget.version = require('package.version');
+Auth0Lock.version = require('package.version');
 
 /**
  * Inherit from `EventEmitter`
  */
 
-Auth0Widget.prototype = ocreate(EventEmitter.prototype);
+Auth0Lock.prototype = ocreate(EventEmitter.prototype);
 
 /**
  * Get client configuration.
  * XXX: Why not use jsonp? that woudld allow the
  * global namespace definition to be optional...
  *
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype.getClientConfiguration = function () {
+Auth0Lock.prototype.getClientConfiguration = function () {
   var self = this;
 
   // Monkey patch Auth.setClient
@@ -172,11 +171,11 @@ Auth0Widget.prototype.getClientConfiguration = function () {
  * @public
  */
 
-Auth0Widget.prototype.query = function(selector, context) {
+Auth0Lock.prototype.query = function(selector, context) {
   if ('string' === typeof selector) {
     return $(selector, context || this.$container);
   }
-  return $('#a0-widget', selector || this.$container);
+  return $('#a0-lock', selector || this.$container);
 };
 
 /**
@@ -189,7 +188,7 @@ Auth0Widget.prototype.query = function(selector, context) {
  * @public
  */
 
-Auth0Widget.prototype.render = function(tmpl, locals) {
+Auth0Lock.prototype.render = function(tmpl, locals) {
   var _locals = _.extend({}, this.options, locals);
   return tmpl(_locals);
 }
@@ -199,11 +198,11 @@ Auth0Widget.prototype.render = function(tmpl, locals) {
  * XXX: consider renaming!
  *
  * @param {Object} options
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype.insert = function() {
+Auth0Lock.prototype.insert = function() {
   if (this.$container) return this;
 
   var options = this.options;
@@ -224,9 +223,7 @@ Auth0Widget.prototype.insert = function() {
 
   } else {
     this.$container = document.createElement('div');
-    bonzo(this.$container).addClass('a0-widget-container');
-
-
+    bonzo(this.$container).addClass('a0-lock-container');
 
     this.$container.innerHTML = this.render(template, locals);
     document.body.appendChild(this.$container);
@@ -241,11 +238,11 @@ Auth0Widget.prototype.insert = function() {
  *
  * @param {Object} options
  * @param {Function} callback
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @public
  */
 
-Auth0Widget.prototype.show = function(options, callback) {
+Auth0Lock.prototype.show = function(options, callback) {
   var opts = _.extend({ mode: 'signin' }, options);
   return this.display(opts, callback);
 }
@@ -258,11 +255,11 @@ Auth0Widget.prototype.show = function(options, callback) {
  *
  * @param {Object} options
  * @param {Function} callback
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @public
  */
 
-Auth0Widget.prototype.showSignin = function(options, callback) {
+Auth0Lock.prototype.showSignin = function(options, callback) {
   var optional = { disableSignupAction: true, disableResetAction: true };
   var required = { mode: 'signin' };
 
@@ -279,11 +276,11 @@ Auth0Widget.prototype.showSignin = function(options, callback) {
  *
  * @param {Object} options
  * @param {Function} callback
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @public
  */
 
-Auth0Widget.prototype.showSignup = function(options, callback) {
+Auth0Lock.prototype.showSignup = function(options, callback) {
   var optional = { disableSignupAction: true, disableResetAction: true };
   var required = { mode: 'signup' };
 
@@ -300,11 +297,11 @@ Auth0Widget.prototype.showSignup = function(options, callback) {
  *
  * @param {Object} options
  * @param {Function} callback
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @public
  */
 
-Auth0Widget.prototype.showReset = function(options, callback) {
+Auth0Lock.prototype.showReset = function(options, callback) {
   var optional = { disableSignupAction: true, disableResetAction: true };
   var required = { mode: 'reset' };
 
@@ -317,21 +314,21 @@ Auth0Widget.prototype.showReset = function(options, callback) {
  * Hide the widget and call `callback` when done.
  *
  * @param {Function} callback
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @public
  */
 
-Auth0Widget.prototype.hide = function (callback) {
+Auth0Lock.prototype.hide = function (callback) {
   // immediatelly hide widget
-  bonzo(document.body).removeClass('a0-widget-open');
+  bonzo(document.body).removeClass('a0-lock-open');
 
   // Remove widget and/or it's container
   if (this.$container && this.options.container) {
-    // remove `#a0-widget`
+    // remove `#a0-lock`
     this.query().remove();
   } else if(this.$container) {
-    // remove `.a0-widget-container`
-    this.query().parent('.a0-widget-container').remove();
+    // remove `.a0-lock-container`
+    this.query().parent('.a0-lock-container').remove();
   }
 
   this.$container = null;
@@ -346,11 +343,11 @@ Auth0Widget.prototype.hide = function (callback) {
  * Proxy `auth0.js` instance `.logout()` method
  *
  * @param {Object} query
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @public
  */
 
-Auth0Widget.prototype.logout = function (query) {
+Auth0Lock.prototype.logout = function (query) {
   this.$auth0.logout(query);
   return this;
 };
@@ -362,11 +359,11 @@ Auth0Widget.prototype.logout = function (query) {
  *
  * @param {Object} options
  * @param {Function} callback
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype.display = function(options, callback) {
+Auth0Lock.prototype.display = function(options, callback) {
   var self = this;
 
   // pre-format options
@@ -383,6 +380,10 @@ Auth0Widget.prototype.display = function(options, callback) {
 
   // and right after that render mode
   function oninitialized() {
+    // focus once ready
+    this.once(this.options.mode + ' ready', bind(this.focusInput, this))
+
+    // resolve view
     if ('signin' === this.options.mode) {
       // if user in AD ip range
       if (this.$ssoData && this.$ssoData.connection) {
@@ -417,11 +418,11 @@ Auth0Widget.prototype.display = function(options, callback) {
  * setup...
  *
  * @param {Function} done
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype.initialize = function(done) {
+Auth0Lock.prototype.initialize = function(done) {
   var self = this;
   var options = this.options;
   var i18n = options.i18n;
@@ -448,7 +449,7 @@ Auth0Widget.prototype.initialize = function(done) {
   this.query('.a0-onestep a.a0-close').a0_on('click', bind(this.oncloseclick, this));
 
   // close popup with ESC key
-  if (!options.standalone) {
+  if (!options.closable) {
     this.query('').a0_on('keyup', bind(this.onescpressed, this));
   };
 
@@ -465,7 +466,7 @@ Auth0Widget.prototype.initialize = function(done) {
   this.query('.a0-panel.a0-onestep').addClass('a0-active');
 
   if (!options.container) {
-    bonzo(document.body).addClass('a0-widget-open');
+    bonzo(document.body).addClass('a0-lock-open');
   } else {
     this.query('.a0-active').removeClass('a0-overlay');
   }
@@ -514,11 +515,11 @@ Auth0Widget.prototype.initialize = function(done) {
  * `options`, and also set widget's title
  *
  * @param {Object} options
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype._signinPanel = function (options) {
+Auth0Lock.prototype._signinPanel = function (options) {
   var self = this;
   var panel = SigninPanel(this, { options: options || {} });
 
@@ -549,11 +550,11 @@ Auth0Widget.prototype._signinPanel = function (options) {
  * `options`, and also set widget's title
  *
  * @param {Object} options
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype._signupPanel = function (options) {
+Auth0Lock.prototype._signupPanel = function (options) {
   var self = this;
   var panel = SignupPanel(this, { options: options || {} });
 
@@ -569,11 +570,11 @@ Auth0Widget.prototype._signupPanel = function (options) {
  * `options`, and also set widget's title
  *
  * @param {Object} options
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype._resetPanel = function (options) {
+Auth0Lock.prototype._resetPanel = function (options) {
   var self = this;
   var panel = ResetPanel(this, { options: options || {} });
 
@@ -589,11 +590,11 @@ Auth0Widget.prototype._resetPanel = function (options) {
  * `options`, and also set widget's title
  *
  * @param {Object} options
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype._loadingPanel = function (options) {
+Auth0Lock.prototype._loadingPanel = function (options) {
   var self = this;
   var panel = LoadingPanel(this, { options: options || {} });
 
@@ -618,11 +619,11 @@ Auth0Widget.prototype._loadingPanel = function (options) {
  * `options`, and also set widget's title
  *
  * @param {Object} options
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype._loggedinPanel = function (options) {
+Auth0Lock.prototype._loggedinPanel = function (options) {
   var self = this;
   var panel = LoggedinPanel(this, { options: options || {} });
 
@@ -638,11 +639,11 @@ Auth0Widget.prototype._loggedinPanel = function (options) {
  * `options`, and also set widget's title
  *
  * @param {Object} options
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @private
  */
 
-Auth0Widget.prototype._kerberosPanel = function (options) {
+Auth0Lock.prototype._kerberosPanel = function (options) {
   var self = this;
   var panel = KerberosPanel(this, { options: options || {} });
 
@@ -662,7 +663,7 @@ Auth0Widget.prototype._kerberosPanel = function (options) {
  * @private
  */
 
-Auth0Widget.prototype.setPanel = function(panel, name) {
+Auth0Lock.prototype.setPanel = function(panel, name) {
   var el = 'function' === typeof panel.render
     ? panel.render()
     : panel;
@@ -683,7 +684,7 @@ Auth0Widget.prototype.setPanel = function(panel, name) {
  * @private
  */
 
-Auth0Widget.prototype.isAuth0Domain = function () {
+Auth0Lock.prototype.isAuth0Domain = function () {
   var domainUrl = utils.parseUrl('https://' + this.$options.domain);
   return utils.endsWith(domainUrl.hostname, '.auth0.com');
 };
@@ -696,7 +697,7 @@ Auth0Widget.prototype.isAuth0Domain = function () {
  * @private
  */
 
-Auth0Widget.prototype._ignoreEmailValidations = function (input) {
+Auth0Lock.prototype._ignoreEmailValidations = function (input) {
   return input.attr('type') !== 'email';
 };
 
@@ -707,7 +708,7 @@ Auth0Widget.prototype._ignoreEmailValidations = function (input) {
  * @private
  */
 
-Auth0Widget.prototype._showError = function (message) {
+Auth0Lock.prototype._showError = function (message) {
 
   // if no error, clean
   if (!message) {
@@ -735,7 +736,7 @@ Auth0Widget.prototype._showError = function (message) {
  * @private
  */
 
-Auth0Widget.prototype._showSuccess = function (message) {
+Auth0Lock.prototype._showSuccess = function (message) {
   // if no message, clean success span
   if (!message) return this.query('.a0-success').html('').addClass('a0-hide');
   // else, show and render success message
@@ -753,7 +754,7 @@ Auth0Widget.prototype._showSuccess = function (message) {
  * @private
  */
 
-Auth0Widget.prototype._focusError = function(input, message) {
+Auth0Lock.prototype._focusError = function(input, message) {
   // remove all `_focusError` resources
   if (!arguments.length) {
     // reset errors
@@ -783,7 +784,7 @@ Auth0Widget.prototype._focusError = function(input, message) {
  * @private
  */
 
-Auth0Widget.prototype._setTitle = function(title) {
+Auth0Lock.prototype._setTitle = function(title) {
   this.query('h1').html(title).css('display', '');
 };
 
@@ -795,7 +796,7 @@ Auth0Widget.prototype._setTitle = function(title) {
  * @private
  */
 
-Auth0Widget.prototype._signin = function (panel) {
+Auth0Lock.prototype._signin = function (panel) {
   var self = this;
   var valid = true;
 
@@ -866,7 +867,7 @@ Auth0Widget.prototype._signin = function (panel) {
  * @private
  */
 
-Auth0Widget.prototype._signinWithAuth0 = function (panel) {
+Auth0Lock.prototype._signinWithAuth0 = function (panel) {
   var self = this;
   var options = this.options;
   var email_input = panel.query('input[name=email]');
@@ -963,7 +964,7 @@ Auth0Widget.prototype._signinWithAuth0 = function (panel) {
  * @private
  */
 
-Auth0Widget.prototype._signinSocial = function (e, connection, extraParams, panel) {
+Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel) {
   var target = e.currentTarget || e.delegateTarget || e.target || e;
   var self = this;
   var options = panel.options;
@@ -1008,7 +1009,7 @@ Auth0Widget.prototype._signinSocial = function (e, connection, extraParams, pane
  * @private
  */
 
-Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCallback, extraParams, panel) {
+Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCallback, extraParams, panel) {
   var self = this;
   var email_input = panel.query('input[name=email]');
   var password_input = panel.query('input[name=password]');
@@ -1073,7 +1074,7 @@ Auth0Widget.prototype._signinPopupNoRedirect = function (connectionName, popupCa
  * @public
  */
 
-Auth0Widget.prototype.getClient = function () {
+Auth0Lock.prototype.getClient = function () {
   return this.$auth0;
 };
 
@@ -1085,7 +1086,7 @@ Auth0Widget.prototype.getClient = function () {
  * @public
  */
 
-Auth0Widget.prototype.parseHash = function (hash) {
+Auth0Lock.prototype.parseHash = function (hash) {
   return this.$auth0.parseHash(hash);
 };
 
@@ -1094,11 +1095,11 @@ Auth0Widget.prototype.parseHash = function (hash) {
  *
  * @param {String} token
  * @param {Function} callback
- * @return {Auth0Widget}
+ * @return {Auth0Lock}
  * @public
  */
 
-Auth0Widget.prototype.getProfile = function (token, callback) {
+Auth0Lock.prototype.getProfile = function (token, callback) {
   this.$auth0.getProfile(token, callback);
   return this;
 };
@@ -1110,7 +1111,7 @@ Auth0Widget.prototype.getProfile = function (token, callback) {
  * @private
  */
 
-Auth0Widget.prototype.oncloseclick = function(e) {
+Auth0Lock.prototype.oncloseclick = function(e) {
   stop(e);
   this.hide();
 }
@@ -1122,40 +1123,33 @@ Auth0Widget.prototype.oncloseclick = function(e) {
  * @private
  */
 
-Auth0Widget.prototype.onescpressed = function(e) {
+Auth0Lock.prototype.onescpressed = function(e) {
   if ((e.which == 27 || e.keycode == 27)) this.hide();
+}
+
+/**
+ * Set focus on firist `input` if supported
+ * but avoid mobie media screens and embeded
+ * by default
+ *
+ * @return {Auth0Lock}
+ * @private
+ */
+
+Auth0Lock.prototype.focusInput = function() {
+  if (this.options._focusDisabled()) return this;
+
+  var el = this.query('input').first();
+  try{
+    el.focus();
+  } catch(err) {}
+
+  return this;
 }
 
 /**
  * Private helpers
  */
-
-/**
- * Prevent errors if the script is placed on the <head>
- * and there is no body yet loaded
- *
- * XXX: Could this be called with `domready` core dependency?
- *
- * @param {NodeElement} el
- * @private
- */
-
-function hasTransitions (el) {
-  return require('has-transitions')(el);
-}
-
-/**
- * Set focus on `el` if supported
- * but avoid mobie media screens
- *
- * @param {NodeElement} el
- * @private
- */
-
-function setfocus (el) {
-  if (is_small_screen()) return;
-  try{ el.focus(); } catch(er) {}
-}
 
 /**
  * Add animate css class to shake `a0-panel`

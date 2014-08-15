@@ -37,8 +37,8 @@ module.exports = function (grunt) {
           port:  3000,
           protocol: 'https',
           hostname: '*',
-          cert: fs.readFileSync(__dirname + '/test/https_test_certs/server.crt').toString(),
-          key:  fs.readFileSync(__dirname + '/test/https_test_certs/server.key').toString()
+          cert: fs.readFileSync(__dirname + '/test/support/https-certs/server.crt').toString(),
+          key:  fs.readFileSync(__dirname + '/test/support/https-certs/server.key').toString()
         }
       }
     },
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
       },
       debug: {
         files: {
-          'build/auth0-widget.js': ['standalone.js']
+          'build/auth0-lock.js': ['standalone.js']
         }
       },
     },
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
     // uglify: {
     //   min: {
     //     files: {
-    //       'build/auth0-widget.min.js': ['build/auth0-widget.js']
+    //       'build/auth0-lock.min.js': ['build/auth0-lock.js']
     //     }
     //   }
     // },
@@ -122,8 +122,8 @@ module.exports = function (grunt) {
     copy: {
       example: {
         files: {
-          'example/auth0-widget.min.js': 'build/auth0-widget.min.js',
-          'example/auth0-widget.js':     'build/auth0-widget.js'
+          'example/auth0-lock.min.js': 'build/auth0-lock.min.js',
+          'example/auth0-lock.js':     'build/auth0-lock.js'
         }
       },
       release: {
@@ -136,7 +136,7 @@ module.exports = function (grunt) {
     },
     exec: {
       'uglify': {
-        cmd: 'node_modules/.bin/uglifyjs build/auth0-widget.js  -b beautify=false,ascii_only=true > build/auth0-widget.min.js',
+        cmd: 'node_modules/.bin/uglifyjs build/auth0-lock.js  -b beautify=false,ascii_only=true > build/auth0-lock.min.js',
         stdout: true,
         stderr: true
       },
@@ -162,7 +162,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["release/", "build/", "lib/css/main.css", "lib/css/main.min.css", "example/auth0-widget.js"]
+      build: ["release/", "build/", "lib/css/main.css", "lib/css/main.min.css", "example/auth0-lock.js"]
     },
     watch: {
       another: {
@@ -191,24 +191,41 @@ module.exports = function (grunt) {
       },
       clean: {
         del: [
-          { src:     'w2/auth0-widget-' + pkg.version + '.js', },
-          { src:     'w2/auth0-widget-' + pkg.version + '.min.js', },
-          { src:     'w2/auth0-widget-' + major_version + '.js', },
-          { src:     'w2/auth0-widget-' + major_version + '.min.js', },
-          { src:     'w2/auth0-widget-' + minor_version + '.js', },
-          { src:     'w2/auth0-widget-' + minor_version + '.min.js', }
+          { src: 'auth0-lock/' + pkg.version + '/auth0-lock.js', },
+          { src: 'auth0-lock/' + pkg.version + '/auth0-lock.min.js', },
+          { src: 'auth0-lock/' + major_version + '/auth0-lock.js', },
+          { src: 'auth0-lock/' + major_version + '/auth0-lock.min.js', },
+          { src: 'auth0-lock/' + minor_version + '/auth0-lock.js', },
+          { src: 'auth0-lock/' + minor_version + '/auth0-lock.min.js', }
         ]
       },
       publish: {
         upload: [
           {
             src:     'release/*',
-            dest:    'w2/',
+            dest:    'auth0-lock/' + pkg.version + '/',
+            options: { gzip: false }
+          },
+          {
+            src:     'release/*',
+            dest:    'auth0-lock/' + major_version + '/',
+            options: { gzip: false }
+          },
+          {
+            src:     'release/*',
+            dest:    'auth0-lock/' + minor_version + '/',
             options: { gzip: false }
           }
         ]
       }
     },
+    /* Checks for outdated npm dependencies before release. */
+    outdated: {
+      release: {
+        development: false
+      }
+    },
+
     /* Check if the repository is clean after build. If the version found in the build folder was not updated
      * this will make the build fail. */
     checkrepo: {
@@ -216,6 +233,7 @@ module.exports = function (grunt) {
         clean: true
       }
     },
+    /* Purge MAXCDN cache. */
     maxcdn: {
       purgeCache: {
         options: {
@@ -226,12 +244,12 @@ module.exports = function (grunt) {
           method:         'delete'
         },
         files: [
-          { dest:     'w2/auth0-widget-' + pkg.version + '.js', },
-          { dest:     'w2/auth0-widget-' + pkg.version + '.min.js', },
-          { dest:     'w2/auth0-widget-' + major_version + '.js', },
-          { dest:     'w2/auth0-widget-' + major_version + '.min.js', },
-          { dest:     'w2/auth0-widget-' + minor_version + '.js', },
-          { dest:     'w2/auth0-widget-' + minor_version + '.min.js', }
+          { dest:     'auth0-lock/' + pkg.version + '/auth0-lock.js', },
+          { dest:     'auth0-lock/' + pkg.version + '/auth0-lock.min.js', },
+          { dest:     'auth0-lock/' + major_version + '/auth0-lock.js', },
+          { dest:     'auth0-lock/' + major_version + '/auth0-lock.min.js', },
+          { dest:     'auth0-lock/' + minor_version + '/auth0-lock.js', },
+          { dest:     'auth0-lock/' + minor_version + '/auth0-lock.min.js', }
         ],
       },
     }

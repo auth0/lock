@@ -6,11 +6,11 @@
  * Those who use browserify will install with npm and require the module,
  * the package.json file points to index.js.
  */
-var Auth0Widget = require('./index');
+var Auth0Lock = require('./index');
 
 // use amd or just throught to window object.
 if (typeof global.window.define == 'function' && global.window.define.amd) {
-  global.window.define('auth0-widget', function () { return Auth0Widget; });
+  global.window.define('auth0-lock', function () { return Auth0Lock; });
 } else if (global.window) {
-  global.window.Auth0Widget = Auth0Widget;
+  global.window.Auth0Lock = Auth0Lock;
 }

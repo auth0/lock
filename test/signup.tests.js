@@ -10,10 +10,8 @@ describe('sign up', function () {
 
     this.auth0.hide(onhidden);
     function onhidden() {
-      self.auth0 = new Auth0Widget({
-        domain:      'mdocs.auth0.com',
-        callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
+      self.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
+        callbackURL: 'http://localhost:3000/'
       });
 
       done();
@@ -30,13 +28,13 @@ describe('sign up', function () {
 
     auth0
     .once('signin ready', function () {
-      bean.fire($('#a0-widget .a0-sign-up')[0], 'click');
+      bean.fire($('#a0-lock .a0-sign-up')[0], 'click');
     })
     .once('signup ready', function () {
       $('#a0-signup_easy_email').val('pepo@example.com');
       $('#a0-signup_easy_password').val('123');
       auth0.once('loading ready', function () {
-        expect($('#a0-widget h1').html()).to.be(auth0.options.i18n.t('signup:title'));
+        expect($('#a0-lock h1').html()).to.be(auth0.options.i18n.t('signup:title'));
         done();
       });
       bean.fire($('.a0-signup form')[0], 'submit');
@@ -53,7 +51,7 @@ describe('sign up', function () {
       done();
     })
     .once('signin ready', function () {
-      bean.fire($('#a0-widget .a0-sign-up')[0], 'click');
+      bean.fire($('#a0-lock .a0-sign-up')[0], 'click');
     })
     .once('signup ready', function () {
       $('#a0-signup_easy_email').val('pepo@example.com');
@@ -73,7 +71,7 @@ describe('sign up', function () {
 
     this.auth0
     .once('signin ready', function (mode) {
-      bean.fire($('#a0-widget .a0-sign-up')[0], 'click');
+      bean.fire($('#a0-lock .a0-sign-up')[0], 'click');
     })
     .once('signup ready', function() {
       bean.fire($('.a0-signup [data-strategy="google-oauth2"]')[0], 'click');

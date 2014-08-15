@@ -1,16 +1,14 @@
 describe('reset', function () {
   afterEach(function () {
-    $('#a0-widget').remove();
+    $('#a0-lock').remove();
     global.window.location.hash = '';
     global.window.Auth0 = null;
   });
 
   beforeEach(function () {
-    $('#a0-widget').parents('div').remove();
-    this.auth0 = new Auth0Widget({
-      domain:      'mdocs.auth0.com',
-      callbackURL: 'http://localhost:3000/',
-      clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
+    $('#a0-lock').parents('div').remove();
+    this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
+      callbackURL: 'http://localhost:3000/'
     });
   });
 
@@ -18,8 +16,7 @@ describe('reset', function () {
     var auth0 = this.auth0
 
     auth0
-    .once('signin ready', function () {
-      bean.fire($('#a0-widget .a0-forgot-pass')[0], 'click');
+      bean.fire($('#a0-lock .a0-forgot-pass')[0], 'click');
     })
     .once('reset ready', function () {
       $('#a0-reset_easy_email').val('ohmy@mandatory.com');
@@ -28,7 +25,7 @@ describe('reset', function () {
 
       auth0
       .once('loading ready', function () {
-        expect($('#a0-widget h1').html()).to.be(auth0.options.i18n.t('reset:title'));
+        expect($('#a0-lock h1').html()).to.be(auth0.options.i18n.t('reset:title'));
         done();
       });
 

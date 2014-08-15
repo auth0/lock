@@ -1,4 +1,4 @@
-#widget{
+#lock{
   // reset and normalize
   @import "normalize.less";
   @import "reset.less";
@@ -11,17 +11,17 @@
 }
 
 @media screen and (max-width: 480px) {
-  body.widget-open {
+  body.lock-open {
     & > *{
       display: none;
     }
 
-    .widget-container {
+    .lock-container {
       display: block;
     }
   }
 
-  .widget-container {
+  .lock-container {
     background: white;
     opacity: 1;
   }

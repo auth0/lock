@@ -1,10 +1,8 @@
 describe('db connections', function () {
   describe('.show() options', function () {
     it('should disable signup', function (done) {
-      this.widget = new Auth0Widget({
-        domain:      'mdocs.auth0.com',
-        callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
+      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
+        callbackURL: 'http://localhost:3000/'
       }).once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(0);
         expect($('.a0-divider').length).to.equal(0);
@@ -16,10 +14,8 @@ describe('db connections', function () {
     });
 
     it('should show signup', function (done) {
-      this.widget = new Auth0Widget({
-        domain:      'mdocs.auth0.com',
-        callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
+      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
+        callbackURL: 'http://localhost:3000/'
       }).once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(1);
         done();
@@ -38,17 +34,14 @@ describe('db connections', function () {
 
   describe.skip('when username or password is empty', function () {
     after(function () {
-      $('#a0-widget').parents('div').remove();
+      $('#a0-lock').parents('div').remove();
       global.window.location.hash = '';
       global.window.Auth0 = null;
     });
 
     before(function () {
-      this.auth0 = new Auth0Widget({
-        domain:      'mdocs.auth0.com',
-        callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-        rememberLastLogin: false
+      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
+        callbackURL: 'http://localhost:3000/'
       });
     });
 
@@ -70,23 +63,23 @@ describe('db connections', function () {
         var form = $('.a0-notloggedin form')[0];
         bean.fire(form, 'submit');
       })
-      .show();
+      .show({
+        rememberLastLogin: false
+      });
     });
 
   });
 
   describe('when username or password is wrong', function () {
     after(function () {
-      $('#a0-widget').parents('div').remove();
+      $('#a0-lock').parents('div').remove();
       global.window.location.hash = '';
       global.window.Auth0 = null;
     });
 
     before(function (done) {
-      this.auth0 = new Auth0Widget({
-        domain:      'mdocs.auth0.com',
-        callbackURL: 'http://localhost:3000/',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup'
+      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
+        callbackURL: 'http://localhost:3000/'
       });
       done();
     });

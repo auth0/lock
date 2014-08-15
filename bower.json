@@ -1,4 +1,5 @@
 {
-  "name": "auth0-widget.js",
-  "main": "build/auth0-widget.js"
+  "name": "auth0-lock",
+  "version": "5.2.1",
+  "main": "build/auth0-lock.js"
 }

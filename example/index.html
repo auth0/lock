@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Test auth0-widget</title>
+    <title>Test auth0-lock</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="//auth0.com/app.css"/>
     <link rel="stylesheet" type="text/css" href="/index.css"/>
@@ -33,7 +33,7 @@
           <ul class="page-list">
             <li><a href="/">Auth0</a></li>
             <li>»</li>
-            <li><a href="#">Widget</a></li>
+            <li><a href="#">Lock</a></li>
           </ul>
           <ul class="external-links">
             <li><a href="http://twitter.com/authzero" target="_blank">Twitter</a></li>
@@ -44,7 +44,7 @@
         </div>
         <div class="row">
           <div class="col-sm-3">
-            <div class="sidebar-box"><strong>Widget</strong>
+            <div class="sidebar-box"><strong>Lock</strong>
               <ul>
                 <li><a href="https://docs.auth0.com/login-widget2"><i></i><span>Documentation</span></a></li>
               </ul>
@@ -77,13 +77,13 @@
           </div>
           <div class="col-sm-9">
             <div class="text-content">
-              <h1>Widget</h1>
+              <h1>Lock</h1>
 
               <h4>Add this HTML line to your head</h4>
               <pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /&gt;</pre>
 
-              <h4>Add the script tag to your page to get started with Auth0 Login Widget.</h4>
-              <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-widget-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
+              <h4>Add the script tag to your page to get started with Auth0 Login Lock.</h4>
+              <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-lock-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
               <h4>User Info</h4>
 
               <div id="userinfo">
@@ -99,7 +99,7 @@
         </div>
       </div>
     </div>
-    <script src="/auth0-widget.js"></script>
+    <script src="/auth0-lock.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
     <script>
       $(function() {
@@ -118,7 +118,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -131,7 +131,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -144,7 +144,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -157,7 +157,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -170,7 +170,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -185,7 +185,7 @@
             var cid = credentials.free.clientID;
             var domain = credentials.free.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -200,7 +200,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -215,7 +215,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -231,7 +231,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -246,7 +246,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -262,7 +262,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -284,7 +284,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -306,7 +306,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -322,7 +322,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -338,7 +338,7 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -360,7 +360,7 @@
                 var l = langs.shift();
                 if (!l) return;
 
-                (new Auth0Widget(cid, domain, {
+                (new Auth0Lock(cid, domain, {
                   callbackURL: window.location.href,
                   callbackOnLocationHash: true
                 }))
@@ -388,7 +388,7 @@
               }
             };
 
-            var widget = new Auth0Widget(cid, domain, {
+            var widget = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
@@ -402,7 +402,7 @@
           var cid = credentials.mdocs.clientID;
           var domain = credentials.mdocs.domain;
 
-          var widget = new Auth0Widget(cid, domain, {
+          var widget = new Auth0Lock(cid, domain, {
             callbackURL: window.location.href,
             callbackOnLocationHash: true
           });
@@ -410,7 +410,7 @@
           var cid2 = credentials.free.clientID;
           var domain2 = credentials.free.domain;
 
-          var widget2 = new Auth0Widget(cid2, domain2, {
+          var widget2 = new Auth0Lock(cid2, domain2, {
             callbackURL: window.location.href,
             callbackOnLocationHash: true
           });
