@@ -91,7 +91,10 @@
               </div>
 
               <div class="clearfix">
-                <div id="login-container" style="float: left; max-width: 360px; min-width: 320px; min-height: 500px; margin-top: 20px;"></div>
+                <div id="login-container1" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
+                <div id="login-container2" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
+                <div id="login-container3" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
+                <div id="login-container4" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
               </div>
 
             </div>
@@ -322,33 +325,44 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
+            var widget1 = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
 
-            trackEvents(widget);
-            widget.show({
-              dict: 'it',
-              container: 'login-container'
-            });
-          });
-
-          $('#login-button-inside-container-chrome').on('click', function() {
-            var cid = credentials.mdocs.clientID;
-            var domain = credentials.mdocs.domain;
-
-            var widget = new Auth0Lock(cid, domain, {
+            var widget2 = new Auth0Lock(cid, domain, {
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
 
-            trackEvents(widget);
-            widget.show({
-              dict: 'es',
-              container: 'login-container',
-              chrome: true
+            var widget3 = new Auth0Lock(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
             });
+
+            var widget4 = new Auth0Lock(cid, domain, {
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true
+            });
+
+            trackEvents(widget1);
+            trackEvents(widget2);
+            trackEvents(widget3);
+            trackEvents(widget4);
+            widget.show({
+              container: 'login-container1'
+            });
+            widget2.showSignin({
+              container: 'login-container2'
+            });
+            widget3.showSignup({
+              container: 'login-container3'
+            });
+            widget4.showReset({
+              container: 'login-container4'
+            });
+
+
           });
 
           $('#login-button-all').on('click', function() {
