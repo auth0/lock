@@ -31,7 +31,7 @@ module.exports = function (grunt) {
           port: 3000
         }
       },
-      example_https: {
+      "example-https": {
         options: {
           base: ['example', 'example/build', 'build'],
           port:  3000,
@@ -140,23 +140,13 @@ module.exports = function (grunt) {
         stdout: true,
         stderr: true
       },
+      'test-integration': {
+        cmd: 'node_modules/.bin/zuul -- test/tests.js',
+        stdout: true,
+        stderr: true
+      },
       'test-phantom': {
-        cmd: 'testem -f testem_dev.yml ci -l PhantomJS',
-        stdout: true,
-        stderr: true
-      },
-      'test-ie': {
-        cmd: 'testem ci -l bs_ie_8,bs_ie_9,bs_ie_10', //disable ,bs_ie_8 is not working
-        stdout: true,
-        stderr: true
-      },
-      'test-desktop': {
-        cmd: 'testem ci -l bs_chrome,bs_firefox', //disable ,bs_ie_9,bs_ie_10,bs_ie_8 Browserstack is not working
-        stdout: true,
-        stderr: true
-      },
-      'test-mobile': {
-        cmd: 'testem ci -l bs_iphone_5', //disable ,bs_android_41: is not working
+        cmd: 'node_modules/.bin/zuul --phantom --port 9999 -- test/tests.js',
         stdout: true,
         stderr: true
       }
@@ -240,14 +230,6 @@ module.exports = function (grunt) {
         development: false
       }
     },
-
-    /* Check if the repository is clean after build. If the version found in the build folder was not updated
-     * this will make the build fail. */
-    checkrepo: {
-      cdn: {
-        clean: true
-      }
-    },
     /* Purge MAXCDN cache. */
     maxcdn: {
       purgeCache: {
@@ -281,12 +263,13 @@ module.exports = function (grunt) {
     if (key !== "grunt" && key.indexOf("grunt") === 0) grunt.loadNpmTasks(key);
   }
 
-  grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify",
-                                       "browserify:debug", "exec:uglify"]);
+  grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify", "browserify:debug", "exec:uglify"]);
   grunt.registerTask("example",       ["less:example", "connect:example", "build", "watch"]);
-  grunt.registerTask("example_https", ["less:example", "connect:example_https", "build", "watch"]);
+  grunt.registerTask("example-https", ["less:example", "connect:example-https", "build", "watch"]);
+
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
-  grunt.registerTask("test",          ["build", "exec:test-phantom"]);
-  grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
-  grunt.registerTask("cdn",           ["build", "copy:release", "checkrepo", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
+  grunt.registerTask("integration",   ["exec:test-integration"]);
+  grunt.registerTask("phantom",       ["build", "exec:test-phantom"]);
+
+  grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
 };

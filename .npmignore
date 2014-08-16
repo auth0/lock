@@ -16,7 +16,7 @@ npm-debug.log
 node_modules
 
 #do not include bundle
-build/*
+build
 
 # other paths to ignore
 bin
