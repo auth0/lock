@@ -1,5 +1,5 @@
 
-describe.only('Auth0Lock', function () {
+describe('Auth0Lock', function () {
   var domain =      'abc.auth0.com';
   var clientID =    '123456789';
   var callbackURL = 'http://myapp.com/callback';
@@ -168,6 +168,12 @@ describe.only('Auth0Lock', function () {
   });
 
   describe('When cdn option is not specified', function () {
+    beforeEach(function() {
+      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
+        callbackURL: callbackURL
+      });
+    });
+
     it('should use domain as cdn if domain is not *.auth0.com', function () {
       expect(this.widget.$options.cdn).to.equal('https://abc.contoso.com/w2/');
     });
