@@ -1,9 +1,10 @@
 ui: mocha-bdd
 scripts:
-  - "/test/support/config.js"
   - "/test/support/jquery-1.10.1.min.js"
   - "/node_modules/expect.js/expect.js"
   - "/node_modules/bean/bean.min.js"
+  - "/node_modules/mocha/mocha.js"
+  - "/test/support/config.js"
   - "/build/auth0-lock.js"
 browsers:
   - name: chrome

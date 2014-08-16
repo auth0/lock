@@ -141,12 +141,12 @@ module.exports = function (grunt) {
         stderr: true
       },
       'test-integration': {
-        cmd: 'node_modules/.bin/zuul -- test/tests.js',
+        cmd: 'node_modules/.bin/zuul -- test/*.js',
         stdout: true,
         stderr: true
       },
       'test-phantom': {
-        cmd: 'node_modules/.bin/zuul --phantom --port 9999 -- test/tests.js',
+        cmd: 'node_modules/.bin/zuul --phantom 9999 -- test/*.js',
         stdout: true,
         stderr: true
       }
@@ -269,7 +269,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
   grunt.registerTask("integration",   ["exec:test-integration"]);
-  grunt.registerTask("phantom",       ["build", "exec:test-phantom"]);
+  grunt.registerTask("phantom",       ["exec:test-phantom"]);
 
   grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
 };

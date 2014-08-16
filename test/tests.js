@@ -1,5 +1,5 @@
-describe('Auth0Lock', function () {
 
+describe.only('Auth0Lock', function () {
   var domain =      'abc.auth0.com';
   var clientID =    '123456789';
   var callbackURL = 'http://myapp.com/callback';

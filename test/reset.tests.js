@@ -16,6 +16,7 @@ describe('reset', function () {
     var auth0 = this.auth0
 
     auth0
+    .once('ready', function() {
       bean.fire($('#a0-lock .a0-forgot-pass')[0], 'click');
     })
     .once('reset ready', function () {
