@@ -7446,6 +7446,34 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy {
+  text-align: left;
+  margin-top: 5px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy li,
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 5px;
+  list-style: none;
+  color: red;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy li.a0-checked,
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy li.a0-checked li {
+  color: black;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy li:before {
+  content: '\2610';
+  font-size: 15px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy li.a0-checked:before {
+  content: '\2611';
+}
+
 #a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-password {
   margin-bottom: 0;
 }
