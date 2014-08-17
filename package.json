@@ -29,7 +29,8 @@
     "domready": "~0.2.13",
     "sizzle": "^2.0.0",
     "trim": "0.0.1",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "password-sheriff": "^0.3.1"
   },
   "devDependencies": {
     "brfs": "0.0.8",

@@ -509,6 +509,28 @@
     display: block;
   }
 
+  .password_policy {
+    text-align: left;
+    margin-top: 5px;
+    li, ul {
+      margin: 0;
+      padding: 0;
+      padding-left: 5px;
+      list-style: none;
+      color: red;
+    }
+    li.checked, li.checked li {
+      color: black;
+    }
+    li:before {
+      content: '\2610';
+      font-size: 15px;
+    }
+    li.checked:before {
+      content: '\2611';
+    }
+  }
+
   /*==========  Forgot Password  ==========*/
 
   #change_password{
