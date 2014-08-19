@@ -58,5 +58,6 @@
     "headerText":                  "Please enter your email and the new password. We will send you an email to confirm the password change.",
     "serverErrorText":             "There was an error processing the reset password.",
     "userDoesNotExistErrorText":   "User does not exist.",
+    "invalidPassword":             "Password is too weak."
   }
 }
