@@ -13,4 +13,4 @@ browsers:
   - name: firefox
     version: 28..latest
   - name: ie
-    version: 8..latest
+    version: 9..latest
