@@ -49,15 +49,9 @@ module.exports = Auth0Lock;
  * Create `Auth0Lock` instance
  * resolving `options`.
  *
+ * @param {String} clientID
+ * @param {String} domain
  * @param {Object} options
- *   Auth0.js client options:
- *     - clientID
- *     - domain
- *     - callbackURL
- *     - forceJSONP
- *     - callbackOnLocationHash
- *
- *   Optional premise installs options:
  *     - cdn
  *     - assetsUrl
  * @return {Auth0Lock}
@@ -86,10 +80,7 @@ function Auth0Lock (clientID, domain, options) {
   // Holds auth0-js' instance
   this.$auth0 = new Auth0({
     clientID:     this.$options.clientID,
-    domain:       this.$options.domain,
-    forceJSONP:   this.$options.forceJSONP,
-    callbackURL:  this.$options.callbackURL,
-    callbackOnLocationHash: this.$options.callbackOnLocationHash
+    domain:       this.$options.domain
   });
 
   // use domain as assetsUrl if no assetsUrl provided
@@ -844,7 +835,7 @@ Auth0Lock.prototype._signin = function (panel) {
   // There has to be an action!
   if (!valid) return;
 
-  if (this.options.popup && this.$options.callbackOnLocationHash) {
+  if (this.options.popup && this.options.callbackOnLocationHash) {
     return this._signinPopupNoRedirect(connection, this.options.popupCallback, panel);
   }
 
@@ -984,7 +975,7 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
   if (strategy) {
     // If we are in popup mode and callbackOnLocationHash was specified
     // we need to pass a callback.
-    if (self.options.popup && self.$options.callbackOnLocationHash) {
+    if (self.options.popup && self.options.callbackOnLocationHash) {
       this._signinPopupNoRedirect(connectionName, self.options.popupCallback, extraParams, panel);
     } else {
       var loginOptions = _.extend({}, {
