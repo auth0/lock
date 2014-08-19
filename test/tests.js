@@ -17,11 +17,7 @@ describe('Auth0Lock', function () {
   var callbackURL = 'http://myapp.com/callback';
   var widget, client;
 
-  var removeWidget = function () {
-    $('#a0-lock').remove();
-  };
-
-  beforeEach(function () {
+  beforeEach(function (done) {
     Auth0Lock.prototype.getClientConfiguration = function () {
       this.$client = {
         strategies: [
@@ -64,24 +60,53 @@ describe('Auth0Lock', function () {
       };
     };
 
-    widget = new Auth0Lock(clientID, domain, {
-      callbackURL: callbackURL,
-      callbackOnLocationHash: true
-    });
+    widget = new Auth0Lock(clientID, domain);
 
     client = widget.$auth0;
     client.getSSOData = function (withAd, callback) {
       callback(null, { sso: false });
     };
+    done();
   });
 
-  afterEach(function () {
+  afterEach(function (done) {
     global.window.location.hash = '';
-    removeWidget();
+    widget && widget.hide();
+    $('#a0-lock').remove();
+    done();
   });
 
-  it('should initialize client with callbackOnLocationHash', function () {
-    expect(client._callbackOnLocationHash).to.be(true);
+  it('should setup client with callbackOnLocationHash', function (done) {
+    widget
+    .once('ready', function() {
+      expect(client._callbackOnLocationHash).to.be(true);
+      done();
+    })
+    .show({
+      callbackOnLocationHash: true
+    });
+  });
+
+  it('should setup client with callbackURL', function (done) {
+    widget
+    .once('ready', function() {
+      expect(client._callbackURL).to.be(callbackURL);
+      done();
+    })
+    .show({
+      callbackURL: callbackURL
+    });
+  });
+
+  it('should setup client to use JSONP', function (done) {
+    widget
+    .once('ready', function() {
+      expect(client._useJSONP).to.be(true);
+      done();
+    })
+    .show({
+      forceJSONP: true
+    });
   });
 
   it('should remove widget when user close it', function (done) {
@@ -93,7 +118,10 @@ describe('Auth0Lock', function () {
       expect($('#a0-lock').length).to.equal(0);
       done();
     })
-    .show();
+    .show({
+      callbackURL: callbackURL,
+      callbackOnLocationHash: true
+    });
   });
 
   it('should show only notloggedin view if SSO data is not present', function (done) {
@@ -105,29 +133,35 @@ describe('Auth0Lock', function () {
       expect($('#a0-lock .a0-reset')[0]).to.not.exist;
       done();
     })
-    .show();
+    .show({
+      callbackURL: callbackURL,
+      callbackOnLocationHash: true
+    });
 
   });
 
   it('should show only loggedin view with SSO data (social) if it is present', function (done) {
-      client.getSSOData = function (withAd, callback) {
-        callback(null, {
-          sso: true,
-          lastUsedUsername: 'john@gmail.com',
-          lastUsedConnection: { strategy: 'google-oauth2', connection: 'google-oauth2' }
-        });
-      };
+    client.getSSOData = function (withAd, callback) {
+      callback(null, {
+        sso: true,
+        lastUsedUsername: 'john@gmail.com',
+        lastUsedConnection: { strategy: 'google-oauth2', connection: 'google-oauth2' }
+      });
+    };
 
-      widget
-      .once('ready', function () {
-        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
-        expect($('#a0-lock .a0-loggedin')[0]).to.exist;
-        expect($('#a0-lock .a0-signup')[0]).to.not.exist;
-        expect($('#a0-lock .a0-reset')[0]).to.not.exist;
-        expect($('#a0-lock .a0-loggedin .a0-strategy [data-strategy]').attr('title')).to.equal('john@gmail.com (Google)');
-        done();
-      })
-      .show();
+    widget
+    .once('ready', function () {
+      expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
+      expect($('#a0-lock .a0-loggedin')[0]).to.exist;
+      expect($('#a0-lock .a0-signup')[0]).to.not.exist;
+      expect($('#a0-lock .a0-reset')[0]).to.not.exist;
+      expect($('#a0-lock .a0-loggedin .a0-strategy [data-strategy]').attr('title')).to.equal('john@gmail.com (Google)');
+      done();
+    })
+    .show({
+      callbackURL: callbackURL,
+      callbackOnLocationHash: true
+    });
   });
 
   it('should use only specified connections', function (done) {
@@ -155,6 +189,8 @@ describe('Auth0Lock', function () {
       done();
     })
     .show({
+      callbackURL: callbackURL,
+      callbackOnLocationHash: true,
       connections: ['twitter', 'google-oauth2', 'invalid-connection', 'google-app1', 'dbTest', 'google-app3']
     });
   });
@@ -211,7 +247,10 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show();
+      .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true
+      });
     });
 
     it('should signin with social connection specifying state', function (done) {
@@ -226,7 +265,11 @@ describe('Auth0Lock', function () {
       .once('ready', function (mode) {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ state: 'foo' });
+      .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true,
+        state: 'foo'
+      });
     });
 
     it('should send offline_mode as true to the client', function (done) {
@@ -239,7 +282,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ offline_mode: true });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, offline_mode: true });
     });
 
     it('should signin with social connection specifying connection_scope if one is provided', function (done) {
@@ -263,7 +306,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="twitter"]')[0], 'click');
       })
-      .show({ connections: connections, connection_scopes: connection_scopes });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, connection_scopes: connection_scopes });
     });
 
     it('should signin with social connection with undefined connection_scope if one is not provided (does not throw)', function (done) {
@@ -284,7 +327,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ connections: connections, connection_scopes: connection_scopes });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, connection_scopes: connection_scopes });
     });
 
     it('should signin with database connection (auth0 strategy)', function (done) {
@@ -301,7 +344,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ state: 'foo' });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, state: 'foo' });
     });
 
     it('should signin with database connection (auth0 strategy) specifying state', function (done) {
@@ -319,7 +362,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ state: 'foo' });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, state: 'foo' });
     });
 
     it('should signin with adldap connection (auth0-adldap strategy)', function (done) {
@@ -337,6 +380,8 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
       .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true,
         userPwdConnectionName: 'adldap'
       });
     });
@@ -354,7 +399,10 @@ describe('Auth0Lock', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show();
+      .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true
+      });
     });
 
     it('should signin with enterprise connection specifying extraParameters', function (done) {
@@ -372,7 +420,7 @@ describe('Auth0Lock', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ state: 'foo' });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, state: 'foo' });
     });
 
     it('should send extraParameters to login', function (done) {
@@ -385,7 +433,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ extraParameters: { access_type: 'offline' } });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, extraParameters: { access_type: 'offline' } });
     });
   });
 
@@ -403,7 +451,10 @@ describe('Auth0Lock', function () {
         expect($('#a0-lock .a0-signup')[0]).to.exist;
         done();
       })
-      .show();
+      .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true
+      });
     });
 
     it('should call auth0.a0-signup', function (done) {
@@ -423,7 +474,10 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-signup .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-signup .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show();
+      .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true
+      });
     });
   });
 
@@ -440,7 +494,10 @@ describe('Auth0Lock', function () {
         expect($('#a0-lock .a0-reset')[0]).to.exist;;
         done();
       })
-      .show();
+      .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true
+      });
     });
 
     it('should call auth0.changePassword', function (done) {
@@ -461,7 +518,10 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-reset .a0-emailPassword .a0-repeatPassword input').val('xyz');
         $('#a0-lock .a0-reset .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show();
+      .show({
+        callbackURL: callbackURL,
+        callbackOnLocationHash: true
+      });
     });
   });
 

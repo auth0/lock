@@ -14,25 +14,25 @@ mocha.globals(['jQuery*', '__auth0jp*', 'Auth0*']);
 describe('db connections', function () {
   describe('.show() options', function () {
     it('should disable signup', function (done) {
-      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
-        callbackURL: 'http://localhost:3000/'
-      }).once('ready', function () {
+      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+      this.widget.once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(0);
         expect($('.a0-divider').length).to.equal(0);
         done();
       }).show({
+        callbackURL: 'http://localhost:3000/',
         disableSignupAction: true,
         rememberLastLogin: false
       });
     });
 
     it('should show signup', function (done) {
-      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
-        callbackURL: 'http://localhost:3000/'
-      }).once('ready', function () {
+      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+      this.widget.once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(1);
         done();
       }).show({
+        callbackURL: 'http://localhost:3000/',
         rememberLastLogin: false
       });
     });
@@ -53,14 +53,12 @@ describe('db connections', function () {
     });
 
     before(function () {
-      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
-        callbackURL: 'http://localhost:3000/'
-      });
+      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
     });
 
     //fails on ie9
     it.skip('should not change to loading', function (done) {
-      var auth0 = this.auth0
+      var auth0 = this.auth0;
 
       auth0
       .once('ready', function () {
@@ -77,6 +75,7 @@ describe('db connections', function () {
         bean.fire(form, 'submit');
       })
       .show({
+        callbackURL: 'http://localhost:3000/',
         rememberLastLogin: false
       });
     });
@@ -91,9 +90,7 @@ describe('db connections', function () {
     });
 
     before(function (done) {
-      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
-        callbackURL: 'http://localhost:3000/'
-      });
+      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
       done();
     });
 
@@ -125,6 +122,7 @@ describe('db connections', function () {
         }, 0);
       })
       .showSignin({
+        callbackURL: 'http://localhost:3000/',
         connections: [ 'foobar' ],
         rememberLastLogin: false
       });

@@ -121,65 +121,64 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.show({
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
-
-            trackEvents(widget);
-            widget.show();
           });
 
           $('#login-button').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
-
-            trackEvents(widget);
-            widget.showSignin();
           });
 
           $('#signup-button').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignup({
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
-
-            trackEvents(widget);
-            widget.showSignup();
           });
 
           $('#reset-button').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showReset({
               callbackURL: window.location.href,
               callbackOnLocationHash: true
             });
-
-            trackEvents(widget);
-            widget.showReset();
           });
 
           $('#logout-button').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.logout({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               returnTo: window.location.href
             });
           });
@@ -188,13 +187,12 @@
             var cid = credentials.free.clientID;
             var domain = credentials.free.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               socialBigButtons: true
             });
           });
@@ -203,13 +201,12 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
             });
           });
@@ -218,13 +215,12 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               username_style: 'username',
               connections: ['mdocs.io']
             });
@@ -234,13 +230,12 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               connections: ['mdocs.io']
             });
           });
@@ -249,13 +244,12 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               connections: ['qraftlabs.com']
             });
           });
@@ -265,13 +259,12 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               popup: true
             }, onlogin);
 
@@ -287,13 +280,12 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               popup: true,
               connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
             }, function (err, profile) {
@@ -309,13 +301,12 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               showIcon: true,
               icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png'
             });
@@ -325,40 +316,34 @@
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
-            var widget1 = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            var widget2 = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            var widget3 = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
-
-            var widget4 = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget1 = new Auth0Lock(cid, domain);
+            var widget2 = new Auth0Lock(cid, domain);
+            var widget3 = new Auth0Lock(cid, domain);
+            var widget4 = new Auth0Lock(cid, domain);
 
             trackEvents(widget1);
             trackEvents(widget2);
             trackEvents(widget3);
             trackEvents(widget4);
+
             widget.show({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               container: 'login-container1'
             });
             widget2.showSignin({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               container: 'login-container2'
             });
             widget3.showSignup({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               container: 'login-container3'
             });
             widget4.showReset({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               container: 'login-container4'
             });
 
@@ -374,10 +359,7 @@
                 var l = langs.shift();
                 if (!l) return;
 
-                (new Auth0Lock(cid, domain, {
-                  callbackURL: window.location.href,
-                  callbackOnLocationHash: true
-                }))
+                (new Auth0Lock(cid, domain))
                 .on('ready', function() {
                   var self = this;
                   setTimeout(function() {
@@ -385,6 +367,8 @@
                   }, 1500);
                 })
                 .show({
+                  callbackURL: window.location.href,
+                  callbackOnLocationHash: true,
                   dict: l,
                   rememberLastLogin: false
                 });
@@ -402,34 +386,24 @@
               }
             };
 
-            var widget = new Auth0Lock(cid, domain, {
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true
-            });
+            var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
             widget.showSignup({
+              callbackURL: window.location.href,
+              callbackOnLocationHash: true,
               dict: dict
             });
           });
 
           var cid = credentials.mdocs.clientID;
           var domain = credentials.mdocs.domain;
-
-          var widget = new Auth0Lock(cid, domain, {
-            callbackURL: window.location.href,
-            callbackOnLocationHash: true
-          });
+          var widget = new Auth0Lock(cid, domain);
+          var result = widget.parseHash(window.location.hash);
 
           var cid2 = credentials.free.clientID;
           var domain2 = credentials.free.domain;
-
-          var widget2 = new Auth0Lock(cid2, domain2, {
-            callbackURL: window.location.href,
-            callbackOnLocationHash: true
-          });
-
-          var result = widget.parseHash(window.location.hash);
+          var widget2 = new Auth0Lock(cid2, domain2);
           var result2 = widget2.parseHash(window.location.hash);
 
           if (result && result.id_token) {

@@ -20,13 +20,11 @@ describe('reset', function () {
 
   beforeEach(function () {
     $('#a0-lock').parents('div').remove();
-    this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
-      callbackURL: 'http://localhost:3000/'
-    });
+    this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
   });
 
   it('should show the loading pane', function (done) {
-    var auth0 = this.auth0
+    var auth0 = this.auth0;
 
     auth0
     .once('ready', function() {
@@ -46,6 +44,7 @@ describe('reset', function () {
       bean.fire($('.a0-reset form')[0], 'submit');
     })
     .show({
+      callbackURL: 'http://localhost:3000/',
       rememberLastLogin: false
     });
   });

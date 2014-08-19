@@ -15,17 +15,17 @@ describe('sign up', function () {
 
   beforeEach(function (done) {
     var self = this;
-    this.options = { rememberLastLogin: false };
+    this.options = {
+      callbackURL: 'http://localhost:3000/',
+      rememberLastLogin: false
+    };
 
 
     if (!this.auth0) return onhidden();
 
     this.auth0.hide(onhidden);
     function onhidden() {
-      self.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com', {
-        callbackURL: 'http://localhost:3000/'
-      });
-
+      self.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
       done();
     }
   });
