@@ -146,7 +146,7 @@ module.exports = function (grunt) {
         stderr: true
       },
       'test-phantom': {
-        cmd: 'node_modules/.bin/zuul --phantom 9999 -- test/*.js',
+        cmd: 'node_modules/.bin/zuul --ui mocha-bdd --phantom 9999 -- test/*.js',
         stdout: true,
         stderr: true
       }

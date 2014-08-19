@@ -1,4 +1,16 @@
-//fails in chrome 28- BrowserStack.
+/**
+ * Mocha config
+ */
+
+mocha.timeout(60000);
+mocha.ui('bdd');
+mocha.reporter('html');
+mocha.globals(['jQuery*', '__auth0jp*', 'Auth0*']);
+
+/**
+ * Test sign up
+ */
+
 describe('sign up', function () {
 
   beforeEach(function (done) {
