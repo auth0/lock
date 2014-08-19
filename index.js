@@ -449,7 +449,7 @@ Auth0Lock.prototype.initialize = function(done) {
   this.query('.a0-onestep a.a0-close').a0_on('click', bind(this.oncloseclick, this));
 
   // close popup with ESC key
-  if (!options.closable) {
+  if (options.closable) {
     this.query('').a0_on('keyup', bind(this.onescpressed, this));
   };
 
