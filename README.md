@@ -21,6 +21,12 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 
 > Note: if you are using `auth0-widget` < v6.0.0, check this [repository](https://github.com/auth0/widget) for proper documentation.
 
+##### Resources
+
+* [UI customization][ui-customization] for the `Auth0Lock`.
+* [Development][development-notes] notes.
+* [Release process][release-process] notes.
+
 ## Install
 
 From [npm](https://npmjs.org):
@@ -172,11 +178,6 @@ Finally, point your browser at `http://localhost:9999/` and play around.
 
 We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
-## Resources
-
-* [UI customization][ui-customization] for the `Auth0Lock`.
-* [Development][development-notes] notes.
-* [Release process][release-process] notes.
 
 <!-- Vaaaaarrsss -->
 
