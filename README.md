@@ -19,7 +19,7 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 
 [![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
 
-> Note: if you are using `auth0-widget` < v6.0.0, check this [repository](https://github.com/auth0/widget) instead for propper documentation.
+> Note: if you are using `auth0-widget` < v6.0.0, check this [repository](https://github.com/auth0/widget) for proper documentation.
 
 ## Install
 
@@ -47,8 +47,6 @@ Or our CDN:
 <!-- Latest patch release -->
 <script src="http://cdn.auth0.com/auth0-lock/6.0.0/auth0-lock.min.js"></script>
 ```
-
-> Note: You can also download the compiled builds from this repo for latest [auth0-lock.js][download1] and [auth0-lock.min.js][download2]. Although this is **not recomended**, and you should always get any stable release from the previous install methods.
 
 ## Usage
 
@@ -166,12 +164,11 @@ lock.logout({ ref: window.location.href });
 
 ## Run examples
 
-The example directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed and **grunt** (`npm i grunt -g`), then execute `grunt example` from the root of this project.
+The **example** directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed. Then execute `npm i` to install dependencies (only once) and `grunt example` from the root of this project. Point your browser at `http://localhost:9999/` and check the examples.
 
 ## Browser Compatibility
 
-We use [BrowserStack](http://browserstack.com) to run the test suite on multiple browsers at every push.
-We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
+We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
 ## Resources
 
