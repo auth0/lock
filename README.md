@@ -19,14 +19,6 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 
 [![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
 
-
-#### Resources
-
-* [UI customization][ui-customization] for the `Auth0Lock`.
-* [Development][development-notes] notes.
-* [Release process][release-process] notes.
-* Legacy **auth0-widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
-
 ## Install
 
 From [npm](https://npmjs.org):
@@ -166,11 +158,11 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.logout({ ref: window.location.href });
 ```
 
-## Run examples
+## Examples
 
 The **example** directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed.
 
-Then execute `npm i` to install dependencies (only once) and `grunt example` from the root of this project.
+Then execute `npm i` to install dependencies (only once) and `npm example` from the root of this project.
 
 Finally, point your browser at `http://localhost:9999/` and play around.
 
@@ -178,6 +170,12 @@ Finally, point your browser at `http://localhost:9999/` and play around.
 
 We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
+## Resources
+
+* [UI customization][ui-customization] for the `Auth0Lock`.
+* [Development][development-notes] notes.
+* [Release process][release-process] notes.
+* Legacy **auth0-widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
 
 <!-- Vaaaaarrsss -->
 
