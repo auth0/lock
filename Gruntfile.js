@@ -142,6 +142,11 @@ module.exports = function (grunt) {
         stdout: true,
         stderr: true
       },
+      'test-inception': {
+        cmd: 'mocha ./test/support/characters-inception.test.js',
+        stdout: true,
+        stderr: true
+      },
       'test-phantom': {
         cmd: 'testem -f testem_dev.yml ci -l PhantomJS',
         stdout: true,
@@ -254,7 +259,7 @@ module.exports = function (grunt) {
   grunt.registerTask("example",       ["less:example", "connect:example", "build", "watch"]);
   grunt.registerTask("example_https", ["less:example", "connect:example_https", "build", "watch"]);
   grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
-  grunt.registerTask("test",          ["build", "exec:test-phantom"]);
-  grunt.registerTask("integration",   ["exec:test-desktop", "exec:test-mobile"]);
+  grunt.registerTask("test",          ["build", "exec:test-inception", "exec:test-phantom"]);
+  grunt.registerTask("integration",   ["exec:test-inception", "exec:test-desktop", "exec:test-mobile"]);
   grunt.registerTask("cdn",           ["build", "copy:release", "checkrepo", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
 };
