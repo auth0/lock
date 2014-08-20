@@ -123,8 +123,6 @@ lock.showSignup(options);
 
 Open the widget on `reset` mode, but withouht the bottom `cancel` button action to go back to `signin`.  This method is useful when your site has custom *signin* and *signup* links at a different form.
 
-> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
-
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
@@ -195,6 +193,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 [downloads-url]: https://npmjs.org/package/auth0-lock
 
 [initialization-configuration]: https://github.com/auth0/lock/wiki/Initialization-configuration
+[show-configuration]: https://github.com/auth0/lock/wiki/Show-configuration
 [ui-customization]: https://github.com/auth0/lock/wiki/UI-customization
 [development-notes]: https://github.com/auth0/lock/wiki/Development-notes
 [release-process]: https://github.com/auth0/lock/wiki/Release-process
