@@ -70,7 +70,7 @@ login.onclick = function (e) {
 
 ### Auth0Lock(clientID, domain[, options])
 
-Initialize `Auth0Lock` with `clientID` and account's `domain`.
+Initialize `Auth0Lock` with a `clientID` and the account's `domain`.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
@@ -78,27 +78,12 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.show();
 ```
 
-Allow `options` to be passed to configure `auth0-js` lib dependency and other internals.
-
-```js
-// Or configure with instance options like...
-
-var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
-  callbackOnLocationHash: true,
-  callbackURL: 'http://my-app.com/callback',
-  forceJSONP: true
-});
-
-```
-
-> Note: For a full detail on the initialization configuration check the [wiki][initialization-configuration] article for this topic.
+> Note: For a full detail on the initialization configuration check the [wiki][initialization-configuration] article.
 
 
 ### .show(options[, callback])
 
-Open the widget on `signin` mode  with `signup` and `reset` button actions if enabled for the connection configuration.
-
-> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
+Open the widget on `signin` mode with `signup` and `reset` button actions if enabled for the configured/default account connection.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
@@ -106,56 +91,39 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 // normal display
 lock.show(options);
 
-// no page redirect trigger
-// useful for single page applications
-lock.show(options, function(profile, token) {
-
-})
 ```
+
+> Note: Check the [show configuration][show-configuration] article for more examples and options index.
 
 ### .showSignin(options[, callback])
 
-Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` button actions.
-
-> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
+Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` button actions. This method is useful when your site has custom *signup* and *reset* links at a different form.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
 // normal display
-lock.show(options);
+lock.showSignin(options);
 
-// no page redirect trigger
-// useful for single page applications
-lock.show(options, function(profile, token) {
-
-})
 ```
-> Usefull when your site has custom *signup*, and *reset* links at a different form.
+> Note: Check the [show configuration][show-configuration] article for more examples and options.
 
 ### .showSignup(options[, callback])
 
-Open the widget on `signup` mode, but withouht the bottom `cancel` button action to go back to `signin`.
-
-> Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
+Open the widget on `signup` mode, but withouht the `cancel` button action to go back to `signin`. This method is useful when your site has custom *signin* and *reset* links at a different form.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
 // normal display
-lock.show(options);
+lock.showSignup(options);
 
-// no page redirect trigger
-// useful for single page applications
-lock.show(options, function(profile, token) {
-
-})
 ```
-> Usefull when your site has custom *signup*, and *reset* links at a different form.
+> Note: Check the [show configuration][show-configuration] article for more examples and options.
 
 ### .showReset(options[, callback])
 
-Open the widget on `reset` mode, but withouht the bottom `cancel` button action to go back to `signin`.
+Open the widget on `reset` mode, but withouht the bottom `cancel` button action to go back to `signin`.  This method is useful when your site has custom *signin* and *signup* links at a different form.
 
 > Note: For a full detail of initialization configuration check the [wiki][show-configuration] article on this topic.
 
@@ -163,20 +131,14 @@ Open the widget on `reset` mode, but withouht the bottom `cancel` button action 
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
 // normal display
-lock.show(options);
-
-// no page redirect trigger
-// useful for single page applications
-lock.show(options, function(profile, token) {
-
-})
+lock.showReset(options);
 ```
 
-> Usefull when your site has custom *signup*, and *reset* links at a different form.
+> Note: Check the [show configuration][show-configuration] article for more examples and options.
 
 ### .hide([callback])
 
-Close the widget and invoke `callback` if defined.
+Close the widget and invoke `callback` when removed from DOM.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
@@ -184,11 +146,11 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 // normal display
 lock.show(options);
 
-// no page redirect trigger
-// useful for single page applications
-lock.show(options, function(profile, token) {
-
-})
+// trigger hide when esc key pressed
+document.addEventListener('keypress', function(e) {
+  // hide if esc
+  lock.hide();
+}, false);
 ```
 
 ### .logout([query])
@@ -217,7 +179,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
 
-<!-- Variables -->
+<!-- Vaaaaarrsss -->
 
 [download1]: https://raw.github.com/auth0/lock/master/build/auth0-lock.js
 [download2]: https://raw.github.com/auth0/lock/master/build/auth0-lock.min.js
@@ -229,7 +191,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`.
 [coveralls-image]: https://img.shields.io/coveralls/auth0/lock.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/auth0/lock?branch=master
 [david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
-[david-url]: https://david-dm.org/auth0-lock
+[david-url]: https://david-dm.org/auth0/lock
 [license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
