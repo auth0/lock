@@ -261,7 +261,7 @@ Auth0Widget.prototype._getAuth0Connection = function(userName) {
 
   // By default, if exists, return auth0 connection (db-conn) or first
   var defaultStrategy = _.findWhere(this._auth0Strategies, { name: 'auth0' });
-  defaultStrategy = defaultStrategy || (this._auth0Strategies.length > 0 ? this._auth0Strategies[0] : null);
+  defaultStrategy = defaultStrategy || (this._auth0Strategies.length > 0 ? this._auth0Strategies[0] : null);
 
   return defaultStrategy && defaultStrategy.connections.length > 0 ?
          defaultStrategy.connections[0] : null;
@@ -384,7 +384,7 @@ Auth0Widget.prototype._transitionMode = function(options, callback) {
       title = this._dict.t(options.mode + ':title');
       newPane = this._$('.a0-' + options.mode).first();
       // XXX Hack, when coming from loading currentPane does not contain email.
-      currentEmail = currentEmail || $('.a0-email input', newPane).val();
+      currentEmail = currentEmail || $('.a0-email input', newPane).val();
       this._$('.a0-email input', newPane).val(currentEmail || '');
       break;
   }
