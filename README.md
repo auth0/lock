@@ -19,13 +19,13 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 
 [![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
 
-> Note: if you are using `auth0-widget` < v6.0.0, check this [repository](https://github.com/auth0/widget) for proper documentation.
 
-##### Resources
+#### Resources
 
 * [UI customization][ui-customization] for the `Auth0Lock`.
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
+* Legacy **auth0-widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
 
 ## Install
 
