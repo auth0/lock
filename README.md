@@ -162,7 +162,11 @@ lock.logout({ ref: window.location.href });
 
 ## Run examples
 
-The **example** directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed. Then execute `npm i` to install dependencies (only once) and `grunt example` from the root of this project. Point your browser at `http://localhost:9999/` and check the examples.
+The **example** directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed.
+
+Then execute `npm i` to install dependencies (only once) and `grunt example` from the root of this project.
+
+Finally, point your browser at `http://localhost:9999/` and play around.
 
 ## Browser Compatibility
 
