@@ -67,6 +67,9 @@ function Auth0Lock (clientID, domain, options) {
   if ('string' !== typeof clientID) throw new Error('`ClientID` required as first parameter.');
   if ('string' !== typeof domain) throw new Error('`domain` required as second parameter.');
 
+  // Initiate `EventEmitter`
+  EventEmitter.call(this);
+
   // Instance properties and options
   this.$options = _.extend({}, options);
 
@@ -93,19 +96,16 @@ function Auth0Lock (clientID, domain, options) {
     ? 'https://d19p4zemcycm7a.cloudfront.net/w2/'
     : 'https://' + this.$options.domain + '/w2/';
 
-  // holds client's connections configuration
-  // retrieved from S3 or CDN/assetsUrl provided
-  this.$client = {};
-  this.getClientConfiguration();
-
   // Holds SSO Data for return user experience
   this.$ssoData = null;
 
   // Holds widget's DOM `$container` ref
   this.$container = null;
 
-  // Initiate `EventEmitter`
-  EventEmitter.call(this);
+  // holds client's connections configuration
+  // retrieved from S3 or CDN/assetsUrl provided
+  this.$client = null;
+  this.getClientConfiguration(bind(this.setClientConfiguration, this));
 }
 
 /**
@@ -125,30 +125,76 @@ Auth0Lock.prototype = ocreate(EventEmitter.prototype);
  * XXX: Why not use jsonp? that woudld allow the
  * global namespace definition to be optional...
  *
+ * @param {Function} done
  * @return {Auth0Lock}
  * @private
  */
 
-Auth0Lock.prototype.getClientConfiguration = function () {
+Auth0Lock.prototype.getClientConfiguration = function (done) {
   var self = this;
 
-  // Monkey patch Auth.setClient
-  global.window.Auth0 = global.window.Auth0 || {};
-  global.window.Auth0.setClient = function (client) {
-    self.$client = _.extend(self.$client, client);
-    self.emit('client initialized', client);
+  // Save callback to be called once
+  // client configuration gets loaded
+  if ('function' === typeof done) {
+    this.once('client loaded', function (client) {
+      done(client);
+    });
   };
 
+  // If not loading, check for already stored
+  // in a previous widget instantiation
+  global.window.Auth0 = global.window.Auth0 || { clients: [] };
+
+  var clients = global.window.Auth0.clients;
+  var client = clients[this.$options.clientID];
+  if (client) return this.emit('client loaded', client);
+
+  // check if loading state
+  // and then await for response
+  // no need to monkey-patch again
+  if (this.loadState) return;
+  this.loadState = true;
+
+  // Monkey patch Auth.setClient to load client
+  var setClient = global.window.Auth0.setClient || function setClient() {};
+  global.window.Auth0.setClient = function (client) {
+    setClient.apply(window.Auth0, arguments);
+
+    // If not this client, return
+    if (self.$options.clientID !== client.id) return;
+
+    // store the client
+    clients[self.$options.clientID] = client;
+
+    // notify initialized and pass the client with it
+    self.emit('client loaded', client);
+  };
+
+  // Load client from assets url
   var script = document.createElement('script');
   script.src = this.$options.assetsUrl
     + 'client/'
     + this.$options.clientID
     + '.js'
-    + '?t' + (+new Date);
+    + '?t'
+    + (+new Date);
 
+  // Insert script in DOM head
   var firstScript = document.getElementsByTagName('script')[0];
   firstScript.parentNode.insertBefore(script, firstScript);
+};
 
+/**
+ * Set's the client configuration object
+ *
+ * @param {Object} client
+ * @return {Auth0Lock}
+ * @private
+ */
+
+Auth0Lock.prototype.setClientConfiguration = function (client) {
+  this.$client = _.clone(client);
+  this.emit('client initialized');
   return this;
 };
 
@@ -366,8 +412,13 @@ Auth0Lock.prototype.display = function(options, callback) {
   // Start by render widget's container
   this.insert();
 
+  this.options.ready(bind(onoptionsready, this));
+
   // Initialize widget's view
-  this.initialize(bind(oninitialized, this));
+  // when options get loaded
+  function onoptionsready() {
+    this.initialize(bind(oninitialized, this));
+  }
 
   // and right after that render mode
   function oninitialized() {
@@ -418,19 +469,14 @@ Auth0Lock.prototype.initialize = function(done) {
   var options = this.options;
   var i18n = options.i18n;
 
-  // Monkey patch to wait for Auth0.setClient()
-  // to be sure we have client's configuration
-  // before continuing
+  // Wait for Auth0.setClient() to be sure
+  // we have the client's configuration
+  // before setting up
   if (_.isEmpty(this.$client)) {
     var args  = arguments;
-    var setClient = global.window.Auth0.setClient;
-
-    global.window.Auth0.setClient = function () {
-      setClient.apply(this, arguments);
+    return this.getClientConfiguration(function () {
       self.initialize.apply(self, args);
-    };
-
-    return;
+    });
   }
 
   this.query('.a0-overlay')
