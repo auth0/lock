@@ -508,10 +508,7 @@ Auth0Lock.prototype.initialize = function(done) {
     this.query('.a0-active').removeClass('a0-overlay');
   }
 
-  this.query('.a0-popup h1').html(i18n.t('signin:title'));
   this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
-
-  this.query('.a0-panel.a0-onestep h1').html(options.title);
 
   // after pre-setting classes and dom handlers
   // emit as shown
