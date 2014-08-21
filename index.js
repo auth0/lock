@@ -819,7 +819,9 @@ Auth0Lock.prototype._focusError = function(input, message) {
  */
 
 Auth0Lock.prototype._setTitle = function(title) {
-  this.query('h1').html(title).css('display', '');
+  var h1 = this.query('h1');
+  h1.html(title);
+  h1.css('display', '');
 };
 
 /**
