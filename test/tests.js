@@ -18,8 +18,9 @@ describe('Auth0Lock', function () {
   var widget, client;
 
   beforeEach(function (done) {
-    Auth0Lock.prototype.getClientConfiguration = function () {
-      this.$client = {
+    Auth0Lock.prototype.getClientConfiguration = function (done) {
+      var $client = {
+        id: clientID,
         strategies: [
           {
             "name": "facebook",
@@ -58,6 +59,10 @@ describe('Auth0Lock', function () {
           }
         ]
       };
+
+      if ('function' === typeof done) {
+        done($client);
+      };
     };
 
     widget = new Auth0Lock(clientID, domain);
@@ -71,14 +76,18 @@ describe('Auth0Lock', function () {
 
   afterEach(function (done) {
     global.window.location.hash = '';
-    widget && widget.hide();
-    $('#a0-lock').remove();
-    done();
+    if (widget) {
+      widget.hide(done);
+    } else {
+      $('#a0-lock').remove();
+      done();
+    }
+
   });
 
   it('should setup client with callbackOnLocationHash', function (done) {
     widget
-    .once('ready', function() {
+    .once('signin ready', function() {
       expect(client._callbackOnLocationHash).to.be(true);
       done();
     })
@@ -268,7 +277,7 @@ describe('Auth0Lock', function () {
       .show({
         callbackURL: callbackURL,
         callbackOnLocationHash: true,
-        state: 'foo'
+        authParams: { state: 'foo' }
       });
     });
 
@@ -282,7 +291,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, offline_mode: true });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { offline_mode: true }});
     });
 
     it('should signin with social connection specifying connection_scope if one is provided', function (done) {
@@ -306,7 +315,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="twitter"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, connection_scopes: connection_scopes });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, authParams: { connection_scopes: connection_scopes }});
     });
 
     it('should signin with social connection with undefined connection_scope if one is not provided (does not throw)', function (done) {
@@ -327,7 +336,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, connection_scopes: connection_scopes });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, authParams: { connection_scopes: connection_scopes }});
     });
 
     it('should signin with database connection (auth0 strategy)', function (done) {
@@ -344,10 +353,10 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, state: 'foo' });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { state: 'foo' }});
     });
 
-    it('should signin with database connection (auth0 strategy) specifying state', function (done) {
+    it('should signin with database connection (auth0 strategy) specifying state authParam', function (done) {
       client.login = function (options) {
         expect(options.state).to.equal('foo');
         expect(options.connection).to.equal('dbTest');
@@ -362,7 +371,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, state: 'foo' });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { state: 'foo' }});
     });
 
     it('should signin with adldap connection (auth0-adldap strategy)', function (done) {
@@ -420,10 +429,10 @@ describe('Auth0Lock', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, state: 'foo' });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { state: 'foo' }});
     });
 
-    it('should send authParams to login', function (done) {
+    it('should send extra authParams to login', function (done) {
       client.login = function (options) {
         expect(options.access_type).to.equal('offline');
         done();

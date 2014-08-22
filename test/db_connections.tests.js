@@ -12,6 +12,7 @@ mocha.globals(['jQuery*', '__auth0jp*', 'Auth0*']);
  */
 
 describe('db connections', function () {
+
   describe('.show() options', function () {
     it('should disable signup', function (done) {
       this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');

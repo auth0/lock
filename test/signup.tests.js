@@ -22,7 +22,6 @@ describe('sign up', function () {
 
 
     if (!this.auth0) return onhidden();
-
     this.auth0.hide(onhidden);
     function onhidden() {
       self.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
@@ -30,9 +29,10 @@ describe('sign up', function () {
     }
   });
 
-  afterEach(function () {
+  afterEach(function (done) {
     global.window.location.hash = '';
     global.window.Auth0 = null;
+    this.auth0.hide(done)
   });
 
   it('should show the loading pane', function (done) {
