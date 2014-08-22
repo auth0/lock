@@ -104,7 +104,7 @@ function Auth0Lock (clientID, domain, options) {
 
   // holds client's connections configuration
   // retrieved from S3 or CDN/assetsUrl provided
-  this.$client = null;
+  this.$client = {};
   this.getClientConfiguration(bind(this.setClientConfiguration, this));
 }
 
