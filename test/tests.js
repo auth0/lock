@@ -405,7 +405,7 @@ describe('Auth0Lock', function () {
       });
     });
 
-    it('should signin with enterprise connection specifying extraParameters', function (done) {
+    it('should signin with enterprise connection specifying authParams', function (done) {
       client.login = function (options) {
         expect(options.state).to.equal('foo');
         expect(options.connection).to.equal('contoso');
@@ -423,7 +423,7 @@ describe('Auth0Lock', function () {
       .show({ callbackURL: callbackURL, callbackOnLocationHash: true, state: 'foo' });
     });
 
-    it('should send extraParameters to login', function (done) {
+    it('should send authParams to login', function (done) {
       client.login = function (options) {
         expect(options.access_type).to.equal('offline');
         done();
@@ -433,7 +433,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, extraParameters: { access_type: 'offline' } });
+      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { access_type: 'offline' } });
     });
   });
 

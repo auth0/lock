@@ -891,7 +891,7 @@ Auth0Lock.prototype._signin = function (panel) {
     connection: connection,
     popup: this.options.popup,
     popupOptions: this.options.popupOptions
-  }, this.options.extraParameters);
+  }, this.options.authParams);
 
   this.$auth0.login(loginOptions);
 };
@@ -926,7 +926,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel) {
   // XXX: An options method to get $auth0 login options
   // resolved from existing options combined with instance
   // may be a good idea...
-  loginOptions = _.extend({}, loginOptions, this.options.extraParameters);
+  loginOptions = _.extend({}, loginOptions, this.options.authParams);
 
   var strategy = options._getClientStrategyByConnectionName(connection.name) || {};
 
@@ -995,7 +995,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel) {
  *
  * @param {Event|String} e
  * @param {String} connection
- * @param {Object} extraParameters
+ * @param {Object} authParams
  * @param {SigninPanel|SignupPanel} panel
  * @private
  */
@@ -1009,8 +1009,8 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
 
   var connectionName = connection || strategy.connections[0].name;
 
-  // use extraParameters
-  var extra = self.options.extraParameters;
+  // use authParams
+  var extra = self.options.authParams;
 
   if (extra.connection_scopes) {
     // if no connection_scope was set for the connection we are ok with sending undefined
@@ -1027,7 +1027,7 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
         connection: connectionName,
         popup: self.options.popup,
         popupOptions: self.options.popupOptions
-      }, self.options.extraParameters, extraParams);
+      }, self.options.authParams, extraParams);
 
       this.$auth0.login(loginOptions);
     }
@@ -1040,7 +1040,7 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
  *
  * @param {String} connectionName
  * @param {Function} popupCallback
- * @param {Object} extraParameters
+ * @param {Object} authParams
  * @param {SigninPanel|SignupPanel} panel
  * @private
  */
@@ -1058,7 +1058,7 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
         connection: connectionName,
         popup: self.options.popup,
         popupOptions: self.options.popupOptions
-      }, options.extraParameters, extraParams);
+      }, options.authParams, extraParams);
 
   if ('function' !== typeof callback) {
     throw new Error('Popup mode needs a callback function to be executed after authentication success or failure.');
