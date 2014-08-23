@@ -532,7 +532,7 @@ Auth0Lock.prototype.initialize = function(done) {
   };
 
   var disabledReturnUserExperience = false === options.rememberLastLogin
-    && (!options._isThereAnyADConnection() || false === options.kerberosLogin)
+    && (!options._isThereAnyADConnection() || false === options.integratedWindowsLogin)
 
   if (disabledReturnUserExperience) {
     return finish(null, {}), this;
