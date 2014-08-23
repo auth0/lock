@@ -43,7 +43,7 @@
           </ul>
         </div>
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <div class="sidebar-box"><strong>Lock</strong>
               <ul>
                 <li><a href="https://docs.auth0.com/login-widget2"><i></i><span>Documentation</span></a></li>
@@ -75,7 +75,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-sm-9">
+          <div class="col-sm-8">
             <div class="text-content">
               <h1>Lock</h1>
 
@@ -93,8 +93,6 @@
               <div class="clearfix">
                 <div id="login-container1" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
                 <div id="login-container2" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
-                <div id="login-container3" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
-                <div id="login-container4" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
               </div>
 
             </div>
@@ -126,7 +124,7 @@
             trackEvents(widget);
             widget.show({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true
+              responseType: 'token'
             });
           });
 
@@ -139,7 +137,7 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true
+              responseType: 'token'
             });
           });
 
@@ -152,7 +150,7 @@
             trackEvents(widget);
             widget.showSignup({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true
+              responseType: 'token'
             });
           });
 
@@ -165,7 +163,7 @@
             trackEvents(widget);
             widget.showReset({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true
+              responseType: 'token'
             });
           });
 
@@ -177,8 +175,6 @@
 
             trackEvents(widget);
             widget.logout({
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true,
               returnTo: window.location.href
             });
           });
@@ -192,7 +188,7 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+              responseType: 'token',
               socialBigButtons: true
             });
           });
@@ -206,7 +202,7 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+              responseType: 'token',
               connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
             });
           });
@@ -220,8 +216,8 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              username_style: 'username',
+              responseType: 'token',
+              usernameStyle: 'username',
               connections: ['mdocs.io']
             });
           });
@@ -235,7 +231,7 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+              responseType: 'token',
               connections: ['mdocs.io']
             });
           });
@@ -249,7 +245,7 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+              responseType: 'token',
               connections: ['qraftlabs.com']
             });
           });
@@ -264,8 +260,9 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              popup: true
+              responseType: 'token',
+              popup: true,
+              popupOptions: { width: 300, heigth: 400, left: 200, top: 300 }
             }, onlogin);
 
             function onlogin (err, profile) {
@@ -285,7 +282,7 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+              responseType: 'token',
               popup: true,
               connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter']
             }, function (err, profile) {
@@ -306,8 +303,7 @@
             trackEvents(widget);
             widget.showSignin({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              showIcon: true,
+              responseType: 'token',
               icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png'
             });
           });
@@ -318,35 +314,17 @@
 
             var widget1 = new Auth0Lock(cid, domain);
             var widget2 = new Auth0Lock(cid, domain);
-            var widget3 = new Auth0Lock(cid, domain);
-            var widget4 = new Auth0Lock(cid, domain);
 
-            trackEvents(widget1);
-            trackEvents(widget2);
-            trackEvents(widget3);
-            trackEvents(widget4);
+            trackEvents(widget1, 'widget1');
+            trackEvents(widget2, 'widget2');
 
-            widget.show({
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+            widget1.showSignin({
               container: 'login-container1'
             });
             widget2.showSignin({
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              container: 'login-container2'
+              container: 'login-container2',
+              icon: '//auth0.com/boot/badge.png'
             });
-            widget3.showSignup({
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              container: 'login-container3'
-            });
-            widget4.showReset({
-              callbackURL: window.location.href,
-              callbackOnLocationHash: true,
-              container: 'login-container4'
-            });
-
 
           });
 
@@ -364,11 +342,11 @@
                   var self = this;
                   setTimeout(function() {
                     self.hide(next);
-                  }, 1500);
+                  }, 3500);
                 })
                 .show({
                   callbackURL: window.location.href,
-                  callbackOnLocationHash: true,
+                  responseType: 'token',
                   dict: l,
                   rememberLastLogin: false
                 });
@@ -391,7 +369,7 @@
             trackEvents(widget);
             widget.showSignup({
               callbackURL: window.location.href,
-              callbackOnLocationHash: true,
+              responseType: 'token',
               dict: dict
             });
           });
@@ -436,33 +414,34 @@
             alert('error: ' + result2.error);
           }
 
-          function trackEvents(widget) {
+          function trackEvents(widget, namespace) {
+            var name = namespace || 'widget';
             widget.on('shown', function() {
-              console.log('widget shown');
+              console.log('%s shown', name);
             });
             widget.on('loading ready', function() {
-              console.log('widget loading ready');
+              console.log('%s loading ready', name);
             });
             widget.on('ready', function() {
-              console.log('widget ready');
+              console.log('%s ready', name);
             });
             widget.on('hidden', function() {
-              console.log('widget hidden');
+              console.log('%s hidden', name);
             });
             widget.on('signin ready', function() {
-              console.log('widget signin ready');
+              console.log('%s signin ready', name);
             });
             widget.on('signup ready', function() {
-              console.log('widget signup ready');
+              console.log('%s signup ready', name);
             });
             widget.on('reset ready', function() {
-              console.log('widget reset ready');
+              console.log('%s reset ready', name);
             });
             widget.on('loggedin ready', function() {
-              console.log('widget loggedin ready');
+              console.log('%s loggedin ready', name);
             });
             widget.on('kerberos ready', function() {
-              console.log('widget loggedin ready');
+              console.log('%s loggedin ready', name);
             });
           }
       });
