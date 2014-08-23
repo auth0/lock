@@ -391,7 +391,7 @@ describe('Auth0Lock', function () {
       .show({
         callbackURL: callbackURL,
         callbackOnLocationHash: true,
-        userPwdConnectionName: 'adldap'
+        defaultUserPasswordConnection: 'adldap'
       });
     });
 
