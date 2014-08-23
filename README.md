@@ -74,7 +74,7 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.show();
 ```
 
-> Note: For a full detail on the initialization configuration check the [wiki][initialization-configuration] article.
+> Note: For a full detail on the initialization configuration check the [wiki][show] article.
 
 
 ### .show(options[, callback])
@@ -89,7 +89,7 @@ lock.show(options);
 
 ```
 
-> Note: Check the [show configuration][show-configuration] article for more examples and options index.
+> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options index.
 
 ### .showSignin(options[, callback])
 
@@ -102,7 +102,7 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.showSignin(options);
 
 ```
-> Note: Check the [show configuration][show-configuration] article for more examples and options.
+> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 ### .showSignup(options[, callback])
 
@@ -115,7 +115,7 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.showSignup(options);
 
 ```
-> Note: Check the [show configuration][show-configuration] article for more examples and options.
+> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 ### .showReset(options[, callback])
 
@@ -128,7 +128,7 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.showReset(options);
 ```
 
-> Note: Check the [show configuration][show-configuration] article for more examples and options.
+> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 ### .hide([callback])
 
@@ -173,6 +173,9 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 ## Resources
 
 * [UI customization][ui-customization] for the `Auth0Lock`.
+* [Error customization][error-customization] notes.
+* [Single Page Applications (SPA)][spa-notes] notes.
+* [I18n][i18n-notes] notes.
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
 * Legacy **auth0-widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
@@ -195,8 +198,11 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/auth0-lock
 
-[initialization-configuration]: https://github.com/auth0/lock/wiki/Initialization-configuration
-[show-configuration]: https://github.com/auth0/lock/wiki/Show-configuration
+[initialization-configuration]: https://github.com/auth0/lock/wiki/Auth0lock-initialization
+[lock-customization]: https://github.com/auth0/lock/wiki/Auth0lock-customization
 [ui-customization]: https://github.com/auth0/lock/wiki/UI-customization
+[error-customization]: https://github.com/auth0/lock/wiki/Error-customization
+[spa-notes]: https://github.com/auth0/lock/wiki/Single-page-applications
+[i18n-notes]: https://github.com/auth0/lock/wiki/I18n
 [development-notes]: https://github.com/auth0/lock/wiki/Development-notes
 [release-process]: https://github.com/auth0/lock/wiki/Release-process
