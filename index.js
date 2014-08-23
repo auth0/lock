@@ -880,7 +880,7 @@ Auth0Lock.prototype._signin = function (panel) {
   // There has to be an action!
   if (!valid) return;
 
-  if (this.options.popup && this.options.callbackOnLocationHash) {
+  if (this.options.popup && 'token' === this.options.responseType) {
     return this._signinPopupNoRedirect(connection, this.options.popupCallback, panel);
   }
 
@@ -1018,9 +1018,9 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
   }
 
   if (strategy) {
-    // If we are in popup mode and callbackOnLocationHash was specified
+    // If we are in popup mode and responseType == 'token' was specified
     // we need to pass a callback.
-    if (self.options.popup && self.options.callbackOnLocationHash) {
+    if (this.options.popup && 'token' === this.options.responseType) {
       this._signinPopupNoRedirect(connectionName, self.options.popupCallback, extraParams, panel);
     } else {
       var loginOptions = _.extend({}, {
