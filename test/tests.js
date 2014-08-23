@@ -92,7 +92,7 @@ describe('Auth0Lock', function () {
       done();
     })
     .show({
-      callbackOnLocationHash: true
+      responseType: 'token'
     });
   });
 
@@ -129,7 +129,7 @@ describe('Auth0Lock', function () {
     })
     .show({
       callbackURL: callbackURL,
-      callbackOnLocationHash: true
+      responseType: 'token'
     });
   });
 
@@ -144,7 +144,7 @@ describe('Auth0Lock', function () {
     })
     .show({
       callbackURL: callbackURL,
-      callbackOnLocationHash: true
+      responseType: 'token'
     });
 
   });
@@ -169,7 +169,7 @@ describe('Auth0Lock', function () {
     })
     .show({
       callbackURL: callbackURL,
-      callbackOnLocationHash: true
+      responseType: 'token'
     });
   });
 
@@ -199,7 +199,7 @@ describe('Auth0Lock', function () {
     })
     .show({
       callbackURL: callbackURL,
-      callbackOnLocationHash: true,
+      responseType: 'token',
       connections: ['twitter', 'google-oauth2', 'invalid-connection', 'google-app1', 'dbTest', 'google-app3']
     });
   });
@@ -258,7 +258,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true
+        responseType: 'token'
       });
     });
 
@@ -276,7 +276,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true,
+        responseType: 'token',
         authParams: { state: 'foo' }
       });
     });
@@ -291,7 +291,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { offline_mode: true }});
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { offline_mode: true }});
     });
 
     it('should signin with social connection specifying connection_scope if one is provided', function (done) {
@@ -315,7 +315,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="twitter"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, authParams: { connection_scopes: connection_scopes }});
+      .show({ callbackURL: callbackURL, responseType: 'token', connections: connections, authParams: { connection_scopes: connection_scopes }});
     });
 
     it('should signin with social connection with undefined connection_scope if one is not provided (does not throw)', function (done) {
@@ -336,7 +336,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, connections: connections, authParams: { connection_scopes: connection_scopes }});
+      .show({ callbackURL: callbackURL, responseType: 'token', connections: connections, authParams: { connection_scopes: connection_scopes }});
     });
 
     it('should signin with database connection (auth0 strategy)', function (done) {
@@ -353,7 +353,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { state: 'foo' }});
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
 
     it('should signin with database connection (auth0 strategy) specifying state authParam', function (done) {
@@ -371,7 +371,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { state: 'foo' }});
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
 
     it('should signin with adldap connection (auth0-adldap strategy)', function (done) {
@@ -390,7 +390,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true,
+        responseType: 'token',
         defaultUserPasswordConnection: 'adldap'
       });
     });
@@ -410,7 +410,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true
+        responseType: 'token'
       });
     });
 
@@ -429,7 +429,7 @@ describe('Auth0Lock', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { state: 'foo' }});
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
 
     it('should send extra authParams to login', function (done) {
@@ -442,7 +442,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
       })
-      .show({ callbackURL: callbackURL, callbackOnLocationHash: true, authParams: { access_type: 'offline' } });
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { access_type: 'offline' } });
     });
   });
 
@@ -462,7 +462,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true
+        responseType: 'token'
       });
     });
 
@@ -485,7 +485,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true
+        responseType: 'token'
       });
     });
   });
@@ -505,7 +505,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true
+        responseType: 'token'
       });
     });
 
@@ -529,7 +529,7 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        callbackOnLocationHash: true
+        responseType: 'token'
       });
     });
   });
