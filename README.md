@@ -201,7 +201,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 [initialization-configuration]: https://github.com/auth0/lock/wiki/Auth0lock-initialization
 [lock-customization]: https://github.com/auth0/lock/wiki/Auth0lock-customization
 [ui-customization]: https://github.com/auth0/lock/wiki/UI-customization
-[error-customization]: https://github.com/auth0/lock/wiki/Error-customization
+[error-customization]: https://github.com/auth0/lock/wiki/Customizing-error-messages
 [spa-notes]: https://github.com/auth0/lock/wiki/Single-page-applications
 [i18n-notes]: https://github.com/auth0/lock/wiki/I18n
 [development-notes]: https://github.com/auth0/lock/wiki/Development-notes
