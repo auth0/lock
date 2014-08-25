@@ -8,6 +8,13 @@ mocha.reporter('html');
 mocha.globals(['jQuery*', '__auth0jp*', 'Auth0*']);
 
 /**
+ * Define some support variables
+ */
+
+var placeholderSupport = ('placeholder' in document.createElement('input'));
+var placeholderSupportPrefix = '' = placeholderSupport ? '' : 'not ';
+
+/**
  * Test Auth0Lock
  */
 
@@ -535,24 +542,15 @@ describe('Auth0Lock', function () {
   });
 
   describe('placeholder fallback support', function() {
-    var supportString = '';
-
-    before(function(done) {
-      this.placeholderSupport = ('placeholder' in document.createElement('input'));
-      supportString = this.placeholderSupport ? '' : 'not ';
-      done();
-    });
-
     it('should have a0-no-placeholder-support class when not supported (' + supportString + 'supported)', function(done) {
-      var placeholderSupport = this.placeholderSupport;
       widget
       .once('ready', function() {
         var hasClass = $('#a0-lock .a0-overlay').hasClass('a0-no-placeholder-support');
         expect(hasClass).to.be(!placeholderSupport);
         if (!placeholderSupport) {
-          var fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder')[0];
-          expect(fallback).to.exist;
-          expect(fallback.css('display')).to.equal('block');
+          var $fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder');
+          expect($fallback[0]).to.exist;
+          expect($fallback.css('display')).to.equal('block');
         };
         done();
       })
@@ -560,14 +558,13 @@ describe('Auth0Lock', function () {
     });
 
     it('should not have a0-no-placeholder-support class when supported (' + supportString + 'supported)', function(done) {
-      var placeholderSupport = this.placeholderSupport;
       widget
       .once('ready', function() {
         var hasClass = $('#a0-lock .a0-overlay').hasClass('a0-no-placeholder-support');
         expect(!hasClass).to.be(placeholderSupport);
         if (placeholderSupport) {
-          var fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder')[0];
-          expect(fallback).to.not.exist;
+          var $fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder');
+          expect($fallback[0]).to.not.exist;
           expect($('#a0-lock .a0-sad-placeholder').css('display')).to.equal('none');
         };
         done();
