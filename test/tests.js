@@ -542,7 +542,7 @@ describe('Auth0Lock', function () {
   });
 
   describe('placeholder fallback support', function() {
-    it('should have a0-no-placeholder-support class when not supported (' + supportString + 'supported)', function(done) {
+    it('should have a0-no-placeholder-support class when not supported (' + placeholderSupportPrefix + 'supported)', function(done) {
       widget
       .once('ready', function() {
         var hasClass = $('#a0-lock .a0-overlay').hasClass('a0-no-placeholder-support');
@@ -557,7 +557,7 @@ describe('Auth0Lock', function () {
       .show()
     });
 
-    it('should not have a0-no-placeholder-support class when supported (' + supportString + 'supported)', function(done) {
+    it('should not have a0-no-placeholder-support class when supported (' + placeholderSupportPrefix + 'supported)', function(done) {
       widget
       .once('ready', function() {
         var hasClass = $('#a0-lock .a0-overlay').hasClass('a0-no-placeholder-support');
