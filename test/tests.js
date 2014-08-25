@@ -12,7 +12,7 @@ mocha.globals(['jQuery*', '__auth0jp*', 'Auth0*']);
  */
 
 var placeholderSupport = ('placeholder' in document.createElement('input'));
-var placeholderSupportPrefix = '' = placeholderSupport ? '' : 'not ';
+var placeholderSupportPrefix = placeholderSupport ? '' : 'not ';
 
 /**
  * Test Auth0Lock
