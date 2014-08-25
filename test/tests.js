@@ -497,10 +497,10 @@ describe('Auth0Lock', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
       })
       .once('reset ready',function () {
-        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;;
-        expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;;
-        expect($('#a0-lock .a0-signup')[0]).to.not.exist;;
-        expect($('#a0-lock .a0-reset')[0]).to.exist;;
+        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
+        expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;
+        expect($('#a0-lock .a0-signup')[0]).to.not.exist;
+        expect($('#a0-lock .a0-reset')[0]).to.exist;
         done();
       })
       .show({
@@ -534,4 +534,45 @@ describe('Auth0Lock', function () {
     });
   });
 
+  describe('placeholder fallback support', function() {
+    var supportString = '';
+
+    before(function(done) {
+      this.placeholderSupport = ('placeholder' in document.createElement('input'));
+      supportString = this.placeholderSupport ? '' : 'not ';
+      done();
+    });
+
+    it('should have a0-no-placeholder-support class when not supported (' + supportString + 'supported)', function(done) {
+      var placeholderSupport = this.placeholderSupport;
+      widget
+      .once('ready', function() {
+        var hasClass = $('#a0-lock .a0-overlay').hasClass('a0-no-placeholder-support');
+        expect(hasClass).to.be(!placeholderSupport);
+        if (!placeholderSupport) {
+          var fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder')[0];
+          expect(fallback).to.exist;
+          expect(fallback.css('display')).to.equal('block');
+        };
+        done();
+      })
+      .show()
+    });
+
+    it('should not have a0-no-placeholder-support class when supported (' + supportString + 'supported)', function(done) {
+      var placeholderSupport = this.placeholderSupport;
+      widget
+      .once('ready', function() {
+        var hasClass = $('#a0-lock .a0-overlay').hasClass('a0-no-placeholder-support');
+        expect(!hasClass).to.be(placeholderSupport);
+        if (placeholderSupport) {
+          var fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder')[0];
+          expect(fallback).to.not.exist;
+          expect($('#a0-lock .a0-sad-placeholder').css('display')).to.equal('none');
+        };
+        done();
+      })
+      .show();
+    });
+  });
 });
