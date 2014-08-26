@@ -37,13 +37,13 @@ Or our CDN:
 
 ```html
 <!-- Latest major release -->
-<script src="http://cdn.auth0.com/auth0-lock/6/auth0-lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-6.min.js"></script>
 
 <!-- Latest minor release -->
-<script src="http://cdn.auth0.com/auth0-lock/6.0/auth0-lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-6.0.min.js"></script>
 
 <!-- Latest patch release -->
-<script src="http://cdn.auth0.com/auth0-lock/6.0.0/auth0-lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-6.0.0.min.js"></script>
 ```
 
 ## Usage
@@ -74,7 +74,7 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.show();
 ```
 
-> Note: For a full detail on the initialization configuration check the [wiki][show] article.
+> Note: For a full detail on the initialization configuration check the [wiki][lock-initialization] article.
 
 
 ### .show(options[, callback])
@@ -198,7 +198,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/auth0-lock
 
-[initialization-configuration]: https://github.com/auth0/lock/wiki/Auth0lock-initialization
+[lock-initialization]: https://github.com/auth0/lock/wiki/Auth0lock-initialization
 [lock-customization]: https://github.com/auth0/lock/wiki/Auth0lock-customization
 [ui-customization]: https://github.com/auth0/lock/wiki/UI-customization
 [error-customization]: https://github.com/auth0/lock/wiki/Customizing-error-messages
