@@ -143,10 +143,10 @@ describe('Auth0Lock', function () {
   it('should show only notloggedin view if SSO data is not present', function (done) {
     widget
     .once('ready', function () {
-      expect($('#a0-lock .a0-notloggedin')[0]).to.exist;
-      expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;
-      expect($('#a0-lock .a0-signup')[0]).to.not.exist;
-      expect($('#a0-lock .a0-reset')[0]).to.not.exist;
+      expect($('#a0-lock .a0-notloggedin')).to.not.be.empty();
+      expect($('#a0-lock .a0-loggedin')).to.be.empty();
+      expect($('#a0-lock .a0-signup')).to.be.empty();
+      expect($('#a0-lock .a0-reset')).to.be.empty();
       done();
     })
     .show({
@@ -167,10 +167,10 @@ describe('Auth0Lock', function () {
 
     widget
     .once('ready', function () {
-      expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
-      expect($('#a0-lock .a0-loggedin')[0]).to.exist;
-      expect($('#a0-lock .a0-signup')[0]).to.not.exist;
-      expect($('#a0-lock .a0-reset')[0]).to.not.exist;
+      expect($('#a0-lock .a0-notloggedin')).to.be.empty();
+      expect($('#a0-lock .a0-loggedin')).to.not.be.empty();
+      expect($('#a0-lock .a0-signup')).to.be.empty();
+      expect($('#a0-lock .a0-reset')).to.be.empty();
       expect($('#a0-lock .a0-loggedin .a0-strategy [data-strategy]').attr('title')).to.equal('john@gmail.com (Google)');
       done();
     })
@@ -255,7 +255,7 @@ describe('Auth0Lock', function () {
     it('should signin with social connection', function (done) {
       client.login = function (options) {
         expect(options.connection).to.equal('google-oauth2');
-        expect(options.username).to.not.exist;
+        expect(options.username).to.be(undefined);
         done();
       };
 
@@ -273,7 +273,7 @@ describe('Auth0Lock', function () {
       client.login = function (options) {
         expect(options.state).to.equal('foo');
         expect(options.connection).to.equal('google-oauth2');
-        expect(options.username).to.not.exist;
+        expect(options.username).to.be(undefined);
         done();
       };
 
@@ -309,11 +309,11 @@ describe('Auth0Lock', function () {
 
       client.login = function (options) {
         expect(options.connection).to.equal('twitter');
-        expect(options.username).to.not.exist;
+        expect(options.username).to.be(undefined);
         expect(options.connection_scope.length).to.equal(2);
         expect(options.connection_scope[0]).to.equal('grant1');
         expect(options.connection_scope[1]).to.equal('grant2');
-        expect(options.connection_scopes).to.not.exist;
+        expect(options.connection_scopes).to.not.be.empty();
 
         done();
       };
@@ -332,9 +332,9 @@ describe('Auth0Lock', function () {
 
       client.login = function (options) {
         expect(options.connection).to.equal('google-oauth2');
-        expect(options.username).to.not.exist;
-        expect(options.connection_scope).to.not.exist;
-        expect(options.connection_scopes).to.not.exist;
+        expect(options.username).to.be(undefined);
+        expect(options.connection_scope).to.be(undefined);
+        expect(options.connection_scopes).to.not.be.empty();
 
         done();
       };
@@ -405,7 +405,7 @@ describe('Auth0Lock', function () {
     it('should signin with enterprise connection', function (done) {
       client.login = function (options) {
         expect(options.connection).to.equal('contoso');
-        expect(options.username).to.not.exist;
+        expect(options.username).to.be(undefined);
         done();
       };
       widget
@@ -425,7 +425,7 @@ describe('Auth0Lock', function () {
       client.login = function (options) {
         expect(options.state).to.equal('foo');
         expect(options.connection).to.equal('contoso');
-        expect(options.username).to.not.exist;
+        expect(options.username).to.be(undefined);
         done();
       };
 
@@ -461,10 +461,10 @@ describe('Auth0Lock', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
       })
       .once('signup ready', function (){
-        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
-        expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;
-        expect($('#a0-lock .a0-reset')[0]).to.not.exist;
-        expect($('#a0-lock .a0-signup')[0]).to.exist;
+        expect($('#a0-lock .a0-notloggedin')).to.be.empty();
+        expect($('#a0-lock .a0-loggedin')).to.be.empty();
+        expect($('#a0-lock .a0-reset')).to.be.empty();
+        expect($('#a0-lock .a0-signup')).to.not.be.empty();
         done();
       })
       .show({
@@ -504,10 +504,10 @@ describe('Auth0Lock', function () {
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
       })
       .once('reset ready',function () {
-        expect($('#a0-lock .a0-notloggedin')[0]).to.not.exist;
-        expect($('#a0-lock .a0-loggedin')[0]).to.not.exist;
-        expect($('#a0-lock .a0-signup')[0]).to.not.exist;
-        expect($('#a0-lock .a0-reset')[0]).to.exist;
+        expect($('#a0-lock .a0-notloggedin')).to.be.empty();
+        expect($('#a0-lock .a0-loggedin')).to.be.empty();
+        expect($('#a0-lock .a0-signup')).to.be.empty();
+        expect($('#a0-lock .a0-reset')).to.not.be.empty();
         done();
       })
       .show({
@@ -549,7 +549,7 @@ describe('Auth0Lock', function () {
         expect(hasClass).to.be(!placeholderSupport);
         if (!placeholderSupport) {
           var $fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder');
-          expect($fallback[0]).to.exist;
+          expect($fallback).to.not.be.empty()
           expect($fallback.css('display')).to.equal('block');
         };
         done();
@@ -564,7 +564,7 @@ describe('Auth0Lock', function () {
         expect(!hasClass).to.be(placeholderSupport);
         if (placeholderSupport) {
           var $fallback = $('#a0-lock .a0-no-placeholder-support .a0-sad-placeholder');
-          expect($fallback[0]).to.not.exist;
+          expect($fallback).to.be.empty();
           expect($('#a0-lock .a0-sad-placeholder').css('display')).to.equal('none');
         };
         done();
