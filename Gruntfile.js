@@ -192,33 +192,33 @@ module.exports = function (grunt) {
       publish: {
         upload: [
           {
-            src: 'release/auth0-lock.js',
+            src: 'release/auth0-lock-' +  pkg.version + '.js',
             dest: 'js/lock-' + pkg.version + '.js',
             gzip: false
           },
           {
-            src: 'release/auth0-lock.min.js',
+            src: 'release/auth0-lock-' +  pkg.version + '.min.js',
             dest: 'js/lock-' + pkg.version + '.min.js',
             gzip: false
           },
           {
-            src: 'release/auth0-lock.js',
-            dest: 'js/lock-' + major_version + '.js',
-            gzip: false
-          },
-          {
-            src: 'release/auth0-lock.min.js',
-            dest: 'js/lock-' + major_version + '.min.js',
-            gzip: false
-          },
-          {
-            src: 'release/auth0-lock.js',
+            src: 'release/auth0-lock-' +  minor_version + 'js',
             dest: 'js/lock-' + minor_version + '.js',
             gzip: false
           },
           {
-            src: 'release/auth0-lock.min.js',
+            src: 'release/auth0-lock-' +  minor_version + 'min.js',
             dest: 'js/lock-' + minor_version + '.min.js',
+            gzip: false
+          },
+          {
+            src: 'release/auth0-lock-' +  major_version + '.js',
+            dest: 'js/lock-' + major_version + '.js',
+            gzip: false
+          },
+          {
+            src: 'release/auth0-lock-' +  major_version + 'min.js',
+            dest: 'js/lock-' + major_version + '.min.js',
             gzip: false
           }
         ]
