@@ -77,7 +77,7 @@ describe('sign up', function () {
   it('should signin with social connection', function (done) {
     this.auth0.$auth0.login = function (options) {
       expect(options.connection).to.equal('google-oauth2');
-      expect(options.username).to.not.exist;
+      expect(options.username).to.be(undefined);
       done();
     };
 
