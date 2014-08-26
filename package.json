@@ -33,6 +33,7 @@
   "devDependencies": {
     "brfs": "0.0.8",
     "browserify": "4.2.1",
+    "bump": "git://github.com/ianstormtaylor/bump",
     "css-prefix": "0.0.2",
     "ejsify": "0.1.0",
     "expect.js": "~0.2.0",
