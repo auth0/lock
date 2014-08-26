@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
+BIN="./node_modules/.bin"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 VERSION=$(node -e "console.log(require('$DIR/../package.json').version)")
 PACKAGE=$(node -e "console.log(require('$DIR/../package.json').name)")
@@ -38,5 +39,5 @@ if [ ! -z "$CDN_EXISTS" ]; then
     echo "There is already a version $VERSION in the CDN. Skiping cdn publish."
 else
     echo "Deploying $VERSION to cdn"
-    grunt cdn
+    $BIN/grunt cdn
 fi
