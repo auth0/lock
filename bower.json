@@ -1,5 +1,5 @@
 {
   "name": "auth0-lock",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "main": "build/auth0-lock.js"
 }
