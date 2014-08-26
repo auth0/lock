@@ -202,12 +202,12 @@ module.exports = function (grunt) {
             gzip: false
           },
           {
-            src: 'release/auth0-lock-' +  minor_version + 'js',
+            src: 'release/auth0-lock-' +  minor_version + '.js',
             dest: 'js/lock-' + minor_version + '.js',
             gzip: false
           },
           {
-            src: 'release/auth0-lock-' +  minor_version + 'min.js',
+            src: 'release/auth0-lock-' +  minor_version + '.min.js',
             dest: 'js/lock-' + minor_version + '.min.js',
             gzip: false
           },
@@ -217,7 +217,7 @@ module.exports = function (grunt) {
             gzip: false
           },
           {
-            src: 'release/auth0-lock-' +  major_version + 'min.js',
+            src: 'release/auth0-lock-' +  major_version + '.min.js',
             dest: 'js/lock-' + major_version + '.min.js',
             gzip: false
           }
