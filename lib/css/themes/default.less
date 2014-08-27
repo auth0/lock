@@ -13,6 +13,8 @@
   color: #D0D2D3;
   border-radius: 2.5em 0 2.5em 2.5em;
   -webkit-animation: spinner 2s ease-in-out 0s infinite;
+  -moz-animation: spinner 2s ease-in-out 0s infinite;
+  animation: spinner 2s ease-in-out 0s infinite;
 
   &:after {
     content: '';
@@ -32,6 +34,25 @@
   }
   to {
     -webkit-transform: rotateY(360deg);
+  }
+}
+
+@-moz-keyframes spinner {
+  from {
+    -moz-transform: rotateY(0deg);
+  }
+  to {
+    -moz-transform: rotateY(360deg);
+  }
+}
+
+
+@keyframes spinner {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
   }
 }
 
