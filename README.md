@@ -180,6 +180,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
 * Legacy **auth0-widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
+* [Auth0 Lock Playground](http://lock-pl4y.herokuapp.com)
 
 <!-- Vaaaaarrsss -->
 
