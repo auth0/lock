@@ -7271,6 +7271,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background: #0b1025;
 }
 
+#a0-lock .a0-panel button.a0-primary:focus {
+  background: #3e4975;
+}
+
 #a0-lock .a0-panel input[disabled] {
   background-color: #d9dee0;
 }
