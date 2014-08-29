@@ -176,6 +176,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 * [Error customization][error-customization] notes.
 * [Single Page Applications (SPA)][spa-notes] notes.
 * [I18n][i18n-notes] notes.
+* [Events][events-notes] notes.
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
 * Legacy **auth0-widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
@@ -204,5 +205,6 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 [error-customization]: https://github.com/auth0/lock/wiki/Customizing-error-messages
 [spa-notes]: https://github.com/auth0/lock/wiki/Single-page-applications
 [i18n-notes]: https://github.com/auth0/lock/wiki/I18n
+[events-notes]: https://github.com/auth0/lock/wiki/Events
 [development-notes]: https://github.com/auth0/lock/wiki/Development-notes
 [release-process]: https://github.com/auth0/lock/wiki/Release-process
