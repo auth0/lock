@@ -1100,16 +1100,13 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
   this._focusError();
 
   // set loading message
-  var message = self.options.i18n.t('signin:popupCredentials');
+  // unless it's a /ro call for username/email and password
+  var message = null == loginOptions.username ? this.options.i18n.t('signin:popupCredentials') : null;
   this._loadingPanel({ mode: 'signin', message: message });
 
   this.$auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
     var args = Array.prototype.slice.call(arguments, 0);
     if (!err) return callback.apply(self, args), self.hide();
-
-    // XXX: Maybe check if panel.name === 'signin'?
-    // In case called from signup-mode, I don't want to
-    // display the signup form again, but the signin instead
 
     // display signin
     self.setPanel(panel);
