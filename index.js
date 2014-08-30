@@ -88,13 +88,9 @@ function Auth0Lock (clientID, domain, options) {
 
   // use domain as assetsUrl if no assetsUrl provided
   // and domain is not *.auth0.com. Fallback to S3 url
-  this.$options.assetsUrl = this.$options.assetsUrl || this.isAuth0Domain()
-    ? 'https://s3.amazonaws.com/assets.auth0.com/'
-    : 'https://' + this.$options.domain + '/';
+  this.$options.assetsUrl = this.$options.assetsUrl || this.isAuth0Domain() ? 'https://s3.amazonaws.com/assets.auth0.com/' : 'https://' + this.$options.domain + '/';
 
-  this.$options.cdn = this.$options.cdn || this.isAuth0Domain()
-    ? 'https://d19p4zemcycm7a.cloudfront.net/w2/'
-    : 'https://' + this.$options.domain + '/w2/';
+  this.$options.cdn = this.$options.cdn || this.isAuth0Domain() ? 'https://d19p4zemcycm7a.cloudfront.net/w2/' : 'https://' + this.$options.domain + '/w2/';
 
   // Holds SSO Data for return user experience
   this.$ssoData = null;
@@ -139,7 +135,7 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
     this.once('client loaded', function (client) {
       done(client);
     });
-  };
+  }
 
   // If not loading, check for already stored
   // in a previous widget instantiation
@@ -172,12 +168,7 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
 
   // Load client from assets url
   var script = document.createElement('script');
-  script.src = this.$options.assetsUrl
-    + 'client/'
-    + this.$options.clientID
-    + '.js'
-    + '?t'
-    + (+new Date);
+  script.src = this.$options.assetsUrl + 'client/' + this.$options.clientID + '.js' + '?t' + (+new Date());
 
   // Insert script in DOM head
   var firstScript = document.getElementsByTagName('script')[0];
@@ -228,7 +219,7 @@ Auth0Lock.prototype.query = function(selector, context) {
 Auth0Lock.prototype.render = function(tmpl, locals) {
   var _locals = _.extend({}, this.options, locals);
   return tmpl(_locals);
-}
+};
 
 /**
  * Render widget container to DOM
@@ -246,9 +237,9 @@ Auth0Lock.prototype.insert = function() {
   var cid = options.container;
   var locals = {
     options: options,
-    alt_spinner: !has_animations()
-      ? (this.$options.cdn + 'img/ajax-loader.gif')
-      : null
+    alt_spinner: !has_animations() ?
+      (this.$options.cdn + 'img/ajax-loader.gif') :
+      null
   };
 
   // widget container
@@ -267,7 +258,7 @@ Auth0Lock.prototype.insert = function() {
   }
 
   return this;
-}
+};
 
 /**
  * Show the widget resolving `options`
@@ -282,7 +273,7 @@ Auth0Lock.prototype.insert = function() {
 Auth0Lock.prototype.show = function(options, callback) {
   var opts = _.extend({ mode: 'signin' }, options);
   return this.display(opts, callback);
-}
+};
 
 /**
  * Show widget on `signin` mode with
@@ -303,7 +294,7 @@ Auth0Lock.prototype.showSignin = function(options, callback) {
   // merge and force `signin` mode
   var opts = _.extend(optional, options, required);
   return this.show.call(this, opts, callback);
-}
+};
 
 /**
  * Show widget on `reset` mode with
@@ -324,7 +315,7 @@ Auth0Lock.prototype.showSignup = function(options, callback) {
   // merge and force `signin` mode
   var opts = _.extend(optional, options, required);
   return this.show.call(this, opts, callback);
-}
+};
 
 /**
  * Show widget on `reset` mode with
@@ -345,7 +336,7 @@ Auth0Lock.prototype.showReset = function(options, callback) {
   // merge and force `signin` mode
   var opts = _.extend(optional, options, required);
   return this.show.call(this, opts, callback);
-}
+};
 
 /**
  * Hide the widget and call `callback` when done.
@@ -423,7 +414,7 @@ Auth0Lock.prototype.display = function(options, callback) {
   // and right after that render mode
   function oninitialized() {
     // focus once ready
-    this.once(this.options.mode + ' ready', bind(this.focusInput, this))
+    this.once(this.options.mode + ' ready', bind(this.focusInput, this));
 
     // resolve view
     if ('signin' === this.options.mode) {
@@ -439,20 +430,20 @@ Auth0Lock.prototype.display = function(options, callback) {
 
       // otherwise, just show signin
       this._signinPanel(this.options, callback);
-    };
+    }
 
     if ('signup' === this.options.mode) {
       this._signupPanel(this.options, callback);
-    };
+    }
 
     if ('reset' === this.options.mode) {
       this._resetPanel(this.options, callback);
-    };
+    }
 
   }
 
   return this;
-}
+};
 
 /**
  * Initialize widget for the `display` method
@@ -488,7 +479,7 @@ Auth0Lock.prototype.initialize = function(done) {
   // close popup with ESC key
   if (options.closable) {
     this.query('').a0_on('keyup', bind(this.onescpressed, this));
-  };
+  }
 
   if (options._isFreeSubscription()) {
     // hide footer for non free/dev subscriptions
@@ -529,20 +520,20 @@ Auth0Lock.prototype.initialize = function(done) {
   var notSigninMode = ~['reset', 'signup'].indexOf(options.mode);
   if (notSigninMode) {
     return finish(null, {}), this;
-  };
+  }
 
-  var disabledReturnUserExperience = false === options.rememberLastLogin
-    && (!options._isThereAnyADConnection() || false === options.integratedWindowsLogin)
+  var disabledReturnUserExperience = false === options.rememberLastLogin &&
+    (!options._isThereAnyADConnection() || false === options.integratedWindowsLogin);
 
   if (disabledReturnUserExperience) {
     return finish(null, {}), this;
-  };
+  }
 
   // get SSO data and then render
   this.$auth0.getSSOData(options._isThereAnyADConnection(), finish);
 
   return this;
-}
+};
 
 /**
  * Create and set a new SigninPanel with
@@ -577,7 +568,7 @@ Auth0Lock.prototype._signinPanel = function (options) {
 
   return this;
 
-}
+};
 
 /**
  * Create and set a new SignupPanel with
@@ -597,7 +588,7 @@ Auth0Lock.prototype._signupPanel = function (options) {
   this.setPanel(panel);
 
   return this;
-}
+};
 
 /**
  * Create and set a new ResetPanel with
@@ -617,7 +608,7 @@ Auth0Lock.prototype._resetPanel = function (options) {
   this.setPanel(panel);
 
   return this;
-}
+};
 
 /**
  * Create and set a new LoadingPanel with
@@ -643,10 +634,10 @@ Auth0Lock.prototype._loadingPanel = function (options) {
   if (options.message) {
     panel.query('').addClass('a0-with-message');
     panel.query('.a0-spin-message span').html(options.message.replace('-', ' '));
-  };
+  }
 
   return this;
-}
+};
 
 /**
  * Create and set a new LoggedinPanel with
@@ -666,7 +657,7 @@ Auth0Lock.prototype._loggedinPanel = function (options) {
   this.setPanel(panel);
 
   return this;
-}
+};
 
 /**
  * Create and set a new KerberosPanel with
@@ -686,7 +677,7 @@ Auth0Lock.prototype._kerberosPanel = function (options) {
   this.setPanel(panel);
 
   return this;
-}
+};
 
 /**
  * Set `panel` to .a0-mode-container element and
@@ -698,16 +689,12 @@ Auth0Lock.prototype._kerberosPanel = function (options) {
  */
 
 Auth0Lock.prototype.setPanel = function(panel, name) {
-  var el = 'function' === typeof panel.render
-    ? panel.render()
-    : panel;
-  var pname = 'function' === typeof panel.render
-    ? panel.name
-    : (name || 'signin');
+  var el = 'function' === typeof panel.render ? panel.render() : panel;
+  var pname = 'function' === typeof panel.render ? panel.name : (name || 'signin');
 
   this.query('.a0-mode-container').html(el);
   this.emit('%s ready'.replace('%s', pname));
-}
+};
 
 
 /**
@@ -796,7 +783,7 @@ Auth0Lock.prototype._focusError = function(input, message) {
     this.query('.a0-error-input').removeClass('a0-error-input');
     this.query('.a0-error-message').remove();
     // reset animations
-    return animation_shake_reset(this.$container);;
+    return animation_shake_reset(this.$container);
   }
 
   // animation
@@ -804,7 +791,7 @@ Auth0Lock.prototype._focusError = function(input, message) {
 
   input
     .parent()
-    .addClass('a0-error-input')
+    .addClass('a0-error-input');
 
   if (!message) return;
   input.parent()
@@ -869,6 +856,8 @@ Auth0Lock.prototype._signin = function (panel) {
   var self = this;
   var valid = true;
 
+  var message;
+
   var emailD = panel.query('.a0-email');
   var email_input = panel.query('input[name=email]');
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
@@ -892,7 +881,7 @@ Auth0Lock.prototype._signin = function (panel) {
       return this._signinSocial('google-oauth2', null, null, panel);
     }
 
-    var message = this.options.i18n.t('signin:strategyDomainInvalid');
+    message = this.options.i18n.t('signin:strategyDomainInvalid');
     message = message.replace('{domain}', input_email_domain);
 
     this._showError(message);
@@ -915,7 +904,7 @@ Auth0Lock.prototype._signin = function (panel) {
     return this._signinPopupNoRedirect(connection, this.options.popupCallback, panel);
   }
 
-  var message = this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection);
+  message = this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection);
   this._loadingPanel({ mode: 'signin', message: message });
 
   var loginOptions = _.extend({}, {
@@ -945,9 +934,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel) {
 
   var loginOptions = {
     connection: connection.name,
-    username: connection.domain
-      ? username.replace('@' + connection.domain, '')
-      : username,
+    username: connection.domain ? username.replace('@' + connection.domain, '') : username,
     password: password,
     popup: self.options.popup,
     popupOptions: self.options.popupOptions
@@ -996,9 +983,8 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel) {
   }
 
   // TODO: Handle sso case without popup
-  var message = strategy.name !== 'auth0' // dont show loading message for dbConnections
-    ? this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection.name)
-    : '';
+  var message = strategy.name !== 'auth0' ? // dont show loading message for dbConnections
+    this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection.name) : '';
 
 
   this._loadingPanel({ mode: 'signin', message: message });
@@ -1178,7 +1164,7 @@ Auth0Lock.prototype.getProfile = function (token, callback) {
 Auth0Lock.prototype.oncloseclick = function(e) {
   stop(e);
   this.hide();
-}
+};
 
 /**
  * Handle `e` when keypressed ESC
@@ -1189,7 +1175,7 @@ Auth0Lock.prototype.oncloseclick = function(e) {
 
 Auth0Lock.prototype.onescpressed = function(e) {
   if ((e.which == 27 || e.keycode == 27)) this.hide();
-}
+};
 
 /**
  * Set focus on firist `input` if supported
@@ -1209,7 +1195,7 @@ Auth0Lock.prototype.focusInput = function() {
   } catch(err) {}
 
   return this;
-}
+};
 
 /**
  * Private helpers
