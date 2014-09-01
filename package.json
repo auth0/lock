@@ -58,7 +58,7 @@
     "phantomjs": "^1.9.7-15",
     "rimraf": "~2.2.2",
     "through": "^2.3.4",
-    "uglify-js": "~2.4.0",
+    "uglify-js": "~2.4.15",
     "zuul": "https://github.com/jfromaniello/zuul/tarball/phantom_custom_port"
   },
   "browserify": {
