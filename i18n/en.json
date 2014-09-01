@@ -15,6 +15,7 @@
     "strategyDomainInvalid":       "The domain {domain} has not been setup.",
     "signupText":                  "Sign Up",
     "forgotText":                  "Reset password",
+    "cancelAction":                "Cancel",
     "emailPlaceholder":            "Email",
     "usernamePlaceholder":         "Username",
     "passwordPlaceholder":         "Password",
