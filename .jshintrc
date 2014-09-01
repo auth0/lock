@@ -5,7 +5,7 @@
   "curly": true,
   "immed": true,
   "indent": 2,
-  "latedef": true,
+  "latedef": false,
   "newcap": true,
   "noarg": true,
   "quotmark": "single",
@@ -15,12 +15,12 @@
   "smarttabs": true,
   "expr": true,
   "laxbreak": true,
+  "eqnull": true,
 
 
   "evil": true,
   "browser": true,
   "regexdash": true,
-  "wsh": true,
   "trailing": true,
   "sub": true,
   "unused": true,
@@ -32,6 +32,6 @@
     "afterEach": false,
     "beforeEach": false,
     "describe": false,
-    "it": false,
+    "it": false
   }
 }
