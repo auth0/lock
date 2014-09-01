@@ -8,7 +8,7 @@ var path = require('path');
 
 function  rename_release (v) {
   return function (d, f) {
-    var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + "$1.js"));
+    var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + '$1.js'));
     return dest;
   };
 }
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     connect: {
       test: {
         options: {
-          // base: "test",
+          // base: 'test',
           hostname: '*',
           base: ['.', 'example', 'example/build', 'build'],
           port: 9999
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
           port: 3000
         }
       },
-      "example-https": {
+      'example-https': {
         options: {
           base: ['example', 'example/build', 'build'],
           port:  3000,
@@ -81,15 +81,15 @@ module.exports = function (grunt) {
     less: {
       dist: {
         options: {
-          paths: ["lib/css"],
+          paths: ['lib/css'],
         },
         files: {
-          "lib/css/main.css": "lib/css/main.less"
+          'lib/css/main.css': 'lib/css/main.less'
         }
       },
       example: {
         files: {
-          "example/build/index.css": "example/index.less"
+          'example/build/index.css': 'example/index.less'
         }
       }
     },
@@ -102,7 +102,7 @@ module.exports = function (grunt) {
         dest: 'lib/css/main.css',
       },
     },
-    prefix: { //this adds "a0-" to every class and id
+    prefix: { //this adds 'a0-' to every class and id
       css: {
         src: 'lib/css/main.css',
         dest: 'lib/css/main.css',
@@ -152,15 +152,26 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      build: ["release/", "build/", "lib/css/main.css", "lib/css/main.min.css", "example/auth0-lock.js"]
+      css: ['lib/css/main.css', 'lib/css/main.min.css'],
+      js: ['release/', 'build/', 'example/auth0-lock.js']
     },
     watch: {
-      another: {
+      js: {
         files: ['node_modules',
                 'standalone.js',
                 'index.js',
-                'lib/**/*',
+                'lib/**/*.js',
+                'lib/**/*.ejs',
                 'i18n/*'],
+        tasks: ['js'],
+        options: {
+          livereload: true
+        },
+      },
+      css: {
+        files: [
+          'lib/**/*.css'
+        ],
         tasks: ['build'],
         options: {
           livereload: true
@@ -168,7 +179,7 @@ module.exports = function (grunt) {
       },
       example: {
         files: ['example/*'],
-        tasks: ["less:example"],
+        tasks: ['less:example'],
         options: {
           livereload: true
         },
@@ -272,17 +283,21 @@ module.exports = function (grunt) {
   });
 
   // Loading dependencies
-  for (var key in grunt.file.readJSON("package.json").devDependencies) {
-    if (key !== "grunt" && key.indexOf("grunt") === 0) grunt.loadNpmTasks(key);
+  for (var key in grunt.file.readJSON('package.json').devDependencies) {
+    if (key !== 'grunt' && key.indexOf('grunt') === 0) { grunt.loadNpmTasks(key); }
   }
 
-  grunt.registerTask("build",         ["clean", "less:dist", "prefix:css", "autoprefixer:main", "cssmin:minify", "browserify:debug", "exec:uglify"]);
-  grunt.registerTask("example",       ["less:example", "connect:example", "build", "watch"]);
-  grunt.registerTask("example-https", ["less:example", "connect:example-https", "build", "watch"]);
+  grunt.registerTask('css',           ['clean:css', 'less:dist', 'prefix:css', 'autoprefixer:main', 'cssmin:minify']);
 
-  grunt.registerTask("dev",           ["connect:test", "build", "watch"]);
-  grunt.registerTask("integration",   ["exec:test-integration"]);
-  grunt.registerTask("phantom",       ["exec:test-phantom"]);
+  grunt.registerTask('js',            ['clean:js', 'browserify:debug', 'exec:uglify']);
+  grunt.registerTask('build',         ['css', 'js']);
 
-  grunt.registerTask("cdn",           ["build", "copy:release", "s3:clean", "s3:publish", "maxcdn:purgeCache"]);
+  grunt.registerTask('example',       ['less:example', 'connect:example', 'build', 'watch']);
+  grunt.registerTask('example-https', ['less:example', 'connect:example-https', 'build', 'watch']);
+
+  grunt.registerTask('dev',           ['connect:test', 'build', 'watch']);
+  grunt.registerTask('integration',   ['exec:test-integration']);
+  grunt.registerTask('phantom',       ['exec:test-phantom']);
+
+  grunt.registerTask('cdn',           ['build', 'copy:release', 's3:clean', 's3:publish', 'maxcdn:purgeCache']);
 };
