@@ -161,11 +161,17 @@ module.exports = function (grunt) {
                 'index.js',
                 'lib/**/*',
                 'i18n/*'],
-        tasks: ['build']
+        tasks: ['build'],
+        options: {
+          livereload: true
+        },
       },
       example: {
         files: ['example/*'],
-        tasks: ["less:example"]
+        tasks: ["less:example"],
+        options: {
+          livereload: true
+        },
       }
     },
     s3: {
@@ -253,9 +259,16 @@ module.exports = function (grunt) {
   });
 
   grunt.registerMultiTask('prefix', 'Prefix css.', function() {
-    var css = fs.readFileSync(__dirname + '/' + this.data.src, 'utf8');
-    var prefixed = cssPrefix(this.data.prefix, css.toString());
-    fs.writeFileSync(__dirname + '/' + this.data.dest, prefixed);
+    var done = this.async();
+    var that = this;
+    fs.readFile(__dirname + '/' + this.data.src, {encoding: 'utf8'}, function (err, data) {
+      if (err) { return done(err);  }
+      var prefixed = cssPrefix(that.data.prefix, data.toString());
+      fs.writeFile(__dirname + '/' + that.data.dest, prefixed, function (err) {
+        if (err) { return done(err); }
+        done();
+      });
+    });
   });
 
   // Loading dependencies
