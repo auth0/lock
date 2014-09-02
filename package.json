@@ -22,7 +22,7 @@
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
   "dependencies": {
-    "auth0-js": "^4.1.0",
+    "auth0-js": "^4.2.6",
     "bean": "~1.0.4",
     "bonzo": "^1.3.6",
     "domready": "~0.2.13",
