@@ -106,7 +106,7 @@ lock.show(function onLogin(err, profile, token) {
 
 ```
 
-> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
+> [Click here to learn more about implementing different authentication modes with Auth0 Lock](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 ### .showSignin([options, callback]) || .showSignin(callback)
 
@@ -121,7 +121,7 @@ lock.showSignin(options);
 // If no options are needed and you'll use popup
 lock.showSignin(function onLogin(err, profile, token) {
 ```
-> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
+> [Click here to learn more about implementing different authentication modes with Auth0 Lock](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 
 ### .showSignup([options, callback]) || .showSignup(callback)
@@ -138,7 +138,7 @@ lock.showSignup(options);
 lock.showSignup(function onLogin(err, profile, token) {
 
 ```
-> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
+> [Click here to learn more about implementing different authentication modes with Auth0 Lock](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 
 ### .showReset([options, callback]) || .showReset(callback)
@@ -155,7 +155,7 @@ lock.showReset(options);
 lock.showReset(function onLogin(err, profile, token) {
 ```
 
-> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
+> [Click here to learn more about implementing different authentication modes with Auth0 Lock](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 
 ### .hide([callback])
