@@ -260,6 +260,20 @@ Auth0Lock.prototype.insert = function() {
   return this;
 };
 
+function getShowParams(options, callback) {
+  var realOptions = options;
+  var realCallback = callback;
+  if (_.isFunction(options)) {
+    realCallback = options;
+    realOptions = {};
+  }
+
+  return {
+    callback: realCallback,
+    options: realOptions
+  };
+};
+
 /**
  * Show the widget resolving `options`
  * with default mode as 'signin'
@@ -271,8 +285,9 @@ Auth0Lock.prototype.insert = function() {
  */
 
 Auth0Lock.prototype.show = function(options, callback) {
-  var opts = _.extend({ mode: 'signin' }, options);
-  return this.display(opts, callback);
+  var params = getShowParams(options, callback);
+  var opts = _.extend({ mode: 'signin' }, params.options);
+  return this.display(opts, params.callback);
 };
 
 /**
@@ -288,12 +303,14 @@ Auth0Lock.prototype.show = function(options, callback) {
  */
 
 Auth0Lock.prototype.showSignin = function(options, callback) {
+
+  var params = getShowParams(options, callback);
   var optional = { disableSignupAction: true, disableResetAction: true };
   var required = { mode: 'signin' };
 
   // merge and force `signin` mode
-  var opts = _.extend(optional, options, required);
-  return this.show.call(this, opts, callback);
+  var opts = _.extend(optional, params.options, required);
+  return this.show.call(this, opts, params.callback);
 };
 
 /**
@@ -309,12 +326,13 @@ Auth0Lock.prototype.showSignin = function(options, callback) {
  */
 
 Auth0Lock.prototype.showSignup = function(options, callback) {
+  var params = getShowParams(options, callback);
   var optional = { disableSignupAction: true, disableResetAction: true };
   var required = { mode: 'signup' };
 
   // merge and force `signin` mode
-  var opts = _.extend(optional, options, required);
-  return this.show.call(this, opts, callback);
+  var opts = _.extend(optional, params.options, required);
+  return this.show.call(this, opts, params.callback);
 };
 
 /**
@@ -330,12 +348,13 @@ Auth0Lock.prototype.showSignup = function(options, callback) {
  */
 
 Auth0Lock.prototype.showReset = function(options, callback) {
+  var params = getShowParams(options, callback);
   var optional = { disableSignupAction: true, disableResetAction: true };
   var required = { mode: 'reset' };
 
   // merge and force `signin` mode
-  var opts = _.extend(optional, options, required);
-  return this.show.call(this, opts, callback);
+  var opts = _.extend(optional, params.options, required);
+  return this.show.call(this, opts, params.callback);
 };
 
 /**
