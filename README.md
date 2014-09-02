@@ -59,7 +59,7 @@ var login = document.querySelector('a#login')
 
 login.onclick = function (e) {
   e.preventDefault();
-  lock.show(null, function(err, profile, id_token) {
+  lock.show(function(err, profile, id_token) {
     if (err) {
       // There was an error logging the user in
       return;
@@ -69,6 +69,8 @@ login.onclick = function (e) {
   });
 };
 ```
+
+This is one of the example of how Auth0 Lock would work with a Single Page App (SPA). Please [click here to get more information about using Auth0 Lock with a SPA](https://github.com/auth0/lock/wiki/Types-Of-Applications#single-page-app) or [click here to get information on how to use it with a Regular WebApp](https://github.com/auth0/lock/wiki/Types-Of-Applications#regular-webapp)
 
 ## API
 
@@ -82,10 +84,10 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.show()
 ```
 
-> Note: For a full detail on the initialization configuration check the [wiki][lock-initialization] article.
+> Note: For a full detail on the initialization configuration [you can check the wiki][lock-initialization] article.
 
 
-### .show(options[, callback])
+### .show([options, callback]) || .show(callback)
 
 Open the widget on `signin` mode with `signup` and `reset` button actions if enabled for the configured/default account connection.
 
@@ -97,7 +99,7 @@ lock.show(options);
 
 ```
 
-> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options index.
+> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 ### .showSignin(options[, callback])
 
@@ -110,7 +112,8 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.showSignin(options);
 
 ```
-> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options.
+> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
+
 
 ### .showSignup(options[, callback])
 
@@ -123,7 +126,8 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.showSignup(options);
 
 ```
-> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options.
+> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
+
 
 ### .showReset(options[, callback])
 
@@ -136,7 +140,8 @@ var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 lock.showReset(options);
 ```
 
-> Note: Check the [Auth0Lock customization][lock-customization] article for more examples and options.
+> [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
+
 
 ### .hide([callback])
 
@@ -182,7 +187,8 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 
 * [UI customization][ui-customization] for the `Auth0Lock`.
 * [Error customization][error-customization] notes.
-* [Single Page Applications (SPA)][spa-notes] notes.
+* [Implementing Auth0 Lock with Single Page Apps](https://github.com/auth0/lock/wiki/Types-Of-Applications#single-page-app).
+* [Implementing Auth0 Lock with Regular WebApps](https://github.com/auth0/lock/wiki/Types-Of-Applications#regular-webapp).
 * [I18n][i18n-notes] notes.
 * [Events][events-notes] notes.
 * [Development][development-notes] notes.
