@@ -46,6 +46,8 @@ Or our CDN:
 <script src="http://cdn.auth0.com/js/lock-6.0.0.min.js"></script>
 ```
 
+You can [try Auth0 Lock online using the PlayGround](http://lock-pl4y.herokuapp.com).
+
 ## Usage
 
 ```js
@@ -57,9 +59,15 @@ var login = document.querySelector('a#login')
 
 login.onclick = function (e) {
   e.preventDefault();
-  lock.show();
-}
+  lock.show(null, function(err, profile, id_token) {
+    if (err) {
+      // There was an error logging the user in
+      return;
+    }
 
+    // User is logged in
+  });
+};
 ```
 
 ## API
@@ -71,7 +79,7 @@ Initialize `Auth0Lock` with a `clientID` and the account's `domain`.
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-lock.show();
+lock.show()
 ```
 
 > Note: For a full detail on the initialization configuration check the [wiki][lock-initialization] article.
