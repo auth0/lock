@@ -59,7 +59,7 @@ var login = document.querySelector('a#login')
 
 login.onclick = function (e) {
   e.preventDefault();
-  lock.show(function(err, profile, id_token) {
+  lock.show(function onLogin(err, profile, id_token) {
     if (err) {
       // There was an error logging the user in
       return;
@@ -72,6 +72,10 @@ login.onclick = function (e) {
 
 This is one of the example of how Auth0 Lock would work with a Single Page App (SPA). Please [click here to get more information about using Auth0 Lock with a SPA](https://github.com/auth0/lock/wiki/Types-Of-Applications#single-page-app) or [click here to get information on how to use it with a Regular WebApp](https://github.com/auth0/lock/wiki/Types-Of-Applications#regular-webapp)
 
+## Authentication Modes
+
+We can use Auth0 Lock with Popup Mode or Redirect Mode. [Click here to learn more about this 2 modes](https://github.com/auth0/lock/wiki/Authentication-Modes) and [click here to learn how to implement them with Auth0 Lock](https://github.com/auth0/lock/wiki/Types-Of-Applications)
+
 ## API
 
 ### Auth0Lock(clientID, domain[, options])
@@ -80,8 +84,6 @@ Initialize `Auth0Lock` with a `clientID` and the account's `domain`.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
-
-lock.show()
 ```
 
 > Note: For a full detail on the initialization configuration [you can check the wiki][lock-initialization] article.
@@ -94,50 +96,63 @@ Open the widget on `signin` mode with `signup` and `reset` button actions if ena
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-// normal display
+// normal display with redirect 
 lock.show(options);
+
+// If no options are needed and you'll use popup
+lock.show(function onLogin(err, profile, token) {
+  
+});
 
 ```
 
 > [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
-### .showSignin(options[, callback])
+### .showSignin([options, callback]) || .showSignin(callback)
 
 Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` button actions. This method is useful when your site has custom *signup* and *reset* links at a different form.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-// normal display
+// normal display with redirect 
 lock.showSignin(options);
 
+// If no options are needed and you'll use popup
+lock.showSignin(function onLogin(err, profile, token) {
 ```
 > [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 
-### .showSignup(options[, callback])
+### .showSignup([options, callback]) || .showSignup(callback)
 
 Open the widget on `signup` mode, but withouht the `cancel` button action to go back to `signin`. This method is useful when your site has custom *signin* and *reset* links at a different form.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-// normal display
+// normal display with redirect 
 lock.showSignup(options);
+
+// If no options are needed and you'll use popup
+lock.showSignup(function onLogin(err, profile, token) {
 
 ```
 > [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
 
 
-### .showReset(options[, callback])
+### .showReset([options, callback]) || .showReset(callback)
 
 Open the widget on `reset` mode, but withouht the bottom `cancel` button action to go back to `signin`.  This method is useful when your site has custom *signin* and *signup* links at a different form.
 
 ```js
 var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
 
-// normal display
+// normal display with redirect 
 lock.showReset(options);
+
+// If no options are needed and you'll use popup
+lock.showReset(function onLogin(err, profile, token) {
 ```
 
 > [Click here to learn more about using Auth0 Lock's authentication](https://github.com/auth0/lock/wiki/Types-Of-Applications) and check the [Auth0Lock customization][lock-customization] article for more examples and options.
@@ -189,6 +204,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 * [Error customization][error-customization] notes.
 * [Implementing Auth0 Lock with Single Page Apps](https://github.com/auth0/lock/wiki/Types-Of-Applications#single-page-app).
 * [Implementing Auth0 Lock with Regular WebApps](https://github.com/auth0/lock/wiki/Types-Of-Applications#regular-webapp).
+* [Popup vs Redirect. What are the authentication modes?](https://github.com/auth0/lock/wiki/Authentication-Modes).
 * [I18n][i18n-notes] notes.
 * [Events][events-notes] notes.
 * [Development][development-notes] notes.
