@@ -170,7 +170,7 @@ module.exports = function (grunt) {
       },
       css: {
         files: [
-          'lib/**/*.css'
+          'lib/**/*.less'
         ],
         tasks: ['build'],
         options: {
