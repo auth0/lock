@@ -7253,7 +7253,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-panel button.a0-primary {
-  padding: 20px;
+  padding: 20px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -7262,7 +7268,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   float: none;
   min-width: auto;
   letter-spacing: 1px;
-  padding: 20px 0;
   margin-bottom: 20px;
   margin-top: 20px;
   background-color: #16214D;
