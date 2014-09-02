@@ -9,6 +9,7 @@
   "signin": {
     "title":                       "Login",
     "action":                      "Access",
+    "actionDomain":                "Access {domain}",
     "all":                         "Show all",
     "strategyEmailEmpty":          "The email is empty.",
     "strategyEmailInvalid":        "The email is invalid.",
