@@ -67,6 +67,8 @@
                 <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
                 <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
                 <li><a id="login-button-only-enterprise"><i></i>Login (only enterprise)</a></li>
+
+                <li><a id="login-button-popup-token"><i></i>Login Popup (Default token no options)</a></li>
                 <li><a id="login-button-popup"><i></i>Login Popup</a></li>
                 <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
                 <li><a id="login-button-customicon"><i></i>Login (custom icon)</a></li>
@@ -249,6 +251,23 @@
               responseType: 'token',
               connections: ['qraftlabs.com']
             });
+          });
+
+          $('#login-button-popup-token').on('click', function () {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin(function onlogin (err, profile) {
+              if (err) {
+                return $('#userinfo pre').text('Error: ' + err.message);
+              }
+              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            });
+
+
           });
 
 

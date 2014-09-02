@@ -293,7 +293,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('dev',           ['connect:test', 'build', 'watch']);
   grunt.registerTask('integration',   ['exec:test-integration']);
-  grunt.registerTask('phantom',       ['exec:test-phantom']);
+  grunt.registerTask('phantom',       ['build', 'exec:test-phantom']);
 
   grunt.registerTask('cdn',           ['build', 'copy:release', 's3:clean', 's3:publish', 'maxcdn:purgeCache']);
 };
