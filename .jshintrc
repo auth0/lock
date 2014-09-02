@@ -32,6 +32,9 @@
     "afterEach": false,
     "beforeEach": false,
     "describe": false,
-    "it": false
+    "it": false,
+    "mocha": false,
+    "expect": false,
+    "Auth0Lock": false
   }
 }
