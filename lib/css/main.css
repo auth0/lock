@@ -7171,6 +7171,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock .a0-panel .a0-email input,
 #a0-lock .a0-panel .a0-password input,
 #a0-lock .a0-panel .a0-repeatPassword input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 16px 10px;
   padding-left: 40px;
   border-radius: 0;
