@@ -47,6 +47,7 @@ module.exports = function (grunt) {
         bundleOptions: {
           debug: true
         },
+        watch: true,
 
         // Convert absolute sourcemap filepaths to relative ones using mold-source-map.
         postBundleCB: function(err, src, cb) {
@@ -157,13 +158,8 @@ module.exports = function (grunt) {
     },
     watch: {
       js: {
-        files: ['node_modules',
-                'standalone.js',
-                'index.js',
-                'lib/**/*.js',
-                'lib/**/*.ejs',
-                'i18n/*'],
-        tasks: ['js'],
+        files: ['build/auth0-lock.js'],
+        tasks: [],
         options: {
           livereload: true
         },
