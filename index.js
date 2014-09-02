@@ -853,7 +853,6 @@ Auth0Lock.prototype._findConnectionByDomain = function (domain, strategies) {
  */
 
 Auth0Lock.prototype._signin = function (panel) {
-  var self = this;
   var valid = true;
 
   var message;
@@ -862,7 +861,7 @@ Auth0Lock.prototype._signin = function (panel) {
   var email_input = panel.query('input[name=email]');
   var email_parsed = email_parser.exec(email_input.val().toLowerCase());
 
-  var email = null, domain, connection, has_errors = false;
+  var email = null, domain, connection;
 
   var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
@@ -898,7 +897,7 @@ Auth0Lock.prototype._signin = function (panel) {
 
   // XXX: We should throw something here...
   // There has to be an action!
-  if (!valid) return;
+  if (!valid) { return; }
 
   if (this.options.popup && 'token' === this.options.responseType) {
     return this._signinPopupNoRedirect(connection, this.options.popupCallback, panel);
