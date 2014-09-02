@@ -72,7 +72,7 @@ login.onclick = function (e) {
 
 This is one of the example of how Auth0 Lock would work with a Single Page App (SPA). Please [click here to get more information about using Auth0 Lock with a SPA](https://github.com/auth0/lock/wiki/Types-Of-Applications#single-page-app) or [click here to get information on how to use it with a Regular WebApp](https://github.com/auth0/lock/wiki/Types-Of-Applications#regular-webapp)
 
-## Authentication Modes
+## Authentication Modes: Explanation & Implementation
 
 We can use Auth0 Lock with Popup Mode or Redirect Mode. [Click here to learn more about this 2 modes](https://github.com/auth0/lock/wiki/Authentication-Modes) and [click here to learn how to implement them with Auth0 Lock](https://github.com/auth0/lock/wiki/Types-Of-Applications)
 
