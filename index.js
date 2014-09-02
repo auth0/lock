@@ -392,8 +392,6 @@ Auth0Lock.prototype.logout = function (query) {
  */
 
 Auth0Lock.prototype.display = function(options, callback) {
-  var self = this;
-
   // pre-format options
   var opts = _.extend({ popupCallback: callback }, options);
 
@@ -811,39 +809,6 @@ Auth0Lock.prototype._setTitle = function(title) {
   h1.css('display', '');
 };
 
-
-/**
- * Get from the strategies list the connections and filter them
- * by using a given domain.
- *
- * @param   {String}  domain      Domain to be found.
- * @param   {Array}   strategies  Array with all the existing strategies
- *                                for this client.
- *
- * @returns {Object} the connection matching the domain or undefined otherwise.
- *
- * @private
- */
-Auth0Lock.prototype._findConnectionByDomain = function (domain, strategies) {
-  var conn_obj = _.chain(strategies)
-    .where({ userAndPass: undefined })
-    .pluck('connections')
-    .flatten()
-    .map(function (e) {
-      var l = [];
-      if (e.domain) {
-        l.push(e.domain);
-      }
-      l = l.concat(e.domain_aliases || []);
-      e.domains = l;
-      return e;
-    })
-    .find(function (e) { return e.domains.indexOf(domain) !== -1; })
-    .value();
-
-  return conn_obj;
-};
-
 /**
  * Signin entry point method for resolving
  * username and password connections or enterprise
@@ -865,7 +830,7 @@ Auth0Lock.prototype._signin = function (panel) {
 
   var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
 
-  var conn_obj = this._findConnectionByDomain(
+  var conn_obj = this.options._findConnectionByDomain(
     input_email_domain,
     this.$client.strategies
   );
