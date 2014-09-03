@@ -19,6 +19,8 @@ The Auth0 Lock makes it easy to integrate SSO in your app. You won't have to wor
 
 [![Auth0](https://i.cloudup.com/6opoEX_Z9z.png)](http://auth0.com)
 
+> You can try it out yourself online at our [Auth0 Lock playground][playground-url].
+
 ## Install
 
 From [npm](https://npmjs.org):
@@ -48,7 +50,8 @@ Or our CDN:
 
 ## Usage
 
-You can use **Auth0Lock** with [Popup mode][popup-mode] or [Redirect mode][redirect-mode]. There are different ways of implementing those according to your application needs. To see what kind of settings you should be using you can check the [Types of Applications][application-types] article.
+You can use **Auth0Lock** with [Popup mode][popup-mode] or [Redirect mode][redirect-mode]. To learn more about these modes, you can read the [Authentication Modes][authentication-modes] page. 
+There are different ways of implementing them according to your application needs. To see what kind of settings you should be using you can check the [Types of Applications article][application-types].
 
 ```js
 // Initialize Auth0Lock with your `clientID` and `domain`
@@ -70,9 +73,7 @@ login.onclick = function (e) {
 };
 ```
 
-This is just one example of how **Auth0Lock** could work for a **Single Page Application** (_SPA_). You can check the [Single Page Applications][spa-notes] notes or the [Regular Web Applications][webapps-notes] article for a full explanation on how and when you should use those modes.
-
-> You may as well try it yourself online at our [playground][playground-url] application.
+This is just one example of how **Auth0Lock** could work with a **Single Page Application** (_SPA_). Read the [Single Page Applications][spa-notes] and the [Regular Web Applications][webapps-notes] articles for a full explanation on how to implement those scenarios with Auth0 Lock and when to use each.
 
 
 ## API
