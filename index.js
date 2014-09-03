@@ -11,7 +11,6 @@ require('./lib/insert-css');
 var bonzo = require('bonzo');
 var _ = require('underscore');
 var Auth0 = require('auth0-js');
-var domready = require('domready');
 var $ = require('./lib/bonzo-augmented');
 var EventEmitter = require('events').EventEmitter;
 
@@ -32,7 +31,6 @@ var has_animations = require('./lib/supports-animation');
 var ocreate = require('./lib/object-create');
 var stop = require('./lib/stop-event');
 var utils = require('./lib/utils');
-var trim = require('trim');
 var bind = require('./lib/bind');
 
 /**
@@ -471,7 +469,6 @@ Auth0Lock.prototype.display = function(options, callback) {
 Auth0Lock.prototype.initialize = function(done) {
   var self = this;
   var options = this.options;
-  var i18n = options.i18n;
 
   // Wait for Auth0.setClient() to be sure
   // we have the client's configuration
@@ -558,7 +555,6 @@ Auth0Lock.prototype.initialize = function(done) {
  */
 
 Auth0Lock.prototype._signinPanel = function (options) {
-  var self = this;
   var panel = SigninPanel(this, { options: options || {} });
 
   // XXX: future Panel API placeholder
@@ -593,7 +589,6 @@ Auth0Lock.prototype._signinPanel = function (options) {
  */
 
 Auth0Lock.prototype._signupPanel = function (options) {
-  var self = this;
   var panel = SignupPanel(this, { options: options || {} });
 
   this._setTitle(this.options.i18n.t('signup:title'));
@@ -613,7 +608,6 @@ Auth0Lock.prototype._signupPanel = function (options) {
  */
 
 Auth0Lock.prototype._resetPanel = function (options) {
-  var self = this;
   var panel = ResetPanel(this, { options: options || {} });
 
   this._setTitle(this.options.i18n.t('reset:title'));
@@ -633,7 +627,6 @@ Auth0Lock.prototype._resetPanel = function (options) {
  */
 
 Auth0Lock.prototype._loadingPanel = function (options) {
-  var self = this;
   var panel = LoadingPanel(this, { options: options || {} });
 
   if (options.title) {
@@ -662,7 +655,6 @@ Auth0Lock.prototype._loadingPanel = function (options) {
  */
 
 Auth0Lock.prototype._loggedinPanel = function (options) {
-  var self = this;
   var panel = LoggedinPanel(this, { options: options || {} });
 
   this._setTitle(this.options.i18n.t('signin:title'));
@@ -682,7 +674,6 @@ Auth0Lock.prototype._loggedinPanel = function (options) {
  */
 
 Auth0Lock.prototype._kerberosPanel = function (options) {
-  var self = this;
   var panel = KerberosPanel(this, { options: options || {} });
 
   this._setTitle(this.options.i18n.t('signin:title'));
