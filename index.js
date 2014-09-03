@@ -18,10 +18,6 @@ var EventEmitter = require('events').EventEmitter;
 var strategies = require('./lib/strategies');
 var template = require('./lib/html/main.ejs');
 
-var required = require('./lib/assert-required');
-var regex = require('./lib/regex');
-var email_parser = regex.email_parser;
-
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
@@ -843,11 +839,10 @@ Auth0Lock.prototype._signin = function (panel) {
 
   var emailD = panel.query('.a0-email');
   var email_input = panel.query('input[name=email]');
-  var email_parsed = email_parser.exec(email_input.val().toLowerCase());
 
   var email = null, domain, connection;
 
-  var input_email_domain = email_parsed ? email_parsed.slice(-2)[0] : undefined;
+  var input_email_domain = this.options.extractEmailDomain(email_input.val().toLowerCase());
 
   var conn_obj = this.options._findConnectionByDomain(
     input_email_domain,
