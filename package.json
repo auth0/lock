@@ -26,6 +26,8 @@
     "bean": "~1.0.4",
     "bonzo": "^1.3.6",
     "domready": "~0.2.13",
+    "grunt": "~0.4.5",
+    "grunt-fastly": "~0.1.3",
     "sizzle": "^2.0.0",
     "trim": "0.0.1",
     "underscore": "~1.5.2"

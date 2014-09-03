@@ -262,6 +262,25 @@ module.exports = function (grunt) {
           { dest: 'js/lock-' + minor_version + '.min.js' }
         ],
       },
+    },
+    /* Purge FASTLY cache. */
+    fastly: {
+      options: {
+        key:  process.env.FASTLY_KEY,
+        host: process.env.FASTLY_HOST
+      },
+      purge: {
+        options: {
+          urls: [
+            'js/lock-' + pkg.version + '.js',
+            'js/lock-' + pkg.version + '.min.js',
+            'js/lock-' + major_version + '.js',
+            'js/lock-' + major_version + '.min.js',
+            'js/lock-' + minor_version + '.js',
+            'js/lock-' + minor_version + '.min.js',
+          ]
+        },
+      },
     }
   });
 
@@ -295,5 +314,5 @@ module.exports = function (grunt) {
   grunt.registerTask('integration',   ['exec:test-integration']);
   grunt.registerTask('phantom',       ['build', 'exec:test-phantom']);
 
-  grunt.registerTask('cdn',           ['build', 'copy:release', 's3:clean', 's3:publish', 'maxcdn:purgeCache']);
+  grunt.registerTask('cdn',           ['build', 'copy:release', 's3:clean', 's3:publish', 'maxcdn:purgeCache', 'fastly:purge']);
 };
