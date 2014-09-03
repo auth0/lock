@@ -7145,9 +7145,30 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 20px;
 }
 
+#a0-lock .a0-panel .a0-corporate-credentials {
+  margin-bottom: 10px;
+}
+
 #a0-lock .a0-panel .a0-password,
 #a0-lock .a0-panel .a0-repeatPassword {
   border-top: 1px solid #ccc;
+}
+
+#a0-lock .a0-panel .a0-sso-notice-container {
+  margin-top: 20px;
+}
+
+#a0-lock .a0-panel .a0-sso-notice-container i {
+  position: relative;
+  top: 1px;
+  margin-right: 2px;
+  font-size: 11px;
+}
+
+#a0-lock .a0-panel .a0-sso-notice-container .a0-sso-notice {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #a0-lock .a0-panel .a0-email .a0-input-box,
