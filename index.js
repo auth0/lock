@@ -1050,7 +1050,7 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
   var email_input = panel.query('input[name=email]');
   var password_input = panel.query('input[name=password]');
   var options = this.options;
-  var callback = options.popupCallback;
+  var callback = popupCallback || options.popupCallback;
 
   extraParams = extraParams || {};
 
