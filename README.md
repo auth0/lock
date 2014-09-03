@@ -48,7 +48,7 @@ Or our CDN:
 
 ## Usage
 
-We can use **Auth0Lock** with [Popup mode][popup-mode] or [Redirect mode][redirect-mode]. There are also different ways of implementing those according to your application needs. To see what kind of settings you should be using you can check the [Types of Applications][application-types] article at the [wiki](https://github.com/auth0/lock/wiki).
+You can use **Auth0Lock** with [Popup mode][popup-mode] or [Redirect mode][redirect-mode]. There are different ways of implementing those according to your application needs. To see what kind of settings you should be using you can check the [Types of Applications][application-types] article.
 
 ```js
 // Initialize Auth0Lock with your `clientID` and `domain`
@@ -70,9 +70,9 @@ login.onclick = function (e) {
 };
 ```
 
-This is one example of how **Auth0Lock** could work for a Single Page Application (SPA). You can check the [Single Page Applications][spa-notes] notes or the [Regular Web Applications][webapps-notes] article for a full explanation on how and when to apply those methods.
+This is just one example of how **Auth0Lock** could work for a **Single Page Application** (_SPA_). You can check the [Single Page Applications][spa-notes] notes or the [Regular Web Applications][webapps-notes] article for a full explanation on how and when you should use those modes.
 
-> You can try **Auth0Lock** online using our [playground][playground-url].
+> You may as well try it yourself online at our [playground][playground-url] application.
 
 
 ## API
