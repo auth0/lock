@@ -884,7 +884,7 @@ Auth0Lock.prototype._signin = function (panel) {
   if (!valid) { return; }
 
   if (this.options.popup && 'token' === this.options.responseType) {
-    return this._signinPopupNoRedirect(connection, this.options.popupCallback, panel);
+    return this._signinPopupNoRedirect(connection, this.options.popupCallback, undefined, panel);
   }
 
   message = this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection);
