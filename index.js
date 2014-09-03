@@ -906,14 +906,14 @@ Auth0Lock.prototype._signin = function (panel) {
  * @private
  */
 
-Auth0Lock.prototype._signinWithAuth0 = function (panel) {
+Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
   var self = this;
   var options = this.options;
   var email_input = panel.query('input[name=email]');
   var password_input = panel.query('input[name=password]');
   var username = email_input.val();
   var password = password_input.val();
-  var connection  = options._getAuth0Connection(username);
+  connection = connection || options._getAuth0Connection(username);
 
   var loginOptions = {
     connection: connection.name,
