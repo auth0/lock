@@ -833,7 +833,7 @@ Auth0Lock.prototype._signin = function (panel) {
 
   var email = null, domain, connection;
 
-  var input_email_domain = this.options.extractEmailDomain(email_input.val().toLowerCase());
+  var input_email_domain = this.options._extractEmailDomain(email_input.val().toLowerCase());
 
   var conn_obj = this.options._findConnectionByDomain(
     input_email_domain,
