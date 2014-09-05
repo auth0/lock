@@ -161,7 +161,7 @@ describe('Auth0Lock', function () {
       callback(null, {
         sso: true,
         lastUsedUsername: 'john@gmail.com',
-        lastUsedConnection: { strategy: 'google-oauth2', connection: 'google-oauth2' }
+        lastUsedConnection: { strategy: 'google-oauth2', name: 'google-oauth2' }
       });
     };
 
