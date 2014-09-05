@@ -435,7 +435,7 @@ Auth0Lock.prototype.display = function(options, callback) {
       }
 
       // if user logged in show logged in experience
-      if (this.$ssoData && this.$ssoData.sso && !!this.options.rememberLastLogin) {
+      if (this.options._shouldShowLastLogin()) {
         return this._loggedinPanel(this.options, callback);
       }
 
