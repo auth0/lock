@@ -180,6 +180,30 @@ describe('Auth0Lock', function () {
     });
   });
 
+  it('should not show loggedin view with SSO data (social) if it is not listed/enabled', function (done) {
+    client.getSSOData = function (withAd, callback) {
+      callback(null, {
+        sso: true,
+        lastUsedUsername: 'john@gmail.com',
+        lastUsedConnection: { strategy: 'google-oauth2', name: 'google-oauth2' }
+      });
+    };
+
+    widget
+    .once('ready', function () {
+      expect($('#a0-lock .a0-notloggedin')).to.not.be.empty();
+      expect($('#a0-lock .a0-loggedin')).to.be.empty();
+      expect($('#a0-lock .a0-signup')).to.be.empty();
+      expect($('#a0-lock .a0-reset')).to.be.empty();
+      done();
+    })
+    .show({
+      callbackURL: callbackURL,
+      responseType: 'token',
+      connections: ['facebook']
+    });
+  });
+
   it('should use only specified connections', function (done) {
     widget
     .once('ready', function () {
