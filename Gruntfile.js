@@ -71,14 +71,6 @@ module.exports = function (grunt) {
         }
       },
     },
-
-    // uglify: {
-    //   min: {
-    //     files: {
-    //       'build/auth0-lock.min.js': ['build/auth0-lock.js']
-    //     }
-    //   }
-    // },
     less: {
       dist: {
         options: {
@@ -138,6 +130,11 @@ module.exports = function (grunt) {
     exec: {
       'uglify': {
         cmd: 'node_modules/.bin/uglifyjs build/auth0-lock.js  -b beautify=false,ascii_only=true > build/auth0-lock.min.js',
+        stdout: true,
+        stderr: true
+      },
+      'test-inception': {
+        cmd: 'node_modules/.bin/mocha ./test/support/characters-inception.test.js',
         stdout: true,
         stderr: true
       },
@@ -311,8 +308,8 @@ module.exports = function (grunt) {
   grunt.registerTask('example-https', ['less:example', 'connect:example-https', 'build', 'watch']);
 
   grunt.registerTask('dev',           ['connect:test', 'build', 'watch']);
-  grunt.registerTask('integration',   ['exec:test-integration']);
-  grunt.registerTask('phantom',       ['build', 'exec:test-phantom']);
+  grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
+  grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
   grunt.registerTask('cdn',           ['build', 'copy:release', 's3:clean', 's3:publish', 'maxcdn:purgeCache', 'fastly:purge']);
 };
