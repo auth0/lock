@@ -42,10 +42,10 @@ Or our CDN:
 <script src="http://cdn.auth0.com/js/lock-6.min.js"></script>
 
 <!-- Latest minor release -->
-<script src="http://cdn.auth0.com/js/lock-6.0.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-6.x.min.js"></script>
 
 <!-- Latest patch release -->
-<script src="http://cdn.auth0.com/js/lock-6.0.0.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-6.x.y.min.js"></script>
 ```
 
 ## Usage
