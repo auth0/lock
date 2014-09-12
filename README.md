@@ -245,8 +245,9 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 * [Events][events-notes] notes.
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
-* Legacy **auth0-widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
 * [Auth0Lock playground][playground-url]
+* Legacy **Auth0Widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
+* Legacy **Auth0Widget** [Migration guide][migration-guide] to **AuthoLock**
 
 <!-- Vaaaaarrsss -->
 
@@ -281,3 +282,4 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 [development-notes]: https://github.com/auth0/lock/wiki/Development-notes
 [release-process]: https://github.com/auth0/lock/wiki/Release-process
 [playground-url]: http://lock-pl4y.herokuapp.com
+[migration-guide]: https://github.com/auth0/lock/wiki/Migration-guide
