@@ -272,6 +272,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 [lock-initialization]: https://github.com/auth0/lock/wiki/Auth0lock-initialization
 [lock-customization]: https://github.com/auth0/lock/wiki/Auth0lock-customization
 [application-types]: https://github.com/auth0/lock/wiki/Types-Of-Applications
+[display-modes]: https://github.com/auth0/lock/wiki/Display-Modes
 [spa-notes]: https://github.com/auth0/lock/wiki/Types-Of-Applications#single-page-app
 [webapps-notes]: https://github.com/auth0/lock/wiki/Types-Of-Applications#regular-webapp
 [authentication-modes]: https://github.com/auth0/lock/wiki/Authentication-Modes
