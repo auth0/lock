@@ -236,12 +236,13 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 
 ## Resources
 
-* [Complete API][lock-customization] for `Auth0Lock`
-* [UI customization][ui-customization] for the `Auth0Lock`.
-* [Error customization][error-customization] notes.
+* [Complete API][lock-customization]
+* [UI customization][ui-customization]
 * [Single Page Applications][spa-notes] implementation notes.
 * [Regular Web Applications][webapps-notes] implementing notes.
+* [Overlay vs Embedded mode][display-modes]
 * [Popup vs Redirect mode][authentication-modes] notes. **What are the authentication modes?**.
+* [Error customization][error-customization] notes.
 * [I18n][i18n-notes] notes.
 * [Events][events-notes] notes.
 * [Development][development-notes] notes.
