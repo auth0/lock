@@ -135,6 +135,11 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
   // in a previous widget instantiation
   global.window.Auth0 = global.window.Auth0 || { clients: {}, script_tags: {} };
 
+  if (!global.window.Auth0.clients) {
+    global.window.Auth0.clients = {};
+    global.window.Auth0.script_tags = {};
+  }
+
   var clients = global.window.Auth0.clients;
   var client = clients[this.$options.clientID];
   if (client) return this.emit('client loaded', client);
