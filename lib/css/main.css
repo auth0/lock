@@ -7094,6 +7094,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-top: 20px;
 }
 
+#a0-lock .a0-panel .a0-image.a0-gravatar img {
+  border-radius: 40px;
+}
+
 #a0-lock .a0-panel .a0-image img {
   width: auto;
   height: 58px;
