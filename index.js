@@ -133,7 +133,7 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
 
   // If not loading, check for already stored
   // in a previous widget instantiation
-  global.window.Auth0 = global.window.Auth0 || { clients: [] };
+  global.window.Auth0 = global.window.Auth0 || { clients: {}, script_tags: {} };
 
   var clients = global.window.Auth0.clients;
   var client = clients[this.$options.clientID];
@@ -159,6 +159,11 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
     // notify initialized and pass the client with it
     self.emit('client loaded', client);
   };
+
+
+  if (this.$options.clientID in global.window.Auth0.script_tags) return;
+
+  global.window.Auth0.script_tags[this.$options.clientID] = true;
 
   // Load client from assets url
   var script = document.createElement('script');
