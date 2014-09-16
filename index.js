@@ -17,6 +17,8 @@ var EventEmitter = require('events').EventEmitter;
 var strategies = require('./lib/strategies');
 var template = require('./lib/html/main.ejs');
 
+var HeaderView = require('./lib/header/index');
+
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
@@ -511,6 +513,8 @@ Auth0Lock.prototype.initialize = function(done) {
 
   this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
 
+  this.header = new HeaderView(this, this.query('.a0-header').get(0), options);
+
   // after pre-setting classes and dom handlers
   // emit as shown
   this.emit('shown');
@@ -803,16 +807,36 @@ Auth0Lock.prototype._focusError = function(input, message) {
 };
 
 /**
- * Set widget's h1 to `title`
+ * Set widget's `title`
  *
  * @param {String} title
  * @private
  */
 
 Auth0Lock.prototype._setTitle = function(title) {
-  var h1 = this.query('h1');
-  h1.html(title);
-  h1.css('display', '');
+  this.header.setTitle(title);
+};
+
+/**
+ * Restore widget's image
+ *
+ * @param {String} title
+ * @private
+ */
+
+Auth0Lock.prototype.restoreImage = function(title) {
+  this.header.restoreImage(title);
+};
+
+/**
+ * Set widget's image
+ *
+ * @param {String} title
+ * @private
+ */
+
+Auth0Lock.prototype.setImage = function(title) {
+  this.header.setImage(title);
 };
 
 /**
