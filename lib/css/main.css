@@ -219,6 +219,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
   /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
   /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /*========= Animated Fast ========*/
   /*==========  Spinner  ==========*/
   /*-----  End of Spinner  ------*/
   /*==========  Fonts  ==========*/
@@ -6883,6 +6884,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation-name: zoomOutUp;
 }
 
+#a0-lock .a0-animated.a0-fast {
+  -webkit-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 #a0-lock .a0-spinner-css {
   position: absolute;
   top: 50%;
@@ -7087,23 +7097,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 10px;
 }
 
-#a0-lock .a0-panel .a0-image {
+#a0-lock .a0-panel .a0-icon-container {
+  height: 90px;
+}
+
+#a0-lock .a0-panel .a0-icon-container .a0-image {
   margin: auto;
   display: inline-block;
   margin-bottom: 10px;
   margin-top: 20px;
 }
 
-#a0-lock .a0-panel .a0-image.a0-gravatar img {
+#a0-lock .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
   border-radius: 40px;
 }
 
-#a0-lock .a0-panel .a0-image img {
+#a0-lock .a0-panel .a0-icon-container .a0-image img {
   width: auto;
   height: 58px;
 }
 
-#a0-lock .a0-panel .a0-avatar {
+#a0-lock .a0-panel .a0-icon-container .a0-avatar {
   background: #f1f1f1;
   margin: auto;
   display: inline-block;
@@ -7114,7 +7128,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-top: 20px;
 }
 
-#a0-lock .a0-panel .a0-avatar i {
+#a0-lock .a0-panel .a0-icon-container .a0-avatar i {
   color: #EB5424;
   font-size: 28px;
   display: block;
@@ -7473,17 +7487,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     padding: 0 20px 20px 20px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-image {
+  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container {
+    height: 60px;
+  }
+
+  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image {
     margin-top: 10px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-avatar {
+  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image img {
+    height: 40px;
+    width: auto;
+  }
+
+  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar {
     margin-top: 10px;
     width: 40px;
     height: 40px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-avatar i {
+  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar i {
     font-size: 20px;
     padding-top: 10px;
   }
