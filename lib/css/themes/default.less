@@ -1,6 +1,12 @@
 /*==========  Includes  ==========*/
 @import "animate.less";
 
+/*========= Animated Fast ========*/
+.animated.fast {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
 /*==========  Spinner  ==========*/
 .spinner-css{
   position: absolute;
@@ -204,31 +210,38 @@
 
   }
 
-  .image {
-    margin: auto;
-    display: inline-block;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    img {
-      width: auto;
-      height: 58px;
-    }
-  }
+  .icon-container {
+    height: 90px;
 
-  .avatar{
-    background: #f1f1f1;
-    margin: auto;
-    display: inline-block;
-    margin-bottom: 10px;
-    border-radius: 100%;
-    width: 60px;
-    height: 60px;
-    margin-top: 20px;
-    i{
-      color: #EB5424;
-      font-size: 28px;
-      display: block;
-      padding-top: 16px;
+    .image {
+      margin: auto;
+      display: inline-block;
+      margin-bottom: 10px;
+      margin-top: 20px;
+      &.gravatar img {
+        border-radius: 40px;
+      }
+      img {
+        width: auto;
+        height: 58px;
+      }
+    }
+
+    .avatar{
+      background: #f1f1f1;
+      margin: auto;
+      display: inline-block;
+      margin-bottom: 10px;
+      border-radius: 100%;
+      width: 60px;
+      height: 60px;
+      margin-top: 20px;
+      i{
+        color: #EB5424;
+        font-size: 28px;
+        display: block;
+        padding-top: 16px;
+      }
     }
   }
 
@@ -600,16 +613,23 @@
         .mode{
           padding: 0 20px 20px 20px;
         }
-        .image{
-          margin-top: 10px;
-        }
-        .avatar{
-          margin-top: 10px;
-          width: 40px;
-          height: 40px;
-          i{
-            font-size: 20px;
-            padding-top: 10px;
+        .icon-container {
+          height: 60px;
+          .image{
+            margin-top: 10px;
+            img {
+              height: 40px;
+              width: auto;
+            }
+          }
+          .avatar{
+            margin-top: 10px;
+            width: 40px;
+            height: 40px;
+            i{
+              font-size: 20px;
+              padding-top: 10px;
+            }
           }
         }
         h1{
