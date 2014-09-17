@@ -8,11 +8,9 @@ scripts:
 browsers:
   - name: chrome
     version: latest
-    platform: 'Windows 2008'
   - name: safari
     version: latest
   - name: firefox
     version: latest
-    platform: 'Windows 2008'
   - name: ie
     version: 9..latest
