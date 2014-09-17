@@ -7,10 +7,12 @@ scripts:
 
 browsers:
   - name: chrome
-    version: 27..latest
+    version: latest
+    platform: 'Windows 2008'
   - name: safari
     version: latest
   - name: firefox
-    version: 28..latest
+    version: latest
+    platform: 'Windows 2008'
   - name: ie
     version: 9..latest
