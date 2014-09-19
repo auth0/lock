@@ -17,7 +17,7 @@ var EventEmitter = require('events').EventEmitter;
 var strategies = require('./lib/strategies');
 var template = require('./lib/html/main.ejs');
 
-var HeaderView = require('./lib/header/index');
+var HeaderView = require('./lib/header');
 
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
