@@ -78,8 +78,8 @@ function Auth0Lock (clientID, domain, options) {
 
   // Holds auth0-js' instance
   this.$auth0 = new Auth0({
-    clientID:     this.$options.clientID,
-    domain:       this.$options.domain
+    clientID: this.$options.clientID,
+    domain: this.$options.domain
   });
 
   // use domain as assetsUrl if no assetsUrl provided
@@ -167,19 +167,71 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
     self.emit('client loaded', client);
   };
 
+  var script = global.window.Auth0.script_tags[this.$options.clientID];
 
-  if (this.$options.clientID in global.window.Auth0.script_tags) return;
+  if (!script) {
+    // Load client from assets url
+    var script = document.createElement('script');
+    script.src = this.$options.assetsUrl + 'client/' + this.$options.clientID + '.js' + '?t' + (+new Date());
 
-  global.window.Auth0.script_tags[this.$options.clientID] = true;
+    // Insert script in DOM head
+    var firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(script, firstScript);
 
-  // Load client from assets url
-  var script = document.createElement('script');
-  script.src = this.$options.assetsUrl + 'client/' + this.$options.clientID + '.js' + '?t' + (+new Date());
+    global.window.Auth0.script_tags[this.$options.clientID] = script;
+  }
 
-  // Insert script in DOM head
-  var firstScript = document.getElementsByTagName('script')[0];
-  firstScript.parentNode.insertBefore(script, firstScript);
+  // Handle load and error for client config
+  script.addEventListener('load', bind(this.onclientloadsuccess, this));
+  script.addEventListener('error', bind(this.onclientloaderror, this));
 };
+
+/**
+ * Handle success for script load of client's configuration
+ *
+ * @private
+ */
+
+Auth0Lock.prototype.onclientloadsuccess = function() {
+  // We should use debug and log stuff without console.log
+  // and only for debugging
+  if (console && console.log) {
+    console.log('Client configuration loaded');
+  }
+}
+
+/**
+ * Handle error for script load of client's configuration
+ *
+ * @private
+ */
+
+Auth0Lock.prototype.onclientloaderror = function(err) {
+  // If no options, there is no UI to actually show error
+  if (this.options) {
+    // Exhibit lock's working canvas
+    this.exhibit();
+
+    // XXX: Should we create an "error-mode" for such cases?
+    // XXX: or are we ok with this dislay?
+    this._loadingPanel(this.options);
+
+    // Turn off the loading spinner
+    this.query('.a0-spinner').addClass('a0-hide');
+    // display error
+    this._showError(this.options.i18n.t('networkError'));
+  };
+
+  // reset loadstate
+  this.loadState = false;
+
+  // reset script loading state
+  global.window.Auth0.script_tags[this.$options.clientID] = null;
+
+  if (console && console.log) {
+    console.log(new Error('Failed to load client configuration for ' + this.$options.clientID));
+  };
+}
 
 /**
  * Set's the client configuration object
@@ -266,19 +318,49 @@ Auth0Lock.prototype.insert = function() {
   return this;
 };
 
-function getShowParams(options, callback) {
-  var realOptions = options;
-  var realCallback = callback;
-  if (_.isFunction(options)) {
-    realCallback = options;
-    realOptions = {};
+/**
+ * Exhibit Lock's working space
+ * before loading any other panel
+ *
+ * @return {Auth0Lock}
+ * @private
+ */
+
+Auth0Lock.prototype.exhibit = function() {
+  var options = this.options;
+
+  // Create and set the header
+  this.header = new HeaderView(this, this.query('.a0-header').get(0), options);
+
+  // activate panel
+  // XXX: (?) this I don't get... why remove and add?
+  this.query('div.a0-panel').removeClass('a0-active');
+  this.query('div.a0-overlay').addClass('a0-active');
+  this.query('.a0-panel.a0-onestep').addClass('a0-active');
+
+  if (!options.container) {
+    bonzo(document.body).addClass('a0-lock-open');
+  } else {
+    this.query('.a0-active').removeClass('a0-overlay');
   }
 
-  return {
-    callback: realCallback,
-    options: realOptions
-  };
-};
+  this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
+
+  this.query('.a0-overlay')
+    .toggleClass('a0-no-placeholder-support', !placeholderSupported);
+
+  // buttons actions
+  this.query('.a0-onestep a.a0-close').a0_on('click', bind(this.oncloseclick, this));
+
+  // close popup with ESC key
+  if (options.closable) {
+    this.query('').a0_on('keyup', bind(this.onescpressed, this));
+  }
+
+  // after pre-setting classes and dom handlers
+  // emit as shown
+  this.emit('shown');
+}
 
 /**
  * Show the widget resolving `options`
@@ -492,45 +574,14 @@ Auth0Lock.prototype.initialize = function(done) {
     });
   }
 
-  this.query('.a0-overlay')
-    .toggleClass('a0-no-placeholder-support', !placeholderSupported);
-
-  // buttons actions
-  this.query('.a0-onestep a.a0-close').a0_on('click', bind(this.oncloseclick, this));
-
-  // close popup with ESC key
-  if (options.closable) {
-    this.query('').a0_on('keyup', bind(this.onescpressed, this));
-  }
-
   if (options._isFreeSubscription()) {
     // hide footer for non free/dev subscriptions
     this.query('.a0-footer').toggleClass('a0-hide', true);
     this.query('.a0-free-subscription').removeClass('a0-free-subscription');
   }
 
-  // activate panel
-  // XXX: (?) this I don't get... why remove and add?
-  this.query('div.a0-panel').removeClass('a0-active');
-  this.query('div.a0-overlay').addClass('a0-active');
-  this.query('.a0-panel.a0-onestep').addClass('a0-active');
-
-  if (!options.container) {
-    bonzo(document.body).addClass('a0-lock-open');
-  } else {
-    this.query('.a0-active').removeClass('a0-overlay');
-  }
-
-  this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
-
-  this.header = new HeaderView(this, this.query('.a0-header').get(0), options);
-
-  // after pre-setting classes and dom handlers
-  // emit as shown
-  this.emit('shown');
-
-  // show loading
-  this._loadingPanel(options);
+  // Exhibit lock's working canvas
+  this.exhibit();
 
   function finish(err, ssoData) {
     // XXX: maybe we should parse the errors here.
@@ -552,6 +603,8 @@ Auth0Lock.prototype.initialize = function(done) {
   if (disabledReturnUserExperience) {
     return finish(null, {}), this;
   }
+
+  this._loadingPanel(options);
 
   // get SSO data and then render
   this.$auth0.getSSOData(options._isThereAnyADConnection(), finish);
@@ -641,7 +694,7 @@ Auth0Lock.prototype._resetPanel = function (options) {
  */
 
 Auth0Lock.prototype._loadingPanel = function (options) {
-  var panel = LoadingPanel(this, { options: options || {} });
+  var panel = LoadingPanel(this, { options: options });
 
   if (options.title) {
     this._setTitle(this.options.i18n.t(options.title + ':title'));
@@ -1233,3 +1286,26 @@ function animation_shake_reset(context) {
     .removeClass('a0-errors')
     .removeClass('a0-animated a0-shake');
 }
+
+/**
+ * Parse and retrieve show parameters
+ * and invoke callback after it
+ *
+ * @param {Object} options
+ * @param {Function} callback
+ * @private
+ */
+
+function getShowParams(options, callback) {
+  var realOptions = options;
+  var realCallback = callback;
+  if (_.isFunction(options)) {
+    realCallback = options;
+    realOptions = {};
+  }
+
+  return {
+    callback: realCallback,
+    options: realOptions
+  };
+};

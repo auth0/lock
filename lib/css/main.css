@@ -7342,6 +7342,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock .a0-panel .a0-error,
 #a0-lock .a0-panel .a0-success {
   margin-bottom: 10px;
+  padding: 0 15px;
 }
 
 #a0-lock .a0-panel.a0-errors.a0-errors-global {
