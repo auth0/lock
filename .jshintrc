@@ -36,6 +36,7 @@
     "it": false,
     "mocha": false,
     "expect": false,
-    "Auth0Lock": false
+    "Auth0Lock": false,
+    "$": false
   }
 }

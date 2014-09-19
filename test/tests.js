@@ -28,48 +28,42 @@ describe('Auth0Lock', function () {
     Auth0Lock.prototype.getClientConfiguration = function (done) {
       var $client = {
         id: clientID,
-        strategies: [
-          {
-            "name": "facebook",
-            "connections": [{ "name": "facebook", "domain": "" }]
-          },
-          {
-            "name": "twitter",
-            "connections": [{ "name": "twitter", "domain": "" }]
-          },
-          {
-            "name": "google-oauth2",
-            "connections": [{ "name": "google-oauth2", "domain": "" }]
-          },
-          {
-            "name": "adfs",
-            "connections": [{ "name": "contoso", "domain": "contoso.com" }]
-          },
-          {
-            "name": "auth0-adldap",
-            "connections": [{ "name": "adldap", "domain": "litware.com" }]
-          },
-          {
-            "name": "auth0",
-            "connections": [
-              { "name": "dbTest", "domain": "", "showSignup": true, "showForgot": true },
-              { "name": "Username-Password-Authentication", "domain": "" }
-            ]
-          },
-          {
-            "name": "google-apps",
-            "connections": [
-              { "name": "google-app1", "domain": "" },
-              { "name": "google-app2", "domain": "" },
-              { "name": "google-app3", "domain": "" }
-            ]
-          }
+        strategies: [{
+          'name': 'facebook',
+          'connections': [{ 'name': 'facebook', 'domain': '' }]
+        }, {
+          'name': 'twitter',
+          'connections': [{ 'name': 'twitter', 'domain': '' }]
+        }, {
+          'name': 'google-oauth2',
+          'connections': [{ 'name': 'google-oauth2', 'domain': '' }]
+        }, {
+          'name': 'adfs',
+          'connections': [{ 'name': 'contoso', 'domain': 'contoso.com' }]
+        }, {
+          'name': 'auth0-adldap',
+          'connections': [{ 'name': 'adldap', 'domain': 'litware.com' }]
+        }, {
+          'name': 'auth0',
+          'connections': [
+            { 'name': 'dbTest', 'domain': '',
+              'showSignup': true, 'showForgot': true },
+            { 'name': 'Username-Password-Authentication', 'domain': '' }
+          ]
+        }, {
+          'name': 'google-apps',
+          'connections': [
+            { 'name': 'google-app1', 'domain': '' },
+            { 'name': 'google-app2', 'domain': '' },
+            { 'name': 'google-app3', 'domain': '' }
+          ]
+        }
         ]
       };
 
       if ('function' === typeof done) {
         done($client);
-      };
+      }
     };
 
     widget = new Auth0Lock(clientID, domain);
