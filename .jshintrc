@@ -16,6 +16,7 @@
   "expr": true,
   "laxbreak": true,
   "eqnull": true,
+  "nonbsp": true,
 
 
   "evil": true,
