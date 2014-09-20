@@ -174,16 +174,18 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
     var script = document.createElement('script');
     script.src = this.$options.assetsUrl + 'client/' + this.$options.clientID + '.js' + '?t' + (+new Date());
 
+    // Save script reference for other intances using the same clientID
+    global.window.Auth0.script_tags[this.$options.clientID] = script;
+
     // Insert script in DOM head
     var firstScript = document.getElementsByTagName('script')[0];
     firstScript.parentNode.insertBefore(script, firstScript);
-
-    global.window.Auth0.script_tags[this.$options.clientID] = script;
   }
 
   // Handle load and error for client config
   script.addEventListener('load', bind(this.onclientloadsuccess, this));
   script.addEventListener('error', bind(this.onclientloaderror, this));
+  this.timeout = setTimeout(bind(this.onclientloaderror, this), 3000);
 };
 
 /**
@@ -193,6 +195,10 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
  */
 
 Auth0Lock.prototype.onclientloadsuccess = function() {
+
+  // clear error timeout
+  clearTimeout(this.timeout);
+
   // We should use debug and log stuff without console.log
   // and only for debugging
   if (console && console.log) {
@@ -207,13 +213,17 @@ Auth0Lock.prototype.onclientloadsuccess = function() {
  */
 
 Auth0Lock.prototype.onclientloaderror = function(err) {
+
+  // clear error timeout
+  clearTimeout(this.timeout);
+
   // If no options, there is no UI to actually show error
   if (this.options) {
     // Exhibit lock's working canvas
     this.exhibit();
 
     // XXX: Should we create an "error-mode" for such cases?
-    // XXX: or are we ok with this dislay?
+    // XXX: or are we ok with this display?
     this._loadingPanel(this.options);
 
     // Turn off the loading spinner
@@ -584,8 +594,8 @@ Auth0Lock.prototype.initialize = function(done) {
   this.exhibit();
 
   function finish(err, ssoData) {
-    // XXX: maybe we should parse the errors here.
-    // Just a thought...
+    // XXX: auth0.getSSOData() never returns err
+    // see source at: https://github.com/auth0/auth0.js/blob/master/lib/index.js
     self.$ssoData = ssoData;
     done();
     self.emit('ready');
