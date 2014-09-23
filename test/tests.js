@@ -25,7 +25,7 @@ describe('Auth0Lock', function () {
   var widget, client;
 
   beforeEach(function (done) {
-    Auth0Lock.prototype.getClientConfiguration = function (done) {
+    Auth0Lock.prototype.getClientConfiguration = function (cb) {
       var $client = {
         id: clientID,
         strategies: [{
@@ -62,7 +62,7 @@ describe('Auth0Lock', function () {
       };
 
       if ('function' === typeof done) {
-        done($client);
+        cb($client);
       }
     };
 
@@ -83,7 +83,6 @@ describe('Auth0Lock', function () {
       $('#a0-lock').remove();
       done();
     }
-
   });
 
   it('should setup client with callbackOnLocationHash', function (done) {

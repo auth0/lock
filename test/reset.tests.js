@@ -5,28 +5,29 @@
 mocha.timeout(60000);
 mocha.ui('bdd');
 mocha.reporter('html');
-mocha.globals(['jQuery*', '__auth0jp*', 'Auth0*']);
+mocha.globals(['jQuery*', '__widgetjp*', 'Auth0*']);
 
 /**
  * Test reset
  */
 
 describe('reset', function () {
-  afterEach(function () {
-    $('#a0-lock').remove();
+
+  beforeEach(function (done) {
+    this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+    done();
+  });
+
+  afterEach(function (done) {
     global.window.location.hash = '';
     global.window.Auth0 = null;
+    this.widget.hide(done);
   });
 
-  beforeEach(function () {
-    $('#a0-lock').parents('div').remove();
-    this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
-  });
+  it('should show the loading pane on submit', function (done) {
+    var widget = this.widget;
 
-  it('should show the loading pane', function (done) {
-    var auth0 = this.auth0;
-
-    auth0
+    widget
     .once('ready', function() {
       bean.fire($('#a0-lock .a0-forgot-pass')[0], 'click');
     })
@@ -35,9 +36,9 @@ describe('reset', function () {
       $('#a0-reset_easy_password').val('123');
       $('#a0-reset_easy_repeat_password').val('123');
 
-      auth0
+      widget
       .once('loading ready', function () {
-        expect($('#a0-lock h1').html()).to.be(auth0.options.i18n.t('reset:title'));
+        expect($('#a0-lock h1').html()).to.be(widget.options.i18n.t('reset:title'));
         done();
       });
 

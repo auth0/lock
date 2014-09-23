@@ -14,8 +14,12 @@ mocha.globals(['jQuery*', '__auth0jp*', 'Auth0*']);
 describe('db connections', function () {
 
   describe('.show() options', function () {
-    it('should disable signup', function (done) {
+    beforeEach(function(done) {
       this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+      done()
+    });
+
+    it('should disable signup', function (done) {
       this.widget.once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(0);
         expect($('.a0-divider').length).to.equal(0);
@@ -28,7 +32,6 @@ describe('db connections', function () {
     });
 
     it('should show signup', function (done) {
-      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
       this.widget.once('ready', function () {
         expect($('.a0-sign-up').length).to.equal(1);
         done();
@@ -47,19 +50,20 @@ describe('db connections', function () {
   });
 
   describe.skip('when username or password is empty', function () {
-    after(function () {
-      $('#a0-lock').parents('div').remove();
-      global.window.location.hash = '';
-      global.window.Auth0 = null;
+    before(function (done) {
+      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+      done();
     });
 
-    before(function () {
-      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+    after(function (done) {
+      global.window.location.hash = '';
+      global.window.Auth0 = null;
+      this.widget.hide(done);
     });
 
     //fails on ie9
     it.skip('should not change to loading', function (done) {
-      var auth0 = this.auth0;
+      var auth0 = this.widget;
 
       auth0
       .once('ready', function () {
@@ -84,17 +88,16 @@ describe('db connections', function () {
   });
 
   describe('when username or password is wrong', function () {
-    after(function () {
-      $('#a0-lock').parents('div').remove();
-      global.window.location.hash = '';
-      global.window.Auth0 = null;
-    });
-
     before(function (done) {
-      this.auth0 = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+      this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
       done();
     });
 
+    after(function (done) {
+      global.window.location.hash = '';
+      global.window.Auth0 = null;
+      this.widget.hide(done);
+    });
 
     // the test fails on IE9 but it does work. It looks like a timing issue.
     // it('email should have focus', function () {
@@ -104,7 +107,7 @@ describe('db connections', function () {
 
     it('should display error', function (done) {
       var error = $('.a0-signin .a0-error').html();
-      var auth0 = this.auth0;
+      var auth0 = this.widget;
       var submitted = false;
       auth0
       .once('ready', function () {
