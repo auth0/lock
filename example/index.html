@@ -6,7 +6,7 @@
     <title>Test auth0-lock</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="//localhost:35729/livereload.js"></script>
-    <link rel="stylesheet" type="text/css" href="//auth0.com/app.css"/>
+    <link rel="stylesheet" type="text/css" href="//styleguide.auth0.com/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/index.css"/>
   </head>
   <!--[if IE 9]>
@@ -27,82 +27,91 @@
           </div>
         </div>
       </nav>
+
+
     </header>
-    <div class="site-content">
-      <div class="container branding-page">
-        <div class="breadcrumb">
-          <ul class="page-list">
-            <li><a href="/">Auth0</a></li>
-            <li>»</li>
-            <li><a href="#">Lock</a></li>
-          </ul>
-          <ul class="external-links">
-            <li><a href="http://twitter.com/authzero" target="_blank">Twitter</a></li>
-            <li><a href="https://github.com/auth0/widget" target="_blank">Github</a></li>
-            <li><a href="http://chat.auth0.com" target="_blank">Chat With Us</a></li>
-            <li><a href="mailto:support@auth0.com" target="_blank">Contact Us</a></li>
-          </ul>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="sidebar-box"><strong>Lock</strong>
-              <ul>
-                <li><a href="https://docs.auth0.com/login-widget2"><i></i><span>Documentation</span></a></li>
-              </ul>
-            </div>
-            <div class="sidebar-box">
-              <strong>Basic examples</strong>
-              <ul>
-                <li><a id="show-button"><i></i>Full Login</a></li>
-                <li><a id="login-button"><i></i>Login</a></li>
-                <li><a id="signup-button"><i></i>Signup</a></li>
-                <li><a id="reset-button"><i></i>Reset password</a></li>
-                <li><a id="logout-button"><i></i>Logout</a></li>
-              </ul>
-              <hr />
-              <strong>Advanced examples</strong>
-              <ul>
-                <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
-                <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
-                <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
-                <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
-                <li><a id="login-button-only-enterprise"><i></i>Login (only enterprise)</a></li>
 
-                <li><a id="login-button-popup-token"><i></i>Login Popup (Default token no options)</a></li>
-                <li><a id="login-button-popup"><i></i>Login Popup</a></li>
-                <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
-                <li><a id="login-button-customicon"><i></i>Login (custom icon)</a></li>
-                <li><a id="login-button-inside-container"><i></i>Login (inside a DIV)</a></li>
-                <li><a id="login-button-all"><i></i>Login (all languages)</a></li>
-                <li><a id="signup-button-footer-text"><i></i>Show SignUp (footer text)</a></li>
-              </ul>
-            </div>
+    <div class="container">
+      <div class="sub-header sub-header-dropdown">
+        <span class="sub-header-text">Auth0Lock example page</span>
+        <ul class="external-links">
+          <li>
+            <a href="http://twitter.com/authzero" target="_blank">Twitter</a>
+          </li>
+          <li>
+            <a href="http://github.com/auth0" target="_blank">Github</a>
+          </li>
+          <li>
+            <a href="http://chat.auth0.com" target="_blank">Chat With Us</a>
+          </li>
+          <li>
+            <a href="mailto:support@auth0.com" target="_blank">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="sidebar-box"><strong>Lock</strong>
+            <ul>
+              <li><a href="https://docs.auth0.com/login-widget2"><i></i><span>Documentation</span></a></li>
+            </ul>
           </div>
-          <div class="col-sm-8">
-            <div class="text-content">
-              <h1>Lock</h1>
+          <div class="sidebar-box">
+            <strong>Basic examples</strong>
+            <ul>
+              <li><a id="show-button"><i></i>Full Login</a></li>
+              <li><a id="login-button"><i></i>Login</a></li>
+              <li><a id="signup-button"><i></i>Signup</a></li>
+              <li><a id="reset-button"><i></i>Reset password</a></li>
+              <li><a id="logout-button"><i></i>Logout</a></li>
+            </ul>
+            <hr />
+            <strong>Advanced examples</strong>
+            <ul>
+              <li><a id="login-button-only-socials"><i></i>Login (only socials)</a></li>
+              <li><a id="login-button-copyrighted"><i></i>Login (free suscription)</a></li>
+              <li><a id="login-button-only-emailpass"><i></i>Login (only email/pass)</a></li>
+              <li><a id="login-button-only-userpass"><i></i>Login (only user/pass)</a></li>
+              <li><a id="login-button-only-enterprise"><i></i>Login (only enterprise)</a></li>
 
-              <h4>Add this HTML line to your head</h4>
-              <pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /&gt;</pre>
+              <li><a id="login-button-popup-token"><i></i>Login Popup (Default token no options)</a></li>
+              <li><a id="login-button-popup"><i></i>Login Popup</a></li>
+              <li><a id="login-button-popup-only-socials"><i></i>Login Popup (only socials)</a></li>
+              <li><a id="login-button-customicon"><i></i>Login (custom icon)</a></li>
+              <li><a id="login-button-inside-container"><i></i>Login (inside a DIV)</a></li>
+              <li><a id="login-button-all"><i></i>Login (all languages)</a></li>
+              <li><a id="signup-button-footer-text"><i></i>Show SignUp (footer text)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="text-content">
+            <h1>Lock</h1>
 
-              <h4>Add the script tag to your page to get started with Auth0 Login Lock.</h4>
-              <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-lock-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
-              <h4>User Info</h4>
+            <h4>Add this HTML line to your head</h4>
+            <pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /&gt;</pre>
 
-              <div id="userinfo">
-                <pre>Not logged in yet</pre>
-              </div>
+            <h4>Add the script tag to your page to get started with Auth0 Login Lock.</h4>
+            <pre>&lt;script src=&quot;https://cdn.auth0.com/w2/auth0-lock-3.0.min.js&quot;&gt;&lt;/script&gt;</pre>
+            <h4>User Info</h4>
 
-              <div class="clearfix">
-                <div id="login-container1" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
-                <div id="login-container2" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
-              </div>
-
+            <div id="userinfo">
+              <pre>Not logged in yet</pre>
             </div>
+
+            <div class="clearfix">
+              <div id="login-container1" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
+              <div id="login-container2" style="float: left; width: 300px; height: 500px; margin-top: 20px;"></div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
+
     <script src="/auth0-lock.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
     <script>
