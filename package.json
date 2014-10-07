@@ -53,7 +53,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-exec": "~0.4.2",
     "grunt-fastly": "~0.1.3",
-    "grunt-maxcdn": "0.0.3",
     "mocha": "1.20.1",
     "mold-source-map": "^0.3.0",
     "packageify": "^0.2.0",

@@ -1018,40 +1018,14 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
   this._showError();
   this._focusError();
 
-  if (this.options.popup) {
-    // popup without sso = no redirect (ajax, not setting cookie)
-    if (!this.options.sso) {
-      return this._signinPopupNoRedirect(connection.name, this.options.popupCallback, loginOptions, panel);
-    }
-
-    // popup + sso = redirect
-    // XXX: This call to $auth0.signin is exact the same as the last one
-    // in this code's flow...
-    // Why call this here? I mean, Why the extra code flow?
-    // No options are tweaked in betweeen...
-    return this.$auth0.login(loginOptions, function (err) {
-      if (!err) return;
-
-      // display `panel`
-      self.setPanel(panel);
-
-      // display errors
-      self._focusError(email_input);
-      self._focusError(password_input);
-
-      if (err.status !== 401) {
-        self._showError(err.message || self.options.i18n.t('signin:serverErrorText'));
-      } else {
-        self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
-      }
-    });
-
+  if (this.options.popup && this.options.sso && 'token' === this.options.responseType) {
+    //This will use winchan etc...
+    return this._signinPopupNoRedirect(connection.name, this.options.popupCallback, loginOptions, panel);
   }
 
   // TODO: Handle sso case without popup
   var message = strategy.name !== 'auth0' ? // dont show loading message for dbConnections
     this.options.i18n.t('signin:loadingMessage').replace('{connection}', connection.name) : '';
-
 
   this._loadingPanel({ mode: 'signin', message: message });
 

@@ -216,26 +216,6 @@ module.exports = function (grunt) {
         development: false
       }
     },
-    /* Purge MAXCDN cache. */
-    maxcdn: {
-      purgeCache: {
-        options: {
-          companyAlias:   process.env.MAXCDN_COMPANY_ALIAS,
-          consumerKey:    process.env.MAXCDN_CONSUMER_KEY,
-          consumerSecret: process.env.MAXCDN_CONSUMER_SECRET,
-          zone_id:        process.env.MAXCDN_ZONE_ID,
-          method:         'delete'
-        },
-        files: [
-          { dest: 'js/lock-' + pkg.version + '.js' },
-          { dest: 'js/lock-' + pkg.version + '.min.js' },
-          { dest: 'js/lock-' + major_version + '.js' },
-          { dest: 'js/lock-' + major_version + '.min.js' },
-          { dest: 'js/lock-' + minor_version + '.js' },
-          { dest: 'js/lock-' + minor_version + '.min.js' }
-        ],
-      },
-    },
     /* Purge FASTLY cache. */
     fastly: {
       options: {
@@ -287,5 +267,5 @@ module.exports = function (grunt) {
   grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
   grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
-  grunt.registerTask('cdn',           ['build', 'copy:release', 'aws_s3:clean', 'aws_s3:publish', 'maxcdn:purgeCache', 'fastly:purge']);
+  grunt.registerTask('cdn',           ['build', 'copy:release', 'aws_s3:clean', 'aws_s3:publish', 'fastly:purge']);
 };
