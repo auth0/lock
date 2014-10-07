@@ -56,7 +56,7 @@ module.exports = Auth0Lock;
 
 function Auth0Lock (clientID, domain, options) {
   if (!(this instanceof Auth0Lock)) {
-    return new Auth0Lock(options);
+    return new Auth0Lock(clientID, domain, options);
   }
 
   // validate required options
