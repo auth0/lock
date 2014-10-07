@@ -230,9 +230,7 @@ describe('Auth0Lock', function () {
 
   describe('When assetsUrl option is not specified', function () {
     beforeEach(function() {
-      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
-        callbackURL: callbackURL
-      });
+      this.widget = new Auth0Lock(clientID, 'abc.contoso.com');
     });
 
     it('should use domain as assetsUrl if domain is not *.auth0.com', function () {
@@ -240,19 +238,25 @@ describe('Auth0Lock', function () {
     });
 
     it('should use default assetsUrl if domain is *.auth0.com', function () {
-      var widget = new Auth0Lock(clientID, 'abc.auth0.com:3000', {
-        callbackURL: callbackURL
+      this.widget = new Auth0Lock(clientID, 'abc.auth0.com:3000');
+
+      expect(this.widget.$options.assetsUrl).to.equal('https://s3.amazonaws.com/assets.auth0.com/');
+    });
+  });
+
+  describe('When assetsUrl option is specified', function () {
+    it('should use provided assetsUrl and ignore defaults', function () {
+      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
+        assetsUrl: 'https://sdk.myauth0-custom.com/'
       });
 
-      expect(widget.$options.assetsUrl).to.equal('https://s3.amazonaws.com/assets.auth0.com/');
+      expect(this.widget.$options.assetsUrl).to.equal('https://sdk.myauth0-custom.com/');
     });
   });
 
   describe('When cdn option is not specified', function () {
     beforeEach(function() {
-      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
-        callbackURL: callbackURL
-      });
+      this.widget = new Auth0Lock(clientID, 'abc.contoso.com');
     });
 
     it('should use domain as cdn if domain is not *.auth0.com', function () {
@@ -260,11 +264,19 @@ describe('Auth0Lock', function () {
     });
 
     it('should use default cdn if domain is *.auth0.com', function () {
-      var widget = new Auth0Lock(clientID, 'abc.auth0.com', {
-        callbackURL: callbackURL
+      this.widget = new Auth0Lock(clientID, 'abc.auth0.com');
+
+      expect(this.widget.$options.cdn).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
+    });
+  });
+
+  describe('When cdn option is specified', function () {
+    it('should use provided cdn url and ignore defaults', function () {
+      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
+        cdn: 'https://sdk.myauth0-custom.com/'
       });
 
-      expect(widget.$options.cdn).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
+      expect(this.widget.$options.cdn).to.equal('https://sdk.myauth0-custom.com/');
     });
   });
 
