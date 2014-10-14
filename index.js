@@ -1141,7 +1141,6 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
     if (err.message === 'User closed the popup window') {
       // Closed window
       self._showError(self.options.i18n.t('signin:userClosedPopup'));
-
     } else if (err.message === 'access_denied') {
       // Permissions not granted
       self._showError(self.options.i18n.t('signin:userConsentFailed'));
