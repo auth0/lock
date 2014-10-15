@@ -248,6 +248,7 @@ We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. 
 * [Development][development-notes] notes.
 * [Release process][release-process] notes.
 * [Auth0Lock playground][playground-url]
+* [Using Refresh Tokens](https://github.com/auth0/lock/wiki/Using-a-Refresh-Token)
 * Legacy **Auth0Widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs](https://docs.auth0.com/login-widget2).
 * Legacy **Auth0Widget** [Migration guide][migration-guide] to **AuthoLock**
 
