@@ -39,9 +39,6 @@ describe('sign up', function () {
     var auth0 = this.auth0;
 
     auth0
-    .once('signin ready', function () {
-      bean.fire($('#a0-lock .a0-sign-up')[0], 'click');
-    })
     .once('signup ready', function () {
       $('#a0-signup_easy_email').val('pepo@example.com');
       $('#a0-signup_easy_password').val('123');
@@ -51,26 +48,25 @@ describe('sign up', function () {
       });
       bean.fire($('.a0-signup form')[0], 'submit');
     })
-    .show(this.options);
+    .showSignup(this.options);
   });
 
   it('should not change to loading when server returns error', function (done) {
     var auth0 = this.auth0;
 
     auth0
-    .once('_error', function () {
-      expect($('.a0-error').html()).to.be(auth0.options.i18n.t('signup:serverErrorText'));
-      done();
-    })
-    .once('signin ready', function () {
-      bean.fire($('#a0-lock .a0-sign-up')[0], 'click');
-    })
     .once('signup ready', function () {
+      console.log('signup ready');
       $('#a0-signup_easy_email').val('pepo@example.com');
       $('#a0-signup_easy_password').val('123');
       bean.fire($('.a0-signup form')[0], 'submit');
     })
-    .show(this.options);
+    .once('_error', function () {
+      console.log('_error ready');
+      expect($('.a0-error').html()).to.be(auth0.options.i18n.t('signup:serverErrorText'));
+      done();
+    })
+    .showSignup(this.options);
   });
 
 
@@ -82,13 +78,10 @@ describe('sign up', function () {
     };
 
     this.auth0
-    .once('signin ready', function (mode) {
-      bean.fire($('#a0-lock .a0-sign-up')[0], 'click');
-    })
     .once('signup ready', function() {
       bean.fire($('.a0-signup [data-strategy="google-oauth2"]')[0], 'click');
     })
-    .show(this.options);
+    .showSignup(this.options);
   });
 
 });
