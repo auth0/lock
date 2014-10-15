@@ -317,19 +317,6 @@ describe('Auth0Lock', function () {
       });
     });
 
-    it('should send offline_mode as true to the client', function (done) {
-      client.login = function (options) {
-        expect(options.offline_mode).to.equal(true);
-        done();
-      };
-
-      widget
-      .once('ready', function () {
-        bean.fire($('#a0-lock .a0-notloggedin .a0-iconlist [data-strategy="google-oauth2"]')[0], 'click');
-      })
-      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { offline_mode: true }});
-    });
-
     it('should signin with social connection specifying connection_scope if one is provided', function (done) {
       var connection_scopes = {
         'twitter': ['grant1', 'grant2'],
