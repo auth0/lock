@@ -7179,7 +7179,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-panel .a0-password,
-#a0-lock .a0-panel .a0-repeatPassword {
+#a0-lock .a0-panel .a0-repeatPassword,
+#a0-lock .a0-panel .a0-email {
   border-top: 1px solid #ccc;
 }
 
@@ -7201,6 +7202,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-panel .a0-email .a0-input-box,
+#a0-lock .a0-panel .a0-username .a0-input-box,
 #a0-lock .a0-panel .a0-password .a0-input-box,
 #a0-lock .a0-panel .a0-repeatPassword .a0-input-box {
   position: relative;
@@ -7208,6 +7210,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-panel .a0-email .a0-input-box i,
+#a0-lock .a0-panel .a0-username .a0-input-box i,
 #a0-lock .a0-panel .a0-password .a0-input-box i,
 #a0-lock .a0-panel .a0-repeatPassword .a0-input-box i {
   font-size: 14px;
@@ -7219,6 +7222,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-panel .a0-email input,
+#a0-lock .a0-panel .a0-username input,
 #a0-lock .a0-panel .a0-password input,
 #a0-lock .a0-panel .a0-repeatPassword input {
   -webkit-box-sizing: border-box;
@@ -7238,6 +7242,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-panel .a0-email input:focus,
+#a0-lock .a0-panel .a0-username input:focus,
 #a0-lock .a0-panel .a0-password input:focus,
 #a0-lock .a0-panel .a0-repeatPassword input:focus {
   background: #fff;
@@ -7286,6 +7291,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-bottom: 0;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+}
+
+#a0-lock .a0-panel .a0-username input {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 #a0-lock .a0-panel .a0-password input {
@@ -7452,6 +7462,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-no-placeholder-support .a0-inputs .a0-email,
+#a0-lock .a0-no-placeholder-support .a0-inputs .a0-username,
 #a0-lock .a0-no-placeholder-support .a0-inputs .a0-password,
 #a0-lock .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
   border: 0;

@@ -37,6 +37,7 @@
     "title":                       "Sign Up",
     "action":                      "Sign Up",
     "emailPlaceholder":            "Email",
+    "usernamePlaceholder":         "Username",
     "passwordPlaceholder":         "Create a Password",
     "cancelAction":                "Cancel",
     "headerText":                  "Please enter your email and password",
