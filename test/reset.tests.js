@@ -48,6 +48,11 @@ describe('reset', function () {
   it('should invoke callback function when reset is successfull', function(done) {
     var widget = this.widget;
 
+    // mock success from reset password
+    this.client.changePassword = function(options, callback) {
+      callback(null, "success message");
+    }
+
     widget
     .once('reset ready', function () {
       $('#a0-reset_easy_email').val('ohmy@mandatory.com');
