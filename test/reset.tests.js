@@ -15,6 +15,7 @@ describe('reset', function () {
 
   beforeEach(function (done) {
     this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
+    this.client = this.widget.$auth0;
     done();
   });
 
@@ -28,9 +29,6 @@ describe('reset', function () {
     var widget = this.widget;
 
     widget
-    .once('ready', function() {
-      bean.fire($('#a0-lock .a0-forgot-pass')[0], 'click');
-    })
     .once('reset ready', function () {
       $('#a0-reset_easy_email').val('ohmy@mandatory.com');
       $('#a0-reset_easy_password').val('123');
@@ -44,10 +42,52 @@ describe('reset', function () {
 
       bean.fire($('.a0-reset form')[0], 'submit');
     })
-    .show({
-      callbackURL: 'http://localhost:3000/',
-      rememberLastLogin: false
-    });
+    .showReset();
+  });
+
+  it('should invoke callback function when reset is successfull', function(done) {
+    var widget = this.widget;
+
+    widget
+    .once('reset ready', function () {
+      $('#a0-reset_easy_email').val('ohmy@mandatory.com');
+      $('#a0-reset_easy_password').val('123');
+      $('#a0-reset_easy_repeat_password').val('123');
+
+      bean.fire($('.a0-reset form')[0], 'submit');
+    })
+    .showReset({}, onsuccess);
+
+    function onsuccess(err, message) {
+      expect(err).to.equal(null);
+      expect(message).to.not.be(undefined);
+      done();
+    }
+  });
+
+  it('should invoke callback function with error when reset errors', function(done) {
+    var widget = this.widget;
+
+    // mock error from reset password
+    this.client.changePassword = function(options, callback) {
+      callback(new Error('Email does not exist'))
+    }
+
+    widget
+    .once('reset ready', function () {
+      $('#a0-reset_easy_email').val('unregistered@email.com');
+      $('#a0-reset_easy_password').val('123');
+      $('#a0-reset_easy_repeat_password').val('123');
+
+      bean.fire($('.a0-reset form')[0], 'submit');
+    })
+    .showReset({}, onerror);
+
+    function onerror(err, message) {
+      expect(err).to.not.be(null);
+      expect(message).to.be(undefined);
+      done();
+    }
   });
 
 });
