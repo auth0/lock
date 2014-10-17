@@ -56,13 +56,11 @@ describe('sign up', function () {
 
     auth0
     .once('signup ready', function () {
-      console.log('signup ready');
       $('#a0-signup_easy_email').val('pepo@example.com');
       $('#a0-signup_easy_password').val('123');
       bean.fire($('.a0-signup form')[0], 'submit');
     })
     .once('_error', function () {
-      console.log('_error ready');
       expect($('.a0-error').html()).to.be(auth0.options.i18n.t('signup:serverErrorText'));
       done();
     })
