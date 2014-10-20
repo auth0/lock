@@ -16,7 +16,7 @@ describe('db connections', function () {
   describe('.show() options', function () {
     beforeEach(function(done) {
       this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
-      done()
+      done();
     });
 
     it('should disable signup', function (done) {
@@ -130,6 +130,27 @@ describe('db connections', function () {
         connections: [ 'foobar' ],
         rememberLastLogin: false
       });
+    });
+
+    //TODO: make this test work!
+    it.skip('should handle a valid username when `requires_username` is enabled', function (done) {
+      this.widget.isUsernameRequired = function() { return true; };
+      var submitted = false;
+      var auth0 = this.widget;
+      auth0
+      .once('ready', function () {
+        $('#a0-signin_easy_email').val('pepo');
+        $('#a0-signin_easy_password').val('yy');
+        var form = $('.a0-notloggedin form')[0];
+        bean.fire(form, 'submit');
+        submitted = true;
+      })
+      .on('signin ready', function() {
+        if (!submitted) return;
+        expect($('.a0-email .a0-input-box').hasClass('a0-error-input')).to.equal(false);
+        done();
+      })
+      .showSignin({isUsernameRequired: this.widget.isUsernameRequired});
     });
   });
 });

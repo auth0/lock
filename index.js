@@ -1160,7 +1160,8 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
  * Check if `requires_username` is true in the current db connection.
  */
 Auth0Lock.prototype.isUsernameRequired = function() {
-  return this.options && this.options._getAuth0Connection().requires_username;
+  var dbConnection = this.options && this.options._getAuth0Connection();
+  return dbConnection && dbConnection.requires_username;
 };
 
 /**
