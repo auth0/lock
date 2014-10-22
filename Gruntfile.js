@@ -47,6 +47,9 @@ module.exports = function (grunt) {
         bundleOptions: {
           debug: true
         },
+        browserifyOptions: {
+          // fullPaths: true
+        },
         watch: true,
 
         // Convert absolute sourcemap filepaths to relative ones using mold-source-map.
