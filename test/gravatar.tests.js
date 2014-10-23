@@ -26,7 +26,7 @@ describe('gravatar', function () {
   });
 
   it('should display gravatar when email has an associated gravatar account', function (done) {
-    var expectedGravatarURL = 'http://www.gravatar.com/avatar/9d8d8bff4484ddadf83684d88cb10188?d=404';
+    var expectedGravatarURL = 'https://www.gravatar.com/avatar/9d8d8bff4484ddadf83684d88cb10188?d=404';
     var gravatarEmail = 'albertopose@gmail.com';
 
     // Should never happen
