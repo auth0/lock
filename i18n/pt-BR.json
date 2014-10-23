@@ -8,7 +8,7 @@
     "strategyEmailEmpty": "O e-mail deve ser preenchido.",
     "strategyEmailInvalid": "O email é inválido.",
     "strategyDomainInvalid": "O domínio {domain} não foi informado.",
-    "signupText": "Registe-se",
+    "signupText": "Registre-se",
     "forgotText": "Esqueceu sua senha?",
     "emailPlaceholder": "E-mail",
     "usernamePlaceholder": "Nome de Usuário",
