@@ -18,6 +18,7 @@ else
     git checkout -b dist
     grep -v '^build$' .gitignore > /tmp/.gitignore
     mv /tmp/.gitignore .gitignore
+    git add --force build/*
     git commit -am "$TAG_NAME"
     git tag "$TAG_NAME" -m "$LAST_COMMIT"
     git checkout master
