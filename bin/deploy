@@ -16,7 +16,7 @@ else
 
     LAST_COMMIT=$(git log -1 --pretty=%B)
     git checkout -b dist
-    git add --force build/*
+    grep -v '^build$' .gitignore > .gitignore
     git commit -am "$TAG_NAME"
     git tag "$TAG_NAME" -m "$LAST_COMMIT"
     git checkout master
