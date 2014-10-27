@@ -134,7 +134,7 @@ describe('db connections', function () {
 
     //TODO: make this test work!
     it.skip('should handle a valid username when `requires_username` is enabled', function (done) {
-      this.widget.isUsernameRequired = function() { return true; };
+      this.options._isUsernameRequired = function() { return true; };
       var submitted = false;
       var auth0 = this.widget;
       auth0
@@ -150,7 +150,7 @@ describe('db connections', function () {
         expect($('.a0-email .a0-input-box').hasClass('a0-error-input')).to.equal(false);
         done();
       })
-      .showSignin({isUsernameRequired: this.widget.isUsernameRequired});
+      .showSignin();
     });
   });
 });

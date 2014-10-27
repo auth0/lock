@@ -38,7 +38,7 @@ describe('sign up', function () {
   describe('when requires_username is enabled', function() {
 
     beforeEach(function() {
-      this.options.isUsernameRequired = function() { return true; };
+      this.options._isUsernameRequired = function() { return true; };
     });
 
     it('should show username and email inputs', function (done) {
