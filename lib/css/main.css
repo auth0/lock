@@ -7178,10 +7178,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 10px;
 }
 
-#a0-lock .a0-panel .a0-password,
-#a0-lock .a0-panel .a0-repeatPassword,
+#a0-lock .a0-panel .a0-username,
 #a0-lock .a0-panel .a0-email {
+  border-bottom: 1px solid #ccc;
+}
+
+#a0-lock .a0-panel .a0-repeatPassword {
   border-top: 1px solid #ccc;
+}
+
+#a0-lock .a0-panel .a0-password {
+  border: none;
 }
 
 #a0-lock .a0-panel .a0-sso-notice-container {
