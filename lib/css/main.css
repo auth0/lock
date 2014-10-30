@@ -7468,7 +7468,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #a0-lock .a0-popup .a0-overlay {
     display: block;
     overflow: auto;
-    position: static;
+    position: absolute;
     background: white;
   }
 
