@@ -509,25 +509,95 @@
     display: block;
   }
 
+  /*==========  Password Policy  ==========*/
+
+  .password_policy_arrow {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+
+    &:after, &:before {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: rgba(245, 245, 245, 0);
+      border-bottom-color: #f5f5f5;
+      border-width: 8px;
+      margin-left: -8px;
+    }
+    
+    &:before {
+      border-color: rgba(204, 204, 204, 0);
+      border-bottom-color: #ccc;
+      border-width: 9px;
+      margin-left: -9px;
+    }
+  }
+
   .password_policy {
-    text-align: left;
-    margin-top: 5px;
-    li, ul {
-      margin: 0;
-      padding: 0;
-      padding-left: 5px;
-      list-style: none;
-      color: red;
+    display: none;
+
+    -webkit-animation-name: fadein;
+    -webkit-animation-duration: .3s;
+    -webkit-animation-iteration-count: once;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  &.active-pwd-strength {
+    overflow: visible;
+
+    .emailPassword {
+      position: relative;
     }
-    li.checked, li.checked li {
-      color: black;
-    }
-    li:before {
-      content: '\2610';
-      font-size: 15px;
-    }
-    li.checked:before {
-      content: '\2611';
+
+    .password_policy {
+      position: absolute;
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      padding: 10px 16px;
+      background: whitesmoke;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      .password_policy_arrow;
+
+      li, ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: #dd4b39;
+      }
+
+      ul li ul {
+        padding-left: 10px;
+      }
+      
+      li {
+        line-height: 1.5;
+        margin-top: 5px;
+      }
+
+      li.checked {
+        color: #16214d;
+      }
+
+      li:before {
+        content: "\e177";
+        font-family: "budicon-font" !important;
+        margin-right: 10px;
+        font-size: 10px;
+      }
+
+      li.checked:before {
+        content: '\e178';
+      }
     }
   }
 
@@ -613,6 +683,22 @@
 
   #onestep{
     transition: none;
+  }
+
+  .panel {
+    &.active-pwd-strength {
+      .password_policy {
+        position: relative;
+
+        li.checked {
+          display: none;
+        }
+
+        ul li ul {
+          padding-left: 0;
+        }
+      }
+    }
   }
 
   .popup{
