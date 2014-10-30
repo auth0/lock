@@ -7587,10 +7587,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     position: relative;
   }
 
-  #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked {
-    display: none;
-  }
-
   #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul {
     padding-left: 0;
   }
