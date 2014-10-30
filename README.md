@@ -1,4 +1,4 @@
-[![Auth0](https://cldup.com/jEFlo9I8HC.png)](http://auth0.com)
+[![Auth0](https://cldup.com/yYelLVuXby.jpg)](http://auth0.com)
 
 # Auth0 Lock
 [![NPM version][npm-image]][npm-url]
