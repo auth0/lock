@@ -512,30 +512,19 @@
   /*==========  Password Policy  ==========*/
 
   .password_policy_arrow {
-    background: #f5f5f5;
-    border: 1px solid #ccc;
+    background: #1F242E;
 
-    &:after, &:before {
-      bottom: 100%;
-      left: 50%;
+    &:after {
+      top: 100%;
+      left: 18px;
       border: solid transparent;
       content: " ";
       height: 0;
       width: 0;
       position: absolute;
       pointer-events: none;
-    }
-
-    &:after {
-      border-color: rgba(245, 245, 245, 0);
-      border-bottom-color: #f5f5f5;
-      border-width: 8px;
-      margin-left: -8px;
-    }
-    
-    &:before {
-      border-color: rgba(204, 204, 204, 0);
-      border-bottom-color: #ccc;
+      border-color: rgba(31, 36, 46, 0);
+      border-top-color: #1F242E;
       border-width: 9px;
       margin-left: -9px;
     }
@@ -558,15 +547,19 @@
     }
 
     .password_policy {
+      .password_policy_arrow;
       position: absolute;
+      bottom: 124px;
+      left: 5px;
+      width: 228px;
       display: block;
       text-align: left;
       margin-top: 15px;
-      padding: 10px 16px;
-      background: whitesmoke;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      .password_policy_arrow;
+      padding: 15px;
+      padding-top: 12px;
+      background: #1F242E;
+      border-radius: 5px;
+      z-index: 1000;
 
       li, ul {
         margin: 0;
@@ -576,27 +569,32 @@
       }
 
       ul li ul {
-        padding-left: 10px;
+        li {
+          color: #967569;
+        }
       }
       
       li {
         line-height: 1.5;
         margin-top: 5px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: color .3s ease-in;
+        position: relative;
+        padding-left: 18px;
       }
 
       li.checked {
-        color: #16214d;
+        color: #7ED321;
       }
 
       li:before {
-        content: "\e177";
-        font-family: "budicon-font" !important;
+        content: "●";
         margin-right: 10px;
-        font-size: 10px;
-      }
-
-      li.checked:before {
-        content: '\e178';
+        font-size: 14px;
+        position: absolute;
+        top: -2px;
+        left: 0;
       }
     }
   }
@@ -688,10 +686,35 @@
   .panel {
     &.active-pwd-strength {
       .password_policy {
-        position: relative;
+        position: static;
+        width: auto;
+        left: auto;
+        top: auto;
+        background: none;
+        padding: 0 15px;
+
+        li.checked {
+          color: #16214D;
+        }
+
+        &:before {
+          display: block;
+          text-transform: uppercase;
+          display: block;
+          margin-bottom: 10px;
+          font-size: 11px;
+          content: "Password Policy:";
+          color: #999;
+        }
+
+        &:after {
+          display: none;
+        }
 
         ul li ul {
-          padding-left: 0;
+          li {
+            color: #C39696;
+          }
         }
       }
     }

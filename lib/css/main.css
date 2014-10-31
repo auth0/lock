@@ -7409,32 +7409,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock .a0-panel .a0-password_policy_arrow {
-  background: #f5f5f5;
-  border: 1px solid #ccc;
+  background: #1F242E;
 }
 
-#a0-lock .a0-panel .a0-password_policy_arrow:after,
-#a0-lock .a0-panel .a0-password_policy_arrow:before {
-  bottom: 100%;
-  left: 50%;
+#a0-lock .a0-panel .a0-password_policy_arrow:after {
+  top: 100%;
+  left: 18px;
   border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
   position: absolute;
   pointer-events: none;
-}
-
-#a0-lock .a0-panel .a0-password_policy_arrow:after {
-  border-color: rgba(245, 245, 245, 0);
-  border-bottom-color: #f5f5f5;
-  border-width: 8px;
-  margin-left: -8px;
-}
-
-#a0-lock .a0-panel .a0-password_policy_arrow:before {
-  border-color: rgba(204, 204, 204, 0);
-  border-bottom-color: #ccc;
+  border-color: rgba(31, 36, 46, 0);
+  border-top-color: #1F242E;
   border-width: 9px;
   margin-left: -9px;
 }
@@ -7457,38 +7445,30 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy {
   position: absolute;
+  bottom: 124px;
+  left: 5px;
+  width: 228px;
   display: block;
   text-align: left;
   margin-top: 15px;
-  padding: 10px 16px;
-  background: whitesmoke;
-  border-radius: 3px;
-  background: #f5f5f5;
-  border: 1px solid #ccc;
+  padding: 15px;
+  padding-top: 12px;
+  background: #1F242E;
+  border-radius: 5px;
+  z-index: 1000;
 }
 
-#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:after,
-#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:before {
-  bottom: 100%;
-  left: 50%;
+#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:after {
+  top: 100%;
+  left: 18px;
   border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
   position: absolute;
   pointer-events: none;
-}
-
-#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:after {
-  border-color: rgba(245, 245, 245, 0);
-  border-bottom-color: #f5f5f5;
-  border-width: 8px;
-  margin-left: -8px;
-}
-
-#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:before {
-  border-color: rgba(204, 204, 204, 0);
-  border-bottom-color: #ccc;
+  border-color: rgba(31, 36, 46, 0);
+  border-top-color: #1F242E;
   border-width: 9px;
   margin-left: -9px;
 }
@@ -7501,28 +7481,33 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #dd4b39;
 }
 
-#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul {
-  padding-left: 10px;
+#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li {
+  color: #967569;
 }
 
 #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy li {
   line-height: 1.5;
   margin-top: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+  position: relative;
+  padding-left: 18px;
 }
 
 #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked {
-  color: #16214d;
+  color: #7ED321;
 }
 
 #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy li:before {
-  content: "\e177";
-  font-family: "budicon-font" !important;
+  content: "●";
   margin-right: 10px;
-  font-size: 10px;
-}
-
-#a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked:before {
-  content: '\e178';
+  font-size: 14px;
+  position: absolute;
+  top: -2px;
+  left: 0;
 }
 
 #a0-lock .a0-panel #a0-change_password .a0-password {
@@ -7584,11 +7569,33 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 
   #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy {
-    position: relative;
+    position: static;
+    width: auto;
+    left: auto;
+    top: auto;
+    background: none;
+    padding: 0 15px;
   }
 
-  #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul {
-    padding-left: 0;
+  #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked {
+    color: #16214D;
+  }
+
+  #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:before {
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    content: "Password Policy:";
+    color: #999;
+  }
+
+  #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:after {
+    display: none;
+  }
+
+  #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li {
+    color: #C39696;
   }
 
   #a0-lock .a0-popup .a0-overlay {
