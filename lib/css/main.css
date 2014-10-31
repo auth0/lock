@@ -7433,6 +7433,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-animation-duration: .3s;
   -webkit-animation-iteration-count: once;
   -webkit-animation-timing-function: ease-in;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #a0-lock .a0-panel.a0-active-pwd-strength {
@@ -7446,8 +7449,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy {
   position: absolute;
   bottom: 124px;
-  left: 5px;
-  width: 228px;
+  left: 2.5%;
+  width: 95%;
   display: block;
   text-align: left;
   margin-top: 15px;
@@ -7578,7 +7581,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 
   #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked {
-    color: #16214D;
+    color: #5E9D19;
   }
 
   #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy:before {
