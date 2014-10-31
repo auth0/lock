@@ -7597,10 +7597,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     display: none;
   }
 
-  #a0-lock .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li {
-    color: #C39696;
-  }
-
   #a0-lock .a0-popup .a0-overlay {
     display: block;
     overflow: auto;
