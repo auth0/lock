@@ -332,7 +332,6 @@
     &:focus{
       background: #fff;
     }
-
   }
 
   input::-webkit-input-placeholder {
@@ -525,6 +524,7 @@
       pointer-events: none;
       border-color: rgba(31, 36, 46, 0);
       border-top-color: #1F242E;
+      border-top-color: rgba(31, 36, 46, 0.95);
       border-width: 9px;
       margin-left: -9px;
     }
@@ -542,8 +542,6 @@
   }
 
   &.active-pwd-strength {
-    overflow: visible;
-
     .emailPassword {
       position: relative;
     }
@@ -560,6 +558,7 @@
       padding: 15px;
       padding-top: 12px;
       background: #1F242E;
+      background: rgba(31, 36, 46, 0.95);
       border-radius: 5px;
       z-index: 1000;
 
@@ -572,7 +571,7 @@
 
       ul li ul {
         li {
-          color: #967569;
+          color: white;
         }
       }
       
@@ -687,6 +686,10 @@
 
   .panel {
     &.active-pwd-strength {
+      .emailPassword {
+        position: static;
+      }
+
       .password_policy {
         position: static;
         width: auto;
@@ -697,6 +700,12 @@
 
         li.checked {
           color: #5E9D19;
+        }
+
+        ul li ul {
+          li {
+            color: #3e4975;
+          }
         }
 
         &:before {
