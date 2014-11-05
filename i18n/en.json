@@ -37,6 +37,7 @@
     "title":                       "Sign Up",
     "action":                      "Sign Up",
     "emailPlaceholder":            "Email",
+    "usernamePlaceholder":         "Username",
     "passwordPlaceholder":         "Create a Password",
     "cancelAction":                "Cancel",
     "headerText":                  "Please enter your email and password",
@@ -44,6 +45,7 @@
     "enterpriseEmailWarningText":  "This domain {domain} has been configured for Single Sign On and you can't create an account. Try logging in instead.",
     "serverErrorText":             "There was an error processing the signup.",
     "userExistsErrorText":         "The user already exists.",
+    "usernameInUseErrorText":      "The username is already in use.",
     "invalidPassword":             "Password is too weak."
   },
   "reset": {

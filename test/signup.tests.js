@@ -35,6 +35,100 @@ describe('sign up', function () {
     this.auth0.hide(done)
   });
 
+  describe('when requires_username is enabled', function() {
+
+    beforeEach(function() {
+      // Mock `_isUsernameRequired` so it asumes database has enabled
+      // requires_username on it's configuration
+      this.options._isUsernameRequired = function() { return true; };
+    });
+
+    it('should show username and email inputs', function (done) {
+      this.auth0
+      .once('signup ready', function() {
+        expect($('#a0-signup_easy_email')).to.not.be.empty();
+        expect($('#a0-signup_easy_username')).to.not.be.empty();
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should invalidate an empty username', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_email').val('pepo@example.com');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+
+        expect($('.a0-username .a0-error-input')).to.not.be.empty();
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should invalidate an invalid username', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_username').val('1.1.1.1');
+        $('#a0-signup_easy_email').val('pepo@example.com');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+
+        expect($('.a0-username .a0-error-input')).to.not.be.empty();
+        expect($('.a0-username .a0-error-input .a0-error-message')).to.not.be.empty();
+        expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should still invalidate an invalid email', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_username').val('pepe');
+        $('#a0-signup_easy_email').val('pepo@example');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
+        expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should send valid username and email on submit', function (done) {
+      var auth0 = this.auth0;
+      var username = 'pepe';
+      var email = 'pepo@example.com';
+      var password = '12345';
+
+      auth0.$auth0.signup = function(options) {
+        expect(options.email).to.equal(email);
+        expect(options.username).to.equal(username);
+        expect(options.password).to.equal(password);
+        done();
+      }
+
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_username').val(username);
+        $('#a0-signup_easy_email').val(email);
+        $('#a0-signup_easy_password').val(password);
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .showSignup(this.options);
+    });
+  });
+
   it('should show the loading pane', function (done) {
     var auth0 = this.auth0;
 

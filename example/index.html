@@ -413,10 +413,12 @@
           var widget2 = new Auth0Lock(cid2, domain2);
           var result2 = widget2.parseHash(window.location.hash);
 
+          // Clean the hash after parse
+          window.location.hash = "";
+
           if (result && result.id_token) {
             // After login, show user profile
             widget.getProfile(result.id_token, function(err, profile) {
-              window.location.hash = "";
               if (err) {
                 return alert(err);
               }
@@ -427,8 +429,6 @@
           } else if (result2 && result2.id_token) {
             // After login, show user profile
             widget.getProfile(result2.id_token, function(err, profile) {
-              window.location.hash = "";
-
               if (err) {
                 return alert(err);
               }

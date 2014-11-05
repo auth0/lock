@@ -18,10 +18,15 @@ describe('gravatar', function () {
 
   beforeEach(function (done) {
     this.widget = new Auth0Lock(clientID, domain);
+    this.options = {
+      rememberLastLogin: false,
+      integratedWindowsLogin: false
+    };
     done();
   });
 
   afterEach(function (done) {
+    this.options = null;
     this.widget.hide(done);
   });
 
@@ -55,7 +60,7 @@ describe('gravatar', function () {
       type(email, gravatarEmail);
     });
 
-    this.widget.show();
+    this.widget.show(this.options);
 
   });
 
@@ -87,6 +92,6 @@ describe('gravatar', function () {
       type(email, gravatarEmail);
     });
 
-    this.widget.show();
+    this.widget.show(this.options);
   });
 });

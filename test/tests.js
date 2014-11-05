@@ -467,6 +467,121 @@ describe('Auth0Lock', function () {
       })
       .show({ callbackURL: callbackURL, responseType: 'token', authParams: { access_type: 'offline' } });
     });
+
+    describe('when requires_username is enabled', function() {
+
+      beforeEach(function() {
+        this.options = this.options || {};
+        // Mock `_isUsernameRequired` so it asumes database has enabled
+        // requires_username on it's configuration
+        this.options._isUsernameRequired = function() { return true; };
+      });
+
+      it('should invalidate an empty username', function (done) {
+        var auth0 = widget;
+        var email = 'pepo@example.com';
+        var password = '12345';
+
+        auth0
+        .once('signin ready', function() {
+          $('#a0-signin_easy_password').val(password);
+          $('#a0-signin_easy_repeat_password').val(password);
+
+          bean.fire($('.a0-signin form')[0], 'submit');
+
+          expect($('.a0-email .a0-error-input')).to.not.be.empty();
+          done();
+        })
+        .showSignin(this.options);
+      });
+
+      it('should invalidate an invalid username', function (done) {
+        var auth0 = widget;
+        var username = '1.1.1.1';
+        var password = '12345';
+
+        auth0
+        .once('signin ready', function() {
+          $('#a0-signin_easy_email').val(username);
+          $('#a0-signin_easy_password').val(password);
+          $('#a0-signin_easy_repeat_password').val(password);
+
+          bean.fire($('.a0-signin form')[0], 'submit');
+
+          expect($('.a0-email .a0-error-input')).to.not.be.empty();
+          expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
+          expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+          done();
+        })
+        .showSignin(this.options);
+      });
+
+      it('should still invalidate an invalid email', function (done) {
+        var auth0 = widget;
+        var email = 'pepo@example';
+        var password = '12345';
+
+        auth0
+        .once('signin ready', function() {
+          $('#a0-signin_easy_email').val(email);
+          $('#a0-signin_easy_password').val(password);
+          $('#a0-signin_easy_repeat_password').val(password);
+
+          bean.fire($('.a0-signin form')[0], 'submit');
+
+          expect($('.a0-email .a0-error-input')).to.not.be.empty();
+          expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
+          expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+          done();
+        })
+        .showSignin(this.options);
+      });
+
+      it('should send valid username on submit', function (done) {
+        var auth0 = widget;
+        var username = 'pepe';
+        var email = 'pepo@example.com';
+        var password = '12345';
+
+        client.login = function(options) {
+          expect(options.username).to.equal(username);
+          expect(options.password).to.equal(password);
+          done();
+        }
+
+        auth0
+        .once('signin ready', function() {
+          $('#a0-signin_easy_email').val(username);
+          $('#a0-signin_easy_password').val(password);
+          $('#a0-signin_easy_repeat_password').val(password);
+
+          bean.fire($('.a0-signin form')[0], 'submit');
+        })
+        .showSignin(this.options);
+      });
+
+      it('should still send valid email on submit', function (done) {
+        var auth0 = widget;
+        var email = 'pepo@example.com';
+        var password = '12345';
+
+        client.login = function(options) {
+          expect(options.username).to.equal(email);
+          expect(options.password).to.equal(password);
+          done();
+        }
+
+        auth0
+        .once('signin ready', function() {
+          $('#a0-signin_easy_email').val(email);
+          $('#a0-signin_easy_password').val(password);
+          $('#a0-signin_easy_repeat_password').val(password);
+
+          bean.fire($('.a0-signin form')[0], 'submit');
+        })
+        .showSignin(this.options);
+      });
+    });
   });
 
   describe('Sign Up with database connection', function () {
