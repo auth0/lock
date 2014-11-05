@@ -5,10 +5,19 @@
 
   // Widget styles
   @import "keyframes.less";
-  @import "zocial.less";
+
+  &.theme-default {
+    @import "zocial.less";
+  }
+
   @import "common.less";
-  @import "themes/default.less";
+
+  &.theme-default {
+    @import "themes/default.less";
+  }
 }
+
+
 
 @media screen and (max-width: 480px) {
   body.lock-open {

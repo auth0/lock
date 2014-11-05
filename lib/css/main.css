@@ -182,17 +182,6 @@
   /*==========  Appear  ==========*/
   /*==========  showPanel  ==========*/
   /*==========  hidePanel  ==========*/
-  /* Buttons can be displayed as standalone icons by adding a class of "icon" */
-  /* Adjustments for light background buttons */
-  /* :hover adjustments for light background buttons */
-  /* :active adjustments for light background buttons */
-  /* Button icon and color */
-  /* Icon characters are stored in unicode private area */
-  /* Button background and text color */
-  /* Any browser-specific adjustments */
-  /* Reference icons from font-files
-** Base 64-encoded version recommended to resolve cross-site font-loading issues
-*/
   /**
 *
 * General Widget CSS
@@ -202,42 +191,7 @@
 =            Overlay            =
 ===============================*/
   /*-----  End of Overlay  ------*/
-  /*==========  Includes  ==========*/
-  /*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license
-
-Copyright (c) 2013 Daniel Eden
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-  /*========= Animated Fast ========*/
-  /*==========  Spinner  ==========*/
-  /*-----  End of Spinner  ------*/
-  /*==========  Fonts  ==========*/
-  /*
- * Auth0Lock icon's font
- */
-  /*-----  End of Fonts  ------*/
-  /*==========  Panel  ==========*/
-  /*-----  End of Panel  ------*/
-  /*===============================================
-=            No Placeholder Fallback            =
-===============================================*/
-  /*=====================================
-=            Media Queries            =
-=====================================*/
 }
-
-@charset "UTF-8";
 
 #a0-lock article,
 #a0-lock aside,
@@ -912,8 +866,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zocial,
-#a0-lock a.a0-zocial {
+#a0-lock.a0-theme-default {
+  /* Buttons can be displayed as standalone icons by adding a class of "icon" */
+  /* Adjustments for light background buttons */
+  /* :hover adjustments for light background buttons */
+  /* :active adjustments for light background buttons */
+  /* Button icon and color */
+  /* Icon characters are stored in unicode private area */
+  /* Button background and text color */
+  /* Any browser-specific adjustments */
+  /* Reference icons from font-files
+** Base 64-encoded version recommended to resolve cross-site font-loading issues
+*/
+}
+
+@charset "UTF-8";
+
+#a0-lock.a0-theme-default .a0-zocial,
+#a0-lock.a0-theme-default a.a0-zocial {
   color: #fff;
   text-align: left;
   text-decoration: none;
@@ -934,12 +904,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transition: opacity 0.2s ease;
 }
 
-#a0-lock .a0-zocial:hover {
+#a0-lock.a0-theme-default .a0-zocial:hover {
   opacity: 1;
 }
 
-#a0-lock .a0-zocial span,
-#a0-lock a.a0-zocial span {
+#a0-lock.a0-theme-default .a0-zocial span,
+#a0-lock.a0-theme-default a.a0-zocial span {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 11px;
@@ -953,18 +923,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transition: all 0.2s ease;
 }
 
-#a0-lock .a0-strategy div.a0-zocial span {
+#a0-lock.a0-theme-default .a0-strategy div.a0-zocial span {
   text-transform: lowercase;
   font-size: 12px;
 }
 
-#a0-lock .a0-zocial:hover span,
-#a0-lock a.a0-zocial:hover span,
-#a0-lock a.a0-zocial {
+#a0-lock.a0-theme-default .a0-zocial:hover span,
+#a0-lock.a0-theme-default a.a0-zocial:hover span,
+#a0-lock.a0-theme-default a.a0-zocial {
   background: rgba(0, 0, 0, 0.2);
 }
 
-#a0-lock .a0-zocial:before {
+#a0-lock.a0-theme-default .a0-zocial:before {
   font: 14px zocial;
   font-weight: normal;
   float: left;
@@ -979,384 +949,384 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transition: all 0.2s ease;
 }
 
-#a0-lock .a0-zocial:active,
-#a0-lock .a0-zocial:focus {
+#a0-lock.a0-theme-default .a0-zocial:active,
+#a0-lock.a0-theme-default .a0-zocial:focus {
   outline: none;
   /* outline is visible on :focus */
   opacity: .4;
 }
 
-#a0-lock .a0-zocial.a0-icon {
+#a0-lock.a0-theme-default .a0-zocial.a0-icon {
   overflow: hidden;
   white-space: nowrap;
 }
 
-#a0-lock .a0-zocial.a0-icon:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-icon:before {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
 }
 
-#a0-lock .a0-strategy {
+#a0-lock.a0-theme-default .a0-strategy {
   margin: 10px 0;
 }
 
-#a0-lock .a0-zocial.a0-amazon:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-amazon:before {
   content: "a";
 }
 
-#a0-lock .a0-zocial.a0-dropbox:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-dropbox:before {
   content: "d";
   color: #1f75cc;
 }
 
-#a0-lock .a0-zocial.a0-facebook:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-facebook:before {
   content: "f";
 }
 
-#a0-lock .a0-zocial.a0-github:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-github:before {
   content: "\00E8";
 }
 
-#a0-lock .a0-zocial.a0-gmail:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-gmail:before {
   content: "m";
   color: #f00;
 }
 
-#a0-lock .a0-zocial.a0-google:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-google:before {
   content: "G";
 }
 
-#a0-lock .a0-zocial.a0-googleplus:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-googleplus:before {
   content: "+";
 }
 
-#a0-lock .a0-zocial.a0-guest:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-guest:before {
   content: "?";
 }
 
-#a0-lock .a0-zocial.a0-ie:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-ie:before {
   content: "6";
 }
 
-#a0-lock .a0-zocial.a0-linkedin:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-linkedin:before {
   content: "L";
 }
 
-#a0-lock .a0-zocial.a0-openid:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-openid:before {
   content: "o";
   color: #ff921d;
 }
 
-#a0-lock .a0-zocial.a0-paypal:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-paypal:before {
   content: "$";
 }
 
-#a0-lock .a0-zocial.a0-stackoverflow:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-stackoverflow:before {
   content: "\00EC";
   color: #ff7a15;
 }
 
-#a0-lock .a0-zocial.a0-twitter:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-twitter:before {
   content: "T";
 }
 
-#a0-lock .a0-zocial.a0-vk:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-vk:before {
   content: "N";
 }
 
-#a0-lock .a0-zocial.a0-windows:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-windows:before {
   content: "W";
 }
 
-#a0-lock .a0-zocial.a0-yahoo:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-yahoo:before {
   content: "Y";
 }
 
-#a0-lock .a0-zocial.a0-office365:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-office365:before {
   content: "W";
 }
 
-#a0-lock .a0-zocial.a0-thirtysevensignals:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-thirtysevensignals:before {
   content: "b";
 }
 
-#a0-lock .a0-zocial.a0-salesforce:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-salesforce:before {
   content: "*";
 }
 
-#a0-lock .a0-zocial.a0-waad:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-waad:before {
   content: "W";
 }
 
-#a0-lock .a0-zocial.a0-box:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-box:before {
   content: "x";
 }
 
-#a0-lock .a0-zocial.a0-aol:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-aol:before {
   content: "l";
 }
 
-#a0-lock .a0-zocial.a0-renren:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-renren:before {
   content: "r";
 }
 
-#a0-lock .a0-zocial.a0-baidu:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-baidu:before {
   content: "u";
 }
 
-#a0-lock .a0-zocial.a0-fitbit:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-fitbit:before {
   content: "#";
 }
 
-#a0-lock .a0-zocial.a0-yandex:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-yandex:before {
   content: "&";
 }
 
-#a0-lock .a0-zocial.a0-wordpress:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-wordpress:before {
   content: "w";
 }
 
-#a0-lock .a0-zocial.a0-dwolla:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-dwolla:before {
   content: "D";
 }
 
-#a0-lock .a0-zocial.a0-shopify:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-shopify:before {
   content: "s";
 }
 
-#a0-lock .a0-zocial.a0-yammer:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-yammer:before {
   content: "!";
 }
 
-#a0-lock .a0-zocial.a0-miicard:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-miicard:before {
   content: "m";
 }
 
-#a0-lock .a0-zocial.a0-soundcloud:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-soundcloud:before {
   content: "t";
 }
 
-#a0-lock .a0-zocial.a0-evernote:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-evernote:before {
   content: "n";
 }
 
-#a0-lock .a0-zocial.a0-ebay:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-ebay:before {
   content: "e";
 }
 
-#a0-lock .a0-zocial.a0-sharepoint:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-sharepoint:before {
   content: "p";
 }
 
-#a0-lock .a0-zocial.a0-weibo:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-weibo:before {
   content: "S";
 }
 
-#a0-lock .a0-zocial.a0-instagram:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-instagram:before {
   content: "i";
 }
 
-#a0-lock .a0-zocial.a0-thecity:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-thecity:before {
   content: "c";
 }
 
-#a0-lock .a0-zocial.a0-planningcenter:before {
+#a0-lock.a0-theme-default .a0-zocial.a0-planningcenter:before {
   content: "y";
 }
 
-#a0-lock .a0-zocial.a0-amazon {
+#a0-lock.a0-theme-default .a0-zocial.a0-amazon {
   background-color: #ffad1d;
   color: #030037;
 }
 
-#a0-lock .a0-zocial.a0-dropbox {
+#a0-lock.a0-theme-default .a0-zocial.a0-dropbox {
   background-color: #007ee5;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-facebook {
+#a0-lock.a0-theme-default .a0-zocial.a0-facebook {
   background-color: #4863ae;
 }
 
-#a0-lock .a0-zocial.a0-github {
+#a0-lock.a0-theme-default .a0-zocial.a0-github {
   background-color: #eee;
   color: #050505;
 }
 
-#a0-lock .a0-zocial.a0-wordpress {
+#a0-lock.a0-theme-default .a0-zocial.a0-wordpress {
   background-color: #1e8cbe;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-dwolla {
+#a0-lock.a0-theme-default .a0-zocial.a0-dwolla {
   background-color: #F5891F;
   color: #fbfbfb;
 }
 
-#a0-lock .a0-zocial.a0-gmail {
+#a0-lock.a0-theme-default .a0-zocial.a0-gmail {
   background-color: #efefef;
   color: #222;
 }
 
-#a0-lock .a0-zocial.a0-google {
+#a0-lock.a0-theme-default .a0-zocial.a0-google {
   background-color: #4e6cf7;
 }
 
-#a0-lock .a0-zocial.a0-googleplus {
+#a0-lock.a0-theme-default .a0-zocial.a0-googleplus {
   background-color: #dd4b39;
 }
 
-#a0-lock .a0-zocial.a0-guest {
+#a0-lock.a0-theme-default .a0-zocial.a0-guest {
   background-color: #1b4d6d;
 }
 
-#a0-lock .a0-zocial.a0-ie {
+#a0-lock.a0-theme-default .a0-zocial.a0-ie {
   background-color: #00a1d9;
 }
 
-#a0-lock .a0-zocial.a0-linkedin {
+#a0-lock.a0-theme-default .a0-zocial.a0-linkedin {
   background-color: #0083a8;
 }
 
-#a0-lock .a0-zocial.a0-openid {
+#a0-lock.a0-theme-default .a0-zocial.a0-openid {
   background-color: #f5f5f5;
   color: #333;
 }
 
-#a0-lock .a0-zocial.a0-paypal {
+#a0-lock.a0-theme-default .a0-zocial.a0-paypal {
   background-color: #eee;
   color: #32689a;
 }
 
-#a0-lock .a0-zocial.a0-twitter {
+#a0-lock.a0-theme-default .a0-zocial.a0-twitter {
   background-color: #46c0fb;
 }
 
-#a0-lock .a0-zocial.a0-vk {
+#a0-lock.a0-theme-default .a0-zocial.a0-vk {
   background-color: #45688E;
 }
 
-#a0-lock .a0-zocial.a0-windows {
+#a0-lock.a0-theme-default .a0-zocial.a0-windows {
   background-color: #0052a4;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-office365 {
+#a0-lock.a0-theme-default .a0-zocial.a0-office365 {
   background-color: #00ACED;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-waad {
+#a0-lock.a0-theme-default .a0-zocial.a0-waad {
   background-color: #00ADEF;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-thirtysevensignals {
+#a0-lock.a0-theme-default .a0-zocial.a0-thirtysevensignals {
   background-color: #6AC071;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-box {
+#a0-lock.a0-theme-default .a0-zocial.a0-box {
   background-color: #267bb6;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-salesforce {
+#a0-lock.a0-theme-default .a0-zocial.a0-salesforce {
   background-color: #eee;
   color: #ff0000;
 }
 
-#a0-lock .a0-zocial.a0-windows {
+#a0-lock.a0-theme-default .a0-zocial.a0-windows {
   background-color: #2672EC;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-yahoo {
+#a0-lock.a0-theme-default .a0-zocial.a0-yahoo {
   background-color: #a200c2;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-aol {
+#a0-lock.a0-theme-default .a0-zocial.a0-aol {
   background-color: #0861A8;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-renren {
+#a0-lock.a0-theme-default .a0-zocial.a0-renren {
   background-color: #0056B5;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-baidu {
+#a0-lock.a0-theme-default .a0-zocial.a0-baidu {
   background-color: #2832E1;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-fitbit {
+#a0-lock.a0-theme-default .a0-zocial.a0-fitbit {
   background-color: #45C2C5;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-yandex {
+#a0-lock.a0-theme-default .a0-zocial.a0-yandex {
   background-color: #FF0000;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-shopify {
+#a0-lock.a0-theme-default .a0-zocial.a0-shopify {
   background-color: #9CC24C;
   color: #fbfbfb;
 }
 
-#a0-lock .a0-zocial.a0-yammer {
+#a0-lock.a0-theme-default .a0-zocial.a0-yammer {
   background-color: #0072c6;
   color: #fdfdfd;
 }
 
-#a0-lock .a0-zocial.a0-miicard {
+#a0-lock.a0-theme-default .a0-zocial.a0-miicard {
   background-color: #C7EAFF;
   color: #303030;
 }
 
-#a0-lock .a0-zocial.a0-soundcloud {
+#a0-lock.a0-theme-default .a0-zocial.a0-soundcloud {
   background-color: #ff4500;
 }
 
-#a0-lock .a0-zocial.a0-evernote {
+#a0-lock.a0-theme-default .a0-zocial.a0-evernote {
   background-color: #6bb130;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-ebay {
+#a0-lock.a0-theme-default .a0-zocial.a0-ebay {
   background-color: #000098;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-sharepoint {
+#a0-lock.a0-theme-default .a0-zocial.a0-sharepoint {
   background-color: #0072C6;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-weibo {
+#a0-lock.a0-theme-default .a0-zocial.a0-weibo {
   background-color: #faf6f1;
   color: #e6162d;
 }
 
-#a0-lock .a0-zocial.a0-instagram {
+#a0-lock.a0-theme-default .a0-zocial.a0-instagram {
   background-color: #25537B;
   color: #fff;
 }
 
-#a0-lock .a0-zocial.a0-thecity {
+#a0-lock.a0-theme-default .a0-zocial.a0-thecity {
   background-color: #767571;
   color: #d1d1d1;
 }
 
-#a0-lock .a0-zocial.a0-planningcenter {
+#a0-lock.a0-theme-default .a0-zocial.a0-planningcenter {
   background-color: #4e4e4e;
   color: #d1d1d1;
 }
 
-#a0-lock button:-moz-focus-inner {
+#a0-lock.a0-theme-default button:-moz-focus-inner {
   border: 0;
   padding: 0;
 }
@@ -1373,26 +1343,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-style: normal;
 }
 
-#a0-lock .a0-equal-viewport .a0-zocial,
-#a0-lock .a0-zocial.a0-icon {
+#a0-lock.a0-theme-default .a0-equal-viewport .a0-zocial,
+#a0-lock.a0-theme-default .a0-zocial.a0-icon {
   width: auto;
   display: inline-block;
   margin: 6px;
 }
 
-#a0-lock .a0-equal-viewport .a0-zocial:before,
-#a0-lock .a0-zocial.a0-icon:before {
+#a0-lock.a0-theme-default .a0-equal-viewport .a0-zocial:before,
+#a0-lock.a0-theme-default .a0-zocial.a0-icon:before {
   width: 40px;
   background-color: transparent;
 }
 
-#a0-lock .a0-equal-viewport .a0-zocial:hover:before,
-#a0-lock .a0-zocial.a0-icon:hover:before {
+#a0-lock.a0-theme-default .a0-equal-viewport .a0-zocial:hover:before,
+#a0-lock.a0-theme-default .a0-zocial.a0-icon:hover:before {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-#a0-lock .a0-equal-viewport .a0-zocial span,
-#a0-lock .a0-zocial.a0-icon span {
+#a0-lock.a0-theme-default .a0-equal-viewport .a0-zocial span,
+#a0-lock.a0-theme-default .a0-zocial.a0-icon span {
   display: none;
 }
 
@@ -1507,7 +1477,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
 }
 
-#a0-lock .a0-animated {
+#a0-lock.a0-theme-default {
+  /*==========  Includes  ==========*/
+  /*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license
+
+Copyright (c) 2013 Daniel Eden
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+  /*========= Animated Fast ========*/
+  /*==========  Spinner  ==========*/
+  /*-----  End of Spinner  ------*/
+  /*==========  Fonts  ==========*/
+  /*
+ * Auth0Lock icon's font
+ */
+  /*-----  End of Fonts  ------*/
+  /*==========  Panel  ==========*/
+  /*-----  End of Panel  ------*/
+  /*===============================================
+=            No Placeholder Fallback            =
+===============================================*/
+  /*=====================================
+=            Media Queries            =
+=====================================*/
+}
+
+#a0-lock.a0-theme-default .a0-animated {
   -webkit-animation-duration: 1s;
   -moz-animation-duration: 1s;
   animation-duration: 1s;
@@ -1516,13 +1522,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation-fill-mode: both;
 }
 
-#a0-lock .a0-animated.a0-infinite {
+#a0-lock.a0-theme-default .a0-animated.a0-infinite {
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
 }
 
-#a0-lock .a0-animated.a0-hinge {
+#a0-lock.a0-theme-default .a0-animated.a0-hinge {
   -webkit-animation-duration: 2s;
   -moz-animation-duration: 2s;
   animation-duration: 2s;
@@ -1591,7 +1597,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounce {
+#a0-lock.a0-theme-default .a0-bounce {
   -webkit-animation-name: bounce;
   -moz-animation-name: bounce;
   animation-name: bounce;
@@ -1627,7 +1633,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-flash {
+#a0-lock.a0-theme-default .a0-flash {
   -webkit-animation-name: flash;
   -moz-animation-name: flash;
   animation-name: flash;
@@ -1696,7 +1702,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-pulse {
+#a0-lock.a0-theme-default .a0-pulse {
   -webkit-animation-name: pulse;
   -moz-animation-name: pulse;
   animation-name: pulse;
@@ -1803,7 +1809,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rubberBand {
+#a0-lock.a0-theme-default .a0-rubberBand {
   -webkit-animation-name: rubberBand;
   -moz-animation-name: rubberBand;
   animation-name: rubberBand;
@@ -1872,7 +1878,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-shake {
+#a0-lock.a0-theme-default .a0-shake {
   -webkit-animation-name: shake;
   -moz-animation-name: shake;
   animation-name: shake;
@@ -1979,7 +1985,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-swing {
+#a0-lock.a0-theme-default .a0-swing {
   -webkit-transform-origin: top center;
   -ms-transform-origin: top center;
   -moz-transform-origin: top center;
@@ -2090,7 +2096,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-tada {
+#a0-lock.a0-theme-default .a0-tada {
   -webkit-animation-name: tada;
   -moz-animation-name: tada;
   animation-name: tada;
@@ -2235,7 +2241,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-wobble {
+#a0-lock.a0-theme-default .a0-wobble {
   -webkit-animation-name: wobble;
   -moz-animation-name: wobble;
   animation-name: wobble;
@@ -2332,7 +2338,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceIn {
+#a0-lock.a0-theme-default .a0-bounceIn {
   -webkit-animation-name: bounceIn;
   -moz-animation-name: bounceIn;
   animation-name: bounceIn;
@@ -2426,7 +2432,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceInDown {
+#a0-lock.a0-theme-default .a0-bounceInDown {
   -webkit-animation-name: bounceInDown;
   -moz-animation-name: bounceInDown;
   animation-name: bounceInDown;
@@ -2520,7 +2526,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceInLeft {
+#a0-lock.a0-theme-default .a0-bounceInLeft {
   -webkit-animation-name: bounceInLeft;
   -moz-animation-name: bounceInLeft;
   animation-name: bounceInLeft;
@@ -2614,7 +2620,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceInRight {
+#a0-lock.a0-theme-default .a0-bounceInRight {
   -webkit-animation-name: bounceInRight;
   -moz-animation-name: bounceInRight;
   animation-name: bounceInRight;
@@ -2708,7 +2714,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceInUp {
+#a0-lock.a0-theme-default .a0-bounceInUp {
   -webkit-animation-name: bounceInUp;
   -moz-animation-name: bounceInUp;
   animation-name: bounceInUp;
@@ -2802,7 +2808,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceOut {
+#a0-lock.a0-theme-default .a0-bounceOut {
   -webkit-animation-name: bounceOut;
   -moz-animation-name: bounceOut;
   animation-name: bounceOut;
@@ -2877,7 +2883,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceOutDown {
+#a0-lock.a0-theme-default .a0-bounceOutDown {
   -webkit-animation-name: bounceOutDown;
   -moz-animation-name: bounceOutDown;
   animation-name: bounceOutDown;
@@ -2952,7 +2958,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceOutLeft {
+#a0-lock.a0-theme-default .a0-bounceOutLeft {
   -webkit-animation-name: bounceOutLeft;
   -moz-animation-name: bounceOutLeft;
   animation-name: bounceOutLeft;
@@ -3027,7 +3033,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceOutRight {
+#a0-lock.a0-theme-default .a0-bounceOutRight {
   -webkit-animation-name: bounceOutRight;
   -moz-animation-name: bounceOutRight;
   animation-name: bounceOutRight;
@@ -3102,7 +3108,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-bounceOutUp {
+#a0-lock.a0-theme-default .a0-bounceOutUp {
   -webkit-animation-name: bounceOutUp;
   -moz-animation-name: bounceOutUp;
   animation-name: bounceOutUp;
@@ -3138,7 +3144,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeIn {
+#a0-lock.a0-theme-default .a0-fadeIn {
   -webkit-animation-name: fadeIn;
   -moz-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -3194,7 +3200,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInDown {
+#a0-lock.a0-theme-default .a0-fadeInDown {
   -webkit-animation-name: fadeInDown;
   -moz-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -3250,7 +3256,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInDownBig {
+#a0-lock.a0-theme-default .a0-fadeInDownBig {
   -webkit-animation-name: fadeInDownBig;
   -moz-animation-name: fadeInDownBig;
   animation-name: fadeInDownBig;
@@ -3306,7 +3312,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInLeft {
+#a0-lock.a0-theme-default .a0-fadeInLeft {
   -webkit-animation-name: fadeInLeft;
   -moz-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
@@ -3362,7 +3368,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInLeftBig {
+#a0-lock.a0-theme-default .a0-fadeInLeftBig {
   -webkit-animation-name: fadeInLeftBig;
   -moz-animation-name: fadeInLeftBig;
   animation-name: fadeInLeftBig;
@@ -3418,7 +3424,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInRight {
+#a0-lock.a0-theme-default .a0-fadeInRight {
   -webkit-animation-name: fadeInRight;
   -moz-animation-name: fadeInRight;
   animation-name: fadeInRight;
@@ -3474,7 +3480,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInRightBig {
+#a0-lock.a0-theme-default .a0-fadeInRightBig {
   -webkit-animation-name: fadeInRightBig;
   -moz-animation-name: fadeInRightBig;
   animation-name: fadeInRightBig;
@@ -3530,7 +3536,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInUp {
+#a0-lock.a0-theme-default .a0-fadeInUp {
   -webkit-animation-name: fadeInUp;
   -moz-animation-name: fadeInUp;
   animation-name: fadeInUp;
@@ -3586,7 +3592,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeInUpBig {
+#a0-lock.a0-theme-default .a0-fadeInUpBig {
   -webkit-animation-name: fadeInUpBig;
   -moz-animation-name: fadeInUpBig;
   animation-name: fadeInUpBig;
@@ -3622,7 +3628,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOut {
+#a0-lock.a0-theme-default .a0-fadeOut {
   -webkit-animation-name: fadeOut;
   -moz-animation-name: fadeOut;
   animation-name: fadeOut;
@@ -3678,7 +3684,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutDown {
+#a0-lock.a0-theme-default .a0-fadeOutDown {
   -webkit-animation-name: fadeOutDown;
   -moz-animation-name: fadeOutDown;
   animation-name: fadeOutDown;
@@ -3734,7 +3740,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutDownBig {
+#a0-lock.a0-theme-default .a0-fadeOutDownBig {
   -webkit-animation-name: fadeOutDownBig;
   -moz-animation-name: fadeOutDownBig;
   animation-name: fadeOutDownBig;
@@ -3790,7 +3796,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutLeft {
+#a0-lock.a0-theme-default .a0-fadeOutLeft {
   -webkit-animation-name: fadeOutLeft;
   -moz-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft;
@@ -3846,7 +3852,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutLeftBig {
+#a0-lock.a0-theme-default .a0-fadeOutLeftBig {
   -webkit-animation-name: fadeOutLeftBig;
   -moz-animation-name: fadeOutLeftBig;
   animation-name: fadeOutLeftBig;
@@ -3902,7 +3908,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutRight {
+#a0-lock.a0-theme-default .a0-fadeOutRight {
   -webkit-animation-name: fadeOutRight;
   -moz-animation-name: fadeOutRight;
   animation-name: fadeOutRight;
@@ -3958,7 +3964,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutRightBig {
+#a0-lock.a0-theme-default .a0-fadeOutRightBig {
   -webkit-animation-name: fadeOutRightBig;
   -moz-animation-name: fadeOutRightBig;
   animation-name: fadeOutRightBig;
@@ -4014,7 +4020,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutUp {
+#a0-lock.a0-theme-default .a0-fadeOutUp {
   -webkit-animation-name: fadeOutUp;
   -moz-animation-name: fadeOutUp;
   animation-name: fadeOutUp;
@@ -4070,7 +4076,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-fadeOutUpBig {
+#a0-lock.a0-theme-default .a0-fadeOutUpBig {
   -webkit-animation-name: fadeOutUpBig;
   -moz-animation-name: fadeOutUpBig;
   animation-name: fadeOutUpBig;
@@ -4217,7 +4223,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-animated.a0-flip {
+#a0-lock.a0-theme-default .a0-animated.a0-flip {
   -webkit-backface-visibility: visible;
   -ms-backface-visibility: visible;
   -moz-backface-visibility: visible;
@@ -4315,7 +4321,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-flipInX {
+#a0-lock.a0-theme-default .a0-flipInX {
   -webkit-backface-visibility: visible !important;
   -ms-backface-visibility: visible !important;
   -moz-backface-visibility: visible !important;
@@ -4413,7 +4419,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-flipInY {
+#a0-lock.a0-theme-default .a0-flipInY {
   -webkit-backface-visibility: visible !important;
   -ms-backface-visibility: visible !important;
   -moz-backface-visibility: visible !important;
@@ -4473,7 +4479,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-flipOutX {
+#a0-lock.a0-theme-default .a0-flipOutX {
   -webkit-animation-name: flipOutX;
   -moz-animation-name: flipOutX;
   animation-name: flipOutX;
@@ -4533,7 +4539,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-flipOutY {
+#a0-lock.a0-theme-default .a0-flipOutY {
   -webkit-backface-visibility: visible !important;
   -ms-backface-visibility: visible !important;
   -moz-backface-visibility: visible !important;
@@ -4637,7 +4643,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-lightSpeedIn {
+#a0-lock.a0-theme-default .a0-lightSpeedIn {
   -webkit-animation-name: lightSpeedIn;
   -moz-animation-name: lightSpeedIn;
   animation-name: lightSpeedIn;
@@ -4696,7 +4702,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-lightSpeedOut {
+#a0-lock.a0-theme-default .a0-lightSpeedOut {
   -webkit-animation-name: lightSpeedOut;
   -moz-animation-name: lightSpeedOut;
   animation-name: lightSpeedOut;
@@ -4775,7 +4781,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateIn {
+#a0-lock.a0-theme-default .a0-rotateIn {
   -webkit-animation-name: rotateIn;
   -moz-animation-name: rotateIn;
   animation-name: rotateIn;
@@ -4851,7 +4857,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateInDownLeft {
+#a0-lock.a0-theme-default .a0-rotateInDownLeft {
   -webkit-animation-name: rotateInDownLeft;
   -moz-animation-name: rotateInDownLeft;
   animation-name: rotateInDownLeft;
@@ -4927,7 +4933,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateInDownRight {
+#a0-lock.a0-theme-default .a0-rotateInDownRight {
   -webkit-animation-name: rotateInDownRight;
   -moz-animation-name: rotateInDownRight;
   animation-name: rotateInDownRight;
@@ -5003,7 +5009,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateInUpLeft {
+#a0-lock.a0-theme-default .a0-rotateInUpLeft {
   -webkit-animation-name: rotateInUpLeft;
   -moz-animation-name: rotateInUpLeft;
   animation-name: rotateInUpLeft;
@@ -5079,7 +5085,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateInUpRight {
+#a0-lock.a0-theme-default .a0-rotateInUpRight {
   -webkit-animation-name: rotateInUpRight;
   -moz-animation-name: rotateInUpRight;
   animation-name: rotateInUpRight;
@@ -5155,7 +5161,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateOut {
+#a0-lock.a0-theme-default .a0-rotateOut {
   -webkit-animation-name: rotateOut;
   -moz-animation-name: rotateOut;
   animation-name: rotateOut;
@@ -5231,7 +5237,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateOutDownLeft {
+#a0-lock.a0-theme-default .a0-rotateOutDownLeft {
   -webkit-animation-name: rotateOutDownLeft;
   -moz-animation-name: rotateOutDownLeft;
   animation-name: rotateOutDownLeft;
@@ -5307,7 +5313,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateOutDownRight {
+#a0-lock.a0-theme-default .a0-rotateOutDownRight {
   -webkit-animation-name: rotateOutDownRight;
   -moz-animation-name: rotateOutDownRight;
   animation-name: rotateOutDownRight;
@@ -5383,7 +5389,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateOutUpLeft {
+#a0-lock.a0-theme-default .a0-rotateOutUpLeft {
   -webkit-animation-name: rotateOutUpLeft;
   -moz-animation-name: rotateOutUpLeft;
   animation-name: rotateOutUpLeft;
@@ -5459,7 +5465,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rotateOutUpRight {
+#a0-lock.a0-theme-default .a0-rotateOutUpRight {
   -webkit-animation-name: rotateOutUpRight;
   -moz-animation-name: rotateOutUpRight;
   animation-name: rotateOutUpRight;
@@ -5512,7 +5518,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideInDown {
+#a0-lock.a0-theme-default .a0-slideInDown {
   -webkit-animation-name: slideInDown;
   -moz-animation-name: slideInDown;
   animation-name: slideInDown;
@@ -5565,7 +5571,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideInLeft {
+#a0-lock.a0-theme-default .a0-slideInLeft {
   -webkit-animation-name: slideInLeft;
   -moz-animation-name: slideInLeft;
   animation-name: slideInLeft;
@@ -5618,7 +5624,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideInRight {
+#a0-lock.a0-theme-default .a0-slideInRight {
   -webkit-animation-name: slideInRight;
   -moz-animation-name: slideInRight;
   animation-name: slideInRight;
@@ -5671,7 +5677,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideOutLeft {
+#a0-lock.a0-theme-default .a0-slideOutLeft {
   -webkit-animation-name: slideOutLeft;
   -moz-animation-name: slideOutLeft;
   animation-name: slideOutLeft;
@@ -5724,7 +5730,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideOutRight {
+#a0-lock.a0-theme-default .a0-slideOutRight {
   -webkit-animation-name: slideOutRight;
   -moz-animation-name: slideOutRight;
   animation-name: slideOutRight;
@@ -5777,7 +5783,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideOutUp {
+#a0-lock.a0-theme-default .a0-slideOutUp {
   -webkit-animation-name: slideOutUp;
   -moz-animation-name: slideOutUp;
   animation-name: slideOutUp;
@@ -5833,7 +5839,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideInUp {
+#a0-lock.a0-theme-default .a0-slideInUp {
   -webkit-animation-name: slideInUp;
   -moz-animation-name: slideInUp;
   animation-name: slideInUp;
@@ -5886,7 +5892,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-slideOutDown {
+#a0-lock.a0-theme-default .a0-slideOutDown {
   -webkit-animation-name: slideOutDown;
   -moz-animation-name: slideOutDown;
   animation-name: slideOutDown;
@@ -6071,7 +6077,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-hinge {
+#a0-lock.a0-theme-default .a0-hinge {
   -webkit-animation-name: hinge;
   -moz-animation-name: hinge;
   animation-name: hinge;
@@ -6127,7 +6133,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rollIn {
+#a0-lock.a0-theme-default .a0-rollIn {
   -webkit-animation-name: rollIn;
   -moz-animation-name: rollIn;
   animation-name: rollIn;
@@ -6183,7 +6189,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-rollOut {
+#a0-lock.a0-theme-default .a0-rollOut {
   -webkit-animation-name: rollOut;
   -moz-animation-name: rollOut;
   animation-name: rollOut;
@@ -6229,7 +6235,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomIn {
+#a0-lock.a0-theme-default .a0-zoomIn {
   -webkit-animation-name: zoomIn;
   -moz-animation-name: zoomIn;
   animation-name: zoomIn;
@@ -6301,7 +6307,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomInDown {
+#a0-lock.a0-theme-default .a0-zoomInDown {
   -webkit-animation-name: zoomInDown;
   -moz-animation-name: zoomInDown;
   animation-name: zoomInDown;
@@ -6373,7 +6379,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomInLeft {
+#a0-lock.a0-theme-default .a0-zoomInLeft {
   -webkit-animation-name: zoomInLeft;
   -moz-animation-name: zoomInLeft;
   animation-name: zoomInLeft;
@@ -6445,7 +6451,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomInRight {
+#a0-lock.a0-theme-default .a0-zoomInRight {
   -webkit-animation-name: zoomInRight;
   -moz-animation-name: zoomInRight;
   animation-name: zoomInRight;
@@ -6517,7 +6523,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomInUp {
+#a0-lock.a0-theme-default .a0-zoomInUp {
   -webkit-animation-name: zoomInUp;
   -moz-animation-name: zoomInUp;
   animation-name: zoomInUp;
@@ -6585,7 +6591,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomOut {
+#a0-lock.a0-theme-default .a0-zoomOut {
   -webkit-animation-name: zoomOut;
   -moz-animation-name: zoomOut;
   animation-name: zoomOut;
@@ -6659,7 +6665,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomOutDown {
+#a0-lock.a0-theme-default .a0-zoomOutDown {
   -webkit-animation-name: zoomOutDown;
   -moz-animation-name: zoomOutDown;
   animation-name: zoomOutDown;
@@ -6733,7 +6739,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomOutLeft {
+#a0-lock.a0-theme-default .a0-zoomOutLeft {
   -webkit-animation-name: zoomOutLeft;
   -moz-animation-name: zoomOutLeft;
   animation-name: zoomOutLeft;
@@ -6807,7 +6813,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomOutRight {
+#a0-lock.a0-theme-default .a0-zoomOutRight {
   -webkit-animation-name: zoomOutRight;
   -moz-animation-name: zoomOutRight;
   animation-name: zoomOutRight;
@@ -6881,13 +6887,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 
-#a0-lock .a0-zoomOutUp {
+#a0-lock.a0-theme-default .a0-zoomOutUp {
   -webkit-animation-name: zoomOutUp;
   -moz-animation-name: zoomOutUp;
   animation-name: zoomOutUp;
 }
 
-#a0-lock .a0-animated.a0-fast {
+#a0-lock.a0-theme-default .a0-animated.a0-fast {
   -webkit-animation-duration: 0.3s;
   -moz-animation-duration: 0.3s;
   animation-duration: 0.3s;
@@ -6896,7 +6902,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation-fill-mode: both;
 }
 
-#a0-lock .a0-spinner-css {
+#a0-lock.a0-theme-default .a0-spinner-css {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -6911,7 +6917,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation: spinner 2s ease-in-out 0s infinite;
 }
 
-#a0-lock .a0-spinner-css:after {
+#a0-lock.a0-theme-default .a0-spinner-css:after {
   content: '';
   position: absolute;
   display: block;
@@ -6986,8 +6992,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-style: normal;
 }
 
-#a0-lock [class^="a0-icon-"]:before,
-#a0-lock [class*=" a0-icon-"]:before {
+#a0-lock.a0-theme-default [class^="a0-icon-"]:before,
+#a0-lock.a0-theme-default [class*=" a0-icon-"]:before {
   font-family: "auth0" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -6999,43 +7005,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -moz-osx-font-smoothing: grayscale;
 }
 
-#a0-lock .a0-icon-budicon-2:before {
+#a0-lock.a0-theme-default .a0-icon-budicon-2:before {
   content: "d";
 }
 
-#a0-lock .a0-icon-budicon-3:before {
+#a0-lock.a0-theme-default .a0-icon-budicon-3:before {
   content: "e";
 }
 
-#a0-lock .a0-icon-budicon-9:before {
+#a0-lock.a0-theme-default .a0-icon-budicon-9:before {
   content: "p";
 }
 
-#a0-lock .a0-icon-budicon-1:before {
+#a0-lock.a0-theme-default .a0-icon-budicon-1:before {
   content: "g";
 }
 
-#a0-lock .a0-icon-budicon:before {
+#a0-lock.a0-theme-default .a0-icon-budicon:before {
   content: "c";
 }
 
-#a0-lock .a0-icon-badge:before {
+#a0-lock.a0-theme-default .a0-icon-badge:before {
   content: "a";
 }
 
-#a0-lock .a0-icon-badge:before {
+#a0-lock.a0-theme-default .a0-icon-badge:before {
   content: "f";
 }
 
-#a0-lock .a0-icon-budicon-4:before {
+#a0-lock.a0-theme-default .a0-icon-budicon-4:before {
   content: "a";
 }
 
-#a0-lock .a0-icon-budicon-5:before {
+#a0-lock.a0-theme-default .a0-icon-budicon-5:before {
   content: "b";
 }
 
-#a0-lock .a0-btn-small {
+#a0-lock.a0-theme-default .a0-btn-small {
   font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -7046,16 +7052,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: inline-block;
 }
 
-#a0-lock .a0-btn-small:hover {
+#a0-lock.a0-theme-default .a0-btn-small:hover {
   background: #f1f1f1;
 }
 
-#a0-lock .a0-btn-small:focus {
+#a0-lock.a0-theme-default .a0-btn-small:focus {
   background: #e9e9e9;
   border-color: #e9e9e9;
 }
 
-#a0-lock .a0-panel {
+#a0-lock.a0-theme-default .a0-panel {
   text-align: center;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
@@ -7071,11 +7077,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /*-----  End of Forgot Password  ------*/
 }
 
-#a0-lock .a0-panel * {
+#a0-lock.a0-theme-default .a0-panel * {
   font-family: "proxima_nova" !important;
 }
 
-#a0-lock .a0-panel .a0-mode {
+#a0-lock.a0-theme-default .a0-panel .a0-mode {
   -webkit-animation-name: fadein;
   -webkit-animation-duration: .3s;
   -webkit-animation-iteration-count: once;
@@ -7084,51 +7090,51 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin: auto;
 }
 
-#a0-lock .a0-panel *,
-#a0-lock .a0-panel input {
+#a0-lock.a0-theme-default .a0-panel *,
+#a0-lock.a0-theme-default .a0-panel input {
   font-smoothing: antialiased;
 }
 
-#a0-lock .a0-panel a,
-#a0-lock .a0-panel button {
+#a0-lock.a0-theme-default .a0-panel a,
+#a0-lock.a0-theme-default .a0-panel button {
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
   font-weight: bold;
 }
 
-#a0-lock .a0-panel .a0-header {
+#a0-lock.a0-theme-default .a0-panel .a0-header {
   margin-bottom: 0;
   margin-top: 0;
 }
 
-#a0-lock .a0-panel .a0-header h1 {
+#a0-lock.a0-theme-default .a0-panel .a0-header h1 {
   font-size: 24px;
   font-weight: 100;
   margin-bottom: 10px;
 }
 
-#a0-lock .a0-panel .a0-icon-container {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container {
   height: 90px;
 }
 
-#a0-lock .a0-panel .a0-icon-container .a0-image {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image {
   margin: auto;
   display: inline-block;
   margin-bottom: 10px;
   margin-top: 20px;
 }
 
-#a0-lock .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
   border-radius: 58px;
 }
 
-#a0-lock .a0-panel .a0-icon-container .a0-image img {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image img {
   width: auto;
   height: 58px;
 }
 
-#a0-lock .a0-panel .a0-icon-container .a0-avatar {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar {
   background: #f1f1f1;
   margin: auto;
   display: inline-block;
@@ -7139,18 +7145,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-top: 20px;
 }
 
-#a0-lock .a0-panel .a0-icon-container .a0-avatar i {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar i {
   color: #EB5424;
   font-size: 28px;
   display: block;
   padding-top: 16px;
 }
 
-#a0-lock .a0-panel .a0-footer {
+#a0-lock.a0-theme-default .a0-panel .a0-footer {
   margin-top: 20px;
 }
 
-#a0-lock .a0-panel .a0-footer .a0-logo {
+#a0-lock.a0-theme-default .a0-panel .a0-footer .a0-logo {
   margin-top: 20px;
   position: absolute;
   bottom: 10px;
@@ -7159,57 +7165,57 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
 }
 
-#a0-lock .a0-panel .a0-footer .a0-logo i {
+#a0-lock.a0-theme-default .a0-panel .a0-footer .a0-logo i {
   color: #EB5424;
   font-size: 18px;
 }
 
-#a0-lock .a0-panel .a0-instructions {
+#a0-lock.a0-theme-default .a0-panel .a0-instructions {
   margin-bottom: 10px;
   line-height: 18px;
 }
 
-#a0-lock .a0-panel .a0-last-time {
+#a0-lock.a0-theme-default .a0-panel .a0-last-time {
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-#a0-lock .a0-panel .a0-corporate-credentials {
+#a0-lock.a0-theme-default .a0-panel .a0-corporate-credentials {
   margin-bottom: 10px;
 }
 
-#a0-lock .a0-panel .a0-password,
-#a0-lock .a0-panel .a0-repeatPassword {
+#a0-lock.a0-theme-default .a0-panel .a0-password,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword {
   border-top: 1px solid #ccc;
 }
 
-#a0-lock .a0-panel .a0-sso-notice-container {
+#a0-lock.a0-theme-default .a0-panel .a0-sso-notice-container {
   margin-top: 20px;
 }
 
-#a0-lock .a0-panel .a0-sso-notice-container i {
+#a0-lock.a0-theme-default .a0-panel .a0-sso-notice-container i {
   position: relative;
   top: 1px;
   margin-right: 2px;
   font-size: 11px;
 }
 
-#a0-lock .a0-panel .a0-sso-notice-container .a0-sso-notice {
+#a0-lock.a0-theme-default .a0-panel .a0-sso-notice-container .a0-sso-notice {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-#a0-lock .a0-panel .a0-email .a0-input-box,
-#a0-lock .a0-panel .a0-password .a0-input-box,
-#a0-lock .a0-panel .a0-repeatPassword .a0-input-box {
+#a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box,
+#a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box {
   position: relative;
   height: 50px;
 }
 
-#a0-lock .a0-panel .a0-email .a0-input-box i,
-#a0-lock .a0-panel .a0-password .a0-input-box i,
-#a0-lock .a0-panel .a0-repeatPassword .a0-input-box i {
+#a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box i,
+#a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box i,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box i {
   font-size: 14px;
   z-index: 1000;
   top: 18px;
@@ -7218,9 +7224,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #999;
 }
 
-#a0-lock .a0-panel .a0-email input,
-#a0-lock .a0-panel .a0-password input,
-#a0-lock .a0-panel .a0-repeatPassword input {
+#a0-lock.a0-theme-default .a0-panel .a0-email input,
+#a0-lock.a0-theme-default .a0-panel .a0-password input,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -7237,75 +7243,75 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   width: 100%;
 }
 
-#a0-lock .a0-panel .a0-email input:focus,
-#a0-lock .a0-panel .a0-password input:focus,
-#a0-lock .a0-panel .a0-repeatPassword input:focus {
+#a0-lock.a0-theme-default .a0-panel .a0-email input:focus,
+#a0-lock.a0-theme-default .a0-panel .a0-password input:focus,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input:focus {
   background: #fff;
 }
 
-#a0-lock .a0-panel input::-webkit-input-placeholder {
+#a0-lock.a0-theme-default .a0-panel input::-webkit-input-placeholder {
   color: #9da4ad;
   -webkit-transition: color 0.2s ease-in;
 }
 
-#a0-lock .a0-panel input:-moz-placeholder {
+#a0-lock.a0-theme-default .a0-panel input:-moz-placeholder {
   color: #9da4ad;
 }
 
-#a0-lock .a0-panel input::-moz-placeholder {
+#a0-lock.a0-theme-default .a0-panel input::-moz-placeholder {
   color: #9da4ad;
 }
 
-#a0-lock .a0-panel input:-ms-input-placeholder {
+#a0-lock.a0-theme-default .a0-panel input:-ms-input-placeholder {
   color: #9da4ad;
 }
 
-#a0-lock .a0-panel input:focus::-webkit-input-placeholder {
+#a0-lock.a0-theme-default .a0-panel input:focus::-webkit-input-placeholder {
   color: #666;
 }
 
-#a0-lock .a0-panel input:focus:-moz-placeholder {
+#a0-lock.a0-theme-default .a0-panel input:focus:-moz-placeholder {
   color: #666;
 }
 
-#a0-lock .a0-panel input:focus::-moz-placeholder {
+#a0-lock.a0-theme-default .a0-panel input:focus::-moz-placeholder {
   color: #666;
 }
 
-#a0-lock .a0-panel input:focus:-ms-input-placeholder {
+#a0-lock.a0-theme-default .a0-panel input:focus:-ms-input-placeholder {
   color: #666;
 }
 
-#a0-lock .a0-panel .a0-inputs {
+#a0-lock.a0-theme-default .a0-panel .a0-inputs {
   border: 1px solid #ccc;
   border-radius: 3px;
   overflow: hidden;
 }
 
-#a0-lock .a0-panel .a0-email input {
+#a0-lock.a0-theme-default .a0-panel .a0-email input {
   border-bottom: 0;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 
-#a0-lock .a0-panel .a0-password input {
+#a0-lock.a0-theme-default .a0-panel .a0-password input {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 
-#a0-lock .a0-panel .a0-separator {
+#a0-lock.a0-theme-default .a0-panel .a0-separator {
   margin-bottom: 10px;
   margin-top: 6px;
   color: #999;
   font-size: 12px;
 }
 
-#a0-lock .a0-panel .a0-separator span {
+#a0-lock.a0-theme-default .a0-panel .a0-separator span {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-#a0-lock .a0-panel button.a0-primary {
+#a0-lock.a0-theme-default .a0-panel button.a0-primary {
   padding: 20px 10px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -7330,41 +7336,41 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-radius: 3px;
 }
 
-#a0-lock .a0-panel button.a0-primary:hover {
+#a0-lock.a0-theme-default .a0-panel button.a0-primary:hover {
   background: #0b1025;
 }
 
-#a0-lock .a0-panel button.a0-primary:focus {
+#a0-lock.a0-theme-default .a0-panel button.a0-primary:focus {
   background: #3e4975;
 }
 
-#a0-lock .a0-panel input[disabled] {
+#a0-lock.a0-theme-default .a0-panel input[disabled] {
   background-color: #d9dee0;
 }
 
-#a0-lock .a0-panel .a0-success {
+#a0-lock.a0-theme-default .a0-panel .a0-success {
   color: #008000;
 }
 
-#a0-lock .a0-panel .a0-error {
+#a0-lock.a0-theme-default .a0-panel .a0-error {
   color: #ff0000;
 }
 
-#a0-lock .a0-panel .a0-error,
-#a0-lock .a0-panel .a0-success {
+#a0-lock.a0-theme-default .a0-panel .a0-error,
+#a0-lock.a0-theme-default .a0-panel .a0-success {
   margin-bottom: 10px;
   padding: 0 15px;
 }
 
-#a0-lock .a0-panel.a0-errors.a0-errors-global {
+#a0-lock.a0-theme-default .a0-panel.a0-errors.a0-errors-global {
   border-color: red;
 }
 
-#a0-lock .a0-panel.a0-errors .a0-error-input i {
+#a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input i {
   color: red;
 }
 
-#a0-lock .a0-panel.a0-errors .a0-error-input span {
+#a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input span {
   position: absolute;
   top: 15px;
   right: 14px;
@@ -7379,27 +7385,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   z-index: 10000;
 }
 
-#a0-lock .a0-panel.a0-errors .a0-error-input input {
+#a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input input {
   color: red;
 }
 
-#a0-lock .a0-panel.a0-errors .a0-error-input input::-webkit-input-placeholder {
+#a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input input::-webkit-input-placeholder {
   color: red;
 }
 
-#a0-lock .a0-panel.a0-errors .a0-error-input input:-moz-placeholder {
+#a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input input:-moz-placeholder {
   color: red;
 }
 
-#a0-lock .a0-panel.a0-errors .a0-error-input input::-moz-placeholder {
+#a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input input::-moz-placeholder {
   color: red;
 }
 
-#a0-lock .a0-panel.a0-errors .a0-error-input input:-ms-input-placeholder {
+#a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input input:-ms-input-placeholder {
   color: red;
 }
 
-#a0-lock .a0-panel .a0-close {
+#a0-lock.a0-theme-default .a0-panel .a0-close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -7409,135 +7415,135 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #ccc;
 }
 
-#a0-lock .a0-panel .a0-close:hover {
+#a0-lock.a0-theme-default .a0-panel .a0-close:hover {
   color: #333;
 }
 
-#a0-lock .a0-panel .a0-signup-footer small {
+#a0-lock.a0-theme-default .a0-panel .a0-signup-footer small {
   margin-top: 10px;
   display: block;
 }
 
-#a0-lock .a0-panel #a0-change_password .a0-password {
+#a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-password {
   margin-bottom: 0;
 }
 
-#a0-lock .a0-panel #a0-change_password .a0-password input {
+#a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-password input {
   border-radius: 0;
 }
 
-#a0-lock .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
+#a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
   margin-top: 0;
   margin-bottom: 20px;
 }
 
-#a0-lock .a0-panel #a0-change_password .a0-reset_easy_password input {
+#a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-reset_easy_password input {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
 
-#a0-lock .a0-sad-placeholder {
+#a0-lock.a0-theme-default .a0-sad-placeholder {
   display: none;
 }
 
-#a0-lock .a0-no-placeholder-support .a0-sad-placeholder {
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-sad-placeholder {
   display: block;
   text-align: left;
   font-weight: bold;
   margin: 14px 0 10px 0;
 }
 
-#a0-lock .a0-no-placeholder-support .a0-inputs {
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs {
   border: 0 !important;
 }
 
-#a0-lock .a0-no-placeholder-support .a0-inputs .a0-email,
-#a0-lock .a0-no-placeholder-support .a0-inputs .a0-password,
-#a0-lock .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-email,
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-password,
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
   border: 0;
 }
 
-#a0-lock .a0-no-placeholder-support .a0-inputs .a0-input-box {
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-input-box {
   border: 1px solid #ccc;
 }
 
-#a0-lock .a0-no-placeholder-support .a0-inputs .a0-input-box input {
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-input-box input {
   border: 0 !important;
 }
 
 @media screen and (max-width: 480px) {
-  #a0-lock .a0-ie8-overlay {
+  #a0-lock.a0-theme-default .a0-ie8-overlay {
     background: none !important;
   }
 
-  #a0-lock #a0-onestep {
+  #a0-lock.a0-theme-default #a0-onestep {
     -webkit-transition: none;
     -moz-transition: none;
     transition: none;
   }
 
-  #a0-lock .a0-popup .a0-overlay {
+  #a0-lock.a0-theme-default .a0-popup .a0-overlay {
     display: block;
     overflow: auto;
     position: absolute;
     background: white;
   }
 
-  #a0-lock .a0-popup .a0-centrix {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix {
     vertical-align: top;
     display: block;
     position: static;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel {
     -webkit-box-shadow: none;
     box-shadow: none;
     background: white;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-mode {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode {
     padding: 0 20px 20px 20px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container {
     height: 60px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image {
     margin-top: 10px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image img {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image img {
     height: 40px;
     width: auto;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar {
     margin-top: 10px;
     width: 40px;
     height: 40px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar i {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar i {
     font-size: 20px;
     padding-top: 10px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel h1 {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel h1 {
     margin-bottom: 10px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
     margin-bottom: 10px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-db-actions,
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-options {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-db-actions,
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-options {
     margin-top: 20px;
     font-size: 14px;
   }
 
-  #a0-lock .a0-popup .a0-centrix .a0-panel .a0-footer {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-footer {
     margin-top: 40px;
   }
 }
