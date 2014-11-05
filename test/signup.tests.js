@@ -53,7 +53,7 @@ describe('sign up', function () {
       .showSignup(this.options);
     });
 
-    it('should validate username when empty', function (done) {
+    it('should invalidate an empty username', function (done) {
       var auth0 = this.auth0;
       auth0
       .once('signup ready', function() {
@@ -68,7 +68,7 @@ describe('sign up', function () {
       .showSignup(this.options);
     });
 
-    it('should validate username when invalid', function (done) {
+    it('should invalidate an invalid username', function (done) {
       var auth0 = this.auth0;
       auth0
       .once('signup ready', function() {
@@ -86,6 +86,47 @@ describe('sign up', function () {
       .showSignup(this.options);
     });
 
+    it('should still invalidate an invalid email', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_username').val('pepe');
+        $('#a0-signup_easy_email').val('pepo@example');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
+        expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should send valid username and email on submit', function (done) {
+      var auth0 = this.auth0;
+      var username = 'pepe';
+      var email = 'pepo@example.com';
+      var password = '12345';
+
+      auth0.$auth0.signup = function(options) {
+        expect(options.email).to.equal(email);
+        expect(options.username).to.equal(username);
+        expect(options.password).to.equal(password);
+        done();
+      }
+
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_username').val(username);
+        $('#a0-signup_easy_email').val(email);
+        $('#a0-signup_easy_password').val(password);
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .showSignup(this.options);
+    });
   });
 
   it('should show the loading pane', function (done) {

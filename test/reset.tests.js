@@ -16,12 +16,14 @@ describe('reset', function () {
   beforeEach(function (done) {
     this.widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
     this.client = this.widget.$auth0;
+    this.options = {};
     done();
   });
 
   afterEach(function (done) {
     global.window.location.hash = '';
     global.window.Auth0 = null;
+    this.options = null;
     this.widget.hide(done);
   });
 
@@ -93,6 +95,120 @@ describe('reset', function () {
       expect(message).to.be(undefined);
       done();
     }
+  });
+
+  describe('when requires_username is enabled', function() {
+
+    beforeEach(function() {
+      // Mock `_isUsernameRequired` so it asumes database has enabled
+      // requires_username on it's configuration
+      this.options._isUsernameRequired = function() { return true; };
+    });
+
+    it('should invalidate an empty username', function (done) {
+      var auth0 = this.widget;
+      var email = 'pepo@example.com';
+      var password = '12345';
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_password').val(password);
+        $('#a0-reset_easy_repeat_password').val(password);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        done();
+      })
+      .showReset(this.options);
+    });
+
+    it('should invalidate an invalid username', function (done) {
+      var auth0 = this.widget;
+      var username = '1.1.1.1';
+      var password = '12345';
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(username);
+        $('#a0-reset_easy_password').val(password);
+        $('#a0-reset_easy_repeat_password').val(password);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
+        expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+        done();
+      })
+      .showReset(this.options);
+    });
+
+    it('should still invalidate an invalid email', function (done) {
+      var auth0 = this.widget;
+      var email = 'pepo@example';
+      var password = '12345';
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(email);
+        $('#a0-reset_easy_password').val(password);
+        $('#a0-reset_easy_repeat_password').val(password);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
+        expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
+        done();
+      })
+      .showReset(this.options);
+    });
+
+    it('should send valid username on submit', function (done) {
+      var auth0 = this.widget;
+      var username = 'pepe';
+      var email = 'pepo@example.com';
+      var password = '12345';
+
+      this.client.changePassword = function(options) {
+        expect(options.username).to.equal(username);
+        expect(options.password).to.equal(password);
+        done();
+      }
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(username);
+        $('#a0-reset_easy_password').val(password);
+        $('#a0-reset_easy_repeat_password').val(password);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+      })
+      .showReset(this.options);
+    });
+
+    it('should still send valid email on submit', function (done) {
+      var auth0 = this.widget;
+      var email = 'pepo@example.com';
+      var password = '12345';
+
+      this.client.changePassword = function(options) {
+        expect(options.username).to.equal(email);
+        expect(options.password).to.equal(password);
+        done();
+      }
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(email);
+        $('#a0-reset_easy_password').val(password);
+        $('#a0-reset_easy_repeat_password').val(password);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+      })
+      .showReset(this.options);
+    });
   });
 
 });
