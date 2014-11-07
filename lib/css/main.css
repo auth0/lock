@@ -6992,6 +6992,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-style: normal;
 }
 
+#a0-lock.a0-theme-default .a0-iconbase {
+  font-family: "auth0" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #a0-lock.a0-theme-default [class^="a0-icon-"]:before,
 #a0-lock.a0-theme-default [class*=" a0-icon-"]:before {
   font-family: "auth0" !important;
@@ -7073,6 +7085,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /*==========  Forms  ==========*/
   /*-----  End of forms  ------*/
   /*==========  Signup  ==========*/
+  /*==========  Password Policy  ==========*/
   /*==========  Forgot Password  ==========*/
   /*-----  End of Forgot Password  ------*/
 }
@@ -7189,6 +7202,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-bottom: 1px solid #ccc;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-password,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword {
   border-top: 1px solid #ccc;
 }
@@ -7220,7 +7234,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box,
-#a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box,
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box {
   position: relative;
@@ -7228,7 +7241,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box i,
-#a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box i,
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box i,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box i {
   font-size: 14px;
@@ -7240,7 +7252,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email input,
-#a0-lock.a0-theme-default .a0-panel .a0-username input,
 #a0-lock.a0-theme-default .a0-panel .a0-password input,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input {
   -webkit-box-sizing: border-box;
@@ -7260,7 +7271,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email input:focus,
-#a0-lock.a0-theme-default .a0-panel .a0-username input:focus,
 #a0-lock.a0-theme-default .a0-panel .a0-password input:focus,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input:focus {
   background: #fff;
@@ -7446,32 +7456,152 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-password_policy {
-  text-align: left;
-  margin-top: 5px;
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy_arrow {
+  background: #1F242E;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-password_policy li,
-#a0-lock.a0-theme-default .a0-panel .a0-password_policy ul {
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy_arrow:after {
+  top: 100%;
+  left: 18px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(31, 36, 46, 0);
+  border-top-color: #1F242E;
+  border-top-color: rgba(31, 36, 46, 0.95);
+  border-width: 9px;
+  margin-left: -9px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-password_policy {
+  display: none;
+  -webkit-animation-name: fadein;
+  -webkit-animation-duration: .3s;
+  -webkit-animation-iteration-count: once;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-emailPassword {
+  position: relative;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy {
+  position: absolute;
+  bottom: 124px;
+  left: 2.5%;
+  width: 95%;
+  display: block;
+  text-align: left;
+  margin-top: 15px;
+  padding: 15px;
+  padding-top: 12px;
+  background: #1F242E;
+  background: rgba(31, 36, 46, 0.95);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy:after {
+  top: 100%;
+  left: 18px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(31, 36, 46, 0);
+  border-top-color: #1F242E;
+  border-top-color: rgba(31, 36, 46, 0.95);
+  border-width: 9px;
+  margin-left: -9px;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy li,
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy ul {
   margin: 0;
   padding: 0;
-  padding-left: 5px;
   list-style: none;
-  color: red;
+  color: #dd4b39;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-password_policy li.a0-checked,
-#a0-lock.a0-theme-default .a0-panel .a0-password_policy li.a0-checked li {
-  color: black;
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li {
+  color: white;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-password_policy li:before {
-  content: '\2610';
-  font-size: 15px;
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 7px;
+  border: 2px solid #fff;
+  display: inline-block;
+  top: 5px;
+  left: 2px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-password_policy li.a0-checked:before {
-  content: '\2611';
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li.a0-checked:before {
+  top: 3px;
+  left: 0;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy li {
+  line-height: 1.5;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+  position: relative;
+  padding-left: 18px;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked {
+  color: #7ED321;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked:before {
+  font-family: "auth0" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "a";
+  border: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-size: 12px;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy li:before {
+  font-family: "auth0" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "e";
+  margin-right: 10px;
+  font-size: 11px;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  text-transform: none;
 }
 
 #a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-password {
@@ -7508,7 +7638,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-email,
-#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-username,
 #a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-password,
 #a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
   border: 0;
@@ -7531,6 +7660,44 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -webkit-transition: none;
     -moz-transition: none;
     transition: none;
+  }
+
+  #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-emailPassword {
+    position: static;
+  }
+
+  #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy {
+    position: static;
+    width: auto;
+    left: auto;
+    top: auto;
+    background: none;
+    padding: 0 15px;
+  }
+
+  #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy li.a0-checked {
+    color: #5E9D19;
+  }
+
+  #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li {
+    color: #3e4975;
+  }
+
+  #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li:before {
+    border-color: #3e4975;
+  }
+
+  #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy:before {
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    content: "Password Policy:";
+    color: #999;
+  }
+
+  #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy:after {
+    display: none;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-overlay {
