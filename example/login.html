@@ -10,11 +10,10 @@
   <body>
     <script src="auth0-lock.js"></script>
     <script>
-      var widget = new Auth0Widget({
-        domain: 'victorf.auth0.com',
-        clientID: 'qnwT0jlMlPy0AINm4OadACv7j2JjxHE1',
-        callbackURL: location.href,
-        callbackOnLocationHash: true
+      var widget = new Auth0Lock({
+        domain:      'mdocs.auth0.com',
+        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
+        callbackURL: 'http://localhost:3000/',
       });
 
       widget.show();
