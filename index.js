@@ -84,8 +84,9 @@ function Auth0Lock (clientID, domain, options) {
 
   // use domain as assetsUrl if no assetsUrl provided
   // and domain is not *.auth0.com. Fallback to S3 url
-  this.$options.assetsUrl = this.$options.assetsUrl || (this.isAuth0Domain() ? 'https://s3.amazonaws.com/assets.auth0.com/' : 'https://' + this.$options.domain + '/');
+  this.$options.assetsUrl = this.$options.assetsUrl || (this.isAuth0Domain() ? 'https://cdn.auth0.com/' : 'https://' + this.$options.domain + '/');
 
+  // This cdn is only used for the "loading" image
   this.$options.cdn = this.$options.cdn || (this.isAuth0Domain() ? 'https://d19p4zemcycm7a.cloudfront.net/w2/' : 'https://' + this.$options.domain + '/w2/');
 
   // Holds SSO Data for return user experience
