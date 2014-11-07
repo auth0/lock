@@ -240,7 +240,7 @@ describe('Auth0Lock', function () {
     it('should use default assetsUrl if domain is *.auth0.com', function () {
       this.widget = new Auth0Lock(clientID, 'abc.auth0.com:3000');
 
-      expect(this.widget.$options.assetsUrl).to.equal('https://s3.amazonaws.com/assets.auth0.com/');
+      expect(this.widget.$options.assetsUrl).to.equal('https://cdn.auth0.com/');
     });
   });
 
