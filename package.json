@@ -31,7 +31,6 @@
     "sizzle": "^2.0.0",
     "trim": "0.0.1",
     "underscore": "~1.5.2",
-    "password-sheriff": "^0.4.0"
   },
   "devDependencies": {
     "brfs": "0.0.8",
