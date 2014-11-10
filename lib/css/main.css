@@ -1366,6 +1366,11 @@
   display: none;
 }
 
+#a0-lock .a0-clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
 #a0-lock .a0-show {
   display: block;
 }
@@ -1375,12 +1380,24 @@
 }
 
 #a0-lock .a0-panel {
+  *zoom: 1;
   background: white;
   width: 280px;
-  overflow: hidden;
   -webkit-transition: height 50ms ease-in;
   -moz-transition: height 50ms ease-in;
   transition: height 50ms ease-in;
+}
+
+#a0-lock .a0-panel:before,
+#a0-lock .a0-panel:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+#a0-lock .a0-panel:after {
+  clear: both;
 }
 
 #a0-lock .a0-panel.a0-disable-transition {
@@ -7082,6 +7099,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   position: relative;
   color: #4d4d4d;
   display: block;
+  zoom: 1;
   /*==========  Forms  ==========*/
   /*-----  End of forms  ------*/
   /*==========  Signup  ==========*/
@@ -7166,15 +7184,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-footer {
-  margin-top: 20px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: block;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-footer .a0-logo {
-  margin-top: 20px;
-  position: absolute;
-  bottom: 10px;
-  right: 0;
-  left: 0;
+  margin-top: 0;
   display: block;
 }
 
