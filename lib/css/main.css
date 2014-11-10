@@ -7553,12 +7553,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy ul li ul li:before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   border-radius: 7px;
   border: 2px solid #fff;
   display: inline-block;
-  top: 5px;
+  top: 7px;
   left: 2px;
 }
 
