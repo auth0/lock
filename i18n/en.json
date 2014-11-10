@@ -51,6 +51,7 @@
     "passwordStrength": {
       "nonEmpty": "Non-empty password required",
       "lengthAtLeast": "At least %d characters in length",
+      "shouldContain": "Should contain:",
       "containsAtLeast" : "Contain at least %d of the following %d types of characters:",
       "lowerCase": "lower case letters (a-z)",
       "upperCase": "upper case letters (A-Z)",
