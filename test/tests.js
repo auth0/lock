@@ -22,9 +22,10 @@ describe('Auth0Lock', function () {
   var domain =      'abc.auth0.com';
   var clientID =    '123456789';
   var callbackURL = 'http://myapp.com/callback';
-  var widget, client;
+  var widget, client, getClientConfiguration;
 
   beforeEach(function (done) {
+    getClientConfiguration = Auth0Lock.prototype.getClientConfiguration;
     Auth0Lock.prototype.getClientConfiguration = function (cb) {
       var $client = {
         id: clientID,
@@ -77,6 +78,8 @@ describe('Auth0Lock', function () {
 
   afterEach(function (done) {
     global.window.location.hash = '';
+    global.window.Auth0 = null;
+    Auth0Lock.prototype.getClientConfiguration = getClientConfiguration;
     if (widget) {
       widget.hide(done);
     } else {

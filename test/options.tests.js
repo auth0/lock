@@ -19,6 +19,7 @@ describe('_findConnectionByEmailDomain', function () {
   });
 
   after(function (done) {
+    global.window.Auth0 = null;
     widget.hide(done);
   });
 
