@@ -27,6 +27,7 @@ describe('gravatar', function () {
 
   afterEach(function (done) {
     this.options = null;
+    global.window.Auth0 = null;
     this.widget.hide(done);
   });
 
