@@ -46,7 +46,20 @@
     "serverErrorText":             "There was an error processing the signup.",
     "userExistsErrorText":         "The user already exists.",
     "usernameInUseErrorText":      "The username is already in use.",
-    "invalidPassword":             "Password is too weak."
+    "invalidPassword":             "Password is too weak.",
+    
+    "passwordStrength": {
+      "nonEmpty": "Non-empty password required",
+      "lengthAtLeast": "At least %d characters in length",
+      "shouldContain": "Should contain:",
+      "containsAtLeast" : "Contain at least %d of the following %d types of characters:",
+      "lowerCase": "Lower case letters (a-z)",
+      "upperCase": "Upper case letters (A-Z)",
+      "numbers": "Numbers (i.e. 0-9)",
+      "specialCharacters" : "Special characters (e.g. !@#$%^&*)",
+      "identicalChars": "No more than %d identical characters in a row (e.g., \"%s\" not allowed)"
+    }
+    
   },
   "reset": {
     "title":                       "Reset Password",
@@ -60,5 +73,6 @@
     "headerText":                  "Please enter your email and the new password. We will send you an email to confirm the password change.",
     "serverErrorText":             "There was an error processing the password reset.",
     "userDoesNotExistErrorText":   "User does not exist.",
+    "invalidPassword":             "Password is too weak."
   }
 }

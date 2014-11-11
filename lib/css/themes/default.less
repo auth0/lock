@@ -109,6 +109,18 @@
 
 }
 
+.iconbase {
+  font-family: "auth0" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 [class^="a0-icon-"]:before,
 [class*=" a0-icon-"]:before {
   font-family: "auth0" !important;
@@ -183,6 +195,8 @@
   position: relative;
   color: #4d4d4d;
   display: block;
+  // overflow: auto;
+  zoom: 1;
 
   *{
     font-family: "proxima_nova"!important;
@@ -258,13 +272,13 @@
   }
 
   .footer{
-    margin-top: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: block;
+    overflow: hidden;
+   
     .logo{
-      margin-top: 20px;
-      position: absolute;
-      bottom: 10px;
-      right: 0;
-      left: 0;
+      margin-top: 0;
       display: block;
       i{
         color: #EB5424;
@@ -293,7 +307,7 @@
     border-bottom: 1px solid #ccc;
   }
 
-  .repeatPassword {
+  .password, .repeatPassword{
     border-top: 1px solid #ccc;
   }
 
@@ -358,7 +372,6 @@
     &:focus{
       background: #fff;
     }
-
   }
 
   input::-webkit-input-placeholder {
@@ -540,6 +553,128 @@
     display: block;
   }
 
+  /*==========  Password Policy  ==========*/
+
+  .password_policy_arrow {
+    background: #1F242E;
+
+    &:after {
+      top: 100%;
+      left: 18px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(31, 36, 46, 0);
+      border-top-color: #1F242E;
+      border-top-color: rgba(31, 36, 46, 0.95);
+      border-width: 9px;
+      margin-left: -9px;
+    }
+  }
+
+  .password_policy {
+    display: none;
+
+    -webkit-animation-name: fadein;
+    -webkit-animation-duration: .3s;
+    -webkit-animation-iteration-count: once;
+    -webkit-animation-timing-function: ease-in;
+
+    box-sizing: border-box;
+  }
+
+  &.active-pwd-strength {
+    .emailPassword {
+      position: relative;
+    }
+
+    .password_policy {
+      .password_policy_arrow;
+      position: absolute;
+      bottom: 124px;
+      left: 2.5%;
+      width: 95%;
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      padding: 15px;
+      padding-top: 12px;
+      background: #1F242E;
+      background: rgba(31, 36, 46, 0.95);
+      border-radius: 5px;
+      z-index: 1000;
+
+      li, ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: #dd4b39;
+      }
+
+      ul li ul {
+        li {
+          color: white;
+
+          &:before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 7px;
+            border: 2px solid #fff;
+            display: inline-block;
+            top: 7px;
+            left: 2px;
+          }
+
+          &.checked {
+            &:before {
+              top: 3px;
+              left: 0;
+            }
+          }
+        }
+      }
+      
+      li {
+        line-height: 1.5;
+        margin-top: 5px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: color .3s ease-in;
+        position: relative;
+        padding-left: 18px;
+      }
+
+      li.checked {
+        color: #7ED321;
+
+        &:before {
+          .iconbase;
+          content: "a";
+          border: 0;
+          width: auto;
+          height: auto;
+          border-radius: 0;
+          font-size: 12px;
+        }
+      }
+
+      li:before {
+        .iconbase;
+        content: "e";
+        margin-right: 10px;
+        font-size: 11px;
+        position: absolute;
+        top: 3px;
+        left: 0;
+        text-transform: none;
+      }
+    }
+  }
+
   /*==========  Forgot Password  ==========*/
 
   #change_password{
@@ -622,6 +757,51 @@
 
   #onestep{
     transition: none;
+  }
+
+  .panel {
+    &.active-pwd-strength {
+      .emailPassword {
+        position: static;
+      }
+
+      .password_policy {
+        position: static;
+        width: auto;
+        left: auto;
+        top: auto;
+        background: none;
+        padding: 0 15px;
+
+        li.checked {
+          color: #5E9D19;
+        }
+
+        ul li ul {
+          li {
+            color: #3e4975;
+
+            &:before {
+              border-color: #3e4975;
+            }
+          }
+        }
+
+        &:before {
+          display: block;
+          text-transform: uppercase;
+          display: block;
+          margin-bottom: 10px;
+          font-size: 11px;
+          content: "Password Policy:";
+          color: #999;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+    }
   }
 
   .popup{

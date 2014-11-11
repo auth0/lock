@@ -4,6 +4,12 @@
 *
 **/
 
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
 .show{
   display: block;
 }
@@ -12,11 +18,21 @@
   display: none !important;
 }
 
-.panel{
+.panel {
+  *zoom: 1;
   background: white;
   width: 280px;
-  overflow: hidden;
   transition: height 50ms ease-in;
+}
+
+.panel:before,
+.panel:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.panel:after {
+    clear: both;
 }
 
 .panel.disable-transition {
