@@ -186,7 +186,7 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
   // Handle load and error for client config
   script.addEventListener('load', bind(this.onclientloadsuccess, this));
   script.addEventListener('error', bind(this.onclientloaderror, this));
-  this.timeout = setTimeout(bind(this.onclientloaderror, this), 3000);
+  this.timeout = setTimeout(bind(this.onclientloaderror, this), 5000);
 };
 
 /**
@@ -199,6 +199,12 @@ Auth0Lock.prototype.onclientloadsuccess = function() {
 
   // clear error timeout
   clearTimeout(this.timeout);
+  this.timeout = null;
+
+  // clear displayed errors if any
+  if (this.options) {
+    this._showError();
+  }
 
   // We should use debug and log stuff without console.log
   // and only for debugging
@@ -215,23 +221,17 @@ Auth0Lock.prototype.onclientloadsuccess = function() {
 
 Auth0Lock.prototype.onclientloaderror = function(err) {
 
+  // timeout has been cleared
+  if (!this.timeout) return;
+
   // clear error timeout
   clearTimeout(this.timeout);
+  this.timeout = null;
 
-  // If no options, there is no UI to actually show error
-  if (this.options) {
-    // Exhibit lock's working canvas
-    this.exhibit();
-
-    // XXX: Should we create an "error-mode" for such cases?
-    // XXX: or are we ok with this display?
-    this._loadingPanel(this.options);
-
-    // Turn off the loading spinner
-    this.query('.a0-spinner').addClass('a0-hide');
-    // display error
-    this._showError(this.options.i18n.t('networkError'));
-  };
+  // If UI present, delay the show error just a little more,
+  // because sometimes this loads before in the async call
+  // compared to the `load` event success.
+  if (this.options) setTimeout(bind(this.showNetworkError, this), 500);
 
   // reset loadstate
   this.loadState = false;
@@ -242,6 +242,24 @@ Auth0Lock.prototype.onclientloaderror = function(err) {
   if (console && console.log) {
     console.log(new Error('Failed to load client configuration for ' + this.$options.clientID));
   };
+}
+
+Auth0Lock.prototype.showNetworkError = function() {
+  // client has been loaded in some async call
+  if (global.window.Auth0.clients[this.options.$clientID]) return;
+
+  // Exhibit lock's working canvas
+  this.exhibit();
+
+  // XXX: Should we create an "error-mode" for such cases?
+  // XXX: or are we ok with this display?
+  this._loadingPanel(this.options);
+
+  // Turn off the loading spinner
+  this.query('.a0-spinner').addClass('a0-hide');
+
+  // display error
+  this._showError(this.options.i18n.t('networkError'));
 }
 
 /**
