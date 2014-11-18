@@ -8,13 +8,9 @@
     <!-- <meta name="viewport" content="width=device-width"/>-->
   </head>
   <body>
-    <script src="auth0-lock.js"></script>
+    <script src="/auth0-lock.js"></script>
     <script>
-      var widget = new Auth0Lock({
-        domain:      'mdocs.auth0.com',
-        clientID:    '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup',
-        callbackURL: 'http://localhost:3000/',
-      });
+      var widget = new Auth0Lock('0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup', 'mdocs.auth0.com');
 
       widget.show();
 
