@@ -56,6 +56,6 @@
     "enterSamePasswordText":       "Vennligst skriv inn det samme passordet.",
     "headerText":                  "Vennligst skriv inn e-post og ditt nye passord. Vi sender deg en e-post for å bekrefte endringen.",
     "serverErrorText":             "Det oppstod en feil under tilbakestilling av passordet.",
-    "userDoesNotExistErrorText":   "Brukeren finnes ikke.",
+    "userDoesNotExistErrorText":   "Brukeren finnes ikke."
   }
 }
