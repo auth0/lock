@@ -237,6 +237,44 @@ module.exports = function (grunt) {
           ]
         },
       },
+    },
+    http: {
+      purge_js: {
+        options: {
+          url: process.env.CDN_ROOT + '/js/lock-' + pkg.version + '.js',
+          method: 'DELETE'
+        }
+      },
+      purge_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/js/lock-' + pkg.version + '.min.js',
+          method: 'DELETE'
+        }
+      },
+      purge_major_js: {
+        options: {
+          url: process.env.CDN_ROOT + '/js/lock-' + major_version + '.js',
+          method: 'DELETE'
+        }
+      },
+      purge_major_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/js/lock-' + major_version + '.min.js',
+          method: 'DELETE'
+        }
+      },
+      purge_minor_js: {
+        options: {
+          url: process.env.CDN_ROOT + '/js/lock-' + minor_version + '.js',
+          method: 'DELETE'
+        }
+      },
+      purge_minor_js_min: {
+        options: {
+          url: process.env.CDN_ROOT + '/js/lock-' + minor_version + '.min.js',
+          method: 'DELETE'
+        }
+      }
     }
   });
 
@@ -270,5 +308,7 @@ module.exports = function (grunt) {
   grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
   grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
-  grunt.registerTask('cdn',           ['build', 'copy:release', 'aws_s3:clean', 'aws_s3:publish', 'fastly:purge']);
+  grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min']);
+
+  grunt.registerTask('cdn',           ['build', 'copy:release', 'aws_s3:clean', 'aws_s3:publish', 'purge_cdn']);
 };
