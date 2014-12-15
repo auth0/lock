@@ -7508,13 +7508,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   box-sizing: border-box;
 }
 
-#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-emailPassword {
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-inputs-wrapper {
   position: relative;
 }
 
 #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy {
   position: absolute;
-  bottom: 124px;
+  bottom: 50px;
   left: 2.5%;
   width: 95%;
   display: block;
@@ -7623,6 +7623,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   top: 3px;
   left: 0;
   text-transform: none;
+}
+
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength #a0-change_password .a0-password_policy {
+  bottom: 100px;
 }
 
 #a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-password {
