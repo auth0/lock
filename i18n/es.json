@@ -37,7 +37,7 @@
     "footerText":                  "",
     "enterpriseEmailWarningText":  "El dominio {domain} ha sido configurado para Single Sign On y no puede crear una cuenta. Intente iniciar sesión directamente.",
     "serverErrorText":             "Hubo un error al procesar su registro.",
-    "userExistsErrorText":         "El usuario ya existe.",
+    "userExistsErrorText":         "El usuario ya existe."
   },
   "reset": {
     "title":                       "Resetear Contraseña",
@@ -50,6 +50,6 @@
     "enterSamePasswordText":       "Por favor ingrese la misma contraseña.",
     "headerText":                  "Por favor ingrese su email y la nueva contraseña. Enviaremos un email para confirmar el cambio.",
     "serverErrorText":             "Hubo un error al resetear su contraseña.",
-    "userDoesNotExistErrorText":   "Usuario inválido.",
+    "userDoesNotExistErrorText":   "Usuario inválido."
   }
 }
