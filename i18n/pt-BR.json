@@ -57,7 +57,7 @@
       "upperCase": "Letras maiúsculas (A-Z)",
       "numbers": "Números (0-9)",
       "specialCharacters" : "Símbolos (!@#$%^&*)",
-      "identicalChars": "Não mais do que %d caracteres seguindos (ex. \"%s\" não é permitido)"
+      "identicalChars": "Máximo de %d caracteres iguais seguidos (ex. \"%s\" não é permitido)"
     }
     
   },
