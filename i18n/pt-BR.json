@@ -4,8 +4,8 @@
   "windowsAuthTitle":              "Autenticação do Windows",
   "invalid":                       "Inválido",
   "mustMatch":                     "Deve corresponder",
-  "loginSocialButton":             "Entrar com {connection:title}",
-  "signupSocialButton":            "Cadastrar com {connection:title}",
+  "loginSocialButton":             "Entre com {connection:title}",
+  "signupSocialButton":            "Cadastre com {connection:title}",
   "networkError":                  "Não conseguimos acessar o servidor.<br/>Por favor, tente novamente.",
   "signin": {
     "title":                       "Entrar",
