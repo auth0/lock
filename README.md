@@ -45,7 +45,7 @@ Or our CDN:
 <!-- Latest minor release -->
 <script src="http://cdn.auth0.com/js/lock-6.x.min.js"></script>
 
-<!-- Latest patch release -->
+<!-- Latest patch release (recommended for production) -->
 <script src="http://cdn.auth0.com/js/lock-6.x.y.min.js"></script>
 ```
 
