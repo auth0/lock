@@ -51,12 +51,11 @@ Or our CDN:
 
 ### Browserify
 
-If you are using browserify to build your project, you will need to add the following development dependencies to your project:
+If you are using browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
 
 ``` json
 {
   "devDependencies": {
-    "browserify": "^8.0.3",
     "brfs": "0.0.8",
     "ejsify": "0.1.0",
     "packageify": "^0.2.0"
@@ -64,7 +63,6 @@ If you are using browserify to build your project, you will need to add the foll
 }
 ```
 
-These are the browserify transformations required by Auth0 Lock.
 
 ## Usage
 
