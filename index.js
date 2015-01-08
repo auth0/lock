@@ -208,7 +208,7 @@ Auth0Lock.prototype.onclientloadsuccess = function() {
 
   // We should use debug and log stuff without console.log
   // and only for debugging
-  if (console && console.log) {
+  if (window.console && console.log) {
     console.log('Client configuration loaded');
   }
 }
@@ -239,7 +239,7 @@ Auth0Lock.prototype.onclientloaderror = function(err) {
   // reset script loading state
   global.window.Auth0.script_tags[this.$options.clientID] = null;
 
-  if (console && console.log) {
+  if (window.console && console.log) {
     console.log(new Error('Failed to load client configuration for ' + this.$options.clientID));
   };
 }
