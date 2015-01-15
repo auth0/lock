@@ -947,6 +947,9 @@ Auth0Lock.prototype._signin = function (panel) {
   var emailD = panel.query('.a0-email');
   var email_input = panel.query('input[name=email]');
 
+  // Send out the starting event, allowing users to dynamically change the authParams.
+  this.emit('%s starting'.replace('%s', this.options.mode), this.options, email_input.val());
+
   var email = null, domain, connection;
 
   var input_email_domain = this.options._extractEmailDomain(email_input.val().toLowerCase());
