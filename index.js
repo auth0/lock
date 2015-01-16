@@ -948,7 +948,7 @@ Auth0Lock.prototype._signin = function (panel) {
   var email_input = panel.query('input[name=email]');
 
   // Send out the signin event, allowing users to dynamically change the options.
-  this.emit('signin', this.options, { email: email_input.val() });
+  this.emit('signin submit', this.options, { email: email_input.val() });
 
   var email = null, domain, connection;
 

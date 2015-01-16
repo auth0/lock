@@ -469,8 +469,8 @@
             widget.on('signin ready', function() {
               console.log('%s signin ready', name);
             });
-            widget.on('signin', function(options, context) {
-              console.log('%s signin. context: %s', name, context.email);
+            widget.on('signin submit', function(options, context) {
+              console.log('%s signin submit. context: %s', name, context.email);
             });
             widget.on('signup ready', function() {
               console.log('%s signup ready', name);

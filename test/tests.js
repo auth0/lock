@@ -471,7 +471,7 @@ describe('Auth0Lock', function () {
       .show({ callbackURL: callbackURL, responseType: 'token', authParams: { access_type: 'offline' } });
     });
 
-    it('should emit event when signin is starting', function (done) {
+    it('should emit signin submit event when signin is starting', function (done) {
 
       client.login = function (options) {
         expect(options.login_hint).to.equal('john@fabrikam.com');
@@ -484,7 +484,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
       })
-      .on('signin', function (options, context) {
+      .on('signin submit', function (options, context) {
         if (!options.authParams)
           options.authParams = {};
         options.authParams.login_hint = context.email;
