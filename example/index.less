@@ -15,7 +15,16 @@ h1,h2,h3{
 pre{
 	border: 0;
 	padding: 20px;
-	font-size: 12px;
+	font-size: 12px; 
+}
+
+li {
+	&.li-docs {
+		padding: 10px;
+	}
+	&.li-button {
+		padding: 15px;
+	}
 }
 
 header.site-header {
@@ -26,6 +35,10 @@ header.site-header {
 	z-index: 1000;
 	background: #fff;
 	font-size: 14px;
+}
+
+header.site-header nav .navbar-brand a img {
+	height: 45px;	
 }
 
 @media screen and (max-width: 600px){

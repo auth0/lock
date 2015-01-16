@@ -6,23 +6,32 @@
     <title>Test auth0-lock</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="//localhost:35729/livereload.js"></script>
-    <link rel="stylesheet" type="text/css" href="//styleguide.auth0.com/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/styleguide/latest/index.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/index.css"/>
   </head>
   <!--[if IE 9]>
     <style>.sidebar-box ul a i{display: none}</style>
   <![endif]-->
   <body>
-    <header class="site-header">
+    <header class="site-header clearfix">
       <nav role="navigation" class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
-            <h1 class="navbar-brand"><a href="/"><img src="//auth0.com/auth0-styleguide/img/logo.png"/><span>Auth0</span></a></h1>
+            <h1 class="navbar-brand">
+              <a href="/">
+                <img src="//styleguide.auth0.com/img/auth0_logo.png"/>  
+              </a>
+            </h1>
           </div>
           <div class="navbar-right">
             <ul class="nav navbar-nav">
-              <li class="li-docs"><a href="https://docs.auth0.com/login-widget2">Documentation</a></li>
-              <li><a href="https://app.auth0.com" target="_blank" class="signin-button btn btn-sm signup">Open your dashboard</a></li>
+              <li class="li-docs">
+                <a href="https://docs.auth0.com/login-widget2">Documentation</a>
+              </li>
+              <li class="li-button">
+                <a href="https://app.auth0.com" target="_blank" class="signin-button btn btn-sm signup">
+                  Open your dashboard</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -459,6 +468,9 @@
             });
             widget.on('signin ready', function() {
               console.log('%s signin ready', name);
+            });
+            widget.on('signin submit', function(options, context) {
+              console.log('%s signin submit. context: %s', name, context.email);
             });
             widget.on('signup ready', function() {
               console.log('%s signup ready', name);
