@@ -998,8 +998,7 @@ Auth0Lock.prototype._signin = function (panel) {
   var loginOptions = _.extend({}, {
     connection: connection,
     popup: this.options.popup,
-    popupOptions: this.options.popupOptions,
-    sso: this.options.sso,
+    popupOptions: this.options.popupOptions
   }, this.options.authParams);
 
   this.$auth0.login(loginOptions);
@@ -1026,8 +1025,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
     username: connection.domain ? username.replace('@' + connection.domain, '') : username,
     password: password,
     popup: self.options.popup,
-    popupOptions: self.options.popupOptions,
-    sso: self.options.sso
+    popupOptions: self.options.popupOptions
   };
 
   // We might be loosing some instance parameters here
@@ -1107,8 +1105,7 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
       var loginOptions = _.extend({}, {
         connection: connectionName,
         popup: self.options.popup,
-        popupOptions: self.options.popupOptions,
-        sso: self.options.sso
+        popupOptions: self.options.popupOptions
       }, self.options.authParams, extraParams);
 
       this.$auth0.login(loginOptions);
@@ -1139,8 +1136,7 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
   var loginOptions = _.extend({}, {
         connection: connectionName,
         popup: self.options.popup,
-        popupOptions: self.options.popupOptions,
-        sso: self.options.sso
+        popupOptions: self.options.popupOptions
       }, options.authParams, extraParams);
 
   if ('function' !== typeof callback) {
