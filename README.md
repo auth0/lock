@@ -49,6 +49,21 @@ Or our CDN:
 <script src="http://cdn.auth0.com/js/lock-6.x.y.min.js"></script>
 ```
 
+### Browserify
+
+If you are using browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
+
+``` json
+{
+  "devDependencies": {
+    "brfs": "0.0.8",
+    "ejsify": "0.1.0",
+    "packageify": "^0.2.0"
+  }
+}
+```
+
+
 ## Usage
 
 You can use **Auth0Lock** with [Popup mode][popup-mode] or [Redirect mode][redirect-mode]. To learn more about these modes, you can read the [Authentication Modes][authentication-modes] page. 
