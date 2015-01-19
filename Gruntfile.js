@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var pkg = require('./package');
 var cssPrefix = require('css-prefix');
 
@@ -11,6 +12,10 @@ function  rename_release (v) {
     var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + '$1.js').replace('auth0-', ''));
     return dest;
   };
+}
+
+function node_bin (bin) {
+  return path.join('node_modules', '.bin', bin);
 }
 
 module.exports = function (grunt) {
@@ -44,11 +49,8 @@ module.exports = function (grunt) {
     },
     browserify: {
       options: {
-        bundleOptions: {
-          debug: true
-        },
         browserifyOptions: {
-          // fullPaths: true
+          debug: true
         },
         watch: true,
 
@@ -132,22 +134,22 @@ module.exports = function (grunt) {
     },
     exec: {
       'uglify': {
-        cmd: 'node_modules/.bin/uglifyjs build/auth0-lock.js  -b beautify=false,ascii_only=true > build/auth0-lock.min.js',
+        cmd: node_bin('uglifyjs') + ' build/auth0-lock.js  -b beautify=false,ascii_only=true > build/auth0-lock.min.js',
         stdout: true,
         stderr: true
       },
       'test-inception': {
-        cmd: 'node_modules/.bin/mocha ./test/support/characters-inception.test.js',
+        cmd: node_bin('mocha') + ' ./test/support/characters-inception.test.js',
         stdout: true,
         stderr: true
       },
       'test-integration': {
-        cmd: 'node_modules/.bin/zuul -- test/*.js',
+        cmd: node_bin('zuul') + ' -- test/*.js',
         stdout: true,
         stderr: true
       },
       'test-phantom': {
-        cmd: 'node_modules/.bin/zuul --ui mocha-bdd --phantom 9999 -- test/*.js',
+        cmd: node_bin('zuul') + ' --ui mocha-bdd --phantom 9999 -- test/*.js',
         stdout: true,
         stderr: true
       }
