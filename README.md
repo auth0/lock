@@ -49,6 +49,12 @@ Or our CDN:
 <script src="http://cdn.auth0.com/js/lock-6.x.y.min.js"></script>
 ```
 
+If you are targeting mobile audiences, it's recommended that you add:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+```
+
 ### Browserify
 
 If you are using browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
