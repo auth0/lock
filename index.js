@@ -323,8 +323,10 @@ Auth0Lock.prototype.insert = function() {
   var options = this.options;
   var cid = options.container;
   var locals = {
-    options: options,
-    alt_spinner: !has_animations() ?
+    options:      options,
+    cordova:      utils.isCordova(),
+    ios:          utils.isIOS(),
+    alt_spinner:  !has_animations() ?
       (this.$options.cdn + 'img/ajax-loader.gif') :
       null
   };
