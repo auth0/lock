@@ -318,7 +318,7 @@ Auth0Lock.prototype.render = function(tmpl, locals) {
  */
 
 Auth0Lock.prototype.insert = function() {
-  if (this.$container) return this;
+  if (this.$container) { return this; }
 
   var options = this.options;
   var cid = options.container;
@@ -332,7 +332,7 @@ Auth0Lock.prototype.insert = function() {
   // widget container
   if (cid) {
     this.$container = document.getElementById(cid);
-    if (!this.$container) throw new Error('Not found element with \'id\' ' + cid);
+    if (!this.$container) { throw new Error('Not found element with \'id\' ' + cid); }
 
     this.$container.innerHTML = this.render(template, locals);
 
