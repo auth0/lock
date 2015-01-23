@@ -79,7 +79,8 @@ function Auth0Lock (clientID, domain, options) {
   // Holds auth0-js' instance
   this.$auth0 = new Auth0({
     clientID: this.$options.clientID,
-    domain: this.$options.domain
+    domain: this.$options.domain,
+    useCordovaSocialPlugins: this.$options.useCordovaSocialPlugins
   });
 
   // use domain as assetsUrl if no assetsUrl provided
