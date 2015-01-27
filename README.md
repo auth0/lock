@@ -250,7 +250,7 @@ The **example** directory has a ready-to-go app. In order to run it you need [no
 
 Then execute `npm i` to install dependencies (only once) and `npm example` from the root of this project.
 
-Finally, point your browser at `http://localhost:9999/` and play around.
+Finally, point your browser at `http://localhost:3000/` and play around.
 
 ## Browser Compatibility
 
