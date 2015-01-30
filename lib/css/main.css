@@ -1503,6 +1503,15 @@
   display: block;
 }
 
+#a0-lock .a0-recaptcha {
+  width: 0;
+  margin-top: 20px;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
 #a0-lock.a0-theme-default {
   /*==========  Includes  ==========*/
   /*!
@@ -7407,6 +7416,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel button.a0-primary:focus {
   background: #3e4975;
+}
+
+#a0-lock.a0-theme-default .a0-panel button[disabled] {
+  background-color: #999;
+  color: white;
 }
 
 #a0-lock.a0-theme-default .a0-panel input[disabled] {
