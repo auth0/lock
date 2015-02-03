@@ -30,7 +30,7 @@
     "cancelAction": "取消",
     "headerText": "请输入您的电子邮件和密码",
     "footerText": "",
-    "enterpriseEmailWarningText": "指定此域 {domain} 已配置为单一登录和您不能创建一个帐户。请尝试登录相反。",
+    "signupOnSSODomainErrorText": "指定此域 {domain} 已配置为单一登录和您不能创建一个帐户。请尝试登录相反。",
     "serverErrorText": "处理标志向上时出错。"
   },
   "reset": {

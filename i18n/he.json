@@ -30,7 +30,7 @@
     "cancelAction": "ביטול",
     "headerText": "הזינו את כתובת המייל והסיסמא",
     "footerText": "",
-    "enterpriseEmailWarningText": "תחום זה, {domain} נקבעה עבור כניסה יחידה, אין באפשרותך ליצור חשבון. נסה להיכנס במקום.",
+    "signupOnSSODomainErrorText": "תחום זה, {domain} נקבעה עבור כניסה יחידה, אין באפשרותך ליצור חשבון. נסה להיכנס במקום.",
     "serverErrorText": "אירעה שגיאה בעיבוד את השלט למעלה."
   },
   "reset": {
