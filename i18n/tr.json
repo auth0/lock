@@ -38,7 +38,7 @@
     "cancelAction":               "İptal",
     "headerText":                 "Lütfen e-postanızı ve şifrenizi giriniz",
     "footerText":                 "",
-    "enterpriseEmailWarningText": "Bu alan {domain} üzerindeki tek oturum için yapılandırılmıştır, bu yüzden hesap oluşturamazsınız. Bunun yerine, lütfen giriş yapmayı deneyiniz.",
+    "signupOnSSODomainErrorText": "Bu alan {domain} üzerindeki tek oturum için yapılandırılmıştır, bu yüzden hesap oluşturamazsınız. Bunun yerine, lütfen giriş yapmayı deneyiniz.",
     "serverErrorText":            "Kayıt olurken bir hata ile karşılaşıldı.",
     "userExistsErrorText":        "Bu kullanıcı adı zaten alınmış.",
     "invalidPassword":            "Bu şifre çok zayıf."

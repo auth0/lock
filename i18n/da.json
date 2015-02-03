@@ -42,7 +42,7 @@
     "cancelAction":                "Annuller",
     "headerText":                  "Indtast din email og dit kodeord",
     "footerText":                  "",
-    "enterpriseEmailWarningText":  "Dette domæne {domain} er blevet konfigureret til Single Sign On og du kan ikke oprette en konto. Prøv at logge ind i stedet.",
+    "signupOnSSODomainErrorText":  "Dette domæne {domain} er blevet konfigureret til Single Sign On og du kan ikke oprette en konto. Prøv at logge ind i stedet.",
     "serverErrorText":             "Der opstod en fejl under oprettelse.",
     "userExistsErrorText":         "Denne bruger eksisterer allerede.",
     "usernameInUseErrorText":      "Brugernavnet er allerede i brug.",

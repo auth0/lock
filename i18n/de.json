@@ -30,7 +30,7 @@
     "cancelAction": "Abbrechen",
     "headerText": "Bitte geben Sie Ihre e-Mail und Passwort",
     "footerText": "Durch Klicken auf \"Anmelden\", stimmen Sie unseren Nutzungsbedingungen oder Datenschutzrichtlinien.",
-    "enterpriseEmailWarningText": "Diese Domäne {domain} für Single Sign On konfiguriert wurde und Sie können ein Konto erstellen. Versuchen Sie stattdessen sich anzumelden.",
+    "signupOnSSODomainErrorText": "Diese Domäne {domain} für Single Sign On konfiguriert wurde und Sie können ein Konto erstellen. Versuchen Sie stattdessen sich anzumelden.",
     "serverErrorText": "Gab es Fehler beim Verarbeiten der Zeichens auf."
   },
   "reset": {

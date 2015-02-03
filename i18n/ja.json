@@ -30,7 +30,7 @@
     "cancelAction": "キャンセル",
     "headerText": "あなたのメール アドレスとパスワードを入力してください。",
     "footerText": "",
-    "enterpriseEmailWarningText": "このドメイン {} が構成されているシングル サインオン ・ アカウントを作成することはできません。代わりにサインインしてください。",
+    "signupOnSSODomainErrorText": "このドメイン {} が構成されているシングル サインオン ・ アカウントを作成することはできません。代わりにサインインしてください。",
     "serverErrorText": "符号を処理中にエラーがありました。"
   },
   "reset": {

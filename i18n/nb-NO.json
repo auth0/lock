@@ -40,7 +40,7 @@
     "cancelAction":                "Avbryt",
     "headerText":                  "Vennligst skriv inn e-post og passord",
     "footerText":                  "",
-    "enterpriseEmailWarningText":  "Domenet {domain} er konfigurert med Single Sign On og du kan ikke opprette en konto selv. Forsøk å logge inn istedet.",
+    "signupOnSSODomainErrorText":  "Domenet {domain} er konfigurert med Single Sign On og du kan ikke opprette en konto selv. Forsøk å logge inn istedet.",
     "serverErrorText":             "Det oppstod en feil under innlogging.",
     "userExistsErrorText":         "Brukeren finnes allerede.",
     "invalidPassword":             "Passordet er for svakt."

@@ -42,7 +42,7 @@
     "cancelAction":                "Cancelar",
     "headerText":                  "Por favor, preencha seu e-mail e senha",
     "footerText":                  "",
-    "enterpriseEmailWarningText":  "O domínio {domain} está configurado para Single Sign On e você não pode criar uma conta. Entre usando uma conta.",
+    "signupOnSSODomainErrorText":  "O domínio {domain} está configurado para Single Sign On e você não pode criar uma conta. Entre usando uma conta.",
     "serverErrorText":             "Ocorreu um erro durante o cadastro.",
     "userExistsErrorText":         "O usuário já existe.",
     "usernameInUseErrorText":      "Este nome de usuário já está em uso.",

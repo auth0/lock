@@ -42,12 +42,12 @@
     "cancelAction":                "Cancel",
     "headerText":                  "Please enter your email and password",
     "footerText":                  "",
-    "enterpriseEmailWarningText":  "This domain {domain} has been configured for Single Sign On and you can't create an account. Try logging in instead.",
     "serverErrorText":             "There was an error processing the signup.",
     "userExistsErrorText":         "The user already exists.",
+    "signupOnSSODomainErrorText":  "This domain {domain} has been configured for Single Sign On and you can't create an account. Try signing in instead.",
     "usernameInUseErrorText":      "The username is already in use.",
     "invalidPassword":             "Password is too weak.",
-    
+
     "passwordStrength": {
       "nonEmpty": "Non-empty password required",
       "lengthAtLeast": "At least %d characters in length",

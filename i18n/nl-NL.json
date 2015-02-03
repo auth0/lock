@@ -30,7 +30,7 @@
     "cancelAction": "Annuleren",
     "headerText": "Voer je email en wachtwoord in",
     "footerText": "",
-    "enterpriseEmailWarningText": "Dit domein {domain} is geconfigureerd voor eenmalige aanmelding en u kunt geen account aanmaken. Probeer u aan te melden in plaats daarvan.",
+    "signupOnSSODomainErrorText": "Dit domein {domain} is geconfigureerd voor eenmalige aanmelding en u kunt geen account aanmaken. Probeer u aan te melden in plaats daarvan.",
     "serverErrorText": "Er is een fout opgetreden bij de verwerking van uw aanmelding."
   },
   "reset": {

@@ -30,7 +30,7 @@
     "cancelAction": "Cancelar",
     "headerText": "Por favor, digite seu e-mail e senha",
     "footerText": "",
-    "enterpriseEmailWarningText": "Este domínio {domain} tiver sido configurado para Sign-On único e você não pode criar uma conta. Tente entrar em vez disso.",
+    "signupOnSSODomainErrorText": "Este domínio {domain} tiver sido configurado para Sign-On único e você não pode criar uma conta. Tente entrar em vez disso.",
     "serverErrorText": "Houve um erro ao processar o sinal de cima."
   },
   "reset": {
