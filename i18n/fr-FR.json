@@ -2,6 +2,11 @@
   "loadingTitle": "Veuillez patienter...",
   "close": "Fermer",
   "windowsAuthTitle": "Connexion Windows",
+  "invalid": "Invalide",
+  "mustMatch": "Doit correspondre",
+  "loginSocialButton": "S'identifier avec {connection:title}",
+  "signupSocialButton": "S'inscrire avec {connection:title}",
+  "networkError": "Serveur inaccessible.<br/>Veuillez réessayer.",
   "signin": {
     "title": "Connexion",
     "action": "Connexion",
@@ -20,7 +25,10 @@
     "domainUserLabel": "Vous êtes connecté depuis le réseau de votre entreprise...",
     "wrongEmailPasswordErrorText": "Courriel ou mot de passe incorrect.",
     "or": "... ou connectez-vous à l'aide de",
-    "loadingMessage": "Connexion à l'aide de {connection}..."
+    "loadingMessage": "Connexion à l'aide de {connection}...",
+    "popupCredentials": "Saisissez vos identifiants dans la fenêtre pop-up",
+    "userClosedPopup": "La fenêtre pop-up a été fermée. Veuillez réessayer.",
+    "userConsentFailed": "L'application n'a pas été autorisée. Veuillez réessayer."
   },
   "signup": {
     "description": "",
@@ -33,7 +41,21 @@
     "footerText": "",
     "signupOnSSODomainErrorText": "Ce domaine {domain} a été configuré pour le Single Sign On et vous ne pouvez pas créer de compte. Essayez de vous connecter à un compte existant.",
     "serverErrorText": "Erreur lors de l'inscription.",
-    "userExistsErrorText": "Cet utilisateur existe déjà."
+    "userExistsErrorText": "Cet utilisateur existe déjà.",
+    "usernameInUseErrorText": "Ce nom d'utilisateur est déjà pris.",
+    "invalidPassword": "Le mot de passe n'est pas valide.",
+    
+      "passwordStrength": {
+      "nonEmpty": "Un mot de passe non vide est requis",
+      "lengthAtLeast": "Au moins %d caractères",
+      "shouldContain": "Doit contenir:",
+      "containsAtLeast" : "Contient au moins %d des %d types de caractères suivants :",
+      "lowerCase": "Caractères minuscules (a-z)",
+      "upperCase": "Caractères majuscules (A-Z)",
+      "numbers": "Chiffres (0-9)",
+      "specialCharacters" : "Caractères spéciaux (ex. : !@#$%^&*)",
+      "identicalChars": "Pas plus de %d caractères identiques à la suite (ex. : \"%s\" n'est pas autorisé)"
+    }
   },
   "reset": {
     "title": "Réinitialiser votre mot de passe",
@@ -46,6 +68,7 @@
     "enterSamePasswordText": "S'il vous plaît entrez le même mot de passe.",
     "headerText": "Veuillez saisir votre courriel et mot de passe. Nous vous enverrons un courriel pour confirmer le changement de mot de passe.",
     "serverErrorText": "Erreur de traitement los de réinitialisation du mot de passe.",
-    "userDoesNotExistErrorText": "Utilisateur introuvable."
+    "userDoesNotExistErrorText": "Utilisateur introuvable.",
+    "invalidPassword": "Le mot de passe n'est pas valide."
   }
 }
