@@ -1,4 +1,163 @@
 
+
+## 6.2.12 - (Sep 22, 2014) [YANKED]
+
+## 6.2.11 - (Sep 19, 2014)
+
+### Fixed
+
+ - [lock] Not entering HRD in `username` mode. (`pose`)
+  https://github.com/auth0/lock/commit/24a46109788a780ca07ec3cf045ddd1e01a74f92
+
+### Changed
+
+ - [lock] Add handler for error on client retrieval. Related #48 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/f556b0b1f4ef3d495b08b97bf0f362cd8ba4d522
+ - [lock] Add timeout of 3 seconds to load client configuration data. Fixes #48 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/eabbeaaad26a85f0bd3ef373459c0b0ec3028319
+
+## 6.2.10 - (Sep 19, 2014)
+
+### Fixed
+
+ - [lock] Fixes #43: Move ImageView out of HeaderView (`pose`)
+  https://github.com/auth0/lock/commit/adce57cd12844f2e7e3bb41e81509c86736e6d9c
+ - [lock] Fixes #45: Gravatar animation fixes (`pose`)
+  https://github.com/auth0/lock/commit/337a0b48137e4fe126274ff9457784ad996576bb
+
+## 6.2.9 - (Sep 17, 2014)
+
+### Fixed
+
+ - [lock] Fixes #46: Gravatar image not being displayed on HRD mode. (`pose`)
+  https://github.com/auth0/lock/commit/226473c274b36a869acc059e8a820f1ff84293f5
+
+### Changed
+
+ - [lock] Fixes #47: On HRD take input email and use the first part as suggested username (`pose`)
+  https://github.com/auth0/lock/commit/cc33e02a07b34f7f47a4dbb0c1c637b0780639d7
+
+## 6.2.8 - (Sep 17, 2014)
+
+### Fixed
+
+ - [lock] Fixing wrong filtering of AD connections on HRD mode. (`pose`)
+  https://github.com/auth0/lock/commit/457bf87ca6e2343eae241cb1168d1836b70c06e3
+
+## 6.2.7 - (Sep 16, 2014)
+
+### Fixed
+
+ - [lock] Minor: border-radius of a0-image to 58px. (`pose`)
+  https://github.com/auth0/lock/commit/2c1f5e48bdbe48993e107ecaab1f7720c7600b24
+
+## 6.2.6 - (Sep 16, 2014)
+
+### Added
+
+ - [lock] Fetching gravatar image when user types email(`pose`)
+  https://github.com/auth0/lock/commit/da31a4bbd92f1527a29b75ec616ca6955c9154cd
+  https://github.com/auth0/lock/commit/4fc46a159a03b5cbaebaeb80e415c5e4af9584ee
+  https://github.com/auth0/lock/commit/dfea66a4e453910c5866ec220e412036778d7c8c
+  https://github.com/auth0/lock/commit/facd150b5039466f0720dffdac3a24b51e5ffe05
+  https://github.com/auth0/lock/commit/eca6db338d9bfc99e98cffbb42af5222d7b89b6a
+  https://github.com/auth0/lock/commit/fc3453341da7fc544fb0305560d8551ae2eaefc2
+  https://github.com/auth0/lock/commit/c46b77a3abb7bdb4a07829f45b222c4889670fdc
+  https://github.com/auth0/lock/commit/01b5d751ff79693c7ed28b7c734f5d153790cea7
+  https://github.com/auth0/lock/commit/e4e686aa492928141f0b14f880427ab45acdfa97
+
+## 6.2.5 - (Sep 15, 2014)
+
+### Fixed
+
+ - [lock] fix issue when creating multiples instances with same client_id (`jfromaniello`)
+  https://github.com/auth0/lock/commit/c362cf791277a58f290a00aa90da0c647705caf5
+
+
+## 6.2.4 - (Sep 5, 2014)
+
+### Fixed
+
+ - [lock] Add character inception test (`cristiandouce`)
+  https://github.com/auth0/lock/commit/2f0ae9b1c31d1c4bec394ada6f49ecdc0e561373
+ - [lock] Disable show last login when connection not enabled in client configuration. Fix #26 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/c7672644a0cd0b2d66fe744cf5d091c13a407147
+
+
+## 6.2.3 - (Sep 5, 2014)
+
+### Fixed
+
+ - [lock] Remove alt+space characters (`cristiandouce`)
+  https://github.com/auth0/lock/commit/780ce8a09d8c7e4d95d5f2afae843f2e4b42a747
+
+
+## 6.2.2 - (Sep 4, 2014) [YANKED]
+
+## 6.2.1 - (Sep 4, 2014)
+
+### Fixed
+
+ - [lock] Fixing _isEnterpriseConnection (`pose`)
+  https://github.com/auth0/lock/commit/e9019553aea428039277e5e57d7be1a2b1a62534
+
+## 6.2.0 - (Sep 3, 2014)
+
+### Added
+
+ - [lock] Fixes #13: HRD Support for AD Connectors (widget side) (`pose`)
+  https://github.com/auth0/lock/commit/64d8890b553503706054c612be03178f629c547e
+
+## 6.1.6 - (Sep 3, 2014) [YANKED]
+
+## 6.1.5 - (Sep 3, 2014)
+
+### Fixed
+
+ - [lock] Fixes #25: With emails 30 characters long or more input goes out of control! (`pose`)
+  https://github.com/auth0/lock/commit/728fc588a2593d17b1629a6373a134c8e6d4734b
+
+### Changed
+
+ - [lock] Minor: Adding actionDomain translation. (`pose`)
+  https://github.com/auth0/lock/commit/c3fae3334125d63233ec75db8659b44e0e981972
+
+### Added
+
+ - [lock] Options are optional now (Fixes #30) (`mgonto`)
+  https://github.com/auth0/lock/commit/bd81106809e2db19cc196d50fd0a366a14f2d502
+ - [lock] Added OptionsManager for ResponseType (Fixes #29) (`mgonto`)
+  https://github.com/auth0/lock/commit/71270e48561d8c00d0c49e67934710fc154cc4e2
+ - [lock] Bumping auth0.js version (`mgonto`)
+  https://github.com/auth0/lock/commit/f8404ac6b8e80cf0f94d7257889a6ae59b6c7109
+
+## 6.1.4 - (Aug 29, 2014)
+
+### Fixed
+
+ - [lock] Remove kerberos duplicated .query method (`cristiandouce`)
+  https://github.com/auth0/lock/commit/4a0dc4f0f41cdef037950abce1d9f9b160d3359a
+
+## 6.1.3 - (Aug 29, 2014)
+
+### Fixed
+
+ - [lock] Refix auth0/lock#17 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/4890ac819cfea2693403981899d7f6ab89e08d82
+
+## 6.1.2 - (Aug 29, 2014) [YANKED]
+
+## 6.1.1 - (Aug 29, 2014)
+
+### Fixed
+
+ - [lock] Fix auth0/widget#70 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/f8a349c6e018a641ae9eccde3eabd89378e48d2e
+
+
+
+---
+
 v6.1.3 / 2014-08-29
 ===================
 
