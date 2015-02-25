@@ -1,3 +1,85 @@
+## 6.2.21 - (Oct 15, 2014)
+
+### Added
+
+ - [lock] Password strength implemented (but disabled) in Auth0 Lock. (`pose`)
+  https://github.com/auth0/lock/commit/2c56ebe8602c815a71b7fae78264f82f5b602bde
+  https://github.com/auth0/lock/commit/a1cdca37da5e5e8348c083f3c1d91b2a9ffcc4b8
+  https://github.com/auth0/lock/commit/cbe1d1af3d4eb0348d4a8a129f9824c60a58034e
+  https://github.com/auth0/lock/commit/58c6aeacb66d210ea435a01c590bbd437fcb195b
+  https://github.com/auth0/lock/commit/626465ffe33af5cda41b33c85baf6f687833eea3
+  https://github.com/auth0/lock/commit/8433f874802e62959bc62f565e814cedd093223d
+  https://github.com/auth0/lock/commit/71b475dcb2cd0f8162e0714351ec955cdb88ff75
+
+### Changed
+
+ - [lock] Bump auth0-js@4.3 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/19219a5328a3ce2f500b2cfdda07b1769879b69c
+
+## 6.2.20 - (Oct 7, 2014)
+
+### Fixed
+
+ - [lock] Fix constructor not passing all parameters when not called with new (`cristiandouce`)
+  https://github.com/auth0/lock/commit/97402a25ed760d51d054750905146c947d3889eb
+ - [lock] Fix assetsUrl and cdn passed to initialization being overriden due to missing parenthesis (`cristiandouce`)
+  https://github.com/auth0/lock/commit/2a09952651c99f3876601ade9841df41c0296ce9
+
+## 6.2.19 - (Oct 7, 2014)
+
+### Fixed
+
+ - [lock] fix error with signup on response type code (`jfromaniello`)
+  https://github.com/auth0/lock/commit/05fc749dac737e9f3249153988eed28132c6c54e
+
+## 6.2.18 - (Oct 7, 2014)
+
+### Fixed
+
+ - [lock] fix login with popup and response_type=code (`jfromaniello`)
+  https://github.com/auth0/lock/commit/78940479b8d868f2bdf5c698f9c9319056738574
+
+### Changed
+
+ - [lock] sso is true by default (`jfromaniello`)
+  https://github.com/auth0/lock/commit/857a0f0db8d7a2b293fc0bc1a02074962a50eaf3
+
+## 6.2.17 - (Oct 2, 2014)
+
+### Fixed
+
+ - [lock] Fixes  #52: PhoneGap "last time you signed in with" is broken (`pose`)
+  https://github.com/auth0/lock/commit/71c3980e80db0791005ef0295e9da62d9c8d0672
+
+## 6.2.16 - (Oct 1, 2014)
+
+### Fixed
+
+ - [lock] Fixes #53: Show gravatar picture on "last time you signed in with" (`pose`)
+  https://github.com/auth0/lock/commit/f3b8c182fca8db77a33ae84bd0eacaf393c06e65
+
+## 6.2.15 - (Sep 24, 2014)
+
+### Fixed
+
+ - [lock] Fixing broken event re-firing. (`pose`)
+  https://github.com/auth0/lock/commit/14decea2cea7396b21f27c4f6c3db4c557ebbe3a
+
+
+## 6.2.14 - (Sep 24, 2014)
+
+### Added
+
+ - [lock] i18n: Added norwegian (bokmal) (`johnkors`)
+  https://github.com/auth0/lock/commit/cb659f64e14411fc0560bd1cae0714ddf33367cd
+  https://github.com/auth0/lock/commit/7212c7f152f4900bcad0b0af81feeb0870eb2cb3
+
+## 6.2.13 - (Sep 23, 2014)
+
+### Fixed
+
+ - [lock] Fix passing callback invoked at the same time to setTimeout wich expects a function (`cristiandouce`)
+  https://github.com/auth0/lock/commit/73ba7d291f549e8121d502c5bf7c422abe17f183
 
 
 ## 6.2.12 - (Sep 22, 2014) [YANKED]
