@@ -1,3 +1,404 @@
+
+## 7.1.4 - (Feb 24, 2015)
+
+### Fixed
+
+ - [lock] Fixes #129: /ro mode not working when called with popup: true and sso: false (`pose`)
+  https://github.com/auth0/lock/commit/c80972a89f32a8ea358dd90d54e09c0b7eac2c49
+
+## 7.1.3 - (Feb 17, 2015)
+
+### Changed
+
+ - [lock] Updating to auth0.js 6.0.6:
+   * #112: Fixes problems with Phonegap and db connections.
+   * If dbconn and callback.length <1 arguments we don't open a popup.
+   * Adding popup blocker warning. (`pose`)
+
+  https://github.com/auth0/lock/commit/0e0d726ca58e1119b8914cfadb9ebf1be99741f4
+
+## 7.1.2 - (Feb 17, 2015)
+
+### Fixed
+
+ - [lock] Fixes #122: Correct german translations. (`pose`)
+  https://github.com/auth0/lock/commit/9bb2546f2669eef78c74903ce9fca7088cf9dabe
+
+## 7.1.1 - (Feb 2, 2015)
+
+### Added
+
+ - [lock] Update fr-FR.json (Updated to reflect the lastest en.json): When default language is switched to french, it causes an issue with ionic automatic generated sample downloadable from auth0.com, and probably with any configuration using Lock : (`bonatoc`)
+  https://github.com/auth0/lock/commit/6cc8bdf358fd660e2b641a011b2d342e3dc29362
+
+### Fixed
+
+ - [lock] Fixes #115: Wrong error message on sign up with sso domain. (`pose`)
+  https://github.com/auth0/lock/commit/4d25f3257a97a0fe041c75fadbc3f3a7be4da329
+
+## 7.1.0 - (Feb 2, 2015) [YANKED]
+
+## 7.0.0 - (Jan 27, 2015)
+
+### Changed
+
+ - [lock] Now sso: true works for real (`pose`)
+  https://github.com/auth0/lock/commit/525c1f41f9a1df57baf84b6749cbf2629a8c7915
+ - [lock] Updating to auth0.js 6.0.2 (`pose`)
+  https://github.com/auth0/lock/commit/ece664925a2643ee6be274d353309d1a32c3ed9f
+
+## 6.12.1 - (Jan 23, 2015)
+
+### Changed
+
+ - [lock] Updating to auth0-js 5.5.1 (`pose`)
+  https://github.com/auth0/lock/commit/d0f2d1916963dfccd977017d5cf9418a491309f8
+
+## 6.12.0 - (Jan 23, 2015)
+
+### Added
+
+ - [lock] Add flag to enable cordova plugin auth for Lock. (`hzalaz`)
+  https://github.com/auth0/lock/commit/cf0a7c07a9a84da432da416e177ae92cb4246ad0
+
+## 6.11.0 - (Jan 23, 2015)
+
+### Changed
+
+ - [lock] Updating to auth0.js 5.5.0 (`pose`)
+  https://github.com/auth0/lock/commit/b4da2345ed2827d13300a0d8f42d85ea0d85d68a
+
+## 6.10.6 - (Jan 22, 2015)
+
+### Fixed
+
+ - [lock] Improving iOS detection. (`pose`)
+  https://github.com/auth0/lock/commit/7ea0e77cce25fce09bd09e01537d47cecb81b66e
+
+## 6.10.5 - (Jan 22, 2015)
+
+### Fixed
+
+ - [lock] Fixes #107: Lock looks bad on iPhone. (`pose`)
+  https://github.com/auth0/lock/commit/b0403e3a177129cc22136af131c4bd080362ef68
+
+## 6.10.4 - (Jan 20, 2015)
+
+### Added
+
+ - [lock] add exact as strategy (`siacomuzzi`)
+  https://github.com/auth0/lock/commit/618fe469e3d4a3448664c6960e0bb59268e82011
+
+## 6.10.3 - (Jan 20, 2015)
+
+### Added
+
+ - [lock] Add "exact" social provider icon to Lock (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/a7ea4f0c3f7212c17feb370313b461719d8c38e5
+
+### Fixed
+
+ - [lock] Remove ttf data-uri to reduce file size (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/a9a46fa05eb0a9cfbafe9abb19601f530b963638
+
+## 6.10.2 - (Jan 19, 2015)
+
+### Fixed
+
+ - [lock] fix build for windows (`jfromaniello`)
+  https://github.com/auth0/lock/commit/52bcd01b6c7e71aa82815365634dd7a3289d3919
+
+
+## 6.10.1 - (Jan 16, 2015)
+
+### Added
+
+ - [lock] Update pt-BR.json (`gabrielmoreira`)
+  https://github.com/auth0/lock/commit/9884061ddf71ba3ca4a9d58109802e9f4b1e3497
+ - [lock] Better message for identicalChars (`gabrielmoreira`)
+  https://github.com/auth0/lock/commit/65ef017d381d7babd835408438c000205bdc18d3
+ - [lock] Smaller social button text for a better UI (`gabrielmoreira`)
+  https://github.com/auth0/lock/commit/9efe72537abcc07412d321cb39c3afc4870bddde
+ - [lock] added danish translation (`carnevalle`)
+  https://github.com/auth0/lock/commit/1b7d05f9bb2bbf10789218515213faaa4412ebd3
+ - [lock] Fix path for danish translations (`cristiandouce`)
+  https://github.com/auth0/lock/commit/64a77404874f50aeec0f4831cc015268c3b077fc
+ - [lock] Added da.json to dics_data in lib/i18n/index.js (`carnevalle`)
+  https://github.com/auth0/lock/commit/18b65bbc04cdf5e191dd039bf6629d6d4080486e
+ - [lock] Add support for "signing starting" event (`sandrinodimattia`)
+  https://github.com/auth0/lock/commit/49fe7c650cadf231850498b05f96ac6d5fbd00ed
+ - [lock] Renamed event 'signing starting' to 'signin' + test (`sandrinodimattia`)
+  https://github.com/auth0/lock/commit/d2b387b6a19d4fff2b1986845f5bf1edfed57b79
+ - [lock] Make signin event more verbose. Renamed to signin submit. (`sandrinodimattia`)
+  https://github.com/auth0/lock/commit/b191cd026f796f69f87396b694d04df06694e9de
+
+### Fixed
+
+ - [lock] remove trailing commas to improve compatibility (`nelix`)
+  https://github.com/auth0/lock/commit/20876e56aecedb3a2bde6530e3038a98c0bb6642
+ - [lock] Fixes check for console by doing window.close (`pose`)
+  https://github.com/auth0/lock/commit/adf0ad269f2980f951bb01bf592fd1dd3e15ce20
+
+### Changed
+
+ - [lock] Using auth0.js version 5.2.2 (`pose`)
+  https://github.com/auth0/lock/commit/6b4f5ed8efc7b3e8ebb3a1c1d33b40f474d84e96
+
+
+## 6.10.0 - (Jan 16, 2015) [YANKED]
+
+## 6.9.0 - (Jan 16, 2015) [YANKED]
+
+## 6.8.4 - (Jan 8, 2015) [YANKED]
+
+## 6.8.3 - (Jan 6, 2015) [YANKED]
+
+## 6.8.2 - (Jan 2, 2015) [YANKED]
+
+## 6.8.1 - (Jan 2, 2015) [YANKED]
+
+## 6.8.0 - (Dec 31, 2014) [YANKED]
+
+## 6.7.1 - (Dec 30, 2014) [YANKED]
+
+## 6.7.0 - (Dec 24, 2014) [YANKED]
+
+## 6.6.5 - (Dec 15, 2014)
+
+### Fixed
+
+ - [lock] remove duplicate keys which break json5
+
+This relates to #54, because most of the other translations require json5-loader for this project to be built with webpack (browserify alternative).
+Another idea would be to fix the trailing commas in some of the other translations so they could be loaded with json-loader (which supports duplicate keys). (`nelix`)
+  https://github.com/auth0/lock/commit/72d5c63ad12a18f019a8deeadd7f3bb6108c97d2
+
+## 6.6.4 - (Dec 15, 2014)
+
+### Fixed
+
+ - [lock] Password Strength: Fix positioning of pwd strength tooltip, move to css only positioning. (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/8e9bc397526d338ef8d61da92a3b4b08f2d2b2d7
+
+## 6.6.3 - (Dec 15, 2014)
+
+### Changed
+
+ - [lock] override usernameStyle if required by connection (`siacomuzzi`)
+  https://github.com/auth0/lock/commit/58f97c2433aa0b93f3b1b77c36c5ce5734751008
+
+### Fixed
+
+ - [lock] Fix strict equal to null. We need to make the null handling clearer in future updates as @pose well suggested (`cristiandouce`)
+  https://github.com/auth0/lock/commit/af118f4a1197f305013ba001f44c9201c01560dd
+
+## 6.6.2 - (Dec 3, 2014)
+
+### Added
+
+ - [lock] auth0 lock norwegian translation included (`Nichiatu`)
+  https://github.com/auth0/lock/commit/e477e8eda0f9bd8f06587a1669a1336c17e1bcc3
+  https://github.com/auth0/lock/commit/206fe4b682691a4d3f77c679fb2c34e2978e9ab1
+  https://github.com/auth0/lock/commit/35baf21d4cf51ac07574b21059552e6d21eaec2b
+
+### Changed
+
+ - [lock] Updated auth0.js version (`mgonto`)
+  https://github.com/auth0/lock/commit/c661e697e90b830aa0e6dce2041db4471c7d9bdc
+
+## 6.6.1 - (Nov 18, 2014)
+
+### Fixed
+
+ - [lock] Fixes for network error showing async to the load success due to timeout malfunction (`cristiandouce`)
+  https://github.com/auth0/lock/commit/f5db6155eddd4690d163c1ba7273a7bb0993186f
+
+## 6.6.0 - (Nov 11, 2014)
+
+### Fixed
+
+ - [lock] Fixing broken translation (`pose`)
+  https://github.com/auth0/lock/commit/1f0cd7549a9c1253aa26d7668f2b8f63774c82df
+ - [lock] fix overflow problem (`gravityonmars`)
+  https://github.com/auth0/lock/commit/efa4c413aae26dbc5faa2a298f254f26fc894bce
+ - [lock] fixes css (`gravityonmars`)
+  https://github.com/auth0/lock/commit/77ddfaed1276a0281082761e68617553c29e6a8c
+ - [lock] pixel perfect (`gravityonmars`)
+  https://github.com/auth0/lock/commit/e52dbf0d25fae6c52559c2142d939bde2a629f8c
+ - [lock] Fixing default.less merge errors (`pose`)
+  https://github.com/auth0/lock/commit/cf4bc13a08d68ef39984e817e700e5ad7290ecf7
+
+### Added
+
+ - [lock] Password strength test (first approach). (`pose`)
+  https://github.com/auth0/lock/commit/4e08e2f103f43701e1e14b3ebce175d74574d0af
+
+## 6.5.0 - (Nov 7, 2014)
+
+### Added
+
+ - [lock] Fixes #74: Make Lock fetch Auth0 information from CDN (`pose`)
+  https://github.com/auth0/lock/commit/d2cc52f482d30fab826d2241c6ac8388b227cf53
+ - [lock] Revert "Fixes #74: Make Lock fetch Auth0 information from CDN" (`pose`)
+  https://github.com/auth0/lock/commit/51915631b72a32dacfe6bad67c3f5a75aeec6727
+ - [lock] Fixing broken test. (`pose`)
+  https://github.com/auth0/lock/commit/b1dbf0005e8055e1b6eacc8e26c13b589885f9be
+ - [lock] Fixes #74: Make Lock fetch Auth0 information from CDN (`pose`)
+  https://github.com/auth0/lock/commit/3be05bf90ce63219f8a728d9c40542899dece6c2
+ - [lock] Password strength implemented (first approach) in Auth0 Lock. (`pose`)
+  https://github.com/auth0/lock/commit/a9fe02b9524df73c6f80866a8be932aa78a315a2
+ - [lock] Adding password strength to reset mode. (`pose`)
+  https://github.com/auth0/lock/commit/e53ed893e8387e150e8ee8a6feb013ccb1041e52
+ - [lock] i18n: Adding invalidPassword message to reset. (`pose`)
+  https://github.com/auth0/lock/commit/1d9e980db8d6dbde2a56c5c07c13a2b08ae6943e
+ - [lock] Moving password strength into bindAll. (`pose`)
+  https://github.com/auth0/lock/commit/6c001a1ece02c277ce8e8fe8c2e85070f22f9014
+ - [lock] Merge remote-tracking branch 'vctrfrnndz/password-strength' into password-strength (`pose`)
+  https://github.com/auth0/lock/commit/70d1444b6ae8a953d6e2b77c7cf255d6999f1d51
+
+### Fixed
+
+ - [lock] Better error handling on weak password. (`pose`)
+  https://github.com/auth0/lock/commit/4bee74e92070dbda3b0441b09067b968e493b428
+ - [lock] Fixing broken package.json (`pose`)
+  https://github.com/auth0/lock/commit/96662a443bde70b2ff8b0d653c503a55b92c0933
+
+## 6.4.1 - (Nov 7, 2014) [YANKED]
+
+## 6.4.0 - (Nov 5, 2014)
+
+### Added
+
+ - [lock] handle `requires_username` in db connection (`[object Object]`)
+  https://github.com/auth0/lock/commit/1e53915fafca55cb821fadc65049a1f7068a1d66
+ - [lock] sign-up tests with `requires_username` (`[object Object]`)
+  https://github.com/auth0/lock/commit/72053c72f23d402089069994a560263deb3b0b86
+ - [lock] Move _isUsernameRequired to options-manager lib module (`cristiandouce`)
+  https://github.com/auth0/lock/commit/eedf8af250cae6990edfb7546091d5afccb2ed40
+ - [lock] Remove forgotten debugger (`cristiandouce`)
+  https://github.com/auth0/lock/commit/5b389fa50483861a6ee00f879c51a3fb5088f840
+ - [lock] Update input borders for new setup of username+email and any combination (`cristiandouce`)
+  https://github.com/auth0/lock/commit/906552fc65c61749bff5dd8f86fc56e64d0d062b
+ - [lock] Update to parse and mark username exists error when creating with requires_username database (`cristiandouce`)
+  https://github.com/auth0/lock/commit/5eb414707a992ee55a70e24e8e762f1e0c69bacc
+ - [lock] Fix styles for input borders (`cristiandouce`)
+  https://github.com/auth0/lock/commit/e8fe6c9cecda386331444af985a828f23df9f148
+ - [lock] Fix placeholder for username when requires_username enabled (`cristiandouce`)
+  https://github.com/auth0/lock/commit/3df63b32c5c6bc6a0366af120c91e4be14f15b98
+ - [lock] Fix appearace of icons for email/username/password inputs in different modes (`cristiandouce`)
+  https://github.com/auth0/lock/commit/f7a0e8b6937040cee95cb7ca6acd66d40706bfcf
+ - [lock] Adding i18n for password policies. (`pose`)
+  https://github.com/auth0/lock/commit/b235c3e0b5fba598c8a01643ca2b6002c7481e3d
+ - [lock] Update tests for requires_username mode for database connection (`cristiandouce`)
+  https://github.com/auth0/lock/commit/574512c4e964303485f4c5f8e69bc695923e0dcd
+
+### Changed
+
+ - [lock] Update package.json with auth0-js 5.1.0 release (`cristiandouce`)
+  https://github.com/auth0/lock/commit/500a3564cba4bd76cbce5d952a30c52457a04390
+
+## 6.3.7 - (Nov 3, 2014)
+
+### Added
+
+ - [lock] Add theme option with a0-theme-default as default theme. Enables theme-less lock by setting to false (`cristiandouce`)
+  https://github.com/auth0/lock/commit/21037dc4d888a6b226dad3132913b1e678721cce
+ - [lock] Move zocial.less as part of the theme default (`cristiandouce`)
+  https://github.com/auth0/lock/commit/7110d4bc06c457683a51dca93ac51988fd9ac5d8
+ - [lock] Fix chaining of CSS for theme default (`cristiandouce`)
+  https://github.com/auth0/lock/commit/cc6769b4b2b1a2699a679dfcc6720bb6917503e7
+ - [lock] Change styling to 2nd iteration (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/22d8bebd67864e338dda6df58b81427d5596f7a4
+ - [lock] Switch .checked rules to darker green on mobile (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/78e466ee6d4e1ecc58b0dc96308c5bd40623e6ce
+ - [lock] Unify child list color mobile/desktop (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/4592226931ee36fe35dc1010e81a3a593c46cf12
+ - [lock] Update font for icons (`cristiandouce`)
+  https://github.com/auth0/lock/commit/5e2ecf63eea6352a84bc8efad09964ecc56f92c4
+
+### Fixed
+
+ - [lock] Fix iOS focus issue (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/a8846d6f234762ea3e91a73bfc70f713c6f27e7e
+ - [lock] Fixing how password strength list was rendered. (`pose`)
+  https://github.com/auth0/lock/commit/6df1ae2b7a62c8d8c99d54d03a0ec7c9aff39d33
+
+
+## 6.3.6 - (Oct 30, 2014)
+
+### Added
+
+ - [lock] Update credentials in example file, add styles and new behavior to password-strength module (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/73e168ec307692d270bdca184848305efb6d6034
+ - [lock] Prevent blur from removing the ruleset on smaller screens, as user may need to unfocus to read the whole list (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/c4ba6a9755cc563b41080ff2e4ae7fc19943c87b
+ - [lock] Always show all the rules (`vctrfrnndz`)
+  https://github.com/auth0/lock/commit/209f59c3b48ad88341182b696bdae672d2b19666
+
+## 6.3.5 - (Oct 24, 2014) [YANKED]
+
+## 6.3.4 - (Oct 23, 2014)
+
+### Added
+
+ - [lock] Update pt-BR dictionary (`cristiandouce`)
+  https://github.com/auth0/lock/commit/2f69fdc4d44d8da26e6c40a0c07a99663773077e
+
+## 6.3.3 - (Oct 23, 2014)
+
+### Fixed
+
+ - [lock] Load Gravatar over HTTPS
+
+To avoid Google Chrome (and other browsers) display insecure resources warning:
+
+> However, this page includes other resources which are not secure. These resources can be viewed by others while in transit, and can be modified by an attacker to change the look of the page. (`dentarg`)
+  https://github.com/auth0/lock/commit/6db06661a17e382a6a0c8a6f4a8b40c90549dd2f
+
+## 6.3.2 - (Oct 17, 2014)
+
+### Fixed
+ - [lock] Fix socialBigButtons for showSignup render (`cristiandouce`)
+  https://github.com/auth0/lock/commit/2e66ed3aa3c02be1ab8f5d5db681f31fe52bd56a
+
+## 6.3.1 - (Oct 17, 2014)
+
+### Fixed
+
+ - [lock] Fix invoke of callback on password reset action (`cristiandouce`)
+  https://github.com/auth0/lock/commit/9d199395f4a35dbea25b8ac29f6707c53242cfbb
+
+## 6.3.0 - (Oct 15, 2014)
+
+### Added
+
+ - [lock] Add signupAutoLogin first attempt. Related #57 and auth0/widget#29 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/ab585f0359f06eb838deabfd21866c59731d5512
+ - [lock] Add usernameFromEmail default to true for AD signin connections. Related #57 (`cristiandouce`)
+  https://github.com/auth0/lock/commit/fb0651730393483a9005cbe1dee5e1020f329ad4
+
+### Changed
+
+ - [lock] Update validate and submit methods. Make them part of the constructor and cleanup onsubmit event handler (`cristiandouce`)
+  https://github.com/auth0/lock/commit/aad05db65aff5365c51efe4f77f2085dc80a6480
+ - [lock] Rename signupAutoLogin to loginAfterSignup (`cristiandouce`)
+  https://github.com/auth0/lock/commit/f3bc7e9374b1154c9dbf5107256dee174a5b84e6
+ - [lock] Rename usernameFromEmail option to defaultADUsernameFromEmail (`cristiandouce`)
+  https://github.com/auth0/lock/commit/7c00af1cad7254f20a03a25f59b3d3d7757f62c3
+ - [lock] Rename defaultADUsernameFromEmail to defaultADUsernameFromEmailPrefix (`cristiandouce`)
+  https://github.com/auth0/lock/commit/f96a92a5c470fe3c6cef4a9624704430c880b973
+ - [lock] Bump auth0-js@5.0.0 and fix tests (`cristiandouce`)
+  https://github.com/auth0/lock/commit/42f04c8fbe524f56fcc324437e62865e216d3ab7
+
+### Fixed
+
+ - [lock] Add properly handling of callback if provided (`cristiandouce`)
+  https://github.com/auth0/lock/commit/5d5f2253b08789d8100c2ef33be800f9576edd51
+ - [lock] Fix container check call (`cristiandouce`)
+  https://github.com/auth0/lock/commit/8e2f2f8eb82ebd4b3632e80bd1ae605b03b4b655
+
+
+
 ## 6.2.21 - (Oct 15, 2014)
 
 ### Added
