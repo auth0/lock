@@ -1,3 +1,7 @@
+## 7.1.5 - (Feb 25, 2015)
+
+ - [lock] fix(i18n): fix some minor german translation inconsistencies (`gjungb`)
+  https://github.com/auth0/lock/commit/5aa6cd9284e803d158071a8575bf4fa9359e8449
 
 ## 7.1.4 - (Feb 24, 2015)
 
