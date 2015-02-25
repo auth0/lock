@@ -1045,7 +1045,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
   this._showError();
   this._focusError();
 
-  if (this.options.popup && this.options.sso && 'token' === this.options.responseType) {
+  if (this.options.popup && 'token' === this.options.responseType) {
     //This will use winchan etc...
     return this._signinPopupNoRedirect(connection.name, this.options.popupCallback, loginOptions, panel);
   }
