@@ -26,12 +26,12 @@
     "title": "Anmelden",
     "action": "Anmelden",
     "emailPlaceholder": "E-Mail Adresse",
-    "passwordPlaceholder": "Erstellen Sie ein Kennwort",
+    "passwordPlaceholder": "Erstellen Sie ein Passwort",
     "cancelAction": "Abbrechen",
-    "headerText": "Bitte geben Sie Ihre E-Mail Adresse und Passwort",
+    "headerText": "Bitte geben Sie Ihre E-Mail Adresse und Passwort an",
     "footerText": "Durch Klicken auf \"Anmelden\", stimmen Sie unseren Nutzungsbedingungen oder Datenschutzrichtlinien zu.",
-    "signupOnSSODomainErrorText": "Die Domain {domain} wurde für Single Sign On konfiguriert. Sie können daher kein neues Konto erstellen. Bitte verscchen Sie stattdessen sich direkt anzumelden.",
-    "serverErrorText": "Gab es Fehler beim Verarbeiten der Daten auf dem Server."
+    "signupOnSSODomainErrorText": "Die Domain {domain} wurde für Single Sign On konfiguriert. Sie können daher kein neues Konto erstellen. Bitte versuchen Sie stattdessen sich direkt anzumelden.",
+    "serverErrorText": "Es gab einen Fehler beim Verarbeiten der Daten auf dem Server."
   },
   "reset": {
     "title": "Passwort zurücksetzen",
@@ -41,7 +41,7 @@
     "repeatPasswordPlaceholder": "Neues Passwort bestätigen",
     "cancelAction": "Abbrechen",
     "successText": "Wir haben Ihnen eine E-Mail zum Zurücksetzen Ihres Passworts geschickt.",
-    "enterSamePasswordText": "Bitte geben Sie das gleiche Kennwort erneut ein.",
+    "enterSamePasswordText": "Bitte geben Sie das gleiche Passwort erneut ein.",
     "headerText": "Bitte geben Sie Ihre E-Mail Adresse und das neue Passwort ein. Wir senden Ihnen dann eine E-Mail zur Bestätigung der Passwortänderung.",
     "serverErrorText": "Es gab einen Fehler beim Verarbeiten des neuen Passworts."
   }
