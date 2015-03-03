@@ -161,8 +161,8 @@ describe('sign up', function () {
     .showSignup(this.options);
   });
 
-  describe('signup with social buttons', function() { 
-    it('should show social big buttons whit signup text when specified', function(done) {
+  describe('signup with social buttons', function() {
+    it('should show social big buttons with signup text when specified', function(done) {
       var auth0 = this.auth0;
 
       auth0
@@ -174,7 +174,7 @@ describe('sign up', function () {
       })
       .showSignup({
         socialBigButtons: true
-      }); 
+      });
     });
 
     it('should show a separator between social and db connections', function(done) {
@@ -191,11 +191,12 @@ describe('sign up', function () {
       .showSignup();
     });
 
-    it('should only show social buttons when no database connection', function(done) {
+    it('should only show social buttons when no database connection in list', function(done) {
       var auth0 = this.auth0;
 
       auth0
       .once('signup ready', function() {
+        expect($('.a0-header h1').text()).to.be(auth0.options.i18n.t('signup').title);
         expect($('.a0-instructions').hasClass('a0-hide')).to.be(true);
         expect($('.a0-inputs').hasClass('a0-hide')).to.be(true);
         expect($('.a0-action').hasClass('a0-hide')).to.be(true);
@@ -203,7 +204,27 @@ describe('sign up', function () {
         done();
       })
       .showSignup({
-        connections: ['google-oauth2', 'windowslive'],
+        connections: ['google-oauth2', 'windowslive']
+      });
+    });
+
+    it('should only show social buttons with signup text when no database connection in list', function(done) {
+      var auth0 = this.auth0;
+
+      auth0
+      .once('signup ready', function() {
+        expect($('.a0-header h1').text()).to.be(auth0.options.i18n.t('signup').title);
+        expect($('.a0-googleplus span').text()).to.be(auth0.options.i18n.t('signupSocialButton').replace('{connection:title}', 'Google'));
+        expect($('.a0-windows span').text()).to.be(auth0.options.i18n.t('signupSocialButton').replace('{connection:title}', 'Microsoft Account'));
+        expect($('.a0-instructions').hasClass('a0-hide')).to.be(true);
+        expect($('.a0-inputs').hasClass('a0-hide')).to.be(true);
+        expect($('.a0-action').hasClass('a0-hide')).to.be(true);
+        expect($('.a0-separator').hasClass('a0-hide')).to.be(true);
+        done();
+      })
+      .showSignup({
+        socialBigButtons: true,
+        connections: ['google-oauth2', 'windowslive']
       });
     });
   });
