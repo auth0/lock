@@ -47,8 +47,10 @@ describe('password strength', function () {
       expect($('#a0-lock .a0-password_policy').html()).not.to.be.equal('');
       // Only the lower case rule is satisfied
       expect($('#a0-lock .a0-password_policy .a0-checked').length).to.be.equal(1);
-      // TODO Panel does contain class that displays rules
-      // expect($('#a0-lock .a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(true);
+      // Panel does contain class that displays rules
+      expect($('#a0-lock .a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(true);
+      // Password's input field does contain class for invalid passwords
+      expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(true);
 
       done();
     });
@@ -72,10 +74,47 @@ describe('password strength', function () {
       // All 6 rules are satisfied
       expect($('#a0-lock .a0-password_policy .a0-checked').length).to.be.equal(6);
 
-      // TODO Panel does not contain class that displays rules
-      // expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(false);
+      // Panel does not contain class that displays rules
+      expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(false);
+
+       // Password's input field does contain class for invalid passwords
+      expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(false);
 
       done();
+    });
+
+    this.widget.showSignup(this.options);
+  });
+
+  it('should only display message when the user has entered something', function(done) {
+    this.widget.once('ready', function () {
+      password  = $('#a0-lock .a0-emailPassword .a0-password input');
+
+      // Password is empty
+      expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(false);
+      expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(false);
+      
+      // The user enter an invalid password
+      type(password, 'hello');
+      expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(true);
+      expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(true);
+
+      // The user leaves the password field
+      bean.fire(password[0], 'blur');
+      expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(false);
+      expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(true);
+
+      // The user focus the password field
+      bean.fire(password[0], 'focus');
+      expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(true);
+      expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(true);
+
+      // The user clears the password
+      type(password,'');
+      expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(true);
+      expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(true);
+
+      done()
     });
 
     this.widget.showSignup(this.options);

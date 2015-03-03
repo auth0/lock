@@ -7282,6 +7282,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #999;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box.a0-error-input input,
+#a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box.a0-error-input input,
+#a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box.a0-error-input input,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box.a0-error-input input,
+#a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box.a0-error-input .a0-icon-budicon,
+#a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box.a0-error-input .a0-icon-budicon,
+#a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box.a0-error-input .a0-icon-budicon,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box.a0-error-input .a0-icon-budicon {
+  color: red;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-email input,
 #a0-lock.a0-theme-default .a0-panel .a0-username input,
 #a0-lock.a0-theme-default .a0-panel .a0-password input,
