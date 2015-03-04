@@ -383,6 +383,32 @@ describe('Auth0Lock', function () {
       .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
 
+   it.skip('should require a recaptcha token when login fails three or more times', function(done) {
+      var attempts = 0;
+
+      function login() {
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('j@j.com');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('yy');
+        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        attempts++;
+      }
+
+      widget
+      .once('ready', function () {
+        login();
+      })
+      .on('signin ready', function() {
+        if (attempts >= 3) {
+          expect($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').attr('disabled')).to.be('disabled');  
+          done();
+        } else {
+          expect($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').attr('disabled')).to.be(undefined);  
+          login();
+        }
+      })
+      .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
+    });
+
     it('should signin with database connection (auth0 strategy) specifying state authParam', function (done) {
       client.login = function (options) {
         expect(options.state).to.equal('foo');

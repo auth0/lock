@@ -1020,14 +1020,17 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
   var options = this.options;
   var email_input = panel.query('input[name=email]');
   var password_input = panel.query('input[name=password]');
+  var recaptcha_input = panel.query('input[name=recaptcha-token]');
   var username = email_input.val();
   var password = password_input.val();
+  var recaptcha_token = recaptcha_input.val();
   connection = connection || options._getAuth0Connection(username);
 
   var loginOptions = {
     connection: connection.name,
     username: connection.domain ? username.replace('@' + connection.domain, '') : username,
     password: password,
+    recaptcha_token: recaptcha_token,
     popup: self.options.popup,
     popupOptions: self.options.popupOptions,
     sso: self.options.sso
@@ -1058,6 +1061,11 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
 
   this.$auth0.login(loginOptions, function (err) {
     if (!err) return;
+
+    // Is there a better way to comunicate with panels?
+    if (err.require_recaptcha && 'function' === typeof panel.requireRecaptcha) {
+      panel.requireRecaptcha(err.require_recaptcha);
+    }
 
     // display `panel`
     self.setPanel(panel);

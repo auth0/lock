@@ -27,6 +27,7 @@
     "blueimp-md5": "^1.1.0",
     "bonzo": "^1.3.6",
     "domready": "~0.2.13",
+    "jsonp": "^0.1.0",
     "password-sheriff": "^0.4.0",
     "sizzle": "^2.0.0",
     "trim": "0.0.1",
