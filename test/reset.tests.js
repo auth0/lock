@@ -27,8 +27,14 @@ describe('reset', function () {
     this.widget.hide(done);
   });
 
-  it('should show the loading pane on submit', function (done) {
+  describe('Reset widget', function() {
+    it('should show the loading pane on submit', function (done) {
     var widget = this.widget;
+    var readyLoading = false;
+
+    this.client.changePassword = function(options, callback) {
+      callback(null, "success message");
+    };
 
     widget
     .once('reset ready', function () {
@@ -38,13 +44,18 @@ describe('reset', function () {
 
       widget
       .once('loading ready', function () {
+        readyLoading = true;
         expect($('#a0-lock h1').html()).to.be(widget.options.i18n.t('reset:title'));
-        done();
       });
 
       bean.fire($('.a0-reset form')[0], 'submit');
     })
-    .showReset();
+    .showReset({}, onsuccess);
+
+    function onsuccess() {
+      expect(readyLoading).to.be(true);
+      done();
+    }
   });
 
   it('should invoke callback function when reset is successfull', function(done) {
@@ -95,6 +106,7 @@ describe('reset', function () {
       expect(message).to.be(undefined);
       done();
     }
+  });
   });
 
   describe('when requires_username is enabled', function() {
