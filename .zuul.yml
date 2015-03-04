@@ -4,7 +4,7 @@ tunnel:
   authtoken: 5P5swTMSDDRlnMBkBWJt
   proto: tcp
 scripts:
-  - "/test/support/jquery-1.10.1.min.js"
+  - "/node_modules/jquery/dist/jquery.min.js"
   - "/node_modules/expect.js/expect.js"
   - "/node_modules/bean/bean.min.js"
   - "/build/auth0-lock.js"
