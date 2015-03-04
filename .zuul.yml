@@ -2,7 +2,7 @@ ui: mocha-bdd
 tunnel:
   type: ngrok
   authtoken: 5P5swTMSDDRlnMBkBWJt
-  proto: tcp
+  proto: https
 scripts:
   - "/test/support/jquery-1.10.1.min.js"
   - "/node_modules/expect.js/expect.js"
