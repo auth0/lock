@@ -149,7 +149,7 @@ module.exports = function (grunt) {
         stderr: true
       },
       'test-phantom': {
-        cmd: node_bin('zuul') + ' --ui mocha-bdd --phantom 9999 -- test/*.js',
+        cmd: node_bin('zuul') + ' --ui mocha-bdd --disable-tunnel --phantom 9999 -- test/*.js',
         stdout: true,
         stderr: true
       }
