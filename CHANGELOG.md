@@ -1,3 +1,17 @@
+## 7.1.7 - (March 04, 2015)
+
+### Fixed
+ - [lock] Improved password error display. Fixes https://github.com/auth0/lock/issues/83 (`tehsis`)
+  https://github.com/auth0/lock/commit/2902e7b0eb3f53f6a627a613c0faccfb93813efe
+
+## 7.1.6 - (March 03, 2015)
+
+### Fixed
+
+ - [lock] Properly handles signup when only social connections are used. Fixes https://github.com/auth0/lock/issues/119 (`tehsis`)
+  https://github.com/auth0/lock/commit/17b93a694d74c01d3ab45f5970203fcca83faecb
+
+
 ## 7.1.5 - (Feb 25, 2015)
 
 ### Fixed
