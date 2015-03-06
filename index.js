@@ -10,6 +10,7 @@ require('./lib/insert-css');
 
 var bonzo = require('bonzo');
 var _ = require('underscore');
+var debug = require('debug')('auth0-lock');
 var Auth0 = require('auth0-js');
 var $ = require('./lib/bonzo-augmented');
 var EventEmitter = require('events').EventEmitter;
@@ -209,9 +210,9 @@ Auth0Lock.prototype.onclientloadsuccess = function() {
 
   // We should use debug and log stuff without console.log
   // and only for debugging
-  if (window.console && console.log) {
-    console.log('Client configuration loaded');
-  }
+  // XXX: events not yet publicly supported
+  this.emit('client fetch success');
+  debug('Client fetch success');
 }
 
 /**
@@ -240,9 +241,11 @@ Auth0Lock.prototype.onclientloaderror = function(err) {
   // reset script loading state
   global.window.Auth0.script_tags[this.$options.clientID] = null;
 
-  if (window.console && console.log) {
-    console.log(new Error('Failed to load client configuration for ' + this.$options.clientID));
-  };
+  var error = new Error('Failed to load client configuration for ' + this.$options.clientID);
+
+  // XXX: events not yet publicly supported
+  this.emit('client fetch error', error);
+  debug('Error loading client: %s', error);
 }
 
 Auth0Lock.prototype.showNetworkError = function() {
@@ -1056,6 +1059,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
 
   this._loadingPanel({ mode: 'signin', message: message });
 
+  debug('sigin in with auth0');
   this.$auth0.login(loginOptions, function (err) {
     if (!err) return;
 
@@ -1114,6 +1118,7 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
         sso: self.options.sso
       }, self.options.authParams, extraParams);
 
+      debug('sigin with social')
       this.$auth0.login(loginOptions);
     }
   }
@@ -1159,6 +1164,7 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
   var message = null == loginOptions.username ? this.options.i18n.t('signin:popupCredentials') : null;
   this._loadingPanel({ mode: 'signin', message: message });
 
+  debug('sigin in with popup');
   this.$auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
     var args = Array.prototype.slice.call(arguments, 0);
     if (!err) return callback.apply(self, args), self.hide();
