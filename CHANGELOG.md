@@ -1,3 +1,12 @@
+## 7.1.8 - (March 06, 2015)
+
+### Changed
+
+ - [lock] Changed console.log's calls with debug module. Fixes https://github.com/auth0/lock/issues/106 (`tehsis`)
+  https://github.com/auth0/lock/commit/8f84b883ea19a4acd1ef820304ed849c27972edb
+   https://github.com/auth0/lock/commit/bb88ffc9dcd0ed76f199485eb095b122a457a3a0
+   https://github.com/auth0/lock/commit/c00b483dd54b5cfc57b7f63185461273ef92bf01
+
 ## 7.1.7 - (March 04, 2015)
 
 ### Fixed
