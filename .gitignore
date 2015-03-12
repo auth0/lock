@@ -23,3 +23,5 @@ build/auth0-lock-*.js.map
 # do not include bundle
 build
 example/auth0.js
+
+.idea
