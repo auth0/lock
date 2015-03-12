@@ -18,6 +18,7 @@
     "signupText":                  "Sign Up",
     "forgotText":                  "Reset password",
     "cancelAction":                "Cancel",
+    "footerText":                  "",
     "emailPlaceholder":            "Email",
     "usernamePlaceholder":         "Username",
     "passwordPlaceholder":         "Password",
@@ -59,7 +60,7 @@
       "specialCharacters" : "Special characters (e.g. !@#$%^&*)",
       "identicalChars": "No more than %d identical characters in a row (e.g., \"%s\" not allowed)"
     }
-    
+
   },
   "reset": {
     "title":                       "Reset Password",
@@ -68,6 +69,7 @@
     "passwordPlaceholder":         "New Password",
     "repeatPasswordPlaceholder":   "Confirm New Password",
     "cancelAction":                "Cancel",
+    "footerText":                  "",
     "successText":                 "We've just sent you an email to reset your password.",
     "enterSamePasswordText":       "Please enter the same password.",
     "headerText":                  "Please enter your email and the new password. We will send you an email to confirm the password change.",
