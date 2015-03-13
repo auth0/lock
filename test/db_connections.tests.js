@@ -108,10 +108,43 @@ describe('db connections', function () {
         setTimeout(function() {
           expect($('.a0-email .a0-input-box').hasClass('a0-error-input')).to.equal(true);
           expect($('.a0-password .a0-input-box').hasClass('a0-error-input')).to.equal(true);
+          expect($('.a0-error').text()).to.equal(auth0.options.i18n.t('signin:wrongEmailPasswordErrorText'));
           done();
         }, 0);
       })
       .showSignin(this.options);
+    });
+
+    it('should remove error if the user changes the view', function(done) {
+      var error = $('.a0-signin .a0-error').html();
+      var auth0 = this.widget;
+      var submitted = false;
+
+      this.options.connections = [ 'foobar' ];
+
+      auth0
+      .once('ready', function () {
+        $('#a0-signin_easy_email').val('j@j.com');
+        $('#a0-signin_easy_password').val('yy');
+        var form = $('.a0-notloggedin form')[0];
+        bean.fire(form, 'submit');
+        submitted = true;
+      })
+      .on('signin ready', function() {
+        if (!submitted) return;
+        setTimeout(function() {
+          var signup_button = $('.a0-sign-up')[0];
+          expect($('.a0-email .a0-input-box').hasClass('a0-error-input')).to.equal(true);
+          expect($('.a0-password .a0-input-box').hasClass('a0-error-input')).to.equal(true);
+          expect($('.a0-error').text()).to.equal(auth0.options.i18n.t('signin:wrongEmailPasswordErrorText'));
+          bean.fire(signup_button, 'click');
+        }, 0);
+      })
+      .on('signup ready', function() {
+        expect($('.a0-error').text()).to.equal('');
+        done();
+      })
+      .show(this.options);
     });
   });
 
