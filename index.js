@@ -181,8 +181,7 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
     global.window.Auth0.script_tags[this.$options.clientID] = script;
 
     // Insert script in DOM head
-    var firstScript = document.getElementsByTagName('script')[0];
-    firstScript.parentNode.insertBefore(script, firstScript);
+    document.getElementsByTagName('head')[0].appendChild(script);
   }
 
   // Handle load and error for client config
