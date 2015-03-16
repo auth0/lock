@@ -7114,7 +7114,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   zoom: 1;
   /*==========  Forms  ==========*/
   /*-----  End of forms  ------*/
-  /*==========  Signup  ==========*/
+  /*==========  Footer text  ==========*/
   /*==========  Password Policy  ==========*/
   /*==========  Forgot Password  ==========*/
   /*-----  End of Forgot Password  ------*/
@@ -7496,6 +7496,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-signup-footer small {
+  margin-top: 10px;
+  display: block;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-signin-footer small {
+  margin-top: 10px;
+  display: block;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-reset-footer small {
   margin-top: 10px;
   display: block;
 }
