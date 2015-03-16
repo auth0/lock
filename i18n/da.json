@@ -9,7 +9,7 @@
   "networkError":                  "Vi kunne ikke få kontakt til serveren.<br/>Prøv venligst igen.",
   "signin": {
     "title":                       "Log ind",
-    "action":                      "Access",
+    "action":                      "Log ind",
     "actionDomain":                "Log ind på {domain}",
     "all":                         "Vis alle",
     "strategyEmailEmpty":          "Email er tom.",
