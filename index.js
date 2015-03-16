@@ -797,6 +797,9 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
   var el = 'function' === typeof panel.render ? panel.render() : panel;
   var pname = 'function' === typeof panel.render ? panel.name : (name || 'signin');
 
+  //Removes error messages on new views.
+  this._showError();
+  
   this.query('.a0-mode-container').html(el);
   this.emit('%s ready'.replace('%s', pname));
 };
