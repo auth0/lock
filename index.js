@@ -1181,6 +1181,8 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
     } else if (err.message === 'access_denied') {
       // Permissions not granted
       self._showError(self.options.i18n.t('signin:userConsentFailed'));
+    } else if (err.status === 0) {
+      self._showError(self.options.i18n.t('networkError'));
     } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else {
