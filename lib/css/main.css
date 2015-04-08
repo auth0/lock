@@ -7098,6 +7098,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /*==========  Password Policy  ==========*/
   /*==========  Forgot Password  ==========*/
   /*-----  End of Forgot Password  ------*/
+  /*==========  Country Codes List  ==========*/
+  /*-----  End of Country Codes List  ------*/
 }
 
 #a0-lock.a0-theme-default .a0-panel * {
@@ -7245,7 +7247,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box,
 #a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box,
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box,
-#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box {
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box,
+#a0-lock.a0-theme-default .a0-panel .a0-phone .a0-input-box,
+#a0-lock.a0-theme-default .a0-panel .a0-code .a0-input-box {
   position: relative;
   height: 50px;
 }
@@ -7253,7 +7257,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box i,
 #a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box i,
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box i,
-#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box i {
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box i,
+#a0-lock.a0-theme-default .a0-panel .a0-phone .a0-input-box i,
+#a0-lock.a0-theme-default .a0-panel .a0-code .a0-input-box i {
   font-size: 14px;
   z-index: 1000;
   top: 18px;
@@ -7266,17 +7272,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box.a0-error-input input,
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box.a0-error-input input,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box.a0-error-input input,
+#a0-lock.a0-theme-default .a0-panel .a0-phone .a0-input-box.a0-error-input input,
+#a0-lock.a0-theme-default .a0-panel .a0-code .a0-input-box.a0-error-input input,
 #a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box.a0-error-input .a0-icon-budicon,
 #a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box.a0-error-input .a0-icon-budicon,
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box.a0-error-input .a0-icon-budicon,
-#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box.a0-error-input .a0-icon-budicon {
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box.a0-error-input .a0-icon-budicon,
+#a0-lock.a0-theme-default .a0-panel .a0-phone .a0-input-box.a0-error-input .a0-icon-budicon,
+#a0-lock.a0-theme-default .a0-panel .a0-code .a0-input-box.a0-error-input .a0-icon-budicon {
   color: red;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email input,
 #a0-lock.a0-theme-default .a0-panel .a0-username input,
 #a0-lock.a0-theme-default .a0-panel .a0-password input,
-#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input {
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input,
+#a0-lock.a0-theme-default .a0-panel .a0-phone input,
+#a0-lock.a0-theme-default .a0-panel .a0-code input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -7296,7 +7308,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-email input:focus,
 #a0-lock.a0-theme-default .a0-panel .a0-username input:focus,
 #a0-lock.a0-theme-default .a0-panel .a0-password input:focus,
-#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input:focus {
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword input:focus,
+#a0-lock.a0-theme-default .a0-panel .a0-phone input:focus,
+#a0-lock.a0-theme-default .a0-panel .a0-code input:focus {
   background: #fff;
 }
 
@@ -7660,6 +7674,49 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-bottom-left-radius: 3px;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list {
+  height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li {
+  border-bottom: 1px solid grey;
+  padding: 10px 0;
+  margin: 1px;
+  cursor: pointer;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li.a0-active div {
+  font-weight: bold;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li:hover {
+  background: #f1f1f1;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li div {
+  display: inline-block;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li .a0-country-name {
+  width: 160px;
+  margin-left: 10px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li .a0-country-code {
+  float: right;
+  max-width: 40px;
+  margin-right: 10px;
+}
+
 #a0-lock.a0-theme-default .a0-sad-placeholder {
   display: none;
 }
@@ -7678,7 +7735,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-email,
 #a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-username,
 #a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-password,
-#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-repeatPassword {
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-repeatPassword,
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-phone,
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-inputs .a0-code {
   border: 0;
 }
 

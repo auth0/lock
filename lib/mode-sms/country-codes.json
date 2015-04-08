@@ -1,0 +1,751 @@
+[{
+  "DialCode": "+93",
+  "Code": "AF"
+}, {
+  "DialCode": "+355",
+  "Code": "AL"
+}, {
+  "DialCode": "+213",
+  "Code": "DZ"
+}, {
+  "DialCode": "+1684",
+  "Code": "AS"
+}, {
+  "DialCode": "+376",
+  "Code": "AD"
+}, {
+  "DialCode": "+244",
+  "Code": "AO"
+}, {
+  "DialCode": "+1264",
+  "Code": "AI"
+}, {
+  "DialCode": "+672",
+  "Code": "AQ"
+}, {
+  "DialCode": "+1268",
+  "Code": "AG"
+}, {
+  "DialCode": "+54",
+  "Code": "AR"
+}, {
+  "DialCode": "+374",
+  "Code": "AM"
+}, {
+  "DialCode": "+297",
+  "Code": "AW"
+}, {
+  "DialCode": "+61",
+  "Code": "AU"
+}, {
+  "DialCode": "+43",
+  "Code": "AT"
+}, {
+  "DialCode": "+994",
+  "Code": "AZ"
+}, {
+  "DialCode": "+1242",
+  "Code": "BS"
+}, {
+  "DialCode": "+973",
+  "Code": "BH"
+}, {
+  "DialCode": "+880",
+  "Code": "BD"
+}, {
+  "DialCode": "+1246",
+  "Code": "BB"
+}, {
+  "DialCode": "+375",
+  "Code": "BY"
+}, {
+  "DialCode": "+32",
+  "Code": "BE"
+}, {
+  "DialCode": "+501",
+  "Code": "BZ"
+}, {
+  "DialCode": "+229",
+  "Code": "BJ"
+}, {
+  "DialCode": "+1441",
+  "Code": "BM"
+}, {
+  "DialCode": "+975",
+  "Code": "BT"
+}, {
+  "DialCode": "+591",
+  "Code": "BO"
+}, {
+  "DialCode": "+599",
+  "Code": "BQ"
+}, {
+  "DialCode": "+387",
+  "Code": "BA"
+}, {
+  "DialCode": "+267",
+  "Code": "BW"
+}, {
+  "DialCode": "+47",
+  "Code": "BV"
+}, {
+  "DialCode": "+55",
+  "Code": "BR"
+}, {
+  "DialCode": "+246",
+  "Code": "IO"
+}, {
+  "DialCode": "+673",
+  "Code": "BN"
+}, {
+  "DialCode": "+359",
+  "Code": "BG"
+}, {
+  "DialCode": "+226",
+  "Code": "BF"
+}, {
+  "DialCode": "+257",
+  "Code": "BI"
+}, {
+  "DialCode": "+855",
+  "Code": "KH"
+}, {
+  "DialCode": "+237",
+  "Code": "CM"
+}, {
+  "DialCode": "+1",
+  "Code": "CA"
+}, {
+  "DialCode": "+238",
+  "Code": "CV"
+}, {
+  "DialCode": "+1345",
+  "Code": "KY"
+}, {
+  "DialCode": "+236",
+  "Code": "CF"
+}, {
+  "DialCode": "+235",
+  "Code": "TD"
+}, {
+  "DialCode": "+56",
+  "Code": "CL"
+}, {
+  "DialCode": "+86",
+  "Code": "CN"
+}, {
+  "DialCode": "+61",
+  "Code": "CX"
+}, {
+  "DialCode": "+61",
+  "Code": "CC"
+}, {
+  "DialCode": "+57",
+  "Code": "CO"
+}, {
+  "DialCode": "+269",
+  "Code": "KM"
+}, {
+  "DialCode": "+242",
+  "Code": "CG"
+}, {
+  "DialCode": "+243",
+  "Code": "CD"
+}, {
+  "DialCode": "+682",
+  "Code": "CK"
+}, {
+  "DialCode": "+506",
+  "Code": "CR"
+}, {
+  "DialCode": "+385",
+  "Code": "HR"
+}, {
+  "DialCode": "+53",
+  "Code": "CU"
+}, {
+  "DialCode": "+599",
+  "Code": "CW"
+}, {
+  "DialCode": "+357",
+  "Code": "CY"
+}, {
+  "DialCode": "+420",
+  "Code": "CZ"
+}, {
+  "DialCode": "+225",
+  "Code": "CI"
+}, {
+  "DialCode": "+45",
+  "Code": "DK"
+}, {
+  "DialCode": "+253",
+  "Code": "DJ"
+}, {
+  "DialCode": "+1767",
+  "Code": "DM"
+}, {
+  "DialCode": "+1809",
+  "Code": "DO"
+}, {
+  "DialCode": "+1829",
+  "Code": "DO"
+}, {
+  "DialCode": "+1849",
+  "Code": "DO"
+}, {
+  "DialCode": "+593",
+  "Code": "EC"
+}, {
+  "DialCode": "+20",
+  "Code": "EG"
+}, {
+  "DialCode": "+503",
+  "Code": "SV"
+}, {
+  "DialCode": "+240",
+  "Code": "GQ"
+}, {
+  "DialCode": "+291",
+  "Code": "ER"
+}, {
+  "DialCode": "+372",
+  "Code": "EE"
+}, {
+  "DialCode": "+251",
+  "Code": "ET"
+}, {
+  "DialCode": "+500",
+  "Code": "FK"
+}, {
+  "DialCode": "+298",
+  "Code": "FO"
+}, {
+  "DialCode": "+679",
+  "Code": "FJ"
+}, {
+  "DialCode": "+358",
+  "Code": "FI"
+}, {
+  "DialCode": "+33",
+  "Code": "FR"
+}, {
+  "DialCode": "+594",
+  "Code": "GF"
+}, {
+  "DialCode": "+689",
+  "Code": "PF"
+}, {
+  "DialCode": "+262",
+  "Code": "TF"
+}, {
+  "DialCode": "+241",
+  "Code": "GA"
+}, {
+  "DialCode": "+220",
+  "Code": "GM"
+}, {
+  "DialCode": "+995",
+  "Code": "GE"
+}, {
+  "DialCode": "+49",
+  "Code": "DE"
+}, {
+  "DialCode": "+233",
+  "Code": "GH"
+}, {
+  "DialCode": "+350",
+  "Code": "GI"
+}, {
+  "DialCode": "+30",
+  "Code": "GR"
+}, {
+  "DialCode": "+299",
+  "Code": "GL"
+}, {
+  "DialCode": "+1473",
+  "Code": "GD"
+}, {
+  "DialCode": "+590",
+  "Code": "GP"
+}, {
+  "DialCode": "+1671",
+  "Code": "GU"
+}, {
+  "DialCode": "+502",
+  "Code": "GT"
+}, {
+  "DialCode": "+44",
+  "Code": "GG"
+}, {
+  "DialCode": "+224",
+  "Code": "GN"
+}, {
+  "DialCode": "+245",
+  "Code": "GW"
+}, {
+  "DialCode": "+592",
+  "Code": "GY"
+}, {
+  "DialCode": "+509",
+  "Code": "HT"
+}, {
+  "DialCode": "+672",
+  "Code": "HM"
+}, {
+  "DialCode": "+3906",
+  "Code": "VA"
+}, {
+  "DialCode": "+504",
+  "Code": "HN"
+}, {
+  "DialCode": "+852",
+  "Code": "HK"
+}, {
+  "DialCode": "+36",
+  "Code": "HU"
+}, {
+  "DialCode": "+354",
+  "Code": "IS"
+}, {
+  "DialCode": "+91",
+  "Code": "IN"
+}, {
+  "DialCode": "+62",
+  "Code": "ID"
+}, {
+  "DialCode": "+98",
+  "Code": "IR"
+}, {
+  "DialCode": "+964",
+  "Code": "IQ"
+}, {
+  "DialCode": "+353",
+  "Code": "IE"
+}, {
+  "DialCode": "+44",
+  "Code": "IM"
+}, {
+  "DialCode": "+972",
+  "Code": "IL"
+}, {
+  "DialCode": "+39",
+  "Code": "IT"
+}, {
+  "DialCode": "+1876",
+  "Code": "JM"
+}, {
+  "DialCode": "+81",
+  "Code": "JP"
+}, {
+  "DialCode": "+44",
+  "Code": "JE"
+}, {
+  "DialCode": "+962",
+  "Code": "JO"
+}, {
+  "DialCode": "+7",
+  "Code": "KZ"
+}, {
+  "DialCode": "+254",
+  "Code": "KE"
+}, {
+  "DialCode": "+686",
+  "Code": "KI"
+}, {
+  "DialCode": "+850",
+  "Code": "KP"
+}, {
+  "DialCode": "+82",
+  "Code": "KR"
+}, {
+  "DialCode": "+965",
+  "Code": "KW"
+}, {
+  "DialCode": "+996",
+  "Code": "KG"
+}, {
+  "DialCode": "+856",
+  "Code": "LA"
+}, {
+  "DialCode": "+371",
+  "Code": "LV"
+}, {
+  "DialCode": "+961",
+  "Code": "LB"
+}, {
+  "DialCode": "+266",
+  "Code": "LS"
+}, {
+  "DialCode": "+231",
+  "Code": "LR"
+}, {
+  "DialCode": "+218",
+  "Code": "LY"
+}, {
+  "DialCode": "+423",
+  "Code": "LI"
+}, {
+  "DialCode": "+370",
+  "Code": "LT"
+}, {
+  "DialCode": "+352",
+  "Code": "LU"
+}, {
+  "DialCode": "+853",
+  "Code": "MO"
+}, {
+  "DialCode": "+389",
+  "Code": "MK"
+}, {
+  "DialCode": "+261",
+  "Code": "MG"
+}, {
+  "DialCode": "+265",
+  "Code": "MW"
+}, {
+  "DialCode": "+60",
+  "Code": "MY"
+}, {
+  "DialCode": "+960",
+  "Code": "MV"
+}, {
+  "DialCode": "+223",
+  "Code": "ML"
+}, {
+  "DialCode": "+356",
+  "Code": "MT"
+}, {
+  "DialCode": "+692",
+  "Code": "MH"
+}, {
+  "DialCode": "+596",
+  "Code": "MQ"
+}, {
+  "DialCode": "+222",
+  "Code": "MR"
+}, {
+  "DialCode": "+230",
+  "Code": "MU"
+}, {
+  "DialCode": "+262",
+  "Code": "YT"
+}, {
+  "DialCode": "+52",
+  "Code": "MX"
+}, {
+  "DialCode": "+691",
+  "Code": "FM"
+}, {
+  "DialCode": "+373",
+  "Code": "MD"
+}, {
+  "DialCode": "+377",
+  "Code": "MC"
+}, {
+  "DialCode": "+976",
+  "Code": "MN"
+}, {
+  "DialCode": "+382",
+  "Code": "ME"
+}, {
+  "DialCode": "+1664",
+  "Code": "MS"
+}, {
+  "DialCode": "+212",
+  "Code": "MA"
+}, {
+  "DialCode": "+258",
+  "Code": "MZ"
+}, {
+  "DialCode": "+95",
+  "Code": "MM"
+}, {
+  "DialCode": "+264",
+  "Code": "NA"
+}, {
+  "DialCode": "+674",
+  "Code": "NR"
+}, {
+  "DialCode": "+977",
+  "Code": "NP"
+}, {
+  "DialCode": "+31",
+  "Code": "NL"
+}, {
+  "DialCode": "+687",
+  "Code": "NC"
+}, {
+  "DialCode": "+64",
+  "Code": "NZ"
+}, {
+  "DialCode": "+505",
+  "Code": "NI"
+}, {
+  "DialCode": "+227",
+  "Code": "NE"
+}, {
+  "DialCode": "+234",
+  "Code": "NG"
+}, {
+  "DialCode": "+683",
+  "Code": "NU"
+}, {
+  "DialCode": "+672",
+  "Code": "NF"
+}, {
+  "DialCode": "+1670",
+  "Code": "MP"
+}, {
+  "DialCode": "+47",
+  "Code": "NO"
+}, {
+  "DialCode": "+968",
+  "Code": "OM"
+}, {
+  "DialCode": "+92",
+  "Code": "PK"
+}, {
+  "DialCode": "+680",
+  "Code": "PW"
+}, {
+  "DialCode": "+970",
+  "Code": "PS"
+}, {
+  "DialCode": "+507",
+  "Code": "PA"
+}, {
+  "DialCode": "+675",
+  "Code": "PG"
+}, {
+  "DialCode": "+595",
+  "Code": "PY"
+}, {
+  "DialCode": "+51",
+  "Code": "PE"
+}, {
+  "DialCode": "+63",
+  "Code": "PH"
+}, {
+  "DialCode": "+870",
+  "Code": "PN"
+}, {
+  "DialCode": "+48",
+  "Code": "PL"
+}, {
+  "DialCode": "+351",
+  "Code": "PT"
+}, {
+  "DialCode": "+1",
+  "Code": "PR"
+}, {
+  "DialCode": "+974",
+  "Code": "QA"
+}, {
+  "DialCode": "+40",
+  "Code": "RO"
+}, {
+  "DialCode": "+7",
+  "Code": "RU"
+}, {
+  "DialCode": "+250",
+  "Code": "RW"
+}, {
+  "DialCode": "+262",
+  "Code": "RE"
+}, {
+  "DialCode": "+590",
+  "Code": "BL"
+}, {
+  "DialCode": "+290",
+  "Code": "SH"
+}, {
+  "DialCode": "+1869",
+  "Code": "KN"
+}, {
+  "DialCode": "+1758",
+  "Code": "LC"
+}, {
+  "DialCode": "+590",
+  "Code": "MF"
+}, {
+  "DialCode": "+508",
+  "Code": "PM"
+}, {
+  "DialCode": "+1784",
+  "Code": "VC"
+}, {
+  "DialCode": "+685",
+  "Code": "WS"
+}, {
+  "DialCode": "+378",
+  "Code": "SM"
+}, {
+  "DialCode": "+239",
+  "Code": "ST"
+}, {
+  "DialCode": "+966",
+  "Code": "SA"
+}, {
+  "DialCode": "+221",
+  "Code": "SN"
+}, {
+  "DialCode": "+381",
+  "Code": "RS"
+}, {
+  "DialCode": "+248",
+  "Code": "SC"
+}, {
+  "DialCode": "+232",
+  "Code": "SL"
+}, {
+  "DialCode": "+65",
+  "Code": "SG"
+}, {
+  "DialCode": "+1721",
+  "Code": "SX"
+}, {
+  "DialCode": "+421",
+  "Code": "SK"
+}, {
+  "DialCode": "+386",
+  "Code": "SI"
+}, {
+  "DialCode": "+677",
+  "Code": "SB"
+}, {
+  "DialCode": "+252",
+  "Code": "SO"
+}, {
+  "DialCode": "+27",
+  "Code": "ZA"
+}, {
+  "DialCode": "+500",
+  "Code": "GS"
+}, {
+  "DialCode": "+211",
+  "Code": "SS"
+}, {
+  "DialCode": "+34",
+  "Code": "ES"
+}, {
+  "DialCode": "+94",
+  "Code": "LK"
+}, {
+  "DialCode": "+249",
+  "Code": "SD"
+}, {
+  "DialCode": "+597",
+  "Code": "SR"
+}, {
+  "DialCode": "+47",
+  "Code": "SJ"
+}, {
+  "DialCode": "+268",
+  "Code": "SZ"
+}, {
+  "DialCode": "+46",
+  "Code": "SE"
+}, {
+  "DialCode": "+41",
+  "Code": "CH"
+}, {
+  "DialCode": "+963",
+  "Code": "SY"
+}, {
+  "DialCode": "+886",
+  "Code": "TW"
+}, {
+  "DialCode": "+992",
+  "Code": "TJ"
+}, {
+  "DialCode": "+255",
+  "Code": "TZ"
+}, {
+  "DialCode": "+66",
+  "Code": "TH"
+}, {
+  "DialCode": "+670",
+  "Code": "TL"
+}, {
+  "DialCode": "+228",
+  "Code": "TG"
+}, {
+  "DialCode": "+690",
+  "Code": "TK"
+}, {
+  "DialCode": "+676",
+  "Code": "TO"
+}, {
+  "DialCode": "+1868",
+  "Code": "TT"
+}, {
+  "DialCode": "+216",
+  "Code": "TN"
+}, {
+  "DialCode": "+90",
+  "Code": "TR"
+}, {
+  "DialCode": "+993",
+  "Code": "TM"
+}, {
+  "DialCode": "+1649",
+  "Code": "TC"
+}, {
+  "DialCode": "+688",
+  "Code": "TV"
+}, {
+  "DialCode": "+256",
+  "Code": "UG"
+}, {
+  "DialCode": "+380",
+  "Code": "UA"
+}, {
+  "DialCode": "+971",
+  "Code": "AE"
+}, {
+  "DialCode": "+44",
+  "Code": "GB"
+}, {
+  "DialCode": "+1",
+  "Code": "US"
+}, {
+  "DialCode": "+598",
+  "Code": "UY"
+}, {
+  "DialCode": "+998",
+  "Code": "UZ"
+}, {
+  "DialCode": "+678",
+  "Code": "VU"
+}, {
+  "DialCode": "+58",
+  "Code": "VE"
+}, {
+  "DialCode": "+84",
+  "Code": "VN"
+}, {
+  "DialCode": "+1284",
+  "Code": "VG"
+}, {
+  "DialCode": "+1340",
+  "Code": "VI"
+}, {
+  "DialCode": "+681",
+  "Code": "WF"
+}, {
+  "DialCode": "+212",
+  "Code": "EH"
+}, {
+  "DialCode": "+967",
+  "Code": "YE"
+}, {
+  "DialCode": "+260",
+  "Code": "ZM"
+}, {
+  "DialCode": "+263",
+  "Code": "ZW"
+}, {
+  "DialCode": "+358",
+  "Code": "AX"
+}]
