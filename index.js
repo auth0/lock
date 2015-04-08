@@ -23,6 +23,7 @@ var HeaderView = require('./lib/header');
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
+var PasswordlessPanel = require('./lib/mode-passwordless');
 var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
@@ -480,6 +481,25 @@ Auth0Lock.prototype.showReset = function(options, callback) {
 };
 
 /**
+ * Show widget on `passwordless` mode.
+ *
+ * @param {Object} options
+ * @param {Function} callback
+ * @return {Auth0Lock}
+ * @public
+ */
+
+Auth0Lock.prototype.showPasswordless = function(options, callback) {
+  var params = getShowParams(options, callback);
+  var optional = { disableSignupAction: true, disableResetAction: true };
+  var required = { mode: 'passwordless' };
+
+  // merge and force `passwordless` mode
+  var opts = _.extend(optional, params.options, required);
+  return this.show.call(this, opts, params.callback);
+};
+
+/**
  * Hide the widget and call `callback` when done.
  *
  * @param {Function} callback
@@ -577,6 +597,10 @@ Auth0Lock.prototype.display = function(options, callback) {
 
     if ('reset' === this.options.mode) {
       this._resetPanel(this.options, callback);
+    }
+
+    if ('passwordless' === this.options.mode) {
+      this._passwordlessPanel(this.options, callback);
     }
 
   }
@@ -712,6 +736,25 @@ Auth0Lock.prototype._resetPanel = function (options) {
   var panel = ResetPanel(this, { options: options || {} });
 
   this._setTitle(this.options.i18n.t('reset:title'));
+
+  this.setPanel(panel);
+
+  return this;
+};
+
+/**
+ * Create and set a new PasswordlessPanel with
+ * `options`, and also set widget's title
+ *
+ * @param {Object} options
+ * @return {Auth0Lock}
+ * @private
+ */
+
+Auth0Lock.prototype._passwordlessPanel = function (options) {
+  var panel = PasswordlessPanel(this, { options: options || {} });
+
+  this._setTitle(this.options.i18n.t('passwordless:sendPasscode'));
 
   this.setPanel(panel);
 
@@ -1192,6 +1235,53 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
     }
 
     return callback.apply(null, args);
+  });
+};
+
+/**
+ * Invoke `auth0.js` request sms code
+ *
+ * @param {Object} panel
+ * @param {Function} callback
+ * @private
+ */
+
+Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
+  this._loadingPanel(panel.options);
+  var apiToken = panel.options.apiToken;
+  var phone = panel.options.countryCode + panel.options.phoneNumber;
+  var self = this;
+  this.$auth0.requestSMSCode(apiToken, phone, function (err, result) {
+    self.setPanel(panel);
+    if (err) {
+      self._showError(err.message || this.options.i18n.t('passwordless:smsServerErrorText'));
+      return callback(err);
+    }
+    callback(null, result);
+  });
+};
+
+/**
+ * Invoke `auth0.js` login with resource owner
+ *
+ * @param {Object} panel
+ * @private
+ */
+
+Auth0Lock.prototype._signinWithSMSCode = function (panel) {
+  this._loadingPanel(panel.options);
+  
+  var self = this;
+  var options = {
+    username: panel.options.countryCode + panel.options.phoneNumber,
+    password: panel.options.smsCode,
+    connection: 'sms'
+  };
+
+  this.$auth0.loginWithResourceOwner(options, function (err) {
+    if (!err) { return; }
+    self.setPanel(panel);
+    self._showError(err.message || this.options.i18n.t('passwordless:passcodeServerErrorText'));
   });
 };
 
