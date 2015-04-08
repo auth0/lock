@@ -1248,10 +1248,12 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
 
 Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
   this._loadingPanel(panel.options);
-  var apiToken = panel.options.apiToken;
-  var phone = panel.options.countryCode + panel.options.phoneNumber;
+  var opts = {
+    apiToken: panel.options.apiToken,
+    phoneNumber: panel.options.countryCode + panel.options.phoneNumber
+  };
   var self = this;
-  this.$auth0.requestSMSCode(apiToken, phone, function (err, result) {
+  this.$auth0.requestSMSCode(opts, function (err, result) {
     self.setPanel(panel);
     if (err) {
       self._showError(err.message || this.options.i18n.t('passwordless:smsServerErrorText'));
