@@ -184,7 +184,9 @@
 
             trackEvents(widget);
             widget.showPasswordless({
-              callbackURL: window.location.href,
+              popupCallback: function (profile, id_token, access_token, state, refresh_token) {
+                console.log(profile, id_token, access_token, state, refresh_token);
+              },
               responseType: 'token',
               connections: ['sms'],
               apiToken: 'you-api-token-here'
