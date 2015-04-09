@@ -74,7 +74,7 @@
               <li><a id="show-button"><i></i>Full Login</a></li>
               <li><a id="login-button"><i></i>Login</a></li>
               <li><a id="signup-button"><i></i>Signup</a></li>
-              <li><a id="passwordless-button"><i></i>Passwordless</a></li>
+              <li><a id="sms-button"><i></i>SMS</a></li>
               <li><a id="reset-button"><i></i>Reset password</a></li>
               <li><a id="logout-button"><i></i>Logout</a></li>
             </ul>
@@ -176,20 +176,17 @@
             });
           });
 
-          $('#passwordless-button').on('click', function() {
+          $('#sms-button').on('click', function() {
             var cid = credentials.mdocs.clientID;
             var domain = credentials.mdocs.domain;
 
             var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
-            widget.showPasswordless({
-              popupCallback: function (err, profile, id_token, access_token, state, refresh_token) {
-                console.log(err, profile, id_token, access_token, state, refresh_token);
-              },
-              responseType: 'token',
-              connections: ['sms'],
-              apiToken: 'you-api-token-here'
+            widget.showSMS({
+              apiToken: 'your-api-token-here'
+            }, function (err, profile, id_token, access_token, state, refresh_token) {
+              console.log(err, profile, id_token, access_token, state, refresh_token);
             });
           });
 
