@@ -81,6 +81,8 @@
     "checkPhone":              "Please check your phone",
     "enterPhone":              "Please enter your phone number",
     "enterSmsCode":            "Enter SMS code",
+    "invalidPhoneNumber":      "Phone must be numbers only",
+    "invalidSmsCode":          "SMS Code must be formed by 6 numbers",
     "login":                   "Login",
     "noCode":                  "Didn't receive code?",
     "passcodeServerErrorText": "There was an error processing the SMS passcode.",
