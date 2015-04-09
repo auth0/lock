@@ -1291,7 +1291,7 @@ Auth0Lock.prototype._signinWithSMSCode = function (panel) {
       return callback.apply(self, args), self.hide();
     }
     self.setPanel(panel);
-    self._showError(err.message || this.options.i18n.t('passwordless:passcodeServerErrorText'));
+    self._showError(err.message || self.options.i18n.t('passwordless:passcodeServerErrorText'));
   });
 };
 
