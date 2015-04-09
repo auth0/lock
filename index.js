@@ -1286,12 +1286,11 @@ Auth0Lock.prototype._signinWithSMSCode = function (panel) {
   this._loadingPanel(panel.options);
 
   this.$auth0.loginWithResourceOwner(options, function (err /* , profile, id_token, access_token, state, refresh_token */ ) {
-    if (!err) {
-      var args = Array.prototype.slice.call(arguments, 0);
-      return callback.apply(self, args), self.hide();
-    }
+    var args = Array.prototype.slice.call(arguments, 0);
+    if (!err) { return callback.apply(self, args), self.hide(); }
     self.setPanel(panel);
     self._showError(err.message || self.options.i18n.t('passwordless:passcodeServerErrorText'));
+    return callback.apply(null, args);
   });
 };
 
