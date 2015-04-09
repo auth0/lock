@@ -77,7 +77,7 @@
     "userDoesNotExistErrorText":   "User does not exist.",
     "invalidPassword":             "Password is too weak."
   },
-  "passwordless": {
+  "sms": {
     "checkPhone":              "Please check your phone",
     "enterPhone":              "Please enter your phone number",
     "enterSmsCode":            "Enter SMS code",
