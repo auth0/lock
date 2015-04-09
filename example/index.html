@@ -184,8 +184,8 @@
 
             trackEvents(widget);
             widget.showPasswordless({
-              popupCallback: function (profile, id_token, access_token, state, refresh_token) {
-                console.log(profile, id_token, access_token, state, refresh_token);
+              popupCallback: function (err, profile, id_token, access_token, state, refresh_token) {
+                console.log(err, profile, id_token, access_token, state, refresh_token);
               },
               responseType: 'token',
               connections: ['sms'],
