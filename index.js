@@ -1271,17 +1271,25 @@ Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
  */
 
 Auth0Lock.prototype._signinWithSMSCode = function (panel) {
-  this._loadingPanel(panel.options);
-  
   var self = this;
+  var callback = panel.options.popupCallback;
   var options = {
     username: panel.options.countryCode + panel.options.phoneNumber,
     password: panel.options.smsCode,
     connection: 'sms'
   };
 
-  this.$auth0.loginWithResourceOwner(options, function (err) {
-    if (!err) { return; }
+  if ('function' !== typeof callback) {
+    throw new Error('Popup mode needs a callback function to be executed after authentication success or failure.');
+  }
+
+  this._loadingPanel(panel.options);
+
+  this.$auth0.loginWithResourceOwner(options, function (err /* , profile, id_token, access_token, state, refresh_token */ ) {
+    if (!err) {
+      var args = Array.prototype.slice.call(arguments, 0);
+      return callback.apply(self, args), self.hide();
+    }
     self.setPanel(panel);
     self._showError(err.message || this.options.i18n.t('passwordless:passcodeServerErrorText'));
   });
