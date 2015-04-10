@@ -140,7 +140,7 @@ lock.show(options, function (err, profile, token) {});
 
 ### .showSignin([options, callback])
 
-Open the widget on `signin` mode, but withouht the bottom `signup` nor `reset` button actions. This method is useful when your site has custom *signup* and *reset* links at a different form.
+Open the widget on `signin` mode, but without the bottom `signup` nor `reset` button actions. This method is useful when your site has custom *signup* and *reset* links at a different form.
 
 You may call this method with a single parameter, two or even none. The following examples ilustrate this:
 
@@ -187,6 +187,35 @@ lock.showSignup(function (err) {});
 // or both options and callback
 lock.showSignup(options, function (err) {});
 ```
+> Check the [Auth0Lock customization][lock-customization] article for more examples and options specification. Or enter the [Authentication modes][application-types] notes to learn more about implementing different authentication mechanics.
+
+
+### .showSMS(options, callback)
+
+Open the widget on `sms` mode without the `signup` and `reset` button actions.
+
+You must call this method with two parameters. An `options` object which must have an `apiToken` property, and a `callback` function.
+
+You can generate the `apiToken` from [here](https://auth0.com/docs/apiv2). Please, notice it has to have `user:create` as the scope.
+
+The following example ilustrates this:
+
+```js
+var lock = new Auth0Lock('xxxxxx', '<account>.auth0.com');
+
+var options = {
+	apiToken: 'your-api-token-here'
+};
+
+var callback = function (err, profile, id_token, access_token, state, refresh_token) {
+	console.log(err, profile, id_token, access_token, state, refresh_token);
+};
+
+lock.showSMS(options, callback);
+```
+
+> Remember you need to have the Twilio connection (passwordless) configured and activated for you application.
+
 > Check the [Auth0Lock customization][lock-customization] article for more examples and options specification. Or enter the [Authentication modes][application-types] notes to learn more about implementing different authentication mechanics.
 
 
