@@ -23,6 +23,7 @@ var HeaderView = require('./lib/header');
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
+var SMSPanel = require('./lib/mode-sms');
 var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
@@ -480,6 +481,25 @@ Auth0Lock.prototype.showReset = function(options, callback) {
 };
 
 /**
+ * Show widget on `sms` mode.
+ *
+ * @param {Object} options
+ * @param {Function} callback
+ * @return {Auth0Lock}
+ * @public
+ */
+
+Auth0Lock.prototype.showSMS = function(options, callback) {
+  var params = getShowParams(options, callback);
+  var optional = { disableSignupAction: true, disableResetAction: true };
+  var required = { mode: 'sms' };
+
+  // merge and force `sms` mode
+  var opts = _.extend(optional, params.options, required);
+  return this.show.call(this, opts, params.callback);
+};
+
+/**
  * Hide the widget and call `callback` when done.
  *
  * @param {Function} callback
@@ -577,6 +597,10 @@ Auth0Lock.prototype.display = function(options, callback) {
 
     if ('reset' === this.options.mode) {
       this._resetPanel(this.options, callback);
+    }
+
+    if ('sms' === this.options.mode) {
+      this._smsPanel(this.options, callback);
     }
 
   }
@@ -712,6 +736,25 @@ Auth0Lock.prototype._resetPanel = function (options) {
   var panel = ResetPanel(this, { options: options || {} });
 
   this._setTitle(this.options.i18n.t('reset:title'));
+
+  this.setPanel(panel);
+
+  return this;
+};
+
+/**
+ * Create and set a new SMSPanel with
+ * `options`, and also set widget's title
+ *
+ * @param {Object} options
+ * @return {Auth0Lock}
+ * @private
+ */
+
+Auth0Lock.prototype._smsPanel = function (options) {
+  var panel = SMSPanel(this, { options: options || {} });
+
+  this._setTitle(this.options.i18n.t('sms:sendPasscode'));
 
   this.setPanel(panel);
 
@@ -1191,6 +1234,62 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
       self._focusError(password_input);
     }
 
+    return callback.apply(null, args);
+  });
+};
+
+/**
+ * Invoke `auth0.js` request sms code
+ *
+ * @param {Object} panel
+ * @param {Function} callback
+ * @private
+ */
+
+Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
+  this._loadingPanel(panel.options);
+  var opts = {
+    apiToken: panel.options.apiToken,
+    phoneNumber: panel.fullPhoneNumber()
+  };
+  var self = this;
+  this.$auth0.requestSMSCode(opts, function (err, result) {
+    self.setPanel(panel);
+    if (err) {
+      self._showError(err.message || this.options.i18n.t('sms:smsServerErrorText'));
+      return callback(err);
+    }
+    callback(null, result);
+  });
+};
+
+/**
+ * Invoke `auth0.js` login with resource owner
+ *
+ * @param {Object} panel
+ * @private
+ */
+
+Auth0Lock.prototype._signinWithSMSCode = function (panel) {
+  var self = this;
+  var callback = panel.options.popupCallback;
+  var options = {
+    username: panel.fullPhoneNumber(),
+    password: panel.smsCode(),
+    connection: 'sms'
+  };
+
+  if ('function' !== typeof callback) {
+    throw new Error('SMS mode needs a callback function to be executed after authentication success or failure.');
+  }
+
+  this._loadingPanel(panel.options);
+
+  this.$auth0.loginWithResourceOwner(options, function (err /* , profile, id_token, access_token, state, refresh_token */ ) {
+    var args = Array.prototype.slice.call(arguments, 0);
+    if (!err) { return callback.apply(self, args), self.hide(); }
+    self.setPanel(panel);
+    self._showError(err.message || self.options.i18n.t('sms:passcodeServerErrorText'));
     return callback.apply(null, args);
   });
 };

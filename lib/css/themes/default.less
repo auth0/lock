@@ -340,7 +340,7 @@
   }
 
 
-  .email, .username, .password, .repeatPassword{
+  .email, .username, .password, .repeatPassword, .phone, .code{
     .input-box{
       position: relative;
       height: 50px;
@@ -363,7 +363,7 @@
 
   }
 
-  .email  input, .username input, .password input, .repeatPassword input{
+  .email input, .username input, .password input, .repeatPassword input, .phone input, .code input{
     box-sizing: border-box;
     padding: 16px 10px;
     padding-left: 40px;
@@ -726,6 +726,53 @@
   }
   /*-----  End of Forgot Password  ------*/
 
+  /*==========  Country Codes List  ==========*/
+
+  .country-codes-list{
+    height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    list-style: none;
+    text-align: left;
+    padding: 0;
+
+    li{
+      border-bottom: 1px solid grey;
+      padding: 10px 0;
+      margin: 1px;
+      cursor: pointer;
+
+      &.active{
+        div{ font-weight: bold; }
+      }
+
+      &:hover{
+        background: #f1f1f1;
+      }
+
+      div{
+        display: inline-block;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .country-name{
+        width: 160px;
+        margin-left: 10px;
+      }
+
+      .country-code{
+        float: right;
+        max-width: 40px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  /*-----  End of Country Codes List  ------*/
+
 }
 
 /*-----  End of Panel  ------*/
@@ -754,7 +801,7 @@
   .inputs{
     border: 0 !important;
 
-    .email, .username, .password, .repeatPassword{border: 0;}
+    .email, .username, .password, .repeatPassword, .phone, .code{border: 0;}
 
     .input-box{
       border: 1px solid #ccc;
