@@ -1,3 +1,24 @@
+
+## 7.3.1 - (March 24, 2015)
+
+### Fixed
+
+ - [translation] Small fix to German translations (de.json) (`cristiandouce - Jeroenr1`)
+  https://github.com/auth0/lock/commit/9bdadf3445a94a84c06f9923b76cbbb920505f72
+  https://github.com/auth0/lock/commit/945fb2654bd36810028b57e86c4a768383a46e4e
+
+## 7.3.0 - (March 19, 2015)
+
+### Added
+
+ - [error] Improving offline error reporting. (Updated to auth0.js@6.1.0) (`pose`)
+  https://github.com/auth0/lock/commit/f978d548d37cfb451a24b2d86ac1419081a82964
+  https://github.com/auth0/lock/commit/42726ae2d273d6cb3a268e5ca6d70c211e9e2393
+ - [translation] Added Swedish translations (sv.json) (`pose - alexkerber`)
+  https://github.com/auth0/lock/commit/01edbdb198ca0c0f23fbddeef48e39a26d736428
+  https://github.com/auth0/lock/commit/2f0fa9632603ad63a54741fbc70dfe59dfc65235
+  https://github.com/auth0/lock/commit/e8ee91fcff5743bfd2d3f5c90bb5e4ed99e351da
+
 ## 7.2.0 - (March 16, 2015)
 
 ### Changed
