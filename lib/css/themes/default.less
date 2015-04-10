@@ -728,7 +728,7 @@
 
   /*==========  Country Codes List  ==========*/
 
-  .country-codes-list{    
+  .country-codes-list{
     height: 200px;
     overflow: hidden;
     overflow-y: scroll;
@@ -738,14 +738,12 @@
 
     li{
       border-bottom: 1px solid grey;
-      padding: 10px 0 10px 0;
+      padding: 10px 0;
       margin: 1px;
       cursor: pointer;
 
-      &.active {
-        div, span{
-          font-weight: bold;
-        }
+      &.active{
+        div{ font-weight: bold; }
       }
 
       &:hover{
@@ -753,12 +751,23 @@
       }
 
       div{
-        padding: 0 10px;
+        display: inline-block;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-    }
 
-    span{
-      float: right;
+      .country-name{
+        width: 160px;
+        margin-left: 10px;
+      }
+
+      .country-code{
+        float: right;
+        max-width: 40px;
+        margin-right: 10px;
+      }
     }
   }
 

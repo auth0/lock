@@ -7705,13 +7705,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li {
   border-bottom: 1px solid grey;
-  padding: 10px 0 10px 0;
+  padding: 10px 0;
   margin: 1px;
   cursor: pointer;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li.a0-active div,
-#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li.a0-active span {
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li.a0-active div {
   font-weight: bold;
 }
 
@@ -7720,11 +7719,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li div {
-  padding: 0 10px;
+  display: inline-block;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list span {
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li .a0-country-name {
+  width: 160px;
+  margin-left: 10px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li .a0-country-code {
   float: right;
+  max-width: 40px;
+  margin-right: 10px;
 }
 
 #a0-lock.a0-theme-default .a0-sad-placeholder {
