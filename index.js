@@ -1250,7 +1250,7 @@ Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
   this._loadingPanel(panel.options);
   var opts = {
     apiToken: panel.options.apiToken,
-    phoneNumber: panel.options.countryCode + panel.options.phoneNumber
+    phoneNumber: panel.fullPhoneNumber()
   };
   var self = this;
   this.$auth0.requestSMSCode(opts, function (err, result) {
@@ -1274,8 +1274,8 @@ Auth0Lock.prototype._signinWithSMSCode = function (panel) {
   var self = this;
   var callback = panel.options.popupCallback;
   var options = {
-    username: panel.options.countryCode + panel.options.phoneNumber,
-    password: panel.options.smsCode,
+    username: panel.fullPhoneNumber(),
+    password: panel.smsCode(),
     connection: 'sms'
   };
 
