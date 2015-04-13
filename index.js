@@ -799,7 +799,7 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
 
   //Removes error messages on new views.
   this._showError();
-  
+
   this.query('.a0-mode-container').html(el);
   this.emit('%s ready'.replace('%s', pname));
 };
@@ -815,8 +815,9 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
 
 Auth0Lock.prototype.isAuth0Domain = function (prefix) {
   var domainUrl = utils.parseUrl('https://' + this.$options.domain);
-  if (prefix)
+  if (prefix) {
     return utils.endsWith(domainUrl.hostname, '.' + prefix + '.auth0.com');
+  }
   return utils.endsWith(domainUrl.hostname, '.auth0.com');
 };
 
@@ -830,12 +831,15 @@ Auth0Lock.prototype.isAuth0Domain = function (prefix) {
  */
 
 Auth0Lock.prototype.getAssetsUrl = function (assetsUrl, domain) {
-  if (assetsUrl)
+  if (assetsUrl) {
     return assetsUrl;
-  if (this.isAuth0Domain('eu'))
+  }
+  if (this.isAuth0Domain('eu')) {
     return 'https://cdn.eu.auth0.com/';
-  if (this.isAuth0Domain())
+  }
+  if (this.isAuth0Domain()) {
     return 'https://cdn.auth0.com/';
+  }
   return 'https://' + this.$options.domain + '/';
 };
 
