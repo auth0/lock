@@ -86,7 +86,7 @@ function Auth0Lock (clientID, domain, options) {
 
   // use domain as assetsUrl if no assetsUrl provided
   // and domain is not *.auth0.com. Fallback to S3 url
-  this.$options.assetsUrl = this.$options.assetsUrl || (this.isAuth0Domain() ? 'https://cdn.auth0.com/' : 'https://' + this.$options.domain + '/');
+  this.$options.assetsUrl = this.getAssetsUrl(this.$options.assetsUrl, this.$options.domain);
 
   // This cdn is only used for the "loading" image
   this.$options.cdn = this.$options.cdn || (this.isAuth0Domain() ? 'https://d19p4zemcycm7a.cloudfront.net/w2/' : 'https://' + this.$options.domain + '/w2/');
@@ -804,18 +804,39 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
   this.emit('%s ready'.replace('%s', pname));
 };
 
-
 /**
  * Resolve whether instance `$options.domain` is an
  * Auth0's domain or not
  *
+ * @param {String} prefix
  * @return {Boolean}
  * @private
  */
 
-Auth0Lock.prototype.isAuth0Domain = function () {
+Auth0Lock.prototype.isAuth0Domain = function (prefix) {
   var domainUrl = utils.parseUrl('https://' + this.$options.domain);
+  if (prefix)
+    return utils.endsWith(domainUrl.hostname, '.' + prefix + '.auth0.com');
   return utils.endsWith(domainUrl.hostname, '.auth0.com');
+};
+
+/**
+ * Calculate the assetsUrl.
+ *
+ * @param {String} assetsUrl
+ * @param {String} domain
+ * @return {Boolean}
+ * @private
+ */
+
+Auth0Lock.prototype.getAssetsUrl = function (assetsUrl, domain) {
+  if (assetsUrl)
+    return assetsUrl;
+  if (this.isAuth0Domain('eu'))
+    return 'https://cdn.eu.auth0.com/';
+  if (this.isAuth0Domain())
+    return 'https://cdn.auth0.com/';
+  return 'https://' + this.$options.domain + '/';
 };
 
 /**
