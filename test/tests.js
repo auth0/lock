@@ -246,6 +246,12 @@ describe('Auth0Lock', function () {
 
       expect(this.widget.$options.assetsUrl).to.equal('https://cdn.auth0.com/');
     });
+
+    it('should use EU assetsUrl if domain is *.eu.auth0.com', function () {
+      this.widget = new Auth0Lock(clientID, 'abc.eu.auth0.com:3000');
+
+      expect(this.widget.$options.assetsUrl).to.equal('https://cdn.eu.auth0.com/');
+    });
   });
 
   describe('When assetsUrl option is specified', function () {
