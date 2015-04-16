@@ -7674,6 +7674,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-bottom-left-radius: 3px;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes {
+  position: absolute;
+  top: 90;
+  left: 20;
+  right: 20;
+  bottom: 20;
+  z-index: 1000;
+  background: white;
+  padding: 0;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list {
   height: 200px;
   overflow: hidden;

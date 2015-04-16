@@ -31,7 +31,7 @@ describe('password strength', function () {
     this.widget.hide(done);
   });
 
-  it('display message when password does not meet criteria', function (done) {
+  it('should display message when password does not meet criteria', function (done) {
 
     this.widget.once('ready', function () {
       password  = $('#a0-lock .a0-emailPassword .a0-password input');
@@ -97,7 +97,7 @@ describe('password strength', function () {
       // Password is empty
       expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(false);
       expect($('#a0-lock .a0-panel .a0-password .a0-input-box').hasClass('a0-error-input')).to.be.equal(false);
-      
+
       // The user enter an invalid password
       type(password, 'hello');
       expect($('.a0-panel').hasClass('a0-active-pwd-strength')).to.be.equal(true);

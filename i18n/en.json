@@ -78,19 +78,19 @@
     "invalidPassword":             "Password is too weak."
   },
   "sms": {
-    "checkPhone":              "Please check your phone",
+    "title":                   "Send Passcode",
+    "action":                  "Send",
+    "phonePlaceholder":        "Phone number",
     "enterPhone":              "Please enter your phone number",
+    "checkPhone":              "Please check your phone",
     "enterSmsCode":            "Enter SMS code",
     "invalidPhoneNumber":      "Phone must be numbers only",
     "invalidSmsCode":          "SMS Code must be formed by 6 numbers",
     "login":                   "Login",
     "noCode":                  "Didn't receive code?",
     "passcodeServerErrorText": "There was an error processing the SMS passcode.",
-    "phoneNumber":             "Phone number",
     "receivedPasscode":        "You've received a message from us with your passcode",
     "selectCountryCode":       "Select your country code",
-    "send":                    "Send",
-    "sendPasscode":            "Send Passcode",
     "smsCode":                 "SMS Code",
     "smsServerErrorText":      "There was an error sending the SMS."
   }

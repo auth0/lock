@@ -754,7 +754,7 @@ Auth0Lock.prototype._resetPanel = function (options) {
 Auth0Lock.prototype._smsPanel = function (options) {
   var panel = SMSPanel(this, { options: options || {} });
 
-  this._setTitle(this.options.i18n.t('sms:sendPasscode'));
+  this._setTitle(this.options.i18n.t('sms:title'));
 
   this.setPanel(panel);
 
@@ -1278,7 +1278,7 @@ Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
   this._loadingPanel(panel.options);
   var opts = {
     apiToken: panel.options.apiToken,
-    phoneNumber: panel.fullPhoneNumber()
+    phone: panel.fullPhoneNumber()
   };
   var self = this;
   this.$auth0.requestSMSCode(opts, function (err, result) {
@@ -1302,9 +1302,8 @@ Auth0Lock.prototype._signinWithSMSCode = function (panel) {
   var self = this;
   var callback = panel.options.popupCallback;
   var options = {
-    username: panel.fullPhoneNumber(),
-    password: panel.smsCode(),
-    connection: 'sms'
+    phone: panel.fullPhoneNumber(),
+    passcode: panel.smsCode()
   };
 
   if ('function' !== typeof callback) {
@@ -1313,7 +1312,7 @@ Auth0Lock.prototype._signinWithSMSCode = function (panel) {
 
   this._loadingPanel(panel.options);
 
-  this.$auth0.loginWithResourceOwner(options, function (err /* , profile, id_token, access_token, state, refresh_token */ ) {
+  this.$auth0.login(options, function (err /* , profile, id_token, access_token, state, refresh_token */ ) {
     var args = Array.prototype.slice.call(arguments, 0);
     if (!err) { return callback.apply(self, args), self.hide(); }
     self.setPanel(panel);
