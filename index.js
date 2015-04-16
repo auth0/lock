@@ -1033,6 +1033,7 @@ Auth0Lock.prototype._signin = function (panel) {
     popup: this.options.popup,
     popupOptions: this.options.popupOptions,
     sso: this.options.sso,
+    login_hint: email_input.val()
   }, this.options.authParams);
 
   this.$auth0.login(loginOptions);
@@ -1060,7 +1061,8 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
     password: password,
     popup: self.options.popup,
     popupOptions: self.options.popupOptions,
-    sso: self.options.sso
+    sso: self.options.sso,
+    login_hint: connection.domain ? username.replace('@' + connection.domain, '') : username
   };
 
   // We might be loosing some instance parameters here
@@ -1175,7 +1177,8 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
         connection: connectionName,
         popup: self.options.popup,
         popupOptions: self.options.popupOptions,
-        sso: self.options.sso
+        sso: self.options.sso,
+        login_hint: email_input.val()
       }, options.authParams, extraParams);
 
   if ('function' !== typeof callback) {
