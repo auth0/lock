@@ -353,9 +353,9 @@ Another idea would be to fix the trailing commas in some of the other translatio
 
 ### Added
 
- - [lock] handle `requires_username` in db connection (`[object Object]`)
+ - [lock] handle `requires_username` in db connection (`Matias Corbanini`)
   https://github.com/auth0/lock/commit/1e53915fafca55cb821fadc65049a1f7068a1d66
- - [lock] sign-up tests with `requires_username` (`[object Object]`)
+ - [lock] sign-up tests with `requires_username` (`Matias Corbanini`)
   https://github.com/auth0/lock/commit/72053c72f23d402089069994a560263deb3b0b86
  - [lock] Move _isUsernameRequired to options-manager lib module (`cristiandouce`)
   https://github.com/auth0/lock/commit/eedf8af250cae6990edfb7546091d5afccb2ed40
