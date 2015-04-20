@@ -6995,7 +6995,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 @font-face {
   font-family: "auth0";
-  src: url(data:application/x-font-woff;charset=utf-8;base64,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) format("woff"), url("https://cdn.auth0.com/fonts/widget/fonts/auth0-widget.eot") format("embedded-opentype"), url("https://cdn.auth0.com/fonts/widget/fonts/auth0-widget.ttf") format("truetype"), url("https://cdn.auth0.com/fonts/widget/fonts/auth0-widget.svg#auth0-widget") format("svg");
+  src: url(data:application/font-woff;base64,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) format("woff"), url("https://cdn.auth0.com/fonts/widget/fonts/auth0-widget.eot") format("embedded-opentype"), url("https://cdn.auth0.com/fonts/widget/fonts/auth0-widget.ttf") format("truetype"), url("https://cdn.auth0.com/fonts/widget/fonts/auth0-widget.svg#auth0-widget") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -7059,6 +7059,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-icon-budicon-5:before {
   content: "b";
+}
+
+#a0-lock.a0-theme-default .a0-icon-budicon-6:before {
+  content: "h";
 }
 
 #a0-lock.a0-theme-default .a0-btn-small {
@@ -7268,6 +7272,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #999;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box i.a0-input-action,
+#a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box i.a0-input-action,
+#a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box i.a0-input-action,
+#a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box i.a0-input-action,
+#a0-lock.a0-theme-default .a0-panel .a0-phone .a0-input-box i.a0-input-action,
+#a0-lock.a0-theme-default .a0-panel .a0-code .a0-input-box i.a0-input-action {
+  display: inline-block;
+  width: 35px;
+  left: 32px;
+  text-align: center;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box.a0-error-input input,
 #a0-lock.a0-theme-default .a0-panel .a0-username .a0-input-box.a0-error-input input,
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box.a0-error-input input,
@@ -7312,6 +7328,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-phone input:focus,
 #a0-lock.a0-theme-default .a0-panel .a0-code input:focus {
   background: #fff;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-phone input {
+  padding-left: 75px;
 }
 
 #a0-lock.a0-theme-default .a0-panel input::-webkit-input-placeholder {
@@ -7675,17 +7695,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes {
-  position: absolute;
-  top: 90;
-  left: 20;
-  right: 20;
-  bottom: 20;
-  z-index: 1000;
-  background: white;
-  padding: 0;
+  padding-top: 20px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list {
+  display: block;
   height: 200px;
   overflow: hidden;
   overflow-y: scroll;
@@ -7695,7 +7712,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #ccc;
   padding: 10px 0;
   margin: 1px;
   cursor: pointer;
