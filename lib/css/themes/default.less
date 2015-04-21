@@ -332,7 +332,8 @@
         color: #999;
 
         &.input-action {
-          display:inline-block;
+          font-size: 13px;
+          display: inline-block;
           width: 35px;
           top: 0;
           bottom: 0;
@@ -729,21 +730,18 @@
 
   .country-codes {
     padding-top: 20px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
   }
 
   .country-codes-list{
     display: block;
-    height: 200px;
+    height: 280px;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     list-style: none;
     text-align: left;
     padding: 0;
 
-    li{
+    li {
       border-bottom: 1px solid #ccc;
       padding: 10px 0;
       margin: 1px;
@@ -782,7 +780,8 @@
 
       .country-check {
         display: none;
-        color: #44C7F4;
+        color: #16214D;
+        float: right;
       }
     }
   }
@@ -917,7 +916,7 @@
         background: white;
 
         .mode{
-          padding: 0 20px 20px 20px;
+          padding: 0 20px 0px 20px;
         }
         .icon-container {
           height: 60px;
@@ -958,5 +957,33 @@
       }
     }
     // .centrix
+  }
+}
+
+// 480px was assumed before as the max mobile width resolution used
+// accross devices which means that the following mobile height adjustments
+// should only apply for resolutions lower than 480px width
+
+@media screen and (max-height: 490px) and (max-width: 480px) {
+  .panel {
+    .country-codes-list {
+      height: 55vh;
+    }
+  }
+}
+
+@media screen and (min-height: 491px) and (max-height: 630px) and (max-width: 480px)  {
+  .panel {
+    .country-codes-list {
+      height: 60vh;
+    }
+  }
+}
+
+@media screen and (min-height:631px) and (max-height: 760px) and (max-width: 480px) {
+  .panel {
+    .country-codes-list {
+      height: 70vh;
+    }
   }
 }

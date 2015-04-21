@@ -7285,6 +7285,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-phone .a0-input-box i.a0-input-action,
 #a0-lock.a0-theme-default .a0-panel .a0-code .a0-input-box i.a0-input-action,
 #a0-lock.a0-theme-default .a0-panel .a0-search .a0-input-box i.a0-input-action {
+  font-size: 13px;
   display: inline-block;
   width: 35px;
   top: 0;
@@ -7723,16 +7724,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes {
   padding-top: 20px;
-  padding-right: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list {
   display: block;
-  height: 200px;
+  height: 280px;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   list-style: none;
   text-align: left;
   padding: 0;
@@ -7778,7 +7776,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li .a0-country-check {
   display: none;
-  color: #44C7F4;
+  color: #16214D;
+  float: right;
 }
 
 #a0-lock.a0-theme-default .a0-sad-placeholder {
@@ -7886,7 +7885,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode {
-    padding: 0 20px 20px 20px;
+    padding: 0 20px 0px 20px;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container {
@@ -7929,6 +7928,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-footer {
     margin-top: 40px;
+  }
+}
+
+@media screen and (max-height: 490px) and (max-width: 480px) {
+  #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list {
+    height: 55vh;
+  }
+}
+
+@media screen and (min-height: 491px) and (max-height: 630px) and (max-width: 480px) {
+  #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list {
+    height: 60vh;
+  }
+}
+
+@media screen and (min-height: 631px) and (max-height: 760px) and (max-width: 480px) {
+  #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list {
+    height: 70vh;
   }
 }
 
