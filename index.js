@@ -632,7 +632,7 @@ Auth0Lock.prototype.initialize = function(done) {
     });
   }
 
-  if (options._isFreeSubscription()) {
+  if (!options._isFreeSubscription()) {
     // hide footer for non free/dev subscriptions
     this.query('.a0-footer').toggleClass('a0-hide', true);
     this.query('.a0-free-subscription').removeClass('a0-free-subscription');
