@@ -950,7 +950,7 @@ Auth0Lock.prototype._signin = function (panel) {
   var message;
 
   var emailD = panel.query('.a0-email');
-  var email_input = panel.query('input[name=email]');
+  var email_input = panel.query('.a0-email input');
 
   // Send out the signin event, allowing users to dynamically change the options.
   this.emit('signin submit', this.options, { email: email_input.val() });
@@ -1020,8 +1020,8 @@ Auth0Lock.prototype._signin = function (panel) {
 Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
   var self = this;
   var options = this.options;
-  var email_input = panel.query('input[name=email]');
-  var password_input = panel.query('input[name=password]');
+  var email_input = panel.query('.a0-email input');
+  var password_input = panel.query('.a0-password input');
   var username = email_input.val();
   var password = password_input.val();
   connection = connection || options._getAuth0Connection(username);
@@ -1136,8 +1136,8 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
 
 Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCallback, extraParams, panel) {
   var self = this;
-  var email_input = panel.query('input[name=email]');
-  var password_input = panel.query('input[name=password]');
+  var email_input = panel.query('.a0-email input');
+  var password_input = panel.query('.a0-password input');
   var options = this.options;
   var callback = popupCallback || options.popupCallback;
 
