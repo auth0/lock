@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "test": "grunt integration",
-    "example": "grunt example"
+    "example": "grunt example",
+    "dev": "grunt dev"
   },
   "repository": {
     "type": "git",
