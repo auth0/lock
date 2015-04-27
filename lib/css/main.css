@@ -7070,6 +7070,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin: 0 5px;
   border-radius: 100px;
   display: inline-block;
+  cursor: pointer;
 }
 
 #a0-lock.a0-theme-default .a0-btn-small:hover {
