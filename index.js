@@ -1281,8 +1281,10 @@ Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
     phone: panel.fullPhoneNumber()
   };
   var self = this;
+
   this.$auth0.requestSMSCode(opts, function (err, result) {
     self.setPanel(panel);
+
     if (err) {
       self._showError(err.message || this.options.i18n.t('sms:smsServerErrorText'));
       return callback(err);

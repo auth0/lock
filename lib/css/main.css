@@ -7747,12 +7747,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-weight: bold;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li.a0-active .a0-country-check {
-  display: inline-block;
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li.a0-active .a0-country-code {
+  margin-right: 5px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li:hover {
-  background: #f1f1f1;
+#a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li.a0-active .a0-country-check {
+  display: inline-block;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li div {
@@ -7771,13 +7771,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li .a0-country-code {
   float: right;
   max-width: 40px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-country-codes-list li .a0-country-check {
   display: none;
   color: #16214D;
   float: right;
+  margin-right: 15px;
 }
 
 #a0-lock.a0-theme-default .a0-sad-placeholder {
