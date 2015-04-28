@@ -38,7 +38,7 @@ describe('Auth0Lock - SMS', function() {
     var auth0 = this.auth0;
     auth0.once('sms ready', function () {
       var $lock = $('#a0-lock');
-      expect($lock.find('h1').html()).to.be(auth0.options.i18n.t('sms:title'));
+      expect($lock.find('h1').html()).to.be(auth0.options.i18n.t('sms:phone:title'));
       expect($lock.find('input[name="phone"]')).not.to.be.empty();
       // done();
     });

@@ -754,7 +754,7 @@ Auth0Lock.prototype._resetPanel = function (options) {
 Auth0Lock.prototype._smsPanel = function (options) {
   var panel = SMSPanel(this, { options: options || {} });
 
-  this._setTitle(this.options.i18n.t('sms:title'));
+  this._setTitle(this.options.i18n.t('sms:phone:title'));
 
   this.setPanel(panel);
 
@@ -1286,7 +1286,7 @@ Auth0Lock.prototype._requestSMSCode = function (panel, callback) {
     self.setPanel(panel);
 
     if (err) {
-      self._showError(err.message || this.options.i18n.t('sms:smsServerErrorText'));
+      self._showError(err.message || this.options.i18n.t('sms:phone:serverErrorText'));
       return callback(err);
     }
     callback(null, result);
@@ -1318,7 +1318,7 @@ Auth0Lock.prototype._signinWithSMSCode = function (panel) {
     var args = Array.prototype.slice.call(arguments, 0);
     if (!err) { return callback.apply(self, args), self.hide(); }
     self.setPanel(panel);
-    self._showError(err.message || self.options.i18n.t('sms:passcodeServerErrorText'));
+    self._showError(err.message || self.options.i18n.t('sms:passcode:serverErrorText'));
     return callback.apply(null, args);
   });
 };
