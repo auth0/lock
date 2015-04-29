@@ -26,6 +26,9 @@
     }
 }
 
+input:focus{
+  outline: none;
+}
 .auth0-lock-overlay{
   @include breakpoint("desktop"){
     background: #222228;
@@ -40,7 +43,6 @@
 
 .auth0-lock{
   font-family: "Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
-
   @include breakpoint("desktop"){
     width: 300px;
     border-radius: 3px;
@@ -48,6 +50,8 @@
     left: 50%;
     top: 50px;
     margin-left: -150px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.5);
+
   }
 }
 
@@ -73,12 +77,39 @@
 }
 
 .auth0-lock-content{
-  padding: 20px;
+  padding: 40px 40px;
   background: white;
 }
 
 .auth0-lock-overlay{
   background: #222228;
+}
+
+.auth0-lock-widget{
+
+}
+
+.auth0-lock-input-wrap{
+  border-radius: 3px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  height: 40px;
+  position: relative;
+  background: #f9f9f9;
+  .auth0-lock-input{
+    border: 0;
+    padding: 10px;
+    left: 40px;
+    position: absolute;
+    right: 0;
+    height: 20px;
+    border-left: 1px solid #ccc;
+    font-size: 12px;
+    right: 0px;
+  }
+  &:last-child{
+    margin-bottom: 0;
+  }
 }
 
 .auth0-lock-submit{

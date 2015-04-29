@@ -1,4 +1,7 @@
 @import url(normalize.css);
+input:focus {
+  outline: none; }
+
 @media (min-width: 979px) {
   .auth0-lock-overlay {
     background: #222228;
@@ -18,7 +21,8 @@
       position: fixed;
       left: 50%;
       top: 50px;
-      margin-left: -150px; } }
+      margin-left: -150px;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5); } }
 
 .auth0-lock-header {
   text-align: center;
@@ -39,11 +43,31 @@
   font-size: 24px; }
 
 .auth0-lock-content {
-  padding: 20px;
+  padding: 40px 40px;
   background: white; }
 
 .auth0-lock-overlay {
   background: #222228; }
+
+.auth0-lock-input-wrap {
+  border-radius: 3px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  height: 40px;
+  position: relative;
+  background: #f9f9f9; }
+  .auth0-lock-input-wrap .auth0-lock-input {
+    border: 0;
+    padding: 10px;
+    left: 40px;
+    position: absolute;
+    right: 0;
+    height: 20px;
+    border-left: 1px solid #ccc;
+    font-size: 12px;
+    right: 0px; }
+  .auth0-lock-input-wrap:last-child {
+    margin-bottom: 0; }
 
 .auth0-lock-submit {
   background: #40DF7D;
