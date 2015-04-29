@@ -1,0 +1,112 @@
+@import "normalize.css";
+
+@mixin breakpoint($point, $value: 0) {
+    @if $point == "mobile" {
+        @media (min-width: 320px) { @content; }
+    }
+
+    @else if $point == "mobile-landscape" {
+        @media (min-width: 767px) { @content; }
+    }
+
+    @else if $point == "tablet" {
+        @media (min-width: 768px) { @content; }
+    }
+
+    @else if $point == "desktop" {
+        @media (min-width: 979px) { @content; }
+    }
+
+    @else if $point == "retina-only" {
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)  { @content; }
+    }
+
+    @else {
+        @media ($point: $value) { @content; }
+    }
+}
+
+.auth0-lock-overlay{
+  @include breakpoint("desktop"){
+    background: #222228;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+  }
+}
+
+.auth0-lock{
+  font-family: "Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+
+  @include breakpoint("desktop"){
+    width: 300px;
+    border-radius: 3px;
+    position: fixed;
+    left: 50%;
+    top: 50px;
+    margin-left: -150px;
+  }
+}
+
+.auth0-lock-header{
+  text-align: center;
+  padding: 14px;
+  background: #f1f1f1;
+  color: #333;
+  @include breakpoint(mobile-landscape){
+    position: static;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+}
+
+.auth0-lock-header-avatar{
+  width: 60px;
+  height: 60px;
+}
+
+.auth0-lock-header-welcome{
+  font-size: 24px;
+}
+
+.auth0-lock-content{
+  padding: 20px;
+  background: white;
+}
+
+.auth0-lock-overlay{
+  background: #222228;
+}
+
+.auth0-lock-submit{
+  background: #40DF7D;
+  border: 0;
+  padding: 14px;
+  display: block;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+
+
+  @include breakpoint(mobile-landscape){
+    position: static;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  i{
+    border: 2px solid white;
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: auto;
+    border-radius: 100px;
+  }
+
+  &:hover{
+    background: darken(#40DF7D, 10%)
+  }
+}
