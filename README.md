@@ -4,6 +4,7 @@
 [![NPM version][npm-image]][npm-url]
 [![Build status][strider-image]][strider-url]
 [![Test coverage][coveralls-image]][coveralls-url]
+[![Slack chat](http://chat.auth0.com/badge.svg)](http://chat.auth0.com/)
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
