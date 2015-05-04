@@ -1,3 +1,19 @@
+## 7.5.1 - (April 27, 2015)
+
+### Fixed
+
+ - [popup] Bump auth0-js@6.3.1 to fix issue with window popup not closing on `.signup` with `auto_login=false` (`siacomuzzi - cristiandouce`)
+  https://github.com/auth0/lock/commit/471d8a169c8f98567365c085b26d938a9591eac2
+  https://github.com/auth0/lock/commit/2c68ccbb72391aa0187921cf705d3bdbdc50b1f7
+
+
+## 7.5.0 - (April 27, 2015)
+
+### Changed
+
+ - [font] Font family changed to Helvetica. (`beneliflo`)
+  https://github.com/auth0/lock/commit/299460259cb8f8635f5134194d8ead07813132da
+
 ## 7.4.0 - (April 16, 2015)
 
 ### Added
