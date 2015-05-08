@@ -41,7 +41,6 @@
     "usernamePlaceholder":         "Username",
     "passwordPlaceholder":         "Create a Password",
     "cancelAction":                "Cancel",
-    "headerText":                  "Please enter your email and password",
     "footerText":                  "",
     "serverErrorText":             "There was an error processing the signup.",
     "userExistsErrorText":         "The user already exists.",

@@ -28,7 +28,6 @@
     "emailPlaceholder": "E-Mail Adresse",
     "passwordPlaceholder": "Erstellen Sie ein Passwort",
     "cancelAction": "Abbrechen",
-    "headerText": "Bitte geben Sie Ihre E-Mail Adresse und das Passwort ein",
     "footerText": "Durch Klicken auf \"Anmelden\", stimmen Sie unseren Nutzungsbedingungen oder Datenschutzrichtlinien zu.",
     "signupOnSSODomainErrorText": "Die Domain {domain} wurde für Single Sign On konfiguriert. Sie können daher kein neues Konto erstellen. Bitte versuchen Sie stattdessen sich direkt anzumelden.",
     "serverErrorText": "Es gab einen Fehler beim Verarbeiten der Daten auf dem Server."

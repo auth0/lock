@@ -38,7 +38,6 @@
     "emailPlaceholder":            "E-post",
     "passwordPlaceholder":         "Opprett passord",
     "cancelAction":                "Avbryt",
-    "headerText":                  "Vennligst skriv inn e-post og passord",
     "footerText":                  "",
     "signupOnSSODomainErrorText":  "Domenet {domain} er konfigurert med Single Sign On og du kan ikke opprette en konto selv. Forsøk å logge inn istedet.",
     "serverErrorText":             "Det oppstod en feil under innlogging.",

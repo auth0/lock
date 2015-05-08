@@ -33,7 +33,6 @@
     "emailPlaceholder":             "Email",
     "passwordPlaceholder":          "Создайте пароль",
     "cancelAction":                 "Отмена",
-    "headerText":                   "Пожалуйста, введите свой email и пароль",
     "footerText":                    "",
     "signupOnSSODomainErrorText":   "Этот домен {domain} был настроен для единого входа и нельзя создать учетную запись, попробуйте войти.",
     "serverErrorText":              "Произошла ошибка при обработке регистрации.",

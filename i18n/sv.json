@@ -41,7 +41,6 @@
     "usernamePlaceholder":         "Användarnamn",
     "passwordPlaceholder":         "Skapa ett lösenord",
     "cancelAction":                "Avbryt",
-    "headerText":                  "Var god och skriv din e-post och lösenord",
     "footerText":                  "",
     "serverErrorText":             "Något gick fel vid registeringen.",
     "userExistsErrorText":         "Denna användare finns redan.",
