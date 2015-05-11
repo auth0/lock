@@ -76,5 +76,26 @@
     "serverErrorText":             "There was an error processing the password reset.",
     "userDoesNotExistErrorText":   "User does not exist.",
     "invalidPassword":             "Password is too weak."
+  },
+  "sms": {
+    "phone": {
+      "title":                     "Send Passcode",
+      "action":                    "Send",
+      "phonePlaceholder":          "Phone number",
+      "enterPhoneText":            "Please enter your phone number",
+      "selectCountryCode":         "Select your country code",
+      "invalidPhoneNumber":        "Phone must be numbers only",
+      "serverErrorText":           "There was an error sending the SMS."
+    },
+    "passcode": {
+      "title":                     "Enter SMS code",
+      "action":                    "Login",
+      "codePlaceholder":           "SMS Code",
+      "checkPhoneText":            "Please check your phone <b>{phone}</b>",
+      "receivedText":              "You've received a message from us with your passcode",
+      "cancelAction":              "Didn't receive code?",
+      "invalidCode":               "SMS Code must be formed by 6 numbers",
+      "serverErrorText":           "There was an error processing the SMS passcode."
+    }
   }
 }
