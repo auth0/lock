@@ -1,3 +1,10 @@
+## 7.5.2 - (May 12, 2015)
+
+### Fixed
+
+ - Bump auth0-js@6.4 to prevent a CORS call when authenticating on the same auth0 domain.
+  https://github.com/auth0/lock/commit/327d5249ebca515c2ecec3d8b18464668fc9cbcb
+
 ## 7.5.1 - (April 27, 2015)
 
 ### Fixed
