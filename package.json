@@ -23,7 +23,7 @@
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
   "dependencies": {
-    "auth0-js": "~6.4.1",
+    "auth0-js": "~6.4.2",
     "bean": "~1.0.4",
     "blueimp-md5": "^1.1.0",
     "bonzo": "^1.3.6",
