@@ -1,3 +1,17 @@
+## 7.5.4 - (May 19, 2015)
+
+### Fixed
+
+ - Fix bug with internal AMD definitions when loading Auth0Lock through AMD.
+  https://github.com/auth0/lock/commit/92c956726f1327971dbe2a2bf106718dc3b0ee8f
+
+## 7.5.3 - (May 18, 2015)
+
+### Fixed
+
+ - Bump auth0-js@6.4.2 do not use JSONP when it is on the same domain.
+  https://github.com/auth0/lock/commit/fd1d9391aefdf366e504b0c094218cd26f7d5337
+
 ## 7.5.2 - (May 12, 2015)
 
 ### Fixed
