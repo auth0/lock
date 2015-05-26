@@ -65,6 +65,7 @@
     "rimraf": "~2.2.2",
     "through": "^2.3.4",
     "uglify-js": "~2.4.15",
+    "unreleased": "^0.0.5",
     "zuul": "https://github.com/jfromaniello/zuul/tarball/phantom_custom_port",
     "zuul-ngrok": "^2.0.1"
   },

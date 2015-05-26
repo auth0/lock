@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 var path = require('path');
 var bump = require('bump');
+var unreleased = require('unreleased');
+var fs = require('fs');
 
 function run(cmd, done) {
   var exec = require('child_process').exec;
@@ -10,16 +12,30 @@ function run(cmd, done) {
 }
 
 try {
-  var res = bump(path.resolve(__dirname, ".."), process.argv.pop());
+  var rootDir = path.resolve(__dirname, '..');
+  var res = bump(rootDir, process.argv.pop());
 
-  run('git commit -am "Release: ' + res.version + '"', function (err) {
-    if (!err) return process.exit(0);
+  unreleased(res.version, rootDir, 'auth0/lock', function (err, changelog) {
+    if (err) { return process.exit(1); }
 
-    // restore original status
-    console.error(err.message);
-    run('git checkout .', function (err) {
-      if (err) console.error(err.message);
-      process.exit(1);
+    changelog = new Buffer(changelog + '\n\n');
+    var file = path.join(rootDir, 'CHANGELOG.md');
+
+    var data = fs.readFileSync(file); //read existing contents into data
+    var fd = fs.openSync(file, 'w+');
+    fs.writeSync(fd, changelog, 0, changelog.length); //write new data
+    fs.writeSync(fd, data, 0, data.length); //append old data
+    fs.close(fd);
+
+    run('git commit -am "Release: ' + res.version + '"', function (err) {
+      if (!err) { return process.exit(0); }
+
+      // restore original status
+      console.error(err.message);
+      run('git checkout .', function (err) {
+        if (err) { console.error(err.message); }
+        process.exit(1);
+      });
     });
   });
 
