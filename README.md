@@ -275,7 +275,6 @@ If you have found a bug or if you have a feature request, please report them at 
 * [Release process][release-process] notes.
 * [Auth0Lock playground][playground-url]
 * [Using Refresh Tokens](https://github.com/auth0/lock/wiki/Using-a-Refresh-Token)
-* Legacy **Auth0Widget**`< v6.0.0` [repository](https://github.com/auth0/widget) and [docs][legacy-widget-docs].
 * Legacy **Auth0Widget** [Migration guide][migration-guide] to **AuthoLock**
 
 <!-- Vaaaaarrsss -->
@@ -313,4 +312,3 @@ If you have found a bug or if you have a feature request, please report them at 
 [release-process]: https://github.com/auth0/lock/wiki/Release-process
 [playground-url]: http://auth0.github.com/playground
 [migration-guide]: https://github.com/auth0/lock/wiki/Migration-guide
-[legacy-widget-docs]: https://docs.auth0.com/login-widget2
