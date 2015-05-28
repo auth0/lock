@@ -101,6 +101,30 @@ Finally, point your browser at `http://localhost:3000/` and play around.
 
 We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
+## Contributing
+
+To run the tests:
+
+Run `grunt dev` and point your browser to `http://localhost:9999/test_harness.html` to run the test suite.
+
+Run `grunt phantom` if you have PhantomJS installed.
+
+Run `grunt integration` (or `npm test`) if you have [SauceLabs][sauce-url] account. You will need a `SAUCE_ACCESS_KEY` and `SAUCE_USERNAME` env variables.
+
+[sauce-url]: http://saucelabs.com
+
+To publish a new version use:
+
+```
+  # release new version
+  $ ./bin/version {patch,minor,major}
+
+  # update remote repository
+  $ git push origin master
+
+  # and let Auth0's CI worry about the rest
+```
+
 ## Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
