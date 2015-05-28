@@ -140,3 +140,4 @@ If you have found a bug or if you have a feature request, please report them at 
 [release-process]: https://github.com/auth0/lock/wiki/Release-process
 [playground-url]: http://auth0.github.com/playground
 [migration-guide]: https://auth0.com/docs/libraries/lock/migration-guide
+[using-refresh-tokens]: https://auth0.com/docs/libraries/lock/using-refresh-tokens
