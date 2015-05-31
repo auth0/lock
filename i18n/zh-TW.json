@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "請稍候...",
+  "close": "關閉",
+  "signin": {
+    "title": "登入",
+    "action": "登入",
+    "all": "顯示全部",
+    "strategyEmailEmpty": "請輸入電子郵件地址。",
+    "strategyEmailInvalid": "無效的電子郵件地址。",
+    "strategyDomainInvalid": "網域 {domain} 是不合法的。",
+    "signupText": "註冊",
+    "forgotText": "忘記密碼？",
+    "emailPlaceholder": "電子郵件",
+    "usernamePlaceholder": "電子郵件",
+    "passwordPlaceholder": "密碼",
+    "separatorText": "或",
+    "serverErrorText": "登入系統發生錯誤。",
+    "returnUserLabel": "您使用的最後一次登入...",
+    "wrongEmailPasswordErrorText": "錯誤的電子郵件或密碼。",
+    "or": "...或註冊",
+    "loadingMessage": "登入中 {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "註冊",
+    "action": "註冊",
+    "emailPlaceholder": "電子郵件",
+    "passwordPlaceholder": "新密碼",
+    "cancelAction": "取消",
+    "headerText": "請輸入您的電子郵件和密碼",
+    "footerText": "",
+    "signupOnSSODomainErrorText": "此網域 {domain} 已配置為單一登入，您不能再創建帳號。請重新註冊。",
+    "serverErrorText": "註冊系統發生錯誤。"
+  },
+  "reset": {
+    "title": "忘記密碼",
+    "action": "發送",
+    "emailPlaceholder": "電子郵件",
+    "passwordPlaceholder": "新密碼",
+    "repeatPasswordPlaceholder": "確認新密碼",
+    "cancelAction": "取消",
+    "successText": "我們已寄送重置密碼的確認信至您的電子郵件信箱，請前往收取。",
+    "enterSamePasswordText": "請輸入相同的密碼。",
+    "headerText": "請輸入您的電子郵件與新的密碼，我們將向您發送電子郵件以確認密碼更改。",
+    "serverErrorText": "重置密碼系統發生錯誤。"
+  }
+}
