@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <script src="//use.typekit.net/iws6ohy.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
+
+    <script src="build/bundle.js"></script>
+  </head>
+  <body class="home">
+    <div class="container">
+      <div class="login-page clearfix">
+        <div class="login-box auth0-box before">
+          <img src="https://i.cloudup.com/StzWWrY34s.png" />
+          <h3>Auth0 Example</h3>
+          <p>Zero friction identity infrastructure, built for developers</p>
+          <a ng-click="login()" class="btn btn-primary btn-lg btn-login btn-block">SignIn</a>
+        </div>
+        <div class="logged-in-box auth0-box logged-in" style="display: none;">
+          <h1 id="logo"><img src="auth0_logo.png" /></h1>
+          <img class="avatar"/>
+          <h2>Welcome <span class="nickname"></span></h2>
+          <button class="btn btn-lg btn-primary btn-api">Call API</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
