@@ -1,12 +1,17 @@
 'use strict';
+var buildPath = require('path').resolve(__dirname, 'public', 'build');
 
 var config = {
   context: __dirname,
-  entry: './src/app.js',
+  entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/dev-server',
+    './src/app.js'
+  ],
   output: {
-    path: './public/build',
+    path: buildPath,
     filename: 'bundle.js',
-    publicPath: '/build/'
+    publicPath: './public/'
   },
   module: {
     loaders: [{
