@@ -4,7 +4,7 @@
   "description": "Lock webpack example",
   "main": "src/app.js",
   "scripts": {
-    "start": "node start.js"
+    "start": "webpack && webpack-dev-server --quiet --port 3000 --content-base public/"
   },
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",

@@ -3,15 +3,10 @@ var buildPath = require('path').resolve(__dirname, 'public', 'build');
 
 var config = {
   context: __dirname,
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/dev-server',
-    './src/app.js'
-  ],
+  entry: './src/app.js',
   output: {
     path: buildPath,
-    filename: 'bundle.js',
-    publicPath: './public/'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [{
