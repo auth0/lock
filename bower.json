@@ -3,5 +3,5 @@
   "version": "7.5.5",
   "main": "build/auth0-lock.js",
   "ignore": ["lib-cov", "*.seed", "*.log", "*.csv", "*.dat", "*.out", "*.pid", "*.gz", "pids", "logs", "results",
-    "npm-debug.log"]
+    "npm-debug.log", "bin"]
 }
