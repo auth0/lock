@@ -1,3 +1,76 @@
+## [7.5.5] - 2015-04-13
+
+### Fixed
+
+- [] Merge pull request #175 from ivancevich/webpack-support (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/3faecece9032ec9bfb5fcf2847f8bd7a285d4a12
+- [] Fixes `blueimp-md5` exporting issue to have webpack support (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/5673162d072c15a5d268de8163442f537d8bf0ab
+- [] Added contributing section (`Nathan Totten`)
+  https://github.com/auth0/lock/commit/241ab9b710dffc499986d368228f18b35b04780c
+- [] Update README.md (`Nathan Totten`)
+  https://github.com/auth0/lock/commit/888fd808f5e73b885b1ac38d392d527ec7a4d62f
+- [] Moved docs to auth0.com (`Nathan Totten`)
+  https://github.com/auth0/lock/commit/b6f2ffdf87740f543cbdb7913a8d0b77a401a6eb
+- [] Removed link to legacy doc widget (`Nathan Totten`)
+  https://github.com/auth0/lock/commit/eee146a85b379b577a31e3b2b30fe2157dd3b5c0
+- [] Update README.md (`Nathan Totten`)
+  https://github.com/auth0/lock/commit/4a9798fb5ea9c8962e0c2cf26c8c7650d0c97f25
+- [] Update README.md (`Nathan Totten`)
+  https://github.com/auth0/lock/commit/0457a0c5b6507957bffe7e27f763f2a9c51a612e
+- [] When bumping version, it now updates CHANGELOG.md with commits between tags. (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/5144e498018d1fbbcb9092f3046022f1638c6399
+- [] update changelog (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/38d1c5133395a2eeea97d555f3bf7b2f2478f2ba
+- [] Release: 7.5.4 (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/ac0979fda7ee08f52da59f61e72ee17c025e1168
+- [] Merge pull request #173 from auth0/solve_issue_with_amd (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/b8585e77827c1d8e23cf50105af1a055d4a454c1
+- [] Solve the issue with AMD definitions inside our code. closes #172 (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/92c956726f1327971dbe2a2bf106718dc3b0ee8f
+- [] Release: 7.5.3 (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/c38bfbe2f6e73b52fe2c968ade995c0ff3bb4c4c
+- [] bump auth0.js (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/fd1d9391aefdf366e504b0c094218cd26f7d5337
+- [] update changelog (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/47e7fb8a518d2dc298b4c505a46431066867ac7f
+- [] Release: 7.5.2 (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/327d5249ebca515c2ecec3d8b18464668fc9cbcb
+- [] bump auth0.js (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/6ba2d59eeddfdba7a501ddc582356949e06a07d6
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/a45726e5bb72405a3846f9399073e5605749a775
+- [] Update README.md (`Martin Gontovnikas`)
+  https://github.com/auth0/lock/commit/f40a1f49364732c68abfcb3492351828e9bf6f20
+- [] Update README.md (`Martin Gontovnikas`)
+  https://github.com/auth0/lock/commit/0a754e49beded5cc08bcc737a2bd011c6b7f53f4
+- [] Update to Lock 7 in CDN links (`Rodrigo López Dato`)
+  https://github.com/auth0/lock/commit/910002c92fef3a47fac674d684a4a4e821bf9507
+- [] Release: 7.5.1 (`siacomuzzi`)
+  https://github.com/auth0/lock/commit/6db799bef40464ad164e655a83dcbbc3bcada4ce
+- [] Merge pull request #168 from auth0/bump/auth0-js (`Sebastian Iacomuzzi`)
+  https://github.com/auth0/lock/commit/471d8a169c8f98567365c085b26d938a9591eac2
+- [] Bump auth0-js@6.3.1 to fix issue with window popup not closing on .signup with auto_login=false (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2c68ccbb72391aa0187921cf705d3bdbdc50b1f7
+- [] Release: 7.5.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b70682dc10b593021b6c55d0cbb004485771d507
+- [] Anchor cursor pointer fix. (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/d62c445938e4108915efd8a3282f9684e8d9e535
+- [] Font size changed social text. (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/9911506af8dc21993a7f84b0bf290879720636c0
+- [] Font family changed to Helvetica. (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/299460259cb8f8635f5134194d8ead07813132da
+- [] Added grunt dev command (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/3f2c78a9a91aa79814dca33659ba06437a73fbed
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/83e1238364bbf3189ceadc1d482892aecac1b091
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/7922287c60fcd7b24fcd6062fdda0648104f2047
+- [] Release: 7.4.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/31ea47facbc5265e7f10e416a7e572cd8625389f
+- [] Add login_hint parameter sent on every request with email/username (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/ea8e8e4a77823df9531b1ff2c2051245dad9dffb
+
 ## 7.5.4 - (May 19, 2015)
 
 ### Fixed
