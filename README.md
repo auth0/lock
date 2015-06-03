@@ -97,6 +97,14 @@ Then execute `npm i` to install dependencies (only once) and `npm run demo` from
 
 Finally, point your browser at `http://localhost:3000/` and play around.
 
+
+## Examples
+
+The **examples** directory has some implementation samples you can find useful:
+
+- [Lock & Webpack sample](https://github.com/auth0/lock/tree/master/examples/webpack)
+
+
 ## Browser Compatibility
 
 We ensure browser compatibility in `Chrome`, `Safari`, `Firefox` and `IE >= 9`. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
