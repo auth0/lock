@@ -1,0 +1,24 @@
+{
+  "name": "lock-webpack-example",
+  "version": "1.0.0",
+  "description": "Lock webpack example",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "webpack && webpack-dev-server --quiet --port 3000 --content-base public/"
+  },
+  "author": "Auth0 <support@auth0.com> (http://auth0.com)",
+  "license": "MIT",
+  "dependencies": {
+    "auth0-lock": "^7.5.5",
+    "brfs": "^1.4.0",
+    "ejsify": "^1.0.0",
+    "jquery": "^2.1.4",
+    "json-loader": "^0.5.2",
+    "packageify": "^0.2.2",
+    "transform-loader": "^0.2.2",
+    "webpack": "^1.9.10"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.9.0"
+  }
+}
