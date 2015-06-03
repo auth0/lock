@@ -89,11 +89,11 @@ You can find the full documentation for Lock on the [Auth0 docs site](https://au
 * Legacy **Auth0Widget** [Migration guide][migration-guide] to **AuthoLock**
 
 
-## Examples
+## Demos
 
-The **example** directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed.
+The **support/development-demo** directory has a ready-to-go app. In order to run it you need [node](http://nodejs.org/) installed.
 
-Then execute `npm i` to install dependencies (only once) and `npm example` from the root of this project.
+Then execute `npm i` to install dependencies (only once) and `npm run demo` from the root of this project.
 
 Finally, point your browser at `http://localhost:3000/` and play around.
 

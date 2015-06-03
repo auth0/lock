@@ -25,20 +25,20 @@ module.exports = function (grunt) {
         options: {
           // base: 'test',
           hostname: '*',
-          base: ['.', 'example', 'example/build', 'build'],
+          base: ['.', 'support/development-demo', 'support/development-demo/build', 'build'],
           port: 9999
         }
       },
-      example: {
+      demo: {
         options: {
           hostname: '*',
-          base: ['example', 'example/build', 'build'],
+          base: ['support/development-demo', 'support/development-demo/build', 'build'],
           port: 3000
         }
       },
-      'example-https': {
+      'demo-https': {
         options: {
-          base: ['example', 'example/build', 'build'],
+          base: ['support/development-demo', 'support/development-demo/build', 'build'],
           port:  3000,
           protocol: 'https',
           hostname: '*',
@@ -85,9 +85,9 @@ module.exports = function (grunt) {
           'lib/css/main.css': 'lib/css/main.less'
         }
       },
-      example: {
+      demo: {
         files: {
-          'example/build/index.css': 'example/index.less'
+          'support/development-demo/build/index.css': 'support/development-demo/index.less'
         }
       }
     },
@@ -118,10 +118,10 @@ module.exports = function (grunt) {
       }
     },
     copy: {
-      example: {
+      demo: {
         files: {
-          'example/auth0-lock.min.js': 'build/auth0-lock.min.js',
-          'example/auth0-lock.js':     'build/auth0-lock.js'
+          'support/development-demo/auth0-lock.min.js': 'build/auth0-lock.min.js',
+          'support/development-demo/auth0-lock.js':     'build/auth0-lock.js'
         }
       },
       release: {
@@ -156,7 +156,7 @@ module.exports = function (grunt) {
     },
     clean: {
       css: ['lib/css/main.css', 'lib/css/main.min.css'],
-      js: ['release/', 'build/', 'example/auth0-lock.js']
+      js: ['release/', 'build/', 'support/development-demo/auth0-lock.js']
     },
     watch: {
       js: {
@@ -175,9 +175,9 @@ module.exports = function (grunt) {
           livereload: true
         },
       },
-      example: {
-        files: ['example/*'],
-        tasks: ['less:example'],
+      demo: {
+        files: ['support/development-demo/*'],
+        tasks: ['less:demo'],
         options: {
           livereload: true
         },
@@ -303,8 +303,8 @@ module.exports = function (grunt) {
   grunt.registerTask('js',            ['clean:js', 'browserify:debug', 'exec:uglify']);
   grunt.registerTask('build',         ['css', 'js']);
 
-  grunt.registerTask('example',       ['less:example', 'connect:example', 'build', 'watch']);
-  grunt.registerTask('example-https', ['less:example', 'connect:example-https', 'build', 'watch']);
+  grunt.registerTask('demo',          ['less:demo', 'connect:demo', 'build', 'watch']);
+  grunt.registerTask('demo-https',    ['less:demo', 'connect:demo-https', 'build', 'watch']);
 
   grunt.registerTask('dev',           ['connect:test', 'build', 'watch']);
   grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
