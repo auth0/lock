@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "7.5.5",
+  "version": "7.5.6",
   "description": "Auth0 Lock",
   "main": "./index.js",
   "keywords": [
