@@ -39,7 +39,9 @@ breakpoint(point, value = 0)
     right: 0;
     left: 0;
     z-index: -1;
-    background: radial-gradient(rgba(34,34,40, .8), rgba(34,34,40, 1)); /* Standard syntax */
+    // background: radial-gradient(rgba(34,34,40, .8), rgba(34,34,40, 1)); /* Standard syntax */
+    background: radial-gradient(lighten(#222228, 10%), #111118); /* Standard syntax */
+    opacity: .94;
 
 
 .auth0-lock
@@ -60,7 +62,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-widget
     +breakpoint("desktop")
-      box-shadow: 0 2px 2px rgba(0,0,0,.5);
+      box-shadow: 0 0 20px rgba(0,0,0,.8);
       // transform: translateY(80%) scale(.8);
       // transition-timing-function: cubic-bezier(.3, 0, 0, 1.3);
       // transition-delay: .4s;

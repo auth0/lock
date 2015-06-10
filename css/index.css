@@ -10,7 +10,8 @@
     right: 0;
     left: 0;
     z-index: -1;
-    background: radial-gradient(rgba(34,34,40,0.8), #222228);
+    background: radial-gradient(#363640, #111118);
+    opacity: 0.94;
   }
 }
 .auth0-lock {
@@ -34,7 +35,7 @@
 }
 @media (min-width: 992px) {
   .auth0-lock .auth0-lock-widget {
-    box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
   }
 }
 .auth0-lock .auth0-lock-header {
