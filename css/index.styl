@@ -44,6 +44,7 @@ breakpoint(point, value = 0)
 .auth0-lock
   font-family: 'Open Sans', sans-serif;
   visibility: hidden;
+  text-rendering: optimizeLegibility;
 
   &.open
     visibility: visible;
@@ -56,7 +57,7 @@ breakpoint(point, value = 0)
 
   +breakpoint("desktop")
     width: 300px;
-    border-radius: 3px;
+    border-radius: 5px;
     position: fixed;
     left: 50%;
     top: 200px;
@@ -85,8 +86,8 @@ breakpoint(point, value = 0)
     overflow: hidden;
 
     +breakpoint(mobile-landscape)
-      border-top-right-radius: 3px;
-      border-top-left-radius: 3px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
 
     .auth0-lock-close
       background: white;
@@ -174,6 +175,7 @@ breakpoint(point, value = 0)
     border: 1px solid #f1f1f1;
     position: relative;
     background: #f1f1f1;
+    overflow: hidden;
 
     i:before
       color: #888;
@@ -222,8 +224,8 @@ breakpoint(point, value = 0)
 
     +breakpoint("mobile-landscape")
       position: static;
-      border-bottom-right-radius: 3px;
-      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
 
     i
       border: 2.5px solid white;
