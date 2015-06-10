@@ -168,9 +168,25 @@ breakpoint(point, value = 0)
     position: relative;
     background: #f9f9f9;
 
+    i:before
+      color: #999;
+      position: absolute
+      font-size: 12px;
+      top: 17px;
+      left: 15px;
+
+    &.auth0-lock-input-username
+      i:before
+        content: "b"
+
+    &.auth0-lock-input-password
+      i:before
+        content: "c"
+
+
     .auth0-lock-input
       border: 0;
-      padding: 14px;
+      padding: 12px 14px;
       margin-left: 40px;
       right: 0;
       height: 20px;
@@ -180,7 +196,6 @@ breakpoint(point, value = 0)
       width: 169px;
       +breakpoint("mobile-landscape")
         width: 149px;
-
 
     &:last-child
       margin-bottom: 0;

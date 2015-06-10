@@ -138,9 +138,22 @@
   position: relative;
   background: #f9f9f9;
 }
+.auth0-lock .auth0-lock-input-wrap i:before {
+  color: #999;
+  position: absolute;
+  font-size: 12px;
+  top: 17px;
+  left: 15px;
+}
+.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-username i:before {
+  content: "b";
+}
+.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-password i:before {
+  content: "c";
+}
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
   border: 0;
-  padding: 14px;
+  padding: 12px 14px;
   margin-left: 40px;
   right: 0;
   height: 20px;
