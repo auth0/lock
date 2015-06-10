@@ -1,0 +1,244 @@
+@import "normalize.css"
+@import "fonts.css"
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+
+@charset "UTF-8";
+
+@font-face {
+  font-family: "auth0-widget";
+  src:url("fonts/auth0-widget.eot");
+  src:url("fonts/auth0-widget.eot?#iefix") format("embedded-opentype"),
+    url("fonts/auth0-widget.woff") format("woff"),
+    url("fonts/auth0-widget.ttf") format("truetype"),
+    url("fonts/auth0-widget.svg#auth0-widget") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "auth0-widget" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "auth0-widget" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Mixing
+// Breakpoints mixin
+breakpoint(point, value = 0)
+
+  if point == "mobile"
+    @media (min-width: 320px)
+    	{block}
+
+  else if point == "mobile-landscape"
+    @media (min-width: 568px)
+    	{block}
+
+  else if point == "tablet"
+    @media (min-width: 768px)
+    	{block}
+
+  else if point == "desktop"
+    @media (min-width: 992px)
+    	{block}
+
+  else if point == "retina-only"
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+    	{block}
+
+  else
+    @media (min-width: value)
+    	{block}
+
+
+.auth0-lock-overlay
+  +breakpoint("desktop")
+    background: #222228;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+
+
+.auth0-lock
+  font-family: "Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+  font-family: 'Open Sans', sans-serif;
+  a
+    text-decoration: none;
+
+  input:focus
+    outline: none;
+
+  +breakpoint("desktop")
+    width: 300px;
+    border-radius: 3px;
+    position: fixed;
+    left: 50%;
+    top: 50px;
+    margin-left: -150px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.5);
+    // transform: translateY(80%) scale(.8);
+    // transition-timing-function: cubic-bezier(.3, 0, 0, 1.3);
+    // transition-delay: .4s;
+
+  .auth0-lock-header
+    text-align: center;
+    padding: 14px;
+    background: #eee;
+    color: #333;
+    position: relative;
+    +breakpoint(mobile-landscape)
+      position: static;
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+
+    .auth0-lock-close
+      background: white;
+      border-radius: 100px;
+      height: 22px;
+      width: 22px;
+      background: white;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.4);
+      color: #333;
+      &:before
+        content: "e";
+        font-size: 10px;
+        position: relative;
+        top: .3px;
+
+  .auth0-lock-header-avatar
+    width: 60px;
+    height: 60px;
+
+
+  .auth0-lock-header-welcome
+    font-size: 24px;
+
+
+  .auth0-lock-content
+    padding: 30px 40px;
+    background: white;
+
+
+  .auth0-lock-overlay
+    background: #222228;
+
+  .auth0-lock-tabs
+    border: 1px solid #5C666F;
+    padding: 0;
+    margin: 0 0 30px 0;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 12px;
+    overflow: hidden;
+    li
+      width: 50%;
+      display: block
+      list-style: none;
+      float: left;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      &.auth0-lock-tabs-current
+        background-color: #5C666F;
+        a
+          color white
+
+      a
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+        color: #5C666F;
+
+
+  .auth0-lock-input-wrap
+    border-radius: 3px;
+    margin-bottom: 14px;
+    border: 1px solid #e9e9e9;
+    height: 50px;
+    position: relative;
+    background: #f9f9f9;
+    .auth0-lock-input
+      border: 0;
+      padding: 10px;
+      left: 40px;
+      position: absolute;
+      right: 0;
+      height: 20px;
+      border-left: 1px solid #eee;
+      font-size: 12px;
+      right: 0px;
+
+
+    &:last-child
+      margin-bottom: 0;
+
+
+  .auth0-lock-submit
+    background: #40DF7D;
+    background: #EA5323;
+    border: 0;
+    padding: 14px;
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+
+    +breakpoint("mobile-landscape")
+      position: static;
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+
+
+    i
+      border: 2px solid white;
+      width: 40px;
+      height: 40px;
+      display: block;
+      margin: auto;
+      border-radius: 100px;
+
+
+    &:hover
+      background: darken(#40DF7D, 10%)
+
+  .auth0-lock-forgot-link
+    font-size 12px;
+    display: block
+    text-align: center;
+    margin: 30px 0 0 0;
+    color: #5C666F;
+
+  .auth0-lock-badge
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    &:before
+      content: "f"
+      color: #EB5424
