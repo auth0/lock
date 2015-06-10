@@ -15,12 +15,12 @@
     <script type="text/javascript">
       $(function() {
         $('body').click(function(){
-          $('.auth0-lock').show();
+          $('.auth0-lock').addClass('open');
           return false;
         });
 
         $('.auth0-lock-close').click(function(){
-          $('.auth0-lock-close').show();
+          $('.auth0-lock').hide();
           return false;
         });
 
@@ -31,7 +31,7 @@
 
 
 
-    <div class="auth0-lock" style="display: none">
+    <div class="auth0-lock" >
       <div class="auth0-lock-overlay">
 
       </div>
