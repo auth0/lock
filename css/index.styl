@@ -90,7 +90,7 @@ breakpoint(point, value = 0)
         content: "e";
         font-size: 10px;
         position: relative;
-        top: .3px;
+        top: .4px;
 
   // .auth0-lock-header-avatar
   //   width: 60px;
@@ -125,6 +125,8 @@ breakpoint(point, value = 0)
   .auth0-lock-content
     padding: 30px 40px;
     background: white;
+    max-width: 240px;
+    margin: auto;
 
   .auth0-lock-overlay
     background: #222228;
@@ -175,7 +177,9 @@ breakpoint(point, value = 0)
       border-left: 1px solid #eee;
       font-size: 12px;
       right: 0px;
-      width: 149px;
+      width: 169px;
+      +breakpoint("mobile-landscape")
+        width: 149px;
 
 
     &:last-child

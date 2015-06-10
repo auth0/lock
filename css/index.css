@@ -64,7 +64,7 @@
   content: "e";
   font-size: 10px;
   position: relative;
-  top: 0.3px;
+  top: 0.4px;
 }
 .auth0-lock .auth0-lock-header-welcome {
   font-size: 22px;
@@ -94,6 +94,8 @@
 .auth0-lock .auth0-lock-content {
   padding: 30px 40px;
   background: #fff;
+  max-width: 240px;
+  margin: auto;
 }
 .auth0-lock .auth0-lock-overlay {
   background: #222228;
@@ -145,7 +147,12 @@
   border-left: 1px solid #eee;
   font-size: 12px;
   right: 0px;
-  width: 149px;
+  width: 169px;
+}
+@media (min-width: 568px) {
+  .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
+    width: 149px;
+  }
 }
 .auth0-lock .auth0-lock-input-wrap:last-child {
   margin-bottom: 0;
