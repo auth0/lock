@@ -36,7 +36,7 @@
 .auth0-lock .auth0-lock-header {
   text-align: center;
   padding: 14px;
-  background: #eee;
+  background: #fff;
   color: #333;
   position: relative;
   overflow: hidden;
@@ -58,6 +58,7 @@
   right: 14px;
   box-shadow: 0 1px 1px rgba(0,0,0,0.4);
   color: #333;
+  z-index: 100;
 }
 .auth0-lock .auth0-lock-header .auth0-lock-close:before {
   content: "e";
@@ -66,7 +67,7 @@
   top: 0.3px;
 }
 .auth0-lock .auth0-lock-header-welcome {
-  font-size: 24px;
+  font-size: 22px;
   overflow: hidden;
   position: relative;
 }
@@ -74,7 +75,7 @@
   width: 60px;
   height: 60px;
   background: url("../img/badge.svg") center no-repeat;
-  background-size: auto 100%;
+  background-size: 100% 100%;
   margin: auto auto 10px auto;
 }
 .auth0-lock .auth0-lock-header:before {
@@ -87,8 +88,8 @@
   content: " ";
   left: 0;
   right: 0;
-  -webkit-filter: grayscale(0) blur(50px);
-  opacity: 0.3;
+  -webkit-filter: grayscale(1) blur(50px);
+  opacity: 0.7;
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px 40px;
@@ -132,20 +133,19 @@
   border-radius: 3px;
   margin-bottom: 14px;
   border: 1px solid #e9e9e9;
-  height: 50px;
   position: relative;
   background: #f9f9f9;
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
   border: 0;
-  padding: 10px;
-  left: 40px;
-  position: absolute;
+  padding: 14px;
+  margin-left: 40px;
   right: 0;
   height: 20px;
   border-left: 1px solid #eee;
   font-size: 12px;
   right: 0px;
+  width: 149px;
 }
 .auth0-lock .auth0-lock-input-wrap:last-child {
   margin-bottom: 0;
