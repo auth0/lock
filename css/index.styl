@@ -121,8 +121,8 @@ breakpoint(point, value = 0)
       width: 22px;
       background: white;
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 10px;
+      right: 10px;
       box-shadow: 0 1px 1px rgba(0,0,0,.4);
       color: #333;
       &:before
@@ -154,7 +154,8 @@ breakpoint(point, value = 0)
     margin: 0 0 30px 0;
     border-radius: 3px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 11px;
+    letter-spacing: .5px;
     overflow: hidden;
     li
       width: 50%;
@@ -164,13 +165,14 @@ breakpoint(point, value = 0)
       padding: 0;
       margin: 0;
       text-align: center;
+
       &.auth0-lock-tabs-current
         background-color: #5C666F;
         a
           color white
 
       a
-        padding: 10px;
+        padding: 8px 10px;
         display: block;
         text-decoration: none;
         color: #5C666F;
@@ -208,25 +210,29 @@ breakpoint(point, value = 0)
     width: 100%;
     position: fixed;
     bottom: 0;
-
+    &:hover
+      background: darken(#EA5323, 20%)
 
     +breakpoint("mobile-landscape")
       position: static;
       border-bottom-right-radius: 3px;
       border-bottom-left-radius: 3px;
 
-
     i
-      border: 2px solid white;
+      border: 2.5px solid white;
       width: 40px;
       height: 40px;
       display: block;
       margin: auto;
       border-radius: 100px;
+      &:before
+        content: "p"
+        color: white
+        top: 9.5px;
+        position: relative;
+        font-size: 20px
+        left: 2px;
 
-
-    &:hover
-      background: darken(#40DF7D, 10%)
 
   .auth0-lock-forgot-link
     font-size 12px;
@@ -239,6 +245,7 @@ breakpoint(point, value = 0)
     display: block;
     text-align: center;
     margin-top: 20px;
+    font-size: 20px;
     &:before
       content: "f"
-      color: #EB5424
+      color: rgba(255,255,255,.2)
