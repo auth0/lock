@@ -121,8 +121,8 @@ breakpoint(point, value = 0)
       width: 22px;
       background: white;
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 14px;
+      right: 14px;
       box-shadow: 0 1px 1px rgba(0,0,0,.4);
       color: #333;
       &:before
@@ -131,19 +131,25 @@ breakpoint(point, value = 0)
         position: relative;
         top: .3px;
 
-  .auth0-lock-header-avatar
-    width: 60px;
-    height: 60px;
+  // .auth0-lock-header-avatar
+  //   width: 60px;
+  //   height: 60px;
 
 
   .auth0-lock-header-welcome
     font-size: 24px;
 
+    .auth0-lock-header-logo
+      width: 60px;
+      height: 60px;
+      background: url('../img/badge.svg') no-repeat
+      background-size: auto 100%;
+      margin: auto auto 10px auto;
+
 
   .auth0-lock-content
     padding: 30px 40px;
     background: white;
-
 
   .auth0-lock-overlay
     background: #222228;
