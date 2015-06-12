@@ -1,0 +1,44 @@
+{
+  "name": "lock-refactor",
+  "version": "0.0.0",
+  "main": "src/main.js",
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "blacklist": [
+            "regenerator"
+          ]
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "start": "npm run build && serve .",
+    "build": "browserify --extension=.jsx --extension=.js src/main.js | uglifyjs > build/build.js",
+    "watch": "watchify --extension=.jsx --extension=.js src/main.js -o build/build.js --debug --verbose & serve .",
+    "test": "mochify --recursive --extension=.jsx --extension=.js",
+    "autotest": "mochify --watch --recursive --extension=.jsx --extension=.js"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "mocha": "^2.2.5",
+    "mochify": "^2.9.0",
+    "packageify": "^0.2.2",
+    "serve": "^1.4.0",
+    "uglify-js": "^2.4.23",
+    "watchify": "^3.2.2"
+  },
+  "dependencies": {
+    "auth0-js": "^6.4.2",
+    "bonzo": "^2.0.0",
+    "domready": "^1.0.8",
+    "flux": "^2.0.3",
+    "react": "^0.13.3",
+    "trim": "0.0.1",
+    "underscore": "^1.8.3"
+  }
+}
