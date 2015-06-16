@@ -1,7 +1,7 @@
 import React from 'react';
-import Widget from './components/widget';
+import Lock from './components/lock';
 
 React.render(
-  <Widget />,
+  <Lock/>,
   document.getElementById('lock')
 );

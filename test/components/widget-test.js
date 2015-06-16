@@ -22,10 +22,9 @@ describe('Widget', function(){
     }
   });
 
-  it('renders a h1 that says "Hello world!"', function(){
+  it('renders a form', function(){
     render();
 
-    assert(div.querySelector('h1'));
-    assert.equal(div.querySelector('h1').textContent, 'Hello world!')
+    assert(div.querySelector('form'));
   });
 });
