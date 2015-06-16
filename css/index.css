@@ -237,6 +237,13 @@
   margin: 30px 0 0 0;
   color: #5c666f;
 }
+.auth0-lock .auth0-lock-error-message {
+  font-size: 12px;
+  display: block;
+  text-align: center;
+  margin: 0 0 14px 0;
+  color: #d84132;
+}
 .auth0-lock .auth0-lock-badge {
   display: block;
   text-align: center;
