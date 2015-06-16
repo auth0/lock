@@ -44,6 +44,10 @@ export default class Widget extends React.Component {
             <li><a className="" href="">Sign Up</a></li>
           </ul>
 
+          <div className="auth0-lock-error-message">
+            An error ocurred.
+          </div>
+
           <InputWrap name="username" isValid={true}>
             <input type="text" name="username" className="auth0-lock-input" placeholder="Username"/>
           </InputWrap>
