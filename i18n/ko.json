@@ -53,7 +53,7 @@
       "nonEmpty": "비밀번호를 입력해 주세요",
       "lengthAtLeast": "최소 #d 자 이상",
       "shouldContain": "포함해야함:",
-      "containsAtLeast" : "Contain at least %d of the following %d types of characters:",
+      "containsAtLeast" : "적어도 다음 %d 가지 중 % 개를 포함해야함: ",
       "lowerCase": "영어 소문자 (a-z)",
       "upperCase": "영어 대문자 (A-Z)",
       "numbers": "숫자 (i.e. 0-9)",
