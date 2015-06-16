@@ -1,5 +1,28 @@
 import React from 'react';
 
+// TODO move to its own package
+class InputWrap extends React.Component {
+  render() {
+    var className = "auth0-lock-input-wrap auth0-lock-input-" + this.props.name;
+    if (!this.props.isValid) {
+      className += " auth0-lock-input-invalid";
+    }
+
+    return (
+      <div className={className}>
+        <i className="auth0-lock-icon"/>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+InputWrap.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  isValid: React.PropTypes.bool.isRequired,
+  children: React.PropTypes.element.isRequired
+};
+
 export default class Widget extends React.Component {
   // TODO extract components (header, tabs, inputs and so on)
   render() {
@@ -21,15 +44,13 @@ export default class Widget extends React.Component {
             <li><a className="" href="">Sign Up</a></li>
           </ul>
 
-          <div className="auth0-lock-input-wrap auth0-lock-input-username">
-            <i className="auth0-lock-icon"/>
-            <input type="text" name="name" className="auth0-lock-input" placeholder="Username"/>
-          </div>
+          <InputWrap name="username" isValid={true}>
+            <input type="text" name="username" className="auth0-lock-input" placeholder="Username"/>
+          </InputWrap>
 
-          <div className="auth0-lock-input-wrap auth0-lock-input-password">
-            <i className="auth0-lock-icon"/>
+          <InputWrap name="password" isValid={false}>
             <input type="password" name="password" className="auth0-lock-input" placeholder="Password"/>
-          </div>
+          </InputWrap>
 
           <a href="#" className="auth0-lock-forgot-link">Don't remember your password?</a>
         </div>
