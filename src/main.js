@@ -1,7 +1,15 @@
-import React from 'react';
-import Lock from './components/lock';
+export default class Auth0Lock {
+  constructor(clientID, domain, options) { // TODO
+  }
 
-React.render(
-  <Lock/>,
-  document.getElementById('lock')
-);
+  showSignin() { // TODO
+  }
+
+  hide() { // TODO
+  }
+
+  logout() { // TODO
+  }
+}
+
+global.window.Auth0Lock = Auth0Lock;
