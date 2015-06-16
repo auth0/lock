@@ -168,6 +168,13 @@
 .auth0-lock .auth0-lock-input-wrap.auth0-lock-input-password i:before {
   content: "c";
 }
+.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-invalid {
+  border-color: #d84132;
+  color: #d84132;
+}
+.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-invalid i:before {
+  color: #d84132;
+}
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
   border: 0;
   padding: 12px 14px;
