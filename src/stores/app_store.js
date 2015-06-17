@@ -1,24 +1,32 @@
 import { EventEmitter } from 'events';
+import { Map } from 'immutable';
 import { ActionTypes, Events } from '../constants/app_constants';
+
 import AppDispatcher from '../dispatchers/app_dispatcher';
 
 export default class AppStore extends EventEmitter {
   constructor() {
     super();
-    this._state = {clients: {}, locks: {}};
+    this._state = Map({clients: Map(), locks: Map()});
     AppDispatcher.register((action) => {
       switch(action.type) {
         case ActionTypes.RECEIVE_CLIENT:
-          this._state.clients[action.attributes.id] = action.attributes;
+          this._state = this._state.setIn(
+            ['clients', action.attributes.id],
+            Map(action.attributes)
+          );
           this.emitChange();
           break;
         case ActionTypes.SETUP_LOCK: // TODO
-          this._state.locks[action.clientID] = {
-            clientID: action.clientID,
-            lockID: action.lockID,
-            domain: action.domain,
-            options: action.options
-          };
+          this._state = this._state.setIn(
+            ['locks', action.clientID],
+            Map({
+              clientID: action.clientID,
+              lockID: action.lockID,
+              domain: action.domain,
+              options: action.options
+            })
+          );
           this.emitChange();
           break;
         default:

@@ -23,7 +23,7 @@ global.window.Auth0Lock = Auth0Lock;
 import AppStore from './stores/app_store';
 
 AppStore.addChangeListener(() => {
-  console.log('something has changed', AppStore.state);
+  console.log('something has changed', AppStore.state.toJS());
 });
 
 // new Auth0Lock('client id', 'domain');
