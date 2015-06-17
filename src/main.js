@@ -4,7 +4,7 @@ import IDUtils from './utils/id_utils';
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) { // TODO
     this.id = IDUtils.random();
-    LockActionCreators.setup(this.id, clientID, domain, options);
+    LockActionCreators.setupLock(this.id, clientID, domain, options);
   }
 
   showSignin() { // TODO

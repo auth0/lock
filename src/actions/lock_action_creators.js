@@ -3,7 +3,7 @@ import { ActionTypes } from '../constants/app_constants';
 import WebAPIUtils from '../utils/web_api_utils';
 
 export default {
-  setup: function(lockID, clientID, domain, options) {
+  setupLock: function(lockID, clientID, domain, options) {
     AppDispatcher.dispatch({
       type: ActionTypes.SETUP_LOCK,
       lockID: lockID,
