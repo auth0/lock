@@ -13,19 +13,23 @@ export default class AppStore extends EventEmitter {
         case ActionTypes.RECEIVE_CLIENT:
           this._state = this._state.setIn(
             ['clients', action.attributes.id],
-            Map(action.attributes)
+            Map(action.attributes).set('loaded', true)
           );
           this.emitChange();
           break;
         case ActionTypes.SETUP_LOCK: // TODO
           this._state = this._state.setIn(
-            ['locks', action.clientID],
+            ['locks', action.lockID],
             Map({
               clientID: action.clientID,
-              lockID: action.lockID,
+              id: action.lockID,
               domain: action.domain,
               options: action.options
             })
+          );
+          this._state = this._state.setIn(
+            ['clients', action.clientID],
+            Map({id: action.clientID, loaded: false})
           );
           this.emitChange();
           break;
@@ -49,6 +53,12 @@ export default class AppStore extends EventEmitter {
 
   get state() {
     return this._state;
+  }
+
+  getLock(id) {
+    var lock = this._state.getIn(['locks', id]);
+    var client = this._state.getIn(['clients', lock.get('clientID')]);
+    return lock.set('client', client);
   }
 }
 
