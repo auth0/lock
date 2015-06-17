@@ -1,8 +1,5 @@
 body {
   background: url("../img/bg.png");
   background-size: cover;
-  min-height: 400px;
-}
-.demo-container {
-  padding: 30px;
+  min-height: 800px;
 }

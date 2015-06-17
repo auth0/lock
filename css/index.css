@@ -1,6 +1,5 @@
 @import "normalize.css";
 @import "fonts.css";
-@import url("http://fonts.googleapis.com/css?family=Open+Sans");
 @media (min-width: 992px) {
   .auth0-lock-overlay {
     background: rgba(34,34,40,0.94);
@@ -10,12 +9,13 @@
     right: 0;
     left: 0;
     z-index: -1;
-    background: radial-gradient(#363640, #111118);
-    opacity: 0.94;
+    opacity: 0;
+    background: radial-gradient(#40404b, #111118);
+    -webkit-transition: opacity 0.4s ease-in 0s;
   }
 }
 .auth0-lock {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Avenir", sans-serif;
   visibility: hidden;
   text-rendering: optimizeLegibility;
 }
@@ -41,14 +41,20 @@
 @media (min-width: 992px) {
   .auth0-lock .auth0-lock-widget {
     opacity: 0;
-    -webkit-transition: transform 0.8s, opacity 0s;
+    border-radius: 5px;
+    box-shadow: 0 0 0 transparent;
+    -webkit-transition: transform 1s, opacity 1.5s;
     -webkit-transform: translateY(80%) scale(0.8);
-    -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
-    -webkit-transition-delay: 0.2s;
+    -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
+    -webkit-transition-delay: 0.3s;
   }
+}
+.auth0-lock.open .auth0-lock-overlay {
+  opacity: 0.9;
 }
 .auth0-lock.open .auth0-lock-widget {
   opacity: 1;
+  box-shadow: 0 0 40px 4px #111118;
   -webkit-transform: translateY(0%) scale(1);
   -webkit-transition-delay: 0;
 }
@@ -142,7 +148,7 @@
   color: #fff;
 }
 .auth0-lock .auth0-lock-tabs li a {
-  padding: 8px 10px;
+  padding: 6px 10px;
   display: block;
   text-decoration: none;
   color: #5c666f;
@@ -175,7 +181,7 @@
   right: 0;
   height: 20px;
   border-left: 1px solid #eee;
-  font-size: 12px;
+  font-size: 13px;
   right: 0px;
   width: 169px;
 }
@@ -237,7 +243,7 @@
   font-size: 20px;
   position: relative;
   z-index: -1;
-  -webkit-transition: transform 0.4s ease 1.4s, opacity 0s ease 1.4s;
+  -webkit-transition: transform 1.2s ease 1.8s, opacity 1.2s ease 1.8s;
   -webkit-transform: translateY(-200%) scale(0.8);
   opacity: 0;
 }
@@ -248,4 +254,5 @@
 .auth0-lock.open .auth0-lock-badge {
   -webkit-transform: translateY(0%) scale(1);
   opacity: 1;
+  -webkit-transition-delay: 0;
 }
