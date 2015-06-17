@@ -4,6 +4,7 @@ export default {
   },
 
   ActionTypes: {
+    RECEIVE_CLIENT: 'RECEIVE_CLIENT',
     SETUP_LOCK: 'SETUP_LOCK'
   }
 }

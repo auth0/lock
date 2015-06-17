@@ -1,5 +1,6 @@
 import AppDispatcher from '../dispatchers/app_dispatcher';
 import { ActionTypes } from '../constants/app_constants';
+import WebAPIUtils from '../utils/web_api_utils';
 
 export default {
   setup: function(lockID, clientID, domain, options) {
@@ -11,6 +12,6 @@ export default {
       options: options
     });
 
-    // TODO append client script tag
+    WebAPIUtils.setupClient(lockID, clientID, domain, options);
   }
 }
