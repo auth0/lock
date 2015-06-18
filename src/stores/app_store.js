@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
-import { Map } from 'immutable';
-import { ActionTypes, Events } from '../constants/app_constants';
+import Immutable, { Map } from 'immutable';
+import { ActionTypes, LockStates, Events } from '../constants/app_constants';
 
 import AppDispatcher from '../dispatchers/app_dispatcher';
 
@@ -26,10 +26,20 @@ export default class AppStore extends EventEmitter {
           );
           this.emitChange();
           break;
+        case ActionTypes.FAILED_SIGN_IN:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "state"],
+            LockStates.FAILED_SIGN_IN
+          ).setIn(
+            ["locks", action.lockID, "error"],
+            Immutable.fromJS(action.error)
+          );
+          this.emitChange();
+          break;
         case ActionTypes.RECEIVE_CLIENT:
           this._state = this._state.setIn(
             ['clients', action.attributes.id],
-            Map(action.attributes).set('loaded', true)
+            Immutable.fromJS(action.attributes).set('loaded', true)
           );
           this.emitChange();
           break;
@@ -42,7 +52,8 @@ export default class AppStore extends EventEmitter {
               domain: action.domain,
               options: action.options,
               username: "",
-              password: ""
+              password: "",
+              state: LockStates.IDLE
             })
           );
           this._state = this._state.setIn(
@@ -51,6 +62,14 @@ export default class AppStore extends EventEmitter {
           );
           this.emitChange();
           break;
+        case ActionTypes.SUCCESSFUL_SIGN_IN:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "state"],
+            LockStates.SIGNED_IN
+          ).setIn(
+            ["locks", action.lockID, "signIn"],
+            Immutable.fromJS(action.signIn)
+          ).removeIn(["locks", action.lockID, "error"]);
         default:
          // no op
       }

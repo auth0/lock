@@ -1,6 +1,8 @@
 import Auth0 from 'auth0-js';
 import StringUtils from './string_utils';
 import ClientActionCreators from '../actions/client_action_creators';
+import LockActionCreators from '../actions/lock_action_creators';
+import AppStore from '../stores/app_store';
 
 global.window.Auth0 = Auth0;
 
@@ -26,6 +28,41 @@ class WebAPIUtils {
     document.getElementsByTagName('head')[0].appendChild(script);
 
     // TODO handle errors and timeouts while loading the script
+  }
+
+  signIn(lockID) {
+    var lock = AppStore.getLock(lockID);
+    this._clients[lock.get("id")].login({
+      // TODO find the propper connection
+      connection: lock.getIn(["client", "strategies", 0, "connections", 0, "name"]),
+      username: lock.get("username"),
+      password: lock.get("password"),
+      sso: false
+    }, function(error, profile, idToken, accessToken, state, refreshToken) {
+      // TODO the amount of parameters determine whether a redirect will be
+      // performed after a successful login or not.
+      // See https://github.com/auth0/auth0.js/issues/26
+      if (error) {
+        // NOTE when hitting https://*.auth0.com/usernamepassword/login
+        // error.details has the keys 'code', 'description', 'name' and
+        // 'statusCode'. But, when hitting https://*.auth0.com/oauth/ro it has
+        // the keys: 'code', 'error' and 'error_description'.
+        var preparedError = {
+          code: error.details.code,
+          description: error.details.description || error.details.error_description
+        };
+        LockActionCreators.failedSignIn(lock.get("id"), preparedError);
+      } else {
+        var signIn = {
+          profile: profile,
+          idTocken: idToken,
+          accessToken: accessToken,
+          state: state,
+          refreshToken: refreshToken
+        };
+        LockActionCreators.successfulSignIn(lock.get("id"), signIn);
+      }
+    })
   }
 }
 

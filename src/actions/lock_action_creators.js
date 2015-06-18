@@ -29,6 +29,26 @@ export default {
       lockID: lockID,
       password: password
     });
-  }
+  },
 
+  signIn: function(lockID) {
+    // TODO actually dispatch an action to acknowledge we are trying to sign in.
+    WebAPIUtils.signIn(lockID);
+  },
+
+  successfulSignIn: function(lockID, signIn) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.SUCCESSFUL_SIGN_IN,
+      lockID: lockID,
+      signIn: signIn
+    });
+  },
+
+  failedSignIn: function(lockID, error) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.FAILED_SIGN_IN,
+      lockID: lockID,
+      error: error
+    });
+  }
 }

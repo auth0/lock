@@ -1,4 +1,5 @@
 import React from 'react';
+import SignInErrorMessage from './sign_in_error_message';
 import LockActionCreators from '../actions/lock_action_creators';
 
 // TODO move to its own package
@@ -43,15 +44,13 @@ export default class SigninContent extends React.Component {
           <li><a className="" href="">Sign Up</a></li>
         </ul>
 
-        <div className="auth0-lock-error-message">
-          An error ocurred.
-        </div>
+        <SignInErrorMessage error={this.props.lock.get("error")}/>
 
         <InputWrap name="username" isValid={true}>
           <input type="text" name="username" className="auth0-lock-input" placeholder="Username" onChange={this._handleUsernameChange.bind(this)} value={this.props.lock.get("username")}/>
         </InputWrap>
 
-        <InputWrap name="password" isValid={false}>
+        <InputWrap name="password" isValid={true}>
           <input type="password" name="password" className="auth0-lock-input" placeholder="Password" onChange={this._handlePasswordChange.bind(this)} value={this.props.lock.get("password")}/>
         </InputWrap>
 
