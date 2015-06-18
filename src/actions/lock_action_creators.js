@@ -32,7 +32,11 @@ export default {
   },
 
   signIn: function(lockID) {
-    // TODO actually dispatch an action to acknowledge we are trying to sign in.
+    AppDispatcher.dispatch({
+      type: ActionTypes.SIGN_IN,
+      lockID: lockID
+    });
+
     WebAPIUtils.signIn(lockID);
   },
 

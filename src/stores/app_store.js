@@ -41,6 +41,15 @@ export default class AppStore extends EventEmitter {
             ['clients', action.attributes.id],
             Immutable.fromJS(action.attributes).set('loaded', true)
           );
+          var lock = this._state.get("locks").find((v, k) => {
+            return v.get("clientID") == action.attributes.id;
+          });
+          if (lock) {
+            this._state = this._state.setIn(
+              ["locks", lock.get("id"), "state"],
+              LockStates.READY
+            );
+          }
           this.emitChange();
           break;
         case ActionTypes.SETUP_LOCK: // TODO
@@ -53,7 +62,7 @@ export default class AppStore extends EventEmitter {
               options: action.options,
               username: "",
               password: "",
-              state: LockStates.IDLE
+              state: LockStates.WAITING_CLIENT_CONFIG
             })
           );
           this._state = this._state.setIn(
@@ -62,6 +71,12 @@ export default class AppStore extends EventEmitter {
           );
           this.emitChange();
           break;
+        case ActionTypes.SIGN_IN:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "state"],
+            LockStates.SIGNING_IN
+          );
+          this.emitChange();
         case ActionTypes.SUCCESSFUL_SIGN_IN:
           this._state = this._state.setIn(
             ["locks", action.lockID, "state"],
