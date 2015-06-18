@@ -8,6 +8,9 @@ export default class Lock extends React.Component {
     super();
     // TODO don't set ready: false here
     this.state = {lock: Map({ready: false})};
+    this._syncState = (lockID = this.props.id) => {
+      this.setState({lock: AppStore.getLock(lockID)});
+    }
   }
 
   componentDidMount() {
@@ -37,10 +40,6 @@ export default class Lock extends React.Component {
         <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
       </div>
     );
-  }
-
-  _syncState(lockID = this.props.id) {
-    this.setState({lock: AppStore.getLock(lockID)});
   }
 }
 

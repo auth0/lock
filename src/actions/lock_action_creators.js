@@ -13,5 +13,22 @@ export default {
     });
 
     WebAPIUtils.setupClient(lockID, clientID, domain, options);
+  },
+
+  changeUsername: function(lockID, username) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CHANGE_USERNAME,
+      lockID: lockID,
+      username: username
+    });
+  },
+
+  changePassword: function(lockID, password) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CHANGE_PASSWORD,
+      lockID: lockID,
+      password: password
+    });
   }
+
 }

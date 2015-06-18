@@ -9,7 +9,7 @@ export default class Content extends React.Component {
         this.props.lock.getIn(['client', 'loaded']) != true) {
       return <LoadingContent/>
     }
-    return <SigninContent/>;
+    return <SigninContent lock={this.props.lock}/>;
   }
 }
 

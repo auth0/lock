@@ -10,6 +10,22 @@ export default class AppStore extends EventEmitter {
     this._state = Map({clients: Map(), locks: Map()});
     AppDispatcher.register((action) => {
       switch(action.type) {
+        // TODO investigate the use of Record instead of Map for clients and
+        // locks
+        case ActionTypes.CHANGE_PASSWORD:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "password"],
+            action.password
+          );
+          this.emitChange();
+          break;
+        case ActionTypes.CHANGE_USERNAME:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "username"],
+            action.username
+          );
+          this.emitChange();
+          break;
         case ActionTypes.RECEIVE_CLIENT:
           this._state = this._state.setIn(
             ['clients', action.attributes.id],
@@ -24,7 +40,9 @@ export default class AppStore extends EventEmitter {
               clientID: action.clientID,
               id: action.lockID,
               domain: action.domain,
-              options: action.options
+              options: action.options,
+              username: "",
+              password: ""
             })
           );
           this._state = this._state.setIn(
