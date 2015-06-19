@@ -3,6 +3,7 @@ import StringUtils from './string_utils';
 import ClientActionCreators from '../actions/client_action_creators';
 import LockActionCreators from '../actions/lock_action_creators';
 import AppStore from '../stores/app_store';
+import ClientUtils from './client_utils';
 
 global.window.Auth0 = Auth0;
 
@@ -59,8 +60,7 @@ class WebAPIUtils {
     }
 
     this._clients[lockID].login({
-      // TODO find the propper connection
-      connection: lock.getIn(["client", "strategies", 0, "connections", 0, "name"]),
+      connection: ClientUtils.getDefaultConnection(lock.get("client")).get("name"),
       username: lock.get("email"),
       password: lock.get("password"),
       sso: false,
