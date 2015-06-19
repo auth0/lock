@@ -6,22 +6,22 @@ import AppStore from './stores/app_store';
 import WebAPIUtils from './utils/web_api_utils';
 
 export default class Auth0Lock {
-  constructor(clientID, domain, options = {}) { // TODO
+  constructor(clientID, domain, options = {}) {
     this.id = IDUtils.random();
     LockActionCreators.setupLock(this.id, clientID, domain, options);
   }
 
-  showSignin(options = {}, callback = () => {}) { // TODO
+  showSignin(options = {}, callback = () => {}) {
     // options.mode = "signin";
     options.signInCallback = callback;
     LockActionCreators.showLock(this.id, options);
   }
 
-  hide() { // TODO
+  hide() {
     LockActionCreators.hideLock(this.id);
   }
 
-  logout(query = {}) { // TODO
+  logout(query = {}) {
     // NOTE this perfroms a redirect, so there is no need to go through the
     // whole flux cycle
     WebAPIUtils.signOut(this.id, query);
@@ -68,3 +68,7 @@ AppStore.addChangeListener(() => {
   // global.window.appState = AppStore.state;
   // global.window.appStateJs = AppStore.state.toJS();
 });
+
+// TODO is it worth to follow the flux convention for naming things and
+// organizing files? We can have just one dispatcher, store, constants ns and
+// actions, but a lot of utils.

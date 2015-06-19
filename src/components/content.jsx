@@ -12,7 +12,7 @@ export default class Content extends React.Component {
       case LockStates.CRASHED:
         return <CrashContent/>;
       default:
-        // NOTE this should turn into a switch statement that considers all the
+        // TODO this should turn into a switch statement that considers all the
         // possible modes.
         return <SignInContent lock={this.props.lock}/>;
     }

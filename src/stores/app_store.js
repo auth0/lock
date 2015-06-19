@@ -89,7 +89,7 @@ export default class AppStore extends EventEmitter {
           // TODO probably need to acknolwedge this error in the client data
           this.emitChange();
           break;
-        case ActionTypes.SETUP_LOCK: // TODO
+        case ActionTypes.SETUP_LOCK:
           this._state = this._state.setIn(
             ['locks', action.lockID],
             Map({
@@ -214,3 +214,7 @@ function prepareShowOptions(lock, options) { // TODO this function doesn't belon
 
   return preparedOptions;
 }
+
+// TODO we are not taking advantage of the immutable data structures when
+// rendering. See the PureRenderMixin at
+// http://facebook.github.io/react/docs/pure-render-mixin.html

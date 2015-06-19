@@ -44,3 +44,6 @@ export default class Widget extends React.Component {
     );
   }
 }
+
+// TODO maybe we can make some changes to the markup to improve the rendering
+// logic (components must render a single *root* element).

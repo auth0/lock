@@ -45,7 +45,7 @@ class WebAPIUtils {
 
   signIn(lockID) {
     var lock = AppStore.getLock(lockID);
-    // TODO the amount of parameters determine whether a redirect will be
+    // NOTE the amount of parameters determine whether a redirect will be
     // performed after a successful login or not.
     // See https://github.com/auth0/auth0.js/issues/26
     var signInCallback = lock.getIn(["showOptions", "signInCallback"]);
@@ -124,7 +124,7 @@ function parseUrl(url) { // TODO this function doesn't belong here
 
 function handleSignInError(lockID, error) {
   if (error) {
-    // NOTE when hitting https://*.auth0.com/usernamepassword/login
+    // TODO when hitting https://*.auth0.com/usernamepassword/login
     // error.details has the keys 'code', 'description', 'name' and
     // 'statusCode'. But, when hitting https://*.auth0.com/oauth/ro it has
     // the keys: 'code', 'error' and 'error_description'.

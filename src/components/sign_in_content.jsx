@@ -77,10 +77,13 @@ export default class SignInContent extends React.Component {
   }
 }
 
-// TODO specify prop types
+SignInContent.propTypes = {
+  lock: React.PropTypes.object
+};
 
 
-// NOTE the autoFocus attribute which this component relies on doesn't work on
+
+// TODO the autoFocus attribute which this component relies on doesn't work on
 // IE 9, which is supported by the current version of the lock. However, the
 // feature could be handled by the component itself or by a new one (as the
 // following example shows).
