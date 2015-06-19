@@ -112,14 +112,16 @@ export default class AppStore extends EventEmitter {
           this.emitChange();
           break;
         case ActionTypes.SHOW_LOCK:
-          this._state = this._state.setIn(
-            ["locks", action.lockID, "show"],
-            true
-          ).setIn(
-            ["locks", action.lockID, "showOptions"],
-            prepareShowOptions(this.getLock(action.lockID), action.options)
-          );
-          this.emitChange();
+          if (!this._state.getIn(["locks", action.lockID, "show"])) {
+            this._state = this._state.setIn(
+              ["locks", action.lockID, "show"],
+              true
+            ).setIn(
+              ["locks", action.lockID, "showOptions"],
+              prepareShowOptions(this.getLock(action.lockID), action.options)
+            );
+            this.emitChange();
+          }
           break;
         case ActionTypes.SIGN_IN:
           this._state = this._state.setIn(
