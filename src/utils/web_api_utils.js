@@ -63,7 +63,9 @@ class WebAPIUtils {
       connection: lock.getIn(["client", "strategies", 0, "connections", 0, "name"]),
       username: lock.get("email"),
       password: lock.get("password"),
-      sso: false
+      sso: false,
+      callbackURL: lock.getIn(["showOptions", "callbackURL"]),
+      callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
     }, f);
   }
 

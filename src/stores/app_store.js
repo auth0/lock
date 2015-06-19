@@ -191,7 +191,6 @@ function prepareShowOptions(lock, options) { // TODO this function doesn't belon
     usernameStyle: undefined === options.usernameStyle ? 'email' : options.usernameStyle,
     disableSignupAction: disableSignupAction,
     disableResetAction: disableResetAction,
-    // TODO this options should be passed to the Auth0 client
     signInCallback: options.signInCallback,
     responseType: responseType,
     callbackURL: options.callbackURL || null,
