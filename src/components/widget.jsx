@@ -27,6 +27,7 @@ export default class Widget extends React.Component {
     var submit = this.props.lock.get("state") === LockStates.WAITING_CLIENT_CONFIG ?
       null : <SubmitButton disabled={disableSubmit} />;
 
+    var lockID = this.props.lock.get("id");
     var icon = this.props.lock.getIn(["showOptions", "icon"]) || "";
     var showCloseButton = this.props.lock.getIn(["showOptions", "closable"]);
     var email = this.props.lock.get("email");
@@ -34,7 +35,7 @@ export default class Widget extends React.Component {
     return (
       <form className="auth0-lock-widget" onSubmit={this._handleSubmit.bind(this)}>
         {/* */}
-        <Header icon={icon} showCloseButton={showCloseButton} email={email} gravatar={gravatar}/>
+        <Header lockID={lockID} icon={icon} showCloseButton={showCloseButton} email={email} gravatar={gravatar}/>
 
         <Content lock={this.props.lock}/>
         {submit}
