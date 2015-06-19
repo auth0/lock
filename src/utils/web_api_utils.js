@@ -32,7 +32,7 @@ class WebAPIUtils {
 
   signIn(lockID) {
     var lock = AppStore.getLock(lockID);
-    this._clients[lock.get("id")].login({
+    this._clients[lockID].login({
       // TODO find the propper connection
       connection: lock.getIn(["client", "strategies", 0, "connections", 0, "name"]),
       username: lock.get("email"),
@@ -63,6 +63,10 @@ class WebAPIUtils {
         LockActionCreators.successfulSignIn(lock.get("id"), signIn);
       }
     })
+  }
+
+  signOut(lockID, query) {
+    this._clients[lockID].logout(query);
   }
 }
 

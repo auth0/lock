@@ -3,6 +3,7 @@ import LockActionCreators from './actions/lock_action_creators';
 import IDUtils from './utils/id_utils';
 import Lock from './components/lock';
 import AppStore from './stores/app_store';
+import WebAPIUtils from './utils/web_api_utils';
 
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) { // TODO
@@ -19,7 +20,10 @@ export default class Auth0Lock {
     LockActionCreators.hideLock(this.id);
   }
 
-  logout() { // TODO
+  logout(query = {}) { // TODO
+    // NOTE this perfroms a redirect, so there is no need to go through the
+    // whole flux cycle
+    WebAPIUtils.signOut(this.id, query);
   }
 }
 
