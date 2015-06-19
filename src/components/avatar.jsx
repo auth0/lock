@@ -33,7 +33,7 @@ export default class Avatar extends React.Component {
   }
 
   _deriveState(email) {
-    email = EmailUtils.validate(email);
+    email = EmailUtils.validateEmail(email);
     if (email) {
       let url = `https://www.gravatar.com/avatar/${md5(email)}?d=404`
       this.setState({isValid: null, url: url});

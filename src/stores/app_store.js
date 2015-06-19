@@ -10,9 +10,12 @@ export default class AppStore extends EventEmitter {
     super();
     this._state = Map({clients: Map(), locks: Map()});
     AppDispatcher.register((action) => {
+      // TOOD maybe move this thing out of the constructor?
       switch(action.type) {
+        // TODO add some functions to abstract state updates and remove some
+        // duplication.
         // TODO investigate the use of Record instead of Map for clients and
-        // locks
+        // locks.
         case ActionTypes.CHANGE_PASSWORD:
           this._state = this._state.setIn(
             ["locks", action.lockID, "password"],
@@ -35,15 +38,30 @@ export default class AppStore extends EventEmitter {
             ["locks", action.lockID, "error"],
             Immutable.fromJS(action.error)
           );
+          // TODO translate `action.error.code` to validation flags, for
+          // instance:
+          //   if (action.error.code === "invalid_user_password") {
+          //     this._state = this._state.setIn(
+          //       ["locks", action.lockID, "validations"],
+          //       Map({email: false, password: false})
+          //     );
+          //   }
           this.emitChange();
           break;
-          case ActionTypes.HIDE_LOCK:
-            this._state = this._state.setIn(
-              ["locks", action.lockID, "show"],
-              false
-            );
-            this.emitChange();
-            break;
+        case ActionTypes.HIDE_LOCK:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "show"],
+            false
+          );
+          this.emitChange();
+          break;
+        case ActionTypes.INVALIDATE_CREDENTIALS:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "validations"],
+            Immutable.fromJS(action.validations)
+          );
+          this.emitChange();
+          break;
         case ActionTypes.RECEIVE_CLIENT:
           this._state = this._state.setIn(
             ['clients', action.attributes.id],
@@ -72,7 +90,8 @@ export default class AppStore extends EventEmitter {
               password: "",
               state: LockStates.WAITING_CLIENT_CONFIG,
               show: false,
-              showOptions: Map({})
+              showOptions: Map({}),
+              validations: Map({email: true, password: true})
             })
           );
           this._state = this._state.setIn(
@@ -96,7 +115,12 @@ export default class AppStore extends EventEmitter {
             ["locks", action.lockID, "state"],
             LockStates.SIGNING_IN
           );
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "validations"],
+            Map({email: true, password: true})
+          );
           this.emitChange();
+          break;
         case ActionTypes.SUCCESSFUL_SIGN_IN:
           this._state = this._state.setIn(
             ["locks", action.lockID, "state"],

@@ -60,4 +60,6 @@ AppStore.addChangeListener(() => {
 
   // DEV
   // console.log('something has changed', AppStore.state.toJS());
+  // global.window.appState = AppStore.state;
+  // global.window.appStateJs = AppStore.state.toJS();
 });

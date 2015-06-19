@@ -69,5 +69,13 @@ export default {
       type: ActionTypes.HIDE_LOCK,
       lockID: lockID
     });
+  },
+
+  invalidateCredentials: function(lockID, validations) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.INVALIDATE_CREDENTIALS,
+      lockID: lockID,
+      validations: validations
+    });
   }
 }

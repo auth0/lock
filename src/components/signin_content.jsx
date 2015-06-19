@@ -54,17 +54,20 @@ export default class SigninContent extends React.Component {
     var resetAction = this.props.lock.getIn(["showOptions", "disableResetAction"]) ?
       null : <a href="#" className="auth0-lock-forgot-link" onClick={this._handleResetAction}>Don't remember your password?</a>;
 
+    var validEmail = this.props.lock.getIn(["validations", "email"]);
+    var validPassword = this.props.lock.getIn(["validations", "password"]);
+
     return (
       <div className="auth0-lock-content">
         {modeTabs}
 
         <SignInErrorMessage error={this.props.lock.get("error")}/>
 
-        <InputWrap name="email" isValid={true}>
+        <InputWrap name="email" isValid={validEmail}>
           <input type="text" name="email" className="auth0-lock-input" placeholder="Email" onChange={this._handleEmailChange.bind(this)} value={this.props.lock.get("email")} autoFocus={autoFocusEmail}/>
         </InputWrap>
 
-        <InputWrap name="password" isValid={true}>
+        <InputWrap name="password" isValid={validPassword}>
           <input type="password" name="password" className="auth0-lock-input" placeholder="Password" onChange={this._handlePasswordChange.bind(this)} value={this.props.lock.get("password")}/>
         </InputWrap>
 
