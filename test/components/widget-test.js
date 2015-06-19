@@ -1,4 +1,5 @@
 import React from 'react';
+import { Map } from 'immutable';
 import Widget from '../../src/components/widget';
 import assert from 'assert';
 
@@ -7,8 +8,8 @@ describe('Widget', function(){
   var div;
   var comp;
 
-  function render() {
-    comp = React.render(React.createElement(Widget), div);
+  function render(lock) {
+    comp = React.render(React.createElement(Widget, {lock: lock}), div);
   }
 
   beforeEach(function () {
@@ -23,7 +24,7 @@ describe('Widget', function(){
   });
 
   it('renders a form', function(){
-    render();
+    render(Map({}));
 
     assert(div.querySelector('form'));
   });
