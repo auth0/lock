@@ -128,7 +128,12 @@ export default class AppStore extends EventEmitter {
           ).setIn(
             ["locks", action.lockID, "signIn"],
             Immutable.fromJS(action.signIn)
+          ).setIn(
+            ["locks", action.lockID, "show"],
+            false
           ).removeIn(["locks", action.lockID, "error"]);
+          this.emitChange();
+          break;
         default:
          // no op
       }
@@ -187,6 +192,7 @@ function prepareShowOptions(lock, options) { // TODO this function doesn't belon
     disableSignupAction: disableSignupAction,
     disableResetAction: disableResetAction,
     // TODO this options should be passed to the Auth0 client
+    signInCallback: options.signInCallback,
     responseType: responseType,
     callbackURL: options.callbackURL || null,
     callbackOnLocationHash: responseType === "token" || null,

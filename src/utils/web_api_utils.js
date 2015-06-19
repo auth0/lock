@@ -32,37 +32,39 @@ class WebAPIUtils {
 
   signIn(lockID) {
     var lock = AppStore.getLock(lockID);
+    // TODO the amount of parameters determine whether a redirect will be
+    // performed after a successful login or not.
+    // See https://github.com/auth0/auth0.js/issues/26
+    var signInCallback = lock.getIn(["showOptions", "signInCallback"]);
+    var f;
+    if (signInCallback.length > 1) {
+      f = function(error, profile, idToken, accessToken, state, refreshToken) {
+        if (!handleSignInError(lockID, error)) {
+          var signIn = {
+            profile: profile,
+            idTocken: idToken,
+            accessToken: accessToken,
+            state: state,
+            refreshToken: refreshToken
+          };
+          LockActionCreators.successfulSignIn(lock.get("id"), signIn);
+        }
+        signInCallback(error, profile, idToken, accessToken, state, refreshToken);
+      }
+    } else {
+      f = function(error) {
+        handleSignInError(lockID, error);
+        signInCallback(error);
+      }
+    }
+
     this._clients[lockID].login({
       // TODO find the propper connection
       connection: lock.getIn(["client", "strategies", 0, "connections", 0, "name"]),
       username: lock.get("email"),
       password: lock.get("password"),
       sso: false
-    }, function(error, profile, idToken, accessToken, state, refreshToken) {
-      // TODO the amount of parameters determine whether a redirect will be
-      // performed after a successful login or not.
-      // See https://github.com/auth0/auth0.js/issues/26
-      if (error) {
-        // NOTE when hitting https://*.auth0.com/usernamepassword/login
-        // error.details has the keys 'code', 'description', 'name' and
-        // 'statusCode'. But, when hitting https://*.auth0.com/oauth/ro it has
-        // the keys: 'code', 'error' and 'error_description'.
-        var preparedError = {
-          code: error.details.code,
-          description: error.details.description || error.details.error_description
-        };
-        LockActionCreators.failedSignIn(lock.get("id"), preparedError);
-      } else {
-        var signIn = {
-          profile: profile,
-          idTocken: idToken,
-          accessToken: accessToken,
-          state: state,
-          refreshToken: refreshToken
-        };
-        LockActionCreators.successfulSignIn(lock.get("id"), signIn);
-      }
-    })
+    }, f);
   }
 
   signOut(lockID, query) {
@@ -104,4 +106,20 @@ function parseUrl(url) { // TODO this function doesn't belong here
   var parser = document.createElement('a');
   parser.href = url;
   return parser;
+}
+
+function handleSignInError(lockID, error) {
+  if (error) {
+    // NOTE when hitting https://*.auth0.com/usernamepassword/login
+    // error.details has the keys 'code', 'description', 'name' and
+    // 'statusCode'. But, when hitting https://*.auth0.com/oauth/ro it has
+    // the keys: 'code', 'error' and 'error_description'.
+    var preparedError = {
+      code: error.details.code,
+      description: error.details.description || error.details.error_description
+    };
+    LockActionCreators.failedSignIn(lockID, preparedError);
+  }
+
+  return error;
 }

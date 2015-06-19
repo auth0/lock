@@ -11,8 +11,9 @@ export default class Auth0Lock {
     LockActionCreators.setupLock(this.id, clientID, domain, options);
   }
 
-  showSignin(options = {}) { // TODO
-    options.mode = "signin";
+  showSignin(options = {}, callback = () => {}) { // TODO
+    // options.mode = "signin";
+    options.signInCallback = callback;
     LockActionCreators.showLock(this.id, options);
   }
 
