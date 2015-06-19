@@ -70,12 +70,23 @@ export default class AppStore extends EventEmitter {
           var lock = this._state.get("locks").find((v, k) => {
             return v.get("clientID") == action.attributes.id;
           });
-          if (lock) {
+          // TODO maybe we can recover from this when the client config is
+          // received after the timeout expired
+          if (lock && lock.get("state") !== LockStates.CRASHED) {
             this._state = this._state.setIn(
               ["locks", lock.get("id"), "state"],
               LockStates.READY
             );
           }
+          this.emitChange();
+          break;
+        case ActionTypes.RECEIVE_CLIENT_ERROR:
+        case ActionTypes.RECEIVE_CLIENT_TIMEOUT:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "state"],
+            LockStates.CRASHED
+          );
+          // TODO probably need to acknolwedge this error in the client data
           this.emitChange();
           break;
         case ActionTypes.SETUP_LOCK: // TODO
@@ -172,6 +183,10 @@ export default class AppStore extends EventEmitter {
 export default new AppStore();
 
 function prepareShowOptions(lock, options) { // TODO this function doesn't belong here
+  if (lock.get("state") === LockStates.CRASHED) {
+    return Map({});
+  }
+
   var responseType = options.responseType || options.callbackURL ? "code" : "token";
 
   var defaultConnection = ClientUtils.getDefaultConnection(lock.get("client"));

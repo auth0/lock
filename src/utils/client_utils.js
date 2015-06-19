@@ -1,5 +1,6 @@
 function getDefaultStrategy(client) {
-  return client.get("strategies").find((strategy) => {
+  var strategies = client.get("strategies");
+  return strategies && strategies.find((strategy) => {
     return strategy.get("name") === "auth0";
   });
 }

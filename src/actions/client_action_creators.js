@@ -7,5 +7,19 @@ export default {
       type: ActionTypes.RECEIVE_CLIENT,
       attributes: client_attributes
     });
+  },
+
+  receiveClientError: function(lockID) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.RECEIVE_CLIENT_ERROR,
+      lockID: lockID
+    });
+  },
+
+  receiveClientTimeout: function(lockID) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.RECEIVE_CLIENT_TIMEOUT,
+      lockID: lockID
+    });
   }
 }

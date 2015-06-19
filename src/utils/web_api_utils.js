@@ -28,7 +28,19 @@ class WebAPIUtils {
     script.src = clientScriptTagSrc(clientID, domain, options.assetsUrl);
     document.getElementsByTagName('head')[0].appendChild(script);
 
-    // TODO handle errors and timeouts while loading the script
+    var timeoutID = setTimeout(function() {
+      ClientActionCreators.receiveClientTimeout(lockID);
+    }, 5000);
+
+    script.addEventListener('load', function() {
+      clearTimeout(timeoutID);
+    });
+
+    script.addEventListener('error', function() {
+      clearTimeout(timeoutID);
+      ClientActionCreators.receiveClientError(lockID);
+    });
+
   }
 
   signIn(lockID) {

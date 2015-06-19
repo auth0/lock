@@ -24,8 +24,9 @@ export default class Widget extends React.Component {
 
   render() {
     var disableSubmit = this.props.lock.get("state") === LockStates.SIGNING_IN;
-    var submit = this.props.lock.get("state") === LockStates.WAITING_CLIENT_CONFIG ?
-      null : <SubmitButton disabled={disableSubmit} />;
+    var showSubmit = this.props.lock.get("state") === LockStates.WAITING_CLIENT_CONFIG ||
+      this.props.lock.get("state") === LockStates.CRASHED;
+    var submit = showSubmit ? null : <SubmitButton disabled={disableSubmit} />;
 
     var lockID = this.props.lock.get("id");
     var icon = this.props.lock.getIn(["showOptions", "icon"]) || "";

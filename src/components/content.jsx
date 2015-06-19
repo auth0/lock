@@ -1,16 +1,20 @@
 import React from 'react';
 import LoadingContent from './loading_content';
+import CrashContent from './crash_content';
 import SignInContent from './sign_in_content';
 import { LockStates } from '../constants/app_constants';
 
 export default class Content extends React.Component {
   render() {
-    if (this.props.lock.get('state') === LockStates.WAITING_CLIENT_CONFIG) {
-      return <LoadingContent/>;
-    } else {
-      // NOTE this should turn into a switch statement that considers all the
-      // possible modes.
-      return <SignInContent lock={this.props.lock}/>;
+    switch(this.props.lock.get('state')) {
+      case LockStates.WAITING_CLIENT_CONFIG:
+        return <LoadingContent/>;
+      case LockStates.CRASHED:
+        return <CrashContent/>;
+      default:
+        // NOTE this should turn into a switch statement that considers all the
+        // possible modes.
+        return <SignInContent lock={this.props.lock}/>;
     }
   }
 }

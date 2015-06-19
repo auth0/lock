@@ -139,6 +139,10 @@
   max-width: 240px;
   margin: auto;
 }
+.auth0-lock .auth0-lock-content:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
 .auth0-lock .auth0-lock-tabs {
   border: 1px solid #5c666f;
   padding: 0;
