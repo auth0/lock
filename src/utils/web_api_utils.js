@@ -35,7 +35,7 @@ class WebAPIUtils {
     this._clients[lock.get("id")].login({
       // TODO find the propper connection
       connection: lock.getIn(["client", "strategies", 0, "connections", 0, "name"]),
-      username: lock.get("username"),
+      username: lock.get("email"),
       password: lock.get("password"),
       sso: false
     }, function(error, profile, idToken, accessToken, state, refreshToken) {

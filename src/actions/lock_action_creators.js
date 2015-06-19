@@ -15,11 +15,11 @@ export default {
     WebAPIUtils.setupClient(lockID, clientID, domain, options);
   },
 
-  changeUsername: function(lockID, username) {
+  changeEmail: function(lockID, email) {
     AppDispatcher.dispatch({
-      type: ActionTypes.CHANGE_USERNAME,
+      type: ActionTypes.CHANGE_EMAIL,
       lockID: lockID,
-      username: username
+      email: email
     });
   },
 

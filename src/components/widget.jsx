@@ -18,8 +18,7 @@ export default class Widget extends React.Component {
 
     var icon = this.props.lock.getIn(["showOptions", "icon"]) || "";
     var showCloseButton = this.props.lock.getIn(["showOptions", "closable"]);
-    // TODO update when we stop using the username as the email
-    var email = this.props.lock.get("username");
+    var email = this.props.lock.get("email");
     var gravatar = this.props.lock.getIn(["showOptions", "gravatar"]);
     return (
       <form className="auth0-lock-widget" onSubmit={this._handleSubmit.bind(this)}>

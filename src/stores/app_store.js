@@ -20,10 +20,10 @@ export default class AppStore extends EventEmitter {
           );
           this.emitChange();
           break;
-        case ActionTypes.CHANGE_USERNAME:
+        case ActionTypes.CHANGE_EMAIL:
           this._state = this._state.setIn(
-            ["locks", action.lockID, "username"],
-            action.username
+            ["locks", action.lockID, "email"],
+            action.email
           );
           this.emitChange();
           break;
@@ -68,7 +68,7 @@ export default class AppStore extends EventEmitter {
               id: action.lockID,
               domain: action.domain,
               options: action.options,
-              username: "",
+              email: "",
               password: "",
               state: LockStates.WAITING_CLIENT_CONFIG,
               show: false,

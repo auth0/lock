@@ -185,7 +185,7 @@
   top: 17px;
   left: 15px;
 }
-.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-username i:before {
+.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-email i:before {
   content: "b";
 }
 .auth0-lock .auth0-lock-input-wrap.auth0-lock-input-password i:before {

@@ -27,9 +27,9 @@ InputWrap.propTypes = {
 };
 
 export default class SigninContent extends React.Component {
-  _handleUsernameChange() {
-    var lockID = this.props.lock.get('id'), username = event.target.value;
-    LockActionCreators.changeUsername(lockID, username);
+  _handleEmailChange() {
+    var lockID = this.props.lock.get('id'), email = event.target.value;
+    LockActionCreators.changeEmail(lockID, email);
   }
 
   _handlePasswordChange() {
@@ -60,8 +60,8 @@ export default class SigninContent extends React.Component {
 
         <SignInErrorMessage error={this.props.lock.get("error")}/>
 
-        <InputWrap name="username" isValid={true}>
-          <input type="text" name="username" className="auth0-lock-input" placeholder="Username" onChange={this._handleUsernameChange.bind(this)} value={this.props.lock.get("username")} autoFocus={autoFocusEmail}/>
+        <InputWrap name="email" isValid={true}>
+          <input type="text" name="email" className="auth0-lock-input" placeholder="Email" onChange={this._handleEmailChange.bind(this)} value={this.props.lock.get("email")} autoFocus={autoFocusEmail}/>
         </InputWrap>
 
         <InputWrap name="password" isValid={true}>
