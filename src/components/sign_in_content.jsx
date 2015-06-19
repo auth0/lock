@@ -26,7 +26,7 @@ InputWrap.propTypes = {
   children: React.PropTypes.element.isRequired
 };
 
-export default class SigninContent extends React.Component {
+export default class SignInContent extends React.Component {
   _handleEmailChange() {
     var lockID = this.props.lock.get('id'), email = event.target.value;
     LockActionCreators.changeEmail(lockID, email);

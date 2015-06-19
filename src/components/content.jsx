@@ -1,6 +1,6 @@
 import React from 'react';
 import LoadingContent from './loading_content';
-import SigninContent from './signin_content';
+import SignInContent from './sign_in_content';
 import { LockStates } from '../constants/app_constants';
 
 export default class Content extends React.Component {
@@ -10,7 +10,7 @@ export default class Content extends React.Component {
     } else {
       // NOTE this should turn into a switch statement that considers all the
       // possible modes.
-      return <SigninContent lock={this.props.lock}/>;
+      return <SignInContent lock={this.props.lock}/>;
     }
   }
 }
