@@ -1,8 +1,9 @@
 import React from 'react';
 import SignInErrorMessage from './sign_in_error_message';
+import ModeTabs from './mode_tabs';
 import LockActionCreators from '../actions/lock_action_creators';
 
-// TODO move to its own package
+// TODO move to its own module
 class InputWrap extends React.Component {
   render() {
     var className = "auth0-lock-input-wrap auth0-lock-input-" + this.props.name;
@@ -36,28 +37,57 @@ export default class SigninContent extends React.Component {
     LockActionCreators.changePassword(lockID, password);
   }
 
+  _handleResetAction(event) {
+    event.preventDefault();
+    alert('not implemented');
+  }
+
   render() {
+    var autoFocusEmail = this.props.lock.getIn(["showOptions", "focusInput"]);
+    if (window.matchMedia && !window.matchMedia( "(min-width: 340px)" ).matches) {
+      autoFocusEmail = false;
+    }
+
+    var modeTabs = this.props.lock.getIn(["showOptions", "disableSignupAction"]) ?
+      null : <ModeTabs/>;
+
+    var resetAction = this.props.lock.getIn(["showOptions", "disableResetAction"]) ?
+      null : <a href="#" className="auth0-lock-forgot-link" onClick={this._handleResetAction}>Don't remember your password?</a>;
+
     return (
       <div className="auth0-lock-content">
-        <ul className="auth0-lock-tabs">
-          <li className="auth0-lock-tabs-current"><a className="" href="">Login</a></li>
-          <li><a className="" href="">Sign Up</a></li>
-        </ul>
+        {modeTabs}
 
         <SignInErrorMessage error={this.props.lock.get("error")}/>
 
         <InputWrap name="username" isValid={true}>
-          <input type="text" name="username" className="auth0-lock-input" placeholder="Username" onChange={this._handleUsernameChange.bind(this)} value={this.props.lock.get("username")}/>
+          <input type="text" name="username" className="auth0-lock-input" placeholder="Username" onChange={this._handleUsernameChange.bind(this)} value={this.props.lock.get("username")} autoFocus={autoFocusEmail}/>
         </InputWrap>
 
         <InputWrap name="password" isValid={true}>
           <input type="password" name="password" className="auth0-lock-input" placeholder="Password" onChange={this._handlePasswordChange.bind(this)} value={this.props.lock.get("password")}/>
         </InputWrap>
 
-        <a href="#" className="auth0-lock-forgot-link">Don't remember your password?</a>
+        {resetAction}
       </div>
     );
   }
 }
 
 // TODO specify prop types
+
+
+// NOTE the autoFocus attribute which this component relies on doesn't work on
+// IE 9, which is supported by the current version of the lock. However, the
+// feature could be handled by the component itself or by a new one (as the
+// following example shows).
+//
+// class AutoFocusInput extends React.Component {
+//   componentDidMount() {
+//     React.findDOMNode(this.refs.autoFocusInput).focus();
+//   }
+//
+//   render() {
+//     return <input {...this.props} ref="autoFocusInput" />;
+//   }
+// }

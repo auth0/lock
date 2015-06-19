@@ -28,17 +28,33 @@ global.window.Auth0Lock = Auth0Lock;
 
 AppStore.addChangeListener(() => {
   AppStore.getLocks().forEach((lock) => {
-    // TODO use a proper container
+    // TODO refactor this mess :)
+    var showOptions = lock.get("showOptions");
+    var containerID = showOptions.get("container");
+    var container;
+
     if (lock.get("show")) {
-      var container = document.getElementById("lock");
-      if (container) {
-        React.render(<Lock lock={lock}/>, container);
+      if (containerID) {
+         container = document.getElementById(containerID);
+         if (!container) {
+           throw new Error('Not found element with \'id\' ' + cid);
+         }
       } else {
-        throw new Error('Not found element with \'id\' ' + cid);
+        containerID = `auth0-lock-container-${lock.get("id")}`;
+        container = document.getElementById(containerID);
+        if (!container) {
+          container = document.createElement('div');
+          container.id = containerID;
+          document.body.appendChild(container);
+        }
       }
+      React.render(<Lock lock={lock}/>, container);
     } else {
-      var container = document.getElementById("lock");
-      React.unmountComponentAtNode(container);
+      var containerID = showOptions.get("container") || `auth0-lock-container-${lock.get("id")}`;
+      container = document.getElementById(containerID);
+      if (container) {
+        React.unmountComponentAtNode(container);
+      }
     }
   });
 

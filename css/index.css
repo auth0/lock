@@ -97,6 +97,29 @@
   background-size: 100% 100%;
   margin: auto auto 10px auto;
 }
+.auth0-lock .auth0-lock-header-welcome .auth0-lock-avatar-default {
+  background: #eb5424;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  margin: auto auto 10px auto;
+}
+.auth0-lock .auth0-lock-header-welcome .auth0-lock-avatar-default i:before {
+  content: "g";
+  color: #f1f1f1;
+  font-size: 28px;
+  line-height: 60px;
+}
+.auth0-lock .auth0-lock-header-welcome .auth0-lock-avatar-gravatar {
+  width: 60px;
+  height: 60px;
+  margin: auto auto 10px auto;
+}
+.auth0-lock .auth0-lock-header-welcome .auth0-lock-avatar-gravatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
 .auth0-lock .auth0-lock-header:before {
   background: url("../img/badge.svg") center no-repeat;
   background-size: 100%;
@@ -229,6 +252,13 @@
   position: relative;
   font-size: 20px;
   left: 2px;
+}
+.auth0-lock .auth0-lock-submit[disabled] {
+  background: #c43e13;
+}
+.auth0-lock .auth0-lock-submit[disabled] i:before {
+  content: "…";
+  left: 0;
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;
