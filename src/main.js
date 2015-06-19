@@ -2,6 +2,7 @@ import React from 'react';
 import LockActionCreators from './actions/lock_action_creators';
 import IDUtils from './utils/id_utils';
 import Lock from './components/lock';
+import AppStore from './stores/app_store';
 
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) { // TODO
@@ -10,30 +11,37 @@ export default class Auth0Lock {
   }
 
   showSignin(options = {}) { // TODO
-    var container = document.getElementById(options.container);
-    if (container) {
-      this.container = container;
-      React.render(<Lock id={this.id}/>, container);
-    } else {
-      throw new Error('Not found element with \'id\' ' + cid);
-    }
+    options.mode = "signin";
+    LockActionCreators.showLock(this.id, options);
   }
 
   hide() { // TODO
-    React.unmountComponentAtNode(this.container);
+    LockActionCreators.hideLock(this.id);
   }
 
   logout() { // TODO
   }
 }
 
+// TODO temp for DEV only
 global.window.Auth0Lock = Auth0Lock;
 
-// SCRATCHPAD
-import AppStore from './stores/app_store';
-
 AppStore.addChangeListener(() => {
-  console.log('something has changed', AppStore.state.toJS());
-});
+  AppStore.getLocks().forEach((lock) => {
+    // TODO use a proper container
+    if (lock.get("show")) {
+      var container = document.getElementById("lock");
+      if (container) {
+        React.render(<Lock lock={lock}/>, container);
+      } else {
+        throw new Error('Not found element with \'id\' ' + cid);
+      }
+    } else {
+      var container = document.getElementById("lock");
+      React.unmountComponentAtNode(container);
+    }
+  });
 
-// new Auth0Lock('client id', 'domain');
+  // DEV
+  // console.log('something has changed', AppStore.state.toJS());
+});

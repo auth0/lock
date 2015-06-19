@@ -36,6 +36,13 @@ export default class AppStore extends EventEmitter {
           );
           this.emitChange();
           break;
+          case ActionTypes.HIDE_LOCK:
+            this._state = this._state.setIn(
+              ["locks", action.lockID, "show"],
+              false
+            );
+            this.emitChange();
+            break;
         case ActionTypes.RECEIVE_CLIENT:
           this._state = this._state.setIn(
             ['clients', action.attributes.id],
@@ -62,12 +69,23 @@ export default class AppStore extends EventEmitter {
               options: action.options,
               username: "",
               password: "",
-              state: LockStates.WAITING_CLIENT_CONFIG
+              state: LockStates.WAITING_CLIENT_CONFIG,
+              show: false
             })
           );
           this._state = this._state.setIn(
             ['clients', action.clientID],
             Map({id: action.clientID, loaded: false})
+          );
+          this.emitChange();
+          break;
+        case ActionTypes.SHOW_LOCK:
+          this._state = this._state.setIn(
+            ["locks", action.lockID, "show"],
+            true
+          ).setIn(
+            ["locks", action.lockID, "showOptions"],
+            action.options
           );
           this.emitChange();
           break;
@@ -111,6 +129,12 @@ export default class AppStore extends EventEmitter {
     var lock = this._state.getIn(['locks', id]);
     var client = this._state.getIn(['clients', lock.get('clientID')]);
     return lock.set('client', client);
+  }
+
+  getLocks() {
+    return this._state.get("locks").toList().map((lock) => {
+      return this.getLock(lock.get("id"));
+    });
   }
 }
 

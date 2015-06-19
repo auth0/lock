@@ -54,5 +54,20 @@ export default {
       lockID: lockID,
       error: error
     });
+  },
+
+  showLock: function(lockID, options) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.SHOW_LOCK,
+      lockID: lockID,
+      options: options
+    });
+  },
+
+  hideLock: function(lockID) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.HIDE_LOCK,
+      lockID: lockID
+    });
   }
 }
