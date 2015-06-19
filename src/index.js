@@ -4,6 +4,7 @@ import IDUtils from './utils/id_utils';
 import Lock from './components/lock';
 import AppStore from './stores/app_store';
 import WebAPIUtils from './utils/web_api_utils';
+import LockContainerUtils from './utils/lock_container_utils';
 
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) {
@@ -33,33 +34,15 @@ global.window.Auth0Lock = Auth0Lock;
 
 AppStore.addChangeListener(() => {
   AppStore.getLocks().forEach((lock) => {
-    // TODO refactor this mess :)
-    var showOptions = lock.get("showOptions");
-    var containerID = showOptions.get("container");
-    var container;
+    var container = LockContainerUtils.getLockContainer(
+      lock.get("id"),
+      lock.getIn(["showOptions", "container"])
+    );
 
     if (lock.get("show")) {
-      if (containerID) {
-         container = document.getElementById(containerID);
-         if (!container) {
-           throw new Error('Not found element with \'id\' ' + cid);
-         }
-      } else {
-        containerID = `auth0-lock-container-${lock.get("id")}`;
-        container = document.getElementById(containerID);
-        if (!container) {
-          container = document.createElement('div');
-          container.id = containerID;
-          document.body.appendChild(container);
-        }
-      }
       React.render(<Lock lock={lock}/>, container);
     } else {
-      var containerID = showOptions.get("container") || `auth0-lock-container-${lock.get("id")}`;
-      container = document.getElementById(containerID);
-      if (container) {
-        React.unmountComponentAtNode(container);
-      }
+      React.unmountComponentAtNode(container);
     }
   });
 
