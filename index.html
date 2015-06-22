@@ -17,5 +17,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="build/build.js"></script>
+    <script>
+      $(function() {
+        var clientID = "JIMqGKN9Npw4lkg1stTARqPTjBvn6wRp";
+        var domain = "gnandretta.auth0.com";
+        var lock = new Auth0Lock(clientID, domain);
+        $('body').one("click", function(){
+          lock.showSignin({
+            disableSignupAction: false,
+            disableResetAction: false,
+            callbackUrl: "http://ilogicamente.com"
+          }, function(error) {
+            console.log('something went wrong', error);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
