@@ -307,7 +307,7 @@ module.exports = function (grunt) {
   grunt.registerTask('demo',          ['less:demo', 'connect:demo', 'build', 'watch']);
   grunt.registerTask('demo-https',    ['less:demo', 'connect:demo-https', 'build', 'watch']);
 
-  grunt.registerTask('dev',           ['connect:test', 'build', 'watch']);
+  grunt.registerTask('dev',           ['less:demo', 'connect:test', 'build', 'watch']);
   grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
   grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
