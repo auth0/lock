@@ -1,5 +1,17 @@
 @import "normalize.css";
 @import "fonts.css";
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.auth0-lock-hide {
+  display: none;
+}
 @media (min-width: 992px) {
   .auth0-lock-overlay {
     background: rgba(34,34,40,0.94);
@@ -13,6 +25,14 @@
     background: radial-gradient(#40404b, #111118);
     -webkit-transition: opacity 0.4s ease-in 0s;
   }
+}
+.auth0-lock-form {
+  display: block;
+  -webkit-animation: fadeIn 0.7s;
+  animation: fadeIn 0.7s;
+}
+.auth0-lock-form.auth0-lock-hide {
+  display: none;
 }
 .auth0-lock {
   font-family: "Avenir", sans-serif;
@@ -255,4 +275,49 @@
   -webkit-transform: translateY(0%) scale(1);
   opacity: 1;
   -webkit-transition-delay: 0;
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

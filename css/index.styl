@@ -28,6 +28,19 @@ breakpoint(point, value = 0)
     @media (min-width: value)
     	{block}
 
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+.auth0-lock-hide
+  display: none;
+
 .auth0-lock-overlay
   +breakpoint("desktop")
     background: rgba(34,34,40, .94)
@@ -40,6 +53,15 @@ breakpoint(point, value = 0)
     opacity: 0;
     background: radial-gradient(lighten(#222228, 15%), #111118); /* Standard syntax */
     -webkit-transition: opacity .4s ease-in 0s;
+
+.auth0-lock-form
+  display: block;
+  -webkit-animation: fadeIn .7s;
+  animation: fadeIn .7s;
+
+.auth0-lock-form.auth0-lock-hide
+  display: none;
+
 
 .auth0-lock
   font-family: "Avenir", sans-serif;

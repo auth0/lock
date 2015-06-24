@@ -25,6 +25,11 @@
           return false;
         });
 
+        $('.auth0-lock-tabs li').click(function(){
+          $('.auth0-lock-tabs li').toggleClass("auth0-lock-tabs-current");
+          $('.auth0-lock-form').toggleClass("auth0-lock-hide");
+        });
+
       });
     </script>
   </head>
@@ -32,7 +37,7 @@
 
 
 
-    <div class="auth0-lock" >
+    <div class="auth0-lock open" >
       <div class="auth0-lock-overlay">
 
       </div>
@@ -50,7 +55,6 @@
             <div class="auth0-lock-header-logo"></div>
             Auth0
 
-
           </div>
           <div class="auth0-lock-header-logo-blurry"></div>
 
@@ -59,22 +63,39 @@
         <div class="auth0-lock-content">
 
           <ul class="auth0-lock-tabs">
-            <li class="auth0-lock-tabs-current"><a class="" href="">Login</a></li>
-            <li><a class="" href="">Sign Up</a></li>
+            <li class="auth0-lock-tabs-login auth0-lock-tabs-current"><a class="" href="">Login</a></li>
+            <li><a class="auth0-lock-tabs-signup" href="">Sign Up</a></li>
           </ul>
 
 
-          <div class="auth0-lock-input-wrap auth0-lock-input-username">
-            <i class="auth0-lock-icon"></i>
-            <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Username">
+          <div class="auth0-lock-form auth0-lock-login">
+            <div class="auth0-lock-input-wrap auth0-lock-input-username">
+              <i class="auth0-lock-icon"></i>
+              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
+            </div>
+
+            <div class="auth0-lock-input-wrap auth0-lock-input-password">
+              <i class="auth0-lock-icon"></i>
+              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Password">
+            </div>
+
+            <a href="#" class="auth0-lock-forgot-link">Don't remember your password?</a>
           </div>
 
-          <div class="auth0-lock-input-wrap auth0-lock-input-password">
-            <i class="auth0-lock-icon"></i>
-            <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Password">
+          <div class="auth0-lock-form auth0-lock-signup auth0-lock-hide">
+
+            <div class="auth0-lock-input-wrap auth0-lock-input-username">
+              <i class="auth0-lock-icon"></i>
+              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
+            </div>
+
+            <div class="auth0-lock-input-wrap auth0-lock-input-password">
+              <i class="auth0-lock-icon"></i>
+              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Create Password">
+            </div>
+
           </div>
 
-          <a href="#" class="auth0-lock-forgot-link">Don't remember your password?</a>
         </div>
 
         <button type="submit" class="auth0-lock-submit">
