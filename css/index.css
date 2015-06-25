@@ -23,7 +23,8 @@
     z-index: -1;
     opacity: 0;
     background: radial-gradient(#40404b, #111118);
-    -webkit-transition: opacity 0.4s ease-in 0s;
+    transition: opacity 0.2s ease-in 0s;
+    -webkit-transition: opacity 0.2s ease-in 0s;
   }
 }
 .auth0-lock-form {
@@ -63,10 +64,10 @@
     opacity: 0;
     border-radius: 5px;
     box-shadow: 0 0 0 transparent;
-    -webkit-transition: transform 1s, opacity 1.5s;
+    -webkit-transition: transform 0.8s, opacity 0.8s;
     -webkit-transform: translateY(80%) scale(0.8);
     -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
-    -webkit-transition-delay: 0.3s;
+    -webkit-transition-delay: 0.5s;
   }
 }
 .auth0-lock.open .auth0-lock-overlay {

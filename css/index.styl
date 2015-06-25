@@ -52,7 +52,8 @@ breakpoint(point, value = 0)
     z-index: -1;
     opacity: 0;
     background: radial-gradient(lighten(#222228, 15%), #111118); /* Standard syntax */
-    -webkit-transition: opacity .4s ease-in 0s;
+    transition: opacity .2s ease-in 0s;
+    -webkit-transition: opacity .2s ease-in 0s;
 
 .auth0-lock-form
   display: block;
@@ -90,10 +91,10 @@ breakpoint(point, value = 0)
       opacity: 0;
       border-radius: 5px;
       box-shadow: 0 0 0 transparent;
-      -webkit-transition: transform 1s, opacity 1.5s;
+      -webkit-transition: transform .8s, opacity .8s;
       -webkit-transform: translateY(80%) scale(.8);
       -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
-      -webkit-transition-delay: .3s;
+      -webkit-transition-delay: .5s;
 
 
   &.open
