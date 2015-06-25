@@ -213,6 +213,17 @@
 .auth0-lock .auth0-lock-input-wrap:last-child {
   margin-bottom: 0;
 }
+.auth0-lock .auth0-lock-terms {
+  text-align: center;
+  margin-top: 20px;
+  display: block;
+  font-size: 12px;
+  color: #666;
+  line-height: 24px;
+}
+.auth0-lock .auth0-lock-terms a {
+  color: #000;
+}
 .auth0-lock .auth0-lock-submit {
   background: #40df7d;
   background: #ea5323;
