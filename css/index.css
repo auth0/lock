@@ -9,38 +9,18 @@
     opacity: 1;
   }
 }
-.auth0-lock-hide {
-  display: none;
-}
-@media (min-width: 992px) {
-  .auth0-lock-overlay {
-    background: rgba(34,34,40,0.94);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0;
-    background: radial-gradient(#40404b, #111118);
-    -webkit-transition: opacity 0.3s ease-in 0s;
-  }
-}
-.auth0-lock-form {
-  display: block;
-  -webkit-animation: fadeIn 0.7s;
-  animation: fadeIn 0.7s;
-}
-.auth0-lock-form.auth0-lock-hide {
-  display: none;
-}
 .auth0-lock {
   font-family: "Avenir", sans-serif;
-  visibility: hidden;
   text-rendering: optimizeLegibility;
+  opacity: 0;
+  transition: opacity 0s;
+  transition-delay: 2s;
+  pointer-events: none;
 }
-.auth0-lock.open {
-  visibility: visible;
+.auth0-lock.opened {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
 }
 .auth0-lock a {
   text-decoration: none;
@@ -59,24 +39,51 @@
   }
 }
 @media (min-width: 992px) {
+  .auth0-lock .auth0-lock-overlay {
+    background: rgba(34,34,40,0.94);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    background: radial-gradient(#40404b, #111118);
+    -webkit-transition: opacity 0.2s ease-in 0.4s;
+  }
+}
+.auth0-lock .auth0-lock-form {
+  display: block;
+  -webkit-animation: fadeIn 0.7s;
+  animation: fadeIn 0.7s;
+}
+.auth0-lock .auth0-lock-hide {
+  display: none;
+}
+.auth0-lock .auth0-lock-form.auth0-lock-hide {
+  display: none;
+}
+@media (min-width: 992px) {
   .auth0-lock .auth0-lock-widget {
     opacity: 0;
     border-radius: 5px;
     box-shadow: 0 0 0 transparent;
-    -webkit-transition: transform 1s, opacity 1.3s;
+    -webkit-transition: transform 0.4s, opacity 0.7s;
     -webkit-transform: translateY(80%) scale(0.8);
     -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
-    -webkit-transition-delay: 0.5s;
+    -webkit-transition-delay: 0s;
   }
 }
-.auth0-lock.open .auth0-lock-overlay {
+.auth0-lock.opened .auth0-lock-overlay {
   opacity: 0.9;
+  -webkit-transition: opacity 0.3s ease-in 0s;
 }
-.auth0-lock.open .auth0-lock-widget {
+.auth0-lock.opened .auth0-lock-widget {
   opacity: 1;
   box-shadow: 0 0 40px 4px #111118;
   -webkit-transform: translateY(0%) scale(1);
-  -webkit-transition-delay: 0;
+  -webkit-transition: transform 1s, opacity 1.3s;
+  -webkit-transition-delay: 0.5s;
 }
 .auth0-lock .auth0-lock-header {
   text-align: center;
@@ -276,7 +283,7 @@
   z-index: -1;
   -webkit-transition: transform 1.2s ease 1.8s, opacity 1.2s ease 1.8s;
   -webkit-transform: translateY(-200%) scale(0.8);
-  transition: transform 1.2s ease 1.8s, opacity 1.2s ease 1.8s;
+  transition: transform 0.2s ease 1s, opacity 0.2s ease 0s;
   transform: translateY(-200%) scale(0.8);
   opacity: 0;
 }
@@ -284,11 +291,11 @@
   content: "f";
   color: rgba(255,255,255,0.4);
 }
-.auth0-lock.open .auth0-lock-badge {
+.auth0-lock.opened .auth0-lock-badge {
   -webkit-transform: translateY(0%) scale(1);
   -webkit-transition-delay: 0;
   transform: translateY(0%) scale(1);
-  transition-delay: 0;
+  transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
   opacity: 1;
 }
 @-moz-keyframes fadeIn {
