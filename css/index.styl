@@ -34,12 +34,58 @@ breakpoint(point, value = 0)
     to
       opacity: 1;
 
+.animated
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 
 @keyframes fadeIn
     from
       opacity: 0;
     to
       opacity: 1;
+
+@keyframes shake {
+  0%, 100% {
+    // -webkit-transform: translate3d(0, 0, 0);
+    // transform: translate3d(0, 0, 0);
+    -webkit-perspective: 100px;
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-perspective: 300px;
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-perspective: 500px;
+  }
+}
+
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -30%, 0);
+    transform: translate3d(0, -30%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
 
 .auth0-lock
   font-family: "Avenir", sans-serif;
@@ -87,7 +133,7 @@ breakpoint(point, value = 0)
     animation: fadeIn .7s;
 
   .auth0-lock-hide
-    display: none;
+    display: none !important;
 
   .auth0-lock-form.auth0-lock-hide
     display: none;
@@ -101,25 +147,6 @@ breakpoint(point, value = 0)
       -webkit-transform: translateY(80%) scale(.8);
       -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
       -webkit-transition-delay: 0s;
-      // transition: transform .8s, opacity .8s;
-      // transform: translateY(80%) scale(.8);
-      // transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
-      // transition-delay: .5s;
-
-      //
-      // &.closed
-      //   // display: none;
-      //
-      //   .auth0-lock-overlay
-      //     opacity: 0;
-      //     -webkit-transition-delay: 1s;
-      //
-      //   .auth0-lock-widget
-      //     opacity: 1;
-      //     box-shadow: 0 0 40px 4px #111118;
-      //     -webkit-transform: translateY(100%) scale(0);
-      //     -webkit-transition-delay: 0;
-      //     -webkit-transition: transform .6s, opacity .2s;
 
   &.opened
     .auth0-lock-overlay
@@ -139,7 +166,7 @@ breakpoint(point, value = 0)
     background: #fff;
     color: #333;
     position: relative;
-    overflow: hidden;
+    height: 80px;
 
     +breakpoint(mobile-landscape)
       border-top-right-radius: 5px;
@@ -165,7 +192,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-header-welcome
     font-size: 22px;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
 
     .auth0-lock-header-logo
@@ -175,7 +202,25 @@ breakpoint(point, value = 0)
       background-size: 100% 100%;
       margin: auto auto 10px auto;
 
-  .auth0-lock-header:before
+    .auth0-lock-header-placeholder
+      background: green;
+      color: white;
+      border-radius: 100px;
+      line-height: 60px;
+      width: 60px;
+      margin: auto;
+
+    .auth0-lock-header-avatar
+      height: 90px;
+      width: 90px;
+      display: block;
+      border-radius: 100px;
+      margin: auto;
+      margin: auto auto 10px auto;
+      margin-top: -30px;
+      position: relative;
+
+  .auth0-lock-header-bg
     background:  url('../img/badge.svg') center no-repeat
     background-size: 100%;
     position: absolute
@@ -188,6 +233,8 @@ breakpoint(point, value = 0)
     -webkit-filter: grayscale(1) blur(50px);
     opacity: .5
     // display: none;
+    &.no-filter
+      -webkit-filter: blur(50px);
 
   .auth0-lock-content
     padding: 30px 40px;
@@ -227,7 +274,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-input-wrap
     border-radius: 3px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     border: 1px solid #f1f1f1;
     position: relative;
     background: #f1f1f1;
@@ -247,7 +294,6 @@ breakpoint(point, value = 0)
     &.auth0-lock-input-password
       i:before
         content: "c"
-
 
     .auth0-lock-input
       border: 0;
@@ -286,6 +332,9 @@ breakpoint(point, value = 0)
     bottom: 0;
     &:hover
       background: darken(#EA5323, 20%)
+
+    &:focus
+      outline: none;
 
     +breakpoint("mobile-landscape")
       position: static;
