@@ -41,15 +41,15 @@
             if (this.value == "rickyrauch@gmail.com") {
                 $(".auth0-lock-header-logo").hide();
                 $(".auth0-lock-header-avatar").removeClass("auth0-lock-hide").addClass('animated fadeInDown');
-                $('.auth0-lock-header-bg').css('background-image','url(https://pbs.twimg.com/profile_images/468862566689566720/sqiDLnnu.png)').addClass("no-filter");
+                $('.auth0-lock-header-bg').css('background-image','url(img/avatar.png)').addClass("no-filter");
                 $('.auth0-lock-firstname').removeClass("auth0-lock-hide");
                 $('.auth0-lock-name').hide();
             }
             else {
-              $(".auth0-lock-header-logo").show();
-              $(".auth0-lock-header-avatar").hide();
-              $('.auth0-lock-firstname').hide();
-              $('.auth0-lock-name').show();
+              // $(".auth0-lock-header-logo").show();
+              // $(".auth0-lock-header-avatar").hide();
+              // $('.auth0-lock-firstname').hide();
+              // $('.auth0-lock-name').show();
             }
         });
 
@@ -77,7 +77,7 @@
           <div class="auth0-lock-header-welcome">
 
             <div class="auth0-lock-header-logo"></div>
-            <img class="auth0-lock-header-avatar auth0-lock-hide" src="https://pbs.twimg.com/profile_images/468862566689566720/sqiDLnnu.png" />
+            <img class="auth0-lock-header-avatar auth0-lock-hide" src="img/avatar.png" />
 
             <div class="auth0-lock-name">Auth0</div>
             <div class="auth0-lock-firstname auth0-lock-hide" >Welcome Ricardo!</div>
