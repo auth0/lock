@@ -1269,7 +1269,10 @@ Auth0Lock.prototype.getProfile = function (token, callback) {
 
 Auth0Lock.prototype.oncloseclick = function(e) {
   stop(e);
-  this.hide(() => this.options.popupCallback(new Error("Dialog closed.")));
+  self = this;
+  this.hide(function() {
+    self.options.popupCallback(new Error("Dialog closed."));
+  });
 };
 
 /**
@@ -1280,7 +1283,11 @@ Auth0Lock.prototype.oncloseclick = function(e) {
  */
 
 Auth0Lock.prototype.onescpressed = function(e) {
-  if ((e.which == 27 || e.keycode == 27)) this.hide(() => this.options.popupCallback(new Error("Dialog closed.")));
+  self = this;
+  if ((e.which == 27 || e.keycode == 27))
+    this.hide(function() {
+      self.options.popupCallback(new Error("Dialog closed."));
+    });
 };
 
 /**
