@@ -1,9 +1,9 @@
 import Auth0 from 'auth0-js';
-import StringUtils from './string_utils';
-import ClientActionCreators from '../control/client_action_creators';
-import LockActionCreators from '../control/lock_action_creators';
+import StringUtils from '../utils/string_utils';
+import ClientActionCreators from '../client/action_creators';
+import LockActionCreators from './action_creators';
 import Store from '../control/store';
-import ClientUtils from './client_utils';
+import Client from '../client/client';
 
 global.window.Auth0 = Auth0;
 
@@ -11,7 +11,7 @@ global.window.Auth0.setClient = function(client_attributes) {
   ClientActionCreators.receiveClient(client_attributes);
 };
 
-class WebAPIUtils {
+class LockWebAPI {
   constructor() {
     this._clients = {};
   }
@@ -72,7 +72,7 @@ class WebAPIUtils {
     }
 
     this._clients[lockID].login({
-      connection: ClientUtils.getDefaultConnection(lock.get("client")).get("name"),
+      connection: Client.getDefaultConnection(lock.get("client")).get("name"),
       username: lock.get("email"),
       password: lock.get("password"),
       sso: false,
@@ -86,7 +86,7 @@ class WebAPIUtils {
   }
 }
 
-export default new WebAPIUtils();
+export default new LockWebAPI();
 
 function clientScriptTagSrc(clientID, domain, assetsUrl) {
   return `${clientScriptTagAssetsUrl(domain, assetsUrl)}client/${clientID}.js?t${+new Date()}`;

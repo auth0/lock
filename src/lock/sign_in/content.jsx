@@ -1,7 +1,7 @@
 import React from 'react';
-import SignInErrorMessage from './sign_in_error_message';
-import ModeTabs from './mode_tabs';
-import LockActionCreators from '../control/lock_action_creators';
+import SignInErrorMessage from './error_message';
+import ModeTabs from '../mode_tabs';
+import LockActionCreators from '../action_creators';
 
 // TODO move to its own module
 class InputWrap extends React.Component {

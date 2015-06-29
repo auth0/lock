@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from './avatar';
-import LockActionCreators from '../control/lock_action_creators';
+import LockActionCreators from './action_creators';
 
 export default class Header extends React.Component {
   _handleClose(event) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { md5 } from 'blueimp-md5';
-import EmailUtils from '../utils/email_utils';
+import EmailCredentials from './credentials/email';
 
 export default class Avatar extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class Avatar extends React.Component {
   }
 
   _deriveState(email) {
-    email = EmailUtils.validateEmail(email);
+    email = EmailCredentials.validateEmail(email);
     if (email) {
       let url = `https://www.gravatar.com/avatar/${md5(email)}?d=404`
       this.setState({isValid: null, url: url});

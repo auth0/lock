@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map } from 'immutable';
-import Widget from '../../src/components/widget';
+import Widget from '../../src/lock/widget';
 import assert from 'assert';
 
 describe('Widget', function(){

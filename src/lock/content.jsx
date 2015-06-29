@@ -1,7 +1,7 @@
 import React from 'react';
-import LoadingContent from './loading_content';
-import CrashContent from './crash_content';
-import SignInContent from './sign_in_content';
+import LoadingContent from './loading/content';
+import CrashContent from './crash/content';
+import SignInContent from './sign_in/content';
 import { LockStates } from '../control/constants';
 
 export default class Content extends React.Component {

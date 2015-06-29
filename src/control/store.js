@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import Immutable, { Map } from 'immutable';
 import { ActionTypes, LockStates, Events } from './constants';
-import ClientUtils from '../utils/client_utils';
+import Client from '../client/client';
 
 import Dispatcher from './dispatcher';
 
@@ -191,7 +191,7 @@ function prepareShowOptions(lock, options) { // TODO this function doesn't belon
 
   var responseType = options.responseType || options.callbackURL ? "code" : "token";
 
-  var defaultConnection = ClientUtils.getDefaultConnection(lock.get("client"));
+  var defaultConnection = Client.getDefaultConnection(lock.get("client"));
 
   var disableSignupAction = undefined === options.disableSignupAction ? true : !!options.disableSignupAction;
   disableSignupAction = defaultConnection.get("showSignup") && disableSignupAction;

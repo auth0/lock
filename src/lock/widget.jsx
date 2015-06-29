@@ -1,17 +1,17 @@
 import React from 'react';
 import Content from './content';
-import LockActionCreators from '../control/lock_action_creators';
+import LockActionCreators from './action_creators';
 import { LockStates } from '../control/constants';
 import SubmitButton from './submit_button';
 import Header from './header';
-import EmailUtils from '../utils/email_utils';
-import PasswordUtils from '../utils/password_utils';
+import EmailCredentials from './credentials/email';
+import PasswordCredentials from './credentials/password';
 
 export default class Widget extends React.Component {
   _handleSubmit(event) {
     event.preventDefault();
-    var email = EmailUtils.validateEmail(this.props.lock.get("email"));
-    var password = PasswordUtils.validatePassword(this.props.lock.get("password"));
+    var email = EmailCredentials.validateEmail(this.props.lock.get("email"));
+    var password = PasswordCredentials.validatePassword(this.props.lock.get("password"));
     if (email && password) {
       LockActionCreators.signIn(this.props.lock.get("id"));
     } else {

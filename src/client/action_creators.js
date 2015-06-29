@@ -1,5 +1,5 @@
-import Dispatcher from './dispatcher';
-import { ActionTypes } from './constants';
+import Dispatcher from '../control/dispatcher';
+import { ActionTypes } from '../control/constants';
 
 export default {
   receiveClient: function(client_attributes) {

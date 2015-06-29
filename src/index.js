@@ -1,10 +1,10 @@
 import React from 'react';
-import LockActionCreators from './control/lock_action_creators';
+import LockActionCreators from './lock/action_creators';
 import IDUtils from './utils/id_utils';
-import Lock from './components/lock';
+import Lock from './lock/lock';
 import Store from './control/store';
-import WebAPIUtils from './utils/web_api_utils';
-import LockContainerUtils from './utils/lock_container_utils';
+import LockWebAPI from './lock/web_api';
+import LockContainerManager from './lock/container_manager';
 
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) {
@@ -25,7 +25,7 @@ export default class Auth0Lock {
   logout(query = {}) {
     // NOTE this perfroms a redirect, so there is no need to go through the
     // whole flux cycle
-    WebAPIUtils.signOut(this.id, query);
+    LockWebAPI.signOut(this.id, query);
   }
 }
 
@@ -34,7 +34,7 @@ global.window.Auth0Lock = Auth0Lock;
 
 Store.addChangeListener(() => {
   Store.getLocks().forEach((lock) => {
-    var container = LockContainerUtils.getLockContainer(
+    var container = LockContainerManager.getLockContainer(
       lock.get("id"),
       lock.getIn(["showOptions", "container"])
     );

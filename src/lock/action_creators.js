@@ -1,6 +1,6 @@
-import Dispatcher from './dispatcher';
-import { ActionTypes } from './constants';
-import WebAPIUtils from '../utils/web_api_utils';
+import Dispatcher from '../control/dispatcher';
+import { ActionTypes } from '../control/constants';
+import LockWebAPI from './web_api';
 
 export default {
   setupLock: function(lockID, clientID, domain, options) {
@@ -12,7 +12,7 @@ export default {
       options: options
     });
 
-    WebAPIUtils.setupClient(lockID, clientID, domain, options);
+    LockWebAPI.setupClient(lockID, clientID, domain, options);
   },
 
   changeEmail: function(lockID, email) {
@@ -37,7 +37,7 @@ export default {
       lockID: lockID
     });
 
-    WebAPIUtils.signIn(lockID);
+    LockWebAPI.signIn(lockID);
   },
 
   successfulSignIn: function(lockID, signIn) {
