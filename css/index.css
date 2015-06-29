@@ -117,11 +117,10 @@
 }
 .auth0-lock .auth0-lock-header {
   text-align: center;
-  padding: 14px 14px 0 14px;
+  padding: 14px 14px 14px 14px;
   color: #333;
   position: relative;
   background: #fff;
-  height: 90px;
 }
 @media (min-width: 568px) {
   .auth0-lock .auth0-lock-header {
@@ -154,8 +153,8 @@
 }
 .auth0-lock .auth0-lock-header-welcome .auth0-lock-header-logo {
   max-width: 60px;
-  height: 60px;
-  margin: auto auto auto auto;
+  height: 50px;
+  margin: auto auto 10px auto;
 }
 .auth0-lock .auth0-lock-header-welcome .auth0-lock-header-placeholder {
   background: #008000;
@@ -178,7 +177,7 @@
 }
 .auth0-lock .auth0-lock-header-bg {
   position: absolute;
-  height: 200px;
+  height: 130px;
   width: 300px;
   overflow: hidden;
   top: 0;
@@ -195,15 +194,15 @@
   width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  -webkit-filter: blur(40px) grayscale(1);
+  -webkit-filter: blur(50px) grayscale(1);
   background: url("../img/badge.svg") center -50px no-repeat;
   background-size: 150px;
   opacity: 0;
   transition: all 0s ease 0s;
 }
 .auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-inner.no-filter {
-  -webkit-filter: blur(40px);
-  background-position: center -50px;
+  -webkit-filter: blur(80px);
+  background-position: center;
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px 40px;

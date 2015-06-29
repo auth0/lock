@@ -144,9 +144,6 @@ breakpoint(point, value = 0)
       opacity: 0;
       background: radial-gradient(lighten(#222228, 15%), #111118); /* Standard syntax */
       -webkit-transition: opacity .2s ease-in .4s;
-      // background: red;
-      // background: #222228;
-
 
   .auth0-lock-form
     display: block;
@@ -184,11 +181,10 @@ breakpoint(point, value = 0)
 
   .auth0-lock-header
     text-align: center;
-    padding: 14px 14px 0 14px;
+    padding: 14px 14px 14px 14px;
     color: #333;
     position: relative;
     background: #fff;
-    height: 90px;
 
     +breakpoint(mobile-landscape)
       border-top-right-radius: 5px;
@@ -219,9 +215,8 @@ breakpoint(point, value = 0)
 
     .auth0-lock-header-logo
       max-width: 60px;
-      height: 60px;
-
-      margin: auto auto auto auto;
+      height: 50px;
+      margin: auto auto 10px auto;
 
     .auth0-lock-header-placeholder
       background: green;
@@ -244,7 +239,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-header-bg
     position: absolute;
-    height: 200px;
+    height: 130px;
     width: 300px;
     overflow: hidden;
     top: 0;
@@ -260,19 +255,17 @@ breakpoint(point, value = 0)
       width: 100%;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
-      -webkit-filter: blur(40px) grayscale(1);
+      -webkit-filter: blur(50px) grayscale(1);
       background: url('../img/badge.svg')   center -50px  no-repeat;
       background-size:  150px ;
       opacity: 0;
       transition: all 0s ease 0s;
 
       &.no-filter
-        -webkit-filter: blur(40px);
-        background-position: center -50px;
+        -webkit-filter: blur(80px);
+        background-position: center;
 
 
-  .auth0-lock-header-img
-    // -webkit-filter: blur(50px);
 
   .auth0-lock-content
     padding: 30px 40px;
