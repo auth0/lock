@@ -121,6 +121,7 @@
   color: #333;
   position: relative;
   background: #fff;
+  height: 100px;
 }
 @media (min-width: 568px) {
   .auth0-lock .auth0-lock-header {
