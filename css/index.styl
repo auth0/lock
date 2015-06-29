@@ -178,17 +178,16 @@ breakpoint(point, value = 0)
       opacity: 1;
       box-shadow: 0 0 40px 4px #111118;
       -webkit-transform: translateY(0%) scale(1);
-      -webkit-transition: transform .5s, opacity .3s;
+      -webkit-transition: transform .3s, opacity .3s;
       -webkit-transition-delay: .5s;
 
 
   .auth0-lock-header
     text-align: center;
-    padding: 14px;
-    background: #fff;
+    padding: 14px 14px 0 14px;
     color: #333;
     position: relative;
-    height: 80px;
+    background: #fff;
 
     +breakpoint(mobile-landscape)
       border-top-right-radius: 5px;
@@ -218,11 +217,10 @@ breakpoint(point, value = 0)
     position: relative;
 
     .auth0-lock-header-logo
-      width: 60px;
+      max-width: 60px;
       height: 60px;
-      background: url('../img/badge.svg') center no-repeat
-      background-size: 100% 100%;
-      margin: auto auto 10px auto;
+
+      margin: auto auto auto auto;
 
     .auth0-lock-header-placeholder
       background: green;
@@ -244,14 +242,33 @@ breakpoint(point, value = 0)
       box-shadow: 0 1px 2px rgba(0,0,0,.4)
 
   .auth0-lock-header-bg
-    position: relative;
-    height: 100px;
+    position: absolute;
+    height: 200px;
+    width: 300px;
     overflow: hidden;
-    background: url('../img/badge.svg') center no-repeat
-    // -webkit-filter: blur(50px);
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    .auth0-lock-header-bg-inner
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      -webkit-filter: blur(40px) grayscale(1);
+      background: url('../img/badge.svg')   center -50px  no-repeat;
+      background-size:  150px ;
+      opacity: 0;
+      transition: all 0s ease 0s;
 
-    &.no-filter
-      // -webkit-filter: blur(50px);
+      &.no-filter
+        -webkit-filter: blur(40px);
+        background-position: center -50px;
+
 
   .auth0-lock-header-img
     // -webkit-filter: blur(50px);
@@ -264,6 +281,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-tabs
     border: 1px solid #5C666F;
+    background: white;
     padding: 0;
     margin: 0 0 30px 0;
     border-radius: 3px;
@@ -403,6 +421,11 @@ breakpoint(point, value = 0)
       color: rgba(255,255,255,.4)
 
   &.opened
+    .auth0-lock-header-bg
+      .auth0-lock-header-bg-inner
+        opacity: 1;
+        transition: all 1s ease 1s;
+
     .auth0-lock-badge
       -webkit-transform: translateY(0%)  scale(1);
       -webkit-transition-delay: 0;

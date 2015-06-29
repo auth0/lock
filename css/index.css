@@ -112,16 +112,15 @@
   opacity: 1;
   box-shadow: 0 0 40px 4px #111118;
   -webkit-transform: translateY(0%) scale(1);
-  -webkit-transition: transform 0.5s, opacity 0.3s;
+  -webkit-transition: transform 0.3s, opacity 0.3s;
   -webkit-transition-delay: 0.5s;
 }
 .auth0-lock .auth0-lock-header {
   text-align: center;
-  padding: 14px;
-  background: #fff;
+  padding: 14px 14px 0 14px;
   color: #333;
   position: relative;
-  height: 80px;
+  background: #fff;
 }
 @media (min-width: 568px) {
   .auth0-lock .auth0-lock-header {
@@ -153,11 +152,9 @@
   position: relative;
 }
 .auth0-lock .auth0-lock-header-welcome .auth0-lock-header-logo {
-  width: 60px;
+  max-width: 60px;
   height: 60px;
-  background: url("../img/badge.svg") center no-repeat;
-  background-size: 100% 100%;
-  margin: auto auto 10px auto;
+  margin: auto auto auto auto;
 }
 .auth0-lock .auth0-lock-header-welcome .auth0-lock-header-placeholder {
   background: #008000;
@@ -179,10 +176,33 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 .auth0-lock .auth0-lock-header-bg {
-  position: relative;
-  height: 100px;
+  position: absolute;
+  height: 200px;
+  width: 300px;
   overflow: hidden;
-  background: url("../img/badge.svg") center no-repeat;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-inner {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-filter: blur(40px) grayscale(1);
+  background: url("../img/badge.svg") center -50px no-repeat;
+  background-size: 150px;
+  opacity: 0;
+  transition: all 0s ease 0s;
+}
+.auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-inner.no-filter {
+  -webkit-filter: blur(40px);
+  background-position: center -50px;
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px 40px;
@@ -192,6 +212,7 @@
 }
 .auth0-lock .auth0-lock-tabs {
   border: 1px solid #5c666f;
+  background: #fff;
   padding: 0;
   margin: 0 0 30px 0;
   border-radius: 3px;
@@ -334,6 +355,10 @@
 .auth0-lock .auth0-lock-badge:before {
   content: "f";
   color: rgba(255,255,255,0.4);
+}
+.auth0-lock.opened .auth0-lock-header-bg .auth0-lock-header-bg-inner {
+  opacity: 1;
+  transition: all 1s ease 1s;
 }
 .auth0-lock.opened .auth0-lock-badge {
   -webkit-transform: translateY(0%) scale(1);
