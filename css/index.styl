@@ -46,19 +46,37 @@ breakpoint(point, value = 0)
     to
       opacity: 1;
 
-@keyframes shake {
+@-webkit-keyframes shake {
   0%, 100% {
-    // -webkit-transform: translate3d(0, 0, 0);
-    // transform: translate3d(0, 0, 0);
-    -webkit-perspective: 100px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   10%, 30%, 50%, 70%, 90% {
-    -webkit-perspective: 300px;
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
   }
 
   20%, 40%, 60%, 80% {
-    -webkit-perspective: 500px;
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
   }
 }
 
@@ -126,6 +144,9 @@ breakpoint(point, value = 0)
       opacity: 0;
       background: radial-gradient(lighten(#222228, 15%), #111118); /* Standard syntax */
       -webkit-transition: opacity .2s ease-in .4s;
+      // background: red;
+      // background: #222228;
+
 
   .auth0-lock-form
     display: block;
@@ -144,7 +165,7 @@ breakpoint(point, value = 0)
       border-radius: 5px;
       box-shadow: 0 0 0 transparent;
       -webkit-transition: transform .4s, opacity .7s;
-      -webkit-transform: translateY(80%) scale(.8);
+      -webkit-transform: translateY(130%) scale(.8);
       -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
       -webkit-transition-delay: 0s;
 
@@ -152,11 +173,12 @@ breakpoint(point, value = 0)
     .auth0-lock-overlay
       opacity: .9;
       -webkit-transition: opacity .3s ease-in 0s;
+
     .auth0-lock-widget
       opacity: 1;
       box-shadow: 0 0 40px 4px #111118;
       -webkit-transform: translateY(0%) scale(1);
-      -webkit-transition: transform 1s, opacity 1.3s;
+      -webkit-transition: transform .5s, opacity .3s;
       -webkit-transition-delay: .5s;
 
 
@@ -219,22 +241,20 @@ breakpoint(point, value = 0)
       margin: auto auto 10px auto;
       margin-top: -30px;
       position: relative;
+      box-shadow: 0 1px 2px rgba(0,0,0,.4)
 
   .auth0-lock-header-bg
-    background:  url('../img/badge.svg') center no-repeat
-    background-size: 100%;
-    position: absolute
-    z-index: 0
-    top: 0;
-    bottom: 0
-    content: " ";
-    left: 0;
-    right: 0;
-    -webkit-filter: grayscale(1) blur(50px);
-    opacity: .5
-    // display: none;
+    position: relative;
+    height: 100px;
+    overflow: hidden;
+    background: url('../img/badge.svg') center no-repeat
+    // -webkit-filter: blur(50px);
+
     &.no-filter
-      -webkit-filter: blur(50px);
+      // -webkit-filter: blur(50px);
+
+  .auth0-lock-header-img
+    // -webkit-filter: blur(50px);
 
   .auth0-lock-content
     padding: 30px 40px;
@@ -371,9 +391,9 @@ breakpoint(point, value = 0)
     font-size: 20px;
     position: relative;
     z-index: -1;
-    -webkit-transition: transform 1.2s ease 1.8s, opacity 1.2s ease 1.8s;
+    -webkit-transition: transform 4s ease 1.8s, opacity 1.2s ease 1.8s;
     -webkit-transform: translateY(-200%) scale(.8);
-    transition: transform .2s ease 1s, opacity .2s ease 0s;
+    transition: transform .5s ease 1s, opacity .2s ease 0s;
     transform: translateY(-200%) scale(.8);
 
     opacity: 0;
