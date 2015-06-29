@@ -27,12 +27,15 @@ export default class Header extends React.Component {
 
     return (
       <div className="auth0-lock-header">
+        <div className="auth0-lock-header-bg"/>
         {closeButton}
-        {/*<div className="auth0-lock-header-avatar"/>*/}
+
         <div className="auth0-lock-header-welcome">
           {icon}
           {/* TODO instead of 'Auth0' we should be displaying 'sign in' and so on */}
-          Auth0
+          <div className="auth0-lock-name">Auth0</div>
+          {/* TODO show a proper welcome message */}
+          <div className="auth0-lock-firstname auth0-lock-hide">Welcome Ricardo!</div>
         </div>
         {/* <div className="auth0-lock-header-logo-blurry"/> */}
       </div>

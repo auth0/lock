@@ -19,16 +19,8 @@ export default class Avatar extends React.Component {
   }
 
   render() {
-    var placeholder = (
-      <div className="auth0-lock-avatar-default">
-        <i className="auth0-lock-icon"/>
-      </div>
-    );
-    var gravatar = (
-      <div className="auth0-lock-avatar-gravatar">
-        <img src={this.state.url} className="auth0-lock-gravatar"/>
-      </div>
-    );
+    var placeholder = <div className="auth0-lock-header-logo"/>;
+    var gravatar = <img className="auth0-lock-header-avatar animated fadeInDown" src={this.state.url}/>;
     return this.state.isValid ? gravatar : placeholder;
   }
 
