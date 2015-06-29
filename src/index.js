@@ -1,8 +1,8 @@
 import React from 'react';
-import LockActionCreators from './actions/lock_action_creators';
+import LockActionCreators from './control/lock_action_creators';
 import IDUtils from './utils/id_utils';
 import Lock from './components/lock';
-import AppStore from './stores/app_store';
+import Store from './control/store';
 import WebAPIUtils from './utils/web_api_utils';
 import LockContainerUtils from './utils/lock_container_utils';
 
@@ -32,8 +32,8 @@ export default class Auth0Lock {
 // TODO temp for DEV only
 global.window.Auth0Lock = Auth0Lock;
 
-AppStore.addChangeListener(() => {
-  AppStore.getLocks().forEach((lock) => {
+Store.addChangeListener(() => {
+  Store.getLocks().forEach((lock) => {
     var container = LockContainerUtils.getLockContainer(
       lock.get("id"),
       lock.getIn(["showOptions", "container"])
@@ -47,9 +47,9 @@ AppStore.addChangeListener(() => {
   });
 
   // DEV
-  // console.log('something has changed', AppStore.state.toJS());
-  // global.window.appState = AppStore.state;
-  // global.window.appStateJs = AppStore.state.toJS();
+  // console.log('something has changed', Store.state.toJS());
+  // global.window.appState = Store.state;
+  // global.window.appStateJs = Store.state.toJS();
 });
 
 // TODO is it worth to follow the flux convention for naming things and

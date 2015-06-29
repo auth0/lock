@@ -1,7 +1,7 @@
 import React from 'react';
 import Content from './content';
-import LockActionCreators from '../actions/lock_action_creators';
-import { LockStates } from '../constants/app_constants';
+import LockActionCreators from '../control/lock_action_creators';
+import { LockStates } from '../control/constants';
 import SubmitButton from './submit_button';
 import Header from './header';
 import EmailUtils from '../utils/email_utils';

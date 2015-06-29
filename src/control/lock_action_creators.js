@@ -1,10 +1,10 @@
-import AppDispatcher from '../dispatchers/app_dispatcher';
-import { ActionTypes } from '../constants/app_constants';
+import Dispatcher from './dispatcher';
+import { ActionTypes } from './constants';
 import WebAPIUtils from '../utils/web_api_utils';
 
 export default {
   setupLock: function(lockID, clientID, domain, options) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.SETUP_LOCK,
       lockID: lockID,
       clientID: clientID,
@@ -16,7 +16,7 @@ export default {
   },
 
   changeEmail: function(lockID, email) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.CHANGE_EMAIL,
       lockID: lockID,
       email: email
@@ -24,7 +24,7 @@ export default {
   },
 
   changePassword: function(lockID, password) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.CHANGE_PASSWORD,
       lockID: lockID,
       password: password
@@ -32,7 +32,7 @@ export default {
   },
 
   signIn: function(lockID) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.SIGN_IN,
       lockID: lockID
     });
@@ -41,7 +41,7 @@ export default {
   },
 
   successfulSignIn: function(lockID, signIn) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.SUCCESSFUL_SIGN_IN,
       lockID: lockID,
       signIn: signIn
@@ -49,7 +49,7 @@ export default {
   },
 
   failedSignIn: function(lockID, error) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.FAILED_SIGN_IN,
       lockID: lockID,
       error: error
@@ -57,7 +57,7 @@ export default {
   },
 
   showLock: function(lockID, options) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.SHOW_LOCK,
       lockID: lockID,
       options: options
@@ -65,14 +65,14 @@ export default {
   },
 
   hideLock: function(lockID) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.HIDE_LOCK,
       lockID: lockID
     });
   },
 
   invalidateCredentials: function(lockID, validations) {
-    AppDispatcher.dispatch({
+    Dispatcher.dispatch({
       type: ActionTypes.INVALIDATE_CREDENTIALS,
       lockID: lockID,
       validations: validations

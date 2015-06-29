@@ -1,15 +1,15 @@
 import { EventEmitter } from 'events';
 import Immutable, { Map } from 'immutable';
-import { ActionTypes, LockStates, Events } from '../constants/app_constants';
+import { ActionTypes, LockStates, Events } from './constants';
 import ClientUtils from '../utils/client_utils';
 
-import AppDispatcher from '../dispatchers/app_dispatcher';
+import Dispatcher from './dispatcher';
 
-export default class AppStore extends EventEmitter {
+export default class Store extends EventEmitter {
   constructor() {
     super();
     this._state = Map({clients: Map(), locks: Map()});
-    AppDispatcher.register((action) => {
+    Dispatcher.register((action) => {
       // TOOD maybe move this thing out of the constructor?
       switch(action.type) {
         // TODO add some functions to abstract state updates and remove some
@@ -182,7 +182,7 @@ export default class AppStore extends EventEmitter {
   }
 }
 
-export default new AppStore();
+export default new Store();
 
 function prepareShowOptions(lock, options) { // TODO this function doesn't belong here
   if (lock.get("state") === LockStates.CRASHED) {

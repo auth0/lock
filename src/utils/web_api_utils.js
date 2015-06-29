@@ -1,8 +1,8 @@
 import Auth0 from 'auth0-js';
 import StringUtils from './string_utils';
-import ClientActionCreators from '../actions/client_action_creators';
-import LockActionCreators from '../actions/lock_action_creators';
-import AppStore from '../stores/app_store';
+import ClientActionCreators from '../control/client_action_creators';
+import LockActionCreators from '../control/lock_action_creators';
+import Store from '../control/store';
 import ClientUtils from './client_utils';
 
 global.window.Auth0 = Auth0;
@@ -44,7 +44,7 @@ class WebAPIUtils {
   }
 
   signIn(lockID) {
-    var lock = AppStore.getLock(lockID);
+    var lock = Store.getLock(lockID);
     // NOTE the amount of parameters determine whether a redirect will be
     // performed after a successful login or not.
     // See https://github.com/auth0/auth0.js/issues/26
