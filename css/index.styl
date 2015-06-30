@@ -264,14 +264,15 @@ breakpoint(point, value = 0)
       width: 100%;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
-      -webkit-filter: blur(50px) grayscale(1);
-      background: url('../img/badge.svg')   center -50px  no-repeat;
-      background-size:  150px ;
+      -webkit-filter: blur(40px) grayscale(1);
+      background: url('../img/badge.svg')   center  no-repeat;
+      background-size:  300px ;
       opacity: 0;
       transition: all 0s ease 0s;
 
       &.no-filter
         -webkit-filter: blur(80px);
+        background: url('../img/badge.svg')   center   no-repeat;
         background-position: center;
 
   .auth0-lock-content
@@ -426,7 +427,7 @@ breakpoint(point, value = 0)
   &.opened
     .auth0-lock-header-bg
       .auth0-lock-header-bg-inner
-        opacity: 1;
+        opacity: .7;
         transition: all 1s ease 1s;
 
     .auth0-lock-badge
