@@ -228,15 +228,15 @@ breakpoint(point, value = 0)
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       -webkit-filter: blur(40px) grayscale(1);
-      background: url('../img/badge.svg')   center  no-repeat;
+      background: #fff url('../img/badge.svg')   center  no-repeat;
       background-size:  300px ;
       opacity: 0;
       transition: all 0s ease 0s;
 
       &.auth0-lock-no-grayscale
-        -webkit-filter: blur(80px);
-        background: url('../img/badge.svg')   center   no-repeat;
+        -webkit-filter: blur(100px);
         background-position: center;
+        background-size:  500px ;
 
   .auth0-lock-content
     padding: 30px 40px;
@@ -332,10 +332,15 @@ breakpoint(point, value = 0)
     width: 100%;
     position: fixed;
     bottom: 0;
-    transition: background-color .2s ease-out;
+    transition: background-color .2s ease-in-out;
+    i
+      transition: all .2s ease-in-out;
 
     &:hover
       background: darken(#EA5323, 20%)
+
+      i
+        transform: scale(1.05)
 
     &:focus
       outline: none;
