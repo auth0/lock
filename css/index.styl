@@ -156,6 +156,12 @@ breakpoint(point, value = 0)
   .auth0-lock-form.auth0-lock-hide
     display: none;
 
+  .auth0-lock-center
+    +breakpoint("desktop")
+      vertical-align: middle;
+      display: table-cell;
+      margin: auto;
+
   .auth0-lock-widget
     +breakpoint("desktop")
       opacity: 0;
@@ -168,11 +174,7 @@ breakpoint(point, value = 0)
       width: 300px;
       margin: auto;
 
-  .auth0-lock-center
-    +breakpoint("desktop")
-      vertical-align: middle;
-      display: table-cell;
-      margin: auto;
+
 
   &.opened
     .auth0-lock-overlay
@@ -418,10 +420,15 @@ breakpoint(point, value = 0)
     left: 0;
     right: 0;
     opacity: 0;
-
+    font-size: 18px;
     &:before
       content: "f"
+      transition: color .5s;
       color: rgba(255,255,255,.4)
+
+    &:hover
+      &:before
+        color: #EB5424
 
   &.opened
     .auth0-lock-header-bg

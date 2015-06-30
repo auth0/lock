@@ -95,6 +95,13 @@
   display: none;
 }
 @media (min-width: 992px) {
+  .auth0-lock .auth0-lock-center {
+    vertical-align: middle;
+    display: table-cell;
+    margin: auto;
+  }
+}
+@media (min-width: 992px) {
   .auth0-lock .auth0-lock-widget {
     opacity: 0;
     border-radius: 5px;
@@ -104,13 +111,6 @@
     -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
     -webkit-transition-delay: 0s;
     width: 300px;
-    margin: auto;
-  }
-}
-@media (min-width: 992px) {
-  .auth0-lock .auth0-lock-center {
-    vertical-align: middle;
-    display: table-cell;
     margin: auto;
   }
 }
@@ -363,10 +363,15 @@
   left: 0;
   right: 0;
   opacity: 0;
+  font-size: 18px;
 }
 .auth0-lock .auth0-lock-badge:before {
   content: "f";
+  transition: color 0.5s;
   color: rgba(255,255,255,0.4);
+}
+.auth0-lock .auth0-lock-badge:hover:before {
+  color: #eb5424;
 }
 .auth0-lock.opened .auth0-lock-header-bg .auth0-lock-header-bg-inner {
   opacity: 0.4;
