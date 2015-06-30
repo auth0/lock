@@ -202,20 +202,17 @@ breakpoint(point, value = 0)
     .auth0-lock-close
       background: white;
       border-radius: 100px;
-      height: 22px;
-      width: 22px;
+      height: 10px;
+      width: 10px;
       background: white;
       position: absolute;
       top: 14px;
       right: 14px;
-      box-shadow: 0 1px 1px rgba(0,0,0,.4);
+      box-shadow: 0 1px 3px rgba(0,0,0,.1);
       color: #333;
       z-index: 100;
-      &:before
-        content: "e";
-        font-size: 10px;
-        position: relative;
-        top: .4px;
+      border: 6px solid white;
+      cursor: pointer;
 
   .auth0-lock-header-welcome
     font-size: 22px;
@@ -370,6 +367,8 @@ breakpoint(point, value = 0)
     width: 100%;
     position: fixed;
     bottom: 0;
+    transition: background-color .2s ease-out;
+
     &:hover
       background: darken(#EA5323, 20%)
 

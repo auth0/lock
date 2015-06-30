@@ -142,21 +142,17 @@
 .auth0-lock .auth0-lock-header .auth0-lock-close {
   background: #fff;
   border-radius: 100px;
-  height: 22px;
-  width: 22px;
+  height: 10px;
+  width: 10px;
   background: #fff;
   position: absolute;
   top: 14px;
   right: 14px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   color: #333;
   z-index: 100;
-}
-.auth0-lock .auth0-lock-header .auth0-lock-close:before {
-  content: "e";
-  font-size: 10px;
-  position: relative;
-  top: 0.4px;
+  border: 6px solid #fff;
+  cursor: pointer;
 }
 .auth0-lock .auth0-lock-header-welcome {
   font-size: 22px;
@@ -314,6 +310,7 @@
   width: 100%;
   position: fixed;
   bottom: 0;
+  transition: background-color 0.2s ease-out;
 }
 .auth0-lock .auth0-lock-submit:hover {
   background: #c43e13;
