@@ -3,7 +3,6 @@
 
 // Breakpoints mixin
 breakpoint(point, value = 0)
-
   if point == "mobile"
     @media (min-width: 320px)
     	{block}
@@ -46,63 +45,38 @@ breakpoint(point, value = 0)
     to
       opacity: 1;
 
-@-webkit-keyframes shake {
-  0%, 100% {
+@keyframes shake
+  0%, 100%
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-  }
 
-  10%, 30%, 50%, 70%, 90% {
+  10%, 30%, 50%, 70%, 90%
     -webkit-transform: translate3d(-10px, 0, 0);
     transform: translate3d(-10px, 0, 0);
-  }
 
-  20%, 40%, 60%, 80% {
+  20%, 40%, 60%, 80%
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0);
-  }
-}
 
-@keyframes shake {
-  0%, 100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  10%, 30%, 50%, 70%, 90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-
-  20%, 40%, 60%, 80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-
-.shake {
+.shake
   -webkit-animation-name: shake;
   animation-name: shake;
-}
 
-@keyframes fadeInDown {
-  0% {
+@keyframes fadeInDown
+  0%
     opacity: 0;
     -webkit-transform: translate3d(0, -30%, 0);
     transform: translate3d(0, -30%, 0);
-  }
 
-  100% {
+  100%
     opacity: 1;
     -webkit-transform: none;
     transform: none;
-  }
-}
 
-.fadeInDown {
+
+.fadeInDown
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
-}
 
 .auth0-lock
   font-family: "Avenir", sans-serif;
@@ -174,21 +148,6 @@ breakpoint(point, value = 0)
       width: 300px;
       margin: auto;
 
-
-
-  &.opened
-    .auth0-lock-overlay
-      opacity: .9;
-      -webkit-transition: opacity .3s ease-in 0s;
-
-    .auth0-lock-widget
-      opacity: 1;
-      box-shadow: 0 0 40px 4px #111118;
-      -webkit-transform: translateY(0%) scale(1);
-      -webkit-transition: transform .6s, opacity .6s;
-      -webkit-transition-delay: .5s;
-
-
   .auth0-lock-header
     text-align: center;
     padding: 14px 14px 14px 14px;
@@ -217,13 +176,15 @@ breakpoint(point, value = 0)
       cursor: pointer;
 
   .auth0-lock-header-welcome
-    font-size: 22px;
-    // overflow: hidden;
+    font-size: 18px;
     position: relative;
+
+    img
+      display: block;
 
     .auth0-lock-header-logo
       max-width: 60px;
-      height: 50px;
+      height: 60px;
       margin: auto auto 10px auto;
 
     .auth0-lock-header-placeholder
@@ -240,10 +201,16 @@ breakpoint(point, value = 0)
       display: block;
       border-radius: 100px;
       margin: auto;
-      margin: auto auto 10px auto;
+      margin: auto auto 16px auto;
       margin-top: -30px;
       position: relative;
       box-shadow: 0 1px 2px rgba(0,0,0,.4)
+
+    .auth0-lock-firstname
+      font-size: 18px;
+
+    .auth0-lock-name
+      font-size: 22px;
 
   .auth0-lock-header-bg
     position: absolute;
@@ -256,9 +223,6 @@ breakpoint(point, value = 0)
     .auth0-lock-header-bg-inner
       content: " ";
       display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
       height: 100%;
       width: 100%;
       border-top-left-radius: 5px;
@@ -299,17 +263,16 @@ breakpoint(point, value = 0)
       margin: 0;
       text-align: center;
 
-      &.auth0-lock-tabs-current
-        background-color: #5C666F;
-        a
-          color white
-
       a
         padding: 6px 10px;
         display: block;
         text-decoration: none;
         color: #5C666F;
 
+      &.auth0-lock-tabs-current
+        background-color: #5C666F;
+        a
+          color white
 
   .auth0-lock-input-wrap
     border-radius: 3px;
@@ -437,6 +400,17 @@ breakpoint(point, value = 0)
         transition: all 1s ease 1s;
         &.auth0-lock-no-grayscale
           opacity: .7;
+
+    .auth0-lock-overlay
+      opacity: .9;
+      -webkit-transition: opacity .3s ease-in 0s;
+
+    .auth0-lock-widget
+      opacity: 1;
+      box-shadow: 0 0 40px 4px #111118;
+      -webkit-transform: translateY(0%) scale(1);
+      -webkit-transition: transform .6s, opacity .6s;
+      -webkit-transition-delay: .5s;
 
     .auth0-lock-badge
       -webkit-transform: translateY(0%)  scale(1);
