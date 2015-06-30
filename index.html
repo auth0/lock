@@ -62,104 +62,107 @@
 
 
 
-    <div class="auth0-lock" >
+    <div class="auth0-lock " >
       <div class="auth0-lock-overlay">
 
       </div>
 
-      <form class="auth0-lock-widget">
+      <div class="auth0-lock-center">
 
-        <div class="auth0-lock-header">
+        <form class="auth0-lock-widget">
 
+          <div class="auth0-lock-header">
 
-          <div class="auth0-lock-header-bg">
-            <div class="auth0-lock-header-bg-inner">
+            <div class="auth0-lock-header-bg">
+              <div class="auth0-lock-header-bg-inner"></div>
+            </div>
+
+            <a href="#" class="auth0-lock-close auth0-lock-icon"></a>
+
+            <div class="auth0-lock-header-welcome">
+
+              <img class="auth0-lock-header-logo" src="img/badge.svg" />
+
+              <img class="auth0-lock-header-avatar auth0-lock-hide" src="img/avatar.png" />
+
+              <div class="auth0-lock-name">Auth0</div>
+
+              <div class="auth0-lock-firstname auth0-lock-hide" >Welcome Ricardo!</div>
 
             </div>
+
           </div>
 
-          <a href="#" class="auth0-lock-close auth0-lock-icon"></a>
+          <div class="auth0-lock-content">
 
-          <div class="auth0-lock-header-welcome">
+            <ul class="auth0-lock-tabs">
+              <li class="auth0-lock-tabs-login auth0-lock-tabs-current"><a class="" href="">Login</a></li>
+              <li><a class="auth0-lock-tabs-signup" href="">Sign Up</a></li>
+            </ul>
 
-            <img class="auth0-lock-header-logo" src="img/badge.svg" />
+            <div class="auth0-lock-form auth0-lock-login">
+              <div class="auth0-lock-input-wrap auth0-lock-input-username">
+                <i class="auth0-lock-icon"></i>
+                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
+              </div>
 
-            <img class="auth0-lock-header-avatar auth0-lock-hide" src="img/avatar.png" />
+              <div class="auth0-lock-input-wrap auth0-lock-input-password">
+                <i class="auth0-lock-icon"></i>
+                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Password">
+              </div>
 
-            <div class="auth0-lock-name">Auth0</div>
+              <a href="#" class="auth0-lock-forgot-link">Don't remember your password?</a>
+            </div>
 
-            <div class="auth0-lock-firstname auth0-lock-hide" >Welcome Ricardo!</div>
+            <div class="auth0-lock-form auth0-lock-signup auth0-lock-hide">
+
+              <div class="auth0-lock-input-wrap auth0-lock-input-username">
+                <i class="auth0-lock-icon"></i>
+                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
+              </div>
+
+              <div class="auth0-lock-input-wrap auth0-lock-input-password">
+                <i class="auth0-lock-icon"></i>
+                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Create Password">
+              </div>
+
+              <small class="auth0-lock-terms">By signing up, you agree to our <a href="/terms" target="_new">terms of service</a> and <a href="/privacy" target="_new">privacy policy</a>.</small>
+
+            </div>
+            <!-- .auth0-lock-form.auth0-lock-signup -->
+
+
+            <div class="auth0-lock-form auth0-lock-forgot auth0-lock-hide">
+
+              <div class="auth0-lock-input-wrap auth0-lock-input-username">
+                <i class="auth0-lock-icon"></i>
+                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
+              </div>
+
+              <div class="auth0-lock-input-wrap auth0-lock-input-password">
+                <i class="auth0-lock-icon"></i>
+                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Create Password">
+              </div>
+
+              <small class="auth0-lock-terms">By signing up, you agree to our <a href="/terms" target="_new">terms of service</a> and <a href="/privacy" target="_new">privacy policy</a>.</small>
+
+            </div>
+            <!-- .auth0-lock-form.auth0-lock-forgot -->
 
           </div>
+          <!-- .auth0-lock-content -->
 
-        </div>
+          <button type="submit" class="auth0-lock-submit">
+            <i class="auth0-lock-icon"></i>
+          </button>
 
-        <div class="auth0-lock-content">
+          <a href="https://auth0.com/" target="_blank" class="auth0-lock-badge auth0-lock-icon"></a>
 
-          <ul class="auth0-lock-tabs">
-            <li class="auth0-lock-tabs-login auth0-lock-tabs-current"><a class="" href="">Login</a></li>
-            <li><a class="auth0-lock-tabs-signup" href="">Sign Up</a></li>
-          </ul>
+        </form>
+        <!-- .auth0-lock-widget  -->
+      </div>
 
-          <div class="auth0-lock-form auth0-lock-login">
-            <div class="auth0-lock-input-wrap auth0-lock-input-username">
-              <i class="auth0-lock-icon"></i>
-              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
-            </div>
-
-            <div class="auth0-lock-input-wrap auth0-lock-input-password">
-              <i class="auth0-lock-icon"></i>
-              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Password">
-            </div>
-
-            <a href="#" class="auth0-lock-forgot-link">Don't remember your password?</a>
-          </div>
-
-          <div class="auth0-lock-form auth0-lock-signup auth0-lock-hide">
-
-            <div class="auth0-lock-input-wrap auth0-lock-input-username">
-              <i class="auth0-lock-icon"></i>
-              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
-            </div>
-
-            <div class="auth0-lock-input-wrap auth0-lock-input-password">
-              <i class="auth0-lock-icon"></i>
-              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Create Password">
-            </div>
-
-            <small class="auth0-lock-terms">By signing up, you agree to our <a href="/terms" target="_new">terms of service</a> and <a href="/privacy" target="_new">privacy policy</a>.</small>
-
-          </div>
-          <!-- .auth0-lock-form.auth0-lock-signup -->
-
-
-          <div class="auth0-lock-form auth0-lock-forgot auth0-lock-hide" style="display: none">
-
-            <div class="auth0-lock-input-wrap auth0-lock-input-username">
-              <i class="auth0-lock-icon"></i>
-              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
-            </div>
-
-            <div class="auth0-lock-input-wrap auth0-lock-input-password">
-              <i class="auth0-lock-icon"></i>
-              <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Create Password">
-            </div>
-
-            <small class="auth0-lock-terms">By signing up, you agree to our <a href="/terms" target="_new">terms of service</a> and <a href="/privacy" target="_new">privacy policy</a>.</small>
-
-          </div>
-          <!-- .auth0-lock-form.auth0-lock-forgot -->
-
-        </div>
-        <!-- .auth0-lock-content -->
-
-        <button type="submit" class="auth0-lock-submit">
-          <i class="auth0-lock-icon"></i>
-        </button>
-
-      </form>
-      <!-- .auth0-lock-widget  -->
-      <a href="https://auth0.com/" target="_blank" class="auth0-lock-badge auth0-lock-icon"></a>
+      <!-- .auth0-lock-center -->
     </div>
     <!--.auth0-lock -->
 
