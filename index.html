@@ -41,7 +41,7 @@
             if (this.value == "rickyrauch@gmail.com") {
                 $(".auth0-lock-header-logo").hide();
                 $(".auth0-lock-header-avatar").removeClass("auth0-lock-hide").addClass('animated fadeInDown');
-                $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("no-filter");
+                $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("auth0-lock-no-grayscale");
                 $('.auth0-lock-firstname').removeClass("auth0-lock-hide");
                 $('.auth0-lock-name').hide();
             }
@@ -170,7 +170,6 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://erinbell.org/BLUR/demo/javascript/controller/stackblur.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
   </body>
 </html>

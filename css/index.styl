@@ -162,7 +162,7 @@ breakpoint(point, value = 0)
       border-radius: 5px;
       box-shadow: 0 0 0 transparent;
       -webkit-transition: transform .4s, opacity .7s;
-      -webkit-transform: translateY(130%) scale(.8);
+      -webkit-transform: translateY(100%) scale(.8);
       -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
       -webkit-transition-delay: 0s;
       width: 300px;
@@ -183,7 +183,7 @@ breakpoint(point, value = 0)
       opacity: 1;
       box-shadow: 0 0 40px 4px #111118;
       -webkit-transform: translateY(0%) scale(1);
-      -webkit-transition: transform .3s, opacity .3s;
+      -webkit-transition: transform .6s, opacity .6s;
       -webkit-transition-delay: .5s;
 
 
@@ -270,7 +270,7 @@ breakpoint(point, value = 0)
       opacity: 0;
       transition: all 0s ease 0s;
 
-      &.no-filter
+      &.auth0-lock-no-grayscale
         -webkit-filter: blur(80px);
         background: url('../img/badge.svg')   center   no-repeat;
         background-position: center;
@@ -427,8 +427,10 @@ breakpoint(point, value = 0)
   &.opened
     .auth0-lock-header-bg
       .auth0-lock-header-bg-inner
-        opacity: .7;
+        opacity: .4;
         transition: all 1s ease 1s;
+        &.auth0-lock-no-grayscale
+          opacity: .7;
 
     .auth0-lock-badge
       -webkit-transform: translateY(0%)  scale(1);
