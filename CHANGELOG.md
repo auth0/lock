@@ -1,3 +1,48 @@
+## [7.5.7] - 2015-06-02
+
+### Fixed
+
+- [] Fix issue with ie9 inside div no render of labels (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/60d81156d705666918a5219614388fffc3ecbc82
+- [] Merge pull request #180 from nicosabena/patch-1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/11f4d3010fd8faf56df382575cfe6f276e409109
+- [] Fix typos. (`nicosabena`)
+  https://github.com/auth0/lock/commit/df1784f276f286888a685715f8836c749bedc4ce
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/e0858c0097ea9998fe0e0a049c647f199a6da1ed
+- [] Release: 7.5.6 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9cc2321eb771ec74acde2dcb2f1e3eb375d104b3
+- [] Fix add zh-TW to i18n (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8a7e77a83f23444c5eb2a0ba78fc6f3c8f19382d
+- [] Merge pull request #174 from clodeku/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/5b366033b9a86b4637f91631f51b93f02d5a32cd
+- [] Merge pull request #177 from ivancevich/webpack-example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/e69363fbad64b8dc982cd163038120a94f19ecf5
+- [] Merge pull request #178 from ivancevich/move-example-to-support (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/51820b16fee748e7f0bcdd5fa6c7c827a22f542a
+- [] Add examples to readme (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/9fb2dd5b4c4afa422bed8a6650b5e8233c596ea8
+- [] Move `example` to `support/development-demo` (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/b195409ae84ee85d20a57132fbabccf21a513a64
+- [] Using webpack-dev-server CLI (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/745b75b797af7b9e4ddd6ba1ba831589f15e8424
+- [] Merge pull request #1 from mgonto/webpack-example (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/395af1d4626f706f2524aa8d4a38ce5a3a7913ac
+- [] Add webpack-dev-server (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/9aef6ab83590783b26b0d6912861aef01ad0f5c8
+- [] Added readme (`Martin Gontovnikas`)
+  https://github.com/auth0/lock/commit/994bfcbc04ca814a0b173c3974672096999916e1
+- [] Lock webpack example (`JC Ivancevich`)
+  https://github.com/auth0/lock/commit/5dcdf6e0166979a09c1f21bfce6f8f40e960397a
+- [] Update bower.json (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/8baa4a5022a512c138b779875f08803162e26859
+- [] Adding ignores to bower.json (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/e3dc654d6c2e27cb09cee6e80bbf5ebfb1c431cb
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/481382c7237d51cbb129a783b68b5ebdcb52ddbe
+- [] Create zh-TW.json (`Clode Ku`)
+  https://github.com/auth0/lock/commit/49eb28346d2c5bf5b0bd46777a829d791c1bea91
+
 ## [7.5.6] - 2015-06-02
 
 ### Added
