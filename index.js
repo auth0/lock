@@ -372,19 +372,21 @@ Auth0Lock.prototype.exhibit = function() {
   this.query('div.a0-overlay').addClass('a0-active');
   this.query('.a0-panel.a0-onestep').addClass('a0-active');
 
-  if (!options.container) {
-    bonzo(document.body).addClass('a0-lock-open');
-  } else {
-    this.query('.a0-active').removeClass('a0-overlay');
-  }
-
-  this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
-
   this.query('.a0-overlay')
     .toggleClass('a0-no-placeholder-support', !placeholderSupported);
 
+  this.query('.a0-popup .a0-invalid').removeClass('a0-invalid');
+
   // buttons actions
   this.query('.a0-onestep a.a0-close').a0_on('click', bind(this.oncloseclick, this));
+
+  if (!options.container) {
+    // hides all non-lock elements when lock is open
+    bonzo(document.body).addClass('a0-lock-open');
+  } else {
+    // remove overlay when render inside a div
+    this.query('.a0-active').removeClass('a0-overlay');
+  }
 
   // close popup with ESC key
   if (options.closable) {
