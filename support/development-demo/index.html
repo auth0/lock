@@ -93,6 +93,7 @@
               <li><a id="login-button-inside-container"><i></i>Login (inside a DIV)</a></li>
               <li><a id="login-button-all"><i></i>Login (all languages)</a></li>
               <li><a id="signup-button-footer-text"><i></i>Show SignUp (footer text)</a></li>
+              <li><a id="login-rule-fail-message"><i></i>Login fail with rule message</a></li>
             </ul>
           </div>
         </div>
@@ -129,6 +130,10 @@
             mdocs: {
               clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
               domain: 'mdocs.auth0.com'
+            },
+            ruleFail: {
+              clientID: 'jUfYTdrYO6whDXiqqnM2EuB479Y6UNEO',
+              domain: 'douce1.myauth0.com'
             },
             free: {
               clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
@@ -409,6 +414,21 @@
               callbackURL: window.location.href,
               responseType: 'token',
               dict: dict
+            });
+          });
+
+          $('#login-rule-fail-message').on('click', function() {
+            var cid = credentials.ruleFail.clientID;
+            var domain = credentials.ruleFail.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.show({
+              sso: false,
+              connections: ['always-fail-test']
+            }, function (err, profile, id_token) {
+              debugger;
             });
           });
 
