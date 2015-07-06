@@ -73,7 +73,7 @@ export default class SignInContent extends React.Component {
 
         <SignInErrorMessage error={this.props.lock.get("error")}/>
 
-        <div class="auth0-lock-form auth0-lock-login">
+        <div className="auth0-lock-form auth0-lock-login">
           <InputWrap name="email" isValid={validEmail}>
             <input type="text" name="email" className="auth0-lock-input" placeholder="Email" onChange={this._handleEmailChange.bind(this)} value={this.props.lock.get("email")} autoFocus={autoFocusEmail} onInput={this._handleEmailInput.bind(this)}/>
           </InputWrap>

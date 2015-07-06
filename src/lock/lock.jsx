@@ -2,11 +2,15 @@ import React from 'react';
 import Widget from './widget';
 
 export default class Lock extends React.Component {
+  componentDidMount() {
+    this.refs.lock.getDOMNode().className += ' opened';
+  }
+
   render() {
     var overlay = this.props.lock.getIn(["showOptions", "container"]) ?
       null : <div className="auth0-lock-overlay"/>;
     return (
-      <div className="auth0-lock opened">
+      <div className="auth0-lock" ref="lock">
         {overlay}
         <div className="auth0-lock-center">
           <Widget lock={this.props.lock}/>

@@ -26,7 +26,9 @@ export default class Header extends React.Component {
       closeButton = <span dangerouslySetInnerHTML={{__html: svgTag}} />;
     }
 
-    var name = this.props.email && this.props.gravatarData && this.props.gravatarData.get("email") === this.props.email && this.props.gravatarData.get("name");
+    let gravatarShowing = this.props.email && this.props.gravatarData && this.props.gravatarData.get("email") === this.props.email;
+
+    var name = gravatarShowing && this.props.gravatarData.get("name");
     var welcome;
     if (name) {
       name = "Welcome " + name + "!";
@@ -35,10 +37,16 @@ export default class Header extends React.Component {
       welcome = <div className="auth0-lock-name">Auth0</div>;
     }
 
+    let bgInnerAttrs = {className: 'auth0-lock-header-bg-inner'};
+    if (gravatarShowing) {
+      bgInnerAttrs.className += ' auth0-lock-no-grayscale';
+      bgInnerAttrs.style = {backgroundImage: 'url(img/avatar.png)'};
+    }
+
     return (
       <div className="auth0-lock-header">
         <div className="auth0-lock-header-bg">
-          <div class="auth0-lock-header-bg-inner"/>
+          <div {...bgInnerAttrs} />
         </div>
 
         {closeButton}
@@ -47,7 +55,6 @@ export default class Header extends React.Component {
           {icon}
           {welcome}
         </div>
-        {/* <div className="auth0-lock-header-logo-blurry"/> */}
       </div>
     );
   }
@@ -60,5 +67,4 @@ Header.propTypes = {
   icon: React.PropTypes.string,
   lockID: React.PropTypes.string,
   showCloseButton: React.PropTypes.bool
-
 };
