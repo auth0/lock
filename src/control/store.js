@@ -2,7 +2,8 @@ import { EventEmitter } from 'events';
 import Immutable, { Map } from 'immutable';
 import { ActionTypes, LockStates, Events } from './constants';
 import Client from '../client/client';
-
+import EmailCredentials from '../lock/credentials/email';
+import PasswordCredentials from '../lock/credentials/password';
 import Dispatcher from './dispatcher';
 
 export default class Store extends EventEmitter {
@@ -30,6 +31,34 @@ export default class Store extends EventEmitter {
           );
           this.emitChange();
           break;
+        case ActionTypes.INPUT_EMAIL:
+          if (!this._state.getIn(["locks", action.lockID, "validations", "email"])) {
+            if (EmailCredentials.validateEmail(action.email)) {
+              this._state = this._state.setIn(
+                ["locks", action.lockID, "validations", "email"],
+                true
+              );
+              if (this._state.getIn(["locks", action.lockID, "validations", "password"])) {
+                this._state = this._state.deleteIn(["locks", action.lockID, "error"]);
+              }
+              this.emitChange();
+            }
+          }
+          break;
+          case ActionTypes.INPUT_PASSWORD:
+            if (!this._state.getIn(["locks", action.lockID, "validations", "password"])) {
+              if (PasswordCredentials.validatePassword(action.password)) {
+                this._state = this._state.setIn(
+                  ["locks", action.lockID, "validations", "password"],
+                  true
+                );
+                if (this._state.getIn(["locks", action.lockID, "validations", "email"])) {
+                  this._state = this._state.deleteIn(["locks", action.lockID, "error"]);
+                }
+                this.emitChange();
+              }
+            }
+            break;
         case ActionTypes.FAILED_SIGN_IN:
           this._state = this._state.setIn(
             ["locks", action.lockID, "state"],
@@ -59,6 +88,9 @@ export default class Store extends EventEmitter {
           this._state = this._state.setIn(
             ["locks", action.lockID, "validations"],
             Immutable.fromJS(action.validations)
+          ).setIn(
+            ["locks", action.lockID, "error"],
+            Map({code: -1, description: "Invalidad email and/or password format."})
           );
           this.emitChange();
           break;
@@ -89,6 +121,28 @@ export default class Store extends EventEmitter {
           // TODO probably need to acknolwedge this error in the client data
           this.emitChange();
           break;
+        case ActionTypes.RECEIVE_GRAVATAR:
+          // TODO store all gravatars instead of making this check
+          if (this._state.getIn(["locks", action.lockID, "email"]) === action.email) {
+            this._state = this._state.setIn(
+              ["locks", action.lockID, "gravatar"],
+              Map({email: action.email, url: action.url, name: action.name})
+            );
+            // TODO probably need to acknolwedge this error in the client data
+            this.emitChange();
+          }
+          break;
+        case ActionTypes.RECEIVE_GRAVATAR_ERROR:
+          // TODO store all gravatars instead of making this check
+          if (this._state.getIn(["locks", action.lockID, "email"]) === action.email) {
+            this._state = this._state.setIn(
+              ["locks", action.lockID, "gravatar"],
+              Map({email: "", url: "", name: ""})
+            );
+            // TODO probably need to acknolwedge this error in the client data
+            this.emitChange();
+          }
+          break;
         case ActionTypes.SETUP_LOCK:
           this._state = this._state.setIn(
             ['locks', action.lockID],
@@ -99,6 +153,7 @@ export default class Store extends EventEmitter {
               options: action.options,
               email: "",
               password: "",
+              gravatar: Map({email: "", url: ""}),
               state: LockStates.WAITING_CLIENT_CONFIG,
               show: false,
               showOptions: Map({}),
@@ -127,11 +182,10 @@ export default class Store extends EventEmitter {
           this._state = this._state.setIn(
             ["locks", action.lockID, "state"],
             LockStates.SIGNING_IN
-          );
-          this._state = this._state.setIn(
+          ).setIn(
             ["locks", action.lockID, "validations"],
             Map({email: true, password: true})
-          );
+          ).deleteIn(["locks", action.lockID, "error"]);
           this.emitChange();
           break;
         case ActionTypes.SUCCESSFUL_SIGN_IN:

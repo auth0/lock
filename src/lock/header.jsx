@@ -11,7 +11,7 @@ export default class Header extends React.Component {
   render() {
     var icon = <div className="auth0-lock-header-logo"/>;
     if (this.props.gravatar) {
-      icon = <Avatar email={this.props.email}/>;
+      icon = <Avatar email={this.props.email} gravatar={this.props.gravatarData}/>;
     } else if (this.props.icon) {
       icon = (
         <div className="auth0-lock-header-logo-custom">
@@ -25,6 +25,15 @@ export default class Header extends React.Component {
       closeButton = <a href="#" className="auth0-lock-close auth0-lock-icon" onClick={this._handleClose.bind(this)}/>;
     }
 
+    var name = this.props.email && this.props.gravatarData && this.props.gravatarData.get("email") === this.props.email && this.props.gravatarData.get("name");
+    var welcome;
+    if (name) {
+      name = "Welcome " + name + "!";
+      welcome = <div className="auth0-lock-firstname">{name}</div>;
+    } else {
+      welcome = <div className="auth0-lock-name">Auth0</div>;
+    }
+
     return (
       <div className="auth0-lock-header">
         <div className="auth0-lock-header-bg"/>
@@ -32,10 +41,7 @@ export default class Header extends React.Component {
 
         <div className="auth0-lock-header-welcome">
           {icon}
-          {/* TODO instead of 'Auth0' we should be displaying 'sign in' and so on */}
-          <div className="auth0-lock-name">Auth0</div>
-          {/* TODO show a proper welcome message */}
-          <div className="auth0-lock-firstname auth0-lock-hide">Welcome Ricardo!</div>
+          {welcome}
         </div>
         {/* <div className="auth0-lock-header-logo-blurry"/> */}
       </div>
@@ -46,6 +52,7 @@ export default class Header extends React.Component {
 Header.propTypes = {
   email: React.PropTypes.string,
   gravatar: React.PropTypes.bool,
+  gravatarData: React.PropTypes.object,
   icon: React.PropTypes.string,
   lockID: React.PropTypes.string,
   showCloseButton: React.PropTypes.bool

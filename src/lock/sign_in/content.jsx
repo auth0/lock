@@ -37,6 +37,16 @@ export default class SignInContent extends React.Component {
     LockActionCreators.changePassword(lockID, password);
   }
 
+  _handleEmailInput() {
+    var lockID = this.props.lock.get('id'), email = event.target.value;
+    LockActionCreators.inputEmail(lockID, email);
+  }
+
+  _handlePasswordInput() {
+    var lockID = this.props.lock.get('id'), email = event.target.value;
+    LockActionCreators.inputPassword(lockID, email);    
+  }
+
   _handleResetAction(event) {
     event.preventDefault();
     alert('not implemented');
@@ -64,11 +74,11 @@ export default class SignInContent extends React.Component {
         <SignInErrorMessage error={this.props.lock.get("error")}/>
 
         <InputWrap name="email" isValid={validEmail}>
-          <input type="text" name="email" className="auth0-lock-input" placeholder="Email" onChange={this._handleEmailChange.bind(this)} value={this.props.lock.get("email")} autoFocus={autoFocusEmail}/>
+          <input type="text" name="email" className="auth0-lock-input" placeholder="Email" onChange={this._handleEmailChange.bind(this)} value={this.props.lock.get("email")} autoFocus={autoFocusEmail} onInput={this._handleEmailInput.bind(this)}/>
         </InputWrap>
 
         <InputWrap name="password" isValid={validPassword}>
-          <input type="password" name="password" className="auth0-lock-input" placeholder="Password" onChange={this._handlePasswordChange.bind(this)} value={this.props.lock.get("password")}/>
+          <input type="password" name="password" className="auth0-lock-input" placeholder="Password" onChange={this._handlePasswordChange.bind(this)} value={this.props.lock.get("password")} onInput={this._handlePasswordInput.bind(this)}/>
         </InputWrap>
 
         {resetAction}
