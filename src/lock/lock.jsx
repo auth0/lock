@@ -8,8 +8,9 @@ export default class Lock extends React.Component {
     return (
       <div className="auth0-lock opened">
         {overlay}
-        <Widget lock={this.props.lock}/>
-        <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
+        <div className="auth0-lock-center">
+          <Widget lock={this.props.lock}/>
+        </div>
       </div>
     );
   }

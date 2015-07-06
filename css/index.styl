@@ -3,7 +3,6 @@
 
 // Breakpoints mixin
 breakpoint(point, value = 0)
-
   if point == "mobile"
     @media (min-width: 320px)
     	{block}
@@ -46,46 +45,38 @@ breakpoint(point, value = 0)
     to
       opacity: 1;
 
-@keyframes shake {
-  0%, 100% {
-    // -webkit-transform: translate3d(0, 0, 0);
-    // transform: translate3d(0, 0, 0);
-    -webkit-perspective: 100px;
-  }
+@keyframes shake
+  0%, 100%
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
 
-  10%, 30%, 50%, 70%, 90% {
-    -webkit-perspective: 300px;
-  }
+  10%, 30%, 50%, 70%, 90%
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
 
-  20%, 40%, 60%, 80% {
-    -webkit-perspective: 500px;
-  }
-}
+  20%, 40%, 60%, 80%
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
 
-.shake {
+.shake
   -webkit-animation-name: shake;
   animation-name: shake;
-}
 
-@keyframes fadeInDown {
-  0% {
+@keyframes fadeInDown
+  0%
     opacity: 0;
     -webkit-transform: translate3d(0, -30%, 0);
     transform: translate3d(0, -30%, 0);
-  }
 
-  100% {
+  100%
     opacity: 1;
     -webkit-transform: none;
     transform: none;
-  }
-}
 
-.fadeInDown {
+
+.fadeInDown
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
-}
-
 
 .auth0-lock
   font-family: "Avenir", sans-serif;
@@ -94,6 +85,15 @@ breakpoint(point, value = 0)
   transition: opacity 0s;
   transition-delay: 2s;
   pointer-events: none;
+  display: table;
+
+  +breakpoint("desktop")
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    right: 0;
 
   &.opened
     opacity: 1;
@@ -105,14 +105,6 @@ breakpoint(point, value = 0)
 
   input:focus
     outline: none;
-
-  +breakpoint("desktop")
-    width: 300px;
-    border-radius: 5px;
-    position: fixed;
-    left: 50%;
-    top: 200px;
-    margin-left: -150px;
 
   .auth0-lock-overlay
     +breakpoint("desktop")
@@ -138,35 +130,31 @@ breakpoint(point, value = 0)
   .auth0-lock-form.auth0-lock-hide
     display: none;
 
+  .auth0-lock-center
+    +breakpoint("desktop")
+      vertical-align: middle;
+      display: table-cell;
+      margin: auto;
+
   .auth0-lock-widget
     +breakpoint("desktop")
       opacity: 0;
       border-radius: 5px;
       box-shadow: 0 0 0 transparent;
       -webkit-transition: transform .4s, opacity .7s;
-      -webkit-transform: translateY(80%) scale(.8);
+      -webkit-transform: translateY(100%) scale(.8);
       -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
       -webkit-transition-delay: 0s;
-
-  &.opened
-    .auth0-lock-overlay
-      opacity: .9;
-      -webkit-transition: opacity .3s ease-in 0s;
-    .auth0-lock-widget
-      opacity: 1;
-      box-shadow: 0 0 40px 4px #111118;
-      -webkit-transform: translateY(0%) scale(1);
-      -webkit-transition: transform 1s, opacity 1.3s;
-      -webkit-transition-delay: .5s;
-
+      width: 300px;
+      margin: auto;
 
   .auth0-lock-header
     text-align: center;
-    padding: 14px;
-    background: #fff;
+    padding: 14px 14px 14px 14px;
     color: #333;
     position: relative;
-    height: 80px;
+    background: #fff;
+    height: 100px
 
     +breakpoint(mobile-landscape)
       border-top-right-radius: 5px;
@@ -175,31 +163,28 @@ breakpoint(point, value = 0)
     .auth0-lock-close
       background: white;
       border-radius: 100px;
-      height: 22px;
-      width: 22px;
+      height: 10px;
+      width: 10px;
       background: white;
       position: absolute;
       top: 14px;
       right: 14px;
-      box-shadow: 0 1px 1px rgba(0,0,0,.4);
+      box-shadow: 0 1px 3px rgba(0,0,0,.1);
       color: #333;
       z-index: 100;
-      &:before
-        content: "e";
-        font-size: 10px;
-        position: relative;
-        top: .4px;
+      border: 6px solid white;
+      cursor: pointer;
 
   .auth0-lock-header-welcome
-    font-size: 22px;
-    // overflow: hidden;
+    font-size: 18px;
     position: relative;
 
+    img
+      display: block;
+
     .auth0-lock-header-logo
-      width: 60px;
+      max-width: 60px;
       height: 60px;
-      background: url('../img/badge.svg') center no-repeat
-      background-size: 100% 100%;
       margin: auto auto 10px auto;
 
     .auth0-lock-header-placeholder
@@ -216,25 +201,42 @@ breakpoint(point, value = 0)
       display: block;
       border-radius: 100px;
       margin: auto;
-      margin: auto auto 10px auto;
+      margin: auto auto 16px auto;
       margin-top: -30px;
       position: relative;
+      box-shadow: 0 1px 2px rgba(0,0,0,.4)
+
+    .auth0-lock-firstname
+      font-size: 18px;
+
+    .auth0-lock-name
+      font-size: 22px;
 
   .auth0-lock-header-bg
-    background:  url('../img/badge.svg') center no-repeat
-    background-size: 100%;
-    position: absolute
-    z-index: 0
+    position: absolute;
+    height: 130px;
+    width: 300px;
+    overflow: hidden;
     top: 0;
-    bottom: 0
-    content: " ";
     left: 0;
-    right: 0;
-    -webkit-filter: grayscale(1) blur(50px);
-    opacity: .5
-    // display: none;
-    &.no-filter
-      -webkit-filter: blur(50px);
+    pointer-events: none;
+    .auth0-lock-header-bg-inner
+      content: " ";
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      -webkit-filter: blur(40px) grayscale(1);
+      background: #fff url('../img/badge.svg')   center  no-repeat;
+      background-size:  300px ;
+      opacity: 0;
+      transition: all 0s ease 0s;
+
+      &.auth0-lock-no-grayscale
+        -webkit-filter: blur(100px);
+        background-position: center;
+        background-size:  500px ;
 
   .auth0-lock-content
     padding: 30px 40px;
@@ -248,6 +250,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-tabs
     border: 1px solid #5C666F;
+    background: white;
     padding: 0;
     margin: 0 0 30px 0;
     border-radius: 3px;
@@ -264,17 +267,16 @@ breakpoint(point, value = 0)
       margin: 0;
       text-align: center;
 
-      &.auth0-lock-tabs-current
-        background-color: #5C666F;
-        a
-          color white
-
       a
         padding: 6px 10px;
         display: block;
         text-decoration: none;
         color: #5C666F;
 
+      &.auth0-lock-tabs-current
+        background-color: #5C666F;
+        a
+          color white
 
   .auth0-lock-input-wrap
     border-radius: 3px;
@@ -341,8 +343,15 @@ breakpoint(point, value = 0)
     width: 100%;
     position: fixed;
     bottom: 0;
+    transition: background-color .2s ease-in-out;
+    i
+      transition: all .2s ease-in-out;
+
     &:hover
       background: darken(#EA5323, 20%)
+
+      i
+        transform: scale(1.05)
 
     &:focus
       outline: none;
@@ -387,6 +396,8 @@ breakpoint(point, value = 0)
     text-align: center;
     margin: 0 0 14px 0;
     color: #D84132;
+    -webkit-animation: fadeIn 0.7s;
+    animation: fadeIn 0.7s;
 
   .auth0-lock-badge
     display: block;
@@ -395,18 +406,43 @@ breakpoint(point, value = 0)
     font-size: 20px;
     position: relative;
     z-index: -1;
-    -webkit-transition: transform 1.2s ease 1.8s, opacity 1.2s ease 1.8s;
+    -webkit-transition: transform 4s ease 1.8s, opacity 1.2s ease 1.8s;
     -webkit-transform: translateY(-200%) scale(.8);
-    transition: transform .2s ease 1s, opacity .2s ease 0s;
+    transition: transform .5s ease 1s, opacity .2s ease 0s;
     transform: translateY(-200%) scale(.8);
-
+    position: absolute;
+    left: 0;
+    right: 0;
     opacity: 0;
-
+    font-size: 18px;
     &:before
       content: "f"
+      transition: color .5s;
       color: rgba(255,255,255,.4)
 
+    &:hover
+      &:before
+        color: #EB5424
+
   &.opened
+    .auth0-lock-header-bg
+      .auth0-lock-header-bg-inner
+        opacity: .4;
+        transition: all 1s ease 1s;
+        &.auth0-lock-no-grayscale
+          opacity: .7;
+
+    .auth0-lock-overlay
+      opacity: .9;
+      -webkit-transition: opacity .3s ease-in 0s;
+
+    .auth0-lock-widget
+      opacity: 1;
+      box-shadow: 0 0 40px 4px #111118;
+      -webkit-transform: translateY(0%) scale(1);
+      -webkit-transition: transform .6s, opacity .6s;
+      -webkit-transition-delay: .5s;
+
     .auth0-lock-badge
       -webkit-transform: translateY(0%)  scale(1);
       -webkit-transition-delay: 0;

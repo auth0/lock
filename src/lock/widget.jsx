@@ -40,6 +40,7 @@ export default class Widget extends React.Component {
 
         <Content lock={this.props.lock}/>
         {submit}
+        <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
       </form>
     );
   }
