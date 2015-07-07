@@ -9,6 +9,7 @@ require('./lib/insert-css');
  */
 
 var bonzo = require('bonzo');
+var bean = require('bean');
 var _ = require('underscore');
 var debug = require('debug')('auth0-lock');
 var Auth0 = require('auth0-js');
@@ -804,6 +805,12 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
 
   this.query('.a0-mode-container').html(el);
   this.emit('%s ready'.replace('%s', pname));
+  
+  // When navigating to a different panel, clear the previous panel history.
+  // The signin panel will handle this inside the panel.
+  if (pname !== 'signin') {
+    this._clearPreviousPanel();
+  }
 };
 
 /**
@@ -931,6 +938,21 @@ Auth0Lock.prototype._focusError = function(input, message) {
   if (!message) return;
   input.parent()
     .append($.create('<span class="a0-error-message">' + message + '</span>'));
+};
+
+/**
+ * Set the email address in the current panel if possible.
+ *
+ * @param {String} email
+ * @private
+ */
+
+Auth0Lock.prototype._setEmail = function(email) {
+  var email_input = this.query('input[name=email]');
+  if (email_input && email_input.length === 1) {
+    email_input.val(email);
+    bean.fire(email_input[0], 'input');
+  }
 };
 
 /**
@@ -1303,6 +1325,40 @@ Auth0Lock.prototype.focusInput = function() {
   } catch(err) {}
 
   return this;
+};
+
+/**
+ * Set the previous panel.
+ * This value is used when returning back from the HRD/SSO state.
+ *
+ * @param {String} panelName
+ * @public
+ */
+
+Auth0Lock.prototype._setPreviousPanel = function (panelName) {
+  this._previousPanel = panelName;
+};
+
+/**
+ * Get the previous panel.
+ * This value is used when returning back from the HRD/SSO state.
+ *
+ * @return {String}
+ * @public
+ */
+
+Auth0Lock.prototype._getPreviousPanel = function () {
+  return this._previousPanel;
+};
+
+/**
+ * Clear the previous panel, to prevent infinite redirects to the previous panel.
+ *
+ * @public
+ */
+
+Auth0Lock.prototype._clearPreviousPanel = function () {
+  this._setPreviousPanel(null);
 };
 
 /**
