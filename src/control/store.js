@@ -226,7 +226,8 @@ export default class Store extends EventEmitter {
     const gravatar = this._state.getIn(["gravatars", lock.get("email")]);
 
     let result = lock.set("client", client);
-    return gravatar ? result.set("gravatar", gravatar) : result;
+    return gravatar && lock.getIn(["showOptions", "gravatar"]) ?
+      result.set("gravatar", gravatar) : result;
   }
 
   getLocks() {
