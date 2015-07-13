@@ -3,7 +3,7 @@ import Content from './content';
 import LockActionCreators from './action_creators';
 import { LockStates } from '../control/constants';
 import SubmitButton from './submit_button';
-import Header from './header';
+import Header from '../header/header';
 import EmailCredentials from './credentials/email';
 import PasswordCredentials from './credentials/password';
 
