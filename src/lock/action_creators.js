@@ -1,7 +1,7 @@
 import Dispatcher from '../control/dispatcher';
 import { ActionTypes } from '../control/constants';
 import LockWebAPI from './web_api';
-import Gravatar from '../gravatar/index';
+import * as Gravatar from '../gravatar/index';
 
 export default {
   setupLock: function(lockID, clientID, domain, options) {
@@ -23,10 +23,24 @@ export default {
       email: email
     });
 
-    Gravatar.fetch(
+    Gravatar.profile(
       email,
-      (email, url, name) => { this.receiveGravatar(lockID, email, url, name) },
-      (email, url) => { this.receiveGravatarError(lockID, email, url) }
+      (email, entry) => {
+        this.receiveGravatarDisplayName(email, entry.displayName);
+      },
+      (email) => {
+        this.receiveGravatarDisplayNameError(email);
+      }
+    );
+
+    Gravatar.img(
+      email,
+      (email, img) => {
+        this.receiveGravatarImage(email, img.src);
+      },
+      (email) => {
+        this.receiveGravatarImageError(email);
+      }
     );
   },
 
@@ -102,24 +116,33 @@ export default {
     });
   },
 
-  receiveGravatar: function(lockID, email, url, name) {
-    console.log('ok', lockID, email, url, name);
+  receiveGravatarDisplayName: function(email, displayName) {
     Dispatcher.dispatch({
-      type: ActionTypes.RECEIVE_GRAVATAR,
-      lockID: lockID,
+      type: ActionTypes.RECEIVE_GRAVATAR_DISPLAY_NAME,
       email: email,
-      url: url,
-      name: name
+      displayName: displayName
     });
   },
 
-  receiveGravatarError: function(lockID, email, url) {
+  receiveGravatarDisplayNameError: function(email) {
     Dispatcher.dispatch({
-      type: ActionTypes.RECEIVE_GRAVATAR_ERROR,
-      lockID: lockID,
+      type: ActionTypes.RECEIVE_GRAVATAR_DISPLAY_NAME_ERROR,
+      email: email
+    });
+  },
+
+  receiveGravatarImage: function(email, url) {
+    Dispatcher.dispatch({
+      type: ActionTypes.RECEIVE_GRAVATAR_IMAGE,
       email: email,
       url: url
     });
-  }
+  },
 
+  receiveGravatarImageError: function(email) {
+    Dispatcher.dispatch({
+      type: ActionTypes.RECEIVE_GRAVATAR_IMAGE_ERROR,
+      email: email
+    });
+  }
 }

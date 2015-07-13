@@ -9,7 +9,7 @@ import Dispatcher from './dispatcher';
 export default class Store extends EventEmitter {
   constructor() {
     super();
-    this._state = Map({clients: Map(), locks: Map()});
+    this._state = Map({clients: Map(), locks: Map(), gravatars: Map()});
     Dispatcher.register((action) => {
       // TOOD maybe move this thing out of the constructor?
       switch(action.type) {
@@ -121,28 +121,26 @@ export default class Store extends EventEmitter {
           // TODO probably need to acknolwedge this error in the client data
           this.emitChange();
           break;
-        case ActionTypes.RECEIVE_GRAVATAR:
-          // TODO store all gravatars instead of making this check
-          if (this._state.getIn(["locks", action.lockID, "email"]) === action.email) {
-            this._state = this._state.setIn(
-              ["locks", action.lockID, "gravatar"],
-              Map({email: action.email, url: action.url, name: action.name})
-            );
-            // TODO probably need to acknolwedge this error in the client data
-            this.emitChange();
-          }
+        case ActionTypes.RECEIVE_GRAVATAR_DISPLAY_NAME:
+          this._state = this._state.setIn(
+            ["gravatars", action.email, "displayName"],
+            action.displayName
+          );
+          this.emitChange();
           break;
-        case ActionTypes.RECEIVE_GRAVATAR_ERROR:
-          // TODO store all gravatars instead of making this check
-          if (this._state.getIn(["locks", action.lockID, "email"]) === action.email) {
-            this._state = this._state.setIn(
-              ["locks", action.lockID, "gravatar"],
-              Map({email: "", url: "", name: ""})
-            );
-            // TODO probably need to acknolwedge this error in the client data
-            this.emitChange();
-          }
+        case ActionTypes.RECEIVE_GRAVATAR_DISPLAY_NAME_ERROR:
+          // TODO figure out what to do
           break;
+          case ActionTypes.RECEIVE_GRAVATAR_IMAGE:
+            this._state = this._state.setIn(
+              ["gravatars", action.email, "imageUrl"],
+              action.url
+            );
+            this.emitChange();
+            break;
+          case ActionTypes.RECEIVE_GRAVATAR_IMAGE_ERROR:
+            // TODO figure out what to do
+            break;
         case ActionTypes.SETUP_LOCK:
           this._state = this._state.setIn(
             ['locks', action.lockID],
@@ -153,7 +151,6 @@ export default class Store extends EventEmitter {
               options: action.options,
               email: "",
               password: "",
-              gravatar: Map({email: "", url: ""}),
               state: LockStates.WAITING_CLIENT_CONFIG,
               show: false,
               showOptions: Map({}),
@@ -224,9 +221,12 @@ export default class Store extends EventEmitter {
   }
 
   getLock(id) {
-    var lock = this._state.getIn(['locks', id]);
-    var client = this._state.getIn(['clients', lock.get('clientID')]);
-    return lock.set('client', client);
+    const lock = this._state.getIn(["locks", id]);
+    const client = this._state.getIn(["clients", lock.get("clientID")]);
+    const gravatar = this._state.getIn(["gravatars", lock.get("email")]);
+
+    let result = lock.set("client", client);
+    return gravatar ? result.set("gravatar", gravatar) : result;
   }
 
   getLocks() {

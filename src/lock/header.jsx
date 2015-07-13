@@ -26,9 +26,9 @@ export default class Header extends React.Component {
       closeButton = <span dangerouslySetInnerHTML={{__html: svgTag}} />;
     }
 
-    let gravatarShowing = this.props.email && this.props.gravatarData && this.props.gravatarData.get("email") === this.props.email;
+    let gravatarShowing = this.props.gravatarData;
 
-    var name = gravatarShowing && this.props.gravatarData.get("name");
+    var name = this.props.gravatarData && this.props.gravatarData.get("displayName");
     var welcome;
     if (name) {
       name = "Welcome " + name + "!";
