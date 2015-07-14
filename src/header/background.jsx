@@ -3,9 +3,10 @@ import React from 'react';
 export default class Background extends React.Component {
   render() {
     let bgInnerAttrs = {className: 'auth0-lock-header-bg-inner'};
-    if (this.props.gravatar) {
+    if (this.props.imageUrl) {
+      console.log('this.props.imageUrl',this.props.imageUrl, `url(${this.props.imageUrl})`);
       bgInnerAttrs.className += ' auth0-lock-no-grayscale';
-      bgInnerAttrs.style = {backgroundImage: 'url(img/avatar.png)'};
+      bgInnerAttrs.style = {backgroundImage: `url(${this.props.imageUrl})`};
     }
 
     return (
@@ -17,5 +18,5 @@ export default class Background extends React.Component {
 }
 
 Background.propTypes = {
-  gravatar: React.PropTypes.string
+  imageUrl: React.PropTypes.string
 }

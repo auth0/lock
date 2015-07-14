@@ -27,10 +27,10 @@ export default class Header extends React.Component {
       welcome = <div className="auth0-lock-name">Auth0</div>;
     }
 
-
+    const imageUrl = this.props.gravatarData && this.props.gravatarData.get("imageUrl");
     return (
       <div className="auth0-lock-header">
-        <Background gravatar={this.props.gravatarData} />
+        <Background imageUrl={imageUrl} />
 
         {this.props.showCloseButton ? <CloseButton lockID={this.props.lockID}/> : null}
 
