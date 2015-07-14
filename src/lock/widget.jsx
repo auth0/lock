@@ -31,13 +31,11 @@ export default class Widget extends React.Component {
     var lockID = this.props.lock.get("id");
     var icon = this.props.lock.getIn(["showOptions", "icon"]) || "";
     var showCloseButton = this.props.lock.getIn(["showOptions", "closable"]);
-    var email = this.props.lock.get("email");
-    var gravatar = this.props.lock.getIn(["showOptions", "gravatar"]);
+    const gravatar = this.props.lock.get("gravatar");
+
     return (
       <form className="auth0-lock-widget" onSubmit={this._handleSubmit.bind(this)}>
-        {/* */}
-        <Header lockID={lockID} icon={icon} showCloseButton={showCloseButton} email={email} gravatar={gravatar} gravatarData={this.props.lock.get("gravatar")}/>
-
+        <Header lockID={lockID} icon={icon} showCloseButton={showCloseButton} gravatar={gravatar}/>
         <Content lock={this.props.lock}/>
         {submit}
         <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>

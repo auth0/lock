@@ -5,9 +5,9 @@ import WelcomeMessage from './welcome_message';
 export default class Welcome extends React.Component {
   render() {
     let name, avatarUrl;
-    if (this.props.gravatarData) {
-      name = this.props.gravatarData.get("displayName");
-      avatarUrl = this.props.gravatarData.get("imageUrl");
+    if (this.props.gravatar) {
+      name = this.props.gravatar.get("displayName");
+      avatarUrl = this.props.gravatar.get("imageUrl");
     }
 
     return (
@@ -20,8 +20,6 @@ export default class Welcome extends React.Component {
 }
 
 Welcome.propTypes = {
-  email: React.PropTypes.string,
-  gravatar: React.PropTypes.bool,
-  gravatarData: React.PropTypes.object,
+  gravatar: React.PropTypes.object,
   icon: React.PropTypes.string
 };
