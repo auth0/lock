@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from '../lock/avatar';
+import Background from './background';
 import CloseButton from './close_button';
 
 
@@ -17,8 +18,6 @@ export default class Header extends React.Component {
       );
     }
 
-    let gravatarShowing = this.props.gravatarData;
-
     var name = this.props.gravatarData && this.props.gravatarData.get("displayName");
     var welcome;
     if (name) {
@@ -28,17 +27,10 @@ export default class Header extends React.Component {
       welcome = <div className="auth0-lock-name">Auth0</div>;
     }
 
-    let bgInnerAttrs = {className: 'auth0-lock-header-bg-inner'};
-    if (gravatarShowing) {
-      bgInnerAttrs.className += ' auth0-lock-no-grayscale';
-      bgInnerAttrs.style = {backgroundImage: 'url(img/avatar.png)'};
-    }
 
     return (
       <div className="auth0-lock-header">
-        <div className="auth0-lock-header-bg">
-          <div {...bgInnerAttrs} />
-        </div>
+        <Background gravatar={this.props.gravatarData} />
 
         {this.props.showCloseButton ? <CloseButton lockID={this.props.lockID}/> : null}
 
