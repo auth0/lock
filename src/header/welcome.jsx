@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from '../lock/avatar';
+import WelcomeMessage from './welcome_message';
 
 export default class Welcome extends React.Component {
   render() {
@@ -15,18 +16,10 @@ export default class Welcome extends React.Component {
     }
 
     var name = this.props.gravatarData && this.props.gravatarData.get("displayName");
-    var welcome;
-    if (name) {
-      name = "Welcome " + name + "!";
-      welcome = <div className="auth0-lock-firstname">{name}</div>;
-    } else {
-      welcome = <div className="auth0-lock-name">Auth0</div>;
-    }
-
     return (
       <div className="auth0-lock-header-welcome">
         {icon}
-        {welcome}
+        <WelcomeMessage name={name}/>
       </div>
     )
   }
