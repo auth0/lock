@@ -4,7 +4,6 @@ export default class Background extends React.Component {
   render() {
     let bgInnerAttrs = {className: 'auth0-lock-header-bg-inner'};
     if (this.props.imageUrl) {
-      console.log('this.props.imageUrl',this.props.imageUrl, `url(${this.props.imageUrl})`);
       bgInnerAttrs.className += ' auth0-lock-no-grayscale';
       bgInnerAttrs.style = {backgroundImage: `url(${this.props.imageUrl})`};
     }
