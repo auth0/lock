@@ -1,25 +1,25 @@
-import Dispatcher from '../control/dispatcher';
 import { ActionTypes } from '../control/constants';
+import { dispatch } from '../event-sourcing/index';
 
 export default {
-  receiveClient: function(client_attributes) {
-    Dispatcher.dispatch({
+  receiveClient: function(client_attrs) {
+    dispatch([{
       type: ActionTypes.RECEIVE_CLIENT,
-      attributes: client_attributes
-    });
+      attrs: client_attrs
+    }]);
   },
 
-  receiveClientError: function(lockID) {
-    Dispatcher.dispatch({
+  receiveClientError: function(clientID) {
+    dispatch([{
       type: ActionTypes.RECEIVE_CLIENT_ERROR,
-      lockID: lockID
-    });
+      clientID: clientID
+    }]);
   },
 
-  receiveClientTimeout: function(lockID) {
-    Dispatcher.dispatch({
+  receiveClientTimeout: function(clientID) {
+    dispatch([{
       type: ActionTypes.RECEIVE_CLIENT_TIMEOUT,
-      lockID: lockID
-    });
+      clientID: clientID
+    }]);
   }
 }

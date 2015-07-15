@@ -29,7 +29,7 @@ class LockWebAPI {
     document.getElementsByTagName('head')[0].appendChild(script);
 
     var timeoutID = setTimeout(function() {
-      ClientActionCreators.receiveClientTimeout(lockID);
+      ClientActionCreators.receiveClientTimeout(clientID);
     }, 5000);
 
     script.addEventListener('load', function() {
@@ -38,7 +38,7 @@ class LockWebAPI {
 
     script.addEventListener('error', function() {
       clearTimeout(timeoutID);
-      ClientActionCreators.receiveClientError(lockID);
+      ClientActionCreators.receiveClientError(clientID);
     });
 
   }

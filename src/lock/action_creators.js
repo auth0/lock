@@ -2,18 +2,21 @@ import Dispatcher from '../control/dispatcher';
 import { ActionTypes } from '../control/constants';
 import LockWebAPI from './web_api';
 import * as Gravatar from '../gravatar/index';
+import { dispatch } from '../event-sourcing/index';
 
 export default {
   setupLock: function(lockID, clientID, domain, options) {
-    Dispatcher.dispatch({
+    const e = {
       type: ActionTypes.SETUP_LOCK,
       lockID: lockID,
       clientID: clientID,
       domain: domain,
       options: options
-    });
+    };
 
-    LockWebAPI.setupClient(lockID, clientID, domain, options);
+    dispatch([e, () => {
+      LockWebAPI.setupClient(lockID, clientID, domain, options);
+    }]);
   },
 
   changeEmail: function(lockID, email) {
@@ -94,18 +97,18 @@ export default {
   },
 
   showLock: function(lockID, options) {
-    Dispatcher.dispatch({
+    dispatch([{
       type: ActionTypes.SHOW_LOCK,
       lockID: lockID,
       options: options
-    });
+    }]);
   },
 
   hideLock: function(lockID) {
-    Dispatcher.dispatch({
+    dispatch([{
       type: ActionTypes.HIDE_LOCK,
       lockID: lockID
-    });
+    }]);
   },
 
   invalidateCredentials: function(lockID, validations) {

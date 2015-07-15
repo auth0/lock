@@ -3,7 +3,7 @@ import Widget from './widget';
 
 export default class Lock extends React.Component {
   componentDidMount() {
-    this.refs.lock.getDOMNode().className += ' opened';
+    setTimeout(() => { this.refs.lock.getDOMNode().className += ' opened' }, 10);
   }
 
   render() {

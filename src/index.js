@@ -6,6 +6,8 @@ import Store from './control/store';
 import LockWebAPI from './lock/web_api';
 import LockContainerManager from './lock/container_manager';
 
+import {dispatch, getLocks, store} from './event-sourcing/index';
+
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) {
     this.id = IDUtils.random();
@@ -32,8 +34,8 @@ export default class Auth0Lock {
 // TODO temp for DEV only
 global.window.Auth0Lock = Auth0Lock;
 
-Store.addChangeListener(() => {
-  Store.getLocks().forEach((lock) => {
+store.register(() => {
+  getLocks().forEach((lock) => {
     var container = LockContainerManager.getLockContainer(
       lock.get("id"),
       lock.getIn(["showOptions", "container"])
@@ -47,9 +49,9 @@ Store.addChangeListener(() => {
   });
 
   // DEV
-  // console.log('something has changed', Store.state.toJS());
-  // global.window.appState = Store.state;
-  // global.window.appStateJs = Store.state.toJS();
+  // console.log('something has changed', store.getState().toJS());
+  // global.window.appState = store.getState();
+  // global.window.appStateJs = store.getState().toJS();
 });
 
 // TODO is it worth to follow the flux convention for naming things and
