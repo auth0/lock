@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import Immutable, { Map } from 'immutable';
 import { LockStates } from '../control/constants';
 
 export function setup(attrs) {
@@ -30,8 +30,8 @@ export function markReady(lock) {
   return lock.set("state", LockStates.READY);
 }
 
-export function show(lock) {
-  return lock.set("show", true);
+export function show(lock, mode) {
+  return lock.merge(Map({show: true, mode: mode}));
 }
 
 export function hide(lock) {

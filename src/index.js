@@ -2,9 +2,9 @@ import React from 'react';
 import LockActionCreators from './lock/action_creators';
 import IDUtils from './utils/id_utils';
 import Lock from './lock/lock';
-import Store from './control/store';
 import LockWebAPI from './lock/web_api';
 import LockContainerManager from './lock/container_manager';
+import { LockModes } from './control/constants';
 
 import {dispatch, getLocks, store} from './event-sourcing/index';
 
@@ -14,9 +14,29 @@ export default class Auth0Lock {
     LockActionCreators.setupLock(this.id, clientID, domain, options);
   }
 
+  showPasswordlessEmail(options = {}, callback = () => {}) {
+    // TODO: with the option `send: "code"`, `Auth0.startPasswordless` and
+    // `Auth0.login` will be called and both take a callback and a `authParams`
+    // object. Should we take two values for each one? how? Something similar
+    // happens in `showPasswordlessSMS`.
+    options.signInCallback = callback;
+    options.mode = LockModes.PASSWORDLESS_EMAIL;
+    LockActionCreators.showLock(this.id, options);
+  }
+
+  showPasswordlessSMS(options = {}, callback = () => {}) {
+    // TODO: both `Auth0.startPasswordless` and `Auth0.login` take a callback.
+    // Should we take two values for each one? how? Something similar happens
+    // in `showPasswordlessEmail`.
+    options.signInCallback = callback;
+    options.mode = LockModes.PASSWORDLESS_SMS;
+    LockActionCreators.showLock(this.id, options);
+  }
+
   showSignin(options = {}, callback = () => {}) {
     // options.mode = "signin";
     options.signInCallback = callback;
+    options.mode = LockModes.SIGN_IN;
     LockActionCreators.showLock(this.id, options);
   }
 
