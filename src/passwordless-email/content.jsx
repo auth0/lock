@@ -1,6 +1,7 @@
 import React from 'react';
+import CodeInput from '../forms/code_input';
 import EmailInput from '../forms/email_input';
-import { changeEmail, requestPasswordlessLinkEmail } from './actions';
+import { changeEmail, changeCode, requestPasswordlessEmail, signIn } from './actions';
 import { LockStates } from '../control/constants';
 
 
@@ -8,6 +9,8 @@ function selectScreen(state) {
   switch(state) {
   case LockStates.READY:
     return EnterEmailScreen;
+  case LockStates.ASK_CODE:
+    return EnterCodeScreen;
   case LockStates.DONE:
     return DoneScreen;
   default:
@@ -36,6 +39,27 @@ class EnterEmailScreen extends React.Component {
   }
 }
 
+class EnterCodeScreen extends React.Component {
+  render() {
+    const { lock } = this.props;
+    return (
+      <div className="auth0-lock-content">
+        <div className="auth0-lock-instructions">
+          We sent you a code to sign in. <br/>
+          Please check your inbox.
+        </div>
+        <CodeInput value={lock.get("code")} isValid={true} disabled={lock.get("submitting")} onChange={::this.handleCodeChange}/>
+      </div>
+    );
+  }
+
+  handleCodeChange(e) {
+    const lockID = this.props.lock.get('id');
+    const code = e.target.value;
+    changeCode(lockID, code);
+  }
+}
+
 class DoneScreen extends React.Component {
   render() {
     return (
@@ -57,9 +81,17 @@ export default class PasswordlessEmailContent extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.props.lock.get('state') === LockStates.READY) {
-      const lockID = this.props.lock.get('id');
-      requestPasswordlessLinkEmail(lockID);
+    const { lock } = this.props;
+    const lockID = lock.get("id");
+    const state = lock.get("state");
+
+    switch (state) {
+    case LockStates.READY:
+      return requestPasswordlessEmail(lockID);
+    case LockStates.ASK_CODE:
+      return signIn(lockID);
+    default:
+      // noop
     }
   }
 }

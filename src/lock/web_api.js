@@ -4,7 +4,7 @@ import ClientActionCreators from '../client/action_creators';
 import LockActionCreators from './action_creators';
 import Store from '../control/store';
 import Client from '../client/client';
-import { requestPasswordlessLinkEmailSuccess } from '../passwordless-email/actions';
+import { requestPasswordlessEmailSuccess } from '../passwordless-email/actions';
 
 global.window.Auth0 = Auth0;
 
@@ -44,51 +44,79 @@ class LockWebAPI {
 
   }
 
-  signIn(lockID) {
+  // signIn(lockID) {
+  //   var lock = Store.getLock(lockID);
+  //   // NOTE the amount of parameters determine whether a redirect will be
+  //   // performed after a successful login or not.
+  //   // See https://github.com/auth0/auth0.js/issues/26
+  //   var signInCallback = lock.getIn(["showOptions", "signInCallback"]);
+  //   var f;
+  //   if (signInCallback.length > 1) {
+  //     f = function(error, profile, idToken, accessToken, state, refreshToken) {
+  //       if (!handleSignInError(lockID, error)) {
+  //         var signIn = {
+  //           profile: profile,
+  //           idToken: idToken,
+  //           accessToken: accessToken,
+  //           state: state,
+  //           refreshToken: refreshToken
+  //         };
+  //         LockActionCreators.successfulSignIn(lock.get("id"), signIn);
+  //       }
+  //       signInCallback(error, profile, idToken, accessToken, state, refreshToken);
+  //     }
+  //   } else {
+  //     f = function(error) {
+  //       handleSignInError(lockID, error);
+  //       signInCallback(error);
+  //     }
+  //   }
+  //
+  //   this._clients[lockID].login({
+  //     connection: Client.getDefaultConnection(lock.get("client")).get("name"),
+  //     username: lock.get("email"),
+  //     password: lock.get("password"),
+  //     sso: false,
+  //     callbackURL: lock.getIn(["showOptions", "callbackURL"]),
+  //     callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
+  //   }, f);
+  // }
+
+  signIn(lockID, options, cb) {
     var lock = Store.getLock(lockID);
-    // NOTE the amount of parameters determine whether a redirect will be
-    // performed after a successful login or not.
-    // See https://github.com/auth0/auth0.js/issues/26
-    var signInCallback = lock.getIn(["showOptions", "signInCallback"]);
     var f;
-    if (signInCallback.length > 1) {
+    if (callback.length > 1) {
       f = function(error, profile, idToken, accessToken, state, refreshToken) {
-        if (!handleSignInError(lockID, error)) {
+        if (!handleSignInError(lockID, error)) { // pass fail arg
           var signIn = {
             profile: profile,
-            idTocken: idToken,
+            idToken: idToken,
             accessToken: accessToken,
             state: state,
             refreshToken: refreshToken
           };
-          LockActionCreators.successfulSignIn(lock.get("id"), signIn);
+          // success(...)
+          // LockActionCreators.successfulSignIn(lock.get("id"), signIn);
         }
-        signInCallback(error, profile, idToken, accessToken, state, refreshToken);
+        cb(error, profile, idToken, accessToken, state, refreshToken);
       }
     } else {
       f = function(error) {
         handleSignInError(lockID, error);
-        signInCallback(error);
+        cb(error);
       }
     }
 
-    this._clients[lockID].login({
-      connection: Client.getDefaultConnection(lock.get("client")).get("name"),
-      username: lock.get("email"),
-      password: lock.get("password"),
-      sso: false,
-      callbackURL: lock.getIn(["showOptions", "callbackURL"]),
-      callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
-    }, f);
+    this._clients[lockID].login(options, f);
   }
 
   signOut(lockID, query) {
     this._clients[lockID].logout(query);
   }
 
-  requestPasswordlessLinkEmail(lockID) {
+  requestPasswordlessEmail(lockID) {
     // TODO this._clients[lockID].startPasswordless()
-    setTimeout(() => requestPasswordlessLinkEmailSuccess(lockID), 2000);
+    setTimeout(() => requestPasswordlessEmailSuccess(lockID), 2000);
   }
 }
 
@@ -138,7 +166,8 @@ function handleSignInError(lockID, error) {
       code: error.details.code,
       description: error.details.description || error.details.error_description
     };
-    LockActionCreators.failedSignIn(lockID, preparedError);
+    // fail(...)
+    // LockActionCreators.failedSignIn(lockID, preparedError);
   }
 
   return error;

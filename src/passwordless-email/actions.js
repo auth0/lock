@@ -12,21 +12,41 @@ export function changeEmail(lockID, email) {
   }]);
 }
 
-export function requestPasswordlessLinkEmail(lockID) {
+export function changeCode(lockID, email) {
   dispatch([{
-    type: ActionTypes.REQUEST_PASSWORDLESS_LINK_EMAIL,
+    type: ActionTypes.CHANGE_CODE,
     lockID: lockID,
+    code: code
+  }]);
+}
+
+export function requestPasswordlessEmail(lockID) {
+  dispatch([{
+    type: ActionTypes.REQUEST_PASSWORDLESS_EMAIL,
+    lockID: lockID
   }, () => {
     const lock = getLock(lockID);
     if (lock.get("validEmail")) {
-      WebApi.requestPasswordlessLinkEmail(lockID);
+      WebApi.requestPasswordlessEmail(lockID);
     }
   }]);
 }
 
-export function requestPasswordlessLinkEmailSuccess(lockID) {
+export function requestPasswordlessEmailSuccess(lockID) {
   dispatch([{
-    type: ActionTypes.REQUEST_PASSWORDLESS_LINK_EMAIL_SUCCESS,
-    lockID: lockID,
+    type: ActionTypes.REQUEST_PASSWORDLESS_EMAIL_SUCCESS,
+    lockID: lockID
   }]);
+}
+
+export function signIn(lockID) {
+  dispatch([{
+    type: ActionTypes.SIGN_IN,
+    lockID: lockID
+  }, () => {
+    const lock = getLock(lockID);
+    // TODO: pass the real options
+    WebApi.signIn(lockID);
+  }]);
+
 }

@@ -44,12 +44,14 @@ export function markReady(lock) {
   return lock.set("state", LockStates.READY);
 }
 
-export function show(lock, mode) {
+export function show(lock, options) {
+  const { mode } = options;
+  const send = options.send || "link";
   if (lock.get("mode") === LockModes.LOADING) {
     if (lock.get("state") === LockStates.READY) {
-      return lock.merge(Map({show: true, mode: mode}));
+      return lock.merge(Map({show: true, mode: mode, send: send}));
     } else {
-      return lock.merge(Map({show: true, loading: mode}));
+      return lock.merge(Map({show: true, loading: mode, send: send}));
     }
   } else if (lock.get("mode") === LockModes.CRASHED || lock.get("mode") === mode) {
     return lock.set("show", true);

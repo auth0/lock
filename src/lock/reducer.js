@@ -33,7 +33,7 @@ export default function reducer(locks, e) {
   case ActionTypes.HIDE_LOCK:
     return updateLock(locks, e.lockID, l.hide);
   case ActionTypes.SHOW_LOCK:
-    return updateLock(locks, e.lockID, lock => l.show(lock, e.options.mode));
+    return updateLock(locks, e.lockID, lock => l.show(lock, e.options));
   case ActionTypes.SETUP_LOCK:
     return resetLock(locks, l.setup(e));
   case ActionTypes.RECEIVE_CLIENT:
