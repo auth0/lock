@@ -4,6 +4,7 @@ import ClientActionCreators from '../client/action_creators';
 import LockActionCreators from './action_creators';
 import Store from '../control/store';
 import Client from '../client/client';
+import { requestPasswordlessLinkEmailSuccess } from '../passwordless-email/actions';
 
 global.window.Auth0 = Auth0;
 
@@ -83,6 +84,11 @@ class LockWebAPI {
 
   signOut(lockID, query) {
     this._clients[lockID].logout(query);
+  }
+
+  requestPasswordlessLinkEmail(lockID) {
+    // TODO this._clients[lockID].startPasswordless()
+    setTimeout(() => requestPasswordlessLinkEmailSuccess(lockID), 2000);
   }
 }
 

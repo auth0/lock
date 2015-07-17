@@ -30,7 +30,7 @@ function selectContent(mode) {
 
 export default class Widget extends React.Component {
   render() {
-    var disableSubmit = this.props.lock.get("state") === LockStates.SIGNING_IN;
+    var disableSubmit = this.props.lock.get("submitting");
     var showSubmit = this.props.lock.get("state") === LockStates.WAITING_CLIENT_CONFIG ||
       this.props.lock.get("state") === LockStates.CRASHED;
     var submit = showSubmit ? null : <SubmitButton disabled={disableSubmit} />;

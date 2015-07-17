@@ -13,9 +13,10 @@ export function setup(attrs) {
     mode: LockModes.LOADING,
     state: LockStates.WAITING_CLIENT_CONFIG,
 
+    submitting: false,
     email: '',
     validEmail: false,
-    validate: true
+    validate: false
   });
 }
 

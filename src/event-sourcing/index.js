@@ -18,8 +18,13 @@ function getLocks() {
   return store.getState().get("locks").toList();
 }
 
+function getLock(id) {
+  return store.getState().getIn(["locks", id]);
+}
+
 export default {
   dispatch: dispatcher.dispatch.bind(dispatcher),
   store: store,
-  getLocks: getLocks
+  getLocks: getLocks,
+  getLock: getLock
 }
