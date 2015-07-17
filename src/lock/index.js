@@ -19,6 +19,10 @@ export function setup(attrs) {
   });
 }
 
+export function changeEmail(lock, email, valid) {
+  return lock.merge(Map({email: email, validEmail: valid}));
+}
+
 export function hasClient(lock, clientID) {
   return lock.get("clientID") === clientID;
 }
