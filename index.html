@@ -23,11 +23,7 @@
         var domain = "gnandretta.auth0.com";
         var lock = new Auth0Lock(clientID, domain);
         $('body').one("click", function(){
-          lock.showSignin({
-            disableSignupAction: false,
-            disableResetAction: false,
-            callbackUrl: "http://ilogicamente.com"
-          }, function(error) {
+          lock.showPasswordlessEmail({}, function(error) {
             console.log('something went wrong', error);
           });
         });

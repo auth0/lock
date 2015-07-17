@@ -8,7 +8,7 @@ function resetClient(clients, client) {
 export default function reducer(clients, e) {
   switch(e.type) {
   case ActionTypes.RECEIVE_CLIENT:
-    return resetClient(clients, Immutable.fromJS(e.attrs).set('loaded', true));
+    return resetClient(clients, Immutable.fromJS(e.attrs));
   default:
     return clients;
   }

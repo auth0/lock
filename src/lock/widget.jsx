@@ -1,11 +1,32 @@
 import React from 'react';
-import Content from './content';
 import LockActionCreators from './action_creators';
-import { LockStates } from '../control/constants';
+import { LockStates, LockModes } from '../control/constants';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
 import EmailCredentials from './credentials/email';
 import PasswordCredentials from './credentials/password';
+
+import LoadingContent from '../loading/content';
+import CrashedContent from '../crashed/content';
+import PasswordlessEmailContent from '../passwordless-email/content';
+import PasswordlessSMSContent from '../passwordless-sms/content';
+
+function selectContent(mode) {
+  const map = {
+    [LockModes.CRASHED]: CrashedContent,
+    [LockModes.LOADING]: LoadingContent,
+    [LockModes.PASSWORDLESS_EMAIL]: PasswordlessEmailContent,
+    [LockModes.PASSWORDLESS_SMS]: PasswordlessSMSContent
+  };
+
+  const result = map[mode];
+
+  if (!result) {
+    throw new Error("unknown lock mode");
+  }
+
+  return result;
+}
 
 export default class Widget extends React.Component {
   _handleSubmit(event) {
@@ -33,11 +54,12 @@ export default class Widget extends React.Component {
     var showCloseButton = true; // this.props.lock.getIn(["showOptions", "closable"]);
     const gravatar = this.props.lock.get("gravatar");
 
+    const Content = selectContent(this.props.lock.get("mode"));
+
     return (
       <form className="auth0-lock-widget" onSubmit={this._handleSubmit.bind(this)}>
         <Header lockID={lockID} icon={icon} showCloseButton={showCloseButton} gravatar={gravatar}/>
-        {/*<Content lock={this.props.lock}/>*/}
-        <p>Lock!</p>
+        <Content lock={this.props.lock}/>
         {submit}
         <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
       </form>

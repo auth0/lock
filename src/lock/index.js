@@ -1,5 +1,5 @@
 import Immutable, { Map } from 'immutable';
-import { LockStates } from '../control/constants';
+import { LockStates, LockModes } from '../control/constants';
 
 export function setup(attrs) {
   const { clientID, lockID, domain, options } = attrs;
@@ -10,6 +10,7 @@ export function setup(attrs) {
     id: lockID,
     options: options,
     show: false,
+    mode: LockModes.LOADING,
     state: LockStates.WAITING_CLIENT_CONFIG
   });
 }
@@ -22,6 +23,10 @@ export function hasCrashed(lock) {
   return lock.get("state") === LockStates.CRASHED;
 }
 
+function isLoading(lock) {
+  return lock.get("mode") === LockModes.LOADING;
+}
+
 export function markCrashed(lock) {
   return lock.set("state", LockStates.CRASHED);
 }
@@ -31,7 +36,17 @@ export function markReady(lock) {
 }
 
 export function show(lock, mode) {
-  return lock.merge(Map({show: true, mode: mode}));
+  if (lock.get("mode") === LockModes.LOADING) {
+    if (lock.get("state") === LockStates.READY) {
+      return lock.merge(Map({show: true, mode: mode}));
+    } else {
+      return lock.merge(Map({show: true, loading: mode}));
+    }
+  } else if (lock.get("mode") === LockModes.CRASHED || lock.get("mode") === mode) {
+    return lock.set("show", true);
+  } else {
+    throw new Error("can't show the lock in a different mode");
+  }
 }
 
 export function hide(lock) {
