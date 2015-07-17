@@ -11,7 +11,11 @@ export function setup(attrs) {
     options: options,
     show: false,
     mode: LockModes.LOADING,
-    state: LockStates.WAITING_CLIENT_CONFIG
+    state: LockStates.WAITING_CLIENT_CONFIG,
+
+    email: '',
+    validEmail: false,
+    validate: true
   });
 }
 

@@ -29,20 +29,6 @@ function selectContent(mode) {
 }
 
 export default class Widget extends React.Component {
-  _handleSubmit(event) {
-    event.preventDefault();
-    var email = EmailCredentials.validateEmail(this.props.lock.get("email"));
-    var password = PasswordCredentials.validatePassword(this.props.lock.get("password"));
-    if (email && password) {
-      LockActionCreators.signIn(this.props.lock.get("id"));
-    } else {
-      LockActionCreators.invalidateCredentials(
-        this.props.lock.get("id"),
-        {email: !!email, password: !!password}
-      );
-    }
-  }
-
   render() {
     var disableSubmit = this.props.lock.get("state") === LockStates.SIGNING_IN;
     var showSubmit = this.props.lock.get("state") === LockStates.WAITING_CLIENT_CONFIG ||
@@ -57,15 +43,16 @@ export default class Widget extends React.Component {
     const Content = selectContent(this.props.lock.get("mode"));
 
     return (
-      <form className="auth0-lock-widget" onSubmit={this._handleSubmit.bind(this)}>
+      <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
         <Header lockID={lockID} icon={icon} showCloseButton={showCloseButton} gravatar={gravatar}/>
-        <Content lock={this.props.lock}/>
+        <Content lock={this.props.lock} ref="content"/>
         {submit}
         <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
       </form>
     );
   }
-}
 
-// TODO maybe we can make some changes to the markup to improve the rendering
-// logic (components must render a single *root* element).
+  handleSubmit(e) {
+    return this.refs.content.handleSubmit(e);
+  }
+}

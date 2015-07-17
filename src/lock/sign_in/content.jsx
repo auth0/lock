@@ -2,29 +2,7 @@ import React from 'react';
 import SignInErrorMessage from './error_message';
 import ModeTabs from '../mode_tabs';
 import LockActionCreators from '../action_creators';
-
-// TODO move to its own module
-class InputWrap extends React.Component {
-  render() {
-    var className = "auth0-lock-input-wrap auth0-lock-input-" + this.props.name;
-    if (!this.props.isValid) {
-      className += " auth0-lock-input-invalid";
-    }
-
-    return (
-      <div className={className}>
-        <i className="auth0-lock-icon"/>
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
-InputWrap.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  isValid: React.PropTypes.bool.isRequired,
-  children: React.PropTypes.element.isRequired
-};
+import InputWrap from '../../forms/input_wrap';
 
 export default class SignInContent extends React.Component {
   _handleEmailChange() {
