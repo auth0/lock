@@ -5,7 +5,7 @@ import Lock from './lock/lock';
 import LockWebAPI from './lock/web_api';
 import LockContainerManager from './lock/container_manager';
 import { LockModes } from './control/constants';
-import { addWatch, getUIState } from './store/index';
+import { subscribe } from './store/index';
 
 import renderCrashed from './crashed/render';
 import renderLoading from './loading/render';
@@ -71,8 +71,8 @@ function element(lock) {
   }
 }
 
-addWatch("main", (key, oldState, newState) => {
-  getUIState().toList().forEach(lock => {
+subscribe("main", uiState => {
+  uiState.forEach(lock => {
     var container = LockContainerManager.getLockContainer(
       lock.get("id"),
       lock.getIn(["showOptions", "container"]),

@@ -67,8 +67,7 @@ export function updateGravatar(email, f) {
   updateEntity("gravatars", email, f);
 }
 
-export function getUIState() {
-  const state = store.deref();
+function deriveUIState(state) {
   return state.get("locks").map(lock => {
     const gravatar = getGravatar(lock.get("email")) || new Map({});
     lock = lock.set("gravatar", gravatar.get("loaded") ? gravatar : null);
@@ -76,8 +75,8 @@ export function getUIState() {
   });
 }
 
-export function addWatch(key, f) {
-  store.addWatch(key, f);
+export function subscribe(key, f) {
+  store.addWatch(key, (key, oldState, newState) => f(deriveUIState(newState)));
 }
 
 // DEV
