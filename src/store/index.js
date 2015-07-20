@@ -28,7 +28,7 @@ function setEntity(coll, id, x) {
 }
 
 function getEntity(coll, id) {
-  store.deref().getIn([coll, id]);
+  return store.deref().getIn([coll, id]);
 }
 
 function updateLocks(f) {
