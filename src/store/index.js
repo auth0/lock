@@ -48,7 +48,7 @@ export function setLock(lock) {
 }
 
 export function getLock(id) {
-  getEntity("lock", id);
+  return getEntity("lock", id);
 }
 
 export function setClient(client) {

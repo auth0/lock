@@ -1,6 +1,6 @@
 import { LockStates } from '../control/constants';
 import WebApi from '../lock/web_api';
-import { updateLock } from '../store/index';
+import { getLock, updateLock } from '../store/index';
 import EmailCredentials from '../lock/credentials/email';
 import * as l from '../lock/index';
 
@@ -16,7 +16,7 @@ export function changeCode(lockID, code) {
   return updateLock(lockID, lock => lock.set("code", code));
 }
 
-export function requestPasswordlessEmail(lockID) {
+export function requestPasswordlessEmail(lockID, email, send) {
   let submit = false;
   updateLock(lockID, lock => {
     if (lock.get("validEmail")) {
@@ -28,7 +28,13 @@ export function requestPasswordlessEmail(lockID) {
   });
 
   if (submit) {
-    WebApi.requestPasswordlessEmail(lockID);
+    const lock = getLock(lockID);
+    WebApi.requestPasswordlessEmail(
+      lockID,
+      lock.get("email"),
+      lock.get("send"),
+      lock.getIn(["showOptions", "authParams"])
+    );
   }
 }
 
@@ -40,8 +46,37 @@ export function requestPasswordlessEmailSuccess(lockID) {
   });
 }
 
+export function requestPasswordlessEmailError(lockID, error) {
+  console.debug(error);
+  console.error("unimplemented action requestPasswordlessEmailError");
+}
+
 export function signIn(lockID) {
   updateLock(lockID, lock => lock.set("submitting", true));
-  // TODO: pass the real options
-  WebApi.signIn(lockID);
+  const lock = getLock(lockID);
+  const options = {
+    connection: "email",
+    username: lock.get("email"),
+    password: lock.get("code"),
+    sso: false,
+    callbackURL: lock.getIn(["showOptions", "callbackURL"]),
+    callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"]),
+  };
+  WebApi.signIn(lockID, options, true, signInSuccess, signInError);
+}
+
+function signInSuccess(lockID, response) {
+  const callback = getLock(lockID).getIn(["showOptions", "signInCallback"]);
+  if (callback) {
+    callback.apply(null, response);
+  }
+  // TODO update lock state
+}
+
+function signInError(lockID, error) {
+  const callback = getLock(lockID).getIn(["showOptions", "signInCallback"]);
+  if (callback) {
+    callback.call(null, error);
+  }
+  // TODO update lock state
 }

@@ -4,7 +4,7 @@ import { requestClientSuccess, requestClientTimeout, requestClientError } from '
 import LockActionCreators from './action_creators';
 import Store from '../control/store';
 import Client from '../client/client';
-import { requestPasswordlessEmailSuccess } from '../passwordless-email/actions';
+import { requestPasswordlessEmailSuccess, requestPasswordlessEmailError } from '../passwordless-email/actions';
 
 global.window.Auth0 = Auth0;
 
@@ -82,40 +82,43 @@ class LockWebAPI {
   //   }, f);
   // }
 
-  signIn(lockID, options, callback) {
-    var f;
-    if (callback.length > 1) {
-      f = function(error, profile, idToken, accessToken, state, refreshToken) {
-        if (!handleSignInError(lockID, error)) { // pass fail arg
-          var signIn = {
-            profile: profile,
-            idToken: idToken,
-            accessToken: accessToken,
-            state: state,
-            refreshToken: refreshToken
-          };
-          // success(...)
-          // LockActionCreators.successfulSignIn(lock.get("id"), signIn);
-        }
-        cb(error, profile, idToken, accessToken, state, refreshToken);
-      }
-    } else {
-      f = function(error) {
-        handleSignInError(lockID, error);
-        cb(error);
+  signIn(lockID, options, withRO, success, fail) {
+    function redirectCallback(error) {
+      handleSignInError(lockID, error, fail);
+    }
+
+    function popupCallback(error, profile, idToken, accessToken, state, refreshToken) {
+      if (!handleSignInError(lockID, error, fail)) {
+        // const response = {
+        //   profile: profile,
+        //   idToken: idToken,
+        //   accessToken: accessToken,
+        //   state: state,
+        //   refreshToken: refreshToken
+        // };
+        success(lockID, [error, profile, idToken, accessToken, state, refreshToken]);
       }
     }
 
-    this._clients[lockID].login(options, f);
+    this._clients[lockID].login(options, withRO ? popupCallback : redirectCallback);
   }
 
   signOut(lockID, query) {
     this._clients[lockID].logout(query);
   }
 
-  requestPasswordlessEmail(lockID) {
-    // TODO this._clients[lockID].startPasswordless()
-    setTimeout(() => requestPasswordlessEmailSuccess(lockID), 2000);
+  requestPasswordlessEmail(lockID, email, send, authParams) {
+    const options = {email: email, send: send};
+    if (authParams) {
+      opts.authParams = authParams;
+    }
+    this._clients[lockID].startPasswordless(options, (error, result) => {
+      if (error) {
+        requestPasswordlessEmailError(lockID, error);
+      } else {
+        requestPasswordlessEmailSuccess(lockID);
+      }
+    });
   }
 }
 
@@ -155,18 +158,18 @@ function parseUrl(url) { // TODO this function doesn't belong here
   return parser;
 }
 
-function handleSignInError(lockID, error) {
+function handleSignInError(lockID, error, callback) {
   if (error) {
     // TODO when hitting https://*.auth0.com/usernamepassword/login
     // error.details has the keys 'code', 'description', 'name' and
     // 'statusCode'. But, when hitting https://*.auth0.com/oauth/ro it has
     // the keys: 'code', 'error' and 'error_description'.
-    var preparedError = {
+    const normalizedError = {
       code: error.details.code,
       description: error.details.description || error.details.error_description
     };
-    // fail(...)
-    // LockActionCreators.failedSignIn(lockID, preparedError);
+    callback(lockID, normalizedError);
+    return normalizedError;
   }
 
   return error;
