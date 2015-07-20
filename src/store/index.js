@@ -1,5 +1,5 @@
 import atom from '../atom/index';
-import Immutable from 'immutable';
+import Immutable, { Map } from 'immutable';
 
 const store = atom(Immutable.fromJS({clients: {}, locks: {}}));
 
@@ -20,7 +20,7 @@ function updateFilteredCollection(coll, pred, f, ...args) {
 }
 
 function updateEntity(coll, id, f, ...args) {
-  update(state => state.updateIn([coll, id], x => f(x, ...args)));
+  update(state => state.updateIn([coll, id], new Map({}), x => f(x, ...args)));
 }
 
 function setEntity(coll, id, x) {
