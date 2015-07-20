@@ -7,6 +7,10 @@ import LockContainerManager from './lock/container_manager';
 import { LockModes } from './control/constants';
 import { addWatch } from './store/index';
 
+import renderCrashed from './crashed/render';
+import renderLoading from './loading/render';
+import renderPasswordlessEmail from './passwordless-email/render';
+
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) {
     this.id = IDUtils.random();
@@ -53,6 +57,20 @@ export default class Auth0Lock {
 // TODO temp for DEV only
 global.window.Auth0Lock = Auth0Lock;
 
+function element(lock) {
+  const mode = lock.get("mode");
+  switch(mode) {
+  case LockModes.CRASHED:
+    return renderCrashed(lock);
+  case LockModes.LOADING:
+    return renderLoading(lock);
+  case LockModes.PASSWORDLESS_EMAIL:
+    return renderPasswordlessEmail(lock);
+  default:
+    throw new Error(`unknown lock mode ${mode}`);
+  }
+}
+
 addWatch("main", (key, oldState, newState) => {
   newState.get("locks").toList().forEach((lock) => {
     var container = LockContainerManager.getLockContainer(
@@ -61,7 +79,7 @@ addWatch("main", (key, oldState, newState) => {
     );
 
     if (lock.get("show")) {
-      React.render(<Lock lock={lock}/>, container);
+      React.render(element(lock), container);
     } else {
       React.unmountComponentAtNode(container);
     }

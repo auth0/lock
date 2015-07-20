@@ -60,9 +60,7 @@ export function addWatch(key, f) {
 }
 
 // DEV
-//
-// const h = [];
 // store.addWatch("keepHistory", (key, oldState, newState) => {
-//   h.push(newState);
-//   console.log("something changed", h);
+//   if (!global.window.h) global.window.h = []; global.window.h.push(newState);
+//   console.debug("something changed", newState.toJS());
 // });

@@ -37,7 +37,7 @@ function isLoading(lock) {
 }
 
 export function markCrashed(lock) {
-  return lock.set("state", LockStates.CRASHED);
+  return lock.set("mode", LockModes.CRASHED);
 }
 
 export function markReady(lock) {

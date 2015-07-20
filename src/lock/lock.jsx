@@ -7,13 +7,16 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    var overlay = this.props.lock.getIn(["showOptions", "container"]) ?
+    const { lock, submitHandler } = this.props;
+    var overlay = lock.getIn(["showOptions", "container"]) ?
       null : <div className="auth0-lock-overlay"/>;
     return (
       <div className="auth0-lock" ref="lock">
         {overlay}
         <div className="auth0-lock-center">
-          <Widget lock={this.props.lock}/>
+          <Widget lock={lock} submitHandler={submitHandler}>
+            {React.Children.only(this.props.children)}
+          </Widget>
         </div>
       </div>
     );
