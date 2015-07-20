@@ -243,4 +243,140 @@ describe('sign up', function () {
     .showSignup(this.options);
   });
 
+  describe('signup events', function() {
+    it('should fire up submit event when the form is submitted', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_email').val('tehsis@gmail.com');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .once('signup submit', function(options) {
+        expect(options).not.to.be(undefined);
+        done();
+      })
+      .showSignup(this.options);
+  });
+
+    it('should fire up error event when email is invalid', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_email').val('tehsis');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .once('signup error', function(err) {
+        expect(err.message).to.be('email invalid');
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should fire up error event when email is empty', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .once('signup error', function(err) {
+        expect(err.message).to.be('email empty');
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should fire up error event when password is empty', function (done) {
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_email').val('tehsis@gmail.com');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .once('signup error', function(err) {
+        expect(err.message).to.be('password empty');
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should fire up error event when username is required and is empty', function (done) {
+      this.options._isUsernameRequired = function() { return true; };
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_email').val('tehsis@gmail.com');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .once('signup error', function(err) {
+        expect(err.message).to.be('username empty');
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should fire up error event when username is required and is invalid', function (done) {
+      this.options._isUsernameRequired = function() { return true; };
+      var auth0 = this.auth0;
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_username').val('sdfasf@$$--');
+        $('#a0-signup_easy_email').val('tehsis@gmail.com');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .once('signup error', function(err) {
+        expect(err.message).to.be('username invalid');
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should fire up success event if there was no error', function (done) {
+      var auth0 = this.auth0;
+
+      var callback;
+
+      this.options.loginAfterSignup = false;
+
+      auth0.$auth0.signup = function(options, cb) {
+        callback = cb;
+        callback();
+      };
+
+      auth0
+      .once('signup ready', function() {
+        $('#a0-signup_easy_email').val('john@fabrikam.com');
+        $('#a0-signup_easy_password').val('123');
+
+        bean.fire($('.a0-signup form')[0], 'submit');
+      })
+      .once('signup success', function() {
+        expect(callback).to.not.throwException();
+        done();
+      })
+      .showSignup(this.options);
+    });
+
+    it('should fireup an emit event when signing up with social connection', function (done) {
+      this.auth0.$auth0.login = function () {};
+
+      this.auth0
+      .once('signup submit', function(opts) {
+        expect(opts).to.not.be(undefined);
+        done();
+      })
+      .once('signup ready', function() {
+        bean.fire($('.a0-signup [data-strategy="google-oauth2"]')[0], 'click');
+      })
+      .showSignup(this.options);
+    });
+  });
 });

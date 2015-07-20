@@ -19,7 +19,7 @@
           <div class="navbar-header">
             <h1 class="navbar-brand">
               <a href="/">
-                <img src="//styleguide.auth0.com/img/auth0_logo.png"/>  
+                <img src="//styleguide.auth0.com/img/auth0_logo.png"/>
               </a>
             </h1>
           </div>
@@ -454,36 +454,19 @@
 
           function trackEvents(widget, namespace) {
             var name = namespace || 'widget';
-            widget.on('shown', function() {
-              console.log('%s shown', name);
+
+            ['signup', 'signin', 'reset', 'kerberos', 'loggedin'].forEach(function (mode) {
+              ['ready', 'error', 'success', 'submit'].forEach(function (ev) {
+                var event_name = mode + ' ' + ev;
+                widget.on(event_name, function() {
+                  console.log('Event: "' + event_name + '" fired!');
+                })
+              });
             });
-            widget.on('loading ready', function() {
-              console.log('%s loading ready', name);
-            });
-            widget.on('ready', function() {
-              console.log('%s ready', name);
-            });
-            widget.on('hidden', function() {
-              console.log('%s hidden', name);
-            });
-            widget.on('signin ready', function() {
-              console.log('%s signin ready', name);
-            });
-            widget.on('signin submit', function(options, context) {
-              console.log('%s signin submit. context: %s', name, context.email);
-            });
-            widget.on('signup ready', function() {
-              console.log('%s signup ready', name);
-            });
-            widget.on('reset ready', function() {
-              console.log('%s reset ready', name);
-            });
-            widget.on('loggedin ready', function() {
-              console.log('%s loggedin ready', name);
-            });
-            widget.on('kerberos ready', function() {
-              console.log('%s loggedin ready', name);
-            });
+
+            widget.on('error shown', function() {
+              console.log('Event: "error shown" fired!');
+            })
           }
       });
 
