@@ -12,7 +12,7 @@ export default class Widget extends React.Component {
 
     var lockID = this.props.lock.get("id");
     var icon = this.props.lock.getIn(["showOptions", "icon"]) || "";
-    var showCloseButton = true; // this.props.lock.getIn(["showOptions", "closable"]);
+    var showCloseButton = this.props.lock.getIn(["showOptions", "closable"]);
     const gravatar = this.props.lock.get("gravatar");
 
     return (

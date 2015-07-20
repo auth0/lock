@@ -20,6 +20,22 @@ export function setup(attrs) {
   });
 }
 
+export function prepareShowOptions(options) {
+  const responseType = options.responseType || options.callbackURL ? "code" : "token";
+
+  return new Map({
+    container: options.container || false,
+    icon: options.icon || false,
+    closable: undefined === options.closable ? !options.container : !!options.closable,
+    focusInput: undefined === options.focusInput ? !options.container : !!options.focusInput,
+    gravatar: undefined === options.gravatar ? true : !!options.gravatar,
+    signInCallback: options.signInCallback,
+    responseType: responseType,
+    callbackURL: options.callbackURL || null,
+    callbackOnLocationHash: responseType === "token" || null,
+  });
+}
+
 export function changeEmail(lock, email, valid) {
   return lock.merge(Map({email: email, validEmail: valid}));
 }
@@ -47,6 +63,11 @@ export function markReady(lock) {
 export function show(lock, options) {
   const { mode } = options;
   const send = options.send || "link";
+
+  if (!lock.get("showOptions")) {
+    lock = lock.set("showOptions", prepareShowOptions(options));
+  }
+
   if (lock.get("mode") === LockModes.LOADING) {
     if (lock.get("state") === LockStates.READY) {
       return lock.merge(Map({show: true, mode: mode, send: send}));

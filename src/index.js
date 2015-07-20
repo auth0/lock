@@ -75,12 +75,13 @@ addWatch("main", (key, oldState, newState) => {
   newState.get("locks").toList().forEach((lock) => {
     var container = LockContainerManager.getLockContainer(
       lock.get("id"),
-      lock.getIn(["showOptions", "container"])
+      lock.getIn(["showOptions", "container"]),
+      !lock.get("show")
     );
 
     if (lock.get("show")) {
       React.render(element(lock), container);
-    } else {
+    } else if (container) {
       React.unmountComponentAtNode(container);
     }
   });

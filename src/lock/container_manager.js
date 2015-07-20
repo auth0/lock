@@ -3,10 +3,13 @@ class LockContainerUtils {
     this._containerCache = {};
   }
 
-  getLockContainer(lockID, containerID) {
+  getLockContainer(lockID, containerID, fromCache) {
+    if (fromCache) {
+      return this._containerCache[lockID];
+    }
     return this._getContainer(lockID, containerID, () => {
       if (containerID) {
-        throw new Error("Not found element with 'id' " + containerID);
+        throw new Error(`Not found element with id ${containerID}`);
       }
       return this._appendDefaultContainer(lockID);
     });
@@ -17,7 +20,7 @@ class LockContainerUtils {
       var container = this._containerCache[lockID];
       if (!container) {
         containerID = containerID || this._getDefaultContainerID(lockID);
-        this._containerCache[lockID] = document.getElementById(containerID);
+        container = this._containerCache[lockID] = document.getElementById(containerID);
       }
       return container;
     };
