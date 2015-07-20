@@ -38,7 +38,7 @@
     "watchify": "^3.2.2"
   },
   "dependencies": {
-    "auth0-js": "^6.4.2",
+    "auth0-js": "auth0/auth0.js#passwordless",
     "blueimp-md5": "^1.1.0",
     "bonzo": "^2.0.0",
     "domready": "^1.0.8",
