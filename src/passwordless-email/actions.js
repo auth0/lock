@@ -8,7 +8,7 @@ export function changeEmail(lockID, email) {
   updateLock(lockID, lock => {
     const valid = !!EmailCredentials.validateEmail(email);
     return l.changeEmail(lock, email, !!valid)
-      .set("validate", lock.get("validate") && !valid);
+      .set("validateEmail", lock.get("validateEmail") && !valid);
   });
 }
 
@@ -23,7 +23,7 @@ export function requestPasswordlessEmail(lockID) {
       submit = true;
       return lock.set("submitting", true);
     } else {
-      return lock.set("validate", true);
+      return lock.set("validateEmail", true);
     }
   });
 

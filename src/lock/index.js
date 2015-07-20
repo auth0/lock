@@ -16,7 +16,7 @@ export function setup(attrs) {
     submitting: false,
     email: '',
     validEmail: false,
-    validate: false
+    validateEmail: false
   });
 }
 
