@@ -1,17 +1,16 @@
 import React from 'react';
-import LockActionCreators from './lock/action_creators';
+import LockActionCreators, { hideLock, setupLock, showLock } from './lock/action_creators';
 import IDUtils from './utils/id_utils';
 import Lock from './lock/lock';
 import LockWebAPI from './lock/web_api';
 import LockContainerManager from './lock/container_manager';
 import { LockModes } from './control/constants';
-
-import {dispatch, getLocks, store} from './event-sourcing/index';
+import { addWatch } from './store/index';
 
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) {
     this.id = IDUtils.random();
-    LockActionCreators.setupLock(this.id, clientID, domain, options);
+    setupLock(this.id, clientID, domain, options);
   }
 
   showPasswordlessEmail(options = {}, callback = () => {}) {
@@ -21,7 +20,7 @@ export default class Auth0Lock {
     // happens in `showPasswordlessSMS`.
     options.signInCallback = callback;
     options.mode = LockModes.PASSWORDLESS_EMAIL;
-    LockActionCreators.showLock(this.id, options);
+    showLock(this.id, options);
   }
 
   showPasswordlessSMS(options = {}, callback = () => {}) {
@@ -30,18 +29,18 @@ export default class Auth0Lock {
     // in `showPasswordlessEmail`.
     options.signInCallback = callback;
     options.mode = LockModes.PASSWORDLESS_SMS;
-    LockActionCreators.showLock(this.id, options);
+    showLock(this.id, options);
   }
 
   showSignin(options = {}, callback = () => {}) {
     // options.mode = "signin";
     options.signInCallback = callback;
     options.mode = LockModes.SIGN_IN;
-    LockActionCreators.showLock(this.id, options);
+    showLock(this.id, options);
   }
 
   hide() {
-    LockActionCreators.hideLock(this.id);
+    hideLock(this.id);
   }
 
   logout(query = {}) {
@@ -54,8 +53,8 @@ export default class Auth0Lock {
 // TODO temp for DEV only
 global.window.Auth0Lock = Auth0Lock;
 
-store.register(() => {
-  getLocks().forEach((lock) => {
+addWatch("main", (key, oldState, newState) => {
+  newState.get("locks").toList().forEach((lock) => {
     var container = LockContainerManager.getLockContainer(
       lock.get("id"),
       lock.getIn(["showOptions", "container"])
@@ -67,11 +66,6 @@ store.register(() => {
       React.unmountComponentAtNode(container);
     }
   });
-
-  // DEV
-  // console.log('something has changed', store.getState().toJS());
-  // global.window.appState = store.getState();
-  // global.window.appStateJs = store.getState().toJS();
 });
 
 // TODO is it worth to follow the flux convention for naming things and

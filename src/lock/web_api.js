@@ -1,6 +1,6 @@
 import Auth0 from 'auth0-js';
 import StringUtils from '../utils/string_utils';
-import ClientActionCreators from '../client/action_creators';
+import { requestClientSuccess, requestClientTimeout, requestClientError } from '../client/action_creators';
 import LockActionCreators from './action_creators';
 import Store from '../control/store';
 import Client from '../client/client';
@@ -8,8 +8,8 @@ import { requestPasswordlessEmailSuccess } from '../passwordless-email/actions';
 
 global.window.Auth0 = Auth0;
 
-global.window.Auth0.setClient = function(client_attributes) {
-  ClientActionCreators.receiveClient(client_attributes);
+global.window.Auth0.setClient = function(clientAttrs) {
+  requestClientSuccess(clientAttrs);
 };
 
 class LockWebAPI {
@@ -30,7 +30,7 @@ class LockWebAPI {
     document.getElementsByTagName('head')[0].appendChild(script);
 
     var timeoutID = setTimeout(function() {
-      ClientActionCreators.receiveClientTimeout(clientID);
+      requestClientTimeout(clientID);
     }, 5000);
 
     script.addEventListener('load', function() {
@@ -39,7 +39,7 @@ class LockWebAPI {
 
     script.addEventListener('error', function() {
       clearTimeout(timeoutID);
-      ClientActionCreators.receiveClientError(clientID);
+      requestClientError(clientID);
     });
 
   }
@@ -82,8 +82,7 @@ class LockWebAPI {
   //   }, f);
   // }
 
-  signIn(lockID, options, cb) {
-    var lock = Store.getLock(lockID);
+  signIn(lockID, options, callback) {
     var f;
     if (callback.length > 1) {
       f = function(error, profile, idToken, accessToken, state, refreshToken) {

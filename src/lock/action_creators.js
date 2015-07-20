@@ -2,23 +2,30 @@ import Dispatcher from '../control/dispatcher';
 import { ActionTypes } from '../control/constants';
 import LockWebAPI from './web_api';
 import * as Gravatar from '../gravatar/index';
-import { dispatch } from '../event-sourcing/index';
+
+import { setLock, updateLock } from '../store/index';
+import * as l from './index';
+
+export function setupLock(lockID, clientID, domain, options) {
+  setLock(l.setup({
+    lockID: lockID,
+    clientID: clientID,
+    domain: domain,
+    options: options
+  }));
+
+  LockWebAPI.setupClient(lockID, clientID, domain, options);
+}
+
+export function showLock(lockID, options) {
+  updateLock(lockID, l.show, options);
+}
+
+export function hideLock(lockID) {
+  updateLock(lockID, l.hide);
+}
 
 export default {
-  setupLock: function(lockID, clientID, domain, options) {
-    const e = {
-      type: ActionTypes.SETUP_LOCK,
-      lockID: lockID,
-      clientID: clientID,
-      domain: domain,
-      options: options
-    };
-
-    dispatch([e, () => {
-      LockWebAPI.setupClient(lockID, clientID, domain, options);
-    }]);
-  },
-
   changeEmail: function(lockID, email) {
     Dispatcher.dispatch({
       type: ActionTypes.CHANGE_EMAIL,
@@ -96,20 +103,6 @@ export default {
     });
   },
 
-  showLock: function(lockID, options) {
-    dispatch([{
-      type: ActionTypes.SHOW_LOCK,
-      lockID: lockID,
-      options: options
-    }]);
-  },
-
-  hideLock: function(lockID) {
-    dispatch([{
-      type: ActionTypes.HIDE_LOCK,
-      lockID: lockID
-    }]);
-  },
 
   invalidateCredentials: function(lockID, validations) {
     Dispatcher.dispatch({
