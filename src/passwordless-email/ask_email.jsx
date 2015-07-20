@@ -14,6 +14,7 @@ export default class AskEmail extends React.Component {
           isValid={!lock.get("validateEmail") || lock.get("validEmail")}
           disabled={lock.get("submitting")}
           onChange={::this.handleEmailChange}
+          gravatar={lock.getIn(["showOptions", "gravatar"])}
           autoFocus={lock.getIn(["showOptions", "focusInput"])} />
       </div>
     );

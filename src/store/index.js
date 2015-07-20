@@ -1,7 +1,7 @@
 import atom from '../atom/index';
 import Immutable, { Map } from 'immutable';
 
-const store = atom(Immutable.fromJS({clients: {}, locks: {}}));
+const store = atom(Immutable.fromJS({clients: {}, gravatars: {}, locks: {}}));
 
 function set(state) {
   store.reset(state);
@@ -53,6 +53,27 @@ export function getLock(id) {
 
 export function setClient(client) {
   setEntity("clients", client.get("id"), client);
+}
+
+function getClient(id) {
+  return getEntity("clients", id);
+}
+
+export function getGravatar(email) {
+  return getEntity("gravatars", email);
+}
+
+export function updateGravatar(email, f) {
+  updateEntity("gravatars", email, f);
+}
+
+export function getUIState() {
+  const state = store.deref();
+  return state.get("locks").map(lock => {
+    const gravatar = getGravatar(lock.get("email")) || new Map({});
+    lock = lock.set("gravatar", gravatar.get("loaded") ? gravatar : null);
+    return lock.set("client", getClient(lock.get("clientID")));
+  });
 }
 
 export function addWatch(key, f) {
