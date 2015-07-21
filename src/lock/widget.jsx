@@ -27,6 +27,8 @@ export default class Widget extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    return this.props.submitHandler(this.props.lock);
+    if (this.props.submitHandler) {
+      this.props.submitHandler(this.props.lock);
+    }
   }
 }

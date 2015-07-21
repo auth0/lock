@@ -1,5 +1,5 @@
 import Auth0 from 'auth0-js';
-import StringUtils from '../utils/string_utils';
+import * as StringUtils from '../utils/string_utils';
 import { requestClientSuccess, requestClientTimeout, requestClientError } from '../client/action_creators';
 import LockActionCreators from './action_creators';
 import Store from '../control/store';
