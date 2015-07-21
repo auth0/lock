@@ -40,8 +40,8 @@
         $(".auth0-lock-input-username input").keyup(function() {
             if (this.value == "rickyrauch@gmail.com") {
                 $(".auth0-lock-header-logo").hide();
-                $(".auth0-lock-header-avatar").removeClass("auth0-lock-hide").addClass('animated fadeInDown');
                 $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("auth0-lock-no-grayscale");
+                $(".auth0-lock-header-avatar").removeClass("auth0-lock-hide").addClass('animated fadeInDown');
                 $('.auth0-lock-firstname').removeClass("auth0-lock-hide");
                 $('.auth0-lock-name').hide();
             }
@@ -62,7 +62,7 @@
 
 
 
-    <div class="auth0-lock " >
+    <div class="auth0-lock opened" >
       <div class="auth0-lock-overlay">
 
       </div>

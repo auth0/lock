@@ -1,0 +1,20 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'i' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.6
+4 verbose readDependencies loading dependencies from /Users/ricardorauch/Sites/package.json
+5 error install Couldn't read dependencies
+6 verbose stack Error: ENOENT, open '/Users/ricardorauch/Sites/package.json'
+6 verbose stack     at Error (native)
+7 verbose cwd /Users/ricardorauch/Sites/new-lock
+8 error Darwin 14.4.0
+9 error argv "node" "/usr/local/bin/npm" "i"
+10 error node v0.12.6
+11 error npm  v2.11.2
+12 error path /Users/ricardorauch/Sites/package.json
+13 error code ENOPACKAGEJSON
+14 error errno -2
+15 error package.json ENOENT, open '/Users/ricardorauch/Sites/package.json'
+15 error package.json This is most likely not a problem with npm itself.
+15 error package.json npm can't find a package.json file in your current directory.
+16 verbose exit [ -2, true ]
