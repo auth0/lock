@@ -10,6 +10,7 @@ import { subscribe } from './store/index';
 import renderCrashed from './crashed/render';
 import renderLoading from './loading/render';
 import renderPasswordlessEmail from './passwordless-email/render';
+import renderPasswordlessSMS from './passwordless-sms/render';
 
 export default class Auth0Lock {
   constructor(clientID, domain, options = {}) {
@@ -59,6 +60,8 @@ function element(lock) {
     return renderLoading(lock);
   case LockModes.PASSWORDLESS_EMAIL:
     return renderPasswordlessEmail(lock);
+  case LockModes.PASSWORDLESS_SMS:
+    return renderPasswordlessSMS(lock);
   default:
     throw new Error(`unknown lock mode ${mode}`);
   }

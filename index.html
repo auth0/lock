@@ -33,8 +33,8 @@
         var domain = "gnandretta.auth0.com";
         var lock = new Auth0Lock(clientID, domain);
         $('body').one("click", function(){
-          lock.showPasswordlessEmail({}, function(error) {
-            console.log('something went wrong', error);
+          lock.showPasswordlessSMS({}, function(error, stuff) {
+            console.log('cb', arguments);
           });
         });
       });
