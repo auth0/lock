@@ -13,7 +13,11 @@ export default class CountryCodeSelect extends React.Component {
     return (
       <div>
         <InputWrap isValid={true} name="search">
-          <input type="text" className="auth0-lock-input" value={this.state.search} onChange={::this.handleSearchChange}/>
+          <input type="text"
+            className="auth0-lock-input"
+            value={this.state.search}
+            onChange={::this.handleSearchChange}
+            autoFocus={this.props.autoFocus} />
         </InputWrap>
         <CountryCodeList countryCodes={::this.filteredCountryCodes()} selectHandler={this.props.selectHandler}/>
       </div>
