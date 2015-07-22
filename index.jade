@@ -72,17 +72,20 @@ html(lang='en')
               .auth0-lock-firstname.auth0-lock-hide Welcome Ricardo!
           //- .auth0-lock-header
           
+          .auth0-global-grobal-error
+            span We're sorry, something went wrong.
+            
           .auth0-lock-content
             .auth0-lock-signin-signup-mode.auth0-lock-hide 
               include includes/login-signup.jade
             
-            .auth0-lock-passwordless.auth0-lock-error
+            .auth0-lock-passwordless
               //- include includes/login-passwordless.jade
               .auth0-lock-form.auth0-lock-passwordless
                 p Enter your email address to sign in or create an account.
                 
                 .auth0-lock-input-email.auth0-lock-input
-                  .auth0-lock-error-message Invalid Email
+                  .auth0-lock-error-message.auth0-lock-hide Invalid Email
                   .auth0-lock-input-wrap
                     svg(width='32px', height='26px', viewbox='0 0 32 26', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns').auth0-lock-icon
                       defs
