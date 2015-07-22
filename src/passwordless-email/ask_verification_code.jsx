@@ -1,8 +1,8 @@
 import React from 'react';
-import CodeInput from '../forms/code_input';
-import { changeCode } from './actions';
+import VerificationCodeInput from '../forms/verification_code_input';
+import { changeVerificationCode } from './actions';
 
-export default class AskCode extends React.Component {
+export default class AskVerificationCode extends React.Component {
   render() {
     const { lock } = this.props;
     const autoFocus = lock.getIn(["showOptions", "focusInput"]);
@@ -13,18 +13,18 @@ export default class AskCode extends React.Component {
           We sent you a code to sign in. <br/>
           Please check your inbox.
         </div>
-        <CodeInput value={lock.get("code")}
+        <VerificationCodeInput value={lock.get("verificationCode")}
           isValid={true}
           disabled={lock.get("submitting")}
-          onChange={::this.handleCodeChange}
+          onChange={::this.handleVerificationCodeChange}
           autoFocus={autoFocus} />
       </div>
     );
   }
 
-  handleCodeChange(e) {
+  handleVerificationCodeChange(e) {
     const lockID = this.props.lock.get('id');
-    const code = e.target.value;
-    changeCode(lockID, code);
+    const verificationCode = e.target.value;
+    changeCode(lockID, verificationCode);
   }
 }

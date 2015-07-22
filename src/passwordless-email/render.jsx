@@ -1,7 +1,7 @@
 import React from 'react';
 import Lock from '../lock/lock';
 import AskEmail from './ask_email';
-import AskCode from './ask_code';
+import AskVerificationCode from './ask_verification_code';
 import Done from './done';
 import { LockStates } from '../control/constants';
 import { requestPasswordlessEmail, signIn } from './actions';
@@ -9,10 +9,10 @@ import { requestPasswordlessEmail, signIn } from './actions';
 export default function render(lock) {
   const state = lock.get("state");
   switch(state) {
-  case LockStates.ASK_CODE:
+  case LockStates.ASK_VERIFICATION_CODE:
     return (
-      <Lock lock={lock} showHeader={true} submitHandler={askCodeSubmitHandler}>
-        <AskCode />
+      <Lock lock={lock} showHeader={true} submitHandler={askVerificationCodeSubmitHandler}>
+        <AskVerificationCode />
       </Lock>
     );
   case LockStates.DONE:
@@ -33,6 +33,6 @@ function askEmailSubmitHandler(lock) {
   requestPasswordlessEmail(lock.get("id"));
 }
 
-function askCodeSubmitHandler(lock) {
+function askVerificationCodeSubmitHandler(lock) {
   signIn(lock.get("id"));
 }

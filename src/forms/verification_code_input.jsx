@@ -1,7 +1,7 @@
 import React from 'react';
 import InputWrap from './input_wrap';
 
-export default class CodeInput extends React.Component {
+export default class VerificationCodeInput extends React.Component {
   render() {
     const { isValid, ...props } = this.props;
 

@@ -37,7 +37,7 @@ export default {
   },
 
   LockStates: {
-    ASK_CODE: 'ASK_CODE',
+    ASK_VERIFICATION_CODE: 'ASK_VERIFICATION_CODE',
     CRASHED: 'CRASHED',
     DONE: 'DONE',
     FAILED_SIGN_IN: 'FAILED_SIGN_IN',

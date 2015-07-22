@@ -12,8 +12,8 @@ export function changeEmail(lockID, email) {
   });
 }
 
-export function changeCode(lockID, code) {
-  return updateLock(lockID, lock => lock.set("code", code));
+export function changeVerificationCode(lockID, verificationCode) {
+  return updateLock(lockID, lock => lock.set("verificationCode", verificationCode));
 }
 
 export function requestPasswordlessEmail(lockID) {
@@ -41,7 +41,7 @@ export function requestPasswordlessEmail(lockID) {
 export function requestPasswordlessEmailSuccess(lockID) {
   updateLock(lockID, lock => {
     const state = lock.get("send") === "link" ?
-      LockStates.DONE : LockStates.ASK_CODE;
+      LockStates.DONE : LockStates.ASK_VERIFICATION_CODE;
     return lock.set("submitting", false).set("state", state);
   });
 }
@@ -57,7 +57,7 @@ export function signIn(lockID) {
   const options = {
     connection: "email",
     username: lock.get("email"),
-    password: lock.get("code"),
+    password: lock.get("verificationCode"),
     sso: false,
     callbackURL: lock.getIn(["showOptions", "callbackURL"]),
     callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])

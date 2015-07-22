@@ -4,8 +4,8 @@ import { getLock, updateLock } from '../store/index';
 import { fullPhoneNumber, setCountryCode, setPhoneNumber, validPhoneNumber, setShowPhoneNumberError } from '../forms/index';
 import WebApi from '../lock/web_api';
 
-export function changeCode(lockID, code) {
-  return updateLock(lockID, lock => lock.set("code", code));
+export function changeVerificationCode(lockID, verificationCode) {
+  return updateLock(lockID, lock => lock.set("verificationCode", verificationCode));
 }
 
 export function changePhoneNumber(lockID, phoneNumber) {
@@ -48,7 +48,7 @@ function requestPasswordlessSMSSuccess(lockID) {
   updateLock(lockID, lock => {
     return lock.merge(Map({
       submitting: false,
-      state: LockStates.ASK_CODE
+      state: LockStates.ASK_VERIFICATION_CODE
     }));
   });
 }
@@ -64,7 +64,7 @@ export function signIn(lockID) {
   const options = {
     connection: "sms",
     username: fullPhoneNumber(lock),
-    password: lock.get("code"),
+    password: lock.get("verificationCode"),
     sso: false,
     callbackURL: lock.getIn(["showOptions", "callbackURL"]),
     callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
