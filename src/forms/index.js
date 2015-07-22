@@ -1,3 +1,18 @@
+import { Map } from 'immutable';
+import trim from 'trim';
+
+
+function valid(lock, field) {
+  return lock.getIn(["credentials", field, "valid"]);
+}
+
+function showError(lock, field) {
+  return lock.getIn(["credentials", field, "showError"]);
+}
+
+function setShowError(lock, field) {
+  return lock.setIn(["credentials", field, "showError"], true);
+}
 export function countryCode(lock) {
   return lock.getIn(["credentials", "phoneNumber", "countryCode"]);
 }
@@ -5,7 +20,6 @@ export function countryCode(lock) {
 export function setCountryCode(lock, countryCode) {
   return lock.setIn(["credentials", "phoneNumber", "countryCode"], countryCode);
 }
-
 
 export function phoneNumber(lock) {
   return lock.getIn(["credentials", "phoneNumber", "number"]);
@@ -15,8 +29,28 @@ export function fullPhoneNumber(lock) {
   return `${countryCode(lock)}${phoneNumber(lock)}`;
 }
 
+export function setPhoneNumber(lock, phoneNumber) {
+  const valid = validatePhoneNumber(phoneNumber);
+  return lock.mergeIn(["credentials", "phoneNumber"], Map({
+    number: phoneNumber,
+    valid: valid,
+    showError: showError(lock, "phoneNumber") && !valid
+  }));
+}
+
+export function validatePhoneNumber(phoneNumber) {
+  const regExp = /^[0-9]{1,14}$/;
+  return regExp.test(phoneNumber);
+}
+
+export function showPhoneNumberError(lock) {
+  return showError(lock, "phoneNumber") && !validPhoneNumber(lock);
+}
+
 export function validPhoneNumber(lock) {
-  const validate = lock.getIn(["credentials", "phoneNumber", "validate"]);
-  const valid = lock.getIn(["credentials", "phoneNumber", "valid"]);
-  return  validate && valid;
+  return valid(lock, "phoneNumber");
+}
+
+export function setShowPhoneNumberError(lock) {
+  return setShowError(lock, "phoneNumber");
 }

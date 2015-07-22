@@ -1,12 +1,20 @@
 import React from 'react';
 import Lock from '../lock/lock';
+import AskCode from './ask_code';
 import AskPhoneNumber from './ask_phone_number';
 import SelectCountryCode from './select_country_code';
 import { LockStates } from '../control/constants';
+import { requestPasswordlessSMS, signIn } from './actions';
 
 export default function render(lock) {
   const state = lock.get("state");
   switch(state) {
+  case LockStates.ASK_CODE:
+    return (
+      <Lock lock={lock} showHeader={true} submitHandler={askCodeSubmitHandler}>
+        <AskCode />
+      </Lock>
+    );
   case LockStates.READY:
     return (
       <Lock lock={lock} showHeader={true} submitHandler={askPhoneNumberSubmitHandler}>
@@ -26,5 +34,9 @@ export default function render(lock) {
 }
 
 function askPhoneNumberSubmitHandler(lock) {
-  console.error("unimplemented askPhoneNumberSubmitHandler");
+  requestPasswordlessSMS(lock.get("id"));
+}
+
+function askCodeSubmitHandler(lock) {
+  signIn(lock.get("id"));
 }

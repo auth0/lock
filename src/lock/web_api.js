@@ -120,6 +120,11 @@ class LockWebAPI {
       }
     });
   }
+
+  requestPasswordlessSMS(lockID, phoneNumber, cb) {
+    this._clients[lockID].startPasswordless({phoneNumber: phoneNumber}, cb);
+  }
+
 }
 
 export default new LockWebAPI();

@@ -1,7 +1,7 @@
 import React from 'react';
 import PhoneNumberInput from '../forms/phone_number_input';
-import { countryCode, phoneNumber } from '../forms/index';
-import { selectCountryCode } from './actions';
+import { countryCode, phoneNumber, showPhoneNumberError } from '../forms/index';
+import { selectCountryCode, changePhoneNumber } from './actions';
 
 export default class AskPhoneNumber extends React.Component {
   render() {
@@ -11,12 +11,17 @@ export default class AskPhoneNumber extends React.Component {
         <div className="auth0-lock-instructions">
           Enter your phone number to sign in or create an account
         </div>
-        <PhoneNumberInput isValid={true}
+        <PhoneNumberInput isValid={!showPhoneNumberError(lock)}
+          onChange={::this.handlePhoneNumberChange}
           countryCode={countryCode(lock)}
           countryCodeSelectionHandler={::this.handleCountryCodeSelection}
           value={phoneNumber(lock)} />
       </div>
     );
+  }
+
+  handlePhoneNumberChange(e) {
+    changePhoneNumber(this.props.lock.get('id'), e.target.value);
   }
 
   handleCountryCodeSelection(e) {

@@ -16,7 +16,7 @@ export function changeCode(lockID, code) {
   return updateLock(lockID, lock => lock.set("code", code));
 }
 
-export function requestPasswordlessEmail(lockID, email, send) {
+export function requestPasswordlessEmail(lockID) {
   let submit = false;
   updateLock(lockID, lock => {
     if (lock.get("validEmail")) {
@@ -60,7 +60,7 @@ export function signIn(lockID) {
     password: lock.get("code"),
     sso: false,
     callbackURL: lock.getIn(["showOptions", "callbackURL"]),
-    callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"]),
+    callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
   };
   WebApi.signIn(lockID, options, true, signInSuccess, signInError);
 }

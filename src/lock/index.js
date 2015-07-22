@@ -18,7 +18,7 @@ export function setup(attrs) {
     validEmail: false,
     validateEmail: false,
     credentials: {
-      phoneNumber: {countryCode: "+1", number: "", valid: false, validate: false}
+      phoneNumber: {countryCode: "+1", number: "", valid: false, showError: false}
     }
   });
 }
