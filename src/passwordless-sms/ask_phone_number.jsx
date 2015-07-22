@@ -15,7 +15,8 @@ export default class AskPhoneNumber extends React.Component {
           onChange={::this.handlePhoneNumberChange}
           countryCode={countryCode(lock)}
           countryCodeSelectionHandler={::this.handleCountryCodeSelection}
-          value={phoneNumber(lock)} />
+          value={phoneNumber(lock)}
+          autoFocus={lock.get(["showOptions", "focusInput"])} />
       </div>
     );
   }
