@@ -6,8 +6,8 @@ export default class CodeInput extends React.Component {
     const { isValid, ...props } = this.props;
 
     return (
-      <InputWrap name="code" isValid={isValid}>
-        <input type="text" name="code" className="auth0-lock-input" placeholder="Code" {...props}/>
+      <InputWrap name="verification-code" isValid={isValid}>
+        <input type="text" name="verification-code" className="auth0-lock-input" placeholder="Code" {...props}/>
       </InputWrap>
     );
   }
