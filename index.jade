@@ -1,0 +1,96 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    
+    title Lock
+    
+    link(href='css/index.css', rel='stylesheet')
+    link(href='css/demo.css', rel='stylesheet')
+    
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+    script(type='text/javascript').
+      $(function() {
+        
+        $('body').click(function(){
+          $('.auth0-lock').addClass('opened');
+          return false;
+        });
+        
+        $('.auth0-lock-close').click(function(){
+          $('.auth0-lock').removeClass('opened');
+          return false;
+        });
+        
+        $('.auth0-lock-tabs li').click(function(){
+          $('.auth0-lock-tabs li').toggleClass("auth0-lock-tabs-current");
+          $('.auth0-lock-form').toggleClass("auth0-lock-hide");
+        });
+        
+        $('.auth0-lock-submit').click(function(){
+          $('.auth0-lock-widget').removeClass('animated shake');
+          $('.auth0-lock-widget').addClass('animated shake');
+        });
+        
+        $(".auth0-lock-input-username input").keyup(function() {
+          if (this.value == "rickyrauch@gmail.com") {
+            $(".auth0-lock-header-logo").hide();
+            $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("auth0-lock-no-grayscale");
+            $(".auth0-lock-header-avatar").removeClass("auth0-lock-hide").addClass('animated fadeInDown');
+            $('.auth0-lock-firstname').removeClass("auth0-lock-hide");
+            $('.auth0-lock-name').hide();
+          }
+          else {
+          // $(".auth0-lock-header-logo").show();
+          // $(".auth0-lock-header-avatar").hide();
+          // $('.auth0-lock-firstname').hide();
+          // $('.auth0-lock-name').show();
+          }
+        });
+      });
+      
+  body
+    .auth0-lock.opened
+      
+      .auth0-lock-overlay
+      
+      .auth0-lock-center
+        
+        form.auth0-lock-widget
+          .auth0-lock-header
+            .auth0-lock-header-bg
+              .auth0-lock-header-bg-inner
+            svg.auth0-lock-close(enable-background='new 0 0 128 128', height='128px', id='Слой_1', version='1.1', viewbox='0 0 128 128', width='128px', xml:space='preserve', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+              g
+                polygon(fill='#373737', points='123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   ')
+            .auth0-lock-header-welcome
+              img.auth0-lock-header-logo(src='img/badge.svg')
+              img.auth0-lock-header-avatar.auth0-lock-hide(src='img/avatar.png')
+              .auth0-lock-name Auth0
+              .auth0-lock-firstname.auth0-lock-hide Welcome Ricardo!
+          //- .auth0-lock-header
+          
+          .auth0-lock-content
+            .auth0-lock-signin-signup-mode.auth0-lock-hide 
+              include includes/login-signup.jade
+            
+            .auth0-lock-passwordless
+              //- include includes/login-passwordless.jade
+              .auth0-lock-form.auth0-lock-login
+                .auth0-lock-input-wrap.auth0-lock-input-email
+                  i.auth0-lock-icon
+                  input.auth0-lock-input(type='text', name='name', value='', placeholder='Signup with your email')
+
+              
+          //- .auth0-lock-content
+        
+          button.auth0-lock-submit(type='submit')
+            i.auth0-lock-icon
+          a.auth0-lock-badge.auth0-lock-icon(href='https://auth0.com/', target='_blank')
+            
+        //- .auth0-lock-widget
+      //- .auth0-lock-center
+    //- .auth0-lock
+  

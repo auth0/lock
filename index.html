@@ -4,172 +4,113 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Lock</title>
-
     <link href="css/index.css" rel="stylesheet">
     <link href="css/demo.css" rel="stylesheet">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- // <script src="animateplus/animate.min.js"></script> -->
-
     <script type="text/javascript">
       $(function() {
+      
         $('body').click(function(){
           $('.auth0-lock').addClass('opened');
           return false;
         });
-
+        
         $('.auth0-lock-close').click(function(){
           $('.auth0-lock').removeClass('opened');
           return false;
         });
-
+        
         $('.auth0-lock-tabs li').click(function(){
           $('.auth0-lock-tabs li').toggleClass("auth0-lock-tabs-current");
           $('.auth0-lock-form').toggleClass("auth0-lock-hide");
         });
-
+        
         $('.auth0-lock-submit').click(function(){
           $('.auth0-lock-widget').removeClass('animated shake');
-
           $('.auth0-lock-widget').addClass('animated shake');
         });
-
-
+        
         $(".auth0-lock-input-username input").keyup(function() {
-            if (this.value == "rickyrauch@gmail.com") {
-                $(".auth0-lock-header-logo").hide();
-                $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("auth0-lock-no-grayscale");
-                $(".auth0-lock-header-avatar").removeClass("auth0-lock-hide").addClass('animated fadeInDown');
-                $('.auth0-lock-firstname').removeClass("auth0-lock-hide");
-                $('.auth0-lock-name').hide();
-            }
-            else {
-              // $(".auth0-lock-header-logo").show();
-              // $(".auth0-lock-header-avatar").hide();
-              // $('.auth0-lock-firstname').hide();
-              // $('.auth0-lock-name').show();
-            }
+          if (this.value == "rickyrauch@gmail.com") {
+            $(".auth0-lock-header-logo").hide();
+            $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("auth0-lock-no-grayscale");
+            $(".auth0-lock-header-avatar").removeClass("auth0-lock-hide").addClass('animated fadeInDown');
+            $('.auth0-lock-firstname').removeClass("auth0-lock-hide");
+            $('.auth0-lock-name').hide();
+          }
+          else {
+          // $(".auth0-lock-header-logo").show();
+          // $(".auth0-lock-header-avatar").hide();
+          // $('.auth0-lock-firstname').hide();
+          // $('.auth0-lock-name').show();
+          }
         });
-
-
-
       });
+      
     </script>
   </head>
   <body>
-
-
-
-    <div class="auth0-lock opened" >
-      <div class="auth0-lock-overlay">
-
-      </div>
-
+    <div class="auth0-lock opened">
+      <div class="auth0-lock-overlay"></div>
       <div class="auth0-lock-center">
-
         <form class="auth0-lock-widget">
-
           <div class="auth0-lock-header">
-
             <div class="auth0-lock-header-bg">
               <div class="auth0-lock-header-bg-inner"></div>
             </div>
-
-            <svg enable-background="new 0 0 128 128" height="128px" class="auth0-lock-close" id="Слой_1" version="1.1" viewBox="0 0 128 128" width="128px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><polygon fill="#373737" points="123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   "/></g></svg>
-
-            <div class="auth0-lock-header-welcome">
-
-              <img class="auth0-lock-header-logo" src="img/badge.svg" />
-
-              <img class="auth0-lock-header-avatar auth0-lock-hide" src="img/avatar.png" />
-
+            <svg enable-background="new 0 0 128 128" height="128px" id="Слой_1" version="1.1" viewbox="0 0 128 128" width="128px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="auth0-lock-close">
+              <g>
+                <polygon fill="#373737" points="123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   "></polygon>
+              </g>
+            </svg>
+            <div class="auth0-lock-header-welcome"><img src="img/badge.svg" class="auth0-lock-header-logo"><img src="img/avatar.png" class="auth0-lock-header-avatar auth0-lock-hide">
               <div class="auth0-lock-name">Auth0</div>
-
-              <div class="auth0-lock-firstname auth0-lock-hide" >Welcome Ricardo!</div>
-
+              <div class="auth0-lock-firstname auth0-lock-hide">Welcome Ricardo!</div>
             </div>
-
           </div>
-
           <div class="auth0-lock-content">
-
-            <ul class="auth0-lock-tabs">
-              <li class="auth0-lock-tabs-login auth0-lock-tabs-current"><a class="" href="">Login</a></li>
-              <li><a class="auth0-lock-tabs-signup" href="">Sign Up</a></li>
-            </ul>
-
-            <div class="auth0-lock-form auth0-lock-login">
-              <div class="auth0-lock-input-wrap auth0-lock-input-username">
-                <i class="auth0-lock-icon"></i>
-                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
+            <div class="auth0-lock-signin-signup-mode auth0-lock-hide">
+              <ul class="auth0-lock-tabs">
+                <li class="auth0-lock-tabs-login auth0-lock-tabs-current"><a href="">Login</a></li>
+                <li><a href="" class="auth0-lock-tabs-signup">Sign Up</a></li>
+              </ul>
+              <div class="auth0-lock-form auth0-lock-login">
+                <div class="auth0-lock-input-wrap auth0-lock-input-username"><i class="auth0-lock-icon"></i>
+                  <input type="text" name="name" value="" placeholder="Email" class="auth0-lock-input">
+                </div>
+                <div class="auth0-lock-input-wrap auth0-lock-input-password"><i class="auth0-lock-icon"></i>
+                  <input type="text" name="name" value="" placeholder="Password" class="auth0-lock-input">
+                </div><a href="#" class="auth0-lock-forgot-link">Don't remember your password?</a>
               </div>
-
-              <div class="auth0-lock-input-wrap auth0-lock-input-password">
-                <i class="auth0-lock-icon"></i>
-                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Password">
+              <div class="auth0-lock-form auth0-lock-signup auth0-lock-hide">
+                <div class="auth0-lock-input-wrap auth0-lock-input-username"><i class="auth0-lock-icon"></i>
+                  <input type="text" name="name" value="" placeholder="Email" class="auth0-lock-input">
+                </div>
+                <div class="auth0-lock-input-wrap auth0-lock-input-password"><i class="auth0-lock-icon"></i>
+                  <input type="text" name="name" value="" placeholder="Create Password" class="auth0-lock-input">
+                </div><small class="auth0-lock-terms">By signing up, you agree to our<a href="/terms" target="_new">terms of service</a> and<a href="/privacy" target="_new">privacy policy</a>.</small>
               </div>
-
-              <a href="#" class="auth0-lock-forgot-link">Don't remember your password?</a>
+              <div class="auth0-lock-form auth0-lock-forgot auth0-lock-hide">
+                <div class="auth0-lock-input-wrap auth0-lock-input-username"><i class="auth0-lock-icon"></i>
+                  <input type="text" name="name" value="" placeholder="Email" class="auth0-lock-input">
+                </div>
+                <div class="auth0-lock-input-wrap auth0-lock-input-password"><i class="auth0-lock-icon"></i>
+                  <input type="text" name="name" value="" placeholder="Create Password" class="auth0-lock-input">
+                </div><small class="auth0-lock-terms">By signing up, you agree to our<a href="/terms" target="_new">terms of service</a> and<a href="/privacy" target="_new">privacy policy</a>.</small>
+              </div>
             </div>
-
-            <div class="auth0-lock-form auth0-lock-signup auth0-lock-hide">
-
-              <div class="auth0-lock-input-wrap auth0-lock-input-username">
-                <i class="auth0-lock-icon"></i>
-                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
+            <div class="auth0-lock-passwordless">
+              <div class="auth0-lock-form auth0-lock-login">
+                <div class="auth0-lock-input-wrap auth0-lock-input-email"><i class="auth0-lock-icon"></i>
+                  <input type="text" name="name" value="" placeholder="Signup with your email" class="auth0-lock-input">
+                </div>
               </div>
-
-              <div class="auth0-lock-input-wrap auth0-lock-input-password">
-                <i class="auth0-lock-icon"></i>
-                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Create Password">
-              </div>
-
-              <small class="auth0-lock-terms">By signing up, you agree to our <a href="/terms" target="_new">terms of service</a> and <a href="/privacy" target="_new">privacy policy</a>.</small>
-
             </div>
-            <!-- .auth0-lock-form.auth0-lock-signup -->
-
-
-            <div class="auth0-lock-form auth0-lock-forgot auth0-lock-hide">
-
-              <div class="auth0-lock-input-wrap auth0-lock-input-username">
-                <i class="auth0-lock-icon"></i>
-                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Email">
-              </div>
-
-              <div class="auth0-lock-input-wrap auth0-lock-input-password">
-                <i class="auth0-lock-icon"></i>
-                <input type="text" name="name" value="" class="auth0-lock-input" placeholder="Create Password">
-              </div>
-
-              <small class="auth0-lock-terms">By signing up, you agree to our <a href="/terms" target="_new">terms of service</a> and <a href="/privacy" target="_new">privacy policy</a>.</small>
-
-            </div>
-            <!-- .auth0-lock-form.auth0-lock-forgot -->
-
           </div>
-          <!-- .auth0-lock-content -->
-
-          <button type="submit" class="auth0-lock-submit">
-            <i class="auth0-lock-icon"></i>
-          </button>
-
-          <a href="https://auth0.com/" target="_blank" class="auth0-lock-badge auth0-lock-icon"></a>
-
+          <button type="submit" class="auth0-lock-submit"><i class="auth0-lock-icon"></i></button><a href="https://auth0.com/" target="_blank" class="auth0-lock-badge auth0-lock-icon"></a>
         </form>
-        <!-- .auth0-lock-widget  -->
       </div>
-
-      <!-- .auth0-lock-center -->
     </div>
-    <!--.auth0-lock -->
-
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
   </body>
 </html>
