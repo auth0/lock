@@ -60,3 +60,8 @@ export function validateEmail(email) {
   const result = regExp.exec(trim(email.toLowerCase()));
   return result && result[0];
 }
+
+export function validatePassword(password) {
+  const result = trim(password);
+  return result.length > 3 ? result : null;
+}
