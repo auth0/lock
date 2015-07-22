@@ -54,3 +54,9 @@ export function validPhoneNumber(lock) {
 export function setShowPhoneNumberError(lock) {
   return setShowError(lock, "phoneNumber");
 }
+
+export function validateEmail(email) {
+  const regExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const result = regExp.exec(trim(email.toLowerCase()));
+  return result && result[0];
+}

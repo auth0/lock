@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import Immutable, { Map } from 'immutable';
 import { ActionTypes, LockStates, Events } from './constants';
 import Client from '../client/client';
-import EmailCredentials from '../lock/credentials/email';
+import { validateEmail } from '../credentials/index';
 import PasswordCredentials from '../lock/credentials/password';
 import Dispatcher from './dispatcher';
 
@@ -33,7 +33,7 @@ export default class Store extends EventEmitter {
           break;
         case ActionTypes.INPUT_EMAIL:
           if (!this._state.getIn(["locks", action.lockID, "validations", "email"])) {
-            if (EmailCredentials.validateEmail(action.email)) {
+            if (validateEmail(action.email)) {
               this._state = this._state.setIn(
                 ["locks", action.lockID, "validations", "email"],
                 true

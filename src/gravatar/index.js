@@ -1,9 +1,9 @@
 import { md5 } from 'blueimp-md5';
-import EmailCredentials from '../lock/credentials/email';
+import { validateEmail } from '../credentials/index';
 import jsonp from 'jsonp';
 
 export function profile(email, success, error) {
-  email = EmailCredentials.validateEmail(email);
+  email = validateEmail(email);
   if (email) {
     const url = `https://secure.gravatar.com/${md5(email)}.json`;
     jsonp(url, function (err, obj) {
@@ -21,7 +21,7 @@ export function profile(email, success, error) {
 }
 
 export function img(email, success, error) {
-  email = EmailCredentials.validateEmail(email);
+  email = validateEmail(email);
   if (email) {
     const url = `https://secure.gravatar.com/avatar/${md5(email)}?d=404`;
     const img = document.createElement("img");

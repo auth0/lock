@@ -1,12 +1,12 @@
 import { LockStates } from '../control/constants';
 import WebApi from '../lock/web_api';
 import { getLock, updateLock } from '../store/index';
-import EmailCredentials from '../lock/credentials/email';
+import { validateEmail } from '../credentials/index';
 import * as l from '../lock/index';
 
 export function changeEmail(lockID, email) {
   updateLock(lockID, lock => {
-    const valid = !!EmailCredentials.validateEmail(email);
+    const valid = !!validateEmail(email);
     return l.changeEmail(lock, email, !!valid)
       .set("validateEmail", lock.get("validateEmail") && !valid);
   });
