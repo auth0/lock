@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 import { LockStates } from '../control/constants';
 import { getLock, updateLock } from '../store/index';
-import { fullPhoneNumber, setCountryCode, setPhoneNumber, validPhoneNumber, setShowPhoneNumberError } from '../forms/index';
+import { fullPhoneNumber, setCountryCode, setPhoneNumber, validPhoneNumber, setShowPhoneNumberError } from '../credentials/index';
 import WebApi from '../lock/web_api';
 
 export function changeVerificationCode(lockID, verificationCode) {

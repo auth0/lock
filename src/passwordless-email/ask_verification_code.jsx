@@ -1,5 +1,5 @@
 import React from 'react';
-import VerificationCodeInput from '../forms/verification_code_input';
+import VerificationCodeInput from '../credentials/verification_code_input';
 import { changeVerificationCode } from './actions';
 
 export default class AskVerificationCode extends React.Component {

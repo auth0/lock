@@ -2,7 +2,7 @@ import React from 'react';
 import SignInErrorMessage from './error_message';
 import ModeTabs from '../mode_tabs';
 import LockActionCreators from '../action_creators';
-import InputWrap from '../../forms/input_wrap';
+import InputWrap from '../../credentials/input_wrap';
 
 export default class SignInContent extends React.Component {
   _handleEmailChange() {

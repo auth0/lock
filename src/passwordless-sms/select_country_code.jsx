@@ -1,5 +1,5 @@
 import React from 'react';
-import CountryCodeSelect from '../forms/country_code_select';
+import CountryCodeSelect from '../credentials/country_code_select';
 import { changeCountryCode } from './actions';
 
 export default class SelectCountryCode extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import EmailInput from '../forms/email_input';
+import EmailInput from '../credentials/email_input';
 import { changeEmail } from './actions';
 
 export default class AskEmail extends React.Component {

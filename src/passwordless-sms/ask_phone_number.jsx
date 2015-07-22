@@ -1,6 +1,6 @@
 import React from 'react';
-import PhoneNumberInput from '../forms/phone_number_input';
-import { countryCode, phoneNumber, showPhoneNumberError } from '../forms/index';
+import PhoneNumberInput from '../credentials/phone_number_input';
+import { countryCode, phoneNumber, showPhoneNumberError } from '../credentials/index';
 import { selectCountryCode, changePhoneNumber } from './actions';
 
 export default class AskPhoneNumber extends React.Component {
