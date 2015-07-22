@@ -1,5 +1,6 @@
 import Immutable, { Map } from 'immutable';
 import { LockStates, LockModes } from '../control/constants';
+import { isSmallScreen } from '../utils/media_utils';
 
 export function setup(attrs) {
   const { clientID, lockID, domain, options } = attrs;
@@ -30,7 +31,7 @@ export function prepareShowOptions(options) {
     container: options.container || false,
     icon: options.icon || false,
     closable: undefined === options.closable ? !options.container : !!options.closable,
-    focusInput: undefined === options.focusInput ? !options.container : !!options.focusInput,
+    focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     signInCallback: options.signInCallback,
     responseType: responseType,
