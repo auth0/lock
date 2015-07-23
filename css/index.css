@@ -97,9 +97,10 @@
 }
 .auth0-lock .auth0-lock-form p {
   font-size: 14px;
-  line-height: 2;
+  line-height: 1.8;
   text-align: center;
   margin-top: 0;
+  margin-bottom: 20px;
   color: #666;
 }
 .auth0-lock .auth0-lock-hide {
@@ -281,6 +282,7 @@
   position: relative;
   background: #f1f1f1;
   overflow: hidden;
+  transition: border-color 0.8s;
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-icon {
   position: absolute;
