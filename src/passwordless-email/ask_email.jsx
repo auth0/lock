@@ -1,5 +1,6 @@
 import React from 'react';
 import EmailInput from '../credentials/email_input';
+import { email, visiblyInvalidEmail } from '../credentials/index';
 import { changeEmail } from './actions';
 
 export default class AskEmail extends React.Component {
@@ -10,8 +11,8 @@ export default class AskEmail extends React.Component {
         <div className="auth0-lock-instructions">
           Enter your email address to sign in or create an account
         </div>
-        <EmailInput value={lock.get("email")}
-          isValid={!lock.get("validateEmail") || lock.get("validEmail")}
+        <EmailInput value={email(lock)}
+          isValid={!visiblyInvalidEmail(lock)}
           disabled={lock.get("submitting")}
           onChange={::this.handleEmailChange}
           gravatar={lock.getIn(["showOptions", "gravatar"])}

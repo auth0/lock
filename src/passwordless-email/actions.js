@@ -1,15 +1,11 @@
 import { LockStates } from '../control/constants';
 import WebApi from '../lock/web_api';
 import { getLock, updateLock } from '../store/index';
-import { validateEmail } from '../credentials/index';
+import { email, setEmail, setShowInvalidEmail, validateEmail, validEmail } from '../credentials/index';
 import * as l from '../lock/index';
 
 export function changeEmail(lockID, email) {
-  updateLock(lockID, lock => {
-    const valid = !!validateEmail(email);
-    return l.changeEmail(lock, email, !!valid)
-      .set("validateEmail", lock.get("validateEmail") && !valid);
-  });
+  updateLock(lockID, setEmail, email);
 }
 
 export function changeVerificationCode(lockID, verificationCode) {
@@ -19,11 +15,11 @@ export function changeVerificationCode(lockID, verificationCode) {
 export function requestPasswordlessEmail(lockID) {
   let submit = false;
   updateLock(lockID, lock => {
-    if (lock.get("validEmail")) {
+    if (validEmail(lock)) {
       submit = true;
       return lock.set("submitting", true);
     } else {
-      return lock.set("validateEmail", true);
+      return setShowInvalidEmail(lock);
     }
   });
 
@@ -31,7 +27,7 @@ export function requestPasswordlessEmail(lockID) {
     const lock = getLock(lockID);
     WebApi.requestPasswordlessEmail(
       lockID,
-      lock.get("email"),
+      email(lock),
       lock.get("send"),
       lock.getIn(["showOptions", "authParams"])
     );
@@ -56,7 +52,7 @@ export function signIn(lockID) {
   const lock = getLock(lockID);
   const options = {
     connection: "email",
-    username: lock.get("email"),
+    username: email(lock),
     password: lock.get("verificationCode"),
     sso: false,
     callbackURL: lock.getIn(["showOptions", "callbackURL"]),

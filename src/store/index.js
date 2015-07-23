@@ -1,5 +1,6 @@
 import atom from '../atom/index';
 import Immutable, { Map } from 'immutable';
+import { email } from '../credentials/index';
 
 const store = atom(Immutable.fromJS({client: {}, gravatar: {}, lock: {}}));
 
@@ -69,7 +70,7 @@ export function updateGravatar(email, f) {
 
 function deriveUIState(state) {
   return state.get("lock").map(lock => {
-    const gravatar = getGravatar(lock.get("email")) || new Map({});
+    const gravatar = getGravatar(email(lock)) || new Map({});
     lock = lock.set("gravatar", gravatar.get("loaded") ? gravatar : null);
     return lock.set("client", getClient(lock.get("clientID")));
   });

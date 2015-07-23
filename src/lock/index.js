@@ -15,11 +15,12 @@ export function setup(attrs) {
     state: LockStates.WAITING_CLIENT_CONFIG,
 
     submitting: false,
-    email: '',
-    validEmail: false,
-    validateEmail: false,
+    // email: '',
+    // validEmail: false,
+    // validateEmail: false,
     credentials: {
-      phoneNumber: {countryCode: "+1", number: "", valid: false, showError: false}
+      phoneNumber: {countryCode: "+1", number: "", valid: false, showError: false},
+      email: {email: "", valid: true, showInvalid: false}
     }
   });
 }
@@ -38,10 +39,6 @@ export function prepareShowOptions(options) {
     callbackURL: options.callbackURL || null,
     callbackOnLocationHash: responseType === "token" || null,
   });
-}
-
-export function changeEmail(lock, email, valid) {
-  return lock.merge(Map({email: email, validEmail: valid}));
 }
 
 export function hasClient(lock, clientID) {
