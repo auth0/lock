@@ -6,6 +6,9 @@ export default class InputWrap extends React.Component {
     if (!this.props.isValid) {
       className += " auth0-lock-input-invalid";
     }
+    if (this.props.disabled) {
+      className += " auth0-lock-input-disabled";
+    }
 
     return (
       <div className={className}>

@@ -16,7 +16,8 @@ export default class AskPhoneNumber extends React.Component {
           countryCode={countryCode(lock)}
           countryCodeSelectionHandler={::this.handleCountryCodeSelection}
           value={phoneNumber(lock)}
-          autoFocus={lock.get(["showOptions", "focusInput"])} />
+          autoFocus={lock.getIn(["showOptions", "focusInput"])}
+          disabled={lock.get("submitting")} />
       </div>
     );
   }
@@ -25,8 +26,7 @@ export default class AskPhoneNumber extends React.Component {
     changePhoneNumber(this.props.lock.get('id'), e.target.value);
   }
 
-  handleCountryCodeSelection(e) {
-    e.preventDefault();
+  handleCountryCodeSelection() {
     selectCountryCode(this.props.lock.get("id"));
   }
 }

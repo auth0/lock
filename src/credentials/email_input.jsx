@@ -5,9 +5,10 @@ import { requestGravatar } from '../gravatar/actions';
 export default class EmailInput extends React.Component {
   render() {
     const { isValid, onChange, gravatar, ...props } = this.props;
+    const { disabled } = props;
 
     return (
-      <InputWrap name="email" isValid={isValid}>
+      <InputWrap name="email" isValid={isValid} disabled={disabled}>
         <input type="text"
           name="email"
           className="auth0-lock-input"
