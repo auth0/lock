@@ -33,6 +33,31 @@ breakpoint(point, value = 0)
   bottom: 20px
   right: 20px;
 
+
+.auth0-loading
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:30px;
+  height:30px;
+  margin:-20px 0 0 -20px;
+  border-width: 5px;
+  border-style:solid;
+  border-color: #333 #333 rgba(0,0,0,.5) rgba(0,0,0,.5);
+  opacity:.9;
+  border-radius:20px;
+  -webkit-animation:rotate 1s linear infinite;
+  -ms-animation:rotate 1s linear infinite;
+
+@-webkit-keyframes rotate{
+  0%{-webkit-transform:rotate(0deg)}
+  100%{-webkit-transform:rotate(360deg)}
+}
+@-ms-keyframes rotate{
+  0%{-ms-transform:rotate(0deg)}
+  100%{-ms-transform:rotate(360deg)}
+}
+
 .auth0-lock
   font-family: "Avenir", sans-serif;
   text-rendering: optimizeLegibility;
@@ -226,7 +251,7 @@ breakpoint(point, value = 0)
         background-size:  500px ;
 
   .auth0-global-grobal-error
-    background: #e74c3c;
+    background: #F04848;
     color: white;
     text-align: center;
     padding: 6px 20px;
@@ -235,6 +260,7 @@ breakpoint(point, value = 0)
     display: none;
     span
       display: none;
+      animation-delay: .2s;
 
 
   .auth0-lock-content
@@ -288,8 +314,6 @@ breakpoint(point, value = 0)
     background: #f1f1f1;
     overflow: hidden;
     transition: border-color .8s;
-
-
 
     .auth0-lock-icon
       position: absolute
@@ -352,6 +376,8 @@ breakpoint(point, value = 0)
     display: block;
     width: 100%;
     position: fixed;
+    overflow: hidden;
+    position: relative;
     bottom: 0;
     transition: background-color .2s ease-in-out;
     i
@@ -368,6 +394,7 @@ breakpoint(point, value = 0)
 
     +breakpoint("mobile-landscape")
       position: static;
+      position: relative;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
 
@@ -392,6 +419,17 @@ breakpoint(point, value = 0)
       i:before
         content: "…"
         left: 0;
+
+    .auth0-loading
+      // top: 10px;
+      visibility: hidden;
+
+  .auth0-lock-submit-loading
+    background: #E7E9EB
+    transition: background-color .7s ease;
+    cursor: initial;
+    &:hover
+      background: #E7E9EB;
 
   .auth0-lock-forgot-link
     font-size 12px;

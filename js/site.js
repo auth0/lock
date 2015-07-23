@@ -17,13 +17,27 @@ $(function() {
 
   $('.auth0-lock-submit').click(function(){
 
-    if ($('.auth0-lock-input').val() == '') {
+    if ($('.auth0-lock-input-email').val() === '') {
 
 
       $('.auth0-lock-input-block-email').addClass('auth0-lock-error');
       $('.auth0-lock-input-block-email').addClass('animated pulse');
 
+    }else if ($('.auth0-lock-input-email').val() === "rickyrauch@gmail.com") {
+
+      $('.auth0-lock-submit').addClass('auth0-lock-submit-loading');
+
+      $('.auth0-lock-submit i').addClass('animated fadeOutDownBig');
+
+      $('.auth0-lock-submit .auth0-loading').addClass('animated fadeInDown');
+
+      console.log('value correct');
+
+    }else{
+
     }
+
+    return false;
 
   });
 

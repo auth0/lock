@@ -3775,6 +3775,39 @@ Copyright (c) 2015 Daniel Eden
   bottom: 20px;
   right: 20px;
 }
+.auth0-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -20px 0 0 -20px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 #333 rgba(0,0,0,0.5) rgba(0,0,0,0.5);
+  opacity: 0.9;
+  border-radius: 20px;
+  -webkit-animation: rotate 1s linear infinite;
+  -ms-animation: rotate 1s linear infinite;
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-ms-keyframes rotate {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+
+  100% {
+    -ms-transform: rotate(360deg);
+  }
+}
 .auth0-lock {
   font-family: "Avenir", sans-serif;
   text-rendering: optimizeLegibility;
@@ -3975,7 +4008,7 @@ Copyright (c) 2015 Daniel Eden
   background-size: 500px;
 }
 .auth0-lock .auth0-global-grobal-error {
-  background: #e74c3c;
+  background: #f04848;
   color: #fff;
   text-align: center;
   padding: 6px 20px;
@@ -3985,6 +4018,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .auth0-lock .auth0-global-grobal-error span {
   display: none;
+  animation-delay: 0.2s;
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px 40px;
@@ -4105,6 +4139,8 @@ Copyright (c) 2015 Daniel Eden
   display: block;
   width: 100%;
   position: fixed;
+  overflow: hidden;
+  position: relative;
   bottom: 0;
   transition: background-color 0.2s ease-in-out;
 }
@@ -4123,6 +4159,7 @@ Copyright (c) 2015 Daniel Eden
 @media (min-width: 568px) {
   .auth0-lock .auth0-lock-submit {
     position: static;
+    position: relative;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
   }
@@ -4149,6 +4186,17 @@ Copyright (c) 2015 Daniel Eden
 .auth0-lock .auth0-lock-submit[disabled] i:before {
   content: "…";
   left: 0;
+}
+.auth0-lock .auth0-lock-submit .auth0-loading {
+  visibility: hidden;
+}
+.auth0-lock .auth0-lock-submit-loading {
+  background: #e7e9eb;
+  transition: background-color 0.7s ease;
+  cursor: initial;
+}
+.auth0-lock .auth0-lock-submit-loading:hover {
+  background: #e7e9eb;
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;
