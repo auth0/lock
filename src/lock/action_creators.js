@@ -1,4 +1,3 @@
-import Dispatcher from '../control/dispatcher';
 import { ActionTypes } from '../control/constants';
 import LockWebAPI from './web_api';
 import * as Gravatar from '../gravatar/index';
