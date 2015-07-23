@@ -95,6 +95,37 @@ export function setShowInvalidEmail(lock, value = true) {
   return setShowInvalid(lock, "email", value);
 }
 
+// verification code
+
+export function verificationCode(lock) {
+  return lock.getIn(["credentials", "verificationCode", "verificationCode"]);
+}
+
+export function setVerificationCode(lock, verificationCode) {
+  const valid = validateVerificationCode(verificationCode);
+  return lock.mergeIn(["credentials", "verificationCode"], Map({
+    verificationCode: verificationCode,
+    valid: valid,
+    showInvalid: showInvalid(lock, "verificationCode") && !valid
+  }));
+}
+
+export function validateVerificationCode(verificationCode) {
+  return trim(verificationCode).length > 0;
+}
+
+export function validVerificationCode(lock) {
+  return valid(lock, "verificationCode");
+}
+
+export function visiblyInvalidVerificationCode(lock) {
+  return visiblyInvalid(lock, "verificationCode");
+}
+
+export function setShowInvalidVerificationCode(lock, value = true) {
+  return setShowInvalid(lock, "verificationCode", value);
+}
+
 // password
 
 export function validatePassword(password) {

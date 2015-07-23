@@ -1,6 +1,7 @@
 import React from 'react';
 import VerificationCodeInput from '../credentials/verification_code_input';
 import { changeVerificationCode } from './actions';
+import { verificationCode, visiblyInvalidVerificationCode } from '../credentials/index';
 
 export default class AskVerificationCode extends React.Component {
   render() {
@@ -13,8 +14,8 @@ export default class AskVerificationCode extends React.Component {
           We sent you a code to sign in. <br/>
           Please check your phone.
         </div>
-        <VerificationCodeInput value={lock.get("verificationCode")}
-          isValid={true}
+        <VerificationCodeInput value={verificationCode(lock)}
+          isValid={!visiblyInvalidVerificationCode(lock)}
           disabled={lock.get("submitting")}
           onChange={::this.handleVerificationCodeChange}
           autoFocus={autoFocus} />
