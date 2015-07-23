@@ -25,7 +25,7 @@ $(function() {
 
     }else if ($('.auth0-lock-input-email').val() === "rickyrauch@gmail.com") {
 
-      $('.auth0-lock-submit').addClass('auth0-lock-submit-loading');
+      $('.auth0-lock').addClass('auth0-lock-submit-loading');
 
       $('.auth0-lock-submit i').addClass('animated fadeOutDownBig');
 

@@ -159,6 +159,7 @@ breakpoint(point, value = 0)
       -webkit-transition-delay: 0s;
       width: 300px;
       margin: auto;
+      background: white;
 
   .auth0-lock-header
     text-align: center;
@@ -268,6 +269,7 @@ breakpoint(point, value = 0)
     background: white;
     max-width: 240px;
     margin: auto;
+    transition: all 2s;
 
     &:last-child
       border-bottom-left-radius: 6px;
@@ -430,14 +432,21 @@ breakpoint(point, value = 0)
   .auth0-loading-container
     position: relative;
 
-  .auth0-lock-submit-loading
-    background: #E7E9EB
-    transition: background-color .7s ease;
-    cursor: initial;
-    &:hover
-      background: #E7E9EB;
-    .auth0-loading
-      display: block
+  &.auth0-lock-submit-loading
+
+    .auth0-lock-content
+      opacity: .3;
+      pointer-events: none
+
+    .auth0-lock-submit
+      background: #eee
+      transition: background-color .7s ease;
+      cursor: initial;
+      pointer-events: none
+      &:hover
+        background: #E7E9EB;
+      .auth0-loading
+        display: block
 
 
   .auth0-lock-forgot-link

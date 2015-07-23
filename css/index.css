@@ -3912,6 +3912,7 @@ Copyright (c) 2015 Daniel Eden
     -webkit-transition-delay: 0s;
     width: 300px;
     margin: auto;
+    background: #fff;
   }
 }
 .auth0-lock .auth0-lock-header {
@@ -4025,6 +4026,7 @@ Copyright (c) 2015 Daniel Eden
   background: #fff;
   max-width: 240px;
   margin: auto;
+  transition: all 2s;
 }
 .auth0-lock .auth0-lock-content:last-child {
   border-bottom-left-radius: 6px;
@@ -4194,15 +4196,20 @@ Copyright (c) 2015 Daniel Eden
 .auth0-lock .auth0-loading-container {
   position: relative;
 }
-.auth0-lock .auth0-lock-submit-loading {
-  background: #e7e9eb;
+.auth0-lock.auth0-lock-submit-loading .auth0-lock-content {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock-submit-loading .auth0-lock-submit {
+  background: #eee;
   transition: background-color 0.7s ease;
   cursor: initial;
+  pointer-events: none;
 }
-.auth0-lock .auth0-lock-submit-loading:hover {
+.auth0-lock.auth0-lock-submit-loading .auth0-lock-submit:hover {
   background: #e7e9eb;
 }
-.auth0-lock .auth0-lock-submit-loading .auth0-loading {
+.auth0-lock.auth0-lock-submit-loading .auth0-lock-submit .auth0-loading {
   display: block;
 }
 .auth0-lock .auth0-lock-forgot-link {
