@@ -19,12 +19,22 @@ $(function() {
 
     if ($('.auth0-lock-input').val() == '') {
 
-      $('.auth0-lock-input-email').addClass('auth0-lock-error').addClass('animated pulse');
+      $('.auth0-lock-input-block-email').addClass('auth0-lock-error')
+      $('.auth0-lock-input-block-email').addClass('animated pulse');
 
       // $('.auth0-lock-widget').removeClass('animated shake');
       // $('.auth0-lock-widget').addClass('animated shake');
     }
 
+  });
+
+  $( ".auth0-lock-input-email" ).focusin(function() {
+
+    if ($('.auth0-lock-input-block-email').hasClass('auth0-lock-error') ) {
+
+      $('.auth0-lock-input-block-email').removeClass('auth0-lock-error');
+
+    }
   });
 
   $(".auth0-lock-input-email input").keyup(function() {
