@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 import { LockStates } from '../control/constants';
 import { getLock, updateLock } from '../store/index';
-import { fullPhoneNumber, setCountryCode, setPhoneNumber, validPhoneNumber, setShowPhoneNumberError } from '../credentials/index';
+import { fullPhoneNumber, setCountryCode, setPhoneNumber, setShowInvalidPhoneNumber, validPhoneNumber, visiblyInvalidPhoneNumber } from '../credentials/index';
 import WebApi from '../lock/web_api';
 
 export function changeVerificationCode(lockID, verificationCode) {
@@ -28,7 +28,7 @@ export function requestPasswordlessSMS(lockID) {
       submit = true;
       return lock.set("submitting", true);
     } else {
-      return setShowPhoneNumberError(lock);
+      return setShowInvalidPhoneNumber(lock, true);
     }
   });
 

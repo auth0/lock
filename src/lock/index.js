@@ -13,14 +13,10 @@ export function setup(attrs) {
     show: false,
     mode: LockModes.LOADING,
     state: LockStates.WAITING_CLIENT_CONFIG,
-
     submitting: false,
-    // email: '',
-    // validEmail: false,
-    // validateEmail: false,
     credentials: {
-      phoneNumber: {countryCode: "+1", number: "", valid: false, showError: false},
-      email: {email: "", valid: true, showInvalid: false}
+      phoneNumber: {countryCode: "+1", number: "", valid: false, showInvalid: false},
+      email: {email: "", valid: false, showInvalid: false}
     }
   });
 }
