@@ -805,7 +805,7 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
 
   this.query('.a0-mode-container').html(el);
   this.emit('%s ready'.replace('%s', pname));
-  
+
   // When navigating to a different panel, clear the previous panel history.
   // The signin panel will handle this inside the panel.
   if (pname !== 'signin') {
@@ -887,6 +887,9 @@ Auth0Lock.prototype._showError = function (message) {
 
   this.query('.a0-success').addClass('a0-hide');
   this.query('.a0-error').html(message).removeClass('a0-hide');
+  this.emit('error shown', message);
+
+  // REMOVEME: This is here for backward compatibility. Deprecated in favor of 'error shown'.
   this.emit('_error', message);
 };
 
@@ -936,8 +939,8 @@ Auth0Lock.prototype._focusError = function(input, message) {
     .addClass('a0-error-input');
 
   if (!message) return;
-  input.parent()
-    .append($.create('<span class="a0-error-message">' + message + '</span>'));
+  input.parent().append($.create('<span class="a0-error-message">' + message + '</span>'));
+  this.emit('error shown', message, input);
 };
 
 /**
@@ -1114,8 +1117,12 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
 
   debug('sigin in with auth0');
   this.$auth0.login(loginOptions, function (err) {
-    if (!err) return;
+    if (!err) {
+      self.emit('signin success');
+      return;
+    }
 
+    self.emit('signin error', err);
     // display `panel`
     self.setPanel(panel);
 
@@ -1221,7 +1228,12 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
   debug('sigin in with popup');
   this.$auth0.login(loginOptions, function(err, profile, id_token, access_token, state) {
     var args = Array.prototype.slice.call(arguments, 0);
-    if (!err) return callback.apply(self, args), self.hide();
+    if (!err) {
+      self.emit('signin success');
+      return callback.apply(self, args), self.hide();
+    }
+
+    self.emit('signin error', err);
 
     // display signin
     self.setPanel(panel);
