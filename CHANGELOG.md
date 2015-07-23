@@ -1,3 +1,30 @@
+## [7.7.0] - 2015-07-08
+
+### Fixed
+
+- [] Merge pull request #196 from tehsis/issues/82-events (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c14e5405c0121122c291df8a90a58b04ebfd7065
+- [] Improved lifecycle events (`Pablo Terradillos`)
+  https://github.com/auth0/lock/commit/523fb75ca966f7e3da522727cf95c3d444625581
+- [] Update CHANGELOG.md (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/067f5f9c2fec61e82fb5eff0a785b38c7e3f3384
+- [] Release: 7.6.2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/52ff5d10cb7a5c01b90e518bde9f2f4ad4162abe
+- [] Add korean language (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2b9a743713ccffdfa277d2ec7adbffce35abcbd1
+- [] Merge pull request #182 from amondnet/internationalization-korean (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c25939283383e8c46dfecb46e4dbe725f265c24e
+- [] Update CHANGELOG.md (`Alberto Pose`)
+  https://github.com/auth0/lock/commit/8fb1691d5489f2c0ed0ae2fba2d2f49239a57584
+- [] add korean language (`amond`)
+  https://github.com/auth0/lock/commit/60b1026838e461fa4a8605fd144dcf9fb6a2ee13
+- [] Merge remote-tracking branch 'origin/internationalization-korean' into internationalization-korean (`amond`)
+  https://github.com/auth0/lock/commit/878e8762147651e611557f774d26aa9be4fa3682
+- [] add korean language (`amond`)
+  https://github.com/auth0/lock/commit/f8de99faa41558b3bc20d3ffa63772c5daf43da8
+- [] add korean language (`amond`)
+  https://github.com/auth0/lock/commit/5333ad0b8fc745f067ae8a697f18e037fcd67ddf
+
 ## [7.6.2] - 2015-06-02
 
 ### Fixed
