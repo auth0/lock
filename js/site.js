@@ -19,13 +19,20 @@ $(function() {
 
     if ($('.auth0-lock-input').val() == '') {
 
-      $('.auth0-lock-input-block-email').addClass('auth0-lock-error')
+
+      $('.auth0-lock-input-block-email').addClass('auth0-lock-error');
       $('.auth0-lock-input-block-email').addClass('animated pulse');
 
-      // $('.auth0-lock-widget').removeClass('animated shake');
-      // $('.auth0-lock-widget').addClass('animated shake');
     }
 
+  });
+
+  $(".global-error").click(function(){
+
+    $('.auth0-global-grobal-error').slideToggle(200, function(){
+      $('.auth0-global-grobal-error span').show();
+    });
+    return false;
   });
 
   $( ".auth0-lock-input-email" ).focusin(function() {
@@ -37,7 +44,7 @@ $(function() {
     }
   });
 
-  $(".auth0-lock-input-email input").keyup(function() {
+  $(".auth0-lock-input-email").keyup(function() {
     if (this.value == "rickyrauch@gmail.com") {
       $(".auth0-lock-header-logo").hide();
       $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("auth0-lock-no-grayscale");

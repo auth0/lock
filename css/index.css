@@ -3770,6 +3770,11 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
 }
+.global-error {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
 .auth0-lock {
   font-family: "Avenir", sans-serif;
   text-rendering: optimizeLegibility;
@@ -3973,9 +3978,13 @@ Copyright (c) 2015 Daniel Eden
   background: #e74c3c;
   color: #fff;
   text-align: center;
-  padding: 8px 20px;
+  padding: 6px 20px;
   line-height: 2;
-  font-size: 13px;
+  font-size: 12px;
+  display: none;
+}
+.auth0-lock .auth0-global-grobal-error span {
+  display: none;
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px 40px;
