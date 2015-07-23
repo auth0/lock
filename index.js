@@ -1305,6 +1305,7 @@ Auth0Lock.prototype.getProfile = function (token, callback) {
 
 Auth0Lock.prototype.oncloseclick = function(e) {
   stop(e);
+  this.emit('close');
   this.hide();
 };
 
