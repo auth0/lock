@@ -25,6 +25,6 @@ export default class AskVerificationCode extends React.Component {
   handleVerificationCodeChange(e) {
     const lockID = this.props.lock.get('id');
     const verificationCode = e.target.value;
-    changeCode(lockID, verificationCode);
+    changeVerificationCode(lockID, verificationCode);
   }
 }
