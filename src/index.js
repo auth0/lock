@@ -1,5 +1,5 @@
 import React from 'react';
-import LockActionCreators, { hideLock, setupLock, showLock } from './lock/action_creators';
+import { hideLock, setupLock, showLock } from './lock/action_creators';
 import IDUtils from './utils/id_utils';
 import Lock from './lock/lock';
 import LockWebAPI from './lock/web_api';
