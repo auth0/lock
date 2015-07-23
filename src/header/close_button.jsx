@@ -1,5 +1,5 @@
 import React from 'react';
-import { hideLock } from '../lock/action_creators';
+import { hideLock } from '../lock/actions';
 
 export default class CloseButton extends React.Component {
   render() {
