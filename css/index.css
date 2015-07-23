@@ -3782,9 +3782,9 @@ Copyright (c) 2015 Daniel Eden
   width: 30px;
   height: 30px;
   margin: -20px 0 0 -20px;
-  border-width: 5px;
+  border-width: 2px;
   border-style: solid;
-  border-color: #333 #333 rgba(0,0,0,0.5) rgba(0,0,0,0.5);
+  border-color: rgba(0,0,0,0.4) rgba(0,0,0,0.4) rgba(0,0,0,0.2) rgba(0,0,0,0.2);
   opacity: 0.9;
   border-radius: 20px;
   -webkit-animation: rotate 1s linear infinite;
@@ -4188,7 +4188,11 @@ Copyright (c) 2015 Daniel Eden
   left: 0;
 }
 .auth0-lock .auth0-lock-submit .auth0-loading {
-  visibility: hidden;
+  display: none;
+  top: 26px;
+}
+.auth0-lock .auth0-loading-container {
+  position: relative;
 }
 .auth0-lock .auth0-lock-submit-loading {
   background: #e7e9eb;
@@ -4197,6 +4201,9 @@ Copyright (c) 2015 Daniel Eden
 }
 .auth0-lock .auth0-lock-submit-loading:hover {
   background: #e7e9eb;
+}
+.auth0-lock .auth0-lock-submit-loading .auth0-loading {
+  display: block;
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;

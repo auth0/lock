@@ -41,22 +41,22 @@ breakpoint(point, value = 0)
   width:30px;
   height:30px;
   margin:-20px 0 0 -20px;
-  border-width: 5px;
+  border-width: 2px;
   border-style:solid;
-  border-color: #333 #333 rgba(0,0,0,.5) rgba(0,0,0,.5);
+  border-color: rgba(0,0,0,.4) rgba(0,0,0,.4) rgba(0,0,0,.2) rgba(0,0,0,.2);
   opacity:.9;
   border-radius:20px;
   -webkit-animation:rotate 1s linear infinite;
   -ms-animation:rotate 1s linear infinite;
 
-@-webkit-keyframes rotate{
+@-webkit-keyframes rotate
   0%{-webkit-transform:rotate(0deg)}
   100%{-webkit-transform:rotate(360deg)}
-}
-@-ms-keyframes rotate{
+
+@-ms-keyframes rotate
   0%{-ms-transform:rotate(0deg)}
   100%{-ms-transform:rotate(360deg)}
-}
+
 
 .auth0-lock
   font-family: "Avenir", sans-serif;
@@ -421,8 +421,14 @@ breakpoint(point, value = 0)
         left: 0;
 
     .auth0-loading
-      // top: 10px;
-      visibility: hidden;
+      display: none;
+      top: 26px
+      &.animated
+        // animation-name: fadeInDown !important;
+        // animation-iteration-count: 1;
+
+  .auth0-loading-container
+    position: relative;
 
   .auth0-lock-submit-loading
     background: #E7E9EB
@@ -430,6 +436,9 @@ breakpoint(point, value = 0)
     cursor: initial;
     &:hover
       background: #E7E9EB;
+    .auth0-loading
+      display: block
+
 
   .auth0-lock-forgot-link
     font-size 12px;

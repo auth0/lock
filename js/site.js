@@ -29,7 +29,7 @@ $(function() {
 
       $('.auth0-lock-submit i').addClass('animated fadeOutDownBig');
 
-      $('.auth0-lock-submit .auth0-loading').addClass('animated fadeInDown');
+      $('.auth0-lock-submit .auth0-loading-container').addClass('animated fadeInDownBig');
 
       console.log('value correct');
 
