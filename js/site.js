@@ -19,7 +19,7 @@ $(function() {
 
     if ($('.auth0-lock-input').val() == '') {
 
-      $('.auth0-lock-input-email').addClass('auth0-lock-error');
+      $('.auth0-lock-input-email').addClass('auth0-lock-error').addClass('animated pulse');
 
       // $('.auth0-lock-widget').removeClass('animated shake');
       // $('.auth0-lock-widget').addClass('animated shake');
@@ -27,7 +27,7 @@ $(function() {
 
   });
 
-  $(".auth0-lock-input-username input").keyup(function() {
+  $(".auth0-lock-input-email input").keyup(function() {
     if (this.value == "rickyrauch@gmail.com") {
       $(".auth0-lock-header-logo").hide();
       $('.auth0-lock-header-bg-inner').css('background-image','url(img/avatar.png)').addClass("auth0-lock-no-grayscale");

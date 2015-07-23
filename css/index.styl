@@ -1,8 +1,6 @@
-@import "normalize.css"
-@import "fonts.css"
-
-*
-  // box-shadow 0 0 0 1px red inset;
+@require "normalize.css"
+@require "fonts.css"
+@require "animate.css"
 
 // Breakpoints mixin
 breakpoint(point, value = 0)
@@ -30,56 +28,6 @@ breakpoint(point, value = 0)
     @media (min-width: value)
     	{block}
 
-@-webkit-keyframes fadeIn
-    from
-      opacity: 0;
-    to
-      opacity: 1;
-
-.animated
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-
-@keyframes fadeIn
-    from
-      opacity: 0;
-    to
-      opacity: 1;
-
-@keyframes shake
-  0%, 100%
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-
-  10%, 30%, 50%, 70%, 90%
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-
-  20%, 40%, 60%, 80%
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-
-.shake
-  -webkit-animation-name: shake;
-  animation-name: shake;
-
-@keyframes fadeInDown
-  0%
-    opacity: 0;
-    -webkit-transform: translate3d(0, -30%, 0);
-    transform: translate3d(0, -30%, 0);
-
-  100%
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-
-
-.fadeInDown
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
 
 .auth0-lock
   font-family: "Avenir", sans-serif;
@@ -333,6 +281,8 @@ breakpoint(point, value = 0)
     overflow: hidden;
     transition: border-color .8s;
 
+
+
     .auth0-lock-icon
       position: absolute
       font-size: 12px;
@@ -370,7 +320,9 @@ breakpoint(point, value = 0)
       width: 169px;
       +breakpoint("mobile-landscape")
         width: 149px;
-
+      &.animated
+        animation-duration: .5s;
+        
     &:last-child
       margin-bottom: 0;
 
