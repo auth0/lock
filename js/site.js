@@ -55,6 +55,11 @@ $(function() {
 
   });
 
+  $('.auth0-lock-resend-link').click(function(){
+    $(this).hide();
+    $('.auth0-lock-sent-label').show();
+  });
+
   $(".global-error").click(function(){
 
     $('.auth0-global-grobal-error').slideToggle(200, function(){
