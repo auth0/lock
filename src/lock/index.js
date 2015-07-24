@@ -24,8 +24,8 @@ export function setup(attrs) {
 export function extractUIOptions(id, options) {
 
   return new Map({
-    containerID: options.container, // || `auth0-lock-container-${id}`,
-    // appendContainer: !options.container,
+    containerID: options.container || `auth0-lock-container-${id}`,
+    appendContainer: !options.container,
     icon: options.icon || false,
     closable: undefined === options.closable ? !options.container : !!options.closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
@@ -40,7 +40,7 @@ function getUIAttribute(lock, attribute) {
 
 export const ui = {
   containerID: lock => getUIAttribute(lock, "containerID"),
-  //appendContainer: lock => getUIAttribute(lock, "appendContainer"),
+  appendContainer: lock => getUIAttribute(lock, "appendContainer"),
   icon: lock => getUIAttribute(lock, "icon"),
   closable: lock => getUIAttribute(lock, "closable"),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
@@ -78,15 +78,19 @@ export function show(lock, options) {
 
   if (lock.get("mode") === LockModes.LOADING) {
     if (lock.get("state") === LockStates.READY) {
-      return lock.merge(Map({show: true, mode: mode, send: send}));
+      return lock.merge(Map({show: true, mode: mode, send: send, render: true}));
     } else {
-      return lock.merge(Map({show: true, loading: mode, send: send}));
+      return lock.merge(Map({show: true, loading: mode, send: send, render: true}));
     }
   } else if (lock.get("mode") === LockModes.CRASHED || lock.get("mode") === mode) {
     return lock.set("show", true);
   } else {
     throw new Error("can't show the lock in a different mode");
   }
+}
+
+export function render(lock) {
+  return lock.get("render");
 }
 
 export function hide(lock) {

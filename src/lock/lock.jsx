@@ -11,8 +11,8 @@ export default class Lock extends React.Component {
   render() {
     const { lock, submitHandler } = this.props;
 
-    const overlay = ui.containerID(lock) ?
-      null : <div className="auth0-lock-overlay"/>;
+    const overlay = ui.appendContainer(lock) ?
+      <div className="auth0-lock-overlay"/> : null;
 
     const lockID = lock.get("id");
     const icon = ui.icon(lock) || ""; // TODO: figure out if we still need the default and why, so we can remove it

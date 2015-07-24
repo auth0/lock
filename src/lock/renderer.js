@@ -12,12 +12,8 @@ export default class Renderer {
   }
 
   render(locks) {
-    locks.forEach(lock => {
-      const container = this.containerManager.getLockContainer(
-        lock.get("id"),
-        l.ui.containerID(lock),
-        !lock.get("show")
-      );
+    locks.filter(l.render).forEach(lock => {
+      const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
 
       if (lock.get("show")) {
         React.render(this.element(lock), container);
