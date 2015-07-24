@@ -75,10 +75,7 @@ export function signIn(lockID) {
       connection: "sms",
       username: fullPhoneNumber(lock),
       password: verificationCode(lock),
-      sso: false,
-      callbackURL: lock.getIn(["showOptions", "callbackURL"]),
-      callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
-      // TODO authParams?
+      sso: false
     };
     WebApi.signIn(lockID, options, true, signInSuccess, signInError);
   }

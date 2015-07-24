@@ -22,7 +22,6 @@ export function setup(attrs) {
 }
 
 export function prepareShowOptions(options) {
-  const responseType = options.responseType || options.callbackURL ? "code" : "token";
 
   return new Map({
     container: options.container || false,
@@ -30,10 +29,7 @@ export function prepareShowOptions(options) {
     closable: undefined === options.closable ? !options.container : !!options.closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
-    signInCallback: options.signInCallback,
-    responseType: responseType,
-    callbackURL: options.callbackURL || null,
-    callbackOnLocationHash: responseType === "token" || null,
+    signInCallback: options.signInCallback
   });
 }
 

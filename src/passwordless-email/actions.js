@@ -64,9 +64,7 @@ export function signIn(lockID) {
       connection: "email",
       username: email(lock),
       password: verificationCode(lock),
-      sso: false,
-      callbackURL: lock.getIn(["showOptions", "callbackURL"]),
-      callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
+      sso: false
     };
     WebApi.signIn(lockID, options, true, signInSuccess, signInError);
   }
