@@ -8,7 +8,6 @@ import { LockModes } from './control/constants';
 import { subscribe } from './store/index';
 
 import renderCrashed from './crashed/render';
-import renderLoading from './loading/render';
 import renderPasswordlessEmail from './passwordless-email/render';
 import renderPasswordlessSMS from './passwordless-sms/render';
 
@@ -56,8 +55,6 @@ function element(lock) {
   switch(mode) {
   case LockModes.CRASHED:
     return renderCrashed(lock);
-  case LockModes.LOADING:
-    return renderLoading(lock);
   case LockModes.PASSWORDLESS_EMAIL:
     return renderPasswordlessEmail(lock);
   case LockModes.PASSWORDLESS_SMS:

@@ -1,14 +1,6 @@
 import Auth0 from 'auth0-js';
 import * as StringUtils from '../utils/string_utils';
-import { requestClientSuccess, requestClientTimeout, requestClientError } from '../client/actions';
-import Client from '../client/client';
 import { requestPasswordlessEmailSuccess, requestPasswordlessEmailError } from '../passwordless-email/actions';
-
-global.window.Auth0 = Auth0;
-
-global.window.Auth0.setClient = function(clientAttrs) {
-  requestClientSuccess(clientAttrs);
-};
 
 class LockWebAPI {
   constructor() {
@@ -22,24 +14,6 @@ class LockWebAPI {
       domain: domain,
       useCordovaSocialPlugins: options.useCordovaSocialPlugins
     });
-
-    var script = document.createElement('script');
-    script.src = clientScriptTagSrc(clientID, domain, options.assetsUrl);
-    document.getElementsByTagName('head')[0].appendChild(script);
-
-    var timeoutID = setTimeout(function() {
-      requestClientTimeout(clientID);
-    }, 5000);
-
-    script.addEventListener('load', function() {
-      clearTimeout(timeoutID);
-    });
-
-    script.addEventListener('error', function() {
-      clearTimeout(timeoutID);
-      requestClientError(clientID);
-    });
-
   }
 
   // signIn(lockID) {
@@ -126,40 +100,6 @@ class LockWebAPI {
 }
 
 export default new LockWebAPI();
-
-function clientScriptTagSrc(clientID, domain, assetsUrl) {
-  return `${clientScriptTagAssetsUrl(domain, assetsUrl)}client/${clientID}.js?t${+new Date()}`;
-}
-
-function clientScriptTagAssetsUrl(domain, assetsUrl) {
-  if (assetsUrl) {
-    return assetsUrl;
-  }
-
-  if (isAuth0Domain(domain, 'eu')) {
-    return 'https://cdn.eu.auth0.com/';
-  }
-
-  if (isAuth0Domain(domain)) {
-    return 'https://cdn.auth0.com/';
-  }
-
-  return 'https://' + domain + '/';
-}
-
-function isAuth0Domain(domain, prefix) {
-  var domainUrl = parseUrl('https://' + domain);
-  if (prefix) {
-    return StringUtils.endsWith(domainUrl.hostname, '.' + prefix + '.auth0.com');
-  }
-  return StringUtils.endsWith(domainUrl.hostname, '.auth0.com');
-}
-
-function parseUrl(url) { // TODO this function doesn't belong here
-  var parser = document.createElement('a');
-  parser.href = url;
-  return parser;
-}
 
 function handleSignInError(lockID, error, callback) {
   if (error) {

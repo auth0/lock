@@ -12,7 +12,7 @@ export function setup(attrs) {
     options: options,
     show: false,
     mode: LockModes.LOADING,
-    state: LockStates.WAITING_CLIENT_CONFIG,
+    state: LockStates.READY,
     submitting: false,
     credentials: {
       phoneNumber: {countryCode: "+1", number: "", valid: false, showInvalid: false},
