@@ -3927,7 +3927,8 @@ Copyright (c) 2015 Daniel Eden
   background: #fff;
   height: 100px;
 }
-.auth0-lock .auth0-lock-header .auth0-lock-close {
+.auth0-lock .auth0-lock-close,
+.auth0-lock .auth0-lock-go-back {
   background: #fff;
   border-radius: 100px;
   height: 10px;
@@ -3941,6 +3942,10 @@ Copyright (c) 2015 Daniel Eden
   z-index: 100;
   border: 6px solid #fff;
   cursor: pointer;
+}
+.auth0-lock .auth0-lock-close polygon,
+.auth0-lock .auth0-lock-go-back polygon {
+  fill: #373737;
 }
 .auth0-lock .auth0-lock-header-welcome {
   font-size: 18px;
@@ -4252,6 +4257,9 @@ Copyright (c) 2015 Daniel Eden
 }
 .auth0-lock .auth0-lock-confirmation a:hover svg {
   -webkit-transform: rotate(490deg);
+}
+.auth0-lock .auth0-lock-confirmation .auth0-lock-go-back {
+  left: 20px;
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;

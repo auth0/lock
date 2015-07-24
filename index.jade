@@ -25,6 +25,10 @@ html(lang='en')
         
         form.auth0-lock-widget
           img.auth0-lock-header-avatar.auth0-lock-hide(src='img/avatar.png')
+        
+          svg.auth0-lock-close(enable-background='new 0 0 128 128', height='128px', id='Слой_1', version='1.1', viewbox='0 0 128 128', width='128px', xml:space='preserve', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+            g
+              polygon(fill='#373737', points='123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   ')
 
           .auth0-lock-widget-container
 
@@ -32,9 +36,6 @@ html(lang='en')
               .auth0-lock-header-bg
                 .auth0-lock-header-bg-inner
 
-              svg.auth0-lock-close(enable-background='new 0 0 128 128', height='128px', id='Слой_1', version='1.1', viewbox='0 0 128 128', width='128px', xml:space='preserve', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-                g
-                  polygon(fill='#373737', points='123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   ')
 
               .auth0-lock-header-welcome
                 img.auth0-lock-header-logo(src='img/badge.svg')
@@ -58,7 +59,6 @@ html(lang='en')
                     .auth0-lock-error-message.auth0-lock-hide Invalid Email
                     .auth0-lock-input-wrap
                       svg(width='32px', height='26px', viewbox='0 0 32 26', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns').auth0-lock-icon
-                        defs
                         g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
                           g#32px(sketch:type='MSLayerGroup', transform='translate(-2155.000000, -2317.000000)', fill='#373A39')
                             g#Group-856(transform='translate(1.000000, 1.000000)', sketch:type='MSShapeGroup')
@@ -76,7 +76,11 @@ html(lang='en')
           //- .auth0-lock-widget
           
           .auth0-lock-confirmation  
-          
+        
+            svg.auth0-lock-go-back(enable-background='new 0 0 24 24', version='1.0', viewbox='0 0 24 24', xml:space='preserve', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+              polyline(fill='none', points='12.5,21 3.5,12 12.5,3 ', stroke='#000000', stroke-miterlimit='10', stroke-width='2')
+              line(fill='none', stroke='#000000', stroke-miterlimit='10', stroke-width='2', x1='22', x2='3.5', y1='12', y2='12')
+
             svg.checkmark(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 52 52')
               circle.checkmark__circle(cx='26', cy='26', r='25', fill='none')
               path.checkmark__check(fill='none', d='M14.1 27.2l7.1 7.2 16.7-16.8')

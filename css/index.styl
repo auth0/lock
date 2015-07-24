@@ -173,24 +173,22 @@ breakpoint(point, value = 0)
     background: #fff;
     height: 100px
 
-    // +breakpoint(mobile-landscape)
-    //   border-top-right-radius: 5px;
-    //   border-top-left-radius: 5px;
-
-    .auth0-lock-close
-      background: white;
-      border-radius: 100px;
-      height: 10px;
-      width: 10px;
-      background: white;
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      box-shadow: 0 1px 3px rgba(0,0,0,.1);
-      color: #333;
-      z-index: 100;
-      border: 6px solid white;
-      cursor: pointer;
+  .auth0-lock-close, .auth0-lock-go-back
+    background: white;
+    border-radius: 100px;
+    height: 10px;
+    width: 10px;
+    background: white;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    color: #333;
+    z-index: 100;
+    border: 6px solid white;
+    cursor: pointer;
+    polygon
+      fill: #373737
 
   .auth0-lock-header-welcome
     font-size: 18px;
@@ -482,6 +480,7 @@ breakpoint(point, value = 0)
       font-weight: 500;
       color: #09c
 
+
       svg
         width: 15px;
         height: 16px;
@@ -496,6 +495,14 @@ breakpoint(point, value = 0)
       &:hover svg
         -webkit-transform: rotate(490deg);
 
+    .auth0-lock-go-back
+      // width: 20px;
+      // height: 20px
+      // position: absolute
+      left: 20px;
+      // top: 18px;
+      // polygon
+      //   stroke-width: 3px
 
   .auth0-lock-forgot-link
     font-size 12px;
