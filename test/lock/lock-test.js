@@ -1,15 +1,15 @@
 import React from 'react';
 import { Map } from 'immutable';
-import Widget from '../../src/lock/widget';
+import Lock from '../../src/lock/lock';
 import assert from 'assert';
 
-describe('Widget', function(){
+describe('Lock', function(){
 
   var div;
   var comp;
 
   function render(lock) {
-    comp = React.render(React.createElement(Widget, {lock: lock}), div);
+    comp = React.render(React.createElement(Lock, {lock: lock}, React.createElement('div')), div);
   }
 
   beforeEach(function () {
