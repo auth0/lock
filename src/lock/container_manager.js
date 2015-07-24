@@ -1,4 +1,4 @@
-class LockContainerUtils {
+export default class LockContainerManager {
   constructor() {
     this._containerCache = {};
   }
@@ -38,5 +38,3 @@ class LockContainerUtils {
     return this._containerCache[lockID] = document.body.appendChild(container);
   }
 }
-
-export default new LockContainerUtils();
