@@ -29,7 +29,14 @@ export function requestPasswordlessEmail(lockID) {
       lockID,
       email(lock),
       lock.get("send"),
-      lock.getIn(["showOptions", "authParams"])
+      lock.getIn(["showOptions", "authParams"]),
+      (error, result) => {
+        if (error) {
+          requestPasswordlessEmailError(lockID, error);
+        } else {
+          requestPasswordlessEmailSuccess(lockID);
+        }
+      }
     );
   }
 }

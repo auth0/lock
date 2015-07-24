@@ -1,6 +1,5 @@
 import Auth0 from 'auth0-js';
 import * as StringUtils from '../utils/string_utils';
-import { requestPasswordlessEmailSuccess, requestPasswordlessEmailError } from '../passwordless-email/actions';
 
 class LockWebAPI {
   constructor() {
@@ -28,18 +27,12 @@ class LockWebAPI {
     this._clients[lockID].logout(query);
   }
 
-  requestPasswordlessEmail(lockID, email, send, authParams) {
+  requestPasswordlessEmail(lockID, email, send, authParams, cb) {
     const options = {email: email, send: send};
     if (authParams) {
       opts.authParams = authParams;
     }
-    this._clients[lockID].startPasswordless(options, (error, result) => {
-      if (error) {
-        requestPasswordlessEmailError(lockID, error);
-      } else {
-        requestPasswordlessEmailSuccess(lockID);
-      }
-    });
+    this._clients[lockID].startPasswordless(options, cb);
   }
 
   requestPasswordlessSMS(lockID, phoneNumber, cb) {
