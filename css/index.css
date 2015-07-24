@@ -3912,9 +3912,12 @@ Copyright (c) 2015 Daniel Eden
     -webkit-transition-delay: 0s;
     width: 300px;
     margin: auto;
-    background: #fff;
-    overflow: hidden;
   }
+}
+.auth0-lock .auth0-lock-widget-container {
+  overflow: hidden;
+  border-radius: 5px;
+  background: #fff;
 }
 .auth0-lock .auth0-lock-header {
   text-align: center;
@@ -3923,12 +3926,6 @@ Copyright (c) 2015 Daniel Eden
   position: relative;
   background: #fff;
   height: 100px;
-}
-@media (min-width: 568px) {
-  .auth0-lock .auth0-lock-header {
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-  }
 }
 .auth0-lock .auth0-lock-header .auth0-lock-close {
   background: #fff;
@@ -3949,15 +3946,15 @@ Copyright (c) 2015 Daniel Eden
   font-size: 18px;
   position: relative;
 }
-.auth0-lock .auth0-lock-header-welcome img {
+.auth0-lock img {
   display: block;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-header-logo {
+.auth0-lock .auth0-lock-header-logo {
   max-width: 60px;
   height: 60px;
   margin: auto auto 10px auto;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-header-placeholder {
+.auth0-lock .auth0-lock-header-placeholder {
   background: #008000;
   color: #fff;
   border-radius: 100px;
@@ -3965,21 +3962,25 @@ Copyright (c) 2015 Daniel Eden
   width: 60px;
   margin: auto;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-header-avatar {
-  height: 90px;
-  width: 90px;
+.auth0-lock .auth0-lock-header-avatar {
+  height: 100px;
+  width: 100px;
   display: block;
   border-radius: 100px;
   margin: auto;
   margin: auto auto 16px auto;
   margin-top: -30px;
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-firstname {
+.auth0-lock .auth0-lock-firstname {
   font-size: 18px;
+  margin-top: 74px;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-name {
+.auth0-lock .auth0-lock-name {
   font-size: 22px;
 }
 .auth0-lock .auth0-lock-header-bg {
@@ -4163,8 +4164,6 @@ Copyright (c) 2015 Daniel Eden
   .auth0-lock .auth0-lock-submit {
     position: static;
     position: relative;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
   }
 }
 .auth0-lock .auth0-lock-submit i {
@@ -4213,16 +4212,9 @@ Copyright (c) 2015 Daniel Eden
 .auth0-lock.auth0-lock-submit-loading .auth0-lock-submit .auth0-loading {
   display: block;
 }
-.auth0-lock .auth0-lock-widget-container {
-  background: #fff;
-  float: left;
-  border-radius: 5px;
-}
 .auth0-lock .auth0-lock-confirmation {
   display: none;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   animation-name: fadeIn;
   animation-duration: 2s;
   animation-delay: 1s;
@@ -4232,8 +4224,11 @@ Copyright (c) 2015 Daniel Eden
   line-height: 2;
   font-size: 14px;
   color: #666;
+  bottom: 0;
+  top: 0;
   right: 0;
   left: 0;
+  padding-top: 100px;
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;
@@ -4313,14 +4308,12 @@ Copyright (c) 2015 Daniel Eden
   box-shadow: inset 0px 0px 0px #7ac142;
   animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
   display: none;
-  animation-delay: 2s;
 }
 .auth0-lock .checkmark__check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
   animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-  animation-delay: 2s;
 }
 @-moz-keyframes stroke {
   100% {

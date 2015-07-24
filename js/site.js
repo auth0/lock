@@ -35,6 +35,7 @@ $(function() {
 
       setTimeout(function(){
         $('.auth0-lock-header').addClass("fadeOutUp animated");
+        $('.auth0-lock-header-avatar').addClass("fadeOutUp animated");
         $('.auth0-lock-content').addClass("fadeOut animated");
         $('.auth0-lock-submit').addClass("fadeOutDown animated");
         $('.auth0-lock-confirmation').show();

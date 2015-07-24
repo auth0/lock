@@ -159,8 +159,11 @@ breakpoint(point, value = 0)
       -webkit-transition-delay: 0s;
       width: 300px;
       margin: auto;
-      background: white;
-      overflow: hidden;
+
+  .auth0-lock-widget-container
+    overflow: hidden;
+    border-radius: 5px;
+    background: white;
 
   .auth0-lock-header
     text-align: center;
@@ -170,9 +173,9 @@ breakpoint(point, value = 0)
     background: #fff;
     height: 100px
 
-    +breakpoint(mobile-landscape)
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
+    // +breakpoint(mobile-landscape)
+    //   border-top-right-radius: 5px;
+    //   border-top-left-radius: 5px;
 
     .auth0-lock-close
       background: white;
@@ -193,38 +196,42 @@ breakpoint(point, value = 0)
     font-size: 18px;
     position: relative;
 
-    img
-      display: block;
+  img
+    display: block;
 
-    .auth0-lock-header-logo
-      max-width: 60px;
-      height: 60px;
-      margin: auto auto 10px auto;
+  .auth0-lock-header-logo
+    max-width: 60px;
+    height: 60px;
+    margin: auto auto 10px auto;
 
-    .auth0-lock-header-placeholder
-      background: green;
-      color: white;
-      border-radius: 100px;
-      line-height: 60px;
-      width: 60px;
-      margin: auto;
+  .auth0-lock-header-placeholder
+    background: green;
+    color: white;
+    border-radius: 100px;
+    line-height: 60px;
+    width: 60px;
+    margin: auto;
 
-    .auth0-lock-header-avatar
-      height: 90px;
-      width: 90px;
-      display: block;
-      border-radius: 100px;
-      margin: auto;
-      margin: auto auto 16px auto;
-      margin-top: -30px;
-      position: relative;
-      box-shadow: 0 1px 2px rgba(0,0,0,.4)
+  .auth0-lock-header-avatar
+    height: 100px;
+    width: 100px;
+    display: block;
+    border-radius: 100px;
+    margin: auto;
+    margin: auto auto 16px auto;
+    margin-top: -30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 2px rgba(0,0,0,.4)
 
-    .auth0-lock-firstname
-      font-size: 18px;
+  .auth0-lock-firstname
+    font-size: 18px;
+    margin-top: 74px;
 
-    .auth0-lock-name
-      font-size: 22px;
+  .auth0-lock-name
+    font-size: 22px;
 
   .auth0-lock-header-bg
     position: absolute;
@@ -398,8 +405,8 @@ breakpoint(point, value = 0)
     +breakpoint("mobile-landscape")
       position: static;
       position: relative;
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius: 5px;
+      // border-bottom-right-radius: 5px;
+      // border-bottom-left-radius: 5px;
 
     i
       border: 2.5px solid white;
@@ -449,17 +456,10 @@ breakpoint(point, value = 0)
       .auth0-loading
         display: block
 
-  .auth0-lock-widget-container
-    background: white
-    float: left;
-    border-radius: 5px;
-
 
   .auth0-lock-confirmation
     display: none;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     animation-name: fadeIn;
     animation-duration: 2s;
     animation-delay: 1s;
@@ -469,8 +469,12 @@ breakpoint(point, value = 0)
     line-height: 2;
     font-size: 14px;
     color: #666;
+    bottom: 0
+    top: 0;
     right: 0;
     left: 0;
+    // padding-top: 50%
+    padding-top: 100px;
 
 
   .auth0-lock-forgot-link
@@ -552,7 +556,6 @@ breakpoint(point, value = 0)
     box-shadow: inset 0px 0px 0px #7ac142;
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
     display: none;
-    animation-delay: 2s;
 
 
   .checkmark__check
@@ -560,7 +563,6 @@ breakpoint(point, value = 0)
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
     animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-    animation-delay: 2s;
 
 @keyframes stroke {
   100% {
