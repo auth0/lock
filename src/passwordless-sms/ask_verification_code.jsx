@@ -6,7 +6,7 @@ import { verificationCode, visiblyInvalidVerificationCode } from '../credentials
 export default class AskVerificationCode extends React.Component {
   render() {
     const { lock } = this.props;
-    const autoFocus = lock.getIn(["showOptions", "focusInput"]);
+    const autoFocus = lock.getIn(["ui", "focusInput"]);
 
     return (
       <div className="auth0-lock-content">

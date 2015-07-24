@@ -14,7 +14,7 @@ export default class Renderer {
     locks.forEach(lock => {
       const container = this.containerManager.getLockContainer(
         lock.get("id"),
-        lock.getIn(["showOptions", "container"]),
+        lock.getIn(["ui", "container"]),
         !lock.get("show")
       );
 

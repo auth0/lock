@@ -21,7 +21,7 @@ export function setup(attrs) {
   });
 }
 
-export function prepareShowOptions(options) {
+export function extractUIOptions(options) {
 
   return new Map({
     container: options.container || false,
@@ -29,7 +29,7 @@ export function prepareShowOptions(options) {
     closable: undefined === options.closable ? !options.container : !!options.closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
-    signInCallback: options.signInCallback
+    signInCallback: options.signInCallback // TODO: this doesn't belong here
   });
 }
 
@@ -57,8 +57,8 @@ export function show(lock, options) {
   const { mode } = options;
   const send = options.send || "link";
 
-  if (!lock.get("showOptions")) {
-    lock = lock.set("showOptions", prepareShowOptions(options));
+  if (!lock.get("ui")) {
+    lock = lock.set("ui", extractUIOptions(options));
   }
 
   if (lock.get("mode") === LockModes.LOADING) {

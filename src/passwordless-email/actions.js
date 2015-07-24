@@ -29,7 +29,7 @@ export function requestPasswordlessEmail(lockID) {
       lockID,
       email(lock),
       lock.get("send"),
-      lock.getIn(["showOptions", "authParams"]),
+      null, // TODO: condier authParams
       (error, result) => {
         if (error) {
           requestPasswordlessEmailError(lockID, error);
@@ -78,7 +78,7 @@ export function signIn(lockID) {
 }
 
 function signInSuccess(lockID, response) {
-  const callback = getLock(lockID).getIn(["showOptions", "signInCallback"]);
+  const callback = getLock(lockID).getIn(["ui", "signInCallback"]);
   if (callback) {
     callback.apply(null, response);
   }
@@ -86,7 +86,7 @@ function signInSuccess(lockID, response) {
 }
 
 function signInError(lockID, error) {
-  const callback = getLock(lockID).getIn(["showOptions", "signInCallback"]);
+  const callback = getLock(lockID).getIn(["ui", "signInCallback"]);
   if (callback) {
     callback.call(null, error);
   }

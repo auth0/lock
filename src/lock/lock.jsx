@@ -10,13 +10,13 @@ export default class Lock extends React.Component {
   render() {
     const { lock, submitHandler } = this.props;
 
-    const overlay = lock.getIn(["showOptions", "container"]) ?
+    const overlay = lock.getIn(["ui", "container"]) ?
       null : <div className="auth0-lock-overlay"/>;
 
     const lockID = lock.get("id");
-    const icon = lock.getIn(["showOptions", "icon"]) || "";
-    const showCloseButton = this.props.lock.getIn(["showOptions", "closable"]);
-    const gravatar = lock.getIn(["showOptions", "gravatar"]) && lock.get("gravatar");
+    const icon = lock.getIn(["ui", "icon"]) || "";
+    const showCloseButton = this.props.lock.getIn(["ui", "closable"]);
+    const gravatar = lock.getIn(["ui", "gravatar"]) && lock.get("gravatar");
 
     const disableSubmit = lock.get("submitting");
     const showSubmit = !!submitHandler;

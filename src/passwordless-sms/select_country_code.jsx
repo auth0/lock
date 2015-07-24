@@ -6,7 +6,7 @@ export default class SelectCountryCode extends React.Component {
   render() {
     return (
       <div className="auth0-lock-content">
-        <CountryCodeSelect autoFocus={this.props.lock.getIn(["showOptions", "focusInput"])}
+        <CountryCodeSelect autoFocus={this.props.lock.getIn(["ui", "focusInput"])}
           selectHandler={::this.countryCodeSelectHandler} />
       </div>
     );
