@@ -15,7 +15,7 @@ html(lang='en')
     
       
   body
-    .auth0-lock
+    .auth0-lock.opened
       
       .auth0-lock-overlay
       
@@ -24,53 +24,59 @@ html(lang='en')
         a(href="").global-error.demo-button Show Global Error
         
         form.auth0-lock-widget
-          .auth0-lock-header
-            .auth0-lock-header-bg
-              .auth0-lock-header-bg-inner
-            svg.auth0-lock-close(enable-background='new 0 0 128 128', height='128px', id='Слой_1', version='1.1', viewbox='0 0 128 128', width='128px', xml:space='preserve', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-              g
-                polygon(fill='#373737', points='123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   ')
-            .auth0-lock-header-welcome
-              img.auth0-lock-header-logo(src='img/badge.svg')
-              img.auth0-lock-header-avatar.auth0-lock-hide(src='img/avatar.png')
-              .auth0-lock-name Auth0
-              .auth0-lock-firstname.auth0-lock-hide Welcome Ricardo!
-          //- .auth0-lock-header
-          
-          .auth0-global-grobal-error
-            span.fadeInUp.animated We're sorry, something went wrong.
+          .auth0-lock-widget-container
+            .auth0-lock-header
+              .auth0-lock-header-bg
+                .auth0-lock-header-bg-inner
+              svg.auth0-lock-close(enable-background='new 0 0 128 128', height='128px', id='Слой_1', version='1.1', viewbox='0 0 128 128', width='128px', xml:space='preserve', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+                g
+                  polygon(fill='#373737', points='123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   ')
+              .auth0-lock-header-welcome
+                img.auth0-lock-header-logo(src='img/badge.svg')
+                img.auth0-lock-header-avatar.auth0-lock-hide(src='img/avatar.png')
+                .auth0-lock-name Auth0
+                .auth0-lock-firstname.auth0-lock-hide Welcome Ricardo!
+            //- .auth0-lock-header
             
-          .auth0-lock-content
-            .auth0-lock-signin-signup-mode.auth0-lock-hide.auth0-lock-mode
-              include includes/login-signup.jade
-            
-            .auth0-lock-passwordless.auth0-lock-mode
-              //- include includes/login-passwordless.jade
-              .auth0-lock-form.auth0-lock-passwordless
-                p Enter your email address to sign in or create an account.
-                
-                .auth0-lock-input-block-email.auth0-lock-input-block
-                  .auth0-lock-error-message.auth0-lock-hide Invalid Email
-                  .auth0-lock-input-wrap
-                    svg(width='32px', height='26px', viewbox='0 0 32 26', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns').auth0-lock-icon
-                      defs
-                      g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
-                        g#32px(sketch:type='MSLayerGroup', transform='translate(-2155.000000, -2317.000000)', fill='#373A39')
-                          g#Group-856(transform='translate(1.000000, 1.000000)', sketch:type='MSShapeGroup')
-                            path#Fill-419(d='M2184,2339 C2184,2339.55 2183.55,2340 2183,2340 L2157,2340 C2156.45,2340 2156,2339.55 2156,2339 L2156,2319 C2156,2318.45 2156.45,2318 2157,2318 L2183,2318 C2183.55,2318 2184,2318.45 2184,2319 L2184,2339 L2184,2339 Z M2184,2316 L2156,2316 C2154.89,2316 2154,2316.89 2154,2318 L2154,2340 C2154,2341.1 2154.89,2342 2156,2342 L2184,2342 C2185.1,2342 2186,2341.1 2186,2340 L2186,2318 C2186,2316.89 2185.1,2316 2184,2316 L2184,2316 Z M2176,2322 L2180,2322 L2180,2326 L2176,2326 L2176,2322 Z M2174,2328 L2182,2328 L2182,2320 L2174,2320 L2174,2328 Z M2158,2332 L2172,2332 L2172,2330 L2158,2330 L2158,2332 Z M2158,2336 L2172,2336 L2172,2334 L2158,2334 L2158,2336 Z')
-
-                    input.auth0-lock-input.auth0-lock-input-email(type='text', name='name', value='', placeholder='Signup with your email')
-
+            .auth0-global-grobal-error
+              span.fadeInUp.animated We're sorry, something went wrong.
               
-          //- .auth0-lock-content
-        
-          button.auth0-lock-submit(type='submit')
-            .auth0-loading-container
-              .auth0-loading
-            i.auth0-lock-icon
-          a.auth0-lock-badge.auth0-lock-icon(href='https://auth0.com/', target='_blank')
-            
-        //- .auth0-lock-widget
-      //- .auth0-lock-center
-    //- .auth0-lock
+            .auth0-lock-content
+              .auth0-lock-signin-signup-mode.auth0-lock-hide.auth0-lock-mode
+                include includes/login-signup.jade
+              
+              .auth0-lock-passwordless.auth0-lock-mode
+                //- include includes/login-passwordless.jade
+                .auth0-lock-form.auth0-lock-passwordless
+                  p Enter your email address to sign in or create an account.
+                  
+                  .auth0-lock-input-block-email.auth0-lock-input-block
+                    .auth0-lock-error-message.auth0-lock-hide Invalid Email
+                    .auth0-lock-input-wrap
+                      svg(width='32px', height='26px', viewbox='0 0 32 26', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns').auth0-lock-icon
+                        defs
+                        g#Page-1(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                          g#32px(sketch:type='MSLayerGroup', transform='translate(-2155.000000, -2317.000000)', fill='#373A39')
+                            g#Group-856(transform='translate(1.000000, 1.000000)', sketch:type='MSShapeGroup')
+                              path#Fill-419(d='M2184,2339 C2184,2339.55 2183.55,2340 2183,2340 L2157,2340 C2156.45,2340 2156,2339.55 2156,2339 L2156,2319 C2156,2318.45 2156.45,2318 2157,2318 L2183,2318 C2183.55,2318 2184,2318.45 2184,2319 L2184,2339 L2184,2339 Z M2184,2316 L2156,2316 C2154.89,2316 2154,2316.89 2154,2318 L2154,2340 C2154,2341.1 2154.89,2342 2156,2342 L2184,2342 C2185.1,2342 2186,2341.1 2186,2340 L2186,2318 C2186,2316.89 2185.1,2316 2184,2316 L2184,2316 Z M2176,2322 L2180,2322 L2180,2326 L2176,2326 L2176,2322 Z M2174,2328 L2182,2328 L2182,2320 L2174,2320 L2174,2328 Z M2158,2332 L2172,2332 L2172,2330 L2158,2330 L2158,2332 Z M2158,2336 L2172,2336 L2172,2334 L2158,2334 L2158,2336 Z')
+
+                      input.auth0-lock-input.auth0-lock-input-email(type='text', name='name', value='rickyrauch@gmail.com', placeholder='Signup with your email')
+
+                
+            //- .auth0-lock-content
+          
+            button.auth0-lock-submit(type='submit')
+              .auth0-loading-container
+                .auth0-loading
+              i.auth0-lock-icon
+            a.auth0-lock-badge.auth0-lock-icon(href='https://auth0.com/', target='_blank')    
+          //- .auth0-lock-widget
+          
+          .auth0-lock-confirmation  
+            i.icon-budicon-2
+            | We sent you a link to sign in. 
+            | Please check your inbox. 
+          
+        //- .auth0-lock-center
+      //- .auth0-lock
   
