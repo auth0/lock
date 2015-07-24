@@ -16,63 +16,12 @@ class LockWebAPI {
     });
   }
 
-  // signIn(lockID) {
-  //   var lock = Store.getLock(lockID);
-  //   // NOTE the amount of parameters determine whether a redirect will be
-  //   // performed after a successful login or not.
-  //   // See https://github.com/auth0/auth0.js/issues/26
-  //   var signInCallback = lock.getIn(["showOptions", "signInCallback"]);
-  //   var f;
-  //   if (signInCallback.length > 1) {
-  //     f = function(error, profile, idToken, accessToken, state, refreshToken) {
-  //       if (!handleSignInError(lockID, error)) {
-  //         var signIn = {
-  //           profile: profile,
-  //           idToken: idToken,
-  //           accessToken: accessToken,
-  //           state: state,
-  //           refreshToken: refreshToken
-  //         };
-  //         LockActionCreators.successfulSignIn(lock.get("id"), signIn);
-  //       }
-  //       signInCallback(error, profile, idToken, accessToken, state, refreshToken);
-  //     }
-  //   } else {
-  //     f = function(error) {
-  //       handleSignInError(lockID, error);
-  //       signInCallback(error);
-  //     }
-  //   }
-  //
-  //   this._clients[lockID].login({
-  //     connection: Client.getDefaultConnection(lock.get("client")).get("name"),
-  //     username: lock.get("email"),
-  //     password: lock.get("password"),
-  //     sso: false,
-  //     callbackURL: lock.getIn(["showOptions", "callbackURL"]),
-  //     callbackOnLocationHash: lock.getIn(["showOptions", "callbackOnLocationHash"])
-  //   }, f);
-  // }
-
-  signIn(lockID, options, withRO, success, fail) {
-    function redirectCallback(error) {
-      handleSignInError(lockID, error, fail);
-    }
-
-    function popupCallback(error, profile, idToken, accessToken, state, refreshToken) {
+  signIn(lockID, options, success, fail) {
+    this._clients[lockID].login(options, function (error, profile, idToken, accessToken, state, refreshToken) {
       if (!handleSignInError(lockID, error, fail)) {
-        // const response = {
-        //   profile: profile,
-        //   idToken: idToken,
-        //   accessToken: accessToken,
-        //   state: state,
-        //   refreshToken: refreshToken
-        // };
         success(lockID, [error, profile, idToken, accessToken, state, refreshToken]);
       }
-    }
-
-    this._clients[lockID].login(options, withRO ? popupCallback : redirectCallback);
+    });
   }
 
   signOut(lockID, query) {

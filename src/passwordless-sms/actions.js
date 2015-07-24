@@ -77,7 +77,7 @@ export function signIn(lockID) {
       password: verificationCode(lock),
       sso: false
     };
-    WebApi.signIn(lockID, options, true, signInSuccess, signInError);
+    WebApi.signIn(lockID, options, ignInSuccess, signInError);
   }
 }
 
