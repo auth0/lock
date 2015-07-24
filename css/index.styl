@@ -6,27 +6,27 @@
 breakpoint(point, value = 0)
   if point == "mobile"
     @media (min-width: 320px)
-    	{block}
+      {block}
 
   else if point == "mobile-landscape"
     @media (min-width: 568px)
-    	{block}
+      {block}
 
   else if point == "tablet"
     @media (min-width: 768px)
-    	{block}
+      {block}
 
   else if point == "desktop"
     @media (min-width: 992px)
-    	{block}
+      {block}
 
   else if point == "retina-only"
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
-    	{block}
+      {block}
 
   else
     @media (min-width: value)
-    	{block}
+      {block}
 
 .global-error
   position: fixed;
@@ -469,6 +469,8 @@ breakpoint(point, value = 0)
     line-height: 2;
     font-size: 14px;
     color: #666;
+    right: 0;
+    left: 0;
 
 
   .auth0-lock-forgot-link
@@ -528,3 +530,53 @@ breakpoint(point, value = 0)
       transform: translateY(0%)  scale(1);
       transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
       opacity: 1;
+
+  .checkmark__circle
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+
+  .checkmark
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    display: none;
+    animation-delay: 2s;
+
+
+  .checkmark__check
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    animation-delay: 2s;
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}

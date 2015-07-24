@@ -11,7 +11,7 @@
     <script src="js/site.js"></script>
   </head>
   <body>
-    <div class="auth0-lock opened">
+    <div class="auth0-lock">
       <div class="auth0-lock-overlay"></div>
       <div class="auth0-lock-center"><a href="" class="global-error demo-button">Show Global Error</a>
         <form class="auth0-lock-widget">
@@ -78,7 +78,7 @@
                           </g>
                         </g>
                       </svg>
-                      <input type="text" name="name" value="rickyrauch@gmail.com" placeholder="Signup with your email" class="auth0-lock-input auth0-lock-input-email">
+                      <input type="text" name="name" value="" placeholder="Signup with your email" class="auth0-lock-input auth0-lock-input-email">
                     </div>
                   </div>
                 </div>
@@ -90,8 +90,11 @@
               </div><i class="auth0-lock-icon"></i>
             </button><a href="https://auth0.com/" target="_blank" class="auth0-lock-badge auth0-lock-icon">   </a>
           </div>
-          <div class="auth0-lock-confirmation"> <i class="icon-budicon-2"></i>We sent you a link to sign in. 
-            Please check your inbox. 
+          <div class="auth0-lock-confirmation"> 
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 52 52" class="checkmark">
+              <circle cx="26" cy="26" r="25" fill="none" class="checkmark__circle"></circle>
+              <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" class="checkmark__check"></path>
+            </svg>We sent you a link to sign in. <br>Please check your inbox. 
           </div>
         </form>
       </div>

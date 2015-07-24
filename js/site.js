@@ -38,6 +38,11 @@ $(function() {
         $('.auth0-lock-content').addClass("fadeOut animated");
         $('.auth0-lock-submit').addClass("fadeOutDown animated");
         $('.auth0-lock-confirmation').show();
+        $('.checkmark').css('display', 'block');
+
+        setTimeout(function () {
+          $('.checkmark').show();
+        }, 1000);
 
       }, 3000);
 
