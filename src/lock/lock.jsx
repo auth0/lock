@@ -1,6 +1,7 @@
 import React from 'react';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
+import { ui } from './index';
 
 export default class Lock extends React.Component {
   componentDidMount() {
@@ -10,13 +11,13 @@ export default class Lock extends React.Component {
   render() {
     const { lock, submitHandler } = this.props;
 
-    const overlay = lock.getIn(["ui", "container"]) ?
+    const overlay = ui.containerID(lock) ?
       null : <div className="auth0-lock-overlay"/>;
 
     const lockID = lock.get("id");
-    const icon = lock.getIn(["ui", "icon"]) || "";
-    const showCloseButton = this.props.lock.getIn(["ui", "closable"]);
-    const gravatar = lock.getIn(["ui", "gravatar"]) && lock.get("gravatar");
+    const icon = ui.icon(lock) || ""; // TODO: figure out if we still need the default and why, so we can remove it
+    const showCloseButton = ui.closable(lock);
+    const gravatar = ui.gravatar(lock) && lock.get("gravatar");
 
     const disableSubmit = lock.get("submitting");
     const showSubmit = !!submitHandler;

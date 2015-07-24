@@ -2,6 +2,7 @@ import React from 'react';
 import PhoneNumberInput from '../credentials/phone_number_input';
 import { countryCode, phoneNumber, visiblyInvalidPhoneNumber } from '../credentials/index';
 import { selectCountryCode, changePhoneNumber } from './actions';
+import { ui } from '../lock/index';
 
 export default class AskPhoneNumber extends React.Component {
   render() {
@@ -16,7 +17,7 @@ export default class AskPhoneNumber extends React.Component {
           countryCode={countryCode(lock)}
           countryCodeSelectionHandler={::this.handleCountryCodeSelection}
           value={phoneNumber(lock)}
-          autoFocus={lock.getIn(["ui", "focusInput"])}
+          autoFocus={ui.focusInput(lock)}
           disabled={lock.get("submitting")} />
       </div>
     );

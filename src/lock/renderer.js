@@ -4,6 +4,7 @@ import renderCrashed from '../crashed/render';
 import renderPasswordlessEmail from '../passwordless-email/render';
 import renderPasswordlessSMS from '../passwordless-sms/render';
 import React from 'react';
+import * as l from './index';
 
 export default class Renderer {
   constructor() {
@@ -14,7 +15,7 @@ export default class Renderer {
     locks.forEach(lock => {
       const container = this.containerManager.getLockContainer(
         lock.get("id"),
-        lock.getIn(["ui", "container"]),
+        l.ui.containerID(lock),
         !lock.get("show")
       );
 

@@ -2,11 +2,11 @@ import React from 'react';
 import VerificationCodeInput from '../credentials/verification_code_input';
 import { changeVerificationCode } from './actions';
 import { verificationCode, visiblyInvalidVerificationCode } from '../credentials/index';
+import { ui } from '../lock/index';
 
 export default class AskVerificationCode extends React.Component {
   render() {
     const { lock } = this.props;
-    const autoFocus = lock.getIn(["ui", "focusInput"]);
 
     return (
       <div className="auth0-lock-content">
@@ -18,7 +18,7 @@ export default class AskVerificationCode extends React.Component {
           isValid={!visiblyInvalidVerificationCode(lock)}
           disabled={lock.get("submitting")}
           onChange={::this.handleVerificationCodeChange}
-          autoFocus={autoFocus} />
+          autoFocus={ui.autoFocus(lock)} />
       </div>
     );
   }

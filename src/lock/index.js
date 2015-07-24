@@ -21,10 +21,11 @@ export function setup(attrs) {
   });
 }
 
-export function extractUIOptions(options) {
+export function extractUIOptions(id, options) {
 
   return new Map({
-    container: options.container || false,
+    containerID: options.container, // || `auth0-lock-container-${id}`,
+    // appendContainer: !options.container,
     icon: options.icon || false,
     closable: undefined === options.closable ? !options.container : !!options.closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
@@ -32,6 +33,20 @@ export function extractUIOptions(options) {
     signInCallback: options.signInCallback // TODO: this doesn't belong here
   });
 }
+
+function getUIAttribute(lock, attribute) {
+  return lock.getIn(["ui", attribute]);
+}
+
+export const ui = {
+  containerID: lock => getUIAttribute(lock, "containerID"),
+  //appendContainer: lock => getUIAttribute(lock, "appendContainer"),
+  icon: lock => getUIAttribute(lock, "icon"),
+  closable: lock => getUIAttribute(lock, "closable"),
+  focusInput: lock => getUIAttribute(lock, "focusInput"),
+  gravatar: lock => getUIAttribute(lock, "gravatar"),
+  signInCallback: lock => getUIAttribute(lock, "signInCallback")
+};
 
 export function hasClient(lock, clientID) {
   return lock.get("clientID") === clientID;
@@ -58,7 +73,7 @@ export function show(lock, options) {
   const send = options.send || "link";
 
   if (!lock.get("ui")) {
-    lock = lock.set("ui", extractUIOptions(options));
+    lock = lock.set("ui", extractUIOptions(lock.get("id"), options));
   }
 
   if (lock.get("mode") === LockModes.LOADING) {

@@ -78,7 +78,7 @@ export function signIn(lockID) {
 }
 
 function signInSuccess(lockID, response) {
-  const callback = getLock(lockID).getIn(["ui", "signInCallback"]);
+  const callback = l.ui.signInCallback(getLock(lockID));
   if (callback) {
     callback.apply(null, response);
   }
@@ -86,7 +86,7 @@ function signInSuccess(lockID, response) {
 }
 
 function signInError(lockID, error) {
-  const callback = getLock(lockID).getIn(["ui", "signInCallback"]);
+  const callback = l.ui.signInCallback(getLock(lockID));
   if (callback) {
     callback.call(null, error);
   }

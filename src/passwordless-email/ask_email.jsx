@@ -2,6 +2,7 @@ import React from 'react';
 import EmailInput from '../credentials/email_input';
 import { email, visiblyInvalidEmail } from '../credentials/index';
 import { changeEmail } from './actions';
+import { ui } from '../lock/index';
 
 export default class AskEmail extends React.Component {
   render() {
@@ -15,8 +16,8 @@ export default class AskEmail extends React.Component {
           isValid={!visiblyInvalidEmail(lock)}
           disabled={lock.get("submitting")}
           onChange={::this.handleEmailChange}
-          gravatar={lock.getIn(["ui", "gravatar"])}
-          autoFocus={lock.getIn(["ui", "focusInput"])} />
+          gravatar={ui.gravatar(lock)}
+          autoFocus={ui.focusInput(lock)} />
       </div>
     );
   }
