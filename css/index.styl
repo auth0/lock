@@ -474,7 +474,27 @@ breakpoint(point, value = 0)
     right: 0;
     left: 0;
     // padding-top: 50%
-    padding-top: 100px;
+    padding-top: 80px;
+    p
+      margin-bottom: 6px;
+    a
+      display: block;
+      font-weight: 500;
+      color: #09c
+
+      svg
+        width: 15px;
+        height: 16px;
+        margin-bottom: -4px;
+        margin-left: 0px;
+        display: inline-block;
+        transition: transform 1s ease
+        -webkit-transform: rotate(120deg);
+        path
+          fill: #09c
+
+      &:hover svg
+        -webkit-transform: rotate(490deg);
 
 
   .auth0-lock-forgot-link

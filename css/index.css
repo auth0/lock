@@ -4228,7 +4228,30 @@ Copyright (c) 2015 Daniel Eden
   top: 0;
   right: 0;
   left: 0;
-  padding-top: 100px;
+  padding-top: 80px;
+}
+.auth0-lock .auth0-lock-confirmation p {
+  margin-bottom: 6px;
+}
+.auth0-lock .auth0-lock-confirmation a {
+  display: block;
+  font-weight: 500;
+  color: #09c;
+}
+.auth0-lock .auth0-lock-confirmation a svg {
+  width: 15px;
+  height: 16px;
+  margin-bottom: -4px;
+  margin-left: 0px;
+  display: inline-block;
+  transition: transform 1s ease;
+  -webkit-transform: rotate(120deg);
+}
+.auth0-lock .auth0-lock-confirmation a svg path {
+  fill: #09c;
+}
+.auth0-lock .auth0-lock-confirmation a:hover svg {
+  -webkit-transform: rotate(490deg);
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;
