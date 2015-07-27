@@ -3,8 +3,9 @@ import { hideLock, setupLock, showLock } from './lock/actions';
 import IDUtils from './utils/id_utils';
 import LockWebAPI from './lock/web_api';
 import Renderer from './lock/renderer';
+import RenderScheduler from './lock/render_scheduler';
 import { LockModes } from './control/constants';
-import { subscribe } from './store/index';
+import { subscribe, getUIState } from './store/index';
 
 
 export default class Auth0Lock {
@@ -47,7 +48,10 @@ export default class Auth0Lock {
 global.window.Auth0Lock = Auth0Lock;
 
 const renderer = new Renderer();
-subscribe("main", locks => renderer.render(locks));
+const renderScheduler = new RenderScheduler();
+subscribe("renderScheduler", locks => {
+  renderScheduler.schedule(() => renderer.render(getUIState()));
+});
 
 // TODO is it worth to follow the flux convention for naming things and
 // organizing files? We can have just one dispatcher, store, constants ns and

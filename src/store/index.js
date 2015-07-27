@@ -67,6 +67,10 @@ export function subscribe(key, f) {
   store.addWatch(key, (key, oldState, newState) => f(deriveUIState(newState)));
 }
 
+export function getUIState() {
+  return deriveUIState(store.deref());
+}
+
 // DEV
 // store.addWatch("keepHistory", (key, oldState, newState) => {
 //   if (!global.window.h) global.window.h = []; global.window.h.push(newState);
