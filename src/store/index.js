@@ -64,7 +64,7 @@ function deriveUIState(state) {
 }
 
 export function subscribe(key, f) {
-  store.addWatch(key, (key, oldState, newState) => f(deriveUIState(newState)));
+  store.addWatch(key, (key, oldState, newState) => f());
 }
 
 export function getUIState() {
