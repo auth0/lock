@@ -31,16 +31,7 @@ $(function() {
 
       setTimeout(function(){
 
-        $('.auth0-lock-header').addClass("fadeOutUp animated");
-        $('.auth0-lock-header-avatar').addClass("fadeOutUp animated");
-        $('.auth0-lock-content').addClass("fadeOut animated");
-        $('.auth0-lock-submit').addClass("fadeOutDown animated");
-        $('.auth0-lock-confirmation').show();
-        $('.checkmark').css('display', 'block');
-
-        setTimeout(function () {
-          $('.checkmark').show();
-        }, 1000);
+        $('.auth0-lock').addClass('auth0-lock-mode-completed');
 
       }, 3000);
 
@@ -53,16 +44,13 @@ $(function() {
   });
 
   $('.auth0-lock-go-back').click(function(){
-    $('.auth0-lock-confirmation').css('display', 'auto');
 
-    $('.auth0-lock-confirmation').addClass("animated fadeOutRight");
-    $('.auth0-lock-widget-container').addClass("animated fadeInLeft");
+    $('.auth0-lock').removeClass('auth0-lock-mode-loading');
 
+    $('.auth0-lock').removeClass('auth0-lock-mode-completed');
 
+    $('.auth0-lock').addClass('auth0-lock-mode-initial');
 
-    $('.auth0-lock-header').removeClass("fadeOutUp animated");
-    $('.auth0-lock-content').removeClass("fadeOut animated");
-    $('.auth0-lock-submit').removeClass("fadeOutDown animated");
   });
 
   $('.auth0-lock-resend-link').click(function(){

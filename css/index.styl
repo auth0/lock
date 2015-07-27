@@ -462,15 +462,48 @@ breakpoint(point, value = 0)
       animation-fill-mode: both;
       display: block;
 
+  &.auth0-lock-mode-initial
+    .auth0-lock-confirmation
+      animation-name: fadeOutRight;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-fill-mode: both;
 
+
+  &.auth0-lock-mode-completed
+    .auth0-lock-header
+      animation-name: fadeOutUp;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-header-avatar
+      animation-name: fadeOutUp;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-content
+      animation-name: fadeOut;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-submit
+      animation-name: fadeOutDown;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-confirmation
+      display: block;
+      animation-name: fadeIn;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-fill-mode: both;
+
+    .checkmark
+      display: block;
 
   .auth0-lock-confirmation
     display: none;
     position: absolute;
-    animation-name: fadeIn;
-    animation-duration: 2s;
-    animation-delay: 1s;
-    animation-fill-mode: both;
     padding: 0 30px;
     text-align: center;
     line-height: 2;
@@ -480,7 +513,6 @@ breakpoint(point, value = 0)
     top: 0;
     right: 0;
     left: 0;
-    // padding-top: 50%
     padding-top: 80px;
     p
       margin-bottom: 6px;
