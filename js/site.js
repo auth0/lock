@@ -25,15 +25,12 @@ $(function() {
 
     }else if ($('.auth0-lock-input-email').val() === "rickyrauch@gmail.com") {
 
-      $('.auth0-lock').addClass('auth0-lock-submit-loading');
-
-      $('.auth0-lock-submit i').addClass('animated fadeOutDownBig');
-
-      $('.auth0-lock-submit .auth0-loading-container').addClass('animated fadeInDownBig');
+      $('.auth0-lock').addClass('auth0-lock-mode-loading');
 
       console.log('value correct');
 
       setTimeout(function(){
+
         $('.auth0-lock-header').addClass("fadeOutUp animated");
         $('.auth0-lock-header-avatar').addClass("fadeOutUp animated");
         $('.auth0-lock-content').addClass("fadeOut animated");
@@ -55,9 +52,26 @@ $(function() {
 
   });
 
+  $('.auth0-lock-go-back').click(function(){
+    $('.auth0-lock-confirmation').css('display', 'auto');
+
+    $('.auth0-lock-confirmation').addClass("animated fadeOutRight");
+    $('.auth0-lock-widget-container').addClass("animated fadeInLeft");
+
+
+
+    $('.auth0-lock-header').removeClass("fadeOutUp animated");
+    $('.auth0-lock-content').removeClass("fadeOut animated");
+    $('.auth0-lock-submit').removeClass("fadeOutDown animated");
+  });
+
   $('.auth0-lock-resend-link').click(function(){
     $(this).hide();
     $('.auth0-lock-sent-label').show();
+  });
+
+  $('.auth0-lock-go-back').click(function(){
+
   });
 
   $(".global-error").click(function(){

@@ -429,16 +429,17 @@ breakpoint(point, value = 0)
         left: 0;
 
     .auth0-loading
-      display: none;
       top: 26px
-      &.animated
-        // animation-name: fadeInDown !important;
-        // animation-iteration-count: 1;
+
 
   .auth0-loading-container
     position: relative;
+    display: none;
 
-  &.auth0-lock-submit-loading
+  .auth0-lock-change-avatar
+    color: red;
+
+  &.auth0-lock-mode-loading
 
     .auth0-lock-content
       opacity: .3;
@@ -449,10 +450,18 @@ breakpoint(point, value = 0)
       transition: background-color .7s ease;
       cursor: initial;
       pointer-events: none
-      &:hover
-        background: #E7E9EB;
-      .auth0-loading
-        display: block
+
+    i
+      animation-name: fadeOutDownBig;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+
+    .auth0-loading-container
+      animation-name: fadeInDownBig;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      display: block;
+
 
 
   .auth0-lock-confirmation
@@ -599,6 +608,8 @@ breakpoint(point, value = 0)
     stroke-dashoffset: 48;
     animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 
+
+  // &.auth0-lock-mode-
 @keyframes stroke {
   100% {
     stroke-dashoffset: 0;
