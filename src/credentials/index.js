@@ -21,11 +21,11 @@ function visiblyInvalid(lock, credential) {
 // phone number
 
 export function fullPhoneNumber(lock) {
-  return `${countryCode(lock)}${phoneNumber(lock)}`;
+  return `${countryCode(lock) || ""}${phoneNumber(lock) || ""}`;
 }
 
 export function countryCode(lock) {
-  return lock.getIn(["credentials", "phoneNumber", "countryCode"]);
+  return lock.getIn(["credentials", "phoneNumber", "countryCode"], "");
 }
 
 export function setCountryCode(lock, countryCode) {
@@ -33,7 +33,7 @@ export function setCountryCode(lock, countryCode) {
 }
 
 export function phoneNumber(lock) {
-  return lock.getIn(["credentials", "phoneNumber", "number"]);
+  return lock.getIn(["credentials", "phoneNumber", "number"], "");
 }
 
 export function setPhoneNumber(lock, phoneNumber) {
@@ -41,7 +41,7 @@ export function setPhoneNumber(lock, phoneNumber) {
   return lock.mergeIn(["credentials", "phoneNumber"], Map({
     number: phoneNumber,
     valid: valid,
-    showInvalid: showInvalid(lock, "phoneNumber") && !valid
+    showInvalid: !!showInvalid(lock, "phoneNumber") && !valid
   }));
 }
 
@@ -65,15 +65,15 @@ export function setShowInvalidPhoneNumber(lock, value) {
 // email
 
 export function email(lock) {
-  return lock.getIn(["credentials", "email", "email"]);
+  return lock.getIn(["credentials", "email", "email"], "");
 }
 
 export function setEmail(lock, email) {
-  const valid = validateEmail(email);
+  const valid = !!validateEmail(email);
   return lock.mergeIn(["credentials", "email"], Map({
     email: email,
     valid: valid,
-    showInvalid: showInvalid(lock, "email") && !valid
+    showInvalid: !!showInvalid(lock, "email") && !valid
   }));
 }
 
@@ -98,7 +98,7 @@ export function setShowInvalidEmail(lock, value = true) {
 // verification code
 
 export function verificationCode(lock) {
-  return lock.getIn(["credentials", "verificationCode", "verificationCode"]);
+  return lock.getIn(["credentials", "verificationCode", "verificationCode"], "");
 }
 
 export function setVerificationCode(lock, verificationCode) {
@@ -106,7 +106,7 @@ export function setVerificationCode(lock, verificationCode) {
   return lock.mergeIn(["credentials", "verificationCode"], Map({
     verificationCode: verificationCode,
     valid: valid,
-    showInvalid: showInvalid(lock, "verificationCode") && !valid
+    showInvalid: !!showInvalid(lock, "verificationCode") && !valid
   }));
 }
 

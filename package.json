@@ -29,6 +29,7 @@
   "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
+    "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
     "mochify": "^2.9.0",
     "packageify": "^0.2.2",
