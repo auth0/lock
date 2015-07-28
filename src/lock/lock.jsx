@@ -1,16 +1,17 @@
-import React from 'react';
+import React from 'react/addons';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
 import CloseButton from '../header/close_button';
 import GlobalError from './global_error';
 import * as l from './index';
 const ui = l.ui;
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export default class Lock extends React.Component {
-  componentDidMount() {
-    setTimeout(() => { this.refs.lock.getDOMNode().className += ' opened' }, 10);
-  }
-
+  // componentDidMount() {
+  //   setTimeout(() => { this.refs.lock.getDOMNode().className += ' opened' }, 10);
+  // }
+  //
   render() {
     const { completed, lock, submitHandler } = this.props;
     const Content = this.props.content;
@@ -26,12 +27,14 @@ export default class Lock extends React.Component {
 
     const disableSubmit = lock.get("submitting");
 
-    // TODO: handle opened class properly
-    let className = "auth0-lock opened";
+    let className = "auth0-lock";
+    if (lock.get("show")) {
+      className += " opened";
+    }
     if (l.submitting(lock)) {
-      className += " auth0-lock-mode-loading opened";
+      className += " auth0-lock-mode-loading";
     } else if (completed) {
-      className += " auth0-lock-mode-completed opened";
+      className += " auth0-lock-mode-completed";
     }
 
     return (
