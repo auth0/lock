@@ -2,14 +2,14 @@ import React from 'react';
 import Lock from '../lock/lock';
 import AskEmail from './ask_email';
 import AskVerificationCode from './ask_verification_code';
-import Done from './done';
+import EmailSentConfirmation from './email_sent_confirmation';
 import { LockStates } from '../control/constants';
 import { requestPasswordlessEmail, signIn } from './actions';
 import * as m from './index';
 
 export default function render(lock) {
   return {
-    confirmation: m.emailSent(lock) && Done,
+    confirmation: m.emailSent(lock) && EmailSentConfirmation,
     content: AskEmail,
     submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
   };
