@@ -48,6 +48,14 @@ export const ui = {
   signInCallback: lock => getUIAttribute(lock, "signInCallback")
 };
 
+export function setGlobalError(m, str) {
+  return m.set("globalError", str);
+}
+
+export function globalError(m) {
+  return m.get("globalError");
+}
+
 export function hasClient(lock, clientID) {
   return lock.get("clientID") === clientID;
 }

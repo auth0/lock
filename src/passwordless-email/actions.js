@@ -3,6 +3,7 @@ import WebApi from '../lock/web_api';
 import { getLock, updateLock } from '../store/index';
 import { email, setEmail, setShowInvalidEmail, setShowInvalidVerificationCode, setVerificationCode, validateEmail, validEmail, validVerificationCode, verificationCode } from '../credentials/index';
 import * as l from '../lock/index';
+import * as m from './index';
 
 export function changeEmail(lockID, email) {
   updateLock(lockID, setEmail, email);
@@ -42,16 +43,17 @@ export function requestPasswordlessEmail(lockID) {
 }
 
 export function requestPasswordlessEmailSuccess(lockID) {
-  updateLock(lockID, lock => {
-    const state = lock.get("send") === "link" ?
-      LockStates.DONE : LockStates.ASK_VERIFICATION_CODE;
-    return lock.set("submitting", false).set("state", state);
-  });
+  // updateLock(lockID, lock => {
+  //   const state = lock.get("send") === "link" ?
+  //     LockStates.DONE : LockStates.ASK_VERIFICATION_CODE;
+  //   return lock.set("submitting", false).set("state", state);
+  // });
+  updateLock(lockID, lock => m.setEmailSent(lock.set("submitting", false), true));
 }
 
 export function requestPasswordlessEmailError(lockID, error) {
-  console.debug(error);
-  console.error("unimplemented action requestPasswordlessEmailError");
+  // TODO: set a proper error message
+  updateLock(lockID, lock => l.setGlobalError(lock.set("submitting", false), "We're sorry, something went wrong."));
 }
 
 export function signIn(lockID) {
