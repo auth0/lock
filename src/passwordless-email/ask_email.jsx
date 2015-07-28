@@ -7,17 +7,20 @@ import { ui } from '../lock/index';
 export default class AskEmail extends React.Component {
   render() {
     const { lock } = this.props;
+
     return (
-      <div>
-        <div className="auth0-lock-instructions">
-          Enter your email address to sign in or create an account
+      <div className="auth0-lock-passwordless auth0-lock-mode">
+        <div className="auth0-lock-form auth0-lock-passwordless">
+          <p>Enter your email address to sign in or create an account.</p>
+          <div className="auth0-lock-input-block-email auth0-lock-input-block">
+            <EmailInput value={email(lock)}
+              isValid={!visiblyInvalidEmail(lock)}
+              disabled={lock.get("submitting")}
+              onChange={::this.handleEmailChange}
+              gravatar={ui.gravatar(lock)}
+              autoFocus={ui.focusInput(lock)} />
+          </div>
         </div>
-        <EmailInput value={email(lock)}
-          isValid={!visiblyInvalidEmail(lock)}
-          disabled={lock.get("submitting")}
-          onChange={::this.handleEmailChange}
-          gravatar={ui.gravatar(lock)}
-          autoFocus={ui.focusInput(lock)} />
       </div>
     );
   }
