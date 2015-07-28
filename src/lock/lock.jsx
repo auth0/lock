@@ -2,6 +2,7 @@ import React from 'react';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
 import CloseButton from '../header/close_button';
+import GlobalError from './global_error';
 import { ui } from './index';
 
 export default class Lock extends React.Component {
@@ -17,6 +18,7 @@ export default class Lock extends React.Component {
 
     const icon = ui.icon(lock) || ""; // TODO: figure out if we still need the default and why, so we can remove it
     const showCloseButton = ui.closable(lock);
+    const globalError = lock.get("globalError");
     const gravatar = ui.gravatar(lock) && lock.get("gravatar");
 
     const disableSubmit = lock.get("submitting");
@@ -29,10 +31,13 @@ export default class Lock extends React.Component {
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {showCloseButton && <CloseButton lockID={lock.get("id")} />}
-            <Header icon={icon} gravatar={gravatar}/>
-            {React.cloneElement(React.Children.only(this.props.children), {lock: lock})}
-            {submit}
-            <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
+            <div className="auth0-lock-widget-container">
+              <Header icon={icon} gravatar={gravatar}/>
+              {globalError && <GlobalError message={globalError} />}
+              {React.cloneElement(React.Children.only(this.props.children), {lock: lock})}
+              {submit}
+              <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
+            </div>
           </form>
         </div>
       </div>
