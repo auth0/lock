@@ -12,6 +12,8 @@ export default class Lock extends React.Component {
 
   render() {
     const { lock, submitHandler } = this.props;
+    const Content = this.props.content;
+    const Confirmation = this.props.confirmation || null;
 
     const overlay = ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -35,11 +37,12 @@ export default class Lock extends React.Component {
               <Header icon={icon} gravatar={gravatar}/>
               {globalError && <GlobalError message={globalError} />}
               <div className="auth0-lock-content">
-                {React.cloneElement(React.Children.only(this.props.children), {lock: lock})}
+                <this.props.content lock={lock} />
               </div>
               {submit}
               <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
             </div>
+            {Confirmation && <Confirmation lock={lock} />}
           </form>
         </div>
       </div>

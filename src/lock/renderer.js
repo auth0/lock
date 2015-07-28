@@ -4,6 +4,7 @@ import renderCrashed from '../crashed/render';
 import renderPasswordlessEmail from '../passwordless-email/render';
 import renderPasswordlessSMS from '../passwordless-sms/render';
 import React from 'react';
+import Lock from './lock';
 import * as l from './index';
 
 export default class Renderer {
@@ -16,14 +17,15 @@ export default class Renderer {
       const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
 
       if (lock.get("show")) {
-        React.render(this.element(lock), container);
+        const spec = this.spec(lock);
+        React.render(<Lock lock={lock} {...spec} />, container);
       } else if (container) {
         React.unmountComponentAtNode(container);
       }
     });
   }
 
-  element(lock) {
+  spec(lock) {
     // TODO: mode specific renderer specs should be passed to the constructor
     const mode = lock.get("mode");
     switch(mode) {

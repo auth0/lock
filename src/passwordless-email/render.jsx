@@ -8,17 +8,12 @@ import { requestPasswordlessEmail, signIn } from './actions';
 import * as m from './index';
 
 export default function render(lock) {
-  const spec = {
+  return {
     confirmation: m.emailSent(lock) && Done,
     content: AskEmail,
     submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
   };
 
-  return (
-    <Lock lock={lock} submitHandler={spec.submitHandler}>
-      <spec.content />
-    </Lock>
-  );
   // switch(state) {
   // case LockStates.ASK_VERIFICATION_CODE:
   //   return (
