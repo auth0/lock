@@ -1,6 +1,7 @@
 import React from 'react';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
+import CloseButton from '../header/close_button';
 import { ui } from './index';
 
 export default class Lock extends React.Component {
@@ -14,7 +15,6 @@ export default class Lock extends React.Component {
     const overlay = ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
 
-    const lockID = lock.get("id");
     const icon = ui.icon(lock) || ""; // TODO: figure out if we still need the default and why, so we can remove it
     const showCloseButton = ui.closable(lock);
     const gravatar = ui.gravatar(lock) && lock.get("gravatar");
@@ -28,7 +28,8 @@ export default class Lock extends React.Component {
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
-            <Header lockID={lockID} icon={icon} showCloseButton={showCloseButton} gravatar={gravatar}/>
+            {showCloseButton && <CloseButton lockID={lock.get("id")} />}
+            <Header icon={icon} gravatar={gravatar}/>
             {React.cloneElement(React.Children.only(this.props.children), {lock: lock})}
             {submit}
             <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
