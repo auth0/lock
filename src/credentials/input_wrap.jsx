@@ -1,4 +1,5 @@
 import React from 'react';
+import EmailIcon from './email_icon';
 
 export default class InputWrap extends React.Component {
   render() {
@@ -10,9 +11,14 @@ export default class InputWrap extends React.Component {
       className += " auth0-lock-input-disabled";
     }
 
+    let icon = <i className="auth0-lock-icon"/>;
+    if (this.props.name === "email") {
+      icon = <EmailIcon />;
+    }
+
     return (
       <div className={className}>
-        <i className="auth0-lock-icon"/>
+        {icon}
         {this.props.children}
       </div>
     );
