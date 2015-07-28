@@ -1,26 +1,41 @@
 @import "normalize.css";
 @import "fonts.css";
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
+@import "animate.css";
+.global-error {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.auth0-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -20px 0 0 -20px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.4) rgba(0,0,0,0.4) rgba(0,0,0,0.2) rgba(0,0,0,0.2);
+  opacity: 0.9;
+  border-radius: 20px;
+  -webkit-animation: rotate 1s linear infinite;
+  -ms-animation: rotate 1s linear infinite;
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
   }
-  to {
-    opacity: 1;
+  100% {
+    -webkit-transform: rotate(360deg);
   }
 }
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.shake {
-  -webkit-animation-name: shake;
-  animation-name: shake;
-}
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+@-ms-keyframes rotate {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+  }
 }
 .auth0-lock {
   font-family: "Avenir", sans-serif;
@@ -52,6 +67,29 @@
 .auth0-lock input:focus {
   outline: none;
 }
+.auth0-lock .auth0-lock-error .auth0-lock-input-wrap {
+  border-color: #f00;
+}
+.auth0-lock .auth0-lock-error-message {
+  background: rgba(0,0,0,0.8);
+  position: absolute;
+  padding: 13px 14px;
+  color: #fff;
+  font-size: 12px;
+  right: -108px;
+  border-radius: 3px;
+  top: 0px;
+}
+.auth0-lock .auth0-lock-error-message:before {
+  border-left: 6px solid transparent;
+  border-right: 6px solid rgba(0,0,0,0.8);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  left: -12px;
+  position: absolute;
+  content: " ";
+  top: 15px;
+}
 @media (min-width: 992px) {
   .auth0-lock .auth0-lock-overlay {
     background: rgba(34,34,40,0.94);
@@ -70,6 +108,14 @@
   display: block;
   -webkit-animation: fadeIn 0.7s;
   animation: fadeIn 0.7s;
+}
+.auth0-lock .auth0-lock-form p {
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #666;
 }
 .auth0-lock .auth0-lock-hide {
   display: none !important;
@@ -97,6 +143,11 @@
     margin: auto;
   }
 }
+.auth0-lock .auth0-lock-widget-container {
+  overflow: hidden;
+  border-radius: 5px;
+  background: #fff;
+}
 .auth0-lock .auth0-lock-header {
   text-align: center;
   padding: 14px 14px 14px 14px;
@@ -105,13 +156,8 @@
   background: #fff;
   height: 100px;
 }
-@media (min-width: 568px) {
-  .auth0-lock .auth0-lock-header {
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-  }
-}
-.auth0-lock .auth0-lock-header .auth0-lock-close {
+.auth0-lock .auth0-lock-close,
+.auth0-lock .auth0-lock-go-back {
   background: #fff;
   border-radius: 100px;
   height: 10px;
@@ -126,19 +172,23 @@
   border: 6px solid #fff;
   cursor: pointer;
 }
+.auth0-lock .auth0-lock-close polygon,
+.auth0-lock .auth0-lock-go-back polygon {
+  fill: #373737;
+}
 .auth0-lock .auth0-lock-header-welcome {
   font-size: 18px;
   position: relative;
 }
-.auth0-lock .auth0-lock-header-welcome img {
+.auth0-lock img {
   display: block;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-header-logo {
+.auth0-lock .auth0-lock-header-logo {
   max-width: 60px;
   height: 60px;
   margin: auto auto 10px auto;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-header-placeholder {
+.auth0-lock .auth0-lock-header-placeholder {
   background: #008000;
   color: #fff;
   border-radius: 100px;
@@ -146,21 +196,25 @@
   width: 60px;
   margin: auto;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-header-avatar {
-  height: 90px;
-  width: 90px;
+.auth0-lock .auth0-lock-header-avatar {
+  height: 100px;
+  width: 100px;
   display: block;
   border-radius: 100px;
   margin: auto;
   margin: auto auto 16px auto;
   margin-top: -30px;
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-firstname {
+.auth0-lock .auth0-lock-firstname {
   font-size: 18px;
+  margin-top: 74px;
 }
-.auth0-lock .auth0-lock-header-welcome .auth0-lock-name {
+.auth0-lock .auth0-lock-name {
   font-size: 22px;
 }
 .auth0-lock .auth0-lock-header-bg {
@@ -190,11 +244,29 @@
   background-position: center;
   background-size: 500px;
 }
+.auth0-lock .auth0-global-grobal-error {
+  background: #f04848;
+  color: #fff;
+  text-align: center;
+  padding: 6px 20px;
+  line-height: 2;
+  font-size: 12px;
+  display: none;
+}
+.auth0-lock .auth0-global-grobal-error span {
+  display: none;
+  animation-delay: 0.2s;
+}
 .auth0-lock .auth0-lock-content {
   padding: 30px 40px;
   background: #fff;
   max-width: 240px;
   margin: auto;
+  transition: all 2s;
+}
+.auth0-lock .auth0-lock-content:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 .auth0-lock .auth0-lock-content:last-child {
   border-bottom-left-radius: 6px;
@@ -232,6 +304,9 @@
 .auth0-lock .auth0-lock-tabs li.auth0-lock-tabs-current a {
   color: #fff;
 }
+.auth0-lock .auth0-lock-input {
+  position: relative;
+}
 .auth0-lock .auth0-lock-input-wrap {
   border-radius: 3px;
   margin-bottom: 10px;
@@ -239,13 +314,18 @@
   position: relative;
   background: #f1f1f1;
   overflow: hidden;
+  transition: border-color 0.8s;
 }
-.auth0-lock .auth0-lock-input-wrap i:before {
-  color: #888;
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-icon {
   position: absolute;
   font-size: 12px;
-  top: 17px;
-  left: 15px;
+  top: 16px;
+  left: 14px;
+  width: 14px;
+  height: 10px;
+}
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-icon path {
+  fill: #666;
 }
 .auth0-lock .auth0-lock-input-wrap.auth0-lock-input-email i:before {
   content: "b";
@@ -262,7 +342,7 @@
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
   border: 0;
-  padding: 12px 14px;
+  padding: 10px 14px;
   margin-left: 40px;
   right: 0;
   height: 20px;
@@ -275,6 +355,9 @@
   .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
     width: 149px;
   }
+}
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-input.animated {
+  animation-duration: 0.5s;
 }
 .auth0-lock .auth0-lock-input-wrap:last-child {
   margin-bottom: 0;
@@ -298,6 +381,8 @@
   display: block;
   width: 100%;
   position: fixed;
+  overflow: hidden;
+  position: relative;
   bottom: 0;
   transition: background-color 0.2s ease-in-out;
 }
@@ -316,8 +401,7 @@
 @media (min-width: 568px) {
   .auth0-lock .auth0-lock-submit {
     position: static;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    position: relative;
   }
 }
 .auth0-lock .auth0-lock-submit i {
@@ -342,6 +426,121 @@
 .auth0-lock .auth0-lock-submit[disabled] i:before {
   content: "…";
   left: 0;
+}
+.auth0-lock .auth0-lock-submit .auth0-loading {
+  top: 26px;
+}
+.auth0-lock .auth0-loading-container {
+  position: relative;
+  display: none;
+}
+.auth0-lock .auth0-lock-change-avatar {
+  color: #f00;
+}
+.auth0-lock.auth0-lock-mode-loading .auth0-lock-content {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
+  background: #eee;
+  transition: background-color 0.7s ease;
+  cursor: initial;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock-mode-loading i {
+  animation-name: fadeOutDownBig;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.auth0-lock.auth0-lock-mode-loading .auth0-loading-container {
+  animation-name: fadeInDownBig;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  display: block;
+}
+.auth0-lock.auth0-lock-mode-initial .auth0-lock-confirmation {
+  animation-name: fadeOutRight;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-header {
+  animation-name: fadeOutUp;
+  animation-fill-mode: both;
+  animation-duration: 1.2s;
+}
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-header-avatar {
+  animation-name: fadeOutUp;
+  animation-fill-mode: both;
+  animation-duration: 1.2s;
+}
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-content {
+  animation-name: fadeOut;
+  animation-fill-mode: both;
+  animation-duration: 1.2s;
+}
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-submit {
+  animation-name: fadeOutDown;
+  animation-fill-mode: both;
+  animation-duration: 1.2s;
+}
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-confirmation {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+.auth0-lock.auth0-lock-mode-completed .checkmark {
+  display: block;
+}
+.auth0-lock .auth0-lock-confirmation {
+  display: none;
+  position: absolute;
+  padding: 0 30px;
+  text-align: center;
+  line-height: 2;
+  font-size: 14px;
+  color: #666;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding-top: 80px;
+}
+.auth0-lock .auth0-lock-confirmation p {
+  margin-bottom: 6px;
+}
+.auth0-lock .auth0-lock-confirmation a {
+  display: block;
+  font-weight: 500;
+  color: #09c;
+}
+.auth0-lock .auth0-lock-confirmation a svg {
+  width: 15px;
+  height: 16px;
+  margin-bottom: -4px;
+  margin-left: 0px;
+  display: inline-block;
+  transition: transform 1s ease;
+  -webkit-transform: rotate(120deg);
+}
+.auth0-lock .auth0-lock-confirmation a svg path {
+  fill: #09c;
+}
+.auth0-lock .auth0-lock-confirmation a:hover svg {
+  -webkit-transform: rotate(490deg);
+}
+.auth0-lock .auth0-lock-confirmation .auth0-lock-go-back {
+  left: 20px;
+}
+.auth0-lock .auth0-lock-confirmation .auth0-lock-sent-label {
+  color: #008000;
+  display: none;
+  animation: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  font-weight: 600;
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;
@@ -409,139 +608,103 @@
   transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
   opacity: 1;
 }
-@-moz-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.auth0-lock .checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.auth0-lock .checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+  display: none;
 }
-@-o-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.auth0-lock .checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-moz-keyframes shake {
-  0%, 100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-  20%, 40%, 60%, 80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-@-webkit-keyframes shake {
-  0%, 100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-  20%, 40%, 60%, 80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-@-o-keyframes shake {
-  0%, 100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-  20%, 40%, 60%, 80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-@keyframes shake {
-  0%, 100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-  20%, 40%, 60%, 80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-@-moz-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -30%, 0);
-    transform: translate3d(0, -30%, 0);
-  }
+@-moz-keyframes stroke {
   100% {
-    opacity: 1;
-    -webkit-transform: none;
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@-o-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@-moz-keyframes scale {
+  0%, 100% {
     transform: none;
   }
-}
-@-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -30%, 0);
-    transform: translate3d(0, -30%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
   }
 }
-@-o-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -30%, 0);
-    transform: translate3d(0, -30%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
+@-webkit-keyframes scale {
+  0%, 100% {
     transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
   }
 }
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -30%, 0);
-    transform: translate3d(0, -30%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
+@-o-keyframes scale {
+  0%, 100% {
     transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@-moz-keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+@-webkit-keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+@-o-keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
   }
 }

@@ -1,82 +1,62 @@
-@import "normalize.css"
-@import "fonts.css"
+@require "normalize.css"
+@require "fonts.css"
+@require "animate.css"
 
 // Breakpoints mixin
 breakpoint(point, value = 0)
   if point == "mobile"
     @media (min-width: 320px)
-    	{block}
+      {block}
 
   else if point == "mobile-landscape"
     @media (min-width: 568px)
-    	{block}
+      {block}
 
   else if point == "tablet"
     @media (min-width: 768px)
-    	{block}
+      {block}
 
   else if point == "desktop"
     @media (min-width: 992px)
-    	{block}
+      {block}
 
   else if point == "retina-only"
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
-    	{block}
+      {block}
 
   else
     @media (min-width: value)
-    	{block}
+      {block}
 
-@-webkit-keyframes fadeIn
-    from
-      opacity: 0;
-    to
-      opacity: 1;
-
-.animated
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-
-@keyframes fadeIn
-    from
-      opacity: 0;
-    to
-      opacity: 1;
-
-@keyframes shake
-  0%, 100%
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-
-  10%, 30%, 50%, 70%, 90%
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-
-  20%, 40%, 60%, 80%
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-
-.shake
-  -webkit-animation-name: shake;
-  animation-name: shake;
-
-@keyframes fadeInDown
-  0%
-    opacity: 0;
-    -webkit-transform: translate3d(0, -30%, 0);
-    transform: translate3d(0, -30%, 0);
-
-  100%
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
+.global-error
+  position: fixed;
+  bottom: 20px
+  right: 20px;
 
 
-.fadeInDown
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+.auth0-loading
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:30px;
+  height:30px;
+  margin:-20px 0 0 -20px;
+  border-width: 2px;
+  border-style:solid;
+  border-color: rgba(0,0,0,.4) rgba(0,0,0,.4) rgba(0,0,0,.2) rgba(0,0,0,.2);
+  opacity:.9;
+  border-radius:20px;
+  -webkit-animation:rotate 1s linear infinite;
+  -ms-animation:rotate 1s linear infinite;
+
+@-webkit-keyframes rotate
+  0%{-webkit-transform:rotate(0deg)}
+  100%{-webkit-transform:rotate(360deg)}
+
+@-ms-keyframes rotate
+  0%{-ms-transform:rotate(0deg)}
+  100%{-ms-transform:rotate(360deg)}
+
 
 .auth0-lock
   font-family: "Avenir", sans-serif;
@@ -106,6 +86,30 @@ breakpoint(point, value = 0)
   input:focus
     outline: none;
 
+  .auth0-lock-error
+    .auth0-lock-input-wrap
+      border-color: red;
+
+  .auth0-lock-error-message
+    background: rgba(0,0,0,.8)
+    position: absolute;
+    padding: 13px 14px;
+    color: white;
+    font-size: 12px;
+    right: -108px;
+    border-radius: 3px;
+    top: 0px;
+
+    &:before
+      border-left: 6px solid transparent;
+      border-right: 6px solid rgba(0,0,0,.8)
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      left: -12px;
+      position: absolute;
+      content: " "
+      top: 15px;
+
   .auth0-lock-overlay
     +breakpoint("desktop")
       background: rgba(34,34,40, .94)
@@ -123,6 +127,14 @@ breakpoint(point, value = 0)
     display: block;
     -webkit-animation: fadeIn .7s;
     animation: fadeIn .7s;
+
+    p
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: center
+      margin-top: 0
+      margin-bottom: 20px;
+      color: #666;
 
   .auth0-lock-hide
     display: none !important;
@@ -148,6 +160,11 @@ breakpoint(point, value = 0)
       width: 300px;
       margin: auto;
 
+  .auth0-lock-widget-container
+    overflow: hidden;
+    border-radius: 5px;
+    background: white;
+
   .auth0-lock-header
     text-align: center;
     padding: 14px 14px 14px 14px;
@@ -156,61 +173,63 @@ breakpoint(point, value = 0)
     background: #fff;
     height: 100px
 
-    +breakpoint(mobile-landscape)
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-
-    .auth0-lock-close
-      background: white;
-      border-radius: 100px;
-      height: 10px;
-      width: 10px;
-      background: white;
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      box-shadow: 0 1px 3px rgba(0,0,0,.1);
-      color: #333;
-      z-index: 100;
-      border: 6px solid white;
-      cursor: pointer;
+  .auth0-lock-close, .auth0-lock-go-back
+    background: white;
+    border-radius: 100px;
+    height: 10px;
+    width: 10px;
+    background: white;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    color: #333;
+    z-index: 100;
+    border: 6px solid white;
+    cursor: pointer;
+    polygon
+      fill: #373737
 
   .auth0-lock-header-welcome
     font-size: 18px;
     position: relative;
 
-    img
-      display: block;
+  img
+    display: block;
 
-    .auth0-lock-header-logo
-      max-width: 60px;
-      height: 60px;
-      margin: auto auto 10px auto;
+  .auth0-lock-header-logo
+    max-width: 60px;
+    height: 60px;
+    margin: auto auto 10px auto;
 
-    .auth0-lock-header-placeholder
-      background: green;
-      color: white;
-      border-radius: 100px;
-      line-height: 60px;
-      width: 60px;
-      margin: auto;
+  .auth0-lock-header-placeholder
+    background: green;
+    color: white;
+    border-radius: 100px;
+    line-height: 60px;
+    width: 60px;
+    margin: auto;
 
-    .auth0-lock-header-avatar
-      height: 90px;
-      width: 90px;
-      display: block;
-      border-radius: 100px;
-      margin: auto;
-      margin: auto auto 16px auto;
-      margin-top: -30px;
-      position: relative;
-      box-shadow: 0 1px 2px rgba(0,0,0,.4)
+  .auth0-lock-header-avatar
+    height: 100px;
+    width: 100px;
+    display: block;
+    border-radius: 100px;
+    margin: auto;
+    margin: auto auto 16px auto;
+    margin-top: -30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 2px rgba(0,0,0,.4)
 
-    .auth0-lock-firstname
-      font-size: 18px;
+  .auth0-lock-firstname
+    font-size: 18px;
+    margin-top: 74px;
 
-    .auth0-lock-name
-      font-size: 22px;
+  .auth0-lock-name
+    font-size: 22px;
 
   .auth0-lock-header-bg
     position: absolute;
@@ -238,11 +257,29 @@ breakpoint(point, value = 0)
         background-position: center;
         background-size:  500px ;
 
+  .auth0-global-grobal-error
+    background: #F04848;
+    color: white;
+    text-align: center;
+    padding: 6px 20px;
+    line-height: 2;
+    font-size: 12px;
+    display: none;
+    span
+      display: none;
+      animation-delay: .2s;
+
+
   .auth0-lock-content
     padding: 30px 40px;
     background: white;
     max-width: 240px;
     margin: auto;
+    transition: all 2s;
+
+    &:last-child
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
 
     &:last-child
       border-bottom-left-radius: 6px;
@@ -278,6 +315,9 @@ breakpoint(point, value = 0)
         a
           color white
 
+  .auth0-lock-input
+    position: relative;
+
   .auth0-lock-input-wrap
     border-radius: 3px;
     margin-bottom: 10px;
@@ -285,13 +325,17 @@ breakpoint(point, value = 0)
     position: relative;
     background: #f1f1f1;
     overflow: hidden;
+    transition: border-color .8s;
 
-    i:before
-      color: #888;
+    .auth0-lock-icon
       position: absolute
       font-size: 12px;
-      top: 17px;
-      left: 15px;
+      top: 16px;
+      left: 14px;
+      width: 14px;
+      height: 10px;
+      path
+        fill: #666;
 
     &.auth0-lock-input-email
       i:before
@@ -310,7 +354,7 @@ breakpoint(point, value = 0)
 
     .auth0-lock-input
       border: 0;
-      padding: 12px 14px;
+      padding: 10px 14px;
       margin-left: 40px;
       right: 0;
       height: 20px;
@@ -320,6 +364,8 @@ breakpoint(point, value = 0)
       width: 169px;
       +breakpoint("mobile-landscape")
         width: 149px;
+      &.animated
+        animation-duration: .5s;
 
     &:last-child
       margin-bottom: 0;
@@ -342,6 +388,8 @@ breakpoint(point, value = 0)
     display: block;
     width: 100%;
     position: fixed;
+    overflow: hidden;
+    position: relative;
     bottom: 0;
     transition: background-color .2s ease-in-out;
     i
@@ -358,8 +406,9 @@ breakpoint(point, value = 0)
 
     +breakpoint("mobile-landscape")
       position: static;
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius: 5px;
+      position: relative;
+      // border-bottom-right-radius: 5px;
+      // border-bottom-left-radius: 5px;
 
     i
       border: 2.5px solid white;
@@ -382,6 +431,131 @@ breakpoint(point, value = 0)
       i:before
         content: "…"
         left: 0;
+
+    .auth0-loading
+      top: 26px
+
+
+  .auth0-loading-container
+    position: relative;
+    display: none;
+
+  .auth0-lock-change-avatar
+    color: red;
+
+  &.auth0-lock-mode-loading
+
+    .auth0-lock-content
+      opacity: .3;
+      pointer-events: none
+
+    .auth0-lock-submit
+      background: #eee
+      transition: background-color .7s ease;
+      cursor: initial;
+      pointer-events: none
+
+    i
+      animation-name: fadeOutDownBig;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+
+    .auth0-loading-container
+      animation-name: fadeInDownBig;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      display: block;
+
+  &.auth0-lock-mode-initial
+    .auth0-lock-confirmation
+      animation-name: fadeOutRight;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-fill-mode: both;
+
+
+  &.auth0-lock-mode-completed
+    .auth0-lock-header
+      animation-name: fadeOutUp;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-header-avatar
+      animation-name: fadeOutUp;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-content
+      animation-name: fadeOut;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-submit
+      animation-name: fadeOutDown;
+      animation-fill-mode: both;
+      animation-duration: 1.2s;
+
+    .auth0-lock-confirmation
+      display: block;
+      animation-name: fadeIn;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-fill-mode: both;
+
+    .checkmark
+      display: block;
+
+  .auth0-lock-confirmation
+    display: none;
+    position: absolute;
+    padding: 0 30px;
+    text-align: center;
+    line-height: 2;
+    font-size: 14px;
+    color: #666;
+    bottom: 0
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-top: 80px;
+    p
+      margin-bottom: 6px;
+    a
+      display: block;
+      font-weight: 500;
+      color: #09c
+
+
+      svg
+        width: 15px;
+        height: 16px;
+        margin-bottom: -4px;
+        margin-left: 0px;
+        display: inline-block;
+        transition: transform 1s ease
+        -webkit-transform: rotate(120deg);
+        path
+          fill: #09c
+
+      &:hover svg
+        -webkit-transform: rotate(490deg);
+
+    .auth0-lock-go-back
+      // width: 20px;
+      // height: 20px
+      // position: absolute
+      left: 20px;
+      // top: 18px;
+      // polygon
+      //   stroke-width: 3px
+
+    .auth0-lock-sent-label
+      color: green;
+      display: none;
+      animation: fadeIn;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      font-weight: 600;
 
   .auth0-lock-forgot-link
     font-size 12px;
@@ -449,3 +623,53 @@ breakpoint(point, value = 0)
       transform: translateY(0%)  scale(1);
       transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
       opacity: 1;
+
+  .checkmark__circle
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+
+  .checkmark
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    display: none;
+
+
+  .checkmark__check
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+
+
+  // &.auth0-lock-mode-
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
