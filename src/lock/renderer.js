@@ -31,8 +31,8 @@ export default class Renderer {
       return renderCrashed(lock);
     case LockModes.PASSWORDLESS_EMAIL:
       return renderPasswordlessEmail(lock);
-    case LockModes.PASSWORDLESS_SMS:
-      return renderPasswordlessSMS(lock);
+    // case LockModes.PASSWORDLESS_SMS:
+    //   return renderPasswordlessSMS(lock);
     default:
       throw new Error(`unknown lock mode ${mode}`);
     }
