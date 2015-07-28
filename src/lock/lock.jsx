@@ -3,7 +3,8 @@ import SubmitButton from './submit_button';
 import Header from '../header/header';
 import CloseButton from '../header/close_button';
 import GlobalError from './global_error';
-import { ui } from './index';
+import * as l from './index';
+const ui = l.ui;
 
 export default class Lock extends React.Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { lock, submitHandler } = this.props;
+    const { completed, lock, submitHandler } = this.props;
     const Content = this.props.content;
     const Confirmation = this.props.confirmation || null;
 
@@ -24,14 +25,21 @@ export default class Lock extends React.Component {
     const gravatar = ui.gravatar(lock) && lock.get("gravatar");
 
     const disableSubmit = lock.get("submitting");
-    const showSubmit = !!submitHandler;
-    const submit = showSubmit ? <SubmitButton disabled={disableSubmit} /> : null;
+
+    // TODO: handle opened class properly
+    let className = "auth0-lock opened";
+    if (l.submitting(lock)) {
+      className += " auth0-lock-mode-loading opened";
+    } else if (completed) {
+      className += " auth0-lock-mode-completed opened";
+    }
 
     return (
-      <div className="auth0-lock" ref="lock">
+      <div className={className} ref="lock">
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
+            {/* TODO: update gravatar markup here */}
             {showCloseButton && <CloseButton lockID={lock.get("id")} />}
             <div className="auth0-lock-widget-container">
               <Header icon={icon} gravatar={gravatar}/>
@@ -39,7 +47,7 @@ export default class Lock extends React.Component {
               <div className="auth0-lock-content">
                 <this.props.content lock={lock} />
               </div>
-              {submit}
+              <SubmitButton disabled={disableSubmit} />
               <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
             </div>
             {Confirmation && <Confirmation lock={lock} />}

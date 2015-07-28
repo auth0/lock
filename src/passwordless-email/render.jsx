@@ -9,6 +9,7 @@ import * as m from './index';
 
 export default function render(lock) {
   return {
+    completed: m.emailSent(lock),
     confirmation: m.emailSent(lock) && EmailSentConfirmation,
     content: AskEmail,
     submitHandler: !m.emailSent(lock) && askEmailSubmitHandler

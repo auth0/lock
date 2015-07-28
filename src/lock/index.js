@@ -48,6 +48,10 @@ export const ui = {
   signInCallback: lock => getUIAttribute(lock, "signInCallback")
 };
 
+export function submitting(m) {
+  return m.get("submitting", false);
+}
+
 export function setGlobalError(m, str) {
   return m.set("globalError", str);
 }
