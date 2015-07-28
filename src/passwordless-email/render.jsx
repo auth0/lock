@@ -9,12 +9,12 @@ import { requestPasswordlessEmail, signIn } from './actions';
 export default function render(lock) {
   const state = lock.get("state");
   switch(state) {
-  case LockStates.ASK_VERIFICATION_CODE:
-    return (
-      <Lock lock={lock} showHeader={true} submitHandler={askVerificationCodeSubmitHandler}>
-        <AskVerificationCode />
-      </Lock>
-    );
+  // case LockStates.ASK_VERIFICATION_CODE:
+  //   return (
+  //     <Lock lock={lock} showHeader={true} submitHandler={askVerificationCodeSubmitHandler}>
+  //       <AskVerificationCode />
+  //     </Lock>
+  //   );
   case LockStates.DONE:
     return <Lock lock={lock} showHeader={false}><Done /></Lock>;
   case LockStates.READY:
