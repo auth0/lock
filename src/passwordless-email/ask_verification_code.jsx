@@ -9,7 +9,7 @@ export default class AskVerificationCode extends React.Component {
     const autoFocus = lock.getIn(["showOptions", "focusInput"]);
 
     return (
-      <div className="auth0-lock-content">
+      <div>
         <div className="auth0-lock-instructions">
           We sent you a code to sign in. <br/>
           Please check your inbox.

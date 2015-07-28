@@ -8,7 +8,7 @@ export default class AskPhoneNumber extends React.Component {
   render() {
     const { lock } = this.props;
     return (
-      <div className="auth0-lock-content">
+      <div>
         <div className="auth0-lock-instructions">
           Enter your phone number to sign in or create an account
         </div>

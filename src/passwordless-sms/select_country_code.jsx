@@ -6,7 +6,7 @@ import { ui } from '../lock/index';
 export default class SelectCountryCode extends React.Component {
   render() {
     return (
-      <div className="auth0-lock-content">
+      <div>
         <CountryCodeSelect autoFocus={ui.focusInput(this.props.lock)}
           selectHandler={::this.countryCodeSelectHandler} />
       </div>

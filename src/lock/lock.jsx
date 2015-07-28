@@ -34,7 +34,9 @@ export default class Lock extends React.Component {
             <div className="auth0-lock-widget-container">
               <Header icon={icon} gravatar={gravatar}/>
               {globalError && <GlobalError message={globalError} />}
-              {React.cloneElement(React.Children.only(this.props.children), {lock: lock})}
+              <div className="auth0-lock-content">
+                {React.cloneElement(React.Children.only(this.props.children), {lock: lock})}
+              </div>
               {submit}
               <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
             </div>
