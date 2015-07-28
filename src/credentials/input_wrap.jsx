@@ -3,12 +3,9 @@ import EmailIcon from './email_icon';
 
 export default class InputWrap extends React.Component {
   render() {
-    var className = "auth0-lock-input-wrap auth0-lock-input-" + this.props.name;
+    var className = "auth0-lock-input-block auth0-lock-input-" + this.props.name;
     if (!this.props.isValid) {
-      className += " auth0-lock-input-invalid";
-    }
-    if (this.props.disabled) {
-      className += " auth0-lock-input-disabled";
+      className += " auth0-lock-error animated pulse";
     }
 
     let icon = <i className="auth0-lock-icon"/>;
@@ -18,8 +15,10 @@ export default class InputWrap extends React.Component {
 
     return (
       <div className={className}>
-        {icon}
-        {this.props.children}
+        <div className="auth0-lock-input-wrap">
+          {icon}
+          {this.props.children}
+        </div>
       </div>
     );
   }
