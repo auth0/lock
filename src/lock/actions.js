@@ -5,15 +5,14 @@ import * as Gravatar from '../gravatar/index';
 import { setLock, updateLock } from '../store/index';
 import * as l from './index';
 
-export function setupLock(id, clientID, domain, options) {
+export function setupLock(id, clientID, domain) {
   setLock(l.setup({
     id: id,
     clientID: clientID,
-    domain: domain,
-    options: options
+    domain: domain
   }));
 
-  LockWebAPI.setupClient(id, clientID, domain, options || {});
+  LockWebAPI.setupClient(id, clientID, domain);
 }
 
 export function openLock(id, mode, options) {

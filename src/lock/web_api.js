@@ -6,13 +6,9 @@ class LockWebAPI {
     this._clients = {};
   }
 
-  setupClient(lockID, clientID, domain, options) {
+  setupClient(lockID, clientID, domain) {
     // TODO check there isn't already a client for the lock
-    this._clients[lockID] = new Auth0({
-      clientID: clientID,
-      domain: domain,
-      useCordovaSocialPlugins: options.useCordovaSocialPlugins
-    });
+    this._clients[lockID] = new Auth0({clientID: clientID, domain: domain});
   }
 
   signIn(lockID, options, success, fail) {
