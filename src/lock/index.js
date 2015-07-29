@@ -3,17 +3,18 @@ import { LockStates, LockModes } from '../control/constants';
 import { isSmallScreen } from '../utils/media_utils';
 
 export function setup(attrs) {
-  const { clientID, lockID, domain, options } = attrs;
+  const { clientID, domain, id } = attrs;
 
   return Immutable.fromJS({
     clientID: clientID,
     domain: domain,
-    id: lockID,
-    options: options,
-    show: false,
-    mode: LockModes.LOADING,
-    state: LockStates.READY,
-    submitting: false,
+    id: id,
+    // mode: undefined,
+    // show: false,
+    // submitting: false,
+    // render: false,
+
+    // TODO: figure out how to handle credentials, they are specific to each mode
     credentials: {
       phoneNumber: {countryCode: "+1", number: "", valid: false, showInvalid: false},
       email: {email: "", valid: false, showInvalid: false}
@@ -21,8 +22,35 @@ export function setup(attrs) {
   });
 }
 
-export function extractUIOptions(id, options) {
+export function id(m) {
+  return m.get("id");
+}
 
+export function clientID(m) {
+  return m.get("clientID");
+}
+
+export function domain(m) {
+  return m.get("domain");
+}
+
+export function mode(m) {
+  return m.get("mode");
+}
+
+export function show(m) {
+  return m.get("show", false);
+}
+
+export function submitting(m) {
+  return m.get("submitting", false);
+}
+
+export function render(m) {
+  return m.get("render", false);
+}
+
+function extractUIOptions(id, options) {
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
@@ -34,8 +62,24 @@ export function extractUIOptions(id, options) {
   });
 }
 
-function getUIAttribute(lock, attribute) {
-  return lock.getIn(["ui", attribute]);
+function unchangeableUIOptions(m) {
+  if (ui.containerID(m)) {
+    return new Map({
+      containerID: ui.containerID(m),
+      appendContainer: ui.appendContainer(m)
+    });
+  } else {
+    return new Map();
+  }
+}
+
+function setUIOptions(m, options) {
+  const uiOptions = extractUIOptions(id(m), options);
+  return m.set("ui", uiOptions.merge(unchangeableUIOptions(m)));
+}
+
+function getUIAttribute(m, attribute) {
+  return m.getIn(["ui", attribute]);
 }
 
 export const ui = {
@@ -48,8 +92,27 @@ export const ui = {
   signInCallback: lock => getUIAttribute(lock, "signInCallback")
 };
 
-export function submitting(m) {
-  return m.get("submitting", false);
+export function open(m, mode, options) {
+  // TODO: figure out how to make each mode handle its options, maybe even
+  //       provide a hook to do more things.
+  // TODO: control how modes are changed.
+  const { modeOptions } = options;
+  m = m.merge(new Map({
+    show: true,
+    mode: mode,
+    render: true,
+    modeOptions: modeOptions
+  }));
+  m = setUIOptions(m, options);
+  return m;
+}
+
+export function modeOptions(m) {
+  return m.get("modeOptions", false);
+}
+
+export function close(m) {
+  return m.set("show", false);
 }
 
 export function setGlobalError(m, str) {
@@ -57,54 +120,5 @@ export function setGlobalError(m, str) {
 }
 
 export function globalError(m) {
-  return m.get("globalError");
-}
-
-export function hasClient(lock, clientID) {
-  return lock.get("clientID") === clientID;
-}
-
-export function hasCrashed(lock) {
-  return lock.get("state") === LockStates.CRASHED;
-}
-
-function isLoading(lock) {
-  return lock.get("mode") === LockModes.LOADING;
-}
-
-export function markCrashed(lock) {
-  return lock.set("mode", LockModes.CRASHED);
-}
-
-export function markReady(lock) {
-  return lock.set("state", LockStates.READY);
-}
-
-export function show(lock, options) {
-  const { mode } = options;
-  const send = options.send || "link";
-
-  if (!lock.get("ui")) {
-    lock = lock.set("ui", extractUIOptions(lock.get("id"), options));
-  }
-
-  if (lock.get("mode") === LockModes.LOADING) {
-    if (lock.get("state") === LockStates.READY) {
-      return lock.merge(Map({show: true, mode: mode, send: send, render: true}));
-    } else {
-      return lock.merge(Map({show: true, loading: mode, send: send, render: true}));
-    }
-  } else if (lock.get("mode") === LockModes.CRASHED || lock.get("mode") === mode) {
-    return lock.set("show", true);
-  } else {
-    throw new Error("can't show the lock in a different mode");
-  }
-}
-
-export function render(lock) {
-  return lock.get("render");
-}
-
-export function hide(lock) {
-  return lock.set("show", false);
+  return m.get("globalError", "");
 }

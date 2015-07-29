@@ -1,5 +1,5 @@
 import React from 'react';
-import { hideLock } from '../lock/actions';
+import { closeLock } from '../lock/actions';
 
 export default class CloseButton extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class CloseButton extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    hideLock(this.props.lockID);
+    closeLock(this.props.lockID);
   }
 }
 
