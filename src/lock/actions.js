@@ -13,7 +13,7 @@ export function setupLock(id, clientID, domain, options) {
     options: options
   }));
 
-  LockWebAPI.setupClient(id, clientID, domain, options);
+  LockWebAPI.setupClient(id, clientID, domain, options || {});
 }
 
 export function openLock(id, mode, options) {
