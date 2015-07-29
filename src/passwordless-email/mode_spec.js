@@ -1,10 +1,15 @@
-import { LockModes } from '../control/constants';
 import { openLock } from '../lock/actions';
+import render from './render';
+
+const NAME = "passwordless-email";
+
+function open(id, options) {
+  options.modeOptions = {send: options.send};
+  openLock(id, NAME, options);
+}
 
 export default {
-  name: "passwordless-email",
-  open: function(id, options) {
-    options.modeOptions = {send: options.send};
-    openLock(this.id, LockModes.PASSWORDLESS_EMAIL, options);
-  }
+  name: NAME,
+  open: open,
+  render: render
 };

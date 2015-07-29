@@ -8,6 +8,14 @@ export default class Auth0Lock {
     this.modes[spec.name] = spec;
   }
 
+  static modeRender(name) {
+    return (this.modes || {})[name].render;
+  }
+
+  static modeOpen(name) {
+    return (this.modes || {})[name].open;
+  }
+
   constructor(clientID, domain) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
@@ -47,15 +55,15 @@ export default class Auth0Lock {
     }
 
     // Dispatch according to the given mode
-    const modeSpec = (Auth0Lock.modes || {})[mode];
+    const modeOpen = Auth0Lock.modeOpen(mode);
 
-    if (typeof modeSpec != "object") {
+    if (typeof modeOpen != "function") {
       throw new Error("Unknown `mode` " + mode + ".");
     }
 
     options = options || {};
     options.signInCallback = callback;
-    modeSpec.open(this.id, options);
+    modeOpen(this.id, options);
   }
 
   close() {

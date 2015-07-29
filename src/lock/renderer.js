@@ -1,9 +1,6 @@
-import ContainerManager from './container_manager';
-import { LockModes } from '../control/constants';
-import renderCrashed from '../crashed/render';
-import renderPasswordlessEmail from '../passwordless-email/render';
-import renderPasswordlessSMS from '../passwordless-sms/render';
 import React from 'react';
+import Auth0Lock from './auth0_lock';
+import ContainerManager from './container_manager';
 import Lock from './lock';
 import * as l from './index';
 
@@ -26,17 +23,11 @@ export default class Renderer {
   }
 
   spec(lock) {
-    // TODO: mode specific renderer specs should be passed to the constructor
-    const mode = lock.get("mode");
-    switch(mode) {
-    case LockModes.CRASHED:
-      return renderCrashed(lock);
-    case LockModes.PASSWORDLESS_EMAIL:
-      return renderPasswordlessEmail(lock);
-    // case LockModes.PASSWORDLESS_SMS:
-    //   return renderPasswordlessSMS(lock);
-    default:
+    // TODO: this class should not depend on Auth0Lock
+    const modeRender = Auth0Lock.modeRender(l.mode(lock));
+    if (typeof modeRender != "function") {
       throw new Error(`unknown lock mode ${mode}`);
     }
+    return modeRender(lock);
   }
 }
