@@ -101,7 +101,7 @@ export function open(m, mode, options) {
   //       provide a hook to do more things.
   // TODO: control how modes are changed.
   const { modeOptions } = options;
-  m = m.merge(new Map({
+  m = m.merge(Immutable.fromJS({
     show: true,
     mode: mode,
     render: true,
