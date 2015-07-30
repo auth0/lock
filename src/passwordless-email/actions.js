@@ -56,6 +56,39 @@ export function requestPasswordlessEmailError(lockID, error) {
   });
 }
 
+export function allowResend(lockID) {
+  swap(updateEntity, "lock", lockID, m.allowResend);
+}
+
+export function resendEmail(lockID) {
+  swap(updateEntity, "lock", lockID, m.resend);
+
+  const lock = read(getEntity, "lock", lockID);
+  WebApi.requestPasswordlessEmail(
+    lockID,
+    c.email(lock),
+    lock.get("send"), // TODO: abstract access in a function
+    null, // TODO: condier authParams
+    (error, result) => {
+      if (error) {
+        resendEmailError(lockID, error);
+      } else {
+        resendEmailSuccess(lockID);
+      }
+    }
+  );
+}
+
+export function resendEmailSuccess(lockID) {
+  swap(updateEntity, "lock", lockID, m.setResendSuccess);
+}
+
+export function resendEmailError(lockID, error) {
+  // TODO: set a proper error message
+  swap(updateEntity, "lock", lockID, m.setResendFailed);
+}
+
+
 export function signIn(lockID) {
   // TODO: abstract this submit thing
   let submit = false;

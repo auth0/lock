@@ -16,7 +16,3 @@ const renderScheduler = new RenderScheduler();
 subscribe("renderScheduler", locks => {
   renderScheduler.schedule(() => renderer.render(getUIState()));
 });
-
-// TODO is it worth to follow the flux convention for naming things and
-// organizing files? We can have just one dispatcher, store, constants ns and
-// actions, but a lot of utils.

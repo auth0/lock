@@ -1,4 +1,6 @@
 import React from 'react';
+import * as m from './index';
+import { allowResend, resendEmail } from './actions';
 
 class BackIcon extends React.Component {
   render() {
@@ -21,7 +23,55 @@ class RetryIcon extends React.Component {
   }
 }
 
+class ResendLink extends React.Component {
+  render() {
+    const { retry, onClick } = this.props;
+    const message = retry ? "Retry" : "Resend";
+    return(
+      <a className="auth0-lock-resend-link" href="" onClick={onClick}>
+        {message} <RetryIcon />
+      </a>
+    );
+  }
+}
+
+class Resend extends React.Component {
+  render() {
+    const { lock } = this.props;
+
+    const resendLink = m.resendAvailable(lock) &&
+      <ResendLink retry={m.resendFailed(lock)} onClick={::this.handleClick} />;
+
+    const resendingLabel = m.resendOngoing(lock) &&
+      <a className="auth0-lock-resend-link">resending...</a>;
+
+    const resendSuccessLabel = m.resendSuccess(lock) &&
+      <span className="auth0-lock-sent-label">Sent!</span>;
+
+    const resendFailedLabel = m.resendFailed(lock) &&
+      <span className="auth0-lock-sent-label">Failed!</span>;
+
+    return (
+      <span>
+        {resendLink}
+        {resendingLabel}
+        {resendSuccessLabel}
+        {resendFailedLabel}
+      </span>
+    );
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    resendEmail(this.props.lock.get("id"));
+  }
+}
+
 export default class EmailSentConfirmation extends React.Component {
+  componentDidMount() {
+    setTimeout(() => allowResend(this.props.lock.get("id")), 5000);
+  }
+
   render() {
     return (
       <div className="auth0-lock-confirmation">
@@ -29,11 +79,7 @@ export default class EmailSentConfirmation extends React.Component {
         <BackIcon />
         <CheckmarkIcon />
         <p>We sent you a link to sign in.<br />Please check your inbox.</p>
-        {/* TODO: resend functionality */}
-        <a className="auth0-lock-resend-link" href="">
-          Resend Again <RetryIcon />
-        </a>
-        {/* <span className="auth0-lock-sent-label">Sent!</span> */}
+        <Resend lock={this.props.lock}/>
       </div>
     )
   }
