@@ -1,24 +1,18 @@
-import { ActionTypes } from '../control/constants';
-import LockWebAPI from './web_api';
-import * as Gravatar from '../gravatar/index';
-
-import { setLock, updateLock } from '../store/index';
+import WebAPI from './web_api';
+import { swap, setEntity, updateEntity } from '../store/index';
 import * as l from './index';
 
 export function setupLock(id, clientID, domain) {
-  setLock(l.setup({
-    id: id,
-    clientID: clientID,
-    domain: domain
-  }));
+  const lock = l.setup({id: id, clientID: clientID, domain: domain});
+  swap(setEntity, "lock", id, lock);
 
-  LockWebAPI.setupClient(id, clientID, domain);
+  WebAPI.setupClient(id, clientID, domain);
 }
 
 export function openLock(id, mode, options) {
-  updateLock(id, l.open, mode, options);
+  swap(updateEntity, "lock", id, l.open, mode, options);
 }
 
 export function closeLock(id) {
-  updateLock(id, l.close);
+  swap(updateEntity, "lock", id, l.close);
 }

@@ -1,8 +1,8 @@
+import { read, swap, getEntity, updateEntity } from '../store/index';
 import * as g from './index';
-import { updateGravatar, getGravatar } from '../store/index';
 
 export function requestGravatar(email) {
-  if (!getGravatar(email)) {
+  if (!read(getEntity, "gravatar", email)) {
     requestGravatarImage(email);
     requestGravatarDisplayName(email);
   }
@@ -22,17 +22,13 @@ function requestGravatarImage(email) {
 
 
 function requestGravatarDisplayNameSuccess(email, displayName) {
-  updateGravatar(email, x => {
-    return x.set("displayName", displayName).set("loaded", x.has("imageUrl"));
-  });
+  swap(updateEntity, "gravatar", email, g.setDisplayName, displayName);
 }
 
 function requestGravatarDisplayNameError(email) {}
 
 function requestGravatarImageSuccess(email, imageUrl) {
-  updateGravatar(email, x => {
-    return x.set("imageUrl", imageUrl).set("loaded", x.has("displayName"));
-  });
+  swap(updateEntity, "gravatar", email, g.setImageUrl, imageUrl);
 }
 
 function requestGravatarImageError(email) {}

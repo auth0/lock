@@ -1,35 +1,36 @@
 import { LockStates } from '../control/constants';
 import WebApi from '../lock/web_api';
-import { getLock, updateLock } from '../store/index';
-import { email, setEmail, setShowInvalidEmail, setShowInvalidVerificationCode, setVerificationCode, validateEmail, validEmail, validVerificationCode, verificationCode } from '../credentials/index';
+import { read, swap, getEntity, updateEntity } from '../store/index';
+import * as c from '../credentials/index';
 import * as l from '../lock/index';
 import * as m from './index';
 
 export function changeEmail(lockID, email) {
-  updateLock(lockID, setEmail, email);
+  swap(updateEntity, "lock", lockID, c.setEmail, email);
 }
 
 export function changeVerificationCode(lockID, verificationCode) {
-  return updateLock(lockID, setVerificationCode, verificationCode);
+  swap(updateEntity, "lock", lockID, c.setVerificationCode, verificationCode)
 }
 
 export function requestPasswordlessEmail(lockID) {
+  // TODO: abstract this submit thing
   let submit = false;
-  updateLock(lockID, lock => {
-    if (validEmail(lock)) {
+  swap(updateEntity, "lock", lockID, lock => {
+    if (c.validEmail(lock)) {
       submit = true;
-      return lock.set("submitting", true);
+      return l.setSubmitting(lock, true);
     } else {
-      return setShowInvalidEmail(lock);
+      return c.setShowInvalidEmail(lock);
     }
   });
 
   if (submit) {
-    const lock = getLock(lockID);
+    const lock = read(getEntity, "lock", lockID);
     WebApi.requestPasswordlessEmail(
       lockID,
-      email(lock),
-      lock.get("send"),
+      c.email(lock),
+      lock.get("send"), // TODO: abstract access in a function
       null, // TODO: condier authParams
       (error, result) => {
         if (error) {
@@ -43,36 +44,35 @@ export function requestPasswordlessEmail(lockID) {
 }
 
 export function requestPasswordlessEmailSuccess(lockID) {
-  // updateLock(lockID, lock => {
-  //   const state = lock.get("send") === "link" ?
-  //     LockStates.DONE : LockStates.ASK_VERIFICATION_CODE;
-  //   return lock.set("submitting", false).set("state", state);
-  // });
-  updateLock(lockID, lock => m.setEmailSent(lock.set("submitting", false), true));
+  swap(updateEntity, "lock", lockID, lock => {
+    return m.setEmailSent(l.setSubmitting(lock, false), true);
+  });
 }
 
 export function requestPasswordlessEmailError(lockID, error) {
   // TODO: set a proper error message
-  updateLock(lockID, lock => l.setGlobalError(lock.set("submitting", false), "We're sorry, something went wrong."));
+  swap(updateEntity, "lock", lockID, lock =>{
+    return l.setGlobalError(l.setSubmitting(lock, false), "We're sorry, something went wrong.");
+  });
 }
 
 export function signIn(lockID) {
+  // TODO: abstract this submit thing
   let submit = false;
-  updateLock(lockID, lock => {
-    if (validVerificationCode(lock)) {
+  swap(updateEntity, "lock", lockID, lock => {
+    if (c.validVerificationCode(lock)) {
       submit = true;
-      return lock.set("submitting", true);
+      return l.setSubmitting(lock, true);
     } else {
-      return setShowInvalidVerificationCode(lock);
+      return c.setShowInvalidVerificationCode(lock);
     }
   });
-
   if (submit) {
-    const lock = getLock(lockID);
+    const lock = read(getEntity, "lock", lockID);
     const options = {
       connection: "email",
-      username: email(lock),
-      password: verificationCode(lock),
+      username: c.email(lock),
+      password: c.verificationCode(lock),
       sso: false
     };
     WebApi.signIn(lockID, options, signInSuccess, signInError);
@@ -80,7 +80,8 @@ export function signIn(lockID) {
 }
 
 function signInSuccess(lockID, response) {
-  const callback = l.ui.signInCallback(getLock(lockID));
+  const lock = read(getEntity, "lock", lockID);
+  const callback = l.ui.signInCallback(lock);
   if (callback) {
     callback.apply(null, response);
   }
@@ -88,7 +89,8 @@ function signInSuccess(lockID, response) {
 }
 
 function signInError(lockID, error) {
-  const callback = l.ui.signInCallback(getLock(lockID));
+  const lock = read(getEntity, "lock", lockID);
+  const callback = l.ui.signInCallback(lock);
   if (callback) {
     callback.call(null, error);
   }

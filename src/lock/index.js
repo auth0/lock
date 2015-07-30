@@ -42,6 +42,10 @@ export function show(m) {
   return m.get("show", false);
 }
 
+export function setSubmitting(m, value) {
+  return m.set("submitting", value);
+}
+
 export function submitting(m) {
   return m.get("submitting", false);
 }
