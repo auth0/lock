@@ -13,7 +13,7 @@ export default class Renderer {
     locks.filter(l.render).forEach(lock => {
       const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
 
-      if (lock.get("show")) {
+      if (l.show(lock)) {
         const spec = this.spec(lock);
         React.render(<Lock lock={lock} {...spec} />, container);
       } else if (container) {
