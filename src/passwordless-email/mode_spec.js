@@ -3,13 +3,19 @@ import render from './render';
 
 const NAME = "passwordless-email";
 
-function open(id, options) {
-  options.modeOptions = {send: options.send};
+function magiclink(id, options, callback) {
+  options.signInCallback = callback;
+  openLock(id, NAME, options);
+}
+
+function emailcode(id, options, callback) {
+  options.modeOptions = {send: "code"};
+  options.signInCallback = callback;
   openLock(id, NAME, options);
 }
 
 export default {
   name: NAME,
-  open: open,
+  openMethods: {magiclink: magiclink, emailcode: emailcode},
   render: render
 };
