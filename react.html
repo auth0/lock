@@ -89,11 +89,11 @@
     <script src="build/build.js"></script>
     <script>
       $(function() {
-        var clientID = "";
-        var domain = "";
+        var clientID = "1";
+        var domain = "a";
         var lock = new Auth0Lock(clientID, domain);
-        $('body').one("click", function(){
-          lock.showPasswordlessEmail({
+        $('body').bind("click", function(){
+          lock.open('passwordless-email', {
             // container: 'lock',
             // icon: "https://....png"
             // closable: false
