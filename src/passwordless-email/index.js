@@ -6,10 +6,6 @@ export function emailSent(m) {
   return m.get("emailSent", false);
 }
 
-export function setResendingEmail(m, value) {
-  return m.set("resendingEmail", value);
-}
-
 function setResendStatus(m, value) {
   // TODO: check value
   return m.set("resendStatus", value);
@@ -57,4 +53,8 @@ function resendStatus(m) {
 
 export function resendAvailable(m) {
   return resendStatus(m) == "waiting" || resendStatus(m) == "failed";
+}
+
+export function reset(m) {
+  return m.remove("credentials").remove("emailSent").remove("resendStatus");
 }

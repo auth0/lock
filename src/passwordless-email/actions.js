@@ -129,3 +129,7 @@ function signInError(lockID, error) {
   }
   // TODO update lock state
 }
+
+export function reset(lockID) {
+  swap(updateEntity, "lock", lockID, m.reset);
+}
