@@ -20,7 +20,7 @@ It is possible to specify a second argument with a list of options to customize 
 
 ## API
 
-### new Auth0Lock
+### new Auth0Lock(clientID, domain)
 
 ### .open(mode, [options, callback])
 
