@@ -1,5 +1,4 @@
 import Immutable, { Map } from 'immutable';
-import { LockStates, LockModes } from '../control/constants';
 import { isSmallScreen } from '../utils/media_utils';
 
 export function setup(attrs) {

@@ -1,4 +1,3 @@
-import { LockStates } from '../control/constants';
 import WebApi from '../lock/web_api';
 import { read, swap, getEntity, updateEntity } from '../store/index';
 import * as c from '../credentials/index';
