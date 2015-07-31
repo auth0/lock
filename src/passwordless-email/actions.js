@@ -14,32 +14,26 @@ export function changeVerificationCode(lockID, verificationCode) {
 }
 
 export function requestPasswordlessEmail(lockID) {
-  // TODO: abstract this submit thing
-  let submit = false;
+  // TODO: abstract this submit thing.
   swap(updateEntity, "lock", lockID, lock => {
     if (c.validEmail(lock)) {
-      submit = true;
       return l.setSubmitting(lock, true);
     } else {
       return c.setShowInvalidEmail(lock);
     }
   });
 
-  if (submit) {
-    const lock = read(getEntity, "lock", lockID);
-    WebApi.requestPasswordlessEmail(
-      lockID,
-      c.email(lock),
-      lock.get("send"), // TODO: abstract access in a function
-      null, // TODO: condier authParams
-      (error, result) => {
-        if (error) {
-          requestPasswordlessEmailError(lockID, error);
-        } else {
-          requestPasswordlessEmailSuccess(lockID);
-        }
+  const lock = read(getEntity, "lock", lockID);
+
+  if (l.submitting(lock)) {
+    const options = {email: c.email(lock), send: m.send(lock)};
+    WebApi.startPasswordless(lockID, options, error => {
+      if (error) {
+        requestPasswordlessEmailError(lockID, error);
+      } else {
+        requestPasswordlessEmailSuccess(lockID);
       }
-    );
+    });
   }
 }
 
@@ -50,9 +44,9 @@ export function requestPasswordlessEmailSuccess(lockID) {
 }
 
 export function requestPasswordlessEmailError(lockID, error) {
-  // TODO: set a proper error message
-  swap(updateEntity, "lock", lockID, lock =>{
-    return l.setGlobalError(l.setSubmitting(lock, false), "We're sorry, something went wrong.");
+  const errorMessage = "We're sorry, something went wrong when sending the email.";
+  swap(updateEntity, "lock", lockID, lock => {
+    return l.setGlobalError(l.setSubmitting(lock, false), errorMessage);
   });
 }
 
@@ -64,19 +58,14 @@ export function resendEmail(lockID) {
   swap(updateEntity, "lock", lockID, m.resend);
 
   const lock = read(getEntity, "lock", lockID);
-  WebApi.requestPasswordlessEmail(
-    lockID,
-    c.email(lock),
-    lock.get("send"), // TODO: abstract access in a function
-    null, // TODO: condier authParams
-    (error, result) => {
-      if (error) {
-        resendEmailError(lockID, error);
-      } else {
-        resendEmailSuccess(lockID);
-      }
+  const options = {email: c.email(lock), send: m.send(lock)};
+  WebApi.startPasswordless(lockID, options, error => {
+    if (error) {
+      resendEmailError(lockID, error);
+    } else {
+      resendEmailSuccess(lockID);
     }
-  );
+  });
 }
 
 export function resendEmailSuccess(lockID) {
@@ -88,46 +77,54 @@ export function resendEmailError(lockID, error) {
   swap(updateEntity, "lock", lockID, m.setResendFailed);
 }
 
-
 export function signIn(lockID) {
   // TODO: abstract this submit thing
-  let submit = false;
   swap(updateEntity, "lock", lockID, lock => {
     if (c.validVerificationCode(lock)) {
-      submit = true;
       return l.setSubmitting(lock, true);
     } else {
       return c.setShowInvalidVerificationCode(lock);
     }
   });
-  if (submit) {
-    const lock = read(getEntity, "lock", lockID);
+
+  const lock = read(getEntity, "lock", lockID);
+
+  if (l.submitting(lock)) {
     const options = {
       connection: "email",
       username: c.email(lock),
       password: c.verificationCode(lock),
       sso: false
     };
-    WebApi.signIn(lockID, options, signInSuccess, signInError);
+    WebApi.signIn(lockID, options, (error, ...args) => {
+      if (error) {
+        signInError(lockID, error);
+      } else {
+        signInSuccess(lockID, ...args);
+      }
+    });
   }
 }
 
-function signInSuccess(lockID, response) {
+function signInSuccess(lockID, ...args) {
   const lock = read(getEntity, "lock", lockID);
   const callback = l.ui.signInCallback(lock);
+  swap(updateEntity, "lock", lockID, l.close);
+
   if (callback) {
-    callback.apply(null, response);
+    callback.call(null, null, ...args);
   }
-  // TODO update lock state
 }
 
 function signInError(lockID, error) {
   const lock = read(getEntity, "lock", lockID);
   const callback = l.ui.signInCallback(lock);
+  swap(updateEntity, "lock", lockID, lock => {
+    return l.setGlobalError(l.setSubmitting(lock, false), error.description);
+  });
   if (callback) {
     callback.call(null, error);
   }
-  // TODO update lock state
 }
 
 export function reset(lockID) {

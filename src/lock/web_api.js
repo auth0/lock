@@ -1,57 +1,36 @@
 import Auth0 from 'auth0-js';
 import * as StringUtils from '../utils/string_utils';
 
-class LockWebAPI {
+class Auth0WebAPI {
   constructor() {
-    this._clients = {};
+    this.clients = {};
   }
 
   setupClient(lockID, clientID, domain) {
-    // TODO check there isn't already a client for the lock
-    this._clients[lockID] = new Auth0({clientID: clientID, domain: domain});
+    // TODO: reuse clients
+    this.clients[lockID] = new Auth0({clientID: clientID, domain: domain});
   }
 
-  signIn(lockID, options, success, fail) {
-    this._clients[lockID].login(options, function (error, profile, idToken, accessToken, state, refreshToken) {
-      if (!handleSignInError(lockID, error, fail)) {
-        success(lockID, [error, profile, idToken, accessToken, state, refreshToken]);
-      }
+  signIn(lockID, options, cb) {
+    this.clients[lockID].login(options, function (error, profile, idToken, accessToken, state, refreshToken) {
+      cb(normalizeError(error), profile, idToken, accessToken, state, refreshToken);
     });
   }
 
   signOut(lockID, query) {
-    this._clients[lockID].logout(query);
+    this.clients[lockID].logout(query);
   }
 
-  requestPasswordlessEmail(lockID, email, send, authParams, cb) {
-    const options = {email: email, send: send};
-    if (authParams) {
-      opts.authParams = authParams;
-    }
-    this._clients[lockID].startPasswordless(options, cb);
+  startPasswordless(lockID, options, cb) {
+    this.clients[lockID].startPasswordless(options, cb);
   }
-
-  requestPasswordlessSMS(lockID, phoneNumber, cb) {
-    this._clients[lockID].startPasswordless({phoneNumber: phoneNumber}, cb);
-  }
-
 }
 
-export default new LockWebAPI();
+export default new Auth0WebAPI();
 
-function handleSignInError(lockID, error, callback) {
-  if (error) {
-    // TODO when hitting https://*.auth0.com/usernamepassword/login
-    // error.details has the keys 'code', 'description', 'name' and
-    // 'statusCode'. But, when hitting https://*.auth0.com/oauth/ro it has
-    // the keys: 'code', 'error' and 'error_description'.
-    const normalizedError = {
-      code: error.details.code,
-      description: error.details.description || error.details.error_description
-    };
-    callback(lockID, normalizedError);
-    return normalizedError;
+function normalizeError(error) {
+  return error && {
+    error: error.details ? error.details.error : error.error,
+    description: error.details ? error.details.error_description : error.error_description
   }
-
-  return error;
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import VerificationCodeInput from '../credentials/verification_code_input';
 import { changeVerificationCode } from './actions';
-import { verificationCode, visiblyInvalidVerificationCode } from '../credentials/index';
+import * as l from '../lock/index';
+import * as c from '../credentials/index';
 
 export default class AskVerificationCode extends React.Component {
   render() {
     const { lock } = this.props;
-    const autoFocus = lock.getIn(["showOptions", "focusInput"]);
 
     return (
       <div>
@@ -14,17 +14,17 @@ export default class AskVerificationCode extends React.Component {
           We sent you a code to sign in. <br/>
           Please check your inbox.
         </div>
-        <VerificationCodeInput value={verificationCode(lock)}
-          isValid={!visiblyInvalidVerificationCode(lock)}
-          disabled={lock.get("submitting")}
+        <VerificationCodeInput value={c.verificationCode(lock)}
+          isValid={!c.visiblyInvalidVerificationCode(lock) && !l.globalError(lock)}
+          disabled={l.submitting(lock)}
           onChange={::this.handleVerificationCodeChange}
-          autoFocus={autoFocus} />
+          autoFocus={l.ui.autoFocus(lock)} />
       </div>
     );
   }
 
   handleVerificationCodeChange(e) {
-    const lockID = this.props.lock.get('id');
+    const lockID = l.id(this.props.lock);
     const verificationCode = e.target.value;
     changeVerificationCode(lockID, verificationCode);
   }

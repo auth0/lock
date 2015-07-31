@@ -58,3 +58,7 @@ export function resendAvailable(m) {
 export function reset(m) {
   return m.remove("credentials").remove("emailSent").remove("resendStatus");
 }
+
+export function send(m) {
+  return m.getIn(["modeOptions", "send"], "link");
+}

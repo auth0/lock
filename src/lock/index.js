@@ -43,7 +43,11 @@ export function show(m) {
 }
 
 export function setSubmitting(m, value) {
-  return m.set("submitting", value);
+  m = m.set("submitting", value);
+  if (value) {
+    m = clearGlobalError(m);
+  }
+  return m;
 }
 
 export function submitting(m) {
@@ -125,4 +129,8 @@ export function setGlobalError(m, str) {
 
 export function globalError(m) {
   return m.get("globalError", "");
+}
+
+function clearGlobalError(m) {
+  return m.remove("globalError");
 }
