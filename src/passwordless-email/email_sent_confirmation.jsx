@@ -70,8 +70,20 @@ class Resend extends React.Component {
 }
 
 export default class EmailSentConfirmation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.allowResend = this.allowResend.bind(this);
+  }
+
   componentDidMount() {
-    setTimeout(() => allowResend(this.props.lock.get("id")), 5000);
+    // TODO: this doesn't work on IE9
+    global.document.addEventListener("visibilitychange", this.allowResend);
+    const timeoutId = global.setTimeout(this.allowResend, 5000);
+    this.setState({allowResendTimeoutId: timeoutId});
+  }
+
+  componentWillUnmount() {
+    this.clearResendCallbacks();
   }
 
   render() {
@@ -88,5 +100,15 @@ export default class EmailSentConfirmation extends React.Component {
   handleBackClick(e) {
     e.preventDefault();
     reset(l.id(this.props.lock));
+  }
+
+  allowResend() {
+    this.clearResendCallbacks();
+    allowResend(l.id(this.props.lock));
+  }
+
+  clearResendCallbacks() {
+    global.document.removeEventListener("visibilitychange", this.allowResend);
+    global.clearTimeout(this.state.allowResendTimeoutId);
   }
 }
