@@ -18,7 +18,7 @@ export default class AskVerificationCode extends React.Component {
           isValid={!c.visiblyInvalidVerificationCode(lock) && !l.globalError(lock)}
           disabled={l.submitting(lock)}
           onChange={::this.handleVerificationCodeChange}
-          autoFocus={l.ui.autoFocus(lock)} />
+          autoFocus={l.ui.focusInput(lock)} />
       </div>
     );
   }
