@@ -105,12 +105,11 @@
         var domain = "a";
         var lock = new Auth0Lock(clientID, domain);
         $('body').bind("click", function(){
-          lock.open('passwordless-email', {
+          lock.magiclink({
             // container: 'lock',
             // icon: "https://....png"
             // closable: false
-            // focusInput: false,
-            send: 'code'
+            // focusInput: false
           }, function(error, stuff) {
             console.log('cb', arguments);
           });
