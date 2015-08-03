@@ -44,9 +44,7 @@ export function requestPasswordlessEmailSuccess(lockID) {
 
 export function requestPasswordlessEmailError(lockID, error) {
   const errorMessage = "We're sorry, something went wrong when sending the email.";
-  swap(updateEntity, "lock", lockID, lock => {
-    return l.setGlobalError(l.setSubmitting(lock, false), errorMessage);
-  });
+  swap(updateEntity, "lock", lockID, l.setSubmitting, false, errorMessage);
 }
 
 export function allowResend(lockID) {
@@ -118,9 +116,7 @@ function signInSuccess(lockID, ...args) {
 function signInError(lockID, error) {
   const lock = read(getEntity, "lock", lockID);
   const callback = l.ui.signInCallback(lock);
-  swap(updateEntity, "lock", lockID, lock => {
-    return l.setGlobalError(l.setSubmitting(lock, false), error.description);
-  });
+  swap(updateEntity, "lock", lockID, l.setSubmitting, false, error.description);
   if (callback) {
     callback.call(null, error);
   }

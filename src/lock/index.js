@@ -1,4 +1,4 @@
-import Immutable, { Map } from 'immutable';
+import Immutable, { Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 
 export function setup(attrs) {
@@ -41,16 +41,26 @@ export function show(m) {
   return m.get("show", false);
 }
 
-export function setSubmitting(m, value) {
+export function setSubmitting(m, value, error) {
   m = m.set("submitting", value);
-  if (value) {
-    m = clearGlobalError(m);
-  }
+  m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
 }
 
 export function submitting(m) {
   return m.get("submitting", false);
+}
+
+export function setGlobalError(m, str) {
+  return m.set("globalError", str);
+}
+
+export function globalError(m) {
+  return m.get("globalError", "");
+}
+
+function clearGlobalError(m) {
+  return m.remove("globalError");
 }
 
 export function render(m) {
@@ -77,20 +87,15 @@ function extractUIOptions(id, options) {
   });
 }
 
-function unchangeableUIOptions(m) {
-  if (ui.containerID(m)) {
-    return new Map({
-      containerID: ui.containerID(m),
-      appendContainer: ui.appendContainer(m)
-    });
-  } else {
-    return new Map();
-  }
-}
-
 function setUIOptions(m, options) {
-  const uiOptions = extractUIOptions(id(m), options);
-  return m.set("ui", uiOptions.merge(unchangeableUIOptions(m)));
+  let currentUIOptions = m.get("ui");
+  let newUIOptions = extractUIOptions(id(m), options);;
+  if (currentUIOptions) {
+    const denied = new Set(["containerID", "appendContainer"]);
+    const provided = Set.fromKeys(options).subtract(denied);
+    newUIOptions = newUIOptions.filter((v, k) => provided.has(k));
+  }
+  return m.set("ui", (currentUIOptions || new Map()).merge(newUIOptions));
 }
 
 function getUIAttribute(m, attribute) {
@@ -128,16 +133,4 @@ export function modeOptions(m) {
 
 export function close(m) {
   return m.set("show", false);
-}
-
-export function setGlobalError(m, str) {
-  return m.set("globalError", str);
-}
-
-export function globalError(m) {
-  return m.get("globalError", "");
-}
-
-function clearGlobalError(m) {
-  return m.remove("globalError");
 }
