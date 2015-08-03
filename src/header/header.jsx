@@ -4,21 +4,20 @@ import Welcome from './welcome';
 
 
 export default class Header extends React.Component {
-
   render() {
-    const imageUrl = this.props.gravatar && this.props.gravatar.get("imageUrl");
+    const { name, logoUrl, backgroundUrl } = this.props;
 
     return (
       <div className="auth0-lock-header">
-        <Background imageUrl={imageUrl} />
-        <Welcome gravatar={this.props.gravatar} icon={this.props.icon}/>
+        <Background imageUrl={backgroundUrl} grayScale={!!name} />
+        <Welcome name={name} imageUrl={!name && logoUrl} />
       </div>
     );
   }
 }
 
 Header.propTypes = {
-  email: React.PropTypes.string,
-  gravatar: React.PropTypes.object,
-  icon: React.PropTypes.string
+  backgroundUrl: React.PropTypes.string,
+  logoUrl: React.PropTypes.string,
+  name: React.PropTypes.string
 };

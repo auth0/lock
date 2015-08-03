@@ -1,9 +1,11 @@
 import React from 'react/addons';
+import Avatar from './avatar';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
 import CloseButton from '../header/close_button';
 import GlobalError from './global_error';
 import * as l from './index';
+import * as g from '../gravatar/index';
 const ui = l.ui;
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -20,12 +22,13 @@ export default class Lock extends React.Component {
     const overlay = ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
 
-    const icon = ui.icon(lock) || ""; // TODO: figure out if we still need the default and why, so we can remove it
+    const icon = ui.icon(lock);
     const showCloseButton = ui.closable(lock);
-    const globalError = lock.get("globalError");
-    const gravatar = ui.gravatar(lock) && lock.get("gravatar");
+    const globalError = l.globalError(lock);
+    const gravatar = l.gravatar(lock);
 
-    const disableSubmit = lock.get("submitting");
+
+    const disableSubmit = l.submitting(lock);
 
     let className = "auth0-lock";
     if (lock.get("show")) {
@@ -37,15 +40,24 @@ export default class Lock extends React.Component {
       className += " auth0-lock-mode-completed";
     }
 
+    let backgroundUrl, name;
+    if (gravatar) {
+      backgroundUrl = gravatar.get("imageUrl");
+      name = gravatar.get("displayName")
+    } else {
+      backgroundUrl = icon;
+      name = "";
+    }
+
     return (
       <div className={className} ref="lock">
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
-            {/* TODO: update gravatar markup here */}
-            {showCloseButton && <CloseButton lockID={lock.get("id")} />}
+            {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
+            {showCloseButton && <CloseButton lockID={l.id(lock)} />}
             <div className="auth0-lock-widget-container">
-              <Header icon={icon} gravatar={gravatar}/>
+              <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
               {globalError && <GlobalError message={globalError} />}
               <div className="auth0-lock-content">
                 <this.props.content lock={lock} />

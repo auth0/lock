@@ -57,11 +57,19 @@ export function render(m) {
   return m.get("render", false);
 }
 
+export function gravatar(m) {
+  if (ui.gravatar(m)) {
+    return m.get("gravatar");
+  } else {
+    return undefined;
+  }
+}
+
 function extractUIOptions(id, options) {
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
-    icon: options.icon || false,
+    icon: options.icon || "img/badge.svg",
     closable: undefined === options.closable ? !options.container : !!options.closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,

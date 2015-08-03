@@ -2,10 +2,14 @@ import React from 'react';
 
 export default class Background extends React.Component {
   render() {
-    let bgInnerAttrs = {className: 'auth0-lock-header-bg-inner'};
-    if (this.props.imageUrl) {
+    const { imageUrl, grayScale } = this.props;
+    let bgInnerAttrs = {
+      className: 'auth0-lock-header-bg-inner',
+      backgroundImage: `url(${imageUrl})`
+    };
+
+    if (grayScale) {
       bgInnerAttrs.className += ' auth0-lock-no-grayscale';
-      bgInnerAttrs.style = {backgroundImage: `url(${this.props.imageUrl})`};
     }
 
     return (
@@ -17,5 +21,6 @@ export default class Background extends React.Component {
 }
 
 Background.propTypes = {
-  imageUrl: React.PropTypes.string
+  imageUrl: React.PropTypes.string,
+  grayScale: React.PropTypes.bool
 }
