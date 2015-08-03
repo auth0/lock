@@ -1,5 +1,6 @@
 import { read, swap, getEntity, updateEntity } from '../store/index';
 import * as g from './index';
+import * as webAPI from './web_api';
 
 export function requestGravatar(email) {
   if (!read(getEntity, "gravatar", email)) {
@@ -11,13 +12,13 @@ export function requestGravatar(email) {
 function requestGravatarDisplayName(email) {
   const success = (email, entry) => requestGravatarDisplayNameSuccess(email, entry.displayName);
   const error = email => requestGravatarDisplayNameError(email);
-  g.profile(email, success, error);
+  webAPI.profile(email, success, error);
 }
 
 function requestGravatarImage(email) {
   const success = (email, img) => requestGravatarImageSuccess(email, img.src);
   const error = email => requestGravatarImageError(email);
-  g.img(email, success, error);
+  webAPI.img(email, success, error);
 }
 
 
