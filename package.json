@@ -24,7 +24,9 @@
     "build": "browserify --extension=.jsx --extension=.js src/index.js | uglifyjs > build/build.js",
     "watch": "watchify --extension=.jsx --extension=.js src/index.js -o build/build.js --debug --verbose & serve .",
     "test": "mochify --recursive --extension=.jsx --extension=.js",
-    "autotest": "mochify --watch --recursive --extension=.jsx --extension=.js"
+    "autotest": "mochify --watch --recursive --extension=.jsx --extension=.js",
+    "build:design-tools": "browserify --extension=.jsx --extension=.js src/design-tools/index.js | uglifyjs > build/design-tools.js",
+    "watch:design-tools": "watchify --extension=.jsx --extension=.js src/design-tools/index.js -o build/design-tools.js --debug --verbose & serve ."
   },
   "devDependencies": {
     "babelify": "^6.1.2",
