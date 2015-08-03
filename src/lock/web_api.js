@@ -1,9 +1,6 @@
 import Auth0 from 'auth0-js';
 import * as StringUtils from '../utils/string_utils';
 
-Auth0.clientInfo.name +=  " (LockPasswordless)";
-Auth0.clientInfo.version += " (LockPasswordless)";
-
 class Auth0WebAPI {
   constructor() {
     this.clients = {};
