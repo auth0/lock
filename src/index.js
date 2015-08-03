@@ -1,6 +1,5 @@
 import p from '../package';
 import Renderer from './lock/renderer';
-import RenderScheduler from './lock/render_scheduler';
 import { subscribe, getUIState } from './store/index';
 import Auth0Lock from './lock/auth0_lock';
 import Auth0 from 'auth0-js';
@@ -20,7 +19,4 @@ Auth0.clientInfo.version += ` (${Auth0Lock.version})`;
 
 
 const renderer = new Renderer();
-const renderScheduler = new RenderScheduler();
-subscribe("renderScheduler", locks => {
-  renderScheduler.schedule(() => renderer.render(getUIState()));
-});
+subscribe("renderScheduler", () => renderer.render(getUIState()));
