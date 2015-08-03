@@ -6,7 +6,7 @@ import * as g from '../gravatar/index';
 const store = atom(Immutable.fromJS({}));
 
 export function subscribe(key, f) {
-  store.addWatch(key, (key, oldState, newState) => f());
+  store.addWatch(key, f);
 }
 
 export function swap(...args) {
