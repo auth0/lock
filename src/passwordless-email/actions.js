@@ -41,15 +41,18 @@ export function requestPasswordlessEmailSuccess(lockID) {
     return m.setEmailSent(l.setSubmitting(lock, false), true);
   });
   const lock = read(getEntity, "lock", lockID);
-  l.invokeDoneCallback(lock, null, c.email(lock));
+  if (m.send(lock) === "link") {
+    l.invokeDoneCallback(lock, null, c.email(lock));
+  }
 }
 
 export function requestPasswordlessEmailError(lockID, error) {
   const errorMessage = "We're sorry, something went wrong when sending the email.";
   swap(updateEntity, "lock", lockID, l.setSubmitting, false, errorMessage);
-
   const lock = read(getEntity, "lock", lockID);
-  l.invokeDoneCallback(lock, error);
+  if (m.send(lock) === "link") {
+    l.invokeDoneCallback(lock, error);
+  }
 }
 
 export function allowResend(lockID) {
@@ -112,22 +115,17 @@ export function signIn(lockID) {
 }
 
 function signInSuccess(lockID, ...args) {
-  const lock = read(getEntity, "lock", lockID);
-  const callback = l.ui.signInCallback(lock);
   swap(updateEntity, "lock", lockID, l.close);
 
-  if (callback) {
-    callback.call(null, null, ...args);
-  }
+  const lock = read(getEntity, "lock", lockID);
+  l.invokeDoneCallback(lock, null, ...args);
 }
 
 function signInError(lockID, error) {
-  const lock = read(getEntity, "lock", lockID);
-  const callback = l.ui.signInCallback(lock);
   swap(updateEntity, "lock", lockID, l.setSubmitting, false, error.description);
-  if (callback) {
-    callback.call(null, error);
-  }
+
+  const lock = read(getEntity, "lock", lockID);
+  l.invokeDoneCallback(lock, error);
 }
 
 export function reset(lockID) {
