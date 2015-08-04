@@ -4,7 +4,18 @@
 .global-error {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 177px;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .global-error {
+    width: auto;
+    left: auto;
+    right: 20px;
+    transform: none;
+  }
 }
 .auth0-loading {
   position: absolute;
@@ -45,16 +56,12 @@
   transition-delay: 2s;
   pointer-events: none;
   display: table;
-}
-@media (min-width: 992px) {
-  .auth0-lock {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    right: 0;
-  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
 }
 .auth0-lock.opened {
   opacity: 1;
@@ -90,19 +97,17 @@
   content: " ";
   top: 15px;
 }
-@media (min-width: 992px) {
-  .auth0-lock .auth0-lock-overlay {
-    background: rgba(34,34,40,0.94);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0;
-    background: radial-gradient(#40404b, #111118);
-    -webkit-transition: opacity 0.2s ease-in 0.4s;
-  }
+.auth0-lock .auth0-lock-overlay {
+  background: rgba(34,34,40,0.94);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  background: radial-gradient(#40404b, #111118); /* Standard syntax */
+  -webkit-transition: opacity 0.2s ease-in 0.4s;
 }
 .auth0-lock .auth0-lock-form {
   display: block;
@@ -123,23 +128,24 @@
 .auth0-lock .auth0-lock-form.auth0-lock-hide {
   display: none;
 }
-@media (min-width: 992px) {
-  .auth0-lock .auth0-lock-center {
-    vertical-align: middle;
-    display: table-cell;
-    margin: auto;
-  }
+.auth0-lock .auth0-lock-center {
+  vertical-align: middle;
+  display: table-cell;
+  margin: auto;
 }
-@media (min-width: 992px) {
+.auth0-lock .auth0-lock-widget {
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 0 transparent;
+  -webkit-transition: transform 0.4s, opacity 0.7s;
+  -webkit-transform: translateY(100%) scale(0.8);
+  -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
+  -webkit-transition-delay: 0s;
+  width: 300px;
+  margin: -20% auto 0;
+}
+@media (min-width: 768px) {
   .auth0-lock .auth0-lock-widget {
-    opacity: 0;
-    border-radius: 5px;
-    box-shadow: 0 0 0 transparent;
-    -webkit-transition: transform 0.4s, opacity 0.7s;
-    -webkit-transform: translateY(100%) scale(0.8);
-    -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
-    -webkit-transition-delay: 0s;
-    width: 300px;
     margin: auto;
   }
 }

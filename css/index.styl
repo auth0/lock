@@ -31,7 +31,15 @@ breakpoint(point, value = 0)
 .global-error
   position: fixed;
   bottom: 20px
-  right: 20px;
+  left 50%
+  transform translateX(-50%)
+  width 177px
+  text-align center
+  +breakpoint("tablet")
+    width auto
+    left auto
+    right: 20px;
+    transform none
 
 
 .auth0-loading
@@ -67,13 +75,12 @@ breakpoint(point, value = 0)
   pointer-events: none;
   display: table;
 
-  +breakpoint("desktop")
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    right: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
 
   &.opened
     opacity: 1;
@@ -111,17 +118,16 @@ breakpoint(point, value = 0)
       top: 15px;
 
   .auth0-lock-overlay
-    +breakpoint("desktop")
-      background: rgba(34,34,40, .94)
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      z-index: -1;
-      opacity: 0;
-      background: radial-gradient(lighten(#222228, 15%), #111118); /* Standard syntax */
-      -webkit-transition: opacity .2s ease-in .4s;
+    background: rgba(34,34,40, .94)
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    background: radial-gradient(lighten(#222228, 15%), #111118); /* Standard syntax */
+    -webkit-transition: opacity .2s ease-in .4s;
 
   .auth0-lock-form
     display: block;
@@ -143,21 +149,21 @@ breakpoint(point, value = 0)
     display: none;
 
   .auth0-lock-center
-    +breakpoint("desktop")
-      vertical-align: middle;
-      display: table-cell;
-      margin: auto;
+    vertical-align: middle;
+    display: table-cell;
+    margin: auto;
 
   .auth0-lock-widget
-    +breakpoint("desktop")
-      opacity: 0;
-      border-radius: 5px;
-      box-shadow: 0 0 0 transparent;
-      -webkit-transition: transform .4s, opacity .7s;
-      -webkit-transform: translateY(100%) scale(.8);
-      -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
-      -webkit-transition-delay: 0s;
-      width: 300px;
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 0 transparent;
+    -webkit-transition: transform .4s, opacity .7s;
+    -webkit-transform: translateY(100%) scale(.8);
+    -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
+    -webkit-transition-delay: 0s;
+    width: 300px;
+    margin: -20% auto 0;
+    +breakpoint("tablet")
       margin: auto;
 
   .auth0-lock-widget-container
