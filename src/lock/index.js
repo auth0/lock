@@ -112,6 +112,10 @@ export const ui = {
   signInCallback: lock => getUIAttribute(lock, "signInCallback")
 };
 
+export function invokeDoneCallback(m, ...args) {
+  ui.signInCallback(m).apply(undefined, args);
+}
+
 export function open(m, mode, options) {
   // TODO: figure out how to make each mode handle its options, maybe even
   //       provide a hook to do more things.

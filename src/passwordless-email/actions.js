@@ -40,11 +40,16 @@ export function requestPasswordlessEmailSuccess(lockID) {
   swap(updateEntity, "lock", lockID, lock => {
     return m.setEmailSent(l.setSubmitting(lock, false), true);
   });
+  const lock = read(getEntity, "lock", lockID);
+  l.invokeDoneCallback(lock, null, c.email(lock));
 }
 
 export function requestPasswordlessEmailError(lockID, error) {
   const errorMessage = "We're sorry, something went wrong when sending the email.";
   swap(updateEntity, "lock", lockID, l.setSubmitting, false, errorMessage);
+
+  const lock = read(getEntity, "lock", lockID);
+  l.invokeDoneCallback(lock, error);
 }
 
 export function allowResend(lockID) {
@@ -67,11 +72,14 @@ export function resendEmail(lockID) {
 
 export function resendEmailSuccess(lockID) {
   swap(updateEntity, "lock", lockID, m.setResendSuccess);
+  const lock = read(getEntity, "lock", lockID);
+  l.invokeDoneCallback(lock, null, c.email(lock));
 }
 
 export function resendEmailError(lockID, error) {
-  // TODO: set a proper error message
   swap(updateEntity, "lock", lockID, m.setResendFailed);
+  const lock = read(getEntity, "lock", lockID);
+  l.invokeDoneCallback(lock, error);
 }
 
 export function signIn(lockID) {

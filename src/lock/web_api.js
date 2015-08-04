@@ -26,7 +26,7 @@ class Auth0WebAPI {
   }
 
   startPasswordless(lockID, options, cb) {
-    this.clients[lockID].startPasswordless(options, cb);
+    this.clients[lockID].startPasswordless(options, err => cb(normalizeError(err)));
   }
 }
 
@@ -34,7 +34,7 @@ export default new Auth0WebAPI();
 
 function normalizeError(error) {
   return error && {
-    error: error.details ? error.details.error : error.error,
-    description: error.details ? error.details.error_description : error.error_description
+    error: error.details ? error.details.error : (error.statusCode || error.error),
+    description: error.details ? error.details.error_description : (error.error_description || error.message)
   }
 }
