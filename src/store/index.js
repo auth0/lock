@@ -1,9 +1,7 @@
 import atom from '../atom/index';
-import Immutable, { Map } from 'immutable';
-import { email } from '../credentials/index';
-import * as g from '../gravatar/index';
+import { Map } from 'immutable';
 
-const store = atom(Immutable.fromJS({}));
+const store = atom(new Map({}));
 
 export function subscribe(key, f) {
   store.addWatch(key, f);
@@ -29,6 +27,10 @@ export function getEntity(state, coll, id) {
   return state.getIn([coll, id]);
 }
 
+export function getCollection(state, coll) {
+  return state.get(coll);
+}
+
 // function updateCollection(coll, f, ...args) {
 //   store.swap(state => state.update(coll, xs => f(xs, ...args)));
 // }
@@ -37,15 +39,8 @@ export function getEntity(state, coll, id) {
 //   updateCollection(coll, xs => xs.merge(xs.filter(pred).map(x => f(x, ...args))));
 // }
 
-function deriveUIState(state) {
-  return state.get("lock").map(lock => {
-    const gravatar = getEntity(state, "gravatar", email(lock)) || new Map({});
-    return lock.set("gravatar", g.loaded(gravatar) ? gravatar : null);
-  });
-}
-
-export function getUIState() {
-  return deriveUIState(store.deref());
+export function getState() {
+  return store.deref();
 }
 
 // DEV

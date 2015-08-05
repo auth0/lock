@@ -1,6 +1,6 @@
 import p from '../package';
 import Renderer from './lock/renderer';
-import { subscribe, getUIState } from './store/index';
+import { subscribe, getState } from './store/index';
 import Auth0Lock from './lock/auth0_lock';
 import Auth0 from 'auth0-js';
 import crashedSpec from './crashed/mode_spec';
@@ -19,4 +19,4 @@ Auth0.clientInfo.version += ` (${Auth0Lock.version})`;
 
 
 const renderer = new Renderer();
-subscribe("renderScheduler", () => renderer.render(getUIState()));
+subscribe("main", () => renderer.render(getState()));

@@ -2,14 +2,16 @@ import AskEmail from './ask_email';
 import AskVerificationCode from './ask_verification_code';
 import EmailSentConfirmation from './email_sent_confirmation';
 import { requestPasswordlessEmail, signIn } from './actions';
+import * as l from '../lock/index';
 import * as m from './index';
 
+
 function askEmailSubmitHandler(lock) {
-  requestPasswordlessEmail(lock.get("id"));
+  requestPasswordlessEmail(l.id(lock));
 }
 
 function askVerificationCodeSubmitHandler(lock) {
-  signIn(lock.get("id"));
+  signIn(l.id(lock));
 }
 
 export default function render(lock) {

@@ -1,5 +1,5 @@
 import Renderer from '../lock/renderer';
-import { subscribe, getUIState } from '../store/index';
+import { subscribe, getState } from '../store/index';
 import Auth0Lock from '../lock/auth0_lock';
 import crashedSpec from '../crashed/mode_spec';
 import passwordlessEmailSpec from '../passwordless-email/mode_spec';
@@ -11,7 +11,7 @@ Auth0Lock.registerMode(passwordlessEmailSpec);
 global.window.Auth0Lock = Auth0Lock;
 
 const renderer = new Renderer();
-subscribe("renderScheduler", () => renderer.render(getUIState()));
+subscribe("main", () => renderer.render(getState()));
 
 import webAPI from '../lock/web_api';
 const WebAPI = webAPI.constructor;

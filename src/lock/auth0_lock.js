@@ -1,11 +1,10 @@
 import IDUtils from '../utils/id_utils';
-import { closeLock, setupLock } from './actions';
+import { closeLock, registerMode, setupLock } from './actions';
 import WebAPI from './web_api';
 
 export default class Auth0Lock {
   static registerMode(spec) {
-    this.modes = this.modes || {};
-    this.modes[spec.name] = spec;
+    registerMode(spec);
     if (typeof spec.openMethods == "object") {
       Object.keys(spec.openMethods).forEach(function(methodName) {
         Auth0Lock.prototype[methodName] = function(...args) {
@@ -13,14 +12,6 @@ export default class Auth0Lock {
         }
       });
     }
-  }
-
-  static modeRender(name) {
-    return (this.modes || {})[name].render;
-  }
-
-  static modeOpen(name) {
-    return (this.modes || {})[name].open;
   }
 
   constructor(clientID, domain) {

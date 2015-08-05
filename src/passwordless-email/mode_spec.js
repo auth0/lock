@@ -1,5 +1,8 @@
+import { swap, updateEntity } from '../store/index';
 import { openLock } from '../lock/actions';
 import render from './render';
+import * as l from '../lock/index';
+import * as m from './index';
 
 const NAME = "passwordless-email";
 
@@ -47,8 +50,13 @@ function emailcode(id, ...args) {
   openLock(id, NAME, options);
 }
 
+function closeHandler(lock) {
+  swap(updateEntity, "lock", l.id(lock), lock => l.close(m.reset(lock)));
+}
+
 export default {
   name: NAME,
   openMethods: {magiclink: magiclink, emailcode: emailcode},
-  render: render
+  render: render,
+  closeHandler: closeHandler
 };
