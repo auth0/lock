@@ -12,6 +12,8 @@ Auth0Lock.registerMode(passwordlessEmailSpec);
 // TODO temp for DEV only
 global.window.Auth0Lock = Auth0Lock;
 
+import styles from '../css/index.css';
+
 // Setup versions
 Auth0Lock.version = p.version
 Auth0.clientInfo.name +=  " (LockPasswordless)";

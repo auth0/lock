@@ -21,8 +21,8 @@
   },
   "scripts": {
     "start": "serve . --port $PORT",
-    "build": "browserify --extension=.jsx --extension=.js src/index.js | uglifyjs > build/build.js",
-    "watch": "watchify --extension=.jsx --extension=.js src/index.js -o build/build.js --debug --verbose & serve .",
+    "build": "browserify -t browserify-css --extension=.jsx --extension=.js src/index.js | uglifyjs > build/build.js",
+    "watch": "watchify -t browserify-css --extension=.jsx --extension=.js src/index.js -o build/build.js --debug --verbose & serve .",
     "test": "mochify --recursive --extension=.jsx --extension=.js",
     "autotest": "mochify --watch --recursive --extension=.jsx --extension=.js",
     "build:design-tools": "browserify --extension=.jsx --extension=.js src/design-tools/index.js | uglifyjs > build/design-tools.js",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
+    "browserify-css": "^0.6.1",
     "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
     "mochify": "^2.9.0",
