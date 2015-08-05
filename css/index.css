@@ -114,6 +114,12 @@
   -webkit-animation: fadeIn 0.7s;
   animation: fadeIn 0.7s;
 }
+.auth0-lock .auth0-lock-form h2 {
+  font-size: 22px;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 15px;
+}
 .auth0-lock .auth0-lock-form p {
   font-size: 14px;
   line-height: 1.8;
@@ -143,6 +149,7 @@
   -webkit-transition-delay: 0s;
   width: 300px;
   margin: -20% auto 0;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .auth0-lock .auth0-lock-widget {
@@ -318,6 +325,11 @@
   overflow: hidden;
   transition: border-color 0.8s;
 }
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-icon-arrow {
+  position: absolute;
+  right: 15px;
+  top: 14px;
+}
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-icon {
   position: absolute;
   font-size: 12px;
@@ -328,6 +340,18 @@
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-icon path {
   fill: #666;
+}
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-icon.auth0-lock-icon-mobile {
+  width: 9px;
+  height: 14px;
+  top: 14px;
+  left: 16px;
+}
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-icon.auth0-lock-icon-location {
+  width: 14px;
+  height: 14px;
+  top: 12px;
+  left: 13px;
 }
 .auth0-lock .auth0-lock-input-wrap.auth0-lock-input-email i:before {
   content: "b";
@@ -360,6 +384,12 @@
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input.animated {
   animation-duration: 0.5s;
+}
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-input[type="button"] {
+  background-color: #f9f9f9;
+  width: 178px;
+  height: 100%;
+  text-align: left;
 }
 .auth0-lock .auth0-lock-input-wrap:last-child {
   margin-bottom: 0;
@@ -460,31 +490,48 @@
   animation-fill-mode: both;
   display: block;
 }
-.auth0-lock.auth0-lock-mode-initial .auth0-lock-confirmation {
+.auth0-lock.auth0-lock-mode-initial .auth0-lock-confirmation,
+.auth0-lock.auth0-lock-mode-initial .auth0-lock-select-country {
   animation-name: fadeOutRight;
   animation-duration: 1s;
   animation-delay: 1s;
   animation-fill-mode: both;
 }
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-header {
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-header,
+.auth0-lock.auth0-lock-mode-country .auth0-lock-header {
   animation-name: fadeOutUp;
   animation-fill-mode: both;
   animation-duration: 1.2s;
 }
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-header-avatar {
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-header-avatar,
+.auth0-lock.auth0-lock-mode-country .auth0-lock-header-avatar {
   animation-name: fadeOutUp;
   animation-fill-mode: both;
   animation-duration: 1.2s;
 }
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-content {
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-content,
+.auth0-lock.auth0-lock-mode-country .auth0-lock-content {
   animation-name: fadeOut;
   animation-fill-mode: both;
   animation-duration: 1.2s;
 }
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-submit {
+.auth0-lock.auth0-lock-mode-completed .auth0-lock-submit,
+.auth0-lock.auth0-lock-mode-country .auth0-lock-submit {
   animation-name: fadeOutDown;
   animation-fill-mode: both;
   animation-duration: 1.2s;
+}
+.auth0-lock.auth0-lock-mode-country .auth0-lock-close {
+  animation-name: fadeOut;
+  animation-fill-mode: both;
+  animation-duration: 1.2s;
+}
+.auth0-lock.auth0-lock-mode-country .auth0-lock-select-country {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
 }
 .auth0-lock.auth0-lock-mode-completed .auth0-lock-confirmation {
   display: block;
@@ -495,6 +542,64 @@
 }
 .auth0-lock.auth0-lock-mode-completed .checkmark {
   display: block;
+}
+.auth0-lock .auth0-lock-select-country {
+  display: none;
+  position: absolute;
+  padding: 0;
+  line-height: 2;
+  font-size: 14px;
+  color: #666;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-search {
+  background-color: #e3e5e9;
+  padding: 10px;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-input-wrap {
+  margin: 0;
+  border: none;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-icon {
+  width: 16px;
+  height: 16px;
+  top: 12px;
+  left: 9px;
+  z-index: 1;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-input-search {
+  height: 40px;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 10px 10px 35px;
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-list-code {
+  height: calc(100% - 60px);
+  overflow-y: scroll;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-list-code ul {
+  margin: 0;
+  padding: 0;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-list-code li {
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  color: #000;
+  font-size: 14px;
+  padding: 10px 20px;
+}
+.auth0-lock .auth0-lock-select-country .auth0-lock-list-code li:hover {
+  background-color: #2eb5ff;
+  color: #fff;
 }
 .auth0-lock .auth0-lock-confirmation {
   display: none;
