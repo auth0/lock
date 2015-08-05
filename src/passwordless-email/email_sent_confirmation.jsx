@@ -2,6 +2,7 @@ import React from 'react';
 import { allowResend, resendEmail, reset } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
+import Comeback from '../comeback/index';
 
 
 class BackIcon extends React.Component {
@@ -70,20 +71,12 @@ class Resend extends React.Component {
 }
 
 export default class EmailSentConfirmation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.allowResend = this.allowResend.bind(this);
-  }
-
   componentDidMount() {
-    // TODO: this doesn't work on IE9
-    global.document.addEventListener("visibilitychange", this.allowResend);
-    const timeoutId = global.setTimeout(this.allowResend, 5000);
-    this.setState({allowResendTimeoutId: timeoutId});
+    this.comeback = new Comeback(::this.allowResend, 10000);
   }
 
   componentWillUnmount() {
-    this.clearResendCallbacks();
+    this.comeback.release();
   }
 
   render() {
@@ -103,12 +96,6 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   allowResend() {
-    this.clearResendCallbacks();
     allowResend(l.id(this.props.lock));
-  }
-
-  clearResendCallbacks() {
-    global.document.removeEventListener("visibilitychange", this.allowResend);
-    global.clearTimeout(this.state.allowResendTimeoutId);
   }
 }
