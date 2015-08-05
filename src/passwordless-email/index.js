@@ -31,14 +31,6 @@ export function resendOngoing(m) {
   return resendStatus(m) == "ongoing";
 }
 
-export function allowResend(m) {
-  if (resendStatus(m) === "unavailable") {
-    return setResendStatus(m, "waiting");
-  } else {
-    return m;
-  }
-}
-
 export function resend(m) {
   if (resendAvailable(m)) {
     return setResendStatus(m, "ongoing");
@@ -48,7 +40,7 @@ export function resend(m) {
 }
 
 function resendStatus(m) {
-  return m.get("resendStatus", "unavailable");
+  return m.get("resendStatus", "waiting");
 }
 
 export function resendAvailable(m) {

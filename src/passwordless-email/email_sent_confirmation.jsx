@@ -1,8 +1,7 @@
 import React from 'react';
-import { allowResend, resendEmail, reset } from './actions';
+import { resendEmail, reset } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
-import Comeback from '../comeback/index';
 
 
 class BackIcon extends React.Component {
@@ -71,14 +70,6 @@ class Resend extends React.Component {
 }
 
 export default class EmailSentConfirmation extends React.Component {
-  componentDidMount() {
-    this.comeback = new Comeback(::this.allowResend, 10000);
-  }
-
-  componentWillUnmount() {
-    this.comeback.release();
-  }
-
   render() {
     return (
       <div className="auth0-lock-confirmation">
@@ -93,9 +84,5 @@ export default class EmailSentConfirmation extends React.Component {
   handleBackClick(e) {
     e.preventDefault();
     reset(l.id(this.props.lock));
-  }
-
-  allowResend() {
-    allowResend(l.id(this.props.lock));
   }
 }

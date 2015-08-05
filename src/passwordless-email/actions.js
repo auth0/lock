@@ -55,10 +55,6 @@ export function requestPasswordlessEmailError(lockID, error) {
   }
 }
 
-export function allowResend(lockID) {
-  swap(updateEntity, "lock", lockID, m.allowResend);
-}
-
 export function resendEmail(lockID) {
   swap(updateEntity, "lock", lockID, m.resend);
 
