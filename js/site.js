@@ -24,6 +24,7 @@ $(function() {
     return false;
   });
 
+
   $('.auth0-lock-list-code').on('click', function() {
 
     console.log('country selected');
@@ -34,10 +35,10 @@ $(function() {
 
   });
 
-  $('.auth0-lock-submit').click(function(){
+
+  $('.auth0-lock-submit-code').on('click', function(){
 
     if ($('.auth0-lock-input-number').val() === '') {
-
 
       $('.auth0-lock-input-block-email').addClass('auth0-lock-error');
       $('.auth0-lock-input-block-email').addClass('animated pulse');
@@ -46,9 +47,41 @@ $(function() {
 
       $('.auth0-lock').addClass('auth0-lock-mode-loading');
 
+      console.log('enter code');
+
+      $(this).addClass('auth0-lock-submit-complete');
+
+      setTimeout(function(){
+        $('.auth0-lock').addClass('auth0-lock-mode-code');
+        $('.auth0-lock').removeClass('auth0-lock-mode-loading');
+      }, 2000);
+
+    }else{
+
+    }
+
+    return false;
+
+  });
+
+
+  $('.auth0-lock-submit-complete').on('click', function(){
+
+    if ($('.auth0-lock-input-code').val() === '') {
+
+      $('.auth0-lock-input-block-email').addClass('auth0-lock-error');
+      $('.auth0-lock-input-block-email').addClass('animated pulse');
+
+    }else if ($('.auth0-lock-input-code').val() === "8888") {
+
+      $('.auth0-lock').addClass('auth0-lock-mode-loading');
+
       console.log('value correct');
 
       setTimeout(function(){
+
+        $('.auth0-lock').removeClass('auth0-lock-mode-loading');
+        $('.auth0-lock').removeClass('auth0-lock-mode-code');
 
         $('.auth0-lock').addClass('auth0-lock-mode-completed');
 

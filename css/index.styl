@@ -139,9 +139,10 @@ breakpoint(point, value = 0)
       font-weight normal
       text-align center
       margin 0 0 15px
+      color black
 
     p
-      font-size: 14px;
+      font-size: 12px;
       line-height: 1.8;
       text-align: center
       margin-top: 0
@@ -246,7 +247,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-header-bg
     position: absolute;
-    height: 130px;
+    height: 128px;
     width: 300px;
     overflow: hidden;
     top: 0;
@@ -284,7 +285,7 @@ breakpoint(point, value = 0)
 
 
   .auth0-lock-content
-    padding: 30px 40px;
+    padding: 30px;
     background: white;
     max-width: 240px;
     margin: auto;
@@ -361,6 +362,11 @@ breakpoint(point, value = 0)
         height 14px
         top 12px
         left 13px
+      &.auth0-lock-icon-box
+        width 12px
+        height 14px
+        top 13px
+        left 14px
 
     &.auth0-lock-input-email
       i:before
@@ -387,14 +393,12 @@ breakpoint(point, value = 0)
       font-size: 13px;
       right: 0px;
       width: 169px;
-      +breakpoint("mobile-landscape")
-        width: 149px;
       &.animated
         animation-duration: .5s;
 
-      &[type="button"]
+      &.auth0-lock-input-location
         background-color #F9F9F9
-        width 178px
+        width 198px
         height 100%
         text-align left
 
@@ -497,69 +501,70 @@ breakpoint(point, value = 0)
       animation-fill-mode: both;
       display: block;
 
-  &.auth0-lock-mode-initial
-    .auth0-lock-confirmation, .auth0-lock-select-country
-      animation-name: fadeOutRight;
-      animation-duration: 1s;
-      animation-delay: 1s;
-      animation-fill-mode: both;
+  // &.auth0-lock-mode-initial
+  //   .auth0-lock-confirmation, .auth0-lock-select-country
+  //     animation-name: fadeOutRight;
+  //     animation-duration: 1s;
+  //     animation-delay: 1s;
+  //     animation-fill-mode: both;
 
-  &.auth0-lock-mode-completed, &.auth0-lock-mode-country
-    .auth0-lock-header
-      animation-name: fadeOutUp;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
+  // &.auth0-lock-mode-completed
+  //   .auth0-lock-header
+  //     animation-name: fadeOutUp;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
 
-    .auth0-lock-header-avatar
-      animation-name: fadeOutUp;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
+  //   .auth0-lock-header-avatar
+  //     animation-name: fadeOutUp;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
 
-    .auth0-lock-content
-      animation-name: fadeOut;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
+  //   .auth0-lock-content
+  //     animation-name: fadeOut;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
 
-    .auth0-lock-submit
-      animation-name: fadeOutDown;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
+  //   .auth0-lock-submit
+  //     animation-name: fadeOutDown;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
+
+  &.auth0-lock-mode-country, &.auth0-lock-mode-code
+    .auth0-lock-intro
+      visibility hidden
 
   &.auth0-lock-mode-country
-    .auth0-lock-close
-      animation-name: fadeOut;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
 
     .auth0-lock-select-country
       display: block;
-      animation-name: fadeIn;
-      animation-duration: 1s;
-      animation-delay: 1s;
-      animation-fill-mode: both;
+
+    .auth0-lock-close
+      display none
+
+  &.auth0-lock-mode-code
+    .auth0-lock-code-confirmation
+      display: block;
 
   &.auth0-lock-mode-completed
     .auth0-lock-confirmation
       display: block;
-      animation-name: fadeIn;
-      animation-duration: 1s;
-      animation-delay: 1s;
-      animation-fill-mode: both;
 
     .checkmark
       display: block;
 
   .auth0-lock-select-country
+    background-color white
     display none
     position absolute
     padding 0
-    line-height 2
     font-size 14px
     color #666
     bottom 0
     top 0
     right 0
     left 0
+    border-radius 5px
+    overflow hidden
 
     .auth0-lock-search
       background-color #E3E5E9
@@ -604,7 +609,25 @@ breakpoint(point, value = 0)
           background-color #2EB5FF
           color white
 
+  .auth0-lock-code-confirmation
+    background-color white
+    display: none;
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    bottom: 0
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius 5px
+    overflow hidden
+
+    .auth0-lock-submit
+      position absolute
+
   .auth0-lock-confirmation
+    background-color white
     display: none;
     position: absolute;
     padding: 0 30px;
@@ -617,6 +640,8 @@ breakpoint(point, value = 0)
     right: 0;
     left: 0;
     padding-top: 80px;
+    border-radius 5px
+    overflow hidden
     p
       margin-bottom: 6px;
     a

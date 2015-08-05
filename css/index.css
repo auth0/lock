@@ -119,9 +119,10 @@
   font-weight: normal;
   text-align: center;
   margin: 0 0 15px;
+  color: #000;
 }
 .auth0-lock .auth0-lock-form p {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.8;
   text-align: center;
   margin-top: 0;
@@ -232,7 +233,7 @@
 }
 .auth0-lock .auth0-lock-header-bg {
   position: absolute;
-  height: 130px;
+  height: 128px;
   width: 300px;
   overflow: hidden;
   top: 0;
@@ -271,7 +272,7 @@
   animation-delay: 0.2s;
 }
 .auth0-lock .auth0-lock-content {
-  padding: 30px 40px;
+  padding: 30px;
   background: #fff;
   max-width: 240px;
   margin: auto;
@@ -353,6 +354,12 @@
   top: 12px;
   left: 13px;
 }
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-icon.auth0-lock-icon-box {
+  width: 12px;
+  height: 14px;
+  top: 13px;
+  left: 14px;
+}
 .auth0-lock .auth0-lock-input-wrap.auth0-lock-input-email i:before {
   content: "b";
 }
@@ -377,17 +384,12 @@
   right: 0px;
   width: 169px;
 }
-@media (min-width: 568px) {
-  .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
-    width: 149px;
-  }
-}
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input.animated {
   animation-duration: 0.5s;
 }
-.auth0-lock .auth0-lock-input-wrap .auth0-lock-input[type="button"] {
+.auth0-lock .auth0-lock-input-wrap .auth0-lock-input.auth0-lock-input-location {
   background-color: #f9f9f9;
-  width: 178px;
+  width: 198px;
   height: 100%;
   text-align: left;
 }
@@ -490,70 +492,38 @@
   animation-fill-mode: both;
   display: block;
 }
-.auth0-lock.auth0-lock-mode-initial .auth0-lock-confirmation,
-.auth0-lock.auth0-lock-mode-initial .auth0-lock-select-country {
-  animation-name: fadeOutRight;
-  animation-duration: 1s;
-  animation-delay: 1s;
-  animation-fill-mode: both;
-}
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-header,
-.auth0-lock.auth0-lock-mode-country .auth0-lock-header {
-  animation-name: fadeOutUp;
-  animation-fill-mode: both;
-  animation-duration: 1.2s;
-}
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-header-avatar,
-.auth0-lock.auth0-lock-mode-country .auth0-lock-header-avatar {
-  animation-name: fadeOutUp;
-  animation-fill-mode: both;
-  animation-duration: 1.2s;
-}
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-content,
-.auth0-lock.auth0-lock-mode-country .auth0-lock-content {
-  animation-name: fadeOut;
-  animation-fill-mode: both;
-  animation-duration: 1.2s;
-}
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-submit,
-.auth0-lock.auth0-lock-mode-country .auth0-lock-submit {
-  animation-name: fadeOutDown;
-  animation-fill-mode: both;
-  animation-duration: 1.2s;
-}
-.auth0-lock.auth0-lock-mode-country .auth0-lock-close {
-  animation-name: fadeOut;
-  animation-fill-mode: both;
-  animation-duration: 1.2s;
+.auth0-lock.auth0-lock-mode-country .auth0-lock-intro,
+.auth0-lock.auth0-lock-mode-code .auth0-lock-intro {
+  visibility: hidden;
 }
 .auth0-lock.auth0-lock-mode-country .auth0-lock-select-country {
   display: block;
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  animation-delay: 1s;
-  animation-fill-mode: both;
+}
+.auth0-lock.auth0-lock-mode-country .auth0-lock-close {
+  display: none;
+}
+.auth0-lock.auth0-lock-mode-code .auth0-lock-code-confirmation {
+  display: block;
 }
 .auth0-lock.auth0-lock-mode-completed .auth0-lock-confirmation {
   display: block;
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  animation-delay: 1s;
-  animation-fill-mode: both;
 }
 .auth0-lock.auth0-lock-mode-completed .checkmark {
   display: block;
 }
 .auth0-lock .auth0-lock-select-country {
+  background-color: #fff;
   display: none;
   position: absolute;
   padding: 0;
-  line-height: 2;
   font-size: 14px;
   color: #666;
   bottom: 0;
   top: 0;
   right: 0;
   left: 0;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .auth0-lock .auth0-lock-select-country .auth0-lock-search {
   background-color: #e3e5e9;
@@ -601,7 +571,25 @@
   background-color: #2eb5ff;
   color: #fff;
 }
+.auth0-lock .auth0-lock-code-confirmation {
+  background-color: #fff;
+  display: none;
+  position: absolute;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.auth0-lock .auth0-lock-code-confirmation .auth0-lock-submit {
+  position: absolute;
+}
 .auth0-lock .auth0-lock-confirmation {
+  background-color: #fff;
   display: none;
   position: absolute;
   padding: 0 30px;
@@ -614,6 +602,8 @@
   right: 0;
   left: 0;
   padding-top: 80px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .auth0-lock .auth0-lock-confirmation p {
   margin-bottom: 6px;
