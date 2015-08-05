@@ -308,6 +308,27 @@ describe("reopening a lock", function() {
       });
     });
   });
+
+  describe("in another mode", function() {
+    const otherMode = "otherMode";
+    let notReopenedLock;
+
+    beforeEach(function() {
+      notReopenedLock = l.open(closedLock, otherMode, {gravatar: false});
+    });
+
+    it("doesn't need to be shown", function() {
+      expect(l.show(notReopenedLock)).to.be(false);
+    });
+
+    it("doesn't change the mode", function() {
+      expect(l.mode(notReopenedLock)).to.not.be(otherMode);
+    });
+
+    it("doesn't change UI options", function() {
+      expect(l.ui.gravatar(notReopenedLock)).to.be(true);
+    })
+  });
 });
 
 describe("submitting", function() {

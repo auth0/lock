@@ -116,14 +116,15 @@ export function invokeDoneCallback(m, ...args) {
   ui.signInCallback(m).apply(undefined, args);
 }
 
-export function open(m, mode, options) {
-  // TODO: figure out how to make each mode handle its options, maybe even
-  //       provide a hook to do more things.
-  // TODO: control how modes are changed.
+export function open(m, modeName, options) {
+  if (mode(m) != undefined && mode(m) != modeName) {
+    return m;
+  }
+
   const { modeOptions } = options;
   m = m.merge(Immutable.fromJS({
     show: true,
-    mode: mode,
+    mode: modeName,
     render: true,
     modeOptions: modeOptions
   }));
