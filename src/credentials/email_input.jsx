@@ -11,7 +11,7 @@ export default class EmailInput extends React.Component {
         <input type="text"
           name="email"
           className="auth0-lock-input"
-          placeholder="Email"
+          placeholder="yours@example.com"
           onChange={::this.handleOnChange}
           {...props}/>
       </InputWrap>
