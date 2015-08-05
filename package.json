@@ -36,7 +36,6 @@
     "mochify": "^2.9.0",
     "packageify": "^0.2.2",
     "request": "^2.58.0",
-    "serve": "^1.4.0",
     "sinon": "^1.15.4",
     "uglify-js": "^2.4.23",
     "watchify": "^3.2.2"
@@ -50,6 +49,7 @@
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
     "react": "^0.13.3",
+    "serve": "*",
     "trim": "0.0.1",
     "underscore": "^1.8.3"
   }
