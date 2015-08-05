@@ -8,7 +8,6 @@
     <title>Lock</title>
 
     <link href="css/index.css" rel="stylesheet">
-    <link href="css/demo.css" rel="stylesheet">
     <style>
       .auth0-lock .auth0-lock-instructions {
         text-align: center;
@@ -93,11 +92,23 @@
     </style>
   </head>
   <body>
-    <div id="lock"></div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <div><a id="magiclinkButton" href="#">magiclink</a></div>
+    <div><a id="emailcodeButton" href="#">emailcode</a></div>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="build/build.js"></script>
+    <script>
+      var clientID = "JIMqGKN9Npw4lkg1stTARqPTjBvn6wRp";
+      var domain = "gnandretta.auth0.com";
+      var magiclinklock = new Auth0Lock(clientID, domain);
+      window.magiclinklock = magiclinklock;
+      document.getElementById("magiclinkButton").onclick = function(e) {
+        magiclinklock.magiclink();
+      };
+      var emailcodelock = new Auth0Lock(clientID, domain);
+      window.emailcodelock = emailcodelock;
+      document.getElementById("emailcodeButton").onclick = function(e) {
+        emailcodelock.emailcode();
+      };
+    </script>
   </body>
 </html>
