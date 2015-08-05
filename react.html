@@ -99,22 +99,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="build/build.js"></script>
-    <script>
-      $(function() {
-        var clientID = "1";
-        var domain = "a";
-        var lock = new Auth0Lock(clientID, domain);
-        $('body').bind("click", function(){
-          lock.magiclink({
-            // container: 'lock',
-            // icon: "https://....png"
-            // closable: false
-            // focusInput: false
-          }, function(error, stuff) {
-            console.log('cb', arguments);
-          });
-        });
-      });
-    </script>
   </body>
 </html>

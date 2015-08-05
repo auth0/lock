@@ -20,7 +20,7 @@
     ]
   },
   "scripts": {
-    "start": "npm run build && serve .",
+    "start": "serve . --port $PORT",
     "build": "browserify --extension=.jsx --extension=.js src/index.js | uglifyjs > build/build.js",
     "watch": "watchify --extension=.jsx --extension=.js src/index.js -o build/build.js --debug --verbose & serve .",
     "test": "mochify --recursive --extension=.jsx --extension=.js",
