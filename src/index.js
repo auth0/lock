@@ -10,7 +10,7 @@ Auth0Lock.registerMode(crashedSpec);
 Auth0Lock.registerMode(passwordlessEmailSpec);
 
 // TODO temp for DEV only
-global.window.Auth0Lock = Auth0Lock;
+global.window.Auth0LockPasswordless = Auth0Lock;
 
 import styles from '../css/index.css';
 
