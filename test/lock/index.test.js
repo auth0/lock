@@ -378,7 +378,7 @@ describe("submitting", function() {
 });
 
 describe("accessing Gravatar info", function() {
-  const gravatar = new Map({displayName: "someName", imageUrl: "someUrl"});
+  const gravatar = Immutable.fromJS({displayName: "someName", imageUrl: "someUrl"});
   const mode = "someMode";
   let openedLock;
 
@@ -410,7 +410,7 @@ describe("accessing Gravatar info", function() {
 
   describe("when available but it doesn't have to be displayed", function() {
     beforeEach(function() {
-      openedLock = l.open(lock, mode, {gravatar: true});
+      openedLock = l.open(lock, mode, {gravatar: false});
       openedLock = openedLock.set("gravatar", gravatar);
     });
 
