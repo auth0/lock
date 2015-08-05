@@ -331,6 +331,21 @@ describe("reopening a lock", function() {
   });
 });
 
+describe("trying to reopen a lock without closing it first", function() {
+  let openedLock, reopenedLock;
+  const mode = "someMode";
+
+  beforeEach(function() {
+    lock = l.setup({clientID: clientID, domain: domain, id: lockID});
+    openedLock = l.open(lock, mode, {});
+    reopenedLock = l.open(openedLock, mode, {gravatar: false});
+  });
+
+  it("doesn't change anything", function() {
+    expect(openedLock).to.be(reopenedLock);
+  });
+});
+
 describe("submitting", function() {
   let lockWithGlobalError, submittingLock;
   const globalError = "Something went wrong.";

@@ -117,7 +117,7 @@ export function invokeDoneCallback(m, ...args) {
 }
 
 export function open(m, modeName, options) {
-  if (mode(m) != undefined && mode(m) != modeName) {
+  if ((mode(m) != undefined && mode(m) != modeName) || show(m)) {
     return m;
   }
 
