@@ -8,12 +8,18 @@ import * as l from './index';
 import * as g from '../gravatar/index';
 const ui = l.ui;
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+import { closeLock } from './actions';
+import EscKeydownUtils from '../utils/esc_keydown_utils';
 
 export default class Lock extends React.Component {
-  // componentDidMount() {
-  //   setTimeout(() => { this.refs.lock.getDOMNode().className += ' opened' }, 10);
-  // }
-  //
+  componentDidMount() {
+    this.escKeydown = new EscKeydownUtils(() => closeLock(l.id(this.props.lock)));
+  }
+
+  componentWillUnmount() {
+    this.escKeydown.release();
+  }
+
   render() {
     const { completed, lock, submitHandler } = this.props;
     const Content = this.props.content;
