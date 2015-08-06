@@ -134,8 +134,15 @@ breakpoint(point, value = 0)
     -webkit-animation: fadeIn .7s;
     animation: fadeIn .7s;
 
+    h2
+      font-size 22px
+      font-weight normal
+      text-align center
+      margin 0 0 15px
+      color black
+
     p
-      font-size: 14px;
+      font-size: 12px;
       line-height: 1.8;
       text-align: center
       margin-top: 0
@@ -163,6 +170,7 @@ breakpoint(point, value = 0)
     -webkit-transition-delay: 0s;
     width: 300px;
     margin: -20% auto 0;
+    overflow hidden
     +breakpoint("tablet")
       margin: auto;
 
@@ -239,7 +247,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-header-bg
     position: absolute;
-    height: 130px;
+    height: 128px;
     width: 300px;
     overflow: hidden;
     top: 0;
@@ -277,7 +285,7 @@ breakpoint(point, value = 0)
 
 
   .auth0-lock-content
-    padding: 30px 40px;
+    padding: 30px;
     background: white;
     max-width: 240px;
     margin: auto;
@@ -329,6 +337,11 @@ breakpoint(point, value = 0)
     overflow: hidden;
     transition: border-color .8s;
 
+    .auth0-lock-icon-arrow
+      position absolute
+      right 15px
+      top 14px
+
     .auth0-lock-icon
       position: absolute
       font-size: 12px;
@@ -338,6 +351,22 @@ breakpoint(point, value = 0)
       height: 10px;
       path
         fill: #666;
+
+      &.auth0-lock-icon-mobile
+        width 9px
+        height 14px
+        top 14px
+        left 16px
+      &.auth0-lock-icon-location
+        width 14px
+        height 14px
+        top 12px
+        left 13px
+      &.auth0-lock-icon-box
+        width 12px
+        height 14px
+        top 13px
+        left 14px
 
     &.auth0-lock-input-email
       i:before
@@ -350,9 +379,9 @@ breakpoint(point, value = 0)
     &.auth0-lock-input-invalid
       border-color: #D84132;
       color: #D84132;
-
       i:before
         color: #D84132;
+
 
     .auth0-lock-input
       border: 0;
@@ -364,10 +393,14 @@ breakpoint(point, value = 0)
       font-size: 13px;
       right: 0px;
       width: 169px;
-      +breakpoint("mobile-landscape")
-        width: 149px;
       &.animated
         animation-duration: .5s;
+
+      &.auth0-lock-input-location
+        background-color #F9F9F9
+        width 198px
+        height 100%
+        text-align left
 
     &:last-child
       margin-bottom: 0;
@@ -468,46 +501,133 @@ breakpoint(point, value = 0)
       animation-fill-mode: both;
       display: block;
 
-  &.auth0-lock-mode-initial
-    .auth0-lock-confirmation
-      animation-name: fadeOutRight;
-      animation-duration: 1s;
-      animation-delay: 1s;
-      animation-fill-mode: both;
+  // &.auth0-lock-mode-initial
+  //   .auth0-lock-confirmation, .auth0-lock-select-country
+  //     animation-name: fadeOutRight;
+  //     animation-duration: 1s;
+  //     animation-delay: 1s;
+  //     animation-fill-mode: both;
 
+  // &.auth0-lock-mode-completed
+  //   .auth0-lock-header
+  //     animation-name: fadeOutUp;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
+
+  //   .auth0-lock-header-avatar
+  //     animation-name: fadeOutUp;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
+
+  //   .auth0-lock-content
+  //     animation-name: fadeOut;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
+
+  //   .auth0-lock-submit
+  //     animation-name: fadeOutDown;
+  //     animation-fill-mode: both;
+  //     animation-duration: 1.2s;
+
+  &.auth0-lock-mode-country, &.auth0-lock-mode-code
+    .auth0-lock-intro
+      visibility hidden
+
+  &.auth0-lock-mode-country
+
+    .auth0-lock-select-country
+      display: block;
+
+    .auth0-lock-close
+      display none
+
+  &.auth0-lock-mode-code
+    .auth0-lock-code-confirmation
+      display: block;
 
   &.auth0-lock-mode-completed
-    .auth0-lock-header
-      animation-name: fadeOutUp;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
-
-    .auth0-lock-header-avatar
-      animation-name: fadeOutUp;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
-
-    .auth0-lock-content
-      animation-name: fadeOut;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
-
-    .auth0-lock-submit
-      animation-name: fadeOutDown;
-      animation-fill-mode: both;
-      animation-duration: 1.2s;
-
     .auth0-lock-confirmation
       display: block;
-      animation-name: fadeIn;
-      animation-duration: 1s;
-      animation-delay: 1s;
-      animation-fill-mode: both;
 
     .checkmark
       display: block;
 
+  .auth0-lock-select-country
+    background-color white
+    display none
+    position absolute
+    padding 0
+    font-size 14px
+    color #666
+    bottom 0
+    top 0
+    right 0
+    left 0
+    border-radius 5px
+    overflow hidden
+
+    .auth0-lock-search
+      background-color #E3E5E9
+      padding 10px
+
+    .auth0-lock-input-wrap
+      margin 0
+      border none
+
+    .auth0-lock-icon
+      width 16px
+      height 16px
+      top 12px
+      left 9px
+      z-index 1
+
+    .auth0-lock-input-search
+      height 40px
+      width 100%
+      border none
+      border-radius 3px
+      padding 10px 10px 10px 35px
+      box-sizing border-box
+      margin 0
+      font-size 14px
+      color black
+
+    .auth0-lock-list-code
+      height calc(100% - 60px)
+      overflow-y scroll
+      ul
+        margin 0
+        padding 0
+      li
+        list-style none
+        border-bottom 1px solid #EEE
+        cursor pointer
+        color black
+        font-size 14px
+        padding 10px 20px
+        &:hover
+          background-color #2EB5FF
+          color white
+
+  .auth0-lock-code-confirmation
+    background-color white
+    display: none;
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    bottom: 0
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius 5px
+    overflow hidden
+
+    .auth0-lock-submit
+      position absolute
+
   .auth0-lock-confirmation
+    background-color white
     display: none;
     position: absolute;
     padding: 0 30px;
@@ -520,6 +640,8 @@ breakpoint(point, value = 0)
     right: 0;
     left: 0;
     padding-top: 80px;
+    border-radius 5px
+    overflow hidden
     p
       margin-bottom: 6px;
     a
