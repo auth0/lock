@@ -19,7 +19,11 @@ $(function() {
 
     console.log('select country');
 
-    $('.auth0-lock').addClass('auth0-lock-mode-country');
+    // $('.auth0-lock').addClass('auth0-lock-mode-country');
+
+    $('.auth0-lock-select-country').show();
+    $('.auth0-lock-intro').css("visibility", "hidden");
+    $('.auth0-lock-close').hide();
 
     return false;
   });
@@ -29,9 +33,14 @@ $(function() {
 
     console.log('country selected');
 
-    $('.auth0-lock').removeClass('auth0-lock-mode-country');
+    // $('.auth0-lock').removeClass('auth0-lock-mode-country');
 
-    $('.auth0-lock').addClass('auth0-lock-mode-initial');
+    $('.auth0-lock-select-country').hide();
+    $('.auth0-lock-intro').css("visibility", "");
+    $('.auth0-lock-close').show();
+
+    // NOTE: just commenting because is not being used right now
+    // $('.auth0-lock').addClass('auth0-lock-mode-initial');
 
   });
 

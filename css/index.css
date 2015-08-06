@@ -492,15 +492,8 @@
   animation-fill-mode: both;
   display: block;
 }
-.auth0-lock.auth0-lock-mode-country .auth0-lock-intro,
 .auth0-lock.auth0-lock-mode-code .auth0-lock-intro {
   visibility: hidden;
-}
-.auth0-lock.auth0-lock-mode-country .auth0-lock-select-country {
-  display: block;
-}
-.auth0-lock.auth0-lock-mode-country .auth0-lock-close {
-  display: none;
 }
 .auth0-lock.auth0-lock-mode-code .auth0-lock-code-confirmation {
   display: block;
@@ -513,7 +506,6 @@
 }
 .auth0-lock .auth0-lock-select-country {
   background-color: #fff;
-  display: none;
   position: absolute;
   padding: 0;
   font-size: 14px;
@@ -723,60 +715,6 @@
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
   animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-}
-@-moz-keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-@-webkit-keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-@-o-keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-@-moz-keyframes scale {
-  0%, 100% {
-    transform: none;
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
-@-webkit-keyframes scale {
-  0%, 100% {
-    transform: none;
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
-@-o-keyframes scale {
-  0%, 100% {
-    transform: none;
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
-@-moz-keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 30px #7ac142;
-  }
-}
-@-webkit-keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 30px #7ac142;
-  }
-}
-@-o-keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 30px #7ac142;
-  }
 }
 @-moz-keyframes stroke {
   100% {
