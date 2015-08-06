@@ -492,15 +492,8 @@
   animation-fill-mode: both;
   display: block;
 }
-.auth0-lock.auth0-lock-mode-country .auth0-lock-intro,
 .auth0-lock.auth0-lock-mode-code .auth0-lock-intro {
   visibility: hidden;
-}
-.auth0-lock.auth0-lock-mode-country .auth0-lock-select-country {
-  display: block;
-}
-.auth0-lock.auth0-lock-mode-country .auth0-lock-close {
-  display: none;
 }
 .auth0-lock.auth0-lock-mode-code .auth0-lock-code-confirmation {
   display: block;
@@ -513,7 +506,6 @@
 }
 .auth0-lock .auth0-lock-select-country {
   background-color: #fff;
-  display: none;
   position: absolute;
   padding: 0;
   font-size: 14px;

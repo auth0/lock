@@ -529,17 +529,9 @@ breakpoint(point, value = 0)
   //     animation-fill-mode: both;
   //     animation-duration: 1.2s;
 
-  &.auth0-lock-mode-country, &.auth0-lock-mode-code
+  &.auth0-lock-mode-code
     .auth0-lock-intro
       visibility hidden
-
-  &.auth0-lock-mode-country
-
-    .auth0-lock-select-country
-      display: block;
-
-    .auth0-lock-close
-      display none
 
   &.auth0-lock-mode-code
     .auth0-lock-code-confirmation
@@ -554,7 +546,6 @@ breakpoint(point, value = 0)
 
   .auth0-lock-select-country
     background-color white
-    display none
     position absolute
     padding 0
     font-size 14px
