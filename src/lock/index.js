@@ -15,7 +15,6 @@ export function setup(attrs) {
 
     // TODO: figure out how to handle credentials, they are specific to each mode
     credentials: {
-      phoneNumber: {countryCode: "+1", number: "", valid: false, showInvalid: false},
       email: {email: "", valid: false, showInvalid: false}
     }
   });

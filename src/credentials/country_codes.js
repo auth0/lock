@@ -8,6 +8,14 @@ export function dialingCode(countryCode) {
   return countryCode.get(1);
 }
 
+export function locationString(m) {
+  return `${country(m)} ${dialingCode(m)}`;
+}
+
+export const defaultLocation = Immutable.fromJS(["Argentina", "+54"]);
+
+
+// TODO: rename this, and the file, to "locations"
 export const countryCodes = Immutable.fromJS([
   [
     "Afghanistan",

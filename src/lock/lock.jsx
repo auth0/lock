@@ -21,7 +21,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { completed, lock, submitHandler } = this.props;
+    const { completed, lock, submitHandler, disallowClose } = this.props;
     const Content = this.props.content;
     const Confirmation = this.props.confirmation || null;
 
@@ -29,7 +29,7 @@ export default class Lock extends React.Component {
       <div className="auth0-lock-overlay"/> : null;
 
     const icon = ui.icon(lock);
-    const showCloseButton = ui.closable(lock);
+    const showCloseButton = ui.closable(lock) && !disallowClose;
     const globalError = l.globalError(lock);
     const gravatar = l.gravatar(lock);
 
@@ -71,9 +71,10 @@ export default class Lock extends React.Component {
                 </div>
                 <SubmitButton disabled={disableSubmit} />
               </div>
+              {Confirmation && <Confirmation lock={lock} />}
               <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
             </div>
-            {Confirmation && <Confirmation lock={lock} />}
+
           </form>
         </div>
       </div>
@@ -89,6 +90,7 @@ export default class Lock extends React.Component {
   }
 }
 
+// TODO: complete, add defaults (disallowClose: false)
 Lock.propTypes = {
   lock: React.PropTypes.object.isRequired
 };

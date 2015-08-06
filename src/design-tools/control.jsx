@@ -14,7 +14,7 @@ const METHODS = {
     startPasswordless: true
   },
   sms: {
-    signIn: false,
+    signIn: true,
     startPasswordless: true
   }
 };

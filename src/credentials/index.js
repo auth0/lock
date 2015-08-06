@@ -1,5 +1,6 @@
 import { Map } from 'immutable';
 import trim from 'trim';
+import * as cc from './country_codes';
 
 
 function valid(lock, field) {
@@ -21,15 +22,24 @@ function visiblyInvalid(lock, credential) {
 // phone number
 
 export function fullPhoneNumber(lock) {
-  return `${countryCode(lock) || ""}${phoneNumber(lock) || ""}`;
+  return `${phoneDialingCode(lock) || ""}${phoneNumber(lock) || ""}`;
 }
 
-export function countryCode(lock) {
-  return lock.getIn(["credentials", "phoneNumber", "countryCode"], "");
+export function setPhoneLocation(m, value) {
+  console.log(m.toJS());
+  return m.setIn(["credentials", "phoneNumber", "location"], value);
 }
 
-export function setCountryCode(lock, countryCode) {
-  return lock.setIn(["credentials", "phoneNumber", "countryCode"], countryCode);
+function phoneLocation(m) {
+  return m.getIn(["credentials", "phoneNumber", "location"], cc.defaultLocation);
+}
+
+export function phoneLocationString(m) {
+  return cc.locationString(phoneLocation(m));
+}
+
+export function phoneDialingCode(m) {
+  return cc.dialingCode(phoneLocation(m));
 }
 
 export function phoneNumber(lock) {

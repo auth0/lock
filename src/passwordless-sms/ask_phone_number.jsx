@@ -2,8 +2,8 @@ import React from 'react';
 import PhoneNumberInput from '../credentials/phone_number_input';
 import LocationInput from '../credentials/location_input';
 import * as c from '../credentials/index';
-// import { selectCountryCode, changePhoneNumber } from './actions';
-import { ui } from '../lock/index';
+import { changePhoneNumber, selectPhoneLocation } from './actions';
+import * as l from '../lock/index';
 
 export default class AskPhoneNumber extends React.Component {
   render() {
@@ -16,22 +16,19 @@ export default class AskPhoneNumber extends React.Component {
           <PhoneNumberInput value={c.phoneNumber(lock)}
             isValid={!c.visiblyInvalidPhoneNumber(lock)}
             onChange={::this.handlePhoneNumberChange}
-            autoFocus={ui.focusInput(lock)} />
-          <LocationInput value="+54 Argentina"
-            onClick={::this.handleLocationClick}
-            autoFocus={ui.focusInput(lock)} />
+            autoFocus={l.ui.focusInput(lock)} />
+          <LocationInput value={c.phoneLocationString(lock)}
+            onClick={::this.handleLocationClick} />
         </div>
       </div>
     );
   }
 
   handlePhoneNumberChange(e) {
-    console.log("handlePhoneNumberChange");
-    //changePhoneNumber(this.props.lock.get('id'), e.target.value);
+    changePhoneNumber(l.id(this.props.lock), e.target.value);
   }
 
   handleLocationClick() {
-    console.log("handleCountryCodeSelection");
-    // selectCountryCode(this.props.lock.get("id"));
+    selectPhoneLocation(l.id(this.props.lock));
   }
 }

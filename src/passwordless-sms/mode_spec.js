@@ -14,6 +14,7 @@ function sms(id, ...args) {
 }
 
 function closeHandler(lock) {
+  // TODO: if m.selectingLocation(lock) === true, go back to previous screen.
   swap(updateEntity, "lock", l.id(lock), m.close);
 }
 

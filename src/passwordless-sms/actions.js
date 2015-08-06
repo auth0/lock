@@ -1,98 +1,108 @@
-import { Map } from 'immutable';
-import { LockStates } from '../control/constants';
-import { getLock, updateLock } from '../store/index';
-import { fullPhoneNumber, setCountryCode, setPhoneNumber, setShowInvalidPhoneNumber, setVerificationCode, validPhoneNumber, validVerificationCode, verificationCode } from '../credentials/index';
-import WebApi from '../lock/web_api';
+import { read, getEntity, swap, updateEntity } from '../store/index';
+import webApi from '../lock/web_api';
+import * as l from '../lock';
+import * as m from './index';
+import * as c from '../credentials/index';
 
-export function changeVerificationCode(lockID, verificationCode) {
-  return updateLock(lockID, setVerificationCode, verificationCode);
+export function changePhoneNumber(id, phoneNumber) {
+  swap(updateEntity, "lock", id, c.setPhoneNumber, phoneNumber);
 }
 
-export function changePhoneNumber(lockID, phoneNumber) {
-  updateLock(lockID, setPhoneNumber, phoneNumber);
+export function selectPhoneLocation(id) {
+  swap(updateEntity, "lock", id, m.setSelectingLocation, true);
 }
 
-export function selectCountryCode(lockID) {
-  updateLock(lockID, lock => lock.set("state", LockStates.SELECT_COUNTRY_CODE));
+export function changePhoneLocation(id, location) {
+  swap(updateEntity, "lock", id, lock => {
+    lock = m.setSelectingLocation(lock, false);
+    lock = c.setPhoneLocation(lock, location);
+    return lock;
+  });
 }
 
-export function changeCountryCode(lockID, countryCode) {
-  updateLock(lockID, setCountryCode, countryCode);
-  updateLock(lockID, lock => lock.set("state", LockStates.READY));
-}
-
-export function requestPasswordlessSMS(lockID) {
-  let submit = false;
-  updateLock(lockID, lock => {
-    if (validPhoneNumber(lock)) {
-      submit = true;
-      return lock.set("submitting", true);
+export function sendSMS(id) {
+  // TODO: abstract this submit thing.
+  swap(updateEntity, "lock", id, lock => {
+    if (c.validPhoneNumber(lock)) {
+      return l.setSubmitting(lock, true);
     } else {
-      return setShowInvalidPhoneNumber(lock, true);
+      return c.setShowInvalidPhoneNumber(lock, true);
     }
   });
 
-  if (submit) {
-    const lock = getLock(lockID);
-    WebApi.requestPasswordlessSMS(lockID, fullPhoneNumber(lock), function(error, result) {
+  const lock = read(getEntity, "lock", id);
+
+  if (l.submitting(lock)) {
+    const options = {phoneNumber: c.fullPhoneNumber(lock)};
+    webApi.startPasswordless(id, options, error => {
       if (error) {
-        requestPasswordlessSMSError(lockID, error);
+        sendSMSError(id, error);
       } else {
-        requestPasswordlessSMSSuccess(lockID);
+        sendSMSSuccess(id);
       }
     });
   }
 }
 
-function requestPasswordlessSMSSuccess(lockID) {
-  updateLock(lockID, lock => {
-    return lock.merge(Map({
-      submitting: false,
-      state: LockStates.ASK_VERIFICATION_CODE
-    }));
+export function sendSMSSuccess(id) {
+  swap(updateEntity, "lock", id, lock => {
+    lock = l.setSubmitting(lock, false);
+    lock = m.setSMSSent(lock, true);
+    return lock;
   });
 }
 
-function requestPasswordlessSMSError() {
-  console.debug(arguments);
-  console.error("unimplemented action requestPasswordlessSMSError");
+export function sendSMSError(id, error) {
+  const errorMessage = "We're sorry, something went wrong when sending the email.";
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
-export function signIn(lockID) {
-  let submit = false;
-  updateLock(lockID, lock => {
-    if (validVerificationCode(lock)) {
-      submit = true;
-      return lock.set("submitting", true);
-    } else {
-      return setShowInvalidVerificationCode(lock);
-    }
-  });
 
-  if (submit) {
-    const lock = getLock(lockID);
-    const options = {
-      connection: "sms",
-      username: fullPhoneNumber(lock),
-      password: verificationCode(lock),
-      sso: false
-    };
-    WebApi.signIn(lockID, options, ignInSuccess, signInError);
-  }
-}
-
-function signInSuccess(lockID, response) {
-  const callback = l.ui.signInCallback(getLock(lockID));;
-  if (callback) {
-    callback.apply(null, response);
-  }
-  // TODO update lock state
-}
-
-function signInError(lockID, error) {
-  const callback = l.ui.signInCallback(getLock(lockID));;
-  if (callback) {
-    callback.call(null, error);
-  }
-  // TODO update lock state
-}
+// import { Map } from 'immutable';
+// import { LockStates } from '../control/constants';
+// import { getLock, updateLock } from '../store/index';
+// import { fullPhoneNumber, setCountryCode, setPhoneNumber, setShowInvalidPhoneNumber, setVerificationCode, validPhoneNumber, validVerificationCode, verificationCode } from '../credentials/index';
+// import WebApi from '../lock/web_api';
+//
+// export function changeVerificationCode(lockID, verificationCode) {
+//   return updateLock(lockID, setVerificationCode, verificationCode);
+// }
+//
+// export function signIn(lockID) {
+//   let submit = false;
+//   updateLock(lockID, lock => {
+//     if (validVerificationCode(lock)) {
+//       submit = true;
+//       return lock.set("submitting", true);
+//     } else {
+//       return setShowInvalidVerificationCode(lock);
+//     }
+//   });
+//
+//   if (submit) {
+//     const lock = getLock(lockID);
+//     const options = {
+//       connection: "sms",
+//       username: fullPhoneNumber(lock),
+//       password: verificationCode(lock),
+//       sso: false
+//     };
+//     WebApi.signIn(lockID, options, ignInSuccess, signInError);
+//   }
+// }
+//
+// function signInSuccess(lockID, response) {
+//   const callback = l.ui.signInCallback(getLock(lockID));;
+//   if (callback) {
+//     callback.apply(null, response);
+//   }
+//   // TODO update lock state
+// }
+//
+// function signInError(lockID, error) {
+//   const callback = l.ui.signInCallback(getLock(lockID));;
+//   if (callback) {
+//     callback.call(null, error);
+//   }
+//   // TODO update lock state
+// }
