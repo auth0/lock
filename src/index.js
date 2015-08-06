@@ -5,9 +5,11 @@ import Auth0Lock from './lock/auth0_lock';
 import Auth0 from 'auth0-js';
 import crashedSpec from './crashed/mode_spec';
 import passwordlessEmailSpec from './passwordless-email/mode_spec';
+import passwordlessSMSSpec from './passwordless-sms/mode_spec';
 
 Auth0Lock.registerMode(crashedSpec);
 Auth0Lock.registerMode(passwordlessEmailSpec);
+Auth0Lock.registerMode(passwordlessSMSSpec);
 
 // TODO temp for DEV only
 global.window.Auth0LockPasswordless = Auth0Lock;

@@ -3,12 +3,14 @@ import { subscribe, getState } from '../store/index';
 import Auth0Lock from '../lock/auth0_lock';
 import crashedSpec from '../crashed/mode_spec';
 import passwordlessEmailSpec from '../passwordless-email/mode_spec';
+import passwordlessSMSSpec from '../passwordless-sms/mode_spec';
 
 Auth0Lock.registerMode(crashedSpec);
 Auth0Lock.registerMode(passwordlessEmailSpec);
+Auth0Lock.registerMode(passwordlessSMSSpec);
 
 // TODO temp for DEV only
-global.window.Auth0Lock = Auth0Lock;
+global.window.Auth0LockPasswordless = Auth0Lock;
 
 const renderer = new Renderer();
 subscribe("main", () => renderer.render(getState()));

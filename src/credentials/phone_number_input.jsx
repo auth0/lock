@@ -1,32 +1,21 @@
 import React from 'react';
 import InputWrap from './input_wrap';
+import PhoneNumberIcon from './phone_number_icon';
 
 export default class PhoneNumberInput extends React.Component {
   render() {
-    const { isValid, countryCode, countryCodeSelectionHandler,  ...props } = this.props;
-    const { disabled } = props;
+    const { isValid, ...props } = this.props;
+    const icon = <PhoneNumberIcon />;
 
     return (
-      <InputWrap name="phone-number" isValid={isValid} disabled={disabled}>
-        <span className="auth0-lock-country-code-input"
-          onClick={::this.handleCountryCodeInputClick}>
-          {countryCode}
-        </span>
+      <InputWrap name="phone-number" isValid={isValid} icon={icon}>
         <input type="text"
           name="phoneNumber"
-          className="auth0-lock-input"
-          placeholder="Phone Number"
+          className="auth0-lock-input auth0-lock-input-number"
+          placeholder="your phone number"
           {...props} />
       </InputWrap>
     );
-  }
-
-  handleCountryCodeInputClick(e) {
-    const { disabled, countryCodeSelectionHandler } = this.props;
-    if (!disabled) {
-      e.preventDefault();
-      countryCodeSelectionHandler();
-    }
   }
 }
 

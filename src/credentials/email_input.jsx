@@ -1,13 +1,15 @@
 import React from 'react';
 import InputWrap from './input_wrap';
+import EmailIcon from './email_icon';
 import { requestGravatar } from '../gravatar/actions';
 
 export default class EmailInput extends React.Component {
   render() {
     const { isValid, onChange, gravatar, ...props } = this.props;
+    const icon = <EmailIcon />;
 
     return (
-      <InputWrap name="email" isValid={isValid}>
+      <InputWrap name="email" isValid={isValid} icon={icon}>
         <input type="text"
           name="email"
           className="auth0-lock-input"

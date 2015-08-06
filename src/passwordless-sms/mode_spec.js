@@ -5,18 +5,11 @@ import render from './render';
 import * as l from '../lock/index';
 import * as m from './index';
 
-const NAME = "passwordless-email";
+const NAME = "passwordless-sms";
 
-function magiclink(id, ...args) {
+function sms(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("magiclink", args);
   options.signInCallback = callback;
-  openLock(id, NAME, options);
-}
-
-function emailcode(id, ...args) {
-  const [options, callback] = openFunctionArgsResolver("emailcode", args);
-  options.signInCallback = callback;
-  options.modeOptions = {send: "code"};
   openLock(id, NAME, options);
 }
 
@@ -26,7 +19,7 @@ function closeHandler(lock) {
 
 export default {
   name: NAME,
-  openMethods: {magiclink: magiclink, emailcode: emailcode},
+  openMethods: {sms: sms},
   render: render,
   closeHandler: closeHandler
 };

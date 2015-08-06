@@ -12,6 +12,10 @@ const METHODS = {
   magiclink: {
     signIn: false,
     startPasswordless: true
+  },
+  sms: {
+    signIn: false,
+    startPasswordless: true
   }
 };
 
@@ -20,7 +24,7 @@ export default class Control extends React.Component {
     super(props);
     this.state = {
       lock: new Auth0Lock("", ""),
-      method: "magiclink",
+      method: "sms",
       startPasswordlessOptions: {
         result: "success",
         delay: 3000
@@ -61,7 +65,11 @@ export default class Control extends React.Component {
   }
 
   handleMethodChange(method) {
-    this.setState({method: method});
+    let lock = this.state.lock;
+    if (this.state.method != method) {
+      lock = new Auth0Lock("", "");
+    }
+    this.setState({method: method, lock: lock});
   }
 
   handleUIOptionsChange(options) {

@@ -1,22 +1,19 @@
 import React from 'react';
-import EmailIcon from './email_icon';
+
 
 export default class InputWrap extends React.Component {
   render() {
+    const { icon } = this.props;
     var className = "auth0-lock-input-block auth0-lock-input-" + this.props.name;
     if (!this.props.isValid) {
       className += " auth0-lock-error animated pulse";
     }
-
-    let icon = <i className="auth0-lock-icon"/>;
-    if (this.props.name === "email") {
-      icon = <EmailIcon />;
-    }
+    const fallbackIcon = <i className="auth0-lock-icon"/>;
 
     return (
       <div className={className}>
         <div className="auth0-lock-input-wrap">
-          {icon}
+          {icon || fallbackIcon}
           {this.props.children}
         </div>
       </div>
