@@ -1,3 +1,5 @@
+import * as l from '../lock/index';
+
 export function setEmailSent(m, value) {
   return m.set("emailSent", value);
 }
@@ -53,4 +55,8 @@ export function reset(m) {
 
 export function send(m) {
   return m.getIn(["modeOptions", "send"], "link");
+}
+
+export function close(m) {
+  return reset(l.close(m));
 }

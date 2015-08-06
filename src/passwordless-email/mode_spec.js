@@ -51,7 +51,7 @@ function emailcode(id, ...args) {
 }
 
 function closeHandler(lock) {
-  swap(updateEntity, "lock", l.id(lock), lock => l.close(m.reset(lock)));
+  swap(updateEntity, "lock", l.id(lock), m.close);
 }
 
 export default {

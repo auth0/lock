@@ -111,7 +111,7 @@ export function signIn(lockID) {
 }
 
 function signInSuccess(lockID, ...args) {
-  swap(updateEntity, "lock", lockID, l.close);
+  swap(updateEntity, "lock", lockID, lock => m.close(l.setSubmitting(lock, false)));
 
   const lock = read(getEntity, "lock", lockID);
   l.invokeDoneCallback(lock, null, ...args);
