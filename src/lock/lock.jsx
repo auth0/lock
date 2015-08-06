@@ -63,12 +63,14 @@ export default class Lock extends React.Component {
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <CloseButton lockID={l.id(lock)} />}
             <div className="auth0-lock-widget-container">
-              <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
-              {globalError && <GlobalError message={globalError} />}
-              <div className="auth0-lock-content">
-                <this.props.content lock={lock} />
+              <div className="auth0-lock-intro">
+                <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
+                {globalError && <GlobalError message={globalError} />}
+                <div className="auth0-lock-content">
+                  <this.props.content lock={lock} />
+                </div>
+                <SubmitButton disabled={disableSubmit} />
               </div>
-              <SubmitButton disabled={disableSubmit} />
               <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
             </div>
             {Confirmation && <Confirmation lock={lock} />}
