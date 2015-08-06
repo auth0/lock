@@ -328,6 +328,12 @@ breakpoint(point, value = 0)
   .auth0-lock-input
     position: relative;
 
+  .auth0-lock-input-block
+    margin-bottom: 10px;
+
+    &:last-child
+      margin-bottom: 0;
+
   .auth0-lock-input-wrap
     border-radius: 3px;
     margin-bottom: 10px;
@@ -401,9 +407,6 @@ breakpoint(point, value = 0)
         width 198px
         height 100%
         text-align left
-
-    &:last-child
-      margin-bottom: 0;
 
   .auth0-lock-terms
     text-align: center;
