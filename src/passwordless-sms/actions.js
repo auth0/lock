@@ -57,10 +57,57 @@ export function sendSMSError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
+export function changeVerificationCode(id, verificationCode) {
+  return swap(updateEntity, "lock", id, c.setVerificationCode, verificationCode);
+}
+
+export function signIn(id) {
+  // TODO: abstract this submit thing
+  swap(updateEntity, "lock", id, lock => {
+    if (c.validVerificationCode(lock)) {
+      return l.setSubmitting(lock, true);
+    } else {
+      return c.setShowInvalidVerificationCode(lock);
+    }
+  });
+
+  const lock = read(getEntity, "lock", id);
+
+  if (l.submitting(lock)) {
+    const options = {
+      connection: "sms",
+      username: c.fullPhoneNumber(lock),
+      password: c.verificationCode(lock),
+      sso: false
+    };
+
+    webApi.signIn(id, options, (error, ...args) => {
+      if (error) {
+        signInError(id, error);
+      } else {
+        signInSuccess(id, ...args);
+      }
+    });
+  }
+}
+
+function signInSuccess(id, ...args) {
+  swap(updateEntity, "lock", id, lock => m.close(l.setSubmitting(lock, false)));
+
+  const lock = read(getEntity, "lock", id);
+  l.invokeDoneCallback(lock, null, ...args);
+}
+
+function signInError(id, error) {
+  swap(updateEntity, "lock", id, l.setSubmitting, false, error.description);
+
+  const lock = read(getEntity, "lock", id);
+  l.invokeDoneCallback(lock, error);
+}
 
 // import { Map } from 'immutable';
 // import { LockStates } from '../control/constants';
-// import { getLock, updateLock } from '../store/index';
+// import { getLock, updateLock }k from '../store/index';
 // import { fullPhoneNumber, setCountryCode, setPhoneNumber, setShowInvalidPhoneNumber, setVerificationCode, validPhoneNumber, validVerificationCode, verificationCode } from '../credentials/index';
 // import WebApi from '../lock/web_api';
 //

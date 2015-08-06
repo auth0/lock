@@ -17,7 +17,7 @@ export function smsSent(m) {
 }
 
 export function reset(m) {
-  return m.remove("selectingLocation").remove("credentials").remove("smsSent");
+  return l.clearGlobalError(m.remove("selectingLocation").remove("credentials").remove("smsSent"));
 }
 
 export function close(m) {

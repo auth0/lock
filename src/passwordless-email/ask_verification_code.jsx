@@ -16,7 +16,6 @@ export default class AskVerificationCode extends React.Component {
         </div>
         <VerificationCodeInput value={c.verificationCode(lock)}
           isValid={!c.visiblyInvalidVerificationCode(lock) && !l.globalError(lock)}
-          disabled={l.submitting(lock)}
           onChange={::this.handleVerificationCodeChange}
           autoFocus={l.ui.focusInput(lock)} />
       </div>
@@ -24,8 +23,7 @@ export default class AskVerificationCode extends React.Component {
   }
 
   handleVerificationCodeChange(e) {
-    const lockID = l.id(this.props.lock);
-    const verificationCode = e.target.value;
-    changeVerificationCode(lockID, verificationCode);
+    e.preventDefault();
+    changeVerificationCode(l.id(this.props.lock), e.target.value);
   }
 }

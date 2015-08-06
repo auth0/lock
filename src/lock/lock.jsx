@@ -23,6 +23,8 @@ export default class Lock extends React.Component {
   render() {
     const { completed, lock, submitHandler, disallowClose } = this.props;
     const Content = this.props.content;
+    // TODO: rename confirmation to something more representative: it's an
+    // element that needs to be rendered covering the content element.
     const Confirmation = this.props.confirmation || null;
 
     const overlay = ui.appendContainer(lock) ?

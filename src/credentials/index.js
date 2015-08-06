@@ -25,6 +25,13 @@ export function fullPhoneNumber(lock) {
   return `${phoneDialingCode(lock) || ""}${phoneNumber(lock) || ""}`;
 }
 
+export function fullHumanPhoneNumber(m) {
+  const code = phoneDialingCode(m);
+  const number = phoneNumber(m);
+  return `${code} ${number}`;
+}
+
+
 export function setPhoneLocation(m, value) {
   console.log(m.toJS());
   return m.setIn(["credentials", "phoneNumber", "location"], value);

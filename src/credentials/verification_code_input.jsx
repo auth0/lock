@@ -1,14 +1,19 @@
 import React from 'react';
 import InputWrap from './input_wrap';
+import VerificationCodeIcon from './verification_code_icon';
 
 export default class VerificationCodeInput extends React.Component {
   render() {
     const { isValid, ...props } = this.props;
-    const { disabled } = props;
+    const icon = <VerificationCodeIcon />
 
     return (
-      <InputWrap name="verification-code" isValid={isValid} disabled={disabled}>
-        <input type="text" name="verification-code" className="auth0-lock-input" placeholder="Code" {...props}/>
+      <InputWrap name="verification-code" isValid={isValid} icon={icon}>
+        <input type="text"
+            name="verificationCode"
+            className="auth0-lock-input auth0-lock-input-code"
+            placeholder="Your code"
+            {...props} />
       </InputWrap>
     );
   }

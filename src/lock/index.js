@@ -58,7 +58,7 @@ export function globalError(m) {
   return m.get("globalError", "");
 }
 
-function clearGlobalError(m) {
+export function clearGlobalError(m) {
   return m.remove("globalError");
 }
 
