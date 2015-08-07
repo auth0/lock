@@ -504,49 +504,6 @@ breakpoint(point, value = 0)
       animation-fill-mode: both;
       display: block;
 
-  // &.auth0-lock-mode-initial
-  //   .auth0-lock-confirmation, .auth0-lock-select-country
-  //     animation-name: fadeOutRight;
-  //     animation-duration: 1s;
-  //     animation-delay: 1s;
-  //     animation-fill-mode: both;
-
-  // &.auth0-lock-mode-completed
-  //   .auth0-lock-header
-  //     animation-name: fadeOutUp;
-  //     animation-fill-mode: both;
-  //     animation-duration: 1.2s;
-
-  //   .auth0-lock-header-avatar
-  //     animation-name: fadeOutUp;
-  //     animation-fill-mode: both;
-  //     animation-duration: 1.2s;
-
-  //   .auth0-lock-content
-  //     animation-name: fadeOut;
-  //     animation-fill-mode: both;
-  //     animation-duration: 1.2s;
-
-  //   .auth0-lock-submit
-  //     animation-name: fadeOutDown;
-  //     animation-fill-mode: both;
-  //     animation-duration: 1.2s;
-
-  &.auth0-lock-mode-code
-    .auth0-lock-intro
-      visibility hidden
-
-  &.auth0-lock-mode-code
-    .auth0-lock-code-confirmation
-      display: block;
-
-  &.auth0-lock-mode-completed
-    .auth0-lock-confirmation
-      display: block;
-
-    .checkmark
-      display: block;
-
   .auth0-lock-select-country
     background-color white
     position absolute
@@ -605,7 +562,6 @@ breakpoint(point, value = 0)
 
   .auth0-lock-code-confirmation
     background-color white
-    display: none;
     position: absolute;
     text-align: center;
     font-size: 14px;
@@ -622,7 +578,6 @@ breakpoint(point, value = 0)
 
   .auth0-lock-confirmation
     background-color white
-    display: none;
     position: absolute;
     padding: 0 30px;
     text-align: center;
@@ -659,13 +614,7 @@ breakpoint(point, value = 0)
         -webkit-transform: rotate(490deg);
 
     .auth0-lock-go-back
-      // width: 20px;
-      // height: 20px
-      // position: absolute
       left: 20px;
-      // top: 18px;
-      // polygon
-      //   stroke-width: 3px
 
     .auth0-lock-sent-label
       color: green;
@@ -753,7 +702,7 @@ breakpoint(point, value = 0)
     margin: 10% auto;
     box-shadow: inset 0px 0px 0px #7ac142;
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-    display: none;
+    // display: none;
 
 
   .checkmark__check
