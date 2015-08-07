@@ -495,18 +495,6 @@
   animation-fill-mode: both;
   display: block;
 }
-.auth0-lock.auth0-lock-mode-code .auth0-lock-intro {
-  visibility: hidden;
-}
-.auth0-lock.auth0-lock-mode-code .auth0-lock-code-confirmation {
-  display: block;
-}
-.auth0-lock.auth0-lock-mode-completed .auth0-lock-confirmation {
-  display: block;
-}
-.auth0-lock.auth0-lock-mode-completed .checkmark {
-  display: block;
-}
 .auth0-lock .auth0-lock-select-country {
   background-color: #fff;
   position: absolute;
@@ -568,7 +556,6 @@
 }
 .auth0-lock .auth0-lock-code-confirmation {
   background-color: #fff;
-  display: none;
   position: absolute;
   text-align: center;
   font-size: 14px;
@@ -585,7 +572,6 @@
 }
 .auth0-lock .auth0-lock-confirmation {
   background-color: #fff;
-  display: none;
   position: absolute;
   padding: 0 30px;
   text-align: center;
@@ -711,7 +697,6 @@
   margin: 10% auto;
   box-shadow: inset 0px 0px 0px #7ac142;
   animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-  display: none;
 }
 .auth0-lock .checkmark__check {
   transform-origin: 50% 50%;
