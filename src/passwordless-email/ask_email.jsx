@@ -11,7 +11,7 @@ export default class AskEmail extends React.Component {
     return (
       <div className="auth0-lock-passwordless auth0-lock-mode">
         <div className="auth0-lock-form auth0-lock-passwordless">
-          <p>Enter your email address to sign in or create an account.</p>
+          <p>Enter your email to sign in or sign up.</p>
           <EmailInput value={email(lock)}
             isValid={!visiblyInvalidEmail(lock)}
             onChange={::this.handleEmailChange}

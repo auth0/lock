@@ -12,9 +12,9 @@ export default class AskVerificationCode extends React.Component {
       <div className="auth0-lock-form auth0-lock-passwordless">
         <h2>Enter the code</h2>
         <p>
-          Place check your phone ({c.fullHumanPhoneNumber(lock)})<br />
+          Pleace check your phone ({c.fullHumanPhoneNumber(lock)})<br />
           You've received a message from us<br />
-          with your passcode
+          with your passcode.
         </p>
         <VerificationCodeInput value={c.verificationCode(lock)}
           isValid={!c.visiblyInvalidVerificationCode(lock) && !l.globalError(lock)}

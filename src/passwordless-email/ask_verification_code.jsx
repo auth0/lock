@@ -9,11 +9,13 @@ export default class AskVerificationCode extends React.Component {
     const { lock } = this.props;
 
     return (
-      <div>
-        <div className="auth0-lock-instructions">
-          We sent you a code to sign in. <br/>
-          Please check your inbox.
-        </div>
+      <div className="auth0-lock-form auth0-lock-passwordless">
+        <h2>Enter the code</h2>
+        <p>
+          Pleace check your email ({c.email(lock)})<br />
+          You've received a message from us<br />
+          with your passcode.
+        </p>
         <VerificationCodeInput value={c.verificationCode(lock)}
           isValid={!c.visiblyInvalidVerificationCode(lock) && !l.globalError(lock)}
           onChange={::this.handleVerificationCodeChange}
