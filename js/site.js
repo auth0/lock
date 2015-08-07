@@ -1,7 +1,7 @@
 $(function() {
 
   //Initial default functions //
-  $('body').click(function(){
+  $('body.full').click(function(){
     $('.auth0-lock').addClass('opened');
     return false;
   });
