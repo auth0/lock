@@ -78,8 +78,8 @@ $(function() {
 
     if ($('.auth0-lock-input-code').val() === '') {
 
-      $('.auth0-lock-input-block-email').addClass('auth0-lock-error');
-      $('.auth0-lock-input-block-email').addClass('animated pulse');
+      $('.auth0-lock-input-block-code').addClass('auth0-lock-error');
+      $('.auth0-lock-input-block-code').addClass('animated pulse');
 
     }else if ($('.auth0-lock-input-code').val() === "8888") {
 
