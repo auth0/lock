@@ -7,7 +7,7 @@ import GlobalError from './global_error';
 import * as l from './index';
 import * as g from '../gravatar/index';
 const ui = l.ui;
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
@@ -73,10 +73,11 @@ export default class Lock extends React.Component {
                 </div>
                 <SubmitButton disabled={disableSubmit} />
               </div>
-              {Confirmation && <Confirmation lock={lock} />}
+              <ReactCSSTransitionGroup transitionName="slide">
+                {Confirmation && <Confirmation key="confirmation" lock={lock} />}
+              </ReactCSSTransitionGroup>
               <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
             </div>
-
           </form>
         </div>
       </div>

@@ -12,6 +12,9 @@ Auth0Lock.registerMode(passwordlessSMSSpec);
 // TODO temp for DEV only
 global.window.Auth0LockPasswordless = Auth0Lock;
 
+import styles from '../../css/index.css';
+import transitions from '../../css/transitions.css';
+
 const renderer = new Renderer();
 subscribe("main", () => renderer.render(getState()));
 

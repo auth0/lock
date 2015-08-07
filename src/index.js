@@ -15,6 +15,7 @@ Auth0Lock.registerMode(passwordlessSMSSpec);
 global.window.Auth0LockPasswordless = Auth0Lock;
 
 import styles from '../css/index.css';
+import transitions from '../css/transitions.css';
 
 // Setup versions
 Auth0Lock.version = p.version
