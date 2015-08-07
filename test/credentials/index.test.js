@@ -1,6 +1,7 @@
 import expect from 'expect.js';
 import Immutable from 'immutable';
 import * as c from '../../src/credentials/index';
+import * as cc from '../../src/credentials/country_codes';
 
 let emptyEntity = Immutable.fromJS({});
 
@@ -123,28 +124,29 @@ describe("accessing a phone number", function() {
 });
 
 
-const countryCode = "+54";
+const location =  cc.countryCodes.first();
 
-describe("accessing a country code", function() {
+describe("accessing a dialing code", function() {
   let entity;
 
-  describe("when is set", function() {
+  describe("when a location is set", function() {
     beforeEach(function() {
-      entity = c.setCountryCode(emptyEntity, countryCode);
+      entity = c.setPhoneLocation(emptyEntity, location);
     });
 
-    it("returns the country code", function() {
-      expect(c.countryCode(entity)).to.be(countryCode);
+    it("returns the location's dialing code", function() {
+      expect(c.phoneDialingCode(entity)).to.be(cc.dialingCode(location));
+      expect(cc.dialingCode(location)).to.not.be(cc.dialingCode(cc.defaultLocation)); // sanity check
     });
   });
 
-  describe("when is not set", function() {
+  describe("when a location is not set", function() {
     beforeEach(function() {
       entity = emptyEntity;
     });
 
-    it("returns the empty string", function() {
-      expect(c.countryCode(entity)).to.be("");
+    it("returns the default dialing code", function() {
+      expect(c.phoneDialingCode(entity)).to.be(cc.dialingCode(cc.defaultLocation));
     });
   });
 });
@@ -152,44 +154,47 @@ describe("accessing a country code", function() {
 describe("accessing a full phone number", function() {
   let entity;
 
-  describe("when the country code and the number are set", function() {
-    beforeEach(function() {
-      entity = c.setCountryCode(emptyEntity, countryCode);
-      entity = c.setPhoneNumber(entity, phoneNumber);
-    });
-
-    it("returns the country code concatenated with the number", function() {
-      expect(c.fullPhoneNumber(entity)).to.be(countryCode + phoneNumber);
-    });
-  });
-
-  describe("when the country code is set but the number is not", function() {
-    beforeEach(function() {
-      entity = c.setCountryCode(emptyEntity, countryCode);
-    });
-
-    it("returns the number", function() {
-      expect(c.fullPhoneNumber(entity)).to.be(countryCode);
-    });
-  });
-
-  describe("when the country code is not set but the number is", function() {
+  describe("when the phone number is set", function() {
     beforeEach(function() {
       entity = c.setPhoneNumber(emptyEntity, phoneNumber);
     });
 
-    it("returns the number", function() {
-      expect(c.fullPhoneNumber(entity)).to.be(phoneNumber);
+    it("returns the dialing code concatenated with the number", function() {
+      expect(c.fullPhoneNumber(entity)).to.be(c.phoneDialingCode(entity) + c.phoneNumber(entity));
     });
   });
 
-  describe("when the country code and the phone number are not set", function() {
+  describe("when the phone number is not set", function() {
     beforeEach(function() {
       entity = emptyEntity;
     });
 
-    it("returns the empty string", function() {
-      expect(c.fullPhoneNumber(entity)).to.be("");
+    it("returns the dialing code", function() {
+      expect(c.fullPhoneNumber(entity)).to.be(c.phoneDialingCode(entity));
+    });
+  });
+});
+
+describe("accessing a human readable full phone number", function() {
+  let entity;
+
+  describe("when the phone number is set", function() {
+    beforeEach(function() {
+      entity = c.setPhoneNumber(emptyEntity, phoneNumber);
+    });
+
+    it("returns the dialing code separated from the number", function() {
+      expect(c.fullHumanPhoneNumber(entity)).to.be(`${c.phoneDialingCode(entity)} ${c.phoneNumber(entity)}`);
+    });
+  });
+
+  describe("when the phone number is not set", function() {
+    beforeEach(function() {
+      entity = emptyEntity;
+    });
+
+    it("returns the dialing code and a space", function() {
+      expect(c.fullHumanPhoneNumber(entity)).to.be(`${c.phoneDialingCode(entity)} `);
     });
   });
 });

@@ -31,9 +31,7 @@ export function fullHumanPhoneNumber(m) {
   return `${code} ${number}`;
 }
 
-
 export function setPhoneLocation(m, value) {
-  console.log(m.toJS());
   return m.setIn(["credentials", "phoneNumber", "location"], value);
 }
 
