@@ -50,7 +50,6 @@ module.exports = Auth0Lock;
  * @param {String} clientID
  * @param {String} domain
  * @param {Object} options
- *     - cdn
  *     - assetsUrl
  * @return {Auth0Lock}
  * @constructor
@@ -88,9 +87,6 @@ function Auth0Lock (clientID, domain, options) {
   // use domain as assetsUrl if no assetsUrl provided
   // and domain is not *.auth0.com. Fallback to S3 url
   this.$options.assetsUrl = this.getAssetsUrl(this.$options.assetsUrl, this.$options.domain);
-
-  // This cdn is only used for the "loading" image
-  this.$options.cdn = this.$options.cdn || (this.isAuth0Domain() ? 'https://d19p4zemcycm7a.cloudfront.net/w2/' : 'https://' + this.$options.domain + '/w2/');
 
   // Holds SSO Data for return user experience
   this.$ssoData = null;
@@ -329,10 +325,7 @@ Auth0Lock.prototype.insert = function() {
   var locals = {
     options:      options,
     cordova:      utils.isCordova(),
-    ios:          utils.isIOS(),
-    alt_spinner:  !has_animations() ?
-      (this.$options.cdn + 'img/ajax-loader.gif') :
-      null
+    ios:          utils.isIOS()
   };
 
   // widget container

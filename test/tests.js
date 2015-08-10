@@ -289,32 +289,6 @@ describe('Auth0Lock', function () {
     });
   });
 
-  describe('When cdn option is not specified', function () {
-    beforeEach(function() {
-      this.widget = new Auth0Lock(clientID, 'abc.contoso.com');
-    });
-
-    it('should use domain as cdn if domain is not *.auth0.com', function () {
-      expect(this.widget.$options.cdn).to.equal('https://abc.contoso.com/w2/');
-    });
-
-    it('should use default cdn if domain is *.auth0.com', function () {
-      this.widget = new Auth0Lock(clientID, 'abc.auth0.com');
-
-      expect(this.widget.$options.cdn).to.equal('https://d19p4zemcycm7a.cloudfront.net/w2/');
-    });
-  });
-
-  describe('When cdn option is specified', function () {
-    it('should use provided cdn url and ignore defaults', function () {
-      this.widget = new Auth0Lock(clientID, 'abc.contoso.com', {
-        cdn: 'https://sdk.myauth0-custom.com/'
-      });
-
-      expect(this.widget.$options.cdn).to.equal('https://sdk.myauth0-custom.com/');
-    });
-  });
-
   describe('Sign In', function () {
     it('should signin with social connection', function (done) {
       client.login = function (options) {
