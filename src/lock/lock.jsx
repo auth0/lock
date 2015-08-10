@@ -39,6 +39,9 @@ export default class Lock extends React.Component {
     const disableSubmit = l.submitting(lock);
 
     let className = "auth0-lock";
+    if (!l.ui.appendContainer(lock)) {
+      className += " opened-in-frame";
+    }
     if (lock.get("show")) {
       className += " opened";
     }
