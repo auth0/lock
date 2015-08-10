@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design</title>
+<meta charset="utf-8">
+<style>
+body {
+  background-color: #1f1f24;
+  color: #727578;
+}
 
-    <title>Lock</title>
+.container {
+  overflow: hidden;
+  padding: 20px;
+}
 
-  </head>
-  <body>
-    <div id="control"></div>
+.info {
+  width: 300px;
+  float: left;
+  font-family: "Avenir", sans-serif;
+  text-rendering: optimizeLegibility;
+}
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="build/design-tools.js"></script>
-  </body>
-</html>
+.info h2 {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.lock-container {
+  float: left;
+  padding: 20px 0 60px 20px;
+}
+</style>
+<div class="container">
+  <div class="info">
+    <h2>magiclink</h2>
+  </div>
+  <div class="lock-container" id="magiclink-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>emailcode</h2>
+  </div>
+  <div class="lock-container" id="emailcode-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>sms</h2>
+  </div>
+  <div class="lock-container" id="sms-container"></div>
+</div>
+<script src="build/design-tools.js"></script>
+<script>
+var cid = "JIMqGKN9Npw4lkg1stTARqPTjBvn6wRp";
+var domain = "gnandretta.auth0.com";
+
+var magiclinkLock = new Auth0LockPasswordless(cid, domain);
+magiclinkLock.magiclink({container: "magiclink-container"});
+
+var emailcodeLock = new Auth0LockPasswordless(cid, domain);
+emailcodeLock.emailcode({container: "emailcode-container"});
+
+var smsLock = new Auth0LockPasswordless(cid, domain);
+smsLock.sms({container: "sms-container"});
+</script>
