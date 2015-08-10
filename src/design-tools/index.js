@@ -29,7 +29,7 @@ WebAPI.prototype.setupClient = function() {};
 
 WebAPI.prototype.signIn = function(lockID, options, cb) {
   const state = store.deref();
-  const args = state.getIn(["signIn", "result"]) == "success" ?
+  const args = state.getIn(["signIn", "response"]) == "success" ?
     [null] :
     [{description: "Wrong email or verification code.", error: "invalid_user_password"}];
   setTimeout(() => cb(...args), state.get("latency"));
@@ -39,7 +39,7 @@ WebAPI.prototype.signOut = function() {};
 
 WebAPI.prototype.startPasswordless = function(lockID, options, cb) {
   const state = store.deref();
-  const args = state.getIn(["startPasswordless", "result"]) == "success" ? [null] : [{}];
+  const args = state.getIn(["startPasswordless", "response"]) == "success" ? [null] : [{}];
   setTimeout(() => cb(...args), state.get("latency"));
 };
 

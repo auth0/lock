@@ -28,7 +28,7 @@ class Atom {
     // if (!this.watches[key]) {
     //   console.warn(`removing a watch with an unknown key: ${k}`);
     // }
-    delete this.watches[key];
+    delete this.watches[k];
     return this;
   }
 

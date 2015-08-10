@@ -1,6 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import atom from '../atom/index';
+import { getState, subscribe, swap, unsubscribe } from '../store/index';
 
 export const store = atom(Immutable.fromJS({
   latency: 2500,
@@ -33,13 +34,14 @@ export default class Control extends React.Component {
       <div className="control">
       <div>
         <h3>startPasswordless</h3>
-        <ResultSelect selected={this.state.startPasswordless.result}
-            onChange={::this.handleStartPasswodlessResultChange} />
+        <ResultSelect selected={this.state.startPasswordless.response}
+            onChange={::this.handleStartPasswodlessResponseChange} />
 
         <h3>signIn</h3>
-        <ResultSelect selected={this.state.signIn.result}
-            onChange={::this.handleSignInResultChange} />
+        <ResultSelect selected={this.state.signIn.response}
+            onChange={::this.handleSignInResponseChange} />
       </div>
+      <div><Snapshot /></div>
       <div><br />
         <a href="#" onClick={::this.handleCloseClick}>close</a>
       </div>
@@ -58,12 +60,12 @@ export default class Control extends React.Component {
     }
   }
 
-  handleStartPasswodlessResultChange(value) {
-    store.swap(state => state.setIn(["startPasswordless", "result"], value));
+  handleStartPasswodlessResponseChange(value) {
+    store.swap(state => state.setIn(["startPasswordless", "response"], value));
   }
 
-  handleSignInResultChange(value) {
-    store.swap(state => state.setIn(["signIn", "result"], value));
+  handleSignInResponseChange(value) {
+    store.swap(state => state.setIn(["signIn", "response"], value));
   }
 }
 
@@ -88,31 +90,35 @@ class ResultSelect extends React.Component {
   }
 }
 
-// class Snapshot extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {snapshot: ""};
-//   }
-//
-//   componentDidMount() {
-//     subscribe("design-tools", (key, oldState, newState) => {
-//       if (newState) {
-//         this.setState({snapshot: global.JSON.stringify(newState.toJS())});
-//       }
-//     });
-//   }
-//
-//   render() {
-//     return (
-//       <div>
-//         <h3>Snapshot</h3>
-//         State: { }
-//         <input type="text" value={this.state.snapshot} />
-//       </div>
-//     );
-//   }
-// }
-//
-// global.window.loadSnapshot = function(str) {
-//   swap(_ => Immutable.fromJS(global.JSON.parse(str)));
-// }
+class Snapshot extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {snapshot: global.JSON.stringify(getState().toJS())};
+  }
+
+  componentDidMount() {
+    subscribe("design-tools.snapshot", (key, oldState, newState) => {
+      if (newState) {
+        this.setState({snapshot: global.JSON.stringify(newState.toJS())});
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    unsubscribe("design-tools.snapshot");
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Snapshot</h3>
+        State: { }
+        <textarea value={this.state.snapshot} />
+      </div>
+    );
+  }
+}
+
+global.window.loadSnapshot = function(str) {
+  swap(state => state.set("lock", Immutable.fromJS(global.JSON.parse(str).lock)));
+}

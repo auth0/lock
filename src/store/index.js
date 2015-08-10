@@ -7,6 +7,10 @@ export function subscribe(key, f) {
   store.addWatch(key, f);
 }
 
+export function unsubscribe(key) {
+  store.removeWatch(key);
+}
+
 export function swap(...args) {
   return store.swap(...args);
 }
