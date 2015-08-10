@@ -1,3 +1,12 @@
+## [7.7.2] - 2015-07-23
+
+### Fixed
+
+- [] Merge pull request #199 from auth0/remove/cdn-option (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/56658246e7f43187bc56af596da47afcda625f46
+- [] Remove alt_spinner from templates and also options.cdn from lock constructor (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2b706277564daf09b8152717fc6ead64613817b2
+
 ## [7.7.1] - 2015-07-08
 
 ### Fixed
