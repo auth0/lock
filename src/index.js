@@ -16,6 +16,7 @@ global.window.Auth0LockPasswordless = Auth0Lock;
 
 import styles from '../css/index.css';
 import transitions from '../css/transitions.css';
+import overwrites from '../css/overwrites.css';
 
 // Setup versions
 Auth0Lock.version = p.version

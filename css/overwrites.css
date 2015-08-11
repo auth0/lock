@@ -1,0 +1,9 @@
+/* temp prototype overwrites */
+
+.auth0-lock .auth0-global-grobal-error {
+  display: block;
+}
+
+.auth0-lock .auth0-global-grobal-error span {
+  display: inline;
+}

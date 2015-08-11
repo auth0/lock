@@ -8,6 +8,7 @@ import * as l from './index';
 import * as g from '../gravatar/index';
 const ui = l.ui;
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+const ReactTransitionGroup = React.addons.TransitionGroup;
 import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
@@ -70,7 +71,9 @@ export default class Lock extends React.Component {
             <div className="auth0-lock-widget-container">
               <div className="auth0-lock-intro">
                 <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
-                {globalError && <GlobalError message={globalError} />}
+                <ReactTransitionGroup>
+                  {globalError && <GlobalError key="globalerror" message={globalError} />}
+                </ReactTransitionGroup>
                 <div className="auth0-lock-content">
                   <this.props.content lock={lock} />
                 </div>

@@ -16,6 +16,7 @@ global.window.Auth0LockPasswordless = Auth0Lock;
 
 import styles from '../../css/index.css';
 import transitions from '../../css/transitions.css';
+import overwrites from '../../css/overwrites.css';
 
 const renderer = new Renderer();
 subscribe("main", () => renderer.render(getState()));
