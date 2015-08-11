@@ -11,7 +11,8 @@ export function setupLock(id, clientID, domain) {
 }
 
 export function openLock(id, mode, options) {
-  swap(updateEntity, "lock", id, l.open, mode, options);
+  swap(updateEntity, "lock", id, l.render, mode, options);
+  setTimeout(() => swap(updateEntity, "lock", id, l.setShow, true), 17);
 }
 
 export function closeLock(id, force = false) {

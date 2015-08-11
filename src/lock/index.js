@@ -41,6 +41,10 @@ export function show(m) {
   return m.get("show", false);
 }
 
+export function setShow(m, value) {
+  return m.set("show", value);
+}
+
 export function setSubmitting(m, value, error) {
   m = m.set("submitting", value);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
@@ -63,7 +67,7 @@ export function clearGlobalError(m) {
   return m.remove("globalError");
 }
 
-export function render(m) {
+export function rendering(m) {
   return m.get("render", false);
 }
 
@@ -118,14 +122,14 @@ export function invokeDoneCallback(m, ...args) {
   ui.signInCallback(m).apply(undefined, args);
 }
 
-export function open(m, modeName, options) {
+export function render(m, modeName, options) {
   if ((mode(m) != undefined && mode(m) != modeName) || show(m)) {
     return m;
   }
 
   const { modeOptions } = options;
   m = m.merge(Immutable.fromJS({
-    show: true,
+    // show: true,
     mode: modeName,
     render: true,
     modeOptions: modeOptions

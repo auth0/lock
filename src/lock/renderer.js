@@ -14,18 +14,13 @@ export default class Renderer {
   render(state) {
     const locks = getCollection(state, "lock");
 
-    locks.filter(l.render).forEach(lock => {
+    locks.filter(l.rendering).forEach(lock => {
       const gravatar = getEntity(state, "gravatar", c.email(lock));
       lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
       const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
-
-      if (l.show(lock)) {
-        const mode = getEntity(state, "mode", l.mode(lock));
-        const spec = mode.get("render")(lock);
-        React.render(<Lock lock={lock} {...spec} />, container);
-      } else if (container) {
-        React.unmountComponentAtNode(container);
-      }
+      const mode = getEntity(state, "mode", l.mode(lock));
+      const spec = mode.get("render")(lock);
+      React.render(<Lock lock={lock} {...spec} />, container);
     });
   }
 }

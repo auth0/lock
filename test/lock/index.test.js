@@ -52,56 +52,56 @@ describe("initializing a lock", function() {
   });
 
   it("doesn't need to be rendered", function() {
-    expect(l.render(lock)).to.be(false);
+    expect(l.rendering(lock)).to.be(false);
   });
 });
 
-describe("opening a lock", function() {
-  let openedLock;
+describe("rendering a lock", function() {
+  let renderedLock;
   const mode = "someMode";
   const modeOptions = {someModeOption: "someModeOption"};
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
-    openedLock = l.open(lock, mode, {modeOptions: modeOptions});
+    renderedLock = l.render(lock, mode, {modeOptions: modeOptions});
   });
 
   it("sets the mode", function() {
-    expect(l.mode(openedLock)).to.be(mode);
+    expect(l.mode(renderedLock)).to.be(mode);
   });
 
   it("sets the mode options", function() {
-    expect(l.modeOptions(openedLock).toJS()).to.eql(modeOptions);
+    expect(l.modeOptions(renderedLock).toJS()).to.eql(modeOptions);
   });
 
-  it("needs to be shown", function() {
-    expect(l.show(openedLock)).to.be(true);
+  it("it isn't being shown yet", function() {
+    expect(l.show(renderedLock)).to.be(false);
   });
 
   it("needs to be rendered", function() {
-    expect(l.render(openedLock)).to.be(true);
+    expect(l.rendering(renderedLock)).to.be(true);
   });
 
   it("choses a container id automatically", function() {
-    expect(l.ui.containerID(openedLock)).to.be(`auth0-lock-container-${l.id(lock)}`);
+    expect(l.ui.containerID(renderedLock)).to.be(`auth0-lock-container-${l.id(lock)}`);
   });
 
   it("can append a container when needed", function() {
-    expect(l.ui.appendContainer(openedLock)).to.be(true);
+    expect(l.ui.appendContainer(renderedLock)).to.be(true);
   });
 
   it("uses the auth0 logo", function() {
-    expect(l.ui.icon(openedLock)).to.be(Auth0Icon.url);
+    expect(l.ui.icon(renderedLock)).to.be(Auth0Icon.url);
   });
 
   it("can be closed", function() {
-    expect(l.ui.closable(openedLock)).to.be(true);
+    expect(l.ui.closable(renderedLock)).to.be(true);
   });
 
   // TODO: focusInput test, but remove isSmallScreen dependency first
 
   it("displays user name and picture obtained from Gravatar", function() {
-    expect(l.ui.gravatar(openedLock)).to.be(true);
+    expect(l.ui.gravatar(renderedLock)).to.be(true);
   });
 
   describe("with ui option", function() {
@@ -109,19 +109,19 @@ describe("opening a lock", function() {
       const container = "someId";
 
       beforeEach(function() {
-        openedLock = l.open(lock, mode, {container: container});
+        renderedLock = l.render(lock, mode, {container: container});
       });
 
       it("assings it as the container id", function() {
-        expect(l.ui.containerID(openedLock)).to.be(container);
+        expect(l.ui.containerID(renderedLock)).to.be(container);
       });
 
       it("prohibits appending a container", function() {
-        expect(l.ui.appendContainer(openedLock)).to.be(false);
+        expect(l.ui.appendContainer(renderedLock)).to.be(false);
       });
 
       it("doesn't allow to close it (by default)", function() {
-        expect(l.ui.closable(openedLock)).to.be(false);
+        expect(l.ui.closable(renderedLock)).to.be(false);
       });
 
       // TODO: focusInput test, but (again) remove isSmallScreen dependency first
@@ -129,11 +129,11 @@ describe("opening a lock", function() {
 
     describe("`appendContainer`", function() {
       beforeEach(function() {
-        openedLock = l.open(lock, mode, {appendContainer: false});
+        renderedLock = l.render(lock, mode, {appendContainer: false});
       });
 
       it("doesn't affect whether a container can be appended or not", function() {
-        expect(l.ui.appendContainer(openedLock)).to.be(true);
+        expect(l.ui.appendContainer(renderedLock)).to.be(true);
       });
     });
 
@@ -141,32 +141,32 @@ describe("opening a lock", function() {
       const icon = "my_company_icon.svg";
 
       beforeEach(function() {
-        openedLock = l.open(lock, mode, {icon: icon});
+        renderedLock = l.render(lock, mode, {icon: icon});
       });
 
       it("sets a customs icon", function() {
-        expect(l.ui.icon(openedLock)).to.be(icon);
+        expect(l.ui.icon(renderedLock)).to.be(icon);
       });
     });
 
     describe("`closable`", function() {
       describe("without `container`", function() {
         beforeEach(function() {
-          openedLock = l.open(lock, mode, {closable: false});
+          renderedLock = l.render(lock, mode, {closable: false});
         });
 
         it("can stop the user from closing the lock", function() {
-          expect(l.ui.closable(openedLock)).to.be(false);
+          expect(l.ui.closable(renderedLock)).to.be(false);
         });
       });
 
       describe("with `container`", function() {
         beforeEach(function() {
-          openedLock = l.open(lock, mode, {closable: true, container: "someId"});
+          renderedLock = l.render(lock, mode, {closable: true, container: "someId"});
         })
 
         it("allows the user to close the lock (even inside a container)", function() {
-          expect(l.ui.closable(openedLock)).to.be(true);
+          expect(l.ui.closable(renderedLock)).to.be(true);
         });
       });
     });
@@ -175,63 +175,74 @@ describe("opening a lock", function() {
 
     describe("`gravatar`", function() {
       beforeEach(function() {
-        openedLock = l.open(lock, mode, {gravatar: false});
+        renderedLock = l.render(lock, mode, {gravatar: false});
       });
 
       it("doesn't display user name and picture obtained from Gravatar", function() {
-        expect(l.ui.gravatar(openedLock)).to.be(false);
+        expect(l.ui.gravatar(renderedLock)).to.be(false);
       });
     });
   });
 
-  describe("and closing it", function() {
-    let closedLock;
-    beforeEach(function() {
-      closedLock = l.close(openedLock);
-    })
 
-    it("doesn't need to be shown anymore", function() {
-      expect(l.show(closedLock)).to.be(false);
+  describe("then opening it", function() {
+    let openedLock;
+    beforeEach(function() {
+      openedLock = l.setShow(renderedLock, true);
     });
 
-    it("still needs to be rendered", function() {
-      expect(l.render(closedLock)).to.be(true);
+    it("needs to be shown now", function() {
+      expect(l.show(openedLock)).to.be(true);
+    });
+
+    describe("and closing it", function() {
+      let closedLock;
+      beforeEach(function() {
+        closedLock = l.close(openedLock);
+      })
+
+      it("doesn't need to be shown anymore", function() {
+        expect(l.show(closedLock)).to.be(false);
+      });
+
+      it("still needs to be rendered", function() {
+        expect(l.rendering(closedLock)).to.be(true);
+      });
     });
   });
 });
 
-describe("reopening a lock", function() {
-  let openedLock, closedLock, reopenedLock;
+describe("rerendering a lock", function() {
+  let renderedLock, reRenderedLock;
   const mode = "someMode";
   // const modeOptions = {someModeOption: "someModeOption"};
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
-    openedLock = l.open(lock, mode, {});
-    closedLock = l.close(openedLock);
-    reopenedLock = l.open(closedLock, mode, {});
+    renderedLock = l.render(lock, mode, {});
+    reRenderedLock = l.render(renderedLock, mode, {});
   });
 
   it("doesn't change the container id", function() {
-    expect(l.ui.containerID(reopenedLock)).to.be(l.ui.containerID(openedLock));
+    expect(l.ui.containerID(reRenderedLock)).to.be(l.ui.containerID(renderedLock));
   });
 
   it("doesn't change whether it allows to append a container or not", function() {
-    expect(l.ui.appendContainer(reopenedLock)).to.be(l.ui.appendContainer(openedLock));
+    expect(l.ui.appendContainer(reRenderedLock)).to.be(l.ui.appendContainer(renderedLock));
   });
 
   it("doesn't change the icon", function() {
-    expect(l.ui.icon(reopenedLock)).to.be(l.ui.icon(openedLock));
+    expect(l.ui.icon(reRenderedLock)).to.be(l.ui.icon(renderedLock));
   });
 
   it("doesn't change whether it can be closed or not", function() {
-    expect(l.ui.closable(reopenedLock)).to.be(l.ui.closable(openedLock));
+    expect(l.ui.closable(reRenderedLock)).to.be(l.ui.closable(renderedLock));
   });
 
   // TODO: focusInput test, but (again) remove isSmallScreen dependency first
 
   it("doesn't change whether it displays info obtained from Gravatar or not", function() {
-    expect(l.ui.gravatar(reopenedLock)).to.be(l.ui.gravatar(openedLock));
+    expect(l.ui.gravatar(reRenderedLock)).to.be(l.ui.gravatar(renderedLock));
   });
 
   describe("with UI option", function() {
@@ -244,55 +255,55 @@ describe("reopening a lock", function() {
 
     describe("`container`", function() {
       beforeEach(function() {
-        reopenedLock = l.open(closedLock, mode, {container: reopenOptions.container});
+        reRenderedLock = l.render(renderedLock, mode, {container: reopenOptions.container});
       });
 
       it("doesn't change the container's id", function() {
-        expect(l.ui.containerID(reopenedLock)).to.be(l.ui.containerID(openedLock));
-        expect(l.ui.containerID(reopenedLock)).to.not.be(reopenOptions.container); // sanity check
+        expect(l.ui.containerID(reRenderedLock)).to.be(l.ui.containerID(renderedLock));
+        expect(l.ui.containerID(reRenderedLock)).to.not.be(reopenOptions.container); // sanity check
       });
 
       it("doesn't affect whether a container can be appended or not", function() {
-        expect(l.ui.appendContainer(reopenedLock)).to.be(l.ui.appendContainer(openedLock));
-        expect(l.ui.appendContainer(reopenedLock)).to.be(true); // sanity check
+        expect(l.ui.appendContainer(reRenderedLock)).to.be(l.ui.appendContainer(renderedLock));
+        expect(l.ui.appendContainer(reRenderedLock)).to.be(true); // sanity check
       });
 
       it("doesn't change whether it can be closed or not", function() {
-        expect(l.ui.closable(reopenedLock)).to.be(l.ui.closable(openedLock));
-        expect(l.ui.closable(reopenedLock)).to.be(true); // sanity check
+        expect(l.ui.closable(reRenderedLock)).to.be(l.ui.closable(renderedLock));
+        expect(l.ui.closable(reRenderedLock)).to.be(true); // sanity check
       });
     });
 
     describe("`appendContainer`", function() {
       beforeEach(function() {
-        reopenedLock = l.open(closedLock, mode, {appendContainer: false});
+        reRenderedLock = l.render(renderedLock, mode, {appendContainer: false});
       });
 
       it("doesn't affect whether a container can be appended or not", function() {
-        expect(l.ui.appendContainer(reopenedLock)).to.be(l.ui.appendContainer(openedLock));
-        expect(l.ui.appendContainer(reopenedLock)).to.be(true); // sanity check
+        expect(l.ui.appendContainer(reRenderedLock)).to.be(l.ui.appendContainer(renderedLock));
+        expect(l.ui.appendContainer(reRenderedLock)).to.be(true); // sanity check
       });
     });
 
     describe("`icon`", function() {
       beforeEach(function() {
-        reopenedLock = l.open(lock, mode, {icon: reopenOptions.icon});
+        reRenderedLock = l.render(renderedLock, mode, {icon: reopenOptions.icon});
       });
 
       it("changes the icon", function() {
-        expect(l.ui.icon(reopenedLock)).to.be(reopenOptions.icon);
-        expect(l.ui.icon(openedLock)).to.not.be(reopenOptions.icon); // sanity check
+        expect(l.ui.icon(reRenderedLock)).to.be(reopenOptions.icon);
+        expect(l.ui.icon(renderedLock)).to.not.be(reopenOptions.icon); // sanity check
       });
     });
 
     describe("`closable`", function() {
       beforeEach(function() {
-        reopenedLock = l.open(lock, mode, {closable: reopenOptions.closable});
+        reRenderedLock = l.render(renderedLock, mode, {closable: reopenOptions.closable});
       });
 
       it("changes whether it can be closed or not", function() {
-        expect(l.ui.closable(reopenedLock)).to.be(reopenOptions.closable);
-        expect(l.ui.closable(openedLock)).to.not.be(reopenOptions.closable); // sanity check
+        expect(l.ui.closable(reRenderedLock)).to.be(reopenOptions.closable);
+        expect(l.ui.closable(renderedLock)).to.not.be(reopenOptions.closable); // sanity check
       });
     });
 
@@ -300,42 +311,42 @@ describe("reopening a lock", function() {
 
     describe("`gravatar`", function() {
       beforeEach(function() {
-        reopenedLock = l.open(lock, mode, {gravatar: reopenOptions.gravatar});
+        reRenderedLock = l.render(renderedLock, mode, {gravatar: reopenOptions.gravatar});
       });
 
       it("changes whether it displays info obtained from Gravatar or not", function() {
-        expect(l.ui.gravatar(reopenedLock)).to.be(reopenOptions.gravatar);
-        expect(l.ui.gravatar(openedLock)).to.not.be(reopenOptions.gravatar); // sanity check
+        expect(l.ui.gravatar(reRenderedLock)).to.be(reopenOptions.gravatar);
+        expect(l.ui.gravatar(renderedLock)).to.not.be(reopenOptions.gravatar); // sanity check
       });
     });
   });
 
   describe("in another mode", function() {
     const otherMode = "otherMode";
-    let notReopenedLock;
+    let notRerenderedLock;
 
     beforeEach(function() {
-      notReopenedLock = l.open(closedLock, otherMode, {gravatar: false});
+      notRerenderedLock = l.render(reRenderedLock, otherMode, {gravatar: false});
     });
 
     it("doesn't change anything", function() {
-      expect(closedLock).to.be(notReopenedLock);
+      expect(renderedLock).to.be(notRerenderedLock);
     });
   });
 });
 
-describe("trying to reopen a lock without closing it first", function() {
-  let openedLock, reopenedLock;
+describe("trying to render a lock that is being shown", function() {
+  let openedLock, reRenderedLock;
   const mode = "someMode";
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
-    openedLock = l.open(lock, mode, {});
-    reopenedLock = l.open(openedLock, mode, {gravatar: false});
+    openedLock = l.setShow(l.render(lock, mode, {}), true);
+    reRenderedLock = l.render(openedLock, mode, {gravatar: false});
   });
 
   it("doesn't change anything", function() {
-    expect(openedLock).to.be(reopenedLock);
+    expect(reRenderedLock).to.be(openedLock);
   });
 });
 
@@ -409,7 +420,7 @@ describe("submitting", function() {
 describe("accessing Gravatar info", function() {
   const gravatar = Immutable.fromJS({displayName: "someName", imageUrl: "someUrl"});
   const mode = "someMode";
-  let openedLock;
+  let renderedLock;
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
@@ -417,34 +428,34 @@ describe("accessing Gravatar info", function() {
 
   describe("when it has to be displayed", function() {
     beforeEach(function() {
-      openedLock = l.open(lock, mode, {gravatar: true});
+      renderedLock = l.render(lock, mode, {gravatar: true});
     });
 
     describe("and it isn't available", function() {
       it("returns undefined", function() {
-        expect(l.gravatar(openedLock)).to.be(undefined);
+        expect(l.gravatar(renderedLock)).to.be(undefined);
       });
     });
 
     describe("and it is available", function() {
       beforeEach(function() {
-        openedLock = openedLock.set("gravatar", gravatar);
+        renderedLock = renderedLock.set("gravatar", gravatar);
       });
 
       it("returns it", function() {
-        expect(l.gravatar(openedLock)).to.be(gravatar);
+        expect(l.gravatar(renderedLock)).to.be(gravatar);
       });
     });
   });
 
   describe("when available but it doesn't have to be displayed", function() {
     beforeEach(function() {
-      openedLock = l.open(lock, mode, {gravatar: false});
-      openedLock = openedLock.set("gravatar", gravatar);
+      renderedLock = l.render(lock, mode, {gravatar: false});
+      renderedLock = renderedLock.set("gravatar", gravatar);
     });
 
     it("returns undefined", function() {
-      expect(l.gravatar(openedLock)).to.be(undefined);
+      expect(l.gravatar(renderedLock)).to.be(undefined);
     });
   });
 });
