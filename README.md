@@ -255,6 +255,11 @@ The appearance of the widget can be customized with an `options` object which ha
   <dd>
     Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
   </dd>
+
+  <dt>terms {String}</dt>
+  <dd>
+    HTML fragment displayed in the footer that usually contains a link to the terms of service users agree by signing up. Defaults to the empty string `""`.
+  </dd>
 </dl>
 
 #### Example

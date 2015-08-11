@@ -83,6 +83,7 @@ function extractUIOptions(id, options) {
     closable: undefined === options.closable ? !options.container : !!options.closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
+    terms: undefined === options.terms ? "" : options.terms,
     signInCallback: options.signInCallback // TODO: this doesn't belong here
   });
 }
@@ -109,6 +110,7 @@ export const ui = {
   closable: lock => getUIAttribute(lock, "closable"),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
+  terms: lock => getUIAttribute(lock, "terms"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback")
 };
 

@@ -7,3 +7,9 @@
 .auth0-lock .auth0-global-grobal-error span {
   display: inline;
 }
+
+/*.auth0-lock .auth0-lock-terms {
+  background-color: #eee;
+  margin: 20px -30px -30px;
+  padding: 10px 30px;
+}*/
