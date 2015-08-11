@@ -27,7 +27,7 @@ export default class Auth0Lock {
   }
 
   close() {
-    closeLock(this.id);
+    closeLock(this.id, true);
   }
 
   logout(query = {}) {

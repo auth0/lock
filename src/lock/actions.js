@@ -14,12 +14,14 @@ export function openLock(id, mode, options) {
   swap(updateEntity, "lock", id, l.open, mode, options);
 }
 
-export function closeLock(id) {
+export function closeLock(id, force = false) {
   const lock = read(getEntity, "lock", id);
-  const modeSpec = read(getEntity, "mode", l.mode(lock));
-  const closeHandler = modeSpec.get("closeHandler");
-  typeof closeHandler == "function" ?
-    closeHandler(lock) : swap(updateEntity, "lock", id, l.close);
+  if (force || l.ui.closable(lock)) {
+    const modeSpec = read(getEntity, "mode", l.mode(lock));
+    const closeHandler = modeSpec.get("closeHandler");
+    typeof closeHandler == "function" ?
+      closeHandler(lock) : swap(updateEntity, "lock", id, l.close);
+  }
 }
 
 export function registerMode(spec) {
