@@ -60,6 +60,10 @@ export function send(m) {
   return m.getIn(["modeOptions", "send"], "link");
 }
 
+export function isSendLink(m) {
+  return send(m) === "link";
+}
+
 export function close(m) {
   return reset(l.close(m));
 }

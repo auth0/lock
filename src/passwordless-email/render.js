@@ -19,19 +19,19 @@ function backHandler(id) {
 }
 
 export default function render(lock) {
-  if (lock.getIn(["modeOptions", "send"]) == "code") {
-    return {
-      backHandler: m.emailSent(lock) ? backHandler : undefined,
-      content: m.emailSent(lock) ? AskVerificationCode : AskEmail,
-      submitHandler: m.emailSent(lock) ? askVerificationCodeSubmitHandler : askEmailSubmitHandler
-    }
-  } else {
+  if (m.isSendLink(lock)) {
     return {
       backHandler: m.emailSent(lock) ? backHandler : undefined,
       completed: m.emailSent(lock), // TODO: completed is true when there's a confirmation, can be derived
       confirmation: m.emailSent(lock) && EmailSentConfirmation,
       content: AskEmail,
       submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
+    };
+  } else {
+    return {
+      backHandler: m.emailSent(lock) ? backHandler : undefined,
+      content: m.emailSent(lock) ? AskVerificationCode : AskEmail,
+      submitHandler: m.emailSent(lock) ? askVerificationCodeSubmitHandler : askEmailSubmitHandler
     };
   }
 
