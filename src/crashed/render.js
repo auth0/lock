@@ -1,5 +1,5 @@
 import Content from './content';
 
 export default function render(lock) {
-  return {content: Content};
+  return {mainPane: Content};
 }

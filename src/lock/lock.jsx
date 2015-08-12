@@ -20,7 +20,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { backHandler, content, lock, submitHandler, disallowClose } = this.props;
+    const { backHandler, mainPane, lock, submitHandler, disallowClose } = this.props;
 
     // TODO: rename confirmation to something more representative: it's an
     // element that needs to be rendered covering the content element.
@@ -70,7 +70,7 @@ export default class Lock extends React.Component {
                 backgroundUrl={backgroundUrl}
                 icon={icon}
                 globalError={globalError}
-                content={content}
+                content={mainPane}
                 lock={lock}
                 disableSubmit={disableSubmit} />
             </div>

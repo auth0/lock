@@ -23,13 +23,13 @@ export default function render(lock) {
     return {
       backHandler: m.emailSent(lock) ? backHandler : undefined,
       confirmation: m.emailSent(lock) && EmailSentConfirmation,
-      content: AskEmail,
+      mainPane: AskEmail,
       submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
     };
   } else {
     return {
       backHandler: m.emailSent(lock) ? backHandler : undefined,
-      content: m.emailSent(lock) ? AskVerificationCode : AskEmail,
+      mainPane: m.emailSent(lock) ? AskVerificationCode : AskEmail,
       submitHandler: m.emailSent(lock) ? askVerificationCodeSubmitHandler : askEmailSubmitHandler
     };
   }
