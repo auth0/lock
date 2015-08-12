@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react/addons';
 import GlobalError from './global_error';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
