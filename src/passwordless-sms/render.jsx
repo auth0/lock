@@ -20,7 +20,6 @@ function backHandler(id) {
 export default function render(lock) {
   return {
     backHandler: m.smsSent(lock) ? backHandler : undefined,
-    completed: false,
     confirmation: m.selectingLocation(lock) && askLocation,
     content: m.smsSent(lock) ? askVerificationCode : askPhoneNumber,
     disallowClose: m.selectingLocation(lock),

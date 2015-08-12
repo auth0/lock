@@ -22,7 +22,6 @@ export default function render(lock) {
   if (m.isSendLink(lock)) {
     return {
       backHandler: m.emailSent(lock) ? backHandler : undefined,
-      completed: m.emailSent(lock), // TODO: completed is true when there's a confirmation, can be derived
       confirmation: m.emailSent(lock) && EmailSentConfirmation,
       content: AskEmail,
       submitHandler: !m.emailSent(lock) && askEmailSubmitHandler

@@ -20,7 +20,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { backHandler, completed, content, lock, submitHandler, disallowClose } = this.props;
+    const { backHandler, content, lock, submitHandler, disallowClose } = this.props;
 
     // TODO: rename confirmation to something more representative: it's an
     // element that needs to be rendered covering the content element.
@@ -46,8 +46,6 @@ export default class Lock extends React.Component {
     }
     if (l.submitting(lock)) {
       className += " auth0-lock-mode-loading";
-    } else if (completed) {
-      className += " auth0-lock-mode-completed";
     }
 
     let backgroundUrl, name;
