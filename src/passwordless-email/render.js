@@ -1,7 +1,7 @@
 import AskEmail from './ask_email';
 import AskVerificationCode from './ask_verification_code';
 import EmailSentConfirmation from './email_sent_confirmation';
-import { requestPasswordlessEmail, signIn } from './actions';
+import { reset, requestPasswordlessEmail, signIn } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -14,9 +14,14 @@ function askVerificationCodeSubmitHandler(lock) {
   signIn(l.id(lock));
 }
 
+function backHandler(id) {
+  reset(id);
+}
+
 export default function render(lock) {
   if (lock.getIn(["modeOptions", "send"]) == "code") {
     return {
+      backHandler: m.emailSent(lock) ? backHandler : undefined,
       content: m.emailSent(lock) ? AskVerificationCode : AskEmail,
       submitHandler: m.emailSent(lock) ? askVerificationCodeSubmitHandler : askEmailSubmitHandler
     }

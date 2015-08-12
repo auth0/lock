@@ -2,6 +2,7 @@ import React from 'react/addons';
 import Avatar from './avatar';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
+import BackButton from '../header/back_button';
 import CloseButton from '../header/close_button';
 import GlobalError from './global_error';
 import * as l from './index';
@@ -22,7 +23,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { completed, lock, submitHandler, disallowClose } = this.props;
+    const { backHandler, completed, lock, submitHandler, disallowClose } = this.props;
     const Content = this.props.content;
     // TODO: rename confirmation to something more representative: it's an
     // element that needs to be rendered covering the content element.
@@ -68,6 +69,7 @@ export default class Lock extends React.Component {
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <CloseButton lockID={l.id(lock)} />}
+            {backHandler && <BackButton lockID={l.id(lock)} onClick={backHandler} />}
             <div className="auth0-lock-widget-container">
               <div className="auth0-lock-intro">
                 <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>

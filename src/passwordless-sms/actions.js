@@ -105,6 +105,10 @@ function signInError(id, error) {
   l.invokeDoneCallback(lock, error);
 }
 
+export function reset(id) {
+  swap(updateEntity, "lock", id, m.reset);
+}
+
 // import { Map } from 'immutable';
 // import { LockStates } from '../control/constants';
 // import { getLock, updateLock }k from '../store/index';
