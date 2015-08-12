@@ -22,10 +22,6 @@ export default class Lock extends React.Component {
   render() {
     const { backHandler, mainPane, lock, submitHandler, disallowClose } = this.props;
 
-    // TODO: rename confirmation to something more representative: it's an
-    // element that needs to be rendered covering the content element.
-    const Confirmation = this.props.confirmation || null;
-
     const overlay = ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
 
@@ -75,7 +71,7 @@ export default class Lock extends React.Component {
                 disableSubmit={disableSubmit} />
             </div>
             <ReactCSSTransitionGroup transitionName="slide">
-              {Confirmation && <Confirmation key="confirmation" lock={lock} />}
+              {this.props.auxiliaryPane && <this.props.auxiliaryPane key="auxiliarypane" lock={lock} />}
             </ReactCSSTransitionGroup>
             <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
           </form>

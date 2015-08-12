@@ -19,8 +19,8 @@ function backHandler(id) {
 
 export default function render(lock) {
   return {
+    auxiliaryPane: m.selectingLocation(lock) && askLocation,
     backHandler: m.smsSent(lock) ? backHandler : undefined,
-    confirmation: m.selectingLocation(lock) && askLocation,
     mainPane: m.smsSent(lock) ? askVerificationCode : askPhoneNumber,
     disallowClose: m.selectingLocation(lock),
     submitHandler: m.smsSent(lock) ? askVerificationCodeSubmitHandler : askPhoneNumberSubmitHandler

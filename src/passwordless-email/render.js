@@ -21,8 +21,8 @@ function backHandler(id) {
 export default function render(lock) {
   if (m.isSendLink(lock)) {
     return {
+      auxiliaryPane: m.emailSent(lock) && EmailSentConfirmation,
       backHandler: m.emailSent(lock) ? backHandler : undefined,
-      confirmation: m.emailSent(lock) && EmailSentConfirmation,
       mainPane: AskEmail,
       submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
     };
