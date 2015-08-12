@@ -14,21 +14,20 @@ function askVerificationCodeSubmitHandler(lock) {
   signIn(l.id(lock));
 }
 
-function backHandler(id) {
-  reset(id, false);
+function backHandler(lock) {
+  reset(l.id(lock), false);
 }
 
 export default function render(lock) {
   if (m.isSendLink(lock)) {
     return {
       auxiliaryPane: m.emailSent(lock) && EmailSentConfirmation,
-      backHandler: m.emailSent(lock) ? backHandler : undefined,
       mainPane: AskEmail,
       submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
     };
   } else {
     return {
-      backHandler: m.emailSent(lock) ? backHandler : undefined,
+      backHandler: m.emailSent(lock) ? backHandler : null,
       mainPane: m.emailSent(lock) ? AskVerificationCode : AskEmail,
       submitHandler: m.emailSent(lock) ? askVerificationCodeSubmitHandler : askEmailSubmitHandler
     };

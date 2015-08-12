@@ -13,8 +13,8 @@ function askVerificationCodeSubmitHandler(lock) {
   signIn(l.id(lock));
 }
 
-function backHandler(id) {
-  reset(id, false);
+function backHandler(lock) {
+  reset(l.id(lock), false);
 }
 
 export default function render(lock) {

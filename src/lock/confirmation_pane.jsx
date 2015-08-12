@@ -1,4 +1,5 @@
 import React from 'react';
+import BackButton from '../header/back_button';
 
 class CheckmarkIcon extends React.Component {
   render() {
@@ -9,8 +10,11 @@ class CheckmarkIcon extends React.Component {
 
 export default class ConfirmationPane extends React.Component {
   render() {
+    const { backHandler } = this.props;
+
     return (
       <div className="auth0-lock-confirmation">
+        <BackButton onClick={backHandler} />
         <CheckmarkIcon />
         {this.props.children}
       </div>

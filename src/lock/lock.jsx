@@ -60,7 +60,7 @@ export default class Lock extends React.Component {
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <CloseButton lockID={l.id(lock)} />}
-            {backHandler && <BackButton lockID={l.id(lock)} onClick={backHandler} />}
+            {backHandler && <BackButton onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
               <CredentialsPane name={name}
                 backgroundUrl={backgroundUrl}
@@ -69,10 +69,10 @@ export default class Lock extends React.Component {
                 content={mainPane}
                 lock={lock}
                 disableSubmit={disableSubmit} />
+              <ReactCSSTransitionGroup transitionName="slide">
+                {this.props.auxiliaryPane && <this.props.auxiliaryPane key="auxiliarypane" lock={lock} />}
+              </ReactCSSTransitionGroup>
             </div>
-            <ReactCSSTransitionGroup transitionName="slide">
-              {this.props.auxiliaryPane && <this.props.auxiliaryPane key="auxiliarypane" lock={lock} />}
-            </ReactCSSTransitionGroup>
             <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
           </form>
         </div>
@@ -86,6 +86,11 @@ export default class Lock extends React.Component {
     if (submitHandler) {
       submitHandler(lock);
     }
+  }
+
+  handleBack() {
+    const { backHandler, lock } = this.props;
+    backHandler(lock);
   }
 }
 

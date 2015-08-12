@@ -8,13 +8,10 @@ export default class BackButton extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    const { onClick, lockID } = this.props;
-    onClick(lockID);
+    this.props.onClick();
   }
-
 }
 
 BackButton.propTypes = {
-  lockID: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import ConfirmationPane from '../lock/confirmation_pane';
-import { resendEmail } from './actions';
+import { resendEmail, reset } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -60,10 +60,14 @@ export default class EmailSentConfirmation extends React.Component {
   render() {
     const { lock } = this.props;
     return (
-      <ConfirmationPane>
+      <ConfirmationPane backHandler={::this.handleBack}>
         <p>We sent you a link to sign in.<br />Please check your inbox.</p>
         <Resend lock={lock}/>
       </ConfirmationPane>
     )
+  }
+
+  handleBack() {
+    reset(l.id(this.props.lock), false);
   }
 }
