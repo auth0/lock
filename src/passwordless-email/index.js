@@ -49,8 +49,11 @@ export function resendAvailable(m) {
   return resendStatus(m) == "waiting" || resendStatus(m) == "failed";
 }
 
-export function reset(m) {
-  return l.clearGlobalError(m.remove("credentials").remove("emailSent").remove("resendStatus"));
+export function reset(m, clearCredentials = true) {
+  if (clearCredentials) {
+    m = m.remove("credentials");
+  }
+  return l.clearGlobalError(m.remove("emailSent").remove("resendStatus"));
 }
 
 export function send(m) {

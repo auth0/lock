@@ -76,6 +76,6 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   handleBackClick(id) {
-    reset(id);
+    reset(id, false);
   }
 }

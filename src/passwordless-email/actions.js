@@ -124,6 +124,6 @@ function signInError(lockID, error) {
   l.invokeDoneCallback(lock, error);
 }
 
-export function reset(lockID) {
-  swap(updateEntity, "lock", lockID, m.reset);
+export function reset(lockID, clearCredentials = true) {
+  swap(updateEntity, "lock", lockID, m.reset, clearCredentials);
 }

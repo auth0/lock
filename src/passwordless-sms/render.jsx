@@ -14,7 +14,7 @@ function askVerificationCodeSubmitHandler(lock) {
 }
 
 function backHandler(id) {
-  reset(id);
+  reset(id, false);
 }
 
 export default function render(lock) {

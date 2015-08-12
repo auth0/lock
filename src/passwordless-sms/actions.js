@@ -105,8 +105,8 @@ function signInError(id, error) {
   l.invokeDoneCallback(lock, error);
 }
 
-export function reset(id) {
-  swap(updateEntity, "lock", id, m.reset);
+export function reset(id, clearCredentials = true) {
+  swap(updateEntity, "lock", id, m.reset, clearCredentials);
 }
 
 // import { Map } from 'immutable';
