@@ -1,15 +1,9 @@
 import React from 'react';
-import BackButton from '../header/back_button';
-import { resendEmail, reset } from './actions';
+import ConfirmationPane from '../lock/confirmation_pane';
+import { resendEmail } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
 
-class CheckmarkIcon extends React.Component {
-  render() {
-    const svgTag = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" class="checkmark"> <circle cx="26" cy="26" r="25" fill="none" class="checkmark__circle"></circle> <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" class="checkmark__check"></path> </svg>';
-    return <span dangerouslySetInnerHTML={{__html: svgTag}} />;
-  }
-}
 
 class RetryIcon extends React.Component {
   render() {
@@ -58,7 +52,7 @@ class Resend extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    resendEmail(this.props.lock.get("id"));
+    resendEmail(l.id(this.props.lock));
   }
 }
 
@@ -66,16 +60,10 @@ export default class EmailSentConfirmation extends React.Component {
   render() {
     const { lock } = this.props;
     return (
-      <div className="auth0-lock-confirmation">
-        <BackButton onClick={::this.handleBackClick} lockID={l.id(lock)} />
-        <CheckmarkIcon />
+      <ConfirmationPane>
         <p>We sent you a link to sign in.<br />Please check your inbox.</p>
         <Resend lock={lock}/>
-      </div>
+      </ConfirmationPane>
     )
-  }
-
-  handleBackClick(id) {
-    reset(id, false);
   }
 }
