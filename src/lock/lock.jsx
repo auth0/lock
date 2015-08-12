@@ -1,15 +1,12 @@
 import React from 'react/addons';
 import Avatar from './avatar';
-import SubmitButton from './submit_button';
-import Header from '../header/header';
 import BackButton from '../header/back_button';
 import CloseButton from '../header/close_button';
-import GlobalError from './global_error';
+import CredentialsPane from './credentials_pane';
 import * as l from './index';
 import * as g from '../gravatar/index';
 const ui = l.ui;
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-const ReactTransitionGroup = React.addons.TransitionGroup;
 import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
@@ -23,8 +20,8 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { backHandler, completed, lock, submitHandler, disallowClose } = this.props;
-    const Content = this.props.content;
+    const { backHandler, completed, content, lock, submitHandler, disallowClose } = this.props;
+
     // TODO: rename confirmation to something more representative: it's an
     // element that needs to be rendered covering the content element.
     const Confirmation = this.props.confirmation || null;
@@ -71,21 +68,18 @@ export default class Lock extends React.Component {
             {showCloseButton && <CloseButton lockID={l.id(lock)} />}
             {backHandler && <BackButton lockID={l.id(lock)} onClick={backHandler} />}
             <div className="auth0-lock-widget-container">
-              <div className="auth0-lock-intro">
-                <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
-                <ReactTransitionGroup>
-                  {globalError && <GlobalError key="globalerror" message={globalError} />}
-                </ReactTransitionGroup>
-                <div className="auth0-lock-content">
-                  <this.props.content lock={lock} />
-                </div>
-                <SubmitButton disabled={disableSubmit} />
-              </div>
-              <ReactCSSTransitionGroup transitionName="slide">
-                {Confirmation && <Confirmation key="confirmation" lock={lock} />}
-              </ReactCSSTransitionGroup>
-              <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
+              <CredentialsPane name={name}
+                backgroundUrl={backgroundUrl}
+                icon={icon}
+                globalError={globalError}
+                content={content}
+                lock={lock}
+                disableSubmit={disableSubmit} />
             </div>
+            <ReactCSSTransitionGroup transitionName="slide">
+              {Confirmation && <Confirmation key="confirmation" lock={lock} />}
+            </ReactCSSTransitionGroup>
+            <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
           </form>
         </div>
       </div>
