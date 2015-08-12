@@ -198,6 +198,9 @@ body.frame {
 .auth0-lock .auth0-lock-go-back polygon {
   fill: #373737;
 }
+.auth0-lock .auth0-lock-go-back {
+  left: 14px;
+}
 .auth0-lock .auth0-lock-header-welcome {
   font-size: 18px;
   position: relative;
@@ -616,9 +619,6 @@ body.frame {
 }
 .auth0-lock .auth0-lock-confirmation a:hover svg {
   -webkit-transform: rotate(490deg);
-}
-.auth0-lock .auth0-lock-confirmation .auth0-lock-go-back {
-  left: 20px;
 }
 .auth0-lock .auth0-lock-confirmation .auth0-lock-sent-label {
   color: #008000;
