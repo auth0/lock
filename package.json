@@ -24,6 +24,7 @@
     "build": "browserify -t browserify-css --extension=.jsx --extension=.js src/index.js | uglifyjs > build/build.js",
     "watch": "watchify -t browserify-css --extension=.jsx --extension=.js src/index.js -o build/build.js --debug --verbose & serve .",
     "test": "mochify --recursive --extension=.jsx --extension=.js",
+    "test:saucelabs": "zuul -- test/*/*.js",
     "autotest": "mochify --watch --recursive --extension=.jsx --extension=.js",
     "build:design-tools": "browserify -t browserify-css --extension=.jsx --extension=.js src/design-tools/index.js | uglifyjs > build/design-tools.js",
     "watch:design-tools": "watchify -t browserify-css --extension=.jsx --extension=.js src/design-tools/index.js -o build/design-tools.js --debug --verbose & serve ."
@@ -34,12 +35,13 @@
     "browserify-css": "^0.6.1",
     "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
-    "mochify": "^2.9.0",
+    "mochify": "^2.12.0",
     "packageify": "^0.2.2",
     "request": "^2.58.0",
     "sinon": "^1.15.4",
     "uglify-js": "^2.4.23",
-    "watchify": "^3.2.2"
+    "watchify": "^3.2.2",
+    "zuul": "^3.2.0"
   },
   "dependencies": {
     "auth0-js": "^6.5.0",

@@ -1,0 +1,22 @@
+ui: mocha-bdd
+browsers:
+  - name: chrome
+    version: latest
+  - name: safari
+    version: latest
+  - name: firefox
+    version: latest
+  - name: ie
+    version: 9..latest
+browserify:
+  - transform:
+      name: babelify
+      blacklist:
+        - "regenerator"
+      optional:
+        - "es7.functionBind"
+        - "es7.objectRestSpread"
+  - options:
+      extensions:
+        - .js
+        - .jsx
