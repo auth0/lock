@@ -34,10 +34,9 @@ export default class Lock extends React.Component {
 
     let className = "auth0-lock";
     if (!l.ui.appendContainer(lock)) {
-      className += " opened-in-frame";
-    }
-    if (lock.get("show")) {
-      className += " opened";
+      className += " auth0-lock-opened-in-frame";
+    } else if (lock.get("show")) {
+      className += " auth0-lock-opened";
     }
     if (l.submitting(lock)) {
       className += " auth0-lock-mode-loading";
