@@ -21,3 +21,33 @@
   -webkit-transition: -webkit-transform 1s;
   transition: transform 1s;
 }
+
+.horizontal-fade-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
+.horizontal-fade-enter.horizontal-fade-enter-active {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.horizontal-fade-leave {
+  opacity: 1;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.horizontal-fade-leave.horizontal-fade-leave-active {
+  opacity: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+}

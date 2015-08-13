@@ -22,6 +22,7 @@ export default function render(lock) {
     auxiliaryPane: m.selectingLocation(lock) && askLocation,
     backHandler: m.smsSent(lock) ? backHandler : undefined,
     mainPane: m.smsSent(lock) ? askVerificationCode : askPhoneNumber,
+    mainPaneKey: m.smsSent(lock) ? "ask-verification-code" : "ask-phone-number",
     disallowClose: m.selectingLocation(lock),
     submitHandler: m.smsSent(lock) ? askVerificationCodeSubmitHandler : askPhoneNumberSubmitHandler
   }

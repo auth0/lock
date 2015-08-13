@@ -16,7 +16,7 @@ export default class CredentialsPane extends React.Component {
           {globalError && <GlobalError key="globalerror" message={globalError} />}
         </ReactTransitionGroup>
         <div className="auth0-lock-content">
-          <this.props.content lock={lock} />
+          {this.props.children}
         </div>
         <SubmitButton disabled={disableSubmit} />
       </div>

@@ -23,12 +23,14 @@ export default function render(lock) {
     return {
       auxiliaryPane: m.emailSent(lock) && EmailSentConfirmation,
       mainPane: AskEmail,
+      mainPaneKey: "ask-email",
       submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
     };
   } else {
     return {
       backHandler: m.emailSent(lock) ? backHandler : null,
       mainPane: m.emailSent(lock) ? AskVerificationCode : AskEmail,
+      mainPaneKey: m.emailSent(lock) ? "ask-verification-code" : "ask-email",
       submitHandler: m.emailSent(lock) ? askVerificationCodeSubmitHandler : askEmailSubmitHandler
     };
   }

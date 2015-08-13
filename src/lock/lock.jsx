@@ -2,7 +2,6 @@ import React from 'react/addons';
 import Avatar from './avatar';
 import BackButton from '../header/back_button';
 import CloseButton from '../header/close_button';
-import CredentialsPane from './credentials_pane';
 import * as l from './index';
 import * as g from '../gravatar/index';
 const ui = l.ui;
@@ -20,7 +19,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { backHandler, mainPane, lock, submitHandler, disallowClose } = this.props;
+    const { backHandler, mainPane, mainPaneKey, lock, submitHandler, disallowClose } = this.props;
 
     const overlay = ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -53,6 +52,9 @@ export default class Lock extends React.Component {
       name = "";
     }
 
+    // TODO: just pass the lock
+    const mainPaneProps = { name, backgroundUrl, icon, globalError, lock, disableSubmit };
+
     return (
       <div className={className} ref="lock">
         {overlay}
@@ -62,13 +64,9 @@ export default class Lock extends React.Component {
             {showCloseButton && <CloseButton lockID={l.id(lock)} />}
             {backHandler && <BackButton onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
-              <CredentialsPane name={name}
-                backgroundUrl={backgroundUrl}
-                icon={icon}
-                globalError={globalError}
-                content={mainPane}
-                lock={lock}
-                disableSubmit={disableSubmit} />
+              <ReactCSSTransitionGroup transitionName="horizontal-fade">
+                <this.props.mainPane key={mainPaneKey} {...mainPaneProps} />
+              </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName="slide">
                 {this.props.auxiliaryPane && <this.props.auxiliaryPane key="auxiliarypane" lock={lock} />}
               </ReactCSSTransitionGroup>

@@ -1,4 +1,5 @@
 import React from 'react';
+import CredentialsPane from '../lock/credentials_pane';
 import EmailInput from '../credentials/email_input';
 import Terms from '../lock/terms';
 import * as c from '../credentials/index';
@@ -10,17 +11,19 @@ export default class AskEmail extends React.Component {
     const { lock } = this.props;
 
     return (
-      <div className="auth0-lock-passwordless auth0-lock-mode">
-        <div className="auth0-lock-form auth0-lock-passwordless">
-          <p>Enter your email to sign in or sign up.</p>
-          <EmailInput value={c.email(lock)}
-            isValid={!c.visiblyInvalidEmail(lock)}
-            onChange={::this.handleEmailChange}
-            gravatar={l.ui.gravatar(lock)}
-            autoFocus={l.ui.focusInput(lock)} />
+      <CredentialsPane {...this.props}>
+        <div className="auth0-lock-passwordless auth0-lock-mode">
+          <div className="auth0-lock-form auth0-lock-passwordless">
+            <p>Enter your email to sign in or sign up.</p>
+            <EmailInput value={c.email(lock)}
+              isValid={!c.visiblyInvalidEmail(lock)}
+              onChange={::this.handleEmailChange}
+              gravatar={l.ui.gravatar(lock)}
+              autoFocus={l.ui.focusInput(lock)} />
+          </div>
+          {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         </div>
-        {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
-      </div>
+      </CredentialsPane>
     );
   }
 
