@@ -1,7 +1,7 @@
 import AskEmail from './ask_email';
 import AskVerificationCode from './ask_verification_code';
 import EmailSentConfirmation from './email_sent_confirmation';
-import { reset, requestPasswordlessEmail, signIn } from './actions';
+import { close, reset, requestPasswordlessEmail, signIn } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -22,6 +22,7 @@ export default function render(lock) {
   if (m.isSendLink(lock)) {
     return {
       auxiliaryPane: m.emailSent(lock) && EmailSentConfirmation,
+      closeHandler:  close,
       mainPane: AskEmail,
       mainPaneKey: "ask-email",
       submitHandler: !m.emailSent(lock) && askEmailSubmitHandler
@@ -29,6 +30,7 @@ export default function render(lock) {
   } else {
     return {
       backHandler: m.emailSent(lock) ? backHandler : null,
+      closeHandler:  close,
       mainPane: m.emailSent(lock) ? AskVerificationCode : AskEmail,
       mainPaneKey: m.emailSent(lock) ? "ask-verification-code" : "ask-email",
       submitHandler: m.emailSent(lock) ? askVerificationCodeSubmitHandler : askEmailSubmitHandler

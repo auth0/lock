@@ -11,8 +11,13 @@ export function setupLock(id, clientID, domain) {
 }
 
 export function openLock(id, mode, options) {
+  const lock = read(getEntity, "lock", id);
+  if (l.show(lock)) {
+    return false;
+  }
   swap(updateEntity, "lock", id, l.render, mode, options);
   setTimeout(() => swap(updateEntity, "lock", id, l.setShow, true), 17);
+  return true;
 }
 
 export function closeLock(id, force = false) {

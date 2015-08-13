@@ -11,15 +11,15 @@ export default class Renderer {
     this.containerManager = new ContainerManager();
   }
 
-  render(state) {
+  render(state, fns) {
     const locks = getCollection(state, "lock");
 
     locks.filter(l.rendering).forEach(lock => {
       const gravatar = getEntity(state, "gravatar", c.email(lock));
       lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
       const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
-      const mode = getEntity(state, "mode", l.mode(lock));
-      const spec = mode.get("render")(lock);
+      const renderFn = fns.get(l.mode(lock));
+      const spec = renderFn(lock)
       React.render(<Lock lock={lock} {...spec} />, container);
     });
   }

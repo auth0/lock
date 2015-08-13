@@ -10,7 +10,7 @@ import EscKeydownUtils from '../utils/esc_keydown_utils';
 
 export default class Lock extends React.Component {
   componentDidMount() {
-    this.escKeydown = new EscKeydownUtils(() => closeLock(l.id(this.props.lock)));
+    this.escKeydown = new EscKeydownUtils(() => this.handleClose());
   }
 
   componentWillUnmount() {
@@ -18,7 +18,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { backHandler, mainPane, mainPaneKey, lock, submitHandler, disallowClose } = this.props;
+    const { backHandler, closeHandler, mainPane, mainPaneKey, lock, submitHandler, disallowClose } = this.props;
 
     const overlay = l.ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -43,7 +43,7 @@ export default class Lock extends React.Component {
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
-            {showCloseButton && <CloseButton lockID={l.id(lock)} />}
+            {showCloseButton && <CloseButton onClick={::this.handleClose} />}
             {backHandler && <BackButton onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
               <ReactCSSTransitionGroup transitionName="horizontal-fade">
@@ -66,6 +66,11 @@ export default class Lock extends React.Component {
     if (submitHandler) {
       submitHandler(lock);
     }
+  }
+
+  handleClose() {
+    const { closeHandler, lock } = this.props;
+    closeHandler(l.id(lock));
   }
 
   handleBack() {

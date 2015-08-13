@@ -1,19 +1,9 @@
+import PluginManager from './plugin_manager';
 import IDUtils from '../utils/id_utils';
-import { closeLock, registerMode, setupLock } from './actions';
+import { setupLock } from './actions';
 import WebAPI from './web_api';
 
 export default class Auth0Lock {
-  static registerMode(spec) {
-    registerMode(spec);
-    if (typeof spec.openMethods == "object") {
-      Object.keys(spec.openMethods).forEach(function(methodName) {
-        Auth0Lock.prototype[methodName] = function(...args) {
-          return spec.openMethods[methodName](this.id, ...args);
-        }
-      });
-    }
-  }
-
   constructor(clientID, domain) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
@@ -27,7 +17,8 @@ export default class Auth0Lock {
   }
 
   close() {
-    closeLock(this.id, true);
+    var f = Auth0Lock.plugins.closeFn(this.plugin);
+    f(this.id, true);
   }
 
   logout(query = {}) {
@@ -35,3 +26,5 @@ export default class Auth0Lock {
     WebAPI.signOut(this.id, query);
   }
 }
+
+Auth0Lock.plugins = new PluginManager(Auth0Lock.prototype);

@@ -1,26 +1,21 @@
-import { swap, updateEntity } from '../store/index';
 import { openLock } from '../lock/actions';
+import { close } from './actions';
 import { openFunctionArgsResolver } from '../lock/mode';
 import render from './render';
-import * as l from '../lock/index';
-import * as m from './index';
 
 const NAME = "passwordless-sms";
 
 function sms(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("magiclink", args);
   options.signInCallback = callback;
-  openLock(id, NAME, options);
-}
-
-function closeHandler(lock) {
-  // TODO: if m.selectingLocation(lock) === true, go back to previous screen.
-  swap(updateEntity, "lock", l.id(lock), m.close);
+  return openLock(id, NAME, options);
 }
 
 export default {
   name: NAME,
-  openMethods: {sms: sms},
-  render: render,
-  closeHandler: closeHandler
+  methods: {
+    open: {sms: sms},
+    close: close
+  },
+  renderFn: render
 };

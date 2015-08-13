@@ -127,3 +127,7 @@ function signInError(lockID, error) {
 export function reset(lockID, clearCredentials = true) {
   swap(updateEntity, "lock", lockID, m.reset, clearCredentials);
 }
+
+export function close(id) {
+  swap(updateEntity, "lock", id, m.close);
+}

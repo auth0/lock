@@ -109,6 +109,12 @@ export function reset(id, clearCredentials = true) {
   swap(updateEntity, "lock", id, m.reset, clearCredentials);
 }
 
+export function close(id) {
+  // TODO: if m.selectingLocation(lock) === true, go back to previous screen.
+  swap(updateEntity, "lock", id, m.close);
+}
+
+
 // import { Map } from 'immutable';
 // import { LockStates } from '../control/constants';
 // import { getLock, updateLock }k from '../store/index';
