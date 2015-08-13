@@ -4,7 +4,6 @@ import BackButton from '../header/back_button';
 import CloseButton from '../header/close_button';
 import * as l from './index';
 import * as g from '../gravatar/index';
-const ui = l.ui;
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
@@ -21,16 +20,11 @@ export default class Lock extends React.Component {
   render() {
     const { backHandler, mainPane, mainPaneKey, lock, submitHandler, disallowClose } = this.props;
 
-    const overlay = ui.appendContainer(lock) ?
+    const overlay = l.ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
 
-    const icon = ui.icon(lock);
-    const showCloseButton = ui.closable(lock) && !disallowClose;
-    const globalError = l.globalError(lock);
     const gravatar = l.gravatar(lock);
-
-
-    const disableSubmit = l.submitting(lock);
+    const showCloseButton = l.ui.closable(lock) && !disallowClose;
 
     let className = "auth0-lock";
     if (!l.ui.appendContainer(lock)) {
@@ -38,21 +32,10 @@ export default class Lock extends React.Component {
     } else if (lock.get("show")) {
       className += " auth0-lock-opened";
     }
+
     if (l.submitting(lock)) {
       className += " auth0-lock-mode-loading";
     }
-
-    let backgroundUrl, name;
-    if (gravatar) {
-      backgroundUrl = gravatar.get("imageUrl");
-      name = gravatar.get("displayName")
-    } else {
-      backgroundUrl = icon;
-      name = "";
-    }
-
-    // TODO: just pass the lock
-    const mainPaneProps = { name, backgroundUrl, icon, globalError, lock, disableSubmit };
 
     return (
       <div className={className} ref="lock">
@@ -64,7 +47,7 @@ export default class Lock extends React.Component {
             {backHandler && <BackButton onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
               <ReactCSSTransitionGroup transitionName="horizontal-fade">
-                <this.props.mainPane key={mainPaneKey} {...mainPaneProps} />
+                <this.props.mainPane key={mainPaneKey} lock={lock} />
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName="slide">
                 {this.props.auxiliaryPane && <this.props.auxiliaryPane key="auxiliarypane" lock={lock} />}
