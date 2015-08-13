@@ -2,12 +2,12 @@ $(function() {
 
   //Initial default functions //
   $('body.full').click(function(){
-    $('.auth0-lock').addClass('opened');
+    $('.auth0-lock').addClass('auth0-lock-opened');
     return false;
   });
 
   $('.auth0-lock-close').click(function(){
-    $('.auth0-lock').removeClass('opened');
+    $('.auth0-lock').removeClass('auth0-lock-opened');
     return false;
   });
 
