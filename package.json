@@ -28,7 +28,7 @@
     "test:browser": "zuul --local 8080 -- test/*/*.js",
     "autotest": "mochify --watch --recursive --extension=.jsx --extension=.js",
     "build:design-tools": "browserify -t browserify-css --extension=.jsx --extension=.js src/design-tools/index.js | uglifyjs > build/design-tools.js",
-    "watch:design-tools": "watchify -t browserify-css --extension=.jsx --extension=.js src/design-tools/index.js -o build/design-tools.js --debug --verbose & serve ."
+    "watch:design-tools": "stylus -w css/*.styl & watchify -t browserify-css --extension=.jsx --extension=.js src/design-tools/index.js -o build/design-tools.js --debug --verbose & serve ."
   },
   "devDependencies": {
     "babelify": "^6.1.2",
