@@ -3,7 +3,7 @@ import IDUtils from '../utils/id_utils';
 import { setupLock } from './actions';
 import WebAPI from './web_api';
 
-export default class Auth0Lock {
+export default class Auth0LockPasswordless {
   constructor(clientID, domain) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
@@ -17,7 +17,7 @@ export default class Auth0Lock {
   }
 
   close() {
-    var f = Auth0Lock.plugins.closeFn(this.plugin);
+    var f = Auth0LockPasswordless.plugins.closeFn(this.plugin);
     f(this.id, true);
   }
 
@@ -27,4 +27,4 @@ export default class Auth0Lock {
   }
 }
 
-Auth0Lock.plugins = new PluginManager(Auth0Lock.prototype);
+Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototype);
