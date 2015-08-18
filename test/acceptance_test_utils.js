@@ -1,7 +1,7 @@
 import Immutable, { Set } from 'immutable';
 import React from 'react/addons';
 const { Simulate } = React.addons.TestUtils;
-import Auth0LockPasswordless from '../src/lock/auth0_lock_passwordless';
+import Auth0LockPasswordless from '../src/index';
 import { spy, stub } from 'sinon';
 import webApi from '../src/lock/web_api';
 import * as gravatarActions from '../src/gravatar/actions';

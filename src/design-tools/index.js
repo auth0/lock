@@ -1,14 +1,7 @@
-
 import React from 'react';
-import Auth0LockPasswordless from '../lock/auth0_lock_passwordless';
+import Auth0LockPasswordless from '../index';
 import Control, { store } from './control';
-
-// TODO temp for DEV only
-global.window.Auth0LockPasswordless = Auth0LockPasswordless;
-
-import styles from '../../css/index.css';
-import transitions from '../../css/transitions.css';
-import overwrites from '../../css/overwrites.css';
+import browser from '../browser';
 
 import webAPI from '../lock/web_api';
 const WebAPI = webAPI.constructor;
