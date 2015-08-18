@@ -1,6 +1,4 @@
 import p from '../package';
-import Renderer from './lock/renderer';
-import { subscribe, getState } from './store/index';
 import Auth0LockPasswordless from './lock/auth0_lock_passwordless';
 import Auth0 from 'auth0-js';
 // import crashedSpec from './crashed/mode_spec';
@@ -22,7 +20,3 @@ import overwrites from '../css/overwrites.css';
 Auth0LockPasswordless.version = p.version
 Auth0.clientInfo.name +=  " (LockPasswordless)";
 Auth0.clientInfo.version += ` (${Auth0LockPasswordless.version})`;
-
-
-const renderer = new Renderer();
-subscribe("main", () => renderer.render(getState(), Auth0LockPasswordless.plugins.renderFns()));

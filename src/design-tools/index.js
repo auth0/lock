@@ -1,6 +1,5 @@
+
 import React from 'react';
-import Renderer from '../lock/renderer';
-import { subscribe, getState } from '../store/index';
 import Auth0LockPasswordless from '../lock/auth0_lock_passwordless';
 // import crashedSpec from '../crashed/mode_spec';
 import passwordlessEmailSpec from '../passwordless-email/mode_spec';
@@ -17,9 +16,6 @@ global.window.Auth0LockPasswordless = Auth0LockPasswordless;
 import styles from '../../css/index.css';
 import transitions from '../../css/transitions.css';
 import overwrites from '../../css/overwrites.css';
-
-const renderer = new Renderer();
-subscribe("main", () => renderer.render(getState(), Auth0LockPasswordless.plugins.renderFns()));
 
 import webAPI from '../lock/web_api';
 const WebAPI = webAPI.constructor;

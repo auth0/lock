@@ -1,7 +1,9 @@
+import RenderScheduler from './render_scheduler';
+import Renderer from './renderer';
 import PluginManager from './plugin_manager';
 import IDUtils from '../utils/id_utils';
 import { setupLock } from './actions';
-import WebAPI from './web_api';
+import webAPI from './web_api';
 
 export default class Auth0LockPasswordless {
   constructor(clientID, domain) {
@@ -23,8 +25,10 @@ export default class Auth0LockPasswordless {
 
   logout(query = {}) {
     // TODO: create action
-    WebAPI.signOut(this.id, query);
+    webAPI.signOut(this.id, query);
   }
 }
 
 Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototype);
+Auth0LockPasswordless.renderer = new Renderer();
+Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
