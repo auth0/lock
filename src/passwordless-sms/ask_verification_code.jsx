@@ -10,7 +10,7 @@ export default class AskVerificationCode extends React.Component {
     const { lock } = this.props;
 
     return (
-      <CredentialsPane lock={lock}>
+      <CredentialsPane lock={lock} className="auth0-lock-confirmation">
         <div className="auth0-lock-form auth0-lock-passwordless">
           <h2>Enter the code</h2>
           <p>

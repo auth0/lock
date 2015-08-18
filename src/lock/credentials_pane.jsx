@@ -10,7 +10,7 @@ const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export default class CredentialsPane extends React.Component {
   render() {
-    const { auxiliaryPane, lock } = this.props;
+    const { auxiliaryPane, className, lock } = this.props;
 
     const gravatar = l.gravatar(lock);
     const icon = l.ui.icon(lock);
@@ -27,7 +27,7 @@ export default class CredentialsPane extends React.Component {
     }
 
     return (
-      <div className="auth0-lock-intro">
+      <div className={className}>
         <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
         <ReactTransitionGroup>
           {globalError && <GlobalError key="global-error" message={globalError} />}

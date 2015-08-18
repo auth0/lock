@@ -16,7 +16,7 @@ export default class AskPhoneNumber extends React.Component {
       <AskLocation key="auxiliarypane" lock={lock} /> : null;
 
     return (
-      <CredentialsPane lock={lock} auxiliaryPane={auxiliaryPane}>
+      <CredentialsPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro">
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
             <h2>SMS</h2>
