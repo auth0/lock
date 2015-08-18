@@ -49,9 +49,6 @@ export default class Lock extends React.Component {
               <ReactCSSTransitionGroup transitionName="horizontal-fade">
                 <this.props.mainPane key={mainPaneKey} lock={lock} />
               </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup transitionName="slide">
-                {this.props.auxiliaryPane && <this.props.auxiliaryPane key="auxiliarypane" lock={lock} />}
-              </ReactCSSTransitionGroup>
             </div>
             <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
           </form>
