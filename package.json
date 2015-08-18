@@ -6,7 +6,10 @@
   "browserify": {
     "transform": [
       [
-        "browserify-css"
+        "browserify-css",
+        {
+          "minify": true
+        }
       ],
       [
         "babelify",
