@@ -4,6 +4,9 @@ import PluginManager from './plugin_manager';
 import IDUtils from '../utils/id_utils';
 import { setupLock } from './actions';
 import webAPI from './web_api';
+// import crashedSpec from '../crashed/mode_spec';
+import passwordlessEmailSpec from '../passwordless-email/mode_spec';
+import passwordlessSMSSpec from '../passwordless-sms/mode_spec';
 
 export default class Auth0LockPasswordless {
   constructor(clientID, domain) {
@@ -32,3 +35,7 @@ export default class Auth0LockPasswordless {
 Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototype);
 Auth0LockPasswordless.renderer = new Renderer();
 Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
+
+// Auth0LockPasswordless.plugins.register(crashedSpec);
+Auth0LockPasswordless.plugins.register(passwordlessEmailSpec);
+Auth0LockPasswordless.plugins.register(passwordlessSMSSpec);
