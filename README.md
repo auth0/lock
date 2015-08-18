@@ -4,13 +4,13 @@ TODO: add project status badges
 
 [Auth0](https://auth0.com) Lock Passwordless is a professional looking dialog that allows users to log in by receiving a one-time password via email or text message.
 
-## Getting Started
+## Usage
 
 The most common scenario would be to open the dialog when the user clicks a login button. In order to do that, you can initialize a new `Auth0LockPasswordless` object, register an event handler for the _click_ event on the button element, and finally invoke the `magiclink` method from it.
 
 ```javascript
-var clientID = "yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih";
-var domain = "mdocs.auth0.com";
+var clientID = "YOUR_AUTH0_APP_CLIENTID";
+var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0LockPasswordless(clientID, domain);
 document.getElementById("loginButton").onclick = function(e) {
   lock.magiclink(function() {
@@ -24,12 +24,59 @@ The `magiclink` method is only one of the many methods available in `Auth0LockPa
 
 ## Install
 
-TODO
+TODO update
 
+From [npm](https://npmjs.org):
+
+```sh
+npm install auth0-lock
+```
+
+If you are using browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
+
+``` json
+{
+  "devDependencies": {
+    "brfs": "0.0.8",
+    "ejsify": "0.1.0",
+    "packageify": "^0.2.0"
+  }
+}
+```
+
+From [bower](http://bower.io):
+
+```sh
+bower install auth0-lock
+```
+
+```html
+<script src="bower_components/auth0_lock_passwordless/dist/auth0_lock_passwordless.min.js"></script>
+```
+
+Or our CDN:
+
+```html
+<!-- Latest major release -->
+<script src="http://cdn.auth0.com/js/lock-7.min.js"></script>
+
+<!-- Latest minor release -->
+<script src="http://cdn.auth0.com/js/lock-7.x.min.js"></script>
+
+<!-- Latest patch release (recommended for production) -->
+<script src="http://cdn.auth0.com/js/lock-7.x.y.min.js"></script>
+```
+
+If you are targeting mobile audiences, it's recommended that you add:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+```
 
 ## API
 
 ### Initialization
+
 Initializes a new intance of `Auth0LockPasswordless` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/).
 
 - **clientID {String}**: Your application _clientID_ in Auth0.
@@ -49,17 +96,8 @@ var lock = new Auth0LockPasswordless(clientID, domain);
 
 Opens a dialog that asks the user for an email address. Once entered, it will send an email containing a _magic link_ that allows the user to log in automatically.
 
-```javascript
-lock.magiclink(options, callback);
-```
-
-<dl>
-  <dt>options {Object} (optional)</dt>
-  <dd>Allows to customize the dialog's appearance. See below for the details.</dd>
-
-  <dt>callback {Function} (optional)</dt>
-  <dd>Will be invoked after an attempt to send the the email has been made. In case of success it will receive the entered email address.</dd>
-</dl>
+- **options {Object}**: Allows to customize the dialog's appearance. See below for the details.
+- **callback {Function}**: Will be invoked after an attempt to send the the email has been made. In case of success it will receive the entered email address.
 
 #### Example
 
@@ -91,17 +129,8 @@ lock.magiclink({closable: false}, function(error, email) {
 
 Opens a dialog that asks the user for an email address. Then, it will ask for a _code_ that has been sent in an email to the given address. The code will be used as a one-time password to log in.
 
-```javascript
-lock.emailcode(options, callback);
-```
-
-<dl>
-  <dt>options {Object} (optional)</dt>
-  <dd>Allows to customize the dialog's appearance. See below for the details.</dd>
-
-  <dt>callback {Function} (optional)</dt>
-  <dd>Will be invoked after an attempt to log the user in has been made.</dd>
-</dl>
+- **options {Object}**: Allows to customize the dialog's appearance. See below for the details.
+- **callback {Function}**: Will be invoked after an attempt to log the user in has been made.
 
 #### Example
 
@@ -133,17 +162,8 @@ lock.emailcode({closable: false}, function(error, profile) {
 
 Opens a dialog that asks the user for a phone number. Then, it will ask for a _code_ that has been sent in an text message to the given number. The code will be used as a one-time password to log in.
 
-```javascript
-lock.sms(options, callback);
-```
-
-<dl>
-  <dt>options {Object} (optional)</dt>
-  <dd>Allows to customize the dialog's appearance. See below for the details.</dd>
-
-  <dt>callback {Function} (optional)</dt>
-  <dd>Will be invoked after an attempt to log the user in has been made.</dd>
-</dl>
+- **options {Object}**: Allows to customize the dialog's appearance. See below for the details.
+- **callback {Function}**: Will be invoked after an attempt to log the user in has been made.
 
 #### Example
 
@@ -174,14 +194,7 @@ lock.sms({closable: false}, function(error, profile) {
 
 Closes the dialog.
 
-```javascript
-lock.close(callback);
-```
-
-<dl>
-  <dt>callback {Function} (optional)</dt>
-  <dd>Will be invoked after the lock has been closed with no arguments.</dd>
-</dl>
+- **callback {Function}**: Will be invoked after the lock has been closed with no arguments.
 
 #### Example
 
@@ -199,14 +212,8 @@ lock.close(function() {
 
 Log out an user.
 
-```javascript
-lock.logout(query);
-```
-
 <dl>
-  <dt>query {String} (optional)</dt>
-  <dd>Query parameters that will be send with the request to log the user out.</dd>
-</dl>
+- **query {String}**: Query parameters that will be send with the request to log the user out.
 
 #### Example
 
@@ -218,41 +225,16 @@ lock.logout();
 lock.logout({ref: window.location.href});
 ```
 
-### UI Options
+### UI Customization
 
 The appearance of the widget can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
 
-<dl>
-  <dt>container {String}</dt>
-  <dd>
-    The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
-  </dd>
-
-  <dt>icon {String}</dt>
-  <dd>
-    Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
-  </dd>
-
-  <dt>closable {Boolean}</dt>
-  <dd>
-    Determines whether or not the Lock can be closed. It defaults to `false` when a `container` option is provided, otherwise it defaults to `true`.
-  </dd>
-
-  <dt>focusInput {Boolean}</dt>
-  <dd>
-    Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
-  </dd>
-
-  <dt>gravatar {Boolean}</dt>
-  <dd>
-    Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
-  </dd>
-
-  <dt>terms {String}</dt>
-  <dd>
-    HTML fragment displayed in the footer that usually contains a link to the terms of service users agree by signing up. Defaults to the empty string `""`.
-  </dd>
-</dl>
+- **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
+- **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
+- **closable {Boolean}**: Determines whether or not the Lock can be closed. It defaults to `false` when a `container` option is provided, otherwise it defaults to `true`.
+- **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
+- **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
+- **terms {String}**: HTML fragment displayed in the footer that usually contains a link to the terms of service users agree by signing up. Defaults to the empty string `""`.
 
 #### Example
 
@@ -262,7 +244,8 @@ var options = {
   icon: "/path/to/my/icon.png",
   closable: false,
   focusInput: false,
-  gravatar: false
+  gravatar: false,
+  terms: "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a>."
 };
 ```
 
