@@ -23,6 +23,9 @@
             "runtime"
           ]
         }
+      ],
+      [
+        "packageify"
       ]
     ]
   },

@@ -9,7 +9,7 @@ import passwordlessEmailSpec from './passwordless-email/mode_spec';
 import passwordlessSMSSpec from './passwordless-sms/mode_spec';
 
 // telemetry
-import p from '../package';
+import version from 'package.version';
 import Auth0 from 'auth0-js';
 
 export default class Auth0LockPasswordless {
@@ -46,6 +46,6 @@ Auth0LockPasswordless.plugins.register(passwordlessSMSSpec);
 
 
 // telemetry
-Auth0LockPasswordless.version = p.version
+Auth0LockPasswordless.version = version
 Auth0.clientInfo.name +=  " (LockPasswordless)";
-Auth0.clientInfo.version += ` (${Auth0LockPasswordless.version})`;
+Auth0.clientInfo.version += ` (${version})`;
