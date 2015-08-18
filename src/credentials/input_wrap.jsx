@@ -24,5 +24,8 @@ export default class InputWrap extends React.Component {
 InputWrap.propTypes = {
   name: React.PropTypes.string.isRequired,
   isValid: React.PropTypes.bool.isRequired,
-  children: React.PropTypes.element.isRequired
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.element.isRequired,
+    React.PropTypes.arrayOf(React.PropTypes.element).isRequired
+  ])
 };
