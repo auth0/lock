@@ -170,7 +170,6 @@ body.frame
 
   .auth0-lock-widget
     opacity: 0;
-    border-radius: 5px;
     box-shadow: 0 0 0 transparent;
     -webkit-transition: transform .4s, opacity .7s;
     -webkit-transform: translateY(100%) scale(.8);
@@ -178,14 +177,14 @@ body.frame
     -webkit-transition-delay: 0s;
     width: 300px;
     margin: -20% auto 0;
-    overflow hidden
     +breakpoint("tablet")
       margin: auto;
 
   .auth0-lock-widget-container
-    overflow: hidden;
     border-radius: 5px;
     background: white;
+    overflow hidden
+    position relative
 
   .auth0-lock-header
     text-align: center;
@@ -571,26 +570,9 @@ body.frame
           background-color #2EB5FF
           color white
 
-  .auth0-lock-code-confirmation
-    background-color white
-    position: absolute;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    bottom: 0
-    top: 0;
-    right: 0;
-    left: 0;
-    border-radius 5px
-    overflow hidden
-
-    .auth0-lock-submit
-      position absolute
-
   .auth0-lock-confirmation
     background-color white
     position: absolute;
-    padding: 0 30px;
     text-align: center;
     line-height: 2;
     font-size: 14px;
@@ -599,9 +581,7 @@ body.frame
     top: 0;
     right: 0;
     left: 0;
-    padding-top: 80px;
     border-radius 5px
-    overflow hidden
     p
       margin-bottom: 6px;
     a
@@ -631,6 +611,22 @@ body.frame
       animation-duration: 1s;
       animation-fill-mode: both;
       font-weight: 600;
+
+  .auth0-lock-code-confirmation
+    background-color white
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    bottom: 0
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius 5px
+    padding: 80px 30px 0;
+
+    .auth0-lock-submit
+      position absolute
 
   .auth0-lock-forgot-link
     font-size 12px;

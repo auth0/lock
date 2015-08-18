@@ -1,13 +1,13 @@
 .slide-enter {
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
+  -webkit-transition: -webkit-transform 1s;
+  transition: transform 1s;
 }
 
 .slide-enter.slide-enter-active {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-transition: -webkit-transform 1s;
-  transition: transform 1s;
 }
 
 .slide-leave {

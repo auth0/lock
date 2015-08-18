@@ -41,7 +41,7 @@ $(function() {
 
     console.log('select country');
 
-    $('.auth0-lock-select-country').show().removeClass('slideOutRight').addClass('animated slideInRight');
+    $('.auth0-lock-select-country').show().removeClass('slide-leave slide-leave-active').addClass('slide-enter slide-enter-active');
     $('.auth0-lock-close').hide();
 
     return false;
@@ -53,7 +53,7 @@ $(function() {
 
     console.log('country selected');
 
-    $('.auth0-lock-select-country').removeClass('slideInRight').addClass('slideOutRight');
+    $('.auth0-lock-select-country').removeClass('slide-enter slide-enter-active').addClass('slide-leave slide-leave-active');
     $('.auth0-lock-close').show();
 
   });
@@ -74,7 +74,7 @@ $(function() {
       console.log('enter code');
 
       setTimeout(function(){
-        $('.auth0-lock-code-confirmation').show().addClass('animated slideInRight');
+        $('.auth0-lock-confirmation').show().addClass('slide-enter slide-enter-active');
         $('.auth0-lock').removeClass('auth0-lock-mode-loading');
       }, 2000);
 
