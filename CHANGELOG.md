@@ -1,3 +1,20 @@
+## [7.7.3] - 2015-07-23
+
+### Fixed
+
+- [] Merge pull request #203 from bartdereu/patch-2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b7361a3b32372a24547bdf180e85bf360363acd4
+- [] Update nl-NL.json (`bartdereu`)
+  https://github.com/auth0/lock/commit/5bbb380fcc4633c58f0c54471d2854d80fe34796
+- [] add region to Gruntfile (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/c299e086ab1279bd455cf90723f32d5693a31f17
+- [] Release: 7.7.2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/32ac9ccd32fe0b6490ec6b510d2bff1fd6576fd1
+- [] Merge pull request #199 from auth0/remove/cdn-option (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/56658246e7f43187bc56af596da47afcda625f46
+- [] Remove alt_spinner from templates and also options.cdn from lock constructor (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2b706277564daf09b8152717fc6ead64613817b2
+
 ## [7.7.2] - 2015-07-23
 
 ### Fixed
