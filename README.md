@@ -30,30 +30,22 @@ TODO
 ## API
 
 ### Initialization
+Initializes a new intance of `Auth0LockPasswordless` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/).
 
-```javascript
-var lock = new Auth0LockPasswordless(clientID, domain);
-```
+- **clientID {String}**: Your application _clientID_ in Auth0.
+- **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
 
-<dl>
-  <dt>clientID {String}</dt>
-  <dd>Your application _clientID_ in Auth0.</dd>
-
-  <dt>domain {String}</dt>
-  <dd>Your Auth0 _domain_. Usually _your-account.auth0.com_.</dd>
-</dl>
-
-You can find this information your [application settings](https://manage.auth0.com/#/applications).
+You can find this information at your [application settings](https://manage.auth0.com/#/applications).
 
 #### Example
 
 ```javascript
-var clientID = "yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih";
-var domain = "mdocs.auth0.com";
+var clientID = "YOUR_AUTH0_APP_CLIENTID";
+var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0LockPasswordless(clientID, domain);
 ```
 
-### .magiclink
+### .magiclink(options, callback)
 
 Opens a dialog that asks the user for an email address. Once entered, it will send an email containing a _magic link_ that allows the user to log in automatically.
 
@@ -95,7 +87,7 @@ lock.magiclink({closable: false}, function(error, email) {
 });
 ```
 
-### .emailcode
+### .emailcode(options, callback)
 
 Opens a dialog that asks the user for an email address. Then, it will ask for a _code_ that has been sent in an email to the given address. The code will be used as a one-time password to log in.
 
@@ -137,7 +129,7 @@ lock.emailcode({closable: false}, function(error, profile) {
 });
 ```
 
-### .sms
+### .sms(options, callback)
 
 Opens a dialog that asks the user for a phone number. Then, it will ask for a _code_ that has been sent in an text message to the given number. The code will be used as a one-time password to log in.
 
@@ -178,7 +170,7 @@ lock.sms({closable: false}, function(error, profile) {
 });
 ```
 
-### .close
+### .close(callback)
 
 Closes the dialog.
 
@@ -203,7 +195,7 @@ lock.close(function() {
 });
 ```
 
-### .logout
+### .logout(query)
 
 Log out an user.
 
