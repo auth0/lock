@@ -6,10 +6,11 @@ import * as l from './index';
 import * as g from '../gravatar/index';
 
 const ReactTransitionGroup = React.addons.TransitionGroup;
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export default class CredentialsPane extends React.Component {
   render() {
-    const { lock } = this.props;
+    const { auxiliaryPane, lock } = this.props;
 
     const gravatar = l.gravatar(lock);
     const icon = l.ui.icon(lock);
@@ -35,6 +36,9 @@ export default class CredentialsPane extends React.Component {
           {this.props.children}
         </div>
         <SubmitButton disabled={disableSubmit} />
+        <ReactCSSTransitionGroup transitionName="slide">
+          {auxiliaryPane}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }
