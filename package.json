@@ -25,7 +25,7 @@
   "scripts": {
     "start": "serve . --port $PORT",
     "build": "browserify --extension=.jsx --extension=.js src/index.js | uglifyjs > build/build.js",
-    "build:browser": "browserify --extension=.jsx --extension=.js src/browser.js | uglifyjs > build/browser.js",
+    "build:browser": "browserify --full-paths --extension=.jsx --extension=.js src/browser.js | uglifyjs > build/browser.js",
     "watch": "watchify --extension=.jsx --extension=.js src/index.js -o build/build.js --debug --verbose & serve .",
     "test": "mochify --recursive --extension=.jsx --extension=.js",
     "test:saucelabs": "zuul -- test/*/*.js",
