@@ -32,7 +32,7 @@
   "scripts": {
     "start": "serve . --port $PORT",
     "build": "browserify --extension=.jsx --extension=.js src/index.js | uglifyjs > build/build.js",
-    "build:browser": "NODE_ENV=production browserify --full-paths --extension=.jsx --extension=.js src/browser.js | uglifyjs -cm > build/browser.js",
+    "build:browser": "NODE_ENV=production browserify --full-paths -p bundle-collapser/plugin --extension=.jsx --extension=.js src/browser.js | uglifyjs -cm > build/browser.js",
     "watch": "watchify --extension=.jsx --extension=.js src/index.js -o build/build.js --debug --verbose & serve .",
     "test": "mochify --recursive --extension=.jsx --extension=.js",
     "test:saucelabs": "zuul -- test/*/*.js",
@@ -45,6 +45,7 @@
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
     "browserify-css": "^0.6.1",
+    "bundle-collapser": "^1.2.1",
     "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
     "mochify": "^2.12.0",
