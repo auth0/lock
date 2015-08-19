@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
-describe(".emailcode acceptance", function() {
+describe(".sms acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -18,7 +18,7 @@ describe(".emailcode acceptance", function() {
   describe("opening a Lock", function() {
     before(function() {
       this.lock = u.constructLock();
-      u.openLock(this.lock, "emailcode");
+      u.openLock(this.lock, "sms");
     });
 
     it("renders the widget and opens it after a few ms", function(done) {
@@ -30,21 +30,120 @@ describe(".emailcode acceptance", function() {
       }, 17);
     });
 
-    it("displays an empty input for the email", function() {
-      expect(u.qInputValue(this.lock, "email")).to.be("");
+    it("displays an empty input for the phone number", function() {
+      expect(u.qInputValue(this.lock, "phone-number")).to.be("");
+    });
+
+    it("displays an input with for the location with a default value", function() {
+      expect(u.qInputValue(this.lock, "location")).to.be("Argentina +54");
     });
   });
 
-  describe("entering an invalid email", function() {
+  describe("opening the location selector", function() {
     before(function() {
       this.lock = u.constructLock();
-      u.openLock(this.lock, "emailcode");
-      u.fillInput(this.lock, "email", "invalid email");
+      u.openLock(this.lock, "sms");
+    });
+
+    describe("when clicking the location input", function() {
+      before(function() {
+        u.clickLocationInput(this.lock);
+      });
+
+      it("shows the location selector", function() {
+        expect(u.isShowingLocationSelector(this.lock)).to.be.ok();
+      });
+    });
+  });
+
+  describe("filtering locations", function() {
+    before(function() {
+      this.lock = u.constructLock();
+      u.openLock(this.lock, "sms");
+      u.clickLocationInput(this.lock);
+    });
+
+    it("shows all locations available by default", function() {
+      expect(u.qLocations(this.lock).length).to.be.greaterThan(200);
+    });
+
+    describe("when entering an unexistent location name", function() {
+      before(function() {
+        u.filterLocations(this.lock, "nowhere");
+      });
+
+      it("doesn't show any locations", function() {
+        expect(u.qLocations(this.lock).length).to.be(0);
+      });
+    });
+
+    describe("when entering a few letters that match a few locations", function() {
+      before(function() {
+        u.filterLocations(this.lock, "au");
+      });
+
+      it("shows that locations", function() {
+        expect(u.qLocations(this.lock).length).to.be.within(2, 10);
+      });
+    });
+
+    describe("when entering an exact location name", function() {
+      before(function() {
+        u.filterLocations(this.lock, "spain");
+      });
+
+      it("shows only that location", function() {
+        expect(u.qLocations(this.lock).length).to.be(1);
+      });
+    });
+  });
+
+  describe("selecting a location", function() {
+    before(function() {
+      this.lock = u.constructLock();
+      u.openLock(this.lock, "sms");
+      u.clickLocationInput(this.lock);
+      u.filterLocations(this.lock, "spain");
+      u.clickFirstLocation(this.lock);
+
+    });
+
+    it("closes the location selector", function(done) {
+      // NOTE: to tell whether or not the location selector has been closed, we
+      // need to wait for react to add the *transition leave* class.
+      setTimeout(() => {
+        expect(u.isShowingLocationSelector(this.lock)).to.not.be.ok();
+        done();
+      }, 1500);
+    });
+
+    it("updates the location input", function() {
+      expect(u.qInputValue(this.lock, "location")).to.be("Spain +34");
+    });
+
+    describe("when submiting", function() {
+      before(function() {
+        u.fillInput(this.lock, "phone-number", "123456");
+        u.submit(this.lock);
+      });
+
+      it("starts the passwordless flow with the given location", function() {
+        const params = {phoneNumber: "+34123456",};
+        expect(u.hasStartedPasswordless(params)).to.be.ok();
+      });
+    });
+  });
+
+  describe("entering an invalid phone number", function() {
+    before(function() {
+      this.lock = u.constructLock();
+      u.openLock(this.lock, "sms");
+      u.fillInput(this.lock, "phone-number", "invalid number");
     });
 
 
     it("doesn't mark the input as invalid", function() {
-      expect(u.isInputInvalid(this.lock, "email")).to.not.be.ok();
+      expect(u.isInputInvalid(this.lock, "phone-number")).to.not.be.ok();
     });
 
     describe("when attempting a submit", function() {
@@ -53,42 +152,42 @@ describe(".emailcode acceptance", function() {
       });
 
       it("marks the input as invalid", function() {
-        expect(u.isInputInvalid(this.lock, "email")).to.be.ok();
+        expect(u.isInputInvalid(this.lock, "phone-number")).to.be.ok();
       });
 
       it("doesn't perform any request", function() {
         expect(u.startPasswordlessCallCount()).to.be(0);
-        expect(u.isInputInvalid(this.lock, "email")).to.be.ok();
+        expect(u.isInputInvalid(this.lock, "phone-number")).to.be.ok();
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      describe("when fixing the email", function() {
+      describe("when fixing the phone number", function() {
         before(function() {
-          u.fillInput(this.lock, "email", "someone@auth0.com");
+          u.fillInput(this.lock, "phone-number", "123456");
         });
 
         it("clears the input error", function() {
-          expect(u.isInputInvalid(this.lock, "email")).to.not.be.ok();
+          expect(u.isInputInvalid(this.lock, "phone-number")).to.not.be.ok();
         });
 
-        describe("and entering an invalid email again", function() {
+        describe("and entering an invalid phone number again", function() {
           before(function() {
-            u.fillInput(this.lock, "email", "invalid email");
+            u.fillInput(this.lock, "phone-number", "invalid number");
           });
 
           it("doesn't mark the input as invalid", function() {
-            expect(u.isInputInvalid(this.lock, "email")).to.not.be.ok();
+            expect(u.isInputInvalid(this.lock, "phone-number")).to.not.be.ok();
           });
         });
       });
     });
   });
 
-  describe("successfully submitting an email", function() {
+  describe("successfully submitting a phone number", function() {
     before(function() {
       this.lock = u.constructLock();
-      this.cb = u.openLock(this.lock, "emailcode");
-      u.fillInput(this.lock, "email", "someone@auth0.com");
+      this.cb = u.openLock(this.lock, "sms");
+      u.fillInput(this.lock, "phone-number", "123456");
       u.submit(this.lock);
     });
 
@@ -97,7 +196,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "code"};
+      const params = {phoneNumber: "+54123456"};
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -110,25 +209,25 @@ describe(".emailcode acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      it("doesn't show an input for the email", function() {
-        expect(u.qInput(this.lock, "email")).to.not.be.ok();
+      it("doesn't show an input for the phone number", function() {
+        expect(u.qInput(this.lock, "phone-number")).to.not.be.ok();
       });
 
       it("shows an input for the verification code", function() {
         expect(u.qInput(this.lock, "verification-code")).to.be.ok();
       });
 
-      it("doesn't invoke the provided callback with the entered email", function() {
+      it("doesn't invoke the provided callback", function() {
         expect(this.cb.called).to.not.be.ok();
       });
     });
   });
 
-  describe("unsuccessful attempt to submit an email", function() {
+  describe("unsuccessful attempt to submit a phone number", function() {
     before(function() {
       this.lock = u.constructLock();
-      this.cb = u.openLock(this.lock, "emailcode");
-      u.fillInput(this.lock, "email", "someone@auth0.com");
+      this.cb = u.openLock(this.lock, "sms");
+      u.fillInput(this.lock, "phone-number", "123456");
       u.submit(this.lock);
     });
 
@@ -137,7 +236,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "code"};
+      const params = {phoneNumber: "+54123456"};
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -150,8 +249,8 @@ describe(".emailcode acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      it("still shows an input for the email", function() {
-        expect(u.qInput(this.lock, "email")).to.be.ok();
+      it("still shows an input for the phone number", function() {
+        expect(u.qInput(this.lock, "phone-number")).to.be.ok();
       });
 
       it("doesn't show an input for the verification code", function() {
@@ -171,8 +270,8 @@ describe(".emailcode acceptance", function() {
   describe("submitting an empty verification code", function() {
     before(function() {
       this.lock = u.constructLock();
-      this.cb = u.openLock(this.lock, "emailcode");
-      u.fillInput(this.lock, "email", "someone@auth0.com");
+      this.cb = u.openLock(this.lock, "sms");
+      u.fillInput(this.lock, "phone-number", "123456");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       u.submit(this.lock);
@@ -211,8 +310,8 @@ describe(".emailcode acceptance", function() {
   describe("successfully submitting the verification code", function() {
     before(function() {
       this.lock = u.constructLock();
-      this.cb = u.openLock(this.lock, "emailcode");
-      u.fillInput(this.lock, "email", "someone@auth0.com");
+      this.cb = u.openLock(this.lock, "sms");
+      u.fillInput(this.lock, "phone-number", "123456");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       u.fillInput(this.lock, "verification-code", "0303456");
@@ -224,7 +323,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("attempts to sign in with the entered credentials", function() {
-      expect(u.hasSignedInWith("someone@auth0.com", "0303456")).to.be.ok();
+      expect(u.hasSignedInWith("+54123456", "0303456")).to.be.ok();
     })
 
     describe("when response arrives", function() {
@@ -256,8 +355,8 @@ describe(".emailcode acceptance", function() {
   describe("unsuccessful attempt to submit the verification code", function() {
     before(function() {
       this.lock = u.constructLock();
-      this.cb = u.openLock(this.lock, "emailcode");
-      u.fillInput(this.lock, "email", "someone@auth0.com");
+      this.cb = u.openLock(this.lock, "sms");
+      u.fillInput(this.lock, "phone-number", "123456");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       u.fillInput(this.lock, "verification-code", "0303456");
@@ -269,7 +368,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("attempts to sign in with the entered credentials", function() {
-      expect(u.hasSignedInWith("someone@auth0.com", "0303456")).to.be.ok();
+      expect(u.hasSignedInWith("+54123456", "0303456")).to.be.ok();
     })
 
     describe("when response arrives", function() {

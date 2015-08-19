@@ -5,22 +5,24 @@ import Auth0LockPasswordless from '../src/index';
 import { spy, stub } from 'sinon';
 import webApi from '../src/lock/web_api';
 import * as gravatarActions from '../src/gravatar/actions';
+import browser from '../src/browser';
 
 function hasClass(element, str) {
   const classes = new Set(element.className.split(" "));
   return classes.has(str);
 }
 
-const PANE_PREFIX = ".auth0-lock-intro:not(.horizontal-fade-leave)";
+const PANE_PREFIX = ".auth0-lock-credentials-pane:not(.horizontal-fade-leave)";
 const DEFAULT_ERROR_MESSAGE = "We're sorry, something went wrong when sending the email.";
 
 export function constructLock(cid = "a", domain = "a") {
   return new Auth0LockPasswordless(cid, domain);
 }
 
-function q(lock, query) {
+function q(lock, query, all = false) {
   query = `#auth0-lock-container-${lock.id} ${query}`;
-  return global.document.querySelector(query);
+  const method = all ? "querySelectorAll" : "querySelector";
+  return global.document[method](query);
 }
 
 export function isRendered(lock) {
@@ -135,4 +137,28 @@ export function hasResendingFailed(lock) {
 
 export function isRetryAvailable(lock) {
   return q(lock, ".auth0-lock-resend-link").textContent.match(/Retry/);
+}
+
+export function clickLocationInput(lock) {
+  Simulate.click(q(lock, `${PANE_PREFIX} .auth0-lock-input-location input`), {});
+}
+
+export function isShowingLocationSelector(lock) {
+  return !!q(lock, ".auth0-lock-select-country:not(.slide-leave)");
+}
+
+export function qLocations(lock) {
+  return q(lock, ".auth0-lock-list-code > ul > li", true);
+}
+
+function qLocationFilterInput(lock) {
+  return q(lock, ".auth0-lock-select-country .auth0-lock-search input");
+}
+
+export function filterLocations(lock, value) {
+  Simulate.change(qLocationFilterInput(lock), {target: {value: value}});
+}
+
+export function clickFirstLocation(lock) {
+  Simulate.click(qLocations(lock)[0], {});
 }

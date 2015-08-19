@@ -27,7 +27,7 @@ export default class CredentialsPane extends React.Component {
     }
 
     return (
-      <div className={className}>
+      <div className={className + " auth0-lock-credentials-pane"}>
         <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
         <ReactTransitionGroup>
           {globalError && <GlobalError key="global-error" message={globalError} />}
