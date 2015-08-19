@@ -110,35 +110,35 @@ export function setShowInvalidEmail(lock, value = true) {
   return setShowInvalid(lock, "email", value);
 }
 
-// verification code
+// vcode
 
-export function verificationCode(lock) {
-  return lock.getIn(["credentials", "verificationCode", "verificationCode"], "");
+export function vcode(lock) {
+  return lock.getIn(["credentials", "vcode", "vcode"], "");
 }
 
-export function setVerificationCode(lock, verificationCode) {
-  const valid = validateVerificationCode(verificationCode);
-  return lock.mergeIn(["credentials", "verificationCode"], Map({
-    verificationCode: verificationCode,
+export function setVcode(lock, vcode) {
+  const valid = validateVcode(vcode);
+  return lock.mergeIn(["credentials", "vcode"], Map({
+    vcode: vcode,
     valid: valid,
-    showInvalid: !!showInvalid(lock, "verificationCode") && !valid
+    showInvalid: !!showInvalid(lock, "vcode") && !valid
   }));
 }
 
-export function validateVerificationCode(verificationCode) {
-  return trim(verificationCode).length > 0;
+export function validateVcode(vcode) {
+  return trim(vcode).length > 0;
 }
 
-export function validVerificationCode(lock) {
-  return valid(lock, "verificationCode");
+export function validVcode(lock) {
+  return valid(lock, "vcode");
 }
 
-export function visiblyInvalidVerificationCode(lock) {
-  return visiblyInvalid(lock, "verificationCode");
+export function visiblyInvalidVcode(lock) {
+  return visiblyInvalid(lock, "vcode");
 }
 
-export function setShowInvalidVerificationCode(lock, value = true) {
-  return setShowInvalid(lock, "verificationCode", value);
+export function setShowInvalidVcode(lock, value = true) {
+  return setShowInvalid(lock, "vcode", value);
 }
 
 // password

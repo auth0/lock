@@ -8,8 +8,8 @@ export function changeEmail(lockID, email) {
   swap(updateEntity, "lock", lockID, c.setEmail, email);
 }
 
-export function changeVerificationCode(lockID, verificationCode) {
-  swap(updateEntity, "lock", lockID, c.setVerificationCode, verificationCode)
+export function changeVcode(lockID, vcode) {
+  swap(updateEntity, "lock", lockID, c.setVcode, vcode)
 }
 
 export function requestPasswordlessEmail(lockID) {
@@ -84,10 +84,10 @@ export function resendEmailError(lockID, error) {
 export function signIn(lockID) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", lockID, lock => {
-    if (c.validVerificationCode(lock)) {
+    if (c.validVcode(lock)) {
       return l.setSubmitting(lock, true);
     } else {
-      return c.setShowInvalidVerificationCode(lock);
+      return c.setShowInvalidVcode(lock);
     }
   });
 
@@ -97,7 +97,7 @@ export function signIn(lockID) {
     const options = {
       connection: "email",
       username: c.email(lock),
-      password: c.verificationCode(lock),
+      password: c.vcode(lock),
       sso: false
     };
     WebApi.signIn(lockID, options, (error, ...args) => {

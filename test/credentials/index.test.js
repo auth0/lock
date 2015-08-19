@@ -323,95 +323,95 @@ describe("accessing an email", function() {
 });
 
 
-const invalidVerificationCode = "";
-const verificationCode = "123456";
+const invalidVcode = "";
+const vcode = "123456";
 
-describe("setting a verification code", function() {
+describe("setting a vcode", function() {
   let entity;
 
   describe("when is valid", function() {
     beforeEach(function() {
-      entity = c.setVerificationCode(emptyEntity, verificationCode);
+      entity = c.setVcode(emptyEntity, vcode);
     });
 
-    it("updates the verification code", function() {
-      expect(c.verificationCode(entity)).to.be(verificationCode);
+    it("updates the vcode", function() {
+      expect(c.vcode(entity)).to.be(vcode);
     });
 
-    it("marks the verification code as valid", function() {
-      expect(c.validVerificationCode(entity)).to.be(true);
+    it("marks the vcode as valid", function() {
+      expect(c.validVcode(entity)).to.be(true);
     });
 
-    it("unmarks the verification code as visibly invalid", function() {
-      expect(c.visiblyInvalidVerificationCode(entity)).to.be(false);
+    it("unmarks the vcode as visibly invalid", function() {
+      expect(c.visiblyInvalidVcode(entity)).to.be(false);
     });
   });
 
   describe("when is invalid", function() {
     beforeEach(function() {
-      entity = c.setVerificationCode(emptyEntity, invalidVerificationCode);
+      entity = c.setVcode(emptyEntity, invalidVcode);
     });
 
-    it("updates the verification code", function() {
-      expect(c.verificationCode(entity)).to.be(invalidVerificationCode);
+    it("updates the vcode", function() {
+      expect(c.vcode(entity)).to.be(invalidVcode);
     });
 
-    it("unmarks the verification code as valid", function() {
-      expect(c.validVerificationCode(entity)).to.be(false);
+    it("unmarks the vcode as valid", function() {
+      expect(c.validVcode(entity)).to.be(false);
     });
   });
 
   describe("when marked as visibly invalid", function() {
     beforeEach(function() {
-      entity = c.setShowInvalidVerificationCode(emptyEntity, true);
+      entity = c.setShowInvalidVcode(emptyEntity, true);
     });
 
     describe("and is valid", function() {
       beforeEach(function() {
-        entity = c.setVerificationCode(entity, verificationCode);
+        entity = c.setVcode(entity, vcode);
       });
 
-      it("unmarks the verification code as visibly invalid", function() {
-        expect(c.visiblyInvalidVerificationCode(entity)).to.be(false);
+      it("unmarks the vcode as visibly invalid", function() {
+        expect(c.visiblyInvalidVcode(entity)).to.be(false);
       });
     });
 
     describe("and is invalid", function() {
       beforeEach(function() {
-        entity = c.setVerificationCode(entity, invalidVerificationCode);
+        entity = c.setVcode(entity, invalidVcode);
       });
 
-      it("keeps the verification code marked as visibly invalid", function() {
-        expect(c.visiblyInvalidVerificationCode(entity)).to.be(true);
+      it("keeps the vcode marked as visibly invalid", function() {
+        expect(c.visiblyInvalidVcode(entity)).to.be(true);
       });
     });
   });
 });
 
-describe("validating a verification code", function() {
+describe("validating a vcode", function() {
   let entity;
 
   it("success when there is at least one character", function() {
-    entity = c.setVerificationCode(emptyEntity, "a");
-    expect(c.validVerificationCode(entity)).to.be(true);
+    entity = c.setVcode(emptyEntity, "a");
+    expect(c.validVcode(entity)).to.be(true);
   });
 
   it("fails when it is the empty string", function() {
-    entity = c.setVerificationCode(emptyEntity, "");
-    expect(c.validVerificationCode(entity)).to.be(false);
+    entity = c.setVcode(emptyEntity, "");
+    expect(c.validVcode(entity)).to.be(false);
   });
 });
 
-describe("accessing a verification code", function() {
+describe("accessing a vcode", function() {
   let entity;
 
   describe("when is set", function() {
     beforeEach(function() {
-      entity = c.setVerificationCode(emptyEntity, verificationCode);
+      entity = c.setVcode(emptyEntity, vcode);
     });
 
-    it("returns the verification code", function() {
-      expect(c.verificationCode(entity)).to.be(verificationCode);
+    it("returns the vcode", function() {
+      expect(c.vcode(entity)).to.be(vcode);
     });
   });
 
@@ -421,7 +421,7 @@ describe("accessing a verification code", function() {
     });
 
     it("returns the empty string", function() {
-      expect(c.verificationCode(entity)).to.be("");
+      expect(c.vcode(entity)).to.be("");
     });
   });
 });

@@ -1,11 +1,11 @@
 import React from 'react';
 import CredentialsPane from '../lock/credentials_pane';
-import VerificationCodeInput from '../credentials/verification_code_input';
-import { changeVerificationCode } from './actions';
+import VcodeInput from '../credentials/vcode_input';
+import { changeVcode } from './actions';
 import * as l from '../lock/index';
 import * as c from '../credentials/index';
 
-export default class AskVerificationCode extends React.Component {
+export default class AskVcode extends React.Component {
   render() {
     const { lock } = this.props;
 
@@ -18,17 +18,17 @@ export default class AskVerificationCode extends React.Component {
             You've received a message from us<br />
             with your passcode.
           </p>
-          <VerificationCodeInput value={c.verificationCode(lock)}
-            isValid={!c.visiblyInvalidVerificationCode(lock) && !l.globalError(lock)}
-            onChange={::this.handleVerificationCodeChange}
+          <VcodeInput value={c.vcode(lock)}
+            isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
+            onChange={::this.handleVcodeChange}
             autoFocus={l.ui.focusInput(lock)} />
         </div>
       </CredentialsPane>
     );
   }
 
-  handleVerificationCodeChange(e) {
+  handleVcodeChange(e) {
     e.preventDefault();
-    changeVerificationCode(l.id(this.props.lock), e.target.value);
+    changeVcode(l.id(this.props.lock), e.target.value);
   }
 }

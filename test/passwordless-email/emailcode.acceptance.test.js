@@ -114,8 +114,8 @@ describe(".emailcode acceptance", function() {
         expect(u.qInput(this.lock, "email")).to.not.be.ok();
       });
 
-      it("shows an input for the verification code", function() {
-        expect(u.qInput(this.lock, "verification-code")).to.be.ok();
+      it("shows an input for the vcode", function() {
+        expect(u.qInput(this.lock, "vcode")).to.be.ok();
       });
 
       it("doesn't invoke the provided callback with the entered email", function() {
@@ -154,8 +154,8 @@ describe(".emailcode acceptance", function() {
         expect(u.qInput(this.lock, "email")).to.be.ok();
       });
 
-      it("doesn't show an input for the verification code", function() {
-        expect(u.qInput(this.lock, "verification-code")).to.not.be.ok();
+      it("doesn't show an input for the vcode", function() {
+        expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
       });
 
       it("doesn't invoke the provided callback", function() {
@@ -168,7 +168,7 @@ describe(".emailcode acceptance", function() {
     });
   });
 
-  describe("submitting an empty verification code", function() {
+  describe("submitting an empty vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
@@ -179,7 +179,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("marks the input as invalid", function() {
-      expect(u.isInputInvalid(this.lock, "verification-code")).to.be.ok();
+      expect(u.isInputInvalid(this.lock, "vcode")).to.be.ok();
     });
 
     it("doesn't perform any request", function() {
@@ -187,35 +187,35 @@ describe(".emailcode acceptance", function() {
       expect(u.isLoading(this.lock)).to.not.be.ok();
     });
 
-    describe("when filling the verification code", function() {
+    describe("when filling the vcode", function() {
       before(function() {
-        u.fillInput(this.lock, "verification-code", "1");
+        u.fillInput(this.lock, "vcode", "1");
       });
 
       it("clears the input error", function() {
-        expect(u.isInputInvalid(this.lock, "verification-code")).to.not.be.ok();
+        expect(u.isInputInvalid(this.lock, "vcode")).to.not.be.ok();
       });
 
-      describe("and clearing the verification code", function() {
+      describe("and clearing the vcode", function() {
         before(function() {
-          u.fillInput(this.lock, "verification-code", "");
+          u.fillInput(this.lock, "vcode", "");
         });
 
         it("doesn't mark the input as invalid", function() {
-          expect(u.isInputInvalid(this.lock, "verification-code")).to.not.be.ok();
+          expect(u.isInputInvalid(this.lock, "vcode")).to.not.be.ok();
         });
       });
     });
   });
 
-  describe("successfully submitting the verification code", function() {
+  describe("successfully submitting the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
       u.fillInput(this.lock, "email", "someone@auth0.com");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
-      u.fillInput(this.lock, "verification-code", "0303456");
+      u.fillInput(this.lock, "vcode", "0303456");
       u.submit(this.lock);
     });
 
@@ -236,8 +236,8 @@ describe(".emailcode acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      // it("doesn't show an input for the verification code", function() {
-      //   expect(u.qInput(this.lock, "verification-code")).to.not.be.ok();
+      // it("doesn't show an input for the vcode", function() {
+      //   expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
       // });
 
       it("closes", function() {
@@ -253,14 +253,14 @@ describe(".emailcode acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to submit the verification code", function() {
+  describe("unsuccessful attempt to submit the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
       u.fillInput(this.lock, "email", "someone@auth0.com");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
-      u.fillInput(this.lock, "verification-code", "0303456");
+      u.fillInput(this.lock, "vcode", "0303456");
       u.submit(this.lock);
     });
 
@@ -274,7 +274,7 @@ describe(".emailcode acceptance", function() {
 
     describe("when response arrives", function() {
       before(function() {
-        this.error = {description: "invalid email or verification code"};
+        this.error = {description: "invalid email or vcode"};
         u.simulateSingInResponse(this.error);
       });
 
@@ -282,8 +282,8 @@ describe(".emailcode acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      it("still shows an input for the verification code", function() {
-        expect(u.qInput(this.lock, "verification-code")).to.be.ok();
+      it("still shows an input for the vcode", function() {
+        expect(u.qInput(this.lock, "vcode")).to.be.ok();
       });
 
       it("doesn't close the Lock", function() {

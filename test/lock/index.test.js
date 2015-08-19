@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import Immutable from 'immutable';
 import * as l from '../../src/lock/index';
-import { iconUrl } from '../../src/icon/test';
+import { iconUrl } from '../../src/icon/index';
 
 let lock;
 

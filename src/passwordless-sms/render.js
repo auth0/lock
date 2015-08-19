@@ -1,5 +1,5 @@
 import askPhoneNumber from './ask_phone_number';
-import askVerificationCode from './ask_verification_code';
+import askVcode from './ask_vcode';
 import { close, reset, sendSMS, signIn } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
@@ -8,7 +8,7 @@ function askPhoneNumberSubmitHandler(lock) {
   sendSMS(l.id(lock));
 }
 
-function askVerificationCodeSubmitHandler(lock) {
+function askVcodeSubmitHandler(lock) {
   signIn(l.id(lock));
 }
 
@@ -20,11 +20,9 @@ export default function render(lock) {
   return {
     backHandler: m.smsSent(lock) ? backHandler : undefined,
     closeHandler: close,
-    mainPane: m.smsSent(lock) ? askVerificationCode : askPhoneNumber,
-    mainPaneKey: m.smsSent(lock) ? "ask-verification-code" : "ask-phone-number",
+    mainPane: m.smsSent(lock) ? askVcode : askPhoneNumber,
+    mainPaneKey: m.smsSent(lock) ? "ask-vcode" : "ask-phone-number",
     disallowClose: m.selectingLocation(lock),
-    submitHandler: m.smsSent(lock) ? askVerificationCodeSubmitHandler : askPhoneNumberSubmitHandler
+    submitHandler: m.smsSent(lock) ? askVcodeSubmitHandler : askPhoneNumberSubmitHandler
   }
 }
-
-// TODO: rename file to render.js

@@ -57,17 +57,17 @@ export function sendSMSError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
-export function changeVerificationCode(id, verificationCode) {
-  return swap(updateEntity, "lock", id, c.setVerificationCode, verificationCode);
+export function changeVcode(id, vcode) {
+  return swap(updateEntity, "lock", id, c.setVcode, vcode);
 }
 
 export function signIn(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if (c.validVerificationCode(lock)) {
+    if (c.validVcode(lock)) {
       return l.setSubmitting(lock, true);
     } else {
-      return c.setShowInvalidVerificationCode(lock);
+      return c.setShowInvalidVcode(lock);
     }
   });
 
@@ -77,7 +77,7 @@ export function signIn(id) {
     const options = {
       connection: "sms",
       username: c.fullPhoneNumber(lock),
-      password: c.verificationCode(lock),
+      password: c.vcode(lock),
       sso: false
     };
 
@@ -113,53 +113,3 @@ export function close(id) {
   // TODO: if m.selectingLocation(lock) === true, go back to previous screen.
   swap(updateEntity, "lock", id, m.close);
 }
-
-
-// import { Map } from 'immutable';
-// import { LockStates } from '../control/constants';
-// import { getLock, updateLock }k from '../store/index';
-// import { fullPhoneNumber, setCountryCode, setPhoneNumber, setShowInvalidPhoneNumber, setVerificationCode, validPhoneNumber, validVerificationCode, verificationCode } from '../credentials/index';
-// import WebApi from '../lock/web_api';
-//
-// export function changeVerificationCode(lockID, verificationCode) {
-//   return updateLock(lockID, setVerificationCode, verificationCode);
-// }
-//
-// export function signIn(lockID) {
-//   let submit = false;
-//   updateLock(lockID, lock => {
-//     if (validVerificationCode(lock)) {
-//       submit = true;
-//       return lock.set("submitting", true);
-//     } else {
-//       return setShowInvalidVerificationCode(lock);
-//     }
-//   });
-//
-//   if (submit) {
-//     const lock = getLock(lockID);
-//     const options = {
-//       connection: "sms",
-//       username: fullPhoneNumber(lock),
-//       password: verificationCode(lock),
-//       sso: false
-//     };
-//     WebApi.signIn(lockID, options, ignInSuccess, signInError);
-//   }
-// }
-//
-// function signInSuccess(lockID, response) {
-//   const callback = l.ui.signInCallback(getLock(lockID));;
-//   if (callback) {
-//     callback.apply(null, response);
-//   }
-//   // TODO update lock state
-// }
-//
-// function signInError(lockID, error) {
-//   const callback = l.ui.signInCallback(getLock(lockID));;
-//   if (callback) {
-//     callback.call(null, error);
-//   }
-//   // TODO update lock state
-// }
