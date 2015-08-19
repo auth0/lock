@@ -1,5 +1,6 @@
 import React from 'react/addons';
 import Avatar from './avatar';
+import Badge from './auth0_badge';
 import BackButton from '../header/back_button';
 import CloseButton from '../header/close_button';
 import * as l from './index';
@@ -50,7 +51,9 @@ export default class Lock extends React.Component {
                 <this.props.mainPane key={mainPaneKey} lock={lock} />
               </ReactCSSTransitionGroup>
             </div>
-            <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
+            <span className="auth0-lock-badge-bottom">
+              <Badge />
+            </span>
           </form>
         </div>
       </div>

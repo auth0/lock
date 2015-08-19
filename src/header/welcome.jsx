@@ -8,7 +8,7 @@ export default class Welcome extends React.Component {
 
     return (
       <div className="auth0-lock-header-welcome">
-        {imageUrl && <Icon imageUrl={imageUrl} />}
+        {imageUrl && <Icon />}
         <WelcomeMessage name={name}/>
       </div>
     );

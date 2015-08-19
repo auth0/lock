@@ -222,9 +222,10 @@ body.frame
     display: block;
 
   .auth0-lock-header-logo
-    max-width: 60px;
-    height: 60px;
-    margin: auto auto 10px auto;
+    display inline-block
+    margin-bottom 10px
+    svg
+      vertical-align middle
 
   .auth0-lock-header-placeholder
     background: green;
@@ -440,13 +441,16 @@ body.frame
     position: relative;
     bottom: 0;
     transition: background-color .2s ease-in-out;
-    i
+    span
+      display inline-block
       transition: all .2s ease-in-out;
+      svg
+        vertical-align middle
 
     &:hover
       background: darken(#EA5323, 20%)
 
-      i
+      span
         transform: scale(1.05)
 
     &:focus
@@ -458,27 +462,12 @@ body.frame
       // border-bottom-right-radius: 5px;
       // border-bottom-left-radius: 5px;
 
-    i
-      border: 2.5px solid white;
-      width: 40px;
-      height: 40px;
-      display: block;
-      margin: auto;
-      border-radius: 100px;
-      &:before
-        content: "p"
-        color: white
-        top: 9.5px;
-        position: relative;
-        font-size: 20px
-        left: 2px;
-
     &[disabled]
       background: darken(#EA5323, 20%)
 
-      i:before
-        content: "…"
-        left: 0;
+      // i:before
+      //   content: "…"
+      //   left: 0;
 
     .auth0-loading
       top: 26px
@@ -503,10 +492,10 @@ body.frame
       cursor: initial;
       pointer-events: none
 
-    i
-      animation-name: fadeOutDownBig;
-      animation-duration: 1s;
-      animation-fill-mode: both;
+      span
+        animation-name: fadeOutDownBig;
+        animation-duration: 1s;
+        animation-fill-mode: both;
 
     .auth0-loading-container
       animation-name: fadeInDownBig;
@@ -635,13 +624,7 @@ body.frame
     margin: 30px 0 0 0;
     color: #5C666F;
 
-  .auth0-lock-badge
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 20px;
-    position: relative;
-    z-index: -1;
+  .auth0-lock-badge-bottom
     -webkit-transition: transform 4s ease 1.8s, opacity 1.2s ease 1.8s;
     -webkit-transform: translateY(-200%) scale(.8);
     transition: transform .5s ease 1s, opacity .2s ease 0s;
@@ -650,15 +633,20 @@ body.frame
     left: 0;
     right: 0;
     opacity: 0;
-    font-size: 18px;
-    &:before
-      content: "f"
-      transition: color .5s;
-      color: rgba(255,255,255,.4)
+    z-index: -1;
+    text-align: center;
+    margin-top: 20px;
 
-    &:hover
-      &:before
-        color: #EB5424
+    .auth0-lock-badge
+      display: inline-block;
+      svg
+        vertical-align middle
+
+      &:hover
+        svg
+          g#Lock
+            fill #EB5424
+            fill-opacity 1
 
   &.auth0-lock-opened
     .auth0-lock-header-bg
@@ -679,7 +667,7 @@ body.frame
       -webkit-transition: transform .6s, opacity .6s;
       -webkit-transition-delay: .5s;
 
-    .auth0-lock-badge
+    .auth0-lock-badge-bottom
       -webkit-transform: translateY(0%)  scale(1);
       -webkit-transition-delay: 0;
       transform: translateY(0%)  scale(1);
@@ -706,7 +694,7 @@ body.frame
       -webkit-transition: transform .6s, opacity .6s;
       -webkit-transition-delay: .5s;
 
-    .auth0-lock-badge
+    .auth0-lock-badge-bottom
       -webkit-transform: translateY(0%)  scale(1);
       -webkit-transition-delay: 0;
       transform: translateY(0%)  scale(1);

@@ -1,4 +1,5 @@
 import React from 'react';
+import SubmitIcon from './submit_icon';
 
 export default class SubmitButton extends React.Component {
   render() {
@@ -7,7 +8,7 @@ export default class SubmitButton extends React.Component {
         <div className="auth0-loading-container">
           <div className="auth0-loading" />
         </div>
-        <i className="auth0-lock-icon"/>
+        <SubmitIcon />
       </button>
     );
   }

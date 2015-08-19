@@ -208,9 +208,11 @@ body.frame {
   display: block;
 }
 .auth0-lock .auth0-lock-header-logo {
-  max-width: 60px;
-  height: 60px;
-  margin: auto auto 10px auto;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.auth0-lock .auth0-lock-header-logo svg {
+  vertical-align: middle;
 }
 .auth0-lock .auth0-lock-header-placeholder {
   background: #008000;
@@ -433,13 +435,17 @@ body.frame {
   bottom: 0;
   transition: background-color 0.2s ease-in-out;
 }
-.auth0-lock .auth0-lock-submit i {
+.auth0-lock .auth0-lock-submit span {
+  display: inline-block;
   transition: all 0.2s ease-in-out;
+}
+.auth0-lock .auth0-lock-submit span svg {
+  vertical-align: middle;
 }
 .auth0-lock .auth0-lock-submit:hover {
   background: #c43e13;
 }
-.auth0-lock .auth0-lock-submit:hover i {
+.auth0-lock .auth0-lock-submit:hover span {
   transform: scale(1.05);
 }
 .auth0-lock .auth0-lock-submit:focus {
@@ -451,28 +457,8 @@ body.frame {
     position: relative;
   }
 }
-.auth0-lock .auth0-lock-submit i {
-  border: 2.5px solid #fff;
-  width: 40px;
-  height: 40px;
-  display: block;
-  margin: auto;
-  border-radius: 100px;
-}
-.auth0-lock .auth0-lock-submit i:before {
-  content: "p";
-  color: #fff;
-  top: 9.5px;
-  position: relative;
-  font-size: 20px;
-  left: 2px;
-}
 .auth0-lock .auth0-lock-submit[disabled] {
   background: #c43e13;
-}
-.auth0-lock .auth0-lock-submit[disabled] i:before {
-  content: "…";
-  left: 0;
 }
 .auth0-lock .auth0-lock-submit .auth0-loading {
   top: 26px;
@@ -494,7 +480,7 @@ body.frame {
   cursor: initial;
   pointer-events: none;
 }
-.auth0-lock.auth0-lock-mode-loading i {
+.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit span {
   animation-name: fadeOutDownBig;
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -631,13 +617,7 @@ body.frame {
   margin: 30px 0 0 0;
   color: #5c666f;
 }
-.auth0-lock .auth0-lock-badge {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 20px;
-  position: relative;
-  z-index: -1;
+.auth0-lock .auth0-lock-badge-bottom {
   -webkit-transition: transform 4s ease 1.8s, opacity 1.2s ease 1.8s;
   -webkit-transform: translateY(-200%) scale(0.8);
   transition: transform 0.5s ease 1s, opacity 0.2s ease 0s;
@@ -646,15 +626,19 @@ body.frame {
   left: 0;
   right: 0;
   opacity: 0;
-  font-size: 18px;
+  z-index: -1;
+  text-align: center;
+  margin-top: 20px;
 }
-.auth0-lock .auth0-lock-badge:before {
-  content: "f";
-  transition: color 0.5s;
-  color: rgba(255,255,255,0.4);
+.auth0-lock .auth0-lock-badge-bottom .auth0-lock-badge {
+  display: inline-block;
 }
-.auth0-lock .auth0-lock-badge:hover:before {
-  color: #eb5424;
+.auth0-lock .auth0-lock-badge-bottom .auth0-lock-badge svg {
+  vertical-align: middle;
+}
+.auth0-lock .auth0-lock-badge-bottom .auth0-lock-badge:hover svg g#Lock {
+  fill: #eb5424;
+  fill-opacity: 1;
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner {
   opacity: 0.4;
@@ -674,7 +658,7 @@ body.frame {
   -webkit-transition: transform 0.6s, opacity 0.6s;
   -webkit-transition-delay: 0.5s;
 }
-.auth0-lock.auth0-lock-opened .auth0-lock-badge {
+.auth0-lock.auth0-lock-opened .auth0-lock-badge-bottom {
   -webkit-transform: translateY(0%) scale(1);
   -webkit-transition-delay: 0;
   transform: translateY(0%) scale(1);
@@ -701,7 +685,7 @@ body.frame {
   -webkit-transition: transform 0.6s, opacity 0.6s;
   -webkit-transition-delay: 0.5s;
 }
-.auth0-lock.auth0-lock-opened-in-frame .auth0-lock-badge {
+.auth0-lock.auth0-lock-opened-in-frame .auth0-lock-badge-bottom {
   -webkit-transform: translateY(0%) scale(1);
   -webkit-transition-delay: 0;
   transform: translateY(0%) scale(1);
