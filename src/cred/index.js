@@ -140,10 +140,3 @@ export function visiblyInvalidVcode(lock) {
 export function setShowInvalidVcode(lock, value = true) {
   return setShowInvalid(lock, "vcode", value);
 }
-
-// password
-
-export function validatePassword(password) {
-  const result = trim(password);
-  return result.length > 3 ? result : null;
-}
