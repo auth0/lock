@@ -24,7 +24,7 @@
   "signup": {
     "description": "",
     "title": "Aanmelden",
-    "action": "Aanmelden",
+    "action": "Registreer",
     "emailPlaceholder": "E-mail",
     "passwordPlaceholder": "Een wachtwoord maken",
     "cancelAction": "Annuleren",
