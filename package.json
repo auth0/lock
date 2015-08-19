@@ -19,8 +19,7 @@
           ],
           "optional": [
             "es7.functionBind",
-            "es7.objectRestSpread",
-            "runtime"
+            "es7.objectRestSpread"
           ]
         }
       ],
@@ -58,7 +57,6 @@
   },
   "dependencies": {
     "auth0-js": "^6.5.0",
-    "babel-runtime": "^5.8.20",
     "blueimp-md5": "^1.1.0",
     "bonzo": "^2.0.0",
     "domready": "^1.0.8",
