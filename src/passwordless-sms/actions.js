@@ -2,7 +2,7 @@ import { read, getEntity, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
 import * as l from '../lock';
 import * as m from './index';
-import * as c from '../credentials/index';
+import * as c from '../cred/index';
 
 export function changePhoneNumber(id, phoneNumber) {
   swap(updateEntity, "lock", id, c.setPhoneNumber, phoneNumber);
@@ -105,8 +105,8 @@ function signInError(id, error) {
   l.invokeDoneCallback(lock, error);
 }
 
-export function reset(id, clearCredentials = true) {
-  swap(updateEntity, "lock", id, m.reset, clearCredentials);
+export function reset(id, clearCred = true) {
+  swap(updateEntity, "lock", id, m.reset, clearCred);
 }
 
 export function close(id) {

@@ -223,7 +223,7 @@ describe(".emailcode acceptance", function() {
       expect(u.isLoading(this.lock)).to.be.ok();
     });
 
-    it("attempts to sign in with the entered credentials", function() {
+    it("attempts to sign in with the entered cred", function() {
       expect(u.hasSignedInWith("someone@auth0.com", "0303456")).to.be.ok();
     })
 
@@ -268,7 +268,7 @@ describe(".emailcode acceptance", function() {
       expect(u.isLoading(this.lock)).to.be.ok();
     });
 
-    it("attempts to sign in with the entered credentials", function() {
+    it("attempts to sign in with the entered cred", function() {
       expect(u.hasSignedInWith("someone@auth0.com", "0303456")).to.be.ok();
     })
 

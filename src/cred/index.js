@@ -4,19 +4,19 @@ import * as cc from './country_codes';
 
 
 function valid(lock, field) {
-  return lock.getIn(["credentials", field, "valid"]);
+  return lock.getIn(["cred", field, "valid"]);
 }
 
-function showInvalid(lock, credential) {
-  return lock.getIn(["credentials", credential, "showInvalid"]);
+function showInvalid(lock, cred) {
+  return lock.getIn(["cred", cred, "showInvalid"]);
 }
 
-function setShowInvalid(lock, credential, value) {
-  return lock.setIn(["credentials", credential, "showInvalid"], value);
+function setShowInvalid(lock, cred, value) {
+  return lock.setIn(["cred", cred, "showInvalid"], value);
 }
 
-function visiblyInvalid(lock, credential) {
-  return showInvalid(lock, credential) && !valid(lock, credential);
+function visiblyInvalid(lock, cred) {
+  return showInvalid(lock, cred) && !valid(lock, cred);
 }
 
 // phone number
@@ -32,11 +32,11 @@ export function fullHumanPhoneNumber(m) {
 }
 
 export function setPhoneLocation(m, value) {
-  return m.setIn(["credentials", "phoneNumber", "location"], value);
+  return m.setIn(["cred", "phoneNumber", "location"], value);
 }
 
 function phoneLocation(m) {
-  return m.getIn(["credentials", "phoneNumber", "location"], cc.defaultLocation);
+  return m.getIn(["cred", "phoneNumber", "location"], cc.defaultLocation);
 }
 
 export function phoneLocationString(m) {
@@ -48,12 +48,12 @@ export function phoneDialingCode(m) {
 }
 
 export function phoneNumber(lock) {
-  return lock.getIn(["credentials", "phoneNumber", "number"], "");
+  return lock.getIn(["cred", "phoneNumber", "number"], "");
 }
 
 export function setPhoneNumber(lock, phoneNumber) {
   const valid = validatePhoneNumber(phoneNumber);
-  return lock.mergeIn(["credentials", "phoneNumber"], Map({
+  return lock.mergeIn(["cred", "phoneNumber"], Map({
     number: phoneNumber,
     valid: valid,
     showInvalid: !!showInvalid(lock, "phoneNumber") && !valid
@@ -80,12 +80,12 @@ export function setShowInvalidPhoneNumber(lock, value) {
 // email
 
 export function email(lock) {
-  return lock.getIn(["credentials", "email", "email"], "");
+  return lock.getIn(["cred", "email", "email"], "");
 }
 
 export function setEmail(lock, email) {
   const valid = !!validateEmail(email);
-  return lock.mergeIn(["credentials", "email"], Map({
+  return lock.mergeIn(["cred", "email"], Map({
     email: email,
     valid: valid,
     showInvalid: !!showInvalid(lock, "email") && !valid
@@ -113,12 +113,12 @@ export function setShowInvalidEmail(lock, value = true) {
 // vcode
 
 export function vcode(lock) {
-  return lock.getIn(["credentials", "vcode", "vcode"], "");
+  return lock.getIn(["cred", "vcode", "vcode"], "");
 }
 
 export function setVcode(lock, vcode) {
   const valid = validateVcode(vcode);
-  return lock.mergeIn(["credentials", "vcode"], Map({
+  return lock.mergeIn(["cred", "vcode"], Map({
     vcode: vcode,
     valid: valid,
     showInvalid: !!showInvalid(lock, "vcode") && !valid

@@ -2,7 +2,7 @@ import React from 'react';
 import ContainerManager from './container_manager';
 import Lock from './lock';
 import * as l from './index';
-import * as c from '../credentials/index';
+import * as c from '../cred/index';
 import * as g from '../gravatar/index';
 import { getCollection, getEntity } from '../store/index';
 

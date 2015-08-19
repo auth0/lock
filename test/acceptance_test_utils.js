@@ -12,7 +12,7 @@ function hasClass(element, str) {
   return classes.has(str);
 }
 
-const PANE_PREFIX = ".auth0-lock-credentials-pane:not(.horizontal-fade-leave)";
+const PANE_PREFIX = ".auth0-lock-cred-pane:not(.horizontal-fade-leave)";
 const DEFAULT_ERROR_MESSAGE = "We're sorry, something went wrong when sending the email.";
 
 export function constructLock(cid = "a", domain = "a") {

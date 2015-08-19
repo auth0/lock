@@ -1,6 +1,6 @@
 import WebApi from '../lock/web_api';
 import { read, swap, getEntity, updateEntity } from '../store/index';
-import * as c from '../credentials/index';
+import * as c from '../cred/index';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -124,8 +124,8 @@ function signInError(lockID, error) {
   l.invokeDoneCallback(lock, error);
 }
 
-export function reset(lockID, clearCredentials = true) {
-  swap(updateEntity, "lock", lockID, m.reset, clearCredentials);
+export function reset(lockID, clearCred = true) {
+  swap(updateEntity, "lock", lockID, m.reset, clearCred);
 }
 
 export function close(id) {

@@ -1,5 +1,5 @@
 import { md5 } from 'blueimp-md5';
-import { validateEmail } from '../credentials/index';
+import { validateEmail } from '../cred/index';
 import jsonp from '../utils/jsonp_utils';
 
 export function profile(email, success, error) {

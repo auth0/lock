@@ -8,16 +8,7 @@ export function setup(attrs) {
   return Immutable.fromJS({
     clientID: clientID,
     domain: domain,
-    id: id,
-    // mode: undefined,
-    // show: false,
-    // submitting: false,
-    // render: false,
-
-    // TODO: figure out how to handle credentials, they are specific to each mode
-    credentials: {
-      email: {email: "", valid: false, showInvalid: false}
-    }
+    id: id
   });
 }
 
@@ -129,7 +120,6 @@ export function render(m, modeName, options) {
 
   const { modeOptions } = options;
   m = m.merge(Immutable.fromJS({
-    // show: true,
     mode: modeName,
     render: true,
     modeOptions: modeOptions

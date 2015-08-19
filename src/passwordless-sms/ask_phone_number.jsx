@@ -1,11 +1,11 @@
 import React from 'react';
-import CredentialsPane from '../lock/credentials_pane';
-import PhoneNumberInput from '../credentials/phone_number_input';
-import LocationInput from '../credentials/location_input';
+import CredPane from '../lock/cred_pane';
+import PhoneNumberInput from '../cred/phone_number_input';
+import LocationInput from '../cred/location_input';
 import Terms from '../lock/terms';
 import AskLocation from './ask_location';
 import { changePhoneNumber, selectPhoneLocation } from './actions';
-import * as c from '../credentials/index';
+import * as c from '../cred/index';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -16,7 +16,7 @@ export default class AskPhoneNumber extends React.Component {
       <AskLocation key="auxiliarypane" lock={lock} /> : null;
 
     return (
-      <CredentialsPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro">
+      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro">
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
             <h2>SMS</h2>
@@ -30,7 +30,7 @@ export default class AskPhoneNumber extends React.Component {
           </div>
           {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         </div>
-      </CredentialsPane>
+      </CredPane>
     );
   }
 

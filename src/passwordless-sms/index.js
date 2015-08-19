@@ -16,9 +16,9 @@ export function smsSent(m) {
   return m.get("smsSent", false);
 }
 
-export function reset(m, clearCredentials = true) {
-  if (clearCredentials) {
-    m = m.remove("credentials");
+export function reset(m, clearCred = true) {
+  if (clearCred) {
+    m = m.remove("cred");
   }
   return l.clearGlobalError(m.remove("selectingLocation").remove("smsSent"));
 }

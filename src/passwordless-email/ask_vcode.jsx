@@ -1,16 +1,16 @@
 import React from 'react';
-import CredentialsPane from '../lock/credentials_pane';
-import VcodeInput from '../credentials/vcode_input';
+import CredPane from '../lock/cred_pane';
+import VcodeInput from '../cred/vcode_input';
 import { changeVcode } from './actions';
 import * as l from '../lock/index';
-import * as c from '../credentials/index';
+import * as c from '../cred/index';
 
 export default class AskVcode extends React.Component {
   render() {
     const { lock } = this.props;
 
     return (
-      <CredentialsPane lock={lock} className="auth0-lock-ask-email-vcode">
+      <CredPane lock={lock} className="auth0-lock-ask-email-vcode">
         <div className="auth0-lock-form auth0-lock-passwordless">
           <h2>Enter the code</h2>
           <p>
@@ -23,7 +23,7 @@ export default class AskVcode extends React.Component {
             onChange={::this.handleVcodeChange}
             autoFocus={l.ui.focusInput(lock)} />
         </div>
-      </CredentialsPane>
+      </CredPane>
     );
   }
 

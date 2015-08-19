@@ -1,5 +1,5 @@
 import React from 'react';
-import LocationSelect from '../credentials/location_select';
+import LocationSelect from '../cred/location_select';
 import { changePhoneLocation } from './actions';
 import * as l from '../lock/index';
 

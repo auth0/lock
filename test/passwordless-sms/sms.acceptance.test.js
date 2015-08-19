@@ -322,7 +322,7 @@ describe(".sms acceptance", function() {
       expect(u.isLoading(this.lock)).to.be.ok();
     });
 
-    it("attempts to sign in with the entered credentials", function() {
+    it("attempts to sign in with the entered cred", function() {
       expect(u.hasSignedInWith("+54123456", "0303456")).to.be.ok();
     })
 
@@ -367,7 +367,7 @@ describe(".sms acceptance", function() {
       expect(u.isLoading(this.lock)).to.be.ok();
     });
 
-    it("attempts to sign in with the entered credentials", function() {
+    it("attempts to sign in with the entered cred", function() {
       expect(u.hasSignedInWith("+54123456", "0303456")).to.be.ok();
     })
 
