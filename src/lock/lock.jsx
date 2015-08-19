@@ -1,7 +1,6 @@
 import React from 'react/addons';
 import Avatar from './avatar';
-import BackButton from '../header/back_button';
-import CloseButton from '../header/close_button';
+import IconButton from '../icon/button';
 import * as l from './index';
 import * as g from '../gravatar/index';
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -43,8 +42,8 @@ export default class Lock extends React.Component {
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
-            {showCloseButton && <CloseButton onClick={::this.handleClose} />}
-            {backHandler && <BackButton onClick={::this.handleBack} />}
+            {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
+            {backHandler && <IconButton name="back" onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
               <ReactCSSTransitionGroup transitionName="horizontal-fade">
                 <this.props.mainPane key={mainPaneKey} lock={lock} />
