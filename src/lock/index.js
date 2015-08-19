@@ -1,6 +1,6 @@
 import Immutable, { Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
-import Auth0Icon from './auth0_icon';
+import { iconUrl } from '../icon/index';
 
 export function setup(attrs) {
   const { clientID, domain, id } = attrs;
@@ -83,7 +83,7 @@ function extractUIOptions(id, options) {
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
-    icon: options.icon || Auth0Icon.url,
+    icon: options.icon || iconUrl("auth0"),
     closable: undefined === options.closable ? !options.container : !!options.closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,

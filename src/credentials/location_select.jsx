@@ -1,5 +1,5 @@
 import React from 'react';
-import LocationIcon from './location_icon';
+import Icon from '../icon/icon';
 import * as cc from './country_codes';
 import * as su from '../utils/string_utils';
 
@@ -20,7 +20,7 @@ export default class LocationSelect extends React.Component {
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
           <div className="auth0-lock-input-wrap">
-            <LocationIcon />
+            <Icon name="location"/>
             <input className="auth0-lock-input auth0-lock-input-search"
               onChange={::this.handleSearchChange}
               type="text"

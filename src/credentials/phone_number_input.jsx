@@ -1,14 +1,13 @@
 import React from 'react';
 import InputWrap from './input_wrap';
-import PhoneNumberIcon from './phone_number_icon';
+import Icon from '../icon/icon';
 
 export default class PhoneNumberInput extends React.Component {
   render() {
     const { isValid, ...props } = this.props;
-    const icon = <PhoneNumberIcon />;
 
     return (
-      <InputWrap name="phone-number" isValid={isValid} icon={icon}>
+      <InputWrap name="phone-number" isValid={isValid} icon={<Icon name="phoneNumber" />}>
         <input type="text"
           name="phoneNumber"
           className="auth0-lock-input auth0-lock-input-number"

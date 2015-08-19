@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import Immutable from 'immutable';
 import * as l from '../../src/lock/index';
-import Auth0Icon from '../../src/lock/auth0_icon';
+import { iconUrl } from '../../src/icon/test';
 
 let lock;
 
@@ -91,7 +91,7 @@ describe("rendering a lock", function() {
   });
 
   it("uses the auth0 logo", function() {
-    expect(l.ui.icon(renderedLock)).to.be(Auth0Icon.url);
+    expect(l.ui.icon(renderedLock)).to.be(iconUrl("auth0"));
   });
 
   it("can be closed", function() {
