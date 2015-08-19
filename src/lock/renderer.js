@@ -19,8 +19,7 @@ export default class Renderer {
       lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
       const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
       const renderFn = fns.get(l.mode(lock));
-      const spec = renderFn(lock)
-      React.render(<Lock lock={lock} {...spec} />, container);
+      React.render(renderFn(lock), container);
     });
   }
 }

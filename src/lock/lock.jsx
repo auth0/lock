@@ -17,7 +17,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { backHandler, closeHandler, mainPane, mainPaneKey, lock, submitHandler, disallowClose } = this.props;
+    const { backHandler, children, closeHandler, lock, submitHandler, disallowClose } = this.props;
 
     const overlay = l.ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -46,7 +46,7 @@ export default class Lock extends React.Component {
             {backHandler && <IconButton name="back" onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
               <ReactCSSTransitionGroup transitionName="horizontal-fade">
-                <this.props.mainPane key={mainPaneKey} lock={lock} />
+                {children}
               </ReactCSSTransitionGroup>
             </div>
             <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
