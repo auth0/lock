@@ -8,11 +8,10 @@ export default class LocationInput extends React.Component {
     const icon = <LocationIcon />;
 
     return (
-      <InputWrap name="phone-number" isValid={true} icon={icon}>
+      <InputWrap name="location" isValid={true} icon={icon}>
         <input type="button"
           name="location"
           className="auth0-lock-input auth0-lock-input-location"
-          placeholder="your phone number"
           {...this.props} />
         <ArrowIcon />
       </InputWrap>
