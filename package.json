@@ -1,5 +1,5 @@
 {
-  "name": "lock-refactor",
+  "name": "auth0-lock-passwordless",
   "version": "0.0.0",
   "main": "src/index.js",
   "license": "MIT",
