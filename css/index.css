@@ -129,7 +129,7 @@ body.frame {
   color: #000;
 }
 .auth0-lock .auth0-lock-form p {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.8;
   text-align: center;
   margin-top: 0;
@@ -410,12 +410,13 @@ body.frame {
   text-align: left;
 }
 .auth0-lock .auth0-lock-terms {
+  background: #eee;
   text-align: center;
-  margin-top: 20px;
   display: block;
   font-size: 12px;
   color: #666;
   line-height: 22px;
+  padding: 10px 30px;
 }
 .auth0-lock .auth0-lock-terms a {
   color: #000;

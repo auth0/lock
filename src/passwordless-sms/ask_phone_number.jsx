@@ -2,7 +2,6 @@ import React from 'react';
 import CredPane from '../lock/cred_pane';
 import PhoneNumberInput from '../cred/phone_number_input';
 import LocationInput from '../cred/location_input';
-import Terms from '../lock/terms';
 import AskLocation from './ask_location';
 import { changePhoneNumber, selectPhoneLocation } from './actions';
 import * as c from '../cred/index';
@@ -28,7 +27,6 @@ export default class AskPhoneNumber extends React.Component {
             <LocationInput value={c.phoneLocationString(lock)}
               onClick={::this.handleLocationClick} />
           </div>
-          {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         </div>
       </CredPane>
     );

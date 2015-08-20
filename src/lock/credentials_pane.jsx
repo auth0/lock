@@ -4,6 +4,7 @@ import SubmitButton from './submit_button';
 import Header from '../header/header';
 import * as l from './index';
 import * as g from '../gravatar/index';
+import Terms from '../lock/terms';
 
 const ReactTransitionGroup = React.addons.TransitionGroup;
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -35,6 +36,7 @@ export default class CredPane extends React.Component {
         <div className="auth0-lock-content">
           {this.props.children}
         </div>
+        {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         <SubmitButton disabled={disableSubmit} />
         <ReactCSSTransitionGroup transitionName="slide">
           {auxiliaryPane}

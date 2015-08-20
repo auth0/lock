@@ -1,7 +1,6 @@
 import React from 'react';
 import CredPane from '../lock/cred_pane';
 import EmailInput from '../cred/email_input';
-import Terms from '../lock/terms';
 import EmailSentConfirmation from './email_sent_confirmation';
 import * as c from '../cred/index';
 import { changeEmail } from './actions';
@@ -25,7 +24,6 @@ export default class AskEmail extends React.Component {
               gravatar={l.ui.gravatar(lock)}
               autoFocus={l.ui.focusInput(lock)} />
           </div>
-          {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         </div>
       </CredPane>
     );
