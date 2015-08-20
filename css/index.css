@@ -207,10 +207,9 @@ body.frame {
   display: block;
 }
 .auth0-lock .auth0-lock-header-logo {
+  width: 50px;
   display: inline-block;
   margin-bottom: 10px;
-}
-.auth0-lock .auth0-lock-header-logo svg {
   vertical-align: middle;
 }
 .auth0-lock .auth0-lock-header-placeholder {

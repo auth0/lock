@@ -2,7 +2,11 @@ import React from 'react';
 
 export default class Icon extends React.Component {
   render() {
-    const svgTag = '<svg width="53px" height="60px" viewBox="0 0 53 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="Lock" sketch:type="MSArtboardGroup" transform="translate(-276.000000, -3229.000000)" fill="#EB5424"><g id="SMS" sketch:type="MSLayerGroup" transform="translate(153.000000, 3207.000000)"><g id="Group" sketch:type="MSShapeGroup"><g id="Header" transform="translate(-0.500000, 0.000000)"><path d="M165.577374,70.538627 L159.629065,51.9991063 L175.199514,40.5441677 L155.952763,40.5441677 L150.003748,22.005362 L150.001983,22.0003575 L169.251911,22.0003575 L175.201985,40.5423804 L175.201985,40.5420229 L175.206927,40.5391632 C178.662948,51.2959744 175.103847,63.5305423 165.577374,70.538627 L165.577374,70.538627 L165.577374,70.538627 Z M134.429416,70.538627 L134.424474,70.5422016 L149.999159,82 L165.577374,70.5389844 L150.004101,59.0808286 L134.429416,70.538627 L134.429416,70.538627 Z M124.80304,40.5395206 L124.80304,40.5395206 C121.16557,51.8786409 125.387986,63.8937259 134.426239,70.5407718 L134.427651,70.5350523 L140.376666,51.9966041 L124.809394,40.5438102 L144.051556,40.5438102 L150.000924,22.0050045 L150.002336,22 L130.751349,22 L124.80304,40.5395206 L124.80304,40.5395206 Z" id="Shape"></path></g></g></g></g></g></svg>';
-    return <span className="auth0-lock-header-logo" dangerouslySetInnerHTML={{__html: svgTag}} />;
+    const { imageUrl } = this.props;
+    return <img className="auth0-lock-header-logo" src={imageUrl} />;
   }
 }
+
+Icon.propTyes = {
+  imageUrl: React.PropTypes.string
+};
