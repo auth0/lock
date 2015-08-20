@@ -1,6 +1,7 @@
 import React from 'react/addons';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
+import Badge from './auth0_badge';
 import * as l from './index';
 import * as g from '../gravatar/index';
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -49,7 +50,9 @@ export default class Lock extends React.Component {
                 {children}
               </ReactCSSTransitionGroup>
             </div>
-            <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge auth0-lock-icon"/>
+            <span className="auth0-lock-badge-bottom">
+              <Badge />
+            </span>
           </form>
         </div>
       </div>
