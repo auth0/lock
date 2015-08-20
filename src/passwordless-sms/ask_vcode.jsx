@@ -10,7 +10,7 @@ export default class AskVcode extends React.Component {
     const { lock } = this.props;
 
     return (
-      <CredPane lock={lock} className="auth0-lock-confirmation">
+      <CredPane lock={lock} className="auth0-lock-enter-code">
         <div className="auth0-lock-form auth0-lock-passwordless">
           <h2>Enter the code</h2>
           <p>

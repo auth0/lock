@@ -7,7 +7,7 @@ export default class AskLocation extends React.Component {
   render() {
     return (
       <LocationSelect selectHandler={::this.locationSelectHandler}
-          autoFocus={l.ui.focusInput(this.props.lock)} />
+        autoFocus={l.ui.focusInput(this.props.lock)} />
     );
   }
 
