@@ -53,7 +53,7 @@ body.frame
 .auth0-loading
   position:absolute;
   top: 4px;
-  left: 44.5%;
+  left: 44%;
   width:30px;
   height:30px;
   border-width: 2px;
@@ -550,6 +550,10 @@ body.frame
           background-color #2EB5FF
           color white
 
+  .auth0-lock-cred-pane
+    border-radius 5px
+    overflow hidden
+
   .auth0-lock-confirmation
     background-color white
     position: absolute;
@@ -557,13 +561,35 @@ body.frame
     line-height: 2;
     font-size: 14px;
     color: #666;
-    bottom: 0
-    top: 0;
-    right: 0;
-    left: 0;
+    width 100%
+    height 100%
+    top 0
+    left 0
     border-radius 5px
+    overflow hidden
+    .auth0-lock-confirmation-content
+      width 100%
+      top 50%
+      left 50%
+      -webkit-transform translate(-50%,-50%)
+      transform translate(-50%,-50%)
+      position absolute
+
+    &.slide-enter
+      -webkit-transform scale(.8)
+      transform scale(.8)
+      opacity 0
+      -webkit-transition opacity .3s ease-out, transform .3s ease-out
+      transition opacity .3s ease-out, transform .3s ease-out
+
+    &.slide-enter-active
+      -webkit-transform scale(1)
+      transform scale(1)
+      opacity 1
+
     p
-      margin-bottom: 6px;
+      margin-bottom 6px
+
     a
       display: block;
       font-weight: 500;
@@ -590,21 +616,21 @@ body.frame
       animation-fill-mode: both;
       font-weight: 600;
 
-  .auth0-lock-code-confirmation
-    background-color white
-    position: absolute;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    bottom: 0
-    top: 0;
-    right: 0;
-    left: 0;
-    border-radius 5px
-    padding: 80px 30px 0;
+  // .auth0-lock-code-confirmation
+  //   background-color white
+  //   position: absolute;
+  //   text-align: center;
+  //   font-size: 14px;
+  //   color: #666;
+  //   bottom: 0
+  //   top: 0;
+  //   right: 0;
+  //   left: 0;
+  //   border-radius 5px
+  //   padding: 80px 30px 0;
 
-    .auth0-lock-submit
-      position absolute
+  //   .auth0-lock-submit
+  //     position absolute
 
   .auth0-lock-forgot-link
     font-size 12px;
@@ -711,7 +737,7 @@ body.frame
     stroke-width: 2;
     stroke: #fff;
     stroke-miterlimit: 10;
-    margin: 10% auto;
+    margin: 0 auto;
     box-shadow: inset 0px 0px 0px #7ac142;
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
     // display: none;

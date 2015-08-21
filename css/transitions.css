@@ -1,8 +1,11 @@
+
+/*Slide in*/
+
 .slide-enter {
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
-  -webkit-transition: -webkit-transform 1s;
-  transition: transform 1s;
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
 }
 
 .slide-enter.slide-enter-active {
@@ -10,31 +13,51 @@
   transform: translate3d(0, 0, 0);
 }
 
+/*Slide out*/
+
 .slide-leave {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform .3s ease-in;
+  transition: transform .3s ease-in;
 }
 
 .slide-leave.slide-leave-active {
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
-  -webkit-transition: -webkit-transform 1s;
-  transition: transform 1s;
 }
 
-.horizontal-fade-enter {
+/*Horizontal fade show*/
+
+.horizontal-fade-appear {
   opacity: 0;
+  transition: opacity .5s;
+}
+
+.horizontal-fade-appear.horizontal-fade-appear-active {
+  opacity: 1;
+}
+
+/*Horizontal fade in*/
+
+.horizontal-fade-enter {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
+  -webkit-transition: -webkit-transform .5s ease-out;
+  transition: transform .5s ease-out;
 }
 
 .horizontal-fade-enter.horizontal-fade-enter-active {
-  opacity: 1;
   -webkit-transform: none;
   transform: none;
-  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
-  transition: transform 0.2s, opacity 0.2s;
 }
+
+/*Horizontal fade out*/
 
 .horizontal-fade-leave {
   opacity: 1;
@@ -42,12 +65,13 @@
   position: absolute;
   top: 0;
   left: 0;
+
+  -webkit-transition: -webkit-transform 1s, opacity 1s ease-out;
+  transition: transform 1s, opacity 1s ease-out;
 }
 
 .horizontal-fade-leave.horizontal-fade-leave-active {
   opacity: 0;
   -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
-  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
-  transition: transform 0.2s, opacity 0.2s;
 }

@@ -15,8 +15,10 @@ export default class ConfirmationPane extends React.Component {
     return (
       <div className="auth0-lock-confirmation">
         <IconButton name="back" onClick={backHandler} />
-        <CheckmarkIcon />
-        {this.props.children}
+        <div className="auth0-lock-confirmation-content">
+          <CheckmarkIcon />
+          {this.props.children}
+        </div>
       </div>
     );
   }

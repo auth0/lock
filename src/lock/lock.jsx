@@ -46,7 +46,7 @@ export default class Lock extends React.Component {
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
             {backHandler && <IconButton name="back" onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
-              <ReactCSSTransitionGroup transitionName="horizontal-fade">
+              <ReactCSSTransitionGroup transitionName="horizontal-fade" transitionAppear={true}>
                 {children}
               </ReactCSSTransitionGroup>
             </div>
