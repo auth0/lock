@@ -89,6 +89,28 @@ describe('Auth0Lock', function () {
     }
   });
 
+  describe('$dicts usage', function () {
+    it('should expose at the instance level the $dicts object with dictionaries', function(done) {
+      expect(widget.$dicts).to.not.be.empty();
+      done();
+    });
+
+    it('should propagate the overriden properties on top of dict provided', function (done) {
+      var title = "Helloooooooo";
+      // override  the original `en` dict
+      widget.$dicts.en.signin.title = title;
+
+      widget
+      .once('signin ready', function () {
+        expect(widget.options.i18n.t('signin:title')).to.be(title);
+        done();
+      })
+      .show({
+        dict: 'en'
+      })
+    });
+  });
+
   it('should setup client with callbackOnLocationHash', function (done) {
     widget
     .once('signin ready', function() {
