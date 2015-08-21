@@ -36,6 +36,7 @@ var ocreate = require('./lib/object-create');
 var stop = require('./lib/stop-event');
 var utils = require('./lib/utils');
 var bind = require('./lib/bind');
+var i18n = require('./lib/i18n');
 
 /**
  * Expose `Auth0Lock` constructor
@@ -90,6 +91,9 @@ function Auth0Lock (clientID, domain, options) {
 
   // Holds SSO Data for return user experience
   this.$ssoData = null;
+
+  // Expose `i18n.dicts` to allow custom dictionary overrides
+  this.$dicts = i18n.dicts;
 
   // Holds widget's DOM `$container` ref
   this.$container = null;
