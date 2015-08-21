@@ -1,3 +1,32 @@
+## [7.7.5] - 2015-07-23
+
+### Fixed
+
+- [] Expose  with full collection of supported languages to allow main dicts override (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/5a226beaa2b933d31482a07882ed2914dfe51013
+- [] Update i18n module to better handle dicts. Expose dicts on Lock instance for easy override (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/403b86afd46d4135242b1ad5eee89778936b8b33
+- [] Release: 7.7.4 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/be4dd6652caf2ddaeb9bbc1501c9eb92a429ea0c
+- [] Merge pull request #206 from bartdereu/patch-3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/f67e9aecb5de82dfad1e10df8c9f066c8d74e001
+- [] Update nl-NL.json (`bartdereu`)
+  https://github.com/auth0/lock/commit/77cd8bce752198ca284321dbf5ac7426218db922
+- [] Release: 7.7.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/eb6b05ff0455fba4f730559e98e630b2af76f55b
+- [] Merge pull request #203 from bartdereu/patch-2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b7361a3b32372a24547bdf180e85bf360363acd4
+- [] Update nl-NL.json (`bartdereu`)
+  https://github.com/auth0/lock/commit/5bbb380fcc4633c58f0c54471d2854d80fe34796
+- [] add region to Gruntfile (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/c299e086ab1279bd455cf90723f32d5693a31f17
+- [] Release: 7.7.2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/32ac9ccd32fe0b6490ec6b510d2bff1fd6576fd1
+- [] Merge pull request #199 from auth0/remove/cdn-option (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/56658246e7f43187bc56af596da47afcda625f46
+- [] Remove alt_spinner from templates and also options.cdn from lock constructor (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2b706277564daf09b8152717fc6ead64613817b2
+
 ## [7.7.4] - 2015-07-23
 
 ### Fixed
