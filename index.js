@@ -1242,6 +1242,12 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
       self._showError(self.options.i18n.t('networkError'));
     } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
+    } else if ('unauthorized' === err.code) {
+      // err.status => 401 && unauthorized from a rule
+      var message = (err.details && err.details.error_description) || '';
+      self._showError(message);
+      self._focusError(email_input);
+      self._focusError(password_input);
     } else {
       self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
       self._focusError(email_input);
