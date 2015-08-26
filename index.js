@@ -31,7 +31,6 @@ var OptionsManager = require('./lib/options-manager');
 
 //browser incompatibilities fixes
 var placeholderSupported = require('./lib/supports-placeholder');
-var has_animations = require('./lib/supports-animation');
 var ocreate = require('./lib/object-create');
 var stop = require('./lib/stop-event');
 var utils = require('./lib/utils');
@@ -62,8 +61,12 @@ function Auth0Lock (clientID, domain, options) {
   }
 
   // validate required options
-  if ('string' !== typeof clientID) throw new Error('`ClientID` required as first parameter.');
-  if ('string' !== typeof domain) throw new Error('`domain` required as second parameter.');
+  if ('string' !== typeof clientID) {
+    throw new Error('`ClientID` required as first parameter.');
+  }
+  if ('string' !== typeof domain) {
+    throw new Error('`domain` required as second parameter.');
+  }
 
   // Initiate `EventEmitter`
   EventEmitter.call(this);
@@ -148,12 +151,16 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
 
   var clients = global.window.Auth0.clients;
   var client = clients[this.$options.clientID];
-  if (client) return this.emit('client loaded', client);
+  if (client) {
+    return this.emit('client loaded', client);
+  }
 
   // check if loading state
   // and then await for response
   // no need to monkey-patch again
-  if (this.loadState) return;
+  if (this.loadState) {
+    return;
+  }
   this.loadState = true;
 
   // Monkey patch Auth.setClient to load client
@@ -162,7 +169,9 @@ Auth0Lock.prototype.getClientConfiguration = function (done) {
     setClient.apply(window.Auth0, arguments);
 
     // If not this client, return
-    if (self.$options.clientID !== client.id) return;
+    if (self.$options.clientID !== client.id) {
+      return;
+    }
 
     // store the client
     clients[self.$options.clientID] = client;
@@ -213,7 +222,7 @@ Auth0Lock.prototype.onclientloadsuccess = function() {
   // XXX: events not yet publicly supported
   this.emit('client fetch success');
   debug('Client fetch success');
-}
+};
 
 /**
  * Handle error for script load of client's configuration
@@ -224,7 +233,9 @@ Auth0Lock.prototype.onclientloadsuccess = function() {
 Auth0Lock.prototype.onclientloaderror = function(err) {
 
   // timeout has been cleared
-  if (!this.timeout) return;
+  if (!this.timeout) {
+    return;
+  }
 
   // clear error timeout
   clearTimeout(this.timeout);
@@ -233,7 +244,9 @@ Auth0Lock.prototype.onclientloaderror = function(err) {
   // If UI present, delay the show error just a little more,
   // because sometimes this loads before in the async call
   // compared to the `load` event success.
-  if (this.options) setTimeout(bind(this.showNetworkError, this), 500);
+  if (this.options) {
+    setTimeout(bind(this.showNetworkError, this), 500);
+  }
 
   // reset loadstate
   this.loadState = false;
@@ -246,11 +259,13 @@ Auth0Lock.prototype.onclientloaderror = function(err) {
   // XXX: events not yet publicly supported
   this.emit('client fetch error', error);
   debug('Error loading client: %s', error);
-}
+};
 
 Auth0Lock.prototype.showNetworkError = function() {
   // client has been loaded in some async call
-  if (global.window.Auth0.clients[this.options.$clientID]) return;
+  if (global.window.Auth0.clients[this.options.$clientID]) {
+    return;
+  }
 
   // Exhibit lock's working canvas
   this.exhibit();
@@ -264,7 +279,7 @@ Auth0Lock.prototype.showNetworkError = function() {
 
   // display error
   this._showError(this.options.i18n.t('networkError'));
-}
+};
 
 /**
  * Set's the client configuration object
@@ -394,7 +409,7 @@ Auth0Lock.prototype.exhibit = function() {
   // after pre-setting classes and dom handlers
   // emit as shown
   this.emit('shown');
-}
+};
 
 /**
  * Show the widget resolving `options`
@@ -502,7 +517,9 @@ Auth0Lock.prototype.hide = function (callback) {
 
   this.$container = null;
 
-  if ('function' === typeof callback) callback();
+  if ('function' === typeof callback) {
+    callback();
+  }
   this.emit('hidden');
 
   return this;
@@ -822,9 +839,11 @@ Auth0Lock.prototype.setPanel = function(panel, name) {
 Auth0Lock.prototype.isAuth0Domain = function (prefix) {
   var domainUrl = utils.parseUrl('https://' + this.$options.domain);
   if (prefix) {
-    return utils.endsWith(domainUrl.hostname, '.' + prefix + '.auth0.com');
+    return utils.endsWith(domainUrl.hostname, '.' + prefix + '.auth0.com') &&
+           domainUrl.hostname.match(/\./g).length === 3;
   }
-  return utils.endsWith(domainUrl.hostname, '.auth0.com');
+  return utils.endsWith(domainUrl.hostname, '.auth0.com') &&
+         domainUrl.hostname.match(/\./g).length === 2;
 };
 
 /**
