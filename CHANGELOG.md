@@ -1,3 +1,12 @@
+## [7.7.6] - 2015-08-21
+
+### Fixed
+
+- [] Merge pull request #209 from auth0/fix_domain_issue (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c1c00331ad61bb9201e7bb7a638430c0ffacfd41
+- [] fix issue when the hostname is auth0 but with extra subdomains level (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/44b49a5f5e87ca07dcd6c6ab843fc8f5ab61178e
+
 ## [7.7.5] - 2015-07-23
 
 ### Fixed
