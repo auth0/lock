@@ -222,25 +222,6 @@ module.exports = function (grunt) {
         development: false
       }
     },
-    /* Purge FASTLY cache. */
-    fastly: {
-      options: {
-        key:  process.env.FASTLY_KEY,
-        host: process.env.FASTLY_HOST
-      },
-      purge: {
-        options: {
-          urls: [
-            'js/lock-' + pkg.version + '.js',
-            'js/lock-' + pkg.version + '.min.js',
-            'js/lock-' + major_version + '.js',
-            'js/lock-' + major_version + '.min.js',
-            'js/lock-' + minor_version + '.js',
-            'js/lock-' + minor_version + '.min.js',
-          ]
-        },
-      },
-    },
     http: {
       purge_js: {
         options: {
