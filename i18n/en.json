@@ -27,6 +27,7 @@
     "returnUserLabel":             "Last time you signed in using...",
     "domainUserLabel":             "You are connected from your corporate network...",
     "wrongEmailPasswordErrorText": "Wrong email or password.",
+    "unauthorizedErrorText":       "Access denied.",
     "or":                          "... or log in using",
     "loadingMessage":              "Logging In with {connection}...",
     "popupCredentials":            "Enter your credentials in the pop-up window",

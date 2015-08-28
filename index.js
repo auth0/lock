@@ -1240,18 +1240,16 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
       self._showError(self.options.i18n.t('signin:userConsentFailed'));
     } else if (err.status === 0) {
       self._showError(self.options.i18n.t('networkError'));
-    } else if ('unauthorized' === err.code) {
-      // From rules, we sometimes get the err.status = 401... but sometimes we don't
-      // That is an auth0-server error. So, for now, we consuder err.code == 'unauthorized'
-      // Enough to asume we had an error
-      var message = (err.details && err.details.error_description) || '';
-      self._showError(message);
-      self._focusError(email_input);
-      self._focusError(password_input);
     } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
+    } else if ('unauthorized' === err.code) {
+      var message = self.options.i18n.t('signin:unauthorizedErrorText');
+      self._showError((err.details && err.details.error_description) || message);
+      self._focusError(email_input);
+      self._focusError(password_input);
     } else {
-      self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
+      var message = self.options.i18n.t('signin:wrongEmailPasswordErrorText');
+      self._showError(message);
       self._focusError(email_input);
       self._focusError(password_input);
     }
