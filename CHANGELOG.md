@@ -1,3 +1,30 @@
+## [7.8.0] - 2015-08-26
+
+### Fixed
+
+- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
+- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
+- [] Add a few npm commands for better CI handling (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
+- [] Update example (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
+- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
+- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
+- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
+- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
+- [] First succesful attempt for custom rules errors (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
+- [] First attempt to make rule fail (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
+- [] [repo]: Add demo css to development task (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
+
 ## [7.7.6] - 2015-08-21
 
 ### Fixed
