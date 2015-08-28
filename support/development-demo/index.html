@@ -425,9 +425,10 @@
 
             trackEvents(widget);
             widget.show({
-              sso: false,
+              // sso: false,
+              // connections: ['twitter']
               connections: ['ExistentDatabase']
-            }, function (err, profile, id_token) {
+            }, function (err) {
               debugger;
             });
           });
