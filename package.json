@@ -13,7 +13,9 @@
   ],
   "scripts": {
     "test": "grunt integration",
+    "phantom": "grunt phantom",
     "demo": "grunt demo",
+    "build": "grunt build",
     "dev": "grunt dev"
   },
   "repository": {

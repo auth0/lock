@@ -281,7 +281,6 @@ module.exports = function (grunt) {
   }
 
   grunt.registerTask('css',           ['clean:css', 'less:dist', 'prefix:css', 'autoprefixer:main', 'cssmin:minify']);
-
   grunt.registerTask('js',            ['clean:js', 'browserify:debug', 'exec:uglify']);
   grunt.registerTask('build',         ['css', 'js']);
 
