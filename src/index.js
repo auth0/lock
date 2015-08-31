@@ -5,8 +5,7 @@ import IDUtils from './utils/id_utils';
 import { setupLock } from './lock/actions';
 import webAPI from './lock/web_api';
 // import crashedSpec from '../crashed/mode_spec';
-import passwordlessEmailSpec from './passwordless-email/mode_spec';
-import passwordlessSMSSpec from './passwordless-sms/mode_spec';
+import passwordlessSpec from './passwordless/mode_spec';
 
 // telemetry
 import version from 'package.version';
@@ -41,8 +40,7 @@ Auth0LockPasswordless.renderer = new Renderer();
 Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
 
 // Auth0LockPasswordless.plugins.register(crashedSpec);
-Auth0LockPasswordless.plugins.register(passwordlessEmailSpec);
-Auth0LockPasswordless.plugins.register(passwordlessSMSSpec);
+Auth0LockPasswordless.plugins.register(passwordlessSpec);
 
 
 // telemetry

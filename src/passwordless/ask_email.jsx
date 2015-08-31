@@ -10,7 +10,7 @@ import * as m from './index';
 export default class AskEmail extends React.Component {
   render() {
     const { lock } = this.props;
-    const auxiliaryPane = m.isSendLink(lock) && m.emailSent(lock) ?
+    const auxiliaryPane = m.isSendLink(lock) && m.passwordlessStarted(lock) ?
       <EmailSentConfirmation key="auxiliarypane" lock={lock} /> : null;
 
     return (

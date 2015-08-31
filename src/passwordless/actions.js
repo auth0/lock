@@ -1,15 +1,11 @@
 import { read, getEntity, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
-import * as l from '../lock';
-import * as m from './index';
 import * as c from '../cred/index';
+import * as l from '../lock/index';
+import * as m from './index';
 
 export function changePhoneNumber(id, phoneNumber) {
   swap(updateEntity, "lock", id, c.setPhoneNumber, phoneNumber);
-}
-
-export function selectPhoneLocation(id) {
-  swap(updateEntity, "lock", id, m.setSelectingLocation, true);
 }
 
 export function changePhoneLocation(id, location) {
@@ -18,6 +14,61 @@ export function changePhoneLocation(id, location) {
     lock = c.setPhoneLocation(lock, location);
     return lock;
   });
+}
+
+export function changeEmail(id, email) {
+  swap(updateEntity, "lock", id, c.setEmail, email);
+}
+
+export function changeVcode(id, vcode) {
+  swap(updateEntity, "lock", id, c.setVcode, vcode)
+}
+
+export function selectPhoneLocation(id) {
+  swap(updateEntity, "lock", id, m.setSelectingLocation, true);
+}
+
+export function requestPasswordlessEmail(id) {
+  // TODO: abstract this submit thing.
+  swap(updateEntity, "lock", id, lock => {
+    if (c.validEmail(lock)) {
+      return l.setSubmitting(lock, true);
+    } else {
+      return c.setShowInvalidEmail(lock);
+    }
+  });
+
+  const lock = read(getEntity, "lock", id);
+
+  if (l.submitting(lock)) {
+    const options = {email: c.email(lock), send: m.send(lock)};
+    webApi.startPasswordless(id, options, error => {
+      if (error) {
+        requestPasswordlessEmailError(id, error);
+      } else {
+        requestPasswordlessEmailSuccess(id);
+      }
+    });
+  }
+}
+
+export function requestPasswordlessEmailSuccess(id) {
+  swap(updateEntity, "lock", id, lock => {
+    return m.setPasswordlessStarted(l.setSubmitting(lock, false), true);
+  });
+  const lock = read(getEntity, "lock", id);
+  if (m.send(lock) === "link") {
+    l.invokeDoneCallback(lock, null, c.email(lock));
+  }
+}
+
+export function requestPasswordlessEmailError(id, error) {
+  const errorMessage = "We're sorry, something went wrong when sending the email.";
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+  const lock = read(getEntity, "lock", id);
+  if (m.send(lock) === "link") {
+    l.invokeDoneCallback(lock, error);
+  }
 }
 
 export function sendSMS(id) {
@@ -47,7 +98,7 @@ export function sendSMS(id) {
 export function sendSMSSuccess(id) {
   swap(updateEntity, "lock", id, lock => {
     lock = l.setSubmitting(lock, false);
-    lock = m.setSMSSent(lock, true);
+    lock = m.setPasswordlessStarted(lock, true);
     return lock;
   });
 }
@@ -57,8 +108,30 @@ export function sendSMSError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
-export function changeVcode(id, vcode) {
-  return swap(updateEntity, "lock", id, c.setVcode, vcode);
+export function resendEmail(id) {
+  swap(updateEntity, "lock", id, m.resend);
+
+  const lock = read(getEntity, "lock", id);
+  const options = {email: c.email(lock), send: m.send(lock)};
+  webApi.startPasswordless(id, options, error => {
+    if (error) {
+      resendEmailError(id, error);
+    } else {
+      resendEmailSuccess(id);
+    }
+  });
+}
+
+export function resendEmailSuccess(id) {
+  swap(updateEntity, "lock", id, m.setResendSuccess);
+  const lock = read(getEntity, "lock", id);
+  l.invokeDoneCallback(lock, null, c.email(lock));
+}
+
+export function resendEmailError(id, error) {
+  swap(updateEntity, "lock", id, m.setResendFailed);
+  const lock = read(getEntity, "lock", id);
+  l.invokeDoneCallback(lock, error);
 }
 
 export function signIn(id) {
@@ -74,13 +147,13 @@ export function signIn(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
+    const isSMS = m.send(lock) === "sms";
     const options = {
-      connection: "sms",
-      username: c.fullPhoneNumber(lock),
+      connection: isSMS ? "sms" : "email",
+      username: isSMS ? c.fullPhoneNumber(lock) : c.email(lock),
       password: c.vcode(lock),
       sso: false
     };
-
     webApi.signIn(id, options, (error, ...args) => {
       if (error) {
         signInError(id, error);
@@ -110,6 +183,5 @@ export function reset(id, clearCred = true) {
 }
 
 export function close(id) {
-  // TODO: if m.selectingLocation(lock) === true, go back to previous screen.
   swap(updateEntity, "lock", id, m.close);
 }

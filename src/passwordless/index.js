@@ -1,12 +1,5 @@
+import Immutable from 'immutable';
 import * as l from '../lock/index';
-
-export function setEmailSent(m, value) {
-  return m.set("emailSent", value);
-}
-
-export function emailSent(m) {
-  return m.get("emailSent", false);
-}
 
 function setResendStatus(m, value) {
   // TODO: check value
@@ -50,10 +43,17 @@ export function resendAvailable(m) {
 }
 
 export function reset(m, clearCred = true) {
+  let keys = Immutable.fromJS(
+    ["passwordlessStarted", "resendStatus", "selectingLocation"]
+  );
+
   if (clearCred) {
-    m = m.remove("cred");
+    keys = keys.push("cred");
   }
-  return l.clearGlobalError(m.remove("emailSent").remove("resendStatus"));
+
+  m = keys.reduce((r, v) => r.remove(v), m);
+
+  return l.clearGlobalError(m);
 }
 
 export function send(m) {
@@ -66,4 +66,20 @@ export function isSendLink(m) {
 
 export function close(m) {
   return reset(l.close(m));
+}
+
+export function setSelectingLocation(m, value) {
+  return m.set("selectingLocation", !!value);
+}
+
+export function selectingLocation(m) {
+  return m.get("selectingLocation", false);
+}
+
+export function setPasswordlessStarted(m, value) {
+  return m.set("passwordlessStarted", value);
+}
+
+export function passwordlessStarted(m) {
+  return m.get("passwordlessStarted", false);
 }
