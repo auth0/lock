@@ -83,3 +83,11 @@ export function setPasswordlessStarted(m, value) {
 export function passwordlessStarted(m) {
   return m.get("passwordlessStarted", false);
 }
+
+export function setSignedIn(m, value) {
+  return m.set("signedIn", value);
+}
+
+export function signedIn(m) {
+  return m.get("signedIn", false);
+}
