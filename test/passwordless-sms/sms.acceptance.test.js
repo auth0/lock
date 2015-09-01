@@ -201,8 +201,11 @@ describe(".sms acceptance", function() {
     });
 
     describe("when response arrives", function() {
-      before(function() {
-        u.simulateStartPasswordlessResponse();
+      before(function(done) {
+        setTimeout(() => {
+          u.simulateStartPasswordlessResponse();
+          done();
+        }, 500);
       });
 
       it("hides the loading indicator", function() {
@@ -327,20 +330,19 @@ describe(".sms acceptance", function() {
     })
 
     describe("when response arrives", function() {
-      before(function() {
-        u.simulateSingInResponse();
+      before(function(done) {
+        setTimeout(() => {
+          u.simulateSingInResponse();
+          done();
+        }, 500);
       });
 
       it("hides the loading indicator", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      // it("doesn't show an input for the vcode", function() {
-      //   expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
-      // });
-
-      it("closes", function() {
-        expect(u.isOpened(this.lock)).to.not.be.ok();
+      it("doesn't show an input for the vcode", function() {
+        expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
       });
 
       it("invokes the provided callback", function() {
