@@ -24,15 +24,38 @@ The `magiclink` method is only one of the many methods available in `Auth0LockPa
 
 ## Install
 
-TODO update
+From CDN
 
-From [npm](https://npmjs.org):
+```html
+<!-- Latest major release -->
+<script src="http://cdn.auth0.com/js/lock-passwordless-7.min.js"></script>
+
+<!-- Latest minor release -->
+<script src="http://cdn.auth0.com/js/lock-passwordless-1.x.min.js"></script>
+
+<!-- Latest patch release (recommended for production) -->
+<script src="http://cdn.auth0.com/js/lock-passwordless-1.x.y.min.js"></script>
+```
+
+From [bower](http://bower.io)
+
+```sh
+bower install auth0-lock
+```
+
+```html
+<script src="bower_components/auth0-lock-passwordless/dist/auth0-lock-passwordless.min.js"></script>
+```
+
+From [npm](https://npmjs.org)
+
+`Auth0LockPasswordless` distribution file is built using [browserify](http://browserify.org/). By installing via npm you will need to compile ir or add it to your own build process.
 
 ```sh
 npm install auth0-lock
 ```
 
-If you are using browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
+Using browserify remember adding the following transformations required by Auth0 Lock:
 
 ``` json
 {
@@ -42,29 +65,6 @@ If you are using browserify to build your project, you will need to add the foll
     "packageify": "^0.2.0"
   }
 }
-```
-
-From [bower](http://bower.io):
-
-```sh
-bower install auth0-lock
-```
-
-```html
-<script src="bower_components/auth0_lock_passwordless/dist/auth0_lock_passwordless.min.js"></script>
-```
-
-Or our CDN:
-
-```html
-<!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-7.min.js"></script>
-
-<!-- Latest minor release -->
-<script src="http://cdn.auth0.com/js/lock-7.x.min.js"></script>
-
-<!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-7.x.y.min.js"></script>
 ```
 
 If you are targeting mobile audiences, it's recommended that you add:
