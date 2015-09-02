@@ -76,24 +76,6 @@ module.exports = function(grunt) {
         NODE_ENV: "production"
       }
     },
-    fastly: {
-      options: {
-        key:  process.env.FASTLY_KEY,
-        host: process.env.FASTLY_HOST
-      },
-      purge: {
-        options: {
-          urls: [
-            "js/lock-passwordless" + pkg.version + ".js",
-            "js/lock-passwordless" + pkg.version + ".min.js",
-            "js/lock-passwordless" + major_version + ".js",
-            "js/lock-passwordless" + major_version + ".min.js",
-            "js/lock-passwordless" + minor_version + ".js",
-            "js/lock-passwordless" + minor_version + ".min.js",
-          ]
-        },
-      },
-    },
     http: {
       purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + pkg.version + ".js",       method: "DELETE"}},
       purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + pkg.version + ".min.js",   method: "DELETE"}},
@@ -116,7 +98,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-env");
-  grunt.loadNpmTasks("grunt-fastly");
   grunt.loadNpmTasks("grunt-http");
 
 
