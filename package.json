@@ -39,7 +39,7 @@
   "devDependencies": {
     "brfs": "0.0.8",
     "browserify": "^8.1.1",
-    "bump": "git://github.com/ianstormtaylor/bump",
+    "bump-version": "^0.5.0",
     "css-prefix": "0.0.2",
     "ejsify": "0.1.0",
     "expect.js": "~0.2.0",
@@ -68,8 +68,8 @@
     "through": "^2.3.4",
     "uglify-js": "~2.4.15",
     "unreleased": "^0.0.5",
-    "zuul": "https://github.com/jfromaniello/zuul/tarball/phantom_custom_port",
-    "zuul-ngrok": "^2.0.1"
+    "zuul": "^3.4.0",
+    "zuul-ngrok": "^3.0.0"
   },
   "browserify": {
     "transform": [

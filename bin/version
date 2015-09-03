@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var path = require('path');
-var bump = require('bump');
+var bump = require('bump-version');
 var unreleased = require('unreleased');
 var fs = require('fs');
 
