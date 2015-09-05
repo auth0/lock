@@ -175,7 +175,8 @@
 
             trackEvents(widget);
             widget.showSignup(function () {
-              debugger;
+              callbackURL: window.location.href,
+              responseType: 'token'
             });
           });
 
