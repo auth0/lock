@@ -174,9 +174,8 @@
             var widget = new Auth0Lock(cid, domain);
 
             trackEvents(widget);
-            widget.showSignup({
-              callbackURL: window.location.href,
-              responseType: 'token'
+            widget.showSignup(function () {
+              debugger;
             });
           });
 
