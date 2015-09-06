@@ -63,8 +63,8 @@ export function requestPasswordlessEmailSuccess(id) {
 }
 
 export function requestPasswordlessEmailError(id, error) {
-  const errorMessage = "We're sorry, something went wrong when sending the email.";
-  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+  const fallbackDescription = "We're sorry, something went wrong when sending the email.";
+  swap(updateEntity, "lock", id, l.setSubmitting, false, error.description || fallbackDescription);
   const lock = read(getEntity, "lock", id);
   if (m.send(lock) === "link") {
     l.invokeDoneCallback(lock, error);
@@ -104,8 +104,8 @@ export function sendSMSSuccess(id) {
 }
 
 export function sendSMSError(id, error) {
-  const errorMessage = "We're sorry, something went wrong when sending the SMS.";
-  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+  const fallbackDescription = "We're sorry, something went wrong when sending the SMS.";
+  swap(updateEntity, "lock", id, l.setSubmitting, false, error.description || fallbackDescription);
 }
 
 export function resendEmail(id) {
