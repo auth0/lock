@@ -104,7 +104,7 @@ export function sendSMSSuccess(id) {
 }
 
 export function sendSMSError(id, error) {
-  const errorMessage = "We're sorry, something went wrong when sending the email.";
+  const errorMessage = "We're sorry, something went wrong when sending the SMS.";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
