@@ -38,7 +38,7 @@ class Resend extends React.Component {
       <span className="auth0-lock-sent-label">Sent!</span>;
 
     const resendFailedLabel = m.resendFailed(lock) &&
-      <span className="auth0-lock-sent-label">Failed!</span>;
+      <span className="auth0-lock-sent-failed-label">Failed!</span>;
 
     return (
       <span>

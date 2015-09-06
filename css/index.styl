@@ -610,7 +610,13 @@ body.frame
 
     .auth0-lock-sent-label
       color: green;
-      display: none;
+      animation: fadeIn;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      font-weight: 600;
+
+    .auth0-lock-sent-failed-label
+      color: red;
       animation: fadeIn;
       animation-duration: 1s;
       animation-fill-mode: both;

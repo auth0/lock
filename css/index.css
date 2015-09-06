@@ -609,7 +609,13 @@ body.frame {
 }
 .auth0-lock .auth0-lock-confirmation .auth0-lock-sent-label {
   color: #008000;
-  display: none;
+  animation: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  font-weight: 600;
+}
+.auth0-lock .auth0-lock-confirmation .auth0-lock-sent-failed-label {
+  color: #f00;
   animation: fadeIn;
   animation-duration: 1s;
   animation-fill-mode: both;

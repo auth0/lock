@@ -13,7 +13,7 @@ function hasClass(element, str) {
 }
 
 const PANE_PREFIX = ".auth0-lock-cred-pane:not(.horizontal-fade-leave)";
-const DEFAULT_ERROR_MESSAGE = "We're sorry, something went wrong when sending the email.";
+const DEFAULT_ERROR_MESSAGE = /We're sorry, something went wrong when sending the (email|SMS)\./;
 
 export function constructLock(cid = "a", domain = "a") {
   return new Auth0LockPasswordless(cid, domain);
@@ -97,7 +97,8 @@ export function hasStartedPasswordless(ma) {
 }
 
 export function isSomethingWrong(lock, message = DEFAULT_ERROR_MESSAGE) {
-  return q(lock, ".auth0-global-grobal-error").textContent === message;
+  const error = q(lock, ".auth0-global-grobal-error").textContent;
+  return typeof message.test === "function" ? message.test(error) : message === error;
 }
 
 export function simulateSingInResponse(error = null) {
@@ -132,7 +133,7 @@ export function hasLinkBeenResent(lock) {
 }
 
 export function hasResendingFailed(lock) {
-  return q(lock, ".auth0-lock-sent-label").textContent === "Failed!";
+  return q(lock, ".auth0-lock-sent-failed-label").textContent === "Failed!";
 }
 
 export function isRetryAvailable(lock) {
