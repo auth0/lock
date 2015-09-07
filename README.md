@@ -28,7 +28,7 @@ From CDN
 
 ```html
 <!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-7.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-1.min.js"></script>
 
 <!-- Latest minor release -->
 <script src="http://cdn.auth0.com/js/lock-passwordless-1.x.min.js"></script>
@@ -40,7 +40,7 @@ From CDN
 From [bower](http://bower.io)
 
 ```sh
-bower install auth0-lock
+bower install auth0-lock-passwordless
 ```
 
 ```html
@@ -49,23 +49,39 @@ bower install auth0-lock
 
 From [npm](https://npmjs.org)
 
-`Auth0LockPasswordless` distribution file is built using [browserify](http://browserify.org/). By installing via npm you will need to compile ir or add it to your own build process.
+`Auth0LockPasswordless` distribution file is built using [browserify](http://browserify.org/). By installing via npm you will need to compile it or add it to your own build process.
 
 ```sh
-npm install auth0-lock
+npm install auth0-lock-passwordless
 ```
 
-Using browserify remember adding the following transformations required by Auth0 Lock:
+Browserify will need the following transforms to bundle the `auth0-lock-passwordless` module:
 
 ``` json
 {
   "devDependencies": {
-    "brfs": "0.0.8",
-    "ejsify": "0.1.0",
-    "packageify": "^0.2.0"
+    "babelify": "^6.1.2",
+    "browserify-css": "^0.6.1",
+    "packageify": "^0.2.2"
   }
 }
 ```
+
+And you'll need to configure babelify with the following options:
+
+```json
+{
+  "blacklist": [
+    "regenerator"
+  ],
+  "optional": [
+    "es7.functionBind",
+    "es7.objectRestSpread"
+  ]
+}
+```
+
+Finally, make sure browserify consider files with the _.jsx_ extension as modules. This can be done with the `--extension=.jsx` option.
 
 If you are targeting mobile audiences, it's recommended that you add:
 
@@ -75,9 +91,9 @@ If you are targeting mobile audiences, it's recommended that you add:
 
 ## API
 
-### Initialization
+### new Auth0LockPasswordless(clientID, domain)
 
-Initializes a new intance of `Auth0LockPasswordless` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/).
+Initializes a new instance of `Auth0LockPasswordless` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/).
 
 - **clientID {String}**: Your application _clientID_ in Auth0.
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
@@ -144,14 +160,14 @@ lock.emailcode({closable: false});
 
 // invoke emailcode with a callback function that displays an alert when the
 // user has logged in.
-lock.emailcode(function(error, profile) {
+lock.emailcode(function(error, profile, id_token, access_token, state, refresh_token) {
   if (!error) {
     alert("User has logged in");
   }
 });
 
 // invoke magiclink with options and callback
-lock.emailcode({closable: false}, function(error, profile) {
+lock.emailcode({closable: false}, function(error, profile, id_token, access_token, state, refresh_token) {
   if (!error) {
     alert("User has logged in");
   }
@@ -176,14 +192,14 @@ lock.sms({closable: false});
 
 // invoke sms with a callback function that displays an alert when the user has
 // logged in.
-lock.sms(function(error, profile) {
+lock.sms(function(error, profile, id_token, access_token, state, refresh_token) {
   if (!error) {
     alert("User has logged in");
   }
 });
 
 // invoke sms with options and callback
-lock.sms({closable: false}, function(error, profile) {
+lock.sms({closable: false}, function(error, profile, id_token, access_token, state, refresh_token) {
   if (!error) {
     alert("User has logged in");
   }
