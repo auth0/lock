@@ -1,4 +1,8 @@
 ui: mocha-bdd
+tunnel:
+  type: ngrok
+  authtoken: 5P5swTMSDDRlnMBkBWJt
+  proto: https
 browsers:
   - name: chrome
     version: latest
