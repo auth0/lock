@@ -840,10 +840,10 @@ Auth0Lock.prototype.isAuth0Domain = function (prefix) {
   var domainUrl = utils.parseUrl('https://' + this.$options.domain);
   if (prefix) {
     return utils.endsWith(domainUrl.hostname, '.' + prefix + '.auth0.com') &&
-           domainUrl.hostname.match(/\./g).length === 3;
+      domainUrl.hostname.match(/\./g).length === 3;
   }
   return utils.endsWith(domainUrl.hostname, '.auth0.com') &&
-         domainUrl.hostname.match(/\./g).length === 2;
+    domainUrl.hostname.match(/\./g).length === 2;
 };
 
 /**
@@ -861,6 +861,9 @@ Auth0Lock.prototype.getAssetsUrl = function (assetsUrl, domain) {
   }
   if (this.isAuth0Domain('eu')) {
     return 'https://cdn.eu.auth0.com/';
+  }
+  if (this.isAuth0Domain('au')) {
+    return 'https://cdn.au.auth0.com/';
   }
   if (this.isAuth0Domain()) {
     return 'https://cdn.auth0.com/';
