@@ -1,15 +1,20 @@
 import React from 'react';
+import ConfirmationPane from '../lock/confirmation_pane';
 import CredPane from '../lock/cred_pane';
 import VcodeInput from '../cred/vcode_input';
-import { changeVcode } from './actions';
+import { changeVcode, close } from './actions';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
+import * as m from './index';
 
 export default class AskVcode extends React.Component {
   render() {
     const { className, cred, lock } = this.props;
+    const auxiliaryPane = m.signedIn(lock) ?
+      <SignedInConfirmation key="auxiliarypane" lock={lock} /> : null;
+
     return (
-      <CredPane lock={lock} className={className}>
+      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className={className}>
         <div className="auth0-lock-form auth0-lock-passwordless">
           <h2>Enter the code</h2>
           <p>
@@ -29,5 +34,19 @@ export default class AskVcode extends React.Component {
   handleVcodeChange(e) {
     e.preventDefault();
     changeVcode(l.id(this.props.lock), e.target.value);
+  }
+}
+
+class SignedInConfirmation extends React.Component {
+  render() {
+    return (
+      <ConfirmationPane closeHandler={::this.handleClose}>
+        <p>Thanks for signing in.</p>
+      </ConfirmationPane>
+    )
+  }
+
+  handleClose() {
+    close(l.id(this.props.lock));
   }
 }

@@ -10,11 +10,12 @@ class CheckmarkIcon extends React.Component {
 
 export default class ConfirmationPane extends React.Component {
   render() {
-    const { backHandler } = this.props;
+    const { backHandler, closeHandler } = this.props;
 
     return (
       <div className="auth0-lock-confirmation">
-        <IconButton name="back" onClick={backHandler} />
+        {closeHandler && <IconButton name="close" onClick={closeHandler}/>}
+        {backHandler && <IconButton name="back" onClick={backHandler} />}
         <div className="auth0-lock-confirmation-content">
           <CheckmarkIcon />
           {this.props.children}

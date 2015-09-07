@@ -36,11 +36,9 @@ export default function render(lock) {
       return {
         backHandler: m.passwordlessStarted(lock) && !m.signedIn(lock) && backHandler,
         closeHandler: close,
-        children: m.signedIn(lock) ?
-          <SignedIn lock={lock} key="signed-in" /> :
-          m.passwordlessStarted(lock) ?
-            <AskVcode className="auth0-lock-ask-email-vcode" cred={`email (${c.email(lock)})`} lock={lock} key="ask-vcode" /> :
-            <AskEmail lock={lock} key="ask-email" />,
+        children: m.passwordlessStarted(lock) ?
+          <AskVcode className="auth0-lock-ask-email-vcode" cred={`email (${c.email(lock)})`} lock={lock} key="ask-vcode" /> :
+          <AskEmail lock={lock} key="ask-email" />,
         lock: lock,
         submitHandler: m.passwordlessStarted(lock) ? askVcodeSubmitHandler : askEmailSubmitHandler
       };
@@ -55,11 +53,9 @@ export default function render(lock) {
       return {
         backHandler: m.passwordlessStarted(lock) && !m.signedIn(lock) && backHandler,
         closeHandler: close,
-        children: m.signedIn(lock) ?
-          <SignedIn lock={lock} key="signed-in" /> :
-          m.passwordlessStarted(lock) ?
-            <AskVcode className="auth0-lock-enter-code" cred={`phone (${c.fullHumanPhoneNumber(lock)})`} lock={lock} key="ask-vcode" /> :
-            <AskPhoneNumber lock={lock} key="ask-phone-number" />,
+        children: m.passwordlessStarted(lock) ?
+          <AskVcode className="auth0-lock-enter-code" cred={`phone (${c.fullHumanPhoneNumber(lock)})`} lock={lock} key="ask-vcode" /> :
+          <AskPhoneNumber lock={lock} key="ask-phone-number" />,
         disallowClose: m.selectingLocation(lock),
         lock: lock,
         submitHandler: m.passwordlessStarted(lock) ? askVcodeSubmitHandler : askPhoneNumberSubmitHandler
