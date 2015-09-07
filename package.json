@@ -46,9 +46,9 @@
   "scripts": {
     "start": "grunt dev",
     "build": "grunt build",
-    "test": "mochify --recursive --extension=.jsx",
+    "test": "zuul -- test/*/*.test.js",
     "test:browser": "zuul --local 8080 -- test/*/*.test.js",
-    "test:saucelabs": "zuul -- test/*/*.test.js"
+    "test:phantom": "mochify --recursive --extension=.jsx"
   },
   "devDependencies": {
     "babelify": "^6.1.2",
