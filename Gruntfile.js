@@ -63,11 +63,11 @@ module.exports = function(grunt) {
           keepAlive: true
         },
         src: "src/browser.js",
-        dest: "build/auth0-lock-passwordless.js"
+        dest: "build/lock-passwordless.js"
       },
       build: {
         src: "src/browser.js",
-        dest: "build/auth0-lock-passwordless.js"
+        dest: "build/lock-passwordless.js"
       }
     },
     clean: {
@@ -98,17 +98,17 @@ module.exports = function(grunt) {
       }
     },
     http: {
-      purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + pkg.version + ".js",       method: "DELETE"}},
-      purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + pkg.version + ".min.js",   method: "DELETE"}},
-      purge_major_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + major_version + ".js",     method: "DELETE"}},
-      purge_major_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + major_version + ".min.js", method: "DELETE"}},
-      purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + minor_version + ".js",     method: "DELETE"}},
-      purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless" + minor_version + ".min.js", method: "DELETE"} }
+      purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".js",       method: "DELETE"}},
+      purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".min.js",   method: "DELETE"}},
+      purge_major_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + major_version + ".js",     method: "DELETE"}},
+      purge_major_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + major_version + ".min.js", method: "DELETE"}},
+      purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + minor_version + ".js",     method: "DELETE"}},
+      purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + minor_version + ".min.js", method: "DELETE"} }
     },
     uglify: {
       build: {
-        src: "build/auth0-lock-passwordless.js",
-        dest: "build/auth0-lock-passwordless.min.js"
+        src: "build/lock-passwordless.js",
+        dest: "build/lock-passwordless.min.js"
       }
     }
   });
