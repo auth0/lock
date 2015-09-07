@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
-describe(".emailcode acceptance", function() {
+describe.skip(".emailcode acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
