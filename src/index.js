@@ -7,6 +7,11 @@ import webAPI from './lock/web_api';
 // import crashedSpec from '../crashed/mode_spec';
 import passwordlessSpec from './passwordless/mode_spec';
 
+// styles
+import styles from '../css/index.css';
+import transitions from '../css/transitions.css';
+import overwrites from '../css/overwrites.css';
+
 // telemetry
 import version from 'package.version';
 import Auth0 from 'auth0-js';

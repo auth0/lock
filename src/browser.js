@@ -8,10 +8,6 @@
  */
 import Auth0LockPasswordless from './index';
 
-import styles from '../css/index.css';
-import transitions from '../css/transitions.css';
-import overwrites from '../css/overwrites.css';
-
 //use amd or just throught to window object.
 if (typeof global.window.define == 'function' && global.window.define.amd) {
   global.window.define('auth0LockPasswordless', function () { return Auth0LockPasswordless; });
