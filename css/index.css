@@ -258,7 +258,9 @@ body.frame {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   -webkit-filter: blur(40px) grayscale(1);
-  background: #fff url("../img/badge.svg") center no-repeat;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: 300px;
   opacity: 0;
   transition: all 0s ease 0s;
