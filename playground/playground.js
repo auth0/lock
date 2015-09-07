@@ -65,7 +65,7 @@ function onChange(instance) {
     var syntax = esprima.parse(code, { tolerant: true, loc: true });
     var errors = syntax.errors;
     var scripts = [
-      '/build/browser.js',
+      '/build/auth0-lock-passwordless.js',
       'https://code.jquery.com/jquery-1.11.1.min.js'
     ];
 
