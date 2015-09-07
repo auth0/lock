@@ -57,10 +57,31 @@ module.exports = function(grunt) {
           extensions: ".jsx"
         }
       },
+      dev: {
+        options: {
+          watch: true,
+          keepAlive: true
+        },
+        src: "src/browser.js",
+        dest: "build/auth0-lock-passwordless.js"
+      },
       build: {
         src: "src/browser.js",
         dest: "build/auth0-lock-passwordless.js"
       }
+    },
+    clean: {
+      build: ["build/", "release/"],
+      dev: ["build/"]
+    },
+    connect: {
+      dev: {
+        options: {
+          hostname: "*",
+          base: [".", "build"],
+          port: 3000
+        }
+      },
     },
     copy: {
       release: {
@@ -95,13 +116,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-aws-s3");
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-contrib-clean");
+  grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-env");
   grunt.loadNpmTasks("grunt-http");
 
 
-  grunt.registerTask("build", ["env:build", "browserify:build", "uglify:build"]);
+  grunt.registerTask("build", ["clean:build", "env:build", "browserify:build", "uglify:build"]);
+  grunt.registerTask("dev", ["clean:dev", "connect:dev", "browserify:dev"]);
   grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
   grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
 

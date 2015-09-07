@@ -16,7 +16,10 @@ browserify:
       optional:
         - "es7.functionBind"
         - "es7.objectRestSpread"
+  - transform:
+      name: browserify-css
+      minify: true
+  - transform: packageify
   - options:
       extensions:
-        - .js
         - .jsx
