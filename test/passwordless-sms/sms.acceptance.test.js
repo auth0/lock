@@ -341,9 +341,9 @@ describe(".sms acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      it("doesn't show an input for the vcode", function() {
-        expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
-      });
+      // it("doesn't show an input for the vcode", function() {
+      //   expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
+      // });
 
       it("invokes the provided callback", function() {
         expect(this.cb.calledOnce).to.be.ok();
