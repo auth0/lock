@@ -11,7 +11,7 @@ const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export default class CredPane extends React.Component {
   render() {
-    const { auxiliaryPane, className, lock } = this.props;
+    const { auxiliaryPane, className, lock, showTerms } = this.props;
 
     const gravatar = l.gravatar(lock);
     const icon = l.ui.icon(lock);
@@ -36,7 +36,7 @@ export default class CredPane extends React.Component {
         <div className="auth0-lock-content">
           {this.props.children}
         </div>
-        {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
+        {showTerms && l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         <SubmitButton disabled={disableSubmit} />
         <ReactCSSTransitionGroup transitionName="slide">
           {auxiliaryPane}

@@ -14,7 +14,7 @@ export default class AskEmail extends React.Component {
       <EmailSentConfirmation key="auxiliarypane" lock={lock} /> : null;
 
     return (
-      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email">
+      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email" showTerms={true}>
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
             <p>Enter your email to sign in or sign up.</p>
