@@ -31,7 +31,20 @@
     "headerText": "あなたのメール アドレスとパスワードを入力してください。",
     "footerText": "",
     "signupOnSSODomainErrorText": "このドメイン {} が構成されているシングル サインオン ・ アカウントを作成することはできません。代わりにサインインしてください。",
-    "serverErrorText": "符号を処理中にエラーがありました。"
+    "serverErrorText": "符号を処理中にエラーがありました。",
+
+    "passwordStrength": { 
+      "nonEmpty": "パスワードを入力してください", 
+      "lengthAtLeast": "%d文字以上必要です", 
+      "shouldContain": "以下の文字を含めてください:", 
+      "containsAtLeast" : "Contain at least %d of the following %d types of characters:", 
+      "lowerCase": "半角小文字アルファベット（a-z）", 
+      "upperCase": "半角大文字アルファベット（A-Z）", 
+      "numbers": "半角数字（0-9）", 
+      "specialCharacters" : "Special characters (e.g. !@#$%^&*)", 
+      "identicalChars": "No more than %d identical characters in a row (e.g., \"%s\" not allowed)" 
+    }
+    
   },
   "reset": {
     "title": "パスワードのリセット",
