@@ -1,0 +1,20 @@
+{
+  "name": "auth0-lock-passwordless",
+  "version": "0.1.0",
+  "main": "build/auth0-lock-passwordless.js",
+  "ignore": [
+    "lib-cov",
+    "*.seed",
+    "*.log",
+    "*.csv",
+    "*.dat",
+    "*.out",
+    "*.pid",
+    "*.gz",
+    "pids",
+    "logs",
+    "results",
+    "npm-debug.log",
+    "bin"
+  ]
+}
