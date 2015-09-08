@@ -22,7 +22,8 @@ export default class AskEmail extends React.Component {
               isValid={!c.visiblyInvalidEmail(lock)}
               onChange={::this.handleEmailChange}
               gravatar={l.ui.gravatar(lock)}
-              autoFocus={l.ui.focusInput(lock)} />
+              autoFocus={l.ui.focusInput(lock)}
+              disabled={l.submitting(lock)} />
           </div>
         </div>
       </CredPane>

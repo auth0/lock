@@ -23,7 +23,8 @@ export default class AskPhoneNumber extends React.Component {
             <PhoneNumberInput value={c.phoneNumber(lock)}
               isValid={!c.visiblyInvalidPhoneNumber(lock)}
               onChange={::this.handlePhoneNumberChange}
-              autoFocus={l.ui.focusInput(lock)} />
+              autoFocus={l.ui.focusInput(lock)}
+              disabled={l.submitting(lock)} />
             <LocationInput value={c.phoneLocationString(lock)}
               onClick={::this.handleLocationClick} />
           </div>

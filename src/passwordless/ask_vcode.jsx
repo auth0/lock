@@ -25,7 +25,8 @@ export default class AskVcode extends React.Component {
           <VcodeInput value={c.vcode(lock)}
             isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
             onChange={::this.handleVcodeChange}
-            autoFocus={l.ui.focusInput(lock)} />
+            autoFocus={l.ui.focusInput(lock)}
+            disabled={l.submitting(lock)} />
         </div>
       </CredPane>
     );
