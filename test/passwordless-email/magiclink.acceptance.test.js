@@ -2,7 +2,7 @@ import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
 
-describe.skip(".magiclink acceptance", function() {
+describe(".magiclink acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -20,6 +20,10 @@ describe.skip(".magiclink acceptance", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "magiclink");
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("renders the widget and opens it after a few ms", function(done) {
@@ -43,6 +47,9 @@ describe.skip(".magiclink acceptance", function() {
       u.fillInput(this.lock, "email", "invalid email");
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
 
     it("doesn't mark the input as invalid", function() {
       expect(u.isInputInvalid(this.lock, "email")).to.not.be.ok();
@@ -93,6 +100,10 @@ describe.skip(".magiclink acceptance", function() {
       u.submit(this.lock);
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
+
     it("shows a loading indicator until a response is obtained", function() {
       expect(u.isLoading(this.lock)).to.be.ok();
     });
@@ -132,6 +143,10 @@ describe.skip(".magiclink acceptance", function() {
       this.cb = u.openLock(this.lock, "magiclink");
       u.fillInput(this.lock, "email", "someone@auth0.com");
       u.submit(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -183,6 +198,10 @@ describe.skip(".magiclink acceptance", function() {
       u.clickResendLink(this.lock);
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
+
     it("shows a loading indicator until a response is obtained", function() {
       expect(u.isResendingLink(this.lock)).to.be.ok();
     });
@@ -221,6 +240,10 @@ describe.skip(".magiclink acceptance", function() {
       u.simulateStartPasswordlessResponse();
       this.cb.reset();
       u.clickResendLink(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -270,6 +293,10 @@ describe.skip(".magiclink acceptance", function() {
       u.clickResendLink(this.lock);
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
+
     it("shows a loading indicator until a response is obtained", function() {
       expect(u.isResendingLink(this.lock)).to.be.ok();
     });
@@ -310,6 +337,10 @@ describe.skip(".magiclink acceptance", function() {
       u.simulateStartPasswordlessResponse({});
       this.cb.reset();
       u.clickResendLink(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {

@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
-describe.skip(".emailcode acceptance", function() {
+describe(".emailcode acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -19,6 +19,10 @@ describe.skip(".emailcode acceptance", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "emailcode");
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("renders the widget and opens it after a few ms", function(done) {
@@ -42,6 +46,9 @@ describe.skip(".emailcode acceptance", function() {
       u.fillInput(this.lock, "email", "invalid email");
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
 
     it("doesn't mark the input as invalid", function() {
       expect(u.isInputInvalid(this.lock, "email")).to.not.be.ok();
@@ -92,6 +99,10 @@ describe.skip(".emailcode acceptance", function() {
       u.submit(this.lock);
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
+
     it("shows a loading indicator until a response is obtained", function() {
       expect(u.isLoading(this.lock)).to.be.ok();
     });
@@ -133,6 +144,10 @@ describe.skip(".emailcode acceptance", function() {
       this.cb = u.openLock(this.lock, "emailcode");
       u.fillInput(this.lock, "email", "someone@auth0.com");
       u.submit(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -181,6 +196,10 @@ describe.skip(".emailcode acceptance", function() {
       u.submit(this.lock);
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
+
     it("marks the input as invalid", function() {
       expect(u.isInputInvalid(this.lock, "vcode")).to.be.ok();
     });
@@ -220,6 +239,10 @@ describe.skip(".emailcode acceptance", function() {
       u.simulateStartPasswordlessResponse();
       u.fillInput(this.lock, "vcode", "0303456");
       u.submit(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -264,6 +287,10 @@ describe.skip(".emailcode acceptance", function() {
       u.simulateStartPasswordlessResponse();
       u.fillInput(this.lock, "vcode", "0303456");
       u.submit(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {

@@ -39,6 +39,10 @@ export function isOpened(lock) {
   return hasClass(q(lock, ".auth0-lock"), "auth0-lock-opened");
 }
 
+export function closeLock(lock) {
+  Simulate.click(q(lock, ".auth0-lock-close").parentNode, {});
+}
+
 export function qInput(lock, str) {
   return q(lock, `${PANE_PREFIX} .auth0-lock-input-${str} input`);
 }

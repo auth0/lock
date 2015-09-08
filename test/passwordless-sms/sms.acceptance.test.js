@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
-describe.skip(".sms acceptance", function() {
+describe(".sms acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -19,6 +19,10 @@ describe.skip(".sms acceptance", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("renders the widget and opens it after a few ms", function(done) {
@@ -45,6 +49,11 @@ describe.skip(".sms acceptance", function() {
       u.openLock(this.lock, "sms");
     });
 
+    after(function() {
+      u.clickFirstLocation(this.lock); // necessary for the close button to show up
+      u.closeLock(this.lock);
+    });
+
     describe("when clicking the location input", function() {
       before(function() {
         u.clickLocationInput(this.lock);
@@ -61,6 +70,11 @@ describe.skip(".sms acceptance", function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
       u.clickLocationInput(this.lock);
+    });
+
+    after(function() {
+      u.clickFirstLocation(this.lock); // necessary for the close button to show up
+      u.closeLock(this.lock);
     });
 
     it("shows all locations available by default", function() {
@@ -105,7 +119,10 @@ describe.skip(".sms acceptance", function() {
       u.clickLocationInput(this.lock);
       u.filterLocations(this.lock, "spain");
       u.clickFirstLocation(this.lock);
+    });
 
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("closes the location selector", function(done) {
@@ -114,7 +131,7 @@ describe.skip(".sms acceptance", function() {
       setTimeout(() => {
         expect(u.isShowingLocationSelector(this.lock)).to.not.be.ok();
         done();
-      }, 1500);
+      }, 350);
     });
 
     it("updates the location input", function() {
@@ -141,6 +158,9 @@ describe.skip(".sms acceptance", function() {
       u.fillInput(this.lock, "phone-number", "invalid number");
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
 
     it("doesn't mark the input as invalid", function() {
       expect(u.isInputInvalid(this.lock, "phone-number")).to.not.be.ok();
@@ -191,6 +211,10 @@ describe.skip(".sms acceptance", function() {
       u.submit(this.lock);
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
+
     it("shows a loading indicator until a response is obtained", function() {
       expect(u.isLoading(this.lock)).to.be.ok();
     });
@@ -232,6 +256,10 @@ describe.skip(".sms acceptance", function() {
       this.cb = u.openLock(this.lock, "sms");
       u.fillInput(this.lock, "phone-number", "123456");
       u.submit(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -280,6 +308,10 @@ describe.skip(".sms acceptance", function() {
       u.submit(this.lock);
     });
 
+    after(function() {
+      u.closeLock(this.lock);
+    });
+
     it("marks the input as invalid", function() {
       expect(u.isInputInvalid(this.lock, "vcode")).to.be.ok();
     });
@@ -319,6 +351,10 @@ describe.skip(".sms acceptance", function() {
       u.simulateStartPasswordlessResponse();
       u.fillInput(this.lock, "vcode", "0303456");
       u.submit(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -363,6 +399,10 @@ describe.skip(".sms acceptance", function() {
       u.simulateStartPasswordlessResponse();
       u.fillInput(this.lock, "vcode", "0303456");
       u.submit(this.lock);
+    });
+
+    after(function() {
+      u.closeLock(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
