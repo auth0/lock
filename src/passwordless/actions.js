@@ -1,4 +1,5 @@
 import { read, getEntity, swap, updateEntity } from '../store/index';
+import { closeLock } from '../lock/actions';
 import webApi from '../lock/web_api';
 import * as c from '../cred/index';
 import * as l from '../lock/index';
@@ -183,5 +184,5 @@ export function reset(id, clearCred = true) {
 }
 
 export function close(id) {
-  swap(updateEntity, "lock", id, m.close);
+  closeLock(id, m.reset);
 }

@@ -20,13 +20,18 @@ export function openLock(id, mode, options) {
   return true;
 }
 
-export function closeLock(id, force = false) {
+export function closeLock(id, f) {
+  swap(updateEntity, "lock", id, lock => {
+    if (!l.ui.appendContainer(lock)) {
+      lock = lock.remove("render");
+    }
+    lock = l.close(lock)
+    return f(lock);
+  });
+
   const lock = read(getEntity, "lock", id);
-  if (force || l.ui.closable(lock)) {
-    const modeSpec = read(getEntity, "mode", l.mode(lock));
-    const closeHandler = modeSpec.get("closeHandler");
-    typeof closeHandler == "function" ?
-      closeHandler(lock) : swap(updateEntity, "lock", id, l.close);
+  if (l.rendering(lock)) {
+    setTimeout(() => swap(updateEntity, "lock", id, m => m.remove("render")), 1000);
   }
 }
 

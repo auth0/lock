@@ -64,10 +64,6 @@ export function isSendLink(m) {
   return send(m) === "link";
 }
 
-export function close(m) {
-  return reset(l.close(m));
-}
-
 export function setSelectingLocation(m, value) {
   return m.set("selectingLocation", !!value);
 }
