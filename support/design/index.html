@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<title>Design</title>
+<meta charset="utf-8">
+<style>
+body {
+  background-color: #1f1f24;
+  color: #727578;
+}
+
+.container {
+  overflow: hidden;
+  padding: 20px;
+}
+
+.info {
+  width: 300px;
+  float: left;
+  font-family: "Avenir", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+.info h2 {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.lock-container {
+  float: left;
+  padding: 20px 0 60px 20px;
+}
+
+.control {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  background-color: #fff;
+  z-index: 10000;
+}
+
+</style>
+<div id="control-container"></div>
+<div class="container">
+  <div class="info">
+    <h2>magiclink</h2>
+  </div>
+  <div class="lock-container" id="magiclink-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>emailcode</h2>
+  </div>
+  <div class="lock-container" id="emailcode-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>sms</h2>
+  </div>
+  <div class="lock-container" id="sms-container"></div>
+</div>
+<script src="/build/lock-passwordless.design.js"></script>
+<script>
+var cid = "1";
+var domain = "1";
+var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
+
+var magiclinkLock = new Auth0LockPasswordless(cid, domain);
+magiclinkLock.magiclink({container: "magiclink-container", terms: terms});
+
+var emailcodeLock = new Auth0LockPasswordless(cid, domain);
+emailcodeLock.emailcode({container: "emailcode-container", terms: terms, closable: true});
+
+var smsLock = new Auth0LockPasswordless(cid, domain);
+smsLock.sms({container: "sms-container", terms: terms});
+</script>

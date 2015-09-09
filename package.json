@@ -46,6 +46,7 @@
   "scripts": {
     "start": "grunt dev",
     "build": "grunt build",
+    "design": "grunt design",
     "test": "zuul -- test/*/*.test.js",
     "test:browser": "zuul --local 8080 --disable-tunnel -- test/*/*.test.js",
     "test:phantom": "mochify --recursive --extension=.jsx"
@@ -63,7 +64,9 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-connect": "^0.11.2",
     "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-stylus": "^0.22.0",
     "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "^0.4.4",
     "grunt-http": "^1.6.0",
     "mochify": "^2.12.0",

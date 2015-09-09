@@ -60,7 +60,6 @@ module.exports = function(grunt) {
       dev: {
         options: {
           watch: true,
-          keepAlive: true
         },
         src: "src/browser.js",
         dest: "build/lock-passwordless.js"
@@ -68,6 +67,13 @@ module.exports = function(grunt) {
       build: {
         src: "src/browser.js",
         dest: "build/lock-passwordless.js"
+      },
+      design: {
+        options: {
+          watch: true,
+        },
+        src: "support/design/index.js",
+        dest: "build/lock-passwordless.design.js"
       }
     },
     clean: {
@@ -105,6 +111,21 @@ module.exports = function(grunt) {
       purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + minor_version + ".js",     method: "DELETE"}},
       purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + minor_version + ".min.js", method: "DELETE"} }
     },
+    stylus: {
+      build: {
+        options: {
+          compress: false // temp
+        },
+        src: "css/index.styl",
+        dest: "css/index.css"
+      }
+    },
+    watch: {
+      stylus: {
+        files: ["css/index.styl"],
+        tasks: ["stylus:build"]
+      }
+    },
     uglify: {
       build: {
         src: "build/lock-passwordless.js",
@@ -118,13 +139,16 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-env");
   grunt.loadNpmTasks("grunt-http");
 
 
   grunt.registerTask("build", ["clean:build", "env:build", "browserify:build", "uglify:build"]);
-  grunt.registerTask("dev", ["clean:dev", "connect:dev", "browserify:dev"]);
+  grunt.registerTask("dev", ["clean:dev", "connect:dev", "browserify:dev", "watch"]);
+  grunt.registerTask("design", ["clean:dev", "connect:dev", "browserify:design", "watch"]);
   grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
   grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
 
