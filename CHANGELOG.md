@@ -4,56 +4,6 @@
 
 - [] Added Japanese translations (`Daniel Lobo`)
   https://github.com/auth0/lock/commit/1369674b474e1f57ae7dce6f655b1616c5aa5cda
-- [] Release: 7.9.2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/6f7b1b5d2f4a457bd68eb4f90a819c972c59c481
-- [] Bump auth0.js@6.6.3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/4995662f501c2bf533ecd87892a2a3ad85ec44ab
-- [] Release: 7.9.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/514ac1e63732b1cd9a4ee8efaf18e7530e8637d4
-- [] Add au domain for client fetch (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
-- [] Revert example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
-- [] Release: 7.9.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/d9f91b9431f6e056eafb73ffa8944bd6aebcc9bf
-- [] Final fixes for options with popup and sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
-- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
-- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
-- [] Fix double open of popup from different lock threads (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
-- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
-- [] Release: 7.8.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
-- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
-- [] Release: 7.8.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
-- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
-- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
-- [] Add a few npm commands for better CI handling (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
-- [] Update example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
-- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
-- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
-- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
-- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
-- [] First succesful attempt for custom rules errors (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
-- [] First attempt to make rule fail (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
-- [] [repo]: Add demo css to development task (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
 
 ## [7.9.2] - 2015-08-26
 
@@ -61,52 +11,6 @@
 
 - [] Bump auth0.js@6.6.3 (`Cristian Douce`)
   https://github.com/auth0/lock/commit/4995662f501c2bf533ecd87892a2a3ad85ec44ab
-- [] Release: 7.9.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/514ac1e63732b1cd9a4ee8efaf18e7530e8637d4
-- [] Add au domain for client fetch (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
-- [] Revert example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
-- [] Release: 7.9.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/d9f91b9431f6e056eafb73ffa8944bd6aebcc9bf
-- [] Final fixes for options with popup and sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
-- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
-- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
-- [] Fix double open of popup from different lock threads (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
-- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
-- [] Release: 7.8.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
-- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
-- [] Release: 7.8.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
-- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
-- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
-- [] Add a few npm commands for better CI handling (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
-- [] Update example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
-- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
-- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
-- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
-- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
-- [] First succesful attempt for custom rules errors (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
-- [] First attempt to make rule fail (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
-- [] [repo]: Add demo css to development task (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
 
 ## [7.9.1] - 2015-08-26
 
@@ -116,46 +20,6 @@
   https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
 - [] Revert example (`Cristian Douce`)
   https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
-- [] Release: 7.9.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/d9f91b9431f6e056eafb73ffa8944bd6aebcc9bf
-- [] Final fixes for options with popup and sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
-- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
-- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
-- [] Fix double open of popup from different lock threads (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
-- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
-- [] Release: 7.8.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
-- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
-- [] Release: 7.8.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
-- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
-- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
-- [] Add a few npm commands for better CI handling (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
-- [] Update example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
-- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
-- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
-- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
-- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
-- [] First succesful attempt for custom rules errors (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
-- [] First attempt to make rule fail (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
-- [] [repo]: Add demo css to development task (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
 
 ## [7.9.0] - 2015-08-26
 
@@ -171,34 +35,6 @@
   https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
 - [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
   https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
-- [] Release: 7.8.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
-- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
-- [] Release: 7.8.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
-- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
-- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
-- [] Add a few npm commands for better CI handling (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
-- [] Update example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
-- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
-- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
-- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
-- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
-- [] First succesful attempt for custom rules errors (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
-- [] First attempt to make rule fail (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
-- [] [repo]: Add demo css to development task (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
 
 ## [7.8.1] - 2015-08-26
 
@@ -206,30 +42,6 @@
 
 - [] Bump auth0-js@6.6.1 (`Cristian Douce`)
   https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
-- [] Release: 7.8.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
-- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
-- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
-- [] Add a few npm commands for better CI handling (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
-- [] Update example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
-- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
-- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
-- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
-- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
-- [] First succesful attempt for custom rules errors (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
-- [] First attempt to make rule fail (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
-- [] [repo]: Add demo css to development task (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
 
 ## [7.8.0] - 2015-08-26
 
@@ -275,26 +87,6 @@
   https://github.com/auth0/lock/commit/5a226beaa2b933d31482a07882ed2914dfe51013
 - [] Update i18n module to better handle dicts. Expose dicts on Lock instance for easy override (`Cristian Douce`)
   https://github.com/auth0/lock/commit/403b86afd46d4135242b1ad5eee89778936b8b33
-- [] Release: 7.7.4 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/be4dd6652caf2ddaeb9bbc1501c9eb92a429ea0c
-- [] Merge pull request #206 from bartdereu/patch-3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/f67e9aecb5de82dfad1e10df8c9f066c8d74e001
-- [] Update nl-NL.json (`bartdereu`)
-  https://github.com/auth0/lock/commit/77cd8bce752198ca284321dbf5ac7426218db922
-- [] Release: 7.7.3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/eb6b05ff0455fba4f730559e98e630b2af76f55b
-- [] Merge pull request #203 from bartdereu/patch-2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b7361a3b32372a24547bdf180e85bf360363acd4
-- [] Update nl-NL.json (`bartdereu`)
-  https://github.com/auth0/lock/commit/5bbb380fcc4633c58f0c54471d2854d80fe34796
-- [] add region to Gruntfile (`José F. Romaniello`)
-  https://github.com/auth0/lock/commit/c299e086ab1279bd455cf90723f32d5693a31f17
-- [] Release: 7.7.2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/32ac9ccd32fe0b6490ec6b510d2bff1fd6576fd1
-- [] Merge pull request #199 from auth0/remove/cdn-option (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/56658246e7f43187bc56af596da47afcda625f46
-- [] Remove alt_spinner from templates and also options.cdn from lock constructor (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/2b706277564daf09b8152717fc6ead64613817b2
 
 ## [7.7.4] - 2015-07-23
 
@@ -304,20 +96,6 @@
   https://github.com/auth0/lock/commit/f67e9aecb5de82dfad1e10df8c9f066c8d74e001
 - [] Update nl-NL.json (`bartdereu`)
   https://github.com/auth0/lock/commit/77cd8bce752198ca284321dbf5ac7426218db922
-- [] Release: 7.7.3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/eb6b05ff0455fba4f730559e98e630b2af76f55b
-- [] Merge pull request #203 from bartdereu/patch-2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b7361a3b32372a24547bdf180e85bf360363acd4
-- [] Update nl-NL.json (`bartdereu`)
-  https://github.com/auth0/lock/commit/5bbb380fcc4633c58f0c54471d2854d80fe34796
-- [] add region to Gruntfile (`José F. Romaniello`)
-  https://github.com/auth0/lock/commit/c299e086ab1279bd455cf90723f32d5693a31f17
-- [] Release: 7.7.2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/32ac9ccd32fe0b6490ec6b510d2bff1fd6576fd1
-- [] Merge pull request #199 from auth0/remove/cdn-option (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/56658246e7f43187bc56af596da47afcda625f46
-- [] Remove alt_spinner from templates and also options.cdn from lock constructor (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/2b706277564daf09b8152717fc6ead64613817b2
 
 ## [7.7.3] - 2015-07-23
 
@@ -329,12 +107,6 @@
   https://github.com/auth0/lock/commit/5bbb380fcc4633c58f0c54471d2854d80fe34796
 - [] add region to Gruntfile (`José F. Romaniello`)
   https://github.com/auth0/lock/commit/c299e086ab1279bd455cf90723f32d5693a31f17
-- [] Release: 7.7.2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/32ac9ccd32fe0b6490ec6b510d2bff1fd6576fd1
-- [] Merge pull request #199 from auth0/remove/cdn-option (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/56658246e7f43187bc56af596da47afcda625f46
-- [] Remove alt_spinner from templates and also options.cdn from lock constructor (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/2b706277564daf09b8152717fc6ead64613817b2
 
 ## [7.7.2] - 2015-07-23
 
@@ -351,30 +123,6 @@
 
 - [] Add close event for when the user clicks the X button (`Cristian Douce`)
   https://github.com/auth0/lock/commit/a5960db82ea9767c2761dfb08a893aac80197aba
-- [] Release: 7.7.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/6dea46604623160c3d81d87883421c565ec2966b
-- [] Merge pull request #196 from tehsis/issues/82-events (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c14e5405c0121122c291df8a90a58b04ebfd7065
-- [] Improved lifecycle events (`Pablo Terradillos`)
-  https://github.com/auth0/lock/commit/523fb75ca966f7e3da522727cf95c3d444625581
-- [] Update CHANGELOG.md (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/067f5f9c2fec61e82fb5eff0a785b38c7e3f3384
-- [] Release: 7.6.2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/52ff5d10cb7a5c01b90e518bde9f2f4ad4162abe
-- [] Add korean language (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/2b9a743713ccffdfa277d2ec7adbffce35abcbd1
-- [] Merge pull request #182 from amondnet/internationalization-korean (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c25939283383e8c46dfecb46e4dbe725f265c24e
-- [] Update CHANGELOG.md (`Alberto Pose`)
-  https://github.com/auth0/lock/commit/8fb1691d5489f2c0ed0ae2fba2d2f49239a57584
-- [] add korean language (`amond`)
-  https://github.com/auth0/lock/commit/60b1026838e461fa4a8605fd144dcf9fb6a2ee13
-- [] Merge remote-tracking branch 'origin/internationalization-korean' into internationalization-korean (`amond`)
-  https://github.com/auth0/lock/commit/878e8762147651e611557f774d26aa9be4fa3682
-- [] add korean language (`amond`)
-  https://github.com/auth0/lock/commit/f8de99faa41558b3bc20d3ffa63772c5daf43da8
-- [] add korean language (`amond`)
-  https://github.com/auth0/lock/commit/5333ad0b8fc745f067ae8a697f18e037fcd67ddf
 
 ## [7.7.0] - 2015-07-08
 
@@ -384,24 +132,6 @@
   https://github.com/auth0/lock/commit/c14e5405c0121122c291df8a90a58b04ebfd7065
 - [] Improved lifecycle events (`Pablo Terradillos`)
   https://github.com/auth0/lock/commit/523fb75ca966f7e3da522727cf95c3d444625581
-- [] Update CHANGELOG.md (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/067f5f9c2fec61e82fb5eff0a785b38c7e3f3384
-- [] Release: 7.6.2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/52ff5d10cb7a5c01b90e518bde9f2f4ad4162abe
-- [] Add korean language (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/2b9a743713ccffdfa277d2ec7adbffce35abcbd1
-- [] Merge pull request #182 from amondnet/internationalization-korean (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c25939283383e8c46dfecb46e4dbe725f265c24e
-- [] Update CHANGELOG.md (`Alberto Pose`)
-  https://github.com/auth0/lock/commit/8fb1691d5489f2c0ed0ae2fba2d2f49239a57584
-- [] add korean language (`amond`)
-  https://github.com/auth0/lock/commit/60b1026838e461fa4a8605fd144dcf9fb6a2ee13
-- [] Merge remote-tracking branch 'origin/internationalization-korean' into internationalization-korean (`amond`)
-  https://github.com/auth0/lock/commit/878e8762147651e611557f774d26aa9be4fa3682
-- [] add korean language (`amond`)
-  https://github.com/auth0/lock/commit/f8de99faa41558b3bc20d3ffa63772c5daf43da8
-- [] add korean language (`amond`)
-  https://github.com/auth0/lock/commit/5333ad0b8fc745f067ae8a697f18e037fcd67ddf
 
 ## [7.6.2] - 2015-06-02
 
