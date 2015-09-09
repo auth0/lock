@@ -1,4 +1,5 @@
 import React from 'react/addons';
+import { Map } from 'immutable';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
 import Badge from './auth0_badge';
@@ -9,6 +10,11 @@ import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
 export default class Lock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {dimensions: new Map({})};
+  }
+
   componentDidMount() {
     this.escKeydown = new EscKeydownUtils(() => this.handleClose());
   }
@@ -46,9 +52,9 @@ export default class Lock extends React.Component {
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
             {backHandler && <IconButton name="back" onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
-              {/*<ReactCSSTransitionGroup transitionName="horizontal-fade" transitionAppear={true}>*/}
-                {children}
-              {/*</ReactCSSTransitionGroup>*/}
+              <ReactCSSTransitionGroup transitionName="horizontal-fade" transitionAppear={true}>
+                {React.cloneElement(children, {dimensions: ::this.dimensions})}
+              </ReactCSSTransitionGroup>
             </div>
             <span className="auth0-lock-badge-bottom">
               <Badge />
@@ -75,6 +81,11 @@ export default class Lock extends React.Component {
   handleBack() {
     const { backHandler, lock } = this.props;
     backHandler(lock);
+  }
+
+  dimensions(k, v) {
+    if (typeof v === "undefined") return this.state.dimensions.get(k);
+    this.setState({dimensions: this.state.dimensions.set(k, v)});
   }
 }
 

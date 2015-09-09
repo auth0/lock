@@ -11,7 +11,7 @@ const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export default class CredPane extends React.Component {
   render() {
-    const { auxiliaryPane, className, lock, showTerms } = this.props;
+    const { auxiliaryPane, className, dimensions, lock, showTerms } = this.props;
 
     const gravatar = l.gravatar(lock);
     const icon = l.ui.icon(lock);
@@ -31,17 +31,54 @@ export default class CredPane extends React.Component {
       <div className={className + " auth0-lock-cred-pane"}>
         <Header name={name} backgroundUrl={backgroundUrl} logoUrl={icon}/>
         <ReactTransitionGroup>
-          {globalError && <GlobalError key="global-error" message={globalError} />}
+          <Placeholder dimensions={dimensions}>
+            <ReactTransitionGroup>
+              {globalError && <GlobalError key="global-error" message={globalError} />}
+            </ReactTransitionGroup>
+            <div className="auth0-lock-content">
+              {this.props.children}
+            </div>
+            {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
+          </Placeholder>
         </ReactTransitionGroup>
-        <div className="auth0-lock-content">
-          {this.props.children}
-        </div>
-        {showTerms && l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         <SubmitButton disabled={disableSubmit} />
         <ReactCSSTransitionGroup transitionName="slide">
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
       </div>
     );
+  }
+}
+
+class Placeholder extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {show: true};
+  }
+
+  render() {
+    return <div>{this.state.show && this.props.children}</div>;
+  }
+
+  componentWillAppear(callback) {
+    const { dimensions } = this.props;
+    const node = React.findDOMNode(this);
+    const height = window.getComputedStyle(node, null).height;
+    const prevHeight = dimensions("credPane");
+    if (!prevHeight) {
+      dimensions("credPane", height);
+      return;
+    }
+
+    this.setState({show: false});
+    node.style.height = prevHeight;
+
+    setTimeout(() => {
+      this.setState({show: true})
+      node.style.transition = "all 0.4s 0.8s";
+      node.style.height = height;
+      dimensions("credPane", height);
+      callback();
+    }, 800);
   }
 }
