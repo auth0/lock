@@ -78,7 +78,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           hostname: "*",
-          base: [".", "build", "playground"],
+          base: [".", "build", "support"],
           port: 3000
         }
       },
