@@ -2,6 +2,7 @@ import { read, getEntity, swap, updateEntity } from '../store/index';
 import { closeLock } from '../lock/actions';
 import webApi from '../lock/web_api';
 import * as c from '../cred/index';
+import * as cc from '../cred/country_codes';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -15,6 +16,21 @@ export function changePhoneLocation(id, location) {
     lock = c.setPhoneLocation(lock, location);
     return lock;
   });
+}
+
+export function setDefaultLocation(id, str) {
+  let [dialingCode, ...countryParts] = str.split(" ");
+  const result = cc.find(dialingCode, countryParts.join(" "));
+
+  if (result.size === 0) {
+    throw new Error(`Unable to set the default location, can't find any that matches "${str}".`);
+  }
+
+  if (result.size > 1) {
+    throw new Error(`Unable to set the default location, multiple locations match "${str}". Try appending the country name.`);
+  }
+
+  swap(updateEntity, "lock", id, c.setPhoneLocation, result.get(0));
 }
 
 export function changeEmail(id, email) {

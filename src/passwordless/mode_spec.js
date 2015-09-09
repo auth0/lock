@@ -1,5 +1,5 @@
 import { openLock } from '../lock/actions';
-import { close } from './actions';
+import { close, setDefaultLocation } from './actions';
 import { openFunctionArgsResolver } from '../lock/mode';
 import render from './render';
 
@@ -23,6 +23,7 @@ function sms(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("sms", args);
   options.signInCallback = callback;
   options.modeOptions = {send: "sms"};
+  if (options.defaultLocation) setDefaultLocation(id, options.defaultLocation);
   return openLock(id, NAME, options);
 }
 

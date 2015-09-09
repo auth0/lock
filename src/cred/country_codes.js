@@ -14,6 +14,11 @@ export function locationString(m) {
 
 export const defaultLocation = Immutable.fromJS(["Argentina", "+54"]);
 
+export function find(dialingCode, country) {
+  return countryCodes.filter(x => {
+    return x.get(1) === dialingCode && (!country || x.get(0) === country);
+  });
+}
 
 // TODO: rename this, and the file, to "locations"
 export const countryCodes = Immutable.fromJS([
