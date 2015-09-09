@@ -35,6 +35,6 @@ export default new Auth0WebAPI();
 function normalizeError(error) {
   return error && {
     error: error.details ? error.details.error : (error.statusCode || error.error),
-    description: error.details ? error.details.error_description : (error.error_description || error.message)
+    description: error.details ? error.details.error_description : (error.error_description || error.error)
   }
 }
