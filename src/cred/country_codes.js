@@ -12,7 +12,7 @@ export function locationString(m) {
   return `${country(m)} ${dialingCode(m)}`;
 }
 
-export const defaultLocation = Immutable.fromJS(["Argentina", "+54"]);
+export const defaultLocation = Immutable.fromJS(["United States", "+1"]);
 
 export function find(dialingCode, country) {
   return countryCodes.filter(x => {
