@@ -2,7 +2,7 @@ import AskPhoneNumber from './ask_phone_number';
 import AskEmail from './ask_email';
 import AskVcode from './ask_vcode';
 import SignedIn from './signed_in';
-import { close, reset, requestPasswordlessEmail, sendSMS, signIn } from './actions';
+import { close, requestPasswordlessEmail, sendSMS, signIn } from './actions';
 import * as c from '../cred/index';
 import * as l from '../lock/index';
 import * as m from './index';
@@ -21,20 +21,13 @@ function askVcodeSubmitHandler(lock) {
   signIn(l.id(lock));
 }
 
-function backHandler(lock) {
-  reset(l.id(lock), false);
-}
-
 export default function render(lock) {
-  // NOTE: we can use generics handlers for `backHandler`, `closeHandler` and
-  // `submitHandler` that dispatch to the right function given the value of
-  // `lock`. But, in order to do that an extra function `allowBack` needs to be
-  // provided (right now passing a `backHandler` means we allow to go back).
+  // NOTE: we can use generics handlers for closeHandler` and `submitHandler`
+  // that dispatch to the right function given the value of `lock`.
   function props() {
     switch(m.send(lock)) {
     case "code":
       return {
-        backHandler: m.passwordlessStarted(lock) && !m.signedIn(lock) && backHandler,
         closeHandler: close,
         children: m.passwordlessStarted(lock) ?
           <AskVcode className="auth0-lock-ask-email-vcode" cred={`email (${c.email(lock)})`} lock={lock} key="ask-vcode" /> :
@@ -51,7 +44,6 @@ export default function render(lock) {
       };
     case "sms":
       return {
-        backHandler: m.passwordlessStarted(lock) && !m.signedIn(lock) && backHandler,
         closeHandler: close,
         children: m.passwordlessStarted(lock) ?
           <AskVcode className="auth0-lock-enter-code" cred={`phone (${c.fullHumanPhoneNumber(lock)})`} lock={lock} key="ask-vcode" /> :

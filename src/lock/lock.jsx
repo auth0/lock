@@ -1,5 +1,6 @@
 import React from 'react/addons';
 import { Map } from 'immutable';
+import MultisizeSlide from '../multisize-slide/multisize_slide';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
 import Badge from './auth0_badge';
@@ -10,11 +11,6 @@ import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
 export default class Lock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {dimensions: new Map({})};
-  }
-
   componentDidMount() {
     this.escKeydown = new EscKeydownUtils(() => this.handleClose());
   }
@@ -24,7 +20,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { backHandler, children, closeHandler, lock, submitHandler, disallowClose } = this.props;
+    const { children, closeHandler, lock, submitHandler, disallowClose } = this.props;
 
     const overlay = l.ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -50,11 +46,8 @@ export default class Lock extends React.Component {
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
-            {backHandler && <IconButton name="back" onClick={::this.handleBack} />}
             <div className="auth0-lock-widget-container">
-              <ReactCSSTransitionGroup transitionName="horizontal-fade" transitionAppear={true}>
-                {React.cloneElement(children, {dimensions: ::this.dimensions})}
-              </ReactCSSTransitionGroup>
+              <MultisizeSlide delay={1000} transitionName="horizontal-fade">{children}</MultisizeSlide>
             </div>
             <span className="auth0-lock-badge-bottom">
               <Badge />
@@ -76,16 +69,6 @@ export default class Lock extends React.Component {
   handleClose() {
     const { closeHandler, lock } = this.props;
     closeHandler(l.id(lock));
-  }
-
-  handleBack() {
-    const { backHandler, lock } = this.props;
-    backHandler(lock);
-  }
-
-  dimensions(k, v) {
-    if (typeof v === "undefined") return this.state.dimensions.get(k);
-    this.setState({dimensions: this.state.dimensions.set(k, v)});
   }
 }
 

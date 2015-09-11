@@ -2,7 +2,7 @@ import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
 
-describe(".magiclink acceptance", function() {
+describe.skip(".magiclink acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 

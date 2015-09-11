@@ -202,3 +202,7 @@ export function reset(id, clearCred = true) {
 export function close(id) {
   closeLock(id, m.reset);
 }
+
+export function back(id) {
+  reset(id, false);
+}

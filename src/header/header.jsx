@@ -1,14 +1,15 @@
 import React from 'react';
 import Background from './background';
 import Welcome from './welcome';
-
+import IconButton from '../icon/button';
 
 export default class Header extends React.Component {
   render() {
-    const { name, logoUrl, backgroundUrl } = this.props;
+    const { backHandler, backgroundUrl, logoUrl, name } = this.props;
 
     return (
       <div className="auth0-lock-header">
+        {backHandler && <IconButton name="back" onClick={backHandler}/>}
         <Background imageUrl={backgroundUrl} grayScale={!!name} />
         <Welcome name={name} imageUrl={!name && logoUrl} />
       </div>

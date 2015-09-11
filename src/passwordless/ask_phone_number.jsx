@@ -10,12 +10,12 @@ import * as m from './index';
 
 export default class AskPhoneNumber extends React.Component {
   render() {
-    const { dimensions, lock } = this.props;
+    const { lock } = this.props;
     const auxiliaryPane = m.selectingLocation(lock) ?
       <AskLocation key="auxiliarypane" lock={lock} /> : null;
 
     return (
-      <CredPane lock={lock} dimensions={dimensions} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" showTerms={true}>
+      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" showTerms={true} ref="cred">
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
             <h2>SMS</h2>
@@ -39,5 +39,17 @@ export default class AskPhoneNumber extends React.Component {
 
   handleLocationClick() {
     selectPhoneLocation(l.id(this.props.lock));
+  }
+
+  componentWillSlideIn(...args) {
+    return this.refs.cred.componentWillSlideIn(...args);
+  }
+
+  componentDidSlideIn(...args) {
+    return this.refs.cred.componentDidSlideIn(...args);
+  }
+
+  componentWillSlideOut(...args) {
+    return this.refs.cred.componentWillSlideOut(...args);
   }
 }
