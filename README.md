@@ -2,7 +2,6 @@
 
 [![NPM version][npm-image]][npm-url]
 [![Build status][strider-image]][strider-url]
-[![Test coverage][coveralls-image]][coveralls-url]
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
@@ -299,8 +298,6 @@ TODO
 [npm-url]: https://npmjs.org/package/auth0-lock-passwordless
 [strider-image]: https://ci.auth0.com/auth0/lock-passwordless/badge
 [strider-url]: https://ci.auth0.com/auth0/lock-passwordless
-[coveralls-image]: https://img.shields.io/coveralls/auth0/lock-passwordless.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/auth0/lock-passwordless?branch=master
 [david-image]: http://img.shields.io/david/auth0/lock-passwordless.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock-passwordless
 [license-image]: http://img.shields.io/npm/l/auth0-lock-passwordless.svg?style=flat-square
