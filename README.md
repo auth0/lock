@@ -284,15 +284,48 @@ We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 9. We curre
 
 ## Contributing
 
-TODO
+Clone the repo and run the following commands:
+
+```
+npm install
+npm start
+```
+
+Changes to the source code will be automatically rebuilt. To see the result, point your favorite browser to http://localhost:3000/playground/.
+
+However, testing changes that way can be cumbersome because there are HTTP request involved which are being rate-limited. If your changes are scoped to the UI, you will be better off running:
+
+```
+npm run design
+```
+
+And pointing your browser to http://localhost:3000/design/. It behaves just like `npm start` but requests to the [Auth0](https://auth0.com) API will be simulated.
+
+
+### Running the tests
+
+Tests can be run in [PhantomJS](http://phantomjs.org/) or in a web browser with the following commands:
+
+```
+npm run test:phantom
+npm run test:browser
+```
+
+### Releasing a new version
+
+Whenever a new commit is pushed to _master_, the CI will attempt to deploy a new release to [Github](https://github.com) and [NPM](https://www.npmjs.com) if the tests pass and there isn't already a release for the version specified in the [package.json](package.json) file. See [bin/deploy](bin/deploy) for the details.
+
+There is also a convenient [script](bin/version) to prepare a new release:
+
+```
+bin/version {patch,minor,major}
+```
 
 ## Issue Reporting
 
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub [issue tracker](https://github.com/auth0/lock-passwordless/issues). The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
 
-## Resources
 
-TODO
 
 [npm-image]: https://img.shields.io/npm/v/auth0-lock-passwordless.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock-passwordless
