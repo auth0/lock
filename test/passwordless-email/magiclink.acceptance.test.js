@@ -96,7 +96,7 @@ describe(".magiclink acceptance", function() {
     });
   });
 
-  describe.skip("successfully submitting an email", function() {
+  describe("successfully submitting an email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
@@ -126,9 +126,9 @@ describe(".magiclink acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      // it("doesn't show an input for the email", function() {
-      //   expect(u.qInput(this.lock, "email")).to.not.be.ok();
-      // });
+      it.skip("doesn't show an input for the email", function() {
+        expect(u.qInput(this.lock, "email")).to.not.be.ok();
+      });
 
       it("shows a confirmation screen", function() {
         expect(u.isShowingConfirmation(this.lock)).to.be.ok();
