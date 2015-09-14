@@ -47,7 +47,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("opening the location selector", function() {
+  describe("opening the location selector", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -60,7 +60,7 @@ describe(".sms acceptance", function() {
 
     describe("when clicking the location input", function() {
       before(function() {
-        u.clickLocationInput(this.lock);
+        u.clickInput(this.lock, "location");
       });
 
       it("shows the location selector", function() {
@@ -73,7 +73,7 @@ describe(".sms acceptance", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
-      u.clickLocationInput(this.lock);
+      u.clickInput(this.lock, "location");
     });
 
     after(function() {
@@ -120,7 +120,7 @@ describe(".sms acceptance", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
-      u.clickLocationInput(this.lock);
+      u.clickInput(this.lock, "location");
       u.filterLocations(this.lock, "spain");
       u.clickFirstLocation(this.lock);
     });

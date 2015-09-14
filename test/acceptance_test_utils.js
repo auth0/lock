@@ -20,6 +20,9 @@ function hasClass(element, str) {
 // transition is over (because is rather long).
 const CURRENT_CRED_PANE_SELECTOR = ".auth0-lock-cred-pane:not(.horizontal-fade-leave):not(.reverse-horizontal-fade-leave)";
 
+// We also perform an animated transition with auxiliary panes.
+const AUXILIARY_PANE_SELECTOR_SUFFIX = ":not(.slide-leave)";
+
 const DEFAULT_ERROR_MESSAGE = /We're sorry, something went wrong when sending the (email|SMS)\./;
 
 export function constructLock(cid = "a", domain = "a") {
@@ -69,12 +72,12 @@ export function qInput(lock, str, ensure = false) {
   // NOTE: not sure about whether this check is actually necessary
   const currentCredPanes = q(lock, CURRENT_CRED_PANE_SELECTOR, true);
   if (currentCredPanes.length > 1) {
-    throw new Error("Unable to find the current credential pane: there's more than one");
+    throw new Error("Unable to query the current credential pane: there's more than one");
   }
 
   const input = q(lock, `${CURRENT_CRED_PANE_SELECTOR} .auth0-lock-input-${str} input`);
   if (ensure && !input) {
-    throw new Error(`Unable to find the '${str}' input value: can't find the input`);
+    throw new Error(`Unable to query the '${str}' input value: can't find the input`);
   }
 
   return input;
@@ -86,6 +89,10 @@ export function qInputValue(lock, str) {
 
 export function fillInput(lock, name, value) {
   Simulate.change(qInput(lock, name), {target: {value: value}});
+}
+
+export function clickInput(lock, str) {
+  Simulate.click(qInput(lock, str, true), {});
 }
 
 export function isInputInvalid(lock, str) {
@@ -177,12 +184,12 @@ export function isRetryAvailable(lock) {
   return q(lock, ".auth0-lock-resend-link").textContent.match(/Retry/);
 }
 
-export function clickLocationInput(lock) {
-  Simulate.click(q(lock, `${CURRENT_CRED_PANE_SELECTOR} .auth0-lock-input-location input`), {});
+function isShowingAuxiliaryPane(lock, selector) {
+  return !!q(lock, `${selector}${AUXILIARY_PANE_SELECTOR_SUFFIX}`);
 }
 
 export function isShowingLocationSelector(lock) {
-  return !!q(lock, ".auth0-lock-select-country:not(.slide-leave)");
+  return isShowingAuxiliaryPane(lock, ".auth0-lock-select-country");
 }
 
 export function qLocations(lock) {
@@ -198,5 +205,10 @@ export function filterLocations(lock, value) {
 }
 
 export function clickFirstLocation(lock) {
-  Simulate.click(qLocations(lock)[0], {});
+  const nodes = qLocations(lock);
+  if (nodes.length === 0) {
+    throw new Error("Unable to click the first location: couldn't find any location to click");
+  }
+
+  Simulate.click(nodes[0], {});
 }
