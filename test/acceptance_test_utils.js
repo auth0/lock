@@ -25,8 +25,10 @@ export const CRED_PANE_DELAY = 1850;
 const AUXILIARY_PANE_SELECTOR_SUFFIX = ":not(.slide-leave)";
 export const AUXILIARY_PANE_DELAY = 400;
 
+// TODO: remove when replaced
 const DEFAULT_ERROR_MESSAGE = /We're sorry, something went wrong when sending the (email|SMS)\./;
 
+export const SMS_GENERIC_ERROR = "We're sorry, something went wrong when sending the SMS."
 export function constructLock(cid = "a", domain = "a") {
   return new Auth0LockPasswordless(cid, domain);
 }

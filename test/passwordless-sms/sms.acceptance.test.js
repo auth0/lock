@@ -145,12 +145,12 @@ describe(".sms acceptance", function() {
 
     describe("when submiting", function() {
       before(function() {
-        u.fillInput(this.lock, "phone-number", "123456");
+        u.fillInput(this.lock, "phone-number", "0303456");
         u.submit(this.lock);
       });
 
       it("starts the passwordless flow with the given location", function() {
-        const params = {phoneNumber: "+34123456",};
+        const params = {phoneNumber: "+340303456",};
         expect(u.hasStartedPasswordless(params)).to.be.ok();
       });
     });
@@ -188,7 +188,7 @@ describe(".sms acceptance", function() {
 
       describe("when fixing the phone number", function() {
         before(function() {
-          u.fillInput(this.lock, "phone-number", "123456");
+          u.fillInput(this.lock, "phone-number", "0303456");
         });
 
         it("clears the input error", function() {
@@ -212,7 +212,7 @@ describe(".sms acceptance", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
-      u.fillInput(this.lock, "phone-number", "123456");
+      u.fillInput(this.lock, "phone-number", "0303456");
       u.submit(this.lock);
     });
 
@@ -225,7 +225,7 @@ describe(".sms acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {phoneNumber: "+1123456"};
+      const params = {phoneNumber: "+10303456"};
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -256,11 +256,11 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("unsuccessful attempt to submit a phone number", function() {
+  describe("unsuccessful attempt to submit a phone number", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
-      u.fillInput(this.lock, "phone-number", "123456");
+      u.fillInput(this.lock, "phone-number", "0303456");
       u.submit(this.lock);
     });
 
@@ -273,7 +273,7 @@ describe(".sms acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {phoneNumber: "+54123456"};
+      const params = {phoneNumber: "+10303456"};
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -299,7 +299,7 @@ describe(".sms acceptance", function() {
       });
 
       it("shows a generic error", function() {
-        expect(u.isSomethingWrong(this.lock)).to.be.ok();
+        expect(u.isSomethingWrong(this.lock, u.SMS_GENERIC_ERROR)).to.be.ok();
       });
     });
   });
