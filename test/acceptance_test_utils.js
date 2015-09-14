@@ -36,8 +36,13 @@ function q(lock, query, all = false) {
   return global.document[method](query);
 }
 
-function qLock(lock) {
-  return q(lock, ".auth0-lock");
+function qLock(lock, ensure = false) {
+  const node = q(lock, ".auth0-lock");
+  if (ensure && !node) {
+    throw new Error("Unable to query the Lock: couldn't find the element");
+  }
+
+  return node;
 }
 
 export function isRendered(lock) {
@@ -96,9 +101,13 @@ export function clickInput(lock, str) {
   Simulate.click(qInput(lock, str, true), {});
 }
 
-export function isInputInvalid(lock, str) {
-  const input = qInput(lock, str);
-  return hasClass(input.parentNode.parentNode, "auth0-lock-error");
+export function isInputInvalid(lock, name) {
+  const input = qInput(lock, name, true);
+  const node = input.parentNode && input.parentNode.parentNode;
+  if (!node) {
+    throw new Error(`Unable to tell whether '${name}' input is invalid: can't find container element responsible to indicate it`);
+  }
+  return CSSCore.hasClass(node, "auth0-lock-error");
 }
 
 export function submit(lock) {
@@ -128,12 +137,15 @@ function resetWebApis() {
   stubWebApis();
 }
 
+// TODO: remove once all references have been replaced by something with a
+// higher level.
 export function startPasswordlessCallCount() {
   return webApi.startPasswordless.callCount;
 }
 
 export function isLoading(lock) {
-  return hasClass(q(lock, ".auth0-lock"), "auth0-lock-mode-loading");
+  const node = qLock(lock, true);
+  return CSSCore.hasClass(node, "auth0-lock-mode-loading");
 }
 
 export function simulateStartPasswordlessResponse(error = null) {
@@ -142,6 +154,9 @@ export function simulateStartPasswordlessResponse(error = null) {
 }
 
 export function hasStartedPasswordless(params) {
+  if (params === false) {
+    return webApi.startPasswordless.callCount === 0;
+  }
   const paramsFromCall = webApi.startPasswordless.lastCall.args[1];
   return Immutable.is(Immutable.fromJS(params), Immutable.fromJS(paramsFromCall));
 }

@@ -156,7 +156,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("entering an invalid phone number", function() {
+  describe("entering an invalid phone number", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -181,7 +181,7 @@ describe(".sms acceptance", function() {
       });
 
       it("doesn't perform any request", function() {
-        expect(u.startPasswordlessCallCount()).to.be(0);
+        expect(u.hasStartedPasswordless(false)).to.be.ok();
         expect(u.isInputInvalid(this.lock, "phone-number")).to.be.ok();
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
