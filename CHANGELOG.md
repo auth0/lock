@@ -1,3 +1,10 @@
+## [0.1.3] - 2015-09-14
+
+### Fixed
+
+- [] Fix submit button styling (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/f594a62668fff8216b47365f471026b42e63ed1d
+
 ## [0.1.2] - 2015-09-14
 
 ### Fixed
