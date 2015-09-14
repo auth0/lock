@@ -117,7 +117,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe("selecting a location", function() {
+  describe.skip("selecting a location", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
