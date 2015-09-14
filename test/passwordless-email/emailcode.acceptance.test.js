@@ -95,7 +95,7 @@ describe(".emailcode acceptance", function() {
     });
   });
 
-  describe.skip("successfully submitting an email", function() {
+  describe("successfully submitting an email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
@@ -117,15 +117,17 @@ describe(".emailcode acceptance", function() {
     });
 
     describe("when response arrives", function() {
-      before(function(done) {
-        setTimeout(() => {
-          u.simulateStartPasswordlessResponse();
-          done();
-        }, 500);
+      before(function() {
+        u.simulateStartPasswordlessResponse();
       });
 
       it("hides the loading indicator", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
+      });
+
+      it("waits until the vcode credential pane appears", function(done) {
+        this.timeout(u.CRED_PANE_DELAY + 3000);
+        setTimeout(done, u.CRED_PANE_DELAY);
       });
 
       it("doesn't show an input for the email", function() {

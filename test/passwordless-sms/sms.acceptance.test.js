@@ -238,7 +238,7 @@ describe(".sms acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      it("wait until new credential pane appears", function(done) {
+      it("waits until the vcode credential pane appears", function(done) {
         this.timeout(u.CRED_PANE_DELAY + 3000);
         setTimeout(done, u.CRED_PANE_DELAY);
       });
