@@ -192,7 +192,7 @@ describe(".emailcode acceptance", function() {
     });
   });
 
-  describe.skip("submitting an empty vcode", function() {
+  describe("submitting an empty vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
@@ -206,12 +206,17 @@ describe(".emailcode acceptance", function() {
       u.closeLock(this.lock);
     });
 
+    it("waits until the vcode credential pane appears", function(done) {
+      this.timeout(u.CRED_PANE_DELAY + 3000);
+      setTimeout(done, u.CRED_PANE_DELAY);
+    });
+
     it("marks the input as invalid", function() {
       expect(u.isInputInvalid(this.lock, "vcode")).to.be.ok();
     });
 
     it("doesn't perform any request", function() {
-      expect(u.startPasswordlessCallCount()).to.be(0);
+      expect(u.hasStartedPasswordless(false)).to.be.ok();
       expect(u.isLoading(this.lock)).to.not.be.ok();
     });
 
@@ -236,19 +241,27 @@ describe(".emailcode acceptance", function() {
     });
   });
 
-  describe.skip("successfully submitting the vcode", function() {
+  describe("successfully submitting the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
       u.fillInput(this.lock, "email", "someone@auth0.com");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
-      u.fillInput(this.lock, "vcode", "0303456");
-      u.submit(this.lock);
     });
 
     after(function() {
       u.closeLock(this.lock);
+    });
+
+    it("waits until the vcode credential pane appears", function(done) {
+      this.timeout(u.CRED_PANE_DELAY + 3000);
+      setTimeout(done, u.CRED_PANE_DELAY);
+    });
+
+    it("submits the vcode", function() {
+      u.fillInput(this.lock, "vcode", "1234");
+      u.submit(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -256,24 +269,21 @@ describe(".emailcode acceptance", function() {
     });
 
     it("attempts to sign in with the entered cred", function() {
-      expect(u.hasSignedInWith("someone@auth0.com", "0303456")).to.be.ok();
+      expect(u.hasSignedInWith("someone@auth0.com", "1234")).to.be.ok();
     })
 
     describe("when response arrives", function() {
-      before(function(done) {
-        setTimeout(() => {
-          u.simulateSingInResponse();
-          done();
-        }, 500);
+      before(function() {
+        u.simulateSingInResponse();
       });
 
       it("hides the loading indicator", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      // it("doesn't show an input for the vcode", function() {
-      //   expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
-      // });
+      it.skip("doesn't show an input for the vcode", function() {
+        expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
+      });
 
       it("invokes the provided callback", function() {
         expect(this.cb.calledOnce).to.be.ok();

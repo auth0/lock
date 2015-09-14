@@ -153,7 +153,7 @@ export function isLoading(lock) {
 export function simulateStartPasswordlessResponse(error = null) {
   const lastCall = webApi.startPasswordless.lastCall;
   if (!lastCall) {
-    throw new Error(`Unable to simulate passwordless/start response: no request has been made`);
+    throw new Error("Unable to simulate start passwordless response: no request has been made");
   }
 
   lastCall.args[lastCall.args.length - 1].call(undefined, error);
@@ -164,9 +164,9 @@ export function hasStartedPasswordless(params) {
     return webApi.startPasswordless.callCount === 0;
   }
   const lastCall = webApi.startPasswordless.lastCall;
-  const paramsFromCall = lastCall && lastCall.args[1];
-  return paramsFromCall &&
-    Immutable.is(Immutable.fromJS(params), Immutable.fromJS(paramsFromCall));
+  const paramsFromLastCall = lastCall && lastCall.args[1];
+  return paramsFromLastCall &&
+    Immutable.is(Immutable.fromJS(params), Immutable.fromJS(paramsFromLastCall));
 }
 
 export function isSomethingWrong(lock, expectedMessage) {
@@ -182,13 +182,20 @@ export function isSomethingWrong(lock, expectedMessage) {
 
 export function simulateSingInResponse(error = null) {
   const lastCall = webApi.signIn.lastCall;
+  if (!lastCall) {
+    throw new Error("Unable to simulate sign in response: no request has been made");
+  }
+
   const args = error ? [error] : [null, "fake arg"];
   lastCall.args[lastCall.args.length - 1].call(undefined, ...args);
 }
 
 export function hasSignedInWith(username, password) {
-  const options = webApi.signIn.lastCall.args[1];
-  return username === options.username && password === options.password;
+  const lastCall = webApi.signIn.lastCall;
+  const paramsFromLastCall = lastCall && lastCall.args[1];
+  return paramsFromLastCall &&
+    username === paramsFromLastCall.username &&
+    password === paramsFromLastCall.password;
 }
 
 export function isShowingConfirmation(lock) {

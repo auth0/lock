@@ -319,7 +319,7 @@ describe(".sms acceptance", function() {
       u.closeLock(this.lock);
     });
 
-    it("wait until new credential pane appears", function(done) {
+    it("waits until the vcode credential pane appears", function(done) {
       this.timeout(u.CRED_PANE_DELAY + 3000);
       setTimeout(done, u.CRED_PANE_DELAY);
     });
