@@ -202,28 +202,49 @@ export function isShowingConfirmation(lock) {
   return !!q(lock, ".auth0-lock-confirmation:not(.slide-leave)");
 }
 
+function qResendLink(lock, ensure = false) {
+  const node = q(lock, ".auth0-lock-resend-link");
+  if (ensure && !node) {
+    throw new Error("Unable to click the resend link: couldn't find element");
+  }
+
+  return node;
+}
+
 export function clickResendLink(lock) {
   resetWebApis();
-  Simulate.click(q(lock, ".auth0-lock-resend-link"), {});
+  const node = qResendLink(lock, true);
+  Simulate.click(node, {});
 }
 
 // TODO: name the next 4 functions properly
 
 export function isResendingLink(lock) {
-  const element = q(lock, ".auth0-lock-resend-link");
-  return element && element.textContent === "resending...";
+  const node = qResendLink(lock);
+  return node && node.textContent === "resending...";
 }
 
 export function hasLinkBeenResent(lock) {
-  return q(lock, ".auth0-lock-sent-label").textContent === "Sent!";
+  const node = q(lock, ".auth0-lock-sent-label")
+  if (!node) {
+    throw new Error(`Unable to tell whether the link has been resent: can't find the element responsible to indicate it`);
+  }
+
+  return node.textContent === "Sent!";
 }
 
 export function hasResendingFailed(lock) {
-  return q(lock, ".auth0-lock-sent-failed-label").textContent === "Failed!";
+  const node = q(lock, ".auth0-lock-sent-failed-label")
+  if (!node) {
+    throw new Error(`Unable to tell whether the resending link has failed: can't find the element responsible to indicate it`);
+  }
+
+  return node.textContent === "Failed!";
 }
 
 export function isRetryAvailable(lock) {
-  return q(lock, ".auth0-lock-resend-link").textContent.match(/Retry/);
+  const node = qResendLink(lock);
+  return node && node.textContent.match(/Retry/);
 }
 
 function isShowingAuxiliaryPane(lock, selector) {
