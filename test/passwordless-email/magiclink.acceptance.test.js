@@ -330,7 +330,7 @@ describe(".magiclink acceptance", function() {
     });
   });
 
-  describe.skip("unsuccessful attempt to retry to send a link", function() {
+  describe("unsuccessful attempt to retry to send a link", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
