@@ -22,7 +22,7 @@ const CURRENT_CRED_PANE_SELECTOR = ".auth0-lock-cred-pane:not(.horizontal-fade-l
 
 // We also perform an animated transition with auxiliary panes.
 const AUXILIARY_PANE_SELECTOR_SUFFIX = ":not(.slide-leave)";
-export const AUXILIARY_PANE_DELAY = 350;
+export const AUXILIARY_PANE_DELAY = 500;
 
 const DEFAULT_ERROR_MESSAGE = /We're sorry, something went wrong when sending the (email|SMS)\./;
 
