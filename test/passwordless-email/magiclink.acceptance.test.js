@@ -16,19 +16,23 @@ describe(".magiclink acceptance", function() {
     });
   });
 
-  describe.skip("opening a Lock", function() {
+  describe("opening a Lock", function() {
     before(function() {
       this.lock = u.constructLock();
-      u.openLock(this.lock, "magiclink");
     });
 
     after(function() {
       u.closeLock(this.lock);
     });
 
-    it("renders the widget and opens it after a few ms", function(done) {
+    it("doesn't open the Lock immediately", function() {
+      u.openLock(this.lock, "emailcode");
+
       expect(u.isRendered(this.lock)).to.be.ok();
       expect(u.isOpened(this.lock)).to.not.be.ok();
+    });
+
+    it("opens it after a few ms", function(done) {
       setTimeout(() => {
         expect(u.isOpened(this.lock)).to.be.ok();
         done();
