@@ -15,19 +15,23 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("opening a Lock", function() {
+  describe("opening a Lock", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
+
+      // Making assertions here because there's no guarantee that the first test
+      // will execute before the Lock is opened. TODO: think of a better
+      // strategy for writting tests.
+      expect(u.isRendered(this.lock)).to.be.ok();
+      expect(u.isOpened(this.lock)).to.not.be.ok();
     });
 
     after(function() {
       u.closeLock(this.lock);
     });
 
-    it("renders the widget and opens it after a few ms", function(done) {
-      expect(u.isRendered(this.lock)).to.be.ok();
-      expect(u.isOpened(this.lock)).to.not.be.ok();
+    it("opens it after a few ms", function(done) {
       setTimeout(() => {
         expect(u.isOpened(this.lock)).to.be.ok();
         done();
@@ -39,7 +43,7 @@ describe(".sms acceptance", function() {
     });
 
     it("displays an input with for the location with a default value", function() {
-      expect(u.qInputValue(this.lock, "location")).to.be("Argentina +54");
+      expect(u.qInputValue(this.lock, "location")).to.be("United States +1");
     });
   });
 
