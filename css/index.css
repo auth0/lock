@@ -434,6 +434,7 @@ body.frame {
   border: 0;
   padding: 14px;
   display: block;
+  box-sizing: border-box;
   width: 100%;
   position: fixed;
   overflow: hidden;
