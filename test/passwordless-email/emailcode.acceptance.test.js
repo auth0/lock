@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
-describe.skip(".emailcode acceptance", function() {
+describe(".emailcode acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -15,7 +15,7 @@ describe.skip(".emailcode acceptance", function() {
     });
   });
 
-  describe("opening a Lock", function() {
+  describe.skip("opening a Lock", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "emailcode");
@@ -39,7 +39,7 @@ describe.skip(".emailcode acceptance", function() {
     });
   });
 
-  describe("entering an invalid email", function() {
+  describe.skip("entering an invalid email", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "emailcode");
@@ -91,7 +91,7 @@ describe.skip(".emailcode acceptance", function() {
     });
   });
 
-  describe("successfully submitting an email", function() {
+  describe.skip("successfully submitting an email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
@@ -138,7 +138,7 @@ describe.skip(".emailcode acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to submit an email", function() {
+  describe.skip("unsuccessful attempt to submit an email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
@@ -186,7 +186,7 @@ describe.skip(".emailcode acceptance", function() {
     });
   });
 
-  describe("submitting an empty vcode", function() {
+  describe.skip("submitting an empty vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
@@ -230,7 +230,7 @@ describe.skip(".emailcode acceptance", function() {
     });
   });
 
-  describe("successfully submitting the vcode", function() {
+  describe.skip("successfully submitting the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
@@ -278,7 +278,7 @@ describe.skip(".emailcode acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to submit the vcode", function() {
+  describe.skip("unsuccessful attempt to submit the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
