@@ -208,7 +208,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("successfully submitting a phone number", function() {
+  describe("successfully submitting a phone number", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
@@ -225,20 +225,21 @@ describe(".sms acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {phoneNumber: "+54123456"};
+      const params = {phoneNumber: "+1123456"};
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
     describe("when response arrives", function() {
-      before(function(done) {
-        setTimeout(() => {
-          u.simulateStartPasswordlessResponse();
-          done();
-        }, 500);
+      before(function() {
+        u.simulateStartPasswordlessResponse();
       });
 
       it("hides the loading indicator", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
+      });
+
+      it("wait until new credential pane appears", function(done) {
+        setTimeout(done, u.CRED_PANE_DELAY);
       });
 
       it("doesn't show an input for the phone number", function() {

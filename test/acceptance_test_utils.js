@@ -19,6 +19,7 @@ function hasClass(element, str) {
 // for a moment. We may want to perform a query without waiting until the
 // transition is over (because is rather long).
 const CURRENT_CRED_PANE_SELECTOR = ".auth0-lock-cred-pane:not(.horizontal-fade-leave):not(.reverse-horizontal-fade-leave)";
+export const CRED_PANE_DELAY = 1200;
 
 // We also perform an animated transition with auxiliary panes.
 const AUXILIARY_PANE_SELECTOR_SUFFIX = ":not(.slide-leave)";
@@ -150,6 +151,10 @@ export function isLoading(lock) {
 
 export function simulateStartPasswordlessResponse(error = null) {
   const lastCall = webApi.startPasswordless.lastCall;
+  if (!lastCall) {
+    throw new Error(`Unable to simulate passwordless/start response: no request has been made`);
+  }
+
   lastCall.args[lastCall.args.length - 1].call(undefined, error);
 }
 
@@ -157,8 +162,10 @@ export function hasStartedPasswordless(params) {
   if (params === false) {
     return webApi.startPasswordless.callCount === 0;
   }
-  const paramsFromCall = webApi.startPasswordless.lastCall.args[1];
-  return Immutable.is(Immutable.fromJS(params), Immutable.fromJS(paramsFromCall));
+  const lastCall = webApi.startPasswordless.lastCall;
+  const paramsFromCall = lastCall && lastCall.args[1];
+  return paramsFromCall &&
+    Immutable.is(Immutable.fromJS(params), Immutable.fromJS(paramsFromCall));
 }
 
 export function isSomethingWrong(lock, message = DEFAULT_ERROR_MESSAGE) {
