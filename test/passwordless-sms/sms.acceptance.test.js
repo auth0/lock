@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
-describe.skip(".sms acceptance", function() {
+describe(".sms acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -15,7 +15,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("opening a Lock", function() {
+  describe.skip("opening a Lock", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -43,7 +43,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("opening the location selector", function() {
+  describe.skip("opening the location selector", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -65,7 +65,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("filtering locations", function() {
+  describe.skip("filtering locations", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -112,7 +112,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("selecting a location", function() {
+  describe.skip("selecting a location", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -151,7 +151,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("entering an invalid phone number", function() {
+  describe.skip("entering an invalid phone number", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -203,7 +203,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("successfully submitting a phone number", function() {
+  describe.skip("successfully submitting a phone number", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
@@ -250,7 +250,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to submit a phone number", function() {
+  describe.skip("unsuccessful attempt to submit a phone number", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
@@ -298,7 +298,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("submitting an empty vcode", function() {
+  describe.skip("submitting an empty vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
@@ -342,7 +342,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("successfully submitting the vcode", function() {
+  describe.skip("successfully submitting the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
@@ -390,7 +390,7 @@ describe.skip(".sms acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to submit the vcode", function() {
+  describe.skip("unsuccessful attempt to submit the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
