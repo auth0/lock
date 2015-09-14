@@ -1,5 +1,6 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
+import * as cc from '../../src/cred/country_codes';
 
 describe(".sms acceptance", function() {
   before(u.stubWebApis);
@@ -69,7 +70,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("filtering locations", function() {
+  describe("filtering locations", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -82,7 +83,7 @@ describe(".sms acceptance", function() {
     });
 
     it("shows all locations available by default", function() {
-      expect(u.qLocations(this.lock).length).to.be.greaterThan(200);
+      expect(u.qLocations(this.lock).length).to.be(cc.countryCodes.size);
     });
 
     describe("when entering an unexistent location name", function() {

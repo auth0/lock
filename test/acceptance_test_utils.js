@@ -193,15 +193,21 @@ export function isShowingLocationSelector(lock) {
 }
 
 export function qLocations(lock) {
-  return q(lock, ".auth0-lock-list-code > ul > li", true);
-}
-
-function qLocationFilterInput(lock) {
-  return q(lock, ".auth0-lock-select-country .auth0-lock-search input");
+  // TODO: there are too many details here that are subject to change. It would
+  // be nice to have some abstraction to query inside an active auxiliary pane.
+  return q(lock, `.auth0-lock-select-country${AUXILIARY_PANE_SELECTOR_SUFFIX} .auth0-lock-list-code > ul > li`, true);
 }
 
 export function filterLocations(lock, value) {
-  Simulate.change(qLocationFilterInput(lock), {target: {value: value}});
+  // TODO: there are too many details here that are subject to change. It would
+  // be nice to have some abstraction to query inside an active auxiliary pane
+  // or an input that doesn't belong to a credential pane.
+  const input = q(lock, `.auth0-lock-select-country${AUXILIARY_PANE_SELECTOR_SUFFIX} .auth0-lock-search input`);
+  if (!input) {
+    throw new Error(`Unable to filter locations: can't find the location search input`);
+  }
+
+  Simulate.change(input, {target: {value: value}});
 }
 
 export function clickFirstLocation(lock) {
