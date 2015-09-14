@@ -329,7 +329,7 @@ describe(".sms acceptance", function() {
     });
 
     it("doesn't perform any request", function() {
-      expect(u.startPasswordlessCallCount()).to.be(0);
+      expect(u.hasStartedPasswordless(false)).to.be.ok();
       expect(u.isLoading(this.lock)).to.not.be.ok();
     });
 
@@ -354,19 +354,27 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("successfully submitting the vcode", function() {
+  describe("successfully submitting the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
-      u.fillInput(this.lock, "phone-number", "123456");
+      u.fillInput(this.lock, "phone-number", "0303456");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
-      u.fillInput(this.lock, "vcode", "0303456");
-      u.submit(this.lock);
     });
 
     after(function() {
       u.closeLock(this.lock);
+    });
+
+    it("waits until the vcode credential pane appears", function(done) {
+      this.timeout(u.CRED_PANE_DELAY + 3000);
+      setTimeout(done, u.CRED_PANE_DELAY);
+    });
+
+    it("submits the vcode", function() {
+      u.fillInput(this.lock, "vcode", "1234");
+      u.submit(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -374,24 +382,21 @@ describe(".sms acceptance", function() {
     });
 
     it("attempts to sign in with the entered cred", function() {
-      expect(u.hasSignedInWith("+54123456", "0303456")).to.be.ok();
+      expect(u.hasSignedInWith("+10303456", "1234")).to.be.ok();
     })
 
     describe("when response arrives", function() {
-      before(function(done) {
-        setTimeout(() => {
-          u.simulateSingInResponse();
-          done();
-        }, 500);
+      before(function() {
+        u.simulateSingInResponse();
       });
 
       it("hides the loading indicator", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      // it("doesn't show an input for the vcode", function() {
-      //   expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
-      // });
+      it.skip("doesn't show an input for the vcode", function() {
+        expect(u.qInput(this.lock, "vcode")).to.not.be.ok();
+      });
 
       it("invokes the provided callback", function() {
         expect(this.cb.calledOnce).to.be.ok();
