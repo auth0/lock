@@ -294,19 +294,27 @@ describe(".emailcode acceptance", function() {
     });
   });
 
-  describe.skip("unsuccessful attempt to submit the vcode", function() {
+  describe("unsuccessful attempt to submit the vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "emailcode");
       u.fillInput(this.lock, "email", "someone@auth0.com");
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
-      u.fillInput(this.lock, "vcode", "0303456");
-      u.submit(this.lock);
     });
 
     after(function() {
       u.closeLock(this.lock);
+    });
+
+    it("waits until the vcode credential pane appears", function(done) {
+      this.timeout(u.CRED_PANE_DELAY + 3000);
+      setTimeout(done, u.CRED_PANE_DELAY);
+    });
+
+    it("submits the vcode", function() {
+      u.fillInput(this.lock, "vcode", "1234");
+      u.submit(this.lock);
     });
 
     it("shows a loading indicator until a response is obtained", function() {
@@ -314,7 +322,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("attempts to sign in with the entered cred", function() {
-      expect(u.hasSignedInWith("someone@auth0.com", "0303456")).to.be.ok();
+      expect(u.hasSignedInWith("someone@auth0.com", "1234")).to.be.ok();
     })
 
     describe("when response arrives", function() {
