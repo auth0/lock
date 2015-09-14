@@ -280,7 +280,7 @@ var options = {
 
 ## Browser Compatibility
 
-We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 9. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
+We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10, and working to support IE9. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
 ## Contributing
 
