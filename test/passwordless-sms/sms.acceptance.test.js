@@ -239,6 +239,7 @@ describe(".sms acceptance", function() {
       });
 
       it("wait until new credential pane appears", function(done) {
+        this.timeout(u.CRED_PANE_DELAY + 1000);
         setTimeout(done, u.CRED_PANE_DELAY);
       });
 
