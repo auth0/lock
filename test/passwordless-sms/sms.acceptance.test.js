@@ -117,7 +117,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("selecting a location", function() {
+  describe("selecting a location", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "sms");
@@ -132,11 +132,11 @@ describe(".sms acceptance", function() {
 
     it("closes the location selector", function(done) {
       // NOTE: to tell whether or not the location selector has been closed, we
-      // need to wait for react to add the *transition leave* class.
+      // need to wait for the enter transition to finish.
       setTimeout(() => {
         expect(u.isShowingLocationSelector(this.lock)).to.not.be.ok();
         done();
-      }, 350);
+      }, u.AUXILIARY_PANE_DELAY);
     });
 
     it("updates the location input", function() {

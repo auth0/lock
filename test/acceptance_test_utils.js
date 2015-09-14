@@ -22,6 +22,7 @@ const CURRENT_CRED_PANE_SELECTOR = ".auth0-lock-cred-pane:not(.horizontal-fade-l
 
 // We also perform an animated transition with auxiliary panes.
 const AUXILIARY_PANE_SELECTOR_SUFFIX = ":not(.slide-leave)";
+export const AUXILIARY_PANE_DELAY = 350;
 
 const DEFAULT_ERROR_MESSAGE = /We're sorry, something went wrong when sending the (email|SMS)\./;
 
@@ -68,27 +69,27 @@ export function closeLock(lock) {
   }
 }
 
-export function qInput(lock, str, ensure = false) {
+export function qInput(lock, name, ensure = false) {
   // NOTE: not sure about whether this check is actually necessary
   const currentCredPanes = q(lock, CURRENT_CRED_PANE_SELECTOR, true);
   if (currentCredPanes.length > 1) {
     throw new Error("Unable to query the current credential pane: there's more than one");
   }
 
-  const input = q(lock, `${CURRENT_CRED_PANE_SELECTOR} .auth0-lock-input-${str} input`);
+  const input = q(lock, `${CURRENT_CRED_PANE_SELECTOR} .auth0-lock-input-${name} input`);
   if (ensure && !input) {
-    throw new Error(`Unable to query the '${str}' input value: can't find the input`);
+    throw new Error(`Unable to query the '${name}' input value: can't find the input`);
   }
 
   return input;
 }
 
-export function qInputValue(lock, str) {
-  return qInput(lock, str, true).value;
+export function qInputValue(lock, name) {
+  return qInput(lock, name, true).value;
 }
 
 export function fillInput(lock, name, value) {
-  Simulate.change(qInput(lock, name), {target: {value: value}});
+  Simulate.change(qInput(lock, name, true), {target: {value: value}});
 }
 
 export function clickInput(lock, str) {
@@ -102,7 +103,12 @@ export function isInputInvalid(lock, str) {
 
 export function submit(lock) {
   resetWebApis();
-  Simulate.submit(q(lock, ".auth0-lock-widget"), {});
+  const form = q(lock, ".auth0-lock-widget");
+  if (!form || form.tagName !== "FORM") {
+    throw new Error(`Unable to submit form: can't find the element`);
+  }
+
+  Simulate.submit(form, {});
 }
 
 export function stubWebApis() {
@@ -135,9 +141,9 @@ export function simulateStartPasswordlessResponse(error = null) {
   lastCall.args[lastCall.args.length - 1].call(undefined, error);
 }
 
-export function hasStartedPasswordless(ma) {
-  const mb = webApi.startPasswordless.lastCall.args[1];
-  return Immutable.is(Immutable.fromJS(ma), Immutable.fromJS(mb));
+export function hasStartedPasswordless(params) {
+  const paramsFromCall = webApi.startPasswordless.lastCall.args[1];
+  return Immutable.is(Immutable.fromJS(params), Immutable.fromJS(paramsFromCall));
 }
 
 export function isSomethingWrong(lock, message = DEFAULT_ERROR_MESSAGE) {
