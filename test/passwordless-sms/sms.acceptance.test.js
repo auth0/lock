@@ -305,7 +305,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe("submitting an empty vcode", function() {
+  describe.skip("submitting an empty vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
@@ -324,7 +324,7 @@ describe(".sms acceptance", function() {
     });
 
     it("doesn't perform any request", function() {
-      expect(u.hasStartedPasswordless(false)).to.be.ok();
+      expect(u.startPasswordlessCallCount()).to.be(0);
       expect(u.isLoading(this.lock)).to.not.be.ok();
     });
 
