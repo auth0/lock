@@ -43,7 +43,7 @@ describe(".emailcode acceptance", function() {
     });
   });
 
-  describe.skip("entering an invalid email", function() {
+  describe("entering an invalid email", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "emailcode");
@@ -68,7 +68,7 @@ describe(".emailcode acceptance", function() {
       });
 
       it("doesn't perform any request", function() {
-        expect(u.startPasswordlessCallCount()).to.be(0);
+        expect(u.hasStartedPasswordless(false)).to.be.ok();
         expect(u.isInputInvalid(this.lock, "email")).to.be.ok();
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
