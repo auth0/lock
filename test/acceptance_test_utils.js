@@ -25,10 +25,9 @@ export const CRED_PANE_DELAY = 1850;
 const AUXILIARY_PANE_SELECTOR_SUFFIX = ":not(.slide-leave)";
 export const AUXILIARY_PANE_DELAY = 400;
 
-// TODO: remove when replaced
-const DEFAULT_ERROR_MESSAGE = /We're sorry, something went wrong when sending the (email|SMS)\./;
-
 export const SMS_GENERIC_ERROR = "We're sorry, something went wrong when sending the SMS."
+export const EMAIL_GENERIC_ERROR = "We're sorry, something went wrong when sending the email."
+
 export function constructLock(cid = "a", domain = "a") {
   return new Auth0LockPasswordless(cid, domain);
 }
@@ -170,9 +169,15 @@ export function hasStartedPasswordless(params) {
     Immutable.is(Immutable.fromJS(params), Immutable.fromJS(paramsFromCall));
 }
 
-export function isSomethingWrong(lock, message = DEFAULT_ERROR_MESSAGE) {
-  const error = q(lock, ".auth0-global-grobal-error").textContent;
-  return typeof message.test === "function" ? message.test(error) : message === error;
+export function isSomethingWrong(lock, expectedMessage) {
+  const node = q(lock, ".auth0-global-grobal-error");
+  if (!node) {
+    return false;
+  }
+
+  const acutalMessage = node.textContent;
+  return typeof expectedMessage.test === "function" ?
+    expectedMessage.test(acutalMessage) : expectedMessage === acutalMessage;
 }
 
 export function simulateSingInResponse(error = null) {
