@@ -2,7 +2,7 @@ import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
 
-describe.skip(".magiclink acceptance", function() {
+describe(".magiclink acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -16,7 +16,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("opening a Lock", function() {
+  describe.skip("opening a Lock", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "magiclink");
@@ -40,7 +40,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("entering an invalid email", function() {
+  describe.skip("entering an invalid email", function() {
     before(function() {
       this.lock = u.constructLock();
       u.openLock(this.lock, "magiclink");
@@ -92,7 +92,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("successfully submitting an email", function() {
+  describe.skip("successfully submitting an email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
@@ -137,7 +137,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to submit an email", function() {
+  describe.skip("unsuccessful attempt to submit an email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
@@ -187,7 +187,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("successfully resending the email", function() {
+  describe.skip("successfully resending the email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
@@ -231,7 +231,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to resend a link", function() {
+  describe.skip("unsuccessful attempt to resend a link", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
@@ -280,7 +280,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("successfully retrying to send a link", function() {
+  describe.skip("successfully retrying to send a link", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
@@ -326,7 +326,7 @@ describe.skip(".magiclink acceptance", function() {
     });
   });
 
-  describe("unsuccessful attempt to retry to send a link", function() {
+  describe.skip("unsuccessful attempt to retry to send a link", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
