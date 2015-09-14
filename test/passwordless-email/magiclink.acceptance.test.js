@@ -141,7 +141,7 @@ describe(".magiclink acceptance", function() {
     });
   });
 
-  describe.skip("unsuccessful attempt to submit an email", function() {
+  describe("unsuccessful attempt to submit an email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");
@@ -186,7 +186,7 @@ describe(".magiclink acceptance", function() {
       });
 
       it("shows a generic error", function() {
-        expect(u.isSomethingWrong(this.lock)).to.be.ok();
+        expect(u.isSomethingWrong(this.lock, u.EMAIL_GENERIC_ERROR)).to.be.ok();
       });
     });
   });
