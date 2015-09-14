@@ -305,7 +305,7 @@ describe(".sms acceptance", function() {
     });
   });
 
-  describe.skip("submitting an empty vcode", function() {
+  describe("submitting an empty vcode", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "sms");
@@ -317,6 +317,11 @@ describe(".sms acceptance", function() {
 
     after(function() {
       u.closeLock(this.lock);
+    });
+
+    it("wait until new credential pane appears", function(done) {
+      this.timeout(u.CRED_PANE_DELAY + 3000);
+      setTimeout(done, u.CRED_PANE_DELAY);
     });
 
     it("marks the input as invalid", function() {
