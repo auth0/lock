@@ -1,5 +1,6 @@
 import Immutable, { Set } from 'immutable';
 import React from 'react/addons';
+import CSSCore from 'react/lib/CSSCore';
 const { Simulate } = React.addons.TestUtils;
 import Auth0LockPasswordless from '../src/index';
 import { spy, stub } from 'sinon';
@@ -7,12 +8,18 @@ import webApi from '../src/lock/web_api';
 import * as gravatarActions from '../src/gravatar/actions';
 import browser from '../src/browser';
 
+// TODO: remove once all references have been replaced by CSSCore.hasClass.
 function hasClass(element, str) {
   const classes = new Set(element.className.split(" "));
   return classes.has(str);
 }
 
-const PANE_PREFIX = ".auth0-lock-cred-pane:not(.horizontal-fade-leave)";
+// We don't remove credential panes immediately because we perform a animated
+// transition between them. This means that two credential panes will coexist
+// for a moment. We may want to perform a query without waiting until the
+// transition is over (because is rather long).
+const CURRENT_CRED_PANE_SELECTOR = ".auth0-lock-cred-pane:not(.horizontal-fade-leave):not(.reverse-horizontal-fade-leave)";
+
 const DEFAULT_ERROR_MESSAGE = /We're sorry, something went wrong when sending the (email|SMS)\./;
 
 export function constructLock(cid = "a", domain = "a") {
@@ -25,8 +32,12 @@ function q(lock, query, all = false) {
   return global.document[method](query);
 }
 
+function qLock(lock) {
+  return q(lock, ".auth0-lock");
+}
+
 export function isRendered(lock) {
-  return !!q(lock, ".auth0-lock");
+  return !!qLock(lock);
 }
 
 export function openLock(lock, method, options = {}) {
@@ -36,19 +47,41 @@ export function openLock(lock, method, options = {}) {
 }
 
 export function isOpened(lock) {
-  return hasClass(q(lock, ".auth0-lock"), "auth0-lock-opened");
+  const node = qLock(lock);
+  return node && CSSCore.hasClass(node, "auth0-lock-opened");
 }
 
 export function closeLock(lock) {
-  Simulate.click(q(lock, ".auth0-lock-close").parentNode, {});
+  const svg = q(lock, ".auth0-lock-close");
+  const node = svg && svg.parentNode; // node where the event handler has been attached
+  if (!node) {
+    throw new Error("Unable to close the Lock: couldn't find the close button");
+  }
+
+  Simulate.click(node, {});
+
+  if (isOpened(lock)) {
+    throw new Error("Unable to close the Lock: clicking the close button didn't work");
+  }
 }
 
-export function qInput(lock, str) {
-  return q(lock, `${PANE_PREFIX} .auth0-lock-input-${str} input`);
+export function qInput(lock, str, ensure = false) {
+  // NOTE: not sure about whether this check is actually necessary
+  const currentCredPanes = q(lock, CURRENT_CRED_PANE_SELECTOR, true);
+  if (currentCredPanes.length > 1) {
+    throw new Error("Unable to find the current credential pane: there's more than one");
+  }
+
+  const input = q(lock, `${CURRENT_CRED_PANE_SELECTOR} .auth0-lock-input-${str} input`);
+  if (ensure && !input) {
+    throw new Error(`Unable to find the '${str}' input value: can't find the input`);
+  }
+
+  return input;
 }
 
 export function qInputValue(lock, str) {
-  return qInput(lock, str).value;
+  return qInput(lock, str, true).value;
 }
 
 export function fillInput(lock, name, value) {
@@ -145,7 +178,7 @@ export function isRetryAvailable(lock) {
 }
 
 export function clickLocationInput(lock) {
-  Simulate.click(q(lock, `${PANE_PREFIX} .auth0-lock-input-location input`), {});
+  Simulate.click(q(lock, `${CURRENT_CRED_PANE_SELECTOR} .auth0-lock-input-location input`), {});
 }
 
 export function isShowingLocationSelector(lock) {
