@@ -19,7 +19,7 @@ function hasClass(element, str) {
 // for a moment. We may want to perform a query without waiting until the
 // transition is over (because is rather long).
 const CURRENT_CRED_PANE_SELECTOR = ".auth0-lock-cred-pane:not(.horizontal-fade-leave):not(.reverse-horizontal-fade-leave)";
-export const CRED_PANE_DELAY = 1200;
+export const CRED_PANE_DELAY = 1500;
 
 // We also perform an animated transition with auxiliary panes.
 const AUXILIARY_PANE_SELECTOR_SUFFIX = ":not(.slide-leave)";
