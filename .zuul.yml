@@ -7,7 +7,7 @@ browsers:
   - name: chrome
     version: latest
   - name: safari
-    version: latest
+    version: 8
   - name: firefox
     version: latest
   - name: ie
