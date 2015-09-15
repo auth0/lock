@@ -12,6 +12,7 @@ body.frame {
   position: fixed;
   bottom: 20px;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 177px;
   text-align: center;
@@ -21,11 +22,12 @@ body.frame {
     width: auto;
     left: auto;
     right: 20px;
+    -webkit-transform: none;
     transform: none;
   }
 }
 .auth0-loading {
-  position: absolute;
+positionabsolute
   top: 4px;
   left: 44%;
   width: 30px;
@@ -36,23 +38,7 @@ body.frame {
   opacity: 0.9;
   border-radius: 20px;
   -webkit-animation: rotate 1s linear infinite;
-  -ms-animation: rotate 1s linear infinite;
-}
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-ms-keyframes rotate {
-  0% {
-    -ms-transform: rotate(0deg);
-  }
-  100% {
-    -ms-transform: rotate(360deg);
-  }
+  animation: rotate 1s linear infinite;
 }
 .auth0-lock,
 .auth0-lock * {
@@ -64,8 +50,8 @@ body.frame {
   font-family: "Avenir", sans-serif;
   text-rendering: optimizeLegibility;
   opacity: 0;
-  transition: opacity 0s;
-  transition-delay: 2s;
+  -webkit-transition: opacity 0s 2s;
+  transition: opacity 0s 2s;
   pointer-events: none;
   display: table;
   position: fixed;
@@ -78,6 +64,7 @@ body.frame {
 .auth0-lock.auth0-lock-opened {
   opacity: 1;
   pointer-events: auto;
+  -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
 .auth0-lock a {
@@ -110,7 +97,7 @@ body.frame {
   top: 15px;
 }
 .auth0-lock .auth0-lock-overlay {
-  background: rgba(34,34,40,0.94);
+  background: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -118,8 +105,8 @@ body.frame {
   left: 0;
   z-index: -1;
   opacity: 0;
-  background: radial-gradient(#40404b, #111118); /* Standard syntax */
   -webkit-transition: opacity 0.2s ease-in 0.4s;
+  transition: opacity 0.2s ease-in 0.4s;
 }
 .auth0-lock .auth0-lock-form {
   display: block;
@@ -156,9 +143,13 @@ body.frame {
   opacity: 0;
   box-shadow: 0 0 0 transparent;
   -webkit-transition: transform 0.4s, opacity 0.7s;
+  transition: transform 0.4s, opacity 0.7s;
   -webkit-transform: translateY(100%) scale(0.8);
+  transform: translateY(100%) scale(0.8);
   -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
+  transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
   -webkit-transition-delay: 0s;
+  transition-delay: 0s;
   width: 300px;
   margin: -20% auto 0;
 }
@@ -187,7 +178,6 @@ body.frame {
   border-radius: 100px;
   height: 10px;
   width: 10px;
-  background: #fff;
   position: absolute;
   top: 14px;
   right: 14px;
@@ -230,9 +220,7 @@ body.frame {
   width: 100px;
   display: block;
   border-radius: 100px;
-  margin: auto;
-  margin: auto auto 16px auto;
-  margin-top: -30px;
+  margin: -30px auto 16px;
   position: absolute;
   left: 0;
   right: 0;
@@ -247,6 +235,7 @@ body.frame {
   font-size: 22px;
 }
 .auth0-lock .auth0-lock-header-bg {
+  background: rgba(241,241,241,0.8);
   position: absolute;
   height: 128px;
   width: 300px;
@@ -268,7 +257,8 @@ body.frame {
   background-repeat: no-repeat;
   background-size: 300px;
   opacity: 0;
-  transition: all 0s ease 0s;
+  -webkit-transition: 0s ease 0s;
+  transition: 0s ease 0s;
 }
 .auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-inner.auth0-lock-no-grayscale {
   -webkit-filter: blur(100px);
@@ -286,6 +276,7 @@ body.frame {
 }
 .auth0-lock .auth0-global-grobal-error span {
   display: none;
+  -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
 .auth0-lock .auth0-lock-content {
@@ -344,6 +335,7 @@ body.frame {
   position: relative;
   background: #f1f1f1;
   overflow: hidden;
+  -webkit-transition: border-color 0.8s;
   transition: border-color 0.8s;
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-icon-arrow {
@@ -401,10 +393,10 @@ body.frame {
   height: 20px;
   border-left: 1px solid #eee;
   font-size: 13px;
-  right: 0px;
   width: 169px;
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input.animated {
+  -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input.auth0-lock-input-location {
@@ -426,22 +418,22 @@ body.frame {
   color: #000;
 }
 .auth0-lock .auth0-lock-submit {
-  background: #40df7d;
   background: #ea5323;
   border: 0;
   padding: 14px;
   display: block;
   box-sizing: border-box;
   width: 100%;
-  position: fixed;
   overflow: hidden;
   position: relative;
   bottom: 0;
-  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 .auth0-lock .auth0-lock-submit span {
   display: inline-block;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .auth0-lock .auth0-lock-submit span svg {
   vertical-align: middle;
@@ -450,6 +442,7 @@ body.frame {
   background: #c43e13;
 }
 .auth0-lock .auth0-lock-submit:hover span {
+  -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
 .auth0-lock .auth0-lock-submit:focus {
@@ -457,7 +450,6 @@ body.frame {
 }
 @media (min-width: 568px) {
   .auth0-lock .auth0-lock-submit {
-    position: static;
     position: relative;
   }
 }
@@ -537,19 +529,18 @@ body.frame {
 }
 .auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
   background: #eee;
-  transition: background-color 0.7s ease;
+  -webkit-transition: background 0.7s ease;
+  transition: background 0.7s ease;
   cursor: initial;
   pointer-events: none;
 }
 .auth0-lock.auth0-lock-mode-loading .auth0-lock-submit span {
-  animation-name: fadeOutDownBig;
-  animation-duration: 1s;
-  animation-fill-mode: both;
+  -webkit-animation: fadeOutDownBig 1s both;
+  animation: fadeOutDownBig 1s both;
 }
 .auth0-lock.auth0-lock-mode-loading .auth0-loading-container {
-  animation-name: fadeInDownBig;
-  animation-duration: 1s;
-  animation-fill-mode: both;
+  -webkit-animation: fadeInDownBig 1s both;
+  animation: fadeInDownBig 1s both;
   display: block;
 }
 .auth0-lock .auth0-lock-cred-pane {
@@ -610,27 +601,28 @@ body.frame {
   margin-bottom: -4px;
   margin-left: 0px;
   display: inline-block;
+  -webkit-transition: transform 1s ease;
   transition: transform 1s ease;
   -webkit-transform: rotate(120deg);
+  transform: rotate(120deg);
 }
 .auth0-lock .auth0-lock-confirmation a svg path {
   fill: #09c;
 }
 .auth0-lock .auth0-lock-confirmation a:hover svg {
   -webkit-transform: rotate(490deg);
+  transform: rotate(490deg);
 }
 .auth0-lock .auth0-lock-confirmation .auth0-lock-sent-label {
   color: #008000;
-  animation: fadeIn;
-  animation-duration: 1s;
-  animation-fill-mode: both;
+  -webkit-animation: fadeIn 1s both;
+  animation: fadeIn 1s both;
   font-weight: 600;
 }
 .auth0-lock .auth0-lock-confirmation .auth0-lock-sent-failed-label {
   color: #f00;
-  animation: fadeIn;
-  animation-duration: 1s;
-  animation-fill-mode: both;
+  -webkit-animation: fadeIn 1s both;
+  animation: fadeIn 1s both;
   font-weight: 600;
 }
 .auth0-lock .auth0-lock-forgot-link {
@@ -641,9 +633,9 @@ body.frame {
   color: #5c666f;
 }
 .auth0-lock .auth0-lock-badge-bottom {
-  -webkit-transition: transform 4s ease 1.8s, opacity 1.2s ease 1.8s;
-  -webkit-transform: translateY(-200%) scale(0.8);
+  -webkit-transition: transform 0.5s ease 1s, opacity 0.2s ease 0s;
   transition: transform 0.5s ease 1s, opacity 0.2s ease 0s;
+  -webkit-transform: translateY(-200%) scale(0.8);
   transform: translateY(-200%) scale(0.8);
   position: absolute;
   left: 0;
@@ -665,7 +657,8 @@ body.frame {
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner {
   opacity: 0.4;
-  transition: all 1s ease 1s;
+  -webkit-transition: 1s ease 1s;
+  transition: 1s ease 1s;
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner.auth0-lock-no-grayscale {
   opacity: 0.7;
@@ -673,31 +666,39 @@ body.frame {
 .auth0-lock.auth0-lock-opened .auth0-lock-overlay {
   opacity: 0.9;
   -webkit-transition: opacity 0.3s ease-in 0s;
+  transition: opacity 0.3s ease-in 0s;
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-widget {
   opacity: 1;
   box-shadow: 0 0 40px 4px #111118;
   -webkit-transform: translateY(0%) scale(1);
+  transform: translateY(0%) scale(1);
   -webkit-transition: transform 0.6s, opacity 0.6s;
+  transition: transform 0.6s, opacity 0.6s;
   -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-badge-bottom {
   -webkit-transform: translateY(0%) scale(1);
-  -webkit-transition-delay: 0;
   transform: translateY(0%) scale(1);
+  -webkit-transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
   transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
   opacity: 1;
 }
 .auth0-lock.auth0-lock-opened-in-frame {
   opacity: 1;
   pointer-events: auto;
+  -webkit-transition-delay: 0s;
   transition-delay: 0s;
   position: relative;
   width: auto;
 }
 .auth0-lock.auth0-lock-opened-in-frame .auth0-lock-header-bg .auth0-lock-header-bg-inner {
   opacity: 0.4;
-  transition: all 1s ease 1s;
+  -webkit-transition: 1s ease 1s;
+  transition: 1s ease 1s;
 }
 .auth0-lock.auth0-lock-opened-in-frame .auth0-lock-header-bg .auth0-lock-header-bg-inner.auth0-lock-no-grayscale {
   opacity: 0.7;
@@ -705,13 +706,16 @@ body.frame {
 .auth0-lock.auth0-lock-opened-in-frame .auth0-lock-widget {
   opacity: 1;
   -webkit-transform: translateY(0%) scale(1);
+  transform: translateY(0%) scale(1);
   -webkit-transition: transform 0.6s, opacity 0.6s;
+  transition: transform 0.6s, opacity 0.6s;
   -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
 }
 .auth0-lock.auth0-lock-opened-in-frame .auth0-lock-badge-bottom {
   -webkit-transform: translateY(0%) scale(1);
-  -webkit-transition-delay: 0;
   transform: translateY(0%) scale(1);
+  -webkit-transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
   transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
   opacity: 1;
 }
@@ -726,6 +730,7 @@ body.frame {
   stroke-miterlimit: 10;
   stroke: #7ac142;
   fill: none;
+  -webkit-animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
   animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 .auth0-lock .checkmark {
@@ -738,13 +743,41 @@ body.frame {
   stroke-miterlimit: 10;
   margin: 0 auto;
   box-shadow: inset 0px 0px 0px #7ac142;
+  -webkit-animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
   animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
 }
 .auth0-lock .checkmark__check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
+  -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
   animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes scale {
+  0%, 100% {
+    -webkit-transform: none;
+  }
+  50% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@-webkit-keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 @-moz-keyframes stroke {
   100% {
@@ -816,5 +849,37 @@ body.frame {
 @keyframes fill {
   100% {
     box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+@-moz-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

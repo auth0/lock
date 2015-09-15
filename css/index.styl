@@ -36,114 +36,109 @@ body.frame
   padding 20px
 
 .global-error
-  position: fixed;
-  bottom: 20px
+  position fixed
+  bottom 20px
   left 50%
+  -webkit-transform translateX(-50%)
   transform translateX(-50%)
   width 177px
   text-align center
   +breakpoint("tablet")
     width auto
     left auto
-    right: 20px;
+    right 20px
+    -webkit-transform none
     transform none
 
 
 .auth0-loading
-  position:absolute;
-  top: 4px;
-  left: 44%;
-  width:30px;
-  height:30px;
-  border-width: 2px;
-  border-style:solid;
-  border-color: rgba(0,0,0,.4) rgba(0,0,0,.4) rgba(0,0,0,.2) rgba(0,0,0,.2);
-  opacity:.9;
-  border-radius:20px;
-  -webkit-animation:rotate 1s linear infinite;
-  -ms-animation:rotate 1s linear infinite;
-
-@-webkit-keyframes rotate
-  0%{-webkit-transform:rotate(0deg)}
-  100%{-webkit-transform:rotate(360deg)}
-
-@-ms-keyframes rotate
-  0%{-ms-transform:rotate(0deg)}
-  100%{-ms-transform:rotate(360deg)}
+  positionabsolute
+  top 4px
+  left 44%
+  width 30px
+  height 30px
+  border-width 2px
+  border-style solid
+  border-color rgba(0,0,0,.4) rgba(0,0,0,.4) rgba(0,0,0,.2) rgba(0,0,0,.2)
+  opacity .9
+  border-radius 20px
+  -webkit-animation rotate 1s linear infinite
+  animation rotate 1s linear infinite
 
 .auth0-lock
   &, *
-    -webkit-box-sizing: initial;
-    -moz-box-sizing: initial;
-    box-sizing: initial;
+    -webkit-box-sizing initial
+    -moz-box-sizing initial
+    box-sizing initial
 
 .auth0-lock
-  font-family: "Avenir", sans-serif;
-  text-rendering: optimizeLegibility;
-  opacity: 0;
-  transition: opacity 0s;
-  transition-delay: 2s;
-  pointer-events: none;
-  display: table;
+  font-family "Avenir", sans-serif
+  text-rendering optimizeLegibility
+  opacity 0
+  -webkit-transition opacity 0s 2s
+  transition opacity 0s 2s
+  pointer-events none
+  display table
 
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  right: 0;
+  position fixed
+  bottom 0
+  left 0
+  width 100%
+  height 100%
+  right 0
 
   &.auth0-lock-opened
-    opacity: 1;
-    pointer-events: auto;
-    transition-delay: 0s;
+    opacity 1
+    pointer-events auto
+    -webkit-transition-delay 0s
+    transition-delay 0s
 
   a
-    text-decoration: none;
+    text-decoration none
 
   input:focus
-    outline: none;
+    outline none
 
   .auth0-lock-error
     .auth0-lock-input-wrap
-      border-color: red;
+      border-color red
 
   .auth0-lock-error-message
-    background: rgba(0,0,0,.8)
-    position: absolute;
-    padding: 13px 14px;
-    color: white;
-    font-size: 12px;
-    right: -108px;
-    border-radius: 3px;
-    top: 0px;
+    background rgba(0,0,0,.8)
+    position absolute
+    padding 13px 14px
+    color white
+    font-size 12px
+    right -108px
+    border-radius 3px
+    top 0px
 
     &:before
-      border-left: 6px solid transparent;
-      border-right: 6px solid rgba(0,0,0,.8)
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      left: -12px;
-      position: absolute;
-      content: " "
-      top: 15px;
+      border-left 6px solid transparent
+      border-right 6px solid rgba(0,0,0,.8)
+      border-top 6px solid transparent
+      border-bottom 6px solid transparent
+      left -12px
+      position absolute
+      content " "
+      top 15px
 
   .auth0-lock-overlay
-    background: rgba(34,34,40, .94)
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0;
-    background: radial-gradient(lighten(#222228, 15%), #111118); /* Standard syntax */
-    -webkit-transition: opacity .2s ease-in .4s;
+    background radial-gradient(lighten(#222228, 15%), #111118) rgba(34,34,40, .94)
+    position fixed
+    top 0
+    bottom 0
+    right 0
+    left 0
+    z-index -1
+    opacity 0
+    -webkit-transition opacity .2s ease-in .4s
+    transition opacity .2s ease-in .4s
 
   .auth0-lock-form
-    display: block;
-    -webkit-animation: fadeIn .2s;
-    animation: fadeIn .2s;
+    display block
+    -webkit-animation fadeIn .2s
+    animation fadeIn .2s
 
     h2
       font-size 22px
@@ -153,76 +148,79 @@ body.frame
       color black
 
     p
-      font-size: 13px;
-      line-height: 1.8;
-      text-align: center
-      margin-top: 0
-      margin-bottom: 20px;
-      color: #666;
+      font-size 13px
+      line-height 1.8
+      text-align center
+      margin-top 0
+      margin-bottom 20px
+      color #666
 
   .auth0-lock-hide
-    display: none !important;
+    display none !important
 
   .auth0-lock-form.auth0-lock-hide
-    display: none;
+    display none
 
   .auth0-lock-center
-    vertical-align: middle;
-    display: table-cell;
-    margin: auto;
+    vertical-align middle
+    display table-cell
+    margin auto
 
   .auth0-lock-widget
-    opacity: 0;
-    box-shadow: 0 0 0 transparent;
-    -webkit-transition: transform .4s, opacity .7s;
-    -webkit-transform: translateY(100%) scale(.8);
-    -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.4);
-    -webkit-transition-delay: 0s;
-    width: 300px;
-    margin: -20% auto 0;
+    opacity 0
+    box-shadow 0 0 0 transparent
+    -webkit-transition transform .4s, opacity .7s
+    transition transform .4s, opacity .7s
+    -webkit-transform translateY(100%) scale(.8)
+    transform translateY(100%) scale(.8)
+    -webkit-transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
+    transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
+    -webkit-transition-delay 0s
+    transition-delay 0s
+    width 300px
+    margin -20% auto 0
     +breakpoint("tablet")
-      margin: auto;
+      margin auto
 
   .auth0-lock-widget-container
-    border-radius: 5px;
-    background: white;
+    border-radius 5px
+    background white
     overflow hidden
     position relative
 
   .auth0-lock-header
-    text-align: center;
-    padding: 14px 14px 14px 14px;
-    color: #333;
-    position: relative;
-    background: #fff;
-    height: 100px
+    text-align center
+    padding 14px 14px 14px 14px
+    color #333
+    position relative
+    background #fff
+    height 100px
 
   .auth0-lock-close, .auth0-lock-go-back
-    background: white;
-    border-radius: 100px;
-    height: 10px;
-    width: 10px;
-    background: white;
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.1);
-    color: #333;
-    z-index: 100;
-    border: 6px solid white;
-    cursor: pointer;
+    background white
+    border-radius 100px
+    height 10px
+    width 10px
+    position absolute
+    top 14px
+    right 14px
+    box-shadow 0 1px 3px rgba(0,0,0,.1)
+    color #333
+    z-index 100
+    border 6px solid white
+    cursor pointer
     polygon
-      fill: #373737
+      fill #373737
 
   .auth0-lock-go-back
-    left: 14px;
+    left 14px
 
   .auth0-lock-header-welcome
-    font-size: 18px;
-    position: relative;
+    font-size 18px
+    position relative
 
   img
-    display: block;
+    display block
 
   .auth0-lock-header-logo
     width 50px
@@ -231,129 +229,130 @@ body.frame
     vertical-align middle
 
   .auth0-lock-header-placeholder
-    background: green;
-    color: white;
-    border-radius: 100px;
-    line-height: 60px;
-    width: 60px;
-    margin: auto;
+    background green
+    color white
+    border-radius 100px
+    line-height 60px
+    width 60px
+    margin auto
 
   .auth0-lock-header-avatar
-    height: 100px;
-    width: 100px;
-    display: block;
-    border-radius: 100px;
-    margin: auto;
-    margin: auto auto 16px auto;
-    margin-top: -30px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 1px 2px rgba(0,0,0,.4)
+    height 100px
+    width 100px
+    display block
+    border-radius 100px
+    margin -30px auto 16px
+    position absolute
+    left 0
+    right 0
+    z-index 1000
+    box-shadow 0 1px 2px rgba(0,0,0,.4)
 
   .auth0-lock-firstname
-    font-size: 18px;
-    margin-top: 74px;
+    font-size 18px
+    margin-top 74px
 
   .auth0-lock-name
-    font-size: 22px;
+    font-size 22px
 
   .auth0-lock-header-bg
-    position: absolute;
-    height: 128px;
-    width: 300px;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    pointer-events: none;
+    background rgba(#f1f1f1,.8)
+    position absolute
+    height 128px
+    width 300px
+    overflow hidden
+    top 0
+    left 0
+    pointer-events none
     .auth0-lock-header-bg-inner
-      content: " ";
-      display: block;
-      height: 100%;
-      width: 100%;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      -webkit-filter: blur(40px) grayscale(1);
-      background-color: #fff;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size:  300px ;
-      opacity: 0;
-      transition: all 0s ease 0s;
+      content " "
+      display block
+      height 100%
+      width 100%
+      border-top-left-radius 5px
+      border-top-right-radius 5px
+      -webkit-filter blur(40px) grayscale(1)
+      background-color #fff
+      background-position center
+      background-repeat no-repeat
+      background-size 300px
+      opacity 0
+      -webkit-transition 0s ease 0s
+      transition 0s ease 0s
 
       &.auth0-lock-no-grayscale
-        -webkit-filter: blur(100px);
-        background-position: center;
-        background-size:  500px ;
+        -webkit-filter blur(100px)
+        background-position center
+        background-size 500px
 
   .auth0-global-grobal-error
-    background: #F04848;
-    color: white;
-    text-align: center;
-    padding: 6px 20px;
-    line-height: 2;
-    font-size: 12px;
-    display: none;
+    background #F04848
+    color white
+    text-align center
+    padding 6px 20px
+    line-height 2
+    font-size 12px
+    display none
     span
-      display: none;
-      animation-delay: .2s;
+      display none
+      -webkit-animation-delay .2s
+      animation-delay .2s
 
   .auth0-lock-content
-    padding: 30px;
-    max-width: 240px;
+    padding 30px
+    max-width 240px
 
     &:last-child
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
+      border-bottom-left-radius 6px
+      border-bottom-right-radius 6px
 
   .auth0-lock-tabs
-    border: 1px solid #5C666F;
-    background: white;
-    padding: 0;
-    margin: 0 0 30px 0;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-size: 10px;
-    letter-spacing: .7px;
-    overflow: hidden;
+    border 1px solid #5C666F
+    background white
+    padding 0
+    margin 0 0 30px 0
+    border-radius 3px
+    text-transform uppercase
+    font-size 10px
+    letter-spacing .7px
+    overflow hidden
     li
-      width: 50%;
-      display: block
-      list-style: none;
-      float: left;
-      padding: 0;
-      margin: 0;
-      text-align: center;
-
+      width 50%
+      display block
+      list-style none
+      float left
+      padding 0
+      margin 0
+      text-align center
       a
-        padding: 6px 10px;
-        display: block;
-        text-decoration: none;
-        color: #5C666F;
+        padding 6px 10px
+        display block
+        text-decoration none
+        color #5C666F
 
       &.auth0-lock-tabs-current
-        background-color: #5C666F;
+        background-color #5C666F
         a
           color white
 
   .auth0-lock-input
-    position: relative;
+    position relative
 
   .auth0-lock-input-block
-    margin-bottom: 10px;
+    margin-bottom 10px
 
     &:last-child
-      margin-bottom: 0;
+      margin-bottom 0
 
   .auth0-lock-input-wrap
-    border-radius: 3px;
-    margin-top: 10px;
-    border: 1px solid #f1f1f1;
-    position: relative;
-    background: #f1f1f1;
-    overflow: hidden;
-    transition: border-color .8s;
+    border-radius 3px
+    margin-top 10px
+    border 1px solid #f1f1f1
+    position relative
+    background #f1f1f1
+    overflow hidden
+    -webkit-transition border-color .8s
+    transition border-color .8s
 
     .auth0-lock-icon-arrow
       position absolute
@@ -361,14 +360,14 @@ body.frame
       top 14px
 
     .auth0-lock-icon
-      position: absolute
-      font-size: 12px;
-      top: 16px;
-      left: 14px;
-      width: 14px;
-      height: 10px;
+      position absolute
+      font-size 12px
+      top 16px
+      left 14px
+      width 14px
+      height 10px
       path
-        fill: #666;
+        fill #666
 
       &.auth0-lock-icon-mobile
         width 9px
@@ -388,31 +387,30 @@ body.frame
 
     &.auth0-lock-input-email
       i:before
-        content: "b"
+        content "b"
 
     &.auth0-lock-input-password
       i:before
-        content: "c"
+        content "c"
 
     &.auth0-lock-input-invalid
-      border-color: #D84132;
-      color: #D84132;
+      border-color #D84132
+      color #D84132
       i:before
-        color: #D84132;
-
+        color #D84132
 
     .auth0-lock-input
-      border: 0;
-      padding: 10px 14px;
-      margin-left: 40px;
-      right: 0;
-      height: 20px;
-      border-left: 1px solid #eee;
-      font-size: 13px;
-      right: 0px;
-      width: 169px;
+      border 0
+      padding 10px 14px
+      margin-left 40px
+      right 0
+      height 20px
+      border-left 1px solid #eee
+      font-size 13px
+      width 169px
       &.animated
-        animation-duration: .5s;
+        -webkit-animation-duration .5s
+        animation-duration .5s
 
       &.auth0-lock-input-location
         background-color #F9F9F9
@@ -422,57 +420,58 @@ body.frame
 
   .auth0-lock-terms
     background #EEE
-    text-align: center;
-    display: block;
-    font-size: 12px;
-    color: #666;
-    line-height: 22px;
+    text-align center
+    display block
+    font-size 12px
+    color #666
+    line-height 22px
     padding 10px 30px
     a
-      color: #000;
+      color #000
 
   .auth0-lock-submit
-    background: #40DF7D;
-    background: #EA5323;
-    border: 0;
-    padding: 14px;
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    position: fixed;
-    overflow: hidden;
-    position: relative;
-    bottom: 0;
-    transition: background-color .2s ease-in-out;
+    background #EA5323
+    border 0
+    padding 14px
+    display block
+    box-sizing border-box
+    width 100%
+    overflow hidden
+    position relative
+    bottom 0
+    -webkit-transition background .2s ease-in-out
+    transition background .2s ease-in-out
     span
       display inline-block
-      transition: all .2s ease-in-out;
+      -webkit-transition .2s ease-in-out
+      transition .2s ease-in-out
       svg
         vertical-align middle
 
     &:hover
-      background: darken(#EA5323, 20%)
+      background darken(#EA5323, 20%)
 
       span
-        transform: scale(1.05)
+        -webkit-transform scale(1.05)
+        transform scale(1.05)
 
     &:focus
-      outline: none;
+      outline none
 
     +breakpoint("mobile-landscape")
-      position: static;
-      position: relative;
+      // position static
+      position relative
 
     &[disabled]
-      background: darken(#EA5323, 20%)
+      background darken(#EA5323, 20%)
 
 
   .auth0-loading-container
-    position: relative;
-    display: none;
+    position relative
+    display none
 
   .auth0-lock-change-avatar
-    color: red;
+    color red
 
   .auth0-lock-select-country
     background-color white
@@ -533,25 +532,24 @@ body.frame
   &.auth0-lock-mode-loading
 
     .auth0-lock-content, .auth0-lock-terms
-      opacity: .3;
-      pointer-events: none
+      opacity .3
+      pointer-events none
 
     .auth0-lock-submit
-      background: #eee
-      transition: background-color .7s ease;
-      cursor: initial;
-      pointer-events: none
+      background #eee
+      -webkit-transition background .7s ease
+      transition background .7s ease
+      cursor initial
+      pointer-events none
 
       span
-        animation-name: fadeOutDownBig;
-        animation-duration: 1s;
-        animation-fill-mode: both;
+        -webkit-animation fadeOutDownBig 1s both
+        animation fadeOutDownBig 1s both
 
     .auth0-loading-container
-      animation-name: fadeInDownBig;
-      animation-duration: 1s;
-      animation-fill-mode: both;
-      display: block;
+      -webkit-animation fadeInDownBig 1s both
+      animation fadeInDownBig 1s both
+      display block
 
   .auth0-lock-cred-pane
     border-radius 5px
@@ -560,15 +558,15 @@ body.frame
     &.horizontal-fade-leave
       .auth0-lock-content, .auth0-lock-terms
         opacity .3
-        pointer-events: none
+        pointer-events none
 
   .auth0-lock-confirmation
     background-color white
-    position: absolute;
-    text-align: center;
-    line-height: 2;
-    font-size: 14px;
-    color: #666;
+    position absolute
+    text-align center
+    line-height 2
+    font-size 14px
+    color #666
     width 100%
     height 100%
     top 0
@@ -600,59 +598,61 @@ body.frame
       margin-bottom 6px
 
     a
-      display: block;
-      font-weight: 500;
-      color: #09c
+      display block
+      font-weight 500
+      color #09c
       svg
-        width: 15px;
-        height: 16px;
-        margin-bottom: -4px;
-        margin-left: 0px;
-        display: inline-block;
-        transition: transform 1s ease
-        -webkit-transform: rotate(120deg);
+        width 15px
+        height 16px
+        margin-bottom -4px
+        margin-left 0px
+        display inline-block
+        -webkit-transition transform 1s ease
+        transition transform 1s ease
+        -webkit-transform rotate(120deg)
+        transform rotate(120deg)
         path
-          fill: #09c
+          fill #09c
 
       &:hover svg
-        -webkit-transform: rotate(490deg);
+        -webkit-transform rotate(490deg)
+        transform rotate(490deg)
 
     .auth0-lock-sent-label
-      color: green;
-      animation: fadeIn;
-      animation-duration: 1s;
-      animation-fill-mode: both;
-      font-weight: 600;
+      color green
+      -webkit-animation fadeIn 1s both
+      animation fadeIn 1s both
+      font-weight 600
 
     .auth0-lock-sent-failed-label
-      color: red;
-      animation: fadeIn;
-      animation-duration: 1s;
-      animation-fill-mode: both;
-      font-weight: 600;
+      color red
+      -webkit-animation fadeIn 1s both
+      animation fadeIn 1s both
+      font-weight 600
 
   .auth0-lock-forgot-link
-    font-size 12px;
-    display: block
-    text-align: center;
-    margin: 30px 0 0 0;
-    color: #5C666F;
+    font-size 12px
+    display block
+    text-align center
+    margin 30px 0 0 0
+    color #5C666F
 
   .auth0-lock-badge-bottom
-    -webkit-transition: transform 4s ease 1.8s, opacity 1.2s ease 1.8s;
-    -webkit-transform: translateY(-200%) scale(.8);
-    transition: transform .5s ease 1s, opacity .2s ease 0s;
-    transform: translateY(-200%) scale(.8);
-    position: absolute;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    z-index: -1;
-    text-align: center;
-    margin-top: 20px;
+    // -webkit-transition transform 4s ease 1.8s, opacity 1.2s ease 1.8s
+    -webkit-transition transform .5s ease 1s, opacity .2s ease 0s
+    transition transform .5s ease 1s, opacity .2s ease 0s
+    -webkit-transform translateY(-200%) scale(.8)
+    transform translateY(-200%) scale(.8)
+    position absolute
+    left 0
+    right 0
+    opacity 0
+    z-index -1
+    text-align center
+    margin-top 20px
 
     .auth0-lock-badge
-      display: inline-block;
+      display inline-block
       svg
         vertical-align middle
 
@@ -665,96 +665,127 @@ body.frame
   &.auth0-lock-opened
     .auth0-lock-header-bg
       .auth0-lock-header-bg-inner
-        opacity: .4;
-        transition: all 1s ease 1s;
+        opacity .4
+        -webkit-transition 1s ease 1s
+        transition 1s ease 1s
         &.auth0-lock-no-grayscale
-          opacity: .7;
+          opacity .7
 
     .auth0-lock-overlay
-      opacity: .9;
-      -webkit-transition: opacity .3s ease-in 0s;
+      opacity .9
+      -webkit-transition opacity .3s ease-in 0s
+      transition opacity .3s ease-in 0s
 
     .auth0-lock-widget
-      opacity: 1;
-      box-shadow: 0 0 40px 4px #111118;
-      -webkit-transform: translateY(0%) scale(1);
-      -webkit-transition: transform .6s, opacity .6s;
-      -webkit-transition-delay: .5s;
+      opacity 1
+      box-shadow 0 0 40px 4px #111118
+      -webkit-transform translateY(0%) scale(1)
+      transform translateY(0%) scale(1)
+      -webkit-transition transform .6s, opacity .6s
+      transition transform .6s, opacity .6s
+      -webkit-transition-delay .5s
+      transition-delay .5s
 
     .auth0-lock-badge-bottom
-      -webkit-transform: translateY(0%)  scale(1);
-      -webkit-transition-delay: 0;
-      transform: translateY(0%)  scale(1);
-      transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
-      opacity: 1;
+      -webkit-transform translateY(0%)  scale(1)
+      transform translateY(0%)  scale(1)
+      -webkit-transition transform 1.2s ease 1s, opacity 1.2s ease 1s
+      transition transform 1.2s ease 1s, opacity 1.2s ease 1s
+      -webkit-transition-delay 0
+      transition-delay 0
+      opacity 1
 
   &.auth0-lock-opened-in-frame
-    opacity: 1;
-    pointer-events: auto;
-    transition-delay: 0s;
+    opacity 1
+    pointer-events auto
+    -webkit-transition-delay 0s
+    transition-delay 0s
     position relative
     width auto
 
     .auth0-lock-header-bg
       .auth0-lock-header-bg-inner
-        opacity: .4;
-        transition: all 1s ease 1s;
+        opacity .4
+        -webkit-transition 1s ease 1s
+        transition 1s ease 1s
         &.auth0-lock-no-grayscale
-          opacity: .7;
+          opacity .7
 
     .auth0-lock-widget
-      opacity: 1;
-      -webkit-transform: translateY(0%) scale(1);
-      -webkit-transition: transform .6s, opacity .6s;
-      -webkit-transition-delay: .5s;
+      opacity 1
+      -webkit-transform translateY(0%) scale(1)
+      transform translateY(0%) scale(1)
+      -webkit-transition transform .6s, opacity .6s
+      transition transform .6s, opacity .6s
+      -webkit-transition-delay .5s
+      transition-delay .5s
 
     .auth0-lock-badge-bottom
-      -webkit-transform: translateY(0%)  scale(1);
-      -webkit-transition-delay: 0;
-      transform: translateY(0%)  scale(1);
-      transition: transform 1.2s ease 1s, opacity 1.2s ease 1s;
-      opacity: 1;
+      // -webkit-transition-delay 0
+      -webkit-transform translateY(0%)  scale(1)
+      transform translateY(0%)  scale(1)
+      -webkit-transition transform 1.2s ease 1s, opacity 1.2s ease 1s
+      transition transform 1.2s ease 1s, opacity 1.2s ease 1s
+      opacity 1
 
     .global-error
       position absolute
       display none
 
   .checkmark__circle
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-    stroke: #7ac142;
-    fill: none;
-    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    stroke-dasharray 166
+    stroke-dashoffset 166
+    stroke-width 2
+    stroke-miterlimit 10
+    stroke #7ac142
+    fill none
+    -webkit-animation stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+    animation stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
 
   .checkmark
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: block;
-    stroke-width: 2;
-    stroke: #fff;
-    stroke-miterlimit: 10;
-    margin: 0 auto;
-    box-shadow: inset 0px 0px 0px #7ac142;
-    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-    // display: none;
+    width 56px
+    height 56px
+    border-radius 50%
+    display block
+    stroke-width 2
+    stroke #fff
+    stroke-miterlimit 10
+    margin 0 auto
+    box-shadow inset 0px 0px 0px #7ac142
+    -webkit-animation fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+    animation fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+    // display none
 
 
   .checkmark__check
-    transform-origin: 50% 50%;
-    stroke-dasharray: 48;
-    stroke-dashoffset: 48;
-    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    transform-origin 50% 50%
+    stroke-dasharray 48
+    stroke-dashoffset 48
+    -webkit-animation stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+    animation stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
 
 
-  // &.auth0-lock-mode-
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
 @keyframes stroke {
   100% {
     stroke-dashoffset: 0;
   }
 }
+
+@-webkit-keyframes scale {
+  0%, 100% {
+    -webkit-transform: none;
+  }
+  50% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
 @keyframes scale {
   0%, 100% {
     transform: none;
@@ -763,8 +794,23 @@ body.frame
     transform: scale3d(1.1, 1.1, 1);
   }
 }
+
+@-webkit-keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+
 @keyframes fill {
   100% {
     box-shadow: inset 0px 0px 0px 30px #7ac142;
   }
 }
+
+@keyframes rotate
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+
+@-webkit-keyframes rotate
+  0%{-webkit-transform: rotate(0deg);}
+  100%{-webkit-transform: rotate(360deg);}
