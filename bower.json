@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock-passwordless",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "main": "build/auth0-lock-passwordless.js",
   "ignore": [
     "lib-cov",

@@ -2,7 +2,7 @@ import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
 
 
-describe.skip(".magiclink acceptance", function() {
+describe(".magiclink acceptance", function() {
   before(u.stubWebApis);
   after(u.restoreWebApis);
 
@@ -19,16 +19,20 @@ describe.skip(".magiclink acceptance", function() {
   describe("opening a Lock", function() {
     before(function() {
       this.lock = u.constructLock();
-      u.openLock(this.lock, "magiclink");
     });
 
     after(function() {
       u.closeLock(this.lock);
     });
 
-    it("renders the widget and opens it after a few ms", function(done) {
+    it("doesn't open the Lock immediately", function() {
+      u.openLock(this.lock, "emailcode");
+
       expect(u.isRendered(this.lock)).to.be.ok();
       expect(u.isOpened(this.lock)).to.not.be.ok();
+    });
+
+    it("opens it after a few ms", function(done) {
       setTimeout(() => {
         expect(u.isOpened(this.lock)).to.be.ok();
         done();
@@ -65,7 +69,7 @@ describe.skip(".magiclink acceptance", function() {
       });
 
       it("doesn't perform any request", function() {
-        expect(u.startPasswordlessCallCount()).to.be(0);
+        expect(u.hasStartedPasswordless(false)).to.be.ok();
         expect(u.isInputInvalid(this.lock, "email")).to.be.ok();
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
@@ -122,9 +126,9 @@ describe.skip(".magiclink acceptance", function() {
         expect(u.isLoading(this.lock)).to.not.be.ok();
       });
 
-      // it("doesn't show an input for the email", function() {
-      //   expect(u.qInput(this.lock, "email")).to.not.be.ok();
-      // });
+      it.skip("doesn't show an input for the email", function() {
+        expect(u.qInput(this.lock, "email")).to.not.be.ok();
+      });
 
       it("shows a confirmation screen", function() {
         expect(u.isShowingConfirmation(this.lock)).to.be.ok();
@@ -182,12 +186,12 @@ describe.skip(".magiclink acceptance", function() {
       });
 
       it("shows a generic error", function() {
-        expect(u.isSomethingWrong(this.lock)).to.be.ok();
+        expect(u.isSomethingWrong(this.lock, u.EMAIL_GENERIC_ERROR)).to.be.ok();
       });
     });
   });
 
-  describe("successfully resending the email", function() {
+  describe.skip("successfully resending the email", function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, "magiclink");

@@ -52,14 +52,19 @@ export default class Slider extends React.Component {
         transition(currentComponent, `${classNamePrefix}${transitionName}-enter`, this.props.delay);
         transition(prevComponent, `${classNamePrefix}${transitionName}-leave`);
 
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
           this.setState({children: {current: this.state.children.current}});
           currentComponent.componentDidSlideIn();
+          this.timeout = null;
         }, this.props.delay);
       };
 
       prevComponent.componentWillSlideOut(callback)
     }
+  }
+
+  componentWillUnmount() {
+    if (this.timeout) clearTimeout(this.timeout);
   }
 
   render() {

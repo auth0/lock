@@ -280,7 +280,7 @@ var options = {
 
 ## Browser Compatibility
 
-We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 9. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
+We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10, and working to support IE9. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
 ## Contributing
 
@@ -291,7 +291,7 @@ npm install
 npm start
 ```
 
-Changes to the source code will be automatically rebuilt. To see the result, point your favorite browser to http://localhost:3000/playground/.
+Changes to the source code will be automatically rebuilt. To see the result, point your favorite browser to [http://localhost:3000/playground/](http://localhost:3000/playground/).
 
 However, testing changes that way can be cumbersome because there are HTTP request involved which are being rate-limited. If your changes are scoped to the UI, you will be better off running:
 
@@ -299,7 +299,7 @@ However, testing changes that way can be cumbersome because there are HTTP reque
 npm run design
 ```
 
-And pointing your browser to http://localhost:3000/design/. It behaves just like `npm start` but requests to the [Auth0](https://auth0.com) API will be simulated.
+And pointing your browser to [http://localhost:3000/design/](http://localhost:3000/design/). It behaves just like `npm start` but requests to the [Auth0](https://auth0.com) API will be simulated.
 
 
 ### Running the tests
@@ -313,7 +313,7 @@ npm run test:browser
 
 ### Releasing a new version
 
-Whenever a new commit is pushed to _master_, the CI will attempt to deploy a new release to [Github](https://github.com) and [NPM](https://www.npmjs.com) if the tests pass and there isn't already a release for the version specified in the [package.json](package.json) file. See [bin/deploy](bin/deploy) for the details.
+Whenever a new commit is pushed to _master_, the CI will attempt to deploy a new release to [Github](https://github.com) and [npm](https://www.npmjs.com) if the tests pass and there isn't already a release for the version specified in the [package.json](package.json) file. See [bin/deploy](bin/deploy) for the details.
 
 There is also a convenient [script](bin/version) to prepare a new release:
 

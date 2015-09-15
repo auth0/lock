@@ -54,6 +54,12 @@ body.frame {
     -ms-transform: rotate(360deg);
   }
 }
+.auth0-lock,
+.auth0-lock * {
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+  box-sizing: initial;
+}
 .auth0-lock {
   font-family: "Avenir", sans-serif;
   text-rendering: optimizeLegibility;
@@ -428,6 +434,7 @@ body.frame {
   border: 0;
   padding: 14px;
   display: block;
+  box-sizing: border-box;
   width: 100%;
   position: fixed;
   overflow: hidden;
