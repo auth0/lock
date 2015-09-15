@@ -20,7 +20,7 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { children, closeHandler, lock, submitHandler, disallowClose } = this.props;
+    const { children, closeHandler, isDone, lock, submitHandler, disallowClose } = this.props;
 
     const overlay = l.ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -37,6 +37,10 @@ export default class Lock extends React.Component {
 
     if (l.submitting(lock)) {
       className += " auth0-lock-mode-loading";
+    }
+
+    if (isDone) {
+      className += " auth0-lock-complete";
     }
 
     return (
