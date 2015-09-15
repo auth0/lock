@@ -47,7 +47,7 @@ export default class Lock extends React.Component {
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
-              <MultisizeSlide delay={1000} transitionName="horizontal-fade">{children}</MultisizeSlide>
+              <MultisizeSlide delay={400} transitionName="horizontal-fade">{children}</MultisizeSlide>
             </div>
             <span className="auth0-lock-badge-bottom">
               <Badge />

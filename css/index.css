@@ -117,8 +117,8 @@ body.frame {
 }
 .auth0-lock .auth0-lock-form {
   display: block;
-  -webkit-animation: fadeIn 0.7s;
-  animation: fadeIn 0.7s;
+  -webkit-animation: fadeIn 0.2s;
+  animation: fadeIn 0.2s;
 }
 .auth0-lock .auth0-lock-form h2 {
   font-size: 22px;

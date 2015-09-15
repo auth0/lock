@@ -40,7 +40,7 @@ export default class CredPane extends React.Component {
     return (
       <div className={className + " auth0-lock-cred-pane"}>
         <Header name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} logoUrl={icon}/>
-        <Placeholder delay={400} height={height} show={show} ref="content">
+        <Placeholder delay={800} height={height} show={show} ref="content">
           <ReactTransitionGroup>
             {globalError && <GlobalError key="global-error" message={globalError} />}
           </ReactTransitionGroup>
