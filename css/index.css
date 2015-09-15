@@ -290,10 +290,7 @@ body.frame {
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px;
-  background: #fff;
   max-width: 240px;
-  margin: auto;
-  transition: all 2s;
 }
 .auth0-lock .auth0-lock-content:last-child {
   border-bottom-left-radius: 6px;
@@ -342,7 +339,7 @@ body.frame {
 }
 .auth0-lock .auth0-lock-input-wrap {
   border-radius: 3px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   border: 1px solid #f1f1f1;
   position: relative;
   background: #f1f1f1;
@@ -474,27 +471,6 @@ body.frame {
 .auth0-lock .auth0-lock-change-avatar {
   color: #f00;
 }
-.auth0-lock.auth0-lock-mode-loading .auth0-lock-content {
-  opacity: 0.3;
-  pointer-events: none;
-}
-.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
-  background: #eee;
-  transition: background-color 0.7s ease;
-  cursor: initial;
-  pointer-events: none;
-}
-.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit span {
-  animation-name: fadeOutDownBig;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-.auth0-lock.auth0-lock-mode-loading .auth0-loading-container {
-  animation-name: fadeInDownBig;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  display: block;
-}
 .auth0-lock .auth0-lock-select-country {
   background-color: #fff;
   position: absolute;
@@ -554,9 +530,36 @@ body.frame {
   background-color: #2eb5ff;
   color: #fff;
 }
+.auth0-lock.auth0-lock-mode-loading .auth0-lock-content,
+.auth0-lock.auth0-lock-mode-loading .auth0-lock-terms {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
+  background: #eee;
+  transition: background-color 0.7s ease;
+  cursor: initial;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit span {
+  animation-name: fadeOutDownBig;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.auth0-lock.auth0-lock-mode-loading .auth0-loading-container {
+  animation-name: fadeInDownBig;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  display: block;
+}
 .auth0-lock .auth0-lock-cred-pane {
   border-radius: 5px;
   overflow: hidden;
+}
+.auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-content,
+.auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-terms {
+  opacity: 0.3;
+  pointer-events: none;
 }
 .auth0-lock .auth0-lock-confirmation {
   background-color: #fff;

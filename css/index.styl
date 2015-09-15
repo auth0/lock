@@ -299,13 +299,9 @@ body.frame
       display: none;
       animation-delay: .2s;
 
-
   .auth0-lock-content
     padding: 30px;
-    background: white;
     max-width: 240px;
-    margin: auto;
-    transition: all 2s;
 
     &:last-child
       border-bottom-left-radius: 6px;
@@ -352,7 +348,7 @@ body.frame
 
   .auth0-lock-input-wrap
     border-radius: 3px;
-    margin-bottom: 10px;
+    margin-top: 10px;
     border: 1px solid #f1f1f1;
     position: relative;
     background: #f1f1f1;
@@ -478,29 +474,6 @@ body.frame
   .auth0-lock-change-avatar
     color: red;
 
-  &.auth0-lock-mode-loading
-
-    .auth0-lock-content
-      opacity: .3;
-      pointer-events: none
-
-    .auth0-lock-submit
-      background: #eee
-      transition: background-color .7s ease;
-      cursor: initial;
-      pointer-events: none
-
-      span
-        animation-name: fadeOutDownBig;
-        animation-duration: 1s;
-        animation-fill-mode: both;
-
-    .auth0-loading-container
-      animation-name: fadeInDownBig;
-      animation-duration: 1s;
-      animation-fill-mode: both;
-      display: block;
-
   .auth0-lock-select-country
     background-color white
     position absolute
@@ -557,9 +530,36 @@ body.frame
           background-color #2EB5FF
           color white
 
+  &.auth0-lock-mode-loading
+
+    .auth0-lock-content, .auth0-lock-terms
+      opacity: .3;
+      pointer-events: none
+
+    .auth0-lock-submit
+      background: #eee
+      transition: background-color .7s ease;
+      cursor: initial;
+      pointer-events: none
+
+      span
+        animation-name: fadeOutDownBig;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+
+    .auth0-loading-container
+      animation-name: fadeInDownBig;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      display: block;
+
   .auth0-lock-cred-pane
     border-radius 5px
     overflow hidden
+    &.horizontal-fade-leave
+      .auth0-lock-content, .auth0-lock-terms
+        opacity .3
+        pointer-events: none
 
   .auth0-lock-confirmation
     background-color white
@@ -628,22 +628,6 @@ body.frame
       animation-duration: 1s;
       animation-fill-mode: both;
       font-weight: 600;
-
-  // .auth0-lock-code-confirmation
-  //   background-color white
-  //   position: absolute;
-  //   text-align: center;
-  //   font-size: 14px;
-  //   color: #666;
-  //   bottom: 0
-  //   top: 0;
-  //   right: 0;
-  //   left: 0;
-  //   border-radius 5px
-  //   padding: 80px 30px 0;
-
-  //   .auth0-lock-submit
-  //     position absolute
 
   .auth0-lock-forgot-link
     font-size 12px;
