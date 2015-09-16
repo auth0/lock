@@ -18,7 +18,6 @@ export default class AskPhoneNumber extends React.Component {
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" showTerms={true} ref="cred">
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
-            <h2>SMS</h2>
             <p>Please enter your phone number.</p>
             <PhoneNumberInput value={c.phoneNumber(lock)}
               isValid={!c.visiblyInvalidPhoneNumber(lock)}
