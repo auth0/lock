@@ -303,7 +303,7 @@ export const countryCodes = Immutable.fromJS([
     "+53"
   ],
   [
-    "CuraÃ§ao",
+    "Curaçao",
     "CW",
     "+599"
   ],
@@ -318,7 +318,7 @@ export const countryCodes = Immutable.fromJS([
     "+420"
   ],
   [
-    "CÃ´te d'Ivoire",
+    "Côte d'Ivoire",
     "CI",
     "+225"
   ],
@@ -948,12 +948,12 @@ export const countryCodes = Immutable.fromJS([
     "+250"
   ],
   [
-    "RÃ©union",
+    "Réunion",
     "RE",
     "+262"
   ],
   [
-    "Saint BarthÃ©lemy",
+    "Saint Barthélemy",
     "BL",
     "+590"
   ],
@@ -1273,7 +1273,7 @@ export const countryCodes = Immutable.fromJS([
     "+263"
   ],
   [
-    "Ã…land Islands",
+    "Åland Islands",
     "AX",
     "+358"
   ]
