@@ -47,7 +47,14 @@ export default class LocationSelect extends React.Component {
         su.matches(searchString, cc.dialingCode(x));
     });
 
-    this.setState({filteredCountryCodes: filteredCountryCodes});
+    const { highlighted } = this.state;
+    const newHighlighted = filteredCountryCodes.includes(highlighted) ?
+      highlighted : null;
+
+    this.setState({
+      filteredCountryCodes: filteredCountryCodes,
+      highlighted: newHighlighted
+    });
   }
 
   handleHighlight(location) {
