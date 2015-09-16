@@ -6,16 +6,12 @@ import * as su from '../utils/string_utils';
 export default class LocationSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {search: "", highlighted: null};
+    this.state = {filteredCountryCodes: cc.countryCodes, highlighted: null};
   }
 
   render() {
     const { autoFocus, selectHandler } = this.props;
-    const { highlighted } = this.state;
-
-    const countryCodes = cc.countryCodes.filter(x => {
-      return su.matches(this.state.search, cc.country(x));
-    });
+    const { filteredCountryCodes, highlighted } = this.state;
 
     return (
       <div className="auth0-lock-select-country">
@@ -29,7 +25,7 @@ export default class LocationSelect extends React.Component {
               autoFocus={autoFocus} />
           </div>
         </div>
-        <LocationList countryCodes={countryCodes}
+        <LocationList countryCodes={filteredCountryCodes}
           highlighted={highlighted}
           highlightHandler={::this.handleHighlight}
           selectHandler={selectHandler} />
@@ -38,7 +34,11 @@ export default class LocationSelect extends React.Component {
   }
 
   handleSearchChange(e) {
-    this.setState({search: e.target.value});
+    const filteredCountryCodes = cc.countryCodes.filter(x => {
+      return su.matches(e.target.value, cc.country(x));
+    });
+
+    this.setState({filteredCountryCodes: filteredCountryCodes});
   }
 
   handleHighlight(location) {
