@@ -142,12 +142,12 @@ class LocationListItem extends React.Component {
       <li className={className}
         onClick={::this.handleClick}
         onMouseMove={::this.handleMouseMove}>
-          <span className="auth0-lock-list-code-iso">
-            {cc.isoCode(location)}
-          </span>
-          { " " }
           <span className="auth0-lock-list-code-string">
             {cc.locationString(location)}
+          </span>
+          { " " }
+          <span className="auth0-lock-list-code-iso">
+            ({cc.isoCode(location)})
           </span>
       </li>
     );
