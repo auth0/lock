@@ -3,6 +3,11 @@ import Icon from '../icon/icon';
 import * as cc from './country_codes';
 import * as su from '../utils/string_utils';
 
+function cycle(xs, x) {
+  const next = xs.skipWhile(y => y !== x).get(1);
+  return next || xs.get(0);
+}
+
 export default class LocationSelect extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +25,7 @@ export default class LocationSelect extends React.Component {
             <Icon name="location"/>
             <input className="auth0-lock-input auth0-lock-input-search"
               onChange={::this.handleSearchChange}
+              onKeyDown={::this.handleKeyDown}
               type="text"
               placeholder="Select your country"
               autoFocus={autoFocus} />
@@ -43,6 +49,31 @@ export default class LocationSelect extends React.Component {
 
   handleHighlight(location) {
     this.setState({highlighted: location});
+  }
+
+  highlightPrev() {
+    const { filteredCountryCodes, highlighted } = this.state;
+    this.setState({highlighted: cycle(filteredCountryCodes.reverse(), highlighted)});
+  }
+
+  highlightNext() {
+    const { filteredCountryCodes, highlighted } = this.state;
+    this.setState({highlighted: cycle(filteredCountryCodes, highlighted)});
+  }
+
+  handleKeyDown(e) {
+    switch(e.key) {
+      case "ArrowUp":
+        e.preventDefault();
+        this.highlightPrev();
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        this.highlightNext();
+        break;
+      default:
+        // no-op
+    }
   }
 }
 
