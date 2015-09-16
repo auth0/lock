@@ -519,7 +519,7 @@ body.frame {
   padding: 10px 20px;
   margin: 0;
 }
-.auth0-lock .auth0-lock-select-country .auth0-lock-list-code li:hover {
+.auth0-lock .auth0-lock-select-country .auth0-lock-list-code li.auth0-lock-list-code-highlighted {
   background-color: #2eb5ff;
   color: #fff;
 }
