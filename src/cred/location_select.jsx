@@ -61,15 +61,26 @@ export default class LocationSelect extends React.Component {
     this.setState({highlighted: cycle(filteredCountryCodes, highlighted)});
   }
 
+  selectHighlighted() {
+    const { highlighted } = this.state;
+    if (highlighted) {
+      this.props.selectHandler(highlighted);
+    }
+  }
+
   handleKeyDown(e) {
     switch(e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        this.highlightNext();
+        break;
       case "ArrowUp":
         e.preventDefault();
         this.highlightPrev();
         break;
-      case "ArrowDown":
+      case "Enter":
         e.preventDefault();
-        this.highlightNext();
+        this.selectHighlighted();
         break;
       default:
         // no-op
