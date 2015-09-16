@@ -45,6 +45,10 @@ export function selectPhoneLocation(id) {
   swap(updateEntity, "lock", id, m.setSelectingLocation, true);
 }
 
+export function cancelSelectPhoneLocation(id) {
+  swap(updateEntity, "lock", id, m.setSelectingLocation, false);
+}
+
 export function requestPasswordlessEmail(id) {
   // TODO: abstract this submit thing.
   swap(updateEntity, "lock", id, lock => {

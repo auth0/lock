@@ -68,6 +68,10 @@ export default class LocationSelect extends React.Component {
     }
   }
 
+  cancel() {
+    this.props.cancelHandler();
+  }
+
   handleKeyDown(e) {
     switch(e.key) {
       case "ArrowDown":
@@ -82,6 +86,9 @@ export default class LocationSelect extends React.Component {
         e.preventDefault();
         this.selectHighlighted();
         break;
+      case "Escape":
+        e.preventDefault();
+        this.cancel();
       default:
         // no-op
     }
