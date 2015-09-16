@@ -141,7 +141,7 @@ class LocationListItem extends React.Component {
     return (
       <li className={className}
         onClick={::this.handleClick}
-        onMouseEnter={::this.handleMouseEnter}>
+        onMouseMove={::this.handleMouseMove}>
           <span className="auth0-lock-list-code-iso">
             {cc.isoCode(location)}
           </span>
@@ -159,7 +159,7 @@ class LocationListItem extends React.Component {
     selectHandler(location);
   }
 
-  handleMouseEnter(e) {
+  handleMouseMove(e) {
     const { location, highlightHandler } = this.props;
     highlightHandler(location);
   }
