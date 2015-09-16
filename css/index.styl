@@ -525,9 +525,19 @@ body.frame
         color black
         font-size 14px
         padding 10px 20px
+        margin 0
         &:hover
           background-color #2EB5FF
           color white
+
+  .auth0-lock-cred-pane
+    border-radius 5px
+    overflow hidden
+
+    &.horizontal-fade-leave
+      .auth0-lock-content, .auth0-lock-terms
+        opacity .3
+        pointer-events none
 
   &.auth0-lock-mode-loading
 
@@ -551,14 +561,9 @@ body.frame
       animation fadeInDownBig 1s both
       display block
 
-  .auth0-lock-cred-pane
-    border-radius 5px
-    overflow hidden
-
-    &.horizontal-fade-leave
-      .auth0-lock-content, .auth0-lock-terms
-        opacity .3
-        pointer-events none
+  &.auth0-lock-complete
+    .auth0-lock-header-avatar
+      animation fadeOut .3s both
 
   .auth0-lock-confirmation
     background-color white
