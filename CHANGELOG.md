@@ -1,3 +1,26 @@
+## [0.1.4] - 2015-09-14
+
+### Changed
+
+- [] Don't guarantee support for IE9 just yet (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/999fcfead3f3dedd92e7cea9cd852077b39e6c4e
+
+### Fixed
+
+- [] Improved location selector UX (`Gabriel Andretta`)
+- [] Fix fade out avatar in the last step (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/239d74506c76e5a822183294f52904d09e755bf4
+- [] Update instructions when asking the phone number (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/56fe64aa5aed1fa2949095f36e2bb5c1200a8e75
+- [] Remove unneeded SMS heading (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/b72cba237c51c8421bdb9e66ec394bbc1fba5523
+- [] Ensure tests are run correctly in the CI (`Gabriel Andretta`)
+- [] Explicitly test in safari 8 (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/8f02e240d3f5fe5d882e7e865273e434191c205b
+- [] Don't show cred pane buttons in confirmation panes (`Gabriel Andretta`)
+- [] Fix reverse animation (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/1a668413ffd8b7b9205de8cd2585c281ebbc2493
+
 ## [0.1.3] - 2015-09-14
 
 ### Fixed
