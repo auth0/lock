@@ -92,10 +92,20 @@ export function requestPasswordlessEmailError(id, error) {
   }
 }
 
+function fixArgentinianPhoneNumber(lock) {
+  const phoneNumber = c.phoneNumber(lock);
+  const phoneIsoCode = c.phoneIsoCode(lock);
+
+  return phoneIsoCode === "AR" && phoneNumber[0] === "9" ?
+    c.setPhoneNumber(lock, phoneNumber.substr(1, phoneNumber.length -1)) : lock;
+}
+
 export function sendSMS(id) {
   // TODO: abstract this submit thing.
   swap(updateEntity, "lock", id, lock => {
+
     if (c.validPhoneNumber(lock)) {
+      lock = fixArgentinianPhoneNumber(lock);
       return l.setSubmitting(lock, true);
     } else {
       return c.setShowInvalidPhoneNumber(lock, true);

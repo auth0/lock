@@ -47,6 +47,10 @@ export function phoneDialingCode(m) {
   return cc.dialingCode(phoneLocation(m));
 }
 
+export function phoneIsoCode(m) {
+  return cc.isoCode(phoneLocation(m));
+}
+
 export function phoneNumber(lock) {
   return lock.getIn(["cred", "phoneNumber", "number"], "");
 }
