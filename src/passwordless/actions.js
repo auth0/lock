@@ -209,14 +209,14 @@ function signInError(id, error) {
   l.invokeDoneCallback(lock, error);
 }
 
-export function reset(id, clearCred = true) {
-  swap(updateEntity, "lock", id, m.reset, clearCred);
+export function reset(id, opts = {}) {
+  swap(updateEntity, "lock", id, m.reset, opts);
 }
 
 export function close(id) {
   closeLock(id, m.reset);
 }
 
-export function back(id) {
-  reset(id, false);
+export function back(id, resetOpts = {}) {
+  reset(id, resetOpts);
 }

@@ -38,7 +38,7 @@ export default class AskVcode extends React.Component {
   }
 
   handleBack() {
-    back(l.id(this.props.lock));
+    back(l.id(this.props.lock), {clearCred: ["vcode"]});
   }
 
   componentWillSlideIn(...args) {

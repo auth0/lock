@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import { List } from 'immutable';
 import * as l from '../lock/index';
 
 function setResendStatus(m, value) {
@@ -42,16 +42,23 @@ export function resendAvailable(m) {
   return resendStatus(m) == "waiting" || resendStatus(m) == "failed";
 }
 
-export function reset(m, clearCred = true) {
-  let keys = Immutable.fromJS(
-    ["passwordlessStarted", "resendStatus", "selectingLocation"]
-  );
+export function reset(m, opts = {}) {
+  let keyPaths = List([
+    ["passwordlessStarted"],
+    ["resendStatus"],
+    ["selectingLocation"]
+  ]);
 
-  if (clearCred) {
-    keys = keys.push("cred");
+  const { clearCred } = opts;
+
+  if (clearCred === "all") {
+    keyPaths = keyPath.push(["cred"]);
+  } else {
+    const credKeyPaths = List(clearCred || []).map(x => ["cred", x]);
+    keyPaths = keyPaths.concat(credKeyPaths);
   }
 
-  m = keys.reduce((r, v) => r.remove(v), m);
+  m = keyPaths.reduce((r, v) => r.removeIn(v), m);
 
   return l.clearGlobalError(m);
 }
