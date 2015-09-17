@@ -346,11 +346,10 @@ body.frame
 
   .auth0-lock-input-wrap
     border-radius 3px
-    margin-top 10px
     border 1px solid #f1f1f1
     position relative
     background #f1f1f1
-    overflow hidden
+    padding-left 40px
     -webkit-transition border-color .8s
     transition border-color .8s
 
@@ -384,6 +383,9 @@ body.frame
         height 14px
         top 13px
         left 14px
+    
+    &.focused
+      border-color #A0A0A0
 
     &.auth0-lock-input-email
       i:before
@@ -401,21 +403,22 @@ body.frame
 
     .auth0-lock-input
       border 0
-      padding 10px 14px
-      margin-left 40px
+      padding 0 14px
       right 0
-      height 20px
-      border-left 1px solid #eee
+      height 40px
       font-size 13px
-      width 169px
+      width 100%
+      border-radius 0 2px 2px 0
+      -webkit-box-sizing border-box
+      -moz-box-sizing border-box
+      box-sizing border-box
+        
       &.animated
         -webkit-animation-duration .5s
         animation-duration .5s
 
       &.auth0-lock-input-location
         background-color #F9F9F9
-        width 198px
-        height 100%
         text-align left
 
   .auth0-lock-terms
