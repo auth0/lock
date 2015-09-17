@@ -1,3 +1,41 @@
+## [0.1.5] - 2015-09-16
+
+### Changed
+
+- [] Use ISO code to configure the default location (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/ad74cfa17b632cf7d7c65f9a9e763cb057d12816
+- [] Update Argentina dialling code (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/38c00218e519e6e078c4cf6c0b37942691d93c5e
+
+### Fixed
+
+- [] Optimize location items render (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/c68063b7619edd5fef958aeef76b23c71062ec34
+- [] Keep location items content in one line (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/e419bec8c2028eb4070b48b537189de2de499f2c
+- [] Fix search input (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/7ce423132e170e9e21bdca27552a40147cb61e0c
+- [] Put a space in the AR dialling code (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/dc6a36931045c3b80e535efc525129d4e382b470
+- [] Use -webkit-transition also when animating height (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/2555d1e3ae78b7142cd6624fd594d08f562c7553
+- [] Add a CSS class in InputWrap when input has focus (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/6b167049524d0f1f52a7e135f41a2b2bc41a964c
+- [] Add focus style (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/6991e082712bd7401cb4f12000c53c867974f9ba
+- [] Fix tablet view (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/1390339464555434f172aba4df8ea2c634503c3e
+- [] Clear the verification code when going back (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/c20cf41c5418baf765790ee6e54d074f409052ce
+- [] Truncate long names in location input (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/80c8ebf72d91413dcedaafe334cd4dff00f9c851
+
+### Added
+- [] Add the autoclose option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/40bcdcb2affc29f699f82a3afda9cadc2651768f
+- [] Scroll to next/prev location item when using keys (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/2d0fdb61a1fcf7689106b1015b5bb98ce68625fa
+
 ## [0.1.4] - 2015-09-14
 
 ### Changed
