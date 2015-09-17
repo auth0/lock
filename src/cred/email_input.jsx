@@ -20,6 +20,8 @@ export default class EmailInput extends React.Component {
           className="auth0-lock-input"
           placeholder="yours@example.com"
           onChange={::this.handleOnChange}
+          onFocus={::this.handleFocus}
+          onBlur={::this.handleBlur}
           {...props}/>
       </InputWrap>
     );
