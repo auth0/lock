@@ -19,15 +19,9 @@ export function changePhoneLocation(id, location) {
 }
 
 export function setDefaultLocation(id, str) {
-  let [dialingCode, ...countryParts] = str.split(" ");
-  const result = cc.find(dialingCode, countryParts.join(" "));
-
-  if (result.size === 0) {
-    throw new Error(`Unable to set the default location, can't find any that matches "${str}".`);
-  }
-
-  if (result.size > 1) {
-    throw new Error(`Unable to set the default location, multiple locations match "${str}". Try appending the country name.`);
+  const result = cc.find(str);
+  if (!result) {
+    throw new Error(`Unable to set the default location, can't find any country with the code "${str}".`);
   }
 
   swap(updateEntity, "lock", id, c.setPhoneLocation, result.get(0));

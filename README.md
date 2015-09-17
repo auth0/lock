@@ -252,7 +252,7 @@ The appearance of the widget can be customized with an `options` object which ha
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. It defaults to `false` when a `container` option is provided, otherwise it defaults to `true`.
-- **defaultLocation {String}**: Country code that will be selected by default when entering a phone number, e.g. `"+54"`. When the same country code is used for several countries, the name of the country also needs to be specified, e.g. `"+1 United States"`, `"+1 Canada"` and so on.
+- **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
 - **terms {String}**: HTML fragment displayed in the footer that usually contains a link to the terms of service users agree by signing up. Defaults to the empty string `""`.
