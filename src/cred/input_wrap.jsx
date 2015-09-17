@@ -11,7 +11,7 @@ export default class InputWrap extends React.Component {
 
     let wrapClassName = "auth0-lock-input-wrap";
     if (focused && isValid) {
-      wrapClassName += " focused";
+      wrapClassName += " auth0-lock-focused";
     }
 
     const fallbackIcon = <i className="auth0-lock-icon"/>;

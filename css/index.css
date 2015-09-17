@@ -371,7 +371,7 @@ body.frame {
   top: 13px;
   left: 14px;
 }
-.auth0-lock .auth0-lock-input-wrap.focused {
+.auth0-lock .auth0-lock-input-wrap.auth0-lock-focused {
   border-color: #a0a0a0;
 }
 .auth0-lock .auth0-lock-input-wrap.auth0-lock-input-email i:before {
