@@ -75,5 +75,5 @@ var emailcodeLock = new Auth0LockPasswordless(cid, domain);
 emailcodeLock.emailcode({container: "emailcode-container", terms: terms, closable: true});
 
 var smsLock = new Auth0LockPasswordless(cid, domain);
-smsLock.sms({container: "sms-container", terms: terms});
+smsLock.sms({terms: terms});
 </script>

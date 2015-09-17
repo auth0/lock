@@ -1,3 +1,10 @@
+## [0.1.6] - 2015-09-17
+
+### Fixed
+
+- [] Uncomment some CSS so the Lock can show up (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/5cba92b0356d42d2e04ddf9bca40d99570e1e071
+
 ## [0.1.5] - 2015-09-16
 
 ### Changed
