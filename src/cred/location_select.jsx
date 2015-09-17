@@ -114,10 +114,20 @@ class LocationList extends React.Component {
       const scrollableNode = React.findDOMNode(this);
       const highlightedNode = React.findDOMNode(highlighted);
       const relativeOffsetTop = highlightedNode.offsetTop - scrollableNode.scrollTop;
+      let scrollTopDelta = 0;
       if (relativeOffsetTop + highlightedNode.offsetHeight > scrollableNode.clientHeight) {
-        scrollableNode.scrollTop += relativeOffsetTop + highlightedNode.offsetHeight - scrollableNode.clientHeight;
+        scrollTopDelta = relativeOffsetTop + highlightedNode.offsetHeight - scrollableNode.clientHeight;
       } else if (relativeOffsetTop < 0) {
-        scrollableNode.scrollTop += relativeOffsetTop;
+        scrollTopDelta = relativeOffsetTop;
+      }
+
+      if (scrollTopDelta) {
+        this.preventHighlight = true;
+        scrollableNode.scrollTop += scrollTopDelta;
+        if (this.timeout) {
+          clearTimeout(this.timeout);
+        }
+        this.timeout = setTimeout(() => this.preventHighlight = false, 100);
       }
     }
   }
@@ -129,7 +139,7 @@ class LocationList extends React.Component {
       const props = {
         location: x,
         key: cc.locationString(x).replace(/ /g, '-'),
-        highlightHandler: highlightHandler,
+        highlightHandler: ::this.handleHighlight,
         selectHandler: selectHandler
       };
 
@@ -146,6 +156,13 @@ class LocationList extends React.Component {
         <ul>{items}</ul>
       </div>
     );
+  }
+
+  handleHighlight(location) {
+    // TODO: This is an ugly hack to avoid highlighting the element under the
+    // mouse when an arrow key trigger a scroll of the list (which in turn
+    // triggers a mousemove event).
+    !this.preventHighlight && this.props.highlightHandler(location);
   }
 
   handleMouseLeave() {
