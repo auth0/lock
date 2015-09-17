@@ -494,14 +494,7 @@ body.frame {
   z-index: 1;
 }
 .auth0-lock .auth0-lock-select-country .auth0-lock-input-search {
-  height: 40px;
-  width: 100%;
   border: none;
-  border-radius: 3px;
-  padding: 10px 10px 10px 35px;
-  box-sizing: border-box;
-  margin: 0;
-  font-size: 14px;
   color: #000;
 }
 .auth0-lock .auth0-lock-select-country .auth0-lock-list-code {
