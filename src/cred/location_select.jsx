@@ -171,6 +171,10 @@ class LocationList extends React.Component {
 }
 
 class LocationListItem extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.highlighted != nextProps.highlighted;
+  }
+
   render() {
     const { highlighted, location } = this.props;
     const className = highlighted ? "auth0-lock-list-code-highlighted" : "";
