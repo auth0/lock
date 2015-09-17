@@ -106,19 +106,39 @@ export default class LocationSelect extends React.Component {
 }
 
 class LocationList extends React.Component {
+  componentDidUpdate() {
+    // NOTE: I've spent very little time on this. It works, but it surely can be
+    // expressed more clearly.
+    const { highlighted } = this.refs;
+    if (highlighted) {
+      const scrollableNode = React.findDOMNode(this);
+      const highlightedNode = React.findDOMNode(highlighted);
+      const relativeOffsetTop = highlightedNode.offsetTop - scrollableNode.scrollTop;
+      if (relativeOffsetTop + highlightedNode.offsetHeight > scrollableNode.clientHeight) {
+        scrollableNode.scrollTop += relativeOffsetTop + highlightedNode.offsetHeight - scrollableNode.clientHeight;
+      } else if (relativeOffsetTop < 0) {
+        scrollableNode.scrollTop += relativeOffsetTop;
+      }
+    }
+  }
+
   render() {
     const { countryCodes, highlighted, highlightHandler, selectHandler } = this.props;
 
     const items = countryCodes.map(x => {
-      const key = cc.locationString(x).replace(/ /g, '-');
+      const props = {
+        location: x,
+        key: cc.locationString(x).replace(/ /g, '-'),
+        highlightHandler: highlightHandler,
+        selectHandler: selectHandler
+      };
 
-      return (
-        <LocationListItem location={x}
-          key={key}
-          highlighted={highlighted === x}
-          highlightHandler={highlightHandler}
-          selectHandler={selectHandler} />
-      );
+      if (highlighted === x) {
+        props.highlighted = true;
+        props.ref = "highlighted";
+      }
+
+      return <LocationListItem {...props} />
     });
 
     return (

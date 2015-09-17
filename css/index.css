@@ -503,6 +503,7 @@ body.frame {
   color: #000;
 }
 .auth0-lock .auth0-lock-select-country .auth0-lock-list-code {
+  position: relative;
   height: calc(100% - 60px);
   overflow-y: scroll;
 }
