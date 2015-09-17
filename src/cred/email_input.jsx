@@ -4,11 +4,17 @@ import Icon from '../icon/icon';
 import { requestGravatar } from '../gravatar/actions';
 
 export default class EmailInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     const { isValid, onChange, gravatar, ...props } = this.props;
+    const { focused } = this.state;
 
     return (
-      <InputWrap name="email" isValid={isValid} icon={<Icon name="email" />}>
+      <InputWrap name="email" isValid={isValid} icon={<Icon name="email" />} focused={focused}>
         <input type="text"
           name="email"
           className="auth0-lock-input"
@@ -27,6 +33,14 @@ export default class EmailInput extends React.Component {
     if (this.props.onChange) {
       this.props.onChange(e);
     }
+  }
+
+  handleFocus() {
+    this.setState({focused: true});
+  }
+
+  handleBlur() {
+    this.setState({focused: false});
   }
 }
 
