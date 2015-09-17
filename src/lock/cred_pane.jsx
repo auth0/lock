@@ -83,9 +83,11 @@ export default class CredPane extends React.Component {
 class Placeholder extends React.Component {
   render() {
     const { children, delay, height, show } = this.props;
+    const transition = `height ${delay}ms`;
     const style = {
       height: height,
-      transition: `height ${delay}ms`
+      transition: transition,
+      "WebkitTransition": transition
     };
 
     return <div style={style}>{show && children}</div>;
