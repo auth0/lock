@@ -44,7 +44,7 @@ describe(".sms acceptance", function() {
     });
 
     it("displays an input with for the location with a default value", function() {
-      expect(u.qInputValue(this.lock, "location")).to.be("United States +1");
+      expect(u.qInputValue(this.lock, "location")).to.be("+1 United States");
     });
   });
 

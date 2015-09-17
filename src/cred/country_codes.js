@@ -14,7 +14,7 @@ export function dialingCode(countryCode) {
 }
 
 export function locationString(m) {
-  return `${country(m)} ${dialingCode(m)}`;
+  return `${dialingCode(m)} ${country(m)}`;
 }
 
 export const defaultLocation = Immutable.fromJS(["United States", "US", "+1"]);
