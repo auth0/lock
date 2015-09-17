@@ -514,6 +514,11 @@ body.frame {
   font-size: 14px;
   padding: 10px 20px;
   margin: 0;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .auth0-lock .auth0-lock-select-country .auth0-lock-list-code li.auth0-lock-list-code-highlighted {
   background-color: #2eb5ff;
