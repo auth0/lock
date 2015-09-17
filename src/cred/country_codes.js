@@ -73,7 +73,7 @@ export const countryCodes = Immutable.fromJS([
   [
     "Argentina",
     "AR",
-    "+549"
+    "+54 9"
   ],
   [
     "Armenia",

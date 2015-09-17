@@ -22,7 +22,7 @@ function visiblyInvalid(lock, cred) {
 // phone number
 
 export function fullPhoneNumber(lock) {
-  return `${phoneDialingCode(lock) || ""}${phoneNumber(lock) || ""}`;
+  return `${phoneDialingCode(lock) || ""}${phoneNumber(lock) || ""}`.replace(/\s+/g, '');
 }
 
 export function fullHumanPhoneNumber(m) {
