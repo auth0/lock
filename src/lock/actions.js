@@ -20,18 +20,23 @@ export function openLock(id, mode, options) {
   return true;
 }
 
-export function closeLock(id, f) {
+export function closeLock(id, resetFn, callback = () => {}) {
   swap(updateEntity, "lock", id, lock => {
     if (!l.ui.appendContainer(lock)) {
       lock = lock.remove("render");
     }
     lock = l.close(lock)
-    return f(lock);
+    return resetFn(lock);
   });
 
   const lock = read(getEntity, "lock", id);
   if (l.rendering(lock)) {
-    setTimeout(() => swap(updateEntity, "lock", id, m => m.remove("render")), 1000);
+    setTimeout(() => {
+      swap(updateEntity, "lock", id, m => m.remove("render"));
+      callback(read(getEntity, "lock", id));
+    }, 1000);
+  } else {
+    callback(lock);
   }
 }
 

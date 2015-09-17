@@ -68,6 +68,6 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   handleBack() {
-    reset(l.id(this.props.lock));
+    reset(l.id(this.props.lock), {clearCred: []});
   }
 }

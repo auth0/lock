@@ -190,10 +190,15 @@ export function signIn(id) {
 }
 
 function signInSuccess(id, ...args) {
-  swap(updateEntity, "lock", id, lock => m.setSignedIn(l.setSubmitting(lock, false), true));
-
   const lock = read(getEntity, "lock", id);
-  l.invokeDoneCallback(lock, null, ...args);
+  const autoclose = l.ui.autoclose(lock);
+
+  if (!autoclose) {
+    swap(updateEntity, "lock", id, lock => m.setSignedIn(l.setSubmitting(lock, false), true));
+    l.invokeDoneCallback(lock, null, ...args);
+  } else {
+    closeLock(id, m.reset, lock => l.invokeDoneCallback(lock, null, ...args));
+  }
 }
 
 function signInError(id, error) {

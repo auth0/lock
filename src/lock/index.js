@@ -71,11 +71,14 @@ export function gravatar(m) {
 }
 
 function extractUIOptions(id, options) {
+  const closable = undefined === options.closable ? !options.container : !!options.closable;
+
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
+    autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
     icon: options.icon || iconUrl("auth0"),
-    closable: undefined === options.closable ? !options.container : !!options.closable,
+    closable: closable,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     terms: undefined === options.terms ? "" : options.terms,
@@ -101,6 +104,7 @@ function getUIAttribute(m, attribute) {
 export const ui = {
   containerID: lock => getUIAttribute(lock, "containerID"),
   appendContainer: lock => getUIAttribute(lock, "appendContainer"),
+  autoclose: lock => getUIAttribute(lock, "autoclose"),
   icon: lock => getUIAttribute(lock, "icon"),
   closable: lock => getUIAttribute(lock, "closable"),
   focusInput: lock => getUIAttribute(lock, "focusInput"),

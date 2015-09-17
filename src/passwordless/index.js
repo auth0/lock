@@ -51,10 +51,10 @@ export function reset(m, opts = {}) {
 
   const { clearCred } = opts;
 
-  if (clearCred === "all") {
-    keyPaths = keyPath.push(["cred"]);
+  if (!clearCred) {
+    keyPaths = keyPaths.push(["cred"]);
   } else {
-    const credKeyPaths = List(clearCred || []).map(x => ["cred", x]);
+    const credKeyPaths = List(clearCred).map(x => ["cred", x]);
     keyPaths = keyPaths.concat(credKeyPaths);
   }
 
