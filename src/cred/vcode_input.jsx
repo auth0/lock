@@ -9,10 +9,10 @@ export default class VcodeInput extends React.Component {
     return (
       <InputWrap name="vcode" isValid={isValid} icon={<Icon name="vcode" />}>
         <input type="text"
-            name="vcode"
-            className="auth0-lock-input auth0-lock-input-code"
-            placeholder="Your code"
-            {...props} />
+          className="auth0-lock-input auth0-lock-input-code"
+          placeholder="Your code"
+          autocomplete="off"
+          {...props} />
       </InputWrap>
     );
   }
