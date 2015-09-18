@@ -3,8 +3,10 @@ import SubmitIcon from './submit_icon';
 
 export default class SubmitButton extends React.Component {
   render() {
+    const { disabled, tabIndex } = this.props;
+
     return (
-      <button type="submit" className="auth0-lock-submit" disabled={this.props.disabled} tabIndex="10">
+      <button type="submit" className="auth0-lock-submit" disabled={disabled} tabIndex={tabIndex}>
         <div className="auth0-loading-container">
           <div className="auth0-loading" />
         </div>

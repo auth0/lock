@@ -23,7 +23,7 @@ export default class AskEmail extends React.Component {
               onChange={::this.handleEmailChange}
               gravatar={l.ui.gravatar(lock)}
               autoFocus={l.ui.focusInput(lock)}
-              tabIndex="1"
+              tabIndex={l.tabIndex(lock, 1)}
               disabled={l.submitting(lock)} />
           </div>
         </div>

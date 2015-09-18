@@ -27,7 +27,7 @@ export default class AskVcode extends React.Component {
             onChange={::this.handleVcodeChange}
             autoFocus={l.ui.focusInput(lock)}
             disabled={l.submitting(lock)}
-            tabIndex="1" />
+            tabIndex={l.tabIndex(lock, 1)} />
         </div>
       </CredPane>
     );

@@ -37,11 +37,11 @@ export default class AskPhoneNumber extends React.Component {
               isValid={!c.visiblyInvalidPhoneNumber(lock)}
               onChange={::this.handlePhoneNumberChange}
               autoFocus={l.ui.focusInput(lock)}
-              tabIndex="1"
+              tabIndex={l.tabIndex(lock, 1)}
               disabled={l.submitting(lock)} />
             <LocationInput value={c.phoneLocationString(lock)}
               onClick={::this.handleLocationClick}
-              tabIndex="2" />
+              tabIndex={l.tabIndex(lock, 2)} />
           </div>
         </div>
       </CredPane>
