@@ -19,8 +19,8 @@ export function locationString(m) {
 
 export const defaultLocation = Immutable.fromJS(["United States", "US", "+1"]);
 
-export function find(str) {
-  return countryCodes.filter(x => isoCode(x) === str);
+export function findByIsoCode(str) {
+  return countryCodes.filter(x => isoCode(x) === str).get(0);
 }
 
 // TODO: rename this, and the file, to "locations"

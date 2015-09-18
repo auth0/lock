@@ -19,12 +19,12 @@ export function changePhoneLocation(id, location) {
 }
 
 export function setDefaultLocation(id, str) {
-  const result = cc.find(str);
+  const result = cc.findByIsoCode(str);
   if (!result) {
     throw new Error(`Unable to set the default location, can't find any country with the code "${str}".`);
   }
 
-  swap(updateEntity, "lock", id, c.setPhoneLocation, result.get(0));
+  swap(updateEntity, "lock", id, c.setPhoneLocation, result);
 }
 
 export function changeEmail(id, email) {
