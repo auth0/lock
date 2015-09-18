@@ -40,12 +40,7 @@ export default class LocationSelect extends React.Component {
   }
 
   handleSearchChange(e) {
-    const searchString = e.target.value ;
-    const filteredCountryCodes = cc.countryCodes.filter(x => {
-      return su.matches(searchString, cc.country(x)) ||
-        su.matches(searchString, cc.isoCode(x)) ||
-        su.matches(searchString, cc.dialingCode(x));
-    });
+    const filteredCountryCodes = cc.find(e.target.value);
 
     const { highlighted } = this.state;
     const newHighlighted = filteredCountryCodes.includes(highlighted) ?

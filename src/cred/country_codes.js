@@ -1,4 +1,6 @@
 import Immutable from 'immutable';
+import trim from 'trim';
+import * as su from '../utils/string_utils';
 
 export function country(countryCode) {
   return countryCode.get(0);
@@ -21,6 +23,35 @@ export const defaultLocation = Immutable.fromJS(["United States", "US", "+1"]);
 
 export function findByIsoCode(str) {
   return countryCodes.filter(x => isoCode(x) === str).get(0);
+}
+
+export function find(str) {
+  let query = trim(str);
+  let by;
+  if (/^\+?\d+$/.test(query)) {
+    by = "diallingCode";
+    query = query[0] === "+" ? query : `+${query}`;
+    query = query.toLowerCase();
+  } else if (query.length <= 2) {
+    by = "isoCode";
+    query = query.toUpperCase()
+  } else {
+    by = "country";
+    query = query.toLowerCase();
+  }
+
+  return countryCodes.filter(x => {
+    switch(by) {
+      case "diallingCode":
+      return su.startsWith(dialingCode(x), query);
+
+      case "isoCode":
+      return su.startsWith(isoCode(x), query);
+
+      case "country":
+      return su.startsWith(country(x).toLowerCase(), query);
+    }
+  });
 }
 
 // TODO: rename this, and the file, to "locations"
