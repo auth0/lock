@@ -94,6 +94,12 @@ class Placeholder extends React.Component {
       "WebkitTransition": transition
     };
 
-    return <div style={style}>{show && children}</div>;
+    return (
+      <div style={style}>
+        <div style={{display: show ? "block" : "none"}}>
+          {children}
+        </div>
+      </div>
+    );
   }
 }
