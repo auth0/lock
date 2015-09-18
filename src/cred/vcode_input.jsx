@@ -1,11 +1,18 @@
 import React from 'react';
 import InputWrap from './input_wrap';
 import Icon from '../icon/icon';
+import { isSmallScreen } from '../utils/media_utils';
 
 export default class VcodeInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    if (!isSmallScreen()) {
+      React.findDOMNode(this.refs.input).focus();
+    }
   }
 
   render() {
@@ -14,7 +21,8 @@ export default class VcodeInput extends React.Component {
 
     return (
       <InputWrap name="vcode" isValid={isValid} icon={<Icon name="vcode" />}  focused={focused}>
-        <input type="text"
+        <input ref="input"
+          type="text"
           className="auth0-lock-input auth0-lock-input-code"
           placeholder="Your code"
           autocomplete="off"
