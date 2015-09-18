@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from '../icon/icon';
 import * as cc from './country_codes';
 import * as su from '../utils/string_utils';
+import { isSmallScreen } from '../utils/media_utils';
 
 function cycle(xs, x) {
   const next = xs.skipWhile(y => y !== x).get(1);
@@ -14,8 +15,14 @@ export default class LocationSelect extends React.Component {
     this.state = {filteredCountryCodes: cc.countryCodes, highlighted: null};
   }
 
+  componentDidMount() {
+    if (!isSmallScreen()) {
+      React.findDOMNode(this.refs.input).focus();
+    }
+  }
+
   render() {
-    const { autoFocus, selectHandler } = this.props;
+    const { selectHandler } = this.props;
     const { filteredCountryCodes, highlighted } = this.state;
 
     return (
@@ -23,12 +30,12 @@ export default class LocationSelect extends React.Component {
         <div className="auth0-lock-search">
           <div className="auth0-lock-input-wrap">
             <Icon name="location"/>
-            <input className="auth0-lock-input auth0-lock-input-search"
+            <input ref="input"
+              className="auth0-lock-input auth0-lock-input-search"
               onChange={::this.handleSearchChange}
               onKeyDown={::this.handleKeyDown}
               type="text"
-              placeholder="Select your country"
-              autoFocus={autoFocus} />
+              placeholder="Select your country" />
           </div>
         </div>
         <LocationList countryCodes={filteredCountryCodes}
