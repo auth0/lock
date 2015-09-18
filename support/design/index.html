@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <title>Design</title>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 <style>
 body {
   background-color: #1f1f24;
@@ -75,5 +76,5 @@ var emailcodeLock = new Auth0LockPasswordless(cid, domain);
 emailcodeLock.emailcode({container: "emailcode-container", terms: terms, closable: true});
 
 var smsLock = new Auth0LockPasswordless(cid, domain);
-smsLock.sms({terms: terms});
+smsLock.sms({container: "sms-container", terms: terms});
 </script>
