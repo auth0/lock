@@ -12,6 +12,7 @@ export default class VcodeInput extends React.Component {
           className="auth0-lock-input auth0-lock-input-code"
           placeholder="Your code"
           autocomplete="off"
+          autocapitalize="off"
           {...props} />
       </InputWrap>
     );
