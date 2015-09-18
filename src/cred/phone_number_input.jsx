@@ -16,9 +16,10 @@ export default class PhoneNumberInput extends React.Component {
       <InputWrap name="phone-number" isValid={isValid} icon={<Icon name="phoneNumber" />} focused={focused}>
         <input ref="input"
           type="text"
+          name="phoneNumber"
           className="auth0-lock-input auth0-lock-input-number"
           placeholder="your phone number"
-          autocomplete="off"
+          autoComplete="off"
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
           {...props} />

@@ -16,10 +16,11 @@ export default class EmailInput extends React.Component {
     return (
       <InputWrap name="email" isValid={isValid} icon={<Icon name="email" />} focused={focused}>
         <input type="text"
+          name="email"
           className="auth0-lock-input"
           placeholder="yours@example.com"
-          autocomplete="off"
-          autocapitalize="off"
+          autoComplete="off"
+          autoCapitalize="off"
           onChange={::this.handleOnChange}
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}

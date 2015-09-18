@@ -23,10 +23,11 @@ export default class VcodeInput extends React.Component {
       <InputWrap name="vcode" isValid={isValid} icon={<Icon name="vcode" />}  focused={focused}>
         <input ref="input"
           type="text"
+          name="vcode"
           className="auth0-lock-input auth0-lock-input-code"
           placeholder="Your code"
-          autocomplete="off"
-          autocapitalize="off"
+          autoComplete="off"
+          autoCapitalize="off"
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
           {...props} />
