@@ -14,7 +14,8 @@ export default class PhoneNumberInput extends React.Component {
 
     return (
       <InputWrap name="phone-number" isValid={isValid} icon={<Icon name="phoneNumber" />} focused={focused}>
-        <input type="text"
+        <input ref="input"
+          type="text"
           name="phoneNumber"
           className="auth0-lock-input auth0-lock-input-number"
           placeholder="your phone number"
@@ -23,6 +24,11 @@ export default class PhoneNumberInput extends React.Component {
           {...props} />
       </InputWrap>
     );
+  }
+
+  focus() {
+    React.findDOMNode(this.refs.input).focus();
+    this.handleFocus();
   }
 
   handleFocus() {

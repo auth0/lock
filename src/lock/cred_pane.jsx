@@ -49,12 +49,16 @@ export default class CredPane extends React.Component {
           </div>
           {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
         </Placeholder>
-        <SubmitButton disabled={disableSubmit} />
+        <SubmitButton disabled={disableSubmit} ref="submit"/>
         <ReactCSSTransitionGroup transitionName="slide">
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
       </div>
     );
+  }
+
+  focusSubmit() {
+    this.refs.submit.focus();
   }
 
   handleBack() {

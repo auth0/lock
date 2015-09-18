@@ -9,6 +9,16 @@ import * as l from '../lock/index';
 import * as m from './index';
 
 export default class AskPhoneNumber extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (m.selectingLocation(this.props.lock) && !m.selectingLocation(nextProps.lock)) {
+      if (c.phoneNumber(nextProps.lock)) {
+        this.refs.cred.focusSubmit();
+      } else {
+        this.refs.phoneNumber.focus();
+      }
+    }
+  }
+
   render() {
     const { lock } = this.props;
     const auxiliaryPane = m.selectingLocation(lock) ?
@@ -22,13 +32,16 @@ export default class AskPhoneNumber extends React.Component {
               Please enter your phone number.<br />
               You will get a code via SMS to login.
             </p>
-            <PhoneNumberInput value={c.phoneNumber(lock)}
+            <PhoneNumberInput ref="phoneNumber"
+              value={c.phoneNumber(lock)}
               isValid={!c.visiblyInvalidPhoneNumber(lock)}
               onChange={::this.handlePhoneNumberChange}
               autoFocus={l.ui.focusInput(lock)}
+              tabIndex="1"
               disabled={l.submitting(lock)} />
             <LocationInput value={c.phoneLocationString(lock)}
-              onClick={::this.handleLocationClick} />
+              onClick={::this.handleLocationClick}
+              tabIndex="2" />
           </div>
         </div>
       </CredPane>

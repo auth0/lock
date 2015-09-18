@@ -9,7 +9,7 @@ export default class LocationInput extends React.Component {
   }
 
   render() {
-    const { onClick, value } = this.props;
+    const { onClick, tabIndex, value } = this.props;
     const { focused } = this.state;
 
     const limitedValue = value.length > 23 ?
@@ -23,7 +23,8 @@ export default class LocationInput extends React.Component {
           value={limitedValue}
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
-          onClick={onClick} />
+          onClick={onClick}
+          tabIndex={tabIndex} />
         <Icon name="arrow" />
       </InputWrap>
     );
