@@ -7439,6 +7439,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-radius: 3px;
   display: block;
   z-index: 10000;
+  background-color: #FFF;
 }
 
 #a0-lock.a0-theme-default .a0-panel.a0-errors .a0-error-input input {
