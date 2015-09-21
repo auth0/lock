@@ -448,7 +448,8 @@ body.frame {
 .auth0-lock .auth0-lock-submit span svg {
   vertical-align: middle;
 }
-.auth0-lock .auth0-lock-submit:hover {
+.auth0-lock .auth0-lock-submit:hover,
+.auth0-lock .auth0-lock-submit:focus {
   background: #c43e13;
 }
 .auth0-lock .auth0-lock-submit:hover span {
