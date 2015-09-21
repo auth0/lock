@@ -37,14 +37,13 @@
     "emailPlaceholder": "Courriel",
     "passwordPlaceholder": "Créer un mot de passe",
     "cancelAction": "Annuler",
-    "headerText": "Veuillez entrer votre courriel et mot de passe",
     "footerText": "",
     "signupOnSSODomainErrorText": "Ce domaine {domain} a été configuré pour le Single Sign On et vous ne pouvez pas créer de compte. Essayez de vous connecter à un compte existant.",
     "serverErrorText": "Erreur lors de l'inscription.",
     "userExistsErrorText": "Cet utilisateur existe déjà.",
     "usernameInUseErrorText": "Ce nom d'utilisateur est déjà pris.",
     "invalidPassword": "Le mot de passe n'est pas valide.",
-    
+
       "passwordStrength": {
       "nonEmpty": "Un mot de passe non vide est requis",
       "lengthAtLeast": "Au moins %d caractères",

@@ -28,7 +28,6 @@
     "emailPlaceholder": "Posta elettronica",
     "passwordPlaceholder": "Creare una Password",
     "cancelAction": "Annulla",
-    "headerText": "Inserisci la tua email e la password",
     "footerText": "",
     "signupOnSSODomainErrorText": "Questo dominio {domain} è stato configurato per il Single Sign On e non è possibile creare un account. Prova ad accedere invece.",
     "serverErrorText": "C'è stato un errore durante l'elaborazione il segno fino."

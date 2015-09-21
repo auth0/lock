@@ -28,7 +28,6 @@
     "emailPlaceholder": "電子メール",
     "passwordPlaceholder": "パスワードを作成します。",
     "cancelAction": "キャンセル",
-    "headerText": "あなたのメール アドレスとパスワードを入力してください。",
     "footerText": "",
     "signupOnSSODomainErrorText": "このドメイン {} が構成されているシングル サインオン ・ アカウントを作成することはできません。代わりにサインインしてください。",
     "serverErrorText": "符号を処理中にエラーがありました。",

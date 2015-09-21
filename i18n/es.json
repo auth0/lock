@@ -33,7 +33,6 @@
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "Contraseña",
     "cancelAction":                "Cancelar",
-    "headerText":                  "Por favor ingrese email y contraseña",
     "footerText":                  "",
     "signupOnSSODomainErrorText":  "El dominio {domain} ha sido configurado para Single Sign On y no puede crear una cuenta. Intente iniciar sesión directamente.",
     "serverErrorText":             "Hubo un error al procesar su registro.",

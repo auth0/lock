@@ -36,7 +36,6 @@
     "emailPlaceholder":           "E-posta",
     "passwordPlaceholder":        "Şifre Oluşturun",
     "cancelAction":               "İptal",
-    "headerText":                 "Lütfen e-postanızı ve şifrenizi giriniz",
     "footerText":                 "",
     "signupOnSSODomainErrorText": "Bu alan {domain} üzerindeki tek oturum için yapılandırılmıştır, bu yüzden hesap oluşturamazsınız. Bunun yerine, lütfen giriş yapmayı deneyiniz.",
     "serverErrorText":            "Kayıt olurken bir hata ile karşılaşıldı.",
