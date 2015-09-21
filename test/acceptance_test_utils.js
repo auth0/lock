@@ -221,7 +221,7 @@ export function clickResendLink(lock) {
 
 export function isResendingLink(lock) {
   const node = qResendLink(lock);
-  return node && node.textContent === "resending...";
+  return node && node.textContent === "Resending...";
 }
 
 export function hasLinkBeenResent(lock) {

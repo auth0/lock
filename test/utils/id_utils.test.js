@@ -1,5 +1,5 @@
 import expect from 'expect.js';
-import id from '../../src/utils/id_utils';
+import * as idu from '../../src/utils/id_utils';
 import { Set } from 'immutable';
 
 describe("building a set of random ids", function() {
@@ -9,7 +9,7 @@ describe("building a set of random ids", function() {
   before(function() {
     subject = new Set();
     for (let i = 0; i < 10; i++) {
-      subject = subject.add(id.random());
+      subject = subject.add(idu.random());
     }
   })
 

@@ -250,6 +250,7 @@ lock.logout({ref: window.location.href});
 The appearance of the widget can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
+- **authParams {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. It defaults to `false` when a `container` option is provided, otherwise it defaults to `true`.

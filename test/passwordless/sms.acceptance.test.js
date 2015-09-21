@@ -98,7 +98,7 @@ describe(".sms acceptance", function() {
 
     describe("when entering a few letters that match a few locations", function() {
       before(function() {
-        u.filterLocations(this.lock, "au");
+        u.filterLocations(this.lock, "united");
       });
 
       it("shows that locations", function() {

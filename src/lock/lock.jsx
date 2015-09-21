@@ -12,7 +12,7 @@ import EscKeydownUtils from '../utils/esc_keydown_utils';
 
 export default class Lock extends React.Component {
   componentDidMount() {
-    this.escKeydown = new EscKeydownUtils(() => this.handleClose());
+    this.escKeydown = new EscKeydownUtils(() => this.handleEsc());
   }
 
   componentWillUnmount() {
@@ -73,6 +73,11 @@ export default class Lock extends React.Component {
   handleClose() {
     const { closeHandler, lock } = this.props;
     closeHandler(l.id(lock));
+  }
+
+  handleEsc() {
+    const { closeHandler, escHandler, lock } = this.props;
+    escHandler ? escHandler(l.id(lock)) : this.handleClose();
   }
 }
 
