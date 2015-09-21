@@ -6,6 +6,7 @@ import { back, changeVcode, close } from './actions';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
 import * as m from './index';
+import { isSmallScreen } from '../utils/media_utils';
 
 export default class AskVcode extends React.Component {
   render() {
@@ -25,7 +26,7 @@ export default class AskVcode extends React.Component {
           <VcodeInput value={c.vcode(lock)}
             isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
             onChange={::this.handleVcodeChange}
-            autoFocus={l.ui.focusInput(lock)}
+            autoFocus={!isSmallScreen()}
             disabled={l.submitting(lock)}
             tabIndex={l.tabIndex(lock, 1)} />
         </div>
