@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 import { read, getEntity, swap, updateEntity } from '../store/index';
 import { closeLock } from '../lock/actions';
 import webApi from '../lock/web_api';
@@ -164,13 +165,13 @@ export function signIn(id) {
 
   if (l.submitting(lock)) {
     const isSMS = m.send(lock) === "sms";
-    const options = {
+    const options = Map({
       connection: isSMS ? "sms" : "email",
       username: isSMS ? c.fullPhoneNumber(lock) : c.email(lock),
       password: c.vcode(lock),
       sso: false
-    };
-    webApi.signIn(id, options, (error, ...args) => {
+    }).merge(l.authParams(lock));
+    webApi.signIn(id, options.toJS(), (error, ...args) => {
       if (error) {
         signInError(id, error);
       } else {
