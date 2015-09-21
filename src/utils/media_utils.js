@@ -1,3 +1,3 @@
 export function isSmallScreen() {
-  return window.matchMedia && !window.matchMedia("(min-width: 340px)").matches;
+  return window.matchMedia && !window.matchMedia("(min-width: 380px)").matches;
 }
