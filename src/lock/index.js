@@ -123,17 +123,31 @@ export function render(m, modeName, options) {
   }
 
   const { modeOptions } = options;
+
   m = m.merge(Immutable.fromJS({
     mode: modeName,
     render: true,
     modeOptions: modeOptions
   }));
   m = setUIOptions(m, options);
+
+  if (typeof options.authParams === "object") {
+    m = setAuthParams(m, options.authParams);
+  }
+
   return m;
 }
 
 export function modeOptions(m) {
   return m.get("modeOptions", false);
+}
+
+export function setAuthParams(m, o) {
+  return m.set("authParams", o);
+}
+
+export function authParams(m) {
+  return m.get("authParams", {});
 }
 
 export function close(m) {
