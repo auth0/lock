@@ -32,7 +32,7 @@ class Resend extends React.Component {
       <ResendLink retry={m.resendFailed(lock)} onClick={::this.handleClick} />;
 
     const resendingLabel = m.resendOngoing(lock) &&
-      <a className="auth0-lock-resend-link">resending...</a>;
+      <a className="auth0-lock-resend-link">Resending...</a>;
 
     const resendSuccessLabel = m.resendSuccess(lock) &&
       <span className="auth0-lock-sent-label">Sent!</span>;
