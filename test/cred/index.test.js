@@ -63,8 +63,8 @@ describe("setting a phone number", function() {
         entity = c.setPhoneNumber(entity, invalidPhoneNumber);
       });
 
-      it("keeps the phone number marked as visibly invalid", function() {
-        expect(c.visiblyInvalidPhoneNumber(entity)).to.be(true);
+      it("unmarks the phone number as visibly invalid", function() {
+        expect(c.visiblyInvalidPhoneNumber(entity)).to.be(false);
       });
     });
   });
@@ -257,8 +257,8 @@ describe("setting an email", function() {
         entity = c.setEmail(entity, invalidEmail);
       });
 
-      it("keeps the email marked as visibly invalid", function() {
-        expect(c.visiblyInvalidEmail(entity)).to.be(true);
+      it("unmarks the email as visibly invalid", function() {
+        expect(c.visiblyInvalidEmail(entity)).to.be(false);
       });
     });
   });
@@ -378,11 +378,16 @@ describe("setting a vcode", function() {
 
     describe("and is invalid", function() {
       beforeEach(function() {
+        // TODO: We need to perform a value change but the only invalid code is
+        // the empty string.
+        entity = c.setVcode(entity, "1");
+        entity = c.setShowInvalidVcode(entity, true);
+
         entity = c.setVcode(entity, invalidVcode);
       });
 
-      it("keeps the vcode marked as visibly invalid", function() {
-        expect(c.visiblyInvalidVcode(entity)).to.be(true);
+      it("unmarks the vcode as visibly invalid", function() {
+        expect(c.visiblyInvalidVcode(entity)).to.be(false);
       });
     });
   });
