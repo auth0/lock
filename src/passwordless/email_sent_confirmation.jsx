@@ -64,8 +64,7 @@ export default class EmailSentConfirmation extends React.Component {
       <ConfirmationPane backHandler={::this.handleBack}>
         <p>
           We sent you a link to sign in<br />
-          to {c.email(lock)}.<br />
-          Please check your inbox.
+          to {c.email(lock)}.
         </p>
         <Resend lock={lock}/>
       </ConfirmationPane>
