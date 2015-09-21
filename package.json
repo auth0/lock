@@ -77,7 +77,7 @@
     "zuul-ngrok": "3.0.0"
   },
   "dependencies": {
-    "auth0-js": "^6.5.0",
+    "auth0-js": "6.6.4",
     "blueimp-md5": "^1.1.0",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
