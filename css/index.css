@@ -1,5 +1,6 @@
 @import "normalize.css";
 @import "animate.css";
+@import "transitions.css";
 body.frame {
   background: none;
   overflow: auto;

@@ -1,5 +1,6 @@
 @require "normalize.css"
 @require "animate.css"
+@require "transitions.css"
 
 // Breakpoints mixin
 breakpoint(point, value = 0)
@@ -736,7 +737,6 @@ body.frame
       margin auto
 
     .auth0-lock-badge-bottom
-      // -webkit-transition-delay 0
       -webkit-transform translateY(0%)  scale(1)
       transform translateY(0%)  scale(1)
       -webkit-transition transform 1.2s ease 1s, opacity 1.2s ease 1s

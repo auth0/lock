@@ -9,7 +9,7 @@ import passwordlessSpec from './passwordless/mode_spec';
 
 // styles
 import styles from '../css/index.css';
-import transitions from '../css/transitions.css';
+// import transitions from '../css/transitions.css';
 import overwrites from '../css/overwrites.css';
 
 // telemetry
