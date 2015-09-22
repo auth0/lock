@@ -4,6 +4,7 @@ const dict = Immutable.fromJS({
   passwordless: {
     email: {
       headerText: "Enter your email to sign in or sign up.",
+      magicLinkSent: "We sent you a link to sign in<br />to {email}.",
       footerText: ""
     },
     sms: {
@@ -18,8 +19,10 @@ class Dict {
     this.dict = x;
   }
 
-  get(keyPath, params) {
-    return this.dict.getIn(keyPath);
+  get(keyPath, params = {}) {
+    return Immutable.fromJS(params).reduce((r, v, k) => {
+      return r.replace(`{${k}}`, v);
+    }, this.dict.getIn(keyPath, ""));
   }
 }
 

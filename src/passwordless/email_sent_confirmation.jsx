@@ -1,5 +1,6 @@
 import React from 'react';
 import ConfirmationPane from '../lock/confirmation_pane';
+import Dict from '../dict/dict';
 import { resendEmail, reset } from './actions';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
@@ -63,8 +64,9 @@ export default class EmailSentConfirmation extends React.Component {
     return (
       <ConfirmationPane backHandler={::this.handleBack}>
         <p>
-          We sent you a link to sign in<br />
-          to {c.email(lock)}.
+          <Dict lock={lock}
+            keyPath={["passwordless", "email", "magicLinkSent"]}
+            params={{email: c.email(lock)}} />
         </p>
         <Resend lock={lock}/>
       </ConfirmationPane>
