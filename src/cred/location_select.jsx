@@ -47,11 +47,18 @@ export default class LocationSelect extends React.Component {
   }
 
   handleSearchChange(e) {
+    const findNewHighlighted = (countryCodes, highlighted) => {
+      if (countryCodes.size === 1) {
+        return countryCodes.get(0);
+      }
+
+      return countryCodes.includes(highlighted) ? highlighted : null;
+    }
+
     const filteredCountryCodes = cc.find(e.target.value);
 
     const { highlighted } = this.state;
-    const newHighlighted = filteredCountryCodes.includes(highlighted) ?
-      highlighted : null;
+    const newHighlighted = findNewHighlighted(filteredCountryCodes, highlighted);
 
     this.setState({
       filteredCountryCodes: filteredCountryCodes,
