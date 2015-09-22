@@ -252,6 +252,7 @@ The appearance of the widget can be customized with an `options` object which ha
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **authParams {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
+- **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. It defaults to `false` when a `container` option is provided, otherwise it defaults to `true`.
 - **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
@@ -260,15 +261,67 @@ The appearance of the widget can be customized with an `options` object which ha
 
 #### Example
 
-```javascript
+```js
 var options = {
   container: "myContainer",
   icon: "/path/to/my/icon.png",
   closable: false,
+  dict: {title: "My Company"},
   focusInput: false,
   gravatar: false
 };
 ```
+
+#### Dict Specification
+
+A dict, short for dictionary, is an object that contains every piece of text the Lock needs to display. Different textual components are needed depending on what method you called to open the Lock. The following is an example of the dict used when the Lock is opened with the `emailcode` method:
+
+```js
+{
+  code: {
+    codeInputPlaceholder: "Your code",
+    footerText: "",
+    headerText: "Please check your email ({email})<br />You've received a message from us<br />with your passcode."
+  },
+  confirmation: {
+    success: "Thanks for signing in."
+  },
+  email: {
+    emailInputPlaceholder: "yours@example.com",
+    footerText: "",
+    headerText: "Enter your email to sign in or sign up."
+  },
+  title: "Auth0",
+  welcome: "Welcome {name}!"
+}
+```
+
+When you open the Lock with `emailcode` or any other method available, you can override any value by providing a [dict option](#ui-customizations).
+
+```js
+lock.emailcode({
+  email: {
+    footerText: "You must agree to our <a href='/terms' target='_new'>terms of service</a>"
+  },
+  title: "My Company"
+});
+```
+
+The previous code will change the title displayed in the header and will display a footer when the Lock is asking the user for the email.
+
+As you can see from the examples, some keys are _namespaced_ inside another object and some are not. In the first case, they are only used in a given screen, while in the latter can be used from any screen. Also, most of the values accept HTML tags. The exception are the the ones used as input placeholders. Finally, some strings can be interpolated, which means that they contain a placeholder which will be replaced before being displayed. For instance:
+
+```js
+lock.emailcode({
+  code: {
+    headerText: "The code has been sent to {email}"
+  }
+});
+```
+
+Will cause the Lock to show the message _The code has been sent to someone@auth0.com_ when asking for the verification code to a user that entered the email _someone@auth0.com_.
+
+You can check the [source code](src/dicts/dicts.js) to see the actual dictionaries used by the Lock.
 
 ### Callbacks and Errors
 
