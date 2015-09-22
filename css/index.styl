@@ -28,6 +28,11 @@ breakpoint(point, value = 0)
     @media (min-width: value)
       {block}
 
+body
+  visibility hidden
+  +breakpoint("tablet")
+    visibility visible
+
 body.frame
   background none
   overflow auto
@@ -80,6 +85,7 @@ body.frame
   transition opacity 0s 2s
   pointer-events none
   display table
+  visibility visible
 
   position fixed
   bottom 0
@@ -135,6 +141,9 @@ body.frame
     opacity 0
     -webkit-transition opacity .2s ease-in .4s
     transition opacity .2s ease-in .4s
+    visibility hidden
+    +breakpoint("tablet")
+      visibility visible
 
   .auth0-lock-form
     display block
@@ -163,9 +172,10 @@ body.frame
     display none
 
   .auth0-lock-center
-    vertical-align middle
-    display table-cell
-    margin auto
+    +breakpoint("tablet")
+      vertical-align middle
+      display table-cell
+      margin auto
 
   .auth0-lock-widget
     opacity 0
@@ -178,16 +188,16 @@ body.frame
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     -webkit-transition-delay 0s
     transition-delay 0s
-    width 300px
-    margin -20% auto 0
+    margin 0 auto
     +breakpoint("tablet")
-      margin auto
+      width 300px
 
   .auth0-lock-widget-container
-    border-radius 5px
     background white
     overflow hidden
     position relative
+    +breakpoint("tablet")
+      border-radius 5px
 
   .auth0-lock-header
     text-align center
@@ -265,7 +275,7 @@ body.frame
     background rgba(#f1f1f1,.8)
     position absolute
     height 128px
-    width 300px
+    width 100%
     overflow hidden
     top 0
     left 0
@@ -306,7 +316,9 @@ body.frame
 
   .auth0-lock-content
     padding 30px
-    max-width 240px
+    -webkit-box-sizing border-box
+    -moz-box-sizing border-box
+    box-sizing border-box
 
     &:last-child
       border-bottom-left-radius 6px
@@ -435,6 +447,11 @@ body.frame
     color #666
     line-height 22px
     padding 10px 30px
+    position absolute
+    bottom 70px
+    +breakpoint("tablet")
+      position relative
+      bottom auto
     a
       color #000
 
@@ -446,10 +463,12 @@ body.frame
     box-sizing border-box
     width 100%
     overflow hidden
-    position relative
+    position absolute
     bottom 0
     -webkit-transition background .2s ease-in-out
     transition background .2s ease-in-out
+    +breakpoint("tablet")
+      position relative
     span
       display inline-block
       -webkit-transition .2s ease-in-out
@@ -542,6 +561,9 @@ body.frame
   .auth0-lock-cred-pane
     border-radius 5px
     overflow hidden
+    height 100vh
+    +breakpoint("tablet")
+      height auto
 
     &.horizontal-fade-leave
       .auth0-lock-content, .auth0-lock-terms

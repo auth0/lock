@@ -1,6 +1,14 @@
 @import "normalize.css";
 @import "animate.css";
 @import "transitions.css";
+body {
+  visibility: hidden;
+}
+@media (min-width: 768px) {
+  body {
+    visibility: visible;
+  }
+}
 body.frame {
   background: none;
   overflow: auto;
@@ -55,6 +63,7 @@ body.frame {
   transition: opacity 0s 2s;
   pointer-events: none;
   display: table;
+  visibility: visible;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -108,6 +117,12 @@ body.frame {
   opacity: 0;
   -webkit-transition: opacity 0.2s ease-in 0.4s;
   transition: opacity 0.2s ease-in 0.4s;
+  visibility: hidden;
+}
+@media (min-width: 768px) {
+  .auth0-lock .auth0-lock-overlay {
+    visibility: visible;
+  }
 }
 .auth0-lock .auth0-lock-form {
   display: block;
@@ -135,10 +150,12 @@ body.frame {
 .auth0-lock .auth0-lock-form.auth0-lock-hide {
   display: none;
 }
-.auth0-lock .auth0-lock-center {
-  vertical-align: middle;
-  display: table-cell;
-  margin: auto;
+@media (min-width: 768px) {
+  .auth0-lock .auth0-lock-center {
+    vertical-align: middle;
+    display: table-cell;
+    margin: auto;
+  }
 }
 .auth0-lock .auth0-lock-widget {
   opacity: 0;
@@ -151,19 +168,22 @@ body.frame {
   transition-timing-function: cubic-bezier(0.3, 0, 0, 1.4);
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
-  width: 300px;
-  margin: -20% auto 0;
+  margin: 0 auto;
 }
 @media (min-width: 768px) {
   .auth0-lock .auth0-lock-widget {
-    margin: auto;
+    width: 300px;
   }
 }
 .auth0-lock .auth0-lock-widget-container {
-  border-radius: 5px;
   background: #fff;
   overflow: hidden;
   position: relative;
+}
+@media (min-width: 768px) {
+  .auth0-lock .auth0-lock-widget-container {
+    border-radius: 5px;
+  }
 }
 .auth0-lock .auth0-lock-header {
   text-align: center;
@@ -247,7 +267,7 @@ body.frame {
   background: rgba(241,241,241,0.8);
   position: absolute;
   height: 128px;
-  width: 300px;
+  width: 100%;
   overflow: hidden;
   top: 0;
   left: 0;
@@ -290,7 +310,9 @@ body.frame {
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px;
-  max-width: 240px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .auth0-lock .auth0-lock-content:last-child {
   border-bottom-left-radius: 6px;
@@ -424,6 +446,14 @@ body.frame {
   color: #666;
   line-height: 22px;
   padding: 10px 30px;
+  position: absolute;
+  bottom: 70px;
+}
+@media (min-width: 768px) {
+  .auth0-lock .auth0-lock-terms {
+    position: relative;
+    bottom: auto;
+  }
 }
 .auth0-lock .auth0-lock-terms a {
   color: #000;
@@ -436,10 +466,15 @@ body.frame {
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   bottom: 0;
   -webkit-transition: background 0.2s ease-in-out;
   transition: background 0.2s ease-in-out;
+}
+@media (min-width: 768px) {
+  .auth0-lock .auth0-lock-submit {
+    position: relative;
+  }
 }
 .auth0-lock .auth0-lock-submit span {
   display: inline-block;
@@ -538,6 +573,12 @@ body.frame {
 .auth0-lock .auth0-lock-cred-pane {
   border-radius: 5px;
   overflow: hidden;
+  height: 100vh;
+}
+@media (min-width: 768px) {
+  .auth0-lock .auth0-lock-cred-pane {
+    height: auto;
+  }
 }
 .auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-content,
 .auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-terms {
