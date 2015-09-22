@@ -1,3 +1,61 @@
+## [0.1.7] - 2015-09-17
+
+### Changed
+
+- [] Remove error hint as soon as the value changes (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/658cab150fafbe2254e0fa8a97b79e964726cd46
+- [] Consider screens up to 380px wide as small screens (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/ab1406d97c371fd81256ac6e7521c626567433f5
+- [] Improve location filtering algorithm (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/ed373f2b85859e4024457a3f6b03dee7e55a686f
+
+### Fixed
+
+- [] Try lock widget mobile-friendly (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/0cd55434da8c8bf9620fe984f2b36f2c6802b382
+- [] Fix auto focus after location select (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/2697f3eb6a3b678abfe0443b597af6fbf0446dd9
+- [] Put all strings in a dict (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/28b19706dab558537c49344f040ca7ca2179e6c0
+- [] Fix location animate (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/9c6abf6f4c3db08aaf341c7aa6713fb9c7d91b7b
+- [] Don't close with ESC when selecting location (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/67464dc3c4e713c6621aa4e576c474823937321d
+- [] Add focus submit (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/08976264c4f9cb9cfaa5d155a8b9285141e053d0
+- [] Shorten magiclink confirmation message (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/d50971b5b1290ab73afe96917fda41baa026b934
+- [] Show email in magiclink confirmation (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/56b02f07186557429c5ae18a21cb87799b773c9e
+- [] Change fadein mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/d2d2e3ae2a9dfa4871fbc9235964637c5979727e
+- [] Capitalize resending label (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/07a1a6939cf98fe2199d767f8c10778c3420334f
+- [] Focus verification code input automatically (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/684830284d4868f86c30ba70b5b84b30bed0fe30
+- [] Highlight on focus VcodeInput (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/87652a1f9ca8ae62f33cf2a64e080fd96e193abd
+- [] Disable autocapitalize in email and vcode inputs (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/7581188e9683c592ead24dee7a83ecb5ca44a2b1
+- [] Disable autocomplete/autofill (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/70c0b0eee60b883e86b28c8f8b37aef9548b6486
+- [] Fix design page (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/9d7fdb6cb74537d8f9379783711081ebfcb5954f
+- [] Ensure location selector is over the close button (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/c467a10e62cd4a52b0982f7977c7c6acc1dadb90
+- [] Support tab navigation (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/25d456378c3abeb04ec62aae732a77ec708fbca9
+
+### Added
+
+- [] Remember last email/phone number (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/952fea6411cb6034853337a5b07f3777a358757d
+- [] Autohighlight if there's only one location (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/05656355d605fb19ea4c238f1802f77c80db1c0e
+- [] Support authParams option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/103c5b80373af72f15a4d11bce38225a0363168b
+
+
 ## [0.1.6] - 2015-09-17
 
 ### Fixed
