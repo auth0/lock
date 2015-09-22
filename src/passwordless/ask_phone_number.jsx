@@ -11,11 +11,13 @@ import * as m from './index';
 export default class AskPhoneNumber extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (m.selectingLocation(this.props.lock) && !m.selectingLocation(nextProps.lock)) {
-      if (c.phoneNumber(nextProps.lock)) {
-        this.refs.cred.focusSubmit();
-      } else {
-        this.refs.phoneNumber.focus();
-      }
+      setTimeout(() => {
+        if (c.phoneNumber(nextProps.lock)) {
+          this.refs.cred.focusSubmit();
+        } else {
+          this.refs.phoneNumber.focus();
+        }
+      }, 17);
     }
   }
 
