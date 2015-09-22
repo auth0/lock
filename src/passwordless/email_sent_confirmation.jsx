@@ -15,11 +15,10 @@ class RetryIcon extends React.Component {
 
 class ResendLink extends React.Component {
   render() {
-    const { retry, onClick } = this.props;
-    const message = retry ? "Retry" : "Resend";
+    const { label, onClick } = this.props;
     return(
       <a className="auth0-lock-resend-link" href="" onClick={onClick}>
-        {message} <RetryIcon />
+        {label} <RetryIcon />
       </a>
     );
   }
@@ -30,16 +29,17 @@ class Resend extends React.Component {
     const { lock } = this.props;
 
     const resendLink = m.resendAvailable(lock) &&
-      <ResendLink retry={m.resendFailed(lock)} onClick={::this.handleClick} />;
+      <ResendLink onClick={::this.handleClick}
+        label={this.t([m.resendFailed(lock) ? "retryLabel" : "resendLabel"])} />;
 
     const resendingLabel = m.resendOngoing(lock) &&
-      <a className="auth0-lock-resend-link">Resending...</a>;
+      <a className="auth0-lock-resend-link">{this.t(["resendingLabel"])}</a>;
 
     const resendSuccessLabel = m.resendSuccess(lock) &&
-      <span className="auth0-lock-sent-label">Sent!</span>;
+      <span className="auth0-lock-sent-label">{this.t(["sentLabel"])}</span>;
 
     const resendFailedLabel = m.resendFailed(lock) &&
-      <span className="auth0-lock-sent-failed-label">Failed!</span>;
+      <span className="auth0-lock-sent-failed-label">{this.t(["failedLabel"])}</span>;
 
     return (
       <span>
@@ -55,6 +55,10 @@ class Resend extends React.Component {
     e.preventDefault();
     resendEmail(l.id(this.props.lock));
   }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, ["confirmation"].concat(keyPath), params);
+  }
 }
 
 export default class EmailSentConfirmation extends React.Component {
@@ -62,10 +66,7 @@ export default class EmailSentConfirmation extends React.Component {
     const { lock } = this.props;
     return (
       <ConfirmationPane backHandler={::this.handleBack}>
-        <p>
-          We sent you a link to sign in<br />
-          to {c.email(lock)}.
-        </p>
+        <p>{this.t(["success"], {email: c.email(lock)})}</p>
         <Resend lock={lock}/>
       </ConfirmationPane>
     )
@@ -73,5 +74,9 @@ export default class EmailSentConfirmation extends React.Component {
 
   handleBack() {
     reset(l.id(this.props.lock), {clearCred: []});
+  }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, ["confirmation"].concat(keyPath), params);
   }
 }

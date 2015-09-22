@@ -11,11 +11,13 @@ import * as m from './index';
 export default class AskPhoneNumber extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (m.selectingLocation(this.props.lock) && !m.selectingLocation(nextProps.lock)) {
-      if (c.phoneNumber(nextProps.lock)) {
-        this.refs.cred.focusSubmit();
-      } else {
-        this.refs.phoneNumber.focus();
-      }
+      setTimeout(() => {
+        if (c.phoneNumber(nextProps.lock)) {
+          this.refs.cred.focusSubmit();
+        } else {
+          this.refs.phoneNumber.focus();
+        }
+      }, 17);
     }
   }
 
@@ -23,20 +25,19 @@ export default class AskPhoneNumber extends React.Component {
     const { lock } = this.props;
     const auxiliaryPane = m.selectingLocation(lock) ?
       <AskLocation key="auxiliarypane" lock={lock} /> : null;
+    const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" showTerms={true} ref="cred">
+      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" terms={terms} ref="cred">
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
-            <p>
-              Please enter your phone number.<br />
-              You will get a code via SMS to login.
-            </p>
+          <p>{this.t(["headerText"])}</p>
             <PhoneNumberInput ref="phoneNumber"
               value={c.phoneNumber(lock)}
               isValid={!c.visiblyInvalidPhoneNumber(lock)}
               onChange={::this.handlePhoneNumberChange}
               autoFocus={l.ui.focusInput(lock)}
+              placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
               tabIndex={l.tabIndex(lock, 1)}
               disabled={l.submitting(lock)} />
             <LocationInput value={c.phoneLocationString(lock)}
@@ -66,5 +67,9 @@ export default class AskPhoneNumber extends React.Component {
 
   componentWillSlideOut(...args) {
     return this.refs.cred.componentWillSlideOut(...args);
+  }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, ["phone"].concat(keyPath), params);
   }
 }

@@ -18,7 +18,6 @@ export default class PhoneNumberInput extends React.Component {
           type="text"
           name="phoneNumber"
           className="auth0-lock-input auth0-lock-input-number"
-          placeholder="your phone number"
           autoComplete="off"
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}

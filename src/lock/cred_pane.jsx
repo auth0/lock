@@ -20,7 +20,7 @@ export default class CredPane extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, className, lock, showTerms } = this.props;
+    const { auxiliaryPane, backHandler, className, lock, terms } = this.props;
     const { height, show } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -31,7 +31,7 @@ export default class CredPane extends React.Component {
     let backgroundUrl, name;
     if (gravatar) {
       backgroundUrl = g.imageUrl(gravatar);
-      name = g.displayName(gravatar);
+      name = this.t(["welcome"], {name: g.displayName(gravatar)});
     } else {
       backgroundUrl = icon;
       name = "";
@@ -39,7 +39,7 @@ export default class CredPane extends React.Component {
 
     return (
       <div className={className + " auth0-lock-cred-pane"}>
-        <Header name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} logoUrl={icon}/>
+        <Header title={this.t(["title"])} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} logoUrl={icon}/>
         <Placeholder delay={800} height={height} show={show} ref="content">
           <ReactTransitionGroup>
             {globalError && <GlobalError key="global-error" message={globalError} />}
@@ -47,7 +47,7 @@ export default class CredPane extends React.Component {
           <div className="auth0-lock-content">
             {this.props.children}
           </div>
-          {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
+          {terms && <Terms>{terms}</Terms>}
         </Placeholder>
         <SubmitButton ref="submit" disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
         <ReactCSSTransitionGroup transitionName="slide">
@@ -81,6 +81,10 @@ export default class CredPane extends React.Component {
     const node = React.findDOMNode(this.refs.content);
     const size = window.getComputedStyle(node, null).height;
     callback({height: size, reverse: this.reverse});
+  }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, keyPath, params);
   }
 }
 

@@ -1,6 +1,8 @@
 import Immutable, { Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { iconUrl } from '../icon/index';
+import * as d from '../dict/index';
+import t from '../dict/t';
 
 export function setup(attrs) {
   const { clientID, domain, id } = attrs;
@@ -72,16 +74,16 @@ export function gravatar(m) {
 
 function extractUIOptions(id, options) {
   const closable = undefined === options.closable ? !options.container : !!options.closable;
-
+  const dictName = options.modeOptions && options.modeOptions.dictName;
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
     icon: options.icon || iconUrl("auth0"),
     closable: closable,
+    dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
-    terms: undefined === options.terms ? "" : options.terms,
     signInCallback: options.signInCallback // TODO: this doesn't belong here
   });
 }
@@ -107,9 +109,10 @@ export const ui = {
   autoclose: lock => getUIAttribute(lock, "autoclose"),
   icon: lock => getUIAttribute(lock, "icon"),
   closable: lock => getUIAttribute(lock, "closable"),
+  dict: lock => getUIAttribute(lock, "dict"),
+  t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
-  terms: lock => getUIAttribute(lock, "terms"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback")
 };
 

@@ -22,7 +22,7 @@ export default class LocationSelect extends React.Component {
   }
 
   render() {
-    const { selectHandler } = this.props;
+    const { locationFilterInputPlaceholder, selectHandler } = this.props;
     const { filteredCountryCodes, highlighted } = this.state;
 
     return (
@@ -35,7 +35,7 @@ export default class LocationSelect extends React.Component {
               onChange={::this.handleSearchChange}
               onKeyDown={::this.handleKeyDown}
               type="text"
-              placeholder="Select your country" />
+              placeholder={locationFilterInputPlaceholder} />
           </div>
         </div>
         <LocationList countryCodes={filteredCountryCodes}
@@ -47,11 +47,18 @@ export default class LocationSelect extends React.Component {
   }
 
   handleSearchChange(e) {
+    const findNewHighlighted = (countryCodes, highlighted) => {
+      if (countryCodes.size === 1) {
+        return countryCodes.get(0);
+      }
+
+      return countryCodes.includes(highlighted) ? highlighted : null;
+    }
+
     const filteredCountryCodes = cc.find(e.target.value);
 
     const { highlighted } = this.state;
-    const newHighlighted = filteredCountryCodes.includes(highlighted) ?
-      highlighted : null;
+    const newHighlighted = findNewHighlighted(filteredCountryCodes, highlighted);
 
     this.setState({
       filteredCountryCodes: filteredCountryCodes,
