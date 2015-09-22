@@ -70,11 +70,20 @@ var domain = "1";
 var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
 var magiclinkLock = new Auth0LockPasswordless(cid, domain);
-magiclinkLock.magiclink({container: "magiclink-container", terms: terms});
+magiclinkLock.magiclink({
+  container: "magiclink-container",
+  dict: {
+    passwordless: {
+      email: {
+        footerText: terms
+      }
+    }
+  }
+});
 
 var emailcodeLock = new Auth0LockPasswordless(cid, domain);
-emailcodeLock.emailcode({container: "emailcode-container", terms: terms, closable: true});
+emailcodeLock.emailcode({container: "emailcode-container", closable: true});
 
 var smsLock = new Auth0LockPasswordless(cid, domain);
-smsLock.sms({container: "sms-container", terms: terms});
+smsLock.sms({container: "sms-container"});
 </script>

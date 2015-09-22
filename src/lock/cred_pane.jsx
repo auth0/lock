@@ -20,7 +20,7 @@ export default class CredPane extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, className, lock, showTerms } = this.props;
+    const { auxiliaryPane, backHandler, className, lock, terms } = this.props;
     const { height, show } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -47,7 +47,7 @@ export default class CredPane extends React.Component {
           <div className="auth0-lock-content">
             {this.props.children}
           </div>
-          {l.ui.terms(lock) && <Terms content={l.ui.terms(lock)} />}
+          {terms && <Terms content={terms} />}
         </Placeholder>
         <SubmitButton ref="submit" disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
         <ReactCSSTransitionGroup transitionName="slide">

@@ -257,7 +257,6 @@ The appearance of the widget can be customized with an `options` object which ha
 - **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
-- **terms {String}**: HTML fragment displayed in the footer that usually contains a link to the terms of service users agree by signing up. Defaults to the empty string `""`.
 
 #### Example
 
@@ -267,8 +266,7 @@ var options = {
   icon: "/path/to/my/icon.png",
   closable: false,
   focusInput: false,
-  gravatar: false,
-  terms: "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a>."
+  gravatar: false
 };
 ```
 
