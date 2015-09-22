@@ -129,6 +129,7 @@ export function stubWebApis() {
 }
 
 export function restoreWebApis() {
+  global.localStorage.clear(); // TODO: This doesn't belong here
   webApi.signIn.restore();
   webApi.startPasswordless.restore();
   gravatarActions.requestGravatar.restore();

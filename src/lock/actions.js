@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import WebAPI from './web_api';
 import { getEntity, read, swap, setEntity, updateEntity } from '../store/index';
 import * as l from './index';
+import * as cs from '../cred/storage';
 
 export function setupLock(id, clientID, domain) {
   const lock = l.setup({id: id, clientID: clientID, domain: domain});
@@ -15,7 +16,12 @@ export function openLock(id, mode, options) {
   if (l.show(lock)) {
     return false;
   }
-  swap(updateEntity, "lock", id, l.render, mode, options);
+
+  swap(updateEntity, "lock", id, lock => {
+    lock = l.render(lock, mode, options);
+    return cs.restore(lock, options.modeOptions.storageKey);
+  });
+
   setTimeout(() => swap(updateEntity, "lock", id, l.setShow, true), 17);
   return true;
 }

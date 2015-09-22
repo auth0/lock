@@ -4,6 +4,7 @@ import { closeLock } from '../lock/actions';
 import webApi from '../lock/web_api';
 import * as c from '../cred/index';
 import * as cc from '../cred/country_codes';
+import * as cs from '../cred/storage';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -73,6 +74,7 @@ export function requestPasswordlessEmailSuccess(id) {
     return m.setPasswordlessStarted(l.setSubmitting(lock, false), true);
   });
   const lock = read(getEntity, "lock", id);
+  cs.store(lock, "email", l.modeOptions(lock).get("storageKey"));
   if (m.send(lock) === "link") {
     l.invokeDoneCallback(lock, null, c.email(lock));
   }
@@ -118,6 +120,9 @@ export function sendSMSSuccess(id) {
     lock = m.setPasswordlessStarted(lock, true);
     return lock;
   });
+
+  const lock = read(getEntity, "lock", id);
+  cs.store(lock, "phoneNumber", l.modeOptions(lock).get("storageKey"));
 }
 
 export function sendSMSError(id, error) {

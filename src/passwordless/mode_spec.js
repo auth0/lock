@@ -8,21 +8,21 @@ const NAME = "passwordless";
 function emailcode(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("emailcode", args);
   options.signInCallback = callback;
-  options.modeOptions = {send: "code", dictName: "emailcode"};
+  options.modeOptions = {send: "code", dictName: "emailcode", storageKey: "emailcode"};
   return openLock(id, NAME, options);
 }
 
 function magiclink(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("magiclink", args);
   options.signInCallback = callback;
-  options.modeOptions = {send: "link", dictName: "magiclink"};
+  options.modeOptions = {send: "link", dictName: "magiclink", storageKey: "magiclink"};
   return openLock(id, NAME, options);
 }
 
 function sms(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("sms", args);
   options.signInCallback = callback;
-  options.modeOptions = {send: "sms", dictName: "sms"};
+  options.modeOptions = {send: "sms", dictName: "sms", storageKey: "sms"};
   if (options.defaultLocation) setDefaultLocation(id, options.defaultLocation);
   return openLock(id, NAME, options);
 }
