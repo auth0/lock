@@ -296,7 +296,7 @@ A dict, short for dictionary, is an object that contains every piece of text the
 }
 ```
 
-When you open the Lock with `emailcode` or any other method available, you can override any value by providing a [dict option](#ui-customizations).
+When you open the Lock with `emailcode` or any other method available, you can override any value by providing a [dict option](#ui-customization).
 
 ```js
 lock.emailcode({
@@ -319,9 +319,9 @@ lock.emailcode({
 });
 ```
 
-Will cause the Lock to show the message _The code has been sent to someone@auth0.com_ when asking for the verification code to a user that entered the email _someone@auth0.com_.
+Will cause the Lock to show the message _"The code has been sent to someone@auth0.com"_ when asking for the verification code to a user that entered the email _"someone@auth0.com"_.
 
-You can check the [source code](src/dicts/dicts.js) to see the actual dictionaries used by the Lock.
+You can check the [source code](src/dict/dicts.js) to see the actual dictionaries used by the Lock.
 
 ### Callbacks and Errors
 
