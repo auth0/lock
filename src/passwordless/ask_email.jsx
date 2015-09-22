@@ -2,7 +2,6 @@ import React from 'react';
 import CredPane from '../lock/cred_pane';
 import EmailInput from '../cred/email_input';
 import EmailSentConfirmation from './email_sent_confirmation';
-import Dict from '../dict/dict';
 import * as c from '../cred/index';
 import { changeEmail } from './actions';
 import * as l from '../lock/index';
@@ -13,18 +12,19 @@ export default class AskEmail extends React.Component {
     const { lock } = this.props;
     const auxiliaryPane = m.isSendLink(lock) && m.passwordlessStarted(lock) ?
       <EmailSentConfirmation key="auxiliarypane" lock={lock} /> : null;
-    const terms = l.ui.dict(lock).get(["passwordless", "email", "footerText"]);
+    const terms = this.t(["footerText"]);
 
     return (
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email" terms={terms} ref="cred">
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
-            <p><Dict lock={lock} keyPath={["passwordless", "email", "headerText"]} /></p>
+            <p>{this.t(["headerText"])}</p>
             <EmailInput value={c.email(lock)}
               isValid={!c.visiblyInvalidEmail(lock)}
               onChange={::this.handleEmailChange}
               gravatar={l.ui.gravatar(lock)}
               autoFocus={l.ui.focusInput(lock)}
+              placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
               tabIndex={l.tabIndex(lock, 1)}
               disabled={l.submitting(lock)} />
           </div>
@@ -47,5 +47,9 @@ export default class AskEmail extends React.Component {
 
   componentWillSlideOut(...args) {
     return this.refs.cred.componentWillSlideOut(...args);
+  }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, ["email"].concat(keyPath), params);
   }
 }

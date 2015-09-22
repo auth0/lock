@@ -22,7 +22,7 @@ export default class LocationSelect extends React.Component {
   }
 
   render() {
-    const { selectHandler } = this.props;
+    const { locationFilterInputPlaceholder, selectHandler } = this.props;
     const { filteredCountryCodes, highlighted } = this.state;
 
     return (
@@ -35,7 +35,7 @@ export default class LocationSelect extends React.Component {
               onChange={::this.handleSearchChange}
               onKeyDown={::this.handleKeyDown}
               type="text"
-              placeholder="Select your country" />
+              placeholder={locationFilterInputPlaceholder} />
           </div>
         </div>
         <LocationList countryCodes={filteredCountryCodes}

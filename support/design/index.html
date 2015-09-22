@@ -73,11 +73,7 @@ var magiclinkLock = new Auth0LockPasswordless(cid, domain);
 magiclinkLock.magiclink({
   container: "magiclink-container",
   dict: {
-    passwordless: {
-      email: {
-        footerText: terms
-      }
-    }
+    footerText: terms
   }
 });
 

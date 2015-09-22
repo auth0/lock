@@ -4,12 +4,12 @@ import WelcomeMessage from './welcome_message';
 
 export default class Welcome extends React.Component {
   render() {
-    const { name, imageUrl } = this.props;
+    const { name, imageUrl, title } = this.props;
 
     return (
       <div className="auth0-lock-header-welcome">
         {imageUrl && <Icon imageUrl={imageUrl} />}
-        <WelcomeMessage name={name}/>
+        <WelcomeMessage title={title} name={name}/>
       </div>
     );
   }

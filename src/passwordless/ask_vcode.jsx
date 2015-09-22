@@ -10,23 +10,19 @@ import { isSmallScreen } from '../utils/media_utils';
 
 export default class AskVcode extends React.Component {
   render() {
-    const { className, cred, lock } = this.props;
+    const { className, headerText, lock } = this.props;
     const auxiliaryPane = m.signedIn(lock) ?
       <SignedInConfirmation key="auxiliarypane" lock={lock} /> : null;
 
     return (
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} ref="cred">
         <div className="auth0-lock-form auth0-lock-passwordless">
-          <h2>Enter the code</h2>
-          <p>
-            Pleace check your {cred}<br />
-            You've received a message from us<br />
-            with your passcode.
-          </p>
+          <p>{headerText}</p>
           <VcodeInput value={c.vcode(lock)}
             isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
             onChange={::this.handleVcodeChange}
             autoFocus={!isSmallScreen()}
+            placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
             disabled={l.submitting(lock)}
             tabIndex={l.tabIndex(lock, 1)} />
         </div>
@@ -54,18 +50,26 @@ export default class AskVcode extends React.Component {
   componentWillSlideOut(...args) {
     return this.refs.cred.componentWillSlideOut(...args);
   }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, ["code"].concat(keyPath), params);
+  }
 }
 
 class SignedInConfirmation extends React.Component {
   render() {
     return (
       <ConfirmationPane closeHandler={::this.handleClose}>
-        <p>Thanks for signing in.</p>
+        <p>{this.t(["success"])}</p>
       </ConfirmationPane>
     )
   }
 
   handleClose() {
     close(l.id(this.props.lock));
+  }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, ["confirmation"].concat(keyPath), params);
   }
 }

@@ -30,7 +30,7 @@ export default function render(lock) {
       return {
         closeHandler: close,
         children: m.passwordlessStarted(lock) ?
-          <AskVcode className="auth0-lock-ask-email-vcode" cred={`email (${c.email(lock)})`} lock={lock} key="ask-vcode" /> :
+          <AskVcode className="auth0-lock-ask-email-vcode" headerText={l.ui.t(lock, ["code", "headerText"], {email: c.email(lock)})} lock={lock} key="ask-vcode" /> :
           <AskEmail lock={lock} key="ask-email" />,
         escHandler: close,
         isDone: m.signedIn(lock),
@@ -50,7 +50,7 @@ export default function render(lock) {
       return {
         closeHandler: close,
         children: m.passwordlessStarted(lock) ?
-          <AskVcode className="auth0-lock-enter-code" cred={`phone (${c.fullHumanPhoneNumber(lock)})`} lock={lock} key="ask-vcode" /> :
+          <AskVcode className="auth0-lock-enter-code" headerText={l.ui.t(lock, ["code", "headerText"], {phoneNumber: c.fullHumanPhoneNumber(lock)})} lock={lock} key="ask-vcode" /> :
           <AskPhoneNumber lock={lock} key="ask-phone-number" />,
         disallowClose: m.selectingLocation(lock),
         escHandler: function() {

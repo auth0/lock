@@ -7,7 +7,8 @@ export default class AskLocation extends React.Component {
   render() {
     return (
       <LocationSelect selectHandler={::this.handleSelect}
-        cancelHandler={::this.handleCancel} />
+        cancelHandler={::this.handleCancel}
+        locationFilterInputPlaceholder={this.t(["locationFilterInputPlaceholder"], {__textOnly: true})} />
     );
   }
 
@@ -18,4 +19,9 @@ export default class AskLocation extends React.Component {
   handleSelect(location) {
     changePhoneLocation(l.id(this.props.lock), location);
   }
+
+  t(keyPath, params) {
+    return l.ui.t(this.props.lock, ["location"].concat(keyPath), params);
+  }
+
 }

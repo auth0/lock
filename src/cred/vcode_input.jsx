@@ -28,7 +28,6 @@ export default class VcodeInput extends React.Component {
           type="text"
           name="vcode"
           className="auth0-lock-input auth0-lock-input-code"
-          placeholder="Your code"
           autoComplete="off"
           autoCapitalize="off"
           onFocus={::this.handleFocus}

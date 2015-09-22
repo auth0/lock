@@ -5,13 +5,13 @@ import IconButton from '../icon/button';
 
 export default class Header extends React.Component {
   render() {
-    const { backHandler, backgroundUrl, logoUrl, name } = this.props;
+    const { backHandler, backgroundUrl, logoUrl, name, title } = this.props;
 
     return (
       <div className="auth0-lock-header">
         {backHandler && <IconButton name="back" onClick={backHandler}/>}
         <Background imageUrl={backgroundUrl} grayScale={!!name} />
-        <Welcome name={name} imageUrl={!name && logoUrl} />
+        <Welcome title={title} name={name} imageUrl={!name && logoUrl} />
       </div>
     );
   }
