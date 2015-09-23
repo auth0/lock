@@ -49,7 +49,7 @@ export default class CredPane extends React.Component {
           </div>
           {terms && <Terms>{terms}</Terms>}
         </Placeholder>
-        <SubmitButton ref="submit" disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
+        <SubmitButton ref="submit" color={l.ui.submitButtonColor(lock)} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
         <ReactCSSTransitionGroup transitionName="slide">
           {auxiliaryPane}
         </ReactCSSTransitionGroup>

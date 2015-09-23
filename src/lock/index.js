@@ -84,7 +84,8 @@ function extractUIOptions(id, options) {
     dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
-    signInCallback: options.signInCallback // TODO: this doesn't belong here
+    signInCallback: options.signInCallback, // TODO: this doesn't belong here
+    submitButtonColor: typeof options.submitButtonColor === "string" ? options.submitButtonColor : "#ea5323"
   });
 }
 
@@ -113,7 +114,8 @@ export const ui = {
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
-  signInCallback: lock => getUIAttribute(lock, "signInCallback")
+  signInCallback: lock => getUIAttribute(lock, "signInCallback"),
+  submitButtonColor: lock => getUIAttribute(lock, "submitButtonColor")
 };
 
 export function invokeDoneCallback(m, ...args) {
