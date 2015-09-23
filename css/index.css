@@ -150,7 +150,7 @@
   width: 100px;
   display: block;
   border-radius: 100px;
-  margin: -30px auto 16px;
+  margin: -30px auto 0;
   position: absolute;
   left: 0;
   right: 0;
@@ -345,15 +345,8 @@
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  position: absolute;
-  bottom: 0;
   -webkit-transition: background 0.2s ease-in-out;
   transition: background 0.2s ease-in-out;
-}
-@media (min-width: 768px) {
-  .auth0-lock .auth0-lock-submit {
-    position: relative;
-  }
 }
 .auth0-lock .auth0-lock-submit span {
   display: inline-block;
@@ -612,6 +605,11 @@
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
+.auth0-lock.auth0-lock-opened .auth0-lock-overlay {
+  opacity: 0.9;
+  -webkit-transition: opacity 0.3s ease-in 0s;
+  transition: opacity 0.3s ease-in 0s;
+}
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner {
   opacity: 0.4;
   -webkit-transition: 1s ease 1s;
@@ -620,10 +618,17 @@
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner.auth0-lock-no-grayscale {
   opacity: 0.7;
 }
-.auth0-lock.auth0-lock-opened .auth0-lock-overlay {
-  opacity: 0.9;
-  -webkit-transition: opacity 0.3s ease-in 0s;
-  transition: opacity 0.3s ease-in 0s;
+.auth0-lock.auth0-lock-opened .auth0-lock-header-avatar {
+  width: 70px;
+  height: 70px;
+  margin: 15px auto 0;
+}
+@media (min-width: 381px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-header-avatar {
+    width: 100px;
+    height: 100px;
+    margin: -30px auto 0;
+  }
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-widget {
   opacity: 1;
@@ -633,9 +638,52 @@
   transition: transform 0.6s, opacity 0.6s;
   -webkit-transition-delay: 0.5s;
   transition-delay: 0.5s;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+@media (min-width: 381px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-widget {
+    width: 300px;
+    position: relative;
+  }
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-widget-container {
   box-shadow: 0 0 40px 4px #111118;
+  border-radius: 0;
+  height: 100%;
+}
+@media (min-width: 381px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-widget-container {
+    height: auto;
+    border-radius: 5px;
+  }
+}
+.auth0-lock.auth0-lock-opened .auth0-lock-content {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+@media (min-width: 381px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-content {
+    position: relative;
+    top: auto;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+.auth0-lock.auth0-lock-opened .auth0-lock-submit {
+  position: absolute;
+  bottom: 0;
+}
+@media (min-width: 381px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-submit {
+    position: relative;
+  }
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-badge-bottom {
   -webkit-transform: translateY(0%) scale(1);

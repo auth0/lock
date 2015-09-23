@@ -78,8 +78,13 @@ magiclinkLock.magiclink({
 });
 
 var emailcodeLock = new Auth0LockPasswordless(cid, domain);
-emailcodeLock.emailcode({container: "emailcode-container", closable: true});
+emailcodeLock.emailcode({
+  container: "emailcode-container",
+  closable: true
+});
 
 var smsLock = new Auth0LockPasswordless(cid, domain);
-smsLock.sms({container: "sms-container"});
+smsLock.sms({
+  container: "sms-container"
+});
 </script>
