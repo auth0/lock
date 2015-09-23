@@ -144,6 +144,9 @@ body.frame {
   margin-bottom: 20px;
   color: #666;
 }
+.auth0-lock .auth0-lock-form p.auth0-lock-did-not-receive-code {
+  margin-bottom: 0;
+}
 .auth0-lock .auth0-lock-hide {
   display: none !important;
 }

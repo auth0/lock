@@ -13,9 +13,10 @@ export default class AskVcode extends React.Component {
     const { className, headerText, lock } = this.props;
     const auxiliaryPane = m.signedIn(lock) ?
       <SignedInConfirmation key="auxiliarypane" lock={lock} /> : null;
+    const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} ref="cred">
+      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} terms={terms} ref="cred">
         <div className="auth0-lock-form auth0-lock-passwordless">
           <p>{headerText}</p>
           <VcodeInput value={c.vcode(lock)}
@@ -25,6 +26,11 @@ export default class AskVcode extends React.Component {
             placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
             disabled={l.submitting(lock)}
             tabIndex={l.tabIndex(lock, 1)} />
+          <p className="auth0-lock-did-not-receive-code">
+            <span style={{cursor: "pointer"}} onClick={::this.handleBack}>
+              {this.t(["resendLabel"], {__textOnly: true})}
+            </span>
+          </p>
         </div>
       </CredPane>
     );

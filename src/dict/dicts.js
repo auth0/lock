@@ -3,7 +3,8 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "Please check your email ({email})<br />You've received a message from us<br />with your passcode."
+      headerText: "Please check your email ({email})<br />You've received a message from us<br />with your passcode.",
+      resendLabel: "Did not get the code?"
     },
     confirmation: {
       success: "Thanks for signing in."
@@ -37,7 +38,8 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "Please check your phone ({phoneNumber})<br />You've received a message from us<br />with your passcode."
+      headerText: "Please check your phone ({phoneNumber})<br />You've received a message from us<br />with your passcode.",
+      resendLabel: "Did not get the code?"
     },
     confirmation: {
       success: "Thanks for signing in."
