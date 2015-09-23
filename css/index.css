@@ -1,21 +1,19 @@
 @import "normalize.css";
 @import "animate.css";
 @import "transitions.css";
-body {
-  visibility: hidden;
+.auth0-global-grobal-error {
+  background: #f04848;
+  color: #fff;
+  text-align: center;
+  padding: 6px 20px;
+  line-height: 2;
+  font-size: 12px;
+  display: none;
 }
-@media (min-width: 768px) {
-  body {
-    visibility: visible;
-  }
-}
-body.frame {
-  background: none;
-  overflow: auto;
-}
-.div-container {
-  background-color: #808080;
-  padding: 20px;
+.auth0-global-grobal-error span {
+  display: none;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
 }
 .global-error {
   position: fixed;
@@ -35,20 +33,6 @@ body.frame {
     transform: none;
   }
 }
-.auth0-loading {
-  position: absolute;
-  top: 4px;
-  left: 44%;
-  width: 30px;
-  height: 30px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: rgba(0,0,0,0.4) rgba(0,0,0,0.4) rgba(0,0,0,0.2) rgba(0,0,0,0.2);
-  opacity: 0.9;
-  border-radius: 20px;
-  -webkit-animation: rotate 1s linear infinite;
-  animation: rotate 1s linear infinite;
-}
 .auth0-lock,
 .auth0-lock * {
   -webkit-box-sizing: initial;
@@ -62,8 +46,6 @@ body.frame {
   -webkit-transition: opacity 0s 2s;
   transition: opacity 0s 2s;
   pointer-events: none;
-  display: table;
-  visibility: visible;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -71,40 +53,17 @@ body.frame {
   height: 100%;
   right: 0;
 }
-.auth0-lock.auth0-lock-opened {
-  opacity: 1;
-  pointer-events: auto;
-  -webkit-transition-delay: 0s;
-  transition-delay: 0s;
+@media (min-width: 381px) {
+  .auth0-lock {
+    display: table;
+  }
 }
 .auth0-lock a {
   text-decoration: none;
 }
-.auth0-lock input:focus {
+.auth0-lock input:focus,
+.auth0-lock button:focus {
   outline: none;
-}
-.auth0-lock .auth0-lock-error .auth0-lock-input-wrap {
-  border-color: #f00;
-}
-.auth0-lock .auth0-lock-error-message {
-  background: rgba(0,0,0,0.8);
-  position: absolute;
-  padding: 13px 14px;
-  color: #fff;
-  font-size: 12px;
-  right: -108px;
-  border-radius: 3px;
-  top: 0px;
-}
-.auth0-lock .auth0-lock-error-message:before {
-  border-left: 6px solid transparent;
-  border-right: 6px solid rgba(0,0,0,0.8);
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  left: -12px;
-  position: absolute;
-  content: " ";
-  top: 15px;
 }
 .auth0-lock .auth0-lock-overlay {
   background: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
@@ -119,41 +78,12 @@ body.frame {
   transition: opacity 0.2s ease-in 0.4s;
   visibility: hidden;
 }
-@media (min-width: 768px) {
+@media (min-width: 381px) {
   .auth0-lock .auth0-lock-overlay {
     visibility: visible;
   }
 }
-.auth0-lock .auth0-lock-form {
-  display: block;
-  -webkit-animation: fadeIn 0.2s;
-  animation: fadeIn 0.2s;
-}
-.auth0-lock .auth0-lock-form h2 {
-  font-size: 22px;
-  font-weight: normal;
-  text-align: center;
-  margin: 0 0 15px;
-  color: #000;
-}
-.auth0-lock .auth0-lock-form p {
-  font-size: 13px;
-  line-height: 1.8;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #666;
-}
-.auth0-lock .auth0-lock-form p.auth0-lock-did-not-receive-code {
-  margin-bottom: 0;
-}
-.auth0-lock .auth0-lock-hide {
-  display: none !important;
-}
-.auth0-lock .auth0-lock-form.auth0-lock-hide {
-  display: none;
-}
-@media (min-width: 768px) {
+@media (min-width: 381px) {
   .auth0-lock .auth0-lock-center {
     vertical-align: middle;
     display: table-cell;
@@ -161,6 +91,7 @@ body.frame {
   }
 }
 .auth0-lock .auth0-lock-widget {
+  width: 300px;
   opacity: 0;
   box-shadow: 0 0 0 transparent;
   -webkit-transition: transform 0.4s, opacity 0.7s;
@@ -173,20 +104,16 @@ body.frame {
   transition-delay: 0s;
   margin: 0 auto;
 }
-@media (min-width: 768px) {
-  .auth0-lock .auth0-lock-widget {
-    width: 300px;
-  }
-}
 .auth0-lock .auth0-lock-widget-container {
   background: #fff;
-  overflow: hidden;
   position: relative;
+  border-radius: 5px;
+  overflow: hidden;
 }
-@media (min-width: 768px) {
-  .auth0-lock .auth0-lock-widget-container {
-    border-radius: 5px;
-  }
+.auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-content,
+.auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-terms {
+  opacity: 0.3;
+  pointer-events: none;
 }
 .auth0-lock .auth0-lock-header {
   text-align: center;
@@ -218,27 +145,6 @@ body.frame {
 .auth0-lock .auth0-lock-go-back {
   left: 14px;
 }
-.auth0-lock .auth0-lock-header-welcome {
-  font-size: 18px;
-  position: relative;
-}
-.auth0-lock img {
-  display: block;
-}
-.auth0-lock .auth0-lock-header-logo {
-  width: 50px;
-  display: inline-block;
-  margin-bottom: 10px;
-  vertical-align: middle;
-}
-.auth0-lock .auth0-lock-header-placeholder {
-  background: #008000;
-  color: #fff;
-  border-radius: 100px;
-  line-height: 60px;
-  width: 60px;
-  margin: auto;
-}
 .auth0-lock .auth0-lock-header-avatar {
   height: 100px;
   width: 100px;
@@ -258,13 +164,6 @@ body.frame {
     -webkit-animation: fadeInDown 0.75s both;
     animation: fadeInDown 0.75s both;
   }
-}
-.auth0-lock .auth0-lock-firstname {
-  font-size: 18px;
-  margin-top: 74px;
-}
-.auth0-lock .auth0-lock-name {
-  font-size: 22px;
 }
 .auth0-lock .auth0-lock-header-bg {
   background: rgba(241,241,241,0.8);
@@ -297,19 +196,22 @@ body.frame {
   background-position: center;
   background-size: 500px;
 }
-.auth0-lock .auth0-global-grobal-error {
-  background: #f04848;
-  color: #fff;
-  text-align: center;
-  padding: 6px 20px;
-  line-height: 2;
-  font-size: 12px;
-  display: none;
+.auth0-lock .auth0-lock-header-welcome {
+  font-size: 18px;
+  position: relative;
 }
-.auth0-lock .auth0-global-grobal-error span {
-  display: none;
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
+.auth0-lock .auth0-lock-header-logo {
+  width: 50px;
+  display: inline-block;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+.auth0-lock .auth0-lock-firstname {
+  font-size: 18px;
+  margin-top: 74px;
+}
+.auth0-lock .auth0-lock-name {
+  font-size: 22px;
 }
 .auth0-lock .auth0-lock-content {
   padding: 30px;
@@ -317,44 +219,28 @@ body.frame {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.auth0-lock .auth0-lock-content:last-child {
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-.auth0-lock .auth0-lock-tabs {
-  border: 1px solid #5c666f;
-  background: #fff;
-  padding: 0;
-  margin: 0 0 30px 0;
-  border-radius: 3px;
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 0.7px;
-  overflow: hidden;
-}
-.auth0-lock .auth0-lock-tabs li {
-  width: 50%;
+.auth0-lock .auth0-lock-form {
   display: block;
-  list-style: none;
-  float: left;
-  padding: 0;
-  margin: 0;
+  -webkit-animation: fadeIn 0.2s;
+  animation: fadeIn 0.2s;
+}
+.auth0-lock .auth0-lock-form h2 {
+  font-size: 22px;
+  font-weight: normal;
   text-align: center;
+  margin: 0 0 15px;
+  color: #000;
 }
-.auth0-lock .auth0-lock-tabs li a {
-  padding: 6px 10px;
-  display: block;
-  text-decoration: none;
-  color: #5c666f;
+.auth0-lock .auth0-lock-form p {
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #666;
 }
-.auth0-lock .auth0-lock-tabs li.auth0-lock-tabs-current {
-  background-color: #5c666f;
-}
-.auth0-lock .auth0-lock-tabs li.auth0-lock-tabs-current a {
-  color: #fff;
-}
-.auth0-lock .auth0-lock-input {
-  position: relative;
+.auth0-lock .auth0-lock-form p.auth0-lock-did-not-receive-code {
+  margin-bottom: 0;
 }
 .auth0-lock .auth0-lock-input-block {
   margin-bottom: 10px;
@@ -408,19 +294,6 @@ body.frame {
 .auth0-lock .auth0-lock-input-wrap.auth0-lock-focused {
   border-color: #a0a0a0;
 }
-.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-email i:before {
-  content: "b";
-}
-.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-password i:before {
-  content: "c";
-}
-.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-invalid {
-  border-color: #d84132;
-  color: #d84132;
-}
-.auth0-lock .auth0-lock-input-wrap.auth0-lock-input-invalid i:before {
-  color: #d84132;
-}
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input {
   border: 0;
   padding: 0 14px;
@@ -432,6 +305,7 @@ body.frame {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input.animated {
   -webkit-animation-duration: 0.5s;
@@ -440,6 +314,9 @@ body.frame {
 .auth0-lock .auth0-lock-input-wrap .auth0-lock-input.auth0-lock-input-location {
   background-color: #f9f9f9;
   text-align: left;
+}
+.auth0-lock .auth0-lock-error .auth0-lock-input-wrap {
+  border-color: #f00;
 }
 .auth0-lock .auth0-lock-terms {
   background: #eee;
@@ -495,14 +372,6 @@ body.frame {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
-.auth0-lock .auth0-lock-submit:focus {
-  outline: none;
-}
-@media (min-width: 568px) {
-  .auth0-lock .auth0-lock-submit {
-    position: relative;
-  }
-}
 .auth0-lock .auth0-lock-submit[disabled] {
   background: #c43e13;
 }
@@ -510,8 +379,19 @@ body.frame {
   position: relative;
   display: none;
 }
-.auth0-lock .auth0-lock-change-avatar {
-  color: #f00;
+.auth0-lock .auth0-loading-container .auth0-loading {
+  position: absolute;
+  top: 4px;
+  left: 44%;
+  width: 30px;
+  height: 30px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.4) rgba(0,0,0,0.4) rgba(0,0,0,0.2) rgba(0,0,0,0.2);
+  opacity: 0.9;
+  border-radius: 20px;
+  -webkit-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite;
 }
 .auth0-lock .auth0-lock-select-country {
   background-color: #fff;
@@ -572,21 +452,6 @@ body.frame {
 .auth0-lock .auth0-lock-select-country .auth0-lock-list-code li.auth0-lock-list-code-highlighted {
   background-color: #2eb5ff;
   color: #fff;
-}
-.auth0-lock .auth0-lock-cred-pane {
-  border-radius: 5px;
-  overflow: hidden;
-  height: 100vh;
-}
-@media (min-width: 768px) {
-  .auth0-lock .auth0-lock-cred-pane {
-    height: auto;
-  }
-}
-.auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-content,
-.auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-terms {
-  opacity: 0.3;
-  pointer-events: none;
 }
 .auth0-lock.auth0-lock-mode-loading .auth0-lock-content,
 .auth0-lock.auth0-lock-mode-loading .auth0-lock-terms {
@@ -686,6 +551,36 @@ body.frame {
   animation: fadeIn 1s both;
   font-weight: 600;
 }
+.auth0-lock .auth0-lock-confirmation .checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  -webkit-animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.auth0-lock .auth0-lock-confirmation .checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 0 auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  -webkit-animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+}
+.auth0-lock .auth0-lock-confirmation .checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;
   display: block;
@@ -716,6 +611,12 @@ body.frame {
   fill: #eb5424;
   fill-opacity: 1;
 }
+.auth0-lock.auth0-lock-opened {
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner {
   opacity: 0.4;
   -webkit-transition: 1s ease 1s;
@@ -731,13 +632,15 @@ body.frame {
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-widget {
   opacity: 1;
-  box-shadow: 0 0 40px 4px #111118;
   -webkit-transform: translateY(0%) scale(1);
   transform: translateY(0%) scale(1);
   -webkit-transition: transform 0.6s, opacity 0.6s;
   transition: transform 0.6s, opacity 0.6s;
   -webkit-transition-delay: 0.5s;
   transition-delay: 0.5s;
+}
+.auth0-lock.auth0-lock-opened .auth0-lock-widget-container {
+  box-shadow: 0 0 40px 4px #111118;
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-badge-bottom {
   -webkit-transform: translateY(0%) scale(1);
@@ -784,36 +687,6 @@ body.frame {
 .auth0-lock.auth0-lock-opened-in-frame .global-error {
   position: absolute;
   display: none;
-}
-.auth0-lock .checkmark__circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: #7ac142;
-  fill: none;
-  -webkit-animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-.auth0-lock .checkmark {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: block;
-  stroke-width: 2;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-  margin: 0 auto;
-  box-shadow: inset 0px 0px 0px #7ac142;
-  -webkit-animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-}
-.auth0-lock .checkmark__check {
-  transform-origin: 50% 50%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 }
 @-webkit-keyframes stroke {
   100% {
