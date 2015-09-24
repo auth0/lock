@@ -330,7 +330,7 @@ describe("rerendering a lock", function() {
     });
 
     it("doesn't change anything", function() {
-      expect(renderedLock).to.be(notRerenderedLock);
+      expect(reRenderedLock).to.be(notRerenderedLock);
     });
   });
 });

@@ -16,9 +16,14 @@ class Auth0WebAPI {
   }
 
   signIn(lockID, options, cb) {
-    this.clients[lockID].login(options, function (error, profile, idToken, accessToken, state, refreshToken) {
-      cb(normalizeError(error), profile, idToken, accessToken, state, refreshToken);
-    });
+    const { redirect } = options;
+    delete options.redirect;
+    const f = loginCallback(redirect, cb);
+
+    const client = this.clients[lockID];
+    transferLoginOptionsToClient(client, options);
+
+    client.login(options, f);
   }
 
   signOut(lockID, query) {
@@ -26,7 +31,10 @@ class Auth0WebAPI {
   }
 
   startPasswordless(lockID, options, cb) {
-    this.clients[lockID].startPasswordless(options, err => cb(normalizeError(err)));
+    const client = this.clients[lockID];
+    transferLoginOptionsToClient(client, options);
+
+    client.startPasswordless(options, err => cb(normalizeError(err)));
   }
 }
 
@@ -36,5 +44,31 @@ function normalizeError(error) {
   return error && {
     error: error.details ? error.details.error : (error.statusCode || error.error),
     description: error.details ? error.details.error_description : (error.error_description || error.error)
+  }
+}
+
+// The properties callbackOnLocationHash, callbackURL, and forceJSONP can only
+// be specified when counstructing an Auth0 instance. Unfortunately we construct
+// the Auth0 client along with the Lock and we don't have the values of those
+// options until later when the Lock is shown. While today we may construct the
+// client here, in the future that will not be possible becasue we will need to
+// retrieve some client information before before we can show the Lock.
+function transferLoginOptionsToClient(client, options) {
+  const { callbackURL, forceJSONP, responseType } = options;
+  client._callbackOnLocationHash = 'token' === responseType || !!client._callbackOnLocationHash;
+  client._callbackURL = callbackURL || client._callbackURL;
+  client._useJSONP = forceJSONP || client._useJSONP;
+  delete options.callbackURL;
+  delete options.forceJSONP;
+  delete options.responseType;
+}
+
+function loginCallback(redirect, cb) {
+  if (redirect) {
+    return error => cb(normalizeError(error));
+  } else {
+    return (error, profile, idToken, accessToken, state, refreshToken) => {
+      cb(normalizeError(error), profile, idToken, accessToken, state, refreshToken);
+    }
   }
 }

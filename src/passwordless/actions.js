@@ -58,7 +58,15 @@ export function requestPasswordlessEmail(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    const options = {email: c.email(lock), send: m.send(lock)};
+    const options = {
+      authParams: m.send(lock) === "link" ? l.login.authParams(lock).toJS() : {},
+      email: c.email(lock),
+      send: m.send(lock),
+      responseType: l.login.responseType(lock),
+      callbackURL: l.login.callbackURL(lock),
+      forceJSONP: l.login.forceJSONP(lock)
+    };
+
     webApi.startPasswordless(id, options, error => {
       if (error) {
         requestPasswordlessEmailError(id, error);
@@ -134,7 +142,14 @@ export function resendEmail(id) {
   swap(updateEntity, "lock", id, m.resend);
 
   const lock = read(getEntity, "lock", id);
-  const options = {email: c.email(lock), send: m.send(lock)};
+  const options = {
+    authParams: m.send(lock) === "link" ? l.login.authParams(lock).toJS() : {},
+    email: c.email(lock),
+    send: m.send(lock),
+    responseType: l.login.responseType(lock),
+    callbackURL: l.login.callbackURL(lock),
+    forceJSONP: l.login.forceJSONP(lock)
+  };
   webApi.startPasswordless(id, options, error => {
     if (error) {
       resendEmailError(id, error);
@@ -169,20 +184,25 @@ export function signIn(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    const isSMS = m.send(lock) === "sms";
-    const options = Map({
-      connection: isSMS ? "sms" : "email",
-      username: isSMS ? c.fullPhoneNumber(lock) : c.email(lock),
-      password: c.vcode(lock),
-      sso: false
-    }).merge(l.authParams(lock));
-    webApi.signIn(id, options.toJS(), (error, ...args) => {
-      if (error) {
-        signInError(id, error);
-      } else {
-        signInSuccess(id, ...args);
-      }
-    });
+    const options = {
+      passcode: c.vcode(lock),
+      redirect: l.shouldRedirect(lock),
+      responseType: l.login.responseType(lock),
+      callbackURL: l.login.callbackURL(lock),
+      forceJSONP: l.login.forceJSONP(lock)
+    };
+
+    if (m.send(lock) === "sms") {
+      options.phoneNumber = c.fullPhoneNumber(lock);
+    } else {
+      options.email = c.email(lock);
+    }
+
+    webApi.signIn(
+      id,
+      Map(options).merge(l.login.authParams(lock)).toJS(),
+      (error, ...args) => error ? signInError(id, error) : signInSuccess(id, ...args)
+    );
   }
 }
 

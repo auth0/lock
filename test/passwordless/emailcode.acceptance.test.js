@@ -112,7 +112,14 @@ describe(".emailcode acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "code"};
+      const params ={
+        authParams: {},
+        callbackURL: undefined,
+        email: "someone@auth0.com",
+        forceJSONP: undefined,
+        responseType: "token",
+        send: "code"
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -161,7 +168,14 @@ describe(".emailcode acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "code"};
+      const params ={
+        authParams: {},
+        callbackURL: undefined,
+        email: "someone@auth0.com",
+        forceJSONP: undefined,
+        responseType: "token",
+        send: "code"
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -269,7 +283,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("attempts to sign in with the entered cred", function() {
-      expect(u.hasSignedInWith("someone@auth0.com", "1234")).to.be.ok();
+      expect(u.hasSignedInWith({email: "someone@auth0.com", passcode: "1234"})).to.be.ok();
     })
 
     describe("when response arrives", function() {
@@ -322,7 +336,7 @@ describe(".emailcode acceptance", function() {
     });
 
     it("attempts to sign in with the entered cred", function() {
-      expect(u.hasSignedInWith("someone@auth0.com", "1234")).to.be.ok();
+      expect(u.hasSignedInWith({email: "someone@auth0.com", passcode: "1234"})).to.be.ok();
     })
 
     describe("when response arrives", function() {

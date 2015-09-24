@@ -1,4 +1,4 @@
-import Immutable, { Set } from 'immutable';
+import Immutable, { Map, Set } from 'immutable';
 import React from 'react/addons';
 import CSSCore from 'react/lib/CSSCore';
 const { Simulate } = React.addons.TestUtils;
@@ -191,12 +191,12 @@ export function simulateSingInResponse(error = null) {
   lastCall.args[lastCall.args.length - 1].call(undefined, ...args);
 }
 
-export function hasSignedInWith(username, password) {
+export function hasSignedInWith(params) {
   const lastCall = webApi.signIn.lastCall;
   const paramsFromLastCall = lastCall && lastCall.args[1];
-  return paramsFromLastCall &&
-    username === paramsFromLastCall.username &&
-    password === paramsFromLastCall.password;
+  return Map(params).reduce((r, v, k) => {
+    return r && paramsFromLastCall[k] === v;
+  }, true);
 }
 
 export function isShowingConfirmation(lock) {
