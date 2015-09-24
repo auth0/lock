@@ -15,6 +15,6 @@ class Dict {
 
 export function build(dictName, overrides) {
   overrides = Immutable.fromJS(overrides);
-  const dict = Immutable.fromJS(dicts).get(dictName, Map());
+  const dict = Immutable.fromJS(dicts).get(dictName, Map()).set("error", Immutable.fromJS(dicts.error));
   return new Dict(dict.mergeDeep(overrides));
 }

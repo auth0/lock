@@ -89,9 +89,9 @@ export function requestPasswordlessEmailSuccess(id) {
 }
 
 export function requestPasswordlessEmailError(id, error) {
-  const fallbackDescription = "We're sorry, something went wrong when sending the email.";
-  swap(updateEntity, "lock", id, l.setSubmitting, false, error.description || fallbackDescription);
   const lock = read(getEntity, "lock", id);
+  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "email"}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "email"})
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
   if (m.send(lock) === "link") {
     l.invokeDoneCallback(lock, error);
   }
@@ -134,8 +134,9 @@ export function sendSMSSuccess(id) {
 }
 
 export function sendSMSError(id, error) {
-  const fallbackDescription = "We're sorry, something went wrong when sending the SMS.";
-  swap(updateEntity, "lock", id, l.setSubmitting, false, error.description || fallbackDescription);
+  const lock = read(getEntity, "lock", id);
+  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "SMS"}) || l.ui.t(lock, ["error", "passwordless", lock.request], {medium: "SMS"})
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
 export function resendEmail(id) {
@@ -219,9 +220,11 @@ function signInSuccess(id, ...args) {
 }
 
 function signInError(id, error) {
-  swap(updateEntity, "lock", id, l.setSubmitting, false, error.description);
-
   const lock = read(getEntity, "lock", id);
+  const cred = m.send(lock) === "sms" ? "phone number" : "email";
+  const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+
   l.invokeDoneCallback(lock, error);
 }
 
