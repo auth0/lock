@@ -181,7 +181,7 @@ describe(".emailcode acceptance", function() {
 
     describe("when response arrives", function() {
       before(function() {
-        u.simulateStartPasswordlessResponse({});
+        u.simulateStartPasswordlessResponse({error: "unknown"});
       });
 
       it("hides the loading indicator", function() {
@@ -201,7 +201,8 @@ describe(".emailcode acceptance", function() {
       });
 
       it("shows a generic error", function() {
-        expect(u.isSomethingWrong(this.lock, u.EMAIL_GENERIC_ERROR)).to.be.ok();
+        const errorMessage = "We're sorry, something went wrong when sending the email";
+        expect(u.isSomethingWrong(this.lock, errorMessage)).to.be.ok();
       });
     });
   });
@@ -341,7 +342,7 @@ describe(".emailcode acceptance", function() {
 
     describe("when response arrives", function() {
       before(function() {
-        this.error = {description: "invalid email or vcode"};
+        this.error = {error: "invalid_user_password"};
         u.simulateSingInResponse(this.error);
       });
 
@@ -363,7 +364,7 @@ describe(".emailcode acceptance", function() {
       });
 
       it("shows the received error description", function() {
-        expect(u.isSomethingWrong(this.lock, this.error.description)).to.be.ok();
+        expect(u.isSomethingWrong(this.lock, "Wrong email or verification code")).to.be.ok();
       });
     });
   });
