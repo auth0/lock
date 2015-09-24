@@ -85,7 +85,7 @@ function extractUIOptions(id, options) {
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
-    submitButtonColor: typeof options.submitButtonColor === "string" ? options.submitButtonColor : "#ea5323"
+    primaryColor: typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323"
   });
 }
 
@@ -115,7 +115,7 @@ export const ui = {
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback"),
-  submitButtonColor: lock => getUIAttribute(lock, "submitButtonColor")
+  primaryColor: lock => getUIAttribute(lock, "primaryColor")
 };
 
 export function invokeDoneCallback(m, ...args) {

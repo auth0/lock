@@ -258,7 +258,7 @@ The appearance of the widget can be customized with an `options` object which ha
 - **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
-- **submitButtonColor {String}**: Sets the color of the submit button. When providing a custom `icon` you may want to change the color of the submit button for one that go well together with the icon's color palette. Defaults to `"#ea5323"`.
+- **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `icon` to ensure all colors go well together with the icon's color palette. Defaults to `"#ea5323"`.
 
 #### Example
 
