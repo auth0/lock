@@ -131,6 +131,8 @@ breakpoint(point, value = 0)
     overflow hidden
 
   .auth0-lock-cred-pane
+    position relative
+    height 100%
     &.horizontal-fade-leave
       .auth0-lock-content, .auth0-lock-terms
         opacity .3
@@ -201,6 +203,7 @@ breakpoint(point, value = 0)
       border-top-left-radius 5px
       border-top-right-radius 5px
       -webkit-filter blur(40px) grayscale(1)
+      -webkit-backdrop-filter: blur(0);
       background-color #fff
       background-position center
       background-repeat no-repeat
@@ -211,6 +214,7 @@ breakpoint(point, value = 0)
 
       &.auth0-lock-no-grayscale
         -webkit-filter blur(100px)
+        -webkit-backdrop-filter: blur(0);
         background-position center
         background-size 500px
 
@@ -516,8 +520,6 @@ breakpoint(point, value = 0)
     height 100%
     top 0
     left 0
-    border-radius 5px
-    overflow hidden
     z-index 200
     .auth0-lock-confirmation-content
       width 100%
@@ -662,13 +664,10 @@ breakpoint(point, value = 0)
 
     .auth0-lock-header-avatar
       //mobile view
-      width 70px
-      height 70px
-      margin 15px auto 0
-      +breakpoint("mobile")
-        width 100px
-        height 100px
-        margin -30px auto 0
+      @media all and (max-width: 380px)
+        width 70px
+        height 70px
+        margin 15px auto 0
 
     .auth0-lock-widget
       opacity 1
@@ -680,24 +679,20 @@ breakpoint(point, value = 0)
       transition-delay .5s
 
       // mobile view
-      width 100%
-      height 100%
-      position absolute
-      top 0
-      bottom 0
-      +breakpoint("mobile")
-        width 300px
-        position relative
+      @media all and (max-width: 380px)
+        width 100%
+        height 100%
+        position absolute
+        top 0
+        bottom 0
 
     .auth0-lock-widget-container
       box-shadow 0 0 40px 4px #111118
 
       //mobile view
-      border-radius 0
-      height 100%
-      +breakpoint("mobile")
-        height auto
-        border-radius 5px
+      @media all and (max-width: 380px)
+        border-radius 0
+        height 100%
 
     .auth0-lock-content
       width 100%
