@@ -118,8 +118,43 @@ export const ui = {
   primaryColor: lock => getUIAttribute(lock, "primaryColor")
 };
 
+function getLoginAttribute(m, attribute) {
+  return m.getIn(["login", attribute]);
+}
+
+// TODO: find a better name, forceJSONP is not exclusively used for login
+export const login = {
+  authParams: lock => getLoginAttribute(lock, "authParams"),
+  forceJSONP: lock => getLoginAttribute(lock, "forceJSONP"),
+  callbackURL: lock => getLoginAttribute(lock, "callbackURL"),
+  responseType: lock => getLoginAttribute(lock, "responseType")
+  // TODO: Add a function that takes an object with login parameters and adds
+  // the ones above here.
+};
+
+function setLoginOptions(m, options) {
+  let { authParams, callbackURL, forceJSONP, responseType } = options;
+
+  authParams = typeof authParams === "object" ? authParams : {};
+  callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
+  responseType = typeof responseType === "string" ? responseType : callbackURL ? "code" : "token";
+
+  const loginOptions = Map({
+    authParams: Map(authParams),
+    callbackURL: callbackURL,
+    forceJSONP: forceJSONP,
+    responseType: responseType
+  });
+
+  return m.set("login", loginOptions);
+}
+
 export function invokeDoneCallback(m, ...args) {
   ui.signInCallback(m).apply(undefined, args);
+}
+
+export function shouldRedirect(m) {
+  return ui.signInCallback(m).length <= 1;
 }
 
 export function render(m, modeName, options) {
@@ -134,25 +169,15 @@ export function render(m, modeName, options) {
     render: true,
     modeOptions: modeOptions
   }));
-  m = setUIOptions(m, options);
 
-  if (typeof options.authParams === "object") {
-    m = setAuthParams(m, options.authParams);
-  }
+  m = setUIOptions(m, options);
+  m = setLoginOptions(m, options);
 
   return m;
 }
 
 export function modeOptions(m) {
   return m.get("modeOptions", false);
-}
-
-export function setAuthParams(m, o) {
-  return m.set("authParams", o);
-}
-
-export function authParams(m) {
-  return m.get("authParams", {});
 }
 
 export function close(m) {

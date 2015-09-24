@@ -150,7 +150,7 @@ describe(".sms acceptance", function() {
       });
 
       it("starts the passwordless flow with the given location", function() {
-        const params = {phoneNumber: "+340303456",};
+        const params = {phoneNumber: "+340303456"};
         expect(u.hasStartedPasswordless(params)).to.be.ok();
       });
     });
@@ -382,7 +382,7 @@ describe(".sms acceptance", function() {
     });
 
     it("attempts to sign in with the entered cred", function() {
-      expect(u.hasSignedInWith("+10303456", "1234")).to.be.ok();
+      expect(u.hasSignedInWith({phoneNumber: "+10303456", passcode: "1234"})).to.be.ok();
     })
 
     describe("when response arrives", function() {
@@ -435,7 +435,7 @@ describe(".sms acceptance", function() {
     });
 
     it("attempts to sign in with the entered cred", function() {
-      expect(u.hasSignedInWith("+10303456", "1234")).to.be.ok();
+      expect(u.hasSignedInWith({phoneNumber: "+10303456", passcode: "1234"})).to.be.ok();
     })
 
     describe("when response arrives", function() {

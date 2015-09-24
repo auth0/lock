@@ -116,7 +116,7 @@ var lock = new Auth0LockPasswordless(clientID, domain);
 
 Opens a dialog that asks the user for an email address. Once entered, it will send an email containing a _magic link_ that allows the user to log in automatically.
 
-- **options {Object}**: Allows to customize the dialog's appearance. See below for the details.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked after an attempt to send the the email has been made. In case of success it will receive the entered email address.
 
 #### Example
@@ -149,7 +149,7 @@ lock.magiclink({closable: false}, function(error, email) {
 
 Opens a dialog that asks the user for an email address. Then, it will ask for a _code_ that has been sent in an email to the given address. The code will be used as a one-time password to log in.
 
-- **options {Object}**: Allows to customize the dialog's appearance. See below for the details.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked after an attempt to log the user in has been made.
 
 #### Example
@@ -182,7 +182,7 @@ lock.emailcode({closable: false}, function(error, profile, id_token, access_toke
 
 Opens a dialog that asks the user for a phone number. Then, it will ask for a _code_ that has been sent in an text message to the given number. The code will be used as a one-time password to log in.
 
-- **options {Object}**: Allows to customize the dialog's appearance. See below for the details.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked after an attempt to log the user in has been made.
 
 #### Example
@@ -245,12 +245,13 @@ lock.logout();
 lock.logout({ref: window.location.href});
 ```
 
-### UI Customization
+### Customization
 
-The appearance of the widget can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
+The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
+
+#### UI options
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
-- **authParams {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
@@ -259,6 +260,13 @@ The appearance of the widget can be customized with an `options` object which ha
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `icon` to ensure all colors go well together with the icon's color palette. Defaults to `"#ea5323"`.
+
+#### Authentication options
+
+- **authParams {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
+- **callbackURL {String}**: The url Auth0 will redirect back after authentication. Defaults to `location.href`.
+- **forceJSONP {Boolean}**: Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to `false`.
+- **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Defaults to `"code"` when `callbackURL` is provided, and to `"token"` otherwise.
 
 #### Example
 
@@ -297,7 +305,7 @@ A dict, short for dictionary, is an object that contains every piece of text the
 }
 ```
 
-When you open the Lock with `emailcode` or any other method available, you can override any value by providing a [dict option](#ui-customization).
+When you open the Lock with `emailcode` or any other method available, you can override any value by providing a [dict option](#ui-options).
 
 ```js
 lock.emailcode({

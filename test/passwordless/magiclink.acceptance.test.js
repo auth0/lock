@@ -113,7 +113,14 @@ describe(".magiclink acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "link"};
+      const params = {
+        authParams: {},
+        email: "someone@auth0.com",
+        send: "link",
+        responseType: 'token',
+        callbackURL: undefined,
+        forceJSONP: undefined
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -158,7 +165,14 @@ describe(".magiclink acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "link"};
+      const params = {
+        authParams: {},
+        email: "someone@auth0.com",
+        send: "link",
+        responseType: 'token',
+        callbackURL: undefined,
+        forceJSONP: undefined
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -211,7 +225,14 @@ describe(".magiclink acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "link"};
+      const params = {
+        authParams: {},
+        email: "someone@auth0.com",
+        send: "link",
+        responseType: 'token',
+        callbackURL: undefined,
+        forceJSONP: undefined
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -255,7 +276,14 @@ describe(".magiclink acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "link"};
+      const params = {
+        authParams: {},
+        email: "someone@auth0.com",
+        send: "link",
+        responseType: 'token',
+        callbackURL: undefined,
+        forceJSONP: undefined
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -306,7 +334,14 @@ describe(".magiclink acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "link"};
+      const params = {
+        authParams: {},
+        email: "someone@auth0.com",
+        send: "link",
+        responseType: 'token',
+        callbackURL: undefined,
+        forceJSONP: undefined
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
@@ -352,7 +387,14 @@ describe(".magiclink acceptance", function() {
     });
 
     it("starts the passwordless flow", function() {
-      const params = {email: "someone@auth0.com", send: "link"};
+      const params = {
+        authParams: {},
+        email: "someone@auth0.com",
+        send: "link",
+        responseType: 'token',
+        callbackURL: undefined,
+        forceJSONP: undefined
+      };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
 
