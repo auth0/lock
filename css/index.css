@@ -97,6 +97,7 @@
   }
 }
 .auth0-lock .auth0-lock-widget {
+  background: #fff;
   width: 300px;
   opacity: 0;
   -webkit-transition: transform 0.4s, opacity 0.7s;
@@ -109,11 +110,12 @@
   transition-delay: 0s;
   margin: 0 auto;
   border-radius: 5px;
-  overflow: hidden;
 }
 .auth0-lock .auth0-lock-widget-container {
-  background: #fff;
+  background: transparent;
   position: relative;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .auth0-lock .auth0-lock-cred-pane {
   height: 100%;
@@ -211,7 +213,7 @@
 .auth0-lock .auth0-lock-header-logo {
   width: 50px;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-top: 10px;
   vertical-align: middle;
 }
 .auth0-lock .auth0-lock-firstname {
@@ -356,8 +358,7 @@
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  -webkit-transition: background 0.2s ease-in-out;
-  transition: background 0.2s ease-in-out;
+  border-radius: 0 0 5px 5px;
 }
 .auth0-lock .auth0-lock-submit span {
   display: inline-block;
@@ -367,9 +368,11 @@
 .auth0-lock .auth0-lock-submit span svg {
   vertical-align: middle;
 }
-.auth0-lock .auth0-lock-submit:hover span {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+@media (min-width: 481px) {
+  .auth0-lock .auth0-lock-submit:hover span {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
 }
 .auth0-lock .auth0-lock-submit:focus {
   box-shadow: inset 0 0 100px 20px rgba(0,0,0,0.2);
@@ -669,6 +672,7 @@
 @media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-widget-container {
     height: 100%;
+    border-radius: 0;
   }
 }
 @media screen and (max-width: 480px) {
@@ -692,13 +696,11 @@
     transform: none;
   }
 }
-.auth0-lock.auth0-lock-opened .auth0-lock-submit {
-  position: absolute;
-  bottom: 0;
-}
-@media (min-width: 481px) {
+@media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-submit {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0;
   }
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-badge-bottom {
@@ -709,6 +711,11 @@
   -webkit-transition-delay: 0;
   transition-delay: 0;
   opacity: 1;
+}
+@media screen and (max-width: 480px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-badge-bottom {
+    display: none;
+  }
 }
 .auth0-lock.auth0-lock-opened-in-frame {
   opacity: 1;

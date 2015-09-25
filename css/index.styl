@@ -120,6 +120,7 @@ breakpoint(point, value = 0)
       margin auto
 
   .auth0-lock-widget
+    background white
     width 300px
     opacity 0
     -webkit-transition transform .4s, opacity .7s
@@ -132,11 +133,12 @@ breakpoint(point, value = 0)
     transition-delay 0s
     margin 0 auto
     border-radius 5px
-    overflow hidden
 
   .auth0-lock-widget-container
-    background white
+    background transparent
     position relative
+    border-radius 5px
+    overflow hidden
 
   .auth0-lock-cred-pane
     height 100%
@@ -234,7 +236,7 @@ breakpoint(point, value = 0)
   .auth0-lock-header-logo
     width 50px
     display inline-block
-    margin-bottom 10px
+    margin-top 10px
     vertical-align middle
 
   .auth0-lock-firstname
@@ -384,8 +386,9 @@ breakpoint(point, value = 0)
     box-sizing border-box
     width 100%
     overflow hidden
-    -webkit-transition background .2s ease-in-out
-    transition background .2s ease-in-out
+    border-radius 0 0 5px 5px
+    // -webkit-transition background .2s ease-in-out
+    // transition background .2s ease-in-out
 
     span
       display inline-block
@@ -394,10 +397,11 @@ breakpoint(point, value = 0)
       svg
         vertical-align middle
 
-    &:hover
-      span
-        -webkit-transform scale(1.05)
-        transform scale(1.05)
+    +breakpoint("mobile")
+      &:hover
+        span
+          -webkit-transform scale(1.05)
+          transform scale(1.05)
 
     &:focus
       box-shadow inset 0 0 100px 20px rgba(black,.2)
@@ -717,6 +721,7 @@ breakpoint(point, value = 0)
       //mobile view
       @media screen and (max-width: 480px)
         height 100%
+        border-radius 0
 
     .auth0-lock-cred-pane
       //mobile view
@@ -737,10 +742,11 @@ breakpoint(point, value = 0)
         transform none
 
     .auth0-lock-submit
-      position absolute
-      bottom 0
-      +breakpoint("mobile")
-        position relative
+      //mobile view
+      @media screen and (max-width: 480px)
+        position absolute
+        bottom 0
+        border-radius 0
 
     .auth0-lock-badge-bottom
       -webkit-transform translateY(0%)  scale(1)
@@ -750,6 +756,10 @@ breakpoint(point, value = 0)
       -webkit-transition-delay 0
       transition-delay 0
       opacity 1
+
+      //mobile view
+      @media screen and (max-width: 480px)
+        display none
 
 
   // Opened in frame
