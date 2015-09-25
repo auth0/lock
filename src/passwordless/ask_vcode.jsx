@@ -27,9 +27,9 @@ export default class AskVcode extends React.Component {
             disabled={l.submitting(lock)}
             tabIndex={l.tabIndex(lock, 1)} />
           <p className="auth0-lock-did-not-receive-code">
-            <span style={{cursor: "pointer"}} onClick={::this.handleBack}>
+            <a href="#" className="auth0-lock-did-not-receive-code-link" onClick={::this.handleResendClick}>
               {this.t(["resendLabel"], {__textOnly: true})}
-            </span>
+            </a>
           </p>
         </div>
       </CredPane>
@@ -43,6 +43,11 @@ export default class AskVcode extends React.Component {
 
   handleBack() {
     back(l.id(this.props.lock), {clearCred: ["vcode"]});
+  }
+
+  handleResendClick(e) {
+    e.preventDefault();
+    this.handleBack();
   }
 
   componentWillSlideIn(...args) {

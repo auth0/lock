@@ -36,10 +36,11 @@ export default class CredPane extends React.Component {
       backgroundUrl = icon;
       name = "";
     }
+    const primaryColor = l.ui.primaryColor(lock);
 
     return (
       <div className={className + " auth0-lock-cred-pane"}>
-        <Header title={this.t(["title"])} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} logoUrl={icon}/>
+        <Header title={this.t(["title"])} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <Placeholder delay={800} height={height} show={show} ref="content">
           <ReactTransitionGroup>
             {globalError && <GlobalError key="global-error" message={globalError} />}
@@ -49,7 +50,7 @@ export default class CredPane extends React.Component {
           </div>
           {terms && <Terms>{terms}</Terms>}
         </Placeholder>
-        <SubmitButton ref="submit" color={l.ui.primaryColor(lock)} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
+        <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
         <ReactCSSTransitionGroup transitionName="slide">
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
