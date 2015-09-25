@@ -30,9 +30,8 @@ breakpoint(point, value = 0)
 
 
 @media screen and (max-width: 480px)
-  html.auth0-lock-html body
-    & > *
-      display none !important
+  html.auth0-lock-html body *
+    visibility hidden
 
   //   .auth0-lock-container
   //     display block !important
