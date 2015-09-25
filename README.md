@@ -228,12 +228,38 @@ lock.close(function() {
 });
 ```
 
+### .getProfile(token, callback)
+
+Fetches the full user profile.
+
+- **token {String}**: User id token.
+- **callback {Function}**: Will be invoked after the user profile been retrieved.
+
+#### Example
+```js
+lock.getProfile(id_token, function(error, profile) {
+  if (!error) {
+    alert("hello " + profile.name);
+  }
+});
+```
+
 ### .logout(query)
 
 Log out an user.
 
-<dl>
 - **query {String}**: Query parameters that will be send with the request to log the user out.
+
+### .parseHash(hash)
+
+Parses the hash containing `access_token` and `id_token` appended by Auth0 to the URL in redirect mode.
+
+- **hash {string}**: Hash appended by Auth0 to the URL in redirect mode.
+
+#### Example
+```js
+lock.parseHash(window.location.hash);
+```
 
 #### Example
 
@@ -255,7 +281,8 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
-- **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.  - **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
+- **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
+- **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **fillMode {Boolean}**: Determines whether or not the Lock will expand to fill the full width of its container element when the `container` is provided. Defaults to `false`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
