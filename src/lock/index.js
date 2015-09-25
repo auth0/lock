@@ -85,7 +85,7 @@ function extractUIOptions(id, options) {
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
-    primaryColor: typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323"
+    primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323"
   });
 }
 
