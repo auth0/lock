@@ -36,6 +36,14 @@ class Auth0WebAPI {
 
     client.startPasswordless(options, err => cb(normalizeError(err)));
   }
+
+  parseHash(lockID, hash) {
+    return this.clients[lockID].parseHash(hash);
+  }
+
+  getProfile(token, callback) {
+    return this.clients[lockID].getProfile(token, callback);
+  }
 }
 
 export default new Auth0WebAPI();

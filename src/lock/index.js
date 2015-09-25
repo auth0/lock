@@ -87,7 +87,8 @@ function extractUIOptions(id, options) {
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
-    primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323"
+    primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
+    rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
   });
 }
 
@@ -118,7 +119,8 @@ export const ui = {
   fillMode: lock => getUIAttribute(lock, "fillMode"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback"),
-  primaryColor: lock => getUIAttribute(lock, "primaryColor")
+  primaryColor: lock => getUIAttribute(lock, "primaryColor"),
+  rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
 };
 
 function getLoginAttribute(m, attribute) {

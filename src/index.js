@@ -33,8 +33,15 @@ export default class Auth0LockPasswordless {
     f(this.id, true);
   }
 
+  getProfile(token, cb) {
+    webAPI.getProfile(this.id, token, cb);
+  }
+
+  parseHash(hash) {
+    webAPI.parseHash(this.id, hash);
+  }
+
   logout(query = {}) {
-    // TODO: create action
     webAPI.signOut(this.id, query);
   }
 }

@@ -23,7 +23,8 @@ export function openLock(id, mode, options) {
 
   swap(updateEntity, "lock", id, lock => {
     lock = l.render(lock, mode, options);
-    return cs.restore(lock, options.modeOptions.storageKey);
+    return l.ui.rememberLastLogin(lock) ?
+      cs.restore(lock, options.modeOptions.storageKey) : lock;
   });
 
   setTimeout(() => swap(updateEntity, "lock", id, l.setShow, true), 17);
