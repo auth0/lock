@@ -32,17 +32,17 @@ export default class AskPhoneNumber extends React.Component {
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
           <p>{this.t(["headerText"])}</p>
+            <LocationInput value={c.phoneLocationString(lock)}
+              onClick={::this.handleLocationClick}
+              tabIndex={l.tabIndex(lock, 1)} />
             <PhoneNumberInput ref="phoneNumber"
               value={c.phoneNumber(lock)}
               isValid={!c.visiblyInvalidPhoneNumber(lock)}
               onChange={::this.handlePhoneNumberChange}
               autoFocus={l.ui.focusInput(lock)}
               placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
-              tabIndex={l.tabIndex(lock, 1)}
+              tabIndex={l.tabIndex(lock, 2)}
               disabled={l.submitting(lock)} />
-            <LocationInput value={c.phoneLocationString(lock)}
-              onClick={::this.handleLocationClick}
-              tabIndex={l.tabIndex(lock, 2)} />
           </div>
         </div>
       </CredPane>
