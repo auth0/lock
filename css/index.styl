@@ -29,6 +29,18 @@ breakpoint(point, value = 0)
       {block}
 
 
+@media screen and (max-width: 480px)
+  body.auth0-lock-body
+    & > *
+      display none
+
+    .auth0-lock-container
+      display block
+
+  .auth0-lock-container
+    background white
+    opacity 1
+
 .auth0-global-grobal-error
   background #F04848
   color white

@@ -12,6 +12,7 @@ export default class LockContainerManager {
       if (create) {
         container = document.createElement('div');
         container.id = id;
+        container.className = "auth0-lock-container";
         this.cache[id] = document.body.appendChild(container);
       } else {
         throw new Error(`Can't find element with id ${id}`);

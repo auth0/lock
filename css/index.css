@@ -1,6 +1,18 @@
 @import "normalize.css";
 @import "animate.css";
 @import "transitions.css";
+@media screen and (max-width: 480px) {
+  body.auth0-lock-body > * {
+    display: none;
+  }
+  body.auth0-lock-body .auth0-lock-container {
+    display: block;
+  }
+  .auth0-lock-container {
+    background: #fff;
+    opacity: 1;
+  }
+}
 .auth0-global-grobal-error {
   background: #f04848;
   color: #fff;

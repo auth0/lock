@@ -1,3 +1,28 @@
+## [0.1.8] - 2015-09-22
+
+### Fixed
+
+- [] First iteration to show better errors (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/ff6a4e4f9059ae94a28223ed6461aabcaa4ee013
+- [] Fix header blur browser mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/2d834aba76e83e6116ce9896997c8f5d8b4a5472
+- [] First approach mobile-friendly (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/d307667b9c64b960d0e6059b2e01002123012f33
+- [] Clean up of style (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/22b5a4a76bb64c00bd9392daf527224cdd033558
+
+### Added
+
+- [] Redirect mode and auth options (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/b104ee4b8a84f5179582f2c9cb96df214b274838
+- [] Rename submitButtonColor option to primaryColor (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/dcacbca3f61cb90778475cf7982a1167c1b6ff13
+- [] Add submitButtonColor option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/97c5fdbc66bdb03451072353afc4c4239a14bfd5
+- [] Add a hint to resend the code for sms and email (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/7158326a2b2c8cb8833a1c3a65bc6f605fc5ee49
+
+
 ## [0.1.7] - 2015-09-17
 
 ### Changed

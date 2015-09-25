@@ -90,7 +90,7 @@ export function requestPasswordlessEmailSuccess(id) {
 
 export function requestPasswordlessEmailError(id, error) {
   const lock = read(getEntity, "lock", id);
-  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "email"}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "email"})
+  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "email", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "email", __textOnly: true})
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
   if (m.send(lock) === "link") {
     l.invokeDoneCallback(lock, error);
@@ -135,7 +135,7 @@ export function sendSMSSuccess(id) {
 
 export function sendSMSError(id, error) {
   const lock = read(getEntity, "lock", id);
-  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "SMS"}) || l.ui.t(lock, ["error", "passwordless", lock.request], {medium: "SMS"})
+  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "SMS", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "SMS", __textOnly: true})
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
