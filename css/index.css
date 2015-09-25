@@ -2,7 +2,7 @@
 @import "animate.css";
 @import "transitions.css";
 @media screen and (max-width: 480px) {
-  body.auth0-lock-body * {
+  html.auth0-lock-body body * {
     visibility: hidden;
   }
 }
@@ -40,7 +40,7 @@
 .auth0-lock * {
   -webkit-box-sizing: initial;
   -moz-box-sizing: initial;
-  box-sizing: initial;
+  box-sizing: initia;
 }
 @media screen and (max-width: 480px) {
   .auth0-lock * {

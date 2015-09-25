@@ -33,12 +33,12 @@ export default class Renderer {
       }
     });
 
-    const body = global.document.body;
-    const bodyClassName = "auth0-lock-body";
+    const node = global.document.getElementsByTagName("html")[0];
+    const className = "auth0-lock-html";
     if (locks.some(l.rendering)) {
-      CSSCore.addClass(body, bodyClassName);
+      CSSCore.addClass(node, className);
     } else {
-      CSSCore.removeClass(body, bodyClassName);
+      CSSCore.removeClass(node, className);
     }
   }
 }
