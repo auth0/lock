@@ -255,6 +255,7 @@
   color: #666;
 }
 .auth0-lock .auth0-lock-form p.auth0-lock-did-not-receive-code {
+  font-size: 11px;
   margin-bottom: 0;
 }
 .auth0-lock .auth0-lock-input-block {
