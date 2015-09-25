@@ -2,8 +2,8 @@
 @import "animate.css";
 @import "transitions.css";
 @media screen and (max-width: 480px) {
-  html.auth0-lock-body body * {
-    visibility: hidden;
+  html.auth0-lock-html body > * {
+    display: none !important;
   }
 }
 .auth0-global-grobal-error {
@@ -40,7 +40,7 @@
 .auth0-lock * {
   -webkit-box-sizing: initial;
   -moz-box-sizing: initial;
-  box-sizing: initia;
+  box-sizing: initial;
 }
 @media screen and (max-width: 480px) {
   .auth0-lock * {
