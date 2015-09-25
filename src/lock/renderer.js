@@ -1,4 +1,5 @@
 import React from 'react';
+import CSSCore from 'react/lib/CSSCore';
 import ContainerManager from './container_manager';
 import Lock from './lock';
 import * as l from './index';
@@ -31,5 +32,13 @@ export default class Renderer {
         container && React.unmountComponentAtNode(container);
       }
     });
+
+    const body = global.document.body;
+    const bodyClassName = "auth0-lock-body";
+    if (locks.some(l.rendering)) {
+      CSSCore.addClass(body, bodyClassName);
+    } else {
+      CSSCore.removeClass(body, bodyClassName);
+    }
   }
 }
