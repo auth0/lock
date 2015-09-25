@@ -52,6 +52,7 @@
 .horizontal-fade-leave {
   opacity: 1;
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
 }
@@ -90,6 +91,7 @@
 .reverse-horizontal-fade-leave {
   opacity: 1;
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
 }

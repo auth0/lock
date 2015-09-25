@@ -2,8 +2,12 @@
 @import "animate.css";
 @import "transitions.css";
 @media screen and (max-width: 480px) {
-  html.auth0-lock-html body * {
-    visibility: hidden;
+  html.auth0-lock-html body > * {
+    display: none;
+  }
+  html.auth0-lock-html body .auth0-lock-container {
+    background: #fff;
+    display: block !important;
   }
 }
 .auth0-global-grobal-error {
@@ -84,12 +88,6 @@
   opacity: 0;
   -webkit-transition: opacity 0.2s ease-in 0.4s;
   transition: opacity 0.2s ease-in 0.4s;
-  visibility: hidden;
-}
-@media (min-width: 481px) {
-  .auth0-lock .auth0-lock-overlay {
-    visibility: visible;
-  }
 }
 @media (min-width: 481px) {
   .auth0-lock .auth0-lock-center {
@@ -194,8 +192,6 @@
   width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  -webkit-filter: blur(40px) grayscale(1);
-  -webkit-backdrop-filter: blur(0);
   background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;
@@ -205,8 +201,6 @@
   transition: 0s ease 0s;
 }
 .auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-inner.auth0-lock-no-grayscale {
-  -webkit-filter: blur(100px);
-  -webkit-backdrop-filter: blur(0);
   background-position: center;
   background-size: 500px;
 }
@@ -255,6 +249,8 @@
 }
 .auth0-lock .auth0-lock-form p.auth0-lock-did-not-receive-code {
   font-size: 11px;
+  font-weight: 600;
+  color: #333332;
   margin-bottom: 0;
 }
 .auth0-lock .auth0-lock-input-block {
@@ -619,10 +615,20 @@
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
+@media screen and (max-width: 480px) {
+  .auth0-lock.auth0-lock-opened {
+    position: absolute;
+  }
+}
 .auth0-lock.auth0-lock-opened .auth0-lock-overlay {
   opacity: 0.9;
   -webkit-transition: opacity 0.3s ease-in 0s;
   transition: opacity 0.3s ease-in 0s;
+}
+@media screen and (max-width: 480px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-overlay {
+    display: none;
+  }
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner {
   opacity: 0.4;
@@ -653,6 +659,7 @@
   .auth0-lock.auth0-lock-opened .auth0-lock-widget {
     width: 100%;
     height: 100%;
+    min-height: 480px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -666,7 +673,7 @@
 }
 @media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-cred-pane {
-    min-height: 560px;
+    min-height: 480px;
     border-radius: 0;
   }
 }
