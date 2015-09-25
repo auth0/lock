@@ -75,7 +75,6 @@ export function gravatar(m) {
 function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const dictName = options.modeOptions && options.modeOptions.dictName;
-
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
@@ -83,7 +82,6 @@ function extractUIOptions(id, options) {
     icon: options.icon || iconUrl("auth0"),
     closable: closable,
     dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
-    fillMode: undefined === options.fillMode ? false : !!options.fillMode,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
@@ -116,7 +114,6 @@ export const ui = {
   dict: lock => getUIAttribute(lock, "dict"),
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
-  fillMode: lock => getUIAttribute(lock, "fillMode"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
