@@ -170,11 +170,20 @@ lock.emailcode(function(error, profile, id_token, access_token, state, refresh_t
   }
 });
 
-// invoke magiclink with options and callback
+// invoke emailcode with options and callback
 lock.emailcode({closable: false}, function(error, profile, id_token, access_token, state, refresh_token) {
   if (!error) {
     alert("User has logged in");
   }
+});
+
+// invoke emailcode in redirect mode
+lock.emailcode({callbackURL: "http://mydomain/callback"});
+
+// invoke emailcode in redirect mode with a callback
+lock.emailcode({callbackURL: "http://mydomain/callback"}, function(error) {
+  // only called when there's an error
+  alert("Something went wrong: " + error.description);
 });
 ```
 
@@ -207,6 +216,15 @@ lock.sms({closable: false}, function(error, profile, id_token, access_token, sta
   if (!error) {
     alert("User has logged in");
   }
+});
+
+// invoke sms in redirect mode
+lock.sms({callbackURL: "http://mydomain/callback"});
+
+// invoke sms in redirect mode with a callback
+lock.sms({callbackURL: "http://mydomain/callback"}, function(error) {
+  // only called when there's an error
+  alert("Something went wrong: " + error.description);
 });
 ```
 
@@ -291,7 +309,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 #### Authentication options
 
 - **authParams {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
-- **callbackURL {String}**: The url Auth0 will redirect back after authentication. Defaults to `location.href`.
+- **callbackURL {String}**: The url Auth0 will redirect back after authentication. When provided it will enable redirect mode. Defaults to the empty string `""` (no callback URL).
 - **forceJSONP {Boolean}**: Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to `false`.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Defaults to `"code"` when `callbackURL` is provided, and to `"token"` otherwise.
 

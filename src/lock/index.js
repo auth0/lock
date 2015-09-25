@@ -156,7 +156,7 @@ export function invokeDoneCallback(m, ...args) {
 }
 
 export function shouldRedirect(m) {
-  return ui.signInCallback(m).length <= 1;
+  return login.callbackURL(m);
 }
 
 export function render(m, modeName, options) {
