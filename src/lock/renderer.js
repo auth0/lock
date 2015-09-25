@@ -35,7 +35,10 @@ export default class Renderer {
 
     const node = global.document.getElementsByTagName("html")[0];
     const className = "auth0-lock-html";
-    if (locks.some(l.rendering)) {
+
+    const includeClass = locks.some(m => l.rendering(m) && l.ui.appendContainer(m));
+
+    if (includeClass) {
       CSSCore.addClass(node, className);
     } else {
       CSSCore.removeClass(node, className);
