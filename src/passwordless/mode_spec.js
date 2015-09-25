@@ -23,7 +23,9 @@ function sms(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("sms", args);
   options.signInCallback = callback;
   options.modeOptions = {send: "sms", dictName: "sms", storageKey: "sms"};
-  if (options.defaultLocation) setDefaultLocation(id, options.defaultLocation);
+  if (options.defaultLocation && typeof options.defaultLocation === "string") {
+    setDefaultLocation(id, options.defaultLocation.toUpperCase());
+  }
   return openLock(id, NAME, options);
 }
 
