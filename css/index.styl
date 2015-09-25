@@ -5,7 +5,7 @@
 // Breakpoints mixin
 breakpoint(point, value = 0)
   if point == "mobile"
-    @media (min-width: 381px)
+    @media (min-width: 481px)
       {block}
 
   else if point == "mobile-landscape"
@@ -30,16 +30,15 @@ breakpoint(point, value = 0)
 
 
 @media screen and (max-width: 480px)
-  body.auth0-lock-body
-    & > *
-      display none
+  body.auth0-lock-body *
+    visibility hidden
 
-    .auth0-lock-container
-      display block
+  //   .auth0-lock-container
+  //     display block
 
-  .auth0-lock-container
-    background white
-    opacity 1
+  // .auth0-lock-container
+  //   background white
+  //   opacity 1
 
 .auth0-global-grobal-error
   background #F04848
@@ -77,6 +76,10 @@ breakpoint(point, value = 0)
     -webkit-box-sizing initial
     -moz-box-sizing initial
     box-sizing initial
+
+  @media screen and (max-width: 480px)
+    & *
+      visibility visible!important
 
 .auth0-lock
   font-family "Avenir", sans-serif
@@ -143,6 +146,8 @@ breakpoint(point, value = 0)
 
   .auth0-lock-cred-pane
     height 100%
+    border-radius 5px
+    overflow hidden
     &.horizontal-fade-leave
       .auth0-lock-content, .auth0-lock-terms
         opacity .3
@@ -397,6 +402,9 @@ breakpoint(point, value = 0)
         -webkit-transform scale(1.05)
         transform scale(1.05)
 
+    &:focus
+      box-shadow inset 0 0 100px 20px rgba(black,.2)
+
     &[disabled]
       background darken(#EA5323, 20%)
 
@@ -491,9 +499,9 @@ breakpoint(point, value = 0)
       pointer-events none
 
     .auth0-lock-submit
-      background #eee
-      -webkit-transition background .7s ease
-      transition background .7s ease
+      // background #eee
+      // -webkit-transition background .7s ease
+      // transition background .7s ease
       cursor initial
       pointer-events none
 
@@ -674,7 +682,7 @@ breakpoint(point, value = 0)
 
     .auth0-lock-header-avatar
       //mobile view
-      @media all and (max-width: 380px)
+      @media screen and (max-width: 480px)
         width 70px
         height 70px
         margin 15px auto 0
@@ -689,7 +697,7 @@ breakpoint(point, value = 0)
       transition-delay .5s
 
       // mobile view
-      @media all and (max-width: 380px)
+      @media screen and (max-width: 480px)
         width 100%
         height 100%
         position absolute
@@ -700,14 +708,15 @@ breakpoint(point, value = 0)
       box-shadow 0 0 40px 4px #111118
 
       //mobile view
-      @media all and (max-width: 380px)
+      @media screen and (max-width: 480px)
         border-radius 0
         height 100%
 
     .auth0-lock-cred-pane
       //mobile view
-      @media all and (max-width: 380px)
+      @media screen and (max-width: 480px)
         min-height 560px
+        border-radius 0
 
     .auth0-lock-content
       width 100%

@@ -2,15 +2,8 @@
 @import "animate.css";
 @import "transitions.css";
 @media screen and (max-width: 480px) {
-  body.auth0-lock-body > * {
-    display: none;
-  }
-  body.auth0-lock-body .auth0-lock-container {
-    display: block;
-  }
-  .auth0-lock-container {
-    background: #fff;
-    opacity: 1;
+  body.auth0-lock-body * {
+    visibility: hidden;
   }
 }
 .auth0-global-grobal-error {
@@ -49,6 +42,11 @@
   -moz-box-sizing: initial;
   box-sizing: initial;
 }
+@media screen and (max-width: 480px) {
+  .auth0-lock * {
+    visibility: visible !important;
+  }
+}
 .auth0-lock {
   font-family: "Avenir", sans-serif;
   text-rendering: optimizeLegibility;
@@ -63,7 +61,7 @@
   height: 100%;
   right: 0;
 }
-@media (min-width: 381px) {
+@media (min-width: 481px) {
   .auth0-lock {
     display: table;
   }
@@ -88,12 +86,12 @@
   transition: opacity 0.2s ease-in 0.4s;
   visibility: hidden;
 }
-@media (min-width: 381px) {
+@media (min-width: 481px) {
   .auth0-lock .auth0-lock-overlay {
     visibility: visible;
   }
 }
-@media (min-width: 381px) {
+@media (min-width: 481px) {
   .auth0-lock .auth0-lock-center {
     vertical-align: middle;
     display: table-cell;
@@ -122,6 +120,8 @@
 }
 .auth0-lock .auth0-lock-cred-pane {
   height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-content,
 .auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-terms {
@@ -375,6 +375,9 @@
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
+.auth0-lock .auth0-lock-submit:focus {
+  box-shadow: inset 0 0 100px 20px rgba(0,0,0,0.2);
+}
 .auth0-lock .auth0-lock-submit[disabled] {
   background: #c43e13;
 }
@@ -462,9 +465,6 @@
   pointer-events: none;
 }
 .auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
-  background: #eee;
-  -webkit-transition: background 0.7s ease;
-  transition: background 0.7s ease;
   cursor: initial;
   pointer-events: none;
 }
@@ -631,7 +631,7 @@
 .auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-inner.auth0-lock-no-grayscale {
   opacity: 0.7;
 }
-@media all and (max-width: 380px) {
+@media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-header-avatar {
     width: 70px;
     height: 70px;
@@ -647,7 +647,7 @@
   -webkit-transition-delay: 0.5s;
   transition-delay: 0.5s;
 }
-@media all and (max-width: 380px) {
+@media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-widget {
     width: 100%;
     height: 100%;
@@ -659,15 +659,16 @@
 .auth0-lock.auth0-lock-opened .auth0-lock-widget-container {
   box-shadow: 0 0 40px 4px #111118;
 }
-@media all and (max-width: 380px) {
+@media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-widget-container {
     border-radius: 0;
     height: 100%;
   }
 }
-@media all and (max-width: 380px) {
+@media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-cred-pane {
     min-height: 560px;
+    border-radius: 0;
   }
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-content {
@@ -677,7 +678,7 @@
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-@media (min-width: 381px) {
+@media (min-width: 481px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-content {
     position: relative;
     top: auto;
@@ -689,7 +690,7 @@
   position: absolute;
   bottom: 0;
 }
-@media (min-width: 381px) {
+@media (min-width: 481px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-submit {
     position: relative;
   }
