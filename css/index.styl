@@ -130,7 +130,6 @@ breakpoint(point, value = 0)
     overflow hidden
 
   .auth0-lock-cred-pane
-    position relative
     height 100%
     &.horizontal-fade-leave
       .auth0-lock-content, .auth0-lock-terms
@@ -692,6 +691,11 @@ breakpoint(point, value = 0)
       @media all and (max-width: 380px)
         border-radius 0
         height 100%
+
+    .auth0-lock-cred-pane
+      //mobile view
+      @media all and (max-width: 380px)
+        min-height 560px
 
     .auth0-lock-content
       width 100%

@@ -109,7 +109,6 @@
   overflow: hidden;
 }
 .auth0-lock .auth0-lock-cred-pane {
-  position: relative;
   height: 100%;
 }
 .auth0-lock .auth0-lock-cred-pane.horizontal-fade-leave .auth0-lock-content,
@@ -652,6 +651,11 @@
   .auth0-lock.auth0-lock-opened .auth0-lock-widget-container {
     border-radius: 0;
     height: 100%;
+  }
+}
+@media all and (max-width: 380px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-cred-pane {
+    min-height: 560px;
   }
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-content {
