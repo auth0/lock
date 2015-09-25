@@ -165,8 +165,8 @@ describe("rendering a lock", function() {
           renderedLock = l.render(lock, mode, {closable: true, container: "someId"});
         })
 
-        it("allows the user to close the lock (even inside a container)", function() {
-          expect(l.ui.closable(renderedLock)).to.be(true);
+        it("it doesn't have any effect (doesn't allow the user to close the lock)", function() {
+          expect(l.ui.closable(renderedLock)).to.be(false);
         });
       });
     });

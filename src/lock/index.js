@@ -73,7 +73,7 @@ export function gravatar(m) {
 }
 
 function extractUIOptions(id, options) {
-  const closable = undefined === options.closable ? !options.container : !!options.closable;
+  const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const dictName = options.modeOptions && options.modeOptions.dictName;
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
