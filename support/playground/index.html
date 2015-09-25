@@ -12,12 +12,15 @@
 
   <script type="text/javascript" src="../build/lock-passwordless.js"></script>
   <script type="text/javascript" src="remember.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
   <div class="container">
     <h1>Auth0LockPasswordless example</h1>
-    <p>Some long or short description about what is and links to dashboard and stuff.</p>
+    <p>Auth0 Lock Passwordless is a professional looking dialog that allows users to log in by receiving a one-time password via email or text message.</p>
 
     <div class="row">
       <div class="col-sm-8 col-xs-12">
@@ -55,99 +58,107 @@
             </div>
           </div>
 
-          <h4>UI Options</h4>
-          <p class="help-block">You can find the full description for these <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank"> here</a>.</p>
+          <ul class="nav nav-tabs" role="tablist">
+             <li role="presentation" class="active"><a href="#ui-options" aria-controls="ui-options" role="tab" data-toggle="tab">UI Options</a></li>
+             <li role="presentation"><a href="#auth-options" aria-controls="auth-options" role="tab" data-toggle="tab">Auth Options</a></li>
+           </ul>
 
-          <div class="form-group">
-            <label class="col-xs-2 control-label">container</label>
-            <div class="col-xs-8">
-              <input type="text" name="container" class="form-control" placeholder="#container">
+           <div class="tab-content">
+             <div role="tabpanel" class="tab-pane active" id="ui-options">
+              <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">container</label>
+                <div class="col-xs-8">
+                  <input type="text" name="container" class="form-control" placeholder="#container">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">defaultLocation</label>
+                <div class="col-xs-8">
+                  <input type="text" name="defaultLocation" class="form-control" placeholder="US">
+                  <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">primaryColor</label>
+                <div class="col-xs-8">
+                  <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">autoclose</label>
+                <div class="col-xs-8">
+                  <input type="checkbox" name="autoclose" checked>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">closable</label>
+                <div class="col-xs-8">
+                  <input type="checkbox" name="closable" checked>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">focusInput</label>
+                <div class="col-xs-8">
+                  <input type="checkbox" name="focusInput" checked>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">gravatar</label>
+                <div class="col-xs-8">
+                  <input type="checkbox" name="gravatar" checked>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">dict</label>
+                <div class="col-xs-8">
+                  <textarea name="dict" class="form-control" rows="3" placeholder='{"title": "hello"}'></textarea>
+                  <p>See the full <a href="https://github.com/auth0/lock-passwordless#dict-specification" target="_blank">Dict Specification</a> for more details</p>
+                </div>
+              </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="auth-options">
+              <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">authParams</label>
+                <div class="col-xs-8">
+                  <textarea name="authParams" class="form-control" rows="3" placeholder='{"scope": "opendid profile"}'></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">callbackURL</label>
+                <div class="col-xs-8">
+                  <input type="text" name="callbackURL" class="form-control" placeholder="http://myapp.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">forceJSONP</label>
+                <div class="col-xs-8">
+                  <input type="checkbox" name="forceJSONP">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">responseType</label>
+                <div class="col-xs-8">
+                  <input type="text" name="responseType" class="form-control" placeholder="token">
+                </div>
+              </div>
+
             </div>
           </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">defaultLocation</label>
-            <div class="col-xs-8">
-              <input type="text" name="defaultLocation" class="form-control" placeholder="US">
-              <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">primaryColor</label>
-            <div class="col-xs-8">
-              <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">autoclose</label>
-            <div class="col-xs-8">
-              <input type="checkbox" name="autoclose" checked>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">closable</label>
-            <div class="col-xs-8">
-              <input type="checkbox" name="closable" checked>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">focusInput</label>
-            <div class="col-xs-8">
-              <input type="checkbox" name="focusInput" checked>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">gravatar</label>
-            <div class="col-xs-8">
-              <input type="checkbox" name="gravatar" checked>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">dict</label>
-            <div class="col-xs-8">
-              <textarea name="dict" class="form-control" rows="3" placeholder='{"title": "hello"}'></textarea>
-              <p class="help-block">See the full <a href="https://github.com/auth0/lock-passwordless#dict-specification" target="_blank">Dict Specification</a> for more details</p>
-            </div>
-          </div>
-
-          <h4>Authentication Options</h4>
-          <p class="help-block">You can find the full description for these <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank"> here</a>.</p>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">authParams</label>
-            <div class="col-xs-8">
-              <textarea name="authParams" class="form-control" rows="3" placeholder='{"scope": "opendid profile"}'></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">callbackURL</label>
-            <div class="col-xs-8">
-              <input type="text" name="callbackURL" class="form-control" placeholder="http://myapp.com">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">forceJSONP</label>
-            <div class="col-xs-8">
-              <input type="checkbox" name="forceJSONP">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">responseType</label>
-            <div class="col-xs-8">
-              <input type="text" name="responseType" class="form-control" placeholder="token">
-            </div>
-          </div>
-          <!-- end lock options -->
 
           <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
