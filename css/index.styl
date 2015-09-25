@@ -127,7 +127,6 @@ breakpoint(point, value = 0)
   .auth0-lock-widget
     width 300px
     opacity 0
-    box-shadow 0 0 0 transparent
     -webkit-transition transform .4s, opacity .7s
     transition transform .4s, opacity .7s
     -webkit-transform translateY(100%) scale(.8)
@@ -137,12 +136,12 @@ breakpoint(point, value = 0)
     -webkit-transition-delay 0s
     transition-delay 0s
     margin 0 auto
+    border-radius 5px
+    overflow hidden
 
   .auth0-lock-widget-container
     background white
     position relative
-    border-radius 5px
-    overflow hidden
 
   .auth0-lock-cred-pane
     height 100%
@@ -646,7 +645,8 @@ breakpoint(point, value = 0)
     opacity 0
     z-index -1
     text-align center
-    margin-top 20px
+    margin 20px auto 0
+    max-width 300px
 
     .auth0-lock-badge
       display inline-block
@@ -696,6 +696,7 @@ breakpoint(point, value = 0)
       transition transform .6s, opacity .6s
       -webkit-transition-delay .5s
       transition-delay .5s
+      box-shadow 0 0 40px 4px #111118
 
       // mobile view
       @media screen and (max-width: 480px)
@@ -704,13 +705,11 @@ breakpoint(point, value = 0)
         position absolute
         top 0
         bottom 0
+        border-radius 0
 
     .auth0-lock-widget-container
-      box-shadow 0 0 40px 4px #111118
-
       //mobile view
       @media screen and (max-width: 480px)
-        border-radius 0
         height 100%
 
     .auth0-lock-cred-pane

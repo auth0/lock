@@ -53,10 +53,10 @@ export default class Lock extends React.Component {
             <div className="auth0-lock-widget-container">
               <MultisizeSlide delay={400} transitionName="horizontal-fade">{children}</MultisizeSlide>
             </div>
-            <span className="auth0-lock-badge-bottom">
-              <Badge />
-            </span>
           </form>
+          <span className="auth0-lock-badge-bottom">
+            <Badge />
+          </span>
         </div>
       </div>
     );
