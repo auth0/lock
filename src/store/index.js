@@ -35,6 +35,10 @@ export function getCollection(state, coll) {
   return state.get(coll);
 }
 
+export function removeEntity(state, coll, id) {
+  return state.removeIn([coll, id]);
+}
+
 // function updateCollection(coll, f, ...args) {
 //   store.swap(state => state.update(coll, xs => f(xs, ...args)));
 // }
