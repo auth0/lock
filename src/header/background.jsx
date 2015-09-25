@@ -5,7 +5,7 @@ export default class Background extends React.Component {
   render() {
     const { backgroundColor, imageUrl, grayScale } = this.props;
     let bgInnerAttrs = {
-      className: 'auth0-lock-header-bg-inner',
+      className: 'auth0-lock-header-bg-blur',
       style: {backgroundImage: `url('${imageUrl}')`}
     };
 
@@ -13,20 +13,17 @@ export default class Background extends React.Component {
       bgInnerAttrs.className += ' auth0-lock-no-grayscale';
     }
 
-    const style = {};
-    if (isSmallScreen()) {
-      style.backgroundColor = backgroundColor;
-    }
-
     return (
-      <div className="auth0-lock-header-bg" style={style}>
+      <div className="auth0-lock-header-bg">
         <div {...bgInnerAttrs} />
+        <div className="auth0-lock-header-bg-solid" style={{backgroundColor: backgroundColor}} />
       </div>
     );
   }
 }
 
 Background.propTypes = {
-  imageUrl: React.PropTypes.string,
-  grayScale: React.PropTypes.bool
+  backgorundColor: React.PropTypes.string,
+  grayScale: React.PropTypes.bool,
+  imageUrl: React.PropTypes.string
 }
