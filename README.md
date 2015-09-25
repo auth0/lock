@@ -179,12 +179,6 @@ lock.emailcode({closable: false}, function(error, profile, id_token, access_toke
 
 // invoke emailcode in redirect mode
 lock.emailcode({callbackURL: "http://mydomain/callback"});
-
-// invoke emailcode in redirect mode with a callback
-lock.emailcode({callbackURL: "http://mydomain/callback"}, function(error) {
-  // only called when there's an error
-  alert("Something went wrong: " + error.description);
-});
 ```
 
 ### .sms(options, callback)
@@ -220,12 +214,6 @@ lock.sms({closable: false}, function(error, profile, id_token, access_token, sta
 
 // invoke sms in redirect mode
 lock.sms({callbackURL: "http://mydomain/callback"});
-
-// invoke sms in redirect mode with a callback
-lock.sms({callbackURL: "http://mydomain/callback"}, function(error) {
-  // only called when there's an error
-  alert("Something went wrong: " + error.description);
-});
 ```
 
 ### .close(callback)
