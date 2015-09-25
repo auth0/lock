@@ -194,6 +194,8 @@
   width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  -webkit-filter: blur(40px) grayscale(1);
+  -webkit-backdrop-filter: blur(0);
   background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;
@@ -203,6 +205,8 @@
   transition: 0s ease 0s;
 }
 .auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-inner.auth0-lock-no-grayscale {
+  -webkit-filter: blur(100px);
+  -webkit-backdrop-filter: blur(0);
   background-position: center;
   background-size: 500px;
 }
