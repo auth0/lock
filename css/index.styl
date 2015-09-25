@@ -75,10 +75,6 @@ breakpoint(point, value = 0)
     -moz-box-sizing initial
     box-sizing initial
 
-  @media screen and (max-width: 480px)
-    & *
-      visibility visible!important
-
 .auth0-lock
   font-family "Avenir", sans-serif
   text-rendering optimizeLegibility
@@ -198,7 +194,6 @@ breakpoint(point, value = 0)
       animation fadeInDown .75s both
 
   .auth0-lock-header-bg
-    background rgba(#f1f1f1,.8)
     position absolute
     height 128px
     width 100%
@@ -206,9 +201,11 @@ breakpoint(point, value = 0)
     top 0
     left 0
     pointer-events none
+    +breakpoint("mobile")
+      background rgba(#f1f1f1,.8)
+
     .auth0-lock-header-bg-blur
-      content " "
-      display block
+      display none
       height 100%
       width 100%
       border-top-left-radius 5px
@@ -222,12 +219,18 @@ breakpoint(point, value = 0)
       opacity 0
       -webkit-transition 0s ease 0s
       transition 0s ease 0s
+      +breakpoint("mobile")
+        display block
 
       &.auth0-lock-no-grayscale
         -webkit-filter blur(100px)
         -webkit-backdrop-filter: blur(0);
         background-position center
         background-size 500px
+
+    .auth0-lock-header-bg-solid
+      height 100%
+      opacity .08
 
   .auth0-lock-header-welcome
     font-size 18px
@@ -276,7 +279,7 @@ breakpoint(point, value = 0)
       margin-bottom 20px
       color #666
 
-      &.auth0-lock-did-not-receive-code
+      a.auth0-lock-did-not-receive-code-link
         font-size 11px
         font-weight 600
         color #333332
