@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import WebAPI from './web_api';
-import { getEntity, read, swap, setEntity, updateEntity } from '../store/index';
+import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import * as l from './index';
 import * as cs from '../cred/storage';
 
@@ -13,6 +13,10 @@ export function setupLock(id, clientID, domain) {
 
 export function openLock(id, mode, options) {
   const lock = read(getEntity, "lock", id);
+  if (!lock) {
+    throw new Error("The Lock can't be opened again after it has been closed");
+  }
+
   if (l.show(lock)) {
     return false;
   }
@@ -40,8 +44,10 @@ export function closeLock(id, resetFn, callback = () => {}) {
     setTimeout(() => {
       swap(updateEntity, "lock", id, m => m.remove("render"));
       callback(read(getEntity, "lock", id));
+      setTimeout(() => swap(removeEntity, "lock", id), 17);
     }, 1000);
   } else {
+    swap(removeEntity, "lock", id);
     callback(lock);
   }
 }
