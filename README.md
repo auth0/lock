@@ -260,6 +260,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **fillMode {Boolean}**: Determines whether or not the Lock will expand to fill the full width of its container element when the `container` is provided. Defaults to `false`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `icon` to ensure all colors go well together with the icon's color palette. Defaults to `"#ea5323"`.
+- **rememberLastLogin {Boolean}**: Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to `true`.
 
 #### Authentication options
 
