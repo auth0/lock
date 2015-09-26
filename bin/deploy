@@ -43,3 +43,11 @@ else
     echo "Deploying $VERSION to cdn"
     $BIN/grunt cdn
 fi
+
+echo "Preparing gh-pages deployment"
+$BIN/grunt ghpages
+
+echo "Publishing latest to gh-pages"
+grep -v '^build$' .gitignore > /tmp/.gitignore
+mv /tmp/.gitignore .gitignore
+git subtree push --prefix support/playground origin gh-pages
