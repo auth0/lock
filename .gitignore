@@ -1,3 +1,4 @@
-build/
+build
 node_modules/
 release/
+npm-debug.log
