@@ -503,6 +503,7 @@
   top: 0;
   left: 0;
   z-index: 200;
+  border-radius: 5px;
 }
 .auth0-lock .auth0-lock-confirmation .auth0-lock-confirmation-content {
   width: 100%;
@@ -720,6 +721,11 @@
 @media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened .auth0-lock-badge-bottom {
     display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .auth0-lock.auth0-lock-opened .auth0-lock-confirmation {
+    border-radius: 0;
   }
 }
 .auth0-lock.auth0-lock-opened-in-frame {
