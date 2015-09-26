@@ -115,6 +115,7 @@ describe(".magiclink acceptance", function() {
     it("starts the passwordless flow", function() {
       const params = {
         authParams: {},
+        callbackURL: undefined,
         email: "someone@auth0.com",
         send: "link",
         forceJSONP: undefined
@@ -165,6 +166,7 @@ describe(".magiclink acceptance", function() {
     it("starts the passwordless flow", function() {
       const params = {
         authParams: {},
+        callbackURL: undefined,
         email: "someone@auth0.com",
         send: "link",
         forceJSONP: undefined
