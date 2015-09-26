@@ -62,7 +62,6 @@ export function requestPasswordlessEmail(id) {
       authParams: m.send(lock) === "link" ? l.login.authParams(lock).toJS() : {},
       email: c.email(lock),
       send: m.send(lock),
-      responseType: l.login.responseType(lock),
       callbackURL: l.login.callbackURL(lock),
       forceJSONP: l.login.forceJSONP(lock)
     };
@@ -147,7 +146,6 @@ export function resendEmail(id) {
     authParams: m.send(lock) === "link" ? l.login.authParams(lock).toJS() : {},
     email: c.email(lock),
     send: m.send(lock),
-    responseType: l.login.responseType(lock),
     callbackURL: l.login.callbackURL(lock),
     forceJSONP: l.login.forceJSONP(lock)
   };
@@ -188,7 +186,6 @@ export function signIn(id) {
     const options = {
       passcode: c.vcode(lock),
       redirect: l.shouldRedirect(lock),
-      responseType: l.login.responseType(lock),
       callbackURL: l.login.callbackURL(lock),
       forceJSONP: l.login.forceJSONP(lock)
     };

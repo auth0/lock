@@ -154,13 +154,6 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="col-xs-2 control-label">responseType</label>
-                <div class="col-xs-8">
-                  <input type="text" name="responseType" class="form-control" placeholder="token">
-                </div>
-              </div>
-
             </div>
           </div>
 
@@ -202,7 +195,6 @@
         options.container = (form.querySelector('[name="container"]').value || '').replace('#', '');
         options.defaultLocation = form.querySelector('[name="defaultLocation"]').value;
         options.primaryColor = form.querySelector('[name="primaryColor"]').value;
-        options.responseType = form.querySelector('[name="responseType"]').value || undefined;
         options.callbackURL = form.querySelector('[name="callbackURL"]').value || undefined;
 
         // Booleans

@@ -62,13 +62,13 @@ function normalizeError(error) {
 // client here, in the future that will not be possible becasue we will need to
 // retrieve some client information before before we can show the Lock.
 function transferLoginOptionsToClient(client, options) {
-  const { callbackURL, forceJSONP, responseType } = options;
-  client._callbackOnLocationHash = 'token' === responseType || !!client._callbackOnLocationHash;
+  const { callbackURL, forceJSONP } = options;
+  // client._callbackOnLocationHash = 'token' === responseType || !!client._callbackOnLocationHash;
+  client._shouldRedirect = !!callbackURL || client._shouldRedirect;
   client._callbackURL = callbackURL || client._callbackURL;
   client._useJSONP = forceJSONP || client._useJSONP;
   delete options.callbackURL;
   delete options.forceJSONP;
-  delete options.responseType;
 }
 
 function loginCallback(redirect, cb) {

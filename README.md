@@ -299,7 +299,6 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **authParams {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
 - **callbackURL {String}**: The url Auth0 will redirect back after authentication. When provided it will enable redirect mode. Defaults to the empty string `""` (no callback URL).
 - **forceJSONP {Boolean}**: Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to `false`.
-- **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Defaults to `"code"` when `callbackURL` is provided, and to `"token"` otherwise.
 
 #### Example
 

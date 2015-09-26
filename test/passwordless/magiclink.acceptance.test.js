@@ -117,7 +117,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -169,7 +168,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -230,7 +228,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -281,7 +278,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -339,7 +335,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -392,7 +387,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
