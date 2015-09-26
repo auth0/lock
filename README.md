@@ -32,13 +32,13 @@ From CDN
 
 ```html
 <!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-1.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-0.min.js"></script>
 
 <!-- Latest minor release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-1.x.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-0.1.min.js"></script>
 
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-1.x.y.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-0.1.9.min.js"></script>
 ```
 
 From [bower](http://bower.io)
