@@ -1,3 +1,62 @@
+## [0.1.9] - 2015-09-24
+
+### Changed
+
+- [] Update auth0.js dependency (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/898bddaa9f3626b4b3f79811504125150cd7335c
+- [] Remove responseType authentication option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/a9f2daae99aeb2e25b022704fce7103a396a8734
+- [] Add rememberLastLogin option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/8cd892eb46a1085402e0b5736549ede369f90071
+- [] Destroy Lock data after it has been closed (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/494ad94a7d612f3affc1892b1ad8dc7cdcd05cf9
+
+### Fixed
+
+- [] Fix magiclink reponse type (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/e74ec2884af93b0e9001de2bbad2a6b672875dba
+- [] Support callbackURL in magiclink (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/3e40b1af02619a09dbdee925f529347f7853a34c
+- [] Use callbackURL to trigger redirect mode (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/67cb277a53ba1f72466b3b26cbf349780fa2bf7e
+- [] Merge pull request #27 from auth0/refactor-playground (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/fc42a10bc5be0e2cec7721da50a48bc4f41e4608
+- [] Change timing check animation (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/ed656916f52733c4994536037554ce49bdc5c943
+- [] Show bg solid on mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/6b7357f9b0b0d5658969af045e7aae2b1a867f90
+- [] Improve strategy for solid background on mobile (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/7feba7e0fc18e94d090440ceebead32355bbfaba
+- [] Use an A tag for the "did not receive code?" link (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/9127fb8b52a8d2fdb2de90ebbb24c36247cbf3d4
+- [] Fix pop up modal (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/381fe071df6a7d32280643e03f56c630af4e16f5
+- [] Change order of phone number and location inputs (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/824ed900362d1459a2576c1d631f51ddc1b8be66
+- [] Fix animation mobile (blur disabled for the moment) (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/b67fcc77a556c5a8d2a8f577783c066139526898
+- [] Upper case defaultLocation option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/3eba37086542734989b33d8e1c36b9cdd6ad8efa
+- [] Fix border radius opened (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/6a8220f774fe01f058cdfe07495bf71970a92960
+- [] Do not allow to close on mobile (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/87c53b8e2de75b7641e99b6bb1127c4ac2508492
+- [] Reduce "did not receive code?" font size (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/87ed47f96b87a030686bce460ac914794268dc49
+- [] Shorten sms and emailcode headerText messages (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/108a2000c079bc5738ecf49047f1cad09f228b51
+- [] Protect against empty primaryColor (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/5d2f003eb9c113fe4845090175a61590e49043e2
+- [] Fix visibility content mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/9dbb6be2d40faf37ba6dab491e17850f2397b37b
+- [] Hide everything besides Lock when in small screen (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/e185d3e2a3e753cd82dfcd00f2bc560d9d6a4240
+
+### Added
+
+- [] Add getProfile and parseHash methods (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/975b721a5e6f4f59910b2422b00445b59c63377e
+
 ## [0.1.8] - 2015-09-22
 
 ### Fixed
