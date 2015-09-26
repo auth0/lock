@@ -58,23 +58,14 @@ export function requestPasswordlessEmail(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
+    const isMagicLink = m.send(lock) === "link";
     const options = {
+      authParams: isMagicLink ? l.login.authParams(lock).toJS() : {},
+      callbackURL: l.login.callbackURL(lock),
       email: c.email(lock),
       send: m.send(lock),
       forceJSONP: l.login.forceJSONP(lock)
     };
-
-    const isMagicLink = m.send(lock) === "link";
-    if (isMagicLink) {
-      options.authParams = l.login.authParams(lock).toJS();
-      const redirectUri = l.login.callbackURL(lock);
-      if (redirectUri) {
-        options.authParams.redirect_uri = redirectUri;
-      }
-    } else {
-      options.authParams = {};
-      options.callbackURL = l.login.callbackURL(lock);
-    }
 
     webApi.startPasswordless(id, options, error => {
       if (error) {

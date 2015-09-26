@@ -65,6 +65,7 @@ function transferLoginOptionsToClient(client, options) {
   const { callbackURL, forceJSONP } = options;
   // client._callbackOnLocationHash = 'token' === responseType || !!client._callbackOnLocationHash;
   client._shouldRedirect = !!callbackURL || client._shouldRedirect;
+  client._callbackOnLocationHash = !client._shouldRedirect;
   client._callbackURL = callbackURL || client._callbackURL;
   client._useJSONP = forceJSONP || client._useJSONP;
   delete options.callbackURL;
