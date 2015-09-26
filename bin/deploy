@@ -48,7 +48,7 @@ echo "Preparing gh-pages deployment"
 $BIN/grunt ghpages
 
 echo "Publishing latest to gh-pages"
-git subtree split --prefix output -b gh-pages
+git subtree split --prefix support/playground -b gh-pages
 git checkout gh-pages
 rm -rf node_modules support npm-debug.log
 git add .
