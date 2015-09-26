@@ -117,7 +117,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        callbackURL: undefined,
         forceJSONP: undefined
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
@@ -168,7 +167,6 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
-        callbackURL: undefined,
         forceJSONP: undefined
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
