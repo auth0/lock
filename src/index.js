@@ -34,11 +34,11 @@ export default class Auth0LockPasswordless {
   }
 
   getProfile(token, cb) {
-    webAPI.getProfile(this.id, token, cb);
+    return webAPI.getProfile(this.id, token, cb);
   }
 
   parseHash(hash) {
-    webAPI.parseHash(this.id, hash);
+    return webAPI.parseHash(this.id, hash);
   }
 
   logout(query = {}) {
