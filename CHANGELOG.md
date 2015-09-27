@@ -1,3 +1,14 @@
+## [0.1.10] - 2015-09-26
+
+### Fixed
+
+- [] missing returns (`Matias Woloski`)
+  https://github.com/auth0/lock-passwordless/commit/10eff93123ef563b5eecb387a26181a1e807e019
+- [] Minor fix border confirmation screen (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/812269c8b1ba1b9ef4a728415b0dcc6517a257ad
+- [] Update README.md (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/d0d234e81384ab1f73d6b5fa4e24c196133ea376
+
 ## [0.1.9] - 2015-09-24
 
 ### Changed
