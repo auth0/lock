@@ -23,8 +23,9 @@ export default class AskPhoneNumber extends React.Component {
 
   render() {
     const { lock } = this.props;
+    const initialLocationSearchStr = m.initialLocationSearchStr(lock);
     const auxiliaryPane = m.selectingLocation(lock) ?
-      <AskLocation key="auxiliarypane" lock={lock} /> : null;
+      <AskLocation key="auxiliarypane" lock={lock} initialLocationSearchStr={initialLocationSearchStr} /> : null;
     const terms = this.t(["footerText"]);
 
     return (
@@ -53,8 +54,8 @@ export default class AskPhoneNumber extends React.Component {
     changePhoneNumber(l.id(this.props.lock), e.target.value);
   }
 
-  handleLocationClick() {
-    selectPhoneLocation(l.id(this.props.lock));
+  handleLocationClick(searchStr) {
+    selectPhoneLocation(l.id(this.props.lock), searchStr);
   }
 
   componentWillSlideIn(...args) {

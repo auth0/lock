@@ -13,16 +13,28 @@ export default class LocationSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {filteredCountryCodes: cc.countryCodes, highlighted: null};
+    if (props.initialLocationSearchStr) {
+      this.state = this.filter(props.initialLocationSearchStr);
+    }
   }
 
   componentDidMount() {
     if (!isSmallScreen()) {
-      React.findDOMNode(this.refs.input).focus();
+      setTimeout(() => {
+        const node = React.findDOMNode(this.refs.input);
+        node.focus();
+        if (node.setSelectionRange) {
+          const length = node.value.length;
+          node.setSelectionRange(length, length);
+        } else {
+          node.value = node.value;
+        }
+      }, 300);
     }
   }
 
   render() {
-    const { locationFilterInputPlaceholder, selectHandler } = this.props;
+    const { initialLocationSearchStr, locationFilterInputPlaceholder, selectHandler } = this.props;
     const { filteredCountryCodes, highlighted } = this.state;
 
     return (
@@ -32,6 +44,7 @@ export default class LocationSelect extends React.Component {
             <Icon name="location"/>
             <input ref="input"
               className="auth0-lock-input auth0-lock-input-search"
+              defaultValue={initialLocationSearchStr}
               onChange={::this.handleSearchChange}
               onKeyDown={::this.handleKeyDown}
               type="text"
@@ -46,7 +59,7 @@ export default class LocationSelect extends React.Component {
     );
   }
 
-  handleSearchChange(e) {
+  filter(str) {
     const findNewHighlighted = (countryCodes, highlighted) => {
       if (countryCodes.size === 1) {
         return countryCodes.get(0);
@@ -55,15 +68,19 @@ export default class LocationSelect extends React.Component {
       return countryCodes.includes(highlighted) ? highlighted : null;
     }
 
-    const filteredCountryCodes = cc.find(e.target.value);
+    const filteredCountryCodes = cc.find(str);
 
     const { highlighted } = this.state;
     const newHighlighted = findNewHighlighted(filteredCountryCodes, highlighted);
 
-    this.setState({
+    return {
       filteredCountryCodes: filteredCountryCodes,
       highlighted: newHighlighted
-    });
+    };
+  }
+
+  handleSearchChange(e) {
+    this.setState(this.filter(e.target.value));
   }
 
   handleHighlight(location) {

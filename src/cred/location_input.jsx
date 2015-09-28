@@ -23,6 +23,7 @@ export default class LocationInput extends React.Component {
           value={limitedValue}
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
+          onKeyDown={::this.handleKeyDown}
           onClick={onClick}
           tabIndex={tabIndex} />
         <Icon name="arrow" />
@@ -36,6 +37,17 @@ export default class LocationInput extends React.Component {
 
   handleBlur() {
     this.setState({focused: false});
+  }
+
+  handleKeyDown(e) {
+    e.preventDefault();
+    if (e.key === "ArrowDown") {
+      return this.props.onClick();
+    }
+
+    if (e.keyCode >= 65 && e.keyCode <= 90) {
+      return this.props.onClick(String.fromCharCode(e.keyCode).toLowerCase());
+    }
   }
 }
 

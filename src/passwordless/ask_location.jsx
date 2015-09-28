@@ -8,6 +8,7 @@ export default class AskLocation extends React.Component {
     return (
       <LocationSelect selectHandler={::this.handleSelect}
         cancelHandler={::this.handleCancel}
+        initialLocationSearchStr={this.props.initialLocationSearchStr}
         locationFilterInputPlaceholder={this.t(["locationFilterInputPlaceholder"], {__textOnly: true})} />
     );
   }

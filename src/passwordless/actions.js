@@ -14,7 +14,7 @@ export function changePhoneNumber(id, phoneNumber) {
 
 export function changePhoneLocation(id, location) {
   swap(updateEntity, "lock", id, lock => {
-    lock = m.setSelectingLocation(lock, false);
+    lock = m.closeLocationSelect(lock);
     lock = c.setPhoneLocation(lock, location);
     return lock;
   });
@@ -37,12 +37,12 @@ export function changeVcode(id, vcode) {
   swap(updateEntity, "lock", id, c.setVcode, vcode)
 }
 
-export function selectPhoneLocation(id) {
-  swap(updateEntity, "lock", id, m.setSelectingLocation, true);
+export function selectPhoneLocation(id, searchStr) {
+  swap(updateEntity, "lock", id, m.openLocationSelect, searchStr);
 }
 
 export function cancelSelectPhoneLocation(id) {
-  swap(updateEntity, "lock", id, m.setSelectingLocation, false);
+  swap(updateEntity, "lock", id, m.closeLocationSelect);
 }
 
 export function requestPasswordlessEmail(id) {
