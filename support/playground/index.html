@@ -55,13 +55,6 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="col-xs-2 control-label">icon</label>
-            <div class="col-xs-8">
-              <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
-            </div>
-          </div>
-
           <ul class="nav nav-tabs" role="tablist">
              <li role="presentation" class="active"><a href="#ui-options" aria-controls="ui-options" role="tab" data-toggle="tab">UI Options</a></li>
              <li role="presentation"><a href="#auth-options" aria-controls="auth-options" role="tab" data-toggle="tab">Auth Options</a></li>
@@ -83,6 +76,13 @@
                 <div class="col-xs-8">
                   <input type="text" name="defaultLocation" class="form-control" placeholder="US">
                   <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-2 control-label">icon</label>
+                <div class="col-xs-8">
+                  <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
                 </div>
               </div>
 
@@ -178,6 +178,12 @@
         <hr>
         <div id="container" style="min-height:400px;"></div>
       </div>
+
+      <div class="col-sm-4 col-xs-12 well highlight">
+        <strong>output</strong>
+        <hr>
+        <pre id="output" style="min-height:150px;">
+      </pre>
     </div>
 
     <script type="text/javascript">
@@ -216,8 +222,19 @@
         try { options.authParams = JSON.parse(form.querySelector('[name="authParams"]').value); } catch (e) {}
 
         // Exectue Lock with options
-        lock[method](options, function (err, result) {
-          console.log('hello there.\nError: %o\nResult: %o', err, result);
+        lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
+          var outputContainer = $('#output');
+
+          if (err) {
+            outputContainer.text('Lock encountered an error:\n' + err.description);
+            return;
+          }
+
+          if (method === 'magiclink') {
+            outputContainer.text('Email sent to ' + profile);
+          } else {
+            outputContainer.text('{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}');
+          }
         });
       }
     </script>
