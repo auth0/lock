@@ -69,8 +69,11 @@ export default class AskVcode extends React.Component {
 
 class SignedInConfirmation extends React.Component {
   render() {
+    const { lock } = this.props;
+    const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
+
     return (
-      <ConfirmationPane closeHandler={::this.handleClose}>
+      <ConfirmationPane closeHandler={closeHandler}>
         <p>{this.t(["success"])}</p>
       </ConfirmationPane>
     )

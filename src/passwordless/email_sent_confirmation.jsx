@@ -1,6 +1,6 @@
 import React from 'react';
 import ConfirmationPane from '../lock/confirmation_pane';
-import { resendEmail, reset } from './actions';
+import { close, resendEmail, reset } from './actions';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
 import * as m from './index';
@@ -64,8 +64,10 @@ class Resend extends React.Component {
 export default class EmailSentConfirmation extends React.Component {
   render() {
     const { lock } = this.props;
+    const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
+
     return (
-      <ConfirmationPane backHandler={::this.handleBack}>
+      <ConfirmationPane backHandler={::this.handleBack} closeHandler={closeHandler}>
         <p>{this.t(["success"], {email: c.email(lock)})}</p>
         <Resend lock={lock}/>
       </ConfirmationPane>
@@ -74,6 +76,10 @@ export default class EmailSentConfirmation extends React.Component {
 
   handleBack() {
     reset(l.id(this.props.lock), {clearCred: []});
+  }
+
+  handleClose() {
+    close(l.id(this.props.lock));
   }
 
   t(keyPath, params) {
