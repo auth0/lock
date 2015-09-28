@@ -64,10 +64,10 @@ function normalizeError(error) {
 function transferLoginOptionsToClient(client, options) {
   const { callbackURL, forceJSONP, responseType } = options;
 
-  client._callbackOnLocationHash = 'token' === responseType || !!client._callbackOnLocationHash;
+  client._callbackOnLocationHash = responseType === "token";
   client._callbackURL = callbackURL || client._callbackURL;
-  client._shouldRedirect = !!callbackURL || client._shouldRedirect;
-  client._useJSONP = forceJSONP || client._useJSONP;
+  client._shouldRedirect = responseType === "code" || !!callbackURL;
+  client._useJSONP = forceJSONP;
 
   delete options.callbackURL;
   delete options.forceJSONP;
