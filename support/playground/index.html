@@ -27,11 +27,11 @@
     <p>Make your e-mail or phone your password.</p>
 
     <div class="row">
-      <div class="col-sm-8 col-xs-12">
+      <div class="col-sm-7 col-xs-12">
 
         <form id="playground" class="form form-horizontal">
           <div class="form-group">
-            <label class="col-xs-2 control-label">Mode</label>
+            <label class="col-xs-3 control-label">Mode</label>
             <div class="col-xs-4">
               <select name="method" class="form-control">
                 <option value="sms" selected>SMS</option>
@@ -42,14 +42,14 @@
           </div>
 
           <div class="form-group">
-            <label class="col-xs-2 control-label">clientID</label>
+            <label class="col-xs-3 control-label">clientID</label>
             <div class="col-xs-8">
               <input type="text" name="clientID" class="form-control" value="pmiDG0HgAJOKvcS8e5jaB0IjHL4ZtaKG" placeholder="YOUR_APP_CLIENT_ID">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-xs-2 control-label">domain</label>
+            <label class="col-xs-3 control-label">domain</label>
             <div class="col-xs-8">
               <input type="text" name="domain" class="form-control" value="samples.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
             </div>
@@ -65,14 +65,14 @@
               <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">container</label>
+                <label class="col-xs-3 control-label">container</label>
                 <div class="col-xs-8">
                   <input type="text" name="container" class="form-control" placeholder="#container">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">defaultLocation</label>
+                <label class="col-xs-3 control-label">defaultLocation</label>
                 <div class="col-xs-8">
                   <input type="text" name="defaultLocation" class="form-control" placeholder="US">
                   <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
@@ -80,49 +80,49 @@
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">icon</label>
+                <label class="col-xs-3 control-label">icon</label>
                 <div class="col-xs-8">
                   <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">primaryColor</label>
+                <label class="col-xs-3 control-label">primaryColor</label>
                 <div class="col-xs-8">
                   <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">autoclose</label>
+                <label class="col-xs-3 control-label">autoclose</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="autoclose" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">closable</label>
+                <label class="col-xs-3 control-label">closable</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="closable" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">focusInput</label>
+                <label class="col-xs-3 control-label">focusInput</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="focusInput" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">gravatar</label>
+                <label class="col-xs-3 control-label">gravatar</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="gravatar" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">dict</label>
+                <label class="col-xs-3 control-label">dict</label>
                 <div class="col-xs-8">
                   <textarea name="dict" class="form-control" rows="3" placeholder='{"title": "hello"}'></textarea>
                   <p class="help-block">See the full <a href="https://github.com/auth0/lock-passwordless#dict-specification" target="_blank">Dict Specification</a> for more details</p>
@@ -134,21 +134,21 @@
               <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">authParams</label>
+                <label class="col-xs-3 control-label">authParams</label>
                 <div class="col-xs-8">
                   <textarea name="authParams" class="form-control" rows="3" placeholder='{"scope": "opendid profile"}'></textarea>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">callbackURL</label>
+                <label class="col-xs-3 control-label">callbackURL</label>
                 <div class="col-xs-8">
                   <input type="text" name="callbackURL" class="form-control" placeholder="http://myapp.com">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">forceJSONP</label>
+                <label class="col-xs-3 control-label">forceJSONP</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="forceJSONP">
                 </div>
@@ -166,60 +166,62 @@
 
           <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
-              <button type="submit" class="btn btn-small btn-info">Open me!</button>
+              <a id="show-lock" href="#" class="btn btn-primary">Open me!</a>
+              <a id="show-code" href="#" class="btn btn-default">Show me the code!</a>
             </div>
           </div>
 
         </form>
       </div>
 
-      <div class="col-sm-4 col-xs-12 well">
-        <strong>#container</strong>
-        <hr>
-        <div id="container" style="min-height:400px;"></div>
-      </div>
-
-      <div class="col-sm-4 col-xs-12 well highlight">
-        <strong>output</strong>
-        <hr>
-        <pre id="output" style="min-height:150px;">
-      </pre>
+      <div class="col-sm-5 col-xs-12">
+        <div class="well">
+          <strong>#container</strong>
+          <hr>
+          <div id="container" style="min-height:450px;"></div>
+        </div>
+        <br />
+        <div>
+          <strong>output</strong>
+          <hr>
+          <pre id="output" style="min-height:200px;">
+          </pre>
+        </div>
     </div>
 
     <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function(event) {
+      $(function() {
         var remember = require('remember');
         remember();
       });
 
-      document.querySelector('form#playground').onsubmit = function (ev) {
+      $('#show-lock').on('click', function (ev) {
         ev.preventDefault();
 
-        var form = ev.target;
-        var method = form.querySelector('[name="method"]').value;
-        var clientID = form.querySelector('[name="clientID"]').value;
-        var domain = form.querySelector('[name="domain"]').value;
+        var method = $('[name="method"]').val();
+        var clientID = $('[name="clientID"]').val();
+        var domain = $('[name="domain"]').val();
         var lock = new Auth0LockPasswordless(clientID, domain);
 
         var options = {};
 
         // Strings
-        options.icon = form.querySelector('[name="icon"]').value;
-        options.container = (form.querySelector('[name="container"]').value || '').replace('#', '');
-        options.defaultLocation = form.querySelector('[name="defaultLocation"]').value;
-        options.primaryColor = form.querySelector('[name="primaryColor"]').value;
-        options.responseType = form.querySelector('[name="responseType"]').value || undefined;
-        options.callbackURL = form.querySelector('[name="callbackURL"]').value || undefined;
+        options.icon = $('[name="icon"]').val();
+        options.container = ($('[name="container"]').val() || '').replace('#', '');
+        options.defaultLocation = $('[name="defaultLocation"]').val();
+        options.primaryColor = $('[name="primaryColor"]').val();
+        options.callbackURL = $('[name="callbackURL"]').val() || undefined;
+        options.responseType = $('[name="responseType"]').val() || undefined;
 
         // Booleans
-        options.closable = !!form.querySelector('[name="closable"]').checked;
-        options.focusInput = !!form.querySelector('[name="focusInput"]').checked;
-        options.gravatar = !!form.querySelector('[name="gravatar"]').checked;
-        options.forceJSONP = !!form.querySelector('[name="forceJSONP"]').checked;
+        options.closable = !!$('[name="closable"]').val();
+        options.focusInput = !!$('[name="focusInput"]').val();
+        options.gravatar = !!$('[name="gravatar"]').val();
+        options.forceJSONP = !!$('[name="forceJSONP"]').val();
 
         // Textareas + parsings
-        try { options.dict = JSON.parse(form.querySelector('[name="dict"]').value); } catch (e) {}
-        try { options.authParams = JSON.parse(form.querySelector('[name="authParams"]').value); } catch (e) {}
+        try { options.dict = JSON.parse($('[name="dict"]').val()); } catch (e) {}
+        try { options.authParams = JSON.parse($('[name="authParams"]').val() ); } catch (e) {}
 
         // Exectue Lock with options
         lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
@@ -236,7 +238,7 @@
             outputContainer.text('{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}');
           }
         });
-      }
+      });
     </script>
 
   </div>
