@@ -117,8 +117,9 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         callbackURL: undefined,
         email: "someone@auth0.com",
-        send: "link",
-        forceJSONP: undefined
+        forceJSONP: undefined,
+        responseType: 'token',
+        send: "link"
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -168,8 +169,9 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         callbackURL: undefined,
         email: "someone@auth0.com",
-        send: "link",
-        forceJSONP: undefined
+        forceJSONP: undefined,
+        responseType: 'token',
+        send: "link"
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -228,6 +230,7 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
+        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -278,6 +281,7 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
+        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -335,6 +339,7 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
+        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };
@@ -387,6 +392,7 @@ describe(".magiclink acceptance", function() {
         authParams: {},
         email: "someone@auth0.com",
         send: "link",
+        responseType: 'token',
         callbackURL: undefined,
         forceJSONP: undefined
       };

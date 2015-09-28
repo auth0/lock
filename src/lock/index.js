@@ -128,21 +128,24 @@ function getLoginAttribute(m, attribute) {
 export const login = {
   authParams: lock => getLoginAttribute(lock, "authParams"),
   forceJSONP: lock => getLoginAttribute(lock, "forceJSONP"),
-  callbackURL: lock => getLoginAttribute(lock, "callbackURL")
+  callbackURL: lock => getLoginAttribute(lock, "callbackURL"),
+  responseType: lock => getLoginAttribute(lock, "responseType")
   // TODO: Add a function that takes an object with login parameters and adds
   // the ones above here.
 };
 
 function setLoginOptions(m, options) {
-  let { authParams, callbackURL, forceJSONP } = options;
+  let { authParams, callbackURL, forceJSONP, responseType } = options;
 
   authParams = typeof authParams === "object" ? authParams : {};
   callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
+  responseType = typeof responseType === "string" ? responseType : callbackURL ? "code" : "token";
 
   const loginOptions = Map({
     authParams: Map(authParams),
     callbackURL: callbackURL,
-    forceJSONP: forceJSONP
+    forceJSONP: forceJSONP,
+    responseType: responseType
   });
 
   return m.set("login", loginOptions);

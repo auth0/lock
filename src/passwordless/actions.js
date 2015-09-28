@@ -62,9 +62,10 @@ export function requestPasswordlessEmail(id) {
     const options = {
       authParams: isMagicLink ? l.login.authParams(lock).toJS() : {},
       callbackURL: l.login.callbackURL(lock),
+      forceJSONP: l.login.forceJSONP(lock),
       email: c.email(lock),
       send: m.send(lock),
-      forceJSONP: l.login.forceJSONP(lock)
+      responseType: l.login.responseType(lock)
     };
 
     webApi.startPasswordless(id, options, error => {
@@ -147,6 +148,7 @@ export function resendEmail(id) {
     authParams: m.send(lock) === "link" ? l.login.authParams(lock).toJS() : {},
     email: c.email(lock),
     send: m.send(lock),
+    responseType: l.login.responseType(lock),
     callbackURL: l.login.callbackURL(lock),
     forceJSONP: l.login.forceJSONP(lock)
   };
@@ -187,6 +189,7 @@ export function signIn(id) {
     const options = {
       passcode: c.vcode(lock),
       redirect: l.shouldRedirect(lock),
+      responseType: l.login.responseType(lock),
       callbackURL: l.login.callbackURL(lock),
       forceJSONP: l.login.forceJSONP(lock)
     };

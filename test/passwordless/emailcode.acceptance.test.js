@@ -117,6 +117,7 @@ describe(".emailcode acceptance", function() {
         callbackURL: undefined,
         email: "someone@auth0.com",
         forceJSONP: undefined,
+        responseType: "token",
         send: "code"
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
@@ -172,6 +173,7 @@ describe(".emailcode acceptance", function() {
         callbackURL: undefined,
         email: "someone@auth0.com",
         forceJSONP: undefined,
+        responseType: "token",
         send: "code"
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
