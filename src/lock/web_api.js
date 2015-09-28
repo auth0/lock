@@ -41,7 +41,7 @@ class Auth0WebAPI {
     return this.clients[lockID].parseHash(hash);
   }
 
-  getProfile(token, callback) {
+  getProfile(lockID, token, callback) {
     return this.clients[lockID].getProfile(token, callback);
   }
 }
