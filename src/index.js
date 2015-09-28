@@ -2,7 +2,8 @@ import RenderScheduler from './lock/render_scheduler';
 import Renderer from './lock/renderer';
 import PluginManager from './lock/plugin_manager';
 import * as idu from './utils/id_utils';
-import { setupLock } from './lock/actions';
+import { setupLock, updateLock } from './lock/actions';
+import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 // import crashedSpec from '../crashed/mode_spec';
 import passwordlessSpec from './passwordless/mode_spec';
@@ -43,6 +44,14 @@ export default class Auth0LockPasswordless {
 
   logout(query = {}) {
     webAPI.signOut(this.id, query);
+  }
+
+  update(f) {
+    return updateLock(this.id, f);
+  }
+
+  requestGravatar(email) {
+    return requestGravatar(email);
   }
 }
 

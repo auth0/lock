@@ -53,6 +53,10 @@ export function closeLock(id, resetFn, callback = () => {}) {
   }
 }
 
+export function updateLock(id, f) {
+  return swap(updateEntity, "lock", id, f);
+}
+
 export function registerMode(spec) {
   swap(setEntity, "mode", spec.name, Immutable.fromJS(spec));
 }
