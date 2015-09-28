@@ -9,7 +9,7 @@
 .slide-enter.slide-enter-active {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-transition: transform .3s ease-out;
+  -webkit-transition: -webkit-transform .3s ease-out;
   transition: transform .3s ease-out;
 }
 
@@ -23,7 +23,7 @@
 .slide-leave.slide-leave-active {
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
-  -webkit-transition: transform .3s ease-in;
+  -webkit-transition: -webkit-transform .3s ease-in;
   transition: transform .3s ease-in;
 }
 
