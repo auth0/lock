@@ -40,7 +40,10 @@ export default class LocationInput extends React.Component {
   }
 
   handleKeyDown(e) {
-    e.preventDefault();
+    if (e.key !== "Tab") {
+      e.preventDefault();
+    }
+
     if (e.key === "ArrowDown") {
       return this.props.onClick();
     }
