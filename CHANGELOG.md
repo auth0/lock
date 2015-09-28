@@ -1,3 +1,26 @@
+## [0.1.11] - 2015-09-27
+
+### Changed
+
+- [] Restore responseType authentication option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/13af294d5912279d3b85116eb684391ac04c00a7
+
+### Fixed
+
+- [] Fetch Gravatar when taking email from localStorage (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/3aeff30cf95d9d4b16c9a1dc220cad87061a137b
+- [] Show close button in confirmation panes (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/1c44878d1881ff4e79a5c53b82e28a94040fec40
+- [] Fix Auth0 monkey patch for making requests (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/4e6261ecf5468e385e8a9021ff7c0bd68be4a17e
+- [] Add missing lockID param in WebAPI.getProfile (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/add2a9cd0667b9cda2b358be243eb6284bd8a397
+
+### Added
+
+- [] Add some private API methods for the landing page (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/f532963d7762f6a82067d89ee0e836a942e241aa
+
 ## [0.1.10] - 2015-09-26
 
 ### Fixed
