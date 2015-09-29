@@ -281,7 +281,10 @@ breakpoint(point, value = 0)
       margin-bottom 20px
       color #666
 
-      a.auth0-lock-did-not-receive-code-link
+    .auth0-lock-did-not-receive-code
+      margin 0
+
+      .auth0-lock-did-not-receive-code-link
         font-size 11px
         font-weight 600
         color #333332
@@ -554,17 +557,17 @@ breakpoint(point, value = 0)
       transform translate(-50%,-50%)
       position absolute
 
-    &.slide-enter
-      -webkit-transform scale(.8)
-      transform scale(.8)
-      opacity 0
-      -webkit-transition opacity .3s ease-out, transform .3s ease-out
-      transition opacity .3s ease-out, transform .3s ease-out
+    // &.slide-enter
+    //   -webkit-transform scale(.8)
+    //   transform scale(.8)
+    //   opacity 0
+    //   -webkit-transition opacity .3s ease-out, transform .3s ease-out
+    //   transition opacity .3s ease-out, transform .3s ease-out
 
-    &.slide-enter-active
-      -webkit-transform scale(1)
-      transform scale(1)
-      opacity 1
+    // &.slide-enter-active
+    //   -webkit-transform scale(1)
+    //   transform scale(1)
+    //   opacity 1
 
     p
       margin-bottom 6px

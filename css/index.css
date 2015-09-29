@@ -262,7 +262,10 @@
   margin-bottom: 20px;
   color: #666;
 }
-.auth0-lock .auth0-lock-form p a.auth0-lock-did-not-receive-code-link {
+.auth0-lock .auth0-lock-form .auth0-lock-did-not-receive-code {
+  margin: 0;
+}
+.auth0-lock .auth0-lock-form .auth0-lock-did-not-receive-code .auth0-lock-did-not-receive-code-link {
   font-size: 11px;
   font-weight: 600;
   color: #333332;
@@ -514,18 +517,6 @@
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   position: absolute;
-}
-.auth0-lock .auth0-lock-confirmation.slide-enter {
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-  opacity: 0;
-  -webkit-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-.auth0-lock .auth0-lock-confirmation.slide-enter-active {
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  opacity: 1;
 }
 .auth0-lock .auth0-lock-confirmation p {
   margin-bottom: 6px;
