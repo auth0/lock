@@ -84,6 +84,7 @@ function extractUIOptions(id, options) {
     dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
+    mobile: undefined === options.mobile ? false : !!options.mobile,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
     primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
@@ -115,6 +116,7 @@ export const ui = {
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
+  mobile: lock => getUIAttribute(lock, "mobile"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
   rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")

@@ -35,6 +35,10 @@ export default class Lock extends React.Component {
       className += " auth0-lock-opened";
     }
 
+    if (l.ui.mobile(lock)) {
+      className += " auth0-lock-mobile";
+    }
+
     if (l.submitting(lock)) {
       className += " auth0-lock-mode-loading";
     }
