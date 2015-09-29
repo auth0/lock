@@ -279,8 +279,9 @@ describe(".sms acceptance", function() {
     });
 
     describe("when response arrives", function() {
-      before(function() {
+      before(function(done) {
         u.simulateStartPasswordlessResponse({error: "unknown"});
+        setTimeout(done, 300);
       });
 
       it("hides the loading indicator", function() {
@@ -440,9 +441,10 @@ describe(".sms acceptance", function() {
     })
 
     describe("when response arrives", function() {
-      before(function() {
+      before(function(done) {
         this.error = {error: "invalid_user_password"};
         u.simulateSingInResponse(this.error);
+        setTimeout(done, 300);
       });
 
       it("hides the loading indicator", function() {

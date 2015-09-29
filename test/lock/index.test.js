@@ -91,7 +91,7 @@ describe("rendering a lock", function() {
   });
 
   it("uses the auth0 logo", function() {
-    expect(l.ui.icon(renderedLock)).to.be(iconUrl("auth0"));
+    expect(l.ui.icon(renderedLock)).to.be("//cdn.auth0.com/styleguide/1.0.0/img/badge.png");
   });
 
   it("can be closed", function() {

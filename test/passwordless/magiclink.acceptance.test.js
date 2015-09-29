@@ -177,9 +177,10 @@ describe(".magiclink acceptance", function() {
     });
 
     describe("when response arrives", function() {
-      before(function() {
+      before(function(done) {
         this.error = {error: "unknown"};
         u.simulateStartPasswordlessResponse(this.error);
+        setTimeout(done, 300);
       });
 
       it("hides the loading indicator", function() {
