@@ -70,7 +70,7 @@ export function requestPasswordlessEmail(id) {
 
     webApi.startPasswordless(id, options, error => {
       if (error) {
-        requestPasswordlessEmailError(id, error);
+        setTimeout(() => requestPasswordlessEmailError(id, error), 250);
       } else {
         requestPasswordlessEmailSuccess(id);
       }
@@ -115,7 +115,7 @@ export function sendSMS(id) {
     const options = {phoneNumber: c.fullPhoneNumber(lock)};
     webApi.startPasswordless(id, options, error => {
       if (error) {
-        sendSMSError(id, error);
+        setTimeout(() => sendSMSError(id, error), 250);
       } else {
         sendSMSSuccess(id);
       }
@@ -203,7 +203,13 @@ export function signIn(id) {
     webApi.signIn(
       id,
       Map(options).merge(l.login.authParams(lock)).toJS(),
-      (error, ...args) => error ? signInError(id, error) : signInSuccess(id, ...args)
+      (error, ...args) => {
+        if (error) {
+          setTimeout(() => signInError(id, error), 250);
+        } else {
+          signInSuccess(id, ...args);
+        }
+      }
     );
   }
 }
