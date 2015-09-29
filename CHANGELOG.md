@@ -1,3 +1,114 @@
+## [0.1.12] - 2015-09-28
+
+### Fixed
+
+- [] Paragraph fix (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/e5f75132ab060f78ed1d2774d8219f508f40ee9a
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/0c2df1ca47df46991da294018e9d759b916c33b0
+- [] Hide back button in mode loading (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/b572a20d545ea078f95eecb73dd15f26f51458c1
+- [] Remove CredPane style before showing error (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/661226423984acb2fb3c715b785bf83238ad6a19
+- [] Fix tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/8ab32fcfd4df0c7078ac9a5a49187608e70f9ba1
+- [] Revert "Remove height inline style after CredPane scales" (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/b587eda9b6233f2823c84d875b72da5ebfbdcd53
+- [] Forced classes .auth0-lock (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/7a4805bb24cf9456c73d395b63578e3230dbfe4a
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/8df2216e1971e3e43812bf9ec57944d5c389f9fc
+- [] Minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/8b95efe6ceb5f96b12eda44d5a8f3921120cb241
+- [] Minor fix mobile view (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/9f3872334edcf40adda5cbd1c52ddfb031a7c61f
+- [] Disable animation pop up in mobile view (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/2b4e8522a2242eefc4d21ede5372639163d2b160
+- [] Remove height inline style after CredPane scales (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/d7cfa2e551eeebd42458696f50215f5da1d27264
+- [] Add hidden mobile ui option (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/70709de0faede561a578846ab11ab2eb2d630764
+- [] Use Auth0 badge from CDN (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/a06fccad732c2c41676aead7875594d1efc717c6
+- [] Merge pull request #41 from auth0/global-error-ghost (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/6132e913a069ee11b7b70f8d3995886ca1118c3c
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/b5bdfbbe871e4ce50e2ae85b5aa299b069b0be7d
+- [] Fix little issues with IE (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/2f3ffcaccc0d05f32aa075356e01b526051c77ea
+- [] Merge pull request #40 from auth0/playground-ui-updates (`Cristian Douce`)
+  https://github.com/auth0/lock-passwordless/commit/7b5b2ab3c6a012f17d3a9d818ea896586d8842b3
+- [] Fixed exception (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/01d9d9b82ba87ff806ccd351164ebd586b96a5ce
+- [] Add a little delay before showing an error (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/d8c6605f3f4473d87ac6395600fd1f76a81b5612
+- [] Remove inline styles when GlobalError leaves (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/515c43429808e6df99e3c5a6822a658dc3287957
+- [] Now the lock-container will change its id depending on the value of the container input (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/dfe42fe9e49f8be9c51348da0f7f3404e93f03e8
+- [] Merge pull request #37 from auth0/playground-ui-updates (`Cristian Douce`)
+  https://github.com/auth0/lock-passwordless/commit/ae25ec928067f70f04f55c0b286d229850effa8a
+- [] Fixed typo (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/9dd7c7d8a0f867fbd1c5b0972bc07c60db8b9669
+- [] Remove glitches from the closing animation (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/71c541e2c3349832efbe71e6448148d848686f75
+- [] Error handling improvements (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/b88017f27a2b2eab4265884436c9a15d44f5c215
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/2109a3854a3312de2d9b84d496db3b87caf7345e
+- [] Minor fix transitions (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/b038af4c61cba4ce1a2a25bfee9cd59d7549023c
+- [] Added tooltips. Updated code snippet. (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/dc07e5e4815ced8fa5de567e83829bc81d944785
+- [] Merge pull request #36 from auth0/playground-updates (`Cristian Douce`)
+  https://github.com/auth0/lock-passwordless/commit/9defd2df0e6b27ea168e194dfc6fc26c4097af8c
+- [] Multiple playground UI updates (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/81c216be826b05ca7e81cc864f5ed12fc053a13e
+- [] Minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/17fa4a32ddd2910001d0ad4cd959afcef13ee6e5
+- [] Add color to submit button in mode loading (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/04aa8275f16c8432f4cafde95e77460000b5aa97
+- [] Added Fork on Github ribbon (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/6fce46f8b4e615e68239a3c3c4d29df2c69ce968
+- [] Fix animation on safari (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/efb65f15c237f6c0d4d0c712dd07268b2510b206
+- [] Now accordion is toggled with user actions (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/f5eb52ab0b0681ec48f0b6aa1612018c260eb7b6
+- [] Line height global error (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/df1f6d77cfdbe965d97bbf1d2e0984c1e66c327b
+- [] Fix overlay in front (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/77ba0223296d70e8c28155c1940e4ebb7eedea95
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/b770257b76f074ef4f6e7abebd379726bf059130
+- [] Step confirmation slide enter (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/565692ce0d5f3cc6050945992969254c49d9edb8
+- [] Escape # in svg icons only when embedding (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/f8532e2b1acadb376f8473de6ab16621e00f3691
+- [] Lock centered on frame. Fix blur on Firefox (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/ec415e24284956f08696dd910c9041a2787dcec3
+- [] Minor style updates (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/cb0157f468d4fa5371f2e85c73c33d1ab08bf32c
+- [] Fixed rebase conflicts (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/c360fb16728ddacc9c93d283eba31fb5e4ecd621
+- [] Typo (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/33d72974aebec08550e2319912c2733b0041623f
+- [] Added show me the code options (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/80385dab2ea3558a537f219a9d1b9a00be895613
+- [] Replaced querySelector calls with $. (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/4e2e7830edfeff4bb60f0c0bbf85016d55523222
+- [] Moved icon to ui settings. Added output (`mcabral`)
+  https://github.com/auth0/lock-passwordless/commit/6ecc8bb9b77b5f5aafeb9f96076677262cf712ee
+- [] Fix back icon (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/dbb1aee503e09d40bf4ab33aed65b69db1ad77dc
+- [] Fix location input tab navigation (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/f09d9e86e676db545d0d08773176914e1f1f5b87
+- [] Escape hashes in icon svgs because it breaks FF (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/e31a86bef7af0ad54a5d19e73d8eed3c0149430d
+- [] Fix safari slide transition 🐋🐳🐬🐙🐟🐠 (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/d6627ba9fb585c4fc21158e97d0011e88d2e932c
+- [] Activate location input with almost every key (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/9c4cf7aa1037ff6d36075c78d6e20be06ee6423e
+
 ## [0.1.11] - 2015-09-27
 
 ### Changed
