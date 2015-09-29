@@ -65,6 +65,10 @@
 .auth0-lock a {
   text-decoration: none;
 }
+.auth0-lock a:active,
+.auth0-lock a:focus {
+  outline: none;
+}
 .auth0-lock input:focus,
 .auth0-lock button:focus {
   outline: none;
@@ -465,6 +469,7 @@
 }
 .auth0-lock .auth0-lock-select-country .auth0-lock-list-code li {
   list-style: none;
+  text-align: left;
   border-bottom: 1px solid #eee;
   cursor: pointer;
   color: #000;
