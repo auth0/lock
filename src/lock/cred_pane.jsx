@@ -17,7 +17,6 @@ export default class CredPane extends React.Component {
 
   componentDidMount() {
     this.reverse = false;
-    setTimeout(() => this.setState({height: ""}), 900);
   }
 
   render() {
