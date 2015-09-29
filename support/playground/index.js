@@ -36,7 +36,8 @@ function bindEvents () {
         $('#output code').removeClass('text-danger');
 
         if (err) {
-          outputContainer.text('Lock encountered an error:\n' + err.description);
+          $('#output code').removeClass('text-danger');
+          $('#output code').text('Lock encountered an error' + (err.description ? ':\n' + err.description : '.'));
           return;
         }
 
@@ -48,8 +49,10 @@ function bindEvents () {
         }
       });
 
-      showPanel('container-panel');
-      
+      if (options.container === "#container") {
+        showPanel('container-panel');
+      }
+
     } catch (e) {
       $('#output code').text(e.message);
       $('#output code').addClass('text-danger');
