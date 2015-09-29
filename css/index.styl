@@ -78,9 +78,9 @@ breakpoint(point, value = 0)
 .auth0-lock
   font-family "Avenir", sans-serif
   text-rendering optimizeLegibility
-  opacity 0
-  -webkit-transition opacity 0s 2s
-  transition opacity 0s 2s
+  // opacity 0
+  // -webkit-transition opacity 0s 2s
+  // transition opacity 0s 2s
   pointer-events none
   position fixed
   bottom 0
@@ -119,14 +119,14 @@ breakpoint(point, value = 0)
     background white
     width 300px
     opacity 0
-    -webkit-transition transform .4s, opacity .7s
+    -webkit-transition -webkit-transform .4s, opacity .7s
     transition transform .4s, opacity .7s
     -webkit-transform translateY(100%) scale(.8)
     transform translateY(100%) scale(.8)
     -webkit-transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
-    -webkit-transition-delay 0s
-    transition-delay 0s
+    // -webkit-transition-delay 0s
+    // transition-delay 0s
     margin 0 auto
     border-radius 5px
 
@@ -582,7 +582,7 @@ breakpoint(point, value = 0)
         margin-bottom -4px
         margin-left 0px
         display inline-block
-        -webkit-transition transform 1s ease
+        -webkit-transition -webkit-transform 1s ease
         transition transform 1s ease
         -webkit-transform rotate(120deg)
         transform rotate(120deg)
@@ -645,7 +645,7 @@ breakpoint(point, value = 0)
   // Lock badge bottom link
 
   .auth0-lock-badge-bottom
-    -webkit-transition transform .5s ease 1s, opacity .2s ease 0s
+    -webkit-transition -webkit-transform .5s ease 1s, opacity .2s ease 0s
     transition transform .5s ease 1s, opacity .2s ease 0s
     -webkit-transform translateY(-200%) scale(.8)
     transform translateY(-200%) scale(.8)
@@ -676,8 +676,8 @@ breakpoint(point, value = 0)
   &.auth0-lock-opened
     opacity 1
     pointer-events auto
-    -webkit-transition-delay 0s
-    transition-delay 0s
+    // -webkit-transition-delay 0s
+    // transition-delay 0s
     z-index 1
 
     //mobile view
@@ -711,7 +711,7 @@ breakpoint(point, value = 0)
       opacity 1
       -webkit-transform translateY(0%) scale(1)
       transform translateY(0%) scale(1)
-      -webkit-transition transform .6s, opacity .6s
+      -webkit-transition -webkit-transform .6s, opacity .6s
       transition transform .6s, opacity .6s
       -webkit-transition-delay .5s
       transition-delay .5s
@@ -756,12 +756,12 @@ breakpoint(point, value = 0)
         border-radius 0
 
     .auth0-lock-badge-bottom
-      -webkit-transform translateY(0%)  scale(1)
-      transform translateY(0%)  scale(1)
-      -webkit-transition transform 1.2s ease 1s, opacity 1.2s ease 1s
-      transition transform 1.2s ease 1s, opacity 1.2s ease 1s
-      -webkit-transition-delay 0
-      transition-delay 0
+      -webkit-transform translateY(0%) scale(1)
+      transform translateY(0%) scale(1)
+      -webkit-transition -webkit-transform 1.2s ease, opacity 1.2s ease
+      transition transform 1.2s ease, opacity 1.2s ease
+      -webkit-transition-delay 1s
+      transition-delay 1s
       opacity 1
 
       //mobile view
@@ -780,8 +780,8 @@ breakpoint(point, value = 0)
   &.auth0-lock-opened-in-frame
     opacity 1
     pointer-events auto
-    -webkit-transition-delay 0s
-    transition-delay 0s
+    // -webkit-transition-delay 0s
+    // transition-delay 0s
     position relative
     width auto
     margin-left auto
@@ -798,7 +798,7 @@ breakpoint(point, value = 0)
       opacity 1
       -webkit-transform translateY(0%) scale(1)
       transform translateY(0%) scale(1)
-      -webkit-transition transform .6s, opacity .6s
+      -webkit-transition -webkit-transform .6s, opacity .6s
       transition transform .6s, opacity .6s
       -webkit-transition-delay .5s
       transition-delay .5s
@@ -807,7 +807,7 @@ breakpoint(point, value = 0)
     .auth0-lock-badge-bottom
       -webkit-transform translateY(0%)  scale(1)
       transform translateY(0%)  scale(1)
-      -webkit-transition transform 1.2s ease 1s, opacity 1.2s ease 1s
+      -webkit-transition -webkit-transform 1.2s ease 1s, opacity 1.2s ease 1s
       transition transform 1.2s ease 1s, opacity 1.2s ease 1s
       opacity 1
 
