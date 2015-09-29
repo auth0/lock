@@ -211,6 +211,7 @@ breakpoint(point, value = 0)
       border-top-left-radius 5px
       border-top-right-radius 5px
       -webkit-filter blur(40px) grayscale(1)
+      filter blur(40px) grayscale(1)
       -webkit-backdrop-filter: blur(0);
       background-color #fff
       background-position center
@@ -224,6 +225,7 @@ breakpoint(point, value = 0)
 
       &.auth0-lock-no-grayscale
         -webkit-filter blur(100px)
+        filter blur(100px)
         -webkit-backdrop-filter: blur(0);
         background-position center
         background-size 500px
@@ -778,6 +780,8 @@ breakpoint(point, value = 0)
     transition-delay 0s
     position relative
     width auto
+    margin-left auto
+    margin-right auto
 
     .auth0-lock-header-bg .auth0-lock-header-bg-blur
       opacity .4
