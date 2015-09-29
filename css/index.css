@@ -512,6 +512,12 @@
   animation: fadeInDownBig 1s both;
   display: block;
 }
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-go-back {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
 .auth0-lock.auth0-lock.auth0-lock-complete .auth0-lock-header-avatar {
   -webkit-animation: fadeOut 0.3s both;
   animation: fadeOut 0.3s both;
