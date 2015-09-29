@@ -33,8 +33,8 @@ export default class GlobalError extends React.Component {
       node.style.height = height;
       node.style.paddingTop = paddingTop;
       node.style.paddingBottom = paddingBottom;
+      callback();
     }, 17);
-    callback();
   }
 
   // componentDidEnter() {
@@ -48,7 +48,13 @@ export default class GlobalError extends React.Component {
     node.style.height = "0px";
     node.style.paddingTop = "0px";
     node.style.paddingBottom = "0px";
-    setTimeout(callback, 300);
+    setTimeout(function() {
+      node.style.removeProperty("transition");
+      node.style.removeProperty("height");
+      node.style.removeProperty("padding-top");
+      node.style.removeProperty("padding-bottom");
+      callback();
+    }, 250);
   }
 
   // componentDidLeave() {
