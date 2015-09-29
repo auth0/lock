@@ -281,15 +281,15 @@
             </div>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
+                <h4 id="container-panel-title" class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#container-panel">
-                    #container
+                    container
                   </a>
                 </h4>
               </div>
               <div id="container-panel" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
-                  <div id="container" style="min-height:420px;"></div>
+                  <div id="container" class="lock-container" style="min-height:420px;"></div>
                 </div>
               </div>
             </div>
@@ -337,7 +337,9 @@
   <script type="text/javascript">
     $(function() {
       var remember = require('remember');
-      remember();
+
+      // Avoid remembering the container input.
+      remember().except('input[name=container]');
 
       $("[rel=tooltip]").tooltip({ placement: 'right'});
     });

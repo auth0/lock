@@ -7,6 +7,10 @@ function bindEvents () {
       updateLockInitializationCode();
   });
 
+  $('input[name=container]').on('change keydown keypress keyup mousedown click mouseup', function() {
+      updateTargetContainer($(this).val());
+  });
+
   $('.panel-heading a').on('click',function(e){
       if($(this).parents('.panel').children('.panel-collapse').hasClass('in')){
           e.stopPropagation();
@@ -49,7 +53,7 @@ function bindEvents () {
         }
       });
 
-      if (options.container === "container") {
+      if (options.container === currentLockContainerSelector) {
         showPanel('container-panel');
       }
 
@@ -61,10 +65,16 @@ function bindEvents () {
   });
 }
 
-function showPanel(panelId) {
+function showPanel (panelId) {
   $("#" + panelId).prev().find('a').click();
 }
 
+function updateTargetContainer (selector) {
+  var sanitizedSelector = (selector ? selector.replace("#", "") : '') || 'container';
+  $('.lock-container').prop('id', sanitizedSelector);
+  $("#container-panel-title").find('a').text(sanitizedSelector);
+  currentLockContainerSelector = sanitizedSelector;
+}
 
 function updateLockInitializationCode () {
    $('#lock-code code').text(getLockInitializationCode());
