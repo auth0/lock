@@ -7,6 +7,10 @@ function bindEvents () {
       updateLockInitializationCode();
   });
 
+  $('input[name=container]').on('change keydown keypress keyup mousedown click mouseup', function() {
+      updateTargetContainer($(this).val());
+  });
+
   $('.panel-heading a').on('click',function(e){
       if($(this).parents('.panel').children('.panel-collapse').hasClass('in')){
           e.stopPropagation();
@@ -34,9 +38,11 @@ function bindEvents () {
       lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
         showPanel('output-panel');
         $('#output code').removeClass('text-danger');
+        $('#output code').text('');
 
         if (err) {
-          outputContainer.text('Lock encountered an error:\n' + err.description);
+          $('#output code').removeClass('text-danger');
+          $('#output code').text('Lock encountered an error' + (err.description ? ':\n' + err.description : '.'));
           return;
         }
 
@@ -48,8 +54,10 @@ function bindEvents () {
         }
       });
 
-      showPanel('container-panel');
-      
+      if (options.container === window.currentLockContainerSelector) {
+        showPanel('container-panel');
+      }
+
     } catch (e) {
       $('#output code').text(e.message);
       $('#output code').addClass('text-danger');
@@ -58,10 +66,16 @@ function bindEvents () {
   });
 }
 
-function showPanel(panelId) {
+function showPanel (panelId) {
   $("#" + panelId).prev().find('a').click();
 }
 
+function updateTargetContainer (selector) {
+  var sanitizedSelector = (selector ? selector.replace("#", "") : '') || 'container';
+  $('.lock-container').prop('id', sanitizedSelector);
+  $("#container-panel-title").find('a').text(sanitizedSelector);
+  currentLockContainerSelector = sanitizedSelector;
+}
 
 function updateLockInitializationCode () {
    $('#lock-code code').text(getLockInitializationCode());

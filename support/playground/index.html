@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/styleguide/latest/index.css" />
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <style>
     .help-block {
@@ -37,6 +38,10 @@
     #show-lock {
       margin-top: 10px;
     }
+
+    div.tooltip {
+      min-width: 150px;
+    }
   </style>
 </head>
 <body>
@@ -52,7 +57,11 @@
       <div class="col-sm-7 col-xs-12">
         <form id="playground" class="form form-horizontal">
           <div class="form-group">
-            <label class="col-xs-3 control-label">Mode</label>
+            <label class="col-xs-3 control-label">Mode
+            <span class="help tip-right" rel="tooltip" data-original-title="Define how you want your user to log into your app.">
+              <i class="fa fa-question-circle">&nbsp;</i>
+            </span>
+            </label>
             <div class="col-xs-4">
               <select name="method" class="form-control">
                 <option value="sms" selected>SMS</option>
@@ -63,14 +72,22 @@
           </div>
 
           <div class="form-group">
-            <label class="col-xs-3 control-label">clientID</label>
+            <label class="col-xs-3 control-label">clientID
+              <span class="help tip-right" rel="tooltip" data-original-title="Your Auth0 client ID.">
+                <i class="fa fa-question-circle">&nbsp;</i>
+              </span>
+            </label>
             <div class="col-xs-8">
               <input type="text" name="clientID" class="form-control" value="pmiDG0HgAJOKvcS8e5jaB0IjHL4ZtaKG" placeholder="YOUR_APP_CLIENT_ID">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-xs-3 control-label">domain</label>
+            <label class="col-xs-3 control-label">domain
+              <span class="help tip-right" rel="tooltip" data-original-title="Your Auth0 domain.">
+                <i class="fa fa-question-circle">&nbsp;</i>
+              </span>
+            </label>
             <div class="col-xs-8">
               <input type="text" name="domain" class="form-control" value="samples.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
             </div>
@@ -86,28 +103,44 @@
               <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">icon</label>
+                <label class="col-xs-3 control-label">icon
+                  <span class="help tip-right" rel="tooltip" data-original-title="Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">primaryColor</label>
+                <label class="col-xs-3 control-label">primaryColor
+                  <span class="help tip-right" rel="tooltip" data-original-title="Defines the primary color of the Lock, all colors used in the widget will be calculated from it. Defaults to '#ea5323'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">container</label>
+                <label class="col-xs-3 control-label">container
+                  <span class="help tip-right" rel="tooltip" data-original-title="The id of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="text" name="container" class="form-control" placeholder="#container">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">defaultLocation</label>
+                <label class="col-xs-3 control-label">defaultLocation
+                  <span class="help tip-right" rel="tooltip" data-original-title="ISO country code of the country that will be selected by default when entering a phone number. Defaults to 'US'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="text" name="defaultLocation" class="form-control" placeholder="US">
                   <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
@@ -115,35 +148,55 @@
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">autoclose</label>
+                <label class="col-xs-3 control-label">autoclose
+                  <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock will be closed automatically after a successful sign in. Defaults to 'false'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="autoclose" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">closable</label>
+                <label class="col-xs-3 control-label">closable
+                  <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock can be closed. When a container option is provided its value is always 'false', otherwise it defaults to 'true'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="closable" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">focusInput</label>
+                <label class="col-xs-3 control-label">focusInput
+                  <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="focusInput" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">gravatar</label>
+                <label class="col-xs-3 control-label">gravatar
+                  <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to 'true'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="gravatar" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">dict</label>
+                <label class="col-xs-3 control-label">dict
+                  <span class="help tip-right" rel="tooltip" data-original-title="Allows to customize every piece of text displayed in the Lock. Defaults to '{}'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <textarea name="dict" class="form-control" rows="3" placeholder='{"title": "hello"}'></textarea>
                   <p class="help-block">See the full <a href="https://github.com/auth0/lock-passwordless#dict-specification" target="_blank">Dict Specification</a> for more details</p>
@@ -155,28 +208,44 @@
               <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">authParams</label>
+                <label class="col-xs-3 control-label">authParams
+                  <span class="help tip-right" rel="tooltip" data-original-title="Specifies extra parameters that will be sent when starting a login. Defaults to '{}'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <textarea name="authParams" class="form-control" rows="3" placeholder='{"scope": "opendid profile"}'></textarea>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">callbackURL</label>
+                <label class="col-xs-3 control-label">callbackURL
+                  <span class="help tip-right" rel="tooltip" data-original-title="The url Auth0 will redirect back after authentication. When provided it will enable redirect mode. Defaults to the empty string "" (no callback URL).">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="text" name="callbackURL" class="form-control" placeholder="http://myapp.com">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">forceJSONP</label>
+                <label class="col-xs-3 control-label">forceJSONP
+                  <span class="help tip-right" rel="tooltip" data-original-title="Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to 'false'.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="forceJSONP">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-3 control-label">responseType</label>
+                <label class="col-xs-3 control-label">responseType
+                  <span class="help tip-right" rel="tooltip" data-original-title="Should be set to 'token' for Single Page Applications, and 'code' otherwise. Defaults to 'code' when callbackURL is provided, and to 'token' otherwise.">
+                    <i class="fa fa-question-circle">&nbsp;</i>
+                  </span>
+                </label>
                 <div class="col-xs-8">
                   <input type="text" name="responseType" class="form-control" placeholder="token">
                 </div>
@@ -212,15 +281,15 @@
             </div>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
+                <h4 id="container-panel-title" class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#container-panel">
-                    #container
+                    container
                   </a>
                 </h4>
               </div>
               <div id="container-panel" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
-                  <div id="container" style="min-height:420px;"></div>
+                  <div id="container" class="lock-container" style="min-height:420px;"></div>
                 </div>
               </div>
             </div>
@@ -250,12 +319,11 @@
 
   var lock = new Auth0LockPasswordless(clientID, domain);
 
-  lock.{{method}}(options, function (err) {
-    if (err) {
-      console.error(err.description);
-    } else {
-      console.log('success!');
-    }
+  lock.{{method}}(options, function (...) {
+    /* callbacks vary depending on how you use the lock
+     * you can find more information on the lock's README
+     * https://github.com/auth0/lock-passwordless#api
+     */
   });
   </textarea>
 
@@ -269,7 +337,11 @@
   <script type="text/javascript">
     $(function() {
       var remember = require('remember');
-      remember();
+
+      // Avoid remembering the container input.
+      remember().except('input[name=container]');
+
+      $("[rel=tooltip]").tooltip({ placement: 'right'});
     });
   </script>
 
