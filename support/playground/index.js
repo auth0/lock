@@ -49,7 +49,7 @@ function bindEvents () {
         }
       });
 
-      if (options.container === "#container") {
+      if (options.container === "container") {
         showPanel('container-panel');
       }
 
