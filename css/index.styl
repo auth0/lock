@@ -78,9 +78,6 @@ breakpoint(point, value = 0)
 .auth0-lock
   font-family "Avenir", sans-serif
   text-rendering optimizeLegibility
-  // opacity 0
-  // -webkit-transition opacity 0s 2s
-  // transition opacity 0s 2s
   pointer-events none
   position fixed
   bottom 0
@@ -119,16 +116,16 @@ breakpoint(point, value = 0)
     background white
     width 300px
     opacity 0
-    -webkit-transition -webkit-transform .4s, opacity .7s
-    transition transform .4s, opacity .7s
     -webkit-transform translateY(100%) scale(.8)
     transform translateY(100%) scale(.8)
     -webkit-transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
-    // -webkit-transition-delay 0s
-    // transition-delay 0s
     margin 0 auto
     border-radius 5px
+
+    +breakpoint("mobile")
+      -webkit-transition -webkit-transform .4s, opacity .3s
+      transition transform .4s, opacity .3s
 
   .auth0-lock-widget-container
     background transparent
@@ -558,18 +555,6 @@ breakpoint(point, value = 0)
       transform translate(-50%,-50%)
       position absolute
 
-    // &.slide-enter
-    //   -webkit-transform scale(.8)
-    //   transform scale(.8)
-    //   opacity 0
-    //   -webkit-transition opacity .3s ease-out, transform .3s ease-out
-    //   transition opacity .3s ease-out, transform .3s ease-out
-
-    // &.slide-enter-active
-    //   -webkit-transform scale(1)
-    //   transform scale(1)
-    //   opacity 1
-
     p
       margin-bottom 6px
 
@@ -678,8 +663,6 @@ breakpoint(point, value = 0)
   &.auth0-lock-opened
     opacity 1
     pointer-events auto
-    // -webkit-transition-delay 0s
-    // transition-delay 0s
     z-index 1
 
     //mobile view
@@ -713,11 +696,13 @@ breakpoint(point, value = 0)
       opacity 1
       -webkit-transform translateY(0%) scale(1)
       transform translateY(0%) scale(1)
-      -webkit-transition -webkit-transform .6s, opacity .6s
-      transition transform .6s, opacity .6s
-      -webkit-transition-delay .5s
-      transition-delay .5s
-      box-shadow 0 0 40px 4px #111118
+
+      +breakpoint("mobile")
+        -webkit-transition -webkit-transform .6s, opacity .6s
+        transition transform .6s, opacity .6s
+        -webkit-transition-delay .5s
+        transition-delay .5s
+        box-shadow 0 0 40px 4px #111118
 
       // mobile view
       @media screen and (max-width: 480px)
@@ -782,8 +767,6 @@ breakpoint(point, value = 0)
   &.auth0-lock-opened-in-frame
     opacity 1
     pointer-events auto
-    // -webkit-transition-delay 0s
-    // transition-delay 0s
     position relative
     width auto
     margin-left auto
