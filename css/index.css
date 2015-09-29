@@ -345,6 +345,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
+  color: #727578;
 }
 .auth0-lock.auth0-lock .auth0-lock-input-wrap .auth0-lock-input.animated {
   -webkit-animation-duration: 0.5s;
