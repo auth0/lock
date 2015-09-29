@@ -9,7 +9,7 @@
 
   <link rel="shortcut icon" href="https://cdn.auth0.com/styleguide/latest/lib/logos/img/favicon.png" />
 
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/styleguide/latest/index.css" />
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
 
@@ -32,13 +32,18 @@
     .modal {
       background: transparent;
     }
+
+    .container {
+      max-width: 1416px;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Auth0 Lock Passwordless Playground 🎁</h1>
-    <p>Make your e-mail or phone your password.</p>
+    <div class="page-header">
+      <h1>Auth0 Lock Passwordless Playground 🎁<small> Make your e-mail or phone your password.</small></h1>
+    </div>
 
     <div class="row">
       <div class="col-sm-7 col-xs-12">
@@ -78,6 +83,20 @@
               <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
 
               <div class="form-group">
+                <label class="col-xs-3 control-label">icon</label>
+                <div class="col-xs-8">
+                  <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-3 control-label">primaryColor</label>
+                <div class="col-xs-8">
+                  <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label class="col-xs-3 control-label">container</label>
                 <div class="col-xs-8">
                   <input type="text" name="container" class="form-control" placeholder="#container">
@@ -89,20 +108,6 @@
                 <div class="col-xs-8">
                   <input type="text" name="defaultLocation" class="form-control" placeholder="US">
                   <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-xs-3 control-label">icon</label>
-                <div class="col-xs-8">
-                  <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-xs-3 control-label">primaryColor</label>
-                <div class="col-xs-8">
-                  <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
                 </div>
               </div>
 
@@ -191,7 +196,7 @@
         <div class="well">
           <strong>#container</strong>
           <hr>
-          <div id="container" style="min-height:450px;"></div>
+          <div id="container" style="min-height:420px;"></div>
         </div>
         <br />
         <div class="well">
