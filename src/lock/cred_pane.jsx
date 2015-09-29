@@ -19,6 +19,12 @@ export default class CredPane extends React.Component {
     this.reverse = false;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!l.globalError(this.props.lock) && l.globalError(nextProps.lock)) {
+      this.setState({height: "auto"});
+    }
+  }
+
   render() {
     const { auxiliaryPane, backHandler, className, lock, terms } = this.props;
     const { height, show } = this.state;
