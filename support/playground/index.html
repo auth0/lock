@@ -36,6 +36,14 @@
     .container {
       max-width: 1416px;
     }
+
+    .form-group {
+      margin-bottom: 8px;
+    }
+
+    #show-lock {
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -183,9 +191,8 @@
           </div>
 
           <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-              <a id="show-lock" class="btn btn-primary">Open me!</a>
-              <a id="show-code" role="button" class="btn btn-default" data-toggle="modal" data-target="#code-modal">Show me the code!</a>
+            <div class="col-xs-offset-2 col-xs-10 text-center">
+              <a id="show-lock" class="btn btn-primary btn-lg">Open me!</a>
             </div>
           </div>
 
@@ -193,55 +200,69 @@
       </div>
 
       <div class="col-sm-5 col-xs-12">
-        <div class="well">
-          <strong>#container</strong>
-          <hr>
-          <div id="container" style="min-height:420px;"></div>
-        </div>
-        <br />
-        <div class="well">
-          <strong>output</strong>
-          <hr>
-          <pre id="output" class="js" style="min-height:200px;"><code></code></pre>
+          <div class="panel-group" id="accordion" role="tablist">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#lock-code-panel">
+                    Lock Initialization Code
+                  </a>
+                </h4>
+              </div>
+              <div id="lock-code-panel" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+                  <pre id="lock-code" class="js"><code></code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#container-panel">
+                    #container
+                  </a>
+                </h4>
+              </div>
+              <div id="container-panel" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+                  <div id="container" style="min-height:420px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#output-panel">
+                    Lock Output
+                  </a>
+                </h4>
+              </div>
+              <div id="output-panel" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+                  <pre id="output" class="js"><code></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
 
-  <div class="modal fade" id="code-modal" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Lock Initialization Code</h4>
-        </div>
-        <div class="modal-body">
-          <p>This is the code genereted by the selected options. You can copy this code into your application to get the same effect you can see here.<p>
-          <pre id="lock-code" class="js" style="min-height:200px;"><code></code></pre>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <textarea id="lock-init-template" type="x-tmpl-mustache" style="display:none;">
+  var clientID = "{{ clientID }}";
+  var domain = "{{ domain }}";
+  var options = {{{ options }}};
 
-  <script id="lock-init-template" type="x-tmpl-mustache">
-    var clientID = {{ clientID }};
-    var domain = {{ domain }};
-    var options = {{{ options }}};
+  var lock = new Auth0LockPasswordless(clientID, domain);
 
-    var lock = new Auth0LockPasswordless(clientID, domain);
-
-    lock.{{method}}(options, function (err) {
-      if (err) {
-        console.error(err.description);
-      } else {
-        console.log('success!');
-      }
-    });
-  </script>
+  lock.{{method}}(options, function (err) {
+    if (err) {
+      console.error(err.description);
+    } else {
+      console.log('success!');
+    }
+  });
+  </textarea>
 
   <script type="text/javascript">
     $(function() {

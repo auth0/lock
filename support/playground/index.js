@@ -3,9 +3,15 @@ function bindEvents () {
     $('#code-modal').css('display','block');
   });
 
-  $('#show-code').on('click', function (ev) {
-    $('#lock-code code').text(getLockInitializationCode());
-    hljs.highlightBlock($('#lock-code code').get(0));
+  $('form input, form textarea, form select').on('change keydown keypress keyup mousedown click mouseup', function() {
+      updateLockInitializationCode();
+  });
+
+  $('.panel-heading a').on('click',function(e){
+      if($(this).parents('.panel').children('.panel-collapse').hasClass('in')){
+          e.stopPropagation();
+      }
+      e.preventDefault();
   });
 
   $('#show-lock').on('click', function (ev) {
@@ -14,31 +20,51 @@ function bindEvents () {
     var method = $('[name="method"]').val();
     var clientID = $('[name="clientID"]').val();
     var domain = $('[name="domain"]').val();
-    var lock = new Auth0LockPasswordless(clientID, domain);
 
-    var options = getOptions();
+    showPanel('container-panel');
 
-    // Exectue Lock with options
-    lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
+    try {
+      var lock = new Auth0LockPasswordless(clientID, domain);
+
+      var options = getOptions();
       var outputContainer = $('#output code');
 
-      if (err) {
-        outputContainer.text('Lock encountered an error:\n' + err.description);
-        return;
-      }
+      // Exectue Lock with options
+      lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
 
-      if (method === 'magiclink') {
-        outputContainer.text('Email sent to ' + profile);
-      } else {
-        outputContainer.text('{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}');
-        hljs.highlightBlock(outputContainer.get(0));
-      }
-    });
+        showPanel('output-panel');
+        
+        if (err) {
+          outputContainer.text('Lock encountered an error:\n' + err.description);
+          return;
+        }
+
+        if (method === 'magiclink') {
+          outputContainer.text('Email sent to ' + profile);
+        } else {
+          outputContainer.text('{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}');
+          hljs.highlightBlock(outputContainer.get(0));
+        }
+      });
+    } catch (e) {
+      outputContainer.text(e.message);
+      showPanel('output-panel');
+    }
   });
 }
 
+function showPanel(panelId) {
+  $("#" + panelId).prev().find('a').click();
+}
+
+
+function updateLockInitializationCode () {
+   $('#lock-code code').text(getLockInitializationCode());
+   hljs.highlightBlock($('#lock-code code').get(0));
+}
+
 function getLockInitializationCode () {
-  var template = $('#lock-init-template').text();
+  var template = $('#lock-init-template').val();
   var templateValues = {};
 
   templateValues.options = JSON.stringify(getOptions());
@@ -61,10 +87,11 @@ function getOptions () {
   options.responseType = $('[name="responseType"]').val() || undefined;
 
   // Booleans
-  options.closable = !!$('[name="closable"]').val();
-  options.focusInput = !!$('[name="focusInput"]').val();
-  options.gravatar = !!$('[name="gravatar"]').val();
-  options.forceJSONP = !!$('[name="forceJSONP"]').val();
+  options.autoclose = !!$('[name="autoclose"]:checked').val();
+  options.closable = !!$('[name="closable"]:checked').val();
+  options.focusInput = !!$('[name="focusInput"]:checked').val();
+  options.gravatar = !!$('[name="gravatar"]:checked').val();
+  options.forceJSONP = !!$('[name="forceJSONP"]:checked').val();
 
   // Textareas + parsings
   try { options.dict = JSON.parse($('[name="dict"]').val()); } catch (e) {}
@@ -74,3 +101,5 @@ function getOptions () {
 }
 
 bindEvents();
+updateLockInitializationCode();
+showPanel('lock-code-panel');
