@@ -7,31 +7,52 @@
 
   <title>Auth0 Lock Passwordless Playground 🎁</title>
 
-  <link rel="shortcut icon" href="https://cdn.auth0.com/styleguide/latest/lib/logos/img/favicon.png">
+  <link rel="shortcut icon" href="https://cdn.auth0.com/styleguide/latest/lib/logos/img/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/styleguide/latest/index.css" />
-  <script type="text/javascript" src="build/lock-passwordless.js"></script>
-  <script type="text/javascript" src="assets/remember.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
 
   <style>
     .help-block {
       margin-bottom: 0;
     }
+
+    .hljs {
+      background: #f5f5f5;
+    }
+
+    .modal {
+      background: transparent;
+    }
+
+    .container {
+      max-width: 1416px;
+    }
+
+    .form-group {
+      margin-bottom: 8px;
+    }
+
+    #show-lock {
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
+  <a href="https://github.com/auth0/lock-passwordless"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
   <div class="container">
-    <h1>Auth0 Lock Passwordless Playground 🎁</h1>
-    <p>Make your e-mail or phone your password.</p>
+    <div class="page-header">
+      <h1>Auth0 Lock Passwordless Playground 🎁<small> Make your e-mail or phone your password.</small></h1>
+    </div>
 
     <div class="row">
-      <div class="col-sm-8 col-xs-12">
-
+      <div class="col-sm-7 col-xs-12">
         <form id="playground" class="form form-horizontal">
           <div class="form-group">
-            <label class="col-xs-2 control-label">Mode</label>
+            <label class="col-xs-3 control-label">Mode</label>
             <div class="col-xs-4">
               <select name="method" class="form-control">
                 <option value="sms" selected>SMS</option>
@@ -42,23 +63,16 @@
           </div>
 
           <div class="form-group">
-            <label class="col-xs-2 control-label">clientID</label>
+            <label class="col-xs-3 control-label">clientID</label>
             <div class="col-xs-8">
               <input type="text" name="clientID" class="form-control" value="pmiDG0HgAJOKvcS8e5jaB0IjHL4ZtaKG" placeholder="YOUR_APP_CLIENT_ID">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-xs-2 control-label">domain</label>
+            <label class="col-xs-3 control-label">domain</label>
             <div class="col-xs-8">
               <input type="text" name="domain" class="form-control" value="samples.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-xs-2 control-label">icon</label>
-            <div class="col-xs-8">
-              <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
             </div>
           </div>
 
@@ -72,14 +86,28 @@
               <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">container</label>
+                <label class="col-xs-3 control-label">icon</label>
+                <div class="col-xs-8">
+                  <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-3 control-label">primaryColor</label>
+                <div class="col-xs-8">
+                  <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-xs-3 control-label">container</label>
                 <div class="col-xs-8">
                   <input type="text" name="container" class="form-control" placeholder="#container">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">defaultLocation</label>
+                <label class="col-xs-3 control-label">defaultLocation</label>
                 <div class="col-xs-8">
                   <input type="text" name="defaultLocation" class="form-control" placeholder="US">
                   <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
@@ -87,42 +115,35 @@
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">primaryColor</label>
-                <div class="col-xs-8">
-                  <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-xs-2 control-label">autoclose</label>
+                <label class="col-xs-3 control-label">autoclose</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="autoclose" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">closable</label>
+                <label class="col-xs-3 control-label">closable</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="closable" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">focusInput</label>
+                <label class="col-xs-3 control-label">focusInput</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="focusInput" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">gravatar</label>
+                <label class="col-xs-3 control-label">gravatar</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="gravatar" checked>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">dict</label>
+                <label class="col-xs-3 control-label">dict</label>
                 <div class="col-xs-8">
                   <textarea name="dict" class="form-control" rows="3" placeholder='{"title": "hello"}'></textarea>
                   <p class="help-block">See the full <a href="https://github.com/auth0/lock-passwordless#dict-specification" target="_blank">Dict Specification</a> for more details</p>
@@ -134,28 +155,28 @@
               <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">authParams</label>
+                <label class="col-xs-3 control-label">authParams</label>
                 <div class="col-xs-8">
                   <textarea name="authParams" class="form-control" rows="3" placeholder='{"scope": "opendid profile"}'></textarea>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">callbackURL</label>
+                <label class="col-xs-3 control-label">callbackURL</label>
                 <div class="col-xs-8">
                   <input type="text" name="callbackURL" class="form-control" placeholder="http://myapp.com">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">forceJSONP</label>
+                <label class="col-xs-3 control-label">forceJSONP</label>
                 <div class="col-xs-8">
                   <input type="checkbox" name="forceJSONP">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-xs-2 control-label">responseType</label>
+                <label class="col-xs-3 control-label">responseType</label>
                 <div class="col-xs-8">
                   <input type="text" name="responseType" class="form-control" placeholder="token">
                 </div>
@@ -165,63 +186,93 @@
           </div>
 
           <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-              <button type="submit" class="btn btn-small btn-info">Open me!</button>
+            <div class="col-xs-offset-2 col-xs-10 text-center">
+              <a id="show-lock" class="btn btn-primary btn-lg">Open me!</a>
             </div>
           </div>
 
         </form>
       </div>
 
-      <div class="col-sm-4 col-xs-12 well">
-        <strong>#container</strong>
-        <hr>
-        <div id="container" style="min-height:400px;"></div>
+      <div class="col-sm-5 col-xs-12">
+          <div class="panel-group" id="accordion" role="tablist">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#lock-code-panel">
+                    Lock Initialization Code
+                  </a>
+                </h4>
+              </div>
+              <div id="lock-code-panel" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+                  <pre id="lock-code" class="js"><code></code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#container-panel">
+                    #container
+                  </a>
+                </h4>
+              </div>
+              <div id="container-panel" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+                  <div id="container" style="min-height:420px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#output-panel">
+                    Lock Output
+                  </a>
+                </h4>
+              </div>
+              <div id="output-panel" class="panel-collapse collapse" role="tabpanel">
+                <div class="panel-body">
+                  <pre id="output" class="js"><code></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function(event) {
-        var remember = require('remember');
-        remember();
-      });
 
-      document.querySelector('form#playground').onsubmit = function (ev) {
-        ev.preventDefault();
+  <textarea id="lock-init-template" type="x-tmpl-mustache" style="display:none;">
+  var clientID = "{{ clientID }}";
+  var domain = "{{ domain }}";
+  var options = {{{ options }}};
 
-        var form = ev.target;
-        var method = form.querySelector('[name="method"]').value;
-        var clientID = form.querySelector('[name="clientID"]').value;
-        var domain = form.querySelector('[name="domain"]').value;
-        var lock = new Auth0LockPasswordless(clientID, domain);
+  var lock = new Auth0LockPasswordless(clientID, domain);
 
-        var options = {};
+  lock.{{method}}(options, function (err) {
+    if (err) {
+      console.error(err.description);
+    } else {
+      console.log('success!');
+    }
+  });
+  </textarea>
 
-        // Strings
-        options.icon = form.querySelector('[name="icon"]').value;
-        options.container = (form.querySelector('[name="container"]').value || '').replace('#', '');
-        options.defaultLocation = form.querySelector('[name="defaultLocation"]').value;
-        options.primaryColor = form.querySelector('[name="primaryColor"]').value;
-        options.responseType = form.querySelector('[name="responseType"]').value || undefined;
-        options.callbackURL = form.querySelector('[name="callbackURL"]').value || undefined;
+  <script type="text/javascript" src="build/lock-passwordless.js"></script>
+  <script type="text/javascript" src="assets/remember.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.3/mustache.min.js"></script>
 
-        // Booleans
-        options.closable = !!form.querySelector('[name="closable"]').checked;
-        options.focusInput = !!form.querySelector('[name="focusInput"]').checked;
-        options.gravatar = !!form.querySelector('[name="gravatar"]').checked;
-        options.forceJSONP = !!form.querySelector('[name="forceJSONP"]').checked;
+  <script type="text/javascript">
+    $(function() {
+      var remember = require('remember');
+      remember();
+    });
+  </script>
 
-        // Textareas + parsings
-        try { options.dict = JSON.parse(form.querySelector('[name="dict"]').value); } catch (e) {}
-        try { options.authParams = JSON.parse(form.querySelector('[name="authParams"]').value); } catch (e) {}
-
-        // Exectue Lock with options
-        lock[method](options, function (err, result) {
-          console.log('hello there.\nError: %o\nResult: %o', err, result);
-        });
-      }
-    </script>
-
-  </div>
+  <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
