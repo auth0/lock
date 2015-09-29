@@ -21,33 +21,38 @@ function bindEvents () {
     var clientID = $('[name="clientID"]').val();
     var domain = $('[name="domain"]').val();
 
-    showPanel('container-panel');
-
     try {
-      var lock = new Auth0LockPasswordless(clientID, domain);
+      if ($('.auth0-lock').length) {
+        window.lock.close();
+      }
+
+      window.lock = new Auth0LockPasswordless(clientID, domain);
 
       var options = getOptions();
-      var outputContainer = $('#output code');
 
       // Exectue Lock with options
       lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
-
         showPanel('output-panel');
-        
+        $('#output code').removeClass('text-danger');
+
         if (err) {
           outputContainer.text('Lock encountered an error:\n' + err.description);
           return;
         }
 
         if (method === 'magiclink') {
-          outputContainer.text('Email sent to ' + profile);
+          $('#output code').text('Email sent to ' + profile);
         } else {
-          outputContainer.text('{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}');
+          $('#output code').text('{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}');
           hljs.highlightBlock(outputContainer.get(0));
         }
       });
+
+      showPanel('container-panel');
+      
     } catch (e) {
-      outputContainer.text(e.message);
+      $('#output code').text(e.message);
+      $('#output code').addClass('text-danger');
       showPanel('output-panel');
     }
   });
