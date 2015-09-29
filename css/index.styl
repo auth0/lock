@@ -290,7 +290,9 @@ breakpoint(point, value = 0)
         margin-bottom 0
 
   .auth0-lock-input-block
-    margin-bottom 10px
+    margin-bottom 15px
+    +breakpoint("mobile")
+      margin-bottom 10px
 
     &:last-child
       margin-bottom 0
@@ -484,13 +486,15 @@ breakpoint(point, value = 0)
         cursor pointer
         color black
         font-size 14px
-        padding 10px 20px
+        padding 15px 20px
         margin 0
         text-overflow ellipsis
         width: 100%
         white-space nowrap
         overflow hidden
         box-sizing border-box
+        +breakpoint("mobile")
+          padding 10px 20px
         &.auth0-lock-list-code-highlighted
           background-color #2EB5FF
           color white
