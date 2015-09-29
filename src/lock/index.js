@@ -79,7 +79,7 @@ function extractUIOptions(id, options) {
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
-    icon: options.icon || iconUrl("auth0"),
+    icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
     closable: closable,
     dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
