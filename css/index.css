@@ -475,6 +475,9 @@
   pointer-events: none;
 }
 .auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
+  background-color: #eee !important;
+  -webkit-transition: background 0.5s ease;
+  transition: background 0.5s ease;
   cursor: initial;
   pointer-events: none;
 }
