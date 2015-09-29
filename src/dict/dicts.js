@@ -12,7 +12,7 @@ export default {
     email: {
       emailInputPlaceholder: "yours@example.com",
       footerText: "",
-      headerText: "Enter your email to sign in or create an account"
+      headerText: "Enter your email to sign in<br>or create an account"
     },
     title: "Auth0",
     welcome: "Welcome {name}!"
@@ -47,7 +47,7 @@ export default {
     email: {
       emailInputPlaceholder: "yours@example.com",
       footerText: "",
-      headerText: "Enter your email to sign in or create an account"
+      headerText: "Enter your email to sign in<br>or create an account"
     },
     title: "Auth0",
     welcome: "Welcome {name}!"
@@ -67,7 +67,7 @@ export default {
     },
     phone: {
       footerText: "",
-      headerText: "Enter your phone to sign in or create an account",
+      headerText: "Enter your phone to sign in<br>or create an account",
       phoneNumberInputPlaceholder: "your phone number"
     },
     title: "Auth0"
