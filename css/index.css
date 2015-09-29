@@ -622,6 +622,7 @@
   pointer-events: auto;
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
+  z-index: 1;
 }
 @media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock-opened {
