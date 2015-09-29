@@ -56,6 +56,7 @@ function getOptions () {
   options.defaultLocation = $('[name="defaultLocation"]').val();
   options.primaryColor = $('[name="primaryColor"]').val();
   options.callbackURL = $('[name="callbackURL"]').val() || undefined;
+  options.responseType = $('[name="responseType"]').val() || undefined;
 
   // Booleans
   options.closable = !!$('[name="closable"]').val();
