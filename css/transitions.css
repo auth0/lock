@@ -43,7 +43,7 @@
   -webkit-transform: none;
   transform: none;
 
-  -webkit-transition: transform linear;
+  -webkit-transition: -webkit-transform linear;
   transition: transform linear;
 }
 
@@ -62,7 +62,7 @@
   -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
 
-  -webkit-transition: transform .5s, opacity 1s linear;
+  -webkit-transition: -webkit-transform .5s, opacity 1s linear;
   transition: transform .5s, opacity 1s linear;
 }
 
@@ -82,7 +82,7 @@
   -webkit-transform: none;
   transform: none;
 
-  -webkit-transition: transform linear;
+  -webkit-transition: -webkit-transform linear;
   transition: transform linear;
 }
 
@@ -101,6 +101,6 @@
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 
-  -webkit-transition: transform .5s, opacity 1s linear;
+  -webkit-transition: -webkit-transform .5s, opacity 1s linear;
   transition: transform .5s, opacity 1s linear;
 }
