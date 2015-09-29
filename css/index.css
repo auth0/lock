@@ -188,6 +188,7 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   -webkit-filter: blur(40px) grayscale(1);
+  -ms-filter: blur(40px) grayscale(1);
   filter: blur(40px) grayscale(1);
   -webkit-backdrop-filter: blur(0);
   background-color: #fff;
@@ -205,6 +206,7 @@
 }
 .auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-blur.auth0-lock-no-grayscale {
   -webkit-filter: blur(100px);
+  -ms-filter: blur(100px);
   filter: blur(100px);
   -webkit-backdrop-filter: blur(0);
   background-position: center;
@@ -580,10 +582,6 @@
 }
 .auth0-lock .auth0-lock-confirmation .checkmark__check {
   transform-origin: 50% 50%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 1s forwards;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 1s forwards;
 }
 .auth0-lock .auth0-lock-forgot-link {
   font-size: 12px;
@@ -604,6 +602,7 @@
   z-index: -1;
   text-align: center;
   margin: 20px auto 0;
+  width: 100%;
   max-width: 300px;
 }
 .auth0-lock .auth0-lock-badge-bottom .auth0-lock-badge {
