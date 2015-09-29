@@ -38,6 +38,7 @@ function bindEvents () {
       lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
         showPanel('output-panel');
         $('#output code').removeClass('text-danger');
+        $('#output code').text('');
 
         if (err) {
           $('#output code').removeClass('text-danger');
@@ -53,7 +54,7 @@ function bindEvents () {
         }
       });
 
-      if (options.container === currentLockContainerSelector) {
+      if (options.container === window.currentLockContainerSelector) {
         showPanel('container-panel');
       }
 
