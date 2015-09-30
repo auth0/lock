@@ -128,6 +128,40 @@ function getOptions () {
   return options;
 }
 
+function renderAuthenticationSuccessMessage (authResponse) {
+  var template = $('#authentication-success-template').val();
+  $('#lock-code code').text(Mustache.render(template, authResponse));
+  hljs.highlightBlock($('#lock-code code').get(0));
+
+  showContainer(CONTAINERS.OUTPUT);
+}
+
+function tryDisplayAuthenticatedFeedback () {
+  var hashParams = {};
+  var hashArray = window.location.hash.replace("#", "").split("&");
+
+  $.each(hashArray, function (i, value) {
+      value = value.split("=");
+      hashParams[value[0]] = value[1];
+  });
+
+  var clientID = $('[name="clientID"]').val();
+  var domain = $('[name="domain"]').val();
+
+  try {
+    var lock = new Auth0LockPasswordless(clientID, domain);
+    var response = lock.parseHash(hashArray.access_token);
+
+    if (response.error) {
+      return;
+    }
+
+    renderAuthenticationSuccessMessage(response);
+  } catch (e) {
+    // fail silently..
+  }
+}
+
 $(function() {
   remember = require('remember')();
 
@@ -137,4 +171,8 @@ $(function() {
 
   remember.except('input[name=container]');
   $("[rel=tooltip]").tooltip({ placement: 'right'});
+
+  if (window.location.hash) {
+    tryDisplayAuthenticatedFeedback();
+  }
 });

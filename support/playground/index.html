@@ -93,7 +93,7 @@
               <div class="col-xs-12">
 
                 <a id="show-lock" class="btn btn-primary btn-lg btn-block">Open me!</a>
-                
+
               </div>
             </div>
 
@@ -332,6 +332,16 @@
      * https://github.com/auth0/lock-passwordless#api
      */
   });
+  </textarea>
+
+  <textarea id="authentication-success-template" type="x-tmpl-mustache" style="display:none;">
+  // You have successfuly authenticated into the Lock Playground
+  {
+    profile: {{{ profile }}},
+    id_token: "{{{ id_token }}}",
+    access_token: "{{{ access_token }}}",
+    state: "{{{ state }}}"
+  }
   </textarea>
 
   <script type="text/javascript" src="build/lock-passwordless.js"></script>
