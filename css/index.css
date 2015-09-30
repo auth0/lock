@@ -134,8 +134,8 @@
   background: #fff;
   height: 100px;
 }
-.auth0-lock.auth0-lock .auth0-lock-close,
-.auth0-lock.auth0-lock .auth0-lock-go-back {
+.auth0-lock.auth0-lock .auth0-lock-close-button,
+.auth0-lock.auth0-lock .auth0-lock-back-button {
   background: #fff;
   border-radius: 100px;
   height: 10px;
@@ -148,12 +148,13 @@
   z-index: 100;
   border: 6px solid #fff;
   cursor: pointer;
+  line-height: 0;
 }
-.auth0-lock.auth0-lock .auth0-lock-close polygon,
-.auth0-lock.auth0-lock .auth0-lock-go-back polygon {
+.auth0-lock.auth0-lock .auth0-lock-close-button polygon,
+.auth0-lock.auth0-lock .auth0-lock-back-button polygon {
   fill: #373737;
 }
-.auth0-lock.auth0-lock .auth0-lock-go-back {
+.auth0-lock.auth0-lock .auth0-lock-back-button {
   left: 14px;
 }
 .auth0-lock.auth0-lock .auth0-lock-header-avatar {
@@ -514,7 +515,7 @@
   animation: fadeInDownBig 1s both;
   display: block;
 }
-.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-go-back {
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-back-button {
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.25s;

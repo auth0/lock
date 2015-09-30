@@ -157,7 +157,7 @@ breakpoint(point, value = 0)
     background #fff
     height 100px
 
-  .auth0-lock-close, .auth0-lock-go-back
+  .auth0-lock-close-button, .auth0-lock-back-button
     background white
     border-radius 100px
     height 10px
@@ -170,10 +170,11 @@ breakpoint(point, value = 0)
     z-index 100
     border 6px solid white
     cursor pointer
+    line-height 0
     polygon
       fill #373737
 
-  .auth0-lock-go-back
+  .auth0-lock-back-button
     left 14px
 
   .auth0-lock-header-avatar
@@ -533,7 +534,7 @@ breakpoint(point, value = 0)
       animation fadeInDownBig 1s both
       display block
 
-    .auth0-lock-go-back
+    .auth0-lock-back-button
       opacity 0
       visibility hidden
       -webkit-transition .25s

@@ -3,7 +3,14 @@ import Icon from './icon';
 
 export default class IconButton extends React.Component {
   render() {
-    return <span onClick={::this.handleClick}><Icon name={this.props.name} /></span>;
+    const { name } = this.props;
+    const className = `auth0-lock-${name}-button`;
+
+    return (
+      <span className={className} onClick={::this.handleClick}>
+        <Icon name={this.props.name} />
+      </span>
+    )
   }
 
   handleClick(e) {
