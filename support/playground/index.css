@@ -8,6 +8,8 @@
 
 .form-group { margin-bottom: 8px; }
 
+div.tooltip { min-width: 150px; }
+
 /* */
 body { background-color: #f0f0f0; font-family: "Avenir", sans-serif; }
 
@@ -53,5 +55,3 @@ input[type="radio"], input[type="checkbox"] { float: left; margin-top: 20px; }
 
 .btn.btn-primary, a.btn.btn-primary { background-color: #00ADB5; }
 .btn.btn-primary:hover, a.btn.btn-primary:hover { background-color: #00ADB5; }
-
-/*# sourceMappingURL=index.css.map */
