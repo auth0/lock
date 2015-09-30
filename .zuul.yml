@@ -11,7 +11,7 @@ browsers:
   - name: firefox
     version: latest
   - name: ie
-    version: 9..latest
+    version: 10..latest
 browserify:
   - transform:
       name: babelify

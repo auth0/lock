@@ -375,7 +375,7 @@ You can check the [source code](src/dict/dicts.js) to see the actual dictionarie
 
 ## Browser Compatibility
 
-We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10, and working to support IE9. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
+We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
 ## Contributing
 
