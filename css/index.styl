@@ -220,8 +220,11 @@ breakpoint(point, value = 0)
       opacity 0
       -webkit-transition 0s ease 0s
       transition 0s ease 0s
-      +breakpoint("mobile")
-        display block
+
+    &.auth0-lock-blur-support
+      .auth0-lock-header-bg-blur
+        +breakpoint("mobile")
+          display block
 
       &.auth0-lock-no-grayscale
         -webkit-filter blur(100px)
