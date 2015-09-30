@@ -8,30 +8,34 @@
 
 .form-group { margin-bottom: 8px; }
 
-div.tooltip { min-width: 150px; }
-
 /* */
-body { background-color: #f0f0f0; font-family: "Avenir", sans-serif; }
+body { background-color: #f0f0f0; font-family: 'Avenir W01'; }
 
-h1, h2, h3, h4, h5 { font-family: "Avenir", sans-serif; }
+h1, h2, h3, h4, h5 { font-family: 'Avenir W01'; }
 
 a { color: #4A90E2; }
 
-.page-header { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.page-header { border-bottom: 0; margin: 20px 0; padding-bottom: 0; }
+@media (min-width: 992px) { .page-header { margin-top: 0; margin-bottom: 0; } }
 .page-header .wrapper { position: relative; }
-.page-header .text-center-title { height: 289px; }
-.page-header h1 { color: #000; display: inline-block; font-size: 70px; line-height: 100px; padding-left: 54px; text-align: left; position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); }
-.page-header h1:before { background: url("img/logo_auth0.svg") no-repeat scroll 0 0 transparent; background-size: contain; content: ''; width: 34px; height: 38px; position: absolute; top: -4px; left: 0; }
-.page-header h1 small { color: inherit; font-size: 30px; display: block; }
-.page-header .page-header-logo { width: 34px; position: absolute; top: -4px; left: 0; }
+@media (min-width: 992px) { .page-header .text-center-title { height: 289px; } }
+.page-header h1 { color: #000; display: inline-block; font-size: 40px; line-height: normal; text-align: center; }
+@media (min-width: 992px) { .page-header h1 { font-size: 70px; padding: 40px 0 0 54px; text-align: left; position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); } }
+.page-header .page-header-logo { display: block; margin: 0 auto; width: 174px; }
+@media (min-width: 992px) { .page-header .page-header-logo { width: 234px; position: absolute; top: 0; left: 0; } }
+.page-header .page-header-playground-image { width: 200px; }
 
 .wrapper-box { background-color: #fff; border-radius: 3px; padding: 20px; }
-.wrapper-box h2 { font-size: 22px; }
+.wrapper-box h2 { font-size: 18px; }
+@media (min-width: 992px) { .wrapper-box h2 { font-size: 22px; } }
 
 .wrapper-box-header { border-bottom: 1px solid #f1f1f1; margin: 0 -20px; padding-right: 20px; padding-left: 20px; }
 .wrapper-box-header h2 { margin: 5px 0 25px 0; }
+@media (min-width: 992px) { .wrapper-box-header h2 { margin: 5px 0 25px 0; } }
 
+.login-without-password .wrapper-box-header { margin-bottom: 20px; }
 .login-without-password h2 { margin: 5px 0 25px 0; }
+@media (min-width: 992px) { .login-without-password h2 { margin: 5px 0 25px 0; } }
 
 .nav.nav-tabs { margin: 0 -20px; padding-right: 20px; padding-left: 20px; }
 
@@ -42,16 +46,18 @@ a { color: #4A90E2; }
 .panel-default > .panel-heading { background-color: #fff; border-color: #f1f1f1; color: #000; padding-top: 20px; padding-bottom: 20px; }
 .panel-default > .panel-heading .panel-title { color: #000; }
 
-input[type="radio"], input[type="checkbox"] { float: left; margin-top: 20px; }
+.form-group-checkbox { padding-top: 12px; padding-bottom: 12px; }
 
 .form-group-button { margin-top: 25px; margin-bottom: 5px; }
 
-.control-label { color: #000; font-size: 12px; font-weight: normal; text-transform: uppercase; line-height: 39px; }
+.control-label { color: #000; font-size: 12px; font-weight: normal; text-transform: uppercase; }
 
 .form-control { background-color: rgba(155, 155, 155, 0.05); border-color: transparent; border-radius: 3px; box-shadow: none; height: 46px; padding: 12px; }
 .form-control:focus { border-color: #00ADB5; box-shadow: none; }
 
 .checkbox-wrapper { line-height: 46px; }
 
-.btn.btn-primary, a.btn.btn-primary { background-color: #00ADB5; }
+.btn.btn-primary, a.btn.btn-primary { background-color: #00ADB5; font-weight: 400; }
 .btn.btn-primary:hover, a.btn.btn-primary:hover { background-color: #00ADB5; }
+
+/*# sourceMappingURL=index.css.map */

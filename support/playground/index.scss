@@ -18,16 +18,16 @@
   margin-bottom: 8px;
 }
 
-div.tooltip { min-width: 150px; }
-
 /* */
 body {
   background-color: #f0f0f0;
-  font-family: "Avenir", sans-serif;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir W01';
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Avenir", sans-serif; 
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir W01';
 }
 
 a { 
@@ -37,57 +37,63 @@ a {
 // page header
 .page-header {
   border-bottom: 0;
-  margin-bottom: 0;
+  margin: 20px 0;
   padding-bottom: 0;
+  
+  @media (min-width: 768px) {}
+  
+  @media (min-width: 992px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   
   .wrapper {
     position: relative;
   }
   
   .text-center-title {
-    height: 289px;
+
+    @media (min-width: 992px) {
+      height: 289px;
+    }
   }
 
   h1 {
     color: #000;
     display: inline-block;
-    font-size: 70px;
-    line-height: 100px;
-    padding-left: 54px;
-    text-align: left;
+    font-size: 40px;
+    line-height: normal;
+    text-align: center;
     
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    
-    &:before {
-      background: url('img/logo_auth0.svg') no-repeat scroll 0 0 transparent;
-      background-size: contain;
-      content: '';
-      width: 34px;
-      height: 38px;
-      position: absolute;
-      top: -4px;
-      left: 0;
+    @media (min-width: 992px) {
+      font-size: 70px;
+      padding: 40px 0 0 54px;
+      text-align: left;
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
     }
-    
-    small {
-      color: inherit;
-      font-size: 30px;
-      display: block;
-    }
+
   }
   
   .page-header-logo {
-    width: 34px;
-    position: absolute;
-    top: -4px;
-    left: 0;
+    display: block;
+    margin: 0 auto;
+    width: 174px;
+    
+    @media (min-width: 992px) {
+      width: 234px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
   
-  .page-header-playground-image {}
+  .page-header-playground-image {
+    width: 200px;
+  }
 }
 
 .wrapper-box {
@@ -96,7 +102,11 @@ a {
   padding: 20px;
   
   h2 {
-    font-size: 22px;
+    font-size: 18px;
+    
+    @media (min-width: 992px) {
+      font-size: 22px;
+    }
   }
 }
 
@@ -108,13 +118,25 @@ a {
   
   h2 {
     margin: 5px 0 25px 0;
+    
+    @media (min-width: 992px) {
+      margin: 5px 0 25px 0;
+    }
   }
 }
 
 .login-without-password {
+  
+  .wrapper-box-header {
+    margin-bottom: 20px;
+  }
 
   h2 {
     margin: 5px 0 25px 0;
+    
+    @media (min-width: 992px) {
+      margin: 5px 0 25px 0;
+    }
   }
 }
 
@@ -155,8 +177,13 @@ a {
 
 input[type="radio"], 
 input[type="checkbox"] {
-  float: left;
-  margin-top: 20px;
+  // float: left;
+  // margin-top: 20px;
+}
+
+.form-group-checkbox {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .form-group-button {
@@ -169,7 +196,7 @@ input[type="checkbox"] {
   font-size: 12px;
   font-weight: normal;
   text-transform: uppercase;
-  line-height: 39px;
+  // line-height: 39px;
 }
 
 .form-control {
@@ -193,6 +220,7 @@ input[type="checkbox"] {
 .btn.btn-primary, 
 a.btn.btn-primary {
   background-color: #00ADB5;
+  font-weight: 400;
   
   &:hover {
     background-color: #00ADB5;
