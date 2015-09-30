@@ -8,6 +8,8 @@
 
 .form-group { margin-bottom: 8px; }
 
+@media (min-width: 992px) { .form-group-aux { width: 75%; margin-right: auto !important; margin-left: auto !important; } }
+
 /* */
 body { background-color: #f0f0f0; font-family: 'Avenir W01'; }
 
@@ -16,14 +18,15 @@ h1, h2, h3, h4, h5 { font-family: 'Avenir W01'; }
 a { color: #4A90E2; }
 
 .page-header { border-bottom: 0; margin: 20px 0; padding-bottom: 0; }
-@media (min-width: 992px) { .page-header { margin-top: 0; margin-bottom: 0; } }
+@media (min-width: 992px) { .page-header { margin-top: 40px; margin-bottom: 0; } }
 .page-header .wrapper { position: relative; }
 @media (min-width: 992px) { .page-header .text-center-title { height: 289px; } }
 .page-header h1 { color: #000; display: inline-block; font-size: 40px; line-height: normal; text-align: center; }
-@media (min-width: 992px) { .page-header h1 { font-size: 70px; padding: 40px 0 0 54px; text-align: left; position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); } }
+@media (min-width: 992px) { .page-header h1 { font-size: 70px; margin-top: 20px; padding: 40px 0 0 54px; text-align: left; position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); } }
 .page-header .page-header-logo { display: block; margin: 0 auto; width: 174px; }
 @media (min-width: 992px) { .page-header .page-header-logo { width: 234px; position: absolute; top: 0; left: 0; } }
 .page-header .page-header-playground-image { width: 200px; }
+@media (min-width: 992px) { .page-header .page-header-playground-image { width: 272px; } }
 
 .wrapper-box { background-color: #fff; border-radius: 3px; padding: 20px; }
 .wrapper-box h2 { font-size: 18px; }
@@ -37,6 +40,8 @@ a { color: #4A90E2; }
 .login-without-password h2 { margin: 5px 0 25px 0; }
 @media (min-width: 992px) { .login-without-password h2 { margin: 5px 0 25px 0; } }
 
+@media (min-width: 992px) { .wrapper-customization { min-height: 775px; } }
+
 .nav.nav-tabs { margin: 0 -20px; padding-right: 20px; padding-left: 20px; }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus { border: 0; border-bottom: 1px solid #000; outline: 0; }
@@ -47,17 +52,24 @@ a { color: #4A90E2; }
 .panel-default > .panel-heading .panel-title { color: #000; }
 
 .form-group-checkbox { padding-top: 12px; padding-bottom: 12px; }
+@media (min-width: 992px) { .form-group-checkbox { margin-top: 0; margin-bottom: 0; } }
+
+.form-group-checkbox-aux { overflow: hidden; margin-top: 17px; margin-bottom: 10px; }
+@media (min-width: 768px) { .form-group-checkbox-aux { margin-top: 0; margin-bottom: 0; } }
 
 .form-group-button { margin-top: 25px; margin-bottom: 5px; }
 
 .control-label { color: #000; font-size: 12px; font-weight: normal; text-transform: uppercase; }
+@media (min-width: 992px) { .control-label { line-height: 39px; } }
 
 .form-control { background-color: rgba(155, 155, 155, 0.05); border-color: transparent; border-radius: 3px; box-shadow: none; height: 46px; padding: 12px; }
 .form-control:focus { border-color: #00ADB5; box-shadow: none; }
 
-.checkbox-wrapper { line-height: 46px; }
+@media (min-width: 992px) { .checkbox-wrapper { line-height: 46px; } }
+.checkbox-wrapper input[type="radio"], .checkbox-wrapper input[type="checkbox"] { margin-top: 0; position: relative; top: -1px; }
+@media (min-width: 992px) { .checkbox-wrapper input[type="radio"], .checkbox-wrapper input[type="checkbox"] { float: left; margin-top: 20px; position: static; top: auto; } }
 
-.btn.btn-primary, a.btn.btn-primary { background-color: #00ADB5; font-weight: 400; }
+.btn.btn-primary, a.btn.btn-primary { background-color: #00ADB5; font-weight: normal; }
 .btn.btn-primary:hover, a.btn.btn-primary:hover { background-color: #00ADB5; }
 
 /*# sourceMappingURL=index.css.map */

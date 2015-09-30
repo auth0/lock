@@ -18,15 +18,22 @@
   margin-bottom: 8px;
 }
 
+.form-group-aux {
+  
+  @media (min-width: 992px) {
+    width: 75%;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
+
 /* */
 body {
   background-color: #f0f0f0;
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: 'Avenir W01';
 }
 
 h1, h2, h3, h4, h5 {
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: 'Avenir W01';
 }
 
@@ -43,7 +50,7 @@ a {
   @media (min-width: 768px) {}
   
   @media (min-width: 992px) {
-    margin-top: 0;
+    margin-top: 40px;
     margin-bottom: 0;
   }
   
@@ -67,15 +74,16 @@ a {
     
     @media (min-width: 992px) {
       font-size: 70px;
+      margin-top: 20px;
       padding: 40px 0 0 54px;
       text-align: left;
+      
       position: relative;
       top: 50%;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
-
   }
   
   .page-header-logo {
@@ -93,6 +101,10 @@ a {
   
   .page-header-playground-image {
     width: 200px;
+    
+    @media (min-width: 992px) {
+      width: 272px;
+    }
   }
 }
 
@@ -140,6 +152,13 @@ a {
   }
 }
 
+.wrapper-customization {
+  
+  @media (min-width: 992px) {
+    min-height: 775px;
+  }
+}
+
 .nav.nav-tabs {
   margin: 0 -20px;
   padding-right: 20px;
@@ -176,14 +195,27 @@ a {
 .form {}
 
 input[type="radio"], 
-input[type="checkbox"] {
-  // float: left;
-  // margin-top: 20px;
-}
+input[type="checkbox"] {}
 
 .form-group-checkbox {
   padding-top: 12px;
   padding-bottom: 12px;
+  
+  @media (min-width: 992px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.form-group-checkbox-aux {
+  overflow: hidden;
+  margin-top: 17px;
+  margin-bottom: 10px;
+  
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .form-group-button {
@@ -196,7 +228,10 @@ input[type="checkbox"] {
   font-size: 12px;
   font-weight: normal;
   text-transform: uppercase;
-  // line-height: 39px;
+    
+  @media (min-width: 992px) {
+    line-height: 39px;
+  }
 }
 
 .form-control {
@@ -214,13 +249,30 @@ input[type="checkbox"] {
 }
 
 .checkbox-wrapper {
-  line-height: 46px;
+  
+  @media (min-width: 992px) {
+    line-height: 46px;
+  }
+  
+  input[type="radio"], 
+  input[type="checkbox"] {
+    margin-top: 0;
+    position: relative;
+    top: -1px;
+    
+    @media (min-width: 992px) {
+      float: left;
+      margin-top: 20px;
+      position: static;
+      top: auto;
+    }
+  }
 }
 
 .btn.btn-primary, 
 a.btn.btn-primary {
   background-color: #00ADB5;
-  font-weight: 400;
+  font-weight: normal;
   
   &:hover {
     background-color: #00ADB5;
