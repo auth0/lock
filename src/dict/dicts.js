@@ -28,7 +28,8 @@ export default {
       "bad.email": "The email is invalid",
       "bad.phone_number": "The phone number is invalid",
       "lock.request": "We're sorry, something went wrong when sending the {medium}",
-      "sms_provider_error": "We're sorry, something went wrong when sending the SMS"
+      "sms_provider_error": "We're sorry, something went wrong when sending the SMS",
+      "sms_provider_error.bad_phone_number": "The number {phoneNumber} is not a valid phone number"
     },
     signIn: {
       "invalid_user_password": "Wrong {cred} or verification code",

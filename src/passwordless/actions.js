@@ -136,7 +136,13 @@ export function sendSMSSuccess(id) {
 
 export function sendSMSError(id, error) {
   const lock = read(getEntity, "lock", id);
-  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "SMS", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "SMS", __textOnly: true})
+  let errorMessage;
+  if (error.error === "sms_provider_error" && (error.description || "").indexOf("(Code: 21211)") > -1) {
+    errorMessage = l.ui.t(lock, ["error", "passwordless", "sms_provider_error.bad_phone_number"], {phoneNumber: c.fullPhoneNumber(lock), __textOnly: true});
+  } else {
+    errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "SMS", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "SMS", __textOnly: true})
+  }
+
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
