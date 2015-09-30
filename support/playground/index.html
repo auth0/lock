@@ -337,10 +337,17 @@
   <textarea id="authentication-success-template" type="x-tmpl-mustache" style="display:none;">
   // You have successfuly authenticated into the Lock Playground
   {
-    profile: {{{ profile }}},
-    id_token: "{{{ id_token }}}",
-    access_token: "{{{ access_token }}}",
-    state: "{{{ state }}}"
+    profile: {
+      iss: "{{ profile.iss }}",
+      sub: "{{ profile.sub }}",
+      aud: "{{ profile.aud }}",
+      exp: {{ profile.exp }},
+      iat: {{ profile.iat }}
+    },
+    id_token: "{{ id_token }}",
+    access_token: "{{ access_token }}",
+    refresh_token: "{{ refresh_token }}"
+    state: "{{ state }}"
   }
   </textarea>
 

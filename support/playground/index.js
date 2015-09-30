@@ -130,27 +130,27 @@ function getOptions () {
 
 function renderAuthenticationSuccessMessage (authResponse) {
   var template = $('#authentication-success-template').val();
-  $('#lock-code code').text(Mustache.render(template, authResponse));
-  hljs.highlightBlock($('#lock-code code').get(0));
+  var templateValues = {};
+
+  templateValues.access_token = authResponse.access_token || '';
+  templateValues.id_token = authResponse.id_token || '';
+  templateValues.refresh_token = authResponse.refresh_token || '';
+  templateValues.state = authResponse.state || '';
+  templateValues.profile = JSON.stringify(authResponse.profile);
+
+  $('#output code').text(Mustache.render(template, authResponse));
+  hljs.highlightBlock($('#output code').get(0));
 
   showContainer(CONTAINERS.OUTPUT);
 }
 
 function tryDisplayAuthenticatedFeedback () {
-  var hashParams = {};
-  var hashArray = window.location.hash.replace("#", "").split("&");
-
-  $.each(hashArray, function (i, value) {
-      value = value.split("=");
-      hashParams[value[0]] = value[1];
-  });
-
   var clientID = $('[name="clientID"]').val();
   var domain = $('[name="domain"]').val();
 
   try {
     var lock = new Auth0LockPasswordless(clientID, domain);
-    var response = lock.parseHash(hashArray.access_token);
+    var response = lock.parseHash(window.location.hash);
 
     if (response.error) {
       return;
@@ -173,6 +173,6 @@ $(function() {
   $("[rel=tooltip]").tooltip({ placement: 'right'});
 
   if (window.location.hash) {
-    tryDisplayAuthenticatedFeedback();
+    setTimeout(tryDisplayAuthenticatedFeedback, 500);
   }
 });
