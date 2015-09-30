@@ -18,6 +18,8 @@
   margin-bottom: 8px;
 }
 
+div.tooltip { min-width: 150px; }
+
 /* */
 body {
   background-color: #f0f0f0;
@@ -61,7 +63,7 @@ a {
     transform: translateY(-50%);
     
     &:before {
-      background: url('../img/logo_auth0.svg') no-repeat scroll 0 0 transparent;
+      background: url('img/logo_auth0.svg') no-repeat scroll 0 0 transparent;
       background-size: contain;
       content: '';
       width: 34px;
