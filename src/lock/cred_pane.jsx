@@ -75,7 +75,7 @@ export default class CredPane extends React.Component {
 
   componentWillSlideIn(slide) {
     const node = React.findDOMNode(this.refs.content);
-    this.originalHeight = window.getComputedStyle(node, null).height;
+    this.originalHeight = parseInt(window.getComputedStyle(node, null).height, 10);
     this.setState({height: slide.height, show: false});
   }
 
@@ -87,7 +87,7 @@ export default class CredPane extends React.Component {
   componentWillSlideOut(callback) {
     const node = React.findDOMNode(this.refs.content);
     const size = window.getComputedStyle(node, null).height;
-    callback({height: size, reverse: this.reverse});
+    callback({height: parseInt(size, 10), reverse: this.reverse});
   }
 
   t(keyPath, params) {
@@ -96,18 +96,59 @@ export default class CredPane extends React.Component {
 }
 
 class Placeholder extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.height) {
+
+      if (!this.state.height || nextProps.height === "auto") {
+        this.setState({height: nextProps.height});
+        return;
+      }
+
+      // TODO: Instead of storing a flag to indicate whether or not we are
+      // performing an animation, we should store the height we are going to.
+      // Also use rAF.
+      if (this.state.height != nextProps.height && !this.state.animating) {
+        const frames = 10;
+        let count = 0;
+        let current = parseInt(this.state.height, 10);
+        const last = parseInt(nextProps.height, 10);
+        const step = Math.abs(current - last) / frames;
+        const dir =  current < last ? 1 : -1;
+        const dh  = step * dir;
+
+        this.t = setInterval(() => {
+          if (count < frames - 1) {
+            this.setState({height: current, animating: true});
+            current += dh;
+            count++;
+          } else {
+            clearInterval(this.t);
+            delete this.t;
+            this.setState({height: last, animating: false});
+          }
+        }, 17);
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.t) {
+      clearInterval(this.t);
+    }
+  }
+
   render() {
     const { children, delay, height, show } = this.props;
-    const transition = `height ${delay}ms`;
-    const style = {
-      height: height,
-      transition: transition,
-      "WebkitTransition": transition
-    };
+    const style = this.state.height ? {height: this.state.height} : {};
 
     return (
       <div style={style}>
-        <div style={{display: show ? "block" : "none"}}>
+        <div style={{visibility: show ? "visible" : "hidden"}}>
           {children}
         </div>
       </div>
