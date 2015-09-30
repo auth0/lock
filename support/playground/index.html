@@ -15,6 +15,11 @@
   <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/857b99c8-12c9-4d60-85ee-16ebd935d187.css"/>
   <link rel="stylesheet" type="text/css" href="index.css">
 
+  <style>
+  .output-box {
+    min-height: 460px;
+  }
+  </style>
 </head>
 <body>
 
@@ -192,57 +197,18 @@
                   </div>
                 </div>
 
-                <!-- <div class="form-group">
-                  <label class="col-xs-12 col-sm-3 control-label">autoclose
-                    <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock will be closed automatically after a successful sign in. Defaults to 'false'." data-container="body">
-                      <i class="fa fa-question-circle">&nbsp;</i>
-                    </span>
-                  </label>
-                  <div class="col-xs-12 col-sm-8">
-                    <div class="checkbox-wrapper">
-                      <input type="checkbox" name="autoclose" checked>
-                    </div>
-                  </div>
-                </div> -->
-
-                <!-- <div class="form-group">
-                  <label class="col-xs-3 control-label">closable
-                    <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock can be closed. When a container option is provided its value is always 'false', otherwise it defaults to 'true'." data-container="body">
+                <div class="form-group">
+                  <label class="col-xs-3 control-label">Remember Last Login
+                    <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to 'true'.">
                       <i class="fa fa-question-circle">&nbsp;</i>
                     </span>
                   </label>
                   <div class="col-xs-8">
                     <div class="checkbox-wrapper">
-                      <input type="checkbox" name="closable" checked>
+                      <input type="checkbox" name="rememberLastLogin" checked>
                     </div>
                   </div>
-                </div> -->
-
-                <!-- <div class="form-group">
-                  <label class="col-xs-3 control-label">focusInput
-                    <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed." data-container="body">
-                      <i class="fa fa-question-circle">&nbsp;</i>
-                    </span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="checkbox-wrapper">
-                      <input type="checkbox" name="focusInput" checked>
-                    </div>
-                  </div>
-                </div> -->
-
-                <!-- <div class="form-group">
-                  <label class="col-xs-3 control-label">gravatar
-                    <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to 'true'." data-container="body">
-                      <i class="fa fa-question-circle">&nbsp;</i>
-                    </span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="checkbox-wrapper">
-                      <input type="checkbox" name="gravatar" checked>
-                    </div>
-                  </div>
-                </div> -->
+                </div>
 
                 <div class="form-group">
                   <label class="col-xs-12 col-sm-3 control-label">dict
@@ -316,54 +282,34 @@
 
       <div class="col-xs-12 col-sm-6">
 
-        <div class="wrapper-box">
-          <div class="panel-group" id="accordion" role="tablist">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#lock-code-panel">
-                    Lock Initialization Code
-                  </a>
-                </h4>
-              </div>
-              <div id="lock-code-panel" class="panel-collapse collapse" role="tabpanel">
-                <div class="panel-body">
-                  <pre id="lock-code" class="js"><code></code></pre>
-                </div>
-              </div>
+        <div class="wrapper-box customization">
+
+          <ul id="output-tabs" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#lock-code-panel" role="tab" data-toggle="tab">Code</a></li>
+            <li role="presentation"><a href="#output-panel" role="tab" data-toggle="tab">Authentication Result</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active output-box" id="lock-code-panel">
+              <pre id="lock-code" class="js output-box"><code></code></pre>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab">
-                <h4 id="container-panel-title" class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#container-panel">
-                    container
-                  </a>
-                </h4>
-              </div>
-              <div id="container-panel" class="panel-collapse collapse" role="tabpanel">
-                <div class="panel-body">
-                  <div id="container" class="lock-container" style="min-height:420px;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#output-panel">
-                    Lock Output
-                  </a>
-                </h4>
-              </div>
-              <div id="output-panel" class="panel-collapse collapse" role="tabpanel">
-                <div class="panel-body">
-                  <pre id="output" class="js"><code></code></pre>
-                </div>
-              </div>
+
+             <div role="tabpanel" class="tab-pane output-box" id="output-panel">
+               <pre id="output" class="js output-box"><code></code></pre>
             </div>
           </div>
         </div>
 
         <br />
+
+        <div id="lock-container-box" class="wrapper-box customization" style="display:none;">
+          <div class="wrapper-box-header">
+            <h2 id="container-panel-title">container</h2>
+          </div>
+
+          <div id="container" class="lock-container output-box"></div>
+        </div>
+
       </div>
     </div>
 
@@ -389,19 +335,6 @@
   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.3/mustache.min.js"></script>
-
-  <script type="text/javascript">
-    $(function() {
-      
-      var remember = require('remember');
-
-      // Avoid remembering the container input.
-      remember().except('input[name=container]');
-
-      $("[rel=tooltip]").tooltip({ placement: 'right'});
-
-    });
-  </script>
 
   <script type="text/javascript" src="index.js"></script>
 

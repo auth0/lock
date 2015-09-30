@@ -8,6 +8,10 @@
 
 [Auth0](https://auth0.com) Lock Passwordless is a professional looking dialog that allows users to log in by receiving a one-time password via email or text message.
 
+## Playground
+
+You can try it out yourself online at the [playground](https://auth0.github.io/lock-passwordless/).
+
 ## Usage
 
 The most common scenario would be to open the dialog when the user clicks a login button. In order to do that, you can initialize a new `Auth0LockPasswordless` object, register an event handler for the _click_ event on the button element, and finally invoke the `magiclink` method from it.
@@ -32,13 +36,13 @@ From CDN
 
 ```html
 <!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-0.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-1.min.js"></script>
 
 <!-- Latest minor release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-0.1.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-1.0.min.js"></script>
 
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-0.1.9.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-1.0.1.min.js"></script>
 ```
 
 From [bower](http://bower.io)

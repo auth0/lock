@@ -1,21 +1,19 @@
-function bindEvents () {
-  $('#code-modal').on('show.bs.modal', function (e) {
-    $('#code-modal').css('display','block');
-  });
+var CONTAINERS = {
+  LOCK: 1,
+  CODE: 2,
+  OUTPUT: 3
+};
 
+var currentLockContainerSelector;
+var remember;
+
+function bindEvents () {
   $('form input, form textarea, form select').on('change keydown keypress keyup mousedown click mouseup', function() {
       updateLockInitializationCode();
   });
 
   $('input[name=container]').on('change keydown keypress keyup mousedown click mouseup', function() {
       updateTargetContainer($(this).val());
-  });
-
-  $('.panel-heading a').on('click',function(e){
-      if($(this).parents('.panel').children('.panel-collapse').hasClass('in')){
-          e.stopPropagation();
-      }
-      e.preventDefault();
   });
 
   $('#show-lock').on('click', function (ev) {
@@ -34,9 +32,9 @@ function bindEvents () {
 
       var options = getOptions();
 
-      // Exectue Lock with options
+      // Execute Lock with options
       lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
-        showPanel('output-panel');
+        showContainer(CONTAINERS.OUTPUT);
         $('#output code').removeClass('text-danger');
         $('#output code').text('');
 
@@ -54,26 +52,37 @@ function bindEvents () {
         }
       });
 
-      if (options.container === window.currentLockContainerSelector) {
-        showPanel('container-panel');
+      setTimeout(function () {
+        remember.except('.auth0-lock-input');
+      }, 0);
+
+      if (options.container === currentLockContainerSelector) {
+        showContainer(CONTAINERS.LOCK);
+      } else {
+        $('#lock-container-box').hide();
       }
 
     } catch (e) {
       $('#output code').text(e.message);
       $('#output code').addClass('text-danger');
-      showPanel('output-panel');
+      showContainer(CONTAINERS.OUTPUT);
     }
   });
 }
 
-function showPanel (panelId) {
-  $("#" + panelId).prev().find('a').click();
+function showContainer (container) {
+  switch (container) {
+  case CONTAINERS.CODE: $('#output-tabs a[href="#lock-code-panel"]').tab('show'); break;
+  case CONTAINERS.OUTPUT: $('#output-tabs a[href="#output-panel"]').tab('show'); break;
+  case CONTAINERS.LOCK: $('#lock-container-box').show(); break;
+  default: break;
+  }
 }
 
 function updateTargetContainer (selector) {
   var sanitizedSelector = (selector ? selector.replace("#", "") : '') || 'container';
   $('.lock-container').prop('id', sanitizedSelector);
-  $("#container-panel-title").find('a').text(sanitizedSelector);
+  $("#container-panel-title").text(sanitizedSelector);
   currentLockContainerSelector = sanitizedSelector;
 }
 
@@ -119,6 +128,13 @@ function getOptions () {
   return options;
 }
 
-bindEvents();
-updateLockInitializationCode();
-showPanel('lock-code-panel');
+$(function() {
+  remember = require('remember')();
+
+  bindEvents();
+  updateLockInitializationCode();
+  showContainer(CONTAINERS.CODE);
+
+  remember.except('input[name=container]');
+  $("[rel=tooltip]").tooltip({ placement: 'right'});
+});

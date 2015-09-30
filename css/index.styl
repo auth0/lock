@@ -221,11 +221,6 @@ breakpoint(point, value = 0)
       -webkit-transition 0s ease 0s
       transition 0s ease 0s
 
-    &.auth0-lock-blur-support
-      .auth0-lock-header-bg-blur
-        +breakpoint("mobile")
-          display block
-
       &.auth0-lock-no-grayscale
         -webkit-filter blur(100px)
         -ms-filter blur(100px)
@@ -233,6 +228,11 @@ breakpoint(point, value = 0)
         -webkit-backdrop-filter: blur(0);
         background-position center
         background-size 500px
+
+    &.auth0-lock-blur-support
+      .auth0-lock-header-bg-blur
+        +breakpoint("mobile")
+          display block
 
     .auth0-lock-header-bg-solid
       height 100%
