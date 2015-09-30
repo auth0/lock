@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock-passwordless",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Auth0 Lock Passwordless",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",

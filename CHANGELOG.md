@@ -1,3 +1,14 @@
+## [0.1.13] - 2015-09-29
+
+### Fixed
+
+- [] Use javasript to animate CredPane height (`Gabriel Andretta`)
+  https://github.com/auth0/lock-passwordless/commit/7725b0e9280287a44c61718a4c566fbeb3d8df48
+- [] Merge with the last release (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/b338377a9d0906ef2963f5e1455efd01079a7690
+- [] Minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock-passwordless/commit/0d38fbfacac3e91e0767f53297c91b9f44b4d986
+
 ## [0.1.12] - 2015-09-28
 
 ### Fixed
