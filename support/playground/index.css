@@ -72,4 +72,6 @@ a { color: #4A90E2; }
 .btn.btn-primary, a.btn.btn-primary { background-color: #00ADB5; font-weight: normal; }
 .btn.btn-primary:hover, a.btn.btn-primary:hover { background-color: #00ADB5; }
 
+.output-box-result { background-color: rgba(34, 34, 40, 0.9); margin-top: 25px; padding: 25px 0; }
+
 /*# sourceMappingURL=index.css.map */
