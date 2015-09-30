@@ -14,6 +14,11 @@
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="index.css">
 
+  <style>
+  .output-box {
+    min-height: 460px;
+  }
+  </style>
 </head>
 <body>
 
@@ -28,7 +33,6 @@
           <div class="col-sm-7 col-xs-12">
             <div class="text-center text-center-title">
               <h1><small>Passwordless</small>Playground</h1>
-              <!-- <img class="page-header-logo" src="img/logo_auth0.svg" alt="" width="" height="" /> -->
             </div>
           </div>
           <div class="col-sm-5 col-xs-12">
@@ -183,6 +187,19 @@
                 </div>
 
                 <div class="form-group">
+                  <label class="col-xs-3 control-label">Remember Last Login
+                    <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to 'true'.">
+                      <i class="fa fa-question-circle">&nbsp;</i>
+                    </span>
+                  </label>
+                  <div class="col-xs-8">
+                    <div class="checkbox-wrapper">
+                      <input type="checkbox" name="rememberLastLogin" checked>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
                   <label class="col-xs-3 control-label">focusInput
                     <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed.">
                       <i class="fa fa-question-circle">&nbsp;</i>
@@ -278,50 +295,35 @@
       </div>
 
       <div class="col-sm-5 col-xs-12">
-          <div class="panel-group" id="accordion" role="tablist">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#lock-code-panel">
-                    Lock Initialization Code
-                  </a>
-                </h4>
-              </div>
-              <div id="lock-code-panel" class="panel-collapse collapse" role="tabpanel">
-                <div class="panel-body">
-                  <pre id="lock-code" class="js"><code></code></pre>
-                </div>
-              </div>
+
+        <div class="wrapper-box customization">
+
+          <ul id="output-tabs" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#lock-code-panel" role="tab" data-toggle="tab">Code</a></li>
+            <li role="presentation"><a href="#output-panel" role="tab" data-toggle="tab">Authentication Result</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active output-box" id="lock-code-panel">
+              <pre id="lock-code" class="js output-box"><code></code></pre>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab">
-                <h4 id="container-panel-title" class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#container-panel">
-                    container
-                  </a>
-                </h4>
-              </div>
-              <div id="container-panel" class="panel-collapse collapse" role="tabpanel">
-                <div class="panel-body">
-                  <div id="container" class="lock-container" style="min-height:420px;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#output-panel">
-                    Lock Output
-                  </a>
-                </h4>
-              </div>
-              <div id="output-panel" class="panel-collapse collapse" role="tabpanel">
-                <div class="panel-body">
-                  <pre id="output" class="js"><code></code></pre>
-                </div>
-              </div>
+
+             <div role="tabpanel" class="tab-pane output-box" id="output-panel">
+               <pre id="output" class="js output-box"><code></code></pre>
             </div>
           </div>
+        </div>
+
+        <br />
+
+        <div id="lock-container-box" class="wrapper-box customization" style="display:none;">
+          <div class="wrapper-box-header">
+            <h2 id="container-panel-title">container</h2>
+          </div>
+
+          <div id="container" class="lock-container output-box"></div>
+        </div>
+
       </div>
     </div>
 
@@ -347,17 +349,6 @@
   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.3/mustache.min.js"></script>
-
-  <script type="text/javascript">
-    $(function() {
-      var remember = require('remember');
-
-      // Avoid remembering the container input.
-      remember().except('input[name=container]');
-
-      $("[rel=tooltip]").tooltip({ placement: 'right'});
-    });
-  </script>
 
   <script type="text/javascript" src="index.js"></script>
 </body>
