@@ -100,9 +100,9 @@
 
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="ui-options">
-                    
+
                     <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
-                    
+
                     <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Icon</label>
                       <div class="col-xs-12 col-sm-8 col-md-9 col-right">
@@ -189,7 +189,7 @@
                   </div>
 
                   <div role="tabpanel" class="tab-pane" id="auth-options">
-                    
+
                     <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
 
                     <div class="form-group">
@@ -223,8 +223,8 @@
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Response Type</label>
                       <div class="col-xs-12 col-sm-8 col-md-9">
                         <select name="responseType" class="form-control">
-                          <option value="code" selected>Code</option>
                           <option value="token">Token</option>
+                          <option value="code" selected>Code</option>
                         </select>
                         <span class="help-block">Should be set to 'token' for Single Page Applications, and 'code' otherwise. Defaults to 'code' when callbackURL is provided, and to 'token' otherwise.</span>
                       </div>
@@ -277,35 +277,36 @@
 
 
     <textarea id="lock-init-template" type="x-tmpl-mustache" style="display:none;">
-    var clientID = "{{ clientID }}";
-    var domain = "{{ domain }}";
-    var options = {{{ options }}};
+var clientID = "{{ clientID }}";
+var domain = "{{ domain }}";
 
-    var lock = new Auth0LockPasswordless(clientID, domain);
+var options = {{{ options }}};
 
-    lock.{{method}}(options, function (...) {
-      /* callbacks vary depending on how you use the lock
-       * you can find more information on the lock's README
-       * https://github.com/auth0/lock-passwordless#api
-       */
-    });
+var lock = new Auth0LockPasswordless(clientID, domain);
+
+lock.{{method}}(options, function (...) {
+  /* callbacks vary depending on how you use the lock
+   * you can find more information on the lock's README
+   * https://github.com/auth0/lock-passwordless#api
+   */
+});
     </textarea>
 
     <textarea id="authentication-success-template" type="x-tmpl-mustache" style="display:none;">
-    // You have successfuly authenticated into the Lock Playground
-    {
-      profile: {
-        iss: "{{ profile.iss }}",
-        sub: "{{ profile.sub }}",
-        aud: "{{ profile.aud }}",
-        exp: {{ profile.exp }},
-        iat: {{ profile.iat }}
-      },
-      id_token: "{{ id_token }}",
-      access_token: "{{ access_token }}",
-      refresh_token: "{{ refresh_token }}"
-      state: "{{ state }}"
-    }
+// You have successfuly authenticated
+{
+  profile: {
+    iss: "{{ profile.iss }}",
+    sub: "{{ profile.sub }}",
+    aud: "{{ profile.aud }}",
+    exp: {{ profile.exp }},
+    iat: {{ profile.iat }}
+  },
+  id_token: "{{ id_token }}",
+  access_token: "{{ access_token }}",
+  refresh_token: "{{ refresh_token }}"
+  state: "{{ state }}"
+}
     </textarea>
 
   </div>
