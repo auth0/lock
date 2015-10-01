@@ -12,14 +12,7 @@
   <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/styleguide/latest/index.css" />
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/857b99c8-12c9-4d60-85ee-16ebd935d187.css"/>
   <link rel="stylesheet" type="text/css" href="index.css">
-
-  <style>
-  .output-box {
-    min-height: 460px;
-  }
-  </style>
 </head>
 <body>
 
@@ -30,326 +23,292 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-7">
             <div class="text-center text-center-title">
-              <h1><img class="page-header-logo" src="img/logo_passwordless.svg" alt="" width="" height="" />Playground</h1>
+              <h1><img class="page-header-logo" src="img/logo_passwordless.svg" alt="Auth0 Passwordless" width="" height="" />Playground</h1>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-5 hidden-xs">
             <div class="text-center text-center-image">
-              <img class="page-header-playground-image" src="img/passwordless-playground-image.svg" alt="" width="" height="" />
+              <img class="page-header-playground-image" src="img/passwordless-playground-image.svg" alt="Auth0 Playground Passwordless image" width="" height="" />
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-7">
+    <div class="page-content">
+      <div class="row">
 
-        <form id="playground" class="form form-horizontal">
-          <div class="wrapper-box login-without-password">
+        <div class="col-xs-12 col-sm-6 col-md-7 content-col-left">
 
-            <div class="wrapper-box-header">
-              <h2>Login without Password</h2>
-            </div>
+          <form id="playground" class="form form-horizontal">
 
-            <div class="form-group">
-              <label class="col-xs-12 col-sm-12 col-md-3 control-label">Mode
-              <span class="help tip-right" rel="tooltip" data-original-title="Define how you want your user to log into your app." data-container="body">
-                <i class="fa fa-question-circle">&nbsp;</i>
-              </span>
-              </label>
-              <div class="col-xs-12 col-sm-12 col-md-9">
-                <select name="method" class="form-control">
-                  <option value="sms" selected>SMS</option>
-                  <option value="magiclink">Magic Link</option>
-                  <option value="emailcode">Email Code</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-xs-12 col-sm-12 col-md-3 control-label">ClientID
-                <span class="help tip-right" rel="tooltip" data-original-title="Your Auth0 client ID." data-container="body">
-                  <i class="fa fa-question-circle">&nbsp;</i>
-                </span>
-              </label>
-              <div class="col-xs-12 col-sm-12 col-md-9">
-                <input type="text" name="clientID" class="form-control" value="Gcs1jSu5FAFpDrPe0jrqGpfbTEkzCk15" placeholder="YOUR_APP_CLIENT_ID">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-xs-12 col-sm-12 col-md-3 control-label">Domain
-                <span class="help tip-right" rel="tooltip" data-original-title="Your Auth0 domain." data-container="body">
-                  <i class="fa fa-question-circle">&nbsp;</i>
-                </span>
-              </label>
-              <div class="col-xs-12 col-sm-12 col-md-9">
-                <input type="text" name="domain" class="form-control" value="pwdlessdemo.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
-              </div>
-            </div>
-
-            <div class="form-group form-group-button">
-              <div class="col-xs-12">
-
-                <a id="show-lock" class="btn btn-primary btn-lg btn-block">Open me!</a>
-
-              </div>
-            </div>
-
-          </div>
-
-          <br />
-
-          <div class="wrapper-customization">
-            <div class="wrapper-box customization">
+            <div class="wrapper-box login-without-password">
 
               <div class="wrapper-box-header">
-                <h2>Customization</h2>
+                <h2>Log in without Passwords</h2>
               </div>
 
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#ui-options" aria-controls="ui-options" role="tab" data-toggle="tab">UI Options</a></li>
-                <li role="presentation"><a href="#auth-options" aria-controls="auth-options" role="tab" data-toggle="tab">Auth Options</a></li>
-              </ul>
+              <div class="form-group">
+                <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Mode</label>
+                <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                  <select name="method" class="form-control">
+                    <option value="sms" selected>SMS</option>
+                    <option value="magiclink">Magic Link</option>
+                    <option value="emailcode">Email Code</option>
+                  </select>
+                  <span class="help-block">Define how you want your user to log into your app.</span>
+                </div>
+              </div>
 
-              <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="ui-options">
+              <div class="form-group">
+                <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Client ID</label>
+                <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                  <input type="text" name="clientID" class="form-control" value="Gcs1jSu5FAFpDrPe0jrqGpfbTEkzCk15" placeholder="YOUR_APP_CLIENT_ID">
+                  <span class="help-block">Your Auth0 client ID.</span>
+                </div>
+              </div>
 
-                  <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
+              <div class="form-group">
+                <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Domain</label>
+                <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                  <input type="text" name="domain" class="form-control" value="pwdlessdemo.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
+                  <span class="help-block">Your Auth0 domain.</span>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">icon
-                      <span class="help tip-right" rel="tooltip" data-original-title="Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo." data-container="body">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
-                    </div>
-                  </div>
+              <div class="form-group form-group-button">
+                <div class="col-xs-12">
+                  <a id="show-lock" class="btn btn-primary btn-lg btn-block">Open me!</a>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">primaryColor
-                      <span class="help tip-right" rel="tooltip" data-original-title="Defines the primary color of the Lock, all colors used in the widget will be calculated from it. Defaults to '#ea5323'." data-container="body">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
-                    </div>
-                  </div>
+            </div>
 
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">container
-                      <span class="help tip-right" rel="tooltip" data-original-title="The id of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window." data-container="body">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <input type="text" name="container" class="form-control" placeholder="#container">
-                    </div>
-                  </div>
+            <br />
 
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">defaultLocation
-                      <span class="help tip-right" rel="tooltip" data-original-title="ISO country code of the country that will be selected by default when entering a phone number. Defaults to 'US'." data-container="body">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <input type="text" name="defaultLocation" class="form-control" placeholder="US">
-                      <p class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> for the region that will be selected by default</p>
-                    </div>
-                  </div>
+            <div class="wrapper-customization">
+              <div class="wrapper-box customization">
 
-                  <div class="form-group form-group-aux">
-                    <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
-                      <input type="checkbox" name="autoclose" checked>
-                      <label class="control-label">autoclose
-                        <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock will be closed automatically after a successful sign in. Defaults to 'false'." data-container="body">
-                          <i class="fa fa-question-circle">&nbsp;</i>
-                        </span>
-                      </label>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
-                      <input type="checkbox" name="closable" checked>
-                      <label class="control-label">closable
-                        <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock can be closed. When a container option is provided its value is always 'false', otherwise it defaults to 'true'." data-container="body">
-                          <i class="fa fa-question-circle">&nbsp;</i>
-                        </span>
-                      </label>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
-                      <input type="checkbox" name="focusInput" checked>
-                      <label class="control-label">focusInput
-                        <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed." data-container="body">
-                          <i class="fa fa-question-circle">&nbsp;</i>
-                        </span>
-                      </label>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
-                      <input type="checkbox" name="gravatar" checked>
-                      <label class="control-label">gravatar
-                        <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to 'true'." data-container="body">
-                          <i class="fa fa-question-circle">&nbsp;</i>
-                        </span>
-                      </label>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
-                      <input type="checkbox" name="rememberLastLogin" checked>
-                      <label class="control-label">Remember Last Login
-                        <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to 'true'.">
-                          <i class="fa fa-question-circle">&nbsp;</i>
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">dict
-                      <span class="help tip-right" rel="tooltip" data-original-title="Allows to customize every piece of text displayed in the Lock. Defaults to '{}'." data-container="body">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <textarea name="dict" class="form-control" rows="3" placeholder='{"title": "hello"}'></textarea>
-                      <p class="help-block">See the full <a href="https://github.com/auth0/lock-passwordless#dict-specification" target="_blank">Dict Specification</a> for more details</p>
-                    </div>
-                  </div>
-
+                <div class="wrapper-box-header">
+                  <h2>Customization</h2>
                 </div>
 
-                <div role="tabpanel" class="tab-pane" id="auth-options">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#ui-options" aria-controls="ui-options" role="tab" data-toggle="tab">UI Options</a></li>
+                  <li role="presentation"><a href="#auth-options" aria-controls="auth-options" role="tab" data-toggle="tab">Auth Options</a></li>
+                </ul>
 
-                  <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
-
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">authParams
-                      <span class="help tip-right" rel="tooltip" data-original-title="Specifies extra parameters that will be sent when starting a login. Defaults to '{}'.">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <textarea name="authParams" class="form-control" rows="3" placeholder='{"scope": "opendid profile"}'></textarea>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">callbackURL
-                      <span class="help tip-right" rel="tooltip" data-original-title="The url Auth0 will redirect back after authentication. When provided it will enable redirect mode. Defaults to the empty string "" (no callback URL)." data-container="body">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <input type="text" name="callbackURL" class="form-control" placeholder="http://myapp.com">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="form-group-checkbox-aux">
-                    <!-- <div class="col-xs-12 col-sm-12 form-group-checkbox-aux"> -->
-                      <label class="col-xs-6 col-md-3 control-label">forceJSONP
-                        <span class="help tip-right" rel="tooltip" data-original-title="Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to 'false'." data-container="body">
-                          <i class="fa fa-question-circle">&nbsp;</i>
-                        </span>
-                      </label>
-                      <div class="col-xs-6 col-md-9">
-                        <div class="checkbox-wrapper">
-                          <input type="checkbox" name="forceJSONP">
-                        </div>
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="ui-options">
+                    
+                    <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
+                    
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Icon</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
+                        <span class="help-block">Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.</span>
                       </div>
-                    <!-- </div> -->
                     </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Primary Color</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <input type="text" name="primaryColor" class="form-control" placeholder="#ea5323">
+                        <span class="help-block">Defines the primary color of the Lock, all colors used in the widget will be calculated from it. Defaults to '#ea5323'.</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Container</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <input type="text" name="container" class="form-control" placeholder="#container">
+                        <span class="help-block">The id of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Default Location</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <input type="text" name="defaultLocation" class="form-control" placeholder="US">
+                        <span class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> of the country that will be selected by default when entering a phone number. Defaults to 'US'.</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group form-group-aux">
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                        <input type="checkbox" name="autoclose" checked>
+                        <label class="control-label">Auto Close
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock will be closed automatically after a successful sign in. Defaults to 'false'." data-container="body">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                        <input type="checkbox" name="closable" checked>
+                        <label class="control-label">Closable
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock can be closed. When a container option is provided its value is always 'false', otherwise it defaults to 'true'." data-container="body">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                        <input type="checkbox" name="focusInput" checked>
+                        <label class="control-label">Focus Input
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed." data-container="body">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                        <input type="checkbox" name="gravatar" checked>
+                        <label class="control-label">Gravatar
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to 'true'." data-container="body">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 form-group-checkbox">
+                        <input type="checkbox" name="rememberLastLogin" checked>
+                        <label class="control-label">Remember Last Login
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to 'true'.">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Resource Dictionary</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <textarea name="dict" class="form-control" rows="3" placeholder='{"title": "hello"}'></textarea>
+                        <span class="help-block">Allows to customize every piece of text displayed in the Lock. Defaults to '{}'. See the full <a href="https://github.com/auth0/lock-passwordless#dict-specification" target="_blank">Dict Specification</a> for more details</span>
+                      </div>
+                    </div>
+
                   </div>
 
-                  <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-3 control-label">responseType
-                      <span class="help tip-right" rel="tooltip" data-original-title="Should be set to 'token' for Single Page Applications, and 'code' otherwise. Defaults to 'code' when callbackURL is provided, and to 'token' otherwise." data-container="body">
-                        <i class="fa fa-question-circle">&nbsp;</i>
-                      </span>
-                    </label>
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                      <input type="text" name="responseType" class="form-control" placeholder="token">
-                    </div>
-                  </div>
+                  <div role="tabpanel" class="tab-pane" id="auth-options">
+                    
+                    <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
 
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Authentication Parameters</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <textarea name="authParams" class="form-control" rows="3" placeholder='{"scope": "opendid profile"}'></textarea>
+                        <span class="help-block">Specifies extra parameters that will be sent when starting a login. Defaults to '{}'.</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Callback URL</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <input type="text" name="callbackURL" class="form-control" placeholder="http://myapp.com">
+                        <span class="help-block">The url Auth0 will redirect back after authentication. When provided it will enable redirect mode. Defaults to the empty string "" (no callback URL).</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group form-group-checkbox-inline-aux">
+                      <div class="col-xs-12 col-sm-12 form-group-checkbox form-group-checkbox-inline">
+                        <input type="checkbox" name="forceJSONP">
+                        <label class="col-md-3 control-label">Force JSONP
+                          <span class="help tip-right" rel="tooltip" data-original-title="Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to 'false'." data-container="body">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Response Type</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9">
+                        <select name="responseType" class="form-control">
+                          <option value="code" selected>Code</option>
+                          <option value="token">Token</option>
+                        </select>
+                        <span class="help-block">Should be set to 'token' for Single Page Applications, and 'code' otherwise. Defaults to 'code' when callbackURL is provided, and to 'token' otherwise.</span>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
+
+              </div>
+            </div>
+
+            <br />
+
+          </form>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-5 content-col-right">
+
+          <div class="wrapper-box customization">
+
+            <ul id="output-tabs" class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#lock-code-panel" role="tab" data-toggle="tab">Code</a></li>
+              <li role="presentation"><a href="#output-panel" role="tab" data-toggle="tab">Authentication Result</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active output-box" id="lock-code-panel">
+                <pre id="lock-code" class="js output-box"><code></code></pre>
               </div>
 
+               <div role="tabpanel" class="tab-pane output-box" id="output-panel">
+                 <pre id="output" class="js output-box"><code></code></pre>
+              </div>
             </div>
           </div>
 
           <br />
 
-        </form>
-      </div>
-
-      <div class="col-xs-12 col-sm-6 col-md-5">
-
-        <div class="wrapper-box customization">
-
-          <ul id="output-tabs" class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#lock-code-panel" role="tab" data-toggle="tab">Code</a></li>
-            <li role="presentation"><a href="#output-panel" role="tab" data-toggle="tab">Authentication Result</a></li>
-          </ul>
-
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active output-box" id="lock-code-panel">
-              <pre id="lock-code" class="js output-box"><code></code></pre>
+          <div id="lock-container-box" class="wrapper-box customization" style="display:none;">
+            <div class="wrapper-box-header">
+              <h2 id="container-panel-title">container</h2>
             </div>
 
-             <div role="tabpanel" class="tab-pane output-box" id="output-panel">
-               <pre id="output" class="js output-box"><code></code></pre>
-            </div>
+            <div id="container" class="lock-container output-box output-box-result"></div>
           </div>
         </div>
 
-        <br />
-
-        <div id="lock-container-box" class="wrapper-box customization" style="display:none;">
-          <div class="wrapper-box-header">
-            <h2 id="container-panel-title">container</h2>
-          </div>
-
-          <div id="container" class="lock-container output-box output-box-result"></div>
-        </div>
       </div>
-
     </div>
 
 
-  <textarea id="lock-init-template" type="x-tmpl-mustache" style="display:none;">
-  var clientID = "{{ clientID }}";
-  var domain = "{{ domain }}";
-  var options = {{{ options }}};
+    <textarea id="lock-init-template" type="x-tmpl-mustache" style="display:none;">
+    var clientID = "{{ clientID }}";
+    var domain = "{{ domain }}";
+    var options = {{{ options }}};
 
-  var lock = new Auth0LockPasswordless(clientID, domain);
+    var lock = new Auth0LockPasswordless(clientID, domain);
 
-  lock.{{method}}(options, function (...) {
-    /* callbacks vary depending on how you use the lock
-     * you can find more information on the lock's README
-     * https://github.com/auth0/lock-passwordless#api
-     */
-  });
-  </textarea>
+    lock.{{method}}(options, function (...) {
+      /* callbacks vary depending on how you use the lock
+       * you can find more information on the lock's README
+       * https://github.com/auth0/lock-passwordless#api
+       */
+    });
+    </textarea>
 
-  <textarea id="authentication-success-template" type="x-tmpl-mustache" style="display:none;">
-  // You have successfuly authenticated into the Lock Playground
-  {
-    profile: {
-      iss: "{{ profile.iss }}",
-      sub: "{{ profile.sub }}",
-      aud: "{{ profile.aud }}",
-      exp: {{ profile.exp }},
-      iat: {{ profile.iat }}
-    },
-    id_token: "{{ id_token }}",
-    access_token: "{{ access_token }}",
-    refresh_token: "{{ refresh_token }}"
-    state: "{{ state }}"
-  }
-  </textarea>
+    <textarea id="authentication-success-template" type="x-tmpl-mustache" style="display:none;">
+    // You have successfuly authenticated into the Lock Playground
+    {
+      profile: {
+        iss: "{{ profile.iss }}",
+        sub: "{{ profile.sub }}",
+        aud: "{{ profile.aud }}",
+        exp: {{ profile.exp }},
+        iat: {{ profile.iat }}
+      },
+      id_token: "{{ id_token }}",
+      access_token: "{{ access_token }}",
+      refresh_token: "{{ refresh_token }}"
+      state: "{{ state }}"
+    }
+    </textarea>
+
+  </div>
 
   <script type="text/javascript" src="build/lock-passwordless.js"></script>
   <script type="text/javascript" src="assets/remember.js"></script>
