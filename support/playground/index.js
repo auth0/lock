@@ -58,6 +58,7 @@ function bindEvents () {
 
       if (options.container === currentLockContainerSelector) {
         showContainer(CONTAINERS.LOCK);
+        $('html,body').animate({ scrollTop: $("#" + currentLockContainerSelector).offset().top}, 'slow');
       } else {
         $('#lock-container-box').hide();
       }
