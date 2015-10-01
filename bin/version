@@ -11,9 +11,33 @@ function run(cmd, done) {
   proc.stderr.pipe(process.stderr);
 }
 
+function replaceDistScriptNames(str, scriptName, version, bumpedVersion) {
+  var v = version.split(".");
+  var vb = bumpedVersion.split(".");
+  var regExp = new RegExp(scriptName + "-" + v[0] + "(\." + v[1] + ")?(\." + v[2] + ")?(\.min)?.js", "g");
+
+  return str.replace(regExp, function (_, minor, patch, min) {
+    var r = [scriptName + "-" + vb[0]];
+    if (minor) r.push(vb[1]);
+    if (patch) r.push(vb[2]);
+    if (min) r.push("min");
+    r.push("js");
+    return r.join(".");
+  });
+}
+
+function replaceDistScriptNamesInFile(filePath, scriptName, version, bumpedVersion) {
+  var str = fs.readFileSync(filePath, "utf8");
+  var bumpedStr = replaceDistScriptNames(str, scriptName, version, bumpedVersion);
+  fs.writeFileSync(filePath, bumpedStr);
+}
+
 try {
+  var version = require('../package.json').version;
   var rootDir = path.resolve(__dirname, '..');
   var res = bump(rootDir, process.argv.pop());
+
+  replaceDistScriptNamesInFile("README.md", "lock-passwordless", version, res.version);
 
   unreleased(res.version, rootDir, 'auth0/lock-passwordless', function (err, changelog) {
     if (err) { return process.exit(1); }
