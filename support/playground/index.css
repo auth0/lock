@@ -69,13 +69,16 @@ pre { background-color: rgba(155, 155, 155, 0.05); border-radius: 3px; }
 @media (min-width: 768px) { .form-group-checkbox { margin-bottom: 28px; } }
 @media (min-width: 992px) { .form-group-checkbox { margin-top: 0; margin-bottom: 0; } }
 .form-group-checkbox input[type="radio"], .form-group-checkbox input[type="checkbox"] { float: right; }
-@media (min-width: 768px) { .form-group-checkbox input[type="radio"], .form-group-checkbox input[type="checkbox"] { margin-top: 2px; } }
+@media (min-width: 768px) { .form-group-checkbox input[type="radio"], .form-group-checkbox input[type="checkbox"] { float: left; margin-top: 2px; margin-right: 10px; } }
 .form-group-checkbox .control-label { float: left; }
 @media (min-width: 768px) { .form-group-checkbox .control-label { line-height: inherit; } }
 
 .form-group-checkbox-inline { margin-top: 12px; margin-bottom: 5px; }
 @media (min-width: 768px) { .form-group-checkbox-inline { margin-top: 0; margin-bottom: 0; } }
-@media (min-width: 992px) { .form-group-checkbox-inline input[type="radio"], .form-group-checkbox-inline input[type="checkbox"] { float: none; margin-top: 0; position: relative; top: -2px; } }
+@media (min-width: 768px) { .form-group-checkbox-inline input[type="radio"], .form-group-checkbox-inline input[type="checkbox"] { float: none; margin-top: 0; position: relative; top: -2px; } }
+.form-group-checkbox-inline .control-label { padding-right: 0; padding-left: 0; }
+@media (min-width: 768px) { .form-group-checkbox-inline .control-label { line-height: inherit; padding-right: inherit; } }
+@media (min-width: 992px) { .form-group-checkbox-inline .control-label { padding-left: inherit; } }
 
 @media (min-width: 992px) { .form-group-checkbox-inline-aux { margin-top: -20px; margin-bottom: 20px; } }
 

@@ -75,8 +75,6 @@ a {
     margin-top: 40px;
   }
   
-  @media (min-width: 992px) {}
-  
   .wrapper {
     position: relative;
   }
@@ -139,7 +137,7 @@ a {
   }
 }
 
-// page header
+// page content
 .page-content {
 
   @media (min-width: 768px) {
@@ -262,8 +260,6 @@ pre {
   background-color: transparent;
 }
 
-.form {}
-
 input[type="radio"], 
 input[type="checkbox"] {}
 
@@ -285,7 +281,9 @@ input[type="checkbox"] {}
     float: right;
     
     @media (min-width: 768px) {
+      float: left;
       margin-top: 2px;
+      margin-right: 10px;
     }
   }
   
@@ -310,11 +308,25 @@ input[type="checkbox"] {}
   input[type="radio"], 
   input[type="checkbox"] {
     
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
       float: none;
       margin-top: 0;
       position: relative;
       top: -2px;
+    }
+  }
+  
+  .control-label {
+    padding-right: 0;
+    padding-left: 0;
+    
+    @media (min-width: 768px) {
+      line-height: inherit;
+      padding-right: inherit;
+    }
+    
+    @media (min-width: 992px) {
+      padding-left: inherit;
     }
   }
 }
