@@ -57,7 +57,7 @@ If you are targeting mobile audiences, it's recommended that you add:
 
 ### Browserify
 
-If you are using browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
+If you are using Browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
 
 ``` json
 {
@@ -69,6 +69,20 @@ If you are using browserify to build your project, you will need to add the foll
 }
 ```
 
+### webpack
+
+If you are using webpack, you will need the following loaders:
+
+```js
+[
+  {
+    test: /node_modules\/auth0-lock\/.*\.js$/,
+    loaders: 'transform?brfs!transform?packageify'
+  },
+  {test: /\.ejs$/, loader: 'transform?ejsify'},
+  {test: /\.json$/, loader: 'json'}
+]
+```
 
 ## Documentation
 You can find the full documentation for Lock on the [Auth0 docs site](https://auth0.com/docs/libraries/lock).
