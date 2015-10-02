@@ -27,7 +27,8 @@
 
 /* */
 body {
-  background-color: #f0f0f0;
+  background: url('img/bg-dots.svg') repeat scroll 0 0 #fafafa;
+  background-size: 100px;
 }
 
 a { 
@@ -69,6 +70,8 @@ a {
   border-bottom: 0;
   margin: 20px 0;
   padding-bottom: 0;
+  position: relative;
+  z-index: 10;
   
   @media (min-width: 768px) {
     margin-bottom: 0;
@@ -130,15 +133,19 @@ a {
   
   .page-header-playground-image {
     width: 200px;
+    margin-bottom: -159px;
     
     @media (min-width: 992px) {
       width: 272px;
+      margin-bottom: -216px;
     }
   }
 }
 
 // page content
 .page-content {
+  position: relative;
+  z-index: 10;
 
   @media (min-width: 768px) {
     
@@ -152,6 +159,16 @@ a {
       .nav > li > a {
         padding-top: 9px;
         padding-bottom: 28px;
+      }
+    }
+  }
+  
+  @media (min-width: 992px) {
+
+    .content-col-right {
+      
+      .nav > li > a {
+        padding-top: 10px;
       }
     }
   }
@@ -214,14 +231,23 @@ a {
   padding-right: 20px;
   padding-left: 20px;
   
+  @media (min-width: 992px) {
+    font-size: 18px;
+  }
+  
   li {
     margin-top: 0;
   }
 }
 
 .nav > li > a {
+  color: #9b9b9b;
   padding-top: 26px;
   padding-bottom: 24px;
+  
+  &:hover {
+    color: shade(#9b9b9b, 30%);
+  }
 }
   
 .nav-tabs > li.active > a, 
@@ -415,4 +441,48 @@ a.btn.btn-primary {
   border-radius: 3px;
   margin-top: 25px;
   padding: 25px 0;
+}
+
+// diagonal lines
+.container {
+  overflow: hidden;
+  
+
+}
+
+.dummy-skew-1 {
+  // overflow: hidden;
+  position: absolute;
+  top: 36%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00221b;
+  -webkit-transform: skewY(-14deg);
+  z-index: 2;
+}
+
+.dummy-skew-2 {
+  position: absolute;
+  top: 136%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #9b9b9b;
+  // -webkit-transform: skewY(-14deg);
+  z-index: 1;
+  
+  &:after {
+    background-color: #9b9b9b;
+    content: '';
+    display: block;
+    -webkit-transform: skewY(-14deg);
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    // top: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 }
