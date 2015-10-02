@@ -86,7 +86,7 @@ You can find the full documentation for Lock on the [Auth0 docs site](https://au
 * [Release process][release-process] notes.
 * [Auth0Lock playground][playground-url]
 * [Using Refresh Tokens][using-refresh-tokens]
-* Legacy **Auth0Widget** [Migration guide][migration-guide] to **AuthoLock**
+* Legacy **Auth0Widget** [Migration guide][migration-guide] to **Auth0Lock**
 
 
 ## Demos
