@@ -31,9 +31,9 @@ body {
   background-size: 100px;
 }
 
-a { 
+a {
   color: #4A90E2;
-  
+
   &:hover,
   &:focus {
     color: shade(#4A90E2, 30%);
@@ -42,14 +42,14 @@ a {
 
 .form-group {
   margin-bottom: 40px;
-  
+
 
   @media (min-width: 768px) {
 
     .col-left {
       padding-right: 7.5px;
     }
-    
+
     .col-right {
       padding-left: 7.5px;
     }
@@ -57,7 +57,7 @@ a {
 }
 
 .form-group-aux {
-  
+
   @media (min-width: 992px) {
     width: 90%;
     margin-right: auto !important;
@@ -71,17 +71,16 @@ a {
   margin: 20px 0;
   padding-bottom: 0;
   position: relative;
-  z-index: 10;
-  
+
   @media (min-width: 768px) {
     margin-bottom: 0;
     margin-top: 40px;
   }
-  
+
   .wrapper {
     position: relative;
   }
-  
+
   .text-center-title {
 
     @media (min-width: 992px) {
@@ -95,46 +94,46 @@ a {
     font-size: 40px;
     line-height: normal;
     text-align: center;
-    
+
     @media (min-width: 768px) {
       margin-top: 60px;
       padding: 40px 0 0 42px;
       text-align: left;
       position: relative;
     }
-    
+
     @media (min-width: 992px) {
       font-size: 70px;
       margin-top: 20px;
       padding: 40px 0 0 54px;
-      
+
       top: 50%;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
   }
-  
+
   .page-header-logo {
     display: block;
     margin: 0 auto;
     width: 174px;
-    
+
     @media (min-width: 768px) {
       position: absolute;
       top: 0;
       left: 0;
     }
-    
+
     @media (min-width: 992px) {
       width: 234px;
     }
   }
-  
+
   .page-header-playground-image {
     width: 200px;
     margin-bottom: -159px;
-    
+
     @media (min-width: 992px) {
       width: 272px;
       margin-bottom: -216px;
@@ -145,28 +144,27 @@ a {
 // page content
 .page-content {
   position: relative;
-  z-index: 10;
 
   @media (min-width: 768px) {
-    
+
     .content-col-left {
       padding-right: 7.5px;
     }
-    
+
     .content-col-right {
       padding-left: 7.5px;
-      
+
       .nav > li > a {
         padding-top: 9px;
         padding-bottom: 28px;
       }
     }
   }
-  
+
   @media (min-width: 992px) {
 
     .content-col-right {
-      
+
       .nav > li > a {
         padding-top: 10px;
       }
@@ -178,10 +176,10 @@ a {
   background-color: #fff;
   border-radius: 3px;
   padding: 20px;
-  
+
   h2 {
     font-size: 18px;
-    
+
     @media (min-width: 992px) {
       font-size: 22px;
     }
@@ -193,10 +191,10 @@ a {
   margin: 0 -20px;
   padding-right: 20px;
   padding-left: 20px;
-  
+
   h2 {
     margin: 5px 0 25px 0;
-    
+
     @media (min-width: 992px) {
       margin: 5px 0 25px 0;
     }
@@ -204,14 +202,14 @@ a {
 }
 
 .login-without-password {
-  
+
   .wrapper-box-header {
     margin-bottom: 20px;
   }
 
   h2 {
     margin: 5px 0 25px 0;
-    
+
     @media (min-width: 992px) {
       margin: 5px 0 25px 0;
     }
@@ -219,7 +217,7 @@ a {
 }
 
 .wrapper-customization {
-  
+
   @media (min-width: 992px) {
     min-height: 775px;
   }
@@ -230,11 +228,11 @@ a {
   margin: 0 -20px;
   padding-right: 20px;
   padding-left: 20px;
-  
+
   @media (min-width: 992px) {
     font-size: 18px;
   }
-  
+
   li {
     margin-top: 0;
   }
@@ -244,14 +242,14 @@ a {
   color: #9b9b9b;
   padding-top: 26px;
   padding-bottom: 24px;
-  
+
   &:hover {
     color: shade(#9b9b9b, 30%);
   }
 }
-  
-.nav-tabs > li.active > a, 
-.nav-tabs > li.active > a:hover, 
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   border: 0;
   border-bottom: 1px solid #000;
@@ -286,36 +284,36 @@ pre {
   background-color: transparent;
 }
 
-input[type="radio"], 
+input[type="radio"],
 input[type="checkbox"] {}
 
 .form-group-checkbox {
   padding-top: 12px;
   padding-bottom: 12px;
-  
+
   @media (min-width: 768px) {
     margin-bottom: 28px;
   }
-  
+
   @media (min-width: 992px) {
     margin-top: 0;
     margin-bottom: 0;
   }
-  
-  input[type="radio"], 
+
+  input[type="radio"],
   input[type="checkbox"] {
     float: right;
-    
+
     @media (min-width: 768px) {
       float: left;
       margin-top: 2px;
       margin-right: 10px;
     }
   }
-  
+
   .control-label {
     float: left;
-    
+
     @media (min-width: 768px) {
       line-height: inherit;
     }
@@ -325,15 +323,15 @@ input[type="checkbox"] {}
 .form-group-checkbox-inline {
   margin-top: 12px;
   margin-bottom: 5px;
-  
+
   @media (min-width: 768px) {
     margin-top: 0;
     margin-bottom: 0;
   }
-  
-  input[type="radio"], 
+
+  input[type="radio"],
   input[type="checkbox"] {
-    
+
     @media (min-width: 768px) {
       float: none;
       margin-top: 0;
@@ -341,16 +339,16 @@ input[type="checkbox"] {}
       top: -2px;
     }
   }
-  
+
   .control-label {
     padding-right: 0;
     padding-left: 0;
-    
+
     @media (min-width: 768px) {
       line-height: inherit;
       padding-right: inherit;
     }
-    
+
     @media (min-width: 992px) {
       padding-left: inherit;
     }
@@ -373,20 +371,20 @@ input[type="checkbox"] {}
 .control-label {
   color: #000;
   font-size: 12px;
-    
+
   @media (min-width: 768px) {
     line-height: 46px;
     padding-top: 0 !important;
   }
-  
+
   &.lines-2 {
 
     @media (min-width: 768px) {
       line-height: inherit;
     }
-    
+
     @media (min-width: 1212px) {
-      line-height: 46px; 
+      line-height: 46px;
     }
   }
 }
@@ -398,7 +396,7 @@ input[type="checkbox"] {}
   box-shadow: none;
   height: 46px;
   padding: 12px;
-  
+
   &:focus {
     border-color: #00ADB5;
     box-shadow: none;
@@ -406,17 +404,17 @@ input[type="checkbox"] {}
 }
 
 .checkbox-wrapper {
-  
+
   @media (min-width: 992px) {
     line-height: 46px;
   }
-  
-  input[type="radio"], 
+
+  input[type="radio"],
   input[type="checkbox"] {
     margin-top: 0;
     position: relative;
     top: -1px;
-    
+
     @media (min-width: 992px) {
       float: left;
       margin-top: 20px;
@@ -426,11 +424,11 @@ input[type="checkbox"] {}
   }
 }
 
-.btn.btn-primary, 
+.btn.btn-primary,
 a.btn.btn-primary {
   background-color: #00ADB5;
   font-weight: normal;
-  
+
   &:hover {
     background-color: shade(#00ADB5, 30%);
   }
@@ -446,7 +444,7 @@ a.btn.btn-primary {
 // diagonal lines
 .container {
   overflow: hidden;
-  
+
 
 }
 
@@ -471,7 +469,7 @@ a.btn.btn-primary {
   background-color: #9b9b9b;
   // -webkit-transform: skewY(-14deg);
   z-index: 1;
-  
+
   &:after {
     background-color: #9b9b9b;
     content: '';

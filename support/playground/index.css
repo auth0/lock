@@ -18,7 +18,7 @@ a:hover, a:focus { color: #33649e; }
 
 @media (min-width: 992px) { .form-group-aux { width: 90%; margin-right: auto !important; margin-left: auto !important; } }
 
-.page-header { border-bottom: 0; margin: 20px 0; padding-bottom: 0; position: relative; z-index: 10; }
+.page-header { border-bottom: 0; margin: 20px 0; padding-bottom: 0; position: relative; }
 @media (min-width: 768px) { .page-header { margin-bottom: 0; margin-top: 40px; } }
 .page-header .wrapper { position: relative; }
 @media (min-width: 992px) { .page-header .text-center-title { height: 289px; } }
@@ -31,7 +31,7 @@ a:hover, a:focus { color: #33649e; }
 .page-header .page-header-playground-image { width: 200px; margin-bottom: -159px; }
 @media (min-width: 992px) { .page-header .page-header-playground-image { width: 272px; margin-bottom: -216px; } }
 
-.page-content { position: relative; z-index: 10; }
+.page-content { position: relative; }
 @media (min-width: 768px) { .page-content .content-col-left { padding-right: 7.5px; }
   .page-content .content-col-right { padding-left: 7.5px; }
   .page-content .content-col-right .nav > li > a { padding-top: 9px; padding-bottom: 28px; } }
