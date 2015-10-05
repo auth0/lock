@@ -56,6 +56,7 @@
   width: 100%;
   height: 100%;
   right: 0;
+  z-index: 1000000;
 }
 @media (min-width: 481px) {
   .auth0-lock.auth0-lock {
@@ -644,7 +645,6 @@
 .auth0-lock.auth0-lock.auth0-lock-opened {
   opacity: 1;
   pointer-events: auto;
-  z-index: 1;
 }
 @media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock.auth0-lock-opened {
