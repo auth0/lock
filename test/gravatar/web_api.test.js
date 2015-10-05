@@ -11,6 +11,7 @@ let fail, success;
 describe("fetching image", function() {
   let img;
 
+  // TODO: stub preload.img and add tests for preload.
   function getCallback(name) {
     for (var i = 0; i < img.addEventListener.callCount; i++) {
       if (img.addEventListener.getCall(i).args[0] == name) {
@@ -20,7 +21,8 @@ describe("fetching image", function() {
   }
 
   function invokeCallback(name) {
-    return getCallback(name).args[1].call();
+    const args = [name === "error" ? {} : undefined];
+    return getCallback(name).args[1].apply(undefined, args);
   }
 
   beforeEach(function() {

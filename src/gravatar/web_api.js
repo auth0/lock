@@ -1,6 +1,7 @@
 import { md5 } from 'blueimp-md5';
 import { validateEmail } from '../cred/index';
 import jsonp from '../utils/jsonp_utils';
+import * as preload from '../preload/index';
 
 export function profile(email, success, error) {
   if (validateEmail(email)) {
@@ -22,11 +23,9 @@ export function profile(email, success, error) {
 export function img(email, success, error) {
   if (validateEmail(email)) {
     const url = `https://secure.gravatar.com/avatar/${md5(email)}?d=404`;
-    const img = document.createElement("img");
-    img.addEventListener("load", () => { success(email, img); });
-    img.addEventListener("error", () => { error(email) });
-    img.src = url;
-    return img;
+    preload.img(url, function(err, img) {
+      err ? error(email) : success(email, img);
+    });
   } else {
     error(email);
   }
