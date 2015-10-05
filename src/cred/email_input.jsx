@@ -10,8 +10,7 @@ export default class EmailInput extends React.Component {
   }
 
   componentDidMount() {
-    const node = React.findDOMNode(this.refs.input);
-    const email = node.value;
+    const email = this.refs.input.value;
     if (email && this.props.gravatar) {
       requestGravatar(email);
     }

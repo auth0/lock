@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class GlobalError extends React.Component {
   render() {
@@ -20,7 +21,7 @@ export default class GlobalError extends React.Component {
 
   componentWillEnter(callback) {
     // console.log("componentWillEnter");
-    const node = React.findDOMNode(this);
+    const node = ReactDOM.findDOMNode(this);
     var computedStyle = window.getComputedStyle(node, null);
     var height = computedStyle.height;
     var paddingTop = computedStyle.paddingTop;
@@ -43,7 +44,7 @@ export default class GlobalError extends React.Component {
 
   componentWillLeave(callback) {
     // console.log("componentWillLeave");
-    const node = React.findDOMNode(this);
+    const node = ReactDOM.findDOMNode(this);
     node.style.transition = "all 0.2s";
     node.style.height = "0px";
     node.style.paddingTop = "0px";

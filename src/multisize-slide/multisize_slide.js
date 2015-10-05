@@ -1,5 +1,6 @@
 import React from 'react';
-import CSSCore from 'react/lib/CSSCore';
+import ReactDOM from 'react-dom';
+import CSSCore from 'fbjs/lib/CSSCore';
 
 export default class Slider extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class Slider extends React.Component {
       const prevComponent = this.refs[prev.key];
 
       const transition = (component, className, delay) => {
-        const node = React.findDOMNode(component);
+        const node = ReactDOM.findDOMNode(component);
         const activeClassName = `${className}-active`;
 
         CSSCore.addClass(node, className);

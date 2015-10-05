@@ -27,7 +27,7 @@ export default class PhoneNumberInput extends React.Component {
   }
 
   focus() {
-    React.findDOMNode(this.refs.input).focus();
+    this.refs.input.focus();
     this.handleFocus();
   }
 

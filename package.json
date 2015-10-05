@@ -79,9 +79,11 @@
   "dependencies": {
     "auth0-js": "^6.7.2",
     "blueimp-md5": "^1.1.0",
+    "fbjs": "^0.3.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
-    "react": "^0.13.3",
+    "react": "^0.14.0-rc1",
+    "react-dom": "^0.14.0-rc1",
     "trim": "0.0.1"
   }
 }

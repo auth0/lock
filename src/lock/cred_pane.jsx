@@ -74,8 +74,8 @@ export default class CredPane extends React.Component {
   }
 
   componentWillSlideIn(slide) {
-    const node = React.findDOMNode(this.refs.content);
-    this.originalHeight = parseInt(window.getComputedStyle(node, null).height, 10);
+    const height = window.getComputedStyle(this.refs.content, null).height;
+    this.originalHeight = parseInt(height, 10);
     this.setState({height: slide.height, show: false});
   }
 
@@ -85,8 +85,7 @@ export default class CredPane extends React.Component {
   }
 
   componentWillSlideOut(callback) {
-    const node = React.findDOMNode(this.refs.content);
-    const size = window.getComputedStyle(node, null).height;
+    const size = window.getComputedStyle(this.refs.content, null).height;
     callback({height: parseInt(size, 10), reverse: this.reverse});
   }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Icon from '../icon/icon';
 import * as cc from './country_codes';
 import * as su from '../utils/string_utils';
@@ -21,7 +22,7 @@ export default class LocationSelect extends React.Component {
   componentDidMount() {
     if (!isSmallScreen()) {
       setTimeout(() => {
-        const node = React.findDOMNode(this.refs.input);
+        const node = this.refs.input;
         node.focus();
         if (node.setSelectionRange) {
           const length = node.value.length;
@@ -137,12 +138,11 @@ class LocationList extends React.Component {
     // expressed more clearly.
     const { highlighted } = this.refs;
     if (highlighted) {
-      const scrollableNode = React.findDOMNode(this);
-      const highlightedNode = React.findDOMNode(highlighted);
-      const relativeOffsetTop = highlightedNode.offsetTop - scrollableNode.scrollTop;
+      const scrollableNode = ReactDOM.findDOMNode(this);
+      const relativeOffsetTop = highlighted.offsetTop - scrollableNode.scrollTop;
       let scrollTopDelta = 0;
-      if (relativeOffsetTop + highlightedNode.offsetHeight > scrollableNode.clientHeight) {
-        scrollTopDelta = relativeOffsetTop + highlightedNode.offsetHeight - scrollableNode.clientHeight;
+      if (relativeOffsetTop + highlighted.offsetHeight > scrollableNode.clientHeight) {
+        scrollTopDelta = relativeOffsetTop + highlighted.offsetHeight - scrollableNode.clientHeight;
       } else if (relativeOffsetTop < 0) {
         scrollTopDelta = relativeOffsetTop;
       }

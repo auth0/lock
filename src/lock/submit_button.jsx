@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import SubmitIcon from './submit_icon';
 
 export default class SubmitButton extends React.Component {
@@ -16,7 +17,7 @@ export default class SubmitButton extends React.Component {
   }
 
   focus() {
-    React.findDOMNode(this).focus();
+    ReactDOM.findDOMNode(this).focus();
   }
 }
 
