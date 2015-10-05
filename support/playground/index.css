@@ -4,7 +4,7 @@
 
 .modal { background: transparent; }
 
-.container { max-width: 1416px; }
+.container { max-width: 1416px; position: relative; z-index: 3; }
 
 a { color: #4A90E2; }
 a:hover, a:focus { color: #33649e; }
@@ -102,9 +102,9 @@ pre { background-color: rgba(155, 155, 155, 0.05); border-radius: 3px; }
 
 .output-box-result { background-color: rgba(34, 34, 40, 0.9); border-radius: 3px; margin-top: 25px; padding: 25px 0; }
 
-.skew-wrapper { background: url("img/bg-dots.svg") repeat scroll 0 0 #fafafa; background-size: 100px; position: relative; overflow: hidden; }
+.skew-wrapper { background: url("img/bg-dots.svg") repeat scroll 0 0 #fafafa; background-size: 100px; position: relative; overflow: hidden; z-index: 1; }
 
-.skew-1, .skew-2 { position: absolute; left: 0; width: 100%; height: calc(50%); -webkit-transform: skewY(-14deg); -ms-transform: skewY(-14deg); transform: skewY(-14deg); z-index: 2; }
+.skew-1, .skew-2 { position: absolute; left: 0; width: 100%; height: calc(50%); -webkit-transform: skewY(-14deg); -ms-transform: skewY(-14deg); transform: skewY(-14deg); }
 
 .skew-1 { background-color: #f0f0f0; top: 25%; z-index: 2; }
 

@@ -23,6 +23,8 @@
 
 .container {
   max-width: 1416px;
+  position: relative;
+  z-index: 3;
 }
 
 // paswordless styles
@@ -442,6 +444,7 @@ a.btn.btn-primary {
   background-size: 100px;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 .skew-1,
@@ -451,14 +454,12 @@ a.btn.btn-primary {
   width: 100%;
   height: calc(50%);
   transform: skewY(-14deg);
-  z-index: 2;
 }
 
 .skew-1 {
   background-color: #f0f0f0;
   top: 25%;
   z-index: 2;
-  
 }
 
 .skew-2 {
