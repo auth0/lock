@@ -6,9 +6,6 @@
 
 .container { max-width: 1416px; }
 
-/* */
-body { background: url("img/bg-dots.svg") repeat scroll 0 0 #fafafa; background-size: 100px; }
-
 a { color: #4A90E2; }
 a:hover, a:focus { color: #33649e; }
 
@@ -105,11 +102,12 @@ pre { background-color: rgba(155, 155, 155, 0.05); border-radius: 3px; }
 
 .output-box-result { background-color: rgba(34, 34, 40, 0.9); border-radius: 3px; margin-top: 25px; padding: 25px 0; }
 
-.container { overflow: hidden; }
+.skew-wrapper { background: url("img/bg-dots.svg") repeat scroll 0 0 #fafafa; background-size: 100px; position: relative; overflow: hidden; }
 
-.dummy-skew-1 { position: absolute; top: 36%; left: 0; width: 100%; height: 100%; background-color: #00221b; -webkit-transform: skewY(-14deg); z-index: 2; }
+.skew-1, .skew-2 { position: absolute; left: 0; width: 100%; height: calc(50%); -webkit-transform: skewY(-14deg); -ms-transform: skewY(-14deg); transform: skewY(-14deg); z-index: 2; }
 
-.dummy-skew-2 { position: absolute; top: 136%; left: 0; width: 100%; height: 100%; background-color: #9b9b9b; z-index: 1; }
-.dummy-skew-2:after { background-color: #9b9b9b; content: ''; display: block; -webkit-transform: skewY(-14deg); width: 100%; height: 40%; position: absolute; top: 0; left: 0; z-index: 1; }
+.skew-1 { background-color: #f0f0f0; top: 25%; z-index: 2; }
+
+.skew-2 { background-color: #eaeaea; top: 75%; z-index: 1; }
 
 /*# sourceMappingURL=index.css.map */

@@ -25,12 +25,7 @@
   max-width: 1416px;
 }
 
-/* */
-body {
-  background: url('img/bg-dots.svg') repeat scroll 0 0 #fafafa;
-  background-size: 100px;
-}
-
+// paswordless styles
 a {
   color: #4A90E2;
 
@@ -442,45 +437,32 @@ a.btn.btn-primary {
 }
 
 // diagonal lines
-.container {
+.skew-wrapper {
+  background: url('img/bg-dots.svg') repeat scroll 0 0 #fafafa;
+  background-size: 100px;
+  position: relative;
   overflow: hidden;
-
-
 }
 
-.dummy-skew-1 {
-  // overflow: hidden;
+.skew-1,
+.skew-2 {
   position: absolute;
-  top: 36%;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: #00221b;
-  -webkit-transform: skewY(-14deg);
+  height: calc(50%);
+  transform: skewY(-14deg);
   z-index: 2;
 }
 
-.dummy-skew-2 {
-  position: absolute;
-  top: 136%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #9b9b9b;
-  // -webkit-transform: skewY(-14deg);
-  z-index: 1;
+.skew-1 {
+  background-color: #f0f0f0;
+  top: 25%;
+  z-index: 2;
+  
+}
 
-  &:after {
-    background-color: #9b9b9b;
-    content: '';
-    display: block;
-    -webkit-transform: skewY(-14deg);
-    width: 100%;
-    height: 40%;
-    position: absolute;
-    // top: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  }
+.skew-2 {
+  background-color: #eaeaea;
+  top: 75%;
+  z-index: 1;
 }
