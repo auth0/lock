@@ -63,8 +63,7 @@ export function isOpened(lock) {
 }
 
 export function closeLock(lock) {
-  const svg = q(lock, ".auth0-lock-close");
-  const node = svg && svg.parentNode; // node where the event handler has been attached
+  const node = q(lock, ".auth0-lock-close-button");
   if (!node) {
     throw new Error("Unable to close the Lock: couldn't find the close button");
   }
