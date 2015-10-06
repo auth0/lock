@@ -15,7 +15,7 @@ export default class PhoneNumberInput extends React.Component {
     return (
       <InputWrap name="phone-number" isValid={isValid} icon={<Icon name="phoneNumber" />} focused={focused}>
         <input ref="input"
-          type="text"
+          type="tel"
           name="phoneNumber"
           className="auth0-lock-input auth0-lock-input-number"
           autoComplete="off"
