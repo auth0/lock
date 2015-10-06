@@ -2,6 +2,9 @@ import React from 'react';
 import InputWrap from './input_wrap';
 import Icon from '../icon/icon';
 import { requestGravatar } from '../gravatar/actions';
+import * as f from '../utils/fn_utils';
+
+const debouncedRequestGravatar = f.debounce(requestGravatar, 3000);
 
 export default class EmailInput extends React.Component {
   constructor(props) {
@@ -40,7 +43,7 @@ export default class EmailInput extends React.Component {
 
   handleOnChange(e) {
     if (this.props.gravatar) {
-      requestGravatar(e.target.value);
+      debouncedRequestGravatar(e.target.value);
     }
 
     if (this.props.onChange) {
