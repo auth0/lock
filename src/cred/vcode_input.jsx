@@ -25,7 +25,7 @@ export default class VcodeInput extends React.Component {
     return (
       <InputWrap name="vcode" isValid={isValid} icon={<Icon name="vcode" />}  focused={focused}>
         <input ref="input"
-          type="text"
+          type="number"
           name="vcode"
           className="auth0-lock-input auth0-lock-input-code"
           autoComplete="off"
