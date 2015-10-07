@@ -124,6 +124,7 @@ export function submit(lock) {
 export function stubWebApis() {
   stub(webApi, "signIn").returns(undefined);
   stub(webApi, "startPasswordless").returns(undefined);
+  stub(gravatarActions, "debouncedRequestGravatar").returns(undefined);
   stub(gravatarActions, "requestGravatar").returns(undefined);
 }
 
@@ -131,6 +132,7 @@ export function restoreWebApis() {
   global.localStorage.clear(); // TODO: This doesn't belong here
   webApi.signIn.restore();
   webApi.startPasswordless.restore();
+  gravatarActions.debouncedRequestGravatar.restore();
   gravatarActions.requestGravatar.restore();
 }
 

@@ -1,6 +1,7 @@
 import { read, swap, getEntity, updateEntity } from '../store/index';
 import * as g from './index';
 import * as webAPI from './web_api';
+import * as f from '../utils/fn_utils';
 
 export function requestGravatar(email) {
   if (!read(getEntity, "gravatar", email)) {
@@ -8,6 +9,8 @@ export function requestGravatar(email) {
     requestGravatarDisplayName(email);
   }
 }
+
+export const debouncedRequestGravatar = f.debounce(requestGravatar, 300);
 
 function requestGravatarDisplayName(email) {
   const success = (email, entry) => requestGravatarDisplayNameSuccess(email, entry.displayName);

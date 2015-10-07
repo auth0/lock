@@ -1,10 +1,7 @@
 import React from 'react';
 import InputWrap from './input_wrap';
 import Icon from '../icon/icon';
-import { requestGravatar } from '../gravatar/actions';
-import * as f from '../utils/fn_utils';
-
-const debouncedRequestGravatar = f.debounce(requestGravatar, 3000);
+import { debouncedRequestGravatar, requestGravatar } from '../gravatar/actions';
 
 export default class EmailInput extends React.Component {
   constructor(props) {
