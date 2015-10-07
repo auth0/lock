@@ -77,9 +77,9 @@ If you are using webpack, you will need the following loaders:
 [
   {
     test: /node_modules\/auth0-lock\/.*\.js$/,
-    loaders: 'transform?brfs!transform?packageify'
+    loaders: 'transform/cacheable?brfs!transform/cacheable?packageify'
   },
-  {test: /\.ejs$/, loader: 'transform?ejsify'},
+  {test: /\.ejs$/, loader: 'ejs-compiled'},
   {test: /\.json$/, loader: 'json'}
 ]
 ```
