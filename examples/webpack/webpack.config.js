@@ -11,11 +11,10 @@ var config = {
   module: {
     loaders: [{
       test: /node_modules\/auth0-lock\/.*\.js$/,
-      loaders: ['transform?brfs', 'transform?packageify']
+      loaders: ['transform/cacheable?brfs', 'transform/cacheable?packageify']
     }, {
-      // ejs-compiled-loader will not work per bazilio91/ejs-compiled-loader#6.
       test: /\.ejs$/,
-      loader: 'transform?ejsify'
+      loader: 'ejs-compiled',
     }, {
       test: /\.json$/,
       loader: 'json'

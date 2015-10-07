@@ -11,7 +11,7 @@
   "dependencies": {
     "auth0-lock": "^7.5.5",
     "brfs": "^1.4.0",
-    "ejsify": "^1.0.0",
+    "ejs-compiled-loader": "^2.0.4",
     "jquery": "^2.1.4",
     "json-loader": "^0.5.2",
     "packageify": "^0.2.2",
