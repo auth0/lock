@@ -113,7 +113,7 @@ class Snapshot extends React.Component {
       <div>
         <h3>Snapshot</h3>
         State: { }
-        <textarea value={this.state.snapshot} />
+        <textarea defaultValue={this.state.snapshot} />
       </div>
     );
   }
