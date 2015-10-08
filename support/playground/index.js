@@ -165,6 +165,32 @@ function getOptions (container) {
   try { options.dict = JSON.parse($('[name="dict"]').val()); } catch (e) {}
   try { options.authParams = JSON.parse($('[name="authParams"]').val() ); } catch (e) {}
 
+  options = removeDefaultOptions(options);
+  return options;
+}
+
+function removeKeys(object, keys, evalFunction) {
+  $.each(keys, function (i, key) {
+    if (evalFunction(object[key])) {
+      delete object[key];
+    }
+  });
+}
+
+function removeDefaultOptions (options) {
+  // remove keys whit default value true
+  removeKeys(options, ['closable', 'focusInput', 'gravatar', 'rememberLastLogin'], function (value) { return value === true; });
+
+  // remove keys whit default value false
+  removeKeys(options, ['autoclose', 'forceJSONP'], function (value) { return value === false; });
+
+  // remove keys whit default value empty
+  removeKeys(options, ['container', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation'], function (value) { return !value; });
+
+  if (options.defaultLocation && options.defaultLocation.toLowerCase() === 'us') {
+    delete options.defaultLocation;
+  }
+
   return options;
 }
 
@@ -211,10 +237,13 @@ $(function() {
   remember = require('remember')();
 
   bindEvents();
-  updateLockInitializationCode();
   showContainer(CONTAINERS.CODE);
-  showLockHandler();
 
+  setTimeout(function () {
+    updateLockInitializationCode();
+    showLockHandler();
+  }, 500);
+  
   remember.except('input[name=container]');
   $("[rel=tooltip]").tooltip({ placement: 'right'});
 
