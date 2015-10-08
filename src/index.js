@@ -7,6 +7,7 @@ import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 // import crashedSpec from '../crashed/mode_spec';
 import passwordlessSpec from './passwordless/mode_spec';
+import socialSpec from './social/mode_spec';
 
 // styles
 import styles from '../css/index.css';
@@ -61,6 +62,7 @@ Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordles
 
 // Auth0LockPasswordless.plugins.register(crashedSpec);
 Auth0LockPasswordless.plugins.register(passwordlessSpec);
+Auth0LockPasswordless.plugins.register(socialSpec);
 
 
 // telemetry

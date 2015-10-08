@@ -288,6 +288,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 #### UI options
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
+- **connections {Array}**: TODO.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
@@ -295,6 +296,8 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
+- **popup {Boolean}**: TODO.
+- **popupOptions {Object}**: TODO.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `icon` to ensure all colors go well together with the icon's color palette. Defaults to `"#ea5323"`.
 - **rememberLastLogin {Boolean}**: Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to `true`.
 

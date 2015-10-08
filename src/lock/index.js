@@ -1,4 +1,4 @@
-import Immutable, { Map, Set } from 'immutable';
+import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { iconUrl } from '../icon/index';
 import * as d from '../dict/index';
@@ -81,11 +81,14 @@ function extractUIOptions(id, options) {
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
     icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
     closable: closable,
+    connections: new List(undefined === options.connections ? [] : options.connections),
     dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
+    popup: undefined === options.popup ? typeof options.signInCallback === "function" : !!options.popup,
+    popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
     primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
   });
@@ -112,12 +115,15 @@ export const ui = {
   autoclose: lock => getUIAttribute(lock, "autoclose"),
   icon: lock => getUIAttribute(lock, "icon"),
   closable: lock => getUIAttribute(lock, "closable"),
+  connections: lock => getUIAttribute(lock, "connections"),
   dict: lock => getUIAttribute(lock, "dict"),
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
   mobile: lock => getUIAttribute(lock, "mobile"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback"),
+  popup: lock => getUIAttribute(lock, "popup"),
+  popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
   rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
 };

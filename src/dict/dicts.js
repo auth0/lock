@@ -72,5 +72,8 @@ export default {
       phoneNumberInputPlaceholder: "your phone number"
     },
     title: "Auth0"
+  },
+  social: {
+    title: "Auth0"
   }
 };
