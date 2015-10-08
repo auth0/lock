@@ -27,7 +27,7 @@ export default class CredPane extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, className, lock, terms } = this.props;
+    const { auxiliaryPane, backHandler, className, lock, showSubmitButton, terms } = this.props;
     const { height, show } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -57,7 +57,7 @@ export default class CredPane extends React.Component {
           </div>
           {terms && <Terms>{terms}</Terms>}
         </Placeholder>
-        <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
+        {showSubmitButton && <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />}
         <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
@@ -95,6 +95,14 @@ export default class CredPane extends React.Component {
     return l.ui.t(this.props.lock, keyPath, params);
   }
 }
+
+CredPane.propTypes = {
+  showSubmitButton: React.PropTypes.bool.isRequired
+};
+
+CredPane.defaultProps = {
+  showSubmitButton: true
+};
 
 class Placeholder extends React.Component {
   constructor(props) {
