@@ -1151,6 +1151,8 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
 
     if (err.status !== 401) {
       self._showError(err.message || self.options.i18n.t('signin:serverErrorText'));
+    } else if ('password_change_required' === err.code) {
+      self._showError(self.options.i18n.t('signin:passwordChangeRequiredErrorText'));
     } else {
       self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
     }
@@ -1271,6 +1273,11 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
     } else if ('unauthorized' === err.code) {
       var message = self.options.i18n.t('signin:unauthorizedErrorText');
       self._showError((err.details && err.details.error_description) || message);
+      self._focusError(email_input);
+      self._focusError(password_input);
+    } else if ('password_change_required' === err.code) {
+      var message = self.options.i18n.t('signin:passwordChangeRequiredErrorText');
+      self._showError(message);
       self._focusError(email_input);
       self._focusError(password_input);
     } else {
