@@ -11,7 +11,7 @@ function bindEvents () {
   hljs.configure({
     classPrefix: ''
   });
-  
+
   $('form input, form textarea').on('change keydown keypress keyup mousedown click mouseup', function() {
     updateShownLock();
   });
@@ -42,7 +42,7 @@ function bindEvents () {
         return;
       }
 
-      showLockHandler()
+      showLockHandler();
     }
   });
 }
@@ -101,7 +101,7 @@ function showLockHandler(ev) {
 
       if (options.container === currentLockContainerSelector) {
         showContainer(CONTAINERS.LOCK);
-      } 
+      }
 
     } catch (e) {
       $('#output code').text(e.message);
@@ -184,6 +184,10 @@ function renderAuthenticationSuccessMessage (authResponse) {
   showContainer(CONTAINERS.OUTPUT);
 }
 
+function showToast() {
+  $('.toast').addClass('is-visible');
+}
+
 function tryDisplayAuthenticatedFeedback () {
   var clientID = $('[name="clientID"]').val();
   var domain = $('[name="domain"]').val();
@@ -197,6 +201,7 @@ function tryDisplayAuthenticatedFeedback () {
     }
 
     renderAuthenticationSuccessMessage(response);
+    showToast();
   } catch (e) {
     // fail silently..
   }
