@@ -9,41 +9,71 @@
 
   <link rel="shortcut icon" href="https://cdn.auth0.com/styleguide/latest/lib/logos/img/favicon.png" />
 
+  <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/web-header/latest/standalone.css">
   <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/styleguide/latest/index.css" />
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+  
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
 
-<div class="skew-wrapper">
+  <header class="site-header clearfix">
+    <nav role="navigation" class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <h1 class="navbar-brand"><a href="/"><span>Auth0</span></a></h1>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="li-why"><a href="https://auth0.com/why-auth0">Why Auth0</a></li>
+            <li class="li-how"><a href="https://auth0.com/how-it-works">How It Works</a></li>
+            <li class="li-pricing"><a href="https://auth0.com/pricing">Pricing</a></li>
+            <li class="dropdown">
+              <span role="button" data-toggle="dropdown" class="btn-dro">More<i class="icon-budicon-460"></i></span>
+              <ul role="menu" aria-labelledby="dLabel" class="dropdown-menu">
+                <li><a href="https://auth0.com/lock">Lock</a></li>
+                <li><a href="https://auth0.com/wordpress">Wordpress</a></li>
+                <li class="divider"></li>
+                <li><a href="https://auth0.com/about">About</a></li>
+                <li><a href="https://auth0.com/blog">Blog</a></li>
+                <li><a href="https://auth0.com/customers">Customers</a></li>
+                <li><a href="https://auth0.com/opensource">Open Source</a></li>
+                <li><a href="https://auth0.com/jobs">Jobs</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="li-docs"><a href="/support">Help &amp; Support</a></li>
+            <li class="li-docs"><a href="https://docs.auth0.com">Documentation</a></li>
+            <li><a href="javascript:login()" class="signin-button login">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-  <div class="container">
+
+  <div class="container-fluid">
 
     <div class="page-header">
-      <div class="wrapper">
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-7">
-            <div class="text-center text-center-title">
-              <h1><img class="page-header-logo" src="img/logo-passwordless.svg" alt="Auth0 Passwordless" width="" height="" />Playground</h1>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-5 hidden-xs">
-            <div class="text-center text-center-image">
-              <img class="page-header-playground-image" src="img/passwordless-playground-image.svg" alt="Auth0 Playground Passwordless image" width="" height="" />
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2><img src="img/logo-passwordless.svg" alt="Auth0 - Logo Passwordless" width="" height="" /></h2>
+          <ol class="breadcrumb">
+            <li><a href="https://auth0.com/docs">Docs</a></li>
+            <li><a href="https://auth0.com/docs/connections/passwordless">Passwordless</a></li>
+            <li class="active">Playground</li>
+          </ol>
         </div>
       </div>
     </div>
 
     <div class="page-content">
+      
       <div class="row">
-
-        <div class="col-xs-12 col-sm-6 col-md-7 content-col-left">
-
+        <div class="col-xs-12 col-sm-6 col-md-5 content-col-left">
           <form id="playground" class="form form-horizontal">
-
             <div class="wrapper-box login-without-password">
 
               <div class="wrapper-box-header">
@@ -70,7 +100,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group form-group-last">
                 <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Domain</label>
                 <div class="col-xs-12 col-sm-8 col-md-9 col-right">
                   <input type="text" name="domain" class="form-control" value="pwdlessdemo.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
@@ -78,17 +108,10 @@
                 </div>
               </div>
 
-              <div class="form-group form-group-button">
-                <div class="col-xs-12">
-                  <a id="show-lock" class="btn btn-primary btn-lg btn-block">Open me!</a>
-                </div>
-              </div>
-
             </div>
-
             <br />
-
             <div class="wrapper-customization">
+              
               <div class="wrapper-box customization">
 
                 <div class="wrapper-box-header">
@@ -155,7 +178,7 @@
                         </label>
                       </div>
                       <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
-                        <input type="checkbox" name="focusInput" checked>
+                        <input type="checkbox" name="focusInput">
                         <label class="control-label">Focus Input
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed." data-container="body">
                             <i class="fa fa-question-circle">&nbsp;</i>
@@ -236,45 +259,48 @@
                 </div>
 
               </div>
+
             </div>
-
-            <br />
-
           </form>
+          <br />
         </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-5 content-col-right">
-
+        <div class="col-xs-12 col-sm-6 col-md-7 content-col-right">
           <div class="wrapper-box customization">
-
             <ul id="output-tabs" class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#lock-code-panel" role="tab" data-toggle="tab">Code</a></li>
               <li role="presentation"><a href="#output-panel" role="tab" data-toggle="tab">Authentication Result</a></li>
             </ul>
-
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active output-box" id="lock-code-panel">
                 <pre id="lock-code" class="js output-box"><code></code></pre>
               </div>
-
                <div role="tabpanel" class="tab-pane output-box" id="output-panel">
                  <pre id="output" class="js output-box"><code></code></pre>
               </div>
             </div>
           </div>
-
           <br />
-
-          <div id="lock-container-box" class="wrapper-box customization" style="display:none;">
+          <div id="lock-container-box" class="wrapper-box customization lock-container-box">
             <div class="wrapper-box-header">
               <h2 id="container-panel-title">container</h2>
             </div>
-
-            <div id="container" class="lock-container output-box output-box-result"></div>
+            <div class="output-box-result">
+              <div id="container" class="lock-container output-box"></div>
+              <a id="show-lock" class="btn btn-primary btn-lg btn-block">Open me!</a>
+            </div>
           </div>
         </div>
-
       </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <section class="try-free">
+            <p>Start your free trial today</p>
+            <a href="javascript:signup()" target="_blank" class="login btn btn-success btn-lg">Get started for free</a>
+          </section>
+        </div>
+      </div>
+
     </div>
 
 
@@ -313,10 +339,88 @@ lock.{{method}}(options, function (...) {
 
   </div>
 
-  <div class="skew-1"></div>
-  <div class="skew-2"></div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="logo"><img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.png" width="30"></div>
+      <div class="footer-grid">
+        <div class="column">
+          <div class="item">
+            <h6>Product</h6>
+          </div>
+          <div class="item"><a href="https://auth0.com/pricing">Pricing</a></div>
+          <div class="item"><a href="https://auth0.com/why-auth0">Why Auth0</a></div>
+          <div class="item"><a href="https://auth0.com/how-it-works">How It Works</a></div>
+        </div>
+        <div class="column">
+          <div class="item">
+            <h6>Company</h6>
+          </div>
+          <div class="item"><a href="https://auth0.com/about">About Us</a></div>
+          <div class="item"><a href="https://auth0.com/blog">Blog</a></div>
+          <div class="item"><a href="https://auth0.com/jobs">Jobs</a></div>
+        </div>
+        <div class="column">
+          <div class="item">
+            <h6>Security</h6>
+          </div>
+          <div class="item"><a href="https://auth0.com/availability-trust">Availability &amp; Trust</a></div>
+          <div class="item"><a href="https://auth0.com/security">Security</a></div>
+          <div class="item"><a href="https://auth0.com/whitehat">White Hat</a></div>
+        </div>
+        <div class="column">
+          <div class="item">
+            <h6>Learn</h6>
+          </div>
+          <div class="item"><a href="https://auth0.com/support">Help &amp; Support</a></div>
+          <div class="item"><a href="https://auth0.com/docs">Documentation</a></div>
+          <div class="item"><a href="https://auth0.com/opensource">Open Source</a></div>
+        </div>
+        <div class="column">
+          <div class="item">
+            <h6>Extend</h6>
+          </div>
+          <div class="item"><a href="https://auth0.com/lock">Lock</a></div>
+          <div class="item"><a href="https://auth0.com/wordpress">WordPress</a></div>
+          <div class="item"><a href="https://auth0.com/docs/apiv2">API Explorer</a></div>
+        </div>
+        <div class="contact">
+          <div class="column">
+            <div class="item">
+              <h6>Contact</h6>
+            </div>
+            <div class="item"><a href="mailto:support@auth0.com">Email Us</a></div>
+            <div class="item item-text">10777 Main Street<br>Suite 204<br>Bellevue, WA   98004</div>
+          </div>
+          <div class="column no-heading">
+            <div class="item item-phone-label">Sales</div>
+            <div class="item"><a href="tel:+18882352699">+1 (888) 235-2699</a><a href="tel:+14253126521">+1 (425) 312-6521</a></div>
+            <div class="item item-phone-label">Support</div>
+            <div class="item"><a href="tel:+14255599554">+1 (425) 559-9554</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="colophon">
+        <div class="column">
+          <div class="social">
+            <div class="twitter"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="//platform.twitter.com/widgets/follow_button.html?screen_name=auth0" class="twitter"></iframe></div>
+            <div class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffacebook.com%2Fgetauth0&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;show_count=false&amp;share=false&amp;height=21&amp;appId=507756515938786" scrolling="no" frameborder="0" allowtransparency="true" class="facebook"></iframe></div>
+          </div>
+        </div>
+        <div class="column">
+          <ul class="list-inline text-right">
+            <li><a href="https://auth0.com/privacy">Privacy Policy</a></li>
+            <li><a href="https://auth0.com/terms">Terms of Service</a></li>
+            <li><span>© 2013-2015 Auth0 Inc. All Rights Reserved.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-</div>
+  <div class="toast">
+    <p>You have succefully authenticated into the Lock Passwordless Playground</p>
+    <a href="#">Got it</a>
+  </div>
 
   <script type="text/javascript" src="build/lock-passwordless.js"></script>
   <script type="text/javascript" src="assets/remember.js"></script>

@@ -8,16 +8,55 @@ var currentLockContainerSelector;
 var remember;
 
 function bindEvents () {
-  $('form input, form textarea, form select').on('change keydown keypress keyup mousedown click mouseup', function() {
-      updateLockInitializationCode();
+  hljs.configure({
+    classPrefix: ''
+  });
+  
+  $('form input, form textarea').on('change keydown keypress keyup mousedown click mouseup', function() {
+    updateShownLock();
+  });
+
+  $('form select').on('change', function() {
+    updateShownLock();
   });
 
   $('input[name=container]').on('change keydown keypress keyup mousedown click mouseup', function() {
       updateTargetContainer($(this).val());
   });
 
-  $('#show-lock').on('click', function (ev) {
+  $('#show-lock').on('click', showLockHandler);
+
+  $('body').on('click', '.auth0-lock-close-button', function(ev) {
     ev.preventDefault();
+
+    if($(this).parents('.output-box-result').length) {
+      return;
+    }
+
+    showLockHandler();
+  });
+
+  $('body').on('keydown', function(ev) {
+    if($('.auth0-lock-opened').length && ev.keyCode) {
+      if($('.auth0-lock-opened').parents('.output-box-result').length) {
+        return;
+      }
+
+      showLockHandler()
+    }
+  });
+}
+
+function updateShownLock() {
+  updateLockInitializationCode();
+
+  showLockHandler();
+}
+
+function showLockHandler(ev) {
+    if(ev) {
+      ev.preventDefault();
+    }
 
     var method = $('[name="method"]').val();
     var clientID = $('[name="clientID"]').val();
@@ -31,6 +70,10 @@ function bindEvents () {
       window.lock = new Auth0LockPasswordless(clientID, domain);
 
       var options = getOptions();
+
+      if(!ev) {
+        options = getOptions('container');
+      }
 
       // Execute Lock with options
       lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
@@ -58,17 +101,13 @@ function bindEvents () {
 
       if (options.container === currentLockContainerSelector) {
         showContainer(CONTAINERS.LOCK);
-        $('html,body').animate({ scrollTop: $("#" + currentLockContainerSelector).offset().top}, 'slow');
-      } else {
-        $('#lock-container-box').hide();
-      }
+      } 
 
     } catch (e) {
       $('#output code').text(e.message);
       $('#output code').addClass('text-danger');
       showContainer(CONTAINERS.OUTPUT);
     }
-  });
 }
 
 function showContainer (container) {
@@ -104,12 +143,12 @@ function getLockInitializationCode () {
   return Mustache.render(template, templateValues);
 }
 
-function getOptions () {
+function getOptions (container) {
   var options = {};
 
   // Strings
   options.icon = $('[name="icon"]').val();
-  options.container = ($('[name="container"]').val() || '').replace('#', '');
+  options.container = container || ($('[name="container"]').val() || '').replace('#', '');
   options.defaultLocation = $('[name="defaultLocation"]').val();
   options.primaryColor = $('[name="primaryColor"]').val();
   options.callbackURL = $('[name="callbackURL"]').val() || undefined;
@@ -169,6 +208,7 @@ $(function() {
   bindEvents();
   updateLockInitializationCode();
   showContainer(CONTAINERS.CODE);
+  showLockHandler();
 
   remember.except('input[name=container]');
   $("[rel=tooltip]").tooltip({ placement: 'right'});
