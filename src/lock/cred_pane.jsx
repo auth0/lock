@@ -1,4 +1,7 @@
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactTransitionGroup from 'react-addons-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import GlobalError from './global_error';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
@@ -6,8 +9,6 @@ import * as l from './index';
 import * as g from '../gravatar/index';
 import Terms from '../lock/terms';
 
-const ReactTransitionGroup = React.addons.TransitionGroup;
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export default class CredPane extends React.Component {
   constructor(props) {
@@ -57,7 +58,7 @@ export default class CredPane extends React.Component {
           {terms && <Terms>{terms}</Terms>}
         </Placeholder>
         <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
-        <ReactCSSTransitionGroup transitionName="slide">
+        <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
       </div>
@@ -74,8 +75,8 @@ export default class CredPane extends React.Component {
   }
 
   componentWillSlideIn(slide) {
-    const height = window.getComputedStyle(this.refs.content, null).height;
-    this.originalHeight = parseInt(height, 10);
+    const node = ReactDOM.findDOMNode(this.refs.content);
+    this.originalHeight = parseInt(window.getComputedStyle(node, null).height, 10);
     this.setState({height: slide.height, show: false});
   }
 
@@ -85,7 +86,8 @@ export default class CredPane extends React.Component {
   }
 
   componentWillSlideOut(callback) {
-    const size = window.getComputedStyle(this.refs.content, null).height;
+    const node = ReactDOM.findDOMNode(this.refs.content);
+    const size = window.getComputedStyle(node, null).height;
     callback({height: parseInt(size, 10), reverse: this.reverse});
   }
 

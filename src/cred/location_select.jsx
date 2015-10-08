@@ -139,10 +139,11 @@ class LocationList extends React.Component {
     const { highlighted } = this.refs;
     if (highlighted) {
       const scrollableNode = ReactDOM.findDOMNode(this);
-      const relativeOffsetTop = highlighted.offsetTop - scrollableNode.scrollTop;
+      const highlightedNode = ReactDOM.findDOMNode(highlighted);
+      const relativeOffsetTop = highlightedNode.offsetTop - scrollableNode.scrollTop;
       let scrollTopDelta = 0;
-      if (relativeOffsetTop + highlighted.offsetHeight > scrollableNode.clientHeight) {
-        scrollTopDelta = relativeOffsetTop + highlighted.offsetHeight - scrollableNode.clientHeight;
+      if (relativeOffsetTop + highlightedNode.offsetHeight > scrollableNode.clientHeight) {
+        scrollTopDelta = relativeOffsetTop + highlightedNode.offsetHeight - scrollableNode.clientHeight;
       } else if (relativeOffsetTop < 0) {
         scrollTopDelta = relativeOffsetTop;
       }

@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import { Map } from 'immutable';
 import MultisizeSlide from '../multisize-slide/multisize_slide';
 import Avatar from './avatar';
@@ -6,7 +6,6 @@ import IconButton from '../icon/button';
 import Badge from './auth0_badge';
 import * as l from './index';
 import * as g from '../gravatar/index';
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 

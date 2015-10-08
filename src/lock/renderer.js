@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSCore from 'fbjs/lib/CSSCore';
 import ContainerManager from './container_manager';
@@ -30,7 +29,7 @@ export default class Renderer {
         } catch (e) {
           // do nothing if container doesn't exist
         }
-        container && React.unmountComponentAtNode(container);
+        container && ReactDOM.unmountComponentAtNode(container);
       }
     });
 
