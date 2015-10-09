@@ -16,6 +16,10 @@ export function signIn(id, connection) {
     connection: connection,
     popup: l.ui.popup(lock),
     popupOptions: l.ui.popupOptions(lock),
+    redirect: !l.ui.popup(lock),
+    responseType: l.login.responseType(lock),
+    callbackURL: l.login.callbackURL(lock),
+    forceJSONP: l.login.forceJSONP(lock)
     // sso: false
   };
   WebAPI.signIn(id, options, (...args) => console.log("cb", args));
