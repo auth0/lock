@@ -534,7 +534,7 @@ pre {
       line-height: inherit;
     }
 
-    @media (min-width: 1212px) {
+    @media (min-width: 1281px) {
       line-height: 46px;
     }
   }
@@ -576,19 +576,18 @@ pre {
 }
 
 .lock-container-box {
+  padding-top: 0; 
   padding-bottom: 0;
   
   @media (min-width: 768px) {
+    padding-top: 20px;
     padding-bottom: 20px;
-  }
-  
-  .wrapper-box-header h2 {
-    text-transform: capitalize;
   }
 }
 
 .output-box-result {
   background-color: #d5d7d9;
+  border-radius: 3px;
   margin-top: -1px;
   margin-right: -35px;
   margin-left: -35px;
@@ -597,15 +596,11 @@ pre {
   position: relative;
   
   @media (min-width: 350px) {
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
     margin-right: -20px;
     margin-left: -20px;
   }
   
   @media (min-width: 768px) {
-    border-radius: 3px;
-    margin-top: 20px;
     margin-right: 0;
     margin-left: 0;
   }
