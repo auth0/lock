@@ -210,10 +210,6 @@ function renderAuthenticationSuccessMessage (authResponse) {
   showContainer(CONTAINERS.OUTPUT);
 }
 
-function showToast() {
-  $('.toast').addClass('is-visible');
-}
-
 function tryDisplayAuthenticatedFeedback () {
   var clientID = $('[name="clientID"]').val();
   var domain = $('[name="domain"]').val();
@@ -227,7 +223,6 @@ function tryDisplayAuthenticatedFeedback () {
     }
 
     renderAuthenticationSuccessMessage(response);
-    showToast();
   } catch (e) {
     // fail silently..
   }
@@ -243,7 +238,7 @@ $(function() {
     updateLockInitializationCode();
     showLockHandler();
   }, 500);
-  
+
   remember.except('input[name=container]');
   $("[rel=tooltip]").tooltip({ placement: 'right'});
 
