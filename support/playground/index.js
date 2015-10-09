@@ -1,7 +1,6 @@
 var CONTAINERS = {
-  LOCK: 1,
-  CODE: 2,
-  OUTPUT: 3
+  CODE: 1,
+  OUTPUT: 2
 };
 
 var currentLockContainerSelector;
@@ -71,8 +70,10 @@ function showLockHandler(ev) {
 
       var options = getOptions();
 
-      if(!ev) {
-        options = getOptions('container');
+      if (ev) {
+        delete options.container;
+      } else {
+        options.container = "container";
       }
 
       // Execute Lock with options
@@ -99,9 +100,6 @@ function showLockHandler(ev) {
         remember.except('.auth0-lock-input');
       }, 0);
 
-      if (options.container === currentLockContainerSelector) {
-        showContainer(CONTAINERS.LOCK);
-      }
 
     } catch (e) {
       $('#output code').text(e.message);
@@ -114,7 +112,6 @@ function showContainer (container) {
   switch (container) {
   case CONTAINERS.CODE: $('#output-tabs a[href="#lock-code-panel"]').tab('show'); break;
   case CONTAINERS.OUTPUT: $('#output-tabs a[href="#output-panel"]').tab('show'); break;
-  case CONTAINERS.LOCK: $('#lock-container-box').show(); break;
   default: break;
   }
 }
@@ -122,7 +119,6 @@ function showContainer (container) {
 function updateTargetContainer (selector) {
   var sanitizedSelector = (selector ? selector.replace("#", "") : '') || 'container';
   $('.lock-container').prop('id', sanitizedSelector);
-  $("#container-panel-title").text(sanitizedSelector);
   currentLockContainerSelector = sanitizedSelector;
 }
 
