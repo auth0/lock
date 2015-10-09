@@ -1,7 +1,10 @@
-import { read, getEntity } from '../store/index';
+import { getEntity, read, swap, updateEntity } from '../store/index';
 import { closeLock } from '../lock/actions';
 import WebAPI from '../lock/web_api';
 import * as l from '../lock/index';
+
+// TODO: shortcut until we abstract and move sign in / submit code
+import * as mp from '../passwordless/index';
 
 export function close(id, force = false) {
   const lock = read(getEntity, "lock", id);
@@ -11,7 +14,10 @@ export function close(id, force = false) {
 }
 
 export function signIn(id, connection) {
+  swap(updateEntity, "lock", id, l.setSubmitting, true);
+
   const lock = read(getEntity, "lock", id);
+
   const options = {
     connection: connection,
     popup: l.ui.popup(lock),
@@ -22,5 +28,32 @@ export function signIn(id, connection) {
     forceJSONP: l.login.forceJSONP(lock)
     // sso: false
   };
-  WebAPI.signIn(id, options, (...args) => console.log("cb", args));
+  WebAPI.signIn(id, options,  (error, ...args) => {
+    if (error) {
+      setTimeout(() => signInError(id, error), 250);
+    } else {
+      signInSuccess(id, ...args);
+    }
+  });
+}
+
+function signInSuccess(id, ...args) {
+  const lock = read(getEntity, "lock", id);
+  const autoclose = l.ui.autoclose(lock);
+
+  if (!autoclose) {
+    swap(updateEntity, "lock", id, lock => mp.setSignedIn(l.setSubmitting(lock, false), true));
+    l.invokeDoneCallback(lock, null, ...args);
+  } else {
+    closeLock(id, m => m, lock => l.invokeDoneCallback(lock, null, ...args));
+  }
+}
+
+function signInError(id, error) {
+  const lock = read(getEntity, "lock", id);
+  // TODO find out what can go wrong and improve the error messages
+  const errorMessage = "Something went wrong.";
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+
+  l.invokeDoneCallback(lock, error);
 }

@@ -74,6 +74,12 @@ export default {
     title: "Auth0"
   },
   social: {
+    network: {
+      footerText: "",
+    },
+    confirmation: {
+      success: "Thanks for signing in."
+    },
     title: "Auth0"
   }
 };
