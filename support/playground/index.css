@@ -105,7 +105,7 @@ pre { background-color: #2f383d; border-radius: 3px; }
 .control-label { color: #000; font-size: 12px; }
 @media (min-width: 768px) { .control-label { line-height: 46px; padding-top: 0 !important; } }
 @media (min-width: 768px) { .control-label.lines-2 { line-height: inherit; } }
-@media (min-width: 1212px) { .control-label.lines-2 { line-height: 46px; } }
+@media (min-width: 1281px) { .control-label.lines-2 { line-height: 46px; } }
 
 .form-control { background-color: rgba(155, 155, 155, 0.05); border-color: transparent; border-radius: 3px; box-shadow: none; height: 46px; padding: 12px; }
 .form-control:focus { border-color: #00ADB5; box-shadow: none; }
@@ -114,13 +114,12 @@ pre { background-color: #2f383d; border-radius: 3px; }
 .checkbox-wrapper input[type="radio"], .checkbox-wrapper input[type="checkbox"] { margin-top: 0; position: relative; top: -1px; }
 @media (min-width: 992px) { .checkbox-wrapper input[type="radio"], .checkbox-wrapper input[type="checkbox"] { float: left; margin-top: 20px; position: static; top: auto; } }
 
-.lock-container-box { padding-bottom: 0; }
-@media (min-width: 768px) { .lock-container-box { padding-bottom: 20px; } }
-.lock-container-box .wrapper-box-header h2 { text-transform: capitalize; }
+.lock-container-box { padding-top: 0; padding-bottom: 0; }
+@media (min-width: 768px) { .lock-container-box { padding-top: 20px; padding-bottom: 20px; } }
 
-.output-box-result { background-color: #d5d7d9; margin-top: -1px; margin-right: -35px; margin-left: -35px; overflow: hidden; padding: 10px 0; position: relative; }
-@media (min-width: 350px) { .output-box-result { border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; margin-right: -20px; margin-left: -20px; } }
-@media (min-width: 768px) { .output-box-result { border-radius: 3px; margin-top: 20px; margin-right: 0; margin-left: 0; } }
+.output-box-result { background-color: #d5d7d9; border-radius: 3px; margin-top: -1px; margin-right: -35px; margin-left: -35px; overflow: hidden; padding: 10px 0; position: relative; }
+@media (min-width: 350px) { .output-box-result { margin-right: -20px; margin-left: -20px; } }
+@media (min-width: 768px) { .output-box-result { margin-right: 0; margin-left: 0; } }
 @media (min-width: 992px) { .output-box-result { padding: 25px 0; } }
 .output-box-result .btn { margin: 0 auto; width: 300px; }
 @media (min-width: 992px) { .output-box-result .btn { float: right; margin: 0 25px 0 0; width: 200px; } }
