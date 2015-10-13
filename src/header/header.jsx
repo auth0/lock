@@ -11,7 +11,7 @@ export default class Header extends React.Component {
       <div className="auth0-lock-header">
         {backHandler && <IconButton name="back" onClick={backHandler}/>}
         <Background imageUrl={backgroundUrl} backgroundColor={backgroundColor} grayScale={!!name} />
-        <Welcome title={title} name={name} imageUrl={!name && logoUrl} />
+        <Welcome title={title} name={name} imageUrl={name ? undefined : logoUrl} />
       </div>
     );
   }

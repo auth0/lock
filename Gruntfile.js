@@ -59,7 +59,11 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          watch: true,
+          browserifyOptions: {
+            debug: true,
+            extensions: ".jsx"
+          },
+          watch: true
         },
         src: "src/browser.js",
         dest: "build/lock-passwordless.js"

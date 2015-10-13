@@ -40,7 +40,7 @@ export default class AskSocialNetwork extends React.Component {
     const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} showSubmitButton={false} ref="cred" auxiliaryPane={auxiliaryPane}>
+      <CredPane lock={lock} showSubmitButton={false} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane}>
         <div className="auth0-lock-passwordless auth0-lock-mode">
           <div className="auth0-lock-form auth0-lock-passwordless">
             {buttons}

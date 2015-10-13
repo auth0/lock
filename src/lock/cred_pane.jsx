@@ -38,7 +38,7 @@ export default class CredPane extends React.Component {
     let backgroundUrl, name;
     if (gravatar) {
       backgroundUrl = g.imageUrl(gravatar);
-      name = this.t(["welcome"], {name: g.displayName(gravatar)});
+      name = this.t(["welcome"], {name: g.displayName(gravatar), __textOnly: true});
     } else {
       backgroundUrl = icon;
       name = "";
@@ -47,7 +47,7 @@ export default class CredPane extends React.Component {
 
     return (
       <div className={className + " auth0-lock-cred-pane"}>
-        <Header title={this.t(["title"])} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
+        <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <Placeholder delay={800} height={height} show={show} ref="content">
           <ReactTransitionGroup>
             {globalError && <GlobalError key="global-error" message={globalError} />}

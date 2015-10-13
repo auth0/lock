@@ -83,5 +83,15 @@ export default {
       success: "Thanks for signing in."
     },
     title: "Auth0"
+  },
+  socialOrMagiclink: {
+    network: {
+      footerText: "",
+    },
+    confirmation: {
+      success: "Thanks for signing in."
+    },
+    title: "Auth0",
+    welcome: "Welcome {name}!"
   }
 };
