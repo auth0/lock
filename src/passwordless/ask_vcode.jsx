@@ -1,7 +1,7 @@
 import React from 'react';
-import ConfirmationPane from '../lock/confirmation_pane';
 import CredPane from '../lock/cred_pane';
 import VcodeInput from '../cred/vcode_input';
+import SignedInConfirmation from '../lock/signed_in_confirmation';
 import { back, changeVcode, close } from './actions';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
@@ -12,7 +12,9 @@ export default class AskVcode extends React.Component {
   render() {
     const { className, headerText, lock } = this.props;
     const auxiliaryPane = m.signedIn(lock) ?
-      <SignedInConfirmation key="auxiliarypane" lock={lock} /> : null;
+      <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} /> :
+      null;
+
     const terms = this.t(["footerText"]);
 
     return (
@@ -34,6 +36,10 @@ export default class AskVcode extends React.Component {
         </div>
       </CredPane>
     );
+  }
+
+  handleClose() {
+    close(l.id(this.props.lock));
   }
 
   handleVcodeChange(e) {
@@ -64,26 +70,5 @@ export default class AskVcode extends React.Component {
 
   t(keyPath, params) {
     return l.ui.t(this.props.lock, ["code"].concat(keyPath), params);
-  }
-}
-
-class SignedInConfirmation extends React.Component {
-  render() {
-    const { lock } = this.props;
-    const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
-
-    return (
-      <ConfirmationPane closeHandler={closeHandler}>
-        <p>{this.t(["success"])}</p>
-      </ConfirmationPane>
-    )
-  }
-
-  handleClose() {
-    close(l.id(this.props.lock));
-  }
-
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["confirmation"].concat(keyPath), params);
   }
 }
