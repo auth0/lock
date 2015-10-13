@@ -48,8 +48,7 @@ function signInSuccess(id, ...args) {
 
 function signInError(id, error) {
   const lock = read(getEntity, "lock", id);
-  // TODO find out what can go wrong and improve the error messages
-  const errorMessage = "Something went wrong.";
+  const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {__textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {__textOnly: true});
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
   l.invokeDoneCallback(lock, error);

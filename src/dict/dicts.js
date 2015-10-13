@@ -33,7 +33,9 @@ export default {
     },
     signIn: {
       "invalid_user_password": "Wrong {cred} or verification code",
-      "lock.request": "We're sorry, something went wrong when attempting to sign in"
+      "lock.popup_closed": "Popup window closed. Try again.",
+      "lock.request": "We're sorry, something went wrong when attempting to sign in",
+      "lock.unauthorized": "Permissions were not granted. Try again."
     }
   },
   magiclink: {

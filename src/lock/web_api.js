@@ -49,7 +49,53 @@ class Auth0WebAPI {
 export default new Auth0WebAPI();
 
 function normalizeError(error) {
-  return error && {
+  if (!error) {
+    return error;
+  }
+
+
+  // TODO: the following checks were copied from https://github.com/auth0/lock/blob/0a5abf1957c9bb746b0710b274d0feed9b399958/index.js#L1263-L1288
+  // Some of the checks are missing because I couldn't reproduce them and I'm
+  // affraid they'll break existent functionality if add them.
+  // We need a better errror handling story in auth0.js.
+
+  if (error.status === "User closed the popup window") {
+    // {
+    //   status: "User closed the popup window",
+    //   name: undefined,
+    //   code: undefined,
+    //   details: {
+    //     description: "server error",
+    //     code: undefined
+    //   }
+    // }
+    return {
+      error: "lock.popup_closed",
+      description: "Popup window closed."
+    };
+  }
+
+  if (error.message === 'access_denied' || error.code === "unauthorized") {
+    // NOTE: couldn't reproduce for error.message === 'access_denied' and can't
+    // see the difference between the two.
+
+    // {
+    //   code: "unauthorized",
+    //   details: {
+    //     code: "unauthorized"
+    //     error: "unauthorized"
+    //     error_description: "access_denied"
+    //   },
+    //   name: "unauthorized"
+    //   status: 401
+    // }
+    return {
+      error: "lock.unauthorized",
+      description: "Permissions were not granted."
+    }
+  }
+
+  return {
     error: error.details ? error.details.error : (error.statusCode || error.error),
     description: error.details ? error.details.error_description : (error.error_description || error.error)
   }
