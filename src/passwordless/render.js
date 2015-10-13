@@ -33,7 +33,7 @@ export default function render(lock) {
           <AskVcode className="auth0-lock-ask-email-vcode" headerText={l.ui.t(lock, ["code", "headerText"], {email: c.email(lock)})} lock={lock} key="ask-vcode" /> :
           <AskEmail lock={lock} key="ask-email" />,
         escHandler: close,
-        isDone: m.signedIn(lock),
+        isDone: l.signedIn(lock),
         lock: lock,
         submitHandler: m.passwordlessStarted(lock) ? askVcodeSubmitHandler : askEmailSubmitHandler
       };
@@ -57,7 +57,7 @@ export default function render(lock) {
           m.selectingLocation(lock) ?
             cancelSelectPhoneLocation(l.id(lock)) : close(l.id(lock));
         },
-        isDone: m.signedIn(lock),
+        isDone: l.signedIn(lock),
         lock: lock,
         submitHandler: m.passwordlessStarted(lock) ? askVcodeSubmitHandler : askPhoneNumberSubmitHandler
       };

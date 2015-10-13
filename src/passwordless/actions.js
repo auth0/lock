@@ -225,7 +225,7 @@ function signInSuccess(id, ...args) {
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => m.setSignedIn(l.setSubmitting(lock, false), true));
+    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
     l.invokeDoneCallback(lock, null, ...args);
   } else {
     closeLock(id, m.reset, lock => l.invokeDoneCallback(lock, null, ...args));

@@ -194,6 +194,15 @@ export function close(m) {
   return m.set("show", false);
 }
 
+
+export function setSignedIn(m, value) {
+  return m.set("signedIn", value);
+}
+
+export function signedIn(m) {
+  return m.get("signedIn", false);
+}
+
 export function tabIndex(m, n) {
   return [id(m), n > 9 ? "" : "0", n].join("");
 }

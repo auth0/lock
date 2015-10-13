@@ -46,8 +46,12 @@ export function reset(m, opts = {}) {
   let keyPaths = List([
     ["passwordlessStarted"],
     ["resendStatus"],
-    ["selectingLocation"]
+    ["selectingLocation"],
+    ["signedIn"]
   ]);
+
+  // TODO `signedIn` should be handled at the lock level, later instead of
+  // calling l.clearGlobalError we should call something like l.reset.
 
   const { clearCred } = opts;
 
@@ -101,12 +105,4 @@ export function setPasswordlessStarted(m, value) {
 
 export function passwordlessStarted(m) {
   return m.get("passwordlessStarted", false);
-}
-
-export function setSignedIn(m, value) {
-  return m.set("signedIn", value);
-}
-
-export function signedIn(m) {
-  return m.get("signedIn", false);
 }

@@ -11,7 +11,7 @@ import { isSmallScreen } from '../utils/media_utils';
 export default class AskVcode extends React.Component {
   render() {
     const { className, headerText, lock } = this.props;
-    const auxiliaryPane = m.signedIn(lock) ?
+    const auxiliaryPane = l.signedIn(lock) ?
       <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} /> :
       null;
 

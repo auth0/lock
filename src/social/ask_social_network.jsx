@@ -4,8 +4,6 @@ import SignedInConfirmation from '../lock/signed_in_confirmation';
 import SocialButton from './social_button';
 import { close } from './actions';
 import * as l from '../lock/index';
-// TODO
-import * as mp from '../passwordless/index';
 
 export default class AskSocialNetwork extends React.Component {
 
@@ -35,7 +33,7 @@ export default class AskSocialNetwork extends React.Component {
       return <SocialButton key={x} name={x} lockID={l.id(lock)} />;
     });
 
-    const auxiliaryPane = mp.signedIn(lock) ?
+    const auxiliaryPane = l.signedIn(lock) ?
       <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} /> :
       null;
 

@@ -3,9 +3,6 @@ import { closeLock } from '../lock/actions';
 import WebAPI from '../lock/web_api';
 import * as l from '../lock/index';
 
-// TODO: shortcut until we abstract and move sign in / submit code
-import * as mp from '../passwordless/index';
-
 export function close(id, force = false) {
   const lock = read(getEntity, "lock", id);
   if (l.ui.closable(lock) || force) {
@@ -42,7 +39,7 @@ function signInSuccess(id, ...args) {
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => mp.setSignedIn(l.setSubmitting(lock, false), true));
+    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
     l.invokeDoneCallback(lock, null, ...args);
   } else {
     closeLock(id, m => m, lock => l.invokeDoneCallback(lock, null, ...args));
