@@ -16,7 +16,7 @@ export default class AskEmail extends React.Component {
 
     return (
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email" terms={terms} ref="cred">
-        <div className="auth0-lock-form auth0-lock-passwordless">
+        <div className="auth0-lock-form">
           <p>{this.t(["headerText"])}</p>
           <EmailInput value={c.email(lock)}
             isValid={!c.visiblyInvalidEmail(lock)}

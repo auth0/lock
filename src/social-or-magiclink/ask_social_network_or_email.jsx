@@ -55,7 +55,7 @@ export default class AskSocialNetworkOrEmail extends React.Component {
 
     return (
       <CredPane lock={lock} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email">
-        <div className="auth0-lock-form auth0-lock-passwordless">
+        <div className="auth0-lock-form">
           {buttons}
           <div className="auth0-lock-or">or</div>
           <EmailInput value={c.email(lock)}

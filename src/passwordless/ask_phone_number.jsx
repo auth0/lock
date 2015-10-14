@@ -30,7 +30,7 @@ export default class AskPhoneNumber extends React.Component {
 
     return (
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" terms={terms} ref="cred">
-        <div className="auth0-lock-form auth0-lock-passwordless">
+        <div className="auth0-lock-form">
         <p>{this.t(["headerText"])}</p>
           <LocationInput value={c.phoneLocationString(lock)}
             onClick={::this.handleLocationClick}

@@ -19,7 +19,7 @@ export default class AskVcode extends React.Component {
 
     return (
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} terms={terms} ref="cred">
-        <div className="auth0-lock-form auth0-lock-passwordless">
+        <div className="auth0-lock-form">
           <p>{headerText}</p>
           <VcodeInput value={c.vcode(lock)}
             isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
