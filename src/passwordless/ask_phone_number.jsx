@@ -1,5 +1,5 @@
 import React from 'react';
-import CredPane from '../lock/cred_pane';
+import MainScreen from '../lock/main_screen';
 import PhoneNumberInput from '../cred/phone_number_input';
 import LocationInput from '../cred/location_input';
 import AskLocation from './ask_location';
@@ -29,7 +29,7 @@ export default class AskPhoneNumber extends React.Component {
     const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" terms={terms} ref="cred">
+      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" terms={terms} ref="cred">
         <p>{this.t(["headerText"])}</p>
         <LocationInput value={c.phoneLocationString(lock)}
           onClick={::this.handleLocationClick}
@@ -42,7 +42,7 @@ export default class AskPhoneNumber extends React.Component {
           placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
           tabIndex={l.tabIndex(lock, 2)}
           disabled={l.submitting(lock)} />
-      </CredPane>
+      </MainScreen>
     );
   }
 

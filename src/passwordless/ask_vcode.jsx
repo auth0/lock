@@ -1,5 +1,5 @@
 import React from 'react';
-import CredPane from '../lock/cred_pane';
+import MainScreen from '../lock/main_screen';
 import VcodeInput from '../cred/vcode_input';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import { back, changeVcode, close } from './actions';
@@ -18,7 +18,7 @@ export default class AskVcode extends React.Component {
     const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} terms={terms} ref="cred">
+      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} terms={terms} ref="cred">
         <p>{headerText}</p>
         <VcodeInput value={c.vcode(lock)}
           isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
@@ -32,7 +32,7 @@ export default class AskVcode extends React.Component {
             {this.t(["resendLabel"], {__textOnly: true})}
           </a>
         </p>
-      </CredPane>
+      </MainScreen>
     );
   }
 

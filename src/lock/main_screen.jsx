@@ -10,7 +10,7 @@ import * as g from '../gravatar/index';
 import Terms from '../lock/terms';
 
 
-export default class CredPane extends React.Component {
+export default class MainScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {height: "", show: true};
@@ -98,11 +98,11 @@ export default class CredPane extends React.Component {
   }
 }
 
-CredPane.propTypes = {
+MainScreen.propTypes = {
   showSubmitButton: React.PropTypes.bool.isRequired
 };
 
-CredPane.defaultProps = {
+MainScreen.defaultProps = {
   showSubmitButton: true
 };
 

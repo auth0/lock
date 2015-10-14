@@ -1,5 +1,5 @@
 import React from 'react';
-import CredPane from '../lock/cred_pane';
+import MainScreen from '../lock/main_screen';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import SocialButton from '../social/social_button';
 import EmailInput from '../cred/email_input';
@@ -54,7 +54,7 @@ export default class AskSocialNetworkOrEmail extends React.Component {
     const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email">
+      <MainScreen lock={lock} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email">
         {buttons}
         <div className="auth0-lock-or">or</div>
         <EmailInput value={c.email(lock)}
@@ -65,7 +65,7 @@ export default class AskSocialNetworkOrEmail extends React.Component {
           placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
           tabIndex={l.tabIndex(lock, 1)}
           disabled={l.submitting(lock)} />
-      </CredPane>
+      </MainScreen>
     );
   }
 

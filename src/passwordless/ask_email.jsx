@@ -1,5 +1,5 @@
 import React from 'react';
-import CredPane from '../lock/cred_pane';
+import MainScreen from '../lock/main_screen';
 import EmailInput from '../cred/email_input';
 import EmailSentConfirmation from './email_sent_confirmation';
 import * as c from '../cred/index';
@@ -15,7 +15,7 @@ export default class AskEmail extends React.Component {
     const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email" terms={terms} ref="cred">
+      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email" terms={terms} ref="cred">
         <p>{this.t(["headerText"])}</p>
         <EmailInput value={c.email(lock)}
           isValid={!c.visiblyInvalidEmail(lock)}
@@ -25,7 +25,7 @@ export default class AskEmail extends React.Component {
           placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
           tabIndex={l.tabIndex(lock, 1)}
           disabled={l.submitting(lock)} />
-      </CredPane>
+      </MainScreen>
     );
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import CredPane from '../lock/cred_pane';
+import MainScreen from '../lock/main_screen';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import SocialButton from './social_button';
 import { close } from './actions';
@@ -40,9 +40,9 @@ export default class AskSocialNetwork extends React.Component {
     const terms = this.t(["footerText"]);
 
     return (
-      <CredPane lock={lock} showSubmitButton={false} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane}>
+      <MainScreen lock={lock} showSubmitButton={false} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane}>
         {buttons}
-      </CredPane>
+      </MainScreen>
     );
   }
 
