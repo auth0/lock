@@ -30,21 +30,19 @@ export default class AskPhoneNumber extends React.Component {
 
     return (
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" terms={terms} ref="cred">
-        <div className="auth0-lock-passwordless auth0-lock-mode">
-          <div className="auth0-lock-form auth0-lock-passwordless">
-          <p>{this.t(["headerText"])}</p>
-            <LocationInput value={c.phoneLocationString(lock)}
-              onClick={::this.handleLocationClick}
-              tabIndex={l.tabIndex(lock, 1)} />
-            <PhoneNumberInput ref="phoneNumber"
-              value={c.phoneNumber(lock)}
-              isValid={!c.visiblyInvalidPhoneNumber(lock)}
-              onChange={::this.handlePhoneNumberChange}
-              autoFocus={l.ui.focusInput(lock)}
-              placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
-              tabIndex={l.tabIndex(lock, 2)}
-              disabled={l.submitting(lock)} />
-          </div>
+        <div className="auth0-lock-form auth0-lock-passwordless">
+        <p>{this.t(["headerText"])}</p>
+          <LocationInput value={c.phoneLocationString(lock)}
+            onClick={::this.handleLocationClick}
+            tabIndex={l.tabIndex(lock, 1)} />
+          <PhoneNumberInput ref="phoneNumber"
+            value={c.phoneNumber(lock)}
+            isValid={!c.visiblyInvalidPhoneNumber(lock)}
+            onChange={::this.handlePhoneNumberChange}
+            autoFocus={l.ui.focusInput(lock)}
+            placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
+            tabIndex={l.tabIndex(lock, 2)}
+            disabled={l.submitting(lock)} />
         </div>
       </CredPane>
     );

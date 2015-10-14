@@ -41,17 +41,11 @@ export default class AskSocialNetwork extends React.Component {
 
     return (
       <CredPane lock={lock} showSubmitButton={false} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane}>
-        <div className="auth0-lock-passwordless auth0-lock-mode">
-          <div className="auth0-lock-form auth0-lock-passwordless">
-            {buttons}
-          </div>
+        <div className="auth0-lock-form auth0-lock-passwordless">
+          {buttons}
         </div>
       </CredPane>
     );
   }
 
-}
-
-AskSocialNetwork.contextTypes = {
-  lock: React.PropTypes.object
 }
