@@ -55,18 +55,16 @@ export default class AskSocialNetworkOrEmail extends React.Component {
 
     return (
       <CredPane lock={lock} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email">
-        <div className="auth0-lock-form">
-          {buttons}
-          <div className="auth0-lock-or">or</div>
-          <EmailInput value={c.email(lock)}
-            isValid={!c.visiblyInvalidEmail(lock)}
-            onChange={::this.handleEmailChange}
-            gravatar={l.ui.gravatar(lock)}
-            autoFocus={l.ui.focusInput(lock)}
-            placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
-            tabIndex={l.tabIndex(lock, 1)}
-            disabled={l.submitting(lock)} />
-        </div>
+        {buttons}
+        <div className="auth0-lock-or">or</div>
+        <EmailInput value={c.email(lock)}
+          isValid={!c.visiblyInvalidEmail(lock)}
+          onChange={::this.handleEmailChange}
+          gravatar={l.ui.gravatar(lock)}
+          autoFocus={l.ui.focusInput(lock)}
+          placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
+          tabIndex={l.tabIndex(lock, 1)}
+          disabled={l.submitting(lock)} />
       </CredPane>
     );
   }

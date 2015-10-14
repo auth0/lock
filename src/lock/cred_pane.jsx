@@ -53,7 +53,9 @@ export default class CredPane extends React.Component {
             {globalError && <GlobalError key="global-error" message={globalError} />}
           </ReactTransitionGroup>
           <div className="auth0-lock-content">
-            {this.props.children}
+            <div className="auth0-lock-form">
+              {this.props.children}
+            </div>
           </div>
           {terms && <Terms>{terms}</Terms>}
         </Placeholder>

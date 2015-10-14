@@ -19,21 +19,19 @@ export default class AskVcode extends React.Component {
 
     return (
       <CredPane lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} terms={terms} ref="cred">
-        <div className="auth0-lock-form">
-          <p>{headerText}</p>
-          <VcodeInput value={c.vcode(lock)}
-            isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
-            onChange={::this.handleVcodeChange}
-            autoFocus={!isSmallScreen()}
-            placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
-            disabled={l.submitting(lock)}
-            tabIndex={l.tabIndex(lock, 1)} />
-          <p className="auth0-lock-did-not-receive-code">
-            <a href="#" className="auth0-lock-did-not-receive-code-link" onClick={::this.handleResendClick}>
-              {this.t(["resendLabel"], {__textOnly: true})}
-            </a>
-          </p>
-        </div>
+        <p>{headerText}</p>
+        <VcodeInput value={c.vcode(lock)}
+          isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
+          onChange={::this.handleVcodeChange}
+          autoFocus={!isSmallScreen()}
+          placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
+          disabled={l.submitting(lock)}
+          tabIndex={l.tabIndex(lock, 1)} />
+        <p className="auth0-lock-did-not-receive-code">
+          <a href="#" className="auth0-lock-did-not-receive-code-link" onClick={::this.handleResendClick}>
+            {this.t(["resendLabel"], {__textOnly: true})}
+          </a>
+        </p>
       </CredPane>
     );
   }
