@@ -1,26 +1,15 @@
 import React from 'react';
 import MainScreen from '../lock/main_screen';
+import MainScreenContainer from '../lock/main_screen_container';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import SocialButton from './social_button';
 import { close } from './actions';
 import * as l from '../lock/index';
 
-export default class AskSocialNetwork extends React.Component {
+export default class AskSocialNetwork extends MainScreenContainer {
 
-  componentWillSlideIn(...args) {
-    return this.refs.cred.componentWillSlideIn(...args);
-  }
-
-  componentDidSlideIn(...args) {
-    return this.refs.cred.componentDidSlideIn(...args);
-  }
-
-  componentWillSlideOut(...args) {
-    return this.refs.cred.componentWillSlideOut(...args);
-  }
-
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["network"].concat(keyPath), params);
+  constructor(props) {
+    super(props, "network", "cred");
   }
 
   handleClose() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import MainScreen from '../lock/main_screen';
+import MainScreenContainer from '../lock/main_screen_container';
 import EmailInput from '../cred/email_input';
 import EmailSentConfirmation from './email_sent_confirmation';
 import * as c from '../cred/index';
@@ -7,7 +8,16 @@ import { changeEmail } from './actions';
 import * as l from '../lock/index';
 import * as m from './index';
 
-export default class AskEmail extends React.Component {
+export default class AskEmail extends MainScreenContainer {
+
+  constructor(props) {
+    super(props, "email", "cred");
+  }
+
+  handleEmailChange(e) {
+    changeEmail(l.id(this.props.lock), e.target.value);
+  }
+
   render() {
     const { lock } = this.props;
     const auxiliaryPane = m.isSendLink(lock) && m.passwordlessStarted(lock) ?
@@ -29,23 +39,4 @@ export default class AskEmail extends React.Component {
     );
   }
 
-  handleEmailChange(e) {
-    changeEmail(l.id(this.props.lock), e.target.value);
-  }
-
-  componentWillSlideIn(...args) {
-    return this.refs.cred.componentWillSlideIn(...args);
-  }
-
-  componentDidSlideIn(...args) {
-    return this.refs.cred.componentDidSlideIn(...args);
-  }
-
-  componentWillSlideOut(...args) {
-    return this.refs.cred.componentWillSlideOut(...args);
-  }
-
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["email"].concat(keyPath), params);
-  }
 }

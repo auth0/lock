@@ -1,5 +1,6 @@
 import React from 'react';
 import MainScreen from '../lock/main_screen';
+import MainScreenContainer from '../lock/main_screen_container';
 import PhoneNumberInput from '../cred/phone_number_input';
 import LocationInput from '../cred/location_input';
 import AskLocation from './ask_location';
@@ -8,7 +9,12 @@ import * as c from '../cred/index';
 import * as l from '../lock/index';
 import * as m from './index';
 
-export default class AskPhoneNumber extends React.Component {
+export default class AskPhoneNumber extends MainScreenContainer {
+
+  constructor(props) {
+    super(props, "phone", "cred");
+  }
+
   componentWillReceiveProps(nextProps) {
     if (m.selectingLocation(this.props.lock) && !m.selectingLocation(nextProps.lock)) {
       setTimeout(() => {
@@ -19,6 +25,14 @@ export default class AskPhoneNumber extends React.Component {
         }
       }, 17);
     }
+  }
+
+  handlePhoneNumberChange(e) {
+    changePhoneNumber(l.id(this.props.lock), e.target.value);
+  }
+
+  handleLocationClick(searchStr) {
+    selectPhoneLocation(l.id(this.props.lock), searchStr);
   }
 
   render() {
@@ -46,27 +60,4 @@ export default class AskPhoneNumber extends React.Component {
     );
   }
 
-  handlePhoneNumberChange(e) {
-    changePhoneNumber(l.id(this.props.lock), e.target.value);
-  }
-
-  handleLocationClick(searchStr) {
-    selectPhoneLocation(l.id(this.props.lock), searchStr);
-  }
-
-  componentWillSlideIn(...args) {
-    return this.refs.cred.componentWillSlideIn(...args);
-  }
-
-  componentDidSlideIn(...args) {
-    return this.refs.cred.componentDidSlideIn(...args);
-  }
-
-  componentWillSlideOut(...args) {
-    return this.refs.cred.componentWillSlideOut(...args);
-  }
-
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["phone"].concat(keyPath), params);
-  }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import MainScreen from '../lock/main_screen';
+import MainScreenContainer from '../lock/main_screen_container';
 import VcodeInput from '../cred/vcode_input';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import { back, changeVcode, close } from './actions';
@@ -8,7 +9,30 @@ import * as c from '../cred/index';
 import * as m from './index';
 import { isSmallScreen } from '../utils/media_utils';
 
-export default class AskVcode extends React.Component {
+export default class AskVcode extends MainScreenContainer {
+
+  constructor(props) {
+    super(props, "code", "cred");
+  }
+
+  handleClose() {
+    close(l.id(this.props.lock));
+  }
+
+  handleVcodeChange(e) {
+    e.preventDefault();
+    changeVcode(l.id(this.props.lock), e.target.value);
+  }
+
+  handleBack() {
+    back(l.id(this.props.lock), {clearCred: ["vcode"]});
+  }
+
+  handleResendClick(e) {
+    e.preventDefault();
+    this.handleBack();
+  }
+
   render() {
     const { className, headerText, lock } = this.props;
     const auxiliaryPane = l.signedIn(lock) ?
@@ -36,37 +60,4 @@ export default class AskVcode extends React.Component {
     );
   }
 
-  handleClose() {
-    close(l.id(this.props.lock));
-  }
-
-  handleVcodeChange(e) {
-    e.preventDefault();
-    changeVcode(l.id(this.props.lock), e.target.value);
-  }
-
-  handleBack() {
-    back(l.id(this.props.lock), {clearCred: ["vcode"]});
-  }
-
-  handleResendClick(e) {
-    e.preventDefault();
-    this.handleBack();
-  }
-
-  componentWillSlideIn(...args) {
-    return this.refs.cred.componentWillSlideIn(...args);
-  }
-
-  componentDidSlideIn(...args) {
-    return this.refs.cred.componentDidSlideIn(...args);
-  }
-
-  componentWillSlideOut(...args) {
-    return this.refs.cred.componentWillSlideOut(...args);
-  }
-
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["code"].concat(keyPath), params);
-  }
 }

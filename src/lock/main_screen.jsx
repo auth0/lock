@@ -11,6 +11,7 @@ import Terms from '../lock/terms';
 
 
 export default class MainScreen extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {height: "", show: true};
