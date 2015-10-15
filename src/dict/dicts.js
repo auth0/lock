@@ -3,7 +3,7 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "An email with the code has been sent to {email}.",
+      headerText: "An email with the code has been sent to {destination}.",
       resendLabel: "Did not get the code?"
     },
     confirmation: {
@@ -59,7 +59,7 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "An SMS with the code has been sent to {phoneNumber}.",
+      headerText: "An SMS with the code has been sent to {destination}.",
       resendLabel: "Did not get the code?"
     },
     confirmation: {
