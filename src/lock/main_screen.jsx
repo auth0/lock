@@ -28,7 +28,7 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, lock, showSubmitButton, terms } = this.props;
+    const { auxiliaryPane, backHandler, headerText, footerText, lock, showSubmitButton } = this.props;
     const { height, show } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -55,10 +55,11 @@ export default class MainScreen extends React.Component {
           </ReactTransitionGroup>
           <div className="auth0-lock-content">
             <div className="auth0-lock-form">
+              <p>{headerText}</p>
               {this.props.children}
             </div>
           </div>
-          {terms && <Terms>{terms}</Terms>}
+          {footerText && <Terms>{footerText}</Terms>}
         </Placeholder>
         {showSubmitButton && <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />}
         <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
@@ -102,9 +103,10 @@ export default class MainScreen extends React.Component {
 MainScreen.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
+  footerText: React.PropTypes.element,
+  HeaderText: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
-  showSubmitButton: React.PropTypes.bool.isRequired,
-  terms: React.PropTypes.element
+  showSubmitButton: React.PropTypes.bool.isRequired
 };
 
 MainScreen.defaultProps = {

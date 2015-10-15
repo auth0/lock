@@ -1,4 +1,5 @@
 import React from 'react';
+import MainScreenContainer from '../lock/main_screen_container';
 import MainScreen from '../lock/main_screen';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import EmailPane from '../panes/email_pane';
@@ -12,22 +13,10 @@ import * as l from '../lock/index';
 import * as mp from '../passwordless/index';
 import * as c from '../cred/index';
 
-export default class AskSocialNetworkOrEmail extends React.Component {
+export default class AskSocialNetworkOrEmail extends MainScreenContainer {
 
-  componentWillSlideIn(...args) {
-    return this.refs.cred.componentWillSlideIn(...args);
-  }
-
-  componentDidSlideIn(...args) {
-    return this.refs.cred.componentDidSlideIn(...args);
-  }
-
-  componentWillSlideOut(...args) {
-    return this.refs.cred.componentWillSlideOut(...args);
-  }
-
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["network"].concat(keyPath), params);
+  constructor(props) {
+    super(props, "network", "cred");
   }
 
   handleEmailChange(e) {
@@ -50,10 +39,14 @@ export default class AskSocialNetworkOrEmail extends React.Component {
       auxiliaryPane = <EmailSentConfirmation key="auxiliarypane" lock={lock} />;
     }
 
-    const terms = this.t(["footerText"]);
-
     return (
-      <MainScreen lock={lock} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email">
+      <MainScreen
+        auxiliaryPane={auxiliaryPane}
+        footerText={this.t(["footerText"])}
+        headerText={this.t(["headerText"])}
+        lock={lock}
+        ref="cred"
+      >
         <SocialButtonsPane lock={lock} />
         <PaneSeparator />
         <EmailPane

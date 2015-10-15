@@ -23,10 +23,15 @@ export default class AskSocialNetwork extends MainScreenContainer {
       <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} /> :
       null;
 
-    const terms = this.t(["footerText"]);
-
     return (
-      <MainScreen lock={lock} showSubmitButton={false} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane}>
+      <MainScreen
+        auxiliaryPane={auxiliaryPane}
+        footerText={this.t(["footerText"])}
+        headerText={this.t(["headerText"])}
+        lock={lock}
+        ref="cred"
+        showSubmitButton={false}
+      >
         <SocialButtonsPane lock={lock} />
       </MainScreen>
     );

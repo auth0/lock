@@ -29,11 +29,15 @@ export default class AskPhoneNumber extends MainScreenContainer {
     const initialLocationSearchStr = m.initialLocationSearchStr(lock);
     const auxiliaryPane = m.selectingLocation(lock) ?
       <AskLocation key="auxiliarypane" lock={lock} initialLocationSearchStr={initialLocationSearchStr} /> : null;
-    const terms = this.t(["footerText"]);
 
     return (
-      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} terms={terms} ref="cred">
-        <p>{this.t(["headerText"])}</p>
+      <MainScreen
+        auxiliaryPane={auxiliaryPane}
+        footerText={this.t(["footerText"])}
+        headerText={this.t(["headerText"])}
+        lock={lock}
+        ref="cred"
+      >
         <PhoneNumberPane
           lock={lock}
           placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}

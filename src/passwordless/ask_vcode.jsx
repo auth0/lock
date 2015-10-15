@@ -26,11 +26,15 @@ export default class AskVcode extends MainScreenContainer {
       <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} /> :
       null;
 
-    const terms = this.t(["footerText"]);
-
     return (
-      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} backHandler={::this.handleBack} terms={terms} ref="cred">
-        <p>{this.t(["headerText"], {destination: destination})}</p>
+      <MainScreen
+        auxiliaryPane={auxiliaryPane}
+        backHandler={::this.handleBack}
+        footerText={this.t(["footerText"])}
+        headerText={this.t(["headerText"], {destination: destination})}
+        lock={lock}
+        ref="cred"
+      >
         <VcodePane
           lock={lock}
           placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}

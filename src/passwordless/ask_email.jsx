@@ -15,18 +15,20 @@ export default class AskEmail extends MainScreenContainer {
     const { lock } = this.props;
     const auxiliaryPane = m.isSendLink(lock) && m.passwordlessStarted(lock) ?
       <EmailSentConfirmation key="auxiliarypane" lock={lock} /> : null;
-    const terms = this.t(["footerText"]);
 
     return (
-      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} terms={terms} ref="cred">
-        <p>{this.t(["headerText"])}</p>
-
+      <MainScreen
+        auxiliaryPane={auxiliaryPane}
+        footerText={this.t(["footerText"])}
+        headerText={this.t(["headerText"])}
+        lock={lock}
+        ref="cred"
+      >
         <EmailPane
           lock={lock}
           placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
           tabIndex={1}
         />
-
       </MainScreen>
     );
   }
