@@ -100,10 +100,16 @@ export default class MainScreen extends React.Component {
 }
 
 MainScreen.propTypes = {
-  showSubmitButton: React.PropTypes.bool.isRequired
+  auxiliaryPane: React.PropTypes.element,
+  backHandler: React.PropTypes.func,
+  className: React.PropTypes.string.isRequired,
+  lock: React.PropTypes.object.isRequired,
+  showSubmitButton: React.PropTypes.bool.isRequired,
+  terms: React.PropTypes.element
 };
 
 MainScreen.defaultProps = {
+  className: "",
   showSubmitButton: true
 };
 
