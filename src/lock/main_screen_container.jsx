@@ -1,12 +1,12 @@
 import React from 'react';
+import MainScreen from './main_screen';
 import * as l from './index';
 
 export default class MainScreenContainer extends React.Component {
 
-  constructor(props, name, mainScreenRef) {
+  constructor(props, name) {
     super(props)
     this.name = name;
-    this.mainScreenRef = mainScreenRef;
   }
 
   componentWillSlideIn(...args) {
@@ -22,11 +22,50 @@ export default class MainScreenContainer extends React.Component {
   }
 
   mainScreen() {
-    return this.refs[this.mainScreenRef];
+    return this.refs.main;
+  }
+
+  backHandler() {
+
+  }
+
+  renderAuxiliaryPane() {
+    return null;
+  }
+
+  renderContent() {
+
+  }
+
+  renderFooterText() {
+    return this.t(["footerText"]);
+  }
+
+  renderHeaderText() {
+    return this.t(["headerText"]);
+  }
+
+  showSubmitButton() {
+
   }
 
   t(keyPath, params) {
     return l.ui.t(this.props.lock, [this.name].concat(keyPath), params);
+  }
+
+  render() {
+    return (
+      <MainScreen
+        auxiliaryPane={this.renderAuxiliaryPane()}
+        backHandler={::this.backHandler()}
+        footerText={this.renderFooterText()}
+        headerText={this.renderHeaderText()}
+        lock={this.props.lock}
+        ref="main"
+      >
+        {this.renderContent()}
+      </MainScreen>
+    );
   }
 
 }

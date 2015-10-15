@@ -1,5 +1,4 @@
 import React from 'react';
-import MainScreen from '../lock/main_screen';
 import MainScreenContainer from '../lock/main_screen_container';
 import VcodePane from '../panes/vcode_pane';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
@@ -9,7 +8,7 @@ import * as l from '../lock/index';
 export default class AskVcode extends MainScreenContainer {
 
   constructor(props) {
-    super(props, "code", "cred");
+    super(props, "code");
   }
 
   handleClose() {
@@ -20,28 +19,37 @@ export default class AskVcode extends MainScreenContainer {
     back(l.id(this.props.lock), {clearCred: ["vcode"]});
   }
 
-  render() {
-    const { destination, lock } = this.props;
-    const auxiliaryPane = l.signedIn(lock) ?
-      <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} /> :
-      null;
+  renderAuxiliaryPane() {
+    const { lock } = this.props;
+
+    if (!l.signedIn(lock)) {
+      return null;
+    }
 
     return (
-      <MainScreen
-        auxiliaryPane={auxiliaryPane}
-        backHandler={::this.handleBack}
-        footerText={this.t(["footerText"])}
-        headerText={this.t(["headerText"], {destination: destination})}
+      <SignedInConfirmation
+        closeHandler={::this.handleClose}
+        key="auxiliarypane"
         lock={lock}
-        ref="cred"
-      >
-        <VcodePane
-          lock={lock}
-          placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
-          resendLabel={this.t(["resendLabel"], {__textOnly: true})}
-          tabIndex={1}
-        />
-      </MainScreen>
+      />
+    );
+  }
+
+  renderFooterText() {
+    const { destination } = this.props;
+    return this.t(["headerText"], {destination: destination});
+  }
+
+  render() {
+    const { lock } = this.props;
+
+    return (
+      <VcodePane
+        lock={lock}
+        placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
+        resendLabel={this.t(["resendLabel"], {__textOnly: true})}
+        tabIndex={1}
+      />
     );
   }
 

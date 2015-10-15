@@ -1,6 +1,5 @@
 import React from 'react';
 import MainScreenContainer from '../lock/main_screen_container';
-import MainScreen from '../lock/main_screen';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import EmailPane from '../panes/email_pane';
 import SocialButtonsPane from '../panes/social_buttons_pane';
@@ -16,7 +15,7 @@ import * as c from '../cred/index';
 export default class AskSocialNetworkOrEmail extends MainScreenContainer {
 
   constructor(props) {
-    super(props, "network", "cred");
+    super(props, "network");
   }
 
   handleEmailChange(e) {
@@ -27,34 +26,40 @@ export default class AskSocialNetworkOrEmail extends MainScreenContainer {
     close(l.id(this.props.lock));
   }
 
-  render() {
+  renderAuxiliaryPane() {
     const { lock } = this.props;
 
-    let auxiliaryPane;
     if (l.signedIn(lock)) {
-      auxiliaryPane = <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} />;
+      return (
+        <SignedInConfirmation
+          closeHandler={::this.handleClose}
+          key="auxiliarypane"
+          lock={lock}
+        />
+      );
     }
 
     if (mp.isSendLink(lock) && mp.passwordlessStarted(lock)) {
-      auxiliaryPane = <EmailSentConfirmation key="auxiliarypane" lock={lock} />;
+      return <EmailSentConfirmation key="auxiliarypane" lock={lock} />;
     }
 
+    return null;
+
+  }
+
+  renderContent() {
+    const { lock } = this.props;
+
     return (
-      <MainScreen
-        auxiliaryPane={auxiliaryPane}
-        footerText={this.t(["footerText"])}
-        headerText={this.t(["headerText"])}
-        lock={lock}
-        ref="cred"
-      >
+      <div>
         <SocialButtonsPane lock={lock} />
         <PaneSeparator />
         <EmailPane
           lock={lock}
-          placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true}) || 'wat'}
+          placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
           tabIndex={1}
         />
-      </MainScreen>
+      </div>
     );
   }
 

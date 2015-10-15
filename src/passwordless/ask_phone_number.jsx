@@ -1,5 +1,4 @@
 import React from 'react';
-import MainScreen from '../lock/main_screen';
 import MainScreenContainer from '../lock/main_screen_container';
 import PhoneNumberPane from '../panes/phone_number_pane';
 import AskLocation from './ask_location';
@@ -9,7 +8,7 @@ import * as m from './index';
 export default class AskPhoneNumber extends MainScreenContainer {
 
   constructor(props) {
-    super(props, "phone", "cred");
+    super(props, "phone");
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,27 +23,32 @@ export default class AskPhoneNumber extends MainScreenContainer {
     }
   }
 
-  render() {
+  renderAuxiliaryPane() {
     const { lock } = this.props;
-    const initialLocationSearchStr = m.initialLocationSearchStr(lock);
-    const auxiliaryPane = m.selectingLocation(lock) ?
-      <AskLocation key="auxiliarypane" lock={lock} initialLocationSearchStr={initialLocationSearchStr} /> : null;
+
+    if (!m.selectingLocation(lock)) {
+      return null;
+    }
 
     return (
-      <MainScreen
-        auxiliaryPane={auxiliaryPane}
-        footerText={this.t(["footerText"])}
-        headerText={this.t(["headerText"])}
+      <AskLocation
+        initialLocationSearchStr={m.initialLocationSearchStr(lock)}
+        key="auxiliarypane"
         lock={lock}
-        ref="cred"
-      >
-        <PhoneNumberPane
-          lock={lock}
-          placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
-          ref="phoneNumberPane"
-          tabIndex={1}
-        />
-      </MainScreen>
+      />
+    );
+  }
+
+  renderContent() {
+    const { lock } = this.props;
+
+    return (
+      <PhoneNumberPane
+        lock={lock}
+        placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
+        ref="phoneNumberPane"
+        tabIndex={1}
+      />
     );
   }
 

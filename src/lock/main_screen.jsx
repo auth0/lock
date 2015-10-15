@@ -46,6 +46,9 @@ export default class MainScreen extends React.Component {
     }
     const primaryColor = l.ui.primaryColor(lock);
 
+    const header = headerText && <p>{headerText}</p>;
+    const footer = footerText && <Terms>{footerText}</Terms>;
+
     return (
       <div className="auth0-lock-cred-pane">
         <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
@@ -55,11 +58,11 @@ export default class MainScreen extends React.Component {
           </ReactTransitionGroup>
           <div className="auth0-lock-content">
             <div className="auth0-lock-form">
-              <p>{headerText}</p>
+              {header}
               {this.props.children}
             </div>
           </div>
-          {footerText && <Terms>{footerText}</Terms>}
+          {footer}
         </Placeholder>
         {showSubmitButton && <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />}
         <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
