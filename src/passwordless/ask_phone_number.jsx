@@ -32,7 +32,7 @@ export default class AskPhoneNumber extends MainScreenContainer {
     const terms = this.t(["footerText"]);
 
     return (
-      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" terms={terms} ref="cred">
+      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} terms={terms} ref="cred">
         <p>{this.t(["headerText"])}</p>
         <PhoneNumberPane
           lock={lock}

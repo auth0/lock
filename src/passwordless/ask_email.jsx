@@ -18,7 +18,7 @@ export default class AskEmail extends MainScreenContainer {
     const terms = this.t(["footerText"]);
 
     return (
-      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email" terms={terms} ref="cred">
+      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} terms={terms} ref="cred">
         <p>{this.t(["headerText"])}</p>
 
         <EmailPane

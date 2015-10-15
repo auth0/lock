@@ -21,7 +21,7 @@ export default class AskVcode extends MainScreenContainer {
   }
 
   render() {
-    const { className, headerText, lock } = this.props;
+    const { headerText, lock } = this.props;
     const auxiliaryPane = l.signedIn(lock) ?
       <SignedInConfirmation closeHandler={::this.handleClose} key="auxiliarypane" lock={lock} /> :
       null;
@@ -29,7 +29,7 @@ export default class AskVcode extends MainScreenContainer {
     const terms = this.t(["footerText"]);
 
     return (
-      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} className={className} backHandler={::this.handleBack} terms={terms} ref="cred">
+      <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} backHandler={::this.handleBack} terms={terms} ref="cred">
         <p>{headerText}</p>
         <VcodePane
           lock={lock}

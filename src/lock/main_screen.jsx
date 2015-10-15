@@ -28,7 +28,7 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, className, lock, showSubmitButton, terms } = this.props;
+    const { auxiliaryPane, backHandler, lock, showSubmitButton, terms } = this.props;
     const { height, show } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -47,7 +47,7 @@ export default class MainScreen extends React.Component {
     const primaryColor = l.ui.primaryColor(lock);
 
     return (
-      <div className={className + " auth0-lock-cred-pane"}>
+      <div className="auth0-lock-cred-pane">
         <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <Placeholder delay={800} height={height} show={show} ref="content">
           <ReactTransitionGroup>
@@ -102,14 +102,12 @@ export default class MainScreen extends React.Component {
 MainScreen.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
-  className: React.PropTypes.string.isRequired,
   lock: React.PropTypes.object.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   terms: React.PropTypes.element
 };
 
 MainScreen.defaultProps = {
-  className: "",
   showSubmitButton: true
 };
 
