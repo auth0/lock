@@ -1,12 +1,9 @@
 import React from 'react';
 import MainScreen from '../lock/main_screen';
 import MainScreenContainer from '../lock/main_screen_container';
-import PhoneNumberInput from '../cred/phone_number_input';
-import LocationInput from '../cred/location_input';
+import PhoneNumberPane from '../panes/phone_number_pane';
 import AskLocation from './ask_location';
-import { changePhoneNumber, selectPhoneLocation } from './actions';
 import * as c from '../cred/index';
-import * as l from '../lock/index';
 import * as m from './index';
 
 export default class AskPhoneNumber extends MainScreenContainer {
@@ -21,18 +18,10 @@ export default class AskPhoneNumber extends MainScreenContainer {
         if (c.phoneNumber(nextProps.lock)) {
           this.refs.cred.focusSubmit();
         } else {
-          this.refs.phoneNumber.focus();
+          this.refs.phoneNumberPane.focusPhoneNumberInput();
         }
       }, 17);
     }
-  }
-
-  handlePhoneNumberChange(e) {
-    changePhoneNumber(l.id(this.props.lock), e.target.value);
-  }
-
-  handleLocationClick(searchStr) {
-    selectPhoneLocation(l.id(this.props.lock), searchStr);
   }
 
   render() {
@@ -45,17 +34,12 @@ export default class AskPhoneNumber extends MainScreenContainer {
     return (
       <MainScreen lock={lock} auxiliaryPane={auxiliaryPane} className="auth0-lock-intro" terms={terms} ref="cred">
         <p>{this.t(["headerText"])}</p>
-        <LocationInput value={c.phoneLocationString(lock)}
-          onClick={::this.handleLocationClick}
-          tabIndex={l.tabIndex(lock, 1)} />
-        <PhoneNumberInput ref="phoneNumber"
-          value={c.phoneNumber(lock)}
-          isValid={!c.visiblyInvalidPhoneNumber(lock)}
-          onChange={::this.handlePhoneNumberChange}
-          autoFocus={l.ui.focusInput(lock)}
+        <PhoneNumberPane
+          lock={lock}
           placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
-          tabIndex={l.tabIndex(lock, 2)}
-          disabled={l.submitting(lock)} />
+          ref="phoneNumberPane"
+          tabIndex={1}
+        />
       </MainScreen>
     );
   }

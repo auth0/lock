@@ -1,7 +1,9 @@
 import React from 'react';
 import MainScreen from '../lock/main_screen';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
-import SocialButton from '../social/social_button';
+import EmailPane from '../panes/email_pane';
+import SocialButtonsPane from '../panes/social_buttons_pane';
+import PaneSeparator from '../panes/pane_separator';
 import EmailInput from '../cred/email_input';
 import EmailSentConfirmation from '../passwordless/email_sent_confirmation';
 import { changeEmail } from '../passwordless/actions';
@@ -38,9 +40,6 @@ export default class AskSocialNetworkOrEmail extends React.Component {
 
   render() {
     const { lock } = this.props;
-    const buttons = l.ui.connections(lock).map(x => {
-      return <SocialButton key={x} name={x} lockID={l.id(lock)} />;
-    });
 
     let auxiliaryPane;
     if (l.signedIn(lock)) {
@@ -55,16 +54,13 @@ export default class AskSocialNetworkOrEmail extends React.Component {
 
     return (
       <MainScreen lock={lock} ref="cred" terms={terms} auxiliaryPane={auxiliaryPane} className="auth0-lock-ask-email">
-        {buttons}
-        <div className="auth0-lock-or">or</div>
-        <EmailInput value={c.email(lock)}
-          isValid={!c.visiblyInvalidEmail(lock)}
-          onChange={::this.handleEmailChange}
-          gravatar={l.ui.gravatar(lock)}
-          autoFocus={l.ui.focusInput(lock)}
-          placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
-          tabIndex={l.tabIndex(lock, 1)}
-          disabled={l.submitting(lock)} />
+        <SocialButtonsPane lock={lock} />
+        <PaneSeparator />
+        <EmailPane
+          lock={lock}
+          placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true}) || 'wat'}
+          tabIndex={1}
+        />
       </MainScreen>
     );
   }
