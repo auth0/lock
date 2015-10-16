@@ -12,7 +12,7 @@ export default class SocialButton extends React.Component {
     const color = colors[name] || colors["github"];
 
     return (
-      <button onClick={::this.handleClick} className="auth0-lock-social-button" style={{backgroundColor: color}} disabled={disabled} tabIndex={tabIndex}>
+      <button onClick={::this.handleClick} className="auth0-lock-social-button" style={{backgroundColor: color}} disabled={disabled} tabIndex={tabIndex} type="button">
         <div className="auth0-lock-social-button-icon" />
         <div className="auth0-lock-social-button-text">Login with {name}</div>
       </button>
