@@ -26,20 +26,20 @@ class ResendLink extends React.Component {
 
 class Resend extends React.Component {
   render() {
-    const { lock } = this.props;
+    const { labels, lock } = this.props;
 
     const resendLink = m.resendAvailable(lock) &&
       <ResendLink onClick={::this.handleClick}
-        label={this.t([m.resendFailed(lock) ? "retryLabel" : "resendLabel"])} />;
+        label={m.resendFailed(lock) ? labels.retry : labels.resend} />;
 
     const resendingLabel = m.resendOngoing(lock) &&
-      <a className="auth0-lock-resend-link">{this.t(["resendingLabel"])}</a>;
+      <a className="auth0-lock-resend-link">{labels.resending}</a>;
 
     const resendSuccessLabel = m.resendSuccess(lock) &&
-      <span className="auth0-lock-sent-label">{this.t(["sentLabel"])}</span>;
+      <span className="auth0-lock-sent-label">{labels.sent}</span>;
 
     const resendFailedLabel = m.resendFailed(lock) &&
-      <span className="auth0-lock-sent-failed-label">{this.t(["failedLabel"])}</span>;
+      <span className="auth0-lock-sent-failed-label">{labels.failed}</span>;
 
     return (
       <span>
@@ -56,20 +56,24 @@ class Resend extends React.Component {
     resendEmail(l.id(this.props.lock));
   }
 
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["confirmation"].concat(keyPath), params);
-  }
 }
 
 export default class EmailSentConfirmation extends React.Component {
   render() {
     const { lock } = this.props;
     const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
+    const labels = {
+      failed: this.t(["failedLabel"]),
+      resend: this.t(["resendLabel"]),
+      resending: this.t(["resendingLabel"]),
+      retry: this.t(["retryLabel"]),
+      sent: this.t(["sentLabel"])
+    };
 
     return (
       <ConfirmationPane backHandler={::this.handleBack} closeHandler={closeHandler}>
         <p>{this.t(["success"], {email: c.email(lock)})}</p>
-        <Resend lock={lock}/>
+        <Resend labels={labels} lock={lock}/>
       </ConfirmationPane>
     )
   }
@@ -83,6 +87,12 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["confirmation"].concat(keyPath), params);
+    const { dictKey, lock } = this.props;
+    return l.ui.t(lock, [dictKey].concat(keyPath), params);
   }
+
 }
+
+EmailSentConfirmation.defaultProps = {
+  dictKey: "confirmation"
+};

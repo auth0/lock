@@ -33,6 +33,7 @@ export default class AskSocialNetworkOrEmail extends MainScreenContainer {
       return (
         <SignedInConfirmation
           closeHandler={::this.handleClose}
+          dictKey="socialConfirmation"
           key="auxiliarypane"
           lock={lock}
         />
@@ -40,7 +41,7 @@ export default class AskSocialNetworkOrEmail extends MainScreenContainer {
     }
 
     if (mp.isSendLink(lock) && mp.passwordlessStarted(lock)) {
-      return <EmailSentConfirmation key="auxiliarypane" lock={lock} />;
+      return <EmailSentConfirmation dictKey="magiclinkConfirmation" key="auxiliarypane" lock={lock} />;
     }
 
     return null;

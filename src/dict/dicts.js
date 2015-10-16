@@ -88,7 +88,15 @@ export default {
     network: {
       footerText: "",
     },
-    confirmation: {
+    magiclinkConfirmation: {
+      failedLabel: "Failed!",
+      retryLabel: "Retry",
+      resendLabel: "Resend",
+      resendingLabel: "Resending...",
+      sentLabel: "Sent!",
+      success: "We sent you a link to sign in<br />to {email}."
+    },
+    socialConfirmation: {
       success: "Thanks for signing in."
     },
     title: "Auth0",
