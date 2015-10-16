@@ -40,7 +40,7 @@ export default class AskVcode extends MainScreenContainer {
     return this.t(["headerText"], {destination: destination});
   }
 
-  render() {
+  renderContent() {
     const { lock } = this.props;
 
     return (
