@@ -15,7 +15,7 @@ export default class AskPhoneNumber extends MainScreenContainer {
     if (m.selectingLocation(this.props.lock) && !m.selectingLocation(nextProps.lock)) {
       setTimeout(() => {
         if (c.phoneNumber(nextProps.lock)) {
-          this.refs.cred.focusSubmit();
+          this.refs.main.focusSubmit();
         } else {
           this.refs.phoneNumberPane.focusPhoneNumberInput();
         }

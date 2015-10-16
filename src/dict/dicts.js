@@ -117,5 +117,29 @@ export default {
     },
     title: "Auth0",
     welcome: "Welcome {name}!"
+  },
+  socialOrSms: {
+    network: {
+      footerText: "",
+    },
+    code: {
+      codeInputPlaceholder: "Your code",
+      footerText: "",
+      headerText: "An SMS with the code has been sent to {destination}.",
+      resendLabel: "Did not get the code?"
+    },
+    confirmation: {
+      success: "Thanks for signing in."
+    },
+    location: {
+      locationFilterInputPlaceholder: "Select your country"
+    },
+    phone: {
+      footerText: "",
+      headerText: "Enter your phone to sign in<br>or create an account",
+      phoneNumberInputPlaceholder: "your phone number"
+    },
+    title: "Auth0",
+    welcome: "Welcome {name}!"
   }
 };

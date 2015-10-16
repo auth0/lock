@@ -10,6 +10,7 @@ import passwordlessSpec from './passwordless/mode_spec';
 import socialSpec from './social/mode_spec';
 import socialOrMagiclinkSpec from './social-or-magiclink/mode_spec';
 import socialOrEmailcodeSpec from './social-or-emailcode/mode_spec';
+import socialOrSmsSpec from './social-or-sms/mode_spec';
 
 // styles
 import styles from '../css/index.css';
@@ -67,6 +68,7 @@ Auth0LockPasswordless.plugins.register(passwordlessSpec);
 Auth0LockPasswordless.plugins.register(socialSpec);
 Auth0LockPasswordless.plugins.register(socialOrMagiclinkSpec);
 Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
+Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 
 
 // telemetry
