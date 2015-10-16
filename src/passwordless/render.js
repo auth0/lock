@@ -1,7 +1,6 @@
 import AskPhoneNumber from './ask_phone_number';
 import AskEmail from './ask_email';
 import AskVcode from './ask_vcode';
-import SignedIn from './signed_in';
 import { cancelSelectPhoneLocation, close, requestPasswordlessEmail, sendSMS, signIn } from './actions';
 import * as c from '../cred/index';
 import * as l from '../lock/index';
