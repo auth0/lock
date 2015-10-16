@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function() {
-  return <div className="auth0-lock-or">or</div>;
+  return <p className="auth0-lock-pane-separator">or</p>;
 }
