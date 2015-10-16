@@ -62,6 +62,7 @@ export default class MainScreenContainer extends React.Component {
         headerText={this.renderHeaderText()}
         lock={this.props.lock}
         ref="main"
+        showSubmitButton={this.showSubmitButton()}
       >
         {this.renderContent()}
       </MainScreen>
