@@ -15,8 +15,8 @@ export default function render(lock) {
     children: <AskSocialNetworkOrEmail key="social-network-or-email" lock={lock} />,
     closeHandler: close,
     escHandler: close,
+    isDone: mp.passwordlessStarted(lock) || l.signedIn(lock),
     lock: lock,
-    isDone: mp.passwordlessStarted(lock),
     submitHandler: !mp.passwordlessStarted(lock) && askEmailSubmitHandler
   };
 
