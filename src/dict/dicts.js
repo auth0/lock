@@ -84,6 +84,22 @@ export default {
     },
     title: "Auth0"
   },
+  socialOrEmailcode: {
+    network: {
+      footerText: "",
+    },
+    code: {
+      codeInputPlaceholder: "Your code",
+      footerText: "",
+      headerText: "An email with the code has been sent to {destination}.",
+      resendLabel: "Did not get the code?"
+    },
+    confirmation: {
+      success: "Thanks for signing in."
+    },
+    title: "Auth0",
+    welcome: "Welcome {name}!"
+  },
   socialOrMagiclink: {
     network: {
       footerText: "",
