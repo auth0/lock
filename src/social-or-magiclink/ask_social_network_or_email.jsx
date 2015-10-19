@@ -1,12 +1,11 @@
 import React from 'react';
 import MainScreenContainer from '../lock/main_screen_container';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
-import EmailPane from '../panes/email_pane';
+import EmailPane from '../cred/email/email_pane';
 import SocialButtonsPane from '../panes/social_buttons_pane';
 import PaneSeparator from '../panes/pane_separator';
-import EmailInput from '../cred/email_input';
-import EmailSentConfirmation from '../passwordless/email_sent_confirmation';
-import { changeEmail } from '../passwordless/actions';
+import EmailSentConfirmation from '../cred/email/email_sent_confirmation';
+import { changeEmail } from '../cred/email/actions';
 import { close } from './actions';
 import * as l from '../lock/index';
 import * as mp from '../passwordless/index';

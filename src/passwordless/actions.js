@@ -29,10 +29,6 @@ export function setDefaultLocation(id, str) {
   swap(updateEntity, "lock", id, c.setPhoneLocation, result);
 }
 
-export function changeEmail(id, email) {
-  swap(updateEntity, "lock", id, c.setEmail, email);
-}
-
 export function changeVcode(id, vcode) {
   swap(updateEntity, "lock", id, c.setVcode, vcode)
 }

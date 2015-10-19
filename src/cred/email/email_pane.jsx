@@ -1,8 +1,8 @@
 import React from 'react';
-import EmailInput from '../cred/email_input';
-import * as c from '../cred/index';
-import { changeEmail } from '../passwordless/actions';
-import * as l from '../lock/index';
+import EmailInput from './email_input';
+import * as c from '../index';
+import { changeEmail } from './actions';
+import * as l from '../../lock/index';
 
 export default class EmailPane extends React.Component {
 

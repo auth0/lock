@@ -1,8 +1,10 @@
 import React from 'react';
-import MainScreenContainer from '../lock/main_screen_container';
+import MainScreenContainer from '../../lock/main_screen_container';
 import EmailSentConfirmation from './email_sent_confirmation';
-import EmailPane from '../panes/email_pane';
-import * as m from './index';
+import EmailPane from './email_pane';
+
+// TODO: remove passwordless deps
+import * as m from '../../passwordless/index';
 
 export default class AskEmail extends MainScreenContainer {
 

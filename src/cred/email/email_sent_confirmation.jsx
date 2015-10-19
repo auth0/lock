@@ -1,9 +1,11 @@
 import React from 'react';
-import ConfirmationPane from '../lock/confirmation_pane';
-import { close, resendEmail, reset } from './actions';
-import * as l from '../lock/index';
-import * as c from '../cred/index';
-import * as m from './index';
+import ConfirmationPane from '../../lock/confirmation_pane';
+import * as l from '../../lock/index';
+import * as c from '../index';
+
+// TODO: remove passwordless deps
+import { close, resendEmail, reset } from '../../passwordless/actions';
+import * as m from '../../passwordless/index';
 
 
 class RetryIcon extends React.Component {
