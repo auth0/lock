@@ -14,21 +14,58 @@ You can try it out yourself online at the [playground](https://auth0.github.io/l
 
 ## Usage
 
-The most common scenario would be to open the dialog when the user clicks a login button. In order to do that, you can initialize a new `Auth0LockPasswordless` object, register an event handler for the _click_ event on the button element, and finally invoke the `magiclink` method from it.
+To send a one-time password via text message you initialize a new `Auth0LockPasswordless` object and invoke the `sms` method.
 
 ```javascript
 var clientID = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
-var lock = new Auth0LockPasswordless(clientID, domain);
 document.getElementById("loginButton").onclick = function(e) {
-  lock.magiclink(function() {
-    // this will be invoked after an attempt to send an email with a link that
-    // will log the user in automatically has been sent to the entered address
+  var lock = new Auth0LockPasswordless(clientID, domain);
+  lock.sms(function(error, profile, id_token, access_token, state, refresh_token) {
+    // This will be invoked when the user enters the one-time password he or she
+    // received via text message. Here we just welcome the user, but usually you
+    // want save the profile and id_token, and handle errors.
+    if (!error) {
+      alert("Hi " + profile.name);
+    }
   });
 };
 ```
 
-The `magiclink` method is only one of the many methods available in `Auth0LockPasswordless` objects that will display the dialog. Depending on which one you invoke, the behavior of the dialog will be different. Each one of these methods take an optional `options` argument, which is not being shown in the code snippet above, and a `callback` function. The `options` will allow you to customize how the dialog will look, and `callback` will be invoked when the dialog's job can be considered done. See below the API section for more details.
+You can also send the user a _magic link_ by invoking the `magiclink` method instead.
+
+```javascript
+var clientID = "YOUR_AUTH0_APP_CLIENTID";
+var domain = "YOUR_DOMAIN_AT.auth0.com";
+document.getElementById("loginButton").onclick = function(e) {
+  var lock = new Auth0LockPasswordless(clientID, domain);
+  lock.magiclink();
+};
+```
+
+Once the user receives the email and clicks on this link, Auth0 will handle the authentication and redirect back to the application with the token as the hash location. You can parse the hash and retrieve the full user profile.
+
+```js
+// parse hash on page load
+$(document).ready(function(){
+  var hash = lock.parseHash(window.location.hash);
+
+  if (hash && hash.error) {
+    alert('There was an error: ' + hash.error + '\n' + hash.error_description);
+  } else if (hash && hash.id_token) {
+    //use id_token for retrieving profile.
+    localStorage.setItem('id_token', hash.id_token);
+    //retrieve profile
+    lock.getProfile(hash.id_token, function (err, profile) {
+      if (err){
+        //handle err
+      } else {
+        //use user profile
+      }
+    });
+  }
+});
+```
 
 ## Install
 
