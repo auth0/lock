@@ -1,9 +1,12 @@
 import React from 'react';
-import PhoneNumberInput from '../cred/phone_number_input';
-import LocationInput from '../cred/location_input';
-import { changePhoneNumber, selectPhoneLocation } from '../passwordless/actions';
-import * as c from '../cred/index';
+import PhoneNumberInput from './phone_number_input';
+import LocationInput from '../location_input';
+import * as c from '../index';
 import * as l from '../lock/index';
+import { changePhoneNumber } from './actions';
+
+// TODO: remove passwordless deps
+import { selectPhoneLocation } from '../../passwordless/actions';
 
 export default class PhoneNumberPane extends React.Component {
 

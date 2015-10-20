@@ -1,9 +1,11 @@
 import React from 'react';
-import MainScreenContainer from '../lock/main_screen_container';
-import PhoneNumberPane from '../panes/phone_number_pane';
-import AskLocation from './ask_location';
-import * as c from '../cred/index';
-import * as m from './index';
+import MainScreenContainer from '../../lock/main_screen_container';
+import PhoneNumberPane from './phone_number_pane';
+import AskLocation from '../../passwordless/ask_location';
+import * as c from '../index';
+
+// TODO: remove passwordless deps
+import * as m from '../../passwordless/index';
 
 export default class AskPhoneNumber extends MainScreenContainer {
 

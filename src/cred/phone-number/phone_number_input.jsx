@@ -1,6 +1,6 @@
 import React from 'react';
-import InputWrap from './input_wrap';
-import Icon from '../icon/icon';
+import InputWrap from '../../input_wrap';
+import Icon from '../../icon/icon';
 
 export default class PhoneNumberInput extends React.Component {
   constructor(props) {

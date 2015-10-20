@@ -1,4 +1,4 @@
-import AskPhoneNumber from './ask_phone_number';
+import AskPhoneNumber from '../cred/phone-number/ask_phone_number';
 import AskEmail from '../cred/email/ask_email';
 import AskVcode from '../cred/vcode/ask_vcode';
 import { cancelSelectPhoneLocation, close, requestPasswordlessEmail, sendSMS, signIn } from './actions';

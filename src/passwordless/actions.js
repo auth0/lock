@@ -8,10 +8,6 @@ import * as cs from '../cred/storage';
 import * as l from '../lock/index';
 import * as m from './index';
 
-export function changePhoneNumber(id, phoneNumber) {
-  swap(updateEntity, "lock", id, c.setPhoneNumber, phoneNumber);
-}
-
 export function changePhoneLocation(id, location) {
   swap(updateEntity, "lock", id, lock => {
     lock = m.closeLocationSelect(lock);
