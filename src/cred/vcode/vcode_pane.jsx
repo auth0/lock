@@ -1,9 +1,12 @@
 import React from 'react';
-import VcodeInput from '../cred/vcode_input';
-import { back, changeVcode } from '../passwordless/actions';
-import * as l from '../lock/index';
-import * as c from '../cred/index';
-import { isSmallScreen } from '../utils/media_utils';
+import VcodeInput from './vcode_input';
+import * as l from '../../lock/index';
+import * as c from '../index';
+import { isSmallScreen } from '../../utils/media_utils';
+import { changeVcode } from './actions';
+
+// TODO: remove passwordless deps
+import { back } from '../../passwordless/actions';
 
 export default class VcodePane extends React.Component {
 

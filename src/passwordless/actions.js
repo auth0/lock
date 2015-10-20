@@ -29,10 +29,6 @@ export function setDefaultLocation(id, str) {
   swap(updateEntity, "lock", id, c.setPhoneLocation, result);
 }
 
-export function changeVcode(id, vcode) {
-  swap(updateEntity, "lock", id, c.setVcode, vcode)
-}
-
 export function selectPhoneLocation(id, searchStr) {
   swap(updateEntity, "lock", id, m.openLocationSelect, searchStr);
 }

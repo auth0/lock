@@ -1,7 +1,7 @@
 import React from 'react';
-import InputWrap from './input_wrap';
-import Icon from '../icon/icon';
-import { isSmallScreen } from '../utils/media_utils';
+import InputWrap from '../input_wrap';
+import Icon from '../../icon/icon';
+import { isSmallScreen } from '../../utils/media_utils';
 
 export default class VcodeInput extends React.Component {
   constructor(props) {

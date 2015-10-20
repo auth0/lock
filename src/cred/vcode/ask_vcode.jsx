@@ -1,9 +1,11 @@
 import React from 'react';
-import MainScreenContainer from '../lock/main_screen_container';
-import VcodePane from '../panes/vcode_pane';
-import SignedInConfirmation from '../lock/signed_in_confirmation';
-import { back, close } from './actions';
-import * as l from '../lock/index';
+import MainScreenContainer from '../../lock/main_screen_container';
+import VcodePane from './vcode_pane';
+import SignedInConfirmation from '../../lock/signed_in_confirmation';
+import * as l from '../../lock/index';
+
+// TODO: remove passwordless deps
+import { back, close } from '../../passwordless/actions';
 
 export default class AskVcode extends MainScreenContainer {
 
