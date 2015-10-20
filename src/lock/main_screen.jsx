@@ -107,7 +107,7 @@ MainScreen.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
   footerText: React.PropTypes.element,
-  HeaderText: React.PropTypes.element,
+  headerText: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired
 };
