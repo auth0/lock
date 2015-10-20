@@ -6,12 +6,12 @@ import { setupLock, updateLock } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 import socialOrMagiclinkSpec from './social-or-magiclink/mode_spec';
-import socialOrEmailcodeSpec from './social-or-emailcode/mode_spec';
 import socialOrSmsSpec from './social-or-sms/mode_spec';
 import emailcodeSpec from './modes/emailcode/spec';
 import magiclinkSpec from './modes/magiclink/spec';
 import smsSpec from './modes/sms/spec';
 import socialSpec from './modes/social/spec';
+import socialOrEmailcodeSpec from './modes/social-or-emailcode/spec';
 
 // styles
 import styles from '../css/index.css';
@@ -65,12 +65,12 @@ Auth0LockPasswordless.renderer = new Renderer();
 Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
 
 Auth0LockPasswordless.plugins.register(socialOrMagiclinkSpec);
-Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
 Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 Auth0LockPasswordless.plugins.register(emailcodeSpec);
 Auth0LockPasswordless.plugins.register(magiclinkSpec);
 Auth0LockPasswordless.plugins.register(smsSpec);
 Auth0LockPasswordless.plugins.register(socialSpec);
+Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
 
 
 // telemetry

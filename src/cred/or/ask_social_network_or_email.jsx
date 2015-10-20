@@ -1,15 +1,18 @@
 import React from 'react';
-import MainScreenContainer from '../lock/main_screen_container';
-import SignedInConfirmation from '../lock/signed_in_confirmation';
-import EmailPane from '../cred/email/email_pane';
-import SocialButtonsPane from '../cred/social/social_buttons_pane';
-import PaneSeparator from '../panes/pane_separator';
-import EmailSentConfirmation from '../cred/email/email_sent_confirmation';
-import { changeEmail } from '../cred/email/actions';
-import { close } from './actions';
-import * as l from '../lock/index';
-import * as mp from '../passwordless/index';
-import * as c from '../cred/index';
+import MainScreenContainer from '../../lock/main_screen_container';
+import SignedInConfirmation from '../../lock/signed_in_confirmation';
+import EmailPane from '../email/email_pane';
+import SocialButtonsPane from '../social/social_buttons_pane';
+import PaneSeparator from '../../panes/pane_separator';
+import EmailSentConfirmation from '../email/email_sent_confirmation';
+import { changeEmail } from '../email/actions';
+
+import * as l from '../../lock/index';
+import * as mp from '../../passwordless/index';
+import * as c from '../index';
+
+// TODO: remove social dep
+import { close } from '../../social/actions';
 
 export default class AskSocialNetworkOrEmail extends MainScreenContainer {
 

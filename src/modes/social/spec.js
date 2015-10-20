@@ -1,6 +1,6 @@
 import React from 'react';
-import Lock from '../lock/lock';
-import AskSocialNetwork from '../cred/social/ask_social_network';
+import Lock from '../../lock/lock';
+import AskSocialNetwork from '../../cred/social/ask_social_network';
 import { openLock } from '../../lock/actions';
 import { close } from '../../social/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
