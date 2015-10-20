@@ -5,13 +5,6 @@ import render from './render';
 
 const NAME = "passwordless";
 
-function emailcode(id, ...args) {
-  const [options, callback] = openFunctionArgsResolver("emailcode", args);
-  options.signInCallback = callback;
-  options.modeOptions = {send: "code", dictName: "emailcode", storageKey: "emailcode"};
-  return openLock(id, NAME, options);
-}
-
 function sms(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("sms", args);
   options.signInCallback = callback;
@@ -27,7 +20,6 @@ export default {
   methods: {
     close: close,
     open: {
-      emailcode: emailcode,
       sms: sms
     }
   },
