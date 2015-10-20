@@ -1,6 +1,6 @@
 import React from 'react';
 import PhoneNumberInput from './phone_number_input';
-import LocationInput from '../location_input';
+import LocationInput from './location_input';
 import * as c from '../index';
 import * as l from '../lock/index';
 import { changePhoneNumber } from './actions';

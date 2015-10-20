@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Icon from '../icon/icon';
-import * as cc from './country_codes';
-import * as su from '../utils/string_utils';
-import { isSmallScreen } from '../utils/media_utils';
+import Icon from '../../icon/icon';
+import * as cc from '../country_codes';
+import * as su from '../../utils/string_utils';
+import { isSmallScreen } from '../../utils/media_utils';
 
 function cycle(xs, x) {
   const next = xs.skipWhile(y => y !== x).get(1);

@@ -4,7 +4,7 @@ import SignedInConfirmation from '../lock/signed_in_confirmation';
 import PhoneNumberPane from '../panes/phone_number_pane';
 import SocialButtonsPane from '../panes/social_buttons_pane';
 import PaneSeparator from '../panes/pane_separator';
-import AskLocation from '../passwordless/ask_location';
+import AskLocation from '../cred/phone-number/ask_location';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
 import * as mp from '../passwordless/index';
@@ -31,7 +31,7 @@ export default class AskSocialNetworkOrPhoneNumber extends MainScreenContainer {
   handleClose() {
     close(l.id(this.props.lock));
   }
-  
+
   renderAuxiliaryPane() {
     const { lock } = this.props;
 
@@ -55,7 +55,7 @@ export default class AskSocialNetworkOrPhoneNumber extends MainScreenContainer {
         />
       );
     }
-    
+
     return null;
   }
 

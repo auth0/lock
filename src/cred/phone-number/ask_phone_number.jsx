@@ -1,7 +1,7 @@
 import React from 'react';
 import MainScreenContainer from '../../lock/main_screen_container';
 import PhoneNumberPane from './phone_number_pane';
-import AskLocation from '../../passwordless/ask_location';
+import AskLocation from './ask_location';
 import * as c from '../index';
 
 // TODO: remove passwordless deps
