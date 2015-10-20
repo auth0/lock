@@ -1,3 +1,12 @@
+## [7.10.1] - 2015-10-08
+
+### Fixed
+
+- [] Merge pull request #241 from lordakshaya/patch-1 (`Sandrino Di Mattia`)
+  https://github.com/auth0/lock/commit/7c81625af30d6aff30f2c9c15926b55d2bbead97
+- [] Using the latest version of auth0-js (`Akshaya`)
+  https://github.com/auth0/lock/commit/69089d84eabfcbbef04226dee3c2b07d70e9f2f7
+
 ## [7.10.0] - 2015-08-26
 
 ### Fixed
