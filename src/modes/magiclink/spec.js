@@ -19,10 +19,6 @@ function open(id, ...args) {
   return openLock(id, NAME, options);
 }
 
-function askEmailSubmitHandler(lock) {
-  requestPasswordlessEmail(l.id(lock));
-}
-
 function render(lock) {
   const props = {
     closeHandler: close,
@@ -30,7 +26,7 @@ function render(lock) {
     escHandler: close,
     isDone: m.passwordlessStarted(lock),
     lock: lock,
-    submitHandler: !m.passwordlessStarted(lock) && askEmailSubmitHandler
+    submitHandler: !m.passwordlessStarted(lock) && requestPasswordlessEmail
   };
 
   return <Lock {...props} />;

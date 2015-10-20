@@ -18,10 +18,6 @@ function open(id, ...args) {
   return openLock(id, NAME, options);
 }
 
-function askEmailSubmitHandler(lock) {
-  requestPasswordlessEmail(l.id(lock));
-}
-
 function render(lock) {
   const props = {
     children: <AskSocialNetworkOrEmail key="social-network-or-email" lock={lock} />,
@@ -29,7 +25,7 @@ function render(lock) {
     escHandler: close,
     isDone: mp.passwordlessStarted(lock) || l.signedIn(lock),
     lock: lock,
-    submitHandler: !mp.passwordlessStarted(lock) && askEmailSubmitHandler
+    submitHandler: !mp.passwordlessStarted(lock) && requestPasswordlessEmail
   };
 
   return <Lock {...props} />;

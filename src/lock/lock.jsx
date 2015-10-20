@@ -69,7 +69,7 @@ export default class Lock extends React.Component {
     e.preventDefault();
     const { lock, submitHandler } = this.props;
     if (submitHandler) {
-      submitHandler(lock);
+      submitHandler(l.id(lock));
     }
   }
 

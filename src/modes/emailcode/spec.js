@@ -24,14 +24,6 @@ function open(id, ...args) {
   return openLock(id, NAME, options);
 }
 
-function askEmailSubmitHandler(lock) {
-  requestPasswordlessEmail(l.id(lock));
-}
-
-function askVcodeSubmitHandler(lock) {
-  signIn(l.id(lock));
-}
-
 function render(lock) {
   const props = {
     closeHandler: close,
@@ -41,7 +33,7 @@ function render(lock) {
     escHandler: close,
     isDone: l.signedIn(lock),
     lock: lock,
-    submitHandler: m.passwordlessStarted(lock) ? askVcodeSubmitHandler : askEmailSubmitHandler
+    submitHandler: m.passwordlessStarted(lock) ? signIn : requestPasswordlessEmail
   };
 
   return <Lock {...props} />;
