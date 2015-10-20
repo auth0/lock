@@ -1,14 +1,14 @@
 import React from 'react';
-import MainScreenContainer from '../lock/main_screen_container';
-import SignedInConfirmation from '../lock/signed_in_confirmation';
-import PhoneNumberPane from '../cred/phone-number/phone_number_pane';
-import SocialButtonsPane from '../cred/social/social_buttons_pane';
-import PaneSeparator from '../panes/pane_separator';
-import AskLocation from '../cred/phone-number/ask_location';
-import * as l from '../lock/index';
-import * as c from '../cred/index';
-import * as mp from '../passwordless/index';
-import { close } from './actions';
+import MainScreenContainer from '../../lock/main_screen_container';
+import SignedInConfirmation from '../../lock/signed_in_confirmation';
+import PhoneNumberPane from '../phone-number/phone_number_pane';
+import SocialButtonsPane from '../social/social_buttons_pane';
+import PaneSeparator from '../../panes/pane_separator';
+import AskLocation from '../phone-number/ask_location';
+import * as l from '../../lock/index';
+import * as c from '..//index';
+import * as mp from '../../passwordless/index';
+import { close } from '../../social/actions';
 
 export default class AskSocialNetworkOrPhoneNumber extends MainScreenContainer {
 

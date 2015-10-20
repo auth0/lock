@@ -5,13 +5,13 @@ import * as idu from './utils/id_utils';
 import { setupLock, updateLock } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
-import socialOrSmsSpec from './social-or-sms/mode_spec';
 import emailcodeSpec from './modes/emailcode/spec';
 import magiclinkSpec from './modes/magiclink/spec';
 import smsSpec from './modes/sms/spec';
 import socialSpec from './modes/social/spec';
 import socialOrEmailcodeSpec from './modes/social-or-emailcode/spec';
 import socialOrMagiclinkSpec from './modes/social-or-magiclink/spec';
+import socialOrSmsSpec from './modes/social-or-sms/spec';
 
 // styles
 import styles from '../css/index.css';
@@ -64,13 +64,13 @@ Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototyp
 Auth0LockPasswordless.renderer = new Renderer();
 Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
 
-Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 Auth0LockPasswordless.plugins.register(emailcodeSpec);
 Auth0LockPasswordless.plugins.register(magiclinkSpec);
 Auth0LockPasswordless.plugins.register(smsSpec);
 Auth0LockPasswordless.plugins.register(socialSpec);
 Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
 Auth0LockPasswordless.plugins.register(socialOrMagiclinkSpec);
+Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 
 
 // telemetry
