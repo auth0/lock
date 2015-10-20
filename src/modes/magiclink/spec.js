@@ -3,6 +3,7 @@ import Lock from '../../lock/lock';
 import AskEmail from '../../cred/email/ask_email';
 import { openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
+import * as l from '../../lock/index';
 
 // TODO: remove passwordless dep
 import * as m from '../../passwordless/index';
