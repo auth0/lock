@@ -12,13 +12,6 @@ function emailcode(id, ...args) {
   return openLock(id, NAME, options);
 }
 
-function magiclink(id, ...args) {
-  const [options, callback] = openFunctionArgsResolver("magiclink", args);
-  options.signInCallback = callback;
-  options.modeOptions = {send: "link", dictName: "magiclink", storageKey: "magiclink"};
-  return openLock(id, NAME, options);
-}
-
 function sms(id, ...args) {
   const [options, callback] = openFunctionArgsResolver("sms", args);
   options.signInCallback = callback;
@@ -35,7 +28,6 @@ export default {
     close: close,
     open: {
       emailcode: emailcode,
-      magiclink: magiclink,
       sms: sms
     }
   },
