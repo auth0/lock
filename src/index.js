@@ -5,7 +5,6 @@ import * as idu from './utils/id_utils';
 import { setupLock, updateLock } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
-import passwordlessSpec from './passwordless/mode_spec';
 import socialSpec from './social/mode_spec';
 import socialOrMagiclinkSpec from './social-or-magiclink/mode_spec';
 import socialOrEmailcodeSpec from './social-or-emailcode/mode_spec';
@@ -65,7 +64,6 @@ Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototyp
 Auth0LockPasswordless.renderer = new Renderer();
 Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
 
-Auth0LockPasswordless.plugins.register(passwordlessSpec);
 Auth0LockPasswordless.plugins.register(socialSpec);
 Auth0LockPasswordless.plugins.register(socialOrMagiclinkSpec);
 Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
