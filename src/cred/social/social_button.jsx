@@ -1,5 +1,7 @@
 import React from 'react';
-import { signIn } from './actions';
+
+// TODO: remove social dep
+import { signIn } from '../../social/actions';
 
 export default class SocialButton extends React.Component {
   render() {

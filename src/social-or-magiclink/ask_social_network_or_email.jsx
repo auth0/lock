@@ -2,7 +2,7 @@ import React from 'react';
 import MainScreenContainer from '../lock/main_screen_container';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import EmailPane from '../cred/email/email_pane';
-import SocialButtonsPane from '../panes/social_buttons_pane';
+import SocialButtonsPane from '../cred/social/social_buttons_pane';
 import PaneSeparator from '../panes/pane_separator';
 import EmailSentConfirmation from '../cred/email/email_sent_confirmation';
 import { changeEmail } from '../cred/email/actions';

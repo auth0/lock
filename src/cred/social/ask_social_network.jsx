@@ -1,9 +1,11 @@
 import React from 'react';
-import MainScreenContainer from '../lock/main_screen_container';
-import SignedInConfirmation from '../lock/signed_in_confirmation';
-import SocialButtonsPane from '../panes/social_buttons_pane';
-import { close } from './actions';
-import * as l from '../lock/index';
+import MainScreenContainer from '../../lock/main_screen_container';
+import SignedInConfirmation from '../../lock/signed_in_confirmation';
+import SocialButtonsPane from './social_buttons_pane';
+import * as l from '../../lock/index';
+
+// TODO: remove close dep
+import { close } from '../../social/actions';
 
 export default class AskSocialNetwork extends MainScreenContainer {
 

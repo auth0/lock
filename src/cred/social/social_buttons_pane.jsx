@@ -1,6 +1,6 @@
 import React from 'react';
-import SocialButton from '../social/social_button';
-import * as l from '../lock/index';
+import SocialButton from './social_button';
+import * as l from '../../lock/index';
 
 export default class SocialButtonsPane extends React.Component {
 
