@@ -29,7 +29,7 @@ function open(id, ...args) {
   return openLock(id, NAME, options);
 }
 
-export default function render(lock) {
+function render(lock) {
   const props = {
     children: mp.passwordlessStarted(lock) ?
       <AskVcode destination={c.email(lock)} lock={lock} key="ask-vcode" /> :
