@@ -8,7 +8,9 @@ import { requestPasswordlessEmail, signIn } from '../../passwordless/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
 import * as c from '../../cred/index';
-import * as mp from '../../passwordless/index';
+import * as m from '../../passwordless/index';
+import { buildBackHandler, renderSignedInConfirmation } from '../shared';
+
 
 const NAME = "socialOrEmailcode";
 
@@ -21,15 +23,33 @@ function open(id, ...args) {
 }
 
 function render(lock) {
+  let backHandler, children, screenName, submitHandler;
+  if (m.passwordlessStarted(lock)) {
+    backHandler = buildBackHandler(lock, ["vcode"]);
+    screenName = "code";
+    const placeholder = l.ui.t(lock, [screenName, "codeInputPlaceholder"], {__textOnly: true});
+    const resendLabel = l.ui.t(lock, [screenName, "resendLabel"], {__textOnly: true});
+    children = <AskVcode lock={lock} placeholder={placeholder} resendLabel={resendLabel} />;
+    submitHandler = signIn;
+  } else {
+    screenName = "email";
+    const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
+    children = <AskSocialNetworkOrEmail lock={lock} placeholder={placeholder} />;
+    submitHandler = requestPasswordlessEmail;
+  }
+
   const props = {
-    children: mp.passwordlessStarted(lock) ?
-      <AskVcode destination={c.email(lock)} lock={lock} key="ask-vcode" /> :
-      <AskSocialNetworkOrEmail key="social-network-or-email" lock={lock} />,
+    auxiliaryPane: renderSignedInConfirmation(lock),
+    backHandler: backHandler,
+    children: children,
     closeHandler: close,
     escHandler: close,
+    footerText: l.ui.t(lock, [screenName, "footerText"]),
+    headerText: l.ui.t(lock, [screenName, "headerText"], {email: c.email(lock)}),
     isDone: l.signedIn(lock),
     lock: lock,
-    submitHandler: mp.passwordlessStarted(lock) ? signIn : requestPasswordlessEmail
+    screenName: screenName,
+    submitHandler: submitHandler
   };
 
   return <Lock {...props} />;

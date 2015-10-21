@@ -6,6 +6,11 @@ import { openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
 import * as c from '../../cred/index';
+import {
+  buildBackHandler,
+  renderAskLocation,
+  renderSignedInConfirmation
+} from '../shared';
 
 // TODO: remove passwordless dep
 import * as m from '../../passwordless/index';
@@ -30,19 +35,39 @@ function open(id, ...args) {
 }
 
 function render(lock) {
+  let auxiliaryPane, backHandler, children, screenName, submitHandler;
+  if (m.passwordlessStarted(lock)) {
+    auxiliaryPane = renderSignedInConfirmation(lock);
+    backHandler = buildBackHandler(lock, ["vcode"]);
+    screenName = "code";
+    const placeholder = l.ui.t(lock, [screenName, "codeInputPlaceholder"], {__textOnly: true});
+    const resendLabel = l.ui.t(lock, [screenName, "resendLabel"], {__textOnly: true});
+    children = <AskVcode lock={lock} placeholder={placeholder} resendLabel={resendLabel} />;
+    submitHandler = signIn;
+  } else {
+    auxiliaryPane = renderAskLocation(lock);
+    screenName = "phone";
+    const placeholder = l.ui.t(lock, [screenName, "phoneNumberInputPlaceholder"], {__textOnly: true});
+    children = <AskPhoneNumber lock={lock} placeholder={placeholder} />;
+    submitHandler = sendSMS;
+  }
+
   const props = {
+    auxiliaryPane: auxiliaryPane,
+    backHandler: backHandler,
+    children: children,
     closeHandler: close,
-    children: m.passwordlessStarted(lock) ?
-      <AskVcode destination={c.fullHumanPhoneNumber(lock)} lock={lock} key="ask-vcode" /> :
-      <AskPhoneNumber lock={lock} key="ask-phone-number" />,
     disallowClose: m.selectingLocation(lock),
     escHandler: function() {
       m.selectingLocation(lock) ?
         cancelSelectPhoneLocation(l.id(lock)) : close(l.id(lock));
     },
+    footerText: l.ui.t(lock, [screenName, "footerText"]),
+    headerText: l.ui.t(lock, [screenName, "headerText"], {phoneNumber: c.fullHumanPhoneNumber(lock)}),
     isDone: l.signedIn(lock),
     lock: lock,
-    submitHandler: m.passwordlessStarted(lock) ? signIn : sendSMS
+    screenName: screenName,
+    submitHandler: submitHandler
   };
 
   return <Lock {...props} />;

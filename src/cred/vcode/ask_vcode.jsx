@@ -1,55 +1,16 @@
 import React from 'react';
-import MainScreenContainer from '../../lock/main_screen_container';
 import VcodePane from './vcode_pane';
-import SignedInConfirmation from '../../lock/signed_in_confirmation';
-import * as l from '../../lock/index';
 
-// TODO: remove passwordless deps
-import { back, close } from '../../passwordless/actions';
+export default class AskVcode extends React.Component {
 
-export default class AskVcode extends MainScreenContainer {
-
-  constructor(props) {
-    super(props, "code");
-  }
-
-  handleClose() {
-    close(l.id(this.props.lock));
-  }
-
-  handleBack() {
-    back(l.id(this.props.lock), {clearCred: ["vcode"]});
-  }
-
-  renderAuxiliaryPane() {
-    const { lock } = this.props;
-
-    if (!l.signedIn(lock)) {
-      return null;
-    }
-
-    return (
-      <SignedInConfirmation
-        closeHandler={::this.handleClose}
-        key="auxiliarypane"
-        lock={lock}
-      />
-    );
-  }
-
-  renderFooterText() {
-    const { destination } = this.props;
-    return this.t(["headerText"], {destination: destination});
-  }
-
-  renderContent() {
-    const { lock } = this.props;
+  render() {
+    const { lock, placeholder, resendLabel } = this.props;
 
     return (
       <VcodePane
         lock={lock}
-        placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
-        resendLabel={this.t(["resendLabel"], {__textOnly: true})}
+        placeholder={placeholder}
+        resendLabel={resendLabel}
         tabIndex={1}
       />
     );

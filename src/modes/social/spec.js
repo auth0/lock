@@ -5,6 +5,9 @@ import { openLock } from '../../lock/actions';
 import { close } from '../../social/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
+import {
+  renderSignedInConfirmation
+} from '../shared';
 
 const NAME = "social";
 
@@ -16,11 +19,17 @@ function open(id, ...args) {
 }
 
 function render(lock) {
+  const screenName = "network";
   const props = {
-    children: <AskSocialNetwork key="social-network" lock={lock} />,
+    auxiliaryPane: renderSignedInConfirmation(lock),
+    children: <AskSocialNetwork lock={lock} />,
     closeHandler: close,
+    footerText: l.ui.t(lock, [screenName, "footerText"]),
+    headerText: l.ui.t(lock, [screenName, "headerText"]),
     lock: lock,
-    isDone: l.signedIn(lock)
+    isDone: l.signedIn(lock),
+    screenName: screenName,
+    showSubmitButton: false
   };
 
   return <Lock {...props} />;

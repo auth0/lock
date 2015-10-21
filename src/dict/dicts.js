@@ -3,7 +3,7 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "An email with the code has been sent to {destination}.",
+      headerText: "An email with the code has been sent to {email}.",
       resendLabel: "Did not get the code?"
     },
     confirmation: {
@@ -59,7 +59,7 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "An SMS with the code has been sent to {destination}.",
+      headerText: "An SMS with the code has been sent to {phoneNumber}.",
       resendLabel: "Did not get the code?"
     },
     confirmation: {
@@ -91,7 +91,7 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "An email with the code has been sent to {destination}.",
+      headerText: "An email with the code has been sent to {email}.",
       resendLabel: "Did not get the code?"
     },
     confirmation: {
@@ -125,7 +125,7 @@ export default {
     code: {
       codeInputPlaceholder: "Your code",
       footerText: "",
-      headerText: "An SMS with the code has been sent to {destination}.",
+      headerText: "An SMS with the code has been sent to {phoneNumber}.",
       resendLabel: "Did not get the code?"
     },
     confirmation: {

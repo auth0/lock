@@ -1,5 +1,6 @@
 import React from 'react';
 import { Map } from 'immutable';
+import MainScreen from './main_screen';
 import MultisizeSlide from '../multisize-slide/multisize_slide';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
@@ -19,7 +20,20 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { children, closeHandler, isDone, lock, submitHandler, disallowClose } = this.props;
+    const {
+      auxiliaryPane,
+      backHandler,
+      children,
+      closeHandler,
+      disallowClose,
+      footerText,
+      headerText,
+      isDone,
+      lock,
+      screenName,
+      showSubmitButton,
+      submitHandler
+    } = this.props;
 
     const overlay = l.ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -54,7 +68,19 @@ export default class Lock extends React.Component {
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
-              <MultisizeSlide delay={400} transitionName="horizontal-fade">{children}</MultisizeSlide>
+              <MultisizeSlide delay={400} transitionName="horizontal-fade">
+                <MainScreen
+                  auxiliaryPane={auxiliaryPane}
+                  backHandler={backHandler}
+                  footerText={footerText}
+                  headerText={headerText}
+                  key={screenName}
+                  lock={lock}
+                  showSubmitButton={showSubmitButton}
+                >
+                  {children}
+                </MainScreen>
+              </MultisizeSlide>
             </div>
           </form>
           <span className="auth0-lock-badge-bottom">
@@ -84,7 +110,22 @@ export default class Lock extends React.Component {
   }
 }
 
-// TODO: complete, add defaults (disallowClose: false)
 Lock.propTypes = {
-  lock: React.PropTypes.object.isRequired
+  auxiliaryPane: React.PropTypes.element,
+  backHandler: React.PropTypes.func,
+  children: React.PropTypes.element.isRequired,
+  footerText: React.PropTypes.element,
+  headerText: React.PropTypes.element,
+  lock: React.PropTypes.object.isRequired,
+  screenName: React.PropTypes.string.isRequired,
+  showSubmitButton: React.PropTypes.bool.isRequired
+  // closeHandler,
+  // disallowClose,
+  // escHandler
+  // isDone,
+  // submitHandler,
+};
+
+Lock.defaultProps = {
+  showSubmitButton: true
 };

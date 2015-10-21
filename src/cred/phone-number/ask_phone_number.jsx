@@ -1,54 +1,16 @@
 import React from 'react';
-import MainScreenContainer from '../../lock/main_screen_container';
 import PhoneNumberPane from './phone_number_pane';
-import AskLocation from './ask_location';
-import * as c from '../index';
 
-// TODO: remove passwordless deps
-import * as m from '../../passwordless/index';
+export default class AskPhoneNumber extends React.Component {
 
-export default class AskPhoneNumber extends MainScreenContainer {
-
-  constructor(props) {
-    super(props, "phone");
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (m.selectingLocation(this.props.lock) && !m.selectingLocation(nextProps.lock)) {
-      setTimeout(() => {
-        if (c.phoneNumber(nextProps.lock)) {
-          this.refs.main.focusSubmit();
-        } else {
-          this.refs.phoneNumberPane.focusPhoneNumberInput();
-        }
-      }, 17);
-    }
-  }
-
-  renderAuxiliaryPane() {
-    const { lock } = this.props;
-
-    if (!m.selectingLocation(lock)) {
-      return null;
-    }
-
-    return (
-      <AskLocation
-        initialLocationSearchStr={m.initialLocationSearchStr(lock)}
-        key="auxiliarypane"
-        lock={lock}
-      />
-    );
-  }
-
-  renderContent() {
-    const { lock } = this.props;
+  render() {
+    const { focusSubmit, lock, placeholder } = this.props;
 
     return (
       <PhoneNumberPane
+        focusSubmit={focusSubmit}
         lock={lock}
-        placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
-        ref="phoneNumberPane"
+        placeholder={placeholder}
         tabIndex={1}
       />
     );

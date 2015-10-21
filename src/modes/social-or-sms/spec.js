@@ -6,13 +6,18 @@ import { openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
 import * as c from '../../cred/index';
-import * as mp from '../../passwordless/index';
+import * as m from '../../passwordless/index';
 import {
   cancelSelectPhoneLocation,
   requestPasswordlessEmail,
   sendSMS,
   signIn
 } from '../../passwordless/actions';
+import {
+  buildBackHandler,
+  renderAskLocation,
+  renderSignedInConfirmation
+} from '../shared';
 
 import { close } from '../../social/actions';
 
@@ -30,18 +35,36 @@ function open(id, ...args) {
 }
 
 function render(lock) {
+  let backHandler, children, screenName, submitHandler;
+  if (m.passwordlessStarted(lock)) {
+    backHandler = buildBackHandler(lock, ["vcode"]);
+    screenName = "code";
+    const placeholder = l.ui.t(lock, [screenName, "codeInputPlaceholder"], {__textOnly: true});
+    const resendLabel = l.ui.t(lock, [screenName, "resendLabel"], {__textOnly: true});
+    children = <AskVcode lock={lock} placeholder={placeholder} resendLabel={resendLabel} />;
+    submitHandler = signIn;
+  } else {
+    screenName = "phone";
+    const placeholder = l.ui.t(lock, [screenName, "phoneNumberInputPlaceholder"], {__textOnly: true});
+    children = <AskSocialNetworkOrPhoneNumber lock={lock} placeholder={placeholder} />;
+    submitHandler = sendSMS;
+  }
+
   const props = {
-    children: mp.passwordlessStarted(lock) ?
-      <AskVcode destination={c.email(lock)} lock={lock} key="ask-vcode" /> :
-      <AskSocialNetworkOrPhoneNumber key="social-network-or-phone-bumber" lock={lock} />,
+    auxiliaryPane: renderAskLocation(lock) || renderSignedInConfirmation(lock),
+    backHandler: backHandler,
+    children: children,
     closeHandler: close,
     escHandler: function() {
-      mp.selectingLocation(lock) ?
+      m.selectingLocation(lock) ?
         cancelSelectPhoneLocation(l.id(lock)) : close(l.id(lock));
     },
+    footerText: l.ui.t(lock, [screenName, "footerText"]),
+    headerText: l.ui.t(lock, [screenName, "headerText"], {phoneNumber: c.fullHumanPhoneNumber(lock)}),
     isDone: l.signedIn(lock),
     lock: lock,
-    submitHandler: mp.passwordlessStarted(lock) ? signIn : sendSMS
+    screenName: screenName,
+    submitHandler: submitHandler
   };
 
   return <Lock {...props} />;

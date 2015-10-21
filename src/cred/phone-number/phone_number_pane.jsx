@@ -7,8 +7,21 @@ import { changePhoneNumber } from './actions';
 
 // TODO: remove passwordless deps
 import { selectPhoneLocation } from '../../passwordless/actions';
+import { selectingLocation } from '../../passwordless/index';
 
 export default class PhoneNumberPane extends React.Component {
+
+  componentWillReceiveProps(nextProps) {
+    if (selectingLocation(this.props.lock) && !selectingLocation(nextProps.lock)) {
+      setTimeout(() => {
+        if (c.phoneNumber(nextProps.lock)) {
+          this.props.focusSubmit();
+        } else {
+          this.focusPhoneNumberInput();
+        }
+      }, 17);
+    }
+  }
 
   focusPhoneNumberInput() {
     this.refs.phoneNumberInput.focus();
@@ -44,6 +57,7 @@ export default class PhoneNumberPane extends React.Component {
 }
 
 PhoneNumberPane.propTypes = {
+  focusSubmit: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired,
   tabIndex: React.PropTypes.number.isRequired
