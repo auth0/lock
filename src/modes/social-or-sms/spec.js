@@ -44,7 +44,7 @@ function render(lock) {
     children = <AskVcode lock={lock} placeholder={placeholder} resendLabel={resendLabel} />;
     submitHandler = signIn;
   } else {
-    screenName = "phone";
+    screenName = "networkOrPhone";
     const placeholder = l.ui.t(lock, [screenName, "phoneNumberInputPlaceholder"], {__textOnly: true});
     children = <AskSocialNetworkOrPhoneNumber lock={lock} placeholder={placeholder} />;
     submitHandler = sendSMS;
