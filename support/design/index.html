@@ -45,16 +45,16 @@ body {
 <div id="control-container"></div>
 <div class="container">
   <div class="info">
-    <h2>magiclink</h2>
+    <h2>emailcode</h2>
   </div>
-  <div class="lock-container" id="magiclink-container"></div>
+  <div class="lock-container" id="emailcode-container"></div>
 </div>
 
 <div class="container">
   <div class="info">
-    <h2>emailcode</h2>
+    <h2>magiclink</h2>
   </div>
-  <div class="lock-container" id="emailcode-container"></div>
+  <div class="lock-container" id="magiclink-container"></div>
 </div>
 
 <div class="container">
@@ -73,16 +73,16 @@ body {
 
 <div class="container">
   <div class="info">
-    <h2>socialOrMagiclink</h2>
+    <h2>socialOrEmailcode</h2>
   </div>
-  <div class="lock-container" id="socialOrMagiclink-container"></div>
+  <div class="lock-container" id="socialOrEmailcode-container"></div>
 </div>
 
 <div class="container">
   <div class="info">
-    <h2>socialOrEmailcode</h2>
+    <h2>socialOrMagiclink</h2>
   </div>
-  <div class="lock-container" id="socialOrEmailcode-container"></div>
+  <div class="lock-container" id="socialOrMagiclink-container"></div>
 </div>
 
 <div class="container">
@@ -98,18 +98,18 @@ var cid = "1";
 var domain = "1";
 var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
+var emailcodeLock = new Auth0LockPasswordless(cid, domain);
+emailcodeLock.emailcode({
+  container: "emailcode-container",
+  closable: true
+});
+
 var magiclinkLock = new Auth0LockPasswordless(cid, domain);
 magiclinkLock.magiclink({
   container: "magiclink-container",
   dict: {
     footerText: terms
   }
-});
-
-var emailcodeLock = new Auth0LockPasswordless(cid, domain);
-emailcodeLock.emailcode({
-  container: "emailcode-container",
-  closable: true
 });
 
 var smsLock = new Auth0LockPasswordless(cid, domain);
@@ -123,16 +123,16 @@ socialLock.social({
   container: "social-container"
 });
 
-var socialOrMagiclinkLock = new Auth0LockPasswordless(cid, domain);
-socialOrMagiclinkLock.socialOrMagiclink({
-  connections: ["facebook", "github", "google"],
-  container: "socialOrMagiclink-container"
-});
-
 var socialOrEmailcodeLock = new Auth0LockPasswordless(cid, domain);
 socialOrEmailcodeLock.socialOrEmailcode({
   connections: ["facebook", "github", "google"],
   container: "socialOrEmailcode-container"
+});
+
+var socialOrMagiclinkLock = new Auth0LockPasswordless(cid, domain);
+socialOrMagiclinkLock.socialOrMagiclink({
+  connections: ["facebook", "github", "google"],
+  container: "socialOrMagiclink-container"
 });
 
 var socialOrSmsLock = new Auth0LockPasswordless(cid, domain);
@@ -140,5 +140,4 @@ socialOrSmsLock.socialOrSms({
   connections: ["facebook", "github", "google"],
   container: "socialOrSms-container"
 });
-
 </script>
