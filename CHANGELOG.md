@@ -1,3 +1,10 @@
+## [7.10.2] - 2015-10-20
+
+### Fixed
+
+- [] Don't show last login for unknown connections (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2d6c0ab4b3ea6d522b8c8b1faa89336b676fd7bd
+
 ## [7.10.1] - 2015-10-08
 
 ### Fixed
