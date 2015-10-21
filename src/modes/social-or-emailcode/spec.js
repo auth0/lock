@@ -32,7 +32,7 @@ function render(lock) {
     children = <AskVcode lock={lock} placeholder={placeholder} resendLabel={resendLabel} />;
     submitHandler = signIn;
   } else {
-    screenName = "email";
+    screenName = "networkOrEmail";
     const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
     children = <AskSocialNetworkOrEmail lock={lock} placeholder={placeholder} />;
     submitHandler = requestPasswordlessEmail;

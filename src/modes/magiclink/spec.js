@@ -4,7 +4,7 @@ import AskEmail from '../../cred/email/ask_email';
 import { openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
-import EmailSentConfirmation from '../../cred/email/email_sent_confirmation';
+import { renderEmailSentConfirmation } from '../shared';
 
 // TODO: remove passwordless dep
 import * as m from '../../passwordless/index';
@@ -22,14 +22,10 @@ function open(id, ...args) {
 
 function render(lock) {
   const screenName = "email";
-  // TODO: extract to shared
-  const auxiliaryPane = m.passwordlessStarted(lock)
-    ? <EmailSentConfirmation key="auxiliarypane" lock={lock} />
-    : null;
   const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
 
   const props = {
-    auxiliaryPane: auxiliaryPane,
+    auxiliaryPane: renderEmailSentConfirmation(lock),
     closeHandler: close,
     children: <AskEmail lock={lock} placeholder={placeholder}/>,
     escHandler: close,

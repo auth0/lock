@@ -7,6 +7,10 @@ import { close } from '../../social/actions';
 import { requestPasswordlessEmail } from '../../passwordless/actions';
 import * as l from '../../lock/index';
 import * as m from '../../passwordless/index';
+import {
+  renderEmailSentConfirmation,
+  renderSignedInConfirmation
+} from '../shared';
 
 const NAME = "socialOrMagiclink";
 
@@ -19,11 +23,12 @@ function open(id, ...args) {
 }
 
 function render(lock) {
-  const screenName = "email";
-  // TODO: extract to shared
-  const auxiliaryPane = m.passwordlessStarted(lock)
-    ? <EmailSentConfirmation key="auxiliarypane" lock={lock} />
-    : null;
+  const screenName = "networkOrEmail";
+
+  const auxiliaryPane =
+    renderEmailSentConfirmation(lock, {dictKey: "magiclinkConfirmation"})
+    || renderSignedInConfirmation(lock, {dictKey: "socialConfirmation"});
+
   const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
 
   const props = {
