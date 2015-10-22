@@ -57,6 +57,10 @@
                     <option value="sms" selected>SMS</option>
                     <option value="magiclink">Magic Link</option>
                     <option value="emailcode">Email Code</option>
+                    <option value="social">Social</option>
+                    <option value="socialOrSms">Social or SMS</option>
+                    <option value="socialOrMagiclink">Social or Magic Link</option>
+                    <option value="socialOrEmailcode">Social or Email Code</option>
                   </select>
                   <span class="help-block">Define how you want your user to log into your app.</span>
                 </div>
@@ -104,6 +108,14 @@
                   <div role="tabpanel" class="tab-pane active" id="ui-options">
 
                     <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Connections</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <input type="text" name="connections" class="form-control" placeholder="['facebook', 'twitter']">
+                        <span class="help-block"></span>
+                      </div>
+                    </div>
 
                     <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Icon</label>
@@ -170,7 +182,15 @@
                           </span>
                         </label>
                       </div>
-                      <div class="col-xs-12 col-sm-12 col-md-6 form-group-checkbox">
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                        <input type="checkbox" name="popup">
+                        <label class="control-label">Popup
+                          <span class="help tip-right" rel="tooltip" data-original-title="Defaults to 'false'.">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
                         <input type="checkbox" name="rememberLastLogin" checked>
                         <label class="control-label">Remember Last Login
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to 'true'.">
@@ -179,6 +199,15 @@
                         </label>
                       </div>
                     </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Popup Options</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <textarea name="popupOptions" class="form-control" rows="3" placeholder='{"width": "450px", "height": "450px"}'></textarea>
+                        <span class="help-block">Defaults to '{}'.</span>
+                      </div>
+                    </div>
+
 
                     <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Resource Dictionary</label>

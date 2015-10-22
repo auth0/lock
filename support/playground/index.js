@@ -121,10 +121,13 @@ function getOptions () {
   options.focusInput = !!$('[name="focusInput"]:checked').val();
   options.gravatar = !!$('[name="gravatar"]:checked').val();
   options.forceJSONP = !!$('[name="forceJSONP"]:checked').val();
+  options.popup = !!$('[name="popup"]:checked').val();
 
   // Textareas + parsings
   try { options.dict = JSON.parse($('[name="dict"]').val()); } catch (e) {}
   try { options.authParams = JSON.parse($('[name="authParams"]').val() ); } catch (e) {}
+  try { options.popupOptions = JSON.parse($('[name="popupOptions"]').val() ); } catch (e) {}
+  try { options.connections = JSON.parse($('[name="connections"]').val()); } catch (e) {}
 
   return options;
 }
