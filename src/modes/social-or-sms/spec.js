@@ -26,7 +26,6 @@ const NAME = "socialOrSms";
 function open(id, ...args) {
   const [options, callback] = openFunctionArgsResolver(NAME, args);
   options.signInCallback = callback;
-  // TODO: review cred storage
   options.modeOptions = {send: "sms", dictName: NAME, storageKey: NAME};
   if (options.defaultLocation && typeof options.defaultLocation === "string") {
     setDefaultLocation(id, options.defaultLocation.toUpperCase());

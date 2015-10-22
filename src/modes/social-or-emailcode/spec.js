@@ -17,7 +17,6 @@ const NAME = "socialOrEmailcode";
 function open(id, ...args) {
   const [options, callback] = openFunctionArgsResolver(NAME, args);
   options.signInCallback = callback;
-  // TODO: review cred storage
   options.modeOptions = {send: "code", dictName: NAME, storageKey: NAME};
   return openLock(id, NAME, options);
 }
