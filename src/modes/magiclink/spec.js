@@ -1,5 +1,4 @@
 import React from 'react';
-import Lock from '../../lock/lock';
 import AskEmail from '../../cred/email/ask_email';
 import { openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
@@ -24,7 +23,7 @@ function render(lock) {
   const screenName = "email";
   const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
 
-  const props = {
+  return {
     auxiliaryPane: renderEmailSentConfirmation(lock),
     closeHandler: close,
     children: <AskEmail lock={lock} placeholder={placeholder}/>,
@@ -36,8 +35,6 @@ function render(lock) {
     screenName: screenName,
     submitHandler: !m.passwordlessStarted(lock) && requestPasswordlessEmail
   };
-
-  return <Lock {...props} />;
 }
 
 export default {

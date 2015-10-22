@@ -1,5 +1,4 @@
 import React from 'react';
-import Lock from '../../lock/lock';
 import AskSocialNetwork from '../../cred/social/ask_social_network';
 import { openLock } from '../../lock/actions';
 import { close } from '../../social/actions';
@@ -20,7 +19,7 @@ function open(id, ...args) {
 
 function render(lock) {
   const screenName = "network";
-  const props = {
+  return {
     auxiliaryPane: renderSignedInConfirmation(lock),
     children: <AskSocialNetwork lock={lock} />,
     closeHandler: close,
@@ -31,8 +30,6 @@ function render(lock) {
     screenName: screenName,
     showSubmitButton: false
   };
-
-  return <Lock {...props} />;
 }
 
 

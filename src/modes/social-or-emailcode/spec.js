@@ -1,5 +1,4 @@
 import React from 'react';
-import Lock from '../../lock/lock';
 import AskVcode from '../../cred/vcode/ask_vcode';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
 import { openLock } from '../../lock/actions';
@@ -37,7 +36,7 @@ function render(lock) {
     submitHandler = requestPasswordlessEmail;
   }
 
-  const props = {
+  return {
     auxiliaryPane: renderSignedInConfirmation(lock),
     backHandler: backHandler,
     children: children,
@@ -51,7 +50,6 @@ function render(lock) {
     submitHandler: submitHandler
   };
 
-  return <Lock {...props} />;
 }
 
 

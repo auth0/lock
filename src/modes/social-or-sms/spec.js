@@ -1,5 +1,4 @@
 import React from 'react';
-import Lock from '../../lock/lock';
 import AskSocialNetworkOrPhoneNumber from '../../cred/or/ask_social_network_or_phone_number';
 import AskVcode from '../../cred/vcode/ask_vcode';
 import { openLock } from '../../lock/actions';
@@ -49,7 +48,7 @@ function render(lock) {
     submitHandler = sendSMS;
   }
 
-  const props = {
+  return {
     auxiliaryPane: renderAskLocation(lock) || renderSignedInConfirmation(lock),
     backHandler: backHandler,
     children: children,
@@ -65,8 +64,6 @@ function render(lock) {
     screenName: screenName,
     submitHandler: submitHandler
   };
-
-  return <Lock {...props} />;
 }
 
 export default {

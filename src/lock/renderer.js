@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSCore from 'fbjs/lib/CSSCore';
 import ContainerManager from './container_manager';
@@ -21,7 +22,7 @@ export default class Renderer {
         lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
         const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
         const renderFn = fns.get(l.mode(lock));
-        ReactDOM.render(renderFn(lock), container);
+        ReactDOM.render(<Lock {...renderFn(lock)} />, container);
       } else {
         let container;
         try {
