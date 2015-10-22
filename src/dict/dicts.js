@@ -100,7 +100,7 @@ export default {
     confirmation: {
       success: "Thanks for signing in."
     },
-    title: "Auth01",
+    title: "Auth0",
     welcome: "Welcome {name}!"
   },
   socialOrMagiclink: {
