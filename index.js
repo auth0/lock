@@ -1155,6 +1155,8 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
       self._showError(self.options.i18n.t('signin:passwordChangeRequiredErrorText'));
     } else {
       self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
+      password_input.focus();
+      // password_input.get(0).setSelectionRange(0, password_input.val().length);
     }
   });
 };
