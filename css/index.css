@@ -846,6 +846,7 @@
   text-align: left;
   text-transform: uppercase;
   font-size: 10px;
+  font-weight: 600;
   letter-spacing: 0.7px;
   color: #fff;
   transition: background 0.3s;
