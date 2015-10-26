@@ -589,7 +589,7 @@ Auth0Lock.prototype.display = function(options, callback) {
     }
 
     if ('signup' === this.options.mode) {
-      this._signupPanel(this.options, callback);
+      this._signupPanel();
     }
 
     if ('reset' === this.options.mode) {
@@ -707,7 +707,7 @@ Auth0Lock.prototype._signinPanel = function (options) {
  */
 
 Auth0Lock.prototype._signupPanel = function (options) {
-  var panel = SignupPanel(this, { options: options || {} });
+  var panel = SignupPanel(this, options || {});
 
   this._setTitle(this.options.i18n.t('signup:title'));
 
