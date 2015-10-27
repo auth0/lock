@@ -35,12 +35,12 @@ function bindEvents () {
     showLockHandler();
   });
 
+  // Render a new Lock in the #container after it has been closed with ESC.
+  // Sometimes, pressing ESC won't close the lock. For instance, when selecting
+  // a location, ESC will close the selector. So, we use the close button as a
+  // flag.
   $('body').on('keydown', function(ev) {
-    if($('.auth0-lock-opened').length && ev.keyCode) {
-      if($('.auth0-lock-opened').parents('.output-box-result').length) {
-        return;
-      }
-
+    if(ev.keyCode === 27 && $('.auth0-lock-opened .auth0-lock-close-button').length) {
       showLockHandler();
     }
   });
