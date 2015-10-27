@@ -158,6 +158,7 @@ module.exports = function(grunt) {
   grunt.registerTask("build", ["clean:build", "env:build", "browserify:build", "uglify:build"]);
   grunt.registerTask("dev", ["clean:dev", "connect:dev", "browserify:dev", "watch"]);
   grunt.registerTask("design", ["clean:dev", "connect:dev", "browserify:design", "watch"]);
+  grunt.registerTask("heroku", ["clean:dev", "connect:dev", "browserify:dev", "browserify:design"]);
   grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
   grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
   grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task

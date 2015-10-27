@@ -44,9 +44,10 @@
     ]
   },
   "scripts": {
-    "start": "grunt dev",
+    "start": "grunt heroku",
     "build": "grunt build",
     "design": "grunt design",
+    "dev": "grunt dev",
     "test": "zuul -- test/*/*.test.js",
     "test:browser": "zuul --local 8080 --disable-tunnel -- test/*/*.test.js",
     "test:phantom": "mochify --recursive --extension=.jsx"
