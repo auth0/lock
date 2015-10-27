@@ -25,6 +25,8 @@ function bindEvents () {
 
   $('#show-lock').on('click', showLockHandler);
 
+  // Render a new Lock in the #container after it has been closed by clicking
+  // its close button.
   $('body').on('click', '.auth0-lock-close-button', function(ev) {
     ev.preventDefault();
 
