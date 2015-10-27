@@ -28,10 +28,6 @@ function bindEvents () {
   $('body').on('click', '.auth0-lock-close-button', function(ev) {
     ev.preventDefault();
 
-    if($(this).parents('.output-box-result').length) {
-      return;
-    }
-
     showLockHandler();
   });
 
