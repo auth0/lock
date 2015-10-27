@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         options: {
           hostname: "*",
           base: [".", "build", "support", "support/playground"],
-          port: 3000
+          port: process.env.PORT || 3000
         }
       },
     },
