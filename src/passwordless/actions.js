@@ -216,7 +216,7 @@ function signInSuccess(id, ...args) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
     l.invokeDoneCallback(lock, null, ...args);
   } else {
-    closeLock(id, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
   }
 }
 

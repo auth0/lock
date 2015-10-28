@@ -31,7 +31,16 @@ export function openLock(id, mode, options) {
   return true;
 }
 
-export function closeLock(id, callback = () => {}) {
+export function closeLock(id, force = false, callback = () => {}) {
+  // Do nothing when the Lock can't be closed, unless closing is forced.
+  let lock = read(getEntity, "lock", id);
+  if (!l.ui.closable(lock) && !force) {
+    return;
+  }
+
+  // Close the Lock. Also, stop rendering when in inline mode. In modal mode we
+  // need to wait for the close animation to finish before stop rendering the
+  // Lock.
   swap(updateEntity, "lock", id, lock => {
     if (!l.ui.appendContainer(lock)) {
       lock = lock.remove("render");
@@ -40,10 +49,14 @@ export function closeLock(id, callback = () => {}) {
     return l.close(lock)
   });
 
-  const lock = read(getEntity, "lock", id);
+  // If we are still rendering (modal mode), schedule a function that will
+  // execute the callback and destroy the Lock (liberate its resources). If we
+  // are not rendering (inline mode), do both things immediately.
+  lock = read(getEntity, "lock", id);
+
   if (l.rendering(lock)) {
     setTimeout(() => {
-      swap(updateEntity, "lock", id, m => m.remove("render"));
+      // swap(updateEntity, "lock", id, m => m.remove("render"));
       callback(read(getEntity, "lock", id));
       setTimeout(() => swap(removeEntity, "lock", id), 17);
     }, 1000);
