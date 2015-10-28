@@ -25,8 +25,7 @@ export default function render(lock) {
     submitHandler = signIn;
   } else {
     screenName = "networkOrPhone";
-    const placeholder = l.ui.t(lock, [screenName, "phoneNumberInputPlaceholder"], {__textOnly: true});
-    children = <AskSocialNetworkOrPhoneNumber lock={lock} placeholder={placeholder} />;
+    children = <AskSocialNetworkOrPhoneNumber lock={lock} />;
     submitHandler = sendSMS;
   }
 
