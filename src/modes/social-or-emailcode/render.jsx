@@ -32,7 +32,6 @@ export default function render(lock) {
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"], {email: c.email(lock)}),
     isDone: l.signedIn(lock),
-    lock: lock,
     screenName: screenName,
     submitHandler: submitHandler
   };

@@ -17,7 +17,6 @@ export default function render(lock) {
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
     isDone: m.passwordlessStarted(lock),
-    lock: lock,
     screenName: screenName,
     submitHandler: !m.passwordlessStarted(lock) && requestPasswordlessEmail
   };

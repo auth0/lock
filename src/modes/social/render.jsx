@@ -12,7 +12,6 @@ export default function render(lock) {
     closeHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
-    lock: lock,
     isDone: l.signedIn(lock),
     screenName: screenName,
     showSubmitButton: false
