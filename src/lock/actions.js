@@ -31,20 +31,13 @@ export function openLock(id, mode, options) {
   return true;
 }
 
-export function closeLock(id, resetFn, callback = () => {}) {
+export function closeLock(id, callback = () => {}) {
   swap(updateEntity, "lock", id, lock => {
     if (!l.ui.appendContainer(lock)) {
       lock = lock.remove("render");
     }
-    lock = l.close(lock)
-    // TODO: we are not executing resetFn and thus the argument is no longer
-    // needed. Right now plugins don't need to clean the Lock state when is
-    // closed because it is throwed away, there's no way to reopen the Lock.
-    // However, I'm leaving the reset functionality because the ability to
-    // reopen the Lock is still being discussed.
-    //
-    // return resetFn(lock);
-    return lock;
+
+    return l.close(lock)
   });
 
   const lock = read(getEntity, "lock", id);

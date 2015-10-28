@@ -216,7 +216,7 @@ function signInSuccess(id, ...args) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
     l.invokeDoneCallback(lock, null, ...args);
   } else {
-    closeLock(id, m.reset, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, lock => l.invokeDoneCallback(lock, null, ...args));
   }
 }
 
@@ -236,7 +236,7 @@ export function reset(id, opts = {}) {
 export function close(id, force = false) {
   const lock = read(getEntity, "lock", id);
   if (l.ui.closable(lock) || force) {
-    closeLock(id, m.reset);
+    closeLock(id);
   }
 }
 
