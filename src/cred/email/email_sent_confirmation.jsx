@@ -1,10 +1,11 @@
 import React from 'react';
 import ConfirmationPane from '../../lock/confirmation_pane';
+import { closeLock } from '../../lock/actions';
 import * as l from '../../lock/index';
 import * as c from '../index';
 
 // TODO: remove passwordless deps
-import { close, resendEmail, reset } from '../../passwordless/actions';
+import { resendEmail, reset } from '../../passwordless/actions';
 import * as m from '../../passwordless/index';
 
 
@@ -85,7 +86,7 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   handleClose() {
-    close(l.id(this.props.lock));
+    closeLock(l.id(this.props.lock));
   }
 
   t(keyPath, params) {

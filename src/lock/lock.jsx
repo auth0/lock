@@ -7,7 +7,6 @@ import IconButton from '../icon/button';
 import Badge from './auth0_badge';
 import * as l from './index';
 import * as g from '../gravatar/index';
-import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
 export default class Lock extends React.Component {

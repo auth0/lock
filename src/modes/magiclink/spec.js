@@ -1,13 +1,13 @@
 import React from 'react';
 import AskEmail from '../../cred/email/ask_email';
-import { openLock } from '../../lock/actions';
+import { closeLock, openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
 import { renderEmailSentConfirmation } from '../shared';
 
 // TODO: remove passwordless dep
 import * as m from '../../passwordless/index';
-import { close, requestPasswordlessEmail } from '../../passwordless/actions';
+import { requestPasswordlessEmail } from '../../passwordless/actions';
 
 const NAME = "magiclink";
 
@@ -25,9 +25,9 @@ function render(lock) {
 
   return {
     auxiliaryPane: renderEmailSentConfirmation(lock),
-    closeHandler: close,
+    closeHandler: closeLock,
     children: <AskEmail lock={lock} placeholder={placeholder}/>,
-    escHandler: close,
+    escHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
     isDone: m.passwordlessStarted(lock),
@@ -40,7 +40,7 @@ function render(lock) {
 export default {
   name: NAME,
   methods: {
-    close: close,
+    close: closeLock,
     open: {
       magiclink: open
     }

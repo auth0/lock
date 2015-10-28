@@ -1,8 +1,7 @@
 import React from 'react';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
-import { openLock } from '../../lock/actions';
+import { closeLock, openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
-import { close } from '../../social/actions';
 import { requestPasswordlessEmail } from '../../passwordless/actions';
 import * as l from '../../lock/index';
 import * as m from '../../passwordless/index';
@@ -36,8 +35,8 @@ function render(lock) {
   return {
     auxiliaryPane: auxiliaryPane,
     children: <AskSocialNetworkOrEmail lock={lock} placeholder={placeholder} />,
-    closeHandler: close,
-    escHandler: close,
+    closeHandler: closeLock,
+    escHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
     isDone: m.passwordlessStarted(lock) || l.signedIn(lock),
@@ -50,7 +49,7 @@ function render(lock) {
 export default {
   name: NAME,
   methods: {
-    close: close,
+    close: closeLock,
     open: {
       socialOrMagiclink: open
     }

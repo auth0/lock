@@ -1,8 +1,7 @@
 import React from 'react';
 import AskVcode from '../../cred/vcode/ask_vcode';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
-import { openLock } from '../../lock/actions';
-import { close } from '../../social/actions';
+import { closeLock, openLock } from '../../lock/actions';
 import { requestPasswordlessEmail, signIn } from '../../passwordless/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
@@ -44,8 +43,8 @@ function render(lock) {
     auxiliaryPane: renderSignedInConfirmation(lock),
     backHandler: backHandler,
     children: children,
-    closeHandler: close,
-    escHandler: close,
+    closeHandler: closeLock,
+    escHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"], {email: c.email(lock)}),
     isDone: l.signedIn(lock),
@@ -60,7 +59,7 @@ function render(lock) {
 export default {
   name: NAME,
   methods: {
-    close: close,
+    close: closeLock,
     open: {
       socialOrEmailcode: open
     }

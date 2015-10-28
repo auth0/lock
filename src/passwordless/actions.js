@@ -233,13 +233,6 @@ export function reset(id, opts = {}) {
   swap(updateEntity, "lock", id, m.reset, opts);
 }
 
-export function close(id, force = false) {
-  const lock = read(getEntity, "lock", id);
-  if (l.ui.closable(lock) || force) {
-    closeLock(id);
-  }
-}
-
 export function back(id, resetOpts = {}) {
   reset(id, resetOpts);
 }

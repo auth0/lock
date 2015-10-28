@@ -1,7 +1,6 @@
 import React from 'react';
 import AskSocialNetwork from '../../cred/social/ask_social_network';
-import { openLock } from '../../lock/actions';
-import { close } from '../../social/actions';
+import { closeLock, openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
 import {
@@ -26,7 +25,7 @@ function render(lock) {
   return {
     auxiliaryPane: renderSignedInConfirmation(lock),
     children: <AskSocialNetwork lock={lock} />,
-    closeHandler: close,
+    closeHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
     lock: lock,
@@ -40,7 +39,7 @@ function render(lock) {
 export default {
   name: NAME,
   methods: {
-    close: close,
+    close: closeLock,
     open: {
       social: open
     }

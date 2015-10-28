@@ -1,7 +1,7 @@
 import React from 'react';
 import AskVcode from '../../cred/vcode/ask_vcode';
 import AskPhoneNumber from '../../cred/phone-number/ask_phone_number';
-import { openLock } from '../../lock/actions';
+import { closeLock, openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
 import * as c from '../../cred/index';
@@ -15,7 +15,6 @@ import {
 import * as m from '../../passwordless/index';
 import {
   cancelSelectPhoneLocation,
-  close,
   requestPasswordlessEmail,
   sendSMS,
   signIn
@@ -55,11 +54,11 @@ function render(lock) {
     auxiliaryPane: auxiliaryPane,
     backHandler: backHandler,
     children: children,
-    closeHandler: close,
+    closeHandler: closeLock,
     disallowClose: m.selectingLocation(lock),
     escHandler: function() {
       m.selectingLocation(lock) ?
-        cancelSelectPhoneLocation(l.id(lock)) : close(l.id(lock));
+        cancelSelectPhoneLocation(l.id(lock)) : closeLock(l.id(lock));
     },
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"], {phoneNumber: c.fullHumanPhoneNumber(lock)}),
@@ -73,7 +72,7 @@ function render(lock) {
 export default {
   name: NAME,
   methods: {
-    close: close,
+    close: closeLock,
     open: {
       sms: open
     }

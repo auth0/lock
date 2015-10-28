@@ -1,7 +1,7 @@
 import React from 'react';
 import AskSocialNetworkOrPhoneNumber from '../../cred/or/ask_social_network_or_phone_number';
 import AskVcode from '../../cred/vcode/ask_vcode';
-import { openLock } from '../../lock/actions';
+import { closeLock, openLock } from '../../lock/actions';
 import { openFunctionArgsResolver } from '../../lock/mode';
 import * as l from '../../lock/index';
 import * as c from '../../cred/index';
@@ -17,8 +17,6 @@ import {
   renderAskLocation,
   renderSignedInConfirmation
 } from '../shared';
-
-import { close } from '../../social/actions';
 
 const NAME = "socialOrSms";
 
@@ -56,10 +54,10 @@ function render(lock) {
     auxiliaryPane: renderAskLocation(lock) || renderSignedInConfirmation(lock),
     backHandler: backHandler,
     children: children,
-    closeHandler: close,
+    closeHandler: closeLock,
     escHandler: function() {
       m.selectingLocation(lock) ?
-        cancelSelectPhoneLocation(l.id(lock)) : close(l.id(lock));
+        cancelSelectPhoneLocation(l.id(lock)) : closeLock(l.id(lock));
     },
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"], {phoneNumber: c.fullHumanPhoneNumber(lock)}),
@@ -73,7 +71,7 @@ function render(lock) {
 export default {
   name: NAME,
   methods: {
-    close: close,
+    close: closeLock,
     open: {
       socialOrSms: open
     }
