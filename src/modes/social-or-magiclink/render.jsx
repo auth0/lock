@@ -16,11 +16,9 @@ export default function render(lock) {
     renderEmailSentConfirmation(lock, {dictKey: "magiclinkConfirmation"})
     || renderSignedInConfirmation(lock, {dictKey: "socialConfirmation"});
 
-  const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
-
   return {
     auxiliaryPane: auxiliaryPane,
-    children: <AskSocialNetworkOrEmail lock={lock} placeholder={placeholder} />,
+    children: <AskSocialNetworkOrEmail lock={lock} />,
     closeHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
