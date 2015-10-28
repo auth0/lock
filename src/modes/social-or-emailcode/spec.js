@@ -15,7 +15,7 @@ const NAME = "socialOrEmailcode";
 function open(id, ...args) {
   const [options, callback] = openFunctionArgsResolver(NAME, args);
   const { connections } = options;
-  if (!Array.isArray(connections) || connection.length === 0) {
+  if (!Array.isArray(connections) || connections.length === 0) {
     throw new Error("The `connections` option array needs to be provided with at least one connection.");
   }
   options.signInCallback = callback;
