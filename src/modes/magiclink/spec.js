@@ -1,23 +1,19 @@
+import { Mode } from '../index';
 import render from './render';
-import { closeLock, openLock } from '../../lock/actions';
-import { openFunctionArgsResolver } from '../../lock/mode';
 
-const NAME = "magiclink";
+export default class Magiclink extends Mode {
 
-function open(id, ...args) {
-  const [options, callback] = openFunctionArgsResolver(NAME, args);
-  options.signInCallback = callback;
-  options.modeOptions = {send: "link", dictName: NAME, storageKey: NAME};
-  return openLock(id, NAME, options);
+  constructor() {
+    super("magiclink");
+  }
+
+  processOpenOptions(options) {
+    options.modeOptions.send = "link";
+    return options;
+  }
+
+  render(lock) {
+    return render(lock);
+  }
+
 }
-
-export default {
-  name: NAME,
-  methods: {
-    close: closeLock,
-    open: {
-      magiclink: open
-    }
-  },
-  renderFn: render
-};

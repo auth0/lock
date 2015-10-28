@@ -1,31 +1,32 @@
+import { Mode } from '../index';
 import render from './render';
-import { closeLock, openLock } from '../../lock/actions';
-import { openFunctionArgsResolver } from '../../lock/mode';
 import { setDefaultLocation } from '../../passwordless/actions';
 
-const NAME = "socialOrSms";
 
-function open(id, ...args) {
-  const [options, callback] = openFunctionArgsResolver(NAME, args);
-  const { connections } = options;
-  if (!Array.isArray(connections) || connections.length === 0) {
-    throw new Error("The `connections` option array needs to be provided with at least one connection.");
-  }
-  options.signInCallback = callback;
-  options.modeOptions = {send: "sms", dictName: NAME, storageKey: NAME};
-  if (options.defaultLocation && typeof options.defaultLocation === "string") {
-    setDefaultLocation(id, options.defaultLocation.toUpperCase());
-  }
-  return openLock(id, NAME, options);
-}
+export default class SocialOrSms extends Mode {
 
-export default {
-  name: NAME,
-  methods: {
-    close: closeLock,
-    open: {
-      socialOrSms: open
+  constructor() {
+    super("socialOrSms");
+  }
+
+  processOpenOptions(options, lockID) {
+    options.modeOptions.send = "sms";
+
+    const { connections, defaultLocation } = options;
+
+    if (!Array.isArray(connections) || connections.length === 0) {
+      throw new Error("The `connections` option array needs to be provided with at least one connection.");
     }
-  },
-  renderFn: render
-};
+
+    if (defaultLocation && typeof defaultLocation === "string") {
+      setDefaultLocation(lockID, defaultLocation.toUpperCase());
+    }
+
+    return options;
+  }
+
+  render(lock) {
+    return render(lock);
+  }
+
+}

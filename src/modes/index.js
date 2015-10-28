@@ -1,4 +1,26 @@
-export function openFunctionArgsResolver(fnName, args) {
+import { closeLock, openLock } from '../lock/actions';
+
+export class Mode {
+  constructor(name) {
+    this.name = name;
+  }
+
+  open(id, ...args) {
+    const { name } = this;
+    const [options, callback] = openFunctionArgsResolver(name, args);
+    options.signInCallback = callback;
+    options.modeOptions = {dictName: name, storageKey: name};
+    return openLock(id, name, this.processOpenOptions(options, id));
+  }
+
+  // render must be implemented in each mode
+
+  close(id, force) {
+    closeLock(id, force);
+  }
+}
+
+function openFunctionArgsResolver(fnName, args) {
   const defaultOptions = {};
   const defaultCallback = () => {};
 

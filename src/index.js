@@ -35,7 +35,7 @@ export default class Auth0LockPasswordless {
   }
 
   close() {
-    var f = Auth0LockPasswordless.plugins.closeFn(this.plugin);
+    const f = Auth0LockPasswordless.plugins.closeFn(this.plugin);
     f(this.id, true);
   }
 
