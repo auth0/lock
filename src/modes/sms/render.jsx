@@ -29,8 +29,7 @@ export default function render(lock) {
   } else {
     auxiliaryPane = renderAskLocation(lock);
     screenName = "phone";
-    const placeholder = l.ui.t(lock, [screenName, "phoneNumberInputPlaceholder"], {__textOnly: true});
-    children = <AskPhoneNumber lock={lock} placeholder={placeholder} />;
+    children = <AskPhoneNumber lock={lock} />;
     submitHandler = sendSMS;
   }
 
