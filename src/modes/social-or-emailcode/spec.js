@@ -44,7 +44,6 @@ function render(lock) {
     backHandler: backHandler,
     children: children,
     closeHandler: closeLock,
-    escHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"], {email: c.email(lock)}),
     isDone: l.signedIn(lock),

@@ -27,7 +27,6 @@ function render(lock) {
     auxiliaryPane: renderEmailSentConfirmation(lock),
     closeHandler: closeLock,
     children: <AskEmail lock={lock} placeholder={placeholder}/>,
-    escHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
     isDone: m.passwordlessStarted(lock),

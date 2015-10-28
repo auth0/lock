@@ -36,7 +36,6 @@ function render(lock) {
     auxiliaryPane: auxiliaryPane,
     children: <AskSocialNetworkOrEmail lock={lock} placeholder={placeholder} />,
     closeHandler: closeLock,
-    escHandler: closeLock,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
     isDone: m.passwordlessStarted(lock) || l.signedIn(lock),
