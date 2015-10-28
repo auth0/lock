@@ -1,10 +1,15 @@
 import React from 'react';
 import VcodePane from './vcode_pane';
+import * as l from '../../lock/index';
+
+const NAME = "code";
 
 export default class AskVcode extends React.Component {
 
   render() {
-    const { lock, placeholder, resendLabel } = this.props;
+    const { lock, resendLabel } = this.props;
+    const placeholder =
+      l.ui.t(lock, [NAME, "codeInputPlaceholder"], {__textOnly: true});
 
     return (
       <VcodePane

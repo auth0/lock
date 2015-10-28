@@ -22,9 +22,8 @@ export default function render(lock) {
     auxiliaryPane = renderSignedInConfirmation(lock);
     backHandler = buildBackHandler(lock, ["vcode"]);
     screenName = "code";
-    const placeholder = l.ui.t(lock, [screenName, "codeInputPlaceholder"], {__textOnly: true});
     const resendLabel = l.ui.t(lock, [screenName, "resendLabel"], {__textOnly: true});
-    children = <AskVcode lock={lock} placeholder={placeholder} resendLabel={resendLabel} />;
+    children = <AskVcode lock={lock} resendLabel={resendLabel} />;
     submitHandler = signIn;
   } else {
     auxiliaryPane = renderAskLocation(lock);
