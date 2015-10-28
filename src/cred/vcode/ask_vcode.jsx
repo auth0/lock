@@ -7,9 +7,11 @@ const NAME = "code";
 export default class AskVcode extends React.Component {
 
   render() {
-    const { lock, resendLabel } = this.props;
+    const { lock } = this.props;
     const placeholder =
       l.ui.t(lock, [NAME, "codeInputPlaceholder"], {__textOnly: true});
+    const resendLabel =
+      l.ui.t(lock, [NAME, "resendLabel"], {__textOnly: true});
 
     return (
       <VcodePane

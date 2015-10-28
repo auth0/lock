@@ -21,8 +21,7 @@ export default function render(lock) {
   if (m.passwordlessStarted(lock)) {
     backHandler = buildBackHandler(lock, ["vcode"]);
     screenName = "code";
-    const resendLabel = l.ui.t(lock, [screenName, "resendLabel"], {__textOnly: true});
-    children = <AskVcode lock={lock} resendLabel={resendLabel} />;
+    children = <AskVcode lock={lock} />;
     submitHandler = signIn;
   } else {
     screenName = "networkOrPhone";
