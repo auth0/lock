@@ -8,12 +8,11 @@ import * as m from '../../passwordless/index';
 
 export default function render(lock) {
   const screenName = "email";
-  const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
 
   return {
     auxiliaryPane: renderEmailSentConfirmation(lock),
     closeHandler: closeLock,
-    children: <AskEmail lock={lock} placeholder={placeholder}/>,
+    children: <AskEmail lock={lock} />,
     footerText: l.ui.t(lock, [screenName, "footerText"]),
     headerText: l.ui.t(lock, [screenName, "headerText"]),
     isDone: m.passwordlessStarted(lock),

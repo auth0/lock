@@ -20,8 +20,7 @@ export default function render(lock) {
     submitHandler = signIn;
   } else {
     screenName = "email";
-    const placeholder = l.ui.t(lock, [screenName, "emailInputPlaceholder"], {__textOnly: true});
-    children = <AskEmail lock={lock} placeholder={placeholder} />;
+    children = <AskEmail lock={lock} />;
     submitHandler = requestPasswordlessEmail;
   }
 
