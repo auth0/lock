@@ -21,8 +21,21 @@ export default class Renderer {
         const gravatar = getEntity(state, "gravatar", c.email(lock));
         lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
         const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
-        const renderFn = fns.get(l.mode(lock));
-        ReactDOM.render(<Lock lock={lock} {...renderFn(lock)} />, container);
+        const screen = fns.get(l.mode(lock))(lock);
+        const props = {
+          auxiliaryPane: screen.renderAuxiliaryPane(),
+          backHandler: screen.backHandler(),
+          children: screen.render(),
+          closeHandler: screen.closeHandler(),
+          footerText: screen.renderFooterText(),
+          headerText: screen.renderHeaderText(),
+          isDone: screen.isDone(),
+          lock: lock,
+          screenName: screen.name,
+          showSubmitButton: screen.showSubmitButton(),
+          submitHandler: screen.submitHandler()
+        };
+        ReactDOM.render(<Lock {...props} />, container);
       } else {
         let container;
         try {

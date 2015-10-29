@@ -1,14 +1,25 @@
 import React from 'react';
+import Screen from '../../lock/screen';
 import SocialButtonsPane from './social_buttons_pane';
 
-export default class AskSocialNetwork extends React.Component {
+import { renderSignedInConfirmation } from '../../modes/shared';
+
+export default class AskSocialNetwork extends Screen {
+
+  constructor(lock, isDone) {
+    super("network", lock, isDone);
+  }
+
+  showSubmitButton() {
+    return false;
+  }
+
+  renderAuxiliaryPane() {
+    return renderSignedInConfirmation(this.lock);
+  }
 
   render() {
-    return <SocialButtonsPane lock={this.props.lock} />;
+    return <SocialButtonsPane lock={this.lock} />;
   }
 
 }
-
-AskSocialNetwork.propTypes = {
-  lock: React.PropTypes.object.isRequired
-};

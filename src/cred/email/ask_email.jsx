@@ -1,17 +1,32 @@
 import React from 'react';
+import Screen from '../../lock/screen';
 import EmailPane from './email_pane';
-import * as l from '../../lock/index';
 
-const NAME = "email";
 
-export default class AskEmail extends React.Component {
+export default class AskEmail extends Screen {
+
+  constructor(lock, isDone, submitHandler, renderAuxilaryPane) {
+    super("email", lock, isDone);
+    this._submitHandler = submitHandler;
+    this._renderAuxiliaryPane = renderAuxilaryPane;
+  }
+
+  submitHandler() {
+    return this._submitHandler;
+  }
+
+  renderAuxiliaryPane() {
+    return this._renderAuxiliaryPane;
+  }
 
   render() {
-    const { lock } = this.props;
-    const placeholder =
-      l.ui.t(lock, [NAME, "emailInputPlaceholder"], {__textOnly: true});
-
-    return <EmailPane lock={lock} placeholder={placeholder} tabIndex={1} />;
-   }
+    return (
+      <EmailPane
+        lock={this.lock}
+        placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
+        tabIndex={1}
+      />
+    );
+  }
 
 }

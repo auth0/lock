@@ -1,23 +1,19 @@
 import React from 'react';
+import Screen from '../../lock/screen';
 import VcodePane from './vcode_pane';
-import * as l from '../../lock/index';
 
-const NAME = "code";
+export default class AskVcode extends Screen {
 
-export default class AskVcode extends React.Component {
+  constructor(lock, isDone) {
+    super("code", lock, isDone);
+  }
 
   render() {
-    const { lock } = this.props;
-    const placeholder =
-      l.ui.t(lock, [NAME, "codeInputPlaceholder"], {__textOnly: true});
-    const resendLabel =
-      l.ui.t(lock, [NAME, "resendLabel"], {__textOnly: true});
-
     return (
       <VcodePane
-        lock={lock}
-        placeholder={placeholder}
-        resendLabel={resendLabel}
+        lock={this.lock}
+        placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
+        resendLabel={this.t(["resendLabel"], {__textOnly: true})}
         tabIndex={1}
       />
     );
