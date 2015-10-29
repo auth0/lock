@@ -5,6 +5,7 @@ import SocialButtonsPane from '../social/social_buttons_pane';
 import PaneSeparator from '../../panes/pane_separator';
 import * as l from '../../lock/index';
 
+import { renderSignedInConfirmation } from '../../modes/shared';
 
 export default class AskSocialNetworkOrPhoneNumber extends Base {
 
@@ -13,8 +14,8 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
     this.name = "networkOrPhone";
   }
 
-  auxiliaryPane() {
-    return renderSignedInConfirmation(this.lock) || super.auxiliaryPane();
+  renderAuxiliaryPane() {
+    return renderSignedInConfirmation(this.lock) || super.renderAuxiliaryPane();
   }
 
   render() {
