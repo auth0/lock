@@ -6,7 +6,7 @@ export default {
       headerText: "An email with the code has been sent to {email}.",
       resendLabel: "Did not get the code?"
     },
-    confirmation: {
+    signedIn: {
       success: "Thanks for signing in."
     },
     email: {
@@ -39,7 +39,7 @@ export default {
     }
   },
   magiclink: {
-    confirmation: {
+    emailSent: {
       failedLabel: "Failed!",
       retryLabel: "Retry",
       resendLabel: "Resend",
@@ -62,7 +62,7 @@ export default {
       headerText: "An SMS with the code has been sent to {phoneNumber}.",
       resendLabel: "Did not get the code?"
     },
-    confirmation: {
+    signedIn: {
       success: "Thanks for signing in."
     },
     location: {
@@ -80,7 +80,7 @@ export default {
       footerText: "",
       headerText: ""
     },
-    confirmation: {
+    signedIn: {
       success: "Thanks for signing in."
     },
     title: "Auth0"
@@ -97,14 +97,14 @@ export default {
       footerText: "",
       headerText: ""
     },
-    confirmation: {
+    signedIn: {
       success: "Thanks for signing in."
     },
     title: "Auth0",
     welcome: "Welcome {name}!"
   },
   socialOrMagiclink: {
-    magiclinkConfirmation: {
+    emailSent: {
       failedLabel: "Failed!",
       retryLabel: "Retry",
       resendLabel: "Resend",
@@ -117,7 +117,7 @@ export default {
       footerText: "",
       headerText: ""
     },
-    socialConfirmation: {
+    signedIn: {
       success: "Thanks for signing in."
     },
     title: "Auth0",
@@ -130,7 +130,7 @@ export default {
       headerText: "An SMS with the code has been sent to {phoneNumber}.",
       resendLabel: "Did not get the code?"
     },
-    confirmation: {
+    signedIn: {
       success: "Thanks for signing in."
     },
     location: {

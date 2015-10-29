@@ -90,12 +90,7 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   t(keyPath, params) {
-    const { dictKey, lock } = this.props;
-    return l.ui.t(lock, [dictKey].concat(keyPath), params);
+    return l.ui.t(this.props.lock, ["emailSent"].concat(keyPath), params);
   }
 
 }
-
-EmailSentConfirmation.defaultProps = {
-  dictKey: "confirmation"
-};

@@ -6,8 +6,7 @@ import * as l from './index';
 export default class SignedInConfirmation extends React.Component {
 
   t(keyPath, params) {
-    const { dictKey, lock } = this.props;
-    return l.ui.t(lock, [dictKey].concat(keyPath), params);
+    return l.ui.t(this.props.lock, ["signedIn"].concat(keyPath), params);
   }
 
   handleClose() {
@@ -31,8 +30,4 @@ export default class SignedInConfirmation extends React.Component {
 SignedInConfirmation.propTypes = {
   closeHandler: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired
-};
-
-SignedInConfirmation.defaultProps = {
-  dictKey: "confirmation"
 };
