@@ -1,7 +1,8 @@
 import { Mode } from '../index';
-import render from './render';
 import { setDefaultLocation } from '../../passwordless/actions';
-
+import AskSocialNetworkOrPhoneNumber from '../../cred/or/ask_social_network_or_phone_number';
+import AskPhoneNumberVcode from '../../passwordless/ask_phone_number_vcode';
+import * as m from '../../passwordless/index';
 
 export default class SocialOrSms extends Mode {
 
@@ -26,7 +27,9 @@ export default class SocialOrSms extends Mode {
   }
 
   render(lock) {
-    return render(lock);
+    return m.passwordlessStarted(lock)
+      ? new AskPhoneNumberVcode(lock)
+      : new AskSocialNetworkOrPhoneNumber(lock);
   }
 
 }

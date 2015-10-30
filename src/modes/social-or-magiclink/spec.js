@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import render from './render';
+import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
 
 export default class SocialOrMagiclink extends Mode {
 
@@ -17,7 +17,7 @@ export default class SocialOrMagiclink extends Mode {
   }
 
   render(lock) {
-    return render(lock);
+    return new AskSocialNetworkOrEmail(lock);
   }
 
 }

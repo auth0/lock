@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import render from './render';
+import MagiclinkScreen from '../../passwordless/magiclink';
 
 export default class Magiclink extends Mode {
 
@@ -13,7 +13,7 @@ export default class Magiclink extends Mode {
   }
 
   render(lock) {
-    return render(lock);
+    return new MagiclinkScreen(lock);
   }
 
 }

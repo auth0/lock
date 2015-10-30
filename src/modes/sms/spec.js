@@ -1,6 +1,8 @@
 import { Mode } from '../index';
-import render from './render';
 import { setDefaultLocation } from '../../passwordless/actions';
+import AskPhoneNumberVcode from '../../passwordless/ask_phone_number_vcode';
+import AskPhoneNumber from '../../passwordless/ask_phone_number';
+import * as m from '../../passwordless/index';
 
 export default class Sms extends Mode {
 
@@ -19,7 +21,9 @@ export default class Sms extends Mode {
   }
 
   render(lock) {
-    return render(lock);
+    return m.passwordlessStarted(lock)
+      ? new AskPhoneNumberVcode(lock)
+      : new AskPhoneNumber(lock);
   }
 
 }

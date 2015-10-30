@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import render from './render';
+import AskSocialNetwork from '../../cred/social/ask_social_network';
 
 export default class Social extends Mode {
 
@@ -17,7 +17,7 @@ export default class Social extends Mode {
   }
 
   render(lock) {
-    return render(lock);
+    return new AskSocialNetwork(lock);
   }
 
 }

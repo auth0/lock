@@ -1,6 +1,7 @@
 import { Mode } from '../index';
-import render from './render';
-
+import AskEmailVcode from '../../passwordless/ask_email_vcode';
+import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
+import * as m from '../../passwordless/index';
 
 export default class SocialOrEmailCode extends Mode {
 
@@ -20,7 +21,9 @@ export default class SocialOrEmailCode extends Mode {
   }
 
   render(lock) {
-    return render(lock);
+    return m.passwordlessStarted(lock)
+      ? new AskEmailVcode(lock)
+      : new AskSocialNetworkOrEmail(lock);
   }
 
 }
