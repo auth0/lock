@@ -18,12 +18,13 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
     return renderSignedInConfirmation(this.lock) || super.renderAuxiliaryPane();
   }
 
-  render({lock}) {
+  render({focusSubmit, lock}) {
     return (
       <div>
         <SocialButtonsPane lock={lock} />
         <PaneSeparator />
         <PhoneNumberPane
+          focusSubmit={focusSubmit}
           lock={lock}
           placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
           tabIndex={1}
