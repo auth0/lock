@@ -77,8 +77,9 @@ export default class MainScreen extends React.Component {
   }
 
   handleBack() {
+    const { backHandler, lock } = this.props;
     this.reverse = true;
-    this.props.backHandler();
+    backHandler(l.id(lock));
   }
 
   componentWillSlideIn(slide) {
