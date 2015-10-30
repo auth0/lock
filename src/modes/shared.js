@@ -12,12 +12,6 @@ function buildCloseHandler(lock) {
   }
 }
 
-export function buildBackHandler(lock, clearCred) {
-  return function() {
-    back(l.id(lock), {clearCred: clearCred});
-  }
-}
-
 export function renderSignedInConfirmation(lock, props = {}) {
   props.closeHandler = buildCloseHandler(lock);
   props.key = "auxiliarypane";
