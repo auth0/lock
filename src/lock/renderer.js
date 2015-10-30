@@ -29,7 +29,6 @@ export default class Renderer {
           contentRender: ::screen.render,
           footerText: screen.renderFooterText(),
           headerText: screen.renderHeaderText(),
-          isDone: screen.isDone(),
           lock: lock,
           screenName: screen.name,
           showSubmitButton: screen.showSubmitButton(),

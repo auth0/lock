@@ -5,8 +5,8 @@ import EmailPane from './email_pane';
 
 export default class AskEmail extends Screen {
 
-  constructor(lock, isDone, submitHandler, renderAuxilaryPane) {
-    super("email", lock, isDone);
+  constructor(lock, submitHandler, renderAuxilaryPane) {
+    super("email", lock);
     this._submitHandler = submitHandler;
     this._renderAuxiliaryPane = renderAuxilaryPane;
   }

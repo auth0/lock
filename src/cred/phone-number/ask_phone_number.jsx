@@ -10,8 +10,8 @@ import { cancelSelectPhoneLocation } from '../../passwordless/actions';
 
 export default class AskPhoneNumber extends Screen {
 
-  constructor(lock, isDone) {
-    super("phone", lock, isDone);
+  constructor(lock) {
+    super("phone", lock);
   }
 
   escHandler() {

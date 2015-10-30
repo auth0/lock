@@ -9,8 +9,8 @@ import { renderSignedInConfirmation } from '../../modes/shared';
 
 export default class AskSocialNetworkOrPhoneNumber extends Base {
 
-  constructor(lock, isDone) {
-    super(lock, isDone);
+  constructor(lock) {
+    super(lock);
     this.name = "networkOrPhone";
   }
 

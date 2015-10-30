@@ -27,7 +27,6 @@ export default class Lock extends React.Component {
       disallowClose,
       footerText,
       headerText,
-      isDone,
       lock,
       screenName,
       showSubmitButton,
@@ -120,7 +119,6 @@ Lock.propTypes = {
   // closeHandler,
   // disallowClose,
   // escHandler
-  // isDone,
   // submitHandler,
 };
 

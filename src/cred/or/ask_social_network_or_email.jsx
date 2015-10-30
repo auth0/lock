@@ -12,8 +12,8 @@ import {
 
 export default class AskSocialNetworkOrEmail extends Screen {
 
-  constructor(lock, isDone) {
-    super("networkOrEmail", lock, isDone)
+  constructor(lock) {
+    super("networkOrEmail", lock);
   }
 
   submitHandler() {

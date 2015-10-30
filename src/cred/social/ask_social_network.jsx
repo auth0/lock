@@ -6,8 +6,8 @@ import { renderSignedInConfirmation } from '../../modes/shared';
 
 export default class AskSocialNetwork extends Screen {
 
-  constructor(lock, isDone) {
-    super("network", lock, isDone);
+  constructor(lock) {
+    super("network", lock);
   }
 
   showSubmitButton() {
