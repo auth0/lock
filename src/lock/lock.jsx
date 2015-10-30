@@ -55,8 +55,8 @@ export default class Lock extends React.Component {
       className += " auth0-lock-mode-loading";
     }
 
-    if (isDone) {
-      className += " auth0-lock-complete";
+    if (auxiliaryPane) {
+      className += " auth0-lock-auxiliary";
     }
 
     return (

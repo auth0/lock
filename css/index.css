@@ -521,7 +521,7 @@
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-.auth0-lock.auth0-lock.auth0-lock-complete .auth0-lock-header-avatar {
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-header-avatar {
   -webkit-animation: fadeOut 0.3s both;
   animation: fadeOut 0.3s both;
 }
