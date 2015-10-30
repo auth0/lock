@@ -22,10 +22,10 @@ export default class AskPhoneNumber extends Screen {
     return renderAskLocation(this.lock);
   }
 
-  render() {
+  render({lock}) {
     return (
       <PhoneNumberPane
-        lock={this.lock}
+        lock={lock}
         placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
         tabIndex={1}
       />

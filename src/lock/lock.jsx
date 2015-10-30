@@ -22,8 +22,8 @@ export default class Lock extends React.Component {
     const {
       auxiliaryPane,
       backHandler,
-      children,
       closeHandler,
+      contentRender,
       disallowClose,
       footerText,
       headerText,
@@ -71,14 +71,13 @@ export default class Lock extends React.Component {
                 <MainScreen
                   auxiliaryPane={auxiliaryPane}
                   backHandler={backHandler}
+                  contentRender={contentRender}
                   footerText={footerText}
                   headerText={headerText}
                   key={screenName}
                   lock={lock}
                   showSubmitButton={showSubmitButton}
-                >
-                  {children}
-                </MainScreen>
+                />
               </MultisizeSlide>
             </div>
           </form>
@@ -112,7 +111,7 @@ export default class Lock extends React.Component {
 Lock.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
-  children: React.PropTypes.element.isRequired,
+  contentRender: React.PropTypes.func.isRequired,
   footerText: React.PropTypes.element,
   headerText: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,

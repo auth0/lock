@@ -28,7 +28,7 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, children, headerText, footerText, lock, showSubmitButton } = this.props;
+    const { auxiliaryPane, backHandler, contentRender, headerText, footerText, lock, showSubmitButton } = this.props;
     const { height, show } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -59,7 +59,7 @@ export default class MainScreen extends React.Component {
           <div className="auth0-lock-content">
             <div className="auth0-lock-form">
               {header}
-              {React.cloneElement(children, {focusSubmit: ::this.focusSubmit})}
+              {contentRender({focusSubmit: ::this.focusSubmit, lock})}
             </div>
           </div>
           {footer}
@@ -106,6 +106,7 @@ export default class MainScreen extends React.Component {
 MainScreen.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
+  contentRender: React.PropTypes.func.isRequired,
   footerText: React.PropTypes.element,
   headerText: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,

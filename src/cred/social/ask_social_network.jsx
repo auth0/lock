@@ -18,8 +18,8 @@ export default class AskSocialNetwork extends Screen {
     return renderSignedInConfirmation(this.lock);
   }
 
-  render() {
-    return <SocialButtonsPane lock={this.lock} />;
+  render({lock}) {
+    return <SocialButtonsPane lock={lock} />;
   }
 
 }

@@ -19,10 +19,10 @@ export default class AskEmail extends Screen {
     return this._renderAuxiliaryPane;
   }
 
-  render() {
+  render({lock}) {
     return (
       <EmailPane
-        lock={this.lock}
+        lock={lock}
         placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
         tabIndex={1}
       />

@@ -25,8 +25,8 @@ export default class Renderer {
         const props = {
           auxiliaryPane: screen.renderAuxiliaryPane(),
           backHandler: screen.backHandler(),
-          children: screen.render(),
           closeHandler: screen.closeHandler(),
+          contentRender: ::screen.render,
           footerText: screen.renderFooterText(),
           headerText: screen.renderHeaderText(),
           isDone: screen.isDone(),

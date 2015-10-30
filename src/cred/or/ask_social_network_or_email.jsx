@@ -25,13 +25,13 @@ export default class AskSocialNetworkOrEmail extends Screen {
       || renderSignedInConfirmation(this.lock);
   }
 
-  render() {
+  render({lock}) {
     return (
       <div>
-        <SocialButtonsPane lock={this.lock} />
+        <SocialButtonsPane lock={lock} />
         <PaneSeparator />
         <EmailPane
-          lock={this.lock}
+          lock={lock}
           placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
           tabIndex={1}
         />
