@@ -7,10 +7,14 @@ import * as cc from '../cred/country_codes';
 import * as cs from '../cred/storage';
 import * as l from '../lock/index';
 import * as m from './index';
+import {
+  closeLocationSelect,
+  openLocationSelect
+} from '../cred/phone-number/index';
 
 export function changePhoneLocation(id, location) {
   swap(updateEntity, "lock", id, lock => {
-    lock = m.closeLocationSelect(lock);
+    lock = closeLocationSelect(lock);
     lock = c.setPhoneLocation(lock, location);
     return lock;
   });
@@ -26,11 +30,11 @@ export function setDefaultLocation(id, str) {
 }
 
 export function selectPhoneLocation(id, searchStr) {
-  swap(updateEntity, "lock", id, m.openLocationSelect, searchStr);
+  swap(updateEntity, "lock", id, openLocationSelect, searchStr);
 }
 
 export function cancelSelectPhoneLocation(id) {
-  swap(updateEntity, "lock", id, m.closeLocationSelect);
+  swap(updateEntity, "lock", id, closeLocationSelect);
 }
 
 export function requestPasswordlessEmail(id) {

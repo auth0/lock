@@ -6,6 +6,7 @@ import { renderAskLocation } from '../../mode/shared';
 
 import * as m from '../../passwordless/index';
 import { cancelSelectPhoneLocation } from '../../passwordless/actions';
+import { selectingLocation } from '../../cred/phone-number/index';
 
 
 export default class AskPhoneNumber extends Screen {
@@ -15,7 +16,7 @@ export default class AskPhoneNumber extends Screen {
   }
 
   escHandler() {
-    return m.selectingLocation(this.lock) ? cancelSelectPhoneLocation : null;
+    return selectingLocation(this.lock) ? cancelSelectPhoneLocation : null;
   }
 
   renderAuxiliaryPane() {
