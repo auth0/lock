@@ -62,3 +62,7 @@ PhoneNumberPane.propTypes = {
   placeholder: React.PropTypes.string.isRequired,
   tabIndex: React.PropTypes.number.isRequired
 };
+
+PhoneNumberPane.defaultProps = {
+  tabIndex: 1
+};

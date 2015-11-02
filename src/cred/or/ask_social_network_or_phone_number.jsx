@@ -27,7 +27,6 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
           focusSubmit={focusSubmit}
           lock={lock}
           placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
-          tabIndex={1}
         />
       </div>
     );

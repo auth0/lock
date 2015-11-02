@@ -28,7 +28,6 @@ export default class AskPhoneNumber extends Screen {
         focusSubmit={focusSubmit}
         lock={lock}
         placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
-        tabIndex={1}
       />
     );
   }
