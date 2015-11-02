@@ -13,7 +13,7 @@ export default class SocialOrSms extends Mode {
 
   processOpenOptions(options, lockID) {
     validateSocialOptions(options);
-    options.modeOptions.send = "sms";
+    options.mode.send = "sms";
 
     const { defaultLocation } = options;
 

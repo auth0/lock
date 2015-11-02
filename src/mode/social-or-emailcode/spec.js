@@ -12,7 +12,7 @@ export default class SocialOrEmailCode extends Mode {
 
   processOpenOptions(options) {
     validateSocialOptions(options);
-    options.modeOptions.send = "code";
+    options.mode.send = "code";
     return options;
   }
 

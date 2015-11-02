@@ -27,7 +27,7 @@ export function domain(m) {
 }
 
 export function modeName(m) {
-  return m.get("modeName");
+  return modeOptions(m).get("name");
 }
 
 export function show(m) {
@@ -74,7 +74,8 @@ export function gravatar(m) {
 
 function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
-  const dictName = options.modeOptions && options.modeOptions.dictName;
+  // proper access to dictName or simply use mode.name
+  const dictName = options.mode && options.mode.dictName;
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
@@ -172,12 +173,12 @@ export function render(m, name, options) {
     return m;
   }
 
-  const { modeOptions } = options;
+  const mode = options.mode || {};
+  mode.name = name;
 
   m = m.merge(Immutable.fromJS({
-    modeName: name,
-    render: true,
-    modeOptions: modeOptions
+    mode: mode,
+    render: true
   }));
 
   m = setUIOptions(m, options);
@@ -187,7 +188,7 @@ export function render(m, name, options) {
 }
 
 export function modeOptions(m) {
-  return m.get("modeOptions", false);
+  return m.get("mode", new Map());
 }
 
 export function close(m) {

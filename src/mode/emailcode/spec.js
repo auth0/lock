@@ -10,7 +10,7 @@ export default class Emailcode extends Mode {
   }
 
   processOpenOptions(options) {
-    options.modeOptions.send = "code";
+    options.mode.send = "code";
     return options;
   }
 

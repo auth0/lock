@@ -68,7 +68,7 @@ export function reset(m, opts = {}) {
 }
 
 export function send(m) {
-  return m.getIn(["modeOptions", "send"], "link");
+  return l.modeOptions(m).get("send", "link")
 }
 
 export function isSendLink(m) {

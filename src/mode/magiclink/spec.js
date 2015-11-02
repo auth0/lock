@@ -8,7 +8,7 @@ export default class Magiclink extends Mode {
   }
 
   processOpenOptions(options) {
-    options.modeOptions.send = "link";
+    options.mode.send = "link";
     return options;
   }
 

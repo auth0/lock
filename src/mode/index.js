@@ -9,7 +9,7 @@ export class Mode {
     const { name } = this;
     const [options, callback] = openFunctionArgsResolver(name, args);
     options.signInCallback = callback;
-    options.modeOptions = {dictName: name, storageKey: name};
+    options.mode = {dictName: name, storageKey: name};
     return openLock(id, name, this.processOpenOptions(options, id));
   }
 

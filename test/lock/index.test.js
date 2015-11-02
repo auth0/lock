@@ -63,7 +63,7 @@ describe("rendering a lock", function() {
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
-    renderedLock = l.render(lock, modeName, {modeOptions: modeOptions});
+    renderedLock = l.render(lock, modeName, {mode: modeOptions});
   });
 
   it("sets the mode", function() {
@@ -71,7 +71,9 @@ describe("rendering a lock", function() {
   });
 
   it("sets the mode options", function() {
-    expect(l.modeOptions(renderedLock).toJS()).to.eql(modeOptions);
+    const assginedModeOptions = Immutable.fromJS(modeOptions).toJS();
+    assginedModeOptions.name = modeName
+    expect(l.modeOptions(renderedLock).toJS()).to.eql(assginedModeOptions);
   });
 
   it("it isn't being shown yet", function() {
@@ -215,7 +217,6 @@ describe("rendering a lock", function() {
 describe("rerendering a lock", function() {
   let renderedLock, reRenderedLock;
   const modeName = "someMode";
-  // const modeOptions = {someModeOption: "someModeOption"};
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});

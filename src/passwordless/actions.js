@@ -45,6 +45,7 @@ export function requestPasswordlessEmailSuccess(id) {
     return m.setPasswordlessStarted(l.setSubmitting(lock, false), true);
   });
   const lock = read(getEntity, "lock", id);
+  // TODO: proper access to storageKey or simply use modeName
   cs.store(lock, "email", l.modeOptions(lock).get("storageKey"));
   if (m.send(lock) === "link") {
     l.invokeDoneCallback(lock, null, c.email(lock));
@@ -93,6 +94,7 @@ export function sendSMSSuccess(id) {
   });
 
   const lock = read(getEntity, "lock", id);
+  // TODO: proper access to storageKey or simply use modeName
   cs.store(lock, "phoneNumber", l.modeOptions(lock).get("storageKey"));
 }
 

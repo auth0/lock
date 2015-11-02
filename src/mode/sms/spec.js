@@ -11,7 +11,7 @@ export default class Sms extends Mode {
   }
 
   processOpenOptions(options, lockID) {
-    options.modeOptions.send = "sms";
+    options.mode.send = "sms";
     const { defaultLocation } = options;
     if (defaultLocation && typeof defaultLocation === "string") {
       setDefaultLocation(lockID, defaultLocation.toUpperCase());
