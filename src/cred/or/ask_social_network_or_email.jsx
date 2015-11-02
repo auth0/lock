@@ -8,7 +8,7 @@ import { requestPasswordlessEmail } from '../../passwordless/actions';
 import {
   renderEmailSentConfirmation,
   renderSignedInConfirmation
-} from '../../modes/shared';
+} from '../../mode/shared';
 
 export default class AskSocialNetworkOrEmail extends Screen {
 

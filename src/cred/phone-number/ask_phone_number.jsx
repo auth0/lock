@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../../lock/screen';
 import PhoneNumberPane from './phone_number_pane';
 
-import { renderAskLocation } from '../../modes/shared';
+import { renderAskLocation } from '../../mode/shared';
 
 import * as m from '../../passwordless/index';
 import { cancelSelectPhoneLocation } from '../../passwordless/actions';

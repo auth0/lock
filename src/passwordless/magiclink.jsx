@@ -1,5 +1,5 @@
 import Base from './ask_email';
-import { renderEmailSentConfirmation } from '../modes/shared';
+import { renderEmailSentConfirmation } from '../mode/shared';
 
 export default class Magiclink extends Base {
 

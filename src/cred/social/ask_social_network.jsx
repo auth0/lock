@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../../lock/screen';
 import SocialButtonsPane from './social_buttons_pane';
 
-import { renderSignedInConfirmation } from '../../modes/shared';
+import { renderSignedInConfirmation } from '../../mode/shared';
 
 export default class AskSocialNetwork extends Screen {
 

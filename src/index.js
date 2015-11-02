@@ -5,13 +5,13 @@ import * as idu from './utils/id_utils';
 import { closeLock, setupLock, updateLock } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
-import emailcodeSpec from './modes/emailcode/spec';
-import magiclinkSpec from './modes/magiclink/spec';
-import smsSpec from './modes/sms/spec';
-import socialSpec from './modes/social/spec';
-import socialOrEmailcodeSpec from './modes/social-or-emailcode/spec';
-import socialOrMagiclinkSpec from './modes/social-or-magiclink/spec';
-import socialOrSmsSpec from './modes/social-or-sms/spec';
+import emailcodeSpec from './mode/emailcode/spec';
+import magiclinkSpec from './mode/magiclink/spec';
+import smsSpec from './mode/sms/spec';
+import socialSpec from './mode/social/spec';
+import socialOrEmailcodeSpec from './mode/social-or-emailcode/spec';
+import socialOrMagiclinkSpec from './mode/social-or-magiclink/spec';
+import socialOrSmsSpec from './mode/social-or-sms/spec';
 
 // styles
 import styles from '../css/index.css';

@@ -5,7 +5,7 @@ import SocialButtonsPane from '../social/social_buttons_pane';
 import PaneSeparator from '../../lock/pane_separator';
 import * as l from '../../lock/index';
 
-import { renderSignedInConfirmation } from '../../modes/shared';
+import { renderSignedInConfirmation } from '../../mode/shared';
 
 export default class AskSocialNetworkOrPhoneNumber extends Base {
 
