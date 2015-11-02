@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../../lock/screen';
 import EmailPane from '../email/email_pane';
 import SocialButtonsPane from '../social/social_buttons_pane';
-import PaneSeparator from '../../panes/pane_separator';
+import PaneSeparator from '../../lock/pane_separator';
 
 import { requestPasswordlessEmail } from '../../passwordless/actions';
 import {

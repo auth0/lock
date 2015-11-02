@@ -2,7 +2,7 @@ import React from 'react';
 import Base from '../../passwordless/ask_phone_number';
 import PhoneNumberPane from '../phone-number/phone_number_pane';
 import SocialButtonsPane from '../social/social_buttons_pane';
-import PaneSeparator from '../../panes/pane_separator';
+import PaneSeparator from '../../lock/pane_separator';
 import * as l from '../../lock/index';
 
 import { renderSignedInConfirmation } from '../../modes/shared';
