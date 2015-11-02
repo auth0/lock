@@ -5,10 +5,8 @@ import SocialButtonsPane from '../social/social_buttons_pane';
 import PaneSeparator from '../../lock/pane_separator';
 
 import { requestPasswordlessEmail } from '../../passwordless/actions';
-import {
-  renderEmailSentConfirmation,
-  renderSignedInConfirmation
-} from '../../mode/shared';
+import { renderEmailSentConfirmation } from '../../passwordless/email_sent_confirmation';
+import { renderSignedInConfirmation } from '../../mode/shared';
 
 export default class AskSocialNetworkOrEmail extends Screen {
 

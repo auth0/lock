@@ -1,6 +1,5 @@
 import React from 'react';
 import AskLocation from '../cred/phone-number/ask_location';
-import EmailSentConfirmation from '../passwordless/email_sent_confirmation';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import { back, close } from '../passwordless/actions';
 import * as l from '../lock/index';
@@ -26,14 +25,5 @@ export function renderAskLocation(lock) {
         initialLocationSearchStr={m.initialLocationSearchStr(lock)}
         key="auxiliarypane"
         lock={lock} />
-    : null;
-}
-
-export function renderEmailSentConfirmation(lock, props = {}) {
-  props.key = "auxiliarypane";
-  props.lock = lock;
-
-  return m.passwordlessStarted(lock)
-    ? <EmailSentConfirmation {...props} />
     : null;
 }

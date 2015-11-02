@@ -93,3 +93,12 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
 }
+
+export function renderEmailSentConfirmation(lock, props = {}) {
+  props.key = "auxiliarypane";
+  props.lock = lock;
+
+  return m.passwordlessStarted(lock)
+    ? <EmailSentConfirmation {...props} />
+    : null;
+}
