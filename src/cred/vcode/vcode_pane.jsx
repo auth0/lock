@@ -49,3 +49,7 @@ VcodePane.propTypes = {
   resendLabel: React.PropTypes.string.isRequired,
   tabIndex: React.PropTypes.number.isRequired
 };
+
+VcodePane.defaultProps = {
+  tabIndex: 1
+};

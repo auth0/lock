@@ -14,7 +14,6 @@ export default class AskVcode extends Screen {
         lock={lock}
         placeholder={this.t(["codeInputPlaceholder"], {__textOnly: true})}
         resendLabel={this.t(["resendLabel"], {__textOnly: true})}
-        tabIndex={1}
       />
     );
   }
