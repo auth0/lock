@@ -10,7 +10,7 @@ import * as g from '../gravatar/index';
 import Terms from '../lock/terms';
 
 
-export default class MainScreen extends React.Component {
+export default class Chrome extends React.Component {
 
   constructor(props) {
     super(props);
@@ -104,7 +104,7 @@ export default class MainScreen extends React.Component {
   }
 }
 
-MainScreen.propTypes = {
+Chrome.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
@@ -114,7 +114,7 @@ MainScreen.propTypes = {
   showSubmitButton: React.PropTypes.bool.isRequired
 };
 
-MainScreen.defaultProps = {
+Chrome.defaultProps = {
   showSubmitButton: true
 };
 

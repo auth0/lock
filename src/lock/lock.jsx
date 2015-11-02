@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map } from 'immutable';
-import MainScreen from './main_screen';
+import Chrome from './chrome';
 import MultisizeSlide from '../multisize-slide/multisize_slide';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
@@ -67,7 +67,7 @@ export default class Lock extends React.Component {
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
               <MultisizeSlide delay={400} transitionName="horizontal-fade">
-                <MainScreen
+                <Chrome
                   auxiliaryPane={auxiliaryPane}
                   backHandler={backHandler}
                   contentRender={contentRender}
