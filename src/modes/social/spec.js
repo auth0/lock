@@ -1,5 +1,6 @@
 import { Mode } from '../index';
 import AskSocialNetwork from '../../cred/social/ask_social_network';
+import { validateSocialOptions } from '../../social/index';
 
 export default class Social extends Mode {
 
@@ -8,11 +9,7 @@ export default class Social extends Mode {
   }
 
   processOpenOptions(options) {
-    const { connections } = options;
-    if (!Array.isArray(connections) || connections.length === 0) {
-      throw new Error("The `connections` option array needs to be provided with at least one connection.");
-    }
-
+    validateSocialOptions(options);
     return options;
   }
 

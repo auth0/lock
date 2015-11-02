@@ -1,5 +1,6 @@
 import { Mode } from '../index';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
+import { validateSocialOptions } from '../../social/index';
 
 export default class SocialOrMagiclink extends Mode {
 
@@ -8,11 +9,7 @@ export default class SocialOrMagiclink extends Mode {
   }
 
   processOpenOptions(options) {
-    const { connections } = options;
-    if (!Array.isArray(connections) || connections.length === 0) {
-      throw new Error("The `connections` option array needs to be provided with at least one connection.");
-    }
-
+    validateSocialOptions(options);
     return options;
   }
 
