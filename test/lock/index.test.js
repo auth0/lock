@@ -36,7 +36,7 @@ describe("initializing a lock", function() {
   });
 
   it("doesn't set any mode", function() {
-    expect(l.mode(lock)).to.be(undefined);
+    expect(l.modeName(lock)).to.be(undefined);
   });
 
   it("doesn't need to be shown", function() {
@@ -58,16 +58,16 @@ describe("initializing a lock", function() {
 
 describe("rendering a lock", function() {
   let renderedLock;
-  const mode = "someMode";
+  const modeName = "someMode";
   const modeOptions = {someModeOption: "someModeOption"};
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
-    renderedLock = l.render(lock, mode, {modeOptions: modeOptions});
+    renderedLock = l.render(lock, modeName, {modeOptions: modeOptions});
   });
 
   it("sets the mode", function() {
-    expect(l.mode(renderedLock)).to.be(mode);
+    expect(l.modeName(renderedLock)).to.be(modeName);
   });
 
   it("sets the mode options", function() {
@@ -109,7 +109,7 @@ describe("rendering a lock", function() {
       const container = "someId";
 
       beforeEach(function() {
-        renderedLock = l.render(lock, mode, {container: container});
+        renderedLock = l.render(lock, modeName, {container: container});
       });
 
       it("assings it as the container id", function() {
@@ -129,7 +129,7 @@ describe("rendering a lock", function() {
 
     describe("`appendContainer`", function() {
       beforeEach(function() {
-        renderedLock = l.render(lock, mode, {appendContainer: false});
+        renderedLock = l.render(lock, modeName, {appendContainer: false});
       });
 
       it("doesn't affect whether a container can be appended or not", function() {
@@ -141,7 +141,7 @@ describe("rendering a lock", function() {
       const icon = "my_company_icon.svg";
 
       beforeEach(function() {
-        renderedLock = l.render(lock, mode, {icon: icon});
+        renderedLock = l.render(lock, modeName, {icon: icon});
       });
 
       it("sets a customs icon", function() {
@@ -152,7 +152,7 @@ describe("rendering a lock", function() {
     describe("`closable`", function() {
       describe("without `container`", function() {
         beforeEach(function() {
-          renderedLock = l.render(lock, mode, {closable: false});
+          renderedLock = l.render(lock, modeName, {closable: false});
         });
 
         it("can stop the user from closing the lock", function() {
@@ -162,7 +162,7 @@ describe("rendering a lock", function() {
 
       describe("with `container`", function() {
         beforeEach(function() {
-          renderedLock = l.render(lock, mode, {closable: true, container: "someId"});
+          renderedLock = l.render(lock, modeName, {closable: true, container: "someId"});
         })
 
         it("it doesn't have any effect (doesn't allow the user to close the lock)", function() {
@@ -175,7 +175,7 @@ describe("rendering a lock", function() {
 
     describe("`gravatar`", function() {
       beforeEach(function() {
-        renderedLock = l.render(lock, mode, {gravatar: false});
+        renderedLock = l.render(lock, modeName, {gravatar: false});
       });
 
       it("doesn't display user name and picture obtained from Gravatar", function() {
@@ -214,13 +214,13 @@ describe("rendering a lock", function() {
 
 describe("rerendering a lock", function() {
   let renderedLock, reRenderedLock;
-  const mode = "someMode";
+  const modeName = "someMode";
   // const modeOptions = {someModeOption: "someModeOption"};
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
-    renderedLock = l.render(lock, mode, {});
-    reRenderedLock = l.render(renderedLock, mode, {});
+    renderedLock = l.render(lock, modeName, {});
+    reRenderedLock = l.render(renderedLock, modeName, {});
   });
 
   it("doesn't change the container id", function() {
@@ -255,7 +255,7 @@ describe("rerendering a lock", function() {
 
     describe("`container`", function() {
       beforeEach(function() {
-        reRenderedLock = l.render(renderedLock, mode, {container: reopenOptions.container});
+        reRenderedLock = l.render(renderedLock, modeName, {container: reopenOptions.container});
       });
 
       it("doesn't change the container's id", function() {
@@ -276,7 +276,7 @@ describe("rerendering a lock", function() {
 
     describe("`appendContainer`", function() {
       beforeEach(function() {
-        reRenderedLock = l.render(renderedLock, mode, {appendContainer: false});
+        reRenderedLock = l.render(renderedLock, modeName, {appendContainer: false});
       });
 
       it("doesn't affect whether a container can be appended or not", function() {
@@ -287,7 +287,7 @@ describe("rerendering a lock", function() {
 
     describe("`icon`", function() {
       beforeEach(function() {
-        reRenderedLock = l.render(renderedLock, mode, {icon: reopenOptions.icon});
+        reRenderedLock = l.render(renderedLock, modeName, {icon: reopenOptions.icon});
       });
 
       it("changes the icon", function() {
@@ -298,7 +298,7 @@ describe("rerendering a lock", function() {
 
     describe("`closable`", function() {
       beforeEach(function() {
-        reRenderedLock = l.render(renderedLock, mode, {closable: reopenOptions.closable});
+        reRenderedLock = l.render(renderedLock, modeName, {closable: reopenOptions.closable});
       });
 
       it("changes whether it can be closed or not", function() {
@@ -311,7 +311,7 @@ describe("rerendering a lock", function() {
 
     describe("`gravatar`", function() {
       beforeEach(function() {
-        reRenderedLock = l.render(renderedLock, mode, {gravatar: reopenOptions.gravatar});
+        reRenderedLock = l.render(renderedLock, modeName, {gravatar: reopenOptions.gravatar});
       });
 
       it("changes whether it displays info obtained from Gravatar or not", function() {
@@ -322,11 +322,11 @@ describe("rerendering a lock", function() {
   });
 
   describe("in another mode", function() {
-    const otherMode = "otherMode";
+    const otherModeName = "otherMode";
     let notRerenderedLock;
 
     beforeEach(function() {
-      notRerenderedLock = l.render(reRenderedLock, otherMode, {gravatar: false});
+      notRerenderedLock = l.render(reRenderedLock, otherModeName, {gravatar: false});
     });
 
     it("doesn't change anything", function() {
@@ -337,12 +337,12 @@ describe("rerendering a lock", function() {
 
 describe("trying to render a lock that is being shown", function() {
   let openedLock, reRenderedLock;
-  const mode = "someMode";
+  const modeName = "someMode";
 
   beforeEach(function() {
     lock = l.setup({clientID: clientID, domain: domain, id: lockID});
-    openedLock = l.setShow(l.render(lock, mode, {}), true);
-    reRenderedLock = l.render(openedLock, mode, {gravatar: false});
+    openedLock = l.setShow(l.render(lock, modeName, {}), true);
+    reRenderedLock = l.render(openedLock, modeName, {gravatar: false});
   });
 
   it("doesn't change anything", function() {
@@ -419,7 +419,7 @@ describe("submitting", function() {
 
 describe("accessing Gravatar info", function() {
   const gravatar = Immutable.fromJS({displayName: "someName", imageUrl: "someUrl"});
-  const mode = "someMode";
+  const modeName = "someMode";
   let renderedLock;
 
   beforeEach(function() {
@@ -428,7 +428,7 @@ describe("accessing Gravatar info", function() {
 
   describe("when it has to be displayed", function() {
     beforeEach(function() {
-      renderedLock = l.render(lock, mode, {gravatar: true});
+      renderedLock = l.render(lock, modeName, {gravatar: true});
     });
 
     describe("and it isn't available", function() {
@@ -450,7 +450,7 @@ describe("accessing Gravatar info", function() {
 
   describe("when available but it doesn't have to be displayed", function() {
     beforeEach(function() {
-      renderedLock = l.render(lock, mode, {gravatar: false});
+      renderedLock = l.render(lock, modeName, {gravatar: false});
       renderedLock = renderedLock.set("gravatar", gravatar);
     });
 

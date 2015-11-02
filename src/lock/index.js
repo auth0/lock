@@ -26,8 +26,8 @@ export function domain(m) {
   return m.get("domain");
 }
 
-export function mode(m) {
-  return m.get("mode");
+export function modeName(m) {
+  return m.get("modeName");
 }
 
 export function show(m) {
@@ -167,15 +167,15 @@ export function shouldRedirect(m) {
   return login.callbackURL(m);
 }
 
-export function render(m, modeName, options) {
-  if ((mode(m) != undefined && mode(m) != modeName) || show(m)) {
+export function render(m, name, options) {
+  if ((modeName(m) != undefined && modeName(m) != name) || show(m)) {
     return m;
   }
 
   const { modeOptions } = options;
 
   m = m.merge(Immutable.fromJS({
-    mode: modeName,
+    modeName: name,
     render: true,
     modeOptions: modeOptions
   }));

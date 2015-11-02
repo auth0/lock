@@ -11,7 +11,7 @@ export function setupLock(id, clientID, domain) {
   WebAPI.setupClient(id, clientID, domain);
 }
 
-export function openLock(id, mode, options) {
+export function openLock(id, modeName, options) {
   const lock = read(getEntity, "lock", id);
   if (!lock) {
     throw new Error("The Lock can't be opened again after it has been closed");
@@ -22,7 +22,7 @@ export function openLock(id, mode, options) {
   }
 
   swap(updateEntity, "lock", id, lock => {
-    lock = l.render(lock, mode, options);
+    lock = l.render(lock, modeName, options);
     return l.ui.rememberLastLogin(lock) ?
       cs.restore(lock, options.modeOptions.storageKey) : lock;
   });
