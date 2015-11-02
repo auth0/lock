@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../../lock/screen';
 import PhoneNumberPane from './phone_number_pane';
 
-import { renderAskLocation } from '../../mode/shared';
+import { renderAskLocation } from './ask_location';
 
 import { cancelSelectPhoneLocation } from './actions';
 import { selectingLocation } from './index';

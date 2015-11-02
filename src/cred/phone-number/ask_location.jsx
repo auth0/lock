@@ -1,6 +1,7 @@
 import React from 'react';
 import LocationSelect from './location_select';
 import { cancelSelectPhoneLocation, changePhoneLocation } from './actions';
+import { initialLocationSearchStr, selectingLocation } from './index';
 import * as l from '../../lock/index';
 
 export default class AskLocation extends React.Component {
@@ -25,4 +26,13 @@ export default class AskLocation extends React.Component {
     return l.ui.t(this.props.lock, ["location"].concat(keyPath), params);
   }
 
+}
+
+export function renderAskLocation(lock) {
+  return selectingLocation(lock)
+    ? <AskLocation
+        initialLocationSearchStr={initialLocationSearchStr(lock)}
+        key="auxiliarypane"
+        lock={lock} />
+    : null;
 }
