@@ -1,6 +1,6 @@
 import React from 'react';
 import AskLocation from '../cred/phone-number/ask_location';
-import EmailSentConfirmation from '../cred/email/email_sent_confirmation';
+import EmailSentConfirmation from '../passwordless/email_sent_confirmation';
 import SignedInConfirmation from '../lock/signed_in_confirmation';
 import { back, close } from '../passwordless/actions';
 import * as l from '../lock/index';
