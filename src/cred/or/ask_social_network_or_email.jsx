@@ -6,7 +6,7 @@ import PaneSeparator from '../../lock/pane_separator';
 
 import { requestPasswordlessEmail } from '../../passwordless/actions';
 import { renderEmailSentConfirmation } from '../../passwordless/email_sent_confirmation';
-import { renderSignedInConfirmation } from '../../mode/shared';
+import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 
 export default class AskSocialNetworkOrEmail extends Screen {
 

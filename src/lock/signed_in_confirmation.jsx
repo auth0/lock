@@ -1,5 +1,6 @@
 import React from 'react';
 import ConfirmationPane from './confirmation_pane';
+import { closeLock } from './actions';
 import * as l from './index';
 
 
@@ -31,3 +32,11 @@ SignedInConfirmation.propTypes = {
   closeHandler: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired
 };
+
+export function renderSignedInConfirmation(lock, props = {}) {
+  props.closeHandler = closeLock;
+  props.key = "auxiliarypane";
+  props.lock = lock;
+
+  return l.signedIn(lock) ? <SignedInConfirmation {...props} /> : null;
+}
