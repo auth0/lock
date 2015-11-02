@@ -4,9 +4,8 @@ import PhoneNumberPane from './phone_number_pane';
 
 import { renderAskLocation } from '../../mode/shared';
 
-import * as m from '../../passwordless/index';
-import { cancelSelectPhoneLocation } from '../../passwordless/actions';
-import { selectingLocation } from '../../cred/phone-number/index';
+import { cancelSelectPhoneLocation } from './actions';
+import { selectingLocation } from './index';
 
 
 export default class AskPhoneNumber extends Screen {

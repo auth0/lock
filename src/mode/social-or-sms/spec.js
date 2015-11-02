@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import { setDefaultLocation } from '../../passwordless/actions';
+import { setDefaultLocation } from '../../cred/phone-number/actions';
 import AskSocialNetworkOrPhoneNumber from '../../cred/or/ask_social_network_or_phone_number';
 import AskPhoneNumberVcode from '../../passwordless/ask_phone_number_vcode';
 import { validateSocialOptions } from '../../social/index';

@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import { setDefaultLocation } from '../../passwordless/actions';
+import { setDefaultLocation } from '../../cred/phone-number/actions';
 import AskPhoneNumberVcode from '../../passwordless/ask_phone_number_vcode';
 import AskPhoneNumber from '../../passwordless/ask_phone_number';
 import * as m from '../../passwordless/index';

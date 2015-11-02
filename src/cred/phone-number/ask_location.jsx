@@ -1,9 +1,7 @@
 import React from 'react';
 import LocationSelect from './location_select';
+import { cancelSelectPhoneLocation, changePhoneLocation } from './actions';
 import * as l from '../../lock/index';
-
-// TODO: remove passwordless deps
-import { cancelSelectPhoneLocation, changePhoneLocation } from '../../passwordless/actions';
 
 export default class AskLocation extends React.Component {
   render() {
