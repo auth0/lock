@@ -29,7 +29,7 @@ export default class AskSocialNetworkOrEmail extends Screen {
     return (
       <div>
         <SocialButtonsPane lock={lock} />
-        <PaneSeparator />
+        <PaneSeparator>{this.t(["separatorText"])}</PaneSeparator>
         <EmailPane
           lock={lock}
           placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}

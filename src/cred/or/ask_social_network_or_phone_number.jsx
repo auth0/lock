@@ -22,7 +22,7 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
     return (
       <div>
         <SocialButtonsPane lock={lock} />
-        <PaneSeparator />
+        <PaneSeparator>{this.t(["separatorText"])}</PaneSeparator>
         <PhoneNumberPane
           focusSubmit={focusSubmit}
           lock={lock}

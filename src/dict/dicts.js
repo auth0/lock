@@ -95,7 +95,8 @@ export default {
     networkOrEmail: {
       emailInputPlaceholder: "yours@example.com",
       footerText: "",
-      headerText: ""
+      headerText: "",
+      separatorText: "Otherwise, enter your email to sign in<br>or create an account"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -115,7 +116,8 @@ export default {
     networkOrEmail: {
       emailInputPlaceholder: "yours@example.com",
       footerText: "",
-      headerText: ""
+      headerText: "",
+      separatorText: "Otherwise, enter your email to sign in<br>or create an account"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -139,7 +141,8 @@ export default {
     networkOrPhone: {
       footerText: "",
       headerText: "",
-      phoneNumberInputPlaceholder: "your phone number"
+      phoneNumberInputPlaceholder: "your phone number",
+      separatorText: "Otherwise, enter your phone to sign in<br>or create an account"
     },
     title: "Auth0",
     welcome: "Welcome {name}!"
