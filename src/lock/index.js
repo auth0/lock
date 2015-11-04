@@ -4,14 +4,17 @@ import { iconUrl } from '../icon/index';
 import * as d from '../dict/index';
 import t from '../dict/t';
 
+function buildSetupSnapshot(m) {
+  return m.set("setupSnapshot", m);
+}
+
 export function setup(attrs) {
   const { clientID, domain, id } = attrs;
-
-  return Immutable.fromJS({
+  return buildSetupSnapshot(Immutable.fromJS({
     clientID: clientID,
     domain: domain,
     id: id
-  });
+  }));
 }
 
 export function id(m) {
@@ -195,6 +198,9 @@ export function close(m) {
   return m.set("show", false);
 }
 
+export function reset(m) {
+  return buildSetupSnapshot(m.get("setupSnapshot"));
+}
 
 export function setSignedIn(m, value) {
   return m.set("signedIn", value);

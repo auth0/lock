@@ -2,7 +2,7 @@ import RenderScheduler from './lock/render_scheduler';
 import Renderer from './lock/renderer';
 import PluginManager from './lock/plugin_manager';
 import * as idu from './utils/id_utils';
-import { closeLock, setupLock, updateLock } from './lock/actions';
+import { closeLock, removeLock, setupLock, updateLock } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 import emailcodeSpec from './mode/emailcode/spec';
@@ -37,6 +37,10 @@ export default class Auth0LockPasswordless {
   close() {
     const f = Auth0LockPasswordless.plugins.closeFn(this.plugin);
     f(this.id, true);
+  }
+
+  remove() {
+    removeLock(this.id);
   }
 
   getProfile(token, cb) {

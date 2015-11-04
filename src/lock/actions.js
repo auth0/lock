@@ -14,7 +14,7 @@ export function setupLock(id, clientID, domain) {
 export function openLock(id, modeName, options) {
   const lock = read(getEntity, "lock", id);
   if (!lock) {
-    throw new Error("The Lock can't be opened again after it has been closed");
+    throw new Error("The Lock can't be opened again after it has been removed");
   }
 
   if (l.show(lock)) {
@@ -59,12 +59,17 @@ export function closeLock(id, force = false, callback = () => {}) {
     setTimeout(() => {
       // swap(updateEntity, "lock", id, m => m.remove("render"));
       callback(read(getEntity, "lock", id));
-      setTimeout(() => swap(removeEntity, "lock", id), 17);
+      setTimeout(() => swap(updateEntity, "lock", id, l.reset), 17);
     }, 1000);
   } else {
-    swap(removeEntity, "lock", id);
+    swap(updateEntity, "lock", id, l.reset);
     callback(lock);
   }
+}
+
+export function removeLock(id) {
+  swap(updateEntity, "lock", id, (lock) => lock.remove("render"));
+  setTimeout(() => swap(removeEntity, "lock", id), 17);
 }
 
 export function updateLock(id, f) {
