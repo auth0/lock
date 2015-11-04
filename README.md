@@ -308,6 +308,10 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **forceJSONP {Boolean}**: Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to `false`.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Defaults to `"code"` when `callbackURL` is provided, and to `"token"` otherwise.
 
+#### Other options
+
+- **disableWarnings {Boolean}**: Determines whether or not warning messages will be output to the browser's console. Defaults to `false`.
+
 #### Example
 
 ```js

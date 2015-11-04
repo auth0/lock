@@ -1,4 +1,5 @@
 import { closeLock, openLock } from '../lock/actions';
+import trim from 'trim';
 
 export class Mode {
   constructor(name) {
@@ -8,6 +9,7 @@ export class Mode {
   open(id, ...args) {
     const { name } = this;
     const [options, callback] = openFunctionArgsResolver(name, args);
+    warnScopeOpenidProfile(options);
     options.signInCallback = callback;
     options.mode = {dictName: name, storageKey: name};
     return openLock(id, name, this.processOpenOptions(options, id));
@@ -49,4 +51,18 @@ function openFunctionArgsResolver(fnName, args) {
   }
 
   throw new Error("`" + fnName + "` must be called with two arguments at most.");
+}
+
+function warnScopeOpenidProfile(options) {
+  // TODO: abstract warning output (should receive a message and emit the
+  // warning unless they are disabled).
+  const { authParams, disableWarnings } = options;
+  if (authParams
+      && typeof authParams === "object"
+      && trim(authParams.scope || "") === "openid profile"
+      && !disableWarnings
+      && console
+      && console.warn) {
+    console.warn("Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
+  }
 }
