@@ -30,7 +30,7 @@
 				"name": "exact"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 0
 		},
 		{
@@ -59,7 +59,7 @@
 				"name": "yammer"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 1
 		},
 		{
@@ -88,7 +88,7 @@
 				"name": "u22"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 2
 		},
 		{
@@ -117,7 +117,7 @@
 				"name": "fitbit"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 3
 		},
 		{
@@ -147,7 +147,7 @@
 				"name": "paypal"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 4
 		},
 		{
@@ -176,7 +176,7 @@
 				"name": "yandex"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 5
 		},
 		{
@@ -205,7 +205,7 @@
 				"name": "salesforce"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 6
 		},
 		{
@@ -229,17 +229,15 @@
 				"code": 43
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 7
 		},
 		{
 			"icon": {
 				"paths": [
-					"M595 648l24 78h153l-178-474h-160l-179 474h150l23-78h167zM564 545h-104l52-170zM1027 529c0-287-232-519-519-519-286 0-519 232-519 519 0 286 233 519 519 519 287 0 519-233 519-519zM513 142c215 0 389 174 389 389s-174 389-389 389-389-174-389-389 174-389 389-389zM512 179c194 0 352 157 352 351 0 195-158 352-352 352s-352-157-352-352c0-194 158-351 352-351z"
+					"M764.087 828.393l-98.908-316.408 258.909-195.498h-320.038l-98.943-316.481h320.085l98.943 316.444 0.082-0.049c57.455 183.583-1.72 392.386-160.131 511.991v0 0zM246.163 828.393l-0.082 0.061 258.974 195.546 259.033-195.601-258.95-195.553-258.974 195.546zM86.097 316.408v0c-60.483 193.521 9.726 398.578 160.013 512.021l0.023-0.098 98.919-316.39-258.851-195.461h319.962l98.943-316.481h-320.103l-98.908 316.408z"
 				],
-				"attrs": [
-					{}
-				],
+				"attrs": [],
 				"isMulticolor": false,
 				"tags": [
 					"u30"
@@ -247,9 +245,7 @@
 				"defaultCode": 48,
 				"grid": 0
 			},
-			"attrs": [
-				{}
-			],
+			"attrs": [],
 			"properties": {
 				"id": 7,
 				"order": 10,
@@ -258,7 +254,7 @@
 				"name": "u30"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 8
 		},
 		{
@@ -288,7 +284,7 @@
 				"name": "guest"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 9
 		},
 		{
@@ -318,7 +314,7 @@
 				"name": "dwolla"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 10
 		},
 		{
@@ -348,7 +344,7 @@
 				"name": "evernote"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 11
 		},
 		{
@@ -378,7 +374,7 @@
 				"name": "google"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 12
 		},
 		{
@@ -408,7 +404,7 @@
 				"name": "linkedin"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 13
 		},
 		{
@@ -438,7 +434,7 @@
 				"name": "vk"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 14
 		},
 		{
@@ -468,7 +464,7 @@
 				"name": "weibu"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 15
 		},
 		{
@@ -498,7 +494,7 @@
 				"name": "twitter"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 16
 		},
 		{
@@ -528,16 +524,16 @@
 				"name": "vimeo"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 17
 		},
 		{
 			"icon": {
 				"paths": [
-					"M39.712 39.712h452.512v452.512h-452.512c0 0 0-452.512 0-452.512z",
-					"M531.808 39.712h452.512v452.512h-452.512c0 0 0-452.512 0-452.512z",
-					"M39.712 531.808h452.512v452.512h-452.512c0 0 0-452.512 0-452.512z",
-					"M531.808 531.808h452.512v452.512h-452.512v-452.512z"
+					"M0.723 0.723h459.239v459.239h-459.239v-459.239z",
+					"M550.877 0.723h459.239v459.239h-459.239v-459.239z",
+					"M459.962 564.071v459.239h-459.239v-459.239h459.239z",
+					"M550.877 564.071h459.239v459.239h-459.239v-459.239z"
 				],
 				"attrs": [],
 				"isMulticolor": false,
@@ -548,14 +544,14 @@
 			},
 			"attrs": [],
 			"properties": {
-				"order": 20,
+				"order": 49,
 				"id": 42,
 				"name": "windows",
 				"prevSize": 32,
 				"code": 87
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 18
 		},
 		{
@@ -585,7 +581,7 @@
 				"name": "yahoo"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 19
 		},
 		{
@@ -615,7 +611,7 @@
 				"name": "amazon"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 20
 		},
 		{
@@ -644,7 +640,7 @@
 				"name": "thirtysevensignals"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 21
 		},
 		{
@@ -674,7 +670,7 @@
 				"name": "dropbox"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 22
 		},
 		{
@@ -704,13 +700,13 @@
 				"name": "ebay"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 23
 		},
 		{
 			"icon": {
 				"paths": [
-					"M287 544h157v474h197v-474h197v-196h-197v-100c0-17 4-30 12-42 9-11 18-16 28-16h157v-196h-157c-66 0-121 25-167 75-47 50-70 110-70 181v98h-157v196z"
+					"M127 544h157v474h197v-474h197v-196h-197v-100c0-17 4-30 12-42 9-11 18-16 28-16h157v-196h-157c-66 0-121 25-167 75-47 50-70 110-70 181v98h-157v196z"
 				],
 				"width": 836,
 				"attrs": [
@@ -734,7 +730,7 @@
 				"name": "facebook"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 24
 		},
 		{
@@ -764,7 +760,7 @@
 				"name": "git"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 25
 		},
 		{
@@ -794,7 +790,7 @@
 				"name": "instagram"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 26
 		},
 		{
@@ -824,7 +820,7 @@
 				"name": "aol"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 27
 		},
 		{
@@ -854,7 +850,7 @@
 				"name": "miicard"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 28
 		},
 		{
@@ -884,7 +880,7 @@
 				"name": "openid"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 29
 		},
 		{
@@ -914,7 +910,7 @@
 				"name": "sharepoint"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 30
 		},
 		{
@@ -943,7 +939,7 @@
 				"name": "renren"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 31
 		},
 		{
@@ -973,7 +969,7 @@
 				"name": "shopify"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 32
 		},
 		{
@@ -1003,7 +999,7 @@
 				"name": "soundcloud"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 33
 		},
 		{
@@ -1033,7 +1029,7 @@
 				"name": "baidu"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 34
 		},
 		{
@@ -1062,7 +1058,7 @@
 				"name": "wordpress"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 35
 		},
 		{
@@ -1092,7 +1088,7 @@
 				"name": "box"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 36
 		},
 		{
@@ -1121,7 +1117,7 @@
 				"name": "github"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 37
 		},
 		{
@@ -1151,7 +1147,7 @@
 				"name": "stackoverflow"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 38
 		},
 		{
@@ -1181,7 +1177,7 @@
 				"name": "thecity"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 39
 		},
 		{
@@ -1211,7 +1207,7 @@
 				"name": "planningcenter"
 			},
 			"setIdx": 0,
-			"setId": 0,
+			"setId": 1,
 			"iconIdx": 40
 		}
 	],
