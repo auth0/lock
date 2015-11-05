@@ -11,13 +11,13 @@ var config = {
   module: {
     loaders: [{
       test: /node_modules\/auth0-lock\/.*\.js$/,
-      loaders: ['transform/cacheable?brfs', 'transform/cacheable?packageify']
+      loaders: ['transform-loader/cacheable?brfs', 'transform-loader/cacheable?packageify']
     }, {
       test: /\.ejs$/,
-      loader: 'ejs-compiled',
+      loader: 'ejs-compiled-loader',
     }, {
       test: /\.json$/,
-      loader: 'json'
+      loader: 'json-loader'
     }]
   }
 };
