@@ -69,7 +69,7 @@ export function closeLock(id, force = false, callback = () => {}) {
 
 export function removeLock(id) {
   swap(updateEntity, "lock", id, (lock) => lock.remove("render"));
-  setTimeout(() => swap(removeEntity, "lock", id), 17);
+  swap(removeEntity, "lock", id);
 }
 
 export function updateLock(id, f) {
