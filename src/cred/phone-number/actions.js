@@ -23,16 +23,15 @@ export function setInitialPhoneLocation(m, options) {
   const { defaultLocation } = options;
 
   if (defaultLocation && typeof defaultLocation === "string") {
-    if (!cc.findByIsoCode(defaultLocation)) {
+    const location = cc.findByIsoCode(defaultLocation);
+    if (!location) {
       throw new Error(`Unable to set the default location, can't find any country with the code "${defaultLocation}".`);
     }
-    return c.setPhoneLocation(m, defaultLocation);
+    return c.setPhoneLocation(m, location);
   } else {
     const user = read(getEntity, "user");
-    const userLocation = user && user.get("location");
-    return cc.findByIsoCode(userLocation)
-      ? c.setPhoneLocation(m, userLocation)
-      : m;
+    const location = cc.findByIsoCode(user && user.get("location"));
+    return location ? c.setPhoneLocation(m, location) : m;
   }
 }
 
