@@ -39,7 +39,7 @@ export default class Auth0LockPasswordless {
     f(this.id, true);
   }
 
-  remove() {
+  destroy() {
     removeLock(this.id);
   }
 

@@ -26,7 +26,7 @@ export function setupLock(id, clientID, domain) {
 export function openLock(id, modeName, options) {
   const lock = read(getEntity, "lock", id);
   if (!lock) {
-    throw new Error("The Lock can't be opened again after it has been removed");
+    throw new Error("The Lock can't be opened again after it has been destroyed");
   }
 
   if (l.show(lock)) {
