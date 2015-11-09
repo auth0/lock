@@ -13,7 +13,7 @@ export class Mode {
 
     warnScopeOpenidProfile(options);
     options.signInCallback = callback;
-    options.mode = {dictName: name, storageKey: name};
+    options.mode = {};
 
     this.id = id;
     this.options = options; // TODO: should clone

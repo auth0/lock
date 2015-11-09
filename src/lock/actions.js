@@ -35,9 +35,10 @@ export function openLock(id, modeName, options) {
 
   swap(updateEntity, "lock", id, lock => {
     lock = l.render(lock, modeName, options);
-    // TODO: proper access to storageKey or simply use modeName
-    return l.ui.rememberLastLogin(lock) ?
-      cs.restore(lock, options.mode.storageKey) : lock;
+
+    return l.ui.rememberLastLogin(lock)
+      ? cs.restore(lock, l.modeName(lock))
+      : lock;
   });
 
   setTimeout(() => swap(updateEntity, "lock", id, l.setShow, true), 17);

@@ -75,10 +75,8 @@ export function gravatar(m) {
   }
 }
 
-function extractUIOptions(id, options) {
+function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
-  // proper access to dictName or simply use mode.name
-  const dictName = options.mode && options.mode.dictName;
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
@@ -86,7 +84,7 @@ function extractUIOptions(id, options) {
     icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
     closable: closable,
     connections: new List(undefined === options.connections ? [] : options.connections),
-    dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
+    dict: d.build(modeName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
@@ -100,7 +98,7 @@ function extractUIOptions(id, options) {
 
 function setUIOptions(m, options) {
   let currentUIOptions = m.get("ui");
-  let newUIOptions = extractUIOptions(id(m), options);;
+  let newUIOptions = extractUIOptions(id(m), modeName(m), options);;
   if (currentUIOptions) {
     const denied = new Set(["containerID", "appendContainer"]);
     const provided = Set.fromKeys(options).subtract(denied);
