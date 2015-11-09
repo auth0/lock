@@ -9,6 +9,18 @@ export function setupLock(id, clientID, domain) {
   swap(setEntity, "lock", id, lock);
 
   WebAPI.setupClient(id, clientID, domain);
+
+  // TODO: only modes with a phone number are making use of the user's location
+  const user = read(getEntity, "user");
+  const location = user && user.get("location");
+
+  if (!location) {
+    WebAPI.getUserCountry(id, (err, isoCode) => {
+      if (!err) {
+        swap(updateEntity, "user", 0, m => m.set("location", isoCode));
+      }
+    });
+  }
 }
 
 export function openLock(id, modeName, options) {

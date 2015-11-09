@@ -1,4 +1,5 @@
 import Auth0 from 'auth0-js';
+import reqwest from 'reqwest';
 import * as StringUtils from '../utils/string_utils';
 
 class Auth0WebAPI {
@@ -43,6 +44,23 @@ class Auth0WebAPI {
 
   getProfile(lockID, token, callback) {
     return this.clients[lockID].getProfile(token, callback);
+  }
+
+  getUserCountry(lockID, cb) {
+    // TODO: This code belongs to Auth0.js
+    const protocol = "https:";
+    const domain = this.clients[lockID]._domain;
+    const endpoint = "/user/geoloc/country";
+    const url = joinUrl(protocol, domain, endpoint);
+
+    reqwest({
+      url: same_origin(protocol, domain) ? endpoint : url,
+      method: "get",
+      type: "json",
+      crossOrigin: !same_origin(protocol, domain),
+      success: (res) => cb(null, res.country_code),
+      error: (err) => cb(err)
+    });
   }
 }
 
@@ -128,4 +146,17 @@ function loginCallback(redirect, cb) {
       cb(normalizeError(error), profile, idToken, accessToken, state, refreshToken);
     }
   }
+}
+
+function joinUrl(protocol, domain, endpoint) {
+  return protocol + '//' + domain + endpoint;
+}
+
+function same_origin(tprotocol, tdomain, tport) {
+  const protocol = window.location.protocol;
+  const domain = window.location.hostname;
+  const port = window.location.port;
+  tport = tport || '';
+
+  return protocol === tprotocol && domain === tdomain && port === tport;
 }

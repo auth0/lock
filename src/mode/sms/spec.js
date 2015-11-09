@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import { setDefaultLocation } from '../../cred/phone-number/actions';
+import { setInitialPhoneLocation } from '../../cred/phone-number/actions';
 import AskPhoneNumberVcode from '../../passwordless/ask_phone_number_vcode';
 import AskPhoneNumber from '../../passwordless/ask_phone_number';
 import * as m from '../../passwordless/index';
@@ -11,12 +11,8 @@ export default class Sms extends Mode {
   }
 
   processOpenOptions(options, lockID) {
+    setInitialPhoneLocation(lockID, options);
     options.mode.send = "sms";
-    const { defaultLocation } = options;
-    if (defaultLocation && typeof defaultLocation === "string") {
-      setDefaultLocation(lockID, defaultLocation.toUpperCase());
-    }
-
     return options;
   }
 

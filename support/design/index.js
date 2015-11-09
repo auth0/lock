@@ -26,4 +26,8 @@ WebAPI.prototype.startPasswordless = function(lockID, options, cb) {
   setTimeout(() => cb(...args), state.get("latency"));
 };
 
+WebAPI.prototype.getUserCountry = function(lockID, cb) {
+  setTimeout(() => cb(null, "AR"), 17);
+}
+
 ReactDOM.render(React.createElement(Control), document.getElementById("control-container"));

@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import { setDefaultLocation } from '../../cred/phone-number/actions';
+import { setInitialPhoneLocation } from '../../cred/phone-number/actions';
 import AskSocialNetworkOrPhoneNumber from '../../cred/or/ask_social_network_or_phone_number';
 import AskPhoneNumberVcode from '../../passwordless/ask_phone_number_vcode';
 import { validateSocialOptions } from '../../social/index';
@@ -13,14 +13,8 @@ export default class SocialOrSms extends Mode {
 
   processOpenOptions(options, lockID) {
     validateSocialOptions(options);
+    setInitialPhoneLocation(lockID, options);
     options.mode.send = "sms";
-
-    const { defaultLocation } = options;
-
-    if (defaultLocation && typeof defaultLocation === "string") {
-      setDefaultLocation(lockID, defaultLocation.toUpperCase());
-    }
-
     return options;
   }
 
