@@ -4,7 +4,7 @@ import Chrome from './chrome';
 import MultisizeSlide from '../multisize-slide/multisize_slide';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
-import Badge from './auth0_badge';
+import Badge from './badge';
 import * as l from './index';
 import * as g from '../gravatar/index';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
