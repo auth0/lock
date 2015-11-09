@@ -9,9 +9,9 @@ export default class Emailcode extends Mode {
     super("emailcode");
   }
 
-  processOpenOptions(options) {
+  willOpen(model, options) {
     options.mode.send = "code";
-    return options;
+    this.setOptions(options);
   }
 
   render(lock) {

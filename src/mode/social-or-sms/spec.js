@@ -11,11 +11,11 @@ export default class SocialOrSms extends Mode {
     super("socialOrSms");
   }
 
-  processOpenOptions(options, lockID) {
+  willOpen(model, options) {
     validateSocialOptions(options);
-    setInitialPhoneLocation(lockID, options);
+    this.setModel(setInitialPhoneLocation(model, options));
     options.mode.send = "sms";
-    return options;
+    this.setOptions(options);
   }
 
   render(lock) {

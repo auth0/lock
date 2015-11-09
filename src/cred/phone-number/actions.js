@@ -18,26 +18,21 @@ export function changePhoneLocation(id, location) {
   });
 }
 
-export function setInitialPhoneLocation(id, options) {
-  const setPhoneLocation = (isoCode) => {
-    const location = cc.findByIsoCode(isoCode);
-    if (!location) {
-      return false;
-    }
-
-    swap(updateEntity, "lock", id, c.setPhoneLocation, location);
-    return true;
-  };
-
+// TODO: move this to another place since is not really an action.
+export function setInitialPhoneLocation(m, options) {
   const { defaultLocation } = options;
 
   if (defaultLocation && typeof defaultLocation === "string") {
-    if (!setPhoneLocation(defaultLocation)) {
+    if (!cc.findByIsoCode(defaultLocation)) {
       throw new Error(`Unable to set the default location, can't find any country with the code "${defaultLocation}".`);
     }
+    return c.setPhoneLocation(m, defaultLocation);
   } else {
     const user = read(getEntity, "user");
-    setPhoneLocation(user && user.get("location"));
+    const userLocation = user && user.get("location");
+    return cc.findByIsoCode(userLocation)
+      ? c.setPhoneLocation(m, userLocation)
+      : m;
   }
 }
 

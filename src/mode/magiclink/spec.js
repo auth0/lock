@@ -7,9 +7,9 @@ export default class Magiclink extends Mode {
     super("magiclink");
   }
 
-  processOpenOptions(options) {
+  willOpen(model, options) {
     options.mode.send = "link";
-    return options;
+    this.setOptions(options);
   }
 
   render(lock) {

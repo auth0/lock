@@ -8,9 +8,10 @@ export default class SocialOrMagiclink extends Mode {
     super("socialOrMagiclink");
   }
 
-  processOpenOptions(options) {
+  willOpen(model, options) {
     validateSocialOptions(options);
-    return options;
+    options.mode.send = "link";
+    this.setOptions(options);
   }
 
   render(lock) {

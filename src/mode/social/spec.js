@@ -8,9 +8,8 @@ export default class Social extends Mode {
     super("social");
   }
 
-  processOpenOptions(options) {
+  willOpen(model, options) {
     validateSocialOptions(options);
-    return options;
   }
 
   render(lock) {

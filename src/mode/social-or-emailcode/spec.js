@@ -10,10 +10,10 @@ export default class SocialOrEmailCode extends Mode {
     super("socialOrEmailcode");
   }
 
-  processOpenOptions(options) {
+  willOpen(model, options) {
     validateSocialOptions(options);
     options.mode.send = "code";
-    return options;
+    this.setOptions(options);
   }
 
   render(lock) {

@@ -1,3 +1,4 @@
+import { getEntity, read, setEntity, swap } from '../store/index';
 import { closeLock, openLock } from '../lock/actions';
 import trim from 'trim';
 
@@ -9,10 +10,23 @@ export class Mode {
   open(id, ...args) {
     const { name } = this;
     const [options, callback] = openFunctionArgsResolver(name, args);
+
     warnScopeOpenidProfile(options);
     options.signInCallback = callback;
     options.mode = {dictName: name, storageKey: name};
-    return openLock(id, name, this.processOpenOptions(options, id));
+
+    this.id = id;
+    this.options = options; // TODO: should clone
+    const model = read(getEntity, "lock", id);
+
+    this.willOpen(model, options);
+
+    const result = openLock(id, name, this.options);
+
+    delete this.id;
+    delete this.options;
+
+    return result;
   }
 
   // render must be implemented in each mode
@@ -20,6 +34,16 @@ export class Mode {
   close(id, force) {
     closeLock(id, force);
   }
+
+  setModel(m) {
+    // TODO: unnecessary swap, should pass along the model
+    swap(setEntity, "lock", this.id, m);
+  }
+
+  setOptions(options) {
+    this.options = options; // TODO: should clone
+  }
+
 }
 
 function openFunctionArgsResolver(fnName, args) {

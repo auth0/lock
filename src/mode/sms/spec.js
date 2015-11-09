@@ -10,10 +10,10 @@ export default class Sms extends Mode {
     super("sms");
   }
 
-  processOpenOptions(options, lockID) {
-    setInitialPhoneLocation(lockID, options);
+  willOpen(model, options) {
+    this.setModel(setInitialPhoneLocation(model, options));
     options.mode.send = "sms";
-    return options;
+    this.setOptions(options);
   }
 
   render(lock) {
