@@ -10,10 +10,6 @@ export default class AskSocialNetwork extends Screen {
     super("network", lock);
   }
 
-  showSubmitButton() {
-    return false;
-  }
-
   renderAuxiliaryPane() {
     return renderSignedInConfirmation(this.lock);
   }

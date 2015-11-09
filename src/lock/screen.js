@@ -36,10 +36,6 @@ export default class Screen {
     return this.t(["headerText"]);
   }
 
-  showSubmitButton() {
-    return true;
-  }
-
   t(keyPath, params) {
     return l.ui.t(this.lock, [this.name].concat(keyPath), params);
   }

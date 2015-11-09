@@ -31,7 +31,6 @@ export default class Renderer {
           headerText: screen.renderHeaderText(),
           lock: lock,
           screenName: screen.name,
-          showSubmitButton: screen.showSubmitButton(),
           submitHandler: screen.submitHandler()
         };
         ReactDOM.render(<Lock {...props} />, container);

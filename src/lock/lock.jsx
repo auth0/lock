@@ -29,7 +29,6 @@ export default class Lock extends React.Component {
       headerText,
       lock,
       screenName,
-      showSubmitButton,
       submitHandler
     } = this.props;
 
@@ -75,7 +74,7 @@ export default class Lock extends React.Component {
                   headerText={headerText}
                   key={screenName}
                   lock={lock}
-                  showSubmitButton={showSubmitButton}
+                  showSubmitButton={!!submitHandler}
                 />
               </MultisizeSlide>
             </div>
@@ -115,13 +114,8 @@ Lock.propTypes = {
   headerText: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   screenName: React.PropTypes.string.isRequired,
-  showSubmitButton: React.PropTypes.bool.isRequired
   // closeHandler,
   // disallowClose,
   // escHandler
   // submitHandler,
-};
-
-Lock.defaultProps = {
-  showSubmitButton: true
 };
