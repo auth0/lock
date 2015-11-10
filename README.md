@@ -71,15 +71,18 @@ If you are using Browserify to build your project, you will need to add the foll
 
 ### webpack
 
-If you are using webpack, you will need to install loaders (`$ npm install --save brfs ejs-compiled-loader json-loader packageify transform-loader`) and then use them in your `webpack.config.js` file:
+If you are using webpack, you will need to install loaders (`$ npm install --save brfs ejsify json-loader packageify transform-loader`) and then use them in your `webpack.config.js` file:
 
 ```js
 loaders: [{
   test: /node_modules\/auth0-lock\/.*\.js$/,
-  loaders: ['transform-loader/cacheable?brfs', 'transform-loader/cacheable?packageify']
+  loaders: [
+    'transform-loader/cacheable?brfs',
+    'transform-loader/cacheable?packageify'
+  ]
 }, {
-  test: /\.ejs$/,
-  loader: 'ejs-compiled-loader',
+  test: /node_modules\/auth0-lock\/.*\.ejs$/,
+  loader: 'transform-loader/cacheable?ejsify'
 }, {
   test: /\.json$/,
   loader: 'json-loader'
