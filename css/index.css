@@ -132,7 +132,7 @@
   color: #333;
   position: relative;
   background: #fff;
-  height: 100px;
+  height: 90px;
 }
 .auth0-lock.auth0-lock .auth0-lock-close-button,
 .auth0-lock.auth0-lock .auth0-lock-back-button {
@@ -158,11 +158,11 @@
   left: 14px;
 }
 .auth0-lock.auth0-lock .auth0-lock-header-avatar {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   display: block;
   border-radius: 100px;
-  margin: -30px auto 0;
+  margin: -16px auto 0;
   position: absolute;
   left: 0;
   right: 0;
@@ -179,7 +179,7 @@
 }
 .auth0-lock.auth0-lock .auth0-lock-header-bg {
   position: absolute;
-  height: 128px;
+  height: 118px;
   width: 100%;
   overflow: hidden;
   top: 0;
@@ -233,12 +233,12 @@
 .auth0-lock.auth0-lock .auth0-lock-header-logo {
   height: 55px;
   display: inline-block;
-  margin: 8px 0;
+  margin: 0 0 10px;
   vertical-align: middle;
 }
 .auth0-lock.auth0-lock .auth0-lock-firstname {
   font-size: 18px;
-  margin-top: 74px;
+  margin-top: 64px;
 }
 .auth0-lock.auth0-lock .auth0-lock-name {
   font-size: 22px;
