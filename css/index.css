@@ -210,12 +210,12 @@
   transition: 0s ease 0s;
 }
 .auth0-lock.auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-blur.auth0-lock-no-grayscale {
-  -webkit-filter: blur(100px);
-  -ms-filter: blur(100px);
-  filter: blur(100px);
+  -webkit-filter: blur(30px);
+  -ms-filter: blur(30px);
+  filter: blur(30px);
   -webkit-backdrop-filter: blur(0);
   background-position: center;
-  background-size: 500px;
+  background-size: 800px;
 }
 @media (min-width: 481px) {
   .auth0-lock.auth0-lock .auth0-lock-header-bg.auth0-lock-blur-support .auth0-lock-header-bg-blur {
@@ -666,9 +666,6 @@
   opacity: 0.4;
   -webkit-transition: 1s ease 1s;
   transition: 1s ease 1s;
-}
-.auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-header-bg .auth0-lock-header-bg-blur.auth0-lock-no-grayscale {
-  opacity: 0.7;
 }
 @media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-header-avatar {

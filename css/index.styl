@@ -224,12 +224,12 @@ breakpoint(point, value = 0)
       transition 0s ease 0s
 
       &.auth0-lock-no-grayscale
-        -webkit-filter blur(100px)
-        -ms-filter blur(100px)
-        filter blur(100px)
+        -webkit-filter blur(30px)
+        -ms-filter blur(30px)
+        filter blur(30px)
         -webkit-backdrop-filter: blur(0);
         background-position center
-        background-size 500px
+        background-size 800px
 
     &.auth0-lock-blur-support
       .auth0-lock-header-bg-blur
@@ -700,8 +700,6 @@ breakpoint(point, value = 0)
       opacity .4
       -webkit-transition 1s ease 1s
       transition 1s ease 1s
-      &.auth0-lock-no-grayscale
-        opacity .7
 
     .auth0-lock-header-avatar
       //mobile view
