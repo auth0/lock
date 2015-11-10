@@ -5,15 +5,15 @@ import EmailPane from './email_pane';
 
 export default class AskEmail extends Screen {
 
-  constructor(lock) {
-    super("email", lock);
+  constructor() {
+    super("email");
   }
 
   render({lock}) {
     return (
       <EmailPane
         lock={lock}
-        placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
+        placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
       />
     );
   }

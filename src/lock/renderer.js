@@ -23,15 +23,15 @@ export default class Renderer {
         const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
         const screen = fns.get(l.modeName(lock))(lock);
         const props = {
-          auxiliaryPane: screen.renderAuxiliaryPane(),
-          backHandler: screen.backHandler(),
-          closeHandler: screen.closeHandler(),
+          auxiliaryPane: screen.renderAuxiliaryPane(lock),
+          backHandler: screen.backHandler(lock),
+          closeHandler: screen.closeHandler(lock),
           contentRender: ::screen.render,
-          footerText: screen.renderFooterText(),
-          headerText: screen.renderHeaderText(),
+          footerText: screen.renderFooterText(lock),
+          headerText: screen.renderHeaderText(lock),
           lock: lock,
           screenName: screen.name,
-          submitHandler: screen.submitHandler()
+          submitHandler: screen.submitHandler(lock)
         };
         ReactDOM.render(<Lock {...props} />, container);
       } else {

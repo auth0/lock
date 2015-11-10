@@ -10,27 +10,27 @@ import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 
 export default class AskSocialNetworkOrEmail extends Screen {
 
-  constructor(lock) {
-    super("networkOrEmail", lock);
+  constructor() {
+    super("networkOrEmail");
   }
 
   submitHandler() {
     return requestPasswordlessEmail;
   }
 
-  renderAuxiliaryPane() {
-    return renderEmailSentConfirmation(this.lock)
-      || renderSignedInConfirmation(this.lock);
+  renderAuxiliaryPane(lock) {
+    return renderEmailSentConfirmation(lock)
+      || renderSignedInConfirmation(lock);
   }
 
   render({lock}) {
     return (
       <div>
         <SocialButtonsPane lock={lock} />
-        <PaneSeparator>{this.t(["separatorText"])}</PaneSeparator>
+        <PaneSeparator>{this.t(lock, ["separatorText"])}</PaneSeparator>
         <EmailPane
           lock={lock}
-          placeholder={this.t(["emailInputPlaceholder"], {__textOnly: true})}
+          placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
         />
       </div>
     );

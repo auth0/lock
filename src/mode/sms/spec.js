@@ -18,8 +18,8 @@ export default class Sms extends Mode {
 
   render(lock) {
     return m.passwordlessStarted(lock)
-      ? new AskPhoneNumberVcode(lock)
-      : new AskPhoneNumber(lock);
+      ? new AskPhoneNumberVcode()
+      : new AskPhoneNumber();
   }
 
 }

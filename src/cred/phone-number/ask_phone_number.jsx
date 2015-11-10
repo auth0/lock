@@ -10,16 +10,16 @@ import { selectingLocation } from './index';
 
 export default class AskPhoneNumber extends Screen {
 
-  constructor(lock) {
-    super("phone", lock);
+  constructor() {
+    super("phone");
   }
 
-  escHandler() {
-    return selectingLocation(this.lock) ? cancelSelectPhoneLocation : null;
+  escHandler(lock) {
+    return selectingLocation(lock) ? cancelSelectPhoneLocation : null;
   }
 
-  renderAuxiliaryPane() {
-    return renderAskLocation(this.lock);
+  renderAuxiliaryPane(lock) {
+    return renderAskLocation(lock);
   }
 
   render({focusSubmit, lock}) {
@@ -27,7 +27,7 @@ export default class AskPhoneNumber extends Screen {
       <PhoneNumberPane
         focusSubmit={focusSubmit}
         lock={lock}
-        placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
+        placeholder={this.t(lock, ["phoneNumberInputPlaceholder"], {__textOnly: true})}
       />
     );
   }

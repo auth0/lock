@@ -18,8 +18,8 @@ export default class SocialOrEmailCode extends Mode {
 
   render(lock) {
     return m.passwordlessStarted(lock)
-      ? new AskEmailVcode(lock)
-      : new AskSocialNetworkOrEmail(lock);
+      ? new AskEmailVcode()
+      : new AskSocialNetworkOrEmail();
   }
 
 }

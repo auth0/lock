@@ -16,8 +16,8 @@ export default class Emailcode extends Mode {
 
   render(lock) {
     return m.passwordlessStarted(lock)
-      ? new AskEmailVcode(lock)
-      : new AskEmail(lock);
+      ? new AskEmailVcode()
+      : new AskEmail();
   }
 
 }

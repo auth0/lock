@@ -3,8 +3,8 @@ import * as c from '../cred/index';
 
 export default class AskEmailVcode extends Base {
 
-  renderHeaderText() {
-    return this.t(["headerText"], {email: c.email(this.lock)});
+  renderHeaderText(lock) {
+    return this.t(lock, ["headerText"], {email: c.email(lock)});
   }
 
 }

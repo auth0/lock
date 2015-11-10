@@ -9,24 +9,24 @@ import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 
 export default class AskSocialNetworkOrPhoneNumber extends Base {
 
-  constructor(lock) {
-    super(lock);
+  constructor() {
+    super();
     this.name = "networkOrPhone";
   }
 
-  renderAuxiliaryPane() {
-    return renderSignedInConfirmation(this.lock) || super.renderAuxiliaryPane();
+  renderAuxiliaryPane(lock) {
+    return renderSignedInConfirmation(lock) || super.renderAuxiliaryPane(lock);
   }
 
   render({focusSubmit, lock}) {
     return (
       <div>
         <SocialButtonsPane lock={lock} />
-        <PaneSeparator>{this.t(["separatorText"])}</PaneSeparator>
+        <PaneSeparator>{this.t(lock, ["separatorText"])}</PaneSeparator>
         <PhoneNumberPane
           focusSubmit={focusSubmit}
           lock={lock}
-          placeholder={this.t(["phoneNumberInputPlaceholder"], {__textOnly: true})}
+          placeholder={this.t(lock, ["phoneNumberInputPlaceholder"], {__textOnly: true})}
         />
       </div>
     );

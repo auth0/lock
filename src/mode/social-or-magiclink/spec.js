@@ -14,8 +14,8 @@ export default class SocialOrMagiclink extends Mode {
     this.setOptions(options);
   }
 
-  render(lock) {
-    return new AskSocialNetworkOrEmail(lock);
+  render() {
+    return new AskSocialNetworkOrEmail();
   }
 
 }

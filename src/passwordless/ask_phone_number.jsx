@@ -3,10 +3,6 @@ import { sendSMS } from './actions';
 
 export default class AskPhoneNumber extends Base {
 
-  constructor(lock) {
-    super(lock);
-  }
-
   submitHandler() {
     return sendSMS;
   }

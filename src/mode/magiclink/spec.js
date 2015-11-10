@@ -13,7 +13,7 @@ export default class Magiclink extends Mode {
   }
 
   render(lock) {
-    return new MagiclinkScreen(lock);
+    return new MagiclinkScreen();
   }
 
 }

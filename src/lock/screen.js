@@ -2,10 +2,8 @@ import { closeLock } from './actions';
 import * as l from './index';
 
 export default class Screen {
-  constructor(name, lock) {
+  constructor(name) {
     this.name = name;
-    // NOTE: lock is only used for translations
-    this.lock = lock;
   }
 
   backHandler() {
@@ -28,15 +26,15 @@ export default class Screen {
     return null;
   }
 
-  renderFooterText() {
-    return this.t(["footerText"]);
+  renderFooterText(lock) {
+    return this.t(lock, ["footerText"]);
   }
 
-  renderHeaderText() {
-    return this.t(["headerText"]);
+  renderHeaderText(lock) {
+    return this.t(lock, ["headerText"]);
   }
 
-  t(keyPath, params) {
-    return l.ui.t(this.lock, [this.name].concat(keyPath), params);
+  t(lock, keyPath, params) {
+    return l.ui.t(lock, [this.name].concat(keyPath), params);
   }
 }

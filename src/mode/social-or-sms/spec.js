@@ -20,8 +20,8 @@ export default class SocialOrSms extends Mode {
 
   render(lock) {
     return m.passwordlessStarted(lock)
-      ? new AskPhoneNumberVcode(lock)
-      : new AskSocialNetworkOrPhoneNumber(lock);
+      ? new AskPhoneNumberVcode()
+      : new AskSocialNetworkOrPhoneNumber();
   }
 
 }

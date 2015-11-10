@@ -12,8 +12,8 @@ export default class AskVcode extends Base {
     return signIn;
   }
 
-  renderAuxiliaryPane() {
-    return renderSignedInConfirmation(this.lock);
+  renderAuxiliaryPane(lock) {
+    return renderSignedInConfirmation(lock);
   }
 
 }

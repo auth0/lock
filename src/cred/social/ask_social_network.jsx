@@ -6,12 +6,12 @@ import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 
 export default class AskSocialNetwork extends Screen {
 
-  constructor(lock) {
-    super("network", lock);
+  constructor() {
+    super("network");
   }
 
-  renderAuxiliaryPane() {
-    return renderSignedInConfirmation(this.lock);
+  renderAuxiliaryPane(lock) {
+    return renderSignedInConfirmation(lock);
   }
 
   render({lock}) {

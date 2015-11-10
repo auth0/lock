@@ -12,8 +12,8 @@ export default class Social extends Mode {
     validateSocialOptions(options);
   }
 
-  render(lock) {
-    return new AskSocialNetwork(lock);
+  render() {
+    return new AskSocialNetwork();
   }
 
 }
