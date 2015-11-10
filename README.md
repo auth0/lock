@@ -73,7 +73,7 @@ If you are using Browserify to build your project, you will need to add the foll
 
 If you are using webpack, you will need the following loaders:
 
-`npm install --save-dev ejs-compiled-loader json-loader transform-loader`
+`npm install --save-dev ejs-compiled-loader json-loader transform-loader brfs`
 
 ```js
 [
