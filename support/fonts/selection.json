@@ -1213,7 +1213,7 @@
 	],
 	"height": 1024,
 	"metadata": {
-		"name": "icomoon"
+		"name": "zocial"
 	},
 	"preferences": {
 		"showGlyphs": true,
@@ -1221,9 +1221,9 @@
 		"showQuickUse2": true,
 		"showSVGs": true,
 		"fontPref": {
-			"prefix": "icon-",
+			"prefix": "zocial-",
 			"metadata": {
-				"fontFamily": "icomoon",
+				"fontFamily": "zocial",
 				"majorVersion": 1,
 				"minorVersion": 0
 			},
