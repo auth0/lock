@@ -7,6 +7,7 @@ import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 import emailcodeSpec from './mode/emailcode/spec';
 import magiclinkSpec from './mode/magiclink/spec';
+import passwordSpec from './mode/password/spec';
 import smsSpec from './mode/sms/spec';
 import socialSpec from './mode/social/spec';
 import socialOrEmailcodeSpec from './mode/social-or-emailcode/spec';
@@ -77,6 +78,7 @@ Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordles
 
 Auth0LockPasswordless.plugins.register(emailcodeSpec);
 Auth0LockPasswordless.plugins.register(magiclinkSpec);
+Auth0LockPasswordless.plugins.register(passwordSpec);
 Auth0LockPasswordless.plugins.register(smsSpec);
 Auth0LockPasswordless.plugins.register(socialSpec);
 Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);

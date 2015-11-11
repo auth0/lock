@@ -31,7 +31,7 @@ export default {
       "sms_provider_error": "We're sorry, something went wrong when sending the SMS",
       "sms_provider_error.bad_phone_number": "The number {phoneNumber} is not a valid phone number"
     },
-    signIn: {
+    signIn: { // TODO: this won't do it for user password sign in
       "invalid_user_password": "Wrong {cred} or verification code",
       "lock.popup_closed": "Popup window closed. Try again.",
       "lock.request": "We're sorry, something went wrong when attempting to sign in",
@@ -51,6 +51,19 @@ export default {
       emailInputPlaceholder: "yours@example.com",
       footerText: "",
       headerText: "Enter your email to sign in<br>or create an account"
+    },
+    title: "Auth0",
+    welcome: "Welcome {name}!"
+  },
+  password: {
+    emailAndPassword: {
+      emailInputPlaceholder: "yours@example.com",
+      footerText: "",
+      headerText: "Enter your email and password<br />to sign in",
+      passwordInputPlaceholder: "your password",
+    },
+    signedIn: {
+      success: "Thanks for signing in."
     },
     title: "Auth0",
     welcome: "Welcome {name}!"
