@@ -6,38 +6,6 @@
   https://github.com/auth0/lock/commit/ac3ab5b6003ff71677acf2a9847b34e183184cdd
 - [] Update social fonts with the proper name (`Gabriel Andretta`)
   https://github.com/auth0/lock/commit/1dafa231533e37545dfa39ac58caea5b2c77b497
-- [] Release: 7.11.0 (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/1032ca374f9d1e103b62226f36927e1a8bfac6c2
-- [] Merge pull request #252 from auth0/update-social-icons (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/d32d63db658ad9ed5f7c09639cd89ff7e2310933
-- [] Publish zocial font to CDN (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/f5a1e1f73133c8526e897c1c8d36fb56e4a1bd68
-- [] Use ejsify to compile ejs templates with webpack (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/18d9ae8281081adda3e94a22e56522dc1885960d
-- [] Merge pull request #251 from theopak/master (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/620136e0651aadc8efa39ca39639b989166e031c
-- [] Fix windows icon, it didn't look right (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/7e5d78d7ed6d3201ff2823f778111f637dba4c37
-- [] Update google and windows icons CSS (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/3521c1e6fec44ef817e01053d2669b5aa1830593
-- [] Update google and windows icons in social font (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/6da6210bae81ba3e3fd433c5f27c8f70e9d08073
-- [] Update readme so that it correctly shows all steps required for using webpack (`Theodore X. Pak`)
-  https://github.com/auth0/lock/commit/2b1d213462c8704430d11d925f5da09c6d7af8d2
-- [] Fix webpack example build errors by explicitly declaring /-loader/, the lack of which can result in situations such as this one: http://stackoverflow.com/a/29890656 (`Theodore X. Pak`)
-  https://github.com/auth0/lock/commit/78ec931fbaf7b7ef1dfddfe78f3fdd5c54a44db6
-- [] Release: 7.10.3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/5d860adceb16c5a56eeda47cd87ed62929849c47
-- [] Merge pull request #232 from rolodato/master (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/7357ea03869466d751b6e2e3de534499747152fa
-- [] Release: 7.10.2 (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/19ebe9e8a651022cc2ef6b89439cceb7b40a71b2
-- [] Merge pull request #246 from auth0/unknown-last-login (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/77f27e65a5258bdd8b954d4a8d1aa805c048c523
-- [] Don't show last login for unknown connections (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/2d6c0ab4b3ea6d522b8c8b1faa89336b676fd7bd
-- [] Add salesforce-community support (`Rodrigo López Dato`)
-  https://github.com/auth0/lock/commit/47837f05b1791111736928b45fa8322e9fc4a74f
 
 ## [7.11.0] - 2015-10-20
 
@@ -61,18 +29,6 @@
   https://github.com/auth0/lock/commit/2b1d213462c8704430d11d925f5da09c6d7af8d2
 - [] Fix webpack example build errors by explicitly declaring /-loader/, the lack of which can result in situations such as this one: http://stackoverflow.com/a/29890656 (`Theodore X. Pak`)
   https://github.com/auth0/lock/commit/78ec931fbaf7b7ef1dfddfe78f3fdd5c54a44db6
-- [] Release: 7.10.3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/5d860adceb16c5a56eeda47cd87ed62929849c47
-- [] Merge pull request #232 from rolodato/master (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/7357ea03869466d751b6e2e3de534499747152fa
-- [] Release: 7.10.2 (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/19ebe9e8a651022cc2ef6b89439cceb7b40a71b2
-- [] Merge pull request #246 from auth0/unknown-last-login (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/77f27e65a5258bdd8b954d4a8d1aa805c048c523
-- [] Don't show last login for unknown connections (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/2d6c0ab4b3ea6d522b8c8b1faa89336b676fd7bd
-- [] Add salesforce-community support (`Rodrigo López Dato`)
-  https://github.com/auth0/lock/commit/47837f05b1791111736928b45fa8322e9fc4a74f
 
 ## [7.10.3] - 2015-08-26
 
@@ -80,120 +36,7 @@
 
 - [] Merge pull request #232 from rolodato/master (`Cristian Douce`)
   https://github.com/auth0/lock/commit/7357ea03869466d751b6e2e3de534499747152fa
-- [] Release: 7.10.2 (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/19ebe9e8a651022cc2ef6b89439cceb7b40a71b2
-- [] Merge pull request #246 from auth0/unknown-last-login (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/77f27e65a5258bdd8b954d4a8d1aa805c048c523
-- [] Don't show last login for unknown connections (`Gabriel Andretta`)
-  https://github.com/auth0/lock/commit/2d6c0ab4b3ea6d522b8c8b1faa89336b676fd7bd
-- [] Release: 7.10.1 (`Sandrino Di Mattia`)
-  https://github.com/auth0/lock/commit/f96c99b25d9b790ff2e7d31ddf807caf8b4ae1d6
-- [] Merge pull request #241 from lordakshaya/patch-1 (`Sandrino Di Mattia`)
-  https://github.com/auth0/lock/commit/7c81625af30d6aff30f2c9c15926b55d2bbead97
-- [] Using the latest version of auth0-js (`Akshaya`)
-  https://github.com/auth0/lock/commit/69089d84eabfcbbef04226dee3c2b07d70e9f2f7
-- [] Release: 7.10.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/0a5abf1957c9bb746b0710b274d0feed9b399958
-- [] Merge pull request #237 from sandrinodimattia/support-password-change-required (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/1445107c70b93178d5dcbcd94df3aabf1d1dbc5d
-- [] Support password change required (`Sandrino Di Mattia`)
-  https://github.com/auth0/lock/commit/d16ddcd6d1bb625313deef87d3b96eab99e053fa
-- [] Merge pull request #235 from taion/webpack (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/259de3984a0c01d8cca0dae03d21cc3d38c01e75
-- [] Use cacheable loaders in webpack (`Jimmy Jia`)
-  https://github.com/auth0/lock/commit/eadf6204c30203c6e9c36621d22b2d829a89371e
-- [] Add salesforce-community support (`Rodrigo López Dato`)
-  https://github.com/auth0/lock/commit/47837f05b1791111736928b45fa8322e9fc4a74f
-- [] Merge pull request #229 from taion/webpack (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/5b959ef0a27fc4b4581561fbfb1f80e07078fa91
-- [] Make it easier to find the webpack instructions (`Jimmy Jia`)
-  https://github.com/auth0/lock/commit/618911690c3d754d40df748ccdc7c2fa70c2a67e
-- [] Improve webpack example (`Jimmy Jia`)
-  https://github.com/auth0/lock/commit/9ac37125ecc51d0c2e75b7fb98f0897a7f6649dd
-- [] Merge pull request #228 from taion/patch-1 (`Rodrigo López Dato`)
-  https://github.com/auth0/lock/commit/71ec758ace34acd795aa99d7ca7893a832362f7c
-- [] Fix typo in README (`Jimmy Jia`)
-  https://github.com/auth0/lock/commit/36f6e29e509dd8a503cffe514a21d04a638d9b5f
-- [] Merge pull request #222 from clodeku/master (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b829a16446b9f8d70a465186ae9e203098e13879
-- [] update from latest version of en.json (`Clode Ku`)
-  https://github.com/auth0/lock/commit/1534ea1f64ce6a7611dda31250ae559b43ddbeee
-- [] Release: 7.9.5 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/699211796f8d9766f5992285fa3c850f598bd966
-- [] Merge branch 'cwilgenhoff-fix/email-warning-blocks-issue' (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c50cc5af8cf6a1ef5c75bcecf936b93a64ab9189
-- [] Merge branch 'fix/email-warning-blocks-issue' of https://github.com/cwilgenhoff/lock into cwilgenhoff-fix/email-warning-blocks-issue (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/1f87b1b8f2b07526cd2ea09b4eb0cc028988db74
-- [] Fix example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/02b59bcde75696286b0eb53dff9eaedd24059294
-- [] Adjusted position of the "invalid" warning (`Cristian Wilgenhoff`)
-  https://github.com/auth0/lock/commit/c534ab4411a81dfa572ee37ca6134ca9b2dd8de3
-- [] Fix for "Invalid" email warning blocks entered email (`Cristian Wilgenhoff`)
-  https://github.com/auth0/lock/commit/775257948883be03589708647ced628eae96e158
-- [] Release: 7.9.4 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/1021552546212857f4f4fc243600a1d4ad7fad1f
-- [] Add polish dict to base code (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/04b32b2c6f6bc92f9fbe6cc994c137968f4b522c
-- [] Merge pull request #217 from rpdiss/master (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/952411e81cd0466fde27ec782b26beb2280fb5ea
-- [] pl i18 (`rafal.piekarski`)
-  https://github.com/auth0/lock/commit/584dd0de2992e6a0650b78b35d4a58f8791fd6f7
-- [] Update CHANGELOG.md (`Alberto Pose`)
-  https://github.com/auth0/lock/commit/e4be61615c77e15073a1d511d7c8071e614fe619
-- [] Release: 7.9.3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a9c3db4842166a331b0ec051e52a0b05529b3d06
-- [] Added Japanese translations (`Daniel Lobo`)
-  https://github.com/auth0/lock/commit/1369674b474e1f57ae7dce6f655b1616c5aa5cda
-- [] Release: 7.9.2 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/6f7b1b5d2f4a457bd68eb4f90a819c972c59c481
-- [] Bump auth0.js@6.6.3 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/4995662f501c2bf533ecd87892a2a3ad85ec44ab
-- [] Release: 7.9.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/514ac1e63732b1cd9a4ee8efaf18e7530e8637d4
-- [] Add au domain for client fetch (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a72fcbb27d9170ac71d32d3aa8d19ebfbb4d3dab
-- [] Revert example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/cc9d6483f8a0b113f4077944bbe13158e2856196
-- [] Release: 7.9.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/d9f91b9431f6e056eafb73ffa8944bd6aebcc9bf
-- [] Final fixes for options with popup and sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8eb587c0e555e46e6a30600024fb7acca074b9d1
-- [] Fixes for mode popup + callback and/or sso (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/717c8fc83b281a6b6ff1d4b4f28f90939f2cdeac
-- [] popup property overriden by sso:true && popupCallback:{Function} (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/fdc2ec468adcc5e16a52679026901ec220ef934f
-- [] Fix double open of popup from different lock threads (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/7930cc317feac979099e977e61c2a08b7d810681
-- [] Update zuul and ngrok versions. Also bump-version package (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/061caa36f3a50cbb2d690d2775c654f7605c9cbd
-- [] Release: 7.8.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/a30431108618924fd48a7a702f4b98fa76c56b56
-- [] Bump auth0-js@6.6.1 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/eb2f67fa4715cfd15d2879c3cce8167b5fd16e61
-- [] Release: 7.8.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/f67b544842494540e8998b474d9097358151dcab
-- [] Merge branch 'fix/rules-errors' (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b55777c7387b30471acf8cd097b3dbb10933cffe
-- [] Final updates with default unauthorizedErrorText and demo keys (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/412255de958bdc3d6957efbaa800d83133510f48
-- [] Add a few npm commands for better CI handling (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c0920a742eff242c93404782f5c9be1f1ebe5ca4
-- [] Update example (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/c2ccb1aecf813cd14dff5408bcbcd992988082e6
-- [] Bump auth0.js@6.6.0 (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/b674895905a45ea3702005e824a93902b9045e22
-- [] Remove deprecated FASTLY config from gruntfile (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/af7f83e1c60f6bbde17434d0ca8b12026e8797f5
-- [] Fix to handle rules errors when no err.status is provided... (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/857c1a337bbfa291046355d4a272fd83d29d4c4b
-- [] Configure examples with custom ruleFail credentials to debug (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/9121be4506e8950ca1eead74e77efad793f99d38
-- [] First succesful attempt for custom rules errors (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/8be6ac3ce57bb9a3525d80707634d005306fc125
-- [] First attempt to make rule fail (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/96c097a8cdccaa84b0c1e0b3bac8036323497e81
-- [] [repo]: Add demo css to development task (`Cristian Douce`)
-  https://github.com/auth0/lock/commit/de6beb6df6d43d1890f174fb4ce14b113c63f210
+
 
 ## [7.10.2] - 2015-10-20
 
