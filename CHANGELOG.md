@@ -1,3 +1,44 @@
+## [7.11.1] - 2015-10-20
+
+### Fixed
+
+- [] Provide safer rules for zocial icons (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ac3ab5b6003ff71677acf2a9847b34e183184cdd
+- [] Update social fonts with the proper name (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1dafa231533e37545dfa39ac58caea5b2c77b497
+- [] Release: 7.11.0 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1032ca374f9d1e103b62226f36927e1a8bfac6c2
+- [] Merge pull request #252 from auth0/update-social-icons (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d32d63db658ad9ed5f7c09639cd89ff7e2310933
+- [] Publish zocial font to CDN (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f5a1e1f73133c8526e897c1c8d36fb56e4a1bd68
+- [] Use ejsify to compile ejs templates with webpack (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/18d9ae8281081adda3e94a22e56522dc1885960d
+- [] Merge pull request #251 from theopak/master (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/620136e0651aadc8efa39ca39639b989166e031c
+- [] Fix windows icon, it didn't look right (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/7e5d78d7ed6d3201ff2823f778111f637dba4c37
+- [] Update google and windows icons CSS (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/3521c1e6fec44ef817e01053d2669b5aa1830593
+- [] Update google and windows icons in social font (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6da6210bae81ba3e3fd433c5f27c8f70e9d08073
+- [] Update readme so that it correctly shows all steps required for using webpack (`Theodore X. Pak`)
+  https://github.com/auth0/lock/commit/2b1d213462c8704430d11d925f5da09c6d7af8d2
+- [] Fix webpack example build errors by explicitly declaring /-loader/, the lack of which can result in situations such as this one: http://stackoverflow.com/a/29890656 (`Theodore X. Pak`)
+  https://github.com/auth0/lock/commit/78ec931fbaf7b7ef1dfddfe78f3fdd5c54a44db6
+- [] Release: 7.10.3 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/5d860adceb16c5a56eeda47cd87ed62929849c47
+- [] Merge pull request #232 from rolodato/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7357ea03869466d751b6e2e3de534499747152fa
+- [] Release: 7.10.2 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/19ebe9e8a651022cc2ef6b89439cceb7b40a71b2
+- [] Merge pull request #246 from auth0/unknown-last-login (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/77f27e65a5258bdd8b954d4a8d1aa805c048c523
+- [] Don't show last login for unknown connections (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2d6c0ab4b3ea6d522b8c8b1faa89336b676fd7bd
+- [] Add salesforce-community support (`Rodrigo López Dato`)
+  https://github.com/auth0/lock/commit/47837f05b1791111736928b45fa8322e9fc4a74f
+
 ## [7.11.0] - 2015-10-20
 
 ### Fixed
