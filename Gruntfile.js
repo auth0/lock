@@ -7,6 +7,8 @@ var minor_version = pkg.version.replace(/\.(\d)*$/, '');
 var major_version = pkg.version.replace(/\.(\d)*\.(\d)*$/, '');
 var path = require('path');
 
+var font_version = 1;
+
 function  rename_release (v) {
   return function (d, f) {
     var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-'+ v + '$1.js').replace('auth0-', ''));
@@ -205,6 +207,15 @@ module.exports = function (grunt) {
           { action: 'delete', dest: 'js/lock-' + minor_version + '.min.js' }
         ]
       },
+      clean_fonts: {
+        files: [
+          { action: 'delete', dest: 'lock/fonts/' + font_version + '/' }
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.eot' },
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.svg' },
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.ttf' },
+          // { action: 'delete', dest: 'lock/font/' + font_version + '/zocial.woff' }
+        ]
+      },
       publish: {
         files: [
           {
@@ -212,6 +223,16 @@ module.exports = function (grunt) {
             cwd:    'release/',
             src:    ['**'],
             dest:   'js/'
+          }
+        ]
+      },
+      publish_fonts: {
+        files: [
+          {
+            expand: true,
+            cwd:    'support/fonts/src/',
+            src:    ['**'],
+            dest:   'lock/fonts/' + font_version + '/'
           }
         ]
       }
@@ -258,6 +279,12 @@ module.exports = function (grunt) {
           url: process.env.CDN_ROOT + '/js/lock-' + minor_version + '.min.js',
           method: 'DELETE'
         }
+      },
+      purge_fonts: {
+        options: {
+          url: process.env.CDN_ROOT + '/lock/fonts/' + font_version + '/',
+          method: 'DELETE'
+        }
       }
     }
   });
@@ -291,7 +318,7 @@ module.exports = function (grunt) {
   grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
   grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
-  grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min']);
-
-  grunt.registerTask('cdn',           ['build', 'copy:release', 'aws_s3:clean', 'aws_s3:publish', 'purge_cdn']);
+  grunt.registerTask('publish_s3',    ['aws_s3:clean', 'aws_s3:clean_fonts', 'aws_s3:publish', 'aws_s3:publish_fonts']);
+  grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min', 'http:purge_fonts']);
+  grunt.registerTask('cdn',           ['build', 'copy:release', 'publish_s3', 'purge_cdn']);
 };
