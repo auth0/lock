@@ -1,7 +1,7 @@
 import { Mode } from '../index';
 import AskEmailVcode from '../../passwordless/ask_email_vcode';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
-import { validateSocialOptions } from '../../social/index';
+import { processSocialOptions } from '../../social/index';
 import * as m from '../../passwordless/index';
 
 export default class SocialOrEmailCode extends Mode {
@@ -11,7 +11,7 @@ export default class SocialOrEmailCode extends Mode {
   }
 
   willOpen(model, options) {
-    validateSocialOptions(options);
+    options = processSocialOptions(options);
     options.mode.send = "code";
     this.setOptions(options);
   }

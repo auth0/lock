@@ -1,6 +1,6 @@
 import { Mode } from '../index';
 import AskSocialNetwork from '../../cred/social/ask_social_network';
-import { validateSocialOptions } from '../../social/index';
+import { processSocialOptions } from '../../social/index';
 
 export default class Social extends Mode {
 
@@ -9,7 +9,7 @@ export default class Social extends Mode {
   }
 
   willOpen(model, options) {
-    validateSocialOptions(options);
+    this.setOptions(processSocialOptions(options));
   }
 
   render() {

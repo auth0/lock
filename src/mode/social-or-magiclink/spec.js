@@ -1,6 +1,6 @@
 import { Mode } from '../index';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
-import { validateSocialOptions } from '../../social/index';
+import { processSocialOptions } from '../../social/index';
 
 export default class SocialOrMagiclink extends Mode {
 
@@ -9,7 +9,7 @@ export default class SocialOrMagiclink extends Mode {
   }
 
   willOpen(model, options) {
-    validateSocialOptions(options);
+    options = processSocialOptions(options);
     options.mode.send = "link";
     this.setOptions(options);
   }
