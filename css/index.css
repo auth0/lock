@@ -828,7 +828,6 @@
 .auth0-lock .auth0-lock-social-button .auth0-lock-social-button-icon {
   width: 40px;
   height: 40px;
-  background: rgba(0,0,0,0.3);
   position: absolute;
   top: 0;
   left: 0;
@@ -843,6 +842,9 @@
 }
 .auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button:last-child {
   margin-bottom: 0;
+}
+.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button .auth0-lock-social-button-icon {
+  background: rgba(0,0,0,0.3);
 }
 .auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button .auth0-lock-social-button-text {
   -webkit-box-sizing: border-box;
