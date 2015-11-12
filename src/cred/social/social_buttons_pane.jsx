@@ -7,9 +7,9 @@ export default class SocialButtonsPane extends React.Component {
   render() {
     const { lock } = this.props;
 
-    const buttons = l.ui.connections(lock).map(x => {
-      return <SocialButton key={x} name={x} lockID={l.id(lock)} />;
-    });
+    const buttons = l.ui.connections(lock).map(x => (
+      <SocialButton key={x} name={x} lock={lock} />
+    ));
 
     return <div>{buttons}</div>;
   }

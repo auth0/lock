@@ -1,20 +1,32 @@
 import React from 'react';
-
-// TODO: remove social dep
+import * as l from '../../lock/index';
 import { signIn } from '../../social/actions';
+import { useBigButtons } from '../../social/index';
 
 export default class SocialButton extends React.Component {
   render() {
-    const { name, disabled, tabIndex } = this.props;
+    const { disabled, lock, name, tabIndex } = this.props;
     const colors = {
       facebook: "#4761b0",
       github: "#666666",
-      google: "#df4a32"
+      google: "#df4a32",
+      twitter: "#46c0fb",
+      windows: "#0078d5"
     };
     const color = colors[name] || colors["github"];
 
+    let className = "auth0-lock-social-button";
+    if (useBigButtons(lock)) className += " auth0-lock-social-big-button";
+
     return (
-      <button onClick={::this.handleClick} className="auth0-lock-social-button" style={{backgroundColor: color}} disabled={disabled} tabIndex={tabIndex} type="button">
+      <button
+        className={className}
+        disabled={disabled}
+        onClick={::this.handleClick}
+        style={{backgroundColor: color}}
+        tabIndex={tabIndex}
+        type="button"
+      >
         <div className="auth0-lock-social-button-icon" />
         <div className="auth0-lock-social-button-text">Login with {name}</div>
       </button>
@@ -22,13 +34,13 @@ export default class SocialButton extends React.Component {
   }
 
   handleClick() {
-    const { lockID, name } = this.props;
-    signIn(lockID, name);
+    const { lock, name } = this.props;
+    signIn(l.id(lock), name);
   }
 }
 
 SocialButton.propTypes = {
-  lockID: React.PropTypes.number.isRequired,
+  lock: React.PropTypes.object.isRequired,
   name: React.PropTypes.string.isRequired,
   disabled: React.PropTypes.bool.isRequired,
   tabIndex: React.PropTypes.number

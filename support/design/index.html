@@ -119,8 +119,9 @@ smsLock.sms({
 
 var socialLock = new Auth0LockPasswordless(cid, domain);
 socialLock.social({
-  connections: ["facebook", "github", "google"],
-  container: "social-container"
+  connections: ["facebook", "github", "google", "twitter", "windows"],
+  container: "social-container",
+  socialBigButtons: false
 });
 
 var socialOrEmailcodeLock = new Auth0LockPasswordless(cid, domain);

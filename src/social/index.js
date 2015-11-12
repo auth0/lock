@@ -1,3 +1,5 @@
+import * as l from '../lock/index';
+
 export function validateSocialOptions(options) {
   const { connections } = options;
   if (!Array.isArray(connections) || connections.length === 0) {
@@ -15,4 +17,8 @@ export function processSocialOptions(options) {
     : socialBigButtons;
 
   return options;
+}
+
+export function useBigButtons(m) {
+  return l.modeOptions(m).get("socialBigButtons", true);
 }
