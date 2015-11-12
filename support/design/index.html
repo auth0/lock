@@ -119,26 +119,26 @@ smsLock.sms({
 
 var socialLock = new Auth0LockPasswordless(cid, domain);
 socialLock.social({
-  connections: ["facebook", "github", "google", "twitter", "windows"],
+  connections: ["facebook", "github", "google-oauth2", "twitter", "windowslive"],
   container: "social-container",
   socialBigButtons: false
 });
 
 var socialOrEmailcodeLock = new Auth0LockPasswordless(cid, domain);
 socialOrEmailcodeLock.socialOrEmailcode({
-  connections: ["facebook", "github", "google"],
+  connections: ["facebook", "github", "google-oauth2"],
   container: "socialOrEmailcode-container"
 });
 
 var socialOrMagiclinkLock = new Auth0LockPasswordless(cid, domain);
 socialOrMagiclinkLock.socialOrMagiclink({
-  connections: ["facebook", "github", "google"],
+  connections: ["facebook", "github", "google-oauth2"],
   container: "socialOrMagiclink-container"
 });
 
 var socialOrSmsLock = new Auth0LockPasswordless(cid, domain);
 socialOrSmsLock.socialOrSms({
-  connections: ["facebook", "github", "google"],
+  connections: ["facebook", "github", "google-oauth2"],
   container: "socialOrSms-container"
 });
 </script>

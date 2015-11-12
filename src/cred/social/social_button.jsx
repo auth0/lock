@@ -5,15 +5,15 @@ import { useBigButtons } from '../../social/index';
 
 export default class SocialButton extends React.Component {
   render() {
-    const { disabled, lock, name, tabIndex } = this.props;
+    const { connection, disabled, lock, tabIndex } = this.props;
     const colors = {
-      facebook: "#4761b0",
-      github: "#666666",
-      google: "#df4a32",
-      twitter: "#46c0fb",
-      windows: "#0078d5"
+      "facebook": "#4761b0",
+      "github": "#666666",
+      "google-oauth2": "#df4a32",
+      "twitter": "#46c0fb",
+      "windowslive": "#0078d5"
     };
-    const color = colors[name] || colors["github"];
+    const color = colors[connection.strategy] || colors["github"];
 
     let className = "auth0-lock-social-button";
     if (useBigButtons(lock)) className += " auth0-lock-social-big-button";
@@ -28,20 +28,20 @@ export default class SocialButton extends React.Component {
         type="button"
       >
         <div className="auth0-lock-social-button-icon" />
-        <div className="auth0-lock-social-button-text">Login with {name}</div>
+        <div className="auth0-lock-social-button-text">Login with {connection.name}</div>
       </button>
     );
   }
 
   handleClick() {
-    const { lock, name } = this.props;
-    signIn(l.id(lock), name);
+    const { lock, connection } = this.props;
+    signIn(l.id(lock), connection.name);
   }
 }
 
 SocialButton.propTypes = {
   lock: React.PropTypes.object.isRequired,
-  name: React.PropTypes.string.isRequired,
+  connection: React.PropTypes.object.isRequired,
   disabled: React.PropTypes.bool.isRequired,
   tabIndex: React.PropTypes.number
 };
