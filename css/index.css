@@ -836,7 +836,7 @@
   -webkit-transition: background 0.3s;
 }
 .auth0-lock .auth0-lock-social-button:hover .auth0-lock-social-button-icon,
-.auth0-lock .auth0-lock-social-buttonfocus .auth0-lock-social-button-icon {
+.auth0-lock .auth0-lock-social-button:focus .auth0-lock-social-button-icon {
   background-color: rgba(0,0,0,0.3);
 }
 .auth0-lock .auth0-lock-social-button .auth0-lock-social-button-text {
@@ -870,11 +870,11 @@
   -webkit-transition: background 0.3s;
 }
 .auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button:hover .auth0-lock-social-button-icon,
-.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-buttonfocus .auth0-lock-social-button-icon {
+.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button:focus .auth0-lock-social-button-icon {
   background-color: rgba(0,0,0,0.3);
 }
 .auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button:hover .auth0-lock-social-button-text,
-.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-buttonfocus .auth0-lock-social-button-text {
+.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button:focus .auth0-lock-social-button-text {
   background-color: rgba(0,0,0,0.3);
 }
 @-moz-keyframes stroke {
