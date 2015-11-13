@@ -16,7 +16,7 @@ export default class SocialButton extends React.Component {
         data-provider={connection.strategy}
         disabled={disabled}
         onClick={::this.handleClick}
-        tabIndex={tabIndex}
+        tabIndex={l.tabIndex(lock, tabIndex)}
         type="button"
       >
         <div className="auth0-lock-social-button-icon" />
