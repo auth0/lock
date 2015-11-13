@@ -37,6 +37,10 @@ export const STRATEGIES = {
   "weibo": "新浪微博"
 };
 
+export function displayName(connection) {
+  return STRATEGIES[connection.strategy];
+}
+
 export function validateSocialOptions(options) {
   const { connections } = options;
   if (!Array.isArray(connections) || connections.length === 0) {

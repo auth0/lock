@@ -1,7 +1,7 @@
 import React from 'react';
 import * as l from '../../lock/index';
 import { signIn } from '../../social/actions';
-import { useBigButtons } from '../../social/index';
+import { displayName, useBigButtons } from '../../social/index';
 
 export default class SocialButton extends React.Component {
   render() {
@@ -20,7 +20,9 @@ export default class SocialButton extends React.Component {
         type="button"
       >
         <div className="auth0-lock-social-button-icon" />
-        <div className="auth0-lock-social-button-text">Login with {connection.name}</div>
+        <div className="auth0-lock-social-button-text">
+          Login with {displayName(connection)}
+        </div>
       </button>
     );
   }
