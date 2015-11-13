@@ -3,6 +3,7 @@ import { getEntity, read, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
+import  { setActivity } from './index';
 
 export function signIn(id) {
   // TODO: abstract this submit thing
@@ -64,4 +65,12 @@ function signInError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
   l.invokeDoneCallback(lock, error);
+}
+
+export function showLoginActivity(id) {
+  swap(updateEntity, "lock", id, setActivity, "login");
+}
+
+export function showSignUpActivity(id) {
+  swap(updateEntity, "lock", id, setActivity, "signUp");
 }

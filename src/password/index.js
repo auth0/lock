@@ -4,3 +4,11 @@ export function validatePasswordOptions(options) {
     throw new Error("The `connection` option needs to be provided.");
   }
 }
+
+export function setActivity(m, name) {
+  return m.set("activity", name);
+}
+
+export function getActivity(m) {
+  return m.get("activity", "login");
+}

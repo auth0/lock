@@ -59,7 +59,7 @@ export default {
     emailAndPassword: {
       emailInputPlaceholder: "yours@example.com",
       footerText: "",
-      headerText: "Enter your email and password<br />to sign in",
+      headerText: "",
       passwordInputPlaceholder: "your password",
     },
     signedIn: {

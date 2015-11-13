@@ -7,10 +7,10 @@ import { signIn } from './actions';
 import { renderSignedInConfirmation } from '../lock/signed_in_confirmation';
 import LoginSignUpTabs from './login_sign_up_tabs';
 
-export default class AskEmailAndPassword extends Screen {
+export default class SignUp extends Screen {
 
   constructor() {
-    super("login");
+    super("emailAndPassword");
   }
 
   renderAuxiliaryPane(lock) {

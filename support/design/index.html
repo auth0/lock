@@ -126,7 +126,13 @@ magiclinkLock.magiclink({
 
 var passwordLock = new Auth0LockPasswordless(cid, domain);
 passwordLock.password({
-  container: "password-container"
+  connection: "db",
+  container: "password-container",
+  dict: {
+    emailAndPassword: {
+      footerText: terms
+    }
+  }
 });
 
 var smsLock = new Auth0LockPasswordless(cid, domain);
