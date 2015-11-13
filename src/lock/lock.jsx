@@ -1,7 +1,6 @@
 import React from 'react';
 import { Map } from 'immutable';
 import Chrome from './chrome';
-import MultisizeSlide from '../multisize-slide/multisize_slide';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
 import Badge from './badge';
@@ -65,18 +64,16 @@ export default class Lock extends React.Component {
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
-              <MultisizeSlide delay={400} transitionName="horizontal-fade">
-                <Chrome
-                  auxiliaryPane={auxiliaryPane}
-                  backHandler={backHandler}
-                  contentRender={contentRender}
-                  footerText={footerText}
-                  headerText={headerText}
-                  key={screenName}
-                  lock={lock}
-                  showSubmitButton={!!submitHandler}
-                />
-              </MultisizeSlide>
+              <Chrome
+                auxiliaryPane={auxiliaryPane}
+                backHandler={backHandler}
+                contentRender={contentRender}
+                footerText={footerText}
+                headerText={headerText}
+                screenName={screenName}
+                lock={lock}
+                showSubmitButton={!!submitHandler}
+              />
             </div>
           </form>
           <span className="auth0-lock-badge-bottom">

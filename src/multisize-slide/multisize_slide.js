@@ -49,7 +49,7 @@ export default class Slider extends React.Component {
 
       const callback = (slide) => {
         currentComponent.componentWillSlideIn(slide);
-        const classNamePrefix = slide.reverse ? "reverse-" : "";
+        const classNamePrefix = this.props.reverse ? "reverse-" : "";
         transition(currentComponent, `${classNamePrefix}${transitionName}-enter`, this.props.delay);
         transition(prevComponent, `${classNamePrefix}${transitionName}-leave`);
 

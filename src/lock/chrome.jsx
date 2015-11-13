@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import MultisizeSlide from '../multisize-slide/multisize_slide';
 import GlobalError from './global_error';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
@@ -14,22 +15,23 @@ export default class Chrome extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {height: "", show: true};
-  }
-
-  componentDidMount() {
-    this.reverse = false;
+    this.state = {reverse: false};
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!l.globalError(this.props.lock) && l.globalError(nextProps.lock)) {
-      this.setState({height: "auto"});
+    if (this.props.screenName != nextProps.screenName) {
+      this.sliding = true;
     }
   }
 
+  didSlide() {
+    this.sliding = false;
+    this.setState({reverse: false});
+  }
+
   render() {
-    const { auxiliaryPane, backHandler, contentRender, headerText, footerText, lock, showSubmitButton } = this.props;
-    const { height, show } = this.state;
+    const { auxiliaryPane, backHandler, contentRender, headerText, footerText, lock, screenName, showSubmitButton } = this.props;
+    const { reverse, sliding } = this.state;
 
     const gravatar = l.gravatar(lock);
     const icon = l.ui.icon(lock);
@@ -51,19 +53,22 @@ export default class Chrome extends React.Component {
 
     return (
       <div className="auth0-lock-cred-pane">
-        <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
-        <Placeholder delay={800} height={height} show={show} ref="content">
-          <ReactTransitionGroup>
-            {globalError && <GlobalError key="global-error" message={globalError} />}
-          </ReactTransitionGroup>
-          <div className="auth0-lock-content">
-            <div className="auth0-lock-form">
-              {header}
-              {contentRender({focusSubmit: ::this.focusSubmit, lock})}
+        <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
+        <div style={{position: "relative"}}>
+        <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
+          <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>
+            <ReactTransitionGroup>
+              {globalError && <GlobalError key="global-error" message={globalError} />}
+            </ReactTransitionGroup>
+            <div className="auth0-lock-content">
+              <div className="auth0-lock-form">
+                {header}
+                {contentRender({focusSubmit: ::this.focusSubmit, lock})}
+              </div>
             </div>
-          </div>
-          {footer}
-        </Placeholder>
+            {footer}
+          </Placeholder>
+        </MultisizeSlide></div>
         {showSubmitButton && <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />}
         <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
           {auxiliaryPane}
@@ -77,26 +82,11 @@ export default class Chrome extends React.Component {
   }
 
   handleBack() {
+    if (this.sliding) return;
+
     const { backHandler, lock } = this.props;
-    this.reverse = true;
+    this.setState({reverse: true});
     backHandler(l.id(lock));
-  }
-
-  componentWillSlideIn(slide) {
-    const node = ReactDOM.findDOMNode(this.refs.content);
-    this.originalHeight = parseInt(window.getComputedStyle(node, null).height, 10);
-    this.setState({height: slide.height, show: false});
-  }
-
-  componentDidSlideIn() {
-    this.setState({height: this.originalHeight});
-    setTimeout(() => this.setState({show: true}), 500);
-  }
-
-  componentWillSlideOut(callback) {
-    const node = ReactDOM.findDOMNode(this.refs.content);
-    const size = window.getComputedStyle(node, null).height;
-    callback({height: parseInt(size, 10), reverse: this.reverse});
   }
 
   t(keyPath, params) {
@@ -121,40 +111,36 @@ Chrome.defaultProps = {
 class Placeholder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {height: ""};
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.height) {
+  componentWillSlideIn(slide) {
+    const node = ReactDOM.findDOMNode(this);
+    this.originalHeight = parseInt(window.getComputedStyle(node, null).height, 10);
+    this.setState({height: slide.height});
+    setTimeout(() => this.setState({height1: this.originalHeight}), 17);
+  }
 
-      if (!this.state.height || nextProps.height === "auto") {
-        this.setState({height: nextProps.height});
-        return;
-      }
+  componentDidSlideIn() {
+    this.props.slideEnd();
+  }
 
-      // TODO: Instead of storing a flag to indicate whether or not we are
-      // performing an animation, we should store the height we are going to.
-      // Also use rAF.
-      if (this.state.height != nextProps.height && !this.state.animating) {
-        const frames = 10;
-        let count = 0;
-        let current = parseInt(this.state.height, 10);
-        const last = parseInt(nextProps.height, 10);
-        const step = Math.abs(current - last) / frames;
-        const dir =  current < last ? 1 : -1;
-        const dh  = step * dir;
+  componentWillSlideOut(callback) {
+    const node = ReactDOM.findDOMNode(this);
+    const size = window.getComputedStyle(node, null).height;
+    callback({height: parseInt(size, 10), reverse: this.reverse});
+  }
 
-        this.t = setInterval(() => {
-          if (count < frames - 1) {
-            this.setState({height: current, animating: true});
-            current += dh;
-            count++;
-          } else {
-            clearInterval(this.t);
-            delete this.t;
-            this.setState({height: last, animating: false});
-          }
-        }, 17);
+  componentDidUpdate() {
+    if (this.state.height1 && this.state.height) {
+      const current = parseInt(this.state.height, 10);
+      const last = parseInt(this.state.height1, 10);
+
+      if (current < last) {
+        setTimeout(() => this.setState({height: current + 3}), 3);
+
+      } else if (current > last) {
+        setTimeout(() => this.setState({height: current - 3}), 3);
       }
     }
   }
@@ -166,15 +152,9 @@ class Placeholder extends React.Component {
   }
 
   render() {
-    const { children, delay, height, show } = this.props;
-    const style = this.state.height ? {height: this.state.height} : {};
+    const { children } = this.props;
+    const { height } = this.state;
 
-    return (
-      <div style={style}>
-        <div style={{visibility: show ? "visible" : "hidden"}}>
-          {children}
-        </div>
-      </div>
-    );
+    return <div style={height ? {height: height} : {}}>{children}</div>;
   }
 }
