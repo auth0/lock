@@ -11,7 +11,7 @@ export default class SocialButtonsPane extends React.Component {
       <SocialButton key={x.name} connection={x} lock={lock} />
     ));
 
-    return <div>{buttons}</div>;
+    return <div className="auth0-lock-social-buttons-container">{buttons}</div>;
   }
 
 }
