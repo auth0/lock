@@ -1,7 +1,7 @@
 import React from 'react';
 import Screen from '../../lock/screen';
 import SocialButtonsPane from './social_buttons_pane';
-
+import { renderSocialHeaderText } from '../../social/index';
 import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 
 export default class AskSocialNetwork extends Screen {
@@ -15,7 +15,11 @@ export default class AskSocialNetwork extends Screen {
   }
 
   render({lock}) {
-    return <SocialButtonsPane lock={lock} />;
+    return(
+      <SocialButtonsPane
+        lock={lock}
+        smallButtonsHeader={this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
+      />
+    );
   }
-
 }

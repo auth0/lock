@@ -21,7 +21,10 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
   render({focusSubmit, lock}) {
     return (
       <div>
-        <SocialButtonsPane lock={lock} />
+        <SocialButtonsPane
+          lock={lock}
+          smallButtonsHeader={this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
+        />
         <PaneSeparator>{this.t(lock, ["separatorText"])}</PaneSeparator>
         <PhoneNumberPane
           focusSubmit={focusSubmit}
