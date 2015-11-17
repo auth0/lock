@@ -18,11 +18,12 @@ class Auth0WebAPI {
 
   signIn(lockID, options, cb) {
     const { redirect } = options;
-    delete options.redirect;
     const f = loginCallback(redirect, cb);
-
     const client = this.clients[lockID];
+
     transferLoginOptionsToClient(client, options);
+
+    delete options.redirect;
 
     client.login(options, f);
   }
@@ -126,11 +127,11 @@ function normalizeError(error) {
 // client here, in the future that will not be possible becasue we will need to
 // retrieve some client information before before we can show the Lock.
 function transferLoginOptionsToClient(client, options) {
-  const { callbackURL, forceJSONP, responseType } = options;
+  const { callbackURL, forceJSONP, redirect, responseType } = options;
 
   client._callbackOnLocationHash = responseType === "token";
   client._callbackURL = callbackURL || client._callbackURL;
-  client._shouldRedirect = responseType === "code" || !!callbackURL;
+  client._shouldRedirect = redirect || responseType === "code" || !!callbackURL;
   client._useJSONP = forceJSONP;
 
   delete options.callbackURL;

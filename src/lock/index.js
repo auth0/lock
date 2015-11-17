@@ -166,7 +166,7 @@ export function invokeDoneCallback(m, ...args) {
 }
 
 export function shouldRedirect(m) {
-  return login.callbackURL(m);
+  return m.get("forceRedirect", false) || login.callbackURL(m);
 }
 
 export function render(m, name, options) {

@@ -14,6 +14,7 @@ export default class SocialOrEmailCode extends Mode {
     options = processSocialOptions(options);
     options.mode.send = "code";
     this.setOptions(options);
+    this.setModel(model.set("forceRedirect", !options.popup));
   }
 
   render(lock) {

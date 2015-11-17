@@ -13,7 +13,8 @@ export default class SocialOrSms extends Mode {
 
   willOpen(model, options) {
     options = processSocialOptions(options);
-    this.setModel(setInitialPhoneLocation(model, options));
+    model = setInitialPhoneLocation(model, options);
+    this.setModel(model.set("forceRedirect", !options.popup));
     options.mode.send = "sms";
     this.setOptions(options);
   }

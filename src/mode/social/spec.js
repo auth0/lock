@@ -10,6 +10,7 @@ export default class Social extends Mode {
 
   willOpen(model, options) {
     this.setOptions(processSocialOptions(options));
+    this.setModel(model.set("forceRedirect", !options.popup));s
   }
 
   render() {
