@@ -89,7 +89,7 @@ function extractUIOptions(id, modeName, options) {
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
-    popup: undefined === options.popup ? typeof options.signInCallback === "function" : !!options.popup,
+    popup: undefined === options.popup ? false : !!options.popup,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
     primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
