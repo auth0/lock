@@ -761,7 +761,7 @@
   transition: 1s ease 1s;
 }
 .auth0-lock.auth0-lock.auth0-lock-opened-in-frame .auth0-lock-header-bg .auth0-lock-header-bg-blur.auth0-lock-no-grayscale {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 .auth0-lock.auth0-lock.auth0-lock-opened-in-frame .auth0-lock-widget {
   opacity: 1;
