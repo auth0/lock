@@ -137,10 +137,10 @@ class Placeholder extends React.Component {
       const last = parseInt(this.state.height1, 10);
 
       if (current < last) {
-        setTimeout(() => this.setState({height: current + 3}), 3);
+        setTimeout(() => this.setState({height: current + Math.min(3, last - current)}), 3);
 
       } else if (current > last) {
-        setTimeout(() => this.setState({height: current - 3}), 3);
+        setTimeout(() => this.setState({height: current - Math.min(3, current - last)}), 3);
       }
     }
   }
