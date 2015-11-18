@@ -220,6 +220,71 @@ lock.sms({closable: false}, function(error, profile, id_token, access_token, sta
 lock.sms({callbackURL: "http://mydomain/callback"});
 ```
 
+### .social(options, callback)
+
+Opens a dialog with buttons to authenticate with the specified social providers.
+
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
+
+#### Example
+
+```javascript
+// invoke social allowing to authenticate with Facebook and Twitter.
+lock.social({
+  connections: ["facebook", "twitter"]
+});
+```
+
+### .socialOrMagiclink(options, callback)
+
+Opens a dialog that is a combination of `social` and `magiclink`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for an email address. When the email address is entered, it will send an email containing a _magic link_ that allows the user to log in automatically.
+
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
+
+#### Example
+
+```javascript
+// invoke socialOrMagiclink allowing to authenticate with Facebook and Twitter.
+lock.socialOrMagiclink({
+  connections: ["facebook", "twitter"]
+});
+```
+
+### .socialOrEmailcode(options, callback)
+
+Opens a dialog that is a combination of `social` and `emailcode`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for an email address. When the email address is entered, it will send a _code_ that serves as a one-time password to log in.
+
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
+
+#### Example
+
+```javascript
+// invoke socialOrEmailcode allowing to authenticate with Facebook and Twitter.
+lock.socialOrEmailcode({
+  connections: ["facebook", "twitter"]
+});
+```
+
+### .socialOrSms(options, callback)
+
+Opens a dialog that is a combination of `social` and `sms`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for a phone number. When the phone number is entered, it will send the _code_ in an text message that serves as a one-time password to log in.
+
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
+
+#### Example
+
+```javascript
+// invoke socialOrSms specifying that buttons to authenticate with Facebook and
+// Twitter should be displayed.
+lock.socialOrSms({
+  connections: ["facebook", "twitter"]
+});
+```
+
 ### .close(callback)
 
 Closes the dialog.
@@ -236,6 +301,16 @@ lock.close();
 lock.close(function() {
   alert("The Lock has been closed");
 });
+```
+
+### .destroy()
+
+Removes the Lock from the DOM frees its resources. Once destroyed a Lock can't be opened.
+
+#### Example
+
+```javascript
+lock.destroy();
 ```
 
 ### .getProfile(token, callback)
@@ -288,18 +363,19 @@ The appearance of the widget and the mechanics of authentication can be customiz
 #### UI options
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
-- **connections {Array}**: TODO.
+- **connections {Array}**: List of social providers that will be available to perform the authentication. Most of the time you will specify a provider with the connection name, e.g. `facebook`. When the connection's `name` and `strategy` don't match, you'll need to provide an object with those properties, e.g. `{name: "my-connection", strategy: "facebook"}`.  This option doesn't have a default value and must be specified when opening the Lock with a method that provides social authentication.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
-- **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
+- **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to the country the user is in and fallback to `"US"` when it can be obtained.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
-- **popup {Boolean}**: TODO.
-- **popupOptions {Object}**: TODO.
+- **popup {Boolean}**: Determines whether or not a popup is shown when authenticating with a social provider. Defaults to `false` and passing `true` is discouraged. See [below](#popup-mode) for more information.
+- **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `icon` to ensure all colors go well together with the icon's color palette. Defaults to `"#ea5323"`.
 - **rememberLastLogin {Boolean}**: Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to `true`.
+- **socialBigButtons {Boolean}**: Determines the size of the buttons for the social providers specified in the `connections` option. It defaults to `true` when the `connections` option contains at most tree providers, otherwise it defaults to `false`.
 
 #### Authentication options
 
@@ -375,6 +451,26 @@ lock.emailcode({
 Will cause the Lock to show the message _"The code has been sent to someone@auth0.com"_ when asking for the verification code to a user that entered the email _"someone@auth0.com"_.
 
 You can check the [source code](src/dict/dicts.js) to see the actual dictionaries used by the Lock.
+
+### Popup mode
+
+A popup window can be displayed instead of redirecting the user to a social provider website. While this has the advantage of preserving page state, it has some issues. Often times users have popup blockers that prevent the login page from even displaying. There are also known issues with mobile browsers. For example, in recent versions of Chrome on iOS, the login popup does not get [closed properly](https://github.com/auth0/lock/issues/71) after login. For these reasons, we encourage developers to avoid this mode, even with Single Page Apps.
+
+If you nevertheless decide to use it, you can activate popup mode by passing the option `popup: true` when calling `social`, `socialOrMagiclink`, `socialOrEmailcode`, or `socialOrSms`. A callback will be invoked with the usual arguments as the following example shows.
+
+```js
+lock.social({
+  connections: ["facebook", "twitter"],
+  popup: true
+}, function(error, profile, id_token, access_token, state, refresh_token) {
+  if (!error) {
+    alert("User has logged in");
+  }
+});
+```
+
+
+More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/authentication-modes#popup-mode).
 
 ### Callbacks and Errors
 
