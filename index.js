@@ -589,7 +589,7 @@ Auth0Lock.prototype.display = function(options, callback) {
     }
 
     if ('signup' === this.options.mode) {
-      this._signupPanel(this.options, callback);
+      this._signupPanel();
     }
 
     if ('reset' === this.options.mode) {
@@ -707,7 +707,7 @@ Auth0Lock.prototype._signinPanel = function (options) {
  */
 
 Auth0Lock.prototype._signupPanel = function (options) {
-  var panel = SignupPanel(this, { options: options || {} });
+  var panel = SignupPanel(this, options || {});
 
   this._setTitle(this.options.i18n.t('signup:title'));
 
@@ -1155,6 +1155,8 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
       self._showError(self.options.i18n.t('signin:passwordChangeRequiredErrorText'));
     } else {
       self._showError(self.options.i18n.t('signin:wrongEmailPasswordErrorText'));
+      password_input.focus();
+      // password_input.get(0).setSelectionRange(0, password_input.val().length);
     }
   });
 };
@@ -1270,6 +1272,11 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
       self._showError(self.options.i18n.t('networkError'));
     } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
+    } else if ('unauthorized' === err.code && err.details && err.details.error_description === 'user is blocked') {
+      var message = self.options.i18n.t('signin:userBlockedErrorText');
+      self._showError(message || err.details.error_description);
+      self._focusError(email_input);
+      self._focusError(password_input);
     } else if ('unauthorized' === err.code) {
       var message = self.options.i18n.t('signin:unauthorizedErrorText');
       self._showError((err.details && err.details.error_description) || message);
