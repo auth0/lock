@@ -1,3 +1,24 @@
+## [7.12.0] - 2015-11-18
+
+### Fixed
+
+- [] Merge pull request #258 from auth0/doc-user-blocked-translation (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/875bdc3280441ae97da0e629f7cf6f99bdf7dcc2
+- [] Add reference sigin:userBlockedErrorText translation (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/008c77184a4a3a464a1b03a1199d1aa93e453039
+- [] Merge pull request #250 from auth0/ux-fixes (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/00c41e5ba30920cae263adf470f81d1df81e0891
+- [] Allow to customize "user is blocked" message, fixes #256 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b94f24ad047e4485ed1decbcf2c6a4f762281aec
+- [] Preseve sign in email when signing up (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/98b2bb914f3bc09b0d08a7aa2be4ef59cb07076f
+- [] Focus password after invalid error, fixes #249 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ecab7890bc1c447927fc222e4d840145ec1b1f4f
+- [] Allow to select error message, fixes #247 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/3c41f4248bb0884a6efa923eb174ec6c4f16ab29
+- [] Fix CHANGELOG (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d7dbd1d1738dd1f5ffa8ff18476fe445ba4fd767
+
 ## [7.11.1] - 2015-10-20
 
 ### Fixed
