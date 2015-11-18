@@ -187,3 +187,37 @@ export function visiblyInvalidPassword(lock) {
 export function setShowInvalidPassword(lock, value = true) {
   return setShowInvalid(lock, "password", value);
 }
+
+// username
+
+export function username(lock) {
+  return lock.getIn(["cred", "username", "username"], "");
+}
+
+export function setUsername(lock, value) {
+  const prevValue = password(lock);
+  const prevShowInvalid = showInvalid(lock, "username");
+  const valid = validateUsername(value);
+
+  return lock.mergeIn(["cred", "username"], Map({
+    username: value,
+    valid: valid,
+    showInvalid: prevShowInvalid && prevValue === value
+  }));
+}
+
+export function validateUsername(username) {
+  return trim(username).length > 0;
+}
+
+export function validUsername(lock) {
+  return valid(lock, "username");
+}
+
+export function visiblyInvalidUsername(lock) {
+  return visiblyInvalid(lock, "username");
+}
+
+export function setShowInvalidUsername(lock, value = true) {
+  return setShowInvalid(lock, "username", value);
+}
