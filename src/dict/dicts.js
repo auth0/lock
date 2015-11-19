@@ -56,11 +56,12 @@ export default {
     welcome: "Welcome {name}!"
   },
   password: {
-    emailAndPassword: {
+    login: {
       emailInputPlaceholder: "yours@example.com",
       footerText: "",
       headerText: "",
       passwordInputPlaceholder: "your password",
+      usernameInputPlaceholder: "your username",
     },
     signedIn: {
       success: "Thanks for signing in."

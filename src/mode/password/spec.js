@@ -1,5 +1,5 @@
 import { Mode } from '../index';
-import AskEmailAndPassword from '../../password/ask_email_and_password';
+import Login from '../../password/login';
 import SignUp from '../../password/sign_up';
 import { getActivity, processPasswordOptions } from '../../password/index';
 
@@ -15,7 +15,7 @@ export default class Password extends Mode {
 
   render(lock) {
     return getActivity(lock) === "login"
-      ? new AskEmailAndPassword()
+      ? new Login()
       : new SignUp();
   }
 

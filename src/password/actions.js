@@ -5,7 +5,47 @@ import * as l from '../lock/index';
 import * as c from '../cred/index';
 import  { setActivity } from './index';
 
-export function signIn(id) {
+export function signInWithUsername(id) {
+  // TODO: abstract this submit thing
+  swap(updateEntity, "lock", id, lock => {
+    if (c.validUsername(lock) && c.validPassword(lock)) {
+      return l.setSubmitting(lock, true);
+    } else {
+      lock = c.setShowInvalidUsername(lock, !c.validUsername(lock));
+      lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
+      return lock;
+    }
+  });
+
+  const lock = read(getEntity, "lock", id);
+
+  if (l.submitting(lock)) {
+    // TODO: check options
+    const options = {
+      connection: l.ui.connection(lock),
+      username: c.username(lock),
+      password: c.password(lock),
+      sso: false,
+      responseType: l.login.responseType(lock),
+      callbackURL: l.login.callbackURL(lock),
+      forceJSONP: l.login.forceJSONP(lock)
+    };
+
+    webApi.signIn(
+      id,
+      Map(options).merge(l.login.authParams(lock)).toJS(),
+      (error, ...args) => {
+        if (error) {
+          setTimeout(() => signInError(id, error), 250);
+        } else {
+          signInSuccess(id, ...args);
+        }
+      }
+    );
+  }
+}
+
+export function signInWithEmail(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
     if (c.validEmail(lock) && c.validPassword(lock)) {
