@@ -1,7 +1,7 @@
 import { Mode } from '../index';
 import AskEmailAndPassword from '../../password/ask_email_and_password';
 import SignUp from '../../password/sign_up';
-import { getActivity, validatePasswordOptions } from '../../password/index';
+import { getActivity, processPasswordOptions } from '../../password/index';
 
 export default class Password extends Mode {
 
@@ -10,7 +10,7 @@ export default class Password extends Mode {
   }
 
   willOpen(model, options) {
-    validatePasswordOptions(options);
+    this.setOptions(processPasswordOptions(options));
   }
 
   render(lock) {
