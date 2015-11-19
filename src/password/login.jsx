@@ -4,9 +4,10 @@ import EmailPane from '../cred/email/email_pane';
 import UsernamePane from '../cred/username/username_pane';
 import PasswordPane from '../cred/password/password_pane';
 import { authWithUsername, getActivity } from './index';
-import { signInWithEmail, signInWithUsername } from './actions';
+import { signInWithEmail, signInWithUsername, showResetPasswordActivity } from './actions';
 import { renderSignedInConfirmation } from '../lock/signed_in_confirmation';
 import LoginSignUpTabs from './login_sign_up_tabs';
+import * as l from '../lock/index';
 
 export default class Login extends Screen {
 
@@ -41,6 +42,11 @@ export default class Login extends Screen {
           lock={lock}
           placeholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
         />
+        <p className="auth0-lock-dont-remember-password">
+          <a onClick={() => showResetPasswordActivity(l.id(lock))}>
+            Don't remember your password?
+          </a>
+        </p>
       </div>
     );
   }

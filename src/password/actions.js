@@ -114,3 +114,7 @@ export function showLoginActivity(id) {
 export function showSignUpActivity(id) {
   swap(updateEntity, "lock", id, setActivity, "signUp");
 }
+
+export function showResetPasswordActivity(id) {
+  swap(updateEntity, "lock", id, setActivity, "resetPassword");
+}

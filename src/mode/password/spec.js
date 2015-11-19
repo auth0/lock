@@ -1,5 +1,6 @@
 import { Mode } from '../index';
 import Login from '../../password/login';
+import ResetPassword from '../../password/reset_password';
 import SignUp from '../../password/sign_up';
 import { getActivity, processPasswordOptions } from '../../password/index';
 
@@ -14,9 +15,20 @@ export default class Password extends Mode {
   }
 
   render(lock) {
-    return getActivity(lock) === "login"
-      ? new Login()
-      : new SignUp();
+    const activity = getActivity(lock);
+    switch(activity) {
+      case "login":
+      return new Login();
+
+      case "signUp":
+      return new SignUp();
+
+      case "resetPassword":
+      return new ResetPassword();
+
+      default: // TODO: show a crashed screen.
+      throw new Error("unknown activity");
+    }
   }
 
 }
