@@ -32,6 +32,11 @@ class Auth0WebAPI {
     this.clients[lockID].logout(query);
   }
 
+  signUp(lockID, options, cb) {
+    const client = this.clients[lockID];
+    client.signup(options, cb);
+  }
+
   startPasswordless(lockID, options, cb) {
     const client = this.clients[lockID];
     transferLoginOptionsToClient(client, options);
