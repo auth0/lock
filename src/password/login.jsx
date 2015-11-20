@@ -3,7 +3,7 @@ import Screen from '../lock/screen';
 import EmailPane from '../cred/email/email_pane';
 import UsernamePane from '../cred/username/username_pane';
 import PasswordPane from '../cred/password/password_pane';
-import { authWithUsername, getActivity } from './index';
+import { authWithUsername } from './index';
 import { signInWithEmail, signInWithUsername, showResetPasswordActivity } from './actions';
 import { renderSignedInConfirmation } from '../lock/signed_in_confirmation';
 import LoginSignUpTabs from './login_sign_up_tabs';
