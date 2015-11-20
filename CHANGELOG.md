@@ -1,3 +1,12 @@
+## [7.12.1] - 2015-10-20
+
+### Fixed
+
+- [] Merge pull request #259 from auth0/bug-chrome-align (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ad8f175162d8b08991018b31d89cb80a5b160b27
+- [] Fixes alignment in Chrome, fixes #230 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1fae4524f57a0115345c091fab9f5f100228dfa7
+
 ## [7.12.0] - 2015-11-18
 
 ### Fixed
