@@ -138,8 +138,6 @@ export function signUp(id) {
       popup:      false
     };
 
-    console.log("options", options);
-
     webApi.signUp(
       id,
       options,
@@ -155,7 +153,6 @@ export function signUp(id) {
 }
 
 function signUpSuccess(id, ...args) {
-  console.log("arguments", arguments);
   const lock = read(getEntity, "lock", id);
   const autoclose = l.ui.autoclose(lock);
 
@@ -178,6 +175,62 @@ function signUpError(id, error) {
   l.invokeDoneCallback(lock, error);
 }
 
+
+export function resetPassword(id) {
+  // TODO: abstract this submit thing
+  swap(updateEntity, "lock", id, lock => {
+    if ((authWithUsername(lock) || c.validEmail(lock))
+        && (!authWithUsername(lock) || c.validUsername(lock))
+        && c.validPassword(lock)
+        && c.validPasswordConfirmation(lock)) {
+      return l.setSubmitting(lock, true);
+    } else {
+      lock = authWithUsername(lock)
+        ? c.setShowInvalidUsername(lock, !c.validUsername(lock))
+        : c.setShowInvalidEmail(lock, !c.validEmail(lock));
+      lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
+      lock = c.setShowInvalidPasswordConfirmation(lock, !c.validPasswordConfirmation(lock));
+      return lock;
+    }
+  });
+
+  const lock = read(getEntity, "lock", id);
+
+  if (l.submitting(lock)) {
+    // TODO: check options
+    const options = {
+      connection: l.ui.connection(lock),
+      username:   authWithUsername(lock) ? c.username(lock) : c.email(lock),
+      password:   c.password(lock)
+    };
+
+    webApi.resetPassword(
+      id,
+      options,
+      (error, ...args) => {
+        if (error) {
+          setTimeout(() => resetPasswordError(id, error), 250);
+        } else {
+          resetPasswordSuccess(id, ...args);
+        }
+      }
+    );
+  }
+}
+
+function resetPasswordSuccess(id, ...args) {
+  const lock = read(getEntity, "lock", id);
+  // TODO: needs to be auto closed?
+  swap(updateEntity, "lock", id, lock => setActivity(l.setSubmitting(lock, false), "login"));
+}
+
+function resetPasswordError(id, error) {
+  const lock = read(getEntity, "lock", id);
+  // TODO: proper error message
+  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  const errorMessage = "Something went wrong";
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+}
 
 export function showLoginActivity(id) {
   swap(updateEntity, "lock", id, setActivity, "login");

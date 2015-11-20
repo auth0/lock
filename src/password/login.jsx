@@ -32,7 +32,7 @@ export default class Login extends Screen {
       : <EmailPane
           lock={lock}
           placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
-        />
+        />;
 
     return (
       <div>
