@@ -718,7 +718,7 @@
   string-set: none;
   table-layout: auto;
   text-align: auto;
-  text-align-last: start;
+  text-align-last: auto;
   text-decoration: none;
   text-emphasis: none;
   text-height: auto;
