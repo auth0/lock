@@ -5,12 +5,16 @@ import UsernamePane from '../cred/username/username_pane';
 import PasswordPane from '../cred/password/password_pane';
 import PasswordConfirmationPane from '../cred/password-confirmation/password_confirmation_pane';
 import { authWithUsername } from './index';
-import { resetPassword } from './actions';
+import { cancelResetPassword, resetPassword } from './actions';
 
 export default class ResetPassword extends Screen {
 
   constructor() {
     super("resetPassword");
+  }
+
+  backHandler() {
+    return cancelResetPassword;
   }
 
   submitHandler() {
