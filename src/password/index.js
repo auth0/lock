@@ -52,3 +52,7 @@ export function authWithUsername(m) {
 export function hasActivity(m, s) {
   return l.modeOptions(m).get("activities").contains(s);
 }
+
+export function shouldAutoLogin(m) {
+  return l.modeOptions(m).get("loginAfterSignUp");
+}

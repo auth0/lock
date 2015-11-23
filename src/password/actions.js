@@ -3,7 +3,7 @@ import { getEntity, read, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
-import  { authWithUsername, setActivity } from './index';
+import  { authWithUsername, setActivity, shouldAutoLogin } from './index';
 
 export function signInWithUsername(id) {
   // TODO: abstract this submit thing
@@ -131,12 +131,15 @@ export function signUp(id) {
     // TODO: check options
     const options = {
       connection: l.ui.connection(lock),
-      username:   authWithUsername(lock) ? c.username(lock) : c.email(lock),
       email:      c.email(lock),
       password:   c.password(lock),
       auto_login: false,
       popup:      false
     };
+
+    if (authWithUsername(lock)) {
+      options.username = c.username(lock);
+    }
 
     webApi.signUp(
       id,
@@ -154,6 +157,33 @@ export function signUp(id) {
 
 function signUpSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
+
+  if (shouldAutoLogin(lock)) {
+    swap(updateEntity, "lock", id, m => m.set("signedUp", true));
+
+    const options = {
+      connection: l.ui.connection(lock),
+      username: c.email(lock),
+      password: c.password(lock),
+      sso: false,
+      responseType: l.login.responseType(lock),
+      callbackURL: l.login.callbackURL(lock),
+      forceJSONP: l.login.forceJSONP(lock)
+    };
+
+    return webApi.signIn(
+      id,
+      Map(options).merge(l.login.authParams(lock)).toJS(),
+      (error, ...args) => {
+        if (error) {
+          setTimeout(() => autoSignInError(id, error), 250);
+        } else {
+          autoSignInSuccess(id, ...args);
+        }
+      }
+    );
+  }
+
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
@@ -175,6 +205,33 @@ function signUpError(id, error) {
   l.invokeDoneCallback(lock, error);
 }
 
+
+function autoSignInSuccess(id, ...args) {
+  const lock = read(getEntity, "lock", id);
+  const autoclose = l.ui.autoclose(lock);
+
+  if (!autoclose) {
+    swap(updateEntity, "lock", id, lock => l.setSubmitting(lock, false).set("signedIn", true));
+    l.invokeDoneCallback(lock, null, ...args);
+  } else {
+    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
+  }
+}
+
+function autoSignInError(id, error) {
+  const lock = read(getEntity, "lock", id);
+  // TODO: proper error message
+  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  const errorMessage = "An error ocurred when logging in";
+  console.log("ufff");
+  swap(updateEntity, "lock", id, m => {
+    m = l.setSubmitting(m, false, errorMessage);
+    m = m.set("signedIn", false);
+    return m;
+  });
+
+  l.invokeDoneCallback(lock, error);
+}
 
 export function resetPassword(id) {
   // TODO: abstract this submit thing
