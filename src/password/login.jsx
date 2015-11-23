@@ -3,7 +3,7 @@ import Screen from '../lock/screen';
 import EmailPane from '../cred/email/email_pane';
 import UsernamePane from '../cred/username/username_pane';
 import PasswordPane from '../cred/password/password_pane';
-import { authWithUsername } from './index';
+import { authWithUsername, hasActivity } from './index';
 import { signInWithEmail, signInWithUsername, showResetPasswordActivity } from './actions';
 import { renderSignedInConfirmation } from '../lock/signed_in_confirmation';
 import LoginSignUpTabs from './login_sign_up_tabs';
@@ -34,19 +34,27 @@ export default class Login extends Screen {
           placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
         />;
 
+    const tabs = hasActivity(lock, "signUp")
+      ? <LoginSignUpTabs lock={lock}/>
+      : null;
+
+    const dontRememberPassword = hasActivity(lock, "resetPassword")
+      ? <p className="auth0-lock-dont-remember-password">
+          <a onClick={() => showResetPasswordActivity(l.id(lock))}>
+            Don't remember your password?
+          </a>
+        </p>
+     : null;
+
     return (
       <div>
-        <LoginSignUpTabs lock={lock}/>
+        {tabs}
         {credPane}
         <PasswordPane
           lock={lock}
           placeholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
         />
-        <p className="auth0-lock-dont-remember-password">
-          <a onClick={() => showResetPasswordActivity(l.id(lock))}>
-            Don't remember your password?
-          </a>
-        </p>
+        {dontRememberPassword}
       </div>
     );
   }
