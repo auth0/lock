@@ -14,6 +14,22 @@ export function processPasswordOptions(options) {
     ? "username"
     : "email";
 
+  const availableActivities = ["login", "signUp", "resetPassword"];
+  const activities = options.activities === undefined
+    ? availableActivities
+    : options.activities;
+
+  if (!Array.isArray(activities) || activities.length === 0) {
+    throw new Error("When provided, the `activities` option array needs to contain at least one activity.");
+  }
+
+  const validActivities = activities.filter(x => availableActivities.indexOf(x) > -1);
+  if (validActivities.length === 0) {
+    throw new Error("When provided, the `activities` option array needs to contain at least one valid activity (\"login\", \"signUp\" or \"requestPassword\").");
+  }
+
+  options.mode.activities = validActivities;
+
   return options;
 }
 
