@@ -30,6 +30,10 @@ export function processPasswordOptions(options) {
 
   options.mode.activities = validActivities;
 
+  options.mode.loginAfterSignUp = options.loginAfterSignUp === false
+    ? false
+    : true;
+
   return options;
 }
 
