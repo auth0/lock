@@ -20,6 +20,14 @@ WebAPI.prototype.signIn = function(lockID, options, cb) {
 
 WebAPI.prototype.signOut = function() {};
 
+WebAPI.prototype.signUp = function(lockID, options, cb) {
+  const state = store.deref();
+  const args = state.getIn(["signUp", "response"]) == "success" ?
+    [null] :
+    [{description: "Wrong email.", error: "invalid_email"}];
+  setTimeout(() => cb(...args), state.get("latency"));
+};
+
 WebAPI.prototype.startPasswordless = function(lockID, options, cb) {
   const state = store.deref();
   const args = state.getIn(["startPasswordless", "response"]) == "success" ? [null] : [{}];

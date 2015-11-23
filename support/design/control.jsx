@@ -6,6 +6,7 @@ import { getState, subscribe, swap, unsubscribe } from '../../src/store/index';
 export const store = atom(Immutable.fromJS({
   latency: 2500,
   signIn: {response: "success"},
+  signUp: {response: "success"},
   startPasswordless: {response: "success"}
 }));
 
@@ -41,8 +42,13 @@ export default class Control extends React.Component {
         <ResultSelect selected={this.state.signIn.response}
             onChange={::this.handleSignInResponseChange} />
 
+        <h3>signUp</h3>
+        <ResultSelect selected={this.state.signUp.response}
+            onChange={::this.handleSignUpResponseChange} />
+
         <h3>Latency</h3>
         <input type="number" onChange={::this.handleLatencyChange} value={this.state.latency}/>
+
       </div>
       <div><Snapshot /></div>
       <div><br />
@@ -71,9 +77,14 @@ export default class Control extends React.Component {
     store.swap(state => state.setIn(["signIn", "response"], value));
   }
 
+  handleSignUpResponseChange(value) {
+    store.swap(state => state.setIn(["signUp", "response"], value));
+  }
+
   handleLatencyChange(e) {
     store.swap(state => state.set("latency", e.target.value));
   }
+
 }
 
 class ResultSelect extends React.Component {
