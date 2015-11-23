@@ -38,7 +38,7 @@ export function setActivity(m, name) {
 }
 
 export function getActivity(m) {
-  return m.get("activity", "login");
+  return m.get("activity", l.modeOptions(m).getIn(["activities", 0]));
 }
 
 export function authWithUsername(m) {
