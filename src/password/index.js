@@ -44,3 +44,7 @@ export function getActivity(m) {
 export function authWithUsername(m) {
   return l.modeOptions(m).get("usernameStyle") === "username";
 }
+
+export function hasActivity(m, s) {
+  return l.modeOptions(m).get("activities").contains(s);
+}

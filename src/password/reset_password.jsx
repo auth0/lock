@@ -4,7 +4,7 @@ import EmailPane from '../cred/email/email_pane';
 import UsernamePane from '../cred/username/username_pane';
 import PasswordPane from '../cred/password/password_pane';
 import PasswordConfirmationPane from '../cred/password-confirmation/password_confirmation_pane';
-import { authWithUsername } from './index';
+import { authWithUsername, hasActivity } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 
 export default class ResetPassword extends Screen {
@@ -13,8 +13,8 @@ export default class ResetPassword extends Screen {
     super("resetPassword");
   }
 
-  backHandler() {
-    return cancelResetPassword;
+  backHandler(m) {
+    return hasActivity(m, "login") ? cancelResetPassword : null;
   }
 
   submitHandler() {
