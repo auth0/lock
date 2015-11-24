@@ -35,13 +35,10 @@ export default class ResetPassword extends Screen {
     return (
       <div>
         {credPane}
-        <PasswordPane
-          lock={lock}
-          placeholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
-        />
         <PasswordConfirmationPane
           lock={lock}
-          placeholder={this.t(lock, ["passwordConfirmationInputPlaceholder"], {__textOnly: true})}
+          passwordConfirmationPlaceholder={this.t(lock, ["passwordConfirmationInputPlaceholder"], {__textOnly: true})}
+          passwordPlaceholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
         />
       </div>
     );

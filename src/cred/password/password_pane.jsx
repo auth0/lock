@@ -7,7 +7,8 @@ import * as l from '../../lock/index';
 export default class PasswordPane extends React.Component {
 
   handleChange(e) {
-    changePassword(l.id(this.props.lock), e.target.value);
+    const { lock, onChange } = this.props;
+    return onChange ? onChange(e) : changePassword(l.id(lock), e.target.value);
   }
 
   render() {
@@ -29,6 +30,7 @@ export default class PasswordPane extends React.Component {
 
 PasswordPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
+  onChange: React.PropTypes.func,
   placeholder: React.PropTypes.string.isRequired,
   tabIndex: React.PropTypes.number.isRequired
 };
