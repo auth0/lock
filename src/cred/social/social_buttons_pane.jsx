@@ -22,6 +22,9 @@ export default class SocialButtonsPane extends React.Component {
       <div className="auth-lock-social-buttons-pane">
         {header}
         <div className="auth0-lock-social-buttons-container">{buttons}</div>
+        <div className="auth0-loading-container">
+          <div className="auth0-loading" />
+        </div>
       </div>
     );
   }

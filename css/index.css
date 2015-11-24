@@ -811,6 +811,26 @@
 .auth0-lock .auth0-lock-form p.auth0-lock-pane-separator {
   margin: 17px 0 13px;
 }
+.auth0-lock .auth-lock-social-buttons-pane {
+  position: relative;
+}
+.auth0-lock .auth-lock-social-buttons-pane .auth0-loading-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.auth0-lock .auth-lock-social-buttons-pane .auth0-loading-container .auth0-loading {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 34%;
+  left: 38%;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  border-color: #000 #000 rgba(0,0,0,0.5) rgba(0,0,0,0.5);
+}
 .auth0-lock .auth0-lock-social-buttons-container {
   text-align: center;
 }
