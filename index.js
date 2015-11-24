@@ -585,7 +585,7 @@ Auth0Lock.prototype.display = function(options, callback) {
       }
 
       // otherwise, just show signin
-      this._signinPanel(this.options, callback);
+      this._signinPanel();
     }
 
     if ('signup' === this.options.mode) {
@@ -673,7 +673,7 @@ Auth0Lock.prototype.initialize = function(done) {
  */
 
 Auth0Lock.prototype._signinPanel = function (options) {
-  var panel = SigninPanel(this, { options: options || {} });
+  var panel = SigninPanel(this, options || {});
 
   // XXX: future Panel API placeholder
   // panel.on('submit', this.setLoadingMode);
@@ -813,6 +813,9 @@ Auth0Lock.prototype._kerberosPanel = function (options) {
 Auth0Lock.prototype.setPanel = function(panel, name) {
   var el = 'function' === typeof panel.render ? panel.render() : panel;
   var pname = 'function' === typeof panel.render ? panel.name : (name || 'signin');
+
+  // Remember current panel
+  this.$panel = panel;
 
   //Removes error messages on new views.
   this._showError();
@@ -1159,6 +1162,11 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
       // password_input.get(0).setSelectionRange(0, password_input.val().length);
     }
   });
+};
+
+Auth0Lock.prototype._autoSignin = function(email, password) {
+  this._signinPanel({initialEmail: email, initialPassword: password});
+  this._signinWithAuth0(this.$panel);
 };
 
 /**
