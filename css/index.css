@@ -368,14 +368,7 @@
   color: #666;
   line-height: 22px;
   padding: 10px 30px;
-  position: absolute;
-  bottom: 70px;
-}
-@media (min-width: 768px) {
-  .auth0-lock.auth0-lock .auth0-lock-terms {
-    position: relative;
-    bottom: auto;
-  }
+  position: relative;
 }
 .auth0-lock.auth0-lock .auth0-lock-terms a {
   color: #000;
@@ -718,6 +711,12 @@
     top: 53.5%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+  }
+}
+@media screen and (max-width: 480px) {
+  .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-terms {
+    position: absolute;
+    bottom: 70px;
   }
 }
 @media screen and (max-width: 480px) {

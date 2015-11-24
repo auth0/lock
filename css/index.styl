@@ -384,11 +384,7 @@ breakpoint(point, value = 0)
     color #666
     line-height 22px
     padding 10px 30px
-    position absolute
-    bottom 70px
-    +breakpoint("tablet")
-      position relative
-      bottom auto
+    position relative
     a
       color #000
 
@@ -750,6 +746,12 @@ breakpoint(point, value = 0)
         top 53.5%
         -webkit-transform translateY(-50%)
         transform translateY(-50%)
+
+
+    .auth0-lock-terms
+      @media screen and (max-width: 480px)
+        position absolute
+        bottom 70px
 
     .auth0-lock-submit
       //mobile view
