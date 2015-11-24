@@ -585,7 +585,7 @@ Auth0Lock.prototype.display = function(options, callback) {
       }
 
       // otherwise, just show signin
-      this._signinPanel(this.options, callback);
+      this._signinPanel();
     }
 
     if ('signup' === this.options.mode) {
