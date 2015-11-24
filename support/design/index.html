@@ -121,7 +121,7 @@ var socialLock = new Auth0LockPasswordless(cid, domain);
 socialLock.social({
   connections: ["facebook", "github", "google-oauth2", "twitter"],
   container: "social-container",
-  socialBigButtons: false
+  socialBigButtons: true
 });
 
 var socialOrEmailcodeLock = new Auth0LockPasswordless(cid, domain);
