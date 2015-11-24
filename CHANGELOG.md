@@ -1,3 +1,14 @@
+## [7.12.2] - 2015-10-20
+
+### Fixed
+
+- [] Merge pull request #261 from auth0/auto-login (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/72f69295bb0dd094fd6588634f3bb58bb998423d
+- [] Set signin panel when performing the autologin, fixes #257 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b39c2c451e3e183273ec1bb3d04ddb4ff5416b5b
+- [] Remove options and callback in signinPanel calls (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/7f5e6f39c3d11c7f7aa8548232fbe43ea9cacd7f
+
 ## [7.12.1] - 2015-10-20
 
 ### Fixed
