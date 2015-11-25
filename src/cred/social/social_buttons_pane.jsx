@@ -5,7 +5,7 @@ import { useBigButtons } from '../../social/index';
 export default class SocialButtonsPane extends React.Component {
 
   render() {
-    const { smallButtonsHeader, lock } = this.props;
+    const { lock, showLoading, smallButtonsHeader } = this.props;
 
     const header = !useBigButtons(lock)
       && smallButtonsHeader
@@ -17,14 +17,16 @@ export default class SocialButtonsPane extends React.Component {
       <SocialButton key={x.name} connection={x} lock={lock} />
     ));
 
+    const loading = showLoading
+      && <div className="auth0-loading-container">
+           <div className="auth0-loading" />
+         </div>;
 
     return (
       <div className="auth-lock-social-buttons-pane">
         {header}
         <div className="auth0-lock-social-buttons-container">{buttons}</div>
-        <div className="auth0-loading-container">
-          <div className="auth0-loading" />
-        </div>
+        {loading}
       </div>
     );
   }
@@ -33,5 +35,10 @@ export default class SocialButtonsPane extends React.Component {
 
 SocialButtonsPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
+  showLoading: React.PropTypes.bool.isRequired,
   smallButtonsHeader: React.PropTypes.string
+};
+
+SocialButtonsPane.defaultProps = {
+  showLoading: false
 };
