@@ -518,6 +518,18 @@
   -webkit-animation: fadeOut 0.3s both;
   animation: fadeOut 0.3s both;
 }
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-content,
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-terms,
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-submit {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-back-button {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
 .auth0-lock.auth0-lock .auth0-lock-confirmation {
   background-color: #fff;
   position: absolute;
