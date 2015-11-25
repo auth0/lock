@@ -889,6 +889,15 @@ breakpoint(point, value = 0)
 
 // social
 
+// start - show loading properly only social buttons
+#social-container.lock-container
+  .auth0-lock-mode-loading
+    .auth0-lock-content
+      opacity 1
+      .auth0-lock-social-buttons-container
+        opacity .3
+// end - show loading properly only social buttons
+
 .auth0-lock
   .auth-lock-social-buttons-pane
     position relative
@@ -906,7 +915,6 @@ breakpoint(point, value = 0)
         left 38%
         opacity 1
         transform translate(-50%, -50%)
-        border-color rgba(0,0,0,1) rgba(0,0,0,1) rgba(0,0,0,.5) rgba(0,0,0,.5)
 
   .auth0-lock-social-buttons-container
     text-align center

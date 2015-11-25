@@ -823,6 +823,12 @@
 .auth0-lock .auth0-lock-form p.auth0-lock-pane-separator {
   margin: 17px 0 13px;
 }
+#social-container.lock-container .auth0-lock-mode-loading .auth0-lock-content {
+  opacity: 1;
+}
+#social-container.lock-container .auth0-lock-mode-loading .auth0-lock-content .auth0-lock-social-buttons-container {
+  opacity: 0.3;
+}
 .auth0-lock .auth-lock-social-buttons-pane {
   position: relative;
 }
@@ -841,7 +847,6 @@
   left: 38%;
   opacity: 1;
   transform: translate(-50%, -50%);
-  border-color: #000 #000 rgba(0,0,0,0.5) rgba(0,0,0,0.5);
 }
 .auth0-lock .auth0-lock-social-buttons-container {
   text-align: center;
