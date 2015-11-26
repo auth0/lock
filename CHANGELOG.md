@@ -1,3 +1,12 @@
+## [7.12.3] - 2015-11-26
+
+### Fixed
+
+- [] Merge pull request #262 from auth0/fix-unknown-dict (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/76e10a198ca70408491702b20d0eeb7f9351462b
+- [] Stop crashing when providing an unknown dict (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/44bf94d74567d26b2a06b02ef9c22c5dfd34646c
+
 ## [7.12.2] - 2015-10-20
 
 ### Fixed
