@@ -676,7 +676,12 @@
   .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-header-avatar {
     width: 70px;
     height: 70px;
-    margin: 5px auto 0;
+    margin: 10px auto 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-firstname {
+    margin-top: 72px;
   }
 }
 .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-widget {
