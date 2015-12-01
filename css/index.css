@@ -729,6 +729,10 @@
   .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-terms {
     position: absolute;
     bottom: 70px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 }
 @media screen and (max-width: 480px) {
