@@ -97,7 +97,9 @@ export default class Lock extends React.Component {
 
   handleClose() {
     const { closeHandler, lock } = this.props;
-    closeHandler(l.id(lock));
+    if (!l.submitting(lock)) {
+      closeHandler(l.id(lock));
+    }
   }
 
   handleEsc() {
