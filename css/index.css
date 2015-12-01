@@ -731,6 +731,11 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-content .auth0-lock-form p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 480px) {
   .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-terms {
     position: absolute;
     bottom: 70px;
