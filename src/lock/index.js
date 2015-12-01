@@ -221,8 +221,12 @@ export function tabIndex(m, n) {
   return [id(m), n > 9 ? "" : "0", n].join("");
 }
 
-export function warn(m, str) {
-  if (console && console.warn && !ui.disableWarnings(m)) {
+export function warn(x, str) {
+  const shouldOutput = Map.isMap(x)
+    ? !ui.disableWarnings(x)
+    : !x.disableWarnings;
+
+  if (shouldOutput && console && console.warn) {
     console.warn(str);
   }
 }

@@ -41,35 +41,46 @@ export function displayName(connection) {
   return STRATEGIES[connection.strategy];
 }
 
-export function validateSocialOptions(options) {
+function processConnections(options) {
+
   const { connections } = options;
+
   if (!Array.isArray(connections) || connections.length === 0) {
     throw new Error("The `connections` option array needs to be provided with at least one connection.");
   }
 
-  connections.forEach(x => {
+  const formattedConnections = connections.reduce((r, x) => {
     if (typeof x === "string") {
       if (!STRATEGIES[x]) {
-        throw new Error(`An unknown "${x}" connection was provided.`);
+        l.warn(options, `An unknown "${x}" connection was provided.`);
+        return r;
       }
+      return r.concat({name: x, strategy: x});
     } else if (typeof x === "object" && typeof x.name === "string" && typeof x.strategy === "string") {
       if (!STRATEGIES[x.strategy]) {
-        throw new Error(`A connection with an unknown "${x.strategy}" strategy was provided.`);
+        l.warn(options, `A connection with an unknown "${x.strategy}" strategy was provided.`);
+        return r;
       }
+      return r.concat(x);
     } else {
-      throw new Error("A connection with an invalid format was provided. It must be a string or an object with name and strategy properties.");
+      l.warn(options, "A connection with an invalid format was provided. It must be a string or an object with name and strategy properties.");
+      return r;
     }
-  });
+  }, []);
+
+  if (formattedConnections.length === 0) {
+    throw new Error("The `connections` option must contain at least one valid connection.");
+  }
+
+  // TODO: check for repeated connections
+
+  return formattedConnections;
 }
 
 export function processSocialOptions(options) {
-  validateSocialOptions(options);
-
   const { connections, socialBigButtons } = options;
 
-  options.connections = connections.map(x => (
-    typeof x === "string" ? {name: x, strategy: x} : x
-  ));
+  options.connections = processConnections(options);
 
   options.mode.socialBigButtons = socialBigButtons === undefined
     ? connections.length <= 3
