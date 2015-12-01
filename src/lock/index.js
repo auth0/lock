@@ -3,6 +3,7 @@ import { isSmallScreen } from '../utils/media_utils';
 import { iconUrl } from '../icon/index';
 import * as d from '../dict/index';
 import t from '../dict/t';
+import trim from 'trim';
 
 function buildSetupSnapshot(m) {
   return m.set("setupSnapshot", m);
@@ -86,6 +87,7 @@ function extractUIOptions(id, modeName, options) {
     connection: options.connection,
     connections: new List(undefined === options.connections ? [] : options.connections),
     dict: d.build(modeName, typeof options.dict === "object" ? options.dict : {}),
+    disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
@@ -121,6 +123,7 @@ export const ui = {
   connection: lock => getUIAttribute(lock, "connection"),
   connections: lock => getUIAttribute(lock, "connections"),
   dict: lock => getUIAttribute(lock, "dict"),
+  disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
@@ -152,6 +155,10 @@ function setLoginOptions(m, options) {
   authParams = typeof authParams === "object" ? authParams : {};
   callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
   responseType = typeof responseType === "string" ? responseType : callbackURL ? "code" : "token";
+
+  if (trim(authParams.scope || "") === "openid profile") {
+    warn(m, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
+  }
 
   const loginOptions = Map({
     authParams: Map(authParams),
@@ -212,4 +219,10 @@ export function signedIn(m) {
 
 export function tabIndex(m, n) {
   return [id(m), n > 9 ? "" : "0", n].join("");
+}
+
+export function warn(m, str) {
+  if (console && console.warn && !ui.disableWarnings(m)) {
+    console.warn(str);
+  }
 }
