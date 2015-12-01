@@ -101,6 +101,11 @@ var terms = "By signing up, you agree to our <a href='/terms' target='_new'>term
 var emailcodeLock = new Auth0LockPasswordless(cid, domain);
 emailcodeLock.emailcode({
   container: "emailcode-container",
+  dict: {
+    email: {
+      footerText: terms
+    }
+  },
   closable: true
 });
 
