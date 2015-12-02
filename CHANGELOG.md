@@ -8,6 +8,7 @@
   - `emailcode.confirmation` was changed to `emailcode.signedIn`.
   - `magiclink.confirmation` was changed to `magiclink.emailSent`.
   - `sms.confirmation` was changed to `sms.signedIn`.
+- Upgraded to React v0.14.3. Thanks @joelburget.
 
 ### Added
 
