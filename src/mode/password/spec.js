@@ -2,7 +2,7 @@ import { Mode } from '../index';
 import Login from '../../password/login';
 import ResetPassword from '../../password/reset_password';
 import SignUp from '../../password/sign_up';
-import { getActivity, processPasswordOptions } from '../../password/index';
+import { getActivity, initPassword } from '../../password/index';
 
 export default class Password extends Mode {
 
@@ -11,7 +11,7 @@ export default class Password extends Mode {
   }
 
   willOpen(model, options) {
-    this.setOptions(processPasswordOptions(options));
+    this.setModel(initPassword(model, options));
   }
 
   render(lock) {

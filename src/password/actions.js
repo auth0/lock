@@ -3,7 +3,12 @@ import { getEntity, read, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
-import  { authWithUsername, setActivity, shouldAutoLogin } from './index';
+import  {
+  authWithUsername,
+  databaseConnection,
+  setActivity,
+  shouldAutoLogin
+} from './index';
 
 export function signInWithUsername(id) {
   // TODO: abstract this submit thing
@@ -22,7 +27,7 @@ export function signInWithUsername(id) {
   if (l.submitting(lock)) {
     // TODO: check options
     const options = {
-      connection: l.ui.connection(lock),
+      connection: databaseConnection(lock),
       username: c.username(lock),
       password: c.password(lock),
       sso: false,
@@ -62,7 +67,7 @@ export function signInWithEmail(id) {
   if (l.submitting(lock)) {
     // TODO: check options
     const options = {
-      connection: l.ui.connection(lock),
+      connection: databaseConnection(lock),
       username: c.email(lock),
       password: c.password(lock),
       sso: false,
@@ -130,7 +135,7 @@ export function signUp(id) {
   if (l.submitting(lock)) {
     // TODO: check options
     const options = {
-      connection: l.ui.connection(lock),
+      connection: databaseConnection(lock),
       email:      c.email(lock),
       password:   c.password(lock),
       auto_login: false,
@@ -162,7 +167,7 @@ function signUpSuccess(id, ...args) {
     swap(updateEntity, "lock", id, m => m.set("signedUp", true));
 
     const options = {
-      connection: l.ui.connection(lock),
+      connection: databaseConnection(lock),
       username: c.email(lock),
       password: c.password(lock),
       sso: false,
@@ -256,7 +261,7 @@ export function resetPassword(id) {
   if (l.submitting(lock)) {
     // TODO: check options
     const options = {
-      connection: l.ui.connection(lock),
+      connection: databaseConnection(lock),
       username:   authWithUsername(lock) ? c.username(lock) : c.email(lock),
       password:   c.password(lock)
     };
