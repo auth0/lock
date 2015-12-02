@@ -1,7 +1,7 @@
 import React from 'react';
 import SocialButton from './social_button';
 import * as l from '../../lock/index';
-import { useBigButtons } from '../../social/index';
+import { socialConnections, useBigButtons } from '../../social/index';
 export default class SocialButtonsPane extends React.Component {
 
   render() {
@@ -13,7 +13,7 @@ export default class SocialButtonsPane extends React.Component {
            {smallButtonsHeader}
          </p>;
 
-    const buttons = l.ui.connections(lock).map(x => (
+    const buttons = socialConnections(lock).map(x => (
       <SocialButton key={x.name} connection={x} lock={lock} />
     ));
 

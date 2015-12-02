@@ -1,6 +1,6 @@
 import { Mode } from '../index';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
-import { processSocialOptions } from '../../social/index';
+import { initSocial } from '../../social/index';
 
 export default class SocialOrMagiclink extends Mode {
 
@@ -9,8 +9,9 @@ export default class SocialOrMagiclink extends Mode {
   }
 
   willOpen(model, options) {
-    this.setOptions(processSocialOptions(options));
-    this.setModel(model.set("forceRedirect", !options.popup));
+    model = model.set("forceRedirect", !options.popup);
+    model = initSocial(model, options);
+    this.setModel(model);
   }
 
   render() {

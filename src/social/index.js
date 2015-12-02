@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import * as l from '../lock/index';
 
 export const STRATEGIES = {
@@ -36,6 +37,13 @@ export const STRATEGIES = {
   "yandex": "Yandex",
   "weibo": "新浪微博"
 };
+
+export function initSocial(model, options) {
+  return model.setIn(
+    ["social", "opts"],
+    Immutable.fromJS(processSocialOptions(options))
+  );
+}
 
 export function displayName(connection) {
   return STRATEGIES[connection.strategy];
@@ -77,18 +85,23 @@ function processConnections(options) {
   return formattedConnections;
 }
 
-export function processSocialOptions(options) {
-  const { connections, socialBigButtons } = options;
+function processSocialOptions(options) {
+  let { socialBigButtons } = options;
 
-  options.connections = processConnections(options);
+  const connections = processConnections(options);
 
-  options.mode.socialBigButtons = socialBigButtons === undefined
+  socialBigButtons = socialBigButtons === undefined
     ? connections.length <= 3
     : socialBigButtons;
 
-  return options;
+  return { connections, socialBigButtons };
+}
+
+export function socialConnections(m) {
+  // TODO: not sure if returning a js object here is a good idea
+  return m.getIn(["social", "opts", "connections"]).toJS();
 }
 
 export function useBigButtons(m) {
-  return l.modeOptions(m).get("socialBigButtons", true);
+  return m.getIn(["social", "opts", "socialBigButtons"]);
 }

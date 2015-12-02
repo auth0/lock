@@ -1,6 +1,6 @@
 import { Mode } from '../index';
 import AskSocialNetwork from '../../cred/social/ask_social_network';
-import { processSocialOptions } from '../../social/index';
+import { initSocial } from '../../social/index';
 
 export default class Social extends Mode {
 
@@ -9,8 +9,9 @@ export default class Social extends Mode {
   }
 
   willOpen(model, options) {
-    this.setOptions(processSocialOptions(options));
-    this.setModel(model.set("forceRedirect", !options.popup));
+    model = model.set("forceRedirect", !options.popup);
+    model = initSocial(model, options);
+    this.setModel(model);
   }
 
   render() {
