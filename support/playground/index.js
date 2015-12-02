@@ -1,23 +1,59 @@
 var CONTAINERS = {
-  LOCK: 1,
-  CODE: 2,
-  OUTPUT: 3
+  CODE: 1,
+  OUTPUT: 2
 };
 
 var currentLockContainerSelector;
 var remember;
 
 function bindEvents () {
-  $('form input, form textarea, form select').on('change keydown keypress keyup mousedown click mouseup', function() {
-      updateLockInitializationCode();
+  hljs.configure({
+    classPrefix: ''
+  });
+
+  $('form input, form textarea').on('change keydown keypress keyup mousedown click mouseup', function() {
+    updateShownLock();
+  });
+
+  $('form select').on('change', function() {
+    updateShownLock();
   });
 
   $('input[name=container]').on('change keydown keypress keyup mousedown click mouseup', function() {
       updateTargetContainer($(this).val());
   });
 
-  $('#show-lock').on('click', function (ev) {
+  $('#show-lock').on('click', showLockHandler);
+
+  // Render a new Lock in the #container after it has been closed by clicking
+  // its close button.
+  $('body').on('click', '.auth0-lock-close-button', function(ev) {
     ev.preventDefault();
+
+    showLockHandler();
+  });
+
+  // Render a new Lock in the #container after it has been closed with ESC.
+  // Sometimes, pressing ESC won't close the lock. For instance, when selecting
+  // a location, ESC will close the selector. So, we use the close button as a
+  // flag.
+  $('body').on('keydown', function(ev) {
+    if(ev.keyCode === 27 && $('.auth0-lock-opened .auth0-lock-close-button').length) {
+      showLockHandler();
+    }
+  });
+}
+
+function updateShownLock() {
+  updateLockInitializationCode();
+
+  showLockHandler();
+}
+
+function showLockHandler(ev) {
+    if(ev) {
+      ev.preventDefault();
+    }
 
     var method = $('[name="method"]').val();
     var clientID = $('[name="clientID"]').val();
@@ -31,6 +67,12 @@ function bindEvents () {
       window.lock = new Auth0LockPasswordless(clientID, domain);
 
       var options = getOptions();
+
+      if (ev) {
+        delete options.container;
+      } else {
+        options.container = "container";
+      }
 
       // Execute Lock with options
       lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
@@ -56,26 +98,18 @@ function bindEvents () {
         remember.except('.auth0-lock-input');
       }, 0);
 
-      if (options.container === currentLockContainerSelector) {
-        showContainer(CONTAINERS.LOCK);
-        $('html,body').animate({ scrollTop: $("#" + currentLockContainerSelector).offset().top}, 'slow');
-      } else {
-        $('#lock-container-box').hide();
-      }
 
     } catch (e) {
       $('#output code').text(e.message);
       $('#output code').addClass('text-danger');
       showContainer(CONTAINERS.OUTPUT);
     }
-  });
 }
 
 function showContainer (container) {
   switch (container) {
   case CONTAINERS.CODE: $('#output-tabs a[href="#lock-code-panel"]').tab('show'); break;
   case CONTAINERS.OUTPUT: $('#output-tabs a[href="#output-panel"]').tab('show'); break;
-  case CONTAINERS.LOCK: $('#lock-container-box').show(); break;
   default: break;
   }
 }
@@ -83,7 +117,6 @@ function showContainer (container) {
 function updateTargetContainer (selector) {
   var sanitizedSelector = (selector ? selector.replace("#", "") : '') || 'container';
   $('.lock-container').prop('id', sanitizedSelector);
-  $("#container-panel-title").text(sanitizedSelector);
   currentLockContainerSelector = sanitizedSelector;
 }
 
@@ -104,12 +137,12 @@ function getLockInitializationCode () {
   return Mustache.render(template, templateValues);
 }
 
-function getOptions () {
+function getOptions (container) {
   var options = {};
 
   // Strings
   options.icon = $('[name="icon"]').val();
-  options.container = ($('[name="container"]').val() || '').replace('#', '');
+  options.container = container || ($('[name="container"]').val() || '').replace('#', '');
   options.defaultLocation = $('[name="defaultLocation"]').val();
   options.primaryColor = $('[name="primaryColor"]').val();
   options.callbackURL = $('[name="callbackURL"]').val() || undefined;
@@ -128,6 +161,32 @@ function getOptions () {
   try { options.authParams = JSON.parse($('[name="authParams"]').val() ); } catch (e) {}
   try { options.popupOptions = JSON.parse($('[name="popupOptions"]').val() ); } catch (e) {}
   try { options.connections = JSON.parse($('[name="connections"]').val()); } catch (e) {}
+
+  options = removeDefaultOptions(options);
+  return options;
+}
+
+function removeKeys(object, keys, evalFunction) {
+  $.each(keys, function (i, key) {
+    if (evalFunction(object[key])) {
+      delete object[key];
+    }
+  });
+}
+
+function removeDefaultOptions (options) {
+  // remove keys whit default value true
+  removeKeys(options, ['closable', 'focusInput', 'gravatar', 'rememberLastLogin'], function (value) { return value === true; });
+
+  // remove keys whit default value false
+  removeKeys(options, ['autoclose', 'forceJSONP'], function (value) { return value === false; });
+
+  // remove keys whit default value empty
+  removeKeys(options, ['container', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation'], function (value) { return !value; });
+
+  if (options.defaultLocation && options.defaultLocation.toLowerCase() === 'us') {
+    delete options.defaultLocation;
+  }
 
   return options;
 }
@@ -170,8 +229,12 @@ $(function() {
   remember = require('remember')();
 
   bindEvents();
-  updateLockInitializationCode();
   showContainer(CONTAINERS.CODE);
+
+  setTimeout(function () {
+    updateLockInitializationCode();
+    showLockHandler();
+  }, 500);
 
   remember.except('input[name=container]');
   $("[rel=tooltip]").tooltip({ placement: 'right'});
