@@ -132,7 +132,7 @@
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Connections</label>
                       <div class="col-xs-12 col-sm-8 col-md-9 col-right">
                         <input type="text" name="connections" class="form-control" placeholder="['facebook', 'twitter']">
-                        <span class="help-block"></span>
+                        <span class="help-block">List of social providers that will be available to perform the authentication. Most of the time you will specify a provider with the connection name, e.g. 'facebook'. When the connection's 'name' and 'strategy' don't match, you'll need to provide an object with those properties, e.g. '{name: "my-connection", strategy: "facebook"}'.  This option doesn't have a default value and must be specified when opening the Lock with a method that provides social authentication.</span>
                       </div>
                     </div>
 
@@ -186,6 +186,14 @@
                         </label>
                       </div>
                       <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                        <input type="checkbox" name="disableWarnings">
+                        <label class="control-label">Disable Warnings
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not warning messages will be output to the browser's console. Defaults to 'false'." data-container="body">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
                         <input type="checkbox" name="focusInput">
                         <label class="control-label">Focus Input
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed." data-container="body">
@@ -204,7 +212,7 @@
                       <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
                         <input type="checkbox" name="popup">
                         <label class="control-label">Popup
-                          <span class="help tip-right" rel="tooltip" data-original-title="Defaults to 'false'.">
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not a popup is shown when authenticating with a social provider. Defaults to 'false' and it is discouraged.">
                             <i class="fa fa-question-circle">&nbsp;</i>
                           </span>
                         </label>
@@ -217,13 +225,21 @@
                           </span>
                         </label>
                       </div>
+                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                        <input type="checkbox" name="socialBigButtons">
+                        <label class="control-label">Social Big Buttons
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines the size of the buttons for the social providers specified in the 'connections' option. It defaults to 'true' when the 'connections' option contains at most tree providers, otherwise it defaults to 'false'.">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
                     </div>
 
                     <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Popup Options</label>
                       <div class="col-xs-12 col-sm-8 col-md-9 col-right">
                         <textarea name="popupOptions" class="form-control" rows="3" placeholder='{"width": "450px", "height": "450px"}'></textarea>
-                        <span class="help-block">Defaults to '{}'.</span>
+                        <span class="help-block">Allows to customize the location of the popup in the screen. Any <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features">position and size feature</a> allowed by 'window.open' is accepted. Defaults to '{}'.</span>
                       </div>
                     </div>
 

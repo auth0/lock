@@ -151,10 +151,13 @@ function getOptions (container) {
   // Booleans
   options.autoclose = !!$('[name="autoclose"]:checked').val();
   options.closable = !!$('[name="closable"]:checked').val();
+  options.disableWarnings = !!$('[name="disableWarnings"]:checked').val();
   options.focusInput = !!$('[name="focusInput"]:checked').val();
   options.gravatar = !!$('[name="gravatar"]:checked').val();
   options.forceJSONP = !!$('[name="forceJSONP"]:checked').val();
   options.popup = !!$('[name="popup"]:checked').val();
+  options.rememberLastLogin = !!$('[name="rememberLastLogin"]:checked').val();
+  options.socialBigButtons = !!$('[name="socialBigButtons"]:checked').val();
 
   // Textareas + parsings
   try { options.dict = JSON.parse($('[name="dict"]').val()); } catch (e) {}
@@ -179,7 +182,7 @@ function removeDefaultOptions (options) {
   removeKeys(options, ['closable', 'focusInput', 'gravatar', 'rememberLastLogin'], function (value) { return value === true; });
 
   // remove keys whit default value false
-  removeKeys(options, ['autoclose', 'forceJSONP'], function (value) { return value === false; });
+  removeKeys(options, ['autoclose', 'disableWarnings', 'forceJSONP'], function (value) { return value === false; });
 
   // remove keys whit default value empty
   removeKeys(options, ['container', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation'], function (value) { return !value; });
