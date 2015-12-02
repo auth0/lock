@@ -405,7 +405,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
-- **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to the country the user is in and fallback to `"US"` when it can be obtained.
+- **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to the country the user is in and fallback to `"US"` when it can't be obtained.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **gravatar {Boolean}**: Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to `true`.
 - **popup {Boolean}**: Determines whether or not a popup is shown when authenticating with a social provider. Defaults to `false` and passing `true` is discouraged. See [below](#popup-mode) for more information.
