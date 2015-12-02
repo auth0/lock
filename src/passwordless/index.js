@@ -1,6 +1,13 @@
 import { List } from 'immutable';
 import * as l from '../lock/index';
 
+
+export function initPasswordless(m, opts) {
+  return opts.send
+    ? m.setIn(["passwordless", "opts", "send"], opts.send)
+    : m;
+}
+
 function setResendStatus(m, value) {
   // TODO: check value
   return m.set("resendStatus", value);
@@ -68,7 +75,7 @@ export function reset(m, opts = {}) {
 }
 
 export function send(m) {
-  return l.modeOptions(m).get("send", "link")
+  return m.getIn(["passwordless", "opts", "send"], "link");
 }
 
 export function isSendLink(m) {

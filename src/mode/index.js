@@ -29,6 +29,8 @@ export class Mode {
 
   // render must be implemented in each mode
 
+  willOpen(model, options) {}
+
   close(id, force) {
     closeLock(id, force);
   }

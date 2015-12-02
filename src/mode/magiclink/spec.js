@@ -7,11 +7,6 @@ export default class Magiclink extends Mode {
     super("magiclink");
   }
 
-  willOpen(model, options) {
-    options.mode.send = "link";
-    this.setOptions(options);
-  }
-
   render(lock) {
     return new MagiclinkScreen();
   }

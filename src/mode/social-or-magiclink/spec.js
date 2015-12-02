@@ -9,9 +9,7 @@ export default class SocialOrMagiclink extends Mode {
   }
 
   willOpen(model, options) {
-    options = processSocialOptions(options);
-    options.mode.send = "link";
-    this.setOptions(options);
+    this.setOptions(processSocialOptions(options));
     this.setModel(model.set("forceRedirect", !options.popup));
   }
 
