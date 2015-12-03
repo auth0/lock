@@ -1,7 +1,7 @@
 import Immutable, { Map, Set } from 'immutable';
-import React from 'react/addons';
-import CSSCore from 'react/lib/CSSCore';
-const { Simulate } = React.addons.TestUtils;
+import React from 'react';
+import CSSCore from 'fbjs/lib/CSSCore';
+import { Simulate } from 'react-addons-test-utils';
 import Auth0LockPasswordless from '../src/index';
 import { spy, stub } from 'sinon';
 import webApi from '../src/lock/web_api';

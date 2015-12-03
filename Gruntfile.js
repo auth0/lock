@@ -59,7 +59,11 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          watch: true,
+          browserifyOptions: {
+            debug: true,
+            extensions: ".jsx"
+          },
+          watch: true
         },
         src: "src/browser.js",
         dest: "build/lock-passwordless.js"
@@ -85,7 +89,7 @@ module.exports = function(grunt) {
         options: {
           hostname: "*",
           base: [".", "build", "support", "support/playground"],
-          port: 3000
+          port: process.env.PORT || 3000
         }
       },
     },

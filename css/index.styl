@@ -1,6 +1,7 @@
 @require "normalize.css"
 @require "animate.css"
 @require "transitions.css"
+@require "social_icons.css"
 
 // Breakpoints mixin
 breakpoint(point, value = 0)
@@ -155,7 +156,7 @@ breakpoint(point, value = 0)
     color #333
     position relative
     background #fff
-    height 100px
+    height 90px
 
   .auth0-lock-close-button, .auth0-lock-back-button
     background white
@@ -178,11 +179,11 @@ breakpoint(point, value = 0)
     left 14px
 
   .auth0-lock-header-avatar
-    height 100px
-    width 100px
+    height 80px
+    width 80px
     display block
     border-radius 100px
-    margin -30px auto 0
+    margin -16px auto 0
     position absolute
     left 0
     right 0
@@ -196,7 +197,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-header-bg
     position absolute
-    height 128px
+    height 118px
     width 100%
     overflow hidden
     top 0
@@ -224,12 +225,12 @@ breakpoint(point, value = 0)
       transition 0s ease 0s
 
       &.auth0-lock-no-grayscale
-        -webkit-filter blur(100px)
-        -ms-filter blur(100px)
-        filter blur(100px)
+        -webkit-filter blur(30px)
+        -ms-filter blur(30px)
+        filter blur(30px)
         -webkit-backdrop-filter: blur(0);
         background-position center
-        background-size 500px
+        background-size 800px
 
     &.auth0-lock-blur-support
       .auth0-lock-header-bg-blur
@@ -247,12 +248,12 @@ breakpoint(point, value = 0)
   .auth0-lock-header-logo
     height 55px
     display inline-block
-    margin 8px 0
+    margin 0 0 10px
     vertical-align middle
 
   .auth0-lock-firstname
     font-size 18px
-    margin-top 74px
+    margin-top 64px
 
   .auth0-lock-name
     font-size 22px
@@ -292,7 +293,6 @@ breakpoint(point, value = 0)
 
       .auth0-lock-did-not-receive-code-link
         font-size 11px
-        font-weight 600
         color #333332
         margin-bottom 0
 
@@ -384,11 +384,7 @@ breakpoint(point, value = 0)
     color #666
     line-height 22px
     padding 10px 30px
-    position absolute
-    bottom 70px
-    +breakpoint("tablet")
-      position relative
-      bottom auto
+    position relative
     a
       color #000
 
@@ -541,13 +537,23 @@ breakpoint(point, value = 0)
       transition .25s
 
 
-  // Content complete
+  // When showing auxiliary pane
 
 
-  &.auth0-lock-complete
+  &.auth0-lock-auxiliary
     .auth0-lock-header-avatar
       -webkit-animation fadeOut .3s both
       animation fadeOut .3s both
+
+    .auth0-lock-content, .auth0-lock-terms, .auth0-lock-submit
+      opacity .3
+      pointer-events none
+
+    .auth0-lock-back-button
+      opacity 0
+      visibility hidden
+      -webkit-transition .25s
+      transition .25s
 
 
   // Lock confirmation content
@@ -700,15 +706,17 @@ breakpoint(point, value = 0)
       opacity .4
       -webkit-transition 1s ease 1s
       transition 1s ease 1s
-      &.auth0-lock-no-grayscale
-        opacity .7
 
     .auth0-lock-header-avatar
       //mobile view
       @media screen and (max-width: 480px)
         width 70px
         height 70px
-        margin 15px auto 0
+        margin 10px auto 0
+
+    .auth0-lock-firstname
+      @media screen and (max-width: 480px)
+        margin-top 72px
 
     .auth0-lock-widget
       opacity 1
@@ -753,6 +761,20 @@ breakpoint(point, value = 0)
         -webkit-transform translateY(-50%)
         transform translateY(-50%)
 
+      .auth0-lock-form p
+        @media screen and (max-width: 480px)
+          font-size 14px
+
+
+    .auth0-lock-terms
+      @media screen and (max-width: 480px)
+        position absolute
+        bottom 70px
+        width 100%
+        -webkit-box-sizing border-box
+        -moz-box-sizing border-box
+        box-sizing border-box
+
     .auth0-lock-submit
       //mobile view
       @media screen and (max-width: 480px)
@@ -795,7 +817,7 @@ breakpoint(point, value = 0)
       -webkit-transition 1s ease 1s
       transition 1s ease 1s
       &.auth0-lock-no-grayscale
-        opacity .7
+        opacity .5
 
     .auth0-lock-widget
       opacity 1
@@ -870,3 +892,111 @@ breakpoint(point, value = 0)
 @-webkit-keyframes rotate
   0%{-webkit-transform: rotate(0deg);}
   100%{-webkit-transform: rotate(360deg);}
+
+// mixed modes
+
+.auth0-lock .auth0-lock-form
+  p.auth0-lock-pane-separator
+    margin 16px 0 15px
+
+// social
+
+// start - show loading properly only social buttons
+#social-container.lock-container
+  .auth0-lock-mode-loading
+    .auth0-lock-content
+      opacity 1
+      .auth0-lock-social-buttons-container
+        opacity .3
+// end - show loading properly only social buttons
+
+.auth0-lock
+  .auth-lock-small-social-buttons-header
+    margin-bottom 11px!important
+    font-size 14px!important
+
+  .auth-lock-social-buttons-pane
+    position relative
+    .auth0-loading-container
+      -webkit-animation fadeIn .75s ease-in-out!important
+      animation fadeIn .75s ease-in-out!important
+      position absolute
+      width 54px
+      height 54px
+      top 50%
+      left 50%
+      -webkit-transform translate(-50%,-50%)
+      transform translate(-50%,-50%)
+      .auth0-loading
+        width 50px
+        height 50px
+        border-radius 50%
+        top 0
+        left 0
+        opacity 1
+
+  .auth0-lock-social-buttons-container
+    text-align center
+
+  .auth0-lock-social-button
+    border 0
+    padding 0
+    display inline-block
+    -webkit-box-sizing border-box
+    box-sizing border-box
+    overflow hidden
+    border-radius 3px
+    margin 4px
+    position relative
+    width 40px
+    height 40px
+
+    .auth0-lock-social-button-icon
+      width 40px
+      height 40px
+      position absolute
+      top 0
+      left 0
+      transition background-color 0.3s
+      -webkit-transition background-color 0.3s
+
+    &:hover, &:focus
+      .auth0-lock-social-button-icon
+        background-color rgba(0, 0, 0, .3)
+
+    .auth0-lock-social-button-text
+      display none
+
+    &.auth0-lock-social-big-button
+      display block
+      margin 0 0 8px 0
+      width 100%
+
+      &:last-child
+        margin-bottom 0
+
+      .auth0-lock-social-button-icon
+        background-color rgba(0, 0, 0, .3)
+
+      .auth0-lock-social-button-text
+        -webkit-box-sizing border-box
+        box-sizing border-box
+        display block
+        width 100%
+        padding-left 54px
+        line-height 40px
+        text-align left
+        text-transform uppercase
+        font-size 10px
+        font-weight 600
+        letter-spacing .7px
+        color #fff
+        transition background 0.3s
+        -webkit-transition background 0.3s
+
+      &:hover, &:focus
+        .auth0-lock-social-button-icon
+          background-color rgba(0, 0, 0, .3)
+
+        .auth0-lock-social-button-text
+          background-color rgba(0, 0, 0, .3)

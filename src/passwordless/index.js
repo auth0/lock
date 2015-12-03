@@ -46,8 +46,12 @@ export function reset(m, opts = {}) {
   let keyPaths = List([
     ["passwordlessStarted"],
     ["resendStatus"],
-    ["selectingLocation"]
+    ["selectingLocation"],
+    ["signedIn"]
   ]);
+
+  // TODO `signedIn` should be handled at the lock level, later instead of
+  // calling l.clearGlobalError we should call something like l.reset.
 
   const { clearCred } = opts;
 
@@ -64,35 +68,11 @@ export function reset(m, opts = {}) {
 }
 
 export function send(m) {
-  return m.getIn(["modeOptions", "send"], "link");
+  return l.modeOptions(m).get("send", "link")
 }
 
 export function isSendLink(m) {
   return send(m) === "link";
-}
-
-export function openLocationSelect(m, searchStr) {
-  m = m.set("selectingLocation", true);
-  if (searchStr && typeof searchStr === "string") {
-    m = m.set("initialLocationSearchStr", searchStr);
-  }
-
-  return m;
-}
-
-export function closeLocationSelect(m) {
-  m = m.remove("selectingLocation");
-  m = m.remove("initialLocationSearchStr");
-
-  return m;
-}
-
-export function initialLocationSearchStr(m) {
-  return m.get("initialLocationSearchStr", "");
-}
-
-export function selectingLocation(m) {
-  return m.get("selectingLocation", false);
 }
 
 export function setPasswordlessStarted(m, value) {
@@ -101,12 +81,4 @@ export function setPasswordlessStarted(m, value) {
 
 export function passwordlessStarted(m) {
   return m.get("passwordlessStarted", false);
-}
-
-export function setSignedIn(m, value) {
-  return m.set("signedIn", value);
-}
-
-export function signedIn(m) {
-  return m.get("signedIn", false);
 }

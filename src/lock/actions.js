@@ -9,12 +9,24 @@ export function setupLock(id, clientID, domain) {
   swap(setEntity, "lock", id, lock);
 
   WebAPI.setupClient(id, clientID, domain);
+
+  // TODO: only modes with a phone number are making use of the user's location
+  const user = read(getEntity, "user");
+  const location = user && user.get("location");
+
+  if (!location) {
+    WebAPI.getUserCountry(id, (err, isoCode) => {
+      if (!err) {
+        swap(updateEntity, "user", 0, m => m.set("location", isoCode));
+      }
+    });
+  }
 }
 
-export function openLock(id, mode, options) {
+export function openLock(id, modeName, options) {
   const lock = read(getEntity, "lock", id);
   if (!lock) {
-    throw new Error("The Lock can't be opened again after it has been closed");
+    throw new Error("The Lock can't be opened again after it has been destroyed");
   }
 
   if (l.show(lock)) {
@@ -22,42 +34,55 @@ export function openLock(id, mode, options) {
   }
 
   swap(updateEntity, "lock", id, lock => {
-    lock = l.render(lock, mode, options);
-    return l.ui.rememberLastLogin(lock) ?
-      cs.restore(lock, options.modeOptions.storageKey) : lock;
+    lock = l.render(lock, modeName, options);
+
+    return l.ui.rememberLastLogin(lock)
+      ? cs.restore(lock, l.modeName(lock))
+      : lock;
   });
 
   setTimeout(() => swap(updateEntity, "lock", id, l.setShow, true), 17);
   return true;
 }
 
-export function closeLock(id, resetFn, callback = () => {}) {
+export function closeLock(id, force = false, callback = () => {}) {
+  // Do nothing when the Lock can't be closed, unless closing is forced.
+  let lock = read(getEntity, "lock", id);
+  if (!l.ui.closable(lock) && !force) {
+    return;
+  }
+
+  // Close the Lock. Also, stop rendering when in inline mode. In modal mode we
+  // need to wait for the close animation to finish before stop rendering the
+  // Lock.
   swap(updateEntity, "lock", id, lock => {
     if (!l.ui.appendContainer(lock)) {
       lock = lock.remove("render");
     }
-    lock = l.close(lock)
-    // TODO: we are not executing resetFn and thus the argument is no longer
-    // needed. Right now plugins don't need to clean the Lock state when is
-    // closed because it is throwed away, there's no way to reopen the Lock.
-    // However, I'm leaving the reset functionality because the ability to
-    // reopen the Lock is still being discussed.
-    //
-    // return resetFn(lock);
-    return lock;
+
+    return l.close(lock)
   });
 
-  const lock = read(getEntity, "lock", id);
+  // If we are still rendering (modal mode), schedule a function that will
+  // execute the callback and destroy the Lock (liberate its resources). If we
+  // are not rendering (inline mode), do both things immediately.
+  lock = read(getEntity, "lock", id);
+
   if (l.rendering(lock)) {
     setTimeout(() => {
-      swap(updateEntity, "lock", id, m => m.remove("render"));
+      // swap(updateEntity, "lock", id, m => m.remove("render"));
       callback(read(getEntity, "lock", id));
-      setTimeout(() => swap(removeEntity, "lock", id), 17);
+      setTimeout(() => swap(updateEntity, "lock", id, l.reset), 17);
     }, 1000);
   } else {
-    swap(removeEntity, "lock", id);
+    swap(updateEntity, "lock", id, l.reset);
     callback(lock);
   }
+}
+
+export function removeLock(id) {
+  swap(updateEntity, "lock", id, (lock) => lock.remove("render"));
+  swap(removeEntity, "lock", id);
 }
 
 export function updateLock(id, f) {

@@ -1,4 +1,7 @@
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactTransitionGroup from 'react-addons-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import GlobalError from './global_error';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
@@ -6,10 +9,9 @@ import * as l from './index';
 import * as g from '../gravatar/index';
 import Terms from '../lock/terms';
 
-const ReactTransitionGroup = React.addons.TransitionGroup;
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-export default class CredPane extends React.Component {
+export default class Chrome extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {height: "", show: true};
@@ -26,7 +28,7 @@ export default class CredPane extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, className, lock, terms } = this.props;
+    const { auxiliaryPane, backHandler, contentRender, headerText, footerText, lock, showSubmitButton } = this.props;
     const { height, show } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -37,27 +39,33 @@ export default class CredPane extends React.Component {
     let backgroundUrl, name;
     if (gravatar) {
       backgroundUrl = g.imageUrl(gravatar);
-      name = this.t(["welcome"], {name: g.displayName(gravatar)});
+      name = this.t(["welcome"], {name: g.displayName(gravatar), __textOnly: true});
     } else {
       backgroundUrl = icon;
       name = "";
     }
     const primaryColor = l.ui.primaryColor(lock);
 
+    const header = headerText && <p>{headerText}</p>;
+    const footer = footerText && <Terms>{footerText}</Terms>;
+
     return (
-      <div className={className + " auth0-lock-cred-pane"}>
-        <Header title={this.t(["title"])} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
+      <div className="auth0-lock-cred-pane">
+        <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && show && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <Placeholder delay={800} height={height} show={show} ref="content">
           <ReactTransitionGroup>
             {globalError && <GlobalError key="global-error" message={globalError} />}
           </ReactTransitionGroup>
           <div className="auth0-lock-content">
-            {this.props.children}
+            <div className="auth0-lock-form">
+              {header}
+              {contentRender({focusSubmit: ::this.focusSubmit, lock})}
+            </div>
           </div>
-          {terms && <Terms>{terms}</Terms>}
+          {footer}
         </Placeholder>
-        <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />
-        <ReactCSSTransitionGroup transitionName="slide">
+        {showSubmitButton && <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />}
+        <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
       </div>
@@ -69,12 +77,13 @@ export default class CredPane extends React.Component {
   }
 
   handleBack() {
+    const { backHandler, lock } = this.props;
     this.reverse = true;
-    this.props.backHandler();
+    backHandler(l.id(lock));
   }
 
   componentWillSlideIn(slide) {
-    const node = React.findDOMNode(this.refs.content);
+    const node = ReactDOM.findDOMNode(this.refs.content);
     this.originalHeight = parseInt(window.getComputedStyle(node, null).height, 10);
     this.setState({height: slide.height, show: false});
   }
@@ -85,7 +94,7 @@ export default class CredPane extends React.Component {
   }
 
   componentWillSlideOut(callback) {
-    const node = React.findDOMNode(this.refs.content);
+    const node = ReactDOM.findDOMNode(this.refs.content);
     const size = window.getComputedStyle(node, null).height;
     callback({height: parseInt(size, 10), reverse: this.reverse});
   }
@@ -94,6 +103,20 @@ export default class CredPane extends React.Component {
     return l.ui.t(this.props.lock, keyPath, params);
   }
 }
+
+Chrome.propTypes = {
+  auxiliaryPane: React.PropTypes.element,
+  backHandler: React.PropTypes.func,
+  contentRender: React.PropTypes.func.isRequired,
+  footerText: React.PropTypes.element,
+  headerText: React.PropTypes.element,
+  lock: React.PropTypes.object.isRequired,
+  showSubmitButton: React.PropTypes.bool.isRequired
+};
+
+Chrome.defaultProps = {
+  showSubmitButton: true
+};
 
 class Placeholder extends React.Component {
   constructor(props) {

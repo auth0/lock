@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Auth0LockPasswordless from '../../src/index';
 import Control, { store } from './control';
 import browser from '../../src/browser';
@@ -25,4 +26,8 @@ WebAPI.prototype.startPasswordless = function(lockID, options, cb) {
   setTimeout(() => cb(...args), state.get("latency"));
 };
 
-React.render(React.createElement(Control), document.getElementById("control-container"));
+WebAPI.prototype.getUserCountry = function(lockID, cb) {
+  setTimeout(() => cb(null, "AR"), 17);
+}
+
+ReactDOM.render(React.createElement(Control), document.getElementById("control-container"));

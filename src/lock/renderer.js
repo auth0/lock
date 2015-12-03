@@ -1,5 +1,6 @@
 import React from 'react';
-import CSSCore from 'react/lib/CSSCore';
+import ReactDOM from 'react-dom';
+import CSSCore from 'fbjs/lib/CSSCore';
 import ContainerManager from './container_manager';
 import Lock from './lock';
 import * as l from './index';
@@ -20,8 +21,19 @@ export default class Renderer {
         const gravatar = getEntity(state, "gravatar", c.email(lock));
         lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
         const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
-        const renderFn = fns.get(l.mode(lock));
-        React.render(renderFn(lock), container);
+        const screen = fns.get(l.modeName(lock))(lock);
+        const props = {
+          auxiliaryPane: screen.renderAuxiliaryPane(lock),
+          backHandler: screen.backHandler(lock),
+          closeHandler: screen.closeHandler(lock),
+          contentRender: ::screen.render,
+          footerText: screen.renderFooterText(lock),
+          headerText: screen.renderHeaderText(lock),
+          lock: lock,
+          screenName: screen.name,
+          submitHandler: screen.submitHandler(lock)
+        };
+        ReactDOM.render(<Lock {...props} />, container);
       } else {
         let container;
         try {
@@ -29,7 +41,7 @@ export default class Renderer {
         } catch (e) {
           // do nothing if container doesn't exist
         }
-        container && React.unmountComponentAtNode(container);
+        container && ReactDOM.unmountComponentAtNode(container);
       }
     });
 

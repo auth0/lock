@@ -3,35 +3,28 @@ import Immutable, { Map } from 'immutable';
 export default class PluginManager {
   constructor(proto) {
     this.proto = proto;
-    this.specs = new Map({});
+    this.plugins = new Map({});
   }
 
-  register(spec) {
-    spec = Immutable.fromJS(spec);
-    this.specs = this.specs.set(spec.get("name"), spec);
+  register(pluginClass) {
+    const plugin = new pluginClass();
+    const { name } = plugin;
+    this.plugins = this.plugins.set(name, plugin);
+    this.proto[name] = function(...args) {
+      const isOpen = plugin.open(this.id, ...args);
+      if (isOpen) {
+        this.plugin = name;
+      }
 
-    if (spec.has("methods")) {
-      spec.getIn(["methods", "open"]).forEach((f, name) => {
-        this.proto[name] = function(...args) {
-          const isOpen = f(this.id, ...args);
-          if (isOpen) {
-            this.plugin = spec.get("name");
-          }
-          return isOpen;
-        }
-      });
+      return isOpen;
     }
   }
 
   renderFns() {
-    return this.specs.map(spec => spec.get("renderFn"));
+    return this.plugins.map(plugin => plugin.render);
   }
 
   closeFn(name) {
-    const f = this.specs.getIn([name, "methods", "close"]);
-    if (typeof f !== "function") {
-      throw new Error("Plugin didn't specify a `close` method.")
-    }
-    return f;
+    return this.plugins.get(name).close;
   }
 }

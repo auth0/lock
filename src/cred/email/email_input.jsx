@@ -1,7 +1,7 @@
 import React from 'react';
-import InputWrap from './input_wrap';
-import Icon from '../icon/icon';
-import { debouncedRequestGravatar, requestGravatar } from '../gravatar/actions';
+import InputWrap from '../input_wrap';
+import Icon from '../../icon/icon';
+import { debouncedRequestGravatar, requestGravatar } from '../../gravatar/actions';
 
 export default class EmailInput extends React.Component {
   constructor(props) {
@@ -10,8 +10,7 @@ export default class EmailInput extends React.Component {
   }
 
   componentDidMount() {
-    const node = React.findDOMNode(this.refs.input);
-    const email = node.value;
+    const email = this.refs.input.value;
     if (email && this.props.gravatar) {
       requestGravatar(email);
     }

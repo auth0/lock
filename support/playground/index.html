@@ -83,6 +83,10 @@
                     <option value="sms" selected>SMS</option>
                     <option value="magiclink">Magic Link</option>
                     <option value="emailcode">Email Code</option>
+                    <option value="social">Social</option>
+                    <option value="socialOrSms">Social or SMS</option>
+                    <option value="socialOrMagiclink">Social or Magic Link</option>
+                    <option value="socialOrEmailcode">Social or Email Code</option>
                   </select>
                   <span class="help-block">Define how you want your user to log into your app.</span>
                 </div>
@@ -125,6 +129,14 @@
                     <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
 
                     <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Connections</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <input type="text" name="connections" class="form-control" placeholder="['facebook', 'twitter']">
+                        <span class="help-block">List of social providers that will be available to perform the authentication. Most of the time you will specify a provider with the connection name, e.g. 'facebook'. When the connection's 'name' and 'strategy' don't match, you'll need to provide an object with those properties, e.g. '{name: "my-connection", strategy: "facebook"}'.  This option doesn't have a default value and must be specified when opening the Lock with a method that provides social authentication.</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Icon</label>
                       <div class="col-xs-12 col-sm-8 col-md-9 col-right">
                         <input type="text" name="icon" class="form-control" placeholder="https://domain.to/your-icon.png">
@@ -152,12 +164,12 @@
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Default Location</label>
                       <div class="col-xs-12 col-sm-8 col-md-9 col-right">
                         <input type="text" name="defaultLocation" class="form-control" placeholder="US">
-                        <span class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> of the country that will be selected by default when entering a phone number. Defaults to 'US'.</span>
+                        <span class="help-block"><a href="http://www.iso.org/iso/country_codes" target="_blank">ISO country code</a> of the country that will be selected by default when entering a phone number. Defaults to the country the user is in and fallback to 'US' when it can't be obtained.</span>
                       </div>
                     </div>
 
                     <div class="form-group form-group-aux">
-                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
                         <input type="checkbox" name="autoclose" checked>
                         <label class="control-label">Auto Close
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock will be closed automatically after a successful sign in. Defaults to 'false'." data-container="body">
@@ -165,7 +177,7 @@
                           </span>
                         </label>
                       </div>
-                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
                         <input type="checkbox" name="closable" checked>
                         <label class="control-label">Closable
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the Lock can be closed. When a container option is provided its value is always 'false', otherwise it defaults to 'true'." data-container="body">
@@ -173,7 +185,15 @@
                           </span>
                         </label>
                       </div>
-                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
+                        <input type="checkbox" name="disableWarnings">
+                        <label class="control-label">Disable Warnings
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not warning messages will be output to the browser's console. Defaults to 'false'." data-container="body">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
                         <input type="checkbox" name="focusInput">
                         <label class="control-label">Focus Input
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed." data-container="body">
@@ -181,7 +201,7 @@
                           </span>
                         </label>
                       </div>
-                      <div class="col-xs-12 col-sm-6 col-md-4 form-group-checkbox">
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
                         <input type="checkbox" name="gravatar" checked>
                         <label class="control-label">Gravatar
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not Gravatar images and user names should be displayed on the Lock's header once an email has been entered. Defaults to 'true'." data-container="body">
@@ -189,7 +209,15 @@
                           </span>
                         </label>
                       </div>
-                      <div class="col-xs-12 col-sm-12 col-md-6 form-group-checkbox">
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
+                        <input type="checkbox" name="popup">
+                        <label class="control-label">Popup
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not a popup is shown when authenticating with a social provider. Defaults to 'false' and it is discouraged.">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
                         <input type="checkbox" name="rememberLastLogin" checked>
                         <label class="control-label">Remember Last Login
                           <span class="help tip-right" rel="tooltip" data-original-title="Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to 'true'.">
@@ -197,7 +225,24 @@
                           </span>
                         </label>
                       </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6 form-group-checkbox">
+                        <input type="checkbox" name="socialBigButtons">
+                        <label class="control-label">Social Big Buttons
+                          <span class="help tip-right" rel="tooltip" data-original-title="Determines the size of the buttons for the social providers specified in the 'connections' option. It defaults to 'true' when the 'connections' option contains at most tree providers, otherwise it defaults to 'false'.">
+                            <i class="fa fa-question-circle">&nbsp;</i>
+                          </span>
+                        </label>
+                      </div>
                     </div>
+
+                    <div class="form-group">
+                      <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Popup Options</label>
+                      <div class="col-xs-12 col-sm-8 col-md-9 col-right">
+                        <textarea name="popupOptions" class="form-control" rows="3" placeholder='{"width": "450px", "height": "450px"}'></textarea>
+                        <span class="help-block">Allows to customize the location of the popup in the screen. Any <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features">position and size feature</a> allowed by 'window.open' is accepted. Defaults to '{}'.</span>
+                      </div>
+                    </div>
+
 
                     <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Resource Dictionary</label>

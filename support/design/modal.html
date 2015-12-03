@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<title>Design</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+<style>
+body {
+  background-color: #1f1f24;
+  color: #727578;
+}
+
+.control {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  background-color: #fff;
+  z-index: 1000000000000;
+}
+
+html.auth0-lock-html body .auth0-lock-container.hide {
+  display: none !important;
+}
+
+.view-chooser {
+  position: absolute;
+  z-index: 1000000000000;
+}
+
+@media screen and (max-width: 480px) {
+  html.auth0-lock-html body > .view-chooser {
+    display: block;
+  }
+}
+</style>
+<div id="control-container"></div>
+<div class="view-chooser">
+  <select id="select"></select>
+  <button id="reload">R</button>
+</div>
+<script src="/build/lock-passwordless.design.js"></script>
+<script>
+
+var select = document.getElementById("select");
+select.addEventListener("change", function(event) {
+  var divs = document.querySelectorAll(".auth0-lock-container");
+  for (var i = 0; i < divs.length; i++) {
+    divs[i].className = "auth0-lock-container hide";
+  };
+
+  var div = document.getElementById("auth0-lock-container-" + select.value);
+  div.className = "auth0-lock-container";
+}, false);
+
+var reload = document.getElementById("reload");
+reload.addEventListener("click", function(event) {
+  var div = document.getElementById("auth0-lock-container-" + select.value);
+  var view = views[select.value - 1];
+
+  if (div.querySelector(".auth0-lock.auth0-lock-opened")) {
+    view.lock.close();
+    setTimeout(function() {
+      view.lock[view.mode](view.opts);
+    }, 1200);
+  } else {
+    view.lock[view.mode](view.opts);
+  }
+}, false);
+
+var views = [];
+
+function addLock(mode, opts) {
+  opts = opts || {};
+  opts.mobile = true;
+  var lock = new Auth0LockPasswordless(cid, domain);
+  lock[mode](opts);
+  views.push({lock: lock, mode: mode, opts: opts});
+
+  var option = document.createElement("option");
+  option.textContent = mode;
+  option.value = views.length;
+  select.appendChild(option);
+}
+
+var cid = "1";
+var domain = "1";
+var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
+
+addLock("emailcode", {
+  dict: {
+    email: {
+      footerText: terms
+    }
+  }
+});
+
+addLock("magiclink", {
+  dict: {
+    email: {
+      footerText: terms
+    }
+  }
+});
+
+addLock("sms");
+
+addLock("social", {
+  connections: ["facebook", "github", "google-oauth2", "twitter"],
+  socialBigButtons: true
+});
+
+addLock("socialOrEmailcode", {
+  connections: ["facebook", "github", "google-oauth2", "yahoo"],
+});
+
+addLock("socialOrMagiclink", {
+  connections: ["facebook", "github", "google-oauth2"]
+});
+
+addLock("socialOrSms", {
+  connections: ["facebook", "github", "google-oauth2"]
+});
+
+var divs = document.querySelectorAll(".auth0-lock-container");
+for (var i = 0; i < divs.length; i++) {
+  divs[i].className = "auth0-lock-container hide";
+};
+
+var div = document.getElementById("auth0-lock-container-1");
+div.className = "auth0-lock-container";
+</script>

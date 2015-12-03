@@ -40,6 +40,9 @@ export default class Control extends React.Component {
         <h3>signIn</h3>
         <ResultSelect selected={this.state.signIn.response}
             onChange={::this.handleSignInResponseChange} />
+
+        <h3>Latency</h3>
+        <input type="number" onChange={::this.handleLatencyChange} value={this.state.latency}/>
       </div>
       <div><Snapshot /></div>
       <div><br />
@@ -66,6 +69,10 @@ export default class Control extends React.Component {
 
   handleSignInResponseChange(value) {
     store.swap(state => state.setIn(["signIn", "response"], value));
+  }
+
+  handleLatencyChange(e) {
+    store.swap(state => state.set("latency", e.target.value));
   }
 }
 
@@ -113,7 +120,7 @@ class Snapshot extends React.Component {
       <div>
         <h3>Snapshot</h3>
         State: { }
-        <textarea value={this.state.snapshot} />
+        <textarea defaultValue={this.state.snapshot} />
       </div>
     );
   }

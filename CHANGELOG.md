@@ -1,3 +1,28 @@
+## unreleased
+
+### Changed
+
+- The Lock can now be reopened after it is closed.
+- When a `defaultLocation` option is not provided the country code will be derived from the user's geo-location. If it can't be obtained before the Lock is shown, it will default to _+1 (US)_.
+- Some dictionary keys, used for confirmation screens have been renamed:
+  - `emailcode.confirmation` was changed to `emailcode.signedIn`.
+  - `magiclink.confirmation` was changed to `magiclink.emailSent`.
+  - `sms.confirmation` was changed to `sms.signedIn`.
+- Upgraded to React v0.14.3. Thanks @joelburget.
+- Upgraded to Auth0.js 6.7.7.
+
+### Added
+
+- A warning will be shown when a `scope="openid profile"` is used. Can be avoided with the `disableWarnings` option.
+- Now the Lock allows to authenticate with social providers by calling the `social` method. The behavior can be controlled with the new `connections` and `socialBigButtons` options.
+- It is possible to mix social authentication with all the previously provided passwordless alternatives by calling `socialOrMagiclink`, `socialOrEmailcode` or `socialOrSms`.
+- A `destroy` method has been added since calling `close` no longer frees the Lock's resources.
+
+### Fixed
+
+- Some styling tweaks in the Lock's header.
+- Footer text was displayed incorrectly in small screens.
+
 ## [1.0.2] - 2015-09-30
 
 ### Changed

@@ -20,6 +20,11 @@ export function updateEntity(state, coll, id, f, ...args) {
 }
 
 export function setEntity(state, coll, id, m) {
+  if (m === undefined) {
+    m = id;
+    id = 0;
+  }
+
   return state.setIn([coll, id], m);
 }
 
@@ -27,7 +32,7 @@ export function read(f, ...args) {
   return f(store.deref(), ...args);
 }
 
-export function getEntity(state, coll, id) {
+export function getEntity(state, coll, id = 0) {
   return state.getIn([coll, id]);
 }
 
@@ -35,7 +40,7 @@ export function getCollection(state, coll) {
   return state.get(coll);
 }
 
-export function removeEntity(state, coll, id) {
+export function removeEntity(state, coll, id = 0) {
   return state.removeIn([coll, id]);
 }
 

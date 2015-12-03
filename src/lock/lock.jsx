@@ -1,13 +1,12 @@
-import React from 'react/addons';
+import React from 'react';
 import { Map } from 'immutable';
+import Chrome from './chrome';
 import MultisizeSlide from '../multisize-slide/multisize_slide';
 import Avatar from './avatar';
 import IconButton from '../icon/button';
-import Badge from './auth0_badge';
+import Badge from './badge';
 import * as l from './index';
 import * as g from '../gravatar/index';
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-import { closeLock } from './actions';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
 export default class Lock extends React.Component {
@@ -20,7 +19,18 @@ export default class Lock extends React.Component {
   }
 
   render() {
-    const { children, closeHandler, isDone, lock, submitHandler, disallowClose } = this.props;
+    const {
+      auxiliaryPane,
+      backHandler,
+      closeHandler,
+      contentRender,
+      disallowClose,
+      footerText,
+      headerText,
+      lock,
+      screenName,
+      submitHandler
+    } = this.props;
 
     const overlay = l.ui.appendContainer(lock) ?
       <div className="auth0-lock-overlay"/> : null;
@@ -43,8 +53,8 @@ export default class Lock extends React.Component {
       className += " auth0-lock-mode-loading";
     }
 
-    if (isDone) {
-      className += " auth0-lock-complete";
+    if (auxiliaryPane) {
+      className += " auth0-lock-auxiliary";
     }
 
     return (
@@ -55,7 +65,18 @@ export default class Lock extends React.Component {
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
             {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
-              <MultisizeSlide delay={400} transitionName="horizontal-fade">{children}</MultisizeSlide>
+              <MultisizeSlide delay={400} transitionName="horizontal-fade">
+                <Chrome
+                  auxiliaryPane={auxiliaryPane}
+                  backHandler={backHandler}
+                  contentRender={contentRender}
+                  footerText={footerText}
+                  headerText={headerText}
+                  key={screenName}
+                  lock={lock}
+                  showSubmitButton={!!submitHandler}
+                />
+              </MultisizeSlide>
             </div>
           </form>
           <span className="auth0-lock-badge-bottom">
@@ -70,13 +91,15 @@ export default class Lock extends React.Component {
     e.preventDefault();
     const { lock, submitHandler } = this.props;
     if (submitHandler) {
-      submitHandler(lock);
+      submitHandler(l.id(lock));
     }
   }
 
   handleClose() {
     const { closeHandler, lock } = this.props;
-    closeHandler(l.id(lock));
+    if (!l.submitting(lock)) {
+      closeHandler(l.id(lock));
+    }
   }
 
   handleEsc() {
@@ -85,7 +108,16 @@ export default class Lock extends React.Component {
   }
 }
 
-// TODO: complete, add defaults (disallowClose: false)
 Lock.propTypes = {
-  lock: React.PropTypes.object.isRequired
+  auxiliaryPane: React.PropTypes.element,
+  backHandler: React.PropTypes.func,
+  contentRender: React.PropTypes.func.isRequired,
+  footerText: React.PropTypes.element,
+  headerText: React.PropTypes.element,
+  lock: React.PropTypes.object.isRequired,
+  screenName: React.PropTypes.string.isRequired,
+  // closeHandler,
+  // disallowClose,
+  // escHandler
+  // submitHandler,
 };

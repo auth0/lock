@@ -1,17 +1,20 @@
-import Immutable, { Map, Set } from 'immutable';
+import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { iconUrl } from '../icon/index';
 import * as d from '../dict/index';
 import t from '../dict/t';
 
+function buildSetupSnapshot(m) {
+  return m.set("setupSnapshot", m);
+}
+
 export function setup(attrs) {
   const { clientID, domain, id } = attrs;
-
-  return Immutable.fromJS({
+  return buildSetupSnapshot(Immutable.fromJS({
     clientID: clientID,
     domain: domain,
     id: id
-  });
+  }));
 }
 
 export function id(m) {
@@ -26,8 +29,8 @@ export function domain(m) {
   return m.get("domain");
 }
 
-export function mode(m) {
-  return m.get("mode");
+export function modeName(m) {
+  return modeOptions(m).get("name");
 }
 
 export function show(m) {
@@ -72,20 +75,22 @@ export function gravatar(m) {
   }
 }
 
-function extractUIOptions(id, options) {
+function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
-  const dictName = options.modeOptions && options.modeOptions.dictName;
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
     icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
     closable: closable,
-    dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
+    connections: new List(undefined === options.connections ? [] : options.connections),
+    dict: d.build(modeName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     signInCallback: options.signInCallback, // TODO: this doesn't belong here
+    popup: undefined === options.popup ? false : !!options.popup,
+    popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
     primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
   });
@@ -93,7 +98,7 @@ function extractUIOptions(id, options) {
 
 function setUIOptions(m, options) {
   let currentUIOptions = m.get("ui");
-  let newUIOptions = extractUIOptions(id(m), options);;
+  let newUIOptions = extractUIOptions(id(m), modeName(m), options);;
   if (currentUIOptions) {
     const denied = new Set(["containerID", "appendContainer"]);
     const provided = Set.fromKeys(options).subtract(denied);
@@ -112,12 +117,15 @@ export const ui = {
   autoclose: lock => getUIAttribute(lock, "autoclose"),
   icon: lock => getUIAttribute(lock, "icon"),
   closable: lock => getUIAttribute(lock, "closable"),
+  connections: lock => getUIAttribute(lock, "connections"),
   dict: lock => getUIAttribute(lock, "dict"),
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
   mobile: lock => getUIAttribute(lock, "mobile"),
   signInCallback: lock => getUIAttribute(lock, "signInCallback"),
+  popup: lock => getUIAttribute(lock, "popup"),
+  popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
   rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
 };
@@ -158,20 +166,20 @@ export function invokeDoneCallback(m, ...args) {
 }
 
 export function shouldRedirect(m) {
-  return login.callbackURL(m);
+  return m.get("forceRedirect", false) || login.callbackURL(m);
 }
 
-export function render(m, modeName, options) {
-  if ((mode(m) != undefined && mode(m) != modeName) || show(m)) {
+export function render(m, name, options) {
+  if ((modeName(m) != undefined && modeName(m) != name) || show(m)) {
     return m;
   }
 
-  const { modeOptions } = options;
+  const mode = options.mode || {};
+  mode.name = name;
 
   m = m.merge(Immutable.fromJS({
-    mode: modeName,
-    render: true,
-    modeOptions: modeOptions
+    mode: mode,
+    render: true
   }));
 
   m = setUIOptions(m, options);
@@ -181,11 +189,23 @@ export function render(m, modeName, options) {
 }
 
 export function modeOptions(m) {
-  return m.get("modeOptions", false);
+  return m.get("mode", new Map());
 }
 
 export function close(m) {
   return m.set("show", false);
+}
+
+export function reset(m) {
+  return buildSetupSnapshot(m.get("setupSnapshot"));
+}
+
+export function setSignedIn(m, value) {
+  return m.set("signedIn", value);
+}
+
+export function signedIn(m) {
+  return m.get("signedIn", false);
 }
 
 export function tabIndex(m, n) {

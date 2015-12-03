@@ -3,47 +3,9 @@ import { read, getEntity, swap, updateEntity } from '../store/index';
 import { closeLock } from '../lock/actions';
 import webApi from '../lock/web_api';
 import * as c from '../cred/index';
-import * as cc from '../cred/country_codes';
 import * as cs from '../cred/storage';
 import * as l from '../lock/index';
 import * as m from './index';
-
-export function changePhoneNumber(id, phoneNumber) {
-  swap(updateEntity, "lock", id, c.setPhoneNumber, phoneNumber);
-}
-
-export function changePhoneLocation(id, location) {
-  swap(updateEntity, "lock", id, lock => {
-    lock = m.closeLocationSelect(lock);
-    lock = c.setPhoneLocation(lock, location);
-    return lock;
-  });
-}
-
-export function setDefaultLocation(id, str) {
-  const result = cc.findByIsoCode(str);
-  if (!result) {
-    throw new Error(`Unable to set the default location, can't find any country with the code "${str}".`);
-  }
-
-  swap(updateEntity, "lock", id, c.setPhoneLocation, result);
-}
-
-export function changeEmail(id, email) {
-  swap(updateEntity, "lock", id, c.setEmail, email);
-}
-
-export function changeVcode(id, vcode) {
-  swap(updateEntity, "lock", id, c.setVcode, vcode)
-}
-
-export function selectPhoneLocation(id, searchStr) {
-  swap(updateEntity, "lock", id, m.openLocationSelect, searchStr);
-}
-
-export function cancelSelectPhoneLocation(id) {
-  swap(updateEntity, "lock", id, m.closeLocationSelect);
-}
 
 export function requestPasswordlessEmail(id) {
   // TODO: abstract this submit thing.
@@ -83,7 +45,7 @@ export function requestPasswordlessEmailSuccess(id) {
     return m.setPasswordlessStarted(l.setSubmitting(lock, false), true);
   });
   const lock = read(getEntity, "lock", id);
-  cs.store(lock, "email", l.modeOptions(lock).get("storageKey"));
+  cs.store(lock, "email", l.modeName(lock));
   if (m.send(lock) === "link") {
     l.invokeDoneCallback(lock, null, c.email(lock));
   }
@@ -131,7 +93,7 @@ export function sendSMSSuccess(id) {
   });
 
   const lock = read(getEntity, "lock", id);
-  cs.store(lock, "phoneNumber", l.modeOptions(lock).get("storageKey"));
+  cs.store(lock, "phoneNumber", l.modeName(lock));
 }
 
 export function sendSMSError(id, error) {
@@ -225,10 +187,10 @@ function signInSuccess(id, ...args) {
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => m.setSignedIn(l.setSubmitting(lock, false), true));
+    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
     l.invokeDoneCallback(lock, null, ...args);
   } else {
-    closeLock(id, m.reset, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
   }
 }
 
@@ -243,13 +205,6 @@ function signInError(id, error) {
 
 export function reset(id, opts = {}) {
   swap(updateEntity, "lock", id, m.reset, opts);
-}
-
-export function close(id, force = false) {
-  const lock = read(getEntity, "lock", id);
-  if (l.ui.closable(lock) || force) {
-    closeLock(id, m.reset);
-  }
 }
 
 export function back(id, resetOpts = {}) {
