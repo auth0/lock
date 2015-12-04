@@ -1196,6 +1196,11 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
     extra.connection_scope = extra.connection_scopes[connectionName];
   }
 
+  if (strategyName === 'facebook') {
+    extraParams = extraParams || {};
+    extraParams.display = 'popup';
+  }
+
   if (strategy) {
     // If we are in popup mode and responseType == 'token' was specified
     // we need to pass a callback.
