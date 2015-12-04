@@ -7424,8 +7424,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-action {
-  height: 55px;
+  height: 70px;
   margin: 30px 0 0;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-action button {
+  text-indent: -99999px;
+  height: 70px;
+  padding: 0;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-action button:after {
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPjxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHNrZXRjaDp0eXBlPSJNU1BhZ2UiPjxnIGlkPSJMb2NrIiBza2V0Y2g6dHlwZT0iTVNBcnRib2FyZEdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjgwLjAwMDAwMCwgLTM1OTIuMDAwMDAwKSI+PGcgaWQ9IlNNUyIgc2tldGNoOnR5cGU9Ik1TTGF5ZXJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUzLjAwMDAwMCwgMzIwNy4wMDAwMDApIj48ZyBpZD0iR3JvdXAiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjxnIGlkPSJMb2dpbiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDM2OS4wMDAwMDApIj48ZyBpZD0iQnRuIj48ZyBpZD0iT3ZhbC0zMDItKy1TaGFwZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4LjAwMDAwMCwgMTcuMDAwMDAwKSI+PGNpcmNsZSBpZD0iT3ZhbC0zMDIiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIiBjeD0iMjAuNSIgY3k9IjIwIiByPSIyMCI+PC9jaXJjbGU+PHBhdGggZD0iTTE3LjgsMTUuNCBMMTkuMiwxNCBMMjUuMiwyMCBMMTkuMiwyNiBMMTcuOCwyNC42IEwyMi40LDIwIEwxNy44LDE1LjQgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==') no-repeat;
+  content: "";
+  display: block;
+  width: 43px;
+  height: 42px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-separator {
