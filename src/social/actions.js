@@ -9,7 +9,7 @@ export function signIn(id, connection) {
   const lock = read(getEntity, "lock", id);
 
   const options = {
-    connection: connection,
+    connection: connection.name,
     popup: l.ui.popup(lock),
     popupOptions: l.ui.popupOptions(lock),
     redirect: !l.ui.popup(lock),
@@ -18,6 +18,11 @@ export function signIn(id, connection) {
     forceJSONP: l.login.forceJSONP(lock)
     // sso: false
   };
+
+  if (l.ui.popup(lock) && connection.strategy === "facebook") {
+    options.display = "popup";
+  }
+
   WebAPI.signIn(id, options,  (error, ...args) => {
     if (error) {
       setTimeout(() => signInError(id, error), 250);
