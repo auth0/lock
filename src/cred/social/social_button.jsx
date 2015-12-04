@@ -29,7 +29,7 @@ export default class SocialButton extends React.Component {
 
   handleClick() {
     const { lock, connection } = this.props;
-    signIn(l.id(lock), connection.name);
+    signIn(l.id(lock), connection);
   }
 }
 
