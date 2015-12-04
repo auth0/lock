@@ -1,3 +1,12 @@
+## [7.12.4] - 2015-12-04
+
+### Fixed
+
+- [] Merge pull request #263 from auth0/facebook-display-popup (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d72026956917c077342395f0715531a8da87ec36
+- [] Pass display='popup' for popup facebook strategy (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ed268e35c578d711c103e0ba802822a7264f52e9
+
 ## [7.12.3] - 2015-11-26
 
 ### Fixed
