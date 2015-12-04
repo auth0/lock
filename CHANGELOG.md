@@ -1,8 +1,8 @@
-## unreleased
+## [2.0.1] - 2015-12-04
 
 ### Fixed
 
-- Ensure Facebook page looks fine in the popup by passing the `display: "popup"` option.
+- Ensure Facebook page looks fine in the popup.
 
 ## [2.0.0] - 2015-12-03
 
