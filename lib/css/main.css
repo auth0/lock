@@ -7248,6 +7248,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image img {
   width: 80px;
   height: 80px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar {
@@ -7258,6 +7260,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   width: 80px;
   height: 80px;
   margin-top: -16px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar i {
