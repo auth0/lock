@@ -1,3 +1,12 @@
+## [7.12.5] - 2015-12-08
+
+### Fixed
+
+- [] Merge pull request #264 from auth0/upgrade-debug (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b2ee63a5356765763c324029f3a160bef2bcc9ee
+- [] Update debug module to 2.2.0, closes #255 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/85f8c719ff1b91f6706bf22e9291680be39888c2
+
 ## [7.12.4] - 2015-12-04
 
 ### Fixed
