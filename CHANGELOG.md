@@ -1,3 +1,10 @@
+## [7.10.4] - 2015-12-07
+
+### Fixed
+
+- [] Fixes alignment in Chrome, fixes #230 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/df036a565cab231eadb6a00f961cdc3129fd0864
+
 ## [7.10.3] - 2015-08-26
 
 ### Fixed
