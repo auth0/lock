@@ -35,13 +35,13 @@ module.exports = function (grunt) {
         options: {
           hostname: '*',
           base: ['support/development-demo', 'support/development-demo/build', 'build'],
-          port: 3000
+          port: process.env.PORT || 3000
         }
       },
       'demo-https': {
         options: {
           base: ['support/development-demo', 'support/development-demo/build', 'build'],
-          port:  3000,
+          port:  process.env.PORT || 3000,
           protocol: 'https',
           hostname: '*',
           cert: fs.readFileSync(__dirname + '/test/support/https-certs/server.crt').toString(),
