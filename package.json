@@ -78,5 +78,8 @@
       "brfs",
       "packageify"
     ]
+  },
+  "engines": {
+    "node": "4.2.3"
   }
 }
