@@ -54,21 +54,22 @@ export default class Chrome extends React.Component {
     return (
       <div className="auth0-lock-cred-pane">
         <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
+        <ReactTransitionGroup>
+          {globalError && <GlobalError key="global-error" message={globalError} />}
+        </ReactTransitionGroup>
         <div style={{position: "relative"}}>
-        <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
-          <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>
-            <ReactTransitionGroup>
-              {globalError && <GlobalError key="global-error" message={globalError} />}
-            </ReactTransitionGroup>
-            <div className="auth0-lock-content">
-              <div className="auth0-lock-form">
-                {header}
-                {contentRender({focusSubmit: ::this.focusSubmit, lock})}
+          <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
+            <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>
+              <div className="auth0-lock-content">
+                <div className="auth0-lock-form">
+                  {header}
+                  {contentRender({focusSubmit: ::this.focusSubmit, lock})}
+                </div>
               </div>
-            </div>
-            {footer}
-          </Placeholder>
-        </MultisizeSlide></div>
+              {footer}
+            </Placeholder>
+          </MultisizeSlide>
+        </div>
         {showSubmitButton && <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />}
         <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
           {auxiliaryPane}

@@ -39,7 +39,7 @@ export function databaseConnection(m) {
 }
 
 export function setActivity(m, name) {
-  return m.set("activity", name);
+  return l.clearGlobalError(m.set("activity", name));
 }
 
 export function getActivity(m) {
