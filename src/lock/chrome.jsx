@@ -30,7 +30,7 @@ export default class Chrome extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, contentRender, headerText, footerText, lock, screenName, showSubmitButton } = this.props;
+    const { auxiliaryPane, backHandler, contentRender, headerText, footerText, lock, screenName, showSubmitButton, tabs } = this.props;
     const { reverse, sliding } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -50,13 +50,13 @@ export default class Chrome extends React.Component {
 
     const header = headerText && <p>{headerText}</p>;
     const footer = footerText && <Terms>{footerText}</Terms>;
-
     return (
       <div className="auth0-lock-cred-pane">
         <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <ReactTransitionGroup>
           {globalError && <GlobalError key="global-error" message={globalError} />}
         </ReactTransitionGroup>
+        {tabs}
         <div style={{position: "relative"}}>
           <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
             <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>

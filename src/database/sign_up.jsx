@@ -22,6 +22,12 @@ export default class SignUp extends Screen {
     return renderSignedUpConfirmation(lock);
   }
 
+  renderTabs(lock) {
+    return hasActivity(lock, "login")
+      ? <LoginSignUpTabs key="loginsignup" lock={lock}/>
+      : null;
+  }
+
   render({lock}) {
     const usernamePane = authWithUsername(lock)
       ? <UsernamePane
@@ -30,13 +36,8 @@ export default class SignUp extends Screen {
         />
       : null;
 
-    const tabs = hasActivity(lock, "login")
-      ? <LoginSignUpTabs lock={lock}/>
-      : null;
-
     return (
       <div>
-        {tabs}
         <EmailPane
           lock={lock}
           placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}

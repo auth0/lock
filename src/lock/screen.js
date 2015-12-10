@@ -34,6 +34,10 @@ export default class Screen {
     return this.t(lock, ["headerText"]);
   }
 
+  renderTabs() {
+    return null;
+  }
+
   t(lock, keyPath, params) {
     return l.ui.t(lock, [this.name].concat(keyPath), params);
   }

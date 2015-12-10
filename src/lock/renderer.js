@@ -31,7 +31,8 @@ export default class Renderer {
           headerText: screen.renderHeaderText(lock),
           lock: lock,
           screenName: screen.name,
-          submitHandler: screen.submitHandler(lock)
+          submitHandler: screen.submitHandler(lock),
+          tabs: screen.renderTabs(lock)
         };
         ReactDOM.render(<Lock {...props} />, container);
       } else {

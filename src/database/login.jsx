@@ -19,6 +19,12 @@ export default class Login extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
+  renderTabs(lock) {
+    return hasActivity(lock, "signUp")
+      ? <LoginSignUpTabs key="loginsignup" lock={lock}/>
+      : null;
+  }
+
   submitHandler(lock) {
     return authWithUsername(lock) ? signInWithUsername : signInWithEmail;
   }
@@ -34,10 +40,6 @@ export default class Login extends Screen {
           placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
         />;
 
-    const tabs = hasActivity(lock, "signUp")
-      ? <LoginSignUpTabs lock={lock}/>
-      : null;
-
     const dontRememberPassword = hasActivity(lock, "resetPassword")
       ? <p className="auth0-lock-alternative">
           <a
@@ -52,7 +54,6 @@ export default class Login extends Screen {
 
     return (
       <div>
-        {tabs}
         {credPane}
         <PasswordPane
           lock={lock}

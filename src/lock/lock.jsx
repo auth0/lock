@@ -28,7 +28,8 @@ export default class Lock extends React.Component {
       headerText,
       lock,
       screenName,
-      submitHandler
+      submitHandler,
+      tabs
     } = this.props;
 
     const overlay = l.ui.appendContainer(lock) ?
@@ -73,6 +74,7 @@ export default class Lock extends React.Component {
                 screenName={screenName}
                 lock={lock}
                 showSubmitButton={!!submitHandler}
+                tabs={tabs}
               />
             </div>
           </form>
@@ -113,6 +115,7 @@ Lock.propTypes = {
   headerText: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   screenName: React.PropTypes.string.isRequired,
+  tabs: React.PropTypes.element
   // closeHandler,
   // disallowClose,
   // escHandler
