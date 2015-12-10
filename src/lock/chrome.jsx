@@ -50,13 +50,15 @@ export default class Chrome extends React.Component {
 
     const header = headerText && <p>{headerText}</p>;
     const footer = footerText && <Terms>{footerText}</Terms>;
+    const tabsContainer = tabs && <div className="auth0-lock-tabs-container">{tabs}</div>;
+
     return (
       <div className="auth0-lock-cred-pane">
         <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <ReactTransitionGroup>
           {globalError && <GlobalError key="global-error" message={globalError} />}
         </ReactTransitionGroup>
-        {tabs}
+        {tabsContainer}
         <div style={{position: "relative"}}>
           <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
             <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>
