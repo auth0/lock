@@ -32,8 +32,12 @@ export default class VcodePane extends React.Component {
           placeholder={placeholder}
           disabled={l.submitting(lock)}
           tabIndex={l.tabIndex(lock, tabIndex)} />
-        <p className="auth0-lock-did-not-receive-code">
-          <a href="#" className="auth0-lock-did-not-receive-code-link" onClick={::this.handleResendClick}>
+        <p className="auth0-lock-alternative">
+          <a
+            className="auth0-lock-alternative-link"
+            href="#"
+            onClick={::this.handleResendClick}
+          >
             {resendLabel}
           </a>
         </p>

@@ -39,8 +39,12 @@ export default class Login extends Screen {
       : null;
 
     const dontRememberPassword = hasActivity(lock, "resetPassword")
-      ? <p className="auth0-lock-dont-remember-password">
-          <a onClick={() => showResetPasswordActivity(l.id(lock))}>
+      ? <p className="auth0-lock-alternative">
+          <a
+            className="auth0-lock-alternative-link"
+            href="#"
+            onClick={() => showResetPasswordActivity(l.id(lock))}
+          >
             Don't remember your password?
           </a>
         </p>
