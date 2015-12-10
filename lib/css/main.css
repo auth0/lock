@@ -7225,14 +7225,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background: #f7f7f7;
   margin-bottom: 0;
   margin-top: 0;
-  padding-bottom: 10px;
   border-radius: 3px 3px 0 0;
+  min-height: 96px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-header h1 {
   font-size: 24px;
   font-weight: 100;
   margin-top: 10px;
+  display: none;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image {
