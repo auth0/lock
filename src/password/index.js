@@ -9,7 +9,6 @@ export function initPassword(model, options) {
 }
 
 function processPasswordOptions(options) {
-  console.log("options", options);
   let { activities, connection, loginAfterSignUp, usernameStyle } = options;
 
   if (!connection || typeof connection !== "string") {

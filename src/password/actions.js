@@ -228,7 +228,6 @@ function autoSignInError(id, error) {
   // TODO: proper error message
   // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
   const errorMessage = "An error ocurred when logging in";
-  console.log("ufff");
   swap(updateEntity, "lock", id, m => {
     m = l.setSubmitting(m, false, errorMessage);
     m = m.set("signedIn", false);
