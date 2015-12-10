@@ -1,17 +1,17 @@
 import { Mode } from '../index';
-import Login from '../../password/login';
-import ResetPassword from '../../password/reset_password';
-import SignUp from '../../password/sign_up';
-import { getActivity, initPassword } from '../../password/index';
+import Login from '../../database/login';
+import ResetPassword from '../../database/reset_password';
+import SignUp from '../../database/sign_up';
+import { getActivity, initDatabase } from '../../database/index';
 
-export default class Password extends Mode {
+export default class Database extends Mode {
 
   constructor() {
-    super("password");
+    super("database");
   }
 
   willOpen(model, options) {
-    this.setModel(initPassword(model, options));
+    this.setModel(initDatabase(model, options));
   }
 
   render(lock) {

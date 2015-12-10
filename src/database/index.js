@@ -1,14 +1,14 @@
 import Immutable from 'immutable';
 import * as l from '../lock/index';
 
-export function initPassword(model, options) {
+export function initDatabase(model, options) {
   return model.setIn(
-    ["password", "opts"],
-    Immutable.fromJS(processPasswordOptions(options))
+    ["database", "opts"],
+    Immutable.fromJS(processDatabaseOptions(options))
   );
 }
 
-function processPasswordOptions(options) {
+function processDatabaseOptions(options) {
   let { activities, connection, loginAfterSignUp, usernameStyle } = options;
 
   if (!connection || typeof connection !== "string") {
@@ -35,7 +35,7 @@ function processPasswordOptions(options) {
 }
 
 export function databaseConnection(m) {
-  return m.getIn(["password", "opts", "connection"]);
+  return m.getIn(["database", "opts", "connection"]);
 }
 
 export function setActivity(m, name) {
@@ -43,17 +43,17 @@ export function setActivity(m, name) {
 }
 
 export function getActivity(m) {
-  return m.get("activity", m.getIn(["password", "opts", "activities", 0]));
+  return m.get("activity", m.getIn(["database", "opts", "activities", 0]));
 }
 
 export function authWithUsername(m) {
-  return m.getIn(["password", "opts", "usernameStyle"]) === "username";
+  return m.getIn(["database", "opts", "usernameStyle"]) === "username";
 }
 
 export function hasActivity(m, s) {
-  return m.getIn(["password", "opts", "activities"]).contains(s);
+  return m.getIn(["database", "opts", "activities"]).contains(s);
 }
 
 export function shouldAutoLogin(m) {
-  return m.getIn(["password", "opts", "loginAfterSignUp"]);
+  return m.getIn(["database", "opts", "loginAfterSignUp"]);
 }

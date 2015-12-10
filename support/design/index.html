@@ -59,9 +59,9 @@ body {
 
 <div class="container">
   <div class="info">
-    <h2>password</h2>
+    <h2>database</h2>
   </div>
-  <div class="lock-container" id="password-container"></div>
+  <div class="lock-container" id="database-container"></div>
 </div>
 
 <div class="container">
@@ -124,10 +124,10 @@ magiclinkLock.magiclink({
   }
 });
 
-var passwordLock = new Auth0LockPasswordless(cid, domain);
-passwordLock.password({
+var databaseLock = new Auth0LockPasswordless(cid, domain);
+databaseLock.database({
   connection: "db",
-  container: "password-container",
+  container: "database-container",
   dict: {
     emailAndPassword: {
       footerText: terms
