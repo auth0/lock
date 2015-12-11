@@ -31,14 +31,14 @@ export function signInWithUsername(id) {
       username: c.username(lock),
       password: c.password(lock),
       sso: false,
-      responseType: l.login.responseType(lock),
-      callbackURL: l.login.callbackURL(lock),
-      forceJSONP: l.login.forceJSONP(lock)
+      responseType: l.auth.responseType(lock),
+      callbackURL: l.auth.callbackURL(lock),
+      forceJSONP: l.auth.forceJSONP(lock)
     };
 
     webApi.signIn(
       id,
-      Map(options).merge(l.login.authParams(lock)).toJS(),
+      Map(options).merge(l.auth.authParams(lock)).toJS(),
       (error, ...args) => {
         if (error) {
           setTimeout(() => signInError(id, error), 250);
@@ -71,14 +71,14 @@ export function signInWithEmail(id) {
       username: c.email(lock),
       password: c.password(lock),
       sso: false,
-      responseType: l.login.responseType(lock),
-      callbackURL: l.login.callbackURL(lock),
-      forceJSONP: l.login.forceJSONP(lock)
+      responseType: l.auth.responseType(lock),
+      callbackURL: l.auth.callbackURL(lock),
+      forceJSONP: l.auth.forceJSONP(lock)
     };
 
     webApi.signIn(
       id,
-      Map(options).merge(l.login.authParams(lock)).toJS(),
+      Map(options).merge(l.auth.authParams(lock)).toJS(),
       (error, ...args) => {
         if (error) {
           setTimeout(() => signInError(id, error), 250);
@@ -171,14 +171,14 @@ function signUpSuccess(id, ...args) {
       username: c.email(lock),
       password: c.password(lock),
       sso: false,
-      responseType: l.login.responseType(lock),
-      callbackURL: l.login.callbackURL(lock),
-      forceJSONP: l.login.forceJSONP(lock)
+      responseType: l.auth.responseType(lock),
+      callbackURL: l.auth.callbackURL(lock),
+      forceJSONP: l.auth.forceJSONP(lock)
     };
 
     return webApi.signIn(
       id,
-      Map(options).merge(l.login.authParams(lock)).toJS(),
+      Map(options).merge(l.auth.authParams(lock)).toJS(),
       (error, ...args) => {
         if (error) {
           setTimeout(() => autoSignInError(id, error), 250);

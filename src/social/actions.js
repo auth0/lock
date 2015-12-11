@@ -14,9 +14,9 @@ export function signIn(id, connection) {
     popup: l.ui.popup(lock),
     popupOptions: l.ui.popupOptions(lock),
     redirect: !l.ui.popup(lock),
-    responseType: l.login.responseType(lock),
-    callbackURL: l.login.callbackURL(lock),
-    forceJSONP: l.login.forceJSONP(lock)
+    responseType: l.auth.responseType(lock),
+    callbackURL: l.auth.callbackURL(lock),
+    forceJSONP: l.auth.forceJSONP(lock)
   })).toJS();
 
   if (l.ui.popup(lock) && connection.strategy === "facebook") {

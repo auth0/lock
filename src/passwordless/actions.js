@@ -22,12 +22,12 @@ export function requestPasswordlessEmail(id) {
   if (l.submitting(lock)) {
     const isMagicLink = m.send(lock) === "link";
     const options = {
-      authParams: isMagicLink ? l.login.authParams(lock).toJS() : {},
-      callbackURL: l.login.callbackURL(lock),
-      forceJSONP: l.login.forceJSONP(lock),
+      authParams: isMagicLink ? l.auth.authParams(lock).toJS() : {},
+      callbackURL: l.auth.callbackURL(lock),
+      forceJSONP: l.auth.forceJSONP(lock),
       email: c.email(lock),
       send: m.send(lock),
-      responseType: l.login.responseType(lock)
+      responseType: l.auth.responseType(lock)
     };
 
     webApi.startPasswordless(id, options, error => {
@@ -113,12 +113,12 @@ export function resendEmail(id) {
 
   const lock = read(getEntity, "lock", id);
   const options = {
-    authParams: m.send(lock) === "link" ? l.login.authParams(lock).toJS() : {},
+    authParams: m.send(lock) === "link" ? l.auth.authParams(lock).toJS() : {},
     email: c.email(lock),
     send: m.send(lock),
-    responseType: l.login.responseType(lock),
-    callbackURL: l.login.callbackURL(lock),
-    forceJSONP: l.login.forceJSONP(lock)
+    responseType: l.auth.responseType(lock),
+    callbackURL: l.auth.callbackURL(lock),
+    forceJSONP: l.auth.forceJSONP(lock)
   };
   webApi.startPasswordless(id, options, error => {
     if (error) {
@@ -157,9 +157,9 @@ export function signIn(id) {
     const options = {
       passcode: c.vcode(lock),
       redirect: l.shouldRedirect(lock),
-      responseType: l.login.responseType(lock),
-      callbackURL: l.login.callbackURL(lock),
-      forceJSONP: l.login.forceJSONP(lock)
+      responseType: l.auth.responseType(lock),
+      callbackURL: l.auth.callbackURL(lock),
+      forceJSONP: l.auth.forceJSONP(lock)
     };
 
     if (m.send(lock) === "sms") {
@@ -170,7 +170,7 @@ export function signIn(id) {
 
     webApi.signIn(
       id,
-      Map(options).merge(l.login.authParams(lock)).toJS(),
+      Map(options).merge(l.auth.authParams(lock)).toJS(),
       (error, ...args) => {
         if (error) {
           setTimeout(() => signInError(id, error), 250);

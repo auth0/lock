@@ -131,21 +131,21 @@ export const ui = {
   rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
 };
 
-function getLoginAttribute(m, attribute) {
-  return m.getIn(["login", attribute]);
+function getAuthAttribute(m, attribute) {
+  return m.getIn(["auth", attribute]);
 }
 
 // TODO: find a better name, forceJSONP is not exclusively used for login
-export const login = {
-  authParams: lock => getLoginAttribute(lock, "authParams"),
-  forceJSONP: lock => getLoginAttribute(lock, "forceJSONP"),
-  callbackURL: lock => getLoginAttribute(lock, "callbackURL"),
-  responseType: lock => getLoginAttribute(lock, "responseType")
+export const auth = {
+  authParams: lock => getAuthAttribute(lock, "authParams"),
+  forceJSONP: lock => getAuthAttribute(lock, "forceJSONP"),
+  callbackURL: lock => getAuthAttribute(lock, "callbackURL"),
+  responseType: lock => getAuthAttribute(lock, "responseType")
   // TODO: Add a function that takes an object with login parameters and adds
   // the ones above here.
 };
 
-function setLoginOptions(m, options) {
+function setAuthOptions(m, options) {
   let { authParams, callbackURL, forceJSONP, responseType } = options;
 
   authParams = typeof authParams === "object" ? authParams : {};
@@ -156,14 +156,14 @@ function setLoginOptions(m, options) {
     warn(m, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
-  const loginOptions = Map({
+  const authOptions = Map({
     authParams: Map(authParams),
     callbackURL: callbackURL,
     forceJSONP: forceJSONP,
     responseType: responseType
   });
 
-  return m.set("login", loginOptions);
+  return m.set("auth", authOptions);
 }
 
 export function invokeDoneCallback(m, ...args) {
@@ -171,7 +171,7 @@ export function invokeDoneCallback(m, ...args) {
 }
 
 export function shouldRedirect(m) {
-  return m.get("forceRedirect", false) || login.callbackURL(m);
+  return m.get("forceRedirect", false) || auth.callbackURL(m);
 }
 
 export function render(m, name, options) {
@@ -188,7 +188,7 @@ export function render(m, name, options) {
   }));
 
   m = setUIOptions(m, options);
-  m = setLoginOptions(m, options);
+  m = setAuthOptions(m, options);
 
   return m;
 }
