@@ -615,8 +615,12 @@
   }
 
   .success{color: green}
-  .error{color: red; user-select: all;}
-  .error, .success {margin-bottom: 10px; padding: 0 15px;}
+  .error{
+    background: red;
+    user-select: all;
+    color: white;
+    padding: 15px 0;
+  }
 
   &.errors{
     // border-color: red;

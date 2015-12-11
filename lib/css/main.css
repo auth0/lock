@@ -7501,17 +7501,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-error {
-  color: red;
+  background: red;
   -webkit-user-select: all;
   -moz-user-select: all;
   -ms-user-select: all;
   user-select: all;
-}
-
-#a0-lock.a0-theme-default .a0-panel .a0-error,
-#a0-lock.a0-theme-default .a0-panel .a0-success {
-  margin-bottom: 10px;
-  padding: 0 15px;
+  color: white;
+  padding: 15px 0;
 }
 
 #a0-lock.a0-theme-default .a0-panel.a0-errors.a0-errors-global {
