@@ -1,0 +1,301 @@
+
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Test auth0-lock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="//localhost:35729/livereload.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.auth0.com/styleguide/latest/index.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/index.css"/>
+    <style>
+      body {
+        background-color: #1f1f24;
+      }
+      h3 {
+        color: #f1f1f1;
+        letter-spacing: 1px;
+        float: left;
+        width: 300px;
+        font-weight: 200;
+      }
+      .clearfix {
+        padding: 20px;
+      }
+      .clearfix > div {
+        float: left;
+        padding: 20px 0 60px 20px;
+      }
+    </style>
+  </head>
+  <!--[if IE 9]>
+    <style>.sidebar-box ul a i{display: none}</style>
+  <![endif]-->
+  <body>
+
+    <div class="container">
+
+      <div class="clearfix">
+        <h3>Only Social</h3>
+        <div id="only-social"></div>
+      </div>
+
+      <div class="clearfix">
+        <h3>Free Suscription</h3>
+        <div id="free-suscription"></div>
+      </div>
+
+      <div class="clearfix">
+        <h3>Only email/pass</h3>
+        <div id="only-emailpass"></div>
+      </div>
+
+      <div class="clearfix">
+        <h3>Only user/pass</h3>
+        <div id="only-emailuser"></div>
+      </div>
+
+      <div class="clearfix">
+        <h3>Only Enterprise</h3>
+        <div id="only-enterprise"></div>
+      </div>
+
+      <div class="clearfix">
+        <h3>Custom Icon</h3>
+        <div id="custom-icon"></div>
+      </div>
+
+      <div class="clearfix">
+        <h3>Show SignUp (footer text)</h3>
+        <div id="footer-text"></div>
+      </div>
+
+      <div class="clearfix">
+        <h3>Login fail with rule message</h3>
+        <div id="login-fail"></div>
+      </div>
+
+    </div>
+
+    <script src="/auth0-lock.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script>
+      $(function() {
+          var credentials = {
+            mdocs: {
+              clientID: 'yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih',
+              domain: 'mdocs.auth0.com'
+            },
+            ruleFail: {
+              clientID: 'bS4Htp89Y8vyYREFqqo980Bj4OlWKP2T',
+              domain: 'auth0-tests-lock.auth0.com'
+            },
+            free: {
+              clientID: 'zq4ImejULuvrPaazzFhttRgRUhCg4X3o',
+              domain: 'auth0-demo.auth0.com'
+            }
+          }
+
+          // execute all locks
+
+          onlySocial();
+          freeSuscription();
+          onlyEmailpass();
+          onlyEmailuser();
+          onlyEnterprise();
+          customIcon();
+          footerText();
+          loginFail();
+
+          // function all locks
+
+          function onlySocial() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              connections: ['facebook', 'google-oauth2', 'linkedin', 'twitter'],
+              container: 'only-social'
+            });
+          };
+
+          function freeSuscription() {
+            var cid = credentials.free.clientID;
+            var domain = credentials.free.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              socialBigButtons: true,
+              container: 'free-suscription'
+            });
+          };
+
+          function onlyEmailpass() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              connections: ['mdocs.io'],
+              container: 'only-emailpass'
+            });
+          };
+
+          function onlyEmailuser() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              usernameStyle: 'username',
+              connections: ['mdocs.io'],
+              container: 'only-emailuser'
+            });
+          };
+
+          function onlyEnterprise() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              connections: ['qraftlabs.com'],
+              container: 'only-enterprise'
+            });
+          };
+
+          function customIcon() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png',
+              container: 'custom-icon'
+            });
+          };
+
+          function footerText() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+            var dict = {
+              signup: {
+                footerText: 'By signing up, you agree to our <a href="/terms" target="_new">Terms of service</a> and <a href="/privacy" target="_new">Privacy policy</a>'
+              }
+            };
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignup({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              dict: dict,
+              container: 'footer-text'
+            });
+          };
+
+          function loginFail() {
+            var cid = credentials.ruleFail.clientID;
+            var domain = credentials.ruleFail.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.show({
+              // connections: ['twitter']
+              connections: ['acme'],
+              container: 'login-fail'
+            }, function (err, profile, id_token) {
+
+            });
+          };
+
+          ///////////////////////////
+
+          var cid = credentials.mdocs.clientID;
+          var domain = credentials.mdocs.domain;
+          var widget = new Auth0Lock(cid, domain);
+          var result = widget.parseHash(window.location.hash);
+
+          var cid2 = credentials.free.clientID;
+          var domain2 = credentials.free.domain;
+          var widget2 = new Auth0Lock(cid2, domain2);
+          var result2 = widget2.parseHash(window.location.hash);
+
+          // Clean the hash after parse
+          window.location.hash = "";
+
+          if (result && result.id_token) {
+            // After login, show user profile
+            widget.getProfile(result.id_token, function(err, profile) {
+              if (err) {
+                return alert(err);
+              }
+              console.log(profile);
+              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            });
+
+          } else if (result2 && result2.id_token) {
+            // After login, show user profile
+            widget.getProfile(result2.id_token, function(err, profile) {
+              if (err) {
+                return alert(err);
+              }
+
+              console.log(profile);
+              $('#userinfo pre').text(JSON.stringify(profile, 0, 2));
+            });
+
+          } else if (result && result.error && /invalid_token/.test(result2.error)) {
+            alert('error: ' + result.error);
+          } else if (result2 && result2.error && /invalid_token/.test(result.error)) {
+            alert('error: ' + result2.error);
+          }
+
+          function trackEvents(widget, namespace) {
+            var name = namespace || 'widget';
+
+            ['signup', 'signin', 'reset', 'kerberos', 'loggedin'].forEach(function (mode) {
+              ['ready', 'error', 'success', 'submit'].forEach(function (ev) {
+                var event_name = mode + ' ' + ev;
+                widget.on(event_name, function() {
+                  console.log('Event: "' + event_name + '" fired!');
+                })
+              });
+            });
+
+            widget.on('error shown', function() {
+              console.log('Event: "error shown" fired!');
+            })
+          }
+      });
+
+    </script>
+  </body>
+</html>

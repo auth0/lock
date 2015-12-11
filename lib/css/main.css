@@ -1420,7 +1420,7 @@
 }
 
 #a0-lock .a0-panel .a0-loading {
-  min-height: 110px;
+  height: 300px;
 }
 
 #a0-lock .a0-spin-container {
@@ -7196,10 +7196,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode {
-  -webkit-animation-name: fadein;
-  -webkit-animation-duration: .3s;
-  -webkit-animation-iteration-count: once;
-  -webkit-animation-timing-function: ease-in;
   padding: 30px 30px 0;
   margin: auto;
   position: relative;
@@ -7232,44 +7228,42 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-header h1 {
   font-size: 24px;
   font-weight: 100;
+  padding-bottom: 15px;
   margin-top: 10px;
-  display: none;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container {
+  min-height: 70px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image {
   margin: auto;
   display: inline-block;
-  margin-top: -16px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
+  width: 80px;
+  height: 80px;
   border-radius: 58px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  margin-top: -16px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image img {
-  width: 80px;
-  height: 80px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  height: 55px;
+  margin-top: 15px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar {
-  background: #f1f1f1;
-  margin: auto;
-  display: inline-block;
-  border-radius: 100%;
-  width: 80px;
-  height: 80px;
-  margin-top: -16px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  position: relative;
+  padding-top: 15px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar i {
-  color: #EB5424;
-  font-size: 28px;
-  display: block;
-  padding-top: 25px;
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar img {
+  height: 55px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-footer {
