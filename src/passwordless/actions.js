@@ -21,14 +21,10 @@ export function requestPasswordlessEmail(id) {
 
   if (l.submitting(lock)) {
     const isMagicLink = m.send(lock) === "link";
-    const options = {
-      authParams: isMagicLink ? l.auth.authParams(lock).toJS() : {},
-      callbackURL: l.auth.callbackURL(lock),
-      forceJSONP: l.auth.forceJSONP(lock),
+    const options = l.withAuthOptions(lock, {
       email: c.email(lock),
       send: m.send(lock),
-      responseType: l.auth.responseType(lock)
-    };
+    }, false);
 
     webApi.startPasswordless(id, options, error => {
       if (error) {
@@ -112,14 +108,11 @@ export function resendEmail(id) {
   swap(updateEntity, "lock", id, m.resend);
 
   const lock = read(getEntity, "lock", id);
-  const options = {
-    authParams: m.send(lock) === "link" ? l.auth.authParams(lock).toJS() : {},
+  const options = l.withAuthOptions(lock, {
     email: c.email(lock),
     send: m.send(lock),
-    responseType: l.auth.responseType(lock),
-    callbackURL: l.auth.callbackURL(lock),
-    forceJSONP: l.auth.forceJSONP(lock)
-  };
+  }, false);
+
   webApi.startPasswordless(id, options, error => {
     if (error) {
       resendEmailError(id, error);
@@ -154,13 +147,10 @@ export function signIn(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    const options = {
+    const options = l.withAuthOptions(lock, {
       passcode: c.vcode(lock),
       redirect: l.shouldRedirect(lock),
-      responseType: l.auth.responseType(lock),
-      callbackURL: l.auth.callbackURL(lock),
-      forceJSONP: l.auth.forceJSONP(lock)
-    };
+    });
 
     if (m.send(lock) === "sms") {
       options.phoneNumber = c.fullPhoneNumber(lock);
@@ -170,7 +160,7 @@ export function signIn(id) {
 
     webApi.signIn(
       id,
-      Map(options).merge(l.auth.authParams(lock)).toJS(),
+      options,
       (error, ...args) => {
         if (error) {
           setTimeout(() => signInError(id, error), 250);

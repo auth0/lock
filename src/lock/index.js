@@ -141,8 +141,6 @@ export const auth = {
   forceJSONP: lock => getAuthAttribute(lock, "forceJSONP"),
   callbackURL: lock => getAuthAttribute(lock, "callbackURL"),
   responseType: lock => getAuthAttribute(lock, "responseType")
-  // TODO: Add a function that takes an object with login parameters and adds
-  // the ones above here.
 };
 
 function setAuthOptions(m, options) {
@@ -156,14 +154,23 @@ function setAuthOptions(m, options) {
     warn(m, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
-  const authOptions = Map({
-    authParams: Map(authParams),
+  const authOptions = Immutable.fromJS({
+    authParams: authParams,
     callbackURL: callbackURL,
     forceJSONP: forceJSONP,
     responseType: responseType
   });
 
   return m.set("auth", authOptions);
+}
+
+export function withAuthOptions(m, opts, flattenAuthParams = true) {
+  const auth = m.get("auth");
+  const authOptions = flattenAuthParams
+    ? auth.remove("authParams").merge(auth.get("authParams"))
+    : auth;
+
+  return authOptions.merge(Immutable.fromJS(opts)).toJS();
 }
 
 export function invokeDoneCallback(m, ...args) {

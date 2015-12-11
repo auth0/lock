@@ -26,19 +26,16 @@ export function signInWithUsername(id) {
 
   if (l.submitting(lock)) {
     // TODO: check options
-    const options = {
+    const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.username(lock),
       password: c.password(lock),
       sso: false,
-      responseType: l.auth.responseType(lock),
-      callbackURL: l.auth.callbackURL(lock),
-      forceJSONP: l.auth.forceJSONP(lock)
-    };
+    });
 
     webApi.signIn(
       id,
-      Map(options).merge(l.auth.authParams(lock)).toJS(),
+      options,
       (error, ...args) => {
         if (error) {
           setTimeout(() => signInError(id, error), 250);
@@ -66,19 +63,16 @@ export function signInWithEmail(id) {
 
   if (l.submitting(lock)) {
     // TODO: check options
-    const options = {
+    const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.email(lock),
       password: c.password(lock),
       sso: false,
-      responseType: l.auth.responseType(lock),
-      callbackURL: l.auth.callbackURL(lock),
-      forceJSONP: l.auth.forceJSONP(lock)
-    };
+    });
 
     webApi.signIn(
       id,
-      Map(options).merge(l.auth.authParams(lock)).toJS(),
+      options,
       (error, ...args) => {
         if (error) {
           setTimeout(() => signInError(id, error), 250);
@@ -166,19 +160,16 @@ function signUpSuccess(id, ...args) {
   if (shouldAutoLogin(lock)) {
     swap(updateEntity, "lock", id, m => m.set("signedUp", true));
 
-    const options = {
+    const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.email(lock),
       password: c.password(lock),
-      sso: false,
-      responseType: l.auth.responseType(lock),
-      callbackURL: l.auth.callbackURL(lock),
-      forceJSONP: l.auth.forceJSONP(lock)
-    };
+      sso: false
+    });
 
     return webApi.signIn(
       id,
-      Map(options).merge(l.auth.authParams(lock)).toJS(),
+      options,
       (error, ...args) => {
         if (error) {
           setTimeout(() => autoSignInError(id, error), 250);

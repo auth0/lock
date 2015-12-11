@@ -9,21 +9,19 @@ export function signIn(id, connection) {
 
   const lock = read(getEntity, "lock", id);
 
-  const options = l.login.authParams(lock).merge(Map({
+  const options = l.withAuthOptions(lock, {
     connection: connection.name,
     popup: l.ui.popup(lock),
     popupOptions: l.ui.popupOptions(lock),
     redirect: !l.ui.popup(lock),
-    responseType: l.auth.responseType(lock),
-    callbackURL: l.auth.callbackURL(lock),
-    forceJSONP: l.auth.forceJSONP(lock)
-  })).toJS();
+
+  });
 
   if (l.ui.popup(lock) && connection.strategy === "facebook") {
     options.display = "popup";
   }
 
-  WebAPI.signIn(id, options,  (error, ...args) => {
+  WebAPI.signIn(id, options, (error, ...args) => {
     if (error) {
       setTimeout(() => signInError(id, error), 250);
     } else {
