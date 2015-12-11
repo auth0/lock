@@ -144,21 +144,23 @@ export const auth = {
 };
 
 function setAuthOptions(m, options) {
-  let { authParams, callbackURL, forceJSONP, responseType } = options;
+  let { authParams, callbackURL, forceJSONP, responseType, sso } = options;
 
   authParams = typeof authParams === "object" ? authParams : {};
   callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
   responseType = typeof responseType === "string" ? responseType : callbackURL ? "code" : "token";
+  sso = typeof sso === "boolean" ? sso : true;
 
   if (trim(authParams.scope || "") === "openid profile") {
     warn(m, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
   const authOptions = Immutable.fromJS({
-    authParams: authParams,
-    callbackURL: callbackURL,
-    forceJSONP: forceJSONP,
-    responseType: responseType
+    authParams,
+    callbackURL,
+    forceJSONP,
+    responseType,
+    sso
   });
 
   return m.set("auth", authOptions);

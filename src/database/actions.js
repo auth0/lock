@@ -29,8 +29,7 @@ export function signInWithUsername(id) {
     const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.username(lock),
-      password: c.password(lock),
-      sso: false,
+      password: c.password(lock)
     });
 
     webApi.signIn(
@@ -66,8 +65,7 @@ export function signInWithEmail(id) {
     const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.email(lock),
-      password: c.password(lock),
-      sso: false,
+      password: c.password(lock)
     });
 
     webApi.signIn(
@@ -163,8 +161,7 @@ function signUpSuccess(id, ...args) {
     const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.email(lock),
-      password: c.password(lock),
-      sso: false
+      password: c.password(lock)
     });
 
     return webApi.signIn(

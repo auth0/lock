@@ -13,8 +13,7 @@ export function signIn(id, connection) {
     connection: connection.name,
     popup: l.ui.popup(lock),
     popupOptions: l.ui.popupOptions(lock),
-    redirect: !l.ui.popup(lock),
-
+    redirect: !l.ui.popup(lock)
   });
 
   if (l.ui.popup(lock) && connection.strategy === "facebook") {
