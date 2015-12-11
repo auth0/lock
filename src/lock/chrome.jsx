@@ -58,17 +58,23 @@ export default class Chrome extends React.Component {
         <ReactTransitionGroup>
           {globalError && <GlobalError key="global-error" message={globalError} />}
         </ReactTransitionGroup>
-        {tabsContainer}
         <div style={{position: "relative"}}>
           <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
-            <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>
-              <div className="auth0-lock-content">
-                <div className="auth0-lock-form">
-                  {header}
-                  {contentRender({focusSubmit: ::this.focusSubmit, lock})}
-                </div>
+            <Placeholder ref="content" key={(tabs && tabs.key) || screenName} slideEnd={::this.didSlide}>
+              {tabsContainer}
+              <div style={{position: "relative"}}>
+                <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={false}>
+                  <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>
+                    <div className="auth0-lock-content">
+                      <div className="auth0-lock-form">
+                        {header}
+                        {contentRender({focusSubmit: ::this.focusSubmit, lock})}
+                      </div>
+                    </div>
+                    {footer}
+                  </Placeholder>
+                </MultisizeSlide>
               </div>
-              {footer}
             </Placeholder>
           </MultisizeSlide>
         </div>
@@ -112,6 +118,7 @@ Chrome.defaultProps = {
 };
 
 class Placeholder extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {height: ""};
@@ -149,16 +156,11 @@ class Placeholder extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    if (this.t) {
-      clearInterval(this.t);
-    }
-  }
-
   render() {
     const { children } = this.props;
     const { height } = this.state;
 
     return <div style={height ? {height: height} : {}}>{children}</div>;
   }
+
 }
