@@ -372,7 +372,6 @@ The appearance of the widget and the mechanics of authentication can be customiz
 #### UI options
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
-- **connections {Array}**: List of social providers that will be available to perform the authentication. Most of the time you will specify a provider with the connection name, e.g. `facebook`. When the connection's `name` and `strategy` don't match, you'll need to provide an object with those properties, e.g. `{name: "my-connection", strategy: "facebook"}`.  This option doesn't have a default value and must be specified when opening the Lock with a method that provides social authentication.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
@@ -393,6 +392,16 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **forceJSONP {Boolean}**: Force JSONP requests for all requests to Auth0. This setup is useful when no CORS allowed. Defaults to `false`.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Defaults to `"code"` when `callbackURL` is provided, and to `"token"` otherwise.
 - **usernameStyle {String}**: TODO.
+
+#### Social options
+
+- **connections {Array}**: List of social providers that will be available to perform the authentication. Most of the time you will specify a provider with the connection name, e.g. `facebook`. When the connection's `name` and `strategy` don't match, you'll need to provide an object with those properties, e.g. `{name: "my-connection", strategy: "facebook"}`.  This option doesn't have a default value and must be specified when opening the Lock with a method that provides social authentication.
+
+#### Database options
+
+- **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. Defaults to `"email"`.
+- **connection {String}**: Name of the database connection that will be used to authenticate the user. This option doesn't have a default value and must be specified when opening the Lock with a method that provides database authentication.
+- **loginAfterSignUp {String}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 
 #### Other options
 

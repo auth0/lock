@@ -147,6 +147,8 @@ function getOptions (container) {
   options.primaryColor = $('[name="primaryColor"]').val();
   options.callbackURL = $('[name="callbackURL"]').val() || undefined;
   options.responseType = $('[name="responseType"]').val() || undefined;
+  options.connection = $('[name="connection"]').val() || undefined;
+  options.usernameStyle = $('[name="usernameStyle"]').val() || undefined;
 
   // Booleans
   options.autoclose = !!$('[name="autoclose"]:checked').val();
@@ -155,6 +157,7 @@ function getOptions (container) {
   options.focusInput = !!$('[name="focusInput"]:checked').val();
   options.gravatar = !!$('[name="gravatar"]:checked').val();
   options.forceJSONP = !!$('[name="forceJSONP"]:checked').val();
+  options.loginAfterSignUp = !!$('[name="loginAfterSignUp"]:checked').val();
   options.popup = !!$('[name="popup"]:checked').val();
   options.rememberLastLogin = !!$('[name="rememberLastLogin"]:checked').val();
   options.socialBigButtons = !!$('[name="socialBigButtons"]:checked').val();
@@ -179,13 +182,13 @@ function removeKeys(object, keys, evalFunction) {
 
 function removeDefaultOptions (options) {
   // remove keys whit default value true
-  removeKeys(options, ['closable', 'focusInput', 'gravatar', 'rememberLastLogin'], function (value) { return value === true; });
+  removeKeys(options, ['closable', 'focusInput', 'gravatar', 'loginAfterSignUp', 'rememberLastLogin'], function (value) { return value === true; });
 
   // remove keys whit default value false
   removeKeys(options, ['autoclose', 'disableWarnings', 'forceJSONP'], function (value) { return value === false; });
 
   // remove keys whit default value empty
-  removeKeys(options, ['container', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation'], function (value) { return !value; });
+  removeKeys(options, ['container', 'connection', 'connections', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation', 'usernameStyle'], function (value) { return !value; });
 
   if (options.defaultLocation && options.defaultLocation.toLowerCase() === 'us') {
     delete options.defaultLocation;
