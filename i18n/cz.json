@@ -1,0 +1,48 @@
+{
+  "//": "This is an automatic translation. Help us to improve it.",
+  "loadingTitle": "Prosím čekejte...",
+  "close": " Zavřít",
+  "signin": {
+    "title": "Přihlásit se",
+    "action": "Přístup",
+    "all": "Zobraz vše",
+    "strategyEmailEmpty": "Email je prázdný.",
+    "strategyEmailInvalid": "Email je neplatný.",
+    "strategyDomainInvalid": "Doména {domain} nebyla nastavena.",
+    "signupText": "Zaregistrovat se",
+    "forgotText": "Reset hesla?",
+    "emailPlaceholder": "Email",
+    "usernamePlaceholder": "Uživatelské jméno",
+    "passwordPlaceholder": "Heslo",
+    "separatorText": "nebo",
+    "serverErrorText": "Došlo k chybě během procesu přihlášení.",
+    "returnUserLabel": "Naposledy jste se přihlásili pomocí...",
+    "wrongEmailPasswordErrorText": "Špatný email nebo heslo.",
+    "or": " ... nebo přihlásit pomocí",
+    "loadingMessage": "Přihlášení s {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "Přihlásit se",
+    "action": "Přístup",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Heslo",
+    "cancelAction": "Zrušit",
+    "headerText": "Prosím vložte své jméno a heslo",
+    "footerText": "Klepnutím na \Přístup\ souhlasíte s našimi Podmínkami použití nebo ochrany osobních údajů.",
+    "signupOnSSODomainErrorText": "Tato doména {domain} byla nastavena pro jednorázovou registraci a proto nelze nevytvořit účet.Zkuste se na místo toho zaregistrovat.",
+    "serverErrorText": "Při zpracování přihlášení došlo k chybě."
+  },
+  "reset": {
+    "title": "Přihlásit se",
+    "action": "Přístup",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Heslo",
+    "repeatPasswordPlaceholder": "Potvrdit nové heslo",
+    "cancelAction": "Zrušit",
+    "successText": " Právě jsme Vám odeslali email pro znovu nastavení vašeho hesla.",
+    "enterSamePasswordText": "Prosím vložte stejné heslo.",
+    "headerText": "Prosím vložte své jméno a heslo.",
+    "serverErrorText": "Při zpracování přihlášení došlo k chybě."
+  }
+}
