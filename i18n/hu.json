@@ -1,0 +1,48 @@
+{
+  "//": "Ez egy automatikus fordítás. Segítsen nekünk a fejlesztésében.",
+  "loadingTitle": "Kérem várjon...",
+  "close": "Bezárás",
+  "signin": {
+    "title": "Bejelentkezés",
+    "action": "Bejelentkezés",
+    "all": "Összes megjelenítése",
+    "strategyEmailEmpty": "Kérjük ellenõrizze az e-mail címét",
+    "strategyEmailInvalid": "Érvénytelen e-mail cím.",
+    "strategyDomainInvalid": "{domain} nincs létrehozva.",
+    "signupText": "Bejelentkezés",
+    "forgotText": "Elfelejtette a jelszavát?",
+    "emailPlaceholder": "E-Mail cím",
+    "usernamePlaceholder": "Felhasználónév",
+    "passwordPlaceholder": "Jelszó",
+    "separatorText": "vagy",
+    "serverErrorText": "Hiba a bejelentkezéskor.",
+    "returnUserLabel": "Legutóbbi bejelentkezés ...",
+    "wrongEmailPasswordErrorText": "Hibás e-mail cím vagy jelszó.",
+    "or": "vagy jelentkezzen be, mint ...",
+    "loadingMessage": "Bejelentkezés, mint {connection}..."
+  },
+  "signup": {
+    "description": "",
+    "title": "Regisztráció",
+    "action": "Regisztráció",
+    "emailPlaceholder": "E-Mail cím",
+    "passwordPlaceholder": "Jelszó létrehozása",
+    "cancelAction": "Megszakítás",
+    "headerText": "Kérjük adja meg az e-mail címét és a jelszavát",
+    "footerText": "A \"Bejelentkezés\"re kattintással elfogadja a felhasználási és az adatvédelmi feltételeket.",
+    "signupOnSSODomainErrorText": "A {domain} domaint egyszeri bejelentkezésre állította be, ezért nem tud új fiókot létrehozni. Próbáljon meg közvetlenül bejelentkezni.",
+    "serverErrorText": "Hiba lépett fel a szerveren az adatok feldolgozásakor."
+  },
+  "reset": {
+    "title": "Jelszó visszaállítása",
+    "action": "Küldés",
+    "emailPlaceholder": "E-Mail cím",
+    "passwordPlaceholder": "Új jelszó",
+    "repeatPasswordPlaceholder": "Új jelszó jóváhagyása",
+    "cancelAction": "Megszakítás",
+    "successText": "E-mailt küldtünk a jelszó visszaállításához.",
+    "enterSamePasswordText": "Adja meg újra ugyanazt a jelszót.",
+    "headerText": "Adja meg az e-mail címét és az új jelszót. Ezután e-mailt küldünk a jelszó megváltoztatásának megerõsítésérõl.",
+    "serverErrorText": "Hiba lépett fel az új jelszó feldolgozásakor."
+  }
+}
