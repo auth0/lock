@@ -19,9 +19,10 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "start": "grunt dev",
+    "start": "grunt heroku",
     "build": "grunt build",
     "design": "grunt design",
+    "dev": "grunt dev",
     "dist": "grunt dist",
     "prepublish": "grunt dist",
     "postinstall": "echo \"WARNING: Version 2.2.0 introduces changes to the bundling process, see CHANGELOG.md.\"",
