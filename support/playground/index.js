@@ -166,7 +166,7 @@ function getOptions (container) {
   try { options.dict = JSON.parse($('[name="dict"]').val()); } catch (e) {}
   try { options.authParams = JSON.parse($('[name="authParams"]').val() ); } catch (e) {}
   try { options.popupOptions = JSON.parse($('[name="popupOptions"]').val() ); } catch (e) {}
-  try { options.connections = JSON.parse($('[name="connections"]').val()); } catch (e) {}
+  try { options.socialConnections = JSON.parse($('[name="socialConnections"]').val()); } catch (e) {}
 
   options = removeDefaultOptions(options);
   return options;
@@ -188,7 +188,7 @@ function removeDefaultOptions (options) {
   removeKeys(options, ['autoclose', 'disableWarnings', 'forceJSONP'], function (value) { return value === false; });
 
   // remove keys whit default value empty
-  removeKeys(options, ['container', 'databaseConnection', 'connections', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation', 'usernameStyle'], function (value) { return !value; });
+  removeKeys(options, ['container', 'databaseConnection', 'socialConnections', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation', 'usernameStyle'], function (value) { return !value; });
 
   if (options.defaultLocation && options.defaultLocation.toLowerCase() === 'us') {
     delete options.defaultLocation;

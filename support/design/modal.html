@@ -106,20 +106,20 @@ addLock("magiclink", {
 addLock("sms");
 
 addLock("social", {
-  connections: ["facebook", "github", "google-oauth2", "twitter"],
+  socialConnections: ["facebook", "github", "google-oauth2", "twitter"],
   socialBigButtons: true
 });
 
 addLock("socialOrEmailcode", {
-  connections: ["facebook", "github", "google-oauth2", "yahoo"],
+  socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
 });
 
 addLock("socialOrMagiclink", {
-  connections: ["facebook", "github", "google-oauth2"]
+  socialConnections: ["facebook", "github", "google-oauth2"]
 });
 
 addLock("socialOrSms", {
-  connections: ["facebook", "github", "google-oauth2"]
+  socialConnections: ["facebook", "github", "google-oauth2"]
 });
 
 var divs = document.querySelectorAll(".auth0-lock-container");

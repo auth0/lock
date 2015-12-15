@@ -233,7 +233,7 @@ lock.sms({callbackURL: "http://mydomain/callback"});
 
 Opens a dialog with buttons to authenticate with the specified social providers.
 
-- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `socialConnections` options must always be present. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
 
 #### Example
@@ -241,7 +241,7 @@ Opens a dialog with buttons to authenticate with the specified social providers.
 ```javascript
 // invoke social allowing to authenticate with Facebook and Twitter.
 lock.social({
-  connections: ["facebook", "twitter"]
+  socialConnections: ["facebook", "twitter"]
 });
 ```
 
@@ -249,7 +249,7 @@ lock.social({
 
 Opens a dialog that is a combination of `social` and `magiclink`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for an email address. When the email address is entered, it will send an email containing a _magic link_ that allows the user to log in automatically.
 
-- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `socialConnections` options must always be present. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
 
 #### Example
@@ -257,7 +257,7 @@ Opens a dialog that is a combination of `social` and `magiclink`. It will displa
 ```javascript
 // invoke socialOrMagiclink allowing to authenticate with Facebook and Twitter.
 lock.socialOrMagiclink({
-  connections: ["facebook", "twitter"]
+  socialConnections: ["facebook", "twitter"]
 });
 ```
 
@@ -265,7 +265,7 @@ lock.socialOrMagiclink({
 
 Opens a dialog that is a combination of `social` and `emailcode`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for an email address. When the email address is entered, it will send a _code_ that serves as a one-time password to log in.
 
-- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `socialConnections` options must always be present. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
 
 #### Example
@@ -273,7 +273,7 @@ Opens a dialog that is a combination of `social` and `emailcode`. It will displa
 ```javascript
 // invoke socialOrEmailcode allowing to authenticate with Facebook and Twitter.
 lock.socialOrEmailcode({
-  connections: ["facebook", "twitter"]
+  socialConnections: ["facebook", "twitter"]
 });
 ```
 
@@ -281,7 +281,7 @@ lock.socialOrEmailcode({
 
 Opens a dialog that is a combination of `social` and `sms`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for a phone number. When the phone number is entered, it will send the _code_ in an text message that serves as a one-time password to log in.
 
-- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `socialConnections` options must always be present. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
 
 #### Example
@@ -290,7 +290,7 @@ Opens a dialog that is a combination of `social` and `sms`. It will display butt
 // invoke socialOrSms specifying that buttons to authenticate with Facebook and
 // Twitter should be displayed.
 lock.socialOrSms({
-  connections: ["facebook", "twitter"]
+  socialConnections: ["facebook", "twitter"]
 });
 ```
 
@@ -383,7 +383,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `icon` to ensure all colors go well together with the icon's color palette. Defaults to `"#ea5323"`.
 - **rememberLastLogin {Boolean}**: Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to `true`.
-- **socialBigButtons {Boolean}**: Determines the size of the buttons for the social providers specified in the `connections` option. It defaults to `true` when the `connections` option contains at most tree providers, otherwise it defaults to `false`.
+- **socialBigButtons {Boolean}**: Determines the size of the buttons for the social providers specified in the `socialConnections` option. It defaults to `true` when the `socialConnections` option contains at most tree providers, otherwise it defaults to `false`.
 
 #### Authentication options
 
@@ -395,7 +395,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 
 #### Social options
 
-- **connections {Array}**: List of social providers that will be available to perform the authentication. Most of the time you will specify a provider with the connection name, e.g. `facebook`. When the connection's `name` and `strategy` don't match, you'll need to provide an object with those properties, e.g. `{name: "my-connection", strategy: "facebook"}`.  This option doesn't have a default value and must be specified when opening the Lock with a method that provides social authentication.
+- **socialConnections {Array}**: List of social providers that will be available to perform the authentication. Most of the time you will specify a provider with the connection name, e.g. `facebook`. When the connection's `name` and `strategy` don't match, you'll need to provide an object with those properties, e.g. `{name: "my-connection", strategy: "facebook"}`.  This option doesn't have a default value and must be specified when opening the Lock with a method that provides social authentication.
 
 #### Database options
 
@@ -479,7 +479,7 @@ If you nevertheless decide to use it, you can activate popup mode by passing the
 
 ```js
 lock.social({
-  connections: ["facebook", "twitter"],
+  socialConnections: ["facebook", "twitter"],
   popup: true
 }, function(error, profile, id_token, access_token, state, refresh_token) {
   if (!error) {

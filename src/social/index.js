@@ -49,15 +49,15 @@ export function displayName(connection) {
   return STRATEGIES[connection.strategy];
 }
 
-function processConnections(options) {
+function processSocialConnections(options) {
 
-  const { connections } = options;
+  const { socialConnections } = options;
 
-  if (!Array.isArray(connections) || connections.length === 0) {
-    throw new Error("The `connections` option array needs to be provided with at least one connection.");
+  if (!Array.isArray(socialConnections) || socialConnections.length === 0) {
+    throw new Error("The `socialConnections` option array needs to be provided with at least one connection.");
   }
 
-  const formattedConnections = connections.reduce((r, x) => {
+  const formattedConnections = socialConnections.reduce((r, x) => {
     if (typeof x === "string") {
       if (!STRATEGIES[x]) {
         l.warn(options, `An unknown "${x}" connection was provided.`);
@@ -77,7 +77,7 @@ function processConnections(options) {
   }, []);
 
   if (formattedConnections.length === 0) {
-    throw new Error("The `connections` option must contain at least one valid connection.");
+    throw new Error("The `socialConnections` option must contain at least one valid connection.");
   }
 
   // TODO: check for repeated connections
@@ -88,7 +88,7 @@ function processConnections(options) {
 function processSocialOptions(options) {
   let { socialBigButtons } = options;
 
-  const connections = processConnections(options);
+  const connections = processSocialConnections(options);
 
   socialBigButtons = socialBigButtons === undefined
     ? connections.length <= 3
