@@ -7607,19 +7607,28 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #333;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-signup-footer small {
-  margin-top: 10px;
-  display: block;
+#a0-lock.a0-theme-default .a0-panel .a0-signup-footer,
+#a0-lock.a0-theme-default .a0-panel .a0-signin-footer,
+#a0-lock.a0-theme-default .a0-panel .a0-reset-footer {
+  margin: 0 -30px -30px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-signin-footer small {
-  margin-top: 10px;
-  display: block;
-}
-
+#a0-lock.a0-theme-default .a0-panel .a0-signup-footer small,
+#a0-lock.a0-theme-default .a0-panel .a0-signin-footer small,
 #a0-lock.a0-theme-default .a0-panel .a0-reset-footer small {
-  margin-top: 10px;
+  background: #eee;
+  margin-top: 30px;
   display: block;
+  font-size: 12px;
+  line-height: 22px;
+  color: #666;
+  padding: 10px 30px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-signup-footer a,
+#a0-lock.a0-theme-default .a0-panel .a0-signin-footer a,
+#a0-lock.a0-theme-default .a0-panel .a0-reset-footer a {
+  color: black;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-password_policy_arrow {
