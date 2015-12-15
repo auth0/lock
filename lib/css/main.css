@@ -904,6 +904,11 @@
   transition: opacity 0.2s ease;
 }
 
+#a0-lock.a0-theme-default .a0-zocial:last-child,
+#a0-lock.a0-theme-default a.a0-zocial:last-child {
+  margin-bottom: 0;
+}
+
 #a0-lock.a0-theme-default .a0-zocial:hover {
   opacity: 1;
 }
@@ -7165,6 +7170,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-color: #e9e9e9;
 }
 
+#a0-lock.a0-theme-default .a0-btn-small.a0-cancel {
+  background: #fff;
+  border-radius: 100px;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #333;
+  z-index: 100;
+  border: 6px solid #fff;
+  cursor: pointer;
+  line-height: 0;
+  padding: 0;
+}
+
 #a0-lock.a0-theme-default .a0-overlay {
   background: -webkit-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: -moz-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
@@ -7205,10 +7228,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -moz-animation: fadeIn 1s ease;
   animation: fadeIn 1s ease;
   margin: auto;
-  position: relative;
   background-color: white;
   border-radius: 0 0 3px 3px;
-  overflow: hidden;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode form {
@@ -7535,6 +7556,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   position: absolute;
   bottom: 0;
   left: 0;
+  border-radius: 0 0 3px 3px;
 }
 
 #a0-lock.a0-theme-default .a0-panel button.a0-primary:hover {
@@ -7629,6 +7651,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-signin-footer a,
 #a0-lock.a0-theme-default .a0-panel .a0-reset-footer a {
   color: black;
+  font-weight: normal;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-password_policy_arrow {
