@@ -229,6 +229,32 @@ lock.sms({closable: false}, function(error, profile, id_token, access_token, sta
 lock.sms({callbackURL: "http://mydomain/callback"});
 ```
 
+### .database(options, callback)
+
+Opens a dialog that allow to login using an username and a password. It also allows to sign up and reset the password.
+
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. The `databaseConnection` options must always be present. See [below](#customization) for the details.
+- **callback {Function}**: Will be invoked after an attempt to log the user in has been made.
+
+#### Example
+
+```javascript
+// invoke database with the mandatory databaseConnection
+lock.database({
+  databaseConnection: "Username-Password-Authentication"
+});
+
+// invoke database with options and callback
+lock.database({
+  databaseConnection: "Username-Password-Authentication",
+  closable: false
+}, function(error, profile, id_token, access_token, state, refresh_token) {
+  if (!error) {
+    alert("User has logged in");
+  }
+});
+```
+
 ### .social(options, callback)
 
 Opens a dialog with buttons to authenticate with the specified social providers.
