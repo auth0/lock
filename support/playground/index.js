@@ -147,7 +147,7 @@ function getOptions (container) {
   options.primaryColor = $('[name="primaryColor"]').val();
   options.callbackURL = $('[name="callbackURL"]').val() || undefined;
   options.responseType = $('[name="responseType"]').val() || undefined;
-  options.connection = $('[name="connection"]').val() || undefined;
+  options.databaseConnection = $('[name="databaseConnection"]').val() || undefined;
   options.usernameStyle = $('[name="usernameStyle"]').val() || undefined;
 
   // Booleans
@@ -188,7 +188,7 @@ function removeDefaultOptions (options) {
   removeKeys(options, ['autoclose', 'disableWarnings', 'forceJSONP'], function (value) { return value === false; });
 
   // remove keys whit default value empty
-  removeKeys(options, ['container', 'connection', 'connections', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation', 'usernameStyle'], function (value) { return !value; });
+  removeKeys(options, ['container', 'databaseConnection', 'connections', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation', 'usernameStyle'], function (value) { return !value; });
 
   if (options.defaultLocation && options.defaultLocation.toLowerCase() === 'us') {
     delete options.defaultLocation;

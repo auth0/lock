@@ -400,7 +400,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 #### Database options
 
 - **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. Defaults to `"email"`.
-- **connection {String}**: Name of the database connection that will be used to authenticate the user. This option doesn't have a default value and must be specified when opening the Lock with a method that provides database authentication.
+- **databaseConnection {String}**: Name of the database connection that will be used to authenticate the user. This option doesn't have a default value and must be specified when opening the Lock with a method that provides database authentication.
 - **loginAfterSignUp {String}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 
 #### Other options

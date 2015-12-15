@@ -126,7 +126,7 @@ magiclinkLock.magiclink({
 
 var databaseLock = new Auth0LockPasswordless(cid, domain);
 databaseLock.database({
-  connection: "db",
+  databaseConnection: "db",
   container: "database-container",
   dict: {
     emailAndPassword: {

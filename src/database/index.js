@@ -9,10 +9,15 @@ export function initDatabase(model, options) {
 }
 
 function processDatabaseOptions(options) {
-  let { activities, connection, loginAfterSignUp, usernameStyle } = options;
+  let {
+    activities,
+    databaseConnection,
+    loginAfterSignUp,
+    usernameStyle
+   } = options;
 
-  if (!connection || typeof connection !== "string") {
-    throw new Error("The `connection` option needs to be provided.");
+  if (!databaseConnection || typeof databaseConnection !== "string") {
+    throw new Error("The `databaseConnection` option needs to be provided.");
   }
 
   usernameStyle = usernameStyle === "username" ? "username" : "email";
@@ -31,7 +36,7 @@ function processDatabaseOptions(options) {
 
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
-  return { activities, connection, loginAfterSignUp, usernameStyle };
+  return { activities, databaseConnection, loginAfterSignUp, usernameStyle };
 }
 
 export function databaseConnection(m) {
