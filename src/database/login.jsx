@@ -44,7 +44,6 @@ export default class Login extends Screen {
       ? <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
-            href="#"
             onClick={() => showResetPasswordActivity(l.id(lock))}
           >
             Don't remember your password?
