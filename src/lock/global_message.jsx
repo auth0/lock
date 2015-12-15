@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class GlobalError extends React.Component {
+export default class GlobalMessage extends React.Component {
+
   render() {
+    const { message, type } = this.props;
+    const className = `auth0-global-message auth0-global-message-${type}`
+
     return (
-      <div className="auth0-global-grobal-error">
-        <span className="animated fadeInUp">{this.props.message}</span>
+      <div className={className}>
+        <span className="animated fadeInUp">{message}</span>
       </div>
     );
   }
@@ -63,6 +67,7 @@ export default class GlobalError extends React.Component {
   // }
 }
 
-GlobalError.propTypes = {
-  message: React.PropTypes.string.isRequired
+GlobalMessage.propTypes = {
+  message: React.PropTypes.string.isRequired,
+  type: React.PropTypes.oneOf(['error', 'success']).isRequired
 }

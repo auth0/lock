@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import MultisizeSlide from '../multisize-slide/multisize_slide';
-import GlobalError from './global_error';
+import GlobalMessage from './global_message';
 import SubmitButton from './submit_button';
 import Header from '../header/header';
 import * as l from './index';
@@ -56,7 +56,7 @@ export default class Chrome extends React.Component {
       <div className="auth0-lock-cred-pane">
         <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <ReactTransitionGroup>
-          {globalError && <GlobalError key="global-error" message={globalError} />}
+          {globalError && <GlobalMessage key="global-error" message={globalError} type="error" />}
         </ReactTransitionGroup>
         <div style={{position: "relative"}}>
           <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
