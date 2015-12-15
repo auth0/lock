@@ -118,7 +118,8 @@ describe(".emailcode acceptance", function() {
         email: "someone@auth0.com",
         forceJSONP: undefined,
         responseType: "token",
-        send: "code"
+        send: "code",
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -174,7 +175,8 @@ describe(".emailcode acceptance", function() {
         email: "someone@auth0.com",
         forceJSONP: undefined,
         responseType: "token",
-        send: "code"
+        send: "code",
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });

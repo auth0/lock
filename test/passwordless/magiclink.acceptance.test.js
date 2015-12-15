@@ -119,7 +119,8 @@ describe(".magiclink acceptance", function() {
         email: "someone@auth0.com",
         forceJSONP: undefined,
         responseType: 'token',
-        send: "link"
+        send: "link",
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -171,7 +172,8 @@ describe(".magiclink acceptance", function() {
         email: "someone@auth0.com",
         forceJSONP: undefined,
         responseType: 'token',
-        send: "link"
+        send: "link",
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -233,7 +235,8 @@ describe(".magiclink acceptance", function() {
         send: "link",
         responseType: 'token',
         callbackURL: undefined,
-        forceJSONP: undefined
+        forceJSONP: undefined,
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -284,7 +287,8 @@ describe(".magiclink acceptance", function() {
         send: "link",
         responseType: 'token',
         callbackURL: undefined,
-        forceJSONP: undefined
+        forceJSONP: undefined,
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -342,7 +346,8 @@ describe(".magiclink acceptance", function() {
         send: "link",
         responseType: 'token',
         callbackURL: undefined,
-        forceJSONP: undefined
+        forceJSONP: undefined,
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
@@ -395,7 +400,8 @@ describe(".magiclink acceptance", function() {
         send: "link",
         responseType: 'token',
         callbackURL: undefined,
-        forceJSONP: undefined
+        forceJSONP: undefined,
+        sso: true
       };
       expect(u.hasStartedPasswordless(params)).to.be.ok();
     });
