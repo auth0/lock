@@ -5,6 +5,7 @@ import { getState, subscribe, swap, unsubscribe } from '../../src/store/index';
 
 export const store = atom(Immutable.fromJS({
   latency: 2500,
+  resetPassword: {response: "success"},
   signIn: {response: "success"},
   signUp: {response: "success"},
   startPasswordless: {response: "success"}
@@ -46,6 +47,10 @@ export default class Control extends React.Component {
         <ResultSelect selected={this.state.signUp.response}
             onChange={::this.handleSignUpResponseChange} />
 
+        <h3>resetPassword</h3>
+        <ResultSelect selected={this.state.resetPassword.response}
+            onChange={::this.handleResetPasswordResponseChange} />
+
         <h3>Latency</h3>
         <input type="number" onChange={::this.handleLatencyChange} value={this.state.latency}/>
 
@@ -67,6 +72,10 @@ export default class Control extends React.Component {
     if (e.which === 63) {
       this.setState({showing: true});
     }
+  }
+
+  handleResetPasswordResponseChange(value) {
+    store.swap(state => state.setIn(["resetPassword", "response"], value));
   }
 
   handleStartPasswodlessResponseChange(value) {

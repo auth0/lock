@@ -34,6 +34,13 @@ WebAPI.prototype.startPasswordless = function(lockID, options, cb) {
   setTimeout(() => cb(...args), state.get("latency"));
 };
 
+WebAPI.prototype.resetPassword = function(lockID, options, cb) {
+  const state = store.deref();
+  const args = state.getIn(["resetPassword", "response"]) == "success" ? [null] : [{}];
+  setTimeout(() => cb(...args), state.get("latency"));
+};
+
+
 WebAPI.prototype.getUserCountry = function(lockID, cb) {
   setTimeout(() => cb(null, "AR"), 17);
 }
