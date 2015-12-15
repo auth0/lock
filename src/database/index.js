@@ -44,7 +44,7 @@ export function databaseConnection(m) {
 }
 
 export function setActivity(m, name) {
-  return l.clearGlobalError(m.set("activity", name));
+  return l.clearGlobalSuccess(l.clearGlobalError(m.set("activity", name)));
 }
 
 export function getActivity(m) {

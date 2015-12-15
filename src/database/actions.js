@@ -270,7 +270,13 @@ export function resetPassword(id) {
 function resetPasswordSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
   // TODO: needs to be auto closed?
+  // TODO: what if login is not enabled?
   swap(updateEntity, "lock", id, lock => setActivity(l.setSubmitting(lock, false), "login"));
+
+  setTimeout(() => {
+    const successMessage = l.ui.t(lock, ["success", "resetPassword"], {__textOnly: true});
+    swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
+  }, 500);
 }
 
 function resetPasswordError(id, error) {

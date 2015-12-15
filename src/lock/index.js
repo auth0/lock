@@ -64,6 +64,18 @@ export function clearGlobalError(m) {
   return m.remove("globalError");
 }
 
+export function setGlobalSuccess(m, str) {
+  return m.set("globalSuccess", str);
+}
+
+export function globalSuccess(m) {
+  return m.get("globalSuccess", "");
+}
+
+export function clearGlobalSuccess(m) {
+  return m.remove("globalSuccess");
+}
+
 export function rendering(m) {
   return m.get("render", false);
 }

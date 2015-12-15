@@ -216,5 +216,8 @@ export default {
     },
     title: "Auth0",
     welcome: "Welcome {name}!"
+  },
+  success: {
+    resetPassword: "We've just sent you an email to reset your password."
   }
 };

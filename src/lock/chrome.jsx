@@ -36,6 +36,7 @@ export default class Chrome extends React.Component {
     const gravatar = l.gravatar(lock);
     const icon = l.ui.icon(lock);
     const globalError = l.globalError(lock);
+    const globalSuccess = l.globalSuccess(lock);
     const disableSubmit = l.submitting(lock);
 
     let backgroundUrl, name;
@@ -57,6 +58,7 @@ export default class Chrome extends React.Component {
         <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <ReactTransitionGroup>
           {globalError && <GlobalMessage key="global-error" message={globalError} type="error" />}
+          {globalSuccess && <GlobalMessage key="global-success" message={globalSuccess} type="success" />}
         </ReactTransitionGroup>
         <div style={{position: "relative"}}>
           <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
