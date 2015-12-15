@@ -1360,7 +1360,7 @@
 #a0-lock.a0-theme-default .a0-zocial.a0-icon {
   width: auto;
   display: inline-block;
-  margin: 6px;
+  margin: 4px;
 }
 
 #a0-lock.a0-theme-default .a0-equal-viewport .a0-zocial:before,
@@ -7222,23 +7222,65 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-bottom: 0;
   margin-top: 0;
   border-radius: 3px 3px 0 0;
-  min-height: 96px;
+  min-height: 124px;
+  position: relative;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-header h1 {
   font-size: 24px;
   font-weight: 100;
-  padding-bottom: 15px;
   margin-top: 10px;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: .4;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient img {
+  width: 300px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image,
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-avatar {
+  position: absolute;
+  width: 100%;
+  top: 50;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image {
+  -webkit-filter: blur(40px);
+  -ms-filter: blur(40px);
+  filter: blur(40px);
+  -webkit-backdrop-filter: blur(0);
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-avatar {
+  -webkit-filter: blur(40px) grayscale(1);
+  -ms-filter: blur(40px) grayscale(1);
+  filter: blur(40px) grayscale(1);
+  -webkit-backdrop-filter: blur(0);
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container {
-  min-height: 70px;
+  min-height: 124px;
+  position: relative;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image {
   margin: auto;
   display: inline-block;
+  margin-bottom: 6px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
