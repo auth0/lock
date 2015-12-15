@@ -7783,10 +7783,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   bottom: 100px;
 }
 
-#a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-password {
-  margin-bottom: 0;
-}
-
 #a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-password input {
   border-radius: 0;
 }
