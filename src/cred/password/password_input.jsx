@@ -1,6 +1,7 @@
 import React from 'react';
 import InputWrap from '../input_wrap';
 import Icon from '../../icon/icon';
+import PasswordStrength from './password_strength';
 
 export default class PasswordInput extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class PasswordInput extends React.Component {
   }
 
   render() {
-    const { isValid, onChange, ...props } = this.props;
+    const { isValid, onChange, policy, value, ...props } = this.props;
     const { focused } = this.state;
 
     return (
@@ -26,8 +27,10 @@ export default class PasswordInput extends React.Component {
           onChange={::this.handleOnChange}
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
+          value={value}
           {...props}
         />
+        {policy && focused ? <PasswordStrength password={value} policy={policy} /> : null}
       </InputWrap>
     );
   }
