@@ -1040,3 +1040,57 @@ breakpoint(point, value = 0)
 
         a
           color white
+
+// password strength
+
+.auth0-lock-password-strength
+  position absolute
+  bottom 45px
+  left -2.5%
+  width 95%
+  display block
+  text-align left
+  margin-top 15px
+  padding 15px
+  padding-top 12px
+  background #1F242E
+  background rgba(31, 36, 46, 0.95)
+  border-radius 5px
+  z-index 1000
+
+  &:after
+    top 100%
+    left 26px
+    border solid transparent
+    content: " "
+    height 0
+    width 0
+    position absolute
+    pointer-events none
+    border-color rgba(31, 36, 46, 0)
+    border-top-color #1F242E
+    border-top-color rgba(31, 36, 46, 0.95)
+    border-width 9px
+    margin-left -9px
+
+  li, ul
+    margin 0
+    padding 0
+    list-style none
+    color #dd4b39
+
+  ul li ul
+    li
+      color white
+
+  li
+    line-height 1.5
+    margin-top 5px
+    font-size 12px
+    font-weight 600
+    transition color .3s ease-in
+    position relative
+    padding-left 18px
+
+  li.auth0-lock-checked
+    color #7ED321
