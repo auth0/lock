@@ -81,6 +81,13 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>socialOrDatabase</h2>
+  </div>
+  <div class="lock-container" id="socialOrDatabase-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>socialOrEmailcode</h2>
   </div>
   <div class="lock-container" id="socialOrEmailcode-container"></div>
@@ -146,6 +153,13 @@ socialLock.social({
   socialConnections: ["facebook", "github", "google-oauth2", "twitter"],
   container: "social-container",
   socialBigButtons: true
+});
+
+var socialOrDatabaseLock = new Auth0LockPasswordless(cid, domain);
+socialOrDatabaseLock.socialOrDatabase({
+  socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
+  databaseConnection: "db",
+  container: "socialOrDatabase-container"
 });
 
 var socialOrEmailcodeLock = new Auth0LockPasswordless(cid, domain);
