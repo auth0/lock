@@ -8,60 +8,66 @@
 }
 
 /*==========  Spinner  ==========*/
-.spinner-css{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -2.5em;
-  display:block;
-  width: 5em;
-  font-size: 30px;
-  color: #D0D2D3;
-  border-radius: 2.5em 0 2.5em 2.5em;
-  -webkit-animation: spinner 2s ease-in-out 0s infinite;
-  -moz-animation: spinner 2s ease-in-out 0s infinite;
-  animation: spinner 2s ease-in-out 0s infinite;
+.spinner-circle-outer {
+  font-size: 26px;
+  -webkit-animation: fadeIn 0.5s linear;
+  animation: fadeIn 0.5s linear;
 
-  &:after {
-    content: '';
-    position: absolute;
+  &:before {
+    content: "";
     display: block;
-    width: 1.8em;
-    top: 2.5em;
-    left: 1.6em;
-    font-family: "auth0" !important;
-    content: "f";
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    opacity: 0.2;
+  }
+
+  .spinner-circle-inner {
+    margin: 1.5em auto;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 2px solid rgba(0,0,0, 0.05);
+    border-right: 2px solid rgba(0,0,0, 0.05);
+    border-bottom: 2px solid rgba(0,0,0, 0.05);
+    border-left: 2px solid rgba(0,0,0, 0.2);
+    -webkit-animation: loaderAnim 0.8s infinite linear;
+    animation: loaderAnim 0.8s infinite linear;
+
+    &,
+    &:after {
+      border-radius: 50%;
+      width: 1em;
+      height: 1em;
+    }
   }
 }
 
-@-webkit-keyframes spinner {
-  from {
-    -webkit-transform: rotateY(0deg);
+@-webkit-keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-  to {
-    -webkit-transform: rotateY(360deg);
-  }
-}
-
-@-moz-keyframes spinner {
-  from {
-    -moz-transform: rotateY(0deg);
-  }
-  to {
-    -moz-transform: rotateY(360deg);
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-
-
-@keyframes spinner {
-  from {
-    transform: rotateY(0deg);
+@keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-  to {
-    transform: rotateY(360deg);
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-
 /*-----  End of Spinner  ------*/
 
 /*==========  Fonts  ==========*/

@@ -1432,12 +1432,6 @@
   top: 37%;
 }
 
-#a0-lock .a0-spin-message {
-  text-align: center;
-  position: relative;
-  top: 60px;
-}
-
 #a0-lock .a0-spin-message span {
   font-size: 14px;
   color: #41444a;
@@ -6935,65 +6929,90 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation-fill-mode: both;
 }
 
-#a0-lock.a0-theme-default .a0-spinner-css {
-  position: absolute;
+#a0-lock.a0-theme-default .a0-spinner-circle-outer {
+  font-size: 26px;
+  -webkit-animation: fadeIn 0.5s linear;
+  -moz-animation: fadeIn 0.5s linear;
+  animation: fadeIn 0.5s linear;
+}
+
+#a0-lock.a0-theme-default .a0-spinner-circle-outer:before {
+  content: "";
+  display: block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  display: inline-block;
   top: 50%;
   left: 50%;
-  margin: -2.5em;
-  display: block;
-  width: 5em;
-  font-size: 30px;
-  color: #D0D2D3;
-  border-radius: 2.5em 0 2.5em 2.5em;
-  -webkit-animation: spinner 2s ease-in-out 0s infinite;
-  -moz-animation: spinner 2s ease-in-out 0s infinite;
-  animation: spinner 2s ease-in-out 0s infinite;
-}
-
-#a0-lock.a0-theme-default .a0-spinner-css:after {
-  content: '';
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   position: absolute;
-  display: block;
-  width: 1.8em;
-  top: 2.5em;
-  left: 1.6em;
-  font-family: "auth0" !important;
-  content: "f";
+  opacity: 0.2;
 }
 
-@-webkit-keyframes spinner {
-  from {
-    -webkit-transform: rotateY(0deg);
+#a0-lock.a0-theme-default .a0-spinner-circle-outer .a0-spinner-circle-inner {
+  margin: 1.5em auto;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 2px solid rgba(0, 0, 0, 0.05);
+  border-right: 2px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
+  -webkit-animation: loaderAnim 0.8s infinite linear;
+  -moz-animation: loaderAnim 0.8s infinite linear;
+  animation: loaderAnim 0.8s infinite linear;
+}
+
+#a0-lock.a0-theme-default .a0-spinner-circle-outer .a0-spinner-circle-inner,
+#a0-lock.a0-theme-default .a0-spinner-circle-outer .a0-spinner-circle-inner:after {
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+
+@-webkit-keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
-  to {
-    -webkit-transform: rotateY(360deg);
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-@-moz-keyframes spinner {
-  from {
-    -moz-transform: rotateY(0deg);
+@keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
-  to {
-    -moz-transform: rotateY(360deg);
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-@keyframes spinner {
-  from {
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    transform: rotateY(0deg);
+@-moz-keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
-  to {
-    -webkit-transform: rotateY(360deg);
-    -moz-transform: rotateY(360deg);
-    -ms-transform: rotateY(360deg);
-    transform: rotateY(360deg);
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
