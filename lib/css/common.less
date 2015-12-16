@@ -44,9 +44,16 @@
 }
 
 .spin-container {
-  position: relative;
-  // left: 50%;
-  top: 25%;
+  height: 60px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-animation-duration: 600ms;
+  animation-duration: 600ms;
+  text-align: center;
+  z-index: 1;
 }
 
 .loading.with-message .spin-container {

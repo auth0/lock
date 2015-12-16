@@ -10,28 +10,42 @@
 
 /*==========  Spinner  ==========*/
 .spinner-css{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -2.5em;
-  display:block;
-  width: 5em;
-  font-size: 30px;
-  color: #D0D2D3;
-  border-radius: 2.5em 0 2.5em 2.5em;
-  -webkit-animation: spinner 2s ease-in-out 0s infinite;
-  -moz-animation: spinner 2s ease-in-out 0s infinite;
-  animation: spinner 2s ease-in-out 0s infinite;
+  margin: 0;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 2px solid rgba(0,0,0,0.2);
+  border-right: 2px solid rgba(0,0,0,0.2);
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  border-left: 2px solid rgba(0,0,0,0.5);
+  -webkit-animation: loaderAnim .8s infinite linear;
+  animation: loaderAnim .8s infinite linear;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-clip: padding-box;
+  width: 60px;
+  height: 60px;
+}
 
-  &:after {
-    content: '';
-    position: absolute;
+.spinner-bg {
+  display: none;
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE1MXB4IiBoZWlnaHQ9IjE2OHB4IiB2aWV3Qm94PSIwIDAgMTUxIDE2OCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDMuMy4zICgxMjA4MSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+YXV0aDA8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4KICAgICAgICA8ZyBpZD0iYXV0aDAiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIGZpbGw9IiMzMzMzMzMiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXAiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTMxLDEzNS44IEwzMC45LDEzNS44IEw3NS4xLDE2Ny44IEwxMTkuMiwxMzUuOCBMNzUuMSwxMDMuNyBMMzEsMTM1LjggWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMy43LDUxLjkgTDMuNyw1MS45IEMtNi42LDgzLjYgNS4zLDExNy4yIDMxLDEzNS44IEwzMSwxMzUuOCBMNDcuOSw4My45IEwzLjcsNTEuOSBMNTguMiw1MS45IEw3NS4xLDAgTDIwLjUsMCBMMy43LDUxLjkgTDMuNyw1MS45IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTE0Ni41LDUxLjkgTDE0Ni41LDUxLjkgTDEyOS42LDAgTDc1LjEsMCBMOTIsNTEuOSBMMTQ2LjUsNTEuOSBMMTAyLjQsODQgTDExOS4yLDEzNS45IEMxNDYuMiwxMTYuMiAxNTYuMyw4MiAxNDYuNSw1MS45IEwxNDYuNSw1MS45IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=");
+  height: 28px;
+  width: 26px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 53%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  position: absolute;
+  opacity: .5;
+}
+
+.free-subscription {
+  .spinner-bg {
     display: block;
-    width: 1.8em;
-    top: 2.5em;
-    left: 1.6em;
-    font-family: "auth0" !important;
-    content: "f";
   }
 }
 
@@ -248,18 +262,19 @@
   border-radius: 3px;
   width: 100%;
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 
   span {
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
     color: #5C666F;
     display: block;
     width: 50%;
     float: left;
-    padding: 8px 0;
+    padding: 10px 0;
+    font-weight: 600;
   }
 
   .active {
@@ -648,11 +663,11 @@
   }
 
   .forgot-pass {
-    font-size: 11px;
-    margin-top: 10px;
+    font-size: 13px;
+    margin-top: 20px;
     font-weight: normal;
     display: inline-block;
-    color: #333332;
+    color: rgba(0,0,0,.89);
   }
 
   button.primary{
