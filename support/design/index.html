@@ -43,6 +43,14 @@ body {
 
 </style>
 <div id="control-container"></div>
+
+<div class="container">
+  <div class="info">
+    <h2>database</h2>
+  </div>
+  <div class="lock-container" id="database-container"></div>
+</div>
+
 <div class="container">
   <div class="info">
     <h2>emailcode</h2>
@@ -55,13 +63,6 @@ body {
     <h2>magiclink</h2>
   </div>
   <div class="lock-container" id="magiclink-container"></div>
-</div>
-
-<div class="container">
-  <div class="info">
-    <h2>database</h2>
-  </div>
-  <div class="lock-container" id="database-container"></div>
 </div>
 
 <div class="container">
@@ -105,6 +106,17 @@ var cid = "1";
 var domain = "1";
 var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
+var databaseLock = new Auth0LockPasswordless(cid, domain);
+databaseLock.database({
+  databaseConnection: "db",
+  container: "database-container",
+  dict: {
+    emailAndPassword: {
+      footerText: terms
+    }
+  }
+});
+
 var emailcodeLock = new Auth0LockPasswordless(cid, domain);
 emailcodeLock.emailcode({
   container: "emailcode-container",
@@ -121,17 +133,6 @@ magiclinkLock.magiclink({
   container: "magiclink-container",
   dict: {
     footerText: terms
-  }
-});
-
-var databaseLock = new Auth0LockPasswordless(cid, domain);
-databaseLock.database({
-  databaseConnection: "db",
-  container: "database-container",
-  dict: {
-    emailAndPassword: {
-      footerText: terms
-    }
   }
 });
 
