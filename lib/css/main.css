@@ -883,7 +883,7 @@
 @charset "UTF-8";
 
 #a0-lock.a0-theme-default .a0-iconlist {
-  margin: -4px;
+  margin: -5px;
 }
 
 #a0-lock.a0-theme-default .a0-zocial,
@@ -1369,7 +1369,7 @@
 #a0-lock.a0-theme-default .a0-zocial.a0-icon {
   width: auto;
   display: inline-block;
-  margin: 4px;
+  margin: 5px;
 }
 
 #a0-lock.a0-theme-default .a0-equal-viewport .a0-zocial:before,
