@@ -1,7 +1,7 @@
 import { getEntity, read, setEntity, swap } from '../store/index';
 import { closeLock, openLock } from '../lock/actions';
 
-export class Mode {
+export default class Mode {
   constructor(name) {
     this.name = name;
   }

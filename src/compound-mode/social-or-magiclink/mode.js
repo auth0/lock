@@ -1,8 +1,8 @@
-import { Mode } from '../index';
+import Mode from '../../lock/mode';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
 import { initSocial } from '../../social/index';
 
-export default class SocialOrMagiclink extends Mode {
+export default class SocialOrMagiclinkMode extends Mode {
 
   constructor() {
     super("socialOrMagiclink");

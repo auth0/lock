@@ -5,15 +5,17 @@ import * as idu from './utils/id_utils';
 import { closeLock, removeLock, setupLock, updateLock } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
-import emailcodeSpec from './mode/emailcode/spec';
-import magiclinkSpec from './mode/magiclink/spec';
-import databaseSpec from './mode/database/spec';
-import smsSpec from './mode/sms/spec';
-import socialSpec from './mode/social/spec';
-import socialOrDatabaseSpec from './mode/social-or-database/spec';
-import socialOrEmailcodeSpec from './mode/social-or-emailcode/spec';
-import socialOrMagiclinkSpec from './mode/social-or-magiclink/spec';
-import socialOrSmsSpec from './mode/social-or-sms/spec';
+
+// modes
+import DatabaseMode from './database/mode';
+import EmailcodeMode from './passwordless/emailcode/mode';
+import MagiclinkMode from './passwordless/magiclink/mode';
+import SmsMode from './passwordless/sms/mode';
+import SocialMode from './social/mode';
+import SocialOrDatabaseMode from './compound-mode/social-or-database/mode';
+import SocialOrEmailcodeMode from './compound-mode/social-or-emailcode/mode';
+import SocialOrMagiclinkMode from './compound-mode/social-or-magiclink/mode';
+import SocialOrSmsMode from './compound-mode/social-or-sms/mode';
 
 // telemetry
 import Auth0 from 'auth0-js';
@@ -77,15 +79,16 @@ Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototyp
 Auth0LockPasswordless.renderer = new Renderer();
 Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
 
-Auth0LockPasswordless.plugins.register(emailcodeSpec);
-Auth0LockPasswordless.plugins.register(magiclinkSpec);
-Auth0LockPasswordless.plugins.register(databaseSpec);
-Auth0LockPasswordless.plugins.register(smsSpec);
-Auth0LockPasswordless.plugins.register(socialSpec);
-Auth0LockPasswordless.plugins.register(socialOrDatabaseSpec);
-Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
-Auth0LockPasswordless.plugins.register(socialOrMagiclinkSpec);
-Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
+// modes
+Auth0LockPasswordless.plugins.register(DatabaseMode);
+Auth0LockPasswordless.plugins.register(EmailcodeMode);
+Auth0LockPasswordless.plugins.register(MagiclinkMode);
+Auth0LockPasswordless.plugins.register(SmsMode);
+Auth0LockPasswordless.plugins.register(SocialMode);
+Auth0LockPasswordless.plugins.register(SocialOrDatabaseMode);
+Auth0LockPasswordless.plugins.register(SocialOrEmailcodeMode);
+Auth0LockPasswordless.plugins.register(SocialOrMagiclinkMode);
+Auth0LockPasswordless.plugins.register(SocialOrSmsMode);
 
 
 // telemetry

@@ -1,10 +1,10 @@
-import { Mode } from '../index';
-import Login from '../../database/login';
-import ResetPassword from '../../database/reset_password';
-import SignUp from '../../database/sign_up';
-import { getActivity, initDatabase } from '../../database/index';
+import Mode from '../lock/mode';
+import Login from './login';
+import ResetPassword from './reset_password';
+import SignUp from './sign_up';
+import { getActivity, initDatabase } from './index';
 
-export default class Database extends Mode {
+export default class DatabaseMode extends Mode {
 
   constructor() {
     super("database");

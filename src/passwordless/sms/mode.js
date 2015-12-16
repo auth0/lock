@@ -1,10 +1,10 @@
-import { Mode } from '../index';
+import Mode from '../../lock/mode';
 import { setInitialPhoneLocation } from '../../cred/phone-number/actions';
-import AskPhoneNumberVcode from '../../passwordless/ask_phone_number_vcode';
-import AskPhoneNumber from '../../passwordless/ask_phone_number';
-import { initPasswordless, passwordlessStarted } from '../../passwordless/index';
+import AskPhoneNumberVcode from '../ask_phone_number_vcode';
+import AskPhoneNumber from '../ask_phone_number';
+import { initPasswordless, passwordlessStarted } from '../index';
 
-export default class Sms extends Mode {
+export default class SmsMode extends Mode {
 
   constructor() {
     super("sms");

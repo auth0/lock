@@ -1,8 +1,8 @@
-import { Mode } from '../index';
-import AskSocialNetwork from '../../cred/social/ask_social_network';
-import { initSocial } from '../../social/index';
+import Mode from '../lock/mode';
+import AskSocialNetwork from '../cred/social/ask_social_network';
+import { initSocial } from './index';
 
-export default class Social extends Mode {
+export default class SocialMode extends Mode {
 
   constructor() {
     super("social");

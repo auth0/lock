@@ -1,10 +1,10 @@
-import { Mode } from '../index';
+import Mode from '../../lock/mode';
 import AskEmailVcode from '../../passwordless/ask_email_vcode';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
 import { initSocial } from '../../social/index';
 import { initPasswordless, passwordlessStarted } from '../../passwordless/index';
 
-export default class SocialOrEmailCode extends Mode {
+export default class SocialOrEmailCodeMode extends Mode {
 
   constructor() {
     super("socialOrEmailcode");
