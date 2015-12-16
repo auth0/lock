@@ -225,7 +225,7 @@
     border-color: #e9e9e9;
   }
 
-  &.cancel {
+  &.back {
     background: #fff;
     border-radius: 100px;
     height: 10px;
@@ -240,6 +240,31 @@
     cursor: pointer;
     line-height: 0;
     padding: 0;
+  }
+}
+
+.switch {
+  border: 1px solid #5C666F;
+  border-radius: 3px;
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  span {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #5C666F;
+    display: block;
+    width: 50%;
+    float: left;
+    padding: 8px 0;
+  }
+
+  .active {
+    background-color: #5C666F;
+    color: white;
   }
 }
 
@@ -413,11 +438,6 @@
     }
   }
 
-  .instructions {
-    margin-bottom: 10px;
-    line-height: 18px;
-  }
-
   .last-time{
     font-size: 14px;
     margin-bottom: 20px;
@@ -523,7 +543,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
-    color: #727578;
+    color: rgba(0,0,0,.89);
   }
 
   input::-webkit-input-placeholder {
@@ -612,17 +632,27 @@
   //   border-bottom-right-radius: 3px;
   // }
 
-  .separator {
-    // margin-bottom: 10px;
-    // margin-top: 6px;
+  .separator, .instructions {
     color: rgba(0,0,0,.56);
     font-size: 13px;
+    margin: 10px 0;
+    line-height: 1.6;
 
-    margin: 20px 0;
     span{
       letter-spacing: 1px;
-      // text-transform: uppercase;
     }
+  }
+
+  .instructions {
+    margin-bottom: 20px;
+  }
+
+  .forgot-pass {
+    font-size: 11px;
+    margin-top: 10px;
+    font-weight: normal;
+    display: inline-block;
+    color: #333332;
   }
 
   button.primary{
@@ -928,7 +958,6 @@
     .collapse-reset{
       .instructions{
         margin-top: 0;
-        margin-bottom: 20px;
       }
     }
     .reset_easy_password{

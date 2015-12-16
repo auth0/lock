@@ -1444,7 +1444,7 @@
 }
 
 #a0-lock .a0-spin-message span {
-  font-size: 14px;
+  font-size: 13px;
   color: #41444a;
 }
 
@@ -7170,7 +7170,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-color: #e9e9e9;
 }
 
-#a0-lock.a0-theme-default .a0-btn-small.a0-cancel {
+#a0-lock.a0-theme-default .a0-btn-small.a0-back {
   background: #fff;
   border-radius: 100px;
   height: 10px;
@@ -7186,6 +7186,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   cursor: pointer;
   line-height: 0;
   padding: 0;
+}
+
+#a0-lock.a0-theme-default .a0-switch {
+  border: 1px solid #5C666F;
+  border-radius: 3px;
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#a0-lock.a0-theme-default .a0-switch span {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #5C666F;
+  display: block;
+  width: 50%;
+  float: left;
+  padding: 8px 0;
+}
+
+#a0-lock.a0-theme-default .a0-switch .a0-active {
+  background-color: #5C666F;
+  color: white;
 }
 
 #a0-lock.a0-theme-default .a0-overlay {
@@ -7364,11 +7390,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #EB5424;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-instructions {
-  margin-bottom: 10px;
-  line-height: 18px;
-}
-
 #a0-lock.a0-theme-default .a0-panel .a0-last-time {
   font-size: 14px;
   margin-bottom: 20px;
@@ -7453,7 +7474,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  color: #727578;
+  color: rgba(0, 0, 0, 0.89);
 }
 
 #a0-lock.a0-theme-default .a0-panel input::-webkit-input-placeholder {
@@ -7522,14 +7543,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   transform: translate(-50%, -50%);
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-separator {
+#a0-lock.a0-theme-default .a0-panel .a0-separator,
+#a0-lock.a0-theme-default .a0-panel .a0-instructions {
   color: rgba(0, 0, 0, 0.56);
   font-size: 13px;
-  margin: 20px 0;
+  margin: 10px 0;
+  line-height: 1.6;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-separator span {
+#a0-lock.a0-theme-default .a0-panel .a0-separator span,
+#a0-lock.a0-theme-default .a0-panel .a0-instructions span {
   letter-spacing: 1px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-instructions {
+  margin-bottom: 20px;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-forgot-pass {
+  font-size: 11px;
+  margin-top: 10px;
+  font-weight: normal;
+  display: inline-block;
+  color: #333332;
 }
 
 #a0-lock.a0-theme-default .a0-panel button.a0-primary {
@@ -7812,7 +7848,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
   margin-top: 0;
-  margin-bottom: 20px;
 }
 
 #a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-reset_easy_password input {
