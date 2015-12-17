@@ -18,7 +18,6 @@ import styles from '../css/index.css';
 // import transitions from '../css/transitions.css';
 
 // telemetry
-import version from 'package.version';
 import Auth0 from 'auth0-js';
 
 export default class Auth0LockPasswordless {
@@ -78,6 +77,6 @@ Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 
 
 // telemetry
-Auth0LockPasswordless.version = version
+Auth0LockPasswordless.version = __VERSION__;
 Auth0.clientInfo.name +=  " (LockPasswordless)";
-Auth0.clientInfo.version += ` (${version})`;
+Auth0.clientInfo.version += ` (${__VERSION__})`;

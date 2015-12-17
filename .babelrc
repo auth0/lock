@@ -1,3 +1,4 @@
 {
+  "plugins": ["version-inline"],
   "presets": ["es2015", "stage-0", "react"]
 }
