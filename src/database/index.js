@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import * as l from '../lock/index';
+import * as client from '../lock/client/index';
 
 export function initDatabase(model, options) {
   return model.setIn(
@@ -36,7 +37,12 @@ function processDatabaseOptions(options) {
 
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
-  return { activities, databaseConnection, loginAfterSignUp, usernameStyle };
+  return {
+    activities,
+    connection: databaseConnection,
+    loginAfterSignUp,
+    usernameStyle
+   };
 }
 
 export function databaseConnection(m) {
@@ -61,4 +67,10 @@ export function hasActivity(m, s) {
 
 export function shouldAutoLogin(m) {
   return m.getIn(["database", "opts", "loginAfterSignUp"]);
+}
+
+export function passwordStrengthPolicy(m) {
+  return client
+    .connection(m, "auth0", databaseConnection(m))
+    .get("passwordPolicy", "none");
 }

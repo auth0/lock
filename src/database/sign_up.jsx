@@ -3,7 +3,7 @@ import Screen from '../lock/screen';
 import EmailPane from '../cred/email/email_pane';
 import PasswordPane from '../cred/password/password_pane';
 import UsernamePane from '../cred/username/username_pane';
-import { authWithUsername, hasActivity } from './index';
+import { authWithUsername, hasActivity, passwordStrengthPolicy } from './index';
 import { signUp } from './actions';
 import LoginSignUpTabs from './login_sign_up_tabs';
 import { renderSignedUpConfirmation } from './signed_up_confirmation';
@@ -46,6 +46,7 @@ export default class SignUp extends Screen {
         <PasswordPane
           lock={lock}
           placeholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
+          policy={passwordStrengthPolicy(lock)}
         />
       </div>
     );

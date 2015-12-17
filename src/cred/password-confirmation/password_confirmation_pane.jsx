@@ -20,6 +20,7 @@ export default class PasswordconfirmationPane extends React.Component {
       lock,
       passwordConfirmationPlaceholder,
       passwordPlaceholder,
+      policy,
       tabIndex
     } = this.props;
 
@@ -30,6 +31,7 @@ export default class PasswordconfirmationPane extends React.Component {
           onChange={::this.handlePasswordChange}
           placeholder={passwordPlaceholder}
           tabIndex={tabIndex}
+          policy={policy}
         />
         <PasswordInput
           value={c.passwordConfirmation(lock)}
@@ -49,6 +51,7 @@ PasswordconfirmationPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
   passwordConfirmationPlaceholder: React.PropTypes.string.isRequired,
   passwordPlaceholder: React.PropTypes.string.isRequired,
+  policy: React.PropTypes.string,
   tabIndex: React.PropTypes.number.isRequired
 };
 
