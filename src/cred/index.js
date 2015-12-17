@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import createPolicy from 'password-sheriff';
 import trim from 'trim';
 import * as cc from './country_codes';
 
@@ -160,10 +161,10 @@ export function password(lock) {
   return lock.getIn(["cred", "password", "password"], "");
 }
 
-export function setPassword(lock, value) {
+export function setPassword(lock, value, policy) {
   const prevValue = password(lock);
   const prevShowInvalid = showInvalid(lock, "password");
-  const valid = validateVcode(value);
+  const valid = validatePassword(value, policy);
 
   return lock.mergeIn(["cred", "password"], Map({
     password: value,
@@ -172,8 +173,8 @@ export function setPassword(lock, value) {
   }));
 }
 
-export function validatePassword(password) {
-  return trim(password).length > 0;
+export function validatePassword(password, policy) {
+  return createPolicy(policy).check(password);
 }
 
 export function validPassword(lock) {

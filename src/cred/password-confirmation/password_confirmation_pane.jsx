@@ -8,7 +8,8 @@ import * as l from '../../lock/index';
 export default class PasswordconfirmationPane extends React.Component {
 
   handlePasswordChange(e) {
-    changePassword(l.id(this.props.lock), e.target.value);
+    const { lock, policy } = this.props;
+    changePassword(l.id(lock), e.target.value, policy);
   }
 
   handlePasswordConfirmationChange(e) {

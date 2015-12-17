@@ -7,8 +7,8 @@ import * as l from '../../lock/index';
 export default class PasswordPane extends React.Component {
 
   handleChange(e) {
-    const { lock, onChange } = this.props;
-    return onChange ? onChange(e) : changePassword(l.id(lock), e.target.value);
+    const { lock, onChange, policy } = this.props;
+    onChange ? onChange(e) : changePassword(l.id(lock), e.target.value, policy);
   }
 
   render() {
