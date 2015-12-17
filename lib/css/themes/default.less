@@ -514,6 +514,9 @@
       -webkit-transition: border-color .8s;
       transition: border-color .8s;
 
+      height: 42px;
+      overflow: hidden;
+
       i{
         font-size: 14px;
         z-index: 1000;
@@ -734,10 +737,6 @@
 
     .error-input{
 
-      // i {
-      //   color: red;
-      // }
-
       span{
         position: absolute;
         top: 15px;
@@ -752,6 +751,10 @@
         display: block;
         z-index: 10000;
         background-color: #FFF;
+      }
+
+      span.error-message {
+        display: none;
       }
 
       // input{
