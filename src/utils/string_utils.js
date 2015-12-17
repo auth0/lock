@@ -5,3 +5,7 @@ export function matches(search, str) {
 export function startsWith(str, search) {
   return str.indexOf(search) === 0;
 }
+
+export function endsWith(str, search) {
+  return str.indexOf(search, str.length - search.length) !== -1;
+}

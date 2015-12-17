@@ -4,11 +4,11 @@ import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '..
 import * as l from './index';
 import * as cs from '../cred/storage';
 
-export function setupLock(id, clientID, domain) {
+export function setupLock(id, clientID, domain, options) {
   const lock = l.setup({id: id, clientID: clientID, domain: domain});
   swap(setEntity, "lock", id, lock);
 
-  WebAPI.setupClient(id, clientID, domain);
+  WebAPI.setupClient(id, clientID, domain, options);
 
   // TODO: only modes with a phone number are making use of the user's location
   const user = read(getEntity, "user");

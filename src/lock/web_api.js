@@ -1,19 +1,23 @@
 import Auth0 from 'auth0-js';
 import reqwest from 'reqwest';
-import * as StringUtils from '../utils/string_utils';
+import { loadClientSettings } from './client/browser';
 
 class Auth0WebAPI {
   constructor() {
     this.clients = {};
   }
 
-  setupClient(lockID, clientID, domain) {
+  setupClient(lockID, clientID, domain, options) {
     // TODO: reuse clients
     this.clients[lockID] = new Auth0({
       clientID: clientID,
       domain: domain,
       sendSDKClientInfo: true
     });
+
+    // TODO: reusse client settings and fetch on demand
+    loadClientSettings(clientID, domain, options.assetsUrl);
+
   }
 
   signIn(lockID, options, cb) {

@@ -33,16 +33,19 @@ if (style.styleSheet) {
 }
 
 export default class Auth0LockPasswordless {
-  constructor(clientID, domain) {
+  constructor(clientID, domain, options = {}) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
     }
     if (typeof domain != "string") {
       throw new Error("A `domain` string must be provided as second argument.");
     }
+    if (typeof options != "object") {
+      throw new Error("When provided, the third argument must be an `options` object.");
+    }
 
     this.id = idu.incremental();
-    setupLock(this.id, clientID, domain);
+    setupLock(this.id, clientID, domain, options);
   }
 
   close() {

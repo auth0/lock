@@ -44,10 +44,10 @@ export function removeEntity(state, coll, id = 0) {
   return state.removeIn([coll, id]);
 }
 
-// function updateCollection(coll, f, ...args) {
-//   store.swap(state => state.update(coll, xs => f(xs, ...args)));
-// }
-//
+export function updateCollection(state, coll, f, ...args) {
+  return state.update(coll, xs => f(xs, ...args));
+}
+
 // function updateFilteredCollection(coll, pred, f, ...args) {
 //   updateCollection(coll, xs => xs.merge(xs.filter(pred).map(x => f(x, ...args))));
 // }
