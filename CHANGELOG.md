@@ -1,3 +1,20 @@
+## [7.12.6] - 2015-12-17
+
+### Fixed
+
+- [] Merge pull request #267 from auth0/add-stage-subdomain (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/149b4023b22405ce778f4f7123abf56d2c70f695
+- [] Consider stage subdomain when building assets url (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/cb264baad403c9caff6107c3ac4f8d51f9bc15f8
+- [] Merge pull request #226 from udomsak/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/e869bdd83e6afd8a88eb9f64b90f726c66b4b7e0
+- [] Merge pull request #265 from johannesboyne/patch-1 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/9e152eb4b2e478fc6e9f33985eab8f90ede6d72a
+- [] Update de.json (`Johannes Boyne`)
+  https://github.com/auth0/lock/commit/7bb0edb4448a8be86936fc1bb9dbed51feeaab72
+- [] Add Thai language support (`udomsak chundang`)
+  https://github.com/auth0/lock/commit/e81178b19cf04f631af43dcea02e433bb76abc6a
+
 ## [7.12.5] - 2015-12-08
 
 ### Fixed
