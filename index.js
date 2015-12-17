@@ -868,6 +868,9 @@ Auth0Lock.prototype.getAssetsUrl = function (assetsUrl, domain) {
   if (this.isAuth0Domain('au')) {
     return 'https://cdn.au.auth0.com/';
   }
+  if (this.isAuth0Domain('stage')) {
+    return 'https://cdn.stage.auth0.com/';
+  }
   if (this.isAuth0Domain()) {
     return 'https://cdn.auth0.com/';
   }
