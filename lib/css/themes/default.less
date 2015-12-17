@@ -1039,6 +1039,12 @@
 =            Media Queries            =
 =====================================*/
 
+@media screen and (min-width: 481px) {
+  .panel .mode-container {
+    height: auto!important;
+  }
+}
+
 @media screen and (max-width: 480px) {
 
   .ie8-overlay{
@@ -1110,44 +1116,40 @@
       .panel{
         box-shadow: none;
         background: white;
+        width: 100%;
+        height: 100%;
 
-        .mode{
-          padding: 0 20px 20px 20px;
+        .top-header,
+        .mode-container,
+        .mode,
+        button.primary {
+          border-radius: 0;
         }
-        .icon-container {
-          height: 60px;
-          .image{
-            margin-top: 10px;
-            img {
-              height: 40px;
-              width: auto;
-            }
+
+        .mode-container {
+          display: table;
+          width: 100%;
+        }
+
+        .mode {
+          display: table-cell;
+          vertical-align: middle;
+        }
+
+        .signup-footer {
+          margin: 0;
+          position: absolute;
+          bottom: 70px;
+          width: 100%;
+          left: 0;
+
+          small {
+            margin-top: 0;
           }
-          .avatar{
-            margin-top: 10px;
-            width: 40px;
-            height: 40px;
-            i{
-              font-size: 20px;
-              padding-top: 10px;
-            }
-          }
-        }
-        h1{
-          margin-bottom: 10px;
-        }
-
-        #change_password .collapse-reset .instructions{
-          margin-bottom: 10px;
-        }
-
-        .db-actions, .options{
-          margin-top: 20px;
-          font-size: 14px;
         }
 
         .footer{
-          margin-top: 40px;
+          display: none;
         }
 
       }

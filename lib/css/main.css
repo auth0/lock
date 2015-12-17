@@ -7964,6 +7964,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   padding-top: 20px;
 }
 
+@media screen and (min-width: 481px) {
+  #a0-lock.a0-theme-default .a0-panel .a0-mode-container {
+    height: auto!important;
+  }
+}
+
 @media screen and (max-width: 480px) {
   #a0-lock.a0-theme-default .a0-ie8-overlay {
     background: none !important;
@@ -8030,52 +8036,41 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -webkit-box-shadow: none;
     box-shadow: none;
     background: white;
+    width: 100%;
+    height: 100%;
+  }
+
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-top-header,
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode-container,
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode,
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel button.a0-primary {
+    border-radius: 0;
+  }
+
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode-container {
+    display: table;
+    width: 100%;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode {
-    padding: 0 20px 20px 20px;
+    display: table-cell;
+    vertical-align: middle;
   }
 
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container {
-    height: 60px;
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-signup-footer {
+    margin: 0;
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+    left: 0;
   }
 
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image {
-    margin-top: 10px;
-  }
-
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image img {
-    height: 40px;
-    width: auto;
-  }
-
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar {
-    margin-top: 10px;
-    width: 40px;
-    height: 40px;
-  }
-
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar i {
-    font-size: 20px;
-    padding-top: 10px;
-  }
-
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel h1 {
-    margin-bottom: 10px;
-  }
-
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel #a0-change_password .a0-collapse-reset .a0-instructions {
-    margin-bottom: 10px;
-  }
-
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-db-actions,
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-options {
-    margin-top: 20px;
-    font-size: 14px;
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-signup-footer small {
+    margin-top: 0;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-footer {
-    margin-top: 40px;
+    display: none;
   }
 }
 
