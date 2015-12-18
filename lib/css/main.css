@@ -1438,10 +1438,10 @@
   position: absolute;
   top: 65%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%) scale(0.5);
+  -moz-transform: translate(-50%, -50%) scale(0.5);
+  -ms-transform: translate(-50%, -50%) scale(0.5);
+  transform: translate(-50%, -50%) scale(0.5);
   -webkit-animation-duration: 600ms;
   -moz-animation-duration: 600ms;
   animation-duration: 600ms;
@@ -7342,9 +7342,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode {
-  -webkit-animation: fadeIn 1s ease;
-  -moz-animation: fadeIn 1s ease;
-  animation: fadeIn 1s ease;
   margin: auto;
   background-color: white;
   border-radius: 0 0 3px 3px;
@@ -7755,7 +7752,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border: 6px solid #fff;
   cursor: pointer;
   line-height: 0;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-close:hover {
