@@ -7307,6 +7307,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background: -webkit-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: -moz-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
+  -webkit-animation: fadeIn 0.3s ease-in;
+  -moz-animation: fadeIn 0.3s ease-in;
+  animation: fadeIn 0.3s ease-in;
+}
+
+#a0-lock.a0-theme-default .a0-nocentrix .a0-panel .a0-mode-container {
+  height: auto!important;
 }
 
 #a0-lock.a0-theme-default .a0-panel {
@@ -7981,12 +7988,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-cordova.a0-ios .a0-centrix {
   padding-top: 20px;
-}
-
-@media screen and (min-width: 481px) {
-  #a0-lock.a0-theme-default .a0-panel .a0-mode-container {
-    height: auto!important;
-  }
 }
 
 @media screen and (max-width: 480px) {

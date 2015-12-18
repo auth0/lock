@@ -300,8 +300,12 @@
 /*==========  Overlay  ==========*/
 .overlay {
   background: radial-gradient(rgba(64,64,75,.9),rgba(17,17,24,.9)) rgba(34,34,40,.52);
+  animation: fadeIn .3s ease-in;
 }
 
+.nocentrix .panel .mode-container {
+  height: auto!important;
+}
 
 /*==========  Panel  ==========*/
 .panel{
@@ -1045,12 +1049,6 @@
 /*=====================================
 =            Media Queries            =
 =====================================*/
-
-@media screen and (min-width: 481px) {
-  .panel .mode-container {
-    height: auto!important;
-  }
-}
 
 @media screen and (max-width: 480px) {
 
