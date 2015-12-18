@@ -1,3 +1,22 @@
+## [7.13.0] - 2015-12-18
+
+### Fixed
+
+- [] Merge pull request #181 from nicosabena/patch-2 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c4182a05fbf2ff7e419f19d449105527bf33d1a6
+- [] Merge pull request #269 from auth0/thai-language (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b995e0d71ff65a182b65fcf4cdab4b51e55d4ca9
+- [] Merge pull request #268 from auth0/new-loading-spinner (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/739a1316e188199b002192e59e7c4087d86ea073
+- [] Fix template alignment (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2cad5518c6d905eed395aefe953d8a2f0566adf2
+- [] Add Thai (th) language (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/8819cb638c3059ac4d048a4fd8422d461b354b19
+- [] Replace auth0 logo with a traditional spinner, closes #254 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a8021e5f2a89d715117bf9f73dbddb3d2c917de4
+- [] Better translation for reset. (`nicosabena`)
+  https://github.com/auth0/lock/commit/ba1a640e706ce00bb9389a4da6624aef04e6b839
+
 ## [7.12.6] - 2015-12-17
 
 ### Fixed
