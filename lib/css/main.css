@@ -882,10 +882,6 @@
 
 @charset "UTF-8";
 
-#a0-lock.a0-theme-default .a0-iconlist {
-  margin: -5px;
-}
-
 #a0-lock.a0-theme-default .a0-zocial,
 #a0-lock.a0-theme-default a.a0-zocial {
   color: #fff;
@@ -7642,9 +7638,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   line-height: 1.6;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-separator span,
-#a0-lock.a0-theme-default .a0-panel .a0-instructions span {
-  letter-spacing: 1px;
+#a0-lock.a0-theme-default .a0-panel .a0-separator {
+  text-transform: capitalize;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-separator span {
+  text-transform: lowercase;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-instructions {
