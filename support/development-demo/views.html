@@ -91,6 +91,11 @@
       </div>
 
       <div class="clearfix">
+        <h3>Primary Color</h3>
+        <div id="primary-color"></div>
+      </div>
+
+      <div class="clearfix">
         <h3>Show SignUp (footer text)</h3>
         <div id="footer-text"></div>
       </div>
@@ -129,6 +134,7 @@
           onlyEmailuser();
           onlyEnterprise();
           customIcon();
+          primaryColor();
           footerText();
           loginFail();
           fullLogin();
@@ -282,6 +288,21 @@
               responseType: 'token',
               icon: '//utsa.edu/capri/img/Bank%20of%20america%20logo%202.png',
               container: 'custom-icon'
+            });
+          };
+
+          function primaryColor() {
+            var cid = credentials.mdocs.clientID;
+            var domain = credentials.mdocs.domain;
+
+            var widget = new Auth0Lock(cid, domain);
+
+            trackEvents(widget);
+            widget.showSignin({
+              callbackURL: window.location.href,
+              responseType: 'token',
+              primaryColor: '#40DF7D',
+              container: 'primary-color'
             });
           };
 
