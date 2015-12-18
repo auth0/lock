@@ -933,7 +933,7 @@
 }
 
 #a0-lock.a0-theme-default .a0-strategy div.a0-zocial span {
-  text-transform: lowercase;
+  text-transform: none;
   font-size: 12px;
 }
 
