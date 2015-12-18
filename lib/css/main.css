@@ -7272,6 +7272,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   cursor: pointer;
   line-height: 0;
   padding: 0;
+  margin: 0;
 }
 
 #a0-lock.a0-theme-default .a0-switch {
@@ -8063,6 +8064,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode,
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel button.a0-primary {
     border-radius: 0;
+  }
+
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image.a0-gravatar {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
+    width: 60px;
+    height: 60px;
+    margin: 0;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode-container {
