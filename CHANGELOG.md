@@ -1,3 +1,82 @@
+## [8.0.0] - 2015-12-18
+
+### Fixed
+
+- [] Merge pull request #272 from auth0/new-skin-tweaks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/3ef12d5b0334766b43e09a172bb7a8c02153dddc
+- [] fix centered mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/cb994fc41925b0e975f05159787e5510fa01afb5
+- [] Update selectors in tests to match the new markup (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/97838964daeee56e637105d438aec3d4e317248d
+- [] fix avatar in mobile view (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/1f8762190378464da69d22cc1bfe075f4cc944af
+- [] fixed text and social icons (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/6ba936f9d2291b207984aee036317caf75ea1dcd
+- [] fix close button and loading smaller (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/ebee8136f136a03a21698e34833e2f24185ffe55
+- [] Merge pull request #271 from auth0/new-skin (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/706e436dfcd9ae0aa11946336bf833914ede1d4b
+- [] Merge branch 'master' into new-skin (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/fe23c05407f9902212d8cc9e187fd024139186f4
+- [] Remove text-transform for last login button (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/065d7507d7e8fcb38a99714d326ca753665edbb3
+- [] Corrections to LoggedinPanel (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2d41f0c5c61518efdc7aec82f0c44f7044fdeac6
+- [] Add primary color example to views.html (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/258ca6ed412e31c26a424192f5824f4d941b74dd
+- [] Customize submit color with primaryColor option (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/7a5d3a940744b624f44ffd2dd02a362c42008303
+- [] update variable forgotText en and es (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/462e6fdf2002b55366931598eed7349cd974639a
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/3904401eab5a129baffeed8009cd0aa1609524f3
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/b8de465fa173ad0c7b07afe028c5ae964112082c
+- [] fix responsive (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/4acc2c66c5bf2e8fbd960a97edac238fa43724e9
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/00bcaf1b56823341a77d1a3b26d3edec4888441b
+- [] fix switch (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/90699696c942279e17478954af410d5d7785c41e
+- [] fix social icons (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/1fdaf7b645f5063478b61d6c4fdfe39d85a3da54
+- [] added new spinner (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a5a097aec69199400b98b206e3b4d215c610a721
+- [] added log in / sign up switch (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/489ce2748bad02270bedcfe7b7d507ef3b297adc
+- [] added back button (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/94ca0a6a65b2fdbc19a63c89351f450bc63da9f0
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/99bff00d791c9bbfc1758828d18a6670d1c475d4
+- [] styled terms (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/2eb06c0e0e06c6c62028df4d39fee9b602f2e39c
+- [] fix generals issues in the content (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/7a7ac3e0f90a8894589f17f1942c086e2251bbc0
+- [] minor fix error message (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/f7325279937e579285348645b6341b1aea893bc2
+- [] added header blur image (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/ac8d1cda594e913223fd7ea89ef65bb604ca81b6
+- [] added others lock (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/6747c516200e0da523387aa86ae39da611b9193b
+- [] styled error (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/cd4f17e48218d1d250424bd89217bc5d564b43cc
+- [] added view frame and fix header (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a4754c69f753680337cad38b9f2c330433887ce8
+- [] removed title login (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/9fc8169e0c3f419e1ee1102a0699f5a7e72e3e0e
+- [] Add engines to package.json (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d39a741969f86aa1821741d87de5fe5936bb4748
+- [] Parse port for heroku demo (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/ab689d105257f9af52e2e29ee6b1d3ab84f935a7
+- [] Add start script (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/0892d24e3e5620593f115df6710c2212081366ff
+- [] shadow avatar (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/2b793013060248a32e74e98fd812f60f65813777
+- [] add icon access (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/f95cd8b7a649cbb24f7bbad39698327b9a8514f5
+- [] new lock skin (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/11e6a7fa5f8e611d5c0a7339403be45c46cbc820
+
 ## [7.13.0] - 2015-12-18
 
 ### Fixed
