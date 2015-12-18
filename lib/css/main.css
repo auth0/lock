@@ -7045,39 +7045,51 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
 }
 
-@-webkit-keyframes spinner {
-  from {
-    -webkit-transform: rotateY(0deg);
+#a0-lock.a0-theme-default .a0-free-subscription .a0-spinner-circle-inner {
+  margin: 1.5em auto;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 2px solid rgba(0, 0, 0, 0.05);
+  border-right: 2px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
+  -webkit-animation: loaderAnim 0.8s infinite linear;
+  -moz-animation: loaderAnim 0.8s infinite linear;
+  animation: loaderAnim 0.8s infinite linear;
+}
+
+#a0-lock.a0-theme-default .a0-free-subscription .a0-spinner-circle-inner,
+#a0-lock.a0-theme-default .a0-free-subscription .a0-spinner-circle-inner:after {
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+
+@-webkit-keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
-  to {
-    -webkit-transform: rotateY(360deg);
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-@-moz-keyframes spinner {
-  from {
-    -moz-transform: rotateY(0deg);
+@keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
-  to {
-    -moz-transform: rotateY(360deg);
-  }
-}
-
-@keyframes spinner {
-  from {
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-  }
-
-  to {
-    -webkit-transform: rotateY(360deg);
-    -moz-transform: rotateY(360deg);
-    -ms-transform: rotateY(360deg);
-    transform: rotateY(360deg);
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

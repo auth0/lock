@@ -47,36 +47,47 @@
   .spinner-bg {
     display: block;
   }
-}
 
-@-webkit-keyframes spinner {
-  from {
-    -webkit-transform: rotateY(0deg);
-  }
-  to {
-    -webkit-transform: rotateY(360deg);
-  }
-}
+  .spinner-circle-inner {
+    margin: 1.5em auto;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 2px solid rgba(0,0,0, 0.05);
+    border-right: 2px solid rgba(0,0,0, 0.05);
+    border-bottom: 2px solid rgba(0,0,0, 0.05);
+    border-left: 2px solid rgba(0,0,0, 0.2);
+    -webkit-animation: loaderAnim 0.8s infinite linear;
+    animation: loaderAnim 0.8s infinite linear;
 
-@-moz-keyframes spinner {
-  from {
-    -moz-transform: rotateY(0deg);
-  }
-  to {
-    -moz-transform: rotateY(360deg);
-  }
-}
-
-
-@keyframes spinner {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
+    &,
+    &:after {
+      border-radius: 50%;
+      width: 1em;
+      height: 1em;
+    }
   }
 }
 
+@-webkit-keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loaderAnim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 /*-----  End of Spinner  ------*/
 
 /*==========  Fonts  ==========*/

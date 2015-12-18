@@ -40,16 +40,16 @@
     "userExistsErrorText":         "El usuario ya existe."
   },
   "reset": {
-    "title":                       "Resetear Contraseña",
+    "title":                       "Restablecer Contraseña",
     "action":                      "Enviar",
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "Nueva Contraseña",
     "repeatPasswordPlaceholder":   "Confirme nueva contraseña",
     "cancelAction":                "Cancelar",
-    "successText":                 "Hemos enviado un email para completar el reseteo de su contraseña.",
+    "successText":                 "Hemos enviado un email para completar el restablecimiento de su contraseña.",
     "enterSamePasswordText":       "Por favor ingrese la misma contraseña.",
     "headerText":                  "Por favor ingrese su email y la nueva contraseña. Enviaremos un email para confirmar el cambio.",
-    "serverErrorText":             "Hubo un error al resetear su contraseña.",
+    "serverErrorText":             "Hubo un error al restablecer su contraseña.",
     "userDoesNotExistErrorText":   "Usuario inválido."
   }
 }
