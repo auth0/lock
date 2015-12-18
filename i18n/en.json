@@ -11,7 +11,7 @@
     "title":                            "Log in",
     "action":                           "Access",
     "actionDomain":                     "Log in to {domain}",
-    "all":                              "Show all",
+    "all":                              "Not your account?",
     "strategyEmailEmpty":               "The email is empty.",
     "strategyEmailInvalid":             "The email is invalid.",
     "strategyDomainInvalid":            "The domain {domain} has not been set up.",
