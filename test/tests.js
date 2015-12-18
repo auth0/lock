@@ -405,7 +405,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
@@ -423,7 +423,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
@@ -440,7 +440,7 @@ describe('Auth0Lock', function () {
       .once('ready', function() {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('peter@litware.com');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('zzz');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .show({
         callbackURL: callbackURL,
@@ -460,7 +460,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
         // we need this to check if password is ignored or not in validation
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .show({
         callbackURL: callbackURL,
@@ -481,7 +481,7 @@ describe('Auth0Lock', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('mary@contoso.com');
         // we need this to check if password is ignored or not in validation
         bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input')[0], 'input');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .show({ callbackURL: callbackURL, responseType: 'token', authParams: { state: 'foo' }});
     });
@@ -510,7 +510,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .on('signin submit', function (options, context) {
         if (!options.authParams) {
@@ -525,7 +525,7 @@ describe('Auth0Lock', function () {
       widget
       .once('ready', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .on('signin error', function (err) {
         expect(err.message).to.be('email empty');
@@ -539,7 +539,7 @@ describe('Auth0Lock', function () {
       .once('ready', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john.@#$@fabrikam.com');
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .on('signin error', function (err) {
         expect(err.message).to.be('email invalid');
@@ -552,7 +552,7 @@ describe('Auth0Lock', function () {
       widget
       .once('ready', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .on('signin error', function (err) {
         expect(err.message).to.be('password empty');
@@ -582,7 +582,7 @@ describe('Auth0Lock', function () {
       widget
       .once('ready', function () {
         $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input').val('john@fabrikam.com');
-        $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-notloggedin .a0-action button.a0-primary').trigger('click');
       })
       .on('signin error', function (err) {
         expect(err.message).to.be('password empty');
@@ -730,7 +730,7 @@ describe('Auth0Lock', function () {
     it('should show only signup view when user clicks on signup button', function (done) {
       widget
       .once('signin ready', function () {
-        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-db-actions a.a0-sign-up')[0], 'click');
       })
       .once('signup ready', function (){
         expect($('#a0-lock .a0-notloggedin')).to.be.empty();
@@ -755,12 +755,12 @@ describe('Auth0Lock', function () {
 
       widget
       .once('signin ready', function () {
-        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-sign-up')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin .a0-db-actions a.a0-sign-up')[0], 'click');
       })
       .once('signup ready', function () {
         $('#a0-lock .a0-signup .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-lock .a0-signup .a0-emailPassword .a0-password input').val('xyz');
-        $('#a0-lock .a0-signup .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-signup .a0-action button.a0-primary').trigger('click');
       })
       .show({
         callbackURL: callbackURL,
@@ -773,7 +773,7 @@ describe('Auth0Lock', function () {
     it('should show reset view when user clicks on change password button', function (done) {
       widget
       .once('signin ready', function () {
-        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin a.a0-forgot-pass')[0], 'click');
       })
       .once('reset ready',function () {
         expect($('#a0-lock .a0-notloggedin')).to.be.empty();
@@ -798,13 +798,13 @@ describe('Auth0Lock', function () {
 
       widget
       .once('ready', function () {
-        bean.fire($('#a0-lock .a0-notloggedin .a0-emailPassword .a0-action a.a0-forgot-pass')[0], 'click');
+        bean.fire($('#a0-lock .a0-notloggedin a.a0-forgot-pass')[0], 'click');
       })
       .once('reset ready', function () {
         $('#a0-lock .a0-reset .a0-emailPassword .a0-email input').val('john@fabrikam.com');
         $('#a0-lock .a0-reset .a0-emailPassword .a0-password input').val('xyz');
         $('#a0-lock .a0-reset .a0-emailPassword .a0-repeatPassword input').val('xyz');
-        $('#a0-lock .a0-reset .a0-emailPassword .a0-action button.a0-primary').trigger('click');
+        $('#a0-lock .a0-reset .a0-action button.a0-primary').trigger('click');
       })
       .show({
         callbackURL: callbackURL,
