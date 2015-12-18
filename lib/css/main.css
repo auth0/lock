@@ -7677,12 +7677,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-radius: 0 0 3px 3px;
 }
 
-#a0-lock.a0-theme-default .a0-panel button.a0-primary:hover {
-  background: #ac3610;
-}
-
+#a0-lock.a0-theme-default .a0-panel button.a0-primary:hover,
 #a0-lock.a0-theme-default .a0-panel button.a0-primary:focus {
-  background: #ac3610;
+  -webkit-box-shadow: inset 0 0 100px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 100px 20px rgba(0, 0, 0, 0.2);
 }
 
 #a0-lock.a0-theme-default .a0-panel input[disabled] {
