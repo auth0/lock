@@ -13,7 +13,7 @@
     "strategyEmailInvalid":        "El email no es válido.",
     "strategyDomainInvalid":       "El dominio {domain} no está configurado.",
     "signupText":                  "Registrarse",
-    "forgotText":                  "Restablecer contraseña",
+    "forgotText":                  "Olvidaste tu contraseña?",
     "emailPlaceholder":            "Email",
     "usernamePlaceholder":         "Nombre de usuario",
     "passwordPlaceholder":         "Contraseña",

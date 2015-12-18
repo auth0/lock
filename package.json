@@ -14,8 +14,9 @@
   "scripts": {
     "test": "grunt integration",
     "phantom": "grunt phantom",
-    "demo": "grunt demo",
     "build": "grunt build",
+    "start": "grunt demo",
+    "demo": "grunt demo",
     "dev": "grunt dev"
   },
   "repository": {
@@ -77,5 +78,8 @@
       "brfs",
       "packageify"
     ]
+  },
+  "engines": {
+    "node": "4.2.3"
   }
 }
