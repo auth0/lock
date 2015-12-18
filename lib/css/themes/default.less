@@ -265,6 +265,7 @@
     cursor: pointer;
     line-height: 0;
     padding: 0;
+    margin: 0;
   }
 }
 
@@ -299,8 +300,12 @@
 /*==========  Overlay  ==========*/
 .overlay {
   background: radial-gradient(rgba(64,64,75,.9),rgba(17,17,24,.9)) rgba(34,34,40,.52);
+  animation: fadeIn .3s ease-in;
 }
 
+.nocentrix .panel .mode-container {
+  height: auto!important;
+}
 
 /*==========  Panel  ==========*/
 .panel{
@@ -328,8 +333,8 @@
   }
 
   .mode {
-    -webkit-animation: fadeIn 1s ease;
-    animation: fadeIn 1s ease;
+    // -webkit-animation: fadeIn 1s ease;
+    // animation: fadeIn 1s ease;
     margin: auto;
 
     // position: relative;
@@ -667,9 +672,12 @@
     font-size: 13px;
     margin: 10px 0;
     line-height: 1.6;
+  }
 
-    span{
-      letter-spacing: 1px;
+  .separator {
+    text-transform: capitalize;
+    span {
+      text-transform: lowercase;
     }
   }
 
@@ -792,14 +800,6 @@
 
 
   .close{
-    // position: absolute;
-    // top: 20px;
-    // right: 20px;
-    // display: block;
-    // cursor: pointer;
-    // font-size: 16px;
-    // color: #ccc;
-
     background: #fff;
     border-radius: 100px;
     height: 10px;
@@ -813,7 +813,7 @@
     border: 6px solid #fff;
     cursor: pointer;
     line-height: 0;
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .close:hover{
@@ -1050,12 +1050,6 @@
 =            Media Queries            =
 =====================================*/
 
-@media screen and (min-width: 481px) {
-  .panel .mode-container {
-    height: auto!important;
-  }
-}
-
 @media screen and (max-width: 480px) {
 
   .ie8-overlay{
@@ -1135,6 +1129,17 @@
         .mode,
         button.primary {
           border-radius: 0;
+        }
+
+        .icon-container .image.gravatar {
+          margin-top: 10px;
+          margin-bottom: 0;
+
+          img {
+            width: 60px;
+            height: 60px;
+            margin: 0;
+          }
         }
 
         .mode-container {

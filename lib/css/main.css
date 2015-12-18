@@ -882,10 +882,6 @@
 
 @charset "UTF-8";
 
-#a0-lock.a0-theme-default .a0-iconlist {
-  margin: -5px;
-}
-
 #a0-lock.a0-theme-default .a0-zocial,
 #a0-lock.a0-theme-default a.a0-zocial {
   color: #fff;
@@ -1438,10 +1434,10 @@
   position: absolute;
   top: 65%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%) scale(0.5);
+  -moz-transform: translate(-50%, -50%) scale(0.5);
+  -ms-transform: translate(-50%, -50%) scale(0.5);
+  transform: translate(-50%, -50%) scale(0.5);
   -webkit-animation-duration: 600ms;
   -moz-animation-duration: 600ms;
   animation-duration: 600ms;
@@ -7276,6 +7272,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   cursor: pointer;
   line-height: 0;
   padding: 0;
+  margin: 0;
 }
 
 #a0-lock.a0-theme-default .a0-switch {
@@ -7310,6 +7307,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background: -webkit-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: -moz-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
+  -webkit-animation: fadeIn 0.3s ease-in;
+  -moz-animation: fadeIn 0.3s ease-in;
+  animation: fadeIn 0.3s ease-in;
+}
+
+#a0-lock.a0-theme-default .a0-nocentrix .a0-panel .a0-mode-container {
+  height: auto!important;
 }
 
 #a0-lock.a0-theme-default .a0-panel {
@@ -7342,9 +7346,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode {
-  -webkit-animation: fadeIn 1s ease;
-  -moz-animation: fadeIn 1s ease;
-  animation: fadeIn 1s ease;
   margin: auto;
   background-color: white;
   border-radius: 0 0 3px 3px;
@@ -7645,9 +7646,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   line-height: 1.6;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-separator span,
-#a0-lock.a0-theme-default .a0-panel .a0-instructions span {
-  letter-spacing: 1px;
+#a0-lock.a0-theme-default .a0-panel .a0-separator {
+  text-transform: capitalize;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-separator span {
+  text-transform: lowercase;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-instructions {
@@ -7755,7 +7759,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border: 6px solid #fff;
   cursor: pointer;
   line-height: 0;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-close:hover {
@@ -7986,12 +7990,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   padding-top: 20px;
 }
 
-@media screen and (min-width: 481px) {
-  #a0-lock.a0-theme-default .a0-panel .a0-mode-container {
-    height: auto!important;
-  }
-}
-
 @media screen and (max-width: 480px) {
   #a0-lock.a0-theme-default .a0-ie8-overlay {
     background: none !important;
@@ -8067,6 +8065,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode,
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel button.a0-primary {
     border-radius: 0;
+  }
+
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image.a0-gravatar {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
+    width: 60px;
+    height: 60px;
+    margin: 0;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode-container {
