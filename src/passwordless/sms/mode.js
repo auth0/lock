@@ -3,11 +3,12 @@ import { setInitialPhoneLocation } from '../../cred/phone-number/actions';
 import AskPhoneNumberVcode from '../ask_phone_number_vcode';
 import AskPhoneNumber from '../ask_phone_number';
 import { initPasswordless, passwordlessStarted } from '../index';
+import dict from './dict';
 
 export default class SmsMode extends Mode {
 
   constructor() {
-    super("sms");
+    super("sms", dict);
   }
 
   willOpen(model, options) {

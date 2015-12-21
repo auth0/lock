@@ -1,4 +1,5 @@
 import Immutable, { Map } from 'immutable';
+import { registerDict } from '../dict/index';
 
 export default class PluginManager {
   constructor(proto) {
@@ -8,7 +9,7 @@ export default class PluginManager {
 
   register(pluginClass) {
     const plugin = new pluginClass();
-    const { name } = plugin;
+    const { dict, name } = plugin;
     this.plugins = this.plugins.set(name, plugin);
     this.proto[name] = function(...args) {
       const isOpen = plugin.open(this.id, ...args);
@@ -18,6 +19,7 @@ export default class PluginManager {
 
       return isOpen;
     }
+    registerDict(name, dict);
   }
 
   renderFns() {

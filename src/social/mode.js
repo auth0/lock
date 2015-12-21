@@ -1,11 +1,12 @@
 import Mode from '../lock/mode';
 import AskSocialNetwork from '../cred/social/ask_social_network';
 import { initSocial } from './index';
+import dict from './dict';
 
 export default class SocialMode extends Mode {
 
   constructor() {
-    super("social");
+    super("social", dict);
   }
 
   willOpen(model, options) {

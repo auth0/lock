@@ -2,8 +2,9 @@ import { getEntity, read, setEntity, swap } from '../store/index';
 import { closeLock, openLock } from '../lock/actions';
 
 export default class Mode {
-  constructor(name) {
+  constructor(name, dict) {
     this.name = name;
+    this.dict = dict;
   }
 
   open(id, ...args) {

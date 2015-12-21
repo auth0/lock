@@ -1,5 +1,5 @@
 import Immutable, { Map } from 'immutable';
-import dicts from './dicts';
+import baseDict from './base_dict';
 
 class Dict {
   constructor(dict) {
@@ -13,12 +13,16 @@ class Dict {
   }
 }
 
-export function build(dictName, overrides) {
-  overrides = Immutable.fromJS(overrides);
-  const dict = Immutable.fromJS(dicts)
-    .get(dictName, Map())
-    .set("error", Immutable.fromJS(dicts.error))
-    .set("success", Immutable.fromJS(dicts.success));
+let dicts = Map();
 
-  return new Dict(dict.mergeDeep(overrides));
+export function registerDict(mode, dict) {
+  dicts = dicts.set(
+    mode,
+    Immutable.fromJS(baseDict).mergeDeep(Immutable.fromJS(dict))
+  );
+}
+
+export function buildDict(mode, overrides) {
+  const dict = dicts.get(mode, Map()).mergeDeep(Immutable.fromJS(overrides));
+  return new Dict(dict);
 }

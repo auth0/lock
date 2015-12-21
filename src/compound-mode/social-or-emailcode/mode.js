@@ -3,11 +3,12 @@ import AskEmailVcode from '../../passwordless/ask_email_vcode';
 import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
 import { initSocial } from '../../social/index';
 import { initPasswordless, passwordlessStarted } from '../../passwordless/index';
+import dict from './dict';
 
 export default class SocialOrEmailCodeMode extends Mode {
 
   constructor() {
-    super("socialOrEmailcode");
+    super("socialOrEmailcode", dict);
   }
 
   willOpen(model, options) {

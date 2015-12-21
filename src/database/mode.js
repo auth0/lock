@@ -3,11 +3,12 @@ import Login from './login';
 import ResetPassword from './reset_password';
 import SignUp from './sign_up';
 import { getActivity, initDatabase } from './index';
+import dict from './dict';
 
 export default class DatabaseMode extends Mode {
 
   constructor() {
-    super("database");
+    super("database", dict);
   }
 
   willOpen(model, options) {

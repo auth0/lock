@@ -4,11 +4,12 @@ import { getActivity, initDatabase } from '../../database/index';
 import AskSocialNetworkOrLogin from '../../cred/or/ask_social_network_or_login';
 import ResetPassword from '../../database/reset_password';
 import SignUp from '../../database/sign_up';
+import dict from './dict';
 
 export default class SocialOrDatabaseMode extends Mode {
 
   constructor() {
-    super("socialOrDatabase");
+    super("socialOrDatabase", dict);
   }
 
   willOpen(model, options) {

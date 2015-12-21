@@ -96,7 +96,7 @@ function extractUIOptions(id, modeName, options) {
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
     icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
     closable: closable,
-    dict: d.build(modeName, typeof options.dict === "object" ? options.dict : {}),
+    dict: d.buildDict(modeName, typeof options.dict === "object" ? options.dict : {}),
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
