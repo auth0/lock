@@ -7413,6 +7413,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation: none;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-bg-solid-color {
+  height: 100%;
+  opacity: .08;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image {
   -webkit-filter: blur(40px);
   -ms-filter: blur(40px);
@@ -7425,6 +7430,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -ms-filter: blur(40px) grayscale(1);
   filter: blur(40px) grayscale(1);
   -webkit-backdrop-filter: blur(0);
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient.a0-blur-support .a0-bg-solid-color {
+  display: none;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient.a0-blur-no-support .a0-image,
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient.a0-blur-no-support .a0-avatar {
+  display: none;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-icon-container {
