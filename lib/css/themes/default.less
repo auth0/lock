@@ -400,6 +400,11 @@
       animation: none;
     }
 
+    .bg-solid-color {
+      height: 100%;
+      opacity: .08;
+    }
+
     .image {
       -webkit-filter: blur(40px);
       -ms-filter: blur(40px);
@@ -411,6 +416,18 @@
       -ms-filter: blur(40px) grayscale(1);
       filter: blur(40px) grayscale(1);
       -webkit-backdrop-filter: blur(0);
+    }
+
+    &.blur-support {
+      .bg-solid-color {
+        display: none;
+      }
+    }
+
+    &.blur-no-support {
+      .image, .avatar {
+        display: none;
+      }
     }
   }
 
