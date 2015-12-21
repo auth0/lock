@@ -7530,7 +7530,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-transition: border-color 0.8s;
   -moz-transition: border-color 0.8s;
   transition: border-color 0.8s;
-  height: 42px;
   overflow: hidden;
 }
 
