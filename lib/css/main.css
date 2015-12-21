@@ -7604,12 +7604,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #666;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-inputs div {
-  margin-bottom: 10px;
+#a0-lock.a0-theme-default .a0-panel .a0-inputs > div {
+  margin-top: 10px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-inputs div:last-child {
-  margin-bottom: 0;
+#a0-lock.a0-theme-default .a0-panel .a0-inputs > div:first-child {
+  margin-top: 0;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-action {
