@@ -7393,14 +7393,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-bg-gradient img {
-  width: 300px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -20%);
+  -moz-transform: translate(-50%, -20%);
+  -ms-transform: translate(-50%, -20%);
+  transform: translate(-50%, -20%);
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image,
 #a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-avatar {
-  position: absolute;
-  width: 100%;
-  top: 50;
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
