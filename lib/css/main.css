@@ -7303,7 +7303,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: white;
 }
 
-#a0-lock.a0-theme-default .a0-overlay {
+#a0-lock.a0-theme-default .a0-overlay.a0-active {
   background: -webkit-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: -moz-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
