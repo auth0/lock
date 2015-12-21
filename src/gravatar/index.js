@@ -1,3 +1,5 @@
+import trim from 'trim';
+
 export function setDisplayName(m, value) {
   return m.set("displayName", value);
 }
@@ -16,4 +18,10 @@ export function imageUrl(m) {
 
 export function loaded(m) {
   return !!(displayName(m) && imageUrl(m));
+}
+
+export function normalizeGravatarEmail(str) {
+  return typeof str === "string"
+    ? trim(str.toLowerCase())
+    : "";
 }
