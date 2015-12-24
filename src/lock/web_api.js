@@ -1,6 +1,7 @@
 import Auth0 from 'auth0-js';
 import reqwest from 'reqwest';
 import { loadClientSettings } from './client/browser';
+import { receiveSSOData } from './client/actions';
 
 class Auth0WebAPI {
   constructor() {
@@ -17,7 +18,9 @@ class Auth0WebAPI {
 
     // TODO: reusse client settings and fetch on demand
     loadClientSettings(clientID, domain, options.assetsUrl);
-
+    this.clients[lockID].getSSOData((err, ssoData) => {
+      receiveSSOData(clientID, ssoData);
+    });
   }
 
   signIn(lockID, options, cb) {

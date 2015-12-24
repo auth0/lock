@@ -4,6 +4,7 @@ import ResetPassword from './reset_password';
 import SignUp from './sign_up';
 import { getActivity, initDatabase } from './index';
 import dict from './dict';
+import LoadingScreen from '../lock/loading_screen';
 
 export default class DatabaseMode extends Mode {
 
@@ -16,6 +17,10 @@ export default class DatabaseMode extends Mode {
   }
 
   render(lock) {
+    if (!lock.has("sso")) {
+      return new LoadingScreen();
+    }
+
     const activity = getActivity(lock);
     switch(activity) {
       case "login":
