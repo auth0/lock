@@ -52,6 +52,14 @@ export default class Chrome extends React.Component {
     const header = headerText && <p>{headerText}</p>;
     const footer = footerText && <Terms>{footerText}</Terms>;
     const tabsContainer = tabs && <div className="auth0-lock-tabs-container">{tabs}</div>;
+    const submitButton = showSubmitButton
+      && <SubmitButton
+            color={primaryColor}
+            disabled={disableSubmit}
+            key="submit"
+            ref="submit"
+            tabIndex={l.tabIndex(lock, 10)}
+          />;
 
     return (
       <div className="auth0-lock-cred-pane">
@@ -80,7 +88,13 @@ export default class Chrome extends React.Component {
             </Placeholder>
           </MultisizeSlide>
         </div>
-        {showSubmitButton && <SubmitButton ref="submit" color={primaryColor} disabled={disableSubmit} tabIndex={l.tabIndex(lock, 10)} />}
+        <ReactCSSTransitionGroup
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={400}
+            transitionName="vslide"
+        >
+          {submitButton}
+        </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
