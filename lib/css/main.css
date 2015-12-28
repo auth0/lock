@@ -7628,6 +7628,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-top: 0;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-action {
+  height: 70px;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-action button {
   text-indent: -99999px;
   height: 70px;
@@ -8102,6 +8106,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-mode {
     display: table-cell;
     vertical-align: middle;
+  }
+
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-action {
+    height: auto;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-signup-footer {

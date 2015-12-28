@@ -647,6 +647,7 @@
   }
 
   .action {
+    height: 70px;
 
     button{
       text-indent: -99999px;
@@ -1067,8 +1068,10 @@
 =====================================*/
 
 @media screen and (max-height: 540px) {
-  .popup .centrix .panel button.primary {
-    position: relative;
+  .popup .centrix .panel {
+    button.primary {
+      position: relative;
+    }
   }
 }
 
@@ -1172,6 +1175,10 @@
         .mode {
           display: table-cell;
           vertical-align: middle;
+        }
+
+        .action {
+          height: auto;
         }
 
         .signup-footer {
