@@ -342,7 +342,7 @@
     border-radius: 0 0 3px 3px;
     // overflow: hidden;
 
-    form {
+    form .body-content {
       padding: 30px;
     }
   }
@@ -488,8 +488,11 @@
   }
 
   .last-time{
-    font-size: 14px;
+    color: rgba(0,0,0,.56);
+    font-size: 13px;
     margin-bottom: 20px;
+    line-height: 1.6;
+    display: block;
   }
 
   .corporate-credentials {
@@ -644,7 +647,6 @@
   }
 
   .action {
-    height: 70px;
 
     button{
       text-indent: -99999px;
@@ -1063,6 +1065,12 @@
 /*=====================================
 =            Media Queries            =
 =====================================*/
+
+@media screen and (max-height: 540px) {
+  .popup .centrix .panel button.primary {
+    position: relative;
+  }
+}
 
 @media screen and (max-width: 480px) {
 

@@ -972,10 +972,6 @@
   border: none;
 }
 
-#a0-lock.a0-theme-default .a0-strategy {
-  margin: 10px 0;
-}
-
 #a0-lock.a0-theme-default .a0-zocial.a0-amazon:before {
   content: "a";
 }
@@ -7351,7 +7347,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border-radius: 0 0 3px 3px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-mode form {
+#a0-lock.a0-theme-default .a0-panel .a0-mode form .a0-body-content {
   padding: 30px;
 }
 
@@ -7501,8 +7497,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-last-time {
-  font-size: 14px;
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 13px;
   margin-bottom: 20px;
+  line-height: 1.6;
+  display: block;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-corporate-credentials {
@@ -7627,10 +7626,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-inputs > div:first-child {
   margin-top: 0;
-}
-
-#a0-lock.a0-theme-default .a0-panel .a0-action {
-  height: 70px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-action button {
@@ -8003,6 +7998,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-cordova.a0-ios .a0-centrix {
   padding-top: 20px;
+}
+
+@media screen and (max-height: 540px) {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel button.a0-primary {
+    position: relative;
+  }
 }
 
 @media screen and (max-width: 480px) {
