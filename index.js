@@ -951,7 +951,7 @@ Auth0Lock.prototype._focusError = function(input, message) {
     // reset errors
     this.query('.a0-errors').removeClass('a0-errors');
     this.query('.a0-error-input').removeClass('a0-error-input');
-    this.query('.a0-error-message').remove();
+    // this.query('.a0-error-message').remove();
     // reset animations
     return animation_shake_reset(this.$container);
   }
@@ -964,7 +964,7 @@ Auth0Lock.prototype._focusError = function(input, message) {
     .addClass('a0-error-input');
 
   if (!message) return;
-  input.parent().append($.create('<span class="a0-error-message">' + message + '</span>'));
+  // input.parent().append($.create('<span class="a0-error-message">' + message + '</span>'));
   this.emit('error shown', message, input);
 };
 
@@ -1445,7 +1445,7 @@ Auth0Lock.prototype._clearPreviousPanel = function () {
 function animation_shake(context) {
   $('.a0-panel', context)
     .addClass('a0-errors')
-    .addClass('a0-animated a0-shake');
+    // .addClass('a0-animated a0-shake');
 }
 
 /**

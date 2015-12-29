@@ -7566,6 +7566,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box.a0-error-input,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box.a0-error-input {
   border-color: red;
+  -webkit-animation: pulse 1s both;
+  -moz-animation: pulse 1s both;
+  animation: pulse 1s both;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email input,
@@ -7725,7 +7728,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-error {
-  background: red;
+  background: #f04848;
   -webkit-user-select: all;
   -moz-user-select: all;
   -ms-user-select: all;
