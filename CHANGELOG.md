@@ -1,3 +1,18 @@
+## [8.0.3] - 2015-12-29
+
+### Fixed
+
+- [] Remove commented lines for email error messages (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/db43f361a8f493a75700fa198c0d4399132da493
+- [] Don't expect email input error messages in tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0aea435c92c7287decab2b47606fe0757f9f8a91
+- [] styled SSO (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/9fd0897bce40671a4705972c3ff8375979f84b6c
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/326bd9de0dad77baa0f2dbc3a7343040b4ed8e8c
+- [] fix error pulse (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/5c83a89a596b6a3bd4d7c262fe0e23ddb15eaace
+
 ## [8.0.2] - 2015-12-29
 
 ### Fixed
