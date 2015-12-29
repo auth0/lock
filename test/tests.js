@@ -631,8 +631,6 @@ describe('Auth0Lock', function () {
           bean.fire($('.a0-signin form')[0], 'submit');
 
           expect($('.a0-email .a0-error-input')).to.not.be.empty();
-          expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
-          expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
           done();
         })
         .showSignin(this.options);
@@ -672,8 +670,6 @@ describe('Auth0Lock', function () {
           bean.fire($('.a0-signin form')[0], 'submit');
 
           expect($('.a0-email .a0-error-input')).to.not.be.empty();
-          expect($('.a0-email .a0-error-input .a0-error-message')).to.not.be.empty();
-          expect($('.a0-error-message').text()).to.equal(auth0.options.i18n.t('invalid'));
           done();
         })
         .showSignin(this.options);
