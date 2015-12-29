@@ -1,3 +1,37 @@
+## [8.0.2] - 2015-12-29
+
+### Fixed
+
+- [] Merge pull request #280 from auth0/enterprise-ready-event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/efd524aad70b1fef5ab5c212fe7d5d84659b8155
+- [] Add an 'enterprise ready' event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f7f065aabefdd235dc294a8ec5bbf1513504157c
+
+## [8.0.1] - 2015-12-29
+
+### Fixed
+
+- [] Fix css blur support check (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d2a88aa6f5df036d4ca9f785f80b6df4febdffcf
+- [] Merge pull request #275 from auth0/header-solid-bg-fallback (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/330c1dc995e67b4bc22c5d6ef900ef4af730f9c5
+- [] header support or no support styled (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/94a45b85c22b9396bebfb0d9e237abf4647fc1fd
+- [] WIP fallback to solid header background (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/918c7c9667afa46114e0be1de44b1c85636a3eb3
+- [] Avoid flash when rendering inside a container (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0001fb0f242aa5c1d7a14ac624a7e4058db32e58
+- [] fix header blur (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a1c627abb2430abebf25cb6b484eee2f094a9d13
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a324fab78adbe4f391d56268bae8854d2e5a3dad
+- [] Hide forgot pass link for enterprise conn (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/64a1de03b31a4ac811eeff14c452c8c69bf73bb8
+- [] fix input border (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/06734958055e81903d8e0fb060c0ab52c425c5a5
+- [] fix close button (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/d5f3ce94da13be14f090228f845285af17821e8d
+
 ## [8.0.0] - 2015-12-18
 
 ### Fixed
