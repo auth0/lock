@@ -3,9 +3,17 @@ import * as l from '../lock/index';
 import * as client from '../lock/client/index';
 
 export function initDatabase(model, options) {
-  return model.setIn(
+  model = model.setIn(
     ["database", "opts"],
     Immutable.fromJS(processDatabaseOptions(options))
+  );
+
+  // TODO: remove duplicate connection information
+  return l.registerConnection(
+    model,
+    "database",
+    "auth0",
+    databaseConnection(model)
   );
 }
 
