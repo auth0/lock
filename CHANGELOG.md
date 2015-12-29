@@ -1,3 +1,12 @@
+## [8.0.2] - 2015-12-29
+
+### Fixed
+
+- [] Merge pull request #280 from auth0/enterprise-ready-event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/efd524aad70b1fef5ab5c212fe7d5d84659b8155
+- [] Add an 'enterprise ready' event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f7f065aabefdd235dc294a8ec5bbf1513504157c
+
 ## [8.0.1] - 2015-12-29
 
 ### Fixed
