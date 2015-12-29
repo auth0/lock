@@ -247,3 +247,21 @@ export function warn(x, str) {
     console.warn(str);
   }
 }
+
+export function registerConnection(m, type, strategy, name) {
+  return m.update(
+    "connections",
+    List(),
+    xs => xs.push(Map({type, strategy, name}))
+  );
+}
+
+export function registerConnections(m, type, connections) {
+  return connections.reduce((r, x) => (
+    registerConnection(r, type, x.strategy, x.name)
+  ), m);
+}
+
+export function getConnections(m) {
+  return m.get("connections", List());
+}
