@@ -7518,7 +7518,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-sso-notice-container {
-  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.03);
+  color: #6b6c6d;
+  padding: 15px 0;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-sso-notice-container i {

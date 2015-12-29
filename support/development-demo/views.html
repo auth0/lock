@@ -56,11 +56,6 @@
       </div>
 
       <div class="clearfix">
-        <h3>Logout</h3>
-        <div id="logout"></div>
-      </div>
-
-      <div class="clearfix">
         <h3>Only Social</h3>
         <div id="only-social"></div>
       </div>
@@ -271,7 +266,7 @@
             widget.showSignin({
               callbackURL: window.location.href,
               responseType: 'token',
-              connections: ['qraftlabs.com'],
+              connections: ['auth0.com'],
               container: 'only-enterprise'
             });
           };
