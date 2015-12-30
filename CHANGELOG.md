@@ -1,3 +1,16 @@
+## [8.0.4] - 2015-12-30
+
+### Fixed
+
+- [] fix height mobile (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/4407d2f3ad860f1af6861befcc5dc984d92ee28a
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a9a34652f75a892a5bf95b7c5d3cd994eb79b22f
+- [] minor fix sso (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/f1ee15e5bc16c88723d3854f14a746623ba63ebd
+- [] Add Heroku generated app.json (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/ef06221550f86eff57e1af15025cd16ce37015de
+
 ## [8.0.3] - 2015-12-29
 
 ### Fixed
