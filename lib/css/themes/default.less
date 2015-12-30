@@ -307,6 +307,10 @@
   height: auto!important;
 }
 
+.popup .centrix {
+  height: 100%;
+}
+
 /*==========  Panel  ==========*/
 .panel{
   text-align: center;
@@ -1071,10 +1075,8 @@
 =====================================*/
 
 @media screen and (max-height: 540px) {
-  .popup .centrix .panel {
-    button.primary {
-      position: relative;
-    }
+  .popup .centrix {
+    min-height: 540px;
   }
 }
 

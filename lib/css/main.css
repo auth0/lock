@@ -7312,6 +7312,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   height: auto!important;
 }
 
+#a0-lock.a0-theme-default .a0-popup .a0-centrix {
+  height: 100%;
+}
+
 #a0-lock.a0-theme-default .a0-panel {
   text-align: center;
   border-radius: 3px;
@@ -8010,8 +8014,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 @media screen and (max-height: 540px) {
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel button.a0-primary {
-    position: relative;
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix {
+    min-height: 540px;
   }
 }
 
