@@ -1,4 +1,7 @@
 export default {
+  lastLogin: {
+    headerText: "Last time you logged in with",
+  },
   login: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",

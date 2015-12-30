@@ -265,3 +265,9 @@ export function registerConnections(m, type, connections) {
 export function getConnections(m) {
   return m.get("connections", List());
 }
+
+export function findConnection(m, strategy, name) {
+  return getConnections(m).find(x => (
+    x.get("strategy") === strategy && x.get("name") === name)
+  );
+}
