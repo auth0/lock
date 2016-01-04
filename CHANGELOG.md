@@ -1,3 +1,20 @@
+## [8.0.5] - 2016-01-04
+
+### Fixed
+
+- [] Merge update with zuul (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/2d3b2dfb6ef028c2d478597197dd01b491d9efbc
+- [] Merge pull request #281 from auth0/fix/zuul (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/2918093790b61780d92d67e36ea451fadf528e74
+- [] gravatar blur only (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/266ea6cb0f284a7d82f3925ddc2448fc0ce7bbfc
+- [] bump zuul@3.8.0 and pin zuul-ngrok@3.0.0 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/7175ff0011959813220d9c87b4738fc8da799761
+- [] fix loading font size (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/94d363de6433e8775bee3a8bb8fa3302ddf99722
+- [] fix popup safari (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/c2239ec508d7f76959866bd1d019aaf5ad5629e8
+
 ## [8.0.4] - 2015-12-30
 
 ### Fixed
