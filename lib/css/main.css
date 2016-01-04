@@ -7850,6 +7850,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   position: relative;
 }
 
+#a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-input-box.a0-error-input {
+  -webkit-animation: none!important;
+  -moz-animation: none!important;
+  animation: none!important;
+}
+
 #a0-lock.a0-theme-default .a0-panel.a0-active-pwd-strength .a0-password_policy {
   position: absolute;
   bottom: 50px;
