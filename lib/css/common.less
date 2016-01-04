@@ -111,9 +111,9 @@
   user-select: none;
   background: #000;
   background: rgba(0,0,0,0.8);
-  opacity: 0;
   transition: 300ms opacity ease-out;
   transform: translate3d(0, 0, 0);
+  animation: fadeIn .3s ease-in;
 
 
   .centrix {
@@ -121,11 +121,14 @@
     vertical-align: middle;
     display: table-cell;
     margin: 0;
+    opacity: 0;
   }
 }
 
 .overlay.active {
-  opacity: 1;
+  .centrix {
+    opacity: 1;
+  }
 }
 
 .overlay .panel {

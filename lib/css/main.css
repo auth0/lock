@@ -1494,7 +1494,6 @@
   user-select: none;
   background: #000;
   background: rgba(0, 0, 0, 0.8);
-  opacity: 0;
   -webkit-transition: 300ms opacity ease-out;
   -moz-transition: 300ms opacity ease-out;
   transition: 300ms opacity ease-out;
@@ -1502,6 +1501,9 @@
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+  -webkit-animation: fadeIn 0.3s ease-in;
+  -moz-animation: fadeIn 0.3s ease-in;
+  animation: fadeIn 0.3s ease-in;
 }
 
 #a0-lock .a0-overlay .a0-centrix {
@@ -1509,9 +1511,10 @@
   vertical-align: middle;
   display: table-cell;
   margin: 0;
+  opacity: 0;
 }
 
-#a0-lock .a0-overlay.a0-active {
+#a0-lock .a0-overlay.a0-active .a0-centrix {
   opacity: 1;
 }
 
@@ -7303,9 +7306,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background: -webkit-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: -moz-radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
   background: radial-gradient(rgba(64, 64, 75, 0.9), rgba(17, 17, 24, 0.9)) rgba(34, 34, 40, 0.52);
-  -webkit-animation: fadeIn 0.3s ease-in;
-  -moz-animation: fadeIn 0.3s ease-in;
-  animation: fadeIn 0.3s ease-in;
 }
 
 #a0-lock.a0-theme-default .a0-nocentrix .a0-panel .a0-mode-container {
