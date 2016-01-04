@@ -408,16 +408,17 @@
       opacity: .08;
     }
 
-    .image {
-      -webkit-filter: blur(40px);
-      -ms-filter: blur(40px);
-      filter: blur(40px);
-      -webkit-backdrop-filter: blur(0);
-    }
-    .avatar {
+    .image, .avatar {
       -webkit-filter: blur(40px) grayscale(1);
       -ms-filter: blur(40px) grayscale(1);
       filter: blur(40px) grayscale(1);
+      -webkit-backdrop-filter: blur(0);
+    }
+
+    .image.gravatar {
+      -webkit-filter: blur(40px);
+      -ms-filter: blur(40px);
+      filter: blur(40px);
       -webkit-backdrop-filter: blur(0);
     }
 

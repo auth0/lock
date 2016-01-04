@@ -7418,17 +7418,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   opacity: .08;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image {
-  -webkit-filter: blur(40px);
-  -ms-filter: blur(40px);
-  filter: blur(40px);
-  -webkit-backdrop-filter: blur(0);
-}
-
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image,
 #a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-avatar {
   -webkit-filter: blur(40px) grayscale(1);
   -ms-filter: blur(40px) grayscale(1);
   filter: blur(40px) grayscale(1);
+  -webkit-backdrop-filter: blur(0);
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image.a0-gravatar {
+  -webkit-filter: blur(40px);
+  -ms-filter: blur(40px);
+  filter: blur(40px);
   -webkit-backdrop-filter: blur(0);
 }
 
