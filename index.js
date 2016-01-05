@@ -1429,6 +1429,10 @@ Auth0Lock.prototype._clearPreviousPanel = function () {
   this._setPreviousPanel(null);
 };
 
+Auth0Lock._setOpenWindowFn = function(f) {
+  Auth0.prototype.openWindow = f;
+};
+
 /**
  * Private helpers
  */
