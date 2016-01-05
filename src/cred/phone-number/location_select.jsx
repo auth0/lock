@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Icon from '../../icon/icon';
+import IconButton from '../../icon/button';
 import * as cc from '../country_codes';
 import * as su from '../../utils/string_utils';
 import { isSmallScreen } from '../../utils/media_utils';
@@ -35,12 +36,18 @@ export default class LocationSelect extends React.Component {
   }
 
   render() {
-    const { initialLocationSearchStr, locationFilterInputPlaceholder, selectHandler } = this.props;
+    const {
+      initialLocationSearchStr,
+      locationFilterInputPlaceholder,
+      selectHandler
+    } = this.props;
+
     const { filteredCountryCodes, highlighted } = this.state;
 
     return (
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
+          <IconButton name="back" onClick={::this.cancel} />
           <div className="auth0-lock-input-wrap">
             <Icon name="location"/>
             <input ref="input"
