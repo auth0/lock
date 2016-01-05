@@ -13,7 +13,7 @@ class ResendLink extends React.Component {
   render() {
     const { label, onClick } = this.props;
     return(
-      <a className="auth0-lock-resend-link" href="" onClick={onClick}>
+      <a className="auth0-lock-resend-link" href="#" onClick={onClick}>
         {label} <Icon name="retry" />
       </a>
     );
