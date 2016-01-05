@@ -441,70 +441,6 @@ breakpoint(point, value = 0)
       animation rotate 1s linear infinite
 
 
-  // Lock country numbers
-
-
-  .auth0-lock-select-country
-    background-color white
-    position absolute
-    padding 0
-    font-size 14px
-    color #666
-    bottom 0
-    top 0
-    right 0
-    left 0
-    border-radius 5px
-    overflow hidden
-    z-index 200
-
-    .auth0-lock-search
-      background-color #E3E5E9
-      padding 10px
-
-    .auth0-lock-input-wrap
-      margin 0
-      border none
-
-    .auth0-lock-icon
-      width 16px
-      height 16px
-      top 12px
-      left 9px
-      z-index 1
-
-    .auth0-lock-input-search
-      border none
-      color black
-
-    .auth0-lock-list-code
-      position relative
-      height calc(100% - 60px)
-      overflow-y scroll
-      ul
-        margin 0
-        padding 0
-      li
-        list-style none
-        text-align left
-        border-bottom 1px solid #EEE
-        cursor pointer
-        color black
-        font-size 14px
-        padding 15px 20px
-        margin 0
-        text-overflow ellipsis
-        width: 100%
-        white-space nowrap
-        overflow hidden
-        box-sizing border-box
-        +breakpoint("mobile")
-          padding 10px 20px
-        &.auth0-lock-list-code-highlighted
-          background-color #2EB5FF
-          color white
-
-
   // Content mode loading
 
 
@@ -554,6 +490,76 @@ breakpoint(point, value = 0)
       visibility hidden
       -webkit-transition .25s
       transition .25s
+
+
+  // Lock country numbers
+
+
+  .auth0-lock-select-country
+    background-color white
+    position absolute
+    padding 0
+    font-size 14px
+    color #666
+    bottom 0
+    top 0
+    right 0
+    left 0
+    border-radius 5px
+    overflow hidden
+    z-index 200
+
+    .auth0-lock-back-button
+      opacity 1
+      visibility visible
+      top 19px
+
+    .auth0-lock-search
+      background-color #E3E5E9
+      padding 10px
+
+    .auth0-lock-input-wrap
+      margin 0
+      border none
+      margin-left 40px
+
+    .auth0-lock-icon
+      width 16px
+      height 16px
+      top 12px
+      left 9px
+      z-index 1
+
+    .auth0-lock-input-search
+      border none
+      color black
+
+    .auth0-lock-list-code
+      position relative
+      height calc(100% - 60px)
+      overflow-y scroll
+      ul
+        margin 0
+        padding 0
+      li
+        list-style none
+        text-align left
+        border-bottom 1px solid #EEE
+        cursor pointer
+        color black
+        font-size 14px
+        padding 15px 20px
+        margin 0
+        text-overflow ellipsis
+        width: 100%
+        white-space nowrap
+        overflow hidden
+        box-sizing border-box
+        +breakpoint("mobile")
+          padding 10px 20px
+        &.auth0-lock-list-code-highlighted
+          background-color #2EB5FF
+          color white
 
 
   // Lock confirmation content

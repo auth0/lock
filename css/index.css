@@ -421,6 +421,49 @@
   -webkit-animation: rotate 1s linear infinite;
   animation: rotate 1s linear infinite;
 }
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-content,
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-terms {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
+  background-color: #eee !important;
+  -webkit-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+  cursor: initial;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit span {
+  -webkit-animation: fadeOutDownBig 1s both;
+  animation: fadeOutDownBig 1s both;
+}
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-loading-container {
+  -webkit-animation: fadeInDownBig 1s both;
+  animation: fadeInDownBig 1s both;
+  display: block;
+}
+.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-back-button {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-header-avatar {
+  -webkit-animation: fadeOut 0.3s both;
+  animation: fadeOut 0.3s both;
+}
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-content,
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-terms,
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-submit {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-back-button {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
 .auth0-lock.auth0-lock .auth0-lock-select-country {
   background-color: #fff;
   position: absolute;
@@ -435,6 +478,11 @@
   overflow: hidden;
   z-index: 200;
 }
+.auth0-lock.auth0-lock .auth0-lock-select-country .auth0-lock-back-button {
+  opacity: 1;
+  visibility: visible;
+  top: 19px;
+}
 .auth0-lock.auth0-lock .auth0-lock-select-country .auth0-lock-search {
   background-color: #e3e5e9;
   padding: 10px;
@@ -442,6 +490,7 @@
 .auth0-lock.auth0-lock .auth0-lock-select-country .auth0-lock-input-wrap {
   margin: 0;
   border: none;
+  margin-left: 40px;
 }
 .auth0-lock.auth0-lock .auth0-lock-select-country .auth0-lock-icon {
   width: 16px;
@@ -486,49 +535,6 @@
 .auth0-lock.auth0-lock .auth0-lock-select-country .auth0-lock-list-code li.auth0-lock-list-code-highlighted {
   background-color: #2eb5ff;
   color: #fff;
-}
-.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-content,
-.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-terms {
-  opacity: 0.3;
-  pointer-events: none;
-}
-.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit {
-  background-color: #eee !important;
-  -webkit-transition: background 0.5s ease;
-  transition: background 0.5s ease;
-  cursor: initial;
-  pointer-events: none;
-}
-.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-submit span {
-  -webkit-animation: fadeOutDownBig 1s both;
-  animation: fadeOutDownBig 1s both;
-}
-.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-loading-container {
-  -webkit-animation: fadeInDownBig 1s both;
-  animation: fadeInDownBig 1s both;
-  display: block;
-}
-.auth0-lock.auth0-lock.auth0-lock-mode-loading .auth0-lock-back-button {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-header-avatar {
-  -webkit-animation: fadeOut 0.3s both;
-  animation: fadeOut 0.3s both;
-}
-.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-content,
-.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-terms,
-.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-submit {
-  opacity: 0.3;
-  pointer-events: none;
-}
-.auth0-lock.auth0-lock.auth0-lock-auxiliary .auth0-lock-back-button {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
 }
 .auth0-lock.auth0-lock .auth0-lock-confirmation {
   background-color: #fff;
