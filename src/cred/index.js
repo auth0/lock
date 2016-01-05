@@ -22,7 +22,7 @@ function visiblyInvalid(lock, cred) {
 // phone number
 
 export function fullPhoneNumber(lock) {
-  return `${phoneDialingCode(lock) || ""}${phoneNumber(lock) || ""}`.replace(/\s+/g, '');
+  return `${phoneDialingCode(lock) || ""}${phoneNumber(lock) || ""}`.replace(/[\s-]+/g, '');
 }
 
 export function fullHumanPhoneNumber(m) {
@@ -68,7 +68,7 @@ export function setPhoneNumber(lock, value) {
 }
 
 export function validatePhoneNumber(phoneNumber) {
-  const regExp = /^[0-9]{1,14}$/;
+  const regExp = /^[0-9]([0-9 -])*[0-9]$/;
   return regExp.test(phoneNumber);
 }
 
