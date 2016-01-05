@@ -1,3 +1,14 @@
+## [8.1.1] - 2016-01-05
+
+### Fixed
+
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/974ac6affa3a1352821b4bd27ad89af6deb537c3
+- [] fix margin spin msg (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/18028a7f3882fbb49dd2b42d8a36ff7e565bfea2
+- [] fix bg gradient (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/504ac01268974bb8a3646d7d1d56ab0532a3972d
+
 ## [8.1.0] - 2016-01-05
 
 ### Fixed
