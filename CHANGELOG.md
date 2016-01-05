@@ -1,3 +1,16 @@
+## [8.1.0] - 2016-01-05
+
+### Fixed
+
+- [] Merge pull request #279 from auth0/electron-support (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1ada9576e24c8520ecba8b61cc63996eb569eaca
+- [] Upgrade to auth0.js with openWindow method (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/98383d77568e7434092925802253de75c6fc09c0
+- [] Allow to override Auth0.prototype.openWindow (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/8e3bead85241296bb10c0267640b05d9e2e3ea31
+- [] Ensure default icon works when serving from the fs (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d9766a7b4b2a9a0315695f0c90b1bb3bbc2f23cd
+
 ## [8.0.6] - 2016-01-05
 
 ### Fixed
