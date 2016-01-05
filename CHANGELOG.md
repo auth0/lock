@@ -1,3 +1,12 @@
+## [8.0.6] - 2016-01-05
+
+### Fixed
+
+- [] Merge (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/968feaa76377c96ed116526ff8d3a6bd44df7d0c
+- [] disabled animation with pwd-strength (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/7fa4e4417ba953b94fc2d5e3e4c230933b320041
+
 ## [8.0.5] - 2016-01-04
 
 ### Fixed
