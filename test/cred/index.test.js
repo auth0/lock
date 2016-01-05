@@ -73,13 +73,18 @@ describe("setting a phone number", function() {
 describe("validating a phone number", function() {
   let entity;
 
-  it("success when there is at least one number", function() {
+  it("fails when there is just one number", function() {
     entity = c.setPhoneNumber(emptyEntity, "1");
+    expect(c.validPhoneNumber(entity)).to.be(false);
+  });
+
+  it("success when there is at least two numbers", function() {
+    entity = c.setPhoneNumber(emptyEntity, "12");
     expect(c.validPhoneNumber(entity)).to.be(true);
   });
 
-  it("success when there are at most fourteen numbers", function() {
-    entity = c.setPhoneNumber(emptyEntity, "12345678901234");
+  it("success when there are spaces or hyphens between numbers", function() {
+    entity = c.setPhoneNumber(emptyEntity, "123 4567-8901");
     expect(c.validPhoneNumber(entity)).to.be(true);
   });
 
@@ -90,11 +95,6 @@ describe("validating a phone number", function() {
 
   it("fails when there are letters", function() {
     entity = c.setPhoneNumber(emptyEntity, "123a456");
-    expect(c.validPhoneNumber(entity)).to.be(false);
-  });
-
-  it("fails when there are more than 14 numbers", function() {
-    entity = c.setPhoneNumber(emptyEntity, "123456789012345");
     expect(c.validPhoneNumber(entity)).to.be(false);
   });
 });
