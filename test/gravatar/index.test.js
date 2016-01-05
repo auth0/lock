@@ -67,3 +67,10 @@ describe("updating a gravatar", function() {
     });
   })
 });
+
+describe("normalizing an email", function() {
+  it("lowercases upercased letters", function() {
+    const email = "SomeOne@Auth0.com";
+    expect(g.normalizeGravatarEmail(email)).to.be(email.toLowerCase());
+  });
+});
