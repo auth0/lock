@@ -4,6 +4,8 @@ import * as webAPI from './web_api';
 import * as f from '../utils/fn_utils';
 
 export function requestGravatar(email) {
+  email = g.normalizeGravatarEmail(email);
+
   if (!read(getEntity, "gravatar", email)) {
     requestGravatarImage(email);
     requestGravatarDisplayName(email);

@@ -18,7 +18,7 @@ export default class Renderer {
 
     locks.forEach(lock => {
       if (l.rendering(lock)) {
-        const gravatar = getEntity(state, "gravatar", c.email(lock));
+        const gravatar = getEntity(state, "gravatar", g.normalizeGravatarEmail(c.email(lock)));
         lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
         const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
         const screen = fns.get(l.modeName(lock))(lock);
