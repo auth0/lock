@@ -1,3 +1,20 @@
+## not released
+
+### Changed
+
+- Allow spaces and hyphens in phone numbers.
+- Upgrade to React v0.14.5.
+- Upgrade to Auth0.js v6.8.0.
+
+### Added
+
+- Add a back button when selecting a country code.
+
+### Fixed
+
+- Force all characters to lower-case when creating the Gravatar's md5 hash.
+- Fix resend magic link button in applications using [page.js](https://github.com/visionmedia/page.js).
+
 ## [2.0.1] - 2015-12-04
 
 ### Fixed
