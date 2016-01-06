@@ -83,10 +83,10 @@
     "fbjs": "^0.3.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
-    "react": "^0.14.3",
-    "react-addons-css-transition-group": "^0.14.3",
-    "react-addons-transition-group": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "react": "0.14.5",
+    "react-addons-css-transition-group": "0.14.5",
+    "react-addons-transition-group": "0.14.5",
+    "react-dom": "0.14.5",
     "reqwest": "^1.1.4",
     "trim": "0.0.1"
   }
