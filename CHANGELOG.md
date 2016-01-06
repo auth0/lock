@@ -1,4 +1,4 @@
-## not released
+## [2.1.0] - 2016-01-06
 
 ### Changed
 
