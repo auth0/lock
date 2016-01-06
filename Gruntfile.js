@@ -54,14 +54,16 @@ module.exports = function(grunt) {
     browserify: {
       options: {
         browserifyOptions: {
-          extensions: ".jsx"
+          extensions: ".jsx",
+          transform: [["browserify-css", {"minify": true}], "babelify"]
         }
       },
       dev: {
         options: {
           browserifyOptions: {
             debug: true,
-            extensions: ".jsx"
+            extensions: ".jsx",
+            transform: [["browserify-css", {"minify": true}], "babelify"]
           },
           watch: true
         },

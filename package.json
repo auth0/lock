@@ -18,19 +18,6 @@
     "url": "git://github.com/auth0/lock-passwordless"
   },
   "main": "src/index.js",
-  "browserify": {
-    "transform": [
-      [
-        "browserify-css",
-        {
-          "minify": true
-        }
-      ],
-      [
-        "babelify"
-      ]
-    ]
-  },
   "scripts": {
     "start": "grunt dev",
     "build": "grunt build",
