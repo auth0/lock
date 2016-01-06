@@ -51,6 +51,19 @@ module.exports = function(grunt) {
         ]
       }
     },
+    babel: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd:    "src",
+            src:    ["**/*.js", "**/*.jsx"],
+            dest:   "lib",
+            ext: '.js'
+          }
+        ]
+      }
+    },
     browserify: {
       options: {
         browserifyOptions: {
@@ -84,7 +97,8 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ["build/", "release/"],
-      dev: ["build/"]
+      dev: ["build/"],
+      dist: ["lib/"]
     },
     connect: {
       dev: {
@@ -146,6 +160,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks("grunt-aws-s3");
+  grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-connect");
@@ -158,6 +173,7 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask("build", ["clean:build", "env:build", "browserify:build", "uglify:build"]);
+  grunt.registerTask("dist", ["clean:dist", "babel:dist"]);
   grunt.registerTask("dev", ["clean:dev", "connect:dev", "browserify:dev", "watch"]);
   grunt.registerTask("design", ["clean:dev", "connect:dev", "browserify:design", "watch"]);
   grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
