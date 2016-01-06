@@ -13,10 +13,6 @@ import socialOrEmailcodeSpec from './mode/social-or-emailcode/spec';
 import socialOrMagiclinkSpec from './mode/social-or-magiclink/spec';
 import socialOrSmsSpec from './mode/social-or-sms/spec';
 
-// styles
-import styles from '../css/index.css';
-// import transitions from '../css/transitions.css';
-
 // telemetry
 import Auth0 from 'auth0-js';
 

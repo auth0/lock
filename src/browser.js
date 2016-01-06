@@ -7,6 +7,8 @@
  * the package.json file points to index.js.
  */
 import Auth0LockPasswordless from './index';
+import styles from '../css/index.css';
+
 
 //use amd or just throught to window object.
 if (typeof global.window.define == 'function' && global.window.define.amd) {
