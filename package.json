@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git://github.com/auth0/lock-passwordless"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "grunt dev",
     "build": "grunt build",
