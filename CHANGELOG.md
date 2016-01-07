@@ -1,3 +1,14 @@
+## [8.1.2] - 2016-01-07
+
+### Fixed
+
+- [] Merge pull request #282 from auth0/fixes (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/74d9baa6bd935a5bb0637c37324de536b9cf88ba
+- [] Avoid flashing a popup lock when in inline mode (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c433c374adf8c8bed7e5ca1367b4283a94d450d7
+- [] Different box shadow for inline locks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/e992814b711679c2161005247a9bdb1f36fa6759
+
 ## [8.1.1] - 2016-01-05
 
 ### Fixed
