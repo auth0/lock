@@ -1,3 +1,9 @@
+## [2.1.1] - 2016-01-07
+
+### Fixed
+
+- Namespace style normalization rules inside .auth0-lock.
+
 ## [2.1.0] - 2016-01-06
 
 ### Changed
