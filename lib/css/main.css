@@ -7325,8 +7325,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   zoom: 1;
   width: 300px;
   background: transparent;
-  -webkit-box-shadow: 0 0 40px 4px rgba(17, 17, 24, 0.6);
-  box-shadow: 0 0 40px 4px rgba(17, 17, 24, 0.6);
+  -webkit-box-shadow: 0 0 2px rgba(17, 17, 24, 0.6);
+  box-shadow: 0 0 2px rgba(17, 17, 24, 0.6);
   /*==========  Forms  ==========*/
   /*-----  End of forms  ------*/
   /*==========  Footer text  ==========*/
@@ -7983,6 +7983,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel #a0-change_password .a0-reset_easy_password input {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+}
+
+#a0-lock.a0-theme-default .a0-overlay.a0-active .a0-panel {
+  -webkit-box-shadow: 0 0 40px 4px rgba(17, 17, 24, 0.6);
+  box-shadow: 0 0 40px 4px rgba(17, 17, 24, 0.6);
 }
 
 #a0-lock.a0-theme-default .a0-sad-placeholder {
