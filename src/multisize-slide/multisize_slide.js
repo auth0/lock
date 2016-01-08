@@ -9,6 +9,9 @@ export default class Slider extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // TODO: take a prop to identify what are we rendering instead of
+    // infering it from children keys so we can accept more than one
+    // child (we are already wrapping them).
     if (this.state.children.current.key != nextProps.children.key) {
       this.setState({
         children: {
@@ -26,8 +29,8 @@ export default class Slider extends React.Component {
     if (this.animate) {
       this.animate = false;
 
-      const {current, prev} = this.state.children;
-      const {transitionName} = this.props;
+      const { current, prev } = this.state.children;
+      const { reverse, transitionName } = this.props;
       const currentComponent = this.refs[current.key];
       const prevComponent = this.refs[prev.key];
 
@@ -49,18 +52,20 @@ export default class Slider extends React.Component {
 
       const callback = (slide) => {
         currentComponent.componentWillSlideIn(slide);
-        const classNamePrefix = this.props.reverse ? "reverse-" : "";
+        const classNamePrefix = reverse ? "reverse-" : "";
         transition(currentComponent, `${classNamePrefix}${transitionName}-enter`, this.props.delay);
         transition(prevComponent, `${classNamePrefix}${transitionName}-leave`);
 
         this.timeout = setTimeout(() => {
           this.setState({children: {current: this.state.children.current}});
           currentComponent.componentDidSlideIn();
+          this.props.onDidSlide();
           this.timeout = null;
         }, this.props.delay);
       };
 
-      prevComponent.componentWillSlideOut(callback)
+      this.props.onWillSlide();
+      prevComponent.componentWillSlideOut(callback);
     }
   }
 
@@ -71,9 +76,11 @@ export default class Slider extends React.Component {
   render() {
     const {current, prev} = this.state.children;
     const children = prev ? [current, prev] : [current];
-
     const childrenToRender = children.map(child => {
-      return React.cloneElement(child, {ref: child.key});
+      return React.cloneElement(
+        React.createElement(Child, {}, child),
+        {ref: child.key, key: child.key}
+      );
     });
 
     return React.createElement(this.props.component, {}, childrenToRender);
@@ -83,9 +90,82 @@ export default class Slider extends React.Component {
 Slider.propTypes = {
   component: React.PropTypes.string,
   delay: React.PropTypes.number.isRequired,
-  transitionName: React.PropTypes.string.isRequired,
+  onDidSlide: React.PropTypes.func.isRequired,
+  onWillSlide: React.PropTypes.func.isRequired,
+  reverse: React.PropTypes.bool.isRequired,
+  transitionName: React.PropTypes.string.isRequired
 };
 
 Slider.defaultProps = {
-  component: "span"
+  component: "span",
+  onSlideIn: () => {},
+  onSlideOut: () => {},
+  reverse: false
 };
+
+class Child extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {height: "", originalHeight: "", show: true};
+  }
+
+  componentWillSlideIn(slide) {
+    const node = ReactDOM.findDOMNode(this);
+
+    this.setState({
+      height: slide.height,
+      originalHeight: parseInt(window.getComputedStyle(node, null).height, 10),
+      show: false
+    });
+  }
+
+  componentDidSlideIn() {
+    const { height, originalHeight } = this.state;
+
+    if (height === originalHeight) {
+      this.setState({show: true, height: ""});
+    } else {
+      const frames = 10;
+      let count = 0;
+      let current = height;
+      const last = originalHeight;
+      const step = Math.abs(current - last) / frames;
+      const dir =  current < last ? 1 : -1;
+      const dh  = step * dir;
+
+      // TODO: rAF
+      this.t = setInterval(() => {
+        if (count < frames - 1) {
+          this.setState({height: current, animating: true});
+          current += dh;
+          count++;
+        } else {
+          clearInterval(this.t);
+          delete this.t;
+          this.setState({height: "", show: true});
+        }
+      }, 17);
+    }
+  }
+
+  componentWillSlideOut(cb) {
+    const node = ReactDOM.findDOMNode(this);
+    const size = window.getComputedStyle(node, null).height;
+    cb({height: parseInt(size, 10), reverse: this.reverse});
+  }
+
+  render() {
+    const { children } = this.props;
+    const { height, show } = this.state;
+
+    return (
+      <div style={height ? {height: height + "px"} : {}}>
+        <div style={{visibility: show ? "inherit" : "hidden"}}>
+          {children}
+        </div>
+      </div>
+    );
+  }
+
+}

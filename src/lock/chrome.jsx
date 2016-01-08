@@ -18,13 +18,11 @@ export default class Chrome extends React.Component {
     this.state = {reverse: false};
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.screenName != nextProps.screenName) {
-      this.sliding = true;
-    }
+  onWillSlide() {
+    this.sliding = true;
   }
 
-  didSlide() {
+  onDidSlide() {
     this.sliding = false;
     this.setState({reverse: false});
   }
@@ -59,7 +57,7 @@ export default class Chrome extends React.Component {
             key="submit"
             ref="submit"
             tabIndex={l.tabIndex(lock, 10)}
-          />;
+         />;
 
     return (
       <div className="auth0-lock-cred-pane">
@@ -69,23 +67,35 @@ export default class Chrome extends React.Component {
           {globalSuccess && <GlobalMessage key="global-success" message={globalSuccess} type="success" />}
         </ReactTransitionGroup>
         <div style={{position: "relative"}}>
-          <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={reverse}>
-            <Placeholder ref="content" key={(tabs && tabs.key) || screenName} slideEnd={::this.didSlide}>
+          <MultisizeSlide
+            delay={550}
+            onDidSlide={::this.onDidSlide}
+            onWillSlide={::this.onWillSlide}
+            transitionName="horizontal-fade"
+            reverse={reverse}
+          >
+            <div key={(tabs && tabs.key) || screenName}>
               {tabsContainer}
               <div style={{position: "relative"}}>
-                <MultisizeSlide delay={525} transitionName="horizontal-fade" reverse={false}>
-                  <Placeholder ref="content" key={screenName} slideEnd={::this.didSlide}>
-                    <div className="auth0-lock-content">
-                      <div className="auth0-lock-form">
-                        {header}
-                        {contentRender({focusSubmit: ::this.focusSubmit, lock})}
-                      </div>
+                <MultisizeSlide
+                  delay={550}
+                  onDidSlide={::this.onDidSlide}
+                  onWillSlide={::this.onWillSlide}
+                  transitionName="horizontal-fade"
+                  reverse={false}
+                >
+                  <div key={screenName}>
+                  <div className="auth0-lock-content" key={screenName}>
+                    <div className="auth0-lock-form">
+                      {header}
+                      {contentRender({focusSubmit: ::this.focusSubmit, lock})}
                     </div>
-                    {footer}
-                  </Placeholder>
+                  </div>
+                  {footer}
+                  </div>
                 </MultisizeSlide>
               </div>
-            </Placeholder>
+            </div>
           </MultisizeSlide>
         </div>
         <ReactCSSTransitionGroup
@@ -132,51 +142,3 @@ Chrome.propTypes = {
 Chrome.defaultProps = {
   showSubmitButton: true
 };
-
-class Placeholder extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {height: ""};
-  }
-
-  componentWillSlideIn(slide) {
-    const node = ReactDOM.findDOMNode(this);
-    this.originalHeight = parseInt(window.getComputedStyle(node, null).height, 10);
-    this.setState({height: slide.height});
-    setTimeout(() => this.setState({height1: this.originalHeight}), 17);
-  }
-
-  componentDidSlideIn() {
-    this.props.slideEnd();
-  }
-
-  componentWillSlideOut(callback) {
-    const node = ReactDOM.findDOMNode(this);
-    const size = window.getComputedStyle(node, null).height;
-    callback({height: parseInt(size, 10), reverse: this.reverse});
-  }
-
-  componentDidUpdate() {
-    if (this.state.height1 && this.state.height) {
-      const current = parseInt(this.state.height, 10);
-      const last = parseInt(this.state.height1, 10);
-
-      if (current < last) {
-        setTimeout(() => this.setState({height: current + Math.min(3, last - current)}), 3);
-      } else if (current > last) {
-        setTimeout(() => this.setState({height: current - Math.min(3, current - last)}), 3);
-      } else {
-        this.setState({height: ""});
-      }
-    }
-  }
-
-  render() {
-    const { children } = this.props;
-    const { height } = this.state;
-
-    return <div style={height ? {height: height} : {}}>{children}</div>;
-  }
-
-}
