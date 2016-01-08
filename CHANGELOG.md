@@ -1,3 +1,14 @@
+## [8.1.3] - 2016-01-08
+
+### Fixed
+
+- [] Merge pull request #283 from auth0/log-in-sign-up-tabs-text (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/d8c6f8eb28cada5041a1bd01ed38d80890df2256
+- [] Add translations for login/sign up tabs (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/aaf246a6861cc140b249ae52904b54e560784eed
+- [] Update version for CDN scripts in README (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1cf50e5cc5d3945f724481381eccc3d26ffd9d07
+
 ## [8.1.2] - 2016-01-07
 
 ### Fixed
