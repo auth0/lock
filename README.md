@@ -156,6 +156,14 @@ To publish a new version use:
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
 
+## Author
+
+[Auth0](auth0.com)
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
+
 <!-- Vaaaaarrsss -->
 
 [download1]: https://raw.github.com/auth0/lock/master/build/auth0-lock.js
