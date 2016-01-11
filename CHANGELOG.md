@@ -1,3 +1,28 @@
+## [8.1.4] - 2016-01-11
+
+### Fixed
+
+- [] Merge pull request #286 from auth0/fixes (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1b97cc53fd4c6a32b8e452561e65801e7bb93a83
+- [] Reduce font-weight in login/sign up tabs (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6e3a281453c0a8afad1234f9baeccc1f4aece09c
+- [] Move background-color from .mode to .body-content (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d1388793014164b458d2b45844acd20283269ed4
+- [] Update font family (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/037b49620b4478268ad6ae114365b4f4d14b76fa
+- [] Remove .mode-container background color (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/e606643630f233df1c75e17aa17880564b2a8f70
+- [] Merge pull request #285 from aguerere/fix-issue284-update-license-and-readme (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f9a1ffdc68a270ffda07137aeebc95d2cdcf53d8
+- [] Update screenshot readme.md (`Ricky Rauch`)
+  https://github.com/auth0/lock/commit/20752685800ac03e3ec88539673876dc244313c0
+- [] Update banner (`Ricky Rauch`)
+  https://github.com/auth0/lock/commit/2b4c827e9acf4f19007b34696ab0fe44ce209eb8
+- [] Update license and readme (`Alberto Güerere`)
+  https://github.com/auth0/lock/commit/b387bffc533bfe58bc3a29e2cbe9e154e3187bff
+- [] Fix flashing lock when in popup mode (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/9523fb728bc8a1f6a26c4b367de02f185a58a877
+
 ## [8.1.3] - 2016-01-08
 
 ### Fixed
