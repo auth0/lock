@@ -1,3 +1,18 @@
+## [8.1.5] - 2016-01-11
+
+### Fixed
+
+- [] Merge pull request #287 from auth0/revert (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a883afa846c246cc9e8bd974ae84eca9b643656d
+- [] Revert "Avoid flashing a popup lock when in inline mode" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/bb9d000332cc8e6f367d4e33ee000f2ea64727b5
+- [] Revert "Fix flashing lock when in popup mode" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2c8f1be34522d16ca22466bf25927485e2ffdee8
+- [] Revert "Remove .mode-container background color" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/578934598c9fda02655e55eb1b9a15ba0770a7f1
+- [] Revert "Move background-color from .mode to .body-content" (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2dab7c627848bb58bc75ca51ebcf025a4c4e2cbb
+
 ## [8.1.4] - 2016-01-11
 
 ### Fixed
