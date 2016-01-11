@@ -7345,11 +7345,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode {
   margin: auto;
-  background-color: white;
-  border-radius: 0 0 3px 3px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode form .a0-body-content {
+  background-color: white;
   padding: 30px;
 }
 
