@@ -382,15 +382,7 @@ Auth0Lock.prototype.exhibit = function() {
   // activate panel
   // XXX: (?) this I don't get... why remove and add?
   this.query('div.a0-panel').removeClass('a0-active');
-
-  var overlay = this.query('div.a0-overlay-hint')
-    .removeClass('a0-overlay-hint')
-    .addClass('a0-active');
-
-  if (!options.container) {
-    overlay.addClass('a0-overlay')
-  }
-
+  this.query('div.a0-overlay').addClass('a0-active');
   this.query('.a0-panel.a0-onestep').addClass('a0-active');
 
   this.query('.a0-overlay')
@@ -404,6 +396,9 @@ Auth0Lock.prototype.exhibit = function() {
   if (!options.container) {
     // hides all non-lock elements when lock is open
     bonzo(document.body).addClass('a0-lock-open');
+  } else {
+    // remove overlay when render inside a div
+    this.query('.a0-active').removeClass('a0-overlay');
   }
 
   // close popup with ESC key

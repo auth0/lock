@@ -1474,10 +1474,6 @@
   background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png');
 }
 
-#a0-lock .a0-overlay-hint .a0-centrix {
-  opacity: 0;
-}
-
 #a0-lock .a0-overlay {
   margin: 0;
   display: table;
@@ -7343,12 +7339,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-mode-container {
+  background: white;
+  border-radius: 0 0 3px 3px;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-mode {
   margin: auto;
+  background-color: white;
+  border-radius: 0 0 3px 3px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode form .a0-body-content {
-  background-color: white;
   padding: 30px;
 }
 
