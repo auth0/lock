@@ -7340,7 +7340,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel * {
-  font-family: 'avenir-next-web', Avenir, "Helvetica Neue", Hevetica, sans-serif;
+  font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode {
