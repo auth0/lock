@@ -7343,6 +7343,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-mode-container {
+  background: white;
+  border-radius: 0 0 3px 3px;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-mode {
   margin: auto;
   background-color: white;
