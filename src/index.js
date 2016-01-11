@@ -16,6 +16,18 @@ import socialOrSmsSpec from './mode/social-or-sms/spec';
 // telemetry
 import Auth0 from 'auth0-js';
 
+import css from '../css/index.css';
+
+const head = document.getElementsByTagName('head')[0];
+const style = document.createElement('style');
+style.type = 'text/css';
+head.appendChild(style);
+if (style.styleSheet) {
+  style.styleSheet.cssText = css;
+} else {
+  style.appendChild(document.createTextNode(css));
+}
+
 export default class Auth0LockPasswordless {
   constructor(clientID, domain) {
     if (typeof clientID != "string") {

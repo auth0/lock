@@ -1,4 +1,4 @@
 {
-  "plugins": ["version-inline"],
+  "plugins": ["version-inline", "transform-css-import-to-string"],
   "presets": ["es2015", "stage-0", "react"]
 }
