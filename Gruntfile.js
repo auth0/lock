@@ -128,6 +128,9 @@ module.exports = function(grunt) {
         NODE_ENV: "production"
       }
     },
+    exec: {
+      touch_index: "touch src/index.js"
+    },
     http: {
       purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".js",       method: "DELETE"}},
       purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".min.js",   method: "DELETE"}},
@@ -148,7 +151,7 @@ module.exports = function(grunt) {
     watch: {
       stylus: {
         files: ["css/index.styl"],
-        tasks: ["stylus:build"]
+        tasks: ["stylus:build", "exec:touch_index"]
       }
     },
     uglify: {
@@ -169,6 +172,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-env");
+  grunt.loadNpmTasks("grunt-exec");
   grunt.loadNpmTasks("grunt-http");
 
 
