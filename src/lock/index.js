@@ -156,6 +156,7 @@ export const auth = {
 };
 
 function setAuthOptions(m, options) {
+  // TODO: should `popup` be a auth option?
   let { authParams, callbackURL, forceJSONP, responseType, sso } = options;
 
   authParams = typeof authParams === "object" ? authParams : {};

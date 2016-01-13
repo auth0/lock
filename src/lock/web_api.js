@@ -39,9 +39,34 @@ class Auth0WebAPI {
     this.clients[lockID].logout(query);
   }
 
-  signUp(lockID, options, cb) {
+  signUp(lockID, options, authOptions, cb) {
     const client = this.clients[lockID];
-    client.signup(options, cb);
+    // TODO: allow to use jsonp for signup?
+    const { autoLogin, popup, sso } = authOptions;
+
+    // When needed, open popup for sso login immediately, otherwise it
+    // may be blocked by the browser.
+    // TODO: can we get rid of the popup?
+    let win;
+    if (autoLogin && popup && sso) {
+      win = client._buildPopupWindow({});
+    }
+
+    // Never allow automatic login and disable popup (since it is only
+    // needed for automatic login).
+    options.auto_login = false;
+    options.popup = false;
+
+    // Also, wrap callback in a function that closes the popup.
+    const f = (error, ...args) => {
+      if (error && win) {
+        win.kill();
+      }
+
+      cb(error, ...args);
+    };
+
+    client.signup(options, f);
   }
 
   resetPassword(lockID, options, cb) {

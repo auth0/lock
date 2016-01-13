@@ -130,17 +130,21 @@ export function signUp(id) {
       connection: databaseConnection(lock),
       email:      c.email(lock),
       password:   c.password(lock),
-      auto_login: false,
-      popup:      false
     };
 
     if (authWithUsername(lock)) {
       options.username = c.username(lock);
     }
 
+    const authOptions = l.withAuthOptions(lock, {
+      autoLogin: shouldAutoLogin(lock),
+      popup: l.ui.popup(lock)
+    });
+
     webApi.signUp(
       id,
       options,
+      authOptions,
       (error, ...args) => {
         if (error) {
           setTimeout(() => signUpError(id, error), 250);
