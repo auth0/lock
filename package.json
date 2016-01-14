@@ -30,7 +30,7 @@
     "test:phantom": "mochify --recursive --extension=.jsx"
   },
   "devDependencies": {
-    "babel-plugin-transform-css-import-to-string": "0.0.1",
+    "babel-plugin-transform-css-import-to-string": "0.0.2",
     "babel-plugin-version-inline": "^1.0.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
