@@ -1,9 +1,12 @@
 bin/
 build/
+css/
 examples/
 release/
 src/
 support/
 test/
+bower.json
+Gruntfile.js
 .css.map
 *~
