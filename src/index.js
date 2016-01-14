@@ -13,13 +13,20 @@ import socialOrEmailcodeSpec from './mode/social-or-emailcode/spec';
 import socialOrMagiclinkSpec from './mode/social-or-magiclink/spec';
 import socialOrSmsSpec from './mode/social-or-sms/spec';
 
-// styles
-import styles from '../css/index.css';
-// import transitions from '../css/transitions.css';
-
 // telemetry
-import version from 'package.version';
 import Auth0 from 'auth0-js';
+
+import css from '../css/index.css';
+
+const head = document.getElementsByTagName('head')[0];
+const style = document.createElement('style');
+style.type = 'text/css';
+head.appendChild(style);
+if (style.styleSheet) {
+  style.styleSheet.cssText = css;
+} else {
+  style.appendChild(document.createTextNode(css));
+}
 
 export default class Auth0LockPasswordless {
   constructor(clientID, domain) {
@@ -78,6 +85,6 @@ Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 
 
 // telemetry
-Auth0LockPasswordless.version = version
+Auth0LockPasswordless.version = __VERSION__;
 Auth0.clientInfo.name +=  " (LockPasswordless)";
-Auth0.clientInfo.version += ` (${version})`;
+Auth0.clientInfo.version += ` (${__VERSION__})`;

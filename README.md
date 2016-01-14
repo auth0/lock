@@ -94,39 +94,11 @@ bower install auth0-lock-passwordless
 
 From [npm](https://npmjs.org)
 
-`Auth0LockPasswordless` distribution file is built using [browserify](http://browserify.org/). By installing via npm you will need to compile it or add it to your own build process.
-
 ```sh
 npm install auth0-lock-passwordless
 ```
 
-Browserify will need the following transforms to bundle the `auth0-lock-passwordless` module:
-
-``` json
-{
-  "devDependencies": {
-    "babelify": "^6.1.2",
-    "browserify-css": "^0.6.1",
-    "packageify": "^0.2.2"
-  }
-}
-```
-
-And you'll need to configure babelify with the following options:
-
-```json
-{
-  "blacklist": [
-    "regenerator"
-  ],
-  "optional": [
-    "es7.functionBind",
-    "es7.objectRestSpread"
-  ]
-}
-```
-
-Finally, make sure browserify consider files with the _.jsx_ extension as modules. This can be done with the `--extension=.jsx` option.
+After installing the `auth0-lock-passwordless` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
 If you are targeting mobile audiences, it's recommended that you add:
 

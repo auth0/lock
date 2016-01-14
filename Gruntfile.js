@@ -51,17 +51,32 @@ module.exports = function(grunt) {
         ]
       }
     },
+    babel: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd:    "src",
+            src:    ["**/*.js", "**/*.jsx"],
+            dest:   "lib",
+            ext: '.js'
+          }
+        ]
+      }
+    },
     browserify: {
       options: {
         browserifyOptions: {
-          extensions: ".jsx"
+          extensions: ".jsx",
+          transform: ["babelify"]
         }
       },
       dev: {
         options: {
           browserifyOptions: {
             debug: true,
-            extensions: ".jsx"
+            extensions: ".jsx",
+            transform: ["babelify"]
           },
           watch: true
         },
@@ -82,7 +97,8 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ["build/", "release/"],
-      dev: ["build/"]
+      dev: ["build/"],
+      dist: ["lib/"]
     },
     connect: {
       dev: {
@@ -112,6 +128,9 @@ module.exports = function(grunt) {
         NODE_ENV: "production"
       }
     },
+    exec: {
+      touch_index: "touch src/index.js"
+    },
     http: {
       purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".js",       method: "DELETE"}},
       purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".min.js",   method: "DELETE"}},
@@ -132,7 +151,7 @@ module.exports = function(grunt) {
     watch: {
       stylus: {
         files: ["css/index.styl"],
-        tasks: ["stylus:build"]
+        tasks: ["stylus:build", "exec:touch_index"]
       }
     },
     uglify: {
@@ -144,6 +163,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks("grunt-aws-s3");
+  grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-connect");
@@ -152,12 +172,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-env");
+  grunt.loadNpmTasks("grunt-exec");
   grunt.loadNpmTasks("grunt-http");
 
 
-  grunt.registerTask("build", ["clean:build", "env:build", "browserify:build", "uglify:build"]);
-  grunt.registerTask("dev", ["clean:dev", "connect:dev", "browserify:dev", "watch"]);
-  grunt.registerTask("design", ["clean:dev", "connect:dev", "browserify:design", "watch"]);
+  grunt.registerTask("build", ["clean:build", "env:build", "stylus:build", "browserify:build", "uglify:build"]);
+  grunt.registerTask("dist", ["clean:dist", "stylus:build", "babel:dist"]);
+  grunt.registerTask("prepare_dev", ["clean:dev", "connect:dev", "stylus:build"]);
+  grunt.registerTask("dev", ["prepare_dev", "browserify:dev", "watch"]);
+  grunt.registerTask("design", ["prepare_dev", "browserify:design", "watch"]);
   grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
   grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
   grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task
