@@ -178,8 +178,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask("build", ["clean:build", "env:build", "stylus:build", "browserify:build", "uglify:build"]);
   grunt.registerTask("dist", ["clean:dist", "stylus:build", "babel:dist"]);
-  grunt.registerTask("dev", ["clean:dev", "connect:dev", "stylus:build", "browserify:dev", "watch"]);
-  grunt.registerTask("design", ["clean:dev", "connect:dev", "stylus:build", "browserify:design", "watch"]);
+  grunt.registerTask("prepare_dev", ["clean:dev", "connect:dev", "stylus:build"]);
+  grunt.registerTask("dev", ["prepare_dev", "browserify:dev", "watch"]);
+  grunt.registerTask("design", ["prepare_dev", "browserify:design", "watch"]);
   grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
   grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
   grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task
