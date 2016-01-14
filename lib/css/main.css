@@ -1474,7 +1474,7 @@
   background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png');
 }
 
-#a0-lock .a0-overlay {
+#a0-lock .a0-overlay.a0-active {
   margin: 0;
   display: table;
   position: fixed;
@@ -1505,7 +1505,7 @@
   animation: fadeIn 0.3s ease-in;
 }
 
-#a0-lock .a0-overlay .a0-centrix {
+#a0-lock .a0-overlay.a0-active .a0-centrix {
   padding: 0;
   vertical-align: middle;
   display: table-cell;
