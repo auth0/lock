@@ -1,3 +1,9 @@
+## [2.2.0] - 2016-01-14
+
+### Changed
+
+- Make it easy to bundle the module with [browserify](https://browserify.org) or [webpack](https://webpack.github.io/). Custom transforms or loaders are no longer needed. **Please review your bundling process when upgrading to this version**.
+
 ## [2.1.1] - 2016-01-07
 
 ### Fixed
