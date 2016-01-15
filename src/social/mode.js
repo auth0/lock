@@ -1,6 +1,7 @@
 import Mode from '../lock/mode';
 import AskSocialNetwork from '../cred/social/ask_social_network';
 import { initSocial } from './index';
+import { renderSSOScreens } from '../lock/sso/index';
 import dict from './dict';
 
 export default class SocialMode extends Mode {
@@ -15,8 +16,8 @@ export default class SocialMode extends Mode {
     this.setModel(model);
   }
 
-  render() {
-    return new AskSocialNetwork();
+  render(lock) {
+    return renderSSOScreens(lock) || new AskSocialNetwork();
   }
 
 }
