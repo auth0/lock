@@ -39,7 +39,7 @@ export default class PasswordconfirmationPane extends React.Component {
           isValid={!c.visiblyInvalidPasswordConfirmation(lock)}
           onChange={::this.handlePasswordConfirmationChange}
           placeholder={passwordConfirmationPlaceholder}
-          tabIndex={l.tabIndex(lock, tabIndex + 1)}
+          tabIndex={l.tabIndex(lock, tabIndex)}
           disabled={l.submitting(lock)}
         />
       </div>

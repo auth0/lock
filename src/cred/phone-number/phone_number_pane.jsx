@@ -46,7 +46,7 @@ export default class PhoneNumberPane extends React.Component {
           onChange={::this.handlePhoneNumberChange}
           autoFocus={l.ui.focusInput(lock)}
           placeholder={placeholder}
-          tabIndex={l.tabIndex(lock, tabIndex + 1)}
+          tabIndex={l.tabIndex(lock, tabIndex)}
           disabled={l.submitting(lock)} />
       </div>
     );

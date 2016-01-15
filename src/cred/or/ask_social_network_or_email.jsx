@@ -34,7 +34,6 @@ export default class AskSocialNetworkOrEmail extends Screen {
         <EmailPane
           lock={lock}
           placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
-          tabIndex={2}
         />
       </div>
     );
