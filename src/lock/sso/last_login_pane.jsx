@@ -12,7 +12,7 @@ export default class LastLoginPane extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="auth0-lock-last-login-pane">
         <LastLoginButton lock={this.props.lock} />
 
         <p className="auth0-lock-alternative">
