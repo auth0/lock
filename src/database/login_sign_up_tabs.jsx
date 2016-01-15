@@ -6,7 +6,7 @@ import { getActivity } from './index';
 export default class LoginSignUpTabs extends React.Component {
 
   render() {
-    const { lock } = this.props;
+    const { lock, tabIndex } = this.props;
     const isLogin = getActivity(lock) === "login";
 
     return (
@@ -15,11 +15,13 @@ export default class LoginSignUpTabs extends React.Component {
           label="Login"
           current={isLogin}
           clickHandler={::this.handleLoginClick}
+          tabIndex={l.tabIndex(lock, tabIndex)}
         />
         <LoginSignUpTab
           label="Sign Up"
           current={!isLogin}
           clickHandler={::this.handleSignUpClick}
+          tabIndex={l.tabIndex(lock, tabIndex)}
         />
       </ul>
     );
@@ -35,13 +37,26 @@ export default class LoginSignUpTabs extends React.Component {
 
 }
 
+LoginSignUpTabs.propTypes = {
+  lock: React.PropTypes.object.isRequired,
+  tabIndex: React.PropTypes.number.isRequired
+};
+
+LoginSignUpTabs.defaultProps = {
+  tabIndex: 1
+};
+
 class LoginSignUpTab extends React.Component {
 
   render() {
-    const { clickHandler, current, label } = this.props;
+    const { clickHandler, current, label, tabIndex } = this.props;
     const className = current ? "auth0-lock-tabs-current" : "";
 
-    return <li className={className}><a onClick={clickHandler}>{label}</a></li>;
+    return (
+      <li className={className}>
+        <a onClick={clickHandler} tabIndex={tabIndex}>{label}</a>
+      </li>
+    );
   }
 
 }
