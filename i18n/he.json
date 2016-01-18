@@ -1,24 +1,26 @@
+/**
+writen by Adam Ben Hur.
+**/
 {
-  "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "חכה בבקשה...",
   "close": "סגור",
   "signin": {
-    "title": "הירשם",
-    "action": "הירשם",
+    "title": "כניסה",
+    "action": "היכנס",
     "all": "הצג הכל",
-    "strategyEmailEmpty": "הדוא ל הוא ריק.",
+    "strategyEmailEmpty": "הדוא\"ל ריק.",
     "strategyEmailInvalid": "הדוא ל אינו חוקי.",
-    "strategyDomainInvalid": "התחום {domain} לא היתה תוכנית ההתקנה.",
-    "signinText": "הירשם",
+    "strategyDomainInvalid": "התחום {domain} אינו מאושר.",
+    "signinText": "היכנס",
     "signupText": "הירשם",
     "forgotText": "שכחת הסיסמא?",
-    "emailPlaceholder": "דוא",
+    "emailPlaceholder": "דוא\"ל",
     "usernamePlaceholder": "שם משתמש",
-    "passwordPlaceholder": "סיסמה",
+    "passwordPlaceholder": "סיסמא",
     "separatorText": "או",
     "serverErrorText": "אירעה שגיאה בעיבוד הכניסה.",
     "returnUserLabel": "בפעם האחרונה נכנסת באמצעות...",
-    "wrongEmailPasswordErrorText": "הדוא\"ל טועה או סיסמה.",
+    "wrongEmailPasswordErrorText": "דוא\"ל או סיסמא שגויים",
     "or": ". או כניסה באמצעות",
     "loadingMessage": "כניסה עם {connection}..."
   },
@@ -26,10 +28,10 @@
     "description": "",
     "title": "הירשם",
     "action": "הירשם",
-    "signinText": "הירשם",
+    "signinText": "היכנס",
     "signupText": "הירשם",
-    "emailPlaceholder": "דוא",
-    "passwordPlaceholder": "צור סיסמה",
+    "emailPlaceholder": "דוא\"ל",
+    "passwordPlaceholder": "סיסמא",
     "cancelAction": "ביטול",
     "headerText": "הזינו את כתובת המייל והסיסמא",
     "footerText": "",
@@ -37,15 +39,15 @@
     "serverErrorText": "אירעה שגיאה בעיבוד את השלט למעלה."
   },
   "reset": {
-    "title": "איפוס סיסמה",
+    "title": "איפוס סיסמא",
     "action": "שלח",
-    "emailPlaceholder": "דוא",
-    "passwordPlaceholder": "סיסמה חדשה",
-    "repeatPasswordPlaceholder": "אשר סיסמה חדשה",
+    "emailPlaceholder": "דוא\"ל",
+    "passwordPlaceholder": "סיסמא חדשה",
+    "repeatPasswordPlaceholder": "אשר סיסמא חדשה",
     "cancelAction": "ביטול",
-    "successText": "אנחנו פשוט לשלוח לך דואר אלקטרוני כדי לאפס את הסיסמה שלך.",
+    "successText": "נשלחה לכתובת הדוא\"ל שלך הודעה לאיפוס הסיסמא",
     "enterSamePasswordText": "הזינו בבקשה את אותה סיסמה.",
-    "headerText": "אנא הזן את הדואר האלקטרוני שלך ואת הסיסמה החדשה. אנו נשלח לך הודעת דואר אלקטרוני כדי לאשר שינוי הסיסמה.",
+    "headerText": "אנא הזן את הדואר האלקטרוני שלך ואת הסיסמה החדשה. אנו נשלח לך הודעת דואר אלקטרוני כדי לאשר את שינוי הסיסמה.",
     "serverErrorText": "אירעה שגיאה בעיבוד איפוס הסיסמה."
   }
 }
