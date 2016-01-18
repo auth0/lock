@@ -79,7 +79,7 @@ From CDN
 <script src="http://cdn.auth0.com/js/lock-passwordless-2.2.min.js"></script>
 
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-2.2.0.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-passwordless-2.2.1.min.js"></script>
 ```
 
 From [bower](http://bower.io)
