@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../store/index';
 import { closeLock } from '../lock/actions';
 import WebAPI from '../lock/web_api';
@@ -8,7 +9,7 @@ export function signIn(id, connection) {
 
   const lock = read(getEntity, "lock", id);
 
-  const options = {
+  const options = l.login.authParams(lock).merge(Map({
     connection: connection.name,
     popup: l.ui.popup(lock),
     popupOptions: l.ui.popupOptions(lock),
@@ -16,8 +17,7 @@ export function signIn(id, connection) {
     responseType: l.login.responseType(lock),
     callbackURL: l.login.callbackURL(lock),
     forceJSONP: l.login.forceJSONP(lock)
-    // sso: false
-  };
+  })).toJS();
 
   if (l.ui.popup(lock) && connection.strategy === "facebook") {
     options.display = "popup";

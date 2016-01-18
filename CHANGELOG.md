@@ -1,3 +1,13 @@
+## unreleased
+
+### Changed
+
+- Some font alternatives are provided instead of defaulting to sans-serif immediately on systems without Avenir.
+
+### Fixed
+
+- Pass `authParams` option in a social login.
+
 ## [2.2.0] - 2016-01-14
 
 ### Changed
