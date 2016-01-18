@@ -48,13 +48,18 @@ LoginSignUpTabs.defaultProps = {
 
 class LoginSignUpTab extends React.Component {
 
+  handleClick(e) {
+    e.preventDefault();
+    this.props.clickHandler();
+  }
+
   render() {
-    const { clickHandler, current, label, tabIndex } = this.props;
+    const { current, label, tabIndex } = this.props;
     const className = current ? "auth0-lock-tabs-current" : "";
 
     return (
       <li className={className}>
-        <a onClick={clickHandler} tabIndex={tabIndex}>{label}</a>
+        <a href="#" onClick={::this.handleClick} tabIndex={tabIndex}>{label}</a>
       </li>
     );
   }
