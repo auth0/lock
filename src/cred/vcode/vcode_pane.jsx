@@ -15,7 +15,8 @@ export default class VcodePane extends React.Component {
     changeVcode(l.id(this.props.lock), e.target.value);
   }
 
-  handleResendClick() {
+  handleResendClick(e) {
+    e.preventDefault();
     back(l.id(this.props.lock), {clearCred: ["vcode"]});
   }
 
@@ -30,11 +31,14 @@ export default class VcodePane extends React.Component {
           autoFocus={!isSmallScreen()}
           placeholder={placeholder}
           disabled={l.submitting(lock)}
-          tabIndex={l.tabIndex(lock, tabIndex)} />
+          tabIndex={l.tabIndex(lock, tabIndex)}
+        />
         <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
+            href="#"
             onClick={::this.handleResendClick}
+            tabIndex={l.tabIndex(lock, tabIndex)}
           >
             {resendLabel}
           </a>
