@@ -4,8 +4,10 @@ export default {
     footerText: "",
     forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
+    loginTabLabel: "Login",
     passwordInputPlaceholder: "your password",
     separatorText: "or",
+    signUpTabLabel: "Sign Up",
     smallSocialButtonsHeader: "",
     usernameInputPlaceholder: "your username"
   },
@@ -21,7 +23,9 @@ export default {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
     headerText: "",
+    loginTabLabel: "Login",
     passwordInputPlaceholder: "your password",
+    signUpTabLabel: "Sign Up",
     usernameInputPlaceholder: "your username",
   },
   signedIn: {

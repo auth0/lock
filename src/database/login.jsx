@@ -18,7 +18,12 @@ export default class Login extends Screen {
 
   renderTabs(lock) {
     return hasActivity(lock, "signUp")
-      ? <LoginSignUpTabs key="loginsignup" lock={lock}/>
+      ? <LoginSignUpTabs
+          key="loginsignup"
+          lock={lock}
+          loginTabLabel={this.t(lock, ["loginTabLabel"], {__textOnly: true})}
+          signUpTabLabel={this.t(lock, ["signUpTabLabel"], {__textOnly: true})}
+        />
       : null;
   }
 
