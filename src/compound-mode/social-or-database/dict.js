@@ -2,6 +2,7 @@ export default {
   networkOrLogin: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
+    forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
     passwordInputPlaceholder: "your password",
     separatorText: "or",

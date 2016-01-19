@@ -30,6 +30,7 @@ export default class Login extends Screen {
     return (
       <LoginPane
         emailInputPlaceholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
+        forgotPasswordLabel={this.t(lock, ["forgotPasswordLabel"], {__textOnly: true})}
         lock={lock}
         passwordInputPlaceholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
         usernameInputPlaceholder={this.t(lock, ["usernameInputPlaceholder"], {__textOnly: true})}

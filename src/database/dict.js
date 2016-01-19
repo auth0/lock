@@ -6,6 +6,7 @@ export default {
   login: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
+    forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
     passwordInputPlaceholder: "your password",
     usernameInputPlaceholder: "your username"
