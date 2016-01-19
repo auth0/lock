@@ -13,8 +13,12 @@ export default class PasswordInput extends React.Component {
     const { focused } = this.state;
 
     return (
-      // TODO: use a proper icon
-      <InputWrap name="username" isValid={isValid} icon={<Icon name="email" />} focused={focused}>
+      <InputWrap
+        focused={focused}
+        icon={<Icon name="username" />}
+        isValid={isValid}
+        name="username"
+      >
         <input
           ref="input"
           type="text"

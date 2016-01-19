@@ -14,8 +14,12 @@ export default class PasswordInput extends React.Component {
     const { focused } = this.state;
 
     return (
-      // TODO: use a proper icon
-      <InputWrap name="password" isValid={isValid} icon={<Icon name="vcode" />} focused={focused}>
+      <InputWrap
+        focused={focused}
+        icon={<Icon name="password" />}
+        isValid={isValid}
+        name="password"
+      >
         <input
           ref="input"
           type="password"
