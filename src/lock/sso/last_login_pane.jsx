@@ -11,7 +11,7 @@ export default class LastLoginPane extends React.Component {
   }
 
   render() {
-    const { lock, tabIndex } = this.props;
+    const { lock, skipLastLoginLabel, tabIndex } = this.props;
 
     return (
       <div className="auth0-lock-last-login-pane">
@@ -24,7 +24,7 @@ export default class LastLoginPane extends React.Component {
             onClick={::this.handleClick}
             tabIndex={l.tabIndex(lock, tabIndex)}
           >
-            Not your account?
+            {skipLastLoginLabel}
           </a>
         </p>
 
@@ -39,6 +39,7 @@ export default class LastLoginPane extends React.Component {
 
 LastLoginPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
+  skipLastLoginLabel: React.PropTypes.string.isRequired,
   tabIndex: React.PropTypes.number
 };
 

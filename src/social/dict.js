@@ -1,6 +1,7 @@
 export default {
   lastLogin: {
     headerText: "Last time you logged in with",
+    skipLastLoginLabel: "Not your account?"
   },
   network: {
     footerText: "",

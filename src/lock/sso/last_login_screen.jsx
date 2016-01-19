@@ -14,7 +14,12 @@ export default class LastLoginScreen extends Screen {
   }
 
   render({lock}) {
-    return <LastLoginPane lock={lock} />;
+    return (
+      <LastLoginPane
+        lock={lock}
+        skipLastLoginLabel={this.t(lock, ["skipLastLoginLabel"], {__textOnly: true})}
+      />
+    );
   }
 
 }
