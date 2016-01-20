@@ -17,11 +17,12 @@ export default class Slider extends React.Component {
         children: {
           current: nextProps.children,
           prev: this.state.children.current
-        }
+        },
+        transitionName: this.props.transitionName
       });
       this.animate = true;
     } else if (!this.timeout) {
-      this.setState({children: {current: nextProps.children}});
+      this.setState({children: {current: nextProps.children}, transitionName: nextProps.transitionName});
     }
   }
 
@@ -29,8 +30,9 @@ export default class Slider extends React.Component {
     if (this.animate) {
       this.animate = false;
 
+      const { transitionName } = this.state;
       const { current, prev } = this.state.children;
-      const { reverse, transitionName } = this.props;
+      const { reverse } = this.props;
       const currentComponent = this.refs[current.key];
       const prevComponent = this.refs[prev.key];
 
@@ -57,7 +59,7 @@ export default class Slider extends React.Component {
         transition(prevComponent, `${classNamePrefix}${transitionName}-leave`);
 
         this.timeout = setTimeout(() => {
-          this.setState({children: {current: this.state.children.current}});
+          this.setState({children: {current: this.state.children.current}, transitionName: this.props.transitionName});
           currentComponent.componentDidSlideIn();
           this.props.onDidSlide();
           this.timeout = null;
