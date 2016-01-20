@@ -34,6 +34,10 @@ export default class Screen {
     return this.t(lock, ["headerText"]);
   }
 
+  transitionName() {
+    return "horizontal-fade";
+  }
+
   renderTabs() {
     return null;
   }

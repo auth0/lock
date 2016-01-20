@@ -28,7 +28,19 @@ export default class Chrome extends React.Component {
   }
 
   render() {
-    const { auxiliaryPane, backHandler, contentRender, headerText, footerText, lock, screenName, showSubmitButton, tabs } = this.props;
+    const {
+      auxiliaryPane,
+      backHandler,
+      contentRender,
+      headerText,
+      footerText,
+      lock,
+      screenName,
+      showSubmitButton,
+      tabs,
+      transitionName
+    } = this.props;
+
     const { reverse, sliding } = this.state;
 
     const gravatar = l.gravatar(lock);
@@ -71,7 +83,7 @@ export default class Chrome extends React.Component {
             delay={550}
             onDidSlide={::this.onDidSlide}
             onWillSlide={::this.onWillSlide}
-            transitionName="horizontal-fade"
+            transitionName={transitionName}
             reverse={reverse}
           >
             <div key={(tabs && tabs.key) || screenName}>
@@ -81,7 +93,7 @@ export default class Chrome extends React.Component {
                   delay={550}
                   onDidSlide={::this.onDidSlide}
                   onWillSlide={::this.onWillSlide}
-                  transitionName="horizontal-fade"
+                  transitionName={transitionName}
                   reverse={false}
                 >
                   <div key={screenName}>
@@ -136,7 +148,8 @@ Chrome.propTypes = {
   footerText: React.PropTypes.element,
   headerText: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
-  showSubmitButton: React.PropTypes.bool.isRequired
+  showSubmitButton: React.PropTypes.bool.isRequired,
+  transitionName: React.PropTypes.string.isRequired
 };
 
 Chrome.defaultProps = {
