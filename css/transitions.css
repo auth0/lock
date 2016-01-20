@@ -1,4 +1,3 @@
-
 /*Slide in*/
 
 .slide-enter {
@@ -95,7 +94,7 @@
   transition: transform .5s, opacity 1s linear;
 }
 
-/* reverse fade in */
+/* reverse horizontal fade in */
 
 .reverse-horizontal-fade-enter {
   position: relative;
@@ -115,7 +114,7 @@
   transition: transform .5s;
 }
 
-/* reverse fade out */
+/* reverse horizontal fade out */
 
 .reverse-horizontal-fade-leave {
   opacity: 1;
@@ -132,4 +131,35 @@
 
   -webkit-transition: -webkit-transform .5s, opacity 1s linear;
   transition: transform .5s, opacity 1s linear;
+}
+
+/* fade in*/
+
+.fade-enter {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+}
+
+/* fade out*/
+
+.fade-leave {
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0;
+
+  -webkit-transition: opacity .5s linear;
+  transition: opacity .5s linear;
 }
