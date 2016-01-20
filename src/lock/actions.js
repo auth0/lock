@@ -92,3 +92,14 @@ export function updateLock(id, f) {
 export function registerMode(spec) {
   swap(setEntity, "mode", spec.name, Immutable.fromJS(spec));
 }
+
+export function pinLoadingPane(id) {
+  const lock = read(getEntity, "lock", id);
+  if (!lock.get("isLoadingPanePinned")) {
+    swap(updateEntity, "lock", id, m => m.set("isLoadingPanePinned", true));
+  }
+}
+
+export function unpinLoadingPane(id) {
+  swap(updateEntity, "lock", id, m => m.set("isLoadingPanePinned", false));
+}

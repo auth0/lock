@@ -4,7 +4,7 @@ import LoadingScreen from '../loading_screen';
 import { findConnection } from '../index';
 
 export function renderSSOScreens(m) {
-  if (!m.has("sso")) return new LoadingScreen();
+  if (!m.has("sso") || m.get("isLoadingPanePinned")) return new LoadingScreen();
 
   const { name, strategy } = lastUsedConnection(m);
   const skipped = m.getIn(["sso", "skipped"], false);
