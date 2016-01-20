@@ -20,7 +20,7 @@ export default class Slider extends React.Component {
         }
       });
       this.animate = true;
-    } else {
+    } else if (!this.timeout) {
       this.setState({children: {current: nextProps.children}});
     }
   }
