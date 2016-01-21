@@ -7477,6 +7477,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   vertical-align: middle;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-blank-space {
+  height: 70px;
+  display: none;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-hide + .a0-hide + .a0-blank-space {
+  display: block;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-footer {
   margin-top: 20px;
   display: block;
