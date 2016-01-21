@@ -57,21 +57,11 @@ If you are targeting mobile audiences, it's recommended that you add:
 
 ### Browserify
 
-If you are using Browserify to build your project, you will need to add the following transformations required by Auth0 Lock:
+No special configuration is required if you are using Browserify to build your project.
 
-``` json
-{
-  "devDependencies": {
-    "brfs": "0.0.8",
-    "ejsify": "0.1.0",
-    "packageify": "^0.2.0"
-  }
-}
-```
+### Webpack
 
-### webpack
-
-If you are using webpack, you will need to install loaders (`$ npm install --save brfs ejsify json-loader packageify transform-loader`) and then use them in your `webpack.config.js` file:
+If you are using Webpack, you will need to install loaders (`$ npm install --save brfs ejsify json-loader packageify transform-loader`) and then use them in your `webpack.config.js` file:
 
 ```js
 loaders: [{

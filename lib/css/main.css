@@ -1474,7 +1474,7 @@
   background-image: url('https://s3.amazonaws.com/assets.auth0.com/w2/img/bg-transp.png');
 }
 
-#a0-lock .a0-overlay {
+#a0-lock .a0-overlay.a0-active {
   margin: 0;
   display: table;
   position: fixed;
@@ -1505,7 +1505,7 @@
   animation: fadeIn 0.3s ease-in;
 }
 
-#a0-lock .a0-overlay .a0-centrix {
+#a0-lock .a0-overlay.a0-active .a0-centrix {
   padding: 0;
   vertical-align: middle;
   display: table-cell;
@@ -7321,7 +7321,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-size: 13px;
   position: relative;
   color: #4d4d4d;
-  display: block;
   zoom: 1;
   width: 300px;
   background: transparent;
@@ -7340,7 +7339,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode-container {
-  background: white;
   border-radius: 0 0 3px 3px;
 }
 
@@ -7352,6 +7350,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-mode form .a0-body-content {
   padding: 30px;
+  background: white;
 }
 
 #a0-lock.a0-theme-default .a0-panel *,
@@ -7722,7 +7721,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
   margin: 0;
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   border-radius: 0 0 3px 3px;
 }
