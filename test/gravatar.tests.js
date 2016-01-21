@@ -14,7 +14,7 @@ function isVisible(element) {
 }
 
 describe('gravatar', function () {
-  var email, avatar, icon, iconImg;
+  var email, avatar, icon, avatarImg;
 
   beforeEach(function (done) {
     this.widget = new Auth0Lock(clientID, domain);
@@ -36,27 +36,27 @@ describe('gravatar', function () {
     var gravatarEmail = 'albertopose@gmail.com';
 
     // Should never happen
-    this.widget.on('avatar shown', function () {
+    this.widget.on('icon shown', function () {
       expect(false).to.be.equal(true);
     });
 
-    this.widget.on('icon shown', function () {
-      expect(isVisible(avatar)).to.be.equal(false);
-      expect(isVisible(icon)).to.be.equal(true);
-      expect(iconImg.attr('src')).to.be.equal(expectedGravatarURL);
+    this.widget.on('avatar shown', function () {
+      expect(isVisible(avatar)).to.be.equal(true);
+      expect(isVisible(icon)).to.be.equal(false);
+      expect(avatarImg.attr('src')).to.be.equal(expectedGravatarURL);
       done();
     });
 
     this.widget.on('ready', function () {
-      email   = $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input');
-      avatar  = $('#a0-lock .a0-header .a0-avatar');
-      icon    = $('#a0-lock .a0-header .a0-image');
-      iconImg = $('#a0-lock .a0-header .a0-image img');
+      email     = $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input');
+      avatar    = $('#a0-lock .a0-header .a0-icon-container .a0-avatar');
+      icon      = $('#a0-lock .a0-header .a0-icon-container .a0-image');
+      avatarImg = $('#a0-lock .a0-header .a0-icon-container .a0-avatar img');
 
       expect(email).not.to.be.empty();
       expect(avatar).not.to.be.empty();
       expect(icon).not.to.be.empty();
-      expect(iconImg).not.to.empty();
+      expect(avatarImg).not.to.empty();
 
       type(email, gravatarEmail);
     });
@@ -69,26 +69,26 @@ describe('gravatar', function () {
     var gravatarEmail = 'albertopose@gmail.co';
 
     // Should never happen
-    this.widget.on('icon shown', function () {
+    this.widget.on('avatar shown', function () {
       expect(false).to.be.equal(true);
     });
 
-    this.widget.on('avatar shown', function () {
-      expect(isVisible(avatar)).to.be.equal(true);
-      expect(isVisible(icon)).to.be.equal(false);
+    this.widget.on('icon shown', function () {
+      expect(isVisible(avatar)).to.be.equal(false);
+      expect(isVisible(icon)).to.be.equal(true);
       done();
     });
 
     this.widget.on('ready', function () {
-      email   = $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input');
-      avatar  = $('#a0-lock .a0-header .a0-avatar');
-      icon    = $('#a0-lock .a0-header .a0-image');
-      iconImg = $('#a0-lock .a0-header .a0-image img');
+      email     = $('#a0-lock .a0-notloggedin .a0-emailPassword .a0-email input');
+      avatar    = $('#a0-lock .a0-header .a0-icon-container .a0-avatar');
+      icon      = $('#a0-lock .a0-header .a0-icon-container .a0-image');
+      avatarImg = $('#a0-lock .a0-header .a0-icon-container .a0-avatar img');
 
       expect(email).not.to.be.empty();
       expect(avatar).not.to.be.empty();
       expect(icon).not.to.be.empty();
-      expect(iconImg).not.to.empty();
+      expect(avatarImg).not.to.empty();
 
       type(email, gravatarEmail);
     });
