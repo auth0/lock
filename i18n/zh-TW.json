@@ -8,6 +8,7 @@
   "loginSocialButton":             "{connection:title} 登入",
   "signupSocialButton":            "{connection:title} 註冊",
   "networkError":                  "無法連線至伺服器<br/>請稍後再試",
+  "noConnectionError":             "没有有效的连接，可以找到。",
   "signin": {
     "title":                       "登入",
     "action":                      "登入",

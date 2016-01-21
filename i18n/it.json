@@ -2,6 +2,7 @@
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "Attendere prego...",
   "close": "Chiudere",
+  "noConnectionError": "Nessuna connessione valida potrebbe essere trovato.",
   "signin": {
     "title": "Accedi",
     "action": "Accedi",

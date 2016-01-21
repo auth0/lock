@@ -2,6 +2,7 @@
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "Een ogenblik geduld...",
   "close": "Sluiten",
+  "noConnectionError": "Geen geldige verbinding kon worden gevonden.",
   "signin": {
     "title": "Aanmelden",
     "action": "Aanmelden",

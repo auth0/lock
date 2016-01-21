@@ -2,6 +2,7 @@
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "الرجاء الانتظار...",
   "close": "قم بإغلاق",
+  "noConnectionError": "يمكن العثور على أي اتصال صالح.",
   "signin": {
     "title": "تسجيل الدخول",
     "action": "تسجيل الدخول",

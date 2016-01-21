@@ -2,6 +2,7 @@
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "Bitte warten...",
   "close": "Schließen",
+  "noConnectionError": "Keine gültige Verbindung gefunden werden konnte.",
   "signin": {
     "title": "Anmelden",
     "action": "Anmelden",

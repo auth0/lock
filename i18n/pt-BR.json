@@ -7,6 +7,7 @@
   "loginSocialButton":             "Entre com {connection:title}",
   "signupSocialButton":            "Cadastre com {connection:title}",
   "networkError":                  "Não conseguimos acessar o servidor.<br/>Por favor, tente novamente.",
+  "noConnectionError":             "Não foi possível validar sua conexão.",
   "signin": {
     "title":                       "Entrar",
     "action":                      "Entrar",
@@ -50,7 +51,7 @@
     "userExistsErrorText":         "O usuário já existe.",
     "usernameInUseErrorText":      "Este nome de usuário já está em uso.",
     "invalidPassword":             "A senha não está segura o suficiente.",
-    
+
     "passwordStrength": {
       "nonEmpty": "A senha deve ser preenchida",
       "lengthAtLeast": "Deve ter pelo menos %d de comprimento",
@@ -62,7 +63,7 @@
       "specialCharacters" : "Símbolos (!@#$%^&*)",
       "identicalChars": "Máximo de %d caracteres iguais seguidos (ex. \"%s\" não é permitido)"
     }
-    
+
   },
   "reset": {
     "title":                       "Redefinir senha",

@@ -409,7 +409,7 @@
       -webkit-backdrop-filter: blur(0);
     }
 
-    .image.gravatar {
+    .avatar.gravatar {
       -webkit-filter: blur(40px);
       -ms-filter: blur(40px);
       filter: blur(40px);
@@ -433,7 +433,7 @@
     min-height: 124px;
     position: relative;
 
-    .image {
+    .avatar {
       margin: auto;
       display: inline-block;
       margin-bottom: 6px;
@@ -451,7 +451,7 @@
       }
     }
 
-    .avatar{
+    .image{
       position: relative;
       padding-top: 15px;
       img {
@@ -459,6 +459,15 @@
         display: inline-block;
         vertical-align: middle;
       }
+    }
+
+    .blank-space {
+      height: 70px;
+      display: none;
+    }
+
+    .hide + .hide + .blank-space {
+      display: block;
     }
   }
 
@@ -1162,7 +1171,7 @@
           border-radius: 0;
         }
 
-        .icon-container .image.gravatar {
+        .icon-container .avatar.gravatar {
           margin-top: 10px;
           margin-bottom: 0;
 

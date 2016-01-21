@@ -7424,7 +7424,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-backdrop-filter: blur(0);
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-image.a0-gravatar {
+#a0-lock.a0-theme-default .a0-panel .a0-bg-gradient .a0-avatar.a0-gravatar {
   -webkit-filter: blur(40px);
   -ms-filter: blur(40px);
   filter: blur(40px);
@@ -7445,13 +7445,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   position: relative;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar {
   margin: auto;
   display: inline-block;
   margin-bottom: 6px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar.a0-gravatar img {
   width: 80px;
   height: 80px;
   border-radius: 58px;
@@ -7460,20 +7460,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-top: -16px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image img {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar img {
   height: 55px;
   margin-top: 15px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image {
   position: relative;
   padding-top: 15px;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-avatar img {
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image img {
   height: 55px;
   display: inline-block;
   vertical-align: middle;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-blank-space {
+  height: 70px;
+  display: none;
+}
+
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-hide + .a0-hide + .a0-blank-space {
+  display: block;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-footer {
@@ -8106,12 +8115,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     border-radius: 0;
   }
 
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image.a0-gravatar {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar.a0-gravatar {
     margin-top: 10px;
     margin-bottom: 0;
   }
 
-  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-image.a0-gravatar img {
+  #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-icon-container .a0-avatar.a0-gravatar img {
     width: 60px;
     height: 60px;
     margin: 0;
