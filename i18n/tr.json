@@ -6,6 +6,7 @@
   "mustMatch":                    "Eşleşmeli",
   "loginSocialButton":            "{connection:title} ile Giriş Yap",
   "signupSocialButton":           "{connection:title} lie Kayıt Ol",
+  "noConnectionError":            "Hiçbir geçerli bağlantı bulunamadı.",
   "signin": {
     "title":                      "Giriş",
     "action":                     "Erişim",

@@ -7,6 +7,7 @@
   "loginSocialButton":             "Zaloguj się z {connection:title}",
   "signupSocialButton":            "Zarejestruj się z {connection:title}",
   "networkError":                  "Nie mogliśmy nawiązać połączenia z serwerem.<br/>Spróbuj ponownie później.",
+  "noConnectionError":             "Nie ważne połączenia można znaleźć.",
   "signin": {
     "title":                       "Zaloguj się",
     "action":                      "Zaloguj",

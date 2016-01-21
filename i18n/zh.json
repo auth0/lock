@@ -2,6 +2,7 @@
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "请稍候。。。",
   "close": "关闭",
+  "noConnectionError": "没有有效的连接，可以找到。",
   "signin": {
     "title": "登录",
     "action": "登录",

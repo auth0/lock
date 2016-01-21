@@ -7,6 +7,7 @@
   "loginSocialButton":             "Login with {connection:title}",
   "signupSocialButton":            "Signup with {connection:title}",
   "networkError":                  "We could not reach the server.<br/>Please try again.",
+  "noConnectionError":             "No valid connection could be found.",
   "signin": {
     "title":                            "Log in",
     "action":                           "Access",

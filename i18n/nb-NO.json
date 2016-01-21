@@ -6,6 +6,7 @@
   "mustMatch":                     "Må tilsvare",
   "loginSocialButton":             "Logg inn med {connection:title}",
   "signupSocialButton":            "Registrer med {connection:title}",
+  "noConnectionError":             "Ingen gyldig forbindelse ble funnet.",
   "signin": {
     "title":                       "Innlogging",
     "action":                      "Logg inn",

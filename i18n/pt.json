@@ -2,6 +2,7 @@
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "Aguarde...",
   "close": "Fechar",
+  "noConnectionError": "Sem ligação válida pôde ser encontrada.",
   "signin": {
     "title": "Entrar",
     "action": "Entrar",

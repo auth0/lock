@@ -7,6 +7,7 @@
   "loginSocialButton": "S'identifier avec {connection:title}",
   "signupSocialButton": "S'inscrire avec {connection:title}",
   "networkError": "Serveur inaccessible.<br/>Veuillez réessayer.",
+  "noConnectionError": "Pas de connexion valide n'a pu être trouvée.",
   "signin": {
     "title": "Connexion",
     "action": "Connexion",
@@ -47,7 +48,7 @@
     "userExistsErrorText": "Cet utilisateur existe déjà.",
     "usernameInUseErrorText": "Ce nom d'utilisateur est déjà pris.",
     "invalidPassword": "Le mot de passe n'est pas valide.",
-    
+
       "passwordStrength": {
       "nonEmpty": "Un mot de passe non vide est requis",
       "lengthAtLeast": "Au moins %d caractères",

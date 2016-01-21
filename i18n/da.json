@@ -7,6 +7,7 @@
   "loginSocialButton":             "Login med {connection:title}",
   "signupSocialButton":            "Opret med {connection:title}",
   "networkError":                  "Vi kunne ikke få kontakt til serveren.<br/>Prøv venligst igen.",
+  "noConnectionError":             "Ingen gyldig forbindelse kunne findes.",
   "signin": {
     "title":                       "Log ind",
     "action":                      "Log ind",
@@ -50,7 +51,7 @@
     "userExistsErrorText":         "Denne bruger eksisterer allerede.",
     "usernameInUseErrorText":      "Brugernavnet er allerede i brug.",
     "invalidPassword":             "Kodeordet er for svagt.",
-    
+
     "passwordStrength": {
       "nonEmpty": "Et ikke-tomt kodeord kræves",
       "lengthAtLeast": "Mindst %d tegn langt",
@@ -62,7 +63,7 @@
       "specialCharacters" : "Specialtegn (f.eks. !@#$%^&*)",
       "identicalChars": "Ikke mere end %d identiske tegn i træk (f.eks. er \"%s\" ikke tilladt)"
     }
-    
+
   },
   "reset": {
     "title":                       "Nulstil Kodeord",

@@ -7,6 +7,7 @@
   "loginSocialButton":             "ล็อคอิน ด้วย {connection:title}",
   "signupSocialButton":            "ลงทะเบียน  ด้วย {connection:title}",
   "networkError":                  "เราไม่สามารถเชื่อมต่อกับเซอร์เวอร์ได้ .<br/>กรุณาลองใหม่อีกครั้ง",
+  "noConnectionError":             "ไม่มีการเชื่อมต่อที่ถูกต้องอาจจะพบ",
   "signin": {
     "title":                       "ล็อคอิน",
     "action":                      "เข้าใช้",

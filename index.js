@@ -693,6 +693,14 @@ Auth0Lock.prototype._signinPanel = function (options) {
 
   this.setPanel(panel);
 
+  var anyConnection = this.options._isThereAnyEnterpriseOrDbConnection()
+    || this.options._isThereAnySocialConnection()
+    || this.options._isThereAnyDBConnection();
+
+  if (!anyConnection) {
+    this._showError(this.options.i18n.t("noConnectionError"));
+  }
+
   return this;
 
 };

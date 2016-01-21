@@ -1,6 +1,7 @@
 {
   "loadingTitle": "חכה בבקשה...",
   "close": "סגור",
+  "noConnectionError": "יכול להיות, לא מצא קשר תקף.",
   "signin": {
     "title": "כניסה",
     "action": "היכנס",
