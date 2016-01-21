@@ -1,3 +1,50 @@
+## [8.2.0] - 2016-01-21
+
+### Fixed
+
+- [] Merge pull request #297 from auth0/fix-gravatar-tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4f44e19b2ba926e846f9b41d9e42ffe1a896e721
+- [] Fix gravatar tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/5cb94337022d66b31830d1287343436fa15c50d5
+- [] Merge branch 'fixes' (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b4e2446b6899d25238d6066e613fca103ba5bf65
+- [] Merge branch 'master' into fixes (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0b52c320cc27645fb5c5b6d6593bcc40868759cc
+- [] Merge pull request #296 from auth0/beneliflo-bugfix (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/8c2614ca4cc933b13f5dbc267ba5640cf02a714a
+- [] Merge pull request #293 from clodeku/master (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/fabd226c2a3174436fe3bd68e5df4a02d94b4b96
+- [] Merge pull request #289 from auth0/browserify-bundling (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/685381b5ebfc98a56b15a3b5ed192339cc456615
+- [] Show error if no valid connection could be found, fixes #14 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/960059dda09d4a8952eb1a37f48cba9a2c4cba2c
+- [] Fix firing of avatar and icon events (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/5b283e266b3e10efba24e4bfe9509c1ea06ff294
+- [] Avoid flickr when removing avatar, fixes 292 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d9c50430da58cc1fc45386beb0fee2dda12d66d8
+- [] Update zh-TW.json (`Clode Ku`)
+  https://github.com/auth0/lock/commit/d28feb4b0dd0d85f67cb7f80e37fc3c393804107
+- [] Merge pull request #291 from adam2314/master (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/10582e41c138f8404ff1d55027623f5d05af2cde
+- [] Merge pull request #2 from auth0/master (`adam2314`)
+  https://github.com/auth0/lock/commit/9668c9cff7a736e71a9bb20b1430b5686700d3df
+- [] remove comment (`adam2314`)
+  https://github.com/auth0/lock/commit/59cf775496cc285fd9595d19ff46204d9eadfdaf
+- [] Merge pull request #290 from adam2314/master (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/2a61c82f3a1f50e7f4d0ec065a1d03a6290b46f6
+- [] Merge pull request #1 from adam2314/adam2314-patch-1 (`adam2314`)
+  https://github.com/auth0/lock/commit/62fa81160beb0d38908cb25bc1a7989137ab4036
+- [] Update he.json (`adam2314`)
+  https://github.com/auth0/lock/commit/3d50afeaa6ba69ff9f9c0428389b97340512aaac
+- [] Last attempt to avoid modal flicker (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/577dda74d2b234e4bc8b5627610cf2040dcabff7
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/c878e61e600108a00b7a7672d3f7d0f5138bb2b0
+- [] fix lock overlay (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/b33642ed1a151bb4a9989a9c6c633d643afef3cc
+- [] Threat browserify transforms as regular dependencies (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/22eb3a198968d0f5978b0eeae9e47401aa12b05d
+
 ## [8.1.5] - 2016-01-11
 
 ### Fixed
