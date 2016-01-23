@@ -12,7 +12,7 @@
     "title":                       "Log ind",
     "action":                      "Log ind",
     "actionDomain":                "Log ind på {domain}",
-    "all":                         "Vis alle",
+    "all":                         "Ikke din konto?",
     "strategyEmailEmpty":          "Email er tom.",
     "strategyEmailInvalid":        "Email is ugyldig.",
     "strategyDomainInvalid":       "Domænet {domain} er ikke sat op.",
