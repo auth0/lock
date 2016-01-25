@@ -22,6 +22,7 @@ function processDatabaseOptions(options) {
     databaseConnection,
     disableResetAction,
     disableSignUpAction,
+    initialScreen,
     loginAfterSignUp,
     resetLink,
     signUpLink,
@@ -35,6 +36,12 @@ function processDatabaseOptions(options) {
   usernameStyle = usernameStyle === "username" ? "username" : "email";
 
   let activities = ["login", "signUp", "resetPassword"];
+
+  if (initialScreen != undefined
+      && (typeof initialScreen != "string" || activities.indexOf(initialScreen) === -1)) {
+    l.warn(options, "The `initialScreen` option will be ignored, because it is not one of the following allowed strings \"login\", \"signUp\", \"resetPassword\".");
+    initialScreen = undefined;
+  }
 
   if (disableResetAction != undefined && typeof disableResetAction != "boolean") {
     l.warn(options, "The `disableResetAction` option will be ignored, because it is not a booelan.");
@@ -63,6 +70,7 @@ function processDatabaseOptions(options) {
   return {
     activities,
     connection: databaseConnection,
+    initialScreen,
     loginAfterSignUp,
     resetLink,
     signUpLink,
@@ -87,7 +95,7 @@ export function setActivity(m, name) {
 }
 
 export function getActivity(m) {
-  return m.get("activity", m.getIn(["database", "opts", "activities", 0]));
+  return m.get("activity", m.getIn(["database", "opts", "initialScreen"]) || "login");
 }
 
 export function authWithUsername(m) {
