@@ -1,7 +1,7 @@
 import React from 'react';
 import Screen from '../lock/screen';
 import LoginPane from './login_pane';
-import { authWithUsername, hasActivity } from './index';
+import { authWithUsername, hasActivity, signUpLink } from './index';
 import { signInWithEmail, signInWithUsername } from './actions';
 import { renderSignedInConfirmation } from '../lock/signed_in_confirmation';
 import LoginSignUpTabs from './login_sign_up_tabs';
@@ -22,6 +22,7 @@ export default class Login extends Screen {
           key="loginsignup"
           lock={lock}
           loginTabLabel={this.t(lock, ["loginTabLabel"], {__textOnly: true})}
+          signUpLink={signUpLink(lock)}
           signUpTabLabel={this.t(lock, ["signUpTabLabel"], {__textOnly: true})}
         />
       : null;

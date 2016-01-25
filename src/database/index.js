@@ -23,6 +23,7 @@ function processDatabaseOptions(options) {
     databaseConnection,
     loginAfterSignUp,
     resetLink,
+    signUpLink,
     usernameStyle
    } = options;
 
@@ -49,6 +50,11 @@ function processDatabaseOptions(options) {
     resetLink = undefined;
   }
 
+  if (signUpLink != undefined && typeof signUpLink != "string") {
+    l.warn(options, "The `signUpLink` option will be ignored, because it is not a string");
+    signUpLink = undefined;
+  }
+
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
   return {
@@ -56,6 +62,7 @@ function processDatabaseOptions(options) {
     connection: databaseConnection,
     loginAfterSignUp,
     resetLink,
+    signUpLink,
     usernameStyle
   };
 }
@@ -66,6 +73,10 @@ export function databaseConnection(m) {
 
 export function resetLink(m, notFound="") {
   return m.getIn(["database", "opts", "resetLink"], notFound);
+}
+
+export function signUpLink(m, notFound="") {
+  return m.getIn(["database", "opts", "signUpLink"], notFound);
 }
 
 export function setActivity(m, name) {
