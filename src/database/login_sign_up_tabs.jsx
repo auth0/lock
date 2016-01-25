@@ -1,7 +1,7 @@
 import React from 'react';
 import { showLoginActivity, showSignUpActivity } from './actions';
 import * as l from '../lock/index';
-import { getActivity } from './index';
+import { getScreen } from './index';
 
 export default class LoginSignUpTabs extends React.Component {
 
@@ -13,7 +13,7 @@ export default class LoginSignUpTabs extends React.Component {
       signUpTabLabel,
       tabIndex
     } = this.props;
-    const isLogin = getActivity(lock) === "login";
+    const isLogin = getScreen(lock) === "login";
 
     return (
       <ul className="auth0-lock-tabs">

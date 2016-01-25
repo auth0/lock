@@ -6,7 +6,7 @@ import * as c from '../cred/index';
 import  {
   authWithUsername,
   databaseConnection,
-  setActivity,
+  setScreen,
   shouldAutoLogin
 } from './index';
 
@@ -275,7 +275,7 @@ function resetPasswordSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
   // TODO: needs to be auto closed?
   // TODO: what if login is not enabled?
-  swap(updateEntity, "lock", id, lock => setActivity(l.setSubmitting(lock, false), "login"));
+  swap(updateEntity, "lock", id, lock => setScreen(l.setSubmitting(lock, false), "login"));
 
   setTimeout(() => {
     const successMessage = l.ui.t(lock, ["success", "resetPassword"], {__textOnly: true});
@@ -292,15 +292,15 @@ function resetPasswordError(id, error) {
 }
 
 export function showLoginActivity(id) {
-  swap(updateEntity, "lock", id, setActivity, "login");
+  swap(updateEntity, "lock", id, setScreen, "login");
 }
 
 export function showSignUpActivity(id) {
-  swap(updateEntity, "lock", id, setActivity, "signUp");
+  swap(updateEntity, "lock", id, setScreen, "signUp");
 }
 
 export function showResetPasswordActivity(id) {
-  swap(updateEntity, "lock", id, setActivity, "resetPassword");
+  swap(updateEntity, "lock", id, setScreen, "resetPassword");
 }
 
 export function cancelResetPassword(id) {

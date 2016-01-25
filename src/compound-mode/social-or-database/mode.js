@@ -1,6 +1,6 @@
 import Mode from '../../lock/mode';
 import { initSocial } from '../../social/index';
-import { getActivity, initDatabase } from '../../database/index';
+import { getScreen, initDatabase } from '../../database/index';
 import AskSocialNetworkOrLogin from '../../cred/or/ask_social_network_or_login';
 import ResetPassword from '../../database/reset_password';
 import SignUp from '../../database/sign_up';
@@ -20,8 +20,8 @@ export default class SocialOrDatabaseMode extends Mode {
   }
 
   render(lock) {
-    const activity = getActivity(lock);
-    switch(activity) {
+    const screen = getScreen(lock);
+    switch(screen) {
       case "login":
       return new AskSocialNetworkOrLogin();
 
@@ -32,7 +32,7 @@ export default class SocialOrDatabaseMode extends Mode {
       return new ResetPassword();
 
       default: // TODO: show a crashed screen.
-      throw new Error("unknown activity");
+      throw new Error("unknown screen");
     }
   }
 
