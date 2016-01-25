@@ -3,7 +3,7 @@ import EmailPane from '../cred/email/email_pane';
 import UsernamePane from '../cred/username/username_pane';
 import PasswordPane from '../cred/password/password_pane';
 import { showResetPasswordActivity } from './actions';
-import { authWithUsername, hasActivity } from './index';
+import { authWithUsername, hasActivity, resetLink } from './index';
 import * as l from '../lock/index';
 
 export default class LoginPane extends React.Component {
@@ -39,8 +39,8 @@ export default class LoginPane extends React.Component {
       ? <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
-            href="#"
-            onClick={::this.handleDontRememberPasswordClick}
+            href={resetLink(lock, "#")}
+            onClick={resetLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
             tabIndex={l.tabIndex(lock, tabIndex)}
           >
             {forgotPasswordLabel}

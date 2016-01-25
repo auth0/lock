@@ -22,6 +22,7 @@ function processDatabaseOptions(options) {
     activities,
     databaseConnection,
     loginAfterSignUp,
+    resetLink,
     usernameStyle
    } = options;
 
@@ -43,18 +44,28 @@ function processDatabaseOptions(options) {
     throw new Error("When provided, the `activities` option array needs to contain at least one valid activity (\"login\", \"signUp\" or \"requestPassword\").");
   }
 
+  if (resetLink != undefined && typeof resetLink != "string") {
+    l.warn(options, "The `resetLink` option will be ignored, because it is not a string");
+    resetLink = undefined;
+  }
+
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
   return {
     activities,
     connection: databaseConnection,
     loginAfterSignUp,
+    resetLink,
     usernameStyle
-   };
+  };
 }
 
 export function databaseConnection(m) {
   return m.getIn(["database", "opts", "connection"]);
+}
+
+export function resetLink(m, notFound="") {
+  return m.getIn(["database", "opts", "resetLink"], notFound);
 }
 
 export function setActivity(m, name) {
