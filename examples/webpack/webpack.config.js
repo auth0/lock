@@ -1,5 +1,11 @@
 'use strict';
-var buildPath = require('path').resolve(__dirname, 'public', 'build');
+
+var path = require('path');
+
+var buildPath = path.resolve(__dirname, 'public', 'build');
+var vendorPath = function(relativePath) {
+  return path.join(path.join(__dirname, 'node_modules'), relativePath);
+};
 
 var config = {
   context: __dirname,
@@ -10,16 +16,19 @@ var config = {
   },
   module: {
     loaders: [{
-      test: /node_modules\/auth0-lock\/.*\.js$/,
+      test: /\.js$/,
+      include: vendorPath('auth0-lock'),
       loaders: [
         'transform-loader/cacheable?brfs',
         'transform-loader/cacheable?packageify'
       ]
     }, {
-      test: /node_modules\/auth0-lock\/.*\.ejs$/,
+      test: /\.ejs$/,
+      include: vendorPath('auth0-lock'),
       loader: 'transform-loader/cacheable?ejsify'
     }, {
       test: /\.json$/,
+      include: [vendorPath('auth0-js'), vendorPath('auth0-lock')],
       loader: 'json-loader'
     }]
   }
