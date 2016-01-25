@@ -425,9 +425,13 @@ The appearance of the widget and the mechanics of authentication can be customiz
 
 #### Database options
 
-- **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. Defaults to `"email"`.
 - **databaseConnection {String}**: Name of the database connection that will be used to authenticate the user. This option doesn't have a default value and must be specified when opening the Lock with a method that provides database authentication.
+- **disableResetAction {Boolean}**: When set to `true` hides the _"Don't remember your password?"_ link in the _login screen_, making the _reset password screen_ unreachable. Defaults to `false`.
+- **disableSignUpAction {Boolean}**: When set to `true` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `false`.
 - **loginAfterSignUp {String}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
+- **resetLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
+- **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
+- **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. Defaults to `"email"`.
 
 #### Other options
 
