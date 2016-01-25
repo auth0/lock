@@ -21,6 +21,7 @@ function processDatabaseOptions(options) {
   let {
     activities,
     databaseConnection,
+    disableResetAction,
     disableSignUpAction,
     loginAfterSignUp,
     resetLink,
@@ -44,6 +45,12 @@ function processDatabaseOptions(options) {
   activities = activities.filter(x => availableActivities.indexOf(x) > -1);
   if (activities.length === 0) {
     throw new Error("When provided, the `activities` option array needs to contain at least one valid activity (\"login\", \"signUp\" or \"requestPassword\").");
+  }
+
+  if (disableResetAction != undefined && typeof disableResetAction != "boolean") {
+    l.warn(options, "The `disableResetAction` option will be ignored, because it is not a booelan.");
+  } else if (disableResetAction) {
+    activities = activities.filter(x => x != "resetPassword");
   }
 
   if (disableSignUpAction != undefined && typeof disableSignUpAction != "boolean") {
