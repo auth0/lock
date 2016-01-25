@@ -19,7 +19,6 @@ export function initDatabase(model, options) {
 
 function processDatabaseOptions(options) {
   let {
-    activities,
     databaseConnection,
     disableResetAction,
     disableSignUpAction,
@@ -35,17 +34,7 @@ function processDatabaseOptions(options) {
 
   usernameStyle = usernameStyle === "username" ? "username" : "email";
 
-  const availableActivities = ["login", "signUp", "resetPassword"];
-  activities = activities === undefined ? availableActivities : activities;
-
-  if (!Array.isArray(activities) || activities.length === 0) {
-    throw new Error("When provided, the `activities` option array needs to contain at least one activity.");
-  }
-
-  activities = activities.filter(x => availableActivities.indexOf(x) > -1);
-  if (activities.length === 0) {
-    throw new Error("When provided, the `activities` option array needs to contain at least one valid activity (\"login\", \"signUp\" or \"requestPassword\").");
-  }
+  let activities = ["login", "signUp", "resetPassword"];
 
   if (disableResetAction != undefined && typeof disableResetAction != "boolean") {
     l.warn(options, "The `disableResetAction` option will be ignored, because it is not a booelan.");
