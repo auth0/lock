@@ -1,3 +1,20 @@
+## [8.2.1] - 2016-01-26
+
+### Fixed
+
+- [] Merge pull request #304 from auth0/fix-webpack-bundle (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/adf22276602c29bf7705a6a25de523f208e632ef
+- [] Upgrade lock version in webpack example (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b8596a8eae2e225f7a6b3f9f943507a96c12c728
+- [] Update webpack example and doc (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/e63e94753503c321fdbb40c004df229c922c148a
+- [] Upgrade brfs dependency (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4587f5182e70ff68f05089b5159264a593509b12
+- [] Merge pull request #299 from carnevalle/patch-2 (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/5a83c157ad928109f2c19d8b65e2d99a2384691a
+- [] More descriptive message for "Not your account?" (`Troels Johnsen`)
+  https://github.com/auth0/lock/commit/1510415ae127569f26e6778d809afc132dec60fe
+
 ## [8.2.0] - 2016-01-21
 
 ### Fixed
