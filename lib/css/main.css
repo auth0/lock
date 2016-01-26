@@ -191,6 +191,7 @@
 =            Overlay            =
 ===============================*/
   /*-----  End of Overlay  ------*/
+  text-rendering: optimizeLegibility;
 }
 
 #a0-lock article,
