@@ -95,7 +95,8 @@ export function setScreen(m, name) {
 }
 
 export function getScreen(m) {
-  return m.get("screen", m.getIn(["database", "opts", "initialScreen"]) || "login");
+  const initialScreen = m.getIn(["database", "opts", "initialScreen"]);
+  return m.get("screen", hasScreen(m, initialScreen) ? initialScreen : "login");
 }
 
 export function authWithUsername(m) {
@@ -103,7 +104,12 @@ export function authWithUsername(m) {
 }
 
 export function hasScreen(m, s) {
-  return m.getIn(["database", "opts", "screens"]).contains(s);
+  const { showForgot, showSignup } =
+    client.connection(m, "auth0", databaseConnection(m)).toJS();
+
+  return !(showForgot === false && s === "resetPassword")
+    && !(showSignup === false && s === "signUp")
+    && m.getIn(["database", "opts", "screens"]).contains(s);
 }
 
 export function shouldAutoLogin(m) {
