@@ -8,8 +8,17 @@ export default class PasswordInput extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    if (this.props.autoFocus) {
+      // TODO: We can't set the focus immediately because we have to wait for
+      // the input to be visible. Use a more robust solution (Placeholder should
+      // notify it children when they are being shown).
+      setTimeout(() => this.refs.input.focus(), 1200);
+    }
+  }
+
   render() {
-    const { isValid, onChange, ...props } = this.props;
+    const { autoFocus, isValid, onChange, ...props } = this.props;
     const { focused } = this.state;
 
     return (
