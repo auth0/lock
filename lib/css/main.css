@@ -191,6 +191,7 @@
 =            Overlay            =
 ===============================*/
   /*-----  End of Overlay  ------*/
+  text-rendering: optimizeLegibility;
 }
 
 #a0-lock article,
@@ -916,8 +917,9 @@
 #a0-lock.a0-theme-default .a0-zocial span,
 #a0-lock.a0-theme-default a.a0-zocial span {
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 10px;
+  letter-spacing: .3px;
   line-height: 40px;
   display: inline-block;
   padding-left: 4%;
@@ -7377,7 +7379,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-top-header h1 {
   font-size: 24px;
-  font-weight: 100;
+  font-weight: 400;
   margin-top: 10px;
 }
 
