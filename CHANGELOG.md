@@ -1,3 +1,16 @@
+## [8.2.2] - 2016-01-28
+
+### Fixed
+
+- [] Merge pull request #305 from auth0/styling-tweaks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/46546480b7c40ce5b46e42b6d0f1bb562cda1666
+- [] Optimize legibility (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4153c0317b5a46cbe6bf033705dbd565bff6f4ac
+- [] Adjust social button text styling (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/9cd693412e662234586380f3441bccb2553dab8b
+- [] Adjust font weight of header title (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c509377752be4e661335490e94c96adef6a2d3d9
+
 ## [8.2.1] - 2016-01-26
 
 ### Fixed

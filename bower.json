@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "8.2.1",
+  "version": "8.2.2",
   "main": "build/auth0-lock.js",
   "ignore": [
     "lib-cov",
