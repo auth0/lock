@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
+import { fetchLocation } from './remote-data/actions';
 import * as l from './index';
 import * as cs from '../cred/storage';
 
@@ -11,16 +12,7 @@ export function setupLock(id, clientID, domain, options) {
   WebAPI.setupClient(id, clientID, domain, options);
 
   // TODO: only modes with a phone number are making use of the user's location
-  const user = read(getEntity, "user");
-  const location = user && user.get("location");
-
-  if (!location) {
-    WebAPI.getUserCountry(id, (err, isoCode) => {
-      if (!err) {
-        swap(updateEntity, "user", 0, m => m.set("location", isoCode));
-      }
-    });
-  }
+  fetchLocation(id);
 }
 
 export function openLock(id, modeName, options) {
