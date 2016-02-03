@@ -117,6 +117,7 @@ breakpoint(point, value = 0)
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     margin 0 auto
     border-radius 5px
+    overflow hidden
 
     +breakpoint("mobile")
       -webkit-transition -webkit-transform .4s, opacity .3s
@@ -743,6 +744,8 @@ breakpoint(point, value = 0)
         position absolute
         top 0
         bottom 0
+        overflow auto
+        border-radius 0
 
     .auth0-lock-widget-container
       //mobile view

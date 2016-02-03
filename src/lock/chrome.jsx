@@ -78,7 +78,7 @@ export default class Chrome extends React.Component {
           {globalError && <GlobalMessage key="global-error" message={globalError} type="error" />}
           {globalSuccess && <GlobalMessage key="global-success" message={globalSuccess} type="success" />}
         </ReactTransitionGroup>
-        <div style={{position: "relative", overflow: "hidden"}}>
+        <div style={{position: "relative"}}>
           <MultisizeSlide
             delay={550}
             onDidSlide={::this.onDidSlide}
