@@ -1,7 +1,7 @@
-import Immutable from 'immutable';
+import Immutable, { Map } from 'immutable';
 import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
-import { fetchLocation } from './remote-data/actions';
+import { fetchLocation, fetchSSOData } from './remote-data/actions';
 import * as l from './index';
 import * as cs from '../cred/storage';
 
@@ -13,6 +13,17 @@ export function setupLock(id, clientID, domain, options) {
 
   // TODO: only modes with a phone number are making use of the user's location
   fetchLocation(id);
+  fetchSSOData(id, (_, ssoData) => {
+    // TODO: this is wrong because the sso data won't be on the setup
+    // snapshot and will be lost when the lock is closed.
+    ssoData = Immutable.fromJS(ssoData);
+    ssoData = ssoData.get("sso") === false
+      ? Map()
+      : ssoData.remove("sso");
+
+    swap(updateEntity, "lock", id, m => m.set("sso", ssoData));
+  });
+
 }
 
 export function openLock(id, modeName, options) {
