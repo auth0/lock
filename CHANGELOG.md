@@ -1,3 +1,14 @@
+## [8.2.3] - 2016-02-04
+
+### Fixed
+
+- [] Merge pull request #310 from auth0/fix-social-icons (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d3cf5a8b1dd05ef063ac347784b34c565ece1e8a
+- [] Don't optimize legibility for social icons (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/af302d8d565e1b685a79c9952a7dc0a11da72200
+- [] Update package.json (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/b5b8d67f56a94ee8500cd103dacd950fbf267354
+
 ## [8.2.2] - 2016-01-28
 
 ### Fixed
