@@ -1,5 +1,25 @@
 import { getEntity, read, swap, updateEntity } from '../../store/index';
+import { fetchClientSettings } from '../client/settings';
 import webAPI from '../web_api';
+
+// client settings
+
+export function fetchSettings(lockID, clientID, domain, assetsUrl) {
+  const lock = read(getEntity, "lock", lockID);
+  if (lock.getIn(["client", "syncStatus"])) return;
+
+  swap(updateEntity, "lock", lockID, m => {
+    return m.setIn(["client", "syncStatus"], "loading");
+  });
+
+  fetchClientSettings(clientID, domain, assetsUrl, (error, client) => {
+    swap(updateEntity, "lock", lockID, m => {
+      return error
+        ? m.setIn(["client", "syncStatus"], "error")
+        : m.set("client", client.set("syncStatus", "ok"));
+    });
+  });
+}
 
 // sso data
 

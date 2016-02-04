@@ -1,6 +1,5 @@
 import Auth0 from 'auth0-js';
 import reqwest from 'reqwest';
-import { loadClientSettings } from './client/browser';
 
 class Auth0WebAPI {
   constructor() {
@@ -14,9 +13,6 @@ class Auth0WebAPI {
       domain: domain,
       sendSDKClientInfo: true
     });
-
-    // TODO: reusse client settings and fetch on demand
-    loadClientSettings(clientID, domain, options.assetsUrl);
   }
 
   signIn(lockID, options, cb) {
