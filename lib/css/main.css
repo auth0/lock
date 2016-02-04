@@ -954,6 +954,7 @@
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  text-rendering: auto;
 }
 
 #a0-lock.a0-theme-default .a0-zocial:active,
