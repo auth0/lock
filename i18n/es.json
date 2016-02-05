@@ -1,14 +1,17 @@
 {
   "loadingTitle":                  "Por favor espere...",
   "close":                         "Cerrar",
+  "windowsAuthTitle":              "Autenticación de Windows",
   "invalid":                       "Inválido",
   "mustMatch":                     "Debe coincidir",
   "loginSocialButton":             "Ingresar con {connection:title}",
   "signupSocialButton":            "Registrarse con {connection:title}",
+  "networkError":                  "No pudimos contactar el server.<br/>Por favor intente nuevamente.",
   "noConnectionError":             "No se pudo encontrar una conexión válida.",
   "signin": {
     "title":                       "Iniciar sesión",
     "action":                      "Ingresar",
+    "actionDomain":                "Ingrersar a {domain}",
     "all":                         "Mostrar todas",
     "strategyEmailEmpty":          "El email está vacío.",
     "strategyEmailInvalid":        "El email no es válido.",
@@ -16,6 +19,8 @@
     "signinText":                  "Iniciar sesión",
     "signupText":                  "Registrarse",
     "forgotText":                  "Olvidaste tu contraseña?",
+    "cancelAction":                "Cancelar",
+    "footerText":                  "",
     "emailPlaceholder":            "Email",
     "usernamePlaceholder":         "Nombre de usuario",
     "passwordPlaceholder":         "Contraseña",
@@ -24,9 +29,14 @@
     "returnUserLabel":             "La última vez inició sesión con...",
     "domainUserLabel":             "Usted se encuentra conectado desde su red corporativa...",
     "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
+    "passwordChangeRequiredErrorText":  "Debe actualizar su contraseña porque es la primera vez que ingresa o porque la contraseña está vencida.",
+    "unauthorizedErrorText":            "Acceso denegado.",
+    "userBlockedErrorText":             "",
     "or":                          "... o inicie sesión usando",
     "loadingMessage":              "Iniciando sesión con {connection}...",
-    "popupCredentials":            "Ingrese sus credenciales en la ventana emergente"
+    "popupCredentials":            "Ingrese sus credenciales en la ventana emergente",
+    "userClosedPopup":             "La ventana emergente se cerró. Intente nuevamente.",
+    "userConsentFailed":           "Los permisos no fueron otorgados. Intente nuevamente."
   },
   "signup": {
     "description":                 "",
@@ -35,13 +45,28 @@
     "signinText":                  "Iniciar sesión",
     "signupText":                  "Registrarse",
     "emailPlaceholder":            "Email",
+    "usernamePlaceholder":         "Nombre de usuario",
     "passwordPlaceholder":         "Contraseña",
     "cancelAction":                "Cancelar",
     "headerText":                  "Por favor ingrese email y contraseña",
     "footerText":                  "",
     "signupOnSSODomainErrorText":  "El dominio {domain} ha sido configurado para Single Sign On y no puede crear una cuenta. Intente iniciar sesión directamente.",
     "serverErrorText":             "Hubo un error al procesar su registro.",
-    "userExistsErrorText":         "El usuario ya existe."
+    "userExistsErrorText":         "El usuario ya existe.",
+    "usernameInUseErrorText":      "El nombre de usuario ya está en uso.",
+    "invalidPassword":             "La contraseña es muy débil.",
+
+    "passwordStrength": {
+      "nonEmpty": "Se requiere una contraseña no vacía",
+      "lengthAtLeast": "Como mínimo de %d caracteres de longitud",
+      "shouldContain": "Debe contener:",
+      "containsAtLeast" : "Contener al menos %d de los siguientes %d tipos de caracteres:",
+      "lowerCase": "Letras minúsculas (a-z)",
+      "upperCase": "Letras mayúsculas (A-Z)",
+      "numbers": "Números (ej. 0-9)",
+      "specialCharacters" : "Caracteres especiales (ej. !@#$%^&*)",
+      "identicalChars": "No más de %d caracteres idénticos juntos (ej., \"%s\" no está permitido)"
+    }
   },
   "reset": {
     "title":                       "Restablecer Contraseña",
@@ -50,10 +75,12 @@
     "passwordPlaceholder":         "Nueva Contraseña",
     "repeatPasswordPlaceholder":   "Confirme nueva contraseña",
     "cancelAction":                "Cancelar",
+    "footerText":                  "",
     "successText":                 "Hemos enviado un email para completar el restablecimiento de su contraseña.",
     "enterSamePasswordText":       "Por favor ingrese la misma contraseña.",
     "headerText":                  "Por favor ingrese su email y la nueva contraseña. Enviaremos un email para confirmar el cambio.",
     "serverErrorText":             "Hubo un error al restablecer su contraseña.",
-    "userDoesNotExistErrorText":   "Usuario inválido."
+    "userDoesNotExistErrorText":   "Usuario inválido.",
+    "invalidPassword":             "La contraseña es muy débil."
   }
 }
