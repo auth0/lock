@@ -7,6 +7,15 @@ export default class Mode {
     this.dict = dict;
   }
 
+  execHook(str, id, ...args) {
+    if (typeof this[str] != "function") return;
+    this.id = id;
+    const model = read(getEntity, "lock", id);
+    const result = this[str](model, ...args);
+    delete this.id;
+    return result;
+  }
+
   open(id, ...args) {
     const { name } = this;
     const [options, callback] = openFunctionArgsResolver(name, args);
@@ -14,23 +23,18 @@ export default class Mode {
     options.signInCallback = callback;
     options.mode = {};
 
-    this.id = id;
     this.options = options; // TODO: should clone
-    const model = read(getEntity, "lock", id);
 
-    this.willOpen(model, options);
+    this.execHook("willOpen", id, options);
 
     const result = openLock(id, name, this.options);
 
-    delete this.id;
     delete this.options;
 
     return result;
   }
 
   // render must be implemented in each mode
-
-  willOpen(model, options) {}
 
   close(id, force) {
     closeLock(id, force);

@@ -46,6 +46,7 @@ export default class Auth0LockPasswordless {
 
     this.id = idu.incremental();
     setupLock(this.id, clientID, domain, options);
+    Auth0LockPasswordless.plugins.execHookAll("didInitialize", this.id);
   }
 
   close() {

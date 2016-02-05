@@ -2,6 +2,7 @@ import Immutable, { Map } from 'immutable';
 import { registerDict } from '../dict/index';
 
 export default class PluginManager {
+
   constructor(proto) {
     this.proto = proto;
     this.plugins = new Map({});
@@ -22,6 +23,10 @@ export default class PluginManager {
     registerDict(name, dict);
   }
 
+  execHookAll(str, ...args) {
+    this.plugins.forEach(x => x.execHook(str, ...args));
+  }
+
   renderFns() {
     return this.plugins.map(plugin => plugin.render);
   }
@@ -29,4 +34,5 @@ export default class PluginManager {
   closeFn(name) {
     return this.plugins.get(name).close;
   }
+
 }
