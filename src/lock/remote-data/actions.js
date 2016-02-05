@@ -49,14 +49,17 @@ function syncSSOData(lockID) {
 
 function syncLocation(id) {
   const location = read(getEntity, "location", 0);
+  if (location && location.get("syncStatus")) return;
 
-  if (!location || !location.get("syncStatus")) {
-    webAPI.getUserCountry(id, (error, isoCode) => {
-      swap(updateEntity, "location", 0, m => {
-        return error
-          ? m.set("syncStatus", "error")
-          : m.set("syncStatus", "ok").set("isoCode", isoCode);
-      });
+  swap(updateEntity, "location", 0, m => {
+    return m.set("syncStatus", "loading");
+  });
+
+  webAPI.getUserCountry(id, (error, isoCode) => {
+    swap(updateEntity, "location", 0, m => {
+      return error
+        ? m.set("syncStatus", "error")
+        : m.set("syncStatus", "ok").set("isoCode", isoCode);
     });
-  }
+  });
 }

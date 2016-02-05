@@ -24,6 +24,8 @@ export function openLock(id, modeName, options) {
     return false;
   }
 
+  syncRemoteData(id);
+
   swap(updateEntity, "lock", id, lock => {
     lock = l.render(lock, modeName, options);
 
