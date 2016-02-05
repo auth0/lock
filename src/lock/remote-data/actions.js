@@ -1,10 +1,15 @@
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import { fetchClientSettings } from '../client/settings';
+import { fetchSSOData } from '../sso/data';
 import webAPI from '../web_api';
+import * as l from '../index';
 
-// client settings
+export function syncRemoteData(id) {
+  syncClientSettings(id, (error, client) => syncSSOData(id));
+  syncLocation(id);
+}
 
-export function fetchSettings(lockID, clientID, domain, assetsUrl) {
+function syncClientSettings(lockID, cb) {
   const lock = read(getEntity, "lock", lockID);
   if (lock.getIn(["client", "syncStatus"])) return;
 
@@ -12,46 +17,37 @@ export function fetchSettings(lockID, clientID, domain, assetsUrl) {
     return m.setIn(["client", "syncStatus"], "loading");
   });
 
+  const clientID = l.clientID(lock);
+  const domain = l.domain(lock);
+  const assetsUrl = undefined; // TODO
+
   fetchClientSettings(clientID, domain, assetsUrl, (error, client) => {
     swap(updateEntity, "lock", lockID, m => {
       return error
         ? m.setIn(["client", "syncStatus"], "error")
         : m.set("client", client.set("syncStatus", "ok"));
     });
+
+    cb(error, client);
   });
 }
 
-// sso data
+function syncSSOData(lockID) {
+  const lock = read(getEntity, "lock", lockID);
+  if (lock.getIn(["sso", "syncStatus"])) return;
 
-var ssoData = {};
+  swap(updateEntity, "lock", lockID, m => {
+    return m.setIn(["sso", "syncStatus"], "loading");
+  });
 
-export function fetchSSOData(id, cb) {
-  if (ssoData[id]) return cb(null, ssoData[id]);
-  if (registerCallback(id, cb) > 1) return;
-
-  webAPI.getSSOData(id, false, (error, o) => execCallbacks(id, error, o));
+  fetchSSOData(lockID, (error, data) => {
+    swap(updateEntity, "lock", lockID, m => {
+      return m.set("sso", data.set("syncStatus", "ok"));
+    });
+  });
 }
 
-const callbacks = {};
-
-function registerCallback(id, cb) {
-  if (callbacks[id]) {
-    callbacks[id].push(cb);
-  } else {
-    callbacks[id] = [cb];
-  }
-
-  return callbacks[id].length;
-}
-
-function execCallbacks(id, ...args) {
-  callbacks[id].forEach(x => x(...args));
-  delete callbacks[id];
-}
-
-// location
-
-export function fetchLocation(id) {
+function syncLocation(id) {
   const location = read(getEntity, "location", 0);
 
   if (!location || !location.get("syncStatus")) {
