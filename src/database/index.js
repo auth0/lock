@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import * as l from '../lock/index';
 import * as client from '../lock/client/index';
+import { clearCreds } from '../cred/index';
 
 export function initDatabase(model, options) {
   model = model.setIn(
@@ -90,8 +91,15 @@ export function signUpLink(m, notFound="") {
   return m.getIn(["database", "opts", "signUpLink"], notFound);
 }
 
-export function setScreen(m, name) {
-  return l.clearGlobalSuccess(l.clearGlobalError(m.set("screen", name)));
+export function setScreen(m, name, creds = []) {
+  // TODO: the lock/index module should provide a way to clear
+  // everything that needs the be cleared when changing screens, other
+  // modules should not care.
+  m = l.clearGlobalError(m);
+  m = l.clearGlobalSuccess(m);
+  m = clearCreds(m, creds);
+
+  return m.set("screen", name);
 }
 
 export function getScreen(m) {

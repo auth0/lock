@@ -275,7 +275,13 @@ function resetPasswordSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
   // TODO: needs to be auto closed?
   // TODO: what if login is not enabled?
-  swap(updateEntity, "lock", id, lock => setScreen(l.setSubmitting(lock, false), "login"));
+  swap(updateEntity, "lock", id, lock => {
+    return setScreen(
+      l.setSubmitting(lock, false),
+      "login",
+      ["password", "passwordConfirmation"]
+    );
+  });
 
   setTimeout(() => {
     const successMessage = l.ui.t(lock, ["success", "resetPassword"], {__textOnly: true});
@@ -291,18 +297,18 @@ function resetPasswordError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
-export function showLoginActivity(id) {
-  swap(updateEntity, "lock", id, setScreen, "login");
+export function showLoginActivity(id, creds = []) {
+  swap(updateEntity, "lock", id, setScreen, "login", creds);
 }
 
-export function showSignUpActivity(id) {
-  swap(updateEntity, "lock", id, setScreen, "signUp");
+export function showSignUpActivity(id, creds = []) {
+  swap(updateEntity, "lock", id, setScreen, "signUp", creds);
 }
 
-export function showResetPasswordActivity(id) {
-  swap(updateEntity, "lock", id, setScreen, "resetPassword");
+export function showResetPasswordActivity(id, creds = ["password", "passwordConfirmation"]) {
+  swap(updateEntity, "lock", id, setScreen, "resetPassword", creds);
 }
 
 export function cancelResetPassword(id) {
-  return showLoginActivity(id);
+ return showLoginActivity(id, ["password", "passwordConfirmation"]);
 }
