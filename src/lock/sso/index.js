@@ -1,11 +1,13 @@
 import { Map } from 'immutable';
 import LastLoginScreen from './last_login_screen';
 import LoadingScreen from '../loading_screen';
-import { findConnection } from '../index';
+import { ui, findConnection } from '../index';
 
 export function renderSSOScreens(m) {
-  // TODO: client and pinned checks don't belong here
-  if (!m.has("sso") || !m.has("client") || m.get("isLoadingPanePinned")) {
+  if (!ui.rememberLastLogin(m)) return null;
+
+  // TODO: loading pin check belongs here?
+  if (m.getIn(["sso", "syncStatus"]) != "ok" || m.get("isLoadingPanePinned")) {
     return new LoadingScreen();
   }
 
