@@ -5,7 +5,7 @@ import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
 
-import { resendEmail, reset } from './actions';
+import { resendEmail, restart } from './actions';
 import * as m from './index';
 
 
@@ -75,7 +75,7 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   handleBack() {
-    reset(l.id(this.props.lock), {clearCred: []});
+    restart(l.id(this.props.lock));
   }
 
   handleClose() {

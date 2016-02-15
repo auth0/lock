@@ -193,10 +193,6 @@ function signInError(id, error) {
   l.invokeDoneCallback(lock, error);
 }
 
-export function reset(id, opts = {}) {
-  swap(updateEntity, "lock", id, m.reset, opts);
-}
-
-export function back(id, resetOpts = {}) {
-  reset(id, resetOpts);
+export function restart(id) {
+  swap(updateEntity, "lock", id, m.restartPasswordless);
 }

@@ -49,23 +49,14 @@ export function resendAvailable(m) {
   return resendStatus(m) == "waiting" || resendStatus(m) == "failed";
 }
 
-export function reset(m, opts = {}) {
-  // TODO `signedIn` should be handled at the lock level, later
-  // instead of calling l.clearGlobalError we should call something
-  // like l.reset.
-  //
-  // NOTE: there's now a l.reset that doesn't need to know what keys
-  // to clear. Maybe it can be used.
-
+export function restartPasswordless(m) {
   let keys = [
     "passwordlessStarted",
-    "resendStatus",
-    "selectingLocation",
-    "signedIn"
+    "resendStatus",  // only for link
   ];
 
   m = keys.reduce((r, v) => r.remove(v), m);
-  m = clearCreds(m, opts.clearCred);
+  m = clearCreds(m, ["vcode"]); // only for code
 
   return l.clearGlobalError(m);
 }
