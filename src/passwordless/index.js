@@ -1,6 +1,6 @@
 import { List } from 'immutable';
 import * as l from '../lock/index';
-
+import { clearCreds } from '../cred/index';
 
 export function initPasswordless(m, opts) {
   return opts.send
@@ -50,26 +50,22 @@ export function resendAvailable(m) {
 }
 
 export function reset(m, opts = {}) {
-  let keyPaths = List([
-    ["passwordlessStarted"],
-    ["resendStatus"],
-    ["selectingLocation"],
-    ["signedIn"]
-  ]);
+  // TODO `signedIn` should be handled at the lock level, later
+  // instead of calling l.clearGlobalError we should call something
+  // like l.reset.
+  //
+  // NOTE: there's now a l.reset that doesn't need to know what keys
+  // to clear. Maybe it can be used.
 
-  // TODO `signedIn` should be handled at the lock level, later instead of
-  // calling l.clearGlobalError we should call something like l.reset.
+  let keys = [
+    "passwordlessStarted",
+    "resendStatus",
+    "selectingLocation",
+    "signedIn"
+  ];
 
-  const { clearCred } = opts;
-
-  if (!clearCred) {
-    keyPaths = keyPaths.push(["cred"]);
-  } else {
-    const credKeyPaths = List(clearCred).map(x => ["cred", x]);
-    keyPaths = keyPaths.concat(credKeyPaths);
-  }
-
-  m = keyPaths.reduce((r, v) => r.removeIn(v), m);
+  m = keys.reduce((r, v) => r.remove(v), m);
+  m = clearCreds(m, opts.clearCred);
 
   return l.clearGlobalError(m);
 }

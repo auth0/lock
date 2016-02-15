@@ -3,6 +3,17 @@ import createPolicy from 'password-sheriff';
 import trim from 'trim';
 import * as cc from './country_codes';
 
+export function clearCreds(m, creds) {
+  let keyPaths;
+
+  if (!creds || creds.length === 0) {
+    keyPaths = ["cred"];
+  } else {
+    keyPaths = creds.map(x => ["cred", x]);
+  }
+
+ return keyPaths.reduce((r, v) => r.removeIn(v), m);
+}
 
 function valid(lock, field) {
   return lock.getIn(["cred", field, "valid"]);
