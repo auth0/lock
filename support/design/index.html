@@ -53,6 +53,13 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>Last Login (database)</h2>
+  </div>
+  <div class="lock-container" id="last-login-database-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>emailcode</h2>
   </div>
   <div class="lock-container" id="emailcode-container"></div>
@@ -121,7 +128,14 @@ databaseLock.database({
     emailAndPassword: {
       footerText: terms
     }
-  }
+  },
+  rememberLastLogin: false
+});
+
+var lastLoginDatabaseLock = new Auth0LockPasswordless(cid, domain);
+lastLoginDatabaseLock.database({
+  databaseConnection: "Username-Password-Authentication",
+  container: "last-login-database-container",
 });
 
 var emailcodeLock = new Auth0LockPasswordless(cid, domain);
