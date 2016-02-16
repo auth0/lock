@@ -116,81 +116,81 @@ body {
 
 <script src="/build/lock-passwordless.design.js"></script>
 <script>
-var cid = "1";
-var domain = "1";
-var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
+ var cid = "1";
+ var domain = "1";
+ var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
-var databaseLock = new Auth0LockPasswordless(cid, domain);
-databaseLock.database({
-  databaseConnection: "db",
-  container: "database-container",
-  dict: {
-    emailAndPassword: {
-      footerText: terms
-    }
-  },
-  rememberLastLogin: false
-});
+ new Auth0LockPasswordless(cid, domain, {
+   databaseConnection: "db",
+   container: "database-container",
+   dict: {
+     emailAndPassword: {
+       footerText: terms
+     }
+   },
+   mode: "database",
+   rememberLastLogin: false
+ }).show();
 
-var lastLoginDatabaseLock = new Auth0LockPasswordless(cid, domain);
-lastLoginDatabaseLock.database({
-  databaseConnection: "Username-Password-Authentication",
-  container: "last-login-database-container",
-});
+ new Auth0LockPasswordless(cid, domain, {
+   databaseConnection: "Username-Password-Authentication",
+   container: "last-login-database-container",
+   mode: "database"
+ }).show();
 
-var emailcodeLock = new Auth0LockPasswordless(cid, domain);
-emailcodeLock.emailcode({
-  container: "emailcode-container",
-  dict: {
-    email: {
-      footerText: terms
-    }
-  },
-  closable: true
-});
+ new Auth0LockPasswordless(cid, domain, {
+   container: "emailcode-container",
+   dict: {
+     email: {
+       footerText: terms
+     }
+   },
+   closable: true,
+   mode: "emailcode"
+ }).show();
 
-var magiclinkLock = new Auth0LockPasswordless(cid, domain);
-magiclinkLock.magiclink({
-  container: "magiclink-container",
-  dict: {
-    footerText: terms
-  }
-});
+ new Auth0LockPasswordless(cid, domain, {
+   container: "magiclink-container",
+   dict: {
+     footerText: terms
+   },
+   mode: "magiclink"
+ }).show();
 
-var smsLock = new Auth0LockPasswordless(cid, domain);
-smsLock.sms({
-  container: "sms-container"
-});
+ new Auth0LockPasswordless(cid, domain, {
+   container: "sms-container",
+   mode: "sms"
+ }).show();
 
-var socialLock = new Auth0LockPasswordless(cid, domain);
-socialLock.social({
-  socialConnections: ["facebook", "github", "google-oauth2", "twitter"],
-  container: "social-container",
-  socialBigButtons: true
-});
+ new Auth0LockPasswordless(cid, domain, {
+   socialConnections: ["facebook", "github", "google-oauth2", "twitter"],
+   container: "social-container",
+   mode: "social",
+   socialBigButtons: true
+ }).show();
 
-var socialOrDatabaseLock = new Auth0LockPasswordless(cid, domain);
-socialOrDatabaseLock.socialOrDatabase({
-  socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
-  databaseConnection: "db",
-  container: "socialOrDatabase-container"
-});
+ new Auth0LockPasswordless(cid, domain, {
+   socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
+   databaseConnection: "db",
+   container: "socialOrDatabase-container",
+   mode: "socialOrDatabase"
+ }).show();
 
-var socialOrEmailcodeLock = new Auth0LockPasswordless(cid, domain);
-socialOrEmailcodeLock.socialOrEmailcode({
-  socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
-  container: "socialOrEmailcode-container"
-});
+ new Auth0LockPasswordless(cid, domain, {
+   socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
+   container: "socialOrEmailcode-container",
+   mode: "socialOrEmailcode"
+ }).show();
 
-var socialOrMagiclinkLock = new Auth0LockPasswordless(cid, domain);
-socialOrMagiclinkLock.socialOrMagiclink({
-  socialConnections: ["facebook", "github", "google-oauth2"],
-  container: "socialOrMagiclink-container"
-});
+ new Auth0LockPasswordless(cid, domain, {
+   socialConnections: ["facebook", "github", "google-oauth2"],
+   container: "socialOrMagiclink-container",
+   mode: "socialOrMagiclink"
+ }).show();
 
-var socialOrSmsLock = new Auth0LockPasswordless(cid, domain);
-socialOrSmsLock.socialOrSms({
-  socialConnections: ["facebook", "github", "google-oauth2"],
-  container: "socialOrSms-container"
-});
+ new Auth0LockPasswordless(cid, domain, {
+   socialConnections: ["facebook", "github", "google-oauth2"],
+   container: "socialOrSms-container",
+   mode: "socialOrSms"
+ }).show();
 </script>

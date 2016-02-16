@@ -68,6 +68,10 @@ WebAPI.prototype.getUserCountry = function(lockID, cb) {
   setTimeout(() => cb(null, "AR"), 17);
 }
 
+WebAPI.prototype.parseHash = function(lockID, ...args) {
+  return null;
+}
+
 ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
   // TODO: we should have propper settings for every configuration.
   const settings =  {
