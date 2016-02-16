@@ -21,7 +21,7 @@ export default class Renderer {
         const gravatar = getEntity(state, "gravatar", g.normalizeGravatarEmail(c.email(lock)));
         lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
         const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
-        const screen = fns.get(l.modeName(lock))(lock);
+        const screen = fns[l.modeName(lock)](lock);
         const props = {
           auxiliaryPane: screen.renderAuxiliaryPane(lock),
           backHandler: screen.backHandler(lock),

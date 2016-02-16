@@ -1,34 +1,34 @@
-import Immutable, { Map } from 'immutable';
 import { registerDict } from '../dict/index';
 
 export default class PluginManager {
 
   constructor(proto) {
     this.proto = proto;
-    this.plugins = new Map({});
+    this.plugins = {};
   }
 
   register(pluginClass) {
     const plugin = new pluginClass();
     const { dict, name } = plugin;
-    this.plugins = this.plugins.set(name, plugin);
+    this.plugins[name] = plugin;
     registerDict(name, dict);
   }
 
   execHook(pluginStr, hookStr, ...args) {
-    this.plugins.get(pluginStr).execHook(hookStr, ...args);
-  }
-
-  execHookAll(str, ...args) {
-    this.plugins.forEach(x => x.execHook(str, ...args));
+    this.plugins[pluginStr].execHook(hookStr, ...args);
   }
 
   renderFns() {
-    return this.plugins.map(plugin => plugin.render);
+    const { plugins } = this;
+    const r = {};
+
+    Object.keys(plugins).forEach(k => r[k] = plugins[k].render);
+
+    return r;
   }
 
-  closeFn(name) {
-    return this.plugins.get(name).close;
+  closeFn(str) {
+    return this.plugins[str].close;
   }
 
 }

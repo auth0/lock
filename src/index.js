@@ -95,6 +95,7 @@ export default class Auth0LockPasswordless {
 }
 
 Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototype);
+// TODO: do we need to store this stuff?
 Auth0LockPasswordless.renderer = new Renderer();
 Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
 
