@@ -11,7 +11,7 @@ export default class SocialOrEmailCodeMode extends Mode {
     super("socialOrEmailcode", dict);
   }
 
-  willOpen(model, options) {
+  didInitialize(model, options) {
     model = model.set("forceRedirect", !options.popup);
     model = initSocial(model, options);
     model = initPasswordless(model, {send: "code"});

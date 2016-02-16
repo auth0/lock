@@ -5,10 +5,22 @@ import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
 import * as cs from '../cred/storage';
 
-export function setupLock(id, clientID, domain, options, signInCallback) {
-  const m = l.setup(id, clientID, domain, signInCallback);
+export function setupLock(id, clientID, domain, options, signInCallback, hookRunner) {
+  // TODO: run a hook before initialization, useful for when we want
+  // to provide some options by default.
+
+  const m = l.setup(id, clientID, domain, options, signInCallback);
+
   swap(setEntity, "lock", id, m);
+  // TODO: check options.mode is a valid mode.
+
+  // TODO: this may trigger a second call to swap, maybe it can be
+  // optimized. However, the Lock isn't rendering yet so it might not
+  // be really an issue.
+  hookRunner(options.mode, "didInitialize", id, options);
+
   WebAPI.setupClient(id, clientID, domain, options);
+
   const hash = WebAPI.parseHash(id);
   if (hash) {
     // TODO: this leaves the hash symbol (#) in the URL, maybe we can
@@ -21,7 +33,7 @@ export function setupLock(id, clientID, domain, options, signInCallback) {
   }
 }
 
-export function openLock(id, modeName, options) {
+export function openLock(id) {
   const lock = read(getEntity, "lock", id);
   if (!lock) {
     throw new Error("The Lock can't be opened again after it has been destroyed");
@@ -34,7 +46,7 @@ export function openLock(id, modeName, options) {
   syncRemoteData(id);
 
   swap(updateEntity, "lock", id, lock => {
-    lock = l.render(lock, modeName, options);
+    lock = l.render(lock);
 
     return l.ui.rememberLastLogin(lock)
       ? cs.restore(lock, l.modeName(lock))

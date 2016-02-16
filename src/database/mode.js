@@ -12,7 +12,7 @@ export default class DatabaseMode extends Mode {
     super("database", dict);
   }
 
-  willOpen(model, options) {
+  didInitialize(model, options) {
     this.setModel(initDatabase(model, options));
   }
 

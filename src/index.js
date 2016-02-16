@@ -2,7 +2,13 @@ import RenderScheduler from './lock/render_scheduler';
 import Renderer from './lock/renderer';
 import PluginManager from './lock/plugin_manager';
 import * as idu from './utils/id_utils';
-import { closeLock, removeLock, setupLock, updateLock } from './lock/actions';
+import {
+  closeLock,
+  openLock,
+  removeLock,
+  setupLock,
+  updateLock
+} from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 
@@ -49,8 +55,13 @@ export default class Auth0LockPasswordless {
     }
 
     this.id = idu.incremental();
-    setupLock(this.id, clientID, domain, options, signInCallback);
-    Auth0LockPasswordless.plugins.execHookAll("didInitialize", this.id);
+    const { plugins } = Auth0LockPasswordless;
+    const hookRunner = plugins.execHook.bind(plugins);
+    setupLock(this.id, clientID, domain, options, signInCallback, hookRunner);
+  }
+
+  show() {
+    openLock(this.id);
   }
 
   close() {

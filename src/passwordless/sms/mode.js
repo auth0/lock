@@ -11,7 +11,7 @@ export default class SmsMode extends Mode {
     super("sms", dict);
   }
 
-  willOpen(model, options) {
+  didInitialize(model, options) {
     model = setInitialPhoneLocation(model, options);
     model = initPasswordless(model, {send: "sms"});
     this.setModel(model);

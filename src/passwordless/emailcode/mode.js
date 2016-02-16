@@ -10,7 +10,7 @@ export default class EmailcodeMode extends Mode {
     super("emailcode", dict);
   }
 
-  willOpen(model, options) {
+  didInitialize(model, options) {
     this.setModel(initPasswordless(model, {send: "code"}));
   }
 

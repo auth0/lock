@@ -9,13 +9,17 @@ function buildSetupSnapshot(m) {
   return m.set("setupSnapshot", m);
 }
 
-export function setup(id, clientID, domain, signInCallback) {
-  return buildSetupSnapshot(Immutable.fromJS({
+export function setup(id, clientID, domain, options, signInCallback) {
+  let m = Immutable.fromJS({
     clientID: clientID,
     domain: domain,
     id: id,
+    mode: options.mode,
     signInCallback: signInCallback
-  }));
+  });
+  m = setUIOptions(m, options);
+  m = setAuthOptions(m, options);
+  return buildSetupSnapshot(m);
 }
 
 export function id(m) {
@@ -31,7 +35,7 @@ export function domain(m) {
 }
 
 export function modeName(m) {
-  return modeOptions(m).get("name");
+  return m.get("mode");
 }
 
 export function show(m) {
@@ -108,6 +112,9 @@ function extractUIOptions(id, modeName, options) {
   });
 }
 
+// TODO: review because mode changes are no longer alllowed. Keep in
+// mind that now it is just being called during setup but it might be
+// possible to overwrite those values when showing the lock.
 function setUIOptions(m, options) {
   let currentUIOptions = m.get("ui");
   let newUIOptions = extractUIOptions(id(m), modeName(m), options);;
@@ -153,6 +160,8 @@ export const auth = {
   responseType: lock => getAuthAttribute(lock, "responseType")
 };
 
+// TODO: review because mode changes are no longer alllowed. Keep in
+// mind that now it is just being called during setup.
 function setAuthOptions(m, options) {
   // TODO: should `popup` be a auth option?
   let { authParams, callbackURL, forceJSONP, responseType, sso } = options;
@@ -194,27 +203,8 @@ export function shouldRedirect(m) {
   return m.get("forceRedirect", false) || auth.callbackURL(m);
 }
 
-export function render(m, name, options) {
-  if ((modeName(m) != undefined && modeName(m) != name) || show(m)) {
-    return m;
-  }
-
-  const mode = options.mode || {};
-  mode.name = name;
-
-  m = m.merge(Immutable.fromJS({
-    mode: mode,
-    render: true
-  }));
-
-  m = setUIOptions(m, options);
-  m = setAuthOptions(m, options);
-
-  return m;
-}
-
-export function modeOptions(m) {
-  return m.get("mode", new Map());
+export function render(m) {
+  return m.set("render", true);
 }
 
 export function close(m) {

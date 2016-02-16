@@ -12,7 +12,7 @@ export default class SocialOrSmsMode extends Mode {
     super("socialOrSms", dict);
   }
 
-  willOpen(model, options) {
+  didInitialize(model, options) {
     model = setInitialPhoneLocation(model, options);
     model = model.set("forceRedirect", !options.popup);
     model = initSocial(model, options);

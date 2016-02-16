@@ -12,15 +12,11 @@ export default class PluginManager {
     const plugin = new pluginClass();
     const { dict, name } = plugin;
     this.plugins = this.plugins.set(name, plugin);
-    this.proto[name] = function(...args) {
-      const isOpen = plugin.open(this.id, ...args);
-      if (isOpen) {
-        this.plugin = name;
-      }
-
-      return isOpen;
-    }
     registerDict(name, dict);
+  }
+
+  execHook(pluginStr, hookStr, ...args) {
+    this.plugins.get(pluginStr).execHook(hookStr, ...args);
   }
 
   execHookAll(str, ...args) {

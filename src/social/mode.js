@@ -10,7 +10,7 @@ export default class SocialMode extends Mode {
     super("social", dict);
   }
 
-  willOpen(model, options) {
+  didInitialize(model, options) {
     model = model.set("forceRedirect", !options.popup);
     model = initSocial(model, options);
     this.setModel(model);
