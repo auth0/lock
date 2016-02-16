@@ -73,7 +73,7 @@ class Auth0WebAPI {
     client.startPasswordless(options, err => cb(normalizeError(err)));
   }
 
-  parseHash(lockID, hash) {
+  parseHash(lockID, hash = undefined) {
     return this.clients[lockID].parseHash(hash);
   }
 

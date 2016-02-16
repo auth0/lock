@@ -66,7 +66,7 @@ export default class Auth0LockPasswordless {
     return webAPI.getProfile(this.id, token, cb);
   }
 
-  parseHash(hash) {
+  parseHash(hash = undefined) {
     return webAPI.parseHash(this.id, hash);
   }
 
