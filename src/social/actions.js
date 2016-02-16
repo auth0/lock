@@ -35,9 +35,9 @@ function signInSuccess(id, ...args) {
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeDoneCallback(lock, null, ...args);
+    l.invokeSignInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
   }
 }
 
@@ -46,5 +46,5 @@ function signInError(id, error) {
   const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {__textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {__textOnly: true});
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
-  l.invokeDoneCallback(lock, error);
+  l.invokeSignInCallback(lock, error);
 }

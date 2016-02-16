@@ -186,7 +186,7 @@ export function withAuthOptions(m, opts, flattenAuthParams = true) {
   return authOptions.merge(Immutable.fromJS(opts)).toJS();
 }
 
-export function invokeDoneCallback(m, ...args) {
+export function invokeSignInCallback(m, ...args) {
   m.get("signInCallback").apply(undefined, args);
 }
 

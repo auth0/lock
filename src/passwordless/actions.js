@@ -42,18 +42,12 @@ export function requestPasswordlessEmailSuccess(id) {
   });
   const lock = read(getEntity, "lock", id);
   cs.store(lock, "email", l.modeName(lock));
-  if (m.send(lock) === "link") {
-    l.invokeDoneCallback(lock, null, c.email(lock));
-  }
 }
 
 export function requestPasswordlessEmailError(id, error) {
   const lock = read(getEntity, "lock", id);
   const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "email", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "email", __textOnly: true})
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  if (m.send(lock) === "link") {
-    l.invokeDoneCallback(lock, error);
-  }
 }
 
 export function sendSMS(id) {
@@ -125,13 +119,11 @@ export function resendEmail(id) {
 export function resendEmailSuccess(id) {
   swap(updateEntity, "lock", id, m.setResendSuccess);
   const lock = read(getEntity, "lock", id);
-  l.invokeDoneCallback(lock, null, c.email(lock));
 }
 
 export function resendEmailError(id, error) {
   swap(updateEntity, "lock", id, m.setResendFailed);
   const lock = read(getEntity, "lock", id);
-  l.invokeDoneCallback(lock, error);
 }
 
 export function signIn(id) {
@@ -178,9 +170,9 @@ function signInSuccess(id, ...args) {
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeDoneCallback(lock, null, ...args);
+    l.invokeSignInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
   }
 }
 
@@ -190,7 +182,7 @@ function signInError(id, error) {
   const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
-  l.invokeDoneCallback(lock, error);
+  l.invokeSignInCallback(lock, error);
 }
 
 export function restart(id) {

@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
+import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
 import * as c from '../cred/index';
 import  {
@@ -88,9 +89,9 @@ function signInSuccess(id, ...args) {
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeDoneCallback(lock, null, ...args);
+    l.invokeSignInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
   }
 }
 
@@ -101,7 +102,7 @@ function signInError(id, error) {
   const errorMessage = "Invalid email or password";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
-  l.invokeDoneCallback(lock, error);
+  l.invokeSignInCallback(lock, error);
 }
 
 
@@ -159,6 +160,9 @@ export function signUp(id) {
 function signUpSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
 
+  // TODO: should we auto login if sign the login screen is not
+  // available? if we do, we should check that we handle login errors
+  // properly.
   if (shouldAutoLogin(lock)) {
     swap(updateEntity, "lock", id, m => m.set("signedUp", true));
 
@@ -181,15 +185,16 @@ function signUpSuccess(id, ...args) {
     );
   }
 
+
+  // TODO: should we autoclose here? I believe we should do it only if
+  // no login screen is available.
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSubmitting(lock, false).set("signedUp", true));
-    l.invokeDoneCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, false);
   }
-
 }
 
 function signUpError(id, error) {
@@ -198,8 +203,6 @@ function signUpError(id, error) {
   // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
   const errorMessage = "Something went wrong";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-
-  l.invokeDoneCallback(lock, error);
 }
 
 
@@ -209,9 +212,9 @@ function autoSignInSuccess(id, ...args) {
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSubmitting(lock, false).set("signedIn", true));
-    l.invokeDoneCallback(lock, null, ...args);
+    l.invokeSignInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeDoneCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
   }
 }
 
@@ -226,7 +229,7 @@ function autoSignInError(id, error) {
     return m;
   });
 
-  l.invokeDoneCallback(lock, error);
+  l.invokeSignInCallback(lock, error);
 }
 
 export function resetPassword(id) {
