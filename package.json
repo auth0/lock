@@ -28,7 +28,7 @@
     "postinstall": "echo \"WARNING: Version 2.2.0 introduces changes to the bundling process, see CHANGELOG.md.\"",
     "test": "zuul -- test/*/*.test.js",
     "test:browser": "zuul --local 8080 --disable-tunnel -- test/*/*.test.js",
-    "test:phantom": "mochify --recursive --extension=.jsx"
+    "test:phantom": "mochify --recursive --extension=.jsx --transform=babelify"
   },
   "devDependencies": {
     "babel-plugin-transform-css-import-to-string": "0.0.2",
