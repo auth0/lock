@@ -33,7 +33,7 @@ if (style.styleSheet) {
 }
 
 export default class Auth0LockPasswordless {
-  constructor(clientID, domain, options = {}) {
+  constructor(clientID, domain, options = {}, signInCallback = () => {}) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
     }
@@ -43,9 +43,13 @@ export default class Auth0LockPasswordless {
     if (typeof options != "object") {
       throw new Error("When provided, the third argument must be an `options` object.");
     }
+    if (typeof signInCallback != "function") {
+      // TODO: should this argument be mandatory?
+      throw new Error("When provided, the fourth argument must be a function.");
+    }
 
     this.id = idu.incremental();
-    setupLock(this.id, clientID, domain, options);
+    setupLock(this.id, clientID, domain, options, signInCallback);
     Auth0LockPasswordless.plugins.execHookAll("didInitialize", this.id);
   }
 

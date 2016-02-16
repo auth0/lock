@@ -9,12 +9,12 @@ function buildSetupSnapshot(m) {
   return m.set("setupSnapshot", m);
 }
 
-export function setup(attrs) {
-  const { clientID, domain, id } = attrs;
+export function setup(id, clientID, domain, signInCallback) {
   return buildSetupSnapshot(Immutable.fromJS({
     clientID: clientID,
     domain: domain,
-    id: id
+    id: id,
+    signInCallback: signInCallback
   }));
 }
 
@@ -101,7 +101,6 @@ function extractUIOptions(id, modeName, options) {
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
-    signInCallback: options.signInCallback, // TODO: this doesn't belong here
     popup: undefined === options.popup ? false : !!options.popup,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
     primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
@@ -136,7 +135,6 @@ export const ui = {
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
   mobile: lock => getUIAttribute(lock, "mobile"),
-  signInCallback: lock => getUIAttribute(lock, "signInCallback"),
   popup: lock => getUIAttribute(lock, "popup"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
@@ -189,7 +187,7 @@ export function withAuthOptions(m, opts, flattenAuthParams = true) {
 }
 
 export function invokeDoneCallback(m, ...args) {
-  ui.signInCallback(m).apply(undefined, args);
+  m.get("signInCallback").apply(undefined, args);
 }
 
 export function shouldRedirect(m) {

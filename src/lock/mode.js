@@ -18,9 +18,14 @@ export default class Mode {
 
   open(id, ...args) {
     const { name } = this;
-    const [options, callback] = openFunctionArgsResolver(name, args);
+    // TODO: we're silently ignoring the callback so things don't
+    // explode during a change that moves options and callback to the
+    // constructor. When the change is done, this should not be needed
+    // anymore.
+    const [options, _] = openFunctionArgsResolver(name, args);
 
-    options.signInCallback = callback;
+    // TODO: figure it out if we still need this, it doesn't seem
+    // right.
     options.mode = {};
 
     this.options = options; // TODO: should clone
