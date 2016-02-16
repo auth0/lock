@@ -26,7 +26,7 @@ export function signInWithUsername(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    // TODO: check options
+    // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.username(lock),
@@ -62,7 +62,7 @@ export function signInWithEmail(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    // TODO: check options
+    // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.email(lock),
@@ -130,7 +130,7 @@ export function signUp(id) {
     const options = {
       connection: databaseConnection(lock),
       email:      c.email(lock),
-      password:   c.password(lock),
+      password:   c.password(lock)
     };
 
     if (authWithUsername(lock)) {
@@ -166,6 +166,7 @@ function signUpSuccess(id, ...args) {
   if (shouldAutoLogin(lock)) {
     swap(updateEntity, "lock", id, m => m.set("signedUp", true));
 
+    // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
       connection: databaseConnection(lock),
       username: c.email(lock),

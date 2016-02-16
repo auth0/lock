@@ -6,10 +6,19 @@ import * as l from './index';
 import * as cs from '../cred/storage';
 
 export function setupLock(id, clientID, domain, options, signInCallback) {
-  const lock = l.setup(id, clientID, domain, signInCallback);
-  swap(setEntity, "lock", id, lock);
+  const m = l.setup(id, clientID, domain, signInCallback);
+  swap(setEntity, "lock", id, m);
   WebAPI.setupClient(id, clientID, domain, options);
-  syncRemoteData(id);
+  const hash = WebAPI.parseHash(id);
+  if (hash) {
+    // TODO: this leaves the hash symbol (#) in the URL, maybe we can
+    // use the history API instead to remove it.
+    global.window.location.hash = "";
+    const args = hash.error ? [hash] : [null, hash];
+    l.invokeSignInCallback(m, ...args);
+  } else {
+    syncRemoteData(id);
+  }
 }
 
 export function openLock(id, modeName, options) {
