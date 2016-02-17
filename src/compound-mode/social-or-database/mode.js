@@ -1,6 +1,7 @@
 import Mode from '../../lock/mode';
 import { initSocial } from '../../social/index';
 import { getScreen, initDatabase } from '../../database/index';
+import { renderSSOScreens } from '../../lock/sso/index';
 import AskSocialNetworkOrLogin from '../../cred/or/ask_social_network_or_login';
 import ResetPassword from '../../database/reset_password';
 import SignUp from '../../database/sign_up';
@@ -20,6 +21,9 @@ export default class SocialOrDatabaseMode extends Mode {
   }
 
   render(lock) {
+    const ssoScreen = renderSSOScreens(lock);
+    if (ssoScreen) return ssoScreen;
+
     const screen = getScreen(lock);
     switch(screen) {
       case "login":
