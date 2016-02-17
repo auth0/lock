@@ -7,8 +7,7 @@ import * as su from '../../utils/string_utils';
 import { isSmallScreen } from '../../utils/media_utils';
 
 function cycle(xs, x) {
-  const next = xs.skipWhile(y => y !== x).get(1);
-  return next || xs.get(0);
+  return xs.skipWhile(y => y !== x).get(1, xs.get(0));
 }
 
 export default class LocationSelect extends React.Component {
