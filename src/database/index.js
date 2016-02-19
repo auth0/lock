@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import Immutable, { Map } from 'immutable';
 import * as l from '../lock/index';
 import * as client from '../lock/client/index';
 import { clearCreds } from '../cred/index';
@@ -12,7 +12,6 @@ export function initDatabase(model, options) {
 
 function processDatabaseOptions(options) {
   let {
-    databaseConnection,
     disableResetAction,
     disableSignUpAction,
     initialScreen,
@@ -21,10 +20,6 @@ function processDatabaseOptions(options) {
     signUpLink,
     usernameStyle
    } = options;
-
-  if (!databaseConnection || typeof databaseConnection !== "string") {
-    throw new Error("The `databaseConnection` option needs to be provided.");
-  }
 
   usernameStyle = usernameStyle === "username" ? "username" : "email";
 
@@ -61,7 +56,6 @@ function processDatabaseOptions(options) {
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
   return {
-    connection: databaseConnection,
     initialScreen,
     loginAfterSignUp,
     resetLink,
@@ -72,7 +66,11 @@ function processDatabaseOptions(options) {
 }
 
 export function databaseConnection(m) {
-  return m.getIn(["database", "opts", "connection"]);
+  return l.getEnabledConnections(m, "database").get(0, Map());
+}
+
+export function databaseConnectionName(m) {
+  return databaseConnection(m).get("name");
 }
 
 export function resetLink(m, notFound="") {
@@ -104,8 +102,7 @@ export function authWithUsername(m) {
 }
 
 export function hasScreen(m, s) {
-  const { showForgot, showSignup } =
-    client.connection(m, "auth0", databaseConnection(m)).toJS();
+  const { showForgot, showSignup } = databaseConnection(m).toJS();
 
   return !(showForgot === false && s === "resetPassword")
     && !(showSignup === false && s === "signUp")
@@ -117,7 +114,5 @@ export function shouldAutoLogin(m) {
 }
 
 export function passwordStrengthPolicy(m) {
-  return client
-    .connection(m, "auth0", databaseConnection(m))
-    .get("passwordPolicy", "none");
+  return databaseConnection(m).get("passwordPolicy", "none");
 }

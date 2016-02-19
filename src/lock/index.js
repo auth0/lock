@@ -242,6 +242,10 @@ export function getPickedConnections(m) {
   return m.get("pickedConnections");
 }
 
+export function getEnabledConnections(m, type) {
+  return m.getIn(["enabledConnections", type], List());
+}
+
 export function isConnectionEnabled(m, name) {
   // TODO: is the name enough? shouldn't we check for strategy and/or type?
   return m.get("enabledConnections", Map())

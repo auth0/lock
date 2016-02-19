@@ -20,6 +20,13 @@ export default class SocialOrDatabaseMode extends Mode {
     this.setModel(model);
   }
 
+  didReceiveClientSettings(m) {
+    // TODO: refactor
+    if (l.getEnabledConnections(m, "database").count() === 0) {
+      throw new Error("At least one database connection needs to be specified");
+    }
+  }
+
   render(lock) {
     const ssoScreen = renderSSOScreens(lock);
     if (ssoScreen) return ssoScreen;

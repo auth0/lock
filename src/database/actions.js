@@ -6,7 +6,7 @@ import * as l from '../lock/index';
 import * as c from '../cred/index';
 import  {
   authWithUsername,
-  databaseConnection,
+  databaseConnectionName,
   setScreen,
   shouldAutoLogin
 } from './index';
@@ -28,7 +28,7 @@ export function signInWithUsername(id) {
   if (l.submitting(lock)) {
     // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
-      connection: databaseConnection(lock),
+      connection: databaseConnectionName(lock),
       username: c.username(lock),
       password: c.password(lock)
     });
@@ -64,7 +64,7 @@ export function signInWithEmail(id) {
   if (l.submitting(lock)) {
     // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
-      connection: databaseConnection(lock),
+      connection: databaseConnectionName(lock),
       username: c.email(lock),
       password: c.password(lock)
     });
@@ -128,7 +128,7 @@ export function signUp(id) {
   if (l.submitting(lock)) {
     // TODO: check options
     const options = {
-      connection: databaseConnection(lock),
+      connection: databaseConnectionName(lock),
       email:      c.email(lock),
       password:   c.password(lock)
     };
@@ -168,7 +168,7 @@ function signUpSuccess(id, ...args) {
 
     // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
-      connection: databaseConnection(lock),
+      connection: databaseConnectionName(lock),
       username: c.email(lock),
       password: c.password(lock)
     });
@@ -256,7 +256,7 @@ export function resetPassword(id) {
   if (l.submitting(lock)) {
     // TODO: check options
     const options = {
-      connection: databaseConnection(lock),
+      connection: databaseConnectionName(lock),
       username:   authWithUsername(lock) ? c.username(lock) : c.email(lock),
       password:   c.password(lock)
     };
