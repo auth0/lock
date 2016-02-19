@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 import LastLoginScreen from './last_login_screen';
 import LoadingScreen from '../loading_screen';
-import { ui, findConnection } from '../index';
+import { ui, isConnectionEnabled } from '../index';
 
 export function renderSSOScreens(m) {
   if (!ui.rememberLastLogin(m)) return null;
@@ -14,7 +14,7 @@ export function renderSSOScreens(m) {
   const { name, strategy } = lastUsedConnection(m);
   const skipped = m.getIn(["sso", "skipped"], false);
 
-  return !skipped && findConnection(m, strategy, name)
+  return !skipped && isConnectionEnabled(m, name)
     ? new LastLoginScreen()
     : null;
 }

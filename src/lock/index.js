@@ -252,18 +252,15 @@ export function registerConnections(m, type, connections) {
   ), m);
 }
 
-export function getConnections(m) {
-  return m.get("connections", List());
-}
-
-export function findConnection(m, strategy, name) {
-  return getConnections(m).find(x => (
-    x.get("strategy") === strategy && x.get("name") === name)
-  );
-}
-
 export function getPickedConnections(m) {
   return m.get("pickedConnections");
+}
+
+export function isConnectionEnabled(m, name) {
+  // TODO: is the name enough? shouldn't we check for strategy and/or type?
+  return m.get("enabledConnections", Map())
+    .flatten(true)
+    .some(c => c.get("name") === name);
 }
 
 export function runHook(m, str, ...args) {
