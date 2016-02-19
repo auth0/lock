@@ -2,12 +2,12 @@ import Immutable, { Map } from 'immutable';
 import * as l from '../lock/index';
 import * as client from '../lock/client/index';
 import { clearCreds } from '../cred/index';
+import { dataFns } from '../utils/data_utils';
 
-export function initDatabase(model, options) {
-  return model.setIn(
-    ["database", "opts"],
-    Immutable.fromJS(processDatabaseOptions(options))
-  );
+const { get, initNS, tget, tset } = dataFns(["database"]);
+
+export function initDatabase(m, options) {
+  return initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
 }
 
 function processDatabaseOptions(options) {
@@ -19,7 +19,7 @@ function processDatabaseOptions(options) {
     resetLink,
     signUpLink,
     usernameStyle
-   } = options;
+  } = options;
 
   usernameStyle = usernameStyle === "username" ? "username" : "email";
 
@@ -74,11 +74,11 @@ export function databaseConnectionName(m) {
 }
 
 export function resetLink(m, notFound="") {
-  return m.getIn(["database", "opts", "resetLink"], notFound);
+  return get(m, "resetLink", notFound);
 }
 
 export function signUpLink(m, notFound="") {
-  return m.getIn(["database", "opts", "signUpLink"], notFound);
+  return get(m, "signUpLink", notFound);
 }
 
 export function setScreen(m, name, creds = []) {
@@ -89,16 +89,20 @@ export function setScreen(m, name, creds = []) {
   m = l.clearGlobalSuccess(m);
   m = clearCreds(m, creds);
 
-  return m.set("screen", name);
+  return tset(m, "screen", name);
 }
 
 export function getScreen(m) {
-  const initialScreen = m.getIn(["database", "opts", "initialScreen"]);
-  return m.get("screen", hasScreen(m, initialScreen) ? initialScreen : "login");
+  const initialScreen = get(m, "initialScreen");
+  return tget(
+    m,
+    "screen",
+    hasScreen(m, initialScreen) ? initialScreen : "login"
+  );
 }
 
 export function authWithUsername(m) {
-  return m.getIn(["database", "opts", "usernameStyle"]) === "username";
+  return get(m, "usernameStyle") === "username";
 }
 
 export function hasScreen(m, s) {
@@ -106,11 +110,11 @@ export function hasScreen(m, s) {
 
   return !(showForgot === false && s === "resetPassword")
     && !(showSignup === false && s === "signUp")
-    && m.getIn(["database", "opts", "screens"]).contains(s);
+    && get(m, "screens").contains(s);
 }
 
 export function shouldAutoLogin(m) {
-  return m.getIn(["database", "opts", "loginAfterSignUp"]);
+  return get(m, "loginAfterSignUp");
 }
 
 export function passwordStrengthPolicy(m) {
