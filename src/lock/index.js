@@ -9,12 +9,13 @@ function buildSetupSnapshot(m) {
   return m.set("setupSnapshot", m);
 }
 
-export function setup(id, clientID, domain, options, signInCallback) {
+export function setup(id, clientID, domain, options, signInCallback, hookRunner) {
   let m = Immutable.fromJS({
     clientID: clientID,
     domain: domain,
     id: id,
     mode: options.mode,
+    hookRunner: hookRunner,
     signInCallback: signInCallback
   });
   m = setUIOptions(m, options);
@@ -263,4 +264,8 @@ export function findConnection(m, strategy, name) {
 
 export function getPickedConnections(m) {
   return m.get("pickedConnections");
+}
+
+export function runHook(m, str, ...args) {
+  m.get("hookRunner")(modeName(m), str, id(m), ...args);
 }

@@ -35,6 +35,7 @@ function syncClientSettings(lockID, cb) {
         );
     });
 
+    l.runHook(read(getEntity, "lock", lockID), "didReceiveClientSettings");
     cb(error, client);
   });
 }

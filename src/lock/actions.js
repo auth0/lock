@@ -8,8 +8,7 @@ import * as cs from '../cred/storage';
 export function setupLock(id, clientID, domain, options, signInCallback, hookRunner) {
   // TODO: run a hook before initialization, useful for when we want
   // to provide some options by default.
-
-  const m = l.setup(id, clientID, domain, options, signInCallback);
+  const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner);
 
   swap(setEntity, "lock", id, m);
   // TODO: check options.mode is a valid mode.
