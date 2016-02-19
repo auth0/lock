@@ -39,7 +39,9 @@ export function pickConnections(m, strs) {
   //  {name: "strategy", connections: [{name: "connection"}]}
   // ]
 
-  const order = c => strs.indexOf(c.get("name"));
+  const order = strs.count() === 0
+    ? _ => 0
+    : c => strs.indexOf(c.get("name"));
 
   return m.get("strategies", List()).flatMap(s => {
     return s.get("connections")
