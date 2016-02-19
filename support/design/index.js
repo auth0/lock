@@ -104,6 +104,38 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
       {
         connections: [
           {
+            name: "facebook"
+          }
+        ],
+        name: "facebook"
+      },
+      {
+        connections: [
+          {
+            name: "twitter"
+          }
+        ],
+        name: "twitter"
+      },
+      {
+        connections: [
+          {
+            name: "github"
+          }
+        ],
+        name: "github"
+      },
+      {
+        connections: [
+          {
+            name: "email"
+          }
+        ],
+        name: "email"
+      },
+      {
+        connections: [
+          {
             name: "sms"
           }
         ],

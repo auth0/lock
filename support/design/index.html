@@ -121,7 +121,6 @@ body {
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
  new Auth0LockPasswordless(cid, domain, {
-   databaseConnection: "db",
    container: "database-container",
    dict: {
      emailAndPassword: {
@@ -133,7 +132,6 @@ body {
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   databaseConnection: "Username-Password-Authentication",
    container: "last-login-database-container",
    mode: "database"
  }).show();
@@ -163,33 +161,27 @@ body {
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   socialConnections: ["facebook", "github", "google-oauth2", "twitter"],
    container: "social-container",
    mode: "social",
    socialBigButtons: true
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
-   databaseConnection: "db",
    container: "socialOrDatabase-container",
    mode: "socialOrDatabase"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
    container: "socialOrEmailcode-container",
    mode: "socialOrEmailcode"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   socialConnections: ["facebook", "github", "google-oauth2"],
    container: "socialOrMagiclink-container",
    mode: "socialOrMagiclink"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   socialConnections: ["facebook", "github", "google-oauth2"],
    container: "socialOrSms-container",
    mode: "socialOrSms"
  }).show();
