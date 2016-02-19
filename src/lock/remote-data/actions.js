@@ -1,5 +1,6 @@
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import { fetchClientSettings } from '../client/settings';
+import { pickConnections } from '../client/index';
 import { fetchSSOData } from '../sso/data';
 import webAPI from '../web_api';
 import * as l from '../index';
@@ -23,9 +24,15 @@ function syncClientSettings(lockID, cb) {
 
   fetchClientSettings(clientID, domain, assetsUrl, (error, client) => {
     swap(updateEntity, "lock", lockID, m => {
-      return error
-        ? m.setIn(["client", "syncStatus"], "error")
-        : m.set("client", client.set("syncStatus", "ok"));
+      if (error) {
+        return m.setIn(["client", "syncStatus"], "error");
+      }
+
+      return m.set("client", client.set("syncStatus", "ok"))
+        .set(
+          "enabledConnections",
+          pickConnections(client, l.getPickedConnections(m))
+        );
     });
 
     cb(error, client);
