@@ -5,24 +5,51 @@ import * as d from '../dict/index';
 import t from '../dict/t';
 import trim from 'trim';
 
+// TODO: move to its own utils module
+function dataFns(nsKeyPath) {
+  function keyPath(keyOrKeyPath) {
+    return nsKeyPath.concat(
+      typeof keyOrKeyPath === "object" ? keyOrKeyPath : [keyOrKeyPath]
+    );
+  }
+
+  return {
+    get: function(m, keyOrKeyPath, notSetValue = undefined) {
+      return m.getIn(keyPath(keyOrKeyPath), notSetValue);
+    },
+
+    set: function(m, keyOrKeyPath, value) {
+      return m.setIn(keyPath(keyOrKeyPath), value);
+    },
+
+    remove: function(m, keyOrKeyPath) {
+      return m.removeIn(keyPath(keyOrKeyPath));
+    },
+
+    init: function(id, m) {
+      return new Map({id: id}).setIn(nsKeyPath, m);
+    }
+  }
+}
+
+const { get, set, init } = dataFns(["core"]);
+// const ui = dataFns(["core", "ui"]);
+
 function buildSetupSnapshot(m) {
-  return m.setIn(["core", "setupSnapshot"], m);
+  return set(m, "setupSnapshot", m);
 }
 
 export function setup(id, clientID, domain, options, signInCallback, hookRunner) {
-  let m = Immutable.fromJS({
-    id: id,
-    core: {
-      clientID: clientID,
-      domain: domain,
-      mode: options.mode,
-      hookRunner: hookRunner,
-      signInCallback: signInCallback
-    }
-  });
+  let m = init(id, Immutable.fromJS({
+    clientID: clientID,
+    domain: domain,
+    mode: options.mode,
+    hookRunner: hookRunner,
+    signInCallback: signInCallback
+  }));
   m = setUIOptions(m, options);
   m = setAuthOptions(m, options);
-  m = m.setIn(["core", "pickedConnections"], Immutable.fromJS(options.connections || []))
+  m = set(m, "pickedConnections", Immutable.fromJS(options.connections || []));
   return buildSetupSnapshot(m);
 }
 
@@ -31,61 +58,61 @@ export function id(m) {
 }
 
 export function clientID(m) {
-  return m.getIn(["core", "clientID"]);
+  return get(m, "clientID");
 }
 
 export function domain(m) {
-  return m.getIn(["core", "domain"]);
+  return get(m, "domain");
 }
 
 export function modeName(m) {
-  return m.getIn(["core", "mode"]);
+  return get(m, "mode");
 }
 
 export function show(m) {
-  return m.getIn(["core", "show"], false);
+  return get(m, "show", false);
 }
 
 export function setShow(m, value) {
-  return m.setIn(["core", "show"], value);
+  return set(m, "show", value);
 }
 
 export function setSubmitting(m, value, error) {
-  m = m.setIn(["core", "submitting"], value);
+  m = set(m, "submitting", value);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
 }
 
 export function submitting(m) {
-  return m.getIn(["core", "submitting"], false);
+  return get(m, "submitting", false);
 }
 
 export function setGlobalError(m, str) {
-  return m.setIn(["core", "globalError"], str);
+  return set(m, "globalError", str);
 }
 
 export function globalError(m) {
-  return m.getIn(["core", "globalError"], "");
+  return get(m, "globalError", "");
 }
 
 export function clearGlobalError(m) {
-  return m.removeIn(["core", "globalError"]);
+  return remove(m, "globalError");
 }
 
 export function setGlobalSuccess(m, str) {
-  return m.setIn(["core", "globalSuccess"], str);
+  return set(m, "globalSuccess", str);
 }
 
 export function globalSuccess(m) {
-  return m.getIn(["core", "globalSuccess"], "");
+  return get(m, "globalSuccess", "");
 }
 
 export function clearGlobalSuccess(m) {
-  return m.removeIn(["core", "globalSuccess"]);
+  return remove(m, "globalSuccess");
 }
 
 export function rendering(m) {
-  return m.getIn(["core", "render"], false);
+  return get(m, "render", false);
 }
 
 export function gravatar(m) {
@@ -127,7 +154,7 @@ function setUIOptions(m, options) {
     const provided = Set.fromKeys(options).subtract(denied);
     newUIOptions = newUIOptions.filter((v, k) => provided.has(k));
   }
-  return m.setIn(["core", "ui"], (currentUIOptions || new Map()).merge(newUIOptions));
+  return set(m, "ui", (currentUIOptions || new Map()).merge(newUIOptions));
 }
 
 function getUIAttribute(m, attribute) {
@@ -153,7 +180,7 @@ export const ui = {
 };
 
 function getAuthAttribute(m, attribute) {
-  return m.getIn(["core", "auth", attribute]);
+  return get(m, "auth", attribute);
 }
 
 export const auth = {
@@ -186,11 +213,11 @@ function setAuthOptions(m, options) {
     sso
   });
 
-  return m.setIn(["core", "auth"], authOptions);
+  return set(m, "auth", authOptions);
 }
 
 export function withAuthOptions(m, opts, flattenAuthParams = true) {
-  const auth = m.getIn(["core", "auth"]);
+  const auth = get(m, "auth");
   const authOptions = flattenAuthParams
     ? auth.remove("authParams").merge(auth.get("authParams"))
     : auth;
@@ -199,7 +226,7 @@ export function withAuthOptions(m, opts, flattenAuthParams = true) {
 }
 
 export function invokeSignInCallback(m, ...args) {
-  m.getIn(["core", "signInCallback"]).apply(undefined, args);
+  get(m, "signInCallback").apply(undefined, args);
 }
 
 export function shouldRedirect(m) {
@@ -208,23 +235,23 @@ export function shouldRedirect(m) {
 }
 
 export function render(m) {
-  return m.setIn(["core", "render"], true);
+  return set(m, "render", true);
 }
 
 export function close(m) {
-  return m.setIn(["core", "show"], false);
+  return set(m, "show", false);
 }
 
 export function reset(m) {
-  return buildSetupSnapshot(m.getIn(["core", "setupSnapshot"]));
+  return buildSetupSnapshot(get(m, "setupSnapshot"));
 }
 
 export function setSignedIn(m, value) {
-  return m.setIn(["core", "signedIn"], value);
+  return set(m, "signedIn", value);
 }
 
 export function signedIn(m) {
-  return m.getIn(["core", "signedIn"], false);
+  return get(m, "signedIn", false);
 }
 
 export function tabIndex(m, n) {
@@ -242,20 +269,20 @@ export function warn(x, str) {
 }
 
 export function getPickedConnections(m) {
-  return m.getIn(["core", "pickedConnections"]);
+  return get(m, "pickedConnections");
 }
 
 export function getEnabledConnections(m, type) {
-  return m.getIn(["core", "enabledConnections", type], List());
+  return get(m, ["enabledConnections", type], List());
 }
 
 export function isConnectionEnabled(m, name) {
   // TODO: is the name enough? shouldn't we check for strategy and/or type?
-  return m.getIn(["core", "enabledConnections"], Map())
+  return get(m, "enabledConnections", Map())
     .flatten(true)
     .some(c => c.get("name") === name);
 }
 
 export function runHook(m, str, ...args) {
-  m.getIn(["core", "hookRunner"])(modeName(m), str, id(m), ...args);
+  get(m, "hookRunner")(modeName(m), str, id(m), ...args);
 }
