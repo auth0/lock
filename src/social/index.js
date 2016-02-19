@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import * as l from '../lock/index';
+import { dataFns } from '../utils/data_utils';
 
 export const STRATEGIES = {
   "amazon": "Amazon",
@@ -38,11 +39,10 @@ export const STRATEGIES = {
   "weibo": "新浪微博"
 };
 
-export function initSocial(model, options) {
-  return model.setIn(
-    ["social", "opts"],
-    Immutable.fromJS(processSocialOptions(options))
-  );
+const { get, initNS } = dataFns(["social"]);
+
+export function initSocial(m, options) {
+  return initNS(m, Immutable.fromJS(processSocialOptions(options)));
 }
 
 export function displayName(connection) {
@@ -62,7 +62,7 @@ export function socialConnections(m) {
 }
 
 export function useBigButtons(m) {
-  const b = m.getIn(["social", "opts", "socialBigButtons"]);
+  const b = get(m, "socialBigButtons");
   return b === undefined
     ? socialConnections(m).length <= 3
     : b;
