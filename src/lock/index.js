@@ -19,6 +19,7 @@ export function setup(id, clientID, domain, options, signInCallback) {
   });
   m = setUIOptions(m, options);
   m = setAuthOptions(m, options);
+  m = m.set("pickedConnections", Immutable.fromJS(options.connections || []))
   return buildSetupSnapshot(m);
 }
 
@@ -152,11 +153,10 @@ function getAuthAttribute(m, attribute) {
   return m.getIn(["auth", attribute]);
 }
 
-// TODO: find a better name, forceJSONP is not exclusively used for login
 export const auth = {
   authParams: lock => getAuthAttribute(lock, "authParams"),
-  forceJSONP: lock => getAuthAttribute(lock, "forceJSONP"),
   callbackURL: lock => getAuthAttribute(lock, "callbackURL"),
+  forceJSONP: lock => getAuthAttribute(lock, "forceJSONP"),
   responseType: lock => getAuthAttribute(lock, "responseType")
 };
 
@@ -259,4 +259,8 @@ export function findConnection(m, strategy, name) {
   return getConnections(m).find(x => (
     x.get("strategy") === strategy && x.get("name") === name)
   );
+}
+
+export function getPickedConnections(m) {
+  return m.get("pickedConnections");
 }
