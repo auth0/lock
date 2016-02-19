@@ -29,9 +29,10 @@ function syncClientSettings(lockID, cb) {
       }
 
       // TODO: emit a warning when a connection doesn't exists
+      // TODO: abstract setting enabled connections
       return m.set("client", client.set("syncStatus", "ok"))
-        .set(
-          "enabledConnections",
+        .setIn(
+          ["core", "enabledConnections"],
           pickConnections(client, l.getPickedConnections(m))
         );
     });

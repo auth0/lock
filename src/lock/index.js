@@ -6,21 +6,23 @@ import t from '../dict/t';
 import trim from 'trim';
 
 function buildSetupSnapshot(m) {
-  return m.set("setupSnapshot", m);
+  return m.setIn(["core", "setupSnapshot"], m);
 }
 
 export function setup(id, clientID, domain, options, signInCallback, hookRunner) {
   let m = Immutable.fromJS({
-    clientID: clientID,
-    domain: domain,
     id: id,
-    mode: options.mode,
-    hookRunner: hookRunner,
-    signInCallback: signInCallback
+    core: {
+      clientID: clientID,
+      domain: domain,
+      mode: options.mode,
+      hookRunner: hookRunner,
+      signInCallback: signInCallback
+    }
   });
   m = setUIOptions(m, options);
   m = setAuthOptions(m, options);
-  m = m.set("pickedConnections", Immutable.fromJS(options.connections || []))
+  m = m.setIn(["core", "pickedConnections"], Immutable.fromJS(options.connections || []))
   return buildSetupSnapshot(m);
 }
 
@@ -29,61 +31,61 @@ export function id(m) {
 }
 
 export function clientID(m) {
-  return m.get("clientID");
+  return m.getIn(["core", "clientID"]);
 }
 
 export function domain(m) {
-  return m.get("domain");
+  return m.getIn(["core", "domain"]);
 }
 
 export function modeName(m) {
-  return m.get("mode");
+  return m.getIn(["core", "mode"]);
 }
 
 export function show(m) {
-  return m.get("show", false);
+  return m.getIn(["core", "show"], false);
 }
 
 export function setShow(m, value) {
-  return m.set("show", value);
+  return m.setIn(["core", "show"], value);
 }
 
 export function setSubmitting(m, value, error) {
-  m = m.set("submitting", value);
+  m = m.setIn(["core", "submitting"], value);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
 }
 
 export function submitting(m) {
-  return m.get("submitting", false);
+  return m.getIn(["core", "submitting"], false);
 }
 
 export function setGlobalError(m, str) {
-  return m.set("globalError", str);
+  return m.setIn(["core", "globalError"], str);
 }
 
 export function globalError(m) {
-  return m.get("globalError", "");
+  return m.getIn(["core", "globalError"], "");
 }
 
 export function clearGlobalError(m) {
-  return m.remove("globalError");
+  return m.removeIn(["core", "globalError"]);
 }
 
 export function setGlobalSuccess(m, str) {
-  return m.set("globalSuccess", str);
+  return m.setIn(["core", "globalSuccess"], str);
 }
 
 export function globalSuccess(m) {
-  return m.get("globalSuccess", "");
+  return m.getIn(["core", "globalSuccess"], "");
 }
 
 export function clearGlobalSuccess(m) {
-  return m.remove("globalSuccess");
+  return m.removeIn(["core", "globalSuccess"]);
 }
 
 export function rendering(m) {
-  return m.get("render", false);
+  return m.getIn(["core", "render"], false);
 }
 
 export function gravatar(m) {
@@ -119,17 +121,17 @@ function extractUIOptions(id, modeName, options) {
 // possible to overwrite those values when showing the lock.
 function setUIOptions(m, options) {
   let currentUIOptions = m.get("ui");
-  let newUIOptions = extractUIOptions(id(m), modeName(m), options);;
+  let newUIOptions = extractUIOptions(id(m), modeName(m), options);
   if (currentUIOptions) {
     const denied = new Set(["containerID", "appendContainer"]);
     const provided = Set.fromKeys(options).subtract(denied);
     newUIOptions = newUIOptions.filter((v, k) => provided.has(k));
   }
-  return m.set("ui", (currentUIOptions || new Map()).merge(newUIOptions));
+  return m.setIn(["core", "ui"], (currentUIOptions || new Map()).merge(newUIOptions));
 }
 
 function getUIAttribute(m, attribute) {
-  return m.getIn(["ui", attribute]);
+  return m.getIn(["core", "ui", attribute]);
 }
 
 export const ui = {
@@ -151,7 +153,7 @@ export const ui = {
 };
 
 function getAuthAttribute(m, attribute) {
-  return m.getIn(["auth", attribute]);
+  return m.getIn(["core", "auth", attribute]);
 }
 
 export const auth = {
@@ -184,11 +186,11 @@ function setAuthOptions(m, options) {
     sso
   });
 
-  return m.set("auth", authOptions);
+  return m.setIn(["core", "auth"], authOptions);
 }
 
 export function withAuthOptions(m, opts, flattenAuthParams = true) {
-  const auth = m.get("auth");
+  const auth = m.getIn(["core", "auth"]);
   const authOptions = flattenAuthParams
     ? auth.remove("authParams").merge(auth.get("authParams"))
     : auth;
@@ -197,31 +199,32 @@ export function withAuthOptions(m, opts, flattenAuthParams = true) {
 }
 
 export function invokeSignInCallback(m, ...args) {
-  m.get("signInCallback").apply(undefined, args);
+  m.getIn(["core", "signInCallback"]).apply(undefined, args);
 }
 
 export function shouldRedirect(m) {
+  // TODO: remove this hack
   return m.get("forceRedirect", false) || auth.callbackURL(m);
 }
 
 export function render(m) {
-  return m.set("render", true);
+  return m.setIn(["core", "render"], true);
 }
 
 export function close(m) {
-  return m.set("show", false);
+  return m.setIn(["core", "show"], false);
 }
 
 export function reset(m) {
-  return buildSetupSnapshot(m.get("setupSnapshot"));
+  return buildSetupSnapshot(m.getIn(["core", "setupSnapshot"]));
 }
 
 export function setSignedIn(m, value) {
-  return m.set("signedIn", value);
+  return m.setIn(["core", "signedIn"], value);
 }
 
 export function signedIn(m) {
-  return m.get("signedIn", false);
+  return m.getIn(["core", "signedIn"], false);
 }
 
 export function tabIndex(m, n) {
@@ -239,20 +242,20 @@ export function warn(x, str) {
 }
 
 export function getPickedConnections(m) {
-  return m.get("pickedConnections");
+  return m.getIn(["core", "pickedConnections"]);
 }
 
 export function getEnabledConnections(m, type) {
-  return m.getIn(["enabledConnections", type], List());
+  return m.getIn(["core", "enabledConnections", type], List());
 }
 
 export function isConnectionEnabled(m, name) {
   // TODO: is the name enough? shouldn't we check for strategy and/or type?
-  return m.get("enabledConnections", Map())
+  return m.getIn(["core", "enabledConnections"], Map())
     .flatten(true)
     .some(c => c.get("name") === name);
 }
 
 export function runHook(m, str, ...args) {
-  m.get("hookRunner")(modeName(m), str, id(m), ...args);
+  m.getIn(["core", "hookRunner"])(modeName(m), str, id(m), ...args);
 }
