@@ -39,16 +39,9 @@ export const STRATEGIES = {
 };
 
 export function initSocial(model, options) {
-  model = model.setIn(
+  return model.setIn(
     ["social", "opts"],
     Immutable.fromJS(processSocialOptions(options))
-  );
-
-  // TODO: remove duplicate connection information
-  return l.registerConnections(
-    model,
-    "social",
-    socialConnections(model)
   );
 }
 

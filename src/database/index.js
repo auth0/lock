@@ -4,17 +4,9 @@ import * as client from '../lock/client/index';
 import { clearCreds } from '../cred/index';
 
 export function initDatabase(model, options) {
-  model = model.setIn(
+  return model.setIn(
     ["database", "opts"],
     Immutable.fromJS(processDatabaseOptions(options))
-  );
-
-  // TODO: remove duplicate connection information
-  return l.registerConnection(
-    model,
-    "database",
-    "auth0",
-    databaseConnection(model)
   );
 }
 
