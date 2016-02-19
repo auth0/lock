@@ -33,7 +33,6 @@ function dataFns(nsKeyPath) {
 }
 
 const { get, set, init } = dataFns(["core"]);
-// const ui = dataFns(["core", "ui"]);
 
 function buildSetupSnapshot(m) {
   return set(m, "setupSnapshot", m);
@@ -41,15 +40,15 @@ function buildSetupSnapshot(m) {
 
 export function setup(id, clientID, domain, options, signInCallback, hookRunner) {
   let m = init(id, Immutable.fromJS({
+    auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
-    mode: options.mode,
     hookRunner: hookRunner,
-    signInCallback: signInCallback
+    mode: options.mode,
+    signInCallback: signInCallback,
+    pickedConnections: Immutable.fromJS(options.connections || []),
+    ui: extractUIOptions(id, options.mode, options)
   }));
-  m = setUIOptions(m, options);
-  m = setAuthOptions(m, options);
-  m = set(m, "pickedConnections", Immutable.fromJS(options.connections || []));
   return buildSetupSnapshot(m);
 }
 
@@ -143,23 +142,7 @@ function extractUIOptions(id, modeName, options) {
   });
 }
 
-// TODO: review because mode changes are no longer alllowed. Keep in
-// mind that now it is just being called during setup but it might be
-// possible to overwrite those values when showing the lock.
-function setUIOptions(m, options) {
-  let currentUIOptions = m.get("ui");
-  let newUIOptions = extractUIOptions(id(m), modeName(m), options);
-  if (currentUIOptions) {
-    const denied = new Set(["containerID", "appendContainer"]);
-    const provided = Set.fromKeys(options).subtract(denied);
-    newUIOptions = newUIOptions.filter((v, k) => provided.has(k));
-  }
-  return set(m, "ui", (currentUIOptions || new Map()).merge(newUIOptions));
-}
-
-function getUIAttribute(m, attribute) {
-  return m.getIn(["core", "ui", attribute]);
-}
+const { get: getUIAttribute } = dataFns(["core", "ui"]);
 
 export const ui = {
   containerID: lock => getUIAttribute(lock, "containerID"),
@@ -179,9 +162,7 @@ export const ui = {
   rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
 };
 
-function getAuthAttribute(m, attribute) {
-  return get(m, "auth", attribute);
-}
+const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 
 export const auth = {
   authParams: lock => getAuthAttribute(lock, "authParams"),
@@ -190,9 +171,8 @@ export const auth = {
   responseType: lock => getAuthAttribute(lock, "responseType")
 };
 
-// TODO: review because mode changes are no longer alllowed. Keep in
-// mind that now it is just being called during setup.
-function setAuthOptions(m, options) {
+
+function extractAuthOptions(options) {
   // TODO: should `popup` be a auth option?
   let { authParams, callbackURL, forceJSONP, responseType, sso } = options;
 
@@ -205,15 +185,13 @@ function setAuthOptions(m, options) {
     warn(m, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
-  const authOptions = Immutable.fromJS({
+  return Immutable.fromJS({
     authParams,
     callbackURL,
     forceJSONP,
     responseType,
     sso
   });
-
-  return set(m, "auth", authOptions);
 }
 
 export function withAuthOptions(m, opts, flattenAuthParams = true) {
