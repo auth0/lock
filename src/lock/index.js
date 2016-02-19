@@ -6,33 +6,48 @@ import t from '../dict/t';
 import trim from 'trim';
 
 // TODO: move to its own utils module
-function dataFns(nsKeyPath) {
-  function keyPath(keyOrKeyPath) {
+function dataFns(baseNSKeyPath) {
+
+  function keyPath(nsKeyPath, keyOrKeyPath) {
     return nsKeyPath.concat(
       typeof keyOrKeyPath === "object" ? keyOrKeyPath : [keyOrKeyPath]
     );
   }
 
+  function getFn(nsKeyPath) {
+    return function(m, keyOrKeyPath, notSetValue = undefined) {
+      return m.getIn(keyPath(nsKeyPath, keyOrKeyPath), notSetValue);
+    }
+  }
+
+  function setFn(nsKeyPath) {
+    return function(m, keyOrKeyPath, value) {
+      return m.setIn(keyPath(nsKeyPath, keyOrKeyPath), value);
+    }
+  }
+
+  function removeFn(nsKeyPath) {
+    return function(m, keyOrKeyPath) {
+      return m.removeIn(keyPath(nsKeyPath, keyOrKeyPath));
+    }
+  }
+
+  const transientNSKeyPath = baseNSKeyPath.concat(["transient"]);
+
   return {
-    get: function(m, keyOrKeyPath, notSetValue = undefined) {
-      return m.getIn(keyPath(keyOrKeyPath), notSetValue);
-    },
-
-    set: function(m, keyOrKeyPath, value) {
-      return m.setIn(keyPath(keyOrKeyPath), value);
-    },
-
-    remove: function(m, keyOrKeyPath) {
-      return m.removeIn(keyPath(keyOrKeyPath));
-    },
-
+    get: getFn(baseNSKeyPath),
+    set: setFn(baseNSKeyPath),
+    remove: removeFn(baseNSKeyPath),
+    tget: getFn(transientNSKeyPath),
+    tset: setFn(transientNSKeyPath),
+    tremove: removeFn(transientNSKeyPath),
     init: function(id, m) {
-      return new Map({id: id}).setIn(nsKeyPath, m);
+      return new Map({id: id}).setIn(baseNSKeyPath, m);
     }
   }
 }
 
-const { get, set, init } = dataFns(["core"]);
+const { get, set, remove, tget, tset, tremove, init } = dataFns(["core"]);
 
 function buildSetupSnapshot(m) {
   return set(m, "setupSnapshot", m);
@@ -69,49 +84,49 @@ export function modeName(m) {
 }
 
 export function show(m) {
-  return get(m, "show", false);
+  return tget(m, "show", false);
 }
 
 export function setShow(m, value) {
-  return set(m, "show", value);
+  return tset(m, "show", value);
 }
 
 export function setSubmitting(m, value, error) {
-  m = set(m, "submitting", value);
+  m = tset(m, "submitting", value);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
 }
 
 export function submitting(m) {
-  return get(m, "submitting", false);
+  return tget(m, "submitting", false);
 }
 
 export function setGlobalError(m, str) {
-  return set(m, "globalError", str);
+  return tset(m, "globalError", str);
 }
 
 export function globalError(m) {
-  return get(m, "globalError", "");
+  return tget(m, "globalError", "");
 }
 
 export function clearGlobalError(m) {
-  return remove(m, "globalError");
+  return tremove(m, "globalError");
 }
 
 export function setGlobalSuccess(m, str) {
-  return set(m, "globalSuccess", str);
+  return tset(m, "globalSuccess", str);
 }
 
 export function globalSuccess(m) {
-  return get(m, "globalSuccess", "");
+  return tget(m, "globalSuccess", "");
 }
 
 export function clearGlobalSuccess(m) {
-  return remove(m, "globalSuccess");
+  return tremove(m, "globalSuccess");
 }
 
 export function rendering(m) {
-  return get(m, "render", false);
+  return tget(m, "render", false);
 }
 
 export function gravatar(m) {
@@ -213,11 +228,11 @@ export function shouldRedirect(m) {
 }
 
 export function render(m) {
-  return set(m, "render", true);
+  return tset(m, "render", true);
 }
 
 export function close(m) {
-  return set(m, "show", false);
+  return tset(m, "show", false);
 }
 
 export function reset(m) {
@@ -225,11 +240,11 @@ export function reset(m) {
 }
 
 export function setSignedIn(m, value) {
-  return set(m, "signedIn", value);
+  return tset(m, "signedIn", value);
 }
 
 export function signedIn(m) {
-  return get(m, "signedIn", false);
+  return tget(m, "signedIn", false);
 }
 
 export function tabIndex(m, n) {
