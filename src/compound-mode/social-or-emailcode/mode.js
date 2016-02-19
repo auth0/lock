@@ -4,6 +4,7 @@ import AskSocialNetworkOrEmail from '../../cred/or/ask_social_network_or_email';
 import { initSocial } from '../../social/index';
 import { initPasswordless, passwordlessStarted } from '../../passwordless/index';
 import dict from './dict';
+import * as l from '../../lock/index';
 
 export default class SocialOrEmailCodeMode extends Mode {
 
@@ -16,6 +17,13 @@ export default class SocialOrEmailCodeMode extends Mode {
     model = initSocial(model, options);
     model = initPasswordless(model, {send: "code"});
     this.setModel(model);
+  }
+
+  didReceiveClientSettings(m) {
+    // TODO: refactor
+    if (l.getEnabledConnections(m, "social").count() === 0) {
+      throw new Error("At least one social connection needs to be specified");
+    }
   }
 
   render(lock) {

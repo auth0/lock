@@ -25,6 +25,9 @@ export default class SocialOrDatabaseMode extends Mode {
     if (l.getEnabledConnections(m, "database").count() === 0) {
       throw new Error("At least one database connection needs to be specified");
     }
+    if (l.getEnabledConnections(m, "social").count() === 0) {
+      throw new Error("At least one social connection needs to be specified");
+    }
   }
 
   render(lock) {

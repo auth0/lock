@@ -49,59 +49,21 @@ export function displayName(connection) {
   return STRATEGIES[connection.strategy];
 }
 
-function processSocialConnections(options) {
-
-  const { socialConnections } = options;
-
-  if (!Array.isArray(socialConnections) || socialConnections.length === 0) {
-    throw new Error("The `socialConnections` option array needs to be provided with at least one connection.");
-  }
-
-  const formattedConnections = socialConnections.reduce((r, x) => {
-    if (typeof x === "string") {
-      if (!STRATEGIES[x]) {
-        l.warn(options, `An unknown "${x}" connection was provided.`);
-        return r;
-      }
-      return r.concat({name: x, strategy: x});
-    } else if (typeof x === "object" && typeof x.name === "string" && typeof x.strategy === "string") {
-      if (!STRATEGIES[x.strategy]) {
-        l.warn(options, `A connection with an unknown "${x.strategy}" strategy was provided.`);
-        return r;
-      }
-      return r.concat(x);
-    } else {
-      l.warn(options, "A connection with an invalid format was provided. It must be a string or an object with name and strategy properties.");
-      return r;
-    }
-  }, []);
-
-  if (formattedConnections.length === 0) {
-    throw new Error("The `socialConnections` option must contain at least one valid connection.");
-  }
-
-  // TODO: check for repeated connections
-
-  return formattedConnections;
-}
-
 function processSocialOptions(options) {
   let { socialBigButtons } = options;
-
-  const connections = processSocialConnections(options);
-
-  socialBigButtons = socialBigButtons === undefined
-    ? connections.length <= 3
-    : socialBigButtons;
-
-  return { connections, socialBigButtons };
+  // TODO: validate socialBigButtons
+  return { socialBigButtons: socialBigButtons };
 }
 
 export function socialConnections(m) {
   // TODO: not sure if returning a js object here is a good idea
-  return m.getIn(["social", "opts", "connections"]).toJS();
+  const xs = l.getEnabledConnections(m, "social");
+  return xs ? xs.toJS() : [];
 }
 
 export function useBigButtons(m) {
-  return m.getIn(["social", "opts", "socialBigButtons"]);
+  const b = m.getIn(["social", "opts", "socialBigButtons"]);
+  return b === undefined
+    ? socialConnections(m).length <= 3
+    : b;
 }

@@ -28,6 +28,7 @@ function syncClientSettings(lockID, cb) {
         return m.setIn(["client", "syncStatus"], "error");
       }
 
+      // TODO: emit a warning when a connection doesn't exists
       return m.set("client", client.set("syncStatus", "ok"))
         .set(
           "enabledConnections",
