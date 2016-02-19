@@ -1,4 +1,4 @@
-import { List, Map, Set } from 'immutable';
+import { List, Map } from 'immutable';
 // TODOL this module should depend from social stuff
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../social/index';
 
@@ -39,11 +39,12 @@ export function pickConnections(m, strs) {
   //  {name: "strategy", connections: [{name: "connection"}]}
   // ]
 
-  const pickedConnectionsNames = new Set(strs);
+  const order = c => strs.indexOf(c.get("name"));
 
   return m.get("strategies", List()).flatMap(s => {
     return s.get("connections")
-      .filter(c => pickedConnectionsNames.has(c.get("name")))
+      .filter(c => order(c) >= 0)
+      .sort((c1, c2) => order(c1) - order(c2))
       .map(c => {
         return c.set("strategy", s.get("name"))
           .set("type", strategyNameToConnectionType(s.get("name")));
