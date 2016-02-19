@@ -6,6 +6,7 @@ import AskSocialNetworkOrLogin from '../../cred/or/ask_social_network_or_login';
 import ResetPassword from '../../database/reset_password';
 import SignUp from '../../database/sign_up';
 import dict from './dict';
+import * as l from '../../lock/index';
 
 export default class SocialOrDatabaseMode extends Mode {
 
