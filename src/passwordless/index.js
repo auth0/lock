@@ -1,16 +1,20 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 import * as l from '../lock/index';
 import { clearCreds } from '../cred/index';
+import { dataFns } from '../utils/data_utils';
+
+const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
 
 export function initPasswordless(m, opts) {
+  // TODO: validate send option
   return opts.send
-    ? m.setIn(["passwordless", "opts", "send"], opts.send)
+    ? initNS(m, Map({send: opts.send}))
     : m;
 }
 
 function setResendStatus(m, value) {
   // TODO: check value
-  return m.set("resendStatus", value);
+  return tset(m, "resendStatus", value);
 }
 
 export function setResendSuccess(m) {
@@ -42,7 +46,7 @@ export function resend(m) {
 }
 
 function resendStatus(m) {
-  return m.get("resendStatus", "waiting");
+  return tget("resendStatus", "waiting");
 }
 
 export function resendAvailable(m) {
@@ -50,19 +54,18 @@ export function resendAvailable(m) {
 }
 
 export function restartPasswordless(m) {
-  let keys = [
-    "passwordlessStarted",
-    "resendStatus",  // only for link
-  ];
-
-  m = keys.reduce((r, v) => r.remove(v), m);
+  // TODO: maybe we can take advantage of the transient fields
+  m = tremove(m, "passwordlessStarted");
+  m = tremove(m, "resendStatus")  // only for link
   m = clearCreds(m, ["vcode"]); // only for code
 
   return l.clearGlobalError(m);
 }
 
 export function send(m) {
-  return m.getIn(["passwordless", "opts", "send"], "link");
+  // TODO: maybe it's better to explicitly set send = "link" during
+  // initialization.
+  return get(m, "send", "link");
 }
 
 export function isSendLink(m) {
@@ -70,9 +73,9 @@ export function isSendLink(m) {
 }
 
 export function setPasswordlessStarted(m, value) {
-  return m.set("passwordlessStarted", value);
+  return tset(m, "passwordlessStarted", value);
 }
 
 export function passwordlessStarted(m) {
-  return m.get("passwordlessStarted", false);
+  return tget(m, "passwordlessStarted", false);
 }
