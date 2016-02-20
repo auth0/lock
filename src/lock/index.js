@@ -6,14 +6,19 @@ import t from '../dict/t';
 import trim from 'trim';
 import { dataFns } from '../utils/data_utils';
 
-const { get, set, remove, tget, tset, tremove, init } = dataFns(["core"]);
-
-function buildSetupSnapshot(m) {
-  return set(m, "setupSnapshot", m);
-}
+const {
+  get,
+  init,
+  remove,
+  reset,
+  set,
+  tget,
+  tset,
+  tremove
+} = dataFns(["core"]);
 
 export function setup(id, clientID, domain, options, signInCallback, hookRunner) {
-  let m = init(id, Immutable.fromJS({
+  return init(id, Immutable.fromJS({
     auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
@@ -23,7 +28,6 @@ export function setup(id, clientID, domain, options, signInCallback, hookRunner)
     pickedConnections: Immutable.fromJS(options.connections || []),
     ui: extractUIOptions(id, options.mode, options)
   }));
-  return buildSetupSnapshot(m);
 }
 
 export function id(m) {
@@ -194,9 +198,7 @@ export function close(m) {
   return tset(m, "show", false);
 }
 
-export function reset(m) {
-  return buildSetupSnapshot(get(m, "setupSnapshot"));
-}
+export { reset };
 
 export function setSignedIn(m, value) {
   return tset(m, "signedIn", value);

@@ -34,6 +34,9 @@ export function dataFns(baseNSKeyPath) {
     tget: getFn(transientNSKeyPath),
     tset: setFn(transientNSKeyPath),
     tremove: removeFn(transientNSKeyPath),
+    reset: function(m) {
+      return m.map(x => Map.isMap(x) ? x.remove("transient") : x);
+    },
     init: function(id, m) {
       return new Map({id: id}).setIn(baseNSKeyPath, m);
     },
