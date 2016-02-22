@@ -3,7 +3,7 @@
   "close":                         "Cerrar",
   "invalid":                       "Inválido",
   "mustMatch":                     "Debe coincidir",
-  "loginSocialButton":             "Ingresar con {connection:title}",
+  "loginSocialButton":             "Iniciar con {connection:title}",
   "signupSocialButton":            "Registrarse con {connection:title}",
   "noConnectionError":             "No se pudo encontrar una conexión válida.",
   "signin": {
