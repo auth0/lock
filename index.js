@@ -24,6 +24,7 @@ var HeaderView = require('./lib/header');
 var SigninPanel = require('./lib/mode-signin');
 var SignupPanel = require('./lib/mode-signup');
 var ResetPanel = require('./lib/mode-reset');
+var NewResetPanel = require('./lib/mode-new-reset');
 var LoggedinPanel = require('./lib/mode-loggedin');
 var KerberosPanel = require('./lib/mode-kerberos');
 var LoadingPanel = require('./lib/mode-loading');
@@ -734,9 +735,19 @@ Auth0Lock.prototype._signupPanel = function (options) {
  */
 
 Auth0Lock.prototype._resetPanel = function (options) {
-  var panel = ResetPanel(this, { options: options || {} });
 
-  this._setTitle(this.options.i18n.t('reset:title'));
+  var panelClass, titleNS;
+  if (this.options.useNewReset) {
+    panelClass = NewResetPanel;
+    titleNS = "newReset";
+  } else {
+    panelClass = ResetPanel;
+    titleNS = "reset";
+  }
+
+  var panel = panelClass(this, { options: options || {} });
+
+  this._setTitle(this.options.i18n.t(titleNS + ':title'));
 
   this.setPanel(panel);
 
