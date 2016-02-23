@@ -765,13 +765,19 @@ Auth0Lock.prototype._resetPanel = function (options) {
 
 Auth0Lock.prototype._loadingPanel = function (options) {
   var panel = LoadingPanel(this, { options: options });
+  var titleNS;
 
   if (options.title) {
-    this._setTitle(this.options.i18n.t(options.title + ':title'));
+    titleNS = options.title;
+  } else if (options.mode) {
+    titleNS = options.mode === 'reset' && this.options.useNewReset
+      ? 'newReset'
+      : options.mode;
   } else {
-    this._setTitle(this.options.i18n.t((options.mode || 'signin') + ':title'));
+    titleNS = 'sigin';
   }
 
+  this._setTitle(this.options.i18n.t(titleNS + ':title'));
   this.setPanel(panel);
 
   if (options.message) {
