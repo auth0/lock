@@ -70,7 +70,7 @@
 
   },
   "newReset": {
-    "title":                       "Reset Password",
+    "title":                       "Password Reset",
     "action":                      "Send",
     "emailPlaceholder":            "Email",
     "cancelAction":                "Cancel",
@@ -78,10 +78,11 @@
     "successText":                 "We've just sent you an email to reset your password.",
     "headerText":                  "Please enter your email address. We will send you an email to reset your password.",
     "serverErrorText":             "There was an error processing the password reset.",
-    "tooManyRequestsErrorText":    "You have reached the limit on password reset attempts.  Please wait before trying again.",    "userDoesNotExistErrorText":   "User does not exist."
+    "userDoesNotExistErrorText":   "User does not exist.",
+    "tooManyRequestsErrorText":    "You have reached the limit on password reset attempts.  Please wait before trying again."
   },
   "reset": {
-    "title":                       "Change Password",
+    "title":                       "Password Change",
     "action":                      "Send",
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "New Password",

@@ -65,18 +65,32 @@
     }
 
   },
-  "reset": {
+  "newReset": {
     "title":                       "Nulstil Kodeord",
+    "action":                      "Send",
+    "emailPlaceholder":            "Email",
+    "cancelAction":                "Annuller",
+    "footerText":                  "",
+    "successText":                 "Vi har lige sendt dig en email for at nulstille dit kodeord.",
+    "headerText":                  "Indtast din e-mailadresse. Vi sender dig en e-mail for at nulstille din adgangskode.",
+    "serverErrorText":             "Der opstod en fejl under behandling af nulstilling af kodeord.",
+    "userDoesNotExistErrorText":   "Brugeren findes ikke.",
+    "tooManyRequestsErrorText":    "Du har nået grænsen for nulstilling af adgangskoden forsøg. Vent venligst før du prøver igen."
+  },
+  "reset": {
+    "title":                       "Ændre Kodeord",
     "action":                      "Send",
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "Nyt Kodeord",
     "repeatPasswordPlaceholder":   "Bekræft Nyt Kodeord",
     "cancelAction":                "Annuller",
+    "footerText":                  "",
     "successText":                 "Vi har lige sendt dig en email for at nulstille dit kodeord.",
     "enterSamePasswordText":       "Indtast det samme kodeord.",
     "headerText":                  "Indtast venligst din email og dit nye kodeord. Vi sender dig en email for at bekræfte ændringen.",
     "serverErrorText":             "Der opstod en fejl under behandling af nulstilling af kodeord.",
     "userDoesNotExistErrorText":   "Brugeren findes ikke.",
+    "tooManyRequestsErrorText":    "Du har nået grænsen for nulstilling af adgangskoden forsøg. Vent venligst før du prøver igen.",
     "invalidPassword":             "Kodeordet er for svagt."
   }
 }
