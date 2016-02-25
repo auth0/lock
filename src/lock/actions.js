@@ -25,8 +25,19 @@ export function setupLock(id, clientID, domain, options, signInCallback, hookRun
     // TODO: this leaves the hash symbol (#) in the URL, maybe we can
     // use the history API instead to remove it.
     global.window.location.hash = "";
-    const args = hash.error ? [hash] : [null, hash];
-    l.invokeSignInCallback(m, ...args);
+    if (hash.error) {
+      l.invokeSignInCallback(m, hash);
+    } else {
+      WebAPI.getProfile(id, hash.id_token, (err, profile) => {
+        if (err) {
+          emitEvent(id, "profile error", err);
+        } else {
+          emitEvent(id, "profile success", profile);
+        }
+      });
+      l.invokeSignInCallback(m, null, hash);
+    }
+
   } else {
     syncRemoteData(id);
   }
