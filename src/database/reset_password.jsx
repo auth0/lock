@@ -1,10 +1,7 @@
 import React from 'react';
 import Screen from '../lock/screen';
-import EmailPane from '../cred/email/email_pane';
-import UsernamePane from '../cred/username/username_pane';
-import PasswordPane from '../cred/password/password_pane';
-import PasswordConfirmationPane from '../cred/password-confirmation/password_confirmation_pane';
-import { authWithUsername, hasScreen, passwordStrengthPolicy } from './index';
+import ResetPasswordPane from './reset_password_pane';
+import { authWithUsername } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 
 export default class ResetPassword extends Screen {
@@ -14,7 +11,7 @@ export default class ResetPassword extends Screen {
   }
 
   backHandler(m) {
-    return hasScreen(m, "login") ? cancelResetPassword : null;
+    return cancelResetPassword;
   }
 
   submitHandler() {
@@ -22,26 +19,13 @@ export default class ResetPassword extends Screen {
   }
 
   render({lock}) {
-    const credPane = authWithUsername(lock)
-      ? <UsernamePane
-          lock={lock}
-          placeholder={this.t(lock, ["usernameInputPlaceholder"], {__textOnly: true})}
-        />
-      : <EmailPane
-          lock={lock}
-          placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
-        />;
 
     return (
-      <div>
-        {credPane}
-        <PasswordConfirmationPane
-          lock={lock}
-          passwordConfirmationPlaceholder={this.t(lock, ["passwordConfirmationInputPlaceholder"], {__textOnly: true})}
-          passwordPlaceholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
-          policy={passwordStrengthPolicy(lock)}
-        />
-      </div>
+      <ResetPasswordPane
+        emailInputPlaceholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
+        lock={lock}
+        usernameInputPlaceholder={this.t(lock, ["usernameInputPlaceholder"], {__textOnly: true})}
+      />
     );
   }
 

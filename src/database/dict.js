@@ -16,7 +16,7 @@ export default {
   resetPassword: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
-    headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
+    headerText: "Please enter your email address.<br /> We will send you an email to change your password.",
     passwordConfirmationInputPlaceholder: "confirm new password",
     passwordInputPlaceholder: "your new password",
     usernameInputPlaceholder: "your username"

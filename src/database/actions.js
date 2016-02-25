@@ -236,17 +236,13 @@ function autoSignInError(id, error) {
 export function resetPassword(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if ((authWithUsername(lock) || c.validEmail(lock))
-        && (!authWithUsername(lock) || c.validUsername(lock))
-        && c.validPassword(lock)
-        && c.validPasswordConfirmation(lock)) {
+    if ((authWithUsername(lock) && c.validUsername(lock))
+        || (!authWithUsername(lock) && c.validEmail(lock))) {
       return l.setSubmitting(lock, true);
     } else {
       lock = authWithUsername(lock)
         ? c.setShowInvalidUsername(lock, !c.validUsername(lock))
         : c.setShowInvalidEmail(lock, !c.validEmail(lock));
-      lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
-      lock = c.setShowInvalidPasswordConfirmation(lock, !c.validPasswordConfirmation(lock));
       return lock;
     }
   });
@@ -257,8 +253,7 @@ export function resetPassword(id) {
     // TODO: check options
     const options = {
       connection: databaseConnectionName(lock),
-      username:   authWithUsername(lock) ? c.username(lock) : c.email(lock),
-      password:   c.password(lock)
+      username:   authWithUsername(lock) ? c.username(lock) : c.email(lock)
     };
 
     webApi.resetPassword(
@@ -295,7 +290,7 @@ function resetPasswordSuccess(id, ...args) {
 
 function resetPasswordError(id, error) {
   const lock = read(getEntity, "lock", id);
-  // TODO: proper error message
+  // TODO: proper error message, consider 429s
   // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
   const errorMessage = "Something went wrong";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
