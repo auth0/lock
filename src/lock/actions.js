@@ -5,10 +5,10 @@ import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
 import * as cs from '../cred/storage';
 
-export function setupLock(id, clientID, domain, options, signInCallback, hookRunner) {
+export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want
   // to provide some options by default.
-  const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner);
+  const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
 
   swap(setEntity, "lock", id, m);
   // TODO: check options.mode is a valid mode.
@@ -113,4 +113,8 @@ export function pinLoadingPane(id) {
 
 export function unpinLoadingPane(id) {
   swap(updateEntity, "lock", id, m => m.set("isLoadingPanePinned", false));
+}
+
+function emitEvent(id, str, ...args) {
+  l.emitEvent(read(getEntity, "lock", id), str, ...args);
 }

@@ -17,11 +17,12 @@ const {
   tremove
 } = dataFns(["core"]);
 
-export function setup(id, clientID, domain, options, signInCallback, hookRunner) {
+export function setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   return init(id, Immutable.fromJS({
     auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
+    emitEventFn: emitEventFn,
     hookRunner: hookRunner,
     mode: options.mode,
     signInCallback: signInCallback,
@@ -239,4 +240,8 @@ export function isConnectionEnabled(m, name) {
 
 export function runHook(m, str, ...args) {
   get(m, "hookRunner")(modeName(m), str, id(m), ...args);
+}
+
+export function emitEvent(m, str, ...args) {
+  get(m, "emitEventFn")(str, ...args);
 }

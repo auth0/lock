@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events';
 import RenderScheduler from './lock/render_scheduler';
 import Renderer from './lock/renderer';
 import PluginManager from './lock/plugin_manager';
@@ -38,7 +39,7 @@ if (style.styleSheet) {
   style.appendChild(document.createTextNode(css));
 }
 
-export default class Auth0LockPasswordless {
+export default class Auth0LockPasswordless extends EventEmitter {
   constructor(clientID, domain, options = {}, signInCallback = () => {}) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
@@ -54,10 +55,13 @@ export default class Auth0LockPasswordless {
       throw new Error("When provided, the fourth argument must be a function.");
     }
 
+    super();
+
     this.id = idu.incremental();
     const { plugins } = Auth0LockPasswordless;
     const hookRunner = plugins.execHook.bind(plugins);
-    setupLock(this.id, clientID, domain, options, signInCallback, hookRunner);
+    const emitEventFn = this.emit.bind(this);
+    setupLock(this.id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
   }
 
   show() {
