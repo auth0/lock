@@ -46,6 +46,13 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>classic</h2>
+  </div>
+  <div class="lock-container" id="classic-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>database</h2>
   </div>
   <div class="lock-container" id="database-container"></div>
@@ -88,13 +95,6 @@ body {
 
 <div class="container">
   <div class="info">
-    <h2>socialOrDatabase</h2>
-  </div>
-  <div class="lock-container" id="socialOrDatabase-container"></div>
-</div>
-
-<div class="container">
-  <div class="info">
     <h2>socialOrEmailcode</h2>
   </div>
   <div class="lock-container" id="socialOrEmailcode-container"></div>
@@ -119,6 +119,11 @@ body {
  var cid = "1";
  var domain = "1";
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
+
+ new Auth0LockPasswordless(cid, domain, {
+   container: "classic-container",
+   mode: "classic"
+ }).show();
 
  new Auth0LockPasswordless(cid, domain, {
    container: "database-container",
@@ -164,11 +169,6 @@ body {
    container: "social-container",
    mode: "social",
    socialBigButtons: true
- }).show();
-
- new Auth0LockPasswordless(cid, domain, {
-   container: "socialOrDatabase-container",
-   mode: "socialOrDatabase"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
