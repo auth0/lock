@@ -7740,8 +7740,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-success {
-  color: green;
+  background: #00CE9D;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+  color: #fff;
+  padding: 15px 0;
   position: relative;
+  display: block;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-error {

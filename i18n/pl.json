@@ -67,8 +67,20 @@
     }
 
   },
-  "reset": {
+  "newReset": {
     "title":                       "Reset hasła",
+    "action":                      "Wyślij",
+    "emailPlaceholder":            "Email",
+    "cancelAction":                "Porzuć",
+    "footerText":                  "",
+    "successText":                 "Wysłaliśmy Ci email, abyś potwierdził zmianę hasła.",
+    "headerText":                  "Podaj swój adres e-mail. Wyślemy Ci e-mail, aby zresetować hasło.",
+    "serverErrorText":             "Wystąpił błąd podczas resetowania hasła.",
+    "userDoesNotExistErrorText":   "Użytkownik nie istnieje.",
+    "tooManyRequestsErrorText":    "Osiągnięto limit prób resetowania hasła. Proszę czekać przed ponowną próbą."
+  },
+  "reset": {
+    "title":                       "Zmień swoje hasło",
     "action":                      "Wyślij",
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "Nowe hasło",
@@ -80,6 +92,7 @@
     "headerText":                  "Wprowadź proszę swój adres email i nowe hasło. Po chwili dostaniesz email z potwierdzeniem zmiany hasła.",
     "serverErrorText":             "Wystąpił błąd podczas resetowania hasła.",
     "userDoesNotExistErrorText":   "Użytkownik nie istnieje.",
+    "tooManyRequestsErrorText":    "Osiągnięto limit prób resetowania hasła. Proszę czekać przed ponowną próbą.",
     "invalidPassword":             "Hasło jest za słabe."
   }
 }

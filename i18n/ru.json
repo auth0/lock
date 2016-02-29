@@ -43,18 +43,32 @@
     "serverErrorText":              "Произошла ошибка при обработке регистрации.",
     "userExistsErrorText":          "Пользователь существует."
   },
-  "reset": {
+  "newReset": {
     "title":                        "Сброс пароля",
+    "action":                       "Отправить",
+    "emailPlaceholder":             "Email",
+    "cancelAction":                 "Отмена",
+    "footerText":                   "",
+    "successText":                  "Мы отправили вам email для сброса пароля.",
+    "headerText":                   "Пожалуйста, введите Ваш адрес электронной почты. Мы вышлем Вам по электронной почте для сброса пароля.",
+    "serverErrorText":              "Произошла ошибка при обработке сброса пароля.",
+    "userDoesNotExistErrorText":    "Пользователь не существует.",
+    "tooManyRequestsErrorText":     "Вы достигли лимита на попыток сброса пароля. Пожалуйста, подождите и повторите попытку."
+  },
+  "reset": {
+    "title":                        "Смена пароля",
     "action":                       "Отправить",
     "emailPlaceholder":             "Email",
     "passwordPlaceholder":          "Новый пароль",
     "repeatPasswordPlaceholder":    "Подтвердите новый пароль",
     "cancelAction":                 "Отмена",
+    "footerText":                   "",
     "successText":                  "Мы отправили вам email для сброса пароля.",
     "enterSamePasswordText":        "Пожалуйста, введите тот же пароль.",
     "headerText":                   "Пожалуйста, введите ваш email и новый пароль. Мы вышлем email для подтверждения изменения пароля.",
     "serverErrorText":              "Произошла ошибка при обработке сброса пароля.",
-    "userDoesNotExistErrorText":    "Пользователь не существует."
-
+    "userDoesNotExistErrorText":    "Пользователь не существует.",
+    "tooManyRequestsErrorText":     "Вы достигли лимита на попыток сброса пароля. Пожалуйста, подождите и повторите попытку.",
+    "invalidPassword":              "Пароль слишком слаб."
   }
 }

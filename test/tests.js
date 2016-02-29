@@ -788,6 +788,27 @@ describe('Auth0Lock', function () {
       client.changePassword = function (options) {
         expect(options.connection).to.equal('dbTest');
         expect(options.username).to.equal('john@fabrikam.com');
+        done();
+      };
+
+      widget
+      .once('ready', function () {
+        bean.fire($('#a0-lock .a0-notloggedin a.a0-forgot-pass')[0], 'click');
+      })
+      .once('reset ready', function () {
+        $('#a0-lock .a0-reset .a0-emailPassword .a0-email input').val('john@fabrikam.com');
+        $('#a0-lock .a0-reset .a0-action button.a0-primary').trigger('click');
+      })
+      .show({
+        callbackURL: callbackURL,
+        responseType: 'token'
+      });
+    });
+
+    it('should call auth0.changePassword (legacy reset)', function (done) {
+      client.changePassword = function (options) {
+        expect(options.connection).to.equal('dbTest');
+        expect(options.username).to.equal('john@fabrikam.com');
         expect(options.password).to.equal('xyz');
         done();
       };
@@ -804,7 +825,8 @@ describe('Auth0Lock', function () {
       })
       .show({
         callbackURL: callbackURL,
-        responseType: 'token'
+        responseType: 'token',
+        useNewReset: false
       });
     });
   });
