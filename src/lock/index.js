@@ -114,7 +114,6 @@ function extractUIOptions(id, modeName, options) {
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
-    popup: undefined === options.popup ? false : !!options.popup,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
     primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
@@ -135,7 +134,6 @@ export const ui = {
   focusInput: lock => getUIAttribute(lock, "focusInput"),
   gravatar: lock => getUIAttribute(lock, "gravatar"),
   mobile: lock => getUIAttribute(lock, "mobile"),
-  popup: lock => getUIAttribute(lock, "popup"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
   rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
@@ -147,12 +145,12 @@ export const auth = {
   authParams: lock => getAuthAttribute(lock, "authParams"),
   callbackURL: lock => getAuthAttribute(lock, "callbackURL"),
   forceJSONP: lock => getAuthAttribute(lock, "forceJSONP"),
+  redirect: lock => getAuthAttribute(lock, "redirect"),
   responseType: lock => getAuthAttribute(lock, "responseType")
 };
 
 
 function extractAuthOptions(options) {
-  // TODO: should `popup` be a auth option?
   // TODO: shouldn't all options be namespased in authentication?
   let {
     authentication,
@@ -191,7 +189,10 @@ export function withAuthOptions(m, opts, flattenAuthParams = true) {
     ? auth.remove("authParams").merge(auth.get("authParams"))
     : auth;
 
-  return authOptions.merge(Immutable.fromJS(opts)).toJS();
+  return authOptions
+    .set("popup", !authOptions.get("redirect"))
+    .merge(Immutable.fromJS(opts))
+    .toJS();
 }
 
 export function invokeSignInCallback(m, ...args) {

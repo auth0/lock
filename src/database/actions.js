@@ -138,8 +138,7 @@ export function signUp(id) {
     }
 
     const authOptions = l.withAuthOptions(lock, {
-      autoLogin: shouldAutoLogin(lock),
-      popup: l.ui.popup(lock)
+      autoLogin: shouldAutoLogin(lock)
     });
 
     webApi.signUp(

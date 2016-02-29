@@ -11,11 +11,10 @@ export function signIn(id, connection) {
 
   const options = l.withAuthOptions(lock, {
     connection: connection.name,
-    popup: l.ui.popup(lock),
     popupOptions: l.ui.popupOptions(lock)
   });
 
-  if (l.ui.popup(lock) && connection.strategy === "facebook") {
+  if (!l.auth.redirect(lock) && connection.strategy === "facebook") {
     options.display = "popup";
   }
 
