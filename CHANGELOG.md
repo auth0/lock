@@ -1,3 +1,40 @@
+## [9.0.0] - 2016-02-29
+
+### Fixed
+
+- [] Merge pull request #321 from auth0/fixes (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/699c96472f2edf83a2c84449585bbf9d7e78ba64
+- [] Don't run callback during sign up reset (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/dc63665752eec8d90c884b8282f9a112f988d98b
+- [] Include arguments in 'signup success' event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1c2048bfac264cc9e706a1ae5bdefa385af500c2
+- [] Include arguments in 'reset success' event (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/081e58db050c22e14e1c1ebb449d2418760527c7
+- [] Merge pull request #323 from auth0/test-ignore-bower (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/56f9827561dbbba6bf2631ff35bede287ad9c433
+- [] Ignore test dir in bower.json (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/308122b752071d10f776b1f438f83e255a3fc127
+- [] Update dicts (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/18e6a7b617cfa067998d79960aeafbbd156049af
+- [] Add npm run deploy script (`Cristian Douce`)
+  https://github.com/auth0/lock/commit/00380ad585eeed6876c0925303305a9521979926
+- [] styled success msg (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/b79f2560be9844e4a89dc70ecd6d9bfd8db57cb1
+- [] Fix tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/10dd7c4a445c5fde4cb7ce1803f900b89b6354cf
+- [] Fix title when resetting passsword with new flow (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/513e9d866968993e7f397ddc834dad7d5577b67a
+- [] Support username besides email in new reset form (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/5916dcf6f6f4b9c56c1dd0b3bf475129688e22f1
+- [] Don't run callback during password reset (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/eae5eb13a7d92770004f47c572bef97d101e0f17
+- [] Improve message for 429s during password reset (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/853ad6e6ec2608c84d1f0857c25eb45e24a8c056
+- [] Add new reset password flow (without i18n) (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/680fc5778b4e2c50daa3b2eb40c6f01fc515e041
+- [] Use a shorter "loginSocialButton" ES translation (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/3ff352934c564ddadb933a2b4584ac6c4f51aea6
+
 ## [8.2.3] - 2016-02-04
 
 ### Fixed
