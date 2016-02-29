@@ -15,7 +15,6 @@ export default class SocialOrSmsMode extends Mode {
 
   didInitialize(model, options) {
     model = setInitialPhoneLocation(model, options);
-    model = model.set("forceRedirect", !options.popup);
     model = initSocial(model, options);
     model = initPasswordless(model, {send: "sms"});
     this.setModel(model);

@@ -140,8 +140,7 @@ export function signIn(id) {
 
   if (l.submitting(lock)) {
     const options = l.withAuthOptions(lock, {
-      passcode: c.vcode(lock),
-      redirect: l.shouldRedirect(lock),
+      passcode: c.vcode(lock)
     });
 
     if (m.send(lock) === "sms") {

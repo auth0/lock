@@ -153,10 +153,21 @@ export const auth = {
 
 function extractAuthOptions(options) {
   // TODO: should `popup` be a auth option?
-  let { authParams, callbackURL, forceJSONP, responseType, sso } = options;
+  // TODO: shouldn't all options be namespased in authentication?
+  let {
+    authentication,
+    authParams,
+    callbackURL,
+    forceJSONP,
+    responseType,
+    sso
+  } = options;
+
+  let { redirect } = authentication || {};
 
   authParams = typeof authParams === "object" ? authParams : {};
   callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
+  redirect = typeof redirect === "boolean" ? redirect : true;
   responseType = typeof responseType === "string" ? responseType : callbackURL ? "code" : "token";
   sso = typeof sso === "boolean" ? sso : true;
 
@@ -168,6 +179,7 @@ function extractAuthOptions(options) {
     authParams,
     callbackURL,
     forceJSONP,
+    redirect,
     responseType,
     sso
   });
@@ -184,11 +196,6 @@ export function withAuthOptions(m, opts, flattenAuthParams = true) {
 
 export function invokeSignInCallback(m, ...args) {
   get(m, "signInCallback").apply(undefined, args);
-}
-
-export function shouldRedirect(m) {
-  // TODO: remove this hack
-  return m.get("forceRedirect", false) || auth.callbackURL(m);
 }
 
 export function render(m) {

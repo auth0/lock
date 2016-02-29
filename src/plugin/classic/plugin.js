@@ -18,7 +18,6 @@ export default class ClassicPlugin extends Plugin {
   }
 
   didInitialize(model, options) {
-    model = model.set("forceRedirect", !options.popup);
     model = initSocial(model, options);
     model = initDatabase(model, options);
     this.setModel(model);

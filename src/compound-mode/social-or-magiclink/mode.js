@@ -11,9 +11,7 @@ export default class SocialOrMagiclinkMode extends Mode {
   }
 
   didInitialize(model, options) {
-    model = model.set("forceRedirect", !options.popup);
-    model = initSocial(model, options);
-    this.setModel(model);
+    this.setModel(initSocial(model, options));
   }
 
   didReceiveClientSettings(m) {

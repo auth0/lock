@@ -13,7 +13,6 @@ export default class SocialOrEmailCodeMode extends Mode {
   }
 
   didInitialize(model, options) {
-    model = model.set("forceRedirect", !options.popup);
     model = initSocial(model, options);
     model = initPasswordless(model, {send: "code"});
     this.setModel(model);

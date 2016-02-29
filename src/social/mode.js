@@ -12,7 +12,6 @@ export default class SocialMode extends Mode {
   }
 
   didInitialize(model, options) {
-    model = model.set("forceRedirect", !options.popup);
     model = initSocial(model, options);
     this.setModel(model);
   }
