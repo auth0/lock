@@ -4,8 +4,8 @@ import VcodePane from './vcode_pane';
 
 export default class AskVcode extends Screen {
 
-  constructor() {
-    super("code");
+  constructor(name = "code") {
+    super(name);
   }
 
   render({lock}) {

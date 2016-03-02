@@ -1,5 +1,5 @@
 export default {
-   code: {
+   emailCode: {
      codeInputPlaceholder: "Your code",
      footerText: "",
      headerText: "An email with the code has been sent to {email}.",

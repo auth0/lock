@@ -1,5 +1,5 @@
 export default {
-  code: {
+  smsCode: {
     codeInputPlaceholder: "Your code",
     footerText: "",
     headerText: "An SMS with the code has been sent to {phoneNumber}.",
