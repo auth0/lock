@@ -46,7 +46,7 @@ export function resend(m) {
 }
 
 function resendStatus(m) {
-  return tget("resendStatus", "waiting");
+  return tget(m, "resendStatus", "waiting");
 }
 
 export function resendAvailable(m) {
