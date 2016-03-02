@@ -33,16 +33,30 @@
     "signupOnSSODomainErrorText": "תחום זה, {domain} נקבעה עבור כניסה יחידה, אין באפשרותך ליצור חשבון. נסה להיכנס במקום.",
     "serverErrorText": "אירעה שגיאה בעיבוד את השלט למעלה."
   },
-  "reset": {
-    "title": "איפוס סיסמה",
+  "newReset": {
+    "title": "איפוס סיסמא",
     "action": "שלח",
-    "emailPlaceholder": "דוא",
-    "passwordPlaceholder": "סיסמה חדשה",
-    "repeatPasswordPlaceholder": "אשר סיסמה חדשה",
+    "emailPlaceholder": "דוא\"ל",
     "cancelAction": "ביטול",
-    "successText": "אנחנו פשוט לשלוח לך דואר אלקטרוני כדי לאפס את הסיסמה שלך.",
+    "footerText": "",
+    "successText": "נשלחה לכתובת הדוא\"ל שלך הודעה לאיפוס הסיסמא",
+    "headerText": "נא להזין את הדוא\"ל שלך. אנו נשלח לך דוא\"ל כדי לאפס את הסיסמה שלך.",
+    "serverErrorText": "אירעה שגיאה בעיבוד איפוס הסיסמה.",
+    "userDoesNotExistErrorText": "משתמש לא קיים."
+  },
+  "reset": {
+    "title": "שינוי סיסמה",
+    "action": "שלח",
+    "emailPlaceholder": "דוא\"ל",
+    "passwordPlaceholder": "סיסמא חדשה",
+    "repeatPasswordPlaceholder": "אשר סיסמא חדשה",
+    "cancelAction": "ביטול",
+    "footerText": "",
+    "successText": "נשלחה לכתובת הדוא\"ל שלך הודעה לאיפוס הסיסמא",
     "enterSamePasswordText": "הזינו בבקשה את אותה סיסמה.",
-    "headerText": "אנא הזן את הדואר האלקטרוני שלך ואת הסיסמה החדשה. אנו נשלח לך הודעת דואר אלקטרוני כדי לאשר שינוי הסיסמה.",
-    "serverErrorText": "אירעה שגיאה בעיבוד איפוס הסיסמה."
+    "headerText": "אנא הזן את הדואר האלקטרוני שלך ואת הסיסמה החדשה. אנו נשלח לך הודעת דואר אלקטרוני כדי לאשר את שינוי הסיסמה.",
+    "serverErrorText": "אירעה שגיאה בעיבוד איפוס הסיסמה.",
+    "userDoesNotExistErrorText": "משתמש לא קיים.",
+    "invalidPassword": "סיסמה חלשה מדי."
   }
 }

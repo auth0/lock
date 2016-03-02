@@ -43,17 +43,30 @@
     "userExistsErrorText":        "Bu kullanıcı adı zaten alınmış.",
     "invalidPassword":            "Bu şifre çok zayıf."
   },
-  "reset": {
+  "newReset": {
     "title":                      "Şifreyi Sıfırla",
+    "action":                     "Yolla",
+    "emailPlaceholder":           "E-posta",
+    "cancelAction":               "İptal",
+    "footerText":                 "",
+    "successText":                "Size şifrenizi sıfırlamanız için bir e-posta yolladık.",
+    "headerText":                 "Lütfen e-mail adresinizi giriniz. Size şifrenizi sıfırlamak için bir e-posta göndereceğiz.",
+    "serverErrorText":            "Şifre sıfırlama işlemi sırasında bir hatayla karşılaşıldı.",
+    "userDoesNotExistErrorText":  "Böyle bir kullanıcı bulunamadı."
+  },
+  "reset": {
+    "title":                      "Şifre değiştirme",
     "action":                     "Yolla",
     "emailPlaceholder":           "E-posta",
     "passwordPlaceholder":        "Yeni Şifre",
     "repeatPasswordPlaceholder":  "Yeni Şifreyi Onayla",
     "cancelAction":               "İptal",
+    "footerText":                 "",
     "successText":                "Size şifrenizi sıfırlamanız için bir e-posta yolladık.",
     "enterSamePasswordText":      "Lütfen aynı şifreyi tekrar giriniz.",
     "headerText":                 "Lütfen e-posta adresinizi ve yeni şifrenizi giriniz. Size şifre değişikliğini onaylamak için bir e-posta yollayacağız.",
     "serverErrorText":            "Şifre sıfırlama işlemi sırasında bir hatayla karşılaşıldı.",
-    "userDoesNotExistErrorText":  "Böyle bir kullanıcı bulunamadı."
+    "userDoesNotExistErrorText":  "Böyle bir kullanıcı bulunamadı.",
+    "invalidPassword":            "Şifre çok zayıf."
   }
 }

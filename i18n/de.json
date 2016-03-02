@@ -33,16 +33,30 @@
     "signupOnSSODomainErrorText": "Die Domain {domain} wurde für Single Sign On konfiguriert. Sie können daher kein neues Konto erstellen. Bitte versuchen Sie stattdessen sich direkt anzumelden.",
     "serverErrorText": "Es gab einen Fehler beim Verarbeiten der Daten auf dem Server."
   },
-  "reset": {
+  "newReset": {
     "title": "Passwort zurücksetzen",
+    "action": "Senden",
+    "emailPlaceholder": "E-Mail Adresse",
+    "cancelAction": "Abbrechen",
+    "footerText": "",
+    "successText": "Wir haben Ihnen eine E-Mail zum Zurücksetzen Ihres Passworts geschickt.",
+    "headerText": "Geben Sie bitte Ihre Email-Adresse ein. Wir werden Ihnen eine E-Mail senden Ihr Passwort zurückzusetzen .",
+    "serverErrorText": "Es gab einen Fehler beim Verarbeiten des neuen Passworts.",
+    "userDoesNotExistErrorText": "Benutzer existiert nicht."
+  },
+  "reset": {
+    "title": "Passwort ändern",
     "action": "Senden",
     "emailPlaceholder": "E-Mail Adresse",
     "passwordPlaceholder": "Neues Passwort",
     "repeatPasswordPlaceholder": "Neues Passwort bestätigen",
     "cancelAction": "Abbrechen",
+    "footerText": "",
     "successText": "Wir haben Ihnen eine E-Mail zum Zurücksetzen Ihres Passworts geschickt.",
     "enterSamePasswordText": "Bitte geben Sie das gleiche Passwort erneut ein.",
     "headerText": "Bitte geben Sie Ihre E-Mail Adresse und das neue Passwort ein. Wir senden Ihnen dann eine E-Mail zur Bestätigung der Passwortänderung.",
-    "serverErrorText": "Es gab einen Fehler beim Verarbeiten des neuen Passworts."
+    "serverErrorText": "Es gab einen Fehler beim Verarbeiten des neuen Passworts.",
+    "userDoesNotExistErrorText": "Benutzer existiert nicht.",
+    "invalidPassword": "Kennwort ist zu schwach."
   }
 }
