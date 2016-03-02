@@ -61,10 +61,10 @@ reload.addEventListener("click", function(event) {
   if (div.querySelector(".auth0-lock.auth0-lock-opened")) {
     view.lock.close();
     setTimeout(function() {
-      view.lock[view.mode](view.opts);
+      view.lock.show();
     }, 1200);
   } else {
-    view.lock[view.mode](view.opts);
+    view.lock.show();
   }
 }, false);
 
@@ -73,8 +73,9 @@ var views = [];
 function addLock(mode, opts) {
   opts = opts || {};
   opts.mobile = true;
-  var lock = new Auth0LockPasswordless(cid, domain);
-  lock[mode](opts);
+  opts.mode = mode;
+  var lock = new Auth0LockPasswordless(cid, domain, opts);
+  lock.show();
   views.push({lock: lock, mode: mode, opts: opts});
 
   var option = document.createElement("option");
