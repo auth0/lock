@@ -1,7 +1,7 @@
 {
   "//": "This is an automatic translation. Help us to improve it.",
   "loadingTitle": "DubelmoHchugh loS.",
-  "noConnectionError": "No valid connection could be found.",
+  "noConnectionError": "laH tu' valid pagh connection.",
   "close": "SoQmoH",
   "signin": {
     "title": "qI'",
@@ -37,16 +37,30 @@
     "enterpriseEmailWarningText": "configured {domain} yer Vas qI' 'ej account pagh chenmoH SoH. nID, qI' instead.",
     "serverErrorText": "Qagh qI' mIw Ha' tu'lu'."
   },
-  "reset": {
+  "newReset": {
     "title": "mu'wIj reset",
+    "action": "ngeH",
+    "emailPlaceholder": "email",
+    "cancelAction": "qIl",
+    "footerText": "",
+    "successText": "jIboQqang reset mu'wIj neH ngeH SoH maH.",
+    "headerText": "nuqneH email SoQ 'el. jIboQqang mu'wIj reset ngeH SoH maH.",
+    "serverErrorText": "Qagh reset mu'wIj mIw tu'lu'.",
+    "userDoesNotExistErrorText": "wej nIv'e' user."
+  },
+  "reset": {
+    "title": "mu'wIj choH",
     "action": "ngeH",
     "emailPlaceholder": "email",
     "passwordPlaceholder": "mu'wIj chu'",
     "repeatPasswordPlaceholder": "mu'wIj chu' confirm",
     "cancelAction": "qIl",
+    "footerText": "",
     "successText": "jIboQqang reset mu'wIj neH ngeH SoH maH.",
     "enterSamePasswordText": "DubelmoHchugh mu'wIj rap 'el.",
     "headerText": "nuqneH email chu' mu'wIj je. jIboQqang mu'wIj choH confirm ngeH SoH maH.",
-    "serverErrorText": "Qagh reset mu'wIj mIw tu'lu'."
+    "serverErrorText": "Qagh reset mu'wIj mIw tu'lu'.",
+    "userDoesNotExistErrorText": "wej nIv'e' user.",
+    "invalidPassword": "mu'wIj puj je."
   }
 }

@@ -69,8 +69,19 @@
     }
 
   },
+  "newReset": {
+    "title":                       "Password Reset",
+    "action":                      "Send",
+    "emailPlaceholder":            "Email",
+    "cancelAction":                "Cancel",
+    "footerText":                  "",
+    "successText":                 "We've just sent you an email to reset your password.",
+    "headerText":                  "Please enter your email address. We will send you an email to reset your password.",
+    "serverErrorText":             "There was an error processing the password reset.",
+    "userDoesNotExistErrorText":   "User does not exist."
+  },
   "reset": {
-    "title":                       "Reset Password",
+    "title":                       "Password Change",
     "action":                      "Send",
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "New Password",

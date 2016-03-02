@@ -61,13 +61,25 @@
       "identicalChars": "Pas plus de %d caractères identiques à la suite (ex. : \"%s\" n'est pas autorisé)"
     }
   },
-  "reset": {
+  "newReset": {
     "title": "Réinitialiser votre mot de passe",
+    "action": "Envoyer",
+    "emailPlaceholder": "Courriel",
+    "cancelAction": "Annuler",
+    "footerText": "",
+    "successText": "Vous allez recevoir sous quelques minutes un courriel vous indiquant comment réinitialiser votre mot de passe.",
+    "headerText": "S'il vous plaît entrer votre e-mail. Nous vous enverrons vous de continuer avec le changement de mot de passe.",
+    "serverErrorText": "Erreur de traitement los de réinitialisation du mot de passe.",
+    "userDoesNotExistErrorText": "Utilisateur introuvable."
+  },
+  "reset": {
+    "title": "Changez votre mot de passe",
     "action": "Envoyer",
     "emailPlaceholder": "Courriel",
     "passwordPlaceholder": "Nouveau mot de passe",
     "repeatPasswordPlaceholder": "Confirmer le nouveau mot de passe",
     "cancelAction": "Annuler",
+    "footerText": "",
     "successText": "Vous allez recevoir sous quelques minutes un courriel vous indiquant comment réinitialiser votre mot de passe.",
     "enterSamePasswordText": "S'il vous plaît entrez le même mot de passe.",
     "headerText": "Veuillez saisir votre courriel et mot de passe. Nous vous enverrons un courriel pour confirmer le changement de mot de passe.",
