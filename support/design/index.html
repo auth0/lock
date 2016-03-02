@@ -121,68 +121,95 @@ body {
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
    container: "classic-container",
    mode: "classic"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["Username-Password-Authentication"],
    container: "database-container",
    dict: {
      emailAndPassword: {
        footerText: terms
      }
    },
-   mode: "database",
+   mode: "classic",
    rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["Username-Password-Authentication"],
    container: "last-login-database-container",
-   mode: "database"
+   mode: "classic"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   closable: true,
+   connections: ["email"],
    container: "emailcode-container",
    dict: {
      email: {
        footerText: terms
      }
    },
-   closable: true,
-   mode: "emailcode"
+   mode: "passwordless",
+   rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
    container: "magiclink-container",
+   connections: ["email"],
    dict: {
      footerText: terms
    },
-   mode: "magiclink"
+   mode: "passwordless",
+   rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["sms"],
    container: "sms-container",
-   mode: "sms"
+   mode: "passwordless",
+   rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["facebook", "twitter", "github", "google-oauth2"],
    container: "social-container",
    mode: "social",
+   rememberLastLogin: false,
    socialBigButtons: true
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["email", "facebook", "twitter", "github"],
    container: "socialOrEmailcode-container",
-   mode: "socialOrEmailcode"
+   mode: "passwordless",
+   rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["email", "facebook", "twitter", "github"],
    container: "socialOrMagiclink-container",
-   mode: "socialOrMagiclink"
+   mode: "passwordless",
+   rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["sms", "facebook", "twitter", "github"],
    container: "socialOrSms-container",
-   mode: "socialOrSms"
+   mode: "passwordless",
+   rememberLastLogin: false
  }).show();
 </script>

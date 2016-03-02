@@ -79,3 +79,14 @@ export function setPasswordlessStarted(m, value) {
 export function passwordlessStarted(m) {
   return tget(m, "passwordlessStarted", false);
 }
+
+export function passwordlessConnection(m) {
+  return l.getEnabledConnections(m, "passwordless").get(0, Map());
+}
+
+export function isEmail(m) {
+  const c = passwordlessConnection(m);
+  return c.isEmpty()
+    ? undefined
+    : c.get("strategy") === "email";
+}
