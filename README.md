@@ -39,14 +39,11 @@ bower install auth0-lock
 Or our CDN:
 
 ```html
-<!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-8.min.js"></script>
-
 <!-- Latest minor release -->
-<script src="http://cdn.auth0.com/js/lock-8.x.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-9.x.min.js"></script>
 
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-8.x.y.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-9.x.y.min.js"></script>
 ```
 
 If you are targeting mobile audiences, it's recommended that you add:
