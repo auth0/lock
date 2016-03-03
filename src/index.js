@@ -13,10 +13,6 @@ import {
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 
-// modes
-import ClassicPlugin from './plugin/classic/plugin.js';
-import PasswordlessPlugin from './plugin/passwordless/plugin.js';
-
 // telemetry
 import Auth0 from 'auth0-js';
 
@@ -32,8 +28,8 @@ if (style.styleSheet) {
   style.appendChild(document.createTextNode(css));
 }
 
-export default class Auth0LockPasswordless extends EventEmitter {
-  constructor(clientID, domain, options = {}, signInCallback = () => {}) {
+export default class Base extends EventEmitter {
+  constructor(mode, clientID, domain, options = {}, signInCallback = () => {}) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
     }
@@ -51,9 +47,10 @@ export default class Auth0LockPasswordless extends EventEmitter {
     super();
 
     this.id = idu.incremental();
-    const { plugins } = Auth0LockPasswordless;
+    const { plugins } = Base;
     const hookRunner = plugins.execHook.bind(plugins);
     const emitEventFn = this.emit.bind(this);
+    options.mode = mode;
     setupLock(this.id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
   }
 
@@ -62,7 +59,7 @@ export default class Auth0LockPasswordless extends EventEmitter {
   }
 
   close() {
-    const f = Auth0LockPasswordless.plugins.closeFn(this.plugin);
+    const f = Base.plugins.closeFn(this.plugin);
     f(this.id, true);
   }
 
@@ -91,16 +88,11 @@ export default class Auth0LockPasswordless extends EventEmitter {
   }
 }
 
-Auth0LockPasswordless.plugins = new PluginManager(Auth0LockPasswordless.prototype);
-// TODO: do we need to store this stuff?
-Auth0LockPasswordless.renderer = new Renderer();
-Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordless);
-
-// modes
-Auth0LockPasswordless.plugins.register(ClassicPlugin);
-Auth0LockPasswordless.plugins.register(PasswordlessPlugin);
+Base.plugins = new PluginManager(Base.prototype);
+Base.renderer = new Renderer();
+Base.renderScheduler = new RenderScheduler(Base);
 
 // telemetry
-Auth0LockPasswordless.version = __VERSION__;
+Base.version = __VERSION__;
 Auth0.clientInfo.name +=  " (LockPasswordless)";
 Auth0.clientInfo.version += ` (${__VERSION__})`;

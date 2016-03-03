@@ -70,10 +70,10 @@ reload.addEventListener("click", function(event) {
 
 var views = [];
 
-function addLock(name, opts) {
+function addLock(constructor, name, opts) {
   opts = opts || {};
   opts.mobile = true;
-  var lock = new Auth0LockPasswordless(cid, domain, opts);
+  var lock = new constructor(cid, domain, opts);
   lock.show();
   views.push({lock: lock, name: name, opts: opts});
 
@@ -83,17 +83,24 @@ function addLock(name, opts) {
   select.appendChild(option);
 }
 
+function addLockClassic(name, opts) {
+  return addLock(Auth0Lock, name, opts)
+}
+
+function addLockPasswordless(name, opts) {
+  return addLock(Auth0LockPasswordless, name, opts)
+}
+
 var cid = "1";
 var domain = "1";
 var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
-addLock("classic", {
+addLockClassic("classic", {
   authentication: { redirect: false },
-  connections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
-  mode: "classic"
+  connections: ["Username-Password-Authentication", "facebook", "twitter", "github"]
 });
 
-addLock("database", {
+addLockClassic("database", {
   authentication: { redirect: false },
   connections: ["Username-Password-Authentication"],
   dict: {
@@ -101,17 +108,15 @@ addLock("database", {
       footerText: terms
     }
   },
-  mode: "classic",
   rememberLastLogin: false
 });
 
-addLock("lastLoginDatabase", {
+addLockClassic("lastLoginDatabase", {
   authentication: { redirect: false },
-  connections: ["Username-Password-Authentication"],
-  mode: "classic"
+  connections: ["Username-Password-Authentication"]
 });
 
-addLock("emailcode", {
+addLockPasswordless("emailcode", {
   authentication: { redirect: false, send: "code" },
   connections: ["email"],
   dict: {
@@ -119,11 +124,10 @@ addLock("emailcode", {
       footerText: terms
     }
   },
-  mode: "passwordless",
   rememberLastLogin: false
 });
 
-addLock("magiclink", {
+addLockPasswordless("magiclink", {
   authentication: { redirect: false },
   connections: ["email"],
   dict: {
@@ -131,43 +135,37 @@ addLock("magiclink", {
       footerText: terms
     }
   },
-  mode: "passwordless",
   rememberLastLogin: false
 });
 
-addLock("sms", {
+addLockPasswordless("sms", {
   authentication: { redirect: false },
   connections: ["sms"],
-  mode: "passwordless",
   rememberLastLogin: false
 });
 
-addLock("social", {
+addLockPasswordless("social", {
   authentication: { redirect: false },
   connections: ["facebook", "twitter", "github", "google-oauth2"],
-  mode: "classic",
   rememberLastLogin: false,
   socialBigButtons: true
 });
 
-addLock("socialOrEmailcode", {
+addLockPasswordless("socialOrEmailcode", {
   authentication: { redirect: false, send: "code" },
   connections: ["email", "facebook", "twitter", "github"],
-  mode: "passwordless",
   rememberLastLogin: false
 });
 
-addLock("socialOrMagiclink", {
+addLockPasswordless("socialOrMagiclink", {
   authentication: { redirect: false },
   connections: ["email", "facebook", "twitter", "github"],
-  mode: "passwordless",
   rememberLastLogin: false
 });
 
-addLock("socialOrSms", {
+addLockPasswordless("socialOrSms", {
   authentication: { redirect: false },
   connections: ["sms", "facebook", "twitter", "github"],
-  mode: "passwordless",
   rememberLastLogin: false
 });
 

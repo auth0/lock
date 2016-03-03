@@ -120,14 +120,13 @@ body {
  var domain = "1";
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
- new Auth0LockPasswordless(cid, domain, {
+ new Auth0Lock(cid, domain, {
    authentication: { redirect: false },
    connections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
-   container: "classic-container",
-   mode: "classic"
+   container: "classic-container"
  }).show();
 
- new Auth0LockPasswordless(cid, domain, {
+ new Auth0Lock(cid, domain, {
    authentication: { redirect: false },
    connections: ["Username-Password-Authentication"],
    container: "database-container",
@@ -136,15 +135,13 @@ body {
        footerText: terms
      }
    },
-   mode: "classic",
    rememberLastLogin: false
  }).show();
 
- new Auth0LockPasswordless(cid, domain, {
+ new Auth0Lock(cid, domain, {
    authentication: { redirect: false },
    connections: ["Username-Password-Authentication"],
-   container: "last-login-database-container",
-   mode: "classic"
+   container: "last-login-database-container"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
@@ -157,7 +154,6 @@ body {
        footerText: terms
      }
    },
-   mode: "passwordless",
    rememberLastLogin: false
  }).show();
 
@@ -168,7 +164,6 @@ body {
    dict: {
      footerText: terms
    },
-   mode: "passwordless",
    rememberLastLogin: false
  }).show();
 
@@ -176,7 +171,6 @@ body {
    authentication: { redirect: false },
    connections: ["sms"],
    container: "sms-container",
-   mode: "passwordless",
    rememberLastLogin: false
  }).show();
 
@@ -184,7 +178,6 @@ body {
    authentication: { redirect: false },
    connections: ["facebook", "twitter", "github", "google-oauth2"],
    container: "social-container",
-   mode: "classic",
    rememberLastLogin: false,
    socialBigButtons: true
  }).show();
@@ -193,7 +186,6 @@ body {
    authentication: { redirect: false, send: "code" },
    connections: ["email", "facebook", "twitter", "github"],
    container: "socialOrEmailcode-container",
-   mode: "passwordless",
    rememberLastLogin: false
  }).show();
 
@@ -201,7 +193,6 @@ body {
    authentication: { redirect: false },
    connections: ["email", "facebook", "twitter", "github"],
    container: "socialOrMagiclink-container",
-   mode: "passwordless",
    rememberLastLogin: false
  }).show();
 
@@ -209,7 +200,6 @@ body {
    authentication: { redirect: false },
    connections: ["sms", "facebook", "twitter", "github"],
    container: "socialOrSms-container",
-   mode: "passwordless",
    rememberLastLogin: false
  }).show();
 </script>

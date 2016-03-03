@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Immutable from 'immutable';
-import Auth0LockPasswordless from '../../src/index';
+import _ from '../../src/browser';
 import Control, { store } from './control';
-import browser from '../../src/browser';
 import * as ClientSettings from '../../src/lock/client/settings';
 import webAPI from '../../src/lock/web_api';
 const WebAPI = webAPI.constructor;
