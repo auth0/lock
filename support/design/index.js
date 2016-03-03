@@ -84,7 +84,8 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
             showSignup: true,
             signup_url: "https://signup.com",
             forgot_password_url: "https://forgotpassword.com",
-            name: "Username-Password-Authentication"
+            name: "Username-Password-Authentication",
+            passwordPolicy: "fair"
           }
         ],
         name: "auth0"
