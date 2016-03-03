@@ -1,3 +1,16 @@
+## [8.3.0] - 2016-03-03
+
+### Fixed
+
+- [] Merge pull request #328 from auth0/v8-new-password-flow (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/89e3e9d27cd696e64c3b459664ddb9c8a928ae49
+- [] Fix deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d559ec44e87d27a47abee2e3ba386d09f81d8c41
+- [] Add new password reset flow (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/09f14ac78b9ed7d7ea2aecafc6089f29c04aaa42
+- [] Use working branch on deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/33334f99b806d0127e60208a1ece7ed172a54a37
+
 ## [8.2.3] - 2016-02-04
 
 ### Fixed
