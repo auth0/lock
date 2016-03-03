@@ -6,10 +6,16 @@ import { dataFns } from '../utils/data_utils';
 const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
 
 export function initPasswordless(m, opts) {
-  // TODO: validate send option
-  return opts.send
-    ? initNS(m, Map({send: opts.send}))
-    : m;
+  if (opts && opts.authentication && opts.authentication.send) {
+    const send = opts.authentication.send;
+    if (send === "link" || send === "code") {
+      return initNS(m, Map({send: send}));
+    }
+
+    // TODO: show warning if an invalid send option was provided
+  }
+
+  return m;
 }
 
 function setResendStatus(m, value) {
@@ -63,9 +69,7 @@ export function restartPasswordless(m) {
 }
 
 export function send(m) {
-  // TODO: maybe it's better to explicitly set send = "link" during
-  // initialization.
-  return get(m, "send", "link");
+  return get(m, "send", isEmail(m) ? "link" : "code");
 }
 
 export function isSendLink(m) {

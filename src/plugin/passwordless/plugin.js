@@ -28,8 +28,7 @@ export default class PasswordlessPlugin extends Plugin {
   didInitialize(model, options) {
     model = setInitialPhoneLocation(model, options);
     model = initSocial(model, options);
-    // TODO: should be link for magiclink
-    model = initPasswordless(model, {send: "code"});
+    model = initPasswordless(model, options);
     this.setModel(model);
   }
 
@@ -41,6 +40,9 @@ export default class PasswordlessPlugin extends Plugin {
       // TODO: improve message
       throw new Error("At least one database or passwordless connection needs to be available.");
     }
+
+    // TODO: check for the send option and emit warning if we have a sms
+    // connection.
   }
 
   render(m) {

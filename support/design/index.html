@@ -148,7 +148,7 @@ body {
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
+   authentication: { redirect: false, send: "code" },
    closable: true,
    connections: ["email"],
    container: "emailcode-container",
@@ -190,7 +190,7 @@ body {
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
+   authentication: { redirect: false, send: "code" },
    connections: ["email", "facebook", "twitter", "github"],
    container: "socialOrEmailcode-container",
    mode: "passwordless",
