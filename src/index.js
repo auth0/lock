@@ -17,13 +17,6 @@ import webAPI from './lock/web_api';
 import ClassicPlugin from './plugin/classic/plugin.js';
 import PasswordlessPlugin from './plugin/passwordless/plugin.js';
 
-
-import DatabaseMode from './database/mode';
-import EmailcodeMode from './passwordless/emailcode/mode';
-import MagiclinkMode from './passwordless/magiclink/mode';
-import SmsMode from './passwordless/sms/mode';
-import SocialMode from './social/mode';
-
 // telemetry
 import Auth0 from 'auth0-js';
 
@@ -106,14 +99,6 @@ Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordles
 // modes
 Auth0LockPasswordless.plugins.register(ClassicPlugin);
 Auth0LockPasswordless.plugins.register(PasswordlessPlugin);
-
-Auth0LockPasswordless.plugins.register(DatabaseMode);
-Auth0LockPasswordless.plugins.register(EmailcodeMode);
-Auth0LockPasswordless.plugins.register(MagiclinkMode);
-Auth0LockPasswordless.plugins.register(SmsMode);
-Auth0LockPasswordless.plugins.register(SocialMode);
-
-
 
 // telemetry
 Auth0LockPasswordless.version = __VERSION__;
