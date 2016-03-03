@@ -66,8 +66,19 @@
     }
 
   },
-  "reset": {
+  "newReset": {
     "title":                       "Nollställ lösenord",
+    "action":                      "Skicka",
+    "emailPlaceholder":            "E-post",
+    "cancelAction":                "Avbryt",
+    "footerText":                  "",
+    "successText":                 "Vi skickade precis ett e-post till dig så du kan nollställa ditt lösenord.",
+    "headerText":                  "Var god skriv in din e-postadress. Vi kommer att skicka ett e-postmeddelande för att återställa ditt lösenord.",
+    "serverErrorText":             "Något blev fel när vi försökte nollställa lösenordet.",
+    "userDoesNotExistErrorText":   "Användare finns inte."
+  },
+  "reset": {
+    "title":                       "Byt lösenord",
     "action":                      "Skicka",
     "emailPlaceholder":            "E-post",
     "passwordPlaceholder":         "Nytt lösenord",

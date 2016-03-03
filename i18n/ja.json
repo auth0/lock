@@ -50,16 +50,30 @@
     }
 
   },
-  "reset": {
+  "newReset": {
     "title": "パスワードのリセット",
+    "action": "送信",
+    "emailPlaceholder": "電子メール",
+    "cancelAction": "キャンセル",
+    "footerText": "",
+    "successText": "我々 はちょうどあなたのパスワードをリセットするメールを送信しました。",
+    "headerText": "あなたのメールアドレスを入力してください。私たちはあなたのパスワードをリセットするためのメールが送信されます。",
+    "serverErrorText": "パスワードのリセットを処理中にエラーがありました。",
+    "userDoesNotExistErrorText": "使用者はいません。"
+  },
+  "reset": {
+    "title": "パスワードを変更する",
     "action": "送信",
     "emailPlaceholder": "電子メール",
     "passwordPlaceholder": "新しいパスワード",
     "repeatPasswordPlaceholder": "新しいパスワードを確認します。",
     "cancelAction": "キャンセル",
+    "footerText": "",
     "successText": "我々 はちょうどあなたのパスワードをリセットするメールを送信しました。",
     "enterSamePasswordText": "同じパスワードを入力してください。",
     "headerText": "あなたのメール アドレスと新しいパスワードを入力してください。我々 は、パスワードの変更を確認するためにメールが送信されます。",
-    "serverErrorText": "パスワードのリセットを処理中にエラーがありました。"
+    "serverErrorText": "パスワードのリセットを処理中にエラーがありました。",
+    "userDoesNotExistErrorText": "使用者はいません。",
+    "invalidPassword": "パスワードが弱すぎます。"
   }
 }

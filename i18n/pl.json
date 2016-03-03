@@ -67,8 +67,19 @@
     }
 
   },
-  "reset": {
+  "newReset": {
     "title":                       "Reset hasła",
+    "action":                      "Wyślij",
+    "emailPlaceholder":            "Email",
+    "cancelAction":                "Porzuć",
+    "footerText":                  "",
+    "successText":                 "Wysłaliśmy Ci email, abyś potwierdził zmianę hasła.",
+    "headerText":                  "Podaj swój adres e-mail. Wyślemy Ci e-mail, aby zresetować hasło.",
+    "serverErrorText":             "Wystąpił błąd podczas resetowania hasła.",
+    "userDoesNotExistErrorText":   "Użytkownik nie istnieje."
+  },
+  "reset": {
+    "title":                       "Zmień swoje hasło",
     "action":                      "Wyślij",
     "emailPlaceholder":            "Email",
     "passwordPlaceholder":         "Nowe hasło",
