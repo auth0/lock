@@ -25,6 +25,7 @@ else
     git tag "$TAG_NAME" -m "$LAST_COMMIT"
     git checkout ${WORKING_BRANCH:-master}
     git push origin $TAG_NAME
+    git checkout master
     git branch -D dist
 fi
 
