@@ -63,6 +63,17 @@
     }
 
   },
+  "newReset": {
+    "title":                       "忘記密碼",
+    "action":                      "發送",
+    "emailPlaceholder":            "電子郵件",
+    "cancelAction":                "取消",
+    "footerText":                  "",
+    "successText":                 "我們已寄送重置密碼的確認信至您的電子郵件信箱，請前往收取。",
+    "serverErrorText":             "重置密碼系統發生錯誤，請聯絡系統管理員。",
+    "headerText":                  "请输入您的电子邮件地址。我们会向您发送电子邮件重设密码。",
+    "userDoesNotExistErrorText":   "帳號不存在。"
+  },
   "reset": {
     "title":                       "忘記密碼",
     "action":                      "發送",

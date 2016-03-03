@@ -39,6 +39,17 @@
     "serverErrorText":             "Hubo un error al procesar su registro.",
     "userExistsErrorText":         "El usuario ya existe."
   },
+  "newReset": {
+    "title":                       "Restablecer Contraseña",
+    "action":                      "Enviar",
+    "emailPlaceholder":            "Email",
+    "cancelAction":                "Cancelar",
+    "footerText":                  "",
+    "successText":                 "Hemos enviado un email para completar el restablecimiento de su contraseña.",
+    "headerText":                  "Por favor ingrese su email. Enviaremos un email para realizar el cambio.",
+    "serverErrorText":             "Hubo un error al restablecer su contraseña.",
+    "userDoesNotExistErrorText":   "Usuario inválido."
+  },
   "reset": {
     "title":                       "Restablecer Contraseña",
     "action":                      "Enviar",
@@ -46,10 +57,12 @@
     "passwordPlaceholder":         "Nueva Contraseña",
     "repeatPasswordPlaceholder":   "Confirme nueva contraseña",
     "cancelAction":                "Cancelar",
+    "footerText":                  "",
     "successText":                 "Hemos enviado un email para completar el restablecimiento de su contraseña.",
     "enterSamePasswordText":       "Por favor ingrese la misma contraseña.",
     "headerText":                  "Por favor ingrese su email y la nueva contraseña. Enviaremos un email para confirmar el cambio.",
     "serverErrorText":             "Hubo un error al restablecer su contraseña.",
-    "userDoesNotExistErrorText":   "Usuario inválido."
+    "userDoesNotExistErrorText":   "Usuario inválido.",
+    "invalidPassword":             "La contraseña ingresada es muy débil."
   }
 }

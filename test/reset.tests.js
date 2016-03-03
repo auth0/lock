@@ -109,6 +109,83 @@ describe('reset', function () {
   });
   });
 
+  describe('Reset widget (new flow)', function() {
+
+    it('should show the loading pane on submit', function (done) {
+    var widget = this.widget;
+    var readyLoading = false;
+
+    this.client.changePassword = function(options, callback) {
+      callback(null, "success message");
+    };
+
+    widget
+    .once('reset ready', function () {
+      $('#a0-reset_easy_email').val('ohmy@mandatory.com');
+
+      widget
+      .once('loading ready', function () {
+        readyLoading = true;
+        expect($('#a0-lock h1').html()).to.be(widget.options.i18n.t('newReset:title'));
+      });
+
+      bean.fire($('.a0-reset form')[0], 'submit');
+    })
+    .showReset({useNewReset: true}, onsuccess);
+
+    function onsuccess() {
+      expect(readyLoading).to.be(true);
+      done();
+    }
+  });
+
+  it('should invoke callback function when reset is successfull', function(done) {
+    var widget = this.widget;
+
+    // mock success from reset password
+    this.client.changePassword = function(options, callback) {
+      callback(null, "success message");
+    }
+
+    widget
+    .once('reset ready', function () {
+      $('#a0-reset_easy_email').val('ohmy@mandatory.com');
+
+      bean.fire($('.a0-reset form')[0], 'submit');
+    })
+    .showReset({useNewReset: true}, onsuccess);
+
+    function onsuccess(err, message) {
+      expect(err).to.equal(null);
+      expect(message).to.not.be(undefined);
+      done();
+    }
+  });
+
+  it('should invoke callback function with error when reset errors', function(done) {
+    var widget = this.widget;
+
+    // mock error from reset password
+    this.client.changePassword = function(options, callback) {
+      callback(new Error('Email does not exist'))
+    }
+
+    widget
+    .once('reset ready', function () {
+      $('#a0-reset_easy_email').val('unregistered@email.com');
+
+      bean.fire($('.a0-reset form')[0], 'submit');
+    })
+    .showReset({useNewReset: true}, onerror);
+
+    function onerror(err, message) {
+      expect(err).to.not.be(null);
+      expect(message).to.be(undefined);
+      done();
+    }
+  });
+  });
+
   describe('when requires_username is enabled', function() {
 
     beforeEach(function() {
@@ -216,6 +293,100 @@ describe('reset', function () {
         $('#a0-reset_easy_email').val(email);
         $('#a0-reset_easy_password').val(password);
         $('#a0-reset_easy_repeat_password').val(password);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+      })
+      .showReset(this.options);
+    });
+  });
+
+  describe('when requires_username is enabled (new flow)', function() {
+
+    beforeEach(function() {
+      // Mock `_isUsernameRequired` so it asumes database has enabled
+      // requires_username on it's configuration
+      this.options._isUsernameRequired = function() { return true; };
+      this.options.useNewReset = true;
+    });
+
+    it('should invalidate an empty username', function (done) {
+      var auth0 = this.widget;
+      var email = 'pepo@example.com';
+
+      auth0
+      .once('reset ready', function() {
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        done();
+      })
+      .showReset(this.options);
+    });
+
+    it('should invalidate an invalid username', function (done) {
+      var auth0 = this.widget;
+      var username = '1.1.1.1';
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(username);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        done();
+      })
+      .showReset(this.options);
+    });
+
+    it('should still invalidate an invalid email', function (done) {
+      var auth0 = this.widget;
+      var email = 'pepo@example';
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(email);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+
+        expect($('.a0-email .a0-error-input')).to.not.be.empty();
+        done();
+      })
+      .showReset(this.options);
+    });
+
+    it('should send valid username on submit', function (done) {
+      var auth0 = this.widget;
+      var username = 'pepe';
+      var email = 'pepo@example.com';
+
+      this.client.changePassword = function(options) {
+        expect(options.username).to.equal(username);
+        done();
+      }
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(username);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+      })
+      .showReset(this.options);
+    });
+
+    it('should still send valid email on submit', function (done) {
+      var auth0 = this.widget;
+      var email = 'pepo@example.com';
+
+      this.client.changePassword = function(options) {
+        expect(options.username).to.equal(email);
+        done();
+      }
+
+      auth0
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(email);
 
         bean.fire($('.a0-reset form')[0], 'submit');
       })
@@ -375,4 +546,84 @@ describe('reset', function () {
 
   });
 
+  describe('Events (new flow)', function() {
+    beforeEach(function() {
+      this.options.useNewReset = true;
+    });
+
+    it('should fire up an submit event on submit', function(done) {
+        var auth0 = this.widget;
+        var email = 'pepo@example.com';
+
+        this.client.changePassword = function() {};
+
+        auth0
+        .once('reset submit', function(opts) {
+          expect(opts).to.not.be(undefined);
+          done();
+        })
+        .once('reset ready', function() {
+          $('#a0-reset_easy_email').val(email);
+
+          bean.fire($('.a0-reset form')[0], 'submit');
+        })
+        .showReset(this.options);
+    });
+
+
+    it('should fire up an error event on email invalid', function(done) {
+        var auth0 = this.widget;
+        var email = 'pepo!&&*example.com';
+
+        auth0
+        .once('reset error', function(err) {
+          expect(err.message).to.be('email invalid');
+          done();
+        })
+        .once('reset ready', function() {
+          $('#a0-reset_easy_email').val(email);
+
+          bean.fire($('.a0-reset form')[0], 'submit');
+        })
+        .showReset(this.options);
+    });
+
+    it('should fire up an error event on username empty', function (done) {
+      var auth0 = this.widget;
+      var email = 'pepo@example.com';
+
+      this.options._isUsernameRequired = function() { return true; };
+
+      auth0
+      .once('reset error', function(err) {
+        expect(err.message).to.be('username empty');
+        done();
+      })
+      .once('reset ready', function() {
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+      })
+      .showReset(this.options);
+    });
+
+    it('should fire up an error event on username invalid', function (done) {
+      var auth0 = this.widget;
+      var username = '1.1.1.1';
+
+      this.options._isUsernameRequired = function() { return true; };
+
+      auth0
+      .once('reset error', function(err) {
+        expect(err.message).to.be('username invalid');
+        done();
+      })
+      .once('reset ready', function() {
+        $('#a0-reset_easy_email').val(username);
+
+        bean.fire($('.a0-reset form')[0], 'submit');
+      })
+      .showReset(this.options);
+    });
+
+  });
 });

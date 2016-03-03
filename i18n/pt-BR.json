@@ -61,6 +61,17 @@
     }
     
   },
+  "newReset": {
+    "title":                       "Redefinir senha",
+    "action":                      "Enviar",
+    "emailPlaceholder":            "E-mail",
+    "cancelAction":                "Cancelar",
+    "footerText":                  "",
+    "successText":                 "Te enviamos um e-mail para redefinir sua senha.",
+    "headerText":                  "Por favor, informe o e-mail. Nós enviaremos um e-mail para para redefinir sua senha.",
+    "serverErrorText":             "Ocorreu um erro durante a redefinição de senha.",
+    "userDoesNotExistErrorText":   "Usuário não existe."
+  },
   "reset": {
     "title":                       "Redefinir senha",
     "action":                      "Enviar",
@@ -68,6 +79,7 @@
     "passwordPlaceholder":         "Nova senha",
     "repeatPasswordPlaceholder":   "Confirmar nova senha",
     "cancelAction":                "Cancelar",
+    "footerText":                  "",
     "successText":                 "Te enviamos um e-mail para redefinir sua senha.",
     "enterSamePasswordText":       "Por favor, use a mesma senha.",
     "headerText":                  "Por favor, informe o e-mail e a nova senha. Nós enviaremos um e-mail para você confirmar a alteração de senha.",
