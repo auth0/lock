@@ -70,16 +70,15 @@ reload.addEventListener("click", function(event) {
 
 var views = [];
 
-function addLock(mode, opts) {
+function addLock(name, opts) {
   opts = opts || {};
   opts.mobile = true;
-  opts.mode = mode;
   var lock = new Auth0LockPasswordless(cid, domain, opts);
   lock.show();
-  views.push({lock: lock, mode: mode, opts: opts});
+  views.push({lock: lock, name: name, opts: opts});
 
   var option = document.createElement("option");
-  option.textContent = mode;
+  option.textContent = name;
   option.value = views.length;
   select.appendChild(option);
 }
@@ -88,39 +87,88 @@ var cid = "1";
 var domain = "1";
 var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
+addLock("classic", {
+  authentication: { redirect: false },
+  connections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
+  mode: "classic"
+});
+
+addLock("database", {
+  authentication: { redirect: false },
+  connections: ["Username-Password-Authentication"],
+  dict: {
+    emailAndPassword: {
+      footerText: terms
+    }
+  },
+  mode: "classic",
+  rememberLastLogin: false
+});
+
+addLock("lastLoginDatabase", {
+  authentication: { redirect: false },
+  connections: ["Username-Password-Authentication"],
+  mode: "classic"
+});
+
 addLock("emailcode", {
+  authentication: { redirect: false, send: "code" },
+  connections: ["email"],
   dict: {
     email: {
       footerText: terms
     }
-  }
+  },
+  mode: "passwordless",
+  rememberLastLogin: false
 });
 
 addLock("magiclink", {
+  authentication: { redirect: false },
+  connections: ["email"],
   dict: {
     email: {
       footerText: terms
     }
-  }
+  },
+  mode: "passwordless",
+  rememberLastLogin: false
 });
 
-addLock("sms");
+addLock("sms", {
+  authentication: { redirect: false },
+  connections: ["sms"],
+  mode: "passwordless",
+  rememberLastLogin: false
+});
 
 addLock("social", {
-  socialConnections: ["facebook", "github", "google-oauth2", "twitter"],
+  authentication: { redirect: false },
+  connections: ["facebook", "twitter", "github", "google-oauth2"],
+  mode: "classic",
+  rememberLastLogin: false,
   socialBigButtons: true
 });
 
 addLock("socialOrEmailcode", {
-  socialConnections: ["facebook", "github", "google-oauth2", "yahoo"],
+  authentication: { redirect: false, send: "code" },
+  connections: ["email", "facebook", "twitter", "github"],
+  mode: "passwordless",
+  rememberLastLogin: false
 });
 
 addLock("socialOrMagiclink", {
-  socialConnections: ["facebook", "github", "google-oauth2"]
+  authentication: { redirect: false },
+  connections: ["email", "facebook", "twitter", "github"],
+  mode: "passwordless",
+  rememberLastLogin: false
 });
 
 addLock("socialOrSms", {
-  socialConnections: ["facebook", "github", "google-oauth2"]
+  authentication: { redirect: false },
+  connections: ["sms", "facebook", "twitter", "github"],
+  mode: "passwordless",
+  rememberLastLogin: false
 });
 
 var divs = document.querySelectorAll(".auth0-lock-container");
