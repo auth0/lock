@@ -1,3 +1,14 @@
+## [7.14.0] - 2016-03-03
+
+### Fixed
+
+- [] Merge pull request #329 from auth0/v7-new-password-flow (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/31d45baf526f72d624f6a403deb62bf0d950f931
+- [] Add new password reset flow (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/85ab9bcfa225b53c5ac228b9c466ebb4f6aa34fb
+- [] Use working branch on deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0564da47b235c0ec564a25e58254084a22fb3f8b
+
 ## [7.13.0] - 2015-12-18
 
 ### Fixed
