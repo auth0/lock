@@ -1,20 +1,54 @@
 import React from 'react';
-import { Map } from 'immutable';
 import Chrome from './chrome';
-import Avatar from './avatar';
+import Icon from '../icon/icon';
 import IconButton from '../icon/button';
-import Badge from './badge';
-import * as l from './index';
+import * as l from '../lock/index';
 import * as g from '../gravatar/index';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
-export default class Lock extends React.Component {
+const BottomBadge = () => (
+  <span className="auth0-lock-badge-bottom">
+    <a href="https://auth0.com/" target="_blank" className="auth0-lock-badge">
+      <Icon name="badge" />
+    </a>
+  </span>
+);
+
+const Avatar = ({imageUrl}) => (
+  <img src={imageUrl} className="auth0-lock-header-avatar" />
+);
+
+Avatar.propTypes = {
+  imageUrl: React.PropTypes.string.isRequired
+}
+
+export default class Container extends React.Component {
   componentDidMount() {
     this.escKeydown = new EscKeydownUtils(() => this.handleEsc());
   }
 
   componentWillUnmount() {
     this.escKeydown.release();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const { lock, submitHandler } = this.props;
+    if (submitHandler) {
+      submitHandler(l.id(lock));
+    }
+  }
+
+  handleClose() {
+    const { closeHandler, lock } = this.props;
+    if (!l.submitting(lock)) {
+      closeHandler(l.id(lock));
+    }
+  }
+
+  handleEsc() {
+    const { closeHandler, escHandler, lock } = this.props;
+    escHandler ? escHandler(l.id(lock)) : this.handleClose();
   }
 
   render() {
@@ -80,36 +114,15 @@ export default class Lock extends React.Component {
               />
             </div>
           </form>
-          <span className="auth0-lock-badge-bottom">
-            <Badge />
-          </span>
+          <BottomBadge />
         </div>
       </div>
     );
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const { lock, submitHandler } = this.props;
-    if (submitHandler) {
-      submitHandler(l.id(lock));
-    }
-  }
-
-  handleClose() {
-    const { closeHandler, lock } = this.props;
-    if (!l.submitting(lock)) {
-      closeHandler(l.id(lock));
-    }
-  }
-
-  handleEsc() {
-    const { closeHandler, escHandler, lock } = this.props;
-    escHandler ? escHandler(l.id(lock)) : this.handleClose();
-  }
 }
 
-Lock.propTypes = {
+Container.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,

@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import MultisizeSlide from '../multisize-slide/multisize_slide';
+import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
 import SubmitButton from './submit_button';
-import Header from '../header/header';
-import * as l from './index';
+import Header from './header';
+import * as l from '../lock/index';
 import * as g from '../gravatar/index';
-import Terms from '../lock/terms';
-
 
 export default class Chrome extends React.Component {
 
@@ -60,7 +58,8 @@ export default class Chrome extends React.Component {
     const primaryColor = l.ui.primaryColor(lock);
 
     const header = headerText && <p>{headerText}</p>;
-    const footer = footerText && <Terms>{footerText}</Terms>;
+    const footer = footerText
+      && <small className="auth0-lock-terms">{footerText}</small>;
     const tabsContainer = tabs && <div className="auth0-lock-tabs-container">{tabs}</div>;
     const submitButton = showSubmitButton
       && <SubmitButton

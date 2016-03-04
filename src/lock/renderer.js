@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSCore from 'fbjs/lib/CSSCore';
 import ContainerManager from './container_manager';
-import Lock from './lock';
+import Lock from '../widget/container';
 import * as l from './index';
 import * as c from '../cred/index';
 import * as g from '../gravatar/index';
