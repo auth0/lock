@@ -20,27 +20,37 @@ export function setupLock(id, clientID, domain, options, signInCallback, hookRun
 
   WebAPI.setupClient(id, clientID, domain, options);
 
-  const hash = WebAPI.parseHash(id);
-  if (hash) {
-    // TODO: this leaves the hash symbol (#) in the URL, maybe we can
-    // use the history API instead to remove it.
-    global.window.location.hash = "";
-    if (hash.error) {
-      l.invokeSignInCallback(m, hash);
-    } else {
-      WebAPI.getProfile(id, hash.id_token, (err, profile) => {
-        if (err) {
-          emitEvent(id, "profile error", err);
-        } else {
-          emitEvent(id, "profile success", profile);
-        }
-      });
-      l.invokeSignInCallback(m, null, hash);
-    }
+  if (l.auth.redirect(m)) {
+    const hash = WebAPI.parseHash(id);
 
-  } else {
-    syncRemoteData(id);
+    if (hash) {
+      // TODO: this leaves the hash symbol (#) in the URL, maybe we can
+      // use the history API instead to remove it.
+      global.window.location.hash = "";
+      if (hash.error) {
+        // TODO: should we pass the error directly or do some processing?
+        setTimeout(() => l.invokeSignInCallback(m, hash), 0);
+      } else {
+        WebAPI.getProfile(id, hash.id_token, (error, profile) => {
+          const result = {
+            accessToken: hash.access_token,
+            idToken: hash.id_token,
+            payload: hash.profile,
+            profile: profile,
+            refreshToken: hash.refresh_token,
+            state: hash.state
+          };
+
+          // TODO: should we pass the error directly or do some processing?
+          l.invokeSignInCallback(m, error, result);
+        });
+      }
+    } else {
+      setTimeout(() => l.invokeSignInCallback(m, null), 0);
+    }
   }
+
+  syncRemoteData(id);
 }
 
 export function openLock(id) {
