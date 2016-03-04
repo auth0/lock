@@ -96,7 +96,7 @@ export default class Chrome extends React.Component {
                   transitionName={transitionName}
                   reverse={false}
                 >
-                  <div key={screenName}>
+                  <div key={screenName} className="auth0-lock-body-content">
                   <div className="auth0-lock-content" key={screenName}>
                     <div className="auth0-lock-form">
                       {header}
