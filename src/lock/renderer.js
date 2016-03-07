@@ -1,26 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import CSSCore from 'fbjs/lib/CSSCore';
-import ContainerManager from './container_manager';
-import Lock from '../widget/container';
+import { remove, render } from '../widget/render';
 import * as l from './index';
 import * as c from '../cred/index';
 import * as g from '../gravatar/index';
 import { getCollection, getEntity } from '../store/index';
 
 export default class Renderer {
-  constructor() {
-    this.containerManager = new ContainerManager();
-  }
 
   render(state, fns) {
     const locks = getCollection(state, "lock");
 
     locks.forEach(lock => {
       if (l.rendering(lock)) {
-        const gravatar = getEntity(state, "gravatar", g.normalizeGravatarEmail(c.email(lock)));
+        const gravatar = getEntity(
+          state,
+          "gravatar",
+          g.normalizeGravatarEmail(c.email(lock))
+        );
+
         lock = lock.set("gravatar", gravatar && g.loaded(gravatar) ? gravatar : null);
-        const container = this.containerManager.ensure(l.ui.containerID(lock), l.ui.appendContainer(lock));
         const screen = fns[l.modeName(lock)](lock);
         const props = {
           auxiliaryPane: screen.renderAuxiliaryPane(lock),
@@ -35,27 +32,11 @@ export default class Renderer {
           tabs: screen.renderTabs(lock),
           transitionName: screen.transitionName(lock)
         };
-        ReactDOM.render(<Lock {...props} />, container);
+        render(props, l.ui.containerID(lock), l.ui.appendContainer(lock));
       } else {
-        let container;
-        try {
-          container = this.containerManager.ensure(l.ui.containerID(lock))
-        } catch (e) {
-          // do nothing if container doesn't exist
-        }
-        container && ReactDOM.unmountComponentAtNode(container);
+        remove(l.ui.containerID(lock));
       }
     });
 
-    const node = global.document.getElementsByTagName("html")[0];
-    const className = "auth0-lock-html";
-
-    const includeClass = locks.some(m => l.rendering(m) && l.ui.appendContainer(m));
-
-    if (includeClass) {
-      CSSCore.addClass(node, className);
-    } else {
-      CSSCore.removeClass(node, className);
-    }
   }
 }
