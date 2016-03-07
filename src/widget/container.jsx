@@ -1,4 +1,5 @@
 import React from 'react';
+import CSSCore from 'fbjs/lib/CSSCore';
 import Chrome from './chrome';
 import Icon from '../icon/icon';
 import IconButton from '../icon/button';
@@ -24,6 +25,13 @@ Avatar.propTypes = {
 
 export default class Container extends React.Component {
   componentDidMount() {
+    if (l.ui.appendContainer(this.props.lock)) {
+      setTimeout(() => CSSCore.addClass(
+        this.refs.container,
+        "auth0-lock-opened"
+      ), 17);
+    }
+
     this.escKeydown = new EscKeydownUtils(() => this.handleEsc());
   }
 
@@ -76,8 +84,6 @@ export default class Container extends React.Component {
     let className = "auth0-lock";
     if (!l.ui.appendContainer(lock)) {
       className += " auth0-lock-opened-in-frame";
-    } else if (l.show(lock)) {
-      className += " auth0-lock-opened";
     }
 
     if (l.ui.mobile(lock)) {
@@ -93,7 +99,7 @@ export default class Container extends React.Component {
     }
 
     return (
-      <div className={className} ref="lock">
+      <div className={className} ref="container">
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
