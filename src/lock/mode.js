@@ -19,10 +19,6 @@ export default class Mode {
 
   // render must be implemented in each mode
 
-  close(id, force) {
-    closeLock(id, force);
-  }
-
   setModel(m) {
     // TODO: unnecessary swap, should pass along the model
     swap(setEntity, "lock", this.id, m);

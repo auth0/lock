@@ -59,8 +59,7 @@ export default class Base extends EventEmitter {
   }
 
   close() {
-    const f = Base.plugins.closeFn(this.plugin);
-    f(this.id, true);
+    closeLock(this.id, true);
   }
 
   destroy() {

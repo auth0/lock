@@ -27,8 +27,4 @@ export default class PluginManager {
     return r;
   }
 
-  closeFn(str) {
-    return this.plugins[str].close;
-  }
-
 }
