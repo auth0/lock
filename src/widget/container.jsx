@@ -59,6 +59,10 @@ export default class Container extends React.Component {
     escHandler ? escHandler(l.id(lock)) : this.handleClose();
   }
 
+  hide() {
+    CSSCore.removeClass(this.refs.container, "auth0-lock-opened");
+  }
+
   render() {
     const {
       auxiliaryPane,

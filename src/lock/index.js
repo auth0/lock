@@ -93,6 +93,10 @@ export function rendering(m) {
   return tget(m, "render", false);
 }
 
+export function stopRendering(m) {
+  return tremove(m, "render");
+}
+
 export function gravatar(m) {
   if (ui.gravatar(m)) {
     return m.get("gravatar");

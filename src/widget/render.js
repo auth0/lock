@@ -36,24 +36,39 @@ class Renderer {
 
   constructor() {
     this.containerManager = new ContainerManager();
-    this.modalContainerIds = [];
+    this.modals = {};
   }
 
   render(props, containerId, isModal) {
+    // TODO: take containerId and isModal from props.
     const container = this.containerManager.ensure(containerId, isModal);
 
-    if (isModal && this.modalContainerIds.indexOf(containerId) === -1) {
-      this.modalContainerIds.push(containerId);
+    if (isModal && !this.modals[containerId]) {
       CSSCore.addClass(
         global.document.getElementsByTagName("html")[0],
         "auth0-lock-html"
       );
     }
 
-    ReactDOM.render(<Container {...props} />, container);
+    const component = ReactDOM.render(<Container {...props} />, container);
+
+    if (isModal) {
+      this.modals[containerId] = component;
+    }
+
+    return component;
   }
 
   remove(containerId) {
+    if (this.modals[containerId]) {
+      this.modals[containerId].hide();
+      setTimeout(() => this.unmount(containerId), 1000);
+    } else {
+      this.unmount(containerId);
+    }
+  }
+
+  unmount(containerId) {
     try {
       const container = this.containerManager.ensure(containerId);
       ReactDOM.unmountComponentAtNode(container);
@@ -61,19 +76,16 @@ class Renderer {
       // do nothing if container doesn't exist
     }
 
-    if (this.modalContainerIds.indexOf(containerId) > -1) {
-      this.modalContainerIds.splice(
-        this.modalContainerIds.indexOf(containerId),
-        1
-      );
+    if (this.modals[containerId]) {
+      delete this.modals[containerId];
 
       CSSCore.removeClass(
         global.document.getElementsByTagName("html")[0],
         "auth0-lock-html"
       );
     }
-  }
 
+  }
 }
 
 const renderer = new Renderer();
