@@ -1,6 +1,4 @@
 import Base from './index';
-import PasswordlessPlugin from './plugin/passwordless/plugin.js';
-
 import AskSocialNetwork from './cred/social/ask_social_network';
 import AskEmail from './passwordless/ask_email';
 import AskEmailVcode from './passwordless/ask_email_vcode';

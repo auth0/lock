@@ -1,5 +1,4 @@
 import Base from './index';
-import ClassicPlugin from './plugin/classic/plugin.js';
 import AskSocialNetwork from './cred/social/ask_social_network';
 import AskSocialNetworkOrLogin from './cred/or/ask_social_network_or_login';
 import Login from './database/login';
