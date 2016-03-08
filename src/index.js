@@ -1,6 +1,4 @@
 import { EventEmitter } from 'events';
-import RenderScheduler from './lock/render_scheduler';
-import Renderer from './lock/renderer';
 import PluginManager from './lock/plugin_manager';
 import * as idu from './utils/id_utils';
 import {
@@ -12,6 +10,11 @@ import {
 } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
+import { getEntity, subscribe } from './store/index';
+import * as l from './lock/index';
+import * as c from './cred/index';
+import * as g from './gravatar/index';
+import { remove, render } from './widget/render';
 
 // telemetry
 import Auth0 from 'auth0-js';
@@ -52,6 +55,52 @@ export default class Base extends EventEmitter {
     const emitEventFn = this.emit.bind(this);
     options.mode = mode;
     setupLock(this.id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
+
+    subscribe("widget-" + this.id, (key, oldState, newState) => {
+      const newM = getEntity(newState, "lock", this.id);
+      const oldM = getEntity(oldState, "lock", this.id);
+      const newGravatar = getEntity(
+        newState,
+        "gravatar",
+        g.normalizeGravatarEmail(c.email(newM))
+      );
+      const oldGravatar = getEntity(
+        oldState,
+        "gravatar",
+        g.normalizeGravatarEmail(c.email(oldM))
+      );
+
+      if (newM != oldM || newGravatar != oldGravatar) {
+        const gravatar = newGravatar && g.loaded(newGravatar)
+              ? newGravatar
+              : null;
+        const m = newM.set("gravatar", gravatar);
+
+        if (l.rendering(m)) {
+          const screen = Base.plugins.renderFns()[l.modeName(m)](m);
+
+          const props = {
+            auxiliaryPane: screen.renderAuxiliaryPane(m),
+            backHandler: screen.backHandler(m),
+            closeHandler: screen.closeHandler(m),
+            contentRender: ::screen.render,
+            footerText: screen.renderFooterText(m),
+            headerText: screen.renderHeaderText(m),
+            lock: m,
+            screenName: screen.name,
+            submitHandler: screen.submitHandler(m),
+            tabs: screen.renderTabs(m),
+            transitionName: screen.transitionName(m)
+          };
+          render(props, l.ui.containerID(m), l.ui.appendContainer(m));
+        } else {
+          remove(l.ui.containerID(m));
+        }
+
+
+        console.log("rendering ", this.id, this);
+      }
+    });
   }
 
   show() {
@@ -88,8 +137,6 @@ export default class Base extends EventEmitter {
 }
 
 Base.plugins = new PluginManager(Base.prototype);
-Base.renderer = new Renderer();
-Base.renderScheduler = new RenderScheduler(Base);
 
 // telemetry
 Base.version = __VERSION__;
