@@ -71,7 +71,9 @@ class Renderer {
   unmount(containerId) {
     try {
       const container = this.containerManager.ensure(containerId);
-      ReactDOM.unmountComponentAtNode(container);
+      if (container) {
+        ReactDOM.unmountComponentAtNode(container);
+      }
     } catch (e) {
       // do nothing if container doesn't exist
     }
