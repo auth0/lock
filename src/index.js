@@ -77,8 +77,7 @@ export default class Base extends EventEmitter {
         const m = newM.set("gravatar", gravatar);
 
         if (l.rendering(m)) {
-          const screen = Base.plugins.renderFns()[l.modeName(m)](m);
-
+          const screen = this.render(m);
           const props = {
             auxiliaryPane: screen.renderAuxiliaryPane(m),
             backHandler: screen.backHandler(m),
@@ -96,9 +95,6 @@ export default class Base extends EventEmitter {
         } else {
           remove(l.ui.containerID(m));
         }
-
-
-        console.log("rendering ", this.id, this);
       }
     });
   }
