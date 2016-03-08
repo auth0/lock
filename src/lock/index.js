@@ -107,6 +107,7 @@ export function gravatar(m) {
 
 function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
+  const primaryColor = options.theme && options.theme.primaryColor;
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
@@ -119,7 +120,7 @@ function extractUIOptions(id, modeName, options) {
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
-    primaryColor: options.primaryColor && typeof options.primaryColor === "string" ? options.primaryColor : "#ea5323",
+    primaryColor: typeof primaryColor === "string" ? primaryColor : "#ea5323",
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
   });
 }
