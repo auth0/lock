@@ -157,15 +157,13 @@ export const auth = {
 function extractAuthOptions(options) {
   // TODO: shouldn't all options be namespased in authentication?
   let {
-    authentication,
     authParams,
     callbackURL,
     forceJSONP,
+    redirect,
     responseType,
     sso
-  } = options;
-
-  let { redirect } = authentication || {};
+  } = options.authentication || {};
 
   authParams = typeof authParams === "object" ? authParams : {};
   callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
