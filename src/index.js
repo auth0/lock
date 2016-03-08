@@ -15,6 +15,7 @@ import * as l from './lock/index';
 import * as c from './cred/index';
 import * as g from './gravatar/index';
 import { remove, render } from './widget/render';
+import { registerDict } from './dict/index';
 
 // telemetry
 import Auth0 from 'auth0-js';
@@ -32,7 +33,7 @@ if (style.styleSheet) {
 }
 
 export default class Base extends EventEmitter {
-  constructor(mode, clientID, domain, options = {}, signInCallback = () => {}) {
+  constructor(mode, dict, clientID, domain, options = {}, signInCallback = () => {}) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
     }
@@ -49,6 +50,7 @@ export default class Base extends EventEmitter {
 
     super();
 
+    registerDict(mode, dict);
     this.id = idu.incremental();
     const { plugins } = Base;
     const hookRunner = ::this.runHook;
