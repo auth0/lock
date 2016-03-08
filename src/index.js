@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import PluginManager from './lock/plugin_manager';
 import * as idu from './utils/id_utils';
 import {
   closeLock,
@@ -143,8 +142,6 @@ export default class Base extends EventEmitter {
     return this[str](model, ...args);
   }
 }
-
-Base.plugins = new PluginManager(Base.prototype);
 
 // telemetry
 Base.version = __VERSION__;

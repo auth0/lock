@@ -21,8 +21,6 @@ import { initSocial } from './social/index';
 import * as l from './lock/index';
 
 
-Base.plugins.register(PasswordlessPlugin);
-
 export default class Auth0LockPasswordless extends Base {
 
   constructor(...args) {

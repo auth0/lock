@@ -10,8 +10,6 @@ import { getScreen, initDatabase } from './database/index';
 import { initSocial } from './social/index';
 import * as l from './lock/index';
 
-Base.plugins.register(ClassicPlugin);
-
 export default class Auth0Lock extends Base {
 
   constructor(...args) {
