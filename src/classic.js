@@ -6,7 +6,8 @@ import Login from './database/login';
 import SignUp from './database/sign_up';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
-import { getScreen } from './database/index';
+import { getScreen, initDatabase } from './database/index';
+import { initSocial } from './social/index';
 import * as l from './lock/index';
 
 Base.plugins.register(ClassicPlugin);
@@ -15,6 +16,22 @@ export default class Auth0Lock extends Base {
 
   constructor(...args) {
     super("classic", ...args);
+  }
+
+  didInitialize(model, options) {
+    model = initSocial(model, options);
+    model = initDatabase(model, options);
+    this.setModel(model);
+  }
+
+  didReceiveClientSettings(m) {
+    const anyDBConnection = l.getEnabledConnections(m, "database").count() > 0;
+    const anySocialConnection = l.getEnabledConnections(m, "social").count() > 0;
+
+    if (!anyDBConnection && !anySocialConnection) {
+      // TODO: improve message
+      throw new Error("At least one database or social connection needs to be available.");
+    }
   }
 
   render(m) {

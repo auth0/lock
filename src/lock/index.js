@@ -250,7 +250,7 @@ export function isConnectionEnabled(m, name) {
 }
 
 export function runHook(m, str, ...args) {
-  get(m, "hookRunner")(modeName(m), str, id(m), ...args);
+  get(m, "hookRunner")(str, ...args);
 }
 
 export function emitEvent(m, str, ...args) {

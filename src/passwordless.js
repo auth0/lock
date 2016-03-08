@@ -10,8 +10,16 @@ import AskPhoneNumber from './passwordless/ask_phone_number';
 import AskPhoneNumberVcode from './passwordless/ask_phone_number_vcode';
 import MagiclinkScreen from './passwordless/magiclink';
 import { renderSSOScreens } from './lock/sso/index';
-import { isEmail, isSendLink, passwordlessStarted } from './passwordless/index';
+import {
+  initPasswordless,
+  isEmail,
+  isSendLink,
+  passwordlessStarted
+} from './passwordless/index';
+import { setInitialPhoneLocation } from './cred/phone-number/actions';
+import { initSocial } from './social/index';
 import * as l from './lock/index';
+
 
 Base.plugins.register(PasswordlessPlugin);
 
@@ -19,6 +27,26 @@ export default class Auth0LockPasswordless extends Base {
 
   constructor(...args) {
     super("passwordless", ...args);
+  }
+
+  didInitialize(model, options) {
+    model = setInitialPhoneLocation(model, options);
+    model = initSocial(model, options);
+    model = initPasswordless(model, options);
+    this.setModel(model);
+  }
+
+  didReceiveClientSettings(m) {
+    const anySocialConnection = l.getEnabledConnections(m, "social").count() > 0;
+    const anyPasswordlessConnection = l.getEnabledConnections(m, "passwordless").count() > 0;
+
+    if (!anySocialConnection && !anyPasswordlessConnection) {
+      // TODO: improve message
+      throw new Error("At least one database or passwordless connection needs to be available.");
+    }
+
+    // TODO: check for the send option and emit warning if we have a sms
+    // connection.
   }
 
   render(m) {

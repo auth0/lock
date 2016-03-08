@@ -10,7 +10,7 @@ import {
 } from './lock/actions';
 import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
-import { getEntity, subscribe } from './store/index';
+import { getEntity, read, subscribe } from './store/index';
 import * as l from './lock/index';
 import * as c from './cred/index';
 import * as g from './gravatar/index';
@@ -51,7 +51,7 @@ export default class Base extends EventEmitter {
 
     this.id = idu.incremental();
     const { plugins } = Base;
-    const hookRunner = plugins.execHook.bind(plugins);
+    const hookRunner = ::this.runHook;
     const emitEventFn = this.emit.bind(this);
     options.mode = mode;
     setupLock(this.id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
@@ -127,8 +127,18 @@ export default class Base extends EventEmitter {
     return updateLock(this.id, f);
   }
 
+  setModel(m) {
+    return this.update(() => m);
+  }
+
   requestGravatar(email) {
     return requestGravatar(email);
+  }
+
+  runHook(str, ...args) {
+    if (typeof this[str] != "function") return;
+    const model = read(getEntity, "lock", this.id);
+    return this[str](model, ...args);
   }
 }
 

@@ -16,7 +16,7 @@ export function setupLock(id, clientID, domain, options, signInCallback, hookRun
   // TODO: this may trigger a second call to swap, maybe it can be
   // optimized. However, the Lock isn't rendering yet so it might not
   // be really an issue.
-  hookRunner(options.mode, "didInitialize", id, options);
+  l.runHook(m, "didInitialize", options);
 
   WebAPI.setupClient(id, clientID, domain, options);
 
