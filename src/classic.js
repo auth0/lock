@@ -68,8 +68,6 @@ const dict = {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
     headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
-    passwordConfirmationInputPlaceholder: "confirm new password",
-    passwordInputPlaceholder: "your new password",
     usernameInputPlaceholder: "your username"
   },
   signUp: {

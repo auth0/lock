@@ -200,40 +200,6 @@ export function setShowInvalidPassword(lock, value = true) {
   return setShowInvalid(lock, "password", value);
 }
 
-// password confirmation
-
-export function passwordConfirmation(lock) {
-  return lock.getIn(["cred", "passwordConfirmation", "passwordConfirmation"], "");
-}
-
-export function setPasswordConfirmation(lock, value) {
-  const prevValue = password(lock);
-  const prevShowInvalid = showInvalid(lock, "passwordConfirmation");
-  const valid = validatePasswordConfirmation(value, lock);
-
-  return lock.mergeIn(["cred", "passwordConfirmation"], Map({
-    passwordConfirmation: value,
-    valid: valid,
-    showInvalid: prevShowInvalid && prevValue === value
-  }));
-}
-
-export function validatePasswordConfirmation(value, lock) {
-  return value === password(lock);
-}
-
-export function validPasswordConfirmation(lock) {
-  return valid(lock, "passwordConfirmation");
-}
-
-export function visiblyInvalidPasswordConfirmation(lock) {
-  return visiblyInvalid(lock, "passwordConfirmation");
-}
-
-export function setShowInvalidPasswordConfirmation(lock, value = true) {
-  return setShowInvalid(lock, "passwordConfirmation", value);
-}
-
 // username
 
 export function username(lock) {

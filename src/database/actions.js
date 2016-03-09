@@ -271,13 +271,9 @@ function resetPasswordSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
   // TODO: needs to be auto closed?
   // TODO: what if login is not enabled?
-  swap(updateEntity, "lock", id, lock => {
-    return setScreen(
-      l.setSubmitting(lock, false),
-      "login",
-      ["password", "passwordConfirmation"]
-    );
-  });
+  swap(updateEntity, "lock", id, lock => (
+    setScreen(l.setSubmitting(lock, false), "login");
+  ));
 
   setTimeout(() => {
     const successMessage = l.ui.t(lock, ["success", "resetPassword"], {__textOnly: true});
@@ -301,10 +297,10 @@ export function showSignUpActivity(id, creds = []) {
   swap(updateEntity, "lock", id, setScreen, "signUp", creds);
 }
 
-export function showResetPasswordActivity(id, creds = ["password", "passwordConfirmation"]) {
+export function showResetPasswordActivity(id, creds = []) {
   swap(updateEntity, "lock", id, setScreen, "resetPassword", creds);
 }
 
 export function cancelResetPassword(id) {
- return showLoginActivity(id, ["password", "passwordConfirmation"]);
+ return showLoginActivity(id);
 }
