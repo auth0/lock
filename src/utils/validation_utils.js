@@ -14,3 +14,8 @@ export function validateNotEmptyString(str) {
 export function validatePassword(password, policy) {
   return createPolicy(policy).check(password);
 }
+
+export function validatePhoneNumber(str) {
+  const regExp = /^[0-9]([0-9 -])*[0-9]$/;
+  return regExp.test(str);
+}

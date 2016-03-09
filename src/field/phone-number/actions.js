@@ -1,13 +1,14 @@
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import * as c from '../index';
 import * as cc from '../country_codes';
+import { validatePhoneNumber } from '../../utils/validation_utils';
 import {
   closeLocationSelect,
   openLocationSelect
 } from './index';
 
-export function changePhoneNumber(id, phoneNumber) {
-  swap(updateEntity, "lock", id, c.setPhoneNumber, phoneNumber);
+export function changePhoneNumber(id, str) {
+  swap(updateEntity, "lock", id, c.setField, "phoneNumber", str, validatePhoneNumber);
 }
 
 export function changePhoneLocation(id, location) {

@@ -54,10 +54,10 @@ export function sendSMS(id) {
   // TODO: abstract this submit thing.
   swap(updateEntity, "lock", id, lock => {
 
-    if (c.validPhoneNumber(lock)) {
+    if (c.isFieldValid(lock, "phoneNumber")) {
       return l.setSubmitting(lock, true);
     } else {
-      return c.setShowInvalidPhoneNumber(lock, true);
+      return c.setFieldShowInvalid(lock, "phoneNumber", true);
     }
   });
 

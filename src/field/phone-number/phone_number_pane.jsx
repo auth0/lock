@@ -42,7 +42,7 @@ export default class PhoneNumberPane extends React.Component {
           tabIndex={l.tabIndex(lock, tabIndex)} />
         <PhoneNumberInput ref="phoneNumberInput"
           value={c.phoneNumber(lock)}
-          isValid={!c.visiblyInvalidPhoneNumber(lock)}
+          isValid={!c.isFieldVisiblyInvalid(lock, "phoneNumber")}
           onChange={::this.handlePhoneNumberChange}
           autoFocus={l.ui.focusInput(lock)}
           placeholder={placeholder}

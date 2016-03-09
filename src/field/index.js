@@ -92,36 +92,7 @@ export function phoneIsoCode(m) {
 }
 
 export function phoneNumber(lock) {
-  return lock.getIn(["field", "phoneNumber", "number"], "");
-}
-
-export function setPhoneNumber(lock, value) {
-  const prevValue = phoneNumber(lock);
-  const prevShowInvalid = showInvalid(lock, "phoneNumber");
-  const valid = validatePhoneNumber(value);
-
-  return lock.mergeIn(["field", "phoneNumber"], Map({
-    number: value,
-    valid: valid,
-    showInvalid: prevShowInvalid && prevValue === value
-  }));
-}
-
-export function validatePhoneNumber(phoneNumber) {
-  const regExp = /^[0-9]([0-9 -])*[0-9]$/;
-  return regExp.test(phoneNumber);
-}
-
-export function validPhoneNumber(lock) {
-  return valid(lock, "phoneNumber");
-}
-
-export function visiblyInvalidPhoneNumber(lock) {
-  return visiblyInvalid(lock, "phoneNumber");
-}
-
-export function setShowInvalidPhoneNumber(lock, value) {
-  return setShowInvalid(lock, "phoneNumber", value);
+  return lock.getIn(["field", "phoneNumber", "value"], "");
 }
 
 // email
