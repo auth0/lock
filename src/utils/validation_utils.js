@@ -6,6 +6,6 @@ export function validateEmail(str) {
   return result && result[0];
 }
 
-export function validateUsername(username) {
-  return trim(username).length > 0;
+export function validateNotEmptyString(str) {
+  return trim(str).length > 0;
 }
