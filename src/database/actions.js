@@ -50,10 +50,10 @@ export function signInWithUsername(id) {
 export function signInWithEmail(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if (c.validEmail(lock) && c.validPassword(lock)) {
+    if (c.isFieldValid(lock, "email") && c.validPassword(lock)) {
       return l.setSubmitting(lock, true);
     } else {
-      lock = c.setShowInvalidEmail(lock, !c.validEmail(lock));
+      lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
       lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
       return lock;
     }
@@ -109,12 +109,12 @@ function signInError(id, error) {
 export function signUp(id, options) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if (c.validEmail(lock)
+    if (c.isFieldValid(lock, "email")
         && c.validPassword(lock)
         && (!authWithUsername(lock) || c.validUsername(lock))) {
       return l.setSubmitting(lock, true);
     } else {
-      lock = c.setShowInvalidEmail(lock, !c.validEmail(lock));
+      lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
       lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
       if (authWithUsername(lock)) {
         lock = c.setShowInvalidUsername(lock, !c.validUsername(lock));
@@ -234,12 +234,12 @@ export function resetPassword(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
     if ((authWithUsername(lock) && c.validUsername(lock))
-        || (!authWithUsername(lock) && c.validEmail(lock))) {
+        || (!authWithUsername(lock) && c.isFieldValid(lock, "email"))) {
       return l.setSubmitting(lock, true);
     } else {
       lock = authWithUsername(lock)
         ? c.setShowInvalidUsername(lock, !c.validUsername(lock))
-        : c.setShowInvalidEmail(lock, !c.validEmail(lock));
+        : c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
       return lock;
     }
   });

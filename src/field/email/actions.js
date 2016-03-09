@@ -1,6 +1,7 @@
 import { swap, updateEntity } from '../../store/index';
-import * as c from '../index';
+import { setField } from '../index';
+import { validateEmail } from '../../utils/validation_utils';
 
-export function changeEmail(id, email) {
-  swap(updateEntity, "lock", id, c.setEmail, email);
+export function changeEmail(id, str) {
+  swap(updateEntity, "lock", id, setField, "email", str, validateEmail);
 }

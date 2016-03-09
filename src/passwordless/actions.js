@@ -10,10 +10,10 @@ import * as m from './index';
 export function requestPasswordlessEmail(id) {
   // TODO: abstract this submit thing.
   swap(updateEntity, "lock", id, lock => {
-    if (c.validEmail(lock)) {
+    if (c.isFieldValid(lock, "email")) {
       return l.setSubmitting(lock, true);
     } else {
-      return c.setShowInvalidEmail(lock);
+      return c.setFieldShowInvalid(lock, "email", true);
     }
   });
 

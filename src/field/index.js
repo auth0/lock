@@ -3,6 +3,31 @@ import createPolicy from 'password-sheriff';
 import trim from 'trim';
 import * as cc from './country_codes';
 
+export function setField(m, field, value, validator) {
+  const prevValue = m.getIn(["field", field, "value"]);
+  const prevShowInvalid = m.getIn(["field", field, "showInvalid"], false);
+  const valid = !!validator(value);
+
+  return m.mergeIn(["field", field], Map({
+    value: value,
+    valid: valid,
+    showInvalid: prevShowInvalid && prevValue === value
+  }));
+}
+
+export function isFieldValid(m, field) {
+  return m.getIn(["field", field, "vlaid"]);
+}
+
+export function isFieldVisiblyInvalid(m, field) {
+  return m.getIn(["field", field, "showInvalid"], false)
+    && !m.getIn(["field", field, "valid"]);
+}
+
+export function setFieldShowInvalid(m, field, value) {
+  return m.setIn(["field", field, "showInvalid"], value);
+}
+
 export function clearFields(m, fields) {
   let keyPaths;
 
@@ -14,6 +39,10 @@ export function clearFields(m, fields) {
 
  return keyPaths.reduce((r, v) => r.removeIn(v), m);
 }
+
+
+
+
 
 function valid(lock, field) {
   return lock.getIn(["field", field, "valid"]);
@@ -99,37 +128,7 @@ export function setShowInvalidPhoneNumber(lock, value) {
 // email
 
 export function email(lock) {
-  return lock.getIn(["field", "email", "email"], "");
-}
-
-export function setEmail(lock, value) {
-  const prevValue = email(lock);
-  const prevShowInvalid = showInvalid(lock, "email");
-  const valid = !!validateEmail(value);
-
-  return lock.mergeIn(["field", "email"], Map({
-    email: value,
-    valid: valid,
-    showInvalid: prevShowInvalid && prevValue === value
-  }));
-}
-
-export function validateEmail(email) {
-  const regExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const result = regExp.exec(trim(email.toLowerCase()));
-  return result && result[0];
-}
-
-export function validEmail(lock) {
-  return valid(lock, "email");
-}
-
-export function visiblyInvalidEmail(lock) {
-  return visiblyInvalid(lock, "email");
-}
-
-export function setShowInvalidEmail(lock, value = true) {
-  return setShowInvalid(lock, "email", value);
+  return lock.getIn(["field", "email", "value"], "");
 }
 
 // vcode

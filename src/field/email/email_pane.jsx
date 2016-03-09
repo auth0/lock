@@ -15,7 +15,7 @@ export default class EmailPane extends React.Component {
 
     return (
       <EmailInput value={c.email(lock)}
-        isValid={!c.visiblyInvalidEmail(lock)}
+        isValid={!c.isFieldVisiblyInvalid(lock, "email")}
         onChange={::this.handleChange}
         gravatar={l.ui.gravatar(lock)}
         autoFocus={l.ui.focusInput(lock)}
