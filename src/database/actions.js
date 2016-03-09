@@ -106,7 +106,7 @@ function signInError(id, error) {
 }
 
 
-export function signUp(id) {
+export function signUp(id, options) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
     if (c.validEmail(lock)
@@ -127,11 +127,9 @@ export function signUp(id) {
 
   if (l.submitting(lock)) {
     // TODO: check options
-    const options = {
-      connection: databaseConnectionName(lock),
-      email:      c.email(lock),
-      password:   c.password(lock)
-    };
+    options.connection = databaseConnectionName(lock);
+    options.email = c.email(lock);
+    options.password = c.password(lock)
 
     if (authWithUsername(lock)) {
       options.username = c.username(lock);
