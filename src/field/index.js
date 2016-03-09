@@ -202,33 +202,5 @@ export function setShowInvalidPassword(lock, value = true) {
 // username
 
 export function username(lock) {
-  return lock.getIn(["field", "username", "username"], "");
-}
-
-export function setUsername(lock, value) {
-  const prevValue = password(lock);
-  const prevShowInvalid = showInvalid(lock, "username");
-  const valid = validateUsername(value);
-
-  return lock.mergeIn(["field", "username"], Map({
-    username: value,
-    valid: valid,
-    showInvalid: prevShowInvalid && prevValue === value
-  }));
-}
-
-export function validateUsername(username) {
-  return trim(username).length > 0;
-}
-
-export function validUsername(lock) {
-  return valid(lock, "username");
-}
-
-export function visiblyInvalidUsername(lock) {
-  return visiblyInvalid(lock, "username");
-}
-
-export function setShowInvalidUsername(lock, value = true) {
-  return setShowInvalid(lock, "username", value);
+  return lock.getIn(["field", "username", "value"], "");
 }

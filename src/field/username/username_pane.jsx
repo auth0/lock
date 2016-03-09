@@ -16,7 +16,7 @@ export default class UsernamePane extends React.Component {
     return (
       <UsernameInput
         value={c.username(lock)}
-        isValid={!c.visiblyInvalidUsername(lock)}
+        isValid={!c.isFieldVisiblyInvalid(lock, "username")}
         onChange={::this.handleChange}
         placeholder={placeholder}
         tabIndex={l.tabIndex(lock, tabIndex)}

@@ -14,10 +14,10 @@ import  {
 export function signInWithUsername(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if (c.validUsername(lock) && c.validPassword(lock)) {
+    if (c.isFieldValid(lock, "username") && c.validPassword(lock)) {
       return l.setSubmitting(lock, true);
     } else {
-      lock = c.setShowInvalidUsername(lock, !c.validUsername(lock));
+      lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
       lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
       return lock;
     }
@@ -111,13 +111,13 @@ export function signUp(id, options) {
   swap(updateEntity, "lock", id, lock => {
     if (c.isFieldValid(lock, "email")
         && c.validPassword(lock)
-        && (!authWithUsername(lock) || c.validUsername(lock))) {
+        && (!authWithUsername(lock) || c.isFieldValid(lock, "username"))) {
       return l.setSubmitting(lock, true);
     } else {
       lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
       lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
       if (authWithUsername(lock)) {
-        lock = c.setShowInvalidUsername(lock, !c.validUsername(lock));
+        lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
       }
       return lock;
     }
@@ -233,12 +233,12 @@ function autoSignInError(id, error) {
 export function resetPassword(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if ((authWithUsername(lock) && c.validUsername(lock))
+    if ((authWithUsername(lock) && c.isFieldValid(lock, "username"))
         || (!authWithUsername(lock) && c.isFieldValid(lock, "email"))) {
       return l.setSubmitting(lock, true);
     } else {
       lock = authWithUsername(lock)
-        ? c.setShowInvalidUsername(lock, !c.validUsername(lock))
+        ? c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"))
         : c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
       return lock;
     }

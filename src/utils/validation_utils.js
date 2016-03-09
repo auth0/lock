@@ -5,3 +5,7 @@ export function validateEmail(str) {
   const result = regExp.exec(trim(str.toLowerCase()));
   return result && result[0];
 }
+
+export function validateUsername(username) {
+  return trim(username).length > 0;
+}
