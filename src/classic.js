@@ -9,6 +9,12 @@ import * as l from './lock/index';
 
 export default class Auth0Lock extends Base {
 
+  static SCREENS = {
+    login: AskSocialNetworkOrLogin,
+    resetPassword: ResetPassword,
+    signUp: SignUp
+  };
+
   constructor(...args) {
     super("classic", dict, ...args);
   }
@@ -33,20 +39,10 @@ export default class Auth0Lock extends Base {
     const ssoScreen = renderSSOScreens(m);
     if (ssoScreen) return ssoScreen;
 
-    const screen = getScreen(m);
-    switch(screen) {
-      case "login":
-      return new AskSocialNetworkOrLogin();
+    const Screen = Auth0Lock.SCREENS[getScreen(m)];
+    if (Screen) return new Screen();
 
-      case "signUp":
-      return new SignUp();
-
-      case "resetPassword":
-      return new ResetPassword();
-
-      default: // TODO: show a crashed screen.
-      throw new Error("unknown screen");
-    }
+    throw new Error("unknown screen");
   }
 
 }
