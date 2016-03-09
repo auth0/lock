@@ -12,7 +12,9 @@ export default class PasswordStrength extends React.Component {
       ? <div className="auth0-lock-password-strength animated fadeIn">
           <List items={analysis.rules} />
         </div>
-      : null;
+      : <div className="auth0-lock-password-strength animated fadeOut">
+          <List items={analysis.rules} />
+        </div>;
   }
 
 }
