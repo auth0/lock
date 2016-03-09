@@ -134,35 +134,7 @@ export function email(lock) {
 // vcode
 
 export function vcode(lock) {
-  return lock.getIn(["field", "vcode", "vcode"], "");
-}
-
-export function setVcode(lock, value) {
-  const prevValue = vcode(lock);
-  const prevShowInvalid = showInvalid(lock, "vcode");
-  const valid = validateVcode(value);
-
-  return lock.mergeIn(["field", "vcode"], Map({
-    vcode: value,
-    valid: valid,
-    showInvalid: prevShowInvalid && prevValue === value
-  }));
-}
-
-export function validateVcode(vcode) {
-  return trim(vcode).length > 0;
-}
-
-export function validVcode(lock) {
-  return valid(lock, "vcode");
-}
-
-export function visiblyInvalidVcode(lock) {
-  return visiblyInvalid(lock, "vcode");
-}
-
-export function setShowInvalidVcode(lock, value = true) {
-  return setShowInvalid(lock, "vcode", value);
+  return lock.getIn(["field", "vcode", "value"], "");
 }
 
 // password

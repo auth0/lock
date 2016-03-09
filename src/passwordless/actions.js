@@ -129,10 +129,10 @@ export function resendEmailError(id, error) {
 export function signIn(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if (c.validVcode(lock)) {
+    if (c.isFieldValid(lock, "vcode")) {
       return l.setSubmitting(lock, true);
     } else {
-      return c.setShowInvalidVcode(lock);
+      return c.setFieldShowInvalid(lock, "vcode", true);
     }
   });
 

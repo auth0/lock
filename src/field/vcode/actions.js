@@ -1,6 +1,7 @@
 import { swap, updateEntity } from '../../store/index';
-import * as c from '../index';
+import { setField } from '../index';
+import { validateNotEmptyString } from '../../utils/validation_utils';
 
-export function changeVcode(id, vcode) {
-  swap(updateEntity, "lock", id, c.setVcode, vcode);
+export function changeVcode(id, str) {
+  swap(updateEntity, "lock", id, setField, "vcode", str, validateNotEmptyString);
 }

@@ -26,7 +26,7 @@ export default class VcodePane extends React.Component {
     return (
       <div>
         <VcodeInput value={c.vcode(lock)}
-          isValid={!c.visiblyInvalidVcode(lock) && !l.globalError(lock)}
+          isValid={!c.isFieldVisiblyInvalid(lock, "vcode") && !l.globalError(lock)}
           onChange={::this.handleVcodeChange}
           autoFocus={!isSmallScreen()}
           placeholder={placeholder}
