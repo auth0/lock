@@ -1,7 +1,5 @@
 import Base from './index';
-import AskSocialNetwork from './cred/social/ask_social_network';
 import AskSocialNetworkOrLogin from './cred/or/ask_social_network_or_login';
-import Login from './database/login';
 import SignUp from './database/sign_up';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
@@ -35,16 +33,10 @@ export default class Auth0Lock extends Base {
     const ssoScreen = renderSSOScreens(m);
     if (ssoScreen) return ssoScreen;
 
-    if (l.getEnabledConnections(m, "database").count() === 0) {
-      return new AskSocialNetwork();
-    }
-
     const screen = getScreen(m);
     switch(screen) {
       case "login":
-      return l.getEnabledConnections(m, "social").count() > 0
-        ? new AskSocialNetworkOrLogin()
-        : new Login();
+      return new AskSocialNetworkOrLogin();
 
       case "signUp":
       return new SignUp();
@@ -64,21 +56,6 @@ const dict = {
     headerText: "Last time you logged in with",
     skipLastLoginLabel: "Not your account?"
   },
-  login: {
-    emailInputPlaceholder: "yours@example.com",
-    footerText: "",
-    forgotPasswordLabel: "Don't remember your password?",
-    headerText: "",
-    loginTabLabel: "Login",
-    passwordInputPlaceholder: "your password",
-    signUpTabLabel: "Sign Up",
-    usernameInputPlaceholder: "your username"
-  },
-  network: {
-    footerText: "",
-    headerText: "",
-    smallSocialButtonsHeader: "Login with"
-  },
   networkOrLogin: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
@@ -88,7 +65,7 @@ const dict = {
     passwordInputPlaceholder: "your password",
     separatorText: "or",
     signUpTabLabel: "Sign Up",
-    smallSocialButtonsHeader: "",
+    smallSocialButtonsHeader: "Login with",
     usernameInputPlaceholder: "your username"
   },
   resetPassword: {
