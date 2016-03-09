@@ -39,26 +39,6 @@ export function clearFields(m, fields) {
  return keyPaths.reduce((r, v) => r.removeIn(v), m);
 }
 
-
-
-
-
-function valid(lock, field) {
-  return lock.getIn(["field", field, "valid"]);
-}
-
-function showInvalid(lock, field) {
-  return lock.getIn(["field", field, "showInvalid"], false);
-}
-
-function setShowInvalid(lock, field, value) {
-  return lock.setIn(["field", field, "showInvalid"], value);
-}
-
-function visiblyInvalid(lock, field) {
-  return showInvalid(lock, field) && !valid(lock, field);
-}
-
 // phone number
 
 export function fullPhoneNumber(lock) {
