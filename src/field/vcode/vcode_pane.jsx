@@ -17,7 +17,7 @@ export default class VcodePane extends React.Component {
 
   handleResendClick(e) {
     e.preventDefault();
-    back(l.id(this.props.lock), {clearCred: ["vcode"]});
+    back(l.id(this.props.lock), {clearField: ["vcode"]});
   }
 
   render() {

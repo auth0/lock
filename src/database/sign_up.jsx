@@ -1,8 +1,8 @@
 import React from 'react';
 import Screen from '../lock/screen';
-import EmailPane from '../cred/email/email_pane';
-import PasswordPane from '../cred/password/password_pane';
-import UsernamePane from '../cred/username/username_pane';
+import EmailPane from '../field/email/email_pane';
+import PasswordPane from '../field/password/password_pane';
+import UsernamePane from '../field/username/username_pane';
 import { authWithUsername, hasScreen, passwordStrengthPolicy } from './index';
 import { signUp } from './actions';
 import LoginSignUpTabs from './login_sign_up_tabs';

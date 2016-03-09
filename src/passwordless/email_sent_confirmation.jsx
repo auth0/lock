@@ -3,7 +3,7 @@ import ConfirmationPane from '../lock/confirmation_pane';
 import Icon from '../icon/icon';
 import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
-import * as c from '../cred/index';
+import * as c from '../field/index';
 
 import { resendEmail, restart } from './actions';
 import * as m from './index';

@@ -1,6 +1,6 @@
 import expect from 'expect.js';
 import * as u from '../acceptance_test_utils';
-import * as cc from '../../src/cred/country_codes';
+import * as cc from '../../src/field/country_codes';
 
 describe(".sms acceptance", function() {
   before(u.stubWebApis);

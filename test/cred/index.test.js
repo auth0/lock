@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import Immutable from 'immutable';
-import * as c from '../../src/cred/index';
-import * as cc from '../../src/cred/country_codes';
+import * as c from '../../src/field/index';
+import * as cc from '../../src/field/country_codes';
 
 let emptyEntity = Immutable.fromJS({});
 

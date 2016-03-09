@@ -1,4 +1,4 @@
-import Base from '../cred/vcode/ask_vcode';
+import Base from '../field/vcode/ask_vcode';
 import { restart, signIn } from './actions';
 import { renderSignedInConfirmation } from '../lock/signed_in_confirmation';
 

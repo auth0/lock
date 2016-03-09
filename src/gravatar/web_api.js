@@ -1,5 +1,5 @@
 import { md5 } from 'blueimp-md5';
-import { validateEmail } from '../cred/index';
+import { validateEmail } from '../field/index';
 import jsonp from '../utils/jsonp_utils';
 import * as preload from '../preload/index';
 

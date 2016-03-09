@@ -1,5 +1,5 @@
 import Base from './index';
-import AskSocialNetworkOrLogin from './cred/or/ask_social_network_or_login';
+import AskSocialNetworkOrLogin from './field/or/ask_social_network_or_login';
 import SignUp from './database/sign_up';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';

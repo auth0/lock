@@ -11,7 +11,7 @@ import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 import { getEntity, read, subscribe } from './store/index';
 import * as l from './lock/index';
-import * as c from './cred/index';
+import * as c from './field/index';
 import * as g from './gravatar/index';
 import { remove, render } from './widget/render';
 import { registerDict } from './dict/index';

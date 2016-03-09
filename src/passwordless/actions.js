@@ -2,8 +2,8 @@ import { Map } from 'immutable';
 import { read, getEntity, swap, updateEntity } from '../store/index';
 import { closeLock } from '../lock/actions';
 import webApi from '../lock/web_api';
-import * as c from '../cred/index';
-import * as cs from '../cred/storage';
+import * as c from '../field/index';
+import * as cs from '../field/storage';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -177,8 +177,8 @@ function signInSuccess(id, ...args) {
 
 function signInError(id, error) {
   const lock = read(getEntity, "lock", id);
-  const cred = m.send(lock) === "sms" ? "phone number" : "email";
-  const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  const field = m.send(lock) === "sms" ? "phone number" : "email";
+  const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
   l.invokeSignInCallback(lock, error);

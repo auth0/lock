@@ -1,9 +1,9 @@
 import Base from './index';
-import AskSocialNetwork from './cred/social/ask_social_network';
+import AskSocialNetwork from './field/social/ask_social_network';
 import AskEmail from './passwordless/ask_email';
 import AskEmailVcode from './passwordless/ask_email_vcode';
-import AskSocialNetworkOrEmail from './cred/or/ask_social_network_or_email';
-import AskSocialNetworkOrPhoneNumber from './cred/or/ask_social_network_or_phone_number';
+import AskSocialNetworkOrEmail from './field/or/ask_social_network_or_email';
+import AskSocialNetworkOrPhoneNumber from './field/or/ask_social_network_or_phone_number';
 import AskPhoneNumber from './passwordless/ask_phone_number';
 import AskPhoneNumberVcode from './passwordless/ask_phone_number_vcode';
 import MagiclinkScreen from './passwordless/magiclink';
@@ -14,7 +14,7 @@ import {
   isSendLink,
   passwordlessStarted
 } from './passwordless/index';
-import { setInitialPhoneLocation } from './cred/phone-number/actions';
+import { setInitialPhoneLocation } from './field/phone-number/actions';
 import { initSocial } from './social/index';
 import * as l from './lock/index';
 

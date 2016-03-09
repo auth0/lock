@@ -3,7 +3,7 @@ import { getEntity, read, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
 import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
-import * as c from '../cred/index';
+import * as c from '../field/index';
 import  {
   authWithUsername,
   databaseConnectionName,
@@ -98,7 +98,7 @@ function signInSuccess(id, ...args) {
 function signInError(id, error) {
   const lock = read(getEntity, "lock", id);
   // TODO: proper error message
-  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
   const errorMessage = "Invalid email or password";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
@@ -198,7 +198,7 @@ function signUpSuccess(id, ...args) {
 function signUpError(id, error) {
   const lock = read(getEntity, "lock", id);
   // TODO: proper error message
-  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
   const errorMessage = "Something went wrong";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
@@ -219,7 +219,7 @@ function autoSignInSuccess(id, ...args) {
 function autoSignInError(id, error) {
   const lock = read(getEntity, "lock", id);
   // TODO: proper error message
-  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
   const errorMessage = "An error ocurred when logging in";
   swap(updateEntity, "lock", id, m => {
     m = l.setSubmitting(m, false, errorMessage);
@@ -272,7 +272,7 @@ function resetPasswordSuccess(id, ...args) {
   // TODO: needs to be auto closed?
   // TODO: what if login is not enabled?
   swap(updateEntity, "lock", id, lock => (
-    setScreen(l.setSubmitting(lock, false), "login");
+    setScreen(l.setSubmitting(lock, false), "login")
   ));
 
   setTimeout(() => {
@@ -284,21 +284,21 @@ function resetPasswordSuccess(id, ...args) {
 function resetPasswordError(id, error) {
   const lock = read(getEntity, "lock", id);
   // TODO: proper error message, consider 429s
-  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {cred: cred, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {cred: cred, __textOnly: true});
+  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
   const errorMessage = "Something went wrong";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
-export function showLoginActivity(id, creds = []) {
-  swap(updateEntity, "lock", id, setScreen, "login", creds);
+export function showLoginActivity(id, fields = []) {
+  swap(updateEntity, "lock", id, setScreen, "login", fields);
 }
 
-export function showSignUpActivity(id, creds = []) {
-  swap(updateEntity, "lock", id, setScreen, "signUp", creds);
+export function showSignUpActivity(id, fields = []) {
+  swap(updateEntity, "lock", id, setScreen, "signUp", fields);
 }
 
-export function showResetPasswordActivity(id, creds = []) {
-  swap(updateEntity, "lock", id, setScreen, "resetPassword", creds);
+export function showResetPasswordActivity(id, fields = []) {
+  swap(updateEntity, "lock", id, setScreen, "resetPassword", fields);
 }
 
 export function cancelResetPassword(id) {

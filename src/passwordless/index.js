@@ -1,6 +1,6 @@
 import { List, Map } from 'immutable';
 import * as l from '../lock/index';
-import { clearCreds } from '../cred/index';
+import { clearFields } from '../field/index';
 import { dataFns } from '../utils/data_utils';
 
 const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
@@ -63,7 +63,7 @@ export function restartPasswordless(m) {
   // TODO: maybe we can take advantage of the transient fields
   m = tremove(m, "passwordlessStarted");
   m = tremove(m, "resendStatus")  // only for link
-  m = clearCreds(m, ["vcode"]); // only for code
+  m = clearFields(m, ["vcode"]); // only for code
 
   return l.clearGlobalError(m);
 }

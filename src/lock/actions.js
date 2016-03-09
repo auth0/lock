@@ -3,7 +3,7 @@ import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
-import * as cs from '../cred/storage';
+import * as cs from '../field/storage';
 
 export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want

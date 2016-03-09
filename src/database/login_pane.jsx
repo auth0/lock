@@ -1,7 +1,7 @@
 import React from 'react';
-import EmailPane from '../cred/email/email_pane';
-import UsernamePane from '../cred/username/username_pane';
-import PasswordPane from '../cred/password/password_pane';
+import EmailPane from '../field/email/email_pane';
+import UsernamePane from '../field/username/username_pane';
+import PasswordPane from '../field/password/password_pane';
 import { showResetPasswordActivity } from './actions';
 import { authWithUsername, hasScreen, resetLink } from './index';
 import * as l from '../lock/index';
@@ -23,7 +23,7 @@ export default class LoginPane extends React.Component {
       usernameInputPlaceholder
     } = this.props;
 
-    const credPane = authWithUsername(lock)
+    const fieldPane = authWithUsername(lock)
       ? <UsernamePane
           lock={lock}
           placeholder={usernameInputPlaceholder}
@@ -50,7 +50,7 @@ export default class LoginPane extends React.Component {
 
     return (
       <div>
-        {credPane}
+        {fieldPane}
         <PasswordPane lock={lock} placeholder={passwordInputPlaceholder} />
         {dontRememberPassword}
       </div>

@@ -3,32 +3,32 @@ import createPolicy from 'password-sheriff';
 import trim from 'trim';
 import * as cc from './country_codes';
 
-export function clearCreds(m, creds) {
+export function clearFields(m, fields) {
   let keyPaths;
 
-  if (!creds || creds.length === 0) {
-    keyPaths = ["cred"];
+  if (!fields || fields.length === 0) {
+    keyPaths = ["field"];
   } else {
-    keyPaths = creds.map(x => ["cred", x]);
+    keyPaths = fields.map(x => ["field", x]);
   }
 
  return keyPaths.reduce((r, v) => r.removeIn(v), m);
 }
 
 function valid(lock, field) {
-  return lock.getIn(["cred", field, "valid"]);
+  return lock.getIn(["field", field, "valid"]);
 }
 
-function showInvalid(lock, cred) {
-  return lock.getIn(["cred", cred, "showInvalid"], false);
+function showInvalid(lock, field) {
+  return lock.getIn(["field", field, "showInvalid"], false);
 }
 
-function setShowInvalid(lock, cred, value) {
-  return lock.setIn(["cred", cred, "showInvalid"], value);
+function setShowInvalid(lock, field, value) {
+  return lock.setIn(["field", field, "showInvalid"], value);
 }
 
-function visiblyInvalid(lock, cred) {
-  return showInvalid(lock, cred) && !valid(lock, cred);
+function visiblyInvalid(lock, field) {
+  return showInvalid(lock, field) && !valid(lock, field);
 }
 
 // phone number
@@ -44,11 +44,11 @@ export function fullHumanPhoneNumber(m) {
 }
 
 export function setPhoneLocation(m, value) {
-  return m.setIn(["cred", "phoneNumber", "location"], value);
+  return m.setIn(["field", "phoneNumber", "location"], value);
 }
 
 function phoneLocation(m) {
-  return m.getIn(["cred", "phoneNumber", "location"], cc.defaultLocation);
+  return m.getIn(["field", "phoneNumber", "location"], cc.defaultLocation);
 }
 
 export function phoneLocationString(m) {
@@ -64,7 +64,7 @@ export function phoneIsoCode(m) {
 }
 
 export function phoneNumber(lock) {
-  return lock.getIn(["cred", "phoneNumber", "number"], "");
+  return lock.getIn(["field", "phoneNumber", "number"], "");
 }
 
 export function setPhoneNumber(lock, value) {
@@ -72,7 +72,7 @@ export function setPhoneNumber(lock, value) {
   const prevShowInvalid = showInvalid(lock, "phoneNumber");
   const valid = validatePhoneNumber(value);
 
-  return lock.mergeIn(["cred", "phoneNumber"], Map({
+  return lock.mergeIn(["field", "phoneNumber"], Map({
     number: value,
     valid: valid,
     showInvalid: prevShowInvalid && prevValue === value
@@ -99,7 +99,7 @@ export function setShowInvalidPhoneNumber(lock, value) {
 // email
 
 export function email(lock) {
-  return lock.getIn(["cred", "email", "email"], "");
+  return lock.getIn(["field", "email", "email"], "");
 }
 
 export function setEmail(lock, value) {
@@ -107,7 +107,7 @@ export function setEmail(lock, value) {
   const prevShowInvalid = showInvalid(lock, "email");
   const valid = !!validateEmail(value);
 
-  return lock.mergeIn(["cred", "email"], Map({
+  return lock.mergeIn(["field", "email"], Map({
     email: value,
     valid: valid,
     showInvalid: prevShowInvalid && prevValue === value
@@ -135,7 +135,7 @@ export function setShowInvalidEmail(lock, value = true) {
 // vcode
 
 export function vcode(lock) {
-  return lock.getIn(["cred", "vcode", "vcode"], "");
+  return lock.getIn(["field", "vcode", "vcode"], "");
 }
 
 export function setVcode(lock, value) {
@@ -143,7 +143,7 @@ export function setVcode(lock, value) {
   const prevShowInvalid = showInvalid(lock, "vcode");
   const valid = validateVcode(value);
 
-  return lock.mergeIn(["cred", "vcode"], Map({
+  return lock.mergeIn(["field", "vcode"], Map({
     vcode: value,
     valid: valid,
     showInvalid: prevShowInvalid && prevValue === value
@@ -169,7 +169,7 @@ export function setShowInvalidVcode(lock, value = true) {
 // password
 
 export function password(lock) {
-  return lock.getIn(["cred", "password", "password"], "");
+  return lock.getIn(["field", "password", "password"], "");
 }
 
 export function setPassword(lock, value, policy) {
@@ -177,7 +177,7 @@ export function setPassword(lock, value, policy) {
   const prevShowInvalid = showInvalid(lock, "password");
   const valid = validatePassword(value, policy);
 
-  return lock.mergeIn(["cred", "password"], Map({
+  return lock.mergeIn(["field", "password"], Map({
     password: value,
     valid: valid,
     showInvalid: prevShowInvalid && prevValue === value
@@ -203,7 +203,7 @@ export function setShowInvalidPassword(lock, value = true) {
 // username
 
 export function username(lock) {
-  return lock.getIn(["cred", "username", "username"], "");
+  return lock.getIn(["field", "username", "username"], "");
 }
 
 export function setUsername(lock, value) {
@@ -211,7 +211,7 @@ export function setUsername(lock, value) {
   const prevShowInvalid = showInvalid(lock, "username");
   const valid = validateUsername(value);
 
-  return lock.mergeIn(["cred", "username"], Map({
+  return lock.mergeIn(["field", "username"], Map({
     username: value,
     valid: valid,
     showInvalid: prevShowInvalid && prevValue === value

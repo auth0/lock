@@ -1,7 +1,7 @@
 import Immutable, { Map } from 'immutable';
 import * as l from '../lock/index';
 import * as client from '../lock/client/index';
-import { clearCreds } from '../cred/index';
+import { clearFields } from '../field/index';
 import { dataFns } from '../utils/data_utils';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
@@ -81,13 +81,13 @@ export function signUpLink(m, notFound="") {
   return get(m, "signUpLink", notFound);
 }
 
-export function setScreen(m, name, creds = []) {
+export function setScreen(m, name, fields = []) {
   // TODO: the lock/index module should provide a way to clear
   // everything that needs the be cleared when changing screens, other
   // modules should not care.
   m = l.clearGlobalError(m);
   m = l.clearGlobalSuccess(m);
-  m = clearCreds(m, creds);
+  m = clearFields(m, fields);
 
   return tset(m, "screen", name);
 }
