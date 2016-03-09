@@ -238,8 +238,9 @@ export function getPickedConnections(m) {
   return get(m, "pickedConnections");
 }
 
-export function getEnabledConnections(m, type) {
-  return get(m, ["enabledConnections", type], List());
+export function getEnabledConnections(m, type, strategy) {
+  const xs = get(m, ["enabledConnections", type], List());
+  return strategy ? xs.filter(x => x.get("strategy") === strategy) : xs;
 }
 
 export function isConnectionEnabled(m, name) {
