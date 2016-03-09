@@ -14,11 +14,11 @@ import  {
 export function signInWithUsername(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "username") && c.validPassword(lock)) {
+    if (c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password")) {
       return l.setSubmitting(lock, true);
     } else {
       lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
-      lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
+      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
       return lock;
     }
   });
@@ -50,11 +50,11 @@ export function signInWithUsername(id) {
 export function signInWithEmail(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "email") && c.validPassword(lock)) {
+    if (c.isFieldValid(lock, "email") && c.isFieldValid(lock, "password")) {
       return l.setSubmitting(lock, true);
     } else {
       lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-      lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
+      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
       return lock;
     }
   });
@@ -110,12 +110,12 @@ export function signUp(id, options) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
     if (c.isFieldValid(lock, "email")
-        && c.validPassword(lock)
+        && c.isFieldValid(lock, "password")
         && (!authWithUsername(lock) || c.isFieldValid(lock, "username"))) {
       return l.setSubmitting(lock, true);
     } else {
       lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-      lock = c.setShowInvalidPassword(lock, !c.validPassword(lock));
+      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
       if (authWithUsername(lock)) {
         lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
       }

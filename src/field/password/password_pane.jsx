@@ -17,7 +17,7 @@ export default class PasswordPane extends React.Component {
     return (
       <PasswordInput
         value={c.password(lock)}
-        isValid={!c.visiblyInvalidPassword(lock)}
+        isValid={!c.isFieldVisiblyInvalid(lock, "password")}
         onChange={::this.handleChange}
         placeholder={placeholder}
         tabIndex={l.tabIndex(lock, tabIndex)}

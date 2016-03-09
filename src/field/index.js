@@ -1,12 +1,11 @@
 import { Map } from 'immutable';
-import createPolicy from 'password-sheriff';
 import trim from 'trim';
 import * as cc from './country_codes';
 
-export function setField(m, field, value, validator) {
+export function setField(m, field, value, validator, ...validatorExtraArgs) {
   const prevValue = m.getIn(["field", field, "value"]);
   const prevShowInvalid = m.getIn(["field", field, "showInvalid"], false);
-  const valid = !!validator(value);
+  const valid = !!validator(value, ...validatorExtraArgs);
 
   return m.mergeIn(["field", field], Map({
     value: value,
@@ -140,35 +139,7 @@ export function vcode(lock) {
 // password
 
 export function password(lock) {
-  return lock.getIn(["field", "password", "password"], "");
-}
-
-export function setPassword(lock, value, policy) {
-  const prevValue = password(lock);
-  const prevShowInvalid = showInvalid(lock, "password");
-  const valid = validatePassword(value, policy);
-
-  return lock.mergeIn(["field", "password"], Map({
-    password: value,
-    valid: valid,
-    showInvalid: prevShowInvalid && prevValue === value
-  }));
-}
-
-export function validatePassword(password, policy) {
-  return createPolicy(policy).check(password);
-}
-
-export function validPassword(lock) {
-  return valid(lock, "password");
-}
-
-export function visiblyInvalidPassword(lock) {
-  return visiblyInvalid(lock, "password");
-}
-
-export function setShowInvalidPassword(lock, value = true) {
-  return setShowInvalid(lock, "password", value);
+  return lock.getIn(["field", "password", "value"], "");
 }
 
 // username
