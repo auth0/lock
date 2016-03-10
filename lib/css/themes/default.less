@@ -341,6 +341,10 @@
     form .body-content {
       padding: 30px;
       background: white;
+
+      &.nosubmit {
+        border-radius: 0 0 3px 3px;
+      }
     }
   }
 
@@ -494,13 +498,13 @@
     }
   }
 
-  .last-time{
-    color: rgba(0,0,0,.56);
-    font-size: 13px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    display: block;
-  }
+  // .last-time{
+  //   color: rgba(0,0,0,.56);
+  //   font-size: 13px;
+  //   margin-bottom: 20px;
+  //   line-height: 1.6;
+  //   display: block;
+  // }
 
   .corporate-credentials {
     margin-bottom: 10px;
@@ -759,14 +763,15 @@
     background-color: rgb(217, 222, 224);
   }
 
-  .success{
-    background: #00CE9D;
+  .success,
+  .last-time {
+    background: #7ED321;
     -webkit-user-select: all;
     -moz-user-select: all;
     -ms-user-select: all;
     user-select: all;
     color: #fff;
-    padding: 15px 0;
+    padding: 10px 5px;
     position: relative;
 
     display: block;
@@ -776,7 +781,7 @@
     background: #f04848;
     user-select: all;
     color: white;
-    padding: 15px 0;
+    padding: 10px 0;
     position: relative;
   }
 

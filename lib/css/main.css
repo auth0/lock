@@ -7356,6 +7356,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background: white;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-mode form .a0-body-content.a0-nosubmit {
+  border-radius: 0 0 3px 3px;
+}
+
 #a0-lock.a0-theme-default .a0-panel *,
 #a0-lock.a0-theme-default .a0-panel input {
   font-smoothing: antialiased;
@@ -7509,14 +7513,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #a0-lock.a0-theme-default .a0-panel .a0-footer .a0-logo i:hover {
   color: #EB5424;
-}
-
-#a0-lock.a0-theme-default .a0-panel .a0-last-time {
-  color: rgba(0, 0, 0, 0.56);
-  font-size: 13px;
-  margin-bottom: 20px;
-  line-height: 1.6;
-  display: block;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-corporate-credentials {
@@ -7739,14 +7735,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background-color: #d9dee0;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-success {
-  background: #00CE9D;
+#a0-lock.a0-theme-default .a0-panel .a0-success,
+#a0-lock.a0-theme-default .a0-panel .a0-last-time {
+  background: #7ED321;
   -webkit-user-select: all;
   -moz-user-select: all;
   -ms-user-select: all;
   user-select: all;
   color: #fff;
-  padding: 15px 0;
+  padding: 10px 5px;
   position: relative;
   display: block;
 }
@@ -7758,7 +7755,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -ms-user-select: all;
   user-select: all;
   color: white;
-  padding: 15px 0;
+  padding: 10px 0;
   position: relative;
 }
 
