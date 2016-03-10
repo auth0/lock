@@ -25,7 +25,7 @@ Avatar.propTypes = {
 
 export default class Container extends React.Component {
   componentDidMount() {
-    if (l.ui.appendContainer(this.props.lock)) {
+    if (this.props.isModal) {
       setTimeout(() => CSSCore.addClass(
         this.refs.container,
         "auth0-lock-opened"
@@ -48,8 +48,8 @@ export default class Container extends React.Component {
   }
 
   handleClose() {
-    const { closeHandler, lock } = this.props;
-    if (!l.submitting(lock)) {
+    const { closeHandler, isSubmitting, lock } = this.props;
+    if (!isSubmitting) {
       closeHandler(l.id(lock));
     }
   }
@@ -71,7 +71,11 @@ export default class Container extends React.Component {
       contentRender,
       disallowClose,
       footerText,
+      gravatar, // TODO: should be named "avatar" and point to the avatar url
       headerText,
+      isMobile, // TODO: not documented and should be removed (let the design team know first)
+      isModal,
+      isSubmitting,
       lock,
       screenName,
       submitHandler,
@@ -79,22 +83,20 @@ export default class Container extends React.Component {
       transitionName
     } = this.props;
 
-    const overlay = l.ui.appendContainer(lock) ?
-      <div className="auth0-lock-overlay"/> : null;
+    const overlay = isModal ? <div className="auth0-lock-overlay"/> : null;
 
-    const gravatar = l.gravatar(lock);
     const showCloseButton = l.ui.closable(lock) && !disallowClose;
 
     let className = "auth0-lock";
-    if (!l.ui.appendContainer(lock)) {
+    if (!isModal) {
       className += " auth0-lock-opened-in-frame";
     }
 
-    if (l.ui.mobile(lock)) {
+    if (isMobile) {
       className += " auth0-lock-mobile";
     }
 
-    if (l.submitting(lock)) {
+    if (isSubmitting) {
       className += " auth0-lock-mode-loading";
     }
 
@@ -137,7 +139,11 @@ Container.propTypes = {
   backHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
   footerText: React.PropTypes.element,
+  gravatar: React.PropTypes.object,
   headerText: React.PropTypes.element,
+  isMobile: React.PropTypes.bool.isRequired,
+  isModal: React.PropTypes.bool.isRequired,
+  isSubmitting: React.PropTypes.bool.isRequired,
   lock: React.PropTypes.object.isRequired,
   screenName: React.PropTypes.string.isRequired,
   tabs: React.PropTypes.element,
@@ -146,4 +152,9 @@ Container.propTypes = {
   // disallowClose,
   // escHandler
   // submitHandler,
+};
+
+Container.defaultPropTypes = {
+  isMobile: false,
+  isSubmitting: false
 };

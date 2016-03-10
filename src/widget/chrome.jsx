@@ -146,6 +146,7 @@ Chrome.propTypes = {
   contentRender: React.PropTypes.func.isRequired,
   footerText: React.PropTypes.element,
   headerText: React.PropTypes.element,
+  icon: React.PropTypes.string.isRequired,
   lock: React.PropTypes.object.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   transitionName: React.PropTypes.string.isRequired
