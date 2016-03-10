@@ -4,10 +4,41 @@ import ReactTransitionGroup from 'react-addons-transition-group';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
-import SubmitButton from './submit_button';
+import Icon from '../icon/icon';
 import Header from './header';
 import * as l from '../lock/index';
 import * as g from '../gravatar/index';
+
+class SubmitButton extends React.Component {
+
+  focus() {
+    ReactDOM.findDOMNode(this).focus();
+  }
+
+  render() {
+    const { color, disabled, tabIndex } = this.props;
+
+    return (
+      <button
+        className="auth0-lock-submit"
+        disabled={disabled}
+        style={{backgroundColor: color}}
+        tabIndex={tabIndex}
+        type="submit"
+      >
+        <div className="auth0-loading-container">
+          <div className="auth0-loading" />
+        </div>
+        <Icon name="submit"/>
+      </button>
+    );
+  }
+
+}
+
+SubmitButton.propTypes = {
+  disabled: React.PropTypes.bool
+};
 
 export default class Chrome extends React.Component {
 
