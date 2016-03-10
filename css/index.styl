@@ -124,11 +124,13 @@ breakpoint(point, value = 0)
 
   .auth0-lock-widget-container
     position relative
+    overflow hidden
 
   .auth0-lock-cred-pane
     height 100%
     border-radius 7px
     background white
+
     &.horizontal-fade-leave
       .auth0-lock-content, .auth0-lock-terms
         opacity .3
@@ -1047,9 +1049,6 @@ breakpoint(point, value = 0)
         display block
         text-decoration none
         color #5C666F
-
-        &:focus
-          font-weight bold
 
       &.auth0-lock-tabs-current
         background-color #5C666F
