@@ -71,12 +71,16 @@ export default class Container extends React.Component {
       contentRender,
       disallowClose,
       footerText,
+      globalError,
+      globalSuccess,
       gravatar, // TODO: should be named "avatar" and point to the avatar url
       headerText,
+      icon,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
       isModal,
       isSubmitting,
       lock,
+      primaryColor,
       screenName,
       submitHandler,
       tabs,
@@ -115,9 +119,15 @@ export default class Container extends React.Component {
                 backHandler={backHandler}
                 contentRender={contentRender}
                 footerText={footerText}
+                globalError={globalError}
+                globalSuccess={globalSuccess}
+                gravatar={gravatar}
                 headerText={headerText}
+                icon={icon}
+                isSubmitting={isSubmitting}
                 screenName={screenName}
                 lock={lock}
+                primaryColor={primaryColor}
                 showSubmitButton={!!submitHandler}
                 tabs={tabs}
                 transitionName={transitionName}
@@ -138,12 +148,16 @@ Container.propTypes = {
   closeHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
   footerText: React.PropTypes.element,
+  globalError: React.PropTypes.string,
+  globalSuccess: React.PropTypes.string,
   gravatar: React.PropTypes.object,
   headerText: React.PropTypes.element,
+  icon: React.PropTypes.string.isRequired,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
   lock: React.PropTypes.object.isRequired,
+  primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
   tabs: React.PropTypes.element,
   transitionName: React.PropTypes.string.isRequired

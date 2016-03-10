@@ -32,7 +32,13 @@ export default class Chrome extends React.Component {
       contentRender,
       headerText,
       footerText,
+      globalError,
+      globalSuccess,
+      gravatar,
+      icon,
+      isSubmitting,
       lock,
+      primaryColor,
       screenName,
       showSubmitButton,
       tabs,
@@ -40,12 +46,6 @@ export default class Chrome extends React.Component {
     } = this.props;
 
     const { reverse, sliding } = this.state;
-
-    const gravatar = l.gravatar(lock);
-    const icon = l.ui.icon(lock);
-    const globalError = l.globalError(lock);
-    const globalSuccess = l.globalSuccess(lock);
-    const disableSubmit = l.submitting(lock);
 
     let backgroundUrl, name;
     if (gravatar) {
@@ -55,7 +55,6 @@ export default class Chrome extends React.Component {
       backgroundUrl = icon;
       name = "";
     }
-    const primaryColor = l.ui.primaryColor(lock);
 
     const header = headerText && <p>{headerText}</p>;
     const footer = footerText
@@ -64,7 +63,7 @@ export default class Chrome extends React.Component {
     const submitButton = showSubmitButton
       && <SubmitButton
             color={primaryColor}
-            disabled={disableSubmit}
+            disabled={isSubmitting}
             key="submit"
             ref="submit"
             tabIndex={l.tabIndex(lock, 10)}
@@ -145,9 +144,14 @@ Chrome.propTypes = {
   backHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
   footerText: React.PropTypes.element,
+  globalError: React.PropTypes.string,
+  globalSuccess: React.PropTypes.string,
+  gravatar: React.PropTypes.object,
   headerText: React.PropTypes.element,
   icon: React.PropTypes.string.isRequired,
+  isSubmitting: React.PropTypes.bool.isRequired,
   lock: React.PropTypes.object.isRequired,
+  primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   transitionName: React.PropTypes.string.isRequired
 };
