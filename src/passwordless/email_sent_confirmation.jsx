@@ -1,5 +1,5 @@
 import React from 'react';
-import ConfirmationPane from '../lock/confirmation_pane';
+import ConfirmationPane from '../widget/confirmation_pane';
 import Icon from '../icon/icon';
 import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
