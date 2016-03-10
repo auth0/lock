@@ -17,7 +17,3 @@ const svgTags = {
 export function iconTag(name) {
   return svgTags[name];
 }
-
-export function iconUrl(name) {
-  return `data:image/svg+xml;utf8,${iconTag(name).replace(/#/g, "%23")}`;
-}

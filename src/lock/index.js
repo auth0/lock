@@ -1,6 +1,5 @@
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
-import { iconUrl } from '../icon/index';
 import * as d from '../dict/index';
 import t from '../dict/t';
 import trim from 'trim';
