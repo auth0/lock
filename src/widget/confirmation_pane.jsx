@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '../icon/icon';
-import IconButton from '../icon/button';
+import { BackButton, CloseButton } from './button';
 
 export default class ConfirmationPane extends React.Component {
 
@@ -9,8 +9,8 @@ export default class ConfirmationPane extends React.Component {
 
     return (
       <div className="auth0-lock-confirmation">
-        {closeHandler && <IconButton name="close" onClick={closeHandler}/>}
-        {backHandler && <IconButton name="back" onClick={backHandler} />}
+        {closeHandler && <CloseButton onClick={closeHandler}/>}
+        {backHandler && <BackButton onClick={backHandler} />}
         <div className="auth0-lock-confirmation-content">
           <Icon name="checkmark" />
           {this.props.children}

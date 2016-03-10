@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '../icon/button';
+import { BackButton } from './button';
 
 // TODO: simplify this mess :)
 
@@ -9,7 +9,7 @@ export default class Header extends React.Component {
 
     return (
       <div className="auth0-lock-header">
-        {backHandler && <IconButton name="back" onClick={backHandler}/>}
+        {backHandler && <BackButton onClick={backHandler} />}
         <Background imageUrl={backgroundUrl} backgroundColor={backgroundColor} grayScale={!!name} />
         <Welcome title={title} name={name} imageUrl={name ? undefined : logoUrl} />
       </div>

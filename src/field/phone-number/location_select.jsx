@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IconButton from '../../icon/button';
+import { BackButton } from '../../widget/button';
 import * as cc from '../country_codes';
 import * as su from '../../utils/string_utils';
 import { isSmallScreen } from '../../utils/media_utils';
@@ -46,7 +46,7 @@ export default class LocationSelect extends React.Component {
     return (
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
-          <IconButton name="back" onClick={::this.cancel} />
+          <BackButton onClick={::this.cancel} />
           <div className="auth0-lock-input-wrap">
             <span dangerouslySetInnerHTML={{__html: icon}} />
             <input ref="input"

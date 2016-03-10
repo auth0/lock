@@ -2,7 +2,7 @@ import React from 'react';
 import CSSCore from 'fbjs/lib/CSSCore';
 import Chrome from './chrome';
 import Icon from '../icon/icon';
-import IconButton from '../icon/button';
+import { CloseButton } from './button';
 import * as l from '../lock/index';
 import * as g from '../gravatar/index';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
@@ -112,7 +112,7 @@ export default class Container extends React.Component {
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
-            {closeHandler && <IconButton name="close" onClick={::this.handleClose} />}
+            {closeHandler && <CloseButton onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
               <Chrome
                 auxiliaryPane={auxiliaryPane}
