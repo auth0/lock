@@ -82,7 +82,7 @@ export default class Base extends EventEmitter {
           const props = {
             auxiliaryPane: screen.renderAuxiliaryPane(m),
             backHandler: screen.backHandler(m),
-            closeHandler: screen.closeHandler(m),
+            closeHandler: l.ui.closable(m) ? screen.closeHandler(m) : undefined,
             contentRender: ::screen.render,
             footerText: screen.renderFooterText(m),
             gravatar: l.gravatar(m),

@@ -85,8 +85,6 @@ export default class Container extends React.Component {
 
     const overlay = isModal ? <div className="auth0-lock-overlay"/> : null;
 
-    const showCloseButton = l.ui.closable(lock) && !disallowClose;
-
     let className = "auth0-lock";
     if (!isModal) {
       className += " auth0-lock-opened-in-frame";
@@ -110,7 +108,7 @@ export default class Container extends React.Component {
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
             {gravatar && <Avatar imageUrl={g.imageUrl(gravatar)} />}
-            {showCloseButton && <IconButton name="close" onClick={::this.handleClose} />}
+            {closeHandler && <IconButton name="close" onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
               <Chrome
                 auxiliaryPane={auxiliaryPane}
@@ -137,6 +135,7 @@ export default class Container extends React.Component {
 Container.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
+  closeHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
   footerText: React.PropTypes.element,
   gravatar: React.PropTypes.object,
@@ -148,8 +147,6 @@ Container.propTypes = {
   screenName: React.PropTypes.string.isRequired,
   tabs: React.PropTypes.element,
   transitionName: React.PropTypes.string.isRequired
-  // closeHandler,
-  // disallowClose,
   // escHandler
   // submitHandler,
 };
