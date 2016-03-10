@@ -15,7 +15,7 @@ export function setField(m, field, value, validator, ...validatorExtraArgs) {
 }
 
 export function isFieldValid(m, field) {
-  return m.getIn(["field", field, "vlaid"]);
+  return m.getIn(["field", field, "valid"]);
 }
 
 export function isFieldVisiblyInvalid(m, field) {
