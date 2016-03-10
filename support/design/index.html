@@ -123,7 +123,8 @@ body {
  new Auth0Lock(cid, domain, {
    authentication: { redirect: false },
    connections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
-   container: "classic-container"
+   container: "classic-container",
+   usernameStyle: "username"
  }).show();
 
  new Auth0Lock(cid, domain, {

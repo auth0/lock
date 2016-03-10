@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Icon from '../../icon/icon';
 import IconButton from '../../icon/button';
 import * as cc from '../country_codes';
 import * as su from '../../utils/string_utils';
 import { isSmallScreen } from '../../utils/media_utils';
+import { icon } from './location_input';
 
 function cycle(xs, x) {
   return xs.skipWhile(y => y !== x).get(1, xs.get(0));
@@ -48,7 +48,7 @@ export default class LocationSelect extends React.Component {
         <div className="auth0-lock-search">
           <IconButton name="back" onClick={::this.cancel} />
           <div className="auth0-lock-input-wrap">
-            <Icon name="location"/>
+            <span dangerouslySetInnerHTML={{__html: icon}} />
             <input ref="input"
               className="auth0-lock-input auth0-lock-input-search"
               defaultValue={initialLocationSearchStr}

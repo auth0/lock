@@ -3,8 +3,8 @@ import React from 'react';
 
 export default class InputWrap extends React.Component {
   render() {
-    const { focused, icon, isValid } = this.props;
-    let blockClassName = "auth0-lock-input-block auth0-lock-input-" + this.props.name;
+    const { focused, isValid, name, svg } = this.props;
+    let blockClassName = `auth0-lock-input-block auth0-lock-input-${name}`;
     if (!isValid) {
       blockClassName += " auth0-lock-error animated pulse";
     }
@@ -14,12 +14,10 @@ export default class InputWrap extends React.Component {
       wrapClassName += " auth0-lock-focused";
     }
 
-    const fallbackIcon = <i className="auth0-lock-icon"/>;
-
     return (
       <div className={blockClassName}>
         <div className={wrapClassName}>
-          {icon || fallbackIcon}
+          <span dangerouslySetInnerHTML={{__html: svg}} />
           {this.props.children}
         </div>
       </div>
@@ -28,10 +26,12 @@ export default class InputWrap extends React.Component {
 }
 
 InputWrap.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  isValid: React.PropTypes.bool.isRequired,
   children: React.PropTypes.oneOfType([
     React.PropTypes.element.isRequired,
     React.PropTypes.arrayOf(React.PropTypes.element).isRequired
-  ])
+  ]),
+  focused: React.PropTypes.bool,
+  isValid: React.PropTypes.bool.isRequired,
+  name: React.PropTypes.string.isRequired,
+  svg: React.PropTypes.string.isRequired
 };
