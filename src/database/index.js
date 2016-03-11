@@ -21,6 +21,8 @@ function processDatabaseOptions(options) {
     usernameStyle
   } = options;
 
+  // TODO: add a warning if it is not "username" or "email", leave it
+  // undefined, and change accesor fn.
   usernameStyle = usernameStyle === "username" ? "username" : "email";
 
   let screens = ["login", "signUp", "resetPassword"];
@@ -53,16 +55,18 @@ function processDatabaseOptions(options) {
     signUpLink = undefined;
   }
 
+  // TODO: add a warning if it is not a boolean, leave it undefined,
+  // and change accesor fn.
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
-  return {
+  return Map({
     initialScreen,
     loginAfterSignUp,
     resetLink,
     screens,
     signUpLink,
     usernameStyle
-  };
+  }).filter(x => typeof x !== "undefined").toJS();
 }
 
 export function databaseConnection(m) {
