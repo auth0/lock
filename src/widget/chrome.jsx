@@ -73,6 +73,7 @@ export default class Chrome extends React.Component {
       screenName,
       showSubmitButton,
       tabs,
+      title,
       transitionName
     } = this.props;
 
@@ -101,7 +102,7 @@ export default class Chrome extends React.Component {
 
     return (
       <div className="auth0-lock-cred-pane">
-        <Header title={this.t(["title"], {__textOnly: true})} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
+        <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <ReactTransitionGroup>
           {globalError && <GlobalMessage key="global-error" message={globalError} type="error" />}
           {globalSuccess && <GlobalMessage key="global-success" message={globalSuccess} type="success" />}
@@ -183,6 +184,7 @@ Chrome.propTypes = {
   lock: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
+  title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
 };
 

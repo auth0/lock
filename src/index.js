@@ -107,6 +107,7 @@ export default class Base extends EventEmitter {
             screenName: screen.name,
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
+            title: l.ui.t(m, ["title"], {__textOnly: true}),
             transitionName: screen.transitionName(m)
           };
           render(props, l.ui.containerID(m), l.ui.appendContainer(m));

@@ -84,6 +84,7 @@ export default class Container extends React.Component {
       screenName,
       submitHandler,
       tabs,
+      title,
       transitionName
     } = this.props;
 
@@ -130,6 +131,7 @@ export default class Container extends React.Component {
                 primaryColor={primaryColor}
                 showSubmitButton={!!submitHandler}
                 tabs={tabs}
+                title={title}
                 transitionName={transitionName}
               />
             </div>
@@ -160,6 +162,7 @@ Container.propTypes = {
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
   tabs: React.PropTypes.element,
+  title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
   // escHandler
   // submitHandler,
