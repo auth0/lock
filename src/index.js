@@ -84,6 +84,10 @@ export default class Base extends EventEmitter {
             : handler;
         };
 
+        const title = gravatar
+          ? l.ui.t(m, ["welcome"], {name: g.displayName(gravatar), __textOnly: true})
+          : l.ui.t(m, ["title"], {__textOnly: true});
+
         if (l.rendering(m)) {
           const screen = this.render(m);
           const props = {
@@ -96,7 +100,7 @@ export default class Base extends EventEmitter {
             footerText: screen.renderFooterText(m),
             globalError: l.globalError(m),
             globalSuccess: l.globalSuccess(m),
-            gravatar: l.gravatar(m),
+            gravatar: gravatar,
             headerText: screen.renderHeaderText(m),
             icon: l.ui.icon(m),
             isMobile: l.ui.mobile(m),
@@ -107,7 +111,7 @@ export default class Base extends EventEmitter {
             screenName: screen.name,
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
-            title: l.ui.t(m, ["title"], {__textOnly: true}),
+            title: title,
             transitionName: screen.transitionName(m)
           };
           render(props, l.ui.containerID(m), l.ui.appendContainer(m));
