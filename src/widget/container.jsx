@@ -185,6 +185,8 @@ Container.propTypes = {
 };
 
 Container.defaultProps = {
+  icon: "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
   isMobile: false,
-  isSubmitting: false
+  isSubmitting: false,
+  primaryColor: "#ea5323"
 };

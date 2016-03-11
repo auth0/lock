@@ -107,11 +107,13 @@ export function gravatar(m) {
 function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const primaryColor = options.theme && options.theme.primaryColor;
+  const { icon } = options;
+
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
-    icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
+    icon: typeof icon === "string" ? icon : undefined,
     closable: closable,
     dict: d.buildDict(modeName, typeof options.dict === "object" ? options.dict : {}),
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
@@ -119,7 +121,7 @@ function extractUIOptions(id, modeName, options) {
     gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
-    primaryColor: typeof primaryColor === "string" ? primaryColor : "#ea5323",
+    primaryColor: typeof primaryColor === "string" ? primaryColor : undefined,
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
   });
 }
