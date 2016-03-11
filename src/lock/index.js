@@ -106,8 +106,8 @@ export function gravatar(m) {
 
 function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
-  const primaryColor = options.theme && options.theme.primaryColor;
-  const { icon } = options;
+  const theme = options.theme || {};
+  const { icon, primaryColor } = theme;
 
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
