@@ -17,14 +17,13 @@ class SubmitButton extends React.Component {
   }
 
   render() {
-    const { color, disabled, tabIndex } = this.props;
+    const { color, disabled } = this.props;
 
     return (
       <button
         className="auth0-lock-submit"
         disabled={disabled}
         style={{backgroundColor: color}}
-        tabIndex={tabIndex}
         type="submit"
       >
         <div className="auth0-loading-container">
@@ -98,7 +97,6 @@ export default class Chrome extends React.Component {
             disabled={isSubmitting}
             key="submit"
             ref="submit"
-            tabIndex={l.tabIndex(lock, 10)}
          />;
 
     return (

@@ -19,7 +19,6 @@ export default class LoginPane extends React.Component {
       forgotPasswordLabel,
       lock,
       passwordInputPlaceholder,
-      tabIndex,
       usernameInputPlaceholder
     } = this.props;
 
@@ -27,12 +26,10 @@ export default class LoginPane extends React.Component {
       ? <UsernamePane
           lock={lock}
           placeholder={usernameInputPlaceholder}
-          tabIndex={tabIndex}
         />
       : <EmailPane
           lock={lock}
           placeholder={emailInputPlaceholder}
-          tabIndex={tabIndex}
         />;
 
     const dontRememberPassword = hasScreen(lock, "resetPassword")
@@ -41,7 +38,6 @@ export default class LoginPane extends React.Component {
             className="auth0-lock-alternative-link"
             href={resetLink(lock, "#")}
             onClick={resetLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
-            tabIndex={l.tabIndex(lock, tabIndex)}
           >
             {forgotPasswordLabel}
           </a>
@@ -64,10 +60,5 @@ LoginPane.propTypes = {
   forgotPasswordLabel: React.PropTypes.string.isRequired,
   lock: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number.isRequired,
   usernameInputPlaceholder: React.PropTypes.string.isRequired
-};
-
-LoginPane.defaultProps = {
-  tabIndex: 1
 };

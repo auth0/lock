@@ -5,7 +5,7 @@ import { displayName, useBigButtons } from '../../social/index';
 
 export default class SocialButton extends React.Component {
   render() {
-    const { connection, disabled, lock, tabIndex } = this.props;
+    const { connection, disabled, lock } = this.props;
 
     let className = "auth0-lock-social-button";
     if (useBigButtons(lock)) className += " auth0-lock-social-big-button";
@@ -16,7 +16,6 @@ export default class SocialButton extends React.Component {
         data-provider={connection.strategy}
         disabled={disabled}
         onClick={::this.handleClick}
-        tabIndex={l.tabIndex(lock, tabIndex)}
         type="button"
       >
         <div className="auth0-lock-social-button-icon" />
@@ -36,11 +35,9 @@ export default class SocialButton extends React.Component {
 SocialButton.propTypes = {
   lock: React.PropTypes.object.isRequired,
   connection: React.PropTypes.object.isRequired,
-  disabled: React.PropTypes.bool.isRequired,
-  tabIndex: React.PropTypes.number
+  disabled: React.PropTypes.bool.isRequired
 };
 
 SocialButton.defaultProps = {
-  disabled: false,
-  tabIndex: 1
+  disabled: false
 };

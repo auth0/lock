@@ -11,7 +11,7 @@ export default class EmailPane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder, tabIndex } = this.props;
+    const { lock, placeholder } = this.props;
 
     return (
       <EmailInput value={c.email(lock)}
@@ -20,7 +20,6 @@ export default class EmailPane extends React.Component {
         gravatar={l.ui.gravatar(lock)}
         autoFocus={l.ui.focusInput(lock)}
         placeholder={placeholder}
-        tabIndex={l.tabIndex(lock, tabIndex)}
         disabled={l.submitting(lock)} />
     );
   }
@@ -29,10 +28,5 @@ export default class EmailPane extends React.Component {
 
 EmailPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number.isRequired
-};
-
-EmailPane.defaultProps = {
-  tabIndex: 1
+  placeholder: React.PropTypes.string.isRequired
 };

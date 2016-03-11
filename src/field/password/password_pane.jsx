@@ -12,7 +12,7 @@ export default class PasswordPane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder, policy, tabIndex } = this.props;
+    const { lock, placeholder, policy } = this.props;
 
     return (
       <PasswordInput
@@ -20,7 +20,6 @@ export default class PasswordPane extends React.Component {
         isValid={!c.isFieldVisiblyInvalid(lock, "password")}
         onChange={::this.handleChange}
         placeholder={placeholder}
-        tabIndex={l.tabIndex(lock, tabIndex)}
         disabled={l.submitting(lock)}
         policy={policy}
       />
@@ -33,10 +32,5 @@ PasswordPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
   onChange: React.PropTypes.func,
   placeholder: React.PropTypes.string.isRequired,
-  policy: React.PropTypes.string,
-  tabIndex: React.PropTypes.number.isRequired,
-};
-
-PasswordPane.defaultProps = {
-  tabIndex: 1
+  policy: React.PropTypes.string
 };

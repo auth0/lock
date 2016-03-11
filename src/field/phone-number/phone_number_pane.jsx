@@ -33,20 +33,18 @@ export default class PhoneNumberPane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder, tabIndex } = this.props;
+    const { lock, placeholder } = this.props;
 
     return (
       <div>
         <LocationInput value={c.phoneLocationString(lock)}
-          onClick={::this.handleLocationClick}
-          tabIndex={l.tabIndex(lock, tabIndex)} />
+          onClick={::this.handleLocationClick} />
         <PhoneNumberInput ref="phoneNumberInput"
           value={c.phoneNumber(lock)}
           isValid={!c.isFieldVisiblyInvalid(lock, "phoneNumber")}
           onChange={::this.handlePhoneNumberChange}
           autoFocus={l.ui.focusInput(lock)}
           placeholder={placeholder}
-          tabIndex={l.tabIndex(lock, tabIndex)}
           disabled={l.submitting(lock)} />
       </div>
     );
@@ -56,10 +54,5 @@ export default class PhoneNumberPane extends React.Component {
 PhoneNumberPane.propTypes = {
   focusSubmit: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number.isRequired
-};
-
-PhoneNumberPane.defaultProps = {
-  tabIndex: 1
+  placeholder: React.PropTypes.string.isRequired
 };

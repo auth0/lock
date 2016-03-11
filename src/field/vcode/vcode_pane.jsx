@@ -21,7 +21,7 @@ export default class VcodePane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder, resendLabel, tabIndex } = this.props;
+    const { lock, placeholder, resendLabel } = this.props;
 
     return (
       <div>
@@ -31,14 +31,12 @@ export default class VcodePane extends React.Component {
           autoFocus={!isSmallScreen()}
           placeholder={placeholder}
           disabled={l.submitting(lock)}
-          tabIndex={l.tabIndex(lock, tabIndex)}
         />
         <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
             href="#"
             onClick={::this.handleResendClick}
-            tabIndex={l.tabIndex(lock, tabIndex)}
           >
             {resendLabel}
           </a>
@@ -52,10 +50,5 @@ export default class VcodePane extends React.Component {
 VcodePane.propTypes = {
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired,
-  resendLabel: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number.isRequired
-};
-
-VcodePane.defaultProps = {
-  tabIndex: 1
+  resendLabel: React.PropTypes.string.isRequired
 };

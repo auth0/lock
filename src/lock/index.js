@@ -219,10 +219,6 @@ export function signedIn(m) {
   return tget(m, "signedIn", false);
 }
 
-export function tabIndex(m, n) {
-  return [id(m), n > 9 ? "" : "0", n].join("");
-}
-
 export function warn(x, str) {
   const shouldOutput = Map.isMap(x)
     ? !ui.disableWarnings(x)

@@ -11,7 +11,7 @@ export default class UsernamePane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder, tabIndex } = this.props;
+    const { lock, placeholder } = this.props;
 
     return (
       <UsernameInput
@@ -19,7 +19,6 @@ export default class UsernamePane extends React.Component {
         isValid={!c.isFieldVisiblyInvalid(lock, "username")}
         onChange={::this.handleChange}
         placeholder={placeholder}
-        tabIndex={l.tabIndex(lock, tabIndex)}
         disabled={l.submitting(lock)}
       />
     );
@@ -29,10 +28,5 @@ export default class UsernamePane extends React.Component {
 
 UsernamePane.propTypes = {
   lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number.isRequired
-};
-
-UsernamePane.defaultProps = {
-  tabIndex: 1
+  placeholder: React.PropTypes.string.isRequired
 };

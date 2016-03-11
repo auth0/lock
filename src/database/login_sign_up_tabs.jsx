@@ -10,8 +10,7 @@ export default class LoginSignUpTabs extends React.Component {
       lock,
       loginTabLabel,
       signUpLink,
-      signUpTabLabel,
-      tabIndex
+      signUpTabLabel
     } = this.props;
     const isLogin = getScreen(lock) === "login";
 
@@ -21,14 +20,12 @@ export default class LoginSignUpTabs extends React.Component {
           label={loginTabLabel}
           current={isLogin}
           clickHandler={::this.handleLoginClick}
-          tabIndex={l.tabIndex(lock, tabIndex)}
         />
         <LoginSignUpTab
           label={signUpTabLabel}
           current={!isLogin}
           clickHandler={::this.handleSignUpClick}
           href={signUpLink}
-          tabIndex={l.tabIndex(lock, tabIndex)}
         />
       </ul>
     );
@@ -48,12 +45,7 @@ LoginSignUpTabs.propTypes = {
   lock: React.PropTypes.object.isRequired,
   loginTabLabel: React.PropTypes.string.isRequired,
   signUpLink: React.PropTypes.string,
-  signUpTabLabel: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number.isRequired
-};
-
-LoginSignUpTabs.defaultProps = {
-  tabIndex: 1
+  signUpTabLabel: React.PropTypes.string.isRequired
 };
 
 class LoginSignUpTab extends React.Component {
@@ -64,7 +56,7 @@ class LoginSignUpTab extends React.Component {
   }
 
   render() {
-    const { current, href, label, tabIndex } = this.props;
+    const { current, href, label } = this.props;
     const className = current ? "auth0-lock-tabs-current" : "";
 
     return (
@@ -72,7 +64,6 @@ class LoginSignUpTab extends React.Component {
         <a
           href={href || "#"}
           onClick={href ? undefined : ::this.handleClick}
-          tabIndex={tabIndex}
         >
           {label}
         </a>

@@ -12,7 +12,7 @@ export default class LastLoginButton extends React.Component {
   }
 
   render() {
-    const { disabled, lock, tabIndex } = this.props;
+    const { disabled, lock } = this.props;
 
     return (
       <button
@@ -20,7 +20,6 @@ export default class LastLoginButton extends React.Component {
         data-provider={lastUsedConnection(lock).strategy}
         disabled={disabled}
         onClick={::this.handleClick}
-        tabIndex={l.tabIndex(lock, tabIndex)}
         type="button"
       >
         <div className="auth0-lock-social-button-icon" />
@@ -35,11 +34,9 @@ export default class LastLoginButton extends React.Component {
 
 LastLoginButton.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
-  lock: React.PropTypes.object.isRequired,
-  tabIndex: React.PropTypes.number
+  lock: React.PropTypes.object.isRequired
 };
 
 LastLoginButton.defaultProps = {
-  disabled: false,
-  tabIndex: 1
+  disabled: false
 };

@@ -11,18 +11,17 @@ export default class LastLoginPane extends React.Component {
   }
 
   render() {
-    const { lock, skipLastLoginLabel, tabIndex } = this.props;
+    const { lock, skipLastLoginLabel } = this.props;
 
     return (
       <div className="auth0-lock-last-login-pane">
-        <LastLoginButton lock={lock} tabIndex={tabIndex} />
+        <LastLoginButton lock={lock} />
 
         <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
             href="#"
             onClick={::this.handleClick}
-            tabIndex={l.tabIndex(lock, tabIndex)}
           >
             {skipLastLoginLabel}
           </a>
@@ -39,10 +38,5 @@ export default class LastLoginPane extends React.Component {
 
 LastLoginPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
-  skipLastLoginLabel: React.PropTypes.string.isRequired,
-  tabIndex: React.PropTypes.number
-};
-
-LastLoginPane.defaultProps = {
-  tabIndex: 1
+  skipLastLoginLabel: React.PropTypes.string.isRequired
 };
