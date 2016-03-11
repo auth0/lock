@@ -39,8 +39,8 @@ class Renderer {
     this.modals = {};
   }
 
-  render(props, containerId, isModal) {
-    // TODO: take containerId and isModal from props.
+  render(containerId, props) {
+    const { isModal } = props;
     const container = this.containerManager.ensure(containerId, isModal);
 
     if (isModal && !this.modals[containerId]) {

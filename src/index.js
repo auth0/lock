@@ -115,7 +115,7 @@ export default class Base extends EventEmitter {
             title: title,
             transitionName: screen.transitionName(m)
           };
-          render(props, l.ui.containerID(m), l.ui.appendContainer(m));
+          render(l.ui.containerID(m), props);
         } else {
           remove(l.ui.containerID(m));
         }
