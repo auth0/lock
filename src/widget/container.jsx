@@ -184,7 +184,7 @@ Container.propTypes = {
   // submitHandler,
 };
 
-Container.defaultPropTypes = {
+Container.defaultProps = {
   isMobile: false,
   isSubmitting: false
 };
