@@ -2,7 +2,6 @@ import React from 'react';
 import CSSCore from 'fbjs/lib/CSSCore';
 import Chrome from './chrome';
 import { CloseButton } from './button';
-import * as l from '../lock/index';
 import * as g from '../gravatar/index';
 import EscKeydownUtils from '../utils/esc_keydown_utils';
 
@@ -44,20 +43,20 @@ export default class Container extends React.Component {
     e.preventDefault();
     const { lock, submitHandler } = this.props;
     if (submitHandler) {
-      submitHandler(l.id(lock));
+      submitHandler();
     }
   }
 
   handleClose() {
     const { closeHandler, isSubmitting, lock } = this.props;
     if (!isSubmitting) {
-      closeHandler(l.id(lock));
+      closeHandler();
     }
   }
 
   handleEsc() {
     const { closeHandler, escHandler, lock } = this.props;
-    escHandler ? escHandler(l.id(lock)) : this.handleClose();
+    escHandler ? escHandler() : this.handleClose();
   }
 
   hide() {

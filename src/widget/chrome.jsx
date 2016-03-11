@@ -161,7 +161,7 @@ export default class Chrome extends React.Component {
 
     const { backHandler, lock } = this.props;
     this.setState({reverse: true});
-    backHandler(l.id(lock));
+    backHandler();
   }
 
   t(keyPath, params) {

@@ -77,12 +77,21 @@ export default class Base extends EventEmitter {
               : null;
         const m = newM.set("gravatar", gravatar);
 
+        const partialApplyId = (screen, handlerName) => {
+          const handler = screen[handlerName](m);
+          return handler
+            ? (...args) => handler(l.id(m), ...args)
+            : handler;
+        };
+
         if (l.rendering(m)) {
           const screen = this.render(m);
           const props = {
             auxiliaryPane: screen.renderAuxiliaryPane(m),
-            backHandler: screen.backHandler(m),
-            closeHandler: l.ui.closable(m) ? screen.closeHandler(m) : undefined,
+            backHandler: partialApplyId(screen, "backHandler"),
+            closeHandler: l.ui.closable(m)
+              ? partialApplyId(screen, "closeHandler")
+              : undefined,
             contentRender: ::screen.render,
             footerText: screen.renderFooterText(m),
             globalError: l.globalError(m),
@@ -96,7 +105,7 @@ export default class Base extends EventEmitter {
             lock: m,
             primaryColor: l.ui.primaryColor(m),
             screenName: screen.name,
-            submitHandler: screen.submitHandler(m),
+            submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
             transitionName: screen.transitionName(m)
           };
