@@ -1,5 +1,5 @@
 import React from 'react';
-import ConfirmationPane from '../widget/confirmation_pane';
+import SuccessPane from '../widget/success_pane';
 import { closeLock } from './actions';
 import * as l from './index';
 
@@ -20,9 +20,9 @@ export default class SignedInConfirmation extends React.Component {
     const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
 
     return (
-      <ConfirmationPane closeHandler={closeHandler}>
+      <SuccessPane closeHandler={closeHandler}>
         <p>{this.t(["success"])}</p>
-      </ConfirmationPane>
+      </SuccessPane>
     );
   }
 

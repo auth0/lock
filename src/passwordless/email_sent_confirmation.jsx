@@ -1,5 +1,5 @@
 import React from 'react';
-import ConfirmationPane from '../widget/confirmation_pane';
+import SuccessPane from '../widget/success_pane';
 import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
 import * as c from '../field/index';
@@ -67,10 +67,10 @@ export default class EmailSentConfirmation extends React.Component {
     };
 
     return (
-      <ConfirmationPane backHandler={::this.handleBack} closeHandler={closeHandler}>
+      <SuccessPane backHandler={::this.handleBack} closeHandler={closeHandler}>
         <p>{this.t(["success"], {email: c.email(lock)})}</p>
         <Resend labels={labels} lock={lock}/>
-      </ConfirmationPane>
+      </SuccessPane>
     )
   }
 

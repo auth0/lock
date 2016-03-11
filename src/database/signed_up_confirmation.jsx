@@ -1,5 +1,5 @@
 import React from 'react';
-import ConfirmationPane from '../widget/confirmation_pane';
+import SuccessPane from '../widget/success_pane';
 import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
 import { shouldAutoLogin } from './index';
@@ -27,9 +27,9 @@ export default class SignedUpConfirmation extends React.Component {
       : this.t(["success"]);
 
     return (
-      <ConfirmationPane closeHandler={closeHandler}>
+      <SuccessPane closeHandler={closeHandler}>
         <p>{message}</p>
-      </ConfirmationPane>
+      </SuccessPane>
     );
   }
 
