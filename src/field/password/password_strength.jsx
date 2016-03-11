@@ -7,15 +7,11 @@ export default class PasswordStrength extends React.Component {
   render() {
     const { password, policy } = this.props;
     const analysis = createPolicy(policy).missing(password);
+    // TODO: add a component for fadeIn / fadeOut animations?
+    const className = "auth0-lock-password-strength animated "
+      + (password && !analysis.verified ? "fadeIn" : "fadeOut");
 
-    // TODO: add a component for fadeIn / fadeOut animations
-    return password && !analysis.verified
-      ? <div className="auth0-lock-password-strength animated fadeIn">
-          <List items={analysis.rules} />
-        </div>
-      : <div className="auth0-lock-password-strength animated fadeOut">
-          <List items={analysis.rules} />
-        </div>;
+    return <div className={className}> <List items={analysis.rules} /></div>;
   }
 
 }
