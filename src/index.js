@@ -91,6 +91,7 @@ export default class Base extends EventEmitter {
         if (l.rendering(m)) {
           const screen = this.render(m);
           const props = {
+            avatar: gravatar && g.imageUrl(gravatar),
             auxiliaryPane: screen.renderAuxiliaryPane(m),
             backHandler: partialApplyId(screen, "backHandler"),
             closeHandler: l.ui.closable(m)
