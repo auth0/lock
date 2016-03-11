@@ -14,12 +14,12 @@ export default class AskSocialNetwork extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
-  render({lock}) {
+  render({model}) {
     return(
       <SocialButtonsPane
-        lock={lock}
+        lock={model}
         showLoading={true}
-        smallButtonsHeader={this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
+        smallButtonsHeader={this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
       />
     );
   }

@@ -57,21 +57,21 @@ export default class Container extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { lock, submitHandler } = this.props;
+    const { submitHandler } = this.props;
     if (submitHandler) {
       submitHandler();
     }
   }
 
   handleClose() {
-    const { closeHandler, isSubmitting, lock } = this.props;
+    const { closeHandler, isSubmitting } = this.props;
     if (!isSubmitting) {
       closeHandler();
     }
   }
 
   handleEsc() {
-    const { closeHandler, escHandler, lock } = this.props;
+    const { closeHandler, escHandler } = this.props;
     escHandler ? escHandler() : this.handleClose();
   }
 
@@ -95,7 +95,7 @@ export default class Container extends React.Component {
       isMobile, // TODO: not documented and should be removed (let the design team know first)
       isModal,
       isSubmitting,
-      lock,
+      model,
       primaryColor,
       screenName,
       submitHandler,
@@ -143,7 +143,7 @@ export default class Container extends React.Component {
                 icon={icon}
                 isSubmitting={isSubmitting}
                 screenName={screenName}
-                lock={lock}
+                model={model}
                 primaryColor={primaryColor}
                 showSubmitButton={!!submitHandler}
                 tabs={tabs}
@@ -174,7 +174,7 @@ Container.propTypes = {
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
-  lock: React.PropTypes.object.isRequired,
+  model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
   tabs: React.PropTypes.element,

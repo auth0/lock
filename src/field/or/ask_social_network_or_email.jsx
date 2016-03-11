@@ -23,17 +23,17 @@ export default class AskSocialNetworkOrEmail extends Screen {
       || renderSignedInConfirmation(lock);
   }
 
-  render({lock}) {
+  render({model}) {
     return (
       <div>
         <SocialButtonsPane
-          lock={lock}
-          smallButtonsHeader={this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
+          lock={model}
+          smallButtonsHeader={this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
         />
-        <PaneSeparator>{this.t(lock, ["separatorText"])}</PaneSeparator>
+        <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>
         <EmailPane
-          lock={lock}
-          placeholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
+          lock={model}
+          placeholder={this.t(model, ["emailInputPlaceholder"], {__textOnly: true})}
         />
       </div>
     );

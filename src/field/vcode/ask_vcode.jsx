@@ -8,12 +8,12 @@ export default class AskVcode extends Screen {
     super(name);
   }
 
-  render({lock}) {
+  render({model}) {
     return (
       <VcodePane
-        lock={lock}
-        placeholder={this.t(lock, ["codeInputPlaceholder"], {__textOnly: true})}
-        resendLabel={this.t(lock, ["resendLabel"], {__textOnly: true})}
+        lock={model}
+        placeholder={this.t(model, ["codeInputPlaceholder"], {__textOnly: true})}
+        resendLabel={this.t(model, ["resendLabel"], {__textOnly: true})}
       />
     );
   }

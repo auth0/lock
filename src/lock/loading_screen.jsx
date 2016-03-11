@@ -13,8 +13,8 @@ export default class LoadingScreen extends Screen {
     return "fade";
   }
 
-  render({lock}) {
-    return <LoadingPane lock={lock} />;
+  render({model}) {
+    return <LoadingPane lock={model} />;
   }
 
 }

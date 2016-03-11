@@ -9,7 +9,7 @@ export default class CustomScreen extends Screen {
     super("customScreen");
   }
 
-  render({lock}) {
+  render({model}) {
     // It takes a prop object and returns a React element. Here we are rendering
     // always the same div but you'll probably use the lock value to return
     // something more interesting.

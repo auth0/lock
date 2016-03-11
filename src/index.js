@@ -107,7 +107,7 @@ export default class Base extends EventEmitter {
             isMobile: l.ui.mobile(m),
             isModal: l.ui.appendContainer(m),
             isSubmitting: l.submitting(m),
-            lock: m,
+            model: m,
             primaryColor: l.ui.primaryColor(m),
             screenName: screen.name,
             submitHandler: partialApplyId(screen, "submitHandler"),

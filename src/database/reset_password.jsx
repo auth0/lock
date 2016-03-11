@@ -18,13 +18,13 @@ export default class ResetPassword extends Screen {
     return resetPassword;
   }
 
-  render({lock}) {
+  render({model}) {
 
     return (
       <ResetPasswordPane
-        emailInputPlaceholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
-        lock={lock}
-        usernameInputPlaceholder={this.t(lock, ["usernameInputPlaceholder"], {__textOnly: true})}
+        emailInputPlaceholder={this.t(model, ["emailInputPlaceholder"], {__textOnly: true})}
+        lock={model}
+        usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}
       />
     );
   }

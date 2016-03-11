@@ -66,7 +66,7 @@ export default class Chrome extends React.Component {
       globalSuccess,
       icon,
       isSubmitting,
-      lock,
+      model,
       primaryColor,
       screenName,
       showSubmitButton,
@@ -127,7 +127,7 @@ export default class Chrome extends React.Component {
                   <div className="auth0-lock-content" key={screenName}>
                     <div className="auth0-lock-form">
                       {header}
-                      {contentRender({focusSubmit: ::this.focusSubmit, lock})}
+                      {contentRender({focusSubmit: ::this.focusSubmit, model})}
                     </div>
                   </div>
                   {footer}
@@ -158,7 +158,7 @@ export default class Chrome extends React.Component {
   handleBack() {
     if (this.sliding) return;
 
-    const { backHandler, lock } = this.props;
+    const { backHandler } = this.props;
     this.setState({reverse: true});
     backHandler();
   }
@@ -176,7 +176,7 @@ Chrome.propTypes = {
   headerText: React.PropTypes.element,
   icon: React.PropTypes.string.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
-  lock: React.PropTypes.object.isRequired,
+  model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   title: React.PropTypes.string.isRequired,

@@ -36,24 +36,24 @@ export default class AskSocialNetworkOrLogin extends Screen {
     return authWithUsername(lock) ? signInWithUsername : signInWithEmail;
   }
 
-  render({lock}) {
-    const social = l.getEnabledConnections(lock, "social").count() > 0
+  render({model}) {
+    const social = l.getEnabledConnections(model, "social").count() > 0
       && <SocialButtonsPane
-           lock={lock}
-           smallButtonsHeader={this.shouldRenderTabs(lock) ? '' : this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
+           lock={model}
+           smallButtonsHeader={this.shouldRenderTabs(model) ? '' : this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
          />;
 
-    const db = l.getEnabledConnections(lock, "database").count() > 0
+    const db = l.getEnabledConnections(model, "database").count() > 0
       && <LoginPane
-           emailInputPlaceholder={this.t(lock, ["emailInputPlaceholder"], {__textOnly: true})}
-           forgotPasswordLabel={this.t(lock, ["forgotPasswordLabel"], {__textOnly: true})}
-           lock={lock}
-           passwordInputPlaceholder={this.t(lock, ["passwordInputPlaceholder"], {__textOnly: true})}
-           usernameInputPlaceholder={this.t(lock, ["usernameInputPlaceholder"], {__textOnly: true})}
+           emailInputPlaceholder={this.t(model, ["emailInputPlaceholder"], {__textOnly: true})}
+           forgotPasswordLabel={this.t(model, ["forgotPasswordLabel"], {__textOnly: true})}
+           lock={model}
+           passwordInputPlaceholder={this.t(model, ["passwordInputPlaceholder"], {__textOnly: true})}
+           usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}
          />;
 
     const separator = social && db
-      && <PaneSeparator>{this.t(lock, ["separatorText"])}</PaneSeparator>;
+      && <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>;
 
     return <div>{social}{separator}{db}</div>;
   }

@@ -13,11 +13,11 @@ export default class LastLoginScreen extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
-  render({lock}) {
+  render({model}) {
     return (
       <LastLoginPane
-        lock={lock}
-        skipLastLoginLabel={this.t(lock, ["skipLastLoginLabel"], {__textOnly: true})}
+        lock={model}
+        skipLastLoginLabel={this.t(model, ["skipLastLoginLabel"], {__textOnly: true})}
       />
     );
   }
