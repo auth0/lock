@@ -22,6 +22,10 @@ export default class PasswordInput extends React.Component {
     this.refs.input.focus();
   }
 
+  hasFocus() {
+    return this.state.focused;
+  }
+
   render() {
     const { isValid, onChange, policy, value, ...props } = this.props;
     const { focused } = this.state;
