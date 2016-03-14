@@ -35,9 +35,9 @@ export default class GlobalMessage extends React.Component {
     node.style.paddingBottom = "0px";
     setTimeout(function() {
       node.style.transition = "all 0.2s";
-      node.style.height = height;
-      node.style.paddingTop = paddingTop;
-      node.style.paddingBottom = paddingBottom;
+      node.style.height = "";
+      node.style.paddingTop = "";
+      node.style.paddingBottom = "";
       callback();
     }, 17);
   }
