@@ -3,7 +3,9 @@ import VcodeInput from './vcode_input';
 import * as l from '../../lock/index';
 import * as c from '../index';
 import { isSmallScreen } from '../../utils/media_utils';
-import { changeVcode } from './actions';
+import { changeField } from '../actions';
+import { validateNotEmptyString } from '../../utils/validation_utils';
+
 
 // TODO: remove passwordless deps
 import { back } from '../../passwordless/actions';
@@ -12,7 +14,7 @@ export default class VcodePane extends React.Component {
 
   handleVcodeChange(e) {
     e.preventDefault();
-    changeVcode(l.id(this.props.lock), e.target.value);
+    changeField(l.id(this.props.lock), "vcode", e.target.value, validateNotEmptyString);
   }
 
   handleResendClick(e) {

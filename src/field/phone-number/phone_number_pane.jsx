@@ -3,8 +3,10 @@ import PhoneNumberInput from './phone_number_input';
 import LocationInput from './location_input';
 import * as c from '../index';
 import * as l from '../../lock/index';
-import { changePhoneNumber, selectPhoneLocation } from './actions';
+import { changeField } from '../actions';
+import { selectPhoneLocation } from './actions';
 import { selectingLocation } from './index';
+import { validatePhoneNumber } from '../../utils/validation_utils';
 
 export default class PhoneNumberPane extends React.Component {
 
@@ -25,7 +27,7 @@ export default class PhoneNumberPane extends React.Component {
   }
 
   handlePhoneNumberChange(e) {
-    changePhoneNumber(l.id(this.props.lock), e.target.value);
+    changeField(l.id(this.props.lock), "phoneNumber", e.target.value, validatePhoneNumber);
   }
 
   handleLocationClick(searchStr) {
