@@ -1,6 +1,6 @@
 import Base from './index';
 import AskSocialNetworkOrLogin from './field/or/ask_social_network_or_login';
-import SignUp from './database/sign_up';
+import SignUp from './database/sign_up_screen';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
 import { getScreen, initDatabase } from './database/index';
