@@ -1,5 +1,5 @@
 {
-  "name": "auth0-lock-passwordless",
+  "name": "auth0-lock-next",
   "version": "2.2.1",
   "description": "Auth0 Lock Passwordless",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/auth0/lock-passwordless"
+    "url": "git://github.com/auth0/lock-next"
   },
   "main": "lib/index.js",
   "scripts": {

@@ -1,7 +1,7 @@
 {
-  "name": "auth0-lock-passwordless",
+  "name": "auth0-lock-next",
   "version": "2.2.1",
-  "main": "build/auth0-lock-passwordless.js",
+  "main": "build/auth0-lock-next.js",
   "ignore": [
     "lib-cov",
     "*.seed",

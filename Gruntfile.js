@@ -32,12 +32,12 @@ module.exports = function(grunt) {
       },
       clean: {
         files: [
-          {action: "delete", dest: "js/lock-passwordless-" + pkg.version + ".js"},
-          {action: "delete", dest: "js/lock-passwordless-" + pkg.version + ".min.js"},
-          {action: "delete", dest: "js/lock-passwordless-" + major_version + ".js"},
-          {action: "delete", dest: "js/lock-passwordless-" + major_version + ".min.js"},
-          {action: "delete", dest: "js/lock-passwordless-" + minor_version + ".js"},
-          {action: "delete", dest: "js/lock-passwordless-" + minor_version + ".min.js"}
+          {action: "delete", dest: "js/lock-next-" + pkg.version + ".js"},
+          {action: "delete", dest: "js/lock-next-" + pkg.version + ".min.js"},
+          {action: "delete", dest: "js/lock-next-" + major_version + ".js"},
+          {action: "delete", dest: "js/lock-next-" + major_version + ".min.js"},
+          {action: "delete", dest: "js/lock-next-" + minor_version + ".js"},
+          {action: "delete", dest: "js/lock-next-" + minor_version + ".min.js"}
         ]
       },
       publish: {
@@ -81,26 +81,26 @@ module.exports = function(grunt) {
           watch: true
         },
         src: "src/browser.js",
-        dest: "build/lock-passwordless.js"
+        dest: "build/lock-next.js"
       },
       build: {
         src: "src/browser.js",
-        dest: "build/lock-passwordless.js"
+        dest: "build/lock-next.js"
       },
       design: {
         options: {
           watch: true,
         },
         src: "support/design/index.js",
-        dest: "build/lock-passwordless.design.js"
+        dest: "build/lock-next.design.js"
       },
       heroku_design: {
         src: "support/design/index.js",
-        dest: "build/lock-passwordless.design.js"
+        dest: "build/lock-next.design.js"
       },
       heroku_dev: {
         src: "src/browser.js",
-        dest: "build/lock-passwordless.js"
+        dest: "build/lock-next.js"
       }
     },
     clean: {
@@ -140,12 +140,12 @@ module.exports = function(grunt) {
       touch_index: "touch src/index.js"
     },
     http: {
-      purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".js",       method: "DELETE"}},
-      purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + pkg.version + ".min.js",   method: "DELETE"}},
-      purge_major_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + major_version + ".js",     method: "DELETE"}},
-      purge_major_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + major_version + ".min.js", method: "DELETE"}},
-      purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + minor_version + ".js",     method: "DELETE"}},
-      purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-passwordless-" + minor_version + ".min.js", method: "DELETE"} }
+      purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + pkg.version + ".js",       method: "DELETE"}},
+      purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + pkg.version + ".min.js",   method: "DELETE"}},
+      purge_major_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + major_version + ".js",     method: "DELETE"}},
+      purge_major_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + major_version + ".min.js", method: "DELETE"}},
+      purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + minor_version + ".js",     method: "DELETE"}},
+      purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + minor_version + ".min.js", method: "DELETE"} }
     },
     stylus: {
       build: {
@@ -164,8 +164,8 @@ module.exports = function(grunt) {
     },
     uglify: {
       build: {
-        src: "build/lock-passwordless.js",
-        dest: "build/lock-passwordless.min.js"
+        src: "build/lock-next.js",
+        dest: "build/lock-next.min.js"
       }
     }
   });

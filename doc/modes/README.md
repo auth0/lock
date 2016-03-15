@@ -15,7 +15,7 @@ To create a new mode you need to extend the `Mode` class and implement (at least
 
 ```js
 // getting-started/custom_mode.js
-import Mode from 'auth0-lock-passwordless/src/lock/mode';
+import Mode from 'auth0-lock-next/src/lock/mode';
 import CustomScreen from './custom_screen';
 
 export default class CustomMode extends Mode {
@@ -41,7 +41,7 @@ The `CustomScreen` instance returned in the `render` method extends the `Screen`
 ```js
 // getting-started/custom_screen.js
 import React from 'react';
-import Screen from 'auth0-lock-passwordless/src/lock/screen';
+import Screen from 'auth0-lock-next/src/lock/screen';
 
 export default class CustomScreen extends Screen {
 
@@ -66,7 +66,7 @@ it by calling `custom` (the mode's name) in a `Lock` instance.
 
 ```js
 // getting-started/index.js
-import Auth0LockPasswordless from 'auth0-lock-passwordless';
+import Auth0LockPasswordless from 'auth0-lock-next';
 import CustomMode from './custom_mode';
 
 

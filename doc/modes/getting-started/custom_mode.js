@@ -1,4 +1,4 @@
-import Mode from 'auth0-lock-passwordless/src/lock/mode';
+import Mode from 'auth0-lock-next/src/lock/mode';
 import CustomScreen from './custom_screen';
 
 export default class CustomMode extends Mode {

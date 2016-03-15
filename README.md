@@ -10,7 +10,7 @@
 
 ## Playground
 
-You can try it out yourself online at the [playground](https://auth0.github.io/lock-passwordless/).
+You can try it out yourself online at the [playground](https://auth0.github.io/lock-next/).
 
 ## Usage
 
@@ -73,32 +73,32 @@ From CDN
 
 ```html
 <!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-2.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-next-2.min.js"></script>
 
 <!-- Latest minor release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-2.2.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-next-2.2.min.js"></script>
 
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-2.2.1.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock-next-2.2.1.min.js"></script>
 ```
 
 From [bower](http://bower.io)
 
 ```sh
-bower install auth0-lock-passwordless
+bower install auth0-lock-next
 ```
 
 ```html
-<script src="bower_components/auth0-lock-passwordless/dist/auth0-lock-passwordless.min.js"></script>
+<script src="bower_components/auth0-lock-next/dist/auth0-lock-next.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
 
 ```sh
-npm install auth0-lock-passwordless
+npm install auth0-lock-next
 ```
 
-After installing the `auth0-lock-passwordless` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
+After installing the `auth0-lock-next` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
 If you are targeting mobile audiences, it's recommended that you add:
 
@@ -586,13 +586,13 @@ If you have found a bug or if you have a feature request, please report them at 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 
-[npm-image]: https://img.shields.io/npm/v/auth0-lock-passwordless.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/auth0-lock-passwordless
-[strider-image]: https://ci.auth0.com/auth0/lock-passwordless/badge
-[strider-url]: https://ci.auth0.com/auth0/lock-passwordless
-[david-image]: http://img.shields.io/david/auth0/lock-passwordless.svg?style=flat-square
-[david-url]: https://david-dm.org/auth0/lock-passwordless
-[license-image]: http://img.shields.io/npm/l/auth0-lock-passwordless.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/auth0-lock-next.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/auth0-lock-next
+[strider-image]: https://ci.auth0.com/auth0/lock-next/badge
+[strider-url]: https://ci.auth0.com/auth0/lock-next
+[david-image]: http://img.shields.io/david/auth0/lock-next.svg?style=flat-square
+[david-url]: https://david-dm.org/auth0/lock-next
+[license-image]: http://img.shields.io/npm/l/auth0-lock-next.svg?style=flat-square
 [license-url]: #license
-[downloads-image]: http://img.shields.io/npm/dm/auth0-lock-passwordless.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/auth0-lock-passwordless
+[downloads-image]: http://img.shields.io/npm/dm/auth0-lock-next.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/auth0-lock-next
