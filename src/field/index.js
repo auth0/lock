@@ -2,7 +2,7 @@ import { Map } from 'immutable';
 import trim from 'trim';
 import * as cc from './country_codes';
 
-export function setField(m, field, value, validator, ...validatorExtraArgs) {
+export function setField(m, field, value, validator = () => true, ...validatorExtraArgs) {
   const prevValue = m.getIn(["field", field, "value"]);
   const prevShowInvalid = m.getIn(["field", field, "showInvalid"], false);
   const valid = !!validator(value, ...validatorExtraArgs);
