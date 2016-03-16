@@ -89,7 +89,12 @@ module.exports = function(grunt) {
       },
       design: {
         options: {
-          watch: true,
+          browserifyOptions: {
+            debug: true,
+            extensions: ".jsx",
+            transform: ["babelify"]
+          },
+          watch: true
         },
         src: "support/design/index.js",
         dest: "build/lock-next.design.js"
