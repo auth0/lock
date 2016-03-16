@@ -7,8 +7,8 @@ import { changeField } from '../actions';
 import { validateNotEmptyString } from '../../utils/validation_utils';
 
 
-// TODO: remove passwordless deps
-import { back } from '../../passwordless/actions';
+// TODO: this should be in the passwordless ns
+import { restart } from '../../passwordless/actions';
 
 export default class VcodePane extends React.Component {
 
@@ -19,7 +19,7 @@ export default class VcodePane extends React.Component {
 
   handleResendClick(e) {
     e.preventDefault();
-    back(l.id(this.props.lock), {clearField: ["vcode"]});
+    restart(l.id(this.props.lock));
   }
 
   render() {
