@@ -3,7 +3,6 @@ import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
-import * as cs from '../field/storage';
 
 export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want
@@ -67,9 +66,7 @@ export function openLock(id) {
     lock = l.render(lock);
     lock = l.setShow(lock, true);
 
-    return l.ui.rememberLastLogin(lock)
-      ? cs.restore(lock, l.modeName(lock))
-      : lock;
+    return lock;
   });
 
   return true;

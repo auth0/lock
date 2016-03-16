@@ -3,7 +3,6 @@ import { read, getEntity, swap, updateEntity } from '../store/index';
 import { closeLock } from '../lock/actions';
 import webApi from '../lock/web_api';
 import * as c from '../field/index';
-import * as cs from '../field/storage';
 import * as l from '../lock/index';
 import * as m from './index';
 
@@ -41,7 +40,6 @@ export function requestPasswordlessEmailSuccess(id) {
     return m.setPasswordlessStarted(l.setSubmitting(lock, false), true);
   });
   const lock = read(getEntity, "lock", id);
-  cs.store(lock, "email", l.modeName(lock));
 }
 
 export function requestPasswordlessEmailError(id, error) {
@@ -83,7 +81,6 @@ export function sendSMSSuccess(id) {
   });
 
   const lock = read(getEntity, "lock", id);
-  cs.store(lock, "phoneNumber", l.modeName(lock));
 }
 
 export function sendSMSError(id, error) {
