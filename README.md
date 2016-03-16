@@ -62,17 +62,20 @@ If you are using Webpack, you will need to install loaders (`$ npm install --sav
 
 ```js
 loaders: [{
-  test: /node_modules\/auth0-lock\/.*\.js$/,
+  test: /\.js$/,
   loaders: [
     'transform-loader/cacheable?brfs',
     'transform-loader/cacheable?packageify'
-  ]
+  ],
+  include: 'node_modules/auth0-lock'
 }, {
-  test: /node_modules\/auth0-lock\/.*\.ejs$/,
-  loader: 'transform-loader/cacheable?ejsify'
+  test: /\.ejs$/,
+  loader: 'transform-loader/cacheable?ejsify',
+  include: 'node_modules/auth0-lock'
 }, {
   test: /\.json$/,
-  loader: 'json-loader'
+  loader: 'json-loader',
+  include: ['node_modules/auth0-js', 'node_modules/auth0-lock']
 }]
 ```
 
