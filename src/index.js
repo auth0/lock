@@ -63,12 +63,12 @@ export default class Base extends EventEmitter {
       const newGravatar = getEntity(
         newState,
         "gravatar",
-        g.normalizeGravatarEmail(c.email(newM))
+        g.normalizeGravatarEmail(c.email(newM) || c.username(newM))
       );
       const oldGravatar = getEntity(
         oldState,
         "gravatar",
-        g.normalizeGravatarEmail(c.email(oldM))
+        g.normalizeGravatarEmail(c.email(oldM) || c.username(newM))
       );
 
       if (newM != oldM || newGravatar != oldGravatar) {

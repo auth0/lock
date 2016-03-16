@@ -17,6 +17,7 @@ export default class UsernamePane extends React.Component {
     return (
       <UsernameInput
         value={c.username(lock)}
+        gravatar={l.ui.gravatar(lock)}
         isValid={!c.isFieldVisiblyInvalid(lock, "username")}
         onChange={::this.handleChange}
         placeholder={placeholder}
