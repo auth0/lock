@@ -54,7 +54,7 @@ export function setShow(m, value) {
   return tset(m, "show", value);
 }
 
-export function setSubmitting(m, value, error) {
+export function setSubmitting(m, value, error = "") {
   m = tset(m, "submitting", value);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
