@@ -41,6 +41,7 @@ export default class AskSocialNetworkOrLogin extends Screen {
       && <SocialButtonsPane
            lock={model}
            smallButtonsHeader={this.shouldRenderTabs(model) ? '' : this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
+           t={::this.t}
          />;
 
     const db = l.getEnabledConnections(model, "database").count() > 0

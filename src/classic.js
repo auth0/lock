@@ -1,6 +1,6 @@
 import Base from './index';
 import AskSocialNetworkOrLogin from './field/or/ask_social_network_or_login';
-import SignUp from './database/sign_up_screen';
+import SignUp from './classic/sign_up_screen';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
 import { getScreen, initDatabase } from './database/index';
@@ -58,6 +58,7 @@ const dict = {
     forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
     loginTabLabel: "Login",
+    loginWith: "Login with {idp}",
     passwordInputPlaceholder: "your password",
     separatorText: "or",
     signUpTabLabel: "Sign Up",
@@ -76,7 +77,9 @@ const dict = {
     headerText: "",
     loginTabLabel: "Login",
     passwordInputPlaceholder: "your password",
+    separatorText: "or",
     signUpTabLabel: "Sign Up",
+    signUpWith: "Sign up with {idp}",
     usernameInputPlaceholder: "your username",
   },
   signedIn: {

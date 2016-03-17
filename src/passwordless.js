@@ -115,18 +115,21 @@ const dict = {
   network: {
     footerText: "",
     headerText: "",
+    loginWith: "Login with {idp}",
     smallSocialButtonsHeader: "Login with"
   },
   networkOrEmail: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
     headerText: "",
+    loginWith: "Login with {idp}",
     separatorText: "Otherwise, enter your email to sign in<br>or create an account",
     smallSocialButtonsHeader: "Login with"
   },
   networkOrPhone: {
     footerText: "",
     headerText: "",
+    loginWith: "Login with {idp}",
     phoneNumberInputPlaceholder: "your phone number",
     separatorText: "Otherwise, enter your phone to sign in<br>or create an account",
     smallSocialButtonsHeader: "Login with"

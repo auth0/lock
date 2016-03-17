@@ -2,7 +2,7 @@ import React from 'react';
 import EmailPane from '../field/email/email_pane';
 import PasswordPane from '../field/password/password_pane';
 import UsernamePane from '../field/username/username_pane';
-import { authWithUsername, passwordStrengthPolicy } from './index';
+import { authWithUsername, passwordStrengthPolicy } from '../database/index';
 
 export default class SignUpPane extends React.Component {
 
