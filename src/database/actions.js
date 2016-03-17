@@ -106,7 +106,7 @@ function signInError(id, error) {
 }
 
 
-export function signUp(id, options) {
+export function signUp(id, options = {}) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
     if (c.isFieldValid(lock, "email")
