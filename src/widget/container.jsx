@@ -1,5 +1,4 @@
 import React from 'react';
-import CSSCore from 'fbjs/lib/CSSCore';
 import Chrome from './chrome';
 import { CloseButton } from './button';
 
@@ -40,12 +39,15 @@ class EscKeyDownHandler {
 
 
 export default class Container extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {isOpen: false};
+  }
+
   componentDidMount() {
     if (this.props.isModal) {
-      setTimeout(() => CSSCore.addClass(
-        this.refs.container,
-        "auth0-lock-opened"
-      ), 17);
+      setTimeout(() => this.setState({isOpen: true}), 17);
     }
 
     this.escKeydown = new EscKeyDownHandler(::this.handleEsc);
@@ -75,9 +77,9 @@ export default class Container extends React.Component {
     escHandler ? escHandler() : this.handleClose();
   }
 
-  hide() {
-    CSSCore.removeClass(this.refs.container, "auth0-lock-opened");
-  }
+  // hide() {
+  //   this.setState({isOpen: false});
+  // }
 
   render() {
     const {
@@ -107,6 +109,11 @@ export default class Container extends React.Component {
     const overlay = isModal ? <div className="auth0-lock-overlay"/> : null;
 
     let className = "auth0-lock";
+
+    if (isModal && this.state.isOpen) {
+      className += " auth0-lock-opened"
+    }
+
     if (!isModal) {
       className += " auth0-lock-opened-in-frame";
     }
