@@ -289,7 +289,7 @@ function resetPasswordError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
-export function showLoginActivity(id, fields = []) {
+export function showLoginActivity(id, fields = ["password"]) {
   swap(updateEntity, "lock", id, setScreen, "login", fields);
 }
 
@@ -297,7 +297,7 @@ export function showSignUpActivity(id, fields = []) {
   swap(updateEntity, "lock", id, setScreen, "signUp", fields);
 }
 
-export function showResetPasswordActivity(id, fields = []) {
+export function showResetPasswordActivity(id, fields = ["password"]) {
   swap(updateEntity, "lock", id, setScreen, "resetPassword", fields);
 }
 
