@@ -21,12 +21,10 @@ export default class LoadingScreen extends Screen {
 
 class LoadingPane extends React.Component {
 
-  componentWillMount() {
-    pinLoadingPane(l.id(this.props.lock));
-  }
-
   componentDidMount() {
-    setTimeout(() => unpinLoadingPane(l.id(this.props.lock)), 1200);
+    const { lock } = this.props;
+    pinLoadingPane(l.id(lock));
+    setTimeout(() => unpinLoadingPane(l.id(lock)), 1200);
   }
 
   render() {
