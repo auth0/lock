@@ -3,12 +3,14 @@ import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
+import { img as preload } from '../preload/index';
+import { defaultProps } from '../widget/container';
 
 export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want
   // to provide some options by default.
   const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
-
+  preload(l.ui.icon(m) || defaultProps.icon);
   swap(setEntity, "lock", id, m);
   // TODO: check options.mode is a valid mode.
 
