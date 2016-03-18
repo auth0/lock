@@ -646,8 +646,6 @@ Auth0Lock.prototype.initialize = function(done) {
     // XXX: auth0.getSSOData() never returns err
     // see source at: https://github.com/auth0/auth0.js/blob/master/lib/index.js
     self.$ssoData = ssoData;
-    self.$ssoData.connection = {};
-    self.$ssoData.strategy = "auth0";
     done();
     self.emit('ready');
   }
