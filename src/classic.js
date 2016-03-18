@@ -5,6 +5,8 @@ import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
 import { getScreen, initDatabase } from './database/index';
 import { initSocial } from './social/index';
+import { setEmail } from './field/email';
+import { setUsername } from './field/username';
 import * as l from './lock/index';
 
 export default class Auth0Lock extends Base {
@@ -22,6 +24,11 @@ export default class Auth0Lock extends Base {
   didInitialize(model, options) {
     model = initSocial(model, options);
     model = initDatabase(model, options);
+
+    const { email, username } = options.autofill || {};
+    if (typeof email === "string") model = setEmail(model, email);
+    if (typeof username === "string") model = setUsername(model, username);
+
     this.setModel(model);
   }
 
