@@ -7292,6 +7292,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   letter-spacing: .3px;
   text-transform: uppercase;
   color: #5C666F;
+  cursor: pointer;
   display: block;
   width: 50%;
   float: left;
@@ -7302,6 +7303,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-switch .a0-active {
   background-color: #5C666F;
   color: white;
+  cursor: default;
 }
 
 #a0-lock.a0-theme-default .a0-overlay.a0-active {
@@ -7363,6 +7365,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel *,
 #a0-lock.a0-theme-default .a0-panel input {
   font-smoothing: antialiased;
+}
+
+#a0-lock.a0-theme-default .a0-panel a {
+  cursor: pointer;
 }
 
 #a0-lock.a0-theme-default .a0-panel a,
@@ -7704,6 +7710,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-weight: normal;
   display: inline-block;
   color: rgba(0, 0, 0, 0.86);
+  cursor: pointer;
 }
 
 #a0-lock.a0-theme-default .a0-panel button.a0-primary {
