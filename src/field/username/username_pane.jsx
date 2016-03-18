@@ -1,14 +1,14 @@
 import React from 'react';
 import UsernameInput from './username_input';
 import * as c from '../index';
-import { changeField } from '../actions';
+import { swap, updateEntity } from '../../store/index';
 import * as l from '../../lock/index';
-import { validateNotEmptyString } from '../../utils/validation_utils';
+import { setUsername } from '../username';
 
 export default class UsernamePane extends React.Component {
 
   handleChange(e) {
-    changeField(l.id(this.props.lock), "username", e.target.value, validateNotEmptyString);
+    swap(updateEntity, "lock", l.id(this.props.lock), setUsername, e.target.value);
   }
 
   render() {

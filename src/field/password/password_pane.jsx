@@ -1,15 +1,20 @@
 import React from 'react';
 import PasswordInput from './password_input';
 import * as c from '../index';
-import { changeField } from '../actions';
+import { swap, updateEntity } from '../../store/index';
 import * as l from '../../lock/index';
-import { validatePassword } from '../../utils/validation_utils';
+import { setPassword } from '../password';
 
 export default class PasswordPane extends React.Component {
 
   handleChange(e) {
     const { lock, onChange, policy } = this.props;
-    onChange ? onChange(e) : changeField(l.id(lock), "password", e.target.value, validatePassword, policy);
+    if (onChange) {
+      // TODO: are we using this?
+      onChange(e)
+    } else {
+      swap(updateEntity, "lock", l.id(lock), setPassword, e.target.value, policy);
+    }
   }
 
   render() {

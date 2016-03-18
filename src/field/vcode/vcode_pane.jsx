@@ -3,8 +3,8 @@ import VcodeInput from './vcode_input';
 import * as l from '../../lock/index';
 import * as c from '../index';
 import { isSmallScreen } from '../../utils/media_utils';
-import { changeField } from '../actions';
-import { validateNotEmptyString } from '../../utils/validation_utils';
+import { swap, updateEntity } from '../../store/index';
+import { setVcode } from '../vcode';
 
 
 // TODO: this should be in the passwordless ns
@@ -14,7 +14,7 @@ export default class VcodePane extends React.Component {
 
   handleVcodeChange(e) {
     e.preventDefault();
-    changeField(l.id(this.props.lock), "vcode", e.target.value, validateNotEmptyString);
+    swap(updateEntity, "lock", l.id(this.props.lock), setVcode, e.target.value);
   }
 
   handleResendClick(e) {

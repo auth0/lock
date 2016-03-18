@@ -1,14 +1,14 @@
 import React from 'react';
 import EmailInput from './email_input';
 import * as c from '../index';
-import { changeField } from '../actions';
+import { swap, updateEntity } from '../../store/index';
 import * as l from '../../lock/index';
-import { validateEmail } from '../../utils/validation_utils';
+import { setEmail } from '../email';
 
 export default class EmailPane extends React.Component {
 
   handleChange(e) {
-    changeField(l.id(this.props.lock), "email", e.target.value, validateEmail);
+    swap(updateEntity, "lock", l.id(this.props.lock), setEmail, e.target.value);
   }
 
   render() {
