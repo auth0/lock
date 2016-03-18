@@ -1,3 +1,36 @@
+## [9.0.1] - 2016-03-18
+
+### Fixed
+
+- [] Merge pull request #336 from auth0/beneliflo-patch-1 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/8a776f7435321402e8f9d3b74ab0200c07e92de8
+- [] Show pointer cursor for the tabs in firefox (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/3ad5afce00593e12beefda96a93a93a6839de600
+- [] Merge branch 'master' into beneliflo-patch-1 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/974914fbcfdc1584b28863b093aa8f900a54a2d3
+- [] Merge pull request #337 from auth0/kerberos-view (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d3e19f2c846b48d3fbc876812f0ba564a261de37
+- [] minor fix (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/a355321a1d020c5f51528a5b41d9d0c21d05f99f
+- [] Merge pull request #338 from auth0/webpack-example-update (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/fed6f6422d33ce18588f73bf0b6e6e2d1441b453
+- [] Update webpack example to work on windows (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/112bee639fe1db4e5099c6e6aaeed52293eb353a
+- [] fix kerberos view (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/4e8c1bf3f84fed9cd01e114a4f6c07800c9caad5
+- [] fix links (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/23ab9e6be76812d61b9545b5f753f665562b350c
+- [] fix pointer link (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/90f10e5fec116f8ba6ca58b72e397fd18b6246fe
+- [] Merge pull request #335 from auth0/telemetry-update (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/53710f1471664c40fb9bed2664b311fe7e0b6b55
+- [] Update telemetry info (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/033e106266e527399078e5ba7cf86b53990553f3
+- [] fix kerberos view (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/f714100b6977338523b34d738de2491cac682140
+- [] Update the urls of the CDN scripts to the latest (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c85ffa97308b9503966d35ef057c3c4809f7e8a3
+
 ## [9.0.0] - 2016-02-29
 
 ### Fixed
