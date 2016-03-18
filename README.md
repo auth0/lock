@@ -58,17 +58,17 @@ No special configuration is required if you are using Browserify to build your p
 
 ### Webpack
 
-If you are using Webpack, you will need to install loaders (`$ npm install --save json-loader transform-loader`) and then use them in your `webpack.config.js` file:
+If you are using Webpack, besides the _auth0-lock and webpack modules_, you will need to install the _json and transform loaders_ (`$ npm install --save json-loader transform-loader`) and then use them in your `webpack.config.js` file:
 
 ```js
 loaders: [{
-  test: /node_modules\/auth0-lock\/.*\.js$/,
+  test: /node_modules[\\\/]auth0-lock[\\\/].*\.js$/,
   loaders: [
     'transform-loader/cacheable?brfs',
     'transform-loader/cacheable?packageify'
   ]
 }, {
-  test: /node_modules\/auth0-lock\/.*\.ejs$/,
+  test: /node_modules[\\\/]auth0-lock[\\\/].*\.ejs$/,
   loader: 'transform-loader/cacheable?ejsify'
 }, {
   test: /\.json$/,
