@@ -7515,6 +7515,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #EB5424;
 }
 
+#a0-lock.a0-theme-default .a0-panel .a0-last-time {
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 13px;
+  line-height: 1.8;
+  display: block;
+  margin-top: 0;
+}
+
 #a0-lock.a0-theme-default .a0-panel .a0-corporate-credentials {
   margin-bottom: 10px;
 }
@@ -7695,7 +7703,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   margin-top: 20px;
   font-weight: normal;
   display: inline-block;
-  color: rgba(0, 0, 0, 0.89);
+  color: rgba(0, 0, 0, 0.86);
 }
 
 #a0-lock.a0-theme-default .a0-panel button.a0-primary {
@@ -7735,8 +7743,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background-color: #d9dee0;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-success,
-#a0-lock.a0-theme-default .a0-panel .a0-last-time {
+#a0-lock.a0-theme-default .a0-panel .a0-success {
   background: #7ED321;
   -webkit-user-select: all;
   -moz-user-select: all;
