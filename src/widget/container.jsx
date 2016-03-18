@@ -77,9 +77,9 @@ export default class Container extends React.Component {
     escHandler ? escHandler() : this.handleClose();
   }
 
-  // hide() {
-  //   this.setState({isOpen: false});
-  // }
+  hide() {
+    this.setState({isOpen: false});
+  }
 
   render() {
     const {

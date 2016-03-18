@@ -60,16 +60,11 @@ export function openLock(id) {
     throw new Error("The Lock can't be opened again after it has been destroyed");
   }
 
-  if (l.show(lock)) {
+  if (l.rendering(lock)) {
     return false;
   }
 
-  swap(updateEntity, "lock", id, lock => {
-    lock = l.render(lock);
-    lock = l.setShow(lock, true);
-
-    return lock;
-  });
+  swap(updateEntity, "lock", id, l.render);
 
   return true;
 }
@@ -81,15 +76,14 @@ export function closeLock(id, force = false, callback = () => {}) {
     return;
   }
 
-  // Stop rendering.
-  swap(updateEntity, "lock", id, lock => l.stopRendering(l.close(lock)));
-
-  // If is a modal wait for the animation to end before resetting and
-  // calling callback, otherwise do that immediately.
+  // If it is a modal, stop rendering an reset after a second,
+  // otherwise just reset.
   if (l.ui.appendContainer(lock)) {
+    swap(updateEntity, "lock", id, l.stopRendering);
+
     setTimeout(() => {
+      swap(updateEntity, "lock", id, l.reset);
       callback(read(getEntity, "lock", id));
-      setTimeout(() => swap(updateEntity, "lock", id, l.reset), 17);
     }, 1000);
   } else {
     swap(updateEntity, "lock", id, l.reset);
@@ -98,7 +92,7 @@ export function closeLock(id, force = false, callback = () => {}) {
 }
 
 export function removeLock(id) {
-  swap(updateEntity, "lock", id, lock => l.stopRendering(lock));
+  swap(updateEntity, "lock", id, l.stopRendering);
   swap(removeEntity, "lock", id);
 }
 

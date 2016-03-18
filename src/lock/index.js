@@ -46,14 +46,6 @@ export function modeName(m) {
   return get(m, "mode");
 }
 
-export function show(m) {
-  return tget(m, "show", false);
-}
-
-export function setShow(m, value) {
-  return tset(m, "show", value);
-}
-
 export function setSubmitting(m, value, error = "") {
   m = tset(m, "submitting", value);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
@@ -205,10 +197,6 @@ export function invokeSignInCallback(m, ...args) {
 
 export function render(m) {
   return tset(m, "render", true);
-}
-
-export function close(m) {
-  return tset(m, "show", false);
 }
 
 export { reset };
