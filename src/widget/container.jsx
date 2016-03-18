@@ -191,8 +191,13 @@ Container.propTypes = {
   // submitHandler,
 };
 
-Container.defaultProps = {
-  icon: "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
+// NOTE: detecting the file protocol is important for things like electron.
+const isFileProtocol = global.window
+  && global.window.location
+  && global.window.location.protocol === "file:";
+
+export const defaultProps = Container.defaultProps = {
+  icon: `${isFileProtocol ? "https:" : ""}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
   isMobile: false,
   isSubmitting: false,
   primaryColor: "#ea5323"
