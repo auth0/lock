@@ -4,7 +4,7 @@ import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '..
 import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
 import { img as preload } from '../preload/index';
-import { defaultProps } from '../widget/container';
+import { defaultProps } from '../ui/box/container';
 
 export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want

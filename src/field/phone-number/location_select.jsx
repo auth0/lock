@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BackButton } from '../../widget/button';
+import { BackButton } from '../../ui/box/button';
 import * as cc from '../country_codes';
 import * as su from '../../utils/string_utils';
 import { isSmallScreen } from '../../utils/media_utils';

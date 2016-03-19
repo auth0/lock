@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSCore from 'fbjs/lib/CSSCore';
-import Container from './container';
+import Container from './box/container';
 
 class ContainerManager {
 

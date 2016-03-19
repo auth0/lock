@@ -1,5 +1,5 @@
 import React from 'react';
-import SuccessPane from '../widget/success_pane';
+import SuccessPane from '../ui/box/success_pane';
 import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
 import * as c from '../field/index';
