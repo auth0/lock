@@ -8,13 +8,8 @@ import { setPassword } from '../password';
 export default class PasswordPane extends React.Component {
 
   handleChange(e) {
-    const { lock, onChange, policy } = this.props;
-    if (onChange) {
-      // TODO: are we using this?
-      onChange(e)
-    } else {
-      swap(updateEntity, "lock", l.id(lock), setPassword, e.target.value, policy);
-    }
+    const { lock, policy } = this.props;
+    swap(updateEntity, "lock", l.id(lock), setPassword, e.target.value, policy);
   }
 
   render() {
