@@ -1,6 +1,6 @@
 import React from 'react';
 import PhoneNumberInput from '../../ui/input/phone_number_input';
-import LocationInput from './location_input';
+import LocationInput from '../../ui/input/location_input';
 import * as c from '../index';
 import * as l from '../../lock/index';
 import { swap, updateEntity } from '../../store/index';

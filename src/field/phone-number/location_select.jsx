@@ -4,7 +4,7 @@ import { BackButton } from '../../ui/box/button';
 import * as cc from '../country_codes';
 import * as su from '../../utils/string_utils';
 import { isSmallScreen } from '../../utils/media_utils';
-import { icon } from './location_input';
+import { icon } from '../../ui/input/location_input';
 
 function cycle(xs, x) {
   return xs.skipWhile(y => y !== x).get(1, xs.get(0));
