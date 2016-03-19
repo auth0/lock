@@ -293,7 +293,7 @@ export function showLoginActivity(id, fields = ["password"]) {
   swap(updateEntity, "lock", id, setScreen, "login", fields);
 }
 
-export function showSignUpActivity(id, fields = []) {
+export function showSignUpActivity(id, fields = ["password"]) {
   swap(updateEntity, "lock", id, setScreen, "signUp", fields);
 }
 
