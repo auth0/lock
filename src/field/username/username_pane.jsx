@@ -1,14 +1,27 @@
 import React from 'react';
-import UsernameInput from './username_input';
+import UsernameInput from '../../ui/input/username_input';
 import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
 import * as l from '../../lock/index';
 import { setUsername } from '../username';
+import { debouncedRequestGravatar, requestGravatar } from '../../gravatar/actions';
 
 export default class UsernamePane extends React.Component {
 
+  componentDidMount() {
+    const { lock } = this.props;
+    if (l.ui.gravatar(lock) && c.username(lock)) {
+      requestGravatar(c.username(lock));
+    }
+  }
+
   handleChange(e) {
-    swap(updateEntity, "lock", l.id(this.props.lock), setUsername, e.target.value);
+    const { lock } = this.props;
+    if (l.ui.gravatar(lock)) {
+      debouncedRequestGravatar(e.target.value);
+    }
+
+    swap(updateEntity, "lock", l.id(lock), setUsername, e.target.value);
   }
 
   render() {
