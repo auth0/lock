@@ -6,7 +6,7 @@ export default class InputWrap extends React.Component {
     const { focused, isValid, name, svg } = this.props;
     let blockClassName = `auth0-lock-input-block auth0-lock-input-${name}`;
     if (!isValid) {
-      blockClassName += " auth0-lock-error animated pulse";
+      blockClassName += " auth0-lock-error";
     }
 
     let wrapClassName = "auth0-lock-input-wrap";
