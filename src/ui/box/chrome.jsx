@@ -99,9 +99,11 @@ export default class Chrome extends React.Component {
          />;
 
     const globalError = error
-      && <GlobalMessage key="global-error" message={error} type="error" />;
+      ? <GlobalMessage key="global-error" message={error} type="error" />
+      : null;
     const globalSuccess = success
-      && <GlobalMessage key="global-success" message={success} type="success" />;
+      ? <GlobalMessage key="global-success" message={success} type="success" />
+      : null;
 
     return (
       <div className="auth0-lock-cred-pane">
