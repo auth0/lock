@@ -3,6 +3,7 @@ import { isSmallScreen } from '../utils/media_utils';
 import * as d from '../dict/index';
 import t from '../dict/t';
 import trim from 'trim';
+import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
 
 const {
@@ -88,29 +89,26 @@ export function stopRendering(m) {
   return tremove(m, "render");
 }
 
-export function gravatar(m) {
-  if (ui.gravatar(m)) {
-    return m.get("gravatar");
-  } else {
-    return undefined;
-  }
-}
-
 function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
   const { icon, primaryColor } = theme;
+  let avatarProvider = options.avatarProvider || {};
+  if (typeof avatarProvider.url !== "function" || typeof avatarProvider.displayName !== "function") {
+    avatarProvider = gp;
+  }
 
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
+    avatar: undefined === options.avatar ? true : !!options.avatar,
+    avatarProvider: avatarProvider,
     icon: typeof icon === "string" ? icon : undefined,
     closable: closable,
     dict: d.buildDict(modeName, typeof options.dict === "object" ? options.dict : {}),
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
-    gravatar: undefined === options.gravatar ? true : !!options.gravatar,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
     primaryColor: typeof primaryColor === "string" ? primaryColor : undefined,
@@ -124,13 +122,14 @@ export const ui = {
   containerID: lock => getUIAttribute(lock, "containerID"),
   appendContainer: lock => getUIAttribute(lock, "appendContainer"),
   autoclose: lock => getUIAttribute(lock, "autoclose"),
+  avatar: lock => getUIAttribute(lock, "avatar"),
+  avatarProvider: lock => getUIAttribute(lock, "avatarProvider"),
   icon: lock => getUIAttribute(lock, "icon"),
   closable: lock => getUIAttribute(lock, "closable"),
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
-  gravatar: lock => getUIAttribute(lock, "gravatar"),
   mobile: lock => getUIAttribute(lock, "mobile"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),

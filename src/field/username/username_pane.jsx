@@ -4,21 +4,21 @@ import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
 import * as l from '../../lock/index';
 import { setUsername } from '../username';
-import { debouncedRequestGravatar, requestGravatar } from '../../gravatar/actions';
+import { debouncedRequestAvatar, requestAvatar } from '../../avatar';
 
 export default class UsernamePane extends React.Component {
 
   componentDidMount() {
     const { lock } = this.props;
-    if (l.ui.gravatar(lock) && c.username(lock)) {
-      requestGravatar(c.username(lock));
+    if (l.ui.avatar(lock) && c.username(lock)) {
+      requestAvatar(l.id(lock), c.username(lock));
     }
   }
 
   handleChange(e) {
     const { lock } = this.props;
-    if (l.ui.gravatar(lock)) {
-      debouncedRequestGravatar(e.target.value);
+    if (l.ui.avatar(lock)) {
+      debouncedRequestAvatar(l.id(lock), e.target.value);
     }
 
     swap(updateEntity, "lock", l.id(lock), setUsername, e.target.value);
@@ -30,7 +30,7 @@ export default class UsernamePane extends React.Component {
     return (
       <UsernameInput
         value={c.username(lock)}
-        gravatar={l.ui.gravatar(lock)}
+        avatar={l.ui.avatar(lock)}
         isValid={!c.isFieldVisiblyInvalid(lock, "username")}
         onChange={::this.handleChange}
         placeholder={placeholder}

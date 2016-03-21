@@ -7,12 +7,10 @@ import {
   setupLock,
   updateLock
 } from './lock/actions';
-import { requestGravatar } from './gravatar/actions';
 import webAPI from './lock/web_api';
 import { getEntity, read, subscribe } from './store/index';
 import * as l from './lock/index';
 import * as c from './field/index';
-import * as g from './gravatar/index';
 import { remove, render } from './ui/box';
 import { registerDict } from './dict/index';
 
@@ -58,25 +56,10 @@ export default class Base extends EventEmitter {
     setupLock(this.id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
 
     subscribe("widget-" + this.id, (key, oldState, newState) => {
-      const newM = getEntity(newState, "lock", this.id);
+      const m = getEntity(newState, "lock", this.id);
       const oldM = getEntity(oldState, "lock", this.id);
-      const newGravatar = getEntity(
-        newState,
-        "gravatar",
-        g.normalizeGravatarEmail(c.email(newM) || c.username(newM))
-      );
-      const oldGravatar = getEntity(
-        oldState,
-        "gravatar",
-        g.normalizeGravatarEmail(c.email(oldM) || c.username(newM))
-      );
 
-      if (newM != oldM || newGravatar != oldGravatar) {
-        const gravatar = newGravatar && g.loaded(newGravatar)
-              ? newGravatar
-              : null;
-        const m = newM.set("gravatar", gravatar);
-
+      if (m != oldM) {
         const partialApplyId = (screen, handlerName) => {
           const handler = screen[handlerName](m);
           return handler
@@ -84,14 +67,15 @@ export default class Base extends EventEmitter {
             : handler;
         };
 
-        const title = gravatar
-          ? l.ui.t(m, ["welcome"], {name: g.displayName(gravatar), __textOnly: true})
+        const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
+        const title = avatar
+          ? l.ui.t(m, ["welcome"], {name: m.getIn(["avatar", "transient", "displayName"]), __textOnly: true})
           : l.ui.t(m, ["title"], {__textOnly: true});
 
         if (l.rendering(m)) {
           const screen = this.render(m);
           const props = {
-            avatar: gravatar && g.imageUrl(gravatar),
+            avatar: avatar && m.getIn(["avatar", "transient", "url"]),
             auxiliaryPane: screen.renderAuxiliaryPane(m),
             backHandler: partialApplyId(screen, "backHandler"),
             closeHandler: l.ui.closable(m)
@@ -101,7 +85,6 @@ export default class Base extends EventEmitter {
             footerText: screen.renderFooterText(m),
             globalError: l.globalError(m),
             globalSuccess: l.globalSuccess(m),
-            gravatar: gravatar,
             headerText: screen.renderHeaderText(m),
             icon: l.ui.icon(m),
             isMobile: l.ui.mobile(m),
@@ -153,10 +136,6 @@ export default class Base extends EventEmitter {
 
   setModel(m) {
     return this.update(() => m);
-  }
-
-  requestGravatar(email) {
-    return requestGravatar(email);
   }
 
   runHook(str, ...args) {

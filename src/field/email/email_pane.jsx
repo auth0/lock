@@ -4,23 +4,24 @@ import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
 import * as l from '../../lock/index';
 import { setEmail } from '../email';
-import { debouncedRequestGravatar, requestGravatar } from '../../gravatar/actions';
+import { debouncedRequestAvatar, requestAvatar } from '../../avatar';
 
 export default class EmailPane extends React.Component {
 
   componentDidMount() {
     const { lock } = this.props;
-    if (l.ui.gravatar(lock) && c.email(lock)) {
-      requestGravatar(c.email(lock));
+    if (l.ui.avatar(lock) && c.email(lock)) {
+      requestAvatar(l.id(lock), c.email(lock));
     }
   }
 
   handleChange(e) {
-    if (l.ui.gravatar(this.props.lock)) {
-      debouncedRequestGravatar(e.target.value);
+    const { lock } = this.props;
+    if (l.ui.avatar(lock)) {
+      debouncedRequestAvatar(l.id(lock), e.target.value);
     }
 
-    swap(updateEntity, "lock", l.id(this.props.lock), setEmail, e.target.value);
+    swap(updateEntity, "lock", l.id(lock), setEmail, e.target.value);
   }
 
   render() {
@@ -30,7 +31,7 @@ export default class EmailPane extends React.Component {
       <EmailInput value={c.email(lock)}
         isValid={!c.isFieldVisiblyInvalid(lock, "email")}
         onChange={::this.handleChange}
-        gravatar={l.ui.gravatar(lock)}
+        avatar={l.ui.avatar(lock)}
         autoFocus={l.ui.focusInput(lock)}
         placeholder={placeholder}
         disabled={l.submitting(lock)} />
