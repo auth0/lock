@@ -146,6 +146,10 @@ export default class Base extends EventEmitter {
 }
 
 // telemetry
+//
+// TODO: we should have different telemetry overrides for classic and
+// passwordless.
 Base.version = __VERSION__;
-Auth0.clientInfo.name +=  " (LockPasswordless)";
-Auth0.clientInfo.version += ` (${__VERSION__})`;
+Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
+Auth0.clientInfo.name =  "lock-next.js";
+Auth0.clientInfo.version = Base.version;
