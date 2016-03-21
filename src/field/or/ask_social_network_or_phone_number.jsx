@@ -23,6 +23,7 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
       <div>
         <SocialButtonsPane
           lock={model}
+          signUp={false}
           smallButtonsHeader={this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
           t={::this.t}
         />

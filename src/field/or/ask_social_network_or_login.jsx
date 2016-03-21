@@ -40,6 +40,7 @@ export default class AskSocialNetworkOrLogin extends Screen {
     const social = l.getEnabledConnections(model, "social").count() > 0
       && <SocialButtonsPane
            lock={model}
+           signUp={false}
            smallButtonsHeader={this.shouldRenderTabs(model) ? '' : this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
            t={::this.t}
          />;

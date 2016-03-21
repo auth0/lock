@@ -28,6 +28,7 @@ export default class AskSocialNetworkOrEmail extends Screen {
       <div>
         <SocialButtonsPane
           lock={model}
+          signUp={false}
           smallButtonsHeader={this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
           t={::this.t}
         />
