@@ -123,15 +123,15 @@ export default class Chrome extends React.Component {
             <div key={(tabs && tabs.key) || screenName}>
               {tabsContainer}
               <div style={{position: "relative"}}>
-                  <div key={screenName} className="auth0-lock-body-content">
-                  <div className="auth0-lock-content" key={screenName}>
-                    <div className="auth0-lock-form">
-                      {header}
-                      {contentRender({focusSubmit: ::this.focusSubmit, model})}
-                    </div>
+                <div key={screenName} className="auth0-lock-body-content">
+                <div className="auth0-lock-content" key={screenName}>
+                  <div className="auth0-lock-form">
+                    {header}
+                    {contentRender({focusSubmit: ::this.focusSubmit, model})}
                   </div>
-                  {footer}
-                  </div>
+                </div>
+                {footer}
+                </div>
               </div>
             </div>
           </MultisizeSlide>
