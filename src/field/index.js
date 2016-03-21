@@ -39,6 +39,10 @@ export function clearFields(m, fields) {
  return keyPaths.reduce((r, v) => r.removeIn(v), m);
 }
 
+export function getFieldValue(m, field, notFound="") {
+  return m.getIn(["field", field, "value"], notFound);
+}
+
 // phone number
 
 export function fullPhoneNumber(lock) {

@@ -8,7 +8,8 @@ import  {
   authWithUsername,
   databaseConnectionName,
   setScreen,
-  shouldAutoLogin
+  shouldAutoLogin,
+  signUpFields
 } from './index';
 
 export function signIn(id) {
@@ -103,6 +104,12 @@ export function signUp(id, options = {}) {
 
     if (authWithUsername(lock)) {
       options.username = c.username(lock);
+    }
+
+    if (!signUpFields(lock).isEmpty()) {
+      options.user_metadata = signUpFields(lock).map((v, k) => (
+        c.getFieldValue(lock, k)
+      )).toJS();
     }
 
     const authOptions = l.withAuthOptions(lock, {
