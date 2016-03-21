@@ -1,13 +1,15 @@
 import Immutable, { Map } from 'immutable';
 import * as l from '../lock/index';
 import * as client from '../lock/client/index';
-import { clearFields } from '../field/index';
+import { clearFields, setField } from '../field/index';
 import { dataFns } from '../utils/data_utils';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
 export function initDatabase(m, options) {
-  return initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
+  m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
+  signUpFields(m).forEach((v, k) => m = setField(m, k, "", v.get("validator")));
+  return m;
 }
 
 function processDatabaseOptions(options) {
