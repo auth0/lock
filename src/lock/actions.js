@@ -5,6 +5,7 @@ import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
 import { img as preload } from '../preload/index';
 import { defaultProps } from '../ui/box/container';
+import { isFieldValid, showInvalidField } from '../field/index';
 
 export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want
@@ -113,4 +114,16 @@ export function unpinLoadingPane(id) {
 
 function emitEvent(id, str, ...args) {
   l.emitEvent(read(getEntity, "lock", id), str, ...args);
+}
+
+export function startSubmit(id, fields = []) {
+  swap(updateEntity, "lock", id, m => {
+    const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
+    return allFieldsValid
+      ? l.setSubmitting(m, true)
+      : fields.reduce((r, x) => showInvalidField(r, x), m);
+  });
+
+  const m = read(getEntity, "lock", id);
+  return [l.submitting(m), m];
 }

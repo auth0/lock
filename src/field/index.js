@@ -23,6 +23,13 @@ export function isFieldVisiblyInvalid(m, field) {
     && !m.getIn(["field", field, "valid"]);
 }
 
+export function showInvalidField(m, field) {
+  return m.setIn(["field", field, "showInvalid"], !isFieldValid(m, field));
+}
+
+// TODO: replace invocation of this function for invocation of the
+// `showInvalidField`. This is always called with !isFieldValid(field)
+// as the value argument, so there.
 export function setFieldShowInvalid(m, field, value) {
   return m.setIn(["field", field, "showInvalid"], value);
 }
