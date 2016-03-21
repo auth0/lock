@@ -3,6 +3,7 @@ import { getEntity, read, swap, updateEntity } from '../store/index';
 import webApi from '../lock/web_api';
 import { closeLock } from '../lock/actions';
 import * as l from '../lock/index';
+import { startSubmit } from '../lock/actions';
 import * as c from '../field/index';
 import  {
   authWithUsername,
@@ -78,25 +79,14 @@ function signInError(id, error) {
 
 
 export function signUp(id, options = {}) {
-  // TODO: abstract this submit thing
-  swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "email")
-        && c.isFieldValid(lock, "password")
-        && (!authWithUsername(lock) || c.isFieldValid(lock, "username"))) {
-      return l.setSubmitting(lock, true);
-    } else {
-      lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
-      if (authWithUsername(lock)) {
-        lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
-      }
-      return lock;
-    }
-  });
+  let lock = read(getEntity, "lock", id);
+  const fields = ["email", "password"];
+  signUpFields(lock).forEach((_,k) => fields.push(k));
+  if (authWithUsername(lock)) fields.push("username");
+  let isSubmitting;
+  [isSubmitting, lock] = startSubmit(id, fields);
 
-  const lock = read(getEntity, "lock", id);
-
-  if (l.submitting(lock)) {
+  if (isSubmitting) {
     // TODO: check options
     options.connection = databaseConnectionName(lock);
     options.email = c.email(lock);

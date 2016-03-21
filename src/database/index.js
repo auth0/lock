@@ -67,7 +67,8 @@ function processDatabaseOptions(options) {
       const reservedNames = ["email", "username", "password"];
       return reservedNames.indexOf(k) === -1
         && typeof v.get("placeholder") === "string"
-        && v.get("placeholder").length > 0;
+        && v.get("placeholder").length > 0
+        && (typeof v.get("validator") === "undefined" || typeof v.get("validator") === "function");
     });
   }
 
