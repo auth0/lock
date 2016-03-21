@@ -11,49 +11,19 @@ import  {
   shouldAutoLogin
 } from './index';
 
-export function signInWithUsername(id) {
-  // TODO: abstract this submit thing
+export function signIn(id) {
   swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password")) {
+    const useUsername = authWithUsername(lock);
+    if ((useUsername && c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password"))
+        || (!useUsername && c.isFieldValid(lock, "email") && c.isFieldValid(lock, "password"))) {
       return l.setSubmitting(lock, true);
     } else {
-      lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
-      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
-      return lock;
-    }
-  });
-
-  const lock = read(getEntity, "lock", id);
-
-  if (l.submitting(lock)) {
-    // TODO: check options, redirect is missing
-    const options = l.withAuthOptions(lock, {
-      connection: databaseConnectionName(lock),
-      username: c.username(lock),
-      password: c.password(lock)
-    });
-
-    webApi.signIn(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => signInError(id, error), 250);
-        } else {
-          signInSuccess(id, ...args);
-        }
+      if (useUsername) {
+        lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
+      } else {
+        lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
       }
-    );
-  }
-}
 
-export function signInWithEmail(id) {
-  // TODO: abstract this submit thing
-  swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "email") && c.isFieldValid(lock, "password")) {
-      return l.setSubmitting(lock, true);
-    } else {
-      lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
       lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
       return lock;
     }
@@ -65,7 +35,7 @@ export function signInWithEmail(id) {
     // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
       connection: databaseConnectionName(lock),
-      username: c.email(lock),
+      username: authWithUsername(lock) ? c.username(lock) : c.email(lock),
       password: c.password(lock)
     });
 
@@ -106,7 +76,7 @@ function signInError(id, error) {
 }
 
 
-export function signUp(id, options) {
+export function signUp(id, options = {}) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
     if (c.isFieldValid(lock, "email")
@@ -289,15 +259,15 @@ function resetPasswordError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
-export function showLoginActivity(id, fields = []) {
+export function showLoginActivity(id, fields = ["password"]) {
   swap(updateEntity, "lock", id, setScreen, "login", fields);
 }
 
-export function showSignUpActivity(id, fields = []) {
+export function showSignUpActivity(id, fields = ["password"]) {
   swap(updateEntity, "lock", id, setScreen, "signUp", fields);
 }
 
-export function showResetPasswordActivity(id, fields = []) {
+export function showResetPasswordActivity(id, fields = ["password"]) {
   swap(updateEntity, "lock", id, setScreen, "resetPassword", fields);
 }
 

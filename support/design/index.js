@@ -21,7 +21,7 @@ WebAPI.prototype.signIn = function(lockID, options, cb) {
 
 WebAPI.prototype.signOut = function() {};
 
-WebAPI.prototype.signUp = function(lockID, options, cb) {
+WebAPI.prototype.signUp = function(lockID, options, authOptions, cb) {
   const state = store.deref();
   const args = state.getIn(["signUp", "response"]) == "success" ?
     [null] :

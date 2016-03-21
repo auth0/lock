@@ -24,6 +24,7 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
         <SocialButtonsPane
           lock={model}
           smallButtonsHeader={this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
+          t={::this.t}
         />
         <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>
         <PhoneNumberPane

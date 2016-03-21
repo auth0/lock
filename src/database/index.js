@@ -106,7 +106,8 @@ export function getScreen(m) {
 }
 
 export function authWithUsername(m) {
-  return get(m, "usernameStyle") === "username";
+  const { requires_username } = databaseConnection(m).toJS();
+  return requires_username || get(m, "usernameStyle") === "username";
 }
 
 export function hasScreen(m, s) {

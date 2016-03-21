@@ -1,5 +1,4 @@
 import React from 'react';
-import CSSCore from 'fbjs/lib/CSSCore';
 import Chrome from './chrome';
 import { CloseButton } from './button';
 
@@ -40,12 +39,15 @@ class EscKeyDownHandler {
 
 
 export default class Container extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {isOpen: false};
+  }
+
   componentDidMount() {
     if (this.props.isModal) {
-      setTimeout(() => CSSCore.addClass(
-        this.refs.container,
-        "auth0-lock-opened"
-      ), 17);
+      setTimeout(() => this.setState({isOpen: true}), 17);
     }
 
     this.escKeydown = new EscKeyDownHandler(::this.handleEsc);
@@ -76,7 +78,7 @@ export default class Container extends React.Component {
   }
 
   hide() {
-    CSSCore.removeClass(this.refs.container, "auth0-lock-opened");
+    this.setState({isOpen: false});
   }
 
   render() {
@@ -87,9 +89,8 @@ export default class Container extends React.Component {
       closeHandler,
       contentRender,
       disallowClose,
+      error,
       footerText,
-      globalError,
-      globalSuccess,
       headerText,
       icon,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
@@ -99,6 +100,7 @@ export default class Container extends React.Component {
       primaryColor,
       screenName,
       submitHandler,
+      success,
       tabs,
       title,
       transitionName
@@ -107,6 +109,11 @@ export default class Container extends React.Component {
     const overlay = isModal ? <div className="auth0-lock-overlay"/> : null;
 
     let className = "auth0-lock";
+
+    if (isModal && this.state.isOpen) {
+      className += " auth0-lock-opened"
+    }
+
     if (!isModal) {
       className += " auth0-lock-opened-in-frame";
     }
@@ -136,9 +143,8 @@ export default class Container extends React.Component {
                 auxiliaryPane={auxiliaryPane}
                 backHandler={backHandler}
                 contentRender={contentRender}
+                error={error}
                 footerText={footerText}
-                globalError={globalError}
-                globalSuccess={globalSuccess}
                 headerText={headerText}
                 icon={icon}
                 isSubmitting={isSubmitting}
@@ -146,6 +152,7 @@ export default class Container extends React.Component {
                 model={model}
                 primaryColor={primaryColor}
                 showSubmitButton={!!submitHandler}
+                success={success}
                 tabs={tabs}
                 title={title}
                 transitionName={transitionName}
@@ -166,9 +173,8 @@ Container.propTypes = {
   backHandler: React.PropTypes.func,
   closeHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
+  error: React.PropTypes.string,
   footerText: React.PropTypes.element,
-  globalError: React.PropTypes.string,
-  globalSuccess: React.PropTypes.string,
   headerText: React.PropTypes.element,
   icon: React.PropTypes.string.isRequired,
   isMobile: React.PropTypes.bool.isRequired,
@@ -177,6 +183,7 @@ Container.propTypes = {
   model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
+  success: React.PropTypes.string,
   tabs: React.PropTypes.element,
   title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
@@ -184,8 +191,13 @@ Container.propTypes = {
   // submitHandler,
 };
 
-Container.defaultProps = {
-  icon: "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
+// NOTE: detecting the file protocol is important for things like electron.
+const isFileProtocol = global.window
+  && global.window.location
+  && global.window.location.protocol === "file:";
+
+export const defaultProps = Container.defaultProps = {
+  icon: `${isFileProtocol ? "https:" : ""}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
   isMobile: false,
   isSubmitting: false,
   primaryColor: "#ea5323"

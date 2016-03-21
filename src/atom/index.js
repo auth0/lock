@@ -1,8 +1,3 @@
-// TODO: Hack to preload the default icon. We need to preload also custom icons
-// and prevent showing the lock until they are loaded.
-const img = document.createElement("img");
-img.src = "//cdn.auth0.com/styleguide/1.0.0/img/badge.png";
-
 class Atom {
   constructor(state) {
     this.state = state;

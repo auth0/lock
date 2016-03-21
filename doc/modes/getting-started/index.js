@@ -1,4 +1,4 @@
-import Auth0LockPasswordless from 'auth0-lock-passwordless';
+import Auth0LockPasswordless from 'auth0-lock-next';
 import CustomMode from './custom_mode';
 
 

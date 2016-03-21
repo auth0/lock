@@ -1,14 +1,15 @@
 import React from 'react';
-import PasswordInput from './password_input';
+import PasswordInput from '../../ui/input/password_input';
 import * as c from '../index';
-import { changePassword } from './actions';
+import { swap, updateEntity } from '../../store/index';
 import * as l from '../../lock/index';
+import { setPassword } from '../password';
 
 export default class PasswordPane extends React.Component {
 
   handleChange(e) {
-    const { lock, onChange, policy } = this.props;
-    onChange ? onChange(e) : changePassword(l.id(lock), e.target.value, policy);
+    const { lock, policy } = this.props;
+    swap(updateEntity, "lock", l.id(lock), setPassword, e.target.value, policy);
   }
 
   render() {

@@ -1,11 +1,12 @@
 import React from 'react';
 import * as l from '../../lock/index';
 import { signIn } from '../../social/actions';
-import { displayName, useBigButtons } from '../../social/index';
+import { useBigButtons } from '../../social/index';
 
 export default class SocialButton extends React.Component {
+
   render() {
-    const { connection, disabled, lock } = this.props;
+    const { children, connection, disabled, lock } = this.props;
 
     let className = "auth0-lock-social-button";
     if (useBigButtons(lock)) className += " auth0-lock-social-big-button";
@@ -20,7 +21,7 @@ export default class SocialButton extends React.Component {
       >
         <div className="auth0-lock-social-button-icon" />
         <div className="auth0-lock-social-button-text">
-          Login with {displayName(connection)}
+          {children}
         </div>
       </button>
     );
@@ -30,12 +31,14 @@ export default class SocialButton extends React.Component {
     const { lock, connection } = this.props;
     signIn(l.id(lock), connection);
   }
+
 }
 
 SocialButton.propTypes = {
-  lock: React.PropTypes.object.isRequired,
+  children: React.PropTypes.any.isRequired, // it would normally be a string or an array of strings
   connection: React.PropTypes.object.isRequired,
-  disabled: React.PropTypes.bool.isRequired
+  disabled: React.PropTypes.bool.isRequired,
+  lock: React.PropTypes.object.isRequired
 };
 
 SocialButton.defaultProps = {

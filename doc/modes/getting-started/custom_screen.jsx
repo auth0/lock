@@ -1,5 +1,5 @@
 import React from 'react';
-import Screen from 'auth0-lock-passwordless/src/lock/screen';
+import Screen from 'auth0-lock-next/src/lock/screen';
 
 export default class CustomScreen extends Screen {
 

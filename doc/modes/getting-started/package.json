@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "auth0-lock-passwordless": "file:../../../",
+    "auth0-lock-next": "file:../../../",
     "babel-plugin-version-inline": "^1.0.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",

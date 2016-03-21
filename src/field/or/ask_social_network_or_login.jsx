@@ -3,8 +3,8 @@ import Screen from '../../lock/screen';
 import SocialButtonsPane from '../social/social_buttons_pane';
 import LoginPane from '../../database/login_pane';
 import PaneSeparator from '../../lock/pane_separator';
-import { authWithUsername, hasScreen, signUpLink } from '../../database/index';
-import { signInWithEmail, signInWithUsername } from '../../database/actions';
+import { hasScreen, signUpLink } from '../../database/index';
+import { signIn } from '../../database/actions';
 import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 import LoginSignUpTabs from '../../database/login_sign_up_tabs';
 import * as l from '../../lock/index';
@@ -33,7 +33,7 @@ export default class AskSocialNetworkOrLogin extends Screen {
   }
 
   submitHandler(lock) {
-    return authWithUsername(lock) ? signInWithUsername : signInWithEmail;
+    return signIn;
   }
 
   render({model}) {
@@ -41,6 +41,7 @@ export default class AskSocialNetworkOrLogin extends Screen {
       && <SocialButtonsPane
            lock={model}
            smallButtonsHeader={this.shouldRenderTabs(model) ? '' : this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
+           t={::this.t}
          />;
 
     const db = l.getEnabledConnections(model, "database").count() > 0

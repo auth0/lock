@@ -3,13 +3,14 @@ import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
-import * as cs from '../field/storage';
+import { img as preload } from '../preload/index';
+import { defaultProps } from '../ui/box/container';
 
 export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want
   // to provide some options by default.
   const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
-
+  preload(l.ui.icon(m) || defaultProps.icon);
   swap(setEntity, "lock", id, m);
   // TODO: check options.mode is a valid mode.
 
@@ -59,18 +60,11 @@ export function openLock(id) {
     throw new Error("The Lock can't be opened again after it has been destroyed");
   }
 
-  if (l.show(lock)) {
+  if (l.rendering(lock)) {
     return false;
   }
 
-  swap(updateEntity, "lock", id, lock => {
-    lock = l.render(lock);
-    lock = l.setShow(lock, true);
-
-    return l.ui.rememberLastLogin(lock)
-      ? cs.restore(lock, l.modeName(lock))
-      : lock;
-  });
+  swap(updateEntity, "lock", id, l.render);
 
   return true;
 }
@@ -82,15 +76,14 @@ export function closeLock(id, force = false, callback = () => {}) {
     return;
   }
 
-  // Stop rendering.
-  swap(updateEntity, "lock", id, lock => l.stopRendering(l.close(lock)));
-
-  // If is a modal wait for the animation to end before resetting and
-  // calling callback, otherwise do that immediately.
+  // If it is a modal, stop rendering an reset after a second,
+  // otherwise just reset.
   if (l.ui.appendContainer(lock)) {
+    swap(updateEntity, "lock", id, l.stopRendering);
+
     setTimeout(() => {
+      swap(updateEntity, "lock", id, l.reset);
       callback(read(getEntity, "lock", id));
-      setTimeout(() => swap(updateEntity, "lock", id, l.reset), 17);
     }, 1000);
   } else {
     swap(updateEntity, "lock", id, l.reset);
@@ -99,16 +92,12 @@ export function closeLock(id, force = false, callback = () => {}) {
 }
 
 export function removeLock(id) {
-  swap(updateEntity, "lock", id, lock => l.stopRendering(lock));
+  swap(updateEntity, "lock", id, l.stopRendering);
   swap(removeEntity, "lock", id);
 }
 
 export function updateLock(id, f) {
   return swap(updateEntity, "lock", id, f);
-}
-
-export function registerMode(spec) {
-  swap(setEntity, "mode", spec.name, Immutable.fromJS(spec));
 }
 
 export function pinLoadingPane(id) {

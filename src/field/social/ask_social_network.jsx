@@ -20,6 +20,7 @@ export default class AskSocialNetwork extends Screen {
         lock={model}
         showLoading={true}
         smallButtonsHeader={this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
+        t={::this.t}
       />
     );
   }

@@ -49,7 +49,7 @@ class Item extends React.Component {
     const { code, items, format, message, verified } = this.props;
     const className = verified ? "auth0-lock-checked" : "";
 
-    return ( // TODO: allow to translate message
+    return ( // TODO: allow to translate message?
       <li className={className}>
         {util.format(message, ...(format || []))}
         <List items={items} />
