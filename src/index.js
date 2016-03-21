@@ -82,9 +82,8 @@ export default class Base extends EventEmitter {
               ? partialApplyId(screen, "closeHandler")
               : undefined,
             contentRender: ::screen.render,
+            error: l.globalError(m),
             footerText: screen.renderFooterText(m),
-            globalError: l.globalError(m),
-            globalSuccess: l.globalSuccess(m),
             headerText: screen.renderHeaderText(m),
             icon: l.ui.icon(m),
             isMobile: l.ui.mobile(m),
@@ -93,6 +92,7 @@ export default class Base extends EventEmitter {
             model: m,
             primaryColor: l.ui.primaryColor(m),
             screenName: screen.name,
+            success: l.globalSuccess(m),
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
             title: title,

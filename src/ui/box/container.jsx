@@ -89,9 +89,8 @@ export default class Container extends React.Component {
       closeHandler,
       contentRender,
       disallowClose,
+      error,
       footerText,
-      globalError,
-      globalSuccess,
       headerText,
       icon,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
@@ -101,6 +100,7 @@ export default class Container extends React.Component {
       primaryColor,
       screenName,
       submitHandler,
+      success,
       tabs,
       title,
       transitionName
@@ -143,9 +143,8 @@ export default class Container extends React.Component {
                 auxiliaryPane={auxiliaryPane}
                 backHandler={backHandler}
                 contentRender={contentRender}
+                error={error}
                 footerText={footerText}
-                globalError={globalError}
-                globalSuccess={globalSuccess}
                 headerText={headerText}
                 icon={icon}
                 isSubmitting={isSubmitting}
@@ -153,6 +152,7 @@ export default class Container extends React.Component {
                 model={model}
                 primaryColor={primaryColor}
                 showSubmitButton={!!submitHandler}
+                success={success}
                 tabs={tabs}
                 title={title}
                 transitionName={transitionName}
@@ -173,9 +173,8 @@ Container.propTypes = {
   backHandler: React.PropTypes.func,
   closeHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
+  error: React.PropTypes.string,
   footerText: React.PropTypes.element,
-  globalError: React.PropTypes.string,
-  globalSuccess: React.PropTypes.string,
   headerText: React.PropTypes.element,
   icon: React.PropTypes.string.isRequired,
   isMobile: React.PropTypes.bool.isRequired,
@@ -184,6 +183,7 @@ Container.propTypes = {
   model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
+  success: React.PropTypes.string,
   tabs: React.PropTypes.element,
   title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired

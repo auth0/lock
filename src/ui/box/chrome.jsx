@@ -60,16 +60,16 @@ export default class Chrome extends React.Component {
       auxiliaryPane,
       backHandler,
       contentRender,
-      headerText,
+      error,
       footerText,
-      globalError,
-      globalSuccess,
+      headerText,
       icon,
       isSubmitting,
       model,
       primaryColor,
       screenName,
       showSubmitButton,
+      success,
       tabs,
       title,
       transitionName
@@ -98,12 +98,17 @@ export default class Chrome extends React.Component {
             ref="submit"
          />;
 
+    const globalError = error
+      && <GlobalMessage key="global-error" message={error} type="error" />;
+    const globalSuccess = success
+      && <GlobalMessage key="global-success" message={success} type="success" />;
+
     return (
       <div className="auth0-lock-cred-pane">
         <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
         <ReactTransitionGroup>
-          {globalError && <GlobalMessage key="global-error" message={globalError} type="error" />}
-          {globalSuccess && <GlobalMessage key="global-success" message={globalSuccess} type="success" />}
+          {globalSuccess}
+          {globalError}
         </ReactTransitionGroup>
         <div style={{position: "relative"}}>
           <MultisizeSlide
@@ -170,15 +175,15 @@ Chrome.propTypes = {
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
+  error: React.PropTypes.string,
   footerText: React.PropTypes.element,
-  globalError: React.PropTypes.string,
-  globalSuccess: React.PropTypes.string,
   headerText: React.PropTypes.element,
   icon: React.PropTypes.string.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
   model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
+  success: React.PropTypes.string,
   title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
 };
