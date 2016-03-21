@@ -60,7 +60,7 @@ function processDatabaseOptions(options) {
   if (signUpFields != undefined && typeof signUpFields !== "object") {
     l.warn(options, "The `signUpFields` option will be ignored, because it is not an object");
     signUpFields = undefined;
-  } else {
+  } else if (signUpFields) {
     signUpFields = new Immutable.fromJS(signUpFields);
     // TODO: emit warnings
     signUpFields = signUpFields.filter((v, k) => {
