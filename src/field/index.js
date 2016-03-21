@@ -81,24 +81,24 @@ export function phoneNumber(lock) {
 
 // email
 
-export function email(lock) {
-  return lock.getIn(["field", "email", "value"], "");
+export function email(m) {
+  return getFieldValue(m, "email");
 }
 
 // vcode
 
-export function vcode(lock) {
-  return lock.getIn(["field", "vcode", "value"], "");
+export function vcode(m) {
+  return getFieldValue(m, "vcode");
 }
 
 // password
 
-export function password(lock) {
-  return lock.getIn(["field", "password", "value"], "");
+export function password(m) {
+  return getFieldValue(m, "password");
 }
 
 // username
 
-export function username(lock) {
-  return lock.getIn(["field", "username", "value"], "");
+export function username(m) {
+  return getFieldValue(m, "username");
 }
