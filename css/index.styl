@@ -54,15 +54,15 @@ breakpoint(point, value = 0)
   .auth0-global-message
     color white
     text-align center
-    padding 6px 20px
+    padding 5px 20px
     line-height 1.6
     font-size 12px
 
     &.auth0-global-message-error
-      background #F04848
+      background #FF3E00
 
     &.auth0-global-message-success
-      background #1ECD9E
+      background #7ED321
 
     span
       -webkit-animation-delay .2s
@@ -284,7 +284,7 @@ breakpoint(point, value = 0)
       margin 0
 
       .auth0-lock-alternative-link
-        font-size 11px
+        font-size 12px
         color #333332
         cursor pointer
         margin-bottom 0
@@ -988,6 +988,14 @@ breakpoint(point, value = 0)
       margin 0 0 8px 0
       width 100%
 
+      &[data-provider=""],
+      &[data-provider="auth0"]
+        .auth0-lock-social-button-text
+          padding-left 14px
+
+        .auth0-lock-social-button-icon
+          display none
+
       &:last-child
         margin-bottom 0
 
@@ -1031,7 +1039,7 @@ breakpoint(point, value = 0)
     margin 0 30px
     border-radius 3px
     text-transform uppercase
-    font-size 10px
+    font-size 11px
     letter-spacing .7px
     overflow hidden
 
@@ -1046,7 +1054,7 @@ breakpoint(point, value = 0)
       cursor pointer
 
       a
-        padding 6px 10px
+        padding 8px 10px
         display block
         text-decoration none
         color #5C666F
@@ -1143,5 +1151,6 @@ breakpoint(point, value = 0)
 
 .auth0-lock .auth0-lock-last-login-pane
   .auth0-lock-social-button.auth0-lock-social-big-button .auth0-lock-social-button-text
-    font-weight 500
     text-transform none
+    font-size 12px
+    font-weight normal

@@ -123,13 +123,6 @@ export default class Chrome extends React.Component {
             <div key={(tabs && tabs.key) || screenName}>
               {tabsContainer}
               <div style={{position: "relative"}}>
-                <MultisizeSlide
-                  delay={550}
-                  onDidSlide={::this.onDidSlide}
-                  onWillSlide={::this.onWillSlide}
-                  transitionName={transitionName}
-                  reverse={false}
-                >
                   <div key={screenName} className="auth0-lock-body-content">
                   <div className="auth0-lock-content" key={screenName}>
                     <div className="auth0-lock-form">
@@ -139,7 +132,6 @@ export default class Chrome extends React.Component {
                   </div>
                   {footer}
                   </div>
-                </MultisizeSlide>
               </div>
             </div>
           </MultisizeSlide>
