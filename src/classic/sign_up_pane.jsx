@@ -2,7 +2,13 @@ import React from 'react';
 import EmailPane from '../field/email/email_pane';
 import PasswordPane from '../field/password/password_pane';
 import UsernamePane from '../field/username/username_pane';
-import { authWithUsername, passwordStrengthPolicy } from '../database/index';
+import {
+  authWithUsername,
+  signUpFields,
+  passwordStrengthPolicy,
+} from '../database/index';
+import { changeField } from '../field/actions';
+import TextInput from '../ui/input/text_input';
 
 export default class SignUpPane extends React.Component {
 
@@ -20,6 +26,14 @@ export default class SignUpPane extends React.Component {
           placeholder={usernameInputPlaceholder}
         />
       : null;
+    const fields = signUpFields(model).entrySeq().map(([k,v]) => (
+      <TextInput
+        isValid={true}
+        key={k}
+        onChange={e => changeField(model.get("id"), k, e.target.value)}
+        placeholder={v.get("placeholder")}
+      />
+    ));
 
     return (
       <div>
@@ -33,6 +47,7 @@ export default class SignUpPane extends React.Component {
           placeholder={passwordInputPlaceholder}
           policy={passwordStrengthPolicy(model)}
         />
+        {fields}
       </div>
     );
   }

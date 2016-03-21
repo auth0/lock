@@ -12,6 +12,7 @@ export function initDatabase(m, options) {
 
 function processDatabaseOptions(options) {
   let {
+    signUpFields,
     disableResetAction,
     disableSignUpAction,
     initialScreen,
@@ -55,6 +56,22 @@ function processDatabaseOptions(options) {
     signUpLink = undefined;
   }
 
+
+  if (signUpFields != undefined && typeof signUpFields !== "object") {
+    l.warn(options, "The `signUpFields` option will be ignored, because it is not an object");
+    signUpFields = undefined;
+  } else {
+    signUpFields = new Immutable.fromJS(signUpFields);
+    // TODO: emit warnings
+    signUpFields = signUpFields.filter((v, k) => {
+      const reservedNames = ["email", "username", "password"];
+      return reservedNames.indexOf(k) === -1
+        && typeof v.get("placeholder") === "string"
+        && v.get("placeholder").length > 0;
+    });
+  }
+
+
   // TODO: add a warning if it is not a boolean, leave it undefined,
   // and change accesor fn.
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
@@ -64,6 +81,7 @@ function processDatabaseOptions(options) {
     loginAfterSignUp,
     resetLink,
     screens,
+    signUpFields,
     signUpLink,
     usernameStyle
   }).filter(x => typeof x !== "undefined").toJS();
@@ -124,4 +142,8 @@ export function shouldAutoLogin(m) {
 
 export function passwordStrengthPolicy(m) {
   return databaseConnection(m).get("passwordPolicy", "none");
+}
+
+export function signUpFields(m) {
+  return get(m, "signUpFields", Map());
 }
