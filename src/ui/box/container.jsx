@@ -130,6 +130,14 @@ export default class Container extends React.Component {
       className += " auth0-lock-auxiliary";
     }
 
+    if (!submitHandler) {
+      className += " auth0-lock-no-submit";
+    }
+
+    if (footerText) {
+      className += " auth0-lock-with-terms";
+    }
+
     return (
       <div className={className} ref="container">
         {overlay}
