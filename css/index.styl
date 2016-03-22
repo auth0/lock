@@ -773,7 +773,7 @@ breakpoint(point, value = 0)
     .auth0-lock-body-content
       //mobile view
       @media screen and (max-width: 480px)
-        height: calc(100vh - 118px - 70px)
+        height calc(100vh - 118px - 70px) // - header - submit
         min-height 375px
 
     .auth0-lock-content
@@ -822,6 +822,24 @@ breakpoint(point, value = 0)
       @media screen and (max-width: 480px)
         border-radius 0
 
+
+    &.auth0-lock-no-submit
+      .auth0-lock-body-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          height calc(100vh - 118px) // - header
+
+    &.auth0-lock-with-terms
+      .auth0-lock-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          top calc(50% - 32px) // - terms
+
+    &.auth0-lock-with-tabs
+      .auth0-lock-body-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          height calc(100vh - 118px - 70px - 63px) // - header - submit - tabs
 
   // Opened in frame
 
