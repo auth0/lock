@@ -29,8 +29,10 @@ export default class SignUpPane extends React.Component {
       : null;
     const fields = signUpFields(model).entrySeq().map(([k,v]) => (
       <TextInput
+        iconUrl={v.get("icon")}
         isValid={!isFieldVisiblyInvalid(model, k)}
         key={k}
+        name={k}
         onChange={e => changeField(model.get("id"), k, e.target.value, v.get("validator"))}
         placeholder={v.get("placeholder")}
       />

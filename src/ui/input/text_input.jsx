@@ -13,15 +13,20 @@ export default class TextInput extends React.Component {
   }
 
   render() {
-    const { isValid, onChange, value, ...props } = this.props;
+    const { iconUrl, isValid, name, onChange, value, ...props } = this.props;
     const { focused } = this.state;
 
+    const icon = typeof iconUrl === "string" && iconUrl
+      ? <img className="auth0-lock-custom-icon" src={iconUrl} />
+      : null;
+
+
     return (
-      <InputWrap focused={focused} isValid={isValid} name="password" icon="">
+      <InputWrap focused={focused} isValid={isValid} name={name} icon={icon}>
         <input
           ref="input"
           type="text"
-          name="text"
+          name={name}
           className="auth0-lock-input"
           autoComplete="off"
           autoCapitalize="off"
