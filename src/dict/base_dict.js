@@ -1,5 +1,10 @@
 export default {
   error: {
+    forgotPassword: {
+      "invalid_user": "The user does not exists.",
+      "too_many_requests": "You have reached the limit on password change attempts. Please wait before trying again.",
+      "lock.fallback": "We're sorry, something went wrong when requesting the password change."
+    },
     passwordless: {
       "bad.tenant": "We're sorry, we can't send you the {medium} because there's a configuration problem",
       "bad.client_id": "We're sorry, we can't send you the {medium} because there's a configuration problem",
