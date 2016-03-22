@@ -18,7 +18,7 @@ export default class PhoneNumberInput extends React.Component {
         focused={focused}
         isValid={isValid}
         name="phone-number"
-        svg={svg}
+        icon={svg}
       >
         <input ref="input"
           type="tel"

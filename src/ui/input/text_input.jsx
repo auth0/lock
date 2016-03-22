@@ -17,7 +17,7 @@ export default class TextInput extends React.Component {
     const { focused } = this.state;
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="password" svg="">
+      <InputWrap focused={focused} isValid={isValid} name="password" icon="">
         <input
           ref="input"
           type="text"

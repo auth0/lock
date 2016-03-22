@@ -3,7 +3,7 @@ import React from 'react';
 
 export default class InputWrap extends React.Component {
   render() {
-    const { focused, isValid, name, svg } = this.props;
+    const { focused, isValid, name, icon } = this.props;
     let blockClassName = `auth0-lock-input-block auth0-lock-input-${name}`;
     if (!isValid) {
       blockClassName += " auth0-lock-error animated pulse";
@@ -14,18 +14,24 @@ export default class InputWrap extends React.Component {
       wrapClassName += " auth0-lock-focused";
     }
 
-    const icon = svg
-      ? <span dangerouslySetInnerHTML={{__html: svg}} />
-      : null;
+    // NOTE: Ugly hack until we upgrade to React 15 which has better
+    // support for SVG.
+    let iconElement = null;
 
-    if (icon) {
+    if (typeof icon === "string") {
+      iconElement = <span dangerouslySetInnerHTML={{__html: icon}} />;
+    } else if (icon) {
+      iconElement = icon;
+    }
+
+    if (iconElement) {
       wrapClassName += " auth0-lock-input-wrap-with-icon";
     }
 
     return (
       <div className={blockClassName}>
         <div className={wrapClassName}>
-          {icon}
+          {iconElement}
           {this.props.children}
         </div>
       </div>

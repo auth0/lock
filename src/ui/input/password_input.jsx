@@ -31,7 +31,7 @@ export default class PasswordInput extends React.Component {
     const { focused } = this.state;
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="password" svg={svg}>
+      <InputWrap focused={focused} isValid={isValid} name="password" icon={svg}>
         <input
           ref="input"
           type="password"

@@ -24,7 +24,7 @@ export default class EmailInput extends React.Component {
     const { focused } = this.state;
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="email" svg={svg}>
+      <InputWrap focused={focused} isValid={isValid} name="email" icon={svg}>
         <input ref="input"
           type="text"
           name="email"

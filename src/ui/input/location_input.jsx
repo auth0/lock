@@ -18,7 +18,7 @@ export default class LocationInput extends React.Component {
       `${value.substr(0,20)}...` : value;
 
     return (
-      <InputWrap focused={focused} isValid={true} name="location" svg={icon}>
+      <InputWrap focused={focused} isValid={true} name="location" icon={icon}>
         <input type="button"
           name="location"
           className="auth0-lock-input auth0-lock-input-location"

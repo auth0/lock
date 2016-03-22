@@ -23,7 +23,7 @@ export default class UsernameInput extends React.Component {
     const { focused } = this.state;
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="username" svg={svg}>
+      <InputWrap focused={focused} isValid={isValid} name="username" icon={svg}>
         <input
           ref="input"
           type="text"
