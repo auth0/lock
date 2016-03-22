@@ -120,7 +120,7 @@ export default class Chrome extends React.Component {
             transitionName={transitionName}
             reverse={reverse}
           >
-            <div key={(tabs && tabs.key) || screenName}>
+            <div className="auth0-lock-view-content" key={(tabs && tabs.key) || screenName}>
               {tabsContainer}
               <div style={{position: "relative"}}>
                 <div key={screenName} className="auth0-lock-body-content">
