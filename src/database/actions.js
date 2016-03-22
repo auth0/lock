@@ -67,13 +67,32 @@ function signInSuccess(id, ...args) {
   }
 }
 
+function loginErrorMessage(lock, error) {
+  // NOTE: previous version of lock checked for status codes and, at
+  // some point, if the status code was 401 it defaults to an
+  // "invalid_user_password" error (actually the
+  // "wrongEmailPasswordErrorText" dict entry) instead of checking
+  // explicitly. We should figure out if there was a reason for that.
+
+  if (error.status === 0) {
+    return l.ui.t(lock, ["error", "login", "lock.network"], {__textOnly: true});
+  }
+
+  // Custom rule error (except blocked_user)
+  if (error.code === "rule_error") {
+    return error.description
+      || l.ui.t(lock, ["error", "login", "lock.fallback"], {__textOnly: true});
+  }
+
+  return l.ui.t(lock, ["error", "login", error.code], {__textOnly: true})
+    || l.ui.t(lock, ["error", "login", "lock.fallback"], {__textOnly: true});
+}
+
 function signInError(id, error) {
   const lock = read(getEntity, "lock", id);
-  // TODO: proper error message
-  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
-  const errorMessage = "Invalid email or password";
-  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+  const errorMessage = loginErrorMessage(lock, error);
 
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
   l.invokeSignInCallback(lock, error);
 }
 
@@ -187,9 +206,7 @@ function autoSignInSuccess(id, ...args) {
 
 function autoSignInError(id, error) {
   const lock = read(getEntity, "lock", id);
-  // TODO: proper error message
-  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
-  const errorMessage = "An error ocurred when logging in";
+  const errorMessage = loginErrorMessage(lock, error);
   swap(updateEntity, "lock", id, m => {
     m = l.setSubmitting(m, false, errorMessage);
     m = m.set("signedIn", false);
