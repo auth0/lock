@@ -47,7 +47,7 @@ export default class LocationSelect extends React.Component {
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
           <BackButton onClick={::this.cancel} />
-          <div className="auth0-lock-input-wrap">
+          <div className="auth0-lock-input-wrap auth0-lock-input-wrap-with-icon">
             <span dangerouslySetInnerHTML={{__html: icon}} />
             <input ref="input"
               className="auth0-lock-input auth0-lock-input-search"
