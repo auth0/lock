@@ -54,9 +54,11 @@ breakpoint(point, value = 0)
   .auth0-global-message
     color white
     text-align center
-    padding 5px 20px
-    line-height 1.6
-    font-size 12px
+    padding 10px
+    line-height 1.8
+    font-size 11px
+    font-weight 600
+    text-transform uppercase
 
     &.auth0-global-message-error
       background #FF3E00
@@ -278,19 +280,17 @@ breakpoint(point, value = 0)
       text-align center
       margin-top 0
       margin-bottom 20px
-      color #666
+      color rgba(0,0,0,.56)
 
     .auth0-lock-alternative
-      margin 0
+      margin-top 25px
+      margin-bottom 0
 
       .auth0-lock-alternative-link
-        font-size 12px
-        color #333332
+        font-size 13px
+        color rgba(0,0,0,.86)
         cursor pointer
         margin-bottom 0
-
-        &:focus
-          font-weight bold
 
   .auth0-lock-input-block
     margin-bottom 15px
@@ -325,7 +325,7 @@ breakpoint(point, value = 0)
       // width 14px
       // height 10px
       path
-        fill #666
+        fill #888
 
       &.auth0-lock-icon-mobile
         width 9px
@@ -358,7 +358,7 @@ breakpoint(point, value = 0)
       -moz-box-sizing border-box
       box-sizing border-box
       position relative
-      color #727578
+      color rgba(0,0,0,.86)
 
       &.animated
         -webkit-animation-duration .5s
@@ -370,6 +370,7 @@ breakpoint(point, value = 0)
 
   .auth0-lock-error .auth0-lock-input-wrap
     border-color red
+    transition .3s ease-in-out
 
 
   // Lock terms content
@@ -521,6 +522,7 @@ breakpoint(point, value = 0)
       margin 0
       border none
       margin-left 40px
+      overflow hidden
 
     .auth0-lock-icon
       width 16px
@@ -531,7 +533,7 @@ breakpoint(point, value = 0)
 
     .auth0-lock-input-search
       border none
-      color black
+      padding-left 39px
 
     .auth0-lock-list-code
       position relative
@@ -760,6 +762,7 @@ breakpoint(point, value = 0)
       //mobile view
       @media screen and (max-width: 480px)
         height 100%
+        overflow auto
 
     .auth0-lock-cred-pane
       //mobile view
@@ -770,17 +773,18 @@ breakpoint(point, value = 0)
     .auth0-lock-body-content
       //mobile view
       @media screen and (max-width: 480px)
-        height: calc(100vh - 118px - 70px)
-        min-height 375px
+        background white
+        min-height calc(100vh - 118px - 70px) // - header - submit
+        // min-height 375px
+        display table
+        width 100%
 
     .auth0-lock-content
       //mobile view
       @media screen and (max-width: 480px)
         width 100%
-        position absolute
-        top 50%
-        -webkit-transform translateY(-50%)
-        transform translateY(-50%)
+        display table-cell
+        vertical-align middle
 
       .auth0-lock-form p
         @media screen and (max-width: 480px)
@@ -792,6 +796,7 @@ breakpoint(point, value = 0)
         position absolute
         bottom 0
         width 100%
+        left 0
         -webkit-box-sizing border-box
         -moz-box-sizing border-box
         box-sizing border-box
@@ -819,6 +824,33 @@ breakpoint(point, value = 0)
       @media screen and (max-width: 480px)
         border-radius 0
 
+
+
+    &.auth0-lock-no-submit
+      .auth0-lock-body-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          min-height calc(100vh - 118px) // - header
+
+    &.auth0-lock-with-terms
+      .auth0-lock-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          top calc(50% - 32px) // - terms
+
+    &.auth0-lock-with-tabs
+      .auth0-lock-body-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          min-height calc(100vh - 118px - 70px - 63px) // - header - submit - tabs
+
+      .auth0-lock-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          position relative
+          top auto
+          -webkit-transform none
+          transform none
 
   // Opened in frame
 
@@ -988,7 +1020,7 @@ breakpoint(point, value = 0)
 
     &.auth0-lock-social-big-button
       display block
-      margin 0 0 8px 0
+      margin 0 0 10px 0
       width 100%
 
       &[data-provider=""],
@@ -1089,7 +1121,7 @@ breakpoint(point, value = 0)
 
   &:after
     top 100%
-    left 26px
+    left 21px
     border solid transparent
     content: " "
     height 0

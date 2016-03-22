@@ -138,6 +138,10 @@ export default class Container extends React.Component {
       className += " auth0-lock-with-terms";
     }
 
+    if (tabs) {
+      className += " auth0-lock-with-tabs";
+    }
+
     return (
       <div className={className} ref="container">
         {overlay}
