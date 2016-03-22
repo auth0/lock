@@ -164,9 +164,11 @@ function signUpSuccess(id, ...args) {
 
 function signUpError(id, error) {
   const lock = read(getEntity, "lock", id);
-  // TODO: proper error message
-  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
-  const errorMessage = "Something went wrong";
+
+  const errorMessage =
+    l.ui.t(lock, ["error", "signUp", error.code], {__textOnly: true})
+    || l.ui.t(lock, ["error", "signUp", "lock.fallback"], {__textOnly: true});
+
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 

@@ -18,11 +18,17 @@ export default {
       "sms_provider_error": "We're sorry, something went wrong when sending the SMS",
       "sms_provider_error.bad_phone_number": "The number {phoneNumber} is not a valid phone number"
     },
-    signIn: { // TODO: this won't do it for user/password sign in
+    signIn: { // TODO: rename to login, and namespace by connection
       "invalid_user_password": "Wrong {field} or verification code",
       "lock.popup_closed": "Popup window closed. Try again.",
       "lock.request": "We're sorry, something went wrong when attempting to sign in",
       "lock.unauthorized": "Permissions were not granted. Try again."
+    },
+    signUp: {
+      "invalid_password": "The password is too weak.", // NOTE: request is not made if pass doesn't satisfy policy
+      "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
+      "user_exists": "The user already exists.",
+      "username_exists": "The username already exists."
     }
   },
   success: {
