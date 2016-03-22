@@ -776,15 +776,15 @@ breakpoint(point, value = 0)
         background white
         min-height calc(100vh - 118px - 70px) // - header - submit
         // min-height 375px
+        display table
+        width 100%
 
     .auth0-lock-content
       //mobile view
       @media screen and (max-width: 480px)
         width 100%
-        position absolute
-        top 50%
-        -webkit-transform translateY(-50%)
-        transform translateY(-50%)
+        display table-cell
+        vertical-align middle
 
       .auth0-lock-form p
         @media screen and (max-width: 480px)
@@ -796,6 +796,7 @@ breakpoint(point, value = 0)
         position absolute
         bottom 0
         width 100%
+        left 0
         -webkit-box-sizing border-box
         -moz-box-sizing border-box
         box-sizing border-box
