@@ -239,9 +239,14 @@ export function resetPassword(id) {
       username:   authWithUsername(lock) ? c.username(lock) : c.email(lock)
     };
 
+    const authOptions = {
+      jsonp: l.auth.jsonp(lock)
+    };
+
     webApi.resetPassword(
       id,
       options,
+      authOptions,
       (error, ...args) => {
         if (error) {
           setTimeout(() => resetPasswordError(id, error), 250);

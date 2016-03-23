@@ -33,8 +33,8 @@ class Auth0WebAPI {
 
   signUp(lockID, options, authOptions, cb) {
     const client = this.clients[lockID];
-    // TODO: allow to use jsonp for signup?
-    const { autoLogin, popup, sso } = authOptions;
+    const { autoLogin, jsonp, popup, sso } = authOptions;
+    client._useJSONP = jsonp;
 
     // When needed, open popup for sso login immediately, otherwise it
     // may be blocked by the browser.
@@ -61,8 +61,10 @@ class Auth0WebAPI {
     client.signup(options, f);
   }
 
-  resetPassword(lockID, options, cb) {
+  resetPassword(lockID, options, authOptions, cb) {
     const client = this.clients[lockID];
+    const { jsonp } = authOptions;
+    client._useJSONP = jsonp;
     client.changePassword(options, cb);
   }
 
