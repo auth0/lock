@@ -25,7 +25,7 @@ export default class Auth0Lock extends Base {
     model = initSocial(model, options);
     model = initDatabase(model, options);
 
-    const { email, username } = options.autofill || {};
+    const { email, username } = options.prefill || {};
     if (typeof email === "string") model = setEmail(model, email);
     if (typeof username === "string") model = setUsername(model, username);
 
