@@ -10,7 +10,7 @@ import  {
   databaseConnectionName,
   setScreen,
   shouldAutoLogin,
-  signUpFields
+  additionalSignUpFields
 } from './index';
 
 export function signIn(id) {
@@ -100,7 +100,7 @@ function signInError(id, error) {
 export function signUp(id, options = {}) {
   let lock = read(getEntity, "lock", id);
   const fields = ["email", "password"];
-  signUpFields(lock).forEach((_,k) => fields.push(k));
+  additionalSignUpFields(lock).forEach(x => fields.push(x.get("name")));
   if (authWithUsername(lock)) fields.push("username");
   let isSubmitting;
   [isSubmitting, lock] = startSubmit(id, fields);
@@ -115,10 +115,11 @@ export function signUp(id, options = {}) {
       options.username = c.username(lock);
     }
 
-    if (!signUpFields(lock).isEmpty()) {
-      options.user_metadata = signUpFields(lock).map((v, k) => (
-        c.getFieldValue(lock, k)
-      )).toJS();
+    if (!additionalSignUpFields(lock).isEmpty()) {
+      options.user_metadata = {};
+      additionalSignUpFields(lock).forEach(x => {
+        options.user_metadata[x.get("name")] = c.getFieldValue(lock, x.get("name"))
+      });
     }
 
     const authOptions = l.withAuthOptions(lock, {

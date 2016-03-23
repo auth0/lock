@@ -4,7 +4,7 @@ import PasswordPane from '../field/password/password_pane';
 import UsernamePane from '../field/username/username_pane';
 import {
   authWithUsername,
-  signUpFields,
+  additionalSignUpFields,
   passwordStrengthPolicy,
 } from '../database/index';
 import { changeField } from '../field/actions';
@@ -27,14 +27,14 @@ export default class SignUpPane extends React.Component {
           placeholder={usernameInputPlaceholder}
         />
       : null;
-    const fields = signUpFields(model).entrySeq().map(([k,v]) => (
+    const fields = additionalSignUpFields(model).map(x => (
       <TextInput
-        iconUrl={v.get("icon")}
-        isValid={!isFieldVisiblyInvalid(model, k)}
-        key={k}
-        name={k}
-        onChange={e => changeField(model.get("id"), k, e.target.value, v.get("validator"))}
-        placeholder={v.get("placeholder")}
+        iconUrl={x.get("icon")}
+        isValid={!isFieldVisiblyInvalid(model, x.get("name"))}
+        key={x.get("name")}
+        name={x.get("name")}
+        onChange={e => changeField(model.get("id"), x.get("name"), e.target.value, x.get("validator"))}
+        placeholder={x.get("placeholder")}
       />
     ));
 

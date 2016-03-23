@@ -8,13 +8,13 @@ const { get, initNS, tget, tset } = dataFns(["database"]);
 
 export function initDatabase(m, options) {
   m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
-  signUpFields(m).forEach((v, k) => m = setField(m, k, "", v.get("validator")));
+  additionalSignUpFields(m).forEach(x => m = setField(m, x.get("name"), "", x.get("validator")));
   return m;
 }
 
 function processDatabaseOptions(options) {
   let {
-    signUpFields,
+    additionalSignUpFields,
     disableResetAction,
     disableSignUpAction,
     initialScreen,
@@ -59,18 +59,21 @@ function processDatabaseOptions(options) {
   }
 
 
-  if (signUpFields != undefined && typeof signUpFields !== "object") {
-    l.warn(options, "The `signUpFields` option will be ignored, because it is not an object");
-    signUpFields = undefined;
-  } else if (signUpFields) {
-    signUpFields = new Immutable.fromJS(signUpFields);
-    // TODO: emit warnings
-    signUpFields = signUpFields.filter((v, k) => {
+  if (additionalSignUpFields && !Array.isArray(additionalSignUpFields)) {
+    l.warn(options, "The `additionalSignUpFields` option will be ignored, because it is not an array");
+    additionalSignUpFields = undefined;
+  } else if (additionalSignUpFields) {
+    additionalSignUpFields = new Immutable.fromJS(additionalSignUpFields);
+    // TODO: emit warnings for invalid fields
+    // TODO: improve validation
+    additionalSignUpFields = additionalSignUpFields.filter(x => {
       const reservedNames = ["email", "username", "password"];
-      return reservedNames.indexOf(k) === -1
-        && typeof v.get("placeholder") === "string"
-        && v.get("placeholder").length > 0
-        && (typeof v.get("validator") === "undefined" || typeof v.get("validator") === "function");
+      return typeof x.get("name") === "string"
+        && x.get("name").match(/^[a-zA-Z0-9_]+$/)
+        && reservedNames.indexOf(x.get("name")) === -1
+        && typeof x.get("placeholder") === "string"
+        && x.get("placeholder").length > 0
+        && (typeof x.get("validator") === "undefined" || typeof x.get("validator") === "function");
     });
   }
 
@@ -80,11 +83,11 @@ function processDatabaseOptions(options) {
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
   return Map({
+    additionalSignUpFields,
     initialScreen,
     loginAfterSignUp,
     resetLink,
     screens,
-    signUpFields,
     signUpLink,
     usernameStyle
   }).filter(x => typeof x !== "undefined").toJS();
@@ -147,6 +150,6 @@ export function passwordStrengthPolicy(m) {
   return databaseConnection(m).get("passwordPolicy", "none");
 }
 
-export function signUpFields(m) {
-  return get(m, "signUpFields", Map());
+export function additionalSignUpFields(m) {
+  return get(m, "additionalSignUpFields", Map());
 }
