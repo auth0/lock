@@ -23,6 +23,7 @@ export default class SignUpPane extends React.Component {
 
     const usernamePane = authWithUsername(model)
       ? <UsernamePane
+          autofocus={false}
           lock={model}
           placeholder={usernameInputPlaceholder}
         />

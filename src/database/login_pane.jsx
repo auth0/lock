@@ -24,6 +24,7 @@ export default class LoginPane extends React.Component {
 
     const fieldPane = authWithUsername(lock)
       ? <UsernamePane
+          autofocus={l.ui.autofocus(lock)}
           lock={lock}
           placeholder={usernameInputPlaceholder}
         />

@@ -25,10 +25,11 @@ export default class UsernamePane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder } = this.props;
+    const { autofocus, lock, placeholder } = this.props;
 
     return (
       <UsernameInput
+        autofocus={autofocus}
         value={c.username(lock)}
         avatar={l.ui.avatar(lock)}
         isValid={!c.isFieldVisiblyInvalid(lock, "username")}
@@ -42,6 +43,7 @@ export default class UsernamePane extends React.Component {
 }
 
 UsernamePane.propTypes = {
+  autofocus: React.PropTypes.bool.isRequired,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired
 };
