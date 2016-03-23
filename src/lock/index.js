@@ -159,7 +159,7 @@ function extractAuthOptions(options) {
     redirect,
     responseType,
     sso
-  } = options.authentication || {};
+  } = options.auth || {};
 
   authParams = typeof authParams === "object" ? authParams : {};
   callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
