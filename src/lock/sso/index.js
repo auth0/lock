@@ -4,12 +4,12 @@ import LoadingScreen from '../loading_screen';
 import { ui, isConnectionEnabled } from '../index';
 
 export function renderSSOScreens(m) {
-  if (!ui.rememberLastLogin(m)) return null;
-
   // TODO: loading pin check belongs here?
   if (m.getIn(["sso", "syncStatus"]) != "ok" || m.get("isLoadingPanePinned")) {
     return new LoadingScreen();
   }
+
+  if (!ui.rememberLastLogin(m)) return null;
 
   const { name, strategy } = lastUsedConnection(m);
   const skipped = m.getIn(["sso", "skipped"], false);
