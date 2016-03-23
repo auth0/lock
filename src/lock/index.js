@@ -92,7 +92,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
-  const { icon, primaryColor } = theme;
+  const { logo, primaryColor } = theme;
 
   const avatar = options.avatar !== null;
   const customAvatarProvider = options.avatar
@@ -107,7 +107,7 @@ function extractUIOptions(id, modeName, options) {
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
     avatar: avatar,
     avatarProvider: avatarProvider,
-    icon: typeof icon === "string" ? icon : undefined,
+    logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
     dict: d.buildDict(modeName, typeof options.dict === "object" ? options.dict : {}),
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
@@ -127,12 +127,12 @@ export const ui = {
   autoclose: lock => getUIAttribute(lock, "autoclose"),
   avatar: lock => getUIAttribute(lock, "avatar"),
   avatarProvider: lock => getUIAttribute(lock, "avatarProvider"),
-  icon: lock => getUIAttribute(lock, "icon"),
   closable: lock => getUIAttribute(lock, "closable"),
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
   t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
   focusInput: lock => getUIAttribute(lock, "focusInput"),
+  logo: lock => getUIAttribute(lock, "logo"),
   mobile: lock => getUIAttribute(lock, "mobile"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),

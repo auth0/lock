@@ -11,7 +11,7 @@ export function setupLock(id, clientID, domain, options, signInCallback, hookRun
   // TODO: run a hook before initialization, useful for when we want
   // to provide some options by default.
   const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
-  preload(l.ui.icon(m) || defaultProps.icon);
+  preload(l.ui.logo(m) || defaultProps.logo);
   swap(setEntity, "lock", id, m);
   // TODO: check options.mode is a valid mode.
 

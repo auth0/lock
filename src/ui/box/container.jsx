@@ -92,10 +92,10 @@ export default class Container extends React.Component {
       error,
       footerText,
       headerText,
-      icon,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
       isModal,
       isSubmitting,
+      logo,
       model,
       primaryColor,
       screenName,
@@ -158,8 +158,8 @@ export default class Container extends React.Component {
                 error={error}
                 footerText={footerText}
                 headerText={headerText}
-                icon={icon}
                 isSubmitting={isSubmitting}
+                logo={logo}
                 screenName={screenName}
                 model={model}
                 primaryColor={primaryColor}
@@ -188,10 +188,10 @@ Container.propTypes = {
   error: React.PropTypes.string,
   footerText: React.PropTypes.element,
   headerText: React.PropTypes.element,
-  icon: React.PropTypes.string.isRequired,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
+  logo: React.PropTypes.string.isRequired,
   model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
@@ -209,8 +209,8 @@ const isFileProtocol = global.window
   && global.window.location.protocol === "file:";
 
 export const defaultProps = Container.defaultProps = {
-  icon: `${isFileProtocol ? "https:" : ""}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
   isMobile: false,
   isSubmitting: false,
+  logo: `${isFileProtocol ? "https:" : ""}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
   primaryColor: "#ea5323"
 };

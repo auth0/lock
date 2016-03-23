@@ -63,8 +63,8 @@ export default class Chrome extends React.Component {
       error,
       footerText,
       headerText,
-      icon,
       isSubmitting,
+      logo,
       model,
       primaryColor,
       screenName,
@@ -82,7 +82,7 @@ export default class Chrome extends React.Component {
       backgroundUrl = avatar;
       name = title;
     } else {
-      backgroundUrl = icon;
+      backgroundUrl = logo;
       name = "";
     }
 
@@ -107,7 +107,7 @@ export default class Chrome extends React.Component {
 
     return (
       <div className="auth0-lock-cred-pane">
-        <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={icon}/>
+        <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={logo}/>
         <ReactTransitionGroup>
           {globalSuccess}
           {globalError}
@@ -172,8 +172,8 @@ Chrome.propTypes = {
   error: React.PropTypes.string,
   footerText: React.PropTypes.element,
   headerText: React.PropTypes.element,
-  icon: React.PropTypes.string.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
+  logo: React.PropTypes.string.isRequired,
   model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
