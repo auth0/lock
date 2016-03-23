@@ -32,7 +32,7 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 
 #### Example
 
-```javascript
+```js
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0LockPasswordless(clientId, domain, {},
@@ -53,7 +53,6 @@ var lock = new Auth0LockPasswordless(clientId, domain, {},
     }  
 });
 ```
-
 
 ### Customization
 
@@ -248,6 +247,23 @@ var options = {
 A popup window can be displayed instead of redirecting the user to a social provider website. While this has the advantage of preserving page state, it has some issues. Often times users have popup blockers that prevent the login page from even displaying. There are also known issues with mobile browsers. For example, in recent versions of Chrome on iOS, the login popup does not get [closed properly](https://github.com/auth0/lock/issues/71) after login. For these reasons, we encourage developers to avoid this mode, even with Single Page Apps.
 
 If you nevertheless decide to use it, you can activate popup mode by passing the option `auth: {redirect: false}` when constructing `Auth0Lock`.
+
+```js
+var clientId = "YOUR_AUTH0_APP_CLIENTID";
+var domain = "YOUR_DOMAIN_AT.auth0.com";
+var options = {
+  auth: {
+    redirect: false
+  }
+};
+
+var lock = new Auth0LockPasswordless(clientId, domain, options,
+  function(error, result) {
+    // Will only be executed after an attempt to login has been made (contrast
+    // this with redirect mode in which the function is always executed)
+});
+```
+
 
 More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/authentication-modes#popup-mode).
 
