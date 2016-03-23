@@ -292,7 +292,7 @@ export function showSignUpActivity(id, fields = ["password"]) {
 }
 
 export function showResetPasswordActivity(id, fields = ["password"]) {
-  swap(updateEntity, "lock", id, setScreen, "resetPassword", fields);
+  swap(updateEntity, "lock", id, setScreen, "forgotPassword", fields);
 }
 
 export function cancelResetPassword(id) {

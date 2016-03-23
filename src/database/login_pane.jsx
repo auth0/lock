@@ -33,7 +33,7 @@ export default class LoginPane extends React.Component {
           placeholder={emailInputPlaceholder}
         />;
 
-    const dontRememberPassword = hasScreen(lock, "resetPassword")
+    const dontRememberPassword = hasScreen(lock, "forgotPassword")
       ? <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"

@@ -13,7 +13,7 @@ export default class Auth0Lock extends Base {
 
   static SCREENS = {
     login: AskSocialNetworkOrLogin,
-    resetPassword: ResetPassword,
+    forgotPassword: ResetPassword,
     signUp: SignUp
   };
 

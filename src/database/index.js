@@ -28,18 +28,18 @@ function processDatabaseOptions(options) {
   // undefined, and change accesor fn.
   usernameStyle = usernameStyle === "username" ? "username" : "email";
 
-  let screens = ["login", "signUp", "resetPassword"];
+  let screens = ["login", "signUp", "forgotPassword"];
 
   if (initialScreen != undefined
       && (typeof initialScreen != "string" || screens.indexOf(initialScreen) === -1)) {
-    l.warn(options, "The `initialScreen` option will be ignored, because it is not one of the following allowed strings \"login\", \"signUp\", \"resetPassword\".");
+    l.warn(options, "The `initialScreen` option will be ignored, because it is not one of the following allowed strings \"login\", \"signUp\", \"forgotPassword\".");
     initialScreen = undefined;
   }
 
   if (allowForgotPassword !== undefined && typeof allowForgotPassword != "boolean") {
     l.warn(options, "The `allowForgotPassword` option will be ignored, because it is not a booelan.");
   } else if (allowForgotPassword === false) {
-    screens = screens.filter(x => x != "resetPassword");
+    screens = screens.filter(x => x != "forgotPassword");
   }
 
   if (allowSignUp !== undefined && typeof allowSignUp != "boolean") {
@@ -137,7 +137,7 @@ export function authWithUsername(m) {
 export function hasScreen(m, s) {
   const { showForgot, showSignup } = databaseConnection(m).toJS();
 
-  return !(showForgot === false && s === "resetPassword")
+  return !(showForgot === false && s === "forgotPassword")
     && !(showSignup === false && s === "signUp")
     && get(m, "screens").contains(s);
 }
