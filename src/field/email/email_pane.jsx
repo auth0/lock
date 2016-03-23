@@ -32,7 +32,7 @@ export default class EmailPane extends React.Component {
         isValid={!c.isFieldVisiblyInvalid(lock, "email")}
         onChange={::this.handleChange}
         avatar={l.ui.avatar(lock)}
-        autoFocus={l.ui.focusInput(lock)}
+        autoFocus={l.ui.autofocus(lock)}
         placeholder={placeholder}
         disabled={l.submitting(lock)} />
     );
