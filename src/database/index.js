@@ -17,9 +17,9 @@ function processDatabaseOptions(options) {
     additionalSignUpFields,
     disableResetAction,
     disableSignUpAction,
+    forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
-    resetLink,
     signUpLink,
     usernameStyle
   } = options;
@@ -48,9 +48,9 @@ function processDatabaseOptions(options) {
     screens = screens.filter(x => x != "signUp");
   }
 
-  if (resetLink != undefined && typeof resetLink != "string") {
-    l.warn(options, "The `resetLink` option will be ignored, because it is not a string");
-    resetLink = undefined;
+  if (forgotPasswordLink != undefined && typeof forgotPasswordLink != "string") {
+    l.warn(options, "The `forgotPasswordLink` option will be ignored, because it is not a string");
+    forgotPasswordLink = undefined;
   }
 
   if (signUpLink != undefined && typeof signUpLink != "string") {
@@ -84,9 +84,9 @@ function processDatabaseOptions(options) {
 
   return Map({
     additionalSignUpFields,
+    forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
-    resetLink,
     screens,
     signUpLink,
     usernameStyle
@@ -101,8 +101,8 @@ export function databaseConnectionName(m) {
   return databaseConnection(m).get("name");
 }
 
-export function resetLink(m, notFound="") {
-  return get(m, "resetLink", notFound);
+export function forgotPasswordLink(m, notFound="") {
+  return get(m, "forgotPasswordLink", notFound);
 }
 
 export function signUpLink(m, notFound="") {
