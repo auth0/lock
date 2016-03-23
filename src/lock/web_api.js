@@ -218,22 +218,24 @@ function normalizeError(error) {
     : result;
 }
 
-// The properties callbackOnLocationHash, callbackURL, and forceJSONP can only
-// be specified when counstructing an Auth0 instance. Unfortunately we construct
-// the Auth0 client along with the Lock and we don't have the values of those
-// options until later when the Lock is shown. While today we may construct the
-// client here, in the future that will not be possible becasue we will need to
-// retrieve some client information before before we can show the Lock.
+// The properties callbackOnLocationHash, callbackURL, and jsonp can
+// only be specified when counstructing an Auth0
+// instance. Unfortunately we construct the Auth0 client along with
+// the Lock and we don't have the values of those options until later
+// when the Lock is shown. While today we may construct the client
+// here, in the future that will not be possible becasue we will need
+// to retrieve some client information before before we can show the
+// Lock.
 function transferLoginOptionsToClient(client, options) {
-  const { callbackURL, forceJSONP, redirect, responseType } = options;
+  const { callbackURL, jsonp, redirect, responseType } = options;
 
   client._callbackOnLocationHash = responseType === "token";
   client._callbackURL = callbackURL || client._callbackURL;
   client._shouldRedirect = redirect || responseType === "code" || !!callbackURL;
-  client._useJSONP = forceJSONP;
+  client._useJSONP = jsonp;
 
   delete options.callbackURL;
-  delete options.forceJSONP;
+  delete options.jsonp;
   delete options.responseType;
 }
 

@@ -144,7 +144,7 @@ const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 export const auth = {
   authParams: lock => getAuthAttribute(lock, "authParams"),
   callbackURL: lock => getAuthAttribute(lock, "callbackURL"),
-  forceJSONP: lock => getAuthAttribute(lock, "forceJSONP"),
+  jsonp: lock => getAuthAttribute(lock, "jsonp"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   responseType: lock => getAuthAttribute(lock, "responseType")
 };
@@ -155,7 +155,7 @@ function extractAuthOptions(options) {
   let {
     authParams,
     callbackURL,
-    forceJSONP,
+    jsonp,
     redirect,
     responseType,
     sso
@@ -174,7 +174,7 @@ function extractAuthOptions(options) {
   return Immutable.fromJS({
     authParams,
     callbackURL,
-    forceJSONP,
+    jsonp,
     redirect,
     responseType,
     sso
