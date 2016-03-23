@@ -1,8 +1,8 @@
-import Auth0LockPasswordless from 'auth0-lock-next';
+import Auth0Lock from 'auth0-lock/lib/classic';
 
-const cid = "Gcs1jSu5FAFpDrPe0jrqGpfbTEkzCk15";
-const domain = "pwdlessdemo.auth0.com";
+const cid = "yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih";
+const domain = "mdocs.auth0.com";
 
-const lock = new Auth0LockPasswordless(cid, domain);
+const lock = new Auth0Lock(cid, domain);
 
-lock.magiclink();
+lock.show();
