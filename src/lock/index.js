@@ -143,9 +143,9 @@ const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 
 export const auth = {
   params: lock => getAuthAttribute(lock, "params"),
-  callbackURL: lock => getAuthAttribute(lock, "callbackURL"),
   jsonp: lock => getAuthAttribute(lock, "jsonp"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
+  redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
   responseType: lock => getAuthAttribute(lock, "responseType")
 };
 
@@ -154,17 +154,17 @@ function extractAuthOptions(options) {
   // TODO: shouldn't all options be namespased in authentication?
   let {
     params,
-    callbackURL,
     jsonp,
     redirect,
+    redirectUrl,
     responseType,
     sso
   } = options.auth || {};
 
   params = typeof params === "object" ? params : {};
-  callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
+  redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : undefined;
   redirect = typeof redirect === "boolean" ? redirect : true;
-  responseType = typeof responseType === "string" ? responseType : callbackURL ? "code" : "token";
+  responseType = typeof responseType === "string" ? responseType : redirectUrl ? "code" : "token";
   sso = typeof sso === "boolean" ? sso : true;
 
   if (trim(params.scope || "") === "openid profile") {
@@ -172,10 +172,10 @@ function extractAuthOptions(options) {
   }
 
   return Immutable.fromJS({
-    callbackURL,
     jsonp,
     params,
     redirect,
+    redirectUrl,
     responseType,
     sso
   });
