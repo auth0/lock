@@ -93,16 +93,19 @@ function extractUIOptions(id, modeName, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
   const { icon, primaryColor } = theme;
-  let avatarProvider = options.avatarProvider || {};
-  if (typeof avatarProvider.url !== "function" || typeof avatarProvider.displayName !== "function") {
-    avatarProvider = gp;
-  }
+
+  const avatar = options.avatar !== null;
+  const customAvatarProvider = options.avatar
+    && typeof options.avatar.url === "function"
+    && typeof options.avatar.displayName === "function"
+    && options.avatar;
+  const avatarProvider = customAvatarProvider || gp;
 
   return new Map({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
-    avatar: undefined === options.avatar ? true : !!options.avatar,
+    avatar: avatar,
     avatarProvider: avatarProvider,
     icon: typeof icon === "string" ? icon : undefined,
     closable: closable,
