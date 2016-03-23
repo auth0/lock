@@ -50,9 +50,17 @@ export function displayName(connection) {
 }
 
 function processSocialOptions(options) {
-  let { socialBigButtons } = options;
-  // TODO: validate socialBigButtons
-  return { socialBigButtons: socialBigButtons };
+  const result = {};
+  const { socialButtonStyle } = options;
+
+  // TODO: emit warnings
+  if (typeof socialButtonStyle === "number"
+      || socialButtonStyle === "big"
+      || socialButtonStyle === "small") {
+    result.socialButtonStyle = socialButtonStyle;
+  }
+
+  return result;
 }
 
 export function socialConnections(m) {
@@ -62,8 +70,8 @@ export function socialConnections(m) {
 }
 
 export function useBigButtons(m) {
-  const b = get(m, "socialBigButtons");
-  return b === undefined
-    ? socialConnections(m).length <= 3
-    : b;
+  const x = get(m, "socialButtonStyle", 3);
+  return typeof x === "number"
+    ? socialConnections(m).length <= x
+    : x === "big";
 }
