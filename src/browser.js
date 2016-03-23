@@ -8,15 +8,15 @@
  */
 
 import Auth0Lock from './classic';
-// import Auth0LockPasswordless from './passwordless';
+import Auth0LockPasswordless from './passwordless';
 
 global.window.Auth0Lock = Auth0Lock;
 // global.window.Auth0LockPasswordless = Auth0LockPasswordless;
 //use amd or just throught to window object.
 if (typeof global.window.define == 'function' && global.window.define.amd) {
   global.window.define('auth0Lock', function () { return Auth0Lock; });
-//  global.window.define('auth0LockPasswordless', function () { return Auth0LockPasswordless; });
+  global.window.define('auth0LockPasswordless', function () { return Auth0LockPasswordless; });
 } else if (global.window) {
   global.window.Auth0Lock = Auth0Lock;
-//  global.window.Auth0LockPasswordless = Auth0LockPasswordless;
+  global.window.Auth0LockPasswordless = Auth0LockPasswordless;
 }
