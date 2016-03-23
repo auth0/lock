@@ -110,7 +110,7 @@ function extractUIOptions(id, modeName, options) {
     avatarProvider: avatarProvider,
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
-    dict: d.buildDict(modeName, typeof options.dict === "object" ? options.dict : {}),
+    dict: d.buildDict(modeName, typeof options.languageDictionary === "object" ? options.languageDictionary : {}),
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),

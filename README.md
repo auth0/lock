@@ -399,7 +399,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
-- **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
+- **languageDictionary {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
 - **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to the country the user is in and fallback to `"US"` when it can't be obtained.
@@ -445,15 +445,15 @@ var options = {
   container: "myContainer",
   icon: "/path/to/my/icon.png",
   closable: false,
-  dict: {title: "My Company"},
+  languageDictionary: {title: "My Company"},
   autofocus: false,
   gravatar: false
 };
 ```
 
-#### Dict Specification
+#### Language Dictionary Specification
 
-A dict, short for dictionary, is an object that contains every piece of text the Lock needs to display. Different textual components are needed depending on what method you called to open the Lock. The following is an example of the dict used when the Lock is opened with the `emailcode` method:
+A language dictionary is an object that contains every piece of text the Lock needs to display. Different textual components are needed depending on what method you called to open the Lock. The following is an example of the dict used when the Lock is opened with the `emailcode` method:
 
 ```js
 {
