@@ -13,7 +13,7 @@ export default class AskSocialNetworkOrLogin extends Screen {
 
   constructor() {
     super();
-    this.name = "networkOrLogin";
+    this.name = "login";
   }
 
   renderAuxiliaryPane(lock) {

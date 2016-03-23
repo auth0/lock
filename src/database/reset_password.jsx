@@ -7,7 +7,7 @@ import { cancelResetPassword, resetPassword } from './actions';
 export default class ResetPassword extends Screen {
 
   constructor() {
-    super("resetPassword");
+    super("forgotPassword");
   }
 
   backHandler(m) {

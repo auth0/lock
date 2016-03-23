@@ -55,11 +55,17 @@ export default class Auth0Lock extends Base {
 }
 
 const dict = {
+  forgotPassword: {
+    emailInputPlaceholder: "yours@example.com",
+    footerText: "",
+    headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
+    usernameInputPlaceholder: "your username"
+  },
   lastLogin: {
     headerText: "Last time you logged in with",
     skipLastLoginLabel: "Not your account?"
   },
-  networkOrLogin: {
+  login: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
     forgotPasswordLabel: "Don't remember your password?",
@@ -70,12 +76,6 @@ const dict = {
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     smallSocialButtonsHeader: "Login with",
-    usernameInputPlaceholder: "your username"
-  },
-  resetPassword: {
-    emailInputPlaceholder: "yours@example.com",
-    footerText: "",
-    headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
     usernameInputPlaceholder: "your username"
   },
   signUp: {
