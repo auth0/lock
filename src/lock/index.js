@@ -142,7 +142,7 @@ export const ui = {
 const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 
 export const auth = {
-  authParams: lock => getAuthAttribute(lock, "authParams"),
+  params: lock => getAuthAttribute(lock, "params"),
   callbackURL: lock => getAuthAttribute(lock, "callbackURL"),
   jsonp: lock => getAuthAttribute(lock, "jsonp"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
@@ -153,7 +153,7 @@ export const auth = {
 function extractAuthOptions(options) {
   // TODO: shouldn't all options be namespased in authentication?
   let {
-    authParams,
+    params,
     callbackURL,
     jsonp,
     redirect,
@@ -161,20 +161,20 @@ function extractAuthOptions(options) {
     sso
   } = options.auth || {};
 
-  authParams = typeof authParams === "object" ? authParams : {};
+  params = typeof params === "object" ? params : {};
   callbackURL = typeof callbackURL === "string" && callbackURL ? callbackURL : undefined;
   redirect = typeof redirect === "boolean" ? redirect : true;
   responseType = typeof responseType === "string" ? responseType : callbackURL ? "code" : "token";
   sso = typeof sso === "boolean" ? sso : true;
 
-  if (trim(authParams.scope || "") === "openid profile") {
-    warn(m, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
+  if (trim(params.scope || "") === "openid profile") {
+    warn(options, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
   return Immutable.fromJS({
-    authParams,
     callbackURL,
     jsonp,
+    params,
     redirect,
     responseType,
     sso
@@ -184,7 +184,7 @@ function extractAuthOptions(options) {
 export function withAuthOptions(m, opts, flattenAuthParams = true) {
   const auth = get(m, "auth");
   const authOptions = flattenAuthParams
-    ? auth.remove("authParams").merge(auth.get("authParams"))
+    ? auth.remove("params").merge(auth.get("params"))
     : auth;
 
   return authOptions
