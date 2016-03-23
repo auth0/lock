@@ -15,8 +15,8 @@ export function initDatabase(m, options) {
 function processDatabaseOptions(options) {
   let {
     additionalSignUpFields,
+    allowForgotPassword,
     allowSignUp,
-    disableResetAction,
     forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
@@ -36,9 +36,9 @@ function processDatabaseOptions(options) {
     initialScreen = undefined;
   }
 
-  if (disableResetAction != undefined && typeof disableResetAction != "boolean") {
-    l.warn(options, "The `disableResetAction` option will be ignored, because it is not a booelan.");
-  } else if (disableResetAction) {
+  if (allowForgotPassword !== undefined && typeof allowForgotPassword != "boolean") {
+    l.warn(options, "The `allowForgotPassword` option will be ignored, because it is not a booelan.");
+  } else if (allowForgotPassword === false) {
     screens = screens.filter(x => x != "resetPassword");
   }
 
