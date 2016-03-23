@@ -10,8 +10,26 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock-next-2.2.1.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.0.0-beta.1/lock.min.js"></script>
 ```
+
+From [bower](http://bower.io)
+
+```sh
+bower install auth0-lock#10.0.0-beta.1
+```
+
+```html
+<script src="bower_components/auth0-lock/build/auth0-lock.min.js"></script>
+```
+
+From [npm](https://npmjs.org)
+
+```sh
+npm install auth0-lock@10.0.0-beta.1
+```
+
+After installing the `auth0-lock-passwordless` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
 If you are targeting mobile audiences, it's recommended that you add:
 

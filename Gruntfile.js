@@ -32,12 +32,12 @@ module.exports = function(grunt) {
       },
       clean: {
         files: [
-          {action: "delete", dest: "js/lock-next-" + pkg.version + ".js"},
-          {action: "delete", dest: "js/lock-next-" + pkg.version + ".min.js"},
-          {action: "delete", dest: "js/lock-next-" + major_version + ".js"},
-          {action: "delete", dest: "js/lock-next-" + major_version + ".min.js"},
-          {action: "delete", dest: "js/lock-next-" + minor_version + ".js"},
-          {action: "delete", dest: "js/lock-next-" + minor_version + ".min.js"}
+          {action: "delete", dest: "js/lock-" + pkg.version + ".js"},
+          {action: "delete", dest: "js/lock-" + pkg.version + ".min.js"},
+          {action: "delete", dest: "js/lock-" + major_version + ".js"},
+          {action: "delete", dest: "js/lock-" + major_version + ".min.js"},
+          {action: "delete", dest: "js/lock-" + minor_version + ".js"},
+          {action: "delete", dest: "js/lock-" + minor_version + ".min.js"}
         ]
       },
       publish: {
@@ -81,11 +81,11 @@ module.exports = function(grunt) {
           watch: true
         },
         src: "src/browser.js",
-        dest: "build/lock-next.js"
+        dest: "build/lock.js"
       },
       build: {
         src: "src/browser.js",
-        dest: "build/lock-next.js"
+        dest: "build/lock.js"
       },
       design: {
         options: {
@@ -97,15 +97,15 @@ module.exports = function(grunt) {
           watch: true
         },
         src: "support/design/index.js",
-        dest: "build/lock-next.design.js"
+        dest: "build/lock.design.js"
       },
       heroku_design: {
         src: "support/design/index.js",
-        dest: "build/lock-next.design.js"
+        dest: "build/lock.design.js"
       },
       heroku_dev: {
         src: "src/browser.js",
-        dest: "build/lock-next.js"
+        dest: "build/lock.js"
       }
     },
     clean: {
@@ -145,12 +145,12 @@ module.exports = function(grunt) {
       touch_index: "touch src/index.js"
     },
     http: {
-      purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + pkg.version + ".js",       method: "DELETE"}},
-      purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + pkg.version + ".min.js",   method: "DELETE"}},
-      purge_major_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + major_version + ".js",     method: "DELETE"}},
-      purge_major_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + major_version + ".min.js", method: "DELETE"}},
-      purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + minor_version + ".js",     method: "DELETE"}},
-      purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-next-" + minor_version + ".min.js", method: "DELETE"} }
+      purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-" + pkg.version + ".js",       method: "DELETE"}},
+      purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-" + pkg.version + ".min.js",   method: "DELETE"}},
+      purge_major_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-" + major_version + ".js",     method: "DELETE"}},
+      purge_major_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-" + major_version + ".min.js", method: "DELETE"}},
+      purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-" + minor_version + ".js",     method: "DELETE"}},
+      purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-" + minor_version + ".min.js", method: "DELETE"} }
     },
     stylus: {
       build: {
@@ -169,8 +169,8 @@ module.exports = function(grunt) {
     },
     uglify: {
       build: {
-        src: "build/lock-next.js",
-        dest: "build/lock-next.min.js"
+        src: "build/lock.js",
+        dest: "build/lock.min.js"
       }
     }
   });
@@ -195,7 +195,7 @@ module.exports = function(grunt) {
   grunt.registerTask("dev", ["prepare_dev", "browserify:dev", "watch"]);
   grunt.registerTask("design", ["prepare_dev", "browserify:design", "watch"]);
   grunt.registerTask("heroku", ["prepare_dev", "browserify:heroku_dev", "browserify:heroku_design", "watch"]);
-  grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
-  grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
-  grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task
+  // grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
+  // grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
+  // grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task
 };

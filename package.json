@@ -1,6 +1,6 @@
 {
-  "name": "auth0-lock-next",
-  "version": "0.0.0",
+  "name": "auth0-lock",
+  "version": "10.0.0-beta.1",
   "description": "Auth0 Lock Passwordless",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/auth0/lock-next"
+    "url": "git://github.com/auth0/lock"
   },
   "main": "lib/index.js",
   "scripts": {

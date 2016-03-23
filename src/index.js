@@ -151,5 +151,5 @@ export default class Base extends EventEmitter {
 // passwordless.
 Base.version = __VERSION__;
 Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
-Auth0.clientInfo.name =  "lock-next.js";
+Auth0.clientInfo.name =  "lock.js";
 Auth0.clientInfo.version = Base.version;
