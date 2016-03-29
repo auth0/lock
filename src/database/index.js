@@ -1,4 +1,4 @@
-import Immutable, { Map } from 'immutable';
+import Immutable, { List, Map } from 'immutable';
 import * as l from '../lock/index';
 import * as client from '../lock/client/index';
 import { clearFields, setField } from '../field/index';
@@ -151,5 +151,5 @@ export function passwordStrengthPolicy(m) {
 }
 
 export function additionalSignUpFields(m) {
-  return get(m, "additionalSignUpFields", Map());
+  return get(m, "additionalSignUpFields", List());
 }
