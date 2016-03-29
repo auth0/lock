@@ -20,23 +20,29 @@ export default class AskSocialNetworkOrLogin extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
-  renderTabs(lock) {
-    return this.shouldRenderTabs(lock)
-      ? <LoginSignUpTabs
-          key="loginsignup"
-          lock={lock}
-          loginTabLabel={this.t(lock, ["loginTabLabel"], {__textOnly: true})}
-          signUpLink={signUpLink(lock)}
-          signUpTabLabel={this.t(lock, ["signUpTabLabel"], {__textOnly: true})}
-        />
-      : null;
+  renderTabs(model) {
+    return this.shouldRenderTabs(model);
   }
 
   submitHandler(lock) {
     return signIn;
   }
 
+  shouldRenderTabs(lock) {
+    return l.getEnabledConnections(lock, "database").count() > 0
+      && hasScreen(lock, "signUp");
+  }
+
   render({model}) {
+    const tabs = this.shouldRenderTabs(model)
+      && <LoginSignUpTabs
+           key="loginsignup"
+           lock={model}
+           loginTabLabel={this.t(model, ["loginTabLabel"], {__textOnly: true})}
+           signUpLink={signUpLink(model)}
+           signUpTabLabel={this.t(model, ["signUpTabLabel"], {__textOnly: true})}
+         />;
+
     const social = l.getEnabledConnections(model, "social").count() > 0
       && <SocialButtonsPane
            lock={model}
@@ -57,12 +63,7 @@ export default class AskSocialNetworkOrLogin extends Screen {
     const separator = social && db
       && <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>;
 
-    return <div>{social}{separator}{db}</div>;
-  }
-
-  shouldRenderTabs(lock) {
-    return l.getEnabledConnections(lock, "database").count() > 0
-      && hasScreen(lock, "signUp");
+    return <div>{tabs}{social}{separator}{db}</div>;
   }
 
 }

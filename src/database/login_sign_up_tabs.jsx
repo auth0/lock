@@ -15,19 +15,21 @@ export default class LoginSignUpTabs extends React.Component {
     const isLogin = getScreen(lock) === "login";
 
     return (
-      <ul className="auth0-lock-tabs">
-        <LoginSignUpTab
-          label={loginTabLabel}
-          current={isLogin}
-          clickHandler={::this.handleLoginClick}
-        />
-        <LoginSignUpTab
-          label={signUpTabLabel}
-          current={!isLogin}
-          clickHandler={::this.handleSignUpClick}
-          href={signUpLink}
-        />
-      </ul>
+      <div className="auth0-lock-tabs-container">
+        <ul className="auth0-lock-tabs">
+          <LoginSignUpTab
+            label={loginTabLabel}
+            current={isLogin}
+            clickHandler={::this.handleLoginClick}
+          />
+          <LoginSignUpTab
+            label={signUpTabLabel}
+            current={!isLogin}
+            clickHandler={::this.handleSignUpClick}
+            href={signUpLink}
+          />
+        </ul>
+      </div>
     );
   }
 

@@ -23,18 +23,19 @@ export default class SignUp extends Screen {
     return renderSignedUpConfirmation(lock);
   }
 
-  renderTabs(lock) {
-    return (
-      <LoginSignUpTabs
-        key="loginsignup"
-        lock={lock}
-        loginTabLabel={this.t(lock, ["loginTabLabel"], {__textOnly: true})}
-        signUpTabLabel={this.t(lock, ["signUpTabLabel"], {__textOnly: true})}
-      />
-    );
+  renderTabs() {
+    return true;
   }
 
   render({model}) {
+    const tabs =
+      <LoginSignUpTabs
+        key="loginsignup"
+        lock={model}
+        loginTabLabel={this.t(model, ["loginTabLabel"], {__textOnly: true})}
+        signUpTabLabel={this.t(model, ["signUpTabLabel"], {__textOnly: true})}
+      />;
+
     const social = l.getEnabledConnections(model, "social").count() > 0
       && <SocialButtonsPane lock={model} t={::this.t} signUp={true} />;
 
@@ -49,7 +50,7 @@ export default class SignUp extends Screen {
     const separator = social
       && <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>;
 
-    return <div>{social}{separator}{db}</div>;
+    return <div>{tabs}{social}{separator}{db}</div>;
   }
 
 }

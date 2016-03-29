@@ -70,7 +70,6 @@ export default class Chrome extends React.Component {
       screenName,
       showSubmitButton,
       success,
-      tabs,
       title,
       transitionName
     } = this.props;
@@ -89,7 +88,6 @@ export default class Chrome extends React.Component {
     const header = headerText && <p>{headerText}</p>;
     const footer = footerText
       && <small className="auth0-lock-terms">{footerText}</small>;
-    const tabsContainer = tabs && <div className="auth0-lock-tabs-container">{tabs}</div>;
     const submitButton = showSubmitButton
       && <SubmitButton
             color={primaryColor}
@@ -120,8 +118,7 @@ export default class Chrome extends React.Component {
             transitionName={transitionName}
             reverse={reverse}
           >
-            <div className="auth0-lock-view-content" key={(tabs && tabs.key) || screenName}>
-              {tabsContainer}
+            <div className="auth0-lock-view-content">
               <div style={{position: "relative"}}>
                 <div key={screenName} className="auth0-lock-body-content">
                 <div className="auth0-lock-content" key={screenName}>

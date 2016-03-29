@@ -138,6 +138,8 @@ export default class Container extends React.Component {
       className += " auth0-lock-with-terms";
     }
 
+    // TODO: this no longer makes sense, instead of taking a tabs
+    // prop we should take extra class names.
     if (tabs) {
       className += " auth0-lock-with-tabs";
     }
@@ -196,7 +198,7 @@ Container.propTypes = {
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
   success: React.PropTypes.string,
-  tabs: React.PropTypes.element,
+  tabs: React.PropTypes.bool,
   title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
   // escHandler

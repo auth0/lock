@@ -39,7 +39,7 @@ export default class Screen {
   }
 
   renderTabs() {
-    return null;
+    return false;
   }
 
   t(lock, keyPath, params) {

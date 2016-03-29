@@ -74,6 +74,17 @@ export default class Base extends EventEmitter {
 
         if (l.rendering(m)) {
           const screen = this.render(m);
+
+          // TODO: this is a temp hack because we need an unique name
+          // for both screens when rendering the box to avoid the
+          // transition between them and two different screen names to
+          // distinguish translations. The latter constraint may
+          // change when we revisit i18n, so wait until that is done
+          // before properly fixing this.
+          const screenName = ["login", "singUp"].indexOf(screen.name) === -1
+            ? screen.name
+            : "loginSignUp";
+
           const props = {
             avatar: avatar && m.getIn(["avatar", "transient", "url"]),
             auxiliaryPane: screen.renderAuxiliaryPane(m),
@@ -91,7 +102,7 @@ export default class Base extends EventEmitter {
             logo: l.ui.logo(m),
             model: m,
             primaryColor: l.ui.primaryColor(m),
-            screenName: screen.name,
+            screenName: screenName,
             success: l.globalSuccess(m),
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
