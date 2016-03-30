@@ -5,7 +5,6 @@
 <style>
 body {
   background-color: #1f1f24;
-  color: #727578;
 }
 
 .container {
@@ -23,6 +22,12 @@ body {
 .info h2 {
   font-size: 22px;
   font-weight: normal;
+  color: #727578;
+}
+
+.info p {
+  color: #525558;
+  font-size: 13px;
 }
 
 .lock-container {
@@ -47,8 +52,16 @@ body {
 <div class="container">
   <div class="info">
     <h2>classic</h2>
+    <p>Use an @auth.com email to enable SSO.</p>
   </div>
   <div class="lock-container" id="classic-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>SSO Only</h2>
+  </div>
+  <div class="lock-container" id="sso-only-container"></div>
 </div>
 
 <div class="container">
@@ -122,9 +135,15 @@ body {
 
  new Auth0Lock(cid, domain, {
    authentication: { redirect: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
+   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com"],
    container: "classic-container",
    usernameStyle: "username"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["auth0.com"],
+   container: "sso-only-container"
  }).show();
 
  new Auth0Lock(cid, domain, {

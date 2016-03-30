@@ -4,6 +4,7 @@ import SignUp from './classic/sign_up_screen';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
 import { getScreen, initDatabase } from './database/index';
+import { initEnterprise } from './connection/enterprise';
 import { initSocial } from './social/index';
 import { setEmail } from './field/email';
 import { setUsername } from './field/username';
@@ -24,6 +25,7 @@ export default class Auth0Lock extends Base {
   didInitialize(model, options) {
     model = initSocial(model, options);
     model = initDatabase(model, options);
+    model = initEnterprise(model, options);
 
     const { email, username } = options.prefill || {};
     if (typeof email === "string") model = setEmail(model, email);
@@ -35,10 +37,11 @@ export default class Auth0Lock extends Base {
   didReceiveClientSettings(m) {
     const anyDBConnection = l.getEnabledConnections(m, "database").count() > 0;
     const anySocialConnection = l.getEnabledConnections(m, "social").count() > 0;
+    const anyEnterpriseConnection = l.getEnabledConnections(m, "enterprise").count() > 0;
 
-    if (!anyDBConnection && !anySocialConnection) {
+    if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
       // TODO: improve message
-      throw new Error("At least one database or social connection needs to be available.");
+      throw new Error("At least one database, enterprise or social connection needs to be available.");
     }
   }
 
@@ -76,6 +79,7 @@ const dict = {
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     smallSocialButtonsHeader: "Login with",
+    ssoEnabled: "Single Sign-on enabled",
     usernameInputPlaceholder: "your username"
   },
   signUp: {

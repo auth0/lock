@@ -104,6 +104,22 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
       {
         connections: [
           {
+            name: "auth0.com",
+            domain: "auth0.com",
+            domain_aliases: [
+              "auth0.com"
+            ],
+            scope: [
+              "email",
+              "profile"
+            ]
+          },
+        ],
+        name: "google-apps",
+      },
+      {
+        connections: [
+          {
             name: "facebook"
           }
         ],

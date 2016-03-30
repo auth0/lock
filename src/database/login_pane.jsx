@@ -19,6 +19,7 @@ export default class LoginPane extends React.Component {
       forgotPasswordLabel,
       lock,
       passwordInputPlaceholder,
+      showPassword,
       usernameInputPlaceholder
     } = this.props;
 
@@ -33,7 +34,11 @@ export default class LoginPane extends React.Component {
           placeholder={emailInputPlaceholder}
         />;
 
-    const dontRememberPassword = hasScreen(lock, "forgotPassword")
+    const passwordPane = showPassword
+      ? <PasswordPane lock={lock} placeholder={passwordInputPlaceholder} />
+      : null;
+
+    const dontRememberPassword = showPassword && hasScreen(lock, "forgotPassword")
       ? <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
@@ -45,13 +50,7 @@ export default class LoginPane extends React.Component {
         </p>
       : null;
 
-    return (
-      <div>
-        {fieldPane}
-        <PasswordPane lock={lock} placeholder={passwordInputPlaceholder} />
-        {dontRememberPassword}
-      </div>
-    );
+    return <div>{fieldPane}{passwordPane}{dontRememberPassword}</div>;
   }
 
 }
@@ -61,5 +60,6 @@ LoginPane.propTypes = {
   forgotPasswordLabel: React.PropTypes.string.isRequired,
   lock: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
+  showPassword: React.PropTypes.bool.isRequired,
   usernameInputPlaceholder: React.PropTypes.string.isRequired
 };

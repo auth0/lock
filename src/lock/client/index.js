@@ -28,7 +28,9 @@ function strategyNameToConnectionType(str) {
   } else if (SOCIAL_STRATEGIES[str]) {
     return "social";
   } else {
-    return "unknown";
+    // TODO: replace this for a proper check for enterprise
+    // connections, and return "unknown" if it can't be found.
+    return "enterprise";
   }
 }
 
