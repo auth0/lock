@@ -4,11 +4,12 @@ import SignUp from './classic/sign_up_screen';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
 import { getScreen, initDatabase } from './database/index';
-import { initEnterprise } from './connection/enterprise';
+import { initEnterprise, isInCorpNetwork } from './connection/enterprise';
 import { initSocial } from './social/index';
 import { setEmail } from './field/email';
 import { setUsername } from './field/username';
 import * as l from './lock/index';
+import KerberosScreen from './connection/enterprise/kerberos_screen';
 
 export default class Auth0Lock extends Base {
 
@@ -49,6 +50,10 @@ export default class Auth0Lock extends Base {
     const ssoScreen = renderSSOScreens(m);
     if (ssoScreen) return ssoScreen;
 
+    if (isInCorpNetwork(m) && !m.getIn(["sso", "skipped"], false)) {
+      return new KerberosScreen();
+    }
+
     const Screen = Auth0Lock.SCREENS[getScreen(m)];
     if (Screen) return new Screen();
 
@@ -64,6 +69,11 @@ const dict = {
     headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
     usernameInputPlaceholder: "your username"
   },
+  kerberos: {
+    headerText: "You are connected from your corporate network&hellip;",
+    skipLastLoginLabel: "Not your account?"
+  },
+
   lastLogin: {
     headerText: "Last time you logged in with",
     skipLastLoginLabel: "Not your account?"

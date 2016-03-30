@@ -42,10 +42,8 @@ WebAPI.prototype.resetPassword = function(lockID, options, cb) {
 };
 
 
-WebAPI.prototype.getSSOData = function(lockID, ...args) {
-  const cb = args[args.length - 1];
-  // TODO: consider SSO data for other connections (for now, social is
-  // the only one missing).
+WebAPI.prototype.getSSOData = function(lockID, withAD, cb) {
+  // TODO: consider SSO data for other connections
   const ssoData = {
     lastUsedConnection: {
       strategy: "auth0",
@@ -59,6 +57,10 @@ WebAPI.prototype.getSSOData = function(lockID, ...args) {
     ],
     sso: true
   };
+
+  if (withAD) {
+    ssoData.connection = {};
+  }
 
   setTimeout(() => cb(null, ssoData), 180);
 }
@@ -100,6 +102,18 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
           }
         ],
         name: "google-oauth2"
+      },
+      {
+        connections: [
+          {
+            name: "rolodato",
+            domain: "rolodato.com",
+            domain_aliases: [
+              "rolodato.com"
+            ]
+          }
+        ],
+        name: "ad"
       },
       {
         connections: [

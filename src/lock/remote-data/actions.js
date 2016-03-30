@@ -4,6 +4,7 @@ import { pickConnections } from '../client/index';
 import { fetchSSOData } from '../sso/data';
 import webAPI from '../web_api';
 import * as l from '../index';
+import { isADEnabled } from '../../connection/enterprise';
 
 export function syncRemoteData(id) {
   syncClientSettings(id, (error, client) => syncSSOData(id));
@@ -50,7 +51,7 @@ function syncSSOData(lockID) {
     return m.setIn(["sso", "syncStatus"], "loading");
   });
 
-  fetchSSOData(lockID, (error, data) => {
+  fetchSSOData(lockID, isADEnabled(lock), (error, data) => {
     swap(updateEntity, "lock", lockID, m => {
       return m.set("sso", data.set("syncStatus", "ok"));
     });

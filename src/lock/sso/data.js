@@ -1,11 +1,12 @@
 import Immutable from 'immutable';
 import webAPI from '../web_api';
 
-export function fetchSSOData(id, cb) {
+export function fetchSSOData(id, withAD, cb) {
+  // TODO: cache should consider withAD not just id
   if (cache[id]) return cb(null, cache[id]);
   if (registerCallback(id, cb) > 1) return;
 
-  webAPI.getSSOData(id, false, (error, data) => {
+  webAPI.getSSOData(id, withAD, (error, data) => {
     data = Immutable.fromJS(data);
     cache[id] = data;
     execCallbacks(id, error, data)

@@ -225,10 +225,16 @@ export function getPickedConnections(m) {
   return get(m, "pickedConnections");
 }
 
-export function getEnabledConnections(m, type, strategy) {
+export function getEnabledConnections(m, type, ...strategies) {
   const xs = get(m, ["enabledConnections", type], List());
-  return strategy ? xs.filter(x => x.get("strategy") === strategy) : xs;
+  return strategies.length > 0
+    ? xs.filter(x => ~strategies.indexOf(x.get("strategy")))
+    : xs;
 }
+
+// export function hasEnabledConnections(m, type, ...strategies) {
+//   return getEnabledConnections(m, type, ...strategies).count > 0;
+// }
 
 export function isConnectionEnabled(m, name) {
   // TODO: is the name enough? shouldn't we check for strategy and/or type?

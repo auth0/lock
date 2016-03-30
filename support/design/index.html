@@ -66,6 +66,13 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>Kerberos</h2>
+  </div>
+  <div class="lock-container" id="kerberos-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>database</h2>
   </div>
   <div class="lock-container" id="database-container"></div>
@@ -138,6 +145,12 @@ body {
    connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com"],
    container: "classic-container",
    usernameStyle: "username"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   authentication: { redirect: false },
+   connections: ["rolodato", "facebook"],
+   container: "kerberos-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
