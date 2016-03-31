@@ -29,7 +29,7 @@ From [npm](https://npmjs.org)
 npm install auth0-lock@10.0.0-beta.1
 ```
 
-After installing the `auth0-lock-passwordless` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
+After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
 If you are targeting mobile audiences, it's recommended that you add:
 
@@ -53,7 +53,7 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 ```js
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
-var lock = new Auth0LockPasswordless(clientId, domain, {},
+var lock = new Auth0Lock(clientId, domain, {},
   function(error, result) {
     // Will always be executed. Execution will happen on a later frame, so the
     // `lock` variable and everything will be available on scope.
@@ -80,13 +80,12 @@ The appearance of the widget and the mechanics of authentication can be customiz
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
-- **avatar {Object | null}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](http://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [bellow](#avatar-provider).
+- **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](http://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **languageDictionary {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Language Dictionary Specification](#language-dictionary-specification) for the details.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
-- **popup {Boolean}**: Determines whether or not a popup is shown when authenticating with a social provider. Defaults to `false` and passing `true` is discouraged. See [below](#popup-mode) for more information.
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
-- **rememberLastLogin {Boolean}**: Determines whether or not the email or the phone number will be filled automatically with the one you used the last time. Defaults to `true`.
+- **rememberLastLogin {Boolean}**: Determines whether or not to show a screen that allows you to quickly log in with the account you used the last time. Defaults to `true`.
 - **connections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
 
 #### Theming options
@@ -135,9 +134,9 @@ var options = {
 
 #### Database options
 
-- **additionalSignUpFields {Array}**: Allows to provide extra input fields during sign up. See [bellow](#additional-sign-up-field) more for details. Defaults to `[]`.
+- **additionalSignUpFields {Array}**: Allows to provide extra input fields during sign up. See [below](#additional-sign-up-field) more for details. Defaults to `[]`.
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _reset password screen_ unreachable. Defaults to `true`.
-- **allowSignUpAction {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`.
+- **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`.
 - **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"signUp"`, `"forgotPassword"`, and defaults to `"login"`.
 - **loginAfterSignUp {String}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 - **forgotPasswordLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
