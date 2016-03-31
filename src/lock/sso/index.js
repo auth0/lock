@@ -5,11 +5,13 @@ import { ui, isConnectionEnabled } from '../index';
 
 export function renderSSOScreens(m) {
   // TODO: loading pin check belongs here?
-  if (m.getIn(["sso", "syncStatus"]) != "ok" || m.get("isLoadingPanePinned")) {
+  if (m.getIn(["sso", "syncStatus"], "loading") === "loading" || m.get("isLoadingPanePinned")) {
     return new LoadingScreen();
   }
 
-  if (!ui.rememberLastLogin(m)) return null;
+  if (m.getIn(["sso", "syncStatus"]) == "error" || !ui.rememberLastLogin(m)) {
+    return null;
+  }
 
   const { name, strategy } = lastUsedConnection(m);
   const skipped = m.getIn(["sso", "skipped"], false);

@@ -146,7 +146,8 @@ export const auth = {
   jsonp: lock => getAuthAttribute(lock, "jsonp"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
-  responseType: lock => getAuthAttribute(lock, "responseType")
+  responseType: lock => getAuthAttribute(lock, "responseType"),
+  sso: lock => getAuthAttribute(lock, "sso")
 };
 
 

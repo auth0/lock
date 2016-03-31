@@ -47,6 +47,14 @@ function syncSSOData(lockID) {
   const lock = read(getEntity, "lock", lockID);
   if (lock.getIn(["sso", "syncStatus"])) return;
 
+  if (!l.auth.sso(lock)) {
+    swap(updateEntity, "lock", lockID, m => {
+      return m.setIn(["sso", "syncStatus"], "error");
+    });
+
+    return;
+  }
+
   swap(updateEntity, "lock", lockID, m => {
     return m.setIn(["sso", "syncStatus"], "loading");
   });
