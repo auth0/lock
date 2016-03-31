@@ -52,9 +52,21 @@ body {
 <div class="container">
   <div class="info">
     <h2>classic</h2>
-    <p>Use an @auth.com email to enable SSO.</p>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
   </div>
   <div class="lock-container" id="classic-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>HRD (single connection)</h2>
+  </div>
+  <div class="lock-container" id="hrd-container"></div>
 </div>
 
 <div class="container">
@@ -141,26 +153,31 @@ body {
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com"],
-   container: "classic-container",
-   usernameStyle: "username"
+   auth: { redirect: false, sso: false },
+   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
+   container: "classic-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false, sso: false },
+   connections: ["rolodato"],
+   container: "hrd-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   auth: { redirect: false },
    connections: ["rolodato", "facebook"],
    container: "kerberos-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    connections: ["auth0.com"],
    container: "sso-only-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    connections: ["Username-Password-Authentication"],
    container: "database-container",
    dict: {
@@ -172,13 +189,13 @@ body {
  }).show();
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    connections: ["Username-Password-Authentication"],
    container: "last-login-database-container"
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false, send: "code" },
+   auth: { redirect: false, send: "code" },
    closable: true,
    connections: ["email"],
    container: "emailcode-container",
@@ -191,7 +208,7 @@ body {
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    container: "magiclink-container",
    connections: ["email"],
    dict: {
@@ -201,14 +218,14 @@ body {
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    connections: ["sms"],
    container: "sms-container",
    rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    connections: ["facebook", "twitter", "github", "google-oauth2"],
    container: "social-container",
    rememberLastLogin: false,
@@ -216,21 +233,21 @@ body {
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false, send: "code" },
+   auth: { redirect: false, send: "code" },
    connections: ["email", "facebook", "twitter", "github"],
    container: "socialOrEmailcode-container",
    rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    connections: ["email", "facebook", "twitter", "github"],
    container: "socialOrMagiclink-container",
    rememberLastLogin: false
  }).show();
 
  new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
+   auth: { redirect: false },
    connections: ["sms", "facebook", "twitter", "github"],
    container: "socialOrSms-container",
    rememberLastLogin: false

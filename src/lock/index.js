@@ -226,8 +226,10 @@ export function getPickedConnections(m) {
   return get(m, "pickedConnections");
 }
 
-export function getEnabledConnections(m, type, ...strategies) {
-  const xs = get(m, ["enabledConnections", type], List());
+export function getEnabledConnections(m, type = undefined, ...strategies) {
+  const path = ["enabledConnections"];
+  if (typeof type === "string") path.push(type);
+  const xs = get(m, path, List());
   return strategies.length > 0
     ? xs.filter(x => ~strategies.indexOf(x.get("strategy")))
     : xs;

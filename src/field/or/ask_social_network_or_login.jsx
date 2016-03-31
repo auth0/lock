@@ -11,7 +11,15 @@ import * as l from '../../lock/index';
 import { icon } from '../../ui/input/password_input';
 import * as c from '../../field/index';
 import { emailDomain } from '../../field/email';
-import { signIn as enterpriseSignIn } from '../../connection/enterprise/actions';
+import {
+  signIn as enterpriseSignIn,
+  startHRD
+} from '../../connection/enterprise/actions';
+import {
+  isADEnabled,
+  isHRDDomain,
+  isSSODomain
+} from '../../connection/enterprise';
 
 
 const SingleSignOnNotice = ({children}) => (
@@ -37,6 +45,10 @@ export default class AskSocialNetworkOrLogin extends Screen {
   }
 
   submitHandler(model) {
+    if (isHRDDomain(model, c.email(model))) {
+      return startHRD;
+    }
+
     return this.isSSOEnabled(model) || l.getEnabledConnections(model, "database").count() === 0
       ? enterpriseSignIn
       : databaseSignIn;
@@ -49,11 +61,18 @@ export default class AskSocialNetworkOrLogin extends Screen {
   }
 
   isSSOEnabled(model) {
-    const email = authWithUsername(model) ? c.username(model) : c.email(model);
-    const domain = emailDomain(email);
-    return l.getEnabledConnections(model, "enterprise").some(m => (
-      m.get("domain_aliases").push("domain").contains(domain)
-    ));
+    return isSSODomain(
+      model,
+      this.usernameStyle(model) === "username"
+        ? c.username(model)
+        : c.email(model)
+    );
+  }
+
+  usernameStyle(model) {
+    return authWithUsername(model) && !isADEnabled(model)
+      ? "username"
+      : "email";
   }
 
   render({model}) {
@@ -86,6 +105,7 @@ export default class AskSocialNetworkOrLogin extends Screen {
            passwordInputPlaceholder={this.t(model, ["passwordInputPlaceholder"], {__textOnly: true})}
            showPassword={!sso && l.getEnabledConnections(model, "database").count() > 0}
            usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}
+           usernameStyle={this.usernameStyle(model)}
          />;
 
     const ssoNotice = sso

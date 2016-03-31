@@ -20,10 +20,11 @@ export default class LoginPane extends React.Component {
       lock,
       passwordInputPlaceholder,
       showPassword,
-      usernameInputPlaceholder
+      usernameInputPlaceholder,
+      usernameStyle
     } = this.props;
 
-    const fieldPane = authWithUsername(lock)
+    const fieldPane = usernameStyle === "username"
       ? <UsernamePane
           autofocus={l.ui.autofocus(lock)}
           lock={lock}
@@ -61,5 +62,6 @@ LoginPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
   showPassword: React.PropTypes.bool.isRequired,
-  usernameInputPlaceholder: React.PropTypes.string.isRequired
+  usernameInputPlaceholder: React.PropTypes.string.isRequired,
+  usernameStyle: React.PropTypes.string.isRequired
 };

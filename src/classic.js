@@ -4,12 +4,18 @@ import SignUp from './classic/sign_up_screen';
 import ResetPassword from './database/reset_password';
 import { renderSSOScreens } from './lock/sso/index';
 import { getScreen, initDatabase } from './database/index';
-import { initEnterprise, isInCorpNetwork } from './connection/enterprise';
+import {
+  initEnterprise,
+  isHRDActive,
+  isInCorpNetwork,
+  isSingleHRDConnection
+} from './connection/enterprise';
 import { initSocial } from './social/index';
 import { setEmail } from './field/email';
 import { setUsername } from './field/username';
 import * as l from './lock/index';
 import KerberosScreen from './connection/enterprise/kerberos_screen';
+import HRDScreen from './connection/enterprise/hrd_screen';
 
 export default class Auth0Lock extends Base {
 
@@ -54,6 +60,10 @@ export default class Auth0Lock extends Base {
       return new KerberosScreen();
     }
 
+    if (isHRDActive(m) || isSingleHRDConnection(m)) {
+      return new HRDScreen();
+    }
+
     const Screen = Auth0Lock.SCREENS[getScreen(m)];
     if (Screen) return new Screen();
 
@@ -67,6 +77,11 @@ const dict = {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",
     headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
+    usernameInputPlaceholder: "your username"
+  },
+  hrd: {
+    headerText: "Please enter your coorporate credentials at {domain}.",
+    passwordInputPlaceholder: "your password",
     usernameInputPlaceholder: "your username"
   },
   kerberos: {
