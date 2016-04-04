@@ -16,6 +16,7 @@ import {
   startHRD
 } from '../../connection/enterprise/actions';
 import {
+  findADConnectionWithoutDomain,
   isADEnabled,
   isHRDDomain,
   isSSODomain
@@ -95,6 +96,13 @@ export default class AskSocialNetworkOrLogin extends Screen {
            t={::this.t}
          />;
 
+    const showPassword = !sso
+      && (l.getEnabledConnections(model, "database").count() > 0
+         || !findADConnectionWithoutDomain(model));
+
+    const showForgotPasswordLink = showPassword
+      && l.getEnabledConnections(model, "database").count() > 0;
+
     const login = (sso
       || l.getEnabledConnections(model, "database").count() > 0
       || l.getEnabledConnections(model, "enterprise").count() > 0)
@@ -103,7 +111,8 @@ export default class AskSocialNetworkOrLogin extends Screen {
            forgotPasswordLabel={this.t(model, ["forgotPasswordLabel"], {__textOnly: true})}
            lock={model}
            passwordInputPlaceholder={this.t(model, ["passwordInputPlaceholder"], {__textOnly: true})}
-           showPassword={!sso && l.getEnabledConnections(model, "database").count() > 0}
+           showForgotPasswordLink={showForgotPasswordLink}
+           showPassword={showPassword}
            usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}
            usernameStyle={this.usernameStyle(model)}
          />;

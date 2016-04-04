@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import * as l from '../lock/index';
 import { dataFns } from '../utils/data_utils';
 import { emailDomain } from '../field/email';
@@ -11,14 +12,25 @@ export function initEnterprise(m, opts) {
   return m;
 }
 
-export function isSSODomain(m, email, strategies = []) {
-  // NOTE: it could just read the email from m
-  const domain = emailDomain(email);
-  return l.getEnabledConnections(m, "enterprise", ...strategies).some(x => (
+export function findSSOConnection(m, email, strategies = []) {
+  // TODO: could it just read the `email` from `m`?
+  const target = emailDomain(email);
+  if (!domain) return false;
+  return l.getEnabledConnections(m, "enterprise", ...strategies).find(x => {
     // TODO: `domain` seems to be always in the `domain_aliases` list,
     // so the `push` here might be unnecessary
-    x.get("domain_aliases").push(x.get("domain")).contains(domain)
-  ));
+    const domain = x.get("domain");
+    let domains = x.get("domain_aliases", new List());
+    if (domain) {
+      domains = domains.push(domain);
+    }
+    return domains.contains(target);
+  });
+
+}
+
+export function isSSODomain(m, email, strategies = []) {
+  return !!findSSOConnection(m, email, strategies);
 }
 
 export function ssoDomain(m) {
@@ -31,6 +43,12 @@ export function ssoDomain(m) {
 
 export function isADEnabled(m) {
   return l.getEnabledConnections(m, "enterprise", "ad", "auth0-adldap").count() > 0;
+}
+
+export function findADConnectionWithoutDomain(m) {
+  l.getEnabledConnections(m, "enterprise", "ad", "auth0-adldap").find(x => (
+    !x.get("domain") && x.get("domain_aliases", new List()).isEmpty()
+  ));
 }
 
 // kerberos

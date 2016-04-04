@@ -17,3 +17,8 @@ export function emailDomain(str) {
   const result = regExp.exec(trim(str.toLowerCase()));
   return result ? result.slice(-2)[0] : "";
 }
+
+export function emailLocalPart(str) {
+  const domain = emailDomain(str);
+  return domain ? str.slice(0, -1 - domain.length) : str;
+}

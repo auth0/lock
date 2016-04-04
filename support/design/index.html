@@ -71,6 +71,23 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>HRD + AD (no domain)</h2>
+    <p>
+      Use an @rolodato.com email to enable HRD.
+    </p>
+  </div>
+  <div class="lock-container" id="hrd-and-ad-no-domain-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>AD (no domain) + db (*)</h2>
+  </div>
+  <div class="lock-container" id="ad-no-domain-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>SSO Only</h2>
   </div>
   <div class="lock-container" id="sso-only-container"></div>
@@ -162,6 +179,18 @@ body {
    auth: { redirect: false, sso: false },
    connections: ["rolodato"],
    container: "hrd-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   auth: { redirect: false, sso: false },
+   connections: ["ad-no-domain", "Username-Password-Authentication"],
+   container: "ad-no-domain-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   auth: { redirect: false, sso: false },
+   connections: ["ad-no-domain", "rolodato"],
+   container: "hrd-and-ad-no-domain-container"
  }).show();
 
  new Auth0Lock(cid, domain, {

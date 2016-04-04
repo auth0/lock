@@ -111,7 +111,11 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
             domain_aliases: [
               "rolodato.com"
             ]
-          }
+          },
+          {
+            name: "ad-no-domain",
+            domain: null
+          },
         ],
         name: "ad"
       },

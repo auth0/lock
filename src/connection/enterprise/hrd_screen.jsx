@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../../lock/screen';
 import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 import HRDPane from './hrd_pane';
-import { cancelHRD, hrdSignIn } from './actions';
+import { cancelHRD, signIn } from './actions';
 import { isSingleHRDConnection, ssoDomain }  from '../enterprise';
 
 export default class HRDScreen extends Screen {
@@ -16,7 +16,7 @@ export default class HRDScreen extends Screen {
   }
 
   submitHandler(model) {
-    return hrdSignIn;
+    return signIn;
   }
 
   renderAuxiliaryPane(model) {

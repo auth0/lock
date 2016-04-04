@@ -227,9 +227,11 @@ export function getPickedConnections(m) {
 }
 
 export function getEnabledConnections(m, type = undefined, ...strategies) {
-  const path = ["enabledConnections"];
-  if (typeof type === "string") path.push(type);
-  const xs = get(m, path, List());
+  if (arguments.length === 1) {
+    return get(m, "enabledConnections", Map()).valueSeq().flatten(true);
+  }
+
+  const xs = get(m, ["enabledConnections", type], List());
   return strategies.length > 0
     ? xs.filter(x => ~strategies.indexOf(x.get("strategy")))
     : xs;
@@ -252,4 +254,25 @@ export function runHook(m, str, ...args) {
 
 export function emitEvent(m, str, ...args) {
   get(m, "emitEventFn")(str, ...args);
+}
+
+export function loginErrorMessage(m, error) {
+  // NOTE: previous version of lock checked for status codes and, at
+  // some point, if the status code was 401 it defaults to an
+  // "invalid_user_password" error (actually the
+  // "wrongEmailPasswordErrorText" dict entry) instead of checking
+  // explicitly. We should figure out if there was a reason for that.
+
+  if (error.status === 0) {
+    return ui.t(m, ["error", "login", "lock.network"], {__textOnly: true});
+  }
+
+  // Custom rule error (except blocked_user)
+  if (error.code === "rule_error") {
+    return error.description
+      || ui.t(m, ["error", "login", "lock.fallback"], {__textOnly: true});
+  }
+
+  return ui.t(m, ["error", "login", error.code], {__textOnly: true})
+    || ui.t(m, ["error", "login", "lock.fallback"], {__textOnly: true});
 }
