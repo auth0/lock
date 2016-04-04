@@ -89,6 +89,7 @@ export default class Base extends EventEmitter {
             avatar: avatar && m.getIn(["avatar", "transient", "url"]),
             auxiliaryPane: screen.renderAuxiliaryPane(m),
             backHandler: partialApplyId(screen, "backHandler"),
+            badgeLink: "https://auth0.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget",
             closeHandler: l.ui.closable(m)
               ? partialApplyId(screen, "closeHandler")
               : undefined,
