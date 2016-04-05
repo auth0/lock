@@ -45,6 +45,10 @@ export default class Login extends Screen {
   }
 
   submitHandler(model) {
+    if (l.getEnabledConnections(model, "social").count() === l.getEnabledConnections(model).count()) {
+      return null;
+    }
+
     if (isHRDDomain(model, c.email(model))) {
       return startHRD;
     }
