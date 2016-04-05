@@ -93,13 +93,13 @@ export default class Base extends EventEmitter {
             closeHandler: l.ui.closable(m)
               ? (...args) => closeLock(l.id(m), ...args)
               : undefined,
+            contentProps: {model: m},
             contentRender: ::screen.render,
             error: l.globalError(m),
             isMobile: l.ui.mobile(m),
             isModal: l.ui.appendContainer(m),
             isSubmitting: l.submitting(m),
             logo: l.ui.logo(m),
-            model: m,
             primaryColor: l.ui.primaryColor(m),
             screenName: screenName,
             success: l.globalSuccess(m),

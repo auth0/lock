@@ -88,6 +88,7 @@ export default class Container extends React.Component {
       backHandler,
       badgeLink,
       closeHandler,
+      contentProps,
       contentRender,
       disallowClose,
       error,
@@ -95,7 +96,6 @@ export default class Container extends React.Component {
       isModal,
       isSubmitting,
       logo,
-      model,
       primaryColor,
       screenName,
       submitHandler,
@@ -156,12 +156,12 @@ export default class Container extends React.Component {
                 avatar={avatar}
                 auxiliaryPane={auxiliaryPane}
                 backHandler={backHandler}
+                contentProps={contentProps}
                 contentRender={contentRender}
                 error={error}
                 isSubmitting={isSubmitting}
                 logo={logo}
                 screenName={screenName}
-                model={model}
                 primaryColor={primaryColor}
                 showSubmitButton={!!submitHandler}
                 success={success}
@@ -186,13 +186,13 @@ Container.propTypes = {
   backHandler: React.PropTypes.func,
   badgeLink: React.PropTypes.string.isRequired,
   closeHandler: React.PropTypes.func,
+  contentProps: React.PropTypes.object.isRequired,
   contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
-  model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
   success: React.PropTypes.string,
@@ -211,6 +211,7 @@ const isFileProtocol = global.window
 
 export const defaultProps = Container.defaultProps = {
   badgeLink: "https://auth0.com/",
+  contentProps: {},
   isMobile: false,
   isSubmitting: false,
   logo: `${isFileProtocol ? "https:" : ""}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,

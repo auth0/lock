@@ -59,11 +59,11 @@ export default class Chrome extends React.Component {
       avatar,
       auxiliaryPane,
       backHandler,
+      contentProps,
       contentRender,
       error,
       isSubmitting,
       logo,
-      model,
       primaryColor,
       screenName,
       showSubmitButton,
@@ -119,7 +119,7 @@ export default class Chrome extends React.Component {
                 <div className="auth0-lock-body-content">
                 <div className="auth0-lock-content" key={screenName}>
                   <div className="auth0-lock-form">
-                    {contentRender({focusSubmit: ::this.focusSubmit, model})}
+                    {contentRender({focusSubmit: ::this.focusSubmit, ...contentProps})}
                   </div>
                 </div>
                 {terms && <small className="auth0-lock-terms">{terms}</small>}
@@ -160,11 +160,11 @@ Chrome.propTypes = {
   avatar: React.PropTypes.string,
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
+  contentProps: React.PropTypes.object.isRequired,
   contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
-  model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   success: React.PropTypes.string,
