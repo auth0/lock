@@ -1,11 +1,13 @@
 import React from 'react';
-import SocialButton from './social_button';
+import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../lock/index';
+import { signIn } from '../../social/actions';
 import {
   displayName,
   socialConnections,
   useBigButtons
 } from '../../social/index';
+
 export default class SocialButtonsPane extends React.Component {
 
   render() {
@@ -18,9 +20,13 @@ export default class SocialButtonsPane extends React.Component {
          </p>;
 
     const buttons = socialConnections(lock).map(x => (
-      <SocialButton key={x.name} connection={x} lock={lock}>
-        {t(lock, [signUp ? "signUpWith" : "loginWith"], {idp: displayName(x), __textOnly: true})}
-      </SocialButton>
+      <AuthButton
+        isBig={useBigButtons(lock)}
+        key={x.name}
+        onClick={() => signIn(l.id(lock), x)}
+        strategy={x.strategy}
+        text={t(lock, [signUp ? "signUpWith" : "loginWith"], {idp: displayName(x), __textOnly: true})}
+      />
     ));
 
     const loading = showLoading
