@@ -85,6 +85,8 @@ export default class Base extends EventEmitter {
             ? "loginSignUp"
             : screen.name;
 
+          const t = (keyPath, params) => l.ui.t(m, [screen.name].concat(keyPath), params);
+
           const props = {
             avatar: avatar && m.getIn(["avatar", "transient", "url"]),
             auxiliaryPane: screen.renderAuxiliaryPane(m),
@@ -93,7 +95,7 @@ export default class Base extends EventEmitter {
             closeHandler: l.ui.closable(m)
               ? (...args) => closeLock(l.id(m), ...args)
               : undefined,
-            contentProps: {model: m},
+            contentProps: {model: m, t},
             contentRender: ::screen.render,
             error: l.globalError(m),
             isMobile: l.ui.mobile(m),
@@ -105,7 +107,7 @@ export default class Base extends EventEmitter {
             success: l.globalSuccess(m),
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
-            terms: l.ui.t(m, [screenName, "footerText"]),
+            terms: t("footerText"),
             title: title,
             transitionName: screenName === "loading" ? "fade" : "horizontal-fade"
           };
