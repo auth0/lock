@@ -1,11 +1,13 @@
 import React from 'react';
 
 const AuthButton = (props) => {
-  const { disabled, isBig, onClick, strategy, text } = props;
+  const { disabled, isBig, label, onClick, strategy } = props;
 
   let className = "auth0-lock-social-button";
   if (isBig) className += " auth0-lock-social-big-button";
 
+  // TODO: passing the strategy to the click handler might no be
+  // necessary.
   return (
     <button
       className={className}
@@ -16,7 +18,7 @@ const AuthButton = (props) => {
     >
       <div className="auth0-lock-social-button-icon" />
       <div className="auth0-lock-social-button-text">
-        {text}
+        {label}
       </div>
     </button>
   );
@@ -25,9 +27,9 @@ const AuthButton = (props) => {
 AuthButton.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   isBig: React.PropTypes.bool.isRequired,
+  label: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired,
-  strategy: React.PropTypes.string.isRequired,
-  text: React.PropTypes.string.isRequired
+  strategy: React.PropTypes.string.isRequired
 };
 
 AuthButton.defaultProps = {
