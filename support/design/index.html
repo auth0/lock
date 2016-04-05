@@ -172,7 +172,10 @@ body {
  new Auth0Lock(cid, domain, {
    auth: { redirect: false, sso: false },
    connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
-   container: "classic-container"
+   container: "classic-container",
+   languageDictionary: {
+     signUp: { footerText: terms }
+   }
  }).show();
 
  new Auth0Lock(cid, domain, {

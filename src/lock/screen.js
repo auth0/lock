@@ -26,10 +26,6 @@ export default class Screen {
     return null;
   }
 
-  renderFooterText(lock) {
-    return this.t(lock, ["footerText"]);
-  }
-
   transitionName() {
     return "horizontal-fade";
   }
