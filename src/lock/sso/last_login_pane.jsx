@@ -1,12 +1,21 @@
 import React from 'react';
-import LastLoginButton from './last_login_button';
-import { skipSSOLogin } from './actions';
+import QuickAuthPane from '../../ui/pane/quick_auth_pane';
+import { signIn, skipSSOLogin } from './actions';
+import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 
 export default class LastLoginPane extends React.Component {
 
-  handleClick(e) {
+  handleButtonClick(e) {
     e.preventDefault();
+    const { lock } = this.props;
+    signIn(l.id(lock), lastUsedConnection(lock));
+  }
+
+  handleAlternativeClick(e) {
+    e.preventDefault();
+    // TODO: instead of calling skipSSOLogin we should have something
+    // generic for this quick logins.
     skipSSOLogin(l.id(this.props.lock));
   }
 
@@ -14,25 +23,14 @@ export default class LastLoginPane extends React.Component {
     const { header, lock, skipLastLoginLabel } = this.props;
 
     return (
-      <div className="auth0-lock-last-login-pane">
-        {header}
-
-        <LastLoginButton lock={lock} />
-
-        <p className="auth0-lock-alternative">
-          <a
-            className="auth0-lock-alternative-link"
-            href="#"
-            onClick={::this.handleClick}
-          >
-            {skipLastLoginLabel}
-          </a>
-        </p>
-
-        <div className="auth0-loading-container">
-          <div className="auth0-loading" />
-        </div>
-      </div>
+      <QuickAuthPane
+        alternativeLabel={skipLastLoginLabel}
+        alternativeClickHandler={::this.handleAlternativeClick}
+        buttonLabel={lastUsedUsername(lock)}
+        buttonClickHandler={::this.handleButtonClick}
+        header={header}
+        strategy={lastUsedConnection(lock).strategy}
+      />
     );
   }
 
