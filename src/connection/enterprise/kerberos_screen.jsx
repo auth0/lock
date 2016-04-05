@@ -15,8 +15,8 @@ export default class KerberosScreen extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
-  render({model}) {
-    const headerText = this.t(model, ["headerText"]) || null;
+  render({model, t}) {
+    const headerText = t("headerText") || null;
     const header = headerText && <p>{headerText}</p>;
 
     // TODO: implement click handler.
@@ -24,7 +24,7 @@ export default class KerberosScreen extends Screen {
 
     return (
       <QuickAuthPane
-        alternativeLabel={this.t(model, ["skipLastLoginLabel"], {__textOnly: true})}
+        alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
         alternativeClickHandler={() => skipQuickAuth(l.id(model))}
         buttonLabel="Windows Authentication"
         buttonClickHandler={e => alert("not implemented")}

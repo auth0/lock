@@ -9,11 +9,11 @@ export default class AskEmail extends Screen {
     super("email");
   }
 
-  render({model}) {
+  render({model, t}) {
     return (
       <EmailPane
         lock={model}
-        placeholder={this.t(model, ["emailInputPlaceholder"], {__textOnly: true})}
+        placeholder={t("emailInputPlaceholder", {__textOnly: true})}
       />
     );
   }

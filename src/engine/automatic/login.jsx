@@ -79,8 +79,8 @@ export default class Login extends Screen {
       : "email";
   }
 
-  render({model}) {
-    const headerText = this.t(model, ["headerText"]) || null;
+  render({model, t}) {
+    const headerText = t("headerText") || null;
     const header = headerText && <p>{headerText}</p>;
 
     const sso = this.isSSOEnabled(model);
@@ -90,9 +90,9 @@ export default class Login extends Screen {
       && <LoginSignUpTabs
            key="loginsignup"
            lock={model}
-           loginTabLabel={this.t(model, ["loginTabLabel"], {__textOnly: true})}
+           loginTabLabel={t("loginTabLabel", {__textOnly: true})}
            signUpLink={signUpLink(model)}
-           signUpTabLabel={this.t(model, ["signUpTabLabel"], {__textOnly: true})}
+           signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
          />;
 
     const social = !sso && l.getEnabledConnections(model, "social").count() > 0
@@ -100,8 +100,8 @@ export default class Login extends Screen {
            lock={model}
            showLoading={onlySocial}
            signUp={false}
-           smallButtonsHeader={this.shouldRenderTabs(model) ? '' : this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
-           t={::this.t}
+           smallButtonsHeader={this.shouldRenderTabs(model) ? '' : t("smallSocialButtonsHeader", {__textOnly: true})}
+           t={t}
          />;
 
     const showPassword = !sso
@@ -115,23 +115,23 @@ export default class Login extends Screen {
       || l.getEnabledConnections(model, "database").count() > 0
       || l.getEnabledConnections(model, "enterprise").count() > 0)
       && <LoginPane
-           emailInputPlaceholder={this.t(model, ["emailInputPlaceholder"], {__textOnly: true})}
-           forgotPasswordLabel={this.t(model, ["forgotPasswordLabel"], {__textOnly: true})}
+           emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
+           forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
            lock={model}
-           passwordInputPlaceholder={this.t(model, ["passwordInputPlaceholder"], {__textOnly: true})}
+           passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
            showForgotPasswordLink={showForgotPasswordLink}
            showPassword={showPassword}
-           usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}
+           usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
            usernameStyle={this.usernameStyle(model)}
          />;
 
     const ssoNotice = sso
       && <SingleSignOnNotice>
-           {this.t(model, ["ssoEnabled"], {__textOnly: true})}
+           {t("ssoEnabled", {__textOnly: true})}
          </SingleSignOnNotice>;
 
     const separator = social && login
-      && <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>;
+      && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
 
     return <div>{ssoNotice}{tabs}{header}{social}{separator}{login}</div>;
   }

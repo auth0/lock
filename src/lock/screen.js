@@ -1,6 +1,7 @@
 import * as l from './index';
 
 export default class Screen {
+
   constructor(name) {
     this.name = name;
   }
@@ -25,7 +26,4 @@ export default class Screen {
     return false;
   }
 
-  t(lock, keyPath, params) {
-    return l.ui.t(lock, [this.name].concat(keyPath), params);
-  }
 }

@@ -27,31 +27,31 @@ export default class SignUp extends Screen {
     return true;
   }
 
-  render({model}) {
-    const headerText = this.t(model, ["headerText"]) || null;
+  render({model, t}) {
+    const headerText = t("headerText") || null;
     const header = headerText && <p>{headerText}</p>;
 
     const tabs =
       <LoginSignUpTabs
         key="loginsignup"
         lock={model}
-        loginTabLabel={this.t(model, ["loginTabLabel"], {__textOnly: true})}
-        signUpTabLabel={this.t(model, ["signUpTabLabel"], {__textOnly: true})}
+        loginTabLabel={t("loginTabLabel", {__textOnly: true})}
+        signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
       />;
 
     const social = l.getEnabledConnections(model, "social").count() > 0
-      && <SocialButtonsPane lock={model} t={::this.t} signUp={true} />;
+      && <SocialButtonsPane lock={model} t={t} signUp={true} />;
 
     const db =
       <SignUpPane
-        emailInputPlaceholder={this.t(model, ["emailInputPlaceholder"], {__textOnly: true})}
+        emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
         model={model}
-        passwordInputPlaceholder={this.t(model, ["passwordInputPlaceholder"], {__textOnly: true})}
-        usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}
+        passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
+        usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
       />;
 
     const separator = social
-      && <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>;
+      && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
 
     return <div>{tabs}{header}{social}{separator}{db}</div>;
   }

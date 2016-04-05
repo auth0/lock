@@ -18,16 +18,16 @@ export default class ResetPassword extends Screen {
     return resetPassword;
   }
 
-  render({model}) {
-    const headerText = this.t(model, ["headerText"]) || null;
+  render({model, t}) {
+    const headerText = t("headerText") || null;
     const header = headerText && <p>{headerText}</p>;
 
     return (
       <ResetPasswordPane
-        emailInputPlaceholder={this.t(model, ["emailInputPlaceholder"], {__textOnly: true})}
+        emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
         header={header}
         lock={model}
-        usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}
+        usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
       />
     );
   }

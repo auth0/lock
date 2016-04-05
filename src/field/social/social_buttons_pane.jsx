@@ -13,6 +13,7 @@ export default class SocialButtonsPane extends React.Component {
   render() {
     const { lock, showLoading, signUp, smallButtonsHeader, t } = this.props;
 
+    // TODO: translate here small buttons header
     const header = !useBigButtons(lock)
       && smallButtonsHeader
       && <p className="auth-lock-small-social-buttons-header">
@@ -23,7 +24,7 @@ export default class SocialButtonsPane extends React.Component {
       <AuthButton
         isBig={useBigButtons(lock)}
         key={x.name}
-        label={t(lock, [signUp ? "signUpWith" : "loginWith"], {idp: displayName(x), __textOnly: true})}
+        label={t(signUp ? "signUpWith" : "loginWith", {idp: displayName(x), __textOnly: true})}
         onClick={() => signIn(l.id(lock), x)}
         strategy={x.strategy}
       />
