@@ -91,7 +91,7 @@ export default class Base extends EventEmitter {
             backHandler: partialApplyId(screen, "backHandler"),
             badgeLink: "https://auth0.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget",
             closeHandler: l.ui.closable(m)
-              ? partialApplyId(screen, "closeHandler")
+              ? (...args) => closeLock(l.id(m), ...args)
               : undefined,
             contentRender: ::screen.render,
             error: l.globalError(m),

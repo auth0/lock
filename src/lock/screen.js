@@ -1,4 +1,3 @@
-import { closeLock } from './actions';
 import * as l from './index';
 
 export default class Screen {
@@ -8,10 +7,6 @@ export default class Screen {
 
   backHandler() {
     return null;
-  }
-
-  closeHandler() {
-    return closeLock;
   }
 
   escHandler() {
