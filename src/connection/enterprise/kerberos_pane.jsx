@@ -25,10 +25,12 @@ export default class KerberosPane extends React.Component {
   }
 
   render() {
-    const { lock, skipLastLoginLabel } = this.props;
+    const { header, lock, skipLastLoginLabel } = this.props;
 
     return (
       <div className="auth0-lock-last-login-pane">
+        {header}
+
         <KerberosButton />
 
         <p className="auth0-lock-alternative">
@@ -51,6 +53,7 @@ export default class KerberosPane extends React.Component {
 }
 
 KerberosPane.propTypes = {
+  header: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   skipLastLoginLabel: React.PropTypes.string.isRequired
 };

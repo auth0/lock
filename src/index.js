@@ -96,7 +96,6 @@ export default class Base extends EventEmitter {
             contentRender: ::screen.render,
             error: l.globalError(m),
             footerText: screen.renderFooterText(m),
-            headerText: screen.renderHeaderText(m),
             isMobile: l.ui.mobile(m),
             isModal: l.ui.appendContainer(m),
             isSubmitting: l.submitting(m),

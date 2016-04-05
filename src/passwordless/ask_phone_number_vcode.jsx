@@ -6,8 +6,9 @@ export default class AskPhoneNumberVcode extends Base {
     super("smsCode");
   }
 
-  renderHeaderText(lock) {
-    return this.t(lock, ["headerText"], {phoneNumber: c.fullHumanPhoneNumber(lock)});
-  }
+  // TODO: fix this when adding passwordless
+  // renderHeaderText(lock) {
+  //   return this.t(lock, ["headerText"], {phoneNumber: c.fullHumanPhoneNumber(lock)});
+  // }
 
 }

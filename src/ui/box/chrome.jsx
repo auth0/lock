@@ -62,7 +62,6 @@ export default class Chrome extends React.Component {
       contentRender,
       error,
       footerText,
-      headerText,
       isSubmitting,
       logo,
       model,
@@ -85,7 +84,6 @@ export default class Chrome extends React.Component {
       name = "";
     }
 
-    const header = headerText && <p>{headerText}</p>;
     const footer = footerText
       && <small className="auth0-lock-terms">{footerText}</small>;
     const submitButton = showSubmitButton
@@ -123,7 +121,6 @@ export default class Chrome extends React.Component {
                 <div key={screenName} className="auth0-lock-body-content">
                 <div className="auth0-lock-content" key={screenName}>
                   <div className="auth0-lock-form">
-                    {header}
                     {contentRender({focusSubmit: ::this.focusSubmit, model})}
                   </div>
                 </div>
@@ -168,7 +165,6 @@ Chrome.propTypes = {
   contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
   footerText: React.PropTypes.element,
-  headerText: React.PropTypes.element,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
   model: React.PropTypes.object.isRequired,

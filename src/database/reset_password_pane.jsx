@@ -14,17 +14,20 @@ export default class ResetPasswordPane extends React.Component {
   render() {
     const {
       emailInputPlaceholder,
+      header,
       lock,
       usernameInputPlaceholder
     } = this.props;
 
-    return authWithUsername(lock)
+    const pane = authWithUsername(lock)
       ? <UsernamePane
           autofocus={l.ui.autofocus(lock)}
           lock={lock}
           placeholder={usernameInputPlaceholder}
         />
       : <EmailPane lock={lock} placeholder={emailInputPlaceholder} />;
+
+    return <div>{header}{pane}</div>;
   }
 
 }

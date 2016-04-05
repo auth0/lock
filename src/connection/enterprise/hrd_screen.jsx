@@ -23,13 +23,13 @@ export default class HRDScreen extends Screen {
     return renderSignedInConfirmation(model);
   }
 
-  renderHeaderText(model) {
-    return this.t(model, ["headerText"], {domain: ssoDomain(model)});
-  }
-
   render({model}) {
+    const headerText = this.t(model, ["headerText"], {domain: ssoDomain(model)}) || null;
+    const header = headerText && <p>{headerText}</p>;
+
     return (
       <HRDPane
+        header={header}
         model={model}
         passwordInputPlaceholder={this.t(model, ["passwordInputPlaceholder"], {__textOnly: true})}
         usernameInputPlaceholder={this.t(model, ["usernameInputPlaceholder"], {__textOnly: true})}

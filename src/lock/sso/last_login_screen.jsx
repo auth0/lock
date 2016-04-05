@@ -14,8 +14,12 @@ export default class LastLoginScreen extends Screen {
   }
 
   render({model}) {
+    const headerText = this.t(model, ["headerText"]) || null;
+    const header = headerText && <p>{headerText}</p>;
+
     return (
       <LastLoginPane
+        header={header}
         lock={model}
         skipLastLoginLabel={this.t(model, ["skipLastLoginLabel"], {__textOnly: true})}
       />

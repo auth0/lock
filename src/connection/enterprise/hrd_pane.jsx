@@ -7,6 +7,7 @@ export default class HRDPane extends React.Component {
 
   render() {
     const {
+      header,
       model,
       passwordInputPlaceholder,
       usernameInputPlaceholder
@@ -14,6 +15,7 @@ export default class HRDPane extends React.Component {
 
     return (
       <div>
+        {header}
         <UsernamePane
           autofocus={l.ui.autofocus(model)}
           lock={model}
@@ -27,6 +29,7 @@ export default class HRDPane extends React.Component {
 }
 
 HRDPane.propTypes = {
+  header: React.PropTypes.element,
   model: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
   usernameInputPlaceholder: React.PropTypes.string.isRequired

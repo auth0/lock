@@ -11,10 +11,12 @@ export default class LastLoginPane extends React.Component {
   }
 
   render() {
-    const { lock, skipLastLoginLabel } = this.props;
+    const { header, lock, skipLastLoginLabel } = this.props;
 
     return (
       <div className="auth0-lock-last-login-pane">
+        {header}
+
         <LastLoginButton lock={lock} />
 
         <p className="auth0-lock-alternative">
@@ -37,6 +39,7 @@ export default class LastLoginPane extends React.Component {
 }
 
 LastLoginPane.propTypes = {
+  header: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   skipLastLoginLabel: React.PropTypes.string.isRequired
 };

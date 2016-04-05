@@ -80,6 +80,9 @@ export default class Login extends Screen {
   }
 
   render({model}) {
+    const headerText = this.t(model, ["headerText"]) || null;
+    const header = headerText && <p>{headerText}</p>;
+
     const sso = this.isSSOEnabled(model);
 
     const tabs = this.shouldRenderTabs(model)
@@ -128,7 +131,7 @@ export default class Login extends Screen {
     const separator = social && login
       && <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>;
 
-    return <div>{ssoNotice}{tabs}{social}{separator}{login}</div>;
+    return <div>{ssoNotice}{tabs}{header}{social}{separator}{login}</div>;
   }
 
 }

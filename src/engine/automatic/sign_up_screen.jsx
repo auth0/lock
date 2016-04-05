@@ -28,6 +28,9 @@ export default class SignUp extends Screen {
   }
 
   render({model}) {
+    const headerText = this.t(model, ["headerText"]) || null;
+    const header = headerText && <p>{headerText}</p>;
+
     const tabs =
       <LoginSignUpTabs
         key="loginsignup"
@@ -50,7 +53,7 @@ export default class SignUp extends Screen {
     const separator = social
       && <PaneSeparator>{this.t(model, ["separatorText"])}</PaneSeparator>;
 
-    return <div>{tabs}{social}{separator}{db}</div>;
+    return <div>{tabs}{header}{social}{separator}{db}</div>;
   }
 
 }

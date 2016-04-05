@@ -92,7 +92,6 @@ export default class Container extends React.Component {
       disallowClose,
       error,
       footerText,
-      headerText,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
       isModal,
       isSubmitting,
@@ -160,7 +159,6 @@ export default class Container extends React.Component {
                 contentRender={contentRender}
                 error={error}
                 footerText={footerText}
-                headerText={headerText}
                 isSubmitting={isSubmitting}
                 logo={logo}
                 screenName={screenName}
@@ -191,7 +189,6 @@ Container.propTypes = {
   contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
   footerText: React.PropTypes.element,
-  headerText: React.PropTypes.element,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
