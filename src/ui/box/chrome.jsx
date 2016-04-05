@@ -114,9 +114,9 @@ export default class Chrome extends React.Component {
             transitionName={transitionName}
             reverse={reverse}
           >
-            <div className="auth0-lock-view-content">
+            <div key={screenName} className="auth0-lock-view-content">
               <div style={{position: "relative"}}>
-                <div key={screenName} className="auth0-lock-body-content">
+                <div className="auth0-lock-body-content">
                 <div className="auth0-lock-content" key={screenName}>
                   <div className="auth0-lock-form">
                     {contentRender({focusSubmit: ::this.focusSubmit, model})}

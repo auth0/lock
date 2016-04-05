@@ -81,9 +81,9 @@ export default class Base extends EventEmitter {
           // distinguish translations. The latter constraint may
           // change when we revisit i18n, so wait until that is done
           // before properly fixing this.
-          const screenName = ["login", "singUp"].indexOf(screen.name) === -1
-            ? screen.name
-            : "loginSignUp";
+          const screenName = ~["login", "signUp"].indexOf(screen.name)
+            ? "loginSignUp"
+            : screen.name;
 
           const props = {
             avatar: avatar && m.getIn(["avatar", "transient", "url"]),
