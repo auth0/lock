@@ -61,7 +61,6 @@ export default class Chrome extends React.Component {
       backHandler,
       contentRender,
       error,
-      footerText,
       isSubmitting,
       logo,
       model,
@@ -69,6 +68,7 @@ export default class Chrome extends React.Component {
       screenName,
       showSubmitButton,
       success,
+      terms,
       title,
       transitionName
     } = this.props;
@@ -84,8 +84,6 @@ export default class Chrome extends React.Component {
       name = "";
     }
 
-    const footer = footerText
-      && <small className="auth0-lock-terms">{footerText}</small>;
     const submitButton = showSubmitButton
       && <SubmitButton
             color={primaryColor}
@@ -124,7 +122,7 @@ export default class Chrome extends React.Component {
                     {contentRender({focusSubmit: ::this.focusSubmit, model})}
                   </div>
                 </div>
-                {footer}
+                {terms && <small className="auth0-lock-terms">{terms}</small>}
                 </div>
               </div>
             </div>
@@ -164,13 +162,13 @@ Chrome.propTypes = {
   backHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
-  footerText: React.PropTypes.element,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
   model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   success: React.PropTypes.string,
+  terms: React.PropTypes.element,
   title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
 };

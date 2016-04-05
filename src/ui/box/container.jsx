@@ -91,7 +91,6 @@ export default class Container extends React.Component {
       contentRender,
       disallowClose,
       error,
-      footerText,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
       isModal,
       isSubmitting,
@@ -102,6 +101,7 @@ export default class Container extends React.Component {
       submitHandler,
       success,
       tabs,
+      terms,
       title,
       transitionName
     } = this.props;
@@ -134,7 +134,7 @@ export default class Container extends React.Component {
       className += " auth0-lock-no-submit";
     }
 
-    if (footerText) {
+    if (terms) {
       className += " auth0-lock-with-terms";
     }
 
@@ -158,7 +158,6 @@ export default class Container extends React.Component {
                 backHandler={backHandler}
                 contentRender={contentRender}
                 error={error}
-                footerText={footerText}
                 isSubmitting={isSubmitting}
                 logo={logo}
                 screenName={screenName}
@@ -167,6 +166,7 @@ export default class Container extends React.Component {
                 showSubmitButton={!!submitHandler}
                 success={success}
                 tabs={tabs}
+                terms={terms}
                 title={title}
                 transitionName={transitionName}
               />
@@ -188,7 +188,6 @@ Container.propTypes = {
   closeHandler: React.PropTypes.func,
   contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
-  footerText: React.PropTypes.element,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
@@ -198,6 +197,7 @@ Container.propTypes = {
   screenName: React.PropTypes.string.isRequired,
   success: React.PropTypes.string,
   tabs: React.PropTypes.bool,
+  terms: React.PropTypes.element,
   title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
   // escHandler

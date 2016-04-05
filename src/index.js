@@ -95,7 +95,6 @@ export default class Base extends EventEmitter {
               : undefined,
             contentRender: ::screen.render,
             error: l.globalError(m),
-            footerText: l.ui.t(m, [screenName, "footerText"]),
             isMobile: l.ui.mobile(m),
             isModal: l.ui.appendContainer(m),
             isSubmitting: l.submitting(m),
@@ -106,6 +105,7 @@ export default class Base extends EventEmitter {
             success: l.globalSuccess(m),
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
+            terms: l.ui.t(m, [screenName, "footerText"]),
             title: title,
             transitionName: screen.transitionName(m)
           };
