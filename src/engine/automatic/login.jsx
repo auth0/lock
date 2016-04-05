@@ -1,6 +1,6 @@
 import React from 'react';
 import Screen from '../../lock/screen';
-import SocialButtonsPane from '../social/social_buttons_pane';
+import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import LoginPane from '../../database/login_pane';
 import PaneSeparator from '../../lock/pane_separator';
 import { hasScreen, signUpLink, authWithUsername } from '../../database/index';
@@ -30,11 +30,10 @@ const SingleSignOnNotice = ({children}) => (
   </div>
 );
 
-export default class AskSocialNetworkOrLogin extends Screen {
+export default class Login extends Screen {
 
   constructor() {
-    super();
-    this.name = "login";
+    super("login");
   }
 
   renderAuxiliaryPane(lock) {

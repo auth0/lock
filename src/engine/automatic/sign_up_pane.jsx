@@ -1,15 +1,15 @@
 import React from 'react';
-import EmailPane from '../field/email/email_pane';
-import PasswordPane from '../field/password/password_pane';
-import UsernamePane from '../field/username/username_pane';
+import EmailPane from '../../field/email/email_pane';
+import PasswordPane from '../../field/password/password_pane';
+import UsernamePane from '../../field/username/username_pane';
 import {
   authWithUsername,
   additionalSignUpFields,
   passwordStrengthPolicy,
-} from '../database/index';
-import { changeField } from '../field/actions';
-import TextInput from '../ui/input/text_input';
-import { isFieldVisiblyInvalid } from '../field/index';
+} from '../../database/index';
+import { changeField } from '../../field/actions';
+import TextInput from '../../ui/input/text_input';
+import { isFieldVisiblyInvalid } from '../../field/index';
 
 export default class SignUpPane extends React.Component {
 

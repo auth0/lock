@@ -7,7 +7,7 @@
  * the package.json file points to index.js.
  */
 
-import Auth0Lock from './classic';
+import Auth0Lock from './engine/automatic';
 import Auth0LockPasswordless from './passwordless';
 
 global.window.Auth0Lock = Auth0Lock;
