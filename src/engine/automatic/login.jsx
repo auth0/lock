@@ -101,7 +101,7 @@ export default class Login extends Screen {
 
     const showPassword = !sso
       && (l.getEnabledConnections(model, "database").count() > 0
-         || findADConnectionWithoutDomain(model));
+         || !!findADConnectionWithoutDomain(model));
 
     const showForgotPasswordLink = showPassword
       && l.getEnabledConnections(model, "database").count() > 0;
