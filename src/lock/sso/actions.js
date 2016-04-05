@@ -1,12 +1,8 @@
 import webAPI from '../web_api';
 import { getEntity, read, swap, updateEntity } from '../../store/index';
-import { lastUsedUsername, skipSSOLogin as skip } from './index';
+import { lastUsedUsername } from './index';
 import * as l from '../index';
 import { closeLock } from '../actions';
-
-export function skipSSOLogin(id) {
-  swap(updateEntity, "lock", id, skip, true);
-}
 
 export function signIn(id, connection) {
   swap(updateEntity, "lock", id, l.setSubmitting, true);

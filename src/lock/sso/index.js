@@ -2,6 +2,7 @@ import { Map } from 'immutable';
 import LastLoginScreen from './last_login_screen';
 import LoadingScreen from '../loading_screen';
 import { ui, isConnectionEnabled } from '../index';
+import { hasSkippedQuickAuth } from '../../quick_auth';
 
 export function renderSSOScreens(m) {
   // TODO: loading pin check belongs here?
@@ -14,9 +15,8 @@ export function renderSSOScreens(m) {
   }
 
   const { name, strategy } = lastUsedConnection(m);
-  const skipped = m.getIn(["sso", "skipped"], false);
 
-  return !skipped && isConnectionEnabled(m, name)
+  return !hasSkippedQuickAuth(m) && isConnectionEnabled(m, name)
     ? new LastLoginScreen()
     : null;
 }
@@ -28,8 +28,4 @@ export function lastUsedConnection(m) {
 
 export function lastUsedUsername(m) {
   return m.getIn(["sso", "lastUsedUsername"], "");
-}
-
-export function skipSSOLogin(m) {
-  return m.setIn(["sso", "skipped"], true);
 }

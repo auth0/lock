@@ -17,7 +17,7 @@ const QuickAuthPane = (props) => {
 
       <AuthButton
         label={buttonLabel}
-        onClick={buttonClickHandler}
+        onClick={e => {e.preventDefault(); buttonClickHandler(e)}}
         strategy={strategy}
       />
 
@@ -25,7 +25,7 @@ const QuickAuthPane = (props) => {
         <a
           className="auth0-lock-alternative-link"
           href="#"
-          onClick={alternativeClickHandler}
+          onClick={e => {e.preventDefault(); alternativeClickHandler(e)}}
         >
           {alternativeLabel}
         </a>

@@ -1,6 +1,10 @@
 import React from 'react';
 import Screen from '../screen';
-import LastLoginPane from './last_login_pane';
+import QuickAuthPane from '../../ui/pane/quick_auth_pane';
+import { signIn } from './actions';
+import { skipQuickAuth } from '../../quick_auth/actions';
+import { lastUsedConnection, lastUsedUsername } from './index';
+import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
 
 export default class LastLoginScreen extends Screen {
@@ -18,10 +22,13 @@ export default class LastLoginScreen extends Screen {
     const header = headerText && <p>{headerText}</p>;
 
     return (
-      <LastLoginPane
+      <QuickAuthPane
+        alternativeLabel={this.t(model, ["skipLastLoginLabel"], {__textOnly: true})}
+        alternativeClickHandler={() => skipQuickAuth(l.id(model))}
+        buttonLabel={lastUsedUsername(model)}
+        buttonClickHandler={() => signIn(l.id(model), lastUsedConnection(model))}
         header={header}
-        lock={model}
-        skipLastLoginLabel={this.t(model, ["skipLastLoginLabel"], {__textOnly: true})}
+        strategy={lastUsedConnection(model).strategy}
       />
     );
   }

@@ -6,14 +6,12 @@ const AuthButton = (props) => {
   let className = "auth0-lock-social-button";
   if (isBig) className += " auth0-lock-social-big-button";
 
-  // TODO: passing the strategy to the click handler might no be
-  // necessary.
   return (
     <button
       className={className}
       data-provider={strategy}
       disabled={disabled}
-      onClick={e => onClick(strategy, e)}
+      onClick={onClick}
       type="button"
     >
       <div className="auth0-lock-social-button-icon" />

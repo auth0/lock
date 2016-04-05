@@ -16,6 +16,7 @@ import { setUsername } from '../field/username';
 import * as l from '../lock/index';
 import KerberosScreen from '../connection/enterprise/kerberos_screen';
 import HRDScreen from '../connection/enterprise/hrd_screen';
+import { hasSkippedQuickAuth } from '../quick_auth';
 
 export default class Auth0Lock extends Base {
 
@@ -56,7 +57,7 @@ export default class Auth0Lock extends Base {
     const ssoScreen = renderSSOScreens(m);
     if (ssoScreen) return ssoScreen;
 
-    if (isInCorpNetwork(m) && !m.getIn(["sso", "skipped"], false)) {
+    if (isInCorpNetwork(m) && !hasSkippedQuickAuth(m)) {
       return new KerberosScreen();
     }
 

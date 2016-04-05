@@ -1,7 +1,9 @@
 import React from 'react';
 import Screen from '../../lock/screen';
-import KerberosPane from './kerberos_pane';
+import QuickAuthPane from '../../ui/pane/quick_auth_pane';
+import { skipQuickAuth } from '../../quick_auth/actions';
 import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
+import * as l from '../../lock/index';
 
 export default class KerberosScreen extends Screen {
 
@@ -17,11 +19,17 @@ export default class KerberosScreen extends Screen {
     const headerText = this.t(model, ["headerText"]) || null;
     const header = headerText && <p>{headerText}</p>;
 
+    // TODO: implement click handler.
+    // TODO: provide translation for button label.
+
     return (
-      <KerberosPane
+      <QuickAuthPane
+        alternativeLabel={this.t(model, ["skipLastLoginLabel"], {__textOnly: true})}
+        alternativeClickHandler={() => skipQuickAuth(l.id(model))}
+        buttonLabel="Windows Authentication"
+        buttonClickHandler={e => alert("not implemented")}
         header={header}
-        lock={model}
-        skipLastLoginLabel={this.t(model, ["skipLastLoginLabel"], {__textOnly: true})}
+        strategy="windows"
       />
     );
   }
