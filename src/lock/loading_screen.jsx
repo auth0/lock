@@ -9,10 +9,6 @@ export default class LoadingScreen extends Screen {
     super("loading");
   }
 
-  transitionName() {
-    return "fade";
-  }
-
   render({model}) {
     return <LoadingPane lock={model} />;
   }

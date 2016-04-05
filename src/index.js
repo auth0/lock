@@ -107,7 +107,7 @@ export default class Base extends EventEmitter {
             tabs: screen.renderTabs(m),
             terms: l.ui.t(m, [screenName, "footerText"]),
             title: title,
-            transitionName: screen.transitionName(m)
+            transitionName: screenName === "loading" ? "fade" : "horizontal-fade"
           };
           render(l.ui.containerID(m), props);
         } else {

@@ -21,10 +21,6 @@ export default class Screen {
     return null;
   }
 
-  transitionName() {
-    return "horizontal-fade";
-  }
-
   renderTabs() {
     return false;
   }
