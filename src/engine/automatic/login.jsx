@@ -84,6 +84,7 @@ export default class Login extends Screen {
     const header = headerText && <p>{headerText}</p>;
 
     const sso = this.isSSOEnabled(model);
+    const onlySocial = l.getEnabledConnections(model).count() === l.getEnabledConnections(model, "social").count();
 
     const tabs = this.shouldRenderTabs(model)
       && <LoginSignUpTabs
@@ -97,6 +98,7 @@ export default class Login extends Screen {
     const social = !sso && l.getEnabledConnections(model, "social").count() > 0
       && <SocialButtonsPane
            lock={model}
+           showLoading={onlySocial}
            signUp={false}
            smallButtonsHeader={this.shouldRenderTabs(model) ? '' : this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
            t={::this.t}
