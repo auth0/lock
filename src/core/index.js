@@ -247,10 +247,6 @@ export function hasSomeConnections(m, type = undefined, ...strategies) {
   return connections(m, type, ...strategies).count() > 0;
 }
 
-// export function hasEnabledConnections(m, type, ...strategies) {
-//   return getEnabledConnections(m, type, ...strategies).count > 0;
-// }
-
 export function hasConnection(m, name) {
   return connections(m).some(m1 => m1.get("name") === name);
 }
