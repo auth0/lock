@@ -1,6 +1,6 @@
 import React from 'react';
 import Immutable from 'immutable';
-import atom from '../../src/atom/index';
+import atom from '../../src/utils/atom';
 import { getState, subscribe, swap, unsubscribe } from '../../src/store/index';
 
 export const store = atom(Immutable.fromJS({

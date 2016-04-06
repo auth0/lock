@@ -1,4 +1,4 @@
-import atom from '../atom/index';
+import atom from '../utils/atom';
 import { Map } from 'immutable';
 
 const store = atom(new Map({}));
