@@ -3,7 +3,7 @@ import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote-data/actions';
 import * as l from './index';
-import { img as preload } from '../preload/index';
+import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField } from '../field/index';
 

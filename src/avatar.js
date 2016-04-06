@@ -1,6 +1,6 @@
 import { getEntity, read, swap, updateEntity } from './store/index';
 import { dataFns } from './utils/data_utils';
-import * as preload from './preload';
+import * as preload from './utils/preload_utils';
 import * as f from './utils/fn_utils';
 import * as l from './core/index';
 
