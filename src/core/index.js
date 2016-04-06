@@ -1,7 +1,7 @@
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
-import * as d from '../dict/index';
-import t from '../dict/t';
+import * as d from './i18n/index';
+import t from './i18n/t';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';

@@ -12,7 +12,7 @@ import { getEntity, read, subscribe } from './store/index';
 import * as l from './core/index';
 import * as c from './field/index';
 import { remove, render } from './ui/box';
-import { registerDict } from './dict/index';
+import { registerDict } from './core/i18n/index';
 
 // telemetry
 import Auth0 from 'auth0-js';
