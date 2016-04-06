@@ -10,7 +10,7 @@ import {
   isInCorpNetwork,
   isSingleHRDConnection
 } from '../connection/enterprise';
-import { initSocial } from '../social/index';
+import { initSocial } from '../connection/social/index';
 import { setEmail } from '../field/email';
 import { setUsername } from '../field/username';
 import * as l from '../core/index';

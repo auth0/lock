@@ -1,12 +1,12 @@
 import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
-import { signIn } from '../../social/actions';
+import { signIn } from '../../connection/social/actions';
 import {
   displayName,
   socialConnections,
   useBigButtons
-} from '../../social/index';
+} from '../../connection/social/index';
 
 export default class SocialButtonsPane extends React.Component {
 

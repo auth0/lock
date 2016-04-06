@@ -1,6 +1,6 @@
 import { List, Map } from 'immutable';
 // TODOL this module should depend from social stuff
-import { STRATEGIES as SOCIAL_STRATEGIES } from '../../social/index';
+import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
 
 export function connection(m, strategyName, name) {
   // TODO: this function should take a client, not a map with a client

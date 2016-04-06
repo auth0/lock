@@ -15,7 +15,7 @@ import {
   passwordlessStarted
 } from './passwordless/index';
 import { setInitialPhoneLocation } from './field/phone-number/actions';
-import { initSocial } from './social/index';
+import { initSocial } from './connection/social/index';
 import * as l from './core/index';
 
 

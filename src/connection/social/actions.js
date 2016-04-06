@@ -1,8 +1,8 @@
 import { Map } from 'immutable';
-import { getEntity, read, swap, updateEntity } from '../store/index';
-import { closeLock } from '../core/actions';
-import WebAPI from '../core/web_api';
-import * as l from '../core/index';
+import { getEntity, read, swap, updateEntity } from '../../store/index';
+import { closeLock } from '../../core/actions';
+import WebAPI from '../../core/web_api';
+import * as l from '../../core/index';
 
 export function signIn(id, connection) {
   swap(updateEntity, "lock", id, l.setSubmitting, true);
