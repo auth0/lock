@@ -43,9 +43,9 @@ export default class Auth0Lock extends Base {
   }
 
   didReceiveClientSettings(m) {
-    const anyDBConnection = l.getEnabledConnections(m, "database").count() > 0;
-    const anySocialConnection = l.getEnabledConnections(m, "social").count() > 0;
-    const anyEnterpriseConnection = l.getEnabledConnections(m, "enterprise").count() > 0;
+    const anyDBConnection = l.hasSomeConnections(m, "database");
+    const anySocialConnection = l.hasSomeConnections(m, "social");
+    const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
 
     if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
       // TODO: improve message

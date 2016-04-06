@@ -33,8 +33,8 @@ export default class Auth0LockPasswordless extends Base {
   }
 
   didReceiveClientSettings(m) {
-    const anySocialConnection = l.getEnabledConnections(m, "social").count() > 0;
-    const anyPasswordlessConnection = l.getEnabledConnections(m, "passwordless").count() > 0;
+    const anySocialConnection = l.hasSomeConnections(m, "social");
+    const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
 
     if (!anySocialConnection && !anyPasswordlessConnection) {
       // TODO: improve message
@@ -49,10 +49,8 @@ export default class Auth0LockPasswordless extends Base {
     const ssoScreen = renderSSOScreens(m);
     if (ssoScreen) return ssoScreen;
 
-    const anyPasswordlessConnection =
-      l.getEnabledConnections(m, "passwordless").count() > 0;
-    const anySocialConnection =
-      l.getEnabledConnections(m, "social").count() > 0;
+    const anySocialConnection = l.hasSomeConnections(m, "social");
+    const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
 
     // social flow
     if (!anyPasswordlessConnection) {

@@ -42,7 +42,7 @@ export function ssoDomain(m) {
 // ad / adldap
 
 export function isADEnabled(m) {
-  return l.getEnabledConnections(m, "enterprise", "ad", "auth0-adldap").count() > 0;
+  return l.hasSomeConnections(m, "enterprise", "ad", "auth0-adldap");
 }
 
 export function findADConnectionWithoutDomain(m) {

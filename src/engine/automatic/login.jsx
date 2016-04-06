@@ -24,7 +24,7 @@ import {
 
 
 function shouldRenderTabs(m) {
-  return l.getEnabledConnections(m, "database").count() > 0
+  return l.hasSomeConnections(m, "database")
     && hasScreen(m, "signUp")
     && !isSSOEnabled(m);
 }
@@ -52,7 +52,7 @@ const Component = ({model, t}) => {
   const header = headerText && <p>{headerText}</p>;
 
   const sso = isSSOEnabled(model);
-  const onlySocial = l.getEnabledConnections(model).count() === l.getEnabledConnections(model, "social").count();
+  const onlySocial = l.hasOnlyConnections(model, "social");
 
   const tabs = shouldRenderTabs(model)
     && <LoginSignUpTabs
@@ -63,7 +63,8 @@ const Component = ({model, t}) => {
          signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
        />;
 
-  const social = !sso  && l.getEnabledConnections(model, "social").count() > 0
+
+  const social = !sso  && l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
          lock={model}
          showLoading={onlySocial}
@@ -73,15 +74,15 @@ const Component = ({model, t}) => {
        />;
 
   const showPassword = !sso
-    && (l.getEnabledConnections(model, "database").count() > 0
+    && (l.hasSomeConnections(model, "database")
        || !!findADConnectionWithoutDomain(model));
 
   const showForgotPasswordLink = showPassword
-    && l.getEnabledConnections(model, "database").count() > 0;
+    && l.hasSomeConnections(model, "database");
 
   const login = (sso
-    || l.getEnabledConnections(model, "database").count() > 0
-    || l.getEnabledConnections(model, "enterprise").count() > 0)
+    || l.hasSomeConnections(model, "database")
+    || l.hasSomeConnections(model, "enterprise"))
     && <LoginPane
          emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
          forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
@@ -120,7 +121,7 @@ export default class Login extends Screen {
   }
 
   submitHandler(model) {
-    if (l.getEnabledConnections(model, "social").count() === l.getEnabledConnections(model).count()) {
+    if (l.hasOnlyConnections(model, "social")) {
       return null;
     }
 
@@ -128,7 +129,7 @@ export default class Login extends Screen {
       return startHRD;
     }
 
-    return isSSOEnabled(model) || l.getEnabledConnections(model, "database").count() === 0
+    return isSSOEnabled(model) || !l.hasSomeConnections(model, "database")
       ? enterpriseSignIn
       : databaseSignIn;
   }

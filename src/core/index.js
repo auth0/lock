@@ -237,6 +237,16 @@ export function getEnabledConnections(m, type = undefined, ...strategies) {
     : xs;
 }
 
+export function hasOnlyConnections(m, type = undefined, ...strategies) {
+  const all = getEnabledConnections(m).count();
+  const filtered = getEnabledConnections(m, type, ...strategies).count();
+  return all > 0 && all === filtered;
+}
+
+export function hasSomeConnections(m, type = undefined, ...strategies) {
+  return getEnabledConnections(m, type, ...strategies).count() > 0;
+}
+
 // export function hasEnabledConnections(m, type, ...strategies) {
 //   return getEnabledConnections(m, type, ...strategies).count > 0;
 // }

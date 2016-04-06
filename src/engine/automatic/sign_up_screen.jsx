@@ -21,7 +21,7 @@ const Component = ({model, t}) => {
       signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
     />;
 
-  const social = l.getEnabledConnections(model, "social").count() > 0
+  const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane lock={model} t={t} signUp={true} />;
 
   const db =
