@@ -36,7 +36,7 @@ if [ ! -z "$NPM_EXISTS" ]; then
     echo "There is already a version $VERSION in npm. Skiping npm publish."
 else
     echo "Deploying $VERSION to npm"
-    npm publish
+    npm publish --tag support
 fi
 
 CDN_EXISTS=$(curl -s -o /dev/null -w "%{http_code}" https://cdn.auth0.com/js/lock-$VERSION.min.js | grep 200 || true)
