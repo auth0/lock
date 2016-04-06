@@ -251,11 +251,8 @@ export function hasSomeConnections(m, type = undefined, ...strategies) {
 //   return getEnabledConnections(m, type, ...strategies).count > 0;
 // }
 
-export function isConnectionEnabled(m, name) {
-  // TODO: is the name enough? shouldn't we check for strategy and/or type?
-  return get(m, "connections", Map())
-    .flatten(true)
-    .some(c => c.get("name") === name);
+export function hasConnection(m, name) {
+  return connections(m).some(m1 => m1.get("name") === name);
 }
 
 export function runHook(m, str, ...args) {
