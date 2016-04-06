@@ -1,15 +1,40 @@
-import { List } from 'immutable';
+import Immutable, { List } from 'immutable';
 import * as l from '../core/index';
 import { dataFns } from '../utils/data_utils';
 import { emailDomain } from '../field/email';
 import { getFieldValue } from '../field/index';
 
-const { tget, tset } = dataFns(["enterprise"]);
+const { get, initNS, tget, tset } = dataFns(["enterprise"]);
 
 
 export function initEnterprise(m, opts) {
-  // TODO: process options.
-  return m;
+  return initNS(m, Immutable.fromJS(processOptions(opts)));
+}
+
+function processOptions(opts) {
+  let { defaultEnterpriseConnection } = opts;
+
+  if (defaultEnterpriseConnection != undefined && typeof defaultEnterpriseConnection !== "string") {
+    l.warn(options, "The `defaultEnterpriseConnection` option will be ignored, because it is not a string.");
+    defaultEnterpriseConnection = undefined;
+  }
+
+  return defaultEnterpriseConnection === undefined
+    ? {}
+    : {defaultConnectionName: defaultEnterpriseConnection};
+}
+
+export function defaultEnterpriseConnection(m) {
+  const name = defaultEnterpriseConnectionName(m);
+  return name && findADConnectionWithoutDomain(m, name);
+}
+
+export function defaultEnterpriseConnectionName(m) {
+  return get(m, "defaultConnectionName");
+}
+
+export function enterpriseConnection(m) {
+  return defaultEnterpriseConnection(m) || findADConnectionWithoutDomain(m);
 }
 
 export function findSSOConnection(m, email, strategies = []) {
@@ -45,10 +70,12 @@ export function isADEnabled(m) {
   return l.hasSomeConnections(m, "enterprise", "ad", "auth0-adldap");
 }
 
-export function findADConnectionWithoutDomain(m) {
-  l.connections(m, "enterprise", "ad", "auth0-adldap").find(x => (
-    !x.get("domain") && x.get("domain_aliases", new List()).isEmpty()
-  ));
+export function findADConnectionWithoutDomain(m, name = undefined) {
+  return l.connections(m, "enterprise", "ad", "auth0-adldap").find(x => {
+    return !x.get("domain")
+      && x.get("domain_aliases", new List()).isEmpty()
+      && (!name || x.get("name") === name)
+  });
 }
 
 // kerberos

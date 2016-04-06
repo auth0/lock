@@ -10,6 +10,8 @@ import {
   initDatabase
 } from '../connection/database/index';
 import {
+  defaultEnterpriseConnection,
+  defaultEnterpriseConnectionName,
   initEnterprise,
   isHRDActive,
   isInCorpNetwork,
@@ -60,6 +62,11 @@ export default class Auth0Lock extends Base {
     if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
       l.warn(m, `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`);
     }
+
+    if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
+      l.warn(m, `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`);
+    }
+
   }
 
   render(m) {

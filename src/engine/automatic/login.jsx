@@ -4,7 +4,7 @@ import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import LoginPane from '../../connection/database/login_pane';
 import PaneSeparator from '../../core/pane_separator';
 import {
-  defaultDatabaseConnection,
+  databaseConnection,
   hasScreen,
   signUpLink,
   authWithUsername
@@ -21,6 +21,8 @@ import {
   startHRD
 } from '../../connection/enterprise/actions';
 import {
+  defaultEnterpriseConnection,
+  defaultEnterpriseConnectionName,
   findADConnectionWithoutDomain,
   isADEnabled,
   isHRDDomain,
@@ -134,13 +136,10 @@ export default class Login extends Screen {
       return startHRD;
     }
 
-    // TODO: real conditions for using a db connection are:
-    // 1. no sso
-    // 2. db conn exist
-    // 3. no defaultEnterpriseConnection
-
     const useDatabaseConnection = !isSSOEnabled(model)
-      && defaultDatabaseConnection(model);
+      && databaseConnection(model)
+      && (!defaultEnterpriseConnectionName(model)
+          || !defaultEnterpriseConnection(model));
 
     return useDatabaseConnection ? databaseSignIn : enterpriseSignIn
   }

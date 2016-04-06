@@ -1,5 +1,6 @@
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import {
+  enterpriseConnection,
   findADConnectionWithoutDomain,
   findSSOConnection,
   isHRDDomain,
@@ -41,8 +42,10 @@ export function signIn(id) {
   logInAD(id, findADConnectionWithoutDomain(m));
 }
 
-function logInHRD(id, connection) {
+export function logInHRD(id, connection = undefined) {
   swap(updateEntity, "lock", id, lock => {
+    if (!connection) connection = enterpriseConnection(lock);
+
     if (c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password")) {
       return l.setSubmitting(lock, true);
     } else {
