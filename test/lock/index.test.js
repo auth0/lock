@@ -1,6 +1,6 @@
 import expect from 'expect.js';
 import Immutable from 'immutable';
-import * as l from '../../src/lock/index';
+import * as l from '../../src/core/index';
 
 let lock;
 

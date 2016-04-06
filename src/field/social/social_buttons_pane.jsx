@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
-import * as l from '../../lock/index';
+import * as l from '../../core/index';
 import { signIn } from '../../social/actions';
 import {
   displayName,

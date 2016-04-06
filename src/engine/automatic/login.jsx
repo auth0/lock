@@ -1,13 +1,13 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import LoginPane from '../../database/login_pane';
-import PaneSeparator from '../../lock/pane_separator';
+import PaneSeparator from '../../core/pane_separator';
 import { hasScreen, signUpLink, authWithUsername } from '../../database/index';
 import { signIn as databaseSignIn } from '../../database/actions';
-import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import LoginSignUpTabs from '../../database/login_sign_up_tabs';
-import * as l from '../../lock/index';
+import * as l from '../../core/index';
 import { icon } from '../../ui/input/password_input';
 import * as c from '../../field/index';
 import { emailDomain } from '../../field/email';

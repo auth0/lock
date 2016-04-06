@@ -1,5 +1,5 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import PhoneNumberPane from './phone_number_pane';
 import { renderAskLocation } from './ask_location';
 import { cancelSelectPhoneLocation } from './actions';

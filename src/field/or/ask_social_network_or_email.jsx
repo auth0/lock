@@ -1,12 +1,12 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import EmailPane from '../email/email_pane';
 import SocialButtonsPane from '../social/social_buttons_pane';
-import PaneSeparator from '../../lock/pane_separator';
+import PaneSeparator from '../../core/pane_separator';
 
 import { requestPasswordlessEmail } from '../../passwordless/actions';
 import { renderEmailSentConfirmation } from '../../passwordless/email_sent_confirmation';
-import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 
 const Component = ({model, t}) => (
   <div>

@@ -2,7 +2,7 @@ import Base from '../index';
 import Login from './automatic/login';
 import SignUp from './automatic/sign_up_screen';
 import ResetPassword from '../database/reset_password';
-import { renderSSOScreens } from '../lock/sso/index';
+import { renderSSOScreens } from '../core/sso/index';
 import { getScreen, initDatabase } from '../database/index';
 import {
   initEnterprise,
@@ -13,7 +13,7 @@ import {
 import { initSocial } from '../social/index';
 import { setEmail } from '../field/email';
 import { setUsername } from '../field/username';
-import * as l from '../lock/index';
+import * as l from '../core/index';
 import KerberosScreen from '../connection/enterprise/kerberos_screen';
 import HRDScreen from '../connection/enterprise/hrd_screen';
 import { hasSkippedQuickAuth } from '../quick_auth';

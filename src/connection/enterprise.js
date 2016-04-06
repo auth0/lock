@@ -1,5 +1,5 @@
 import { List } from 'immutable';
-import * as l from '../lock/index';
+import * as l from '../core/index';
 import { dataFns } from '../utils/data_utils';
 import { emailDomain } from '../field/email';
 import { getFieldValue } from '../field/index';

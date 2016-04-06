@@ -6,10 +6,10 @@ import {
   removeLock,
   setupLock,
   updateLock
-} from './lock/actions';
-import webAPI from './lock/web_api';
+} from './core/actions';
+import webAPI from './core/web_api';
 import { getEntity, read, subscribe } from './store/index';
-import * as l from './lock/index';
+import * as l from './core/index';
 import * as c from './field/index';
 import { remove, render } from './ui/box';
 import { registerDict } from './dict/index';

@@ -1,9 +1,9 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import QuickAuthPane from '../../ui/pane/quick_auth_pane';
 import { skipQuickAuth } from '../../quick_auth/actions';
-import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
-import * as l from '../../lock/index';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
+import * as l from '../../core/index';
 
 const Component = ({model, t}) => {
   const headerText = t("headerText") || null;

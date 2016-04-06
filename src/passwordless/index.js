@@ -1,5 +1,5 @@
 import { List, Map } from 'immutable';
-import * as l from '../lock/index';
+import * as l from '../core/index';
 import { clearFields } from '../field/index';
 import { dataFns } from '../utils/data_utils';
 

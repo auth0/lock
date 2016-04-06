@@ -1,6 +1,6 @@
 import React from 'react';
-import Screen from '../../lock/screen';
-import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
+import Screen from '../../core/screen';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import HRDPane from './hrd_pane';
 import { cancelHRD, signIn } from './actions';
 import { isSingleHRDConnection, ssoDomain }  from '../enterprise';

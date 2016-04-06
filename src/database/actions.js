@@ -1,9 +1,9 @@
 import { Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../store/index';
-import webApi from '../lock/web_api';
-import { closeLock } from '../lock/actions';
-import * as l from '../lock/index';
-import { startSubmit } from '../lock/actions';
+import webApi from '../core/web_api';
+import { closeLock } from '../core/actions';
+import * as l from '../core/index';
+import { startSubmit } from '../core/actions';
 import * as c from '../field/index';
 import  {
   authWithUsername,

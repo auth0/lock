@@ -1,9 +1,9 @@
 import { Map } from 'immutable';
 import { read, getEntity, swap, updateEntity } from '../store/index';
-import { closeLock } from '../lock/actions';
-import webApi from '../lock/web_api';
+import { closeLock } from '../core/actions';
+import webApi from '../core/web_api';
 import * as c from '../field/index';
-import * as l from '../lock/index';
+import * as l from '../core/index';
 import * as m from './index';
 
 export function requestPasswordlessEmail(id) {

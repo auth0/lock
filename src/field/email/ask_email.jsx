@@ -1,5 +1,5 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import EmailPane from './email_pane';
 
 const Component = ({model, t}) => (

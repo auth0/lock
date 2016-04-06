@@ -1,6 +1,6 @@
 import Base from '../field/vcode/ask_vcode';
 import { restart, signIn } from './actions';
-import { renderSignedInConfirmation } from '../lock/signed_in_confirmation';
+import { renderSignedInConfirmation } from '../core/signed_in_confirmation';
 
 export default class AskVcode extends Base {
 

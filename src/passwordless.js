@@ -7,7 +7,7 @@ import AskSocialNetworkOrPhoneNumber from './field/or/ask_social_network_or_phon
 import AskPhoneNumber from './passwordless/ask_phone_number';
 import AskPhoneNumberVcode from './passwordless/ask_phone_number_vcode';
 import MagiclinkScreen from './passwordless/magiclink';
-import { renderSSOScreens } from './lock/sso/index';
+import { renderSSOScreens } from './core/sso/index';
 import {
   initPasswordless,
   isEmail,
@@ -16,7 +16,7 @@ import {
 } from './passwordless/index';
 import { setInitialPhoneLocation } from './field/phone-number/actions';
 import { initSocial } from './social/index';
-import * as l from './lock/index';
+import * as l from './core/index';
 
 
 export default class Auth0LockPasswordless extends Base {

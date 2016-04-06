@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Immutable from 'immutable';
 import _ from '../../src/browser';
 import Control, { store } from './control';
-import * as ClientSettings from '../../src/lock/client/settings';
-import webAPI from '../../src/lock/web_api';
+import * as ClientSettings from '../../src/core/client/settings';
+import webAPI from '../../src/core/web_api';
 const WebAPI = webAPI.constructor;
 
 webAPI.constructor.prototype.constructor = function() {};

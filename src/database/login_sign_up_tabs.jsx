@@ -1,6 +1,6 @@
 import React from 'react';
 import { showLoginActivity, showSignUpActivity } from './actions';
-import * as l from '../lock/index';
+import * as l from '../core/index';
 import { getScreen } from './index';
 
 export default class LoginSignUpTabs extends React.Component {

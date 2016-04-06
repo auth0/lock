@@ -2,7 +2,7 @@ import React from 'react';
 import LocationSelect from './location_select';
 import { cancelSelectPhoneLocation, changePhoneLocation } from './actions';
 import { initialLocationSearchStr, selectingLocation } from './index';
-import * as l from '../../lock/index';
+import * as l from '../../core/index';
 
 export default class AskLocation extends React.Component {
 

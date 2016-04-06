@@ -1,7 +1,7 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import SocialButtonsPane from './social_buttons_pane';
-import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 
 const Component = ({model, t}) => (
   <SocialButtonsPane

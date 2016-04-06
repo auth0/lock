@@ -5,11 +5,11 @@ import {
   isHRDDomain,
   toggleHRD
 } from '../enterprise';
-import * as l from '../../lock/index';
+import * as l from '../../core/index';
 import * as c from '../../field/index';
 import { setUsername } from '../../field/username';
 import { emailLocalPart } from '../../field/email';
-import webApi from '../../lock/web_api';
+import webApi from '../../core/web_api';
 
 export function startHRD(id) {
   swap(updateEntity, "lock", id, m => {

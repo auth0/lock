@@ -1,5 +1,5 @@
 import expect from 'expect.js';
-import ContainerManager from '../../src/lock/container_manager';
+import ContainerManager from '../../src/core/container_manager';
 
 describe("ContainerManager", function() {
   const originalGetElementById = global.document.getElementById;

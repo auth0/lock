@@ -2,7 +2,7 @@ import expect from 'expect.js';
 import { spy, stub } from 'sinon';
 
 import Auth0LockPasswordless from '../src/index';
-import WebAPI from '../src/lock/web_api';
+import WebAPI from '../src/core/web_api';
 
 describe(".parseHash", function() {
   beforeEach(function() {

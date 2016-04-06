@@ -4,7 +4,7 @@ import CSSCore from 'fbjs/lib/CSSCore';
 import { Simulate } from 'react-addons-test-utils';
 import Auth0LockPasswordless from '../src/index';
 import { spy, stub } from 'sinon';
-import webApi from '../src/lock/web_api';
+import webApi from '../src/core/web_api';
 import * as gravatarActions from '../src/gravatar/actions';
 import browser from '../src/browser';
 

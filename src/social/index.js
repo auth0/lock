@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import * as l from '../lock/index';
+import * as l from '../core/index';
 import { dataFns } from '../utils/data_utils';
 
 export const STRATEGIES = {
