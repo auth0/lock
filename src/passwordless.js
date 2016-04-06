@@ -1,19 +1,19 @@
 import Base from './index';
 import AskSocialNetwork from './field/social/ask_social_network';
-import AskEmail from './passwordless/ask_email';
-import AskEmailVcode from './passwordless/ask_email_vcode';
+import AskEmail from './connection/passwordless/ask_email';
+import AskEmailVcode from './connection/passwordless/ask_email_vcode';
 import AskSocialNetworkOrEmail from './field/or/ask_social_network_or_email';
 import AskSocialNetworkOrPhoneNumber from './field/or/ask_social_network_or_phone_number';
-import AskPhoneNumber from './passwordless/ask_phone_number';
-import AskPhoneNumberVcode from './passwordless/ask_phone_number_vcode';
-import MagiclinkScreen from './passwordless/magiclink';
+import AskPhoneNumber from './connection/passwordless/ask_phone_number';
+import AskPhoneNumberVcode from './connection/passwordless/ask_phone_number_vcode';
+import MagiclinkScreen from './connection/passwordless/magiclink';
 import { renderSSOScreens } from './core/sso/index';
 import {
   initPasswordless,
   isEmail,
   isSendLink,
   passwordlessStarted
-} from './passwordless/index';
+} from './connection/passwordless/index';
 import { setInitialPhoneLocation } from './field/phone-number/actions';
 import { initSocial } from './connection/social/index';
 import * as l from './core/index';

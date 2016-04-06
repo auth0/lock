@@ -1,5 +1,5 @@
 import Base from './ask_vcode';
-import * as c from '../field/index';
+import * as c from '../../field/index';
 
 export default class AskEmailVcode extends Base {
 

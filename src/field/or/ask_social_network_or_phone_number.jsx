@@ -1,5 +1,5 @@
 import React from 'react';
-import Base from '../../passwordless/ask_phone_number';
+import Base from '../../connection/passwordless/ask_phone_number';
 import PhoneNumberPane from '../phone-number/phone_number_pane';
 import SocialButtonsPane from '../social/social_buttons_pane';
 import PaneSeparator from '../../core/pane_separator';

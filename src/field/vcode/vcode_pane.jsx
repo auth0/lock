@@ -8,7 +8,7 @@ import { setVcode } from '../vcode';
 
 
 // TODO: this should be in the passwordless ns
-import { restart } from '../../passwordless/actions';
+import { restart } from '../../connection/passwordless/actions';
 
 export default class VcodePane extends React.Component {
 

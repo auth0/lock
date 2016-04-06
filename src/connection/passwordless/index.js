@@ -1,7 +1,7 @@
 import { List, Map } from 'immutable';
-import * as l from '../core/index';
-import { clearFields } from '../field/index';
-import { dataFns } from '../utils/data_utils';
+import * as l from '../../core/index';
+import { clearFields } from '../../field/index';
+import { dataFns } from '../../utils/data_utils';
 
 const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
 

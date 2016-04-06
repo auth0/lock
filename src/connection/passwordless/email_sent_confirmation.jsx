@@ -1,8 +1,8 @@
 import React from 'react';
-import SuccessPane from '../ui/box/success_pane';
-import { closeLock } from '../core/actions';
-import * as l from '../core/index';
-import * as c from '../field/index';
+import SuccessPane from '../../ui/box/success_pane';
+import { closeLock } from '../../core/actions';
+import * as l from '../../core/index';
+import * as c from '../../field/index';
 
 import { resendEmail, restart } from './actions';
 import * as m from './index';

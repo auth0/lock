@@ -4,8 +4,8 @@ import EmailPane from '../email/email_pane';
 import SocialButtonsPane from '../social/social_buttons_pane';
 import PaneSeparator from '../../core/pane_separator';
 
-import { requestPasswordlessEmail } from '../../passwordless/actions';
-import { renderEmailSentConfirmation } from '../../passwordless/email_sent_confirmation';
+import { requestPasswordlessEmail } from '../../connection/passwordless/actions';
+import { renderEmailSentConfirmation } from '../../connection/passwordless/email_sent_confirmation';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 
 const Component = ({model, t}) => (
