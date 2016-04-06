@@ -9,8 +9,8 @@ export default class LoadingScreen extends Screen {
     super("loading");
   }
 
-  render({model}) {
-    return <LoadingPane lock={model} />;
+  render() {
+    return LoadingPane;
   }
 
 }
@@ -18,9 +18,9 @@ export default class LoadingScreen extends Screen {
 class LoadingPane extends React.Component {
 
   componentDidMount() {
-    const { lock } = this.props;
-    pinLoadingPane(l.id(lock));
-    setTimeout(() => unpinLoadingPane(l.id(lock)), 1200);
+    const { model } = this.props;
+    pinLoadingPane(l.id(model));
+    setTimeout(() => unpinLoadingPane(l.id(model)), 1200);
   }
 
   render() {
@@ -36,5 +36,5 @@ class LoadingPane extends React.Component {
 }
 
 LoadingPane.propTypes = {
-  lock: React.PropTypes.object.isRequired
+  model: React.PropTypes.object.isRequired
 };

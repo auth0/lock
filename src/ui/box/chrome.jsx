@@ -59,8 +59,8 @@ export default class Chrome extends React.Component {
       avatar,
       auxiliaryPane,
       backHandler,
+      contentComponent,
       contentProps,
-      contentRender,
       error,
       isSubmitting,
       logo,
@@ -99,6 +99,8 @@ export default class Chrome extends React.Component {
       ? <GlobalMessage key="global-success" message={success} type="success" />
       : null;
 
+    const Content = contentComponent;
+
     return (
       <div className="auth0-lock-cred-pane">
         <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={logo}/>
@@ -119,7 +121,7 @@ export default class Chrome extends React.Component {
                 <div className="auth0-lock-body-content">
                 <div className="auth0-lock-content" key={screenName}>
                   <div className="auth0-lock-form">
-                    {contentRender({focusSubmit: ::this.focusSubmit, ...contentProps})}
+                    <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                   </div>
                 </div>
                 {terms && <small className="auth0-lock-terms">{terms}</small>}
@@ -160,8 +162,8 @@ Chrome.propTypes = {
   avatar: React.PropTypes.string,
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
+  contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: React.PropTypes.object.isRequired,
-  contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
@@ -176,3 +178,5 @@ Chrome.propTypes = {
 Chrome.defaultProps = {
   showSubmitButton: true
 };
+
+global.window.React = React;

@@ -9,6 +9,35 @@ import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import * as l from '../../lock/index';
 import PaneSeparator from '../../lock/pane_separator';
 
+const Component = ({model, t}) => {
+  const headerText = t("headerText") || null;
+  const header = headerText && <p>{headerText}</p>;
+
+  const tabs =
+    <LoginSignUpTabs
+      key="loginsignup"
+      lock={model}
+      loginTabLabel={t("loginTabLabel", {__textOnly: true})}
+      signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
+    />;
+
+  const social = l.getEnabledConnections(model, "social").count() > 0
+    && <SocialButtonsPane lock={model} t={t} signUp={true} />;
+
+  const db =
+    <SignUpPane
+      emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
+      model={model}
+      passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
+      usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
+    />;
+
+  const separator = social
+    && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
+
+  return <div>{tabs}{header}{social}{separator}{db}</div>;
+};
+
 export default class SignUp extends Screen {
 
   constructor() {
@@ -27,33 +56,8 @@ export default class SignUp extends Screen {
     return true;
   }
 
-  render({model, t}) {
-    const headerText = t("headerText") || null;
-    const header = headerText && <p>{headerText}</p>;
-
-    const tabs =
-      <LoginSignUpTabs
-        key="loginsignup"
-        lock={model}
-        loginTabLabel={t("loginTabLabel", {__textOnly: true})}
-        signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
-      />;
-
-    const social = l.getEnabledConnections(model, "social").count() > 0
-      && <SocialButtonsPane lock={model} t={t} signUp={true} />;
-
-    const db =
-      <SignUpPane
-        emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
-        model={model}
-        passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
-        usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
-      />;
-
-    const separator = social
-      && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
-
-    return <div>{tabs}{header}{social}{separator}{db}</div>;
+  render() {
+    return Component;
   }
 
 }

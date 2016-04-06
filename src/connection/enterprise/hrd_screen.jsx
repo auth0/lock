@@ -5,6 +5,20 @@ import HRDPane from './hrd_pane';
 import { cancelHRD, signIn } from './actions';
 import { isSingleHRDConnection, ssoDomain }  from '../enterprise';
 
+const Component = ({model, t}) => {
+  const headerText = t("headerText", {domain: ssoDomain(model)}) || null;
+  const header = headerText && <p>{headerText}</p>;
+
+  return (
+    <HRDPane
+      header={header}
+      model={model}
+      passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
+      usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
+    />
+  );
+}
+
 export default class HRDScreen extends Screen {
 
   constructor() {
@@ -23,18 +37,8 @@ export default class HRDScreen extends Screen {
     return renderSignedInConfirmation(model);
   }
 
-  render({model, t}) {
-    const headerText = t("headerText", {domain: ssoDomain(model)}) || null;
-    const header = headerText && <p>{headerText}</p>;
-
-    return (
-      <HRDPane
-        header={header}
-        model={model}
-        passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
-        usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
-      />
-    );
+  render() {
+    return Component;
   }
 
 }

@@ -88,8 +88,8 @@ export default class Container extends React.Component {
       backHandler,
       badgeLink,
       closeHandler,
+      contentComponent,
       contentProps,
-      contentRender,
       disallowClose,
       error,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
@@ -156,8 +156,8 @@ export default class Container extends React.Component {
                 avatar={avatar}
                 auxiliaryPane={auxiliaryPane}
                 backHandler={backHandler}
+                contentComponent={contentComponent}
                 contentProps={contentProps}
-                contentRender={contentRender}
                 error={error}
                 isSubmitting={isSubmitting}
                 logo={logo}
@@ -186,8 +186,8 @@ Container.propTypes = {
   backHandler: React.PropTypes.func,
   badgeLink: React.PropTypes.string.isRequired,
   closeHandler: React.PropTypes.func,
+  contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: React.PropTypes.object.isRequired,
-  contentRender: React.PropTypes.func.isRequired,
   error: React.PropTypes.string,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,

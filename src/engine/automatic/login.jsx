@@ -23,12 +23,87 @@ import {
 } from '../../connection/enterprise';
 
 
+function shouldRenderTabs(m) {
+  return l.getEnabledConnections(m, "database").count() > 0
+    && hasScreen(m, "signUp")
+    && !isSSOEnabled(m);
+}
+
+function isSSOEnabled(m) {
+  return isSSODomain(
+    m,
+    usernameStyle(m) === "username"  ? c.username(m) : c.email(m)
+  );
+}
+
+function usernameStyle(m) {
+  return authWithUsername(m) && !isADEnabled(m) ? "username" : "email";
+}
+
 const SingleSignOnNotice = ({children}) => (
   <div className="auth0-sso-notice-container">
     <span dangerouslySetInnerHTML={{__html: icon}} /> {" "}
     <span className="auth0-sso-notice">{children}</span>
   </div>
 );
+
+const Component = ({model, t}) => {
+  const headerText = t("headerText") || null;
+  const header = headerText && <p>{headerText}</p>;
+
+  const sso = isSSOEnabled(model);
+  const onlySocial = l.getEnabledConnections(model).count() === l.getEnabledConnections(model, "social").count();
+
+  const tabs = shouldRenderTabs(model)
+    && <LoginSignUpTabs
+         key="loginsignup"
+         lock={model}
+         loginTabLabel={t("loginTabLabel", {__textOnly: true})}
+         signUpLink={signUpLink(model)}
+         signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
+       />;
+
+  const social = !sso  && l.getEnabledConnections(model, "social").count() > 0
+    && <SocialButtonsPane
+         lock={model}
+         showLoading={onlySocial}
+         signUp={false}
+         smallButtonsHeader={shouldRenderTabs(model) ? '' : t("smallSocialButtonsHeader", {__textOnly: true})}
+         t={t}
+       />;
+
+  const showPassword = !sso
+    && (l.getEnabledConnections(model, "database").count() > 0
+       || !!findADConnectionWithoutDomain(model));
+
+  const showForgotPasswordLink = showPassword
+    && l.getEnabledConnections(model, "database").count() > 0;
+
+  const login = (sso
+    || l.getEnabledConnections(model, "database").count() > 0
+    || l.getEnabledConnections(model, "enterprise").count() > 0)
+    && <LoginPane
+         emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
+         forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
+         lock={model}
+         passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
+         showForgotPasswordLink={showForgotPasswordLink}
+         showPassword={showPassword}
+         usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
+         usernameStyle={usernameStyle(model)}
+       />;
+
+  const ssoNotice = sso
+    && <SingleSignOnNotice>
+         {t("ssoEnabled", {__textOnly: true})}
+       </SingleSignOnNotice>;
+
+  const separator = social && login
+    && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
+
+  return <div>{ssoNotice}{tabs}{header}{social}{separator}{login}</div>;
+
+};
 
 export default class Login extends Screen {
 
@@ -41,7 +116,7 @@ export default class Login extends Screen {
   }
 
   renderTabs(model) {
-    return this.shouldRenderTabs(model);
+    return shouldRenderTabs(model);
   }
 
   submitHandler(model) {
@@ -53,87 +128,13 @@ export default class Login extends Screen {
       return startHRD;
     }
 
-    return this.isSSOEnabled(model) || l.getEnabledConnections(model, "database").count() === 0
+    return isSSOEnabled(model) || l.getEnabledConnections(model, "database").count() === 0
       ? enterpriseSignIn
       : databaseSignIn;
   }
 
-  shouldRenderTabs(lock) {
-    return l.getEnabledConnections(lock, "database").count() > 0
-      && hasScreen(lock, "signUp")
-      && !this.isSSOEnabled(lock);
-  }
-
-  isSSOEnabled(model) {
-    return isSSODomain(
-      model,
-      this.usernameStyle(model) === "username"
-        ? c.username(model)
-        : c.email(model)
-    );
-  }
-
-  usernameStyle(model) {
-    return authWithUsername(model) && !isADEnabled(model)
-      ? "username"
-      : "email";
-  }
-
-  render({model, t}) {
-    const headerText = t("headerText") || null;
-    const header = headerText && <p>{headerText}</p>;
-
-    const sso = this.isSSOEnabled(model);
-    const onlySocial = l.getEnabledConnections(model).count() === l.getEnabledConnections(model, "social").count();
-
-    const tabs = this.shouldRenderTabs(model)
-      && <LoginSignUpTabs
-           key="loginsignup"
-           lock={model}
-           loginTabLabel={t("loginTabLabel", {__textOnly: true})}
-           signUpLink={signUpLink(model)}
-           signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
-         />;
-
-    const social = !sso && l.getEnabledConnections(model, "social").count() > 0
-      && <SocialButtonsPane
-           lock={model}
-           showLoading={onlySocial}
-           signUp={false}
-           smallButtonsHeader={this.shouldRenderTabs(model) ? '' : t("smallSocialButtonsHeader", {__textOnly: true})}
-           t={t}
-         />;
-
-    const showPassword = !sso
-      && (l.getEnabledConnections(model, "database").count() > 0
-         || !!findADConnectionWithoutDomain(model));
-
-    const showForgotPasswordLink = showPassword
-      && l.getEnabledConnections(model, "database").count() > 0;
-
-    const login = (sso
-      || l.getEnabledConnections(model, "database").count() > 0
-      || l.getEnabledConnections(model, "enterprise").count() > 0)
-      && <LoginPane
-           emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
-           forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
-           lock={model}
-           passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
-           showForgotPasswordLink={showForgotPasswordLink}
-           showPassword={showPassword}
-           usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
-           usernameStyle={this.usernameStyle(model)}
-         />;
-
-    const ssoNotice = sso
-      && <SingleSignOnNotice>
-           {t("ssoEnabled", {__textOnly: true})}
-         </SingleSignOnNotice>;
-
-    const separator = social && login
-      && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
-
-    return <div>{ssoNotice}{tabs}{header}{social}{separator}{login}</div>;
+  render() {
+    return Component;
   }
 
 }

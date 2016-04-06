@@ -7,6 +7,22 @@ import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
 
+const Component = ({model, t}) => {
+  const headerText = t("headerText") || null;
+  const header = headerText && <p>{headerText}</p>;
+
+  return (
+    <QuickAuthPane
+      alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
+      alternativeClickHandler={() => skipQuickAuth(l.id(model))}
+      buttonLabel={lastUsedUsername(model)}
+      buttonClickHandler={() => signIn(l.id(model), lastUsedConnection(model))}
+      header={header}
+      strategy={lastUsedConnection(model).strategy}
+    />
+  );
+};
+
 export default class LastLoginScreen extends Screen {
 
   constructor() {
@@ -17,20 +33,8 @@ export default class LastLoginScreen extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
-  render({model, t}) {
-    const headerText = t("headerText") || null;
-    const header = headerText && <p>{headerText}</p>;
-
-    return (
-      <QuickAuthPane
-        alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
-        alternativeClickHandler={() => skipQuickAuth(l.id(model))}
-        buttonLabel={lastUsedUsername(model)}
-        buttonClickHandler={() => signIn(l.id(model), lastUsedConnection(model))}
-        header={header}
-        strategy={lastUsedConnection(model).strategy}
-      />
-    );
+  render() {
+    return Component;
   }
 
 }

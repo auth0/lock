@@ -3,6 +3,16 @@ import Screen from '../../lock/screen';
 import SocialButtonsPane from './social_buttons_pane';
 import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
 
+const Component = ({model, t}) => (
+  <SocialButtonsPane
+    lock={model}
+    showLoading={true}
+    signUp={false}
+    smallButtonsHeader={t("smallSocialButtonsHeader", {__textOnly: true})}
+    t={t}
+  />
+);
+
 export default class AskSocialNetwork extends Screen {
 
   constructor() {
@@ -13,15 +23,7 @@ export default class AskSocialNetwork extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
-  render({model, t}) {
-    return(
-      <SocialButtonsPane
-        lock={model}
-        showLoading={true}
-        signUp={false}
-        smallButtonsHeader={t("smallSocialButtonsHeader", {__textOnly: true})}
-        t={t}
-      />
-    );
+  render() {
+    return Component;
   }
 }

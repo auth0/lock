@@ -1,12 +1,17 @@
 import React from 'react';
 import Screen from '../../lock/screen';
 import PhoneNumberPane from './phone_number_pane';
-
 import { renderAskLocation } from './ask_location';
-
 import { cancelSelectPhoneLocation } from './actions';
 import { selectingLocation } from './index';
 
+const Component = ({focusSubmit, model, t}) => (
+  <PhoneNumberPane
+    focusSubmit={focusSubmit}
+    lock={model}
+    placeholder={t("phoneNumberInputPlaceholder", {__textOnly: true})}
+  />
+);
 
 export default class AskPhoneNumber extends Screen {
 
@@ -22,14 +27,8 @@ export default class AskPhoneNumber extends Screen {
     return renderAskLocation(lock);
   }
 
-  render({focusSubmit, model, t}) {
-    return (
-      <PhoneNumberPane
-        focusSubmit={focusSubmit}
-        lock={model}
-        placeholder={t("phoneNumberInputPlaceholder", {__textOnly: true})}
-      />
-    );
+  render() {
+    return Component;
   }
 
 }

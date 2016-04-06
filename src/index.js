@@ -95,8 +95,8 @@ export default class Base extends EventEmitter {
             closeHandler: l.ui.closable(m)
               ? (...args) => closeLock(l.id(m), ...args)
               : undefined,
+            contentComponent: screen.render(),
             contentProps: {model: m, t},
-            contentRender: ::screen.render,
             error: l.globalError(m),
             isMobile: l.ui.mobile(m),
             isModal: l.ui.appendContainer(m),

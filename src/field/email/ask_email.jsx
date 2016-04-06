@@ -2,6 +2,12 @@ import React from 'react';
 import Screen from '../../lock/screen';
 import EmailPane from './email_pane';
 
+const Component = ({model, t}) => (
+  <EmailPane
+    lock={model}
+    placeholder={t("emailInputPlaceholder", {__textOnly: true})}
+  />
+);
 
 export default class AskEmail extends Screen {
 
@@ -9,13 +15,8 @@ export default class AskEmail extends Screen {
     super("email");
   }
 
-  render({model, t}) {
-    return (
-      <EmailPane
-        lock={model}
-        placeholder={t("emailInputPlaceholder", {__textOnly: true})}
-      />
-    );
+  render() {
+    return Component;
   }
 
 }
