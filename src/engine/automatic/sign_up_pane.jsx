@@ -6,7 +6,7 @@ import {
   authWithUsername,
   additionalSignUpFields,
   passwordStrengthPolicy,
-} from '../../database/index';
+} from '../../connection/database/index';
 import { changeField } from '../../field/actions';
 import TextInput from '../../ui/input/text_input';
 import { isFieldVisiblyInvalid } from '../../field/index';

@@ -1,10 +1,10 @@
 import React from 'react';
-import EmailPane from '../field/email/email_pane';
-import UsernamePane from '../field/username/username_pane';
-import PasswordPane from '../field/password/password_pane';
+import EmailPane from '../../field/email/email_pane';
+import UsernamePane from '../../field/username/username_pane';
+import PasswordPane from '../../field/password/password_pane';
 import { showResetPasswordActivity } from './actions';
 import { authWithUsername, hasScreen, forgotPasswordLink } from './index';
-import * as l from '../core/index';
+import * as l from '../../core/index';
 
 export default class LoginPane extends React.Component {
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import Screen from '../../core/screen';
-import { hasScreen } from '../../database/index';
-import { signUp } from '../../database/actions';
-import LoginSignUpTabs from '../../database/login_sign_up_tabs';
-import { renderSignedUpConfirmation } from '../../database/signed_up_confirmation';
+import { hasScreen } from '../../connection/database/index';
+import { signUp } from '../../connection/database/actions';
+import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
+import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
 import SignUpPane from './sign_up_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import * as l from '../../core/index';

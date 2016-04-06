@@ -1,8 +1,8 @@
 import React from 'react';
-import EmailPane from '../field/email/email_pane';
-import UsernamePane from '../field/username/username_pane';
+import EmailPane from '../../field/email/email_pane';
+import UsernamePane from '../../field/username/username_pane';
 import { authWithUsername } from './index';
-import * as l from '../core/index';
+import * as l from '../../core/index';
 
 export default class ResetPasswordPane extends React.Component {
   static propTypes = {

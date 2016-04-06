@@ -1,7 +1,7 @@
 import React from 'react';
-import SuccessPane from '../ui/box/success_pane';
-import { closeLock } from '../core/actions';
-import * as l from '../core/index';
+import SuccessPane from '../../ui/box/success_pane';
+import { closeLock } from '../../core/actions';
+import * as l from '../../core/index';
 import { shouldAutoLogin } from './index';
 
 

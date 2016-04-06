@@ -1,5 +1,5 @@
 import React from 'react';
-import Screen from '../core/screen';
+import Screen from '../../core/screen';
 import ResetPasswordPane from './reset_password_pane';
 import { authWithUsername } from './index';
 import { cancelResetPassword, resetPassword } from './actions';

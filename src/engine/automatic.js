@@ -1,9 +1,9 @@
 import Base from '../index';
 import Login from './automatic/login';
 import SignUp from './automatic/sign_up_screen';
-import ResetPassword from '../database/reset_password';
+import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
-import { getScreen, initDatabase } from '../database/index';
+import { getScreen, initDatabase } from '../connection/database/index';
 import {
   initEnterprise,
   isHRDActive,

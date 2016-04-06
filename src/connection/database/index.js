@@ -1,8 +1,8 @@
 import Immutable, { List, Map } from 'immutable';
-import * as l from '../core/index';
-import * as client from '../core/client/index';
-import { clearFields, setField } from '../field/index';
-import { dataFns } from '../utils/data_utils';
+import * as l from '../../core/index';
+import * as client from '../../core/client/index';
+import { clearFields, setField } from '../../field/index';
+import { dataFns } from '../../utils/data_utils';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
