@@ -17,6 +17,7 @@ function processDatabaseOptions(options) {
     additionalSignUpFields,
     allowForgotPassword,
     allowSignUp,
+    defaultDatabaseConnection,
     forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
@@ -46,6 +47,11 @@ function processDatabaseOptions(options) {
     l.warn(options, "The `allowSignUp` option will be ignored, because it is not a booelan.");
   } else if (allowSignUp === false) {
     screens = screens.filter(x => x != "signUp");
+  }
+
+  if (defaultDatabaseConnection != undefined && typeof defaultDatabaseConnection !== "string") {
+    l.warn(options, "The `defaultDatabaseConnection` option will be ignored, because it is not a string.");
+    defaultDatabaseConnection = undefined;
   }
 
   if (forgotPasswordLink != undefined && typeof forgotPasswordLink != "string") {
@@ -84,6 +90,7 @@ function processDatabaseOptions(options) {
 
   return Map({
     additionalSignUpFields,
+    defaultConnectionName: defaultDatabaseConnection,
     forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
@@ -93,12 +100,21 @@ function processDatabaseOptions(options) {
   }).filter(x => typeof x !== "undefined").toJS();
 }
 
+export function defaultDatabaseConnection(m) {
+  const name = defaultDatabaseConnectionName(m);
+  return name && l.findConnection(m, name);
+}
+
+export function defaultDatabaseConnectionName(m) {
+  return get(m, "defaultConnectionName");
+}
+
 export function databaseConnection(m) {
-  return l.connections(m, "database").get(0, Map());
+  return defaultDatabaseConnection(m) || l.connection(m, "database");
 }
 
 export function databaseConnectionName(m) {
-  return databaseConnection(m).get("name");
+  return (databaseConnection(m) || Map()).get("name");
 }
 
 export function forgotPasswordLink(m, notFound="") {
@@ -130,12 +146,12 @@ export function getScreen(m) {
 }
 
 export function authWithUsername(m) {
-  const { requires_username } = databaseConnection(m).toJS();
+  const { requires_username } = (databaseConnection(m) || Map()).toJS();
   return requires_username || get(m, "usernameStyle") === "username";
 }
 
 export function hasScreen(m, s) {
-  const { showForgot, showSignup } = databaseConnection(m).toJS();
+  const { showForgot, showSignup } = (databaseConnection(m) || Map()).toJS();
 
   return !(showForgot === false && s === "forgotPassword")
     && !(showSignup === false && s === "signUp")
@@ -147,7 +163,7 @@ export function shouldAutoLogin(m) {
 }
 
 export function passwordStrengthPolicy(m) {
-  return databaseConnection(m).get("passwordPolicy", "none");
+  return (databaseConnection(m) || Map()).get("passwordPolicy", "none");
 }
 
 export function additionalSignUpFields(m) {

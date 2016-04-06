@@ -3,7 +3,12 @@ import Login from './automatic/login';
 import SignUp from './automatic/sign_up_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
-import { getScreen, initDatabase } from '../connection/database/index';
+import {
+  defaultDatabaseConnection,
+  defaultDatabaseConnectionName,
+  getScreen,
+  initDatabase
+} from '../connection/database/index';
 import {
   initEnterprise,
   isHRDActive,
@@ -50,6 +55,10 @@ export default class Auth0Lock extends Base {
     if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
       // TODO: improve message
       throw new Error("At least one database, enterprise or social connection needs to be available.");
+    }
+
+    if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
+      l.warn(m, `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`);
     }
   }
 

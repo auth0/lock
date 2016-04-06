@@ -237,6 +237,10 @@ export function connections(m, type = undefined, ...strategies) {
     : xs;
 }
 
+export function connection(m, type = undefined, ...strategies) {
+  return connections(m, type, ...strategies).get(0);
+}
+
 export function hasOnlyConnections(m, type = undefined, ...strategies) {
   const all = connections(m).count();
   const filtered = connections(m, type, ...strategies).count();
@@ -245,6 +249,10 @@ export function hasOnlyConnections(m, type = undefined, ...strategies) {
 
 export function hasSomeConnections(m, type = undefined, ...strategies) {
   return connections(m, type, ...strategies).count() > 0;
+}
+
+export function findConnection(m, name) {
+  return connections(m).find(m1 => m1.get("name") === name);
 }
 
 export function hasConnection(m, name) {

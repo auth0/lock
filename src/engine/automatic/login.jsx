@@ -3,7 +3,12 @@ import Screen from '../../core/screen';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import LoginPane from '../../connection/database/login_pane';
 import PaneSeparator from '../../core/pane_separator';
-import { hasScreen, signUpLink, authWithUsername } from '../../connection/database/index';
+import {
+  defaultDatabaseConnection,
+  hasScreen,
+  signUpLink,
+  authWithUsername
+} from '../../connection/database/index';
 import { signIn as databaseSignIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
@@ -129,9 +134,15 @@ export default class Login extends Screen {
       return startHRD;
     }
 
-    return isSSOEnabled(model) || !l.hasSomeConnections(model, "database")
-      ? enterpriseSignIn
-      : databaseSignIn;
+    // TODO: real conditions for using a db connection are:
+    // 1. no sso
+    // 2. db conn exist
+    // 3. no defaultEnterpriseConnection
+
+    const useDatabaseConnection = !isSSOEnabled(model)
+      && defaultDatabaseConnection(model);
+
+    return useDatabaseConnection ? databaseSignIn : enterpriseSignIn
   }
 
   render() {
