@@ -16,7 +16,7 @@ export function findSSOConnection(m, email, strategies = []) {
   // TODO: could it just read the `email` from `m`?
   const target = emailDomain(email);
   if (!domain) return false;
-  return l.getEnabledConnections(m, "enterprise", ...strategies).find(x => {
+  return l.connections(m, "enterprise", ...strategies).find(x => {
     // TODO: `domain` seems to be always in the `domain_aliases` list,
     // so the `push` here might be unnecessary
     const domain = x.get("domain");
@@ -35,7 +35,7 @@ export function isSSODomain(m, email, strategies = []) {
 
 export function ssoDomain(m) {
   return isSingleHRDConnection(m)
-    ? l.getEnabledConnections(m, "enterprise").getIn([0, "domain"])
+    ? l.connections(m, "enterprise").getIn([0, "domain"])
     : emailDomain(getFieldValue(m, "email"));
 }
 
@@ -46,7 +46,7 @@ export function isADEnabled(m) {
 }
 
 export function findADConnectionWithoutDomain(m) {
-  l.getEnabledConnections(m, "enterprise", "ad", "auth0-adldap").find(x => (
+  l.connections(m, "enterprise", "ad", "auth0-adldap").find(x => (
     !x.get("domain") && x.get("domain_aliases", new List()).isEmpty()
   ));
 }
@@ -60,7 +60,7 @@ export function isInCorpNetwork(m) {
 // hrd
 
 export function isSingleHRDConnection(m) {
-  return isADEnabled(m) && l.getEnabledConnections(m).count() === 1;
+  return isADEnabled(m) && l.connections(m).count() === 1;
 }
 
 export function isHRDDomain(m, email) {

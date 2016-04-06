@@ -226,25 +226,25 @@ export function getPickedConnections(m) {
   return get(m, "pickedConnections");
 }
 
-export function getEnabledConnections(m, type = undefined, ...strategies) {
+export function connections(m, type = undefined, ...strategies) {
   if (arguments.length === 1) {
-    return get(m, "enabledConnections", Map()).valueSeq().flatten(true);
+    return get(m, "connections", Map()).valueSeq().flatten(true);
   }
 
-  const xs = get(m, ["enabledConnections", type], List());
+  const xs = get(m, ["connections", type], List());
   return strategies.length > 0
     ? xs.filter(x => ~strategies.indexOf(x.get("strategy")))
     : xs;
 }
 
 export function hasOnlyConnections(m, type = undefined, ...strategies) {
-  const all = getEnabledConnections(m).count();
-  const filtered = getEnabledConnections(m, type, ...strategies).count();
+  const all = connections(m).count();
+  const filtered = connections(m, type, ...strategies).count();
   return all > 0 && all === filtered;
 }
 
 export function hasSomeConnections(m, type = undefined, ...strategies) {
-  return getEnabledConnections(m, type, ...strategies).count() > 0;
+  return connections(m, type, ...strategies).count() > 0;
 }
 
 // export function hasEnabledConnections(m, type, ...strategies) {
@@ -253,7 +253,7 @@ export function hasSomeConnections(m, type = undefined, ...strategies) {
 
 export function isConnectionEnabled(m, name) {
   // TODO: is the name enough? shouldn't we check for strategy and/or type?
-  return get(m, "enabledConnections", Map())
+  return get(m, "connections", Map())
     .flatten(true)
     .some(c => c.get("name") === name);
 }

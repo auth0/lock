@@ -33,7 +33,7 @@ function syncClientSettings(lockID, cb) {
       // TODO: abstract setting enabled connections
       return m.set("client", client.set("syncStatus", "ok"))
         .setIn(
-          ["core", "enabledConnections"],
+          ["core", "connections"],
           pickConnections(client, l.getPickedConnections(m))
         );
     });

@@ -94,7 +94,7 @@ function processDatabaseOptions(options) {
 }
 
 export function databaseConnection(m) {
-  return l.getEnabledConnections(m, "database").get(0, Map());
+  return l.connections(m, "database").get(0, Map());
 }
 
 export function databaseConnectionName(m) {

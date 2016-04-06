@@ -65,7 +65,7 @@ function processSocialOptions(options) {
 
 export function socialConnections(m) {
   // TODO: not sure if returning a js object here is a good idea
-  const xs = l.getEnabledConnections(m, "social");
+  const xs = l.connections(m, "social");
   return xs ? xs.toJS() : [];
 }
 
