@@ -67,6 +67,7 @@ function syncSSOData(lockID) {
 }
 
 function syncLocation(id) {
+  // TODO: don't use a separate entity for location
   const location = read(getEntity, "location", 0);
   if (location && location.get("syncStatus")) return;
 

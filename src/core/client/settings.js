@@ -1,6 +1,5 @@
 import Auth0 from 'auth0-js';
 import Immutable from 'immutable';
-import { setEntity, swap } from '../../store/index';
 import { endsWith } from '../../utils/string_utils';
 
 export function fetchClientSettings(clientID, domain, assetsUrl, cb = () => {}) {
