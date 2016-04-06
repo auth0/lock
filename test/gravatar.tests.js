@@ -1,4 +1,3 @@
-
 /* global bean */
 
 var clientID  = '0HP71GSd6PuoRYJ3DXKdiXCUUdGmBbup';
@@ -32,7 +31,7 @@ describe('gravatar', function () {
   });
 
   it('should display gravatar when email has an associated gravatar account', function (done) {
-    var expectedGravatarURL = 'https://www.gravatar.com/avatar/9d8d8bff4484ddadf83684d88cb10188?d=404';
+    var expectedGravatarURL = 'https://www.gravatar.com/avatar/9d8d8bff4484ddadf83684d88cb10188?d=404&s=160';
     var gravatarEmail = 'albertopose@gmail.com';
 
     // Should never happen
