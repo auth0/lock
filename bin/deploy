@@ -27,6 +27,11 @@ else
     git checkout "$WORKING_BRANCH"
     git push origin $TAG_NAME
     git checkout "$WORKING_BRANCH"
+    echo "working branch $WORKING_BRANCH"
+    echo "working branch $GITHUB_RELEASE_BRANCH"
+    if [ "$WORKING_BRANCH" == "" ] || [ "$WORKING_BRANCH" == "dist" ] ; then
+        exit 1
+    fi
     git branch -D dist
 fi
 
