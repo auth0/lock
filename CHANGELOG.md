@@ -1,3 +1,22 @@
+## [9.0.2] - 2016-04-07
+
+### Fixed
+
+- [] Merge pull request #342 from auth0/bigger-gravatars (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a5cef2bd4f74fe118a3d2b345c84e432083d82e8
+- [] Merge pull request #345 from auth0/utm-campaing (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ef01ccfb5ecd93080d5eb69d713c8fdd4467d06b
+- [] Fix gravatar test (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1955791b4284ede3de70180d5a10511642fd4ad3
+- [] Add campaing params to badge link (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1ea7882103e9e9746d424f6c74f54468c3fe4cd5
+- [] Merge pull request #344 from auth0/ngrok (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/982a6ab622fcf82a910562efac6ad64a5ab77892
+- [] First attempt to get test running with ngrok 2 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/29ade45a203a8f996176624f9be73e9a7d75647d
+- [] Use bigger Gravatars (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/bb68bd98ce3def8d68adf400241cf7dbe31fb6bc
+
 ## [9.0.1] - 2016-03-18
 
 ### Fixed
