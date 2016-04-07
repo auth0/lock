@@ -1,7 +1,32 @@
+## [7.14.1] - 2016-04-07
+
+### Fixed
+
+- [] Merge pull request #347 from auth0/v7-backports (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ac3c8a95cc49d4771b75e8467a0b16790c8154af
+- [] Improve debug in deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/ed713a70c2bf40022e82a6265232d86fb86644ae
+- [] Update telemetry info (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/29a748a6aaa90182bd9a56bc12412f17ff1de73e
+- [] Get test running with ngrok 2 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a22cc9aed46f752ecddf72b37b042edc60f2cedd
+- [] Add campaing params to badge link (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/d1c14414e90855e97020626b4fc0dfb643e7781e
+- [] Debug deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/5dc63c55e09f492d18de16016888cc87635351db
+- [] Publish v7 versions with the "support" tag (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c3567c49b5947aaac69e8511d3d87a66641464c1
+- [] Fix deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/72f599b1082841c2d9aa905532547bb668b22841
+- [] Fix deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0c35179e4b335054233abc14770285447e5bad16
+
 ## [7.14.0] - 2016-03-03
 
 ### Fixed
 
+- [] Add deploy npm script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b5d5a71c7329b2be66d1450a271e52c35bc41a33
 - [] Merge pull request #329 from auth0/v7-new-password-flow (`Gabriel Andretta`)
   https://github.com/auth0/lock/commit/31d45baf526f72d624f6a403deb62bf0d950f931
 - [] Add new password reset flow (`Gabriel Andretta`)
