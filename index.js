@@ -115,6 +115,13 @@ function Auth0Lock (clientID, domain, options) {
 Auth0Lock.version = require('package.version');
 
 /**
+ * Configure telemetry
+ */
+Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
+Auth0.clientInfo.name = "lock.js";
+Auth0.clientInfo.version = Auth0Lock.version;
+
+/**
  * Inherit from `EventEmitter`
  */
 
