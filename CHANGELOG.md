@@ -1,3 +1,20 @@
+## [8.3.1] - 2016-04-07
+
+### Fixed
+
+- [] Merge pull request #346 from auth0/v8-backports (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/786e2435b0bfb5d360520b066a604c664e7bfef0
+- [] Update telemetry info (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/de03ecec25e9d903ab56703e59824b6376903b77
+- [] Get test running with ngrok 2 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c0608f55b129239a1dddad1869b21eb9ecbab803
+- [] Add campaing params to badge link (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c86795989dd6796dab52e859afa3a96a8bd8b815
+- [] Publish v8 versions with the "support" tag (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f2a259322615e732600104296f63dd4860d73a56
+- [] Fix deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b37325f72d32fb8dc6539152f99c9436336c07ac
+
 ## [8.3.0] - 2016-03-03
 
 ### Fixed
