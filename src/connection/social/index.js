@@ -46,7 +46,7 @@ export function initSocial(m, options) {
 }
 
 export function displayName(connection) {
-  return STRATEGIES[connection.strategy];
+  return STRATEGIES[connection.get("strategy")];
 }
 
 function processSocialOptions(options) {
@@ -64,14 +64,12 @@ function processSocialOptions(options) {
 }
 
 export function socialConnections(m) {
-  // TODO: not sure if returning a js object here is a good idea
-  const xs = l.connections(m, "social");
-  return xs ? xs.toJS() : [];
+  return l.connections(m, "social");
 }
 
 export function useBigButtons(m) {
   const x = get(m, "socialButtonStyle", 3);
   return typeof x === "number"
-    ? socialConnections(m).length <= x
+    ? socialConnections(m).count() <= x
     : x === "big";
 }

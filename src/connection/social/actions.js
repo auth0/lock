@@ -10,11 +10,11 @@ export function signIn(id, connection) {
   const lock = read(getEntity, "lock", id);
 
   const options = l.withAuthOptions(lock, {
-    connection: connection.name,
+    connection: connection.get("name"),
     popupOptions: l.ui.popupOptions(lock)
   });
 
-  if (!l.auth.redirect(lock) && connection.strategy === "facebook") {
+  if (!l.auth.redirect(lock) && connection.get("strategy") === "facebook") {
     options.display = "popup";
   }
 
