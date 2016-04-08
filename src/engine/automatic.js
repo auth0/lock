@@ -15,7 +15,8 @@ import {
   initEnterprise,
   isHRDActive,
   isInCorpNetwork,
-  isSingleHRDConnection
+  isSingleHRDConnection,
+  quickAuthConnection
 } from '../connection/enterprise';
 import { initSocial } from '../connection/social/index';
 import { setEmail } from '../field/email';
@@ -23,6 +24,7 @@ import { setUsername } from '../field/username';
 import * as l from '../core/index';
 import KerberosScreen from '../connection/enterprise/kerberos_screen';
 import HRDScreen from '../connection/enterprise/hrd_screen';
+import EnterpriseQuickAuthScreen from '../connection/enterprise/quick_auth_screen';
 import { hasSkippedQuickAuth } from '../quick_auth';
 
 export default class Auth0Lock extends Base {
@@ -72,6 +74,10 @@ export default class Auth0Lock extends Base {
   render(m) {
     const ssoScreen = renderSSOScreens(m);
     if (ssoScreen) return ssoScreen;
+
+    if (quickAuthConnection(m)) {
+      return new EnterpriseQuickAuthScreen();
+    }
 
     if (isInCorpNetwork(m) && !hasSkippedQuickAuth(m)) {
       return new KerberosScreen();

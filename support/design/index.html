@@ -64,9 +64,16 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>Enterprise (single connection)</h2>
+  </div>
+  <div class="lock-container" id="single-enterprise-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>HRD (single connection)</h2>
   </div>
-  <div class="lock-container" id="hrd-container"></div>
+  <div class="lock-container" id="single-hrd-container"></div>
 </div>
 
 <div class="container">
@@ -84,13 +91,6 @@ body {
     <h2>AD (no domain) + db (*)</h2>
   </div>
   <div class="lock-container" id="ad-no-domain-container"></div>
-</div>
-
-<div class="container">
-  <div class="info">
-    <h2>SSO Only</h2>
-  </div>
-  <div class="lock-container" id="sso-only-container"></div>
 </div>
 
 <div class="container">
@@ -180,8 +180,14 @@ body {
 
  new Auth0Lock(cid, domain, {
    auth: { redirect: false, sso: false },
+   connections: ["auth0.com"],
+   container: "single-enterprise-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   auth: { redirect: false, sso: false },
    connections: ["rolodato"],
-   container: "hrd-container"
+   container: "single-hrd-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
@@ -200,12 +206,6 @@ body {
    auth: { redirect: false },
    connections: ["rolodato", "facebook"],
    container: "kerberos-container"
- }).show();
-
- new Auth0Lock(cid, domain, {
-   auth: { redirect: false },
-   connections: ["auth0.com"],
-   container: "sso-only-container"
  }).show();
 
  new Auth0Lock(cid, domain, {

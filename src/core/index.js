@@ -227,6 +227,8 @@ export function getPickedConnections(m) {
 }
 
 export function connections(m, type = undefined, ...strategies) {
+  // TODO: is this considering "unknown" connections? it should not
+
   if (arguments.length === 1) {
     return get(m, "connections", Map()).valueSeq().flatten(true);
   }
@@ -239,6 +241,10 @@ export function connections(m, type = undefined, ...strategies) {
 
 export function connection(m, type = undefined, ...strategies) {
   return connections(m, type, ...strategies).get(0);
+}
+
+export function hasOneConnection(m) {
+  return connections(m).count() === 1;
 }
 
 export function hasOnlyConnections(m, type = undefined, ...strategies) {

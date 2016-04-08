@@ -81,6 +81,12 @@ export function ssoDomain(m) {
     : emailDomain(getFieldValue(m, "email"));
 }
 
+export function quickAuthConnection(m) {
+  return !isADEnabled(m) && l.connections(m, "enterprise").count() === 1
+    ? l.connections(m, "enterprise").get(0)
+    : null;
+}
+
 // ad / adldap
 
 export function isADEnabled(m) {
