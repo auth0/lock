@@ -11,6 +11,7 @@ export default {
       "lock.fallback": "We're sorry, something went wrong when attempting to log in.",
       "lock.network": "We could not reach the server. Please check your connection and try again.",
       "lock.popup_closed": "Popup window closed. Try again.",
+      "lock.unauthorized": "Permissions were not granted. Try again.",
       "password_change_required": "You need to update your password because this is the first time you are signing in, or because your password has expired." // TODO: verify error code
     },
     passwordless: {

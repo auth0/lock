@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
-import { signIn } from '../../connection/social/actions';
+import { logIn } from '../../quick_auth/actions';
 import {
   displayName,
   socialConnections,
@@ -25,7 +25,7 @@ export default class SocialButtonsPane extends React.Component {
         isBig={useBigButtons(lock)}
         key={x.get("name")}
         label={t(signUp ? "signUpWith" : "loginWith", {idp: displayName(x), __textOnly: true})}
-        onClick={() => signIn(l.id(lock), x)}
+        onClick={() => logIn(l.id(lock), x)}
         strategy={x.get("strategy")}
       />
     ));
