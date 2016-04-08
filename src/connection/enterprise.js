@@ -81,7 +81,13 @@ export function findADConnectionWithoutDomain(m, name = undefined) {
 // kerberos
 
 export function isInCorpNetwork(m) {
-  return m.getIn(["sso", "connection"], undefined) != undefined;
+  return corpNetworkConnection(m) !== undefined;
+}
+
+export function corpNetworkConnection(m) {
+  // TODO: ensure there is a connection there with the expected
+  // format.
+  return m.getIn(["sso", "connection"]);
 }
 
 // hrd

@@ -1,15 +1,15 @@
 import React from 'react';
 import Screen from '../../core/screen';
 import QuickAuthPane from '../../ui/pane/quick_auth_pane';
-import { skipQuickAuth } from '../../quick-auth/actions';
+import { logIn, skipQuickAuth } from '../../quick-auth/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import * as l from '../../core/index';
+import { corpNetworkConnection } from '../enterprise';
 
 const Component = ({model, t}) => {
   const headerText = t("headerText") || null;
   const header = headerText && <p>{headerText}</p>;
 
-  // TODO: implement click handler.
   // TODO: provide translation for button label.
 
   return (
@@ -17,7 +17,7 @@ const Component = ({model, t}) => {
       alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
       buttonLabel="Windows Authentication"
-      buttonClickHandler={e => alert("not implemented")}
+      buttonClickHandler={e => logIn(l.id(model), corpNetworkConnection(model))}
       header={header}
       strategy="windows"
     />
