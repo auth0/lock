@@ -22,7 +22,6 @@ export function logIn(id, connection, loginHint) {
     options.display = "popup";
   }
 
-  // TODO: verify that loginHint is actually used
   if (connection.strategy === "google-oauth2" && loginHint) {
     options.login_hint = loginHint;
   }

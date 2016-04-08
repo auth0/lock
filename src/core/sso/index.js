@@ -14,7 +14,7 @@ export function renderSSOScreens(m) {
     return null;
   }
 
-  const { name, strategy } = lastUsedConnection(m);
+  const { name, strategy } = lastUsedConnection(m).toJS();
 
   return !hasSkippedQuickAuth(m) && hasConnection(m, name)
     ? new LastLoginScreen()
@@ -23,7 +23,7 @@ export function renderSSOScreens(m) {
 
 export function lastUsedConnection(m) {
   // { name, strategy }
-  return m.getIn(["sso", "lastUsedConnection"], Map()).toJS();
+  return m.getIn(["sso", "lastUsedConnection"], Map());
 }
 
 export function lastUsedUsername(m) {
