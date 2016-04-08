@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
-import { logIn } from '../../quick_auth/actions';
+import { logIn } from '../../quick-auth/actions';
 import {
   displayName,
   socialConnections,

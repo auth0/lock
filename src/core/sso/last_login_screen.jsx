@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../screen';
 import QuickAuthPane from '../../ui/pane/quick_auth_pane';
 import { signIn } from './actions';
-import { skipQuickAuth } from '../../quick_auth/actions';
+import { skipQuickAuth } from '../../quick-auth/actions';
 import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
