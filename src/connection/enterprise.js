@@ -6,6 +6,23 @@ import { getFieldValue } from '../field/index';
 
 const { get, initNS, tget, tset } = dataFns(["enterprise"]);
 
+// TODO: Android version also has "google-opendid" in the list, but we
+// consider it to be a social connection. See
+// https://github.com/auth0/Lock.Android/blob/98262cb7110e5d1c8a97e1129faf2621c1d8d111/lock/src/main/java/com/auth0/android/lock/utils/Strategies.java
+export const STRATEGIES = {
+  "ad": "AD / LDAP",
+  "adfs": "ADFS",
+  "auth0-adldap": "AD/LDAP",
+  "custom": "Custom Auth",
+  "google-apps": "Google Apps",
+  "ip": "IP Address",
+  "mscrm": "Dynamics CRM",
+  "office365": "Office365",
+  "pingfederate": "Ping Federate",
+  "samlp": "SAML",
+  "sharepoint": "SharePoint Apps",
+  "waad": "Windows Azure AD"
+}
 
 export function initEnterprise(m, opts) {
   return initNS(m, Immutable.fromJS(processOptions(opts)));

@@ -1,6 +1,7 @@
 import { List, Map } from 'immutable';
 // TODOL this module should depend from social stuff
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
+import { STRATEGIES as ENTERPRISE_STRATEGIES } from '../../connection/enterprise';
 
 export function connection(m, strategyName, name) {
   // TODO: this function should take a client, not a map with a client
@@ -27,10 +28,10 @@ function strategyNameToConnectionType(str) {
     return "passwordless";
   } else if (SOCIAL_STRATEGIES[str]) {
     return "social";
-  } else {
-    // TODO: replace this for a proper check for enterprise
-    // connections, and return "unknown" if it can't be found.
+  } else if (ENTERPRISE_STRATEGIES[str]) {
     return "enterprise";
+  } else {
+    return "unknown";
   }
 }
 
