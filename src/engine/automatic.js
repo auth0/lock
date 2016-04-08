@@ -96,6 +96,11 @@ export default class Auth0Lock extends Base {
 }
 
 const dict = {
+  enterpriseQuickAuth: {
+    footerText: "",
+    headerText: "",
+    loginTo: "Login to {domain}"
+  },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
     footerText: "",

@@ -14,7 +14,7 @@ const Component = ({model, t}) => {
 
   return (
     <QuickAuthPane
-      buttonLabel={"Login to " + quickAuthConnection(model).get("domain")}
+      buttonLabel={t("loginTo", {domain: quickAuthConnection(model).get("domain"), __textOnly: true})}
       buttonClickHandler={e => logIn(l.id(model), quickAuthConnection(model))}
       header={header}
       strategy={quickAuthConnection(model).get("strategy")}
