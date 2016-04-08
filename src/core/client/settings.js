@@ -1,21 +1,22 @@
 import Auth0 from 'auth0-js';
-import Immutable from 'immutable';
+import Cache from '../../remote-data/cache';
 import { endsWith } from '../../utils/string_utils';
 
-export function fetchClientSettings(clientID, domain, assetsUrl, cb = () => {}) {
-  if (clients.hasOwnProperty(clientID)) {
-    return clients[clientID] ? cb(null, clients[clientID]) : cb({}, {});
-  }
-  if (registerCallback(clientID, cb) > 1) return;
+const cache = new Cache((...args) => addClientScriptTag(...args));
 
+export function fetchClientSettings(clientID, domain, assetsUrl, cb = () => {}) {
+  cache.get(clientID, domain, assetsUrl, cb);
+}
+
+const cbs = {};
+
+function addClientScriptTag(clientID, domain, assetsUrl, cb) {
+  cbs[clientID] = cb;
   const script = global.document.createElement('script');
   script.src = clientScriptTagSrc(clientID, domain, assetsUrl);
   global.document.getElementsByTagName('head')[0].appendChild(script);
 
-  const handleError = () => {
-    clients[clientID] = null;
-    execCallbacks(clientID, {});
-  };
+  const handleError = () => cb({});
 
   const timeoutID = setTimeout(handleError, 5000);
 
@@ -25,33 +26,15 @@ export function fetchClientSettings(clientID, domain, assetsUrl, cb = () => {}) 
     clearTimeout(timeoutID);
     handleError();
   });
+
 }
 
 global.window.Auth0 = Auth0;
 
 global.window.Auth0.setClient = function(settings) {
-  const client = Immutable.fromJS(settings);
-  clients[settings.id] = client;
-  execCallbacks(settings.id, null, client);
+  cbs[settings.id](null, settings);
+  delete cbs[settings.id];
 };
-
-const clients = {};
-const callbacks = {};
-
-function registerCallback(clientID, cb) {
-  if (callbacks[clientID]) {
-    callbacks[clientID].push(cb);
-  } else {
-    callbacks[clientID] = [cb];
-  }
-
-  return callbacks[clientID].length;
-}
-
-function execCallbacks(clientID, ...args) {
-  callbacks[clientID].forEach(x => x(...args));
-  delete callbacks[clientID];
-}
 
 // NOTE: mostly copy-pasted from Lock classic, can review later but it works
 

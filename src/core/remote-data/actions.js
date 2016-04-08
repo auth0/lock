@@ -25,6 +25,7 @@ function syncClientSettings(lockID, cb) {
   const assetsUrl = undefined; // TODO
 
   fetchClientSettings(clientID, domain, assetsUrl, (error, client) => {
+    client = Immutable.fromJS(client);
     swap(updateEntity, "lock", lockID, m => {
       if (error) {
         return m.setIn(["client", "syncStatus"], "error");
