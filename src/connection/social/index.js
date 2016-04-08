@@ -2,6 +2,10 @@ import Immutable from 'immutable';
 import * as l from '../../core/index';
 import { dataFns } from '../../utils/data_utils';
 
+// TODO: Android version also has "unknonwn-social", "evernote" and
+// "evernote-sandbox""evernote" in the list, considers "google-openid"
+// to be enterprise and doesn't contain "salesforce-community". See
+// https://github.com/auth0/Lock.Android/blob/98262cb7110e5d1c8a97e1129faf2621c1d8d111/lock/src/main/java/com/auth0/android/lock/utils/Strategies.java
 export const STRATEGIES = {
   "amazon": "Amazon",
   "aol": "Aol",
