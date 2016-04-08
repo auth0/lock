@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import { fetchClientSettings } from '../client/settings';
 import { pickConnections } from '../client/index';
@@ -61,7 +62,7 @@ function syncSSOData(lockID) {
 
   fetchSSOData(lockID, isADEnabled(lock), (error, data) => {
     swap(updateEntity, "lock", lockID, m => {
-      return m.set("sso", data.set("syncStatus", "ok"));
+      return m.set("sso", Immutable.fromJS(data).set("syncStatus", "ok"));
     });
   });
 }

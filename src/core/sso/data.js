@@ -1,32 +1,8 @@
-import Immutable from 'immutable';
 import webAPI from '../web_api';
+import Cache from '../../remote-data/cache';
+
+const cache = new Cache((...args) => webAPI.getSSOData(...args));
 
 export function fetchSSOData(id, withAD, cb) {
-  // TODO: cache should consider withAD not just id
-  if (cache[id]) return cb(null, cache[id]);
-  if (registerCallback(id, cb) > 1) return;
-
-  webAPI.getSSOData(id, withAD, (error, data) => {
-    data = Immutable.fromJS(data);
-    cache[id] = data;
-    execCallbacks(id, error, data)
-  });
-}
-
-const cache = {};
-const callbacks = {};
-
-function registerCallback(id, cb) {
-  if (callbacks[id]) {
-    callbacks[id].push(cb);
-  } else {
-    callbacks[id] = [cb];
-  }
-
-  return callbacks[id].length;
-}
-
-function execCallbacks(id, ...args) {
-  callbacks[id].forEach(x => x(...args));
-  delete callbacks[id];
+  cache.get(id, withAD, cb);
 }
