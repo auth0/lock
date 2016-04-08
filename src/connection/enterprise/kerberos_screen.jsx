@@ -10,13 +10,11 @@ const Component = ({model, t}) => {
   const headerText = t("headerText") || null;
   const header = headerText && <p>{headerText}</p>;
 
-  // TODO: provide translation for button label.
-
   return (
     <QuickAuthPane
       alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
-      buttonLabel="Windows Authentication"
+      buttonLabel={t("buttonLabel", {__textOnly: true})}
       buttonClickHandler={e => logIn(l.id(model), corpNetworkConnection(model))}
       header={header}
       strategy="windows"
