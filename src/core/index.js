@@ -262,7 +262,7 @@ export function findConnection(m, name) {
 }
 
 export function hasConnection(m, name) {
-  return connections(m).some(m1 => m1.get("name") === name);
+  return !!findConnection(m, name);
 }
 
 export function runHook(m, str, ...args) {
