@@ -11,6 +11,19 @@ const QuickAuthPane = (props) => {
     strategy
   } = props;
 
+  const alternative = alternativeLabel
+    ? <p className="auth0-lock-alternative">
+        <a
+          className="auth0-lock-alternative-link"
+          href="#"
+          onClick={e => {e.preventDefault(); alternativeClickHandler(e)}}
+        >
+          {alternativeLabel}
+        </a>
+      </p>
+    : null;
+
+
   return (
     <div className="auth0-lock-last-login-pane">
       {header}
@@ -21,15 +34,7 @@ const QuickAuthPane = (props) => {
         strategy={strategy}
       />
 
-      <p className="auth0-lock-alternative">
-        <a
-          className="auth0-lock-alternative-link"
-          href="#"
-          onClick={e => {e.preventDefault(); alternativeClickHandler(e)}}
-        >
-          {alternativeLabel}
-        </a>
-      </p>
+      {alternative}
 
       <div className="auth0-loading-container">
         <div className="auth0-loading" />
@@ -39,8 +44,12 @@ const QuickAuthPane = (props) => {
 };
 
 QuickAuthPane.propTypes = {
-  alternativeLabel: React.PropTypes.string.isRequired,
-  alternativeClickHandler: React.PropTypes.func.isRequired,
+  alternativeLabel: React.PropTypes.string,
+  alternativeClickHandler: (props, propName, component) => {
+    if (props.alternativeLabel !== undefined) {
+      return React.PropTypes.func.isRequired(props, propName, component)
+    }
+  },
   buttonLabel: React.PropTypes.string.isRequired,
   buttonClickHandler: React.PropTypes.func.isRequired,
   header: React.PropTypes.element,
