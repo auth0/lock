@@ -1,3 +1,14 @@
+## [7.14.2] - 2016-04-09
+
+### Fixed
+
+- [] Merge pull request #349 from auth0/v7-fix-pwd-strength-no-placeholder (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0d21677a9525e26cfc4c2efc097c2f30d2963a86
+- [] Fix pwd strength popup position in reset (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c5735f593df68f1e7a637e56ae32537e6d14a07e
+- [] Fix deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/e119370830b50edf1f4d80e0a8e74fd0f41246f9
+
 ## [7.14.1] - 2016-04-07
 
 ### Fixed
