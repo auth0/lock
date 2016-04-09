@@ -7718,6 +7718,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   border: 0 !important;
 }
 
+#a0-lock.a0-theme-default .a0-no-placeholder-support .a0-panel.a0-active-pwd-strength #a0-change_password .a0-password_policy {
+  bottom: 139px;
+}
+
 #a0-lock.a0-theme-default .a0-cordova.a0-ios .a0-centrix {
   padding-top: 20px;
 }
