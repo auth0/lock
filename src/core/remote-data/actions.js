@@ -6,82 +6,57 @@ import { fetchSSOData } from '../sso/data';
 import webAPI from '../web_api';
 import * as l from '../index';
 import { isADEnabled } from '../../connection/enterprise';
+import { sync } from '../../remote-data/actions';
 
 export function syncRemoteData(id) {
-  syncClientSettings(id, (error, client) => syncSSOData(id));
+  syncClientSettings(id, _ => syncSSOData(id));
   syncLocation(id);
 }
 
-function syncClientSettings(lockID, cb) {
-  const lock = read(getEntity, "lock", lockID);
-  if (lock.getIn(["client", "syncStatus"])) return;
-
-  swap(updateEntity, "lock", lockID, m => {
-    return m.setIn(["client", "syncStatus"], "loading");
-  });
-
-  const clientID = l.clientID(lock);
-  const domain = l.domain(lock);
-  const assetsUrl = undefined; // TODO
-
-  fetchClientSettings(clientID, domain, assetsUrl, (error, client) => {
-    client = Immutable.fromJS(client);
-    swap(updateEntity, "lock", lockID, m => {
-      if (error) {
-        return m.setIn(["client", "syncStatus"], "error");
-      }
-
-      // TODO: emit a warning when a connection doesn't exists
-      // TODO: abstract setting enabled connections
-      return m.set("client", client.set("syncStatus", "ok"))
-        .setIn(
-          ["core", "connections"],
-          pickConnections(client, l.getPickedConnections(m))
-        );
-    });
-
-    l.runHook(read(getEntity, "lock", lockID), "didReceiveClientSettings");
-    cb(error, client);
-  });
-}
-
-function syncSSOData(lockID) {
-  const lock = read(getEntity, "lock", lockID);
-  if (lock.getIn(["sso", "syncStatus"])) return;
-
-  if (!l.auth.sso(lock)) {
-    swap(updateEntity, "lock", lockID, m => {
-      return m.setIn(["sso", "syncStatus"], "error");
-    });
-
-    return;
+function syncClientSettings(id, cb) {
+  function syncFn(m, cb) {
+    const clientID = l.clientID(m);
+    const domain = l.domain(m);
+    const assetsUrl = undefined; // TODO
+    fetchClientSettings(clientID, domain, assetsUrl, cb);
   }
 
-  swap(updateEntity, "lock", lockID, m => {
-    return m.setIn(["sso", "syncStatus"], "loading");
-  });
+  function updateFn(m, result) {
+    result = Immutable.fromJS(result);
+    m = m.setIn(
+      ["core", "connections"],
+      pickConnections(result, l.getPickedConnections(m))
+    );
+    setTimeout(() => {
+      l.runHook(read(getEntity, "lock", id), "didReceiveClientSettings");
+      cb(result);
+    }, 0);
+    return m;
+  }
 
-  fetchSSOData(lockID, isADEnabled(lock), (error, data) => {
-    swap(updateEntity, "lock", lockID, m => {
-      return m.set("sso", Immutable.fromJS(data).set("syncStatus", "ok"));
-    });
-  });
+  sync(id, "client", undefined, syncFn, updateFn);
+}
+
+function syncSSOData(id) {
+  function syncFn(m, cb) {
+    fetchSSOData(id, isADEnabled(m), cb);
+  }
+
+  function updateFn(m, result) {
+    return m.mergeIn(["sso"], Immutable.fromJS(result));
+  }
+
+  sync(id, "sso", l.auth.sso, syncFn, updateFn);
 }
 
 function syncLocation(id) {
-  // TODO: don't use a separate entity for location
-  const location = read(getEntity, "location", 0);
-  if (location && location.get("syncStatus")) return;
+  function syncFn(m, cb) {
+    webAPI.getUserCountry(id, cb);
+  }
 
-  swap(updateEntity, "location", 0, m => {
-    return m.set("syncStatus", "loading");
-  });
+  function updateFn(m, result) {
+    return m.setIn(["location", "isoCode", isoCode], result);
+  }
 
-  webAPI.getUserCountry(id, (error, isoCode) => {
-    swap(updateEntity, "location", 0, m => {
-      return error
-        ? m.set("syncStatus", "error")
-        : m.set("syncStatus", "ok").set("isoCode", isoCode);
-    });
-  });
+  sync(id, "location", null, syncFn, updateFn);
 }

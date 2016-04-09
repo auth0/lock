@@ -25,8 +25,7 @@ export function setInitialPhoneLocation(m, options) {
     }
     return c.setPhoneLocation(m, location);
   } else {
-    const location = read(getEntity, "location");
-    const isoCode = cc.findByIsoCode(location && location.get("isoCode"));
+    const isoCode = m.getIn(["location", "isoCode"]);
     return isoCode ? c.setPhoneLocation(m, isoCode) : m;
   }
 }
