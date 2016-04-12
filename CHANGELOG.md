@@ -1,3 +1,16 @@
+## [9.0.3] - 2016-04-12
+
+### Fixed
+
+- [] Merge pull request #352 from auth0/fix-pwd-strength-no-placeholder (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/9aeffa50a2ca0572f03f1531d14054b2f5ac563c
+- [] Fix pwd strength popup position in old reset (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/005aaf1e1ccbbcc3a30cfdfc546107693aba29b6
+- [] Merge pull request #351 from auth0/fix-badge-loading-and-title (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a58f7cf8bb2f8d6a478102a62b32bb93bd5f62df
+- [] fix loading and header title (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/3d1d4f00ebd29b4a4a3a77790dfc4b095197ff45
+
 ## [9.0.2] - 2016-04-07
 
 ### Fixed
