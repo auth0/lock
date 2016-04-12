@@ -1442,6 +1442,9 @@
   animation-duration: 600ms;
   text-align: center;
   z-index: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #a0-lock .a0-loading.a0-with-message .a0-spin-container {
@@ -7392,6 +7395,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-size: 24px;
   font-weight: 400;
   margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 15px;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-bg-gradient {
