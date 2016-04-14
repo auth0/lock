@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '4.2'
 script:
-- npm run phantom
+- npm run ci
 branches:
   only:
   - master
