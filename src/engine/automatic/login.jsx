@@ -12,7 +12,6 @@ import { signIn as databaseSignIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
 import * as l from '../../core/index';
-import { icon } from '../../ui/input/password_input';
 import * as c from '../../field/index';
 import { emailDomain } from '../../field/email';
 import {
@@ -26,6 +25,7 @@ import {
   isHRDDomain,
   isSSODomain
 } from '../../connection/enterprise';
+import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { isSSOEnabled, usernameStyle } from '../automatic';
 
 
@@ -34,13 +34,6 @@ function shouldRenderTabs(m) {
     && hasScreen(m, "signUp")
     && !isSSOEnabled(m);
 }
-
-const SingleSignOnNotice = ({children}) => (
-  <div className="auth0-sso-notice-container">
-    <span dangerouslySetInnerHTML={{__html: icon}} /> {" "}
-    <span className="auth0-sso-notice">{children}</span>
-  </div>
-);
 
 const Component = ({model, t}) => {
   const headerText = t("headerText") || null;
