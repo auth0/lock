@@ -2,6 +2,10 @@ export function isLoading(m, key) {
   return m.getIn([key, "syncStatus"]) === "loading";
 }
 
+export function isSuccess(m, key) {
+  return m.getIn([key, "syncStatus"]) === "ok";
+}
+
 export function hasSyncStatus(m, key) {
   return m.getIn([key, "syncStatus"]) !== undefined;
 }

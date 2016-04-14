@@ -175,7 +175,8 @@ body {
    container: "classic-container",
    languageDictionary: {
      signUp: { footerText: terms }
-   }
+   },
+   rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {
@@ -187,13 +188,15 @@ body {
  new Auth0Lock(cid, domain, {
    auth: { redirect: false, sso: false },
    connections: ["rolodato"],
-   container: "single-hrd-container"
+   container: "single-hrd-container",
+   rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {
    auth: { redirect: false, sso: false },
    connections: ["ad-no-domain", "Username-Password-Authentication"],
-   container: "ad-no-domain-container"
+   container: "ad-no-domain-container",
+   rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {

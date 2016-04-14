@@ -29,6 +29,7 @@ import { hasSkippedQuickAuth } from '../quick_auth';
 import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
+import { hasSyncStatus, isLoading, isSuccess } from '../remote_data';
 
 export default class Auth0Lock extends Base {
 
@@ -75,7 +76,8 @@ export default class Auth0Lock extends Base {
   }
 
   render(m) {
-    if (m.getIn(["sso", "syncStatus"], "loading") === "loading" || m.get("isLoadingPanePinned")) {
+    // TODO: remove some details
+    if (!hasSyncStatus(m, "sso") || isLoading(m, "sso") || m.get("isLoadingPanePinned")) {
       return new LoadingScreen();
     }
 
@@ -85,7 +87,7 @@ export default class Auth0Lock extends Base {
       }
 
       const conn = lastUsedConnection(m);
-      if (conn && m.getIn(["sso", "syncStatus"]) === "ok") {
+      if (conn && isSuccess(m, "sso")) {
         if (l.hasConnection(m, conn.get("name"))) {
           return new LastLoginScreen();
         }
