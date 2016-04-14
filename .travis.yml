@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- '4.2'
+
+script: 
+- npm run phantom
+
+branches:
+  only:
+  - introduce-travis
