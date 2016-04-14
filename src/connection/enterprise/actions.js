@@ -97,7 +97,6 @@ function logInSSO(id, connection) {
     // TODO: popup + popup options
     const options = l.withAuthOptions(lock, {
       connection: connection.get("name"),
-      username: c.email(lock),
       login_hint: c.email(lock)
     });
 
