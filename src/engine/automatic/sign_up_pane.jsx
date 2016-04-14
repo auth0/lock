@@ -17,18 +17,20 @@ export default class SignUpPane extends React.Component {
     const {
       emailInputPlaceholder,
       model,
+      onlyEmail,
       passwordInputPlaceholder,
       usernameInputPlaceholder
     } = this.props;
 
-    const usernamePane = authWithUsername(model)
+    const usernamePane = !onlyEmail && authWithUsername(model)
       ? <UsernamePane
           autofocus={false}
           lock={model}
           placeholder={usernameInputPlaceholder}
         />
       : null;
-    const fields = additionalSignUpFields(model).map(x => (
+
+    const fields = !onlyEmail && additionalSignUpFields(model).map(x => (
       <TextInput
         iconUrl={x.get("icon")}
         isValid={!isFieldVisiblyInvalid(model, x.get("name"))}
@@ -39,6 +41,13 @@ export default class SignUpPane extends React.Component {
       />
     ));
 
+    const passwordPane = !onlyEmail
+      && <PasswordPane
+           lock={model}
+           placeholder={passwordInputPlaceholder}
+           policy={passwordStrengthPolicy(model)}
+         />;
+
     return (
       <div>
         <EmailPane
@@ -46,11 +55,7 @@ export default class SignUpPane extends React.Component {
           placeholder={emailInputPlaceholder}
         />
         {usernamePane}
-        <PasswordPane
-          lock={model}
-          placeholder={passwordInputPlaceholder}
-          policy={passwordStrengthPolicy(model)}
-        />
+        {passwordPane}
         {fields}
       </div>
     );

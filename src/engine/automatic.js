@@ -174,6 +174,7 @@ const dict = {
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     signUpWith: "Sign up with {idp}",
+    ssoEnabled: "Single Sign-on enabled",
     usernameInputPlaceholder: "your username",
   },
   signedIn: {

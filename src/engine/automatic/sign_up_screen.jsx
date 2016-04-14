@@ -8,18 +8,27 @@ import SignUpPane from './sign_up_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import * as l from '../../core/index';
 import PaneSeparator from '../../core/pane_separator';
+import { isSSOEnabled } from '../automatic';
+import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
+import { signIn as enterpriseSignIn } from '../../connection/enterprise/actions';
 
 const Component = ({model, t}) => {
   const headerText = t("headerText") || null;
   const header = headerText && <p>{headerText}</p>;
 
-  const tabs =
-    <LoginSignUpTabs
-      key="loginsignup"
-      lock={model}
-      loginTabLabel={t("loginTabLabel", {__textOnly: true})}
-      signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
-    />;
+  const sso = isSSOEnabled(model);
+  const ssoNotice = sso
+    && <SingleSignOnNotice>
+         {t("ssoEnabled", {__textOnly: true})}
+       </SingleSignOnNotice>;
+
+  const tabs = !sso
+    && <LoginSignUpTabs
+         key="loginsignup"
+         lock={model}
+         loginTabLabel={t("loginTabLabel", {__textOnly: true})}
+         signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
+       />;
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane lock={model} t={t} signUp={true} />;
@@ -28,6 +37,7 @@ const Component = ({model, t}) => {
     <SignUpPane
       emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
       model={model}
+      onlyEmail={sso}
       passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
       usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
     />;
@@ -35,7 +45,7 @@ const Component = ({model, t}) => {
   const separator = social
     && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
 
-  return <div>{tabs}{header}{social}{separator}{db}</div>;
+  return <div>{ssoNotice}{tabs}{header}{social}{separator}{db}</div>;
 };
 
 export default class SignUp extends Screen {
@@ -44,8 +54,8 @@ export default class SignUp extends Screen {
     super("signUp");
   }
 
-  submitHandler() {
-    return signUp;
+  submitHandler(model) {
+    return isSSOEnabled(model) ? enterpriseSignIn : signUp;
   }
 
   renderAuxiliaryPane(lock) {
