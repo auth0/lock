@@ -4,6 +4,7 @@ import SignUp from './automatic/sign_up_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
 import {
+  authWithUsername,
   defaultDatabaseConnection,
   defaultDatabaseConnectionName,
   getScreen,
@@ -13,9 +14,11 @@ import {
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
   initEnterprise,
+  isADEnabled,
   isHRDActive,
   isInCorpNetwork,
   isSingleHRDConnection,
+  isSSODomain,
   quickAuthConnection
 } from '../connection/enterprise';
 import { initSocial } from '../connection/social/index';
@@ -30,6 +33,18 @@ import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
 import { hasSyncStatus, isLoading, isSuccess } from '../remote_data';
+import * as c from '../field/index';
+
+export function isSSOEnabled(m) {
+  return isSSODomain(
+    m,
+    usernameStyle(m) === "username"  ? c.username(m) : c.email(m)
+  );
+}
+
+export function usernameStyle(m) {
+  return authWithUsername(m) && !isADEnabled(m) ? "username" : "email";
+}
 
 export default class Auth0Lock extends Base {
 
@@ -97,7 +112,6 @@ export default class Auth0Lock extends Base {
     if (quickAuthConnection(m)) {
       return new EnterpriseQuickAuthScreen();
     }
-
 
     if (isHRDActive(m) || isSingleHRDConnection(m)) {
       return new HRDScreen();

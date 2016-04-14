@@ -6,8 +6,7 @@ import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
   hasScreen,
-  signUpLink,
-  authWithUsername
+  signUpLink
 } from '../../connection/database/index';
 import { signIn as databaseSignIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
@@ -24,27 +23,16 @@ import {
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
   findADConnectionWithoutDomain,
-  isADEnabled,
   isHRDDomain,
   isSSODomain
 } from '../../connection/enterprise';
+import { isSSOEnabled, usernameStyle } from '../automatic';
 
 
 function shouldRenderTabs(m) {
   return l.hasSomeConnections(m, "database")
     && hasScreen(m, "signUp")
     && !isSSOEnabled(m);
-}
-
-function isSSOEnabled(m) {
-  return isSSODomain(
-    m,
-    usernameStyle(m) === "username"  ? c.username(m) : c.email(m)
-  );
-}
-
-function usernameStyle(m) {
-  return authWithUsername(m) && !isADEnabled(m) ? "username" : "email";
 }
 
 const SingleSignOnNotice = ({children}) => (
