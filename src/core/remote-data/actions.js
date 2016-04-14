@@ -10,7 +10,7 @@ import { sync } from '../../remote-data/actions';
 
 export function syncRemoteData(id) {
   syncClientSettings(id, _ => syncSSOData(id));
-  syncLocation(id);
+  // syncLocation(id);
 }
 
 function syncClientSettings(id, cb) {
