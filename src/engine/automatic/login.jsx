@@ -71,7 +71,7 @@ const Component = ({model, t}) => {
        />;
 
 
-  const social = !sso  && l.hasSomeConnections(model, "social")
+  const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
          lock={model}
          showLoading={onlySocial}
