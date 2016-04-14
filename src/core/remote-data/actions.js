@@ -55,7 +55,7 @@ function syncLocation(id) {
   }
 
   function updateFn(m, result) {
-    return m.setIn(["location", "isoCode", isoCode], result);
+    return m.setIn(["location", "isoCode", result]);
   }
 
   sync(id, "location", null, syncFn, updateFn);
