@@ -20,15 +20,9 @@ export default class SignedUpConfirmation extends React.Component {
     const { lock } = this.props;
     const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
 
-    // TODO: handle login error properly, consider having two success messages
-    // (with and without auto login).
-    const message = shouldAutoLogin(lock) && !lock.get("signedIn")
-      ? "signed up successfuly but couldn't log in"
-      : this.t(["success"]);
-
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{message}</p>
+        <p>{this.t(["success"])}</p>
       </SuccessPane>
     );
   }
@@ -40,12 +34,12 @@ SignedUpConfirmation.propTypes = {
   lock: React.PropTypes.object.isRequired
 };
 
-export function renderSignedUpConfirmation(lock, props = {}) {
+export function renderSignedUpConfirmation(m, props = {}) {
   props.closeHandler = closeLock;
   props.key = "auxiliarypane";
-  props.lock = lock;
+  props.lock = m;
 
-  return lock.get("signedUp") && !l.submitting(lock)
+  return m.get("signedUp") && !shouldAutoLogin(m)
     ? <SignedUpConfirmation {...props} />
     : null;
 }

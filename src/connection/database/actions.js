@@ -102,7 +102,7 @@ export function signUp(id, options = {}) {
     }
 
     const authOptions = l.withAuthOptions(lock, {
-      autoLogin: shouldAutoLogin(lock)
+      autoLogin: false
     });
 
     webApi.signUp(
@@ -123,9 +123,6 @@ export function signUp(id, options = {}) {
 function signUpSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
 
-  // TODO: should we auto login if sign the login screen is not
-  // available? if we do, we should check that we handle login errors
-  // properly.
   if (shouldAutoLogin(lock)) {
     swap(updateEntity, "lock", id, m => m.set("signedUp", true));
 
@@ -188,9 +185,9 @@ function autoSignInError(id, error) {
   const lock = read(getEntity, "lock", id);
   const errorMessage = l.loginErrorMessage(lock, error);
   swap(updateEntity, "lock", id, m => {
-    m = l.setSubmitting(m, false, errorMessage);
-    m = m.set("signedIn", false);
-    return m;
+    swap(updateEntity, "lock", id, m => (
+      l.setSubmitting(setScreen(m, "login"), false, errorMessage)
+    ));
   });
 
   l.invokeSignInCallback(lock, error);
