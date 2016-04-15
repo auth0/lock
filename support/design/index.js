@@ -138,6 +138,30 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
       {
         connections: [
           {
+            name: "auth10.com",
+            domain: "auth10.com",
+            domain_aliases: [
+              "auth10.com"
+            ],
+            scope: [
+              "email",
+              "profile"
+            ]
+          },
+        ],
+        name: "google-apps",
+      },
+      {
+        connections: [
+          {
+            name: "exact"
+          }
+        ],
+        name: "exact"
+      },
+      {
+        connections: [
+          {
             name: "facebook"
           }
         ],
@@ -146,10 +170,42 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
       {
         connections: [
           {
+            name: "fitbit"
+          }
+        ],
+        name: "fitbit"
+      },
+      {
+        connections: [
+          {
+            name: "thirtysevensignals"
+          }
+        ],
+        name: "thirtysevensignals"
+      },
+      {
+        connections: [
+          {
             name: "twitter"
           }
         ],
         name: "twitter"
+      },
+      {
+        connections: [
+          {
+            name: "windowslive"
+          }
+        ],
+        name: "windowslive"
+      },
+      {
+        connections: [
+          {
+            name: "wordpress"
+          }
+        ],
+        name: "wordpress"
       },
       {
         connections: [
