@@ -123,7 +123,7 @@ export default class Base extends EventEmitter {
     openLock(this.id);
   }
 
-  close() {
+  hide() {
     closeLock(this.id, true);
   }
 
