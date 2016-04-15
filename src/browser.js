@@ -7,7 +7,7 @@
  * the package.json file points to index.js.
  */
 
-import Auth0Lock from './engine/automatic';
+import Auth0Lock from './index';
 
 //use amd or just throught to window object.
 if (typeof global.window.define == 'function' && global.window.define.amd) {

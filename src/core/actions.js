@@ -13,9 +13,8 @@ export function setupLock(id, clientID, domain, options, signInCallback, hookRun
   const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
   preload(l.ui.logo(m) || defaultProps.logo);
   swap(setEntity, "lock", id, m);
-  // TODO: check options.mode is a valid mode.
 
-  // TODO: this may trigger a second call to swap, maybe it can be
+  // TODO: this triggers a second call to swap, maybe it can be
   // optimized. However, the Lock isn't rendering yet so it might not
   // be really an issue.
   l.runHook(m, "didInitialize", options);

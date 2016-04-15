@@ -34,6 +34,7 @@ import LoadingScreen from '../core/loading_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
 import { hasSyncStatus, isLoading, isSuccess } from '../remote_data';
 import * as c from '../field/index';
+import { swap, updateEntity } from '../store/index';
 
 export function isSSOEnabled(m) {
   return isSSODomain(
@@ -46,7 +47,7 @@ export function usernameStyle(m) {
   return authWithUsername(m) && !isADEnabled(m) ? "username" : "email";
 }
 
-export default class Auth0Lock extends Base {
+class Automatic {
 
   static SCREENS = {
     login: Login,
@@ -55,7 +56,8 @@ export default class Auth0Lock extends Base {
   };
 
   constructor(...args) {
-    super("classic", dict, ...args);
+    this.dict = dict;
+    this.mode = "classic";
   }
 
   didInitialize(model, options) {
@@ -67,7 +69,7 @@ export default class Auth0Lock extends Base {
     if (typeof email === "string") model = setEmail(model, email);
     if (typeof username === "string") model = setUsername(model, username);
 
-    this.setModel(model);
+    swap(updateEntity, "lock", l.id(model), _ => model);
   }
 
   didReceiveClientSettings(m) {
@@ -117,7 +119,7 @@ export default class Auth0Lock extends Base {
       return new HRDScreen();
     }
 
-    const Screen = Auth0Lock.SCREENS[getScreen(m)];
+    const Screen = Automatic.SCREENS[getScreen(m)];
     if (Screen) return new Screen();
 
     throw new Error("unknown screen");
@@ -184,3 +186,5 @@ const dict = {
     success: "Thanks for signing up."
   }
 };
+
+export default new Automatic();
