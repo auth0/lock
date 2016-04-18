@@ -54,7 +54,7 @@ export function enterpriseConnection(m) {
   return defaultEnterpriseConnection(m) || findADConnectionWithoutDomain(m);
 }
 
-export function findSSOConnection(m, email, strategies = []) {
+export function matchConnection(m, email, strategies = []) {
   // TODO: could it just read the `email` from `m`?
   const target = emailDomain(email);
   if (!domain) return false;
@@ -71,11 +71,11 @@ export function findSSOConnection(m, email, strategies = []) {
 
 }
 
-export function isSSODomain(m, email, strategies = []) {
-  return !!findSSOConnection(m, email, strategies);
+export function isEnterpriseDomain(m, email, strategies = []) {
+  return !!matchConnection(m, email, strategies);
 }
 
-export function ssoDomain(m) {
+export function enterpriseDomain(m) {
   return isSingleHRDConnection(m)
     ? l.connections(m, "enterprise").getIn([0, "domain"])
     : emailDomain(getFieldValue(m, "email"));
@@ -88,6 +88,7 @@ export function quickAuthConnection(m) {
 }
 
 // ad / adldap
+// https://github.com/auth0/Lock.Android/blob/0145b6853a8de0df5e63ef22e4e2bc40be97ad9e/lock/src/main/java/com/auth0/android/lock/utils/Strategy.java#L67
 
 export function isADEnabled(m) {
   return l.hasSomeConnections(m, "enterprise", "ad", "auth0-adldap");
@@ -120,7 +121,7 @@ export function isSingleHRDConnection(m) {
 }
 
 export function isHRDDomain(m, email) {
-  return isSSODomain(m, email, ["ad", "auth0-adldap"]);
+  return isEnterpriseDomain(m, email, ["ad", "auth0-adldap"]);
 }
 
 export function toggleHRD(m, b) {

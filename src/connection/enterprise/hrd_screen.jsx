@@ -3,10 +3,10 @@ import Screen from '../../core/screen';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import HRDPane from './hrd_pane';
 import { cancelHRD, logInHRD } from './actions';
-import { isSingleHRDConnection, ssoDomain }  from '../enterprise';
+import { enterpriseDomain, isSingleHRDConnection }  from '../enterprise';
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText", {domain: ssoDomain(model)}) || null;
+  const headerText = t("headerText", {domain: enterpriseDomain(model)}) || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (

@@ -15,10 +15,10 @@ import {
   defaultEnterpriseConnectionName,
   initEnterprise,
   isADEnabled,
+  isEnterpriseDomain,
   isHRDActive,
   isInCorpNetwork,
   isSingleHRDConnection,
-  isSSODomain,
   quickAuthConnection
 } from '../connection/enterprise';
 import { initSocial } from '../connection/social/index';
@@ -37,7 +37,7 @@ import * as c from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
 export function isSSOEnabled(m) {
-  return isSSODomain(
+  return isEnterpriseDomain(
     m,
     usernameStyle(m) === "username"  ? c.username(m) : c.email(m)
   );

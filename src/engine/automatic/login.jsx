@@ -22,8 +22,8 @@ import {
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
   findADConnectionWithoutDomain,
-  isHRDDomain,
-  isSSODomain
+  isEnterpriseDomain,
+  isHRDDomain
 } from '../../connection/enterprise';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { isSSOEnabled, usernameStyle } from '../automatic';

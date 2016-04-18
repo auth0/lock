@@ -2,8 +2,8 @@ import { getEntity, read, swap, updateEntity } from '../../store/index';
 import {
   enterpriseConnection,
   findADConnectionWithoutDomain,
-  findSSOConnection,
   isHRDDomain,
+  matchConnection,
   toggleHRD
 } from '../enterprise';
 import * as l from '../../core/index';
@@ -27,7 +27,7 @@ export function cancelHRD(id) {
 export function signIn(id) {
   const m = read(getEntity, "lock", id);
   const email = c.email(m);
-  const ssoConnection = findSSOConnection(m, email);
+  const ssoConnection = matchConnection(m, email);
 
   if (ssoConnection && isHRDDomain(m, email)) {
     // TODO: maybe this shouldn't be dispatched from here, maybe the
