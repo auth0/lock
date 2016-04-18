@@ -13,7 +13,7 @@ import  {
   additionalSignUpFields
 } from './index';
 
-export function signIn(id) {
+export function logIn(id) {
   swap(updateEntity, "lock", id, lock => {
     const useUsername = authWithUsername(lock);
     if ((useUsername && c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password"))
@@ -41,38 +41,38 @@ export function signIn(id) {
       password: c.password(lock)
     });
 
-    webApi.signIn(
+    webApi.logIn(
       id,
       options,
       (error, ...args) => {
         if (error) {
-          setTimeout(() => signInError(id, error), 250);
+          setTimeout(() => logInError(id, error), 250);
         } else {
-          signInSuccess(id, ...args);
+          logInSuccess(id, ...args);
         }
       }
     );
   }
 }
 
-function signInSuccess(id, ...args) {
+function logInSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeSignInCallback(lock, null, ...args);
+    l.invokeLogInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
   }
 }
 
-function signInError(id, error) {
+function logInError(id, error) {
   const lock = read(getEntity, "lock", id);
   const errorMessage = l.loginErrorMessage(lock, error);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  l.invokeSignInCallback(lock, error);
+  l.invokeLogInCallback(lock, error);
 }
 
 
@@ -133,14 +133,14 @@ function signUpSuccess(id, ...args) {
       password: c.password(lock)
     });
 
-    return webApi.signIn(
+    return webApi.logIn(
       id,
       options,
       (error, ...args) => {
         if (error) {
-          setTimeout(() => autoSignInError(id, error), 250);
+          setTimeout(() => autoLogInError(id, error), 250);
         } else {
-          autoSignInSuccess(id, ...args);
+          autoLogInSuccess(id, ...args);
         }
       }
     );
@@ -169,19 +169,19 @@ function signUpError(id, error) {
 }
 
 
-function autoSignInSuccess(id, ...args) {
+function autoLogInSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSubmitting(lock, false).set("signedIn", true));
-    l.invokeSignInCallback(lock, null, ...args);
+    l.invokeLogInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
   }
 }
 
-function autoSignInError(id, error) {
+function autoLogInError(id, error) {
   const lock = read(getEntity, "lock", id);
   const errorMessage = l.loginErrorMessage(lock, error);
   swap(updateEntity, "lock", id, m => {
@@ -190,7 +190,7 @@ function autoSignInError(id, error) {
     ));
   });
 
-  l.invokeSignInCallback(lock, error);
+  l.invokeLogInCallback(lock, error);
 }
 
 export function resetPassword(id) {

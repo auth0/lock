@@ -15,7 +15,7 @@ class Auth0WebAPI {
     });
   }
 
-  signIn(lockID, options, cb) {
+  logIn(lockID, options, cb) {
     const { redirect } = options;
     const f = loginCallback(redirect, cb);
     const client = this.clients[lockID];

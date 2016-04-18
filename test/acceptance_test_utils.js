@@ -122,7 +122,7 @@ export function submit(lock) {
 }
 
 export function stubWebApis() {
-  stub(webApi, "signIn").returns(undefined);
+  stub(webApi, "logIn").returns(undefined);
   stub(webApi, "startPasswordless").returns(undefined);
   stub(gravatarActions, "debouncedRequestGravatar").returns(undefined);
   stub(gravatarActions, "requestGravatar").returns(undefined);
@@ -183,7 +183,7 @@ export function isSomethingWrong(lock, expectedMessage) {
 }
 
 export function simulateSingInResponse(error = null) {
-  const lastCall = webApi.signIn.lastCall;
+  const lastCall = webApi.logIn.lastCall;
   if (!lastCall) {
     throw new Error("Unable to simulate sign in response: no request has been made");
   }
@@ -193,7 +193,7 @@ export function simulateSingInResponse(error = null) {
 }
 
 export function hasSignedInWith(params) {
-  const lastCall = webApi.signIn.lastCall;
+  const lastCall = webApi.logIn.lastCall;
   const paramsFromLastCall = lastCall && lastCall.args[1];
   return Map(params).reduce((r, v, k) => {
     return r && paramsFromLastCall[k] === v;

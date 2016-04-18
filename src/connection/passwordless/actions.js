@@ -123,7 +123,7 @@ export function resendEmailError(id, error) {
   const lock = read(getEntity, "lock", id);
 }
 
-export function signIn(id) {
+export function logIn(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
     if (c.isFieldValid(lock, "vcode")) {
@@ -146,39 +146,39 @@ export function signIn(id) {
       options.email = c.email(lock);
     }
 
-    webApi.signIn(
+    webApi.logIn(
       id,
       options,
       (error, ...args) => {
         if (error) {
-          setTimeout(() => signInError(id, error), 250);
+          setTimeout(() => logInError(id, error), 250);
         } else {
-          signInSuccess(id, ...args);
+          logInSuccess(id, ...args);
         }
       }
     );
   }
 }
 
-function signInSuccess(id, ...args) {
+function logInSuccess(id, ...args) {
   const lock = read(getEntity, "lock", id);
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeSignInCallback(lock, null, ...args);
+    l.invokeLogInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
   }
 }
 
-function signInError(id, error) {
+function logInError(id, error) {
   const lock = read(getEntity, "lock", id);
   const field = m.send(lock) === "sms" ? "phone number" : "email";
   const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
-  l.invokeSignInCallback(lock, error);
+  l.invokeLogInCallback(lock, error);
 }
 
 export function restart(id) {

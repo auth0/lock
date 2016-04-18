@@ -138,7 +138,7 @@
 //     phoneNumberInputPlaceholder: "your phone number"
 //   },
 //   signedIn: {
-//     success: "Thanks for signing in."
+//     success: "Thanks for logging in."
 //   },
 //   smsCode: { // social or sms
 //     codeInputPlaceholder: "Your code",

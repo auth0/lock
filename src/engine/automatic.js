@@ -180,7 +180,7 @@ const dict = {
     usernameInputPlaceholder: "your username",
   },
   signedIn: {
-    success: "Thanks for signing in."
+    success: "Thanks for logging in."
   },
   signedUp: {
     success: "Thanks for signing up."

@@ -11,9 +11,9 @@ webAPI.constructor.prototype.constructor = function() {};
 
 WebAPI.prototype.setupClient = function() {};
 
-WebAPI.prototype.signIn = function(lockID, options, cb) {
+WebAPI.prototype.logIn = function(lockID, options, cb) {
   const state = store.deref();
-  const args = state.getIn(["signIn", "response"]) == "success" ?
+  const args = state.getIn(["logIn", "response"]) == "success" ?
     [null] :
     [{description: "Wrong email or verification code.", error: "invalid_user_password"}];
   setTimeout(() => cb(...args), state.get("latency"));

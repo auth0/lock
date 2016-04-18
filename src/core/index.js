@@ -17,7 +17,7 @@ const {
   tremove
 } = dataFns(["core"]);
 
-export function setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
+export function setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
   return init(id, Immutable.fromJS({
     auth: extractAuthOptions(options),
     clientID: clientID,
@@ -25,7 +25,7 @@ export function setup(id, clientID, domain, options, signInCallback, hookRunner,
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
     mode: options.mode,
-    signInCallback: signInCallback,
+    logInCallback: logInCallback,
     pickedConnections: Immutable.fromJS(options.connections || []),
     ui: extractUIOptions(id, options.mode, options)
   }));
@@ -194,8 +194,8 @@ export function withAuthOptions(m, opts, flattenAuthParams = true) {
     .toJS();
 }
 
-export function invokeSignInCallback(m, ...args) {
-  get(m, "signInCallback").apply(undefined, args);
+export function invokeLogInCallback(m, ...args) {
+  get(m, "logInCallback").apply(undefined, args);
 }
 
 export function render(m) {

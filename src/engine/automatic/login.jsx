@@ -8,14 +8,14 @@ import {
   hasScreen,
   signUpLink
 } from '../../connection/database/index';
-import { signIn as databaseSignIn } from '../../connection/database/actions';
+import { logIn as databaseLogIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
 import * as l from '../../core/index';
 import * as c from '../../field/index';
 import { emailDomain } from '../../field/email';
 import {
-  signIn as enterpriseSignIn,
+  logIn as enterpriseLogIn,
   startHRD
 } from '../../connection/enterprise/actions';
 import {
@@ -122,7 +122,7 @@ export default class Login extends Screen {
       && (!defaultEnterpriseConnectionName(model)
           || !defaultEnterpriseConnection(model));
 
-    return useDatabaseConnection ? databaseSignIn : enterpriseSignIn
+    return useDatabaseConnection ? databaseLogIn : enterpriseLogIn
   }
 
   render() {

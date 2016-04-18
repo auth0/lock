@@ -1,5 +1,5 @@
 import Base from '../../field/vcode/ask_vcode';
-import { restart, signIn } from './actions';
+import { restart, logIn } from './actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 
 export default class AskVcode extends Base {
@@ -9,7 +9,7 @@ export default class AskVcode extends Base {
   }
 
   submitHandler() {
-    return signIn;
+    return logIn;
   }
 
   renderAuxiliaryPane(lock) {

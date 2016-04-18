@@ -24,14 +24,14 @@ export function cancelHRD(id) {
   swap(updateEntity, "lock", id, toggleHRD, false);
 }
 
-export function signIn(id) {
+export function logIn(id) {
   const m = read(getEntity, "lock", id);
   const email = c.email(m);
   const ssoConnection = matchConnection(m, email);
 
   if (ssoConnection && isHRDDomain(m, email)) {
     // TODO: maybe this shouldn't be dispatched from here, maybe the
-    // signIn function shouldn't exists at all.
+    // logIn function shouldn't exists at all.
     return logInHRD(id, ssoConnection);
   }
 
@@ -66,7 +66,7 @@ export function logInHRD(id, connection = undefined) {
       login_hint: c.username(lock)
     });
 
-    webApi.signIn(
+    webApi.logIn(
       id,
       options,
       (error, ...args) => {
@@ -100,7 +100,7 @@ function logInSSO(id, connection) {
       login_hint: c.email(lock)
     });
 
-    webApi.signIn(
+    webApi.logIn(
       id,
       options,
       (error, ...args) => {
@@ -136,7 +136,7 @@ function logInAD(id, connection) {
       login_hint: c.email(lock)
     });
 
-    webApi.signIn(
+    webApi.logIn(
       id,
       options,
       (error, ...args) => {
@@ -157,9 +157,9 @@ function logInSuccess(id, ...args) {
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeSignInCallback(lock, null, ...args);
+    l.invokeLogInCallback(lock, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeSignInCallback(lock, null, ...args));
+    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
   }
 }
 
@@ -168,5 +168,5 @@ function logInError(id, error) {
   const errorMessage = l.loginErrorMessage(lock, error);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  l.invokeSignInCallback(lock, error);
+  l.invokeLogInCallback(lock, error);
 }

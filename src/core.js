@@ -16,7 +16,7 @@ import * as idu from './utils/id_utils';
 
 export default class Base extends EventEmitter {
 
-  constructor(clientID, domain, options = {}, signInCallback = () => {}, engine) {
+  constructor(clientID, domain, options = {}, logInCallback = () => {}, engine) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
     }
@@ -26,7 +26,7 @@ export default class Base extends EventEmitter {
     if (typeof options != "object") {
       throw new Error("When provided, the third argument must be an `options` object.");
     }
-    if (typeof signInCallback != "function") {
+    if (typeof logInCallback != "function") {
       // TODO: should this argument be mandatory?
       throw new Error("When provided, the fourth argument must be a function.");
     }
@@ -39,7 +39,7 @@ export default class Base extends EventEmitter {
     const hookRunner = ::this.runHook;
     const emitEventFn = this.emit.bind(this);
     options.mode = engine.mode;
-    setupLock(this.id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
+    setupLock(this.id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
 
     subscribe("widget-" + this.id, (key, oldState, newState) => {
       const m = getEntity(newState, "lock", this.id);

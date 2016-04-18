@@ -7,10 +7,10 @@ import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField } from '../field/index';
 
-export function setupLock(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn) {
+export function setupLock(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want
   // to provide some options by default.
-  const m = l.setup(id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
+  const m = l.setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
   preload(l.ui.logo(m) || defaultProps.logo);
   swap(setEntity, "lock", id, m);
 
@@ -30,7 +30,7 @@ export function setupLock(id, clientID, domain, options, signInCallback, hookRun
       global.window.location.hash = "";
       if (hash.error) {
         // TODO: should we pass the error directly or do some processing?
-        setTimeout(() => l.invokeSignInCallback(m, hash), 0);
+        setTimeout(() => l.invokeLogInCallback(m, hash), 0);
       } else {
         WebAPI.getProfile(id, hash.id_token, (error, profile) => {
           const result = {
@@ -43,11 +43,11 @@ export function setupLock(id, clientID, domain, options, signInCallback, hookRun
           };
 
           // TODO: should we pass the error directly or do some processing?
-          l.invokeSignInCallback(m, error, result);
+          l.invokeLogInCallback(m, error, result);
         });
       }
     } else {
-      setTimeout(() => l.invokeSignInCallback(m, null), 0);
+      setTimeout(() => l.invokeLogInCallback(m, null), 0);
     }
   }
 

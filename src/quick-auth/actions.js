@@ -26,7 +26,7 @@ export function logIn(id, connection, loginHint) {
     options.login_hint = loginHint;
   }
 
-  webApi.signIn(id, options, (error, ...args) => {
+  webApi.logIn(id, options, (error, ...args) => {
     if (error) {
       setTimeout(() => logInError(id, error), 250);
     } else {
@@ -42,9 +42,9 @@ function logInSuccess(id, ...args) {
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, m1 => l.setSignedIn(l.setSubmitting(m1, false), true));
-    l.invokeSignInCallback(m, null, ...args);
+    l.invokeLogInCallback(m, null, ...args);
   } else {
-    closeLock(id, false, m1 => l.invokeSignInCallback(m1, null, ...args));
+    closeLock(id, false, m1 => l.invokeLogInCallback(m1, null, ...args));
   }
 }
 
@@ -53,5 +53,5 @@ function logInError(id, error) {
   const errorMessage = l.loginErrorMessage(m, error);
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
-  l.invokeSignInCallback(m, error);
+  l.invokeLogInCallback(m, error);
 }

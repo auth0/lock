@@ -10,7 +10,7 @@ import * as l from '../../core/index';
 import PaneSeparator from '../../core/pane_separator';
 import { isSSOEnabled } from '../automatic';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
-import { signIn as enterpriseSignIn } from '../../connection/enterprise/actions';
+import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
 const Component = ({model, t}) => {
   const headerText = t("headerText") || null;
@@ -55,7 +55,7 @@ export default class SignUp extends Screen {
   }
 
   submitHandler(model) {
-    return isSSOEnabled(model) ? enterpriseSignIn : signUp;
+    return isSSOEnabled(model) ? enterpriseLogIn : signUp;
   }
 
   renderAuxiliaryPane(lock) {
