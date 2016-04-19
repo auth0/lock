@@ -39,7 +39,8 @@ export function logIn(id) {
     return logInSSO(id, ssoConnection);
   }
 
-  logInAD(id, findADConnectionWithoutDomain(m));
+  // TODO: should we call this corporateConnection?
+  logInAD(id, enterpriseConnection(m));
 }
 
 export function logInHRD(id, connection = undefined) {
