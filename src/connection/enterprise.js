@@ -57,7 +57,7 @@ export function enterpriseConnection(m) {
 export function matchConnection(m, email, strategies = []) {
   // TODO: could it just read the `email` from `m`?
   const target = emailDomain(email);
-  if (!domain) return false;
+  if (!target) return false;
   return l.connections(m, "enterprise", ...strategies).find(x => {
     // TODO: `domain` seems to be always in the `domain_aliases` list,
     // so the `push` here might be unnecessary
