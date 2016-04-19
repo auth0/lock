@@ -1,5 +1,9 @@
+import { Simulate } from 'react-addons-test-utils';
 import { stub } from 'sinon';
+import { Map } from 'immutable';
 import Auth0Lock from '../../src/index';
+import webApi from '../../src/core/web_api';
+import * as gravatarProvider from '../../src/avatar/gravatar_provider';
 import * as ClientSettings from '../../src/core/client/settings';
 import clientSettings from './client_settings';
 import * as SSOData from '../../src/core/sso/data';
@@ -8,6 +12,13 @@ import ssoData from './sso_data';
 // stub, mock and spy
 
 export const stubWebApis = () => {
+  stub(webApi, "logIn").returns(undefined);
+  stub(gravatarProvider, "displayName", (email, cb) => {
+    cb(null, "someone");
+  });
+  stub(gravatarProvider, "url", (email, cb) => {
+    cb(null, "https://www.gravatar.com/avatar/35b47dce0e2c9ced8b500dca20e1a657.png?size=160");
+  });
   stub(ClientSettings, "fetchClientSettings", (...args) => {
     args[args.length - 1](null, clientSettings);
   });
@@ -17,16 +28,33 @@ export const stubWebApis = () => {
 }
 
 export const restoreWebApis = () => {
+  webApi.logIn.restore();
+  gravatarProvider.displayName.restore();
+  gravatarProvider.url.restore();
   ClientSettings.fetchClientSettings.restore();
   SSOData.fetchSSOData.restore();
 }
+
+// api call checks
+
+export const wasLoginAttemptedWith = params => {
+  const lastCall = webApi.logIn.lastCall;
+  const paramsFromLastCall = lastCall && lastCall.args[1];
+  return Map(params).reduce(
+    (r, v, k) => r && paramsFromLastCall[k] === v,
+    true
+  );
+};
 
 // rendering
 
 export const displayLock = (name, opts = {}, done = () => {}) => {
   switch(name) {
+  case "enterprise and corporate":
+    opts.connections = ["auth0.com", "rolodato.com"];
+    break;
   case "single database":
-    opts.connections = ["Username-Password-Authentication"];
+    opts.connections = ["db"];
     break;
   case "single enterprise":
     opts.connections = ["auth0.com"];
@@ -35,16 +63,16 @@ export const displayLock = (name, opts = {}, done = () => {}) => {
     opts.connections = ["auth0.com", "auth10.com"];
     break;
   case "single corporate":
-    opts.connections = ["rolodato"];
+    opts.connections = ["rolodato.com"];
     break;
   case "multiple corporate, one without domain":
-    opts.connections = ["rolodato", "ad-no-domain"];
+    opts.connections = ["rolodato.com", "corporate-no-domain"];
     break;
   case "multiple social":
     opts.connections = ["facebook", "twitter", "github"];
     break;
   case "kerberos":
-    opts.connections = ["rolodato"];
+    opts.connections = ["rolodato.com"];
     break;
   }
 
@@ -72,7 +100,19 @@ const qView = (lock, query, all = false) => {
   return view ? view[method](query) : null;
 };
 
+export function qInput(lock, name, ensure = false) {
+  const input = qView(lock, `.auth0-lock-input-${name} input`);
+  if (ensure && !input) {
+    throw new Error(`Unable to query the '${name}' input value: can't find the input`);
+  }
+  return input;
+}
+
 const hasFn = query => lock => !!q(lock, query);
+const hasInputFn = (name, str) => lock => {
+  const input = qInput(lock, name);
+  return str ? input.value === str : !!input;
+};
 const hasViewFn = query => lock => !!qView(lock, query);
 const hasOneViewFn = query => lock => qView(lock, query, true).length == 1;
 
@@ -86,13 +126,45 @@ const isTabCurrent = (lock, regexp) => {
 
 export const hasAlternativeLink = hasViewFn(".auth0-lock-alternative-link");
 export const hasBackButton = hasFn(".auth0-lock-back-button");
-export const hasEmailInput = hasViewFn(".auth0-lock-input-email");
+export const hasEmailInput = hasInputFn("email");
 export const hasLoginSignUpTabs = hasViewFn(".auth0-lock-tabs");
 export const hasOneSocialButton = hasOneViewFn(".auth0-lock-social-button");
 export const hasOneSocialBigButton = hasOneViewFn(".auth0-lock-social-button.auth0-lock-social-big-button");
-export const hasPasswordInput = hasViewFn(".auth0-lock-input-password");
+export const hasPasswordInput = hasInputFn("password");
 export const hasSocialButtons = hasViewFn(".auth0-lock-social-button");
+export const hasSSONotice = hasViewFn(".auth0-sso-notice-container");
 export const hasSubmitButton = hasFn("button.auth0-lock-submit");
-export const hasUsernameInput = hasViewFn(".auth0-lock-input-username");
+export const hasUsernameInput = hasInputFn("username");
 export const isLoginTabCurrent = lock => isTabCurrent(lock, /login/i);
 export const isSignUpTabCurrent = lock => isTabCurrent(lock, /sign up/i);
+
+// interactions
+
+const fillInput = (lock, name, str) => {
+  Simulate.change(qInput(lock, name, true), {target: {value: str}});
+};
+const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
+
+export const fillEmailInput = fillInputFn("email");
+export const fillPasswordInput = fillInputFn("password");
+
+export const submit = lock => {
+  // reset web apis
+  restoreWebApis();
+  stubWebApis();
+
+  const form = q(lock, ".auth0-lock-widget");
+  if (!form || form.tagName !== "FORM") {
+    throw new Error("Unable to submit form: can't find the element");
+  }
+
+  Simulate.submit(form, {});
+}
+
+// login
+
+export const logInWithEmailAndPassword = lock => {
+  fillEmailInput(lock, "someone@example.com");
+  fillPasswordInput(lock, "mypass");
+  submit(lock);
+};

@@ -1,7 +1,7 @@
 export default {
   lastUsedConnection: {
     strategy: "auth0",
-    name: "Username-Password-Authentication"
+    name: "db"
   },
   lastUsedUserID: "auth0|5676890e2a64397e7e0d773c",
   lastUsedUsername: "someone@auth0.com",

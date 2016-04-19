@@ -213,6 +213,31 @@ describe("layout", function() {
     });
   });
 
+  describe("with an enterprise and a corporate connections", function() {
+    beforeEach(function(done) {
+      const opts = {
+        rememberLastLogin: false
+      };
+
+      this.lock = h.displayLock("enterprise and corporate", opts, done);
+    });
+
+    afterEach(function() {
+      this.lock.hide();
+    });
+
+    it("renders the login screen with the right contols", function() {
+      expect(h.hasBackButton(this.lock)).to.not.be.ok();
+      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+      expect(h.hasEmailInput(this.lock)).to.be.ok();
+      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+    });
+  });
+
   describe("with a single corporate connection", function() {
     beforeEach(function(done) {
       const opts = {

@@ -8,8 +8,17 @@ export default {
           showSignup: true,
           signup_url: "https://signup.com",
           forgot_password_url: "https://forgotpassword.com",
-          name: "Username-Password-Authentication",
+          name: "db",
           passwordPolicy: "fair"
+        },
+        {
+          requires_username: false,
+          showForgot: true,
+          showSignup: true,
+          signup_url: "https://signup.com",
+          forgot_password_url: "https://forgotpassword.com",
+          name: "db1",
+          passwordPolicy: "none"
         }
       ],
       name: "auth0"
@@ -29,16 +38,20 @@ export default {
     {
       connections: [
         {
-          name: "rolodato",
+          name: "rolodato.com",
           domain: "rolodato.com",
           domain_aliases: [
             "rolodato.com"
           ]
         },
         {
-          name: "ad-no-domain",
+          name: "corporate-no-domain",
           domain: null
         },
+        {
+          name: "corporate-no-domain1",
+          domain: null
+        }
       ],
       name: "ad"
     },
