@@ -5,6 +5,7 @@ import LoginPane from '../../connection/database/login_pane';
 import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
+  defaultDatabaseConnection,
   hasScreen,
   signUpLink
 } from '../../connection/database/index';
@@ -119,10 +120,10 @@ export default class Login extends Screen {
 
     const useDatabaseConnection = !isSSOEnabled(model)
       && databaseConnection(model)
-      && (!defaultEnterpriseConnectionName(model)
+      && (defaultDatabaseConnection(model)
           || !defaultEnterpriseConnection(model));
 
-    return useDatabaseConnection ? databaseLogIn : enterpriseLogIn
+    return useDatabaseConnection ? databaseLogIn : enterpriseLogIn;
   }
 
   render() {
