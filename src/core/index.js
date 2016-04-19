@@ -243,8 +243,9 @@ export function connection(m, type = undefined, ...strategies) {
   return connections(m, type, ...strategies).get(0);
 }
 
-export function hasOneConnection(m) {
-  return connections(m).count() === 1;
+export function hasOneConnection(m, type = undefined) {
+  const xs = connections(m);
+  return xs.count() === 1 && (!type || xs.getIn([0, "type"]) === type);
 }
 
 export function hasOnlyConnections(m, type = undefined, ...strategies) {

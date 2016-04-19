@@ -82,7 +82,7 @@ export function enterpriseDomain(m) {
 }
 
 export function quickAuthConnection(m) {
-  return !isADEnabled(m) && l.connections(m, "enterprise").count() === 1
+  return !isADEnabled(m) && l.hasOneConnection(m, "enterprise")
     ? l.connections(m, "enterprise").get(0)
     : null;
 }
