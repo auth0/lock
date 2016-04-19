@@ -46,13 +46,16 @@ export function pickConnections(m, strs) {
     ? _ => 0
     : c => strs.indexOf(c.get("name"));
 
-  return m.get("strategies", List()).flatMap(s => {
+  const strategies = m.get("strategies", List()).flatMap(s => {
     return s.get("connections")
       .filter(c => order(c) >= 0)
-      .sort((c1, c2) => order(c1) - order(c2))
       .map(c => {
         return c.set("strategy", s.get("name"))
           .set("type", strategyNameToConnectionType(s.get("name")));
       });
-  }).groupBy(c => c.get("type"));
+  })
+
+  return strategies
+    .sort((c1, c2) => order(c1) - order(c2))
+    .groupBy(c => c.get("type"));
 }
