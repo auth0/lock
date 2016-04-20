@@ -131,7 +131,7 @@ const dict = {
   enterpriseQuickAuth: {
     footerText: "",
     headerText: "",
-    loginTo: "Login to {domain}"
+    loginTo: "Login at {domain}"
   },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
