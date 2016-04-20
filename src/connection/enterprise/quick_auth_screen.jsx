@@ -7,6 +7,7 @@ import * as l from '../../core/index';
 import { quickAuthConnection } from '../enterprise';
 
 
+// TODO: handle this from CSS
 function icon(strategy) {
   if (strategy === "google-apps") return strategy;
   if (~["adfs", "office365", "waad"].indexOf(strategy)) return "windows";

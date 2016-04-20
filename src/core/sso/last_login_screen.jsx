@@ -5,6 +5,15 @@ import { logIn, skipQuickAuth } from '../../quick-auth/actions';
 import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
+import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
+
+// TODO: handle this from CSS
+function icon(strategy) {
+  if (SOCIAL_STRATEGIES[strategy]) return strategy;
+  if (strategy === "google-apps") return strategy;
+  if (~["adfs", "office365", "waad"].indexOf(strategy)) return "windows";
+  return "auth0";
+}
 
 const Component = ({model, t}) => {
   const headerText = t("headerText") || null;
@@ -21,7 +30,7 @@ const Component = ({model, t}) => {
       buttonLabel={lastUsedUsername(model)}
       buttonClickHandler={buttonClickHandler}
       header={header}
-      strategy={lastUsedConnection(model).get("strategy")}
+      strategy={icon(lastUsedConnection(model).get("strategy"))}
     />
   );
 };
