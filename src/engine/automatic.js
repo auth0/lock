@@ -130,7 +130,7 @@ class Automatic {
 const dict = {
   enterpriseQuickAuth: {
     footerText: "",
-    headerText: "",
+    headerText: "Login with your corporate credentials.",
     loginTo: "Login at {domain}"
   },
   forgotPassword: {
