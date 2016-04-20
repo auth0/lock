@@ -39,7 +39,8 @@ export const restoreWebApis = () => {
 
 export const wasLoginAttemptedWith = params => {
   const lastCall = webApi.logIn.lastCall;
-  const paramsFromLastCall = lastCall && lastCall.args[1];
+  if (!lastCall) return false;
+  const paramsFromLastCall = lastCall.args[1];
   return Map(params).reduce(
     (r, v, k) => r && paramsFromLastCall[k] === v,
     true
@@ -147,6 +148,7 @@ const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
 
 export const fillEmailInput = fillInputFn("email");
 export const fillPasswordInput = fillInputFn("password");
+export const fillUsernameInput = fillInputFn("username");
 
 export const submit = lock => {
   // reset web apis
@@ -165,6 +167,12 @@ export const submit = lock => {
 
 export const logInWithEmailAndPassword = lock => {
   fillEmailInput(lock, "someone@example.com");
+  fillPasswordInput(lock, "mypass");
+  submit(lock);
+};
+
+export const logInWithUsernameAndPassword = lock => {
+  fillUsernameInput(lock, "someone");
   fillPasswordInput(lock, "mypass");
   submit(lock);
 };

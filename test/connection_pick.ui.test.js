@@ -160,6 +160,18 @@ describe("connection pick", function() {
         expect(h.hasUsernameInput(this.lock, "someone"));
         expect(h.hasPasswordInput(this.lock));
       });
+
+      describe("and logins with corporate credentials", function() {
+        beforeEach(function() {
+          h.submit(this.lock);
+          h.logInWithUsernameAndPassword(this.lock);
+        });
+
+        it("uses the proper corporate connection", function() {
+          expect(h.wasLoginAttemptedWith({connection: "rolodato.com"})).to.be.ok();
+        });
+      });
+
     });
 
     describe("when the email doesn't match any connection", function() {
@@ -200,6 +212,17 @@ describe("connection pick", function() {
         h.submit(this.lock);
         expect(h.hasUsernameInput(this.lock, "someone"));
         expect(h.hasPasswordInput(this.lock));
+      });
+
+      describe("and logins with corporate credentials", function() {
+        beforeEach(function() {
+          h.submit(this.lock);
+          h.logInWithUsernameAndPassword(this.lock);
+        });
+
+        it("uses the proper corporate connection", function() {
+          expect(h.wasLoginAttemptedWith({connection: "rolodato.com"})).to.be.ok();
+        });
       });
     });
 
