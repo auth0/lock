@@ -26,7 +26,7 @@ export function setup(id, clientID, domain, options, logInCallback, hookRunner, 
     hookRunner: hookRunner,
     mode: options.mode,
     logInCallback: logInCallback,
-    pickedConnections: Immutable.fromJS(options.connections || []),
+    allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options.mode, options)
   }));
 }
@@ -222,8 +222,8 @@ export function warn(x, str) {
   }
 }
 
-export function getPickedConnections(m) {
-  return get(m, "pickedConnections");
+export function allowedConnections(m) {
+  return get(m, "allowedConnections");
 }
 
 export function connections(m, type = undefined, ...strategies) {

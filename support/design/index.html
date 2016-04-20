@@ -296,8 +296,8 @@ body {
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    container: "classic-container",
    languageDictionary: {
      signUp: { footerText: terms }
@@ -306,8 +306,8 @@ body {
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    container: "classic-sign-up-container",
    initialScreen: "signUp",
    languageDictionary: {
@@ -317,8 +317,8 @@ body {
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    container: "classic-forgot-password-container",
    initialScreen: "forgotPassword",
    languageDictionary: {
@@ -329,8 +329,8 @@ body {
 
  new Auth0Lock(cid, domain, {
    allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    container: "classic-no-sign-up-container",
    languageDictionary: {
      signUp: { footerText: terms }
@@ -340,8 +340,8 @@ body {
 
  new Auth0Lock(cid, domain, {
    allowForgotPassword: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    container: "classic-no-forgot-password-container",
    languageDictionary: {
      signUp: { footerText: terms }
@@ -352,8 +352,8 @@ body {
  new Auth0Lock(cid, domain, {
    allowForgotPassword: false,
    allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    container: "classic-only-log-in-container",
    languageDictionary: {
      signUp: { footerText: terms }
@@ -364,8 +364,8 @@ body {
  new Auth0Lock(cid, domain, {
    allowForgotPassword: false,
    allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "auth0.com", "rolodato"],
    container: "classic-small-buttons-container",
    languageDictionary: {
      signUp: { footerText: terms }
@@ -376,8 +376,8 @@ body {
  new Auth0Lock(cid, domain, {
    allowForgotPassword: false,
    allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "thirtysevensignals", "windowslive", "wordpress", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "thirtysevensignals", "windowslive", "wordpress", "auth0.com", "rolodato"],
    container: "classic-two-rows-small-buttons-container",
    languageDictionary: {
      signUp: { footerText: terms }
@@ -386,47 +386,47 @@ body {
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["auth0.com"],
    auth: { redirect: false, sso: false },
-   connections: ["auth0.com"],
    container: "single-enterprise-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["auth0.com", "auth10.com"],
    auth: { redirect: false, sso: false },
-   connections: ["auth0.com", "auth10.com"],
    container: "multiple-enterprise-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["rolodato"],
    container: "single-hrd-container",
    rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["ad-no-domain", "Username-Password-Authentication"],
    auth: { redirect: false, sso: false },
-   connections: ["ad-no-domain", "Username-Password-Authentication"],
    container: "ad-no-domain-container",
    rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["ad-no-domain", "rolodato"],
    auth: { redirect: false, sso: false },
-   connections: ["ad-no-domain", "rolodato"],
    container: "hrd-and-ad-no-domain-container",
    rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["rolodato", "facebook"],
    auth: { redirect: false },
-   connections: ["rolodato", "facebook"],
    container: "kerberos-container"
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication"],
    auth: { redirect: false },
-   connections: ["Username-Password-Authentication"],
    container: "database-container",
    dict: {
      emailAndPassword: {
@@ -437,15 +437,15 @@ body {
  }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication"],
    auth: { redirect: false },
-   connections: ["Username-Password-Authentication"],
    container: "last-login-database-container"
  }).show();
 
  // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email"],
  //   auth: { redirect: false, send: "code" },
  //   closable: true,
- //   connections: ["email"],
  //   container: "emailcode-container",
  //   dict: {
  //     email: {
@@ -456,9 +456,9 @@ body {
  // }).show();
  //
  // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email"],
  //   auth: { redirect: false },
  //   container: "magiclink-container",
- //   connections: ["email"],
  //   dict: {
  //     footerText: terms
  //   },
@@ -466,37 +466,37 @@ body {
  // }).show();
  //
  // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["sms"],
  //   auth: { redirect: false },
- //   connections: ["sms"],
  //   container: "sms-container",
  //   rememberLastLogin: false
  // }).show();
 
  new Auth0Lock(cid, domain, {
+   allowedConnections: ["facebook", "twitter", "github", "google-oauth2"],
    auth: { redirect: false },
-   connections: ["facebook", "twitter", "github", "google-oauth2"],
    container: "social-container",
    rememberLastLogin: false,
    socialButtonStyle: "big"
  }).show();
 
  // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email", "facebook", "twitter", "github"],
  //   auth: { redirect: false, send: "code" },
- //   connections: ["email", "facebook", "twitter", "github"],
  //   container: "socialOrEmailcode-container",
  //   rememberLastLogin: false
  // }).show();
  //
  // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email", "facebook", "twitter", "github"],
  //   auth: { redirect: false },
- //   connections: ["email", "facebook", "twitter", "github"],
  //   container: "socialOrMagiclink-container",
  //   rememberLastLogin: false
  // }).show();
  //
  // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["sms", "facebook", "twitter", "github"],
  //   auth: { redirect: false },
- //   connections: ["sms", "facebook", "twitter", "github"],
  //   container: "socialOrSms-container",
  //   rememberLastLogin: false
  // }).show();

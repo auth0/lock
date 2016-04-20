@@ -25,7 +25,7 @@ function syncClientSettings(id, cb) {
     result = Immutable.fromJS(result);
     m = m.setIn(
       ["core", "connections"],
-      pickConnections(result, l.getPickedConnections(m))
+      pickConnections(result, l.allowedConnections(m))
     );
     setTimeout(() => {
       l.runHook(read(getEntity, "lock", id), "didReceiveClientSettings");

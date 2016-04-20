@@ -27,7 +27,7 @@ describe("connection pick", function() {
   describe("with single database connection", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["db"],
+        allowedConnections: ["db"],
         rememberLastLogin: false
       };
 
@@ -47,7 +47,7 @@ describe("connection pick", function() {
   describe("with multiple database connections", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["db", "db1"],
+        allowedConnections: ["db", "db1"],
         rememberLastLogin: false
       };
 
@@ -67,7 +67,7 @@ describe("connection pick", function() {
   describe("with multiple database connections, providing a default", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["db", "db1"],
+        allowedConnections: ["db", "db1"],
         defaultDatabaseConnection: "db1",
         rememberLastLogin: false
       };
@@ -88,7 +88,7 @@ describe("connection pick", function() {
   describe("with enterprise and database connection", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["db", "auth0.com"],
+        allowedConnections: ["db", "auth0.com"],
         rememberLastLogin: false
       };
 
@@ -126,7 +126,7 @@ describe("connection pick", function() {
   describe("with an enterprise and a corporate connection", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["auth0.com", "rolodato.com"],
+        allowedConnections: ["auth0.com", "rolodato.com"],
         rememberLastLogin: false
       };
 
@@ -179,7 +179,7 @@ describe("connection pick", function() {
   describe("with multiple corporate connections, one without domain", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["corporate-no-domain", "rolodato.com"],
+        allowedConnections: ["corporate-no-domain", "rolodato.com"],
         rememberLastLogin: false
       };
 
@@ -218,7 +218,7 @@ describe("connection pick", function() {
   describe("with multiple corporate connections without domain", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["corporate-no-domain", "corporate-no-domain1"],
+        allowedConnections: ["corporate-no-domain", "corporate-no-domain1"],
         rememberLastLogin: false
       };
 
@@ -244,7 +244,7 @@ describe("connection pick", function() {
   describe("with multiple corporate connections without domain, providing a default", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["corporate-no-domain", "corporate-no-domain1"],
+        allowedConnections: ["corporate-no-domain", "corporate-no-domain1"],
         defaultEnterpriseConnection: "corporate-no-domain1",
         rememberLastLogin: false
       };
@@ -271,7 +271,7 @@ describe("connection pick", function() {
   describe("with a database and a corporate connection without domain", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["corporate-no-domain", "db"],
+        allowedConnections: ["corporate-no-domain", "db"],
         rememberLastLogin: false
       };
 
@@ -297,7 +297,7 @@ describe("connection pick", function() {
   describe("with a database and a corporate connection without domain, providing a default database", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["corporate-no-domain", "db"],
+        allowedConnections: ["corporate-no-domain", "db"],
         defaultDatabaseConnection: "db",
         rememberLastLogin: false
       };
@@ -324,7 +324,7 @@ describe("connection pick", function() {
   describe("with a database and a corporate connection without domain, providing a default corporate", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["corporate-no-domain", "db"],
+        allowedConnections: ["corporate-no-domain", "db"],
         defaultEnterpriseConnection: "corporate-no-domain",
         rememberLastLogin: false
       };
@@ -351,7 +351,7 @@ describe("connection pick", function() {
   describe("with a database and a corporate connection without domain, providing database and corporate defaults", function() {
     beforeEach(function(done) {
       const opts = {
-        connections: ["corporate-no-domain", "db"],
+        allowedConnections: ["corporate-no-domain", "db"],
         defaultDatabaseConnection: "db",
         defaultEnterpriseConnection: "corporate-no-domain",
         rememberLastLogin: false

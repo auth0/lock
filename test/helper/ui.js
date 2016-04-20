@@ -51,28 +51,28 @@ export const wasLoginAttemptedWith = params => {
 export const displayLock = (name, opts = {}, done = () => {}) => {
   switch(name) {
   case "enterprise and corporate":
-    opts.connections = ["auth0.com", "rolodato.com"];
+    opts.allowedConnections = ["auth0.com", "rolodato.com"];
     break;
   case "single database":
-    opts.connections = ["db"];
+    opts.allowedConnections = ["db"];
     break;
   case "single enterprise":
-    opts.connections = ["auth0.com"];
+    opts.allowedConnections = ["auth0.com"];
     break;
   case "multiple enterprise":
-    opts.connections = ["auth0.com", "auth10.com"];
+    opts.allowedConnections = ["auth0.com", "auth10.com"];
     break;
   case "single corporate":
-    opts.connections = ["rolodato.com"];
+    opts.allowedConnections = ["rolodato.com"];
     break;
   case "multiple corporate, one without domain":
-    opts.connections = ["rolodato.com", "corporate-no-domain"];
+    opts.allowedConnections = ["rolodato.com", "corporate-no-domain"];
     break;
   case "multiple social":
-    opts.connections = ["facebook", "twitter", "github"];
+    opts.allowedConnections = ["facebook", "twitter", "github"];
     break;
   case "kerberos":
-    opts.connections = ["rolodato.com"];
+    opts.allowedConnections = ["rolodato.com"];
     break;
   }
 

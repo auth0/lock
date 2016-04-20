@@ -96,13 +96,13 @@ var domain = "1";
 var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
 addLockClassic("classic", {
-  authentication: { redirect: false },
-  connections: ["Username-Password-Authentication", "facebook", "twitter", "github"]
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
+  authentication: { redirect: false }
 });
 
 addLockClassic("database", {
+  allowedConnections: ["Username-Password-Authentication"],
   authentication: { redirect: false },
-  connections: ["Username-Password-Authentication"],
   dict: {
     emailAndPassword: {
       footerText: terms
@@ -112,13 +112,13 @@ addLockClassic("database", {
 });
 
 addLockClassic("lastLoginDatabase", {
-  authentication: { redirect: false },
-  connections: ["Username-Password-Authentication"]
+  allowedConnections: ["Username-Password-Authentication"],
+  authentication: { redirect: false }
 });
 
 addLockPasswordless("emailcode", {
+  allowedConnections: ["email"],
   authentication: { redirect: false, send: "code" },
-  connections: ["email"],
   dict: {
     email: {
       footerText: terms
@@ -128,8 +128,8 @@ addLockPasswordless("emailcode", {
 });
 
 addLockPasswordless("magiclink", {
+  allowedConnections: ["email"],
   authentication: { redirect: false },
-  connections: ["email"],
   dict: {
     email: {
       footerText: terms
@@ -139,33 +139,33 @@ addLockPasswordless("magiclink", {
 });
 
 addLockPasswordless("sms", {
+  allowedConnections: ["sms"],
   authentication: { redirect: false },
-  connections: ["sms"],
   rememberLastLogin: false
 });
 
 addLockPasswordless("social", {
+  allowedConnections: ["facebook", "twitter", "github", "google-oauth2"],
   authentication: { redirect: false },
-  connections: ["facebook", "twitter", "github", "google-oauth2"],
   rememberLastLogin: false,
   socialButtonStyle: "big"
 });
 
 addLockPasswordless("socialOrEmailcode", {
+  allowedConnections: ["email", "facebook", "twitter", "github"],
   authentication: { redirect: false, send: "code" },
-  connections: ["email", "facebook", "twitter", "github"],
   rememberLastLogin: false
 });
 
 addLockPasswordless("socialOrMagiclink", {
+  allowedConnections: ["email", "facebook", "twitter", "github"],
   authentication: { redirect: false },
-  connections: ["email", "facebook", "twitter", "github"],
   rememberLastLogin: false
 });
 
 addLockPasswordless("socialOrSms", {
+  allowedConnections: ["sms", "facebook", "twitter", "github"],
   authentication: { redirect: false },
-  connections: ["sms", "facebook", "twitter", "github"],
   rememberLastLogin: false
 });
 
