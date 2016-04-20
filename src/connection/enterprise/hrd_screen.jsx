@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../../core/screen';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import HRDPane from './hrd_pane';
-import { cancelHRD, logInHRD } from './actions';
+import { cancelHRD, logIn } from './actions';
 import { enterpriseDomain, isSingleHRDConnection }  from '../enterprise';
 
 const Component = ({model, t}) => {
@@ -30,7 +30,7 @@ export default class HRDScreen extends Screen {
   }
 
   submitHandler(model) {
-    return logInHRD;
+    return logIn;
   }
 
   renderAuxiliaryPane(model) {
