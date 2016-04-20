@@ -19,7 +19,7 @@ export default class UsernameInput extends React.Component {
         input.focus();
         if (input !== global.document.activeElement) {
           setTimeout(() => {
-            this.refs.input.focus();
+            this.refs.input && this.refs.input.focus();
           }, 800);
         }
       }, 200);
