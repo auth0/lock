@@ -175,9 +175,25 @@ body {
 <div class="container">
   <div class="info">
     <h2>Enterprise</h2>
-    <h3>Single connection</h3>
+    <h3>Single connection (google)</h3>
   </div>
-  <div class="lock-container" id="single-enterprise-container"></div>
+  <div class="lock-container" id="single-enterprise-google-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Enterprise</h2>
+    <h3>Single connection (office365)</h3>
+  </div>
+  <div class="lock-container" id="single-enterprise-office365-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Enterprise</h2>
+    <h3>Single connection (saml)</h3>
+  </div>
+  <div class="lock-container" id="single-enterprise-saml-container"></div>
 </div>
 
 <div class="container">
@@ -388,7 +404,19 @@ body {
  new Auth0Lock(cid, domain, {
    allowedConnections: ["auth0.com"],
    auth: { redirect: false, sso: false },
-   container: "single-enterprise-container"
+   container: "single-enterprise-google-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["benjimon.com"],
+   auth: { redirect: false, sso: false },
+   container: "single-enterprise-office365-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["evilrabbit.com"],
+   auth: { redirect: false, sso: false },
+   container: "single-enterprise-saml-container"
  }).show();
 
  new Auth0Lock(cid, domain, {

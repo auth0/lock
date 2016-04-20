@@ -122,6 +122,30 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
       {
         connections: [
           {
+            name: "benjimon.com",
+            domain: "benjimon.com",
+            domain_aliases: [
+              "benjimon.com"
+            ]
+          },
+        ],
+        name: "office365"
+      },
+      {
+        connections: [
+          {
+            name: "evilrabbit.com",
+            domain: "evilrabbit.com",
+            domain_aliases: [
+              "evilrabbit.com"
+            ]
+          },
+        ],
+        name: "samlp"
+      },
+      {
+        connections: [
+          {
             name: "auth0.com",
             domain: "auth0.com",
             domain_aliases: [

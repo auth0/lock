@@ -129,9 +129,17 @@ export const hasAlternativeLink = hasViewFn(".auth0-lock-alternative-link");
 export const hasBackButton = hasFn(".auth0-lock-back-button");
 export const hasEmailInput = hasInputFn("email");
 export const hasLoginSignUpTabs = hasViewFn(".auth0-lock-tabs");
+export const hasNoQuickAuthButton = lock => {
+  return !qView(lock, ".auth0-lock-socia-button");
+};
 export const hasOneSocialButton = hasOneViewFn(".auth0-lock-social-button");
 export const hasOneSocialBigButton = hasOneViewFn(".auth0-lock-social-button.auth0-lock-social-big-button");
 export const hasPasswordInput = hasInputFn("password");
+export const hasQuickAuthButton = (lock, icon, domain) => {
+  // TODO: we should actually check that there's just a single button
+  const xs = qView(lock, `.auth0-lock-social-button[data-provider^="${icon}"]`, true);
+  return xs.length === 1 && xs[0].innerText.indexOf(domain) !== -1;
+};
 export const hasSocialButtons = hasViewFn(".auth0-lock-social-button");
 export const hasSSONotice = hasViewFn(".auth0-sso-notice-container");
 export const hasSubmitButton = hasFn("button.auth0-lock-submit");

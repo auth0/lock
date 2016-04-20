@@ -45,6 +45,13 @@ export default {
           ]
         },
         {
+          name: "ad.com",
+          domain: "ad.com",
+          domain_aliases: [
+            "ad.com"
+          ]
+        },
+        {
           name: "corporate-no-domain",
           domain: null
         },
@@ -54,6 +61,42 @@ export default {
         }
       ],
       name: "ad"
+    },
+    {
+      connections: [
+        {
+          name: "adfs.com",
+          domain: "adfs.com",
+          domain_aliases: [
+            "adfs.com"
+          ]
+        },
+      ],
+      name: "adfs"
+    },
+    {
+      connections: [
+        {
+          name: "auth0-adldap.com",
+          domain: "auth0-adldap.com",
+          domain_aliases: [
+            "auth0-adldap.com"
+          ]
+        },
+      ],
+      name: "auth0-adldap"
+    },
+    {
+      connections: [
+        {
+          name: "custom.com",
+          domain: "custom.com",
+          domain_aliases: [
+            "custom.com"
+          ]
+        },
+      ],
+      name: "custom"
     },
     {
       connections: [
@@ -68,11 +111,6 @@ export default {
             "profile"
           ]
         },
-      ],
-      name: "google-apps",
-    },
-    {
-      connections: [
         {
           name: "auth10.com",
           domain: "auth10.com",
@@ -84,8 +122,103 @@ export default {
             "profile"
           ]
         },
+        {
+          name: "google-apps.com",
+          domain: "google-apps.com",
+          domain_aliases: [
+            "google-apps.com"
+          ],
+          scope: [
+            "email",
+            "profile"
+          ]
+        }
       ],
       name: "google-apps",
+    },
+    {
+      connections: [
+        {
+          name: "ip.com",
+          domain: "ip.com",
+          domain_aliases: [
+            "ip.com"
+          ]
+        },
+      ],
+      name: "ip"
+    },
+    {
+      connections: [
+        {
+          name: "mscrm.com",
+          domain: "mscrm.com",
+          domain_aliases: [
+            "mscrm.com"
+          ]
+        },
+      ],
+      name: "mscrm"
+    },
+    {
+      connections: [
+        {
+          name: "office365.com",
+          domain: "office365.com",
+          domain_aliases: [
+            "office365.com"
+          ]
+        },
+      ],
+      name: "office365"
+    },
+    {
+      connections: [
+        {
+          name: "pingfederate.com",
+          domain: "pingfederate.com",
+          domain_aliases: [
+            "pingfederate.com"
+          ]
+        },
+      ],
+      name: "pingfederate"
+    },
+    {
+      connections: [
+        {
+          name: "samlp.com",
+          domain: "samlp.com",
+          domain_aliases: [
+            "samlp.com"
+          ]
+        },
+      ],
+      name: "samlp"
+    },
+    {
+      connections: [
+        {
+          name: "sharepoint.com",
+          domain: "sharepoint.com",
+          domain_aliases: [
+            "sharepoint.com"
+          ]
+        },
+      ],
+      name: "sharepoint"
+    },
+    {
+      connections: [
+        {
+          name: "waad.com",
+          domain: "waad.com",
+          domain_aliases: [
+            "waad.com"
+          ]
+        },
+      ],
+      name: "waad"
     },
     {
       connections: [
