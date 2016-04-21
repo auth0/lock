@@ -1,3 +1,24 @@
+## [9.0.4] - 2016-04-21
+
+### Fixed
+
+- [] Merge pull request #358 from auth0/9-fix-border-and-loading (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/815bdf9146965bc621a8ae1e6f9dee7e1e580c4d
+- [] fix loading and border radius (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/6accd0ad3f4c2ba4b56d1e2e3b3f817a1a311bec
+- [] Merge pull request #354 from auth0/introduce-travis (`Hernan Zalazar`)
+  https://github.com/auth0/lock/commit/1f1034a49c37749113e09440255ba7962ab21446
+- [] Remove v10 branch from whitelist (`Hernan Zalazar`)
+  https://github.com/auth0/lock/commit/063bcbbd808a5b046c742de55a151b106a776b95
+- [] Specify C++ env for native integrations (`Hernan Zalazar`)
+  https://github.com/auth0/lock/commit/b7a2a1fe21d63d10c9af861349bf974c3cd65cb1
+- [] Add ci script to run integration/phantom tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/f4da4d9bad53ee9f492355cedb952da2bc83ccf6
+- [] Whitelist more branches (`Hernan Zalazar`)
+  https://github.com/auth0/lock/commit/a58b416da9fa5873086ebc1c2bb8af3204787a4c
+- [] Add travis.yml (`Hernan Zalazar`)
+  https://github.com/auth0/lock/commit/a75560321c2332e5f01e6d52f2cdd37348b7cc8d
+
 ## [9.0.3] - 2016-04-12
 
 ### Fixed
