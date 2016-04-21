@@ -76,13 +76,12 @@ export default class SignUp extends Screen {
 
   renderTerms(m, t) {
     const terms = t("terms");
-    const label = requestSignUpTermsAgreement(m)
-      ? t("agreeTerms", {__textOnly: true})
-      : null;
+    const checkHandler = requestSignUpTermsAgreement(m)
+      ? () => toggleSignUpTermsAgreement(l.id(m))
+      : undefined;
     return terms || requestSignUpTermsAgreement(m)
       ? <SignUpTerms
-          checkHandler={() => toggleSignUpTermsAgreement(l.id(m))}
-          checkLabel={label}
+          checkHandler={checkHandler}
           value={hasAgreedToSignUpTerms(m)}
         >
           {terms}

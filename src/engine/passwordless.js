@@ -85,7 +85,6 @@
 //
 // const dict = {
 //   email: {
-//     agreeTerms: "I agree to the terms and conditions.",
 //     emailInputPlaceholder: "yours@example.com",
 //     headerText: "Enter your email to sign in<br>or create an account",
 //     terms: ""
@@ -111,14 +110,12 @@
 //     locationFilterInputPlaceholder: "Select your country"
 //   },
 //   network: {
-//     agreeTerms: "I agree to the terms and conditions.",
 //     headerText: "",
 //     loginWith: "Login with {idp}",
 //     smallSocialButtonsHeader: "Login with",
 //     terms: ""
 //   },
 //   networkOrEmail: {
-//     agreeTerms: "I agree to the terms and conditions.",
 //     emailInputPlaceholder: "yours@example.com",
 //     headerText: "",
 //     loginWith: "Login with {idp}",
@@ -127,7 +124,6 @@
 //     terms: ""
 //   },
 //   networkOrPhone: {
-//     agreeTerms: "I agree to the terms and conditions.",
 //     headerText: "",
 //     loginWith: "Login with {idp}",
 //     phoneNumberInputPlaceholder: "your phone number",
@@ -136,7 +132,6 @@
 //     terms: ""
 //   },
 //   phone: {
-//     agreeTerms: "I agree to the terms and conditions.",
 //     headerText: "Enter your phone to sign in<br>or create an account",
 //     phoneNumberInputPlaceholder: "your phone number",
 //     terms: ""

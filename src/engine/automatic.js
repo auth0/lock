@@ -165,7 +165,6 @@ const dict = {
     usernameInputPlaceholder: "your username"
   },
   signUp: {
-    agreeTerms: "I agree to the terms and conditions.",
     emailInputPlaceholder: "yours@example.com",
     headerText: "",
     loginTabLabel: "Login",
