@@ -25,6 +25,7 @@
   background-clip: padding-box;
   width: 60px;
   height: 60px;
+  box-sizing: border-box;
 }
 
 .spinner-bg {
@@ -327,6 +328,11 @@
   background: transparent;
   box-shadow: 0 0 2px rgba(17, 17, 24, .6);
 
+  form {
+    border-radius: 0 0 3px 3px;
+    overflow: hidden;
+  }
+
   * {
     font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif;
   }
@@ -574,6 +580,7 @@
       -webkit-transition: border-color .8s;
       transition: border-color .8s;
       overflow: hidden;
+      transition: .25s ease-in;
 
       i{
         font-size: 14px;
@@ -586,7 +593,7 @@
 
       &.error-input {
         border-color: red;
-        animation: pulse 1s both;
+        // animation: pulse 1s both;
       }
     }
 
@@ -761,7 +768,7 @@
 
     margin: 0;
     position: absolute;
-    bottom: -1px;
+    // bottom: -1px;
     left: 0;
 
     border-radius: 0 0 3px 3px;

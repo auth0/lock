@@ -7020,6 +7020,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background-clip: padding-box;
   width: 60px;
   height: 60px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #a0-lock.a0-theme-default .a0-spinner-bg {
@@ -7342,6 +7345,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /*-----  End of Forgot Password  ------*/
 }
 
+#a0-lock.a0-theme-default .a0-panel form {
+  border-radius: 0 0 3px 3px;
+  overflow: hidden;
+}
+
 #a0-lock.a0-theme-default .a0-panel * {
   font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif;
 }
@@ -7581,6 +7589,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -moz-transition: border-color 0.8s;
   transition: border-color 0.8s;
   overflow: hidden;
+  transition: 0.25s ease-in;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email .a0-input-box i,
@@ -7600,9 +7609,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-password .a0-input-box.a0-error-input,
 #a0-lock.a0-theme-default .a0-panel .a0-repeatPassword .a0-input-box.a0-error-input {
   border-color: red;
-  -webkit-animation: pulse 1s both;
-  -moz-animation: pulse 1s both;
-  animation: pulse 1s both;
 }
 
 #a0-lock.a0-theme-default .a0-panel .a0-email input,
@@ -7742,7 +7748,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   display: block;
   margin: 0;
   position: absolute;
-  bottom: -1px;
   left: 0;
   border-radius: 0 0 3px 3px;
 }
