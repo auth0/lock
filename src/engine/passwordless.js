@@ -85,13 +85,13 @@
 //
 // const dict = {
 //   email: {
+//     agreeTerms: "I agree to the terms and conditions.",
 //     emailInputPlaceholder: "yours@example.com",
-//     footerText: "",
-//     headerText: "Enter your email to sign in<br>or create an account"
+//     headerText: "Enter your email to sign in<br>or create an account",
+//     terms: ""
 //   },
 //   emailCode: {
 //     codeInputPlaceholder: "Your code",
-//     footerText: "",
 //     headerText: "An email with the code has been sent to {email}.",
 //     resendLabel: "Did not get the code?"
 //   },
@@ -111,38 +111,41 @@
 //     locationFilterInputPlaceholder: "Select your country"
 //   },
 //   network: {
-//     footerText: "",
+//     agreeTerms: "I agree to the terms and conditions.",
 //     headerText: "",
 //     loginWith: "Login with {idp}",
-//     smallSocialButtonsHeader: "Login with"
+//     smallSocialButtonsHeader: "Login with",
+//     terms: ""
 //   },
 //   networkOrEmail: {
+//     agreeTerms: "I agree to the terms and conditions.",
 //     emailInputPlaceholder: "yours@example.com",
-//     footerText: "",
 //     headerText: "",
 //     loginWith: "Login with {idp}",
 //     separatorText: "Otherwise, enter your email to sign in<br>or create an account",
-//     smallSocialButtonsHeader: "Login with"
+//     smallSocialButtonsHeader: "Login with",
+//     terms: ""
 //   },
 //   networkOrPhone: {
-//     footerText: "",
+//     agreeTerms: "I agree to the terms and conditions.",
 //     headerText: "",
 //     loginWith: "Login with {idp}",
 //     phoneNumberInputPlaceholder: "your phone number",
 //     separatorText: "Otherwise, enter your phone to sign in<br>or create an account",
-//     smallSocialButtonsHeader: "Login with"
+//     smallSocialButtonsHeader: "Login with",
+//     terms: ""
 //   },
 //   phone: {
-//     footerText: "",
+//     agreeTerms: "I agree to the terms and conditions.",
 //     headerText: "Enter your phone to sign in<br>or create an account",
-//     phoneNumberInputPlaceholder: "your phone number"
+//     phoneNumberInputPlaceholder: "your phone number",
+//     terms: ""
 //   },
 //   signedIn: {
 //     success: "Thanks for logging in."
 //   },
 //   smsCode: { // social or sms
 //     codeInputPlaceholder: "Your code",
-//     footerText: "",
 //     headerText: "An SMS with the code has been sent to {phoneNumber}.",
 //     resendLabel: "Did not get the code?"
 //   },

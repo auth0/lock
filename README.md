@@ -163,7 +163,6 @@ A language dictionary is an object that contains every piece of text the Lock ne
 {
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
     usernameInputPlaceholder: "your username"
   },
@@ -173,7 +172,6 @@ A language dictionary is an object that contains every piece of text the Lock ne
   },
   login: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
     loginTabLabel: "Login",
@@ -186,7 +184,6 @@ A language dictionary is an object that contains every piece of text the Lock ne
   },
   signUp: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     headerText: "",
     loginTabLabel: "Login",
     passwordInputPlaceholder: "your password",
@@ -211,7 +208,7 @@ When you construct the Lock you can override any value by providing a [languageD
 ```js
 var options = {
   signUp: {
-    footerText: "You must agree to our <a href='/terms' target='_new'>terms of service</a>"
+    emailInputPlaceholder: "please enter you email",
   },
   title: "My Company"
 };

@@ -26,4 +26,7 @@ export default class Screen {
     return false;
   }
 
+  renderTerms() {
+    return null;
+  }
 }

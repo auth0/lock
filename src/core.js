@@ -10,6 +10,7 @@ import {
   setupLock,
   updateLock
 } from './core/actions';
+import { hasAgreedToSignUpTerms } from './connection/database/index';
 import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
@@ -70,6 +71,8 @@ export default class Base extends EventEmitter {
           const screenName = ~["login", "signUp"].indexOf(screen.name)
             ? "loginSignUp"
             : screen.name;
+          const disableSubmitButton = screen.name === "signUp"
+            && !hasAgreedToSignUpTerms(m);
 
           const t = (keyPath, params) => l.ui.t(m, [screen.name].concat(keyPath), params);
 
@@ -83,6 +86,7 @@ export default class Base extends EventEmitter {
               : undefined,
             contentComponent: screen.render(),
             contentProps: {model: m, t},
+            disableSubmitButton: disableSubmitButton,
             error: l.globalError(m),
             isMobile: l.ui.mobile(m),
             isModal: l.ui.appendContainer(m),
@@ -93,7 +97,7 @@ export default class Base extends EventEmitter {
             success: l.globalSuccess(m),
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
-            terms: t("footerText"),
+            terms: screen.renderTerms(m, t),
             title: title,
             transitionName: screenName === "loading" ? "fade" : "horizontal-fade"
           };

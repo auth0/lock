@@ -1,7 +1,15 @@
 import React from 'react';
 import Screen from '../../core/screen';
-import { hasScreen } from '../../connection/database/index';
-import { signUp } from '../../connection/database/actions';
+import {
+  hasAgreedToSignUpTerms,
+  hasScreen,
+  requestSignUpTermsAgreement
+} from '../../connection/database/index';
+import SignUpTerms from '../../connection/database/sign_up_terms';
+import {
+  signUp,
+  toggleSignUpTermsAgreement
+} from '../../connection/database/actions';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
 import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
 import SignUpPane from './sign_up_pane';
@@ -64,6 +72,22 @@ export default class SignUp extends Screen {
 
   renderTabs() {
     return true;
+  }
+
+  renderTerms(m, t) {
+    const terms = t("terms");
+    const label = requestSignUpTermsAgreement(m)
+      ? t("agreeTerms", {__textOnly: true})
+      : null;
+    return terms || requestSignUpTermsAgreement(m)
+      ? <SignUpTerms
+          checkHandler={() => toggleSignUpTermsAgreement(l.id(m))}
+          checkLabel={label}
+          value={hasAgreedToSignUpTerms(m)}
+        >
+          {terms}
+        </SignUpTerms>
+      : null;
   }
 
   render() {

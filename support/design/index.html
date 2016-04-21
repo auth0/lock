@@ -316,7 +316,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-container",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -327,7 +327,7 @@ body {
    container: "classic-sign-up-container",
    initialScreen: "signUp",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -338,7 +338,7 @@ body {
    container: "classic-forgot-password-container",
    initialScreen: "forgotPassword",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -349,7 +349,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-no-sign-up-container",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -360,7 +360,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-no-forgot-password-container",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -372,7 +372,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-only-log-in-container",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -384,7 +384,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-small-buttons-container",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -396,7 +396,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-two-rows-small-buttons-container",
    languageDictionary: {
-     signUp: { footerText: terms }
+     signUp: { terms: terms }
    },
    rememberLastLogin: false
  }).show();
@@ -457,8 +457,8 @@ body {
    auth: { redirect: false },
    container: "database-container",
    dict: {
-     emailAndPassword: {
-       footerText: terms
+     signUp: {
+       terms: terms
      }
    },
    rememberLastLogin: false
@@ -477,7 +477,7 @@ body {
  //   container: "emailcode-container",
  //   dict: {
  //     email: {
- //       footerText: terms
+ //       terms: terms
  //     }
  //   },
  //   rememberLastLogin: false
@@ -488,7 +488,7 @@ body {
  //   auth: { redirect: false },
  //   container: "magiclink-container",
  //   dict: {
- //     footerText: terms
+ //     terms: terms
  //   },
  //   rememberLastLogin: false
  // }).show();

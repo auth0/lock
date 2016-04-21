@@ -129,13 +129,11 @@ class Automatic {
 
 const dict = {
   enterpriseQuickAuth: {
-    footerText: "",
     headerText: "Login with your corporate credentials.",
     loginTo: "Login at {domain}"
   },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
     usernameInputPlaceholder: "your username"
   },
@@ -155,7 +153,6 @@ const dict = {
   },
   login: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
     loginTabLabel: "Login",
@@ -168,8 +165,8 @@ const dict = {
     usernameInputPlaceholder: "your username"
   },
   signUp: {
+    agreeTerms: "I agree to the terms and conditions.",
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     headerText: "",
     loginTabLabel: "Login",
     passwordInputPlaceholder: "your password",
@@ -177,6 +174,7 @@ const dict = {
     signUpTabLabel: "Sign Up",
     signUpWith: "Sign up with {idp}",
     ssoEnabled: "Single Sign-on enabled",
+    terms: "",
     usernameInputPlaceholder: "your username",
   },
   signedIn: {
