@@ -11,6 +11,7 @@ import {
   toggleSignUpTermsAgreement
 } from '../../connection/database/actions';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
 import SignUpPane from './sign_up_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
@@ -67,7 +68,7 @@ export default class SignUp extends Screen {
   }
 
   renderAuxiliaryPane(lock) {
-    return renderSignedUpConfirmation(lock);
+    return renderSignedInConfirmation(lock) || renderSignedUpConfirmation(lock);
   }
 
   renderTabs() {
