@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import * as h from './helper/ui';
 
-describe.only("sign up terms agreement", function() {
+describe("sign up terms agreement", function() {
   before(h.stubWebApis);
   after(h.restoreWebApis);
 
