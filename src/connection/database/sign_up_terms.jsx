@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SignUpTerms = ({checkHandler, children, value}) => {
+const SignUpTerms = ({checkHandler, checked, children}) => {
   return checkHandler
     ? <span className="auth0-lock-sign-up-terms-agreement">
         <label>
-          <input type="checkbox" onChange={checkHandler} value={value} />
+          <input type="checkbox" onChange={checkHandler} checked={checked} />
           {children}
         </label>
       </span>

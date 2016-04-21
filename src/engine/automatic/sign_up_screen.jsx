@@ -82,7 +82,7 @@ export default class SignUp extends Screen {
     return terms || requestSignUpTermsAgreement(m)
       ? <SignUpTerms
           checkHandler={checkHandler}
-          value={hasAgreedToSignUpTerms(m)}
+          checked={hasAgreedToSignUpTerms(m)}
         >
           {terms}
         </SignUpTerms>
