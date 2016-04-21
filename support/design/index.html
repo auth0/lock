@@ -174,6 +174,14 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>Classic</h2>
+    <h3>Sign up with request terms agreement</h3>
+  </div>
+  <div class="lock-container" id="classic-sign-up-terms-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>Enterprise</h2>
     <h3>Single connection (google)</h3>
   </div>
@@ -399,6 +407,20 @@ body {
      signUp: { terms: terms }
    },
    rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter"],
+   auth: { redirect: false, sso: false },
+   container: "classic-sign-up-terms-container",
+   initialScreen: "signUp",
+   languageDictionary: {
+     signUp: {
+       terms: "Before signing up, you must agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
+     }
+   },
+   rememberLastLogin: false,
+   requestSignUpTermsAgreement: true
  }).show();
 
  new Auth0Lock(cid, domain, {
