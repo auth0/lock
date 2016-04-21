@@ -10,6 +10,7 @@ import  {
   databaseConnectionName,
   setScreen,
   shouldAutoLogin,
+  toggleSignUpTermsAgreement as switchSignUpTermsAgreement,
   additionalSignUpFields
 } from './index';
 
@@ -273,4 +274,8 @@ export function showResetPasswordActivity(id, fields = ["password"]) {
 
 export function cancelResetPassword(id) {
  return showLoginActivity(id);
+}
+
+export function toggleSignUpTermsAgreement(id) {
+  swap(updateEntity, "lock", id, switchSignUpTermsAgreement);
 }

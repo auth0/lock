@@ -179,3 +179,11 @@ export function additionalSignUpFields(m) {
 export function requestSignUpTermsAgreement(m) {
   return get(m, "requestSignUpTermsAgreement", false);
 }
+
+export function hasAgreedToSignUpTerms(m) {
+  return !requestSignUpTermsAgreement(m) || tget(m, "signUpTermsAgreement", false);
+}
+
+export function toggleSignUpTermsAgreement(m) {
+  return tset(m, "signUpTermsAgreement", !hasAgreedToSignUpTerms(m));
+}
