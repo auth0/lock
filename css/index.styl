@@ -401,6 +401,8 @@ breakpoint(point, value = 0)
     width 100%
     overflow hidden
     border-radius 0 0 5px 5px
+    -webkit-transition .2s ease-in-out
+    transition .2s ease-in-out
 
     span
       display inline-block
@@ -410,7 +412,7 @@ breakpoint(point, value = 0)
         vertical-align middle
 
     +breakpoint("mobile")
-      &:hover
+      &:hover:not([disabled])
         span
           -webkit-transform scale(1.05)
           transform scale(1.05)
@@ -419,8 +421,15 @@ breakpoint(point, value = 0)
       box-shadow inset 0 0 100px 20px rgba(black,.2)
 
     &[disabled]
-      background darken(#EA5323, 20%)
+      background-color #9b9b9b !important
 
+      span svg
+        circle, path
+          stroke rgba(white,.6)
+          -webkit-transition .2s ease-in-out
+          transition .2s ease-in-out
+        path
+          fill rgba(white,.6)
 
   .auth0-loading-container
     position relative
