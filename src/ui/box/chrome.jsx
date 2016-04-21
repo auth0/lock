@@ -61,6 +61,7 @@ export default class Chrome extends React.Component {
       backHandler,
       contentComponent,
       contentProps,
+      disableSubmitButton,
       error,
       isSubmitting,
       logo,
@@ -87,7 +88,7 @@ export default class Chrome extends React.Component {
     const submitButton = showSubmitButton
       && <SubmitButton
             color={primaryColor}
-            disabled={isSubmitting}
+            disabled={disableSubmitButton}
             key="submit"
             ref="submit"
          />;
@@ -164,6 +165,7 @@ Chrome.propTypes = {
   backHandler: React.PropTypes.func,
   contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: React.PropTypes.object.isRequired,
+  disableSubmitButton: React.PropTypes.bool.isRequired,
   error: React.PropTypes.string,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
@@ -176,6 +178,7 @@ Chrome.propTypes = {
 };
 
 Chrome.defaultProps = {
+  disableSubmitButton: false,
   showSubmitButton: true
 };
 

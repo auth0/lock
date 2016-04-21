@@ -90,6 +90,7 @@ export default class Container extends React.Component {
       closeHandler,
       contentComponent,
       contentProps,
+      disableSubmitButton,
       disallowClose,
       error,
       isMobile, // TODO: not documented and should be removed (let the design team know first)
@@ -158,6 +159,7 @@ export default class Container extends React.Component {
                 backHandler={backHandler}
                 contentComponent={contentComponent}
                 contentProps={contentProps}
+                disableSubmitButton={disableSubmitButton}
                 error={error}
                 isSubmitting={isSubmitting}
                 logo={logo}
@@ -188,6 +190,7 @@ Container.propTypes = {
   closeHandler: React.PropTypes.func,
   contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: React.PropTypes.object.isRequired,
+  disableSubmitButton: React.PropTypes.bool.isRequired,
   error: React.PropTypes.string,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
@@ -212,6 +215,7 @@ const isFileProtocol = global.window
 export const defaultProps = Container.defaultProps = {
   badgeLink: "https://auth0.com/",
   contentProps: {},
+  disableSubmitButton: false,
   isMobile: false,
   isSubmitting: false,
   logo: `${isFileProtocol ? "https:" : ""}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
