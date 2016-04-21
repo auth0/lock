@@ -21,6 +21,7 @@ function processDatabaseOptions(options) {
     forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
+    requestSignUpTermsAgreement,
     signUpLink,
     usernameStyle
   } = options;
@@ -64,6 +65,10 @@ function processDatabaseOptions(options) {
     signUpLink = undefined;
   }
 
+  if (requestSignUpTermsAgreement !== undefined && typeof requestSignUpTermsAgreement != "boolean") {
+    l.warn(options, "The `requestSignUpTermsAgreement` option will be ignored, because it is not a booelan.");
+    requestSignUpTermsAgreement = undefined;
+  }
 
   if (additionalSignUpFields && !Array.isArray(additionalSignUpFields)) {
     l.warn(options, "The `additionalSignUpFields` option will be ignored, because it is not an array");
@@ -94,6 +99,7 @@ function processDatabaseOptions(options) {
     forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
+    requestSignUpTermsAgreement,
     screens,
     signUpLink,
     usernameStyle
@@ -168,4 +174,8 @@ export function passwordStrengthPolicy(m) {
 
 export function additionalSignUpFields(m) {
   return get(m, "additionalSignUpFields", List());
+}
+
+export function requestSignUpTermsAgreement(m) {
+  return get(m, "requestSignUpTermsAgreement", false);
 }
