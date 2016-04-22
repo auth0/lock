@@ -102,6 +102,16 @@ export default class Base extends EventEmitter {
             transitionName: screenName === "loading" ? "fade" : "horizontal-fade"
           };
           render(l.ui.containerID(m), props);
+
+          // TODO: hack so we can start testing the beta
+          if (!this.oldScreenName || this.oldScreenName != screen.name) {
+            if (screen.name === "login") {
+              l.emitEvent(m, "signin ready");
+            } else if (screen.name === "signUp") {
+              l.emitEvent(m, "signup ready");
+            }
+          }
+          this.oldScreenName = screen.name;
         } else {
           remove(l.ui.containerID(m));
         }
