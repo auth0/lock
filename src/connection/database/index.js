@@ -181,9 +181,9 @@ export function mustAcceptTerms(m) {
 }
 
 export function termsAccepted(m) {
-  return !mustAcceptTerms(m) || tget(m, "signUpTermsAgreement", false);
+  return !mustAcceptTerms(m) || tget(m, "termsAccepted", false);
 }
 
 export function toggleTermsAcceptance(m) {
-  return tset(m, "signUpTermsAgreement", !termsAccepted(m));
+  return tset(m, "termsAccepted", !termsAccepted(m));
 }
