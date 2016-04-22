@@ -8,7 +8,7 @@ import {
 import SignUpTerms from '../../connection/database/sign_up_terms';
 import {
   signUp,
-  toggleSignUpTermsAgreement
+  toggleTermsAcceptance
 } from '../../connection/database/actions';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
@@ -78,7 +78,7 @@ export default class SignUp extends Screen {
   renderTerms(m, t) {
     const terms = t("terms");
     const checkHandler = mustAcceptTerms(m)
-      ? () => toggleSignUpTermsAgreement(l.id(m))
+      ? () => toggleTermsAcceptance(l.id(m))
       : undefined;
     return terms || mustAcceptTerms(m)
       ? <SignUpTerms

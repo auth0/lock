@@ -184,6 +184,6 @@ export function termsAccepted(m) {
   return !mustAcceptTerms(m) || tget(m, "signUpTermsAgreement", false);
 }
 
-export function toggleSignUpTermsAgreement(m) {
+export function toggleTermsAcceptance(m) {
   return tset(m, "signUpTermsAgreement", !termsAccepted(m));
 }
