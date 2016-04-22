@@ -135,7 +135,7 @@ export const hasNoQuickAuthButton = lock => {
 export const hasOneSocialButton = hasOneViewFn(".auth0-lock-social-button");
 export const hasOneSocialBigButton = hasOneViewFn(".auth0-lock-social-button.auth0-lock-social-big-button");
 export const hasPasswordInput = hasInputFn("password");
-export const hasSignUpTermsAgreementCheckbox = hasFn(".auth0-lock-sign-up-terms-agreement label input[type='checkbox']");
+export const hasTermsCheckbox = hasFn(".auth0-lock-sign-up-terms-agreement label input[type='checkbox']");
 export const hasQuickAuthButton = (lock, icon, domain) => {
   // TODO: we should actually check that there's just a single button
   const xs = qView(lock, `.auth0-lock-social-button[data-provider^="${icon}"]`, true);
@@ -155,7 +155,7 @@ const check = (lock, query) => {
   Simulate.change(q(lock, query), {});
 };
 const checkFn = query => lock => check(lock, query);
-export const clickSignUpTermsAgreementCheckbox = checkFn(".auth0-lock-sign-up-terms-agreement label input[type='checkbox']");
+export const clickTermsCheckbox = checkFn(".auth0-lock-sign-up-terms-agreement label input[type='checkbox']");
 const fillInput = (lock, name, str) => {
   Simulate.change(qInput(lock, name, true), {target: {value: str}});
 };
