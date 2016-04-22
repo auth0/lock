@@ -3,7 +3,7 @@ import Screen from '../../core/screen';
 import {
   hasAgreedToSignUpTerms,
   hasScreen,
-  requestSignUpTermsAgreement
+  mustAcceptTerms
 } from '../../connection/database/index';
 import SignUpTerms from '../../connection/database/sign_up_terms';
 import {
@@ -77,10 +77,10 @@ export default class SignUp extends Screen {
 
   renderTerms(m, t) {
     const terms = t("terms");
-    const checkHandler = requestSignUpTermsAgreement(m)
+    const checkHandler = mustAcceptTerms(m)
       ? () => toggleSignUpTermsAgreement(l.id(m))
       : undefined;
-    return terms || requestSignUpTermsAgreement(m)
+    return terms || mustAcceptTerms(m)
       ? <SignUpTerms
           checkHandler={checkHandler}
           checked={hasAgreedToSignUpTerms(m)}

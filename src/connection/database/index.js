@@ -21,7 +21,7 @@ function processDatabaseOptions(options) {
     forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
-    requestSignUpTermsAgreement,
+    mustAcceptTerms,
     signUpLink,
     usernameStyle
   } = options;
@@ -65,9 +65,9 @@ function processDatabaseOptions(options) {
     signUpLink = undefined;
   }
 
-  if (requestSignUpTermsAgreement !== undefined && typeof requestSignUpTermsAgreement != "boolean") {
-    l.warn(options, "The `requestSignUpTermsAgreement` option will be ignored, because it is not a booelan.");
-    requestSignUpTermsAgreement = undefined;
+  if (mustAcceptTerms !== undefined && typeof mustAcceptTerms != "boolean") {
+    l.warn(options, "The `mustAcceptTerms` option will be ignored, because it is not a booelan.");
+    mustAcceptTerms = undefined;
   }
 
   if (additionalSignUpFields && !Array.isArray(additionalSignUpFields)) {
@@ -99,7 +99,7 @@ function processDatabaseOptions(options) {
     forgotPasswordLink,
     initialScreen,
     loginAfterSignUp,
-    requestSignUpTermsAgreement,
+    mustAcceptTerms,
     screens,
     signUpLink,
     usernameStyle
@@ -176,12 +176,12 @@ export function additionalSignUpFields(m) {
   return get(m, "additionalSignUpFields", List());
 }
 
-export function requestSignUpTermsAgreement(m) {
-  return get(m, "requestSignUpTermsAgreement", false);
+export function mustAcceptTerms(m) {
+  return get(m, "mustAcceptTerms", false);
 }
 
 export function hasAgreedToSignUpTerms(m) {
-  return !requestSignUpTermsAgreement(m) || tget(m, "signUpTermsAgreement", false);
+  return !mustAcceptTerms(m) || tget(m, "signUpTermsAgreement", false);
 }
 
 export function toggleSignUpTermsAgreement(m) {

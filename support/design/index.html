@@ -419,8 +419,8 @@ body {
        terms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
      }
    },
-   rememberLastLogin: false,
-   requestSignUpTermsAgreement: true
+   mustAcceptTerms: true,
+   rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {

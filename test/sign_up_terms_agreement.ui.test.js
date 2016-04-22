@@ -5,7 +5,7 @@ describe("sign up terms agreement", function() {
   before(h.stubWebApis);
   after(h.restoreWebApis);
 
-  describe("without a requestSignUpTermsAgreement opt", function() {
+  describe("without a mustAcceptTerms opt", function() {
     beforeEach(function(done) {
       const opts = {
         initialScreen: "signUp",
@@ -26,12 +26,12 @@ describe("sign up terms agreement", function() {
     });
   });
 
-  describe("with a requestSignUpTermsAgreement opt", function() {
+  describe("with a mustAcceptTerms opt", function() {
     beforeEach(function(done) {
       const opts = {
         initialScreen: "signUp",
-        rememberLastLogin: false,
-        requestSignUpTermsAgreement: true
+        mustAcceptTerms: true,
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock("single database", opts, done);
