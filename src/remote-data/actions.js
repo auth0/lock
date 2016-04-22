@@ -15,6 +15,7 @@ export function sync(id, key, conditionFn, syncFn, updateFn) {
 
   if (typeof conditionFn === "function" && !conditionFn(m)) {
     swap(updateEntity, "lock", id, reject, key);
+    return;
   }
 
   swap(updateEntity, "lock", id, markLoading, key);
