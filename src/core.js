@@ -10,7 +10,7 @@ import {
   setupLock,
   updateLock
 } from './core/actions';
-import { hasAgreedToSignUpTerms } from './connection/database/index';
+import { termsAccepted } from './connection/database/index';
 import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
@@ -72,7 +72,7 @@ export default class Base extends EventEmitter {
             ? "loginSignUp"
             : screen.name;
           const disableSubmitButton = screen.name === "signUp"
-            && !hasAgreedToSignUpTerms(m);
+            && !termsAccepted(m);
 
           const t = (keyPath, params) => l.ui.t(m, [screen.name].concat(keyPath), params);
 

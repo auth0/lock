@@ -1,9 +1,9 @@
 import React from 'react';
 import Screen from '../../core/screen';
 import {
-  hasAgreedToSignUpTerms,
   hasScreen,
-  mustAcceptTerms
+  mustAcceptTerms,
+  termsAccepted
 } from '../../connection/database/index';
 import SignUpTerms from '../../connection/database/sign_up_terms';
 import {
@@ -83,7 +83,7 @@ export default class SignUp extends Screen {
     return terms || mustAcceptTerms(m)
       ? <SignUpTerms
           checkHandler={checkHandler}
-          checked={hasAgreedToSignUpTerms(m)}
+          checked={termsAccepted(m)}
         >
           {terms}
         </SignUpTerms>

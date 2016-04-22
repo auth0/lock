@@ -180,10 +180,10 @@ export function mustAcceptTerms(m) {
   return get(m, "mustAcceptTerms", false);
 }
 
-export function hasAgreedToSignUpTerms(m) {
+export function termsAccepted(m) {
   return !mustAcceptTerms(m) || tget(m, "signUpTermsAgreement", false);
 }
 
 export function toggleSignUpTermsAgreement(m) {
-  return tset(m, "signUpTermsAgreement", !hasAgreedToSignUpTerms(m));
+  return tset(m, "signUpTermsAgreement", !termsAccepted(m));
 }
