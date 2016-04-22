@@ -157,6 +157,10 @@ class Child extends React.Component {
     cb({height: parseInt(size, 10), reverse: this.reverse});
   }
 
+  componentWillUnmount() {
+    clearInterval(this.t);
+  }
+
   render() {
     const { children } = this.props;
     const { height, show } = this.state;
