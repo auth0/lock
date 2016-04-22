@@ -25,10 +25,10 @@
     "dev": "grunt dev",
     "dist": "grunt dist",
     "prepublish": "grunt dist",
-    "test": "zuul -- test/*.ui.test.js",
-    "test:browser": "zuul --local 8080 --disable-tunnel -- test/*.ui.test.js",
-    "test:cli": "mochify --extension=.jsx --transform=babelify test/*.ui.test.js",
-    "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/*.ui.test.js"
+    "test": "zuul -- test/**/*.test.js",
+    "test:browser": "zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
+    "test:cli": "mochify --extension=.jsx --transform=babelify test/**/*.test.js",
+    "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/*/*.ui.test.js"
   },
   "devDependencies": {
     "babel-plugin-transform-css-import-to-string": "0.0.2",
