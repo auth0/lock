@@ -1,3 +1,6 @@
+[![Build status][travis-image]][travis-url]
+[![License][license-image]][license-url]
+
 # Lock Next
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
@@ -298,10 +301,11 @@ If you have found a bug or if you have a feature request, please report them at 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 
+[travis-image]: https://travis-ci.org/auth0/lock.svg?branch=v10
+[travis-url]: https://travis-ci.org/auth0/lock
+
 [npm-image]: https://img.shields.io/npm/v/auth0-lock-next.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock-next
-[strider-image]: https://ci.auth0.com/auth0/lock-next/badge
-[strider-url]: https://ci.auth0.com/auth0/lock-next
 [david-image]: http://img.shields.io/david/auth0/lock-next.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock-next
 [license-image]: http://img.shields.io/npm/l/auth0-lock-next.svg?style=flat-square
