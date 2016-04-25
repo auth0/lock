@@ -60,7 +60,7 @@ export default class Slider extends React.Component {
 
         this.timeout = setTimeout(() => {
           this.setState({children: {current: this.state.children.current}, transitionName: this.props.transitionName});
-          currentComponent.componentDidSlideIn();
+          currentComponent.componentDidSlideIn(::this.props.onDidAppear);
           this.props.onDidSlide();
           this.timeout = null;
         }, this.props.delay);
@@ -92,6 +92,7 @@ export default class Slider extends React.Component {
 Slider.propTypes = {
   component: React.PropTypes.string,
   delay: React.PropTypes.number.isRequired,
+  onDidAppear: React.PropTypes.func.isRequired,
   onDidSlide: React.PropTypes.func.isRequired,
   onWillSlide: React.PropTypes.func.isRequired,
   reverse: React.PropTypes.bool.isRequired,
@@ -100,8 +101,9 @@ Slider.propTypes = {
 
 Slider.defaultProps = {
   component: "span",
-  onSlideIn: () => {},
-  onSlideOut: () => {},
+  onDidAppear: () => {},
+  onDidSlide: () => {},
+  onWillSlide: () => {},
   reverse: false
 };
 
@@ -122,12 +124,14 @@ class Child extends React.Component {
     });
   }
 
-  componentDidSlideIn() {
+  componentDidSlideIn(cb) {
     const { height, originalHeight } = this.state;
 
     if (height === originalHeight) {
       this.setState({show: true, height: ""});
+      cb();
     } else {
+      this.cb = cb;
       const frames = 10;
       let count = 0;
       let current = height;
@@ -146,6 +150,7 @@ class Child extends React.Component {
           clearInterval(this.t);
           delete this.t;
           this.setState({height: "", show: true});
+          this.cb();
         }
       }, 17);
     }
@@ -158,7 +163,10 @@ class Child extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.t);
+    if (this.t) {
+      clearInterval(this.t);
+      cb();
+    }
   }
 
   render() {

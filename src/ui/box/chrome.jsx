@@ -45,6 +45,14 @@ export default class Chrome extends React.Component {
     this.state = {reverse: false};
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.showSubmitButton
+        && !this.state.delayingShowSubmitButton
+        && nextProps.showSubmitButton) {
+      this.setState({delayingShowSubmitButton: true});
+    }
+  }
+
   onWillSlide() {
     this.sliding = true;
   }
@@ -52,6 +60,12 @@ export default class Chrome extends React.Component {
   onDidSlide() {
     this.sliding = false;
     this.setState({reverse: false});
+  }
+
+  onDidAppear() {
+    if (this.state.delayingShowSubmitButton) {
+      this.setState({delayingShowSubmitButton: false});
+    }
   }
 
   render() {
@@ -74,7 +88,7 @@ export default class Chrome extends React.Component {
       transitionName
     } = this.props;
 
-    const { reverse, sliding } = this.state;
+    const { delayingShowSubmitButton, reverse } = this.state;
 
     let backgroundUrl, name;
     if (avatar) {
@@ -86,6 +100,7 @@ export default class Chrome extends React.Component {
     }
 
     const submitButton = showSubmitButton
+      && !delayingShowSubmitButton
       && <SubmitButton
             color={primaryColor}
             disabled={disableSubmitButton}
@@ -112,6 +127,7 @@ export default class Chrome extends React.Component {
         <div style={{position: "relative"}}>
           <MultisizeSlide
             delay={550}
+            onDidAppear={::this.onDidAppear}
             onDidSlide={::this.onDidSlide}
             onWillSlide={::this.onWillSlide}
             transitionName={transitionName}
