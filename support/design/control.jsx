@@ -1,12 +1,12 @@
 import React from 'react';
 import Immutable from 'immutable';
-import atom from '../../src/atom/index';
+import atom from '../../src/utils/atom';
 import { getState, subscribe, swap, unsubscribe } from '../../src/store/index';
 
 export const store = atom(Immutable.fromJS({
   latency: 2500,
   resetPassword: {response: "success"},
-  signIn: {response: "success"},
+  logIn: {response: "success"},
   signUp: {response: "success"},
   startPasswordless: {response: "success"}
 }));
@@ -39,9 +39,9 @@ export default class Control extends React.Component {
         <ResultSelect selected={this.state.startPasswordless.response}
             onChange={::this.handleStartPasswodlessResponseChange} />
 
-        <h3>signIn</h3>
-        <ResultSelect selected={this.state.signIn.response}
-            onChange={::this.handleSignInResponseChange} />
+        <h3>logIn</h3>
+        <ResultSelect selected={this.state.logIn.response}
+            onChange={::this.handleLogInResponseChange} />
 
         <h3>signUp</h3>
         <ResultSelect selected={this.state.signUp.response}
@@ -82,8 +82,8 @@ export default class Control extends React.Component {
     store.swap(state => state.setIn(["startPasswordless", "response"], value));
   }
 
-  handleSignInResponseChange(value) {
-    store.swap(state => state.setIn(["signIn", "response"], value));
+  handleLogInResponseChange(value) {
+    store.swap(state => state.setIn(["logIn", "response"], value));
   }
 
   handleSignUpResponseChange(value) {

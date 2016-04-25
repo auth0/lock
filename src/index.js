@@ -1,22 +1,6 @@
-import { EventEmitter } from 'events';
-import * as idu from './utils/id_utils';
-import {
-  closeLock,
-  openLock,
-  removeLock,
-  setupLock,
-  updateLock
-} from './lock/actions';
-import webAPI from './lock/web_api';
-import { getEntity, read, subscribe } from './store/index';
-import * as l from './lock/index';
-import * as c from './field/index';
-import { remove, render } from './ui/box';
-import { registerDict } from './dict/index';
-
-// telemetry
 import Auth0 from 'auth0-js';
-
+import Core from './core';
+import automatic from './engine/automatic';
 import css from '../css/index.css';
 
 const head = document.getElementsByTagName('head')[0];
@@ -29,127 +13,20 @@ if (style.styleSheet) {
   style.appendChild(document.createTextNode(css));
 }
 
-export default class Base extends EventEmitter {
-  constructor(mode, dict, clientID, domain, options = {}, signInCallback = () => {}) {
-    if (typeof clientID != "string") {
-      throw new Error("A `clientID` string must be provided as first argument.");
-    }
-    if (typeof domain != "string") {
-      throw new Error("A `domain` string must be provided as second argument.");
-    }
-    if (typeof options != "object") {
-      throw new Error("When provided, the third argument must be an `options` object.");
-    }
-    if (typeof signInCallback != "function") {
-      // TODO: should this argument be mandatory?
-      throw new Error("When provided, the fourth argument must be a function.");
-    }
+export default class Auth0Lock extends Core {
 
-    super();
-
-    registerDict(mode, dict);
-    this.id = idu.incremental();
-    const { plugins } = Base;
-    const hookRunner = ::this.runHook;
-    const emitEventFn = this.emit.bind(this);
-    options.mode = mode;
-    setupLock(this.id, clientID, domain, options, signInCallback, hookRunner, emitEventFn);
-
-    subscribe("widget-" + this.id, (key, oldState, newState) => {
-      const m = getEntity(newState, "lock", this.id);
-      const oldM = getEntity(oldState, "lock", this.id);
-
-      if (m != oldM) {
-        const partialApplyId = (screen, handlerName) => {
-          const handler = screen[handlerName](m);
-          return handler
-            ? (...args) => handler(l.id(m), ...args)
-            : handler;
-        };
-
-        const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
-        const title = avatar
-          ? l.ui.t(m, ["welcome"], {name: m.getIn(["avatar", "transient", "displayName"]), __textOnly: true})
-          : l.ui.t(m, ["title"], {__textOnly: true});
-
-        if (l.rendering(m)) {
-          const screen = this.render(m);
-          const props = {
-            avatar: avatar && m.getIn(["avatar", "transient", "url"]),
-            auxiliaryPane: screen.renderAuxiliaryPane(m),
-            backHandler: partialApplyId(screen, "backHandler"),
-            closeHandler: l.ui.closable(m)
-              ? partialApplyId(screen, "closeHandler")
-              : undefined,
-            contentRender: ::screen.render,
-            error: l.globalError(m),
-            footerText: screen.renderFooterText(m),
-            headerText: screen.renderHeaderText(m),
-            isMobile: l.ui.mobile(m),
-            isModal: l.ui.appendContainer(m),
-            isSubmitting: l.submitting(m),
-            logo: l.ui.logo(m),
-            model: m,
-            primaryColor: l.ui.primaryColor(m),
-            screenName: screen.name,
-            success: l.globalSuccess(m),
-            submitHandler: partialApplyId(screen, "submitHandler"),
-            tabs: screen.renderTabs(m),
-            title: title,
-            transitionName: screen.transitionName(m)
-          };
-          render(l.ui.containerID(m), props);
-        } else {
-          remove(l.ui.containerID(m));
-        }
-      }
-    });
+  constructor(clientID, domain, options, logInCallback) {
+    super(clientID, domain, options, logInCallback, automatic);
   }
 
-  show() {
-    openLock(this.id);
-  }
-
-  close() {
-    closeLock(this.id, true);
-  }
-
-  destroy() {
-    removeLock(this.id);
-  }
-
-  getProfile(token, cb) {
-    return webAPI.getProfile(this.id, token, cb);
-  }
-
-  parseHash(hash = undefined) {
-    return webAPI.parseHash(this.id, hash);
-  }
-
-  logout(query = {}) {
-    webAPI.signOut(this.id, query);
-  }
-
-  update(f) {
-    return updateLock(this.id, f);
-  }
-
-  setModel(m) {
-    return this.update(() => m);
-  }
-
-  runHook(str, ...args) {
-    if (typeof this[str] != "function") return;
-    const model = read(getEntity, "lock", this.id);
-    return this[str](model, ...args);
-  }
 }
 
 // telemetry
-//
-// TODO: we should have different telemetry overrides for classic and
-// passwordless.
-Base.version = __VERSION__;
+Auth0Lock.version = __VERSION__;
 Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
 Auth0.clientInfo.name =  "lock.js";
-Auth0.clientInfo.version = Base.version;
+Auth0.clientInfo.version = Auth0Lock.version;
+
+// TODO: should we have different telemetry for classic/passwordless?
+// TODO: should we set telemetry info before each request?
+// TODO: should we inject styles here?

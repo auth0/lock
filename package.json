@@ -25,9 +25,10 @@
     "dev": "grunt dev",
     "dist": "grunt dist",
     "prepublish": "grunt dist",
-    "test": "zuul -- test/*/*.test.js",
-    "test:browser": "zuul --local 8080 --disable-tunnel -- test/*/*.test.js",
-    "test:phantom": "mochify --recursive --extension=.jsx --transform=babelify"
+    "test": "zuul -- test/**/*.test.js",
+    "test:browser": "zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
+    "test:cli": "mochify --extension=.jsx --transform=babelify test/**/*.test.js",
+    "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/*/*.ui.test.js"
   },
   "devDependencies": {
     "babel-plugin-transform-css-import-to-string": "0.0.2",
@@ -59,8 +60,8 @@
     "react-addons-test-utils": "0.14.5",
     "sinon": "^1.15.4",
     "unreleased": "^0.1.0",
-    "zuul": "^3.2.0",
-    "zuul-ngrok": "3.0.0"
+    "zuul": "3.10.1",
+    "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
   },
   "dependencies": {
     "auth0-js": "6.8.0",

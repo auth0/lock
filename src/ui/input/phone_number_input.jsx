@@ -33,6 +33,8 @@ export default class PhoneNumberInput extends React.Component {
   }
 
   focus() {
+    if (!this.refs.input) return;
+
     this.refs.input.focus();
     this.handleFocus();
   }

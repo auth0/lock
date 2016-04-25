@@ -5,7 +5,6 @@
 <style>
 body {
   background-color: #1f1f24;
-  color: #727578;
 }
 
 .container {
@@ -17,12 +16,30 @@ body {
   width: 300px;
   float: left;
   font-family: "Avenir", sans-serif;
+  margin-top: 30px;
   text-rendering: optimizeLegibility;
 }
 
 .info h2 {
+  color: #727578;
   font-size: 22px;
   font-weight: normal;
+  line-height: 1;
+  margin: 0;
+}
+
+.info h3 {
+  color: #525558;
+  font-weight: normal;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin: 10px 0 0;
+}
+
+.info p {
+  color: #525558;
+  font-size: 13px;
+  margin: 15px 0;
 }
 
 .lock-container {
@@ -46,26 +63,208 @@ body {
 
 <div class="container">
   <div class="info">
-    <h2>classic</h2>
+    <h2>Classic</h2>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
   </div>
   <div class="lock-container" id="classic-container"></div>
 </div>
 
 <div class="container">
   <div class="info">
-    <h2>database</h2>
+    <h2>Classic</h2>
+    <h3>Start on sign up</h3>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
+  </div>
+  <div class="lock-container" id="classic-sign-up-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Start on forgot password</h3>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
+  </div>
+  <div class="lock-container" id="classic-forgot-password-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Don't allow sign up</h3>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
+  </div>
+  <div class="lock-container" id="classic-no-sign-up-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Don't allow forgot password</h3>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
+  </div>
+  <div class="lock-container" id="classic-no-forgot-password-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Only allow log in</h3>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
+  </div>
+  <div class="lock-container" id="classic-only-log-in-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Small buttons</h3>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
+  </div>
+  <div class="lock-container" id="classic-small-buttons-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Two rows of small buttons</h3>
+    <p>
+      Use an @auth.com email to enable SSO.
+      <br />
+      Use an @rolodato.com email to enable HRD.
+    </p>
+
+  </div>
+  <div class="lock-container" id="classic-two-rows-small-buttons-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Sign up with request terms agreement</h3>
+  </div>
+  <div class="lock-container" id="classic-sign-up-terms-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Enterprise</h2>
+    <h3>Single connection (google)</h3>
+  </div>
+  <div class="lock-container" id="single-enterprise-google-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Enterprise</h2>
+    <h3>Single connection (office365)</h3>
+  </div>
+  <div class="lock-container" id="single-enterprise-office365-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Enterprise</h2>
+    <h3>Single connection (saml)</h3>
+  </div>
+  <div class="lock-container" id="single-enterprise-saml-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Enterprise</h2>
+    <h3>Multiple connections</h3>
+    <p>
+      Use an @auth.com or @auth10.com email to enable SSO.
+    </p>
+  </div>
+  <div class="lock-container" id="multiple-enterprise-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Corporate</h2>
+    <h3>Single connection</h3>
+  </div>
+  <div class="lock-container" id="single-hrd-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Corporate</h2>
+    <h3>Multiple, with and without domain</h3>
+    <p>
+      Try an @rolodato.com email.
+    </p>
+  </div>
+  <div class="lock-container" id="hrd-and-ad-no-domain-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Corporate + Database</h2>
+    <h3>Mising domain for corporate</h3>
+  </div>
+  <div class="lock-container" id="ad-no-domain-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Kerberos</h2>
+  </div>
+  <div class="lock-container" id="kerberos-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
+    <h2>Database</h2>
   </div>
   <div class="lock-container" id="database-container"></div>
 </div>
 
 <div class="container">
   <div class="info">
-    <h2>Last Login (database)</h2>
+    <h2>Last Login</h2>
+    <h3>Database</h3>
   </div>
   <div class="lock-container" id="last-login-database-container"></div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <div class="info">
     <h2>emailcode</h2>
   </div>
@@ -84,16 +283,16 @@ body {
     <h2>sms</h2>
   </div>
   <div class="lock-container" id="sms-container"></div>
-</div>
+</div> -->
 
 <div class="container">
   <div class="info">
-    <h2>social</h2>
+    <h2>Social</h2>
   </div>
   <div class="lock-container" id="social-container"></div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <div class="info">
     <h2>socialOrEmailcode</h2>
   </div>
@@ -112,7 +311,7 @@ body {
     <h2>socialOrSms</h2>
   </div>
   <div class="lock-container" id="socialOrSms-container"></div>
-</div>
+</div> -->
 
 <script src="/build/lock.design.js"></script>
 <script>
@@ -121,86 +320,234 @@ body {
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
    container: "classic-container",
-   usernameStyle: "username"
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["Username-Password-Authentication"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "classic-sign-up-container",
+   initialScreen: "signUp",
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "classic-forgot-password-container",
+   initialScreen: "forgotPassword",
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "classic-no-sign-up-container",
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowForgotPassword: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "classic-no-forgot-password-container",
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowForgotPassword: false,
+   allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "classic-only-log-in-container",
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowForgotPassword: false,
+   allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "classic-small-buttons-container",
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowForgotPassword: false,
+   allowSignUp: false,
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "thirtysevensignals", "windowslive", "wordpress", "auth0.com", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "classic-two-rows-small-buttons-container",
+   languageDictionary: {
+     signUp: { terms: terms }
+   },
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter"],
+   auth: { redirect: false, sso: false },
+   container: "classic-sign-up-terms-container",
+   initialScreen: "signUp",
+   languageDictionary: {
+     signUp: {
+       terms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
+     }
+   },
+   mustAcceptTerms: true,
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["auth0.com"],
+   auth: { redirect: false, sso: false },
+   container: "single-enterprise-google-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["benjimon.com"],
+   auth: { redirect: false, sso: false },
+   container: "single-enterprise-office365-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["evilrabbit.com"],
+   auth: { redirect: false, sso: false },
+   container: "single-enterprise-saml-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["auth0.com", "auth10.com"],
+   auth: { redirect: false, sso: false },
+   container: "multiple-enterprise-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "single-hrd-container",
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["ad-no-domain", "Username-Password-Authentication"],
+   auth: { redirect: false, sso: false },
+   container: "ad-no-domain-container",
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["ad-no-domain", "rolodato"],
+   auth: { redirect: false, sso: false },
+   container: "hrd-and-ad-no-domain-container",
+   rememberLastLogin: false
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["rolodato", "facebook"],
+   auth: { redirect: false },
+   container: "kerberos-container"
+ }).show();
+
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["Username-Password-Authentication"],
+   auth: { redirect: false },
    container: "database-container",
    dict: {
-     emailAndPassword: {
-       footerText: terms
+     signUp: {
+       terms: terms
      }
    },
    rememberLastLogin: false
  }).show();
 
  new Auth0Lock(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["Username-Password-Authentication"],
+   allowedConnections: ["Username-Password-Authentication"],
+   auth: { redirect: false },
    container: "last-login-database-container"
  }).show();
 
- new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false, send: "code" },
-   closable: true,
-   connections: ["email"],
-   container: "emailcode-container",
-   dict: {
-     email: {
-       footerText: terms
-     }
-   },
-   rememberLastLogin: false
- }).show();
+ // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email"],
+ //   auth: { redirect: false, send: "code" },
+ //   closable: true,
+ //   container: "emailcode-container",
+ //   dict: {
+ //     email: {
+ //       terms: terms
+ //     }
+ //   },
+ //   rememberLastLogin: false
+ // }).show();
+ //
+ // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email"],
+ //   auth: { redirect: false },
+ //   container: "magiclink-container",
+ //   dict: {
+ //     terms: terms
+ //   },
+ //   rememberLastLogin: false
+ // }).show();
+ //
+ // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["sms"],
+ //   auth: { redirect: false },
+ //   container: "sms-container",
+ //   rememberLastLogin: false
+ // }).show();
 
- new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
-   container: "magiclink-container",
-   connections: ["email"],
-   dict: {
-     footerText: terms
-   },
-   rememberLastLogin: false
- }).show();
-
- new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["sms"],
-   container: "sms-container",
-   rememberLastLogin: false
- }).show();
-
- new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["facebook", "twitter", "github", "google-oauth2"],
+ new Auth0Lock(cid, domain, {
+   allowedConnections: ["facebook", "twitter", "github", "google-oauth2"],
+   auth: { redirect: false },
    container: "social-container",
    rememberLastLogin: false,
    socialButtonStyle: "big"
  }).show();
 
- new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false, send: "code" },
-   connections: ["email", "facebook", "twitter", "github"],
-   container: "socialOrEmailcode-container",
-   rememberLastLogin: false
- }).show();
-
- new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["email", "facebook", "twitter", "github"],
-   container: "socialOrMagiclink-container",
-   rememberLastLogin: false
- }).show();
-
- new Auth0LockPasswordless(cid, domain, {
-   authentication: { redirect: false },
-   connections: ["sms", "facebook", "twitter", "github"],
-   container: "socialOrSms-container",
-   rememberLastLogin: false
- }).show();
+ // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email", "facebook", "twitter", "github"],
+ //   auth: { redirect: false, send: "code" },
+ //   container: "socialOrEmailcode-container",
+ //   rememberLastLogin: false
+ // }).show();
+ //
+ // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["email", "facebook", "twitter", "github"],
+ //   auth: { redirect: false },
+ //   container: "socialOrMagiclink-container",
+ //   rememberLastLogin: false
+ // }).show();
+ //
+ // new Auth0LockPasswordless(cid, domain, {
+ //   allowedConnections: ["sms", "facebook", "twitter", "github"],
+ //   auth: { redirect: false },
+ //   container: "socialOrSms-container",
+ //   rememberLastLogin: false
+ // }).show();
 </script>

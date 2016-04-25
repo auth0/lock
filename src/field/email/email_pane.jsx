@@ -2,7 +2,7 @@ import React from 'react';
 import EmailInput from '../../ui/input/email_input';
 import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
-import * as l from '../../lock/index';
+import * as l from '../../core/index';
 import { setEmail } from '../email';
 import { debouncedRequestAvatar, requestAvatar } from '../../avatar';
 

@@ -27,5 +27,5 @@ export function url(email, cb) {
   email = normalize(email);
   if (!validateEmail(email)) return cb({});
 
-  cb(null, `https://secure.gravatar.com/avatar/${md5(email)}?d=404`);
+  cb(null, `https://secure.gravatar.com/avatar/${md5(email)}?d=404&s=160`);
 }

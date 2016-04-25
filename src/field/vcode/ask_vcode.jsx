@@ -1,6 +1,14 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import VcodePane from './vcode_pane';
+
+const Component = ({model, t}) => (
+  <VcodePane
+    lock={model}
+    placeholder={t("codeInputPlaceholder", {__textOnly: true})}
+    resendLabel={t("resendLabel", {__textOnly: true})}
+  />
+);
 
 export default class AskVcode extends Screen {
 
@@ -8,14 +16,8 @@ export default class AskVcode extends Screen {
     super(name);
   }
 
-  render({model}) {
-    return (
-      <VcodePane
-        lock={model}
-        placeholder={this.t(model, ["codeInputPlaceholder"], {__textOnly: true})}
-        resendLabel={this.t(model, ["resendLabel"], {__textOnly: true})}
-      />
-    );
+  render() {
+    return Component;
   }
 
 }

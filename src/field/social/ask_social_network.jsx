@@ -1,8 +1,17 @@
 import React from 'react';
-import Screen from '../../lock/screen';
+import Screen from '../../core/screen';
 import SocialButtonsPane from './social_buttons_pane';
-import { renderSocialHeaderText } from '../../social/index';
-import { renderSignedInConfirmation } from '../../lock/signed_in_confirmation';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
+
+const Component = ({model, t}) => (
+  <SocialButtonsPane
+    lock={model}
+    showLoading={true}
+    signUp={false}
+    smallButtonsHeader={t("smallSocialButtonsHeader", {__textOnly: true})}
+    t={t}
+  />
+);
 
 export default class AskSocialNetwork extends Screen {
 
@@ -14,15 +23,7 @@ export default class AskSocialNetwork extends Screen {
     return renderSignedInConfirmation(lock);
   }
 
-  render({model}) {
-    return(
-      <SocialButtonsPane
-        lock={model}
-        showLoading={true}
-        signUp={false}
-        smallButtonsHeader={this.t(model, ["smallSocialButtonsHeader"], {__textOnly: true})}
-        t={::this.t}
-      />
-    );
+  render() {
+    return Component;
   }
 }

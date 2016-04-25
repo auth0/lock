@@ -1,3 +1,6 @@
+[![Build status][travis-image]][travis-url]
+[![License][license-image]][license-url]
+
 # Lock Next
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
@@ -68,7 +71,7 @@ var lock = new Auth0Lock(clientId, domain, {},
       // store the token and profile in local storage (or wherever you choose)
       localStorage.setItem('id_token', result.idToken);
       localStorage.setItem('profile', JSON.stringify(result.profile));
-    }  
+    }
 });
 ```
 
@@ -86,7 +89,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **rememberLastLogin {Boolean}**: Determines whether or not to show a screen that allows you to quickly log in with the account you used the last time. Defaults to `true`.
-- **connections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
+- **allowedConnections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
 
 #### Theming options
 
@@ -137,12 +140,18 @@ var options = {
 - **additionalSignUpFields {Array}**: Allows to provide extra input fields during sign up. See [below](#additional-sign-up-field) more for details. Defaults to `[]`.
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _reset password screen_ unreachable. Defaults to `true`.
 - **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`.
+- **defaultDatabaseConnection {String}**: Specifies the database connection that will be used when there is more than one available.
 - **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"signUp"`, `"forgotPassword"`, and defaults to `"login"`.
 - **loginAfterSignUp {String}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 - **forgotPasswordLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
+- **mustAcceptTerms {Boolean}**: When set to `true` displays a checkbox input along the terms and conditions that must be checked before signing up. The terms and conditions can be specified via the `languageDictionary` option, see the example below. Defaults to `false`.
 - **prefill {Object}**: Allows to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@auth0.com", username: "someone"}}`. When omitted no initial value will be provided.
 - **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
 - **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. Defaults to `"email"`.
+
+#### Enterprise options
+
+- **defaultEnterpriseConnection {String}**: Specifies the enterprise connection which allows to login using an username and a password that will be used when there is more than one available or there is a database connection. If a `defaultDatabaseConnection` is provided the database connection will be used and this option will be ignored.
 
 #### Example
 
@@ -150,7 +159,12 @@ var options = {
 var options = {
   container: "myContainer",
   closable: false,
-  languageDictionary: {title: "My Company"},
+  languageDictionary: {
+    title: "My Company",
+    signUp: {
+      terms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
+    }
+  },
   autofocus: false
 };
 ```
@@ -161,11 +175,24 @@ A language dictionary is an object that contains every piece of text the Lock ne
 
 ```js
 {
+  enterpriseQuickAuth: {
+    headerText: "Login with your corporate credentials.",
+    loginTo: "Login at {domain}"
+  },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
     usernameInputPlaceholder: "your username"
+  },
+  hrd: {
+    headerText: "Please enter your coorporate credentials at {domain}.",
+    passwordInputPlaceholder: "your password",
+    usernameInputPlaceholder: "your username"
+  },
+  kerberos: {
+    headerText: "You are connected from your corporate network&hellip;",
+    buttonLabel: "Windows Authentication",
+    skipLastLoginLabel: "Not your account?"
   },
   lastLogin: {
     headerText: "Last time you logged in with",
@@ -173,7 +200,6 @@ A language dictionary is an object that contains every piece of text the Lock ne
   },
   login: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
     loginTabLabel: "Login",
@@ -182,27 +208,27 @@ A language dictionary is an object that contains every piece of text the Lock ne
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     smallSocialButtonsHeader: "Login with",
+    ssoEnabled: "Single Sign-on enabled",
     usernameInputPlaceholder: "your username"
   },
   signUp: {
     emailInputPlaceholder: "yours@example.com",
-    footerText: "",
     headerText: "",
     loginTabLabel: "Login",
     passwordInputPlaceholder: "your password",
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     signUpWith: "Sign up with {idp}",
+    ssoEnabled: "Single Sign-on enabled",
+    terms: "",
     usernameInputPlaceholder: "your username",
   },
   signedIn: {
-    success: "Thanks for signing in."
+    success: "Thanks for logging in."
   },
   signedUp: {
     success: "Thanks for signing up."
-  },
-  title: "Auth0",
-  welcome: "Welcome {name}!"
+  }
 }
 ```
 
@@ -211,7 +237,7 @@ When you construct the Lock you can override any value by providing a [languageD
 ```js
 var options = {
   signUp: {
-    footerText: "You must agree to our <a href='/terms' target='_new'>terms of service</a>"
+    emailInputPlaceholder: "please enter you email",
   },
   title: "My Company"
 };
@@ -301,10 +327,11 @@ If you have found a bug or if you have a feature request, please report them at 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 
+[travis-image]: https://travis-ci.org/auth0/lock.svg?branch=v10
+[travis-url]: https://travis-ci.org/auth0/lock
+
 [npm-image]: https://img.shields.io/npm/v/auth0-lock-next.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock-next
-[strider-image]: https://ci.auth0.com/auth0/lock-next/badge
-[strider-url]: https://ci.auth0.com/auth0/lock-next
 [david-image]: http://img.shields.io/david/auth0/lock-next.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock-next
 [license-image]: http://img.shields.io/npm/l/auth0-lock-next.svg?style=flat-square

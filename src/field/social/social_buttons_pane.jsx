@@ -1,16 +1,19 @@
 import React from 'react';
-import SocialButton from './social_button';
-import * as l from '../../lock/index';
+import AuthButton from '../../ui/button/auth_button';
+import * as l from '../../core/index';
+import { logIn } from '../../quick-auth/actions';
 import {
   displayName,
   socialConnections,
   useBigButtons
-} from '../../social/index';
+} from '../../connection/social/index';
+
 export default class SocialButtonsPane extends React.Component {
 
   render() {
     const { lock, showLoading, signUp, smallButtonsHeader, t } = this.props;
 
+    // TODO: translate here small buttons header
     const header = !useBigButtons(lock)
       && smallButtonsHeader
       && <p className="auth-lock-small-social-buttons-header">
@@ -18,9 +21,13 @@ export default class SocialButtonsPane extends React.Component {
          </p>;
 
     const buttons = socialConnections(lock).map(x => (
-      <SocialButton key={x.name} connection={x} lock={lock}>
-        {t(lock, [signUp ? "signUpWith" : "loginWith"], {idp: displayName(x), __textOnly: true})}
-      </SocialButton>
+      <AuthButton
+        isBig={useBigButtons(lock)}
+        key={x.get("name")}
+        label={t(signUp ? "signUpWith" : "loginWith", {idp: displayName(x), __textOnly: true})}
+        onClick={() => logIn(l.id(lock), x)}
+        strategy={x.get("strategy")}
+      />
     ));
 
     const loading = showLoading

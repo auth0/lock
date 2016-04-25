@@ -1,6 +1,6 @@
 import React from 'react';
 import VcodeInput from '../../ui/input/vcode_input';
-import * as l from '../../lock/index';
+import * as l from '../../core/index';
 import * as c from '../index';
 import { isSmallScreen } from '../../utils/media_utils';
 import { swap, updateEntity } from '../../store/index';
@@ -8,7 +8,7 @@ import { setVcode } from '../vcode';
 
 
 // TODO: this should be in the passwordless ns
-import { restart } from '../../passwordless/actions';
+import { restart } from '../../connection/passwordless/actions';
 
 export default class VcodePane extends React.Component {
 

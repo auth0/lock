@@ -45,6 +45,14 @@ export default class Chrome extends React.Component {
     this.state = {reverse: false};
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.showSubmitButton
+        && !this.state.delayingShowSubmitButton
+        && nextProps.showSubmitButton) {
+      this.setState({delayingShowSubmitButton: true});
+    }
+  }
+
   onWillSlide() {
     this.sliding = true;
   }
@@ -54,28 +62,33 @@ export default class Chrome extends React.Component {
     this.setState({reverse: false});
   }
 
+  onDidAppear() {
+    if (this.state.delayingShowSubmitButton) {
+      this.setState({delayingShowSubmitButton: false});
+    }
+  }
+
   render() {
     const {
       avatar,
       auxiliaryPane,
       backHandler,
-      contentRender,
+      contentComponent,
+      contentProps,
+      disableSubmitButton,
       error,
-      footerText,
-      headerText,
       isSubmitting,
       logo,
-      model,
       primaryColor,
       screenName,
       showSubmitButton,
       success,
-      tabs,
+      terms,
       title,
       transitionName
     } = this.props;
 
-    const { reverse, sliding } = this.state;
+    const { delayingShowSubmitButton, reverse } = this.state;
 
     let backgroundUrl, name;
     if (avatar) {
@@ -86,14 +99,11 @@ export default class Chrome extends React.Component {
       name = "";
     }
 
-    const header = headerText && <p>{headerText}</p>;
-    const footer = footerText
-      && <small className="auth0-lock-terms">{footerText}</small>;
-    const tabsContainer = tabs && <div className="auth0-lock-tabs-container">{tabs}</div>;
     const submitButton = showSubmitButton
+      && !delayingShowSubmitButton
       && <SubmitButton
             color={primaryColor}
-            disabled={isSubmitting}
+            disabled={disableSubmitButton}
             key="submit"
             ref="submit"
          />;
@@ -105,6 +115,8 @@ export default class Chrome extends React.Component {
       ? <GlobalMessage key="global-success" message={success} type="success" />
       : null;
 
+    const Content = contentComponent;
+
     return (
       <div className="auth0-lock-cred-pane">
         <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={logo}/>
@@ -115,22 +127,21 @@ export default class Chrome extends React.Component {
         <div style={{position: "relative"}}>
           <MultisizeSlide
             delay={550}
+            onDidAppear={::this.onDidAppear}
             onDidSlide={::this.onDidSlide}
             onWillSlide={::this.onWillSlide}
             transitionName={transitionName}
             reverse={reverse}
           >
-            <div className="auth0-lock-view-content" key={(tabs && tabs.key) || screenName}>
-              {tabsContainer}
+            <div key={screenName} className="auth0-lock-view-content">
               <div style={{position: "relative"}}>
-                <div key={screenName} className="auth0-lock-body-content">
+                <div className="auth0-lock-body-content">
                 <div className="auth0-lock-content" key={screenName}>
                   <div className="auth0-lock-form">
-                    {header}
-                    {contentRender({focusSubmit: ::this.focusSubmit, model})}
+                    <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                   </div>
                 </div>
-                {footer}
+                {terms && <small className="auth0-lock-terms">{terms}</small>}
                 </div>
               </div>
             </div>
@@ -168,20 +179,23 @@ Chrome.propTypes = {
   avatar: React.PropTypes.string,
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
-  contentRender: React.PropTypes.func.isRequired,
+  contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
+  contentProps: React.PropTypes.object.isRequired,
+  disableSubmitButton: React.PropTypes.bool.isRequired,
   error: React.PropTypes.string,
-  footerText: React.PropTypes.element,
-  headerText: React.PropTypes.element,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
-  model: React.PropTypes.object.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   success: React.PropTypes.string,
+  terms: React.PropTypes.element,
   title: React.PropTypes.string.isRequired,
   transitionName: React.PropTypes.string.isRequired
 };
 
 Chrome.defaultProps = {
+  disableSubmitButton: false,
   showSubmitButton: true
 };
+
+global.window.React = React;

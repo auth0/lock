@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom';
 import Immutable from 'immutable';
 import _ from '../../src/browser';
 import Control, { store } from './control';
-import * as ClientSettings from '../../src/lock/client/settings';
-import webAPI from '../../src/lock/web_api';
+import * as ClientSettings from '../../src/core/client/settings';
+import webAPI from '../../src/core/web_api';
 const WebAPI = webAPI.constructor;
 
 webAPI.constructor.prototype.constructor = function() {};
 
 WebAPI.prototype.setupClient = function() {};
 
-WebAPI.prototype.signIn = function(lockID, options, cb) {
+WebAPI.prototype.logIn = function(lockID, options, cb) {
   const state = store.deref();
-  const args = state.getIn(["signIn", "response"]) == "success" ?
+  const args = state.getIn(["logIn", "response"]) == "success" ?
     [null] :
     [{description: "Wrong email or verification code.", error: "invalid_user_password"}];
   setTimeout(() => cb(...args), state.get("latency"));
@@ -42,10 +42,8 @@ WebAPI.prototype.resetPassword = function(lockID, options, cb) {
 };
 
 
-WebAPI.prototype.getSSOData = function(lockID, ...args) {
-  const cb = args[args.length - 1];
-  // TODO: consider SSO data for other connections (for now, social is
-  // the only one missing).
+WebAPI.prototype.getSSOData = function(lockID, withAD, cb) {
+  // TODO: consider SSO data for other connections
   const ssoData = {
     lastUsedConnection: {
       strategy: "auth0",
@@ -59,6 +57,10 @@ WebAPI.prototype.getSSOData = function(lockID, ...args) {
     ],
     sso: true
   };
+
+  if (withAD) {
+    ssoData.connection = {};
+  }
 
   setTimeout(() => cb(null, ssoData), 180);
 }
@@ -104,6 +106,86 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
       {
         connections: [
           {
+            name: "rolodato",
+            domain: "rolodato.com",
+            domain_aliases: [
+              "rolodato.com"
+            ]
+          },
+          {
+            name: "ad-no-domain",
+            domain: null
+          },
+        ],
+        name: "ad"
+      },
+      {
+        connections: [
+          {
+            name: "benjimon.com",
+            domain: "benjimon.com",
+            domain_aliases: [
+              "benjimon.com"
+            ]
+          },
+        ],
+        name: "office365"
+      },
+      {
+        connections: [
+          {
+            name: "evilrabbit.com",
+            domain: "evilrabbit.com",
+            domain_aliases: [
+              "evilrabbit.com"
+            ]
+          },
+        ],
+        name: "samlp"
+      },
+      {
+        connections: [
+          {
+            name: "auth0.com",
+            domain: "auth0.com",
+            domain_aliases: [
+              "auth0.com"
+            ],
+            scope: [
+              "email",
+              "profile"
+            ]
+          },
+        ],
+        name: "google-apps",
+      },
+      {
+        connections: [
+          {
+            name: "auth10.com",
+            domain: "auth10.com",
+            domain_aliases: [
+              "auth10.com"
+            ],
+            scope: [
+              "email",
+              "profile"
+            ]
+          },
+        ],
+        name: "google-apps",
+      },
+      {
+        connections: [
+          {
+            name: "exact"
+          }
+        ],
+        name: "exact"
+      },
+      {
+        connections: [
+          {
             name: "facebook"
           }
         ],
@@ -112,10 +194,42 @@ ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
       {
         connections: [
           {
+            name: "fitbit"
+          }
+        ],
+        name: "fitbit"
+      },
+      {
+        connections: [
+          {
+            name: "thirtysevensignals"
+          }
+        ],
+        name: "thirtysevensignals"
+      },
+      {
+        connections: [
+          {
             name: "twitter"
           }
         ],
         name: "twitter"
+      },
+      {
+        connections: [
+          {
+            name: "windowslive"
+          }
+        ],
+        name: "windowslive"
+      },
+      {
+        connections: [
+          {
+            name: "wordpress"
+          }
+        ],
+        name: "wordpress"
       },
       {
         connections: [
