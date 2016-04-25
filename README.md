@@ -140,12 +140,18 @@ var options = {
 - **additionalSignUpFields {Array}**: Allows to provide extra input fields during sign up. See [below](#additional-sign-up-field) more for details. Defaults to `[]`.
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _reset password screen_ unreachable. Defaults to `true`.
 - **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`.
+- **defaultDatabaseConnection {String}**: Specifies the database connection that will be used when there is more than one available.
 - **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"signUp"`, `"forgotPassword"`, and defaults to `"login"`.
 - **loginAfterSignUp {String}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 - **forgotPasswordLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
+- **mustAcceptTerms {Boolean}**: When set to `true` displays a checkbox input along the terms and conditions that must be checked before signing up. The terms and conditions can be specified via the `languageDictionary` option, see the example below. Defaults to `false`.
 - **prefill {Object}**: Allows to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@auth0.com", username: "someone"}}`. When omitted no initial value will be provided.
 - **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
 - **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. Defaults to `"email"`.
+
+#### Enterprise options
+
+- **defaultEnterpriseConnection {String}**: Specifies the enterprise connection which allows to login using an username and a password that will be used when there is more than one available or there is a database connection. If a `defaultDatabaseConnection` is provided the database connection will be used and this option will be ignored.
 
 #### Example
 
@@ -153,7 +159,12 @@ var options = {
 var options = {
   container: "myContainer",
   closable: false,
-  languageDictionary: {title: "My Company"},
+  languageDictionary: {
+    title: "My Company",
+    signUp: {
+      terms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
+    }
+  },
   autofocus: false
 };
 ```
