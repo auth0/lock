@@ -526,6 +526,13 @@ breakpoint(point, value = 0)
         path
           fill rgba(white,.6)
 
+    /*submit button animation*/
+    &.vslide-enter
+      opacity 0
+    &.vslide-enter.vslide-enter-active
+      opacity 1
+      transition-duration .5s
+
   .auth0-loading-container
     position relative
     display none
