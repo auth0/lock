@@ -13,10 +13,12 @@ import  {
   toggleTermsAcceptance as switchTermsAcceptance,
   additionalSignUpFields
 } from './index';
+// TODO: we should not depend on this from here
+import { usernameStyle } from '../../engine/automatic';
 
 export function logIn(id) {
   swap(updateEntity, "lock", id, lock => {
-    const useUsername = authWithUsername(lock);
+    const useUsername = usernameStyle(lock) === "username";
     if ((useUsername && c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password"))
         || (!useUsername && c.isFieldValid(lock, "email") && c.isFieldValid(lock, "password"))) {
       return l.setSubmitting(lock, true);
@@ -33,12 +35,12 @@ export function logIn(id) {
   });
 
   const lock = read(getEntity, "lock", id);
-
+  const useUsername = usernameStyle(lock) === "username";
   if (l.submitting(lock)) {
     // TODO: check options, redirect is missing
     const options = l.withAuthOptions(lock, {
       connection: databaseConnectionName(lock),
-      username: authWithUsername(lock) ? c.username(lock) : c.email(lock),
+      username: useUsername ? c.username(lock) : c.email(lock),
       password: c.password(lock)
     });
 
