@@ -5,11 +5,13 @@
 - Fetch bigger gravatars, so they look better on high-density screens.
 - Don't fetch SSO data when SSO is disabled.
 - Bunch of small UI issues.
+- NPM package require. Now `require('auth0-lock')` will work (previously you had to do `require('auth0-lock/lib/classic')`).
+
 
 ### Changed
 
 - Renamed `close` method to `hide`.
-- Reanmed `connections` option to `allowedConnections`.
+- Renamed `connections` option to `allowedConnections`.
 - Renamed `signUp.footerText` dict key to `signUp.terms`.
 
 ### Added
