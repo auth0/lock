@@ -1,3 +1,29 @@
+## [10.0.0-beta.2] - 2016-04-25
+
+### Fixed
+
+- Fetch bigger gravatars, so they look better on high-density screens.
+- Don't fetch SSO data when SSO is disabled.
+- Bunch of small UI issues.
+
+### Changed
+
+- Renamed `close` method to `hide`.
+- Reanmed `connections` option to `allowedConnections`.
+- Renamed `signUp.footerText` dict key to `signUp.terms`.
+
+### Added
+
+- Support for enterprise connections.
+- Allow to specify the the default datbase connection via the
+  `defaultDatabaseConnection` option.
+- Optionally request users to agree to terms and conditions before
+  signing up via the `mustAcceptTerms` option.
+
+## [10.0.0-beta.1] - 2016-03-23
+
+First preview release, see [https://auth0.com/docs/libraries/lock/v10](https://auth0.com/docs/libraries/lock/v10) for details.
+
 ## [2.2.1] - 2016-01-18
 
 ### Changed
