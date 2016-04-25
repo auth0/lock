@@ -1,13 +1,12 @@
 ui: mocha-bdd
 tunnel:
   type: ngrok
-  authtoken: 5P5swTMSDDRlnMBkBWJt
-  proto: https
+  authtoken: LsVZFxFqgxA4h7ibWV9V_iuA9afbQwaSnGqH9dApL
 browsers:
   - name: chrome
     version: latest
   - name: safari
-    version: 8
+    version: 9
   - name: firefox
     version: latest
   - name: ie
