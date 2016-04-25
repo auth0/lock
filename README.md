@@ -175,10 +175,24 @@ A language dictionary is an object that contains every piece of text the Lock ne
 
 ```js
 {
+  enterpriseQuickAuth: {
+    headerText: "Login with your corporate credentials.",
+    loginTo: "Login at {domain}"
+  },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
     headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
     usernameInputPlaceholder: "your username"
+  },
+  hrd: {
+    headerText: "Please enter your coorporate credentials at {domain}.",
+    passwordInputPlaceholder: "your password",
+    usernameInputPlaceholder: "your username"
+  },
+  kerberos: {
+    headerText: "You are connected from your corporate network&hellip;",
+    buttonLabel: "Windows Authentication",
+    skipLastLoginLabel: "Not your account?"
   },
   lastLogin: {
     headerText: "Last time you logged in with",
@@ -194,6 +208,7 @@ A language dictionary is an object that contains every piece of text the Lock ne
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     smallSocialButtonsHeader: "Login with",
+    ssoEnabled: "Single Sign-on enabled",
     usernameInputPlaceholder: "your username"
   },
   signUp: {
@@ -204,16 +219,16 @@ A language dictionary is an object that contains every piece of text the Lock ne
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     signUpWith: "Sign up with {idp}",
+    ssoEnabled: "Single Sign-on enabled",
+    terms: "",
     usernameInputPlaceholder: "your username",
   },
   signedIn: {
-    success: "Thanks for signing in."
+    success: "Thanks for logging in."
   },
   signedUp: {
     success: "Thanks for signing up."
-  },
-  title: "Auth0",
-  welcome: "Welcome {name}!"
+  }
 }
 ```
 
