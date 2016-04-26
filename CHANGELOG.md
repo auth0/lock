@@ -1,3 +1,12 @@
+## [9.0.5] - 2016-04-26
+
+### Fixed
+
+- [] Merge pull request #364 from auth0/upgrade-auth0-js (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/323619ed8c5c725e6ab77735daed9101fa503aba
+- [] Upgrade auth0.js (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/281076afbae19d8f1a984148679ca72fff620156
+
 ## [9.0.4] - 2016-04-21
 
 ### Fixed
