@@ -5,18 +5,35 @@ import util from 'util';
 export default class PasswordStrength extends React.Component {
 
   render() {
-    const { password, policy } = this.props;
+    const { password, policy, messages } = this.props;
     const analysis = createPolicy(policy).missing(password);
     // TODO: add a component for fadeIn / fadeOut animations?
     const className = "auth0-lock-password-strength animated "
       + (password && !analysis.verified ? "fadeIn" : "fadeOut");
 
-    return <div className={className}> <List items={analysis.rules} /></div>;
+    const prepareMessage = items => {
+      items && items.forEach(o => {
+        if (messages[o.code]) {
+          o.message = messages[o.code];
+        }
+
+        o.message = util.format(o.message, ...(o.format || []));
+
+        if (o.items) {
+          prepareMessage(o.items);
+        }
+      });
+    };
+
+    prepareMessage(analysis.rules);
+
+    return <div className={className}><List items={analysis.rules} /></div>;
   }
 
 }
 
 PasswordStrength.propTypes = {
+  messages: React.PropTypes.object.isRequired,
   password: React.PropTypes.string.isRequired,
   policy: React.PropTypes.oneOf([
     "none",
@@ -25,6 +42,10 @@ PasswordStrength.propTypes = {
     "good",
     "excellent"
   ]).isRequired
+};
+
+PasswordStrength.defaultProps = {
+  messages: {}
 };
 
 class List extends React.Component {
@@ -46,12 +67,12 @@ List.propTypes = {
 class Item extends React.Component {
 
   render() {
-    const { code, items, format, message, verified } = this.props;
+    const { items, message, verified } = this.props;
     const className = verified ? "auth0-lock-checked" : "";
 
-    return ( // TODO: allow to translate message?
+    return (
       <li className={className}>
-        {util.format(message, ...(format || []))}
+        {message}
         <List items={items} />
       </li>
     );
@@ -60,9 +81,7 @@ class Item extends React.Component {
 }
 
 Item.propTypes = {
-  code: React.PropTypes.string.isRequired,
   items: React.PropTypes.array,
-  format: React.PropTypes.array,
   message: React.PropTypes.string.isRequired,
-  verified: React.PropTypes.bool.isRequired,
+  verified: React.PropTypes.bool.isRequired
 };

@@ -10,6 +10,7 @@ export default class PasswordInput extends React.Component {
     onChange: React.PropTypes.func.isRequired,
     placeholder: React.PropTypes.string,
     policy: React.PropTypes.string,
+    strengthMessages: React.PropTypes.object,
     value: React.PropTypes.string.isRequired
   };
 
@@ -27,8 +28,24 @@ export default class PasswordInput extends React.Component {
   }
 
   render() {
-    const { isValid, onChange, policy, value, ...props } = this.props;
+    const {
+      isValid,
+      onChange,
+      policy,
+      strengthMessages,
+      value,
+      ...props
+    } = this.props;
+
     const { focused } = this.state;
+
+    const passwordStrength = policy && focused
+      ? <PasswordStrength
+          messages={strengthMessages}
+          password={value}
+          policy={policy}
+        />
+      : null;
 
     return (
       <InputWrap focused={focused} isValid={isValid} name="password" icon={icon}>
@@ -45,7 +62,7 @@ export default class PasswordInput extends React.Component {
           value={value}
           {...props}
         />
-        {policy && focused ? <PasswordStrength password={value} policy={policy} /> : null}
+        {passwordStrength}
       </InputWrap>
     );
   }

@@ -216,6 +216,17 @@ A language dictionary is an object that contains every piece of text the Lock ne
     headerText: "",
     loginTabLabel: "Login",
     passwordInputPlaceholder: "your password",
+    passwordStrength: {
+      containsAtLeast: "Contain at least %d of the following %d types of characters:",
+      identicalChars: "No more than %d identical characters in a row (e.g., \"%s\" not allowed)",
+      nonEmpty: "Non-empty password required",
+      numbers: "Numbers (i.e. 0-9)",
+      lengthAtLeast: "At least %d characters in length",
+      lowerCase: "Lower case letters (a-z)",
+      shouldContain: "Should contain:",
+      specialCharacters: "Special characters (e.g. !@#$%^&*)",
+      upperCase: "Upper case letters (A-Z)"
+    },
     separatorText: "or",
     signUpTabLabel: "Sign Up",
     signUpWith: "Sign up with {idp}",

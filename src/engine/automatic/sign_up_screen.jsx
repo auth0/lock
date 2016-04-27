@@ -48,6 +48,7 @@ const Component = ({model, t}) => {
       model={model}
       onlyEmail={sso}
       passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
+      passwordStrengthMessages={t("passwordStrength", {__raw: true})}
       usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
     />;
 
