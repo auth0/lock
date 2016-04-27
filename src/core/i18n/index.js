@@ -11,6 +11,11 @@ class Dict {
       return r.replace(`{${k}}`, v);
     }, this.dict.getIn(keyPath, ""));
   }
+
+  // TODO: this is a bad name because it's meant to be used in groups
+  raw(keyPath) {
+    return this.dict.getIn(keyPath, Map()).toJS();
+  }
 }
 
 let dicts = Map();
