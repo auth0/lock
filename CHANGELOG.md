@@ -1,3 +1,12 @@
+## [9.0.6] - 2016-04-28
+
+### Fixed
+
+- [] Merge pull request #365 from auth0/fix-v9-last-time-margin (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/08e46400f995eb8bfa2f2568bb7107bee80570d5
+- [] fix last time margin (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/d28b17da02acc307db4674690bc479025c6acb70
+
 ## [9.0.5] - 2016-04-26
 
 ### Fixed
