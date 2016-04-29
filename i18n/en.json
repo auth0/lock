@@ -30,7 +30,7 @@
     "domainUserLabel":                  "You are connected from your corporate network...",
     "wrongEmailPasswordErrorText":      "Wrong email or password.",
     "passwordChangeRequiredErrorText":  "You need to update your password because this is the first time you are signing in, or because your password has expired.",
-    "passwordLeakedErrorText":          "This login has been blocked because your password has been leaked in a third party website. We've sent you an email with instructions on how to unblock it.",
+    "passwordLeakedErrorText":          "This login attempt has been blocked because your password has been leaked in a third party website. We've sent you an email with instructions on how to unblock it.",
     "unauthorizedErrorText":            "Access denied.",
     "userBlockedErrorText":             "",
     "or":                               "... or log in using",
