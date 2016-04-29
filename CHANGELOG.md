@@ -1,4 +1,13 @@
-## [9.0.7] - 2016-04-21
+## [9.1.0] - 2016-04-29
+
+### Fixed
+
+- [] Merge pull request #369 from auth0/add_password_breach_message (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/549c9b17e7de6548d045f609785c75fb3f4dd078
+- [] add password breach message (`José F. Romaniello`)
+  https://github.com/auth0/lock/commit/c9b18809733e5b6e50dc6757a2cc30901b4b6692
+
+## [9.0.7] - 2016-04-29
 
 ### Fixed
 
