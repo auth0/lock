@@ -19,6 +19,7 @@ export default class SignUpPane extends React.Component {
       model,
       onlyEmail,
       passwordInputPlaceholder,
+      passwordStrengthMessages,
       usernameInputPlaceholder
     } = this.props;
 
@@ -46,6 +47,7 @@ export default class SignUpPane extends React.Component {
            lock={model}
            placeholder={passwordInputPlaceholder}
            policy={passwordStrengthPolicy(model)}
+           strengthMessages={passwordStrengthMessages}
          />;
 
     return (

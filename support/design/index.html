@@ -324,7 +324,10 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-container",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUp: {
+       terms: terms,
+       passwordStrength: { lengthAtLeast: "Au moins %d caractères" }
+     }
    },
    rememberLastLogin: false
  }).show();

@@ -1,3 +1,9 @@
+## unreleased
+
+### Fixed
+
+- Allow to translate password strength messages.
+
 ## [10.0.0-beta.2] - 2016-04-25
 
 ### Fixed
@@ -6,7 +12,6 @@
 - Don't fetch SSO data when SSO is disabled.
 - Bunch of small UI issues.
 - NPM package require. Now `require('auth0-lock')` will work (previously you had to do `require('auth0-lock/lib/classic')`).
-
 
 ### Changed
 
