@@ -33,15 +33,12 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
       if (hash.error) {
         error = hash;
       } else {
-        result = {
-          accessToken: hash.access_token,
-          idToken: hash.id_token,
-          payload: hash.profile,
-          refreshToken: hash.refresh_token,
-          state: hash.state
-        };
+        // TODO: we were remaing profile to payload and that is now
+        // lost.
+        result = hash;
       }
     }
+
     setTimeout(() => l.invokeLogInCallback(m, error, result), 0);
   }
 
