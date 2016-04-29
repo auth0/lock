@@ -23,32 +23,26 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
 
   if (l.auth.redirect(m)) {
     const hash = WebAPI.parseHash(id);
+    // TODO: this leaves the hash symbol (#) in the URL, maybe we can
+    // use the history API instead to remove it.
+    global.location.hash = "";
+
+    let error, result;
 
     if (hash) {
-      // TODO: this leaves the hash symbol (#) in the URL, maybe we can
-      // use the history API instead to remove it.
-      global.window.location.hash = "";
       if (hash.error) {
-        // TODO: should we pass the error directly or do some processing?
-        setTimeout(() => l.invokeLogInCallback(m, hash), 0);
+        error = hash;
       } else {
-        WebAPI.getProfile(id, hash.id_token, (error, profile) => {
-          const result = {
-            accessToken: hash.access_token,
-            idToken: hash.id_token,
-            payload: hash.profile,
-            profile: profile,
-            refreshToken: hash.refresh_token,
-            state: hash.state
-          };
-
-          // TODO: should we pass the error directly or do some processing?
-          l.invokeLogInCallback(m, error, result);
-        });
+        result = {
+          accessToken: hash.access_token,
+          idToken: hash.id_token,
+          payload: hash.profile,
+          refreshToken: hash.refresh_token,
+          state: hash.state
+        };
       }
-    } else {
-      setTimeout(() => l.invokeLogInCallback(m, null), 0);
     }
+    setTimeout(() => l.invokeLogInCallback(m, error, result), 0);
   }
 
   syncRemoteData(id);
