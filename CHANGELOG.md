@@ -1,3 +1,12 @@
+## [9.0.7] - 2016-04-21
+
+### Fixed
+
+- [] Merge pull request #368 from auth0/fix-v9-cut-off-criteria (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b6e3fbdc8ff486b4eb38515c04982efc79a950a7
+- [] fix cut off password strength (`Benjamin Flores`)
+  https://github.com/auth0/lock/commit/0536740b13372a533c40390b18b4feefe300ca33
+
 ## [9.0.6] - 2016-04-28
 
 ### Fixed
