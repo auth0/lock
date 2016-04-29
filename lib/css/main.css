@@ -7345,11 +7345,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /*-----  End of Forgot Password  ------*/
 }
 
-#a0-lock.a0-theme-default .a0-panel form {
-  border-radius: 0 0 3px 3px;
-  overflow: hidden;
-}
-
 #a0-lock.a0-theme-default .a0-panel * {
   font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif;
 }
@@ -7367,9 +7362,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #a0-lock.a0-theme-default .a0-panel .a0-mode form .a0-body-content {
   padding: 30px;
   background: white;
-}
-
-#a0-lock.a0-theme-default .a0-panel .a0-mode form .a0-body-content.a0-nosubmit {
   border-radius: 0 0 3px 3px;
 }
 
