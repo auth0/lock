@@ -245,17 +245,7 @@ function loginCallback(redirect, cb) {
   if (redirect) {
     return error => cb(normalizeError(error));
   } else {
-    return (error, profile, idToken, accessToken, state, refreshToken) => {
-      // TODO: in redirect mode we also provide a payload.
-      const result = {
-        accessToken,
-        idToken,
-        profile,
-        refreshToken,
-        state
-      };
-      cb(normalizeError(error), result);
-    }
+    return (error, result) => cb(normalizeError(error), result);
   }
 }
 
