@@ -24,6 +24,7 @@
     "returnUserLabel":             "La última vez inició sesión con...",
     "domainUserLabel":             "Usted se encuentra conectado desde su red corporativa...",
     "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
+    "passwordLeakedErrorText":     "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones.",
     "or":                          "... o inicie sesión usando",
     "loadingMessage":              "Iniciando sesión con {connection}...",
     "popupCredentials":            "Ingrese sus credenciales en la ventana emergente"
