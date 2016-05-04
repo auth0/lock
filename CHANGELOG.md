@@ -1,3 +1,12 @@
+## [9.1.3] - 2016-05-04
+
+### Fixed
+
+- [] Merge pull request #372 from auth0/v9-filter-server-errors (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/351355d72ce38346e1de12c03764178311939eea
+- [] Stop showing server error responses (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/046a3d6b355ac51778f29cfdf5dae30cab717a9b
+
 ## [9.1.2] - 2014-09-15
 
 ### Fixed
