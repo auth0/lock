@@ -1188,7 +1188,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
     self._focusError(password_input);
 
     if (err.status !== 401) {
-      self._showError(err.message || self.options.i18n.t('signin:serverErrorText'));
+      self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else if ('password_change_required' === err.code) {
       self._showError(self.options.i18n.t('signin:passwordChangeRequiredErrorText'));
     } else if ('password_leaked' === err.code) {
