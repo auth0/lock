@@ -280,11 +280,11 @@ export function loginErrorMessage(m, error) {
   }
 
   // Custom rule error (except blocked_user)
-  if (error.code === "rule_error") {
+  if (error.error === "rule_error") {
     return error.description
       || ui.t(m, ["error", "login", "lock.fallback"], {__textOnly: true});
   }
 
-  return ui.t(m, ["error", "login", error.code], {__textOnly: true})
+  return ui.t(m, ["error", "login", error.error], {__textOnly: true})
     || ui.t(m, ["error", "login", "lock.fallback"], {__textOnly: true});
 }
