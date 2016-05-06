@@ -143,7 +143,7 @@ class Automatic {
 const dict = {
   enterpriseQuickAuth: {
     headerText: "Login with your corporate credentials.",
-    loginTo: "Login at {domain}"
+    loginAt: "Login at {domain}"
   },
   error: {
     message: "Something went wrong during the widget initialization, please contant technical support."

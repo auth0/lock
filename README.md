@@ -201,7 +201,7 @@ A language dictionary is an object that contains every piece of text the Lock ne
 {
   enterpriseQuickAuth: {
     headerText: "Login with your corporate credentials.",
-    loginTo: "Login at {domain}"
+    loginAt: "Login at {domain}"
   },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
