@@ -134,7 +134,7 @@ const dict = {
   },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",
-    headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
+    headerText: "Please enter your email address. We will send you an email to reset your password."
   },
   hrd: {
     headerText: "Please enter your coorporate credentials at {domain}.",
