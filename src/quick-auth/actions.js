@@ -13,10 +13,9 @@ export function logIn(id, connection, loginHint) {
 
   const m = read(getEntity, "lock", id);
 
-  const options = l.withAuthOptions(m, {
-    connection: connection.get("name"),
-    popupOptions: l.ui.popupOptions(m)
-  });
+  const options = {
+    connection: connection.get("name")
+  };
 
   if (!l.auth.redirect(m) && connection.get("strategy") === "facebook") {
     options.display = "popup";

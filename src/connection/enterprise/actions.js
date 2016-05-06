@@ -60,12 +60,12 @@ export function logInHRD(id, connection = undefined) {
 
   if (l.submitting(lock)) {
     // TODO: popup + popup options
-    const options = l.withAuthOptions(lock, {
+    const options = {
       connection: connection.get("name"),
       username: c.username(lock),
       password: c.password(lock),
       login_hint: c.username(lock)
-    });
+    };
 
     webApi.logIn(
       id,
@@ -95,11 +95,10 @@ function logInSSO(id, connection) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    // TODO: popup + popup options
-    const options = l.withAuthOptions(lock, {
+    const options = {
       connection: connection.get("name"),
       login_hint: c.email(lock)
-    });
+    };
 
     webApi.logIn(
       id,
@@ -129,13 +128,12 @@ function logInAD(id, connection) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    // TODO: popup + popup options
-    const options = l.withAuthOptions(lock, {
+    const options = {
       connection: connection.get("name"),
       username: c.email(lock),
       password: c.password(lock),
       login_hint: c.email(lock)
-    });
+    };
 
     webApi.logIn(
       id,

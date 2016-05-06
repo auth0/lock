@@ -3,48 +3,61 @@ import Auth0 from 'auth0-js';
 class Auth0WebAPI {
   constructor() {
     this.clients = {};
+    this.authOpts = {};
+    this.authParams = {};
   }
 
-  setupClient(lockID, clientID, domain, options) {
-    // TODO: reuse clients
+  setupClient(lockID, clientID, domain, opts) {
     this.clients[lockID] = new Auth0({
       clientID: clientID,
       domain: domain,
-      sendSDKClientInfo: true
+      sendSDKClientInfo: true,
+      forceJSONP: opts.jsonp,
+      callbackURL: opts.redirectUrl,
+      callbackOnLocationHash: opts.responseType === "token"
     });
+
+    this.authOpts[lockID] = {
+      popup: !opts.redirect,
+      popupOptions: opts.popupOptions,
+      sso: opts.sso
+    };
+
+    this.authParams[lockID] = opts.params;
   }
 
   logIn(lockID, options, cb) {
-    const { redirect } = options;
-    const f = loginCallback(redirect, cb);
+    // TODO: for passwordless only, try to clean in auth0.js
+    // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
+    const authParams = this.authParams[lockID];
+    const authOpts = this.authOpts[lockID];
+    const f = loginCallback(!authOpts.popup, cb);
     const client = this.clients[lockID];
-
-    transferLoginOptionsToClient(client, options);
-
-    delete options.redirect;
-
-    client.login(options, f);
+    client.login({...options, ...authOpts, ...authParams}, f);
   }
 
   signOut(lockID, query) {
     this.clients[lockID].logout(query);
   }
 
-  signUp(lockID, options, authOptions, cb) {
+  signUp(lockID, options, cb) {
     const client = this.clients[lockID];
-    const { autoLogin, jsonp, popup, sso } = authOptions;
-    client._useJSONP = jsonp;
+    const { popup, sso } = this.authOpts[lockID];
+    const { autoLogin } = options;
+    delete options.autoLogin;
+
+    // TODO: investigate why can't we just delegate to auth0.js the
+    // automatic login (error handling maybe?).
 
     // When needed, open popup for sso login immediately, otherwise it
     // may be blocked by the browser.
-    // TODO: can we get rid of the popup?
     let win;
     if (autoLogin && popup && sso) {
       win = client._buildPopupWindow({});
     }
 
     // Never allow automatic login and disable popup (since it is only
-    // needed for automatic login).
+    // needed when auth0.js handles the automatic login).
     options.auto_login = false;
     options.popup = false;
 
@@ -60,19 +73,15 @@ class Auth0WebAPI {
     client.signup(options, f);
   }
 
-  resetPassword(lockID, options, authOptions, cb) {
-    const client = this.clients[lockID];
-    const { jsonp } = authOptions;
-    client._useJSONP = jsonp;
-    client.changePassword(options, cb);
+  resetPassword(lockID, options, cb) {
+    this.clients[lockID].changePassword(options, cb);
   }
 
-  startPasswordless(lockID, options, cb) {
-    const client = this.clients[lockID];
-    transferLoginOptionsToClient(client, options);
-
-    client.startPasswordless(options, err => cb(normalizeError(err)));
-  }
+  // startPasswordless(lockID, options, cb) {
+  //   TODO: pass options, don't merge authParams
+  //   const client = this.clients[lockID];
+  //   client.startPasswordless(options, err => cb(normalizeError(err)));
+  // }
 
   parseHash(lockID, hash = undefined) {
     return this.clients[lockID].parseHash(hash);
@@ -206,31 +215,8 @@ function normalizeError(error) {
     : result;
 }
 
-// The properties callbackOnLocationHash, callbackURL, and jsonp can
-// only be specified when counstructing an Auth0
-// instance. Unfortunately we construct the Auth0 client along with
-// the Lock and we don't have the values of those options until later
-// when the Lock is shown. While today we may construct the client
-// here, in the future that will not be possible becasue we will need
-// to retrieve some client information before before we can show the
-// Lock.
-function transferLoginOptionsToClient(client, options) {
-  const { jsonp, redirect, redirectUrl, responseType } = options;
-
-  client._callbackOnLocationHash = responseType === "token";
-  client._callbackURL = redirectUrl || client._callbackURL;
-  client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
-  client._useJSONP = jsonp;
-
-  delete options.redirectUrl;
-  delete options.jsonp;
-  delete options.responseType;
-}
-
 function loginCallback(redirect, cb) {
-  if (redirect) {
-    return error => cb(normalizeError(error));
-  } else {
-    return (error, result) => cb(normalizeError(error), result);
-  }
+  return redirect
+    ? error => cb(normalizeError(error))
+    : (error, result) => cb(normalizeError(error), result);
 }

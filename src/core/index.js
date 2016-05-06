@@ -182,15 +182,9 @@ function extractAuthOptions(options) {
   });
 }
 
-export function withAuthOptions(m, opts, flattenAuthParams = true) {
-  const auth = get(m, "auth");
-  const authOptions = flattenAuthParams
-    ? auth.remove("params").merge(auth.get("params"))
-    : auth;
-
-  return authOptions
-    .set("popup", !authOptions.get("redirect"))
-    .merge(Immutable.fromJS(opts))
+export function withAuthOptions(m, opts) {
+  return Immutable.fromJS(opts)
+    .merge(get(m, "auth"))
     .toJS();
 }
 

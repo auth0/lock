@@ -37,12 +37,11 @@ export function logIn(id) {
   const lock = read(getEntity, "lock", id);
   const useUsername = usernameStyle(lock) === "username";
   if (l.submitting(lock)) {
-    // TODO: check options, redirect is missing
-    const options = l.withAuthOptions(lock, {
+    const options = {
       connection: databaseConnectionName(lock),
       username: useUsername ? c.username(lock) : c.email(lock),
       password: c.password(lock)
-    });
+    };
 
     webApi.logIn(
       id,
@@ -88,10 +87,10 @@ export function signUp(id, options = {}) {
   [isSubmitting, lock] = startSubmit(id, fields);
 
   if (isSubmitting) {
-    // TODO: check options
     options.connection = databaseConnectionName(lock);
     options.email = c.email(lock);
     options.password = c.password(lock)
+    options.autoLogin = shouldAutoLogin(lock);
 
     if (authWithUsername(lock)) {
       options.username = c.username(lock);
@@ -104,14 +103,9 @@ export function signUp(id, options = {}) {
       });
     }
 
-    const authOptions = l.withAuthOptions(lock, {
-      autoLogin: false
-    });
-
     webApi.signUp(
       id,
       options,
-      authOptions,
       (error, ...args) => {
         if (error) {
           setTimeout(() => signUpError(id, error), 250);
@@ -130,11 +124,11 @@ function signUpSuccess(id, ...args) {
     swap(updateEntity, "lock", id, m => m.set("signedUp", true));
 
     // TODO: check options, redirect is missing
-    const options = l.withAuthOptions(lock, {
+    const options = {
       connection: databaseConnectionName(lock),
       username: c.email(lock),
       password: c.password(lock)
-    });
+    };
 
     return webApi.logIn(
       id,
@@ -209,20 +203,14 @@ export function resetPassword(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    // TODO: check options
     const options = {
       connection: databaseConnectionName(lock),
       email: c.email(lock)
     };
 
-    const authOptions = {
-      jsonp: l.auth.jsonp(lock)
-    };
-
     webApi.resetPassword(
       id,
       options,
-      authOptions,
       (error, ...args) => {
         if (error) {
           setTimeout(() => resetPasswordError(id, error), 250);

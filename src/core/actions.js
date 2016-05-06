@@ -19,7 +19,10 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
   // be really an issue.
   l.runHook(m, "didInitialize", options);
 
-  WebAPI.setupClient(id, clientID, domain, options);
+  WebAPI.setupClient(id, clientID, domain, l.withAuthOptions(m, {
+    ...options,
+    popupOptions: l.ui.popupOptions(m)
+  }));
 
   if (l.auth.redirect(m)) {
     const hash = WebAPI.parseHash(id);
