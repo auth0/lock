@@ -199,14 +199,10 @@ function autoLogInError(id, error) {
 export function resetPassword(id) {
   // TODO: abstract this submit thing
   swap(updateEntity, "lock", id, lock => {
-    if ((authWithUsername(lock) && c.isFieldValid(lock, "username"))
-        || (!authWithUsername(lock) && c.isFieldValid(lock, "email"))) {
+    if (c.isFieldValid(lock, "email")) {
       return l.setSubmitting(lock, true);
     } else {
-      lock = authWithUsername(lock)
-        ? c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"))
-        : c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-      return lock;
+      return c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
     }
   });
 
@@ -216,7 +212,7 @@ export function resetPassword(id) {
     // TODO: check options
     const options = {
       connection: databaseConnectionName(lock),
-      username:   authWithUsername(lock) ? c.username(lock) : c.email(lock)
+      email: c.email(lock)
     };
 
     const authOptions = {
