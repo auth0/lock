@@ -33,8 +33,6 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
       if (hash.error) {
         error = hash;
       } else {
-        // TODO: we were remaing profile to payload and that is now
-        // lost.
         result = hash;
       }
     }
