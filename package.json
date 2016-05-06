@@ -73,7 +73,6 @@
     "react-addons-css-transition-group": "0.14.5",
     "react-addons-transition-group": "0.14.5",
     "react-dom": "0.14.5",
-    "reqwest": "^1.1.4",
     "trim": "0.0.1"
   }
 }
