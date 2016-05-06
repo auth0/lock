@@ -399,4 +399,29 @@ describe("connection pick", function() {
     });
   });
 
+  describe("with a single corporate connection", function() {
+    beforeEach(function(done) {
+      const opts = {
+        allowedConnections: ["corporate"],
+        rememberLastLogin: false
+      };
+
+      this.lock = h.displayLock("", opts, done);
+    });
+
+    afterEach(function() {
+      this.lock.hide();
+    });
+
+    describe("when the email and password inputs are filled", function() {
+      beforeEach(function() {
+        h.logInWithUsernameAndPassword(this.lock);
+      });
+
+      it("logins with the database connection", function() {
+        expect(h.hasSSONotice(this.lock)).to.not.be.ok();
+        expect(h.wasLoginAttemptedWith({connection: "corporate"})).to.be.ok();
+      });
+    });
+  });
 });

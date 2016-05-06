@@ -2,7 +2,7 @@ import { getEntity, read, swap, updateEntity } from '../../store/index';
 import {
   enterpriseConnection,
   findADConnectionWithoutDomain,
-  isHRDDomain,
+  isHRDActive,
   matchConnection,
   toggleHRD
 } from '../enterprise';
@@ -11,6 +11,7 @@ import * as c from '../../field/index';
 import { setUsername } from '../../field/username';
 import { emailLocalPart } from '../../field/email';
 import webApi from '../../core/web_api';
+import { validateAndSubmit } from '../../core/actions';
 
 export function startHRD(id) {
   swap(updateEntity, "lock", id, m => {
@@ -29,42 +30,23 @@ export function logIn(id) {
   const email = c.email(m);
   const ssoConnection = matchConnection(m, email);
 
-  if (ssoConnection && isHRDDomain(m, email)) {
-    // TODO: maybe this shouldn't be dispatched from here, maybe the
-    // logIn function shouldn't exists at all.
-    return logInHRD(id, ssoConnection);
-  }
-
-  if (ssoConnection) {
+  if (ssoConnection && !isHRDActive(m)) {
     return logInSSO(id, ssoConnection);
   }
 
-  // TODO: should we call this corporateConnection?
-  logInAD(id, enterpriseConnection(m));
+  logInActiveFlow(id);
 }
 
-export function logInHRD(id, connection = undefined) {
-  swap(updateEntity, "lock", id, lock => {
-    if (!connection) connection = enterpriseConnection(lock);
+function logInActiveFlow(id) {
+  const m = read(getEntity, "lock", id);
+  const useUsername = isHRDActive(m);
 
-    if (c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password")) {
-      return l.setSubmitting(lock, true);
-    } else {
-      lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
-      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
-      return lock;
-    }
-  });
-
-  const lock = read(getEntity, "lock", id);
-
-  if (l.submitting(lock)) {
-    // TODO: popup + popup options
+  validateAndSubmit(id, ["password", useUsername ? "username" : "email"], m => {
     const options = {
-      connection: connection.get("name"),
-      username: c.username(lock),
-      password: c.password(lock),
-      login_hint: c.username(lock)
+      connection: enterpriseConnection(m).get("name"),
+      username: useUsername ? c.username(m) : c.email(m),
+      password: c.password(m),
+      login_hint: useUsername ? c.username(m) : c.email(m),
     };
 
     webApi.logIn(
@@ -78,8 +60,7 @@ export function logInHRD(id, connection = undefined) {
         }
       }
     );
-  }
-
+  });
 }
 
 function logInSSO(id, connection) {
@@ -112,42 +93,6 @@ function logInSSO(id, connection) {
       }
     );
   }
-}
-
-function logInAD(id, connection) {
-  swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "email") && c.isFieldValid(lock, "password")) {
-      return l.setSubmitting(lock, true);
-    } else {
-      lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
-      return lock;
-    }
-  });
-
-  const lock = read(getEntity, "lock", id);
-
-  if (l.submitting(lock)) {
-    const options = {
-      connection: connection.get("name"),
-      username: c.email(lock),
-      password: c.password(lock),
-      login_hint: c.email(lock)
-    };
-
-    webApi.logIn(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => logInError(id, error), 250);
-        } else {
-          logInSuccess(id, ...args);
-        }
-      }
-    );
-  }
-
 }
 
 function logInSuccess(id, ...args) {

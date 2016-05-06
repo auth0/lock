@@ -1,5 +1,6 @@
 import Immutable, { List } from 'immutable';
 import * as l from '../core/index';
+import * as c from '../field/index';
 import { dataFns } from '../utils/data_utils';
 import { emailDomain } from '../field/email';
 import { getFieldValue } from '../field/index';
@@ -51,7 +52,14 @@ export function defaultEnterpriseConnectionName(m) {
 }
 
 export function enterpriseConnection(m) {
-  return defaultEnterpriseConnection(m) || findADConnectionWithoutDomain(m);
+  if (isHRDActive(m)) {
+    // HRD is active when an email matched or there is only one
+    // connection and it is enterprise
+    const email = c.email(m);
+    return matchConnection(m, email) || findActiveFlowConnection(m);
+  } else {
+    return defaultEnterpriseConnection(m) || findADConnectionWithoutDomain(m);
+  }
 }
 
 export function matchConnection(m, email, strategies = []) {
@@ -102,6 +110,12 @@ export function findADConnectionWithoutDomain(m, name = undefined) {
   });
 }
 
+function findActiveFlowConnection(m, name = undefined) {
+  return l.connections(m, "enterprise", "ad", "auth0-adldap").find(x => {
+    return !name || x.get("name") === name;
+  });
+}
+
 // kerberos
 
 export function isInCorpNetwork(m) {
@@ -129,5 +143,5 @@ export function toggleHRD(m, b) {
 }
 
 export function isHRDActive(m) {
-  return tget(m, "hrd", false);
+  return tget(m, "hrd", isSingleHRDConnection(m));
 }
