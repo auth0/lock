@@ -992,6 +992,14 @@
   content: "\00E8";
 }
 
+#a0-lock.a0-theme-default .a0-zocial.a0-bitbucket:before {
+  content: "\00E8";
+}
+
+#a0-lock.a0-theme-default .a0-zocial.a0-dropbox:before {
+  content: "\00E8";
+}
+
 #a0-lock.a0-theme-default .a0-zocial.a0-gmail:before {
   content: "m";
   color: #f00;
@@ -1158,6 +1166,16 @@
 }
 
 #a0-lock.a0-theme-default .a0-zocial.a0-github {
+  background-color: #eee;
+  color: #050505;
+}
+
+#a0-lock.a0-theme-default .a0-zocial.a0-bitbucket {
+  background-color: #eee;
+  color: #050505;
+}
+
+#a0-lock.a0-theme-default .a0-zocial.a0-dropbox {
   background-color: #eee;
   color: #050505;
 }
