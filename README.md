@@ -69,9 +69,35 @@ var lock = new Auth0Lock(clientId, domain, {},
       // undefined.
 
       // store the token and profile in local storage (or wherever you choose)
-      localStorage.setItem('id_token', result.idToken);
-      localStorage.setItem('profile', JSON.stringify(result.profile));
+      localStorage.setItem('idToken', result.idToken);
+
+      // Optionally fetch the profile
+      lock.getProfile(result.idToken, function(error, profile) {
+        if (error) {
+          // Handle error
+        }
+
+        localStorage.setItem('profile', JSON.stringify(profile));
+      });
     }
+});
+```
+
+
+### getProfile(idToken, callback)
+
+Once the user has logged in and you are in possesion of and id token, you can obtain the profile with `getProfile`.
+
+- **idToken {String}**: User id token.
+- **callback {Function}**: Will be invoked after the user profile been retrieved.
+
+#### Example
+
+```js
+lock.getProfile(id_token, function(error, profile) {
+  if (!error) {
+    alert("hello " + profile.name);
+  }
 });
 ```
 
@@ -81,6 +107,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 
 #### UI options
 
+- **allowedConnections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](http://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
@@ -89,7 +116,6 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **rememberLastLogin {Boolean}**: Determines whether or not to show a screen that allows you to quickly log in with the account you used the last time. Defaults to `true`.
-- **allowedConnections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
 
 #### Theming options
 
