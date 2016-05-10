@@ -13,7 +13,6 @@ const Component = ({model, t}) => {
       emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
       header={header}
       lock={model}
-      usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
     />
   );
 };

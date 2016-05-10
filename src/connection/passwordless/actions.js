@@ -20,10 +20,10 @@ export function requestPasswordlessEmail(id) {
 
   if (l.submitting(lock)) {
     const isMagicLink = m.send(lock) === "link";
-    const options = l.withAuthOptions(lock, {
+    const options = {
       email: c.email(lock),
       send: m.send(lock),
-    }, false);
+    };
 
     webApi.startPasswordless(id, options, error => {
       if (error) {
@@ -99,10 +99,10 @@ export function resendEmail(id) {
   swap(updateEntity, "lock", id, m.resend);
 
   const lock = read(getEntity, "lock", id);
-  const options = l.withAuthOptions(lock, {
+  const options = {
     email: c.email(lock),
     send: m.send(lock),
-  }, false);
+  };
 
   webApi.startPasswordless(id, options, error => {
     if (error) {
@@ -136,9 +136,9 @@ export function logIn(id) {
   const lock = read(getEntity, "lock", id);
 
   if (l.submitting(lock)) {
-    const options = l.withAuthOptions(lock, {
+    const options = {
       passcode: c.vcode(lock)
-    });
+    };
 
     if (m.send(lock) === "sms") {
       options.phoneNumber = c.fullPhoneNumber(lock);
