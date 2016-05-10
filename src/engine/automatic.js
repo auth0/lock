@@ -18,7 +18,6 @@ import {
   isEnterpriseDomain,
   isHRDActive,
   isInCorpNetwork,
-  isSingleHRDConnection,
   quickAuthConnection
 } from '../connection/enterprise';
 import { initSocial } from '../connection/social/index';
@@ -115,7 +114,7 @@ class Automatic {
       return new EnterpriseQuickAuthScreen();
     }
 
-    if (isHRDActive(m) || isSingleHRDConnection(m)) {
+    if (isHRDActive(m)) {
       return new HRDScreen();
     }
 

@@ -118,3 +118,22 @@ export function startSubmit(id, fields = []) {
   const m = read(getEntity, "lock", id);
   return [l.submitting(m), m];
 }
+
+export function validateAndSubmit(id, fields = [], f) {
+  swap(updateEntity, "lock", id, m => {
+    const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
+    return allFieldsValid
+      ? l.setSubmitting(m, true)
+      : fields.reduce((r, x) => showInvalidField(r, x), m);
+  });
+
+  const m = read(getEntity, "lock", id);
+  if (l.submitting(m)) {
+    // TODO: besides the model, we can provide the field values since
+    // they are most likely to be sent
+    f(m);
+  }
+
+  // TODO: can we abstract submission? most call webApi.login and
+  // handle success and error similarly
+}

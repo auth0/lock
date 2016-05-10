@@ -52,6 +52,13 @@ export default {
           ]
         },
         {
+          name: "corporate",
+          domain: "corporate.com",
+          domain_aliases: [
+            "corporate.com"
+          ]
+        },
+        {
           name: "corporate-no-domain",
           domain: null
         },
