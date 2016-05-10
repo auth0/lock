@@ -1,8 +1,15 @@
-## unreleased
+## [10.0.0-beta.3] - 2016-05-10
 
 ### Fixed
 
 - Allow to translate password strength messages.
+
+### Changed
+
+- Don't fetch profile automatically after a successful login.
+- Display just an email input in the forgot password screen. Before,
+  an username input was displayed when the connection required an
+  username.
 
 ## [10.0.0-beta.2] - 2016-04-25
 
