@@ -13,13 +13,13 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.0.0-beta.2/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.0.0-beta.3/lock.min.js"></script>
 ```
 
 From [bower](http://bower.io)
 
 ```sh
-bower install auth0-lock#10.0.0-beta.2
+bower install auth0-lock#10.0.0-beta.3
 ```
 
 ```html
@@ -29,7 +29,7 @@ bower install auth0-lock#10.0.0-beta.2
 From [npm](https://npmjs.org)
 
 ```sh
-npm install auth0-lock@10.0.0-beta.2
+npm install auth0-lock@10.0.0-beta.3
 ```
 
 After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
