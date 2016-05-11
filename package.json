@@ -17,7 +17,8 @@
     "phantom": "grunt phantom",
     "demo": "grunt demo",
     "build": "grunt build",
-    "dev": "grunt dev"
+    "dev": "grunt dev",
+    "ci": "grunt ci"
   },
   "repository": {
     "type": "git",
