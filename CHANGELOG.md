@@ -1,3 +1,18 @@
+## [8.3.2] - 2016-05-10
+
+### Fixed
+
+- [] Merge pull request #382 from auth0/v8-upgrade-auth0js (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/412fafd6371d29d0607a43071de0b5fd39dc5977
+- [] Add travis ci script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/a2366f909a5e15a9c803316dc65af7ad93ff7a70
+- [] Add .travis.yml (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1922773a1ec07bd1d7bfa0e94cef940ec50a35be
+- [] Update deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4b4b821fa17cea54159cad783c516aa939c85a76
+- [] Upgrade auth0.js to 6.8.3 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b33da2379534efe938ee5f4d1d52efde4d373f66
+
 ## [8.3.1] - 2016-04-07
 
 ### Fixed
