@@ -315,10 +315,14 @@ module.exports = function (grunt) {
   grunt.registerTask('demo-https',    ['less:demo', 'connect:demo-https', 'build', 'watch']);
 
   grunt.registerTask('dev',           ['less:demo', 'connect:test', 'build', 'watch']);
-  grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
+  grunt.registerTask('integration',   ['build', 'exec:test-inception', 'exec:test-integration']);
   grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
   grunt.registerTask('publish_s3',    ['aws_s3:clean', 'aws_s3:clean_fonts', 'aws_s3:publish', 'aws_s3:publish_fonts']);
   grunt.registerTask('purge_cdn',     ['http:purge_js', 'http:purge_js_min', 'http:purge_major_js', 'http:purge_major_js_min', 'http:purge_minor_js', 'http:purge_minor_js_min', 'http:purge_fonts']);
   grunt.registerTask('cdn',           ['build', 'copy:release', 'publish_s3', 'purge_cdn']);
+
+  grunt.registerTask('ci', function() {
+    grunt.task.run(process.env.SAUCE_USERNAME ? 'integration' : 'phantom');
+  });
 };

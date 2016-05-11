@@ -9,24 +9,21 @@ PACKAGE=$(node -e "console.log(require('$DIR/../package.json').name)")
 TAG_NAME="v$VERSION"
 TAG_EXISTS=$(git tag -l "$TAG_NAME")
 
-GITHUB_RELEASE_BRANCH=`git rev-parse --abbrev-ref HEAD`
-WORKING_BRANCH=${GITHUB_RELEASE_BRANCH:-master}
-
 if [ ! -z "$TAG_EXISTS" ]; then
     echo "There is already a tag $TAG_EXISTS in git. Skiping git deploy."
 else
     echo "Deploying $VERSION to git"
 
     LAST_COMMIT=$(git log -1 --pretty=%B)
+    LAST_COMMIT_HASH=$(git rev-parse HEAD)
     git checkout -b dist
     grep -v '^build$' .gitignore > /tmp/.gitignore
     mv /tmp/.gitignore .gitignore
     git add --force build/*
     git commit -am "$TAG_NAME"
     git tag "$TAG_NAME" -m "$LAST_COMMIT"
-    git checkout "$WORKING_BRANCH"
+    git checkout "$LAST_COMMIT_HASH"
     git push origin $TAG_NAME
-    git checkout "$WORKING_BRANCH"
     git branch -D dist
 fi
 

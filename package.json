@@ -18,7 +18,8 @@
     "build": "grunt build",
     "start": "grunt demo",
     "demo": "grunt demo",
-    "dev": "grunt dev"
+    "dev": "grunt dev",
+    "ci": "grunt ci"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,7 @@
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
   "dependencies": {
-    "auth0-js": "~6.8.0",
+    "auth0-js": "6.8.3",
     "bean": "~1.0.4",
     "brfs": "^1.4.0",
     "blueimp-md5": "^1.1.0",
