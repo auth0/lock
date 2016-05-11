@@ -1,3 +1,16 @@
+## [7.14.3] - 2016-05-10
+
+### Fixed
+
+- [] Merge pull request #383 from auth0/v7-upgrade-auth0js (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/eb414743050d48805e3c14f603c123a844200173
+- [] Configure travis CI (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/4f300fd3e983c34e4950d392764b073d496c9238
+- [] Update deploy script (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/c846f1f9d76be0e34a0d821a7199d129d561740d
+- [] Upgrade to auth0.js 6.8.3 (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/95b07e0f2c120967a5a6b641d685452ee8ba1ff9
+
 ## [7.14.2] - 2016-04-09
 
 ### Fixed
