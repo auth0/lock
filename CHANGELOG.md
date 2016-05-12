@@ -1,3 +1,14 @@
+## [9.2.0] - 2016-05-12
+
+### Fixed
+
+- [] Merge pull request #385 from auth0/bitbucket-dropbox (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/1726badf8908f1c68cbf3061ee9abb5f04daf45a
+- [] Update font update instructions (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/5a47f5eea1a8091a963f7cf70bcc85dede74fd64
+- [] Add Bitbucket and Dropbox icons (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/276004cdee3babe7a40abff445e8b51e8a73950f
+
 ## [9.1.4] - 2016-05-10
 
 ### Fixed
