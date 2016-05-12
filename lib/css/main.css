@@ -981,6 +981,7 @@
 
 #a0-lock.a0-theme-default .a0-zocial.a0-bitbucket:before {
   content: "\e900";
+  color: #fff;
 }
 
 #a0-lock.a0-theme-default .a0-zocial.a0-dropbox:before {
