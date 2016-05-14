@@ -1,3 +1,16 @@
+## [9.2.1] - 2016-05-14
+
+### Fixed
+
+- [] Merge pull request #387 from ramasilveyra/fix-lock-height (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/b7d0a2247afdc99d0b41e8acc49d4a12b83f635d
+- [] Fix overlap elements on devices with small vh (`Ramiro Silveyra d'Avila`)
+  https://github.com/auth0/lock/commit/8b74993cbee4f680e635dc60ec95c9911a27af23
+- [] Merge pull request #386 from ramasilveyra/optimised-image (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6661f72f7c4178e4339cbcf6cb8181beaeb1b9d6
+- [] Use optimised version of our logo (badge) (`Ramiro Silveyra d'Avila`)
+  https://github.com/auth0/lock/commit/b997f68f32b2620bdd0ce53a67d50cde09e22961
+
 ## [9.2.0] - 2016-05-12
 
 ### Fixed
