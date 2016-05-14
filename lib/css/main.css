@@ -981,6 +981,7 @@
 
 #a0-lock.a0-theme-default .a0-zocial.a0-bitbucket:before {
   content: "\e900";
+  color: #fff;
 }
 
 #a0-lock.a0-theme-default .a0-zocial.a0-dropbox:before {
@@ -7832,17 +7833,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: #333;
 }
 
-#a0-lock.a0-theme-default .a0-panel .a0-signup-footer,
-#a0-lock.a0-theme-default .a0-panel .a0-signin-footer,
-#a0-lock.a0-theme-default .a0-panel .a0-reset-footer {
-  margin: 0 -30px -30px;
-}
-
 #a0-lock.a0-theme-default .a0-panel .a0-signup-footer small,
 #a0-lock.a0-theme-default .a0-panel .a0-signin-footer small,
 #a0-lock.a0-theme-default .a0-panel .a0-reset-footer small {
   background: #eee;
-  margin-top: 30px;
   display: block;
   font-size: 12px;
   line-height: 22px;
@@ -8181,10 +8175,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-signup-footer {
     margin: 0;
-    position: absolute;
-    bottom: 70px;
-    width: 100%;
-    left: 0;
   }
 
   #a0-lock.a0-theme-default .a0-popup .a0-centrix .a0-panel .a0-signup-footer small {
