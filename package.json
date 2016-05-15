@@ -2,6 +2,7 @@
   "name": "auth0-lock",
   "version": "9.2.1",
   "description": "Auth0 Lock",
+  "browser": "build/auth0-lock.js",
   "main": "./index.js",
   "keywords": [
     "auth0",
