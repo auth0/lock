@@ -15,6 +15,7 @@ import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
 import SignUpPane from './sign_up_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
+import { renderOptionSelection } from '../../field/index';
 import * as l from '../../core/index';
 import PaneSeparator from '../../core/pane_separator';
 import { isSSOEnabled } from '../automatic';
@@ -69,7 +70,9 @@ export default class SignUp extends Screen {
   }
 
   renderAuxiliaryPane(lock) {
-    return renderSignedInConfirmation(lock) || renderSignedUpConfirmation(lock);
+    return renderSignedInConfirmation(lock)
+      || renderSignedUpConfirmation(lock)
+      || renderOptionSelection(lock);
   }
 
   renderTabs() {

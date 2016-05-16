@@ -1,14 +1,18 @@
 import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
 import * as client from '../../core/client/index';
-import { clearFields, setField } from '../../field/index';
+import { clearFields, setField, setOptionField } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
 export function initDatabase(m, options) {
   m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
-  additionalSignUpFields(m).forEach(x => m = setField(m, x.get("name"), x.get("prefill", ""), x.get("validator")));
+  additionalSignUpFields(m).forEach(x => {
+    m = x.get("type") === "select"
+      ? setOptionField(m, x.get("name"), x.get("prefill"))
+      : setField(m, x.get("name"), x.get("prefill", ""), x.get("validator"))
+  });
   return m;
 }
 
@@ -123,7 +127,10 @@ function processDatabaseOptions(opts) {
             && x.label && typeof x.label === "string"
             && x.value && typeof x.value === "string";
 
-          if (!hasPrefill && x.value === prefill) hasPrefill = true;
+          if (!hasPrefill && x.value === prefill) {
+            prefill = x;
+            hasPrefill = true;
+          }
         });
 
         if (!valid) {

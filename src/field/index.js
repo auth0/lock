@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import trim from 'trim';
 import * as cc from './country_codes';
+import OptionSelectionPane from './option_selection_pane';
 
 export function setField(m, field, value, validator = str => trim(str).length > 0, ...args) {
   const prevValue = m.getIn(["field", field, "value"]);
@@ -11,6 +12,15 @@ export function setField(m, field, value, validator = str => trim(str).length > 
     value: value,
     valid: valid,
     showInvalid: prevShowInvalid && prevValue === value
+  }));
+}
+
+export function setOptionField(m, field, option) {
+  return m.mergeIn(["field", field], Map({
+    value: option.get("value"),
+    label: option.get("label"),
+    valid: true,
+    showInvalid: false
   }));
 }
 
@@ -48,6 +58,10 @@ export function clearFields(m, fields) {
 
 export function getFieldValue(m, field, notFound="") {
   return m.getIn(["field", field, "value"], notFound);
+}
+
+export function getFieldLabel(m, field, notFound="") {
+  return m.getIn(["field", field, "label"], notFound);
 }
 
 // phone number
@@ -109,3 +123,22 @@ export function password(m) {
 export function username(m) {
   return getFieldValue(m, "username");
 }
+
+// select field options
+
+export function isSelecting(m) {
+  return !!m.getIn(["field", "selecting"]);
+}
+
+export function renderOptionSelection(m) {
+  return isSelecting(m)
+    ? <OptionSelectionPane
+         model={m}
+         name={m.getIn(["field", "selecting", "name"])}
+         iconUrl={m.getIn(["field", "selecting", "iconUrl"])}
+         items={m.getIn(["field", "selecting", "options"])}
+      />
+    : null;
+}
+
+// TODO: this module should handle icons, validation, and so on.
