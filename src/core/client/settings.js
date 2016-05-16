@@ -1,5 +1,5 @@
 import Auth0 from 'auth0-js';
-import Cache from '../../remote-data/cache';
+import Cache from '../../utils/cache';
 import { endsWith } from '../../utils/string_utils';
 
 const cache = new Cache((...args) => addClientScriptTag(...args));
