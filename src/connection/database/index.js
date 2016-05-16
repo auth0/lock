@@ -85,6 +85,7 @@ function processDatabaseOptions(options) {
         && typeof x.get("placeholder") === "string"
         && x.get("placeholder").length > 0
         && (x.get("prefill") === undefined || typeof x.get("prefill") === "string")
+        && (x.get("type") === undefined || ["select", "text"].indexOf(x.get("type")) !== -1)
         && (x.get("validator") === undefined || typeof x.get("validator") === "function");
     });
   }
