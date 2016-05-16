@@ -213,6 +213,16 @@ export function warn(x, str) {
   }
 }
 
+export function error(x, str) {
+  const shouldOutput = Map.isMap(x)
+    ? !ui.disableWarnings(x)
+    : !x.disableWarnings;
+
+  if (shouldOutput && console && console.error) {
+    console.error(str);
+  }
+}
+
 export function allowedConnections(m) {
   return get(m, "allowedConnections");
 }
