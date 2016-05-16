@@ -8,7 +8,7 @@ const { get, initNS, tget, tset } = dataFns(["database"]);
 
 export function initDatabase(m, options) {
   m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
-  additionalSignUpFields(m).forEach(x => m = setField(m, x.get("name"), "", x.get("validator")));
+  additionalSignUpFields(m).forEach(x => m = setField(m, x.get("name"), x.get("prefill", ""), x.get("validator")));
   return m;
 }
 
@@ -84,7 +84,8 @@ function processDatabaseOptions(options) {
         && reservedNames.indexOf(x.get("name")) === -1
         && typeof x.get("placeholder") === "string"
         && x.get("placeholder").length > 0
-        && (typeof x.get("validator") === "undefined" || typeof x.get("validator") === "function");
+        && (x.get("prefill") === undefined || typeof x.get("prefill") === "string")
+        && (x.get("validator") === undefined || typeof x.get("validator") === "function");
     });
   }
 

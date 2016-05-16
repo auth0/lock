@@ -284,7 +284,7 @@ As you can see from the examples, some keys are _namespaced_ inside another obje
 
 #### Additional sign up fields
 
-Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, an `icon` url and a `validator` function can also be provided. The fields are rendered below the regular sign up input fields in the order they are provided.
+Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, an `icon` url and a `validator` function can also be provided. Also, the initial value can be provided with the `prefill` option. The fields are rendered below the regular sign up input fields in the order they are provided.
 
 ```js
 var options = {
@@ -292,6 +292,7 @@ var options = {
     name: "address",
     icon: "https://example.com/assests/address_icon.png",
     placeholder: "enter your address",
+    prefill: "street 123",
     validator: function(address) {
       return address.length > 10;
     }

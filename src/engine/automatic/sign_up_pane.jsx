@@ -9,7 +9,7 @@ import {
 } from '../../connection/database/index';
 import { changeField } from '../../field/actions';
 import TextInput from '../../ui/input/text_input';
-import { isFieldVisiblyInvalid } from '../../field/index';
+import { getFieldValue, isFieldVisiblyInvalid } from '../../field/index';
 
 export default class SignUpPane extends React.Component {
 
@@ -38,6 +38,7 @@ export default class SignUpPane extends React.Component {
         key={x.get("name")}
         name={x.get("name")}
         onChange={e => changeField(model.get("id"), x.get("name"), e.target.value, x.get("validator"))}
+        value={getFieldValue(model, x.get("name"))}
         placeholder={x.get("placeholder")}
       />
     ));
