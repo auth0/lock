@@ -520,3 +520,7 @@ describe("layout", function() {
   });
 
 });
+
+// TODO: besides of diplaying diffrent lock by customizing the allowed
+// connections we should consider when those connections come from the
+// client settings given the code paths are different.
