@@ -270,39 +270,48 @@ export function toggleTermsAcceptance(id) {
 export function resolveSingUpFieldCallbacks(id, x) {
   if (x.get("type") != "select") return;
 
-  let prefill, options, done;
+  let resolvedPrefill, resolvedOptions, done;
 
-  if (typeof x.get("prefill") != "function") prefill = x.get("prefill");
-  if (typeof x.get("options") != "function") options = x.get("options");
+  if (typeof x.get("prefill") != "function") resolvedPrefill = x.get("prefill") || "";
+  if (typeof x.get("options") != "function") resolvedOptions = x.get("options");
 
-  if (prefill && options) return; // nothing to resolve
+  if (resolvedPrefill && resolvedOptions) return; // nothing to resolve
 
   sync(
     id,
     ["additionalSignUpFields", x.get("name")],
     undefined,
     (_, cb) => {
-      if (!prefill) {
+      if (resolvedPrefill === undefined) {
         x.get("prefill")((err, value) => {
           if (done) return;
-          prefill = value;
-          if (options) cb(null, {prefill: prefill, options: options});
+          resolvedPrefill = value;
+          if (resolvedOptions != undefined) {
+            cb(null, {prefill: resolvedPrefill, options: resolvedOptions});
+          }
         });
       }
-      if (!options) {
+      if (resolvedOptions === undefined) {
         x.get("options")((err, value) => {
           if (done) return;
           if (err) cb({});
-          options = value;
-          if (prefill) cb(null, {prefill: prefill, options: options});
+          resolvedOptions = value;
+          if (resolvedPrefill != undefined) {
+            cb(null, {prefill: resolvedPrefill, options: resolvedOptions});
+          }
         });
       }
     },
     (m, {options, prefill}) => {
       done = true;
       try {
+        if (!Array.isArray(options)) {
+          throw new Error(`The \`options\` provided for the "${x.get("name")}" field must be an Array.`);
+        }
+
         return c.registerOptionField(m, x.get("name"), Immutable.fromJS(options), prefill);
       } catch (e) {
+        l.error(m, e.message);
         return l.stop(m);
       }
     }
