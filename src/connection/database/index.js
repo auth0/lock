@@ -12,7 +12,7 @@ export function initDatabase(m, options) {
   return m;
 }
 
-function processDatabaseOptions(options) {
+function processDatabaseOptions(opts) {
   let {
     additionalSignUpFields,
     allowForgotPassword,
@@ -24,7 +24,7 @@ function processDatabaseOptions(options) {
     mustAcceptTerms,
     signUpLink,
     usernameStyle
-  } = options;
+  } = opts;
 
   // TODO: add a warning if it is not "username" or "email", leave it
   // undefined, and change accesor fn.
@@ -34,60 +34,124 @@ function processDatabaseOptions(options) {
 
   if (initialScreen != undefined
       && (typeof initialScreen != "string" || screens.indexOf(initialScreen) === -1)) {
-    l.warn(options, "The `initialScreen` option will be ignored, because it is not one of the following allowed strings \"login\", \"signUp\", \"forgotPassword\".");
+    l.warn(opts, "The `initialScreen` option will be ignored, because it is not one of the following allowed strings \"login\", \"signUp\", \"forgotPassword\".");
     initialScreen = undefined;
   }
 
   if (allowForgotPassword !== undefined && typeof allowForgotPassword != "boolean") {
-    l.warn(options, "The `allowForgotPassword` option will be ignored, because it is not a booelan.");
+    l.warn(opts, "The `allowForgotPassword` option will be ignored, because it is not a booelan.");
   } else if (allowForgotPassword === false) {
     screens = screens.filter(x => x != "forgotPassword");
   }
 
   if (allowSignUp !== undefined && typeof allowSignUp != "boolean") {
-    l.warn(options, "The `allowSignUp` option will be ignored, because it is not a booelan.");
+    l.warn(opts, "The `allowSignUp` option will be ignored, because it is not a booelan.");
   } else if (allowSignUp === false) {
     screens = screens.filter(x => x != "signUp");
   }
 
   if (defaultDatabaseConnection != undefined && typeof defaultDatabaseConnection !== "string") {
-    l.warn(options, "The `defaultDatabaseConnection` option will be ignored, because it is not a string.");
+    l.warn(opts, "The `defaultDatabaseConnection` option will be ignored, because it is not a string.");
     defaultDatabaseConnection = undefined;
   }
 
   if (forgotPasswordLink != undefined && typeof forgotPasswordLink != "string") {
-    l.warn(options, "The `forgotPasswordLink` option will be ignored, because it is not a string");
+    l.warn(opts, "The `forgotPasswordLink` option will be ignored, because it is not a string");
     forgotPasswordLink = undefined;
   }
 
   if (signUpLink != undefined && typeof signUpLink != "string") {
-    l.warn(options, "The `signUpLink` option will be ignored, because it is not a string");
+    l.warn(opts, "The `signUpLink` option will be ignored, because it is not a string");
     signUpLink = undefined;
   }
 
   if (mustAcceptTerms !== undefined && typeof mustAcceptTerms != "boolean") {
-    l.warn(options, "The `mustAcceptTerms` option will be ignored, because it is not a booelan.");
+    l.warn(opts, "The `mustAcceptTerms` option will be ignored, because it is not a booelan.");
     mustAcceptTerms = undefined;
   }
 
   if (additionalSignUpFields && !Array.isArray(additionalSignUpFields)) {
-    l.warn(options, "The `additionalSignUpFields` option will be ignored, because it is not an array");
+    l.warn(opts, "The `additionalSignUpFields` option will be ignored, because it is not an array");
     additionalSignUpFields = undefined;
   } else if (additionalSignUpFields) {
-    additionalSignUpFields = new Immutable.fromJS(additionalSignUpFields);
-    // TODO: emit warnings for invalid fields
-    // TODO: improve validation
-    additionalSignUpFields = additionalSignUpFields.filter(x => {
+    additionalSignUpFields = additionalSignUpFields.reduce((r, x) => {
+      let { icon, name, options, placeholder, prefill, type, validator } = x;
+      let filter = true;
+
       const reservedNames = ["email", "username", "password"];
-      return typeof x.get("name") === "string"
-        && x.get("name").match(/^[a-zA-Z0-9_]+$/)
-        && reservedNames.indexOf(x.get("name")) === -1
-        && typeof x.get("placeholder") === "string"
-        && x.get("placeholder").length > 0
-        && (x.get("prefill") === undefined || typeof x.get("prefill") === "string")
-        && (x.get("type") === undefined || ["select", "text"].indexOf(x.get("type")) !== -1)
-        && (x.get("validator") === undefined || typeof x.get("validator") === "function");
-    });
+      if (typeof name != "string" || !name.match(/^[a-zA-Z0-9_]+$/) || reservedNames.indexOf(name) > -1) {
+        l.warn(opts, `A \`name\` property must be provided for every element of \`additionalSignUpFields\`. It must be a non-empty string consisting of letters, numbers and underscores. The following names are reserved, and therefore, cannot be used: ${reservedNames.join(", ")}.`);
+        filter = false;
+      }
+
+      if (typeof placeholder != "string" || !placeholder) {
+        l.warn(opts, "A `placeholder` property must be provided for every element of `additionalSignUpFields`. It must be a non-empty string.");
+        filter = false;
+      }
+
+      if (icon != undefined && (typeof icon != "string" || !icon)) {
+        l.warn(opts, "When provided, the `icon` property of an element of `additionalSignUpFields` must be a non-empty string.");
+        icon = undefined;
+      }
+
+      if (prefill != undefined && (typeof prefill != "string" || !prefill)) {
+        l.warn(opts, "When provided, the `prefill` property of an element of `additionalSignUpFields` must be a non-empty string.");
+        prefill = undefined;
+      }
+
+      const types = ["select", "text"];
+      if (type != undefined && (typeof type != "string" || types.indexOf(type) === -1)) {
+        l.warn(opts, `When provided, the \`type\` property of an element of \`additionalSignUpFields\` must be one of the following strings: "${types.join("\", \"")}".`);
+        type = undefined;
+      }
+
+      if (validator != undefined && typeof validator != "function") {
+        l.warn(opts, "When provided, the `validator` property of an element of `additionalSignUpFields` must be a function");
+        validator = undefined;
+      }
+
+      if (options != undefined && !global.Array.isArray(options)) {
+        l.warn(opts, "When provided, the `options` property of an element of `additionalSignUpFields` must be an array");
+        options = undefined;
+      }
+
+      if (options != undefined) {
+        let valid = true, hasPrefill = !prefill;
+
+        options.forEach(x => {
+          valid = valid
+            && x.label && typeof x.label === "string"
+            && x.value && typeof x.value === "string";
+
+          if (!hasPrefill && x.value === prefill) hasPrefill = true;
+        });
+
+        if (!valid) {
+          l.warn(opts, "When provided, the elements of the `options` property of the `additionalSignUpFields` must have the following format: {label: \"non-empty string\", value: \"non-empty string\"}");
+          options = undefined;
+        }
+
+        if (!hasPrefill) {
+          l.warn(opts, "The `options` of an element of `additionalSignUpFields` doesn't contain the provided `prefill` value");
+        }
+      }
+
+      if (options != undefined && type != "select") {
+        l.warn(opts, "The `options` property can only by provided for an element of `additionalSignUpFields` when its `type` equals to \"select\"");
+        options = undefined;
+      }
+
+      if (type === "select" && options === undefined) {
+        l.warn(opts, `When providing a \`type\` property in an element of \`additionalSignUpFields\` a valid \`options\` property must also be provided.`);
+        filter = false;
+      }
+
+      return filter
+        ? r.concat([{icon, name, options, placeholder, prefill, type, validator}])
+        : r;
+    }, []);
+
+    additionalSignUpFields = Immutable.fromJS(additionalSignUpFields);
   }
 
 
