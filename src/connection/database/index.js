@@ -1,18 +1,31 @@
 import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
 import * as client from '../../core/client/index';
-import { clearFields, setField, setOptionField } from '../../field/index';
+import { clearFields, setField, registerOptionField } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
 export function initDatabase(m, options) {
-  m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
-  additionalSignUpFields(m).forEach(x => {
-    m = x.get("type") === "select"
-      ? setOptionField(m, x.get("name"), x.get("prefill"))
-      : setField(m, x.get("name"), x.get("prefill", ""), x.get("validator"))
-  });
+  try {
+    m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
+
+    additionalSignUpFields(m).forEach(x => {
+      switch(x.get("type")) {
+        case "select":
+          if (typeof x.get("prefill") != "function" && typeof x.get("options") != "function") {
+            m = registerOptionField(m, x.get("name"), x.get("options"), x.get("prefill"));
+          }
+          break;
+        default:
+          m = setField(m, x.get("name"), x.get("prefill", ""), x.get("validator"));
+      }
+    });
+  } catch (e) {
+    l.error(options, e.message);
+    m = l.stop(m);
+  }
+
   return m;
 }
 
@@ -98,8 +111,8 @@ function processDatabaseOptions(opts) {
         icon = undefined;
       }
 
-      if (prefill != undefined && (typeof prefill != "string" || !prefill)) {
-        l.warn(opts, "When provided, the `prefill` property of an element of `additionalSignUpFields` must be a non-empty string.");
+      if (prefill != undefined && (typeof prefill != "string" || !prefill) && (typeof prefill != "function")) {
+        l.warn(opts, "When provided, the `prefill` property of an element of `additionalSignUpFields` must be a non-empty string or a function.");
         prefill = undefined;
       }
 
@@ -119,38 +132,13 @@ function processDatabaseOptions(opts) {
         validator = undefined;
       }
 
-      if (options != undefined && !global.Array.isArray(options)) {
-        l.warn(opts, "When provided, the `options` property of an element of `additionalSignUpFields` must be an array.");
-        options = undefined;
-      }
-
-      if (options != undefined) {
-        let valid = true, hasPrefill = !prefill;
-
-        options.forEach(x => {
-          valid = valid
-            && x.label && typeof x.label === "string"
-            && x.value && typeof x.value === "string";
-
-          if (!hasPrefill && x.value === prefill) {
-            prefill = x;
-            hasPrefill = true;
-          }
-        });
-
-        if (!valid) {
-          l.warn(opts, "When provided, the elements of the `options` property of the `additionalSignUpFields` must have the following format: {label: \"non-empty string\", value: \"non-empty string\"}");
-          options = undefined;
-        }
-
-        if (!hasPrefill) {
-          l.warn(opts, "The `options` of an element of `additionalSignUpFields` doesn't contain the provided `prefill` value");
-        }
-      }
-
       if (options != undefined && type != "select") {
         l.warn(opts, "The `options` property can only by provided for an element of `additionalSignUpFields` when its `type` equals to \"select\"");
         options = undefined;
+      }
+
+      if (options != undefined && !global.Array.isArray(options) && typeof options != "function") {
+        throw new Error("Elements of `additionalSignUpFields` with a \"select\" `type` must specify a `options` property that is an Array or a function.");
       }
 
       if (type === "select" && options === undefined) {
@@ -163,7 +151,8 @@ function processDatabaseOptions(opts) {
         : r;
     }, []);
 
-    additionalSignUpFields = Immutable.fromJS(additionalSignUpFields);
+    additionalSignUpFields = Immutable.fromJS(additionalSignUpFields)
+      .map(x => x.filter((y => y !== undefined)));
   }
 
 

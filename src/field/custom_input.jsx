@@ -18,7 +18,7 @@ const CustomInput = ({iconUrl, model, name, options, placeholder, type, validato
         <SelectInput
           {...props}
           label={getFieldLabel(model, name)}
-          onClick={() => startOptionSelection(l.id(model), name, iconUrl, options)}
+          onClick={() => startOptionSelection(l.id(model), name, iconUrl)}
         />
       );
     default:

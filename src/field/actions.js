@@ -6,11 +6,10 @@ export function changeField(id, name, value, validationFn, ...validationExtraArg
   swap(updateEntity, "lock", id, setField, name, value, validationFn, ...validationExtraArgs);
 }
 
-export function startOptionSelection(id, name, iconUrl, options) {
+export function startOptionSelection(id, name, iconUrl) {
   // TODO: should be transient
   swap(updateEntity, "lock", id, m => (
     m.setIn(["field", "selecting", "name"], name)
-      .setIn(["field", "selecting", "options"], options)
       .setIn(["field", "selecting", "iconUrl"], iconUrl)
   ));
 }

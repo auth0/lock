@@ -157,14 +157,13 @@ export function isSelecting(m) {
 }
 
 export function renderOptionSelection(m) {
+  const name = m.getIn(["field", "selecting", "name"]);
   return isSelecting(m)
     ? <OptionSelectionPane
          model={m}
-         name={m.getIn(["field", "selecting", "name"])}
+         name={name}
          iconUrl={m.getIn(["field", "selecting", "iconUrl"])}
-         items={m.getIn(["field", "selecting", "options"])}
+         items={m.getIn(["field", name, "options"])}
       />
     : null;
 }
-
-// TODO: this module should handle icons, validation, and so on.
