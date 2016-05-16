@@ -109,13 +109,18 @@ function processDatabaseOptions(opts) {
         type = undefined;
       }
 
+      if (validator != undefined && type === "select") {
+        l.warn(opts, "Elements of `additionalSignUpFields` with a \"select\" `type` cannot specify a `validator` function, all of its `options` are assumed to be valid.");
+        validator = undefined;
+      }
+
       if (validator != undefined && typeof validator != "function") {
-        l.warn(opts, "When provided, the `validator` property of an element of `additionalSignUpFields` must be a function");
+        l.warn(opts, "When provided, the `validator` property of an element of `additionalSignUpFields` must be a function.");
         validator = undefined;
       }
 
       if (options != undefined && !global.Array.isArray(options)) {
-        l.warn(opts, "When provided, the `options` property of an element of `additionalSignUpFields` must be an array");
+        l.warn(opts, "When provided, the `options` property of an element of `additionalSignUpFields` must be an array.");
         options = undefined;
       }
 
