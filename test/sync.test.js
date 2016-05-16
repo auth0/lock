@@ -4,7 +4,7 @@ import {
   isLoading,
   isSuccess,
   sync
-} from '../src/remote_data';
+} from '../src/sync';
 import { Map } from 'immutable';
 import { getEntity, read, removeEntity, setEntity, swap } from '../src/store/index';
 

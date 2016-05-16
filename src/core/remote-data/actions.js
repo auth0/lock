@@ -6,7 +6,7 @@ import { fetchSSOData } from '../sso/data';
 import webAPI from '../web_api';
 import * as l from '../index';
 import { isADEnabled } from '../../connection/enterprise';
-import { sync } from '../../remote_data';
+import { sync } from '../../sync';
 
 export function syncRemoteData(id) {
   syncClientSettings(id, _ => syncSSOData(id));

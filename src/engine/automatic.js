@@ -31,7 +31,7 @@ import { hasSkippedQuickAuth } from '../quick_auth';
 import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
-import { hasSyncStatus, isLoading, isSuccess } from '../remote_data';
+import { hasSyncStatus, isLoading, isSuccess } from '../sync';
 import * as c from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
