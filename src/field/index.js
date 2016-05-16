@@ -32,12 +32,12 @@ export function registerOptionField(m, field, options, initialValue) {
 
   // TODO: improve message? emit warning right here? warning for prefilled field ignored?
   if (!valid || !options.size) throw new Error(`The options provided for the "${field}" field are invalid, they must have the following format: {label: "non-empty string", value: "non-empty string"} and there has to be at least one option.`);
-  if (!initialOption) initialOption = Map({label: "", value: ""});
+  if (!initialOption) initialOption = Map({});
 
   return m.mergeIn(["field", field], initialOption, Map({
     options: options,
     showInvalid: false,
-    valid: true
+    valid: !initialOption.isEmpty()
   }));
 }
 
