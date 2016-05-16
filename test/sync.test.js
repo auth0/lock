@@ -1,11 +1,13 @@
 import expect from 'expect.js';
 import {
+  hasError,
   hasSyncStatus,
+  isDone,
   isLoading,
   isSuccess,
   sync
 } from '../src/sync';
-import { Map } from 'immutable';
+import Immutable, { Map } from 'immutable';
 import { getEntity, read, removeEntity, setEntity, swap } from '../src/store/index';
 
 const ID = 1111;
@@ -54,13 +56,20 @@ function t(p) {
       it("should not be loaded", function() {
         expect(isSuccess(this.m, p.key)).to.not.be.ok();
       });
+
+      it("should not consider the sync done", function() {
+        expect(isDone(this.m)).to.not.be.ok();
+      });
+
+      it("should not consider the sync failed", function() {
+        expect(hasError(this.m)).to.not.be.ok();
+      });
     });
 
     describe("when sync condition is not met", function() {
       beforeEach(function() {
         const syncFn = () => { this.syncFnInvoked = true};
         const updateFn = () => { this.updateInvoked = true};
-
         sync(ID, p.key, () => false, syncFn, updateFn);
         this.m = read(getEntity, "lock", ID);
       });
@@ -75,6 +84,14 @@ function t(p) {
 
       it("should not be loaded", function() {
         expect(isSuccess(this.m, p.key)).to.not.be.ok();
+      });
+
+      it("should not consider the sync failed", function() {
+        expect(hasError(this.m)).to.not.be.ok();
+      });
+
+      it("should consider the sync done", function() {
+        expect(isDone(this.m)).to.be.ok();
       });
 
       it("should not invoke the sync fn", function() {
@@ -103,6 +120,14 @@ function t(p) {
       it("should not be loaded", function() {
         expect(isSuccess(this.m, p.key)).to.not.be.ok();
       });
+
+      it("should not consider the sync done", function() {
+        expect(isDone(this.m)).to.not.be.ok();
+      });
+
+      it("should not consider the sync failed", function() {
+        expect(hasError(this.m)).to.not.be.ok();
+      });
     });
 
     describe("when sync condition is omitted", function() {
@@ -121,6 +146,14 @@ function t(p) {
 
       it("should not be loaded", function() {
         expect(isSuccess(this.m, p.key)).to.not.be.ok();
+      });
+
+      it("should not consider the sync done", function() {
+        expect(isDone(this.m)).to.not.be.ok();
+      });
+
+      it("should not consider the sync failed", function() {
+        expect(hasError(this.m)).to.not.be.ok();
       });
     });
 
@@ -157,6 +190,14 @@ function t(p) {
 
       it("should be loaded", function() {
         expect(isSuccess(this.m, p.key)).to.be.ok();
+      });
+
+      it("should consider the sync done", function() {
+        expect(isDone(this.m)).to.be.ok();
+      });
+
+      it("should not consider the sync failed", function() {
+        expect(hasError(this.m)).to.not.be.ok();
       });
 
       it("should have invoked update fn with the sync result fn and updated the model", function() {
@@ -198,6 +239,14 @@ function t(p) {
         expect(isSuccess(this.m, p.key)).to.not.be.ok();
       });
 
+      it("should consider the sync done", function() {
+        expect(isDone(this.m)).to.be.ok();
+      });
+
+      it("should consider the sync failed", function() {
+        expect(hasError(this.m)).to.be.ok();
+      });
+
       it("should not invoke the update fn", function() {
         expect(this.updateFnInvoked).to.not.be.ok();
       });
@@ -218,9 +267,8 @@ function t(p) {
 
     describe("when another sync attempt with a different key is made during a sync", function() {
       beforeEach(function() {
-        const syncFn1 = (m, cb) => setTimeout(cb, 0);
-        sync(ID, p.key1, undefined, syncFn1, m => m);
-        sync(ID, p.key2, undefined, () => {}, () => {});
+        sync(ID, p.key1, undefined, (m, cb) => { this.cb1 = cb}, m => m);
+        sync(ID, p.key2, undefined, (m, cb) => { this.cb2 = cb}, m => m);
         this.m = read(getEntity, "lock", ID);
       });
 
@@ -236,12 +284,18 @@ function t(p) {
         expect(hasSyncStatus(this.m, p.key3)).to.not.be.ok();
       });
 
-      describe("when the first sync is done", function() {
-        beforeEach(function(done) {
-          setTimeout(() => {
-            this.m = read(getEntity, "lock", ID);
-            done();
-          }, 0);
+      it("should not consider the sync done", function() {
+        expect(isDone(this.m)).to.not.be.ok();
+      });
+
+      it("should not consider the sync failed", function() {
+        expect(hasError(this.m)).to.not.be.ok();
+      });
+
+      describe("when the first sync succeeds", function() {
+        beforeEach(function() {
+          this.cb1();
+          this.m = read(getEntity, "lock", ID);
         });
 
         it("should not be loading for the first key", function() {
@@ -250,6 +304,145 @@ function t(p) {
 
         it("should be loading for the sencond key", function() {
           expect(isLoading(this.m, p.key2)).to.be.ok();
+        });
+
+        it("should not consider the sync done", function() {
+          expect(isDone(this.m)).to.not.be.ok();
+        });
+
+        it("should not consider the sync failed", function() {
+          expect(hasError(this.m)).to.not.be.ok();
+        });
+
+        describe("and the second sync succeeeds", function() {
+          beforeEach(function() {
+            this.cb2();
+            this.m = read(getEntity, "lock", ID);
+          });
+
+          it("should not be loading for the first key", function() {
+            expect(isLoading(this.m, p.key1)).to.not.be.ok();
+          });
+
+          it("should not loading for the sencond key", function() {
+            expect(isLoading(this.m, p.key2)).to.not.be.ok();
+          });
+
+          it("should consider the sync done", function() {
+            expect(isDone(this.m)).to.be.ok();
+          });
+
+          it("should not consider the sync failed", function() {
+            expect(hasError(this.m)).to.not.be.ok();
+          });
+        });
+
+        describe("and the second sync fails", function() {
+          beforeEach(function() {
+            this.cb2({});
+            this.m = read(getEntity, "lock", ID);
+          });
+
+          it("should not be loading for the first key", function() {
+            expect(isLoading(this.m, p.key1)).to.not.be.ok();
+          });
+
+          it("should not loading for the sencond key", function() {
+            expect(isLoading(this.m, p.key2)).to.not.be.ok();
+          });
+
+          it("should consider the sync done", function() {
+            expect(isDone(this.m)).to.be.ok();
+          });
+
+          it("should consider the sync failed", function() {
+            expect(hasError(this.m)).to.be.ok();
+          });
+
+          it("should not consider the sync failed if we exclude the second key", function() {
+            expect(hasError(this.m, [p.key2])).to.not.be.ok();
+          });
+        });
+      });
+
+      describe("when the first sync fails", function() {
+        beforeEach(function() {
+          this.cb1({});
+          this.m = read(getEntity, "lock", ID);
+        });
+
+        it("should not be loading for the first key", function() {
+          expect(isLoading(this.m, p.key1)).to.not.be.ok();
+        });
+
+        it("should be loading for the sencond key", function() {
+          expect(isLoading(this.m, p.key2)).to.be.ok();
+        });
+
+        it("should not consider the sync done", function() {
+          expect(isDone(this.m)).to.not.be.ok();
+        });
+
+        it("should consider the sync failed", function() {
+          expect(hasError(this.m)).to.be.ok();
+        });
+
+        it("should not consider the sync failed if we exclude the first key", function() {
+          expect(hasError(this.m, [p.key1])).to.not.be.ok();
+        });
+
+        describe("and the second sync succeeeds", function() {
+          beforeEach(function() {
+            this.cb2();
+            this.m = read(getEntity, "lock", ID);
+          });
+
+          it("should not be loading for the first key", function() {
+            expect(isLoading(this.m, p.key1)).to.not.be.ok();
+          });
+
+          it("should not loading for the sencond key", function() {
+            expect(isLoading(this.m, p.key2)).to.not.be.ok();
+          });
+
+          it("should consider the sync done", function() {
+            expect(isDone(this.m)).to.be.ok();
+          });
+
+          it("should consider the sync failed", function() {
+            expect(hasError(this.m)).to.be.ok();
+          });
+
+          it("should not consider the sync failed if we exclude the first key", function() {
+            expect(hasError(this.m, [p.key1])).to.not.be.ok();
+          });
+        });
+
+        describe("and the second sync fails", function() {
+          beforeEach(function() {
+            this.cb2({});
+            this.m = read(getEntity, "lock", ID);
+          });
+
+          it("should not be loading for the first key", function() {
+            expect(isLoading(this.m, p.key1)).to.not.be.ok();
+          });
+
+          it("should not loading for the sencond key", function() {
+            expect(isLoading(this.m, p.key2)).to.not.be.ok();
+          });
+
+          it("should consider the sync done", function() {
+            expect(isDone(this.m)).to.be.ok();
+          });
+
+          it("should consider the sync failed", function() {
+            expect(hasError(this.m)).to.be.ok();
+          });
+
+          it("should not consider the sync failed if we exclude both keys", function() {
+            expect(hasError(this.m, [p.key1, p.key2])).to.not.be.ok();
+          });
         });
       });
     });

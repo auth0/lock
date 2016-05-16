@@ -1,4 +1,5 @@
 // syncing is never transient
+import{ Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from './store/index';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["sync"]);
@@ -30,6 +31,30 @@ const syncStatusKey = key => (
 );
 const getStatus = (m, key) => get(m, syncStatusKey(key));
 const setStatus = (m, key, str) => set(m, syncStatusKey(key), str);
+
+function removeKeys(m, keys) {
+  return keys.reduce((r, k) => r.deleteIn(syncStatusKey(k)), m);
+}
+
+function findKeys(m) {
+  return m.reduce((r, v, k) => {
+    const current = Map.isMap(v) && v.has("syncStatus") ? [k] : [];
+    const nested = Map.isMap(v)
+          ? findKeys(v).map(x => [k].concat(x))
+          : [];
+    return r.concat(current, ...[nested]);
+  }, []);
+}
+
+export function isDone(m) {
+  const keys = findKeys(get(m, [], Map()));
+  return keys.length > 0 && keys.reduce((r, k) => r && !isLoading(m, k), true);
+}
+
+export function hasError(m, excludeKeys = []) {
+  const keys = findKeys(removeKeys(get(m, [], Map()), excludeKeys));
+  return keys.length > 0 && keys.reduce((r, k) => r || getStatus(m, k) === "error", false);
+}
 
 export function isLoading(m, key) {
   return getStatus(m, key) === "loading";
