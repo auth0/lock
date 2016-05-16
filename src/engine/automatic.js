@@ -104,7 +104,7 @@ class Automatic {
     const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
     const noConnection = !anyDBConnection && !anySocialConnection && !anyEnterpriseConnection;
 
-    if (hasError(m, ["sso"]) || noConnection) {
+    if (l.hasStopped(m) || hasError(m, ["sso"]) || noConnection) {
       return new ErrorScreen();
     }
 

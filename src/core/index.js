@@ -286,3 +286,11 @@ export function loginErrorMessage(m, error) {
   return ui.t(m, ["error", "login", error.error], {__textOnly: true})
     || ui.t(m, ["error", "login", "lock.fallback"], {__textOnly: true});
 }
+
+export function stop(m) {
+  return set(m, "stopped", true);
+}
+
+export function hasStopped(m) {
+  return get(m, "stopped");
+}
