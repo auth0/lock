@@ -11,7 +11,7 @@ import { getEntity, read, swap, updateEntity } from '../store/index';
 export function sync(id, key, conditionFn, syncFn, updateFn) {
   let m = read(getEntity, "lock", id);
 
-  if (hasSyncStatus(m)) return;
+  if (hasSyncStatus(m, key)) return;
 
   if (typeof conditionFn === "function" && !conditionFn(m)) {
     swap(updateEntity, "lock", id, reject, key);

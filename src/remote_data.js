@@ -1,27 +1,38 @@
+// syncing is never transient
+
+import { dataFns } from './utils/data_utils';
+const { get, set } = dataFns(["sync"]);
+
+const syncStatusKey = key => (
+  (global.Array.isArray(key) ? key : [key]).concat(["syncStatus"])
+);
+const getStatus = (m, key) => get(m, syncStatusKey(key));
+const setStatus = (m, key, str) => set(m, syncStatusKey(key), str);
+
 export function isLoading(m, key) {
-  return m.getIn([key, "syncStatus"]) === "loading";
+  return getStatus(m, key) === "loading";
 }
 
 export function isSuccess(m, key) {
-  return m.getIn([key, "syncStatus"]) === "ok";
+  return getStatus(m, key) === "ok";
 }
 
 export function hasSyncStatus(m, key) {
-  return m.getIn([key, "syncStatus"]) !== undefined;
+  return getStatus(m, key) !== undefined;
 }
 
 export function markLoading(m, key) {
-  return m.setIn([key, "syncStatus"], "loading");
+  return setStatus(m, key, "loading");
 }
 
 export function markSuccess(m, key) {
-  return m.setIn([key, "syncStatus"], "ok");
+  return setStatus(m, key, "ok");
 }
 
 export function markError(m, key) {
-  return m.setIn([key, "syncStatus"], "error");
+  return setStatus(m, key, "error");
 }
 
 export function reject(m, key) {
-  return m.setIn([key, "syncStatus"], "no");
+  return setStatus(m, key, "no");
 }
