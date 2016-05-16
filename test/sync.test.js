@@ -1,6 +1,10 @@
 import expect from 'expect.js';
-import { hasSyncStatus,  isLoading,  isSuccess } from '../src/remote_data';
-import { sync } from '../src/remote-data/actions';
+import {
+  hasSyncStatus,
+  isLoading,
+  isSuccess,
+  sync
+} from '../src/remote_data';
 import { Map } from 'immutable';
 import { getEntity, read, removeEntity, setEntity, swap } from '../src/store/index';
 

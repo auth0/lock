@@ -1,7 +1,29 @@
 // syncing is never transient
-
+import { getEntity, read, swap, updateEntity } from './store/index';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["sync"]);
+
+export function sync(id, key, conditionFn, syncFn, updateFn) {
+  let m = read(getEntity, "lock", id);
+
+  if (hasSyncStatus(m, key)) return;
+
+  if (typeof conditionFn === "function" && !conditionFn(m)) {
+    swap(updateEntity, "lock", id, reject, key);
+    return;
+  }
+
+  swap(updateEntity, "lock", id, markLoading, key);
+
+  m = read(getEntity, "lock", id);
+  syncFn(m, (error, result) => {
+    if (error) {
+      swap(updateEntity, "lock", id, markError, key);
+    } else {
+      swap(updateEntity, "lock", id, m => updateFn(markSuccess(m, key), result));
+    }
+  });
+}
 
 const syncStatusKey = key => (
   (global.Array.isArray(key) ? key : [key]).concat(["syncStatus"])
