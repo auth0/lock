@@ -12,7 +12,7 @@ class Auth0WebAPI {
       clientID: clientID,
       domain: domain,
       sendSDKClientInfo: true,
-      forceJSONP: opts.jsonp,
+      forceJSONP: false,
       callbackURL: opts.redirectUrl,
       callbackOnLocationHash: opts.responseType === "token"
     });

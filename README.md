@@ -140,7 +140,6 @@ Authentication options are grouped in the `auth` property of the `options` objec
 ```js
 var options = {
   auth: {
-   jsonp: false,
    params: {param1: "value1"},
    redirect: true,
    redirectUrl: "some url",
@@ -150,7 +149,6 @@ var options = {
 };
 ```
 
-- **jsonp {Boolean}**: Use JSONP requests when calling Auth0's API. This setup is useful when no CORS allowed. Defaults to `false`.
 - **params {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
 - **redirect {Boolean}**: When set to `true`, the default, _redirect mode_ will be used. Otherwise, _popup mode_ is chosen. See [below](#popup-mode) for more details.
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).

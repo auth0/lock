@@ -143,7 +143,6 @@ const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 
 export const auth = {
   params: lock => getAuthAttribute(lock, "params"),
-  jsonp: lock => getAuthAttribute(lock, "jsonp"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
   responseType: lock => getAuthAttribute(lock, "responseType"),
@@ -155,7 +154,6 @@ function extractAuthOptions(options) {
   // TODO: shouldn't all options be namespased in authentication?
   let {
     params,
-    jsonp,
     redirect,
     redirectUrl,
     responseType,
@@ -173,7 +171,6 @@ function extractAuthOptions(options) {
   }
 
   return Immutable.fromJS({
-    jsonp,
     params,
     redirect,
     redirectUrl,
