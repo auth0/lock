@@ -15,6 +15,32 @@ export function setField(m, field, value, validator = str => trim(str).length > 
   }));
 }
 
+// TODO: this should handle icons, and everything.
+// TODO: also there should be a similar fn for regular fields.
+export function registerOptionField(m, field, options, initialValue) {
+  let valid = true, hasInitial = !initialValue, initialOption;
+  options.forEach(x => {
+    valid = valid
+      && x.get("label") && typeof x.get("label") === "string"
+      && x.get("value") && typeof x.get("value") === "string";
+
+    if (!hasInitial && x.get("value") === initialValue) {
+      initialOption = x;
+      hasInitial = true;
+    }
+  });
+
+  // TODO: improve message? emit warning right here? warning for prefilled field ignored?
+  if (!valid || !options.size) throw new Error(`The options provided for the "${field}" field are invalid, they must have the following format: {label: "non-empty string", value: "non-empty string"} and there has to be at least one option.`);
+  if (!initialOption) initialOption = Map({label: "", value: ""});
+
+  return m.mergeIn(["field", field], initialOption, Map({
+    options: options,
+    showInvalid: false,
+    valid: true
+  }));
+}
+
 export function setOptionField(m, field, option) {
   return m.mergeIn(["field", field], Map({
     value: option.get("value"),
