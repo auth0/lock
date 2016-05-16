@@ -218,10 +218,11 @@ export function allowedConnections(m) {
 }
 
 export function connections(m, type = undefined, ...strategies) {
-  // TODO: is this considering "unknown" connections? it should not
-
   if (arguments.length === 1) {
-    return get(m, "connections", Map()).valueSeq().flatten(true);
+    return get(m, "connections", Map())
+      .filter((v, k) => k !== "unknown")
+      .valueSeq()
+      .flatten(true);
   }
 
   const xs = get(m, ["connections", type], List());
