@@ -30,8 +30,9 @@ import EnterpriseQuickAuthScreen from '../connection/enterprise/quick_auth_scree
 import { hasSkippedQuickAuth } from '../quick_auth';
 import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
+import ErrorScreen from '../core/error_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
-import { hasSyncStatus, isLoading, isSuccess } from '../remote_data';
+import { hasError, hasSyncStatus, isDone, isSuccess } from '../sync';
 import * as c from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
@@ -92,9 +93,19 @@ class Automatic {
   }
 
   render(m) {
-    // TODO: remove some details
-    if (!hasSyncStatus(m, "sso") || isLoading(m, "sso") || m.get("isLoadingPanePinned")) {
+    // TODO: remove the detail about the loading pane being pinned,
+    // sticky screens should be handled at the box module.
+    if (!isDone(m) || !hasSyncStatus(m, "sso") || m.get("isLoadingPanePinned")) {
       return new LoadingScreen();
+    }
+
+    const anyDBConnection = l.hasSomeConnections(m, "database");
+    const anySocialConnection = l.hasSomeConnections(m, "social");
+    const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
+    const noConnection = !anyDBConnection && !anySocialConnection && !anyEnterpriseConnection;
+
+    if (hasError(m, ["sso"]) || noConnection) {
+      return new ErrorScreen();
     }
 
     if (!hasSkippedQuickAuth(m) && l.ui.rememberLastLogin(m)) {
@@ -130,6 +141,9 @@ const dict = {
   enterpriseQuickAuth: {
     headerText: "Login with your corporate credentials.",
     loginTo: "Login at {domain}"
+  },
+  error: {
+    message: "Something went wrong during the widget initialization, please contant technical support."
   },
   forgotPassword: {
     emailInputPlaceholder: "yours@example.com",

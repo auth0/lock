@@ -1,5 +1,5 @@
 import webAPI from '../web_api';
-import Cache from '../../remote-data/cache';
+import Cache from '../../utils/cache';
 
 const cache = new Cache((...args) => webAPI.getSSOData(...args));
 
