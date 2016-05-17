@@ -277,7 +277,7 @@ export function resolveSingUpFieldCallbacks(id, x) {
 
 function resolveTextSignUpFieldCallback(id, x) {
   let resolvedPrefill, resolvedOptions, done;
-  if (typeof x.get("prefill") != "function") resolvedPrefill = x.get("prefill");
+  if (typeof x.get("prefill") != "function") resolvedPrefill = x.get("prefill") || "";
 
   if (resolvedPrefill != undefined) return; // nothing to resolve
 
