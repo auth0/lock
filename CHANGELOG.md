@@ -1,3 +1,20 @@
+## [10.0.0-beta.4] - 2016-05-17
+
+### Fixed
+
+- A proper error message is shown when no connection is available.
+
+### Changed
+
+- Removed JSONP support.
+
+### Added
+
+- Support for the new Bitbucket and Dropbox social connections.
+- Additional sign up fields can now be prefilled and have a `select`
+  type, which allows the user to choose the value from a predefined
+  list of options.
+
 ## [10.0.0-beta.3] - 2016-05-10
 
 ### Fixed
