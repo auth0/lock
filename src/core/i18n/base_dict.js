@@ -12,7 +12,8 @@ export default {
       "lock.network": "We could not reach the server. Please check your connection and try again.",
       "lock.popup_closed": "Popup window closed. Try again.",
       "lock.unauthorized": "Permissions were not granted. Try again.",
-      "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired." // TODO: verify error code
+      "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired.", // TODO: verify error code
+      "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it."
     },
     passwordless: {
       "bad.tenant": "We're sorry, we can't send you the {medium} because there's a configuration problem",
