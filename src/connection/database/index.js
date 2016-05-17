@@ -11,14 +11,14 @@ export function initDatabase(m, options) {
     m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
 
     additionalSignUpFields(m).forEach(x => {
-      switch(x.get("type")) {
-        case "select":
-          if (typeof x.get("prefill") != "function" && typeof x.get("options") != "function") {
-            m = registerOptionField(m, x.get("name"), x.get("options"), x.get("prefill"));
-          }
-          break;
-        default:
+      if (x.get("type") === "select") {
+        if (typeof x.get("prefill") != "function" && typeof x.get("options") != "function") {
+          m = registerOptionField(m, x.get("name"), x.get("options"), x.get("prefill"));
+        }
+      } else {
+        if (typeof x.get("prefill") != "function") {
           m = setField(m, x.get("name"), x.get("prefill", ""), x.get("validator"));
+        }
       }
     });
   } catch (e) {

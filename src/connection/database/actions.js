@@ -268,14 +268,45 @@ export function toggleTermsAcceptance(id) {
 }
 
 export function resolveSingUpFieldCallbacks(id, x) {
-  if (x.get("type") != "select") return;
+  if (x.get("type") === "select") {
+    resolveSelectSingUpFieldCallbacks(id, x);
+  } else {
+    resolveTextSignUpFieldCallback(id, x);
+  }
+}
 
+function resolveTextSignUpFieldCallback(id, x) {
+  let resolvedPrefill, resolvedOptions, done;
+  if (typeof x.get("prefill") != "function") resolvedPrefill = x.get("prefill");
+
+  if (resolvedPrefill != undefined) return; // nothing to resolve
+
+  sync(
+    id,
+    ["additionalSignUpFields", x.get("name")],
+    undefined,
+    (_, cb) => x.get("prefill")((err, value) => cb(null, err ? "" : value)),
+    (m, prefill) => {
+      if (done) return m;
+      done = true;
+      try {
+        return c.setField(m, x.get("name"), prefill || "", x.get("validator"));
+      } catch (e) {
+        l.error(m, e.message);
+        return l.stop(m);
+      }
+    }
+  );
+
+}
+
+function resolveSelectSingUpFieldCallbacks(id, x) {
   let resolvedPrefill, resolvedOptions, done;
 
   if (typeof x.get("prefill") != "function") resolvedPrefill = x.get("prefill") || "";
   if (typeof x.get("options") != "function") resolvedOptions = x.get("options");
 
-  if (resolvedPrefill && resolvedOptions) return; // nothing to resolve
+  if (resolvedPrefill != undefined && resolvedOptions != undefined) return; // nothing to resolve
 
   sync(
     id,

@@ -18,6 +18,8 @@ export function sync(id, key, conditionFn, syncFn, updateFn) {
 
   m = read(getEntity, "lock", id);
   syncFn(m, (error, result) => {
+    // TODO: we should ensure that this is called just once, and
+    // disregard subsequent calls.
     if (error) {
       swap(updateEntity, "lock", id, markError, key);
     } else {
