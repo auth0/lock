@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import Immutable, { Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import webApi from '../../core/web_api';
 import { closeLock } from '../../core/actions';
@@ -13,6 +13,7 @@ import  {
   toggleTermsAcceptance as switchTermsAcceptance,
   additionalSignUpFields
 } from './index';
+import { sync } from '../../sync';
 // TODO: we should not depend on this from here
 import { usernameStyle } from '../../engine/automatic';
 
@@ -264,4 +265,86 @@ export function cancelResetPassword(id) {
 
 export function toggleTermsAcceptance(id) {
   swap(updateEntity, "lock", id, switchTermsAcceptance);
+}
+
+export function resolveSingUpFieldCallbacks(id, x) {
+  if (x.get("type") === "select") {
+    resolveSelectSingUpFieldCallbacks(id, x);
+  } else {
+    resolveTextSignUpFieldCallback(id, x);
+  }
+}
+
+function resolveTextSignUpFieldCallback(id, x) {
+  let resolvedPrefill, resolvedOptions, done;
+  if (typeof x.get("prefill") != "function") resolvedPrefill = x.get("prefill");
+
+  if (resolvedPrefill != undefined) return; // nothing to resolve
+
+  sync(
+    id,
+    ["additionalSignUpFields", x.get("name")],
+    undefined,
+    (_, cb) => x.get("prefill")((err, value) => cb(null, err ? "" : value)),
+    (m, prefill) => {
+      if (done) return m;
+      done = true;
+      try {
+        return c.setField(m, x.get("name"), prefill || "", x.get("validator"));
+      } catch (e) {
+        l.error(m, e.message);
+        return l.stop(m);
+      }
+    }
+  );
+
+}
+
+function resolveSelectSingUpFieldCallbacks(id, x) {
+  let resolvedPrefill, resolvedOptions, done;
+
+  if (typeof x.get("prefill") != "function") resolvedPrefill = x.get("prefill") || "";
+  if (typeof x.get("options") != "function") resolvedOptions = x.get("options");
+
+  if (resolvedPrefill != undefined && resolvedOptions != undefined) return; // nothing to resolve
+
+  sync(
+    id,
+    ["additionalSignUpFields", x.get("name")],
+    undefined,
+    (_, cb) => {
+      if (resolvedPrefill === undefined) {
+        x.get("prefill")((err, value) => {
+          if (done) return;
+          resolvedPrefill = value;
+          if (resolvedOptions != undefined) {
+            cb(null, {prefill: resolvedPrefill, options: resolvedOptions});
+          }
+        });
+      }
+      if (resolvedOptions === undefined) {
+        x.get("options")((err, value) => {
+          if (done) return;
+          if (err) cb({});
+          resolvedOptions = value;
+          if (resolvedPrefill != undefined) {
+            cb(null, {prefill: resolvedPrefill, options: resolvedOptions});
+          }
+        });
+      }
+    },
+    (m, {options, prefill}) => {
+      done = true;
+      try {
+        if (!Array.isArray(options)) {
+          throw new Error(`The \`options\` provided for the "${x.get("name")}" field must be an Array.`);
+        }
+
+        return c.registerOptionField(m, x.get("name"), Immutable.fromJS(options), prefill);
+      } catch (e) {
+        l.error(m, e.message);
+        return l.stop(m);
+      }
+    }
+  );
 }

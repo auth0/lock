@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import trim from 'trim';
 import * as cc from './country_codes';
+import OptionSelectionPane from './option_selection_pane';
 
 export function setField(m, field, value, validator = str => trim(str).length > 0, ...args) {
   const prevValue = m.getIn(["field", field, "value"]);
@@ -11,6 +12,41 @@ export function setField(m, field, value, validator = str => trim(str).length > 
     value: value,
     valid: valid,
     showInvalid: prevShowInvalid && prevValue === value
+  }));
+}
+
+// TODO: this should handle icons, and everything.
+// TODO: also there should be a similar fn for regular fields.
+export function registerOptionField(m, field, options, initialValue) {
+  let valid = true, hasInitial = !initialValue, initialOption;
+  options.forEach(x => {
+    valid = valid
+      && x.get("label") && typeof x.get("label") === "string"
+      && x.get("value") && typeof x.get("value") === "string";
+
+    if (!hasInitial && x.get("value") === initialValue) {
+      initialOption = x;
+      hasInitial = true;
+    }
+  });
+
+  // TODO: improve message? emit warning right here? warning for prefilled field ignored?
+  if (!valid || !options.size) throw new Error(`The options provided for the "${field}" field are invalid, they must have the following format: {label: "non-empty string", value: "non-empty string"} and there has to be at least one option.`);
+  if (!initialOption) initialOption = Map({});
+
+  return m.mergeIn(["field", field], initialOption, Map({
+    options: options,
+    showInvalid: false,
+    valid: !initialOption.isEmpty()
+  }));
+}
+
+export function setOptionField(m, field, option) {
+  return m.mergeIn(["field", field], Map({
+    value: option.get("value"),
+    label: option.get("label"),
+    valid: true,
+    showInvalid: false
   }));
 }
 
@@ -48,6 +84,10 @@ export function clearFields(m, fields) {
 
 export function getFieldValue(m, field, notFound="") {
   return m.getIn(["field", field, "value"], notFound);
+}
+
+export function getFieldLabel(m, field, notFound="") {
+  return m.getIn(["field", field, "label"], notFound);
 }
 
 // phone number
@@ -108,4 +148,22 @@ export function password(m) {
 
 export function username(m) {
   return getFieldValue(m, "username");
+}
+
+// select field options
+
+export function isSelecting(m) {
+  return !!m.getIn(["field", "selecting"]);
+}
+
+export function renderOptionSelection(m) {
+  const name = m.getIn(["field", "selecting", "name"]);
+  return isSelecting(m)
+    ? <OptionSelectionPane
+         model={m}
+         name={name}
+         iconUrl={m.getIn(["field", "selecting", "iconUrl"])}
+         items={m.getIn(["field", name, "options"])}
+      />
+    : null;
 }

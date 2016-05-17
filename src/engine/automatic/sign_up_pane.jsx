@@ -7,9 +7,7 @@ import {
   additionalSignUpFields,
   passwordStrengthPolicy,
 } from '../../connection/database/index';
-import { changeField } from '../../field/actions';
-import TextInput from '../../ui/input/text_input';
-import { isFieldVisiblyInvalid } from '../../field/index';
+import CustomInput from '../../field/custom_input';
 
 export default class SignUpPane extends React.Component {
 
@@ -32,13 +30,15 @@ export default class SignUpPane extends React.Component {
       : null;
 
     const fields = !onlyEmail && additionalSignUpFields(model).map(x => (
-      <TextInput
+      <CustomInput
         iconUrl={x.get("icon")}
-        isValid={!isFieldVisiblyInvalid(model, x.get("name"))}
         key={x.get("name")}
+        model={model}
         name={x.get("name")}
-        onChange={e => changeField(model.get("id"), x.get("name"), e.target.value, x.get("validator"))}
+        options={x.get("options")}
         placeholder={x.get("placeholder")}
+        type={x.get("type")}
+        validatior={x.get("validator")}
       />
     ));
 

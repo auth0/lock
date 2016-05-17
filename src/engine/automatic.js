@@ -4,12 +4,14 @@ import SignUp from './automatic/sign_up_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
 import {
+  additionalSignUpFields,
   authWithUsername,
   defaultDatabaseConnection,
   defaultDatabaseConnectionName,
   getScreen,
   initDatabase
 } from '../connection/database/index';
+import { resolveSingUpFieldCallbacks } from '../connection/database/actions';
 import {
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
@@ -70,6 +72,7 @@ class Automatic {
     if (typeof username === "string") model = setUsername(model, username);
 
     swap(updateEntity, "lock", l.id(model), _ => model);
+    additionalSignUpFields(model).forEach(x => resolveSingUpFieldCallbacks(l.id(model), x));
   }
 
   didReceiveClientSettings(m) {
@@ -104,7 +107,7 @@ class Automatic {
     const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
     const noConnection = !anyDBConnection && !anySocialConnection && !anyEnterpriseConnection;
 
-    if (hasError(m, ["sso"]) || noConnection) {
+    if (l.hasStopped(m) || hasError(m, ["sso"]) || noConnection) {
       return new ErrorScreen();
     }
 

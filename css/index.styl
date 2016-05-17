@@ -368,6 +368,9 @@ breakpoint(point, value = 0)
         background-color #F9F9F9
         text-align left
 
+        &.auth0-lock-input-with-placeholder
+          color rgba(0,0,0,.54);
+
   .auth0-lock-error .auth0-lock-input-wrap
     border-color red
     transition .3s ease-in-out
@@ -1226,3 +1229,6 @@ breakpoint(point, value = 0)
 .auth0-lock .auth0-lock-sign-up-terms-agreement
   label input
     margin-right 5px
+
+input[type="button"]
+   cursor pointer
