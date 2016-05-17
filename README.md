@@ -284,17 +284,70 @@ As you can see from the examples, some keys are _namespaced_ inside another obje
 
 #### Additional sign up fields
 
-Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, an `icon` url and a `validator` function can also be provided. Also, the initial value can be provided with the `prefill` option. The fields are rendered below the regular sign up input fields in the order they are provided.
+Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, and an `icon` url can also be provided. Also, the initial value can be provided with the `prefill` option, which can be a **string** with the value or a **function** that obtains it. Other options depend on the type of the field, which is defined via the `type` option and defaults to `"text"`.
+
+The new fields are rendered below the regular sign up input fields in the order they are provided.
+
+##### Text field
+
+A `validator` function can also be provided.
+
 
 ```js
 var options = {
   additionalSignUpFields: [{
     name: "address",
-    icon: "https://example.com/assests/address_icon.png",
     placeholder: "enter your address",
+    // The following properties are optional
+    icon: "https://example.com/assests/address_icon.png",
     prefill: "street 123",
     validator: function(address) {
       return address.length > 10;
+    }
+  }]
+}
+```
+
+##### Select field
+
+To specify a select field `type: "select"` needs to be provided along with the `options` property.
+
+```js
+var options = {
+  additionalSignUpFields: [{
+    type: "select",
+    name: "location",
+    placeholder: "choose your location",
+    options: [
+      {value: "us", label: "United States"},
+      {value: "fr", label: "France"},
+      {value: "ar", label: "Argentina"}
+    ],
+    // The following properties are optional
+    icon: "https://example.com/assests/location_icon.png",
+    prefill: "us"
+  }]
+}
+```
+
+The `options` and the `prefill` value can be provided through a function.
+
+```js
+var options = {
+  additionalSignUpFields: [{
+    type: "select",
+    name: "location",
+    placeholder: "choose your location",
+    options: function(cb) {
+      // obtain options, in case of error you call cb with the error in the
+      // first arg instead of null
+      cb(null, options);
+    },
+    icon: "https://example.com/assests/location_icon.png",
+    prefill: function(cb) {
+      // obtain prefill, in case of error you call cb with the error in the
+      // first arg instead of null
+      cb(null, prefill);
     }
   }]
 }
