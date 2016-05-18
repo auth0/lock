@@ -41,9 +41,34 @@ export default {
       "username_exists": "The username already exists."
     }
   },
-  success: {
+  success: { // success messages show above the form
     resetPassword: "We've just sent you an email to reset your password."
   },
+  emailInputPlaceholder: "yours@example.com",
+  forgotPasswordLabel: "Don't remember your password?",
+  loginAt: "Login at {domain}",
+  loginTabLabel: "Login",
+  loginWith: "Login with {idp}",
+  passwordInputPlaceholder: "your password",
+  passwordStrength: {
+    containsAtLeast: "Contain at least %d of the following %d types of characters:",
+    identicalChars: "No more than %d identical characters in a row (e.g., \"%s\" not allowed)",
+    nonEmpty: "Non-empty password required",
+    numbers: "Numbers (i.e. 0-9)",
+    lengthAtLeast: "At least %d characters in length",
+    lowerCase: "Lower case letters (a-z)",
+    shouldContain: "Should contain:",
+    specialCharacters: "Special characters (e.g. !@#$%^&*)",
+    upperCase: "Upper case letters (A-Z)"
+  },
+  separatorText: "or",
+  signUpTabLabel: "Sign Up",
+  signUpWith: "Sign up with {idp}",
+  skipLastLoginLabel: "Not your account?",
+  ssoEnabled: "Single Sign-On enabled",
+  smallSocialButtonsHeader: "Login with",
+  terms: "",
+  usernameInputPlaceholder: "your username",
   title: "Auth0",
   welcome: "Welcome {name}!"
 };

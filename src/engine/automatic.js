@@ -143,64 +143,28 @@ class Automatic {
 const dict = {
   enterpriseQuickAuth: {
     headerText: "Login with your corporate credentials.",
-    loginAt: "Login at {domain}"
   },
   error: {
     message: "Something went wrong during the widget initialization, please contant technical support."
   },
   forgotPassword: {
-    emailInputPlaceholder: "yours@example.com",
     headerText: "Please enter your email address. We will send you an email to reset your password."
   },
   hrd: {
     headerText: "Please enter your coorporate credentials at {domain}.",
-    passwordInputPlaceholder: "your password",
-    usernameInputPlaceholder: "your username"
   },
   kerberos: {
     headerText: "You are connected from your corporate network&hellip;",
     buttonLabel: "Windows Authentication",
-    skipLastLoginLabel: "Not your account?"
   },
   lastLogin: {
     headerText: "Last time you logged in with",
-    skipLastLoginLabel: "Not your account?"
   },
   login: {
-    emailInputPlaceholder: "yours@example.com",
-    forgotPasswordLabel: "Don't remember your password?",
     headerText: "",
-    loginTabLabel: "Login",
-    loginWith: "Login with {idp}",
-    passwordInputPlaceholder: "your password",
-    separatorText: "or",
-    signUpTabLabel: "Sign Up",
-    smallSocialButtonsHeader: "Login with",
-    ssoEnabled: "Single Sign-on enabled",
-    usernameInputPlaceholder: "your username"
   },
   signUp: {
-    emailInputPlaceholder: "yours@example.com",
     headerText: "",
-    loginTabLabel: "Login",
-    passwordInputPlaceholder: "your password",
-    passwordStrength: {
-      containsAtLeast: "Contain at least %d of the following %d types of characters:",
-      identicalChars: "No more than %d identical characters in a row (e.g., \"%s\" not allowed)",
-      nonEmpty: "Non-empty password required",
-      numbers: "Numbers (i.e. 0-9)",
-      lengthAtLeast: "At least %d characters in length",
-      lowerCase: "Lower case letters (a-z)",
-      shouldContain: "Should contain:",
-      specialCharacters: "Special characters (e.g. !@#$%^&*)",
-      upperCase: "Upper case letters (A-Z)"
-    },
-    separatorText: "or",
-    signUpTabLabel: "Sign Up",
-    signUpWith: "Sign up with {idp}",
-    ssoEnabled: "Single Sign-on enabled",
-    terms: "",
-    usernameInputPlaceholder: "your username",
   },
   signedIn: {
     success: "Thanks for logging in."
