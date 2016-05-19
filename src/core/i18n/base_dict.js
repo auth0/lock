@@ -70,7 +70,6 @@ export default {
     specialCharacters: "Special characters (e.g. !@#$%^&*)",
     upperCase: "Upper case letters (A-Z)"
   },
-  separatorText: "or",
   signUpTabLabel: "Sign Up",
   signUpWith: "Sign up with {idp}",
   signedUpMessage: "Thanks for signing up.",
