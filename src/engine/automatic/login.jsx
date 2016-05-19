@@ -69,13 +69,17 @@ const Component = ({model, t}) => {
   const showForgotPasswordLink = showPassword
     && l.hasSomeConnections(model, "database");
 
+  const loginInstructionsKey = social
+    ? "databaseEnterpriseAlternativeLoginInstructions"
+    : "databaseEnterpriseLoginInstructions";
+
   const login = (sso
     || l.hasSomeConnections(model, "database")
     || l.hasSomeConnections(model, "enterprise"))
     && <LoginPane
          emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
          forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
-         instructions={t("databaseEnterpriseLoginInstructions")}
+         instructions={t(loginInstructionsKey)}
          lock={model}
          passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
          showForgotPasswordLink={showForgotPasswordLink}
@@ -89,8 +93,7 @@ const Component = ({model, t}) => {
          {t("ssoEnabled", {__textOnly: true})}
        </SingleSignOnNotice>;
 
-  const separator = social && login
-    && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
+  const separator = social && login && <PaneSeparator/>;
 
   return <div>{ssoNotice}{tabs}{header}{social}{separator}{login}</div>;
 
