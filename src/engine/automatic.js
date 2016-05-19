@@ -160,10 +160,10 @@ const dict = {
 
   },
   login: {
-    headerText: "",
+
   },
   signUp: {
-    headerText: "",
+
   },
   signedIn: {
 

@@ -37,9 +37,6 @@ function shouldRenderTabs(m) {
 }
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
-  const header = headerText && <p>{headerText}</p>;
-
   const sso = isSSOEnabled(model);
   const onlySocial = l.hasOnlyConnections(model, "social");
 
@@ -95,7 +92,7 @@ const Component = ({model, t}) => {
 
   const separator = social && login && <PaneSeparator/>;
 
-  return <div>{ssoNotice}{tabs}{header}{social}{separator}{login}</div>;
+  return <div>{ssoNotice}{tabs}{social}{separator}{login}</div>;
 
 };
 

@@ -23,9 +23,6 @@ import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notic
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
-  const header = headerText && <p>{headerText}</p>;
-
   const sso = isSSOEnabled(model);
   const ssoNotice = sso
     && <SingleSignOnNotice>
@@ -65,7 +62,7 @@ const Component = ({model, t}) => {
 
   const separator = social && <PaneSeparator/>;
 
-  return <div>{ssoNotice}{tabs}{header}{social}{separator}{db}</div>;
+  return <div>{ssoNotice}{tabs}{social}{separator}{db}</div>;
 };
 
 export default class SignUp extends Screen {
