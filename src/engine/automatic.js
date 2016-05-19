@@ -167,7 +167,7 @@ const dict = {
     headerText: "",
   },
   signedIn: {
-    success: "Thanks for logging in."
+
   },
   signedUp: {
 

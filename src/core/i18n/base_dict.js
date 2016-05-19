@@ -46,6 +46,7 @@ export default {
   },
   emailInputPlaceholder: "yours@example.com",
   forgotPasswordLabel: "Don't remember your password?",
+  loggedInMessage: "Thanks for logging in.",
   loginAt: "Login at {domain}",
   loginTabLabel: "Login",
   loginWith: "Login with {idp}",
