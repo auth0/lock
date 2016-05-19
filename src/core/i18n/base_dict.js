@@ -73,5 +73,6 @@ export default {
   unrecoverableError: "Something went wrong.<br />Please contant technical support.",
   usernameInputPlaceholder: "your username",
   title: "Auth0",
-  welcome: "Welcome {name}!"
+  welcome: "Welcome {name}!",
+  windowsAuthLabel: "Windows Authentication"
 };

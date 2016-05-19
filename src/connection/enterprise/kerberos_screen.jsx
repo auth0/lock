@@ -14,7 +14,7 @@ const Component = ({model, t}) => {
     <QuickAuthPane
       alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
-      buttonLabel={t("buttonLabel", {__textOnly: true})}
+      buttonLabel={t("windowsAuthLabel", {__textOnly: true})}
       buttonClickHandler={e => logIn(l.id(model), corpNetworkConnection(model))}
       header={header}
       strategy="windows"

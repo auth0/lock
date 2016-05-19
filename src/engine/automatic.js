@@ -155,7 +155,6 @@ const dict = {
   },
   kerberos: {
     headerText: "You are connected from your corporate network&hellip;",
-    buttonLabel: "Windows Authentication",
   },
   lastLogin: {
     headerText: "Last time you logged in with",
