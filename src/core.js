@@ -2,7 +2,6 @@ import { EventEmitter } from 'events';
 import { getEntity, read, subscribe } from './store/index';
 import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
-import { registerDict } from './core/i18n/index';
 import {
   closeLock,
   openLock,
@@ -34,7 +33,6 @@ export default class Base extends EventEmitter {
 
     super();
 
-    registerDict(engine.mode, {});
     this.id = idu.incremental();
     this.engine = engine;
     const hookRunner = ::this.runHook;

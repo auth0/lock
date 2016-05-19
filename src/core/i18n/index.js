@@ -18,16 +18,7 @@ class Dict {
   }
 }
 
-let dicts = Map();
-
-export function registerDict(mode, dict) {
-  dicts = dicts.set(
-    mode,
-    Immutable.fromJS(baseDict).mergeDeep(Immutable.fromJS(dict))
-  );
-}
-
 export function buildDict(mode, overrides) {
-  const dict = dicts.get(mode, Map()).mergeDeep(Immutable.fromJS(overrides));
+  const dict = Immutable.fromJS(baseDict).mergeDeep(Immutable.fromJS(overrides));
   return new Dict(dict);
 }
