@@ -64,6 +64,7 @@ export default {
   separatorText: "or",
   signUpTabLabel: "Sign Up",
   signUpWith: "Sign up with {idp}",
+  signedUpMessage: "Thanks for signing up.",
   skipLastLoginLabel: "Not your account?",
   ssoEnabled: "Single Sign-On enabled",
   smallSocialButtonsHeader: "Login with",

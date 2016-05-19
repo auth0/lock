@@ -170,7 +170,7 @@ const dict = {
     success: "Thanks for logging in."
   },
   signedUp: {
-    success: "Thanks for signing up."
+
   }
 };
 
