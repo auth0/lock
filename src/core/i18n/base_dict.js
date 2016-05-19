@@ -72,7 +72,7 @@ export default {
   },
   signUpLabel: "Sign Up",
   signUpterms: "",
-  signUpWith: "Sign up with {idp}",
+  signUpWithLabel: "Sign up with {idp}",
   signedUpMessage: "Thanks for signing up.",
   skipLastLoginLabel: "Not your account?",
   socialLoginInstructions: "",
