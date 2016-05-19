@@ -44,6 +44,7 @@ export default {
   success: { // success messages show above the form
     resetPassword: "We've just sent you an email to reset your password."
   },
+  databaseEnterpriseLoginInstructions: "",
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
   enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at {domain}.",

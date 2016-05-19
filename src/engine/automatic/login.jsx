@@ -75,6 +75,7 @@ const Component = ({model, t}) => {
     && <LoginPane
          emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
          forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
+         instructions={t("databaseEnterpriseLoginInstructions")}
          lock={model}
          passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
          showForgotPasswordLink={showForgotPasswordLink}
