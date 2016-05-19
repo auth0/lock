@@ -45,7 +45,7 @@ export default {
     resetPassword: "We've just sent you an email to reset your password."
   },
   databaseEnterpriseLoginInstructions: "",
-  databaseSignupInstructions: "",
+  databaseSignUpInstructions: "",
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
   enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at {domain}.",
