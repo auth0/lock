@@ -43,10 +43,6 @@ export function domain(m) {
   return get(m, "domain");
 }
 
-export function modeName(m) {
-  return get(m, "mode");
-}
-
 export function setSubmitting(m, value, error = "") {
   m = tset(m, "submitting", value);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
