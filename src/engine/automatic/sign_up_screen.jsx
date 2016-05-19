@@ -51,6 +51,7 @@ const Component = ({model, t}) => {
   const db =
     <SignUpPane
       emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
+      instructions={t("databaseSignupInstructions")}
       model={model}
       onlyEmail={sso}
       passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}

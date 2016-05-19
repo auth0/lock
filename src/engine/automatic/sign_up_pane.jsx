@@ -14,12 +14,16 @@ export default class SignUpPane extends React.Component {
   render() {
     const {
       emailInputPlaceholder,
+      instructions,
       model,
       onlyEmail,
       passwordInputPlaceholder,
       passwordStrengthMessages,
       usernameInputPlaceholder
     } = this.props;
+
+    const headerText = instructions || null;
+    const header = headerText && <p>{headerText}</p>;
 
     const usernamePane = !onlyEmail && authWithUsername(model)
       ? <UsernamePane
@@ -52,10 +56,8 @@ export default class SignUpPane extends React.Component {
 
     return (
       <div>
-        <EmailPane
-          lock={model}
-          placeholder={emailInputPlaceholder}
-        />
+        {header}
+        <EmailPane lock={model} placeholder={emailInputPlaceholder} />
         {usernamePane}
         {passwordPane}
         {fields}
