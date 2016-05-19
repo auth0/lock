@@ -41,7 +41,12 @@ const Component = ({model, t}) => {
        />;
 
   const social = l.hasSomeConnections(model, "social")
-    && <SocialButtonsPane lock={model} t={t} signUp={true} />;
+    && <SocialButtonsPane
+         instructions={t("socialSignUpInstructions", {__textOnly: true})}
+         lock={model}
+         t={t}
+         signUp={true}
+       />;
 
   const db =
     <SignUpPane

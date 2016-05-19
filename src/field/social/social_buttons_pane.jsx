@@ -11,14 +11,12 @@ import {
 export default class SocialButtonsPane extends React.Component {
 
   render() {
-    const { lock, showLoading, signUp, smallButtonsHeader, t } = this.props;
+    // TODO: i don't like that it receives the instructions tanslated
+    // but it also takes the t fn
+    const { instructions, lock, showLoading, signUp, t } = this.props;
 
-    // TODO: translate here small buttons header
-    const header = !useBigButtons(lock)
-      && smallButtonsHeader
-      && <p className="auth-lock-small-social-buttons-header">
-           {smallButtonsHeader}
-         </p>;
+    const headerText = instructions || null;
+    const header = headerText && <p>{headerText}</p>;
 
     const buttons = socialConnections(lock).map(x => (
       <AuthButton
@@ -47,10 +45,10 @@ export default class SocialButtonsPane extends React.Component {
 }
 
 SocialButtonsPane.propTypes = {
+  instructions: React.PropTypes.any,
   lock: React.PropTypes.object.isRequired,
   showLoading: React.PropTypes.bool.isRequired,
   signUp: React.PropTypes.bool.isRequired,
-  smallButtonsHeader: React.PropTypes.string,
   t: React.PropTypes.func.isRequired
 };
 

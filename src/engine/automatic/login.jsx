@@ -55,10 +55,10 @@ const Component = ({model, t}) => {
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
+         instructions={t("socialLoginInstructions", {__textOnly: true})}
          lock={model}
          showLoading={onlySocial}
          signUp={false}
-         smallButtonsHeader={shouldRenderTabs(model) ? '' : t("smallSocialButtonsHeader", {__textOnly: true})}
          t={t}
        />;
 
