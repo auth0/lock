@@ -15,7 +15,7 @@ function icon(strategy) {
 }
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
+  const headerText = t("enterpriseLoginIntructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (

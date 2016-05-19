@@ -142,7 +142,7 @@ class Automatic {
 
 const dict = {
   enterpriseQuickAuth: {
-    headerText: "Login with your corporate credentials.",
+
   },
   error: {
 
@@ -157,7 +157,7 @@ const dict = {
 
   },
   lastLogin: {
-
+    headerText: "Last time you logged in with",
   },
   login: {
     headerText: "",

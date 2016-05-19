@@ -16,7 +16,7 @@ function icon(strategy) {
 }
 
 const Component = ({model, t}) => {
-  const headerText = t("lastLoginInstructions") || null;
+  const headerText = t("headerText") || null;
   const header = headerText && <p>{headerText}</p>;
 
   const buttonClickHandler = () => {
