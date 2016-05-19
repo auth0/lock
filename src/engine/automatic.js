@@ -154,7 +154,7 @@ const dict = {
     headerText: "Please enter your coorporate credentials at {domain}.",
   },
   kerberos: {
-    headerText: "You are connected from your corporate network&hellip;",
+
   },
   lastLogin: {
     headerText: "Last time you logged in with",

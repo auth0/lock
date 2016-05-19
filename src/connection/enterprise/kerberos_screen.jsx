@@ -7,7 +7,7 @@ import * as l from '../../core/index';
 import { corpNetworkConnection } from '../enterprise';
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
+  const headerText = t("windowsAuthInstructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (

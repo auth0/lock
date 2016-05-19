@@ -74,5 +74,6 @@ export default {
   usernameInputPlaceholder: "your username",
   title: "Auth0",
   welcome: "Welcome {name}!",
+  windowsAuthInstructions: "You are connected from your corporate network&hellip;",
   windowsAuthLabel: "Windows Authentication"
 };
