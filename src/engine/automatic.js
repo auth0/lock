@@ -148,7 +148,7 @@ const dict = {
 
   },
   forgotPassword: {
-    headerText: "Please enter your email address. We will send you an email to reset your password."
+
   },
   hrd: {
     headerText: "Please enter your coorporate credentials at {domain}.",

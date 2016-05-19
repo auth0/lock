@@ -5,7 +5,7 @@ import { authWithUsername } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
+  const headerText = t("forgotPasswordInstructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (
