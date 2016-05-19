@@ -1,9 +1,9 @@
 import Immutable, { Map } from 'immutable';
 import baseDict from './base_dict';
 
-class Dict {
-  constructor(dict) {
-    this.dict = dict;
+export default class Dict {
+  constructor(overrides) {
+    this.dict = Immutable.fromJS(baseDict).mergeDeep(Immutable.fromJS(overrides));
   }
 
   get(keyPath, params = {}) {
@@ -16,9 +16,4 @@ class Dict {
   raw(keyPath) {
     return this.dict.getIn(keyPath, Map()).toJS();
   }
-}
-
-export function buildDict(mode, overrides) {
-  const dict = Immutable.fromJS(baseDict).mergeDeep(Immutable.fromJS(overrides));
-  return new Dict(dict);
 }

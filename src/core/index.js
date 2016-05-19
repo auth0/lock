@@ -1,6 +1,6 @@
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
-import * as d from './i18n/index';
+import Dict from './i18n/index';
 import t from './i18n/t';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
@@ -110,7 +110,7 @@ function extractUIOptions(id, modeName, options) {
     avatarProvider: avatarProvider,
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
-    dict: d.buildDict(modeName, typeof options.languageDictionary === "object" ? options.languageDictionary : {}),
+    dict: new Dict(typeof options.languageDictionary === "object" ? options.languageDictionary : {}),
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     mobile: undefined === options.mobile ? false : !!options.mobile,
     popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
