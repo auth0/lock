@@ -56,7 +56,7 @@ export default {
   lastLoginInstructions: "Last time you logged in with",
   loggedInMessage: "Thanks for logging in.",
   loginAtLabel: "Login at {domain}",
-  loginTabLabel: "Login",
+  loginLabel: "Login",
   loginWith: "Login with {idp}",
   passwordInputPlaceholder: "your password",
   passwordStrength: {

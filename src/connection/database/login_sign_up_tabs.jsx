@@ -8,7 +8,7 @@ export default class LoginSignUpTabs extends React.Component {
   render() {
     const {
       lock,
-      loginTabLabel,
+      loginLabel,
       signUpLink,
       signUpTabLabel
     } = this.props;
@@ -18,7 +18,7 @@ export default class LoginSignUpTabs extends React.Component {
       <div className="auth0-lock-tabs-container">
         <ul className="auth0-lock-tabs">
           <LoginSignUpTab
-            label={loginTabLabel}
+            label={loginLabel}
             current={isLogin}
             clickHandler={::this.handleLoginClick}
           />
@@ -45,7 +45,7 @@ export default class LoginSignUpTabs extends React.Component {
 
 LoginSignUpTabs.propTypes = {
   lock: React.PropTypes.object.isRequired,
-  loginTabLabel: React.PropTypes.string.isRequired,
+  loginLabel: React.PropTypes.string.isRequired,
   signUpLink: React.PropTypes.string,
   signUpTabLabel: React.PropTypes.string.isRequired
 };

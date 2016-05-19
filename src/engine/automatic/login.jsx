@@ -44,7 +44,7 @@ const Component = ({model, t}) => {
     && <LoginSignUpTabs
          key="loginsignup"
          lock={model}
-         loginTabLabel={t("loginTabLabel", {__textOnly: true})}
+         loginLabel={t("loginLabel", {__textOnly: true})}
          signUpLink={signUpLink(model)}
          signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
        />;
