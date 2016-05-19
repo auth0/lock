@@ -27,7 +27,7 @@ export function setup(id, clientID, domain, options, logInCallback, hookRunner, 
     mode: options.mode,
     logInCallback: logInCallback,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
-    ui: extractUIOptions(id, options.mode, options)
+    ui: extractUIOptions(id, options)
   }));
 }
 
@@ -89,7 +89,7 @@ export function stopRendering(m) {
   return tremove(m, "render");
 }
 
-function extractUIOptions(id, modeName, options) {
+function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
   const { logo, primaryColor } = theme;
