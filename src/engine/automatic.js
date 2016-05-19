@@ -145,7 +145,7 @@ const dict = {
     headerText: "Login with your corporate credentials.",
   },
   error: {
-    message: "Something went wrong during the widget initialization, please contant technical support."
+
   },
   forgotPassword: {
     headerText: "Please enter your email address. We will send you an email to reset your password."

@@ -70,6 +70,7 @@ export default {
   ssoEnabled: "Single Sign-On enabled",
   smallSocialButtonsHeader: "Login with",
   terms: "",
+  unrecoverableError: "Something went wrong.<br />Please contant technical support.",
   usernameInputPlaceholder: "your username",
   title: "Auth0",
   welcome: "Welcome {name}!"
