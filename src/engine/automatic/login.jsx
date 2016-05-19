@@ -75,7 +75,7 @@ const Component = ({model, t}) => {
     || l.hasSomeConnections(model, "enterprise"))
     && <LoginPane
          emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
-         forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
+         forgotPasswordAction={t("forgotPasswordAction", {__textOnly: true})}
          instructions={t(loginInstructionsKey)}
          lock={model}
          passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}

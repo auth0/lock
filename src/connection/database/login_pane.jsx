@@ -16,7 +16,7 @@ export default class LoginPane extends React.Component {
   render() {
     const {
       emailInputPlaceholder,
-      forgotPasswordLabel,
+      forgotPasswordAction,
       instructions,
       lock,
       passwordInputPlaceholder,
@@ -51,7 +51,7 @@ export default class LoginPane extends React.Component {
             href={forgotPasswordLink(lock, "#")}
             onClick={forgotPasswordLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
           >
-            {forgotPasswordLabel}
+            {forgotPasswordAction}
           </a>
         </p>
       : null;
@@ -63,7 +63,7 @@ export default class LoginPane extends React.Component {
 
 LoginPane.propTypes = {
   emailInputPlaceholder: React.PropTypes.string.isRequired,
-  forgotPasswordLabel: React.PropTypes.string.isRequired,
+  forgotPasswordAction: React.PropTypes.string.isRequired,
   instructions: React.PropTypes.any,
   lock: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
