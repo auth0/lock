@@ -37,7 +37,7 @@ export default class Base extends EventEmitter {
     this.engine = engine;
     const hookRunner = ::this.runHook;
     const emitEventFn = this.emit.bind(this);
-    options.mode = engine.mode;
+
     setupLock(this.id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
 
     subscribe("widget-" + this.id, (key, oldState, newState) => {

@@ -24,7 +24,6 @@ export function setup(id, clientID, domain, options, logInCallback, hookRunner, 
     domain: domain,
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
-    mode: options.mode,
     logInCallback: logInCallback,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options)

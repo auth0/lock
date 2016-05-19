@@ -57,10 +57,6 @@ class Automatic {
     signUp: SignUp
   };
 
-  constructor(...args) {
-    this.mode = "classic";
-  }
-
   didInitialize(model, options) {
     model = initSocial(model, options);
     model = initDatabase(model, options);
