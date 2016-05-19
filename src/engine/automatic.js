@@ -151,7 +151,7 @@ const dict = {
 
   },
   hrd: {
-    headerText: "Please enter your coorporate credentials at {domain}.",
+
   },
   kerberos: {
 

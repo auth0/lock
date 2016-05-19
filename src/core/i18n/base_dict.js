@@ -46,6 +46,7 @@ export default {
   },
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
+  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at {domain}.",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   forgotPasswordLabel: "Don't remember your password?",
   lastLoginInstructions: "Last time you logged in with",
