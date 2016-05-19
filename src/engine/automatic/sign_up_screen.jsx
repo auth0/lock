@@ -34,7 +34,7 @@ const Component = ({model, t}) => {
          key="loginsignup"
          lock={model}
          loginLabel={t("loginLabel", {__textOnly: true})}
-         signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
+         signUpLabel={t("signUpLabel", {__textOnly: true})}
        />;
 
   const social = l.hasSomeConnections(model, "social")

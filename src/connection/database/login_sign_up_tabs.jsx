@@ -10,7 +10,7 @@ export default class LoginSignUpTabs extends React.Component {
       lock,
       loginLabel,
       signUpLink,
-      signUpTabLabel
+      signUpLabel
     } = this.props;
     const isLogin = getScreen(lock) === "login";
 
@@ -23,7 +23,7 @@ export default class LoginSignUpTabs extends React.Component {
             clickHandler={::this.handleLoginClick}
           />
           <LoginSignUpTab
-            label={signUpTabLabel}
+            label={signUpLabel}
             current={!isLogin}
             clickHandler={::this.handleSignUpClick}
             href={signUpLink}
@@ -46,8 +46,8 @@ export default class LoginSignUpTabs extends React.Component {
 LoginSignUpTabs.propTypes = {
   lock: React.PropTypes.object.isRequired,
   loginLabel: React.PropTypes.string.isRequired,
-  signUpLink: React.PropTypes.string,
-  signUpTabLabel: React.PropTypes.string.isRequired
+  signUpLabel: React.PropTypes.string.isRequired,
+  signUpLink: React.PropTypes.string
 };
 
 class LoginSignUpTab extends React.Component {

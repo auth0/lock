@@ -46,7 +46,7 @@ const Component = ({model, t}) => {
          lock={model}
          loginLabel={t("loginLabel", {__textOnly: true})}
          signUpLink={signUpLink(model)}
-         signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
+         signUpLabel={t("signUpLabel", {__textOnly: true})}
        />;
 
 
