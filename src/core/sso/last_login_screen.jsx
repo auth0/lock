@@ -25,7 +25,7 @@ const Component = ({model, t}) => {
 
   return (
     <QuickAuthPane
-      alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
+      alternativeLabel={t("notYourAccountAction", {__textOnly: true})}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
       buttonLabel={lastUsedUsername(model)}
       buttonClickHandler={buttonClickHandler}

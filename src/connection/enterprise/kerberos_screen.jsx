@@ -12,7 +12,7 @@ const Component = ({model, t}) => {
 
   return (
     <QuickAuthPane
-      alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
+      alternativeLabel={t("notYourAccountAction", {__textOnly: true})}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
       buttonLabel={t("windowsAuthLabel", {__textOnly: true})}
       buttonClickHandler={e => logIn(l.id(model), corpNetworkConnection(model))}

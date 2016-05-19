@@ -58,6 +58,7 @@ export default {
   loginAtLabel: "Login at {domain}",
   loginLabel: "Login",
   loginWithLabel: "Login with {idp}",
+  notYourAccountAction: "Not your account?",
   passwordInputPlaceholder: "your password",
   passwordStrength: {
     containsAtLeast: "Contain at least %d of the following %d types of characters:",
@@ -74,7 +75,6 @@ export default {
   signUpterms: "",
   signUpWithLabel: "Sign up with {idp}",
   signedUpMessage: "Thanks for signing up.",
-  skipLastLoginLabel: "Not your account?",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",
