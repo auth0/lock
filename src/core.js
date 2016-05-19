@@ -74,13 +74,7 @@ export default class Base extends EventEmitter {
           const disableSubmitButton = screen.name === "signUp"
             && !termsAccepted(m);
 
-          const t = (keyPath, params) => {
-            // NOTE: temp hack to start moving keys
-            if (params && params.__raw || l.ui.t(m, [keyPath], {__textOnly: true})) {
-              return l.ui.t(m, [keyPath], params);
-            }
-            return l.ui.t(m, [screen.name].concat(keyPath), params)
-          };
+          const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
 
           const props = {
             avatar: avatar && m.getIn(["avatar", "transient", "url"]),
