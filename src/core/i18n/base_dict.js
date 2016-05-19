@@ -48,6 +48,7 @@ export default {
   enterpriseLoginIntructions: "Login with your corporate credentials.",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   forgotPasswordLabel: "Don't remember your password?",
+  lastLoginInstructions: "Last time you logged in with",
   loggedInMessage: "Thanks for logging in.",
   loginAt: "Login at {domain}",
   loginTabLabel: "Login",
