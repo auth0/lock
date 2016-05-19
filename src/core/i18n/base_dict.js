@@ -55,7 +55,7 @@ export default {
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   lastLoginInstructions: "Last time you logged in with",
   loggedInMessage: "Thanks for logging in.",
-  loginAt: "Login at {domain}",
+  loginAtLabel: "Login at {domain}",
   loginTabLabel: "Login",
   loginWith: "Login with {idp}",
   passwordInputPlaceholder: "your password",
