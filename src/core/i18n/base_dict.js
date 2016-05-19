@@ -47,6 +47,7 @@ export default {
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "or",
   databaseSignUpInstructions: "",
+  databaseAlternativeSignUpInstructions: "or",
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
   enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at {domain}.",

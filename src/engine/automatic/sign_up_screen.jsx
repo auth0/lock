@@ -48,10 +48,14 @@ const Component = ({model, t}) => {
          signUp={true}
        />;
 
+  const signUpInstructionsKey = social
+    ? "databaseAlternativeSignUpInstructions"
+    : "databaseSignUpInstructions";
+
   const db =
     <SignUpPane
       emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
-      instructions={t("databaseSignUpInstructions")}
+      instructions={t(signUpInstructionsKey)}
       model={model}
       onlyEmail={sso}
       passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
@@ -59,8 +63,7 @@ const Component = ({model, t}) => {
       usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
     />;
 
-  const separator = social
-    && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
+  const separator = social && <PaneSeparator/>;
 
   return <div>{ssoNotice}{tabs}{header}{social}{separator}{db}</div>;
 };
