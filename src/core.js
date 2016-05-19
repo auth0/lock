@@ -34,7 +34,7 @@ export default class Base extends EventEmitter {
 
     super();
 
-    registerDict(engine.mode, engine.dict);
+    registerDict(engine.mode, {});
     this.id = idu.incremental();
     this.engine = engine;
     const hookRunner = ::this.runHook;

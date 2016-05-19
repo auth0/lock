@@ -58,7 +58,6 @@ class Automatic {
   };
 
   constructor(...args) {
-    this.dict = dict;
     this.mode = "classic";
   }
 
@@ -139,38 +138,5 @@ class Automatic {
   }
 
 }
-
-const dict = {
-  enterpriseQuickAuth: {
-
-  },
-  error: {
-
-  },
-  forgotPassword: {
-
-  },
-  hrd: {
-
-  },
-  kerberos: {
-
-  },
-  lastLogin: {
-
-  },
-  login: {
-
-  },
-  signUp: {
-
-  },
-  signedIn: {
-
-  },
-  signedUp: {
-
-  }
-};
 
 export default new Automatic();
