@@ -57,7 +57,7 @@ export default {
   loggedInMessage: "Thanks for logging in.",
   loginAtLabel: "Login at {domain}",
   loginLabel: "Login",
-  loginWith: "Login with {idp}",
+  loginWithLabel: "Login with {idp}",
   passwordInputPlaceholder: "your password",
   passwordStrength: {
     containsAtLeast: "Contain at least %d of the following %d types of characters:",

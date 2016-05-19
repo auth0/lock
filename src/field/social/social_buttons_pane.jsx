@@ -22,7 +22,7 @@ export default class SocialButtonsPane extends React.Component {
       <AuthButton
         isBig={useBigButtons(lock)}
         key={x.get("name")}
-        label={t(signUp ? "signUpWith" : "loginWith", {idp: displayName(x), __textOnly: true})}
+        label={t(signUp ? "signUpWith" : "loginWithLabel", {idp: displayName(x), __textOnly: true})}
         onClick={() => logIn(l.id(lock), x)}
         strategy={x.get("strategy")}
       />
