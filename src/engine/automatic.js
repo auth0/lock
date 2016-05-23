@@ -91,7 +91,7 @@ class Automatic {
   render(m) {
     // TODO: remove the detail about the loading pane being pinned,
     // sticky screens should be handled at the box module.
-    if (!isDone(m) || m.get("isLoadingPanePinned")) {
+    if ((!isDone(m) && !hasError(m, ["sso"])) || m.get("isLoadingPanePinned")) {
       return new LoadingScreen();
     }
 
