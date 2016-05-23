@@ -14,6 +14,8 @@ import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
 
+import { go } from './sync2';
+
 export default class Base extends EventEmitter {
 
   constructor(clientID, domain, options = {}, logInCallback = () => {}, engine) {
@@ -37,6 +39,8 @@ export default class Base extends EventEmitter {
     this.engine = engine;
     const hookRunner = ::this.runHook;
     const emitEventFn = this.emit.bind(this);
+
+    go(this.id);
 
     setupLock(this.id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
 
