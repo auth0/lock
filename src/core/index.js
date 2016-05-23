@@ -1,7 +1,6 @@
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
-import Dict from './i18n/index';
-import t from './i18n/t';
+import t, { initI18n } from '../i18n'; // TODO: core should not depend on i18n
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
@@ -18,7 +17,7 @@ const {
 } = dataFns(["core"]);
 
 export function setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
-  return init(id, Immutable.fromJS({
+  let m = init(id, Immutable.fromJS({
     auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
@@ -28,6 +27,10 @@ export function setup(id, clientID, domain, options, logInCallback, hookRunner, 
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options)
   }));
+
+  m = initI18n(m);
+
+  return m;
 }
 
 export function id(m) {
@@ -96,7 +99,7 @@ function extractUIOptions(id, options) {
     && options.avatar;
   const avatarProvider = customAvatarProvider || gp;
 
-  return new Map({
+  return new Immutable.fromJS({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
@@ -106,10 +109,10 @@ function extractUIOptions(id, options) {
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
     language: undefined === options.language ? "en" : trim(options.language || "").toLowerCase(),
-    dict: new Dict(typeof options.languageDictionary === "object" ? options.languageDictionary : {}),
+    dict: typeof options.languageDictionary === "object" ? options.languageDictionary : {},
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     mobile: undefined === options.mobile ? false : !!options.mobile,
-    popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
+    popupOptions: undefined === options.popupOptions ? {} : options.popupOptions,
     primaryColor: typeof primaryColor === "string" ? primaryColor : undefined,
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
   });
@@ -127,7 +130,7 @@ export const ui = {
   closable: lock => getUIAttribute(lock, "closable"),
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
-  t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
+  t: (lock, keyPath, params) => t(lock, keyPath, params),
   language: lock => getUIAttribute(lock, "language"),
   logo: lock => getUIAttribute(lock, "logo"),
   mobile: lock => getUIAttribute(lock, "mobile"),
