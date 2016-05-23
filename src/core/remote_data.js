@@ -8,7 +8,7 @@ import sync, { isSuccess } from '../sync';
 
 export function syncRemoteData(m) {
   m = sync(m, "client", {
-    syncFn: (m, cb) => fetchClientSettings(l.clientID(m), l.domain(m), undefined, cb), // TODO assetsUrl
+    syncFn: (m, cb) => fetchClientSettings(l.clientID(m), l.assetsUrl(m), cb),
     successFn: syncClientSettingsSuccess
   });
 
