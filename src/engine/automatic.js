@@ -11,7 +11,6 @@ import {
   getScreen,
   initDatabase
 } from '../connection/database/index';
-import { resolveSingUpFieldCallbacks } from '../connection/database/actions';
 import {
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
@@ -67,7 +66,6 @@ class Automatic {
     if (typeof username === "string") model = setUsername(model, username);
 
     swap(updateEntity, "lock", l.id(model), _ => model);
-    additionalSignUpFields(model).forEach(x => resolveSingUpFieldCallbacks(l.id(model), x));
   }
 
   didReceiveClientSettings(m) {
