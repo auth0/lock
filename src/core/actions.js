@@ -1,7 +1,7 @@
 import Immutable, { Map } from 'immutable';
 import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
-import { syncRemoteData } from './remote-data/actions';
+import { syncRemoteData } from './remote_data';
 import * as l from './index';
 import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
