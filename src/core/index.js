@@ -54,6 +54,7 @@ export function assetsUrl(m) {
 
 export function setSubmitting(m, value, error = "") {
   m = tset(m, "submitting", value);
+  m = clearGlobalSuccess(m);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
 }
