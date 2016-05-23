@@ -5,6 +5,7 @@ import * as l from './core/index';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["i18n"]);
 import enDictionary from './i18n/en';
+import { load } from './utils/cdn_utils';
 
 export default function(m, keyPath, params = {}) {
   const strings = get(m, "strings");
@@ -45,13 +46,17 @@ export function initI18n(m) {
   if (base.isEmpty()) {
     base = overrides;
     m = sync(m, "i18n", {
-      syncFn: (_, cb) => syncLang(language, cb),
+      syncFn: (_, cb) => syncLang(m, language, cb),
       successFn: (m, result) => set(m, "strings", result.mergeDeep(overrides))
     });
   }
 
   if (!base.has("title")) {
-    base = base.set("title", "Auth0");
+    base = base.set("title", enDictionary.title);
+  }
+
+  if (!base.has("unrecoverableError")) {
+    base = base.set("unrecoverableError", enDictionary.unrecoverableError);
   }
 
   return set(m, "strings", base.mergeDeep(overrides));
@@ -59,9 +64,15 @@ export function initI18n(m) {
 
 // sync
 
-function syncLang(language, cb) {
-  // TODO: actually fetch the dictionary for language
-  setTimeout(() => cb(null, Immutable.fromJS(enDictionary)), 6000);
+function syncLang(m, language, cb) {
+  load({
+    method: "registerLanguageDictionary",
+    url: `${l.assetsUrl(m)}/js/lock/${__VERSION__}/${language}.js`,
+    check: str => str && str === language,
+    cb: (err, _, dictionary) => {
+      cb(err, dictionary && Immutable.fromJS(dictionary));
+    }
+  });
 }
 
 const languageDictionaries = [];
