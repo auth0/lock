@@ -4,7 +4,7 @@ import sync from './sync';
 import * as l from './core/index';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["i18n"]);
-import baseDict from './i18n/base_dict';
+import enDictionary from './i18n/en';
 
 export default function(m, keyPath, params = {}) {
   const strings = get(m, "strings");
@@ -37,9 +37,37 @@ function raw(strings, keyPath) {
 }
 
 export function initI18n(m) {
-  // const language = l.ui.language(m);
-  const languageDictionary = l.ui.dict(m);
-  const strings = Immutable.fromJS(baseDict).mergeDeep(languageDictionary);
+  const language = l.ui.language(m);
+  const overrides = l.ui.dict(m);
 
-  return set(m, "strings", strings);
+  let base = languageDictionaries[language] || Map({});
+
+  if (base.isEmpty()) {
+    base = overrides;
+    m = sync(m, "i18n", {
+      syncFn: (_, cb) => syncLang(language, cb),
+      successFn: (m, result) => set(m, "strings", result.mergeDeep(overrides))
+    });
+  }
+
+  if (!base.has("title")) {
+    base = base.set("title", "Auth0");
+  }
+
+  return set(m, "strings", base.mergeDeep(overrides));
 }
+
+// sync
+
+function syncLang(language, cb) {
+  // TODO: actually fetch the dictionary for language
+  setTimeout(() => cb(null, Immutable.fromJS(enDictionary)), 6000);
+}
+
+const languageDictionaries = [];
+
+function registerLanguageDictionary(language, dictionary) {
+  languageDictionaries[language] = Immutable.fromJS(dictionary);
+}
+
+registerLanguageDictionary("en", enDictionary);
