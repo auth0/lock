@@ -39,6 +39,10 @@ const findKeys = m => {
   }, []);
 }
 
+function removeKeys(m, keys) {
+  return keys.reduce((r, k) => r.deleteIn(syncStatusKey(k)), m);
+}
+
 const process = (m, id) => {
   const keys = findKeys(get(m, [], Map()));
   // TODO timeout
@@ -81,4 +85,22 @@ export const go = (id) => {
       setTimeout(() => swap(updateEntity, "lock", id, process, id), 0);
     }
   });
+}
+
+export function isSuccess(m, key) {
+  return getStatus(m, key) === "ok";
+}
+
+export function isDone(m) {
+  const keys = findKeys(get(m, [], Map()));
+  return keys.length > 0 && keys.reduce((r, k) => r && !isLoading(m, k), true);
+}
+
+export function hasError(m, excludeKeys = []) {
+  const keys = findKeys(removeKeys(get(m, [], Map()), excludeKeys));
+  return keys.length > 0 && keys.reduce((r, k) => r || getStatus(m, k) === "error", false);
+}
+
+function isLoading(m, key) {
+  return ["loading", "pending", "waiting"].indexOf(getStatus(m, key)) > -1;
 }
