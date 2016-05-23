@@ -1,31 +1,25 @@
-// syncing is never transient
-import{ Map } from 'immutable';
-import { getEntity, read, swap, updateEntity } from './store/index';
+import { Map } from 'immutable';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["sync"]);
 
-export function sync(id, key, conditionFn, syncFn, updateFn) {
-  let m = read(getEntity, "lock", id);
+import { getEntity, read, subscribe, swap, updateEntity } from './store/index';
 
-  if (hasSyncStatus(m, key)) return;
 
-  if (typeof conditionFn === "function" && !conditionFn(m)) {
-    swap(updateEntity, "lock", id, reject, key);
-    return;
-  }
+export default (m, key, opts) => {
+  if (get(m, key) !== undefined) return m;
 
-  swap(updateEntity, "lock", id, markLoading, key);
+  const status = opts.waitFn
+    ? "waiting"
+    : !opts.conditionFn || opts.conditionFn(m) ? "pending" : "no";
 
-  m = read(getEntity, "lock", id);
-  syncFn(m, (error, result) => {
-    // TODO: we should ensure that this is called just once, and
-    // disregard subsequent calls.
-    if (error) {
-      swap(updateEntity, "lock", id, markError, key);
-    } else {
-      swap(updateEntity, "lock", id, m => updateFn(markSuccess(m, key), result));
-    }
-  });
+  return set(m, key, Map({
+    recoverResult: opts.recoverResult,
+    syncStatus: status,
+    successFn: opts.successFn,
+    syncFn: opts.syncFn,
+    timeout: opts.timeout || 6000,
+    waitFn: opts.waitFn
+  }));
 }
 
 const syncStatusKey = key => (
@@ -33,19 +27,68 @@ const syncStatusKey = key => (
 );
 const getStatus = (m, key) => get(m, syncStatusKey(key));
 const setStatus = (m, key, str) => set(m, syncStatusKey(key), str);
+const getProp = (m, key, name) => get(m, key).get(name);
+
+const findKeys = m => {
+  return m.reduce((r, v, k) => {
+    const current = Map.isMap(v) && v.has("syncStatus") ? [k] : [];
+    const nested = Map.isMap(v)
+      ? findKeys(v).map(x => [k].concat(x))
+      : [];
+    return r.concat(current, ...[nested]);
+  }, []);
+}
 
 function removeKeys(m, keys) {
   return keys.reduce((r, k) => r.deleteIn(syncStatusKey(k)), m);
 }
 
-function findKeys(m) {
-  return m.reduce((r, v, k) => {
-    const current = Map.isMap(v) && v.has("syncStatus") ? [k] : [];
-    const nested = Map.isMap(v)
-          ? findKeys(v).map(x => [k].concat(x))
-          : [];
-    return r.concat(current, ...[nested]);
-  }, []);
+const process = (m, id) => {
+  const keys = findKeys(get(m, [], Map()));
+  // TODO timeout
+  return keys.reduce((r, k) => {
+    if (typeof getProp(r, k, "syncFn") != "function") return r;
+    if (getStatus(r, k) === "pending") {
+      r = setStatus(r, k, "loading");
+      let called = false;
+      getProp(r, k, "syncFn")(r, (error, result) => {
+        if (called) return;
+        called = true;
+        setTimeout(() => {
+          swap(updateEntity, "lock", id, m => {
+            const recoverResult = getProp(m, k, "recoverResult");
+            if (error && recoverResult === undefined) {
+              return setStatus(m, k, "error");
+            } else {
+              m = setStatus(m, k, "ok");
+              return getProp(m, k, "successFn")(m, error ? recoverResult : result);
+            }
+          });
+        }, 0);
+      });
+    } else if (getStatus(r, k) === "waiting") {
+      if (getProp(r, k, "waitFn")(r)) {
+        r = setStatus(r, k, "pending");
+      }
+    }
+
+    return r;
+  }, m);
+}
+
+export const go = (id) => {
+  subscribe("sync-loop-" + id, (key, oldState, newState) => {
+    // TODO: this should be handled somewhere else
+    let m = getEntity(newState, "lock", id);
+    const oldM = getEntity(oldState, "lock", id);
+    if (m != oldM) {
+      setTimeout(() => swap(updateEntity, "lock", id, process, id), 0);
+    }
+  });
+}
+
+export function isSuccess(m, key) {
+  return getStatus(m, key) === "ok";
 }
 
 export function isDone(m) {
@@ -58,30 +101,6 @@ export function hasError(m, excludeKeys = []) {
   return keys.length > 0 && keys.reduce((r, k) => r || getStatus(m, k) === "error", false);
 }
 
-export function isLoading(m, key) {
+function isLoading(m, key) {
   return ["loading", "pending", "waiting"].indexOf(getStatus(m, key)) > -1;
-}
-
-export function isSuccess(m, key) {
-  return getStatus(m, key) === "ok";
-}
-
-export function hasSyncStatus(m, key) {
-  return getStatus(m, key) !== undefined;
-}
-
-export function markLoading(m, key) {
-  return setStatus(m, key, "loading");
-}
-
-export function markSuccess(m, key) {
-  return setStatus(m, key, "ok");
-}
-
-export function markError(m, key) {
-  return setStatus(m, key, "error");
-}
-
-export function reject(m, key) {
-  return setStatus(m, key, "no");
 }

@@ -3,7 +3,7 @@ import * as l from '../../core/index';
 import * as client from '../../core/client/index';
 import { clearFields, setField, registerOptionField } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
-import sync from '../../sync2';
+import sync from '../../sync';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 

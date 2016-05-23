@@ -4,7 +4,7 @@ import { pickConnections } from './client/index';
 import { fetchSSOData } from './sso/data';
 import * as l from './index';
 import { isADEnabled } from '../connection/enterprise'; // shouldn't depend on this
-import sync, { isSuccess } from '../sync2';
+import sync, { isSuccess } from '../sync';
 
 export function syncRemoteData(m) {
   m = sync(m, "client", {

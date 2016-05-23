@@ -33,7 +33,7 @@ import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
 import ErrorScreen from '../core/error_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
-import { hasError, isDone, isSuccess } from '../sync2';
+import { hasError, isDone, isSuccess } from '../sync';
 import * as c from '../field/index';
 import { swap, updateEntity } from '../store/index';
 

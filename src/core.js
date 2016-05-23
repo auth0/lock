@@ -14,7 +14,7 @@ import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
 
-import { go } from './sync2';
+import { go } from './sync';
 
 export default class Base extends EventEmitter {
 
