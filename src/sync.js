@@ -59,7 +59,7 @@ export function hasError(m, excludeKeys = []) {
 }
 
 export function isLoading(m, key) {
-  return getStatus(m, key) === "loading";
+  return ["loading", "pending", "waiting"].indexOf(getStatus(m, key)) > -1;
 }
 
 export function isSuccess(m, key) {
