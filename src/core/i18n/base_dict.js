@@ -15,25 +15,6 @@ export default {
       "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired.", // TODO: verify error code
       "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it."
     },
-    passwordless: {
-      "bad.tenant": "We're sorry, we can't send you the {medium} because there's a configuration problem",
-      "bad.client_id": "We're sorry, we can't send you the {medium} because there's a configuration problem",
-      "bad.connection": "We're sorry, we can't send you the {medium} because there's a configuration problem",
-      "bad.send": "We're sorry, we can't send you the {medium} because there's an internal error",
-      "bad.authParams": "We're sorry, we can't send you the {medium} because there's an internal error",
-      "bad.request": "We're sorry, we can't send you the {medium} because there's an internal error",
-      "bad.email": "The email is invalid",
-      "bad.phone_number": "The phone number is invalid",
-      "lock.request": "We're sorry, something went wrong when sending the {medium}",
-      "sms_provider_error": "We're sorry, something went wrong when sending the SMS",
-      "sms_provider_error.bad_phone_number": "The number {phoneNumber} is not a valid phone number"
-    },
-    signIn: { // TODO: move this stuff to login, and namespace by connection
-      "invalid_user_password": "Wrong {field} or verification code",
-      "lock.popup_closed": "Popup window closed. Try again.",
-      "lock.request": "We're sorry, something went wrong when attempting to sign in",
-      "lock.unauthorized": "Permissions were not granted. Try again."
-    },
     signUp: {
       "invalid_password": "The password is too weak.", // NOTE: request is not made if pass doesn't satisfy policy
       "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
