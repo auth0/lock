@@ -185,10 +185,8 @@ var options = {
   container: "myContainer",
   closable: false,
   languageDictionary: {
+    signUpTerms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.",
     title: "My Company",
-    signUp: {
-      terms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
-    }
   },
   autofocus: false
 };
@@ -196,92 +194,17 @@ var options = {
 
 #### Language Dictionary Specification
 
-A language dictionary is an object that contains every piece of text the Lock needs to display. Different textual components are needed depending on what method you called to open the Lock. The following is an example of the language dictionary used by default:
+A language dictionary is an object that allows you to customize every piece of text the Lock needs to display. For instance, the following code will change the title displayed in the header and the placeholder for the email field.
 
-```js
-{
-  enterpriseQuickAuth: {
-    headerText: "Login with your corporate credentials.",
-    loginAt: "Login at {domain}"
-  },
-  forgotPassword: {
-    emailInputPlaceholder: "yours@example.com",
-    headerText: "Please enter your email and the new password. We will send you an email to confirm the password change.",
-    usernameInputPlaceholder: "your username"
-  },
-  hrd: {
-    headerText: "Please enter your coorporate credentials at {domain}.",
-    passwordInputPlaceholder: "your password",
-    usernameInputPlaceholder: "your username"
-  },
-  kerberos: {
-    headerText: "You are connected from your corporate network&hellip;",
-    buttonLabel: "Windows Authentication",
-    skipLastLoginLabel: "Not your account?"
-  },
-  lastLogin: {
-    headerText: "Last time you logged in with",
-    skipLastLoginLabel: "Not your account?"
-  },
-  login: {
-    emailInputPlaceholder: "yours@example.com",
-    forgotPasswordLabel: "Don't remember your password?",
-    headerText: "",
-    loginTabLabel: "Login",
-    loginWith: "Login with {idp}",
-    passwordInputPlaceholder: "your password",
-    separatorText: "or",
-    signUpTabLabel: "Sign Up",
-    smallSocialButtonsHeader: "Login with",
-    ssoEnabled: "Single Sign-on enabled",
-    usernameInputPlaceholder: "your username"
-  },
-  signUp: {
-    emailInputPlaceholder: "yours@example.com",
-    headerText: "",
-    loginTabLabel: "Login",
-    passwordInputPlaceholder: "your password",
-    passwordStrength: {
-      containsAtLeast: "Contain at least %d of the following %d types of characters:",
-      identicalChars: "No more than %d identical characters in a row (e.g., \"%s\" not allowed)",
-      nonEmpty: "Non-empty password required",
-      numbers: "Numbers (i.e. 0-9)",
-      lengthAtLeast: "At least %d characters in length",
-      lowerCase: "Lower case letters (a-z)",
-      shouldContain: "Should contain:",
-      specialCharacters: "Special characters (e.g. !@#$%^&*)",
-      upperCase: "Upper case letters (A-Z)"
-    },
-    separatorText: "or",
-    signUpTabLabel: "Sign Up",
-    signUpWith: "Sign up with {idp}",
-    ssoEnabled: "Single Sign-on enabled",
-    terms: "",
-    usernameInputPlaceholder: "your username",
-  },
-  signedIn: {
-    success: "Thanks for logging in."
-  },
-  signedUp: {
-    success: "Thanks for signing up."
-  }
-}
-```
-
-When you construct the Lock you can override any value by providing a [languageDictionary option](#ui-options).
 
 ```js
 var options = {
-  signUp: {
+  languageDictionary: {
     emailInputPlaceholder: "please enter you email",
   },
   title: "My Company"
 };
 ```
-
-The previous code will change the title displayed in the header and will display a footer in the sign up screen.
-
-As you can see from the examples, some keys are _namespaced_ inside another object and some are not. In the first case, they are only used in a given screen, while in the latter can be used from any screen. Also, most of the values accept HTML tags. The exception are the the ones used as input placeholders.
 
 #### Additional sign up fields
 
