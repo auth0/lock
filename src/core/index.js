@@ -1,5 +1,7 @@
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
+import { endsWith } from '../utils/string_utils';
+import { parseUrl } from '../utils/url_utils';
 import t, { initI18n } from '../i18n'; // TODO: core should not depend on i18n
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
@@ -18,6 +20,7 @@ const {
 
 export function setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
   let m = init(id, Immutable.fromJS({
+    assetsUrl: extractAssetsUrlOption(options, domain),
     auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
@@ -43,6 +46,10 @@ export function clientID(m) {
 
 export function domain(m) {
   return get(m, "domain");
+}
+
+export function assetsUrl(m) {
+  return get(m, "assetsUrl");
 }
 
 export function setSubmitting(m, value, error = "") {
@@ -183,6 +190,25 @@ export function withAuthOptions(m, opts) {
   return Immutable.fromJS(opts)
     .merge(get(m, "auth"))
     .toJS();
+}
+
+function extractAssetsUrlOption(opts, domain) {
+  if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
+    return opts.assetsUrl;
+  }
+
+  const domainUrl = "https://" + domain;
+  const hostname = parseUrl(domainUrl).hostname;
+  const DOT_AUTH0_DOT_COM = ".auth0.com";
+  const AUTH0_US_CDN_URL = "https://cdn.auth0.com";
+  if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
+    const parts = hostname.split(".");
+    return parts.length > 3
+      ? "https://cdn." + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
+      : AUTH0_US_CDN_URL;
+  } else {
+    return domainUrl;
+  }
 }
 
 export function invokeLogInCallback(m, ...args) {
