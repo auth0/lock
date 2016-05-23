@@ -1,62 +1,50 @@
 import Immutable from 'immutable';
-import { getEntity, read, swap, updateEntity } from '../../store/index';
 import { fetchClientSettings } from '../client/settings';
 import { pickConnections } from '../client/index';
 import { fetchSSOData } from '../sso/data';
-import webAPI from '../web_api';
 import * as l from '../index';
-import { isADEnabled } from '../../connection/enterprise';
-import { sync } from '../../sync';
+import { isADEnabled } from '../../connection/enterprise'; // shouldn't depend on this
+import sync from '../../sync2';
+import { isSuccess } from '../../sync';
 
-export function syncRemoteData(id) {
-  syncClientSettings(id, _ => syncSSOData(id));
-  // syncLocation(id);
+export function syncRemoteData(m) {
+  m = sync(m, "client", {
+    syncFn: (m, cb) => fetchClientSettings(l.clientID(m), l.domain(m), undefined, cb), // TODO assetsUrl
+    successFn: syncClientSettingsSuccess
+  });
+
+  m = sync(m, "sso", {
+    conditionFn: l.auth.sso,
+    waitFn: m => isSuccess(m, "client"),
+    syncFn: (m, cb) => fetchSSOData(l.id(m), isADEnabled(m), cb),
+    successFn: (m, result) => m.mergeIn(["sso"], Immutable.fromJS(result))
+  });
+
+  return m;
 }
 
-function syncClientSettings(id, cb) {
-  function syncFn(m, cb) {
-    const clientID = l.clientID(m);
-    const domain = l.domain(m);
-    const assetsUrl = undefined; // TODO
-    fetchClientSettings(clientID, domain, assetsUrl, cb);
-  }
+function syncClientSettingsSuccess(m, result) {
+  result = Immutable.fromJS(result);
+  m = m.setIn(
+    ["core", "connections"],
+    pickConnections(result, l.allowedConnections(m))
+  );
 
-  function updateFn(m, result) {
-    result = Immutable.fromJS(result);
-    m = m.setIn(
-      ["core", "connections"],
-      pickConnections(result, l.allowedConnections(m))
-    );
-    setTimeout(() => {
-      l.runHook(read(getEntity, "lock", id), "didReceiveClientSettings");
-      cb(result);
-    }, 0);
-    return m;
-  }
-
-  sync(id, "client", undefined, syncFn, updateFn);
+  // TODO: this shouldn't be like this
+  setTimeout(() => l.runHook(m, "didReceiveClientSettings"), 0);
+  return m;
 }
 
-function syncSSOData(id) {
-  function syncFn(m, cb) {
-    fetchSSOData(id, isADEnabled(m), cb);
-  }
+// import webAPI from '../web_api';
 
-  function updateFn(m, result) {
-    return m.mergeIn(["sso"], Immutable.fromJS(result));
-  }
+// function syncLocation(id) {
+//   function syncFn(m, cb) {
+//     webAPI.getUserCountry(id, cb);
+//   }
 
-  sync(id, "sso", l.auth.sso, syncFn, updateFn);
-}
+//   function updateFn(m, result) {
+//     return m.setIn(["location", "isoCode"], result);
+//   }
 
-function syncLocation(id) {
-  function syncFn(m, cb) {
-    webAPI.getUserCountry(id, cb);
-  }
-
-  function updateFn(m, result) {
-    return m.setIn(["location", "isoCode"], result);
-  }
-
-  sync(id, "location", null, syncFn, updateFn);
-}
+//   sync(id, "location", null, syncFn, updateFn);
+// }

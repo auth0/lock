@@ -34,7 +34,7 @@ import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
 import ErrorScreen from '../core/error_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
-import { hasError, hasSyncStatus, isDone, isSuccess } from '../sync';
+import { hasError, isDone, isSuccess } from '../sync';
 import * as c from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
@@ -93,7 +93,7 @@ class Automatic {
   render(m) {
     // TODO: remove the detail about the loading pane being pinned,
     // sticky screens should be handled at the box module.
-    if (!isDone(m) || !hasSyncStatus(m, "sso") || m.get("isLoadingPanePinned")) {
+    if (!isDone(m) || m.get("isLoadingPanePinned")) {
       return new LoadingScreen();
     }
 
