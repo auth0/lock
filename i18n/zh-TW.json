@@ -44,7 +44,7 @@
     "cancelAction":                "取消",
     "headerText":                  "請輸入您的電子郵件與密碼",
     "footerText":                  "",
-    "serverErrorText":             "註冊系統發生錯誤，請聯絡系統管理員。",
+    "serverErrorText":             "您的帳號可能已經註冊，請嘗試登入或重新設定您的密碼。",
     "userExistsErrorText":         "帳號已存在。",
     "signupOnSSODomainErrorText":  "網域 {domain} 已被設置為 Single Sign On 故無法註冊帳號，請嘗試登入",
     "usernameInUseErrorText":      "帳號已存在。",
