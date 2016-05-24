@@ -63,7 +63,7 @@ export default class Chrome extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { autofocus, auxiliaryPane, screenName } = this.props;
+    const { autofocus, auxiliaryPane, error, screenName } = this.props;
 
     if (!autofocus) return;
 
@@ -95,6 +95,15 @@ export default class Chrome extends React.Component {
         } else {
           setTimeout(() => input.focus(), 17);
         }
+      }
+    }
+
+    if (!prevProps.error && error) {
+      const node = ReactDOM.findDOMNode(this.refs.screen);
+      const input = node.querySelector("input");
+
+      if (input) {
+        setTimeout(() => input.focus(), 17);
       }
     }
   }
