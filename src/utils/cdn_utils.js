@@ -51,3 +51,7 @@ export function load(attrs) {
     handleError(url);
   });
 }
+
+export function preload({method, cb}) {
+  global.Auth0[method] = cb;
+}

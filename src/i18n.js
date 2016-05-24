@@ -5,7 +5,7 @@ import * as l from './core/index';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["i18n"]);
 import enDictionary from './i18n/en';
-import { load } from './utils/cdn_utils';
+import { load, preload } from './utils/cdn_utils';
 
 export default function(m, keyPath, params = {}) {
   const strings = get(m, "strings");
@@ -47,7 +47,15 @@ export function initI18n(m) {
     base = overrides;
     m = sync(m, "i18n", {
       syncFn: (_, cb) => syncLang(m, language, cb),
-      successFn: (m, result) => set(m, "strings", result.mergeDeep(overrides))
+      successFn: (m, result) => {
+        registerLanguageDictionary(language, result);
+
+        return set(
+          m,
+          "strings",
+          languageDictionaries[language].mergeDeep(overrides)
+        );
+      }
     });
   }
 
@@ -70,7 +78,7 @@ function syncLang(m, language, cb) {
     url: `${l.assetsUrl(m)}/js/lock/${__VERSION__}/${language}.js`,
     check: str => str && str === language,
     cb: (err, _, dictionary) => {
-      cb(err, dictionary && Immutable.fromJS(dictionary));
+      cb(err, dictionary);
     }
   });
 }
@@ -82,3 +90,8 @@ function registerLanguageDictionary(language, dictionary) {
 }
 
 registerLanguageDictionary("en", enDictionary);
+
+preload({
+  method: "registerLanguageDictionary",
+  cb: registerLanguageDictionary
+});
