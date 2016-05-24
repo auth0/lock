@@ -83,6 +83,9 @@ export default class Chrome extends React.Component {
     if (this.state.delayingShowSubmitButton) {
       this.setState({delayingShowSubmitButton: false});
     }
+
+  mainScreenName(str) {
+    return (str || this.props.screenName || "").split(".")[0];
   }
 
   render() {
@@ -150,7 +153,7 @@ export default class Chrome extends React.Component {
             transitionName={transitionName}
             reverse={reverse}
           >
-            <div key={screenName} className="auth0-lock-view-content">
+            <div key={this.mainScreenName()} className="auth0-lock-view-content">
               <div style={{position: "relative"}}>
                 <div className="auth0-lock-body-content">
                 <div className="auth0-lock-content" key={screenName}>

@@ -70,10 +70,7 @@ export default class Base extends EventEmitter {
           // distinguish translations. The latter constraint may
           // change when we revisit i18n, so wait until that is done
           // before properly fixing this.
-          const screenName = ~["login", "signUp"].indexOf(screen.name)
-            ? "loginSignUp"
-            : screen.name;
-          const disableSubmitButton = screen.name === "signUp"
+          const disableSubmitButton = screen.name === "main.signUp"
             && !termsAccepted(m);
 
           const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
@@ -96,13 +93,13 @@ export default class Base extends EventEmitter {
             isSubmitting: l.submitting(m),
             logo: l.ui.logo(m),
             primaryColor: l.ui.primaryColor(m),
-            screenName: screenName,
+            screenName: screen.name,
             success: l.globalSuccess(m),
             submitHandler: partialApplyId(screen, "submitHandler"),
             tabs: screen.renderTabs(m),
             terms: screen.renderTerms(m, t),
             title: title,
-            transitionName: screenName === "loading" ? "fade" : "horizontal-fade"
+            transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
           };
           render(l.ui.containerID(m), props);
 

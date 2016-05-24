@@ -68,7 +68,7 @@ const Component = ({model, t}) => {
 export default class SignUp extends Screen {
 
   constructor() {
-    super("signUp");
+    super("main.signUp");
   }
 
   submitHandler(model) {
