@@ -6,7 +6,7 @@ import { cancelHRD, logIn } from './actions';
 import { enterpriseDomain, isSingleHRDConnection }  from '../enterprise';
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText", {domain: enterpriseDomain(model)}) || null;
+  const headerText = t("enterpriseActiveLoginInstructions", {domain: enterpriseDomain(model)}) || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (

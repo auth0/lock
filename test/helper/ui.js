@@ -78,8 +78,8 @@ export const displayLock = (name, opts = {}, done = () => {}) => {
   }
 
   const lock = new Auth0Lock("cid", "domain", opts);
-  setTimeout(() => lock.show(), 1);
-  setTimeout(done, 10);
+  setTimeout(() => lock.show(), 100);
+  setTimeout(done, 105);
   return lock;
 };
 

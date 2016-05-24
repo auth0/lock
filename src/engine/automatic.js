@@ -11,7 +11,6 @@ import {
   getScreen,
   initDatabase
 } from '../connection/database/index';
-import { resolveSingUpFieldCallbacks } from '../connection/database/actions';
 import {
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
@@ -34,7 +33,7 @@ import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
 import ErrorScreen from '../core/error_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
-import { hasError, hasSyncStatus, isDone, isSuccess } from '../sync';
+import { hasError, isDone, isSuccess } from '../sync';
 import * as c from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
@@ -57,11 +56,6 @@ class Automatic {
     signUp: SignUp
   };
 
-  constructor(...args) {
-    this.dict = dict;
-    this.mode = "classic";
-  }
-
   didInitialize(model, options) {
     model = initSocial(model, options);
     model = initDatabase(model, options);
@@ -72,7 +66,6 @@ class Automatic {
     if (typeof username === "string") model = setUsername(model, username);
 
     swap(updateEntity, "lock", l.id(model), _ => model);
-    additionalSignUpFields(model).forEach(x => resolveSingUpFieldCallbacks(l.id(model), x));
   }
 
   didReceiveClientSettings(m) {
@@ -98,7 +91,7 @@ class Automatic {
   render(m) {
     // TODO: remove the detail about the loading pane being pinned,
     // sticky screens should be handled at the box module.
-    if (!isDone(m) || !hasSyncStatus(m, "sso") || m.get("isLoadingPanePinned")) {
+    if ((!isDone(m) && !hasError(m, ["sso"])) || m.get("isLoadingPanePinned")) {
       return new LoadingScreen();
     }
 
@@ -139,75 +132,5 @@ class Automatic {
   }
 
 }
-
-const dict = {
-  enterpriseQuickAuth: {
-    headerText: "Login with your corporate credentials.",
-    loginTo: "Login at {domain}"
-  },
-  error: {
-    message: "Something went wrong during the widget initialization, please contant technical support."
-  },
-  forgotPassword: {
-    emailInputPlaceholder: "yours@example.com",
-    headerText: "Please enter your email address. We will send you an email to reset your password."
-  },
-  hrd: {
-    headerText: "Please enter your coorporate credentials at {domain}.",
-    passwordInputPlaceholder: "your password",
-    usernameInputPlaceholder: "your username"
-  },
-  kerberos: {
-    headerText: "You are connected from your corporate network&hellip;",
-    buttonLabel: "Windows Authentication",
-    skipLastLoginLabel: "Not your account?"
-  },
-  lastLogin: {
-    headerText: "Last time you logged in with",
-    skipLastLoginLabel: "Not your account?"
-  },
-  login: {
-    emailInputPlaceholder: "yours@example.com",
-    forgotPasswordLabel: "Don't remember your password?",
-    headerText: "",
-    loginTabLabel: "Login",
-    loginWith: "Login with {idp}",
-    passwordInputPlaceholder: "your password",
-    separatorText: "or",
-    signUpTabLabel: "Sign Up",
-    smallSocialButtonsHeader: "Login with",
-    ssoEnabled: "Single Sign-on enabled",
-    usernameInputPlaceholder: "your username"
-  },
-  signUp: {
-    emailInputPlaceholder: "yours@example.com",
-    headerText: "",
-    loginTabLabel: "Login",
-    passwordInputPlaceholder: "your password",
-    passwordStrength: {
-      containsAtLeast: "Contain at least %d of the following %d types of characters:",
-      identicalChars: "No more than %d identical characters in a row (e.g., \"%s\" not allowed)",
-      nonEmpty: "Non-empty password required",
-      numbers: "Numbers (i.e. 0-9)",
-      lengthAtLeast: "At least %d characters in length",
-      lowerCase: "Lower case letters (a-z)",
-      shouldContain: "Should contain:",
-      specialCharacters: "Special characters (e.g. !@#$%^&*)",
-      upperCase: "Upper case letters (A-Z)"
-    },
-    separatorText: "or",
-    signUpTabLabel: "Sign Up",
-    signUpWith: "Sign up with {idp}",
-    ssoEnabled: "Single Sign-on enabled",
-    terms: "",
-    usernameInputPlaceholder: "your username",
-  },
-  signedIn: {
-    success: "Thanks for logging in."
-  },
-  signedUp: {
-    success: "Thanks for signing up."
-  }
-};
 
 export default new Automatic();

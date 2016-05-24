@@ -15,12 +15,12 @@ function icon(strategy) {
 }
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
+  const headerText = t("enterpriseLoginIntructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (
     <QuickAuthPane
-      buttonLabel={t("loginTo", {domain: quickAuthConnection(model).get("domain"), __textOnly: true})}
+      buttonLabel={t("loginAtLabel", {domain: quickAuthConnection(model).get("domain"), __textOnly: true})}
       buttonClickHandler={e => logIn(l.id(model), quickAuthConnection(model))}
       header={header}
       strategy={icon(quickAuthConnection(model).get("strategy"))}

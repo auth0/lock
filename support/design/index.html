@@ -324,10 +324,8 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-container",
    languageDictionary: {
-     signUp: {
-       terms: terms,
-       passwordStrength: { lengthAtLeast: "Au moins %d caractères" }
-     }
+     signUpTerms: terms,
+     passwordStrength: { lengthAtLeast: "Au moins %d caractères" }
    },
    rememberLastLogin: false
  }).show();
@@ -338,7 +336,7 @@ body {
    container: "classic-sign-up-container",
    initialScreen: "signUp",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();
@@ -349,7 +347,7 @@ body {
    container: "classic-forgot-password-container",
    initialScreen: "forgotPassword",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();
@@ -360,7 +358,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-no-sign-up-container",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();
@@ -371,7 +369,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-no-forgot-password-container",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();
@@ -383,7 +381,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-only-log-in-container",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();
@@ -395,7 +393,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-small-buttons-container",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();
@@ -407,7 +405,7 @@ body {
    auth: { redirect: false, sso: false },
    container: "classic-two-rows-small-buttons-container",
    languageDictionary: {
-     signUp: { terms: terms }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();
@@ -418,9 +416,7 @@ body {
    container: "classic-sign-up-terms-container",
    initialScreen: "signUp",
    languageDictionary: {
-     signUp: {
-       terms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
-     }
+     signUpTerms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
    },
    mustAcceptTerms: true,
    rememberLastLogin: false
@@ -482,9 +478,7 @@ body {
    auth: { redirect: false },
    container: "database-container",
    dict: {
-     signUp: {
-       terms: terms
-     }
+     signUpTerms: terms
    },
    rememberLastLogin: false
  }).show();

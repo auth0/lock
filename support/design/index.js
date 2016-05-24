@@ -21,7 +21,7 @@ WebAPI.prototype.logIn = function(lockID, options, cb) {
 
 WebAPI.prototype.signOut = function() {};
 
-WebAPI.prototype.signUp = function(lockID, options, authOptions, cb) {
+WebAPI.prototype.signUp = function(lockID, options, cb) {
   const state = store.deref();
   const args = state.getIn(["signUp", "response"]) == "success" ?
     [null] :
@@ -73,7 +73,7 @@ WebAPI.prototype.parseHash = function(lockID, ...args) {
   return null;
 }
 
-ClientSettings.fetchClientSettings = function(clientID, domain, assetsUrl, cb) {
+ClientSettings.fetchClientSettings = function(clientID, assetsUrl, cb) {
   // TODO: we should have propper settings for every configuration.
   const settings =  {
     strategies: [

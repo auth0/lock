@@ -1,18 +1,5 @@
 import React from 'react';
 
-const PaneSeparator = ({children}) => (
-  <p className="auth0-lock-pane-separator">{children}</p>
-);
-
-PaneSeparator.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.string
-  ]).isRequired
-};
-
-PaneSeparator.defaultProps = {
-  children: "or"
-};
+const PaneSeparator = () => <div className="auth0-lock-pane-separator"></div>;
 
 export default PaneSeparator;

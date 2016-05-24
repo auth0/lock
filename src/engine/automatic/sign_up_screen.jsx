@@ -23,9 +23,6 @@ import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notic
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
-  const header = headerText && <p>{headerText}</p>;
-
   const sso = isSSOEnabled(model);
   const ssoNotice = sso
     && <SingleSignOnNotice>
@@ -36,16 +33,26 @@ const Component = ({model, t}) => {
     && <LoginSignUpTabs
          key="loginsignup"
          lock={model}
-         loginTabLabel={t("loginTabLabel", {__textOnly: true})}
-         signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
+         loginLabel={t("loginLabel", {__textOnly: true})}
+         signUpLabel={t("signUpLabel", {__textOnly: true})}
        />;
 
   const social = l.hasSomeConnections(model, "social")
-    && <SocialButtonsPane lock={model} t={t} signUp={true} />;
+    && <SocialButtonsPane
+         instructions={t("socialSignUpInstructions")}
+         lock={model}
+         t={t}
+         signUp={true}
+       />;
+
+  const signUpInstructionsKey = social
+    ? "databaseAlternativeSignUpInstructions"
+    : "databaseSignUpInstructions";
 
   const db =
     <SignUpPane
       emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
+      instructions={t(signUpInstructionsKey)}
       model={model}
       onlyEmail={sso}
       passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
@@ -53,10 +60,9 @@ const Component = ({model, t}) => {
       usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
     />;
 
-  const separator = social
-    && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
+  const separator = social && <PaneSeparator/>;
 
-  return <div>{ssoNotice}{tabs}{header}{social}{separator}{db}</div>;
+  return <div>{ssoNotice}{tabs}{social}{separator}{db}</div>;
 };
 
 export default class SignUp extends Screen {
@@ -80,15 +86,12 @@ export default class SignUp extends Screen {
   }
 
   renderTerms(m, t) {
-    const terms = t("terms");
+    const terms = t("signUpTerms");
     const checkHandler = mustAcceptTerms(m)
       ? () => toggleTermsAcceptance(l.id(m))
       : undefined;
     return terms || mustAcceptTerms(m)
-      ? <SignUpTerms
-          checkHandler={checkHandler}
-          checked={termsAccepted(m)}
-        >
+      ? <SignUpTerms checkHandler={checkHandler} checked={termsAccepted(m)}>
           {terms}
         </SignUpTerms>
       : null;

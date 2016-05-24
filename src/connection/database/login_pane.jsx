@@ -16,7 +16,8 @@ export default class LoginPane extends React.Component {
   render() {
     const {
       emailInputPlaceholder,
-      forgotPasswordLabel,
+      forgotPasswordAction,
+      instructions,
       lock,
       passwordInputPlaceholder,
       showForgotPasswordLink,
@@ -24,6 +25,9 @@ export default class LoginPane extends React.Component {
       usernameInputPlaceholder,
       usernameStyle
     } = this.props;
+
+    const headerText = instructions || null;
+    const header = headerText && <p>{headerText}</p>;
 
     const fieldPane = usernameStyle === "username"
       ? <UsernamePane
@@ -47,19 +51,20 @@ export default class LoginPane extends React.Component {
             href={forgotPasswordLink(lock, "#")}
             onClick={forgotPasswordLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
           >
-            {forgotPasswordLabel}
+            {forgotPasswordAction}
           </a>
         </p>
       : null;
 
-    return <div>{fieldPane}{passwordPane}{dontRememberPassword}</div>;
+    return <div>{header}{fieldPane}{passwordPane}{dontRememberPassword}</div>;
   }
 
 }
 
 LoginPane.propTypes = {
   emailInputPlaceholder: React.PropTypes.string.isRequired,
-  forgotPasswordLabel: React.PropTypes.string.isRequired,
+  forgotPasswordAction: React.PropTypes.string.isRequired,
+  instructions: React.PropTypes.any,
   lock: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
   showForgotPasswordLink: React.PropTypes.bool.isRequired,

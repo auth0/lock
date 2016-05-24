@@ -2,7 +2,6 @@ import { EventEmitter } from 'events';
 import { getEntity, read, subscribe } from './store/index';
 import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
-import { registerDict } from './core/i18n/index';
 import {
   closeLock,
   openLock,
@@ -14,6 +13,8 @@ import { termsAccepted } from './connection/database/index';
 import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
+
+import { go } from './sync';
 
 export default class Base extends EventEmitter {
 
@@ -34,12 +35,13 @@ export default class Base extends EventEmitter {
 
     super();
 
-    registerDict(engine.mode, engine.dict);
     this.id = idu.incremental();
     this.engine = engine;
     const hookRunner = ::this.runHook;
     const emitEventFn = this.emit.bind(this);
-    options.mode = engine.mode;
+
+    go(this.id);
+
     setupLock(this.id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
 
     subscribe("widget-" + this.id, (key, oldState, newState) => {
@@ -74,7 +76,7 @@ export default class Base extends EventEmitter {
           const disableSubmitButton = screen.name === "signUp"
             && !termsAccepted(m);
 
-          const t = (keyPath, params) => l.ui.t(m, [screen.name].concat(keyPath), params);
+          const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
 
           const props = {
             avatar: avatar && m.getIn(["avatar", "transient", "url"]),

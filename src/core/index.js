@@ -1,7 +1,8 @@
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
-import * as d from './i18n/index';
-import t from './i18n/t';
+import { endsWith } from '../utils/string_utils';
+import { parseUrl } from '../utils/url_utils';
+import t, { initI18n } from '../i18n'; // TODO: core should not depend on i18n
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
@@ -18,17 +19,21 @@ const {
 } = dataFns(["core"]);
 
 export function setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
-  return init(id, Immutable.fromJS({
+  let m = init(id, Immutable.fromJS({
+    assetsUrl: extractAssetsUrlOption(options, domain),
     auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
-    mode: options.mode,
     logInCallback: logInCallback,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
-    ui: extractUIOptions(id, options.mode, options)
+    ui: extractUIOptions(id, options)
   }));
+
+  m = initI18n(m);
+
+  return m;
 }
 
 export function id(m) {
@@ -43,12 +48,13 @@ export function domain(m) {
   return get(m, "domain");
 }
 
-export function modeName(m) {
-  return get(m, "mode");
+export function assetsUrl(m) {
+  return get(m, "assetsUrl");
 }
 
 export function setSubmitting(m, value, error = "") {
   m = tset(m, "submitting", value);
+  m = clearGlobalSuccess(m);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
 }
@@ -89,7 +95,7 @@ export function stopRendering(m) {
   return tremove(m, "render");
 }
 
-function extractUIOptions(id, modeName, options) {
+function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
   const { logo, primaryColor } = theme;
@@ -101,7 +107,7 @@ function extractUIOptions(id, modeName, options) {
     && options.avatar;
   const avatarProvider = customAvatarProvider || gp;
 
-  return new Map({
+  return new Immutable.fromJS({
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
@@ -110,10 +116,11 @@ function extractUIOptions(id, modeName, options) {
     avatarProvider: avatarProvider,
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
-    dict: d.buildDict(modeName, typeof options.languageDictionary === "object" ? options.languageDictionary : {}),
+    language: undefined === options.language ? "en" : trim(options.language || "").toLowerCase(),
+    dict: typeof options.languageDictionary === "object" ? options.languageDictionary : {},
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     mobile: undefined === options.mobile ? false : !!options.mobile,
-    popupOptions: new Map(undefined === options.popupOptions ? {} : options.popupOptions),
+    popupOptions: undefined === options.popupOptions ? {} : options.popupOptions,
     primaryColor: typeof primaryColor === "string" ? primaryColor : undefined,
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin
   });
@@ -131,7 +138,8 @@ export const ui = {
   closable: lock => getUIAttribute(lock, "closable"),
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
-  t: (lock, keyPath, params) => t(ui.dict(lock), keyPath, params),
+  t: (lock, keyPath, params) => t(lock, keyPath, params),
+  language: lock => getUIAttribute(lock, "language"),
   logo: lock => getUIAttribute(lock, "logo"),
   mobile: lock => getUIAttribute(lock, "mobile"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
@@ -183,6 +191,25 @@ export function withAuthOptions(m, opts) {
   return Immutable.fromJS(opts)
     .merge(get(m, "auth"))
     .toJS();
+}
+
+function extractAssetsUrlOption(opts, domain) {
+  if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
+    return opts.assetsUrl;
+  }
+
+  const domainUrl = "https://" + domain;
+  const hostname = parseUrl(domainUrl).hostname;
+  const DOT_AUTH0_DOT_COM = ".auth0.com";
+  const AUTH0_US_CDN_URL = "https://cdn.auth0.com";
+  if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
+    const parts = hostname.split(".");
+    return parts.length > 3
+      ? "https://cdn." + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
+      : AUTH0_US_CDN_URL;
+  } else {
+    return domainUrl;
+  }
 }
 
 export function invokeLogInCallback(m, ...args) {

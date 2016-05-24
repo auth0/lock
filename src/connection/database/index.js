@@ -3,24 +3,14 @@ import * as l from '../../core/index';
 import * as client from '../../core/client/index';
 import { clearFields, setField, registerOptionField } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
+import sync from '../../sync';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
 export function initDatabase(m, options) {
   try {
     m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
-
-    additionalSignUpFields(m).forEach(x => {
-      if (x.get("type") === "select") {
-        if (typeof x.get("prefill") != "function" && typeof x.get("options") != "function") {
-          m = registerOptionField(m, x.get("name"), x.get("options"), x.get("prefill"));
-        }
-      } else {
-        if (typeof x.get("prefill") != "function") {
-          m = setField(m, x.get("name"), x.get("prefill", ""), x.get("validator"));
-        }
-      }
-    });
+    m = resolveAdditionalSignUpFields(m);
   } catch (e) {
     l.error(options, e.message);
     m = l.stop(m);
@@ -253,4 +243,79 @@ export function termsAccepted(m) {
 
 export function toggleTermsAcceptance(m) {
   return tset(m, "termsAccepted", !termsAccepted(m));
+}
+
+export function resolveAdditionalSignUpFields(m) {
+  return additionalSignUpFields(m).reduce((r, x) => {
+    return x.get("type") === "select"
+      ? resolveAdditionalSignUpSelectField(r, x)
+      : resolveAdditionalSignUpTextField(r, x)
+  }, m);
+}
+
+function resolveAdditionalSignUpSelectField(m, x) {
+  const name = x.get("name");
+  const keyNs = ["additionalSignUpField", name];
+  const prefill = x.get("prefill");
+  const options = x.get("options");
+
+  let resolvedPrefill = typeof prefill === "function" ? undefined : (prefill || "");
+  let resolvedOptions = typeof options === "function" ? undefined : options;
+
+  const register = m => {
+    return resolvedPrefill !== undefined && resolvedOptions !== undefined
+      ? registerOptionField(m, name, Immutable.fromJS(resolvedOptions), resolvedPrefill)
+      : m;
+  };
+
+  if (resolvedPrefill === undefined) {
+    m = sync(m, keyNs.concat("prefill"), {
+      recoverResult: "",
+      successFn: (m, result) => {
+        resolvedPrefill = result;
+        return register(m);
+      },
+      syncFn: (m, cb) => prefill(cb)
+    });
+  }
+
+  if (resolvedOptions === undefined) {
+    m = sync(m, keyNs.concat("options"), {
+      successFn: (m, result) => {
+        resolvedOptions = result;
+        return register(m);
+      },
+      syncFn: (m, cb) => options(cb)
+    });
+  }
+
+
+  if (resolvedPrefill !== undefined && resolvedOptions !== undefined) {
+    m = registerOptionField(m, name, Immutable.fromJS(resolvedOptions), resolvedPrefill);
+  }
+
+  return m;
+}
+
+function resolveAdditionalSignUpTextField(m, x) {
+  const name = x.get("name");
+  const key = ["additionalSignUpField", name, "prefill"];
+  const prefill = x.get("prefill");
+  const validator = x.get("validator");
+
+  let resolvedPrefill = typeof prefill === "function" ? undefined : (prefill || "");
+
+  if (resolvedPrefill === undefined) {
+    m = sync(m, key, {
+      recoverResult: "",
+      successFn: (m, result) => {
+        return setField(m, name, result, validator);
+      },
+      syncFn: (m, cb) => prefill(cb)
+    });
+  } else {
+    m = setField(m, name, resolvedPrefill, validator);
+  }
+
+  return m;
 }

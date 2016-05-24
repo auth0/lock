@@ -7,14 +7,14 @@ import * as l from '../../core/index';
 import { corpNetworkConnection } from '../enterprise';
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
+  const headerText = t("windowsAuthInstructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (
     <QuickAuthPane
-      alternativeLabel={t("skipLastLoginLabel", {__textOnly: true})}
+      alternativeLabel={t("notYourAccountAction", {__textOnly: true})}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
-      buttonLabel={t("buttonLabel", {__textOnly: true})}
+      buttonLabel={t("windowsAuthLabel", {__textOnly: true})}
       buttonClickHandler={e => logIn(l.id(model), corpNetworkConnection(model))}
       header={header}
       strategy="windows"

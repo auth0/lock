@@ -1,7 +1,7 @@
 import Immutable, { Map } from 'immutable';
 import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
-import { syncRemoteData } from './remote-data/actions';
+import { syncRemoteData } from './remote_data';
 import * as l from './index';
 import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
@@ -10,19 +10,22 @@ import { isFieldValid, showInvalidField } from '../field/index';
 export function setupLock(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
   // TODO: run a hook before initialization, useful for when we want
   // to provide some options by default.
-  const m = l.setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
+  const m = syncRemoteData(l.setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn));
   preload(l.ui.logo(m) || defaultProps.logo);
+
+
+  WebAPI.setupClient(id, clientID, domain, l.withAuthOptions(m, {
+    ...options,
+    popupOptions: l.ui.popupOptions(m)
+  }));
+
+
   swap(setEntity, "lock", id, m);
 
   // TODO: this triggers a second call to swap, maybe it can be
   // optimized. However, the Lock isn't rendering yet so it might not
   // be really an issue.
   l.runHook(m, "didInitialize", options);
-
-  WebAPI.setupClient(id, clientID, domain, l.withAuthOptions(m, {
-    ...options,
-    popupOptions: l.ui.popupOptions(m)
-  }));
 
   if (l.auth.redirect(m)) {
     const hash = WebAPI.parseHash(id);
@@ -43,7 +46,6 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
     setTimeout(() => l.invokeLogInCallback(m, error, result), 0);
   }
 
-  syncRemoteData(id);
 }
 
 export function openLock(id) {

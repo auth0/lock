@@ -13,7 +13,7 @@ export function requestAvatar(id, src) {
     return update(id, src, cache[src].url, cache[src].displayName, true);
   }
 
-  const provider = l.ui.avatarProvider(read(getEntity, "lock", id));
+  const provider = l.ui.avatarProvider(read(getEntity, "lock", id)).toJS();
 
   swap(updateEntity, "lock", id, m => {
     m = tset(m, "syncStatus", "loading");

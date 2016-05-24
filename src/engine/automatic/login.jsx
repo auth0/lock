@@ -37,9 +37,6 @@ function shouldRenderTabs(m) {
 }
 
 const Component = ({model, t}) => {
-  const headerText = t("headerText") || null;
-  const header = headerText && <p>{headerText}</p>;
-
   const sso = isSSOEnabled(model);
   const onlySocial = l.hasOnlyConnections(model, "social");
 
@@ -47,18 +44,18 @@ const Component = ({model, t}) => {
     && <LoginSignUpTabs
          key="loginsignup"
          lock={model}
-         loginTabLabel={t("loginTabLabel", {__textOnly: true})}
+         loginLabel={t("loginLabel", {__textOnly: true})}
          signUpLink={signUpLink(model)}
-         signUpTabLabel={t("signUpTabLabel", {__textOnly: true})}
+         signUpLabel={t("signUpLabel", {__textOnly: true})}
        />;
 
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
+         instructions={t("socialLoginInstructions")}
          lock={model}
          showLoading={onlySocial}
          signUp={false}
-         smallButtonsHeader={shouldRenderTabs(model) ? '' : t("smallSocialButtonsHeader", {__textOnly: true})}
          t={t}
        />;
 
@@ -69,12 +66,17 @@ const Component = ({model, t}) => {
   const showForgotPasswordLink = showPassword
     && l.hasSomeConnections(model, "database");
 
+  const loginInstructionsKey = social
+    ? "databaseEnterpriseAlternativeLoginInstructions"
+    : "databaseEnterpriseLoginInstructions";
+
   const login = (sso
     || l.hasSomeConnections(model, "database")
     || l.hasSomeConnections(model, "enterprise"))
     && <LoginPane
          emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
-         forgotPasswordLabel={t("forgotPasswordLabel", {__textOnly: true})}
+         forgotPasswordAction={t("forgotPasswordAction", {__textOnly: true})}
+         instructions={t(loginInstructionsKey)}
          lock={model}
          passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
          showForgotPasswordLink={showForgotPasswordLink}
@@ -88,10 +90,9 @@ const Component = ({model, t}) => {
          {t("ssoEnabled", {__textOnly: true})}
        </SingleSignOnNotice>;
 
-  const separator = social && login
-    && <PaneSeparator>{t("separatorText")}</PaneSeparator>;
+  const separator = social && login && <PaneSeparator/>;
 
-  return <div>{ssoNotice}{tabs}{header}{social}{separator}{login}</div>;
+  return <div>{ssoNotice}{tabs}{social}{separator}{login}</div>;
 
 };
 
