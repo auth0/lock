@@ -83,6 +83,7 @@ export default class Container extends React.Component {
 
   render() {
     const {
+      autofocus,
       avatar,
       auxiliaryPane,
       backHandler,
@@ -154,6 +155,7 @@ export default class Container extends React.Component {
             {closeHandler && <CloseButton onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
               <Chrome
+                autofocus={autofocus}
                 avatar={avatar}
                 auxiliaryPane={auxiliaryPane}
                 backHandler={backHandler}
@@ -183,6 +185,7 @@ export default class Container extends React.Component {
 }
 
 Container.propTypes = {
+  autofocus: React.PropTypes.bool.isRequired,
   avatar: React.PropTypes.string,
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
@@ -213,6 +216,7 @@ const isFileProtocol = global.window
   && global.window.location.protocol === "file:";
 
 export const defaultProps = Container.defaultProps = {
+  autofocus: false,
   badgeLink: "https://auth0.com/",
   contentProps: {},
   disableSubmitButton: false,

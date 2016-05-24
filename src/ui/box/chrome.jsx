@@ -176,6 +176,7 @@ export default class Chrome extends React.Component {
 }
 
 Chrome.propTypes = {
+  autofocus: React.PropTypes.bool.isRequired,
   avatar: React.PropTypes.string,
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
@@ -194,6 +195,7 @@ Chrome.propTypes = {
 };
 
 Chrome.defaultProps = {
+  autofocus: false,
   disableSubmitButton: false,
   showSubmitButton: true
 };

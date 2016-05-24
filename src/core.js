@@ -81,6 +81,7 @@ export default class Base extends EventEmitter {
           const props = {
             avatar: avatar && m.getIn(["avatar", "transient", "url"]),
             auxiliaryPane: screen.renderAuxiliaryPane(m),
+            autofocus: l.ui.autofocus(m),
             backHandler: partialApplyId(screen, "backHandler"),
             badgeLink: "https://auth0.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget",
             closeHandler: l.ui.closable(m)
