@@ -56,16 +56,29 @@ export default class Chrome extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { autofocus, auxiliaryPane } = this.props;
+    const { autofocus, auxiliaryPane, screenName } = this.props;
 
     if (!autofocus) return;
 
-    if (!prevProps.auxiliaryPane && auxiliaryPane) {
+    if (auxiliaryPane && !prevProps.auxiliaryPane) {
       const node = ReactDOM.findDOMNode(this.refs.auxiliary);
       const input = node.querySelector("input");
 
       if (input) {
         setTimeout(() => input.focus(), AUXILIARY_ANIMATION_DURATION);
+      }
+    }
+
+    if (screenName !== prevProps.screenName) {
+      const node = ReactDOM.findDOMNode(this.refs.screen);
+      const input = node.querySelector("input");
+
+      if (input) {
+        if (this.mainScreenName(prevProps.screenName) !== this.mainScreenName()) {
+          this.inputToFocus = input;
+        } else {
+          setTimeout(() => input.focus(), 17);
+        }
       }
     }
   }
@@ -83,6 +96,12 @@ export default class Chrome extends React.Component {
     if (this.state.delayingShowSubmitButton) {
       this.setState({delayingShowSubmitButton: false});
     }
+
+    if (this.inputToFocus) {
+      this.inputToFocus.focus();
+      delete this.inputToFocus;
+    }
+  }
 
   mainScreenName(str) {
     return (str || this.props.screenName || "").split(".")[0];
@@ -156,8 +175,8 @@ export default class Chrome extends React.Component {
             <div key={this.mainScreenName()} className="auth0-lock-view-content">
               <div style={{position: "relative"}}>
                 <div className="auth0-lock-body-content">
-                <div className="auth0-lock-content" key={screenName}>
-                  <div className="auth0-lock-form">
+                <div className="auth0-lock-content">
+                  <div className="auth0-lock-form" ref="screen">
                     <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                   </div>
                 </div>

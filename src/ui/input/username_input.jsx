@@ -9,25 +9,8 @@ export default class UsernameInput extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    if (this.props.autofocus) {
-      // TODO: We can't set the focus immediately because we have to wait for
-      // the input to be visible. Use a more robust solution (Placeholder should
-      // notify it children when they are being shown).
-      setTimeout(() => {
-        const { input } = this.refs;
-        input.focus();
-        if (input !== global.document.activeElement) {
-          setTimeout(() => {
-            this.refs.input && this.refs.input.focus();
-          }, 800);
-        }
-      }, 200);
-    }
-  }
-
   render() {
-    const { autofocus, isValid, onChange, ...props } = this.props;
+    const { isValid, onChange, ...props } = this.props;
     const { focused } = this.state;
 
     return (
