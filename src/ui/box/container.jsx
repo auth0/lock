@@ -61,6 +61,11 @@ export default class Container extends React.Component {
     e.preventDefault();
     const { submitHandler } = this.props;
     if (submitHandler) {
+      setTimeout(() => {
+        if (!this.props.isSubmitting) {
+          this.refs.chrome.focusError();
+        }
+      }, 17);
       submitHandler();
     }
   }
@@ -167,6 +172,7 @@ export default class Container extends React.Component {
                 logo={logo}
                 screenName={screenName}
                 primaryColor={primaryColor}
+                ref="chrome"
                 showSubmitButton={!!submitHandler}
                 success={success}
                 tabs={tabs}

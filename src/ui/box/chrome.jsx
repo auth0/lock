@@ -132,6 +132,14 @@ export default class Chrome extends React.Component {
     return (str || this.props.screenName || "").split(".")[0];
   }
 
+  focusError() {
+    const node = ReactDOM.findDOMNode(this.refs.screen);
+    const error = node.querySelector(".auth0-lock-error input");
+    if (error) {
+      error.focus();
+    }
+  }
+
   render() {
     const {
       avatar,
