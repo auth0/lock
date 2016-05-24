@@ -7,7 +7,6 @@ export default ({iconUrl, model, name, items}) => (
   <List
     iconUrl={iconUrl}
     items={items}
-    autofocus={true}
     onSelect={x => selectOption(model.get("id"), name, x)}
     onCancel={() => cancelOptionSelection(model.get("id"))}
   />

@@ -38,6 +38,8 @@ SubmitButton.propTypes = {
   disabled: React.PropTypes.bool
 };
 
+const AUXILIARY_ANIMATION_DURATION = 350;
+
 export default class Chrome extends React.Component {
 
   constructor(props) {
@@ -50,6 +52,21 @@ export default class Chrome extends React.Component {
         && !this.state.delayingShowSubmitButton
         && nextProps.showSubmitButton) {
       this.setState({delayingShowSubmitButton: true});
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { autofocus, auxiliaryPane } = this.props;
+
+    if (!autofocus) return;
+
+    if (!prevProps.auxiliaryPane && auxiliaryPane) {
+      const node = ReactDOM.findDOMNode(this.refs.auxiliary);
+      const input = node.querySelector("input");
+
+      if (input) {
+        setTimeout(() => input.focus(), AUXILIARY_ANIMATION_DURATION);
+      }
     }
   }
 
@@ -154,7 +171,12 @@ export default class Chrome extends React.Component {
         >
           {submitButton}
         </ReactCSSTransitionGroup>
-        <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
+        <ReactCSSTransitionGroup
+          ref="auxiliary"
+          transitionName="slide"
+          transitionEnterTimeout={AUXILIARY_ANIMATION_DURATION}
+          transitionLeaveTimeout={AUXILIARY_ANIMATION_DURATION}
+        >
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
       </div>
