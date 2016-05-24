@@ -53,6 +53,13 @@ export default class Chrome extends React.Component {
         && nextProps.showSubmitButton) {
       this.setState({delayingShowSubmitButton: true});
     }
+
+    const { auxiliaryPane } = this.props;
+
+    if (!auxiliaryPane && nextProps.auxiliaryPane) {
+      this.auxiliaryPaneTriggerInput = global.document.activeElement;
+    }
+
   }
 
   componentDidUpdate(prevProps) {
@@ -66,6 +73,15 @@ export default class Chrome extends React.Component {
 
       if (input) {
         setTimeout(() => input.focus(), AUXILIARY_ANIMATION_DURATION);
+      }
+    }
+
+    if (!auxiliaryPane && prevProps.auxiliaryPane) {
+      if (this.auxiliaryPaneTriggerInput) {
+        setTimeout(
+          () => this.auxiliaryPaneTriggerInput.focus(),
+          AUXILIARY_ANIMATION_DURATION
+        );
       }
     }
 
