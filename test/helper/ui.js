@@ -139,7 +139,7 @@ export const hasTermsCheckbox = hasFn(".auth0-lock-sign-up-terms-agreement label
 export const hasQuickAuthButton = (lock, icon, domain) => {
   // TODO: we should actually check that there's just a single button
   const xs = qView(lock, `.auth0-lock-social-button[data-provider^="${icon}"]`, true);
-  return xs.length === 1 && xs[0].innerText.indexOf(domain) !== -1;
+  return xs.length === 1 && xs[0].innerText.toLowerCase().indexOf(domain) !== -1;
 };
 export const hasSocialButtons = hasViewFn(".auth0-lock-social-button");
 export const hasSSONotice = hasViewFn(".auth0-sso-notice-container");

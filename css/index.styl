@@ -1091,6 +1091,13 @@ breakpoint(point, value = 0)
     letter-spacing .7px
     overflow hidden
 
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+
     li
       width 50%
       display block
@@ -1106,6 +1113,7 @@ breakpoint(point, value = 0)
         display block
         text-decoration none
         color #5C666F
+        font-weight 500
 
       &.auth0-lock-tabs-current
         background-color #5C666F
@@ -1168,6 +1176,8 @@ breakpoint(point, value = 0)
       padding-left 20px
 
   ul li ul
+    margin-left 20px
+
     li
       color white
 
@@ -1219,10 +1229,12 @@ breakpoint(point, value = 0)
   .auth0-lock-social-button.auth0-lock-social-big-button
     margin-top 0
 
-    .auth0-lock-social-button-text
-      text-transform none
-      font-size 12px
-      font-weight normal
+// last login DATABASE: reviewed by design
+.auth0-lock .auth0-lock-last-login-pane .auth0-lock-social-button[data-provider="auth0"]
+  .auth0-lock-social-button-text
+    text-transform none
+    font-size 12px
+    font-weight normal
 
 // sign up terms TODO: review by design
 
