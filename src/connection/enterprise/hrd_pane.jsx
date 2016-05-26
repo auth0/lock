@@ -17,7 +17,6 @@ export default class HRDPane extends React.Component {
       <div>
         {header}
         <UsernamePane
-          autofocus={l.ui.autofocus(model)}
           lock={model}
           placeholder={usernameInputPlaceholder}
         />

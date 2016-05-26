@@ -99,7 +99,7 @@ const Component = ({model, t}) => {
 export default class Login extends Screen {
 
   constructor() {
-    super("login");
+    super("main.login");
   }
 
   renderAuxiliaryPane(lock) {

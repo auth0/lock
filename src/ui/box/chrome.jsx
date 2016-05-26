@@ -38,6 +38,8 @@ SubmitButton.propTypes = {
   disabled: React.PropTypes.bool
 };
 
+const AUXILIARY_ANIMATION_DURATION = 350;
+
 export default class Chrome extends React.Component {
 
   constructor(props) {
@@ -46,10 +48,70 @@ export default class Chrome extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.showSubmitButton
-        && !this.state.delayingShowSubmitButton
-        && nextProps.showSubmitButton) {
+    const { auxiliaryPane, showSubmitButton } = this.props;
+    const { delayingShowSubmitButton } = this.state;
+
+    if (!showSubmitButton
+         && nextProps.showSubmitButton
+         && !delayingShowSubmitButton) {
       this.setState({delayingShowSubmitButton: true});
+    }
+
+
+    if (!auxiliaryPane && nextProps.auxiliaryPane) {
+      this.auxiliaryPaneTriggerInput = global.document.activeElement;
+    }
+
+  }
+
+  componentDidUpdate(prevProps) {
+    const { autofocus, auxiliaryPane, error, screenName } = this.props;
+
+    if (!autofocus) return;
+
+    if (auxiliaryPane && !prevProps.auxiliaryPane) {
+      const input = this.findAutofocusInput(this.refs.auxiliary);
+
+      if (input) {
+        setTimeout(() => input.focus(), AUXILIARY_ANIMATION_DURATION);
+      }
+
+      return;
+    }
+
+    if (!auxiliaryPane && prevProps.auxiliaryPane) {
+      if (this.auxiliaryPaneTriggerInput) {
+        setTimeout(
+          () => this.auxiliaryPaneTriggerInput.focus(),
+          AUXILIARY_ANIMATION_DURATION
+        );
+      }
+
+      return;
+    }
+
+    if (screenName !== prevProps.screenName) {
+      const input = this.findAutofocusInput();
+
+      if (input) {
+        if (this.mainScreenName(prevProps.screenName) !== this.mainScreenName()) {
+          this.inputToFocus = input;
+        } else {
+          setTimeout(() => input.focus(), 17);
+        }
+      }
+
+      return;
+    }
+
+    if (!prevProps.error && error) {
+      const input = this.findAutofocusInput();
+
+      if (input) {
+        setTimeout(() => input.focus(), 17);
+      }
+
+      return;
     }
   }
 
@@ -65,6 +127,29 @@ export default class Chrome extends React.Component {
   onDidAppear() {
     if (this.state.delayingShowSubmitButton) {
       this.setState({delayingShowSubmitButton: false});
+    }
+
+    if (this.inputToFocus) {
+      this.inputToFocus.focus();
+      delete this.inputToFocus;
+    }
+  }
+
+  mainScreenName(str) {
+    return (str || this.props.screenName || "").split(".")[0];
+  }
+
+  findAutofocusInput(ref) {
+    return ReactDOM.findDOMNode(ref || this.refs.screen).querySelector("input");
+  }
+
+  focusError() {
+    const node = ReactDOM.findDOMNode(this.refs.screen);
+    // TODO: make the error input selector configurable via props.
+    const error = node.querySelector(".auth0-lock-error input");
+
+    if (error) {
+      error.focus();
     }
   }
 
@@ -133,11 +218,11 @@ export default class Chrome extends React.Component {
             transitionName={transitionName}
             reverse={reverse}
           >
-            <div key={screenName} className="auth0-lock-view-content">
+            <div key={this.mainScreenName()} className="auth0-lock-view-content">
               <div style={{position: "relative"}}>
                 <div className="auth0-lock-body-content">
-                <div className="auth0-lock-content" key={screenName}>
-                  <div className="auth0-lock-form">
+                <div className="auth0-lock-content">
+                  <div className="auth0-lock-form" ref="screen">
                     <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                   </div>
                 </div>
@@ -154,7 +239,12 @@ export default class Chrome extends React.Component {
         >
           {submitButton}
         </ReactCSSTransitionGroup>
-        <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={350} transitionLeaveTimeout={350}>
+        <ReactCSSTransitionGroup
+          ref="auxiliary"
+          transitionName="slide"
+          transitionEnterTimeout={AUXILIARY_ANIMATION_DURATION}
+          transitionLeaveTimeout={AUXILIARY_ANIMATION_DURATION}
+        >
           {auxiliaryPane}
         </ReactCSSTransitionGroup>
       </div>
@@ -176,6 +266,7 @@ export default class Chrome extends React.Component {
 }
 
 Chrome.propTypes = {
+  autofocus: React.PropTypes.bool.isRequired,
   avatar: React.PropTypes.string,
   auxiliaryPane: React.PropTypes.element,
   backHandler: React.PropTypes.func,
@@ -194,6 +285,7 @@ Chrome.propTypes = {
 };
 
 Chrome.defaultProps = {
+  autofocus: false,
   disableSubmitButton: false,
   showSubmitButton: true
 };

@@ -31,7 +31,6 @@ export default class LoginPane extends React.Component {
 
     const fieldPane = usernameStyle === "username"
       ? <UsernamePane
-          autofocus={l.ui.autofocus(lock)}
           lock={lock}
           placeholder={usernameInputPlaceholder}
         />

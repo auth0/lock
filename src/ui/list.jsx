@@ -35,16 +35,6 @@ export default class FiltrableList extends React.Component {
     this.props.onSelect(x);
   }
 
-  componentDidMount() {
-    if (this.props.autofocus) {
-      const node = ReactDOM.findDOMNode(this);
-      if (node) {
-        const input = node.querySelector("input[type='text']");
-        input.focus();
-      }
-    }
-  }
-
   handleChange(e) {
     this.setState(this.filter(e.target.value));
   }
