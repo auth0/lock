@@ -23,13 +23,14 @@ import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notic
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
 const Component = ({model, t}) => {
-  const sso = isSSOEnabled(model);
+  const sso = isSSOEnabled(model) && hasScreen(model, "login");
   const ssoNotice = sso
     && <SingleSignOnNotice>
          {t("ssoEnabled", {__textOnly: true})}
        </SingleSignOnNotice>;
 
   const tabs = !sso
+    && hasScreen(model, "login")
     && <LoginSignUpTabs
          key="loginsignup"
          lock={model}
