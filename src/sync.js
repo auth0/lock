@@ -2,7 +2,7 @@ import { Map } from 'immutable';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["sync"]);
 
-import { getEntity, read, subscribe, swap, updateEntity } from './store/index';
+import { getEntity, observe, read, swap, updateEntity } from './store/index';
 
 
 export default (m, key, opts) => {
@@ -76,14 +76,9 @@ const process = (m, id) => {
   }, m);
 }
 
-export const go = (id) => {
-  subscribe("sync-loop-" + id, (key, oldState, newState) => {
-    // TODO: this should be handled somewhere else
-    let m = getEntity(newState, "lock", id);
-    const oldM = getEntity(oldState, "lock", id);
-    if (m != oldM) {
-      setTimeout(() => swap(updateEntity, "lock", id, process, id), 0);
-    }
+export const go = id => {
+  observe("sync", id, m => {
+    setTimeout(() => swap(updateEntity, "lock", id, process, id), 0);
   });
 }
 

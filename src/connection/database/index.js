@@ -4,6 +4,7 @@ import * as client from '../../core/client/index';
 import { clearFields, setField, registerOptionField } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
 import sync from '../../sync';
+import trim from 'trim';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
@@ -19,10 +20,37 @@ export function initDatabase(m, options) {
   return m;
 }
 
+function assertMaybeBoolean(opts, name) {
+  const valid = opts[name] === undefined || typeof opts[name] === "boolean";
+  if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not a booelan.`);
+  return valid;
+}
+
+function assertMaybeEnum(opts, name, a) {
+  const valid = opts[name] === undefined || a.indexOf(opts[name]) > -1;
+  if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not one of the following allowed values: ${a.map(x => JSON.stringify(x)).join(", ")}.`);
+  return valid;
+}
+
+function assertMaybeString(opts, name) {
+  const valid = opts[name] === undefined
+    || typeof opts[name] === "string"
+    && trim(opts[name]).length > 0;
+  if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not a non-empty string.`);
+  return valid;
+}
+
+function assertMaybeArray(opts, name) {
+  const valid = opts[name] === undefined || !global.Array.isArray(opts[name]);
+  if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not an array.`);
+  return valid;
+}
+
 function processDatabaseOptions(opts) {
   let {
     additionalSignUpFields,
     allowForgotPassword,
+    allowLogin,
     allowSignUp,
     defaultDatabaseConnection,
     forgotPasswordLink,
@@ -33,52 +61,55 @@ function processDatabaseOptions(opts) {
     usernameStyle
   } = opts;
 
-  // TODO: add a warning if it is not "username" or "email", leave it
-  // undefined, and change accesor fn.
-  usernameStyle = usernameStyle === "username" ? "username" : "email";
+  if (!assertMaybeEnum(opts, "usernameStyle", ["email", "username"])) {
+    usernameStyle = undefined;
+  }
 
   let screens = ["login", "signUp", "forgotPassword"];
 
-  if (initialScreen != undefined
-      && (typeof initialScreen != "string" || screens.indexOf(initialScreen) === -1)) {
-    l.warn(opts, "The `initialScreen` option will be ignored, because it is not one of the following allowed strings \"login\", \"signUp\", \"forgotPassword\".");
-    initialScreen = undefined;
-  }
-
-  if (allowForgotPassword !== undefined && typeof allowForgotPassword != "boolean") {
-    l.warn(opts, "The `allowForgotPassword` option will be ignored, because it is not a booelan.");
+  if (!assertMaybeBoolean(opts, "allowForgotPassword")) {
+    allowForgotPassword = undefined;
   } else if (allowForgotPassword === false) {
-    screens = screens.filter(x => x != "forgotPassword");
+    screens = screens.filter(x => x !== "forgotPassword");
   }
 
-  if (allowSignUp !== undefined && typeof allowSignUp != "boolean") {
-    l.warn(opts, "The `allowSignUp` option will be ignored, because it is not a booelan.");
+  if (!assertMaybeBoolean(opts, "allowLogin")) {
+    allowLogin = undefined;
+  } else if (allowLogin === false) {
+    screens = screens.filter(x => x !== "login");
+  }
+
+  if (!assertMaybeBoolean(opts, "allowSignUp")) {
+    allowSignUp = undefined;
   } else if (allowSignUp === false) {
     screens = screens.filter(x => x != "signUp");
   }
 
-  if (defaultDatabaseConnection != undefined && typeof defaultDatabaseConnection !== "string") {
-    l.warn(opts, "The `defaultDatabaseConnection` option will be ignored, because it is not a string.");
+  if (!assertMaybeEnum(opts, "initialScreen", screens)) {
+    initialScreen = undefined;
+  }
+
+  if (initialScreen === undefined && screens.length > 0) {
+    initialScreen = screens[0];
+  }
+
+  if (!assertMaybeString(opts, "defaultDatabaseConnection")) {
     defaultDatabaseConnection = undefined;
   }
 
-  if (forgotPasswordLink != undefined && typeof forgotPasswordLink != "string") {
-    l.warn(opts, "The `forgotPasswordLink` option will be ignored, because it is not a string");
+  if (!assertMaybeString(opts, "forgotPasswordLink")) {
     forgotPasswordLink = undefined;
   }
 
-  if (signUpLink != undefined && typeof signUpLink != "string") {
-    l.warn(opts, "The `signUpLink` option will be ignored, because it is not a string");
+  if (!assertMaybeString(opts, "signUpLink")) {
     signUpLink = undefined;
   }
 
-  if (mustAcceptTerms !== undefined && typeof mustAcceptTerms != "boolean") {
-    l.warn(opts, "The `mustAcceptTerms` option will be ignored, because it is not a booelan.");
+  if (!assertMaybeBoolean(opts, "mustAcceptTerms")) {
     mustAcceptTerms = undefined;
   }
 
-  if (additionalSignUpFields && !Array.isArray(additionalSignUpFields)) {
-    l.warn(opts, "The `additionalSignUpFields` option will be ignored, because it is not an array");
+  if (!assertMaybeArray(opts, "additionalSignUpFields")) {
     additionalSignUpFields = undefined;
   } else if (additionalSignUpFields) {
     additionalSignUpFields = additionalSignUpFields.reduce((r, x) => {
@@ -200,17 +231,16 @@ export function setScreen(m, name, fields = []) {
 }
 
 export function getScreen(m) {
+  const screen = tget(m, "screen");
   const initialScreen = get(m, "initialScreen");
-  return tget(
-    m,
-    "screen",
-    hasScreen(m, initialScreen) ? initialScreen : "login"
-  );
+  const screens = [screen, initialScreen, "login", "signUp", "forgotPassword"];
+  const availableScreens = screens.filter(x => hasScreen(m, x));
+  return availableScreens[0];
 }
 
 export function authWithUsername(m) {
   const { requires_username } = (databaseConnection(m) || Map()).toJS();
-  return requires_username || get(m, "usernameStyle") === "username";
+  return requires_username || get(m, "usernameStyle", "email") === "username";
 }
 
 export function hasScreen(m, s) {

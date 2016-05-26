@@ -4,6 +4,7 @@ import webApi from '../../core/web_api';
 import {
   closeLock,
   logIn as coreLogIn,
+  logInSuccess,
   validateAndSubmit
 } from '../../core/actions';
 import * as l from '../../core/index';
@@ -11,6 +12,7 @@ import * as c from '../../field/index';
 import  {
   authWithUsername,
   databaseConnectionName,
+  hasScreen,
   setScreen,
   shouldAutoLogin,
   toggleTermsAcceptance as switchTermsAcceptance,
@@ -88,15 +90,12 @@ function signUpSuccess(id, ...args) {
         if (error) {
           setTimeout(() => autoLogInError(id, error), 250);
         } else {
-          autoLogInSuccess(id, ...args);
+          logInSuccess(id, ...args);
         }
       }
     );
   }
 
-
-  // TODO: should we autoclose here? I believe we should do it only if
-  // no login screen is available.
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
@@ -104,6 +103,7 @@ function signUpSuccess(id, ...args) {
   } else {
     closeLock(id, false);
   }
+
 }
 
 function signUpError(id, error) {
@@ -117,24 +117,15 @@ function signUpError(id, error) {
 }
 
 
-function autoLogInSuccess(id, ...args) {
-  const lock = read(getEntity, "lock", id);
-  const autoclose = l.ui.autoclose(lock);
-
-  if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => l.setLoggedIn(l.setSubmitting(lock, false), true));
-    l.invokeLogInCallback(lock, null, ...args);
-  } else {
-    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
-  }
-}
-
 function autoLogInError(id, error) {
-  const lock = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(lock, error);
-  swap(updateEntity, "lock", id, m => (
-    l.setSubmitting(setScreen(m, "login"), false, errorMessage)
-  ));
+  swap(updateEntity, "lock", id, m => {
+    if (hasScreen(m, "login")) {
+      const errorMessage = l.loginErrorMessage(m, error);
+      return l.setSubmitting(setScreen(m, "login"), false, errorMessage);
+    } else {
+      return l.setSubmitting(l.stop(m), false);
+    }
+  });
 }
 
 export function resetPassword(id) {
@@ -155,19 +146,26 @@ export function resetPassword(id) {
 }
 
 function resetPasswordSuccess(id, ...args) {
-  // TODO: needs to be auto closed?
-  // TODO: what if login is not enabled?
-
   const m = read(getEntity, "lock", id);
-  swap(updateEntity, "lock", id, m => (
-    setScreen(l.setSubmitting(m, false), "login")
-  ));
+  if (hasScreen(m, "login")) {
+    swap(updateEntity, "lock", id, m => (
+      setScreen(l.setSubmitting(m, false), "login")
+    ));
 
-  // TODO: should be handled by box
-  setTimeout(() => {
-    const successMessage = l.ui.t(m, ["success", "resetPassword"], {__textOnly: true});
-    swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
-  }, 500);
+    // TODO: should be handled by box
+    setTimeout(() => {
+      const successMessage = l.ui.t(m, ["success", "resetPassword"], {__textOnly: true});
+      swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
+    }, 500);
+  } else {
+    if (l.ui.autoclose(m)) {
+      closeLock(id);
+    } else {
+      swap(updateEntity, "lock", id, m => (
+        l.setSubmitting(m, false).set("passwordResetted", true)
+      ));
+    }
+  }
 }
 
 function resetPasswordError(id, error) {

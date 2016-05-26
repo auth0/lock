@@ -9,6 +9,7 @@ import {
   defaultDatabaseConnection,
   defaultDatabaseConnectionName,
   getScreen,
+  hasScreen,
   initDatabase
 } from '../connection/database/index';
 import {
@@ -85,7 +86,6 @@ class Automatic {
     if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
       l.warn(m, `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`);
     }
-
   }
 
   render(m) {
@@ -104,31 +104,34 @@ class Automatic {
       return new ErrorScreen();
     }
 
-    if (!hasSkippedQuickAuth(m) && l.ui.rememberLastLogin(m)) {
-      if (isInCorpNetwork(m)) {
-        return new KerberosScreen();
-      }
+    if (hasScreen(m, "login")) {
+      if (!hasSkippedQuickAuth(m) && l.ui.rememberLastLogin(m)) {
+        if (isInCorpNetwork(m)) {
+          return new KerberosScreen();
+        }
 
-      const conn = lastUsedConnection(m);
-      if (conn && isSuccess(m, "sso")) {
-        if (l.hasConnection(m, conn.get("name"))) {
-          return new LastLoginScreen();
+        const conn = lastUsedConnection(m);
+        if (conn && isSuccess(m, "sso")) {
+          if (l.hasConnection(m, conn.get("name"))) {
+            return new LastLoginScreen();
+          }
         }
       }
-    }
 
-    if (quickAuthConnection(m)) {
-      return new EnterpriseQuickAuthScreen();
-    }
+      if (quickAuthConnection(m)) {
+        return new EnterpriseQuickAuthScreen();
+      }
 
-    if (isHRDActive(m)) {
-      return new HRDScreen();
+      if (isHRDActive(m)) {
+        return new HRDScreen();
+      }
     }
 
     const Screen = Automatic.SCREENS[getScreen(m)];
     if (Screen) return new Screen();
 
-    throw new Error("unknown screen");
+    l.error(m, "At least one screen (\"login\", \"signUp\" or \"forgotPassword\") needs to be allowed.");
+    return new ErrorScreen();
   }
 
 }

@@ -22,8 +22,10 @@ export default {
       "username_exists": "The username already exists."
     }
   },
-  success: { // success messages show above the form
-    resetPassword: "We've just sent you an email to reset your password."
+  success: { // success messages show above the form or in a confirmation pane
+    logIn: "Thanks for logging in.",
+    resetPassword: "We've just sent you an email to reset your password.",
+    signUp: "Thanks for signing up."
   },
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "or",
@@ -35,7 +37,6 @@ export default {
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   lastLoginInstructions: "Last time you logged in with",
-  loggedInMessage: "Thanks for logging in.",
   loginAtLabel: "Login at {domain}",
   loginLabel: "Login",
   loginWithLabel: "Login with {idp}",
@@ -55,7 +56,6 @@ export default {
   signUpLabel: "Sign Up",
   signUpterms: "",
   signUpWithLabel: "Sign up with {idp}",
-  signedUpMessage: "Thanks for signing up.",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",

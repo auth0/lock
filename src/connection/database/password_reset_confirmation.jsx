@@ -1,10 +1,10 @@
 import React from 'react';
-import SuccessPane from '../ui/box/success_pane';
-import { closeLock } from './actions';
-import * as l from './index';
+import SuccessPane from '../../ui/box/success_pane';
+import { closeLock } from '../../core/actions';
+import * as l from '../../core/index';
 
 
-export default class SignedInConfirmation extends React.Component {
+export default class PasswordResetConfirmation extends React.Component {
 
   // TODO: can't we get this from pops?
   t(keyPath, params) {
@@ -22,22 +22,24 @@ export default class SignedInConfirmation extends React.Component {
 
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{this.t("logIn")}</p>
+        <p>{this.t("resetPassword")}</p>
       </SuccessPane>
     );
   }
 
 }
 
-SignedInConfirmation.propTypes = {
+PasswordResetConfirmation.propTypes = {
   closeHandler: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired
 };
 
-export function renderSignedInConfirmation(lock, props = {}) {
+export function renderPasswordResetConfirmation(m, props = {}) {
   props.closeHandler = closeLock;
   props.key = "auxiliarypane";
-  props.lock = lock;
+  props.lock = m;
 
-  return l.loggedIn(lock) ? <SignedInConfirmation {...props} /> : null;
+  return m.get("passwordResetted")
+    ? <PasswordResetConfirmation {...props} />
+       : null;
 }
