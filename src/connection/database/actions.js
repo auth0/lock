@@ -1,7 +1,7 @@
 import Immutable, { Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import webApi from '../../core/web_api';
-import { closeLock } from '../../core/actions';
+import { closeLock, logIn as coreLogIn } from '../../core/actions';
 import * as l from '../../core/index';
 import { startSubmit } from '../../core/actions';
 import * as c from '../../field/index';
@@ -17,66 +17,18 @@ import  {
 import { usernameStyle } from '../../engine/automatic';
 
 export function logIn(id) {
-  swap(updateEntity, "lock", id, lock => {
-    const useUsername = usernameStyle(lock) === "username";
-    if ((useUsername && c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password"))
-        || (!useUsername && c.isFieldValid(lock, "email") && c.isFieldValid(lock, "password"))) {
-      return l.setSubmitting(lock, true);
-    } else {
-      if (useUsername) {
-        lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
-      } else {
-        lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-      }
+  const m = read(getEntity, "lock", id);
+  const usernameField = usernameStyle(m) === "username"
+    ? "username"
+    : "email";
+  const username = c.getFieldValue(m, usernameField);
 
-      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
-      return lock;
-    }
+  coreLogIn(id, [usernameField, "password"], {
+    connection: databaseConnectionName(m),
+    username: username,
+    password: c.getFieldValue(m, "password")
   });
-
-  const lock = read(getEntity, "lock", id);
-  const useUsername = usernameStyle(lock) === "username";
-  if (l.submitting(lock)) {
-    const options = {
-      connection: databaseConnectionName(lock),
-      username: useUsername ? c.username(lock) : c.email(lock),
-      password: c.password(lock)
-    };
-
-    webApi.logIn(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => logInError(id, error), 250);
-        } else {
-          logInSuccess(id, ...args);
-        }
-      }
-    );
-  }
 }
-
-function logInSuccess(id, ...args) {
-  const lock = read(getEntity, "lock", id);
-  const autoclose = l.ui.autoclose(lock);
-
-  if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeLogInCallback(lock, null, ...args);
-  } else {
-    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
-  }
-}
-
-function logInError(id, error) {
-  const lock = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(lock, error);
-
-  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  l.invokeLogInCallback(lock, error);
-}
-
 
 export function signUp(id, options = {}) {
   let lock = read(getEntity, "lock", id);
