@@ -149,14 +149,17 @@ export function logIn(id, fields, params = {}) {
 
 
 function logInSuccess(id, ...args) {
-  const lock = read(getEntity, "lock", id);
-  const autoclose = l.ui.autoclose(lock);
+  const m = read(getEntity, "lock", id);
 
-  if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => l.setLoggedIn(l.setSubmitting(lock, false), true));
-    l.invokeLogInCallback(lock, null, ...args);
+  if (!l.ui.autoclose(m)) {
+    swap(updateEntity, "lock", id, m => {
+      m = l.setSubmitting(m, false);
+      return l.setLoggedIn(m, true);
+    });
+
+    l.invokeLogInCallback(m, null, ...args);
   } else {
-    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
+    closeLock(id, false, m1 => l.invokeLogInCallback(m1, null, ...args));
   }
 }
 
