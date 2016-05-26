@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { getEntity, read, subscribe } from './store/index';
+import { getEntity, observe, read } from './store/index';
 import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
 import {
@@ -44,77 +44,72 @@ export default class Base extends EventEmitter {
 
     setupLock(this.id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
 
-    subscribe("widget-" + this.id, (key, oldState, newState) => {
-      const m = getEntity(newState, "lock", this.id);
-      const oldM = getEntity(oldState, "lock", this.id);
+    observe("render", this.id, m => {
+      const partialApplyId = (screen, handlerName) => {
+        const handler = screen[handlerName](m);
+        return handler
+          ? (...args) => handler(l.id(m), ...args)
+          : handler;
+      };
 
-      if (m != oldM) {
-        const partialApplyId = (screen, handlerName) => {
-          const handler = screen[handlerName](m);
-          return handler
-            ? (...args) => handler(l.id(m), ...args)
-            : handler;
+      const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
+      const title = avatar
+        ? l.ui.t(m, ["welcome"], {name: m.getIn(["avatar", "transient", "displayName"]), __textOnly: true})
+        : l.ui.t(m, ["title"], {__textOnly: true});
+
+      if (l.rendering(m)) {
+        const screen = this.engine.render(m);
+
+        // TODO: this is a temp hack because we need an unique name
+        // for both screens when rendering the box to avoid the
+        // transition between them and two different screen names to
+        // distinguish translations. The latter constraint may
+        // change when we revisit i18n, so wait until that is done
+        // before properly fixing this.
+        const disableSubmitButton = screen.name === "main.signUp"
+          && !termsAccepted(m);
+
+        const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
+
+        const props = {
+          avatar: avatar && m.getIn(["avatar", "transient", "url"]),
+          auxiliaryPane: screen.renderAuxiliaryPane(m),
+          autofocus: l.ui.autofocus(m),
+          backHandler: partialApplyId(screen, "backHandler"),
+          badgeLink: "https://auth0.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget",
+          closeHandler: l.ui.closable(m)
+            ? (...args) => closeLock(l.id(m), ...args)
+            : undefined,
+          contentComponent: screen.render(),
+          contentProps: {model: m, t},
+          disableSubmitButton: disableSubmitButton,
+          error: l.globalError(m),
+          isMobile: l.ui.mobile(m),
+          isModal: l.ui.appendContainer(m),
+          isSubmitting: l.submitting(m),
+          logo: l.ui.logo(m),
+          primaryColor: l.ui.primaryColor(m),
+          screenName: screen.name,
+          success: l.globalSuccess(m),
+          submitHandler: partialApplyId(screen, "submitHandler"),
+          tabs: screen.renderTabs(m),
+          terms: screen.renderTerms(m, t),
+          title: title,
+          transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
         };
+        render(l.ui.containerID(m), props);
 
-        const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
-        const title = avatar
-          ? l.ui.t(m, ["welcome"], {name: m.getIn(["avatar", "transient", "displayName"]), __textOnly: true})
-          : l.ui.t(m, ["title"], {__textOnly: true});
-
-        if (l.rendering(m)) {
-          const screen = this.engine.render(m);
-
-          // TODO: this is a temp hack because we need an unique name
-          // for both screens when rendering the box to avoid the
-          // transition between them and two different screen names to
-          // distinguish translations. The latter constraint may
-          // change when we revisit i18n, so wait until that is done
-          // before properly fixing this.
-          const disableSubmitButton = screen.name === "main.signUp"
-            && !termsAccepted(m);
-
-          const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
-
-          const props = {
-            avatar: avatar && m.getIn(["avatar", "transient", "url"]),
-            auxiliaryPane: screen.renderAuxiliaryPane(m),
-            autofocus: l.ui.autofocus(m),
-            backHandler: partialApplyId(screen, "backHandler"),
-            badgeLink: "https://auth0.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget",
-            closeHandler: l.ui.closable(m)
-              ? (...args) => closeLock(l.id(m), ...args)
-              : undefined,
-            contentComponent: screen.render(),
-            contentProps: {model: m, t},
-            disableSubmitButton: disableSubmitButton,
-            error: l.globalError(m),
-            isMobile: l.ui.mobile(m),
-            isModal: l.ui.appendContainer(m),
-            isSubmitting: l.submitting(m),
-            logo: l.ui.logo(m),
-            primaryColor: l.ui.primaryColor(m),
-            screenName: screen.name,
-            success: l.globalSuccess(m),
-            submitHandler: partialApplyId(screen, "submitHandler"),
-            tabs: screen.renderTabs(m),
-            terms: screen.renderTerms(m, t),
-            title: title,
-            transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
-          };
-          render(l.ui.containerID(m), props);
-
-          // TODO: hack so we can start testing the beta
-          if (!this.oldScreenName || this.oldScreenName != screen.name) {
-            if (screen.name === "login") {
-              l.emitEvent(m, "signin ready");
-            } else if (screen.name === "signUp") {
-              l.emitEvent(m, "signup ready");
-            }
+        // TODO: hack so we can start testing the beta
+        if (!this.oldScreenName || this.oldScreenName != screen.name) {
+          if (screen.name === "login") {
+            l.emitEvent(m, "signin ready");
+          } else if (screen.name === "signUp") {
+            l.emitEvent(m, "signup ready");
           }
-          this.oldScreenName = screen.name;
-        } else {
-          remove(l.ui.containerID(m));
         }
+        this.oldScreenName = screen.name;
+      } else {
+        remove(l.ui.containerID(m));
       }
     });
   }
