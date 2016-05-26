@@ -4,6 +4,7 @@ import * as client from '../../core/client/index';
 import { clearFields, setField, registerOptionField } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
 import sync from '../../sync';
+import trim from 'trim';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
