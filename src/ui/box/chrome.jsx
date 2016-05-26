@@ -48,13 +48,15 @@ export default class Chrome extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.showSubmitButton
-        && !this.state.delayingShowSubmitButton
-        && nextProps.showSubmitButton) {
+    const { auxiliaryPane, showSubmitButton } = this.props;
+    const { delayingShowSubmitButton } = this.state;
+
+    if (!showSubmitButton
+         && nextProps.showSubmitButton
+         && !delayingShowSubmitButton) {
       this.setState({delayingShowSubmitButton: true});
     }
 
-    const { auxiliaryPane } = this.props;
 
     if (!auxiliaryPane && nextProps.auxiliaryPane) {
       this.auxiliaryPaneTriggerInput = global.document.activeElement;
@@ -68,12 +70,13 @@ export default class Chrome extends React.Component {
     if (!autofocus) return;
 
     if (auxiliaryPane && !prevProps.auxiliaryPane) {
-      const node = ReactDOM.findDOMNode(this.refs.auxiliary);
-      const input = node.querySelector("input");
+      const input = this.findAutofocusInput(this.refs.auxiliary);
 
       if (input) {
         setTimeout(() => input.focus(), AUXILIARY_ANIMATION_DURATION);
       }
+
+      return;
     }
 
     if (!auxiliaryPane && prevProps.auxiliaryPane) {
@@ -83,11 +86,12 @@ export default class Chrome extends React.Component {
           AUXILIARY_ANIMATION_DURATION
         );
       }
+
+      return;
     }
 
     if (screenName !== prevProps.screenName) {
-      const node = ReactDOM.findDOMNode(this.refs.screen);
-      const input = node.querySelector("input");
+      const input = this.findAutofocusInput();
 
       if (input) {
         if (this.mainScreenName(prevProps.screenName) !== this.mainScreenName()) {
@@ -96,15 +100,18 @@ export default class Chrome extends React.Component {
           setTimeout(() => input.focus(), 17);
         }
       }
+
+      return;
     }
 
     if (!prevProps.error && error) {
-      const node = ReactDOM.findDOMNode(this.refs.screen);
-      const input = node.querySelector("input");
+      const input = this.findAutofocusInput();
 
       if (input) {
         setTimeout(() => input.focus(), 17);
       }
+
+      return;
     }
   }
 
@@ -132,9 +139,15 @@ export default class Chrome extends React.Component {
     return (str || this.props.screenName || "").split(".")[0];
   }
 
+  findAutofocusInput(ref) {
+    return ReactDOM.findDOMNode(ref || this.refs.screen).querySelector("input");
+  }
+
   focusError() {
     const node = ReactDOM.findDOMNode(this.refs.screen);
+    // TODO: make the error input selector configurable via props.
     const error = node.querySelector(".auth0-lock-error input");
+
     if (error) {
       error.focus();
     }
