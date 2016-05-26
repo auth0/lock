@@ -1,9 +1,12 @@
 import Immutable, { Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import webApi from '../../core/web_api';
-import { closeLock } from '../../core/actions';
+import {
+  closeLock,
+  logIn as coreLogIn,
+  validateAndSubmit
+} from '../../core/actions';
 import * as l from '../../core/index';
-import { startSubmit } from '../../core/actions';
 import * as c from '../../field/index';
 import  {
   authWithUsername,
@@ -17,104 +20,52 @@ import  {
 import { usernameStyle } from '../../engine/automatic';
 
 export function logIn(id) {
-  swap(updateEntity, "lock", id, lock => {
-    const useUsername = usernameStyle(lock) === "username";
-    if ((useUsername && c.isFieldValid(lock, "username") && c.isFieldValid(lock, "password"))
-        || (!useUsername && c.isFieldValid(lock, "email") && c.isFieldValid(lock, "password"))) {
-      return l.setSubmitting(lock, true);
-    } else {
-      if (useUsername) {
-        lock = c.setFieldShowInvalid(lock, "username", !c.isFieldValid(lock, "username"));
-      } else {
-        lock = c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-      }
+  const m = read(getEntity, "lock", id);
+  const usernameField = usernameStyle(m) === "username"
+    ? "username"
+    : "email";
+  const username = c.getFieldValue(m, usernameField);
 
-      lock = c.setFieldShowInvalid(lock, "password", !c.isFieldValid(lock, "password"));
-      return lock;
-    }
+  coreLogIn(id, [usernameField, "password"], {
+    connection: databaseConnectionName(m),
+    username: username,
+    password: c.getFieldValue(m, "password")
   });
+}
 
-  const lock = read(getEntity, "lock", id);
-  const useUsername = usernameStyle(lock) === "username";
-  if (l.submitting(lock)) {
-    const options = {
-      connection: databaseConnectionName(lock),
-      username: useUsername ? c.username(lock) : c.email(lock),
-      password: c.password(lock)
+export function signUp(id) {
+  const m = read(getEntity, "lock", id);
+  const fields = ["email", "password"];
+  if (authWithUsername(m))fields.push("username");
+  additionalSignUpFields(m).forEach(x => fields.push(x.get("name")));
+
+  validateAndSubmit(id, fields, m => {
+    const params = {
+      connection: databaseConnectionName(m),
+      email: c.getFieldValue(m, "email"),
+      password: c.getFieldValue(m, "password"),
+      autoLogin: shouldAutoLogin(m)
     };
 
-    webApi.logIn(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => logInError(id, error), 250);
-        } else {
-          logInSuccess(id, ...args);
-        }
-      }
-    );
-  }
-}
-
-function logInSuccess(id, ...args) {
-  const lock = read(getEntity, "lock", id);
-  const autoclose = l.ui.autoclose(lock);
-
-  if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
-    l.invokeLogInCallback(lock, null, ...args);
-  } else {
-    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
-  }
-}
-
-function logInError(id, error) {
-  const lock = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(lock, error);
-
-  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  l.invokeLogInCallback(lock, error);
-}
-
-
-export function signUp(id, options = {}) {
-  let lock = read(getEntity, "lock", id);
-  const fields = ["email", "password"];
-  additionalSignUpFields(lock).forEach(x => fields.push(x.get("name")));
-  if (authWithUsername(lock)) fields.push("username");
-  let isSubmitting;
-  [isSubmitting, lock] = startSubmit(id, fields);
-
-  if (isSubmitting) {
-    options.connection = databaseConnectionName(lock);
-    options.email = c.email(lock);
-    options.password = c.password(lock)
-    options.autoLogin = shouldAutoLogin(lock);
-
-    if (authWithUsername(lock)) {
-      options.username = c.username(lock);
+    if (authWithUsername(m)) {
+      params.username = c.getFieldValue(m, "username");
     }
 
-    if (!additionalSignUpFields(lock).isEmpty()) {
-      options.user_metadata = {};
-      additionalSignUpFields(lock).forEach(x => {
-        options.user_metadata[x.get("name")] = c.getFieldValue(lock, x.get("name"))
+    if (!additionalSignUpFields(m).isEmpty()) {
+      params.user_metadata = {};
+      additionalSignUpFields(m).forEach(x => {
+        params.user_metadata[x.get("name")] = c.getFieldValue(m, x.get("name"));
       });
     }
 
-    webApi.signUp(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => signUpError(id, error), 250);
-        } else {
-          signUpSuccess(id, ...args);
-        }
+    webApi.signUp(id, params, (error, ...args) => {
+      if (error) {
+        setTimeout(() => signUpError(id, error), 250);
+      } else {
+        signUpSuccess(id, ...args);
       }
-    );
-  }
+    });
+  });
 }
 
 function signUpSuccess(id, ...args) {
@@ -171,7 +122,7 @@ function autoLogInSuccess(id, ...args) {
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
+    swap(updateEntity, "lock", id, lock => l.setLoggedIn(l.setSubmitting(lock, false), true));
     l.invokeLogInCallback(lock, null, ...args);
   } else {
     closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
@@ -181,67 +132,50 @@ function autoLogInSuccess(id, ...args) {
 function autoLogInError(id, error) {
   const lock = read(getEntity, "lock", id);
   const errorMessage = l.loginErrorMessage(lock, error);
-  swap(updateEntity, "lock", id, m => {
-    swap(updateEntity, "lock", id, m => (
-      l.setSubmitting(setScreen(m, "login"), false, errorMessage)
-    ));
-  });
-
-  l.invokeLogInCallback(lock, error);
+  swap(updateEntity, "lock", id, m => (
+    l.setSubmitting(setScreen(m, "login"), false, errorMessage)
+  ));
 }
 
 export function resetPassword(id) {
-  // TODO: abstract this submit thing
-  swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "email")) {
-      return l.setSubmitting(lock, true);
-    } else {
-      return c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-    }
-  });
-
-  const lock = read(getEntity, "lock", id);
-
-  if (l.submitting(lock)) {
-    const options = {
-      connection: databaseConnectionName(lock),
-      email: c.email(lock)
+  validateAndSubmit(id, ["email"], m => {
+    const params = {
+      connection: databaseConnectionName(m),
+      email: c.getFieldValue(m, "email")
     };
 
-    webApi.resetPassword(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => resetPasswordError(id, error), 250);
-        } else {
-          resetPasswordSuccess(id, ...args);
-        }
+    webApi.resetPassword(id, params, (error, ...args) => {
+      if (error) {
+        setTimeout(() => resetPasswordError(id, error), 250);
+      } else {
+        resetPasswordSuccess(id, ...args);
       }
-    );
-  }
+    });
+  });
 }
 
 function resetPasswordSuccess(id, ...args) {
-  const lock = read(getEntity, "lock", id);
   // TODO: needs to be auto closed?
   // TODO: what if login is not enabled?
-  swap(updateEntity, "lock", id, lock => (
-    setScreen(l.setSubmitting(lock, false), "login")
+
+  const m = read(getEntity, "lock", id);
+  swap(updateEntity, "lock", id, m => (
+    setScreen(l.setSubmitting(m, false), "login")
   ));
 
+  // TODO: should be handled by box
   setTimeout(() => {
-    const successMessage = l.ui.t(lock, ["success", "resetPassword"], {__textOnly: true});
+    const successMessage = l.ui.t(m, ["success", "resetPassword"], {__textOnly: true});
     swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
   }, 500);
 }
 
 function resetPasswordError(id, error) {
-  const lock = read(getEntity, "lock", id);
+  const m = read(getEntity, "lock", id);
 
   const errorMessage =
-    l.ui.t(lock, ["error", "forgotPassword", error.code], {__textOnly: true})
-    || l.ui.t(lock, ["error", "forgotPassword", "lock.fallback"], {__textOnly: true});
+    l.ui.t(m, ["error", "forgotPassword", error.code], {__textOnly: true})
+    || l.ui.t(m, ["error", "forgotPassword", "lock.fallback"], {__textOnly: true});
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }

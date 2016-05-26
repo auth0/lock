@@ -1,5 +1,5 @@
 import Immutable, { Map } from 'immutable';
-import WebAPI from './web_api';
+import webApi from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote_data';
 import * as l from './index';
@@ -14,7 +14,7 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
   preload(l.ui.logo(m) || defaultProps.logo);
 
 
-  WebAPI.setupClient(id, clientID, domain, l.withAuthOptions(m, {
+  webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {
     ...options,
     popupOptions: l.ui.popupOptions(m)
   }));
@@ -28,7 +28,7 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
   l.runHook(m, "didInitialize", options);
 
   if (l.auth.redirect(m)) {
-    const hash = WebAPI.parseHash(id);
+    const hash = webApi.parseHash(id);
     // TODO: this leaves the hash symbol (#) in the URL, maybe we can
     // use the history API instead to remove it.
     global.location.hash = "";
@@ -109,18 +109,6 @@ function emitEvent(id, str, ...args) {
   l.emitEvent(read(getEntity, "lock", id), str, ...args);
 }
 
-export function startSubmit(id, fields = []) {
-  swap(updateEntity, "lock", id, m => {
-    const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
-    return allFieldsValid
-      ? l.setSubmitting(m, true)
-      : fields.reduce((r, x) => showInvalidField(r, x), m);
-  });
-
-  const m = read(getEntity, "lock", id);
-  return [l.submitting(m), m];
-}
-
 export function validateAndSubmit(id, fields = [], f) {
   swap(updateEntity, "lock", id, m => {
     const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
@@ -131,11 +119,41 @@ export function validateAndSubmit(id, fields = [], f) {
 
   const m = read(getEntity, "lock", id);
   if (l.submitting(m)) {
-    // TODO: besides the model, we can provide the field values since
-    // they are most likely to be sent
     f(m);
   }
+}
 
-  // TODO: can we abstract submission? most call webApi.login and
-  // handle success and error similarly
+export function logIn(id, fields, params = {}) {
+  validateAndSubmit(id, fields, m => {
+    webApi.logIn(id, params, (error, ...args) => {
+      if (error) {
+        setTimeout(() => logInError(id, error), 250);
+      } else {
+        logInSuccess(id, ...args);
+      }
+    });
+  });
+}
+
+
+function logInSuccess(id, ...args) {
+  const m = read(getEntity, "lock", id);
+
+  if (!l.ui.autoclose(m)) {
+    swap(updateEntity, "lock", id, m => {
+      m = l.setSubmitting(m, false);
+      return l.setLoggedIn(m, true);
+    });
+
+    l.invokeLogInCallback(m, null, ...args);
+  } else {
+    closeLock(id, false, m1 => l.invokeLogInCallback(m1, null, ...args));
+  }
+}
+
+function logInError(id, error) {
+  const m = read(getEntity, "lock", id);
+  const errorMessage = l.loginErrorMessage(m, error);
+
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }

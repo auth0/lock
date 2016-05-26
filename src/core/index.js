@@ -222,12 +222,12 @@ export function render(m) {
 
 export { reset };
 
-export function setSignedIn(m, value) {
-  return tset(m, "signedIn", value);
+export function setLoggedIn(m, value) {
+  return tset(m, "loggedIn", value);
 }
 
-export function signedIn(m) {
-  return tget(m, "signedIn", false);
+export function loggedIn(m) {
+  return tget(m, "loggedIn", false);
 }
 
 export function warn(x, str) {

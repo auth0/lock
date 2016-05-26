@@ -63,9 +63,8 @@ export function showInvalidField(m, field) {
   return m.setIn(["field", field, "showInvalid"], !isFieldValid(m, field));
 }
 
-// TODO: replace invocation of this function for invocation of the
-// `showInvalidField`. This is always called with !isFieldValid(field)
-// as the value argument, so there.
+// TODO: only used in passwordless, when we update it to use
+// validateAndSubmit this won't be needed anymore.
 export function setFieldShowInvalid(m, field, value) {
   return m.setIn(["field", field, "showInvalid"], value);
 }
