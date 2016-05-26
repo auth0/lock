@@ -8,7 +8,7 @@ export default class SignedInConfirmation extends React.Component {
 
   // TODO: can't we get this from pops?
   t(keyPath, params) {
-    return l.ui.t(this.props.lock, [keyPath], params);
+    return l.ui.t(this.props.lock, ["success", keyPath], params);
   }
 
   handleClose() {
@@ -22,7 +22,7 @@ export default class SignedInConfirmation extends React.Component {
 
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{this.t("loggedInMessage")}</p>
+        <p>{this.t("logIn")}</p>
       </SuccessPane>
     );
   }

@@ -23,6 +23,7 @@ export default {
     }
   },
   success: { // success messages show above the form or in a confirmation pane
+    logIn: "Thanks for logging in.",
     resetPassword: "We've just sent you an email to reset your password."
   },
   databaseEnterpriseLoginInstructions: "",
@@ -35,7 +36,6 @@ export default {
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   lastLoginInstructions: "Last time you logged in with",
-  loggedInMessage: "Thanks for logging in.",
   loginAtLabel: "Login at {domain}",
   loginLabel: "Login",
   loginWithLabel: "Login with {idp}",
