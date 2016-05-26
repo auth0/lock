@@ -1,7 +1,7 @@
 import React from 'react';
 import Screen from '../../core/screen';
 import ResetPasswordPane from './reset_password_pane';
-import { authWithUsername } from './index';
+import { authWithUsername, hasScreen } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 
 const Component = ({model, t}) => {
@@ -24,7 +24,7 @@ export default class ResetPassword extends Screen {
   }
 
   backHandler(m) {
-    return cancelResetPassword;
+    return hasScreen(m, "login") ? cancelResetPassword : undefined;
   }
 
   submitHandler() {
