@@ -86,7 +86,6 @@ class Automatic {
     if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
       l.warn(m, `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`);
     }
-
   }
 
   render(m) {
@@ -131,6 +130,7 @@ class Automatic {
     const Screen = Automatic.SCREENS[getScreen(m)];
     if (Screen) return new Screen();
 
+    l.error(m, "At least one screen (\"login\", \"signUp\" or \"forgotPassword\") needs to be allowed.");
     return new ErrorScreen();
   }
 
