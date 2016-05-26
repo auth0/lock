@@ -1,7 +1,11 @@
 import Immutable, { Map } from 'immutable';
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import webApi from '../../core/web_api';
-import { closeLock, logIn as coreLogIn } from '../../core/actions';
+import {
+  closeLock,
+  logIn as coreLogIn,
+  validateAndSubmit
+} from '../../core/actions';
 import * as l from '../../core/index';
 import { startSubmit } from '../../core/actions';
 import * as c from '../../field/index';
@@ -139,57 +143,44 @@ function autoLogInError(id, error) {
 }
 
 export function resetPassword(id) {
-  // TODO: abstract this submit thing
-  swap(updateEntity, "lock", id, lock => {
-    if (c.isFieldValid(lock, "email")) {
-      return l.setSubmitting(lock, true);
-    } else {
-      return c.setFieldShowInvalid(lock, "email", !c.isFieldValid(lock, "email"));
-    }
-  });
-
-  const lock = read(getEntity, "lock", id);
-
-  if (l.submitting(lock)) {
-    const options = {
-      connection: databaseConnectionName(lock),
-      email: c.email(lock)
+  validateAndSubmit(id, ["email"], m => {
+    const params = {
+      connection: databaseConnectionName(m),
+      email: c.getFieldValue(m, "email")
     };
 
-    webApi.resetPassword(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => resetPasswordError(id, error), 250);
-        } else {
-          resetPasswordSuccess(id, ...args);
-        }
+    webApi.resetPassword(id, params, (error, ...args) => {
+      if (error) {
+        setTimeout(() => resetPasswordError(id, error), 250);
+      } else {
+        resetPasswordSuccess(id, ...args);
       }
-    );
-  }
+    });
+  });
 }
 
 function resetPasswordSuccess(id, ...args) {
-  const lock = read(getEntity, "lock", id);
   // TODO: needs to be auto closed?
   // TODO: what if login is not enabled?
-  swap(updateEntity, "lock", id, lock => (
-    setScreen(l.setSubmitting(lock, false), "login")
+
+  const m = read(getEntity, "lock", id);
+  swap(updateEntity, "lock", id, m => (
+    setScreen(l.setSubmitting(m, false), "login")
   ));
 
+  // TODO: should be handled by box
   setTimeout(() => {
-    const successMessage = l.ui.t(lock, ["success", "resetPassword"], {__textOnly: true});
+    const successMessage = l.ui.t(m, ["success", "resetPassword"], {__textOnly: true});
     swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
   }, 500);
 }
 
 function resetPasswordError(id, error) {
-  const lock = read(getEntity, "lock", id);
+  const m = read(getEntity, "lock", id);
 
   const errorMessage =
-    l.ui.t(lock, ["error", "forgotPassword", error.code], {__textOnly: true})
-    || l.ui.t(lock, ["error", "forgotPassword", "lock.fallback"], {__textOnly: true});
+    l.ui.t(m, ["error", "forgotPassword", error.code], {__textOnly: true})
+    || l.ui.t(m, ["error", "forgotPassword", "lock.fallback"], {__textOnly: true});
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
