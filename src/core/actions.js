@@ -168,5 +168,4 @@ function logInError(id, error) {
   const errorMessage = l.loginErrorMessage(m, error);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  l.invokeLogInCallback(m, error);
 }

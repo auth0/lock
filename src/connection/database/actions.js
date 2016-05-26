@@ -133,13 +133,9 @@ function autoLogInSuccess(id, ...args) {
 function autoLogInError(id, error) {
   const lock = read(getEntity, "lock", id);
   const errorMessage = l.loginErrorMessage(lock, error);
-  swap(updateEntity, "lock", id, m => {
-    swap(updateEntity, "lock", id, m => (
-      l.setSubmitting(setScreen(m, "login"), false, errorMessage)
-    ));
-  });
-
-  l.invokeLogInCallback(lock, error);
+  swap(updateEntity, "lock", id, m => (
+    l.setSubmitting(setScreen(m, "login"), false, errorMessage)
+  ));
 }
 
 export function resetPassword(id) {
