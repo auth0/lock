@@ -136,7 +136,7 @@ export function logIn(id, fields, params = {}) {
 }
 
 
-function logInSuccess(id, ...args) {
+export function logInSuccess(id, ...args) {
   const m = read(getEntity, "lock", id);
 
   if (!l.ui.autoclose(m)) {

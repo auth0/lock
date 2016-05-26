@@ -4,6 +4,7 @@ import webApi from '../../core/web_api';
 import {
   closeLock,
   logIn as coreLogIn,
+  logInSuccess,
   validateAndSubmit
 } from '../../core/actions';
 import * as l from '../../core/index';
@@ -89,15 +90,12 @@ function signUpSuccess(id, ...args) {
         if (error) {
           setTimeout(() => autoLogInError(id, error), 250);
         } else {
-          autoLogInSuccess(id, ...args);
+          logInSuccess(id, ...args);
         }
       }
     );
   }
 
-
-  // TODO: should we autoclose here? I believe we should do it only if
-  // no login screen is available.
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
@@ -105,6 +103,7 @@ function signUpSuccess(id, ...args) {
   } else {
     closeLock(id, false);
   }
+
 }
 
 function signUpError(id, error) {
@@ -118,24 +117,15 @@ function signUpError(id, error) {
 }
 
 
-function autoLogInSuccess(id, ...args) {
-  const lock = read(getEntity, "lock", id);
-  const autoclose = l.ui.autoclose(lock);
-
-  if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => l.setLoggedIn(l.setSubmitting(lock, false), true));
-    l.invokeLogInCallback(lock, null, ...args);
-  } else {
-    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
-  }
-}
-
 function autoLogInError(id, error) {
-  const lock = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(lock, error);
-  swap(updateEntity, "lock", id, m => (
-    l.setSubmitting(setScreen(m, "login"), false, errorMessage)
-  ));
+  swap(updateEntity, "lock", id, m => {
+    if (hasScreen(m, "login")) {
+      const errorMessage = l.loginErrorMessage(m, error);
+      return l.setSubmitting(setScreen(m, "login"), false, errorMessage);
+    } else {
+      return l.setSubmitting(l.stop(m), false);
+    }
+  });
 }
 
 export function resetPassword(id) {
