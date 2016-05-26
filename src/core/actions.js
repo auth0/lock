@@ -164,9 +164,9 @@ function logInSuccess(id, ...args) {
 }
 
 function logInError(id, error) {
-  const lock = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(lock, error);
+  const m = read(getEntity, "lock", id);
+  const errorMessage = l.loginErrorMessage(m, error);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  l.invokeLogInCallback(lock, error);
+  l.invokeLogInCallback(m, error);
 }
