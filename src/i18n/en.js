@@ -22,7 +22,7 @@ export default {
       "username_exists": "The username already exists."
     }
   },
-  success: { // success messages show above the form
+  success: { // success messages show above the form or in a confirmation pane
     resetPassword: "We've just sent you an email to reset your password."
   },
   databaseEnterpriseLoginInstructions: "",
