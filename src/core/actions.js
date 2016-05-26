@@ -1,5 +1,5 @@
 import Immutable, { Map } from 'immutable';
-import WebAPI from './web_api';
+import webApi from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote_data';
 import * as l from './index';
@@ -14,7 +14,7 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
   preload(l.ui.logo(m) || defaultProps.logo);
 
 
-  WebAPI.setupClient(id, clientID, domain, l.withAuthOptions(m, {
+  webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {
     ...options,
     popupOptions: l.ui.popupOptions(m)
   }));
@@ -28,7 +28,7 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
   l.runHook(m, "didInitialize", options);
 
   if (l.auth.redirect(m)) {
-    const hash = WebAPI.parseHash(id);
+    const hash = webApi.parseHash(id);
     // TODO: this leaves the hash symbol (#) in the URL, maybe we can
     // use the history API instead to remove it.
     global.location.hash = "";
@@ -131,11 +131,39 @@ export function validateAndSubmit(id, fields = [], f) {
 
   const m = read(getEntity, "lock", id);
   if (l.submitting(m)) {
-    // TODO: besides the model, we can provide the field values since
-    // they are most likely to be sent
     f(m);
   }
+}
 
-  // TODO: can we abstract submission? most call webApi.login and
-  // handle success and error similarly
+export function logIn(id, fields, params = {}) {
+  validateAndSubmit(id, fields, m => {
+    webApi.logIn(id, params, (error, ...args) => {
+      if (error) {
+        setTimeout(() => logInError(id, error), 250);
+      } else {
+        logInSuccess(id, ...args);
+      }
+    });
+  });
+}
+
+
+function logInSuccess(id, ...args) {
+  const lock = read(getEntity, "lock", id);
+  const autoclose = l.ui.autoclose(lock);
+
+  if (!autoclose) {
+    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
+    l.invokeLogInCallback(lock, null, ...args);
+  } else {
+    closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));
+  }
+}
+
+function logInError(id, error) {
+  const lock = read(getEntity, "lock", id);
+  const errorMessage = l.loginErrorMessage(lock, error);
+
+  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+  l.invokeLogInCallback(lock, error);
 }

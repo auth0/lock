@@ -11,7 +11,7 @@ import * as c from '../../field/index';
 import { setUsername } from '../../field/username';
 import { emailLocalPart } from '../../field/email';
 import webApi from '../../core/web_api';
-import { validateAndSubmit } from '../../core/actions';
+import { logIn as coreLogIn } from '../../core/actions';
 
 export function startHRD(id) {
   swap(updateEntity, "lock", id, m => {
@@ -39,27 +39,14 @@ export function logIn(id) {
 
 function logInActiveFlow(id) {
   const m = read(getEntity, "lock", id);
-  const useUsername = isHRDActive(m);
+  const usernameField = isHRDActive(m) ? "username" : "email";
+  const username = c.getFieldValue(m, usernameField);
 
-  validateAndSubmit(id, ["password", useUsername ? "username" : "email"], m => {
-    const options = {
-      connection: enterpriseConnection(m).get("name"),
-      username: useUsername ? c.username(m) : c.email(m),
-      password: c.password(m),
-      login_hint: useUsername ? c.username(m) : c.email(m),
-    };
-
-    webApi.logIn(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => logInError(id, error), 250);
-        } else {
-          logInSuccess(id, ...args);
-        }
-      }
-    );
+  coreLogIn(id, ["password", usernameField], {
+    connection: enterpriseConnection(m).get("name"),
+    username: username,
+    password: c.getFieldValue(m, "password"),
+    login_hint: username
   });
 }
 
