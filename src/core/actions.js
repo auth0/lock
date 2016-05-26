@@ -109,18 +109,6 @@ function emitEvent(id, str, ...args) {
   l.emitEvent(read(getEntity, "lock", id), str, ...args);
 }
 
-export function startSubmit(id, fields = []) {
-  swap(updateEntity, "lock", id, m => {
-    const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
-    return allFieldsValid
-      ? l.setSubmitting(m, true)
-      : fields.reduce((r, x) => showInvalidField(r, x), m);
-  });
-
-  const m = read(getEntity, "lock", id);
-  return [l.submitting(m), m];
-}
-
 export function validateAndSubmit(id, fields = [], f) {
   swap(updateEntity, "lock", id, m => {
     const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);

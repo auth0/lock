@@ -7,7 +7,6 @@ import {
   validateAndSubmit
 } from '../../core/actions';
 import * as l from '../../core/index';
-import { startSubmit } from '../../core/actions';
 import * as c from '../../field/index';
 import  {
   authWithUsername,
@@ -34,43 +33,39 @@ export function logIn(id) {
   });
 }
 
-export function signUp(id, options = {}) {
-  let lock = read(getEntity, "lock", id);
+export function signUp(id) {
+  const m = read(getEntity, "lock", id);
   const fields = ["email", "password"];
-  additionalSignUpFields(lock).forEach(x => fields.push(x.get("name")));
-  if (authWithUsername(lock)) fields.push("username");
-  let isSubmitting;
-  [isSubmitting, lock] = startSubmit(id, fields);
+  if (authWithUsername(m))fields.push("username");
+  additionalSignUpFields(m).forEach(x => fields.push(x.get("name")));
 
-  if (isSubmitting) {
-    options.connection = databaseConnectionName(lock);
-    options.email = c.email(lock);
-    options.password = c.password(lock)
-    options.autoLogin = shouldAutoLogin(lock);
+  validateAndSubmit(id, fields, m => {
+    const params = {
+      connection: databaseConnectionName(m),
+      email: c.getFieldValue(m, "email"),
+      password: c.getFieldValue(m, "password"),
+      autoLogin: shouldAutoLogin(m)
+    };
 
-    if (authWithUsername(lock)) {
-      options.username = c.username(lock);
+    if (authWithUsername(m)) {
+      params.username = c.getFieldValue(m, "username");
     }
 
-    if (!additionalSignUpFields(lock).isEmpty()) {
-      options.user_metadata = {};
-      additionalSignUpFields(lock).forEach(x => {
-        options.user_metadata[x.get("name")] = c.getFieldValue(lock, x.get("name"))
+    if (!additionalSignUpFields(m).isEmpty()) {
+      params.user_metadata = {};
+      additionalSignUpFields(m).forEach(x => {
+        params.user_metadata[x.get("name")] = c.getFieldValue(m, x.get("name"));
       });
     }
 
-    webApi.signUp(
-      id,
-      options,
-      (error, ...args) => {
-        if (error) {
-          setTimeout(() => signUpError(id, error), 250);
-        } else {
-          signUpSuccess(id, ...args);
-        }
+    webApi.signUp(id, params, (error, ...args) => {
+      if (error) {
+        setTimeout(() => signUpError(id, error), 250);
+      } else {
+        signUpSuccess(id, ...args);
       }
-    );
-  }
+    });
+  });
 }
 
 function signUpSuccess(id, ...args) {
