@@ -231,10 +231,11 @@ export function setScreen(m, name, fields = []) {
 
 export function getScreen(m) {
   const initialScreen = get(m, "initialScreen");
+
   return tget(
     m,
     "screen",
-    hasScreen(m, initialScreen) ? initialScreen : "login"
+    hasScreen(m, initialScreen) ? initialScreen : undefined
   );
 }
 
