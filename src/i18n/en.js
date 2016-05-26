@@ -24,7 +24,8 @@ export default {
   },
   success: { // success messages show above the form or in a confirmation pane
     logIn: "Thanks for logging in.",
-    resetPassword: "We've just sent you an email to reset your password."
+    resetPassword: "We've just sent you an email to reset your password.",
+    signUp: "Thanks for signing up."
   },
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "or",
@@ -55,7 +56,6 @@ export default {
   signUpLabel: "Sign Up",
   signUpterms: "",
   signUpWithLabel: "Sign up with {idp}",
-  signedUpMessage: "Thanks for signing up.",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",
