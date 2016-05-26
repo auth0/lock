@@ -153,7 +153,7 @@ function logInSuccess(id, ...args) {
   const autoclose = l.ui.autoclose(lock);
 
   if (!autoclose) {
-    swap(updateEntity, "lock", id, lock => l.setSignedIn(l.setSubmitting(lock, false), true));
+    swap(updateEntity, "lock", id, lock => l.setLoggedIn(l.setSubmitting(lock, false), true));
     l.invokeLogInCallback(lock, null, ...args);
   } else {
     closeLock(id, false, lock => l.invokeLogInCallback(lock, null, ...args));

@@ -39,5 +39,5 @@ export function renderSignedInConfirmation(lock, props = {}) {
   props.key = "auxiliarypane";
   props.lock = lock;
 
-  return l.signedIn(lock) ? <SignedInConfirmation {...props} /> : null;
+  return l.loggedIn(lock) ? <SignedInConfirmation {...props} /> : null;
 }
