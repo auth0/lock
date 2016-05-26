@@ -49,6 +49,7 @@ function processDatabaseOptions(opts) {
   let {
     additionalSignUpFields,
     allowForgotPassword,
+    allowLogin,
     allowSignUp,
     defaultDatabaseConnection,
     forgotPasswordLink,
@@ -71,6 +72,12 @@ function processDatabaseOptions(opts) {
     screens = screens.filter(x => x !== "forgotPassword");
   }
 
+  if (!assertMaybeBoolean(opts, "allowLogin")) {
+    allowLogin = undefined;
+  } else if (allowLogin === false) {
+    screens = screens.filter(x => x !== "login");
+  }
+
   if (!assertMaybeBoolean(opts, "allowSignUp")) {
     allowSignUp = undefined;
   } else if (allowSignUp === false) {
@@ -79,6 +86,10 @@ function processDatabaseOptions(opts) {
 
   if (!assertMaybeEnum(opts, "initialScreen", screens)) {
     initialScreen = undefined;
+  }
+
+  if (initialScreen === undefined && screens.length > 0) {
+    initialScreen = screens[0];
   }
 
   if (!assertMaybeString(opts, "defaultDatabaseConnection")) {
