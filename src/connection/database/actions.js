@@ -65,13 +65,13 @@ export function signUp(id) {
       if (error) {
         setTimeout(() => signUpError(id, error), 250);
       } else {
-        signUpSuccess(id, ...args);
+        signUpSuccess(id);
       }
     });
   });
 }
 
-function signUpSuccess(id, ...args) {
+function signUpSuccess(id) {
   const lock = read(getEntity, "lock", id);
 
   if (shouldAutoLogin(lock)) {
