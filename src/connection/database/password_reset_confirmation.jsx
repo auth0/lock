@@ -2,14 +2,9 @@ import React from 'react';
 import SuccessPane from '../../ui/box/success_pane';
 import { closeLock } from '../../core/actions';
 import * as l from '../../core/index';
-
+import * as i18n from '../../i18n';   // TODO: can't we get this from props?
 
 export default class PasswordResetConfirmation extends React.Component {
-
-  // TODO: can't we get this from pops?
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["success", keyPath], params);
-  }
 
   handleClose() {
     const { closeHandler, lock } = this.props;
@@ -22,7 +17,7 @@ export default class PasswordResetConfirmation extends React.Component {
 
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{this.t("resetPassword")}</p>
+        <p>{i18n.html(this.props.lock, ["success", "resetPassword"])}</p>
       </SuccessPane>
     );
   }
@@ -41,5 +36,5 @@ export function renderPasswordResetConfirmation(m, props = {}) {
 
   return m.get("passwordResetted")
     ? <PasswordResetConfirmation {...props} />
-       : null;
+    : null;
 }
