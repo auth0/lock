@@ -55,8 +55,8 @@ export default class Base extends EventEmitter {
 
       const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
       const title = avatar
-        ? l.ui.t(m, ["welcome"], {name: m.getIn(["avatar", "transient", "displayName"]), __textOnly: true})
-        : l.ui.t(m, ["title"], {__textOnly: true});
+        ? i18n.str(m, "welcome", m.getIn(["avatar", "transient", "displayName"]))
+        : i18n.str(m, "title");
 
       if (l.rendering(m)) {
         const screen = this.engine.render(m);

@@ -62,7 +62,7 @@ export default {
   unrecoverableError: "Something went wrong.<br />Please contant technical support.",
   usernameInputPlaceholder: "your username",
   title: "Auth0",
-  welcome: "Welcome {name}!",
+  welcome: "Welcome %s!",
   windowsAuthInstructions: "You are connected from your corporate network&hellip;",
   windowsAuthLabel: "Windows Authentication"
 };
