@@ -20,6 +20,10 @@ export function html(m, keyPath, ...args) {
     : null;
 }
 
+export function group(m, keyPath) {
+  return get(m, ["strings"].concat(keyPath), Map()).toJS();
+}
+
 export default function(m, keyPath, params = {}) {
   const strings = get(m, "strings");
 
