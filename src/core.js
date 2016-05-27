@@ -13,6 +13,7 @@ import { termsAccepted } from './connection/database/index';
 import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
+import * as i18n from './i18n';
 
 import { go } from './sync';
 
@@ -70,6 +71,10 @@ export default class Base extends EventEmitter {
           && !termsAccepted(m);
 
         const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
+        const i18nProp = {
+          html: (keyPath, params) => i18n.html(m, keyPath, params),
+          str: (keyPath, params) => i18n.str(m, keyPath, params)
+        };
 
         const props = {
           avatar: avatar && m.getIn(["avatar", "transient", "url"]),
@@ -81,7 +86,7 @@ export default class Base extends EventEmitter {
             ? (...args) => closeLock(l.id(m), ...args)
             : undefined,
           contentComponent: screen.render(),
-          contentProps: {model: m, t},
+          contentProps: {i18n: i18nProp, model: m, t},
           disableSubmitButton: disableSubmitButton,
           error: l.globalError(m),
           isMobile: l.ui.mobile(m),
