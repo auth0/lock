@@ -2,14 +2,9 @@ import React from 'react';
 import SuccessPane from '../ui/box/success_pane';
 import { closeLock } from './actions';
 import * as l from './index';
-
+import * as i18n from '../i18n'; // TODO: can't we get this from pops?
 
 export default class SignedInConfirmation extends React.Component {
-
-  // TODO: can't we get this from pops?
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["success", keyPath], params);
-  }
 
   handleClose() {
     const { closeHandler, lock } = this.props;
@@ -22,7 +17,7 @@ export default class SignedInConfirmation extends React.Component {
 
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{this.t("logIn")}</p>
+        <p>{i18n.html(lock, ["success", "logIn"])}</p>
       </SuccessPane>
     );
   }
