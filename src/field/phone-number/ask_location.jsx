@@ -3,6 +3,7 @@ import LocationSelect from './location_select';
 import { cancelSelectPhoneLocation, changePhoneLocation } from './actions';
 import { initialLocationSearchStr, selectingLocation } from './index';
 import * as l from '../../core/index';
+import * as i18n from '../../i18n'; // TODO: can't we get this from props?
 
 export default class AskLocation extends React.Component {
 
@@ -14,16 +15,12 @@ export default class AskLocation extends React.Component {
     changePhoneLocation(l.id(this.props.lock), location);
   }
 
-  t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["location"].concat(keyPath), params);
-  }
-
   render() {
     return (
       <LocationSelect
         cancelHandler={::this.handleCancel}
         initialLocationSearchStr={this.props.initialLocationSearchStr}
-        locationFilterInputPlaceholder={this.t(["locationFilterInputPlaceholder"], {__textOnly: true})}
+        locationFilterInputPlaceholder={i18n.str(this.props.lock, "locationFilterInputPlaceholder")}
         selectHandler={::this.handleSelect}
       />
     );

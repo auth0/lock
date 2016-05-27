@@ -18,20 +18,21 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
     return renderSignedInConfirmation(lock) || super.renderAuxiliaryPane(lock);
   }
 
-  render({focusSubmit, model, t}) {
+  render({focusSubmit, i18n, model}) {
+    // TODO: review when bringing passwordless back
     return (
       <div>
         <SocialButtonsPane
+          instructions={i18n.html("socialLoginInstructions")}
+          label={i18n.str}
           lock={model}
           signUp={false}
-          smallButtonsHeader={t("smallSocialButtonsHeader", {__textOnly: true})}
-          t={t}
         />
-        <PaneSeparator>{t("separatorText")}</PaneSeparator>
+        <PaneSeparator />
         <PhoneNumberPane
           focusSubmit={focusSubmit}
           lock={model}
-          placeholder={t("phoneNumberInputPlaceholder", {__textOnly: true})}
+          placeholder={i18n.str("phoneNumberInputPlaceholder")}
         />
       </div>
     );

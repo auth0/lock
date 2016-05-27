@@ -6,15 +6,15 @@ import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import * as l from '../../core/index';
 import { corpNetworkConnection } from '../enterprise';
 
-const Component = ({model, t}) => {
-  const headerText = t("windowsAuthInstructions") || null;
+const Component = ({i18n, model}) => {
+  const headerText = i18n.html("windowsAuthInstructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (
     <QuickAuthPane
-      alternativeLabel={t("notYourAccountAction", {__textOnly: true})}
+      alternativeLabel={i18n.str("notYourAccountAction")}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
-      buttonLabel={t("windowsAuthLabel", {__textOnly: true})}
+      buttonLabel={i18n.str("windowsAuthLabel")}
       buttonClickHandler={e => logIn(l.id(model), corpNetworkConnection(model))}
       header={header}
       strategy="windows"

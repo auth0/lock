@@ -5,11 +5,11 @@ import { renderAskLocation } from './ask_location';
 import { cancelSelectPhoneLocation } from './actions';
 import { selectingLocation } from './index';
 
-const Component = ({focusSubmit, model, t}) => (
+const Component = ({focusSubmit, i18n, model}) => (
   <PhoneNumberPane
     focusSubmit={focusSubmit}
     lock={model}
-    placeholder={t("phoneNumberInputPlaceholder", {__textOnly: true})}
+    placeholder={i18n.str("phoneNumberInputPlaceholder")}
   />
 );
 

@@ -14,9 +14,9 @@ export default class ErrorScreen extends Screen {
 
 }
 
-const ErrorPane = ({t}) => (
+const ErrorPane = ({i18n}) => (
   <div className="auth0-lock-error-pane">
-    <p>{t("unrecoverableError")}</p>
+    <p>{i18n.html("unrecoverableError")}</p>
   </div>
 );
 

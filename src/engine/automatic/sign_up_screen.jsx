@@ -22,11 +22,11 @@ import { isSSOEnabled } from '../automatic';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
-const Component = ({model, t}) => {
+const Component = ({i18n, model}) => {
   const sso = isSSOEnabled(model) && hasScreen(model, "login");
   const ssoNotice = sso
     && <SingleSignOnNotice>
-         {t("ssoEnabled", {__textOnly: true})}
+         {i18n.str("ssoEnabled")}
        </SingleSignOnNotice>;
 
   const tabs = !sso
@@ -34,15 +34,15 @@ const Component = ({model, t}) => {
     && <LoginSignUpTabs
          key="loginsignup"
          lock={model}
-         loginLabel={t("loginLabel", {__textOnly: true})}
-         signUpLabel={t("signUpLabel", {__textOnly: true})}
+         loginLabel={i18n.str("loginLabel")}
+         signUpLabel={i18n.str("signUpLabel")}
        />;
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
-         instructions={t("socialSignUpInstructions")}
+         instructions={i18n.html("socialSignUpInstructions")}
+         labelFn={i18n.str}
          lock={model}
-         t={t}
          signUp={true}
        />;
 
@@ -52,13 +52,13 @@ const Component = ({model, t}) => {
 
   const db =
     <SignUpPane
-      emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
-      instructions={t(signUpInstructionsKey)}
+      emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
+      instructions={i18n.html(signUpInstructionsKey)}
       model={model}
       onlyEmail={sso}
-      passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
-      passwordStrengthMessages={t("passwordStrength", {__raw: true})}
-      usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
+      passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
+      passwordStrengthMessages={i18n.group("passwordStrength")}
+      usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}
     />;
 
   const separator = social && <PaneSeparator/>;
@@ -86,8 +86,7 @@ export default class SignUp extends Screen {
     return true;
   }
 
-  renderTerms(m, t) {
-    const terms = t("signUpTerms");
+  renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m)
       ? () => toggleTermsAcceptance(l.id(m))
       : undefined;

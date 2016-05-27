@@ -20,6 +20,7 @@ import  {
 } from './index';
 // TODO: we should not depend on this from here
 import { usernameStyle } from '../../engine/automatic';
+import * as i18n from '../../i18n';
 
 export function logIn(id) {
   const m = read(getEntity, "lock", id);
@@ -107,11 +108,10 @@ function signUpSuccess(id, ...args) {
 }
 
 function signUpError(id, error) {
-  const lock = read(getEntity, "lock", id);
+  const m = read(getEntity, "lock", id);
 
-  const errorMessage =
-    l.ui.t(lock, ["error", "signUp", error.code], {__textOnly: true})
-    || l.ui.t(lock, ["error", "signUp", "lock.fallback"], {__textOnly: true});
+  const errorMessage = i18n.str(m, ["error", "signUp", error.code])
+    || i18n.str(m, ["error", "signUp", "lock.fallback"]);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
@@ -154,7 +154,7 @@ function resetPasswordSuccess(id, ...args) {
 
     // TODO: should be handled by box
     setTimeout(() => {
-      const successMessage = l.ui.t(m, ["success", "resetPassword"], {__textOnly: true});
+      const successMessage = i18n.str(m, ["success", "forgotPassword"]);
       swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
     }, 500);
   } else {
@@ -171,9 +171,8 @@ function resetPasswordSuccess(id, ...args) {
 function resetPasswordError(id, error) {
   const m = read(getEntity, "lock", id);
 
-  const errorMessage =
-    l.ui.t(m, ["error", "forgotPassword", error.code], {__textOnly: true})
-    || l.ui.t(m, ["error", "forgotPassword", "lock.fallback"], {__textOnly: true});
+  const errorMessage = i18n.str(m, ["error", "forgotPassword", error.code])
+    || i18n.str(m, ["error", "forgotPassword", "lock.fallback"]);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }

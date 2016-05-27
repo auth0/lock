@@ -15,8 +15,8 @@ function icon(strategy) {
   return "auth0";
 }
 
-const Component = ({model, t}) => {
-  const headerText = t("lastLoginInstructions") || null;
+const Component = ({i18n, model}) => {
+  const headerText = i18n.html("lastLoginInstructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   const buttonClickHandler = () => {
@@ -25,7 +25,7 @@ const Component = ({model, t}) => {
 
   return (
     <QuickAuthPane
-      alternativeLabel={t("notYourAccountAction", {__textOnly: true})}
+      alternativeLabel={i18n.str("notYourAccountAction")}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
       buttonLabel={lastUsedUsername(model)}
       buttonClickHandler={buttonClickHandler}

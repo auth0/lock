@@ -44,7 +44,9 @@ export function requestPasswordlessEmailSuccess(id) {
 
 export function requestPasswordlessEmailError(id, error) {
   const lock = read(getEntity, "lock", id);
-  const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "email", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "email", __textOnly: true})
+  // TODO: update to new i18n API when bringing passwordless back
+  // const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "email", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "email", __textOnly: true})
+  const errorMessage = "";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
@@ -86,11 +88,13 @@ export function sendSMSSuccess(id) {
 export function sendSMSError(id, error) {
   const lock = read(getEntity, "lock", id);
   let errorMessage;
-  if (error.error === "sms_provider_error" && (error.description || "").indexOf("(Code: 21211)") > -1) {
-    errorMessage = l.ui.t(lock, ["error", "passwordless", "sms_provider_error.bad_phone_number"], {phoneNumber: c.fullPhoneNumber(lock), __textOnly: true});
-  } else {
-    errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "SMS", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "SMS", __textOnly: true})
-  }
+  // TODO: update to new i18n API when bringing passwordless back
+  errorMessage = "";
+  // if (error.error === "sms_provider_error" && (error.description || "").indexOf("(Code: 21211)") > -1) {
+  //   errorMessage = l.ui.t(lock, ["error", "passwordless", "sms_provider_error.bad_phone_number"], {phoneNumber: c.fullPhoneNumber(lock), __textOnly: true});
+  // } else {
+  //   errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "SMS", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "SMS", __textOnly: true})
+  // }
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
@@ -175,7 +179,9 @@ function logInSuccess(id, ...args) {
 function logInError(id, error) {
   const lock = read(getEntity, "lock", id);
   const field = m.send(lock) === "sms" ? "phone number" : "email";
-  const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
+  // TODO: update to new i18n API when bringing passwordless back
+  // const errorMessage = l.ui.t(lock, ["error", "signIn", error.error], {field: field, __textOnly: true}) || l.ui.t(lock, ["error", "signIn", "lock.request"], {field: field, __textOnly: true});
+  const errorMessage = "";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 
   l.invokeLogInCallback(lock, error);

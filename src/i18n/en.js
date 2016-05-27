@@ -1,7 +1,6 @@
 export default {
   error: {
     forgotPassword: {
-      "invalid_user": "The user does not exists.",
       "too_many_requests": "You have reached the limit on password change attempts. Please wait before trying again.",
       "lock.fallback": "We're sorry, something went wrong when requesting the password change."
     },
@@ -24,7 +23,7 @@ export default {
   },
   success: { // success messages show above the form or in a confirmation pane
     logIn: "Thanks for logging in.",
-    resetPassword: "We've just sent you an email to reset your password.",
+    forgotPassword: "We've just sent you an email to reset your password.",
     signUp: "Thanks for signing up."
   },
   databaseEnterpriseLoginInstructions: "",
@@ -33,13 +32,13 @@ export default {
   databaseAlternativeSignUpInstructions: "or",
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
-  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at {domain}.",
+  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at %s.",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   lastLoginInstructions: "Last time you logged in with",
-  loginAtLabel: "Login at {domain}",
+  loginAtLabel: "Login at %s",
   loginLabel: "Login",
-  loginWithLabel: "Login with {idp}",
+  loginWithLabel: "Login with %s",
   notYourAccountAction: "Not your account?",
   passwordInputPlaceholder: "your password",
   passwordStrength: {
@@ -55,14 +54,14 @@ export default {
   },
   signUpLabel: "Sign Up",
   signUpterms: "",
-  signUpWithLabel: "Sign up with {idp}",
+  signUpWithLabel: "Sign up with %s",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",
   unrecoverableError: "Something went wrong.<br />Please contant technical support.",
   usernameInputPlaceholder: "your username",
   title: "Auth0",
-  welcome: "Welcome {name}!",
+  welcome: "Welcome %s!",
   windowsAuthInstructions: "You are connected from your corporate network&hellip;",
   windowsAuthLabel: "Windows Authentication"
 };

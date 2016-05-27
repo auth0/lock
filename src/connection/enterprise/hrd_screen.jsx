@@ -5,16 +5,16 @@ import HRDPane from './hrd_pane';
 import { cancelHRD, logIn } from './actions';
 import { enterpriseDomain, isSingleHRDConnection }  from '../enterprise';
 
-const Component = ({model, t}) => {
-  const headerText = t("enterpriseActiveLoginInstructions", {domain: enterpriseDomain(model)}) || null;
+const Component = ({i18n, model}) => {
+  const headerText = i18n.html("enterpriseActiveLoginInstructions", enterpriseDomain(model)) || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (
     <HRDPane
       header={header}
       model={model}
-      passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
-      usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
+      passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
+      usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}
     />
   );
 }

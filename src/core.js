@@ -13,6 +13,7 @@ import { termsAccepted } from './connection/database/index';
 import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
+import * as i18n from './i18n';
 
 import { go } from './sync';
 
@@ -54,8 +55,8 @@ export default class Base extends EventEmitter {
 
       const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
       const title = avatar
-        ? l.ui.t(m, ["welcome"], {name: m.getIn(["avatar", "transient", "displayName"]), __textOnly: true})
-        : l.ui.t(m, ["title"], {__textOnly: true});
+        ? i18n.str(m, "welcome", m.getIn(["avatar", "transient", "displayName"]))
+        : i18n.str(m, "title");
 
       if (l.rendering(m)) {
         const screen = this.engine.render(m);
@@ -69,7 +70,11 @@ export default class Base extends EventEmitter {
         const disableSubmitButton = screen.name === "main.signUp"
           && !termsAccepted(m);
 
-        const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
+        const i18nProp = {
+          group: keyPath => i18n.group(m, keyPath),
+          html: (keyPath, ...args) => i18n.html(m, keyPath, ...args),
+          str: (keyPath, ...args) => i18n.str(m, keyPath, ...args)
+        };
 
         const props = {
           avatar: avatar && m.getIn(["avatar", "transient", "url"]),
@@ -81,7 +86,7 @@ export default class Base extends EventEmitter {
             ? (...args) => closeLock(l.id(m), ...args)
             : undefined,
           contentComponent: screen.render(),
-          contentProps: {model: m, t},
+          contentProps: {i18n: i18nProp, model: m},
           disableSubmitButton: disableSubmitButton,
           error: l.globalError(m),
           isMobile: l.ui.mobile(m),
@@ -93,7 +98,7 @@ export default class Base extends EventEmitter {
           success: l.globalSuccess(m),
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
-          terms: screen.renderTerms(m, t),
+          terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
           title: title,
           transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
         };
