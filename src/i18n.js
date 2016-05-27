@@ -17,6 +17,14 @@ export function str(m, keyPath, params = {}) {
   return format(get(m, ["strings"].concat(keyPath)), params);
 }
 
+export function html(m, keyPath, params = {}) {
+  const html = str(m, keyPath, params);
+
+  return html
+    ? React.createElement("span", {dangerouslySetInnerHTML: {__html: html}})
+    : null;
+}
+
 export default function(m, keyPath, params = {}) {
   const strings = get(m, "strings");
 
