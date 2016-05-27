@@ -33,7 +33,7 @@ export default {
   databaseAlternativeSignUpInstructions: "or",
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
-  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at {domain}.",
+  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at %s.",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   lastLoginInstructions: "Last time you logged in with",

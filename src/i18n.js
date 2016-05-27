@@ -6,19 +6,14 @@ import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["i18n"]);
 import enDictionary from './i18n/en';
 import { load, preload } from './utils/cdn_utils';
+import { format } from 'util';
 
-function format(string, params = {}) {
-  return Immutable.fromJS(params).reduce((r, v, k) => {
-    return r.replace(`{${k}}`, v);
-  }, string);
+export function str(m, keyPath, ...args) {
+  return format(get(m, ["strings"].concat(keyPath)), ...args);
 }
 
-export function str(m, keyPath, params = {}) {
-  return format(get(m, ["strings"].concat(keyPath)), params);
-}
-
-export function html(m, keyPath, params = {}) {
-  const html = str(m, keyPath, params);
+export function html(m, keyPath, ...args) {
+  const html = str(m, keyPath, ...args);
 
   return html
     ? React.createElement("span", {dangerouslySetInnerHTML: {__html: html}})

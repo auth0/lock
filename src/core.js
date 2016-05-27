@@ -72,8 +72,8 @@ export default class Base extends EventEmitter {
 
         const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
         const i18nProp = {
-          html: (keyPath, params) => i18n.html(m, keyPath, params),
-          str: (keyPath, params) => i18n.str(m, keyPath, params)
+          html: (keyPath, ...args) => i18n.html(m, keyPath, ...args),
+          str: (keyPath, ...args) => i18n.str(m, keyPath, ...args)
         };
 
         const props = {
