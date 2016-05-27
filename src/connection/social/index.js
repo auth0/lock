@@ -60,9 +60,7 @@ function processSocialOptions(options) {
   const { socialButtonStyle } = options;
 
   // TODO: emit warnings
-  if (typeof socialButtonStyle === "number"
-      || socialButtonStyle === "big"
-      || socialButtonStyle === "small") {
+  if (["big", "small"].indexOf(socialButtonStyle) > -1) {
     result.socialButtonStyle = socialButtonStyle;
   }
 
@@ -74,8 +72,6 @@ export function socialConnections(m) {
 }
 
 export function useBigButtons(m) {
-  const x = get(m, "socialButtonStyle", 3);
-  return typeof x === "number"
-    ? socialConnections(m).count() <= x
-    : x === "big";
+  const limit = l.hasOnlyConnections(m, "social") ? 5 : 3;
+  return get(m, "socialButtonStyle", socialConnections(m).count() <= limit);
 }

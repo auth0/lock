@@ -158,7 +158,9 @@ var options = {
 
 #### Social options
 
-- **socialButtonStyle {String}**: Determines the size of the buttons for the social providers. It defaults to `"big"` when there are at most tree social providers enabled, otherwise it defaults to `"small"`.
+- **socialButtonStyle {String}**: Determines the size of the buttons for the social providers. Possible values are `"big"` and `"small"`. The default style depends on the connections that are available:
+  - If only social connections are available, it will default to `"big"` when there are 5 connections at most, and default to `"small"` otherwise.
+  - If connections from types other than social are also available, it will default to `"big"` when there are 3 social connections at most, and default to `"small"` otherwise.
 
 #### Database options
 
