@@ -83,7 +83,9 @@ export default class EmailSentConfirmation extends React.Component {
   }
 
   t(keyPath, params) {
-    return l.ui.t(this.props.lock, ["emailSent"].concat(keyPath), params);
+    // TODO: update to new i18n API when bringing passwordless back
+    // return l.ui.t(this.props.lock, ["emailSent"].concat(keyPath), params);
+    return null;
   }
 
 }
