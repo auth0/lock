@@ -106,9 +106,9 @@ export default class Base extends EventEmitter {
 
         // TODO: hack so we can start testing the beta
         if (!this.oldScreenName || this.oldScreenName != screen.name) {
-          if (screen.name === "login") {
+          if (screen.name === "main.login") {
             l.emitEvent(m, "signin ready");
-          } else if (screen.name === "signUp") {
+          } else if (screen.name === "main.signUp") {
             l.emitEvent(m, "signup ready");
           }
         }
