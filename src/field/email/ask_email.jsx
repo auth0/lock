@@ -2,10 +2,10 @@ import React from 'react';
 import Screen from '../../core/screen';
 import EmailPane from './email_pane';
 
-const Component = ({model, t}) => (
+const Component = ({i18n, model}) => (
   <EmailPane
     lock={model}
-    placeholder={t("emailInputPlaceholder", {__textOnly: true})}
+    placeholder={i18n.str("emailInputPlaceholder")}
   />
 );
 
