@@ -171,9 +171,8 @@ function resetPasswordSuccess(id, ...args) {
 function resetPasswordError(id, error) {
   const m = read(getEntity, "lock", id);
 
-  const errorMessage =
-    l.ui.t(m, ["error", "forgotPassword", error.code], {__textOnly: true})
-    || l.ui.t(m, ["error", "forgotPassword", "lock.fallback"], {__textOnly: true});
+  const errorMessage = i18n.str(m, ["error", "forgotPassword", error.code])
+    || i18n.str(m, ["error", "forgotPassword", "lock.fallback"]);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
