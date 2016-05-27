@@ -99,7 +99,7 @@ export default class Base extends EventEmitter {
           success: l.globalSuccess(m),
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
-          terms: screen.renderTerms(m, t),
+          terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
           title: title,
           transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
         };

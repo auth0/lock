@@ -86,8 +86,7 @@ export default class SignUp extends Screen {
     return true;
   }
 
-  renderTerms(m, t) {
-    const terms = t("signUpTerms");
+  renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m)
       ? () => toggleTermsAcceptance(l.id(m))
       : undefined;
