@@ -7,6 +7,16 @@ const { get, set } = dataFns(["i18n"]);
 import enDictionary from './i18n/en';
 import { load, preload } from './utils/cdn_utils';
 
+function format(string, params = {}) {
+  return Immutable.fromJS(params).reduce((r, v, k) => {
+    return r.replace(`{${k}}`, v);
+  }, string);
+}
+
+export function str(m, keyPath, params = {}) {
+  return format(get(m, ["strings"].concat(keyPath)), params);
+}
+
 export default function(m, keyPath, params = {}) {
   const strings = get(m, "strings");
 
