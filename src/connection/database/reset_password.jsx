@@ -5,13 +5,13 @@ import { authWithUsername, hasScreen } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 import { renderPasswordResetConfirmation } from './password_reset_confirmation';
 
-const Component = ({model, t}) => {
-  const headerText = t("forgotPasswordInstructions") || null;
+const Component = ({i18n, model}) => {
+  const headerText = i18n.html("forgotPasswordInstructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (
     <ResetPasswordPane
-      emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
+      emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
       header={header}
       lock={model}
     />
