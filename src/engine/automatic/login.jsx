@@ -44,15 +44,15 @@ const Component = ({i18n, model, t}) => {
     && <LoginSignUpTabs
          key="loginsignup"
          lock={model}
-         loginLabel={t("loginLabel", {__textOnly: true})}
+         loginLabel={i18n.str("loginLabel")}
          signUpLink={signUpLink(model)}
-         signUpLabel={t("signUpLabel", {__textOnly: true})}
+         signUpLabel={i18n.str("signUpLabel")}
        />;
 
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
-         instructions={t("socialLoginInstructions")}
+         instructions={i18n.html("socialLoginInstructions")}
          labelFn={i18n.str}
          lock={model}
          showLoading={onlySocial}
@@ -74,20 +74,20 @@ const Component = ({i18n, model, t}) => {
     || l.hasSomeConnections(model, "database")
     || l.hasSomeConnections(model, "enterprise"))
     && <LoginPane
-         emailInputPlaceholder={t("emailInputPlaceholder", {__textOnly: true})}
-         forgotPasswordAction={t("forgotPasswordAction", {__textOnly: true})}
-         instructions={t(loginInstructionsKey)}
+         emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
+         forgotPasswordAction={i18n.str("forgotPasswordAction")}
+         instructions={i18n.html(loginInstructionsKey)}
          lock={model}
-         passwordInputPlaceholder={t("passwordInputPlaceholder", {__textOnly: true})}
+         passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
          showForgotPasswordLink={showForgotPasswordLink}
          showPassword={showPassword}
-         usernameInputPlaceholder={t("usernameInputPlaceholder", {__textOnly: true})}
+         usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}
          usernameStyle={usernameStyle(model)}
        />;
 
   const ssoNotice = sso
     && <SingleSignOnNotice>
-         {t("ssoEnabled", {__textOnly: true})}
+         {i18n.str("ssoEnabled")}
        </SingleSignOnNotice>;
 
   const separator = social && login && <PaneSeparator/>;
