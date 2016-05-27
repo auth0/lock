@@ -2,7 +2,7 @@ import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
 import { parseUrl } from '../utils/url_utils';
-import t, { initI18n } from '../i18n'; // TODO: core should not depend on i18n
+import t, * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
@@ -31,7 +31,7 @@ export function setup(id, clientID, domain, options, logInCallback, hookRunner, 
     ui: extractUIOptions(id, options)
   }));
 
-  m = initI18n(m);
+  m = i18n.initI18n(m);
 
   return m;
 }
@@ -311,17 +311,17 @@ export function loginErrorMessage(m, error) {
   // explicitly. We should figure out if there was a reason for that.
 
   if (error.status === 0) {
-    return ui.t(m, ["error", "login", "lock.network"], {__textOnly: true});
+    return i18n.str(m, ["error", "login", "lock.network"]);
   }
 
   // Custom rule error (except blocked_user)
   if (error.code === "rule_error") {
     return error.description
-      || ui.t(m, ["error", "login", "lock.fallback"], {__textOnly: true});
+      || i18n.str(m, ["error", "login", "lock.fallback"]);
   }
 
-  return ui.t(m, ["error", "login", error.error || error.code], {__textOnly: true})
-    || ui.t(m, ["error", "login", "lock.fallback"], {__textOnly: true});
+  return i18n.str(m, ["error", "login", error.error || error.code])
+    || i18n.str(m, ["error", "login", "lock.fallback"]);
 }
 
 export function stop(m) {
