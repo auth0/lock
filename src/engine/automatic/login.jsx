@@ -36,7 +36,7 @@ function shouldRenderTabs(m) {
     && !isSSOEnabled(m);
 }
 
-const Component = ({model, t}) => {
+const Component = ({i18n, model, t}) => {
   const sso = isSSOEnabled(model);
   const onlySocial = l.hasOnlyConnections(model, "social");
 
@@ -53,10 +53,10 @@ const Component = ({model, t}) => {
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
          instructions={t("socialLoginInstructions")}
+         labelFn={i18n.str}
          lock={model}
          showLoading={onlySocial}
          signUp={false}
-         t={t}
        />;
 
   const showPassword = !sso

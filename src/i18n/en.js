@@ -39,7 +39,7 @@ export default {
   lastLoginInstructions: "Last time you logged in with",
   loginAtLabel: "Login at %s",
   loginLabel: "Login",
-  loginWithLabel: "Login with {idp}",
+  loginWithLabel: "Login with %s",
   notYourAccountAction: "Not your account?",
   passwordInputPlaceholder: "your password",
   passwordStrength: {
@@ -55,7 +55,7 @@ export default {
   },
   signUpLabel: "Sign Up",
   signUpterms: "",
-  signUpWithLabel: "Sign up with {idp}",
+  signUpWithLabel: "Sign up with %s",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",

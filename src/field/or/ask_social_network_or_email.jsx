@@ -8,13 +8,13 @@ import { requestPasswordlessEmail } from '../../connection/passwordless/actions'
 import { renderEmailSentConfirmation } from '../../connection/passwordless/email_sent_confirmation';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 
-const Component = ({model, t}) => (
+const Component = ({i18n, model, t}) => (
   <div>
     <SocialButtonsPane
+      labelFn={i18n.str}
       lock={model}
       signUp={false}
       smallButtonsHeader={t("smallSocialButtonsHeader", {__textOnly: true})}
-      t={t}
     />
     <PaneSeparator>{t("separatorText")}</PaneSeparator>
     <EmailPane

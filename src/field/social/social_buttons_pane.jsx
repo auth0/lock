@@ -13,7 +13,7 @@ export default class SocialButtonsPane extends React.Component {
   render() {
     // TODO: i don't like that it receives the instructions tanslated
     // but it also takes the t fn
-    const { instructions, lock, showLoading, signUp, t } = this.props;
+    const { instructions, labelFn, lock, showLoading, signUp } = this.props;
 
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
@@ -22,7 +22,7 @@ export default class SocialButtonsPane extends React.Component {
       <AuthButton
         isBig={useBigButtons(lock)}
         key={x.get("name")}
-        label={t(signUp ? "signUpWithLabel" : "loginWithLabel", {idp: displayName(x), __textOnly: true})}
+        label={labelFn(signUp ? "signUpWithLabel" : "loginWithLabel", displayName(x))}
         onClick={() => logIn(l.id(lock), x)}
         strategy={x.get("strategy")}
       />
@@ -46,10 +46,10 @@ export default class SocialButtonsPane extends React.Component {
 
 SocialButtonsPane.propTypes = {
   instructions: React.PropTypes.any,
+  labelFn: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired,
   showLoading: React.PropTypes.bool.isRequired,
-  signUp: React.PropTypes.bool.isRequired,
-  t: React.PropTypes.func.isRequired
+  signUp: React.PropTypes.bool.isRequired
 };
 
 SocialButtonsPane.defaultProps = {

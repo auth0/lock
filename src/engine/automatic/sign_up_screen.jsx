@@ -22,7 +22,7 @@ import { isSSOEnabled } from '../automatic';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
-const Component = ({model, t}) => {
+const Component = ({i18n, model, t}) => {
   const sso = isSSOEnabled(model) && hasScreen(model, "login");
   const ssoNotice = sso
     && <SingleSignOnNotice>
@@ -41,8 +41,8 @@ const Component = ({model, t}) => {
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
          instructions={t("socialSignUpInstructions")}
+         labelFn={i18n.str}
          lock={model}
-         t={t}
          signUp={true}
        />;
 
