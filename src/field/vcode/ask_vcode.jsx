@@ -2,11 +2,11 @@ import React from 'react';
 import Screen from '../../core/screen';
 import VcodePane from './vcode_pane';
 
-const Component = ({model, t}) => (
+const Component = ({i18n, model}) => (
   <VcodePane
     lock={model}
-    placeholder={t("codeInputPlaceholder", {__textOnly: true})}
-    resendLabel={t("resendLabel", {__textOnly: true})}
+    placeholder={i18n.str("codeInputPlaceholder")}
+    resendLabel={i18n.str("resendLabel")}
   />
 );
 
