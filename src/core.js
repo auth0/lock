@@ -61,12 +61,6 @@ export default class Base extends EventEmitter {
       if (l.rendering(m)) {
         const screen = this.engine.render(m);
 
-        // TODO: this is a temp hack because we need an unique name
-        // for both screens when rendering the box to avoid the
-        // transition between them and two different screen names to
-        // distinguish translations. The latter constraint may
-        // change when we revisit i18n, so wait until that is done
-        // before properly fixing this.
         const disableSubmitButton = screen.name === "main.signUp"
           && !termsAccepted(m);
 
