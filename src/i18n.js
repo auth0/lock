@@ -9,7 +9,7 @@ import { load, preload } from './utils/cdn_utils';
 import { format } from 'util';
 
 export function str(m, keyPath, ...args) {
-  return format(get(m, ["strings"].concat(keyPath)), ...args);
+  return format(get(m, ["strings"].concat(keyPath), ""), ...args);
 }
 
 export function html(m, keyPath, ...args) {
