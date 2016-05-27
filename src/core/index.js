@@ -2,7 +2,7 @@ import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
 import { parseUrl } from '../utils/url_utils';
-import t, * as i18n from '../i18n';
+import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
@@ -138,7 +138,6 @@ export const ui = {
   closable: lock => getUIAttribute(lock, "closable"),
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
-  t: (lock, keyPath, params) => t(lock, keyPath, params),
   language: lock => getUIAttribute(lock, "language"),
   logo: lock => getUIAttribute(lock, "logo"),
   mobile: lock => getUIAttribute(lock, "mobile"),

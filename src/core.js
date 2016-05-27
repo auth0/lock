@@ -70,7 +70,6 @@ export default class Base extends EventEmitter {
         const disableSubmitButton = screen.name === "main.signUp"
           && !termsAccepted(m);
 
-        const t = (keyPath, params) => l.ui.t(m, [keyPath], params);
         const i18nProp = {
           group: keyPath => i18n.group(m, keyPath),
           html: (keyPath, ...args) => i18n.html(m, keyPath, ...args),
@@ -87,7 +86,7 @@ export default class Base extends EventEmitter {
             ? (...args) => closeLock(l.id(m), ...args)
             : undefined,
           contentComponent: screen.render(),
-          contentProps: {i18n: i18nProp, model: m, t},
+          contentProps: {i18n: i18nProp, model: m},
           disableSubmitButton: disableSubmitButton,
           error: l.globalError(m),
           isMobile: l.ui.mobile(m),
