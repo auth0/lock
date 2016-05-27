@@ -8,18 +8,19 @@ import { requestPasswordlessEmail } from '../../connection/passwordless/actions'
 import { renderEmailSentConfirmation } from '../../connection/passwordless/email_sent_confirmation';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 
-const Component = ({i18n, model, t}) => (
+// TODO: review when bringing passwordless back
+const Component = ({i18n, model}) => (
   <div>
     <SocialButtonsPane
+      instructions={i18n.html("socialLoginInstructions")}
       labelFn={i18n.str}
       lock={model}
       signUp={false}
-      smallButtonsHeader={t("smallSocialButtonsHeader", {__textOnly: true})}
     />
-    <PaneSeparator>{t("separatorText")}</PaneSeparator>
+    <PaneSeparator />
     <EmailPane
       lock={model}
-      placeholder={t("emailInputPlaceholder", {__textOnly: true})}
+      placeholder={i18n.str("emailInputPlaceholder")}
     />
   </div>
 );
