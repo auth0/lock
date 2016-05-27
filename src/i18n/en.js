@@ -23,8 +23,7 @@ export default {
   },
   success: { // success messages show above the form or in a confirmation pane
     logIn: "Thanks for logging in.",
-    // TODO: rename to forgotPassword
-    resetPassword: "We've just sent you an email to reset your password.",
+    forgotPassword: "We've just sent you an email to reset your password.",
     signUp: "Thanks for signing up."
   },
   databaseEnterpriseLoginInstructions: "",

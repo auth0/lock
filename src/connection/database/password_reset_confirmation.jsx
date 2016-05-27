@@ -17,7 +17,7 @@ export default class PasswordResetConfirmation extends React.Component {
 
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{i18n.html(this.props.lock, ["success", "resetPassword"])}</p>
+        <p>{i18n.html(this.props.lock, ["success", "forgotPassword"])}</p>
       </SuccessPane>
     );
   }

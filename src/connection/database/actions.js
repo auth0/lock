@@ -154,7 +154,7 @@ function resetPasswordSuccess(id, ...args) {
 
     // TODO: should be handled by box
     setTimeout(() => {
-      const successMessage = i18n.str(m, ["success", "resetPassword"]);
+      const successMessage = i18n.str(m, ["success", "forgotPassword"]);
       swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
     }, 500);
   } else {
