@@ -139,13 +139,13 @@ export function resetPassword(id) {
       if (error) {
         setTimeout(() => resetPasswordError(id, error), 250);
       } else {
-        resetPasswordSuccess(id, ...args);
+        resetPasswordSuccess(id);
       }
     });
   });
 }
 
-function resetPasswordSuccess(id, ...args) {
+function resetPasswordSuccess(id) {
   const m = read(getEntity, "lock", id);
   if (hasScreen(m, "login")) {
     swap(updateEntity, "lock", id, m => (
