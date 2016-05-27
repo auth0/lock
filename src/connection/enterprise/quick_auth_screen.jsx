@@ -14,13 +14,13 @@ function icon(strategy) {
   return "auth0";
 }
 
-const Component = ({model, t}) => {
-  const headerText = t("enterpriseLoginIntructions") || null;
+const Component = ({i18n, model}) => {
+  const headerText = i18n.html("enterpriseLoginIntructions") || null;
   const header = headerText && <p>{headerText}</p>;
 
   return (
     <QuickAuthPane
-      buttonLabel={t("loginAtLabel", {domain: quickAuthConnection(model).get("domain"), __textOnly: true})}
+      buttonLabel={i18n.str("loginAtLabel", quickAuthConnection(model).get("domain"))}
       buttonClickHandler={e => logIn(l.id(model), quickAuthConnection(model))}
       header={header}
       strategy={icon(quickAuthConnection(model).get("strategy"))}

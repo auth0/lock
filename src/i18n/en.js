@@ -37,7 +37,7 @@ export default {
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   lastLoginInstructions: "Last time you logged in with",
-  loginAtLabel: "Login at {domain}",
+  loginAtLabel: "Login at %s",
   loginLabel: "Login",
   loginWithLabel: "Login with {idp}",
   notYourAccountAction: "Not your account?",
