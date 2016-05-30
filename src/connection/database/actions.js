@@ -39,7 +39,7 @@ export function logIn(id) {
 export function signUp(id) {
   const m = read(getEntity, "lock", id);
   const fields = ["email", "password"];
-  if (authWithUsername(m))fields.push("username");
+  if (authWithUsername(m)) fields.push("username");
   additionalSignUpFields(m).forEach(x => fields.push(x.get("name")));
 
   validateAndSubmit(id, fields, m => {
