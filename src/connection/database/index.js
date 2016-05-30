@@ -232,10 +232,13 @@ export function setScreen(m, name, fields = []) {
 
 export function getScreen(m) {
   const screen = tget(m, "screen");
-  const initialScreen = get(m, "initialScreen");
-  const screens = [screen, initialScreen, "login", "signUp", "forgotPassword"];
+  const screens = [screen, initialScreen(m), "login", "signUp", "forgotPassword"];
   const availableScreens = screens.filter(x => hasScreen(m, x));
   return availableScreens[0];
+}
+
+export function initialScreen(m) {
+  return get(m, "initialScreen");
 }
 
 export function authWithUsername(m) {
