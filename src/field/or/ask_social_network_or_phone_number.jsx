@@ -23,6 +23,7 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
     return (
       <div>
         <SocialButtonsPane
+          bigButtons={false}
           instructions={i18n.html("socialLoginInstructions")}
           label={i18n.str}
           lock={model}

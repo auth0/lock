@@ -22,7 +22,7 @@ import {
   isInCorpNetwork,
   quickAuthConnection
 } from '../connection/enterprise';
-import { initSocial } from '../connection/social/index';
+import { initSocial, useBigButtons } from '../connection/social/index';
 import { setEmail } from '../field/email';
 import { setUsername } from '../field/username';
 import * as l from '../core/index';
@@ -47,6 +47,17 @@ export function isSSOEnabled(m) {
 
 export function usernameStyle(m) {
   return authWithUsername(m) && !isADEnabled(m) ? "username" : "email";
+}
+
+export function hasOnlyClassicConnections(m, type = undefined, ...strategies) {
+  return l.hasOnlyConnections(m, type, ...strategies)
+    && !l.hasSomeConnections(m, "passwordless");
+}
+
+export function useBigSocialButtons(m) {
+  const limit = l.hasOnlyConnections(m, "social") ? 5 : 3;
+  const notFound = l.connections(m, "social").count() <= limit;
+  return useBigButtons(m, notFound);
 }
 
 class Automatic {

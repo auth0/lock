@@ -6,6 +6,7 @@ import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
   defaultDatabaseConnection,
+  hasInitialScreen,
   hasScreen,
   signUpLink
 } from '../../connection/database/index';
@@ -27,18 +28,24 @@ import {
   isHRDDomain
 } from '../../connection/enterprise';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
-import { isSSOEnabled, usernameStyle } from '../automatic';
+import {
+  hasOnlyClassicConnections,
+  isSSOEnabled,
+  useBigSocialButtons,
+  usernameStyle
+} from '../automatic';
 
 
 function shouldRenderTabs(m) {
-  return l.hasSomeConnections(m, "database")
-    && hasScreen(m, "signUp")
-    && !isSSOEnabled(m);
+  if (isSSOEnabled(m)) return false;
+  if (l.hasSomeConnections(m, "database")) return hasScreen(m, "signUp");
+  if (l.hasSomeConnections(m, "social") && hasInitialScreen(m, "signUp"))
+    return hasScreen(m, "signUp");
 }
 
 const Component = ({i18n, model, t}) => {
   const sso = isSSOEnabled(model);
-  const onlySocial = l.hasOnlyConnections(model, "social");
+  const onlySocial = hasOnlyClassicConnections(model, "social");
 
   const tabs = shouldRenderTabs(model)
     && <LoginSignUpTabs
@@ -52,6 +59,7 @@ const Component = ({i18n, model, t}) => {
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
+         bigButtons={useBigSocialButtons(model)}
          instructions={i18n.html("socialLoginInstructions")}
          labelFn={i18n.str}
          lock={model}
@@ -111,7 +119,7 @@ export default class Login extends Screen {
   }
 
   submitHandler(model) {
-    if (l.hasOnlyConnections(model, "social")) {
+    if (hasOnlyClassicConnections(model, "social")) {
       return null;
     }
 

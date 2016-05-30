@@ -2,25 +2,28 @@ import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
 import { logIn } from '../../quick-auth/actions';
-import {
-  displayName,
-  socialConnections,
-  useBigButtons
-} from '../../connection/social/index';
+import { displayName, socialConnections } from '../../connection/social/index';
 
 export default class SocialButtonsPane extends React.Component {
 
   render() {
     // TODO: i don't like that it receives the instructions tanslated
     // but it also takes the t fn
-    const { instructions, labelFn, lock, showLoading, signUp } = this.props;
+    const {
+      bigButtons,
+      instructions,
+      labelFn,
+      lock,
+      showLoading,
+      signUp
+    } = this.props;
 
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
     const buttons = socialConnections(lock).map(x => (
       <AuthButton
-        isBig={useBigButtons(lock)}
+        isBig={bigButtons}
         key={x.get("name")}
         label={labelFn(signUp ? "signUpWithLabel" : "loginWithLabel", displayName(x))}
         onClick={() => logIn(l.id(lock), x)}
@@ -45,6 +48,7 @@ export default class SocialButtonsPane extends React.Component {
 }
 
 SocialButtonsPane.propTypes = {
+  bigButtons: React.PropTypes.bool.isRequired,
   instructions: React.PropTypes.any,
   labelFn: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired,

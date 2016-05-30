@@ -18,7 +18,11 @@ import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import { renderOptionSelection } from '../../field/index';
 import * as l from '../../core/index';
 import PaneSeparator from '../../core/pane_separator';
-import { isSSOEnabled } from '../automatic';
+import {
+  hasOnlyClassicConnections,
+  isSSOEnabled,
+  useBigSocialButtons
+} from '../automatic';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
@@ -40,6 +44,7 @@ const Component = ({i18n, model}) => {
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
+         bigButtons={useBigSocialButtons(model)}
          instructions={i18n.html("socialSignUpInstructions")}
          labelFn={i18n.str}
          lock={model}
@@ -50,18 +55,19 @@ const Component = ({i18n, model}) => {
     ? "databaseAlternativeSignUpInstructions"
     : "databaseSignUpInstructions";
 
-  const db =
-    <SignUpPane
-      emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
-      instructions={i18n.html(signUpInstructionsKey)}
-      model={model}
-      onlyEmail={sso}
-      passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
-      passwordStrengthMessages={i18n.group("passwordStrength")}
-      usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}
-    />;
+  const db = (l.hasSomeConnections(model, "database")
+    || l.hasSomeConnections(model, "enterprise"))
+    && <SignUpPane
+         emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
+         instructions={i18n.html(signUpInstructionsKey)}
+         model={model}
+         onlyEmail={sso}
+         passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
+         passwordStrengthMessages={i18n.group("passwordStrength")}
+         usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}
+       />;
 
-  const separator = social && <PaneSeparator/>;
+  const separator = social && db && <PaneSeparator/>;
 
   return <div>{ssoNotice}{tabs}{social}{separator}{db}</div>;
 };
@@ -72,8 +78,10 @@ export default class SignUp extends Screen {
     super("main.signUp");
   }
 
-  submitHandler(model) {
-    return isSSOEnabled(model) ? enterpriseLogIn : signUp;
+  submitHandler(m) {
+    if (hasOnlyClassicConnections(m, "social")) return null;
+    if (isSSOEnabled(m)) return enterpriseLogIn;
+    return signUp;
   }
 
   renderAuxiliaryPane(lock) {

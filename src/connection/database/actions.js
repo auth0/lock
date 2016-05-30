@@ -39,7 +39,7 @@ export function logIn(id) {
 export function signUp(id) {
   const m = read(getEntity, "lock", id);
   const fields = ["email", "password"];
-  if (authWithUsername(m))fields.push("username");
+  if (authWithUsername(m)) fields.push("username");
   additionalSignUpFields(m).forEach(x => fields.push(x.get("name")));
 
   validateAndSubmit(id, fields, m => {
@@ -65,13 +65,13 @@ export function signUp(id) {
       if (error) {
         setTimeout(() => signUpError(id, error), 250);
       } else {
-        signUpSuccess(id, ...args);
+        signUpSuccess(id);
       }
     });
   });
 }
 
-function signUpSuccess(id, ...args) {
+function signUpSuccess(id) {
   const lock = read(getEntity, "lock", id);
 
   if (shouldAutoLogin(lock)) {
@@ -139,13 +139,13 @@ export function resetPassword(id) {
       if (error) {
         setTimeout(() => resetPasswordError(id, error), 250);
       } else {
-        resetPasswordSuccess(id, ...args);
+        resetPasswordSuccess(id);
       }
     });
   });
 }
 
-function resetPasswordSuccess(id, ...args) {
+function resetPasswordSuccess(id) {
   const m = read(getEntity, "lock", id);
   if (hasScreen(m, "login")) {
     swap(updateEntity, "lock", id, m => (

@@ -41,7 +41,7 @@ function assertMaybeString(opts, name) {
 }
 
 function assertMaybeArray(opts, name) {
-  const valid = opts[name] === undefined || !global.Array.isArray(opts[name]);
+  const valid = opts[name] === undefined || global.Array.isArray(opts[name]);
   if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not an array.`);
   return valid;
 }
@@ -236,6 +236,10 @@ export function getScreen(m) {
   const screens = [screen, initialScreen, "login", "signUp", "forgotPassword"];
   const availableScreens = screens.filter(x => hasScreen(m, x));
   return availableScreens[0];
+}
+
+export function hasInitialScreen(m, str) {
+  return get(m, "initialScreen") === str;
 }
 
 export function authWithUsername(m) {

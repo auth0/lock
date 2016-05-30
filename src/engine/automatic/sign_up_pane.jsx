@@ -41,7 +41,7 @@ export default class SignUpPane extends React.Component {
         options={x.get("options")}
         placeholder={x.get("placeholder")}
         type={x.get("type")}
-        validatior={x.get("validator")}
+        validator={x.get("validator")}
       />
     ));
 

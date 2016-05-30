@@ -5,6 +5,7 @@ import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 
 const Component = ({i18n, model}) => (
   <SocialButtonsPane
+    bigButtons={false}
     instructions={i18n.html("socialLoginInstructions")}
     labelFn={i18n.str}
     lock={model}
