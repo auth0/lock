@@ -7,6 +7,7 @@ import {
   databaseConnection,
   defaultDatabaseConnection,
   hasScreen,
+  initialScreen,
   signUpLink
 } from '../../connection/database/index';
 import { logIn as databaseLogIn } from '../../connection/database/actions';
@@ -35,9 +36,9 @@ import {
 
 
 function shouldRenderTabs(m) {
-  return l.hasSomeConnections(m, "database")
-    && hasScreen(m, "signUp")
-    && !isSSOEnabled(m);
+  if (isSSOEnabled(m)) return false;
+  if (l.hasSomeConnections(m, "database")) return hasScreen(m, "signUp");
+  if (l.hasSomeConnections(m, "social") && initialScreen(m) === "signUp") return hasScreen(m, "signUp");
 }
 
 const Component = ({i18n, model, t}) => {
