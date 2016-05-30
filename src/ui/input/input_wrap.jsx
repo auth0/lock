@@ -3,7 +3,7 @@ import React from 'react';
 
 export default class InputWrap extends React.Component {
   render() {
-    const { focused, isValid, name, icon } = this.props;
+    const { before, focused, isValid, name, icon } = this.props;
     let blockClassName = `auth0-lock-input-block auth0-lock-input-${name}`;
     if (!isValid) {
       blockClassName += " auth0-lock-error";
@@ -30,6 +30,7 @@ export default class InputWrap extends React.Component {
 
     return (
       <div className={blockClassName}>
+        {before}
         <div className={wrapClassName}>
           {iconElement}
           {this.props.children}
@@ -40,6 +41,7 @@ export default class InputWrap extends React.Component {
 }
 
 InputWrap.propTypes = {
+  before: React.PropTypes.element,
   children: React.PropTypes.oneOfType([
     React.PropTypes.element.isRequired,
     React.PropTypes.arrayOf(React.PropTypes.element).isRequired

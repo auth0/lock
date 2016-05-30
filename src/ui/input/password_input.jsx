@@ -48,7 +48,13 @@ export default class PasswordInput extends React.Component {
       : null;
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="password" icon={icon}>
+      <InputWrap
+        before={passwordStrength}
+        focused={focused}
+        isValid={isValid}
+        name="password"
+        icon={icon}
+      >
         <input
           ref="input"
           type="password"
@@ -62,7 +68,6 @@ export default class PasswordInput extends React.Component {
           value={value}
           {...props}
         />
-        {passwordStrength}
       </InputWrap>
     );
   }
