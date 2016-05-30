@@ -31,6 +31,7 @@ import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notic
 import {
   hasOnlyClassicConnections,
   isSSOEnabled,
+  useBigSocialButtons,
   usernameStyle
 } from '../automatic';
 
@@ -58,6 +59,7 @@ const Component = ({i18n, model, t}) => {
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
+         bigButtons={useBigSocialButtons(model)}
          instructions={i18n.html("socialLoginInstructions")}
          labelFn={i18n.str}
          lock={model}

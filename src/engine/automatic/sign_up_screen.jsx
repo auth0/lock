@@ -18,7 +18,11 @@ import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import { renderOptionSelection } from '../../field/index';
 import * as l from '../../core/index';
 import PaneSeparator from '../../core/pane_separator';
-import { hasOnlyClassicConnections, isSSOEnabled } from '../automatic';
+import {
+  hasOnlyClassicConnections,
+  isSSOEnabled,
+  useBigSocialButtons
+} from '../automatic';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 
@@ -40,6 +44,7 @@ const Component = ({i18n, model}) => {
 
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
+         bigButtons={useBigSocialButtons(model)}
          instructions={i18n.html("socialSignUpInstructions")}
          labelFn={i18n.str}
          lock={model}
