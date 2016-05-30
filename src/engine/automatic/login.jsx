@@ -27,7 +27,11 @@ import {
   isHRDDomain
 } from '../../connection/enterprise';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
-import { isSSOEnabled, usernameStyle } from '../automatic';
+import {
+  hasOnlyClassicConnections,
+  isSSOEnabled,
+  usernameStyle
+} from '../automatic';
 
 
 function shouldRenderTabs(m) {
@@ -38,7 +42,7 @@ function shouldRenderTabs(m) {
 
 const Component = ({i18n, model, t}) => {
   const sso = isSSOEnabled(model);
-  const onlySocial = l.hasOnlyConnections(model, "social");
+  const onlySocial = hasOnlyClassicConnections(model, "social");
 
   const tabs = shouldRenderTabs(model)
     && <LoginSignUpTabs
@@ -111,7 +115,7 @@ export default class Login extends Screen {
   }
 
   submitHandler(model) {
-    if (l.hasOnlyConnections(model, "social")) {
+    if (hasOnlyClassicConnections(model, "social")) {
       return null;
     }
 

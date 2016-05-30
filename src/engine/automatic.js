@@ -49,6 +49,11 @@ export function usernameStyle(m) {
   return authWithUsername(m) && !isADEnabled(m) ? "username" : "email";
 }
 
+export function hasOnlyClassicConnections(m, type = undefined, ...strategies) {
+  return l.hasOnlyConnections(m, type, ...strategies)
+    && !l.hasSomeConnections(m, "passwordless");
+}
+
 class Automatic {
 
   static SCREENS = {
