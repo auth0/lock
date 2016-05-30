@@ -6,8 +6,8 @@ import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
   defaultDatabaseConnection,
+  hasInitialScreen,
   hasScreen,
-  initialScreen,
   signUpLink
 } from '../../connection/database/index';
 import { logIn as databaseLogIn } from '../../connection/database/actions';
@@ -38,7 +38,8 @@ import {
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
   if (l.hasSomeConnections(m, "database")) return hasScreen(m, "signUp");
-  if (l.hasSomeConnections(m, "social") && initialScreen(m) === "signUp") return hasScreen(m, "signUp");
+  if (l.hasSomeConnections(m, "social") && hasInitialScreen(m, "signUp"))
+    return hasScreen(m, "signUp");
 }
 
 const Component = ({i18n, model, t}) => {
