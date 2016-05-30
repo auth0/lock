@@ -22,5 +22,5 @@ const ErrorPane = ({i18n}) => (
 
 
 ErrorPane.propTypes = {
-  i18n: React.PropTypes.func.isRequired
+  i18n: React.PropTypes.object.isRequired
 };
