@@ -144,7 +144,13 @@ class Automatic {
     const Screen = Automatic.SCREENS[getScreen(m)];
     if (Screen) return new Screen();
 
-    l.error(m, "At least one screen (\"login\", \"signUp\" or \"forgotPassword\") needs to be allowed.");
+    setTimeout(() => {
+      const stopError = new Error("Internal error");
+      stopError.code = "internal_error";
+      stopError.description = `Couldn't find a screen "${getScreen(m)}"`;
+      swap(updateEntity, "lock", l.id(m), l.stop, stopError);
+    }, 0);
+
     return new ErrorScreen();
   }
 
