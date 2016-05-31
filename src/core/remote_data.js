@@ -29,8 +29,8 @@ function syncClientSettingsSuccess(m, result) {
     pickConnections(result, l.allowedConnections(m))
   );
 
-  // TODO: this shouldn't be like this
-  setTimeout(() => l.runHook(m, "didReceiveClientSettings"), 0);
+  m = l.runHook(m, "didReceiveClientSettings");
+
   return m;
 }
 

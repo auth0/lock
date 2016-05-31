@@ -295,7 +295,7 @@ export function hasConnection(m, name) {
 }
 
 export function runHook(m, str, ...args) {
-  get(m, "hookRunner")(str, ...args);
+  return get(m, "hookRunner")(str, m, ...args);
 }
 
 export function emitEvent(m, str, ...args) {
@@ -323,7 +323,12 @@ export function loginErrorMessage(m, error) {
     || i18n.str(m, ["error", "login", "lock.fallback"]);
 }
 
-export function stop(m) {
+// TODO: rename to something less generic that is easier to grep
+export function stop(m, error) {
+  if (error) {
+    setTimeout(() => invokeLogInCallback(m, error), 0);
+  }
+
   return set(m, "stopped", true);
 }
 

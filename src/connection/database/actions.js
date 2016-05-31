@@ -123,7 +123,10 @@ function autoLogInError(id, error) {
       const errorMessage = l.loginErrorMessage(m, error);
       return l.setSubmitting(setScreen(m, "login"), false, errorMessage);
     } else {
-      return l.setSubmitting(l.stop(m), false);
+      const stopError = new Error("Autologin failed and no the login screen is not allowed.");
+      stopError.code = "autologin_error";
+      stopError.origin = error;
+      return l.setSubmitting(l.stop(m, stopError), false);
     }
   });
 }

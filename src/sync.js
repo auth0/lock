@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["sync"]);
+import * as l from './core/index';
 
 import { getEntity, observe, read, swap, updateEntity } from './store/index';
 
@@ -58,7 +59,7 @@ const process = (m, id) => {
           swap(updateEntity, "lock", id, m => {
             const recoverResult = getProp(m, k, "recoverResult");
             if (error && recoverResult === undefined) {
-              return setStatus(m, k, "error");
+              return handleError(m, k, error);
             } else {
               m = setStatus(m, k, "ok");
               return getProp(m, k, "successFn")(m, error ? recoverResult : result);
@@ -98,4 +99,18 @@ export function hasError(m, excludeKeys = []) {
 
 function isLoading(m, key) {
   return ["loading", "pending", "waiting"].indexOf(getStatus(m, key)) > -1;
+}
+
+function handleError(m, key, error) {
+  let result = setStatus(m, key, "error");
+
+  // TODO: this should be configurable for each sync
+  if (key !== "sso") {
+    const stopError = new Error("An error ocurred when fetching data.");
+    stopError.code = "sync";
+    stopError.origin = error;
+    result = l.stop(result, stopError);
+  }
+
+  return result;
 }
