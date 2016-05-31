@@ -86,8 +86,9 @@ class Automatic {
     const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
 
     if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
-      // TODO: improve message
-      throw new Error("At least one database, enterprise or social connection needs to be available.");
+      const error = new Error("At least one database, enterprise or social connection needs to be available.");
+      error.code = "no_connection";
+      m = l.stop(m, error);
     }
 
     if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
