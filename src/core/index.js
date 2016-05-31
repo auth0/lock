@@ -295,7 +295,7 @@ export function hasConnection(m, name) {
 }
 
 export function runHook(m, str, ...args) {
-  get(m, "hookRunner")(str, ...args);
+  return get(m, "hookRunner")(str, m, ...args);
 }
 
 export function emitEvent(m, str, ...args) {

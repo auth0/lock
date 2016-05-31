@@ -8,24 +8,17 @@ import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField } from '../field/index';
 
 export function setupLock(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
-  // TODO: run a hook before initialization, useful for when we want
-  // to provide some options by default.
-  const m = syncRemoteData(l.setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn));
+  let m = syncRemoteData(l.setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn));
   preload(l.ui.logo(m) || defaultProps.logo);
-
 
   webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {
     ...options,
     popupOptions: l.ui.popupOptions(m)
   }));
 
+  m = l.runHook(m, "didInitialize", options);
 
   swap(setEntity, "lock", id, m);
-
-  // TODO: this triggers a second call to swap, maybe it can be
-  // optimized. However, the Lock isn't rendering yet so it might not
-  // be really an issue.
-  l.runHook(m, "didInitialize", options);
 
   if (l.auth.redirect(m)) {
     const hash = webApi.parseHash(id);

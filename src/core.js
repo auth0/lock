@@ -147,7 +147,7 @@ export default class Base extends EventEmitter {
 
   runHook(str, ...args) {
     if (typeof this.engine[str] != "function") return;
-    return this.engine[str](read(getEntity, "lock", this.id), ...args);
+    return this.engine[str](...args);
   }
 
 }

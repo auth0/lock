@@ -77,7 +77,7 @@ class Automatic {
     if (typeof email === "string") model = setEmail(model, email);
     if (typeof username === "string") model = setUsername(model, username);
 
-    swap(updateEntity, "lock", l.id(model), _ => model);
+    return model;
   }
 
   didReceiveClientSettings(m) {
@@ -97,6 +97,8 @@ class Automatic {
     if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
       l.warn(m, `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`);
     }
+
+    return m;
   }
 
   render(m) {
