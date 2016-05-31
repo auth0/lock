@@ -118,12 +118,12 @@ function processDatabaseOptions(opts) {
 
       const reservedNames = ["email", "username", "password"];
       if (typeof name != "string" || !name.match(/^[a-zA-Z0-9_]+$/) || reservedNames.indexOf(name) > -1) {
-        l.warn(opts, `A \`name\` property must be provided for every element of \`additionalSignUpFields\`. It must be a non-empty string consisting of letters, numbers and underscores. The following names are reserved, and therefore, cannot be used: ${reservedNames.join(", ")}.`);
+        l.warn(opts, `Ignoring an element of \`additionalSignUpFields\` because it does not contain valid \`name\` property. Every element of \`additionalSignUpFields\` must be an object with a \`name\` property that is a non-empty string consisting of letters, numbers and underscores. The following names are reserved, and therefore, cannot be used: ${reservedNames.join(", ")}.`);
         filter = false;
       }
 
       if (typeof placeholder != "string" || !placeholder) {
-        l.warn(opts, "A `placeholder` property must be provided for every element of `additionalSignUpFields`. It must be a non-empty string.");
+        l.warn(opts, "Ignoring an element of `additionalSignUpFields` because it does not contain a valid `placeholder` property. Every element of `additionalSignUpFields` must have a `placeholder` property that is a non-empty string.");
         filter = false;
       }
 
@@ -158,12 +158,9 @@ function processDatabaseOptions(opts) {
         options = undefined;
       }
 
-      if (options != undefined && !global.Array.isArray(options) && typeof options != "function") {
-        throw new Error("Elements of `additionalSignUpFields` with a \"select\" `type` must specify a `options` property that is an Array or a function.");
-      }
-
-      if (type === "select" && options === undefined) {
-        l.warn(opts, `When providing a \`type\` property in an element of \`additionalSignUpFields\` a valid \`options\` property must also be provided.`);
+      if ((options != undefined && !global.Array.isArray(options) && typeof options != "function")
+          || (type === "select" && options === undefined)) {
+        l.warn("Ignoring an element of `additionalSignUpFields` because it has a \"select\" `type` but does not specify an `options` property that is an Array or a function.");
         filter = false;
       }
 
