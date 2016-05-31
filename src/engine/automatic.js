@@ -105,16 +105,11 @@ class Automatic {
   render(m) {
     // TODO: remove the detail about the loading pane being pinned,
     // sticky screens should be handled at the box module.
-    if ((!isDone(m) && !hasError(m, ["sso"])) || m.get("isLoadingPanePinned")) {
+    if (!isDone(m) || m.get("isLoadingPanePinned")) {
       return new LoadingScreen();
     }
 
-    const anyDBConnection = l.hasSomeConnections(m, "database");
-    const anySocialConnection = l.hasSomeConnections(m, "social");
-    const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
-    const noConnection = !anyDBConnection && !anySocialConnection && !anyEnterpriseConnection;
-
-    if (l.hasStopped(m) || hasError(m, ["sso"]) || noConnection) {
+    if (l.hasStopped(m)) {
       return new ErrorScreen();
     }
 
