@@ -9,6 +9,7 @@ import {
   defaultDatabaseConnection,
   defaultDatabaseConnectionName,
   getScreen,
+  hasInitialScreen,
   hasScreen,
   initDatabase
 } from '../connection/database/index';
@@ -88,6 +89,14 @@ class Automatic {
     if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
       const error = new Error("At least one database, enterprise or social connection needs to be available.");
       error.code = "no_connection";
+      m = l.stop(m, error);
+    } else if (!anyDBConnection && hasInitialScreen(m, "forgotPassword")) {
+      const error = new Error("The `initialScreen` option was set to \"forgotPassword\" but no database connection is available.");
+      error.code = "unavailable_initial_screen";
+      m = l.stop(m, error);
+    } else if (!anyDBConnection && !anySocialConnection && hasInitialScreen(m, "signUp")) {
+      const error = new Error("The `initialScreen` option was set to \"signUp\" but no database or social connection is available.");
+      error.code = "unavailable_initial_screen";
       m = l.stop(m, error);
     }
 
