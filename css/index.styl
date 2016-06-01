@@ -341,7 +341,8 @@ breakpoint(point, value = 0)
       &.auth0-lock-icon-box
         width 12px
         height 14px
-        top 13px
+        top auto
+        bottom 14px
         left 14px
 
     &.auth0-lock-focused
@@ -1126,33 +1127,40 @@ breakpoint(point, value = 0)
 // password strength
 
 .auth0-lock-password-strength
-  position absolute
+  width 100%
   bottom 41px
   left -1px
-  width calc(100% - 28px)
+  // width calc(100% - 28px)
   display block
   text-align left
-  padding 15px
-  padding-top 12px
-  background #1F242E
+  padding-top 0
   border-radius 5px
   z-index 1000
-  box-shadow 0 0 20px 0 rgba(0,0,0,.5)
   -webkit-animation-duration .3s
   animation-duration .3s
+  height 0
+  transition height .3s ease
 
-  &:after
-    top 100%
-    left 21px
-    border solid transparent
-    content: " "
-    height 0
-    width 0
+  +breakpoint("mobile")
     position absolute
-    pointer-events none
-    border-top-color #1F242E
-    border-width 9px
-    margin-left -9px
+    background #1F242E
+    box-shadow 0 0 20px 0 rgba(0,0,0,.5)
+    height auto
+    transition none
+    width calc(100% + 1px)
+
+    &:after
+      top 100%
+      left 21px
+      border solid transparent
+      content: " "
+      height 0
+      width 0
+      position absolute
+      pointer-events none
+      border-top-color #1F242E
+      border-width 9px
+      margin-left -9px
 
   &.fadeOut
     opacity 0
@@ -1160,6 +1168,11 @@ breakpoint(point, value = 0)
     visibility hidden
 
   &.fadeIn
+    height 135px
+
+    +breakpoint("mobile")
+      height auto
+
     ul
       animation fadeIn .3s .1s both
 
@@ -1168,6 +1181,13 @@ breakpoint(point, value = 0)
     padding 0
     list-style none
     color #dd4b39
+
+  & > ul
+    padding 15px
+    padding-top 0
+
+    +breakpoint("mobile")
+      padding-top 12px
 
   li
     span
@@ -1180,7 +1200,9 @@ breakpoint(point, value = 0)
     margin-left 20px
 
     li
-      color white
+      color black
+      +breakpoint("mobile")
+        color white
 
       span
         background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTMgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+T3ZhbCAxPC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPjwvZGVmcz4gICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+ICAgICAgICA8ZyBpZD0iSXBob25lLTYtLS1OYXRpdmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NC4wMDAwMDAsIC0yMTQuMDAwMDAwKSIgZmlsbD0iI0QwRDJEMyI+ICAgICAgICAgICAgPHBhdGggZD0iTTUwLjExNDk3MzMsMjI2IEM1My40Mjg2ODE4LDIyNiA1Ni4xMTQ5NzMzLDIyMy4zMTM3MDggNTYuMTE0OTczMywyMjAgQzU2LjExNDk3MzMsMjE2LjY4NjI5MiA1My40Mjg2ODE4LDIxNCA1MC4xMTQ5NzMzLDIxNCBDNDYuODAxMjY0OCwyMTQgNDQuMTE0OTczMywyMTYuNjg2MjkyIDQ0LjExNDk3MzMsMjIwIEM0NC4xMTQ5NzMzLDIyMy4zMTM3MDggNDYuODAxMjY0OCwyMjYgNTAuMTE0OTczMywyMjYgWiIgaWQ9Ik92YWwtMSI+PC9wYXRoPiAgICAgICAgPC9nPiAgICA8L2c+PC9zdmc+')
