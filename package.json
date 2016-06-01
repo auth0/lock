@@ -30,6 +30,12 @@
     "test:cli": "mochify --extension=.jsx --transform=babelify test/**/*.test.js",
     "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js"
   },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0",
+    "react-addons-css-transition-group": "^0.14.0 || ^15.0.0",
+    "react-addons-transition-group": "^0.14.0 || ^15.0.0"
+  },
   "devDependencies": {
     "babel-plugin-transform-css-import-to-string": "0.0.2",
     "babel-plugin-version-inline": "^1.0.0",
@@ -56,7 +62,11 @@
     "grunt-exec": "^0.4.6",
     "grunt-http": "^1.6.0",
     "mochify": "^2.12.0",
-    "react-addons-test-utils": "0.14.5",
+    "react": "15.1.0",
+    "react-dom": "15.1.0",
+    "react-addons-css-transition-group": "15.1.0",
+    "react-addons-test-utils": "15.1.0",
+    "react-addons-transition-group": "15.1.0",
     "sinon": "^1.15.4",
     "unreleased": "^0.1.0",
     "zuul": "3.10.1",
@@ -69,10 +79,6 @@
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
     "password-sheriff": "^1.0.0",
-    "react": "0.14.5",
-    "react-addons-css-transition-group": "0.14.5",
-    "react-addons-transition-group": "0.14.5",
-    "react-dom": "0.14.5",
     "trim": "0.0.1"
   }
 }
