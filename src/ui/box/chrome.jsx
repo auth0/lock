@@ -233,9 +233,9 @@ export default class Chrome extends React.Component {
           </MultisizeSlide>
         </div>
         <ReactCSSTransitionGroup
-            transitionEnterTimeout={400}
-            transitionLeaveTimeout={400}
-            transitionName="vslide"
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={400}
+          transitionName="vslide"
         >
           {submitButton}
         </ReactCSSTransitionGroup>
