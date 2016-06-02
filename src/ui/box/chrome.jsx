@@ -44,7 +44,7 @@ export default class Chrome extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {reverse: false};
+    this.state = {moving: false, reverse: false};
   }
 
   componentWillReceiveProps(nextProps) {
@@ -116,6 +116,7 @@ export default class Chrome extends React.Component {
   }
 
   onWillSlide() {
+    this.setState({moving: true});
     this.sliding = true;
   }
 
@@ -125,6 +126,7 @@ export default class Chrome extends React.Component {
   }
 
   onDidAppear() {
+    this.setState({moving: false});
     if (this.state.delayingShowSubmitButton) {
       this.setState({delayingShowSubmitButton: false});
     }
@@ -173,7 +175,7 @@ export default class Chrome extends React.Component {
       transitionName
     } = this.props;
 
-    const { delayingShowSubmitButton, reverse } = this.state;
+    const { delayingShowSubmitButton, moving, reverse } = this.state;
 
     let backgroundUrl, name;
     if (avatar) {
@@ -202,8 +204,14 @@ export default class Chrome extends React.Component {
 
     const Content = contentComponent;
 
+    let className = "auth0-lock-cred-pane";
+    const isQuiet =  !moving && !delayingShowSubmitButton && !isSubmitting;
+    className += isQuiet
+      ? " auth0-lock-quiet"
+      : " auth0-lock-moving";
+
     return (
-      <div className="auth0-lock-cred-pane">
+      <div className={className}>
         <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={logo}/>
         <ReactTransitionGroup>
           {globalSuccess}
