@@ -8,13 +8,20 @@ import {
 import webApi from '../../core/web_api';
 import * as c from '../../field/index';
 import * as l from '../../core/index';
-import * as m from './index';
+import {
+  resend,
+  restartPasswordless,
+  send,
+  setPasswordlessStarted,
+  setResendFailed,
+  setResendSuccess
+} from './index';
 
 export function requestPasswordlessEmail(id) {
-  validateAndSubmit(id, ["email"], m1 => {
+  validateAndSubmit(id, ["email"], m => {
     const params = {
-      email: c.getFieldValue(m1, "email"),
-      send: m.send(m1)
+      email: c.getFieldValue(m, "email"),
+      send: send(m)
     };
 
     webApi.startPasswordless(id, params, error => {
@@ -29,7 +36,7 @@ export function requestPasswordlessEmail(id) {
 
 export function requestPasswordlessEmailSuccess(id) {
   swap(updateEntity, "lock", id, lock => {
-    return m.setPasswordlessStarted(l.setSubmitting(lock, false), true);
+    return setPasswordlessStarted(l.setSubmitting(lock, false), true);
   });
 }
 
@@ -69,7 +76,7 @@ export function sendSMS(id) {
 export function sendSMSSuccess(id) {
   swap(updateEntity, "lock", id, lock => {
     lock = l.setSubmitting(lock, false);
-    lock = m.setPasswordlessStarted(lock, true);
+    lock = setPasswordlessStarted(lock, true);
     return lock;
   });
 
@@ -91,12 +98,12 @@ export function sendSMSError(id, error) {
 }
 
 export function resendEmail(id) {
-  swap(updateEntity, "lock", id, m.resend);
+  swap(updateEntity, "lock", id, resend);
 
   const lock = read(getEntity, "lock", id);
   const options = {
     email: c.email(lock),
-    send: m.send(lock),
+    send: send(lock),
   };
 
   webApi.startPasswordless(id, options, error => {
@@ -109,25 +116,25 @@ export function resendEmail(id) {
 }
 
 export function resendEmailSuccess(id) {
-  swap(updateEntity, "lock", id, m.setResendSuccess);
+  swap(updateEntity, "lock", id, setResendSuccess);
 }
 
 export function resendEmailError(id, error) {
-  swap(updateEntity, "lock", id, m.setResendFailed);
+  swap(updateEntity, "lock", id, setResendFailed);
 }
 
 export function logIn(id) {
-  const m1 = read(getEntity, "lock", id);
-  const params = {passcode: c.getFieldValue(m1, "vcode")};
-  if (m.send(m1) === "sms") {
-    params.phoneNumber = c.fullPhoneNumber(m1);
+  const m = read(getEntity, "lock", id);
+  const params = {passcode: c.getFieldValue(m, "vcode")};
+  if (send(m) === "sms") {
+    params.phoneNumber = c.fullPhoneNumber(m);
   } else {
-    params.email = c.getFieldValue(m1, "email");
+    params.email = c.getFieldValue(m, "email");
   }
 
   coreLogIn(id, ["vcode"], params);
 }
 
 export function restart(id) {
-  swap(updateEntity, "lock", id, m.restartPasswordless);
+  swap(updateEntity, "lock", id, restartPasswordless);
 }
