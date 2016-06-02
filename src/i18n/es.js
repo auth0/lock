@@ -57,6 +57,7 @@ export default {
   },
   passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br>para iniciar sesión o registrarse",
   passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br>o registrarse",
+  phoneNumberInputPlaceholder: "número de teléfono",
   resendCodeAction: "¿No recibió el código?",
   resendLabel: "Reenviar",
   resendingLabel: "Reenviando...",

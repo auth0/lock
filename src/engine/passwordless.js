@@ -1,8 +1,10 @@
 // import ErrorScreen from '../core/error_screen';
 import SocialOrEmailLoginScreen from './passwordless/social_or_email_login_screen';
+import SocialOrPhoneNumberLoginScreen from './passwordless/social_or_phone_number_login_screen';
 import VcodeScreen from '../connection/passwordless/ask_vcode';
 import {
   initPasswordless,
+  isEmail,
   isSendLink,
   passwordlessStarted
 } from '../connection/passwordless/index';
@@ -47,9 +49,13 @@ class Passwordless {
   }
 
   render(m) {
-    return isSendLink(m) || !passwordlessStarted(m)
-      ? new SocialOrEmailLoginScreen()
-      : new VcodeScreen();
+    if (isEmail(m)) {
+      return isSendLink(m) || !passwordlessStarted(m)
+        ? new SocialOrEmailLoginScreen()
+        : new VcodeScreen();
+    } else {
+      return new SocialOrPhoneNumberLoginScreen();
+    }
 
     // const ssoScreen = renderSSOScreens(m);
     // if (ssoScreen) return ssoScreen;

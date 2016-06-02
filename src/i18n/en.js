@@ -57,6 +57,7 @@ export default {
   },
   passwordlessEmailAlternativeInstructions: "Otherwise, enter your email to sign in<br>or create an account",
   passwordlessEmailInstructions: "Enter your email to sign in<br>or create an account",
+  phoneNumberInputPlaceholder: "your phone number",
   resendCodeAction: "Did not get the code?",
   resendLabel: "Resend",
   resendingLabel: "Resending...",
