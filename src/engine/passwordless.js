@@ -1,3 +1,4 @@
+import ErrorScreen from '../core/error_screen';
 // import Base from './index';
 // import AskSocialNetwork from './field/social/ask_social_network';
 // import AskEmail from './connection/passwordless/ask_email';
@@ -19,69 +20,69 @@
 // import * as l from './core/index';
 //
 //
-// export default class Auth0LockPasswordless extends Base {
-//
-//   constructor(...args) {
-//     super("passwordless", dict, ...args);
-//   }
-//
-//   didInitialize(model, options) {
-//     model = setInitialPhoneLocation(model, options);
-//     model = initSocial(model, options);
-//     model = initPasswordless(model, options);
-//     this.setModel(model);
-//   }
-//
-//   didReceiveClientSettings(m) {
-//     const anySocialConnection = l.hasSomeConnections(m, "social");
-//     const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
-//
-//     if (!anySocialConnection && !anyPasswordlessConnection) {
-//       // TODO: improve message
-//       throw new Error("At least one database or passwordless connection needs to be available.");
-//     }
-//
-//     // TODO: check for the send option and emit warning if we have a sms
-//     // connection.
-//   }
-//
-//   render(m) {
-//     const ssoScreen = renderSSOScreens(m);
-//     if (ssoScreen) return ssoScreen;
-//
-//     const anySocialConnection = l.hasSomeConnections(m, "social");
-//     const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
-//
-//     // social flow
-//     if (!anyPasswordlessConnection) {
-//       return new AskSocialNetwork();
-//     }
-//
-//     // social or magiclink flow, or magiclink flow
-//     // a link can be send only in an email
-//     if (isSendLink(m)) {
-//       return anySocialConnection
-//         ? new AskSocialNetworkOrEmail()
-//         : new MagiclinkScreen();
-//     }
-//
-//     // social or emailcode flow, or emailcode flow
-//     if (isEmail(m)) {
-//       return passwordlessStarted(m)
-//         ? new AskEmailVcode()
-//         : (anySocialConnection ? new AskSocialNetworkOrEmail() : new AskEmail());
-//     }
-//
-//     // social or sms flow, or sms flow
-//     return passwordlessStarted(m)
-//       ? new AskPhoneNumberVcode()
-//       : (anySocialConnection ? new AskSocialNetworkOrPhoneNumber() : new AskPhoneNumber());
-//
-//     // TODO: show a crashed screen.
-//     throw new Error("unknown screen");
-//   }
-//
-// }
+class Passwordless {
+
+  didInitialize(m, opts) {
+    // model = setInitialPhoneLocation(model, options);
+    // model = initSocial(model, options);
+    // model = initPasswordless(model, options);
+    return m;
+  }
+
+  didReceiveClientSettings(m) {
+    // const anySocialConnection = l.hasSomeConnections(m, "social");
+    // const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
+
+    // if (!anySocialConnection && !anyPasswordlessConnection) {
+    //   // TODO: improve message
+    //   throw new Error("At least one database or passwordless connection needs to be available.");
+    // }
+
+    // TODO: check for the send option and emit warning if we have a sms
+    // connection.
+
+    return m;
+  }
+
+  render(m) {
+    return new ErrorScreen();
+    // const ssoScreen = renderSSOScreens(m);
+    // if (ssoScreen) return ssoScreen;
+
+    // const anySocialConnection = l.hasSomeConnections(m, "social");
+    // const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
+
+    // // social flow
+    // if (!anyPasswordlessConnection) {
+    //   return new AskSocialNetwork();
+    // }
+
+    // // social or magiclink flow, or magiclink flow
+    // // a link can be send only in an email
+    // if (isSendLink(m)) {
+    //   return anySocialConnection
+    //     ? new AskSocialNetworkOrEmail()
+    //     : new MagiclinkScreen();
+    // }
+
+    // // social or emailcode flow, or emailcode flow
+    // if (isEmail(m)) {
+    //   return passwordlessStarted(m)
+    //     ? new AskEmailVcode()
+    //     : (anySocialConnection ? new AskSocialNetworkOrEmail() : new AskEmail());
+    // }
+
+    // // social or sms flow, or sms flow
+    // return passwordlessStarted(m)
+    //   ? new AskPhoneNumberVcode()
+    //   : (anySocialConnection ? new AskSocialNetworkOrPhoneNumber() : new AskPhoneNumber());
+
+    // // TODO: show a crashed screen.
+    // throw new Error("unknown screen");
+  }
+}
+
+export default new Passwordless();
 //
 // const dict = {
 //   email: {
