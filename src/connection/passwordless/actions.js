@@ -19,18 +19,7 @@ import {
 
 export function requestPasswordlessEmail(id) {
   validateAndSubmit(id, ["email"], m => {
-    const params = {
-      email: c.getFieldValue(m, "email"),
-      send: send(m)
-    };
-
-    webApi.startPasswordless(id, params, error => {
-      if (error) {
-        setTimeout(() => requestPasswordlessEmailError(id, error), 250);
-      } else {
-        requestPasswordlessEmailSuccess(id);
-      }
-    });
+    sendEmail(m, requestPasswordlessEmailSuccess, requestPasswordlessEmailError);
   });
 }
 
@@ -46,6 +35,35 @@ export function requestPasswordlessEmailError(id, error) {
   // const errorMessage = l.ui.t(lock, ["error", "passwordless", error.error], {medium: "email", __textOnly: true}) || l.ui.t(lock, ["error", "passwordless", "lock.request"], {medium: "email", __textOnly: true})
   const errorMessage = "";
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+}
+
+export function resendEmail(id) {
+  swap(updateEntity, "lock", id, resend);
+  const m = read(getEntity, "lock", id);
+  sendEmail(m, resendEmailSuccess, resendEmailError);
+}
+
+function resendEmailSuccess(id) {
+  swap(updateEntity, "lock", id, setResendSuccess);
+}
+
+function resendEmailError(id, error) {
+  swap(updateEntity, "lock", id, setResendFailed);
+}
+
+function sendEmail(m, successFn, errorFn) {
+  const params = {
+    email: c.getFieldValue(m, "email"),
+    send: send(m)
+  };
+
+  webApi.startPasswordless(l.id(m), params, error => {
+    if (error) {
+      setTimeout(() => errorFn(l.id(m), error), 250);
+    } else {
+      successFn(l.id(m));
+    }
+  });
 }
 
 export function sendSMS(id) {
@@ -95,32 +113,6 @@ export function sendSMSError(id, error) {
   // }
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-}
-
-export function resendEmail(id) {
-  swap(updateEntity, "lock", id, resend);
-
-  const lock = read(getEntity, "lock", id);
-  const options = {
-    email: c.email(lock),
-    send: send(lock),
-  };
-
-  webApi.startPasswordless(id, options, error => {
-    if (error) {
-      resendEmailError(id, error);
-    } else {
-      resendEmailSuccess(id);
-    }
-  });
-}
-
-export function resendEmailSuccess(id) {
-  swap(updateEntity, "lock", id, setResendSuccess);
-}
-
-export function resendEmailError(id, error) {
-  swap(updateEntity, "lock", id, setResendFailed);
 }
 
 export function logIn(id) {
