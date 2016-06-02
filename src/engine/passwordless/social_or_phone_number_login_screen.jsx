@@ -8,6 +8,8 @@ import PaneSeparator from '../../core/pane_separator';
 import { useBigButtons } from '../../connection/social/index';
 import * as l from '../../core/index';
 
+import { renderOptionSelection } from '../../field/index';
+
 const useSocialBigButtons = (m) => {
   const limit = l.connections(m, "passwordless", "sms").count() === 0 ? 5 : 3;
   const notFound = l.connections(m, "social").count() <= limit;
@@ -52,7 +54,8 @@ export default class AskSocialNetworkOrPhoneNumber extends Screen {
   // }
 
   renderAuxiliaryPane(lock) {
-    return renderSignedInConfirmation(lock);
+    return renderSignedInConfirmation(lock)
+      || renderOptionSelection(lock);
   }
 
   render() {

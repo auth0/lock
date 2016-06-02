@@ -1,7 +1,9 @@
-import { List, Map } from 'immutable';
+import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
-import { clearFields } from '../../field/index';
+import { clearFields, registerOptionField } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
+
+import { countryCodes } from '../../field/country_codes';
 
 const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
 
@@ -11,7 +13,14 @@ export function initPasswordless(m, opts) {
     ? "code"
     : "link";
 
-  return initNS(m, Map({send: send}));
+  const locations = countryCodes.map(x => Map(
+    {label: `${x.get(2)} ${x.get(1)} ${x.get(0)}`,
+     value: x.get(2)}
+  ));
+
+  m = initNS(m, Map({send: send}));
+  m = registerOptionField(m, "location", locations);
+  return m;
 }
 
 function setResendStatus(m, value) {
