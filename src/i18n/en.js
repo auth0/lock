@@ -24,6 +24,7 @@ export default {
   success: { // success messages show above the form or in a confirmation pane
     logIn: "Thanks for logging in.",
     forgotPassword: "We've just sent you an email to reset your password.",
+    magicLink: "We sent you a link to sign in<br />to %s.",
     signUp: "Thanks for signing up."
   },
   databaseEnterpriseLoginInstructions: "",
@@ -33,6 +34,7 @@ export default {
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
   enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at %s.",
+  failedLabel: "Failed!",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   lastLoginInstructions: "Last time you logged in with",
@@ -54,6 +56,10 @@ export default {
   },
   passwordlessEmailAlternativeInstructions: "Otherwise, enter your email to sign in<br>or create an account",
   passwordlessEmailInstructions: "Enter your email to sign in<br>or create an account",
+  resendLabel: "Resend",
+  resendingLabel: "Resending...",
+  retryLabel: "Retry",
+  sentLabel: "Sent!",
   signUpLabel: "Sign Up",
   signUpterms: "",
   signUpWithLabel: "Sign up with %s",

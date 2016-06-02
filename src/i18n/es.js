@@ -24,6 +24,7 @@ export default {
   success: {
     logIn: "Sesión iniciada con éxito.",
     forgotPassword: "Hemos enviado un email para completar el restablecimiento de su contraseña.",
+    magicLink: "Hemos enviado un correo para inciar sesión a<br />to %s.",
     signUp: "Registro completado exitosamente."
   },
   databaseEnterpriseLoginInstructions: "",
@@ -33,6 +34,7 @@ export default {
   emailInputPlaceholder: "correo@ejemplo.com",
   enterpriseLoginIntructions: "Inicie sesión con sus credenciales corporativas.",
   enterpriseActiveLoginInstructions: "Ingrese las credenciales corporativas de %s.",
+  failedLabel: "Error!",
   forgotPasswordAction: "¿Olvidó su contraseña?",
   forgotPasswordInstructions: "Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.",
   lastLoginInstructions: "La última vez inició sesión con",
@@ -54,6 +56,9 @@ export default {
   },
   passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br>para iniciar sesión o registrarse",
   passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br>o registrarse",
+  resendLabel: "Reenviar",
+  resendingLabel: "Reenviando...",
+  retryLabel: "Reintentar",
   signUpLabel: "Registrarse",
   signUpterms: "",
   signUpWithLabel: "Registrarse con %s",
