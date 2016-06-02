@@ -35,7 +35,7 @@ export default class InputWrap extends React.Component {
           {iconElement}
           {this.props.children}
         </div>
-        {after}
+        <div className="auth0-lock-error-msg">{after}</div>
       </div>
     );
   }

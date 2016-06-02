@@ -54,6 +54,7 @@ export default class PasswordInput extends React.Component {
         isValid={isValid}
         name="password"
         icon={icon}
+        after={<span>Invalid password</span>}
       >
         <input
           ref="input"
