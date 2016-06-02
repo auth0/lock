@@ -1,9 +1,8 @@
-import ErrorScreen from '../core/error_screen';
+// import ErrorScreen from '../core/error_screen';
+import SocialOrEmailLoginScreen from './passwordless/social_or_email_login_screen';
 // import Base from './index';
-// import AskSocialNetwork from './field/social/ask_social_network';
 // import AskEmail from './connection/passwordless/ask_email';
 // import AskEmailVcode from './connection/passwordless/ask_email_vcode';
-// import AskSocialNetworkOrEmail from './field/or/ask_social_network_or_email';
 // import AskSocialNetworkOrPhoneNumber from './field/or/ask_social_network_or_phone_number';
 // import AskPhoneNumber from './connection/passwordless/ask_phone_number';
 // import AskPhoneNumberVcode from './connection/passwordless/ask_phone_number_vcode';
@@ -45,7 +44,7 @@ class Passwordless {
   }
 
   render(m) {
-    return new ErrorScreen();
+    return new SocialOrEmailLoginScreen();
     // const ssoScreen = renderSSOScreens(m);
     // if (ssoScreen) return ssoScreen;
 

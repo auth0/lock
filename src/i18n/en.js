@@ -52,6 +52,8 @@ export default {
     specialCharacters: "Special characters (e.g. !@#$%^&*)",
     upperCase: "Upper case letters (A-Z)"
   },
+  passwordlessEmailAlternativeInstructions: "Otherwise, enter your email to sign in<br>or create an account",
+  passwordlessEmailInstructions: "Enter your email to sign in<br>or create an account",
   signUpLabel: "Sign Up",
   signUpterms: "",
   signUpWithLabel: "Sign up with %s",

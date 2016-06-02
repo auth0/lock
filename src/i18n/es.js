@@ -52,6 +52,8 @@ export default {
     specialCharacters: "Caracteres especiales (ej. !@#$%^&*)",
     upperCase: "Letras mayúsculas (A-Z)"
   },
+  passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br>para iniciar sesión o registrarse",
+  passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br>o registrarse",
   signUpLabel: "Registrarse",
   signUpterms: "",
   signUpWithLabel: "Registrarse con %s",
