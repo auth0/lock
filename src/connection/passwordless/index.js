@@ -6,16 +6,12 @@ import { dataFns } from '../../utils/data_utils';
 const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
 
 export function initPasswordless(m, opts) {
-  if (opts && opts.authentication && opts.authentication.send) {
-    const send = opts.authentication.send;
-    if (send === "link" || send === "code") {
-      return initNS(m, Map({send: send}));
-    }
+  // TODO: validate
+  const send = typeof opts.sendCode === "boolean" && opts.sendCode
+    ? "code"
+    : "email";
 
-    // TODO: show warning if an invalid send option was provided
-  }
-
-  return m;
+  return initNS(m, Map({send: send}));
 }
 
 function setResendStatus(m, value) {

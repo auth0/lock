@@ -1,5 +1,7 @@
 // import ErrorScreen from '../core/error_screen';
 import SocialOrEmailLoginScreen from './passwordless/social_or_email_login_screen';
+import { initPasswordless } from '../connection/passwordless/index';
+import { initSocial } from '../connection/social/index';
 // import Base from './index';
 // import AskEmail from './connection/passwordless/ask_email';
 // import AskEmailVcode from './connection/passwordless/ask_email_vcode';
@@ -9,13 +11,11 @@ import SocialOrEmailLoginScreen from './passwordless/social_or_email_login_scree
 // import MagiclinkScreen from './connection/passwordless/magiclink';
 // import { renderSSOScreens } from './core/sso/index';
 // import {
-//   initPasswordless,
 //   isEmail,
 //   isSendLink,
 //   passwordlessStarted
 // } from './connection/passwordless/index';
 // import { setInitialPhoneLocation } from './field/phone-number/actions';
-// import { initSocial } from './connection/social/index';
 // import * as l from './core/index';
 //
 //
@@ -23,8 +23,9 @@ class Passwordless {
 
   didInitialize(m, opts) {
     // model = setInitialPhoneLocation(model, options);
-    // model = initSocial(model, options);
-    // model = initPasswordless(model, options);
+    m = initSocial(m, opts);
+    m = initPasswordless(m, opts);
+
     return m;
   }
 
