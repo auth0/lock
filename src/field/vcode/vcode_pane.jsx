@@ -23,10 +23,13 @@ export default class VcodePane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder, resendLabel } = this.props;
+    const { instructions, lock, placeholder, resendLabel } = this.props;
+    const headerText = instructions || null;
+    const header = headerText && <p>{headerText}</p>;
 
     return (
       <div>
+        {header}
         <VcodeInput value={c.vcode(lock)}
           isValid={!c.isFieldVisiblyInvalid(lock, "vcode") && !l.globalError(lock)}
           onChange={::this.handleVcodeChange}
@@ -50,6 +53,7 @@ export default class VcodePane extends React.Component {
 }
 
 VcodePane.propTypes = {
+  instructions: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired,
   resendLabel: React.PropTypes.string.isRequired
