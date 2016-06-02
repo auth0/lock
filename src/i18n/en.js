@@ -27,6 +27,7 @@ export default {
     magicLink: "We sent you a link to sign in<br />to %s.",
     signUp: "Thanks for signing up."
   },
+  codeInputPlaceholder: "your code",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "or",
   databaseSignUpInstructions: "",
@@ -56,6 +57,7 @@ export default {
   },
   passwordlessEmailAlternativeInstructions: "Otherwise, enter your email to sign in<br>or create an account",
   passwordlessEmailInstructions: "Enter your email to sign in<br>or create an account",
+  resendCodeAction: "Did not get the code?",
   resendLabel: "Resend",
   resendingLabel: "Resending...",
   retryLabel: "Retry",

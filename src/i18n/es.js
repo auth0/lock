@@ -27,6 +27,7 @@ export default {
     magicLink: "Hemos enviado un correo para inciar sesión a<br />to %s.",
     signUp: "Registro completado exitosamente."
   },
+  codeInputPlaceholder: "código",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "o",
   databaseSignUpInstructions: "",
@@ -56,6 +57,7 @@ export default {
   },
   passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br>para iniciar sesión o registrarse",
   passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br>o registrarse",
+  resendCodeAction: "¿No recibió el código?",
   resendLabel: "Reenviar",
   resendingLabel: "Reenviando...",
   retryLabel: "Reintentar",

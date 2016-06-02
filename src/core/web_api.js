@@ -77,11 +77,11 @@ class Auth0WebAPI {
     this.clients[lockID].changePassword(options, cb);
   }
 
-  // startPasswordless(lockID, options, cb) {
-  //   TODO: pass options, don't merge authParams
-  //   const client = this.clients[lockID];
-  //   client.startPasswordless(options, err => cb(normalizeError(err)));
-  // }
+  startPasswordless(lockID, options, cb) {
+    // TODO: pass options, don't merge authParams
+    const client = this.clients[lockID];
+    client.startPasswordless(options, err => cb(normalizeError(err)));
+  }
 
   parseHash(lockID, hash = undefined) {
     return this.clients[lockID].parseHash(hash);

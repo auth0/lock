@@ -1,7 +1,13 @@
 // import ErrorScreen from '../core/error_screen';
 import SocialOrEmailLoginScreen from './passwordless/social_or_email_login_screen';
-import { initPasswordless } from '../connection/passwordless/index';
+import VcodeScreen from '../connection/passwordless/ask_vcode';
+import {
+  initPasswordless,
+  isSendLink,
+  passwordlessStarted
+} from '../connection/passwordless/index';
 import { initSocial } from '../connection/social/index';
+
 // import Base from './index';
 // import AskEmail from './connection/passwordless/ask_email';
 // import AskEmailVcode from './connection/passwordless/ask_email_vcode';
@@ -10,11 +16,7 @@ import { initSocial } from '../connection/social/index';
 // import AskPhoneNumberVcode from './connection/passwordless/ask_phone_number_vcode';
 // import MagiclinkScreen from './connection/passwordless/magiclink';
 // import { renderSSOScreens } from './core/sso/index';
-// import {
-//   isEmail,
-//   isSendLink,
-//   passwordlessStarted
-// } from './connection/passwordless/index';
+// import { isEmail } from './connection/passwordless/index';
 // import { setInitialPhoneLocation } from './field/phone-number/actions';
 // import * as l from './core/index';
 //
@@ -45,7 +47,10 @@ class Passwordless {
   }
 
   render(m) {
-    return new SocialOrEmailLoginScreen();
+    return isSendLink(m) || !passwordlessStarted(m)
+      ? new SocialOrEmailLoginScreen()
+      : new VcodeScreen();
+
     // const ssoScreen = renderSSOScreens(m);
     // if (ssoScreen) return ssoScreen;
 

@@ -9,7 +9,7 @@ export function initPasswordless(m, opts) {
   // TODO: validate
   const send = typeof opts.sendCode === "boolean" && opts.sendCode
     ? "code"
-    : "email";
+    : "link";
 
   return initNS(m, Map({send: send}));
 }
