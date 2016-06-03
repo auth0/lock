@@ -11,7 +11,7 @@ import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
 import { selectPhoneLocation } from './actions';
 import { selectingLocation } from './index';
-import { setPhoneNumber } from '../phone_number';
+import { humanLocation, setPhoneNumber } from '../phone_number';
 
 export default class PhoneNumberPane extends React.Component {
 
@@ -31,8 +31,8 @@ export default class PhoneNumberPane extends React.Component {
           iconUrl=""
           isValid={!isFieldVisiblyInvalid(lock, "location")}
           name="location"
-          placeholder="location"
-          label={getFieldLabel(lock, "location")}
+          placeholder=""
+          label={humanLocation(lock)}
           onClick={() => startOptionSelection(l.id(lock), "location", "")}
         />
         <PhoneNumberInput ref="phoneNumberInput"

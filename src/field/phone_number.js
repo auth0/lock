@@ -43,3 +43,9 @@ export function humanPhoneNumberWithDiallingCode(m) {
   const number = getFieldValue(m, "phoneNumber", "");
   return code ? `${code} ${number}` : number;
 }
+
+export function humanLocation(m) {
+  const location = getField(m, "location");
+  return `${location.get("diallingCode")} ${location.get("country")}`
+
+}
