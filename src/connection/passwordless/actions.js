@@ -10,6 +10,7 @@ import * as c from '../../field/index';
 import * as l from '../../core/index';
 import {
   isEmail,
+  isSendLink,
   resend,
   restartPasswordless,
   send,
@@ -58,6 +59,10 @@ function sendEmail(m, successFn, errorFn) {
     email: c.getFieldValue(m, "email"),
     send: send(m)
   };
+
+  if (isSendLink(m) && !l.auth.params(m).isEmpty()) {
+    params.authParams = l.auth.params(m).toJS();
+  }
 
   webApi.startPasswordless(l.id(m), params, error => {
     if (error) {

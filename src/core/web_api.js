@@ -78,7 +78,6 @@ class Auth0WebAPI {
   }
 
   startPasswordless(lockID, options, cb) {
-    // TODO: pass options, don't merge authParams
     const client = this.clients[lockID];
     client.startPasswordless(options, err => cb(normalizeError(err)));
   }
