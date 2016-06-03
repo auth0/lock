@@ -1,4 +1,6 @@
-// import ErrorScreen from '../core/error_screen';
+import { swap, updateEntity } from '../store/index';
+import ErrorScreen from '../core/error_screen';
+import LoadingScreen from '../core/loading_screen';
 import SocialOrEmailLoginScreen from './passwordless/social_or_email_login_screen';
 import SocialOrPhoneNumberLoginScreen from './passwordless/social_or_phone_number_login_screen';
 import VcodeScreen from '../connection/passwordless/ask_vcode';
@@ -9,6 +11,8 @@ import {
   passwordlessStarted
 } from '../connection/passwordless/index';
 import { initSocial } from '../connection/social/index';
+import { isDone } from '../sync';
+import * as l from '../core/index';
 
 // import Base from './index';
 // import AskEmail from './connection/passwordless/ask_email';
@@ -20,7 +24,6 @@ import { initSocial } from '../connection/social/index';
 // import { renderSSOScreens } from './core/sso/index';
 // import { isEmail } from './connection/passwordless/index';
 // import { setInitialPhoneLocation } from './field/phone-number/actions';
-// import * as l from './core/index';
 //
 //
 class Passwordless {
@@ -49,6 +52,16 @@ class Passwordless {
   }
 
   render(m) {
+    // TODO: remove the detail about the loading pane being pinned,
+    // sticky screens should be handled at the box module.
+    if (!isDone(m) || m.get("isLoadingPanePinned")) {
+      return new LoadingScreen();
+    }
+
+    if (l.hasStopped(m)) {
+      return new ErrorScreen();
+    }
+
     if (isEmail(m)) {
       return isSendLink(m) || !passwordlessStarted(m)
         ? new SocialOrEmailLoginScreen()
@@ -92,6 +105,14 @@ class Passwordless {
 
     // // TODO: show a crashed screen.
     // throw new Error("unknown screen");
+    setTimeout(() => {
+      const stopError = new Error("Internal error");
+      stopError.code = "internal_error";
+      stopError.description = "Couldn't find a screen to render";
+      swap(updateEntity, "lock", l.id(m), l.stop, stopError);
+    }, 0);
+
+    return new ErrorScreen();
   }
 }
 
