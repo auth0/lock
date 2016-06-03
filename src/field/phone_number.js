@@ -1,4 +1,28 @@
-import { getField, getFieldValue, setField } from './index';
+import Immutable from 'immutable';
+import {
+  getField,
+  getFieldValue,
+  registerOptionField,
+  setField
+} from './index';
+import locations from './phone-number/locations';
+
+const locationOptions = Immutable.fromJS(locations.map(x => ({
+  country: x[0],
+  diallingCode: x[2],
+  isoCode: x[1],
+  label: `${x[2]} ${x[1]} ${x[0]}`,
+  value: `${x[2]} ${x[1]}`,
+})));
+
+function findLocation(isoCode) {
+  return locationOptions.find(x => x.get("isoCode") === isoCode);
+}
+
+export function initLocation(m, isoCode) {
+  const location = findLocation(isoCode) || findLocation("US");
+  return registerOptionField(m, "location", locationOptions, location.get("value"));
+}
 
 export function validatePhoneNumber(str) {
   const regExp = /^[0-9]([0-9 -])*[0-9]$/;

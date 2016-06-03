@@ -1,28 +1,31 @@
 import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
-import { clearFields, registerOptionField } from '../../field/index';
+import { clearFields } from '../../field/index';
+import { initLocation } from '../../field/phone_number';
 import { dataFns } from '../../utils/data_utils';
-
-import { countryCodes } from '../../field/country_codes';
-
 const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
+import webAPI from '../../core/web_api';
+import sync from '../../sync';
 
 export function initPasswordless(m, opts) {
-  // TODO: validate
+  // TODO: validate opts
+
   const send = typeof opts.sendCode === "boolean" && opts.sendCode
     ? "code"
     : "link";
 
-  const locations = countryCodes.map(x => Map({
-    country: x.get(0),
-    diallingCode: x.get(2),
-    isoCode: x.get(1),
-    label: `${x.get(2)} ${x.get(1)} ${x.get(0)}`,
-    value: `${x.get(2)} ${x.get(1)}`,
-  }));
-
   m = initNS(m, Map({send: send}));
-  m = registerOptionField(m, "location", locations);
+  if (opts.defaultLocation && typeof opts.defaultLocation === "string") {
+    m = initLocation(m, opts.defaultLocation.toUpperCase());
+  } else {
+    m = sync(m, "location", {
+      recoverResult: "US",
+      syncFn: (m, cb) => webAPI.getUserCountry(l.id(m), cb),
+      successFn: (m, result) => initLocation(m, result)
+    });
+  }
+
+
   return m;
 }
 
