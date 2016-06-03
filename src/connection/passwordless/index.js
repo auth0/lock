@@ -93,7 +93,9 @@ export function passwordlessStarted(m) {
 }
 
 export function passwordlessConnection(m) {
-  return l.connections(m, "passwordless").get(0, Map());
+  return l.connections(m, "passwordless", "email").get(0)
+    || l.connections(m, "passwordless", "sms").get(0)
+    || new Map();
 }
 
 export function isEmail(m) {
