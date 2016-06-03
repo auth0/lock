@@ -37,16 +37,14 @@ class Passwordless {
   }
 
   didReceiveClientSettings(m) {
-    // const anySocialConnection = l.hasSomeConnections(m, "social");
-    // const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
+    const anySocialConnection = l.hasSomeConnections(m, "social");
+    const anyPasswordlessConnection = l.hasSomeConnections(m, "passwordless");
 
-    // if (!anySocialConnection && !anyPasswordlessConnection) {
-    //   // TODO: improve message
-    //   throw new Error("At least one database or passwordless connection needs to be available.");
-    // }
-
-    // TODO: check for the send option and emit warning if we have a sms
-    // connection.
+    if (!anySocialConnection && !anyPasswordlessConnection) {
+      const error = new Error("At least one email, sms or social connection needs to be available.");
+      error.code = "no_connection";
+      m = l.stop(m, error);
+    }
 
     return m;
   }
