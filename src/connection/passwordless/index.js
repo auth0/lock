@@ -13,10 +13,13 @@ export function initPasswordless(m, opts) {
     ? "code"
     : "link";
 
-  const locations = countryCodes.map(x => Map(
-    {label: `${x.get(2)} ${x.get(1)} ${x.get(0)}`,
-     value: x.get(2)}
-  ));
+  const locations = countryCodes.map(x => Map({
+    country: x.get(0),
+    diallingCode: x.get(2),
+    isoCode: x.get(1),
+    label: `${x.get(2)} ${x.get(1)} ${x.get(0)}`,
+    value: `${x.get(2)} ${x.get(1)}`,
+  }));
 
   m = initNS(m, Map({send: send}));
   m = registerOptionField(m, "location", locations);
