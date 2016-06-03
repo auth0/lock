@@ -6,8 +6,11 @@ export default {
     },
     login: {
       "blocked_user": "The user is blocked.",
-      "invalid_user_password": "Wrong email or password.",
+      "invalid_user_password": "Wrong credentials.",
       "lock.fallback": "We're sorry, something went wrong when attempting to log in.",
+      "lock.invalid_code": "Wrong code.",
+      "lock.invalid_email_password": "Wrong email or password.",
+      "lock.invalid_username_password": "Wrong username or password.",
       "lock.network": "We could not reach the server. Please check your connection and try again.",
       "lock.popup_closed": "Popup window closed. Try again.",
       "lock.unauthorized": "Permissions were not granted. Try again.",

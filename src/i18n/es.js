@@ -6,8 +6,11 @@ export default {
     },
     login: {
       "blocked_user": "El usuario se encuentra bloqueado.",
-      "invalid_user_password": "Wrong email or password.",
+      "invalid_user_password": "Credenciales inválidas.",
       "lock.fallback": "Ocurrió un error al inciar sesión.",
+      "lock.invalid_code": "Código inválido.",
+      "lock.invalid_email_password": "Correo y contraseña inválidos.",
+      "lock.invalid_username_password": "Usuario y contraseña inválidos.",
       "lock.network": "Ocurrió un error de red. Por favor, verifique su conexión.",
       "lock.popup_closed": "Se ha cerrado la ventana emergente.",
       "lock.unauthorized": "Acceso denegado. Por vaor, intente nuevamente.",
