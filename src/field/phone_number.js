@@ -10,8 +10,12 @@ export function setPhoneNumber(m, str) {
 }
 
 export function phoneNumberWithDiallingCode(m) {
+  return humanPhoneNumberWithDiallingCode(m).replace(/[\s-]+/g, '');
+}
+
+export function humanPhoneNumberWithDiallingCode(m) {
   const location = getField(m, "location");
-  const code = location.get("diallingCode");
-  const number = getFieldValue(m, "phoneNumber");
-  return `${code || ""}${number || ""}`.replace(/[\s-]+/g, '');
+  const code = location.get("diallingCode", "");
+  const number = getFieldValue(m, "phoneNumber", "");
+  return code ? `${code} ${number}` : number;
 }

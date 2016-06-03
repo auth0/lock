@@ -56,7 +56,9 @@ export default {
     upperCase: "Upper case letters (A-Z)"
   },
   passwordlessEmailAlternativeInstructions: "Otherwise, enter your email to sign in<br>or create an account",
+  passwordlessEmailCodeInstructions: "An email with the code has been sent to %s.",
   passwordlessEmailInstructions: "Enter your email to sign in<br>or create an account",
+  passwordlessSMSCodeInstructions: "An SMS with the code has been sent<br>to %s.",
   phoneNumberInputPlaceholder: "your phone number",
   resendCodeAction: "Did not get the code?",
   resendLabel: "Resend",

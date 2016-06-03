@@ -54,7 +54,9 @@ class Passwordless {
         ? new SocialOrEmailLoginScreen()
         : new VcodeScreen();
     } else {
-      return new SocialOrPhoneNumberLoginScreen();
+      return passwordlessStarted(m)
+        ? new VcodeScreen()
+        : new SocialOrPhoneNumberLoginScreen();
     }
 
     // const ssoScreen = renderSSOScreens(m);

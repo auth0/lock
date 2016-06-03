@@ -56,7 +56,9 @@ export default {
     upperCase: "Letras mayúsculas (A-Z)"
   },
   passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br>para iniciar sesión o registrarse",
+  passwordlessEmailCodeInstructions: "Se ha enviado un correo con el código a %s.",
   passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br>o registrarse",
+  passwordlessSMSCodeInstructions: "Se ha enviado un SMS con el código<br>a %s.",
   phoneNumberInputPlaceholder: "número de teléfono",
   resendCodeAction: "¿No recibió el código?",
   resendLabel: "Reenviar",

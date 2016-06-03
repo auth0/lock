@@ -5,16 +5,18 @@ import { isEmail } from './index';
 import { restart, logIn } from './actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { getFieldValue } from '../../field/index';
+import { humanPhoneNumberWithDiallingCode } from '../../field/phone_number';
 
 const Component = ({i18n, model}) => {
-  // const instructions = isEmail(model)
-  //  ? i18n.html("passwordlessEmailCodeInstructions", email)
-  //  : i18n.html("passwordlessSMSCodeInstructions", sms);
-
-  const instructions = i18n.html(
-    "passwordlessEmailCodeInstructions",
-    getFieldValue(model, "email")
-  );
+  const instructions = isEmail(model)
+    ? i18n.html(
+        "passwordlessEmailCodeInstructions",
+        getFieldValue(model, "email")
+      )
+    : i18n.html(
+        "passwordlessSMSCodeInstructions",
+        humanPhoneNumberWithDiallingCode(model)
+      );
 
   return (
     <VcodePane

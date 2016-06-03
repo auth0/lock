@@ -9,6 +9,7 @@ import webApi from '../../core/web_api';
 import * as c from '../../field/index';
 import * as l from '../../core/index';
 import {
+  isEmail,
   resend,
   restartPasswordless,
   send,
@@ -105,10 +106,10 @@ export function sendSMSError(id, error) {
 export function logIn(id) {
   const m = read(getEntity, "lock", id);
   const params = {passcode: c.getFieldValue(m, "vcode")};
-  if (send(m) === "sms") {
-    params.phoneNumber = c.fullPhoneNumber(m);
-  } else {
+  if (isEmail(m)) {
     params.email = c.getFieldValue(m, "email");
+  } else {
+    params.phoneNumber = phoneNumberWithDiallingCode(m);
   }
 
   coreLogIn(id, ["vcode"], params);
