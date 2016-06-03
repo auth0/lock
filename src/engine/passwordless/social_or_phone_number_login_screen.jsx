@@ -16,23 +16,36 @@ const useSocialBigButtons = (m) => {
   return useBigButtons(m, notFound);
 }
 
-const Component = ({focusSubmit, i18n, model}) => (
-  <div>
-    <SocialButtonsPane
-      bigButtons={useSocialBigButtons(model)}
-      instructions={i18n.html("socialLoginInstructions")}
-      labelFn={i18n.str}
-      lock={model}
-      signUp={false}
-    />
-    <PaneSeparator />
-    <PhoneNumberPane
-      focusSubmit={focusSubmit}
-      lock={model}
-      placeholder={i18n.str("phoneNumberInputPlaceholder")}
-    />
-  </div>
-);
+const Component = ({focusSubmit, i18n, model}) => {
+  const social = l.hasSomeConnections(model, "social")
+    ? <SocialButtonsPane
+        bigButtons={useSocialBigButtons(model)}
+        instructions={i18n.html("socialLoginInstructions")}
+        labelFn={i18n.str}
+        lock={model}
+        signUp={false}
+      />
+    : null;
+
+  const phoneNumberInstructionsI18nKey = social
+    ? "passwordlessSMSAlternativeInstructions"
+    : "passwordlessSMSInstructions";
+
+  const phoneNumber = l.hasSomeConnections(model, "passwordless", "sms")
+    ? <PhoneNumberPane
+        focusSubmit={focusSubmit}
+        instructions={i18n.html(phoneNumberInstructionsI18nKey)}
+        lock={model}
+        placeholder={i18n.str("phoneNumberInputPlaceholder")}
+      />
+    : null;
+
+  const separator = social && phoneNumber
+    ? <PaneSeparator />
+    : null;
+
+  return <div>{social}{separator}{phoneNumber}</div>;
+};
 
 
 export default class AskSocialNetworkOrPhoneNumber extends Screen {
