@@ -54,17 +54,11 @@ export default class AskSocialNetworkOrPhoneNumber extends Screen {
     super("socialOrPhoneNumber");
   }
 
-  submitHandler() {
-    return sendSMS;
+  submitHandler(m) {
+    return l.hasSomeConnections(m, "passwordless", "sms")
+      ? sendSMS
+      : null;
   }
-
-  // escHandler(lock) {
-  //   return selectingLocation(lock) ? cancelSelectPhoneLocation : null;
-  // }
-
-  // renderAuxiliaryPane(lock) {
-  //   return renderAskLocation(lock);
-  // }
 
   renderAuxiliaryPane(lock) {
     return renderSignedInConfirmation(lock)
