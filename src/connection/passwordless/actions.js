@@ -16,6 +16,7 @@ import {
   setResendFailed,
   setResendSuccess
 } from './index';
+import { phoneNumberWithDiallingCode } from '../../field/phone_number';
 
 export function requestPasswordlessEmail(id) {
   validateAndSubmit(id, ["email"], m => {
@@ -67,42 +68,28 @@ function sendEmail(m, successFn, errorFn) {
 }
 
 export function sendSMS(id) {
-  // TODO: abstract this submit thing.
-  swap(updateEntity, "lock", id, lock => {
-
-    if (c.isFieldValid(lock, "phoneNumber")) {
-      return l.setSubmitting(lock, true);
-    } else {
-      return c.setFieldShowInvalid(lock, "phoneNumber", true);
-    }
-  });
-
-  const lock = read(getEntity, "lock", id);
-
-  if (l.submitting(lock)) {
-    const options = {phoneNumber: c.fullPhoneNumber(lock)};
-    webApi.startPasswordless(id, options, error => {
+  validateAndSubmit(id, ["phoneNumber"], m => {
+    const params = {phoneNumber: phoneNumberWithDiallingCode(m)};
+    webApi.startPasswordless(id, params, error => {
       if (error) {
         setTimeout(() => sendSMSError(id, error), 250);
       } else {
         sendSMSSuccess(id);
       }
     });
-  }
+  });
 }
 
 export function sendSMSSuccess(id) {
-  swap(updateEntity, "lock", id, lock => {
-    lock = l.setSubmitting(lock, false);
-    lock = setPasswordlessStarted(lock, true);
-    return lock;
+  swap(updateEntity, "lock", id, m => {
+    m = l.setSubmitting(m, false);
+    m = setPasswordlessStarted(m, true);
+    return m;
   });
-
-  const lock = read(getEntity, "lock", id);
 }
 
 export function sendSMSError(id, error) {
-  const lock = read(getEntity, "lock", id);
+  const m = read(getEntity, "lock", id);
   let errorMessage;
   // TODO: update to new i18n API when bringing passwordless back
   errorMessage = "";
