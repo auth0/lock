@@ -14,12 +14,12 @@ export default class TextInput extends React.Component {
 
   render() {
     const { iconUrl, isValid, name, onChange, value, ...props } = this.props;
+    let { icon } = this.props;
     const { focused } = this.state;
 
-    const icon = typeof iconUrl === "string" && iconUrl
-      ? <img className="auth0-lock-custom-icon" src={iconUrl} />
-      : null;
-
+    if (!icon && typeof iconUrl === "string" && iconUrl) {
+      icon = <img className="auth0-lock-custom-icon" src={iconUrl} />;
+    }
 
     return (
       <InputWrap focused={focused} isValid={isValid} name={name} icon={icon}>

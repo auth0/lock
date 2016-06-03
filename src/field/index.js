@@ -163,6 +163,7 @@ export function renderOptionSelection(m) {
     ? <OptionSelectionPane
          model={m}
          name={name}
+         icon={m.getIn(["field", "selecting", "icon"])}
          iconUrl={m.getIn(["field", "selecting", "iconUrl"])}
          items={m.getIn(["field", name, "options"])}
       />
