@@ -26,23 +26,27 @@ const Component = ({i18n, model}) => {
       />
    : null;
 
+  const email = l.hasSomeConnections(model, "passwordless", "email")
+    ? <EmailPane lock={model} placeholder={i18n.str("emailInputPlaceholder")} />
+    : null;
+
+  // TODO: instructions can't be on EmailPane beacuse it breaks the CSS,
+  // all input fields needs to share a parent so the last one doesn't have
+  // a bottom margin.
+  //
+  // Maybe we can make new PasswordlessEmailPane component.
   const emailInstructionsI18nKey = social
     ? "passwordlessEmailAlternativeInstructions"
     : "passwordlessEmailInstructions";
 
-  const email = l.hasSomeConnections(model, "passwordless", "email")
-    ? <EmailPane
-        instructions={i18n.html(emailInstructionsI18nKey)}
-        lock={model}
-        placeholder={i18n.str("emailInputPlaceholder")}
-      />
-    : null;
+  const headerText = i18n.html(emailInstructionsI18nKey) || null;
+  const header = email && headerText && <p>{headerText}</p>;
 
   const separator = social && email
     ? <PaneSeparator />
     : null;
 
-  return <div>{social}{separator}{email}</div>;
+  return <div>{social}{separator}{header}{email}</div>;
 };
 
 export default class SocialOrEmailLoginScreen extends Screen {

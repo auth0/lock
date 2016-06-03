@@ -25,28 +25,22 @@ export default class EmailPane extends React.Component {
   }
 
   render() {
-    const { instructions, lock, placeholder } = this.props;
-    const headerText = instructions || null;
-    const header = headerText && <p>{headerText}</p>;
+    const { lock, placeholder } = this.props;
 
     return (
-      <div>
-        {header}
-        <EmailInput value={c.email(lock)}
-          isValid={!c.isFieldVisiblyInvalid(lock, "email")}
-          onChange={::this.handleChange}
-          avatar={l.ui.avatar(lock)}
-          placeholder={placeholder}
-          disabled={l.submitting(lock)}
-        />
-      </div>
+      <EmailInput
+        disabled={l.submitting(lock)}
+        isValid={!c.isFieldVisiblyInvalid(lock, "email")}
+        onChange={::this.handleChange}
+        placeholder={placeholder}
+        value={c.email(lock)}
+      />
     );
   }
 
 }
 
 EmailPane.propTypes = {
-  instructions: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired
 };
