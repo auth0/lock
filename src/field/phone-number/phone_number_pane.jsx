@@ -15,28 +15,8 @@ import { setPhoneNumber } from '../phone_number';
 
 export default class PhoneNumberPane extends React.Component {
 
-  componentWillReceiveProps(nextProps) {
-    if (selectingLocation(this.props.lock) && !selectingLocation(nextProps.lock)) {
-      setTimeout(() => {
-        if (c.phoneNumber(nextProps.lock)) {
-          this.props.focusSubmit();
-        } else {
-          this.focusPhoneNumberInput();
-        }
-      }, 17);
-    }
-  }
-
-  focusPhoneNumberInput() {
-    this.refs.phoneNumberInput.focus();
-  }
-
   handlePhoneNumberChange(e) {
     swap(updateEntity, "lock", l.id(this.props.lock), setPhoneNumber, e.target.value);
-  }
-
-  handleLocationClick(searchStr) {
-    selectPhoneLocation(l.id(this.props.lock), searchStr);
   }
 
   render() {
@@ -59,7 +39,6 @@ export default class PhoneNumberPane extends React.Component {
           value={c.phoneNumber(lock)}
           isValid={!c.isFieldVisiblyInvalid(lock, "phoneNumber")}
           onChange={::this.handlePhoneNumberChange}
-          autoFocus={l.ui.autofocus(lock)}
           placeholder={placeholder}
           disabled={l.submitting(lock)} />
       </div>
@@ -68,7 +47,6 @@ export default class PhoneNumberPane extends React.Component {
 }
 
 PhoneNumberPane.propTypes = {
-  focusSubmit: React.PropTypes.func.isRequired,
   instructions: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired

@@ -16,7 +16,7 @@ const useSocialBigButtons = (m) => {
   return useBigButtons(m, notFound);
 }
 
-const Component = ({focusSubmit, i18n, model}) => {
+const Component = ({i18n, model}) => {
   const social = l.hasSomeConnections(model, "social")
     ? <SocialButtonsPane
         bigButtons={useSocialBigButtons(model)}
@@ -33,7 +33,6 @@ const Component = ({focusSubmit, i18n, model}) => {
 
   const phoneNumber = l.hasSomeConnections(model, "passwordless", "sms")
     ? <PhoneNumberPane
-        focusSubmit={focusSubmit}
         instructions={i18n.html(phoneNumberInstructionsI18nKey)}
         lock={model}
         placeholder={i18n.str("phoneNumberInputPlaceholder")}
