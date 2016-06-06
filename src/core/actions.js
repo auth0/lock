@@ -60,23 +60,26 @@ export function openLock(id) {
 
 export function closeLock(id, force = false, callback = () => {}) {
   // Do nothing when the Lock can't be closed, unless closing is forced.
-  let lock = read(getEntity, "lock", id);
-  if (!l.ui.closable(lock) && !force) {
+  let m = read(getEntity, "lock", id);
+  if (!l.ui.closable(m) && !force) {
     return;
   }
 
+  l.emitEvent(m, "hide")
+
   // If it is a modal, stop rendering an reset after a second,
   // otherwise just reset.
-  if (l.ui.appendContainer(lock)) {
+  if (l.ui.appendContainer(m)) {
     swap(updateEntity, "lock", id, l.stopRendering);
 
     setTimeout(() => {
       swap(updateEntity, "lock", id, l.reset);
-      callback(read(getEntity, "lock", id));
+      m = read(getEntity, "lock", id);
+      callback(m);
     }, 1000);
   } else {
     swap(updateEntity, "lock", id, l.reset);
-    callback(lock);
+    callback(m);
   }
 }
 
