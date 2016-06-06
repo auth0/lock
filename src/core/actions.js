@@ -61,7 +61,7 @@ export function openLock(id) {
 export function closeLock(id, force = false, callback = () => {}) {
   // Do nothing when the Lock can't be closed, unless closing is forced.
   let m = read(getEntity, "lock", id);
-  if (!l.ui.closable(m) && !force) {
+  if (!l.ui.closable(m) && !force || !l.rendering(m)) {
     return;
   }
 
