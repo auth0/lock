@@ -9,14 +9,8 @@ import trim from 'trim';
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
 export function initDatabase(m, options) {
-  try {
-    m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
-    m = resolveAdditionalSignUpFields(m);
-  } catch (e) {
-    l.error(options, e.message);
-    m = l.stop(m);
-  }
-
+  m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
+  m = resolveAdditionalSignUpFields(m);
   return m;
 }
 
