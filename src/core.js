@@ -145,9 +145,9 @@ export default class Base extends EventEmitter {
     return this.update(() => m);
   }
 
-  runHook(str, ...args) {
-    if (typeof this.engine[str] != "function") return;
-    return this.engine[str](...args);
+  runHook(str, m, ...args) {
+    if (typeof this.engine[str] != "function") return m;
+    return this.engine[str](m, ...args);
   }
 
 }

@@ -28,12 +28,12 @@ export default class EmailPane extends React.Component {
     const { lock, placeholder } = this.props;
 
     return (
-      <EmailInput value={c.email(lock)}
+      <EmailInput
+        disabled={l.submitting(lock)}
         isValid={!c.isFieldVisiblyInvalid(lock, "email")}
         onChange={::this.handleChange}
-        avatar={l.ui.avatar(lock)}
         placeholder={placeholder}
-        disabled={l.submitting(lock)}
+        value={c.email(lock)}
       />
     );
   }

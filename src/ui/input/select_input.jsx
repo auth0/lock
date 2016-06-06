@@ -11,6 +11,7 @@ export default class SelectInput extends React.Component {
 
   render() {
     const { iconUrl, isValid, label, name, onClick, placeholder } = this.props;
+    let { icon } = this.props;
     const { focused } = this.state;
 
     let limitedValue = label || placeholder;
@@ -18,9 +19,9 @@ export default class SelectInput extends React.Component {
       limitedValue = `${limitedValue.substr(0,20)}...`;
     }
 
-    const icon = typeof iconUrl === "string" && iconUrl
-      ? <img className="auth0-lock-custom-icon" src={iconUrl} />
-      : null;
+    if (!icon && typeof iconUrl === "string" && iconUrl) {
+      icon = <img className="auth0-lock-custom-icon" src={iconUrl} />;
+    }
 
     let className = "auth0-lock-input auth0-lock-input-location";
     if (!label) className += " auth0-lock-input-with-placeholder";
