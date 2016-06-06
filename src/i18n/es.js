@@ -13,9 +13,14 @@ export default {
       "lock.invalid_username_password": "Usuario y contraseña inválidos.",
       "lock.network": "Ocurrió un error de red. Por favor, verifique su conexión.",
       "lock.popup_closed": "Se ha cerrado la ventana emergente.",
-      "lock.unauthorized": "Acceso denegado. Por vaor, intente nuevamente.",
+      "lock.unauthorized": "Acceso denegado. Por favor, intente nuevamente.",
       "password_change_required": "Debe actualizar su contraseña porque es la primera vez que ingresa o porque la contraseña está vencida.",
       "password_leaked": "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones."
+    },
+    passwordless: {
+      "bad.email": "Correo inválido",
+      "bad.phone_number": "Teléfono inválido",
+      "lock.fallback": "Ocurrió un error durante el envío"
     },
     signUp: {
       "invalid_password": "La contraseña es muy débil.",

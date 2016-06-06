@@ -17,6 +17,11 @@ export default {
       "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired.", // TODO: verify error code
       "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it."
     },
+    passwordless: {
+      "bad.email": "The email is invalid",
+      "bad.phone_number": "The phone number is invalid",
+      "lock.fallback": "We're sorry, something went wrong"
+    },
     signUp: {
       "invalid_password": "The password is too weak.", // NOTE: request is not made if pass doesn't satisfy policy
       "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
