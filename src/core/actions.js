@@ -36,7 +36,15 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
       }
     }
 
-    setTimeout(() => l.invokeLogInCallback(m, error, result), 0);
+    setTimeout(() => {
+      if (result && !error) {
+        l.invokeLogInCallback(m, null, result);
+      } else {
+        if (!l.hasStopped(m)) {
+          l.emitEvent(m, "ready", error);
+        }
+      }
+    }, 0);
   }
 
 }

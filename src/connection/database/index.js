@@ -154,7 +154,7 @@ function processDatabaseOptions(opts) {
 
       if ((options != undefined && !global.Array.isArray(options) && typeof options != "function")
           || (type === "select" && options === undefined)) {
-        l.warn("Ignoring an element of `additionalSignUpFields` because it has a \"select\" `type` but does not specify an `options` property that is an Array or a function.");
+        l.warn(opts, "Ignoring an element of `additionalSignUpFields` because it has a \"select\" `type` but does not specify an `options` property that is an Array or a function.");
         filter = false;
       }
 
