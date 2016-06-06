@@ -32,7 +32,7 @@ export default {
   success: { // success messages show above the form or in a confirmation pane
     logIn: "Thanks for logging in.",
     forgotPassword: "We've just sent you an email to reset your password.",
-    magicLink: "We sent you a link to sign in<br />to %s.",
+    magicLink: "We sent you a link to log in<br />to %s.",
     signUp: "Thanks for signing up."
   },
   codeInputPlaceholder: "your code",
