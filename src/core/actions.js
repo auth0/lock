@@ -38,7 +38,7 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
 
     setTimeout(() => {
       if (result && !error) {
-        l.invokeLogInCallback(m, null, result);
+        l.invokeLogInCallback(m, result);
       } else {
         if (!l.hasStopped(m)) {
           l.emitEvent(m, "ready", error);
@@ -151,9 +151,9 @@ export function logInSuccess(id, ...args) {
       return l.setLoggedIn(m, true);
     });
 
-    l.invokeLogInCallback(m, null, ...args);
+    l.invokeLogInCallback(m, ...args);
   } else {
-    closeLock(id, false, m1 => l.invokeLogInCallback(m1, null, ...args));
+    closeLock(id, false, m1 => l.invokeLogInCallback(m1, ...args));
   }
 }
 
