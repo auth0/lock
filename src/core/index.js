@@ -339,7 +339,7 @@ export function loginErrorMessage(m, error, type) {
 // TODO: rename to something less generic that is easier to grep
 export function stop(m, error) {
   if (error) {
-    setTimeout(() => invokeLogInCallback(m, error), 0);
+    setTimeout(() => emitEvent(m, "error", error), 17);
   }
 
   return set(m, "stopped", true);
