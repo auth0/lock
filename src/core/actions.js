@@ -42,14 +42,16 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
 }
 
 export function openLock(id) {
-  const lock = read(getEntity, "lock", id);
-  if (!lock) {
+  const m = read(getEntity, "lock", id);
+  if (!m) {
     throw new Error("The Lock can't be opened again after it has been destroyed");
   }
 
-  if (l.rendering(lock)) {
+  if (l.rendering(m)) {
     return false;
   }
+
+  l.emitEvent(m, "show");
 
   swap(updateEntity, "lock", id, l.render);
 
