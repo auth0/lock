@@ -31,7 +31,7 @@ export default {
   },
   success: {
     logIn: "Sesión iniciada con éxito.",
-    forgotPassword: "Hemos enviado un email para completar el restablecimiento de su contraseña.",
+    forgotPassword: "Hemos enviado un correo para completar el restablecimiento de su contraseña.",
     magicLink: "Hemos enviado un correo para inciar sesión a<br />to %s.",
     signUp: "Registro completado exitosamente."
   },

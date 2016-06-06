@@ -11,8 +11,7 @@ import * as l from '../../core/index';
 
 const useSocialBigButtons = (m) => {
   const limit = l.connections(m, "passwordless", "email").count() === 0 ? 5 : 3;
-  const notFound = l.connections(m, "social").count() <= limit;
-  return useBigButtons(m, notFound);
+  return useBigButtons(m, limit);
 }
 
 const Component = ({i18n, model}) => {
