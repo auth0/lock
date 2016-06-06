@@ -12,8 +12,7 @@ import { renderOptionSelection } from '../../field/index';
 
 const useSocialBigButtons = (m) => {
   const limit = l.connections(m, "passwordless", "sms").count() === 0 ? 5 : 3;
-  const notFound = l.connections(m, "social").count() <= limit;
-  return useBigButtons(m, notFound);
+  return useBigButtons(m, limit);
 }
 
 const Component = ({i18n, model}) => {

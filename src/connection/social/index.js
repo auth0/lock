@@ -71,7 +71,9 @@ export function socialConnections(m) {
   return l.connections(m, "social");
 }
 
-export function useBigButtons(m, notFound) {
+export function useBigButtons(m, notFoundLimit) {
   const style = get(m, "socialButtonStyle");
-  return style ? style === "big" : notFound;
+  return style
+    ? style === "big"
+    : l.connections(m, "social").count() <= notFoundLimit;
 }
