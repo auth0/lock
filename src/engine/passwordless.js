@@ -15,7 +15,6 @@ import { isDone } from '../sync';
 import * as l from '../core/index';
 
 // import Base from './index';
-// import AskEmail from './connection/passwordless/ask_email';
 // import AskEmailVcode from './connection/passwordless/ask_email_vcode';
 // import AskSocialNetworkOrPhoneNumber from './field/or/ask_social_network_or_phone_number';
 // import AskPhoneNumber from './connection/passwordless/ask_phone_number';
