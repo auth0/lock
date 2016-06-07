@@ -21,31 +21,31 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
   swap(setEntity, "lock", id, m);
 
   if (l.auth.redirect(m)) {
-    const hash = webApi.parseHash(id);
-    // TODO: this leaves the hash symbol (#) in the URL, maybe we can
-    // use the history API instead to remove it.
-    global.location.hash = "";
+    setTimeout(() => parseHash(m), 0);
+  }
+}
 
-    let error, result;
+function parseHash(m) {
+  const hash = webApi.parseHash(l.id(m));
+  // TODO: this leaves the hash symbol (#) in the URL, maybe we can
+  // use the history API instead to remove it.
+  global.location.hash = "";
 
-    if (hash) {
-      if (hash.error) {
-        error = hash;
-      } else {
-        result = hash;
-      }
+  let error, result;
 
-      setTimeout(() => {
-        if (error) {
-          l.emitEvent(m, "redirect_error", error);
-        } else {
-          l.emitAuthenticatedEvent(m, result);
-        }
-      }, 0);
+  if (hash) {
+    if (hash.error) {
+      error = hash;
+    } else {
+      result = hash;
     }
 
+    if (error) {
+      l.emitEvent(m, "redirect_error", error);
+    } else {
+      l.emitAuthenticatedEvent(m, result);
+    }
   }
-
 }
 
 export function openLock(id) {
