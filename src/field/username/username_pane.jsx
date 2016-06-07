@@ -16,21 +16,23 @@ export default class UsernamePane extends React.Component {
   }
 
   handleChange(e) {
-    const { lock } = this.props;
+    const { lock, validateFormat } = this.props;
     if (l.ui.avatar(lock)) {
       debouncedRequestAvatar(l.id(lock), e.target.value);
     }
 
-    swap(updateEntity, "lock", l.id(lock), setUsername, e.target.value);
+    swap(updateEntity, "lock", l.id(lock), setUsername, e.target.value, validateFormat);
   }
 
   render() {
-    const { lock, placeholder } = this.props;
+    const { i18n, lock, placeholder, validateFormat } = this.props;
+    const value = c.getFieldValue(lock, "username");
 
     return (
       <UsernameInput
-        value={c.username(lock)}
+        value={value}
         avatar={l.ui.avatar(lock)}
+        invalidHint={i18n.str(value && validateFormat ? "usernameFormatErrorHint": "blankErrorHint")}
         isValid={!c.isFieldVisiblyInvalid(lock, "username")}
         onChange={::this.handleChange}
         placeholder={placeholder}
@@ -42,6 +44,12 @@ export default class UsernamePane extends React.Component {
 }
 
 UsernamePane.propTypes = {
+  i18n: React.PropTypes.object.isRequired,
   lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired
+  placeholder: React.PropTypes.string.isRequired,
+  validateFormat: React.PropTypes.bool.isRequired,
+};
+
+UsernamePane.defaultProps = {
+  validateFormat: false
 };

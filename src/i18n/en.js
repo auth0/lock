@@ -61,6 +61,7 @@ export default {
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",
   unrecoverableError: "Something went wrong.<br />Please contant technical support.",
+  usernameFormatErrorHint: "Use 1-15 letters, numbers and \"_\"",
   usernameInputPlaceholder: "your username",
   title: "Auth0",
   welcome: "Welcome %s!",

@@ -12,6 +12,7 @@ const Component = ({i18n, model}) => {
   return (
     <HRDPane
       header={header}
+      i18n={i18n}
       model={model}
       passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
       usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}

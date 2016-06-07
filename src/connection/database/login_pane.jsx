@@ -32,8 +32,10 @@ export default class LoginPane extends React.Component {
 
     const fieldPane = usernameStyle === "username"
       ? <UsernamePane
+          i18n={i18n}
           lock={lock}
           placeholder={usernameInputPlaceholder}
+          validateFormat={true}
         />
       : <EmailPane
           i18n={i18n}

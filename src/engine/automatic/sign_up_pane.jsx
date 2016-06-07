@@ -28,8 +28,10 @@ export default class SignUpPane extends React.Component {
 
     const usernamePane = !onlyEmail && authWithUsername(model)
       ? <UsernamePane
+          i18n={i18n}
           lock={model}
           placeholder={usernameInputPlaceholder}
+          validateFormat={true}
         />
       : null;
 
