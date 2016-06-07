@@ -8,6 +8,7 @@ export default class HRDPane extends React.Component {
   render() {
     const {
       header,
+      i18n,
       model,
       passwordInputPlaceholder,
       usernameInputPlaceholder
@@ -17,10 +18,15 @@ export default class HRDPane extends React.Component {
       <div>
         {header}
         <UsernamePane
+          i18n={i18n}
           lock={model}
           placeholder={usernameInputPlaceholder}
         />
-        <PasswordPane lock={model} placeholder={passwordInputPlaceholder} />
+        <PasswordPane
+          i18n={i18n}
+          lock={model}
+          placeholder={passwordInputPlaceholder}
+        />
       </div>
     );
   }
@@ -29,6 +35,7 @@ export default class HRDPane extends React.Component {
 
 HRDPane.propTypes = {
   header: React.PropTypes.element,
+  i18n: React.PropTypes.object.isRequired,
   model: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
   usernameInputPlaceholder: React.PropTypes.string.isRequired

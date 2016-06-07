@@ -35,6 +35,7 @@ export default {
     magicLink: "We sent you a link to log in<br />to %s.",
     signUp: "Thanks for signing up."
   },
+  blankErrorHint: "Can't be blank",
   codeInputPlaceholder: "your code",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "or",
@@ -46,6 +47,7 @@ export default {
   failedLabel: "Failed!",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
+  invalidErrorHint: "Invalid",
   lastLoginInstructions: "Last time you logged in with",
   loginAtLabel: "Login at %s",
   loginLabel: "Login",
@@ -82,6 +84,7 @@ export default {
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",
   unrecoverableError: "Something went wrong.<br />Please contant technical support.",
+  usernameFormatErrorHint: "Use 1-15 letters, numbers and \"_\"",
   usernameInputPlaceholder: "your username",
   title: "Auth0",
   welcome: "Welcome %s!",

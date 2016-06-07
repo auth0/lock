@@ -35,6 +35,7 @@ export default {
     magicLink: "Hemos enviado un correo para inciar sesión a<br />to %s.",
     signUp: "Registro completado exitosamente."
   },
+  blankErrorHint: "Requerido",
   codeInputPlaceholder: "código",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "o",
@@ -46,6 +47,7 @@ export default {
   failedLabel: "Error!",
   forgotPasswordAction: "¿Olvidó su contraseña?",
   forgotPasswordInstructions: "Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.",
+  invalidErrorHint: "Inválido",
   lastLoginInstructions: "La última vez inició sesión con",
   loginAtLabel: "Iniciar en %s",
   loginLabel: "Iniciar sesión",
@@ -81,6 +83,7 @@ export default {
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On enabled",
   unrecoverableError: "Something went wrong.<br />Please contant technical support.",
+  usernameFormatErrorHint: "1-15 letras, números y \"_\"",
   usernameInputPlaceholder: "su usuario",
   title: "Auth0",
   welcome: "Bienvenido %s!",

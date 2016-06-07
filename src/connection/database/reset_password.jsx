@@ -13,6 +13,7 @@ const Component = ({i18n, model}) => {
     <ResetPasswordPane
       emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
       header={header}
+      i18n={i18n}
       lock={model}
     />
   );

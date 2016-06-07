@@ -84,6 +84,7 @@ const Component = ({i18n, model, t}) => {
     && <LoginPane
          emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
          forgotPasswordAction={i18n.str("forgotPasswordAction")}
+         i18n={i18n}
          instructions={i18n.html(loginInstructionsKey)}
          lock={model}
          passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}

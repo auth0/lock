@@ -9,7 +9,7 @@ export default class PasswordStrength extends React.Component {
     const analysis = createPolicy(policy).missing(password);
     // TODO: add a component for fadeIn / fadeOut animations?
     const className = "auth0-lock-password-strength animated "
-      + (password && !analysis.verified ? "fadeIn" : "fadeOut");
+      + (!analysis.verified ? "fadeIn" : "fadeOut");
 
     const prepareMessage = items => {
       items && items.forEach(o => {
