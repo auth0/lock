@@ -1228,32 +1228,39 @@ breakpoint(point, value = 0)
 
 .auth0-lock-error-msg
   color red
-  font-size 13px
+  font-size 12px
   margin-top 5px
 
   +breakpoint("mobile")
-    color white
-    background rgba(0,0,0,.8)
+    color black
+    background white
+    box-shadow 0 0 5px 0 rgba(black,.6)
     margin 0
     border-radius 3px
     position absolute
     left calc(100% + 7px)
     top 1px
     display inline-table
-    padding 11px 15px
+
+    span
+      background white
+      padding 12px 15px
+      display block
+      position relative
+      border-radius 3px
+      z-index 1
 
     &:after
       content ""
-      height 0
-      width 0
+      background white
+      height 6px
+      width 6px
       position absolute
       pointer-events none
-      border-style solid
-      border-width 6px 6px 6px 0
-      border-color transparent rgba(0,0,0,.8) transparent transparent
-      right 100%
+      box-shadow 0 0 5px 0 rgba(black,.6)
+      right calc(100% - 3px)
       top 50%
-      transform translateY(-50%)
+      transform translateY(-50%) rotate(45deg)
 
 // loading
 
