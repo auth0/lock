@@ -15,6 +15,7 @@ export default class SignUpPane extends React.Component {
     const {
       emailInputPlaceholder,
       instructions,
+      i18n,
       model,
       onlyEmail,
       passwordInputPlaceholder,
@@ -56,7 +57,11 @@ export default class SignUpPane extends React.Component {
     return (
       <div>
         {header}
-        <EmailPane lock={model} placeholder={emailInputPlaceholder} />
+        <EmailPane
+          i18n={i18n}
+          lock={model}
+          placeholder={emailInputPlaceholder}
+        />
         {usernamePane}
         {passwordPane}
         {fields}

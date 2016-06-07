@@ -59,6 +59,7 @@ const Component = ({i18n, model}) => {
     || l.hasSomeConnections(model, "enterprise"))
     && <SignUpPane
          emailInputPlaceholder={i18n.str("emailInputPlaceholder")}
+         i18n={i18n}
          instructions={i18n.html(signUpInstructionsKey)}
          model={model}
          onlyEmail={sso}

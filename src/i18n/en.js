@@ -26,6 +26,7 @@ export default {
     forgotPassword: "We've just sent you an email to reset your password.",
     signUp: "Thanks for signing up."
   },
+  blankErrorHint: "Can't be blank",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "or",
   databaseSignUpInstructions: "",
@@ -35,6 +36,7 @@ export default {
   enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at %s.",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
+  invalidErrorHint: "Invalid",
   lastLoginInstructions: "Last time you logged in with",
   loginAtLabel: "Login at %s",
   loginLabel: "Login",

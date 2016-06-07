@@ -26,6 +26,7 @@ export default {
     forgotPassword: "Hemos enviado un email para completar el restablecimiento de su contraseña.",
     signUp: "Registro completado exitosamente."
   },
+  blankErrorHint: "Requerido",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "o",
   databaseSignUpInstructions: "",
@@ -35,6 +36,7 @@ export default {
   enterpriseActiveLoginInstructions: "Ingrese las credenciales corporativas de %s.",
   forgotPasswordAction: "¿Olvidó su contraseña?",
   forgotPasswordInstructions: "Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.",
+  invalidErrorHint: "Inválido",
   lastLoginInstructions: "La última vez inició sesión con",
   loginAtLabel: "Iniciar en %s",
   loginLabel: "Iniciar sesión",

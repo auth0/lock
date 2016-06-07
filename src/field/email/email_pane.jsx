@@ -25,10 +25,13 @@ export default class EmailPane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder } = this.props;
+    const { i18n, lock, placeholder } = this.props;
+    const value = c.getFieldValue(lock, "email");
 
     return (
-      <EmailInput value={c.email(lock)}
+      <EmailInput
+        value={value}
+        invalidHint={i18n.str(value ? "invalidErrorHint": "blankErrorHint")}
         isValid={!c.isFieldVisiblyInvalid(lock, "email")}
         onChange={::this.handleChange}
         avatar={l.ui.avatar(lock)}
@@ -41,6 +44,8 @@ export default class EmailPane extends React.Component {
 }
 
 EmailPane.propTypes = {
+  i18n: React.PropTypes.object.isRequired,
+  invalidHint: React.PropTypes.string,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired
 };

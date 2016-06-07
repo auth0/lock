@@ -17,6 +17,7 @@ export default class LoginPane extends React.Component {
     const {
       emailInputPlaceholder,
       forgotPasswordAction,
+      i18n,
       instructions,
       lock,
       passwordInputPlaceholder,
@@ -35,6 +36,7 @@ export default class LoginPane extends React.Component {
           placeholder={usernameInputPlaceholder}
         />
       : <EmailPane
+          i18n={i18n}
           lock={lock}
           placeholder={emailInputPlaceholder}
         />;
@@ -63,6 +65,7 @@ export default class LoginPane extends React.Component {
 LoginPane.propTypes = {
   emailInputPlaceholder: React.PropTypes.string.isRequired,
   forgotPasswordAction: React.PropTypes.string.isRequired,
+  i18n: React.PropTypes.object.isRequired,
   instructions: React.PropTypes.any,
   lock: React.PropTypes.object.isRequired,
   passwordInputPlaceholder: React.PropTypes.string.isRequired,
