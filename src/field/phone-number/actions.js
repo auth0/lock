@@ -1,6 +1,5 @@
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import * as c from '../index';
-import * as cc from '../country_codes';
 import {
   closeLocationSelect,
   openLocationSelect
@@ -12,22 +11,6 @@ export function changePhoneLocation(id, location) {
     lock = c.setPhoneLocation(lock, location);
     return lock;
   });
-}
-
-// TODO: move this to another place since is not really an action.
-export function setInitialPhoneLocation(m, options) {
-  const { defaultLocation } = options;
-
-  if (defaultLocation && typeof defaultLocation === "string") {
-    const location = cc.findByIsoCode(defaultLocation);
-    if (!location) {
-      throw new Error(`Unable to set the default location, can't find any country with the code "${defaultLocation}".`);
-    }
-    return c.setPhoneLocation(m, location);
-  } else {
-    const isoCode = m.getIn(["location", "isoCode"]);
-    return isoCode ? c.setPhoneLocation(m, isoCode) : m;
-  }
 }
 
 export function selectPhoneLocation(id, searchStr) {

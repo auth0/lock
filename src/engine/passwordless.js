@@ -18,13 +18,11 @@ import * as l from '../core/index';
 // import MagiclinkScreen from './connection/passwordless/magiclink';
 // import { renderSSOScreens } from './core/sso/index';
 // import { isEmail } from './connection/passwordless/index';
-// import { setInitialPhoneLocation } from './field/phone-number/actions';
 //
 //
 class Passwordless {
 
   didInitialize(m, opts) {
-    // model = setInitialPhoneLocation(model, options);
     m = initSocial(m, opts);
     m = initPasswordless(m, opts);
 
