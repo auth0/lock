@@ -302,7 +302,7 @@ export function emitEvent(m, str, ...args) {
   get(m, "emitEventFn")(str, ...args);
 }
 
-export function loginErrorMessage(m, error) {
+export function loginErrorMessage(m, error, type) {
   // NOTE: previous version of lock checked for status codes and, at
   // some point, if the status code was 401 it defaults to an
   // "invalid_user_password" error (actually the
@@ -319,7 +319,18 @@ export function loginErrorMessage(m, error) {
       || i18n.str(m, ["error", "login", "lock.fallback"]);
   }
 
-  return i18n.str(m, ["error", "login", error.error || error.code])
+  const INVALID_MAP = {
+    code: "lock.invalid_code",
+    email: "lock.invalid_email_password",
+    username: "lock.invalid_username_password"
+  };
+
+  let code = error.error || error.code;
+  if (code === "invalid_user_password" && INVALID_MAP[type]) {
+    code = INVALID_MAP[type];
+  }
+
+  return i18n.str(m, ["error", "login", code])
     || i18n.str(m, ["error", "login", "lock.fallback"]);
 }
 

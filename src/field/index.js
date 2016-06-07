@@ -42,12 +42,10 @@ export function registerOptionField(m, field, options, initialValue) {
 }
 
 export function setOptionField(m, field, option) {
-  return m.mergeIn(["field", field], Map({
-    value: option.get("value"),
-    label: option.get("label"),
+  return m.mergeIn(["field", field], option.merge(Map({
     valid: true,
     showInvalid: false
-  }));
+  })));
 }
 
 export function isFieldValid(m, field) {
@@ -81,12 +79,16 @@ export function clearFields(m, fields) {
  return keyPaths.reduce((r, v) => r.removeIn(v), m);
 }
 
+export function getField(m, field, notFound=new Map({})) {
+  return m.getIn(["field", field], notFound);
+}
+
 export function getFieldValue(m, field, notFound="") {
-  return m.getIn(["field", field, "value"], notFound);
+  return getField(m, field).get("value", notFound);
 }
 
 export function getFieldLabel(m, field, notFound="") {
-  return m.getIn(["field", field, "label"], notFound);
+  return getField(m, field).get("label", notFound);
 }
 
 // phone number
@@ -161,6 +163,7 @@ export function renderOptionSelection(m) {
     ? <OptionSelectionPane
          model={m}
          name={name}
+         icon={m.getIn(["field", "selecting", "icon"])}
          iconUrl={m.getIn(["field", "selecting", "iconUrl"])}
          items={m.getIn(["field", name, "options"])}
       />

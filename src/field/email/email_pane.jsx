@@ -34,9 +34,7 @@ export default class EmailPane extends React.Component {
         invalidHint={i18n.str(value ? "invalidErrorHint": "blankErrorHint")}
         isValid={!c.isFieldVisiblyInvalid(lock, "email")}
         onChange={::this.handleChange}
-        avatar={l.ui.avatar(lock)}
         placeholder={placeholder}
-        disabled={l.submitting(lock)}
       />
     );
   }

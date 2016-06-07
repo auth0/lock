@@ -56,9 +56,7 @@ export function hasOnlyClassicConnections(m, type = undefined, ...strategies) {
 }
 
 export function useBigSocialButtons(m) {
-  const limit = l.hasOnlyConnections(m, "social") ? 5 : 3;
-  const notFound = l.connections(m, "social").count() <= limit;
-  return useBigButtons(m, notFound);
+  return useBigButtons(m, hasOnlyClassicConnections(m, "social") ? 5 : 3);
 }
 
 class Automatic {

@@ -64,14 +64,14 @@ export default class FiltrableList extends React.Component {
   }
 
   render() {
-    const { iconUrl, onCancel } = this.props;
-
+    const { icon, iconUrl, onCancel } = this.props;
     return (
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
           <BackButton onClick={onCancel} />
           <TextInput
             name="search"
+            icon={icon}
             iconUrl={iconUrl}
             isValid={true}
             onChange={::this.handleChange}

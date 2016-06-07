@@ -33,17 +33,3 @@ function syncClientSettingsSuccess(m, result) {
 
   return m;
 }
-
-// import webAPI from '../web_api';
-
-// function syncLocation(id) {
-//   function syncFn(m, cb) {
-//     webAPI.getUserCountry(id, cb);
-//   }
-
-//   function updateFn(m, result) {
-//     return m.setIn(["location", "isoCode"], result);
-//   }
-
-//   sync(id, "location", null, syncFn, updateFn);
-// }

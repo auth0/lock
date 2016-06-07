@@ -1,19 +1,30 @@
-import { List, Map } from 'immutable';
+import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
 import { clearFields } from '../../field/index';
+import { initLocation } from '../../field/phone_number';
 import { dataFns } from '../../utils/data_utils';
-
 const { get, initNS, tget, tremove, tset } = dataFns(["passwordless"]);
+import webAPI from '../../core/web_api';
+import sync from '../../sync';
 
 export function initPasswordless(m, opts) {
-  if (opts && opts.authentication && opts.authentication.send) {
-    const send = opts.authentication.send;
-    if (send === "link" || send === "code") {
-      return initNS(m, Map({send: send}));
-    }
+  // TODO: validate opts
 
-    // TODO: show warning if an invalid send option was provided
+  const send = typeof opts.sendCode === "boolean" && opts.sendCode
+    ? "code"
+    : "link";
+
+  m = initNS(m, Map({send: send}));
+  if (opts.defaultLocation && typeof opts.defaultLocation === "string") {
+    m = initLocation(m, opts.defaultLocation.toUpperCase());
+  } else {
+    m = sync(m, "location", {
+      recoverResult: "US",
+      syncFn: (m, cb) => webAPI.getUserCountry(l.id(m), cb),
+      successFn: (m, result) => initLocation(m, result)
+    });
   }
+
 
   return m;
 }
@@ -85,7 +96,9 @@ export function passwordlessStarted(m) {
 }
 
 export function passwordlessConnection(m) {
-  return l.connections(m, "passwordless").get(0, Map());
+  return l.connections(m, "passwordless", "email").get(0)
+    || l.connections(m, "passwordless", "sms").get(0)
+    || new Map();
 }
 
 export function isEmail(m) {

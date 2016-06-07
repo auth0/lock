@@ -6,10 +6,6 @@ import { isSmallScreen } from '../../utils/media_utils';
 import { swap, updateEntity } from '../../store/index';
 import { setVcode } from '../vcode';
 
-
-// TODO: this should be in the passwordless ns
-import { restart } from '../../connection/passwordless/actions';
-
 export default class VcodePane extends React.Component {
 
   handleVcodeChange(e) {
@@ -19,14 +15,18 @@ export default class VcodePane extends React.Component {
 
   handleResendClick(e) {
     e.preventDefault();
-    restart(l.id(this.props.lock));
+    const { lock, onRestart } = this.props;
+    onRestart(l.id(lock));
   }
 
   render() {
-    const { lock, placeholder, resendLabel } = this.props;
+    const { instructions, lock, placeholder, resendLabel } = this.props;
+    const headerText = instructions || null;
+    const header = headerText && <p>{headerText}</p>;
 
     return (
       <div>
+        {header}
         <VcodeInput value={c.vcode(lock)}
           isValid={!c.isFieldVisiblyInvalid(lock, "vcode") && !l.globalError(lock)}
           onChange={::this.handleVcodeChange}
@@ -50,7 +50,9 @@ export default class VcodePane extends React.Component {
 }
 
 VcodePane.propTypes = {
+  instructions: React.PropTypes.element,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired,
-  resendLabel: React.PropTypes.string.isRequired
+  resendLabel: React.PropTypes.string.isRequired,
+  onRestart: React.PropTypes.func.isRequired
 };

@@ -120,7 +120,7 @@ export function logIn(id, fields, params = {}) {
   validateAndSubmit(id, fields, m => {
     webApi.logIn(id, params, (error, ...args) => {
       if (error) {
-        setTimeout(() => logInError(id, error), 250);
+        setTimeout(() => logInError(id, fields, error), 250);
       } else {
         logInSuccess(id, ...args);
       }
@@ -144,9 +144,16 @@ export function logInSuccess(id, ...args) {
   }
 }
 
-function logInError(id, error) {
+function logInError(id, fields, error) {
   const m = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(m, error);
+  const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+}
+
+function loginType(fields) {
+  if (!fields) return;
+  if (~fields.indexOf("vcode")) return "code";
+  if (~fields.indexOf("username")) return "username";
+  if (~fields.indexOf("email")) return "email";
 }

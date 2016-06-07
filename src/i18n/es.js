@@ -6,13 +6,21 @@ export default {
     },
     login: {
       "blocked_user": "El usuario se encuentra bloqueado.",
-      "invalid_user_password": "Wrong email or password.",
+      "invalid_user_password": "Credenciales inválidas.",
       "lock.fallback": "Ocurrió un error al inciar sesión.",
+      "lock.invalid_code": "Código inválido.",
+      "lock.invalid_email_password": "Correo y contraseña inválidos.",
+      "lock.invalid_username_password": "Usuario y contraseña inválidos.",
       "lock.network": "Ocurrió un error de red. Por favor, verifique su conexión.",
       "lock.popup_closed": "Se ha cerrado la ventana emergente.",
-      "lock.unauthorized": "Acceso denegado. Por vaor, intente nuevamente.",
+      "lock.unauthorized": "Acceso denegado. Por favor, intente nuevamente.",
       "password_change_required": "Debe actualizar su contraseña porque es la primera vez que ingresa o porque la contraseña está vencida.",
       "password_leaked": "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones."
+    },
+    passwordless: {
+      "bad.email": "Correo inválido",
+      "bad.phone_number": "Teléfono inválido",
+      "lock.fallback": "Ocurrió un error durante el envío"
     },
     signUp: {
       "invalid_password": "La contraseña es muy débil.",
@@ -23,10 +31,12 @@ export default {
   },
   success: {
     logIn: "Sesión iniciada con éxito.",
-    forgotPassword: "Hemos enviado un email para completar el restablecimiento de su contraseña.",
+    forgotPassword: "Hemos enviado un correo para completar el restablecimiento de su contraseña.",
+    magicLink: "Hemos enviado un correo para inciar sesión a<br />to %s.",
     signUp: "Registro completado exitosamente."
   },
   blankErrorHint: "Requerido",
+  codeInputPlaceholder: "código",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "o",
   databaseSignUpInstructions: "",
@@ -34,6 +44,7 @@ export default {
   emailInputPlaceholder: "correo@ejemplo.com",
   enterpriseLoginIntructions: "Inicie sesión con sus credenciales corporativas.",
   enterpriseActiveLoginInstructions: "Ingrese las credenciales corporativas de %s.",
+  failedLabel: "Error!",
   forgotPasswordAction: "¿Olvidó su contraseña?",
   forgotPasswordInstructions: "Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.",
   invalidErrorHint: "Inválido",
@@ -54,6 +65,17 @@ export default {
     specialCharacters: "Caracteres especiales (ej. !@#$%^&*)",
     upperCase: "Letras mayúsculas (A-Z)"
   },
+  passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br>para iniciar sesión o registrarse",
+  passwordlessEmailCodeInstructions: "Se ha enviado un correo con el código a %s.",
+  passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br>o registrarse",
+  passwordlessSMSAlternativeInstructions: "También puede ingresar su teléfono<br>para iniciar sesión o registrarse",
+  passwordlessSMSCodeInstructions: "Se ha enviado un SMS con el código<br>a %s.",
+  passwordlessSMSInstructions: "Ingrese su teléfono para iniciar sesión<br>o registrarse",
+  phoneNumberInputPlaceholder: "número de teléfono",
+  resendCodeAction: "¿No recibió el código?",
+  resendLabel: "Reenviar",
+  resendingLabel: "Reenviando...",
+  retryLabel: "Reintentar",
   signUpLabel: "Registrarse",
   signUpterms: "",
   signUpWithLabel: "Registrarse con %s",
