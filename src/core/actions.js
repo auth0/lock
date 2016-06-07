@@ -34,17 +34,16 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
       } else {
         result = hash;
       }
+
+      setTimeout(() => {
+        if (error) {
+          l.emitEvent(m, "redirect_error", error);
+        } else {
+          l.emitAuthenticatedEvent(m, result);
+        }
+      }, 0);
     }
 
-    setTimeout(() => {
-      if (result && !error) {
-        l.emitAuthenticatedEvent(m, result);
-      } else {
-        if (!l.hasStopped(m)) {
-          l.emitEvent(m, "ready", error);
-        }
-      }
-    }, 0);
   }
 
 }
