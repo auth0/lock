@@ -6,6 +6,7 @@ export const icon = '<svg width="11px" height="14px" viewBox="0 0 13 16" version
 
 export default class PasswordInput extends React.Component {
   static propTypes = {
+    invalidHint: React.PropTypes.string.isRequired,
     isValid: React.PropTypes.bool.isRequired,
     onChange: React.PropTypes.func.isRequired,
     placeholder: React.PropTypes.string,
@@ -29,6 +30,7 @@ export default class PasswordInput extends React.Component {
 
   render() {
     const {
+      invalidHint,
       isValid,
       onChange,
       policy,
@@ -51,10 +53,10 @@ export default class PasswordInput extends React.Component {
       <InputWrap
         before={passwordStrength}
         focused={focused}
+        invalidHint={policy ? undefined : invalidHint}
         isValid={isValid}
         name="password"
         icon={icon}
-        after={<span>Invalid password</span>}
       >
         <input
           ref="input"

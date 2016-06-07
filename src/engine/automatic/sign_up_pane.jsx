@@ -50,6 +50,7 @@ export default class SignUpPane extends React.Component {
 
     const passwordPane = !onlyEmail
       && <PasswordPane
+           i18n={i18n}
            lock={model}
            placeholder={passwordInputPlaceholder}
            policy={passwordStrengthPolicy(model)}

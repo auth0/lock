@@ -13,11 +13,12 @@ export default class PasswordPane extends React.Component {
   }
 
   render() {
-    const { lock, placeholder, policy, strengthMessages } = this.props;
+    const { i18n, lock, placeholder, policy, strengthMessages } = this.props;
 
     return (
       <PasswordInput
-        value={c.password(lock)}
+        value={c.getFieldValue(lock, "password")}
+        invalidHint={i18n.str("blankErrorHint")}
         isValid={!c.isFieldVisiblyInvalid(lock, "password")}
         onChange={::this.handleChange}
         placeholder={placeholder}
@@ -31,6 +32,7 @@ export default class PasswordPane extends React.Component {
 }
 
 PasswordPane.propTypes = {
+  i18n: React.PropTypes.object.isRequired,
   lock: React.PropTypes.object.isRequired,
   onChange: React.PropTypes.func,
   placeholder: React.PropTypes.string.isRequired,
