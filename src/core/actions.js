@@ -7,8 +7,8 @@ import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField } from '../field/index';
 
-export function setupLock(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
-  let m = syncRemoteData(l.setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn));
+export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
+  let m = syncRemoteData(l.setup(id, clientID, domain, options, hookRunner, emitEventFn));
   preload(l.ui.logo(m) || defaultProps.logo);
 
   webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {
@@ -38,7 +38,7 @@ export function setupLock(id, clientID, domain, options, logInCallback, hookRunn
 
     setTimeout(() => {
       if (result && !error) {
-        l.invokeLogInCallback(m, result);
+        l.emitAuthenticatedEvent(m, result);
       } else {
         if (!l.hasStopped(m)) {
           l.emitEvent(m, "ready", error);
@@ -131,18 +131,18 @@ export function validateAndSubmit(id, fields = [], f) {
 
 export function logIn(id, fields, params = {}) {
   validateAndSubmit(id, fields, m => {
-    webApi.logIn(id, params, (error, ...args) => {
+    webApi.logIn(id, params, (error, result) => {
       if (error) {
         setTimeout(() => logInError(id, fields, error), 250);
       } else {
-        logInSuccess(id, ...args);
+        logInSuccess(id, result);
       }
     });
   });
 }
 
 
-export function logInSuccess(id, ...args) {
+export function logInSuccess(id, result) {
   const m = read(getEntity, "lock", id);
 
   if (!l.ui.autoclose(m)) {
@@ -150,10 +150,9 @@ export function logInSuccess(id, ...args) {
       m = l.setSubmitting(m, false);
       return l.setLoggedIn(m, true);
     });
-
-    l.invokeLogInCallback(m, ...args);
+    l.emitAuthenticatedEvent(m, result);
   } else {
-    closeLock(id, false, m1 => l.invokeLogInCallback(m1, ...args));
+    closeLock(id, false, m1 => l.emitAuthenticatedEvent(m1, result));
   }
 }
 
