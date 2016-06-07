@@ -1,6 +1,5 @@
 import { Map } from 'immutable';
 import trim from 'trim';
-import * as cc from './country_codes';
 import OptionSelectionPane from './option_selection_pane';
 import * as l from '../core/index';
 
@@ -101,36 +100,6 @@ export function getFieldLabel(m, field, notFound="") {
 }
 
 // phone number
-
-export function fullPhoneNumber(lock) {
-  return `${phoneDialingCode(lock) || ""}${phoneNumber(lock) || ""}`.replace(/[\s-]+/g, '');
-}
-
-export function fullHumanPhoneNumber(m) {
-  const code = phoneDialingCode(m);
-  const number = phoneNumber(m);
-  return `${code} ${number}`;
-}
-
-export function setPhoneLocation(m, value) {
-  return m.setIn(["field", "phoneNumber", "location"], value);
-}
-
-function phoneLocation(m) {
-  return m.getIn(["field", "phoneNumber", "location"], cc.defaultLocation);
-}
-
-export function phoneLocationString(m) {
-  return cc.locationString(phoneLocation(m));
-}
-
-export function phoneDialingCode(m) {
-  return cc.dialingCode(phoneLocation(m));
-}
-
-export function phoneIsoCode(m) {
-  return cc.isoCode(phoneLocation(m));
-}
 
 export function phoneNumber(lock) {
   return lock.getIn(["field", "phoneNumber", "value"], "");
