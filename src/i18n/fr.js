@@ -1,0 +1,93 @@
+export default {
+  error: {
+    forgotPassword: {
+      "too_many_requests": "Vous avez atteint la limite sur les tentatives de passe de réinitialisation. S'il vous plaît attendre avant de réessayer.",
+      "lock.fallback": "We're sorry, something went wrong when requesting the password change."
+    },
+    login: {
+      "blocked_user": "Utilisateur bloqué",
+      "invalid_user_password": "Courriel ou mot de passe incorrect.",
+      "lock.fallback": "We're sorry, something went wrong when attempting to log in.",
+      "lock.invalid_code": "Wrong code.",
+      "lock.invalid_email_password": "Wrong email or password.",
+      "lock.invalid_username_password": "Wrong username or password.",
+      "lock.network": "We could not reach the server. Please check your connection and try again.",
+      "lock.popup_closed": "La fenêtre pop-up a été fermée. Veuillez réessayer.",
+      "lock.unauthorized": "L'application n'a pas été autorisée. Veuillez réessayer.",
+      "password_change_required": "Réinitialiser votre mot de passe.",
+      "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it."
+    },
+    passwordless: {
+      "bad.email": "The email is invalid",
+      "bad.phone_number": "The phone number is invalid",
+      "lock.fallback": "We're sorry, something went wrong"
+    },
+    signUp: {
+      "invalid_password": "Mot de passe trop faible.",
+      "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
+      "user_exists": "Cet utilisateur existe déjà.",
+      "username_exists": "Ce nom d'utilisateur est déjà pris."
+    }
+  },
+  success: {
+    logIn: "Thanks for logging in.",
+    forgotPassword: "Vous allez recevoir sous quelques minutes un courriel vous indiquant comment réinitialiser votre mot de passe.",
+    magicLink: "We sent you a link to log in<br />to %s.",
+    signUp: "Thanks for signing up."
+  },
+  blankErrorHint: "Can't be blank",
+  codeInputPlaceholder: "your code",
+  databaseEnterpriseLoginInstructions: "",
+  databaseEnterpriseAlternativeLoginInstructions: "or",
+  databaseSignUpInstructions: "",
+  databaseAlternativeSignUpInstructions: "or",
+  emailInputPlaceholder: "yours@example.com",
+  enterpriseLoginIntructions: "Login with your corporate credentials.",
+  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at %s.",
+  failedLabel: "Failed!",
+  forgotPasswordAction: "Don't remember your password?",
+  forgotPasswordInstructions: "Veuillez saisir votre courriel et mot de passe. Nous vous enverrons un courriel pour confirmer le changement de mot de passe.",
+  invalidErrorHint: "Invalid",
+  lastLoginInstructions: "Last time you logged in with",
+  loginAtLabel: "Login at %s",
+  loginLabel: "Login",
+  loginWithLabel: "Login with %s",
+  notYourAccountAction: "Not your account?",
+  passwordInputPlaceholder: "votre mot de passe",
+  passwordStrength: {
+    containsAtLeast: "Contain at least %d of the following %d types of characters:",
+    identicalChars: "No more than %d identical characters in a row (e.g., \"%s\" not allowed)",
+    nonEmpty: "Un mot de passe non vide est requis",
+    numbers: "Chiffres (0-9)",
+    lengthAtLeast: "Au moins %d caractères",
+    lowerCase: "Caractères minuscules (a-z)",
+    shouldContain: "Doit contenir:",
+    specialCharacters: "Caractères spéciaux (ex. : !@#$%^&*)",
+    upperCase: "Caractères majuscules (A-Z)"
+  },
+  passwordlessEmailAlternativeInstructions: "Otherwise, enter your email to sign in<br>or create an account",
+  passwordlessEmailCodeInstructions: "An email with the code has been sent to %s.",
+  passwordlessEmailInstructions: "Enter your email to sign in<br>or create an account",
+  passwordlessSMSAlternativeInstructions: "Otherwise, enter your phone to sign in<br>or create an account",
+  passwordlessSMSCodeInstructions: "An SMS with the code has been sent<br>to %s.",
+  passwordlessSMSInstructions: "Enter your phone to sign in<br>or create an account",
+  phoneNumberInputPlaceholder: "your phone number",
+  resendCodeAction: "Did not get the code?",
+  resendLabel: "Resend",
+  resendingLabel: "Resending...",
+  retryLabel: "Retry",
+  sentLabel: "Sent!",
+  signUpLabel: "Inscrivez-vous",
+  signUpterms: "",
+  signUpWithLabel: "Inscrivez-vous avec %s",
+  socialLoginInstructions: "",
+  socialSignUpInstructions: "",
+  ssoEnabled: "Single Sign-On enabled",
+  unrecoverableError: "Something went wrong.<br />Please contant technical support.",
+  usernameFormatErrorHint: "Use 1-15 letters, numbers and \"_\"",
+  usernameInputPlaceholder: "votre nom d'utilisateur",
+  title: "Auth0",
+  welcome: "Bienvenue %s!",
+  windowsAuthInstructions: "You are connected from your corporate network&hellip;",
+  windowsAuthLabel: "Windows Authentication"
+};
