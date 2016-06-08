@@ -19,7 +19,7 @@ import { go } from './sync';
 
 export default class Base extends EventEmitter {
 
-  constructor(clientID, domain, options = {}, logInCallback = () => {}, engine) {
+  constructor(clientID, domain, options = {}, engine) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
     }
@@ -28,10 +28,6 @@ export default class Base extends EventEmitter {
     }
     if (typeof options != "object") {
       throw new Error("When provided, the third argument must be an `options` object.");
-    }
-    if (typeof logInCallback != "function") {
-      // TODO: should this argument be mandatory?
-      throw new Error("When provided, the fourth argument must be a function.");
     }
 
     super();
@@ -43,7 +39,7 @@ export default class Base extends EventEmitter {
 
     go(this.id);
 
-    setupLock(this.id, clientID, domain, options, logInCallback, hookRunner, emitEventFn);
+    setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn);
 
     observe("render", this.id, m => {
       const partialApplyId = (screen, handlerName) => {

@@ -18,7 +18,7 @@ const {
   tremove
 } = dataFns(["core"]);
 
-export function setup(id, clientID, domain, options, logInCallback, hookRunner, emitEventFn) {
+export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = init(id, Immutable.fromJS({
     assetsUrl: extractAssetsUrlOption(options, domain),
     auth: extractAuthOptions(options),
@@ -26,7 +26,6 @@ export function setup(id, clientID, domain, options, logInCallback, hookRunner, 
     domain: domain,
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
-    logInCallback: logInCallback,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options)
   }));
@@ -211,10 +210,6 @@ function extractAssetsUrlOption(opts, domain) {
   }
 }
 
-export function invokeLogInCallback(m, ...args) {
-  get(m, "logInCallback").apply(undefined, args);
-}
-
 export function render(m) {
   return tset(m, "render", true);
 }
@@ -299,7 +294,9 @@ export function runHook(m, str, ...args) {
 }
 
 export function emitEvent(m, str, ...args) {
-  get(m, "emitEventFn")(str, ...args);
+  try {
+    get(m, "emitEventFn")(str, ...args);
+  } catch (e) { }
 }
 
 export function loginErrorMessage(m, error, type) {
@@ -337,7 +334,7 @@ export function loginErrorMessage(m, error, type) {
 // TODO: rename to something less generic that is easier to grep
 export function stop(m, error) {
   if (error) {
-    setTimeout(() => invokeLogInCallback(m, error), 0);
+    setTimeout(() => emitEvent(m, "error", error), 17);
   }
 
   return set(m, "stopped", true);
@@ -345,4 +342,8 @@ export function stop(m, error) {
 
 export function hasStopped(m) {
   return get(m, "stopped");
+}
+
+export function emitAuthenticatedEvent(m, result) {
+  emitEvent(m, "authenticated", result);
 }

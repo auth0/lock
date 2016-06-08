@@ -15,8 +15,8 @@ if (style.styleSheet) {
 
 export default class Auth0Lock extends Core {
 
-  constructor(clientID, domain, options, logInCallback) {
-    super(clientID, domain, options, logInCallback, automatic);
+  constructor(clientID, domain, options) {
+    super(clientID, domain, options, automatic);
   }
 
 }

@@ -2,6 +2,7 @@ import { Map } from 'immutable';
 import trim from 'trim';
 import * as cc from './country_codes';
 import OptionSelectionPane from './option_selection_pane';
+import * as l from '../core/index';
 
 export function setField(m, field, value, validator = str => trim(str).length > 0, ...args) {
   const prevValue = m.getIn(["field", field, "value"]);
@@ -30,8 +31,16 @@ export function registerOptionField(m, field, options, initialValue) {
     }
   });
 
-  // TODO: improve message? emit warning right here? warning for prefilled field ignored?
-  if (!valid || !options.size) throw new Error(`The options provided for the "${field}" field are invalid, they must have the following format: {label: "non-empty string", value: "non-empty string"} and there has to be at least one option.`);
+  if (!valid || !options.size) {
+    const stopError = new Error(`The options provided for the "${field}" field are invalid, they must have the following format: {label: "non-empty string", value: "non-empty string"} and there has to be at least one option.`);
+    stopError.code = "invalid_select_field";
+    // TODO: in the future we might want to return the result of the
+    // operation along with the model insteand of stopping the
+    // rendering, like [false, m] in the case of failure and [true, m]
+    // in the case of success.
+    return l.stop(m, stopError);
+  }
+
   if (!initialOption) initialOption = Map({});
 
   return m.mergeIn(["field", field], initialOption, Map({
