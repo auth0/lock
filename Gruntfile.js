@@ -92,7 +92,8 @@ module.exports = function(grunt) {
           browserifyOptions: {
             debug: true,
             extensions: ".jsx",
-            transform: ["babelify"]
+            transform: ["babelify"],
+            plugin: ['livereactload']
           },
           watch: true
         },
