@@ -14,6 +14,7 @@ export default (m, key, opts) => {
     : !opts.conditionFn || opts.conditionFn(m) ? "pending" : "no";
 
   return set(m, key, Map({
+    errorFn: opts.errorFn,
     recoverResult: opts.recoverResult,
     syncStatus: status,
     successFn: opts.successFn,
@@ -57,7 +58,14 @@ const process = (m, id) => {
         called = true;
         setTimeout(() => {
           swap(updateEntity, "lock", id, m => {
+            const errorFn = getProp(r, k, "errorFn");
+
+            if (error && typeof errorFn === "function") {
+              setTimeout(() => errorFn(m, error), 0);
+            }
+
             const recoverResult = getProp(m, k, "recoverResult");
+
             if (error && recoverResult === undefined) {
               return handleError(m, k, error);
             } else {
