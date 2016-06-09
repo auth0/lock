@@ -347,3 +347,7 @@ export function hasStopped(m) {
 export function emitAuthenticatedEvent(m, result) {
   emitEvent(m, "authenticated", result);
 }
+
+export function emitAuthorizationErrorEvent(m, error) {
+  emitEvent(m, "authorization_error", error);
+}

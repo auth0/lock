@@ -41,7 +41,7 @@ function parseHash(m) {
     }
 
     if (error) {
-      l.emitEvent(m, "redirect_error", error);
+      l.emitAuthorizationErrorEvent(m, error);
     } else {
       l.emitAuthenticatedEvent(m, result);
     }
