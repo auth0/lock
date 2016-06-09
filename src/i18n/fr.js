@@ -1,26 +1,26 @@
 export default {
   error: {
     forgotPassword: {
-      "too_many_requests": "Vous avez atteint la limite sur les tentatives de passe de réinitialisation. S'il vous plaît attendre avant de réessayer.",
-      "lock.fallback": "We're sorry, something went wrong when requesting the password change."
+      "too_many_requests": "Vous avez atteint la limite des tentatives de réinitialisation de votre mot de passe. S'il vous plaît attendre avant de réessayer.",
+      "lock.fallback": "Nous sommes désolés, une erreur s'est produite lors de la réinitialisation du mot de passe."
     },
     login: {
       "blocked_user": "Utilisateur bloqué",
       "invalid_user_password": "Courriel ou mot de passe incorrect.",
-      "lock.fallback": "We're sorry, something went wrong when attempting to log in.",
-      "lock.invalid_code": "Wrong code.",
-      "lock.invalid_email_password": "Wrong email or password.",
-      "lock.invalid_username_password": "Wrong username or password.",
-      "lock.network": "We could not reach the server. Please check your connection and try again.",
+      "lock.fallback": "Nous sommes désolés, une erreur s'est produite lors de votre tentative de connection.",
+      "lock.invalid_code": "Code incorrect.",
+      "lock.invalid_email_password": "Courriel ou mot de passe incorrect.",
+      "lock.invalid_username_password": "Nom d'usager ou mot de passe incorrect.",
+      "lock.network": "Nous ne pouvons pas contacter le serveur. S'il vous plaît vérifier votre connection et réessayer.",
       "lock.popup_closed": "La fenêtre pop-up a été fermée. Veuillez réessayer.",
       "lock.unauthorized": "L'application n'a pas été autorisée. Veuillez réessayer.",
       "password_change_required": "Réinitialiser votre mot de passe.",
-      "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it."
+      "password_leaked": "Cette ouverture de session a été bloqué parce que votre mot de passe a été publié sur un autre site. Nous vous avons envoyé un courriel avec les instructions pour le débloquer."
     },
     passwordless: {
-      "bad.email": "The email is invalid",
-      "bad.phone_number": "The phone number is invalid",
-      "lock.fallback": "We're sorry, something went wrong"
+      "bad.email": "Ce courriel est invalide",
+      "bad.phone_number": "Ce numéro de téléphone est invalide",
+      "lock.fallback": "Nous sommes désolés, quelque chose a mal fonctionné"
     },
     signUp: {
       "invalid_password": "Mot de passe trop faible.",
