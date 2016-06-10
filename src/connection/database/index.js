@@ -233,9 +233,13 @@ export function hasInitialScreen(m, str) {
   return get(m, "initialScreen") === str;
 }
 
+export function databaseConnectionRequiresUsername(m) {
+  return (databaseConnection(m) || Map()).toJS().requires_username;
+}
+
 export function authWithUsername(m) {
-  const { requires_username } = (databaseConnection(m) || Map()).toJS();
-  return requires_username || get(m, "usernameStyle", "email") === "username";
+  return databaseConnectionRequiresUsername(m)
+    || get(m, "usernameStyle", "email") === "username";
 }
 
 export function hasScreen(m, s) {
