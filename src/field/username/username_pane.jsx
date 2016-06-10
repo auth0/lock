@@ -21,7 +21,7 @@ export default class UsernamePane extends React.Component {
       debouncedRequestAvatar(l.id(lock), e.target.value);
     }
 
-    swap(updateEntity, "lock", l.id(lock), setUsername, e.target.value, validateFormat);
+    swap(updateEntity, "lock", l.id(lock), setUsername, e.target.value, undefined, validateFormat);
   }
 
   render() {
