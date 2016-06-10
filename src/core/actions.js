@@ -41,7 +41,7 @@ function parseHash(m) {
     }
 
     if (error) {
-      l.emitEvent(m, "redirect_error", error);
+      l.emitAuthorizationErrorEvent(m, error);
     } else {
       l.emitAuthenticatedEvent(m, result);
     }
@@ -158,6 +158,10 @@ export function logInSuccess(id, result) {
 function logInError(id, fields, error) {
   const m = read(getEntity, "lock", id);
   const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
+
+  if (["blocked_user", "rule_error", "lock.unauthorized"].indexOf(error.code) > -1) {
+    l.emitAuthorizationErrorEvent(m, error);
+  }
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
