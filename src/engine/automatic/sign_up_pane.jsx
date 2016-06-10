@@ -3,8 +3,8 @@ import EmailPane from '../../field/email/email_pane';
 import PasswordPane from '../../field/password/password_pane';
 import UsernamePane from '../../field/username/username_pane';
 import {
-  authWithUsername,
   additionalSignUpFields,
+  databaseConnectionRequiresUsername,
   passwordStrengthPolicy,
 } from '../../connection/database/index';
 import CustomInput from '../../field/custom_input';
@@ -26,7 +26,7 @@ export default class SignUpPane extends React.Component {
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
-    const usernamePane = !onlyEmail && authWithUsername(model)
+    const usernamePane = !onlyEmail && databaseConnectionRequiresUsername(model)
       ? <UsernamePane
           i18n={i18n}
           lock={model}
