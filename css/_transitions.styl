@@ -40,20 +40,20 @@
   transition: transform .35s;
 }
 
-/*vslide-reverse in*/
+/*reverse vslide in*/
 
-.vrslide-enter {
+.reverse-vslide-enter {
   opacity: 0;
   -webkit-transform: translate3d(0, -100%, 0);
   transform: translate3d(0, -100%, 0);
 }
 
-.vrslide-enter.vrslide-enter-active {
+.reverse-vslide-enter.reverse-vslide-enter-active {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-transition: .35s;
-  transition: .35s;
+  -webkit-transition: -webkit-transform .35s;
+  transition: transform .35s;
 }
 
 /*vslide out*/
