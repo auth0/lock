@@ -105,14 +105,15 @@
     height 100%
     border-radius 6px
     background white
+    position relative
 
     &.horizontal-fade-leave
       .auth0-lock-content, .auth0-lock-terms
         opacity .3
         pointer-events none
 
-    // &.auth0-lock-moving
-    //   overflow hidden
+    &.auth0-lock-moving
+      overflow hidden
 
 
   // Lock header content

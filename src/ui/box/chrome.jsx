@@ -60,6 +60,14 @@ export default class Chrome extends React.Component {
 
     if (!auxiliaryPane && nextProps.auxiliaryPane) {
       this.auxiliaryPaneTriggerInput = global.document.activeElement;
+      this.setState({moving: true});
+    }
+
+    if (auxiliaryPane && nextProps.auxiliaryPane) {
+      setTimeout(
+        () => this.setState({moving: false}),
+        AUXILIARY_ANIMATION_DURATION
+      );
     }
 
   }
