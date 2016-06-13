@@ -218,7 +218,7 @@ export default class Chrome extends React.Component {
     const Content = contentComponent;
 
     let className = "auth0-lock-cred-pane";
-    const isQuiet =  !moving && !delayingShowSubmitButton && !isSubmitting;
+    const isQuiet =  !moving && !delayingShowSubmitButton;
     className += isQuiet
       ? " auth0-lock-quiet"
       : " auth0-lock-moving";
