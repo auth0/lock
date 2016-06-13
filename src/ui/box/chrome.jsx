@@ -64,6 +64,7 @@ export default class Chrome extends React.Component {
     }
 
     if (auxiliaryPane && nextProps.auxiliaryPane) {
+      // TODO clear timeout
       setTimeout(
         () => this.setState({moving: false}),
         AUXILIARY_ANIMATION_DURATION
@@ -81,6 +82,7 @@ export default class Chrome extends React.Component {
       const input = this.findAutofocusInput(this.refs.auxiliary);
 
       if (input) {
+        // TODO clear timeout
         setTimeout(() => input.focus(), AUXILIARY_ANIMATION_DURATION);
       }
 
@@ -89,6 +91,7 @@ export default class Chrome extends React.Component {
 
     if (!auxiliaryPane && prevProps.auxiliaryPane) {
       if (this.auxiliaryPaneTriggerInput) {
+        // TODO clear timeout
         setTimeout(
           () => this.auxiliaryPaneTriggerInput.focus(),
           AUXILIARY_ANIMATION_DURATION
@@ -105,6 +108,7 @@ export default class Chrome extends React.Component {
         if (this.mainScreenName(prevProps.screenName) !== this.mainScreenName()) {
           this.inputToFocus = input;
         } else {
+          // TODO clear timeout
           setTimeout(() => input.focus(), 17);
         }
       }
@@ -116,6 +120,7 @@ export default class Chrome extends React.Component {
       const input = this.findAutofocusInput();
 
       if (input) {
+        // TODO clear timeout
         setTimeout(() => input.focus(), 17);
       }
 
