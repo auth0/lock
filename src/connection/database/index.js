@@ -1,7 +1,12 @@
 import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
 import * as client from '../../core/client/index';
-import { clearFields, setField, registerOptionField } from '../../field/index';
+import {
+  clearFields,
+  getFieldValue,
+  setField,
+  registerOptionField
+} from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
 import sync from '../../sync';
 import trim from 'trim';
@@ -243,8 +248,12 @@ function databaseUsernameStyle(m) {
     : "email";
 }
 
-export function databaseLogInWithEmail(m) {
+function databaseLogInWithEmail(m) {
   return databaseUsernameStyle(m) === "email";
+}
+
+export function databaseUsernameValue(m) {
+  return getFieldValue(m, databaseLogInWithEmail(m) ? "email" : "username");
 }
 
 export function authWithUsername(m) {

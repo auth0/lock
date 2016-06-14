@@ -6,7 +6,7 @@ import { renderSSOScreens } from '../core/sso/index';
 import {
   additionalSignUpFields,
   authWithUsername,
-  databaseLogInWithEmail,
+  databaseUsernameValue,
   defaultDatabaseConnection,
   defaultDatabaseConnectionName,
   getScreen,
@@ -40,10 +40,7 @@ import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
 export function isSSOEnabled(m) {
-  return isEnterpriseDomain(
-    m,
-    getFieldValue(m, databaseLogInWithEmail(m) ? "email" : "username")
-  );
+  return isEnterpriseDomain(m, databaseUsernameValue(m));
 }
 
 export function usernameStyle(m) {
