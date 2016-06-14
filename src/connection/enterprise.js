@@ -52,11 +52,11 @@ export function defaultEnterpriseConnectionName(m) {
   return get(m, "defaultConnectionName");
 }
 
-export function enterpriseConnection(m) {
+export function enterpriseActiveFlowConnection(m) {
   if (isHRDActive(m)) {
     // HRD is active when an email matched or there is only one
     // connection and it is enterprise
-    const email = c.email(m);
+    const email = tget(m, "hrdEmail", "");
     return matchConnection(m, email) || findActiveFlowConnection(m);
   } else {
     return defaultEnterpriseConnection(m) || findADConnectionWithoutDomain(m);
@@ -64,7 +64,6 @@ export function enterpriseConnection(m) {
 }
 
 export function matchConnection(m, email, strategies = []) {
-  // TODO: could it just read the `email` from `m`?
   const target = emailDomain(email);
   if (!target) return false;
   return l.connections(m, "enterprise", ...strategies).find(x => {

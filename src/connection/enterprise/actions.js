@@ -1,6 +1,6 @@
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import {
-  enterpriseConnection,
+  enterpriseActiveFlowConnection,
   isHRDActive,
   matchConnection,
   toggleHRD
@@ -34,7 +34,7 @@ function logInActiveFlow(id) {
   const username = c.getFieldValue(m, usernameField);
 
   coreLogIn(id, ["password", usernameField], {
-    connection: enterpriseConnection(m).get("name"),
+    connection: enterpriseActiveFlowConnection(m).get("name"),
     username: username,
     password: c.getFieldValue(m, "password"),
     login_hint: username
