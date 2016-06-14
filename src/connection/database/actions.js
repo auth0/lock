@@ -10,23 +10,20 @@ import {
 import * as l from '../../core/index';
 import * as c from '../../field/index';
 import  {
-  authWithUsername,
   databaseConnectionName,
+  databaseConnectionRequiresUsername,
+  databaseLogInWithEmail,
   hasScreen,
   setScreen,
   shouldAutoLogin,
   toggleTermsAcceptance as switchTermsAcceptance,
   additionalSignUpFields
 } from './index';
-// TODO: we should not depend on this from here
-import { usernameStyle } from '../../engine/automatic';
 import * as i18n from '../../i18n';
 
 export function logIn(id) {
   const m = read(getEntity, "lock", id);
-  const usernameField = usernameStyle(m) === "username"
-    ? "username"
-    : "email";
+  const usernameField = databaseLogInWithEmail(m) ? "email" : "username";
   const username = c.getFieldValue(m, usernameField);
 
   coreLogIn(id, [usernameField, "password"], {
@@ -39,7 +36,7 @@ export function logIn(id) {
 export function signUp(id) {
   const m = read(getEntity, "lock", id);
   const fields = ["email", "password"];
-  if (authWithUsername(m)) fields.push("username");
+  if (databaseConnectionRequiresUsername(m)) fields.push("username");
   additionalSignUpFields(m).forEach(x => fields.push(x.get("name")));
 
   validateAndSubmit(id, fields, m => {
@@ -50,7 +47,7 @@ export function signUp(id) {
       autoLogin: shouldAutoLogin(m)
     };
 
-    if (authWithUsername(m)) {
+    if (databaseConnectionRequiresUsername(m)) {
       params.username = c.getFieldValue(m, "username");
     }
 
