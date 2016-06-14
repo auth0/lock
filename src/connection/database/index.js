@@ -237,6 +237,16 @@ export function databaseConnectionRequiresUsername(m) {
   return (databaseConnection(m) || Map()).toJS().requires_username;
 }
 
+function databaseUsernameStyle(m) {
+  return databaseConnectionRequiresUsername(m)
+    ? get(m, "usernameStyle", "any")
+    : "email";
+}
+
+export function databaseLogInWithEmail(m) {
+  return databaseUsernameStyle(m) === "email";
+}
+
 export function authWithUsername(m) {
   return databaseConnectionRequiresUsername(m)
     || get(m, "usernameStyle", "email") === "username";
