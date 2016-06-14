@@ -5,6 +5,8 @@ import LoginPane from '../../connection/database/login_pane';
 import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
+  databaseUsernameValue,
+  databaseUsernameStyle,
   defaultDatabaseConnection,
   hasInitialScreen,
   hasScreen,
@@ -31,8 +33,7 @@ import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notic
 import {
   hasOnlyClassicConnections,
   isSSOEnabled,
-  useBigSocialButtons,
-  usernameStyle
+  useBigSocialButtons
 } from '../automatic';
 
 
@@ -78,6 +79,10 @@ const Component = ({i18n, model, t}) => {
     ? "databaseEnterpriseAlternativeLoginInstructions"
     : "databaseEnterpriseLoginInstructions";
 
+  const usernameInputPlaceholderKey = databaseUsernameStyle(model) === "any"
+    ? "usernameOrEmailInputPlaceholder"
+    : "usernameInputPlaceholder";
+
   const login = (sso
     || l.hasSomeConnections(model, "database")
     || l.hasSomeConnections(model, "enterprise"))
@@ -90,8 +95,8 @@ const Component = ({i18n, model, t}) => {
          passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
          showForgotPasswordLink={showForgotPasswordLink}
          showPassword={showPassword}
-         usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}
-         usernameStyle={usernameStyle(model)}
+         usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
+         usernameStyle={databaseUsernameStyle(model)}
        />;
 
   const ssoNotice = sso
@@ -124,8 +129,8 @@ export default class Login extends Screen {
       return null;
     }
 
-    if (isHRDDomain(model, c.email(model))) {
-      return startHRD;
+    if (isHRDDomain(model, databaseUsernameValue(model))) {
+      return id => startHRD(id, databaseUsernameValue(model));
     }
 
     const useDatabaseConnection = !isSSOEnabled(model)

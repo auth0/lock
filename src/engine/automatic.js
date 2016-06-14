@@ -6,6 +6,7 @@ import { renderSSOScreens } from '../core/sso/index';
 import {
   additionalSignUpFields,
   authWithUsername,
+  databaseUsernameValue,
   defaultDatabaseConnection,
   defaultDatabaseConnectionName,
   getScreen,
@@ -17,7 +18,6 @@ import {
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
   initEnterprise,
-  isADEnabled,
   isEnterpriseDomain,
   isHRDActive,
   isInCorpNetwork,
@@ -36,14 +36,11 @@ import LoadingScreen from '../core/loading_screen';
 import ErrorScreen from '../core/error_screen';
 import LastLoginScreen from '../core/sso/last_login_screen';
 import { hasError, isDone, isSuccess } from '../sync';
-import * as c from '../field/index';
+import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
 export function isSSOEnabled(m) {
-  return isEnterpriseDomain(
-    m,
-    usernameStyle(m) === "username"  ? c.username(m) : c.email(m)
-  );
+  return isEnterpriseDomain(m, databaseUsernameValue(m));
 }
 
 export function usernameStyle(m) {

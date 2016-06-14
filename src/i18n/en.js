@@ -86,6 +86,7 @@ export default {
   unrecoverableError: "Something went wrong.<br />Please contant technical support.",
   usernameFormatErrorHint: "Use 1-15 letters, numbers and \"_\"",
   usernameInputPlaceholder: "your username",
+  usernameOrEmailInputPlaceholder: "username/email",
   title: "Auth0",
   welcome: "Welcome %s!",
   windowsAuthInstructions: "You are connected from your corporate network&hellip;",
