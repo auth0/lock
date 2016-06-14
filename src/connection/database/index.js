@@ -248,7 +248,7 @@ function databaseUsernameStyle(m) {
     : "email";
 }
 
-function databaseLogInWithEmail(m) {
+export function databaseLogInWithEmail(m) {
   return databaseUsernameStyle(m) === "email";
 }
 
