@@ -5,6 +5,7 @@ import LoginPane from '../../connection/database/login_pane';
 import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
+  databaseUsernameValue,
   defaultDatabaseConnection,
   hasInitialScreen,
   hasScreen,
@@ -124,8 +125,8 @@ export default class Login extends Screen {
       return null;
     }
 
-    if (isHRDDomain(model, c.email(model))) {
-      return startHRD;
+    if (isHRDDomain(model, databaseUsernameValue(model))) {
+      return id => startHRD(id, databaseUsernameValue(model));
     }
 
     const useDatabaseConnection = !isSSOEnabled(model)

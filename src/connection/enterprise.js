@@ -2,10 +2,11 @@ import Immutable, { List } from 'immutable';
 import * as l from '../core/index';
 import * as c from '../field/index';
 import { dataFns } from '../utils/data_utils';
-import { emailDomain } from '../field/email';
+import { emailDomain, emailLocalPart } from '../field/email';
+import { setUsername } from '../field/username';
 import { getFieldValue } from '../field/index';
 
-const { get, initNS, tget, tset } = dataFns(["enterprise"]);
+const { get, initNS, tget, tremove, tset } = dataFns(["enterprise"]);
 
 // TODO: Android version also has "google-opendid" in the list, but we
 // consider it to be a social connection. See
@@ -86,7 +87,7 @@ export function isEnterpriseDomain(m, email, strategies = []) {
 export function enterpriseDomain(m) {
   return isSingleHRDConnection(m)
     ? l.connections(m, "enterprise").getIn([0, "domain"])
-    : emailDomain(getFieldValue(m, "email"));
+    : emailDomain(tget(m, "hrdEmail"));
 }
 
 export function quickAuthConnection(m) {
@@ -138,8 +139,15 @@ export function isHRDDomain(m, email) {
   return isEnterpriseDomain(m, email, ["ad", "auth0-adldap"]);
 }
 
-export function toggleHRD(m, b) {
-  return tset(m, "hrd", b);
+export function toggleHRD(m, email) {
+  if (email) {
+    m = setUsername(m, emailLocalPart(email));
+    m = tset(m, "hrdEmail", email);
+  } else {
+    m = tremove(m, "hrdEmail");
+  }
+
+  return tset(m, "hrd", !!email);
 }
 
 export function isHRDActive(m) {

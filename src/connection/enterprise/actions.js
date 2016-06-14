@@ -6,16 +6,10 @@ import {
   toggleHRD
 } from '../enterprise';
 import * as c from '../../field/index';
-import { setUsername } from '../../field/username';
-import { emailLocalPart } from '../../field/email';
 import { logIn as coreLogIn } from '../../core/actions';
 
-export function startHRD(id) {
-  swap(updateEntity, "lock", id, m => {
-    m = toggleHRD(m, true);
-    m = setUsername(m, emailLocalPart(c.email(m)));
-    return m;
-  });
+export function startHRD(id, email) {
+  swap(updateEntity, "lock", id, toggleHRD, email);
 }
 
 export function cancelHRD(id) {
