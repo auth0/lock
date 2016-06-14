@@ -20,11 +20,15 @@ export function setUsername(m, str, usernameStyle = "username", validateUsername
     case "username":
       return validateUsername(value, validateUsernameFormat);
     default:
-      return value.indexOf("@") > -1
+      return usernameLooksLikeEmail(value)
         ? validateEmail(value)
         : validateUsername(value, validateUsernameFormat);
     }
   };
 
   return setField(m, "username", str, validator);
+}
+
+export function usernameLooksLikeEmail(str) {
+  return str.indexOf("@") > -1;
 }

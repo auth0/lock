@@ -30,18 +30,19 @@ export default class LoginPane extends React.Component {
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
-    const fieldPane = usernameStyle === "username"
-      ? <UsernamePane
-          i18n={i18n}
-          lock={lock}
-          placeholder={usernameInputPlaceholder}
-          validateFormat={true}
-        />
-      : <EmailPane
+    const fieldPane = usernameStyle === "email"
+      ? <EmailPane
           i18n={i18n}
           lock={lock}
           placeholder={emailInputPlaceholder}
-        />;
+        />
+      : <UsernamePane
+          i18n={i18n}
+          lock={lock}
+          placeholder={usernameInputPlaceholder}
+          usernameStyle={usernameStyle}
+          validateFormat={true}
+        />
 
     const passwordPane = showPassword
       ? <PasswordPane
@@ -78,5 +79,5 @@ LoginPane.propTypes = {
   showForgotPasswordLink: React.PropTypes.bool.isRequired,
   showPassword: React.PropTypes.bool.isRequired,
   usernameInputPlaceholder: React.PropTypes.string.isRequired,
-  usernameStyle: React.PropTypes.string.isRequired
+  usernameStyle: React.PropTypes.oneOf(["any", "email", "username"])
 };

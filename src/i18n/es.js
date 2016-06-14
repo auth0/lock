@@ -86,6 +86,7 @@ export default {
   unrecoverableError: "Ocurrió un error.<br />Por favor, contacte a soporte técnico.",
   usernameFormatErrorHint: "1-15 letras, números y \"_\"",
   usernameInputPlaceholder: "su usuario",
+  usernameOrEmailInputPlaceholder: "usuario/correo electrónico",
   title: "Auth0",
   welcome: "Bienvenido %s!",
   windowsAuthInstructions: "Usted se encuentra conectado desde su red corporativa&hellip;",
