@@ -110,10 +110,6 @@ export function unpinLoadingPane(id) {
   swap(updateEntity, "lock", id, m => m.set("isLoadingPanePinned", false));
 }
 
-function emitEvent(id, str, ...args) {
-  l.emitEvent(read(getEntity, "lock", id), str, ...args);
-}
-
 export function validateAndSubmit(id, fields = [], f) {
   swap(updateEntity, "lock", id, m => {
     const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
