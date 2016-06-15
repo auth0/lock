@@ -31,6 +31,7 @@
     "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js"
   },
   "devDependencies": {
+    "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-css-import-to-string": "0.0.2",
     "babel-plugin-version-inline": "^1.0.0",
     "babel-preset-es2015": "^6.3.13",
@@ -55,10 +56,13 @@
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
     "grunt-http": "^1.6.0",
+    "livereactload": "^2.2.3",
     "mochify": "^2.12.0",
     "react-addons-test-utils": "^0.14.0 || ^15.0.0",
+    "react-proxy": "^1.1.8",
     "sinon": "^1.15.4",
     "unreleased": "^0.1.0",
+    "watchify": "^3.7.0",
     "zuul": "3.10.1",
     "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
   },

@@ -40,6 +40,22 @@
   transition: transform .35s;
 }
 
+/*reverse vslide in*/
+
+.reverse-vslide-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+.reverse-vslide-enter.reverse-vslide-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform .35s;
+  transition: transform .35s;
+}
+
 /*vslide out*/
 
 .vslide-leave {

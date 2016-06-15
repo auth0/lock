@@ -1,0 +1,77 @@
+// Breakpoints mixin
+breakpoint(point, value = 0)
+  if point == "mobile"
+    @media (min-width: 481px)
+      {block}
+
+  else if point == "mobile-landscape"
+    @media (min-width: 568px)
+      {block}
+
+  else if point == "tablet"
+    @media (min-width: 768px)
+      {block}
+
+  else if point == "desktop"
+    @media (min-width: 992px)
+      {block}
+
+  else if point == "retina-only"
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+      {block}
+
+  else
+    @media (min-width: value)
+      {block}
+
+// Keyframes
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes scale {
+  0%, 100% {
+    -webkit-transform: none;
+  }
+  50% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@-webkit-keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+
+@keyframes rotate
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+
+@-webkit-keyframes rotate
+  0%{-webkit-transform: rotate(0deg);}
+  100%{-webkit-transform: rotate(360deg);}
