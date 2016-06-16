@@ -3,14 +3,21 @@ import Core from './core';
 import automatic from './engine/automatic';
 import css from '../css/index.css';
 
-const head = document.getElementsByTagName('head')[0];
-const style = document.createElement('style');
-style.type = 'text/css';
-head.appendChild(style);
+const styleId = "auth0-lock-style";
+let style = document.getElementById(styleId);
+
+if (!style) {
+  const head = document.getElementsByTagName("head")[0];
+  style = document.createElement("style");
+  style.type = "text/css";
+  style.setAttribute("id", styleId);
+  head.appendChild(style);
+}
+
 if (style.styleSheet) {
   style.styleSheet.cssText = css;
 } else {
-  style.appendChild(document.createTextNode(css));
+  style.innerHTML = css;
 }
 
 export default class Auth0Lock extends Core {
