@@ -872,6 +872,12 @@
         display table
         width 100%
 
+    &.auth0-lock-iphone
+      .auth0-lock-body-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          min-height calc(100vh - 118px - 70px - 69px) // - header - submit - iphone bar
+
     .auth0-lock-content
       //mobile view
       @media screen and (max-width: 480px)
@@ -924,6 +930,13 @@
         //mobile view
         @media screen and (max-width: 480px)
           min-height calc(100vh - 118px) // - header
+
+    &.auth0-lock-iphone
+      &.auth0-lock-no-submit
+        .auth0-lock-body-content
+          //mobile view
+          @media screen and (max-width: 480px)
+            min-height calc(100vh - 118px - 69px) // - header - iphone bar
 
     &.auth0-lock-with-terms
       .auth0-lock-content
