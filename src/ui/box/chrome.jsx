@@ -63,11 +63,11 @@ export default class Chrome extends React.Component {
       this.setState({moving: true});
     }
 
-    if (auxiliaryPane && nextProps.auxiliaryPane) {
+    if (auxiliaryPane && !nextProps.auxiliaryPane) {
       // TODO clear timeout
       setTimeout(
         () => this.setState({moving: false}),
-        AUXILIARY_ANIMATION_DURATION
+        AUXILIARY_ANIMATION_DURATION + 50
       );
     }
 
