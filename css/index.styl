@@ -45,7 +45,7 @@
       animation-delay .2s
 
 .auth0-lock.auth0-lock
-  font-family "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif
+  font-family "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif
   text-rendering optimizeLegibility
   pointer-events none
   position fixed
@@ -414,6 +414,8 @@
 
       &[data-provider=""],
       &[data-provider="auth0"]
+        background-color #c0c0c0
+
         .auth0-lock-social-button-icon
           background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iNTNweCIgaGVpZ2h0PSI2NXB4IiB2aWV3Qm94PSIwIDAgNTMgNjUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+U2hhcGU8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSI2NHB4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTE1My4wMDAwMDAsIC02MDMzLjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMTYxLjEyNSw2MDk4IEMxMTU2LjYzNzk3LDYwOTggMTE1Myw2MDk0LjM2MTg2IDExNTMsNjA4OS44NzU2MyBMMTE1Myw2MDY1LjQ5OTQ5IEMxMTUzLDYwNjEuMDEyMjUgMTE1Ni42Mzc5Nyw2MDU3LjM3MzEgMTE2MS4xMjUsNjA1Ny4zNzMxIEwxMTYxLjEyNSw2MDUxLjI4MjExIEMxMTYxLjEyNSw2MDQxLjE4NjMyIDExNjkuMzA5OTIsNjAzMyAxMTc5LjQwNjI1LDYwMzMgQzExODkuNTAyNTgsNjAzMyAxMTk3LjY4NzUsNjA0MS4xODYzMiAxMTk3LjY4NzUsNjA1MS4yODIxMSBMMTE5Ny42ODc1LDYwNTcuMzc0MTEgQzEyMDIuMTc0NTMsNjA1Ny4zNzQxMSAxMjA1LjgxMjUsNjA2MS4wMTIyNSAxMjA1LjgxMjUsNjA2NS40OTk0OSBMMTIwNS44MTI1LDYwODkuODc1NjMgQzEyMDUuODEyNSw2MDk0LjM2MTg2IDEyMDIuMTc0NTMsNjA5OCAxMTk3LjY4NzUsNjA5OCBMMTE2MS4xMjUsNjA5OCBaIE0xMTkzLjYyNjAyLDYwNTEuMjgyMTEgQzExOTMuNjI2MDIsNjA0My40Mjk5NCAxMTg3LjI1OTA2LDYwMzcuMDYyNjkgMTE3OS40MDcyNyw2MDM3LjA2MjY5IEMxMTcxLjU1NTQ3LDYwMzcuMDYyNjkgMTE2NS4xODg1Miw2MDQzLjQyOTk0IDExNjUuMTg4NTIsNjA1MS4yODIxMSBMMTE2NS4xODg1Miw2MDU3LjM3MzEgTDExOTMuNjI2MDIsNjA1Ny4zNzMxIEwxMTkzLjYyNjAyLDYwNTEuMjgyMTEgTDExOTMuNjI2MDIsNjA1MS4yODIxMSBaIE0xMjAxLjc1LDYwNjUuNDk5NDkgQzEyMDEuNzUsNjA2My4yNTQ4NiAxMTk5LjkzMTAyLDYwNjEuNDM1NzkgMTE5Ny42ODc1LDYwNjEuNDM1NzkgTDExNjEuMTI1LDYwNjEuNDM1NzkgQzExNTguODgxNDgsNjA2MS40MzU3OSAxMTU3LjA2MjUsNjA2My4yNTQ4NiAxMTU3LjA2MjUsNjA2NS40OTk0OSBMMTE1Ny4wNjI1LDYwODkuODc1NjMgQzExNTcuMDYyNSw2MDkyLjExNjIxIDExNTguODgxNDgsNjA5My45MzUyOCAxMTYxLjEyNSw2MDkzLjkzNTI4IEwxMTk3LjY4NzUsNjA5My45MzUyOCBDMTE5OS45MzEwMiw2MDkzLjkzNTI4IDEyMDEuNzUsNjA5Mi4xMTYyMSAxMjAxLjc1LDYwODkuODc1NjMgTDEyMDEuNzUsNjA2NS40OTk0OSBMMTIwMS43NSw2MDY1LjQ5OTQ5IFogTTExNzcuMzc1LDYwODMuNzgwNTggTDExNzcuMzc1LDYwNzEuNTkyNTEgQzExNzcuMzc1LDYwNzAuNDcxMjEgMTE3OC4yODM5OCw2MDY5LjU2MTE3IDExNzkuNDA2MjUsNjA2OS41NjExNyBDMTE4MC41Mjg1Miw2MDY5LjU2MTE3IDExODEuNDM3NSw2MDcwLjQ3MTIxIDExODEuNDM3NSw2MDcxLjU5MjUxIEwxMTgxLjQzNzUsNjA4My43ODA1OCBDMTE4MS40Mzc1LDYwODQuOTAwODcgMTE4MC41Mjg1Miw2MDg1LjgxMDkxIDExNzkuNDA2MjUsNjA4NS44MTA5MSBDMTE3OC4yODUsNjA4NS44MTA5MSAxMTc3LjM3NSw2MDg0LjkwMDg3IDExNzcuMzc1LDYwODMuNzgwNTggWiIgaWQ9IlNoYXBlIj48L3BhdGg+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=')
           background-size 38%
@@ -842,23 +844,23 @@
       @media screen and (max-width: 480px)
         width 100%
         height 100%
-        min-height 480px
+        // min-height 480px
         position absolute
         top 0
         bottom 0
-        overflow auto
+        // overflow auto
         border-radius 0
 
     .auth0-lock-widget-container
       //mobile view
       @media screen and (max-width: 480px)
         height 100%
-        overflow auto
+        // overflow auto
 
     .auth0-lock-cred-pane
       //mobile view
       @media screen and (max-width: 480px)
-        min-height 480px
+        // min-height 480px
         border-radius 0
 
     .auth0-lock-body-content
@@ -869,6 +871,12 @@
         // min-height 375px
         display table
         width 100%
+
+    &.auth0-lock-iphone
+      .auth0-lock-body-content
+        //mobile view
+        @media screen and (max-width: 480px)
+          min-height calc(100vh - 118px - 70px - 68px) // - header - submit - iphone bar
 
     .auth0-lock-content
       //mobile view
@@ -922,6 +930,13 @@
         //mobile view
         @media screen and (max-width: 480px)
           min-height calc(100vh - 118px) // - header
+
+    &.auth0-lock-iphone
+      &.auth0-lock-no-submit
+        .auth0-lock-body-content
+          //mobile view
+          @media screen and (max-width: 480px)
+            min-height calc(100vh - 118px - 68px) // - header - iphone bar
 
     &.auth0-lock-with-terms
       .auth0-lock-content

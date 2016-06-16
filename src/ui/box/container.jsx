@@ -38,6 +38,9 @@ class EscKeyDownHandler {
 }
 
 
+const IPHONE = global.navigator
+  && !!global.navigator.userAgent.match(/iPhone/i);
+
 export default class Container extends React.Component {
 
   constructor(props) {
@@ -143,6 +146,10 @@ export default class Container extends React.Component {
 
     if (terms) {
       className += " auth0-lock-with-terms";
+    }
+
+    if (IPHONE) {
+      className += " auth0-lock-iphone";
     }
 
     // TODO: this no longer makes sense, instead of taking a tabs

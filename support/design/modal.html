@@ -37,35 +37,16 @@ html.auth0-lock-html body .auth0-lock-container.hide {
 <div id="control-container"></div>
 <div class="view-chooser">
   <select id="select"></select>
-  <button id="reload">R</button>
+  <button id="show">SHOW</button>
 </div>
 <script src="/build/lock.design.js"></script>
 <script>
 
 var select = document.getElementById("select");
-select.addEventListener("change", function(event) {
-  var divs = document.querySelectorAll(".auth0-lock-container");
-  for (var i = 0; i < divs.length; i++) {
-    divs[i].className = "auth0-lock-container hide";
-  };
-
-  var div = document.getElementById("auth0-lock-container-" + select.value);
-  div.className = "auth0-lock-container";
-}, false);
-
-var reload = document.getElementById("reload");
-reload.addEventListener("click", function(event) {
-  var div = document.getElementById("auth0-lock-container-" + select.value);
+var show = document.getElementById("show");
+show.addEventListener("click", function(event) {
   var view = views[select.value - 1];
-
-  if (div.querySelector(".auth0-lock.auth0-lock-opened")) {
-    view.lock.close();
-    setTimeout(function() {
-      view.lock.show();
-    }, 1200);
-  } else {
-    view.lock.show();
-  }
+  view.lock.show();
 }, false);
 
 var views = [];
@@ -74,7 +55,6 @@ function addLock(constructor, name, opts) {
   opts = opts || {};
   opts.mobile = true;
   var lock = new constructor(cid, domain, opts);
-  lock.show();
   views.push({lock: lock, name: name, opts: opts});
 
   var option = document.createElement("option");
@@ -88,7 +68,7 @@ function addLockClassic(name, opts) {
 }
 
 function addLockPasswordless(name, opts) {
-  return addLock(Auth0LockPasswordless, name, opts)
+  // return addLock(Auth0LockPasswordless, name, opts)
 }
 
 var cid = "1";
@@ -97,12 +77,12 @@ var terms = "By signing up, you agree to our <a href='/terms' target='_new'>term
 
 addLockClassic("classic", {
    allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
-  authentication: { redirect: false }
+  auth: { redirect: false }
 });
 
 addLockClassic("database", {
   allowedConnections: ["Username-Password-Authentication"],
-  authentication: { redirect: false },
+  auth: { redirect: false },
   dict: {
     emailAndPassword: {
       signUp: terms
@@ -113,12 +93,12 @@ addLockClassic("database", {
 
 addLockClassic("lastLoginDatabase", {
   allowedConnections: ["Username-Password-Authentication"],
-  authentication: { redirect: false }
+  auth: { redirect: false }
 });
 
 addLockPasswordless("emailcode", {
   allowedConnections: ["email"],
-  authentication: { redirect: false, send: "code" },
+  auth: { redirect: false, send: "code" },
   dict: {
     email: {
       signUp: terms
@@ -129,7 +109,7 @@ addLockPasswordless("emailcode", {
 
 addLockPasswordless("magiclink", {
   allowedConnections: ["email"],
-  authentication: { redirect: false },
+  auth: { redirect: false },
   dict: {
     email: {
       signUp: terms
@@ -140,40 +120,33 @@ addLockPasswordless("magiclink", {
 
 addLockPasswordless("sms", {
   allowedConnections: ["sms"],
-  authentication: { redirect: false },
+  auth: { redirect: false },
   rememberLastLogin: false
 });
 
-addLockPasswordless("social", {
+addLockClassic("social", {
   allowedConnections: ["facebook", "twitter", "github", "google-oauth2"],
-  authentication: { redirect: false },
+  auth: { redirect: false },
   rememberLastLogin: false,
   socialButtonStyle: "big"
 });
 
 addLockPasswordless("socialOrEmailcode", {
   allowedConnections: ["email", "facebook", "twitter", "github"],
-  authentication: { redirect: false, send: "code" },
+  auth: { redirect: false, send: "code" },
   rememberLastLogin: false
 });
 
 addLockPasswordless("socialOrMagiclink", {
   allowedConnections: ["email", "facebook", "twitter", "github"],
-  authentication: { redirect: false },
+  auth: { redirect: false },
   rememberLastLogin: false
 });
 
 addLockPasswordless("socialOrSms", {
   allowedConnections: ["sms", "facebook", "twitter", "github"],
-  authentication: { redirect: false },
+  auth: { redirect: false },
   rememberLastLogin: false
-});
+ });
 
-var divs = document.querySelectorAll(".auth0-lock-container");
-for (var i = 0; i < divs.length; i++) {
-  divs[i].className = "auth0-lock-container hide";
-};
-
-var div = document.getElementById("auth0-lock-container-1");
-div.className = "auth0-lock-container";
 </script>
