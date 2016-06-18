@@ -6,7 +6,7 @@
   "signin": {
     "title": "登录",
     "action": "登录",
-    "all": "全部显示",
+    "all": "其他登录方式",
     "strategyEmailEmpty": "电子邮件是空的。",
     "strategyEmailInvalid": "电子邮件是无效的。",
     "strategyDomainInvalid": "指定域 {domain} 无效。",
