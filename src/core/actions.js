@@ -19,10 +19,6 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
   m = l.runHook(m, "didInitialize", options);
 
   swap(setEntity, "lock", id, m);
-
-  if (l.auth.redirect(m)) {
-    setTimeout(() => parseHash(m), 0);
-  }
 }
 
 export function handleAuthCallback() {
@@ -39,10 +35,6 @@ export function handleAuthCallback() {
 
 function parseHash(m, hash) {
   const parsedHash = webApi.parseHash(l.id(m), hash);
-
-  if (hash === undefined) {
-    global.location.hash = "";
-  }
 
   let error, result;
 
