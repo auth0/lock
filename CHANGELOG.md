@@ -1,3 +1,35 @@
+## [v10.0.0-beta.5] - 2016-06-21
+
+### Fixed
+
+- Fixed bug that prevented custom sign up fields from being
+  validated.
+
+### Changed
+
+- Upgraded to React v15.
+- Upgraded auth0.js to v7.0.3.
+
+### Added
+
+- Added the `language` option. Translations for `it`, `pt-br`, `ru`
+  and `es` are provided out of the box. Thanks @yvonnewilson, @dirceu,
+  @lilapustovoyt and @darkyen!
+- Lock now will emit the following events.
+  - `show`: emitted when Lock is shown. Has no arguments.
+  - `hide`: emitted when Lock is hidden. Has no arguments.
+  - `unrecoverable_error`: emitted when there is an unrecoverable
+    error, for instance when no connection is available. Has the error
+    as the only argument.
+  - `authenticated`: emitted after a successful authentication. Has
+    the authentication result as the only argument.
+  - `authorization_error`: emitted when authorization fails. Has the
+    error as the only argument.
+  Note the `authenticated` and `authorization_error` events replace
+  the callback in the constructor.
+- Display a tooltip on invalid inputs with a hint on how to fix the
+  error.
+
 ## [10.0.0-beta.4] - 2016-05-17
 
 ### Fixed

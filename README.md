@@ -195,6 +195,10 @@ var options = {
 };
 ```
 
+#### Other options
+
+- **assetsUrl {String}**: Will be used as the assets base url. Defaults to Auth0's the CDN url when `domain` has the format `*.auth0.com`. Otherwise, it defaults to `domain`.
+
 #### Language Dictionary Specification
 
 A language dictionary is an object that allows you to customize every piece of text the Lock needs to display. For instance, the following code will change the title displayed in the header and the placeholder for the email field.
