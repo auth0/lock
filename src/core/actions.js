@@ -1,6 +1,6 @@
 import Immutable, { Map } from 'immutable';
 import webApi from './web_api';
-import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
+import { getCollection, getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote_data';
 import * as l from './index';
 import { img as preload } from '../utils/preload_utils';
@@ -25,19 +25,32 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
   }
 }
 
-function parseHash(m) {
-  const hash = webApi.parseHash(l.id(m));
-  // TODO: this leaves the hash symbol (#) in the URL, maybe we can
-  // use the history API instead to remove it.
+export function handleAuthCallback() {
+  const hash = global.location.hash;
   global.location.hash = "";
+
+  const ms = read(getCollection, "lock");
+  ms.forEach(m => {
+    if (l.auth.redirect(m)) {
+      parseHash(m, hash);
+    }
+  });
+}
+
+function parseHash(m, hash) {
+  const parsedHash = webApi.parseHash(l.id(m), hash);
+
+  if (hash === undefined) {
+    global.location.hash = "";
+  }
 
   let error, result;
 
-  if (hash) {
-    if (hash.error) {
-      error = hash;
+  if (parsedHash) {
+    if (parsedHash.error) {
+      error = parsedHash;
     } else {
-      result = hash;
+      result = parsedHash;
     }
 
     if (error) {
