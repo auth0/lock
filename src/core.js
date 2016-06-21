@@ -42,7 +42,10 @@ export default class Base extends EventEmitter {
 
     setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn);
 
-    setTimeout(handleAuthCallback, 0);
+    if (!Base.hasScheduledAuthCallback) {
+      Base.hasScheduledAuthCallback = true;
+      setTimeout(handleAuthCallback, 0);
+    }
 
     observe("render", this.id, m => {
       const partialApplyId = (screen, handlerName) => {
