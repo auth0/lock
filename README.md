@@ -164,7 +164,7 @@ var options = {
 
 #### Database options
 
-- **additionalSignUpFields {Array}**: Allows to provide extra input fields during sign up. See [below](#additional-sign-up-field) more for details. Defaults to `[]`.
+- **additionalSignUpFields {Array}**: Allows to provide extra input fields during sign up. See [below](#additional-sign-up-fields) more for details. Defaults to `[]`.
 - **allowLogin {Boolean}**: When set to `false` the widget won't display the _login screen_. This is useful if you want to use the widget just for sign ups (the _login and sign up tabs_ in the _sign up screen_ will be hidden) or to reset passwords (the _back button_ in the _forgot password screen_ will be hidden). In such cases you may also need to specify the `initialScreen`, `allowForgotPassword` and `allowSignUp` options. It defaults to `true`.
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _forgot password screen_ unreachable. Defaults to `true`. Keep in mind that if you are using a database connection with a _custom database_ which doesn't have a _change password script_ the forgot password screen won't be available.
 - **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`. Keep in mind that if the database connection has sign ups _disabled_ or you are using a _custom database_ with coesn't have a _create script_, then the sign up screen won't be available.
