@@ -4,6 +4,7 @@ import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
 import {
   closeLock,
+  handleAuthCallback,
   openLock,
   removeLock,
   setupLock,
@@ -40,6 +41,11 @@ export default class Base extends EventEmitter {
     go(this.id);
 
     setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn);
+
+    if (!Base.hasScheduledAuthCallback) {
+      Base.hasScheduledAuthCallback = true;
+      setTimeout(handleAuthCallback, 0);
+    }
 
     observe("render", this.id, m => {
       const partialApplyId = (screen, handlerName) => {

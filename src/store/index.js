@@ -43,6 +43,10 @@ export function removeEntity(state, coll, id = 0) {
   return state.removeIn([coll, id]);
 }
 
+export function getCollection(state, coll) {
+  return state.get(coll, Map()).toList();
+}
+
 // TODO: try to remove this fn
 export function updateCollection(state, coll, f, ...args) {
   return state.update(coll, xs => f(xs, ...args));
