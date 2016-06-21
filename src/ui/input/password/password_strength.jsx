@@ -72,7 +72,7 @@ class Item extends React.Component {
 
     return (
       <li className={className}>
-        {message}
+        <span>{message}</span>
         <List items={items} />
       </li>
     );
