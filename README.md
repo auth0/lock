@@ -42,47 +42,35 @@ If you are targeting mobile audiences, it's recommended that you add:
 
 ## API
 
-### new Auth0Lock(clientID, domain, options, callback)
+### new Auth0Lock(clientID, domain, options)
 
 Initializes a new instance of `Auth0Lock` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/). You can find this information at your [application settings](https://manage.auth0.com/#/applications).
 
 - **clientId {String}**: Your application _clientId_ in Auth0.
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
 - **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
-- **callback {function}**: Will be invoked after an attempt to authenticate the user.
 
 #### Example
 
 ```js
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
-var lock = new Auth0Lock(clientId, domain, {},
-  function(error, result) {
-    // Will always be executed. Execution will happen on a later frame, so the
-    // `lock` variable and everything will be available on scope.
+var lock = new Auth0Lock(clientId, domain);
+
+lock.on("authenticated", function(authResult) {
+  lock.getProfile(authResult.idToken, function(error, profile) {
     if (error) {
       // Handle error
+      return;
     }
 
-    if (result) {
-      // We need to check for a result, if there was an error `result` will be
-      // undefined.
+    localStorage.setItem("idToken", authResult.idToken);
+    localStorage.setItem("profile", JSON.stringify(profile));
 
-      // store the token and profile in local storage (or wherever you choose)
-      localStorage.setItem('idToken', result.idToken);
-
-      // Optionally fetch the profile
-      lock.getProfile(result.idToken, function(error, profile) {
-        if (error) {
-          // Handle error
-        }
-
-        localStorage.setItem('profile', JSON.stringify(profile));
-      });
-    }
+    // Update DOM
+  });
 });
 ```
-
 
 ### getProfile(idToken, callback)
 
@@ -94,12 +82,22 @@ Once the user has logged in and you are in possesion of and id token, you can ob
 #### Example
 
 ```js
-lock.getProfile(id_token, function(error, profile) {
+lock.getProfile(idToken, function(error, profile) {
   if (!error) {
     alert("hello " + profile.name);
   }
 });
 ```
+
+### on(event, callback)
+
+Lock will emit events during its lifecycle.
+
+- `show`: emitted when Lock is shown. Has no arguments.
+- `hide`: emitted when Lock is hidden. Has no arguments.
+- `unrecoverable_error`: emitted when there is an unrecoverable error, for instance when no connection is available. Has the error as the only argument.
+- `authenticated`: emitted after a successful authentication. Has the authentication result as the only argument.
+- `authorization_error`: emitted when authorization fails. Has error as the only argument.
 
 ### Customization
 
