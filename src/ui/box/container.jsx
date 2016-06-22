@@ -108,6 +108,7 @@ export default class Container extends React.Component {
       logo,
       primaryColor,
       screenName,
+      showBadge,
       submitHandler,
       success,
       tabs,
@@ -189,7 +190,9 @@ export default class Container extends React.Component {
               />
             </div>
           </form>
-          <BottomBadge link={badgeLink} />
+          <div style={{ visibility: showBadge ? "visible" : "hidden" }}>
+            <BottomBadge link={badgeLink} />
+          </div>
         </div>
       </div>
     );
@@ -214,6 +217,7 @@ Container.propTypes = {
   logo: React.PropTypes.string.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
+  showBadge: React.PropTypes.bool.isRequired,
   success: React.PropTypes.string,
   tabs: React.PropTypes.bool,
   terms: React.PropTypes.element,
@@ -236,5 +240,7 @@ export const defaultProps = Container.defaultProps = {
   isMobile: false,
   isSubmitting: false,
   logo: `${isFileProtocol ? "https:" : ""}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
-  primaryColor: "#ea5323"
+  primaryColor: "#ea5323",
+  showBadge: true
+
 };

@@ -3,6 +3,10 @@ import { List, Map } from 'immutable';
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
 import { STRATEGIES as ENTERPRISE_STRATEGIES } from '../../connection/enterprise';
 
+export function hasFreeSubscription(m) {
+  return ["free", "dev"].indexOf(m.get("subscription")) > -1;
+}
+
 export function connection(m, strategyName, name) {
   // TODO: this function should take a client, not a map with a client
   // key.

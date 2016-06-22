@@ -91,6 +91,7 @@ export default class Base extends EventEmitter {
           logo: l.ui.logo(m),
           primaryColor: l.ui.primaryColor(m),
           screenName: screen.name,
+          showBadge: l.hasFreeSubscription(m) === true,
           success: l.globalSuccess(m),
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
