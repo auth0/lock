@@ -1,4 +1,10 @@
-## [v10.0.0-beta.5] - 2016-06-21
+## [10.0.0-rc.1] - 2016-06-22
+
+### Changed
+
+- Show Auth0 badge in the bottom only for free plans.
+
+## [10.0.0-beta.5] - 2016-06-21
 
 ### Fixed
 
