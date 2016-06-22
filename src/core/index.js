@@ -351,3 +351,7 @@ export function emitAuthenticatedEvent(m, result) {
 export function emitAuthorizationErrorEvent(m, error) {
   emitEvent(m, "authorization_error", error);
 }
+
+export function hasFreeSubscription(m) {
+  return get(m, "hasFreeSubscription");
+}

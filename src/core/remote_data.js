@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import { fetchClientSettings } from './client/settings';
-import { pickConnections } from './client/index';
+import { hasFreeSubscription, pickConnections } from './client/index';
 import { fetchSSOData } from './sso/data';
 import * as l from './index';
 import { isADEnabled } from '../connection/enterprise'; // shouldn't depend on this
@@ -37,6 +37,8 @@ function syncClientSettingsSuccess(m, result) {
     ["core", "connections"],
     pickConnections(result, l.allowedConnections(m))
   );
+
+  m = m.setIn(["core", "hasFreeSubscription"], hasFreeSubscription(result));
 
   m = l.runHook(m, "didReceiveClientSettings");
 
