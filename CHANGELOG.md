@@ -1,3 +1,9 @@
+## unreleased
+
+### Fixed
+
+- Fix issue with the blueimp library when bundling with webpack.
+
 ## [10.0.0-rc.1] - 2016-06-22
 
 ### Changed
