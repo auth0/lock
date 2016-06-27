@@ -206,8 +206,8 @@ A language dictionary is an object that allows you to customize every piece of t
 var options = {
   languageDictionary: {
     emailInputPlaceholder: "please enter you email",
+    title: "My Company"
   },
-  title: "My Company"
 };
 ```
 
