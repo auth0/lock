@@ -37,12 +37,10 @@ export default class UsernamePane extends React.Component {
     return (
       <UsernameInput
         value={value}
-        avatar={l.ui.avatar(lock)}
         invalidHint={i18n.str(invalidHintKey(value))}
         isValid={!c.isFieldVisiblyInvalid(lock, "username")}
         onChange={::this.handleChange}
         placeholder={placeholder}
-        disabled={l.submitting(lock)}
       />
     );
   }
