@@ -13,7 +13,15 @@ export default class TextInput extends React.Component {
   }
 
   render() {
-    const { iconUrl, isValid, name, onChange, value, ...props } = this.props;
+    const {
+      iconUrl,
+      invalidHint,
+      isValid,
+      name,
+      onChange,
+      value,
+      ...props
+    } = this.props;
     let { icon } = this.props;
     const { focused } = this.state;
 
@@ -22,7 +30,13 @@ export default class TextInput extends React.Component {
     }
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name={name} icon={icon}>
+      <InputWrap
+        focused={focused}
+        invalidHint={invalidHint}
+        isValid={isValid}
+        name={name}
+        icon={icon}
+      >
         <input
           ref="input"
           type="text"

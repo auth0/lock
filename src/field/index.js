@@ -6,13 +6,21 @@ import * as l from '../core/index';
 export function setField(m, field, value, validator = str => trim(str).length > 0, ...args) {
   const prevValue = m.getIn(["field", field, "value"]);
   const prevShowInvalid = m.getIn(["field", field, "showInvalid"], false);
-  const valid = validator === null || !!validator(value, ...args);
+  const validation = validate(validator, value, ...args);
 
-  return m.mergeIn(["field", field], Map({
+  return m.mergeIn(["field", field], validation, Map({
     value: value,
-    valid: valid,
     showInvalid: prevShowInvalid && prevValue === value
   }));
+}
+
+function validate(validator, value, ...args) {
+  if (typeof validator != "function") return Map({valid: true});
+
+  const validation = validator(value, ...args);
+  return validation && typeof validation === "object"
+    ? Map({valid: validation.valid, invalidHint: validation.hint})
+    : Map({valid: !!validation});
 }
 
 // TODO: this should handle icons, and everything.
@@ -58,6 +66,10 @@ export function setOptionField(m, field, option) {
 
 export function isFieldValid(m, field) {
   return m.getIn(["field", field, "valid"]);
+}
+
+export function getFieldInvalidHint(m, field) {
+  return m.getIn(["field", field, "invalidHint"], "");
 }
 
 export function isFieldVisiblyInvalid(m, field) {
