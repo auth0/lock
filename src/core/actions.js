@@ -23,14 +23,13 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
 
 export function handleAuthCallback() {
   const hash = global.location.hash;
-  global.location.hash = "";
 
   const ms = read(getCollection, "lock");
-  ms.forEach(m => {
-    if (l.auth.redirect(m)) {
-      parseHash(m, hash);
-    }
-  });
+  const parsed = ms.filter(m => l.auth.redirect(m) && parseHash(m, hash));
+
+  if (parsed.size > 0) {
+    global.location.hash = "";
+  }
 }
 
 function parseHash(m, hash) {
@@ -41,16 +40,23 @@ function parseHash(m, hash) {
   if (parsedHash) {
     if (parsedHash.error) {
       error = parsedHash;
-    } else {
+    } else if (!parsedHash.hasOwnProperty("error")) {
+      // NOTE: if the url hash contains the string "error"
+      // `parsedHash` will be the following object:
+      // {error: undefined, error_description: undefined}
+      // That is why we make the additional check for the error
+      // property to ensure we actually have a result.
       result = parsedHash;
     }
 
     if (error) {
       l.emitAuthorizationErrorEvent(m, error);
-    } else {
+    } else if (result) {
       l.emitAuthenticatedEvent(m, result);
     }
   }
+
+  return !!(error || result);
 }
 
 export function openLock(id) {
