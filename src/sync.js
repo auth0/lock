@@ -14,6 +14,7 @@ export default (m, key, opts) => {
     : !opts.conditionFn || opts.conditionFn(m) ? "pending" : "no";
 
   return set(m, key, Map({
+    conditionFn: opts.conditionFn,
     errorFn: opts.errorFn,
     recoverResult: opts.recoverResult,
     syncStatus: status,
@@ -77,7 +78,8 @@ const process = (m, id) => {
       });
     } else if (getStatus(r, k) === "waiting") {
       if (getProp(r, k, "waitFn")(r)) {
-        r = setStatus(r, k, "pending");
+        const conditionFn = getProp(r, k, "conditionFn");
+        r = setStatus(r, k, !conditionFn || conditionFn(r) ? "pending" : "no");
       }
     }
 
