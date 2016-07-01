@@ -304,5 +304,3 @@ Chrome.defaultProps = {
   disableSubmitButton: false,
   showSubmitButton: true
 };
-
-global.window.React = React;
