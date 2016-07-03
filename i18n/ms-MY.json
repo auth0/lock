@@ -52,7 +52,7 @@
     "headerText":                  "Sila masukkan email dan katalaluan anda",
     "footerText":                  "",
     "serverErrorText":             "Ralat ditemui semasa memperoses pendaftaran.",
-    "userExistsErrorText":         "Pengguna telah wujud.",Domain ini telah digazetkan 
+    "userExistsErrorText":         "Pengguna telah wujud.",
     "signupOnSSODomainErrorText":  "Domain ini {domain} telah ditetapkan untuk Single Sign On dan anda tidak boleh membuat akaun. Cuba log masuk sekali lagi.",
     "usernameInUseErrorText":      "Nama Pengguna sudah digunakan.",
     "invalidPassword":             "Katalaluan terlalu lemah.",
