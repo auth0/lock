@@ -1,3 +1,4 @@
+import React from 'react';
 import { Map } from 'immutable';
 import trim from 'trim';
 import OptionSelectionPane from './option_selection_pane';
