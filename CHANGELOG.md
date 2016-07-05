@@ -1,8 +1,16 @@
-## unreleased
+## [10.0.0-rc.2] - 2016-07-05
 
 ### Fixed
 
-- Fix issue with the blueimp library when bundling with webpack.
+- Fixed issue with the blueimp library when bundling with webpack.
+- Stopped fetching SSO data when SSO is disabled.
+- The location hash is no longer cleared every time Lock is
+  initialized.
+
+### Added
+
+- The validator function for additional sign up fields now allows to
+  specify a hint that will be displayed when the field is invalid.
 
 ## [10.0.0-rc.1] - 2016-06-22
 
