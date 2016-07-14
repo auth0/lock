@@ -1187,7 +1187,9 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
     self._focusError(email_input);
     self._focusError(password_input);
 
-    if (err.status !== 401) {
+    if ('too_many_attempts' === err.code) {
+        self._showError(self.options.i18n.t('signin:userBlockedErrorText') || err.message);
+    } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else if ('password_change_required' === err.code) {
       self._showError(self.options.i18n.t('signin:passwordChangeRequiredErrorText'));
@@ -1321,13 +1323,13 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
       self._showError(self.options.i18n.t('signin:userConsentFailed'));
     } else if (err.status === 0) {
       self._showError(self.options.i18n.t('networkError'));
-    } else if (err.status !== 401) {
-      self._showError(self.options.i18n.t('signin:serverErrorText'));
-    } else if ('unauthorized' === err.code && err.details && err.details.error_description === 'user is blocked') {
+    } else if ('too_many_attempts' === err.code) {
       message = self.options.i18n.t('signin:userBlockedErrorText');
-      self._showError(message || err.details.error_description);
+      self._showError(message || err.message);
       self._focusError(email_input);
       self._focusError(password_input);
+    } else if (err.status !== 401) {
+      self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else if ('unauthorized' === err.code) {
       message = self.options.i18n.t('signin:unauthorizedErrorText');
       self._showError((err.details && err.details.error_description) || message);
