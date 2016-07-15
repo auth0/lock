@@ -34,7 +34,8 @@
     "loadingMessage":              "登入中 {connection}...",
     "popupCredentials":            "請在彈出視窗中輸入您的憑證。",
     "userClosedPopup":             "彈出視窗被關閉，請再試一次。",
-    "userConsentFailed":           "權限不足，請再試一次。"
+    "userConsentFailed":           "權限不足，請再試一次。",
+    "tooManyAttemptsErrorText":    "连续多次尝试登录后，您的帐户已被封锁。"
   },
   "signup": {
     "description":                 "",

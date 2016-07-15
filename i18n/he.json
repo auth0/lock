@@ -20,7 +20,8 @@
     "returnUserLabel": "בפעם האחרונה נכנסת באמצעות...",
     "wrongEmailPasswordErrorText": "דוא\"ל או סיסמא שגויים",
     "or": ". או כניסה באמצעות",
-    "loadingMessage": "כניסה עם {connection}..."
+    "loadingMessage": "כניסה עם {connection}...",
+    "tooManyAttemptsErrorText": "החשבון שלך נחסם לאחר ניסיונות כניסה ברציפות מרובים"
   },
   "signup": {
     "description": "",

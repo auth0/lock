@@ -26,7 +26,8 @@
     "returnUserLabel":              "Последний раз вы заходили через...",
     "wrongEmailPasswordErrorText":  "Неправильный email или пароль.",
     "or":                           "... или войдите с помощью",
-    "loadingMessage":               "Вход через {connection}..."
+    "loadingMessage":               "Вход через {connection}...",
+    "tooManyAttemptsErrorText":     "Ваш аккаунт был заблокирован после нескольких последовательных попыток входа в систему."
   },
   "signup": {
     "description":                  "",

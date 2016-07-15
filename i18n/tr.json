@@ -29,7 +29,8 @@
     "loadingMessage":             "{connection} ile Giriş Yap",
     "popupCredentials":           "Lütfen açılır pencereye kimlik belgelerinizi giriniz",
     "userClosedPopup":            "Açılır pencere kapandı. Lütfen tekrar deneyiniz.",
-    "userConsentFailed":          "İzin verilmedi. Lütfen tekrar deneyiniz."
+    "userConsentFailed":          "İzin verilmedi. Lütfen tekrar deneyiniz.",
+    "tooManyAttemptsErrorText":   "Hesabınız birden fazla ardışık giriş denemeden sonra bloke edilmiştir."
   },
   "signup": {
     "description":                "",

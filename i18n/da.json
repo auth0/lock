@@ -32,7 +32,8 @@
     "loadingMessage":              "Logger ind med {connection}...",
     "popupCredentials":            "Indtast dit login i pop-up vinduet",
     "userClosedPopup":             "Popup vinduet lukkede. Prøv igen.",
-    "userConsentFailed":           "Tilladelse blev ikke givet. Prøv igen."
+    "userConsentFailed":           "Tilladelse blev ikke givet. Prøv igen.",
+    "tooManyAttemptsErrorText":    "Din konto er blevet blokeret efter flere på hinanden følgende login-forsøg."
   },
   "signup": {
     "description":                 "",

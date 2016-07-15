@@ -21,7 +21,8 @@
     "returnUserLabel": "最後の時間を使用してをサインインして.",
     "wrongEmailPasswordErrorText": "間違ったメール アドレスまたはパスワードです。",
     "or": "... またはを使用してサインイン",
-    "loadingMessage": "でサインイン {connection}..."
+    "loadingMessage": "でサインイン {connection}...",
+    "tooManyAttemptsErrorText": "アカウントが複数の連続したログイン試行後にブロックされています。"
   },
   "signup": {
     "description": "",

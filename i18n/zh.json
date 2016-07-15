@@ -21,7 +21,8 @@
     "returnUserLabel": "最后一次你在使用签署...",
     "wrongEmailPasswordErrorText": "错误的电子邮件或密码。",
     "or": "...或使用登录",
-    "loadingMessage": "签约与 {connection}..."
+    "loadingMessage": "签约与 {connection}...",
+    "tooManyAttemptsErrorText": "連續多次嘗試登錄後，您的帳戶已被封鎖。"
   },
   "signup": {
     "description": "",

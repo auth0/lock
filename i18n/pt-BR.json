@@ -32,7 +32,8 @@
     "loadingMessage":              "Entrar com {connection}...",
     "popupCredentials":            "Informe seus dados de acesso na janela pop-up",
     "userClosedPopup":             "A janela pop-up está fechada. Por favor, tente novamente.",
-    "userConsentFailed":           "As permissões não foram concedidas. Por favor, tente novamente."
+    "userConsentFailed":           "As permissões não foram concedidas. Por favor, tente novamente.",
+    "tooManyAttemptsErrorText":    "A sua conta foi bloqueada após várias tentativas de login consecutivas."
   },
   "signup": {
     "description":                 "",

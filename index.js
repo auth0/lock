@@ -1187,7 +1187,9 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
     self._focusError(email_input);
     self._focusError(password_input);
 
-    if (err.status !== 401) {
+    if (err.status === 429 && 'too_many_attempts' === err.code) {
+        self._showError(self.options.i18n.t('signin:tooManyAttemptsErrorText'));
+    } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else if ('password_change_required' === err.code) {
       self._showError(self.options.i18n.t('signin:passwordChangeRequiredErrorText'));
@@ -1321,6 +1323,8 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
       self._showError(self.options.i18n.t('signin:userConsentFailed'));
     } else if (err.status === 0) {
       self._showError(self.options.i18n.t('networkError'));
+    } else if (err.status === 429 && 'too_many_attempts' === err.code) {
+        self._showError(self.options.i18n.t('signin:tooManyAttemptsErrorText'));
     } else if (err.status !== 401) {
       self._showError(self.options.i18n.t('signin:serverErrorText'));
     } else if ('unauthorized' === err.code && err.details && err.details.error_description === 'user is blocked') {

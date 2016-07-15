@@ -27,7 +27,8 @@
     "passwordLeakedErrorText":     "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones.",
     "or":                          "... o inicie sesión usando",
     "loadingMessage":              "Iniciando sesión con {connection}...",
-    "popupCredentials":            "Ingrese sus credenciales en la ventana emergente"
+    "popupCredentials":            "Ingrese sus credenciales en la ventana emergente",
+    "tooManyAttemptsErrorText":    "Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos."
   },
   "signup": {
     "description":                 "",
