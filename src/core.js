@@ -20,6 +20,12 @@ import { go } from './sync';
 
 export default class Base extends EventEmitter {
 
+  static eventWrapper = fn => fn();
+
+  static setEventWrapper(fn) {
+    Base.eventWrapper = fn;
+  }
+
   constructor(clientID, domain, options = {}, engine) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
@@ -138,6 +144,12 @@ export default class Base extends EventEmitter {
 
   logout(query = {}) {
     webAPI.signOut(this.id, query);
+  }
+
+  on(eventName, listener) {
+    return super.on(eventName, (...args) => {
+      Base.eventWrapper(() => listener(...args));
+    });
   }
 
   update(f) {
