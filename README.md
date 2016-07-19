@@ -184,6 +184,6 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [events-notes]: https://auth0.com/docs/libraries/lock/events
 [development-notes]: https://github.com/auth0/lock/wiki/Development-notes
 [release-process]: https://github.com/auth0/lock/wiki/Release-process
-[playground-url]: http://auth0.github.com/playground
+[playground-url]: http://auth0.github.io/playground
 [migration-guide]: https://auth0.com/docs/libraries/lock/migration-guide
 [using-refresh-tokens]: https://auth0.com/docs/libraries/lock/using-refresh-tokens
