@@ -24,7 +24,7 @@ export default {
       "lock.fallback": "Ci dispiace, qualcosa è andato storto"
     },
     signUp: {
-      "invalid_password": "La password è troppo debole.",
+      "invalid_password": "La password non è valida.", // needs review
       "lock.fallback": "Ci dispiace, qualcosa è andato storto quando si tenta di iscriversi.",
       "password_dictionary_error": "La password è troppo comune.", // needs review
       "password_no_user_info_error": "La password si basa sulle informazioni dell'utente.", // needs review

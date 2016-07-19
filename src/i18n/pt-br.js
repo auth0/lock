@@ -24,7 +24,7 @@ export default {
       "lock.fallback": "Sentimos muito, algo deu errado"
     },
     signUp: {
-      "invalid_password": "A senha é muito fraca.",
+      "invalid_password": "A senha é inválida.", // needs review
       "lock.fallback": "Sentimos muito, algo deu errado ao tentar se inscrever.",
       "password_dictionary_error": "A senha é muito comum.", // needs review
       "password_no_user_info_error": "A senha é baseado em informações do usuário.", // needs review

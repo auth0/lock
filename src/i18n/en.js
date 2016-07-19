@@ -24,7 +24,7 @@ export default {
       "lock.fallback": "We're sorry, something went wrong"
     },
     signUp: {
-      "invalid_password": "The password is too weak.",
+      "invalid_password": "Password is invalid.",
       "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
       "password_dictionary_error": "Password is too common.",
       "password_no_user_info_error": "Password is based on user information.",

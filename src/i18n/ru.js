@@ -24,7 +24,7 @@ export default {
       "lock.fallback": "Произошла непредвиденная ошибка. Приносим свои извинения"
     },
     signUp: {
-      "invalid_password": "Пароль слишком слабый.",
+      "invalid_password": "Неверный пароль.", // needs review
       "lock.fallback": "Произошла непредвиденная ошибка при попытке создания учетной записи. Приносим свои извинения.",
       "password_dictionary_error": "Пароль слишком общий", // needs review
       "password_no_user_info_error": "Пароль основывается на информации о пользователе.", // needs review

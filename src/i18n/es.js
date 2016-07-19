@@ -24,7 +24,7 @@ export default {
       "lock.fallback": "Ocurrió un error durante el envío"
     },
     signUp: {
-      "invalid_password": "La contraseña es muy débil.",
+      "invalid_password": "La contraseña es inválida.",
       "lock.fallback": "Ocurrió un error durante el registro.",
       "password_dictionary_error": "La constraseña es muy común.",
       "password_no_user_info_error": "La constraseña es similar a los datos del usuario.",
