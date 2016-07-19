@@ -1,3 +1,18 @@
+## [9.2.2] - 2016-07-19
+
+### Fixed
+
+- [] Merge pull request #491 from auth0/temp-split-browser-tests (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/95796e839fa70448af32cd3bb9b10639300a7718
+- [] Upgrade zuul-ngrok (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/6a96d518ba17a4c175c685a38b78ac3c806d8c10
+- [] Run IE test in separate tasks (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/7d533332cadef270c4a71ba1c7f31c2e8a8cc4d0
+- [] Merge pull request #486 from nicosabena/toomanyattempts (`Gabriel Andretta`)
+  https://github.com/auth0/lock/commit/0a1b87bc91babfe8753a64925ce5d46090345f22
+- [] Show error message for brute force protection blocked accounts (`Nico Sabena`)
+  https://github.com/auth0/lock/commit/5485b6da3b4b676af1b07717a44d1facc7e80471
+
 ## [9.2.1] - 2016-05-14
 
 ### Fixed
