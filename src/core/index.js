@@ -294,9 +294,7 @@ export function runHook(m, str, ...args) {
 }
 
 export function emitEvent(m, str, ...args) {
-  try {
-    get(m, "emitEventFn")(str, ...args);
-  } catch (e) { }
+  setTimeout(() => get(m, "emitEventFn")(str, ...args), 0);
 }
 
 export function loginErrorMessage(m, error, type) {
