@@ -15,7 +15,8 @@ export default {
       "lock.popup_closed": "Finestra popup chiusa. Riprova per favore.",
       "lock.unauthorized": "Autorizzazioni non sono state concesse. Riprova per favore.",
       "password_change_required": "È necessario aggiornare la password perché questa è la prima volta che si esegue il login, or perché la password è scaduta.",
-      "password_leaked": "Questo accesso è stato bloccato perché la password è trapelato in un altro sito . Ti abbiamo inviato una email con le istruzioni su come sbloccarla."
+      "password_leaked": "Questo accesso è stato bloccato perché la password è trapelato in un altro sito . Ti abbiamo inviato una email con le istruzioni su come sbloccarla.",
+      "too_many_attempts": "Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi." // needs review
     },
     passwordless: {
       "bad.email": "L’email non è valido ",

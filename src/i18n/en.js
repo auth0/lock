@@ -15,7 +15,8 @@ export default {
       "lock.popup_closed": "Popup window closed. Try again.",
       "lock.unauthorized": "Permissions were not granted. Try again.",
       "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired.", // TODO: verify error code
-      "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it."
+      "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it.",
+      "too_many_attempts": "Your account has been blocked after multiple consecutive login attempts."
     },
     passwordless: {
       "bad.email": "The email is invalid",

@@ -15,7 +15,8 @@ export default {
       "lock.popup_closed": "Popup fechada. Tente novamente.",
       "lock.unauthorized": "Permissões não foram concedidas. Tente novamente.",
       "password_change_required": "Você precisa atualizar sua senha porque é seu primeiro login, ou porque sua senha expirou.",
-      "password_leaked": "Esse login está bloqueado porque sua senha foi vazada em outro website. Nós lhe enviamos um email com instruções sobre como desbloqueá-lo."
+      "password_leaked": "Esse login está bloqueado porque sua senha foi vazada em outro website. Nós lhe enviamos um email com instruções sobre como desbloqueá-lo.",
+      "too_many_attempts": "A sua conta foi bloqueada após várias tentativas de login consecutivas." // needs review
     },
     passwordless: {
       "bad.email": "O email é inválido",

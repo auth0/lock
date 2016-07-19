@@ -15,7 +15,8 @@ export default {
       "lock.popup_closed": "Se ha cerrado la ventana emergente.",
       "lock.unauthorized": "Acceso denegado. Por favor, intente nuevamente.",
       "password_change_required": "Debe actualizar su contraseña porque es la primera vez que ingresa o porque la contraseña está vencida.",
-      "password_leaked": "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones."
+      "password_leaked": "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones.",
+      "too_many_attempts": "Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos."
     },
     passwordless: {
       "bad.email": "Correo inválido",
