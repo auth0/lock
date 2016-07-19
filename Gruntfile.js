@@ -20,6 +20,14 @@ function node_bin (bin) {
   return path.join('node_modules', '.bin', bin);
 }
 
+function browser_test_integration(name, version) {
+  return {
+    cmd: node_bin('zuul') + ' --browser-name ' + name + ' --browser-version ' + version + ' -- test/*.js',
+    stdout: true,
+    stderr: true
+  }
+}
+
 module.exports = function (grunt) {
   grunt.initConfig({
     connect: {
@@ -150,6 +158,9 @@ module.exports = function (grunt) {
         stdout: true,
         stderr: true
       },
+      'test-integration-ie-9': browser_test_integration("ie", 9),
+      'test-integration-ie-10': browser_test_integration("ie", 10),
+      'test-integration-ie-11': browser_test_integration("ie", 11),
       'test-phantom': {
         cmd: node_bin('zuul') + ' --ui mocha-bdd --disable-tunnel --phantom 9999 -- test/*.js',
         stdout: true,
@@ -315,7 +326,8 @@ module.exports = function (grunt) {
   grunt.registerTask('demo-https',    ['less:demo', 'connect:demo-https', 'build', 'watch']);
 
   grunt.registerTask('dev',           ['less:demo', 'connect:test', 'build', 'watch']);
-  grunt.registerTask('integration',   ['build', 'exec:test-inception', 'exec:test-integration']);
+  grunt.registerTask('test-integration-ie', ['exec:test-integration-ie-9', 'exec:test-integration-ie-10', 'exec:test-integration-ie-11']);
+  grunt.registerTask('integration',   ['build', 'exec:test-inception', 'exec:test-integration', 'test-integration-ie']);
   grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
   grunt.registerTask('publish_s3',    ['aws_s3:clean', 'aws_s3:clean_fonts', 'aws_s3:publish', 'aws_s3:publish_fonts']);
