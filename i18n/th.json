@@ -34,7 +34,8 @@
     "loadingMessage":              "กำลังเข้าสู่ระบบ โดย {connection}...",
     "popupCredentials":            "กรอกรหัสผ่าน ในหน้าต่าง Popup",
     "userClosedPopup":             "หน้าต่าง Popup ปิดไป ลองใหม่",
-    "userConsentFailed":           "สิทธิการใช้ไม่ได้รับอนุญาติ ลองใหม่"
+    "userConsentFailed":           "สิทธิการใช้ไม่ได้รับอนุญาติ ลองใหม่",
+    "tooManyAttemptsErrorText":    "บัญชีของคุณถูกบล็อกหลังจากที่หลาย ๆ คนพยายามเข้าสู่ระบบติดต่อกัน"
   },
   "signup": {
     "description":                 "",

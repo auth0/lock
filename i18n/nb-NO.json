@@ -31,7 +31,8 @@
     "loadingMessage":              "Logger inn med {connection}...",
     "popupCredentials":            "Skriv inn identifikasjon i pop-up-vinduet",
     "userClosedPopup":             "Pop-up-vindu lukket. Prøv igjen.",
-    "userConsentFailed":           "Nødvendige tilganger ble ikke gitt. Vennligst prøv igjen."
+    "userConsentFailed":           "Nødvendige tilganger ble ikke gitt. Vennligst prøv igjen.",
+    "tooManyAttemptsErrorText":    "Kontoen er blokkert etter flere påfølgende påloggingsforsøk."
   },
   "signup": {
     "description":                 "",

@@ -21,7 +21,8 @@
     "returnUserLabel": "Zuletzt waren Sie angemeldet als...",
     "wrongEmailPasswordErrorText": "Falsche E-Mail Adresse oder Passwort.",
     "or": "... oder melden Sie sich an mit",
-    "loadingMessage": "Bei der Anmeldung mit {connection}..."
+    "loadingMessage": "Bei der Anmeldung mit {connection}...",
+    "tooManyAttemptsErrorText": "Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt."
   },
   "signup": {
     "description": "",

@@ -21,7 +21,8 @@
     "returnUserLabel": "Ultima volta che hai eseguito utilizzando...",
     "wrongEmailPasswordErrorText": "Email errato o password.",
     "or": "... oppure accedi usando",
-    "loadingMessage": "Accedi con {connection}..."
+    "loadingMessage": "Accedi con {connection}...",
+    "tooManyAttemptsErrorText": "Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi."
   },
   "signup": {
     "description": "",

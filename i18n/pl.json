@@ -34,7 +34,8 @@
     "loadingMessage":              "Zaloguj za pomocą {connection}...",
     "popupCredentials":            "Podaj swoje dane dostępowe w oknie",
     "userClosedPopup":             "Okno zamknięte. Spróbuj ponownie.",
-    "userConsentFailed":           "Uprawnienia nie zostały przyznane. Spróbuj ponownie."
+    "userConsentFailed":           "Uprawnienia nie zostały przyznane. Spróbuj ponownie.",
+    "tooManyAttemptsErrorText":    "Twoje konto zostało zablokowane po wielu kolejnych próbach logowania."
   },
   "signup": {
     "description":                 "",

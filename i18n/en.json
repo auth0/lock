@@ -37,7 +37,8 @@
     "loadingMessage":                   "Logging In with {connection}...",
     "popupCredentials":                 "Enter your credentials in the pop-up window",
     "userClosedPopup":                  "Popup window closed. Try again.",
-    "userConsentFailed":                "Permissions were not granted. Try again."
+    "userConsentFailed":                "Permissions were not granted. Try again.",
+    "tooManyAttemptsErrorText":         "Your account has been blocked after multiple consecutive login attempts."
   },
   "signup": {
     "description":                 "",

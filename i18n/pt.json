@@ -21,7 +21,8 @@
     "returnUserLabel": "Da última vez que você assinou usando...",
     "wrongEmailPasswordErrorText": "Senha ou e-mail errado.",
     "or": "... ou Cadastre-se no uso de",
-    "loadingMessage": "Entrar com {connection}..."
+    "loadingMessage": "Entrar com {connection}...",
+    "tooManyAttemptsErrorText": "A sua conta foi bloqueada após várias tentativas de login consecutivas."
   },
   "signup": {
     "description": "",

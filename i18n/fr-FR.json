@@ -30,7 +30,8 @@
     "loadingMessage": "Connexion à l'aide de {connection}...",
     "popupCredentials": "Saisissez vos identifiants dans la fenêtre pop-up",
     "userClosedPopup": "La fenêtre pop-up a été fermée. Veuillez réessayer.",
-    "userConsentFailed": "L'application n'a pas été autorisée. Veuillez réessayer."
+    "userConsentFailed": "L'application n'a pas été autorisée. Veuillez réessayer.",
+    "tooManyAttemptsErrorText": "Votre compte a été bloqué après plusieurs tentatives de connexion consécutives."
   },
   "signup": {
     "description": "",

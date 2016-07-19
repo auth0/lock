@@ -21,7 +21,8 @@
     "returnUserLabel": "Qav poH qI' SoH qaStaHvIS lo'.",
     "wrongEmailPasswordErrorText": "QIH email pagh mu'wIj.",
     "or": "... pagh qI' qaStaHvIS yIlo'",
-    "loadingMessage": "Ukubhalisela In nge {connection}..."
+    "loadingMessage": "Ukubhalisela In nge {connection}...",
+    "tooManyAttemptsErrorText": "bot account qaSpu'DI' nID multiple consecutive login."
   },
   "signup": {
     "description": "",

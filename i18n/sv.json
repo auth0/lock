@@ -33,7 +33,8 @@
     "loadingMessage":              "Logga in med {connection}...",
     "popupCredentials":            "Skriv in dina uppgifter i pop-up rutan",
     "userClosedPopup":             "Pop-up rutan stängd. Försök igen.",
-    "userConsentFailed":           "Tillträdet medgavs ej. Försök igen."
+    "userConsentFailed":           "Tillträdet medgavs ej. Försök igen.",
+    "tooManyAttemptsErrorText":    "Kontot har blockerats efter flera försök i följd inloggnings."
   },
   "signup": {
     "description":                 "",

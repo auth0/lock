@@ -21,7 +21,8 @@
     "returnUserLabel": "De laatste keer logde je in met...",
     "wrongEmailPasswordErrorText": "Verkeerd e-mail of wachtwoord.",
     "or": "... of meld u aan met",
-    "loadingMessage": "Aanmelden met {connection}..."
+    "loadingMessage": "Aanmelden met {connection}...",
+    "tooManyAttemptsErrorText": "Je account is geblokkeerd na meerdere opeenvolgende inlogpogingen."
   },
   "signup": {
     "description": "",
