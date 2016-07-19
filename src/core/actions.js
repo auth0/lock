@@ -1,3 +1,4 @@
+import Auth0 from 'auth0-js';
 import Immutable, { Map } from 'immutable';
 import webApi from './web_api';
 import { getCollection, getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
@@ -57,6 +58,17 @@ function parseHash(m, hash) {
   }
 
   return !!(error || result);
+}
+
+export function createClient(id, opts) {
+  const m = read(getEntity, "lock", id);
+  return new Auth0({
+    clientID: l.clientID(m),
+    domain: l.domain(m),
+    callbackURL: l.auth.redirectUrl(m),
+    callbackOnLocationHash: l.auth.responseType(m) === "token",
+    ...opts
+  });
 }
 
 export function openLock(id) {

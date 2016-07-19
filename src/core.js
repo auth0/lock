@@ -4,6 +4,7 @@ import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
 import {
   closeLock,
+  createClient,
   handleAuthCallback,
   openLock,
   removeLock,
@@ -132,8 +133,8 @@ export default class Base extends EventEmitter {
     return webAPI.getProfile(this.id, token, cb);
   }
 
-  parseHash(hash = undefined) {
-    return webAPI.parseHash(this.id, hash);
+  getClient(opts) {
+    return createClient(this.id, opts);
   }
 
   logout(query = {}) {
