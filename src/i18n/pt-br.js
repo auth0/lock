@@ -26,6 +26,9 @@ export default {
     signUp: {
       "invalid_password": "A senha é muito fraca.",
       "lock.fallback": "Sentimos muito, algo deu errado ao tentar se inscrever.",
+      "password_dictionary_error": "A senha é muito comum.", // needs review
+      "password_no_user_info_error": "A senha é baseado em informações do usuário.", // needs review
+      "password_strength_error": "A senha é muito fraca.",
       "user_exists": "O usuário já existe.",
       "username_exists": "O nome de usuário já existe."
     }

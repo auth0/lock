@@ -26,6 +26,9 @@ export default {
     signUp: {
       "invalid_password": "La contraseña es muy débil.",
       "lock.fallback": "Ocurrió un error durante el registro.",
+      "password_dictionary_error": "La constraseña es muy común.",
+      "password_no_user_info_error": "La constraseña es similar a los datos del usuario.",
+      "password_strength_error": "La contraseña es muy débil.",
       "user_exists": "El usuario ya existe.",
       "username_exists": "El nombre de usuario se encuentra en uso."
     }

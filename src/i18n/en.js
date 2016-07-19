@@ -24,8 +24,11 @@ export default {
       "lock.fallback": "We're sorry, something went wrong"
     },
     signUp: {
-      "invalid_password": "The password is too weak.", // NOTE: request is not made if pass doesn't satisfy policy
+      "invalid_password": "The password is too weak.",
       "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
+      "password_dictionary_error": "Password is too common.",
+      "password_no_user_info_error": "Password is based on user information.",
+      "password_strength_error": "Password is too weak.",
       "user_exists": "The user already exists.",
       "username_exists": "The username already exists."
     }
