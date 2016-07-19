@@ -137,10 +137,6 @@ export default class Base extends EventEmitter {
     return createClient(this.id, opts);
   }
 
-  parseHash(hash = undefined) {
-    return webAPI.parseHash(this.id, hash);
-  }
-
   logout(query = {}) {
     webAPI.signOut(this.id, query);
   }
