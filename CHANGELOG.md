@@ -1,3 +1,18 @@
+## [10.0.0] - 2016-07-20
+
+### Changed
+
+- The `parseHash` method was removed given that now it is
+  automatically handled by Lock.
+
+### Fixed
+
+- Stopped hiding errors that are raised from event listeners.
+
+### Added
+
+- Handle the new variants of password policy errors during sign up.
+
 ## [10.0.0-rc.2] - 2016-07-05
 
 ### Fixed

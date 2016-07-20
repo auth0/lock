@@ -1,11 +1,9 @@
 [![Build status][travis-image]][travis-url]
 [![License][license-image]][license-url]
 
-# Lock Next
+# Lock
 
 [Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
-
-Lock Next is an early access beta for the new [Lock](http://auth0.com/lock) release.
 
 ## Install
 
@@ -13,13 +11,13 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.0.0-rc.1/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.0.0/lock.min.js"></script>
 ```
 
 From [bower](http://bower.io)
 
 ```sh
-bower install auth0-lock#10.0.0-rc.1
+bower install auth0-lock
 ```
 
 ```html
@@ -29,7 +27,7 @@ bower install auth0-lock#10.0.0-rc.1
 From [npm](https://npmjs.org)
 
 ```sh
-npm install auth0-lock@10.0.0-rc.1
+npm install auth0-lock
 ```
 
 After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
