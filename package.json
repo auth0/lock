@@ -19,7 +19,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "start": "grunt heroku",
+    "start": "grunt dev",
     "build": "grunt build",
     "design": "grunt design",
     "dev": "grunt dev",
