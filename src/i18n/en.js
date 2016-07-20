@@ -15,7 +15,8 @@ export default {
       "lock.popup_closed": "Popup window closed. Try again.",
       "lock.unauthorized": "Permissions were not granted. Try again.",
       "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired.", // TODO: verify error code
-      "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it."
+      "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it.",
+      "too_many_attempts": "Your account has been blocked after multiple consecutive login attempts."
     },
     passwordless: {
       "bad.email": "The email is invalid",
@@ -23,8 +24,11 @@ export default {
       "lock.fallback": "We're sorry, something went wrong"
     },
     signUp: {
-      "invalid_password": "The password is too weak.", // NOTE: request is not made if pass doesn't satisfy policy
+      "invalid_password": "Password is invalid.",
       "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
+      "password_dictionary_error": "Password is too common.",
+      "password_no_user_info_error": "Password is based on user information.",
+      "password_strength_error": "Password is too weak.",
       "user_exists": "The user already exists.",
       "username_exists": "The username already exists."
     }

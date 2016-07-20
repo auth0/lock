@@ -107,7 +107,17 @@ function signUpSuccess(id) {
 function signUpError(id, error) {
   const m = read(getEntity, "lock", id);
 
-  const errorMessage = i18n.str(m, ["error", "signUp", error.code])
+  const invalidPasswordKeys = {
+    PasswordDictionaryError: "password_dictionary_error",
+    PasswordNoUserInfoError: "password_no_user_info_error",
+    PasswordStrengthError: "password_strength_error"
+  };
+
+  const errorKey = (error.code === "invalid_password"
+    && invalidPasswordKeys[error.details.name])
+    || error.code;
+
+  const errorMessage = i18n.str(m, ["error", "signUp", errorKey])
     || i18n.str(m, ["error", "signUp", "lock.fallback"]);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);

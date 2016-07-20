@@ -15,7 +15,8 @@ export default {
       "lock.popup_closed": "Popup fechada. Tente novamente.",
       "lock.unauthorized": "Permissões não foram concedidas. Tente novamente.",
       "password_change_required": "Você precisa atualizar sua senha porque é seu primeiro login, ou porque sua senha expirou.",
-      "password_leaked": "Esse login está bloqueado porque sua senha foi vazada em outro website. Nós lhe enviamos um email com instruções sobre como desbloqueá-lo."
+      "password_leaked": "Esse login está bloqueado porque sua senha foi vazada em outro website. Nós lhe enviamos um email com instruções sobre como desbloqueá-lo.",
+      "too_many_attempts": "A sua conta foi bloqueada após várias tentativas de login consecutivas." // needs review
     },
     passwordless: {
       "bad.email": "O email é inválido",
@@ -23,8 +24,11 @@ export default {
       "lock.fallback": "Sentimos muito, algo deu errado"
     },
     signUp: {
-      "invalid_password": "A senha é muito fraca.",
+      "invalid_password": "A senha é inválida.", // needs review
       "lock.fallback": "Sentimos muito, algo deu errado ao tentar se inscrever.",
+      "password_dictionary_error": "A senha é muito comum.", // needs review
+      "password_no_user_info_error": "A senha é baseado em informações do usuário.", // needs review
+      "password_strength_error": "A senha é muito fraca.",
       "user_exists": "O usuário já existe.",
       "username_exists": "O nome de usuário já existe."
     }
