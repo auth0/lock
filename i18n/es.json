@@ -1,14 +1,17 @@
 {
   "loadingTitle":                  "Por favor espere...",
   "close":                         "Cerrar",
+  "windowsAuthTitle":              "Autenticación de Windows",
   "invalid":                       "Inválido",
   "mustMatch":                     "Debe coincidir",
   "loginSocialButton":             "Iniciar con {connection:title}",
   "signupSocialButton":            "Registrarse con {connection:title}",
+  "networkError":                  "No pudimos contactar el server.<br/>Por favor intente nuevamente.",
   "noConnectionError":             "No se pudo encontrar una conexión válida.",
   "signin": {
     "title":                       "Iniciar sesión",
     "action":                      "Ingresar",
+    "actionDomain":                "Ingrersar a {domain}",
     "all":                         "Mostrar todas",
     "strategyEmailEmpty":          "El email está vacío.",
     "strategyEmailInvalid":        "El email no es válido.",
@@ -16,6 +19,8 @@
     "signinText":                  "Iniciar sesión",
     "signupText":                  "Registrarse",
     "forgotText":                  "Olvidaste tu contraseña?",
+    "cancelAction":                "Cancelar",
+    "footerText":                  "",
     "emailPlaceholder":            "Email",
     "usernamePlaceholder":         "Nombre de usuario",
     "passwordPlaceholder":         "Contraseña",
@@ -24,10 +29,15 @@
     "returnUserLabel":             "La última vez inició sesión con...",
     "domainUserLabel":             "Usted se encuentra conectado desde su red corporativa...",
     "wrongEmailPasswordErrorText": "Email o clave incorrecta.",
+    "passwordChangeRequiredErrorText": "Debe actualizar su contraseña porque es la primera vez que ingresa o porque la contraseña está vencida.",
     "passwordLeakedErrorText":     "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones.",
+    "unauthorizedErrorText":       "Acceso denegado.",
+    "userBlockedErrorText":        "",
     "or":                          "... o inicie sesión usando",
     "loadingMessage":              "Iniciando sesión con {connection}...",
     "popupCredentials":            "Ingrese sus credenciales en la ventana emergente",
+    "userClosedPopup":             "La ventana emergente se cerró. Intente nuevamente.",
+    "userConsentFailed":           "Los permisos no fueron otorgados. Intente nuevamente.",
     "tooManyAttemptsErrorText":    "Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos."
   },
   "signup": {
@@ -37,13 +47,28 @@
     "signinText":                  "Iniciar sesión",
     "signupText":                  "Registrarse",
     "emailPlaceholder":            "Email",
+    "usernamePlaceholder":         "Nombre de usuario",
     "passwordPlaceholder":         "Contraseña",
     "cancelAction":                "Cancelar",
     "headerText":                  "Por favor ingrese email y contraseña",
     "footerText":                  "",
     "signupOnSSODomainErrorText":  "El dominio {domain} ha sido configurado para Single Sign On y no puede crear una cuenta. Intente iniciar sesión directamente.",
     "serverErrorText":             "Hubo un error al procesar su registro.",
-    "userExistsErrorText":         "El usuario ya existe."
+    "userExistsErrorText":         "El usuario ya existe.",
+    "usernameInUseErrorText":      "El nombre de usuario ya está en uso.",
+    "invalidPassword":             "La contraseña es muy débil.",
+
+    "passwordStrength": {
+      "nonEmpty": "Se requiere una contraseña no vacía",
+      "lengthAtLeast": "Como mínimo de %d caracteres de longitud",
+      "shouldContain": "Debe contener:",
+      "containsAtLeast" : "Contener al menos %d de los siguientes %d tipos de caracteres:",
+      "lowerCase": "Letras minúsculas (a-z)",
+      "upperCase": "Letras mayúsculas (A-Z)",
+      "numbers": "Números (ej. 0-9)",
+      "specialCharacters" : "Caracteres especiales (ej. !@#$%^&*)",
+      "identicalChars": "No más de %d caracteres idénticos juntos (ej., \"%s\" no está permitido)"
+    }
   },
   "newReset": {
     "title":                       "Restablecer Contraseña",
