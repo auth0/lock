@@ -1115,6 +1115,7 @@ Auth0Lock.prototype._signin = function (panel) {
   var loginOptions = _.extend({}, {
     connection: connection,
     popup: this.options.popup,
+    scope: this.options.scope,
     popupOptions: this.options.popupOptions,
     sso: this.options.sso,
     login_hint: email_input.val()
@@ -1145,6 +1146,7 @@ Auth0Lock.prototype._signinWithAuth0 = function (panel, connection) {
     password: password,
     popup: self.options.popup,
     popupOptions: self.options.popupOptions,
+    scope: self.options.scope,
     sso: self.options.sso,
     login_hint: connection.domain ? username.replace('@' + connection.domain, '') : username
   };
@@ -1250,6 +1252,7 @@ Auth0Lock.prototype._signinSocial = function (e, connection, extraParams, panel)
         connection: connectionName,
         popup: self.options.popup,
         popupOptions: self.options.popupOptions,
+        scope: self.options.scope,
         sso: self.options.sso
       }, self.options.authParams, extraParams);
 
@@ -1283,6 +1286,7 @@ Auth0Lock.prototype._signinPopupNoRedirect = function (connectionName, popupCall
         connection: connectionName,
         popup: self.options.popup,
         popupOptions: self.options.popupOptions,
+        scope: self.options.scope,
         sso: self.options.sso,
         login_hint: email_input.val()
       }, options.authParams, extraParams);
