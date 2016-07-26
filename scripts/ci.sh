@@ -62,6 +62,7 @@ npm_release()
 }
 
 ./scripts/test.sh
+./scripts/clean.sh
 ./scripts/build.sh
 
 if [ -z "$RELEASE" ]
