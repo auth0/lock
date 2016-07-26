@@ -54,7 +54,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
-    "grunt-http": "^1.6.0",
     "livereactload": "^2.2.3",
     "mochify": "^2.12.0",
     "react-addons-test-utils": "^15.0.0 || ^16.0.0",

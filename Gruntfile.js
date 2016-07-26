@@ -104,14 +104,6 @@ module.exports = function(grunt) {
     exec: {
       touch_index: "touch src/index.js"
     },
-    http: {
-      purge_js:           {options: {url: process.env.CDN_ROOT + "/js/lock-" + pkg.version + ".js",       method: "DELETE"}},
-      purge_js_min:       {options: {url: process.env.CDN_ROOT + "/js/lock-" + pkg.version + ".min.js",   method: "DELETE"}},
-      purge_major_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-" + major_version + ".js",     method: "DELETE"}},
-      purge_major_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-" + major_version + ".min.js", method: "DELETE"}},
-      purge_minor_js:     {options: {url: process.env.CDN_ROOT + "/js/lock-" + minor_version + ".js",     method: "DELETE"}},
-      purge_minor_js_min: {options: {url: process.env.CDN_ROOT + "/js/lock-" + minor_version + ".min.js", method: "DELETE"} }
-    },
     stylus: {
       build: {
         options: {
@@ -145,7 +137,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-env");
   grunt.loadNpmTasks("grunt-exec");
-  grunt.loadNpmTasks("grunt-http");
 
 
   grunt.registerTask("build", ["clean:build", "env:build", "stylus:build", "browserify:build", "uglify:build"]);
@@ -153,7 +144,6 @@ module.exports = function(grunt) {
   grunt.registerTask("prepare_dev", ["clean:dev", "connect:dev", "stylus:build"]);
   grunt.registerTask("dev", ["prepare_dev", "browserify:dev", "watch"]);
   grunt.registerTask("design", ["prepare_dev", "browserify:design", "watch"]);
-  // grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
-  // grunt.registerTask("cdn", ["build", "copy:release", "purge_cdn"]);
+  // grunt.registerTask("cdn", ["build", "copy:release"]);
   // grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task
 };
