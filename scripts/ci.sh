@@ -33,7 +33,7 @@ bower_release()
     verbose "Deploying $VERSION to git"
 
     LAST_COMMIT=$(git log -1 --pretty=%B)
-    grep -v '^build$' .gitignore > /tmp/.gitignore
+    grep -v -e '^build$' -e '^build/$' .gitignore > /tmp/.gitignore
     mv /tmp/.gitignore .gitignore
     git add --force build/*
     git commit -am "$TAG_NAME"
