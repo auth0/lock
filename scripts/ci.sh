@@ -18,7 +18,7 @@ cdn_release()
 {
   scripts/upload.sh "$CDN_NAME" "$1"
   new_line
-  success "$NPM_NAME ($1) uploaded to cdn 🚀"
+  success "$NPM_NAME ($1) uploaded to cdn"
 }
 
 bower_release()
@@ -39,7 +39,7 @@ bower_release()
     git commit -am "$TAG_NAME"
     git tag "$TAG_NAME" -m "$LAST_COMMIT"
     git push origin $TAG_NAME
-    success "$NPM_NAME version ready for bower 🚀"
+    success "$NPM_NAME version ready for bower"
   fi
 }
 
@@ -58,7 +58,7 @@ npm_release()
       npm publish --tag "$NPM_TAG"
     fi
   fi
-  success "$NPM_NAME uploaded to npm registry 🚀"
+  success "$NPM_NAME uploaded to npm registry"
 }
 
 ./scripts/test.sh
