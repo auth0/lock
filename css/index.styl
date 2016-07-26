@@ -125,7 +125,6 @@
     color #333
     position relative
     background #fff
-    height 90px
     border-radius 5px 5px 0 0
     overflow hidden
 
@@ -1073,14 +1072,14 @@
   padding-top 0
   -webkit-animation-duration .3s
   animation-duration .3s
-  height 0
+  // height 0
   transition height .3s ease
 
   +breakpoint("mobile")
     position absolute
     background #1F242E
     box-shadow 0 0 20px 0 rgba(0,0,0,.5)
-    height auto
+    // height auto
     transition none
     width 100%
     border-radius 3px
@@ -1105,10 +1104,10 @@
     visibility hidden
 
   &.fadeIn
-    height 135px
+    // height 135px
 
-    +breakpoint("mobile")
-      height auto
+    // +breakpoint("mobile")
+    //   height auto
 
     ul
       animation fadeIn .3s .1s both
