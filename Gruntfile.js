@@ -3,17 +3,6 @@
 var fs = require("fs");
 var pkg = require("./package");
 
-var minor_version = pkg.version.replace(/\.(\d)*$/, "");
-var major_version = pkg.version.replace(/\.(\d)*\.(\d)*$/, "");
-var path = require("path");
-
-function rename_release (v) {
-  return function (d, f) {
-    var dest = path.join(d, f.replace(/(\.min)?\.js$/, "-"+ v + "$1.js"));
-    return dest;
-  };
-}
-
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -69,7 +58,7 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      build: ["build/", "release/"],
+      build: ["build/"],
       dev: ["build/"],
       dist: ["lib/"]
     },
@@ -81,20 +70,6 @@ module.exports = function(grunt) {
           port: process.env.PORT || 3000
         }
       },
-    },
-    copy: {
-      release: {
-        files: [
-          {expand: true, flatten: true, src: "build/*", dest: "release/", rename: rename_release(pkg.version)},
-          {expand: true, flatten: true, src: "build/*", dest: "release/", rename: rename_release(minor_version)},
-          {expand: true, flatten: true, src: "build/*", dest: "release/", rename: rename_release(major_version)}
-        ]
-      },
-      pages: {
-        files: [
-          {expand: true, flatten: true, src: "build/*", dest: "support/playground/build/"},
-        ]
-      }
     },
     env: {
       build: {
@@ -131,7 +106,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-connect");
-  grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -144,6 +118,4 @@ module.exports = function(grunt) {
   grunt.registerTask("prepare_dev", ["clean:dev", "connect:dev", "stylus:build"]);
   grunt.registerTask("dev", ["prepare_dev", "browserify:dev", "watch"]);
   grunt.registerTask("design", ["prepare_dev", "browserify:design", "watch"]);
-  // grunt.registerTask("cdn", ["build", "copy:release"]);
-  // grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task
 };
