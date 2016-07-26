@@ -2,4 +2,9 @@
 
 source scripts/common.sh
 
-success 'All test passed'
+if [ -n "$SAUCE_USERNAME" ]
+then
+  npm run test
+else
+  npm run test:cli
+fi
