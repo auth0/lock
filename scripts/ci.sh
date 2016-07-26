@@ -57,8 +57,8 @@ npm_release()
       verbose "Deploying $1 to npm with tag $NPM_TAG"
       npm publish --tag "$NPM_TAG"
     fi
+    success "$NPM_NAME uploaded to npm registry"
   fi
-  success "$NPM_NAME uploaded to npm registry"
 }
 
 ./scripts/test.sh
