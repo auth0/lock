@@ -18,39 +18,6 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
-    aws_s3: {
-      options: {
-        accessKeyId:     process.env.S3_KEY,
-        secretAccessKey: process.env.S3_SECRET,
-        bucket:          process.env.S3_BUCKET,
-        region:          process.env.S3_REGION,
-        uploadConcurrency: 5,
-        params: {
-          CacheControl: "public, max-age=300"
-        },
-        // debug: true <<< use this option to test changes
-      },
-      clean: {
-        files: [
-          {action: "delete", dest: "js/lock-" + pkg.version + ".js"},
-          {action: "delete", dest: "js/lock-" + pkg.version + ".min.js"},
-          {action: "delete", dest: "js/lock-" + major_version + ".js"},
-          {action: "delete", dest: "js/lock-" + major_version + ".min.js"},
-          {action: "delete", dest: "js/lock-" + minor_version + ".js"},
-          {action: "delete", dest: "js/lock-" + minor_version + ".min.js"}
-        ]
-      },
-      publish: {
-        files: [
-          {
-            expand: true,
-            cwd:    "release/",
-            src:    ["**"],
-            dest:   "js/"
-          }
-        ]
-      }
-    },
     babel: {
       dist: {
         files: [
@@ -168,7 +135,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks("grunt-aws-s3");
   grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-contrib-clean");
@@ -188,6 +154,6 @@ module.exports = function(grunt) {
   grunt.registerTask("dev", ["prepare_dev", "browserify:dev", "watch"]);
   grunt.registerTask("design", ["prepare_dev", "browserify:design", "watch"]);
   // grunt.registerTask("purge_cdn", ["http:purge_js", "http:purge_js_min", "http:purge_major_js", "http:purge_major_js_min", "http:purge_minor_js", "http:purge_minor_js_min"]);
-  // grunt.registerTask("cdn", ["build", "copy:release", "aws_s3:clean", "aws_s3:publish", "purge_cdn"]);
+  // grunt.registerTask("cdn", ["build", "copy:release", "purge_cdn"]);
   // grunt.registerTask("ghpages", ["build", "copy:pages"]); // add publish task
 };
