@@ -44,7 +44,7 @@ bower_release()
     git add --force build/*
     git commit -am "$TAG_NAME"
     git tag "$TAG_NAME" -m "$LAST_COMMIT"
-    # git push origin $TAG_NAME
+    git push origin $TAG_NAME
     success "$NPM_NAME version ready for bower"
   fi
 }
@@ -56,13 +56,13 @@ npm_release()
   if [ ! -z "$NPM_EXISTS" ]; then
     verbose "There is already a version $NPM_EXISTS in npm. Skiping npm publish…"
   else
-    # if [ ! -z "$STABLE" ]; then
-    #   verbose "Deploying $1 to npm"
-    #   npm publish
-    # else
-    #   verbose "Deploying $1 to npm with tag $NPM_TAG"
-    #   npm publish --tag "$NPM_TAG"
-    # fi
+    if [ ! -z "$STABLE" ]; then
+      verbose "Deploying $1 to npm"
+      npm publish
+    else
+      verbose "Deploying $1 to npm with tag $NPM_TAG"
+      npm publish --tag "$NPM_TAG"
+    fi
     success "$NPM_NAME uploaded to npm registry"
   fi
 }
