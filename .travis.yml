@@ -2,9 +2,10 @@ language: node_js
 node_js:
 - '4.2'
 script:
-- 'npm run test:cli'
+- 'scripts/test.sh'
 env:
   - CXX=g++-4.8
+sudo: false
 addons:
   apt:
     sources:
@@ -14,9 +15,9 @@ addons:
 branches:
   only:
   - master
-  - v7
-  - v8
-  - v10
+cache:
+  directories:
+    - node_modules
 notifications:
   slack:
     secure: YAMGxva36BTZpSSBwzMqPbZ+2GEZTYbuQd607vSB6AEbEbDLxGmW5bwbUFbWs+jGsfutSDQJykgeFMz/kAV92iUJbG2jYsPlodjVec+Y6neVeAsHV7LgWnVm2mTcJVBODZQlAZvwxT971UuWu54SbJP3yg/IKiEWYdB8pZiTMfI=
