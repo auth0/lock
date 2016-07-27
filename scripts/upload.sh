@@ -3,7 +3,7 @@
 source scripts/common.sh
 
 LOCAL_PATH="build"
-DRY_RUN="--dryrun"
+DRY_RUN=""
 
 LIBRARY_NAME=$1
 VERSION=$2
