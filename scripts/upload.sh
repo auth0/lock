@@ -25,7 +25,7 @@ fail_with_error_usage ()
   echo "Usage: "
   echo "$ ./upload.sh library_name library_version"
 
-  exit 1  
+  exit 1
 }
 
 s3_upload()
@@ -34,7 +34,8 @@ s3_upload()
   then
     echo ""
     verbose_item "Uploading '$1'"
-    aws s3 cp "$DRY_RUN" --region us-west-1 "$1" "$REMOTE_PATH/$1"
+    # aws s3 cp "$DRY_RUN" --region us-west-1 "$1" "$REMOTE_PATH/$1"
+    aws s3 cp "$1" "$REMOTE_PATH/$1" --region us-west-1
     if [ -z "$DRY_RUN" ]
     then
       curl -fs -XDELETE "https://cdn.auth0.com/js/$LIBRARY_NAME/$VERSION/$1"
