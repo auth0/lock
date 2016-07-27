@@ -14,6 +14,9 @@ addons:
 branches:
   only:
   - master
+cache:
+  directories:
+    - node_modules
 notifications:
   slack:
     secure: YAMGxva36BTZpSSBwzMqPbZ+2GEZTYbuQd607vSB6AEbEbDLxGmW5bwbUFbWs+jGsfutSDQJykgeFMz/kAV92iUJbG2jYsPlodjVec+Y6neVeAsHV7LgWnVm2mTcJVBODZQlAZvwxT971UuWu54SbJP3yg/IKiEWYdB8pZiTMfI=
