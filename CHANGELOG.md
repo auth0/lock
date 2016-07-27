@@ -1,3 +1,11 @@
+## [10.0.1] - 2016-07-27
+
+### Fixed
+
+- Stopped dropping keys on email input in IE (#505)
+- Protect against svgs background colors set by other stylesheets (#506)
+- Ensure header styling looks fine in IE (#507)
+
 ## [10.0.0] - 2016-07-20
 
 ### Changed
