@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '4.2'
 script:
-- 'script/test.sh'
+- 'scripts/test.sh'
 env:
   - CXX=g++-4.8
 addons:
