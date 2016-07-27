@@ -5,6 +5,7 @@ script:
 - 'scripts/test.sh'
 env:
   - CXX=g++-4.8
+sudo: false
 addons:
   apt:
     sources:
