@@ -16,6 +16,10 @@ STABLE=$($NPM_BIN/semver $VERSION -r "*")
 
 WILDCARD_VERSION=$(node scripts/utils/wildcard_version.js)
 
+# Enable failing on exit status here because semver exits with 1 when the range
+# doesn't match.
+set -e
+
 cdn_release()
 {
   scripts/upload.sh "$CDN_NAME" "$1"
