@@ -10,8 +10,10 @@ CDN_FILE="lock.min.js"
 NPM_NAME=$(node scripts/utils/attribute.js name)
 VERSION=$(node scripts/utils/attribute.js version)
 
-RELEASE=$(semver $VERSION -r "$MATCHER")
-STABLE=$(semver $VERSION -r "*")
+NPM_BIN=$(npm bin)
+RELEASE=$($NPM_BIN/semver $VERSION -r "$MATCHER")
+STABLE=$($NPM_BIN/semver $VERSION -r "*")
+
 WILDCARD_VERSION=$(node scripts/utils/wildcard_version.js)
 
 cdn_release()
