@@ -71,10 +71,10 @@ export default {
   },
   passwordlessEmailAlternativeInstructions: "Либо введите адрес электронной почты, чтобы войти<br>или зарегистрироваться",
   passwordlessEmailCodeInstructions: "Сообщение с кодом отправлено на %s.",
-  passwordlessEmailInstructions: "Введите адрес электронной почты, чтобы войти<br>или зарегистрироваться",
-  passwordlessSMSAlternativeInstructions: "Либо введите Ваш номер телефона, чтобы войти<br>или зарегистрироваться",
-  passwordlessSMSCodeInstructions: "СМС с кодом было отправлено<br>на %s.",
-  passwordlessSMSInstructions: "Введите Ваш номер телефона, чтобы войти<br>или зарегистрироваться",
+  passwordlessEmailInstructions: "Введите адрес электронной почты, чтобы войти<br/>или зарегистрироваться",
+  passwordlessSMSAlternativeInstructions: "Либо введите Ваш номер телефона, чтобы войти<br/>или зарегистрироваться",
+  passwordlessSMSCodeInstructions: "СМС с кодом было отправлено<br/>на %s.",
+  passwordlessSMSInstructions: "Введите Ваш номер телефона, чтобы войти<br/>или зарегистрироваться",
   phoneNumberInputPlaceholder: "Ваш номер телефона",
   resendCodeAction: "Не получили код?",
   resendLabel: "Отправить повторный запрос",
@@ -93,6 +93,6 @@ export default {
   useranmeOrEmailInputPlaceholder: "электронной почты/пользователя", // TODO review
   title: "Auth0",
   welcome: "Добро пожаловать, %s!",
-  windowsAuthInstructions: "Вы подключены через корпоративную сеть&hellip;",
+  windowsAuthInstructions: "Вы подключены через корпоративную сеть&#8230;",
   windowsAuthLabel: "Аутентификация Windows"
 };

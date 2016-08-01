@@ -69,12 +69,12 @@ export default {
     specialCharacters: "Caratteri speciali (e.g. !@#$%^&*)",
     upperCase: "Caratteri maiuscoli (A-Z)"
   },
-  passwordlessEmailAlternativeInstructions: "Altrimenti, si prega d’inserare la Sua email per accedere <br> o creare un account",
+  passwordlessEmailAlternativeInstructions: "Altrimenti, si prega d’inserare la Sua email per accedere <br/> o creare un account",
   passwordlessEmailCodeInstructions: "Una email con il codice è stato inviato %s.",
-  passwordlessEmailInstructions: "Si prega d’inserare la Sua email <br>o creare un account",
-  passwordlessSMSAlternativeInstructions: "Altrimenti, si prega d’inserare il numero di telefono per accedere <br>o creare un account",
-  passwordlessSMSCodeInstructions: "Un SMS con il codice è stato inviato<br> a %s.",
-  passwordlessSMSInstructions: "Si prega d’inserare il numero di telefono <br>o creare un account",
+  passwordlessEmailInstructions: "Si prega d’inserare la Sua email <br/>o creare un account",
+  passwordlessSMSAlternativeInstructions: "Altrimenti, si prega d’inserare il numero di telefono per accedere <br/>o creare un account",
+  passwordlessSMSCodeInstructions: "Un SMS con il codice è stato inviato<br/> a %s.",
+  passwordlessSMSInstructions: "Si prega d’inserare il numero di telefono <br/>o creare un account",
   phoneNumberInputPlaceholder: "il Suo numero di telefono",
   resendCodeAction: "Non ha ottentuo il codice?",
   resendLabel: "Inviare di nuovo",
@@ -93,6 +93,6 @@ export default {
   usernameOrEmailInputPlaceholder: "il Suo nome utente or email", // TODO
   title: "Auth0",
   welcome: "Benvenuto %s!",
-  windowsAuthInstructions: "Si è connessi dalla rete aziendale&hellip;",
+  windowsAuthInstructions: "Si è connessi dalla rete aziendale&#8230;",
   windowsAuthLabel: "Autenticazione Windows"
 };

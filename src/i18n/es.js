@@ -69,12 +69,12 @@ export default {
     specialCharacters: "Caracteres especiales (ej. !@#$%^&*)",
     upperCase: "Letras mayúsculas (A-Z)"
   },
-  passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br>para iniciar sesión o registrarse",
+  passwordlessEmailAlternativeInstructions: "También puede ingresar su email<br/>para iniciar sesión o registrarse",
   passwordlessEmailCodeInstructions: "Se ha enviado un correo con el código a %s.",
-  passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br>o registrarse",
-  passwordlessSMSAlternativeInstructions: "También puede ingresar su teléfono<br>para iniciar sesión o registrarse",
-  passwordlessSMSCodeInstructions: "Se ha enviado un SMS con el código<br>a %s.",
-  passwordlessSMSInstructions: "Ingrese su teléfono para iniciar sesión<br>o registrarse",
+  passwordlessEmailInstructions: "Ingrese su email para iniciar sesión<br/>o registrarse",
+  passwordlessSMSAlternativeInstructions: "También puede ingresar su teléfono<br/>para iniciar sesión o registrarse",
+  passwordlessSMSCodeInstructions: "Se ha enviado un SMS con el código<br/>a %s.",
+  passwordlessSMSInstructions: "Ingrese su teléfono para iniciar sesión<br/>o registrarse",
   phoneNumberInputPlaceholder: "número de teléfono",
   resendCodeAction: "¿No recibió el código?",
   resendLabel: "Reenviar",
@@ -93,6 +93,6 @@ export default {
   usernameOrEmailInputPlaceholder: "usuario/correo electrónico",
   title: "Auth0",
   welcome: "Bienvenido %s!",
-  windowsAuthInstructions: "Usted se encuentra conectado desde su red corporativa&hellip;",
+  windowsAuthInstructions: "Usted se encuentra conectado desde su red corporativa&#8230;",
   windowsAuthLabel: "Autenticación de Windows"
 };

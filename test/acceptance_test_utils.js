@@ -114,7 +114,7 @@ export function isInputInvalid(lock, name) {
 export function submit(lock) {
   resetWebApis();
   const form = q(lock, ".auth0-lock-widget");
-  if (!form || form.tagName !== "FORM") {
+  if (!form || form.tagName.toUpperCase() !== "FORM") {
     throw new Error(`Unable to submit form: can't find the element`);
   }
 
