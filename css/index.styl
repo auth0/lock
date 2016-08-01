@@ -488,13 +488,20 @@ iphoneBar = 68px
     border-radius 0 0 5px 5px
     -webkit-transition .2s ease-in-out
     transition .2s ease-in-out
+    
+    color white
+    letter-spacing 1px
+    font-size 14px
 
     span
       display inline-block
       -webkit-transition .2s ease-in-out
       transition .2s ease-in-out
+      
       svg
         vertical-align middle
+        &.icon-text
+          margin -4px 0 0 5px
 
     +breakpoint("mobile")
       &:hover:not([disabled])
