@@ -14,7 +14,8 @@ class Auth0WebAPI {
       sendSDKClientInfo: true,
       forceJSONP: false,
       callbackURL: opts.redirectUrl,
-      callbackOnLocationHash: opts.responseType === "token"
+      responseMode: opts.responseMode,
+      responseType: opts.responseType
     });
 
     this.authOpts[lockID] = {
