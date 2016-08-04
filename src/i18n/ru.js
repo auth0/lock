@@ -84,6 +84,7 @@ export default {
   retryLabel: "Повторить попытку",
   sentLabel: "Отправлено!",
   signUpLabel: "Зарегистрироваться",
+  signUpSubmitLabel: "Зарегистрироваться", // needs review
   signUpTerms: "",
   signUpWithLabel: "Зарегистрироваться через %s",
   socialLoginInstructions: "",

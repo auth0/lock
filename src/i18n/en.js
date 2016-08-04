@@ -84,6 +84,7 @@ export default {
   retryLabel: "Retry",
   sentLabel: "Sent!",
   signUpLabel: "Sign Up",
+  signUpSubmitLabel: "Sign Up",
   signUpTerms: "",
   signUpWithLabel: "Sign up with %s",
   socialLoginInstructions: "",

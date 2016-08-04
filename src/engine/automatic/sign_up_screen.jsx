@@ -81,7 +81,7 @@ export default class SignUp extends Screen {
   }
 
   submitButtonLabel(m) {
-    return i18n.str(m, ["signUpLabel"]);
+    return i18n.str(m, ["signUpSubmitLabel"]);
   }
 
   submitHandler(m) {
