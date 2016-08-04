@@ -51,6 +51,7 @@ export default {
   failedLabel: "Не удалось совершить действие!",
   forgotPasswordAction: "Не помните пароль?",
   forgotPasswordInstructions: "Пожалуйста, введите Ваш адрес электронной почты. Мы отправим Вам сообщение для восстановления пароля.",
+  forgotPasswordSubmitLabel: "отправить по электронной почте",  // needs review
   invalidErrorHint: "Недействительные данные",
   lastLoginInstructions: "В прошлый раз Вы вошли под",
   loginAtLabel: "Войдите по ссылке %s",
@@ -81,7 +82,6 @@ export default {
   resendLabel: "Отправить повторный запрос",
   resendingLabel: "Повторная отправка...",
   retryLabel: "Повторить попытку",
-  sendForgotPasswordEmailLabel: "отправить по электронной почте",  // needs review
   sentLabel: "Отправлено!",
   signUpLabel: "Зарегистрироваться",
   signUpTerms: "",

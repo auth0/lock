@@ -51,6 +51,7 @@ export default {
   failedLabel: "Falha!",
   forgotPasswordAction: "Esqueceu sua senha?",
   forgotPasswordInstructions: "Por favor digite seu endereço de email. Enviarmos um email para resetar sua senha.",
+  forgotPasswordSubmitLabel: "Enviar email",  // needs review
   invalidErrorHint: "Inválido",
   lastLoginInstructions: "Na última vez você entrou com",
   loginAtLabel: "Login em %s",
@@ -81,7 +82,6 @@ export default {
   resendLabel: "Reenviar",
   resendingLabel: "Reenviando...",
   retryLabel: "Tentar novamente",
-  sendForgotPasswordEmailLabel: "Enviar email",  // needs review
   sentLabel: "Enviado!",
   signUpLabel: "Inscrever",
   signUpTerms: "",

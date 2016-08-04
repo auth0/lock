@@ -51,6 +51,7 @@ export default {
   failedLabel: "Fallito!",
   forgotPasswordAction: "Non ricordo la password?",
   forgotPasswordInstructions: "Si prega d’inserare il Suo indirizzo email. La invieremo una email per reimpostare la password.",
+  forgotPasswordSubmitLabel: "Inviare email",  // needs review
   invalidErrorHint: "Non valido",
   lastLoginInstructions: "L’ultima volta Lei ha effettuato l’accesso con",
   loginAtLabel: "Accedere a %s",
@@ -81,7 +82,6 @@ export default {
   resendLabel: "Inviare di nuovo",
   resendingLabel: "Reinvio...",
   retryLabel: "Riprovare per favore",
-  sendForgotPasswordEmailLabel: "Inviare email",  // needs review
   sentLabel: "Inviato!",
   signUpLabel: "Registrazione",
   signUpTerms: "",

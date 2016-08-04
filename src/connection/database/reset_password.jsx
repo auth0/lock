@@ -31,7 +31,7 @@ export default class ResetPassword extends Screen {
   }
 
   submitButtonLabel(m) {
-    return i18n.str(m, ["sendForgotPasswordEmailLabel"]);
+    return i18n.str(m, ["forgotPasswordSubmitLabel"]);
   }
 
   submitHandler() {
