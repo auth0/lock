@@ -55,6 +55,7 @@ export default {
   lastLoginInstructions: "La última vez inició sesión con",
   loginAtLabel: "Iniciar en %s",
   loginLabel: "Iniciar sesión",
+  logInLabel: "Iniciar sesión",
   loginWithLabel: "Iniciar con %s",
   notYourAccountAction: "¿No es su cuenta?",
   passwordInputPlaceholder: "su contraseña",

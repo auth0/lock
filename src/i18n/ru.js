@@ -55,6 +55,7 @@ export default {
   lastLoginInstructions: "В прошлый раз Вы вошли под",
   loginAtLabel: "Войдите по ссылке %s",
   loginLabel: "Вход",
+  logInLabel: "авторизоваться", // needs review
   loginWithLabel: "Вход через %s",
   notYourAccountAction: "Не Ваша учетная запись?",
   passwordInputPlaceholder: "Ваш пароль",

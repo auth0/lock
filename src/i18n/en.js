@@ -55,6 +55,7 @@ export default {
   lastLoginInstructions: "Last time you logged in with",
   loginAtLabel: "Login at %s",
   loginLabel: "Login",
+  logInLabel: "Log In",
   loginWithLabel: "Login with %s",
   notYourAccountAction: "Not your account?",
   passwordInputPlaceholder: "your password",
