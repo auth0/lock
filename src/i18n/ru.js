@@ -80,6 +80,7 @@ export default {
   resendLabel: "Отправить повторный запрос",
   resendingLabel: "Повторная отправка...",
   retryLabel: "Повторить попытку",
+  sendForgotPasswordEmailLabel: "отправить по электронной почте",  // needs review
   sentLabel: "Отправлено!",
   signUpLabel: "Зарегистрироваться",
   signUpTerms: "",

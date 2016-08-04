@@ -80,6 +80,7 @@ export default {
   resendLabel: "Reenviar",
   resendingLabel: "Reenviando...",
   retryLabel: "Tentar novamente",
+  sendForgotPasswordEmailLabel: "Enviar email",  // needs review
   sentLabel: "Enviado!",
   signUpLabel: "Inscrever",
   signUpTerms: "",
