@@ -93,7 +93,7 @@ export default class Base extends EventEmitter {
           screenName: screen.name,
           showBadge: l.hasFreeSubscription(m) === true,
           success: l.globalSuccess(m),
-          submitButtonLabel: "submit",
+          submitButtonLabel: l.ui.labeledSubmitButton(m) ? "submit" : null,
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
           terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
