@@ -56,7 +56,7 @@ export default {
   lastLoginInstructions: "L’ultima volta Lei ha effettuato l’accesso con",
   loginAtLabel: "Accedere a %s",
   loginLabel: "Accesso",
-  logInLabel: "Accesso", // needs review
+  loginSubmitLabel: "Accesso", // needs review
   loginWithLabel: "Accede con %s",
   notYourAccountAction: "Non è il suo account?",
   passwordInputPlaceholder: "La sua password",
