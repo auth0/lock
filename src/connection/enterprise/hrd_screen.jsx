@@ -32,7 +32,7 @@ export default class HRDScreen extends Screen {
   }
 
   submitButtonLabel(m) {
-    return i18n.str(m, ["logInLabel"]);
+    return i18n.str(m, ["loginSubmitLabel"]);
   }
 
   submitHandler(model) {
