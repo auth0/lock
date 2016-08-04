@@ -87,6 +87,7 @@ export default {
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Inicio de sesión único activado",
+  submitLabel: "Enviar",
   unrecoverableError: "Ocurrió un error.<br />Por favor, contacte a soporte técnico.",
   usernameFormatErrorHint: "1-15 letras, números y \"_\"",
   usernameInputPlaceholder: "su usuario",

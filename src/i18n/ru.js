@@ -87,6 +87,7 @@ export default {
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Единый вход включен",
+  submitLabel: "Отправить", // needs review
   unrecoverableError: "Произошла непредвиденная ошибка.<br />Пожалуйста, обратитесь в службу технической поддержки.",
   usernameFormatErrorHint: "Используйте 1-15 букв, цифр и \"_\"",
   usernameInputPlaceholder: "Ваше имя пользователя",

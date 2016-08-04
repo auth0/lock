@@ -87,6 +87,7 @@ export default {
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On habilitado",
+  submitLabel: "Enviar", // needs review
   unrecoverableError: "Algo deu errado.<br />Por favor entre em contato com o suporte.",
   usernameFormatErrorHint: "Use 1-15 letras, números e \"_\"",
   usernameInputPlaceholder: "seu nome de usuário",
