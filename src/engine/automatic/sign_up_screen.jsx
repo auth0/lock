@@ -25,6 +25,7 @@ import {
 } from '../automatic';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
+import * as i18n from '../../i18n';
 
 const Component = ({i18n, model}) => {
   const sso = isSSOEnabled(model) && hasScreen(model, "login");
@@ -77,6 +78,10 @@ export default class SignUp extends Screen {
 
   constructor() {
     super("main.signUp");
+  }
+
+  submitButtonLabel(m) {
+    return i18n.str(m, ["signUpLabel"]);
   }
 
   submitHandler(m) {
