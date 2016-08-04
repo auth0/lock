@@ -6,6 +6,10 @@
 @import "_transitions"
 @import "_mixins&keyframes"
 
+headerHeight = 118px
+submitHeight = 70px
+iphoneBar = 68px
+
 @media screen and (max-width: 480px)
   html.auth0-lock-html body
     & > *
@@ -124,12 +128,15 @@
 
   .auth0-lock-header
     text-align center
-    padding 14px 14px 14px 14px
+    padding 11px
+    height headerHeight
     color #333
     position relative
     background #fff
     border-radius 5px 5px 0 0
     overflow hidden
+    -webkit-box-sizing border-box
+    box-sizing border-box
 
   .auth0-lock-close-button, .auth0-lock-back-button
     background white
@@ -170,7 +177,7 @@
 
   .auth0-lock-header-bg
     position absolute
-    height 118px
+    height headerHeight
     width 100%
     overflow hidden
     top 0
@@ -221,7 +228,7 @@
   .auth0-lock-header-logo
     height 55px
     display inline-block
-    margin 0 0 10px
+    margin 0 0 11px
     vertical-align middle
 
   .auth0-lock-firstname
@@ -479,6 +486,7 @@
     -webkit-box-sizing border-box
     box-sizing border-box
     width 100%
+    height submitHeight
     overflow hidden
     border-radius 0 0 5px 5px
     -webkit-transition .2s ease-in-out
@@ -632,7 +640,7 @@
 
     .auth0-lock-list-code
       position relative
-      height calc(100% - 60px)
+      height calc(100% - 60px) //inputCode
       overflow-y scroll
       ul
         margin 0
@@ -869,7 +877,7 @@
       //mobile view
       @media screen and (max-width: 480px)
         background white
-        min-height calc(100vh - 118px - 70px) // - header - submit
+        min-height "calc(100vh - %s)" % (headerHeight + submitHeight)
         // min-height 375px
         display table
         width 100%
@@ -878,7 +886,7 @@
       .auth0-lock-body-content
         //mobile view
         @media screen and (max-width: 480px)
-          min-height calc(100vh - 118px - 70px - 68px) // - header - submit - iphone bar
+          min-height "calc(100vh - %s)" % (headerHeight + submitHeight + iphoneBar)
 
     .auth0-lock-content
       //mobile view
@@ -925,20 +933,18 @@
       @media screen and (max-width: 480px)
         border-radius 0
 
-
-
     &.auth0-lock-no-submit
       .auth0-lock-body-content
         //mobile view
         @media screen and (max-width: 480px)
-          min-height calc(100vh - 118px) // - header
+          min-height "calc(100vh - %s)" % headerHeight
 
     &.auth0-lock-iphone
       &.auth0-lock-no-submit
         .auth0-lock-body-content
           //mobile view
           @media screen and (max-width: 480px)
-            min-height calc(100vh - 118px - 68px) // - header - iphone bar
+            min-height "calc(100vh - %s)" % (headerHeight + iphoneBar)
 
     &.auth0-lock-with-terms
       .auth0-lock-content
@@ -947,18 +953,19 @@
           top calc(50% - 32px) // - terms
 
     &.auth0-lock-with-tabs
-      // .auth0-lock-body-content
-      //   //mobile view
-      //   @media screen and (max-width: 480px)
-      //     min-height calc(100vh - 118px - 70px - 63px) // - header - submit - tabs
-
-      .auth0-lock-content
+      .auth0-lock-body-content
         //mobile view
         @media screen and (max-width: 480px)
-          position relative
-          top auto
-          -webkit-transform none
-          transform none
+          min-height "calc(100vh - %s - 40px)" % (headerHeight + submitHeight) // - header - submit - tabs
+          padding-top 40px
+
+      // .auth0-lock-content
+      //   //mobile view
+      //   @media screen and (max-width: 480px)
+      //     position relative
+      //     top auto
+      //     -webkit-transform none
+      //     transform none
 
   // Opened in frame
 
@@ -1020,25 +1027,30 @@
 
 .auth0-lock.auth0-lock
   .auth0-lock-tabs-container
-    margin-bottom 20px
+    margin -20px -20px 20px
+    
+    //mobile view
+    @media screen and (max-width: 480px)
+      position absolute
+      top 0
+      left 0
+      width 100%
+      margin 0
 
   .auth0-lock-tabs
-    border 1px solid #5C666F
     background white
     padding 0
     margin 0
-    border-radius 3px
-    text-transform uppercase
-    font-size 11px
+    font-size 13px
     letter-spacing .7px
-    overflow hidden
+    box-shadow 0 1px 0 0 rgba(#5C666F,.2)
 
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: stretch;
+    display flex
+    flex-direction row
+    flex-wrap wrap
+    justify-content center
+    align-content center
+    align-items stretch
 
     li
       width 50%
@@ -1051,18 +1063,18 @@
       cursor pointer
 
       a
-        padding 8px 10px
+        padding 11px 10px
         display block
         text-decoration none
-        color #5C666F
+        color rgba(#5C666F,.6)
         font-weight 500
 
       &.auth0-lock-tabs-current
-        background-color #5C666F
+        box-shadow 0 1px 0 0 #5C666F
         cursor default
-
+        
         a
-          color white
+          color #5C666F
 
 // password strength
 
