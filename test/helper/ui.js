@@ -157,8 +157,7 @@ const check = (lock, query) => {
 const checkFn = query => lock => check(lock, query);
 export const clickTermsCheckbox = checkFn(".auth0-lock-sign-up-terms-agreement label input[type='checkbox']");
 const fillInput = (lock, name, str) => {
-  var method = name === "email" ? "input" : "change";
-  Simulate[method](qInput(lock, name, true), {target: {value: str}});
+  Simulate.change(qInput(lock, name, true), {target: {value: str}});
 };
 const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
 
