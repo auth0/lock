@@ -5,22 +5,14 @@ import Container from './box/container';
 
 class ContainerManager {
 
-  constructor() {
-    this.cache = {};
-  }
-
   ensure(id, shouldAppend) {
-    let container = this.cache[id];
-
-    if (!container) {
-      container = this.cache[id] = global.document.getElementById(id);
-    }
+    let container = global.document.getElementById(id);
 
     if (!container && shouldAppend) {
       container = global.document.createElement('div');
       container.id = id;
       container.className = "auth0-lock-container";
-      this.cache[id] = global.document.body.appendChild(container);
+      global.document.body.appendChild(container);
     }
 
     if (!container) {
