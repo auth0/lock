@@ -10,6 +10,14 @@ export default class EmailInput extends React.Component {
     this.state = {};
   }
 
+  shouldComponentUpdate(nextProps) {
+    const { invalidHint, isValid, value, onChange } = this.props;
+
+    return invalidHint != nextProps.invalidHint
+      || isValid != nextProps.isValid
+      || value != nextProps.value;
+  }
+
   render() {
     const { invalidHint, isValid, onChange, ...props } = this.props;
     const { focused } = this.state;
@@ -29,7 +37,7 @@ export default class EmailInput extends React.Component {
           placeholder="yours@example.com"
           autoComplete="off"
           autoCapitalize="off"
-          onInput={::this.handleOnChange}
+          onChange={::this.handleOnChange}
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
           {...props}/>
