@@ -118,7 +118,9 @@ class Automatic {
     }
 
     if (hasScreen(m, "login")) {
-      if (!hasSkippedQuickAuth(m) && l.ui.rememberLastLogin(m)) {
+      if (!hasSkippedQuickAuth(m)
+           && l.ui.rememberLastLogin(m)
+           && hasInitialScreen(m, "login")) {
         if (isInCorpNetwork(m)) {
           return new KerberosScreen();
         }
