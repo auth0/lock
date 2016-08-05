@@ -342,6 +342,10 @@ export function hasStopped(m) {
   return get(m, "stopped");
 }
 
+export function emitHashParsedEvent(m, parsedHash) {
+  emitEvent(m, "hash_parsed", parsedHash);
+}
+
 export function emitAuthenticatedEvent(m, result) {
   emitEvent(m, "authenticated", result);
 }
