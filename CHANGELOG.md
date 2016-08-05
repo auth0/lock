@@ -1,3 +1,12 @@
+## [10.0.2] - 2016-08-05
+
+### Fixed
+
+- Fix header in Edge (#528)
+- Allow to reuse a given container id (#533)
+- Stop showing last login screen when the initial screen is not login (#534)
+- Fix email input in IE 10 (#537)
+
 ## [10.0.1] - 2016-07-27
 
 ### Fixed
