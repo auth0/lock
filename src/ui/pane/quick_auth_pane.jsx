@@ -45,9 +45,9 @@ const QuickAuthPane = (props) => {
 
 QuickAuthPane.propTypes = {
   alternativeLabel: React.PropTypes.string,
-  alternativeClickHandler: (props, propName, component) => {
+  alternativeClickHandler: (props, propName, component, ...rest) => {
     if (props.alternativeLabel !== undefined) {
-      return React.PropTypes.func.isRequired(props, propName, component)
+      return React.PropTypes.func.isRequired(props, propName, component, ...rest);
     }
   },
   buttonLabel: React.PropTypes.string.isRequired,
