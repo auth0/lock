@@ -248,7 +248,7 @@ export function error(x, str) {
 }
 
 export function allowedConnections(m) {
-  return get(m, "allowedConnections");
+  return tget(m, "allowedConnections") || get(m, "allowedConnections");
 }
 
 export function connections(m, type = undefined, ...strategies) {
@@ -377,4 +377,12 @@ export function emitAuthorizationErrorEvent(m, error) {
 
 export function showBadge(m) {
   return hasFreeSubscription(m) || false;
+}
+
+export function overrideOptions(m, opts) {
+  return tset(
+    m,
+    "allowedConnections",
+    opts.allowedConnections && Immutable.fromJS(opts.allowedConnections)
+  );
 }
