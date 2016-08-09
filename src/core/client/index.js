@@ -67,6 +67,14 @@ export function pickConnections(m, strs) {
     .groupBy(c => c.get("type"));
 }
 
+const emptyConnections = Immutable.fromJS({
+  database: [],
+  enterprise: [],
+  passwordless: [],
+  social: [],
+  unknown: [] // TODO: should be oauth2
+});
+
 export function initClient(m, client) {
   return initNS(m, formatClient(client));
 }
@@ -83,13 +91,7 @@ function formatClient(o) {
 }
 
 function formatClientConnections(o) {
-  const result = {
-    database: [],
-    enterprise: [],
-    passwordless: [],
-    social: [],
-    unknown: [] // TODO: should be oauth2
-  };
+  const result = emptyConnections.toJS();
 
   for (var i=0; i < (o.strategies || []).length; i++) {
     const strategy = o.strategies[i];
@@ -131,4 +133,8 @@ function formatClientConnection(connectionType, connection) {
   }
 
   return result;
+}
+
+export function clientConnections(m) {
+  return get(m, "connections", emptyConnections);
 }

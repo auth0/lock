@@ -39,6 +39,7 @@ function syncClientSettingsSuccess(m, result) {
     pickConnections(result, l.allowedConnections(m))
   );
 
+  m = l.filterConnections(m);
   m = l.runHook(m, "didReceiveClientSettings");
 
   return m;

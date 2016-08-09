@@ -6,7 +6,7 @@ import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
-import { hasFreeSubscription } from './client/index';
+import { clientConnections, hasFreeSubscription } from './client/index';
 
 const {
   get,
@@ -290,6 +290,24 @@ export function findConnection(m, name) {
 
 export function hasConnection(m, name) {
   return !!findConnection(m, name);
+}
+
+export function filterConnections(m) {
+  const allowed = allowedConnections(m);
+
+  const order = allowed.count() === 0
+    ? _ => 0
+    : c => allowed.indexOf(c.get("name"));
+
+  return tset(
+    m,
+    ["connections"],
+    clientConnections(m).map(cs => {
+      return cs
+        .filter(c => order(c) >= 0)
+        .sort((c1, c2) => order(c1) - order(c2));
+    })
+  );
 }
 
 export function runHook(m, str, ...args) {
