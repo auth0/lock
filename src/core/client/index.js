@@ -4,10 +4,10 @@ import { dataFns } from '../../utils/data_utils';
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
 import { STRATEGIES as ENTERPRISE_STRATEGIES } from '../../connection/enterprise';
 
-const { initNS } = dataFns(["client"]);
+const { initNS, get } = dataFns(["client"]);
 
 export function hasFreeSubscription(m) {
-  return ["free", "dev"].indexOf(m.get("subscription")) > -1;
+  return ["free", "dev"].indexOf(get(m, ["tenant", "subscription"])) > -1;
 }
 
 export function connection(m, strategyName, name) {

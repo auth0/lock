@@ -6,6 +6,7 @@ import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
+import { hasFreeSubscription } from './client/index';
 
 const {
   get,
@@ -356,6 +357,6 @@ export function emitAuthorizationErrorEvent(m, error) {
   emitEvent(m, "authorization_error", error);
 }
 
-export function hasFreeSubscription(m) {
-  return get(m, "hasFreeSubscription");
+export function showBadge(m) {
+  return hasFreeSubscription(m) || false;
 }
