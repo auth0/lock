@@ -1,5 +1,4 @@
 .DS_Store
-build/
 css/index.css
 lib/
 node_modules/
