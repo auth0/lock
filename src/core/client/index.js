@@ -1,7 +1,10 @@
-import { List, Map } from 'immutable';
-// TODOL this module should depend from social stuff
+import Immutable, { List, Map } from 'immutable';
+import { dataFns } from '../../utils/data_utils';
+// TODO: this module should depend from social stuff
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
 import { STRATEGIES as ENTERPRISE_STRATEGIES } from '../../connection/enterprise';
+
+const { initNS } = dataFns(["client"]);
 
 export function hasFreeSubscription(m) {
   return ["free", "dev"].indexOf(m.get("subscription")) > -1;
@@ -62,4 +65,70 @@ export function pickConnections(m, strs) {
   return strategies
     .sort((c1, c2) => order(c1) - order(c2))
     .groupBy(c => c.get("type"));
+}
+
+export function initClient(m, client) {
+  return initNS(m, formatClient(client));
+}
+
+function formatClient(o) {
+  return new Immutable.fromJS({
+    id: o.id,
+    tenant: {
+      name: o.tenant,
+      subscription: o.subscription
+    },
+    connections: formatClientConnections(o)
+  })
+}
+
+function formatClientConnections(o) {
+  const result = {
+    database: [],
+    enterprise: [],
+    passwordless: [],
+    social: [],
+    unknown: [] // TODO: should be oauth2
+  };
+
+  for (var i=0; i < (o.strategies || []).length; i++) {
+    const strategy = o.strategies[i];
+    const connectionType = strategyNameToConnectionType(strategy.name);
+    const connections = strategy.connections.map(connection => {
+      return formatClientConnection(connectionType, connection);
+    });
+    result[connectionType].push(...connections);
+  }
+
+  return result;
+}
+
+function formatClientConnection(connectionType, connection) {
+  const result = {
+    name: connection.name,
+    type: connectionType
+  };
+
+  if (connectionType === "database") {
+    result.passwordPolicy = connection.passwordPolicy || "none";
+    result.allowSignup = typeof connection.showSignup === "boolean"
+      ? connection.showSignup
+      : true;
+    result.allowForgot = typeof connection.showForgot === "boolean"
+      ? connection.showForgot
+      : true;
+    result.requireUsername = typeof connection.requires_username === "boolean"
+      ? connection.requires_username
+      : false;
+  }
+
+  if (connectionType === "enterprise") {
+    const domains = connection.domain_aliases || [];
+    if (connection.domain) {
+      domains.unshift(connection.domain);
+    }
+    result.domains = domains;
+  }
+
+  return result;
 }

@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import { fetchClientSettings } from './client/settings';
-import { hasFreeSubscription, pickConnections } from './client/index';
+import { initClient, hasFreeSubscription, pickConnections } from './client/index';
 import { fetchSSOData } from './sso/data';
 import * as l from './index';
 import { isADEnabled } from '../connection/enterprise'; // shouldn't depend on this
@@ -32,6 +32,7 @@ export function syncRemoteData(m) {
 }
 
 function syncClientSettingsSuccess(m, result) {
+  m = initClient(m, result);
   result = Immutable.fromJS(result);
   m = m.setIn(
     ["core", "connections"],
