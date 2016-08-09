@@ -49,7 +49,7 @@ module.exports = function(grunt) {
             debug: true,
             extensions: ".jsx",
             transform: ["babelify"],
-            plugin: ['livereactload']
+            // plugin: ['livereactload']
           },
           watch: true
         },
