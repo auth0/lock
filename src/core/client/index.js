@@ -97,7 +97,7 @@ function formatClientConnections(o) {
     const strategy = o.strategies[i];
     const connectionType = strategyNameToConnectionType(strategy.name);
     const connections = strategy.connections.map(connection => {
-      return formatClientConnection(connectionType, connection);
+      return formatClientConnection(connectionType, strategy.name, connection);
     });
     result[connectionType].push(...connections);
   }
@@ -105,9 +105,10 @@ function formatClientConnections(o) {
   return result;
 }
 
-function formatClientConnection(connectionType, connection) {
+function formatClientConnection(connectionType, strategyName, connection) {
   const result = {
     name: connection.name,
+    strategy: strategyName,
     type: connectionType
   };
 
@@ -122,6 +123,12 @@ function formatClientConnection(connectionType, connection) {
     result.requireUsername = typeof connection.requires_username === "boolean"
       ? connection.requires_username
       : false;
+
+    // TODO: remove once database code uses the new format
+    result.passwordPolicy = connection.passwordPolicy;
+    result.showSignup = connection.showSignup;
+    result.showForgot = connection.showForgot;
+    result.requires_username = connection.requires_username;
   }
 
   if (connectionType === "enterprise") {
@@ -130,6 +137,10 @@ function formatClientConnection(connectionType, connection) {
       domains.unshift(connection.domain);
     }
     result.domains = domains;
+
+    // TODO: remove once enterprise code uses the new format
+    result.domain = connection.domain;
+    result.domain_aliases = connection.domain_aliases;
   }
 
   return result;
