@@ -270,7 +270,7 @@ export function hasInitialScreen(m, str) {
 }
 
 export function databaseConnectionRequiresUsername(m) {
-  return (databaseConnection(m) || Map()).toJS().requires_username;
+  return (databaseConnection(m) || Map()).toJS().requireUsername;
 }
 
 export function databaseUsernameStyle(m) {
@@ -293,10 +293,10 @@ export function authWithUsername(m) {
 }
 
 export function hasScreen(m, s) {
-  const { showForgot, showSignup } = (databaseConnection(m) || Map()).toJS();
+  const { allowForgot, allowSignup } = (databaseConnection(m) || Map()).toJS();
 
-  return !(showForgot === false && s === "forgotPassword")
-    && !(showSignup === false && s === "signUp")
+  return !(allowForgot === false && s === "forgotPassword")
+    && !(allowSignup === false && s === "signUp")
     && availableScreens(m).contains(s);
 }
 

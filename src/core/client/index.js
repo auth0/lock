@@ -123,12 +123,6 @@ function formatClientConnection(connectionType, strategyName, connection) {
     result.requireUsername = typeof connection.requires_username === "boolean"
       ? connection.requires_username
       : false;
-
-    // TODO: remove once database code uses the new format
-    result.passwordPolicy = connection.passwordPolicy;
-    result.showSignup = connection.showSignup;
-    result.showForgot = connection.showForgot;
-    result.requires_username = connection.requires_username;
   }
 
   if (connectionType === "enterprise") {
