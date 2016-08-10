@@ -142,7 +142,7 @@ export function validateAndSubmit(id, fields = [], f) {
 
 export function logIn(id, fields, params = {}) {
   validateAndSubmit(id, fields, m => {
-    webApi.logIn(id, params, (error, result) => {
+    webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
       if (error) {
         setTimeout(() => logInError(id, fields, error), 250);
       } else {

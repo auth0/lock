@@ -22,14 +22,11 @@ class Auth0WebAPI {
       popupOptions: opts.popupOptions,
       sso: opts.sso
     };
-
-    this.authParams[lockID] = opts.params;
   }
 
-  logIn(lockID, options, cb) {
+  logIn(lockID, options, authParams, cb) {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
-    const authParams = this.authParams[lockID];
     const authOpts = this.authOpts[lockID];
     const f = loginCallback(!authOpts.popup, cb);
     const client = this.clients[lockID];

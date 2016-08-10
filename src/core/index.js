@@ -151,7 +151,7 @@ export const ui = {
 const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 
 export const auth = {
-  params: lock => getAuthAttribute(lock, "params"),
+  params: m => tget(m, "authParams") || getAuthAttribute(m, "params"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
   responseType: lock => getAuthAttribute(lock, "responseType"),
@@ -160,7 +160,6 @@ export const auth = {
 
 
 function extractAuthOptions(options) {
-  // TODO: shouldn't all options be namespased in authentication?
   let {
     params,
     redirect,
@@ -380,9 +379,15 @@ export function showBadge(m) {
 }
 
 export function overrideOptions(m, opts) {
-  return tset(
-    m,
-    "allowedConnections",
-    opts.allowedConnections && Immutable.fromJS(opts.allowedConnections)
-  );
+  if (!opts) opts = {};
+
+  if (opts.allowedConnections) {
+    m = tset(m, "allowedConnections", Immutable.fromJS(opts.allowedConnections));
+  }
+
+  if (opts.auth && opts.auth.params) {
+    m = tset(m, "authParams", Immutable.fromJS(opts.auth.params));
+  }
+
+  return m;
 }
