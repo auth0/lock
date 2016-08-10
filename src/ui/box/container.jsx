@@ -7,7 +7,7 @@ const badgeSvg = '<svg width="18px" height="21px" viewBox="0 0 18 21" version="1
 const BottomBadge = ({link}) => (
   <span className="auth0-lock-badge-bottom">
     <a href={link} target="_blank" className="auth0-lock-badge">
-      <span dangerouslySetInnerHTML={{__html: badgeSvg}} />
+      Powered by<span dangerouslySetInnerHTML={{__html: badgeSvg}} />Auth0
     </a>
   </span>
 );
