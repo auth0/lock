@@ -145,7 +145,11 @@ export const ui = {
   mobile: lock => getUIAttribute(lock, "mobile"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
-  rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
+  rememberLastLogin: m => tget(
+    m,
+    "rememberLastLogin",
+    getUIAttribute(m, "rememberLastLogin")
+  )
 };
 
 const { get: getAuthAttribute } = dataFns(["core", "auth"]);
@@ -387,6 +391,10 @@ export function overrideOptions(m, opts) {
 
   if (opts.auth && opts.auth.params) {
     m = tset(m, "authParams", Immutable.fromJS(opts.auth.params));
+  }
+
+  if (typeof opts.rememberLastLogin === "boolean") {
+    m = tset(m, "rememberLastLogin", opts.rememberLastLogin);
   }
 
   return m;
