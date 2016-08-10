@@ -48,48 +48,18 @@ function assertMaybeArray(opts, name) {
 function processDatabaseOptions(opts) {
   let {
     additionalSignUpFields,
-    allowForgotPassword,
-    allowLogin,
-    allowSignUp,
     defaultDatabaseConnection,
     forgotPasswordLink,
-    initialScreen,
     loginAfterSignUp,
     mustAcceptTerms,
     signUpLink,
     usernameStyle
   } = opts;
 
+  let { initialScreen, screens } = processScreenOptions(opts);
+
   if (!assertMaybeEnum(opts, "usernameStyle", ["email", "username"])) {
     usernameStyle = undefined;
-  }
-
-  let screens = ["login", "signUp", "forgotPassword"];
-
-  if (!assertMaybeBoolean(opts, "allowForgotPassword")) {
-    allowForgotPassword = undefined;
-  } else if (allowForgotPassword === false) {
-    screens = screens.filter(x => x !== "forgotPassword");
-  }
-
-  if (!assertMaybeBoolean(opts, "allowLogin")) {
-    allowLogin = undefined;
-  } else if (allowLogin === false) {
-    screens = screens.filter(x => x !== "login");
-  }
-
-  if (!assertMaybeBoolean(opts, "allowSignUp")) {
-    allowSignUp = undefined;
-  } else if (allowSignUp === false) {
-    screens = screens.filter(x => x != "signUp");
-  }
-
-  if (!assertMaybeEnum(opts, "initialScreen", screens)) {
-    initialScreen = undefined;
-  }
-
-  if (initialScreen === undefined && screens.length > 0) {
-    initialScreen = screens[0];
   }
 
   if (!assertMaybeString(opts, "defaultDatabaseConnection")) {
@@ -190,6 +160,59 @@ function processDatabaseOptions(opts) {
   }).filter(x => typeof x !== "undefined").toJS();
 }
 
+function processScreenOptions(opts, defaults = {allowLogin: true, allowSignUp: true, allowForgotPassword: true, initialScreen: undefined}) {
+  let {
+    allowForgotPassword,
+    allowLogin,
+    allowSignUp,
+    initialScreen
+  } = opts;
+
+  const screens = [];
+
+  if (allowLogin === true
+       || (!assertMaybeBoolean(opts, "allowLogin") && defaults.allowLogin)
+       || (allowLogin === undefined && defaults.allowLogin)) {
+    screens.push("login");
+  }
+
+  if (allowSignUp === true
+       || (!assertMaybeBoolean(opts, "allowSignUp") && defaults.allowSignUp)
+       || (allowSignUp === undefined && defaults.allowSignUp)) {
+    screens.push("signUp");
+  }
+
+
+  if (allowForgotPassword === true
+       || (!assertMaybeBoolean(opts, "allowForgotPassword")
+            && defaults.allowForgotPassword)
+       || (allowForgotPassword === undefined && defaults.allowForgotPassword)) {
+    screens.push("forgotPassword");
+  }
+
+  if (!assertMaybeEnum(opts, "initialScreen", screens)) {
+    initialScreen = undefined;
+  }
+
+  if (initialScreen === undefined) {
+    initialScreen = defaults.initialScreen || screens[0];
+  }
+
+  return { initialScreen, screens: new List(screens) };
+}
+
+export function overrideDatabaseOptions(m, opts) {
+  const { initialScreen, screens } = processScreenOptions(opts, {
+    allowLogin: availableScreens(m).contains("login"),
+    allowSignUp: availableScreens(m).contains("signUp"),
+    allowForgotPassword: availableScreens(m).contains("forgotPassword"),
+    initialScreen: get(m, "initialScreen")
+  });
+  m = tset(m, "initialScreen", initialScreen);
+  m = tset(m, "screens", screens);
+  return m;
+}
+
 export function defaultDatabaseConnection(m) {
   const name = defaultDatabaseConnectionName(m);
   return name && l.findConnection(m, name);
@@ -228,14 +251,22 @@ export function setScreen(m, name, fields = []) {
 
 export function getScreen(m) {
   const screen = tget(m, "screen");
-  const initialScreen = get(m, "initialScreen");
+  const initialScreen = getInitialScreen(m);
   const screens = [screen, initialScreen, "login", "signUp", "forgotPassword"];
   const availableScreens = screens.filter(x => hasScreen(m, x));
   return availableScreens[0];
 }
 
+export function availableScreens(m) {
+  return tget(m, "screens") || get(m, "screens", new List());
+}
+
+export function getInitialScreen(m) {
+  return tget(m, "initialScreen") || get(m, "initialScreen");
+}
+
 export function hasInitialScreen(m, str) {
-  return get(m, "initialScreen") === str;
+  return getInitialScreen(m) === str;
 }
 
 export function databaseConnectionRequiresUsername(m) {
@@ -266,7 +297,7 @@ export function hasScreen(m, s) {
 
   return !(showForgot === false && s === "forgotPassword")
     && !(showSignup === false && s === "signUp")
-    && get(m, "screens").contains(s);
+    && availableScreens(m).contains(s);
 }
 
 export function shouldAutoLogin(m) {

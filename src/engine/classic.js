@@ -12,7 +12,8 @@ import {
   getScreen,
   hasInitialScreen,
   hasScreen,
-  initDatabase
+  initDatabase,
+  overrideDatabaseOptions
 } from '../connection/database/index';
 import {
   defaultEnterpriseConnection,
@@ -104,6 +105,10 @@ class Classic {
     }
 
     return m;
+  }
+
+  willShow(m, opts) {
+    return overrideDatabaseOptions(m, opts);
   }
 
   render(m) {
