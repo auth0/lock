@@ -20,7 +20,7 @@ const Component = ({i18n, model}) => {
 
   return (
     <QuickAuthPane
-      buttonLabel={i18n.str("loginAtLabel", quickAuthConnection(model).get("domain"))}
+      buttonLabel={i18n.str("loginAtLabel", quickAuthConnection(model).getIn(["domains", 0]))}
       buttonClickHandler={e => logIn(l.id(model), quickAuthConnection(model))}
       header={header}
       strategy={icon(quickAuthConnection(model).get("strategy"))}

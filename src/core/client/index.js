@@ -137,10 +137,6 @@ function formatClientConnection(connectionType, strategyName, connection) {
       domains.unshift(connection.domain);
     }
     result.domains = domains;
-
-    // TODO: remove once enterprise code uses the new format
-    result.domain = connection.domain;
-    result.domain_aliases = connection.domain_aliases;
   }
 
   return result;
