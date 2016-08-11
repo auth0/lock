@@ -56,7 +56,7 @@ export default {
   lastLoginInstructions: "Na última vez você entrou com",
   loginAtLabel: "Login em %s",
   loginLabel: "Login",
-  loginLabel: "Log in", // needs review
+  loginSubmitLabel: "Log in", // needs review
   loginWithLabel: "Login com %s",
   notYourAccountAction: "Não é sua conta?",
   passwordInputPlaceholder: "sua senha",
