@@ -24,7 +24,7 @@
     -webkit-box-sizing initial
     -moz-box-sizing initial
     box-sizing initial
-  
+
   svg
     background-color transparent
 
@@ -763,28 +763,28 @@
   // Lock badge bottom link
 
   .auth0-lock-badge-bottom
-    -webkit-transition -webkit-transform .5s ease 1s, opacity .2s ease 0s
-    transition transform .5s ease 1s, opacity .2s ease 0s
-    -webkit-transform translateY(-200%) scale(.8)
-    transform translateY(-200%) scale(.8)
     position absolute
-    left 0
-    right 0
-    opacity 0
+    bottom 15px
+    left 15px
     z-index -1
     text-align center
-    margin 20px auto 0
-    width 100%
-    max-width 300px
+    padding: 6px 10px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.1);
 
     .auth0-lock-badge
       display inline-block
+      color rgba(white,.7)
+      font-size 14px
+
       svg
         vertical-align middle
+        margin 0 4px
 
       &:hover
         svg
-          g#Lock
+          g#LogoBadge
             fill #EB5424
             fill-opacity 1
 
@@ -908,14 +908,6 @@
         border-radius 0
 
     .auth0-lock-badge-bottom
-      -webkit-transform translateY(0%) scale(1)
-      transform translateY(0%) scale(1)
-      -webkit-transition -webkit-transform 1.2s ease, opacity 1.2s ease
-      transition transform 1.2s ease, opacity 1.2s ease
-      -webkit-transition-delay 1s
-      transition-delay 1s
-      opacity 1
-
       //mobile view
       @media screen and (max-width: 480px)
         display none
@@ -987,13 +979,6 @@
       -webkit-transition-delay .5s
       transition-delay .5s
       margin auto
-
-    .auth0-lock-badge-bottom
-      -webkit-transform translateY(0%)  scale(1)
-      transform translateY(0%)  scale(1)
-      -webkit-transition -webkit-transform 1.2s ease 1s, opacity 1.2s ease 1s
-      transition transform 1.2s ease 1s, opacity 1.2s ease 1s
-      opacity 1
 
     .global-error
       position absolute
