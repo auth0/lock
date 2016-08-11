@@ -1,6 +1,6 @@
 import Base from '../index';
-import Login from './automatic/login';
-import SignUp from './automatic/sign_up_screen';
+import Login from './classic/login';
+import SignUp from './classic/sign_up_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
 import {
@@ -56,7 +56,7 @@ export function useBigSocialButtons(m) {
   return useBigButtons(m, hasOnlyClassicConnections(m, "social") ? 5 : 3);
 }
 
-class Automatic {
+class Classic {
 
   static SCREENS = {
     login: Login,
@@ -142,7 +142,7 @@ class Automatic {
       }
     }
 
-    const Screen = Automatic.SCREENS[getScreen(m)];
+    const Screen = Classic.SCREENS[getScreen(m)];
     if (Screen) return new Screen();
 
     setTimeout(() => {
@@ -157,4 +157,4 @@ class Automatic {
 
 }
 
-export default new Automatic();
+export default new Classic();

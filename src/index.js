@@ -1,6 +1,6 @@
 import Auth0 from 'auth0-js';
 import Core from './core';
-import automatic from './engine/automatic';
+import classic from './engine/classic';
 import css from '../css/index.css';
 
 const styleId = "auth0-lock-style";
@@ -23,7 +23,7 @@ if (style.styleSheet) {
 export default class Auth0Lock extends Core {
 
   constructor(clientID, domain, options) {
-    super(clientID, domain, options, automatic);
+    super(clientID, domain, options, classic);
   }
 
 }

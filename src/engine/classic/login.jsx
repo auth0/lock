@@ -34,7 +34,7 @@ import {
   hasOnlyClassicConnections,
   isSSOEnabled,
   useBigSocialButtons
-} from '../automatic';
+} from '../classic';
 import * as i18n from '../../i18n';
 
 
