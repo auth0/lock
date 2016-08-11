@@ -73,9 +73,9 @@ export function openLock(id, opts) {
   l.emitEvent(m, "show");
 
   swap(updateEntity, "lock", id, m => {
-    m = l.runHook(m, "willShow", opts);
     m = l.overrideOptions(m, opts);
     m = l.filterConnections(m);
+    m = l.runHook(m, "willShow", opts);
     return l.render(m);
   });
 
