@@ -34,6 +34,7 @@ export function handleAuthCallback() {
 
 function parseHash(m, hash) {
   const parsedHash = webApi.parseHash(l.id(m), hash);
+  l.emitHashParsedEvent(m, parsedHash);
 
   let error, result;
 
