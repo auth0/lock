@@ -54,10 +54,10 @@ export default {
   forgotPasswordSubmitLabel: "Send email",
   invalidErrorHint: "Invalid",
   lastLoginInstructions: "Last time you logged in with",
-  loginAtLabel: "Login at %s",
-  loginLabel: "Login",
+  loginAtLabel: "Log in at %s",
+  loginLabel: "Log In",
   loginSubmitLabel: "Log In",
-  loginWithLabel: "Login with %s",
+  loginWithLabel: "Log in with %s",
   notYourAccountAction: "Not your account?",
   passwordInputPlaceholder: "your password",
   passwordStrength: {
