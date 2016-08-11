@@ -35,6 +35,7 @@ import {
   isSSOEnabled,
   useBigSocialButtons
 } from '../automatic';
+import * as i18n from '../../i18n';
 
 
 function shouldRenderTabs(m) {
@@ -122,6 +123,10 @@ export default class Login extends Screen {
 
   renderTabs(model) {
     return shouldRenderTabs(model);
+  }
+
+  submitButtonLabel(m) {
+    return i18n.str(m, ["loginSubmitLabel"]);
   }
 
   submitHandler(model) {

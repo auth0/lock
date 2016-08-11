@@ -51,10 +51,12 @@ export default {
   failedLabel: "Fallito!",
   forgotPasswordAction: "Non ricordo la password?",
   forgotPasswordInstructions: "Si prega d’inserare il Suo indirizzo email. La invieremo una email per reimpostare la password.",
+  forgotPasswordSubmitLabel: "Inviare email",  // needs review
   invalidErrorHint: "Non valido",
   lastLoginInstructions: "L’ultima volta Lei ha effettuato l’accesso con",
   loginAtLabel: "Accedere a %s",
   loginLabel: "Accesso",
+  loginSubmitLabel: "Accesso", // needs review
   loginWithLabel: "Accede con %s",
   notYourAccountAction: "Non è il suo account?",
   passwordInputPlaceholder: "La sua password",
@@ -82,11 +84,13 @@ export default {
   retryLabel: "Riprovare per favore",
   sentLabel: "Inviato!",
   signUpLabel: "Registrazione",
+  signUpSubmitLabel: "Registrazione", // needs review
   signUpTerms: "",
   signUpWithLabel: "Registra con %s",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Single Sign-On abilitati",
+  submitLabel: "Invio", // needs review
   unrecoverableError: "Qualcosa è andato storto.<br />Si prega di contattare il supporto tecnico.",
   usernameFormatErrorHint: "Si prega di utilizzare 1-15 lettere, numeri e \"_\"",
   usernameInputPlaceholder: "il Suo nome utente",

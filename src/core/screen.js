@@ -1,4 +1,5 @@
 import * as l from './index';
+import * as i18n from '../i18n';
 
 export default class Screen {
 
@@ -12,6 +13,10 @@ export default class Screen {
 
   escHandler() {
     return null;
+  }
+
+  submitButtonLabel(m) {
+    return i18n.str(m, ["submitLabel"]);
   }
 
   submitHandler() {
@@ -29,4 +34,5 @@ export default class Screen {
   renderTerms() {
     return null;
   }
+
 }

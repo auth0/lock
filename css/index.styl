@@ -499,12 +499,20 @@ iphoneBar = 68px
     -webkit-transition .2s ease-in-out
     transition .2s ease-in-out
 
+    color white
+    letter-spacing 1px
+    font-size 14px
+    text-transform uppercase
+
     span
       display inline-block
       -webkit-transition .2s ease-in-out
       transition .2s ease-in-out
+
       svg
         vertical-align middle
+        &.icon-text
+          margin -4px 0 0 5px
 
     +breakpoint("mobile")
       &:hover:not([disabled])
@@ -1020,7 +1028,7 @@ iphoneBar = 68px
 .auth0-lock.auth0-lock
   .auth0-lock-tabs-container
     margin -20px -20px 20px
-    
+
     //mobile view
     @media screen and (max-width: 480px)
       position absolute
@@ -1069,7 +1077,7 @@ iphoneBar = 68px
       &.auth0-lock-tabs-current
         box-shadow 0 1px 0 0 #5C666F
         cursor default
-        
+
         a
           color #5C666F
 

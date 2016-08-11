@@ -4,6 +4,7 @@ import ResetPasswordPane from './reset_password_pane';
 import { authWithUsername, hasScreen } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 import { renderPasswordResetConfirmation } from './password_reset_confirmation';
+import * as i18n from '../../i18n';
 
 const Component = ({i18n, model}) => {
   const headerText = i18n.html("forgotPasswordInstructions") || null;
@@ -27,6 +28,10 @@ export default class ResetPassword extends Screen {
 
   backHandler(m) {
     return hasScreen(m, "login") ? cancelResetPassword : undefined;
+  }
+
+  submitButtonLabel(m) {
+    return i18n.str(m, ["forgotPasswordSubmitLabel"]);
   }
 
   submitHandler() {

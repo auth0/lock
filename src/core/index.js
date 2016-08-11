@@ -97,7 +97,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
-  const { logo, primaryColor } = theme;
+  const { labeledSubmitButton, logo, primaryColor } = theme;
 
   const avatar = options.avatar !== null;
   const customAvatarProvider = options.avatar
@@ -115,6 +115,7 @@ function extractUIOptions(id, options) {
     avatarProvider: avatarProvider,
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
+    labeledSubmitButton: undefined === labeledSubmitButton ? true : !!labeledSubmitButton,
     language: undefined === options.language ? "en" : trim(options.language || "").toLowerCase(),
     dict: typeof options.languageDictionary === "object" ? options.languageDictionary : {},
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
@@ -137,6 +138,7 @@ export const ui = {
   closable: lock => getUIAttribute(lock, "closable"),
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
+  labeledSubmitButton: lock => getUIAttribute(lock, "labeledSubmitButton"),
   language: lock => getUIAttribute(lock, "language"),
   logo: lock => getUIAttribute(lock, "logo"),
   mobile: lock => getUIAttribute(lock, "mobile"),

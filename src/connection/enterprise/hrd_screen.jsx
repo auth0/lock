@@ -4,6 +4,7 @@ import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import HRDPane from './hrd_pane';
 import { cancelHRD, logIn } from './actions';
 import { enterpriseDomain, isSingleHRDConnection }  from '../enterprise';
+import * as i18n from '../../i18n';
 
 const Component = ({i18n, model}) => {
   const headerText = i18n.html("enterpriseActiveLoginInstructions", enterpriseDomain(model)) || null;
@@ -28,6 +29,10 @@ export default class HRDScreen extends Screen {
 
   backHandler(model) {
     return isSingleHRDConnection(model) ? null : cancelHRD;
+  }
+
+  submitButtonLabel(m) {
+    return i18n.str(m, ["loginSubmitLabel"]);
   }
 
   submitHandler(model) {

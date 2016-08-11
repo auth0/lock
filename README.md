@@ -121,12 +121,14 @@ Theme options are grouped in the `theme` property of the `options` object.
 ```js
 var options = {
   theme: {
+    labeledSubmitButton: false,
     logo: "https://example.com/assets/logo.png",
     primaryColor: "green"
   }
 };
 ```
 
+- **labeledSubmitButton {Boolean}**: Indicates whether or not the submit button should have a label. Defaults to `true`. When set to `false` a icon will be shown. The labels can be customized through the `languageDictionary`.
 - **logo {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `logo` to ensure all colors go well together with the logo's color palette. Defaults to `"#ea5323"`.
 

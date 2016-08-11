@@ -7,6 +7,7 @@ import GlobalMessage from './global_message';
 import Header from './header';
 
 const submitSvg = '<svg width="43px" height="42px" viewBox="0 0 43 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="Lock" sketch:type="MSArtboardGroup" transform="translate(-280.000000, -3592.000000)"><g id="SMS" sketch:type="MSLayerGroup" transform="translate(153.000000, 3207.000000)"><g id="Group" sketch:type="MSShapeGroup"><g id="Login" transform="translate(0.000000, 369.000000)"><g id="Btn"><g id="Oval-302-+-Shape" transform="translate(128.000000, 17.000000)"><circle id="Oval-302" stroke="#FFFFFF" stroke-width="2" cx="20.5" cy="20" r="20"></circle><path d="M17.8,15.4 L19.2,14 L25.2,20 L19.2,26 L17.8,24.6 L22.4,20 L17.8,15.4 Z" id="Shape" fill="#FFFFFF"></path></g></g></g></g></g></g></g></svg>';
+const submitText = '<svg class="icon-text" width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Web/Submit/Active" transform="translate(-148.000000, -32.000000)" fill="#FFFFFF"><polygon id="Shape" points="148 33.4 149.4 32 155.4 38 149.4 44 148 42.6 152.6 38"></polygon></g></g></svg>'
 
 class SubmitButton extends React.Component {
 
@@ -15,7 +16,13 @@ class SubmitButton extends React.Component {
   }
 
   render() {
-    const { color, disabled } = this.props;
+    const { color, disabled, label } = this.props;
+    const content = label
+      ? <span>
+          {label}
+          <span dangerouslySetInnerHTML={{__html: submitText}} />
+        </span>
+      : <span dangerouslySetInnerHTML={{__html: submitSvg}} />;
 
     return (
       <button
@@ -27,7 +34,7 @@ class SubmitButton extends React.Component {
         <div className="auth0-loading-container">
           <div className="auth0-loading" />
         </div>
-        <span dangerouslySetInnerHTML={{__html: submitSvg}} />
+        {content}
       </button>
     );
   }
@@ -35,7 +42,9 @@ class SubmitButton extends React.Component {
 }
 
 SubmitButton.propTypes = {
-  disabled: React.PropTypes.bool
+  color: React.PropTypes.string.isRequired,
+  disabled: React.PropTypes.bool,
+  label: React.PropTypes.string
 };
 
 const AUXILIARY_ANIMATION_DURATION = 350;
@@ -182,6 +191,7 @@ export default class Chrome extends React.Component {
       primaryColor,
       screenName,
       showSubmitButton,
+      submitButtonLabel,
       success,
       terms,
       title,
@@ -205,6 +215,7 @@ export default class Chrome extends React.Component {
             color={primaryColor}
             disabled={disableSubmitButton}
             key="submit"
+            label={submitButtonLabel}
             ref="submit"
          />;
 
@@ -293,6 +304,7 @@ Chrome.propTypes = {
   logo: React.PropTypes.string.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
+  submitButtonLabel: React.PropTypes.string,
   success: React.PropTypes.string,
   terms: React.PropTypes.element,
   title: React.PropTypes.string.isRequired,

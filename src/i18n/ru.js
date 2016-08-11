@@ -51,10 +51,12 @@ export default {
   failedLabel: "Не удалось совершить действие!",
   forgotPasswordAction: "Не помните пароль?",
   forgotPasswordInstructions: "Пожалуйста, введите Ваш адрес электронной почты. Мы отправим Вам сообщение для восстановления пароля.",
+  forgotPasswordSubmitLabel: "отправить по электронной почте",  // needs review
   invalidErrorHint: "Недействительные данные",
   lastLoginInstructions: "В прошлый раз Вы вошли под",
   loginAtLabel: "Войдите по ссылке %s",
   loginLabel: "Вход",
+  loginSubmitLabel: "авторизоваться", // needs review
   loginWithLabel: "Вход через %s",
   notYourAccountAction: "Не Ваша учетная запись?",
   passwordInputPlaceholder: "Ваш пароль",
@@ -82,11 +84,13 @@ export default {
   retryLabel: "Повторить попытку",
   sentLabel: "Отправлено!",
   signUpLabel: "Зарегистрироваться",
+  signUpSubmitLabel: "Зарегистрироваться", // needs review
   signUpTerms: "",
   signUpWithLabel: "Зарегистрироваться через %s",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "Единый вход включен",
+  submitLabel: "Отправить", // needs review
   unrecoverableError: "Произошла непредвиденная ошибка.<br />Пожалуйста, обратитесь в службу технической поддержки.",
   usernameFormatErrorHint: "Используйте 1-15 букв, цифр и \"_\"",
   usernameInputPlaceholder: "Ваше имя пользователя",

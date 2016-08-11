@@ -124,6 +124,7 @@ export default class Container extends React.Component {
       primaryColor,
       screenName,
       showBadge,
+      submitButtonLabel,
       submitHandler,
       success,
       tabs,
@@ -203,6 +204,7 @@ export default class Container extends React.Component {
                 primaryColor={primaryColor}
                 ref="chrome"
                 showSubmitButton={!!submitHandler}
+                submitButtonLabel={submitButtonLabel}
                 success={success}
                 tabs={tabs}
                 terms={terms}
@@ -236,6 +238,7 @@ Container.propTypes = {
   primaryColor: React.PropTypes.string.isRequired,
   screenName: React.PropTypes.string.isRequired,
   showBadge: React.PropTypes.bool.isRequired,
+  submitButtonLabel: React.PropTypes.string,
   success: React.PropTypes.string,
   tabs: React.PropTypes.bool,
   terms: React.PropTypes.element,
