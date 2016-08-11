@@ -22,7 +22,7 @@ import {
   hasOnlyClassicConnections,
   isSSOEnabled,
   useBigSocialButtons
-} from '../automatic';
+} from '../classic';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
 import * as i18n from '../../i18n';
