@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<title>Dev</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+<style>
+ body {
+   background-color: #1f1f24;
+ }
+</style>
+<body>
+  <div id="container"></div>
+  <script src="/lock.js"></script>
+  <script>
+    const cid = "yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih";
+    const domain = "mdocs.auth0.com";
+
+    const lock = new Auth0Lock(cid, domain);
+
+    lock.show();
+  </script>
+</body>
+</html>
