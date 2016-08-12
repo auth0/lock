@@ -168,6 +168,7 @@ function extractAuthOptions(options) {
     params,
     redirect,
     redirectUrl,
+    responseMode,
     responseType,
     sso
   } = options.auth || {};
@@ -175,7 +176,9 @@ function extractAuthOptions(options) {
   params = typeof params === "object" ? params : {};
   redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : undefined;
   redirect = typeof redirect === "boolean" ? redirect : true;
+  responseMode = typeof responseMode === "string" ? responseMode : undefined;
   responseType = typeof responseType === "string" ? responseType : redirectUrl ? "code" : "token";
+
   sso = typeof sso === "boolean" ? sso : true;
 
   if (trim(params.scope || "") === "openid profile") {
@@ -186,6 +189,7 @@ function extractAuthOptions(options) {
     params,
     redirect,
     redirectUrl,
+    responseMode,
     responseType,
     sso
   });
