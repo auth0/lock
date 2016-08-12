@@ -39,7 +39,7 @@ class EscKeyDownHandler {
 
   constructor(f) {
     this.handler = (e) => {
-      if (e.keyCode == 27 && e.target.tagName != "INPUT") {
+      if (e.keyCode == 27 && e.target.tagName.toUpperCase() != "INPUT") {
         f();
       }
     };
