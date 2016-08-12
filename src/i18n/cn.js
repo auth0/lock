@@ -51,10 +51,12 @@ export default {
   failedLabel: "失败!",
   forgotPasswordAction: "忘记您的密码？",
   forgotPasswordInstructions: "请输入您的邮箱，我们将为你发送重置密码的邮件。",
+  forgotPasswordSubmitLabel: "发电子邮件", // needs review
   invalidErrorHint: "错误",
   lastLoginInstructions: "上次登陆的信息为",
   loginAtLabel: "登录到%s",
   loginLabel: "登录",
+  loginSubmitLabel: "登录", // needs review
   loginWithLabel: "用%s登录",
   notYourAccountAction: "不是您的账号?",
   passwordInputPlaceholder: "您的密码",
@@ -82,11 +84,13 @@ export default {
   retryLabel: "重试",
   sentLabel: "发送!",
   signUpLabel: "注册",
+  signUpSubmitLabel: "注册", // needs review
   signUpTerms: "",
   signUpWithLabel: "通过%s注册",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "单点登录已激活",
+  submitLabel: "提交", // needs review
   unrecoverableError: "出现错误。<br />请联系技术人员。",
   usernameFormatErrorHint: "请使用1-15个字母, 数字或 \"_\"的组合",
   usernameInputPlaceholder: "您的用户名",
