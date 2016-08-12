@@ -60,7 +60,7 @@ function parseHash(m, hash) {
   return !!(error || result);
 }
 
-export function openLock(id) {
+export function openLock(id, opts) {
   const m = read(getEntity, "lock", id);
   if (!m) {
     throw new Error("The Lock can't be opened again after it has been destroyed");
@@ -72,7 +72,12 @@ export function openLock(id) {
 
   l.emitEvent(m, "show");
 
-  swap(updateEntity, "lock", id, l.render);
+  swap(updateEntity, "lock", id, m => {
+    m = l.overrideOptions(m, opts);
+    m = l.filterConnections(m);
+    m = l.runHook(m, "willShow", opts);
+    return l.render(m);
+  });
 
   return true;
 }
@@ -138,7 +143,7 @@ export function validateAndSubmit(id, fields = [], f) {
 
 export function logIn(id, fields, params = {}) {
   validateAndSubmit(id, fields, m => {
-    webApi.logIn(id, params, (error, result) => {
+    webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
       if (error) {
         setTimeout(() => logInError(id, fields, error), 250);
       } else {

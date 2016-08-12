@@ -12,7 +12,8 @@ import {
   getScreen,
   hasInitialScreen,
   hasScreen,
-  initDatabase
+  initDatabase,
+  overrideDatabaseOptions
 } from '../connection/database/index';
 import {
   defaultEnterpriseConnection,
@@ -56,6 +57,36 @@ export function useBigSocialButtons(m) {
   return useBigButtons(m, hasOnlyClassicConnections(m, "social") ? 5 : 3);
 }
 
+function validateAllowedConnections(m) {
+  const anyDBConnection = l.hasSomeConnections(m, "database");
+  const anySocialConnection = l.hasSomeConnections(m, "social");
+  const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
+
+  if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
+    const error = new Error("At least one database, enterprise or social connection needs to be available.");
+    error.code = "no_connection";
+    m = l.stop(m, error);
+  } else if (!anyDBConnection && hasInitialScreen(m, "forgotPassword")) {
+    const error = new Error("The `initialScreen` option was set to \"forgotPassword\" but no database connection is available.");
+    error.code = "unavailable_initial_screen";
+    m = l.stop(m, error);
+  } else if (!anyDBConnection && !anySocialConnection && hasInitialScreen(m, "signUp")) {
+    const error = new Error("The `initialScreen` option was set to \"signUp\" but no database or social connection is available.");
+    error.code = "unavailable_initial_screen";
+    m = l.stop(m, error);
+  }
+
+  if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
+    l.warn(m, `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`);
+  }
+
+  if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
+    l.warn(m, `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`);
+  }
+
+  return m;
+}
+
 class Classic {
 
   static SCREENS = {
@@ -77,32 +108,14 @@ class Classic {
   }
 
   didReceiveClientSettings(m) {
-    const anyDBConnection = l.hasSomeConnections(m, "database");
-    const anySocialConnection = l.hasSomeConnections(m, "social");
-    const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
+    return validateAllowedConnections(m);
+  }
 
-    if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
-      const error = new Error("At least one database, enterprise or social connection needs to be available.");
-      error.code = "no_connection";
-      m = l.stop(m, error);
-    } else if (!anyDBConnection && hasInitialScreen(m, "forgotPassword")) {
-      const error = new Error("The `initialScreen` option was set to \"forgotPassword\" but no database connection is available.");
-      error.code = "unavailable_initial_screen";
-      m = l.stop(m, error);
-    } else if (!anyDBConnection && !anySocialConnection && hasInitialScreen(m, "signUp")) {
-      const error = new Error("The `initialScreen` option was set to \"signUp\" but no database or social connection is available.");
-      error.code = "unavailable_initial_screen";
-      m = l.stop(m, error);
+  willShow(m, opts) {
+    m = overrideDatabaseOptions(m, opts);
+    if (isSuccess(m, "client")) {
+      m = validateAllowedConnections(m);
     }
-
-    if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
-      l.warn(m, `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`);
-    }
-
-    if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
-      l.warn(m, `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`);
-    }
-
     return m;
   }
 

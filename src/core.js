@@ -91,7 +91,7 @@ export default class Base extends EventEmitter {
           logo: l.ui.logo(m),
           primaryColor: l.ui.primaryColor(m),
           screenName: screen.name,
-          showBadge: l.hasFreeSubscription(m) === true,
+          showBadge: l.showBadge(m) === true,
           success: l.globalSuccess(m),
           submitButtonLabel: l.ui.labeledSubmitButton(m)
             ? screen.submitButtonLabel(m)
@@ -119,8 +119,8 @@ export default class Base extends EventEmitter {
     });
   }
 
-  show() {
-    openLock(this.id);
+  show(opts = {}) {
+    openLock(this.id, opts);
   }
 
   hide() {

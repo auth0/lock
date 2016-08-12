@@ -6,6 +6,7 @@ import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
+import { clientConnections, hasFreeSubscription } from './client/index';
 
 const {
   get,
@@ -144,13 +145,17 @@ export const ui = {
   mobile: lock => getUIAttribute(lock, "mobile"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
-  rememberLastLogin: lock => getUIAttribute(lock, "rememberLastLogin")
+  rememberLastLogin: m => tget(
+    m,
+    "rememberLastLogin",
+    getUIAttribute(m, "rememberLastLogin")
+  )
 };
 
 const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 
 export const auth = {
-  params: lock => getAuthAttribute(lock, "params"),
+  params: m => tget(m, "authParams") || getAuthAttribute(m, "params"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
   responseType: lock => getAuthAttribute(lock, "responseType"),
@@ -159,7 +164,6 @@ export const auth = {
 
 
 function extractAuthOptions(options) {
-  // TODO: shouldn't all options be namespased in authentication?
   let {
     params,
     redirect,
@@ -247,18 +251,18 @@ export function error(x, str) {
 }
 
 export function allowedConnections(m) {
-  return get(m, "allowedConnections");
+  return tget(m, "allowedConnections") || get(m, "allowedConnections");
 }
 
 export function connections(m, type = undefined, ...strategies) {
   if (arguments.length === 1) {
-    return get(m, "connections", Map())
+    return tget(m, "connections", Map())
       .filter((v, k) => k !== "unknown")
       .valueSeq()
       .flatten(true);
   }
 
-  const xs = get(m, ["connections", type], List());
+  const xs = tget(m, ["connections", type], List());
   return strategies.length > 0
     ? xs.filter(x => ~strategies.indexOf(x.get("strategy")))
     : xs;
@@ -289,6 +293,24 @@ export function findConnection(m, name) {
 
 export function hasConnection(m, name) {
   return !!findConnection(m, name);
+}
+
+export function filterConnections(m) {
+  const allowed = allowedConnections(m);
+
+  const order = allowed.count() === 0
+    ? _ => 0
+    : c => allowed.indexOf(c.get("name"));
+
+  return tset(
+    m,
+    "connections",
+    clientConnections(m).map(cs => {
+      return cs
+        .filter(c => order(c) >= 0)
+        .sort((c1, c2) => order(c1) - order(c2));
+    })
+  );
 }
 
 export function runHook(m, str, ...args) {
@@ -356,6 +378,24 @@ export function emitAuthorizationErrorEvent(m, error) {
   emitEvent(m, "authorization_error", error);
 }
 
-export function hasFreeSubscription(m) {
-  return get(m, "hasFreeSubscription");
+export function showBadge(m) {
+  return hasFreeSubscription(m) || false;
+}
+
+export function overrideOptions(m, opts) {
+  if (!opts) opts = {};
+
+  if (opts.allowedConnections) {
+    m = tset(m, "allowedConnections", Immutable.fromJS(opts.allowedConnections));
+  }
+
+  if (opts.auth && opts.auth.params) {
+    m = tset(m, "authParams", Immutable.fromJS(opts.auth.params));
+  }
+
+  if (typeof opts.rememberLastLogin === "boolean") {
+    m = tset(m, "rememberLastLogin", opts.rememberLastLogin);
+  }
+
+  return m;
 }

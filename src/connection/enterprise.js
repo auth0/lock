@@ -67,16 +67,8 @@ export function matchConnection(m, email, strategies = []) {
   const target = emailDomain(email);
   if (!target) return false;
   return l.connections(m, "enterprise", ...strategies).find(x => {
-    // TODO: `domain` seems to be always in the `domain_aliases` list,
-    // so the `push` here might be unnecessary
-    const domain = x.get("domain");
-    let domains = x.get("domain_aliases", new List());
-    if (domain) {
-      domains = domains.push(domain);
-    }
-    return domains.contains(target);
+    return x.get("domains").contains(target);
   });
-
 }
 
 export function isEnterpriseDomain(m, email, strategies = []) {
@@ -85,7 +77,7 @@ export function isEnterpriseDomain(m, email, strategies = []) {
 
 export function enterpriseDomain(m) {
   return isSingleHRDConnection(m)
-    ? l.connections(m, "enterprise").getIn([0, "domain"])
+    ? l.connections(m, "enterprise").getIn([0, "domains", 0])
     : emailDomain(tget(m, "hrdEmail"));
 }
 
@@ -104,9 +96,7 @@ export function isADEnabled(m) {
 
 export function findADConnectionWithoutDomain(m, name = undefined) {
   return l.connections(m, "enterprise", "ad", "auth0-adldap").find(x => {
-    return !x.get("domain")
-      && x.get("domain_aliases", new List()).isEmpty()
-      && (!name || x.get("name") === name)
+    return x.get("domains").isEmpty() && (!name || x.get("name") === name);
   });
 }
 

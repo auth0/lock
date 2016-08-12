@@ -84,6 +84,7 @@ function signUpSuccess(id) {
     return webApi.logIn(
       id,
       options,
+      l.auth.params(lock).toJS(),
       (error, ...args) => {
         if (error) {
           setTimeout(() => autoLogInError(id, error), 250);
