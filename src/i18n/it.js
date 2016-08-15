@@ -93,6 +93,6 @@ export default {
   usernameOrEmailInputPlaceholder: "il Suo nome utente or email", // TODO
   title: "Auth0",
   welcome: "Benvenuto %s!",
-  windowsAuthInstructions: "Si è connessi dalla rete aziendale&#8230;",
+  windowsAuthInstructions: "Si è connessi dalla rete aziendale&hellip;",
   windowsAuthLabel: "Autenticazione Windows"
 };

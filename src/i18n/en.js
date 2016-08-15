@@ -93,6 +93,6 @@ export default {
   usernameOrEmailInputPlaceholder: "username/email",
   title: "Auth0",
   welcome: "Welcome %s!",
-  windowsAuthInstructions: "You are connected from your corporate network&#8230;",
+  windowsAuthInstructions: "You are connected from your corporate network&hellip;",
   windowsAuthLabel: "Windows Authentication"
 };

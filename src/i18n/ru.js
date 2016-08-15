@@ -93,6 +93,6 @@ export default {
   useranmeOrEmailInputPlaceholder: "электронной почты/пользователя", // TODO review
   title: "Auth0",
   welcome: "Добро пожаловать, %s!",
-  windowsAuthInstructions: "Вы подключены через корпоративную сеть&#8230;",
+  windowsAuthInstructions: "Вы подключены через корпоративную сеть&hellip;",
   windowsAuthLabel: "Аутентификация Windows"
 };
