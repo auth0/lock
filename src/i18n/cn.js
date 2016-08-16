@@ -36,7 +36,7 @@ export default {
   success: {
     logIn: "登录成功",
     forgotPassword: "重置密码的邮件已发送",
-    magicLink: "已向您发送链接<br />到%s。", // This one needs review
+    magicLink: "已向您发送链接<br />到 %s 登录", // This one needs review
     signUp: "感谢您的注册。"
   },
   blankErrorHint: "不能为空",
@@ -47,22 +47,22 @@ export default {
   databaseAlternativeSignUpInstructions: "或",
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "请用您的企业账号登录",  // This one needs review
-  enterpriseActiveLoginInstructions: "请输入您的企业账号%s。",  // This one needs review
+  enterpriseActiveLoginInstructions: "请输入您的企业账号 %s。",  // This one needs review
   failedLabel: "失败!",
   forgotPasswordAction: "忘记您的密码？",
   forgotPasswordInstructions: "请输入您的邮箱，我们将为你发送重置密码的邮件。",
   forgotPasswordSubmitLabel: "发电子邮件", // needs review
   invalidErrorHint: "错误",
   lastLoginInstructions: "上次登陆的信息为",
-  loginAtLabel: "登录到%s",
+  loginAtLabel: "登录到 %s",
   loginLabel: "登录",
   loginSubmitLabel: "登录", // needs review
-  loginWithLabel: "用%s登录",
+  loginWithLabel: "用 %s 登录",
   notYourAccountAction: "不是您的账号?",
   passwordInputPlaceholder: "您的密码",
   passwordStrength: {
     containsAtLeast: "至少包含%d个以下%d种字符:",
-    identicalChars: "不能多于%d个相同的字符在同一行(例如,不允许出现\"%s\" )",
+    identicalChars: "不能多于%d个相同的字符在同一行(例如,不允许出现 \"%s\" )",
     nonEmpty: "密码不能为空",
     numbers: "数字 (如 0-9)",
     lengthAtLeast: "最少长度为%d个字符",
@@ -72,10 +72,10 @@ export default {
     upperCase: "大写字母(A-Z)"
   },
   passwordlessEmailAlternativeInstructions: "您还可以通过邮箱登录<br>或者创建账号", // This one needs review
-  passwordlessEmailCodeInstructions: "代码已通过邮件发送到%s。",
+  passwordlessEmailCodeInstructions: "代码已通过邮件发送到 %s。",
   passwordlessEmailInstructions: "输入邮箱登录<br>或者创建账号。",
   passwordlessSMSAlternativeInstructions: "您还可以通过手机号码登录<br>或者创建账号。",
-  passwordlessSMSCodeInstructions: "代码已通过短信发送到<br>%s。",
+  passwordlessSMSCodeInstructions: "代码已通过短信发送到<br> %s。",
   passwordlessSMSInstructions: "输入手机号码登录<br>或者创建账号",
   phoneNumberInputPlaceholder: "您的手机号码",
   resendCodeAction: "没有收到号码?",
@@ -86,7 +86,7 @@ export default {
   signUpLabel: "注册",
   signUpSubmitLabel: "注册", // needs review
   signUpTerms: "",
-  signUpWithLabel: "通过%s注册",
+  signUpWithLabel: "通过 %s 注册",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "单点登录已激活",
