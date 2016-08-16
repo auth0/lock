@@ -53,7 +53,7 @@
     "footerText":                  "",
     "serverErrorText":             "Během registrace došlo k chybě.",
     "userExistsErrorText":         "Uživatel už existuje.",
-    "signupOnSSODomainErrorText":  "Tato doména {domain} byla nastavena pouze pro "Single Sign On" a nelze tedy vytvořit nový účet. Zkuste se místo toho přihlásit.",
+    "signupOnSSODomainErrorText":  "Tato doména {domain} byla nastavena pouze pro \"Single Sign On\" a nelze tedy vytvořit nový účet. Zkuste se místo toho přihlásit.",
     "usernameInUseErrorText":      "Uživatelské jméno již existuje.",
     "invalidPassword":             "Helso je moc slabé.",
 
