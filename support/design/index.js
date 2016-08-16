@@ -264,7 +264,7 @@ ClientSettings.fetchClientSettings = function(clientID, assetsUrl, cb) {
     id: "L9kBZOpEbLizzCGv6N8n9wNfQhbvREw0"
   };
 
-  setTimeout(() => cb(null, Immutable.fromJS(settings)), 180);
+  setTimeout(() => cb(null, settings), 180);
 }
 
 ReactDOM.render(React.createElement(Control), document.getElementById("control-container"));
