@@ -1,6 +1,5 @@
 import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
-import * as client from '../../core/client/index';
 import {
   clearFields,
   getFieldValue,

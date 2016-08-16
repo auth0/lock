@@ -42,31 +42,6 @@ function strategyNameToConnectionType(str) {
   }
 }
 
-export function pickConnections(m, strs) {
-  // NOTE: relevant m schema
-  //
-  // strategies: [
-  //  {name: "strategy", connections: [{name: "connection"}]}
-  // ]
-
-  const order = strs.count() === 0
-    ? _ => 0
-    : c => strs.indexOf(c.get("name"));
-
-  const strategies = m.get("strategies", List()).flatMap(s => {
-    return s.get("connections")
-      .filter(c => order(c) >= 0)
-      .map(c => {
-        return c.set("strategy", s.get("name"))
-          .set("type", strategyNameToConnectionType(s.get("name")));
-      });
-  })
-
-  return strategies
-    .sort((c1, c2) => order(c1) - order(c2))
-    .groupBy(c => c.get("type"));
-}
-
 const emptyConnections = Immutable.fromJS({
   database: [],
   enterprise: [],
