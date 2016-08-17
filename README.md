@@ -335,11 +335,8 @@ var options = {
   }
 };
 
-var lock = new Auth0LockPasswordless(clientId, domain, options,
-  function(error, result) {
-    // Will only be executed after an attempt to login has been made (contrast
-    // this with redirect mode in which the function is always executed)
-});
+var lock = new Auth0Lock(clientId, domain, options);
+lock.show();
 ```
 
 
