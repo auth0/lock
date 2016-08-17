@@ -67,6 +67,7 @@ npm_release()
   fi
 }
 
+npm install
 ./scripts/test.sh
 ./scripts/clean.sh
 ./scripts/build.sh
