@@ -109,7 +109,15 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
 - **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](http://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
-- **language {String}**: Specifies the language of the widget. Defaults to `"en"`.
+- **language {String}**: Specifies the language of the widget. Defaults to `"en"`. Supported languages are:
+  - `de`: German
+  - `en`: English
+  - `es`: Spanish
+  - `it`: Italian
+  - `nb`: Norwegian bokmål
+  - `pt-BR`: Brazilian Portuguese
+  - `ru`: Russian
+  - `zh`: Chinese
 - **languageDictionary {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Language Dictionary Specification](#language-dictionary-specification) for the details.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
