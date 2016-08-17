@@ -1,5 +1,8 @@
+[![NPM version][npm-image]][npm-url]
 [![Build status][travis-image]][travis-url]
+[![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
 
 # Lock
 
@@ -359,14 +362,13 @@ If you have found a bug or if you have a feature request, please report them at 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 
-[travis-image]: https://travis-ci.org/auth0/lock.svg?branch=v10
+[travis-image]: https://travis-ci.org/auth0/lock.svg?branch=master
 [travis-url]: https://travis-ci.org/auth0/lock
-
-[npm-image]: https://img.shields.io/npm/v/auth0-lock-next.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/auth0-lock-next
-[david-image]: http://img.shields.io/david/auth0/lock-next.svg?style=flat-square
-[david-url]: https://david-dm.org/auth0/lock-next
-[license-image]: http://img.shields.io/npm/l/auth0-lock-next.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/auth0-lock
+[david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
+[david-url]: https://david-dm.org/auth0/lock
+[license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
 [license-url]: #license
-[downloads-image]: http://img.shields.io/npm/dm/auth0-lock-next.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/auth0-lock-next
+[downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/auth0-lock
