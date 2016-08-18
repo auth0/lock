@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm install
+
 source scripts/common.sh
 
 CDN_NAME=${1:-"lock"}
@@ -67,7 +69,6 @@ npm_release()
   fi
 }
 
-npm install
 ./scripts/test.sh
 ./scripts/clean.sh
 ./scripts/build.sh
