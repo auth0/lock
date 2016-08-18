@@ -1,3 +1,9 @@
+## [10.2.1] - 2016-08-18
+
+### Fixed
+
+- Allow dots in HRD username and clear errors before leaving the HRD screen (#574)
+
 ## [10.2.0] - 2016-08-18
 
 ### Changed
