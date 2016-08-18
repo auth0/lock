@@ -82,6 +82,12 @@ export function showInvalidField(m, field) {
   return m.setIn(["field", field, "showInvalid"], !isFieldValid(m, field));
 }
 
+export function hideInvalidFields(m) {
+  return m.update("field", fields => {
+    return fields.map(field => field.set("showInvalid", false));
+  });
+}
+
 // TODO: only used in passwordless, when we update it to use
 // validateAndSubmit this won't be needed anymore.
 export function setFieldShowInvalid(m, field, value) {

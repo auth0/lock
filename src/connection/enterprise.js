@@ -130,7 +130,7 @@ export function isHRDDomain(m, email) {
 
 export function toggleHRD(m, email) {
   if (email) {
-    m = setUsername(m, emailLocalPart(email));
+    m = setUsername(m, emailLocalPart(email), "username", false);
     m = tset(m, "hrdEmail", email);
   } else {
     m = tremove(m, "hrdEmail");
