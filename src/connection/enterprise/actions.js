@@ -5,7 +5,7 @@ import {
   matchConnection,
   toggleHRD
 } from '../enterprise';
-import { getFieldValue } from '../../field/index';
+import { getFieldValue, hideInvalidFields } from '../../field/index';
 import { logIn as coreLogIn } from '../../core/actions';
 
 // TODO: enterprise connections should not depend on database
@@ -21,7 +21,11 @@ export function startHRD(id, email) {
 }
 
 export function cancelHRD(id) {
-  swap(updateEntity, "lock", id, toggleHRD, false);
+  swap(updateEntity, "lock", id, m => {
+    m = toggleHRD(m, false);
+    m = hideInvalidFields(m);
+    return m;
+  });
 }
 
 export function logIn(id) {
