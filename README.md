@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.1.0/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.2.0/lock.min.js"></script>
 ```
 
 From [bower](http://bower.io)
@@ -99,7 +99,23 @@ Lock will emit events during its lifecycle.
 - `unrecoverable_error`: emitted when there is an unrecoverable error, for instance when no connection is available. Has the error as the only argument.
 - `authenticated`: emitted after a successful authentication. Has the authentication result as the only argument.
 - `authorization_error`: emitted when authorization fails. Has error as the only argument.
-- `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the fault), it will attempt to parse the hash part of the url looking for the result of a login attempt. This is a _low level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the url's hash part.
+- `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the default), it will attempt to parse the hash part of the url looking for the result of a login attempt. This is a _low level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the url's hash part.
+
+### show(options)
+
+Displays the widget, allowing to override some options.
+
+- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen` and `rememberLastLogin`. See [below](#customization) for the details.
+
+#### Example
+
+```js
+// without options
+lock.show();
+
+// will override the allowedConnections option passed to the constructor, if any
+lock.show({allowedConnections: ["twitter", "facebook"]})
+```
 
 ### Customization
 
