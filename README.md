@@ -203,7 +203,7 @@ var options = {
 - **mustAcceptTerms {Boolean}**: When set to `true` displays a checkbox input along the terms and conditions that must be checked before signing up. The terms and conditions can be specified via the `languageDictionary` option, see the example below. Defaults to `false`.
 - **prefill {Object}**: Allows to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@auth0.com", username: "someone"}}`. When omitted no initial value will be provided.
 - **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
-- **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. Defaults to `"email"`.
+- **usernameStyle {String}**: Determines what will be used to identify the user. Possible values are `"username"` and `"email"`. By default, then both `username` and `email` entry types are permitted if this attribute is omitted altogether.
 
 #### Enterprise options
 
