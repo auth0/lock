@@ -81,7 +81,7 @@ class Auth0WebAPI {
   }
 
   parseHash(lockID, hash = undefined) {
-    return this.clients[lockID].parseHash(hash);
+    return this.clients[lockID].parseHash(decodeURIComponent(hash));
   }
 
   getProfile(lockID, token, callback) {
