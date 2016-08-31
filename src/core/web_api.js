@@ -80,7 +80,7 @@ class Auth0WebAPI {
     client.startPasswordless(options, err => cb(normalizeError(err)));
   }
 
-  parseHash(lockID, hash = undefined) {
+  parseHash(lockID, hash = '') {
     return this.clients[lockID].parseHash(decodeURIComponent(hash));
   }
 
