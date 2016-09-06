@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactTransitionGroup from 'react-addons-transition-group';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
@@ -47,6 +46,7 @@ SubmitButton.propTypes = {
   label: React.PropTypes.string
 };
 
+const MESSAGE_ANIMATION_DURATION = 250;
 const AUXILIARY_ANIMATION_DURATION = 350;
 
 export default class Chrome extends React.Component {
@@ -237,10 +237,14 @@ export default class Chrome extends React.Component {
     return (
       <div className={className}>
         <Header title={title} name={name} backHandler={backHandler && ::this.handleBack} backgroundUrl={backgroundUrl} backgroundColor={primaryColor} logoUrl={logo}/>
-        <ReactTransitionGroup>
+        <ReactCSSTransitionGroup
+          transitionName="global-message"
+          transitionEnterTimeout={MESSAGE_ANIMATION_DURATION}
+          transitionLeaveTimeout={MESSAGE_ANIMATION_DURATION}
+        >
           {globalSuccess}
           {globalError}
-        </ReactTransitionGroup>
+        </ReactCSSTransitionGroup>
         <div style={{position: "relative"}}>
           <MultisizeSlide
             delay={550}
