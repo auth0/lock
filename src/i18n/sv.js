@@ -1,4 +1,4 @@
-export default{
+export default {
   error: {
     forgotPassword: {
       "too_many_requests": "Du har nått gränsen för maximalt antal försök att ändra ditt lösenord. Vänta och försök sedan igen.",
@@ -53,7 +53,7 @@ export default{
   forgotPasswordInstructions: "Ange din e-postadress. Vi skickar ett e-postmeddelande med instruktioner för att återställa ditt lösenord.",
   forgotPasswordSubmitLabel: "Skicka e-post",
   invalidErrorHint: "Ogiltig",
-  lastLoginInstructions: "Senast du loggade in med",
+  lastLoginInstructions: "Senast loggade du in som",
   loginAtLabel: "Logga in på %s",
   loginLabel: "Logga in",
   loginSubmitLabel: "Logga in",
@@ -61,7 +61,7 @@ export default{
   notYourAccountAction: "Inte ditt konto?",
   passwordInputPlaceholder: "ditt lösenord",
   passwordStrength: {
-    containsAtLeast: "Måste innehålla minst %d av följande %d typer av tecken:",
+    containsAtLeast: "Måste innehålla minst %d av följande %d sorters tecken:",
     identicalChars: "Inte fler än %d identiska tecken i rad (t.ex., \"%s\" är inte tillåtet)",
     nonEmpty: "Lösenord får inte vara tomma",
     numbers: "Nummer (t.ex. 0-9)",
