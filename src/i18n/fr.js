@@ -1,1 +1,102 @@
-
+export default {
+  error: {
+    forgotPassword: {
+      "too_many_requests": "Vous avez atteint la limite de tentatives de changement de mot de passe. Veuillez patienter avant de recommencer.",
+      "lock.fallback": "Nous sommes désolés, un problème est survenu lors de la demande de changement de mot de passe."
+    },
+    login: {
+      "blocked_user": "L'utilisateur est bloqué.",
+      "invalid_user_password": "Mauvais identifiants.",
+      "lock.fallback": "Nous sommes désolés, un problème est survenu lors de la tentative de connexion.",
+      "lock.invalid_code": "Mauvais code.",
+      "lock.invalid_email_password": "Mauvais courriel ou mot de passe.",
+      "lock.invalid_username_password": "Mauvais nom d'utilisateur ou mot de passe.",
+      "lock.network": "Nous ne pouvons pas joindre le serveur. Vérifiez votre connexion et réessayez.",
+      "lock.popup_closed": "La fenêtre popup a été fermée. Veuillez réessayer.",
+      "lock.unauthorized": "Les permissions n'ont pas été accordées. Veuillez réessayer.",
+      "password_change_required": "Vous devez mettre à jour votre mot de passe, soit parce qu'il s'agit de votre première connexion, soit parce que ce dernier a expiré.", // TODO: verify error code
+      "password_leaked": "Cette connexion a été bloquée parce que votre mot de passe a été utilisé sur un autre site web. Nous vous avons envoyé un courriel avec des instructions pour la débloquer.",
+      "too_many_attempts": "Your account has been blocked after multiple consecutive login attempts."
+    },
+    passwordless: {
+      "bad.email": "The email is invalid",
+      "bad.phone_number": "The phone number is invalid",
+      "lock.fallback": "We're sorry, something went wrong"
+    },
+    signUp: {
+      "invalid_password": "Password is invalid.",
+      "lock.fallback": "We're sorry, something went wrong when attempting to sign up.",
+      "password_dictionary_error": "Password is too common.",
+      "password_no_user_info_error": "Password is based on user information.",
+      "password_strength_error": "Password is too weak.",
+      "user_exists": "The user already exists.",
+      "username_exists": "The username already exists."
+    }
+  },
+  success: { // success messages show above the form or in a confirmation pane
+    logIn: "Thanks for logging in.",
+    forgotPassword: "We've just sent you an email to reset your password.",
+    magicLink: "We sent you a link to log in<br />to %s.",
+    signUp: "Thanks for signing up."
+  },
+  blankErrorHint: "Can't be blank",
+  codeInputPlaceholder: "your code",
+  databaseEnterpriseLoginInstructions: "",
+  databaseEnterpriseAlternativeLoginInstructions: "or",
+  databaseSignUpInstructions: "",
+  databaseAlternativeSignUpInstructions: "or",
+  emailInputPlaceholder: "yours@example.com",
+  enterpriseLoginIntructions: "Login with your corporate credentials.",
+  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at %s.",
+  failedLabel: "Failed!",
+  forgotPasswordAction: "Don't remember your password?",
+  forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
+  forgotPasswordSubmitLabel: "Send email",
+  invalidErrorHint: "Invalid",
+  lastLoginInstructions: "Last time you logged in with",
+  loginAtLabel: "Log in at %s",
+  loginLabel: "Log In",
+  loginSubmitLabel: "Log In",
+  loginWithLabel: "Log in with %s",
+  notYourAccountAction: "Not your account?",
+  passwordInputPlaceholder: "your password",
+  passwordStrength: {
+    containsAtLeast: "Contain at least %d of the following %d types of characters:",
+    identicalChars: "No more than %d identical characters in a row (e.g., \"%s\" not allowed)",
+    nonEmpty: "Non-empty password required",
+    numbers: "Numbers (i.e. 0-9)",
+    lengthAtLeast: "At least %d characters in length",
+    lowerCase: "Lower case letters (a-z)",
+    shouldContain: "Should contain:",
+    specialCharacters: "Special characters (e.g. !@#$%^&*)",
+    upperCase: "Upper case letters (A-Z)"
+  },
+  passwordlessEmailAlternativeInstructions: "Otherwise, enter your email to sign in<br/>or create an account",
+  passwordlessEmailCodeInstructions: "An email with the code has been sent to %s.",
+  passwordlessEmailInstructions: "Enter your email to sign in<br/>or create an account",
+  passwordlessSMSAlternativeInstructions: "Otherwise, enter your phone to sign in<br/>or create an account",
+  passwordlessSMSCodeInstructions: "An SMS with the code has been sent<br/>to %s.",
+  passwordlessSMSInstructions: "Enter your phone to sign in<br/>or create an account",
+  phoneNumberInputPlaceholder: "your phone number",
+  resendCodeAction: "Did not get the code?",
+  resendLabel: "Resend",
+  resendingLabel: "Resending...",
+  retryLabel: "Retry",
+  sentLabel: "Sent!",
+  signUpLabel: "Sign Up",
+  signUpSubmitLabel: "Sign Up",
+  signUpTerms: "",
+  signUpWithLabel: "Sign up with %s",
+  socialLoginInstructions: "",
+  socialSignUpInstructions: "",
+  ssoEnabled: "Single Sign-On enabled",
+  submitLabel: "Submit",
+  unrecoverableError: "Something went wrong.<br />Please contact technical support.",
+  usernameFormatErrorHint: "Use 1-15 letters, numbers and \"_\"",
+  usernameInputPlaceholder: "your username",
+  usernameOrEmailInputPlaceholder: "username/email",
+  title: "Auth0",
+  welcome: "Welcome %s!",
+  windowsAuthInstructions: "You are connected from your corporate network&hellip;",
+  windowsAuthLabel: "Windows Authentication"
+};
