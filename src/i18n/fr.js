@@ -16,7 +16,7 @@ export default {
       "lock.unauthorized": "Les permissions n'ont pas été accordées. Veuillez réessayer.",
       "password_change_required": "Vous devez mettre à jour votre mot de passe, soit parce qu'il s'agit de votre première connexion, soit parce que ce dernier a expiré.", // TODO: verify error code
       "password_leaked": "Cette connexion a été bloquée parce que votre mot de passe a été utilisé sur un autre site web. Nous vous avons envoyé un courriel avec des instructions pour la débloquer.",
-      "too_many_attempts": "Votre compte a été bloqué suite à de trop nombreuses tentatives de connexion consécutives."
+      "too_many_attempts": "Votre compte a été bloqué à la suite à de trop nombreuses tentatives de connexion consécutives."
     },
     passwordless: {
       "bad.email": "L'adresse de messagerie n'est pas valide",
@@ -37,7 +37,7 @@ export default {
     logIn: "Merci de vous être connecté.",
     forgotPassword: "Nous venons de vous envoyer un courriel pour réinitialiser votre mot de passe.",
     magicLink: "Nous vous avons envoyé un lien pour vous connecter<br />à %s.",
-    signUp: "Merci de vous être insrit."
+    signUp: "Merci de vous être inscrit."
   },
   blankErrorHint: "Ne peut être vide",
   codeInputPlaceholder: "votre code",
@@ -63,7 +63,7 @@ export default {
   passwordStrength: {
     containsAtLeast: "Doit contenir au moins %d des %d types de caractères :",
     identicalChars: "Pas plus de %d caractères identiques dans une ligne (par ex., \"%s\" n'est pas autorisé)",
-    nonEmpty: "Mot de passe non-vide requis",
+    nonEmpty: "Mot de passe non vide requis",
     numbers: "Chiffres  (i.e. 0-9)",
     lengthAtLeast: "Au moins %d caractères",
     lowerCase: "Lettres minuscules (a-z)",
@@ -71,12 +71,12 @@ export default {
     specialCharacters: "Caractères spéciaux (par ex. !@#$%^&*)",
     upperCase: "Lettres majuscules (A-Z)"
   },
-  passwordlessEmailAlternativeInstructions: "Sinon, entrez votre adresse de messagerie pour vous connecter<br/>ou créez un compte",
-  passwordlessEmailCodeInstructions: "Un couriel avec le code a été envoyé à %s.",
+  passwordlessEmailAlternativeInstructions: "Sinon entrez votre adresse de messagerie pour vous connecter<br/>ou créez un compte",
+  passwordlessEmailCodeInstructions: "Un courriel avec le code a été envoyé à %s.",
   passwordlessEmailInstructions: "Entrez votre adresse de messagerie pour vous connecter<br/>ou créez un compte",
-  passwordlessSMSAlternativeInstructions: "Sinon, entrez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
+  passwordlessSMSAlternativeInstructions: "Sinon entrez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
   passwordlessSMSCodeInstructions: "Un SMS avec le code a été envoyé<br/>à %s.",
-  passwordlessSMSInstructions: "Entreez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
+  passwordlessSMSInstructions: "Entrez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
   phoneNumberInputPlaceholder: "votre numéro de téléphone",
   resendCodeAction: "Vous n'avez pas reçu le code ?",
   resendLabel: "Envoyer une nouvelle fois",
@@ -91,10 +91,10 @@ export default {
   socialSignUpInstructions: "",
   ssoEnabled: "Authentification unique activée",
   submitLabel: "Envoyer",
-  unrecoverableError: "Un problème est survenu.<br />Veuillez contacter le support technique.",
+  unrecoverableError: "Un problème est survenu.<br />Veuillez contacter l'assistance technique.",
   usernameFormatErrorHint: "Utilisez entre 1-15 lettres, chiffres et \"_\"",
   usernameInputPlaceholder: "votre nom d'utilisateur",
-  usernameOrEmailInputPlaceholder: "nom d'utilsateur/adresse de messagerie",
+  usernameOrEmailInputPlaceholder: "nom d'utilisateur/adresse de messagerie",
   title: "Auth0",
   welcome: "Bienvenue %s!",
   windowsAuthInstructions: "Vous êtes connecté depuis votre réseau d'entreprise&hellip;",
