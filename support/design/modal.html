@@ -131,6 +131,17 @@ addLockClassic("social", {
   socialButtonStyle: "big"
 });
 
+addLockClassic("terms", {
+  allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github"],
+   auth: { redirect: false, sso: false },
+   initialScreen: "signUp",
+   languageDictionary: {
+     signUpTerms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>."
+   },
+   mustAcceptTerms: true,
+   rememberLastLogin: false
+});
+
 addLockPasswordless("socialOrEmailcode", {
   allowedConnections: ["email", "facebook", "twitter", "github"],
   auth: { redirect: false, send: "code" },
