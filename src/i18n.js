@@ -62,7 +62,7 @@ export function initI18n(m) {
 function syncLang(m, language, cb) {
   load({
     method: "registerLanguageDictionary",
-    url: `${l.assetsUrl(m)}/js/lock/${__VERSION__}/${language}.js`,
+    url: `${l.languageBaseUrl(m)}/js/lock/${__VERSION__}/${language}.js`,
     check: str => str && str === language,
     cb: (err, _, dictionary) => {
       cb(err, dictionary);

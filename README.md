@@ -225,7 +225,8 @@ var options = {
 
 #### Other options
 
-- **assetsUrl {String}**: Will be used as the assets base url. Defaults to Auth0's the CDN url when `domain` has the format `*.auth0.com`. Otherwise, it defaults to `domain`.
+- **clientBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
+- **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
 
 #### Language Dictionary Specification
 
