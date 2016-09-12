@@ -21,7 +21,8 @@ const {
 
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = init(id, Immutable.fromJS({
-    assetsUrl: extractAssetsUrlOption(options, domain),
+    clientBaseUrl: extractClientBaseUrlOption(options, domain),
+    languageBaseUrl: extractLanguageBaseUrlOption(options, domain),
     auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
@@ -48,10 +49,13 @@ export function domain(m) {
   return get(m, "domain");
 }
 
-export function assetsUrl(m) {
-  return get(m, "assetsUrl");
+export function clientBaseUrl(m) {
+  return get(m, "clientBaseUrl");
 }
 
+export function languageBaseUrl(m) {
+  return get(m, "languageBaseUrl");
+}
 export function setSubmitting(m, value, error = "") {
   m = tset(m, "submitting", value);
   m = clearGlobalSuccess(m);
@@ -201,7 +205,11 @@ export function withAuthOptions(m, opts) {
     .toJS();
 }
 
-function extractAssetsUrlOption(opts, domain) {
+function extractClientBaseUrlOption(opts, domain) {
+  if (opts.clientBaseUrl && typeof opts.clientBaseUrl === "string") {
+    return opts.clientBaseUrl;
+  }
+
   if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
     return opts.assetsUrl;
   }
@@ -219,6 +227,19 @@ function extractAssetsUrlOption(opts, domain) {
     return domainUrl;
   }
 }
+
+function extractLanguageBaseUrlOption(opts, domain) {
+  if (opts.languageBaseUrl && typeof opts.languageBaseUrl === "string") {
+    return opts.languageBaseUrl;
+  }
+
+  if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
+    return opts.assetsUrl;
+  }
+
+  return "https://cdn.auth0.com"
+}
+
 
 export function render(m) {
   return tset(m, "render", true);
