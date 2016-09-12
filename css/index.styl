@@ -48,6 +48,22 @@ tabsHeight = 40px
     &.auth0-global-message-success
       background #7ED321
 
+    &.global-message-enter
+      height 0
+      paddingTop 0
+      paddingBottom 0
+    &.global-message-enter.global-message-enter-active
+      transition all 0.2s
+      height auto
+      paddingTop 10px
+      paddingBottom 10px
+
+    &.global-message-leave
+      transition all 0.2s
+      height 0
+      paddingTop 0
+      paddingBottom 0
+
     span
       -webkit-animation-delay .2s
       animation-delay .2s
