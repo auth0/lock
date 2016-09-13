@@ -20,7 +20,9 @@ export function syncRemoteData(m) {
     errorFn: (m, error) => {
       // location.origin is not supported in all browsers
       let origin = location.protocol + "//" + location.hostname;
-      if (location.port) origin += ":" + location.port;
+      if (location.port) {
+        origin += ":" + location.port;
+      }
 
       const appSettingsUrl = `https://manage.auth0.com/#/applications/${l.clientID(m)}/settings`;
 
