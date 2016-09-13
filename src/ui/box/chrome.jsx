@@ -17,7 +17,7 @@ class SubmitButton extends React.Component {
   render() {
     const { color, disabled, label } = this.props;
     const content = label
-      ? <span>
+      ? <span className="auth0-label-submit">
           {label}
           <span dangerouslySetInnerHTML={{__html: submitText}} />
         </span>
