@@ -113,9 +113,9 @@ export function isInCorpNetwork(m) {
 }
 
 export function corpNetworkConnection(m) {
-  // TODO: ensure there is a connection there with the expected
-  // format.
-  return m.getIn(["sso", "connection"]);
+  // Information about connection is stored in to flat properties connection and strategy.
+  // If connection is present, strategy will always be present as defined by the server.
+  return  m.getIn(["sso", "connection"]) && Immutable.Map({name:m.getIn(["sso", "connection"]),strategy:m.getIn(["sso","strategy"])});
 }
 
 // hrd
