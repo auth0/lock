@@ -1,7 +1,7 @@
 # Change Log
 
-## [10.2.2](https://github.com/auth0/lock/tree/10.2.2) (2016-08-31)
-[Full Changelog](https://github.com/auth0/lock/compare/10.2.1...10.2.2)
+## [v10.2.2](https://github.com/auth0/lock/tree/v10.2.2) (2016-08-31)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.2.1...v10.2.2)
 
 ### Fixed
 
@@ -11,15 +11,15 @@
 
 - Change the default value for hash in WebApi.parseHash() internal method (#587)
 
-## [10.2.1](https://github.com/auth0/lock/tree/10.2.1) (2016-08-18)
-[Full Changelog](https://github.com/auth0/lock/compare/10.2.0...10.2.1)
+## [v10.2.1](https://github.com/auth0/lock/tree/v10.2.1) (2016-08-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.2.0...v10.2.1)
 
 ### Fixed
 
 - Allow dots in HRD username and clear errors before leaving the HRD screen (#574)
 
-## [10.2.0](https://github.com/auth0/lock/tree/10.2.0) (2016-08-18)
-[Full Changelog](https://github.com/auth0/lock/compare/10.1.0...10.2.0)
+## [v10.2.0](https://github.com/auth0/lock/tree/v10.2.0) (2016-08-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.1.0...v10.2.0)
 
 ### Changed
 
@@ -39,15 +39,15 @@
 - Allow to override some options in the `show` method (#550)
 - Add `nb` translation (#560)
 
-## [10.1.0](https://github.com/auth0/lock/tree/10.1.0) (2016-08-09)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.2...10.1.0)
+## [v10.1.0](https://github.com/auth0/lock/tree/v10.1.0) (2016-08-09)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.2...v10.1.0)
 
 ### Added
 
 - Add `de` translation (#546)
 
-## [10.0.2](https://github.com/auth0/lock/tree/10.0.2) (2016-08-05)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.1...10.0.2)
+## [v10.0.2](https://github.com/auth0/lock/tree/v10.0.2) (2016-08-05)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.1...v10.0.2)
 
 ### Fixed
 
@@ -56,8 +56,8 @@
 - Stop showing last login screen when the initial screen is not login (#534)
 - Fix email input in IE 10 (#537)
 
-## [10.0.1](https://github.com/auth0/lock/tree/10.0.1) (2016-07-27)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0...10.0.1)
+## [v10.0.1](https://github.com/auth0/lock/tree/v10.0.1) (2016-07-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0...v10.0.1)
 
 ### Fixed
 
@@ -65,8 +65,8 @@
 - Protect against svgs background colors set by other stylesheets (#506)
 - Ensure header styling looks fine in IE (#507)
 
-## [10.0.0](https://github.com/auth0/lock/tree/10.0.0) (2016-07-20)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0-rc.2...10.0.0)
+## [v10.0.0](https://github.com/auth0/lock/tree/v10.0.0) (2016-07-20)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0-rc.2...v10.0.0)
 
 ### Changed
 
@@ -81,8 +81,8 @@
 
 - Handle the new variants of password policy errors during sign up.
 
-## [10.0.0-rc.2](https://github.com/auth0/lock/tree/10.0.0-rc.2) (2016-07-05)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0-rc.1...10.0.0-rc.2)
+## [v10.0.0-rc.2](https://github.com/auth0/lock/tree/v10.0.0-rc.2) (2016-07-05)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0-rc.1...v10.0.0-rc.2)
 
 ### Fixed
 
@@ -96,15 +96,15 @@
 - The validator function for additional sign up fields now allows to
   specify a hint that will be displayed when the field is invalid.
 
-## [10.0.0-rc.1](https://github.com/auth0/lock/tree/10.0.0-rc.1) (2016-06-22)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0-beta.5...10.0.0-rc.1)d
+## [v10.0.0-rc.1](https://github.com/auth0/lock/tree/v10.0.0-rc.1) (2016-06-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0-beta.5...v10.0.0-rc.1)d
 
 ### Change
 
 - Show Auth0 badge in the bottom only for free plans.
 
-## [10.0.0-beta.5](https://github.com/auth0/lock/tree/10.0.0-beta.5) (2016-06-21)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0-beta.4...10.0.0-beta.5)
+## [v10.0.0-beta.5](https://github.com/auth0/lock/tree/v10.0.0-beta.5) (2016-06-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0-beta.4...v10.0.0-beta.5)
 
 ### Fixed
 
@@ -136,8 +136,8 @@
 - Display a tooltip on invalid inputs with a hint on how to fix the
   error.
 
-## [10.0.0-beta.4](https://github.com/auth0/lock/tree/10.0.0-beta.4) (2016-05-17)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0-beta.3...10.0.0-beta.4)
+## [v10.0.0-beta.4](https://github.com/auth0/lock/tree/v10.0.0-beta.4) (2016-05-17)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0-beta.3...v10.0.0-beta.4)
 
 ### Fixed
 
@@ -154,8 +154,8 @@
   type, which allows the user to choose the value from a predefined
   list of options.
 
-## [10.0.0-beta.3](https://github.com/auth0/lock/tree/10.0.0-beta.3) (2016-05-10)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0-beta.2...10.0.0-beta.3)
+## [v10.0.0-beta.3](https://github.com/auth0/lock/tree/v10.0.0-beta.3) (2016-05-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0-beta.2...v10.0.0-beta.3)
 
 ### Fixed
 
@@ -168,8 +168,8 @@
   an username input was displayed when the connection required an
   username.
 
-## [10.0.0-beta.2](https://github.com/auth0/lock/tree/10.0.0-beta.2) (2016-04-25)
-[Full Changelog](https://github.com/auth0/lock/compare/10.0.0-beta.1...10.0.0-beta.2)
+## [v10.0.0-beta.2](https://github.com/auth0/lock/tree/v10.0.0-beta.2) (2016-04-25)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.0.0-beta.1...v10.0.0-beta.2)
 
 ### Fixed
 
@@ -192,6 +192,6 @@
 - Optionally request users to agree to terms and conditions before
   signing up via the `mustAcceptTerms` option.
 
-## [10.0.0-beta.1](https://github.com/auth0/lock/tree/10.0.0-beta.1) (2016-03-23)
+## [v10.0.0-beta.1](https://github.com/auth0/lock/tree/v10.0.0-beta.1) (2016-03-23)
 
 First preview release, see [https://auth0.com/docs/libraries/lock/v10](https://auth0.com/docs/libraries/lock/v10) for details.
