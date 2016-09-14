@@ -376,7 +376,7 @@ If you have found a bug or if you have a feature request, please report them at 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 
-[travis-image]: https://travis-ci.org/auth0/lock.svg?branch=master
+[travis-image]: https://img.shields.io/travis/auth0/lock.svg?style=flat-square&branch=master
 [travis-url]: https://travis-ci.org/auth0/lock
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
