@@ -343,7 +343,14 @@ export function runHook(m, str, ...args) {
 }
 
 export function emitEvent(m, str, ...args) {
-  setTimeout(() => get(m, "emitEventFn")(str, ...args), 0);
+  setTimeout(() => {
+    const emitEventFn = get(m, "emitEventFn");
+    const hadListener = emitEventFn(str, ...args);
+    // Handle uncaught custom error
+    if (str === "unrecoverable_error" && !hadListener) {
+      throw new Error(...arg);
+    }
+  }, 0);
 }
 
 export function loginErrorMessage(m, error, type) {
