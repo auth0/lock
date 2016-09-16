@@ -92,7 +92,7 @@ export default {
   ssoEnabled: "Inicio de sesión único activado",
   submitLabel: "Enviar",
   unrecoverableError: "Ocurrió un error.<br />Por favor, contacte a soporte técnico.",
-  usernameFormatErrorHint: "1-15 letras, números y \"_\"",
+  usernameFormatErrorHint: "%d-%d letras, números y \"_\"",
   usernameInputPlaceholder: "su usuario",
   usernameOrEmailInputPlaceholder: "usuario/correo electrónico",
   title: "Auth0",

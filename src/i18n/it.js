@@ -92,7 +92,7 @@ export default {
   ssoEnabled: "Single Sign-On abilitati",
   submitLabel: "Invio", // needs review
   unrecoverableError: "Qualcosa è andato storto.<br />Si prega di contattare il supporto tecnico.",
-  usernameFormatErrorHint: "Si prega di utilizzare 1-15 lettere, numeri e \"_\"",
+  usernameFormatErrorHint: "Si prega di utilizzare %d-%d lettere, numeri e \"_\"",
   usernameInputPlaceholder: "il Suo nome utente",
   usernameOrEmailInputPlaceholder: "il Suo nome utente or email", // TODO
   title: "Auth0",

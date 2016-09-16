@@ -92,7 +92,7 @@ export default {
   ssoEnabled: "Single Sign-On aktiveret",
   submitLabel: "Send",
   unrecoverableError: "Der skete en fejl.<br />Kontakt venligst den tekniske support.",
-  usernameFormatErrorHint: "Brug 1-15 bogstaver, numre og \"_\"",
+  usernameFormatErrorHint: "Brug %d-%d bogstaver, numre og \"_\"",
   usernameInputPlaceholder: "dit brugernavn",
   usernameOrEmailInputPlaceholder: "brugernavn/email",
   title: "Auth0",

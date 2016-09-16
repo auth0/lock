@@ -92,7 +92,7 @@ export default {
   ssoEnabled: "Single Sign-On aktiverad",
   submitLabel: "Skicka",
   unrecoverableError: "Något gick fel.<br />Vänligen kontakta teknisk support.",
-  usernameFormatErrorHint: "Använd 1-15 bokstäver, siffror och \"_\"",
+  usernameFormatErrorHint: "Använd %d-%d bokstäver, siffror och \"_\"",
   usernameInputPlaceholder: "ditt användarnamn",
   usernameOrEmailInputPlaceholder: "användarnamn/e-postadress",
   title: "Auth0",
