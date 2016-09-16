@@ -2,12 +2,27 @@ import { setField } from './index';
 import { validateEmail } from './email';
 import trim from 'trim';
 
-const regExp = /^[a-zA-Z0-9_]{1,15}$/;
+const regExp = /^[a-zA-Z0-9_]+$/;
 
-function validateUsername(str, validateFormat) {
-  if (!validateFormat) return trim(str).length > 0;
+function validateUsername(str, validateFormat, settings = { min: 1, max: 15 }) {
+  if (!validateFormat) {
+    return trim(str).length > 0;
+  }
 
-  const result = regExp.exec(trim(str.toLowerCase()));
+  const lowercased = trim(str.toLowerCase());
+
+  // chekc min value matched
+  if (lowercased.length <= settings.min) {
+    return false;
+  }
+
+  // check max value matched
+  if (lowercased.length >= settings.max) {
+    return false;
+  }
+
+  // check allowed characters matched
+  const result = regExp.exec(lowercased);
   return result && result[0];
 }
 
