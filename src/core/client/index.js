@@ -45,7 +45,7 @@ function strategyNameToConnectionType(str) {
 }
 
 function formatConnectionValidation (connectionValidation = {}) {
-  const validation = Object.assign({}, DEFAULT_CONNECTION_VALIDATION, connectionValidation);
+  const validation = { ...DEFAULT_CONNECTION_VALIDATION, ...connectionValidation };
   const defaultMin = DEFAULT_CONNECTION_VALIDATION.username.min;
   const defaultMax = DEFAULT_CONNECTION_VALIDATION.username.max;
 
