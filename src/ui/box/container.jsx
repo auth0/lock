@@ -68,11 +68,15 @@ export default class Container extends React.Component {
       setTimeout(() => this.setState({isOpen: true}), 17);
     }
 
-    this.escKeydown = new EscKeyDownHandler(::this.handleEsc);
+    if (this.props.closeHandler) {
+      this.escKeydown = new EscKeyDownHandler(::this.handleEsc);
+    }
   }
 
   componentWillUnmount() {
-    this.escKeydown.release();
+    if (this.escKeydown) {
+      this.escKeydown.release();
+    }
   }
 
   handleSubmit(e) {
