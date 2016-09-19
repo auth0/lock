@@ -1,5 +1,5 @@
 # Change Log
-## [v10.3.0](https://github.com/auth0/lock/tree/v10.2.2) (2016-09-19)
+## [v10.3.0](https://github.com/auth0/lock/tree/v10.3.0) (2016-09-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.3.0)
 
 **Closed issues:**
