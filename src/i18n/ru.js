@@ -92,7 +92,7 @@ export default {
   ssoEnabled: "Единый вход включен",
   submitLabel: "Отправить", // needs review
   unrecoverableError: "Произошла непредвиденная ошибка.<br />Пожалуйста, обратитесь в службу технической поддержки.",
-  usernameFormatErrorHint: "Используйте 1-15 букв, цифр и \"_\"",
+  usernameFormatErrorHint: "Используйте %d-%d букв, цифр и \"_\"",
   usernameInputPlaceholder: "Ваше имя пользователя",
   useranmeOrEmailInputPlaceholder: "электронной почты/пользователя", // TODO review
   title: "Auth0",

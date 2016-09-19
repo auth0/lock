@@ -6,6 +6,8 @@ import { STRATEGIES as ENTERPRISE_STRATEGIES } from '../../connection/enterprise
 
 const { initNS, get } = dataFns(["client"]);
 
+const DEFAULT_CONNECTION_VALIDATION = { username: { min: 1, max: 15 } };
+
 export function hasFreeSubscription(m) {
   return ["free", "dev"].indexOf(get(m, ["tenant", "subscription"])) > -1;
 }
@@ -40,6 +42,22 @@ function strategyNameToConnectionType(str) {
   } else {
     return "unknown";
   }
+}
+
+function formatConnectionValidation (connectionValidation = {}) {
+  const validation = { ...DEFAULT_CONNECTION_VALIDATION, ...connectionValidation };
+  const defaultMin = DEFAULT_CONNECTION_VALIDATION.username.min;
+  const defaultMax = DEFAULT_CONNECTION_VALIDATION.username.max;
+
+  validation.username.min = parseInt(validation.username.min, 10) || defaultMin;
+  validation.username.max = parseInt(validation.username.max, 10) || defaultMax;
+
+  if (validation.username.min > validation.username.max) {
+    validation.username.min = defaultMin;
+    validation.username.max = defaultMax;
+  }
+
+  return validation;
 }
 
 const emptyConnections = Immutable.fromJS({
@@ -98,6 +116,7 @@ function formatClientConnection(connectionType, strategyName, connection) {
     result.requireUsername = typeof connection.requires_username === "boolean"
       ? connection.requires_username
       : false;
+    result.validation = formatConnectionValidation(connection.validation);
   }
 
   if (connectionType === "enterprise") {

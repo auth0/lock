@@ -3,7 +3,7 @@ import UsernameInput from '../../ui/input/username_input';
 import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
 import * as l from '../../core/index';
-import { setUsername, usernameLooksLikeEmail } from '../username';
+import { setUsername, usernameLooksLikeEmail, getUsernameValidation } from '../username';
 import { debouncedRequestAvatar, requestAvatar } from '../../avatar';
 
 export default class UsernamePane extends React.Component {
@@ -27,17 +27,28 @@ export default class UsernamePane extends React.Component {
   render() {
     const { i18n, lock, placeholder, validateFormat } = this.props;
     const value = c.getFieldValue(lock, "username");
+    const usernameValidation = validateFormat ? getUsernameValidation(lock) : {};
 
-    const invalidHintKey = str => {
+    const invalidHintKey = (str) => {
       if (!str) return "blankErrorHint";
       if (usernameLooksLikeEmail(str) || !validateFormat) return "invalidErrorHint";
       return "usernameFormatErrorHint";
     };
 
+    const invalidHint = (str) => {
+      const hintKey = invalidHintKey(str);
+
+      if ("usernameFormatErrorHint" === hintKey && validateFormat) {
+        return i18n.str(hintKey, usernameValidation.min, usernameValidation.max)
+      }
+
+      return i18n.str(hintKey)
+    }
+
     return (
       <UsernameInput
         value={value}
-        invalidHint={i18n.str(invalidHintKey(value))}
+        invalidHint={invalidHint(value)}
         isValid={!c.isFieldVisiblyInvalid(lock, "username")}
         onChange={::this.handleChange}
         placeholder={placeholder}

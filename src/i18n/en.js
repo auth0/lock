@@ -92,7 +92,7 @@ export default {
   ssoEnabled: "Single Sign-On enabled",
   submitLabel: "Submit",
   unrecoverableError: "Something went wrong.<br />Please contact technical support.",
-  usernameFormatErrorHint: "Use 1-15 letters, numbers and \"_\"",
+  usernameFormatErrorHint: "Use %d-%d letters, numbers and \"_\"",
   usernameInputPlaceholder: "your username",
   usernameOrEmailInputPlaceholder: "username/email",
   title: "Auth0",
