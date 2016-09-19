@@ -1,4 +1,42 @@
 # Change Log
+## [v10.3.0](https://github.com/auth0/lock/tree/v10.3.0) (2016-09-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.3.0)
+
+**Closed issues:**
+- v10: KerberosScreen failing on internal Network [\#590](https://github.com/auth0/lock/issues/590)
+- Languages not available on cdn.eu.auth0.com [\#576](https://github.com/auth0/lock/issues/576)
+- The lock v10 with ionic2 page can not scroll. [\#532](https://github.com/auth0/lock/issues/532)
+- Signup terms checkbox overlays password field on small devices. [\#525](https://github.com/auth0/lock/issues/525)
+- Lock + Meteor breaks when trying to require & use blueimp-md5 [\#466](https://github.com/auth0/lock/issues/466)
+- White space on bottom when running/simulating on mobile device [\#376](https://github.com/auth0/lock/issues/376)
+
+**Fixed:**
+- Bump blueimp-md5@2.3.1 [\#613](https://github.com/auth0/lock/pull/613) ([cristiandouce](https://github.com/cristiandouce))
+- Handle uncaught unrecoverable_error [\#609](https://github.com/auth0/lock/pull/609) ([eddiezane](https://github.com/eddiezane))
+- fixed loading unaligned with label submit [\#606](https://github.com/auth0/lock/pull/606) ([beneliflo](https://github.com/beneliflo))
+- Fix EscKeyDownHandler bug in Container when `closable` is false [\#604](https://github.com/auth0/lock/pull/604) ([kevinzwh](https://github.com/kevinzwh))
+- Fix checkbox terms [\#597](https://github.com/auth0/lock/pull/597) ([beneliflo](https://github.com/beneliflo))
+- Fixes corporate network connection usage [\#594](https://github.com/auth0/lock/pull/594) ([CriGoT](https://github.com/CriGoT))
+- fixed ionic page scroll [\#591](https://github.com/auth0/lock/pull/591) ([beneliflo](https://github.com/beneliflo))
+
+**Added:**
+- Add min/max username validation from client info settings [\#611](https://github.com/auth0/lock/pull/611) ([cristiandouce](https://github.com/cristiandouce))
+- Introduce clientBaseUrl and languageBaseUrl options to deprecate assetsUrl [\#601](https://github.com/auth0/lock/pull/601) ([cristiandouce](https://github.com/cristiandouce))
+- Added Hungarian translations [\#599](https://github.com/auth0/lock/pull/599) ([nagyv](https://github.com/nagyv))
+- Add french translation [\#596](https://github.com/auth0/lock/pull/596) ([RomainFallet](https://github.com/RomainFallet))
+- Added Swedish (sv) translation. [\#593](https://github.com/auth0/lock/pull/593) ([kuljaninemir](https://github.com/kuljaninemir))
+
+**Changed:**
+- use ReactCSSTransitionGroup for global messages [\#595](https://github.com/auth0/lock/pull/595) ([robbiewxyz](https://github.com/robbiewxyz))
+
+**Deprecation notice:**
+
+This version introduces `languageBaseUrl` and `cliengBaseUrl` in replacement of `assetsUrl`.
+
+- The client will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
+- The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.auth0.com/js/lock/${lockVersion}/`).
+- The new options have priority over `assetsUrl`.
+- If `assetsUrl` is provided, keep the current behavior: fetch client from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
 
 ## [v10.2.2](https://github.com/auth0/lock/tree/v10.2.2) (2016-08-31)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.1...v10.2.2)
