@@ -348,7 +348,7 @@ export function emitEvent(m, str, ...args) {
     const hadListener = emitEventFn(str, ...args);
     // Handle uncaught custom error
     if (str === "unrecoverable_error" && !hadListener) {
-      throw new Error(...arg);
+      throw new Error(...args);
     }
   }, 0);
 }
