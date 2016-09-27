@@ -1,4 +1,17 @@
 # Change Log
+## [v10.4.0](https://github.com/auth0/lock/tree/v10.4.0) (2016-09-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.3.0...v10.4.0)
+
+**Closed issues**
+- theme.logo regression in 10.3.0 [\#617](https://github.com/auth0/lock/issues/617)
+
+**Changed**
+- Update auth0.js version to v7.2.1 [\#621](https://github.com/auth0/lock/pull/621) ([hzalaz](https://github.com/hzalaz))
+
+**Fixed**
+- Fix bad reference for unrecoverable_error event emitter [\#625](https://github.com/auth0/lock/pull/625) ([cristiandouce](https://github.com/cristiandouce))
+- Fixes for 10.3.0 regression [\#618](https://github.com/auth0/lock/pull/618) ([doapp-ryanp](https://github.com/doapp-ryanp))
+
 ## [v10.3.0](https://github.com/auth0/lock/tree/v10.3.0) (2016-09-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.3.0)
 
