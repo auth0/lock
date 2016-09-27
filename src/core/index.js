@@ -381,6 +381,14 @@ export function loginErrorMessage(m, error, type) {
     code = INVALID_MAP[type];
   }
 
+  if (code === "a0.mfa_registration_required") {
+    code = "lock.mfa_registration_required";
+  }
+
+  if (code === "a0.mfa_invalid_code") {
+    code = "lock.mfa_invalid_code";
+  }
+
   return i18n.str(m, ["error", "login", code])
     || i18n.str(m, ["error", "login", "lock.fallback"]);
 }

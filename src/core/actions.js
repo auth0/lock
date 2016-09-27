@@ -141,18 +141,19 @@ export function validateAndSubmit(id, fields = [], f) {
   }
 }
 
-export function logIn(id, fields, params = {}) {
+export function logIn(id, fields, params = {},
+  logInErrorHandler = (err, next) => next()) {
+
   validateAndSubmit(id, fields, m => {
     webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
       if (error) {
-        setTimeout(() => logInError(id, fields, error), 250);
+        setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250)
       } else {
         logInSuccess(id, result);
       }
     });
   });
 }
-
 
 export function logInSuccess(id, result) {
   const m = read(getEntity, "lock", id);
@@ -168,15 +169,19 @@ export function logInSuccess(id, result) {
   }
 }
 
-function logInError(id, fields, error) {
-  const m = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
+function logInError(id, fields, error, localHandler) {
+  localHandler(id, error, fields, () => process.nextTick(() => {
+    const m = read(getEntity, "lock", id);
+    const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
 
-  if (["blocked_user", "rule_error", "lock.unauthorized"].indexOf(error.code) > -1) {
-    l.emitAuthorizationErrorEvent(m, error);
-  }
+    if (["blocked_user", "rule_error", "lock.unauthorized"].indexOf(error.code) > -1) {
+      l.emitAuthorizationErrorEvent(m, error);
+    }
 
-  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+    swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+  }));
+
+  swap(updateEntity, "lock", id, l.setSubmitting, false);
 }
 
 function loginType(fields) {

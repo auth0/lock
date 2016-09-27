@@ -148,6 +148,12 @@ export function username(m) {
   return getFieldValue(m, "username");
 }
 
+// mfa_code
+
+export function mfaCode(m) {
+  return getFieldValue(m, "mfa_code");
+}
+
 // select field options
 
 export function isSelecting(m) {
