@@ -23,7 +23,7 @@ exports.default = {
     },
     passwordless: {
       "bad.email": "電子信箱錯誤",
-      "bad.phone_number": "手機號碼格式錯誤。",
+      "bad.phone_number": "手機號碼錯誤。",
       "lock.fallback": "對不起，發生錯誤。"
     },
     signUp: {
