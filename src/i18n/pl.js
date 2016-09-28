@@ -14,9 +14,9 @@ export default {
       "lock.network": "Kontakt z serwerem nie powiódł się. Sprawdź swoje połączenie i spróbuj ponownie.",
       "lock.popup_closed": "Okno zamknięte. Spróbuj ponownie.",
       "lock.unauthorized": "Autoryzacja nie została udzielona. Spróbuj ponownie.",
-      "password_change_required": "Musisz zmienić swoje hasło, poniewasz logujesz się po raz pierwszy lub Twoje hasło wygasło.", // TODO: verify error code
-      "password_leaked": "Ta nazwa użytkownika została zablokowana, ponieważ Twoje hasło wyciekło w innym serwisie. Wysłaliśmy do Ciebie email z instrukcją, w jaki sposób ją odblokować.",
-      "too_many_attempts": "Twoje hasło zostało zablokowane po zbyt wielu nieudanych próbach logowania."
+      "password_change_required": "Musisz zmienić swoje hasło, ponieważ logujesz się po raz pierwszy lub Twoje hasło wygasło.", // TODO: verify error code
+      "password_leaked": "Ta nazwa użytkownika została zablokowana, ponieważ Twoje hasło wyciekło w innym serwisie. Wysłaliśmy do Ciebie email z instrukcją odblokowania konta.",
+      "too_many_attempts": "Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania."
     },
     passwordless: {
       "bad.email": "Adres email nie jest poprawny",
@@ -35,7 +35,7 @@ export default {
   },
   success: { // success messages show above the form or in a confirmation pane
     logIn: "Logowanie poprawne, dziękujemy.",
-    forgotPassword: "Wysłaliśmy do Ciebie email z informacją, jak zresetować hasło.",
+    forgotPassword: "Wysłaliśmy do Ciebie email z instrukcją, jak zresetować hasło.",
     magicLink: "Wysłaliśmy do Ciebie link umożliwiający zalogowanie<br />do %s.",
     signUp: "Rejestracja poprawna, dziękujemy."
   },
@@ -47,7 +47,7 @@ export default {
   databaseAlternativeSignUpInstructions: "albo",
   emailInputPlaceholder: "twój@email.pl",
   enterpriseLoginIntructions: "Zaloguj się z użyciem danych firmowych.",
-  enterpriseActiveLoginInstructions: "Wpisz swoje dane firmowe w: %s.",
+  enterpriseActiveLoginInstructions: "Wpisz swoje dane firmowe w %s.",
   failedLabel: "Nie udało się!",
   forgotPasswordAction: "Nie pamiętasz hasła?",
   forgotPasswordInstructions: "Wpisz swój adres email. Wyślemy Ci informację o tym, jak zresetować hasło.",
@@ -57,19 +57,19 @@ export default {
   loginAtLabel: "Logowanie z: %s",
   loginLabel: "Logowanie",
   loginSubmitLabel: "Zaloguj się",
-  loginWithLabel: "Zaloguj się z: %s",
+  loginWithLabel: "Zaloguj się z %s",
   notYourAccountAction: "Nie Twoje konto?",
   passwordInputPlaceholder: "Twoje hasło",
   passwordStrength: {
     containsAtLeast: "Zawiera przynajmniej %d następujących %d typów znaków:",
-    identicalChars: "Nie więcej, niż %d takich samych znaków pod rząd (np., \"%s\" nie jest dozwolone)",
+    identicalChars: "Nie więcej niż %d takich samych znaków pod rząd (np., \"%s\" nie jest dozwolone)",
     nonEmpty: "Hasło jest wymagane",
-    numbers: "Numery (np. 0-9)",
+    numbers: "Cyfry (np. 0-9)",
     lengthAtLeast: "Przynajmniej %d znaków",
     lowerCase: "Litery małe (a-z)",
     shouldContain: "Powinno zawierać:",
     specialCharacters: "Znaki specjalne (np. !@#$%^&*)",
-    upperCase: "Litery wielkie (A-Z)"
+    upperCase: "Wielkie litery (A-Z)"
   },
   passwordlessEmailAlternativeInstructions: "W innym przypadku wpisz adres email, by się zalogować<br/>lub stwórz konto",
   passwordlessEmailCodeInstructions: "Email z kodem został wysłany na adres %s.",
@@ -93,10 +93,10 @@ export default {
   submitLabel: "Wyślij",
   unrecoverableError: "Coś poszło nie tak.<br />Skontaktuj się z pomocą techniczną.",
   usernameFormatErrorHint: "Użyj %d-%d liter, cyfr i \"_\"",
-  usernameInputPlaceholder: "twoja nazwa użytkownika",
+  usernameInputPlaceholder: "Twoja nazwa użytkownika",
   usernameOrEmailInputPlaceholder: "nazwa użytkownika/email",
   title: "Auth0",
   welcome: "Witaj %s!",
   windowsAuthInstructions: "Jesteś połączony z sieci firmowej&hellip;",
-  windowsAuthLabel: "Autentykacja Windows"
+  windowsAuthLabel: "Uwierzytelnianie Windows"
 };
