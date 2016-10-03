@@ -9,17 +9,17 @@ export default {
       "invalid_user_password": "Gebruiker of wachtwoord is niet correct.",
       "lock.fallback": "Onze excuses, er is iets mis gegaan bij het aanmelden.",
       "lock.invalid_code": "Verkeerde code.",
-      "lock.invalid_email_password": "Verkeerde emailadres of wachtwoord.",
+      "lock.invalid_email_password": "Verkeerde e-mailadres of wachtwoord.",
       "lock.invalid_username_password": "Verkeerde gebruikersnaam of wachtwoord.",
       "lock.network": "Server is niet bereikbaar. Controleer uw netwerk verbinding en probeer het nog eens.",
       "lock.popup_closed": "Popup venster gesloten. Probeer het nog een keer.",
       "lock.unauthorized": "Authorisatie geweigerd. Probeer het nog een keer.",
       "password_change_required": "U moet uw wachtwoord aanpassen omdat dit de eerste keer is dat u inlogt of omdat uw wachtwoord is verlopen.", // TODO: verify error code
-      "password_leaked": "Deze login is geblokkeerd omdat uw wachtwoord is gelekt op een andere website. We hebben een email verstuurd met instructies voor het deblokkeren.",
+      "password_leaked": "Deze login is geblokkeerd omdat uw wachtwoord is gelekt op een andere website. We hebben een e-mail verstuurd met instructies voor het deblokkeren.",
       "too_many_attempts": "Uw account is geblokkeerd als gevolg van herhaalde pogingen om in te loggen."
     },
     passwordless: {
-      "bad.email": "Het emailadres is ongeldig",
+      "bad.email": "Het e-mailadres is ongeldig",
       "bad.phone_number": "Het telefoonnummer is ongeldig",
       "lock.fallback": "Onze excuses, er is iets fout gegaan."
     },
@@ -35,7 +35,7 @@ export default {
   },
   success: { // success messages show above the form or in a confirmation pane
     logIn: "Dank u voor het inloggen.",
-    forgotPassword: "Wij hebben een email verstuurd voor het resetten van uw wachtwoord.",
+    forgotPassword: "Wij hebben een e-mail verstuurd voor het resetten van uw wachtwoord.",
     magicLink: "Wij hebben een link verstuurd, naar %s, om mee in te loggen.",
     signUp: "Bedankt voor uw aanmelding."
   },
@@ -50,8 +50,8 @@ export default {
   enterpriseActiveLoginInstructions: "Voer uw bedrijfs inloggegevens in op %s.",
   failedLabel: "Gefaald!",
   forgotPasswordAction: "Wachtwoord vergeten??",
-  forgotPasswordInstructions: "Geef uw emailadres op. Wij sturen een email voor het resetten van uw wachtwoord.",
-  forgotPasswordSubmitLabel: "Verstuur email",
+  forgotPasswordInstructions: "Geef uw e-mailadres op. Wij sturen een e-mail voor het resetten van uw wachtwoord.",
+  forgotPasswordSubmitLabel: "Verstuur e-mail",
   invalidErrorHint: "Ongeldig",
   lastLoginInstructions: "U bent laatst aangemeld met",
   loginAtLabel: "Aanmelden op %s",
@@ -71,9 +71,9 @@ export default {
     specialCharacters: "Speciale karacters (e.g. !@#$%^&*)",
     upperCase: "Hoofdletters (A-Z)"
   },
-  passwordlessEmailAlternativeInstructions: "Anders, voer uw emailadres in om in te loggen<br/>of creëer een nieuwe gebruikersaccount",
-  passwordlessEmailCodeInstructions: "Er is een email met de code verstuurt naar %s.",
-  passwordlessEmailInstructions: "Voer uw emailadres in om aan te melden <br/>of maak een nieuwe account aan",
+  passwordlessEmailAlternativeInstructions: "Anders, voer uw e-mailadres in om in te loggen<br/>of creëer een nieuwe gebruikersaccount",
+  passwordlessEmailCodeInstructions: "Er is een e-mail met de code verstuurt naar %s.",
+  passwordlessEmailInstructions: "Voer uw e-mailadres in om aan te melden <br/>of maak een nieuwe account aan",
   passwordlessSMSAlternativeInstructions: "Anders, voer uw telefoonnummer in om in te loggen<br/>of creëer een nieuwe gebruikersaccount",
   passwordlessSMSCodeInstructions: "Er is een SMS met de code verstuurt <br/>naar %s.",
   passwordlessSMSInstructions: "Voer uw telefoonnummer in om in te loggen <br/>of creëer een nieuwe gebruikersaccount",
@@ -94,7 +94,7 @@ export default {
   unrecoverableError: "Er ging iets mis.<br />Neem a.u.b. contact op met de technische support.",
   usernameFormatErrorHint: "Gebruik 1-15 letters, nummers en \"_\"",
   usernameInputPlaceholder: "uw gebruikersnaam",
-  usernameOrEmailInputPlaceholder: "gebruikersnaam/emailadres",
+  usernameOrEmailInputPlaceholder: "gebruikersnaam/e-mailadres",
   title: "Auth0",
   welcome: "Welkom %s!",
   windowsAuthInstructions: "U bent verbonden vanaf uw bedrijfsnetwerk&hellip;",
