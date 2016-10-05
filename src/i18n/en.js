@@ -47,7 +47,7 @@ export default {
   databaseAlternativeSignUpInstructions: "or",
   emailInputPlaceholder: "yours@example.com",
   enterpriseLoginIntructions: "Login with your corporate credentials.",
-  enterpriseActiveLoginInstructions: "Please enter your coorporate credentials at %s.",
+  enterpriseActiveLoginInstructions: "Please enter your corporate credentials at %s.",
   failedLabel: "Failed!",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
