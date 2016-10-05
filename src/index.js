@@ -34,6 +34,7 @@ export default class Auth0Lock extends Core {
 
 // telemetry
 Auth0Lock.version = __VERSION__;
+Auth0Lock.css = css;
 Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
 Auth0.clientInfo.name =  "lock.js";
 Auth0.clientInfo.version = Auth0Lock.version;
