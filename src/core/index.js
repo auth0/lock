@@ -410,6 +410,10 @@ export function emitAuthorizationErrorEvent(m, error) {
   emitEvent(m, "authorization_error", error);
 }
 
+export function emitUnrecoverableErrorEvent(m, error) {
+  emitEvent(m, "unrecoverable_error", error)
+}
+
 export function showBadge(m) {
   return hasFreeSubscription(m) || false;
 }
@@ -419,6 +423,11 @@ export function overrideOptions(m, opts) {
 
   if (opts.allowedConnections) {
     m = tset(m, "allowedConnections", Immutable.fromJS(opts.allowedConnections));
+  }
+
+  if (opts.flashMessage) {
+    const key = "success" === opts.flashMessage.type ? "globalSuccess" : "globalError";
+    m = tset(m, key, opts.flashMessage.text);
   }
 
   if (opts.auth && opts.auth.params) {
