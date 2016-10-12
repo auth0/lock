@@ -96,8 +96,14 @@ module.exports = function(grunt) {
     },
     uglify: {
       build: {
-        src: "build/lock.js",
-        dest: "build/lock.min.js"
+        files: {
+          "build/lock.min.js": ["build/lock.js"]
+        },
+        options: {
+          sourceMap: true,
+          sourceMapName: "build/lock.min.js.map"
+        },
+
       }
     }
   });
