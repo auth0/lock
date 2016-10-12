@@ -988,7 +988,9 @@ tabsHeight = 40px
 
     &.auth0-lock-with-terms
       .auth0-lock-body-content
-        margin-bottom 42px
+        //mobile view
+        @media screen and (max-width: 480px)
+          margin-bottom 42px
 
     &.auth0-lock-with-tabs
       .auth0-lock-body-content
