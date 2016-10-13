@@ -49,7 +49,7 @@ export const wasLoginAttemptedWith = params => {
 
 // rendering
 
-export const displayLock = (name, opts = {}, done = () => {}) => {
+export const displayLock = (name, opts = {}, done = () => {}, show_ops = {}) => {
   switch(name) {
   case "enterprise and corporate":
     opts.allowedConnections = ["auth0.com", "rolodato.com"];
@@ -78,7 +78,7 @@ export const displayLock = (name, opts = {}, done = () => {}) => {
   }
 
   const lock = new Auth0Lock("cid", "domain", opts);
-  setTimeout(() => lock.show(), 175);
+  setTimeout(() => lock.show(show_ops), 175);
   setTimeout(done, 200);
   return lock;
 };
@@ -132,6 +132,29 @@ export const hasLoginSignUpTabs = hasViewFn(".auth0-lock-tabs");
 export const hasNoQuickAuthButton = lock => {
   return !qView(lock, ".auth0-lock-socia-button");
 };
+
+const hasFlashMessage = (query, lock, message) => {
+  const message_ele = q(lock, query);
+
+  if (! message_ele) {
+    return false;
+  }
+  
+  const span = message_ele.querySelector('span');
+
+  if (! span) {
+    return false;
+  }
+
+  return span.innerText.toLowerCase() === message.toLowerCase();
+}
+export const hasErrorMessage = (lock, message) => {
+  return hasFlashMessage(".auth0-global-message-error", lock, message);
+};
+export const hasSuccessMessage = (lock, message) => {
+  return hasFlashMessage(".auth0-global-message-success", lock, message);
+};
+
 export const hasOneSocialButton = hasOneViewFn(".auth0-lock-social-button");
 export const hasOneSocialBigButton = hasOneViewFn(".auth0-lock-social-button.auth0-lock-social-big-button");
 export const hasPasswordInput = hasInputFn("password");

@@ -12,12 +12,18 @@
   <div id="container"></div>
   <script src="/lock.js"></script>
   <script>
-    const cid = "yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih";
-    const domain = "mdocs.auth0.com";
+    const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
+    const domain = "auth0-tests-lock.auth0.com";
+    const options = {};
 
-    const lock = new Auth0Lock(cid, domain);
+    const lock = new Auth0Lock(cid, domain, options);
+
+    lock.on("authenticated", function(authResult) {
+      console.log(authResult);
+    });
 
     lock.show();
+
   </script>
 </body>
 </html>
