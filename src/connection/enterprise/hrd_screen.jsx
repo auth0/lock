@@ -7,7 +7,18 @@ import { enterpriseDomain, isSingleHRDConnection }  from '../enterprise';
 import * as i18n from '../../i18n';
 
 const Component = ({i18n, model}) => {
-  const headerText = i18n.html("enterpriseActiveLoginInstructions", enterpriseDomain(model)) || null;
+  const domain = enterpriseDomain(model);
+
+  var headerText;
+  
+  if (domain) {
+    headerText = i18n.html("enterpriseActiveLoginInstructions", domain);     
+  } else {
+    headerText = i18n.html("enterpriseLoginIntructions");
+  }
+
+  headerText = headerText || null;
+
   const header = headerText && <p>{headerText}</p>;
 
   return (
