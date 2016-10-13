@@ -38,7 +38,7 @@ describe("sign up terms agreement", function() {
     });
 
     afterEach(function() {
-      // this.lock.hide();
+      this.lock.hide();
     });
 
 
