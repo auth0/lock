@@ -27,6 +27,13 @@ export const stubWebApis = () => {
   });
 }
 
+export const assertAuthorizeRedirection = (cb) => {
+  if (webApi.logIn.restore) {
+    webApi.logIn.restore();
+  }
+  stub(webApi, "logIn", cb);
+};
+
 export const restoreWebApis = () => {
   webApi.logIn.restore();
   gravatarProvider.displayName.restore();
@@ -154,8 +161,13 @@ export const isSubmitButtonDisabled = hasFn("button.auth0-lock-submit[disabled]"
 const check = (lock, query) => {
   Simulate.change(q(lock, query), {});
 };
+const click = (lock, query) => {
+  Simulate.click(q(lock, query));
+};
 const checkFn = query => lock => check(lock, query);
+const clickFn = (lock, query) => click(lock, query);
 export const clickTermsCheckbox = checkFn(".auth0-lock-sign-up-terms-agreement label input[type='checkbox']");
+export const clickSocialConnectionButton = (lock, connection) => clickFn(lock, `.auth0-lock-social-button[data-provider='${connection}']`);
 const fillInput = (lock, name, str) => {
   Simulate.change(qInput(lock, name, true), {target: {value: str}});
 };
