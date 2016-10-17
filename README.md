@@ -154,7 +154,15 @@ var options = {
   theme: {
     labeledSubmitButton: false,
     logo: "https://example.com/assets/logo.png",
-    primaryColor: "green"
+    primaryColor: "green",
+    socialButtons: {
+      connectionName: {
+        displayName: "...", 
+        primaryColor: "...", 
+        foregroundColor: "...", 
+        icon: "url(...)"
+      }
+    }
   }
 };
 ```
@@ -162,6 +170,11 @@ var options = {
 - **labeledSubmitButton {Boolean}**: Indicates whether or not the submit button should have a label. Defaults to `true`. When set to `false` a icon will be shown. The labels can be customized through the `languageDictionary`.
 - **logo {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `logo` to ensure all colors go well together with the logo's color palette. Defaults to `"#ea5323"`.
+- **socialButtons {Object}**: Allows the customization of the custom oauth2 login buttons.
+  + **displayName {String}**: The name to show instead of the connection name.
+  + **primaryColor {String}**: The button's background color. Defaults to `"#eb5424"`.
+  + **foregroundColor {String}**: The button's text color. Defaults to `"#FFFFFF"`.
+  + **icon {String}**: The connection's icon. It should be a valid CSS `background-image` value. For example:`"url(http://site.com/logo.png)"`.
 
 #### Authentication options
 
