@@ -159,6 +159,7 @@ export const ui = {
 const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 
 export const auth = {
+  connectionScopes: m => getAuthAttribute(m, "connectionScopes"),
   params: m => tget(m, "authParams") || getAuthAttribute(m, "params"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
@@ -169,6 +170,7 @@ export const auth = {
 
 function extractAuthOptions(options) {
   let {
+    connectionScopes,
     params,
     redirect,
     redirectUrl,
@@ -177,6 +179,7 @@ function extractAuthOptions(options) {
     sso
   } = options.auth || {};
 
+  connectionScopes = typeof connectionScopes === "object" ? connectionScopes : {};
   params = typeof params === "object" ? params : {};
   redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : undefined;
   redirect = typeof redirect === "boolean" ? redirect : true;
@@ -190,6 +193,7 @@ function extractAuthOptions(options) {
   }
 
   return Immutable.fromJS({
+    connectionScopes,
     params,
     redirect,
     redirectUrl,
