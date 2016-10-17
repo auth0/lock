@@ -364,7 +364,7 @@ lock.show();
 ```
 
 
-More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/authentication-modes#popup-mode).
+More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/v10/popup-mode).
 
 ## Browser Compatibility
 
