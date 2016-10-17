@@ -11,7 +11,7 @@ const Component = ({i18n, model}) => {
 
   var headerText;
   
-  if (domain) {
+  if (domain != null) {
     headerText = i18n.html("enterpriseActiveLoginInstructions", domain);     
   } else {
     headerText = i18n.html("enterpriseLoginIntructions");
