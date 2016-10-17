@@ -40,6 +40,8 @@ export default {
     signUp: "Obrigado por se inscrever."
   },
   blankErrorHint: "Não pode ser em branco",
+  blankErrorHintEmail: "Não pode ser em branco",
+  blankErrorHintPassword: "Não pode ser em branco",
   codeInputPlaceholder: "seu código",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "ou",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Por favor digite seu endereço de email. Enviarmos um email para resetar sua senha.",
   forgotPasswordSubmitLabel: "Enviar email",  // needs review
   invalidErrorHint: "Inválido",
+  invalidErrorHintEmail: "Inválido",
   lastLoginInstructions: "Na última vez você entrou com",
   loginAtLabel: "Login em %s",
   loginLabel: "Login",
