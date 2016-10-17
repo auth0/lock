@@ -39,6 +39,8 @@ function strategyNameToConnectionType(str) {
     return "social";
   } else if (ENTERPRISE_STRATEGIES[str]) {
     return "enterprise";
+  } else if (str === "oauth2") {
+    return "social";
   } else {
     return "unknown";
   }

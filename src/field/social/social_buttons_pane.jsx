@@ -2,7 +2,7 @@ import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
 import { logIn } from '../../quick-auth/actions';
-import { displayName, socialConnections } from '../../connection/social/index';
+import { displayName, socialConnections, socialButtonsTheme } from '../../connection/social/index';
 
 export default class SocialButtonsPane extends React.Component {
 
@@ -21,15 +21,26 @@ export default class SocialButtonsPane extends React.Component {
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
-    const buttons = socialConnections(lock).map(x => (
-      <AuthButton
+    const theme = socialButtonsTheme(lock);
+
+    const buttons = socialConnections(lock).map(x => {
+      const buttonTheme = theme.get(x.get("name"));
+      const connectionName = buttonTheme && buttonTheme.get("displayName");
+      const primaryColor = buttonTheme && buttonTheme.get("primaryColor");
+      const foregroundColor = buttonTheme && buttonTheme.get("foregroundColor");
+      const icon = buttonTheme && buttonTheme.get("icon");
+
+      return(<AuthButton
         isBig={bigButtons}
         key={x.get("name")}
-        label={labelFn(signUp ? "signUpWithLabel" : "loginWithLabel", displayName(x))}
+        label={labelFn(signUp ? "signUpWithLabel" : "loginWithLabel", connectionName || displayName(x))}
         onClick={() => logIn(l.id(lock), x)}
         strategy={x.get("strategy")}
-      />
-    ));
+        primaryColor={primaryColor}
+        foregroundColor={foregroundColor}
+        icon={icon}
+      />)
+    });
 
     const loading = showLoading
       && <div className="auth0-loading-container">
