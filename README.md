@@ -105,7 +105,7 @@ Lock will emit events during its lifecycle.
 
 Displays the widget, allowing to override some options.
 
-- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen` and `rememberLastLogin`. See [below](#customization) for the details.
+- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details.
 
 #### Example
 
@@ -141,6 +141,9 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **rememberLastLogin {Boolean}**: Determines whether or not to show a screen that allows you to quickly log in with the account you used the last time when the `initialScreen` option is set to to `"login"` (the default). Defaults to `true`.
+- **flashMessage {Object}**: Shows an `error` or `success` flash message when Lock is shown.
+  + **type {String}**: The message type, it should be `error` or `success`.
+  + **text {String}**: The text to show.
 
 #### Theming options
 
@@ -172,7 +175,10 @@ var options = {
    redirectUrl: "some url",
    responseMode: "form_post",
    responseType: "token",
-   sso: true
+   sso: true:
+   connectionScopes: {
+    connectionName: [ 'scope1', 'scope2' ]
+   }
   }
 };
 ```
@@ -183,6 +189,7 @@ var options = {
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `callbackURL` is provided, and to `"token"` otherwise.
 - **sso {Boolean}**:  Determines whether Single Sign On is enabled or not. Defaults to `true`.
+- **connectionScopes {Object}**:  Allows to set scopes to be sent to the oauth2/social connection for authentication.
 
 #### Social options
 
