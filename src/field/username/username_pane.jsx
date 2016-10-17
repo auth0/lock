@@ -40,7 +40,7 @@ export default class UsernamePane extends React.Component {
 
       // only show format info in the error if it should validate the format and 
       // if there is any format restrictions for the connection
-      if ("usernameFormatErrorHint" === hintKey && validateFormat && usernameValidation) {
+      if ("usernameFormatErrorHint" === hintKey && validateFormat && usernameValidation != null) {
         return i18n.str(hintKey, usernameValidation.min, usernameValidation.max)
       }
 

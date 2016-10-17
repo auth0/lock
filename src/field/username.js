@@ -11,7 +11,7 @@ function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VAL
 
 // If the connection does not have validation settings, it should only check if the field is empty.
 // validateFormat overrides this logic to disable validation on login (login should never validate format)
-  if (!validateFormat  || !settings) {
+  if (!validateFormat  || settings == null) {
     return trim(str).length > 0;
   }
 

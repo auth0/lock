@@ -45,7 +45,7 @@ function strategyNameToConnectionType(str) {
 }
 
 function formatConnectionValidation (connectionValidation = {}) {
-  if (!connectionValidation.username) {
+  if (connectionValidation.username == null) {
     return null;
   }
 
