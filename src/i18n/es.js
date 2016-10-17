@@ -16,7 +16,9 @@ export default {
       "lock.unauthorized": "Acceso denegado. Por favor, intente nuevamente.",
       "password_change_required": "Debe actualizar su contraseña porque es la primera vez que ingresa o porque la contraseña está vencida.",
       "password_leaked": "Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones.",
-      "too_many_attempts": "Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos."
+      "too_many_attempts": "Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos.",
+      "lock.mfa_registration_required": "Por favor enrole su dispositivo antes de continuar con el segundo factor.",
+      "lock.mfa_invalid_code": "Código incorrecto. Por favor vuelva a intentarlo.",
     },
     passwordless: {
       "bad.email": "Correo inválido",
@@ -98,5 +100,10 @@ export default {
   title: "Auth0",
   welcome: "Bienvenido %s!",
   windowsAuthInstructions: "Usted se encuentra conectado desde su red corporativa&hellip;",
-  windowsAuthLabel: "Autenticación de Windows"
+  windowsAuthLabel: "Autenticación de Windows",
+  mfaInputPlaceholder: "Código",
+  mfaLoginTitle: "Segundo Factor",
+  mfaLoginInstructions: "Por favor ingrese el código de verificación generado por su aplicación móvil.",
+  mfaSubmitLabel: "Enviar",
+  mfaCodeErrorHint: "%d números"
 };

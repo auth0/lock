@@ -21,16 +21,33 @@ import  {
 } from './index';
 import * as i18n from '../../i18n';
 
-export function logIn(id) {
+export function logIn(id, needsMFA = false) {
   const m = read(getEntity, "lock", id);
   const usernameField = databaseLogInWithEmail(m) ? "email" : "username";
   const username = c.getFieldValue(m, usernameField);
 
-  coreLogIn(id, [usernameField, "password"], {
+  const params = {
     connection: databaseConnectionName(m),
     username: username,
     password: c.getFieldValue(m, "password")
-  });
+  };
+
+  const fields = [usernameField, "password"];
+
+  const mfaCode = c.getFieldValue(m, "mfa_code");
+  if (needsMFA) {
+    params["mfa_code"] = mfaCode;
+    fields.push("mfa_code");
+  }
+
+  coreLogIn(id, fields, params,
+    (id, error, fields, next) => {
+      if (error.error === "a0.mfa_required") {
+        return showLoginMFAActivity(id);
+      }
+
+      return next();
+    });
 }
 
 export function signUp(id) {
@@ -204,6 +221,14 @@ export function cancelResetPassword(id) {
  return showLoginActivity(id);
 }
 
+export function cancelMFALogin(id) {
+ return showLoginActivity(id);
+}
+
 export function toggleTermsAcceptance(id) {
   swap(updateEntity, "lock", id, switchTermsAcceptance);
+}
+
+export function showLoginMFAActivity(id, fields = ["mfa_code"]) {
+  swap(updateEntity, "lock", id, setScreen, "mfaLogin", fields);
 }

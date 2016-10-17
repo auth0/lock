@@ -1,6 +1,7 @@
 import Base from '../index';
 import Login from './classic/login';
 import SignUp from './classic/sign_up_screen';
+import MFALoginScreen from './classic/mfa_login_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
 import {
@@ -92,7 +93,8 @@ class Classic {
   static SCREENS = {
     login: Login,
     forgotPassword: ResetPassword,
-    signUp: SignUp
+    signUp: SignUp,
+    mfaLogin: MFALoginScreen
   };
 
   didInitialize(model, options) {

@@ -48,6 +48,7 @@ export const wasLoginAttemptedWith = params => {
   const lastCall = webApi.logIn.lastCall;
   if (!lastCall) return false;
   const paramsFromLastCall = lastCall.args[1];
+
   return Map(params).reduce(
     (r, v, k) => r && paramsFromLastCall[k] === v,
     true
@@ -178,7 +179,11 @@ export const hasUsernameInput = hasInputFn("username");
 export const isLoginTabCurrent = lock => isTabCurrent(lock, /log in/i);
 export const isSignUpTabCurrent = lock => isTabCurrent(lock, /sign up/i);
 export const isSubmitButtonDisabled = hasFn("button.auth0-lock-submit[disabled]");
+export const haveShownError = (lock, msg) => {
+  const errorElement = q(lock, ".auth0-global-message-error span");
 
+  return errorElement.innerText.toLowerCase() === msg.toLowerCase();
+};
 // interactions
 
 const check = (lock, query) => {
@@ -199,12 +204,17 @@ const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
 export const fillEmailInput = fillInputFn("email");
 export const fillPasswordInput = fillInputFn("password");
 export const fillUsernameInput = fillInputFn("username");
+export const fillMFACodeInput = fillInputFn("mfa_code");
 
-export const submit = lock => {
+export const submit = (lock) => {
   // reset web apis
   restoreWebApis();
   stubWebApis();
 
+  submitForm(lock);
+}
+
+export const submitForm = (lock) => {
   const form = q(lock, ".auth0-lock-widget");
   if (!form || form.tagName.toUpperCase() !== "FORM") {
     throw new Error("Unable to submit form: can't find the element");
@@ -212,6 +222,30 @@ export const submit = lock => {
 
   Simulate.submit(form, {});
 }
+
+export const waitUntilExists = (lock, selector, cb, timeout = 1000) => {
+  const startedAt = Date.now();
+
+  const interval = setInterval(() => {
+    if (Date.now() - startedAt >= timeout) {
+      clearInterval(interval);
+      throw new Error(`Timeout waiting for ${selector} to become available`);
+    }
+
+    const el = q(lock, selector);
+
+    if (el) {
+      clearInterval(interval);
+      cb(null, el);
+    }
+  }, 10);
+};
+
+export const waitUntilInputExists = (lock, name, cb, timeout) =>
+  waitUntilExists(lock, `.auth0-lock-input-${name} input`, cb, timeout);
+
+export const waitUntilErrorExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, ".auth0-global-message-error span", cb, timeout);
 
 // login
 
@@ -225,4 +259,16 @@ export const logInWithUsernameAndPassword = lock => {
   fillUsernameInput(lock, "someone");
   fillPasswordInput(lock, "mypass");
   submit(lock);
+};
+
+// Helps to keep the context of what happened on a test that
+// was executed as part of an async flow, the normal use
+// case is to pass mocha done as the done param.
+export const testAsync = (fn, done) => {
+  try {
+    fn();
+    done();
+  } catch (e) {
+    done(e);
+  }
 };
