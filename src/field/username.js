@@ -8,7 +8,10 @@ const DEFAULT_CONNECTION_VALIDATION = { username: { min: 1, max: 15 } };
 const regExp = /^[a-zA-Z0-9_]+$/;
 
 function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VALIDATION.username) {
-  if (!validateFormat) {
+
+// If the connection does not have validation settings, it should only check if the field is empty.
+// validateFormat overrides this logic to disable validation on login (login should never validate format)
+  if (!validateFormat  || !settings) {
     return trim(str).length > 0;
   }
 

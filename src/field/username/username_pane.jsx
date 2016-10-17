@@ -38,7 +38,9 @@ export default class UsernamePane extends React.Component {
     const invalidHint = (str) => {
       const hintKey = invalidHintKey(str);
 
-      if ("usernameFormatErrorHint" === hintKey && validateFormat) {
+      // only show format info in the error if it should validate the format and 
+      // if there is any format restrictions for the connection
+      if ("usernameFormatErrorHint" === hintKey && validateFormat && usernameValidation) {
         return i18n.str(hintKey, usernameValidation.min, usernameValidation.max)
       }
 

@@ -6,8 +6,6 @@ import { showResetPasswordActivity } from './actions';
 import { authWithUsername, hasScreen, forgotPasswordLink } from './index';
 import * as l from '../../core/index';
 
-import { getUsernameValidation } from '../../field/username';
-
 export default class LoginPane extends React.Component {
 
   handleDontRememberPasswordClick(e) {
@@ -32,8 +30,7 @@ export default class LoginPane extends React.Component {
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
-    const shouldValidateUsername = !!getUsernameValidation(lock);
-
+    // Should never validate format on login because of custom db connection and import mode
     const fieldPane = usernameStyle === "email"
       ? <EmailPane
           i18n={i18n}
@@ -45,7 +42,7 @@ export default class LoginPane extends React.Component {
           lock={lock}
           placeholder={usernameInputPlaceholder}
           usernameStyle={usernameStyle}
-          validateFormat={shouldValidateUsername}
+          validateFormat={false}
         />
 
     const passwordPane = showPassword
