@@ -45,6 +45,10 @@ function strategyNameToConnectionType(str) {
 }
 
 function formatConnectionValidation (connectionValidation = {}) {
+  if (connectionValidation.username == null) {
+    return null;
+  }
+
   const validation = { ...DEFAULT_CONNECTION_VALIDATION, ...connectionValidation };
   const defaultMin = DEFAULT_CONNECTION_VALIDATION.username.min;
   const defaultMax = DEFAULT_CONNECTION_VALIDATION.username.max;
