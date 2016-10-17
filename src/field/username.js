@@ -30,7 +30,8 @@ function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VAL
 }
 
 export function getUsernameValidation(m) {
-  return databaseConnection(m).getIn(['validation', 'username']).toJS()
+  const usernameValidation = databaseConnection(m).getIn(['validation', 'username']);
+  return usernameValidation ? usernameValidation.toJS() : null;
 }
 
 export function setUsername(m, str, usernameStyle = "username", validateUsernameFormat = true) {
