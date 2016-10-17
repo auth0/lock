@@ -70,6 +70,15 @@ export function openLock(id, opts) {
     return false;
   }
 
+  if (opts.flashMessage) {
+    if (!opts.flashMessage.type || ['error', 'success'].indexOf(opts.flashMessage.type) === -1) {
+      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a valid type ['error','success']")
+    }
+    if (!opts.flashMessage.text) {
+      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a text") 
+    }
+  }
+
   l.emitEvent(m, "show");
 
   swap(updateEntity, "lock", id, m => {
