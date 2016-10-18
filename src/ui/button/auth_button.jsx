@@ -43,7 +43,8 @@ AuthButton.propTypes = {
   onClick: React.PropTypes.func.isRequired,
   strategy: React.PropTypes.string.isRequired,
   icon: React.PropTypes.string,
-  background: React.PropTypes.string
+  primaryColor: React.PropTypes.string,
+  foregroundColor: React.PropTypes.string
 };
 
 AuthButton.defaultProps = {
