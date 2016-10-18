@@ -160,7 +160,7 @@ var options = {
         displayName: "...", 
         primaryColor: "...", 
         foregroundColor: "...", 
-        icon: "url(...)"
+        icon: "http://.../logo.png"
       }
     }
   }
@@ -174,7 +174,7 @@ var options = {
   + **displayName {String}**: The name to show instead of the connection name.
   + **primaryColor {String}**: The button's background color. Defaults to `"#eb5424"`.
   + **foregroundColor {String}**: The button's text color. Defaults to `"#FFFFFF"`.
-  + **icon {String}**: The connection's icon. It should be a valid CSS `background-image` value. For example:`"url(http://site.com/logo.png)"`.
+  + **icon {String}**: The icon's url for the connection. For example:`"http://site.com/logo.png"`.
 
 #### Authentication options
 

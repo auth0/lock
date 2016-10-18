@@ -17,7 +17,7 @@ const AuthButton = (props) => {
 
   const backgroundStyle = primaryColor ? { backgroundColor: primaryColor } : {};
   const foregroundStyle = foregroundColor ? { color: foregroundColor } : {};
-  const iconStyle = icon ? { backgroundImage: icon } : {};
+  const iconStyle = icon ? { backgroundImage: `url('${icon}')` } : {};
 
   return (
     <button
