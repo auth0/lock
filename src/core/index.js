@@ -102,7 +102,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
-  const { labeledSubmitButton, logo, primaryColor, socialButtons } = theme;
+  const { labeledSubmitButton, logo, primaryColor, authButtons } = theme;
 
   const avatar = options.avatar !== null;
   const customAvatarProvider = options.avatar
@@ -128,7 +128,7 @@ function extractUIOptions(id, options) {
     popupOptions: undefined === options.popupOptions ? {} : options.popupOptions,
     primaryColor: typeof primaryColor === "string" ? primaryColor : undefined,
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin,
-    socialButtonsTheme: typeof socialButtons === "object" ? socialButtons : {}
+    authButtonsTheme: typeof authButtons === "object" ? authButtons : {}
   });
 }
 
@@ -150,7 +150,7 @@ export const ui = {
   mobile: lock => getUIAttribute(lock, "mobile"),
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
-  socialButtonsTheme: lock => getUIAttribute(lock, "socialButtonsTheme"),
+  authButtonsTheme: lock => getUIAttribute(lock, "authButtonsTheme"),
   rememberLastLogin: m => tget(
     m,
     "rememberLastLogin",

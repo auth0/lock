@@ -2,7 +2,7 @@ import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
 import { logIn } from '../../quick-auth/actions';
-import { displayName, socialConnections, socialButtonsTheme } from '../../connection/social/index';
+import { displayName, socialConnections, authButtonsTheme } from '../../connection/social/index';
 
 export default class SocialButtonsPane extends React.Component {
 
@@ -21,10 +21,10 @@ export default class SocialButtonsPane extends React.Component {
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
-    const theme = socialButtonsTheme(lock);
+    const themes = authButtonsTheme(lock);
 
     const buttons = socialConnections(lock).map(x => {
-      const buttonTheme = theme.get(x.get("name"));
+      const buttonTheme = themes.get(x.get("name"));
       const connectionName = buttonTheme && buttonTheme.get("displayName");
       const primaryColor = buttonTheme && buttonTheme.get("primaryColor");
       const foregroundColor = buttonTheme && buttonTheme.get("foregroundColor");

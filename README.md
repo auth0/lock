@@ -155,7 +155,7 @@ var options = {
     labeledSubmitButton: false,
     logo: "https://example.com/assets/logo.png",
     primaryColor: "green",
-    socialButtons: {
+    authButtons: {
       connectionName: {
         displayName: "...", 
         primaryColor: "...", 
