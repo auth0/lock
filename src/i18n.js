@@ -27,6 +27,7 @@ export function group(m, keyPath) {
 export function initI18n(m) {
   const language = l.ui.language(m);
   const overrides = l.ui.dict(m);
+  const defaultDictionary = Immutable.fromJS(enDictionary);
 
   let base = languageDictionaries[language] || Map({});
 
@@ -35,26 +36,39 @@ export function initI18n(m) {
     m = sync(m, "i18n", {
       syncFn: (_, cb) => syncLang(m, language, cb),
       successFn: (m, result) => {
+
         registerLanguageDictionary(language, result);
+
+        const overrided = Immutable.fromJS(result).mergeDeep(overrides);
+
+        assertLanguage(overrided.toJS(), enDictionary);
 
         return set(
           m,
           "strings",
-          languageDictionaries[language].mergeDeep(overrides)
+          defaultDictionary.mergeDeep(overrided)
         );
       }
     });
+  } else {
+    assertLanguage(base.toJS(), enDictionary);
   }
 
-  if (!base.has("title")) {
-    base = base.set("title", enDictionary.title);
-  }
+  base = defaultDictionary.mergeDeep(base).mergeDeep(overrides);
 
-  if (!base.has("unrecoverableError")) {
-    base = base.set("unrecoverableError", enDictionary.unrecoverableError);
-  }
+  return set(m, "strings", base);
+}
 
-  return set(m, "strings", base.mergeDeep(overrides));
+function assertLanguage(language, base, path = "") { 
+  Object.keys(base).forEach( key => {
+    if (!language.hasOwnProperty(key)) {
+      console.warn(`language does not have property ${path}${key}`);
+    } else {
+      if (typeof base[key] === 'object') {
+        assertLanguage(language[key], base[key], `${path}${key}.`);
+      }
+    }
+  });
 }
 
 // sync
