@@ -31,7 +31,7 @@ export function initI18n(m) {
 
   let base = languageDictionaries[language] || Map({});
 
-  if (base.isEmpty()) {
+  if (base.isEmpty()) { 
     base = overrides;
     m = sync(m, "i18n", {
       syncFn: (_, cb) => syncLang(m, language, cb),
@@ -41,7 +41,7 @@ export function initI18n(m) {
 
         const overrided = Immutable.fromJS(result).mergeDeep(overrides);
 
-        assertLanguage(overrided.toJS(), enDictionary);
+        assertLanguage(m, overrided.toJS(), enDictionary);
 
         return set(
           m,
@@ -51,7 +51,7 @@ export function initI18n(m) {
       }
     });
   } else {
-    assertLanguage(base.toJS(), enDictionary);
+    assertLanguage(m, base.toJS(), enDictionary);
   }
 
   base = defaultDictionary.mergeDeep(base).mergeDeep(overrides);
@@ -59,13 +59,13 @@ export function initI18n(m) {
   return set(m, "strings", base);
 }
 
-function assertLanguage(language, base, path = "") { 
+function assertLanguage(m, language, base, path = "") { 
   Object.keys(base).forEach( key => {
     if (!language.hasOwnProperty(key)) {
-      console.warn(`language does not have property ${path}${key}`);
+      l.emitDebugInfo(m, 'warn', `language does not have property ${path}${key}`);
     } else {
       if (typeof base[key] === 'object') {
-        assertLanguage(language[key], base[key], `${path}${key}.`);
+        assertLanguage(m, language[key], base[key], `${path}${key}.`);
       }
     }
   });
@@ -73,7 +73,7 @@ function assertLanguage(language, base, path = "") {
 
 // sync
 
-function syncLang(m, language, cb) {
+function syncLang(m, language, cb) { 
   load({
     method: "registerLanguageDictionary",
     url: `${l.languageBaseUrl(m)}/js/lock/${__VERSION__}/${language}.js`,

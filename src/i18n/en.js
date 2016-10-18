@@ -87,7 +87,7 @@ export default {
   sentLabel: "Sent!",
   signUpLabel: "Sign Up",
   signUpSubmitLabel: "Sign Up",
-  signUpTerms: "",
+  signUpTerms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.",
   signUpWithLabel: "Sign up with %s",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
