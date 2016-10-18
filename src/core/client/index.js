@@ -39,7 +39,7 @@ function strategyNameToConnectionType(str) {
     return "social";
   } else if (ENTERPRISE_STRATEGIES[str]) {
     return "enterprise";
-  } else if (str === "oauth2") {
+  } else if (["oauth1", "oauth2"].indexOf(str) !== -1) {
     return "social";
   } else {
     return "unknown";
