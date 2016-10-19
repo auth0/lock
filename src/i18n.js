@@ -25,6 +25,7 @@ export function group(m, keyPath) {
 }
 
 export function initI18n(m) {
+
   const language = l.ui.language(m);
   const overrides = l.ui.dict(m);
   const defaultDictionary = Immutable.fromJS(enDictionary);
@@ -36,7 +37,6 @@ export function initI18n(m) {
     m = sync(m, "i18n", {
       syncFn: (_, cb) => syncLang(m, language, cb),
       successFn: (m, result) => {
-
         registerLanguageDictionary(language, result);
 
         const overrided = Immutable.fromJS(result).mergeDeep(overrides);
@@ -62,7 +62,7 @@ export function initI18n(m) {
 function assertLanguage(m, language, base, path = "") { 
   Object.keys(base).forEach( key => {
     if (!language.hasOwnProperty(key)) {
-      l.emitDebugInfo(m, 'warn', `language does not have property ${path}${key}`);
+      l.warn(m, `language does not have property ${path}${key}`);
     } else {
       if (typeof base[key] === 'object') {
         assertLanguage(m, language[key], base[key], `${path}${key}.`);

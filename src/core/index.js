@@ -29,8 +29,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
-    ui: extractUIOptions(id, options),
-    debug_mode: options.__DEBUG || false
+    ui: extractUIOptions(id, options)
   }));
 
   m = i18n.initI18n(m);
@@ -427,12 +426,6 @@ export function emitAuthorizationErrorEvent(m, error) {
 
 export function emitUnrecoverableErrorEvent(m, error) {
   emitEvent(m, "unrecoverable_error", error);
-}
-
-export function emitDebugInfo(m, level, message){
-  if (get(m, "debug_mode")) {
-    console[level](message);
-  }
 }
 
 export function showBadge(m) {
