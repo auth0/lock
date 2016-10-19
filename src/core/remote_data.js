@@ -1,16 +1,24 @@
 import Immutable from 'immutable';
-import { fetchClientSettings } from './client/settings';
-import { initClient } from './client/index';
+import { fetchClientSettings, syncClientSettingsSuccess } from './client/settings';
+import { fetchTenantSettings, syncTenantSettingsSuccess } from './tenant/settings';
 import { fetchSSOData } from './sso/data';
 import * as l from './index';
 import { isADEnabled } from '../connection/enterprise'; // shouldn't depend on this
 import sync, { isSuccess } from '../sync';
 
 export function syncRemoteData(m) {
-  m = sync(m, "client", {
-    syncFn: (m, cb) => fetchClientSettings(l.clientID(m), l.clientBaseUrl(m), cb),
-    successFn: syncClientSettingsSuccess
-  });
+
+  if (l.useTenantInfo(m)) {
+    m = sync(m, "client", {
+      syncFn: (m, cb) => fetchTenantSettings(l.tenantBaseUrl(m), cb),
+      successFn: (m, result) => syncTenantSettingsSuccess(m, l.clientID(m), result)
+    });
+  } else {
+    m = sync(m, "client", {
+      syncFn: (m, cb) => fetchClientSettings(l.clientID(m), l.clientBaseUrl(m), cb),
+      successFn: syncClientSettingsSuccess
+    });
+  }
 
   m = sync(m, "sso", {
     conditionFn: l.auth.sso,
@@ -30,12 +38,5 @@ export function syncRemoteData(m) {
     }
   });
 
-  return m;
-}
-
-function syncClientSettingsSuccess(m, result) {
-  m = initClient(m, result);
-  m = l.filterConnections(m);
-  m = l.runHook(m, "didReceiveClientSettings");
   return m;
 }

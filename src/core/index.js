@@ -22,12 +22,14 @@ const {
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = init(id, Immutable.fromJS({
     clientBaseUrl: extractClientBaseUrlOption(options, domain),
+    tenantBaseUrl: extractTenantBaseUrlOption(options, domain),
     languageBaseUrl: extractLanguageBaseUrlOption(options, domain),
     auth: extractAuthOptions(options),
     clientID: clientID,
     domain: domain,
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
+    useTenantInfo: options.__useTenantInfo || false,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options)
   }));
@@ -53,9 +55,18 @@ export function clientBaseUrl(m) {
   return get(m, "clientBaseUrl");
 }
 
+export function tenantBaseUrl(m) {
+  return get(m, "tenantBaseUrl");
+}
+
+export function useTenantInfo(m) {
+  return get(m, "useTenantInfo");
+}
+
 export function languageBaseUrl(m) {
   return get(m, "languageBaseUrl");
 }
+
 export function setSubmitting(m, value, error = "") {
   m = tset(m, "submitting", value);
   m = clearGlobalSuccess(m);
@@ -212,8 +223,8 @@ export function withAuthOptions(m, opts) {
 }
 
 function extractClientBaseUrlOption(opts, domain) {
-  if (opts.clientBaseUrl && typeof opts.clientBaseUrl === "string") {
-    return opts.clientBaseUrl;
+  if (opts.tenantBaseUrl && typeof opts.tenantBaseUrl === "string") {
+    return opts.tenantBaseUrl;
   }
 
   if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
@@ -229,6 +240,32 @@ function extractClientBaseUrlOption(opts, domain) {
     return parts.length > 3
       ? "https://cdn." + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
       : AUTH0_US_CDN_URL;
+  } else {
+    return domainUrl;
+  }
+}
+
+function extractTenantBaseUrlOption(opts, domain) {
+  if (opts.clientBaseUrl && typeof opts.clientBaseUrl === "string") {
+    return opts.clientBaseUrl;
+  }
+
+  if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
+    return opts.assetsUrl;
+  }
+
+  const domainUrl = "https://" + domain;
+  const hostname = parseUrl(domainUrl).hostname;
+  const DOT_AUTH0_DOT_COM = ".auth0.com";
+  const AUTH0_US_CDN_URL = "https://cdn.auth0.com";
+  if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
+    const parts = hostname.split(".");
+    const domain = parts.length > 3
+      ? "https://cdn." + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
+      : AUTH0_US_CDN_URL;
+    const tenant_name = parts[0];
+
+    return `${domain}/tenant/v1/${tenant_name}`
   } else {
     return domainUrl;
   }
