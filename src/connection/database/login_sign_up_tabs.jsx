@@ -2,6 +2,7 @@ import React from 'react';
 import { showLoginActivity, showSignUpActivity } from './actions';
 import * as l from '../../core/index';
 import { getScreen } from './index';
+import { closeLock } from '../../core/actions';
 
 export default class LoginSignUpTabs extends React.Component {
 
@@ -26,6 +27,7 @@ export default class LoginSignUpTabs extends React.Component {
             label={signUpLabel}
             current={!isLogin}
             clickHandler={::this.handleSignUpClick}
+            clickWithHrefHandler={::this.handleSignUpWithHrefClick}
             href={signUpLink}
           />
         </ul>
@@ -38,7 +40,14 @@ export default class LoginSignUpTabs extends React.Component {
   }
 
   handleSignUpClick() {
+    if (this.props.signUpLink) {
+      closeLock(l.id(this.props.lock), true);
+    }
     showSignUpActivity(l.id(this.props.lock));
+  }
+
+  handleSignUpWithHrefClick() {
+    closeLock(l.id(this.props.lock), true);
   }
 
 }
@@ -53,8 +62,12 @@ LoginSignUpTabs.propTypes = {
 class LoginSignUpTab extends React.Component {
 
   handleClick(e) {
-    e.preventDefault();
-    this.props.clickHandler();
+    if (this.props.href) {
+      this.props.clickWithHrefHandler();  
+    } else {
+      e.preventDefault();
+      this.props.clickHandler();
+    }
   }
 
   render() {
@@ -65,7 +78,7 @@ class LoginSignUpTab extends React.Component {
       <li className={className}>
         <a
           href={href || "#"}
-          onClick={href ? undefined : ::this.handleClick}
+          onClick={::this.handleClick}
         >
           {label}
         </a>
