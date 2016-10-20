@@ -85,11 +85,7 @@ function formatTenantConnection(connectionType, connection) {
   }
 
   if (connectionType === "enterprise") {
-    const domains = connection.domain_aliases || [];
-    if (connection.domain) {
-      domains.unshift(connection.domain);
-    }
-    result.domains = domains;
+    result.domains = connection.domains;
   }
 
   return result;
