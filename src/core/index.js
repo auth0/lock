@@ -223,8 +223,8 @@ export function withAuthOptions(m, opts) {
 }
 
 function extractClientBaseUrlOption(opts, domain) {
-  if (opts.tenantBaseUrl && typeof opts.tenantBaseUrl === "string") {
-    return opts.tenantBaseUrl;
+  if (opts.clientBaseUrl && typeof opts.clientBaseUrl === "string") {
+    return opts.clientBaseUrl;
   }
 
   if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
@@ -246,8 +246,8 @@ function extractClientBaseUrlOption(opts, domain) {
 }
 
 function extractTenantBaseUrlOption(opts, domain) {
-  if (opts.clientBaseUrl && typeof opts.clientBaseUrl === "string") {
-    return opts.clientBaseUrl;
+  if (opts.tenantBaseUrl && typeof opts.tenantBaseUrl === "string") {
+    return opts.tenantBaseUrl;
   }
 
   if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
@@ -265,7 +265,7 @@ function extractTenantBaseUrlOption(opts, domain) {
       : AUTH0_US_CDN_URL;
     const tenant_name = parts[0];
 
-    return `${domain}/tenant/v1/${tenant_name}`
+    return `${domain}/tenants/v1/${tenant_name}`
   } else {
     return domainUrl;
   }
