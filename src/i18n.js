@@ -25,14 +25,13 @@ export function group(m, keyPath) {
 }
 
 export function initI18n(m) {
-
   const language = l.ui.language(m);
   const overrides = l.ui.dict(m);
   const defaultDictionary = Immutable.fromJS(enDictionary);
 
   let base = languageDictionaries[language] || Map({});
 
-  if (base.isEmpty()) { 
+  if (base.isEmpty()) {
     base = overrides;
     m = sync(m, "i18n", {
       syncFn: (_, cb) => syncLang(m, language, cb),
@@ -73,7 +72,7 @@ function assertLanguage(m, language, base, path = "") {
 
 // sync
 
-function syncLang(m, language, cb) { 
+function syncLang(m, language, cb) {
   load({
     method: "registerLanguageDictionary",
     url: `${l.languageBaseUrl(m)}/js/lock/${__VERSION__}/${language}.js`,
