@@ -1,4 +1,10 @@
 # Change Log
+## [10.2.2](https://github.com/auth0/lock/tree/10.2.3) (2016-10-32)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.2.3)
+
+### Changed
+
+- Use auth0.js version 7.3.0
 
 ## [10.2.2](https://github.com/auth0/lock/tree/10.2.2) (2016-08-31)
 [Full Changelog](https://github.com/auth0/lock/compare/10.2.1...10.2.2)
