@@ -425,7 +425,7 @@ export function emitAuthorizationErrorEvent(m, error) {
 }
 
 export function emitUnrecoverableErrorEvent(m, error) {
-  emitEvent(m, "unrecoverable_error", error)
+  emitEvent(m, "unrecoverable_error", error);
 }
 
 export function showBadge(m) {
