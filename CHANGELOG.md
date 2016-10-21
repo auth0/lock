@@ -1,3 +1,10 @@
+## [9.2.3] - 2016-10-21
+
+### Changed
+
+- [] Update to auth0.js@6.8.4 (`Hernan Zalazar`)
+  https://github.com/auth0/lock/commit/8430f1dccdb20b4d7137c517004ce75099bd18d7
+
 ## [9.2.2] - 2016-07-19
 
 ### Fixed
