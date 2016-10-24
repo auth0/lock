@@ -36,28 +36,6 @@ module.exports = function(grunt) {
     exec: {
       touch_index: "touch src/index.js"
     },
-    stylus: {
-      build: {
-        options: {
-          compress: false // temp
-        },
-        src: "css/index.styl",
-        dest: "css/index.css"
-      }
-    },
-    watch: {
-      stylus: {
-        files: ["css/index.styl"],
-        tasks: ["stylus:build", "exec:touch_index"]
-      },
-      dev: {
-        files: ["src/**/*"],
-        tasks: ["webpack"],
-        options: {
-          spawn: false,
-        }
-      }
-    },
     webpack: {
       options: webpackConfig,
       build: {
@@ -105,14 +83,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-webpack");
   grunt.loadNpmTasks("grunt-contrib-clean");
-  grunt.loadNpmTasks('grunt-contrib-stylus');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-env");
   grunt.loadNpmTasks("grunt-exec");
 
-  grunt.registerTask("build", ["clean:build", "env:build", "stylus:build", "webpack:build"]);
-  grunt.registerTask("dist", ["clean:dist", "stylus:build", "babel:dist"]);
-  grunt.registerTask("prepare_dev", ["clean:dev", "stylus:build"]);
-  grunt.registerTask("dev", ["prepare_dev", "webpack-dev-server:dev", "watch"]);
-  grunt.registerTask("design", ["prepare_dev", "webpack-dev-server:design", "watch"]);
+  grunt.registerTask("build", ["clean:build", "env:build", "webpack:build"]);
+  grunt.registerTask("dist", ["clean:dist", "babel:dist"]);
+  grunt.registerTask("prepare_dev", ["clean:dev"]);
+  grunt.registerTask("dev", ["prepare_dev", "webpack-dev-server:dev"]);
+  grunt.registerTask("design", ["prepare_dev", "webpack-dev-server:design"]);
 };
