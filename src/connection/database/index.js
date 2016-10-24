@@ -9,6 +9,7 @@ import {
 import { dataFns } from '../../utils/data_utils';
 import sync from '../../sync';
 import trim from 'trim';
+import { defaultDirectory } from '../../core/tenant';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
@@ -224,7 +225,9 @@ export function defaultDatabaseConnectionName(m) {
 }
 
 export function databaseConnection(m) {
-  return defaultDatabaseConnection(m) || l.connection(m, "database");
+  return defaultDirectory(m) || 
+          defaultDatabaseConnection(m) || 
+          l.connection(m, "database");
 }
 
 export function databaseConnectionName(m) {

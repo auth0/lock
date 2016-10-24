@@ -1,5 +1,6 @@
 import Immutable, { List, Map } from 'immutable';
 import { dataFns } from '../../utils/data_utils';
+import * as l from '../index';
 
 const { initNS, get } = dataFns(["client"]);
 
@@ -39,7 +40,8 @@ export function initTenant(m, client_id, client) {
 
 function formatTenant(client_id, o) {
   return new Immutable.fromJS({
-    connections: formatTenantConnections(client_id, o)
+    connections: formatTenantConnections(client_id, o),
+    default_directory: o.default_directory || null
   })
 }
 
@@ -93,4 +95,13 @@ function formatTenantConnection(connectionType, connection) {
 
 export function tenantConnections(m) {
   return get(m, "connections", emptyConnections);
+}
+
+export function defaultDirectory(m) {
+  const name = defaultDirectoryName(m);
+  return name && l.findConnection(m, name);
+}
+
+export function defaultDirectoryName(m) {
+  return get(m, "default_directory", null);
 }

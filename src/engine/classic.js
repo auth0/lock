@@ -25,6 +25,7 @@ import {
   isInCorpNetwork,
   quickAuthConnection
 } from '../connection/enterprise';
+import { defaultDirectory, defaultDirectoryName } from '../core/tenant';
 import { initSocial, useBigButtons } from '../connection/social/index';
 import { setEmail } from '../field/email';
 import { setUsername } from '../field/username';
@@ -75,6 +76,10 @@ function validateAllowedConnections(m) {
     const error = new Error("The `initialScreen` option was set to \"signUp\" but no database or social connection is available.");
     error.code = "unavailable_initial_screen";
     m = l.stop(m, error);
+  }
+
+  if (defaultDirectoryName(m) && !defaultDirectory(m)) {
+    l.error(m, `The account's default directory "${defaultDirectoryName(m)}" is not enabled.`);
   }
 
   if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
