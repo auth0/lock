@@ -6,3 +6,4 @@ node_modules/
 release/
 npm-debug.log
 .css.map
+.idea/
