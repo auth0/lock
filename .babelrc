@@ -1,4 +1,4 @@
 {
-  "plugins": ["version-inline", "transform-css-import-to-string"],
+  "plugins": ["version-inline", "transform-css-import-to-string", "babel-plugin-stylus-compiler"],
   "presets": ["es2015-loose", "stage-0", "react"]
 }
