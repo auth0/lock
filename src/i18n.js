@@ -51,11 +51,12 @@ export function initI18n(m) {
     });
   } else {
     assertLanguage(m, base.toJS(), enDictionary);
+    base = defaultDictionary.mergeDeep(base).mergeDeep(overrides);
+
+    m = set(m, "strings", base);
   }
 
-  base = defaultDictionary.mergeDeep(base).mergeDeep(overrides);
-
-  return set(m, "strings", base);
+  return m;
 }
 
 function assertLanguage(m, language, base, path = "") { 

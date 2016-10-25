@@ -1,21 +1,27 @@
-import expect from 'expect.js';
-import Immutable from 'immutable';
-import {initI18n} from '../src/i18n';
-import { go } from '../src/sync';
-import { swap, setEntity, updateEntity, observe } from '../src/store/index';
-import { dataFns } from '../src/utils/data_utils';
+"use strict";
 
 import enDictionary from '../src/i18n/en';
 import esDictionary from '../src/i18n/es';
+import Immutable from 'immutable';
+import flatten from 'flat';
+import {mockModule, es6Exports} from './helpers/mock';
 
-const core = dataFns(["core"]);
+mockModule('sync', () => {
+  return es6Exports({
+    default: (m, key, opts) => {
+      m = opts.successFn(m, esDictionary);
+      return m;
+    }
+  });
+});
 
-describe.skip("load i18n configuration", function() {
+import {initI18n} from '../src/i18n';
 
-  it("should merge and warn missing keys", function(done) {
+test("load i18n configuration", () => {
 
-    const id = 1;
+  it('should merge and warn missing keys', () => {
 
+    // We need to initialize the state
     var m = Immutable.fromJS({
       languageBaseUrl: "https://cdn.auth0.com",
       ui: {
@@ -23,32 +29,23 @@ describe.skip("load i18n configuration", function() {
         language: "es"
       }
     });
-    
-    go(id);
 
-    observe("test", id, (m) => { 
-      if (m.getIn(['sync', 'i18n', 'syncStatus']) === 'ok') {
-        assertLanguage(m.getIn(['i18n', 'strings']).toJS(), enDictionary, esDictionary)
-        done();
-      }
-    });
-    
-    m = core.init(id, m);
-
+    // Initialize i18n.
     m = initI18n(m);
 
-    m = swap(setEntity, "lock", id, m);
+    let language = flatten(m.getIn(['i18n', 'strings']).toJS());
+    let en = flatten(enDictionary);
+    let es = flatten(esDictionary);
+
+    // We should check that the language has all the keys in the 
+    // en language and its values should be either es or en.
+    return Promise.all(
+      Object.keys(en).map( (key) => {
+        return Promise.all([
+            expect(language[key]).toBeDefined(),
+            expect([en[key], es[key]]).toContain(language[key])
+          ]);
+      })
+    );
   });
 });
-
-function assertLanguage(language, en, es) { 
-  Object.keys(en).forEach( (key) => {
-    expect(language).to.have.property(key);
-    if (typeof en[key] === 'object') {
-      assertLanguage(language[key], en[key], es[key]);
-    }
-    else {
-      expect([en[key], es[key]]).to.contain(language[key]);
-    }
-  });
-}
