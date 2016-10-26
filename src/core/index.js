@@ -227,6 +227,10 @@ function extractClientBaseUrlOption(opts, domain) {
     return opts.clientBaseUrl;
   }
 
+  if (opts.configurationBaseUrl && typeof opts.configurationBaseUrl === "string") {
+    return opts.configurationBaseUrl;
+  }
+
   if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
     return opts.assetsUrl;
   }
@@ -246,8 +250,8 @@ function extractClientBaseUrlOption(opts, domain) {
 }
 
 function extractTenantBaseUrlOption(opts, domain) {
-  if (opts.tenantBaseUrl && typeof opts.tenantBaseUrl === "string") {
-    return opts.tenantBaseUrl;
+  if (opts.configurationBaseUrl && typeof opts.configurationBaseUrl === "string") {
+    return opts.configurationBaseUrl;
   }
 
   if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
