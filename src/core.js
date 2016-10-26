@@ -102,6 +102,7 @@ export default class Base extends EventEmitter {
           title: title,
           transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
         };
+
         render(l.ui.containerID(m), props);
 
         // TODO: hack so we can start testing the beta

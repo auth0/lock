@@ -5,6 +5,8 @@ export function mockModule(module, cb) {
 }
 
 export function es6Exports(exports) {
-  exports.__esModule = true;
+  if (exports.default) {
+    exports.__esModule = true;
+  }
   return exports;
 }
