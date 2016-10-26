@@ -145,10 +145,13 @@ function extractUIOptions(id, options) {
 
 const { 
   get: getUI, 
-  tget: tgetUI,
-  set: setUI,
-  tset: tsetUI
+  set: setUI
 } = dataFns(["core", "ui"]);
+
+const { 
+  get: tgetUI, 
+  set: tsetUI
+} = dataFns(["core", "transient", "ui"]);
 
 const getUIAttribute = (m, attribute) => {
   return tgetUI(m, attribute) || getUI(m, attribute);
@@ -500,19 +503,19 @@ export function overrideOptions(m, opts) {
 
   if (opts.theme) {
     if (opts.theme.primaryColor) {
-      m = tsetUI(m, ["primaryColor"], opts.theme.primaryColor);
+      m = tset(m, ["ui", "primaryColor"], opts.theme.primaryColor);
     }
 
     if (opts.theme.logo) {
-      m = tsetUI(m, ["logo"], opts.theme.logo);
+      m = tset(m, ["ui", "logo"], opts.theme.logo);
     }
   }
   
   if (opts.language) {
     opts.dict = opts.dict || {};
 
-    m = tsetUI(m, ["language"], opts.language);
-    m = tsetUI(m, ["dict"], opts.dict);
+    m = tset(m, ["ui", "language"], opts.language);
+    m = tset(m, ["ui", "dict"], opts.dict);
     
     m = i18n.initI18n(m);
   }
