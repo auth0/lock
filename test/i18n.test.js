@@ -18,7 +18,7 @@ stub(sync, "default", (m, key, opts) => {
 import { initI18n } from '../src/i18n';
 
 
-describe.only("load i18n configuration", () => {
+describe("load i18n configuration", () => {
 
   after(function() {
     sync.default.restore();
