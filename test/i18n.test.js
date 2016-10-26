@@ -10,21 +10,22 @@ import esDictionary from '../src/i18n/es';
 
 import * as sync from '../src/sync';
 
-stub(sync, "default", (m, key, opts) => {
-  m = opts.successFn(m, esDictionary);
-  return m;
-});
-
-import { initI18n } from '../src/i18n';
-
-
 describe("load i18n configuration", () => {
+
+  before(function() {
+    stub(sync, "default", (m, key, opts) => {
+      m = opts.successFn(m, esDictionary);
+      return m;
+    });
+  });
 
   after(function() {
     sync.default.restore();
   });
 
   it('should merge and warn missing keys', () => {
+
+    let i18n = require('../src/i18n');
 
     // We need to initialize the state
     var m = Immutable.fromJS({
@@ -36,7 +37,7 @@ describe("load i18n configuration", () => {
     });
 
     // Initialize i18n.
-    m = initI18n(m);
+    m = i18n.initI18n(m);
 
     let language = flatten(m.getIn(['i18n', 'strings']).toJS());
     let en = flatten(enDictionary);
