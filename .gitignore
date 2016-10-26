@@ -3,6 +3,7 @@ build/
 css/index.css
 lib/
 node_modules/
+coverage/
 release/
 npm-debug.log
 .css.map

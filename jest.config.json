@@ -1,0 +1,11 @@
+{
+  "bail": true,
+  "verbose": true,
+  "clearMocks": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": ["./src/*.{js,jsx}", "!**/node_modules/**"],
+  "testPathDirs": [
+    "./test/",
+    "./test/**"
+  ]
+}

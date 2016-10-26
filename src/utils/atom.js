@@ -35,6 +35,7 @@ class Atom {
   _change(newState) {
     const { state, watches } = this;
     this.state = newState;
+    console.log(this.state.toJS())
     Object.keys(watches).forEach(k => watches[k](k, state, newState));
     return this.state;
   }
