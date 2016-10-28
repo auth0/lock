@@ -151,7 +151,7 @@ export function validateAndSubmit(id, fields = [], f) {
 }
 
 export function logIn(id, fields, params = {},
-  logInErrorHandler = (err, next) => next()) {
+  logInErrorHandler = (_id, error, _fields, next) => next()) {
 
   validateAndSubmit(id, fields, m => {
     webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
