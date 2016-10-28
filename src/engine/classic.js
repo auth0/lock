@@ -109,7 +109,7 @@ class Classic {
 
     const { email, username } = options.prefill || {};
     if (typeof email === "string") model = setEmail(model, email);
-    if (typeof username === "string") model = setUsername(model, username);
+    if (typeof username === "string") model = setUsername(model, username, "username", false);
 
     return model;
   }
