@@ -1,4 +1,16 @@
 # Change Log
+## [v10.5.1](https://github.com/auth0/lock/tree/v10.5.1) (2016-10-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.5.0...v10.5.1)
+
+**Closed issues**
+- [Lock 10.5.0] Prefill fails when using username [\#685](https://github.com/auth0/lock/issues/685)
+- [Lock 10.5.0] "TypeError: next is not a function" when closing social connection popup [\#682](https://github.com/auth0/lock/issues/682)
+
+**Fixed**
+- Disabled username verification for prefill [\#686](https://github.com/auth0/lock/pull/686) ([glena](https://github.com/glena))
+- 'TypeError: next is not a function' when closing social connection popup [\#684](https://github.com/auth0/lock/pull/684) ([glena](https://github.com/glena))
+- Fix focus visual feedback in email and username inputs [\#681](https://github.com/auth0/lock/pull/681) ([gnandretta](https://github.com/gnandretta))
+
 ## [v10.5.0](https://github.com/auth0/lock/tree/v10.5.0) (2016-10-24)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.4.1...v10.5.0)
 
