@@ -69,6 +69,7 @@ module.exports = function(grunt) {
       design: {
         keepAlive: true,
         webpack: {
+          entry: './support/design/index.js',
           output: { 
             path: path.join(__dirname, "build"), 
             filename: 'lock.design.js' 
