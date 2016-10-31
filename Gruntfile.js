@@ -1,17 +1,19 @@
 "use strict";
 
-const path = require('path');
+const path = require("path");
 const fs = require("fs");
 const pkg = require("./package");
 const webpack = require("webpack");
-const webpackConfig = require("./webpack/webpack.config.js");
-
-const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
+const webpackConfig = require("./webpack.config.js");
+const SmartBannerPlugin = require("smart-banner-webpack-plugin");
+const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
 
 module.exports = function(grunt) {
 
+  const pkg_info = grunt.file.readJSON("package.json");
+
   grunt.initConfig({
-    pkg: grunt.file.readJSON("package.json"),
+    pkg: pkg_info,
     clean: {
       build: ["build/"],
       dev: ["build/"],
@@ -55,9 +57,14 @@ module.exports = function(grunt) {
           new webpack.optimize.OccurrenceOrderPlugin(),
           new webpack.optimize.AggressiveMergingPlugin(),
           new webpack.optimize.UglifyJsPlugin({ 
-            compress: { warnings: false, screw_ie8: true }
+            compress: { warnings: false, screw_ie8: true },
+            comments: false
           }),
-          new UnminifiedWebpackPlugin()
+          new UnminifiedWebpackPlugin(),
+          new SmartBannerPlugin(
+            `[filename] v${pkg_info.version}\n\nAuthor: ${pkg_info.author}\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`,
+            { raw: false, entryOnly: true }
+          )
         ]
       }
     },

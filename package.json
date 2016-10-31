@@ -62,6 +62,7 @@
     "react-addons-test-utils": "^15.0.0 || ^16.0.0",
     "semver": "^5.3.0",
     "sinon": "^1.15.4",
+    "smart-banner-webpack-plugin": "^2.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "uglify-js": "^2.7.4",
