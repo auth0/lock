@@ -64,9 +64,12 @@
     "sinon": "^1.15.4",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
+    "uglify-js": "^2.7.4",
+    "unminified-webpack-plugin": "^1.1.1",
     "unreleased": "^0.1.0",
     "watchify": "^3.7.0",
     "webpack": "^1.13.2",
+    "webpack-core": "^0.6.8",
     "webpack-dev-server": "^1.16.2",
     "zuul": "3.10.1",
     "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"

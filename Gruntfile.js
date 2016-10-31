@@ -1,10 +1,12 @@
 "use strict";
 
-var path = require('path');
-var fs = require("fs");
-var pkg = require("./package");
-var webpack = require("webpack");
-var webpackConfig = require("./webpack.config.js");
+const path = require('path');
+const fs = require("fs");
+const pkg = require("./package");
+const webpack = require("webpack");
+const webpackConfig = require("./webpack/webpack.config.js");
+
+const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
 module.exports = function(grunt) {
 
@@ -23,7 +25,7 @@ module.exports = function(grunt) {
             cwd:    "src",
             src:    ["**/*.js", "**/*.jsx"],
             dest:   "lib",
-            ext: '.js'
+            ext:    '.js'
           }
         ]
       }
@@ -39,18 +41,23 @@ module.exports = function(grunt) {
     webpack: {
       options: webpackConfig,
       build: {
+        output: { 
+          path: path.join(__dirname, "build"), 
+          filename: 'lock.min.js' 
+        },
         watch: false,
         keepalive: false,
         inline: false,
         hot: false,
         devtool: 'source-map',
         plugins: [
-          new webpack.optimize.UglifyJsPlugin({
-            compress: {
-              warnings: false
-            }
-            // output: './build/lock.min.js'
-          })
+          new webpack.optimize.DedupePlugin(),
+          new webpack.optimize.OccurrenceOrderPlugin(),
+          new webpack.optimize.AggressiveMergingPlugin(),
+          new webpack.optimize.UglifyJsPlugin({ 
+            compress: { warnings: false, screw_ie8: true }
+          }),
+          new UnminifiedWebpackPlugin()
         ]
       }
     },
