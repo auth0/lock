@@ -1,6 +1,7 @@
 import Base from '../index';
 import Login from './classic/login';
 import SignUp from './classic/sign_up_screen';
+import MFALoginScreen from './classic/mfa_login_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
 import {
@@ -24,6 +25,7 @@ import {
   isInCorpNetwork,
   quickAuthConnection
 } from '../connection/enterprise';
+import { defaultDirectory, defaultDirectoryName } from '../core/tenant';
 import { initSocial, useBigButtons } from '../connection/social/index';
 import { setEmail } from '../field/email';
 import { setUsername } from '../field/username';
@@ -76,6 +78,10 @@ function validateAllowedConnections(m) {
     m = l.stop(m, error);
   }
 
+  if (defaultDirectoryName(m) && !defaultDirectory(m)) {
+    l.error(m, `The account's default directory "${defaultDirectoryName(m)}" is not enabled.`);
+  }
+
   if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
     l.warn(m, `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`);
   }
@@ -92,7 +98,8 @@ class Classic {
   static SCREENS = {
     login: Login,
     forgotPassword: ResetPassword,
-    signUp: SignUp
+    signUp: SignUp,
+    mfaLogin: MFALoginScreen
   };
 
   didInitialize(model, options) {
@@ -102,7 +109,7 @@ class Classic {
 
     const { email, username } = options.prefill || {};
     if (typeof email === "string") model = setEmail(model, email);
-    if (typeof username === "string") model = setUsername(model, username);
+    if (typeof username === "string") model = setUsername(model, username, "username", false);
 
     return model;
   }

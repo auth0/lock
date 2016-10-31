@@ -27,6 +27,13 @@ export const stubWebApis = () => {
   });
 }
 
+export const assertAuthorizeRedirection = (cb) => {
+  if (webApi.logIn.restore) {
+    webApi.logIn.restore();
+  }
+  stub(webApi, "logIn", cb);
+};
+
 export const restoreWebApis = () => {
   webApi.logIn.restore();
   gravatarProvider.displayName.restore();
@@ -41,6 +48,7 @@ export const wasLoginAttemptedWith = params => {
   const lastCall = webApi.logIn.lastCall;
   if (!lastCall) return false;
   const paramsFromLastCall = lastCall.args[1];
+
   return Map(params).reduce(
     (r, v, k) => r && paramsFromLastCall[k] === v,
     true
@@ -49,7 +57,7 @@ export const wasLoginAttemptedWith = params => {
 
 // rendering
 
-export const displayLock = (name, opts = {}, done = () => {}) => {
+export const displayLock = (name, opts = {}, done = () => {}, show_ops = {}) => {
   switch(name) {
   case "enterprise and corporate":
     opts.allowedConnections = ["auth0.com", "rolodato.com"];
@@ -78,7 +86,7 @@ export const displayLock = (name, opts = {}, done = () => {}) => {
   }
 
   const lock = new Auth0Lock("cid", "domain", opts);
-  setTimeout(() => lock.show(), 175);
+  setTimeout(() => lock.show(show_ops), 175);
   setTimeout(done, 200);
   return lock;
 };
@@ -132,6 +140,29 @@ export const hasLoginSignUpTabs = hasViewFn(".auth0-lock-tabs");
 export const hasNoQuickAuthButton = lock => {
   return !qView(lock, ".auth0-lock-socia-button");
 };
+
+const hasFlashMessage = (query, lock, message) => {
+  const message_ele = q(lock, query);
+
+  if (! message_ele) {
+    return false;
+  }
+  
+  const span = message_ele.querySelector('span');
+
+  if (! span) {
+    return false;
+  }
+
+  return span.innerText.toLowerCase() === message.toLowerCase();
+}
+export const hasErrorMessage = (lock, message) => {
+  return hasFlashMessage(".auth0-global-message-error", lock, message);
+};
+export const hasSuccessMessage = (lock, message) => {
+  return hasFlashMessage(".auth0-global-message-success", lock, message);
+};
+
 export const hasOneSocialButton = hasOneViewFn(".auth0-lock-social-button");
 export const hasOneSocialBigButton = hasOneViewFn(".auth0-lock-social-button.auth0-lock-social-big-button");
 export const hasPasswordInput = hasInputFn("password");
@@ -148,14 +179,23 @@ export const hasUsernameInput = hasInputFn("username");
 export const isLoginTabCurrent = lock => isTabCurrent(lock, /log in/i);
 export const isSignUpTabCurrent = lock => isTabCurrent(lock, /sign up/i);
 export const isSubmitButtonDisabled = hasFn("button.auth0-lock-submit[disabled]");
+export const haveShownError = (lock, msg) => {
+  const errorElement = q(lock, ".auth0-global-message-error span");
 
+  return errorElement.innerText.toLowerCase() === msg.toLowerCase();
+};
 // interactions
 
 const check = (lock, query) => {
   Simulate.change(q(lock, query), {});
 };
+const click = (lock, query) => {
+  Simulate.click(q(lock, query));
+};
 const checkFn = query => lock => check(lock, query);
+const clickFn = (lock, query) => click(lock, query);
 export const clickTermsCheckbox = checkFn(".auth0-lock-sign-up-terms-agreement label input[type='checkbox']");
+export const clickSocialConnectionButton = (lock, connection) => clickFn(lock, `.auth0-lock-social-button[data-provider='${connection}']`);
 const fillInput = (lock, name, str) => {
   Simulate.change(qInput(lock, name, true), {target: {value: str}});
 };
@@ -164,12 +204,17 @@ const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
 export const fillEmailInput = fillInputFn("email");
 export const fillPasswordInput = fillInputFn("password");
 export const fillUsernameInput = fillInputFn("username");
+export const fillMFACodeInput = fillInputFn("mfa_code");
 
-export const submit = lock => {
+export const submit = (lock) => {
   // reset web apis
   restoreWebApis();
   stubWebApis();
 
+  submitForm(lock);
+}
+
+export const submitForm = (lock) => {
   const form = q(lock, ".auth0-lock-widget");
   if (!form || form.tagName.toUpperCase() !== "FORM") {
     throw new Error("Unable to submit form: can't find the element");
@@ -177,6 +222,30 @@ export const submit = lock => {
 
   Simulate.submit(form, {});
 }
+
+export const waitUntilExists = (lock, selector, cb, timeout = 1000) => {
+  const startedAt = Date.now();
+
+  const interval = setInterval(() => {
+    if (Date.now() - startedAt >= timeout) {
+      clearInterval(interval);
+      throw new Error(`Timeout waiting for ${selector} to become available`);
+    }
+
+    const el = q(lock, selector);
+
+    if (el) {
+      clearInterval(interval);
+      cb(null, el);
+    }
+  }, 10);
+};
+
+export const waitUntilInputExists = (lock, name, cb, timeout) =>
+  waitUntilExists(lock, `.auth0-lock-input-${name} input`, cb, timeout);
+
+export const waitUntilErrorExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, ".auth0-global-message-error span", cb, timeout);
 
 // login
 
@@ -190,4 +259,16 @@ export const logInWithUsernameAndPassword = lock => {
   fillUsernameInput(lock, "someone");
   fillPasswordInput(lock, "mypass");
   submit(lock);
+};
+
+// Helps to keep the context of what happened on a test that
+// was executed as part of an async flow, the normal use
+// case is to pass mocha done as the done param.
+export const testAsync = (fn, done) => {
+  try {
+    fn();
+    done();
+  } catch (e) {
+    done(e);
+  }
 };

@@ -9,7 +9,13 @@ export function skipQuickAuth(id) {
 
 export function logIn(id, connection, loginHint) {
   const m = read(getEntity, "lock", id);
-  const params = {connection: connection.get("name")};
+  const connectionScopes = l.auth.connectionScopes(m);
+  const scopes = connectionScopes.get(connection.get("name"));
+  const params = {
+    connection: connection.get("name"), 
+    connection_scope: scopes ? scopes.toJS() : []
+  };
+  
   if (!l.auth.redirect(m) && connection.get("strategy") === "facebook") {
     params.display = "popup";
   }

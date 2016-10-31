@@ -9,6 +9,7 @@ import {
 import { dataFns } from '../../utils/data_utils';
 import sync from '../../sync';
 import trim from 'trim';
+import { defaultDirectory } from '../../core/tenant';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
@@ -189,6 +190,8 @@ function processScreenOptions(opts, defaults = {allowLogin: true, allowSignUp: t
     screens.push("forgotPassword");
   }
 
+  screens.push("mfaLogin");
+
   if (!assertMaybeEnum(opts, "initialScreen", screens)) {
     initialScreen = undefined;
   }
@@ -222,7 +225,9 @@ export function defaultDatabaseConnectionName(m) {
 }
 
 export function databaseConnection(m) {
-  return defaultDatabaseConnection(m) || l.connection(m, "database");
+  return defaultDirectory(m) || 
+          defaultDatabaseConnection(m) || 
+          l.connection(m, "database");
 }
 
 export function databaseConnectionName(m) {
@@ -251,7 +256,7 @@ export function setScreen(m, name, fields = []) {
 export function getScreen(m) {
   const screen = tget(m, "screen");
   const initialScreen = getInitialScreen(m);
-  const screens = [screen, initialScreen, "login", "signUp", "forgotPassword"];
+  const screens = [screen, initialScreen, "login", "signUp", "forgotPassword", "mfaLogin"];
   const availableScreens = screens.filter(x => hasScreen(m, x));
   return availableScreens[0];
 }

@@ -50,9 +50,10 @@ function logInActiveFlow(id) {
     : "email";
 
   const username = getFieldValue(m, usernameField);
+  const connection = enterpriseActiveFlowConnection(m); 
 
   coreLogIn(id, ["password", usernameField], {
-    connection: enterpriseActiveFlowConnection(m).get("name"),
+    connection: connection ? connection.get("name") : null,
     username: username,
     password: getFieldValue(m, "password"),
     login_hint: username

@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "auth0-lock": "^10.4.0"
+    "auth0-lock": "^10.5.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",

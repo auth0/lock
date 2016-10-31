@@ -52,6 +52,9 @@ export function initSocial(m, options) {
 }
 
 export function displayName(connection) {
+  if (["oauth1", "oauth2"].indexOf(connection.get("strategy")) !== -1) {
+    return connection.get("name");
+  }
   return STRATEGIES[connection.get("strategy")];
 }
 
@@ -69,6 +72,10 @@ function processSocialOptions(options) {
 
 export function socialConnections(m) {
   return l.connections(m, "social");
+}
+
+export function authButtonsTheme(m) {
+  return l.ui.authButtonsTheme(m);
 }
 
 export function useBigButtons(m, notFoundLimit) {

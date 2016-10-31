@@ -39,9 +39,9 @@ export default class PasswordInput extends React.Component {
       ...props
     } = this.props;
 
-    const { focused } = this.state;
+    const { focused, changing } = this.state;
 
-    const passwordStrength = policy && focused
+    const passwordStrength = policy && focused && changing
       ? <PasswordStrength
           messages={strengthMessages}
           password={value}
@@ -76,6 +76,9 @@ export default class PasswordInput extends React.Component {
   }
 
   handleOnChange(e) {
+    var state = this.state;
+    state.changing = true;
+    this.setState(state);
     if (this.props.onChange) {
       this.props.onChange(e);
     }

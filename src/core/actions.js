@@ -8,7 +8,10 @@ import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField } from '../field/index';
 
 export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
-  let m = syncRemoteData(l.setup(id, clientID, domain, options, hookRunner, emitEventFn));
+  let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn);
+  
+  m = syncRemoteData(m);
+  
   preload(l.ui.logo(m) || defaultProps.logo);
 
   webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {
@@ -68,6 +71,15 @@ export function openLock(id, opts) {
 
   if (l.rendering(m)) {
     return false;
+  }
+
+  if (opts.flashMessage) {
+    if (!opts.flashMessage.type || ['error', 'success'].indexOf(opts.flashMessage.type) === -1) {
+      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a valid type ['error','success']")
+    }
+    if (!opts.flashMessage.text) {
+      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a text") 
+    }
   }
 
   l.emitEvent(m, "show");
@@ -141,18 +153,19 @@ export function validateAndSubmit(id, fields = [], f) {
   }
 }
 
-export function logIn(id, fields, params = {}) {
+export function logIn(id, fields, params = {},
+  logInErrorHandler = (_id, error, _fields, next) => next()) {
+
   validateAndSubmit(id, fields, m => {
     webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
       if (error) {
-        setTimeout(() => logInError(id, fields, error), 250);
+        setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250)
       } else {
         logInSuccess(id, result);
       }
     });
   });
 }
-
 
 export function logInSuccess(id, result) {
   const m = read(getEntity, "lock", id);
@@ -168,15 +181,19 @@ export function logInSuccess(id, result) {
   }
 }
 
-function logInError(id, fields, error) {
-  const m = read(getEntity, "lock", id);
-  const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
+function logInError(id, fields, error, localHandler) {
+  localHandler(id, error, fields, () => process.nextTick(() => {
+    const m = read(getEntity, "lock", id);
+    const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
 
-  if (["blocked_user", "rule_error", "lock.unauthorized"].indexOf(error.code) > -1) {
-    l.emitAuthorizationErrorEvent(m, error);
-  }
+    if (["blocked_user", "rule_error", "lock.unauthorized"].indexOf(error.code) > -1) {
+      l.emitAuthorizationErrorEvent(m, error);
+    }
 
-  swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+    swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
+  }));
+
+  swap(updateEntity, "lock", id, l.setSubmitting, false);
 }
 
 function loginType(fields) {

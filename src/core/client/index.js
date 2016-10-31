@@ -39,12 +39,18 @@ function strategyNameToConnectionType(str) {
     return "social";
   } else if (ENTERPRISE_STRATEGIES[str]) {
     return "enterprise";
+  } else if (["oauth1", "oauth2"].indexOf(str) !== -1) {
+    return "social";
   } else {
     return "unknown";
   }
 }
 
 function formatConnectionValidation (connectionValidation = {}) {
+  if (connectionValidation.username == null) {
+    return null;
+  }
+
   const validation = { ...DEFAULT_CONNECTION_VALIDATION, ...connectionValidation };
   const defaultMin = DEFAULT_CONNECTION_VALIDATION.username.min;
   const defaultMax = DEFAULT_CONNECTION_VALIDATION.username.max;

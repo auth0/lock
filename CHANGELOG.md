@@ -1,4 +1,56 @@
 # Change Log
+## [v10.5.1](https://github.com/auth0/lock/tree/v10.5.1) (2016-10-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.5.0...v10.5.1)
+
+**Closed issues**
+- [Lock 10.5.0] Prefill fails when using username [\#685](https://github.com/auth0/lock/issues/685)
+- [Lock 10.5.0] "TypeError: next is not a function" when closing social connection popup [\#682](https://github.com/auth0/lock/issues/682)
+
+**Fixed**
+- Disabled username verification for prefill [\#686](https://github.com/auth0/lock/pull/686) ([glena](https://github.com/glena))
+- 'TypeError: next is not a function' when closing social connection popup [\#684](https://github.com/auth0/lock/pull/684) ([glena](https://github.com/glena))
+- Fix focus visual feedback in email and username inputs [\#681](https://github.com/auth0/lock/pull/681) ([gnandretta](https://github.com/gnandretta))
+
+## [v10.5.0](https://github.com/auth0/lock/tree/v10.5.0) (2016-10-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.4.1...v10.5.0)
+
+**Closed issues**
+- [v10.4.0] Cannot read property 'get' of undefined.  [\#658](https://github.com/auth0/lock/issues/658)
+- Lock not showing rule errors in redirect mode [\#637](https://github.com/auth0/lock/issues/637)
+- Single AD connection without domain shows undefined in message [\#627](https://github.com/auth0/lock/issues/627)
+- Issues with Overlay mode + signUpLink setting on a SPA [\#619](https://github.com/auth0/lock/issues/619)
+- [UX] Password field shouldn't show error message immediately (on focus). [\#540](https://github.com/auth0/lock/issues/540)
+
+**Added**
+- Create vi.js in /src/i18n [\#662](https://github.com/auth0/lock/pull/662) ([IoHL](https://github.com/IoHL))
+- Added support for custom oauth2 connections [\#648](https://github.com/auth0/lock/pull/648) ([glena](https://github.com/glena))
+- Create ca.js [\#645](https://github.com/auth0/lock/pull/645) ([alexandresaiz](https://github.com/alexandresaiz))
+- Support connectionScopes for oauth2 connections [\#643](https://github.com/auth0/lock/pull/643) ([glena](https://github.com/glena))
+- Allow to display a flash message on lock.show [\#639](https://github.com/auth0/lock/pull/639) ([glena](https://github.com/glena))
+- MFA when using  oauth/ro endpoint [\#628](https://github.com/auth0/lock/pull/628) ([dafortune](https://github.com/dafortune))
+
+**Changed**
+- Password field shouldn't show error message immediately (on focus) [\#668](https://github.com/auth0/lock/pull/668) ([glena](https://github.com/glena))
+- Update auth0.js to latest [\#665](https://github.com/auth0/lock/pull/665) ([hzalaz](https://github.com/hzalaz))
+- Added default values to the dictionary and warn about missing keys [\#651](https://github.com/auth0/lock/pull/651) ([glena](https://github.com/glena))
+- Fix Issues with Overlay mode + signUpLink setting on a SPA [\#650](https://github.com/auth0/lock/pull/650) ([glena](https://github.com/glena))
+- Only require non-empty value for username when DB connection is custom or import is enabled [\#646](https://github.com/auth0/lock/pull/646) ([glena](https://github.com/glena))
+- Update uglify task to generate sourcemaps [\#638](https://github.com/auth0/lock/pull/638) ([cristiandouce](https://github.com/cristiandouce))
+
+**Fixed**
+- Fix [v10.4.0] Cannot read property 'get' of undefined. #658 [\#660](https://github.com/auth0/lock/pull/660) ([glena](https://github.com/glena))
+- Changed &nbsp; to regular spaces. [\#653](https://github.com/auth0/lock/pull/653) ([nicosabena](https://github.com/nicosabena))
+- Single AD connection without domain shows undefined in message [\#642](https://github.com/auth0/lock/pull/642) ([glena](https://github.com/glena))
+- show properly terms on desktop and mobile [\#641](https://github.com/auth0/lock/pull/641) ([beneliflo](https://github.com/beneliflo))
+- Fix typo in the word "corporate" [\#632](https://github.com/auth0/lock/pull/632) ([wags](https://github.com/wags))
+- Change the term email to e-mail and emailadres to e-mailadres [\#629](https://github.com/auth0/lock/pull/629) ([ToonDC](https://github.com/ToonDC))
+
+## [v10.4.1](https://github.com/auth0/lock/tree/v10.4.0) (2016-10-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.4.0...v10.4.1)
+
+**Changed**
+- Update auth0.js to v7.3.0
+
 ## [v10.4.0](https://github.com/auth0/lock/tree/v10.4.0) (2016-09-27)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.3.0...v10.4.0)
 
@@ -50,6 +102,13 @@ This version introduces `languageBaseUrl` and `cliengBaseUrl` in replacement of 
 - The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.auth0.com/js/lock/${lockVersion}/`).
 - The new options have priority over `assetsUrl`.
 - If `assetsUrl` is provided, keep the current behavior: fetch client from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
+
+## [v10.2.3](https://github.com/auth0/lock/tree/v10.2.3) (2016-10-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.2.3)
+
+### Changed
+
+- Use auth0.js version 7.3.0
 
 ## [v10.2.2](https://github.com/auth0/lock/tree/v10.2.2) (2016-08-31)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.1...v10.2.2)
