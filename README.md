@@ -245,8 +245,9 @@ var options = {
 
 #### Other options
 
-- **clientBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
+- **configurationBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
 - **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
+- **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback url after the user authentication. Defaults to `true`.
 
 #### Language Dictionary Specification
 
