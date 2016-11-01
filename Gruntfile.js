@@ -43,6 +43,7 @@ module.exports = function(grunt) {
     webpack: {
       options: webpackConfig,
       build: {
+        devtool: "source-map",
         output: { 
           path: path.join(__dirname, "build"), 
           filename: 'lock.min.js' 
@@ -53,6 +54,11 @@ module.exports = function(grunt) {
         hot: false,
         devtool: 'source-map',
         plugins: [
+          new webpack.DefinePlugin({
+            'process.env': {
+              'NODE_ENV': JSON.stringify('production')
+            }
+          }),
           new webpack.optimize.DedupePlugin(),
           new webpack.optimize.OccurrenceOrderPlugin(),
           new webpack.optimize.AggressiveMergingPlugin(),
