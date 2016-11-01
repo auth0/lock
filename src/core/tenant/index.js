@@ -47,15 +47,14 @@ function formatTenant(client_id, o) {
 
 function formatTenantConnections(client_id, o) {
   const result = emptyConnections.toJS();
-  const connectionTypes = Object.keys(o.connections);
+  const connectionTypes = Object.keys(o.connections).filter( name => name != 'passwordless' ); // disabled until lock supports passwordless connections within the same engine
   var connections_filter = null;
 
   if (o.clients_connections && o.clients_connections[client_id]) {
     connections_filter = o.clients_connections[client_id];
   }
-  
-  connectionTypes.forEach( connectionTypeName => {
 
+  connectionTypes.forEach( connectionTypeName => {
     const connections = o.connections[connectionTypeName].map(connection => {
       return formatTenantConnection(connectionTypeName, connection);
     }).filter(connection => connections_filter === null || connections_filter.indexOf(connection.name) !== -1);
