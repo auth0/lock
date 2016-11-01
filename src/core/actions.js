@@ -8,7 +8,10 @@ import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField } from '../field/index';
 
 export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
-  let m = syncRemoteData(l.setup(id, clientID, domain, options, hookRunner, emitEventFn));
+  let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn);
+  
+  m = syncRemoteData(m);
+  
   preload(l.ui.logo(m) || defaultProps.logo);
 
   webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {

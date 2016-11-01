@@ -143,7 +143,19 @@ function extractUIOptions(id, options) {
   });
 }
 
-const { get: getUIAttribute } = dataFns(["core", "ui"]);
+const { 
+  get: getUI, 
+  set: setUI
+} = dataFns(["core", "ui"]);
+
+const { 
+  get: tgetUI, 
+  set: tsetUI
+} = dataFns(["core", "transient", "ui"]);
+
+const getUIAttribute = (m, attribute) => {
+  return tgetUI(m, attribute) || getUI(m, attribute);
+};
 
 export const ui = {
   containerID: lock => getUIAttribute(lock, "containerID"),
@@ -487,6 +499,25 @@ export function overrideOptions(m, opts) {
 
   if (opts.auth && opts.auth.params) {
     m = tset(m, "authParams", Immutable.fromJS(opts.auth.params));
+  }
+
+  if (opts.theme) {
+    if (opts.theme.primaryColor) {
+      m = tset(m, ["ui", "primaryColor"], opts.theme.primaryColor);
+    }
+
+    if (opts.theme.logo) {
+      m = tset(m, ["ui", "logo"], opts.theme.logo);
+    }
+  }
+  
+  if (opts.language) {
+    opts.dict = opts.dict || {};
+
+    m = tset(m, ["ui", "language"], opts.language);
+    m = tset(m, ["ui", "dict"], opts.dict);
+    
+    m = i18n.initI18n(m);
   }
 
   if (typeof opts.rememberLastLogin === "boolean") {

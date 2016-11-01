@@ -66,7 +66,7 @@ WelcomeMessage.propTypes = {
 const cssBlurSupport = (function() {
   // Check stolen from Modernizr, see https://github.com/Modernizr/Modernizr/blob/29eab707f7a2fb261c8a9c538370e97eb1f86e25/feature-detects/css/filters.js
   const isEdge = global.navigator && !!global.navigator.userAgent.match(/Edge/i);
-  if (isEdge) return false;
+  if (typeof global.document === 'undefined' || isEdge) return false;
 
   const el = global.document.createElement('div');
   el.style.cssText = "filter: blur(2px); -webkit-filter: blur(2px)";
