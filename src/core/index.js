@@ -281,7 +281,7 @@ function extractTenantBaseUrlOption(opts, domain) {
       : AUTH0_US_CDN_URL;
     const tenant_name = parts[0];
 
-    return `${domain}/tenants/v1/${tenant_name}`
+    return `${domain}/tenants/v1/${tenant_name}.js`
   } else {
     return domainUrl;
   }
