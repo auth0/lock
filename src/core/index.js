@@ -274,17 +274,20 @@ function extractTenantBaseUrlOption(opts, domain) {
   const hostname = parseUrl(domainUrl).hostname;
   const DOT_AUTH0_DOT_COM = ".auth0.com";
   const AUTH0_US_CDN_URL = "https://cdn.auth0.com";
+
+  const parts = hostname.split(".");
+  const tenant_name = parts[0];
+  var domain;
+
   if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
-    const parts = hostname.split(".");
-    const domain = parts.length > 3
+    domain = parts.length > 3
       ? "https://cdn." + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
       : AUTH0_US_CDN_URL;
-    const tenant_name = parts[0];
-
-    return `${domain}/tenants/v1/${tenant_name}`
   } else {
-    return domainUrl;
+    domain = domainUrl;
   }
+
+  return `${domain}/tenants/v1/${tenant_name}.js`;
 }
 
 function extractLanguageBaseUrlOption(opts, domain) {
