@@ -29,8 +29,9 @@ export function handleAuthCallback() {
 
   const ms = read(getCollection, "lock");
   const parsed = ms.filter(m => l.auth.redirect(m) && parseHash(m, hash));
+  const keepHash = ms.filter(m => !l.hashCleanup(m)).size > 0;
 
-  if (parsed.size > 0) {
+  if (parsed.size > 0 && !keepHash) {
     global.location.hash = "";
   }
 }

@@ -30,6 +30,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
     useTenantInfo: options.__useTenantInfo || false,
+    hashCleanup: options.hashCleanup === false ? false : true,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options)
   }));
@@ -466,6 +467,10 @@ export function stop(m, error) {
 
 export function hasStopped(m) {
   return get(m, "stopped");
+}
+
+export function hashCleanup(m) {
+  return get(m, "hashCleanup");
 }
 
 export function emitHashParsedEvent(m, parsedHash) {
