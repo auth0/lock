@@ -41,7 +41,7 @@ export function initTenant(m, client_id, client) {
 function formatTenant(client_id, o) {
   return new Immutable.fromJS({
     connections: formatTenantConnections(client_id, o),
-    default_directory: o.default_directory || null
+    defaultDirectory: o.defaultDirectory || null
   })
 }
 
@@ -50,8 +50,8 @@ function formatTenantConnections(client_id, o) {
   const connectionTypes = Object.keys(o.connections).filter( name => name != 'passwordless' ); // disabled until lock supports passwordless connections within the same engine
   var connections_filter = null;
 
-  if (o.clients_connections && o.clients_connections[client_id]) {
-    connections_filter = o.clients_connections[client_id];
+  if (o.clientsConnections && o.clientsConnections[client_id]) {
+    connections_filter = o.clientsConnections[client_id];
   }
 
   connectionTypes.forEach( connectionTypeName => {
@@ -72,16 +72,24 @@ function formatTenantConnection(connectionType, connection) {
   };
 
   if (connectionType === "database") {
-    result.passwordPolicy = connection.passwordPolicy || "none";
+    if (connection.validation && connection.validation.passwordPolicy) {
+      result.passwordPolicy = connection.validation.passwordPolicy;
+    }
+
+    result.passwordPolicy = result.passwordPolicy || "none";
+
     result.allowSignup = typeof connection.showSignup === "boolean"
       ? connection.showSignup
       : true;
+
     result.allowForgot = typeof connection.showForgot === "boolean"
       ? connection.showForgot
       : true;
-    result.requireUsername = typeof connection.requires_username === "boolean"
-      ? connection.requires_username
+
+    result.requireUsername = typeof connection.requiresUsername === "boolean"
+      ? connection.requiresUsername
       : false;
+
     result.validation = formatConnectionValidation(connection.validation);
   }
 
@@ -102,5 +110,5 @@ export function defaultDirectory(m) {
 }
 
 export function defaultDirectoryName(m) {
-  return get(m, "default_directory", null);
+  return get(m, "defaultDirectory", null);
 }
