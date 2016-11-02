@@ -1,7 +1,7 @@
 import Auth0 from 'auth0-js';
 import Core from './core';
 import classic from './engine/classic';
-import css from '../css/index.css';
+import css from '../css/index.styl';
 
 function injectStyles() {
   const styleId = "auth0-lock-style";

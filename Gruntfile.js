@@ -1,12 +1,24 @@
 "use strict";
 
-var fs = require("fs");
-var pkg = require("./package");
+const path = require("path");
+const fs = require("fs");
+const pkg = require("./package");
+const webpack = require("webpack");
+const webpackConfig = require("./webpack.config.js");
+const SmartBannerPlugin = require("smart-banner-webpack-plugin");
+const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
 
 module.exports = function(grunt) {
 
+  const pkg_info = grunt.file.readJSON("package.json");
+
   grunt.initConfig({
-    pkg: grunt.file.readJSON("package.json"),
+    pkg: pkg_info,
+    clean: {
+      build: ["build/"],
+      dev: ["build/"],
+      dist: ["lib/"]
+    },
     babel: {
       dist: {
         files: [
@@ -15,61 +27,10 @@ module.exports = function(grunt) {
             cwd:    "src",
             src:    ["**/*.js", "**/*.jsx"],
             dest:   "lib",
-            ext: '.js'
+            ext:    '.js'
           }
         ]
       }
-    },
-    browserify: {
-      options: {
-        browserifyOptions: {
-          extensions: ".jsx",
-          transform: ["babelify"]
-        }
-      },
-      dev: {
-        options: {
-          browserifyOptions: {
-            debug: true,
-            extensions: ".jsx",
-            transform: ["babelify"]
-          },
-          watch: true
-        },
-        src: "src/browser.js",
-        dest: "build/lock.js"
-      },
-      build: {
-        src: "src/browser.js",
-        dest: "build/lock.js"
-      },
-      design: {
-        options: {
-          browserifyOptions: {
-            debug: true,
-            extensions: ".jsx",
-            transform: ["babelify"],
-            // plugin: ['livereactload']
-          },
-          watch: true
-        },
-        src: "support/design/index.js",
-        dest: "build/lock.design.js"
-      }
-    },
-    clean: {
-      build: ["build/"],
-      dev: ["build/"],
-      dist: ["lib/"]
-    },
-    connect: {
-      dev: {
-        options: {
-          hostname: "*",
-          base: [".", "build", "support", "support/playground"],
-          port: process.env.PORT || 3000
-        }
-      },
     },
     env: {
       build: {
@@ -79,49 +40,76 @@ module.exports = function(grunt) {
     exec: {
       touch_index: "touch src/index.js"
     },
-    stylus: {
+    webpack: {
+      options: webpackConfig,
       build: {
-        options: {
-          compress: false // temp
+        devtool: "source-map",
+        output: { 
+          path: path.join(__dirname, "build"), 
+          filename: 'lock.min.js' 
         },
-        src: "css/index.styl",
-        dest: "css/index.css"
+        watch: false,
+        keepalive: false,
+        inline: false,
+        hot: false,
+        devtool: 'source-map',
+        plugins: [
+          new webpack.DefinePlugin({
+            'process.env': {
+              'NODE_ENV': JSON.stringify('production')
+            }
+          }),
+          new webpack.optimize.DedupePlugin(),
+          new webpack.optimize.OccurrenceOrderPlugin(),
+          new webpack.optimize.AggressiveMergingPlugin(),
+          new webpack.optimize.UglifyJsPlugin({ 
+            compress: { warnings: false, screw_ie8: true },
+            comments: false
+          }),
+          new UnminifiedWebpackPlugin(),
+          new SmartBannerPlugin(
+            `[filename] v${pkg_info.version}\n\nAuthor: ${pkg_info.author}\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`,
+            { raw: false, entryOnly: true }
+          )
+        ]
       }
     },
-    watch: {
-      stylus: {
-        files: ["css/index.styl"],
-        tasks: ["stylus:build", "exec:touch_index"]
-      }
-    },
-    uglify: {
-      build: {
-        files: {
-          "build/lock.min.js": ["build/lock.js"]
-        },
-        options: {
-          sourceMap: true,
-          sourceMapName: "build/lock.min.js.map"
-        },
-
+    "webpack-dev-server": {
+      options: {
+        webpack: webpackConfig,
+        publicPath: "/build/"
+      },
+      dev: {
+        keepAlive: true,
+        webpack: {
+          devtool: "eval",
+          debug: true
+        }
+      },
+      design: {
+        keepAlive: true,
+        webpack: {
+          entry: './support/design/index.js',
+          output: { 
+            path: path.join(__dirname, "build"), 
+            filename: 'lock.design.js' 
+          },
+          devtool: "eval",
+          debug: true
+        }
       }
     }
   });
 
   grunt.loadNpmTasks("grunt-babel");
-  grunt.loadNpmTasks("grunt-browserify");
+  grunt.loadNpmTasks("grunt-webpack");
   grunt.loadNpmTasks("grunt-contrib-clean");
-  grunt.loadNpmTasks("grunt-contrib-connect");
-  grunt.loadNpmTasks('grunt-contrib-stylus');
-  grunt.loadNpmTasks("grunt-contrib-uglify");
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-env");
   grunt.loadNpmTasks("grunt-exec");
 
-
-  grunt.registerTask("build", ["clean:build", "env:build", "stylus:build", "browserify:build", "uglify:build"]);
-  grunt.registerTask("dist", ["clean:dist", "stylus:build", "babel:dist"]);
-  grunt.registerTask("prepare_dev", ["clean:dev", "connect:dev", "stylus:build"]);
-  grunt.registerTask("dev", ["prepare_dev", "browserify:dev", "watch"]);
-  grunt.registerTask("design", ["prepare_dev", "browserify:design", "watch"]);
+  grunt.registerTask("build", ["clean:build", "env:build", "webpack:build"]);
+  grunt.registerTask("dist", ["clean:dist", "babel:dist"]);
+  grunt.registerTask("prepare_dev", ["clean:dev"]);
+  grunt.registerTask("dev", ["prepare_dev", "webpack-dev-server:dev"]);
+  grunt.registerTask("design", ["prepare_dev", "webpack-dev-server:design"]);
 };
