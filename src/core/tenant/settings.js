@@ -5,7 +5,7 @@ import { initTenant } from './index';
 export function fetchTenantSettings(tenantBaseUrl, cb) {
   load({
     method: "setTenant",
-    url: `${tenantBaseUrl}.js?t${+new Date()}`,
+    url: `${tenantBaseUrl}?t${+new Date()}`,
     check: () => true,
     cb: cb
   });
