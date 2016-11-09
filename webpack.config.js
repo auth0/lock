@@ -3,9 +3,12 @@ var path = require('path');
 
 module.exports = {
   entry: './src/browser.js',
-  output: { 
-    path: path.join(__dirname, "../build"), 
-    filename: 'lock.js' 
+  output: {
+    path: path.join(__dirname, "../build"),
+    filename: 'lock.js',
+    library: 'Auth0Lock',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   resolve: {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".styl"]
@@ -18,7 +21,7 @@ module.exports = {
   },
   keepalive: true,
   inline: true,
-  hot: true, 
+  hot: true,
   stats: {
     colors: true,
     modules: true,
