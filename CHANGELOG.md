@@ -1,5 +1,11 @@
 # Change Log
 
+## [v10.6.1](https://github.com/auth0/lock/tree/v10.6.1) (2016-11-09)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.6.0...v10.6.1)
+
+**Fixed**
+- Removed UMD bundling and using browser only [\#709](https://github.com/auth0/lock/pull/709) ([glena](https://github.com/glena))
+
 ## [v10.6.0](https://github.com/auth0/lock/tree/v10.6.0) (2016-11-07)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.5.1...v10.6.0)
 
