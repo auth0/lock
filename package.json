@@ -28,7 +28,8 @@
     "test": "zuul -- test/**/*.test.js",
     "test:browser": "zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
     "test:cli": "mochify --extension=.jsx --transform=babelify test/**/*.test.js",
-    "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js"
+    "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js",
+    "publish:cdn": "ccu"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -43,10 +44,11 @@
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
     "bump-version": "^0.5.0",
+    "component-cdn-uploader": "auth0/component-cdn-uploader#1.0.0",
+    "css-loader": "^0.25.0",
     "eslint": "3.7.1",
     "eslint-config-auth0-base": "6.0.0",
     "eslint-plugin-import": "1.16.0",
-    "css-loader": "^0.25.0",
     "expect.js": "^0.3.1",
     "flat": "^2.0.1",
     "grunt": "^0.4.5",
@@ -86,5 +88,12 @@
     "react-addons-css-transition-group": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
     "trim": "0.0.1"
+  },
+  "cdn-component": {
+    "name": "lock",
+    "cdn": "https://cdn.auth0.com",
+    "mainBundleFile": "lock.min.js",
+    "bucket": "assets.us.auth0.com",
+    "localPath": "build"
   }
 }
