@@ -5,10 +5,7 @@ module.exports = {
   entry: './src/browser.js',
   output: {
     path: path.join(__dirname, "../build"),
-    filename: 'lock.js',
-    library: 'Auth0Lock',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    filename: 'lock.js'
   },
   resolve: {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".styl"]
