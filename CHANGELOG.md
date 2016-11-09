@@ -1,4 +1,16 @@
 # Change Log
+
+## [v10.6.0](https://github.com/auth0/lock/tree/v10.6.0) (2016-11-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.5.1...v10.6.0)
+
+**Changed**
+- Update auth0.js to 7.4.0 [\#705](https://github.com/auth0/lock/pull/705) ([hzalaz](https://github.com/hzalaz))
+- allow to override language, dict, logo and primary color on show method [\#680](https://github.com/auth0/lock/pull/680) ([glena](https://github.com/glena))
+- Webpack for bundling [\#663](https://github.com/auth0/lock/pull/663) ([glena](https://github.com/glena))
+
+**Fixed**
+- Disable passwordless connections for SSO [\#691](https://github.com/auth0/lock/pull/691) ([glena](https://github.com/glena))
+
 ## [v10.5.1](https://github.com/auth0/lock/tree/v10.5.1) (2016-10-28)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.5.0...v10.5.1)
 
