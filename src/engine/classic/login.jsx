@@ -27,6 +27,7 @@ import {
   defaultEnterpriseConnectionName,
   findADConnectionWithoutDomain,
   isEnterpriseDomain,
+  hasUniqueADConnectionWithDomain,
   isHRDDomain
 } from '../../connection/enterprise';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
@@ -71,7 +72,8 @@ const Component = ({i18n, model, t}) => {
 
   const showPassword = !sso
     && (l.hasSomeConnections(model, "database")
-       || !!findADConnectionWithoutDomain(model));
+       || !!findADConnectionWithoutDomain(model)
+       || hasUniqueADConnectionWithDomain(model));
 
   const showForgotPasswordLink = showPassword
     && l.hasSomeConnections(model, "database");
@@ -83,6 +85,12 @@ const Component = ({i18n, model, t}) => {
   const usernameInputPlaceholderKey = databaseUsernameStyle(model) === "any"
     ? "usernameOrEmailInputPlaceholder"
     : "usernameInputPlaceholder";
+
+  const usernameStyle = !l.hasSomeConnections(model, "database")
+      && l.hasSomeConnections(model, "enterprise")
+      && showPassword
+    ? 'username'
+    : databaseUsernameStyle(model);
 
   const login = (sso
     || l.hasSomeConnections(model, "database")
@@ -97,7 +105,7 @@ const Component = ({i18n, model, t}) => {
          showForgotPasswordLink={showForgotPasswordLink}
          showPassword={showPassword}
          usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
-         usernameStyle={databaseUsernameStyle(model)}
+         usernameStyle={usernameStyle}
        />;
 
   const ssoNotice = sso

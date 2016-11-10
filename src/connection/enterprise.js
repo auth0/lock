@@ -100,6 +100,12 @@ export function findADConnectionWithoutDomain(m, name = undefined) {
   });
 }
 
+export function hasUniqueADConnectionWithDomain(m, name = undefined) {
+  return l.connections(m, "enterprise", "ad", "auth0-adldap").count(x => {
+    return !x.get("domains").isEmpty() && (!name || x.get("name") === name);
+  }) === 1;
+}
+
 function findActiveFlowConnection(m, name = undefined) {
   return l.connections(m, "enterprise", "ad", "auth0-adldap").find(x => {
     return !name || x.get("name") === name;

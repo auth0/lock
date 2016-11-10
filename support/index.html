@@ -12,9 +12,15 @@
   <div id="container"></div>
   <script src="/build/lock.js"></script>
   <script>
-    const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
-    const domain = "auth0-tests-lock.auth0.com";
-    const options = {};
+    const cid = "sxD6DqPjMhHe8nhO8dYhh7qHy0g4vhej"; // social + ad with domain
+//    const cid = "Z6cSafOKwpRo7wO12tNyKAhRbBy3Gstz"; // social + ad without domain
+//    const cid = "1oC6NxvvL0q63nSERFuXPeXWlSHyLWGJ"; // only ad without domain
+    const domain = "nico-sabena.auth0.com";
+//    const domain = "auth-dev.mozilla.auth0.com";
+    const options = {
+//      assetsUrl: "https://rta-dev.mozilla.auth0.com",
+      rememberLastLogin: true
+    };
 
     const lock = new Auth0Lock(cid, domain, options);
 
