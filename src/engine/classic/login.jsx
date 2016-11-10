@@ -84,6 +84,8 @@ const Component = ({i18n, model, t}) => {
     ? "usernameOrEmailInputPlaceholder"
     : "usernameInputPlaceholder";
 
+  const usernameStyle = databaseUsernameStyle(model);
+
   const login = (sso
     || l.hasSomeConnections(model, "database")
     || l.hasSomeConnections(model, "enterprise"))
@@ -97,7 +99,7 @@ const Component = ({i18n, model, t}) => {
          showForgotPasswordLink={showForgotPasswordLink}
          showPassword={showPassword}
          usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
-         usernameStyle={databaseUsernameStyle(model)}
+         usernameStyle={usernameStyle}
        />;
 
   const ssoNotice = sso
