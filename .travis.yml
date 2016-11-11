@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '4.2'
 script:
-- 'scripts/test.sh'
+- 'npm run test:cli'
 env:
   - CXX=g++-4.8
 sudo: false

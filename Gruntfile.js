@@ -98,6 +98,19 @@ module.exports = function(grunt) {
           debug: true
         }
       }
+    },
+    "i18n": {
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd:    "lib/i18n",
+            src:    "**/*.js",
+            dest:   "build",
+            ext:    '.js'
+          }
+        ]
+      }
     }
   });
 
@@ -108,8 +121,29 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-exec");
 
   grunt.registerTask("build", ["clean:build", "env:build", "webpack:build"]);
-  grunt.registerTask("dist", ["clean:dist", "babel:dist"]);
+  grunt.registerTask("dist", ["clean:dist", "babel:dist", "i18n:dist"]);
   grunt.registerTask("prepare_dev", ["clean:dev"]);
   grunt.registerTask("dev", ["prepare_dev", "webpack-dev-server:dev"]);
   grunt.registerTask("design", ["prepare_dev", "webpack-dev-server:design"]);
+  grunt.registerMultiTask("i18n", "Prepares i18n files to be hosted in CDN", function () {
+    grunt.task.requires("babel:dist");
+    var languages = {};
+    var Auth0 = {
+      registerLanguageDictionary: function(lang, dict) {
+        languages[lang] = dict;
+      }
+    };
+    this.files.forEach(function (file) {
+      var filename = file.src[0];
+      var lang = path.basename(filename, '.js');
+      var dict = require('./' + filename).default || require('./' + filename);
+      var jsonp = `Auth0.registerLanguageDictionary("${lang}", ${JSON.stringify(dict)});`;
+      eval(jsonp.toString());
+      if (languages[lang] === undefined) {
+        grunt.fail.fatal(`Failed to process language file ${filename}`);
+      }
+      grunt.file.write(file.dest, jsonp);
+      grunt.log.ok(`Built ${lang}.js file`);
+    });
+  });
 };
