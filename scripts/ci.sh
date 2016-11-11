@@ -2,8 +2,6 @@
 
 npm install
 
-source scripts/common.sh
-
 MATCHER=${2:-"*"}
 NPM_TAG=${3:-"latest"}
 
@@ -16,6 +14,26 @@ STABLE=$($NPM_BIN/semver $VERSION -r "*")
 # Enable failing on exit status here because semver exits with 1 when the range
 # doesn't match.
 set -e
+
+new_line()
+{
+  echo ""
+}
+
+verbose()
+{
+  echo -e " \033[36m→\033[0m $1"
+}
+
+verbose_item()
+{
+  echo -e " \033[96m∙\033[0m $1"
+}
+
+success()
+{
+  echo -e " \033[1;32m✔︎\033[0m $1"
+}
 
 cdn_release()
 {
@@ -77,16 +95,7 @@ fi
 rm -f build/*.js
 
 # Build
-npm run build
-SRC_PATH="lib/i18n"
-
-verbose "Processing i18n files…"
-new_line
-
-for file in $SRC_PATH/*.js; do
-  verbose_item "Converting $file"
-  node scripts/utils/i18n.js "$file"
-done;
+npm run dist build
 
 # Release
 git checkout -b dist
