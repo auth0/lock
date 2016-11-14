@@ -200,7 +200,7 @@ var options = {
 - **redirect {Boolean}**: When set to `true`, the default, _redirect mode_ will be used. Otherwise, _popup mode_ is chosen. See [below](#popup-mode) for more details.
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
-- **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `callbackURL` is provided, and to `"token"` otherwise.
+- **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
 - **sso {Boolean}**:  Determines whether Single Sign On is enabled or not. Defaults to `true`.
 - **connectionScopes {Object}**:  Allows to set scopes to be sent to the oauth2/social connection for authentication.
 
