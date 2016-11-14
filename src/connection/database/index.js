@@ -10,9 +10,7 @@ import { dataFns } from '../../utils/data_utils';
 import sync from '../../sync';
 import trim from 'trim';
 import { defaultDirectory } from '../../core/tenant';
-import {
-  findADConnectionWithoutDomain
-} from '../../connection/enterprise';
+import { findADConnectionWithoutDomain } from '../../connection/enterprise';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
 
