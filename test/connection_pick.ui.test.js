@@ -139,7 +139,7 @@ describe("connection pick", function() {
 
     describe("when the email matches the enterprise connection", function() {
       beforeEach(function() {
-        h.fillUsernameInput(this.lock, "someone@auth0.com");
+        h.fillEmailInput(this.lock, "someone@auth0.com");
       });
 
       it("logins with the enterprise connection", function() {
@@ -151,7 +151,7 @@ describe("connection pick", function() {
 
     describe("when the email matches the corporate connection", function() {
       beforeEach(function() {
-        h.fillUsernameInput(this.lock, "someone@rolodato.com");
+        h.fillEmailInput(this.lock, "someone@rolodato.com");
       });
 
       it("ask for the corporte credentials", function() {
