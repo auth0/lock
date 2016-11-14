@@ -204,7 +204,7 @@ describe("connection pick", function() {
 
     describe("when the email matches a corporate connection", function() {
       beforeEach(function() {
-        h.fillEmailInput(this.lock, "someone@rolodato.com");
+        h.fillUsernameInput(this.lock, "someone@rolodato.com");
       });
 
       it("ask for the corporte credentials", function() {
@@ -228,7 +228,7 @@ describe("connection pick", function() {
 
     describe("when the email doesn't match a corporate connection", function() {
       beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+        h.logInWithUsernameAndPassword(this.lock);
       });
 
       it("logins with the one without domain", function() {
@@ -254,7 +254,7 @@ describe("connection pick", function() {
 
     describe("when the email and password inputs are filled", function() {
       beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+        h.logInWithUsernameAndPassword(this.lock);
       });
 
       it("logins with the first one", function() {
@@ -281,7 +281,7 @@ describe("connection pick", function() {
 
     describe("when the email and password inputs are filled", function() {
       beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+        h.logInWithUsernameAndPassword(this.lock);
       });
 
       it("logins with the default one", function() {

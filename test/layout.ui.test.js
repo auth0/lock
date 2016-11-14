@@ -280,8 +280,8 @@ describe("layout", function() {
       expect(h.hasBackButton(this.lock)).to.not.be.ok();
       expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
       expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+      expect(h.hasUsernameInput(this.lock)).to.be.ok();
       expect(h.hasPasswordInput(this.lock)).to.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
       expect(h.hasSubmitButton(this.lock)).to.be.ok();

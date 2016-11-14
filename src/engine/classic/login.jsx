@@ -80,9 +80,12 @@ const Component = ({i18n, model, t}) => {
     ? "databaseEnterpriseAlternativeLoginInstructions"
     : "databaseEnterpriseLoginInstructions";
 
-  const usernameInputPlaceholderKey = databaseUsernameStyle(model) === "any"
-    ? "usernameOrEmailInputPlaceholder"
-    : "usernameInputPlaceholder";
+  const usernameInputPlaceholderKey = (databaseUsernameStyle(model) === "any"
+                                      || l.countConnections(model, "enterprise") > 1)
+                                          ? "usernameOrEmailInputPlaceholder"
+                                          : "usernameInputPlaceholder";
+
+  const usernameStyle = databaseUsernameStyle(model);
 
   const login = (sso
     || l.hasSomeConnections(model, "database")
@@ -97,7 +100,7 @@ const Component = ({i18n, model, t}) => {
          showForgotPasswordLink={showForgotPasswordLink}
          showPassword={showPassword}
          usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
-         usernameStyle={databaseUsernameStyle(model)}
+         usernameStyle={usernameStyle}
        />;
 
   const ssoNotice = sso
