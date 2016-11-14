@@ -80,9 +80,10 @@ const Component = ({i18n, model, t}) => {
     ? "databaseEnterpriseAlternativeLoginInstructions"
     : "databaseEnterpriseLoginInstructions";
 
-  const usernameInputPlaceholderKey = databaseUsernameStyle(model) === "any"
-    ? "usernameOrEmailInputPlaceholder"
-    : "usernameInputPlaceholder";
+  const usernameInputPlaceholderKey = (databaseUsernameStyle(model) === "any"
+                                      || l.countConnections(model, "enterprise") > 1)
+                                          ? "usernameOrEmailInputPlaceholder"
+                                          : "usernameInputPlaceholder";
 
   const usernameStyle = databaseUsernameStyle(model);
 

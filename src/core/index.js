@@ -144,13 +144,13 @@ function extractUIOptions(id, options) {
   });
 }
 
-const { 
-  get: getUI, 
+const {
+  get: getUI,
   set: setUI
 } = dataFns(["core", "ui"]);
 
-const { 
-  get: tgetUI, 
+const {
+  get: tgetUI,
   set: tsetUI
 } = dataFns(["core", "transient", "ui"]);
 
@@ -372,7 +372,11 @@ export function hasOnlyConnections(m, type = undefined, ...strategies) {
 }
 
 export function hasSomeConnections(m, type = undefined, ...strategies) {
-  return connections(m, type, ...strategies).count() > 0;
+  return countConnections(m, type, ...strategies) > 0;
+}
+
+export function countConnections(m, type = undefined, ...strategies) {
+  return connections(m, type, ...strategies).count();
 }
 
 export function findConnection(m, name) {
@@ -518,13 +522,13 @@ export function overrideOptions(m, opts) {
       m = tset(m, ["ui", "logo"], opts.theme.logo);
     }
   }
-  
+
   if (opts.language) {
     opts.dict = opts.dict || {};
 
     m = tset(m, ["ui", "language"], opts.language);
     m = tset(m, ["ui", "dict"], opts.dict);
-    
+
     m = i18n.initI18n(m);
   }
 
