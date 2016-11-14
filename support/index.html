@@ -12,9 +12,12 @@
   <div id="container"></div>
   <script src="/build/lock.js"></script>
   <script>
+
     const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
     const domain = "auth0-tests-lock.auth0.com";
-    const options = {};
+    const options = {
+      rememberLastLogin: true
+    };
 
     const lock = new Auth0Lock(cid, domain, options);
 
