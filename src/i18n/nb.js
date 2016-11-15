@@ -14,6 +14,8 @@ export default {
       "lock.network": "Kunne ikke kontakte serveren. Sjekk nettforbindelsen din og prøv igjen.",
       "lock.popup_closed": "Popup vinduet ble lukket. Prøv igjen.",
       "lock.unauthorized": "Fikk ikke adgang. Prøv igjen.",
+      "lock.mfa_registration_required": "Flerfaktor-autentisering er påkrevd, men din enhet er ikke innmeldt. Du må melde den inn før du kan fortsette.",
+      "lock.mfa_invalid_code": "Feil kode. Vennligst forsøk igjen.",
       "password_change_required": "Du må endre passord fordi dette er første gang du logger inn eller fordi passordet har utløpt.", // TODO: verify error code
       "password_leaked": "Denne påloggingen er blokkert fordi passordet har blitt lekket på et annet nettsted. Vi har sendt deg en epost med instruksjoner for hvordan du opphever blokkeringen.",
       "too_many_attempts": "Din konto er blokkert på grunn av for mange påloggingsforsøk."
@@ -98,5 +100,10 @@ export default {
   title: "Auth0",
   welcome: "Velkommen %s!",
   windowsAuthInstructions: "Du er tilkoblet via ditt bedrifts-nettverk&hellip;",
-  windowsAuthLabel: "Windows-autentisering"
+  windowsAuthLabel: "Windows-autentisering",
+  mfaInputPlaceholder: "Kode",
+  mfaLoginTitle: "Tofaktor-verifisering",
+  mfaLoginInstructions: "Skriv inn verifiserings-koden som du finner i mobilapplikasjonen.",
+  mfaSubmitLabel: "Logg inn",
+  mfaCodeErrorHint: "Bruk %d siffer"
 };
