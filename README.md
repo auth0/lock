@@ -59,7 +59,7 @@ var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0Lock(clientId, domain);
 
 lock.on("authenticated", function(authResult) {
-  lock.getProfile(authResult.idToken, function(error, profile) {
+  lock.getUserInfo(authResult.accessToken, function(error, profile) {
     if (error) {
       // Handle error
       return;
@@ -75,15 +75,24 @@ lock.on("authenticated", function(authResult) {
 
 ### getProfile(idToken, callback)
 
+> *Note:* this method is soon to be deprecated, use `getUserInfo` instead.
+
 Once the user has logged in and you are in possesion of and id token, you can obtain the profile with `getProfile`.
 
 - **idToken {String}**: User id token.
 - **callback {Function}**: Will be invoked after the user profile been retrieved.
 
+### getUserInfo(accessToken, callback)
+
+Once the user has logged in and you are in possesion of and access token, you can obtain the profile with `getUserInfo`.
+
+- **accessToken {String}**: User access token.
+- **callback {Function}**: Will be invoked after the user profile been retrieved.
+
 #### Example
 
 ```js
-lock.getProfile(idToken, function(error, profile) {
+lock.getUserInfo(accessToken, function(error, profile) {
   if (!error) {
     alert("hello " + profile.name);
   }

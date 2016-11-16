@@ -135,6 +135,10 @@ export default class Base extends EventEmitter {
     return webAPI.getProfile(this.id, token, cb);
   }
 
+  getUserInfo(token, cb) {
+    return webAPI.getUserInfo(this.id, token, cb);
+  }
+
   logout(query = {}) {
     webAPI.signOut(this.id, query);
   }

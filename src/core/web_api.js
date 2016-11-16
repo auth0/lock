@@ -88,6 +88,10 @@ class Auth0WebAPI {
     return this.clients[lockID].getProfile(token, callback);
   }
 
+  getUserInfo(lockID, token, callback) {
+    return this.clients[lockID].getUserInfo(token, callback);
+  }
+
   getSSOData(lockID, ...args) {
     return this.clients[lockID].getSSOData(...args);
   }
