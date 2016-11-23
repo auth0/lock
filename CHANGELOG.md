@@ -1,5 +1,19 @@
 # Change Log
 
+## [v10.7.0](https://github.com/auth0/lock/tree/v10.7.0) (2016-11-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.6.1...v10.7.0)
+
+**Added**
+- Add missing Norwegian translations [\#721](https://github.com/auth0/lock/pull/721) ([francisrath](https://github.com/francisrath))
+
+**Changed**
+- Update auth0.js to v7.5.0 [\#730](https://github.com/auth0/lock/pull/730) ([hzalaz](https://github.com/hzalaz))
+- "Email" type for email input [\#724](https://github.com/auth0/lock/pull/724) ([glena](https://github.com/glena))
+- Enterprise: force username for AD connections [\#714](https://github.com/auth0/lock/pull/714) ([glena](https://github.com/glena))
+
+**Deprecated**
+- Deprecated getProfile and added getUserInfo instead [\#726](https://github.com/auth0/lock/pull/726) ([glena](https://github.com/glena))
+
 ## [v10.6.1](https://github.com/auth0/lock/tree/v10.6.1) (2016-11-09)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.6.0...v10.6.1)
 
@@ -114,7 +128,7 @@
 
 **Deprecation notice:**
 
-This version introduces `languageBaseUrl` and `cliengBaseUrl` in replacement of `assetsUrl`.
+This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of `assetsUrl`.
 
 - The client will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
 - The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.auth0.com/js/lock/${lockVersion}/`).
