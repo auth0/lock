@@ -23,6 +23,9 @@
 
     lock.on("authenticated", function(authResult) {
       console.log(authResult);
+      lock.getUserInfo(authResult.accessToken, function(error, profile) {
+        console.log(error, profile);
+      });
     });
 
     lock.show();

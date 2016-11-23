@@ -44,9 +44,9 @@ module.exports = function(grunt) {
       options: webpackConfig,
       build: {
         devtool: "source-map",
-        output: { 
-          path: path.join(__dirname, "build"), 
-          filename: 'lock.min.js' 
+        output: {
+          path: path.join(__dirname, "build"),
+          filename: 'lock.min.js'
         },
         watch: false,
         keepalive: false,
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
           new webpack.optimize.DedupePlugin(),
           new webpack.optimize.OccurrenceOrderPlugin(),
           new webpack.optimize.AggressiveMergingPlugin(),
-          new webpack.optimize.UglifyJsPlugin({ 
+          new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false, screw_ie8: true },
             comments: false
           }),
@@ -81,6 +81,7 @@ module.exports = function(grunt) {
       },
       dev: {
         keepAlive: true,
+        port: 3000,
         webpack: {
           devtool: "eval",
           debug: true
@@ -90,9 +91,9 @@ module.exports = function(grunt) {
         keepAlive: true,
         webpack: {
           entry: './support/design/index.js',
-          output: { 
-            path: path.join(__dirname, "build"), 
-            filename: 'lock.design.js' 
+          output: {
+            path: path.join(__dirname, "build"),
+            filename: 'lock.design.js'
           },
           devtool: "eval",
           debug: true
