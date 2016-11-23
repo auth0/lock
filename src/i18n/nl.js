@@ -49,7 +49,7 @@ export default {
   enterpriseLoginIntructions: "Login met uw bedrijfs inloggegevens.",
   enterpriseActiveLoginInstructions: "Voer uw bedrijfs inloggegevens in op %s.",
   failedLabel: "Gefaald!",
-  forgotPasswordAction: "Wachtwoord vergeten??",
+  forgotPasswordAction: "Wachtwoord vergeten?",
   forgotPasswordInstructions: "Geef uw e-mailadres op. Wij sturen een e-mail voor het resetten van uw wachtwoord.",
   forgotPasswordSubmitLabel: "Verstuur e-mail",
   invalidErrorHint: "Ongeldig",
