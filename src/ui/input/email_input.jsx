@@ -32,7 +32,7 @@ export default class EmailInput extends React.Component {
         icon={svg}
       >
         <input ref="input"
-          type="text"
+          type="email"
           name="email"
           className="auth0-lock-input"
           placeholder="yours@example.com"
