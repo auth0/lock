@@ -58,7 +58,7 @@ export function initI18n(m) {
   return set(m, "strings", base);
 }
 
-function assertLanguage(m, language, base, path = "") { 
+function assertLanguage(m, language, base, path = "") {
   Object.keys(base).forEach( key => {
     if (!language.hasOwnProperty(key)) {
       l.warn(m, `language does not have property ${path}${key}`);
