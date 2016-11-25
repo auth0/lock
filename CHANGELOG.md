@@ -1,5 +1,12 @@
 # Change Log
 
+## [v10.7.1](https://github.com/auth0/lock/tree/v10.7.0) (2016-11-25)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.7.0...v10.7.1)
+
+**Fixed**
+- fix options override on show [\#732](https://github.com/auth0/lock/pull/732) ([glena](https://github.com/glena))
+- One questionmark is enough [\#731](https://github.com/auth0/lock/pull/731) ([retorquere](https://github.com/retorquere))
+
 ## [v10.7.0](https://github.com/auth0/lock/tree/v10.7.0) (2016-11-22)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.6.1...v10.7.0)
 
