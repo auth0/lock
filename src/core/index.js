@@ -523,11 +523,15 @@ export function overrideOptions(m, opts) {
     }
   }
 
-  if (opts.language) {
-    opts.dict = opts.dict || {};
+  if (opts.language || opts.languageDictionary) {
 
-    m = tset(m, ["ui", "language"], opts.language);
-    m = tset(m, ["ui", "dict"], opts.dict);
+    if (opts.language) {
+      m = tset(m, ["ui", "language"], opts.language);
+    }
+
+    if (opts.languageDictionary) {
+      m = tset(m, ["ui", "dict"], opts.languageDictionary);
+    }
 
     m = i18n.initI18n(m);
   }
