@@ -1,5 +1,12 @@
 # Change Log
 
+## [v10.7.2](https://github.com/auth0/lock/tree/v10.7.0) (2016-12-01)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.7.1...v10.7.2)
+
+**Fixed**
+- Fix how the tenant and client info url is build to avoid format issues [\#740](https://github.com/auth0/lock/pull/740) ([glena](https://github.com/glena))
+- Fix: Single saml connection with no domain shows undefined in button [\#738](https://github.com/auth0/lock/pull/738) ([glena](https://github.com/glena))
+
 ## [v10.7.1](https://github.com/auth0/lock/tree/v10.7.0) (2016-11-25)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.7.0...v10.7.1)
 
