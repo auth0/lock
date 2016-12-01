@@ -263,7 +263,7 @@ function extractClientBaseUrlOption(opts, domain) {
   }
 }
 
-function extractTenantBaseUrlOption(opts, domain) {
+export function extractTenantBaseUrlOption(opts, domain) {
   if (opts.configurationBaseUrl && typeof opts.configurationBaseUrl === "string") {
     return opts.configurationBaseUrl;
   }
