@@ -1,3 +1,4 @@
+import urljoin from 'url-join';
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
@@ -288,7 +289,7 @@ function extractTenantBaseUrlOption(opts, domain) {
     domain = domainUrl;
   }
 
-  return `${domain}/tenants/v1/${tenant_name}.js`;
+  return urljoin(domain, 'tenants', 'v1', `${tenant_name}.js`);
 }
 
 function extractLanguageBaseUrlOption(opts, domain) {
