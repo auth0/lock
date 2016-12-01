@@ -8,7 +8,10 @@ const QuickAuthPane = (props) => {
     buttonLabel,
     buttonClickHandler,
     header,
-    strategy
+    strategy,
+    buttonIcon,
+    primaryColor,
+    foregroundColor
   } = props;
 
   const alternative = alternativeLabel
@@ -32,6 +35,9 @@ const QuickAuthPane = (props) => {
         label={buttonLabel}
         onClick={e => {e.preventDefault(); buttonClickHandler(e)}}
         strategy={strategy}
+        primaryColor={primaryColor}
+        foregroundColor={foregroundColor}
+        icon={buttonIcon}
       />
 
       {alternative}
