@@ -1,7 +1,7 @@
 import Auth0 from 'auth0-js';
 
 if (!global.Auth0) {
-  global.Auth0 = Auth0;
+  global.Auth0 = {};
 }
 
 const cbs = {};

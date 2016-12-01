@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "10.8.1",
+  "version": "10.8.0-beta.5",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -79,7 +79,7 @@
     "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
   },
   "dependencies": {
-    "auth0-js": "7.6.1",
+    "auth0-js": "8.0.0",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "immutable": "^3.7.3",
@@ -96,6 +96,8 @@
     "cdn": "https://cdn.auth0.com",
     "mainBundleFile": "lock.min.js",
     "bucket": "assets.us.auth0.com",
-    "localPath": "build"
+    "localPath": "build",
+    "majorAndMinor": false,
+    "snapshot": false
   }
 }

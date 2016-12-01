@@ -34,6 +34,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
     useTenantInfo: options.__useTenantInfo || false,
+    oidcConformant: options.oidcConformant || false,
     hashCleanup: options.hashCleanup === false ? false : true,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options),
@@ -67,6 +68,10 @@ export function tenantBaseUrl(m) {
 
 export function useTenantInfo(m) {
   return get(m, "useTenantInfo");
+}
+
+export function oidcConformant(m) {
+  return get(m, "oidcConformant");
 }
 
 export function languageBaseUrl(m) {
@@ -201,20 +206,26 @@ export const auth = {
 
 function extractAuthOptions(options) {
   let {
+    audience,
     connectionScopes,
     params,
     redirect,
     redirectUrl,
     responseMode,
     responseType,
-    sso
+    sso,
+    state,
+    nonce
   } = options.auth || {};
 
+  audience = typeof audience === "string" ? audience : undefined;
   connectionScopes = typeof connectionScopes === "object" ? connectionScopes : {};
   params = typeof params === "object" ? params : {};
-  redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : undefined;
+  redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : window.location.href;
   redirect = typeof redirect === "boolean" ? redirect : true;
   responseMode = typeof responseMode === "string" ? responseMode : undefined;
+  state = typeof state === "string" ? state : undefined;
+  nonce = typeof nonce === "string" ? nonce : undefined;
   responseType = typeof responseType === "string" ? responseType : redirectUrl ? "code" : "token";
 
   sso = typeof sso === "boolean" ? sso : true;
@@ -224,13 +235,16 @@ function extractAuthOptions(options) {
   }
 
   return Immutable.fromJS({
+    audience,
     connectionScopes,
     params,
     redirect,
     redirectUrl,
     responseMode,
     responseType,
-    sso
+    sso,
+    state,
+    nonce
   });
 }
 

@@ -79,13 +79,13 @@ export function signUp(id) {
       if (error) {
         setTimeout(() => signUpError(id, error), 250);
       } else {
-        signUpSuccess(id);
+        signUpSuccess(id, ...args);
       }
     });
   });
 }
 
-function signUpSuccess(id) {
+function signUpSuccess(id, result, popupHandler) {
   const lock = read(getEntity, "lock", id);
 
   if (shouldAutoLogin(lock)) {
@@ -97,6 +97,10 @@ function signUpSuccess(id) {
       username: c.email(lock),
       password: c.password(lock)
     };
+
+    if (!!popupHandler) {
+      options.popupHandler = popupHandler;
+    }
 
     return webApi.logIn(
       id,
@@ -116,10 +120,10 @@ function signUpSuccess(id) {
 
   if (!autoclose) {
     swap(updateEntity, "lock", id, lock => l.setSubmitting(lock, false).set("signedUp", true));
+
   } else {
     closeLock(id, false);
   }
-
 }
 
 function signUpError(id, error) {
@@ -132,7 +136,7 @@ function signUpError(id, error) {
   };
 
   const errorKey = (error.code === "invalid_password"
-    && invalidPasswordKeys[error.details.name])
+    && invalidPasswordKeys[error.description])
     || error.code;
 
   const errorMessage = i18n.str(m, ["error", "signUp", errorKey])
