@@ -6,7 +6,7 @@ import { initClient } from './index';
 export function fetchClientSettings(clientID, clientBaseUrl, cb) {
   load({
     method: "setClient",
-    url: urljoin(clientBaseUrl, 'client', `${clientID}.js`, `?t${+new Date()}`),
+    url: urljoin(clientBaseUrl, 'client', `${clientID}.js?t${+new Date()}`),
     check: o => o && o.id === clientID,
     cb: cb
   });
