@@ -71,14 +71,15 @@ export default class Base extends EventEmitter {
           ? (...args) => handler(l.id(m), ...args)
           : handler;
       };
-
       const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
-      const title = avatar
-        ? i18n.str(m, "welcome", m.getIn(["avatar", "transient", "displayName"]))
-        : i18n.str(m, "title");
 
       if (l.rendering(m)) {
+
         const screen = this.engine.render(m);
+
+        const title = avatar
+          ? i18n.str(m, "welcome", m.getIn(["avatar", "transient", "displayName"]))
+          : screen.getTitle(m);
 
         const disableSubmitButton = screen.name === "main.signUp"
           && !termsAccepted(m);
@@ -116,7 +117,9 @@ export default class Base extends EventEmitter {
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
           terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
-          title: title,
+          title: l.ui.hideFistPageTitle(m) && !screen.isFirstScreen(m)
+            ? title
+            : null,
           transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
         };
         render(l.ui.containerID(m), props);

@@ -52,6 +52,7 @@ export default {
   enterpriseLoginIntructions: "Login with your corporate credentials.",
   enterpriseActiveLoginInstructions: "Please enter your corporate credentials at %s.",
   failedLabel: "Failed!",
+  forgotPasswordTitle: "Reset your password",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   forgotPasswordSubmitLabel: "Send email",

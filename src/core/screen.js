@@ -1,5 +1,6 @@
 import * as l from './index';
 import * as i18n from '../i18n';
+import {getInitialScreen} from '../connection/database/index';
 
 export default class Screen {
 
@@ -17,6 +18,31 @@ export default class Screen {
 
   submitButtonLabel(m) {
     return i18n.str(m, ["submitLabel"]);
+  }
+
+  isFirstScreen(m) {
+    const firstScreenName = getInitialScreen(m);
+    const currentScreenNameParts = this.name.split('.');
+    const currentScreenName = currentScreenNameParts[1] || currentScreenNameParts[0];
+    const initialScreens = [
+      firstScreenName,
+      'loading',
+      'lastLogin'
+    ];
+
+    return initialScreens.indexOf(currentScreenName) !== -1;
+  }
+
+  getTitle(m) {
+    if (this.isFirstScreen(m)) {
+      return i18n.str(m, "title");
+    }
+
+    return this.getScreenTitle(m);
+  }
+
+  getScreenTitle(m) {
+    return i18n.str(m, "title");
   }
 
   submitHandler() {
