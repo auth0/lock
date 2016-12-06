@@ -117,7 +117,7 @@ export default class Base extends EventEmitter {
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
           terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
-          title: l.ui.hideFistPageTitle(m) && !screen.isFirstScreen(m)
+          title: !l.ui.hideFistPageTitle(m) || !screen.isFirstScreen(m)
             ? title
             : null,
           transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"

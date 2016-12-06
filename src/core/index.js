@@ -142,7 +142,7 @@ function extractUIOptions(id, options) {
     avatarProvider: avatarProvider,
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
-    hideFistPageTitle: hideFistPageTitle === false ? false : true,
+    hideFistPageTitle: !!hideFistPageTitle,
     labeledSubmitButton: undefined === labeledSubmitButton ? true : !!labeledSubmitButton,
     language: undefined === options.language ? "en" : trim(options.language || "").toLowerCase(),
     dict: typeof options.languageDictionary === "object" ? options.languageDictionary : {},
