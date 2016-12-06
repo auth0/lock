@@ -87,6 +87,7 @@ export default {
   resendingLabel: "Resending...",
   retryLabel: "Retry",
   sentLabel: "Sent!",
+  signupTitle: "Sign Up",
   signUpLabel: "Sign Up",
   signUpSubmitLabel: "Sign Up",
   signUpTerms: "",
