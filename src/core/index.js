@@ -265,7 +265,7 @@ function extractClientBaseUrlOption(opts, domain) {
 
 export function extractTenantBaseUrlOption(opts, domain) {
   if (opts.configurationBaseUrl && typeof opts.configurationBaseUrl === "string") {
-    return opts.configurationBaseUrl;
+    return urljoin(opts.configurationBaseUrl, 'info-v1.js');
   }
 
   if (opts.assetsUrl && typeof opts.assetsUrl === "string") {
@@ -285,11 +285,12 @@ export function extractTenantBaseUrlOption(opts, domain) {
     domain = parts.length > 3
       ? "https://cdn." + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
       : AUTH0_US_CDN_URL;
+
+    return urljoin(domain, 'tenants', 'v1', `${tenant_name}.js`);
   } else {
-    domain = domainUrl;
+    return urljoin(domainUrl, 'info-v1.js');
   }
 
-  return urljoin(domain, 'tenants', 'v1', `${tenant_name}.js`);
 }
 
 function extractLanguageBaseUrlOption(opts, domain) {

@@ -13,7 +13,7 @@ describe("extractTenantBaseUrlOption", () => {
       configurationBaseUrl: 'https://test.com'
     }, 'me.auth0.com');
 
-    expect(url).to.be('https://test.com')
+    expect(url).to.be('https://test.com/info-v1.js')
 
   });
 
@@ -53,7 +53,7 @@ describe("extractTenantBaseUrlOption", () => {
 
     }, 'auth.random.com');
 
-    expect(url).to.be('https://auth.random.com/tenants/v1/auth.js')
+    expect(url).to.be('https://auth.random.com/info-v1.js')
 
   });
 
