@@ -36,7 +36,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     useTenantInfo: options.__useTenantInfo || false,
     hashCleanup: options.hashCleanup === false ? false : true,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
-    ui: extractUIOptions(id, options)
+    ui: extractUIOptions(id, options),
+    defaultADUsernameFromEmailPrefix: !!options.defaultADUsernameFromEmailPrefix
   }));
 
   m = i18n.initI18n(m);
@@ -321,6 +322,10 @@ export function setLoggedIn(m, value) {
 
 export function loggedIn(m) {
   return tget(m, "loggedIn", false);
+}
+
+export function defaultADUsernameFromEmailPrefix(m) {
+  return get(m, "defaultADUsernameFromEmailPrefix", true);
 }
 
 export function warn(x, str) {
