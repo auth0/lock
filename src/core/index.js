@@ -37,7 +37,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     hashCleanup: options.hashCleanup === false ? false : true,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options),
-    defaultADUsernameFromEmailPrefix: !!options.defaultADUsernameFromEmailPrefix
+    defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false ? false : true
   }));
 
   m = i18n.initI18n(m);

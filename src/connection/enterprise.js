@@ -134,6 +134,7 @@ export function isHRDDomain(m, email) {
 export function toggleHRD(m, email) {
   if (email) {
     const username = l.defaultADUsernameFromEmailPrefix(m) ? emailLocalPart(email) : email;
+
     m = setUsername(m, username, "username", false);
     m = tset(m, "hrdEmail", email);
   } else {
