@@ -1,47 +1,62 @@
-import{ Map } from 'immutable';
+import { Map } from '../notmutable';
 
-export function dataFns(baseNSKeyPath) {
-  function keyPath(nsKeyPath, keyOrKeyPath) {
+class StateAccesor {
+  constructor(baseNSKeyPath) {
+    this.baseNSKeyPath = baseNSKeyPath;
+    this.transientNSKeyPath = baseNSKeyPath.concat(["transient"]);
+
+    this.reset = this.reset.bind(this);
+    this.init = this.init.bind(this);
+    this.initNS = this.initNS.bind(this);
+    this.keyPath = this.keyPath.bind(this);
+    this.get = this.get.bind(this);
+    this.tget = this.tget.bind(this);
+    this.set = this.set.bind(this);
+    this.tset = this.tset.bind(this);
+    this.remove = this.remove.bind(this);
+    this.tremove = this.tremove.bind(this);
+  }
+
+  reset(m) {
+    return m.map(x => Map.isMap(x) ? x.remove("transient") : x);
+  }
+
+  init(id, m) {
+    return new Map({id: id}).setIn(this.baseNSKeyPath, m);
+  }
+
+  initNS(m, ns) {
+    return m.setIn(this.baseNSKeyPath, ns);
+  }
+
+  keyPath(nsKeyPath, keyOrKeyPath) {
     return nsKeyPath.concat(
       typeof keyOrKeyPath === "object" ? keyOrKeyPath : [keyOrKeyPath]
     );
   }
 
-  function getFn(nsKeyPath) {
-    return function(m, keyOrKeyPath, notSetValue = undefined) {
-      return m.getIn(keyPath(nsKeyPath, keyOrKeyPath), notSetValue);
-    }
+  get(m, keyOrKeyPath, notSetValue = undefined, debug = false) {
+    return m.getIn(this.keyPath(this.baseNSKeyPath, keyOrKeyPath), notSetValue);
+  }
+  tget(m, keyOrKeyPath, notSetValue = undefined) {
+    return m.getIn(this.keyPath(this.transientNSKeyPath, keyOrKeyPath), notSetValue);
   }
 
-  function setFn(nsKeyPath) {
-    return function(m, keyOrKeyPath, value) {
-      return m.setIn(keyPath(nsKeyPath, keyOrKeyPath), value);
-    }
+  set(m, keyOrKeyPath, value) {
+    return m.setIn(this.keyPath(this.baseNSKeyPath, keyOrKeyPath), value);
+  }
+  tset(m, keyOrKeyPath, value) {
+    return m.setIn(this.keyPath(this.transientNSKeyPath, keyOrKeyPath), value);
   }
 
-  function removeFn(nsKeyPath) {
-    return function(m, keyOrKeyPath) {
-      return m.removeIn(keyPath(nsKeyPath, keyOrKeyPath));
-    }
+  remove(m, keyOrKeyPath) {
+    return m.removeIn(this.keyPath(this.baseNSKeyPath, keyOrKeyPath));
   }
-
-  const transientNSKeyPath = baseNSKeyPath.concat(["transient"]);
-
-  return {
-    get: getFn(baseNSKeyPath),
-    set: setFn(baseNSKeyPath),
-    remove: removeFn(baseNSKeyPath),
-    tget: getFn(transientNSKeyPath),
-    tset: setFn(transientNSKeyPath),
-    tremove: removeFn(transientNSKeyPath),
-    reset: function(m) {
-      return m.map(x => Map.isMap(x) ? x.remove("transient") : x);
-    },
-    init: function(id, m) {
-      return new Map({id: id}).setIn(baseNSKeyPath, m);
-    },
-    initNS: function(m, ns) {
-      return m.setIn(baseNSKeyPath, ns);
-    }
+  tremove(m, keyOrKeyPath) {
+    return m.removeIn(this.keyPath(this.transientNSKeyPath, keyOrKeyPath));
   }
+}
+
+export function dataFns(baseNSKeyPath) {
+  return new StateAccesor(baseNSKeyPath);
 }

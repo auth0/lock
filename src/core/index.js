@@ -1,5 +1,5 @@
 import urljoin from 'url-join';
-import Immutable, { List, Map, Set } from 'immutable';
+import Immutable, { List, Map } from '../notmutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
 import { parseUrl } from '../utils/url_utils';
@@ -13,12 +13,14 @@ const {
   get,
   init,
   remove,
-  reset,
+  // reset,
   set,
   tget,
   tset,
   tremove
 } = dataFns(["core"]);
+
+const coreAccessor = dataFns(["core"]);
 
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = init(id, Immutable.fromJS({
@@ -46,70 +48,70 @@ export function id(m) {
 }
 
 export function clientID(m) {
-  return get(m, "clientID");
+  return coreAccessor.get(m, "clientID");
 }
 
 export function domain(m) {
-  return get(m, "domain");
+  return coreAccessor.get(m, "domain");
 }
 
 export function clientBaseUrl(m) {
-  return get(m, "clientBaseUrl");
+  return coreAccessor.get(m, "clientBaseUrl");
 }
 
 export function tenantBaseUrl(m) {
-  return get(m, "tenantBaseUrl");
+  return coreAccessor.get(m, "tenantBaseUrl");
 }
 
 export function useTenantInfo(m) {
-  return get(m, "useTenantInfo");
+  return coreAccessor.get(m, "useTenantInfo");
 }
 
 export function languageBaseUrl(m) {
-  return get(m, "languageBaseUrl");
+  return coreAccessor.get(m, "languageBaseUrl");
 }
 
 export function setSubmitting(m, value, error = "") {
-  m = tset(m, "submitting", value);
+  m = coreAccessor.tset(m, "submitting", value);
   m = clearGlobalSuccess(m);
   m = error && !value ? setGlobalError(m, error) : clearGlobalError(m);
   return m;
 }
 
 export function submitting(m) {
-  return tget(m, "submitting", false);
+  return coreAccessor.tget(m, "submitting", false);
 }
 
 export function setGlobalError(m, str) {
-  return tset(m, "globalError", str);
+  return coreAccessor.tset(m, "globalError", str);
 }
 
 export function globalError(m) {
-  return tget(m, "globalError", "");
+  return coreAccessor.tget(m, "globalError", "");
 }
 
 export function clearGlobalError(m) {
-  return tremove(m, "globalError");
+  return coreAccessor.tremove(m, "globalError");
 }
 
 export function setGlobalSuccess(m, str) {
-  return tset(m, "globalSuccess", str);
+  return coreAccessor.tset(m, "globalSuccess", str);
 }
 
 export function globalSuccess(m) {
-  return tget(m, "globalSuccess", "");
+  return coreAccessor.tget(m, "globalSuccess", "");
 }
 
 export function clearGlobalSuccess(m) {
-  return tremove(m, "globalSuccess");
+  return coreAccessor.tremove(m, "globalSuccess");
 }
 
 export function rendering(m) {
-  return tget(m, "render", false);
+  return coreAccessor.tget(m, "render", false);
 }
 
 export function stopRendering(m) {
-  return tremove(m, "render");
+  return coreAccessor.tremove(m, "render");
 }
 
 function extractUIOptions(id, options) {
@@ -148,12 +150,12 @@ function extractUIOptions(id, options) {
 const {
   get: getUI,
   set: setUI
-} = dataFns(["core", "ui"]);
+} = dataFns(["core", "ui"], true);
 
 const {
   get: tgetUI,
   set: tsetUI
-} = dataFns(["core", "transient", "ui"]);
+} = dataFns(["core", "transient", "ui"], true);
 
 const getUIAttribute = (m, attribute) => {
   return tgetUI(m, attribute) || getUI(m, attribute);
@@ -176,22 +178,22 @@ export const ui = {
   popupOptions: lock => getUIAttribute(lock, "popupOptions"),
   primaryColor: lock => getUIAttribute(lock, "primaryColor"),
   authButtonsTheme: lock => getUIAttribute(lock, "authButtonsTheme"),
-  rememberLastLogin: m => tget(
+  rememberLastLogin: m => coreAccessor.tget(
     m,
     "rememberLastLogin",
     getUIAttribute(m, "rememberLastLogin")
   )
 };
 
-const { get: getAuthAttribute } = dataFns(["core", "auth"]);
+const authAccessor = dataFns(["core", "auth"]);
 
 export const auth = {
-  connectionScopes: m => getAuthAttribute(m, "connectionScopes"),
-  params: m => tget(m, "authParams") || getAuthAttribute(m, "params"),
-  redirect: lock => getAuthAttribute(lock, "redirect"),
-  redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
-  responseType: lock => getAuthAttribute(lock, "responseType"),
-  sso: lock => getAuthAttribute(lock, "sso")
+  connectionScopes: m => authAccessor.get(m, "connectionScopes"),
+  params: m => coreAccessor.tget(m, "authParams") || authAccessor.get(m, "params"),
+  redirect: lock => authAccessor.get(lock, "redirect"),
+  redirectUrl: lock => authAccessor.get(lock, "redirectUrl"),
+  responseType: lock => authAccessor.get(lock, "responseType"),
+  sso: lock => authAccessor.get(lock, "sso")
 };
 
 
@@ -232,7 +234,7 @@ function extractAuthOptions(options) {
 
 export function withAuthOptions(m, opts) {
   return Immutable.fromJS(opts)
-    .merge(get(m, "auth"))
+    .merge(coreAccessor.get(m, "auth"))
     .toJS();
 }
 
@@ -306,17 +308,18 @@ function extractLanguageBaseUrlOption(opts, domain) {
 
 
 export function render(m) {
-  return tset(m, "render", true);
+  return coreAccessor.tset(m, "render", true);
 }
 
+const reset = coreAccessor.reset;
 export { reset };
 
 export function setLoggedIn(m, value) {
-  return tset(m, "loggedIn", value);
+  return coreAccessor.tset(m, "loggedIn", value);
 }
 
 export function loggedIn(m) {
-  return tget(m, "loggedIn", false);
+  return coreAccessor.tget(m, "loggedIn", false);
 }
 
 export function warn(x, str) {
@@ -340,18 +343,19 @@ export function error(x, str) {
 }
 
 export function allowedConnections(m) {
-  return tget(m, "allowedConnections") || get(m, "allowedConnections");
+  return coreAccessor.tget(m, "allowedConnections") || coreAccessor.get(m, "allowedConnections");
 }
 
 export function connections(m, type = undefined, ...strategies) {
   if (arguments.length === 1) {
-    return tget(m, "connections", Map())
+    return coreAccessor.tget(m, "connections", new Map())
       .filter((v, k) => k !== "unknown")
       .valueSeq()
       .flatten(true);
   }
 
-  const xs = tget(m, ["connections", type], List());
+  const xs = coreAccessor.tget(m, ["connections", type], new List());
+
   return strategies.length > 0
     ? xs.filter(x => ~strategies.indexOf(x.get("strategy")))
     : xs;
@@ -407,12 +411,12 @@ export function filterConnections(m) {
 }
 
 export function runHook(m, str, ...args) {
-  return get(m, "hookRunner")(str, m, ...args);
+  return coreAccessor.get(m, "hookRunner", null)(str, m, ...args);
 }
 
 export function emitEvent(m, str, ...args) {
   setTimeout(() => {
-    const emitEventFn = get(m, "emitEventFn");
+    const emitEventFn = coreAccessor.get(m, "emitEventFn");
     const hadListener = emitEventFn(str, ...args);
     // Handle uncaught custom error
     if (str === "unrecoverable_error" && !hadListener) {
@@ -467,15 +471,15 @@ export function stop(m, error) {
     setTimeout(() => emitEvent(m, "unrecoverable_error", error), 17);
   }
 
-  return set(m, "stopped", true);
+  return coreAccessor.set(m, "stopped", true);
 }
 
 export function hasStopped(m) {
-  return get(m, "stopped");
+  return coreAccessor.get(m, "stopped");
 }
 
 export function hashCleanup(m) {
-  return get(m, "hashCleanup");
+  return coreAccessor.get(m, "hashCleanup");
 }
 
 export function emitHashParsedEvent(m, parsedHash) {
@@ -502,43 +506,43 @@ export function overrideOptions(m, opts) {
   if (!opts) opts = {};
 
   if (opts.allowedConnections) {
-    m = tset(m, "allowedConnections", Immutable.fromJS(opts.allowedConnections));
+    m = coreAccessor.tset(m, "allowedConnections", Immutable.fromJS(opts.allowedConnections));
   }
 
   if (opts.flashMessage) {
     const key = "success" === opts.flashMessage.type ? "globalSuccess" : "globalError";
-    m = tset(m, key, opts.flashMessage.text);
+    m = coreAccessor.tset(m, key, opts.flashMessage.text);
   }
 
   if (opts.auth && opts.auth.params) {
-    m = tset(m, "authParams", Immutable.fromJS(opts.auth.params));
+    m = coreAccessor.tset(m, "authParams", Immutable.fromJS(opts.auth.params));
   }
 
   if (opts.theme) {
     if (opts.theme.primaryColor) {
-      m = tset(m, ["ui", "primaryColor"], opts.theme.primaryColor);
+      m = coreAccessor.tset(m, ["ui", "primaryColor"], opts.theme.primaryColor);
     }
 
     if (opts.theme.logo) {
-      m = tset(m, ["ui", "logo"], opts.theme.logo);
+      m = coreAccessor.tset(m, ["ui", "logo"], opts.theme.logo);
     }
   }
 
   if (opts.language || opts.languageDictionary) {
 
     if (opts.language) {
-      m = tset(m, ["ui", "language"], opts.language);
+      m = coreAccessor.tset(m, ["ui", "language"], opts.language);
     }
 
     if (opts.languageDictionary) {
-      m = tset(m, ["ui", "dict"], opts.languageDictionary);
+      m = coreAccessor.tset(m, ["ui", "dict"], opts.languageDictionary);
     }
 
     m = i18n.initI18n(m);
   }
 
   if (typeof opts.rememberLastLogin === "boolean") {
-    m = tset(m, "rememberLastLogin", opts.rememberLastLogin);
+    m = coreAccessor.tset(m, "rememberLastLogin", opts.rememberLastLogin);
   }
 
   return m;

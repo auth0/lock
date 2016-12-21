@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import Immutable from '../../notmutable';
 import {
   getField,
   getFieldValue,

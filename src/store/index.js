@@ -1,7 +1,7 @@
 import atom from '../utils/atom';
-import { Map } from 'immutable';
+import { Map } from '../notmutable';
 
-const store = atom(new Map({}));
+const store = atom(new Map());
 
 export function observe(key, id, f) {
   subscribe(`${key}-${id}`, (_, oldState, newState) => {
@@ -24,7 +24,7 @@ export function swap(...args) {
 }
 
 export function updateEntity(state, coll, id, f, ...args) {
-  return state.updateIn([coll, id], new Map({}), x => f(x, ...args));
+  return state.updateIn([coll, id], new Map(), x => f(x, ...args));
 }
 
 export function setEntity(state, coll, id, m) {
@@ -44,7 +44,7 @@ export function removeEntity(state, coll, id = 0) {
 }
 
 export function getCollection(state, coll) {
-  return state.get(coll, Map()).toList();
+  return state.get(coll, new Map()).toList();
 }
 
 // TODO: try to remove this fn

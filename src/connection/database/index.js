@@ -1,4 +1,4 @@
-import Immutable, { List, Map } from 'immutable';
+import Immutable, { List, Map } from '../../notmutable';
 import * as l from '../../core/index';
 import {
   clearFields,
@@ -13,6 +13,7 @@ import { defaultDirectory } from '../../core/tenant';
 import { findADConnectionWithoutDomain } from '../../connection/enterprise';
 
 const { get, initNS, tget, tset } = dataFns(["database"]);
+const databaseAccessor = dataFns(["database"]);
 
 export function initDatabase(m, options) {
   m = initNS(m, Immutable.fromJS(processDatabaseOptions(options)));
@@ -148,7 +149,7 @@ function processDatabaseOptions(opts) {
   // and change accesor fn.
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
-  return Map({
+  return new Map({
     additionalSignUpFields,
     defaultConnectionName: defaultDatabaseConnection,
     forgotPasswordLink,
@@ -209,10 +210,10 @@ export function overrideDatabaseOptions(m, opts) {
     allowLogin: availableScreens(m).contains("login"),
     allowSignUp: availableScreens(m).contains("signUp"),
     allowForgotPassword: availableScreens(m).contains("forgotPassword"),
-    initialScreen: get(m, "initialScreen")
+    initialScreen: databaseAccessor.get(m, "initialScreen")
   });
-  m = tset(m, "initialScreen", initialScreen);
-  m = tset(m, "screens", screens);
+  m = databaseAccessor.tset(m, "initialScreen", initialScreen);
+  m = databaseAccessor.tset(m, "screens", screens);
   return m;
 }
 
@@ -222,7 +223,7 @@ export function defaultDatabaseConnection(m) {
 }
 
 export function defaultDatabaseConnectionName(m) {
-  return get(m, "defaultConnectionName");
+  return databaseAccessor.get(m, "defaultConnectionName");
 }
 
 export function databaseConnection(m) {
@@ -232,15 +233,15 @@ export function databaseConnection(m) {
 }
 
 export function databaseConnectionName(m) {
-  return (databaseConnection(m) || Map()).get("name");
+  return (databaseConnection(m) || new Map()).get("name");
 }
 
 export function forgotPasswordLink(m, notFound="") {
-  return get(m, "forgotPasswordLink", notFound);
+  return databaseAccessor.get(m, "forgotPasswordLink", notFound);
 }
 
 export function signUpLink(m, notFound="") {
-  return get(m, "signUpLink", notFound);
+  return databaseAccessor.get(m, "signUpLink", notFound);
 }
 
 export function setScreen(m, name, fields = []) {
@@ -251,11 +252,11 @@ export function setScreen(m, name, fields = []) {
   m = l.clearGlobalSuccess(m);
   m = clearFields(m, fields);
 
-  return tset(m, "screen", name);
+  return databaseAccessor.tset(m, "screen", name);
 }
 
 export function getScreen(m) {
-  const screen = tget(m, "screen");
+  const screen = databaseAccessor.tget(m, "screen");
   const initialScreen = getInitialScreen(m);
   const screens = [screen, initialScreen, "login", "signUp", "forgotPassword", "mfaLogin"];
   const availableScreens = screens.filter(x => hasScreen(m, x));
@@ -263,11 +264,11 @@ export function getScreen(m) {
 }
 
 export function availableScreens(m) {
-  return tget(m, "screens") || get(m, "screens", new List());
+  return databaseAccessor.tget(m, "screens") || databaseAccessor.get(m, "screens", new List());
 }
 
 export function getInitialScreen(m) {
-  return tget(m, "initialScreen") || get(m, "initialScreen");
+  return databaseAccessor.tget(m, "initialScreen") || databaseAccessor.get(m, "initialScreen");
 }
 
 export function hasInitialScreen(m, str) {
@@ -275,13 +276,13 @@ export function hasInitialScreen(m, str) {
 }
 
 export function databaseConnectionRequiresUsername(m) {
-  return (databaseConnection(m) || Map()).toJS().requireUsername;
+  return (databaseConnection(m) || new Map()).toJS().requireUsername;
 }
 
 export function databaseUsernameStyle(m) {
   if (l.hasSomeConnections(m, "database")) {
     return databaseConnectionRequiresUsername(m)
-      ? get(m, "usernameStyle", "any")
+      ? databaseAccessor.get(m, "usernameStyle", "any")
       : "email";
   }
 
@@ -298,11 +299,11 @@ export function databaseUsernameValue(m) {
 
 export function authWithUsername(m) {
   return databaseConnectionRequiresUsername(m)
-    || get(m, "usernameStyle", "email") === "username";
+    || databaseAccessor.get(m, "usernameStyle", "email") === "username";
 }
 
 export function hasScreen(m, s) {
-  const { allowForgot, allowSignup } = (databaseConnection(m) || Map()).toJS();
+  const { allowForgot, allowSignup } = (databaseConnection(m) || new Map()).toJS();
 
   return !(allowForgot === false && s === "forgotPassword")
     && !(allowSignup === false && s === "signUp")
@@ -310,27 +311,27 @@ export function hasScreen(m, s) {
 }
 
 export function shouldAutoLogin(m) {
-  return get(m, "loginAfterSignUp");
+  return databaseAccessor.get(m, "loginAfterSignUp");
 }
 
 export function passwordStrengthPolicy(m) {
-  return (databaseConnection(m) || Map()).get("passwordPolicy", "none");
+  return (databaseConnection(m) || new Map()).get("passwordPolicy", "none");
 }
 
 export function additionalSignUpFields(m) {
-  return get(m, "additionalSignUpFields", List());
+  return databaseAccessor.get(m, "additionalSignUpFields", new List());
 }
 
 export function mustAcceptTerms(m) {
-  return get(m, "mustAcceptTerms", false);
+  return databaseAccessor.get(m, "mustAcceptTerms", false);
 }
 
 export function termsAccepted(m) {
-  return !mustAcceptTerms(m) || tget(m, "termsAccepted", false);
+  return !mustAcceptTerms(m) || databaseAccessor.tget(m, "termsAccepted", false);
 }
 
 export function toggleTermsAcceptance(m) {
-  return tset(m, "termsAccepted", !termsAccepted(m));
+  return databaseAccessor.tset(m, "termsAccepted", !termsAccepted(m));
 }
 
 export function resolveAdditionalSignUpFields(m) {

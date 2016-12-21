@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import Immutable from '../notmutable';
 import { fetchClientSettings, syncClientSettingsSuccess } from './client/settings';
 import { fetchTenantSettings, syncTenantSettingsSuccess } from './tenant/settings';
 import { fetchSSOData } from './sso/data';

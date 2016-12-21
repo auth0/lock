@@ -1,4 +1,3 @@
-import Immutable, { Map } from 'immutable';
 import webApi from './web_api';
 import { getCollection, getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import { syncRemoteData } from './remote_data';
@@ -9,9 +8,9 @@ import { isFieldValid, showInvalidField } from '../field/index';
 
 export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn);
-  
+
   m = syncRemoteData(m);
-  
+
   preload(l.ui.logo(m) || defaultProps.logo);
 
   webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {
@@ -28,7 +27,10 @@ export function handleAuthCallback() {
   const hash = global.location.hash;
 
   const ms = read(getCollection, "lock");
-  const parsed = ms.filter(m => l.auth.redirect(m) && parseHash(m, hash));
+
+  const parsed = ms.filter(m => {
+    return l.auth.redirect(m) && parseHash(m, hash)
+  });
   const keepHash = ms.filter(m => !l.hashCleanup(m)).size > 0;
 
   if (parsed.size > 0 && !keepHash) {
@@ -79,7 +81,7 @@ export function openLock(id, opts) {
       return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a valid type ['error','success']")
     }
     if (!opts.flashMessage.text) {
-      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a text") 
+      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a text")
     }
   }
 
@@ -132,7 +134,9 @@ export function updateLock(id, f) {
 export function pinLoadingPane(id) {
   const lock = read(getEntity, "lock", id);
   if (!lock.get("isLoadingPanePinned")) {
-    swap(updateEntity, "lock", id, m => m.set("isLoadingPanePinned", true));
+    swap(updateEntity, "lock", id, m => {
+      return m.set("isLoadingPanePinned", true)
+    });
   }
 }
 

@@ -16,23 +16,18 @@
     const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
     const domain = "auth0-tests-lock.auth0.com";
     const options = {
-      rememberLastLogin: true
     };
 
     const lock = new Auth0Lock(cid, domain, options);
 
-    lock.on("authenticated", function(authResult) {
-      console.log(authResult);
-      lock.getUserInfo(authResult.accessToken, function(error, profile) {
-        console.log(error, profile);
-      });
-    });
+    // lock.on("authenticated", function(authResult) {
+    //   console.log(authResult);
+    //   lock.getUserInfo(authResult.accessToken, function(error, profile) {
+    //     console.log(error, profile);
+    //   });
+    // });
 
-    lock.show({
-      languageDictionary: {
-        title: "sarlanga"
-      }
-    });
+    lock.show();
 
   </script>
 </body>

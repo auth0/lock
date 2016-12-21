@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map } from 'immutable';
+import { Map } from '../notmutable';
 import trim from 'trim';
 import OptionSelectionPane from './option_selection_pane';
 import * as l from '../core/index';
@@ -9,14 +9,14 @@ export function setField(m, field, value, validator = str => trim(str).length > 
   const prevShowInvalid = m.getIn(["field", field, "showInvalid"], false);
   const validation = validate(validator, value, ...args);
 
-  return m.mergeIn(["field", field], validation, Map({
+  return m.mergeIn(["field", field], validation, new Map({
     value: value,
     showInvalid: prevShowInvalid && prevValue === value
   }));
 }
 
 function validate(validator, value, ...args) {
-  if (typeof validator != "function") return Map({valid: true});
+  if (typeof validator != "function") return new Map({valid: true});
 
   const validation = validator(value, ...args);
   return validation && typeof validation === "object"
@@ -49,9 +49,9 @@ export function registerOptionField(m, field, options, initialValue) {
     return l.stop(m, stopError);
   }
 
-  if (!initialOption) initialOption = Map({});
+  if (!initialOption) initialOption = new Map();
 
-  return m.mergeIn(["field", field], initialOption, Map({
+  return m.mergeIn(["field", field], initialOption, new Map({
     options: options,
     showInvalid: false,
     valid: !initialOption.isEmpty()
@@ -59,7 +59,7 @@ export function registerOptionField(m, field, options, initialValue) {
 }
 
 export function setOptionField(m, field, option) {
-  return m.mergeIn(["field", field], option.merge(Map({
+  return m.mergeIn(["field", field], option.merge(new Map({
     valid: true,
     showInvalid: false
   })));
@@ -106,7 +106,7 @@ export function clearFields(m, fields) {
  return keyPaths.reduce((r, v) => r.removeIn(v), m);
 }
 
-export function getField(m, field, notFound=new Map({})) {
+export function getField(m, field, notFound= new Map()) {
   return m.getIn(["field", field], notFound);
 }
 

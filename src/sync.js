@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { Map } from './notmutable';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(["sync"]);
 import * as l from './core/index';
@@ -13,7 +13,7 @@ export default (m, key, opts) => {
     ? "waiting"
     : !opts.conditionFn || opts.conditionFn(m) ? "pending" : "no";
 
-  return set(m, key, Map({
+  return set(m, key, new Map({
     conditionFn: opts.conditionFn,
     errorFn: opts.errorFn,
     recoverResult: opts.recoverResult,
@@ -47,8 +47,9 @@ function removeKeys(m, keys) {
 }
 
 const process = (m, id) => {
-  const keys = findKeys(get(m, [], Map()));
+  const keys = findKeys(get(m, [], new Map()));
   // TODO timeout
+
   return keys.reduce((r, k) => {
     if (typeof getProp(r, k, "syncFn") != "function") return r;
     if (getStatus(r, k) === "pending") {
@@ -98,12 +99,12 @@ export function isSuccess(m, key) {
 }
 
 export function isDone(m) {
-  const keys = findKeys(get(m, [], Map()));
+  const keys = findKeys(get(m, [], new Map()));
   return keys.length > 0 && keys.reduce((r, k) => r && !isLoading(m, k), true);
 }
 
 export function hasError(m, excludeKeys = []) {
-  const keys = findKeys(removeKeys(get(m, [], Map()), excludeKeys));
+  const keys = findKeys(removeKeys(get(m, [], new Map()), excludeKeys));
   return keys.length > 0 && keys.reduce((r, k) => r || getStatus(m, k) === "error", false);
 }
 

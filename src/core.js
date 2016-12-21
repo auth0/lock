@@ -46,8 +46,14 @@ export default class Base extends EventEmitter {
       Base.hasScheduledAuthCallback = true;
       setTimeout(handleAuthCallback, 0);
     }
-
+let a = 0;
     observe("render", this.id, m => {
+      a++;
+      if (a > 1000) {
+        console.error('render');
+        debugger;
+      }
+
       const partialApplyId = (screen, handlerName) => {
         const handler = screen[handlerName](m);
         return handler

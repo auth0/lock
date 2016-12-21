@@ -1,4 +1,3 @@
-import { Map } from 'immutable';
 import { read, getEntity, swap, updateEntity } from '../../store/index';
 import {
   closeLock,

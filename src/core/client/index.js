@@ -1,4 +1,4 @@
-import Immutable, { List, Map } from 'immutable';
+import Immutable, { List, Map } from '../../notmutable';
 import { dataFns } from '../../utils/data_utils';
 // TODO: this module should depend from social stuff
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
@@ -15,15 +15,15 @@ export function hasFreeSubscription(m) {
 export function connection(m, strategyName, name) {
   // TODO: this function should take a client, not a map with a client
   // key.
-  const connections = strategy(m, strategyName).get("connections", List());
-  return connections.find(withName(name)) || Map();
+  const connections = strategy(m, strategyName).get("connections", new List());
+  return connections.find(withName(name)) || new Map();
 }
 
 function strategy(m, name) {
   // TODO: this function should take a client, not a map with a client
   // key.
   return m.getIn(["client", "strategies"], List()).find(withName(name))
-    || Map();
+    || new Map();
 }
 
 function withName(name) {

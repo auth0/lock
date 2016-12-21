@@ -1,5 +1,5 @@
 import React from 'react';
-import Immutable, { Map } from 'immutable';
+import Immutable, { Map } from './notmutable';
 import { format } from 'util';
 import sync from './sync';
 import * as l from './core/index';
@@ -21,7 +21,7 @@ export function html(m, keyPath, ...args) {
 }
 
 export function group(m, keyPath) {
-  return get(m, ["strings"].concat(keyPath), Map()).toJS();
+  return get(m, ["strings"].concat(keyPath), new Map()).toJS();
 }
 
 export function initI18n(m) {
@@ -29,7 +29,7 @@ export function initI18n(m) {
   const overrides = l.ui.dict(m);
   const defaultDictionary = Immutable.fromJS(enDictionary);
 
-  let base = languageDictionaries[language] || Map({});
+  let base = languageDictionaries[language] || new Map();
 
   if (base.isEmpty()) {
     base = overrides;

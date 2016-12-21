@@ -58,7 +58,6 @@ const Component = ({i18n, model, t}) => {
          signUpLabel={i18n.str("signUpLabel")}
        />;
 
-
   const social = l.hasSomeConnections(model, "social")
     && <SocialButtonsPane
          bigButtons={useBigSocialButtons(model)}

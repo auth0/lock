@@ -1,4 +1,4 @@
-import Immutable, { List, Map } from 'immutable';
+import { Map } from '../../notmutable';
 import * as l from '../../core/index';
 import { clearFields } from '../../field/index';
 import { initLocation } from '../../field/phone_number';
@@ -14,7 +14,7 @@ export function initPasswordless(m, opts) {
     ? "code"
     : "link";
 
-  m = initNS(m, Map({send: send}));
+  m = initNS(m, new Map({send: send}));
   if (opts.defaultLocation && typeof opts.defaultLocation === "string") {
     m = initLocation(m, opts.defaultLocation.toUpperCase());
   } else {

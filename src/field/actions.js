@@ -1,4 +1,3 @@
-import { Map } from 'immutable';
 import { swap, updateEntity } from '../store/index';
 import { cancelSelection, setField, setOptionField, startSelection } from './index';
 

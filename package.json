@@ -81,7 +81,6 @@
     "auth0-js": "7.5.0",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
-    "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
     "password-sheriff": "^1.0.0",
     "react": "^15.0.0 || ^16.0.0",

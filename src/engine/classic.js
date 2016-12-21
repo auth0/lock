@@ -106,11 +106,9 @@ class Classic {
     model = initSocial(model, options);
     model = initDatabase(model, options);
     model = initEnterprise(model, options);
-
     const { email, username } = options.prefill || {};
     if (typeof email === "string") model = setEmail(model, email);
     if (typeof username === "string") model = setUsername(model, username, "username", false);
-
     return model;
   }
 

@@ -1,4 +1,4 @@
-import Immutable, { List, Map } from 'immutable';
+import Immutable from '../../notmutable';
 import { dataFns } from '../../utils/data_utils';
 import * as l from '../index';
 
