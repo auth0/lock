@@ -83,6 +83,7 @@ exports[`LoginPane shows email pane when user usernameStyle === email 1`] = `
 <div>
   <div
     data-__type="email_pane"
+    data-forceInvalidVisibility={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="emailInputPlaceholder" />

@@ -1,4 +1,5 @@
 import React from 'react';
+import Immutable from 'immutable';
 import { mount } from 'enzyme';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
@@ -20,8 +21,12 @@ describe('EmailPane', () => {
     jest.resetModules();
 
     const mockEmail = 'user@example.com';
+    const mockEmailField = Immutable.fromJS({
+      value: mockEmail
+    });
     jest.mock('field/index', () => ({
       email: () => mockEmail,
+      getField: () => mockEmailField,
       getFieldValue: () => mockEmail,
       isFieldVisiblyInvalid: () => true
     }));
@@ -60,6 +65,9 @@ describe('EmailPane', () => {
     const fieldIndexMock = require('field/index');
     fieldIndexMock.username = () => undefined;
     fieldIndexMock.getFieldValue = () => undefined;
+    fieldIndexMock.getField = () => Immutable.fromJS({
+      value: undefined
+    });
     const EmailPane = getComponent();
 
     expectComponent(

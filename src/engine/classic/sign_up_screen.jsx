@@ -90,6 +90,10 @@ export default class SignUp extends Screen {
     return signUp;
   }
 
+  isSubmitDisabled(m) {
+    return !termsAccepted(m)
+  }
+
   renderAuxiliaryPane(lock) {
     return renderSignedInConfirmation(lock)
       || renderSignedUpConfirmation(lock)
