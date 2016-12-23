@@ -206,8 +206,8 @@ function normalizeError(error) {
   }
 
   const result = {
-    error: error.details ? error.details.error : (error.statusCode || error.error),
-    description: error.details ? error.details.error_description : (error.error_description || error.error)
+    error: error.details ? error.details.error : (error.code || error.statusCode || error.error),
+    description: error.details ? error.details.error_description : (error.error_description || error.description || error.error)
   }
 
   // result is used for passwordless and error for database.
