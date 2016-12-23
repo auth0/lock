@@ -5,7 +5,7 @@ import { syncRemoteData } from './remote_data';
 import * as l from './index';
 import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
-import { isFieldValid, showInvalidField } from '../field/index';
+import { isFieldValid, showInvalidField, hideInvalidFields } from '../field/index';
 
 export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn);
@@ -112,12 +112,20 @@ export function closeLock(id, force = false, callback = () => {}) {
     swap(updateEntity, "lock", id, l.stopRendering);
 
     setTimeout(() => {
-      swap(updateEntity, "lock", id, l.reset);
+      swap(updateEntity, "lock", id, (m) => {
+        m = hideInvalidFields(m);
+        m = l.reset(m);
+        return m;
+      });
       m = read(getEntity, "lock", id);
       callback(m);
     }, 1000);
   } else {
-    swap(updateEntity, "lock", id, l.reset);
+    swap(updateEntity, "lock", id, (m) => {
+      m = hideInvalidFields(m);
+      m = l.reset(m);
+      return m;
+    });
     callback(m);
   }
 }
