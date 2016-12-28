@@ -34,7 +34,7 @@ export default class UsernameInput extends React.Component {
         <input
           ref="input"
           type="text"
-          name="username  "
+          name="username"
           className="auth0-lock-input"
           placeholder="username"
           autoComplete="off"
