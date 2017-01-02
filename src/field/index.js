@@ -84,7 +84,8 @@ export function showInvalidField(m, field) {
 
 export function hideInvalidFields(m) {
   return m.update("field", fields => {
-    return fields.map(field => field.set("showInvalid", false));
+
+    return fields && fields.map(field => field.set("showInvalid", false));
   });
 }
 
