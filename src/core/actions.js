@@ -9,9 +9,9 @@ import { isFieldValid, showInvalidField } from '../field/index';
 
 export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn);
-  
+
   m = syncRemoteData(m);
-  
+
   preload(l.ui.logo(m) || defaultProps.logo);
 
   webApi.setupClient(id, clientID, domain, l.withAuthOptions(m, {
@@ -79,7 +79,7 @@ export function openLock(id, opts) {
       return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a valid type ['error','success']")
     }
     if (!opts.flashMessage.text) {
-      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a text") 
+      return l.emitUnrecoverableErrorEvent(m, "'flashMessage' must provide a text")
     }
   }
 

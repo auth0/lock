@@ -45,7 +45,7 @@ export const STRATEGIES = {
   "weibo": "新浪微博"
 };
 
-const { get, initNS } = dataFns(["social"]);
+const { get, tget, initNS } = dataFns(["social"]);
 
 export function initSocial(m, options) {
   return initNS(m, Immutable.fromJS(processSocialOptions(options)));
@@ -58,7 +58,7 @@ export function displayName(connection) {
   return STRATEGIES[connection.get("strategy")];
 }
 
-function processSocialOptions(options) {
+export function processSocialOptions(options) {
   const result = {};
   const { socialButtonStyle } = options;
 
@@ -79,7 +79,7 @@ export function authButtonsTheme(m) {
 }
 
 export function useBigButtons(m, notFoundLimit) {
-  const style = get(m, "socialButtonStyle");
+  const style = tget(m, "socialButtonStyle") || get(m, "socialButtonStyle");
   return style
     ? style === "big"
     : l.connections(m, "social").count() <= notFoundLimit;
