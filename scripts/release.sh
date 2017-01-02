@@ -104,7 +104,7 @@ echo "Replacing files"
 mv package.json.new package.json
 mv bower.json.new bower.json
 mv $TMP_CHANGELOG_FILE CHANGELOG.md
-mv README.md-e README.md
+rm README.md-e
 
 git commit -am "Release $NEW_V_VERSION"
 git push origin HEAD
