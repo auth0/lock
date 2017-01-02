@@ -12,14 +12,14 @@ export function logIn(id, connection, loginHint) {
   const connectionScopes = l.auth.connectionScopes(m);
   const scopes = connectionScopes.get(connection.get("name"));
   const params = {
-    connection: connection.get("name"), 
+    connection: connection.get("name"),
     connection_scope: scopes ? scopes.toJS() : []
   };
-  
+
   if (!l.auth.redirect(m) && connection.get("strategy") === "facebook") {
     params.display = "popup";
   }
-  if (connection.get("strategy") === "google-oauth2" && loginHint) {
+  if (loginHint) {
     params.login_hint = loginHint;
   }
   coreLogIn(id, [], params);
