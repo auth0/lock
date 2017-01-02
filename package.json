@@ -29,7 +29,8 @@
     "test:browser": "zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
     "test:cli": "mochify --extension=.jsx --transform=babelify test/**/*.test.js",
     "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js",
-    "publish:cdn": "ccu"
+    "publish:cdn": "ccu",
+    "release": "scripts/release.sh"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
