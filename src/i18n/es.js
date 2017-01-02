@@ -19,6 +19,7 @@ export default {
       "too_many_attempts": "Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos.",
       "lock.mfa_registration_required": "Por favor enrole su dispositivo antes de continuar con el segundo factor.",
       "lock.mfa_invalid_code": "Código incorrecto. Por favor vuelva a intentarlo.",
+      "session_missing": "No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente."
     },
     passwordless: {
       "bad.email": "Correo inválido",

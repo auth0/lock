@@ -18,7 +18,8 @@ export default {
       "lock.mfa_invalid_code": "Wrong code. Please try again.",
       "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired.", // TODO: verify error code
       "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it.",
-      "too_many_attempts": "Your account has been blocked after multiple consecutive login attempts."
+      "too_many_attempts": "Your account has been blocked after multiple consecutive login attempts.",
+      "session_missing": "Couldn't complete your authentication request. Please try again after closing all open dialogs"
     },
     passwordless: {
       "bad.email": "The email is invalid",
