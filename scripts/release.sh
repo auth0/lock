@@ -92,6 +92,9 @@ CHANGELOG_WEBTASK="https://webtask.it.auth0.com/api/run/wt-hernan-auth0_com-0/os
 
 curl -f -s -H "Accept: text/markdown" $CHANGELOG_WEBTASK >> $TMP_CHANGELOG_FILE
 
+echo "Updating README.md"
+sed -i .old "s/lock\/$ORIG_VERSION\/lock.min.js/lock\/$NEW_VERSION\/lock.min.js/g" README.md
+
 echo "Updating CHANGELOG.md"
 
 sed "s/\#Change Log//" CHANGELOG.md >> $TMP_CHANGELOG_FILE
@@ -101,6 +104,7 @@ echo "Replacing files"
 mv package.json.new package.json
 mv bower.json.new bower.json
 mv $TMP_CHANGELOG_FILE CHANGELOG.md
+rm README.md.old
 
 git commit -am "Release $NEW_V_VERSION"
 git push origin HEAD
