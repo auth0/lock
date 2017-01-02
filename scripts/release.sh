@@ -59,6 +59,7 @@ fi
 echo "Release process init"
 
 ORIG_VERSION=$(jq .version package.json | sed 's/\"//g')
+ORIG_V_VERSION="v$ORIG_VERSION"
 
 echo "Current version" $ORIG_VERSION
 
@@ -79,12 +80,13 @@ esac
 
 echo "Updating package.json"
 jq ".version=$QUOTED_NEW_VERSION" package.json > package.json.new
+jq ".version=$QUOTED_NEW_VERSION" bower.json > bower.json.new
 
 echo "Generating tmp changelog"
 echo "#Change Log" > $TMP_CHANGELOG_FILE
 echo "" >> $TMP_CHANGELOG_FILE
 echo "## [$NEW_V_VERSION](https://github.com/auth0/$REPO_NAME/tree/$NEW_V_VERSION) ($CURR_DATE)" >> $TMP_CHANGELOG_FILE
-echo "[Full Changelog](https://github.com/auth0/$REPO_NAME/compare/$NEW_V_VERSION...$NEW_V_VERSION)" >> $TMP_CHANGELOG_FILE
+echo "[Full Changelog](https://github.com/auth0/$REPO_NAME/compare/$ORIG_V_VERSION...$NEW_V_VERSION)" >> $TMP_CHANGELOG_FILE
 
 CHANGELOG_WEBTASK="https://webtask.it.auth0.com/api/run/wt-hernan-auth0_com-0/oss-changelog.js?webtask_no_cache=1&repo=$REPO_NAME&milestone=$NEW_V_VERSION"
 
@@ -96,8 +98,8 @@ sed "s/\#Change Log//" CHANGELOG.md >> $TMP_CHANGELOG_FILE
 
 echo "Replacing files"
 
-echo "module.exports = {raw:$QUOTED_NEW_VERSION};" > src/version.js
 mv package.json.new package.json
+mv bower.json.new bower.json
 mv $TMP_CHANGELOG_FILE CHANGELOG.md
 
 git commit -am "Release $NEW_V_VERSION"
