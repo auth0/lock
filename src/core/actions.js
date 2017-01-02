@@ -22,6 +22,8 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
   m = l.runHook(m, "didInitialize", options);
 
   swap(setEntity, "lock", id, m);
+
+  return m;
 }
 
 export function handleAuthCallback() {
