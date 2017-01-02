@@ -94,7 +94,7 @@ export default {
   unrecoverableError: "Произошла непредвиденная ошибка.<br />Пожалуйста, обратитесь в службу технической поддержки.",
   usernameFormatErrorHint: "Используйте %d-%d букв, цифр и \"_\"",
   usernameInputPlaceholder: "Ваше имя пользователя",
-  useranmeOrEmailInputPlaceholder: "электронной почты/пользователя", // TODO review
+  usernameOrEmailInputPlaceholder: "электронной почты/пользователя", // TODO review
   title: "Auth0",
   welcome: "Добро пожаловать, %s!",
   windowsAuthInstructions: "Вы подключены через корпоративную сеть&hellip;",
