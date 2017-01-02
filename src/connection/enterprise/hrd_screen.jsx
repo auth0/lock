@@ -10,9 +10,9 @@ const Component = ({i18n, model}) => {
   const domain = enterpriseDomain(model);
 
   var headerText;
-  
+
   if (domain != null) {
-    headerText = i18n.html("enterpriseActiveLoginInstructions", domain);     
+    headerText = i18n.html("enterpriseActiveLoginInstructions", domain);
   } else {
     headerText = i18n.html("enterpriseLoginIntructions");
   }
