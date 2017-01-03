@@ -15,7 +15,9 @@ class Auth0WebAPI {
       forceJSONP: false,
       callbackURL: opts.redirectUrl,
       responseMode: opts.responseMode,
-      responseType: opts.responseType
+      responseType: opts.responseType,
+      __tenant: opts.overrides && opts.overrides.__tenant,
+      __token_issuer: opts.overrides && opts.overrides.__token_issuer
     });
 
     this.authOpts[lockID] = {
