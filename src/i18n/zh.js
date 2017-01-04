@@ -57,7 +57,7 @@ export default {
   loginAtLabel: "登录到 %s",
   loginLabel: "登录",
   loginSubmitLabel: "登录", // needs review
-  loginWithLabel: "用 %s 登录",
+  loginWithLabel: "使用 %s 登录",
   notYourAccountAction: "不是您的账号?",
   passwordInputPlaceholder: "您的密码",
   passwordStrength: {
@@ -86,7 +86,7 @@ export default {
   signUpLabel: "注册",
   signUpSubmitLabel: "注册", // needs review
   signUpTerms: "",
-  signUpWithLabel: "使用 %s 注册",
+  signUpWithLabel: "通过 %s 注册",
   socialLoginInstructions: "",
   socialSignUpInstructions: "",
   ssoEnabled: "单点登录已激活",
