@@ -3,7 +3,7 @@
 npm install
 
 MATCHER=${2:-"*"}
-NPM_TAG=${3:-"latest"}
+NPM_TAG=${3:-"beta"}
 
 NPM_NAME=$(node scripts/utils/attribute.js name)
 VERSION=$(node scripts/utils/attribute.js version)
@@ -37,7 +37,7 @@ success()
 
 cdn_release()
 {
-  npm run publish:cdn
+  npm run publish:cdn -- --full-version-only
   new_line
   success "$NPM_NAME ($1) uploaded to cdn"
 }
@@ -99,7 +99,7 @@ npm run dist build
 
 # Release
 git checkout -b dist
-bower_release
+#bower_release
 new_line
 npm_release "$VERSION"
 new_line

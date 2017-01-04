@@ -16,16 +16,27 @@
     const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
     const domain = "auth0-tests-lock.auth0.com";
     const options = {
-      rememberLastLogin: true
+      auth: {
+        responseType: 'token',
+        redirect: false
+      },
+      oidcConformant: false
     };
 
     const lock = new Auth0Lock(cid, domain, options);
 
     lock.on("authenticated", function(authResult) {
       console.log(authResult);
+
+      if (!authResult.accessToken) return;
+
       lock.getUserInfo(authResult.accessToken, function(error, profile) {
         console.log(error, profile);
       });
+    });
+
+    lock.on("authorization_error", function(error) {
+      console.log('authorization_error', error);
     });
 
     lock.show({

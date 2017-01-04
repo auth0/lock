@@ -30,40 +30,34 @@ export function handleAuthCallback() {
   const hash = global.location.hash;
 
   const ms = read(getCollection, "lock");
-  const parsed = ms.filter(m => l.auth.redirect(m) && parseHash(m, hash));
   const keepHash = ms.filter(m => !l.hashCleanup(m)).size > 0;
 
-  if (parsed.size > 0 && !keepHash) {
-    global.location.hash = "";
-  }
+  ms.forEach(m => {
+    l.auth.redirect(m) && parseHash(m, hash, (result) => {
+        if (result && !keepHash) {
+          global.location.hash = "";
+        }
+      })
+    });
 }
 
-function parseHash(m, hash) {
-  const parsedHash = webApi.parseHash(l.id(m), hash);
-  l.emitHashParsedEvent(m, parsedHash);
+function parseHash(m, hash, cb) {
+  webApi.parseHash(l.id(m), hash, function(error, parsedHash) {
 
-  let error, result;
-
-  if (parsedHash) {
-    if (parsedHash.error) {
-      error = parsedHash;
-    } else if (!parsedHash.hasOwnProperty("error")) {
-      // NOTE: if the url hash contains the string "error"
-      // `parsedHash` will be the following object:
-      // {error: undefined, error_description: undefined}
-      // That is why we make the additional check for the error
-      // property to ensure we actually have a result.
-      result = parsedHash;
+    if (error) {
+      l.emitHashParsedEvent(m, error);
+    } else {
+      l.emitHashParsedEvent(m, parsedHash);
     }
 
     if (error) {
       l.emitAuthorizationErrorEvent(m, error);
-    } else if (result) {
-      l.emitAuthenticatedEvent(m, result);
+    } else if (parsedHash) {
+      l.emitAuthenticatedEvent(m, parsedHash);
     }
-  }
 
-  return !!(error || result);
+    cb(!!(error || parsedHash))
+  });
 }
 
 export function openLock(id, opts) {
