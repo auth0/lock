@@ -37,7 +37,7 @@ success()
 
 cdn_release()
 {
-  npm run publish:cdn -- --full-version-only
+  npm run publish:cdn
   new_line
   success "$NPM_NAME ($1) uploaded to cdn"
 }
