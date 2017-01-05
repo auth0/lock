@@ -79,7 +79,7 @@
     "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
   },
   "dependencies": {
-    "auth0-js": "8.0.1",
+    "auth0-js": "8.0.2",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "immutable": "^3.7.3",
@@ -89,7 +89,8 @@
     "react-addons-css-transition-group": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
     "trim": "0.0.1",
-    "url-join": "^1.1.0"
+    "url-join": "^1.1.0",
+    "idtoken-verifier": "^1.0.1"
   },
   "cdn-component": {
     "name": "lock",

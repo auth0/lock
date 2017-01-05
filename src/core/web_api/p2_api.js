@@ -19,6 +19,7 @@ class Auth0APIClient {
       redirectUri: opts.redirectUrl,
       responseMode: opts.responseMode,
       responseType: opts.responseType,
+      leeway: opts.leeway || 1,
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       __tenant: opts.overrides && opts.overrides.__tenant,
