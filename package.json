@@ -97,8 +97,6 @@
     "cdn": "https://cdn.auth0.com",
     "mainBundleFile": "lock.min.js",
     "bucket": "assets.us.auth0.com",
-    "localPath": "build",
-    "majorAndMinor": false,
-    "snapshot": false
+    "localPath": "build"
   }
 }
