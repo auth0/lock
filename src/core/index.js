@@ -218,6 +218,10 @@ function extractAuthOptions(options) {
     nonce
   } = options.auth || {};
 
+  let {
+    oidcConformant
+  } = options;
+
   audience = typeof audience === "string" ? audience : undefined;
   connectionScopes = typeof connectionScopes === "object" ? connectionScopes : {};
   params = typeof params === "object" ? params : {};
@@ -232,6 +236,14 @@ function extractAuthOptions(options) {
 
   if (trim(params.scope || "") === "openid profile") {
     warn(options, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
+  }
+
+  if (oidcConformant && !redirect && responseType.indexOf('id_token') > -1) {
+    throw new Error("It is not posible to request an 'id_token' while using popup mode.");
+  }
+
+  if (oidcConformant && !params.scope) {
+    params.scope = 'openid';
   }
 
   return Immutable.fromJS({

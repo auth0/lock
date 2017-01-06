@@ -1,3 +1,4 @@
+var IdTokenVerifier = require('idtoken-verifier');
 import auth0 from 'auth0-js';
 import {normalizeError, loginCallback} from './helper';
 
@@ -5,6 +6,9 @@ class Auth0LegacyAPIClient {
   constructor(clientID, domain, opts) {
     this.client = null;
     this.authOpt = null;
+
+    this.clientID = clientID;
+    this.tokenIssuer = (opts.overrides && opts.overrides.__token_issuer) || `https://${domain}/`;
 
     const default_telemetry = {
       name: 'lock.js',
@@ -78,11 +82,64 @@ class Auth0LegacyAPIClient {
   }
 
   parseHash(hash = '', cb) {
-    return this.client.parseHash({
-      hash: decodeURIComponent(hash),
-      nonce: this.authOpt.nonce,
-      state: this.authOpt.state
-    }, cb);
+    hash = decodeURIComponent(hash);
+    var nonce = this.authOpt.nonce;
+    var state = this.authOpt.state;
+
+    var parsed_qs = parseQS(hash.replace(/^#?\/?/, ''));
+
+    if (parsed_qs.hasOwnProperty('error')) {
+      var err = {
+        error: parsed_qs.error,
+        error_description: parsed_qs.error_description
+      };
+
+      if (parsed_qs.state) {
+        err.state = parsed_qs.state;
+      }
+
+      return cb(err);
+    }
+
+    if (!parsed_qs.hasOwnProperty('access_token')
+       && !parsed_qs.hasOwnProperty('id_token')
+       && !parsed_qs.hasOwnProperty('refresh_token')) {
+      return cb(null, null);
+    }
+
+    var prof;
+
+    if (parsed_qs.hasOwnProperty('id_token')) {
+      var invalidJwt = function (error) {
+        var err = {
+          error: 'invalid_token',
+          error_description: error
+        };
+        return err;
+      };
+
+      var verifier = new IdTokenVerifier({});
+      prof = verifier.decode(parsed_qs.id_token).payload;
+
+      if (prof.aud !== this.clientID) {
+      return cb(invalidJwt(
+        'The clientID configured (' + this.clientID + ') does not match with the clientID set in the token (' + prof.aud + ').'));
+      }
+
+      // iss should be the Auth0 domain (i.e.: https://contoso.auth0.com/)
+      if (prof.iss !== this.tokenIssuer) {
+        return cb(invalidJwt(
+          'The domain configured (' + this.tokenIssuer + ') does not match with the domain set in the token (' + prof.iss + ').'));
+      }
+    }
+
+    cb(null, {
+      accessToken: parsed_qs.access_token,
+      idToken: parsed_qs.id_token,
+      idTokenPayload: prof,
+      refreshToken: parsed_qs.refresh_token,
+      state: parsed_qs.state
+    })
   }
 
   getUserInfo(token, callback) {
@@ -99,3 +156,12 @@ class Auth0LegacyAPIClient {
 }
 
 export default Auth0LegacyAPIClient;
+
+
+function parseQS(qs) {
+  return qs.split('&').reduce(function (prev, curr) {
+    var param = curr.split('=');
+    prev[param[0]] = param[1];
+    return prev;
+  }, {});
+}

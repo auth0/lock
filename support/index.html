@@ -17,10 +17,9 @@
     const domain = "auth0-tests-lock.auth0.com";
     const options = {
       auth: {
-        responseType: 'token',
-        redirect: false
+        responseType: 'id_token'
       },
-      oidcConformant: false
+      oidcConformant: true
     };
 
     const lock = new Auth0Lock(cid, domain, options);
