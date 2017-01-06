@@ -99,7 +99,7 @@ npm run dist build
 
 # Release
 git checkout -b dist
-#bower_release
+bower_release
 new_line
 npm_release "$VERSION"
 new_line
