@@ -40,7 +40,8 @@ export default class Base extends EventEmitter {
       'authenticated',
       'authorization_error',
       'hash_parsed',
-      'signin ready'
+      'signin ready',
+      'signup ready'
     ];
 
     this.id = idu.incremental();
