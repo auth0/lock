@@ -187,7 +187,7 @@ export function logInSuccess(id, result) {
 }
 
 function logInError(id, fields, error, localHandler) {
-  localHandler(id, error, fields, () => process.nextTick(() => {
+  localHandler(id, error, fields, () => setTimeout(() => {
     const m = read(getEntity, "lock", id);
     const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
 
@@ -196,7 +196,7 @@ function logInError(id, fields, error, localHandler) {
     }
 
     swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  }));
+  }, 0));
 
   swap(updateEntity, "lock", id, l.setSubmitting, false);
 }
