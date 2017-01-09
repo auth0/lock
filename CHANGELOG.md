@@ -1,5 +1,16 @@
 #Change Log
 
+## [v10.9.0](https://github.com/auth0/lock/tree/v10.9.0) (2017-01-09)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.8.0-beta.5...v10.9.0)
+
+**Added**
+- Migrate to auth0.js v8 [\#744](https://github.com/auth0/lock/pull/744) ([glena](https://github.com/glena))
+
+**Changed**
+- Removed browserify as dependency and removed process usage [\#779](https://github.com/auth0/lock/pull/779) ([glena](https://github.com/glena))
+- Auth0js v8 - configuration validation + default scope [\#775](https://github.com/auth0/lock/pull/775) ([glena](https://github.com/glena))
+
+
 ## [v10.8.1](https://github.com/auth0/lock/tree/v10.8.1) (2017-01-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.8.0...v10.8.1)
 **Closed issues**
