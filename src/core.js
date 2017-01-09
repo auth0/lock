@@ -90,6 +90,13 @@ export default class Base extends EventEmitter {
           str: (keyPath, ...args) => i18n.str(m, keyPath, ...args)
         };
 
+        const getScreenTitle = (m) => {
+          // if it is the first screen and the flag is enabled, it should hide the title
+          return l.ui.hideFistPageTitle(m) && screen.isFirstScreen(m)
+                  ? null
+                  : title;
+        }
+
         const props = {
           avatar: avatar && m.getIn(["avatar", "transient", "url"]),
           auxiliaryPane: screen.renderAuxiliaryPane(m),
@@ -117,9 +124,7 @@ export default class Base extends EventEmitter {
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
           terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
-          title: !l.ui.hideFistPageTitle(m) || !screen.isFirstScreen(m)
-            ? title
-            : null,
+          title: getScreenTitle(m),
           transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
         };
         render(l.ui.containerID(m), props);

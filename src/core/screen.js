@@ -1,6 +1,6 @@
 import * as l from './index';
 import * as i18n from '../i18n';
-import {getInitialScreen} from '../connection/database/index';
+import {getInitialScreen, hasScreen} from '../connection/database/index';
 
 export default class Screen {
 
@@ -24,6 +24,13 @@ export default class Screen {
     const firstScreenName = getInitialScreen(m);
     const currentScreenNameParts = this.name.split('.');
     const currentScreenName = currentScreenNameParts[1] || currentScreenNameParts[0];
+
+    // if signup and login is enabled, both are the first screen in this scenario and
+    // neither of them should show the title
+    if (currentScreenName === 'signUp' && hasScreen(m, "login")) {
+      return true;
+    }
+
     const initialScreens = [
       firstScreenName,
       'loading',
