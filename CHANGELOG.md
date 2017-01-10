@@ -1,5 +1,13 @@
 #Change Log
 
+## [v10.9.1](https://github.com/auth0/lock/tree/v10.9.1) (2017-01-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.9.0...v10.9.1)
+
+**Fixed**
+- Fix to comply legacy behaviour [\#787](https://github.com/auth0/lock/pull/787) ([glena](https://github.com/glena))
+- For legacy flow, the scope should default to openid [\#783](https://github.com/auth0/lock/pull/783) ([glena](https://github.com/glena))
+
+
 ## [v10.9.0](https://github.com/auth0/lock/tree/v10.9.0) (2017-01-09)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.8.0-beta.5...v10.9.0)
 
