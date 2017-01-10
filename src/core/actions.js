@@ -27,23 +27,23 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
 }
 
 export function handleAuthCallback() {
-  const hash = global.location.hash;
-
   const ms = read(getCollection, "lock");
   const keepHash = ms.filter(m => !l.hashCleanup(m)).size > 0;
+  const callback = (result) => {
+    if (result && !keepHash) {
+      global.location.hash = "";
+    }
+  };
+  resumeAuth(global.location.hash, callback);
+}
 
-  ms.forEach(m => {
-    l.auth.redirect(m) && parseHash(m, hash, (result) => {
-        if (result && !keepHash) {
-          global.location.hash = "";
-        }
-      })
-    });
+export function resumeAuth(hash, callback) {
+  const ms = read(getCollection, "lock");
+  ms.forEach(m => l.auth.redirect(m) && parseHash(m, hash, callback));
 }
 
 function parseHash(m, hash, cb) {
   webApi.parseHash(l.id(m), hash, function(error, parsedHash) {
-
     if (error) {
       l.emitHashParsedEvent(m, error);
     } else {
