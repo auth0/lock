@@ -81,12 +81,17 @@ class Auth0LegacyAPIClient {
     this.client.startPasswordless(options, err => cb(normalizeError(err)));
   }
 
+  // for legacy, we should not verify the id_token so we reimplemented it here
+  // to avoid adding dirt into auth0.js. At some point we will get rid of this.
   parseHash(hash = '', cb) {
     hash = decodeURIComponent(hash);
     var nonce = this.authOpt.nonce;
-    var state = this.authOpt.state;
 
     var parsed_qs = parseQS(hash.replace(/^#?\/?/, ''));
+
+    var state = this.authOpt.state || parsed_qs.state;
+
+    this.client.transactionManager.getStoredTransaction(state);
 
     if (parsed_qs.hasOwnProperty('error')) {
       var err = {
