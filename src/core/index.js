@@ -225,12 +225,16 @@ function extractAuthOptions(options) {
   audience = typeof audience === "string" ? audience : undefined;
   connectionScopes = typeof connectionScopes === "object" ? connectionScopes : {};
   params = typeof params === "object" ? params : {};
-  redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : window.location.href;
+  // by default is null because we need to know if it was set when we curate the responseType
+  redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : null;
   redirect = typeof redirect === "boolean" ? redirect : true;
   responseMode = typeof responseMode === "string" ? responseMode : undefined;
   state = typeof state === "string" ? state : undefined;
   nonce = typeof nonce === "string" ? nonce : undefined;
+  // if responseType was not set and there is a redirectUrl, it defaults to code. Otherwise token.
   responseType = typeof responseType === "string" ? responseType : redirectUrl ? "code" : "token";
+  // now we set the default because we already did the validation
+  redirectUrl = redirectUrl || window.location.href;
 
   sso = typeof sso === "boolean" ? sso : true;
 
