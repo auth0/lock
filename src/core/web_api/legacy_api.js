@@ -84,9 +84,12 @@ class Auth0LegacyAPIClient {
   parseHash(hash = '', cb) {
     hash = decodeURIComponent(hash);
     var nonce = this.authOpt.nonce;
-    var state = this.authOpt.state;
 
     var parsed_qs = parseQS(hash.replace(/^#?\/?/, ''));
+
+    var state = this.authOpt.state || parsed_qs.state;
+
+    this.client.transactionManager.getStoredTransaction(state);
 
     if (parsed_qs.hasOwnProperty('error')) {
       var err = {
