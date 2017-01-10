@@ -242,7 +242,8 @@ function extractAuthOptions(options) {
     throw new Error("It is not posible to request an 'id_token' while using popup mode.");
   }
 
-  if (oidcConformant && !params.scope) {
+  // for legacy flow, the scope should default to openid
+  if (!oidcConformant && !params.scope) {
     params.scope = 'openid';
   }
 
