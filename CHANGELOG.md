@@ -1,5 +1,13 @@
 #Change Log
 
+## [v10.9.2](https://github.com/auth0/lock/tree/v10.9.2) (2017-01-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.9.1...v10.9.2)
+
+**Fixed**
+- Bring back support for get profile in default mode [\#794](https://github.com/auth0/lock/pull/794) ([glena](https://github.com/glena))
+- Don't emit error when registering for event 'signin ready' [\#784](https://github.com/auth0/lock/pull/784) ([theopak](https://github.com/theopak))
+
+
 ## [v10.9.1](https://github.com/auth0/lock/tree/v10.9.1) (2017-01-10)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.9.0...v10.9.1)
 
