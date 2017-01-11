@@ -126,6 +126,22 @@ lock.show();
 lock.show({allowedConnections: ["twitter", "facebook"]})
 ```
 
+### resumeAuth(hash, callback)
+
+If you set the [auth.autoParseHash](#authentication-options) option to `false`, you'll need to call this method to complete the authentication flow. This method is useful when you're using a client-side router that uses a `#` to handle urls (angular2 with `useHash` or react-router with `hashHistory`).
+- **hash {String}**: The hash fragment received from the redirect.
+- **callback {Function}**: Will be invoked after the parse is done. The `parseResult` is a `Boolean` that indicates if the parsing was successful or not.
+
+#### Example
+
+```js
+lock.resumeAuth(hash, function(parseResult) {
+  if (!parseResult) {
+    alert("Could not parse hash");
+  }
+});
+```
+
 ### Customization
 
 The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
@@ -193,6 +209,7 @@ Authentication options are grouped in the `auth` property of the `options` objec
 var options = {
   auth: {
    params: {param1: "value1"},
+   autoParseHash: true,
    redirect: true,
    redirectUrl: "some url",
    responseMode: "form_post",
@@ -206,6 +223,7 @@ var options = {
 ```
 
 - **params {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
+- **autoParseHash {Boolean}**: When set to `true`, Lock will parse the `window.location.hash` string when instantiated. If set to `false`, you'll have to manually resume authentication using the [`resumeAuth`](#resumeauthhash-callback) method.
 - **redirect {Boolean}**: When set to `true`, the default, _redirect mode_ will be used. Otherwise, _popup mode_ is chosen. See [below](#popup-mode) for more details.
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
