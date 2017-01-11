@@ -1,6 +1,6 @@
-var IdTokenVerifier = require('idtoken-verifier');
+import IdTokenVerifier from 'idtoken-verifier';
 import auth0 from 'auth0-js';
-var request = require('superagent');
+import request from 'superagent';
 import {normalizeError, loginCallback} from './helper';
 
 class Auth0LegacyAPIClient {
