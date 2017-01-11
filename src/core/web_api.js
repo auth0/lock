@@ -20,7 +20,7 @@ class Auth0WebAPI {
     if (hostedLoginPage || !opts.oidcConformant) {
       this.clients[lockID] = new Auth0LegacyAPIClient(clientID, domain, opts);
     } else {
-      this.clients[lockID] = new Auth0APIClient(clientID, domain, opts);
+      this.clients[lockID] = new Auth0APIClient(lockID, clientID, domain, opts);
     }
   }
 
@@ -50,6 +50,10 @@ class Auth0WebAPI {
 
   getUserInfo(lockID, token, callback) {
     return this.clients[lockID].getUserInfo(token, callback);
+  }
+
+  getProfile(lockID, token, callback) {
+    return this.clients[lockID].getProfile(token, callback);
   }
 
   getSSOData(lockID, ...args) {

@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "10.9.1",
+  "version": "10.9.2",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -80,15 +80,16 @@
     "auth0-js": "8.0.4",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
+    "idtoken-verifier": "^1.0.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
     "password-sheriff": "^1.0.0",
     "react": "^15.0.0 || ^16.0.0",
     "react-addons-css-transition-group": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
+    "superagent": "^3.3.1",
     "trim": "0.0.1",
-    "url-join": "^1.1.0",
-    "idtoken-verifier": "^1.0.1"
+    "url-join": "^1.1.0"
   },
   "cdn-component": {
     "name": "lock",
