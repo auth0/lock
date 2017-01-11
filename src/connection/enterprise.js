@@ -118,7 +118,7 @@ export function corpNetworkConnection(m) {
   const name = m.getIn(["sso", "connection"]);
   const strategy = m.getIn(["sso", "strategy"]);
 
-  return name && Immutable.Map({ name, strategy });
+  return name && strategy && Immutable.Map({ name, strategy });
 }
 
 // hrd

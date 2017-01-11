@@ -27,6 +27,17 @@ export const stubWebApis = () => {
   });
 }
 
+export const stubWebApisForKerberos = () => {
+  stub(SSOData, "fetchSSOData", (id, withAD, cb) => {
+    cb(null, withAD ? { connection: {}, strategy: 'ad', ...ssoData } : ssoData);
+  });
+}
+export const unStubWebApisForKerberos = () => {
+  stub(SSOData, "fetchSSOData", (id, withAD, cb) => {
+    cb(null, withAD ? { connection: {}, ...ssoData } : ssoData);
+  });
+}
+
 export const assertAuthorizeRedirection = (cb) => {
   if (webApi.logIn.restore) {
     webApi.logIn.restore();
@@ -147,7 +158,7 @@ const hasFlashMessage = (query, lock, message) => {
   if (! message_ele) {
     return false;
   }
-  
+
   const span = message_ele.querySelector('span');
 
   if (! span) {

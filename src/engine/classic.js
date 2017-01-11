@@ -139,16 +139,18 @@ class Classic {
 
     if (hasScreen(m, "login")) {
       if (!hasSkippedQuickAuth(m)
-           && l.ui.rememberLastLogin(m)
            && hasInitialScreen(m, "login")) {
-        if (isInCorpNetwork(m)) {
-          return new KerberosScreen();
-        }
 
-        const conn = lastUsedConnection(m);
-        if (conn && isSuccess(m, "sso")) {
-          if (l.hasConnection(m, conn.get("name"))) {
-            return new LastLoginScreen();
+         if (isInCorpNetwork(m)) {
+           return new KerberosScreen();
+         }
+
+        if (l.ui.rememberLastLogin(m)) {
+          const conn = lastUsedConnection(m);
+          if (conn && isSuccess(m, "sso")) {
+            if (l.hasConnection(m, conn.get("name"))) {
+              return new LastLoginScreen();
+            }
           }
         }
       }
