@@ -1,8 +1,11 @@
 import auth0 from 'auth0-js';
-import {normalizeError, loginCallback} from './helper';
+import * as l from '../index';
+import { getEntity, read } from '../../store/index';
+import { normalizeError, loginCallback } from './helper';
 
 class Auth0APIClient {
-  constructor(clientID, domain, opts) {
+  constructor(lockID, clientID, domain, opts) {
+    this.lockID = lockID;
     this.client = null;
     this.authOpt = null;
 
@@ -85,6 +88,11 @@ class Auth0APIClient {
 
   getUserInfo(token, callback) {
     return this.client.client.userInfo(token, callback);
+  }
+
+  getProfile(token, callback) {
+    const m = read(getEntity, "lock", this.lockID);
+    l.emitUnrecoverableErrorEvent(m, '`getProfile` is deprecated for oidcConformant clients');
   }
 
   getSSOData(...args) {
