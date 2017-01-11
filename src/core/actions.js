@@ -29,8 +29,9 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
 export function handleAuthCallback() {
   const ms = read(getCollection, "lock");
   const keepHash = ms.filter(m => !l.hashCleanup(m)).size > 0;
-  const callback = (result) => {
-    if (result && !keepHash) {
+  const callback = (error, authResult) => {
+    const parsed = !!(error || authResult);
+    if (parsed && !keepHash) {
       global.location.hash = "";
     }
   };
@@ -43,20 +44,19 @@ export function resumeAuth(hash, callback) {
 }
 
 function parseHash(m, hash, cb) {
-  webApi.parseHash(l.id(m), hash, function(error, parsedHash) {
+  webApi.parseHash(l.id(m), hash, function(error, authResult) {
     if (error) {
       l.emitHashParsedEvent(m, error);
     } else {
-      l.emitHashParsedEvent(m, parsedHash);
+      l.emitHashParsedEvent(m, authResult);
     }
 
     if (error) {
       l.emitAuthorizationErrorEvent(m, error);
-    } else if (parsedHash) {
-      l.emitAuthenticatedEvent(m, parsedHash);
+    } else if (authResult) {
+      l.emitAuthenticatedEvent(m, authResult);
     }
-
-    cb(!!(error || parsedHash))
+    cb(error, authResult);
   });
 }
 
