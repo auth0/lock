@@ -241,7 +241,7 @@ function extractAuthOptions(options) {
 
   sso = typeof sso === "boolean" ? sso : true;
 
-  if (trim(params.scope || "") === "openid profile") {
+  if (!oidcConformant && trim(params.scope || "") === "openid profile") {
     warn(options, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
