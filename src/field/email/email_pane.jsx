@@ -31,7 +31,7 @@ export default class EmailPane extends React.Component {
     return (
       <EmailInput
         value={value}
-        invalidHint={i18n.str(value ? "invalidErrorHint": "blankErrorHint")}
+        invalidHint={i18n.str(value ? "invalidErrorHintEmail": "blankErrorHintEmail")}
         isValid={!c.isFieldVisiblyInvalid(lock, "email")}
         onChange={::this.handleChange}
         placeholder={placeholder}

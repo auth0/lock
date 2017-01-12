@@ -40,6 +40,8 @@ export default {
     signUp: "Merci de vous être inscrit."
   },
   blankErrorHint: "Ne peut être vide",
+  blankErrorHintEmail: "Ne peut être vide",
+  blankErrorHintPassword: "Ne peut être vide",
   codeInputPlaceholder: "votre code",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "ou",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Veuillez entrer votre adresse de messagerie. Nous vous enverrons un courriel pour réinitialiser votre mot de passe.",
   forgotPasswordSubmitLabel: "Envoyer le courriel",
   invalidErrorHint: "Invalide",
+  invalidErrorHintEmail: "Invalide",
   lastLoginInstructions: "Dernière connexion avec",
   loginAtLabel: "Connexion à %s",
   loginLabel: "Connexion",

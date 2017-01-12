@@ -40,6 +40,8 @@ export default {
     signUp: "Bedankt voor uw aanmelding."
   },
   blankErrorHint: "Mag niet leeg zijn",
+  blankErrorHintEmail: "Mag niet leeg zijn",
+  blankErrorHintPassword: "Mag niet leeg zijn",
   codeInputPlaceholder: "uw code",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "of",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Geef uw e-mailadres op. Wij sturen een e-mail voor het resetten van uw wachtwoord.",
   forgotPasswordSubmitLabel: "Verstuur e-mail",
   invalidErrorHint: "Ongeldig",
+  invalidErrorHintEmail: "Ongeldig",
   lastLoginInstructions: "U bent laatst aangemeld met",
   loginAtLabel: "Inloggen op %s",
   loginLabel: "Inloggen",

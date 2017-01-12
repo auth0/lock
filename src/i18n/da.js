@@ -40,6 +40,8 @@ export default {
     signUp: "Tak fordi du oprettede en bruger."
   },
   blankErrorHint: "Kan ikke være tom",
+  blankErrorHintEmail: "Kan ikke være tom",
+  blankErrorHintPassword: "Kan ikke være tom",
   codeInputPlaceholder: "din kode",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "eller",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Indtast venligst din email, så sender vi instruktioner til at nulstille dit kodeord.",
   forgotPasswordSubmitLabel: "Send email",
   invalidErrorHint: "Ugyldig",
+  invalidErrorHintEmail: "Ugyldig",
   lastLoginInstructions: "Sidste gang loggede du ind med",
   loginAtLabel: "Log ind hos %s",
   loginLabel: "Log Ind",

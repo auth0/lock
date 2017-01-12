@@ -40,6 +40,8 @@ export default {
     signUp: "感谢您的注册。"
   },
   blankErrorHint: "不能为空",
+  blankErrorHintEmail: "不能为空",
+  blankErrorHintPassword: "不能为空",
   codeInputPlaceholder: "您的代码",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "或",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "请输入您的邮箱，我们将为你发送重置密码的邮件。",
   forgotPasswordSubmitLabel: "发电子邮件", // needs review
   invalidErrorHint: "错误",
+  invalidErrorHintEmail: "错误",
   lastLoginInstructions: "上次登陆的信息为",
   loginAtLabel: "登录到 %s",
   loginLabel: "登录",

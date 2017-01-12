@@ -40,6 +40,8 @@ export default {
     signUp: "Rejestracja poprawna, dziękujemy."
   },
   blankErrorHint: "Nie może być puste",
+  blankErrorHintEmail: "Nie może być puste",
+  blankErrorHintPassword: "Nie może być puste",
   codeInputPlaceholder: "Twój kod",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "albo",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Wpisz swój adres email. Wyślemy Ci informację o tym, jak zresetować hasło.",
   forgotPasswordSubmitLabel: "Wyślij email",
   invalidErrorHint: "Niepoprawnie",
+  invalidErrorHintEmail: "Niepoprawnie",
   lastLoginInstructions: "Ostatnie poprawne logowanie z:",
   loginAtLabel: "Logowanie z: %s",
   loginLabel: "Logowanie",

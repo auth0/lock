@@ -43,6 +43,8 @@ export default {
     signUp: "Registro completado exitosamente."
   },
   blankErrorHint: "Requerido",
+  blankErrorHintEmail: "Requerido",
+  blankErrorHintPassword: "Requerido",
   codeInputPlaceholder: "código",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "o",
@@ -56,6 +58,7 @@ export default {
   forgotPasswordInstructions: "Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.",
   forgotPasswordSubmitLabel: "Enviar email",
   invalidErrorHint: "Inválido",
+  invalidErrorHintEmail: "Inválido",
   lastLoginInstructions: "La última vez inició sesión con",
   loginAtLabel: "Iniciar en %s",
   loginLabel: "Iniciar sesión",

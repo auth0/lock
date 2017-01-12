@@ -40,6 +40,8 @@ export default {
     signUp: "Köszönjük, hogy feliratkoztál."
   },
   blankErrorHint: "Nem lehet üres",
+  blankErrorHintEmail: "Nem lehet üres",
+  blankErrorHintPassword: "Nem lehet üres",
   codeInputPlaceholder: "PIN",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "vagy",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Kérlek, add meg az e-mailcímedet! Küldünk neked egy e-mailt a jelszó helyreállításának menetéről.",
   forgotPasswordSubmitLabel: "E-mail küldése",
   invalidErrorHint: "Érvénytelen",
+  invalidErrorHintEmail: "Érvénytelen",
   lastLoginInstructions: "Utolsó bejelentkezés",
   loginAtLabel: "Bejelentkezés ideje: %s",
   loginLabel: "Belépés",

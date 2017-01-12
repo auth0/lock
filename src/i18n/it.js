@@ -40,6 +40,8 @@ export default {
     signUp: "Grazie per esserti iscritto."
   },
   blankErrorHint: "Non può essere vuoto",
+  blankErrorHintEmail: "Non può essere vuoto",
+  blankErrorHintPassword: "Non può essere vuoto",
   codeInputPlaceholder: "il Suo codice",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "o",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Si prega d’inserare il Suo indirizzo email. La invieremo una email per reimpostare la password.",
   forgotPasswordSubmitLabel: "Inviare email",  // needs review
   invalidErrorHint: "Non valido",
+  invalidErrorHintEmail: "Non valido",
   lastLoginInstructions: "L’ultima volta Lei ha effettuato l’accesso con",
   loginAtLabel: "Accedere a %s",
   loginLabel: "Accesso",

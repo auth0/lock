@@ -40,6 +40,8 @@ export default {
     signUp: "Tack för att du registrerade dig."
   },
   blankErrorHint: "Får inte lämnas tom",
+  blankErrorHintEmail: "Får inte lämnas tom",
+  blankErrorHintPassword: "Får inte lämnas tom",
   codeInputPlaceholder: "Din kod",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "eller",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Ange din e-postadress. Vi skickar ett e-postmeddelande med instruktioner för att återställa ditt lösenord.",
   forgotPasswordSubmitLabel: "Skicka e-post",
   invalidErrorHint: "Ogiltig",
+  invalidErrorHintEmail: "Ogiltig",
   lastLoginInstructions: "Senast loggade du in med",
   loginAtLabel: "Logga in på %s",
   loginLabel: "Logga in",

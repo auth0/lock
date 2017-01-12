@@ -18,7 +18,7 @@ export default class PasswordPane extends React.Component {
     return (
       <PasswordInput
         value={c.getFieldValue(lock, "password")}
-        invalidHint={i18n.str("blankErrorHint")}
+        invalidHint={i18n.str("blankErrorHintPassword")}
         isValid={!c.isFieldVisiblyInvalid(lock, "password")}
         onChange={::this.handleChange}
         placeholder={placeholder}

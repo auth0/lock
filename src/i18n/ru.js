@@ -40,6 +40,8 @@ export default {
     signUp: "Спасибо, что зарегистрировались."
   },
   blankErrorHint: "Поле не может быть пустым",
+  blankErrorHintEmail: "Поле не может быть пустым",
+  blankErrorHintPassword: "Поле не может быть пустым",
   codeInputPlaceholder: "Ваш код",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "или",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Пожалуйста, введите Ваш адрес электронной почты. Мы отправим Вам сообщение для восстановления пароля.",
   forgotPasswordSubmitLabel: "отправить по электронной почте",  // needs review
   invalidErrorHint: "Недействительные данные",
+  invalidErrorHintEmail: "Недействительные данные",
   lastLoginInstructions: "В прошлый раз Вы вошли под",
   loginAtLabel: "Войдите по ссылке %s",
   loginLabel: "Вход",

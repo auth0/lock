@@ -40,6 +40,8 @@ export default {
     signUp: "Danke für's Registrieren."
   },
   blankErrorHint: "Kann nicht leer sein",
+  blankErrorHintEmail: "Kann nicht leer sein",
+  blankErrorHintPassword: "Kann nicht leer sein",
   codeInputPlaceholder: "dein Code",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "oder",
@@ -53,6 +55,7 @@ export default {
   forgotPasswordInstructions: "Geben Sie bitte Ihre Email-Adresse ein. Wir werden Ihnen eine E-Mail senden um Ihr Passwort zurücksetzen zu können.",
   forgotPasswordSubmitLabel: "E-Mail senden",
   invalidErrorHint: "Ungültig",
+  invalidErrorHintEmail: "Ungültig",
   lastLoginInstructions: "Letztes Mal waren Sie angemeldet mit",
   loginAtLabel: "Anmelden bei %s",
   loginLabel: "Anmelden",

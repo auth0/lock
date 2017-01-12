@@ -43,6 +43,8 @@ exports.default = {
     signUp: "感謝您的註冊。"
   },
   blankErrorHint: "不能是空白",
+  blankErrorHintEmail: "不能是空白",
+  blankErrorHintPassword: "不能是空白",
   codeInputPlaceholder: "您的代碼",
   databaseEnterpriseLoginInstructions: "",
   databaseEnterpriseAlternativeLoginInstructions: "或",
@@ -56,6 +58,7 @@ exports.default = {
   forgotPasswordInstructions: "請輸入電子郵件信箱，我們將送出重設密碼的信件。",
   forgotPasswordSubmitLabel: "送出電子郵件",
   invalidErrorHint: "錯誤",
+  invalidErrorHintEmail: "錯誤",
   lastLoginInstructions: "上次登入帳號為",
   loginAtLabel: "登入 %s",
   loginLabel: "登入",
