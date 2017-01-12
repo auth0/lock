@@ -11,7 +11,7 @@ class Auth0WebAPI {
 
     const hostedLoginPage = window.location.host === domain;
     // when it is used on on the hosted login page, it shouldn't use popup mode
-    opts.popup = hostedLoginPage ? opts.popup : false;
+    opts.redirect = hostedLoginPage ? true : opts.redirect;
 
     opts.oidcConformant = opts.oidcConformant || false;
 
