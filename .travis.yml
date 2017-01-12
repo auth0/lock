@@ -3,6 +3,7 @@ node_js:
 - '4.2'
 script:
 - 'npm run test:cli'
+- 'npm run test:jest'
 env:
   - CXX=g++-4.8
 sudo: false
