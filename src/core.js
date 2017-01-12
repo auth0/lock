@@ -92,7 +92,7 @@ export default class Base extends EventEmitter {
 
         const getScreenTitle = (m) => {
           // if it is the first screen and the flag is enabled, it should hide the title
-          return l.ui.hideFistPageTitle(m) && screen.isFirstScreen(m)
+          return l.ui.hideMainScreenTitle(m) && screen.isFirstScreen(m)
                   ? null
                   : title;
         }
