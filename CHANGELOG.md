@@ -29,6 +29,7 @@
 
 ## [v10.8.1](https://github.com/auth0/lock/tree/v10.8.1) (2017-01-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.8.0...v10.8.1)
+
 **Closed issues**
 - username/password login doesn't work with custom domains on the appliance [\#772](https://github.com/auth0/lock/issues/772)
 
@@ -38,6 +39,7 @@
 
 ## [v10.8.0](https://github.com/auth0/lock/tree/v10.8.0) (2017-01-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.7.3...v10.8.0)
+
 **Closed issues**
 - Request to add user-facing error message. [\#751](https://github.com/auth0/lock/issues/751)
 - Please throw an error for invalid events [\#748](https://github.com/auth0/lock/issues/748)
