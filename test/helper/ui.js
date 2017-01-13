@@ -28,11 +28,13 @@ export const stubWebApis = () => {
 }
 
 export const stubWebApisForKerberos = () => {
+  SSOData.fetchSSOData.restore();
   stub(SSOData, "fetchSSOData", (id, withAD, cb) => {
     cb(null, withAD ? { connection: {}, strategy: 'ad', ...ssoData } : ssoData);
   });
 }
 export const unStubWebApisForKerberos = () => {
+  SSOData.fetchSSOData.restore();
   stub(SSOData, "fetchSSOData", (id, withAD, cb) => {
     cb(null, withAD ? { connection: {}, ...ssoData } : ssoData);
   });
