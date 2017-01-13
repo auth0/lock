@@ -197,6 +197,7 @@ const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 export const auth = {
   connectionScopes: m => getAuthAttribute(m, "connectionScopes"),
   params: m => tget(m, "authParams") || getAuthAttribute(m, "params"),
+  autoParseHash: lock => getAuthAttribute(lock, "autoParseHash"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
   responseType: lock => getAuthAttribute(lock, "responseType"),
@@ -209,6 +210,7 @@ function extractAuthOptions(options) {
     audience,
     connectionScopes,
     params,
+    autoParseHash,
     redirect,
     redirectUrl,
     responseMode,
@@ -227,6 +229,7 @@ function extractAuthOptions(options) {
   params = typeof params === "object" ? params : {};
   // by default is null because we need to know if it was set when we curate the responseType
   redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : null;
+  autoParseHash = typeof autoParseHash === "boolean" ? autoParseHash : true;
   redirect = typeof redirect === "boolean" ? redirect : true;
   responseMode = typeof responseMode === "string" ? responseMode : undefined;
   state = typeof state === "string" ? state : undefined;
@@ -238,7 +241,7 @@ function extractAuthOptions(options) {
 
   sso = typeof sso === "boolean" ? sso : true;
 
-  if (trim(params.scope || "") === "openid profile") {
+  if (!oidcConformant && trim(params.scope || "") === "openid profile") {
     warn(options, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
@@ -255,6 +258,7 @@ function extractAuthOptions(options) {
     audience,
     connectionScopes,
     params,
+    autoParseHash,
     redirect,
     redirectUrl,
     responseMode,

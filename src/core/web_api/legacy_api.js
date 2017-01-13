@@ -1,5 +1,6 @@
-var IdTokenVerifier = require('idtoken-verifier');
+import IdTokenVerifier from 'idtoken-verifier';
 import auth0 from 'auth0-js';
+import request from 'superagent';
 import {normalizeError, loginCallback} from './helper';
 
 class Auth0LegacyAPIClient {
@@ -7,6 +8,7 @@ class Auth0LegacyAPIClient {
     this.client = null;
     this.authOpt = null;
 
+    this.domain = domain;
     this.clientID = clientID;
     this.tokenIssuer = (opts.overrides && opts.overrides.__token_issuer) || `https://${domain}/`;
 
@@ -25,7 +27,8 @@ class Auth0LegacyAPIClient {
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       __tenant: opts.overrides && opts.overrides.__tenant,
-      __token_issuer: opts.overrides && opts.overrides.__token_issuer
+      __token_issuer: opts.overrides && opts.overrides.__token_issuer,
+      _disableDeprecationWarnings: true
     });
 
     this.authOpt = {
@@ -149,6 +152,22 @@ class Auth0LegacyAPIClient {
 
   getUserInfo(token, callback) {
     return this.client.client.userInfo(token, callback);
+  }
+
+  // auth0.js does not supports this endpoint because it is deprecated for oidcConformat clients
+  // we implemented it here to provide BC support, we will loose it in lock 11.
+  getProfile(token, callback) {
+    request.get(`https://${this.domain}/tokeninfo?id_token=${token}`)
+            .end(function(err, res) {
+              if (err) {
+                return callback({
+                  error: err.message,
+                  error_description: res.text || res.body
+                });
+              }
+
+              return callback(null, res.body);
+            })
   }
 
   getSSOData(...args) {
