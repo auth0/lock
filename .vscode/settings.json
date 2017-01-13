@@ -3,6 +3,7 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
-    "**/lib": true
+    "**/lib": true,
+    "**/coverage": true
   }
 }
