@@ -75,11 +75,14 @@ export function signUp(id) {
       });
     }
 
-    webApi.signUp(id, params, (error, ...args) => {
+    webApi.signUp(id, params, (error, result, popupHandler, ...args) => {
       if (error) {
+        if (!!popupHandler) {
+          popupHandler._current_popup.kill();
+        }
         setTimeout(() => signUpError(id, error), 250);
       } else {
-        signUpSuccess(id, ...args);
+        signUpSuccess(id, result, popupHandler, ...args);
       }
     });
   });
