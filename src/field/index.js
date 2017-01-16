@@ -99,11 +99,11 @@ export function clearFields(m, fields) {
   let keyPaths;
 
   if (!fields || fields.length === 0) {
-    keyPaths = ["field"];
+    keyPaths = [["field"]];
   } else {
     keyPaths = fields.map(x => ["field", x]);
   }
-
+  
  return keyPaths.reduce((r, v) => r.removeIn(v), m);
 }
 
