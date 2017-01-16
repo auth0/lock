@@ -233,7 +233,7 @@ Container.propTypes = {
   success: React.PropTypes.string,
   tabs: React.PropTypes.bool,
   terms: React.PropTypes.element,
-  title: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string,
   transitionName: React.PropTypes.string.isRequired
   // escHandler
   // submitHandler,

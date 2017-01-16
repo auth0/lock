@@ -71,14 +71,15 @@ export default class Base extends EventEmitter {
           ? (...args) => handler(l.id(m), ...args)
           : handler;
       };
-
       const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
-      const title = avatar
-        ? i18n.str(m, "welcome", m.getIn(["avatar", "transient", "displayName"]))
-        : i18n.str(m, "title");
 
       if (l.rendering(m)) {
+
         const screen = this.engine.render(m);
+
+        const title = avatar
+          ? i18n.str(m, "welcome", m.getIn(["avatar", "transient", "displayName"]))
+          : screen.getTitle(m);
 
         const disableSubmitButton = screen.name === "main.signUp"
           && !termsAccepted(m);
@@ -88,6 +89,13 @@ export default class Base extends EventEmitter {
           html: (keyPath, ...args) => i18n.html(m, keyPath, ...args),
           str: (keyPath, ...args) => i18n.str(m, keyPath, ...args)
         };
+
+        const getScreenTitle = (m) => {
+          // if it is the first screen and the flag is enabled, it should hide the title
+          return l.ui.hideMainScreenTitle(m) && screen.isFirstScreen(m)
+                  ? null
+                  : title;
+        }
 
         const props = {
           avatar: avatar && m.getIn(["avatar", "transient", "url"]),
@@ -116,7 +124,7 @@ export default class Base extends EventEmitter {
           submitHandler: partialApplyId(screen, "submitHandler"),
           tabs: screen.renderTabs(m),
           terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
-          title: title,
+          title: getScreenTitle(m),
           transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
         };
         render(l.ui.containerID(m), props);

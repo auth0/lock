@@ -34,6 +34,10 @@ export default class ResetPassword extends Screen {
     return i18n.str(m, ["forgotPasswordSubmitLabel"]);
   }
 
+  getScreenTitle(m) {
+    return i18n.str(m, "forgotPasswordTitle");
+  }
+
   submitHandler() {
     return resetPassword;
   }

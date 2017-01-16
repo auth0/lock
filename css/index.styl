@@ -169,12 +169,12 @@ tabsHeight = 40px
     border 6px solid white
     cursor pointer
     line-height 0
-    
+
     svg
       -webkit-box-sizing content-box
       -moz-box-sizing content-box
       box-sizing content-box
-      
+
     polygon
       fill #373737
 
@@ -254,6 +254,11 @@ tabsHeight = 40px
     display inline-block
     margin 0 0 11px
     vertical-align middle
+    -webkit-transition margin-top .4s
+    transition margin-top .4s
+
+    &.centered
+      margin-top 20px
 
   .auth0-lock-firstname
     font-size 18px
@@ -530,7 +535,7 @@ tabsHeight = 40px
         vertical-align middle
         &.icon-text
           margin -4px 0 0 5px
-    
+
     .auth0-label-submit
       height 42px
       line-height 42px
@@ -928,7 +933,7 @@ tabsHeight = 40px
       .auth0-lock-form p
         @media screen and (max-width: 480px)
           font-size 14px
-    
+
     .auth0-lock-tabs-container
       //mobile view
       @media screen and (max-width: 480px)
@@ -948,7 +953,7 @@ tabsHeight = 40px
         -webkit-box-sizing border-box
         -moz-box-sizing border-box
         box-sizing border-box
-    
+
     .auth0-lock-sign-up-terms-agreement label input
       @media screen and (max-width: 480px)
         top 2px
@@ -967,7 +972,7 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         border-radius 0
-    
+
     &.auth0-lock-iphone
       .auth0-lock-body-content
         //mobile view
@@ -998,13 +1003,13 @@ tabsHeight = 40px
         @media screen and (max-width: 480px)
           min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight)
           padding-top 40px
-          
+
       &.auth0-lock-with-terms
         .auth0-lock-body-content
           //mobile view
           @media screen and (max-width: 480px)
             min-height "calc(100vh - %s - 42px)" % (headerHeight + submitHeight + tabsHeight) // - header - submit - tabs - terms
-      
+
       &.auth0-lock-iphone
         .auth0-lock-body-content
           //mobile view
@@ -1081,7 +1086,7 @@ tabsHeight = 40px
     justify-content center
     align-content center
     align-items stretch
-    
+
     &:after
       content ""
       display table

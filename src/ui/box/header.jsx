@@ -26,12 +26,14 @@ Header.propTypes = {
 class Welcome extends React.Component {
   render() {
     const { name, imageUrl, title } = this.props;
-    const img = <img className="auth0-lock-header-logo" src={imageUrl} />;
+    const imgClassName = !!title ? 'auth0-lock-header-logo' : 'auth0-lock-header-logo centered';
+    const img = <img className={imgClassName} src={imageUrl} />;
+    const welcome = title ? <WelcomeMessage title={title} name={name}/> : null;
 
     return (
       <div className="auth0-lock-header-welcome">
         {imageUrl && img}
-        <WelcomeMessage title={title} name={name}/>
+        {welcome}
       </div>
     );
   }

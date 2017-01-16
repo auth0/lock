@@ -124,7 +124,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
-  const { labeledSubmitButton, logo, primaryColor, authButtons } = theme;
+  const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
   const avatar = options.avatar !== null;
   const customAvatarProvider = options.avatar
@@ -142,6 +142,7 @@ function extractUIOptions(id, options) {
     avatarProvider: avatarProvider,
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
+    hideMainScreenTitle: !!hideMainScreenTitle,
     labeledSubmitButton: undefined === labeledSubmitButton ? true : !!labeledSubmitButton,
     language: undefined === options.language ? "en" : trim(options.language || "").toLowerCase(),
     dict: typeof options.languageDictionary === "object" ? options.languageDictionary : {},
@@ -179,6 +180,7 @@ export const ui = {
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
   labeledSubmitButton: lock => getUIAttribute(lock, "labeledSubmitButton"),
+  hideMainScreenTitle: lock => getUIAttribute(lock, "hideMainScreenTitle"),
   language: lock => getUIAttribute(lock, "language"),
   logo: lock => getUIAttribute(lock, "logo"),
   mobile: lock => getUIAttribute(lock, "mobile"),
