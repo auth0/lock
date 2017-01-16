@@ -1,0 +1,156 @@
+exports[`LoginPane hides password link when lock does not have the screen \`forgotPassword\` 1`] = `
+<div>
+  <div
+    data-type="username_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
+  </div>
+  <div
+    data-type="password_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
+  </div>
+</div>
+`;
+
+exports[`LoginPane hides password link when showForgotPasswordLink === false 1`] = `
+<div>
+  <div
+    data-type="username_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
+  </div>
+  <div
+    data-type="password_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
+  </div>
+</div>
+`;
+
+exports[`LoginPane hides password pane when showPassword===false 1`] = `
+<div>
+  <div
+    data-type="username_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
+  </div>
+  <p
+    className="auth0-lock-alternative">
+    <a
+      className="auth0-lock-alternative-link"
+      href="forgotPasswordLink"
+      onClick={undefined}>
+      forgotPasswordAction
+    </a>
+  </p>
+</div>
+`;
+
+exports[`LoginPane renders correctly 1`] = `
+<div>
+  <div
+    data-type="username_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
+  </div>
+  <div
+    data-type="password_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
+  </div>
+  <p
+    className="auth0-lock-alternative">
+    <a
+      className="auth0-lock-alternative-link"
+      href="forgotPasswordLink"
+      onClick={undefined}>
+      forgotPasswordAction
+    </a>
+  </p>
+</div>
+`;
+
+exports[`LoginPane shows email pane when user usernameStyle === email 1`] = `
+<div>
+  <div
+    data-type="email_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"emailInputPlaceholder\"},{},{}]
+  </div>
+  <div
+    data-type="password_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
+  </div>
+  <p
+    className="auth0-lock-alternative">
+    <a
+      className="auth0-lock-alternative-link"
+      href="forgotPasswordLink"
+      onClick={undefined}>
+      forgotPasswordAction
+    </a>
+  </p>
+</div>
+`;
+
+exports[`LoginPane shows header when instructions is not empty 1`] = `
+<div>
+  <p>
+    instructions
+  </p>
+  <div
+    data-type="username_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
+  </div>
+  <div
+    data-type="password_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
+  </div>
+  <p
+    className="auth0-lock-alternative">
+    <a
+      className="auth0-lock-alternative-link"
+      href="forgotPasswordLink"
+      onClick={undefined}>
+      forgotPasswordAction
+    </a>
+  </p>
+</div>
+`;
+
+exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
+<div>
+  <div
+    data-type="username_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"usernameStyle\":\"any\",\"validateFormat\":false},{},{}]
+  </div>
+  <div
+    data-type="password_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
+  </div>
+  <p
+    className="auth0-lock-alternative">
+    <a
+      className="auth0-lock-alternative-link"
+      href="forgotPasswordLink"
+      onClick={undefined}>
+      forgotPasswordAction
+    </a>
+  </p>
+</div>
+`;
+
+exports[`LoginPane shows username pane when user usernameStyle !== email 2`] = `
+<div>
+  <div
+    data-type="username_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"usernameStyle\":\"username\",\"validateFormat\":false},{},{}]
+  </div>
+  <div
+    data-type="password_pane">
+    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
+  </div>
+  <p
+    className="auth0-lock-alternative">
+    <a
+      className="auth0-lock-alternative-link"
+      href="forgotPasswordLink"
+      onClick={undefined}>
+      forgotPasswordAction
+    </a>
+  </p>
+</div>
+`;

@@ -7,3 +7,5 @@ export const expectComponent = (children) => {
 };
 
 export const noop = () => {};
+
+export const mockComponent = type => (...props) => <div data-type={type}>{JSON.stringify(props)}</div>;
