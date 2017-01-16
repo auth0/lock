@@ -95,7 +95,7 @@ export default {
   "ssoEnabled": "Single Sign-On geactiveerd",
   "submitLabel": "Verzenden",
   "unrecoverableError": "Er ging iets mis.<br/>Neem a.u.b. contact op met de technische support.",
-  "usernameFormatErrorHint": "Gebruik 1-15 letters, cijfers en \"_\"",
+  "usernameFormatErrorHint": "Gebruik %d-%d letters, cijfers en \"_\"",
   "usernameInputPlaceholder": "uw gebruikersnaam",
   "usernameOrEmailInputPlaceholder": "gebruikersnaam/e-mailadres",
   "title": "Auth0",
