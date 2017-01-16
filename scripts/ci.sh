@@ -3,7 +3,7 @@
 npm install
 
 MATCHER=${2:-"*"}
-NPM_TAG=${3:-"latest"}
+NPM_TAG=${3:-"beta"}
 
 NPM_NAME=$(node scripts/utils/attribute.js name)
 VERSION=$(node scripts/utils/attribute.js version)

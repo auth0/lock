@@ -27,43 +27,37 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
 }
 
 export function handleAuthCallback() {
-  const hash = global.location.hash;
-
   const ms = read(getCollection, "lock");
-  const parsed = ms.filter(m => l.auth.redirect(m) && parseHash(m, hash));
   const keepHash = ms.filter(m => !l.hashCleanup(m)).size > 0;
-
-  if (parsed.size > 0 && !keepHash) {
-    global.location.hash = "";
-  }
+  const callback = (error, authResult) => {
+    const parsed = !!(error || authResult);
+    if (parsed && !keepHash) {
+      global.location.hash = "";
+    }
+  };
+  resumeAuth(global.location.hash, callback);
 }
 
-function parseHash(m, hash) {
-  const parsedHash = webApi.parseHash(l.id(m), hash);
-  l.emitHashParsedEvent(m, parsedHash);
+export function resumeAuth(hash, callback) {
+  const ms = read(getCollection, "lock");
+  ms.forEach(m => l.auth.redirect(m) && parseHash(m, hash, callback));
+}
 
-  let error, result;
-
-  if (parsedHash) {
-    if (parsedHash.error) {
-      error = parsedHash;
-    } else if (!parsedHash.hasOwnProperty("error")) {
-      // NOTE: if the url hash contains the string "error"
-      // `parsedHash` will be the following object:
-      // {error: undefined, error_description: undefined}
-      // That is why we make the additional check for the error
-      // property to ensure we actually have a result.
-      result = parsedHash;
+function parseHash(m, hash, cb) {
+  webApi.parseHash(l.id(m), hash, function(error, authResult) {
+    if (error) {
+      l.emitHashParsedEvent(m, error);
+    } else {
+      l.emitHashParsedEvent(m, authResult);
     }
 
     if (error) {
       l.emitAuthorizationErrorEvent(m, error);
-    } else if (result) {
-      l.emitAuthenticatedEvent(m, result);
+    } else if (authResult) {
+      l.emitAuthenticatedEvent(m, authResult);
     }
-  }
-
-  return !!(error || result);
+    cb(error, authResult);
+  });
 }
 
 export function openLock(id, opts) {
@@ -193,7 +187,7 @@ export function logInSuccess(id, result) {
 }
 
 function logInError(id, fields, error, localHandler) {
-  localHandler(id, error, fields, () => process.nextTick(() => {
+  localHandler(id, error, fields, () => setTimeout(() => {
     const m = read(getEntity, "lock", id);
     const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
 
@@ -202,7 +196,7 @@ function logInError(id, fields, error, localHandler) {
     }
 
     swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
-  }));
+  }, 0));
 
   swap(updateEntity, "lock", id, l.setSubmitting, false);
 }

@@ -1,6 +1,8 @@
+.vscode/
 bin/
 build/
 css/
+coverage/
 examples/
 release/
 scripts/

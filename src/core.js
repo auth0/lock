@@ -4,6 +4,7 @@ import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
 import {
   closeLock,
+  resumeAuth,
   handleAuthCallback,
   openLock,
   removeLock,
@@ -39,7 +40,9 @@ export default class Base extends EventEmitter {
       'unrecoverable_error',
       'authenticated',
       'authorization_error',
-      'hash_parsed'
+      'hash_parsed',
+      'signin ready',
+      'signup ready'
     ];
 
     this.id = idu.incremental();
@@ -50,14 +53,13 @@ export default class Base extends EventEmitter {
     go(this.id);
 
     let m = setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn);
-
     this.on('newListener', (type) => {
       if (this.validEvents.indexOf(type) === -1) {
         l.emitUnrecoverableErrorEvent(m, `Invalid event "${type}".`)
       }
     });
 
-    if (!Base.hasScheduledAuthCallback) {
+    if (l.auth.autoParseHash(m) && !Base.hasScheduledAuthCallback) {
       Base.hasScheduledAuthCallback = true;
       setTimeout(handleAuthCallback, 0);
     }
@@ -132,6 +134,10 @@ export default class Base extends EventEmitter {
         remove(l.ui.containerID(m));
       }
     });
+  }
+
+  resumeAuth(hash, callback) {
+    resumeAuth(hash, callback);
   }
 
   show(opts = {}) {

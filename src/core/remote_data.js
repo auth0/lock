@@ -21,7 +21,7 @@ export function syncRemoteData(m) {
   }
 
   m = sync(m, "sso", {
-    conditionFn: l.auth.sso,
+    conditionFn: (m) => l.auth.sso(m) && !l.oidcConformant(m),
     waitFn: m => isSuccess(m, "client"),
     syncFn: (m, cb) => fetchSSOData(l.id(m), isADEnabled(m), cb),
     successFn: (m, result) => m.mergeIn(["sso"], Immutable.fromJS(result)),

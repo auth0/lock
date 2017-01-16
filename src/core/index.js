@@ -34,6 +34,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     emitEventFn: emitEventFn,
     hookRunner: hookRunner,
     useTenantInfo: options.__useTenantInfo || false,
+    oidcConformant: options.oidcConformant || false,
     hashCleanup: options.hashCleanup === false ? false : true,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options),
@@ -67,6 +68,10 @@ export function tenantBaseUrl(m) {
 
 export function useTenantInfo(m) {
   return get(m, "useTenantInfo");
+}
+
+export function oidcConformant(m) {
+  return get(m, "oidcConformant");
 }
 
 export function languageBaseUrl(m) {
@@ -192,6 +197,7 @@ const { get: getAuthAttribute } = dataFns(["core", "auth"]);
 export const auth = {
   connectionScopes: m => getAuthAttribute(m, "connectionScopes"),
   params: m => tget(m, "authParams") || getAuthAttribute(m, "params"),
+  autoParseHash: lock => getAuthAttribute(lock, "autoParseHash"),
   redirect: lock => getAuthAttribute(lock, "redirect"),
   redirectUrl: lock => getAuthAttribute(lock, "redirectUrl"),
   responseType: lock => getAuthAttribute(lock, "responseType"),
@@ -201,36 +207,65 @@ export const auth = {
 
 function extractAuthOptions(options) {
   let {
+    audience,
     connectionScopes,
     params,
+    autoParseHash,
     redirect,
     redirectUrl,
     responseMode,
     responseType,
-    sso
+    sso,
+    state,
+    nonce
   } = options.auth || {};
 
+  let {
+    oidcConformant
+  } = options;
+
+  audience = typeof audience === "string" ? audience : undefined;
   connectionScopes = typeof connectionScopes === "object" ? connectionScopes : {};
   params = typeof params === "object" ? params : {};
-  redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : undefined;
+  // by default is null because we need to know if it was set when we curate the responseType
+  redirectUrl = typeof redirectUrl === "string" && redirectUrl ? redirectUrl : null;
+  autoParseHash = typeof autoParseHash === "boolean" ? autoParseHash : true;
   redirect = typeof redirect === "boolean" ? redirect : true;
   responseMode = typeof responseMode === "string" ? responseMode : undefined;
+  state = typeof state === "string" ? state : undefined;
+  nonce = typeof nonce === "string" ? nonce : undefined;
+  // if responseType was not set and there is a redirectUrl, it defaults to code. Otherwise token.
   responseType = typeof responseType === "string" ? responseType : redirectUrl ? "code" : "token";
+  // now we set the default because we already did the validation
+  redirectUrl = redirectUrl || window.location.href;
 
   sso = typeof sso === "boolean" ? sso : true;
 
-  if (trim(params.scope || "") === "openid profile") {
+  if (!oidcConformant && trim(params.scope || "") === "openid profile") {
     warn(options, "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details.");
   }
 
+  if (oidcConformant && !redirect && responseType.indexOf('id_token') > -1) {
+    throw new Error("It is not posible to request an 'id_token' while using popup mode.");
+  }
+
+  // for legacy flow, the scope should default to openid
+  if (!oidcConformant && !params.scope) {
+    params.scope = 'openid';
+  }
+
   return Immutable.fromJS({
+    audience,
     connectionScopes,
     params,
+    autoParseHash,
     redirect,
     redirectUrl,
     responseMode,
     responseType,
-    sso
+    sso,
+    state,
+    nonce
   });
 }
 
