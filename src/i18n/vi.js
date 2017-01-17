@@ -21,7 +21,8 @@ export default {
       "lock.mfa_invalid_code": "Sai mã số. Vui lòng thử lại.",
       "password_change_required": "Bạn cần phải thay đổi mật khẩu vì đây là lần đầu bạn đăng nhập, hoặc mật khẩu của bạn đã hết hạn.",
       "password_leaked": "Tài khoản của bạn đã bị khóa do mật khẩu của bạn đã bị rò rỉ ở 1 website khác. Chúng tôi đã gửi cho bạn 1 email hướng dẫn cách mở khóa tài khoản.",
-      "too_many_attempts": "Tài khoản của bạn đã bị khóa do liên tục đăng nhập thất bại nhiều lần."
+      "too_many_attempts": "Tài khoản của bạn đã bị khóa do liên tục đăng nhập thất bại nhiều lần.",
+      "session_missing": "Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở"
     },
     "passwordless": {
       "bad.email": "Email không hợp lệ.",
@@ -108,5 +109,7 @@ export default {
   "mfaLoginTitle": "Xác thực 2 nhân tố",
   "mfaLoginInstructions": "Vui lòng nhập mã số được tạo trên thiết bị di động của bạn.",
   "mfaSubmitLabel": "Đăng nhập",
-  "mfaCodeErrorHint": "Chỉ sử dụng %d số"
-}
+  "mfaCodeErrorHint": "Chỉ sử dụng %d số",
+  "forgotPasswordTitle": "Đặt lại mật khẩu của bạn",
+  "signupTitle": "Đăng ký"
+};

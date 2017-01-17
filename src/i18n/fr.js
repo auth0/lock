@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "Les permissions n’ont pas été accordées. Veuillez réessayer.",
       "password_change_required": "Vous devez mettre à jour votre mot de passe, soit parce qu’il s’agit de votre première connexion, soit parce que ce dernier a expiré.",
       "password_leaked": "Cette connexion a été bloquée parce que votre mot de passe a été utilisé sur un autre site web. Nous vous avons envoyé un courriel avec des instructions pour la débloquer.",
-      "too_many_attempts": "Votre compte a été bloqué à la suite de trop nombreuses tentatives de connexion consécutives."
+      "too_many_attempts": "Votre compte a été bloqué à la suite de trop nombreuses tentatives de connexion consécutives.",
+      "lock.mfa_registration_required": "l'authentification multifactorielle est nécessaire, mais votre appareil n'est pas inscrit. S'il vous plaît vous inscrire avant de passer.",
+      "lock.mfa_invalid_code": "Mauvais code. Veuillez réessayer.",
+      "session_missing": "Impossible de terminer votre demande d'authentification. S'il vous plaît essayer de nouveau après la fermeture de tous les dialogues ouverts"
     },
     "passwordless": {
       "bad.email": "L’adresse de messagerie n’est pas valide",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "Bienvenue %s !",
   "windowsAuthInstructions": "Vous êtes connecté depuis votre réseau d’entreprise...",
-  "windowsAuthLabel": "Authentification Windows"
-}
+  "windowsAuthLabel": "Authentification Windows",
+  "forgotPasswordTitle": "réinitialisez votre mot de passe",
+  "signupTitle": "S'inscrire",
+  "mfaInputPlaceholder": "Code",
+  "mfaLoginTitle": "2-Step Vérification",
+  "mfaLoginInstructions": "S'il vous plaît entrez le code de vérification générée par votre application mobile.",
+  "mfaSubmitLabel": "S'identifier",
+  "mfaCodeErrorHint": "Utilisez des numéros %d"
+};

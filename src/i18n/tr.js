@@ -21,7 +21,8 @@ export default {
       "lock.mfa_invalid_code": "Hatalı kod. Lütfen tekrar deneyin.",
       "password_change_required": "İlk defa giriş yaptığınız yada şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.",
       "password_leaked": "Şifreniz başka bir websitesinde açığa çıktığı için bu giriş denemesi engelledi. Engeli kaldırmak için gereken adımları size email ile gönderdik.",
-      "too_many_attempts": "Çoklu giriş denemesi sonucunda hesabınız bloke oldu."
+      "too_many_attempts": "Çoklu giriş denemesi sonucunda hesabınız bloke oldu.",
+      "session_missing": "Kimlik doğrulama isteği tamamlayamadı. Tüm açık diyaloglar kapattıktan sonra tekrar deneyiniz"
     },
     "passwordless": {
       "bad.email": "E-posta geçerli değil",
@@ -108,5 +109,7 @@ export default {
   "mfaLoginTitle": "2 adımda doğrulama",
   "mfaLoginInstructions": "Lütfen mobil uygulamanız ile üretilen doğrulama kodunu girin.",
   "mfaSubmitLabel": "Giriş yap",
-  "mfaCodeErrorHint": "%d numaralarını kullanın"
-}
+  "mfaCodeErrorHint": "%d numaralarını kullanın",
+  "forgotPasswordTitle": "Parolanızı sıfırlayın",
+  "signupTitle": "Kaydol"
+};

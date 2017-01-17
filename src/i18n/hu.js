@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "Engedély megtagadva. Próbáld újra!",
       "password_change_required": "A jelszavadat meg kell változtatnod, mert vagy most lépsz be először, vagy lejárt a jelszavad.",
       "password_leaked": "Az azonosítót letiltottuk, mert a hozzá tartozó jelszó egy másik honlapon nyilvánosságra került. Küldtünk neked egy e-mailt az azonosító engedélyezésének menetéről.",
-      "too_many_attempts": "Több gyakori bejelentkezés után az azonosítódat letiltottuk."
+      "too_many_attempts": "Több gyakori bejelentkezés után az azonosítódat letiltottuk.",
+      "lock.mfa_registration_required": "Többtényezős hitelesítés szükséges, de a készülék nem regisztrálták. Kérjük, regisztrálja azt, mielőtt.",
+      "lock.mfa_invalid_code": "Rossz kód. Kérlek próbáld újra.",
+      "session_missing": "Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok"
     },
     "passwordless": {
       "bad.email": "Érvénytelen e-mailcím",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "Üdvözöllek %s!",
   "windowsAuthInstructions": "A céged hálózatoddal kapcsolódsz&hellip;",
-  "windowsAuthLabel": "Windows bejelentkezés"
-}
+  "windowsAuthLabel": "Windows bejelentkezés",
+  "forgotPasswordTitle": "Állítsd vissza a jelszavad",
+  "signupTitle": "Regisztrálj",
+  "mfaInputPlaceholder": "Kód",
+  "mfaLoginTitle": "2 kétlépcsős azonosítás",
+  "mfaLoginInstructions": "Kérjük adja meg az ellenőrző kódot generált a mobil alkalmazás.",
+  "mfaSubmitLabel": "Belépek",
+  "mfaCodeErrorHint": "Használja %d számok"
+};

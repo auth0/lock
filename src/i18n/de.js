@@ -16,7 +16,10 @@ export default {
       "lock.unauthorized": "Genehmigungen wurden nicht erteilt. Versuchen Sie es erneut.",
       "password_change_required": "Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.",
       "password_leaked": "Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.",
-      "too_many_attempts": "Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt."
+      "too_many_attempts": "Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.",
+      "lock.mfa_registration_required": "Multi-Faktor-Authentifizierung erforderlich ist, aber Ihr Gerät nicht eingeschrieben. Bitte registrieren sie, bevor er auf.",
+      "lock.mfa_invalid_code": "Falscher Code. Bitte versuche es erneut.",
+      "session_missing": "Konnte nicht Ihre Authentifizierungsanforderung abzuschließen. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge Schließen"
     },
     "passwordless": {
       "bad.email": "Die E-Mail ist ungültig",
@@ -98,5 +101,12 @@ export default {
   "title": "Auth0",
   "welcome": "Willkommen %s!",
   "windowsAuthInstructions": "Sie sind über Ihr Firmennetzwerk verbunden&hellip;",
-  "windowsAuthLabel": "Windows Authentication"
-}
+  "windowsAuthLabel": "Windows Authentication",
+  "forgotPasswordTitle": "Setze dein Passwort zurück",
+  "signupTitle": "Anmelden",
+  "mfaInputPlaceholder": "Code",
+  "mfaLoginTitle": "2-Step Verification",
+  "mfaLoginInstructions": "Bitte geben Sie den Bestätigungscode ein, indem Sie Ihre mobile Anwendung erzeugt.",
+  "mfaSubmitLabel": "Einloggen",
+  "mfaCodeErrorHint": "Verwenden %d Zahlen"
+};
