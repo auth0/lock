@@ -65,9 +65,7 @@ class Auth0APIClient {
 
     delete options.autoLogin;
 
-    const popupHandler = (autoLogin && popup) ? this.client.popup.preload() : null;
-
-    this.client.signup(options, (err, result) => cb(err, result, popupHandler) );
+    this.client.signup(options, (err, result) => cb(err, result));
   }
 
   resetPassword(options, cb) {
