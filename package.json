@@ -85,7 +85,7 @@
     "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
   },
   "dependencies": {
-    "auth0-js": "8.0.4",
+    "auth0-js": "8.1.1",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "idtoken-verifier": "^1.0.1",
