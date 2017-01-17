@@ -21,7 +21,8 @@ export default {
       "lock.mfa_invalid_code": "Feil kode. Vennligst forsøk igjen.",
       "password_change_required": "Du må endre passord fordi dette er første gang du logger inn eller fordi passordet har utløpt.",
       "password_leaked": "Denne påloggingen er blokkert fordi passordet har blitt lekket på et annet nettsted. Vi har sendt deg en epost med instruksjoner for hvordan du opphever blokkeringen.",
-      "too_many_attempts": "Din konto er blokkert på grunn av for mange påloggingsforsøk."
+      "too_many_attempts": "Din konto er blokkert på grunn av for mange påloggingsforsøk.",
+      "session_missing": "Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser"
     },
     "passwordless": {
       "bad.email": "Epost-adressen er ugyldig",
@@ -108,5 +109,7 @@ export default {
   "mfaLoginTitle": "Tofaktor-verifisering",
   "mfaLoginInstructions": "Skriv inn verifiserings-koden som du finner i mobilapplikasjonen.",
   "mfaSubmitLabel": "Logg inn",
-  "mfaCodeErrorHint": "Bruk %d siffer"
-}
+  "mfaCodeErrorHint": "Bruk %d siffer",
+  "forgotPasswordTitle": "Tilbakestille passordet ditt",
+  "signupTitle": "Melde deg på"
+};

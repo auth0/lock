@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "Accés denegt. Si us plau, intenta-ho un altre cop.",
       "password_change_required": "Cal que actualitzis la teva contrassenya perquè és la primera vegada que entres o perquè la contrassenya ha caducat.",
       "password_leaked": "S'ha bloquejat l'intent d'accés ja que has emprat la mateixa contrassenya per a registrarte en una aplicació que ha tingut filtració de seguretat recent. T'acabem d'enviar un email amb instruccions.",
-      "too_many_attempts": "El teu compte ha estat bloquejat ja que hi ha hagut massa intents d'inici de sessió consecutius."
+      "too_many_attempts": "El teu compte ha estat bloquejat ja que hi ha hagut massa intents d'inici de sessió consecutius.",
+      "lock.mfa_registration_required": "Es necessita autenticació de diversos factors però el dispositiu no està inscrit. Si us plau registrar abans de continuar.",
+      "lock.mfa_invalid_code": "codi incorrecte. Siusplau torna-ho a provar.",
+      "session_missing": "No s'ha pogut completar la seva sol·licitud d'autenticació. Torneu-ho de nou després de tancar tots els diàlegs oberts"
     },
     "passwordless": {
       "bad.email": "Email no vàlid",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "Benvingut/da %s!",
   "windowsAuthInstructions": "Estàs connectat/da des de la teva xarxa o entorn corporatiu&hellip;",
-  "windowsAuthLabel": "Autenticació de Windows"
-}
+  "windowsAuthLabel": "Autenticació de Windows",
+  "forgotPasswordTitle": "Restablir la contrasenya",
+  "signupTitle": "Registri",
+  "mfaInputPlaceholder": "codi",
+  "mfaLoginTitle": "Verificació en 2 passos",
+  "mfaLoginInstructions": "Si us plau, introdueixi el codi de verificació generat per l'aplicació mòbil.",
+  "mfaSubmitLabel": "Iniciar Sessió",
+  "mfaCodeErrorHint": "Utilitza nombres %d"
+};

@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "权限不足，请重试。",
       "password_change_required": "由于这是第一次登录或者您的密码已过期，请更新密码。",
       "password_leaked": "由于您的密码在其他网站已泄露，该账户已被锁定，请查看邮件解除锁定。",
-      "too_many_attempts": "由于登录操作太频繁，您的帐号已被锁定。"
+      "too_many_attempts": "由于登录操作太频繁，您的帐号已被锁定。",
+      "lock.mfa_registration_required": "多因素认证是必需的，但没有登记您的设备。在移动之前，请报名参加吧。",
+      "lock.mfa_invalid_code": "错误代码。请再试一次。",
+      "session_missing": "无法完成身份验证请求。请关闭所有打开的对话框后，再试一次"
     },
     "passwordless": {
       "bad.email": "邮箱错误",
@@ -106,5 +109,7 @@ export default {
   "mfaLoginTitle": "两步验证",
   "mfaLoginInstructions": "请输入您手机应用上显示的验证码。",
   "mfaSubmitLabel": "登录",
-  "mfaCodeErrorHint": "使用 %d 位数字"
-}
+  "mfaCodeErrorHint": "使用 %d 位数字",
+  "forgotPasswordTitle": "重置你的密码",
+  "signupTitle": "注册"
+};

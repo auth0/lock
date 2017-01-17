@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "Autoryzacja nie została udzielona. Spróbuj ponownie.",
       "password_change_required": "Musisz zmienić swoje hasło, ponieważ logujesz się po raz pierwszy lub Twoje hasło wygasło.",
       "password_leaked": "Ta nazwa użytkownika została zablokowana, ponieważ Twoje hasło wyciekło w innym serwisie. Wysłaliśmy do Ciebie email z instrukcją odblokowania konta.",
-      "too_many_attempts": "Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania."
+      "too_many_attempts": "Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania.",
+      "lock.mfa_registration_required": "uwierzytelnianie wielopoziomowe jest wymagane, ale urządzenie nie jest zarejestrowany. Proszę zapisać go przed przejściem.",
+      "lock.mfa_invalid_code": "Niepoprawny kod. Proszę spróbuj ponownie.",
+      "session_missing": "Nie udało się zrealizować żądania uwierzytelnienia. Spróbuj ponownie po zamknięciu wszystkich otwartych okien dialogowych"
     },
     "passwordless": {
       "bad.email": "Adres email nie jest poprawny",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "Witaj %s!",
   "windowsAuthInstructions": "Jesteś połączony z sieci firmowej&hellip;",
-  "windowsAuthLabel": "Uwierzytelnianie Windows"
-}
+  "windowsAuthLabel": "Uwierzytelnianie Windows",
+  "forgotPasswordTitle": "Zresetuj swoje hasło",
+  "signupTitle": "Zapisz się",
+  "mfaInputPlaceholder": "Kod",
+  "mfaLoginTitle": "2 Weryfikacja dwuetapowa",
+  "mfaLoginInstructions": "Podaj kod weryfikacyjny wygenerowany przez aplikację na telefon komórkowy.",
+  "mfaSubmitLabel": "Zaloguj Się",
+  "mfaCodeErrorHint": "Użyj %d numery"
+};

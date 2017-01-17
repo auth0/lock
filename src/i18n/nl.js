@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "Autorisatie geweigerd. Probeer het nog een keer.",
       "password_change_required": "U moet uw wachtwoord aanpassen omdat dit de eerste keer is dat u inlogt of omdat uw wachtwoord is verlopen.",
       "password_leaked": "Deze login is geblokkeerd omdat uw wachtwoord is gelekt op een andere website. We hebben een e-mail verstuurd met instructies voor het deblokkeren.",
-      "too_many_attempts": "Uw account is geblokkeerd als gevolg van herhaalde pogingen om in te loggen."
+      "too_many_attempts": "Uw account is geblokkeerd als gevolg van herhaalde pogingen om in te loggen.",
+      "lock.mfa_registration_required": "Diverse verificatie is vereist, maar het apparaat is niet geregistreerd. Gelieve in te schrijven voordat verder gaat.",
+      "lock.mfa_invalid_code": "Verkeerde code. Probeer het opnieuw.",
+      "session_missing": "Kan uw authenticatie verzoek niet voltooien. Probeer opnieuw na het sluiten van alle geopende vensters"
     },
     "passwordless": {
       "bad.email": "Het e-mailadres is ongeldig",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "Welkom %s!",
   "windowsAuthInstructions": "U bent verbonden vanaf uw bedrijfsnetwerk&hellip;",
-  "windowsAuthLabel": "Windows Authenticatie"
-}
+  "windowsAuthLabel": "Windows Authenticatie",
+  "forgotPasswordTitle": "Stel je wachtwoord opnieuw in",
+  "signupTitle": "Aanmelden",
+  "mfaInputPlaceholder": "Code",
+  "mfaLoginTitle": "2-Step Verification",
+  "mfaLoginInstructions": "Vul de verificatiecode gegenereerd door uw mobiele applicatie.",
+  "mfaSubmitLabel": "Log in",
+  "mfaCodeErrorHint": "Gebruik %d nummers"
+};

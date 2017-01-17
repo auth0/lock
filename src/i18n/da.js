@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "Tilladelse blev ikke tildelt. Prøv igen.",
       "password_change_required": "Du skal opdatere din adgangskode, fordi det er første gang du logger på, eller fordi din adgangskode er udløbet.",
       "password_leaked": "Dette login er blevet blokeret, fordi din adgangskode er blevet lækket på en anden hjemmeside. Vi har sendt dig en e-mail med instruktioner om, hvordan du fjerner blokeringen.",
-      "too_many_attempts": "Din konto er blevet blokeret efter gentagne mislykkede login-forsøg."
+      "too_many_attempts": "Din konto er blevet blokeret efter gentagne mislykkede login-forsøg.",
+      "lock.mfa_registration_required": "Multifaktor godkendelse er påkrævet, men din enhed er ikke tilmeldt. Venligst tilmelde det før flytning.",
+      "lock.mfa_invalid_code": "Forkert kode. Prøv igen.",
+      "session_missing": "Kunne ikke fuldføre din anmodning godkendelse. Prøv igen efter at lukke alle åbne dialoger"
     },
     "passwordless": {
       "bad.email": "Denne email er ugyldig",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "Velkommen %s!",
   "windowsAuthInstructions": "Du er forbundet fra din virksomheds netværk&hellip;",
-  "windowsAuthLabel": "Windows Authentication"
-}
+  "windowsAuthLabel": "Windows Authentication",
+  "forgotPasswordTitle": "Nulstil din adgangskode",
+  "signupTitle": "Tilmeld",
+  "mfaInputPlaceholder": "Kode",
+  "mfaLoginTitle": "2-Step Verifikation",
+  "mfaLoginInstructions": "Indtast venligst bekræftelseskoden genereret af din mobilapplikation.",
+  "mfaSubmitLabel": "Log på",
+  "mfaCodeErrorHint": "Brug %d tal"
+};

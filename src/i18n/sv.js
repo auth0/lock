@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "Åtkomst nekad. Försök igen.",
       "password_change_required": "Du behöver ändra ditt lösenord då detta är första gången du loggar in eller för att ditt lösenord har gått ut.",
       "password_leaked": "Din konto har blivit spärrat då ditt lösenord har lagts upp på en annan webbsida. Du har fått e-post med instruktioner om hur du låser upp ditt konto.",
-      "too_many_attempts": "Ditt konto har blivit spärrat efter flera felaktiga inloggningsförsök."
+      "too_many_attempts": "Ditt konto har blivit spärrat efter flera felaktiga inloggningsförsök.",
+      "lock.mfa_registration_required": "Multifaktorautentisering krävs men enheten är inte inskrivna. Vänligen registrera det innan vi går vidare.",
+      "lock.mfa_invalid_code": "Fel kod. Var god försök igen.",
+      "session_missing": "Det gick inte att slutföra autentiseringsbegäran. Försök igen efter att stänga alla öppna dialoger"
     },
     "passwordless": {
       "bad.email": "Din e-postadress är ogiltig.",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "Välkommen %s!",
   "windowsAuthInstructions": "Du är uppkopplad från ditt företagsnätverk&hellip;",
-  "windowsAuthLabel": "Windows Authentication"
-}
+  "windowsAuthLabel": "Windows Authentication",
+  "forgotPasswordTitle": "Återställ ditt lösenord",
+  "signupTitle": "Registrera dig",
+  "mfaInputPlaceholder": "Koda",
+  "mfaLoginTitle": "2 tvåstegsverifiering",
+  "mfaLoginInstructions": "Ange verifieringskoden som genereras av din mobil applikation.",
+  "mfaSubmitLabel": "Logga in",
+  "mfaCodeErrorHint": "Använd %d"
+};

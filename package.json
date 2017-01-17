@@ -32,7 +32,8 @@
     "test:jest": "jest --coverage",
     "test:jest:watch": "jest --watchAll --coverage",
     "publish:cdn": "ccu",
-    "release": "scripts/release.sh"
+    "release": "scripts/release.sh",
+    "i18n:translate": "grunt dist; node scripts/complete-translations.js"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -49,6 +50,7 @@
     "component-cdn-uploader": "auth0/component-cdn-uploader#1.1.0",
     "css-loader": "^0.25.0",
     "enzyme": "2.7.0",
+    "dotenv": "^4.0.0",
     "eslint": "3.7.1",
     "eslint-config-auth0-base": "6.0.0",
     "eslint-plugin-import": "1.16.0",
@@ -63,6 +65,7 @@
     "grunt-exec": "^0.4.6",
     "grunt-webpack": "^1.0.18",
     "jest": "18.1.0",
+    "json-beautify": "^1.0.1",
     "mochify": "^2.12.0",
     "react-addons-test-utils": "^15.0.0 || ^16.0.0",
     "react-test-renderer": "15.4.2",

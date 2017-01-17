@@ -21,7 +21,8 @@ export default {
       "lock.mfa_invalid_code": "Chybný kód. Posíme zkuste to znovu.",
       "password_change_required": "Je třeba aktualizovat heslo, neboť jde o první přihlášení nebo platnost hesla vypršela.",
       "password_leaked": "Toto uživatelské jméno bylo zablokováno, protože došlo k úniku hesla na jiné webové stránce. Poslali jsme vám instrukce k odblokování na email.",
-      "too_many_attempts": "Váš účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení."
+      "too_many_attempts": "Váš účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.",
+      "session_missing": "Nemohl dokončit váš požadavek ověřování. Zkuste to znovu po zavření všech otevřených dialogy"
     },
     "passwordless": {
       "bad.email": "Email je neplatný",
@@ -108,5 +109,7 @@ export default {
   "mfaLoginTitle": "Dvoufázové ověření",
   "mfaLoginInstructions": "Prosím zadejte ověřovací kód vygenerovaný vaší mobilní aplikací.",
   "mfaSubmitLabel": "Přihlásit",
-  "mfaCodeErrorHint": "Použijte %d čísel"
-}
+  "mfaCodeErrorHint": "Použijte %d čísel",
+  "forgotPasswordTitle": "Obnovit heslo",
+  "signupTitle": "Přihlásit se"
+};

@@ -19,7 +19,10 @@ export default {
       "lock.unauthorized": "權限不足，請重試。",
       "password_change_required": "因為是第一次登入或密碼已逾期，請更新密碼。",
       "password_leaked": "由於您的密碼已在其他網站洩漏，帳號已被鎖定，請查看電子郵件解鎖。",
-      "too_many_attempts": "由於登入異常頻繁，您的帳號已被鎖定。"
+      "too_many_attempts": "由於登入異常頻繁，您的帳號已被鎖定。",
+      "lock.mfa_registration_required": "多因素認證是必需的，但沒有登記您的設備。在移動之前，請報名參加吧。",
+      "lock.mfa_invalid_code": "錯誤代碼。請再試一次。",
+      "session_missing": "無法完成身份驗證請求。請關閉所有打開的對話框後，再試一次"
     },
     "passwordless": {
       "bad.email": "電子信箱錯誤",
@@ -101,5 +104,12 @@ export default {
   "title": "Auth0",
   "welcome": "歡迎 %s ！",
   "windowsAuthInstructions": "您已連接到公司網路&hellip;",
-  "windowsAuthLabel": "Windows 認證"
-}
+  "windowsAuthLabel": "Windows 認證",
+  "forgotPasswordTitle": "重置你的密碼",
+  "signupTitle": "註冊",
+  "mfaInputPlaceholder": "碼",
+  "mfaLoginTitle": "兩步驟驗證",
+  "mfaLoginInstructions": "請輸入您的移動應用程序生成的驗證碼。",
+  "mfaSubmitLabel": "登錄",
+  "mfaCodeErrorHint": "使用%d編號"
+};

@@ -16,7 +16,10 @@ export default {
       "lock.unauthorized": "Autorizzazioni non sono state concesse. Riprova per favore.",
       "password_change_required": "È necessario aggiornare la password perché questa è la prima volta che si esegue il login, or perché la password è scaduta.",
       "password_leaked": "Questo accesso è stato bloccato perché la password è trapelato in un altro sito . Ti abbiamo inviato una email con le istruzioni su come sbloccarla.",
-      "too_many_attempts": "Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi."
+      "too_many_attempts": "Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi.",
+      "lock.mfa_registration_required": "autenticazione a più fattori è richiesta ma il dispositivo non è iscritto. Si prega di iscriversi prima di passare.",
+      "lock.mfa_invalid_code": "Codice errato. Riprova.",
+      "session_missing": "Impossibile completare la richiesta di autenticazione. Riprova dopo aver chiuso tutte le finestre di dialogo aperte"
     },
     "passwordless": {
       "bad.email": "L’email non è valido ",
@@ -98,5 +101,12 @@ export default {
   "title": "Auth0",
   "welcome": "Benvenuto %s!",
   "windowsAuthInstructions": "Si è connessi dalla rete aziendale&hellip;",
-  "windowsAuthLabel": "Autenticazione Windows"
-}
+  "windowsAuthLabel": "Autenticazione Windows",
+  "forgotPasswordTitle": "reimposta la tua password",
+  "signupTitle": "Registrazione",
+  "mfaInputPlaceholder": "Codice",
+  "mfaLoginTitle": "2-fase di verifica",
+  "mfaLoginInstructions": "Si prega di inserire il codice di verifica generato dalla tua applicazione mobile.",
+  "mfaSubmitLabel": "Accesso",
+  "mfaCodeErrorHint": "Usare %d numeri"
+};
