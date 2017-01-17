@@ -22,6 +22,7 @@
 **Breaking changes**
 - Bump auth0.js version - Fix profile casing (it should not convert to cammelcase) [\#815](https://github.com/auth0/lock/pull/815) ([glena](https://github.com/glena))
 
+In lock v10.9 we introduced an issue in auth0.js that changed the casing of the calls to retrieve the user profile (using `/userinfo` or `/tokeninfo`), everything was converted to camel case. We fixed that issue in this [auth0.js pull request](https://github.com/auth0/auth0.js/pull/307) and is part of this release of Lock. If you kept an v10.8 or older no changes are needed, for those who updated to v10.9 you need to revert the changes made to handle the case changes.
 
 ## [v10.9.2](https://github.com/auth0/lock/tree/v10.9.2) (2017-01-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.9.1...v10.9.2)
