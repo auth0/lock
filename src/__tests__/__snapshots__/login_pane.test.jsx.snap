@@ -1,35 +1,46 @@
 exports[`LoginPane hides password link when lock does not have the screen \`forgotPassword\` 1`] = `
 <div>
   <div
-    data-type="username_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
-  </div>
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle={undefined}
+    data-validateFormat={false} />
   <div
-    data-type="password_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="password_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder" />
 </div>
 `;
 
 exports[`LoginPane hides password link when showForgotPasswordLink === false 1`] = `
 <div>
   <div
-    data-type="username_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
-  </div>
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle={undefined}
+    data-validateFormat={false} />
   <div
-    data-type="password_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="password_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder" />
 </div>
 `;
 
 exports[`LoginPane hides password pane when showPassword===false 1`] = `
 <div>
   <div
-    data-type="username_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
-  </div>
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle={undefined}
+    data-validateFormat={false} />
   <p
     className="auth0-lock-alternative">
     <a
@@ -45,13 +56,17 @@ exports[`LoginPane hides password pane when showPassword===false 1`] = `
 exports[`LoginPane renders correctly 1`] = `
 <div>
   <div
-    data-type="username_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
-  </div>
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle={undefined}
+    data-validateFormat={false} />
   <div
-    data-type="password_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="password_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder" />
   <p
     className="auth0-lock-alternative">
     <a
@@ -67,13 +82,15 @@ exports[`LoginPane renders correctly 1`] = `
 exports[`LoginPane shows email pane when user usernameStyle === email 1`] = `
 <div>
   <div
-    data-type="email_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"emailInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="email_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="emailInputPlaceholder" />
   <div
-    data-type="password_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="password_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder" />
   <p
     className="auth0-lock-alternative">
     <a
@@ -92,13 +109,17 @@ exports[`LoginPane shows header when instructions is not empty 1`] = `
     instructions
   </p>
   <div
-    data-type="username_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"validateFormat\":false},{},{}]
-  </div>
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle={undefined}
+    data-validateFormat={false} />
   <div
-    data-type="password_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="password_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder" />
   <p
     className="auth0-lock-alternative">
     <a
@@ -114,13 +135,17 @@ exports[`LoginPane shows header when instructions is not empty 1`] = `
 exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
 <div>
   <div
-    data-type="username_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"usernameStyle\":\"any\",\"validateFormat\":false},{},{}]
-  </div>
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle="any"
+    data-validateFormat={false} />
   <div
-    data-type="password_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="password_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder" />
   <p
     className="auth0-lock-alternative">
     <a
@@ -136,13 +161,17 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
 exports[`LoginPane shows username pane when user usernameStyle !== email 2`] = `
 <div>
   <div
-    data-type="username_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"usernameInputPlaceholder\",\"usernameStyle\":\"username\",\"validateFormat\":false},{},{}]
-  </div>
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle="username"
+    data-validateFormat={false} />
   <div
-    data-type="password_pane">
-    [{\"i18n\":{},\"lock\":{},\"placeholder\":\"passwordInputPlaceholder\"},{},{}]
-  </div>
+    data-__type="password_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder" />
   <p
     className="auth0-lock-alternative">
     <a
