@@ -1,5 +1,28 @@
 #Change Log
 
+## [v10.10.0](https://github.com/auth0/lock/tree/v10.10.0) (2017-01-17)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.9.2...v10.10.0)
+
+**Closed issues**
+- Lock v10.9.2 fails on IE 10 Windows 7 [\#801](https://github.com/auth0/lock/issues/801)
+
+**Added**
+- Add resumeAuth method and autoParseHash flag [\#790](https://github.com/auth0/lock/pull/790) ([luisrudge](https://github.com/luisrudge))
+- Hide first screen title option [\#745](https://github.com/auth0/lock/pull/745) ([glena](https://github.com/glena))
+
+**Changed**
+- Update zh.js [\#774](https://github.com/auth0/lock/pull/774) ([leplay](https://github.com/leplay))
+
+**Fixed**
+- Fix: popup does not close when signup fails [\#810](https://github.com/auth0/lock/pull/810) ([glena](https://github.com/glena))
+- removes scope openid warning in OIDC conformant mode. fix #780 [\#803](https://github.com/auth0/lock/pull/803) ([luisrudge](https://github.com/luisrudge))
+- Clearing fields when lock closes [\#802](https://github.com/auth0/lock/pull/802) ([luisrudge](https://github.com/luisrudge))
+- Fix redirect/popup login when shown in the hosted login page [\#799](https://github.com/auth0/lock/pull/799) ([glena](https://github.com/glena))
+
+**Breaking changes**
+- Bump auth0.js version - Fix profile casing (it should not convert to cammelcase) [\#815](https://github.com/auth0/lock/pull/815) ([glena](https://github.com/glena))
+
+
 ## [v10.9.2](https://github.com/auth0/lock/tree/v10.9.2) (2017-01-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.9.1...v10.9.2)
 
