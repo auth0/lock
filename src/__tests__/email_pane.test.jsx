@@ -30,9 +30,8 @@ describe('EmailPane', () => {
       setEmail: 'setEmail'
     }));
 
-    const mockId = 1;
     jest.mock('core/index', () => ({
-      id: () => mockId,
+      id: () => 1,
       ui: {
         avatar: () => false
       }
