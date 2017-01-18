@@ -6,8 +6,6 @@ export const expectComponent = (children) => {
   return expect(component);
 };
 
-export const noop = () => {};
-
 const addDataToProps = (props) => {
   const returnedProps = {};
   Object.keys(props).forEach(k => returnedProps[`data-${k}`] = props[k]);

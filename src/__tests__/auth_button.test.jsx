@@ -1,14 +1,14 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { expectComponent, noop } from './testUtils'
+import { expectComponent } from './testUtils'
 
 import AuthButton from 'ui/button/auth_button';
 
 describe('AuthButton', () => {
   const defaultProps = {
     label: 'label',
-    onClick: noop,
+    onClick: jest.fn(),
     strategy: 'strategy'
   };
   it('renders correctly', () => {
@@ -35,9 +35,8 @@ describe('AuthButton', () => {
     ).toMatchSnapshot();
   });
   it('should trigger onClick when clicked', () => {
-    const onClick = jest.fn();
-    const wrapper = mount(<AuthButton {...defaultProps} onClick={onClick} />);
+    const wrapper = mount(<AuthButton {...defaultProps} />);
     wrapper.find('button').simulate('click');
-    expect(onClick.mock.calls.length).toBe(1);
+    expect(defaultProps.onClick.mock.calls.length).toBe(1);
   });
 });

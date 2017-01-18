@@ -24,7 +24,7 @@ exports[`UsernamePane sets \`blankErrorHint\` when username is empty 1`] = `
 <div
   data-__type="username_input"
   data-invalidHint="blankErrorHint"
-  data-isValid={true}
+  data-isValid={false}
   data-onChange={[Function]}
   data-placeholder="placeholder"
   data-value={undefined} />
@@ -43,9 +43,9 @@ exports[`UsernamePane sets \`usernameFormatErrorHint\` when usernameLooksLikeEma
 exports[`UsernamePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
 <div
   data-__type="username_input"
-  data-invalidHint="blankErrorHint"
+  data-invalidHint="invalidErrorHint"
   data-isValid={true}
   data-onChange={[Function]}
   data-placeholder="placeholder"
-  data-value={undefined} />
+  data-value="username" />
 `;

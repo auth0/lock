@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { expectComponent, extractPropsFromWrapper, noop, mockComponent } from './testUtils';
+import { expectComponent, extractPropsFromWrapper, mockComponent } from './testUtils';
 
 jest.mock('ui/input/username_input', () => mockComponent('username_input'));
 
@@ -45,9 +45,14 @@ describe('UsernamePane', () => {
       }
     }));
 
+    jest.mock('avatar', () => ({
+      requestAvatar: jest.fn(),
+      debouncedRequestAvatar: jest.fn()
+    }));
+
     jest.mock('store/index', () => ({
-      swap: () => { },
-      updateEntity: () => { }
+      swap: jest.fn(),
+      updateEntity: 'updateEntity'
     }));
   });
 
@@ -60,12 +65,11 @@ describe('UsernamePane', () => {
     ).toMatchSnapshot();
   });
   it('sets `blankErrorHint` when username is empty', () => {
-    jest.mock('field/index', () => ({
-      username: () => undefined,
-      getFieldValue: () => undefined,
-      isFieldVisiblyInvalid: (noop) => { }
-    }));
+    const fieldIndexMock = require('field/index');
+    fieldIndexMock.username = () => undefined;
+    fieldIndexMock.getFieldValue = () => undefined;
     const UsernamePane = getComponent();
+
     expectComponent(
       <UsernamePane
         {...defaultProps}
@@ -73,12 +77,11 @@ describe('UsernamePane', () => {
     ).toMatchSnapshot();
   });
   it('sets `usernameFormatErrorHint` when usernameLooksLikeEmail() returns false and `validateFormat` is true', () => {
-    jest.mock('field/username', () => ({
-      getUsernameValidation: () => ({ min: 'min', max: 'max' }),
-      usernameLooksLikeEmail: () => false,
-      setUsername: () => { }
-    }));
+    const fieldUsernameMock = require('field/username');
+    fieldUsernameMock.getUsernameValidation = () => ({ min: 'min', max: 'max' });
+    fieldUsernameMock.usernameLooksLikeEmail = () => false;
     const UsernamePane = getComponent();
+
     expectComponent(
       <UsernamePane
         {...defaultProps}
@@ -87,12 +90,9 @@ describe('UsernamePane', () => {
     ).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
-    jest.mock('field/index', () => ({
-      username: () => undefined,
-      getFieldValue: () => undefined,
-      isFieldVisiblyInvalid: () => false
-    }));
+    require('field/index').isFieldVisiblyInvalid = () => false;
     let UsernamePane = getComponent();
+
     expectComponent(
       <UsernamePane
         {...defaultProps}
@@ -100,58 +100,34 @@ describe('UsernamePane', () => {
     ).toMatchSnapshot();
   });
   it('fetches the avatar on componentDidMount if ui.avatar is true and there is a username', () => {
-    const mockId = 1;
-    jest.mock('core/index', () => ({
-      id: () => mockId,
-      ui: {
-        avatar: () => true
-      }
-    }));
-    const mockAvatar = jest.fn();
-    jest.mock('avatar', () => ({
-      requestAvatar: mockAvatar
-    }));
+    require('core/index').ui.avatar = () => true;
     let UsernamePane = getComponent();
 
     mount(<UsernamePane {...defaultProps} />);
 
-    expect(mockAvatar.mock.calls.length).toBe(1);
+    const {mock} = require('avatar').requestAvatar;
+    expect(mock.calls.length).toBe(1);
   });
   it('fetches the avatar onChange if ui.avatar is true', () => {
-    const mockId = 1;
-    jest.mock('core/index', () => ({
-      id: () => mockId,
-      ui: {
-        avatar: () => true
-      }
-    }));
-    const mockAvatar = jest.fn();
-    jest.mock('avatar', () => ({
-      requestAvatar: () => {},
-      debouncedRequestAvatar: mockAvatar
-    }));
+    require('core/index').ui.avatar = () => true;
     let UsernamePane = getComponent();
 
     const wrapper = mount(<UsernamePane {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper)
-    props.onChange({target: {value: 'newUser'}});
-    
-    expect(mockAvatar.mock.calls.length).toBe(1);
+    props.onChange({ target: { value: 'newUser' } });
+
+    const {mock} = require('avatar').debouncedRequestAvatar;
+    expect(mock.calls.length).toBe(1);
   });
   it('calls `swap` onChange', () => {
-    const mockSwap = jest.fn();
-    jest.mock('store/index', () => ({
-      swap: mockSwap,
-      updateEntity: 'updateEntity'
-    }));
-
     let UsernamePane = getComponent();
 
     const wrapper = mount(<UsernamePane {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper)
-    props.onChange({target: {value: 'newUser'}});
-    
-    expect(mockSwap.mock.calls.length).toBe(1);
-    expect(mockSwap.mock.calls[0]).toMatchSnapshot();
+    props.onChange({ target: { value: 'newUser' } });
+
+    const {mock} = require('store/index').swap;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
   });
 });
