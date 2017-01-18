@@ -1,0 +1,39 @@
+exports[`EmailPane calls \`swap\` onChange 1`] = `
+Array [
+  "updateEntity",
+  "lock",
+  1,
+  "setEmail",
+  "newUser@example.com",
+]
+`;
+
+exports[`EmailPane renders correctly 1`] = `
+<div
+  data-__type="email_input"
+  data-invalidHint="invalidErrorHint"
+  data-isValid={false}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="user@example.com" />
+`;
+
+exports[`EmailPane sets \`blankErrorHint\` when username is empty 1`] = `
+<div
+  data-__type="email_input"
+  data-invalidHint="blankErrorHint"
+  data-isValid={false}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value={undefined} />
+`;
+
+exports[`EmailPane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
+<div
+  data-__type="email_input"
+  data-invalidHint="invalidErrorHint"
+  data-isValid={true}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="user@example.com" />
+`;

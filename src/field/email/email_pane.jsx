@@ -43,7 +43,6 @@ export default class EmailPane extends React.Component {
 
 EmailPane.propTypes = {
   i18n: React.PropTypes.object.isRequired,
-  invalidHint: React.PropTypes.string,
   lock: React.PropTypes.object.isRequired,
   placeholder: React.PropTypes.string.isRequired
 };
