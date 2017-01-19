@@ -62,6 +62,18 @@ describe('CustomInput', () => {
           />
       ).toMatchSnapshot();
     });
+    it('calls `startOptionSelection` when clicked', () => {
+      let CustomInput = getComponent();
+
+      const wrapper = mount(<CustomInput {...defaultProps} />);
+      const props = extractPropsFromWrapper(wrapper);
+
+      props.onClick();
+
+      const {mock} = require('field/actions').startOptionSelection;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
+    });
   });
   describe('when type !== select', () => {
     beforeEach(() => defaultProps.type = 'input');
@@ -83,6 +95,18 @@ describe('CustomInput', () => {
           {...defaultProps}
           />
       ).toMatchSnapshot();
+    });
+    it('calls `changeField` when changed', () => {
+      let CustomInput = getComponent();
+
+      const wrapper = mount(<CustomInput {...defaultProps} />);
+      const props = extractPropsFromWrapper(wrapper);
+
+      props.onChange({ target: { value: 'newUser' } });
+
+      const {mock} = require('field/actions').changeField;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
     });
   });
 });
