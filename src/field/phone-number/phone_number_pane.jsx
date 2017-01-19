@@ -3,7 +3,6 @@ import PhoneNumberInput from '../../ui/input/phone_number_input';
 
 // import LocationInput from '../../ui/input/location_input';
 import SelectInput from '../../ui/input/select_input';
-import { getFieldLabel, isFieldVisiblyInvalid } from '../index';
 import { startOptionSelection } from '../actions';
 
 import * as c from '../index';
@@ -29,13 +28,13 @@ export default class PhoneNumberPane extends React.Component {
         {header}
         <SelectInput
           icon={icon}
-          isValid={!isFieldVisiblyInvalid(lock, "location")}
+          isValid={!c.isFieldVisiblyInvalid(lock, "location")}
           name="location"
           placeholder=""
           label={humanLocation(lock)}
           onClick={() => startOptionSelection(l.id(lock), "location", "", icon)}
         />
-        <PhoneNumberInput ref="phoneNumberInput"
+        <PhoneNumberInput
           value={c.phoneNumber(lock)}
           isValid={!c.isFieldVisiblyInvalid(lock, "phoneNumber")}
           onChange={::this.handlePhoneNumberChange}

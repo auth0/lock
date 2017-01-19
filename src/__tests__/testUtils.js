@@ -23,4 +23,4 @@ export const mockComponent = (type, domElement = 'div') => (props) => React.crea
   ...addDataToProps(props)
 });
 
-export const extractPropsFromWrapper = wrapper => removeDataFromProps(wrapper.find('div').props());
+export const extractPropsFromWrapper = (wrapper, index = 0) => removeDataFromProps(wrapper.find('div').at(index).props());
