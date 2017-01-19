@@ -108,7 +108,8 @@
   },
   "jest": {
     "modulePaths": [
-      "<rootDir>/src/"
+      "<rootDir>/src/",
+      "<rootDir>/src/__tests__"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",

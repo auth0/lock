@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { expectComponent } from './testUtils'
+import { expectComponent } from 'testUtils'
 
 import AuthButton from 'ui/button/auth_button';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { expectComponent, mockComponent } from './testUtils';
+import { expectComponent, mockComponent } from 'testUtils';
 
 jest.mock('field/email/email_pane', () => mockComponent('email_pane'));
 jest.mock('field/username/username_pane', () => mockComponent('username_pane'));

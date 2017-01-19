@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from './testUtils';
+import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
 jest.mock('ui/input/text_input', () => mockComponent('text_input'));
 jest.mock('ui/input/select_input', () => mockComponent('select_input'));

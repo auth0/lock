@@ -1,32 +1,33 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from './testUtils';
+import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
-jest.mock('ui/input/mfa_code_input', () => mockComponent('mfa_code_input'));
+jest.mock('ui/input/password_input', () => mockComponent('password_input'));
 
-const getComponent = () => require('field/mfa-code/mfa_code_pane').default;
+const getComponent = () => require('field/password/password_pane').default;
 
-describe('MFACodePane', () => {
+describe('PasswordPane', () => {
   const defaultProps = {
     i18n: {
       str: (...keys) => keys.join(',')
     },
     lock: {},
-    placeholder: 'placeholder'
+    placeholder: 'placeholder',
+    policy: 'policy',
+    strengthMessages: {}
   };
 
   beforeEach(() => {
     jest.resetModules();
 
     jest.mock('field/index', () => ({
-      getFieldValue: () => 'mfa',
+      getFieldValue: () => 'password',
       isFieldVisiblyInvalid: () => true
     }));
 
     jest.mock('field/password', () => ({
-      getMFACodeValidation: () => 'getMFACodeValidation',
-      setMFACode: 'setMFACode'
+      setPassword: 'setPassword'
     }));
     
     jest.mock('core/index', () => ({
@@ -44,37 +45,37 @@ describe('MFACodePane', () => {
   });
 
   it('renders correctly', () => {
-    const MFACodePane = getComponent();
+    const PasswordPane = getComponent();
     expectComponent(
-      <MFACodePane
+      <PasswordPane
         {...defaultProps}
         />
     ).toMatchSnapshot();
   });
   it('disables input when submitting', () => {
     require('core/index').submitting = () => true;
-    const MFACodePane = getComponent();
+    const PasswordPane = getComponent();
 
     expectComponent(
-      <MFACodePane
+      <PasswordPane
         {...defaultProps}
         />
     ).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
-    let MFACodePane = getComponent();
+    let PasswordPane = getComponent();
 
     expectComponent(
-      <MFACodePane
+      <PasswordPane
         {...defaultProps}
         />
     ).toMatchSnapshot();
   });
   it('calls `swap` onChange', () => {
-    let MFACodePane = getComponent();
+    let PasswordPane = getComponent();
 
-    const wrapper = mount(<MFACodePane {...defaultProps} />);
+    const wrapper = mount(<PasswordPane {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper)
     props.onChange({ target: { value: 'newUser' } });
 
