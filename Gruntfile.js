@@ -101,7 +101,7 @@ module.exports = function(grunt) {
       }
     },
     "i18n": {
-      dist: {
+      build: {
         files: [
           {
             expand: true,
@@ -121,13 +121,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-env");
   grunt.loadNpmTasks("grunt-exec");
 
-  grunt.registerTask("build", ["clean:build", "env:build", "webpack:build"]);
-  grunt.registerTask("dist", ["clean:dist", "babel:dist", "i18n:dist"]);
+  grunt.registerTask("build", ["clean:build", "env:build", "webpack:build", "i18n:build"]);
+  grunt.registerTask("dist", ["clean:dist", "babel:dist"]);
   grunt.registerTask("prepare_dev", ["clean:dev"]);
   grunt.registerTask("dev", ["prepare_dev", "webpack-dev-server:dev"]);
   grunt.registerTask("design", ["prepare_dev", "webpack-dev-server:design"]);
   grunt.registerMultiTask("i18n", "Prepares i18n files to be hosted in CDN", function () {
-    grunt.task.requires("babel:dist");
     var languages = {};
     var Auth0 = {
       registerLanguageDictionary: function(lang, dict) {
