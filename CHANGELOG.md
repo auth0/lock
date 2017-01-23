@@ -1,5 +1,13 @@
 #Change Log
 
+## [v10.10.1](https://github.com/auth0/lock/tree/v10.10.1) (2017-01-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.0...v10.10.1)
+
+
+**Changed**
+- Bump auth0.js to 8.1.2 [\#821](https://github.com/auth0/lock/pull/821) ([glena](https://github.com/glena))
+
+
 ## [v10.10.0](https://github.com/auth0/lock/tree/v10.10.0) (2017-01-17)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.9.2...v10.10.0)
 
