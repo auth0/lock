@@ -6,6 +6,21 @@ export const expectComponent = (children) => {
   return expect(component);
 };
 
-export const noop = () => {};
+const addDataToProps = (props) => {
+  const returnedProps = {};
+  Object.keys(props).forEach(k => returnedProps[`data-${k}`] = props[k]);
+  return returnedProps;
+};
 
-export const mockComponent = type => (...props) => <div data-type={type}>{JSON.stringify(props)}</div>;
+const removeDataFromProps = (props) => {
+  const returnedProps = {};
+  Object.keys(props).forEach(k => returnedProps[k.replace('data-', '')] = props[k]);
+  return returnedProps;
+};
+
+export const mockComponent = (type, domElement = 'div') => (props) => React.createElement(domElement, {
+  'data-__type': type,
+  ...addDataToProps(props)
+});
+
+export const extractPropsFromWrapper = (wrapper, index = 0) => removeDataFromProps(wrapper.find('div').at(index).props());

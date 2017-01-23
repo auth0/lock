@@ -32,6 +32,5 @@ export default class MFACodePane extends React.Component {
 MFACodePane.propTypes = {
   i18n: React.PropTypes.object.isRequired,
   lock: React.PropTypes.object.isRequired,
-  onChange: React.PropTypes.func,
   placeholder: React.PropTypes.string.isRequired
 };
