@@ -13,15 +13,15 @@
   <script src="//cdn.auth0.com/js/lock/development/lock.js"></script>
   <script>
 
-    const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
-    const domain = "auth0-tests-lock.auth0.com";
-    const options = {
+    var cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
+    var domain = "auth0-tests-lock.auth0.com";
+    var options = {
       auth: {
         responseType: 'token'
       }
     };
 
-    const lock = new Auth0Lock(cid, domain, options);
+    var lock = new Auth0Lock(cid, domain, options);
 
     lock.on("authenticated", function(authResult) {
       console.log(authResult);
