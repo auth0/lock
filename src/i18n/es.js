@@ -7,7 +7,7 @@ export default {
     login: {
       "blocked_user": "El usuario se encuentra bloqueado.",
       "invalid_user_password": "Credenciales inválidas.",
-      "lock.fallback": "Ocurrió un error al inciar sesión.",
+      "lock.fallback": "Ocurrió un error al iniciar sesión.",
       "lock.invalid_code": "Código inválido.",
       "lock.invalid_email_password": "Correo y contraseña inválidos.",
       "lock.invalid_username_password": "Usuario y contraseña inválidos.",
