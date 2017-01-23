@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "Ditt konto har blivit spärrat efter flera felaktiga inloggningsförsök.",
       "lock.mfa_registration_required": "Multifaktorautentisering krävs men enheten är inte inskrivna. Vänligen registrera det innan vi går vidare.",
       "lock.mfa_invalid_code": "Fel kod. Var god försök igen.",
-      "session_missing": "Det gick inte att slutföra autentiseringsbegäran. Försök igen efter att stänga alla öppna dialoger"
+      "session_missing": "Det gick inte att slutföra autentiseringsbegäran. Försök igen efter att stänga alla öppna dialoger",
+      "hrd.not_matching_email": "Använd gärna ditt företags e-post för att logga in."
     },
     "passwordless": {
       "bad.email": "Din e-postadress är ogiltig.",

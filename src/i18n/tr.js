@@ -22,7 +22,8 @@ export default {
       "password_change_required": "İlk defa giriş yaptığınız yada şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.",
       "password_leaked": "Şifreniz başka bir websitesinde açığa çıktığı için bu giriş denemesi engelledi. Engeli kaldırmak için gereken adımları size email ile gönderdik.",
       "too_many_attempts": "Çoklu giriş denemesi sonucunda hesabınız bloke oldu.",
-      "session_missing": "Kimlik doğrulama isteği tamamlayamadı. Tüm açık diyaloglar kapattıktan sonra tekrar deneyiniz"
+      "session_missing": "Kimlik doğrulama isteği tamamlayamadı. Tüm açık diyaloglar kapattıktan sonra tekrar deneyiniz",
+      "hrd.not_matching_email": ", Giriş için kurumsal e-posta kullanın."
     },
     "passwordless": {
       "bad.email": "E-posta geçerli değil",

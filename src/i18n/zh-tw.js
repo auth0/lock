@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "由於登入異常頻繁，您的帳號已被鎖定。",
       "lock.mfa_registration_required": "多因素認證是必需的，但沒有登記您的設備。在移動之前，請報名參加吧。",
       "lock.mfa_invalid_code": "錯誤代碼。請再試一次。",
-      "session_missing": "無法完成身份驗證請求。請關閉所有打開的對話框後，再試一次"
+      "session_missing": "無法完成身份驗證請求。請關閉所有打開的對話框後，再試一次",
+      "hrd.not_matching_email": "請使用您的公司電子郵件登錄。"
     },
     "passwordless": {
       "bad.email": "電子信箱錯誤",

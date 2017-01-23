@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "El teu compte ha estat bloquejat ja que hi ha hagut massa intents d'inici de sessió consecutius.",
       "lock.mfa_registration_required": "Es necessita autenticació de diversos factors però el dispositiu no està inscrit. Si us plau registrar abans de continuar.",
       "lock.mfa_invalid_code": "codi incorrecte. Siusplau torna-ho a provar.",
-      "session_missing": "No s'ha pogut completar la seva sol·licitud d'autenticació. Torneu-ho de nou després de tancar tots els diàlegs oberts"
+      "session_missing": "No s'ha pogut completar la seva sol·licitud d'autenticació. Torneu-ho de nou després de tancar tots els diàlegs oberts",
+      "hrd.not_matching_email": "Si us plau, utilitzeu el correu electrònic corporatiu per iniciar sessió."
     },
     "passwordless": {
       "bad.email": "Email no vàlid",

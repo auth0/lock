@@ -22,7 +22,8 @@ export default {
       "password_change_required": "Je třeba aktualizovat heslo, neboť jde o první přihlášení nebo platnost hesla vypršela.",
       "password_leaked": "Toto uživatelské jméno bylo zablokováno, protože došlo k úniku hesla na jiné webové stránce. Poslali jsme vám instrukce k odblokování na email.",
       "too_many_attempts": "Váš účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.",
-      "session_missing": "Nemohl dokončit váš požadavek ověřování. Zkuste to znovu po zavření všech otevřených dialogy"
+      "session_missing": "Nemohl dokončit váš požadavek ověřování. Zkuste to znovu po zavření všech otevřených dialogy",
+      "hrd.not_matching_email": "Prosím, použijte pro přihlášení firemní e-mail."
     },
     "passwordless": {
       "bad.email": "Email je neplatný",

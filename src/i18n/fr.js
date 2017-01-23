@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "Votre compte a été bloqué à la suite de trop nombreuses tentatives de connexion consécutives.",
       "lock.mfa_registration_required": "l'authentification multifactorielle est nécessaire, mais votre appareil n'est pas inscrit. S'il vous plaît vous inscrire avant de passer.",
       "lock.mfa_invalid_code": "Mauvais code. Veuillez réessayer.",
-      "session_missing": "Impossible de terminer votre demande d'authentification. S'il vous plaît essayer de nouveau après la fermeture de tous les dialogues ouverts"
+      "session_missing": "Impossible de terminer votre demande d'authentification. S'il vous plaît essayer de nouveau après la fermeture de tous les dialogues ouverts",
+      "hrd.not_matching_email": "S'il vous plaît, utilisez votre messagerie d'entreprise pour vous connecter."
     },
     "passwordless": {
       "bad.email": "L’adresse de messagerie n’est pas valide",

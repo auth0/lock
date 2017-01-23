@@ -19,7 +19,8 @@ export default {
       "too_many_attempts": "A sua conta foi bloqueada após várias tentativas de login consecutivas.",
       "lock.mfa_registration_required": "autenticação multifator é necessário, mas o dispositivo não está inscrito. Por favor, inscrevê-lo antes de prosseguir.",
       "lock.mfa_invalid_code": "Código errado. Por favor, tente novamente.",
-      "session_missing": "Não foi possível concluir o seu pedido de autenticação. Por favor tente novamente depois de fechar todos os diálogos abertos"
+      "session_missing": "Não foi possível concluir o seu pedido de autenticação. Por favor tente novamente depois de fechar todos os diálogos abertos",
+      "hrd.not_matching_email": "Por favor, use seu e-mail corporativo para acessar."
     },
     "passwordless": {
       "bad.email": "O email é inválido",

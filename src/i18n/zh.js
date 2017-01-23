@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "由于登录操作太频繁，您的帐号已被锁定。",
       "lock.mfa_registration_required": "多因素认证是必需的，但没有登记您的设备。在移动之前，请报名参加吧。",
       "lock.mfa_invalid_code": "错误代码。请再试一次。",
-      "session_missing": "无法完成身份验证请求。请关闭所有打开的对话框后，再试一次"
+      "session_missing": "无法完成身份验证请求。请关闭所有打开的对话框后，再试一次",
+      "hrd.not_matching_email": "请使用您的公司电子邮件登录。"
     },
     "passwordless": {
       "bad.email": "邮箱错误",
