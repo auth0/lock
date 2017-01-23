@@ -1,5 +1,16 @@
 #Change Log
 
+## [v10.10.2](https://github.com/auth0/lock/tree/v10.10.2) (2017-01-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.1...v10.10.2)
+
+
+**Fixed**
+- Fix casing of null in IE (bumping auth0.js version) [\#827](https://github.com/auth0/lock/pull/827) ([glena](https://github.com/glena))
+- Fix ES translations [\#826](https://github.com/auth0/lock/pull/826) ([perpifran](https://github.com/perpifran))
+- Translated term mfaLoginTitle into Dutch [\#820](https://github.com/auth0/lock/pull/820) ([dctoon](https://github.com/dctoon))
+- For autologin, if login screen is not available, it should show the error in the signup one instead of breaking [\#817](https://github.com/auth0/lock/pull/817) ([glena](https://github.com/glena))
+
+
 ## [v10.10.1](https://github.com/auth0/lock/tree/v10.10.1) (2017-01-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.10.0...v10.10.1)
 
