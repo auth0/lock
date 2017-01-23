@@ -108,7 +108,7 @@ export default {
   "forgotPasswordTitle": "Stel je wachtwoord opnieuw in",
   "signupTitle": "Aanmelden",
   "mfaInputPlaceholder": "Code",
-  "mfaLoginTitle": "2-Step Verification",
+  "mfaLoginTitle": "2-staps verificatie",
   "mfaLoginInstructions": "Vul de verificatiecode gegenereerd door uw mobiele applicatie.",
   "mfaSubmitLabel": "Log in",
   "mfaCodeErrorHint": "Gebruik %d nummers"
