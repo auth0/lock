@@ -10,16 +10,15 @@
 </style>
 <body>
   <div id="container"></div>
-  <script src="/build/lock.js"></script>
+  <script src="//cdn.auth0.com/js/lock/development/lock.min.js"></script>
   <script>
 
     const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
     const domain = "auth0-tests-lock.auth0.com";
     const options = {
       auth: {
-        responseType: 'id_token'
-      },
-      oidcConformant: true
+        responseType: 'token'
+      }
     };
 
     const lock = new Auth0Lock(cid, domain, options);
@@ -38,11 +37,7 @@
       console.log('authorization_error', error);
     });
 
-    lock.show({
-      languageDictionary: {
-        title: "sarlanga"
-      }
-    });
+    lock.show();
 
   </script>
 </body>
