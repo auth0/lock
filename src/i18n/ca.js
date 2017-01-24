@@ -63,7 +63,7 @@ export default {
   "loginAtLabel": "Iniciar a %s",
   "loginLabel": "Iniciar sessió",
   "loginSubmitLabel": "Iniciar sessió",
-  "loginWithLabel": "Iniciar ambb %s",
+  "loginWithLabel": "Iniciar amb %s",
   "notYourAccountAction": "¿No es el teu compte?",
   "passwordInputPlaceholder": "la teva contrassenya",
   "passwordStrength": {
