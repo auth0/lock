@@ -66,7 +66,7 @@ export default {
   passwordInputPlaceholder: "パスワード",
   passwordStrength: {
     containsAtLeast: "%d が含まれています:",
-    identicalChars: "連続して％d個の同一の文字しか使用できません（例：\ "％s \"は使用できません）",
+    identicalChars: "連続して％d個の同一の文字しか使用できません（例：\"％s \"は使用できません）",
     nonEmpty: "パスワードが必要です",
     numbers: "数字 (i.e. 0-9)",
     lengthAtLeast: "%d 文字以上",
