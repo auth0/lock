@@ -15,6 +15,13 @@ class Auth0WebAPI {
 
     opts.oidcConformant = opts.oidcConformant || false;
 
+    // for cordova and electron we should force popup without SSO so it uses
+    // /ro or /oauth/token for DB connections
+    if (window && (!!window.cordova || !!window.electron)) {
+      opts.redirect = false;
+      opts.sso = false;
+    }
+
     // when it is used on on the hosted login page, it should use the legacy mode
     // (usernamepassword/login) in order to continue the transaction after authentication
     if (hostedLoginPage || !opts.oidcConformant) {
