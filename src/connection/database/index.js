@@ -1,6 +1,7 @@
 import Immutable, { List, Map } from 'immutable';
 import * as l from '../../core/index';
 import {
+  hideInvalidFields,
   clearFields,
   getFieldValue,
   setField,
@@ -249,6 +250,7 @@ export function setScreen(m, name, fields = []) {
   // modules should not care.
   m = l.clearGlobalError(m);
   m = l.clearGlobalSuccess(m);
+  m = hideInvalidFields(m, fields);
   m = clearFields(m, fields);
 
   return tset(m, "screen", name);
