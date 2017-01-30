@@ -22,7 +22,8 @@ export default {
       "password_change_required": "Du må endre passord fordi dette er første gang du logger inn eller fordi passordet har utløpt.",
       "password_leaked": "Denne påloggingen er blokkert fordi passordet har blitt lekket på et annet nettsted. Vi har sendt deg en epost med instruksjoner for hvordan du opphever blokkeringen.",
       "too_many_attempts": "Din konto er blokkert på grunn av for mange påloggingsforsøk.",
-      "session_missing": "Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser"
+      "session_missing": "Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser",
+      "hrd.not_matching_email": "Vennligst bruk bedriftens e-post å logge inn."
     },
     "passwordless": {
       "bad.email": "Epost-adressen er ugyldig",

@@ -4,11 +4,11 @@ var path = require('path');
 module.exports = {
   entry: './src/browser.js',
   output: {
-    path: path.join(__dirname, "../build"),
+    path: path.join(__dirname, '../build'),
     filename: 'lock.js'
   },
   resolve: {
-    extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx", ".styl"]
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.styl']
   },
   progress: true,
   watch: true,
@@ -25,17 +25,17 @@ module.exports = {
     reasons: true
   },
   stylus: {
-    preferPathResolver: 'webpack',
+    preferPathResolver: 'webpack'
   },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: __dirname + './node_modules',
+        exclude: path.join(__dirname, 'node_modules'),
         query: {
-          plugins: ["version-inline", "transform-css-import-to-string"],
-          presets: ["es2015-loose", "stage-0", "react"]
+          plugins: ['version-inline', 'transform-css-import-to-string'],
+          presets: ['es2015-loose', 'stage-0', 'react']
         }
       },
       {
@@ -43,5 +43,5 @@ module.exports = {
         loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
       }
     ]
-  },
+  }
 };

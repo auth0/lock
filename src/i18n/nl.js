@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "Uw account is geblokkeerd als gevolg van herhaalde pogingen om in te loggen.",
       "lock.mfa_registration_required": "Diverse verificatie is vereist, maar het apparaat is niet geregistreerd. Gelieve in te schrijven voordat verder gaat.",
       "lock.mfa_invalid_code": "Verkeerde code. Probeer het opnieuw.",
-      "session_missing": "Kan uw authenticatie verzoek niet voltooien. Probeer opnieuw na het sluiten van alle geopende vensters"
+      "session_missing": "Kan uw authenticatie verzoek niet voltooien. Probeer opnieuw na het sluiten van alle geopende vensters",
+      "hrd.not_matching_email": "Gelieve gebruik te maken van uw zakelijke e-mail om in te loggen."
     },
     "passwordless": {
       "bad.email": "Het e-mailadres is ongeldig",

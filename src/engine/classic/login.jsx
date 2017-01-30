@@ -5,8 +5,8 @@ import LoginPane from '../../connection/database/login_pane';
 import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
-  databaseUsernameValue,
   databaseUsernameStyle,
+  databaseUsernameValue,
   defaultDatabaseConnection,
   hasInitialScreen,
   hasScreen,
@@ -36,7 +36,6 @@ import {
   useBigSocialButtons
 } from '../classic';
 import * as i18n from '../../i18n';
-
 
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
@@ -130,6 +129,15 @@ export default class Login extends Screen {
 
   submitButtonLabel(m) {
     return i18n.str(m, ["loginSubmitLabel"]);
+  }
+
+  isSubmitDisabled(m) {
+    // it should disable the submit button if there is any connection that
+    // requires username/password and there is no enterprise with domain
+    // that matches with the email domain entered for HRD
+    return !l.hasSomeConnections(m, "database") // no database connection
+            && !findADConnectionWithoutDomain(m) // no enterprise without domain
+            && !isSSOEnabled(m); // no matching domain
   }
 
   submitHandler(model) {

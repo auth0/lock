@@ -43,7 +43,11 @@ import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
 export function isSSOEnabled(m) {
-  return isEnterpriseDomain(m, databaseUsernameValue(m));
+  return matchesEnterpriseConnection(m, databaseUsernameValue(m));
+}
+
+export function matchesEnterpriseConnection(m, usernameValue) {
+  return isEnterpriseDomain(m, usernameValue);
 }
 
 export function usernameStyle(m) {

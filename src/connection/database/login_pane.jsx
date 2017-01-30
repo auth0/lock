@@ -35,6 +35,7 @@ export default class LoginPane extends React.Component {
       ? <EmailPane
           i18n={i18n}
           lock={lock}
+          forceInvalidVisibility={!showPassword}
           placeholder={emailInputPlaceholder}
         />
       : <UsernamePane

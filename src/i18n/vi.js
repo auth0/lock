@@ -22,7 +22,8 @@ export default {
       "password_change_required": "Bạn cần phải thay đổi mật khẩu vì đây là lần đầu bạn đăng nhập, hoặc mật khẩu của bạn đã hết hạn.",
       "password_leaked": "Tài khoản của bạn đã bị khóa do mật khẩu của bạn đã bị rò rỉ ở 1 website khác. Chúng tôi đã gửi cho bạn 1 email hướng dẫn cách mở khóa tài khoản.",
       "too_many_attempts": "Tài khoản của bạn đã bị khóa do liên tục đăng nhập thất bại nhiều lần.",
-      "session_missing": "Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở"
+      "session_missing": "Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở",
+      "hrd.not_matching_email": "Xin vui lòng, sử dụng email công ty của bạn để đăng nhập."
     },
     "passwordless": {
       "bad.email": "Email không hợp lệ.",
