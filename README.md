@@ -218,7 +218,7 @@ var options = {
    redirectUrl: "some url",
    responseMode: "form_post",
    responseType: "token",
-   sso: true:
+   sso: true,
    connectionScopes: {
     connectionName: [ 'scope1', 'scope2' ]
    }
