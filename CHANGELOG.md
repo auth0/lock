@@ -1,5 +1,22 @@
 #Change Log
 
+## [v10.11.0](https://github.com/auth0/lock/tree/v10.11.0) (2017-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.2...v10.11.0)
+
+**Closed issues**
+- Input error state does not get reset when changing page [\#843](https://github.com/auth0/lock/issues/843)
+- Show error when the domain part of the email does not match any enterprise connection [\#661](https://github.com/auth0/lock/issues/661)
+
+**Added**
+- inject cordova plugin and force popup/sso in cordova or electron [\#835](https://github.com/auth0/lock/pull/835) ([glena](https://github.com/glena))
+- Japanese translation [\#834](https://github.com/auth0/lock/pull/834) ([stevensacks](https://github.com/stevensacks))
+- disable submit button when the email does not match with any connection [\#757](https://github.com/auth0/lock/pull/757) ([glena](https://github.com/glena))
+
+**Changed**
+- Clear invalid fields on screen change [\#844](https://github.com/auth0/lock/pull/844) ([glena](https://github.com/glena))
+- Bump the babel-preset-2015 version [\#838](https://github.com/auth0/lock/pull/838) ([iamkevingreen](https://github.com/iamkevingreen))
+
+
 ## [v10.10.2](https://github.com/auth0/lock/tree/v10.10.2) (2017-01-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.10.1...v10.10.2)
 
