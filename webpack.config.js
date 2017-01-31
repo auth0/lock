@@ -35,7 +35,7 @@ module.exports = {
         exclude: path.join(__dirname, 'node_modules'),
         query: {
           plugins: ['version-inline', 'transform-css-import-to-string'],
-          presets: ['es2015-loose', 'stage-0', 'react']
+          presets:  [ ["es2015", {"loose": true} ], "stage-0", "react"]
         }
       },
       {
