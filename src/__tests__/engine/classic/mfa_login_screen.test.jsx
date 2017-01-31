@@ -5,6 +5,9 @@ import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUti
 
 jest.mock('connection/database/mfa_pane', () => mockComponent('mfa_pane'));
 
+//there's a circular dependency with this module, so we need to mock it
+jest.mock('engine/classic');
+
 const getComponent = () => {
   const MFALoginScreen = require('engine/classic/mfa_login_screen').default;
   const screen = new MFALoginScreen();
