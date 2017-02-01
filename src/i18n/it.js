@@ -19,7 +19,8 @@ export default {
       "too_many_attempts": "Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi.",
       "lock.mfa_registration_required": "autenticazione a più fattori è richiesta ma il dispositivo non è iscritto. Si prega di iscriversi prima di passare.",
       "lock.mfa_invalid_code": "Codice errato. Riprova.",
-      "session_missing": "Impossibile completare la richiesta di autenticazione. Riprova dopo aver chiuso tutte le finestre di dialogo aperte"
+      "session_missing": "Impossibile completare la richiesta di autenticazione. Riprova dopo aver chiuso tutte le finestre di dialogo aperte",
+      "hrd.not_matching_email": "Si prega di utilizzare la posta elettronica aziendale per effettuare il login."
     },
     "passwordless": {
       "bad.email": "L’email non è valido ",

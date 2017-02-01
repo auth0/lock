@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania.",
       "lock.mfa_registration_required": "uwierzytelnianie wielopoziomowe jest wymagane, ale urządzenie nie jest zarejestrowany. Proszę zapisać go przed przejściem.",
       "lock.mfa_invalid_code": "Niepoprawny kod. Proszę spróbuj ponownie.",
-      "session_missing": "Nie udało się zrealizować żądania uwierzytelnienia. Spróbuj ponownie po zamknięciu wszystkich otwartych okien dialogowych"
+      "session_missing": "Nie udało się zrealizować żądania uwierzytelnienia. Spróbuj ponownie po zamknięciu wszystkich otwartych okien dialogowych",
+      "hrd.not_matching_email": "Proszę korzystać z firmowego e-mail aby się zalogować."
     },
     "passwordless": {
       "bad.email": "Adres email nie jest poprawny",

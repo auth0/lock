@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "Több gyakori bejelentkezés után az azonosítódat letiltottuk.",
       "lock.mfa_registration_required": "Többtényezős hitelesítés szükséges, de a készülék nem regisztrálták. Kérjük, regisztrálja azt, mielőtt.",
       "lock.mfa_invalid_code": "Rossz kód. Kérlek próbáld újra.",
-      "session_missing": "Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok"
+      "session_missing": "Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok",
+      "hrd.not_matching_email": "Kérjük, használja a vállalati e-mail jelentkezned."
     },
     "passwordless": {
       "bad.email": "Érvénytelen e-mailcím",

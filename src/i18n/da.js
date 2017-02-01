@@ -22,7 +22,8 @@ export default {
       "too_many_attempts": "Din konto er blevet blokeret efter gentagne mislykkede login-forsøg.",
       "lock.mfa_registration_required": "Multifaktor godkendelse er påkrævet, men din enhed er ikke tilmeldt. Venligst tilmelde det før flytning.",
       "lock.mfa_invalid_code": "Forkert kode. Prøv igen.",
-      "session_missing": "Kunne ikke fuldføre din anmodning godkendelse. Prøv igen efter at lukke alle åbne dialoger"
+      "session_missing": "Kunne ikke fuldføre din anmodning godkendelse. Prøv igen efter at lukke alle åbne dialoger",
+      "hrd.not_matching_email": "Brug venligst virksomhedens e-mail for at logge ind."
     },
     "passwordless": {
       "bad.email": "Denne email er ugyldig",

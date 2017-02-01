@@ -19,7 +19,8 @@ export default {
       "too_many_attempts": "Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.",
       "lock.mfa_registration_required": "Multi-Faktor-Authentifizierung erforderlich ist, aber Ihr Gerät nicht eingeschrieben. Bitte registrieren sie, bevor er auf.",
       "lock.mfa_invalid_code": "Falscher Code. Bitte versuche es erneut.",
-      "session_missing": "Konnte nicht Ihre Authentifizierungsanforderung abzuschließen. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge Schließen"
+      "session_missing": "Konnte nicht Ihre Authentifizierungsanforderung abzuschließen. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge Schließen",
+      "hrd.not_matching_email": "Bitte verwenden Sie Ihre geschäftliche E-Mail anmelden."
     },
     "passwordless": {
       "bad.email": "Die E-Mail ist ungültig",
