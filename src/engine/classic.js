@@ -110,15 +110,16 @@ class Classic {
     model = initSocial(model, options);
     model = initDatabase(model, options);
     model = initEnterprise(model, options);
-
-    const { email, username } = options.prefill || {};
-    if (typeof email === "string") model = setEmail(model, email);
-    if (typeof username === "string") model = setUsername(model, username, "username", false);
+    this.prefill = options.prefill;
 
     return model;
   }
 
   didReceiveClientSettings(m) {
+    const { email, username } = this.prefill || {};
+    if (typeof email === "string") m = setEmail(m, email);
+    if (typeof username === "string") m = setUsername(m, username, "username", false);
+
     return validateAllowedConnections(m);
   }
 
