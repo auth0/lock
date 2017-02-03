@@ -38,11 +38,12 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     hashCleanup: options.hashCleanup === false ? false : true,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options),
-    defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false ? false : true
+    defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false ? false : true,
+    prefill: Immutable.fromJS(options.prefill || {})
   }));
 
   m = i18n.initI18n(m);
-
+  
   return m;
 }
 
@@ -363,6 +364,10 @@ export function loggedIn(m) {
 
 export function defaultADUsernameFromEmailPrefix(m) {
   return get(m, "defaultADUsernameFromEmailPrefix", true);
+}
+
+export function prefill(m) {
+  return get(m, "prefill", {});
 }
 
 export function warn(x, str) {

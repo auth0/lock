@@ -20,6 +20,7 @@
     };
 
     const lock = new Auth0Lock(cid, domain, options);
+    window.lock = lock;
 
     lock.on("authenticated", function(authResult) {
       console.log(authResult);
