@@ -39,7 +39,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options),
     defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false ? false : true,
-    prefill: Immutable.fromJS(options.prefill || {})
+    prefill: options.prefill || {}
   }));
 
   m = i18n.initI18n(m);
