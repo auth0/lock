@@ -1,31 +1,33 @@
 import React from 'react';
 import Screen from '../../core/screen';
+
 import {
   hasScreen,
   mustAcceptTerms,
   termsAccepted
 } from '../../connection/database/index';
-import SignUpTerms from '../../connection/database/sign_up_terms';
 import {
   signUp,
   toggleTermsAcceptance
 } from '../../connection/database/actions';
-import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
-import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
-import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
-import SignUpPane from './sign_up_pane';
-import SocialButtonsPane from '../../field/social/social_buttons_pane';
-import { renderOptionSelection } from '../../field/index';
-import * as l from '../../core/index';
-import PaneSeparator from '../../core/pane_separator';
 import {
   hasOnlyClassicConnections,
   isSSOEnabled,
   useBigSocialButtons
 } from '../classic';
-import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
+import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
+import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
+import { renderOptionSelection } from '../../field/index';
 import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
+import * as l from '../../core/index';
 import * as i18n from '../../i18n';
+
+import SignUpPane from './sign_up_pane';
+import PaneSeparator from '../../core/pane_separator';
+import SignUpTerms from '../../connection/database/sign_up_terms';
+import SocialButtonsPane from '../../field/social/social_buttons_pane';
+import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
+import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 
 const Component = ({i18n, model}) => {
   const sso = isSSOEnabled(model) && hasScreen(model, "login");

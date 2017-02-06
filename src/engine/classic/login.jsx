@@ -16,17 +16,13 @@ import { logIn as databaseLogIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
 import * as l from '../../core/index';
-import * as c from '../../field/index';
-import { emailDomain } from '../../field/email';
 import {
   logIn as enterpriseLogIn,
   startHRD
 } from '../../connection/enterprise/actions';
 import {
   defaultEnterpriseConnection,
-  defaultEnterpriseConnectionName,
   findADConnectionWithoutDomain,
-  isEnterpriseDomain,
   isHRDDomain
 } from '../../connection/enterprise';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
@@ -44,7 +40,7 @@ function shouldRenderTabs(m) {
     return hasScreen(m, "signUp");
 }
 
-const Component = ({i18n, model, t}) => {
+const Component = ({i18n, model}) => {
   const sso = isSSOEnabled(model);
   const onlySocial = hasOnlyClassicConnections(model, "social");
 
