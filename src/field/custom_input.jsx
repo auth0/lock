@@ -8,6 +8,7 @@ import {
 } from './index';
 import TextInput from '../ui/input/text_input';
 import SelectInput from '../ui/input/select_input';
+import CheckboxInput from '../ui/input/checkbox_input';
 import * as l from '../core/index';
 
 const CustomInput = ({iconUrl, model, name, placeholder, type, validator}) => {
@@ -16,7 +17,7 @@ const CustomInput = ({iconUrl, model, name, placeholder, type, validator}) => {
     isValid: !isFieldVisiblyInvalid(model, name),
     name,
     placeholder
-  }
+  };
 
   switch(type) {
     case "select":
@@ -25,6 +26,14 @@ const CustomInput = ({iconUrl, model, name, placeholder, type, validator}) => {
           {...props}
           label={getFieldLabel(model, name)}
           onClick={() => startOptionSelection(l.id(model), name, iconUrl)}
+        />
+      );
+    case "checkbox":
+      return (
+          <CheckboxInput
+              onChange={e => changeField(l.id(model), name, `${e.target.checked}`, validator)}
+              checked={getFieldValue(model, name)}
+              {...props}
         />
       );
     default:

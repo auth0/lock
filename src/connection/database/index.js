@@ -108,7 +108,7 @@ function processDatabaseOptions(opts) {
         prefill = undefined;
       }
 
-      const types = ["select", "text"];
+      const types = ["select", "text", "checkbox"];
       if (type != undefined && (typeof type != "string" || types.indexOf(type) === -1)) {
         l.warn(opts, `When provided, the \`type\` property of an element of \`additionalSignUpFields\` must be one of the following strings: "${types.join("\", \"")}".`);
         type = undefined;

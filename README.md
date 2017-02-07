@@ -368,6 +368,23 @@ var options = {
 }
 ```
 
+
+##### Checkbox field
+
+To specify a checkbox field use: `type: "checkbox"`
+The `prefill` value can determine the default state of the checkbox and it is required.
+
+```js
+var options = {
+  additionalSignUpFields: [{
+    type: "checkbox",
+    name: "newsletter",
+    prefill: "true",
+    placeholder: "I hereby agree that I want to receive marketing emails from your company",
+  }]
+}
+```
+
 #### Avatar provider
 
 Lock can show avatars fetched from anywhere. A custom avatar provider can be specified with the `avatar` option by passing an object with the keys `url` and `displayName`. Both properties are functions that take an email and a callback function.

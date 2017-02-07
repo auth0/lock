@@ -75,7 +75,7 @@ describe('CustomInput', () => {
       expect(mock.calls[0]).toMatchSnapshot();
     });
   });
-  describe('when type !== select', () => {
+  describe('when type == input', () => {
     beforeEach(() => defaultProps.type = 'input');
     it('renders correctly as a TextInput', () => {
       const CustomInput = getComponent();
@@ -109,4 +109,17 @@ describe('CustomInput', () => {
       expect(mock.calls[0]).toMatchSnapshot();
     });
   });
+  describe('when type == checkbox', () => {
+    beforeEach(() => defaultProps.type = 'checkbox');
+    it('renders correctly as a CheckBoxInput', () => {
+      const CustomInput = getComponent();
+
+      expectComponent(
+          <CustomInput
+              {...defaultProps}
+          />
+      ).toMatchSnapshot();
+    });
+  });
+
 });
