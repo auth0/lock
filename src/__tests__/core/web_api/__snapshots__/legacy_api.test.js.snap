@@ -1,0 +1,42 @@
+exports[`Auth0LegacyAPIClient logIn with credentials should call loginWithCredentials 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": true,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with credentials should call popup.authorize when redirect===false 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": true,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": undefined,
+  "state": undefined,
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with social/enterprise (without username and email) should call popup.authorize when redirect===false 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": undefined,
+  "state": undefined,
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with sso and redirect === false should call loginWithResourceOwner 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": false,
+  "state": undefined,
+  "username": "foo",
+}
+`;

@@ -2,7 +2,7 @@ import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
-import { normalizeError, loginCallback } from './helper';
+import {normalizeError, loginCallback, cleanOptions} from './helper';
 
 class Auth0APIClient {
   constructor(lockID, clientID, domain, opts) {
@@ -46,16 +46,17 @@ class Auth0APIClient {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
     const f = loginCallback(false, cb);
-
+    const loginOptions = cleanOptions({...options, ...this.authOpt, ...authParams});
+    
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        this.client.popup.authorize({...options, ...this.authOpt, ...authParams}, f)
+        this.client.popup.authorize(loginOptions, f)
       } else {
-        this.client.authorize({...options, ...this.authOpt, ...authParams}, f)
+        this.client.authorize(loginOptions, f)
       }
     } else {
-      options.realm = options.connection;
-      this.client.client.login({...options, ...this.authOpt, ...authParams}, f);
+      loginOptions.realm = options.connection;
+      this.client.client.login(loginOptions, f);
     }
   }
 

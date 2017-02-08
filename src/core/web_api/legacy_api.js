@@ -2,7 +2,7 @@ import IdTokenVerifier from 'idtoken-verifier';
 import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import request from 'superagent';
-import {normalizeError, loginCallback} from './helper';
+import {normalizeError, loginCallback, cleanOptions} from './helper';
 
 class Auth0LegacyAPIClient {
   constructor(clientID, domain, opts) {
@@ -49,19 +49,20 @@ class Auth0LegacyAPIClient {
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
     const f = loginCallback(!this.authOpt.popup, cb);
     const auth0Client = this.client;
-
+    
+    const loginOptions = cleanOptions({...options, ...this.authOpt, ...authParams});
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        auth0Client.popup.authorize({...options, ...this.authOpt, ...authParams}, f)
+        auth0Client.popup.authorize(loginOptions, f)
       } else {
-        auth0Client.authorize({...options, ...this.authOpt, ...authParams}, f)
+        auth0Client.authorize(loginOptions, f)
       }
     } else if (!this.authOpt.sso && this.authOpt.popup) {
-      auth0Client.client.loginWithResourceOwner({...options, ...this.authOpt, ...authParams}, f)
+      auth0Client.client.loginWithResourceOwner(loginOptions, f)
     } else if (this.authOpt.popup) {
-      auth0Client.popup.loginWithCredentials({...options, ...this.authOpt, ...authParams}, f)
+      auth0Client.popup.loginWithCredentials(loginOptions, f)
     } else {
-      auth0Client.redirect.loginWithCredentials({...options, ...this.authOpt, ...authParams}, f);
+      auth0Client.redirect.loginWithCredentials(loginOptions, f);
     }
   }
 
