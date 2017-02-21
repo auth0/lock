@@ -104,6 +104,14 @@ const setPrefill = m => {
   return m;
 }
 
+function createErrorScreen(m, stopError) {
+  setTimeout(() => {
+    swap(updateEntity, "lock", l.id(m), l.stop, stopError);
+  }, 0);
+
+  return new ErrorScreen();
+}
+
 class Classic {
 
   static SCREENS = {
@@ -171,17 +179,22 @@ class Classic {
       }
     }
 
+    if (!hasScreen(m, 'login') && !hasScreen(m, 'signUp') && !hasScreen(m, 'forgotPassword')) {
+      const errorMessage = "No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.";
+      const noAvailableScreenError = new Error(errorMessage);
+      noAvailableScreenError.code = "internal_error";
+      noAvailableScreenError.description = errorMessage;
+      return createErrorScreen(m, noAvailableScreenError);
+    }
+
     const Screen = Classic.SCREENS[getScreen(m)];
-    if (Screen) return new Screen();
-
-    setTimeout(() => {
-      const stopError = new Error("Internal error");
-      stopError.code = "internal_error";
-      stopError.description = `Couldn't find a screen "${getScreen(m)}"`;
-      swap(updateEntity, "lock", l.id(m), l.stop, stopError);
-    }, 0);
-
-    return new ErrorScreen();
+    if (Screen) {
+      return new Screen();
+    }
+    const noScreenError = new Error("Internal error");
+    noScreenError.code = "internal_error";
+    noScreenError.description = `Couldn't find a screen "${getScreen(m)}"`;
+    return createErrorScreen(m, noScreenError);
   }
 
 }
