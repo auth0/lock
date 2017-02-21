@@ -91,6 +91,7 @@ then
   npm run test
 else
   npm run test:cli
+  npm run test:jest
 fi
 
 # Clean
