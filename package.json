@@ -71,7 +71,7 @@
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
     "grunt-webpack": "^2.0.1",
-    "jest": "18.1.0",
+    "jest": "19.0.0",
     "json-beautify": "^1.0.1",
     "jsonwebtoken": "^7.3.0",
     "mochify": "^2.12.0",
