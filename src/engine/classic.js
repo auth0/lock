@@ -97,6 +97,13 @@ function validateAllowedConnections(m) {
   return m;
 }
 
+const setPrefill = m => {
+  const { email, username } = l.prefill(m).toJS();
+  if (typeof email === "string") m = setEmail(m, email);
+  if (typeof username === "string") m = setUsername(m, username, "username", false);
+  return m;
+}
+
 class Classic {
 
   static SCREENS = {
@@ -111,15 +118,13 @@ class Classic {
     model = initDatabase(model, options);
     model = initEnterprise(model, options);
 
-    const { email, username } = options.prefill || {};
-    if (typeof email === "string") model = setEmail(model, email);
-    if (typeof username === "string") model = setUsername(model, username, "username", false);
-
     return model;
   }
 
   didReceiveClientSettings(m) {
-    return validateAllowedConnections(m);
+    m = validateAllowedConnections(m);
+    m = setPrefill(m);
+    return m;
   }
 
   willShow(m, opts) {

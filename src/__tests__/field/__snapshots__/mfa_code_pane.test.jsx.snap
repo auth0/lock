@@ -8,21 +8,9 @@ Array [
 ]
 `;
 
-exports[`MFACodePane disables input when submitting 1`] = `
-<div
-  data-__type="mfa_code_input"
-  data-disabled={true}
-  data-invalidHint="mfaCodeErrorHint,6"
-  data-isValid={false}
-  data-onChange={[Function]}
-  data-placeholder="placeholder"
-  data-value="mfa" />
-`;
-
 exports[`MFACodePane renders correctly 1`] = `
 <div
   data-__type="mfa_code_input"
-  data-disabled={false}
   data-invalidHint="mfaCodeErrorHint,6"
   data-isValid={false}
   data-onChange={[Function]}
@@ -33,7 +21,6 @@ exports[`MFACodePane renders correctly 1`] = `
 exports[`MFACodePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
 <div
   data-__type="mfa_code_input"
-  data-disabled={false}
   data-invalidHint="mfaCodeErrorHint,6"
   data-isValid={true}
   data-onChange={[Function]}

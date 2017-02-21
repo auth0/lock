@@ -22,7 +22,6 @@ export default class MFACodePane extends React.Component {
         isValid={!c.isFieldVisiblyInvalid(lock, "mfa_code")}
         onChange={::this.handleChange}
         placeholder={placeholder}
-        disabled={l.submitting(lock)}
       />
     );
   }
