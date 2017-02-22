@@ -470,8 +470,11 @@ describe("layout", function() {
   });
 
   describe("in a corporate network", function() {
+    beforeEach(h.stubWebApisForKerberos);
     beforeEach(function(done) {
-      const opts = {};
+      const opts = {
+        rememberLastLogin: false
+      };
 
       this.lock = h.displayLock("kerberos", opts, done);
     });
@@ -479,6 +482,7 @@ describe("layout", function() {
     afterEach(function() {
       this.lock.hide();
     });
+    beforeEach(h.unStubWebApisForKerberos);
 
     it("renders the quick auth screen with the right contols", function() {
       expect(h.hasBackButton(this.lock)).to.not.be.ok();
