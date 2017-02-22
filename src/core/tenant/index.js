@@ -78,12 +78,12 @@ function formatTenantConnection(connectionType, connection) {
 
     result.passwordPolicy = result.passwordPolicy || "none";
 
-    result.allowSignup = typeof connection.showSignup === "boolean"
-      ? connection.showSignup
+    result.allowSignup = typeof connection.allowSignup === "boolean"
+      ? connection.allowSignup
       : true;
 
-    result.allowForgot = typeof connection.showForgot === "boolean"
-      ? connection.showForgot
+    result.allowForgot = typeof connection.allowForgot === "boolean"
+      ? connection.allowForgot
       : true;
 
     result.requireUsername = typeof connection.requiresUsername === "boolean"
