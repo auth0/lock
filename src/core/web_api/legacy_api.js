@@ -2,7 +2,7 @@ import IdTokenVerifier from 'idtoken-verifier';
 import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import request from 'superagent';
-import {normalizeError, loginCallback, cleanOptions} from './helper';
+import {normalizeError, loginCallback, normalizeAuthParams} from './helper';
 
 class Auth0LegacyAPIClient {
   constructor(clientID, domain, opts) {
@@ -50,7 +50,7 @@ class Auth0LegacyAPIClient {
     const f = loginCallback(!this.authOpt.popup, cb);
     const auth0Client = this.client;
     
-    const loginOptions = cleanOptions({...options, ...this.authOpt, ...authParams});
+    const loginOptions = normalizeAuthParams({...options, ...this.authOpt, ...authParams});
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
         auth0Client.popup.authorize(loginOptions, f)
