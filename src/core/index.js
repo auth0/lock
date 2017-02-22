@@ -38,11 +38,12 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
     hashCleanup: options.hashCleanup === false ? false : true,
     allowedConnections: Immutable.fromJS(options.allowedConnections || []),
     ui: extractUIOptions(id, options),
-    defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false ? false : true
+    defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false ? false : true,
+    prefill: options.prefill || {}
   }));
 
   m = i18n.initI18n(m);
-
+  
   return m;
 }
 
@@ -124,7 +125,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container ? false : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
-  const { labeledSubmitButton, logo, primaryColor, authButtons } = theme;
+  const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
   const avatar = options.avatar !== null;
   const customAvatarProvider = options.avatar
@@ -142,6 +143,7 @@ function extractUIOptions(id, options) {
     avatarProvider: avatarProvider,
     logo: typeof logo === "string" ? logo : undefined,
     closable: closable,
+    hideMainScreenTitle: !!hideMainScreenTitle,
     labeledSubmitButton: undefined === labeledSubmitButton ? true : !!labeledSubmitButton,
     language: undefined === options.language ? "en" : trim(options.language || "").toLowerCase(),
     dict: typeof options.languageDictionary === "object" ? options.languageDictionary : {},
@@ -179,6 +181,7 @@ export const ui = {
   dict: lock => getUIAttribute(lock, "dict"),
   disableWarnings: lock => getUIAttribute(lock, "disableWarnings"),
   labeledSubmitButton: lock => getUIAttribute(lock, "labeledSubmitButton"),
+  hideMainScreenTitle: lock => getUIAttribute(lock, "hideMainScreenTitle"),
   language: lock => getUIAttribute(lock, "language"),
   logo: lock => getUIAttribute(lock, "logo"),
   mobile: lock => getUIAttribute(lock, "mobile"),
@@ -361,6 +364,10 @@ export function loggedIn(m) {
 
 export function defaultADUsernameFromEmailPrefix(m) {
   return get(m, "defaultADUsernameFromEmailPrefix", true);
+}
+
+export function prefill(m) {
+  return get(m, "prefill", {});
 }
 
 export function warn(x, str) {

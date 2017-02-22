@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
 import { normalizeError, loginCallback } from './helper';
@@ -23,6 +24,9 @@ class Auth0APIClient {
       responseMode: opts.responseMode,
       responseType: opts.responseType,
       leeway: opts.leeway || 1,
+      plugins: [
+        new CordovaAuth0Plugin()
+      ],
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       __tenant: opts.overrides && opts.overrides.__tenant,
@@ -65,9 +69,7 @@ class Auth0APIClient {
 
     delete options.autoLogin;
 
-    const popupHandler = (autoLogin && popup) ? this.client.popup.preload() : null;
-
-    this.client.signup(options, (err, result) => cb(err, result, popupHandler) );
+    this.client.signup(options, (err, result) => cb(err, result));
   }
 
   resetPassword(options, cb) {

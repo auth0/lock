@@ -311,7 +311,7 @@ Chrome.propTypes = {
   submitButtonLabel: React.PropTypes.string,
   success: React.PropTypes.string,
   terms: React.PropTypes.element,
-  title: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string,
   transitionName: React.PropTypes.string.isRequired
 };
 

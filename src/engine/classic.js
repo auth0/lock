@@ -43,7 +43,11 @@ import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
 export function isSSOEnabled(m) {
-  return isEnterpriseDomain(m, databaseUsernameValue(m));
+  return matchesEnterpriseConnection(m, databaseUsernameValue(m));
+}
+
+export function matchesEnterpriseConnection(m, usernameValue) {
+  return isEnterpriseDomain(m, usernameValue);
 }
 
 export function usernameStyle(m) {
@@ -93,6 +97,21 @@ function validateAllowedConnections(m) {
   return m;
 }
 
+const setPrefill = m => {
+  const { email, username } = l.prefill(m).toJS();
+  if (typeof email === "string") m = setEmail(m, email);
+  if (typeof username === "string") m = setUsername(m, username, "username", false);
+  return m;
+}
+
+function createErrorScreen(m, stopError) {
+  setTimeout(() => {
+    swap(updateEntity, "lock", l.id(m), l.stop, stopError);
+  }, 0);
+
+  return new ErrorScreen();
+}
+
 class Classic {
 
   static SCREENS = {
@@ -107,15 +126,13 @@ class Classic {
     model = initDatabase(model, options);
     model = initEnterprise(model, options);
 
-    const { email, username } = options.prefill || {};
-    if (typeof email === "string") model = setEmail(model, email);
-    if (typeof username === "string") model = setUsername(model, username, "username", false);
-
     return model;
   }
 
   didReceiveClientSettings(m) {
-    return validateAllowedConnections(m);
+    m = validateAllowedConnections(m);
+    m = setPrefill(m);
+    return m;
   }
 
   willShow(m, opts) {
@@ -164,17 +181,22 @@ class Classic {
       }
     }
 
+    if (!hasScreen(m, 'login') && !hasScreen(m, 'signUp') && !hasScreen(m, 'forgotPassword')) {
+      const errorMessage = "No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.";
+      const noAvailableScreenError = new Error(errorMessage);
+      noAvailableScreenError.code = "internal_error";
+      noAvailableScreenError.description = errorMessage;
+      return createErrorScreen(m, noAvailableScreenError);
+    }
+
     const Screen = Classic.SCREENS[getScreen(m)];
-    if (Screen) return new Screen();
-
-    setTimeout(() => {
-      const stopError = new Error("Internal error");
-      stopError.code = "internal_error";
-      stopError.description = `Couldn't find a screen "${getScreen(m)}"`;
-      swap(updateEntity, "lock", l.id(m), l.stop, stopError);
-    }, 0);
-
-    return new ErrorScreen();
+    if (Screen) {
+      return new Screen();
+    }
+    const noScreenError = new Error("Internal error");
+    noScreenError.code = "internal_error";
+    noScreenError.description = `Couldn't find a screen "${getScreen(m)}"`;
+    return createErrorScreen(m, noScreenError);
   }
 
 }

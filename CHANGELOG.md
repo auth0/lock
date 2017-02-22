@@ -1,5 +1,65 @@
 #Change Log
 
+## [v10.11.0](https://github.com/auth0/lock/tree/v10.11.0) (2017-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.2...v10.11.0)
+
+**Closed issues**
+- Input error state does not get reset when changing page [\#843](https://github.com/auth0/lock/issues/843)
+- Show error when the domain part of the email does not match any enterprise connection [\#661](https://github.com/auth0/lock/issues/661)
+
+**Added**
+- inject cordova plugin and force popup/sso in cordova or electron [\#835](https://github.com/auth0/lock/pull/835) ([glena](https://github.com/glena))
+- Japanese translation [\#834](https://github.com/auth0/lock/pull/834) ([stevensacks](https://github.com/stevensacks))
+- disable submit button when the email does not match with any connection [\#757](https://github.com/auth0/lock/pull/757) ([glena](https://github.com/glena))
+
+**Changed**
+- Clear invalid fields on screen change [\#844](https://github.com/auth0/lock/pull/844) ([glena](https://github.com/glena))
+- Bump the babel-preset-2015 version [\#838](https://github.com/auth0/lock/pull/838) ([iamkevingreen](https://github.com/iamkevingreen))
+
+
+## [v10.10.2](https://github.com/auth0/lock/tree/v10.10.2) (2017-01-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.1...v10.10.2)
+
+
+**Fixed**
+- Fix casing of null in IE (bumping auth0.js version) [\#827](https://github.com/auth0/lock/pull/827) ([glena](https://github.com/glena))
+- Fix ES translations [\#826](https://github.com/auth0/lock/pull/826) ([perpifran](https://github.com/perpifran))
+- Translated term mfaLoginTitle into Dutch [\#820](https://github.com/auth0/lock/pull/820) ([dctoon](https://github.com/dctoon))
+- For autologin, if login screen is not available, it should show the error in the signup one instead of breaking [\#817](https://github.com/auth0/lock/pull/817) ([glena](https://github.com/glena))
+
+
+## [v10.10.1](https://github.com/auth0/lock/tree/v10.10.1) (2017-01-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.0...v10.10.1)
+
+
+**Changed**
+- Bump auth0.js to 8.1.2 [\#821](https://github.com/auth0/lock/pull/821) ([glena](https://github.com/glena))
+
+
+## [v10.10.0](https://github.com/auth0/lock/tree/v10.10.0) (2017-01-17)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.9.2...v10.10.0)
+
+**Closed issues**
+- Lock v10.9.2 fails on IE 10 Windows 7 [\#801](https://github.com/auth0/lock/issues/801)
+
+**Added**
+- Add resumeAuth method and autoParseHash flag [\#790](https://github.com/auth0/lock/pull/790) ([luisrudge](https://github.com/luisrudge))
+- Hide first screen title option [\#745](https://github.com/auth0/lock/pull/745) ([glena](https://github.com/glena))
+
+**Changed**
+- Update zh.js [\#774](https://github.com/auth0/lock/pull/774) ([leplay](https://github.com/leplay))
+
+**Fixed**
+- Fix: popup does not close when signup fails [\#810](https://github.com/auth0/lock/pull/810) ([glena](https://github.com/glena))
+- removes scope openid warning in OIDC conformant mode. fix #780 [\#803](https://github.com/auth0/lock/pull/803) ([luisrudge](https://github.com/luisrudge))
+- Clearing fields when lock closes [\#802](https://github.com/auth0/lock/pull/802) ([luisrudge](https://github.com/luisrudge))
+- Fix redirect/popup login when shown in the hosted login page [\#799](https://github.com/auth0/lock/pull/799) ([glena](https://github.com/glena))
+
+**Breaking changes**
+- Bump auth0.js version - Fix profile casing (it should not convert to cammelcase) [\#815](https://github.com/auth0/lock/pull/815) ([glena](https://github.com/glena))
+
+In lock v10.9 we introduced an issue in auth0.js that changed the casing of the calls to retrieve the user profile (using `/userinfo` or `/tokeninfo`), everything was converted to camel case. We fixed that issue in this [auth0.js pull request](https://github.com/auth0/auth0.js/pull/307) and is part of this release of Lock. If you kept an v10.8 or older no changes are needed, for those who updated to v10.9 you need to revert the changes made to handle the case changes.
+
 ## [v10.9.2](https://github.com/auth0/lock/tree/v10.9.2) (2017-01-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.9.1...v10.9.2)
 

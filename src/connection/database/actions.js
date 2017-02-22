@@ -75,11 +75,14 @@ export function signUp(id) {
       });
     }
 
-    webApi.signUp(id, params, (error, ...args) => {
+    webApi.signUp(id, params, (error, result, popupHandler, ...args) => {
       if (error) {
+        if (!!popupHandler) {
+          popupHandler._current_popup.kill();
+        }
         setTimeout(() => signUpError(id, error), 250);
       } else {
-        signUpSuccess(id, ...args);
+        signUpSuccess(id, result, popupHandler, ...args);
       }
     });
   });
@@ -148,14 +151,11 @@ function signUpError(id, error) {
 
 function autoLogInError(id, error) {
   swap(updateEntity, "lock", id, m => {
+    const errorMessage = l.loginErrorMessage(m, error);
     if (hasScreen(m, "login")) {
-      const errorMessage = l.loginErrorMessage(m, error);
       return l.setSubmitting(setScreen(m, "login"), false, errorMessage);
     } else {
-      const stopError = new Error("Autologin failed and no the login screen is not allowed.");
-      stopError.code = "autologin_error";
-      stopError.origin = error;
-      return l.setSubmitting(l.stop(m, stopError), false);
+      return l.setSubmitting(m, false, errorMessage);
     }
   });
 }

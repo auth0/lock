@@ -19,7 +19,8 @@ export default {
       "password_change_required": "You need to update your password because this is the first time you are logging in, or because your password has expired.", // TODO: verify error code
       "password_leaked": "This login has been blocked because your password has been leaked in another website. We’ve sent you an email with instructions on how to unblock it.",
       "too_many_attempts": "Your account has been blocked after multiple consecutive login attempts.",
-      "session_missing": "Couldn't complete your authentication request. Please try again after closing all open dialogs"
+      "session_missing": "Couldn't complete your authentication request. Please try again after closing all open dialogs",
+      "hrd.not_matching_email": "Please, use your corporate email to login."
     },
     passwordless: {
       "bad.email": "The email is invalid",
@@ -52,6 +53,7 @@ export default {
   enterpriseLoginIntructions: "Login with your corporate credentials.",
   enterpriseActiveLoginInstructions: "Please enter your corporate credentials at %s.",
   failedLabel: "Failed!",
+  forgotPasswordTitle: "Reset your password",
   forgotPasswordAction: "Don't remember your password?",
   forgotPasswordInstructions: "Please enter your email address. We will send you an email to reset your password.",
   forgotPasswordSubmitLabel: "Send email",
@@ -86,6 +88,7 @@ export default {
   resendingLabel: "Resending...",
   retryLabel: "Retry",
   sentLabel: "Sent!",
+  signupTitle: "Sign Up",
   signUpLabel: "Sign Up",
   signUpSubmitLabel: "Sign Up",
   signUpTerms: "",

@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.9.2/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.11.0/lock.min.js"></script>
 ```
 
 From [bower](http://bower.io)
@@ -114,7 +114,7 @@ Lock will emit events during its lifecycle.
 
 Displays the widget, allowing to override some options.
 
-- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details.
+- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
 #### Example
 
@@ -124,6 +124,9 @@ lock.show();
 
 // will override the allowedConnections option passed to the constructor, if any
 lock.show({allowedConnections: ["twitter", "facebook"]})
+
+// will override the entire auth.params object passed to the constructor, if any
+lock.show({auth: {params: {state: 'auth_state'}}})
 ```
 
 ### resumeAuth(hash, callback)
@@ -215,7 +218,7 @@ var options = {
    redirectUrl: "some url",
    responseMode: "form_post",
    responseType: "token",
-   sso: true:
+   sso: true,
    connectionScopes: {
     connectionName: [ 'scope1', 'scope2' ]
    }

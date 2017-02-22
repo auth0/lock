@@ -5,8 +5,14 @@ import { dataFns } from '../utils/data_utils';
 import { emailDomain, emailLocalPart } from '../field/email';
 import { setUsername } from '../field/username';
 import { getFieldValue } from '../field/index';
+import { isEmail } from '../field/email';
+import { isSSOEnabled, matchesEnterpriseConnection } from '../engine/classic';
+import { databaseUsernameValue } from './database/index';
+
+import { swap, updateEntity } from '../store/index';
 
 const { get, initNS, tget, tremove, tset } = dataFns(["enterprise"]);
+const { tremove: tremoveCore, tset: tsetCore, tget: tgetCore } = dataFns(["core"]);
 
 // TODO: Android version also has "google-opendid" in the list, but we
 // consider it to be a social connection. See
@@ -146,4 +152,16 @@ export function toggleHRD(m, email) {
 
 export function isHRDActive(m) {
   return tget(m, "hrd", isSingleHRDConnection(m));
+}
+
+export function isHRDEmailValid(m, str) {
+  if(isEmail(str)
+    && !l.hasSomeConnections(m, "database")
+    && !findADConnectionWithoutDomain(m)
+    && !matchesEnterpriseConnection(m, str) ) {
+
+    return false;
+  }
+
+  return true;
 }

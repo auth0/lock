@@ -66,6 +66,8 @@ bower_release()
 
 npm_release()
 {
+  verbose "Checking if version $1 of $NPM_NAME is already available in npm…"
+  
   NPM_EXISTS=$(npm info -s $NPM_NAME@$1 version)
 
   if [ ! -z "$NPM_EXISTS" ]; then

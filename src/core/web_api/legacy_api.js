@@ -1,5 +1,6 @@
 import IdTokenVerifier from 'idtoken-verifier';
 import auth0 from 'auth0-js';
+import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import request from 'superagent';
 import {normalizeError, loginCallback} from './helper';
 
@@ -24,6 +25,9 @@ class Auth0LegacyAPIClient {
       redirectUri: opts.redirectUrl,
       responseMode: opts.responseMode,
       responseType: opts.responseType,
+      plugins: [
+        new CordovaAuth0Plugin()
+      ],
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       __tenant: opts.overrides && opts.overrides.__tenant,
@@ -73,7 +77,7 @@ class Auth0LegacyAPIClient {
 
     const popupHandler = (autoLogin && popup) ? this.client.popup.preload() : null;
 
-    this.client.signup(options, (err, result) => cb(err, result, popupHandler) );
+    this.client.signup(options, (err, result) => cb(err, result, popupHandler));
   }
 
   resetPassword(options, cb) {

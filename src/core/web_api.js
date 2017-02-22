@@ -11,9 +11,16 @@ class Auth0WebAPI {
 
     const hostedLoginPage = window.location.host === domain;
     // when it is used on on the hosted login page, it shouldn't use popup mode
-    opts.popup = hostedLoginPage ? opts.popup : false;
+    opts.redirect = hostedLoginPage ? true : opts.redirect;
 
     opts.oidcConformant = opts.oidcConformant || false;
+
+    // for cordova and electron we should force popup without SSO so it uses
+    // /ro or /oauth/token for DB connections
+    if (window && (!!window.cordova || !!window.electron)) {
+      opts.redirect = false;
+      opts.sso = false;
+    }
 
     // when it is used on on the hosted login page, it should use the legacy mode
     // (usernamepassword/login) in order to continue the transaction after authentication

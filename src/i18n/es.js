@@ -7,7 +7,7 @@ export default {
     login: {
       "blocked_user": "El usuario se encuentra bloqueado.",
       "invalid_user_password": "Credenciales inválidas.",
-      "lock.fallback": "Ocurrió un error al inciar sesión.",
+      "lock.fallback": "Ocurrió un error al iniciar sesión.",
       "lock.invalid_code": "Código inválido.",
       "lock.invalid_email_password": "Correo y contraseña inválidos.",
       "lock.invalid_username_password": "Usuario y contraseña inválidos.",
@@ -19,7 +19,8 @@ export default {
       "too_many_attempts": "Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos.",
       "lock.mfa_registration_required": "Por favor enrole su dispositivo antes de continuar con el segundo factor.",
       "lock.mfa_invalid_code": "Código incorrecto. Por favor vuelva a intentarlo.",
-      "session_missing": "No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente."
+      "session_missing": "No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente.",
+      "hrd.not_matching_email": "Por favor, use sus credenciales corporativas."
     },
     passwordless: {
       "bad.email": "Correo inválido",
@@ -52,6 +53,7 @@ export default {
   enterpriseLoginIntructions: "Inicie sesión con sus credenciales corporativas.",
   enterpriseActiveLoginInstructions: "Ingrese las credenciales corporativas de %s.",
   failedLabel: "Error!",
+  forgotPasswordTitle: "Restablecer contraseña",
   forgotPasswordAction: "¿Olvidó su contraseña?",
   forgotPasswordInstructions: "Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.",
   forgotPasswordSubmitLabel: "Enviar email",
@@ -86,6 +88,7 @@ export default {
   resendingLabel: "Reenviando...",
   retryLabel: "Reintentar",
   sentLabel: "Enviado!",
+  signupTitle: "Registrarse",
   signUpLabel: "Registrarse",
   signUpSubmitLabel: "Registrarse",
   signUpTerms: "",

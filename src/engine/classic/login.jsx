@@ -5,8 +5,8 @@ import LoginPane from '../../connection/database/login_pane';
 import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
-  databaseUsernameValue,
   databaseUsernameStyle,
+  databaseUsernameValue,
   defaultDatabaseConnection,
   hasInitialScreen,
   hasScreen,
@@ -16,17 +16,13 @@ import { logIn as databaseLogIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
 import * as l from '../../core/index';
-import * as c from '../../field/index';
-import { emailDomain } from '../../field/email';
 import {
   logIn as enterpriseLogIn,
   startHRD
 } from '../../connection/enterprise/actions';
 import {
   defaultEnterpriseConnection,
-  defaultEnterpriseConnectionName,
   findADConnectionWithoutDomain,
-  isEnterpriseDomain,
   isHRDDomain
 } from '../../connection/enterprise';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
@@ -37,7 +33,6 @@ import {
 } from '../classic';
 import * as i18n from '../../i18n';
 
-
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
   if (l.hasSomeConnections(m, "database")) return hasScreen(m, "signUp");
@@ -45,7 +40,7 @@ function shouldRenderTabs(m) {
     return hasScreen(m, "signUp");
 }
 
-const Component = ({i18n, model, t}) => {
+const Component = ({i18n, model}) => {
   const sso = isSSOEnabled(model);
   const onlySocial = hasOnlyClassicConnections(model, "social");
 
@@ -130,6 +125,15 @@ export default class Login extends Screen {
 
   submitButtonLabel(m) {
     return i18n.str(m, ["loginSubmitLabel"]);
+  }
+
+  isSubmitDisabled(m) {
+    // it should disable the submit button if there is any connection that
+    // requires username/password and there is no enterprise with domain
+    // that matches with the email domain entered for HRD
+    return !l.hasSomeConnections(m, "database") // no database connection
+            && !findADConnectionWithoutDomain(m) // no enterprise without domain
+            && !isSSOEnabled(m); // no matching domain
   }
 
   submitHandler(model) {
