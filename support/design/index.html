@@ -313,6 +313,18 @@ body {
   <div class="lock-container" id="socialOrSms-container"></div>
 </div> -->
 
+<div class="container">
+  <div class="info">
+    <h2>Classic</h2>
+    <h3>Custom Signup Field</h3>
+    <p>
+      Use checkbox custom input
+    </p>
+
+  </div>
+  <div class="lock-container" id="custom-sign-up-container"></div>
+</div>
+
 <script src="/build/lock.design.js"></script>
 <script>
  var cid = "1";
@@ -547,4 +559,19 @@ body {
  //   container: "socialOrSms-container",
  //   rememberLastLogin: false
  // }).show();
+
+ new Auth0Lock(cid, domain, {
+       allowedConnections: ["Username-Password-Authentication", "auth0.com", "rolodato"],
+     auth: { redirect: true, sso: false },
+     container: "custom-sign-up-container",
+     initialScreen: "signUp",
+     rememberLastLogin: false,
+     additionalSignUpFields: [{
+         type: "checkbox",
+         name: "newsletter",
+         prefill: "false",
+         placeholder: "I hereby agree that I want to receive marketing emails from your company",
+     }],
+ }).show();
+
 </script>
