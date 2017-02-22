@@ -5,10 +5,9 @@ const fs = require("fs");
 const pkg = require("./package");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config.js");
-const SmartBannerPlugin = require("smart-banner-webpack-plugin");
 const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   const pkg_info = grunt.file.readJSON("package.json");
 
@@ -24,10 +23,10 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd:    "src",
-            src:    ["**/*.js", "**/*.jsx"],
-            dest:   "lib",
-            ext:    '.js'
+            cwd: "src",
+            src: ["**/*.js", "**/*.jsx"],
+            dest: "lib",
+            ext: '.js'
           }
         ]
       }
@@ -49,28 +48,29 @@ module.exports = function(grunt) {
           filename: 'lock.min.js'
         },
         watch: false,
-        keepalive: false,
-        inline: false,
-        hot: false,
         devtool: 'source-map',
         plugins: [
+          new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+          }),
           new webpack.DefinePlugin({
             'process.env': {
               'NODE_ENV': JSON.stringify('production')
             }
           }),
-          new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.OccurrenceOrderPlugin(),
           new webpack.optimize.AggressiveMergingPlugin(),
           new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false, screw_ie8: true },
+            sourceMap: true,
             comments: false
           }),
           new UnminifiedWebpackPlugin(),
-          new SmartBannerPlugin(
-            `[filename] v${pkg_info.version}\n\nAuthor: ${pkg_info.author}\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`,
-            { raw: false, entryOnly: true }
-          )
+          new webpack.BannerPlugin({
+            raw: false,
+            entryOnly: true,
+            banner: `lock v${pkg_info.version}\n\nAuthor: ${pkg_info.author}\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`
+          })
         ]
       }
     },
@@ -80,23 +80,20 @@ module.exports = function(grunt) {
         publicPath: "/build/"
       },
       dev: {
-        keepAlive: true,
+        hot: true,
         port: 3000,
         webpack: {
-          devtool: "eval",
-          debug: true
+          devtool: "eval"
         }
       },
       design: {
-        keepAlive: true,
         webpack: {
           entry: './support/design/index.js',
           output: {
             path: path.join(__dirname, "build"),
             filename: 'lock.design.js'
           },
-          devtool: "eval",
-          debug: true
+          devtool: "eval"
         }
       }
     },
@@ -105,10 +102,10 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd:    "lib/i18n",
-            src:    "**/*.js",
-            dest:   "build",
-            ext:    '.js'
+            cwd: "lib/i18n",
+            src: "**/*.js",
+            dest: "build",
+            ext: '.js'
           }
         ]
       }
@@ -129,7 +126,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask("i18n", "Prepares i18n files to be hosted in CDN", function () {
     var languages = {};
     var Auth0 = {
-      registerLanguageDictionary: function(lang, dict) {
+      registerLanguageDictionary: function (lang, dict) {
         languages[lang] = dict;
       }
     };

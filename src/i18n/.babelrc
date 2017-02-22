@@ -8,18 +8,10 @@
     [
       "es2015",
       {
-        "loose": true,
-        "modules": false
+        "loose": true
       }
     ],
     "stage-0",
     "react"
-  ],
-  "env": {
-    "test": {
-      "plugins": [
-        "transform-es2015-modules-commonjs"
-      ]
-    }
-  }
+  ]
 }

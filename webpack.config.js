@@ -8,7 +8,7 @@ module.exports = {
     filename: 'lock.js'
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.styl']
+    extensions: ['.webpack.js', '.web.js', '.js', '.jsx', '.styl']
   },
   progress: true,
   watch: true,
@@ -16,31 +16,34 @@ module.exports = {
     aggregateTimeout: 500,
     poll: true
   },
-  keepalive: true,
   inline: true,
-  hot: true,
   stats: {
     colors: true,
     modules: true,
     reasons: true
   },
-  stylus: {
-    preferPathResolver: 'webpack'
-  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: path.join(__dirname, 'node_modules'),
-        query: {
-          plugins: ['version-inline', 'transform-css-import-to-string'],
-          presets:  [ ["es2015", {"loose": true} ], "stage-0", "react"]
-        }
+        exclude: path.join(__dirname, 'node_modules')
       },
       {
         test: /\.styl$/,
-        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
+        use: [
+          'css-loader',
+          'stylus-loader',
+          {
+            loader: 'stylus-loader',
+            options: {
+              paths: [
+                'node_modules/bootstrap-stylus/stylus'
+              ],
+              preferPathResolver: 'webpack'
+            }
+          }
+        ]
       }
     ]
   }

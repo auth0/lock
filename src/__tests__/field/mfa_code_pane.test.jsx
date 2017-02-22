@@ -51,16 +51,6 @@ describe('MFACodePane', () => {
         />
     ).toMatchSnapshot();
   });
-  it('disables input when submitting', () => {
-    require('core/index').submitting = () => true;
-    const MFACodePane = getComponent();
-
-    expectComponent(
-      <MFACodePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
-  });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let MFACodePane = getComponent();
