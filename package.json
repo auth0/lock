@@ -30,7 +30,7 @@
     "test:cli": "mochify --extension=.jsx --transform=babelify test/**/*.test.js",
     "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js",
     "test:jest": "jest --coverage",
-    "test:jest:watch": "jest --watchAll --coverage",
+    "test:jest:watch": "jest --watch --coverage",
     "publish:cdn": "ccu",
     "release": "scripts/release.sh",
     "i18n:translate": "grunt dist; node scripts/complete-translations.js"
