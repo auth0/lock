@@ -81,7 +81,7 @@
     "webpack-core": "^0.6.8",
     "webpack-dev-server": "^1.16.2",
     "zuul": "3.10.1",
-    "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
+    "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
     "auth0-js": "8.2.0",
