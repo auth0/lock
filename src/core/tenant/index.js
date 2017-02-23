@@ -57,7 +57,7 @@ function formatTenantConnections(client_id, o) {
   connectionTypes.forEach( connectionTypeName => {
     const connections = o.connections[connectionTypeName].map(connection => {
       return formatTenantConnection(connectionTypeName, connection);
-    }).filter(connection => connections_filter === null || connections_filter.indexOf(connection.name) !== -1);
+    }).filter(connection => connections_filter === null || connections_filter.includes(connection.name));
     result[connectionTypeName].push(...connections);
   })
 
@@ -78,12 +78,12 @@ function formatTenantConnection(connectionType, connection) {
 
     result.passwordPolicy = result.passwordPolicy || "none";
 
-    result.allowSignup = typeof connection.showSignup === "boolean"
-      ? connection.showSignup
+    result.allowSignup = typeof connection.allowSignup === "boolean"
+      ? connection.allowSignup
       : true;
 
-    result.allowForgot = typeof connection.showForgot === "boolean"
-      ? connection.showForgot
+    result.allowForgot = typeof connection.allowForgot === "boolean"
+      ? connection.allowForgot
       : true;
 
     result.requireUsername = typeof connection.requiresUsername === "boolean"
