@@ -57,7 +57,7 @@ function formatTenantConnections(client_id, o) {
   connectionTypes.forEach( connectionTypeName => {
     const connections = o.connections[connectionTypeName].map(connection => {
       return formatTenantConnection(connectionTypeName, connection);
-    }).filter(connection => connections_filter === null || connections_filter.indexOf(connection.name) !== -1);
+    }).filter(connection => connections_filter === null || connections_filter.includes(connection.name));
     result[connectionTypeName].push(...connections);
   })
 
