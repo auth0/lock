@@ -20,7 +20,7 @@ class LoadingPane extends React.Component {
   componentDidMount() {
     const { model } = this.props;
     pinLoadingPane(l.id(model));
-    setTimeout(() => unpinLoadingPane(l.id(model)), 1200);
+    setTimeout(() => unpinLoadingPane(l.id(model)), 500);
   }
 
   render() {
