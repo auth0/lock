@@ -96,7 +96,7 @@
     "idtoken-verifier": "^1.0.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
-    "password-sheriff": "^1.0.0",
+    "password-sheriff": "^1.1.0",
     "react": "^15.0.0 || ^16.0.0",
     "react-addons-css-transition-group": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
