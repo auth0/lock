@@ -20,7 +20,7 @@ export function setEmail(m, str) {
     const validHRDEMail = isHRDEmailValid(m, str);
 
     return {
-      valid: trim(str) === '' || (validateEmail(str) && validHRDEMail),
+      valid: validateEmail(str) && validHRDEMail,
       hint: !validHRDEMail ? i18n.str(m, ["error", "login", "hrd.not_matching_email"]) : undefined
     };
   });
