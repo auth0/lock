@@ -1,5 +1,38 @@
 #Change Log
 
+## [v10.12.0](https://github.com/auth0/lock/tree/v10.12.0) (2017-03-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.11.0...v10.12.0)
+
+**Closed issues**
+- Bug in email field validation [\#884](https://github.com/auth0/lock/issues/884)
+- Input field tab issue in IE [\#870](https://github.com/auth0/lock/issues/870)
+- Bring back the integratedWindowsLogin option? [\#852](https://github.com/auth0/lock/issues/852)
+- Unwanted parameters in /authorize call [\#851](https://github.com/auth0/lock/issues/851)
+- Back button not displaying properly in IE 11 [\#767](https://github.com/auth0/lock/issues/767)
+
+**Added**
+- Added checkbox CustomInput for additionalSignUpFields [\#860](https://github.com/auth0/lock/pull/860) ([dariobanfi](https://github.com/dariobanfi))
+- Add slovak translation [\#846](https://github.com/auth0/lock/pull/846) ([Passto](https://github.com/Passto))
+
+**Changed**
+- Update password sheriff to reduce bundle size [\#879](https://github.com/auth0/lock/pull/879) ([hzalaz](https://github.com/hzalaz))
+- Adding focusable=false to all svgs [\#873](https://github.com/auth0/lock/pull/873) ([luisrudge](https://github.com/luisrudge))
+- Migrating to webpack2 [\#871](https://github.com/auth0/lock/pull/871) ([luisrudge](https://github.com/luisrudge))
+- Review catalan translations [\#869](https://github.com/auth0/lock/pull/869) ([oscarfonts](https://github.com/oscarfonts))
+- Reducing time to unpin loading pane [\#853](https://github.com/auth0/lock/pull/853) ([luisrudge](https://github.com/luisrudge))
+- Throw an error if login, signUp and forgotPassword screens are not allowed [\#850](https://github.com/auth0/lock/pull/850) ([luisrudge](https://github.com/luisrudge))
+- Kerberos network checking no longer depends on rememberLastLogin [\#805](https://github.com/auth0/lock/pull/805) ([patrickmcgraw](https://github.com/patrickmcgraw))
+
+**Fixed**
+- Updated auth0.js to v8.3.0 [\#889](https://github.com/auth0/lock/pull/889) ([hzalaz](https://github.com/hzalaz))
+- Fix issue when submiting a form with no email [\#886](https://github.com/auth0/lock/pull/886) ([selaux](https://github.com/selaux))
+- Fixing allowSignup and allowForgot options when loading tenant info [\#877](https://github.com/auth0/lock/pull/877) ([luisrudge](https://github.com/luisrudge))
+-  Don't disable mfa-code input [\#872](https://github.com/auth0/lock/pull/872) ([nikolaseu](https://github.com/nikolaseu))
+- Fix a box-sizing issue that happened when bootstrap was being used with lock [\#868](https://github.com/auth0/lock/pull/868) ([luisrudge](https://github.com/luisrudge))
+- Cleaning params sent to auth0js [\#863](https://github.com/auth0/lock/pull/863) ([luisrudge](https://github.com/luisrudge))
+- Only set prefill values when client is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.11.0](https://github.com/auth0/lock/tree/v10.11.0) (2017-01-30)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.10.2...v10.11.0)
 
