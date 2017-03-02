@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
 <div>
   <div
@@ -9,7 +11,8 @@ exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
       }
     }
     data-lock="model"
-    data-placeholder="emailInputPlaceholder" />
+    data-placeholder="emailInputPlaceholder"
+  />
   <div
     data-__type="password_pane"
     data-i18n={
@@ -21,7 +24,8 @@ exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
     data-lock="model"
     data-placeholder="passwordInputPlaceholder"
     data-policy="passwordStrengthPolicy"
-    data-strengthMessages="passwordStrengthMessages" />
+    data-strengthMessages="passwordStrengthMessages"
+  />
 </div>
 `;
 
@@ -36,7 +40,8 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
       }
     }
     data-lock="model"
-    data-placeholder="emailInputPlaceholder" />
+    data-placeholder="emailInputPlaceholder"
+  />
   <div
     data-__type="username_pane"
     data-i18n={
@@ -47,7 +52,8 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
     }
     data-lock="model"
     data-placeholder="usernameInputPlaceholder"
-    data-validateFormat={true} />
+    data-validateFormat={true}
+  />
   <div
     data-__type="password_pane"
     data-i18n={
@@ -59,7 +65,8 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
     data-lock="model"
     data-placeholder="passwordInputPlaceholder"
     data-policy="passwordStrengthPolicy"
-    data-strengthMessages="passwordStrengthMessages" />
+    data-strengthMessages="passwordStrengthMessages"
+  />
 </div>
 `;
 
@@ -74,7 +81,8 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
       }
     }
     data-lock="model"
-    data-placeholder="emailInputPlaceholder" />
+    data-placeholder="emailInputPlaceholder"
+  />
   <div
     data-__type="password_pane"
     data-i18n={
@@ -86,7 +94,8 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
     data-lock="model"
     data-placeholder="passwordInputPlaceholder"
     data-policy="passwordStrengthPolicy"
-    data-strengthMessages="passwordStrengthMessages" />
+    data-strengthMessages="passwordStrengthMessages"
+  />
   <div
     data-__type="custom_input"
     data-iconUrl="icon1"
@@ -95,7 +104,8 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
     data-options="options1"
     data-placeholder="placeholder1"
     data-type="type1"
-    data-validator="validator1" />
+    data-validator="validator1"
+  />
   <div
     data-__type="custom_input"
     data-iconUrl="icon2"
@@ -104,7 +114,8 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
     data-options="options2"
     data-placeholder="placeholder2"
     data-type="type2"
-    data-validator="validator2" />
+    data-validator="validator2"
+  />
 </div>
 `;
 
@@ -119,7 +130,8 @@ exports[`SignUpPane renders only email by default 1`] = `
       }
     }
     data-lock="model"
-    data-placeholder="emailInputPlaceholder" />
+    data-placeholder="emailInputPlaceholder"
+  />
 </div>
 `;
 
@@ -137,6 +149,7 @@ exports[`SignUpPane shows header when instructions are available 1`] = `
       }
     }
     data-lock="model"
-    data-placeholder="emailInputPlaceholder" />
+    data-placeholder="emailInputPlaceholder"
+  />
 </div>
 `;

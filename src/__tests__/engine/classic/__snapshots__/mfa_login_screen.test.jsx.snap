@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`MFALoginScreen renders correctly 1`] = `
 <div
   data-__type="mfa_pane"
@@ -9,5 +11,6 @@ exports[`MFALoginScreen renders correctly 1`] = `
   data-instructions="mfaLoginInstructions"
   data-lock="model"
   data-mfaInputPlaceholder="mfaInputPlaceholder"
-  data-title="mfaLoginTitle" />
+  data-title="mfaLoginTitle"
+/>
 `;

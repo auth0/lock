@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`LoginPane hides password link when lock does not have the screen \`forgotPassword\` 1`] = `
 <div>
   <div
@@ -6,12 +8,14 @@ exports[`LoginPane hides password link when lock does not have the screen \`forg
     data-lock={Object {}}
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle={undefined}
-    data-validateFormat={false} />
+    data-validateFormat={false}
+  />
   <div
     data-__type="password_pane"
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="passwordInputPlaceholder" />
+    data-placeholder="passwordInputPlaceholder"
+  />
 </div>
 `;
 
@@ -23,12 +27,14 @@ exports[`LoginPane hides password link when showForgotPasswordLink === false 1`]
     data-lock={Object {}}
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle={undefined}
-    data-validateFormat={false} />
+    data-validateFormat={false}
+  />
   <div
     data-__type="password_pane"
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="passwordInputPlaceholder" />
+    data-placeholder="passwordInputPlaceholder"
+  />
 </div>
 `;
 
@@ -40,13 +46,16 @@ exports[`LoginPane hides password pane when showPassword===false 1`] = `
     data-lock={Object {}}
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle={undefined}
-    data-validateFormat={false} />
+    data-validateFormat={false}
+  />
   <p
-    className="auth0-lock-alternative">
+    className="auth0-lock-alternative"
+  >
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}>
+      onClick={undefined}
+    >
       forgotPasswordAction
     </a>
   </p>
@@ -61,18 +70,22 @@ exports[`LoginPane renders correctly 1`] = `
     data-lock={Object {}}
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle={undefined}
-    data-validateFormat={false} />
+    data-validateFormat={false}
+  />
   <div
     data-__type="password_pane"
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="passwordInputPlaceholder" />
+    data-placeholder="passwordInputPlaceholder"
+  />
   <p
-    className="auth0-lock-alternative">
+    className="auth0-lock-alternative"
+  >
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}>
+      onClick={undefined}
+    >
       forgotPasswordAction
     </a>
   </p>
@@ -86,18 +99,22 @@ exports[`LoginPane shows email pane when user usernameStyle === email 1`] = `
     data-forceInvalidVisibility={false}
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="emailInputPlaceholder" />
+    data-placeholder="emailInputPlaceholder"
+  />
   <div
     data-__type="password_pane"
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="passwordInputPlaceholder" />
+    data-placeholder="passwordInputPlaceholder"
+  />
   <p
-    className="auth0-lock-alternative">
+    className="auth0-lock-alternative"
+  >
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}>
+      onClick={undefined}
+    >
       forgotPasswordAction
     </a>
   </p>
@@ -115,18 +132,22 @@ exports[`LoginPane shows header when instructions is not empty 1`] = `
     data-lock={Object {}}
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle={undefined}
-    data-validateFormat={false} />
+    data-validateFormat={false}
+  />
   <div
     data-__type="password_pane"
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="passwordInputPlaceholder" />
+    data-placeholder="passwordInputPlaceholder"
+  />
   <p
-    className="auth0-lock-alternative">
+    className="auth0-lock-alternative"
+  >
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}>
+      onClick={undefined}
+    >
       forgotPasswordAction
     </a>
   </p>
@@ -141,18 +162,22 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
     data-lock={Object {}}
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle="any"
-    data-validateFormat={false} />
+    data-validateFormat={false}
+  />
   <div
     data-__type="password_pane"
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="passwordInputPlaceholder" />
+    data-placeholder="passwordInputPlaceholder"
+  />
   <p
-    className="auth0-lock-alternative">
+    className="auth0-lock-alternative"
+  >
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}>
+      onClick={undefined}
+    >
       forgotPasswordAction
     </a>
   </p>
@@ -167,18 +192,22 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 2`] = `
     data-lock={Object {}}
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle="username"
-    data-validateFormat={false} />
+    data-validateFormat={false}
+  />
   <div
     data-__type="password_pane"
     data-i18n={Object {}}
     data-lock={Object {}}
-    data-placeholder="passwordInputPlaceholder" />
+    data-placeholder="passwordInputPlaceholder"
+  />
   <p
-    className="auth0-lock-alternative">
+    className="auth0-lock-alternative"
+  >
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}>
+      onClick={undefined}
+    >
       forgotPasswordAction
     </a>
   </p>

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Auth0LegacyAPIClient logIn with credentials should call loginWithCredentials 1`] = `
 Object {
   "nonce": undefined,

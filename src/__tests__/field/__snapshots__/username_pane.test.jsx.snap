@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`UsernamePane calls \`swap\` onChange 1`] = `
 Array [
   "updateEntity",
@@ -17,7 +19,8 @@ exports[`UsernamePane renders correctly 1`] = `
   data-isValid={false}
   data-onChange={[Function]}
   data-placeholder="placeholder"
-  data-value="username" />
+  data-value="username"
+/>
 `;
 
 exports[`UsernamePane sets \`blankErrorHint\` when username is empty 1`] = `
@@ -27,7 +30,8 @@ exports[`UsernamePane sets \`blankErrorHint\` when username is empty 1`] = `
   data-isValid={false}
   data-onChange={[Function]}
   data-placeholder="placeholder"
-  data-value={undefined} />
+  data-value={undefined}
+/>
 `;
 
 exports[`UsernamePane sets \`usernameFormatErrorHint\` when usernameLooksLikeEmail() returns false and \`validateFormat\` is true 1`] = `
@@ -37,7 +41,8 @@ exports[`UsernamePane sets \`usernameFormatErrorHint\` when usernameLooksLikeEma
   data-isValid={false}
   data-onChange={[Function]}
   data-placeholder="placeholder"
-  data-value="username" />
+  data-value="username"
+/>
 `;
 
 exports[`UsernamePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
@@ -47,5 +52,6 @@ exports[`UsernamePane sets isValid as true when \`isFieldVisiblyInvalid\` is fal
   data-isValid={true}
   data-onChange={[Function]}
   data-placeholder="placeholder"
-  data-value="username" />
+  data-value="username"
+/>
 `;
