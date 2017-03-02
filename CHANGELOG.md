@@ -6,7 +6,7 @@
 **Closed issues**
 - Bug in email field validation [\#884](https://github.com/auth0/lock/issues/884)
 - Input field tab issue in IE [\#870](https://github.com/auth0/lock/issues/870)
-- Bring back the integratedWindowsLogin option? [\#852](https://github.com/auth0/lock/issues/852)
+- Bring back the integratedWindowsLogin option [\#852](https://github.com/auth0/lock/issues/852)
 - Unwanted parameters in /authorize call [\#851](https://github.com/auth0/lock/issues/851)
 - Back button not displaying properly in IE 11 [\#767](https://github.com/auth0/lock/issues/767)
 
