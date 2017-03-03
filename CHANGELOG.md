@@ -1,5 +1,13 @@
 #Change Log
 
+## [v10.12.2](https://github.com/auth0/lock/tree/v10.12.2) (2017-03-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.1...v10.12.2)
+
+
+**Fixed**
+- Specify owp for non oidc web api in popup mode [\#897](https://github.com/auth0/lock/pull/897) ([hzalaz](https://github.com/hzalaz))
+
+
 ## [v10.12.1](https://github.com/auth0/lock/tree/v10.12.1) (2017-03-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.12.0...v10.12.1)
 
