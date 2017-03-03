@@ -49,18 +49,18 @@ class Auth0LegacyAPIClient {
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
     const f = loginCallback(!this.authOpt.popup, cb);
     const auth0Client = this.client;
-    
+
     const loginOptions = normalizeAuthParams({...options, ...this.authOpt, ...authParams});
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        auth0Client.popup.authorize(loginOptions, f)
+        auth0Client.popup.authorize({...loginOptions, owp: true}, f)
       } else {
         auth0Client.authorize(loginOptions, f)
       }
     } else if (!this.authOpt.sso && this.authOpt.popup) {
       auth0Client.client.loginWithResourceOwner(loginOptions, f)
     } else if (this.authOpt.popup) {
-      auth0Client.popup.loginWithCredentials(loginOptions, f)
+      auth0Client.popup.loginWithCredentials({...loginOptions, owp: true}, f)
     } else {
       auth0Client.redirect.loginWithCredentials(loginOptions, f);
     }
