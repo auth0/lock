@@ -67,10 +67,10 @@ bower_release()
 npm_release()
 {
   verbose "Checking if version $1 of $NPM_NAME is already available in npm…"
-  
+
   NPM_EXISTS=$(npm info -s $NPM_NAME@$1 version)
 
-  if [ ! -z "$NPM_EXISTS" ]; then
+  if [ ! -z "$NPM_EXISTS" ] && [ "$NPM_EXISTS" == "$1" ]; then
     verbose "There is already a version $NPM_EXISTS in npm. Skipping npm publish…"
   else
     if [ ! -z "$STABLE" ]; then
@@ -97,15 +97,17 @@ fi
 # Clean
 rm -f build/*.js
 
-# Build
+# Build & Release Webpack Bundle
 npm run dist build
-
-# Release
 git checkout -b dist
 bower_release
 new_line
-npm_release "$VERSION"
-new_line
 cdn_release "$VERSION"
+new_line
+
+# Build & Release NPM
+npm run prepublish
+npm_release "$VERSION"
+
 git checkout master
 git branch -D dist
