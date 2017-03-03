@@ -24,7 +24,7 @@
     "design": "grunt design",
     "dev": "grunt dev",
     "dist": "grunt dist",
-    "prepublish": "grunt dist",
+    "prepublish": "cross-env BABEL_ENV=npm grunt dist",
     "format": "prettier --write --print-width 100 --single-quote 'src/**/*.js' 'src/**/*.jsx'",
     "lint": "eslint src",
     "assert-uncomitted": "uncommitted",

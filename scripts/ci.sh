@@ -97,15 +97,17 @@ fi
 # Clean
 rm -f build/*.js
 
-# Build
+# Build & Release Webpack Bundle
 npm run dist build
-
-# Release
 git checkout -b dist
 bower_release
 new_line
-npm_release "$VERSION"
-new_line
 cdn_release "$VERSION"
+new_line
+
+# Build & Release NPM
+npm run prepublish
+npm_release "$VERSION"
+
 git checkout master
 git branch -D dist
