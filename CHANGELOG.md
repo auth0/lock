@@ -1,5 +1,13 @@
 #Change Log
 
+## [v10.12.1](https://github.com/auth0/lock/tree/v10.12.1) (2017-03-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.0...v10.12.1)
+
+
+**Fixed**
+- Fixed npm transpiled code [\#893](https://github.com/auth0/lock/pull/893) ([hzalaz](https://github.com/hzalaz))
+
+
 ## [v10.12.0](https://github.com/auth0/lock/tree/v10.12.0) (2017-03-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.11.0...v10.12.0)
 
