@@ -64,7 +64,7 @@ export default {
   "loginAtLabel": "Přihlásit k %s",
   "loginLabel": "Přihlášení",
   "loginSubmitLabel": "Přihlásit",
-  "loginWithLabel": "Přihlásit s %s",
+  "loginWithLabel": "Přihlásit se s %s",
   "notYourAccountAction": "Není to váš účet?",
   "passwordInputPlaceholder": "vaše heslo",
   "passwordStrength": {
@@ -91,9 +91,9 @@ export default {
   "retryLabel": "Znovu",
   "sentLabel": "Posláno!",
   "signUpLabel": "Registrace",
-  "signUpSubmitLabel": "Registrovat se",
+  "signUpSubmitLabel": "Registrovat",
   "signUpTerms": "",
-  "signUpWithLabel": "Registrovat se pomocí %s",
+  "signUpWithLabel": "Registrovat se s %s",
   "socialLoginInstructions": "",
   "socialSignUpInstructions": "",
   "ssoEnabled": "Single Sign-On aktivován",
@@ -112,5 +112,5 @@ export default {
   "mfaSubmitLabel": "Přihlásit",
   "mfaCodeErrorHint": "Použijte %d čísel",
   "forgotPasswordTitle": "Obnovit heslo",
-  "signupTitle": "Přihlásit se"
+  "signupTitle": "Registrovat se"
 };
