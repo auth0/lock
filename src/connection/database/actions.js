@@ -139,7 +139,7 @@ function signUpError(id, error) {
   };
 
   const errorKey = (error.code === "invalid_password"
-    && invalidPasswordKeys[error.description])
+    && invalidPasswordKeys[error.name])
     || error.code;
 
   const errorMessage = i18n.str(m, ["error", "signUp", errorKey])
