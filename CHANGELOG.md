@@ -1,5 +1,14 @@
 #Change Log
 
+## [v10.12.3](https://github.com/auth0/lock/tree/v10.12.3) (2017-03-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.2...v10.12.3)
+
+
+**Fixed**
+- Update node engine restriction [\#909](https://github.com/auth0/lock/pull/909) ([hzalaz](https://github.com/hzalaz))
+- Fixed Czech translation [\#902](https://github.com/auth0/lock/pull/902) ([FilipPyrek](https://github.com/FilipPyrek))
+
+
 ## [v10.12.2](https://github.com/auth0/lock/tree/v10.12.2) (2017-03-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.12.1...v10.12.2)
 
