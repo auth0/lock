@@ -166,6 +166,8 @@ The appearance of the widget and the mechanics of authentication can be customiz
   - `pt-BR`: Brazilian Portuguese
   - `ru`: Russian
   - `zh`: Chinese
+  - `ja`: Japanese
+  - [Check all the available languages](https://github.com/auth0/lock/tree/master/src/i18n)
 - **languageDictionary {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Language Dictionary Specification](#language-dictionary-specification) for the details.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
