@@ -20,10 +20,10 @@ export default {
       "password_change_required": "Vous devez mettre à jour votre mot de passe, soit parce qu’il s’agit de votre première connexion, soit parce que ce dernier a expiré.",
       "password_leaked": "Cette connexion a été bloquée parce que votre mot de passe a été utilisé sur un autre site web. Nous vous avons envoyé un courriel avec des instructions pour la débloquer.",
       "too_many_attempts": "Votre compte a été bloqué à la suite de trop nombreuses tentatives de connexion consécutives.",
-      "lock.mfa_registration_required": "l'authentification multifactorielle est nécessaire, mais votre appareil n'est pas inscrit. S'il vous plaît vous inscrire avant de passer.",
+      "lock.mfa_registration_required": "l'authentification multifactorielle est nécessaire, mais votre appareil n'est pas inscrit. Veuillez vous inscrire avant de passer.",
       "lock.mfa_invalid_code": "Mauvais code. Veuillez réessayer.",
-      "session_missing": "Impossible de terminer votre demande d'authentification. S'il vous plaît essayer de nouveau après la fermeture de tous les dialogues ouverts",
-      "hrd.not_matching_email": "S'il vous plaît, utilisez votre messagerie d'entreprise pour vous connecter."
+      "session_missing": "Impossible de terminer votre demande d'authentification. Veuillez essayer de nouveau après la fermeture de tous les dialogues ouverts",
+      "hrd.not_matching_email": "Veuillez utiliser votre messagerie d'entreprise pour vous connecter."
     },
     "passwordless": {
       "bad.email": "L’adresse de messagerie n’est pas valide",
@@ -81,9 +81,9 @@ export default {
   "passwordlessEmailAlternativeInstructions": "Sinon entrez votre adresse de messagerie pour vous connecter<br/>ou créez un compte",
   "passwordlessEmailCodeInstructions": "Un courriel avec le code a été envoyé à %s.",
   "passwordlessEmailInstructions": "Entrez votre adresse de messagerie pour vous connecter<br/>ou créez un compte",
-  "passwordlessSMSAlternativeInstructions": "Sinon entrez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
+  "passwordlessSMSAlternativeInstructions": "Sinon saisissez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
   "passwordlessSMSCodeInstructions": "Un SMS avec le code a été envoyé<br/>à %s.",
-  "passwordlessSMSInstructions": "Entrez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
+  "passwordlessSMSInstructions": "Saisissez votre numéro de téléphone pour vous connecter<br/>ou créez un compte",
   "phoneNumberInputPlaceholder": "votre numéro de téléphone",
   "resendCodeAction": "Vous n’avez pas reçu le code ?",
   "resendLabel": "Envoyer une nouvelle fois",
@@ -110,7 +110,7 @@ export default {
   "signupTitle": "S'inscrire",
   "mfaInputPlaceholder": "Code",
   "mfaLoginTitle": "2-Step Vérification",
-  "mfaLoginInstructions": "S'il vous plaît entrez le code de vérification générée par votre application mobile.",
+  "mfaLoginInstructions": "Veuillez entrer le code de vérification généré par votre application mobile.",
   "mfaSubmitLabel": "S'identifier",
   "mfaCodeErrorHint": "Utilisez des numéros %d"
 };
