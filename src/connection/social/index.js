@@ -30,6 +30,8 @@ export const STRATEGIES = {
   "salesforce": "Salesforce",
   "salesforce-community": "Salesforce Community",
   "salesforce-sandbox": "Salesforce (sandbox)",
+  "evernote": "Evernote",
+  "evernote-sandbox": "Evernote (sandbox)",
   "shopify": "Shopify",
   "soundcloud": "Soundcloud",
   "thecity": "The City",
