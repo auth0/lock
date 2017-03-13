@@ -15,8 +15,11 @@ const getClient = (options) => {
   client.client.redirect = {
     loginWithCredentials: jest.fn(),
   };
+  client.client.transactionManager = {
+      getStoredTransaction: jest.fn()
+  };
   return client;
-}
+};
 
 const getAuth0ClientMock = () => require('auth0-js');
 
@@ -141,6 +144,34 @@ describe('Auth0LegacyAPIClient', () => {
         client.logIn({ username: 'foo' }, {}, callback);
         assertMethodCall(popupLoginWithCredentials());
         assertCallbackIsCalledOnce(callback, popupLoginWithCredentials());
+      });
+    });
+  });
+
+  describe('parseHash', () => {
+    it('should parse correct hash', () => {
+      const jwt = require('jsonwebtoken');
+      const client = getClient({
+        redirect: false
+      });
+      const token = jwt.sign(
+        { aud: client.clientID, iss: `https://${client.domain}/` },
+        'someSecret', { expiresIn: '30m' }
+      );
+      const payload = jwt.decode(token);
+      const callback = jest.fn();
+
+      client.parseHash(
+          `#access_token=aToken&id_token=${token}&refresh_token=rToken&state=/path%3Fone%3Dtwo%26three%3D3%234`,
+          callback
+      );
+      expect(callback).toHaveBeenCalled();
+      expect(callback).toHaveBeenCalledWith(null, {
+        accessToken: 'aToken',
+        idToken: token,
+        idTokenPayload: payload,
+        refreshToken: 'rToken',
+        state: '/path?one=two&three=3#4'
       });
     });
   });

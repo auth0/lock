@@ -47,7 +47,7 @@ class Auth0APIClient {
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
     const f = loginCallback(false, cb);
     const loginOptions = normalizeAuthParams({...options, ...this.authOpt, ...authParams});
-    
+
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
         this.client.popup.authorize(loginOptions, f)
@@ -83,7 +83,7 @@ class Auth0APIClient {
 
   parseHash(hash = '', cb) {
     return this.client.parseHash({
-      hash: decodeURIComponent(hash),
+      hash,
       nonce: this.authOpt.nonce,
       state: this.authOpt.state
     }, cb);

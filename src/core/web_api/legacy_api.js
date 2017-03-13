@@ -3,6 +3,7 @@ import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import request from 'superagent';
 import {normalizeError, loginCallback, normalizeAuthParams} from './helper';
+import qs from 'qs';
 
 class Auth0LegacyAPIClient {
   constructor(clientID, domain, opts) {
@@ -92,11 +93,7 @@ class Auth0LegacyAPIClient {
   // for legacy, we should not verify the id_token so we reimplemented it here
   // to avoid adding dirt into auth0.js. At some point we will get rid of this.
   parseHash(hash = '', cb) {
-    hash = decodeURIComponent(hash);
-    var nonce = this.authOpt.nonce;
-
-    var parsed_qs = parseQS(hash.replace(/^#?\/?/, ''));
-
+    var parsed_qs = qs.parse(hash.replace(/^#?\/?/, ''));
     var state = this.authOpt.state || parsed_qs.state;
 
     this.client.transactionManager.getStoredTransaction(state);
@@ -185,12 +182,3 @@ class Auth0LegacyAPIClient {
 }
 
 export default Auth0LegacyAPIClient;
-
-
-function parseQS(qs) {
-  return qs.split('&').reduce(function (prev, curr) {
-    var param = curr.split('=');
-    prev[param[0]] = param[1];
-    return prev;
-  }, {});
-}

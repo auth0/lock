@@ -52,7 +52,7 @@ class Auth0WebAPI {
   }
 
   parseHash(lockID, hash = '', cb) {
-    return this.clients[lockID].parseHash(decodeURIComponent(hash), cb);
+    return this.clients[lockID].parseHash(hash, cb);
   }
 
   getUserInfo(lockID, token, callback) {
