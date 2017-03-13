@@ -1,5 +1,21 @@
 #Change Log
 
+## [v10.13.0](https://github.com/auth0/lock/tree/v10.13.0) (2017-03-13)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.3...v10.13.0)
+
+**Closed issues**
+- State with `=`, `&` characters is incorrectly parsed from url fragment [\#913](https://github.com/auth0/lock/issues/913)
+- Add support for Evernote strategy [\#895](https://github.com/auth0/lock/issues/895)
+
+**Fixed**
+- Updated auth0 js version [\#924](https://github.com/auth0/lock/pull/924) ([hzalaz](https://github.com/hzalaz))
+- Adds evernote social icon [\#923](https://github.com/auth0/lock/pull/923) ([vctrfrnndz](https://github.com/vctrfrnndz))
+- Add japanese translation for "OR" [\#921](https://github.com/auth0/lock/pull/921) ([vctrfrnndz](https://github.com/vctrfrnndz))
+- Fix some french translations. [\#918](https://github.com/auth0/lock/pull/918) ([lucasmichot](https://github.com/lucasmichot))
+- Replace querystring implementation with qs module [\#916](https://github.com/auth0/lock/pull/916) ([elger](https://github.com/elger))
+- Use error.name to find the correct error message for invalid passwords [\#904](https://github.com/auth0/lock/pull/904) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.12.3](https://github.com/auth0/lock/tree/v10.12.3) (2017-03-07)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.12.2...v10.12.3)
 
