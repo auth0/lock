@@ -1,5 +1,5 @@
 [![NPM version][npm-image]][npm-url]
-[![Build status][travis-image]][travis-url]
+[![Build status][circleci-image]][circleci-url]
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
@@ -447,8 +447,8 @@ If you have found a bug or if you have a feature request, please report them at 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 
-[travis-image]: https://img.shields.io/travis/auth0/lock.svg?style=flat-square&branch=master
-[travis-url]: https://travis-ci.org/auth0/lock
+[circleci-image]: https://img.shields.io/circleci/project/github/auth0/lock.svg?style=flat-square
+[circleci-url]: https://circleci.com/gh/auth0/lock/tree/master
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
 [david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
