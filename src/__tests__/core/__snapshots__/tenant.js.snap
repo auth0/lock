@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`initTenant() filters clientConnections 1`] = `
 Object {
   "connections": Object {

@@ -1,10 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SignUpScreen renders LoginSignUpTabs SSO is disabled and has screen login 1`] = `
 <div>
   <div
     data-__type="login_sign_up_tabs"
     data-lock="model"
     data-loginLabel="loginLabel"
-    data-signUpLabel="signUpLabel" />
+    data-signUpLabel="signUpLabel"
+  />
 </div>
 `;
 
@@ -25,7 +28,8 @@ exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
     data-onlyEmail={false}
     data-passwordInputPlaceholder="passwordInputPlaceholder"
     data-passwordStrengthMessages="passwordStrength"
-    data-usernameInputPlaceholder="usernameInputPlaceholder" />
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+  />
 </div>
 `;
 
@@ -46,7 +50,8 @@ exports[`SignUpScreen renders SignUpPane when has enterprise connection 1`] = `
     data-onlyEmail={false}
     data-passwordInputPlaceholder="passwordInputPlaceholder"
     data-passwordStrengthMessages="passwordStrength"
-    data-usernameInputPlaceholder="usernameInputPlaceholder" />
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+  />
 </div>
 `;
 
@@ -54,7 +59,8 @@ exports[`SignUpScreen renders SingleSignOnNotice when SSO is enabled and has scr
 <div>
   <div
     data-__type="single_sign_on_notice"
-    data-children="ssoEnabled" />
+    data-children="ssoEnabled"
+  />
 </div>
 `;
 
@@ -66,7 +72,8 @@ exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] 
     data-instructions="socialSignUpInstructions"
     data-labelFn={[Function]}
     data-lock="model"
-    data-signUp={true} />
+    data-signUp={true}
+  />
 </div>
 `;
 

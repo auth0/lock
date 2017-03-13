@@ -1,8 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
 <div>
   <div
     data-__type="single_sign_on_notice"
-    data-children="ssoEnabled" />
+    data-children="ssoEnabled"
+  />
   <div
     data-__type="login_pane"
     data-emailInputPlaceholder="emailInputPlaceholder"
@@ -19,7 +22,8 @@ exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
     data-showForgotPasswordLink={false}
     data-showPassword={false}
     data-usernameInputPlaceholder="usernameInputPlaceholder"
-    data-usernameStyle={false} />
+    data-usernameStyle={false}
+  />
 </div>
 `;
 
@@ -41,7 +45,8 @@ exports[`LoginScreen renders LoginPane when has database connection 1`] = `
     data-showForgotPasswordLink={true}
     data-showPassword={true}
     data-usernameInputPlaceholder="usernameInputPlaceholder"
-    data-usernameStyle={false} />
+    data-usernameStyle={false}
+  />
 </div>
 `;
 
@@ -63,7 +68,8 @@ exports[`LoginScreen renders LoginPane when has enterprise connection 1`] = `
     data-showForgotPasswordLink={false}
     data-showPassword={false}
     data-usernameInputPlaceholder="usernameInputPlaceholder"
-    data-usernameStyle={false} />
+    data-usernameStyle={false}
+  />
 </div>
 `;
 
@@ -74,7 +80,8 @@ exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled
     data-lock="model"
     data-loginLabel="loginLabel"
     data-signUpLabel="signUpLabel"
-    data-signUpLink={false} />
+    data-signUpLink={false}
+  />
   <div
     data-__type="login_pane"
     data-emailInputPlaceholder="emailInputPlaceholder"
@@ -91,7 +98,8 @@ exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled
     data-showForgotPasswordLink={true}
     data-showPassword={true}
     data-usernameInputPlaceholder="usernameInputPlaceholder"
-    data-usernameStyle={false} />
+    data-usernameStyle={false}
+  />
 </div>
 `;
 
@@ -113,7 +121,8 @@ exports[`LoginScreen renders LoginSignUpTabs when social connection is enabled a
     data-showForgotPasswordLink={true}
     data-showPassword={true}
     data-usernameInputPlaceholder="usernameInputPlaceholder"
-    data-usernameStyle={false} />
+    data-usernameStyle={false}
+  />
 </div>
 `;
 
@@ -121,7 +130,8 @@ exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
 <div>
   <div
     data-__type="single_sign_on_notice"
-    data-children="ssoEnabled" />
+    data-children="ssoEnabled"
+  />
   <div
     data-__type="login_pane"
     data-emailInputPlaceholder="emailInputPlaceholder"
@@ -138,7 +148,8 @@ exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
     data-showForgotPasswordLink={false}
     data-showPassword={false}
     data-usernameInputPlaceholder="usernameInputPlaceholder"
-    data-usernameStyle={false} />
+    data-usernameStyle={false}
+  />
 </div>
 `;
 
@@ -151,7 +162,8 @@ exports[`LoginScreen renders SocialButtonsPane when has social connections 1`] =
     data-labelFn={[Function]}
     data-lock="model"
     data-showLoading={false}
-    data-signUp={false} />
+    data-signUp={false}
+  />
 </div>
 `;
 

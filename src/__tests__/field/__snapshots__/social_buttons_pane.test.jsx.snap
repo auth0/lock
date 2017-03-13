@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SocialButtonsPane calls \`logIn\` with social connection 1 when first button is clicked 1`] = `
 Array [
   1,
@@ -20,9 +22,11 @@ Array [
 
 exports[`SocialButtonsPane renders big buttons when bigButtons === true 1`] = `
 <div
-  className="auth-lock-social-buttons-pane">
+  className="auth-lock-social-buttons-pane"
+>
   <div
-    className="auth0-lock-social-buttons-container">
+    className="auth0-lock-social-buttons-container"
+  >
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -31,7 +35,8 @@ exports[`SocialButtonsPane renders big buttons when bigButtons === true 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy" />
+      data-strategy="socialConnections1-strategy"
+    />
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -40,16 +45,19 @@ exports[`SocialButtonsPane renders big buttons when bigButtons === true 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy" />
+      data-strategy="socialConnections2-strategy"
+    />
   </div>
 </div>
 `;
 
 exports[`SocialButtonsPane renders correctly 1`] = `
 <div
-  className="auth-lock-social-buttons-pane">
+  className="auth-lock-social-buttons-pane"
+>
   <div
-    className="auth0-lock-social-buttons-container">
+    className="auth0-lock-social-buttons-container"
+  >
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -58,7 +66,8 @@ exports[`SocialButtonsPane renders correctly 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy" />
+      data-strategy="socialConnections1-strategy"
+    />
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -67,19 +76,22 @@ exports[`SocialButtonsPane renders correctly 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy" />
+      data-strategy="socialConnections2-strategy"
+    />
   </div>
 </div>
 `;
 
 exports[`SocialButtonsPane shows header when instructions are available 1`] = `
 <div
-  className="auth-lock-social-buttons-pane">
+  className="auth-lock-social-buttons-pane"
+>
   <p>
     instructions
   </p>
   <div
-    className="auth0-lock-social-buttons-container">
+    className="auth0-lock-social-buttons-container"
+  >
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -88,7 +100,8 @@ exports[`SocialButtonsPane shows header when instructions are available 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy" />
+      data-strategy="socialConnections1-strategy"
+    />
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -97,16 +110,19 @@ exports[`SocialButtonsPane shows header when instructions are available 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy" />
+      data-strategy="socialConnections2-strategy"
+    />
   </div>
 </div>
 `;
 
 exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
 <div
-  className="auth-lock-social-buttons-pane">
+  className="auth-lock-social-buttons-pane"
+>
   <div
-    className="auth0-lock-social-buttons-container">
+    className="auth0-lock-social-buttons-container"
+  >
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -115,7 +131,8 @@ exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy" />
+      data-strategy="socialConnections1-strategy"
+    />
     <div
       data-__type="auth_button"
       data-foregroundColor="authButtonsTheme-foregroundColor"
@@ -124,12 +141,15 @@ exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy" />
+      data-strategy="socialConnections2-strategy"
+    />
   </div>
   <div
-    className="auth0-loading-container">
+    className="auth0-loading-container"
+  >
     <div
-      className="auth0-loading" />
+      className="auth0-loading"
+    />
   </div>
 </div>
 `;
