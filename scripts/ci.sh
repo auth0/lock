@@ -1,6 +1,6 @@
 #!/bin/bash
 
-npm install
+yarn install
 
 MATCHER=${2:-"*"}
 NPM_TAG=${3:-"beta"}
@@ -88,17 +88,17 @@ npm_release()
 # Test
 if [ -n "$SAUCE_USERNAME" ]
 then
-  npm run test
+  yarn run test
 else
-  npm run test:cli
-  npm run test:jest
+  yarn run test:cli
+  yarn run test:jest
 fi
 
 # Clean
 rm -f build/*.js
 
 # Build & Release Webpack Bundle
-npm run dist build
+yarn run dist build
 git checkout -b dist
 bower_release
 new_line
@@ -106,7 +106,7 @@ cdn_release "$VERSION"
 new_line
 
 # Build & Release NPM
-npm run prepublish
+yarn run prepublish
 npm_release "$VERSION"
 
 git checkout master
