@@ -39,7 +39,7 @@ export default class UsernameInput extends React.Component {
           placeholder="username"
           autoComplete="off"
           autoCapitalize="off"
-          spellcheck="off"
+          spellCheck="off"
           autoCorrect="off"
           onChange={::this.handleOnChange}
           onFocus={::this.handleFocus}
