@@ -221,7 +221,7 @@ Container.propTypes = {
   contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: React.PropTypes.object.isRequired,
   disableSubmitButton: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.string,
+  error: React.PropTypes.node,
   isMobile: React.PropTypes.bool.isRequired,
   isModal: React.PropTypes.bool.isRequired,
   isSubmitting: React.PropTypes.bool.isRequired,
@@ -230,7 +230,7 @@ Container.propTypes = {
   screenName: React.PropTypes.string.isRequired,
   showBadge: React.PropTypes.bool.isRequired,
   submitButtonLabel: React.PropTypes.string,
-  success: React.PropTypes.string,
+  success: React.PropTypes.node,
   tabs: React.PropTypes.bool,
   terms: React.PropTypes.element,
   title: React.PropTypes.string,

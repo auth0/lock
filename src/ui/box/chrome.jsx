@@ -303,13 +303,13 @@ Chrome.propTypes = {
   contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: React.PropTypes.object.isRequired,
   disableSubmitButton: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.string,
+  error: React.PropTypes.node,
   isSubmitting: React.PropTypes.bool.isRequired,
   logo: React.PropTypes.string.isRequired,
   primaryColor: React.PropTypes.string.isRequired,
   showSubmitButton: React.PropTypes.bool.isRequired,
   submitButtonLabel: React.PropTypes.string,
-  success: React.PropTypes.string,
+  success: React.PropTypes.node,
   terms: React.PropTypes.element,
   title: React.PropTypes.string,
   transitionName: React.PropTypes.string.isRequired

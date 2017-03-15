@@ -142,8 +142,8 @@ function signUpError(id, error) {
     && invalidPasswordKeys[error.name])
     || error.code;
 
-  const errorMessage = i18n.str(m, ["error", "signUp", errorKey])
-    || i18n.str(m, ["error", "signUp", "lock.fallback"]);
+  const errorMessage = i18n.html(m, ["error", "signUp", errorKey])
+    || i18n.html(m, ["error", "signUp", "lock.fallback"]);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
@@ -186,7 +186,7 @@ function resetPasswordSuccess(id) {
 
     // TODO: should be handled by box
     setTimeout(() => {
-      const successMessage = i18n.str(m, ["success", "forgotPassword"]);
+      const successMessage = i18n.html(m, ["success", "forgotPassword"]);
       swap(updateEntity, "lock", id, l.setGlobalSuccess, successMessage);
     }, 500);
   } else {
@@ -203,8 +203,8 @@ function resetPasswordSuccess(id) {
 function resetPasswordError(id, error) {
   const m = read(getEntity, "lock", id);
 
-  const errorMessage = i18n.str(m, ["error", "forgotPassword", error.code])
-    || i18n.str(m, ["error", "forgotPassword", "lock.fallback"]);
+  const errorMessage = i18n.html(m, ["error", "forgotPassword", error.code])
+    || i18n.html(m, ["error", "forgotPassword", "lock.fallback"]);
 
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
