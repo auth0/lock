@@ -111,3 +111,4 @@ export default {
   "mfaSubmitLabel":                           "Авторизуватися",
   "mfaCodeErrorHint":                         "Використовуйте %d номери"
 };
+
