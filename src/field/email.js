@@ -21,7 +21,7 @@ export function setEmail(m, str) {
 
     return {
       valid: validateEmail(str) && validHRDEMail,
-      hint: !validHRDEMail ? i18n.str(m, ["error", "login", "hrd.not_matching_email"]) : undefined
+      hint: !validHRDEMail ? i18n.html(m, ["error", "login", "hrd.not_matching_email"]) : undefined
     };
   });
 }

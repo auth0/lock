@@ -480,13 +480,13 @@ export function loginErrorMessage(m, error, type) {
   // explicitly. We should figure out if there was a reason for that.
 
   if (error.status === 0) {
-    return i18n.str(m, ["error", "login", "lock.network"]);
+    return i18n.html(m, ["error", "login", "lock.network"]);
   }
 
   // Custom rule error (except blocked_user)
   if (error.code === "rule_error") {
     return error.description
-      || i18n.str(m, ["error", "login", "lock.fallback"]);
+      || i18n.html(m, ["error", "login", "lock.fallback"]);
   }
 
   const INVALID_MAP = {
@@ -508,8 +508,8 @@ export function loginErrorMessage(m, error, type) {
     code = "lock.mfa_invalid_code";
   }
 
-  return i18n.str(m, ["error", "login", code])
-    || i18n.str(m, ["error", "login", "lock.fallback"]);
+  return i18n.html(m, ["error", "login", code])
+    || i18n.html(m, ["error", "login", "lock.fallback"]);
 }
 
 // TODO: rename to something less generic that is easier to grep

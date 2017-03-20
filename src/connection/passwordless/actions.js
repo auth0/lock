@@ -40,8 +40,8 @@ function startPasswordlessErrorMessage(m, error, medium) {
     key = "bad.phone_number";
   }
 
-  return i18n.str(m, ["error", "passwordless", key])
-    || i18n.str(m, ["error", "passwordless", "lock.fallback"]);
+  return i18n.html(m, ["error", "passwordless", key])
+    || i18n.html(m, ["error", "passwordless", "lock.fallback"]);
 }
 
 export function requestPasswordlessEmailError(id, error) {
