@@ -129,6 +129,22 @@ lock.show({allowedConnections: ["twitter", "facebook"]})
 lock.show({auth: {params: {state: 'auth_state'}}})
 ```
 
+### hide(callback)
+
+Hides the widget.
+
+- **callback {Function}**: The callback will be triggered when the widget is completely hidden.
+
+#### Example
+
+```js
+// without a callback
+lock.hide();
+
+// with callback
+lock.hide(function() { console.log('widget was hidden'); });
+```
+
 ### resumeAuth(hash, callback)
 
 If you set the [auth.autoParseHash](#authentication-options) option to `false`, you'll need to call this method to complete the authentication flow. This method is useful when you're using a client-side router that uses a `#` to handle urls (angular2 with `useHash` or react-router with `hashHistory`).

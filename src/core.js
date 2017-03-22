@@ -150,8 +150,8 @@ export default class Base extends EventEmitter {
     openLock(this.id, opts);
   }
 
-  hide() {
-    closeLock(this.id, true);
+  hide(cb) {
+    closeLock(this.id, true, cb);
   }
 
   destroy() {
