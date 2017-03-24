@@ -249,7 +249,11 @@ function extractAuthOptions(options) {
   }
 
   if (oidcConformant && !redirect && responseType.indexOf('id_token') > -1) {
-    throw new Error("It is not posible to request an 'id_token' while using popup mode.");
+    throw new Error("It is not possible to request an 'id_token' while using popup mode.");
+  }
+
+  if (!oidcConformant && audience) {
+    throw new Error("It is not possible to use the `auth.audience` option when the `oidcConformant` flag is set to false");
   }
 
   // for legacy flow, the scope should default to openid
