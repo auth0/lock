@@ -21,7 +21,7 @@ describe('SignUpScreen', () => {
     jest.resetModules();
 
     jest.mock('connection/database/index', () => ({
-      termsAccepted: () => false,
+      termsAccepted: () => true,
       hasScreen: () => false,
       mustAcceptTerms: () => false
     }));
@@ -74,6 +74,15 @@ describe('SignUpScreen', () => {
   });
   it('renders SocialButtonsPane when has social connections', () => {
     require('core/index').hasSomeConnections = (m, connection) => connection === 'social';
+    const Component = getComponent();
+
+    expectComponent(
+      <Component {...defaultProps} />
+    ).toMatchSnapshot();
+  });
+  it('disables SocialButtonsPane when terms were not accepted', () => {
+    require('core/index').hasSomeConnections = (m, connection) => connection === 'social';
+    require('connection/database/index').termsAccepted = () => false;
     const Component = getComponent();
 
     expectComponent(

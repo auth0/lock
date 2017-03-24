@@ -52,6 +52,7 @@ const Component = ({i18n, model}) => {
          labelFn={i18n.str}
          lock={model}
          signUp={true}
+         disabled={!termsAccepted(model)}
        />;
 
   const signUpInstructionsKey = social

@@ -15,7 +15,8 @@ export default class SocialButtonsPane extends React.Component {
       labelFn,
       lock,
       showLoading,
-      signUp
+      signUp,
+      disabled
     } = this.props;
 
     const headerText = instructions || null;
@@ -39,6 +40,7 @@ export default class SocialButtonsPane extends React.Component {
         primaryColor={primaryColor}
         foregroundColor={foregroundColor}
         icon={icon}
+        disabled={disabled}
       />)
     });
 
@@ -64,9 +66,11 @@ SocialButtonsPane.propTypes = {
   labelFn: React.PropTypes.func.isRequired,
   lock: React.PropTypes.object.isRequired,
   showLoading: React.PropTypes.bool.isRequired,
-  signUp: React.PropTypes.bool.isRequired
+  signUp: React.PropTypes.bool.isRequired,
+  disabled: React.PropTypes.bool,
 };
 
 SocialButtonsPane.defaultProps = {
-  showLoading: false
+  showLoading: false,
+  disabled: false
 };

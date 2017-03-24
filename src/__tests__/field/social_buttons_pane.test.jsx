@@ -13,7 +13,8 @@ describe('SocialButtonsPane', () => {
     bigButtons: false,
     labelFn: (...keys) => keys.join(','),
     showLoading: false,
-    signUp: false
+    signUp: false,
+    disabled: false
   };
   beforeEach(() => {
     jest.resetModules();
@@ -54,6 +55,15 @@ describe('SocialButtonsPane', () => {
       <SocialButtonsPane
         {...defaultProps}
         bigButtons
+        />
+    ).toMatchSnapshot();
+  });
+  it('disables social buttons when disabled === true', () => {
+    const SocialButtonsPane = getComponent();
+    expectComponent(
+      <SocialButtonsPane
+        {...defaultProps}
+        disabled
         />
     ).toMatchSnapshot();
   });
