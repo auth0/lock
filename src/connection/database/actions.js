@@ -181,7 +181,7 @@ function resetPasswordSuccess(id) {
   const m = read(getEntity, "lock", id);
   if (hasScreen(m, "login")) {
     swap(updateEntity, "lock", id, m => (
-      setScreen(l.setSubmitting(m, false), "login")
+      setScreen(l.setSubmitting(m, false), "login", [""])
     ));
 
     // TODO: should be handled by box
