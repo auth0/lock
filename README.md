@@ -234,7 +234,7 @@ var options = {
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
-- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not. Defaults to `true`.
+- **sso {Boolean}**:  Determines whether to fetch Single Sign On data on show or not. Defaults to `true`. The Auth0 SSO session will be created regardless of this option if SSO is enabled for you client.
 - **connectionScopes {Object}**:  Allows to set scopes to be sent to the oauth2/social connection for authentication.
 
 #### Social options
