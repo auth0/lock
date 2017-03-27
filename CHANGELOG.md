@@ -1,5 +1,29 @@
 #Change Log
 
+## [v10.14.0](https://github.com/auth0/lock/tree/v10.14.0) (2017-03-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.13.0...v10.14.0)
+
+**Closed issues**
+- prefill option is lost after reset password [\#933](https://github.com/auth0/lock/issues/933)
+
+**Added**
+- Throw an error when audience is used without oidcConformant flag [\#947](https://github.com/auth0/lock/pull/947) ([luisrudge](https://github.com/luisrudge))
+- Added Finnish translation [\#936](https://github.com/auth0/lock/pull/936) ([kettunen](https://github.com/kettunen))
+- Added Ukrainian translation [\#931](https://github.com/auth0/lock/pull/931) ([grsmv](https://github.com/grsmv))
+
+**Changed**
+- Upgrade auth0js to v8.5.0 [\#952](https://github.com/auth0/lock/pull/952) ([luisrudge](https://github.com/luisrudge))
+- Disable social buttons when terms were not accepted on sign up [\#949](https://github.com/auth0/lock/pull/949) ([luisrudge](https://github.com/luisrudge))
+- Better explanation about the sso option [\#948](https://github.com/auth0/lock/pull/948) ([luisrudge](https://github.com/luisrudge))
+- Changed password leak error message [\#934](https://github.com/auth0/lock/pull/934) ([ntotten](https://github.com/ntotten))
+- Add support for success and error messages to be in HTML [\#928](https://github.com/auth0/lock/pull/928) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixing Italian dictionary [\#950](https://github.com/auth0/lock/pull/950) ([ilmistra](https://github.com/ilmistra))
+- Don't clear email field after reset password [\#945](https://github.com/auth0/lock/pull/945) ([luisrudge](https://github.com/luisrudge))
+- Disable autoCorrect and spellCheck in the username input [\#927](https://github.com/auth0/lock/pull/927) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.13.0](https://github.com/auth0/lock/tree/v10.13.0) (2017-03-13)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.12.3...v10.13.0)
 
