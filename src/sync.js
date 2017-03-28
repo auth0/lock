@@ -116,7 +116,7 @@ function handleError(m, key, error) {
 
   // TODO: this should be configurable for each sync
   if (key !== "sso") {
-    const stopError = new Error("An error occurred when fetching data.");
+    const stopError = new Error(`An error occurred when fetching data. (key: ${key})`);
     stopError.code = "sync";
     stopError.origin = error;
     result = l.stop(result, stopError);
