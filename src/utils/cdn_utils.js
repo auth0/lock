@@ -33,10 +33,10 @@ export function load(attrs) {
   script.src = url;
   global.document.getElementsByTagName('head')[0].appendChild(script);
 
-  const handleError = (url) => {
+  const handleError = (err) => {
     cbs[method] = cbs[method].filter(x => {
       if (x.url === url) {
-        setTimeout(() => x.cb({}), 0);
+        setTimeout(() => x.cb(err), 0);
         return false;
       } else {
         return true;
@@ -44,13 +44,13 @@ export function load(attrs) {
     });
   }
 
-  const timeoutID = setTimeout(() => handleError(url), 5000);
+  const timeoutID = setTimeout(() => handleError(new Error(`${url} timed out`)), 20000);
 
   script.addEventListener('load', () => clearTimeout(timeoutID));
 
   script.addEventListener('error', () => {
     clearTimeout(timeoutID);
-    handleError(url);
+    handleError(new Error(`${url} could not be loaded.`));
   });
 }
 

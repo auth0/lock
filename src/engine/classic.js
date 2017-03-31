@@ -144,23 +144,24 @@ class Classic {
   }
 
   render(m) {
+    //if there's an error, we should show the error screen no matter what.
+    if (l.hasStopped(m)) {
+      return new ErrorScreen();
+    }
+
     // TODO: remove the detail about the loading pane being pinned,
     // sticky screens should be handled at the box module.
     if (!isDone(m) || m.get("isLoadingPanePinned")) {
       return new LoadingScreen();
     }
 
-    if (l.hasStopped(m)) {
-      return new ErrorScreen();
-    }
-
     if (hasScreen(m, "login")) {
       if (!hasSkippedQuickAuth(m)
-           && hasInitialScreen(m, "login")) {
+        && hasInitialScreen(m, "login")) {
 
-         if (isInCorpNetwork(m)) {
-           return new KerberosScreen();
-         }
+        if (isInCorpNetwork(m)) {
+          return new KerberosScreen();
+        }
 
         if (l.ui.rememberLastLogin(m)) {
           const conn = lastUsedConnection(m);
