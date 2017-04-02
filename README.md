@@ -146,6 +146,18 @@ lock.resumeAuth(hash, function(error, authResult) {
 });
 ```
 
+### logout(options)
+
+Logs out the user
+
+- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout)
+
+#### Example
+
+```js
+lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
+```
+
 ### Customization
 
 The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
