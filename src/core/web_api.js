@@ -35,7 +35,7 @@ class Auth0WebAPI {
     this.clients[lockID].logIn(options, authParams, cb);
   }
 
-  signOut(lockID, query) {
+  logout(lockID, query) {
     this.clients[lockID].logout(query);
   }
 

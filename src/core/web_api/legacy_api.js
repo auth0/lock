@@ -67,7 +67,7 @@ class Auth0LegacyAPIClient {
     }
   }
 
-  signOut(query) {
+  logout(query) {
     this.client.logout(query);
   }
 

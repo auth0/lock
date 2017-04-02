@@ -167,7 +167,7 @@ export default class Base extends EventEmitter {
   }
 
   logout(query = {}) {
-    webAPI.signOut(this.id, query);
+    webAPI.logout(this.id, query);
   }
 
   update(f) {
