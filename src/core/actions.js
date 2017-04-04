@@ -29,10 +29,11 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
 export function handleAuthCallback() {
   const ms = read(getCollection, "lock");
   const keepHash = ms.filter(m => !l.hashCleanup(m)).size > 0;
+  const urlWithoutHash = global.location.href.split('#')[0];
   const callback = (error, authResult) => {
     const parsed = !!(error || authResult);
     if (parsed && !keepHash) {
-      global.location.hash = "";
+      global.history.replaceState(null, '', urlWithoutHash);
     }
   };
   resumeAuth(global.location.hash, callback);
