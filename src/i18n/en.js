@@ -63,7 +63,7 @@ export default {
   loginLabel: "Log In",
   loginSubmitLabel: "Log In",
   loginWithLabel: "Log in with %s",
-  notYourAccountAction: "Not your account?",
+  notYourAccountAction: "Use a different account",
   passwordInputPlaceholder: "your password",
   passwordStrength: {
     containsAtLeast: "Contain at least %d of the following %d types of characters:",
