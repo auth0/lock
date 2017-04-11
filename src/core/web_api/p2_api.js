@@ -60,7 +60,7 @@ class Auth0APIClient {
     }
   }
 
-  signOut(query) {
+  logout(query) {
     this.client.logout(query);
   }
 

@@ -19,7 +19,7 @@ WebAPI.prototype.logIn = function(lockID, options, authParams, cb) {
   setTimeout(() => cb(...args), state.get("latency"));
 };
 
-WebAPI.prototype.signOut = function() {};
+WebAPI.prototype.logout = function() {};
 
 WebAPI.prototype.signUp = function(lockID, options, cb) {
   const state = store.deref();
