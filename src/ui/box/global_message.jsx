@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -16,6 +17,6 @@ export default class GlobalMessage extends React.Component {
 }
 
 GlobalMessage.propTypes = {
-  message: React.PropTypes.node.isRequired,
-  type: React.PropTypes.oneOf(['error', 'success']).isRequired
+  message: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['error', 'success']).isRequired
 }

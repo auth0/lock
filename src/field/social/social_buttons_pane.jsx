@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
@@ -61,13 +62,13 @@ export default class SocialButtonsPane extends React.Component {
 }
 
 SocialButtonsPane.propTypes = {
-  bigButtons: React.PropTypes.bool.isRequired,
-  instructions: React.PropTypes.any,
-  labelFn: React.PropTypes.func.isRequired,
-  lock: React.PropTypes.object.isRequired,
-  showLoading: React.PropTypes.bool.isRequired,
-  signUp: React.PropTypes.bool.isRequired,
-  disabled: React.PropTypes.bool,
+  bigButtons: PropTypes.bool.isRequired,
+  instructions: PropTypes.any,
+  labelFn: PropTypes.func.isRequired,
+  lock: PropTypes.object.isRequired,
+  showLoading: PropTypes.bool.isRequired,
+  signUp: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
 };
 
 SocialButtonsPane.defaultProps = {

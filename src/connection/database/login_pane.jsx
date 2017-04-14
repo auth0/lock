@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import EmailPane from '../../field/email/email_pane';
 import UsernamePane from '../../field/username/username_pane';
@@ -72,14 +73,14 @@ export default class LoginPane extends React.Component {
 }
 
 LoginPane.propTypes = {
-  emailInputPlaceholder: React.PropTypes.string.isRequired,
-  forgotPasswordAction: React.PropTypes.string.isRequired,
-  i18n: React.PropTypes.object.isRequired,
-  instructions: React.PropTypes.any,
-  lock: React.PropTypes.object.isRequired,
-  passwordInputPlaceholder: React.PropTypes.string.isRequired,
-  showForgotPasswordLink: React.PropTypes.bool.isRequired,
-  showPassword: React.PropTypes.bool.isRequired,
-  usernameInputPlaceholder: React.PropTypes.string.isRequired,
-  usernameStyle: React.PropTypes.oneOf(["any", "email", "username"])
+  emailInputPlaceholder: PropTypes.string.isRequired,
+  forgotPasswordAction: PropTypes.string.isRequired,
+  i18n: PropTypes.object.isRequired,
+  instructions: PropTypes.any,
+  lock: PropTypes.object.isRequired,
+  passwordInputPlaceholder: PropTypes.string.isRequired,
+  showForgotPasswordLink: PropTypes.bool.isRequired,
+  showPassword: PropTypes.bool.isRequired,
+  usernameInputPlaceholder: PropTypes.string.isRequired,
+  usernameStyle: PropTypes.oneOf(["any", "email", "username"])
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Screen from './screen';
 import { pinLoadingPane, unpinLoadingPane } from './actions';
@@ -36,5 +37,5 @@ class LoadingPane extends React.Component {
 }
 
 LoadingPane.propTypes = {
-  model: React.PropTypes.object.isRequired
+  model: PropTypes.object.isRequired
 };

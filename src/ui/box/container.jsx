@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Chrome from './chrome';
 import { CloseButton } from './button';
@@ -19,7 +20,7 @@ const Avatar = ({imageUrl}) => (
 );
 
 Avatar.propTypes = {
-  imageUrl: React.PropTypes.string.isRequired
+  imageUrl: PropTypes.string.isRequired
 }
 
 class EscKeyDownHandler {
@@ -212,29 +213,29 @@ export default class Container extends React.Component {
 }
 
 Container.propTypes = {
-  autofocus: React.PropTypes.bool.isRequired,
-  avatar: React.PropTypes.string,
-  auxiliaryPane: React.PropTypes.element,
-  backHandler: React.PropTypes.func,
-  badgeLink: React.PropTypes.string.isRequired,
-  closeHandler: React.PropTypes.func,
-  contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
-  contentProps: React.PropTypes.object.isRequired,
-  disableSubmitButton: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.node,
-  isMobile: React.PropTypes.bool.isRequired,
-  isModal: React.PropTypes.bool.isRequired,
-  isSubmitting: React.PropTypes.bool.isRequired,
-  logo: React.PropTypes.string.isRequired,
-  primaryColor: React.PropTypes.string.isRequired,
-  screenName: React.PropTypes.string.isRequired,
-  showBadge: React.PropTypes.bool.isRequired,
-  submitButtonLabel: React.PropTypes.string,
-  success: React.PropTypes.node,
-  tabs: React.PropTypes.bool,
-  terms: React.PropTypes.element,
-  title: React.PropTypes.string,
-  transitionName: React.PropTypes.string.isRequired
+  autofocus: PropTypes.bool.isRequired,
+  avatar: PropTypes.string,
+  auxiliaryPane: PropTypes.element,
+  backHandler: PropTypes.func,
+  badgeLink: PropTypes.string.isRequired,
+  closeHandler: PropTypes.func,
+  contentComponent: PropTypes.func.isRequired, // TODO: it also can be a class component
+  contentProps: PropTypes.object.isRequired,
+  disableSubmitButton: PropTypes.bool.isRequired,
+  error: PropTypes.node,
+  isMobile: PropTypes.bool.isRequired,
+  isModal: PropTypes.bool.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  logo: PropTypes.string.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  screenName: PropTypes.string.isRequired,
+  showBadge: PropTypes.bool.isRequired,
+  submitButtonLabel: PropTypes.string,
+  success: PropTypes.node,
+  tabs: PropTypes.bool,
+  terms: PropTypes.element,
+  title: PropTypes.string,
+  transitionName: PropTypes.string.isRequired
   // escHandler
   // submitHandler,
 };

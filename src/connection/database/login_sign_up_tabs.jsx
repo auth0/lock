@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { showLoginActivity, showSignUpActivity } from './actions';
 import * as l from '../../core/index';
@@ -53,10 +54,10 @@ export default class LoginSignUpTabs extends React.Component {
 }
 
 LoginSignUpTabs.propTypes = {
-  lock: React.PropTypes.object.isRequired,
-  loginLabel: React.PropTypes.string.isRequired,
-  signUpLabel: React.PropTypes.string.isRequired,
-  signUpLink: React.PropTypes.string
+  lock: PropTypes.object.isRequired,
+  loginLabel: PropTypes.string.isRequired,
+  signUpLabel: PropTypes.string.isRequired,
+  signUpLink: PropTypes.string
 };
 
 class LoginSignUpTab extends React.Component {

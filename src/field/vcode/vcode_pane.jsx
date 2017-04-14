@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import VcodeInput from '../../ui/input/vcode_input';
 import * as l from '../../core/index';
@@ -50,9 +51,9 @@ export default class VcodePane extends React.Component {
 }
 
 VcodePane.propTypes = {
-  instructions: React.PropTypes.element,
-  lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired,
-  resendLabel: React.PropTypes.string.isRequired,
-  onRestart: React.PropTypes.func.isRequired
+  instructions: PropTypes.element,
+  lock: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  resendLabel: PropTypes.string.isRequired,
+  onRestart: PropTypes.func.isRequired
 };

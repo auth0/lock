@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import SuccessPane from '../../ui/box/success_pane';
 import { closeLock } from '../../core/actions';
@@ -25,8 +26,8 @@ export default class PasswordResetConfirmation extends React.Component {
 }
 
 PasswordResetConfirmation.propTypes = {
-  closeHandler: React.PropTypes.func.isRequired,
-  lock: React.PropTypes.object.isRequired
+  closeHandler: PropTypes.func.isRequired,
+  lock: PropTypes.object.isRequired
 };
 
 export function renderPasswordResetConfirmation(m, props = {}) {

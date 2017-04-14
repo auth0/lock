@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import MFACodePane from '../../field/mfa-code/mfa_code_pane';
 
@@ -29,9 +30,9 @@ export default class MFAPane extends React.Component {
 }
 
 MFAPane.propTypes = {
-  mfaInputPlaceholder: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  i18n: React.PropTypes.object.isRequired,
-  instructions: React.PropTypes.any,
-  lock: React.PropTypes.object.isRequired
+  mfaInputPlaceholder: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  i18n: PropTypes.object.isRequired,
+  instructions: PropTypes.any,
+  lock: PropTypes.object.isRequired
 };

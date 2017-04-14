@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -41,9 +42,9 @@ class SubmitButton extends React.Component {
 }
 
 SubmitButton.propTypes = {
-  color: React.PropTypes.string.isRequired,
-  disabled: React.PropTypes.bool,
-  label: React.PropTypes.string
+  color: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  label: PropTypes.string
 };
 
 const MESSAGE_ANIMATION_DURATION = 250;
@@ -296,23 +297,23 @@ export default class Chrome extends React.Component {
 }
 
 Chrome.propTypes = {
-  autofocus: React.PropTypes.bool.isRequired,
-  avatar: React.PropTypes.string,
-  auxiliaryPane: React.PropTypes.element,
-  backHandler: React.PropTypes.func,
-  contentComponent: React.PropTypes.func.isRequired, // TODO: it also can be a class component
-  contentProps: React.PropTypes.object.isRequired,
-  disableSubmitButton: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.node,
-  isSubmitting: React.PropTypes.bool.isRequired,
-  logo: React.PropTypes.string.isRequired,
-  primaryColor: React.PropTypes.string.isRequired,
-  showSubmitButton: React.PropTypes.bool.isRequired,
-  submitButtonLabel: React.PropTypes.string,
-  success: React.PropTypes.node,
-  terms: React.PropTypes.element,
-  title: React.PropTypes.string,
-  transitionName: React.PropTypes.string.isRequired
+  autofocus: PropTypes.bool.isRequired,
+  avatar: PropTypes.string,
+  auxiliaryPane: PropTypes.element,
+  backHandler: PropTypes.func,
+  contentComponent: PropTypes.func.isRequired, // TODO: it also can be a class component
+  contentProps: PropTypes.object.isRequired,
+  disableSubmitButton: PropTypes.bool.isRequired,
+  error: PropTypes.node,
+  isSubmitting: PropTypes.bool.isRequired,
+  logo: PropTypes.string.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  showSubmitButton: PropTypes.bool.isRequired,
+  submitButtonLabel: PropTypes.string,
+  success: PropTypes.node,
+  terms: PropTypes.element,
+  title: PropTypes.string,
+  transitionName: PropTypes.string.isRequired
 };
 
 Chrome.defaultProps = {

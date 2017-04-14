@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { BackButton } from './button';
 
@@ -18,9 +19,9 @@ export default class Header extends React.Component {
 }
 
 Header.propTypes = {
-  backgroundUrl: React.PropTypes.string,
-  logoUrl: React.PropTypes.string,
-  name: React.PropTypes.string
+  backgroundUrl: PropTypes.string,
+  logoUrl: PropTypes.string,
+  name: PropTypes.string
 };
 
 class Welcome extends React.Component {
@@ -40,8 +41,8 @@ class Welcome extends React.Component {
 }
 
 Welcome.propTypes = {
-  imageUrl: React.PropTypes.string,
-  name: React.PropTypes.string
+  imageUrl: PropTypes.string,
+  name: PropTypes.string
 };
 
 class WelcomeMessage extends React.Component {
@@ -62,7 +63,7 @@ class WelcomeMessage extends React.Component {
 }
 
 WelcomeMessage.propTypes = {
-  name: React.PropTypes.string
+  name: PropTypes.string
 }
 
 const cssBlurSupport = (function() {
@@ -111,7 +112,7 @@ class Background extends React.Component {
 }
 
 Background.propTypes = {
-  backgroundColor: React.PropTypes.string,
-  grayScale: React.PropTypes.bool,
-  imageUrl: React.PropTypes.string
+  backgorundColor: PropTypes.string,
+  grayScale: PropTypes.bool,
+  imageUrl: PropTypes.string
 }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 
@@ -46,14 +47,14 @@ export default class InputWrap extends React.Component {
 }
 
 InputWrap.propTypes = {
-  before: React.PropTypes.element,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.element.isRequired,
-    React.PropTypes.arrayOf(React.PropTypes.element).isRequired
+  before: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.element.isRequired,
+    PropTypes.arrayOf(PropTypes.element).isRequired
   ]),
-  focused: React.PropTypes.bool,
-  invalidHint: React.PropTypes.string,
-  isValid: React.PropTypes.bool.isRequired,
-  name: React.PropTypes.string.isRequired,
-  svg: React.PropTypes.string
+  focused: PropTypes.bool,
+  invalidHint: PropTypes.string,
+  isValid: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  svg: PropTypes.string
 };

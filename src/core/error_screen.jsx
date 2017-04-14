@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Screen from './screen';
 import * as l from './index';
@@ -22,5 +23,5 @@ const ErrorPane = ({i18n}) => (
 
 
 ErrorPane.propTypes = {
-  i18n: React.PropTypes.object.isRequired
+  i18n: PropTypes.object.isRequired
 };
