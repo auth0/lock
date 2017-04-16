@@ -111,7 +111,7 @@ class Background extends React.Component {
 }
 
 Background.propTypes = {
-  backgorundColor: React.PropTypes.string,
+  backgroundColor: React.PropTypes.string,
   grayScale: React.PropTypes.bool,
   imageUrl: React.PropTypes.string
 }
