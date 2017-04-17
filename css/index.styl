@@ -117,7 +117,9 @@ tabsHeight = 40px
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     margin 0 auto
     border-radius 5px
-
+    max-height 100vh
+    overflow-y auto
+    
     +breakpoint("mobile")
       -webkit-transition -webkit-transform .4s, opacity .3s
       transition transform .4s, opacity .3s
