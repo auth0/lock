@@ -53,7 +53,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
     "bump-version": "^0.5.0",
-    "component-cdn-uploader": "auth0/component-cdn-uploader#1.1.0",
+    "component-cdn-uploader": "auth0/component-cdn-uploader#1.2.0",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "dotenv": "^4.0.0",

@@ -1872,9 +1872,9 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
 
-component-cdn-uploader@auth0/component-cdn-uploader#1.1.0:
-  version "1.0.0"
-  resolved "https://codeload.github.com/auth0/component-cdn-uploader/tar.gz/bcb103056c24c5b873580b22f9dc0d1617ed34db"
+component-cdn-uploader@auth0/component-cdn-uploader#1.2.0:
+  version "1.2.0"
+  resolved "https://codeload.github.com/auth0/component-cdn-uploader/tar.gz/1b176de377e8195897758784f714c2a4cda040a6"
   dependencies:
     chalk "^1.1.3"
     meow "^3.7.0"
