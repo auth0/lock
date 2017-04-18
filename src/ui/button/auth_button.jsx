@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const AuthButton = (props) => {
@@ -37,14 +38,14 @@ const AuthButton = (props) => {
 };
 
 AuthButton.propTypes = {
-  disabled: React.PropTypes.bool.isRequired,
-  isBig: React.PropTypes.bool.isRequired,
-  label: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
-  strategy: React.PropTypes.string.isRequired,
-  icon: React.PropTypes.string,
-  primaryColor: React.PropTypes.string,
-  foregroundColor: React.PropTypes.string
+  disabled: PropTypes.bool.isRequired,
+  isBig: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  strategy: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  primaryColor: PropTypes.string,
+  foregroundColor: PropTypes.string
 };
 
 AuthButton.defaultProps = {

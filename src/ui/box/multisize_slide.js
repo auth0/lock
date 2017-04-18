@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSCore from 'fbjs/lib/CSSCore';
@@ -90,13 +91,13 @@ export default class Slider extends React.Component {
 }
 
 Slider.propTypes = {
-  component: React.PropTypes.string,
-  delay: React.PropTypes.number.isRequired,
-  onDidAppear: React.PropTypes.func.isRequired,
-  onDidSlide: React.PropTypes.func.isRequired,
-  onWillSlide: React.PropTypes.func.isRequired,
-  reverse: React.PropTypes.bool.isRequired,
-  transitionName: React.PropTypes.string.isRequired
+  component: PropTypes.string,
+  delay: PropTypes.number.isRequired,
+  onDidAppear: PropTypes.func.isRequired,
+  onDidSlide: PropTypes.func.isRequired,
+  onWillSlide: PropTypes.func.isRequired,
+  reverse: PropTypes.bool.isRequired,
+  transitionName: PropTypes.string.isRequired
 };
 
 Slider.defaultProps = {

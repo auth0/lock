@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import InputWrap from './input_wrap';
 import { icon } from './password_input';
 
 export default class MFACodeInput extends React.Component {
   static propTypes = {
-    invalidHint: React.PropTypes.string.isRequired,
-    isValid: React.PropTypes.bool.isRequired,
-    onChange: React.PropTypes.func,
-    placeholder: React.PropTypes.string,
-    value: React.PropTypes.string.isRequired
+    invalidHint: PropTypes.string.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    onChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    value: PropTypes.string.isRequired
   };
 
   constructor(props) {

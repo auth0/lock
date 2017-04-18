@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import PhoneNumberInput from '../../ui/input/phone_number_input';
 
@@ -46,7 +47,7 @@ export default class PhoneNumberPane extends React.Component {
 }
 
 PhoneNumberPane.propTypes = {
-  instructions: React.PropTypes.element,
-  lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired
+  instructions: PropTypes.element,
+  lock: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired
 };

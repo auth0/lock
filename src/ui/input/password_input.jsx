@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import InputWrap from './input_wrap';
 import PasswordStrength from './password/password_strength';
@@ -6,13 +7,13 @@ export const icon = '<svg focusable="false" width="11px" height="14px" viewBox="
 
 export default class PasswordInput extends React.Component {
   static propTypes = {
-    invalidHint: React.PropTypes.string.isRequired,
-    isValid: React.PropTypes.bool.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    placeholder: React.PropTypes.string,
-    policy: React.PropTypes.string,
-    strengthMessages: React.PropTypes.object,
-    value: React.PropTypes.string.isRequired
+    invalidHint: PropTypes.string.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    policy: PropTypes.string,
+    strengthMessages: PropTypes.object,
+    value: PropTypes.string.isRequired
   };
 
   constructor(props) {

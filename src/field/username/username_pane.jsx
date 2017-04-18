@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import UsernameInput from '../../ui/input/username_input';
 import * as c from '../index';
@@ -61,11 +62,11 @@ export default class UsernamePane extends React.Component {
 }
 
 UsernamePane.propTypes = {
-  i18n: React.PropTypes.object.isRequired,
-  lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired,
-  validateFormat: React.PropTypes.bool.isRequired,
-  usernameStyle: React.PropTypes.oneOf(["any", "email", "username"])
+  i18n: PropTypes.object.isRequired,
+  lock: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  validateFormat: PropTypes.bool.isRequired,
+  usernameStyle: PropTypes.oneOf(["any", "email", "username"])
 };
 
 UsernamePane.defaultProps = {

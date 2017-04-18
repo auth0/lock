@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import createPolicy from 'password-sheriff';
 import util from 'util';
@@ -33,9 +34,9 @@ export default class PasswordStrength extends React.Component {
 }
 
 PasswordStrength.propTypes = {
-  messages: React.PropTypes.object.isRequired,
-  password: React.PropTypes.string.isRequired,
-  policy: React.PropTypes.oneOf([
+  messages: PropTypes.object.isRequired,
+  password: PropTypes.string.isRequired,
+  policy: PropTypes.oneOf([
     "none",
     "low",
     "fair",
@@ -61,7 +62,7 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object)
 };
 
 class Item extends React.Component {
@@ -81,7 +82,7 @@ class Item extends React.Component {
 }
 
 Item.propTypes = {
-  items: React.PropTypes.array,
-  message: React.PropTypes.string.isRequired,
-  verified: React.PropTypes.bool.isRequired
+  items: PropTypes.array,
+  message: PropTypes.string.isRequired,
+  verified: PropTypes.bool.isRequired
 };

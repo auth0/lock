@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { BackButton, CloseButton } from './button';
 
@@ -13,13 +14,13 @@ const ConfirmationPane = ({backHandler, children, closeHandler, svg}) => (
 );
 
 ConfirmationPane.propTypes = {
-  backHandler: React.PropTypes.func,
-  closeHandler: React.PropTypes.func,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.element.isRequired,
-    React.PropTypes.arrayOf(React.PropTypes.element).isRequired
+  backHandler: PropTypes.func,
+  closeHandler: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.element.isRequired,
+    PropTypes.arrayOf(PropTypes.element).isRequired
   ]),
-  svg: React.PropTypes.string.isRequired
+  svg: PropTypes.string.isRequired
 };
 
 export default ConfirmationPane;

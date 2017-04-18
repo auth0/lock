@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import UsernamePane from '../../field/username/username_pane';
 import PasswordPane from '../../field/password/password_pane';
@@ -35,9 +36,9 @@ export default class HRDPane extends React.Component {
 }
 
 HRDPane.propTypes = {
-  header: React.PropTypes.element,
-  i18n: React.PropTypes.object.isRequired,
-  model: React.PropTypes.object.isRequired,
-  passwordInputPlaceholder: React.PropTypes.string.isRequired,
-  usernameInputPlaceholder: React.PropTypes.string.isRequired
+  header: PropTypes.element,
+  i18n: PropTypes.object.isRequired,
+  model: PropTypes.object.isRequired,
+  passwordInputPlaceholder: PropTypes.string.isRequired,
+  usernameInputPlaceholder: PropTypes.string.isRequired
 };

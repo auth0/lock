@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import AuthButton from '../button/auth_button';
 
@@ -50,16 +51,16 @@ const QuickAuthPane = (props) => {
 };
 
 QuickAuthPane.propTypes = {
-  alternativeLabel: React.PropTypes.string,
+  alternativeLabel: PropTypes.string,
   alternativeClickHandler: (props, propName, component, ...rest) => {
     if (props.alternativeLabel !== undefined) {
-      return React.PropTypes.func.isRequired(props, propName, component, ...rest);
+      return PropTypes.func.isRequired(props, propName, component, ...rest);
     }
   },
-  buttonLabel: React.PropTypes.string.isRequired,
-  buttonClickHandler: React.PropTypes.func.isRequired,
-  header: React.PropTypes.element,
-  strategy: React.PropTypes.string.isRequired
+  buttonLabel: PropTypes.string.isRequired,
+  buttonClickHandler: PropTypes.func.isRequired,
+  header: PropTypes.element,
+  strategy: PropTypes.string.isRequired
 };
 
 export default QuickAuthPane;

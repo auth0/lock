@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import EmailInput from '../../ui/input/email_input';
 import * as c from '../index';
@@ -48,7 +49,7 @@ export default class EmailPane extends React.Component {
 }
 
 EmailPane.propTypes = {
-  i18n: React.PropTypes.object.isRequired,
-  lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired
+  i18n: PropTypes.object.isRequired,
+  lock: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import PasswordInput from '../../ui/input/password_input';
 import * as c from '../index';
@@ -32,10 +33,10 @@ export default class PasswordPane extends React.Component {
 }
 
 PasswordPane.propTypes = {
-  i18n: React.PropTypes.object.isRequired,
-  lock: React.PropTypes.object.isRequired,
-  onChange: React.PropTypes.func,
-  placeholder: React.PropTypes.string.isRequired,
-  policy: React.PropTypes.string,
-  strengthMessages: React.PropTypes.object
+  i18n: PropTypes.object.isRequired,
+  lock: PropTypes.object.isRequired,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string.isRequired,
+  policy: PropTypes.string,
+  strengthMessages: PropTypes.object
 };

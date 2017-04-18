@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const svgs = {
@@ -15,9 +16,9 @@ const IconButton = ({name, onClick, svg}) => (
 );
 
 IconButton.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
-  svg: React.PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  svg: PropTypes.string.isRequired
 };
 
 // const createButton = name => {
@@ -39,7 +40,7 @@ export const CloseButton = ({onClick}) => (
 );
 
 CloseButton.propTypes = {
-  onClick: React.PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export const BackButton = ({onClick}) => (
@@ -47,5 +48,5 @@ export const BackButton = ({onClick}) => (
 );
 
 BackButton.propTypes = {
-  onClick: React.PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
