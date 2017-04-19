@@ -42,25 +42,17 @@ describe('CustomInput', () => {
     }));
   });
   describe('when type === select', () => {
-    beforeEach(() => defaultProps.type = 'select');
+    beforeEach(() => (defaultProps.type = 'select'));
     it('renders correctly as a SelectInput', () => {
       const CustomInput = getComponent();
 
-      expectComponent(
-        <CustomInput
-          {...defaultProps}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
     });
     it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
       require('field/index').isFieldVisiblyInvalid = () => false;
       let CustomInput = getComponent();
 
-      expectComponent(
-        <CustomInput
-          {...defaultProps}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
     });
     it('calls `startOptionSelection` when clicked', () => {
       let CustomInput = getComponent();
@@ -70,31 +62,23 @@ describe('CustomInput', () => {
 
       props.onClick();
 
-      const {mock} = require('field/actions').startOptionSelection;
+      const { mock } = require('field/actions').startOptionSelection;
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
     });
   });
   describe('when type == input', () => {
-    beforeEach(() => defaultProps.type = 'input');
+    beforeEach(() => (defaultProps.type = 'input'));
     it('renders correctly as a TextInput', () => {
       const CustomInput = getComponent();
 
-      expectComponent(
-        <CustomInput
-          {...defaultProps}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
     });
     it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
       require('field/index').isFieldVisiblyInvalid = () => false;
       let CustomInput = getComponent();
 
-      expectComponent(
-        <CustomInput
-          {...defaultProps}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
     });
     it('calls `changeField` when changed', () => {
       let CustomInput = getComponent();
@@ -104,22 +88,17 @@ describe('CustomInput', () => {
 
       props.onChange({ target: { value: 'newUser' } });
 
-      const {mock} = require('field/actions').changeField;
+      const { mock } = require('field/actions').changeField;
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
     });
   });
   describe('when type == checkbox', () => {
-    beforeEach(() => defaultProps.type = 'checkbox');
+    beforeEach(() => (defaultProps.type = 'checkbox'));
     it('renders correctly as a CheckBoxInput', () => {
       const CustomInput = getComponent();
 
-      expectComponent(
-          <CustomInput
-              {...defaultProps}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
     });
   });
-
 });

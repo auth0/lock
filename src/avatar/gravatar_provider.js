@@ -6,9 +6,7 @@ import { validateEmail } from '../field/email';
 const md5 = blueimp.md5 || blueimp;
 
 function normalize(str) {
-  return typeof str === "string"
-    ? trim(str.toLowerCase())
-    : "";
+  return typeof str === 'string' ? trim(str.toLowerCase()) : '';
 }
 
 export function displayName(email, cb) {
@@ -16,7 +14,7 @@ export function displayName(email, cb) {
   if (!validateEmail(email)) return cb({});
 
   const url = `https://secure.gravatar.com/${md5(email)}.json`;
-  jsonp.get(url, function (error, result) {
+  jsonp.get(url, function(error, result) {
     if (!error && result && result.entry && result.entry[0]) {
       cb(null, result.entry[0].displayName);
     } else {

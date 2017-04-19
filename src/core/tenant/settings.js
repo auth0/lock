@@ -4,7 +4,7 @@ import { initTenant } from './index';
 
 export function fetchTenantSettings(tenantBaseUrl, cb) {
   load({
-    method: "setTenant",
+    method: 'setTenant',
     url: `${tenantBaseUrl}?t${+new Date()}`,
     check: () => true,
     cb: cb
@@ -14,6 +14,6 @@ export function fetchTenantSettings(tenantBaseUrl, cb) {
 export function syncTenantSettingsSuccess(m, client_id, result) {
   m = initTenant(m, client_id, result);
   m = l.filterConnections(m);
-  m = l.runHook(m, "didReceiveClientSettings");
+  m = l.runHook(m, 'didReceiveClientSettings');
   return m;
 }

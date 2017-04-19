@@ -4,14 +4,13 @@ import CSSCore from 'fbjs/lib/CSSCore';
 import Container from './box/container';
 
 class ContainerManager {
-
   ensure(id, shouldAppend) {
     let container = global.document.getElementById(id);
 
     if (!container && shouldAppend) {
       container = global.document.createElement('div');
       container.id = id;
-      container.className = "auth0-lock-container";
+      container.className = 'auth0-lock-container';
       global.document.body.appendChild(container);
     }
 
@@ -21,11 +20,9 @@ class ContainerManager {
 
     return container;
   }
-
 }
 
 class Renderer {
-
   constructor() {
     this.containerManager = new ContainerManager();
     this.modals = {};
@@ -36,12 +33,9 @@ class Renderer {
     const container = this.containerManager.ensure(containerId, isModal);
 
     if (isModal && !this.modals[containerId]) {
-      CSSCore.addClass(
-        global.document.getElementsByTagName("html")[0],
-        "auth0-lock-html"
-      );
+      CSSCore.addClass(global.document.getElementsByTagName('html')[0], 'auth0-lock-html');
     }
-
+    // eslint-disable-next-line
     const component = ReactDOM.render(<Container {...props} />, container);
 
     if (isModal) {
@@ -73,12 +67,8 @@ class Renderer {
     if (this.modals[containerId]) {
       delete this.modals[containerId];
 
-      CSSCore.removeClass(
-        global.document.getElementsByTagName("html")[0],
-        "auth0-lock-html"
-      );
+      CSSCore.removeClass(global.document.getElementsByTagName('html')[0], 'auth0-lock-html');
     }
-
   }
 }
 

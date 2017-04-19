@@ -26,12 +26,12 @@ describe('SocialButtonsPane', () => {
     jest.mock('connection/social/index', () => ({
       displayName: () => 'displayName',
       socialConnections: () => [
-        { item: 1, get: (key) => `socialConnections1-${key}` },
-        { item: 2, get: (key) => `socialConnections2-${key}` }
+        { item: 1, get: key => `socialConnections1-${key}` },
+        { item: 2, get: key => `socialConnections2-${key}` }
       ],
       authButtonsTheme: () => ({
         get: () => ({
-          get: (key) => `authButtonsTheme-${key}`
+          get: key => `authButtonsTheme-${key}`
         })
       })
     }));
@@ -43,46 +43,24 @@ describe('SocialButtonsPane', () => {
 
   it('renders correctly', () => {
     const SocialButtonsPane = getComponent();
-    expectComponent(
-      <SocialButtonsPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<SocialButtonsPane {...defaultProps} />).toMatchSnapshot();
   });
   it('renders big buttons when bigButtons === true', () => {
     const SocialButtonsPane = getComponent();
-    expectComponent(
-      <SocialButtonsPane
-        {...defaultProps}
-        bigButtons
-        />
-    ).toMatchSnapshot();
+    expectComponent(<SocialButtonsPane {...defaultProps} bigButtons />).toMatchSnapshot();
   });
   it('disables social buttons when disabled === true', () => {
     const SocialButtonsPane = getComponent();
-    expectComponent(
-      <SocialButtonsPane
-        {...defaultProps}
-        disabled
-        />
-    ).toMatchSnapshot();
+    expectComponent(<SocialButtonsPane {...defaultProps} disabled />).toMatchSnapshot();
   });
   it('shows loading when showLoading === true', () => {
     const SocialButtonsPane = getComponent();
-    expectComponent(
-      <SocialButtonsPane
-        {...defaultProps}
-        showLoading
-        />
-    ).toMatchSnapshot();
+    expectComponent(<SocialButtonsPane {...defaultProps} showLoading />).toMatchSnapshot();
   });
   it('shows header when instructions are available', () => {
     const SocialButtonsPane = getComponent();
     expectComponent(
-      <SocialButtonsPane
-        {...defaultProps}
-        instructions="instructions"
-        />
+      <SocialButtonsPane {...defaultProps} instructions="instructions" />
     ).toMatchSnapshot();
   });
   it('calls `logIn` with social connection 1 when first button is clicked', () => {
@@ -93,7 +71,7 @@ describe('SocialButtonsPane', () => {
 
     props.onClick();
 
-    const {mock} = require('quick-auth/actions').logIn;
+    const { mock } = require('quick-auth/actions').logIn;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
@@ -105,7 +83,7 @@ describe('SocialButtonsPane', () => {
 
     props.onClick();
 
-    const {mock} = require('quick-auth/actions').logIn;
+    const { mock } = require('quick-auth/actions').logIn;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });

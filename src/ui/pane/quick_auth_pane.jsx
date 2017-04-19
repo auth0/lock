@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import AuthButton from '../button/auth_button';
 
-const QuickAuthPane = (props) => {
+const QuickAuthPane = props => {
   const {
     alternativeLabel,
     alternativeClickHandler,
@@ -20,13 +20,15 @@ const QuickAuthPane = (props) => {
         <a
           className="auth0-lock-alternative-link"
           href="#"
-          onClick={e => {e.preventDefault(); alternativeClickHandler(e)}}
+          onClick={e => {
+            e.preventDefault();
+            alternativeClickHandler(e);
+          }}
         >
           {alternativeLabel}
         </a>
       </p>
     : null;
-
 
   return (
     <div className="auth0-lock-last-login-pane">
@@ -34,7 +36,10 @@ const QuickAuthPane = (props) => {
 
       <AuthButton
         label={buttonLabel}
-        onClick={e => {e.preventDefault(); buttonClickHandler(e)}}
+        onClick={e => {
+          e.preventDefault();
+          buttonClickHandler(e);
+        }}
         strategy={strategy}
         primaryColor={primaryColor}
         foregroundColor={foregroundColor}

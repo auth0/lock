@@ -1,9 +1,8 @@
 import * as l from './index';
 import * as i18n from '../i18n';
-import {getInitialScreen, hasScreen} from '../connection/database/index';
+import { getInitialScreen, hasScreen } from '../connection/database/index';
 
 export default class Screen {
-
   constructor(name) {
     this.name = name;
   }
@@ -17,7 +16,7 @@ export default class Screen {
   }
 
   submitButtonLabel(m) {
-    return i18n.str(m, ["submitLabel"]);
+    return i18n.str(m, ['submitLabel']);
   }
 
   isFirstScreen(m) {
@@ -27,29 +26,25 @@ export default class Screen {
 
     // if signup and login is enabled, both are the first screen in this scenario and
     // neither of them should show the title
-    if (currentScreenName === 'signUp' && hasScreen(m, "login")) {
+    if (currentScreenName === 'signUp' && hasScreen(m, 'login')) {
       return true;
     }
 
-    const initialScreens = [
-      firstScreenName,
-      'loading',
-      'lastLogin'
-    ];
+    const initialScreens = [firstScreenName, 'loading', 'lastLogin'];
 
     return initialScreens.indexOf(currentScreenName) !== -1;
   }
 
   getTitle(m) {
     if (this.isFirstScreen(m)) {
-      return i18n.str(m, "title");
+      return i18n.str(m, 'title');
     }
 
     return this.getScreenTitle(m);
   }
 
   getScreenTitle(m) {
-    return i18n.str(m, "title");
+    return i18n.str(m, 'title');
   }
 
   submitHandler() {
@@ -71,5 +66,4 @@ export default class Screen {
   renderTerms() {
     return null;
   }
-
 }

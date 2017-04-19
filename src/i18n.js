@@ -4,24 +4,22 @@ import { format } from 'util';
 import sync from './sync';
 import * as l from './core/index';
 import { dataFns } from './utils/data_utils';
-const { get, set } = dataFns(["i18n"]);
+const { get, set } = dataFns(['i18n']);
 import enDictionary from './i18n/en';
 import { load, preload } from './utils/cdn_utils';
 
 export function str(m, keyPath, ...args) {
-  return format(get(m, ["strings"].concat(keyPath), ""), ...args);
+  return format(get(m, ['strings'].concat(keyPath), ''), ...args);
 }
 
 export function html(m, keyPath, ...args) {
   const html = str(m, keyPath, ...args);
 
-  return html
-    ? React.createElement("span", {dangerouslySetInnerHTML: {__html: html}})
-    : null;
+  return html ? React.createElement('span', { dangerouslySetInnerHTML: { __html: html } }) : null;
 }
 
 export function group(m, keyPath) {
-  return get(m, ["strings"].concat(keyPath), Map()).toJS();
+  return get(m, ['strings'].concat(keyPath), Map()).toJS();
 }
 
 export function initI18n(m) {
@@ -33,7 +31,7 @@ export function initI18n(m) {
 
   if (base.isEmpty()) {
     base = overrides;
-    m = sync(m, "i18n", {
+    m = sync(m, 'i18n', {
       syncFn: (_, cb) => syncLang(m, language, cb),
       successFn: (m, result) => {
         registerLanguageDictionary(language, result);
@@ -42,11 +40,7 @@ export function initI18n(m) {
 
         assertLanguage(m, overrided.toJS(), enDictionary);
 
-        return set(
-          m,
-          "strings",
-          defaultDictionary.mergeDeep(overrided)
-        );
+        return set(m, 'strings', defaultDictionary.mergeDeep(overrided));
       }
     });
   } else {
@@ -55,11 +49,11 @@ export function initI18n(m) {
 
   base = defaultDictionary.mergeDeep(base).mergeDeep(overrides);
 
-  return set(m, "strings", base);
+  return set(m, 'strings', base);
 }
 
-function assertLanguage(m, language, base, path = "") {
-  Object.keys(base).forEach( key => {
+function assertLanguage(m, language, base, path = '') {
+  Object.keys(base).forEach(key => {
     if (!language.hasOwnProperty(key)) {
       l.warn(m, `language does not have property ${path}${key}`);
     } else {
@@ -74,7 +68,7 @@ function assertLanguage(m, language, base, path = "") {
 
 function syncLang(m, language, cb) {
   load({
-    method: "registerLanguageDictionary",
+    method: 'registerLanguageDictionary',
     url: `${l.languageBaseUrl(m)}/js/lock/${__VERSION__}/${language}.js`,
     check: str => str && str === language,
     cb: (err, _, dictionary) => {
@@ -89,9 +83,9 @@ function registerLanguageDictionary(language, dictionary) {
   languageDictionaries[language] = Immutable.fromJS(dictionary);
 }
 
-registerLanguageDictionary("en", enDictionary);
+registerLanguageDictionary('en', enDictionary);
 
 preload({
-  method: "registerLanguageDictionary",
+  method: 'registerLanguageDictionary',
   cb: registerLanguageDictionary
 });

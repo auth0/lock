@@ -44,53 +44,34 @@ describe('VcodePane', () => {
 
   it('renders correctly', () => {
     const VcodePane = getComponent();
-    
-    expectComponent(
-      <VcodePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+
+    expectComponent(<VcodePane {...defaultProps} />).toMatchSnapshot();
   });
   it('shows header when instructions are available', () => {
     const VcodePane = getComponent();
 
     expectComponent(
-      <VcodePane
-        {...defaultProps}
-        instructions={<span>instructions</span>}
-        />
+      <VcodePane {...defaultProps} instructions={<span>instructions</span>} />
     ).toMatchSnapshot();
   });
   it('disable input when submitting', () => {
     require('core/index').submitting = () => true;
     const VcodePane = getComponent();
 
-    expectComponent(
-      <VcodePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<VcodePane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false and globalError() is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     require('core/index').globalError = () => false;
     let VcodePane = getComponent();
 
-    expectComponent(
-      <VcodePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<VcodePane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets autoFocus as true when `isSmallScreen` is false', () => {
     require('utils/media_utils').isSmallScreen = () => false;
     let VcodePane = getComponent();
 
-    expectComponent(
-      <VcodePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<VcodePane {...defaultProps} />).toMatchSnapshot();
   });
   it('calls `onRestart` when alternative link is clicked', () => {
     let VcodePane = getComponent();
@@ -98,7 +79,7 @@ describe('VcodePane', () => {
     const wrapper = mount(<VcodePane {...defaultProps} />);
     wrapper.find('.auth0-lock-alternative-link').simulate('click');
 
-    const {mock} = defaultProps.onRestart;
+    const { mock } = defaultProps.onRestart;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
@@ -106,11 +87,11 @@ describe('VcodePane', () => {
     let VcodePane = getComponent();
 
     const wrapper = mount(<VcodePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper, 1)
+    const props = extractPropsFromWrapper(wrapper, 1);
 
     props.onChange({ preventDefault: jest.fn(), target: { value: 'newCode' } });
 
-    const {mock} = require('store/index').swap;
+    const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });

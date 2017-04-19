@@ -20,10 +20,10 @@ export function load(attrs) {
           return true;
         }
       });
-    }
+    };
   }
 
-  cbs[method].push({cb: cb, check: check, url: url});
+  cbs[method].push({ cb: cb, check: check, url: url });
 
   const count = cbs[method].reduce((r, x) => r + (x.url === url ? 1 : 0), 0);
 
@@ -33,7 +33,7 @@ export function load(attrs) {
   script.src = url;
   global.document.getElementsByTagName('head')[0].appendChild(script);
 
-  const handleError = (err) => {
+  const handleError = err => {
     cbs[method] = cbs[method].filter(x => {
       if (x.url === url) {
         setTimeout(() => x.cb(err), 0);
@@ -42,7 +42,7 @@ export function load(attrs) {
         return true;
       }
     });
-  }
+  };
 
   const timeoutID = setTimeout(() => handleError(new Error(`${url} timed out`)), 20000);
 
@@ -54,6 +54,6 @@ export function load(attrs) {
   });
 }
 
-export function preload({method, cb}) {
+export function preload({ method, cb }) {
   global.Auth0[method] = cb;
 }

@@ -5,8 +5,8 @@ const store = atom(new Map({}));
 
 export function observe(key, id, f) {
   subscribe(`${key}-${id}`, (_, oldState, newState) => {
-    const m = getEntity(newState, "lock", id);
-    const oldM = getEntity(oldState, "lock", id);
+    const m = getEntity(newState, 'lock', id);
+    const oldM = getEntity(oldState, 'lock', id);
     if (m != oldM) f(m);
   });
 }

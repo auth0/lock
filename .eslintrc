@@ -1,12 +1,12 @@
 {
   "extends": [
-    "auth0-base/legacy"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
   ],
   "env": {
     "browser": true,
     "es6": true
   },
-  "parserOptions": {
-    "sourceType": "module"
-  }
+  "parser": "babel-eslint"
 }

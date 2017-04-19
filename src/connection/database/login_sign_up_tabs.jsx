@@ -6,15 +6,9 @@ import { getScreen } from './index';
 import { closeLock } from '../../core/actions';
 
 export default class LoginSignUpTabs extends React.Component {
-
   render() {
-    const {
-      lock,
-      loginLabel,
-      signUpLink,
-      signUpLabel
-    } = this.props;
-    const isLogin = getScreen(lock) === "login";
+    const { lock, loginLabel, signUpLink, signUpLabel } = this.props;
+    const isLogin = getScreen(lock) === 'login';
 
     return (
       <div className="auth0-lock-tabs-container">
@@ -50,7 +44,6 @@ export default class LoginSignUpTabs extends React.Component {
   handleSignUpWithHrefClick() {
     closeLock(l.id(this.props.lock), true);
   }
-
 }
 
 LoginSignUpTabs.propTypes = {
@@ -61,10 +54,9 @@ LoginSignUpTabs.propTypes = {
 };
 
 class LoginSignUpTab extends React.Component {
-
   handleClick(e) {
     if (this.props.href) {
-      this.props.clickWithHrefHandler();  
+      this.props.clickWithHrefHandler();
     } else {
       e.preventDefault();
       this.props.clickHandler();
@@ -73,18 +65,14 @@ class LoginSignUpTab extends React.Component {
 
   render() {
     const { current, href, label } = this.props;
-    const className = current ? "auth0-lock-tabs-current" : "";
+    const className = current ? 'auth0-lock-tabs-current' : '';
 
     return (
       <li className={className}>
-        <a
-          href={href || "#"}
-          onClick={::this.handleClick}
-        >
+        <a href={href || '#'} onClick={::this.handleClick}>
           {label}
         </a>
       </li>
     );
   }
-
 }

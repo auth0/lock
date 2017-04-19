@@ -2,7 +2,7 @@ import IdTokenVerifier from 'idtoken-verifier';
 import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import request from 'superagent';
-import {normalizeError, loginCallback, normalizeAuthParams} from './helper';
+import { normalizeError, loginCallback, normalizeAuthParams } from './helper';
 import qs from 'qs';
 
 class Auth0LegacyAPIClient {
@@ -26,9 +26,7 @@ class Auth0LegacyAPIClient {
       redirectUri: opts.redirectUrl,
       responseMode: opts.responseMode,
       responseType: opts.responseType,
-      plugins: [
-        new CordovaAuth0Plugin()
-      ],
+      plugins: [new CordovaAuth0Plugin()],
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       __tenant: opts.overrides && opts.overrides.__tenant,
@@ -51,17 +49,17 @@ class Auth0LegacyAPIClient {
     const f = loginCallback(!this.authOpt.popup, cb);
     const auth0Client = this.client;
 
-    const loginOptions = normalizeAuthParams({...options, ...this.authOpt, ...authParams});
+    const loginOptions = normalizeAuthParams({ ...options, ...this.authOpt, ...authParams });
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        auth0Client.popup.authorize({...loginOptions, owp: true}, f)
+        auth0Client.popup.authorize({ ...loginOptions, owp: true }, f);
       } else {
-        auth0Client.authorize(loginOptions, f)
+        auth0Client.authorize(loginOptions, f);
       }
     } else if (!this.authOpt.sso && this.authOpt.popup) {
-      auth0Client.client.loginWithResourceOwner(loginOptions, f)
+      auth0Client.client.loginWithResourceOwner(loginOptions, f);
     } else if (this.authOpt.popup) {
-      auth0Client.popup.loginWithCredentials({...loginOptions, owp: true}, f)
+      auth0Client.popup.loginWithCredentials({ ...loginOptions, owp: true }, f);
     } else {
       auth0Client.redirect.loginWithCredentials(loginOptions, f);
     }
@@ -77,7 +75,7 @@ class Auth0LegacyAPIClient {
 
     delete options.autoLogin;
 
-    const popupHandler = (autoLogin && popup) ? this.client.popup.preload() : null;
+    const popupHandler = autoLogin && popup ? this.client.popup.preload() : null;
 
     this.client.signup(options, (err, result) => cb(err, result, popupHandler));
   }
@@ -111,16 +109,18 @@ class Auth0LegacyAPIClient {
       return cb(err);
     }
 
-    if (!parsed_qs.hasOwnProperty('access_token')
-       && !parsed_qs.hasOwnProperty('id_token')
-       && !parsed_qs.hasOwnProperty('refresh_token')) {
+    if (
+      !parsed_qs.hasOwnProperty('access_token') &&
+      !parsed_qs.hasOwnProperty('id_token') &&
+      !parsed_qs.hasOwnProperty('refresh_token')
+    ) {
       return cb(null, null);
     }
 
     var prof;
 
     if (parsed_qs.hasOwnProperty('id_token')) {
-      var invalidJwt = function (error) {
+      var invalidJwt = function(error) {
         var err = {
           error: 'invalid_token',
           error_description: error
@@ -132,14 +132,28 @@ class Auth0LegacyAPIClient {
       prof = verifier.decode(parsed_qs.id_token).payload;
 
       if (prof.aud !== this.clientID) {
-      return cb(invalidJwt(
-        'The clientID configured (' + this.clientID + ') does not match with the clientID set in the token (' + prof.aud + ').'));
+        return cb(
+          invalidJwt(
+            'The clientID configured (' +
+              this.clientID +
+              ') does not match with the clientID set in the token (' +
+              prof.aud +
+              ').'
+          )
+        );
       }
 
       // iss should be the Auth0 domain (i.e.: https://contoso.auth0.com/)
       if (prof.iss !== this.tokenIssuer) {
-        return cb(invalidJwt(
-          'The domain configured (' + this.tokenIssuer + ') does not match with the domain set in the token (' + prof.iss + ').'));
+        return cb(
+          invalidJwt(
+            'The domain configured (' +
+              this.tokenIssuer +
+              ') does not match with the domain set in the token (' +
+              prof.iss +
+              ').'
+          )
+        );
       }
     }
 
@@ -149,7 +163,7 @@ class Auth0LegacyAPIClient {
       idTokenPayload: prof,
       refreshToken: parsed_qs.refresh_token,
       state: parsed_qs.state
-    })
+    });
   }
 
   getUserInfo(token, callback) {
@@ -159,17 +173,16 @@ class Auth0LegacyAPIClient {
   // auth0.js does not supports this endpoint because it is deprecated for oidcConformat clients
   // we implemented it here to provide BC support, we will loose it in lock 11.
   getProfile(token, callback) {
-    request.get(`https://${this.domain}/tokeninfo?id_token=${token}`)
-            .end(function(err, res) {
-              if (err) {
-                return callback({
-                  error: err.message,
-                  error_description: res.text || res.body
-                });
-              }
+    request.get(`https://${this.domain}/tokeninfo?id_token=${token}`).end(function(err, res) {
+      if (err) {
+        return callback({
+          error: err.message,
+          error_description: res.text || res.body
+        });
+      }
 
-              return callback(null, res.body);
-            })
+      return callback(null, res.body);
+    });
   }
 
   getSSOData(...args) {

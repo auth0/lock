@@ -7,7 +7,9 @@ jest.mock('core/pane_separator', () => mockComponent('pane_separator'));
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));
 jest.mock('connection/database/login_pane', () => mockComponent('login_pane'));
 jest.mock('connection/database/login_sign_up_tabs', () => mockComponent('login_sign_up_tabs'));
-jest.mock('connection/enterprise/single_sign_on_notice', () => mockComponent('single_sign_on_notice'));
+jest.mock('connection/enterprise/single_sign_on_notice', () =>
+  mockComponent('single_sign_on_notice')
+);
 
 const getComponent = () => {
   const LoginScreen = require('engine/classic/login').default;
@@ -69,25 +71,19 @@ describe('LoginScreen', () => {
   it('renders empty div by default', () => {
     const Component = getComponent();
 
-    expectComponent(
-      <Component {...defaultProps} />
-    ).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
   it('renders SocialButtonsPane when has social connections', () => {
     require('core/index').hasSomeConnections = (m, connection) => connection === 'social';
     const Component = getComponent();
 
-    expectComponent(
-      <Component {...defaultProps} />
-    ).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
   it('renders SingleSignOnNotice when SSO is enabled', () => {
     require('engine/classic').isSSOEnabled = () => true;
     const Component = getComponent();
 
-    expectComponent(
-      <Component {...defaultProps} />
-    ).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
   describe('renders LoginSignUpTabs', () => {
     it('when database connection is enabled and has screen signUp', () => {
@@ -95,18 +91,15 @@ describe('LoginScreen', () => {
       require('connection/database/index').hasScreen = (m, screenName) => screenName === 'signUp';
       const Component = getComponent();
 
-      expectComponent(
-        <Component {...defaultProps} />
-      ).toMatchSnapshot();
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
     });
     it('when social connection is enabled and has initial screen signUp and has screen signUp', () => {
       require('core/index').hasSomeConnections = (m, connection) => connection === 'database';
-      require('connection/database/index').hasInitialScreen = (m, screenName) => screenName === 'signUp';
+      require('connection/database/index').hasInitialScreen = (m, screenName) =>
+        screenName === 'signUp';
       const Component = getComponent();
 
-      expectComponent(
-        <Component {...defaultProps} />
-      ).toMatchSnapshot();
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
     });
   });
   describe('renders LoginPane', () => {
@@ -114,26 +107,19 @@ describe('LoginScreen', () => {
       require('engine/classic').isSSOEnabled = () => true;
       const Component = getComponent();
 
-      expectComponent(
-        <Component {...defaultProps} />
-      ).toMatchSnapshot();
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
     });
     it('when has database connection', () => {
       require('core/index').hasSomeConnections = (m, connection) => connection === 'database';
       const Component = getComponent();
 
-      expectComponent(
-        <Component {...defaultProps} />
-      ).toMatchSnapshot();
-    })
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    });
     it('when has enterprise connection', () => {
       require('core/index').hasSomeConnections = (m, connection) => connection === 'enterprise';
       const Component = getComponent();
 
-      expectComponent(
-        <Component {...defaultProps} />
-      ).toMatchSnapshot();
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
     });
   });
-
 });

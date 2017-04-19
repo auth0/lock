@@ -5,19 +5,16 @@ import { pinLoadingPane, unpinLoadingPane } from './actions';
 import * as l from './index';
 
 export default class LoadingScreen extends Screen {
-
   constructor() {
-    super("loading");
+    super('loading');
   }
 
   render() {
     return LoadingPane;
   }
-
 }
 
 class LoadingPane extends React.Component {
-
   componentDidMount() {
     const { model } = this.props;
     pinLoadingPane(l.id(model));
@@ -33,7 +30,6 @@ class LoadingPane extends React.Component {
       </div>
     );
   }
-
 }
 
 LoadingPane.propTypes = {

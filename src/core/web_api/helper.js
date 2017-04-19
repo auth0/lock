@@ -12,7 +12,7 @@ export function normalizeError(error) {
   // affraid they'll break existent functionality if add them.
   // We need a better errror handling story in auth0.js.
 
-  if (error.status === "User closed the popup window") {
+  if (error.status === 'User closed the popup window') {
     // {
     //   status: "User closed the popup window",
     //   name: undefined,
@@ -23,14 +23,13 @@ export function normalizeError(error) {
     //   }
     // }
     return {
-      code: "lock.popup_closed",
-      error: "lock.popup_closed",
-      description: "Popup window closed."
+      code: 'lock.popup_closed',
+      error: 'lock.popup_closed',
+      description: 'Popup window closed.'
     };
   }
 
-  if (error.code === "unauthorized") {
-
+  if (error.code === 'unauthorized') {
     // Custom rule error
     //
     // {
@@ -71,42 +70,38 @@ export function normalizeError(error) {
     // }
 
     // Social cancel permissions or unknown error
-    if (!error.description || error.description === "access_denied") {
-
+    if (!error.description || error.description === 'access_denied') {
       return {
-        code: "lock.unauthorized",
-        error: "lock.unauthorized",
-        description: error.description || "Permissions were not granted."
-      }
+        code: 'lock.unauthorized',
+        error: 'lock.unauthorized',
+        description: error.description || 'Permissions were not granted.'
+      };
     }
 
     // Special case for custom rule error
-    if (error.description === "user is blocked") {
+    if (error.description === 'user is blocked') {
       return {
-        code: "blocked_user",
-        error: "blocked_user",
+        code: 'blocked_user',
+        error: 'blocked_user',
         description: error.description
       };
     }
 
     // Custom Rule error
     return {
-      code: "rule_error",
-      error: "rule_error",
+      code: 'rule_error',
+      error: 'rule_error',
       description: error.description
     };
-
   }
 
   const result = {
-    error: error.code ? error.code : (error.statusCode || error.error),
+    error: error.code ? error.code : error.statusCode || error.error,
     description: error.description || error.code
-  }
+  };
 
   // result is used for passwordless and error for database.
-  return result.error === undefined && result.description === undefined
-    ? error
-    : result;
+  return result.error === undefined && result.description === undefined ? error : result;
 }
 
 export function loginCallback(redirect, cb) {
@@ -115,6 +110,6 @@ export function loginCallback(redirect, cb) {
     : (error, result) => cb(normalizeError(error), result);
 }
 
-export function normalizeAuthParams({connection_scope, popup, popupOptions, ...authParams}) {
+export function normalizeAuthParams({ connection_scope, popup, popupOptions, ...authParams }) {
   return authParams;
 }

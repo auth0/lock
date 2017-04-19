@@ -4,49 +4,48 @@ import { dataFns } from '../../utils/data_utils';
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
 import { STRATEGIES as ENTERPRISE_STRATEGIES } from '../../connection/enterprise';
 
-const { initNS, get } = dataFns(["client"]);
+const { initNS, get } = dataFns(['client']);
 
 const DEFAULT_CONNECTION_VALIDATION = { username: { min: 1, max: 15 } };
 
 export function hasFreeSubscription(m) {
-  return ["free", "dev"].indexOf(get(m, ["tenant", "subscription"])) > -1;
+  return ['free', 'dev'].indexOf(get(m, ['tenant', 'subscription'])) > -1;
 }
 
 export function connection(m, strategyName, name) {
   // TODO: this function should take a client, not a map with a client
   // key.
-  const connections = strategy(m, strategyName).get("connections", List());
+  const connections = strategy(m, strategyName).get('connections', List());
   return connections.find(withName(name)) || Map();
 }
 
 function strategy(m, name) {
   // TODO: this function should take a client, not a map with a client
   // key.
-  return m.getIn(["client", "strategies"], List()).find(withName(name))
-    || Map();
+  return m.getIn(['client', 'strategies'], List()).find(withName(name)) || Map();
 }
 
 function withName(name) {
-  return x => x.get("name") === name;
+  return x => x.get('name') === name;
 }
 
 function strategyNameToConnectionType(str) {
-  if (str === "auth0") {
-    return "database";
-  } else if (str === "email" || str === "sms") {
-    return "passwordless";
+  if (str === 'auth0') {
+    return 'database';
+  } else if (str === 'email' || str === 'sms') {
+    return 'passwordless';
   } else if (SOCIAL_STRATEGIES[str]) {
-    return "social";
+    return 'social';
   } else if (ENTERPRISE_STRATEGIES[str]) {
-    return "enterprise";
-  } else if (["oauth1", "oauth2"].indexOf(str) !== -1) {
-    return "social";
+    return 'enterprise';
+  } else if (['oauth1', 'oauth2'].indexOf(str) !== -1) {
+    return 'social';
   } else {
-    return "unknown";
+    return 'unknown';
   }
 }
 
-function formatConnectionValidation (connectionValidation = {}) {
+function formatConnectionValidation(connectionValidation = {}) {
   if (connectionValidation.username == null) {
     return null;
   }
@@ -86,17 +85,17 @@ function formatClient(o) {
       subscription: o.subscription
     },
     connections: formatClientConnections(o)
-  })
+  });
 }
 
 function formatClientConnections(o) {
   const result = emptyConnections.toJS();
 
-  for (var i=0; i < (o.strategies || []).length; i++) {
+  for (var i = 0; i < (o.strategies || []).length; i++) {
     const strategy = o.strategies[i];
     const connectionType = strategyNameToConnectionType(strategy.name);
 
-    if (connectionType === "passwordless") {
+    if (connectionType === 'passwordless') {
       continue; // disabled until lock supports passwordless connections within the same engine
     }
 
@@ -116,21 +115,17 @@ function formatClientConnection(connectionType, strategyName, connection) {
     type: connectionType
   };
 
-  if (connectionType === "database") {
-    result.passwordPolicy = connection.passwordPolicy || "none";
-    result.allowSignup = typeof connection.showSignup === "boolean"
-      ? connection.showSignup
-      : true;
-    result.allowForgot = typeof connection.showForgot === "boolean"
-      ? connection.showForgot
-      : true;
-    result.requireUsername = typeof connection.requires_username === "boolean"
+  if (connectionType === 'database') {
+    result.passwordPolicy = connection.passwordPolicy || 'none';
+    result.allowSignup = typeof connection.showSignup === 'boolean' ? connection.showSignup : true;
+    result.allowForgot = typeof connection.showForgot === 'boolean' ? connection.showForgot : true;
+    result.requireUsername = typeof connection.requires_username === 'boolean'
       ? connection.requires_username
       : false;
     result.validation = formatConnectionValidation(connection.validation);
   }
 
-  if (connectionType === "enterprise") {
+  if (connectionType === 'enterprise') {
     const domains = connection.domain_aliases || [];
     if (connection.domain) {
       domains.unshift(connection.domain);
@@ -142,5 +137,5 @@ function formatClientConnection(connectionType, strategyName, connection) {
 }
 
 export function clientConnections(m) {
-  return get(m, "connections", emptyConnections);
+  return get(m, 'connections', emptyConnections);
 }

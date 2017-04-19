@@ -2,7 +2,7 @@ import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
-import {normalizeError, loginCallback, normalizeAuthParams} from './helper';
+import { normalizeError, loginCallback, normalizeAuthParams } from './helper';
 
 class Auth0APIClient {
   constructor(lockID, clientID, domain, opts) {
@@ -24,9 +24,7 @@ class Auth0APIClient {
       responseMode: opts.responseMode,
       responseType: opts.responseType,
       leeway: opts.leeway || 1,
-      plugins: [
-        new CordovaAuth0Plugin()
-      ],
+      plugins: [new CordovaAuth0Plugin()],
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       __tenant: opts.overrides && opts.overrides.__tenant,
@@ -46,13 +44,13 @@ class Auth0APIClient {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
     const f = loginCallback(false, cb);
-    const loginOptions = normalizeAuthParams({...options, ...this.authOpt, ...authParams});
+    const loginOptions = normalizeAuthParams({ ...options, ...this.authOpt, ...authParams });
 
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        this.client.popup.authorize(loginOptions, f)
+        this.client.popup.authorize(loginOptions, f);
       } else {
-        this.client.authorize(loginOptions, f)
+        this.client.authorize(loginOptions, f);
       }
     } else {
       loginOptions.realm = options.connection;
@@ -82,11 +80,14 @@ class Auth0APIClient {
   }
 
   parseHash(hash = '', cb) {
-    return this.client.parseHash({
-      hash,
-      nonce: this.authOpt.nonce,
-      state: this.authOpt.state
-    }, cb);
+    return this.client.parseHash(
+      {
+        hash,
+        nonce: this.authOpt.nonce,
+        state: this.authOpt.state
+      },
+      cb
+    );
   }
 
   getUserInfo(token, callback) {
@@ -94,7 +95,7 @@ class Auth0APIClient {
   }
 
   getProfile(token, callback) {
-    const m = read(getEntity, "lock", this.lockID);
+    const m = read(getEntity, 'lock', this.lockID);
     l.emitUnrecoverableErrorEvent(m, '`getProfile` is deprecated for oidcConformant clients');
   }
 

@@ -32,10 +32,12 @@ describe('initTenant()', () => {
     it('maps connection correctly with defaults', () => {
       const client = {
         connections: {
-          database: [{
-            name: 'test-connection-database',
-            strategy: 'auth0'
-          }],
+          database: [
+            {
+              name: 'test-connection-database',
+              strategy: 'auth0'
+            }
+          ]
         }
       };
       runTest(initTenant, mockDataFns, client);
@@ -43,20 +45,22 @@ describe('initTenant()', () => {
     it('maps connection correctly with all the properties', () => {
       const client = {
         connections: {
-          database: [{
-            allowForgot: false,
-            allowSignup: false,
-            name: 'test-connection-database',
-            requiresUsername: true,
-            strategy: 'auth0',
-            validation: {
-              passwordPolicy: 'test-passwordPolicy',
-              username: {
-                min: 4,
-                max: 5
+          database: [
+            {
+              allowForgot: false,
+              allowSignup: false,
+              name: 'test-connection-database',
+              requiresUsername: true,
+              strategy: 'auth0',
+              validation: {
+                passwordPolicy: 'test-passwordPolicy',
+                username: {
+                  min: 4,
+                  max: 5
+                }
               }
             }
-          }],
+          ]
         }
       };
       runTest(initTenant, mockDataFns, client);
@@ -64,20 +68,22 @@ describe('initTenant()', () => {
     it('fixes validation when values are not numbers', () => {
       const client = {
         connections: {
-          database: [{
-            allowForgot: false,
-            allowSignup: false,
-            name: 'test-connection-database',
-            requiresUsername: true,
-            strategy: 'auth0',
-            validation: {
-              passwordPolicy: 'test-passwordPolicy',
-              username: {
-                min: 'foo',
-                max: 'bar'
+          database: [
+            {
+              allowForgot: false,
+              allowSignup: false,
+              name: 'test-connection-database',
+              requiresUsername: true,
+              strategy: 'auth0',
+              validation: {
+                passwordPolicy: 'test-passwordPolicy',
+                username: {
+                  min: 'foo',
+                  max: 'bar'
+                }
               }
             }
-          }],
+          ]
         }
       };
       runTest(initTenant, mockDataFns, client);
@@ -85,20 +91,22 @@ describe('initTenant()', () => {
     it('fixes validation when username.min > username.max', () => {
       const client = {
         connections: {
-          database: [{
-            allowForgot: false,
-            allowSignup: false,
-            name: 'test-connection-database',
-            requiresUsername: true,
-            strategy: 'auth0',
-            validation: {
-              passwordPolicy: 'test-passwordPolicy',
-              username: {
-                min: 5,
-                max: 4
+          database: [
+            {
+              allowForgot: false,
+              allowSignup: false,
+              name: 'test-connection-database',
+              requiresUsername: true,
+              strategy: 'auth0',
+              validation: {
+                passwordPolicy: 'test-passwordPolicy',
+                username: {
+                  min: 5,
+                  max: 4
+                }
               }
             }
-          }],
+          ]
         }
       };
       runTest(initTenant, mockDataFns, client);
@@ -108,11 +116,13 @@ describe('initTenant()', () => {
     it('maps connection correctly', () => {
       const client = {
         connections: {
-          enterprise: [{
-            name: 'test-connection-enterprise',
-            domains: 'domains',
-            strategy: 'auth0'
-          }],
+          enterprise: [
+            {
+              name: 'test-connection-enterprise',
+              domains: 'domains',
+              strategy: 'auth0'
+            }
+          ]
         }
       };
       runTest(initTenant, mockDataFns, client);
@@ -122,14 +132,18 @@ describe('initTenant()', () => {
     it('maps connection correctly', () => {
       const client = {
         connections: {
-          social: [{
-            name: 'test-connection-other_type',
-            strategy: 'auth0'
-          }],
-          unknown: [{
-            name: '??',
-            strategy: '??'
-          }]
+          social: [
+            {
+              name: 'test-connection-other_type',
+              strategy: 'auth0'
+            }
+          ],
+          unknown: [
+            {
+              name: '??',
+              strategy: '??'
+            }
+          ]
         }
       };
       runTest(initTenant, mockDataFns, client);
@@ -139,10 +153,12 @@ describe('initTenant()', () => {
     it('maps connection correctly', () => {
       const client = {
         connections: {
-          passwordless: [{
-            name: 'sms',
-            strategy: 'sms'
-          }]
+          passwordless: [
+            {
+              name: 'sms',
+              strategy: 'sms'
+            }
+          ]
         }
       };
       runTest(initTenant, mockDataFns, client);
@@ -151,13 +167,16 @@ describe('initTenant()', () => {
   test('filters clientConnections', () => {
     const client = {
       connections: {
-        database: [{
-          name: 'test-connection-database',
-          strategy: 'auth0'
-        }, {
-          name: 'test-not-this-one',
-          strategy: 'auth0'
-        }]
+        database: [
+          {
+            name: 'test-connection-database',
+            strategy: 'auth0'
+          },
+          {
+            name: 'test-not-this-one',
+            strategy: 'auth0'
+          }
+        ]
       },
       clientsConnections: {
         [CLIENT_ID]: ['test-connection-database']

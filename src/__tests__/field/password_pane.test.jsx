@@ -29,7 +29,7 @@ describe('PasswordPane', () => {
     jest.mock('field/password', () => ({
       setPassword: 'setPassword'
     }));
-    
+
     jest.mock('core/index', () => ({
       id: () => 1,
       submitting: () => false,
@@ -46,40 +46,28 @@ describe('PasswordPane', () => {
 
   it('renders correctly', () => {
     const PasswordPane = getComponent();
-    expectComponent(
-      <PasswordPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });
   it('disables input when submitting', () => {
     require('core/index').submitting = () => true;
     const PasswordPane = getComponent();
 
-    expectComponent(
-      <PasswordPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let PasswordPane = getComponent();
 
-    expectComponent(
-      <PasswordPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });
   it('calls `swap` onChange', () => {
     let PasswordPane = getComponent();
 
     const wrapper = mount(<PasswordPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper)
+    const props = extractPropsFromWrapper(wrapper);
     props.onChange({ target: { value: 'newUser' } });
 
-    const {mock} = require('store/index').swap;
+    const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });

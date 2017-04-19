@@ -7,5 +7,5 @@ export function debounce(f, delay) {
     }
     clearTimeout(t);
     t = setTimeout(handler, delay);
-  }
+  };
 }
