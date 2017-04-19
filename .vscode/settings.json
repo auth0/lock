@@ -5,5 +5,8 @@
     "**/bower_components": true,
     "**/lib": true,
     "**/coverage": true
-  }
+  },
+  "editor.formatOnSave": true,
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true
 }
