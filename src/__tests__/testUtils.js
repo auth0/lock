@@ -18,7 +18,6 @@ const removeDataFromProps = props => {
   return returnedProps;
 };
 
-// eslint-disable-next-line
 export const mockComponent = (type, domElement = 'div') => props =>
   React.createElement(domElement, {
     'data-__type': type,

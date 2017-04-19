@@ -29,7 +29,7 @@
     "dist": "grunt dist",
     "prepublish": "cross-env BABEL_ENV=npm grunt dist",
     "precommit": "lint-staged",
-    "lint": "eslint src",
+    "lint": "eslint --ext .jsx,.js src/",
     "test": "cross-env BABEL_ENV=test zuul -- test/**/*.test.js",
     "test:browser": "cross-env BABEL_ENV=test zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
     "test:cli": "cross-env BABEL_ENV=test mochify --extension=.jsx --transform=babelify test/**/*.test.js",
