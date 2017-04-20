@@ -52,7 +52,7 @@ export default {
   "databaseEnterpriseAlternativeLoginInstructions": "nebo",
   "databaseSignUpInstructions": "",
   "databaseAlternativeSignUpInstructions": "nebo",
-  "emailInputPlaceholder": "vas@prikad.cz",
+  "emailInputPlaceholder": "vas@priklad.cz",
   "enterpriseLoginIntructions": "Přihlaste se svým firemním účtem.",
   "enterpriseActiveLoginInstructions": "Prosím zadejte údaje ke svému firemnímu účtu %s.",
   "failedLabel": "Chyba!",
