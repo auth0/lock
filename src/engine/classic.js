@@ -51,34 +51,39 @@ export function matchesEnterpriseConnection(m, usernameValue) {
 }
 
 export function usernameStyle(m) {
-  return authWithUsername(m) && !isADEnabled(m) ? "username" : "email";
+  return authWithUsername(m) && !isADEnabled(m) ? 'username' : 'email';
 }
 
 export function hasOnlyClassicConnections(m, type = undefined, ...strategies) {
-  return l.hasOnlyConnections(m, type, ...strategies)
-    && !l.hasSomeConnections(m, "passwordless");
+  return l.hasOnlyConnections(m, type, ...strategies) && !l.hasSomeConnections(m, 'passwordless');
 }
 
 export function useBigSocialButtons(m) {
-  return useBigButtons(m, hasOnlyClassicConnections(m, "social") ? 5 : 3);
+  return useBigButtons(m, hasOnlyClassicConnections(m, 'social') ? 5 : 3);
 }
 
 function validateAllowedConnections(m) {
-  const anyDBConnection = l.hasSomeConnections(m, "database");
-  const anySocialConnection = l.hasSomeConnections(m, "social");
-  const anyEnterpriseConnection = l.hasSomeConnections(m, "enterprise");
+  const anyDBConnection = l.hasSomeConnections(m, 'database');
+  const anySocialConnection = l.hasSomeConnections(m, 'social');
+  const anyEnterpriseConnection = l.hasSomeConnections(m, 'enterprise');
 
   if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
-    const error = new Error("At least one database, enterprise or social connection needs to be available.");
-    error.code = "no_connection";
+    const error = new Error(
+      'At least one database, enterprise or social connection needs to be available.'
+    );
+    error.code = 'no_connection';
     m = l.stop(m, error);
-  } else if (!anyDBConnection && hasInitialScreen(m, "forgotPassword")) {
-    const error = new Error("The `initialScreen` option was set to \"forgotPassword\" but no database connection is available.");
-    error.code = "unavailable_initial_screen";
+  } else if (!anyDBConnection && hasInitialScreen(m, 'forgotPassword')) {
+    const error = new Error(
+      'The `initialScreen` option was set to "forgotPassword" but no database connection is available.'
+    );
+    error.code = 'unavailable_initial_screen';
     m = l.stop(m, error);
-  } else if (!anyDBConnection && !anySocialConnection && hasInitialScreen(m, "signUp")) {
-    const error = new Error("The `initialScreen` option was set to \"signUp\" but no database or social connection is available.");
-    error.code = "unavailable_initial_screen";
+  } else if (!anyDBConnection && !anySocialConnection && hasInitialScreen(m, 'signUp')) {
+    const error = new Error(
+      'The `initialScreen` option was set to "signUp" but no database or social connection is available.'
+    );
+    error.code = 'unavailable_initial_screen';
     m = l.stop(m, error);
   }
 
@@ -87,11 +92,17 @@ function validateAllowedConnections(m) {
   }
 
   if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
-    l.warn(m, `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`);
+    l.warn(
+      m,
+      `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`
+    );
   }
 
   if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
-    l.warn(m, `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`);
+    l.warn(
+      m,
+      `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`
+    );
   }
 
   return m;
@@ -99,21 +110,20 @@ function validateAllowedConnections(m) {
 
 const setPrefill = m => {
   const { email, username } = l.prefill(m).toJS();
-  if (typeof email === "string") m = setEmail(m, email);
-  if (typeof username === "string") m = setUsername(m, username, "username", false);
+  if (typeof email === 'string') m = setEmail(m, email);
+  if (typeof username === 'string') m = setUsername(m, username, 'username', false);
   return m;
-}
+};
 
 function createErrorScreen(m, stopError) {
   setTimeout(() => {
-    swap(updateEntity, "lock", l.id(m), l.stop, stopError);
+    swap(updateEntity, 'lock', l.id(m), l.stop, stopError);
   }, 0);
 
   return new ErrorScreen();
 }
 
 class Classic {
-
   static SCREENS = {
     login: Login,
     forgotPassword: ResetPassword,
@@ -137,7 +147,7 @@ class Classic {
 
   willShow(m, opts) {
     m = overrideDatabaseOptions(m, opts);
-    if (isSuccess(m, "client")) {
+    if (isSuccess(m, 'client')) {
       m = validateAllowedConnections(m);
     }
     return m;
@@ -151,22 +161,20 @@ class Classic {
 
     // TODO: remove the detail about the loading pane being pinned,
     // sticky screens should be handled at the box module.
-    if (!isDone(m) || m.get("isLoadingPanePinned")) {
+    if (!isDone(m) || m.get('isLoadingPanePinned')) {
       return new LoadingScreen();
     }
 
-    if (hasScreen(m, "login")) {
-      if (!hasSkippedQuickAuth(m)
-        && hasInitialScreen(m, "login")) {
-
+    if (hasScreen(m, 'login')) {
+      if (!hasSkippedQuickAuth(m) && hasInitialScreen(m, 'login')) {
         if (isInCorpNetwork(m)) {
           return new KerberosScreen();
         }
 
         if (l.ui.rememberLastLogin(m)) {
           const conn = lastUsedConnection(m);
-          if (conn && isSuccess(m, "sso")) {
-            if (l.hasConnection(m, conn.get("name"))) {
+          if (conn && isSuccess(m, 'sso')) {
+            if (l.hasConnection(m, conn.get('name'))) {
               return new LastLoginScreen();
             }
           }
@@ -183,9 +191,10 @@ class Classic {
     }
 
     if (!hasScreen(m, 'login') && !hasScreen(m, 'signUp') && !hasScreen(m, 'forgotPassword')) {
-      const errorMessage = "No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.";
+      const errorMessage =
+        'No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.';
       const noAvailableScreenError = new Error(errorMessage);
-      noAvailableScreenError.code = "internal_error";
+      noAvailableScreenError.code = 'internal_error';
       noAvailableScreenError.description = errorMessage;
       return createErrorScreen(m, noAvailableScreenError);
     }
@@ -194,12 +203,11 @@ class Classic {
     if (Screen) {
       return new Screen();
     }
-    const noScreenError = new Error("Internal error");
-    noScreenError.code = "internal_error";
+    const noScreenError = new Error('Internal error');
+    noScreenError.code = 'internal_error';
     noScreenError.description = `Couldn't find a screen "${getScreen(m)}"`;
     return createErrorScreen(m, noScreenError);
   }
-
 }
 
 export default new Classic();

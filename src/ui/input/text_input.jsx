@@ -2,7 +2,6 @@ import React from 'react';
 import InputWrap from './input_wrap';
 
 export default class TextInput extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,19 +12,11 @@ export default class TextInput extends React.Component {
   }
 
   render() {
-    const {
-      iconUrl,
-      invalidHint,
-      isValid,
-      name,
-      onChange,
-      value,
-      ...props
-    } = this.props;
+    const { iconUrl, invalidHint, isValid, name, onChange, value, ...props } = this.props;
     let { icon } = this.props;
     const { focused } = this.state;
 
-    if (!icon && typeof iconUrl === "string" && iconUrl) {
+    if (!icon && typeof iconUrl === 'string' && iconUrl) {
       icon = <img className="auth0-lock-custom-icon" src={iconUrl} />;
     }
 
@@ -61,10 +52,10 @@ export default class TextInput extends React.Component {
   }
 
   handleFocus() {
-    this.setState({focused: true});
+    this.setState({ focused: true });
   }
 
   handleBlur() {
-    this.setState({focused: false});
+    this.setState({ focused: false });
   }
 }

@@ -6,7 +6,6 @@ import * as l from './index';
 import * as i18n from '../i18n'; // TODO: can't we get this from pops?
 
 export default class SignedInConfirmation extends React.Component {
-
   handleClose() {
     const { closeHandler, lock } = this.props;
     closeHandler(l.id(lock));
@@ -18,11 +17,10 @@ export default class SignedInConfirmation extends React.Component {
 
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{i18n.html(lock, ["success", "logIn"])}</p>
+        <p>{i18n.html(lock, ['success', 'logIn'])}</p>
       </SuccessPane>
     );
   }
-
 }
 
 SignedInConfirmation.propTypes = {
@@ -32,7 +30,7 @@ SignedInConfirmation.propTypes = {
 
 export function renderSignedInConfirmation(lock, props = {}) {
   props.closeHandler = closeLock;
-  props.key = "auxiliarypane";
+  props.key = 'auxiliarypane';
   props.lock = lock;
 
   return l.loggedIn(lock) ? <SignedInConfirmation {...props} /> : null;

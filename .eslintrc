@@ -1,12 +1,17 @@
 {
   "extends": [
-    "auth0-base/legacy"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
   ],
   "env": {
     "browser": true,
     "es6": true
   },
-  "parserOptions": {
-    "sourceType": "module"
+  "parser": "babel-eslint",
+  "rules": {
+    "react/display-name": 0,
+    "react/prop-types": 1,
+    "react/no-find-dom-node": 1
   }
 }

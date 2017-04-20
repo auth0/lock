@@ -1,9 +1,9 @@
 import { Map } from 'immutable';
 
 export function lastUsedConnection(m) {
-  return m.getIn(["sso", "lastUsedConnection"]);
+  return m.getIn(['sso', 'lastUsedConnection']);
 }
 
 export function lastUsedUsername(m) {
-  return m.getIn(["sso", "lastUsedUsername"], "");
+  return m.getIn(['sso', 'lastUsedUsername'], '');
 }

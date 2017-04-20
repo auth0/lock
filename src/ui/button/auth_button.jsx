@@ -1,20 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const AuthButton = (props) => {
-  const { 
-    disabled, 
-    isBig, 
-    label, 
-    onClick, 
-    strategy, 
-    icon,
-    primaryColor,
-    foregroundColor 
-  } = props;
+const AuthButton = props => {
+  const { disabled, isBig, label, onClick, strategy, icon, primaryColor, foregroundColor } = props;
 
-  let className = "auth0-lock-social-button";
-  if (isBig) className += " auth0-lock-social-big-button";
+  let className = 'auth0-lock-social-button';
+  if (isBig) className += ' auth0-lock-social-big-button';
 
   const backgroundStyle = primaryColor ? { backgroundColor: primaryColor } : {};
   const foregroundStyle = foregroundColor ? { color: foregroundColor } : {};
@@ -30,7 +21,7 @@ const AuthButton = (props) => {
       type="button"
     >
       <div className="auth0-lock-social-button-icon" style={iconStyle} />
-      <div className="auth0-lock-social-button-text" style={foregroundStyle} >
+      <div className="auth0-lock-social-button-text" style={foregroundStyle}>
         {label}
       </div>
     </button>

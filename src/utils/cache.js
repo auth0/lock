@@ -1,5 +1,4 @@
 export default class Cache {
-
   constructor(fetchFn) {
     this.cache = {};
     this.cbs = {};
@@ -31,5 +30,4 @@ export default class Cache {
     this.cbs[key].forEach(f => f(...args));
     delete this.cbs[key];
   }
-
 }

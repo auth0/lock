@@ -8,10 +8,9 @@ import { swap, updateEntity } from '../../store/index';
 import { setVcode } from '../vcode';
 
 export default class VcodePane extends React.Component {
-
   handleVcodeChange(e) {
     e.preventDefault();
-    swap(updateEntity, "lock", l.id(this.props.lock), setVcode, e.target.value);
+    swap(updateEntity, 'lock', l.id(this.props.lock), setVcode, e.target.value);
   }
 
   handleResendClick(e) {
@@ -28,26 +27,22 @@ export default class VcodePane extends React.Component {
     return (
       <div>
         {header}
-        <VcodeInput value={c.vcode(lock)}
-          isValid={!c.isFieldVisiblyInvalid(lock, "vcode") && !l.globalError(lock)}
+        <VcodeInput
+          value={c.vcode(lock)}
+          isValid={!c.isFieldVisiblyInvalid(lock, 'vcode') && !l.globalError(lock)}
           onChange={::this.handleVcodeChange}
           autoFocus={!isSmallScreen()}
           placeholder={placeholder}
           disabled={l.submitting(lock)}
         />
         <p className="auth0-lock-alternative">
-          <a
-            className="auth0-lock-alternative-link"
-            href="#"
-            onClick={::this.handleResendClick}
-          >
+          <a className="auth0-lock-alternative-link" href="#" onClick={::this.handleResendClick}>
             {resendLabel}
           </a>
         </p>
       </div>
     );
   }
-
 }
 
 VcodePane.propTypes = {

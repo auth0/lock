@@ -1,6 +1,6 @@
 import auth0 from 'auth0-js';
-import Auth0LegacyAPIClient from './web_api/legacy_api'
-import Auth0APIClient from './web_api/p2_api'
+import Auth0LegacyAPIClient from './web_api/legacy_api';
+import Auth0APIClient from './web_api/p2_api';
 
 class Auth0WebAPI {
   constructor() {
@@ -8,7 +8,6 @@ class Auth0WebAPI {
   }
 
   setupClient(lockID, clientID, domain, opts) {
-
     const hostedLoginPage = window.location.host === domain;
     // when it is used on on the hosted login page, it shouldn't use popup mode
     opts.redirect = hostedLoginPage ? true : opts.redirect;

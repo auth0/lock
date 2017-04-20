@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignUpTerms = ({checkHandler, checked, children}) => {
+const SignUpTerms = ({ checkHandler, checked, children }) => {
   return checkHandler
     ? <span className="auth0-lock-sign-up-terms-agreement">
         <label>

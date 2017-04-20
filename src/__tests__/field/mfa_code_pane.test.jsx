@@ -28,7 +28,7 @@ describe('MFACodePane', () => {
       getMFACodeValidation: () => 'getMFACodeValidation',
       setMFACode: 'setMFACode'
     }));
-    
+
     jest.mock('core/index', () => ({
       id: () => 1,
       submitting: () => false,
@@ -45,30 +45,22 @@ describe('MFACodePane', () => {
 
   it('renders correctly', () => {
     const MFACodePane = getComponent();
-    expectComponent(
-      <MFACodePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<MFACodePane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let MFACodePane = getComponent();
 
-    expectComponent(
-      <MFACodePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<MFACodePane {...defaultProps} />).toMatchSnapshot();
   });
   it('calls `swap` onChange', () => {
     let MFACodePane = getComponent();
 
     const wrapper = mount(<MFACodePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper)
+    const props = extractPropsFromWrapper(wrapper);
     props.onChange({ target: { value: 'newUser' } });
 
-    const {mock} = require('store/index').swap;
+    const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });

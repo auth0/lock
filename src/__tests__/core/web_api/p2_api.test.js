@@ -13,7 +13,7 @@ const getClient = (options = {}) => {
     login: jest.fn()
   };
   return client;
-}
+};
 
 const getAuth0ClientMock = () => require('auth0-js');
 

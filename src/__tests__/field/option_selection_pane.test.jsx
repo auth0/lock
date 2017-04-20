@@ -28,11 +28,7 @@ describe('OptionSelectionPane', () => {
   });
   it('renders correctly', () => {
     const OptionSelectionPane = getComponent();
-    expectComponent(
-      <OptionSelectionPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<OptionSelectionPane {...defaultProps} />).toMatchSnapshot();
   });
   it('calls `selectOption` when selected', () => {
     let OptionSelectionPane = getComponent();
@@ -42,7 +38,7 @@ describe('OptionSelectionPane', () => {
 
     props.onSelect('selected');
 
-    const {mock} = require('field/actions').selectOption;
+    const { mock } = require('field/actions').selectOption;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
@@ -54,7 +50,7 @@ describe('OptionSelectionPane', () => {
 
     props.onCancel();
 
-    const {mock} = require('field/actions').cancelOptionSelection;
+    const { mock } = require('field/actions').cancelOptionSelection;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });

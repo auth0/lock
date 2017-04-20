@@ -4,23 +4,20 @@ import Screen from './screen';
 import * as l from './index';
 
 export default class ErrorScreen extends Screen {
-
   constructor() {
-    super("error");
+    super('error');
   }
 
   render() {
     return ErrorPane;
   }
-
 }
 
-const ErrorPane = ({i18n}) => (
+const ErrorPane = ({ i18n }) => (
   <div className="auth0-lock-error-pane">
-    <p>{i18n.html("unrecoverableError")}</p>
+    <p>{i18n.html('unrecoverableError')}</p>
   </div>
 );
-
 
 ErrorPane.propTypes = {
   i18n: PropTypes.object.isRequired

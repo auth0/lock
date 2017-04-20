@@ -8,7 +8,6 @@ import { hasScreen, forgotPasswordLink } from './index';
 import * as l from '../../core/index';
 
 export default class LoginPane extends React.Component {
-
   handleDontRememberPasswordClick(e) {
     e.preventDefault();
     showResetPasswordActivity(l.id(this.props.lock));
@@ -32,7 +31,7 @@ export default class LoginPane extends React.Component {
     const header = headerText && <p>{headerText}</p>;
 
     // Should never validate format on login because of custom db connection and import mode
-    const fieldPane = usernameStyle === "email"
+    const fieldPane = usernameStyle === 'email'
       ? <EmailPane
           i18n={i18n}
           lock={lock}
@@ -45,21 +44,17 @@ export default class LoginPane extends React.Component {
           placeholder={usernameInputPlaceholder}
           usernameStyle={usernameStyle}
           validateFormat={false}
-        />
+        />;
 
     const passwordPane = showPassword
-      ? <PasswordPane
-          i18n={i18n}
-          lock={lock}
-          placeholder={passwordInputPlaceholder}
-        />
+      ? <PasswordPane i18n={i18n} lock={lock} placeholder={passwordInputPlaceholder} />
       : null;
 
-    const dontRememberPassword = showForgotPasswordLink && hasScreen(lock, "forgotPassword")
+    const dontRememberPassword = showForgotPasswordLink && hasScreen(lock, 'forgotPassword')
       ? <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
-            href={forgotPasswordLink(lock, "#")}
+            href={forgotPasswordLink(lock, '#')}
             onClick={forgotPasswordLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
           >
             {forgotPasswordAction}
@@ -69,7 +64,6 @@ export default class LoginPane extends React.Component {
 
     return <div>{header}{fieldPane}{passwordPane}{dontRememberPassword}</div>;
   }
-
 }
 
 LoginPane.propTypes = {
@@ -82,5 +76,5 @@ LoginPane.propTypes = {
   showForgotPasswordLink: PropTypes.bool.isRequired,
   showPassword: PropTypes.bool.isRequired,
   usernameInputPlaceholder: PropTypes.string.isRequired,
-  usernameStyle: PropTypes.oneOf(["any", "email", "username"])
+  usernameStyle: PropTypes.oneOf(['any', 'email', 'username'])
 };

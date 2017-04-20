@@ -3,14 +3,14 @@ import classic from './engine/classic';
 import css from '../css/index.styl';
 
 function injectStyles() {
-  const styleId = "auth0-lock-style";
+  const styleId = 'auth0-lock-style';
   let style = document.getElementById(styleId);
 
   if (!style) {
-    const head = document.getElementsByTagName("head")[0];
-    style = document.createElement("style");
-    style.type = "text/css";
-    style.setAttribute("id", styleId);
+    const head = document.getElementsByTagName('head')[0];
+    style = document.createElement('style');
+    style.type = 'text/css';
+    style.setAttribute('id', styleId);
     head.appendChild(style);
   }
 
@@ -22,13 +22,11 @@ function injectStyles() {
 }
 
 export default class Auth0Lock extends Core {
-
   constructor(clientID, domain, options) {
     super(clientID, domain, options, classic);
 
     injectStyles();
   }
-
 }
 
 // telemetry

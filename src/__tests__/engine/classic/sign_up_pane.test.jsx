@@ -35,55 +35,33 @@ describe('SignUpPane', () => {
   it('renders only email by default', () => {
     const Component = getComponent();
 
-    expectComponent(
-      <Component {...defaultProps} />
-    ).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
   it('shows header when instructions are available', () => {
     const Component = getComponent();
 
-    expectComponent(
-      <Component
-        {...defaultProps}
-        instructions="instructions"
-        />
-    ).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} instructions="instructions" />).toMatchSnapshot();
   });
   describe('onlyEmail is false', () => {
     it('shows PasswordPane', () => {
       const Component = getComponent();
 
-      expectComponent(
-        <Component
-          {...defaultProps}
-          onlyEmail={false}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<Component {...defaultProps} onlyEmail={false} />).toMatchSnapshot();
     });
     it('shows custom fields when additionalSignUpFields returns additional fields', () => {
       require('connection/database/index').additionalSignUpFields = () => [
-        { get: (key) => `${key}1` },
-        { get: (key) => `${key}2` }
+        { get: key => `${key}1` },
+        { get: key => `${key}2` }
       ];
       const Component = getComponent();
 
-      expectComponent(
-        <Component
-          {...defaultProps}
-          onlyEmail={false}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<Component {...defaultProps} onlyEmail={false} />).toMatchSnapshot();
     });
     it('shows UsernamePane when databaseConnectionRequiresUsername is true', () => {
       require('connection/database/index').databaseConnectionRequiresUsername = () => true;
       const Component = getComponent();
 
-      expectComponent(
-        <Component
-          {...defaultProps}
-          onlyEmail={false}
-          />
-      ).toMatchSnapshot();
+      expectComponent(<Component {...defaultProps} onlyEmail={false} />).toMatchSnapshot();
     });
   });
 });

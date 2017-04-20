@@ -40,8 +40,6 @@ describe('MFALoginScreen', () => {
   it('renders correctly', () => {
     const Component = getComponent();
 
-    expectComponent(
-      <Component {...defaultProps} />
-    ).toMatchSnapshot();
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 });

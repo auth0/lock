@@ -57,11 +57,7 @@ describe('UsernamePane', () => {
 
   it('renders correctly', () => {
     const UsernamePane = getComponent();
-    expectComponent(
-      <UsernamePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets `blankErrorHint` when username is empty', () => {
     const fieldIndexMock = require('field/index');
@@ -69,11 +65,7 @@ describe('UsernamePane', () => {
     fieldIndexMock.getFieldValue = () => undefined;
     const UsernamePane = getComponent();
 
-    expectComponent(
-      <UsernamePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets `usernameFormatErrorHint` when usernameLooksLikeEmail() returns false and `validateFormat` is true', () => {
     const fieldUsernameMock = require('field/username');
@@ -81,22 +73,13 @@ describe('UsernamePane', () => {
     fieldUsernameMock.usernameLooksLikeEmail = () => false;
     const UsernamePane = getComponent();
 
-    expectComponent(
-      <UsernamePane
-        {...defaultProps}
-        validateFormat
-        />
-    ).toMatchSnapshot();
+    expectComponent(<UsernamePane {...defaultProps} validateFormat />).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let UsernamePane = getComponent();
 
-    expectComponent(
-      <UsernamePane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
   });
   it('fetches the avatar on componentDidMount if ui.avatar is true and there is a username', () => {
     require('core/index').ui.avatar = () => true;
@@ -104,7 +87,7 @@ describe('UsernamePane', () => {
 
     mount(<UsernamePane {...defaultProps} />);
 
-    const {mock} = require('avatar').requestAvatar;
+    const { mock } = require('avatar').requestAvatar;
     expect(mock.calls.length).toBe(1);
   });
   it('fetches the avatar onChange if ui.avatar is true', () => {
@@ -112,20 +95,20 @@ describe('UsernamePane', () => {
     let UsernamePane = getComponent();
 
     const wrapper = mount(<UsernamePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper)
+    const props = extractPropsFromWrapper(wrapper);
     props.onChange({ target: { value: 'newUser' } });
 
-    const {mock} = require('avatar').debouncedRequestAvatar;
+    const { mock } = require('avatar').debouncedRequestAvatar;
     expect(mock.calls.length).toBe(1);
   });
   it('calls `swap` onChange', () => {
     let UsernamePane = getComponent();
 
     const wrapper = mount(<UsernamePane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper)
+    const props = extractPropsFromWrapper(wrapper);
     props.onChange({ target: { value: 'newUser' } });
 
-    const {mock} = require('store/index').swap;
+    const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });

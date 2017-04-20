@@ -5,15 +5,8 @@ import PasswordPane from '../../field/password/password_pane';
 import * as l from '../../core/index';
 
 export default class HRDPane extends React.Component {
-
   render() {
-    const {
-      header,
-      i18n,
-      model,
-      passwordInputPlaceholder,
-      usernameInputPlaceholder
-    } = this.props;
+    const { header, i18n, model, passwordInputPlaceholder, usernameInputPlaceholder } = this.props;
 
     return (
       <div>
@@ -24,15 +17,10 @@ export default class HRDPane extends React.Component {
           placeholder={usernameInputPlaceholder}
           validateFormat={false}
         />
-        <PasswordPane
-          i18n={i18n}
-          lock={model}
-          placeholder={passwordInputPlaceholder}
-        />
+        <PasswordPane i18n={i18n} lock={model} placeholder={passwordInputPlaceholder} />
       </div>
     );
   }
-
 }
 
 HRDPane.propTypes = {

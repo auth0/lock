@@ -43,40 +43,25 @@ describe('PhoneNumberPane', () => {
 
   it('renders correctly', () => {
     const PhoneNumberPane = getComponent();
-    expectComponent(
-      <PhoneNumberPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<PhoneNumberPane {...defaultProps} />).toMatchSnapshot();
   });
   it('shows header when instructions are available', () => {
     const PhoneNumberPane = getComponent();
     expectComponent(
-      <PhoneNumberPane
-        {...defaultProps}
-        instructions={<span>instructions</span>}
-        />
+      <PhoneNumberPane {...defaultProps} instructions={<span>instructions</span>} />
     ).toMatchSnapshot();
   });
   it('disables input when submitting', () => {
     require('core/index').submitting = () => true;
     const PhoneNumberPane = getComponent();
 
-    expectComponent(
-      <PhoneNumberPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<PhoneNumberPane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let PhoneNumberPane = getComponent();
 
-    expectComponent(
-      <PhoneNumberPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<PhoneNumberPane {...defaultProps} />).toMatchSnapshot();
   });
   it('calls `startOptionSelection` when SelectInput is clicked', () => {
     let PhoneNumberPane = getComponent();
@@ -86,7 +71,7 @@ describe('PhoneNumberPane', () => {
 
     props.onClick();
 
-    const {mock} = require('field/actions').startOptionSelection;
+    const { mock } = require('field/actions').startOptionSelection;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
@@ -98,7 +83,7 @@ describe('PhoneNumberPane', () => {
 
     props.onChange({ target: { value: 'newPhoneNumber' } });
 
-    const {mock} = require('store/index').swap;
+    const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });

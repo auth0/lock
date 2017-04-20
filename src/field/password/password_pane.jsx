@@ -7,10 +7,9 @@ import * as l from '../../core/index';
 import { setPassword } from '../password';
 
 export default class PasswordPane extends React.Component {
-
   handleChange(e) {
     const { lock, policy } = this.props;
-    swap(updateEntity, "lock", l.id(lock), setPassword, e.target.value, policy);
+    swap(updateEntity, 'lock', l.id(lock), setPassword, e.target.value, policy);
   }
 
   render() {
@@ -18,9 +17,9 @@ export default class PasswordPane extends React.Component {
 
     return (
       <PasswordInput
-        value={c.getFieldValue(lock, "password")}
-        invalidHint={i18n.str("blankErrorHint")}
-        isValid={!c.isFieldVisiblyInvalid(lock, "password")}
+        value={c.getFieldValue(lock, 'password')}
+        invalidHint={i18n.str('blankErrorHint')}
+        isValid={!c.isFieldVisiblyInvalid(lock, 'password')}
         onChange={::this.handleChange}
         placeholder={placeholder}
         strengthMessages={strengthMessages}
@@ -29,7 +28,6 @@ export default class PasswordPane extends React.Component {
       />
     );
   }
-
 }
 
 PasswordPane.propTypes = {

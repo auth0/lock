@@ -26,13 +26,7 @@ export default class MFACodeInput extends React.Component {
   }
 
   render() {
-    const {
-      invalidHint,
-      isValid,
-      onChange,
-      value,
-      ...props
-    } = this.props;
+    const { invalidHint, isValid, onChange, value, ...props } = this.props;
 
     const { focused } = this.state;
 
@@ -68,10 +62,10 @@ export default class MFACodeInput extends React.Component {
   }
 
   handleFocus() {
-    this.setState({focused: true});
+    this.setState({ focused: true });
   }
 
   handleBlur() {
-    this.setState({focused: false});
+    this.setState({ focused: false });
   }
 }

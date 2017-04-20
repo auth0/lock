@@ -28,10 +28,8 @@
     "dev": "grunt dev",
     "dist": "grunt dist",
     "prepublish": "cross-env BABEL_ENV=npm grunt dist",
-    "format": "prettier --write --print-width 100 --single-quote 'src/**/*.js' 'src/**/*.jsx'",
-    "lint": "eslint src",
-    "assert-uncomitted": "uncommitted",
-    "check-lint-and-format": "npm run format && npm run lint && npm run assert-uncomitted",
+    "precommit": "lint-staged",
+    "lint": "eslint --ext .jsx,.js src/",
     "test": "cross-env BABEL_ENV=test zuul -- test/**/*.test.js",
     "test:browser": "cross-env BABEL_ENV=test zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
     "test:cli": "cross-env BABEL_ENV=test mochify --extension=.jsx --transform=babelify test/**/*.test.js",
@@ -58,9 +56,9 @@
     "css-loader": "^0.26.1",
     "dotenv": "^4.0.0",
     "enzyme": "2.7.0",
-    "eslint": "3.16.0",
+    "eslint": "^3.19.0",
     "eslint-config-auth0-base": "6.0.0",
-    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-import": "^2.2.0",
     "expect.js": "^0.3.1",
     "flat": "^2.0.1",
     "grunt": "^0.4.5",
@@ -75,7 +73,7 @@
     "json-beautify": "^1.0.1",
     "jsonwebtoken": "^7.3.0",
     "mochify": "^2.12.0",
-    "prettier": "0.18.0",
+    "prettier": "^1.2.2",
     "react-addons-test-utils": "^15.0.0 || ^16.0.0",
     "react-test-renderer": "15.4.2",
     "semver": "^5.3.0",
@@ -83,7 +81,6 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "uglify-js": "^2.7.4",
-    "uncommitted": "1.0.0",
     "unminified-webpack-plugin": "^1.1.1",
     "unreleased": "^0.1.0",
     "watchify": "^3.7.0",
@@ -95,11 +92,16 @@
   },
   "dependencies": {
     "auth0-js": "8.5.0",
+    "babel-eslint": "^7.2.2",
     "blueimp-md5": "2.3.1",
+    "eslint-config-prettier": "^1.7.0",
+    "eslint-plugin-react": "^6.10.3",
     "fbjs": "^0.3.1",
+    "husky": "^0.13.3",
     "idtoken-verifier": "^1.0.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
+    "lint-staged": "^3.4.0",
     "password-sheriff": "^1.1.0",
     "prop-types": "^15.5.7 || ^16.0.0",
     "react": "^15.3.0 || ^16.0.0",
@@ -136,6 +138,13 @@
     "coverageReporters": [
       "lcov",
       "text-summary"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run lint",
+      "prettier --write --print-width 100 --single-quote",
+      "git add"
     ]
   }
 }

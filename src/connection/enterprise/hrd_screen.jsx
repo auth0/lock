@@ -3,18 +3,18 @@ import Screen from '../../core/screen';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import HRDPane from './hrd_pane';
 import { cancelHRD, logIn } from './actions';
-import { enterpriseDomain, isSingleHRDConnection }  from '../enterprise';
+import { enterpriseDomain, isSingleHRDConnection } from '../enterprise';
 import * as i18n from '../../i18n';
 
-const Component = ({i18n, model}) => {
+const Component = ({ i18n, model }) => {
   const domain = enterpriseDomain(model);
 
   var headerText;
 
   if (domain != null) {
-    headerText = i18n.html("enterpriseActiveLoginInstructions", domain);
+    headerText = i18n.html('enterpriseActiveLoginInstructions', domain);
   } else {
-    headerText = i18n.html("enterpriseLoginIntructions");
+    headerText = i18n.html('enterpriseLoginIntructions');
   }
 
   headerText = headerText || null;
@@ -26,16 +26,15 @@ const Component = ({i18n, model}) => {
       header={header}
       i18n={i18n}
       model={model}
-      passwordInputPlaceholder={i18n.str("passwordInputPlaceholder")}
-      usernameInputPlaceholder={i18n.str("usernameInputPlaceholder")}
+      passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
+      usernameInputPlaceholder={i18n.str('usernameInputPlaceholder')}
     />
   );
-}
+};
 
 export default class HRDScreen extends Screen {
-
   constructor() {
-    super("hrd");
+    super('hrd');
   }
 
   backHandler(model) {
@@ -43,7 +42,7 @@ export default class HRDScreen extends Screen {
   }
 
   submitButtonLabel(m) {
-    return i18n.str(m, ["loginSubmitLabel"]);
+    return i18n.str(m, ['loginSubmitLabel']);
   }
 
   submitHandler(model) {
@@ -57,5 +56,4 @@ export default class HRDScreen extends Screen {
   render() {
     return Component;
   }
-
 }

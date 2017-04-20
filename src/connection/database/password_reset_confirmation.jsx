@@ -3,10 +3,9 @@ import React from 'react';
 import SuccessPane from '../../ui/box/success_pane';
 import { closeLock } from '../../core/actions';
 import * as l from '../../core/index';
-import * as i18n from '../../i18n';   // TODO: can't we get this from props?
+import * as i18n from '../../i18n'; // TODO: can't we get this from props?
 
 export default class PasswordResetConfirmation extends React.Component {
-
   handleClose() {
     const { closeHandler, lock } = this.props;
     closeHandler(l.id(lock));
@@ -18,11 +17,10 @@ export default class PasswordResetConfirmation extends React.Component {
 
     return (
       <SuccessPane closeHandler={closeHandler}>
-        <p>{i18n.html(this.props.lock, ["success", "forgotPassword"])}</p>
+        <p>{i18n.html(this.props.lock, ['success', 'forgotPassword'])}</p>
       </SuccessPane>
     );
   }
-
 }
 
 PasswordResetConfirmation.propTypes = {
@@ -32,10 +30,8 @@ PasswordResetConfirmation.propTypes = {
 
 export function renderPasswordResetConfirmation(m, props = {}) {
   props.closeHandler = closeLock;
-  props.key = "auxiliarypane";
+  props.key = 'auxiliarypane';
   props.lock = m;
 
-  return m.get("passwordResetted")
-    ? <PasswordResetConfirmation {...props} />
-    : null;
+  return m.get('passwordResetted') ? <PasswordResetConfirmation {...props} /> : null;
 }

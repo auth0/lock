@@ -1,6 +1,6 @@
 jest.mock('auth0-js');
 
-const getClient = (options) => {
+const getClient = options => {
   const clientId = 'cid';
   const domain = 'domain';
   const Auth0LegacyAPIClient = require('core/web_api/legacy_api').default;
@@ -13,10 +13,10 @@ const getClient = (options) => {
     loginWithResourceOwner: jest.fn()
   };
   client.client.redirect = {
-    loginWithCredentials: jest.fn(),
+    loginWithCredentials: jest.fn()
   };
   client.client.transactionManager = {
-      getStoredTransaction: jest.fn()
+    getStoredTransaction: jest.fn()
   };
   return client;
 };
@@ -36,7 +36,7 @@ describe('Auth0LegacyAPIClient', () => {
       expect(callbackFunction.mock.calls.length).toBe(1);
     };
 
-    const assertMethodCall = (method) => {
+    const assertMethodCall = method => {
       expect(method.calls.length).toBe(1);
       expect(method.calls[0][0]).toMatchSnapshot();
     };
@@ -85,7 +85,11 @@ describe('Auth0LegacyAPIClient', () => {
         const client = getClient({
           redirect: false
         });
-        client.logIn({}, { scope: 'openid offline_access read:users', audience: 'https://mysite.com/api'}, callback);
+        client.logIn(
+          {},
+          { scope: 'openid offline_access read:users', audience: 'https://mysite.com/api' },
+          callback
+        );
         assertMethodCall(popupAuthorize());
         assertCallbackIsCalledOnce(callback, popupAuthorize());
       });
@@ -99,7 +103,8 @@ describe('Auth0LegacyAPIClient', () => {
         });
         client.logIn({ username: 'foo' }, {}, callback);
         const mock = getAuth0ClientMock();
-        const loginWithResourceOwnerMock = mock.WebAuth.mock.instances[0].client.loginWithResourceOwner.mock;
+        const loginWithResourceOwnerMock =
+          mock.WebAuth.mock.instances[0].client.loginWithResourceOwner.mock;
         assertMethodCall(loginWithResourceOwnerMock);
         assertCallbackIsCalledOnce(callback, loginWithResourceOwnerMock);
       });
@@ -131,7 +136,11 @@ describe('Auth0LegacyAPIClient', () => {
           redirect: true,
           sso: true
         });
-        client.logIn({ username: 'foo' }, { scope: 'openid offline_access write:users', audience: 'https://mysites.com/api' }, callback);
+        client.logIn(
+          { username: 'foo' },
+          { scope: 'openid offline_access write:users', audience: 'https://mysites.com/api' },
+          callback
+        );
         assertMethodCall(redirectLoginWithCredentials());
         assertCallbackIsCalledOnce(callback, redirectLoginWithCredentials());
       });
@@ -156,14 +165,15 @@ describe('Auth0LegacyAPIClient', () => {
       });
       const token = jwt.sign(
         { aud: client.clientID, iss: `https://${client.domain}/` },
-        'someSecret', { expiresIn: '30m' }
+        'someSecret',
+        { expiresIn: '30m' }
       );
       const payload = jwt.decode(token);
       const callback = jest.fn();
 
       client.parseHash(
-          `#access_token=aToken&id_token=${token}&refresh_token=rToken&state=/path%3Fone%3Dtwo%26three%3D3%234`,
-          callback
+        `#access_token=aToken&id_token=${token}&refresh_token=rToken&state=/path%3Fone%3Dtwo%26three%3D3%234`,
+        callback
       );
       expect(callback).toHaveBeenCalled();
       expect(callback).toHaveBeenCalledWith(null, {

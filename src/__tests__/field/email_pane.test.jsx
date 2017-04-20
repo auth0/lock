@@ -55,36 +55,25 @@ describe('EmailPane', () => {
 
   it('renders correctly', () => {
     const EmailPane = getComponent();
-    expectComponent(
-      <EmailPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets `blankErrorHint` when username is empty', () => {
     const fieldIndexMock = require('field/index');
     fieldIndexMock.username = () => undefined;
     fieldIndexMock.getFieldValue = () => undefined;
-    fieldIndexMock.getField = () => Immutable.fromJS({
-      value: undefined
-    });
+    fieldIndexMock.getField = () =>
+      Immutable.fromJS({
+        value: undefined
+      });
     const EmailPane = getComponent();
 
-    expectComponent(
-      <EmailPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
     let EmailPane = getComponent();
 
-    expectComponent(
-      <EmailPane
-        {...defaultProps}
-        />
-    ).toMatchSnapshot();
+    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
   });
   it('fetches the avatar on componentDidMount if ui.avatar is true and there is a username', () => {
     require('core/index').ui.avatar = () => true;
@@ -92,7 +81,7 @@ describe('EmailPane', () => {
 
     mount(<EmailPane {...defaultProps} />);
 
-    const {mock} = require('avatar').requestAvatar;
+    const { mock } = require('avatar').requestAvatar;
     expect(mock.calls.length).toBe(1);
   });
   it('fetches the avatar onChange if ui.avatar is true', () => {
@@ -100,20 +89,20 @@ describe('EmailPane', () => {
     let EmailPane = getComponent();
 
     const wrapper = mount(<EmailPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper)
+    const props = extractPropsFromWrapper(wrapper);
     props.onChange({ target: { value: 'newUser@example.com' } });
 
-    const {mock} = require('avatar').debouncedRequestAvatar;
+    const { mock } = require('avatar').debouncedRequestAvatar;
     expect(mock.calls.length).toBe(1);
   });
   it('calls `swap` onChange', () => {
     let EmailPane = getComponent();
 
     const wrapper = mount(<EmailPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper)
+    const props = extractPropsFromWrapper(wrapper);
     props.onChange({ target: { value: 'newUser@example.com' } });
 
-    const {mock} = require('store/index').swap;
+    const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
