@@ -1,5 +1,27 @@
 #Change Log
 
+## [v10.15.0](https://github.com/auth0/lock/tree/v10.15.0) (2017-04-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.14.0...v10.15.0)
+
+
+**Added**
+- Add support for paypal-sandbox strategy [\#975](https://github.com/auth0/lock/pull/975) ([ziluvatar](https://github.com/ziluvatar))
+
+**Changed**
+- Upgrade auth0-js to v8.6.0 [\#980](https://github.com/auth0/lock/pull/980) ([luisrudge](https://github.com/luisrudge))
+- Adding prettier and a precommit script to format the code :tada: :lipstick:  [\#977](https://github.com/auth0/lock/pull/977) ([luisrudge](https://github.com/luisrudge))
+- Upgrading usage of prop-types to new package [\#971](https://github.com/auth0/lock/pull/971) ([luisrudge](https://github.com/luisrudge))
+- Use replaceState for better browser history experience [\#967](https://github.com/auth0/lock/pull/967) ([selaux](https://github.com/selaux))
+- Renaming internal `signOut` methods with `logout` to keep it consistent [\#966](https://github.com/auth0/lock/pull/966) ([luisrudge](https://github.com/luisrudge))
+- Improve error handling of sync with better errors [\#961](https://github.com/auth0/lock/pull/961) ([luisrudge](https://github.com/luisrudge))
+- Adding `key` to the error "An error occurred when fetching data" [\#956](https://github.com/auth0/lock/pull/956) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed typo in cs.js [\#979](https://github.com/auth0/lock/pull/979) ([fersman](https://github.com/fersman))
+- fixed propType misspell in header.jsx [\#973](https://github.com/auth0/lock/pull/973) ([nickpisacane](https://github.com/nickpisacane))
+- Fixed scrolling on mobile in landscape mode [\#963](https://github.com/auth0/lock/pull/963) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.14.0](https://github.com/auth0/lock/tree/v10.14.0) (2017-03-27)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.13.0...v10.14.0)
 
