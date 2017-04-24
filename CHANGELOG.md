@@ -20,7 +20,6 @@
 - Fixed typo in cs.js [\#979](https://github.com/auth0/lock/pull/979) ([fersman](https://github.com/fersman))
 - fixed propType misspell in header.jsx [\#973](https://github.com/auth0/lock/pull/973) ([nickpisacane](https://github.com/nickpisacane))
 - Fixed scrolling on mobile in landscape mode [\#963](https://github.com/auth0/lock/pull/963) ([luisrudge](https://github.com/luisrudge))
-- Fix background blur in the header [\#962](https://github.com/auth0/lock/pull/962) ([luisrudge](https://github.com/luisrudge))
 
 
 ## [v10.14.0](https://github.com/auth0/lock/tree/v10.14.0) (2017-03-27)
