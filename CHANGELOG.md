@@ -1,5 +1,13 @@
 #Change Log
 
+## [v10.15.1](https://github.com/auth0/lock/tree/v10.15.1) (2017-04-25)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.15.0...v10.15.1)
+
+
+**Fixed**
+- Moving dependencies to devDependencies [\#984](https://github.com/auth0/lock/pull/984) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.15.0](https://github.com/auth0/lock/tree/v10.15.0) (2017-04-24)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.14.0...v10.15.0)
 
