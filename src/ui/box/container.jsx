@@ -185,7 +185,7 @@ export default class Container extends React.Component {
       <div className={className} ref="container">
         {overlay}
         <div className="auth0-lock-center">
-          <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
+          <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
             {avatar && <Avatar imageUrl={avatar} />}
             {closeHandler && <CloseButton onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
