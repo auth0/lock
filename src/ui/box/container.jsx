@@ -258,7 +258,7 @@ export const defaultProps = (Container.defaultProps = {
   disableSubmitButton: false,
   isMobile: false,
   isSubmitting: false,
-  logo: `${isFileProtocol ? 'https:' : ''}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
+  logo: `${isFileProtocol ? 'https:' : ''}//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
   primaryColor: '#ea5323',
   showBadge: true
 });
