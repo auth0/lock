@@ -1,5 +1,20 @@
 #Change Log
 
+## [v10.16.0](https://github.com/auth0/lock/tree/v10.16.0) (2017-05-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.15.1...v10.16.0)
+
+
+**Added**
+- Add form method [\#993](https://github.com/auth0/lock/pull/993) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Update badge location for better performance and bundle max-age changes [\#995](https://github.com/auth0/lock/pull/995) ([ramasilveyra](https://github.com/ramasilveyra))
+
+**Fixed**
+- Fix long header title and Error messages overflow [\#990](https://github.com/auth0/lock/pull/990) ([beneliflo](https://github.com/beneliflo))
+- Fix grammar mistake RU [\#988](https://github.com/auth0/lock/pull/988) ([uladar](https://github.com/uladar))
+
+
 ## [v10.15.1](https://github.com/auth0/lock/tree/v10.15.1) (2017-04-25)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.15.0...v10.15.1)
 
