@@ -2,7 +2,7 @@ import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
-import { normalizeError, loginCallback, normalizeAuthParams } from './helper';
+import { normalizeError, loginCallback, normalizeAuthParams, webAuthOverrides } from './helper';
 
 class Auth0APIClient {
   constructor(lockID, clientID, domain, opts) {
@@ -25,10 +25,9 @@ class Auth0APIClient {
       responseType: opts.responseType,
       leeway: opts.leeway || 1,
       plugins: [new CordovaAuth0Plugin()],
+      overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
-      _telemetryInfo: opts._telemetryInfo || default_telemetry,
-      __tenant: opts.overrides && opts.overrides.__tenant,
-      __token_issuer: opts.overrides && opts.overrides.__token_issuer
+      _telemetryInfo: opts._telemetryInfo || default_telemetry
     });
 
     this.authOpt = {
