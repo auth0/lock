@@ -2,42 +2,47 @@
 <html>
 <title>Dev</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <style>
- body {
-   background-color: #1f1f24;
- }
+  body {
+    background-color: #1f1f24;
+  }
 </style>
+
 <body>
   <div id="container"></div>
   <script src="/build/lock.js"></script>
   <script>
-
-    const cid = "ixeOHFhD7NSPxEQK6CFcswjUsa5YkcXS";
-    const domain = "auth0-tests-lock.auth0.com";
+    const cid = "nj4hF7eaFFgt45b7brhUg8S8qewcVmYw";
+    const domain = "brucke.auth0.com";
     const options = {
-      rememberLastLogin:false
+      oidcConformant: true,
+      usernameStyle: 'email',
+      defaultDatabaseConnection: 'acme',
+      prefill: {
+        email: 'johnfoo@gmail.com'
+      }
     };
 
     const lock = new Auth0Lock(cid, domain, options);
     window.lock = lock;
 
-    lock.on("authenticated", function(authResult) {
+    lock.on("authenticated", function (authResult) {
       console.log(authResult);
 
       if (!authResult.accessToken) return;
 
-      lock.getUserInfo(authResult.accessToken, function(error, profile) {
+      lock.getUserInfo(authResult.accessToken, function (error, profile) {
         console.log(error, profile);
       });
     });
 
-    lock.on("authorization_error", function(error) {
+    lock.on("authorization_error", function (error) {
       console.log('authorization_error', error);
     });
 
     lock.show();
-
   </script>
 </body>
+
 </html>

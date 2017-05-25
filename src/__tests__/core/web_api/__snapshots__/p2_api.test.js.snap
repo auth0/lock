@@ -10,6 +10,8 @@ Object {
 }
 `;
 
+exports[`Auth0APIClient logIn with credentials should fail when in popup mode 1`] = `"Cross origin login is not supported in popup mode"`;
+
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
 Object {
   "nonce": undefined,
