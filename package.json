@@ -94,7 +94,7 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "8.6.0",
+    "auth0-js": "~8.6.0",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "idtoken-verifier": "^1.0.1",
