@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class GlobalMessage extends React.Component {
   render() {
@@ -8,7 +7,7 @@ export default class GlobalMessage extends React.Component {
     const className = `auth0-global-message auth0-global-message-${type}`;
     return (
       <div className={className}>
-        <span className="animated fadeInUp" dangerouslySetInnerHTML={{ __html: message }} />
+        <span className="animated fadeInUp">{message}</span>
       </div>
     );
   }

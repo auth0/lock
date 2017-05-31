@@ -12,11 +12,21 @@ describe('GlobalMessage', () => {
   it('renders correctly given an error type', () => {
     expectComponent(<GlobalMessage type="error" message="An error occurred." />).toMatchSnapshot();
   });
-  it('should not strip out HTML tags', () => {
+  it('should NOT strip out HTML tags if given a React node', () => {
+    const message = React.createElement('span', {
+      dangerouslySetInnerHTML: { __html: '<b>Success!</b>' }
+    });
+    const wrapper = mount(<GlobalMessage type="success" message={message} />);
+    expect(wrapper.html()).toBe(
+      '<div class="auth0-global-message auth0-global-message-success"><span class="animated fadeInUp">' +
+        '<span><b>Success!</b></span></span></div>'
+    );
+  });
+  it('should strip out HTML tags if given a string', () => {
     const wrapper = mount(<GlobalMessage type="success" message="<b>Success!</b>" />);
     expect(wrapper.html()).toBe(
       '<div class="auth0-global-message auth0-global-message-success"><span class="animated fadeInUp">' +
-        '<b>Success!</b></span></div>'
+        '&lt;b&gt;Success!&lt;/b&gt;</span></div>'
     );
   });
 });
