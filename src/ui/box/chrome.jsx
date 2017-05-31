@@ -210,11 +210,17 @@ export default class Chrome extends React.Component {
         ref="submit"
       />;
 
+    function wrapGlobalMessage(message) {
+      return typeof message === 'string'
+        ? React.createElement('span', { dangerouslySetInnerHTML: { __html: message } })
+        : message;
+    }
+
     const globalError = error
-      ? <GlobalMessage key="global-error" message={error} type="error" />
+      ? <GlobalMessage key="global-error" message={wrapGlobalMessage(error)} type="error" />
       : null;
     const globalSuccess = success
-      ? <GlobalMessage key="global-success" message={success} type="success" />
+      ? <GlobalMessage key="global-success" message={wrapGlobalMessage(success)} type="success" />
       : null;
 
     const Content = contentComponent;
