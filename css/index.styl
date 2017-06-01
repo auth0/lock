@@ -107,7 +107,6 @@ tabsHeight = 40px
       vertical-align middle
       display table-cell
       margin auto
-      overflow-y auto
 
   .auth0-lock-widget
     width 300px
@@ -874,6 +873,10 @@ tabsHeight = 40px
   &.auth0-lock-opened
     opacity 1
     pointer-events auto
+    
+    .auth0-lock-center
+      +breakpoint("mobile")
+        overflow-y auto
 
     //mobile view
     @media screen and (max-width: 480px)
