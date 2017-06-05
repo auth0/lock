@@ -40,7 +40,8 @@ describe('UsernamePane', () => {
     jest.mock('core/index', () => ({
       id: () => 1,
       ui: {
-        avatar: () => false
+        avatar: () => false,
+        allowAutocomplete: () => false
       }
     }));
 
@@ -77,6 +78,12 @@ describe('UsernamePane', () => {
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
+    let UsernamePane = getComponent();
+
+    expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();
+  });
+  it('sets autoComplete to true when `allowAutocomplete` is true', () => {
+    require('core/index').ui.allowAutocomplete = () => true;
     let UsernamePane = getComponent();
 
     expectComponent(<UsernamePane {...defaultProps} />).toMatchSnapshot();

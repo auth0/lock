@@ -38,7 +38,8 @@ describe('EmailPane', () => {
     jest.mock('core/index', () => ({
       id: () => 1,
       ui: {
-        avatar: () => false
+        avatar: () => false,
+        allowAutocomplete: () => false
       }
     }));
 
@@ -71,6 +72,12 @@ describe('EmailPane', () => {
   });
   it('sets isValid as true when `isFieldVisiblyInvalid` is false', () => {
     require('field/index').isFieldVisiblyInvalid = () => false;
+    let EmailPane = getComponent();
+
+    expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
+  });
+  it('sets autoComplete to true when `allowAutocomplete` is true', () => {
+    require('core/index').ui.allowAutocomplete = () => true;
     let EmailPane = getComponent();
 
     expectComponent(<EmailPane {...defaultProps} />).toMatchSnapshot();
