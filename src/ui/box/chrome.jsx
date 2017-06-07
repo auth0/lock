@@ -185,7 +185,8 @@ export default class Chrome extends React.Component {
       success,
       terms,
       title,
-      transitionName
+      transitionName,
+      scrollGlobalMessagesIntoView
     } = this.props;
 
     const { delayingShowSubmitButton, moving, reverse } = this.state;
@@ -217,10 +218,20 @@ export default class Chrome extends React.Component {
     }
 
     const globalError = error
-      ? <GlobalMessage key="global-error" message={wrapGlobalMessage(error)} type="error" />
+      ? <GlobalMessage
+          key="global-error"
+          message={wrapGlobalMessage(error)}
+          type="error"
+          scrollIntoView={scrollGlobalMessagesIntoView}
+        />
       : null;
     const globalSuccess = success
-      ? <GlobalMessage key="global-success" message={wrapGlobalMessage(success)} type="success" />
+      ? <GlobalMessage
+          key="global-success"
+          message={wrapGlobalMessage(success)}
+          type="success"
+          scrollIntoView={scrollGlobalMessagesIntoView}
+        />
       : null;
 
     const Content = contentComponent;
@@ -313,11 +324,13 @@ Chrome.propTypes = {
   success: PropTypes.node,
   terms: PropTypes.element,
   title: PropTypes.string,
-  transitionName: PropTypes.string.isRequired
+  transitionName: PropTypes.string.isRequired,
+  scrollGlobalMessagesIntoView: PropTypes.bool
 };
 
 Chrome.defaultProps = {
   autofocus: false,
   disableSubmitButton: false,
-  showSubmitButton: true
+  showSubmitButton: true,
+  scrollGlobalMessagesIntoView: false
 };
