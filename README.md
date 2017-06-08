@@ -463,8 +463,6 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [circleci-url]: https://circleci.com/gh/auth0/lock/tree/master
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
-[david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
-[david-url]: https://david-dm.org/auth0/lock
 [license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
 [license-url]: #license
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
