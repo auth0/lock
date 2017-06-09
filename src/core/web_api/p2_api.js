@@ -53,8 +53,11 @@ class Auth0APIClient {
         this.client.authorize(loginOptions, f);
       }
     } else {
+      if (this.authOpt.popup) {
+        throw new Error('Cross origin login is not supported in popup mode');
+      }
       loginOptions.realm = options.connection;
-      this.client.client.login(loginOptions, f);
+      this.client.login(loginOptions, f);
     }
   }
 

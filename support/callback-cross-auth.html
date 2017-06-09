@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.auth0.com/js/auth0/8.7.0/auth0.min.js"></script>
+  <script type="text/javascript">
+    var auth0 = new auth0.WebAuth({
+      domain: 'brucke.auth0.com',
+      redirectUri: 'https://localhost:3000/support',
+      clientID: 'nj4hF7eaFFgt45b7brhUg8S8qewcVmYw'
+    });
+    auth0.crossOriginAuthenticationCallback();
+  </script>
+</head>
+
+<body></body>
+
+</html>
