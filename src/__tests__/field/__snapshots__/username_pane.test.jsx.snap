@@ -15,6 +15,7 @@ Array [
 exports[`UsernamePane renders correctly 1`] = `
 <div
   data-__type="username_input"
+  data-autoComplete={false}
   data-invalidHint="invalidErrorHint"
   data-isValid={false}
   data-onChange={[Function]}
@@ -26,6 +27,7 @@ exports[`UsernamePane renders correctly 1`] = `
 exports[`UsernamePane sets \`blankErrorHint\` when username is empty 1`] = `
 <div
   data-__type="username_input"
+  data-autoComplete={false}
   data-invalidHint="blankErrorHint"
   data-isValid={false}
   data-onChange={[Function]}
@@ -37,7 +39,20 @@ exports[`UsernamePane sets \`blankErrorHint\` when username is empty 1`] = `
 exports[`UsernamePane sets \`usernameFormatErrorHint\` when usernameLooksLikeEmail() returns false and \`validateFormat\` is true 1`] = `
 <div
   data-__type="username_input"
+  data-autoComplete={false}
   data-invalidHint="usernameFormatErrorHint,min,max"
+  data-isValid={false}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="username"
+/>
+`;
+
+exports[`UsernamePane sets autoComplete to true when \`allowAutocomplete\` is true 1`] = `
+<div
+  data-__type="username_input"
+  data-autoComplete={true}
+  data-invalidHint="invalidErrorHint"
   data-isValid={false}
   data-onChange={[Function]}
   data-placeholder="placeholder"
@@ -48,6 +63,7 @@ exports[`UsernamePane sets \`usernameFormatErrorHint\` when usernameLooksLikeEma
 exports[`UsernamePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
 <div
   data-__type="username_input"
+  data-autoComplete={false}
   data-invalidHint="invalidErrorHint"
   data-isValid={true}
   data-onChange={[Function]}
