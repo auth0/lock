@@ -113,3 +113,14 @@ export function loginCallback(redirect, cb) {
 export function normalizeAuthParams({ connection_scope, popup, popupOptions, ...authParams }) {
   return authParams;
 }
+
+export function webAuthOverrides({ __tenant, __token_issuer } = {}) {
+  if (__tenant || __token_issuer) {
+    return {
+      __tenant,
+      __token_issuer
+    };
+  }
+
+  return null;
+}
