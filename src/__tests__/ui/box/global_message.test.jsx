@@ -48,7 +48,7 @@ describe('GlobalMessage', () => {
     expect(scrollIntoViewSpy).not.toHaveBeenCalled();
   });
   it('should not call scrollIntoView if parameter is set to false', () => {
-    const wrapper = mount(<GlobalMessage type="success" message="foo" />);
+    const wrapper = mount(<GlobalMessage type="success" message="foo" scrollIntoView={false} />);
     const getBoundingClientRectSpy = jest.fn().mockReturnValue({ top: -1 });
     const scrollIntoViewSpy = jest.fn();
     wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
