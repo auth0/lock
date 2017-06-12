@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VcodePane calls \`onRestart\` when alternative link is clicked 1`] = `
+Array [
+  1,
+]
+`;
+
+exports[`VcodePane calls \`swap\` when VcodeInput changes 1`] = `
+Array [
+  "updateEntity",
+  "lock",
+  1,
+  [Function],
+  "newCode",
+]
+`;
+
+exports[`VcodePane disable input when submitting 1`] = `
+<div>
+  <div
+    data-__type="vcode_input"
+    data-autoFocus={false}
+    data-disabled={true}
+    data-isValid={false}
+    data-onChange={[Function]}
+    data-placeholder="placeholder"
+    data-value="vcode"
+  />
+  <p
+    className="auth0-lock-alternative"
+  >
+    <a
+      className="auth0-lock-alternative-link"
+      href="#"
+      onClick={[Function]}
+    >
+      resendLabel
+    </a>
+  </p>
+</div>
+`;
+
+exports[`VcodePane renders correctly 1`] = `
+<div>
+  <div
+    data-__type="vcode_input"
+    data-autoFocus={false}
+    data-disabled={false}
+    data-isValid={false}
+    data-onChange={[Function]}
+    data-placeholder="placeholder"
+    data-value="vcode"
+  />
+  <p
+    className="auth0-lock-alternative"
+  >
+    <a
+      className="auth0-lock-alternative-link"
+      href="#"
+      onClick={[Function]}
+    >
+      resendLabel
+    </a>
+  </p>
+</div>
+`;
+
+exports[`VcodePane sets autoFocus as true when \`isSmallScreen\` is false 1`] = `
+<div>
+  <div
+    data-__type="vcode_input"
+    data-autoFocus={true}
+    data-disabled={false}
+    data-isValid={false}
+    data-onChange={[Function]}
+    data-placeholder="placeholder"
+    data-value="vcode"
+  />
+  <p
+    className="auth0-lock-alternative"
+  >
+    <a
+      className="auth0-lock-alternative-link"
+      href="#"
+      onClick={[Function]}
+    >
+      resendLabel
+    </a>
+  </p>
+</div>
+`;
+
+exports[`VcodePane sets isValid as true when \`isFieldVisiblyInvalid\` is false and globalError() is false 1`] = `
+<div>
+  <div
+    data-__type="vcode_input"
+    data-autoFocus={false}
+    data-disabled={false}
+    data-isValid={true}
+    data-onChange={[Function]}
+    data-placeholder="placeholder"
+    data-value="vcode"
+  />
+  <p
+    className="auth0-lock-alternative"
+  >
+    <a
+      className="auth0-lock-alternative-link"
+      href="#"
+      onClick={[Function]}
+    >
+      resendLabel
+    </a>
+  </p>
+</div>
+`;
+
+exports[`VcodePane shows header when instructions are available 1`] = `
+<div>
+  <p>
+    <span>
+      instructions
+    </span>
+  </p>
+  <div
+    data-__type="vcode_input"
+    data-autoFocus={false}
+    data-disabled={false}
+    data-isValid={false}
+    data-onChange={[Function]}
+    data-placeholder="placeholder"
+    data-value="vcode"
+  />
+  <p
+    className="auth0-lock-alternative"
+  >
+    <a
+      className="auth0-lock-alternative-link"
+      href="#"
+      onClick={[Function]}
+    >
+      resendLabel
+    </a>
+  </p>
+</div>
+`;

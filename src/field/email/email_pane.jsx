@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import EmailInput from '../../ui/input/email_input';
 import * as c from '../index';
@@ -7,7 +8,6 @@ import { setEmail } from '../email';
 import { debouncedRequestAvatar, requestAvatar } from '../../avatar';
 
 export default class EmailPane extends React.Component {
-
   componentDidMount() {
     const { lock } = this.props;
     if (l.ui.avatar(lock) && c.email(lock)) {
@@ -21,29 +21,38 @@ export default class EmailPane extends React.Component {
       debouncedRequestAvatar(l.id(lock), e.target.value);
     }
 
-    swap(updateEntity, "lock", l.id(lock), setEmail, e.target.value);
+    swap(updateEntity, 'lock', l.id(lock), setEmail, e.target.value);
   }
 
   render() {
-    const { i18n, lock, placeholder } = this.props;
-    const value = c.getFieldValue(lock, "email");
+    const { i18n, lock, placeholder, forceInvalidVisibility = false } = this.props;
+    const allowAutocomplete = l.ui.allowAutocomplete(lock);
+
+    const field = c.getField(lock, 'email');
+    const value = field.get('value', '');
+    const valid = field.get('valid', true);
+    const invalidHint = field.get(
+      'invalidHint',
+      i18n.str(value ? 'invalidErrorHint' : 'blankErrorHint')
+    );
+
+    const isValid = (!forceInvalidVisibility || valid) && !c.isFieldVisiblyInvalid(lock, 'email');
 
     return (
       <EmailInput
         value={value}
-        invalidHint={i18n.str(value ? "invalidErrorHint": "blankErrorHint")}
-        isValid={!c.isFieldVisiblyInvalid(lock, "email")}
+        invalidHint={invalidHint}
+        isValid={isValid}
         onChange={::this.handleChange}
         placeholder={placeholder}
+        autoComplete={allowAutocomplete}
       />
     );
   }
-
 }
 
 EmailPane.propTypes = {
-  i18n: React.PropTypes.object.isRequired,
-  invalidHint: React.PropTypes.string,
-  lock: React.PropTypes.object.isRequired,
-  placeholder: React.PropTypes.string.isRequired
+  i18n: PropTypes.object.isRequired,
+  lock: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired
 };

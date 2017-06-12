@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialButtonsPane calls \`logIn\` with social connection 1 when first button is clicked 1`] = `
+Array [
+  1,
+  Object {
+    "get": [Function],
+    "item": 1,
+  },
+]
+`;
+
+exports[`SocialButtonsPane calls \`logIn\` with social connection 2 when second button is clicked 1`] = `
+Array [
+  1,
+  Object {
+    "get": [Function],
+    "item": 2,
+  },
+]
+`;
+
+exports[`SocialButtonsPane disables social buttons when disabled === true 1`] = `
+<div
+  className="auth-lock-social-buttons-pane"
+>
+  <div
+    className="auth0-lock-social-buttons-container"
+  >
+    <div
+      data-__type="auth_button"
+      data-disabled={true}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections1-strategy"
+    />
+    <div
+      data-__type="auth_button"
+      data-disabled={true}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections2-strategy"
+    />
+  </div>
+</div>
+`;
+
+exports[`SocialButtonsPane renders big buttons when bigButtons === true 1`] = `
+<div
+  className="auth-lock-social-buttons-pane"
+>
+  <div
+    className="auth0-lock-social-buttons-container"
+  >
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={true}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections1-strategy"
+    />
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={true}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections2-strategy"
+    />
+  </div>
+</div>
+`;
+
+exports[`SocialButtonsPane renders correctly 1`] = `
+<div
+  className="auth-lock-social-buttons-pane"
+>
+  <div
+    className="auth0-lock-social-buttons-container"
+  >
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections1-strategy"
+    />
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections2-strategy"
+    />
+  </div>
+</div>
+`;
+
+exports[`SocialButtonsPane shows header when instructions are available 1`] = `
+<div
+  className="auth-lock-social-buttons-pane"
+>
+  <p>
+    instructions
+  </p>
+  <div
+    className="auth0-lock-social-buttons-container"
+  >
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections1-strategy"
+    />
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections2-strategy"
+    />
+  </div>
+</div>
+`;
+
+exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
+<div
+  className="auth-lock-social-buttons-pane"
+>
+  <div
+    className="auth0-lock-social-buttons-container"
+  >
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections1-strategy"
+    />
+    <div
+      data-__type="auth_button"
+      data-disabled={false}
+      data-foregroundColor="authButtonsTheme-foregroundColor"
+      data-icon="authButtonsTheme-icon"
+      data-isBig={false}
+      data-label="loginWithLabel,authButtonsTheme-displayName"
+      data-onClick={[Function]}
+      data-primaryColor="authButtonsTheme-primaryColor"
+      data-strategy="socialConnections2-strategy"
+    />
+  </div>
+  <div
+    className="auth0-loading-container"
+  >
+    <div
+      className="auth0-loading"
+    />
+  </div>
+</div>
+`;

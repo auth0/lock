@@ -1,6 +1,6 @@
 #!/bin/bash
 
-npm install
+yarn install
 
 MATCHER=${2:-"*"}
 NPM_TAG=${3:-"beta"}
@@ -37,7 +37,7 @@ success()
 
 cdn_release()
 {
-  npm run publish:cdn -- --full-version-only
+  npm run publish:cdn
   new_line
   success "$NPM_NAME ($1) uploaded to cdn"
 }
@@ -66,9 +66,11 @@ bower_release()
 
 npm_release()
 {
+  verbose "Checking if version $1 of $NPM_NAME is already available in npm…"
+
   NPM_EXISTS=$(npm info -s $NPM_NAME@$1 version)
 
-  if [ ! -z "$NPM_EXISTS" ]; then
+  if [ ! -z "$NPM_EXISTS" ] && [ "$NPM_EXISTS" == "$1" ]; then
     verbose "There is already a version $NPM_EXISTS in npm. Skipping npm publish…"
   else
     if [ ! -z "$STABLE" ]; then
@@ -86,23 +88,26 @@ npm_release()
 # Test
 if [ -n "$SAUCE_USERNAME" ]
 then
-  npm run test
+  yarn run test
 else
-  npm run test:cli
+  yarn run test:cli
+  yarn run test:jest
 fi
 
 # Clean
 rm -f build/*.js
 
-# Build
-npm run dist build
-
-# Release
+# Build & Release Webpack Bundle
+yarn run dist build
 git checkout -b dist
 bower_release
 new_line
-npm_release "$VERSION"
-new_line
 cdn_release "$VERSION"
+new_line
+
+# Build & Release NPM
+yarn run prepublish
+npm_release "$VERSION"
+
 git checkout master
 git branch -D dist

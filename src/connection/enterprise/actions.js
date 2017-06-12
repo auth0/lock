@@ -19,11 +19,11 @@ import * as l from '../../core/index';
 import { databaseLogInWithEmail } from '../database/index';
 
 export function startHRD(id, email) {
-  swap(updateEntity, "lock", id, toggleHRD, email);
+  swap(updateEntity, 'lock', id, toggleHRD, email);
 }
 
 export function cancelHRD(id) {
-  swap(updateEntity, "lock", id, m => {
+  swap(updateEntity, 'lock', id, m => {
     m = toggleHRD(m, false);
     m = hideInvalidFields(m);
     return m;
@@ -31,11 +31,8 @@ export function cancelHRD(id) {
 }
 
 export function logIn(id) {
-  const m = read(getEntity, "lock", id);
-  const email = getFieldValue(
-    m,
-    databaseLogInWithEmail(m) ? "email" : "username"
-  );
+  const m = read(getEntity, 'lock', id);
+  const email = getFieldValue(m, databaseLogInWithEmail(m) ? 'email' : 'username');
   const ssoConnection = matchConnection(m, email);
 
   if (ssoConnection && !isHRDActive(m)) {
@@ -46,29 +43,29 @@ export function logIn(id) {
 }
 
 function logInActiveFlow(id) {
-  const m = read(getEntity, "lock", id);
-  const usernameField = isHRDActive(m) || !databaseLogInWithEmail(m)
-    ? "username"
-    : "email";
+  const m = read(getEntity, 'lock', id);
+  const usernameField = isHRDActive(m) || !databaseLogInWithEmail(m) ? 'username' : 'email';
 
   const originalUsername = getFieldValue(m, usernameField);
   const connection = enterpriseActiveFlowConnection(m);
 
-  const username = l.defaultADUsernameFromEmailPrefix(m) ? emailLocalPart(originalUsername) : originalUsername;
+  const username = l.defaultADUsernameFromEmailPrefix(m)
+    ? emailLocalPart(originalUsername)
+    : originalUsername;
 
-  coreLogIn(id, ["password", usernameField], {
-    connection: connection ? connection.get("name") : null,
+  coreLogIn(id, ['password', usernameField], {
+    connection: connection ? connection.get('name') : null,
     username: username,
-    password: getFieldValue(m, "password"),
+    password: getFieldValue(m, 'password'),
     login_hint: username
   });
 }
 
 function logInSSO(id, connection) {
-  const m = read(getEntity, "lock", id);
-  const field = databaseLogInWithEmail(m) ? "email" : "username";
+  const m = read(getEntity, 'lock', id);
+  const field = databaseLogInWithEmail(m) ? 'email' : 'username';
   coreLogIn(id, [field], {
-    connection: connection.get("name"),
+    connection: connection.get('name'),
     login_hint: getFieldValue(m, field)
   });
 }

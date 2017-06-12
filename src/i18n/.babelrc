@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    "version-inline",
+    "transform-css-import-to-string",
+    "babel-plugin-stylus-compiler"
+  ],
+  "presets": [
+    [
+      "es2015",
+      {
+        "loose": true
+      }
+    ],
+    "stage-0",
+    "react"
+  ]
+}

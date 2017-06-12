@@ -1,0 +1,19 @@
+machine:
+  node:
+    version: v6.10.0
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+dependencies:
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+test:
+  pre:
+    - yarn run build
+  override:
+    - yarn run test:cli
+    - yarn run test:jest
+general:
+  artifacts:
+    - build

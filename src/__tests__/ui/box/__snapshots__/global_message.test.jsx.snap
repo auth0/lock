@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalMessage renders correctly given a success type 1`] = `
+<div
+  className="auth0-global-message auth0-global-message-success"
+>
+  <span
+    className="animated fadeInUp"
+  >
+    Success!
+  </span>
+</div>
+`;
+
+exports[`GlobalMessage renders correctly given an error type 1`] = `
+<div
+  className="auth0-global-message auth0-global-message-error"
+>
+  <span
+    className="animated fadeInUp"
+  >
+    An error occurred.
+  </span>
+</div>
+`;

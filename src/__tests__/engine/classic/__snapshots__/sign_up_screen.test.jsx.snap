@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUpScreen disables SocialButtonsPane when terms were not accepted 1`] = `
+<div>
+  <div
+    data-__type="social_buttons_pane"
+    data-bigButtons={false}
+    data-disabled={true}
+    data-instructions="socialSignUpInstructions"
+    data-labelFn={[Function]}
+    data-lock="model"
+    data-signUp={true}
+  />
+</div>
+`;
+
+exports[`SignUpScreen renders LoginSignUpTabs SSO is disabled and has screen login 1`] = `
+<div>
+  <div
+    data-__type="login_sign_up_tabs"
+    data-lock="model"
+    data-loginLabel="loginLabel"
+    data-signUpLabel="signUpLabel"
+  />
+</div>
+`;
+
+exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
+<div>
+  <div
+    data-__type="sign_up_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-i18n={
+      Object {
+        "group": [Function],
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseSignUpInstructions"
+    data-model="model"
+    data-onlyEmail={false}
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-passwordStrengthMessages="passwordStrength"
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+  />
+</div>
+`;
+
+exports[`SignUpScreen renders SignUpPane when has enterprise connection 1`] = `
+<div>
+  <div
+    data-__type="sign_up_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-i18n={
+      Object {
+        "group": [Function],
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseSignUpInstructions"
+    data-model="model"
+    data-onlyEmail={false}
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-passwordStrengthMessages="passwordStrength"
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+  />
+</div>
+`;
+
+exports[`SignUpScreen renders SingleSignOnNotice when SSO is enabled and has screen login 1`] = `
+<div>
+  <div
+    data-__type="single_sign_on_notice"
+    data-children="ssoEnabled"
+  />
+</div>
+`;
+
+exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] = `
+<div>
+  <div
+    data-__type="social_buttons_pane"
+    data-bigButtons={false}
+    data-disabled={false}
+    data-instructions="socialSignUpInstructions"
+    data-labelFn={[Function]}
+    data-lock="model"
+    data-signUp={true}
+  />
+</div>
+`;
+
+exports[`SignUpScreen renders empty div by default 1`] = `<div />`;

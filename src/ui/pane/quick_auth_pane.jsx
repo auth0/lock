@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import AuthButton from '../button/auth_button';
 
-const QuickAuthPane = (props) => {
+const QuickAuthPane = props => {
   const {
     alternativeLabel,
     alternativeClickHandler,
@@ -19,13 +20,15 @@ const QuickAuthPane = (props) => {
         <a
           className="auth0-lock-alternative-link"
           href="#"
-          onClick={e => {e.preventDefault(); alternativeClickHandler(e)}}
+          onClick={e => {
+            e.preventDefault();
+            alternativeClickHandler(e);
+          }}
         >
           {alternativeLabel}
         </a>
       </p>
     : null;
-
 
   return (
     <div className="auth0-lock-last-login-pane">
@@ -33,7 +36,10 @@ const QuickAuthPane = (props) => {
 
       <AuthButton
         label={buttonLabel}
-        onClick={e => {e.preventDefault(); buttonClickHandler(e)}}
+        onClick={e => {
+          e.preventDefault();
+          buttonClickHandler(e);
+        }}
         strategy={strategy}
         primaryColor={primaryColor}
         foregroundColor={foregroundColor}
@@ -50,16 +56,16 @@ const QuickAuthPane = (props) => {
 };
 
 QuickAuthPane.propTypes = {
-  alternativeLabel: React.PropTypes.string,
+  alternativeLabel: PropTypes.string,
   alternativeClickHandler: (props, propName, component, ...rest) => {
     if (props.alternativeLabel !== undefined) {
-      return React.PropTypes.func.isRequired(props, propName, component, ...rest);
+      return PropTypes.func.isRequired(props, propName, component, ...rest);
     }
   },
-  buttonLabel: React.PropTypes.string.isRequired,
-  buttonClickHandler: React.PropTypes.func.isRequired,
-  header: React.PropTypes.element,
-  strategy: React.PropTypes.string.isRequired
+  buttonLabel: PropTypes.string.isRequired,
+  buttonClickHandler: PropTypes.func.isRequired,
+  header: PropTypes.element,
+  strategy: PropTypes.string.isRequired
 };
 
 export default QuickAuthPane;

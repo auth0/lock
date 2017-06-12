@@ -3,7 +3,6 @@ import { validateEmail } from './email';
 import { databaseConnection } from '../connection/database';
 import trim from 'trim';
 
-
 const DEFAULT_VALIDATION = { mfa_code: { length: 6 } };
 const regExp = /^[0-9]+$/;
 
@@ -26,7 +25,7 @@ function validateMFACode(str, settings = DEFAULT_VALIDATION.mfa_code) {
 }
 
 export function setMFACode(m, str) {
-  return setField(m, "mfa_code", str, validateMFACode);
+  return setField(m, 'mfa_code', str, validateMFACode);
 }
 
 export function getMFACodeValidation(m) {

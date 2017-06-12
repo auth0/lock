@@ -1,7 +1,238 @@
 #Change Log
 
+## [v10.16.0](https://github.com/auth0/lock/tree/v10.16.0) (2017-05-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.15.1...v10.16.0)
+
+
+**Added**
+- Add form method [\#993](https://github.com/auth0/lock/pull/993) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Update badge location for better performance and bundle max-age changes [\#995](https://github.com/auth0/lock/pull/995) ([ramasilveyra](https://github.com/ramasilveyra))
+
+**Fixed**
+- Fix long header title and Error messages overflow [\#990](https://github.com/auth0/lock/pull/990) ([beneliflo](https://github.com/beneliflo))
+- Fix grammar mistake RU [\#988](https://github.com/auth0/lock/pull/988) ([uladar](https://github.com/uladar))
+
+
+## [v10.15.1](https://github.com/auth0/lock/tree/v10.15.1) (2017-04-25)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.15.0...v10.15.1)
+
+
+**Fixed**
+- Moving dependencies to devDependencies [\#984](https://github.com/auth0/lock/pull/984) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v10.15.0](https://github.com/auth0/lock/tree/v10.15.0) (2017-04-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.14.0...v10.15.0)
+
+
+**Added**
+- Add support for paypal-sandbox strategy [\#975](https://github.com/auth0/lock/pull/975) ([ziluvatar](https://github.com/ziluvatar))
+
+**Changed**
+- Upgrade auth0-js to v8.6.0 [\#980](https://github.com/auth0/lock/pull/980) ([luisrudge](https://github.com/luisrudge))
+- Adding prettier and a precommit script to format the code :tada: :lipstick:  [\#977](https://github.com/auth0/lock/pull/977) ([luisrudge](https://github.com/luisrudge))
+- Upgrading usage of prop-types to new package [\#971](https://github.com/auth0/lock/pull/971) ([luisrudge](https://github.com/luisrudge))
+- Use replaceState for better browser history experience [\#967](https://github.com/auth0/lock/pull/967) ([selaux](https://github.com/selaux))
+- Renaming internal `signOut` methods with `logout` to keep it consistent [\#966](https://github.com/auth0/lock/pull/966) ([luisrudge](https://github.com/luisrudge))
+- Improve error handling of sync with better errors [\#961](https://github.com/auth0/lock/pull/961) ([luisrudge](https://github.com/luisrudge))
+- Adding `key` to the error "An error occurred when fetching data" [\#956](https://github.com/auth0/lock/pull/956) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed typo in cs.js [\#979](https://github.com/auth0/lock/pull/979) ([fersman](https://github.com/fersman))
+- fixed propType misspell in header.jsx [\#973](https://github.com/auth0/lock/pull/973) ([nickpisacane](https://github.com/nickpisacane))
+- Fixed scrolling on mobile in landscape mode [\#963](https://github.com/auth0/lock/pull/963) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v10.14.0](https://github.com/auth0/lock/tree/v10.14.0) (2017-03-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.13.0...v10.14.0)
+
+**Closed issues**
+- prefill option is lost after reset password [\#933](https://github.com/auth0/lock/issues/933)
+
+**Added**
+- Throw an error when audience is used without oidcConformant flag [\#947](https://github.com/auth0/lock/pull/947) ([luisrudge](https://github.com/luisrudge))
+- Added Finnish translation [\#936](https://github.com/auth0/lock/pull/936) ([kettunen](https://github.com/kettunen))
+- Added Ukrainian translation [\#931](https://github.com/auth0/lock/pull/931) ([grsmv](https://github.com/grsmv))
+
+**Changed**
+- Upgrade auth0js to v8.5.0 [\#952](https://github.com/auth0/lock/pull/952) ([luisrudge](https://github.com/luisrudge))
+- Disable social buttons when terms were not accepted on sign up [\#949](https://github.com/auth0/lock/pull/949) ([luisrudge](https://github.com/luisrudge))
+- Better explanation about the sso option [\#948](https://github.com/auth0/lock/pull/948) ([luisrudge](https://github.com/luisrudge))
+- Changed password leak error message [\#934](https://github.com/auth0/lock/pull/934) ([ntotten](https://github.com/ntotten))
+- Add support for success and error messages to be in HTML [\#928](https://github.com/auth0/lock/pull/928) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixing Italian dictionary [\#950](https://github.com/auth0/lock/pull/950) ([ilmistra](https://github.com/ilmistra))
+- Don't clear email field after reset password [\#945](https://github.com/auth0/lock/pull/945) ([luisrudge](https://github.com/luisrudge))
+- Disable autoCorrect and spellCheck in the username input [\#927](https://github.com/auth0/lock/pull/927) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v10.13.0](https://github.com/auth0/lock/tree/v10.13.0) (2017-03-13)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.3...v10.13.0)
+
+**Closed issues**
+- State with `=`, `&` characters is incorrectly parsed from url fragment [\#913](https://github.com/auth0/lock/issues/913)
+- Add support for Evernote strategy [\#895](https://github.com/auth0/lock/issues/895)
+
+**Fixed**
+- Updated auth0 js version [\#924](https://github.com/auth0/lock/pull/924) ([hzalaz](https://github.com/hzalaz))
+- Adds evernote social icon [\#923](https://github.com/auth0/lock/pull/923) ([vctrfrnndz](https://github.com/vctrfrnndz))
+- Add japanese translation for "OR" [\#921](https://github.com/auth0/lock/pull/921) ([vctrfrnndz](https://github.com/vctrfrnndz))
+- Fix some french translations. [\#918](https://github.com/auth0/lock/pull/918) ([lucasmichot](https://github.com/lucasmichot))
+- Replace querystring implementation with qs module [\#916](https://github.com/auth0/lock/pull/916) ([elger](https://github.com/elger))
+- Use error.name to find the correct error message for invalid passwords [\#904](https://github.com/auth0/lock/pull/904) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v10.12.3](https://github.com/auth0/lock/tree/v10.12.3) (2017-03-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.2...v10.12.3)
+
+
+**Fixed**
+- Update node engine restriction [\#909](https://github.com/auth0/lock/pull/909) ([hzalaz](https://github.com/hzalaz))
+- Fixed Czech translation [\#902](https://github.com/auth0/lock/pull/902) ([FilipPyrek](https://github.com/FilipPyrek))
+
+
+## [v10.12.2](https://github.com/auth0/lock/tree/v10.12.2) (2017-03-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.1...v10.12.2)
+
+
+**Fixed**
+- Specify owp for non oidc web api in popup mode [\#897](https://github.com/auth0/lock/pull/897) ([hzalaz](https://github.com/hzalaz))
+
+
+## [v10.12.1](https://github.com/auth0/lock/tree/v10.12.1) (2017-03-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.12.0...v10.12.1)
+
+
+**Fixed**
+- Fixed npm transpiled code [\#893](https://github.com/auth0/lock/pull/893) ([hzalaz](https://github.com/hzalaz))
+
+
+## [v10.12.0](https://github.com/auth0/lock/tree/v10.12.0) (2017-03-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.11.0...v10.12.0)
+
+**Closed issues**
+- Bug in email field validation [\#884](https://github.com/auth0/lock/issues/884)
+- Input field tab issue in IE [\#870](https://github.com/auth0/lock/issues/870)
+- Bring back the integratedWindowsLogin option [\#852](https://github.com/auth0/lock/issues/852)
+- Unwanted parameters in /authorize call [\#851](https://github.com/auth0/lock/issues/851)
+- Back button not displaying properly in IE 11 [\#767](https://github.com/auth0/lock/issues/767)
+
+**Added**
+- Added checkbox CustomInput for additionalSignUpFields [\#860](https://github.com/auth0/lock/pull/860) ([dariobanfi](https://github.com/dariobanfi))
+- Add slovak translation [\#846](https://github.com/auth0/lock/pull/846) ([Passto](https://github.com/Passto))
+
+**Changed**
+- Update password sheriff to reduce bundle size [\#879](https://github.com/auth0/lock/pull/879) ([hzalaz](https://github.com/hzalaz))
+- Adding focusable=false to all svgs [\#873](https://github.com/auth0/lock/pull/873) ([luisrudge](https://github.com/luisrudge))
+- Migrating to webpack2 [\#871](https://github.com/auth0/lock/pull/871) ([luisrudge](https://github.com/luisrudge))
+- Review catalan translations [\#869](https://github.com/auth0/lock/pull/869) ([oscarfonts](https://github.com/oscarfonts))
+- Reducing time to unpin loading pane [\#853](https://github.com/auth0/lock/pull/853) ([luisrudge](https://github.com/luisrudge))
+- Throw an error if login, signUp and forgotPassword screens are not allowed [\#850](https://github.com/auth0/lock/pull/850) ([luisrudge](https://github.com/luisrudge))
+- Kerberos network checking no longer depends on rememberLastLogin [\#805](https://github.com/auth0/lock/pull/805) ([patrickmcgraw](https://github.com/patrickmcgraw))
+
+**Fixed**
+- Updated auth0.js to v8.3.0 [\#889](https://github.com/auth0/lock/pull/889) ([hzalaz](https://github.com/hzalaz))
+- Fix issue when submiting a form with no email [\#886](https://github.com/auth0/lock/pull/886) ([selaux](https://github.com/selaux))
+- Fixing allowSignup and allowForgot options when loading tenant info [\#877](https://github.com/auth0/lock/pull/877) ([luisrudge](https://github.com/luisrudge))
+-  Don't disable mfa-code input [\#872](https://github.com/auth0/lock/pull/872) ([nikolaseu](https://github.com/nikolaseu))
+- Fix a box-sizing issue that happened when bootstrap was being used with lock [\#868](https://github.com/auth0/lock/pull/868) ([luisrudge](https://github.com/luisrudge))
+- Cleaning params sent to auth0js [\#863](https://github.com/auth0/lock/pull/863) ([luisrudge](https://github.com/luisrudge))
+- Only set prefill values when client is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v10.11.0](https://github.com/auth0/lock/tree/v10.11.0) (2017-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.2...v10.11.0)
+
+**Closed issues**
+- Input error state does not get reset when changing page [\#843](https://github.com/auth0/lock/issues/843)
+- Show error when the domain part of the email does not match any enterprise connection [\#661](https://github.com/auth0/lock/issues/661)
+
+**Added**
+- inject cordova plugin and force popup/sso in cordova or electron [\#835](https://github.com/auth0/lock/pull/835) ([glena](https://github.com/glena))
+- Japanese translation [\#834](https://github.com/auth0/lock/pull/834) ([stevensacks](https://github.com/stevensacks))
+- disable submit button when the email does not match with any connection [\#757](https://github.com/auth0/lock/pull/757) ([glena](https://github.com/glena))
+
+**Changed**
+- Clear invalid fields on screen change [\#844](https://github.com/auth0/lock/pull/844) ([glena](https://github.com/glena))
+- Bump the babel-preset-2015 version [\#838](https://github.com/auth0/lock/pull/838) ([iamkevingreen](https://github.com/iamkevingreen))
+
+
+## [v10.10.2](https://github.com/auth0/lock/tree/v10.10.2) (2017-01-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.1...v10.10.2)
+
+
+**Fixed**
+- Fix casing of null in IE (bumping auth0.js version) [\#827](https://github.com/auth0/lock/pull/827) ([glena](https://github.com/glena))
+- Fix ES translations [\#826](https://github.com/auth0/lock/pull/826) ([perpifran](https://github.com/perpifran))
+- Translated term mfaLoginTitle into Dutch [\#820](https://github.com/auth0/lock/pull/820) ([dctoon](https://github.com/dctoon))
+- For autologin, if login screen is not available, it should show the error in the signup one instead of breaking [\#817](https://github.com/auth0/lock/pull/817) ([glena](https://github.com/glena))
+
+
+## [v10.10.1](https://github.com/auth0/lock/tree/v10.10.1) (2017-01-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.10.0...v10.10.1)
+
+
+**Changed**
+- Bump auth0.js to 8.1.2 [\#821](https://github.com/auth0/lock/pull/821) ([glena](https://github.com/glena))
+
+
+## [v10.10.0](https://github.com/auth0/lock/tree/v10.10.0) (2017-01-17)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.9.2...v10.10.0)
+
+**Closed issues**
+- Lock v10.9.2 fails on IE 10 Windows 7 [\#801](https://github.com/auth0/lock/issues/801)
+
+**Added**
+- Add resumeAuth method and autoParseHash flag [\#790](https://github.com/auth0/lock/pull/790) ([luisrudge](https://github.com/luisrudge))
+- Hide first screen title option [\#745](https://github.com/auth0/lock/pull/745) ([glena](https://github.com/glena))
+
+**Changed**
+- Update zh.js [\#774](https://github.com/auth0/lock/pull/774) ([leplay](https://github.com/leplay))
+
+**Fixed**
+- Fix: popup does not close when signup fails [\#810](https://github.com/auth0/lock/pull/810) ([glena](https://github.com/glena))
+- removes scope openid warning in OIDC conformant mode. fix #780 [\#803](https://github.com/auth0/lock/pull/803) ([luisrudge](https://github.com/luisrudge))
+- Clearing fields when lock closes [\#802](https://github.com/auth0/lock/pull/802) ([luisrudge](https://github.com/luisrudge))
+- Fix redirect/popup login when shown in the hosted login page [\#799](https://github.com/auth0/lock/pull/799) ([glena](https://github.com/glena))
+
+**Breaking changes**
+- Bump auth0.js version - Fix profile casing (it should not convert to cammelcase) [\#815](https://github.com/auth0/lock/pull/815) ([glena](https://github.com/glena))
+
+In lock v10.9 we introduced an issue in auth0.js that changed the casing of the calls to retrieve the user profile (using `/userinfo` or `/tokeninfo`), everything was converted to camel case. We fixed that issue in this [auth0.js pull request](https://github.com/auth0/auth0.js/pull/307) and is part of this release of Lock. If you kept an v10.8 or older no changes are needed, for those who updated to v10.9 you need to revert the changes made to handle the case changes.
+
+## [v10.9.2](https://github.com/auth0/lock/tree/v10.9.2) (2017-01-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.9.1...v10.9.2)
+
+**Fixed**
+- Bring back support for get profile in default mode [\#794](https://github.com/auth0/lock/pull/794) ([glena](https://github.com/glena))
+- Don't emit error when registering for event 'signin ready' [\#784](https://github.com/auth0/lock/pull/784) ([theopak](https://github.com/theopak))
+
+
+## [v10.9.1](https://github.com/auth0/lock/tree/v10.9.1) (2017-01-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.9.0...v10.9.1)
+
+**Fixed**
+- Fix to comply legacy behaviour [\#787](https://github.com/auth0/lock/pull/787) ([glena](https://github.com/glena))
+- For legacy flow, the scope should default to openid [\#783](https://github.com/auth0/lock/pull/783) ([glena](https://github.com/glena))
+
+
+## [v10.9.0](https://github.com/auth0/lock/tree/v10.9.0) (2017-01-09)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.8.0-beta.5...v10.9.0)
+
+**Added**
+- Migrate to auth0.js v8 [\#744](https://github.com/auth0/lock/pull/744) ([glena](https://github.com/glena))
+
+**Changed**
+- Removed browserify as dependency and removed process usage [\#779](https://github.com/auth0/lock/pull/779) ([glena](https://github.com/glena))
+- Auth0js v8 - configuration validation + default scope [\#775](https://github.com/auth0/lock/pull/775) ([glena](https://github.com/glena))
+
+
 ## [v10.8.1](https://github.com/auth0/lock/tree/v10.8.1) (2017-01-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.8.0...v10.8.1)
+
 **Closed issues**
 - username/password login doesn't work with custom domains on the appliance [\#772](https://github.com/auth0/lock/issues/772)
 
@@ -11,6 +242,7 @@
 
 ## [v10.8.0](https://github.com/auth0/lock/tree/v10.8.0) (2017-01-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.7.3...v10.8.0)
+
 **Closed issues**
 - Request to add user-facing error message. [\#751](https://github.com/auth0/lock/issues/751)
 - Please throw an error for invalid events [\#748](https://github.com/auth0/lock/issues/748)

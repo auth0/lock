@@ -1,5 +1,5 @@
 [![NPM version][npm-image]][npm-url]
-[![Build status][travis-image]][travis-url]
+[![Build status][circleci-image]][circleci-url]
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.8.1/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.16.0/lock.min.js"></script>
 ```
 
 From [bower](http://bower.io)
@@ -65,7 +65,7 @@ lock.on("authenticated", function(authResult) {
       return;
     }
 
-    localStorage.setItem("idToken", authResult.idToken);
+    localStorage.setItem("accessToken", authResult.accessToken);
     localStorage.setItem("profile", JSON.stringify(profile));
 
     // Update DOM
@@ -77,14 +77,14 @@ lock.on("authenticated", function(authResult) {
 
 > *Note:* this method is soon to be deprecated, use `getUserInfo` instead.
 
-Once the user has logged in and you are in possesion of and id token, you can obtain the profile with `getProfile`.
+Once the user has logged in and you are in possesion of an id token, you can obtain the profile with `getProfile`.
 
 - **idToken {String}**: User id token.
 - **callback {Function}**: Will be invoked after the user profile been retrieved.
 
 ### getUserInfo(accessToken, callback)
 
-Once the user has logged in and you are in possesion of and access token, you can obtain the profile with `getUserInfo`.
+Once the user has logged in and you are in possesion of an access token, you can obtain the profile with `getUserInfo`.
 
 - **accessToken {String}**: User access token.
 - **callback {Function}**: Will be invoked after the user profile been retrieved.
@@ -114,7 +114,7 @@ Lock will emit events during its lifecycle.
 
 Displays the widget, allowing to override some options.
 
-- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details.
+- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
 #### Example
 
@@ -124,6 +124,38 @@ lock.show();
 
 // will override the allowedConnections option passed to the constructor, if any
 lock.show({allowedConnections: ["twitter", "facebook"]})
+
+// will override the entire auth.params object passed to the constructor, if any
+lock.show({auth: {params: {state: 'auth_state'}}})
+```
+
+### resumeAuth(hash, callback)
+
+If you set the [auth.autoParseHash](#authentication-options) option to `false`, you'll need to call this method to complete the authentication flow. This method is useful when you're using a client-side router that uses a `#` to handle urls (angular2 with `useHash` or react-router with `hashHistory`).
+- **hash {String}**: The hash fragment received from the redirect.
+- **callback {Function}**: Will be invoked after the parse is done. Has an error (if any) as the first argument and the authentication result as the second one. If there is no hash available, both arguments will be `null`.
+
+#### Example
+
+```js
+lock.resumeAuth(hash, function(error, authResult) {
+  if (error) {
+    alert("Could not parse hash");
+  }
+  console.log(authResult.accessToken);
+});
+```
+
+### logout(options)
+
+Logs out the user
+
+- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout)
+
+#### Example
+
+```js
+lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 ```
 
 ### Customization
@@ -146,6 +178,8 @@ The appearance of the widget and the mechanics of authentication can be customiz
   - `pt-BR`: Brazilian Portuguese
   - `ru`: Russian
   - `zh`: Chinese
+  - `ja`: Japanese
+  - [Check all the available languages](https://github.com/auth0/lock/tree/master/src/i18n)
 - **languageDictionary {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Language Dictionary Specification](#language-dictionary-specification) for the details.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
@@ -153,6 +187,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **flashMessage {Object}**: Shows an `error` or `success` flash message when Lock is shown.
   + **type {String}**: The message type, it should be `error` or `success`.
   + **text {String}**: The text to show.
+- **allowAutocomplete {Boolean}**: Determines whether or not the the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
 
 #### Theming options
 
@@ -193,11 +228,12 @@ Authentication options are grouped in the `auth` property of the `options` objec
 var options = {
   auth: {
    params: {param1: "value1"},
+   autoParseHash: true,
    redirect: true,
    redirectUrl: "some url",
    responseMode: "form_post",
    responseType: "token",
-   sso: true:
+   sso: true,
    connectionScopes: {
     connectionName: [ 'scope1', 'scope2' ]
    }
@@ -206,11 +242,12 @@ var options = {
 ```
 
 - **params {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
+- **autoParseHash {Boolean}**: When set to `true`, Lock will parse the `window.location.hash` string when instantiated. If set to `false`, you'll have to manually resume authentication using the [resumeAuth](#resumeauthhash-callback) method.
 - **redirect {Boolean}**: When set to `true`, the default, _redirect mode_ will be used. Otherwise, _popup mode_ is chosen. See [below](#popup-mode) for more details.
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
-- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not. Defaults to `true`.
+- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your client or tenant.
 - **connectionScopes {Object}**:  Allows to set scopes to be sent to the oauth2/social connection for authentication.
 
 #### Social options
@@ -346,6 +383,23 @@ var options = {
 }
 ```
 
+
+##### Checkbox field
+
+To specify a checkbox field use: `type: "checkbox"`
+The `prefill` value can determine the default state of the checkbox and it is required.
+
+```js
+var options = {
+  additionalSignUpFields: [{
+    type: "checkbox",
+    name: "newsletter",
+    prefill: "true",
+    placeholder: "I hereby agree that I want to receive marketing emails from your company",
+  }]
+}
+```
+
 #### Avatar provider
 
 Lock can show avatars fetched from anywhere. A custom avatar provider can be specified with the `avatar` option by passing an object with the keys `url` and `displayName`. Both properties are functions that take an email and a callback function.
@@ -406,12 +460,10 @@ If you have found a bug or if you have a feature request, please report them at 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 
-[travis-image]: https://img.shields.io/travis/auth0/lock.svg?style=flat-square&branch=master
-[travis-url]: https://travis-ci.org/auth0/lock
+[circleci-image]: https://img.shields.io/circleci/project/github/auth0/lock.svg?style=flat-square
+[circleci-url]: https://circleci.com/gh/auth0/lock/tree/master
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
-[david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
-[david-url]: https://david-dm.org/auth0/lock
 [license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
 [license-url]: #license
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square

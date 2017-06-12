@@ -4,13 +4,13 @@ import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
 import {
   closeLock,
+  resumeAuth,
   handleAuthCallback,
   openLock,
   removeLock,
   setupLock,
   updateLock
 } from './core/actions';
-import { termsAccepted } from './connection/database/index';
 import * as l from './core/index';
 import * as c from './field/index';
 import * as idu from './utils/id_utils';
@@ -19,16 +19,15 @@ import * as i18n from './i18n';
 import { go } from './sync';
 
 export default class Base extends EventEmitter {
-
   constructor(clientID, domain, options = {}, engine) {
-    if (typeof clientID != "string") {
-      throw new Error("A `clientID` string must be provided as first argument.");
+    if (typeof clientID != 'string') {
+      throw new Error('A `clientID` string must be provided as first argument.');
     }
-    if (typeof domain != "string") {
-      throw new Error("A `domain` string must be provided as second argument.");
+    if (typeof domain != 'string') {
+      throw new Error('A `domain` string must be provided as second argument.');
     }
-    if (typeof options != "object") {
-      throw new Error("When provided, the third argument must be an `options` object.");
+    if (typeof options != 'object') {
+      throw new Error('When provided, the third argument must be an `options` object.');
     }
 
     super();
@@ -39,7 +38,9 @@ export default class Base extends EventEmitter {
       'unrecoverable_error',
       'authenticated',
       'authorization_error',
-      'hash_parsed'
+      'hash_parsed',
+      'signin ready',
+      'signup ready'
     ];
 
     this.id = idu.incremental();
@@ -50,36 +51,33 @@ export default class Base extends EventEmitter {
     go(this.id);
 
     let m = setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn);
-
-    this.on('newListener', (type) => {
+    this.on('newListener', type => {
       if (this.validEvents.indexOf(type) === -1) {
-        l.emitUnrecoverableErrorEvent(m, `Invalid event "${type}".`)
+        l.emitUnrecoverableErrorEvent(m, `Invalid event "${type}".`);
       }
     });
 
-    if (!Base.hasScheduledAuthCallback) {
+    if (l.auth.autoParseHash(m) && !Base.hasScheduledAuthCallback) {
       Base.hasScheduledAuthCallback = true;
       setTimeout(handleAuthCallback, 0);
     }
 
-    observe("render", this.id, m => {
+    observe('render', this.id, m => {
       const partialApplyId = (screen, handlerName) => {
         const handler = screen[handlerName](m);
-        return handler
-          ? (...args) => handler(l.id(m), ...args)
-          : handler;
+        return handler ? (...args) => handler(l.id(m), ...args) : handler;
       };
-
-      const avatar = l.ui.avatar(m) && m.getIn(["avatar", "transient", "syncStatus"]) === "ok" || null;
-      const title = avatar
-        ? i18n.str(m, "welcome", m.getIn(["avatar", "transient", "displayName"]))
-        : i18n.str(m, "title");
+      const avatar =
+        (l.ui.avatar(m) && m.getIn(['avatar', 'transient', 'syncStatus']) === 'ok') || null;
 
       if (l.rendering(m)) {
         const screen = this.engine.render(m);
 
-        const disableSubmitButton = screen.name === "main.signUp"
-          && !termsAccepted(m);
+        const title = avatar
+          ? i18n.str(m, 'welcome', m.getIn(['avatar', 'transient', 'displayName']))
+          : screen.getTitle(m);
+
+        const disableSubmitButton = screen.isSubmitDisabled(m);
 
         const i18nProp = {
           group: keyPath => i18n.group(m, keyPath),
@@ -87,17 +85,20 @@ export default class Base extends EventEmitter {
           str: (keyPath, ...args) => i18n.str(m, keyPath, ...args)
         };
 
+        const getScreenTitle = m => {
+          // if it is the first screen and the flag is enabled, it should hide the title
+          return l.ui.hideMainScreenTitle(m) && screen.isFirstScreen(m) ? null : title;
+        };
+
         const props = {
-          avatar: avatar && m.getIn(["avatar", "transient", "url"]),
+          avatar: avatar && m.getIn(['avatar', 'transient', 'url']),
           auxiliaryPane: screen.renderAuxiliaryPane(m),
           autofocus: l.ui.autofocus(m),
-          backHandler: partialApplyId(screen, "backHandler"),
-          badgeLink: "https://auth0.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget",
-          closeHandler: l.ui.closable(m)
-            ? (...args) => closeLock(l.id(m), ...args)
-            : undefined,
+          backHandler: partialApplyId(screen, 'backHandler'),
+          badgeLink: 'https://auth0.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget',
+          closeHandler: l.ui.closable(m) ? (...args) => closeLock(l.id(m), ...args) : undefined,
           contentComponent: screen.render(),
-          contentProps: {i18n: i18nProp, model: m},
+          contentProps: { i18n: i18nProp, model: m },
           disableSubmitButton: disableSubmitButton,
           error: l.globalError(m),
           isMobile: l.ui.mobile(m),
@@ -108,23 +109,21 @@ export default class Base extends EventEmitter {
           screenName: screen.name,
           showBadge: l.showBadge(m) === true,
           success: l.globalSuccess(m),
-          submitButtonLabel: l.ui.labeledSubmitButton(m)
-            ? screen.submitButtonLabel(m)
-            : null,
-          submitHandler: partialApplyId(screen, "submitHandler"),
+          submitButtonLabel: l.ui.labeledSubmitButton(m) ? screen.submitButtonLabel(m) : null,
+          submitHandler: partialApplyId(screen, 'submitHandler'),
           tabs: screen.renderTabs(m),
-          terms: screen.renderTerms(m, i18nProp.html("signUpTerms")),
-          title: title,
-          transitionName: screen.name === "loading" ? "fade" : "horizontal-fade"
+          terms: screen.renderTerms(m, i18nProp.html('signUpTerms')),
+          title: getScreenTitle(m),
+          transitionName: screen.name === 'loading' ? 'fade' : 'horizontal-fade'
         };
         render(l.ui.containerID(m), props);
 
         // TODO: hack so we can start testing the beta
         if (!this.oldScreenName || this.oldScreenName != screen.name) {
-          if (screen.name === "main.login") {
-            l.emitEvent(m, "signin ready");
-          } else if (screen.name === "main.signUp") {
-            l.emitEvent(m, "signup ready");
+          if (screen.name === 'main.login') {
+            l.emitEvent(m, 'signin ready');
+          } else if (screen.name === 'main.signUp') {
+            l.emitEvent(m, 'signup ready');
           }
         }
         this.oldScreenName = screen.name;
@@ -132,6 +131,10 @@ export default class Base extends EventEmitter {
         remove(l.ui.containerID(m));
       }
     });
+  }
+
+  resumeAuth(hash, callback) {
+    resumeAuth(hash, callback);
   }
 
   show(opts = {}) {
@@ -155,7 +158,7 @@ export default class Base extends EventEmitter {
   }
 
   logout(query = {}) {
-    webAPI.signOut(this.id, query);
+    webAPI.logout(this.id, query);
   }
 
   update(f) {
@@ -167,8 +170,7 @@ export default class Base extends EventEmitter {
   }
 
   runHook(str, m, ...args) {
-    if (typeof this.engine[str] != "function") return m;
+    if (typeof this.engine[str] != 'function') return m;
     return this.engine[str](m, ...args);
   }
-
 }

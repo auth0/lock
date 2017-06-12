@@ -1,140 +1,135 @@
-"use strict";
+'use strict';
 
-const path = require("path");
-const fs = require("fs");
-const pkg = require("./package");
-const webpack = require("webpack");
-const webpackConfig = require("./webpack.config.js");
-const SmartBannerPlugin = require("smart-banner-webpack-plugin");
-const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
+const path = require('path');
+const fs = require('fs');
+const pkg = require('./package');
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config.js');
+const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
 module.exports = function(grunt) {
-
-  const pkg_info = grunt.file.readJSON("package.json");
+  const pkg_info = grunt.file.readJSON('package.json');
 
   grunt.initConfig({
     pkg: pkg_info,
     clean: {
-      build: ["build/"],
-      dev: ["build/"],
-      dist: ["lib/"]
+      build: ['build/'],
+      dev: ['build/'],
+      dist: ['lib/']
     },
     babel: {
       dist: {
         files: [
           {
             expand: true,
-            cwd:    "src",
-            src:    ["**/*.js", "**/*.jsx"],
-            dest:   "lib",
-            ext:    '.js'
+            cwd: 'src',
+            src: ['**/*.js', '**/*.jsx'],
+            dest: 'lib',
+            ext: '.js'
           }
         ]
       }
     },
     env: {
       build: {
-        NODE_ENV: "production"
+        NODE_ENV: 'production'
       }
     },
     exec: {
-      touch_index: "touch src/index.js"
+      touch_index: 'touch src/index.js'
     },
     webpack: {
       options: webpackConfig,
       build: {
-        devtool: "source-map",
+        devtool: 'source-map',
         output: {
-          path: path.join(__dirname, "build"),
+          path: path.join(__dirname, 'build'),
           filename: 'lock.min.js'
         },
         watch: false,
-        keepalive: false,
-        inline: false,
-        hot: false,
-        devtool: 'source-map',
         plugins: [
+          new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+          }),
           new webpack.DefinePlugin({
             'process.env': {
-              'NODE_ENV': JSON.stringify('production')
+              NODE_ENV: JSON.stringify('production')
             }
           }),
-          new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.OccurrenceOrderPlugin(),
           new webpack.optimize.AggressiveMergingPlugin(),
           new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false, screw_ie8: true },
+            sourceMap: true,
             comments: false
           }),
           new UnminifiedWebpackPlugin(),
-          new SmartBannerPlugin(
-            `[filename] v${pkg_info.version}\n\nAuthor: ${pkg_info.author}\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`,
-            { raw: false, entryOnly: true }
-          )
+          new webpack.BannerPlugin({
+            raw: false,
+            entryOnly: true,
+            banner: `lock v${pkg_info.version}\n\nAuthor: ${pkg_info.author}\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`
+          })
         ]
       }
     },
-    "webpack-dev-server": {
+    'webpack-dev-server': {
       options: {
         webpack: webpackConfig,
-        publicPath: "/build/"
+        publicPath: '/build/'
       },
       dev: {
-        keepAlive: true,
+        hot: true,
         port: 3000,
+        https: true,
         webpack: {
-          devtool: "eval",
-          debug: true
+          devtool: 'eval'
         }
       },
       design: {
-        keepAlive: true,
         webpack: {
           entry: './support/design/index.js',
           output: {
-            path: path.join(__dirname, "build"),
+            path: path.join(__dirname, 'build'),
             filename: 'lock.design.js'
           },
-          devtool: "eval",
-          debug: true
+          devtool: 'eval'
         }
       }
     },
-    "i18n": {
-      dist: {
+    i18n: {
+      build: {
         files: [
           {
             expand: true,
-            cwd:    "lib/i18n",
-            src:    "**/*.js",
-            dest:   "build",
-            ext:    '.js'
+            cwd: 'lib/i18n',
+            src: '**/*.js',
+            dest: 'build',
+            ext: '.js'
           }
         ]
       }
     }
   });
 
-  grunt.loadNpmTasks("grunt-babel");
-  grunt.loadNpmTasks("grunt-webpack");
-  grunt.loadNpmTasks("grunt-contrib-clean");
-  grunt.loadNpmTasks("grunt-env");
-  grunt.loadNpmTasks("grunt-exec");
+  grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-webpack');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-env');
+  grunt.loadNpmTasks('grunt-exec');
 
-  grunt.registerTask("build", ["clean:build", "env:build", "webpack:build"]);
-  grunt.registerTask("dist", ["clean:dist", "babel:dist", "i18n:dist"]);
-  grunt.registerTask("prepare_dev", ["clean:dev"]);
-  grunt.registerTask("dev", ["prepare_dev", "webpack-dev-server:dev"]);
-  grunt.registerTask("design", ["prepare_dev", "webpack-dev-server:design"]);
-  grunt.registerMultiTask("i18n", "Prepares i18n files to be hosted in CDN", function () {
-    grunt.task.requires("babel:dist");
+  grunt.registerTask('build', ['clean:build', 'env:build', 'webpack:build', 'i18n:build']);
+  grunt.registerTask('dist', ['clean:dist', 'babel:dist']);
+  grunt.registerTask('prepare_dev', ['clean:dev']);
+  grunt.registerTask('dev', ['prepare_dev', 'webpack-dev-server:dev']);
+  grunt.registerTask('design', ['prepare_dev', 'webpack-dev-server:design']);
+  grunt.registerMultiTask('i18n', 'Prepares i18n files to be hosted in CDN', function() {
     var languages = {};
     var Auth0 = {
       registerLanguageDictionary: function(lang, dict) {
         languages[lang] = dict;
       }
     };
-    this.files.forEach(function (file) {
+    this.files.forEach(function(file) {
       var filename = file.src[0];
       var lang = path.basename(filename, '.js');
       var dict = require('./' + filename).default || require('./' + filename);

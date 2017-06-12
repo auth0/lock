@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSCore from 'fbjs/lib/CSSCore';
@@ -37,6 +38,7 @@ export default class Slider extends React.Component {
       const prevComponent = this.refs[prev.key];
 
       const transition = (component, className, delay) => {
+        // eslint-disable-next-line
         const node = ReactDOM.findDOMNode(component);
         const activeClassName = `${className}-active`;
 
@@ -90,13 +92,14 @@ export default class Slider extends React.Component {
 }
 
 Slider.propTypes = {
-  component: React.PropTypes.string,
-  delay: React.PropTypes.number.isRequired,
-  onDidAppear: React.PropTypes.func.isRequired,
-  onDidSlide: React.PropTypes.func.isRequired,
-  onWillSlide: React.PropTypes.func.isRequired,
-  reverse: React.PropTypes.bool.isRequired,
-  transitionName: React.PropTypes.string.isRequired
+  children: PropTypes.node.isRequired,
+  component: PropTypes.string,
+  delay: PropTypes.number.isRequired,
+  onDidAppear: PropTypes.func.isRequired,
+  onDidSlide: PropTypes.func.isRequired,
+  onWillSlide: PropTypes.func.isRequired,
+  reverse: PropTypes.bool.isRequired,
+  transitionName: PropTypes.string.isRequired
 };
 
 Slider.defaultProps = {
@@ -108,18 +111,17 @@ Slider.defaultProps = {
 };
 
 class Child extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {height: "", originalHeight: "", show: true};
   }
+  
+  node;
 
   componentWillSlideIn(slide) {
-    const node = ReactDOM.findDOMNode(this);
-
     this.setState({
       height: slide.height,
-      originalHeight: parseInt(window.getComputedStyle(node, null).height, 10),
+      originalHeight: parseInt(window.getComputedStyle(this.node, null).height, 10),
       show: false
     });
   }
@@ -157,8 +159,7 @@ class Child extends React.Component {
   }
 
   componentWillSlideOut(cb) {
-    const node = ReactDOM.findDOMNode(this);
-    const size = window.getComputedStyle(node, null).height;
+    const size = window.getComputedStyle(this.node, null).height;
     cb({height: parseInt(size, 10), reverse: this.reverse});
   }
 
@@ -174,12 +175,15 @@ class Child extends React.Component {
     const { height, show } = this.state;
 
     return (
-      <div style={height ? {height: height + "px"} : {}}>
+      <div ref={node => this.node = node} style={height ? {height: height + "px"} : {}}>
         <div style={{visibility: show ? "inherit" : "hidden"}}>
           {children}
         </div>
       </div>
     );
   }
+}
 
+Child.propTypes = {
+  children: PropTypes.node.isRequired
 }

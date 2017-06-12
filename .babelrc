@@ -1,4 +1,38 @@
 {
-  "plugins": ["version-inline", "transform-css-import-to-string", "babel-plugin-stylus-compiler"],
-  "presets": ["es2015-loose", "stage-0", "react"]
+  "plugins": [
+    "version-inline",
+    "transform-css-import-to-string",
+    "babel-plugin-stylus-compiler"
+  ],
+  "presets": [
+    [
+      "es2015",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ],
+    "stage-0",
+    "react"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    },
+    "npm": {
+      "presets": [
+        [
+          "es2015",
+          {
+            "loose": true,
+            "modules": "commonjs"
+          }
+        ],
+        "stage-0",
+        "react"
+      ]
+    }
+  }
 }

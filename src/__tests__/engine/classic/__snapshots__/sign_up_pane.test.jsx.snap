@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
+<div>
+  <div
+    data-__type="email_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="emailInputPlaceholder"
+  />
+  <div
+    data-__type="password_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="passwordInputPlaceholder"
+    data-policy="passwordStrengthPolicy"
+    data-strengthMessages="passwordStrengthMessages"
+  />
+</div>
+`;
+
+exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectionRequiresUsername is true 1`] = `
+<div>
+  <div
+    data-__type="email_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="emailInputPlaceholder"
+  />
+  <div
+    data-__type="username_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="usernameInputPlaceholder"
+    data-validateFormat={true}
+  />
+  <div
+    data-__type="password_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="passwordInputPlaceholder"
+    data-policy="passwordStrengthPolicy"
+    data-strengthMessages="passwordStrengthMessages"
+  />
+</div>
+`;
+
+exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUpFields returns additional fields 1`] = `
+<div>
+  <div
+    data-__type="email_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="emailInputPlaceholder"
+  />
+  <div
+    data-__type="password_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="passwordInputPlaceholder"
+    data-policy="passwordStrengthPolicy"
+    data-strengthMessages="passwordStrengthMessages"
+  />
+  <div
+    data-__type="custom_input"
+    data-iconUrl="icon1"
+    data-model="model"
+    data-name="name1"
+    data-options="options1"
+    data-placeholder="placeholder1"
+    data-type="type1"
+    data-validator="validator1"
+  />
+  <div
+    data-__type="custom_input"
+    data-iconUrl="icon2"
+    data-model="model"
+    data-name="name2"
+    data-options="options2"
+    data-placeholder="placeholder2"
+    data-type="type2"
+    data-validator="validator2"
+  />
+</div>
+`;
+
+exports[`SignUpPane renders only email by default 1`] = `
+<div>
+  <div
+    data-__type="email_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="emailInputPlaceholder"
+  />
+</div>
+`;
+
+exports[`SignUpPane shows header when instructions are available 1`] = `
+<div>
+  <p>
+    instructions
+  </p>
+  <div
+    data-__type="email_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="emailInputPlaceholder"
+  />
+</div>
+`;

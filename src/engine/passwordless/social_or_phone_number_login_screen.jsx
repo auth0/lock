@@ -10,16 +10,16 @@ import * as l from '../../core/index';
 
 import { renderOptionSelection } from '../../field/index';
 
-const useSocialBigButtons = (m) => {
-  const limit = l.connections(m, "passwordless", "sms").count() === 0 ? 5 : 3;
+const useSocialBigButtons = m => {
+  const limit = l.connections(m, 'passwordless', 'sms').count() === 0 ? 5 : 3;
   return useBigButtons(m, limit);
-}
+};
 
-const Component = ({i18n, model}) => {
-  const social = l.hasSomeConnections(model, "social")
+const Component = ({ i18n, model }) => {
+  const social = l.hasSomeConnections(model, 'social')
     ? <SocialButtonsPane
         bigButtons={useSocialBigButtons(model)}
-        instructions={i18n.html("socialLoginInstructions")}
+        instructions={i18n.html('socialLoginInstructions')}
         labelFn={i18n.str}
         lock={model}
         signUp={false}
@@ -27,44 +27,36 @@ const Component = ({i18n, model}) => {
     : null;
 
   const phoneNumberInstructionsI18nKey = social
-    ? "passwordlessSMSAlternativeInstructions"
-    : "passwordlessSMSInstructions";
+    ? 'passwordlessSMSAlternativeInstructions'
+    : 'passwordlessSMSInstructions';
 
-  const phoneNumber = l.hasSomeConnections(model, "passwordless", "sms")
+  const phoneNumber = l.hasSomeConnections(model, 'passwordless', 'sms')
     ? <PhoneNumberPane
         instructions={i18n.html(phoneNumberInstructionsI18nKey)}
         lock={model}
-        placeholder={i18n.str("phoneNumberInputPlaceholder")}
+        placeholder={i18n.str('phoneNumberInputPlaceholder')}
       />
     : null;
 
-  const separator = social && phoneNumber
-    ? <PaneSeparator />
-    : null;
+  const separator = social && phoneNumber ? <PaneSeparator /> : null;
 
   return <div>{social}{separator}{phoneNumber}</div>;
 };
 
-
 export default class AskSocialNetworkOrPhoneNumber extends Screen {
-
   constructor() {
-    super("socialOrPhoneNumber");
+    super('socialOrPhoneNumber');
   }
 
   submitHandler(m) {
-    return l.hasSomeConnections(m, "passwordless", "sms")
-      ? sendSMS
-      : null;
+    return l.hasSomeConnections(m, 'passwordless', 'sms') ? sendSMS : null;
   }
 
   renderAuxiliaryPane(lock) {
-    return renderSignedInConfirmation(lock)
-      || renderOptionSelection(lock);
+    return renderSignedInConfirmation(lock) || renderOptionSelection(lock);
   }
 
   render() {
     return Component;
   }
-
 }

@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 1`] = `
+<div
+  className="auth0-lock-input-checkbox"
+>
+  <label>
+    <input
+      checked={false}
+      name="custom_input"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span>
+      placeholder
+    </span>
+  </label>
+</div>
+`;
+
+exports[`CustomInput when type == input calls \`changeField\` when changed 1`] = `
+Array [
+  1,
+  "custom_input",
+  "newUser",
+  "validator",
+]
+`;
+
+exports[`CustomInput when type == input renders correctly as a TextInput 1`] = `
+<div
+  data-__type="text_input"
+  data-iconUrl="iconUrl"
+  data-invalidHint="invalid-hint-custom_input"
+  data-isValid={false}
+  data-name="custom_input"
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="field-value-custom_input"
+/>
+`;
+
+exports[`CustomInput when type == input sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
+<div
+  data-__type="text_input"
+  data-iconUrl="iconUrl"
+  data-invalidHint="invalid-hint-custom_input"
+  data-isValid={true}
+  data-name="custom_input"
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="field-value-custom_input"
+/>
+`;
+
+exports[`CustomInput when type === select calls \`startOptionSelection\` when clicked 1`] = `
+Array [
+  1,
+  "custom_input",
+  "iconUrl",
+]
+`;
+
+exports[`CustomInput when type === select renders correctly as a SelectInput 1`] = `
+<div
+  data-__type="select_input"
+  data-iconUrl="iconUrl"
+  data-isValid={false}
+  data-label={undefined}
+  data-name="custom_input"
+  data-onClick={[Function]}
+  data-placeholder="placeholder"
+/>
+`;
+
+exports[`CustomInput when type === select sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
+<div
+  data-__type="select_input"
+  data-iconUrl="iconUrl"
+  data-isValid={true}
+  data-label={undefined}
+  data-name="custom_input"
+  data-onClick={[Function]}
+  data-placeholder="placeholder"
+/>
+`;

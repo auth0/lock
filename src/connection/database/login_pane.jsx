@@ -1,13 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import EmailPane from '../../field/email/email_pane';
 import UsernamePane from '../../field/username/username_pane';
 import PasswordPane from '../../field/password/password_pane';
 import { showResetPasswordActivity } from './actions';
-import { authWithUsername, hasScreen, forgotPasswordLink } from './index';
+import { hasScreen, forgotPasswordLink } from './index';
 import * as l from '../../core/index';
 
 export default class LoginPane extends React.Component {
-
   handleDontRememberPasswordClick(e) {
     e.preventDefault();
     showResetPasswordActivity(l.id(this.props.lock));
@@ -31,10 +31,11 @@ export default class LoginPane extends React.Component {
     const header = headerText && <p>{headerText}</p>;
 
     // Should never validate format on login because of custom db connection and import mode
-    const fieldPane = usernameStyle === "email"
+    const fieldPane = usernameStyle === 'email'
       ? <EmailPane
           i18n={i18n}
           lock={lock}
+          forceInvalidVisibility={!showPassword}
           placeholder={emailInputPlaceholder}
         />
       : <UsernamePane
@@ -43,21 +44,17 @@ export default class LoginPane extends React.Component {
           placeholder={usernameInputPlaceholder}
           usernameStyle={usernameStyle}
           validateFormat={false}
-        />
+        />;
 
     const passwordPane = showPassword
-      ? <PasswordPane
-          i18n={i18n}
-          lock={lock}
-          placeholder={passwordInputPlaceholder}
-        />
+      ? <PasswordPane i18n={i18n} lock={lock} placeholder={passwordInputPlaceholder} />
       : null;
 
-    const dontRememberPassword = showForgotPasswordLink && hasScreen(lock, "forgotPassword")
+    const dontRememberPassword = showForgotPasswordLink && hasScreen(lock, 'forgotPassword')
       ? <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
-            href={forgotPasswordLink(lock, "#")}
+            href={forgotPasswordLink(lock, '#')}
             onClick={forgotPasswordLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
           >
             {forgotPasswordAction}
@@ -67,18 +64,17 @@ export default class LoginPane extends React.Component {
 
     return <div>{header}{fieldPane}{passwordPane}{dontRememberPassword}</div>;
   }
-
 }
 
 LoginPane.propTypes = {
-  emailInputPlaceholder: React.PropTypes.string.isRequired,
-  forgotPasswordAction: React.PropTypes.string.isRequired,
-  i18n: React.PropTypes.object.isRequired,
-  instructions: React.PropTypes.any,
-  lock: React.PropTypes.object.isRequired,
-  passwordInputPlaceholder: React.PropTypes.string.isRequired,
-  showForgotPasswordLink: React.PropTypes.bool.isRequired,
-  showPassword: React.PropTypes.bool.isRequired,
-  usernameInputPlaceholder: React.PropTypes.string.isRequired,
-  usernameStyle: React.PropTypes.oneOf(["any", "email", "username"])
+  emailInputPlaceholder: PropTypes.string.isRequired,
+  forgotPasswordAction: PropTypes.string.isRequired,
+  i18n: PropTypes.object.isRequired,
+  instructions: PropTypes.any,
+  lock: PropTypes.object.isRequired,
+  passwordInputPlaceholder: PropTypes.string.isRequired,
+  showForgotPasswordLink: PropTypes.bool.isRequired,
+  showPassword: PropTypes.bool.isRequired,
+  usernameInputPlaceholder: PropTypes.string.isRequired,
+  usernameStyle: PropTypes.oneOf(['any', 'email', 'username'])
 };

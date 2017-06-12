@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`initTenant() filters clientConnections 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [
+      Object {
+        "allowForgot": true,
+        "allowSignup": true,
+        "name": "test-connection-database",
+        "passwordPolicy": "none",
+        "requireUsername": false,
+        "strategy": "auth0",
+        "type": "database",
+        "validation": null,
+      },
+    ],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with database connection fixes validation when username.min > username.max 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [
+      Object {
+        "allowForgot": false,
+        "allowSignup": false,
+        "name": "test-connection-database",
+        "passwordPolicy": "test-passwordPolicy",
+        "requireUsername": true,
+        "strategy": "auth0",
+        "type": "database",
+        "validation": Object {
+          "passwordPolicy": "test-passwordPolicy",
+          "username": Object {
+            "max": 15,
+            "min": 1,
+          },
+        },
+      },
+    ],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with database connection fixes validation when values are not numbers 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [
+      Object {
+        "allowForgot": false,
+        "allowSignup": false,
+        "name": "test-connection-database",
+        "passwordPolicy": "test-passwordPolicy",
+        "requireUsername": true,
+        "strategy": "auth0",
+        "type": "database",
+        "validation": Object {
+          "passwordPolicy": "test-passwordPolicy",
+          "username": Object {
+            "max": 15,
+            "min": 1,
+          },
+        },
+      },
+    ],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with database connection maps connection correctly with all the properties 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [
+      Object {
+        "allowForgot": false,
+        "allowSignup": false,
+        "name": "test-connection-database",
+        "passwordPolicy": "test-passwordPolicy",
+        "requireUsername": true,
+        "strategy": "auth0",
+        "type": "database",
+        "validation": Object {
+          "passwordPolicy": "test-passwordPolicy",
+          "username": Object {
+            "max": 5,
+            "min": 4,
+          },
+        },
+      },
+    ],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with database connection maps connection correctly with defaults 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [
+      Object {
+        "allowForgot": true,
+        "allowSignup": true,
+        "name": "test-connection-database",
+        "passwordPolicy": "none",
+        "requireUsername": false,
+        "strategy": "auth0",
+        "type": "database",
+        "validation": null,
+      },
+    ],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with enterprise connection maps connection correctly 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [],
+    "enterprise": Array [
+      Object {
+        "domains": "domains",
+        "name": "test-connection-enterprise",
+        "strategy": "auth0",
+        "type": "enterprise",
+      },
+    ],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with other connection types maps connection correctly 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [
+      Object {
+        "name": "test-connection-other_type",
+        "strategy": "auth0",
+        "type": "social",
+      },
+    ],
+    "unknown": Array [
+      Object {
+        "name": "??",
+        "strategy": "??",
+        "type": "unknown",
+      },
+    ],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with passwordless connection maps connection correctly 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;

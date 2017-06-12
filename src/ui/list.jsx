@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BackButton } from './box/button';
 import TextInput from './input/text_input';
@@ -7,23 +8,23 @@ import * as su from '../utils/string_utils';
 
 const cycle = (xs, x) => {
   return xs.skipWhile(y => y !== x).get(1, xs.get(0));
-}
+};
 
 export default class FiltrableList extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {filteredItems: props.items, highlighted: props.defaultItem};
+    this.state = { filteredItems: props.items, highlighted: props.defaultItem };
   }
 
   filter(str) {
     const filteredItems = this.props.items.filter(x => {
-      return su.matches(str, x.get("label"));
+      return su.matches(str, x.get('label'));
     });
 
-    const highlighted = filteredItems.size === 1 && filteredItems.get(0)
-      || filteredItems.includes(this.state.highlighted) && this.state.highlighted
-      || null;
+    const highlighted =
+      (filteredItems.size === 1 && filteredItems.get(0)) ||
+      (filteredItems.includes(this.state.highlighted) && this.state.highlighted) ||
+      null;
 
     return {
       filteredItems: filteredItems,
@@ -42,24 +43,24 @@ export default class FiltrableList extends React.Component {
   handleKeyDown(e) {
     const { filteredItems, highlighted } = this.state;
 
-    switch(e.key) {
-      case "ArrowDown":
+    switch (e.key) {
+      case 'ArrowDown':
         e.preventDefault();
-        this.setState({highlighted: cycle(filteredItems, highlighted)});
+        this.setState({ highlighted: cycle(filteredItems, highlighted) });
         break;
-      case "ArrowUp":
+      case 'ArrowUp':
         e.preventDefault();
-        this.setState({highlighted: cycle(filteredItems.reverse(), highlighted)});
+        this.setState({ highlighted: cycle(filteredItems.reverse(), highlighted) });
         break;
-      case "Enter":
+      case 'Enter':
         e.preventDefault();
         highlighted && this.select(highlighted);
         break;
-      case "Escape":
+      case 'Escape':
         e.preventDefault();
         this.props.onCancel();
       default:
-        // no-op
+      // no-op
     }
   }
 
@@ -82,17 +83,14 @@ export default class FiltrableList extends React.Component {
           highlighted={this.state.highlighted}
           items={this.state.filteredItems}
           onClick={::this.select}
-          onMouseMove={x => this.setState({highlighted: x})}
+          onMouseMove={x => this.setState({ highlighted: x })}
         />
       </div>
     );
   }
-
 }
 
-
 class List extends React.Component {
-
   componentDidUpdate() {
     // Ensure that highlighted item is entirely visible
 
@@ -107,7 +105,8 @@ class List extends React.Component {
       const relativeOffsetTop = highlightedNode.offsetTop - scrollableNode.scrollTop;
       let scrollTopDelta = 0;
       if (relativeOffsetTop + highlightedNode.offsetHeight > scrollableNode.clientHeight) {
-        scrollTopDelta = relativeOffsetTop + highlightedNode.offsetHeight - scrollableNode.clientHeight;
+        scrollTopDelta =
+          relativeOffsetTop + highlightedNode.offsetHeight - scrollableNode.clientHeight;
       } else if (relativeOffsetTop < 0) {
         scrollTopDelta = relativeOffsetTop;
       }
@@ -116,7 +115,7 @@ class List extends React.Component {
         this.preventHighlight = true;
         scrollableNode.scrollTop += scrollTopDelta;
         if (this.timeout) clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => this.preventHighlight = false, 100);
+        this.timeout = setTimeout(() => (this.preventHighlight = false), 100);
       }
     }
   }
@@ -129,7 +128,7 @@ class List extends React.Component {
   }
 
   mouseLeaveHandler() {
-   // TODO: clear highlighted?
+    // TODO: clear highlighted?
   }
 
   render() {
@@ -138,31 +137,26 @@ class List extends React.Component {
 
       const props = {
         highlighted: highlighted,
-        key: x.get("label"),
-        label: x.get("label"),
+        key: x.get('label'),
+        label: x.get('label'),
         onClick: () => this.props.onClick(x),
         onMouseMove: () => this.mouseMoveHandler(x)
       };
 
-      if (highlighted) props.ref = "highlighted";
+      if (highlighted) props.ref = 'highlighted';
 
       return <Item {...props} />;
     });
 
     return (
-      <div
-        className="auth0-lock-list-code"
-        onMouseLeave={::this.mouseLeaveHandler}
-      >
+      <div className="auth0-lock-list-code" onMouseLeave={::this.mouseLeaveHandler}>
         <ul>{items}</ul>
       </div>
     );
   }
-
 }
 
 class Item extends React.Component {
-
   static propTypes = {
     highlighted: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
@@ -176,7 +170,7 @@ class Item extends React.Component {
 
   render() {
     const { highlighted, label, onClick, onMouseMove } = this.props;
-    const className = highlighted ? "auth0-lock-list-code-highlighted" : "";
+    const className = highlighted ? 'auth0-lock-list-code-highlighted' : '';
 
     return (
       <li className={className} onClick={onClick} onMouseMove={onMouseMove}>
@@ -184,5 +178,4 @@ class Item extends React.Component {
       </li>
     );
   }
-
 }

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MFALoginScreen renders correctly 1`] = `
+<div
+  data-__type="mfa_pane"
+  data-i18n={
+    Object {
+      "str": [Function],
+    }
+  }
+  data-instructions="mfaLoginInstructions"
+  data-lock="model"
+  data-mfaInputPlaceholder="mfaInputPlaceholder"
+  data-title="mfaLoginTitle"
+/>
+`;

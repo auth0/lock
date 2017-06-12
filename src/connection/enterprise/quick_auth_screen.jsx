@@ -7,33 +7,33 @@ import * as l from '../../core/index';
 import { quickAuthConnection } from '../enterprise';
 import { authButtonsTheme } from '../../connection/social/index';
 
-
 // TODO: handle this from CSS
 function icon(strategy) {
-  if (strategy === "google-apps") return strategy;
-  if (~["adfs", "office365", "waad"].indexOf(strategy)) return "windows";
-  return "auth0";
+  if (strategy === 'google-apps') return strategy;
+  if (~['adfs', 'office365', 'waad'].indexOf(strategy)) return 'windows';
+  return 'auth0';
 }
 
-const Component = ({i18n, model}) => {
-  const headerText = i18n.html("enterpriseLoginIntructions") || null;
+const Component = ({ i18n, model }) => {
+  const headerText = i18n.html('enterpriseLoginIntructions') || null;
   const header = headerText && <p>{headerText}</p>;
 
   const theme = authButtonsTheme(model);
 
   const connection = quickAuthConnection(model);
-  const connectionName = connection.getIn(["name"]);
-  const connectionDomain = connection.getIn(["domains", 0]);
+  const connectionName = connection.getIn(['name']);
+  const connectionDomain = connection.getIn(['domains', 0]);
 
-  const buttonTheme = theme.get(connection.get("name"));
+  const buttonTheme = theme.get(connection.get('name'));
 
-  const buttonLabel = (buttonTheme && buttonTheme.get("displayName"))
-    || (connectionDomain && (i18n.str("loginAtLabel", connectionDomain)))
-    || i18n.str("loginAtLabel", connectionName);
+  const buttonLabel =
+    (buttonTheme && buttonTheme.get('displayName')) ||
+    (connectionDomain && i18n.str('loginAtLabel', connectionDomain)) ||
+    i18n.str('loginAtLabel', connectionName);
 
-  const primaryColor = buttonTheme && buttonTheme.get("primaryColor");
-  const foregroundColor = buttonTheme && buttonTheme.get("foregroundColor");
-  const buttonIcon = buttonTheme && buttonTheme.get("icon");
+  const primaryColor = buttonTheme && buttonTheme.get('primaryColor');
+  const foregroundColor = buttonTheme && buttonTheme.get('foregroundColor');
+  const buttonIcon = buttonTheme && buttonTheme.get('icon');
 
   return (
     <QuickAuthPane
@@ -43,15 +43,14 @@ const Component = ({i18n, model}) => {
       buttonIcon={buttonIcon}
       primaryColor={primaryColor}
       foregroundColor={foregroundColor}
-      strategy={icon(quickAuthConnection(model).get("strategy"))}
+      strategy={icon(quickAuthConnection(model).get('strategy'))}
     />
   );
 };
 
 export default class QuickAuthScreen extends Screen {
-
   constructor() {
-    super("enterpriseQuickAuth");
+    super('enterpriseQuickAuth');
   }
 
   renderAuxiliaryPane(lock) {
@@ -61,5 +60,4 @@ export default class QuickAuthScreen extends Screen {
   render() {
     return Component;
   }
-
 }

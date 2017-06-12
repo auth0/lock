@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
+<div>
+  <div
+    data-__type="single_sign_on_notice"
+    data-children="ssoEnabled"
+  />
+  <div
+    data-__type="login_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-forgotPasswordAction="forgotPasswordAction"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseEnterpriseLoginInstructions"
+    data-lock="model"
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-showForgotPasswordLink={false}
+    data-showPassword={false}
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+    data-usernameStyle={false}
+  />
+</div>
+`;
+
+exports[`LoginScreen renders LoginPane when has database connection 1`] = `
+<div>
+  <div
+    data-__type="login_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-forgotPasswordAction="forgotPasswordAction"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseEnterpriseLoginInstructions"
+    data-lock="model"
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-showForgotPasswordLink={true}
+    data-showPassword={true}
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+    data-usernameStyle={false}
+  />
+</div>
+`;
+
+exports[`LoginScreen renders LoginPane when has enterprise connection 1`] = `
+<div>
+  <div
+    data-__type="login_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-forgotPasswordAction="forgotPasswordAction"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseEnterpriseLoginInstructions"
+    data-lock="model"
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-showForgotPasswordLink={false}
+    data-showPassword={false}
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+    data-usernameStyle={false}
+  />
+</div>
+`;
+
+exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled and has screen signUp 1`] = `
+<div>
+  <div
+    data-__type="login_sign_up_tabs"
+    data-lock="model"
+    data-loginLabel="loginLabel"
+    data-signUpLabel="signUpLabel"
+    data-signUpLink={false}
+  />
+  <div
+    data-__type="login_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-forgotPasswordAction="forgotPasswordAction"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseEnterpriseLoginInstructions"
+    data-lock="model"
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-showForgotPasswordLink={true}
+    data-showPassword={true}
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+    data-usernameStyle={false}
+  />
+</div>
+`;
+
+exports[`LoginScreen renders LoginSignUpTabs when social connection is enabled and has initial screen signUp and has screen signUp 1`] = `
+<div>
+  <div
+    data-__type="login_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-forgotPasswordAction="forgotPasswordAction"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseEnterpriseLoginInstructions"
+    data-lock="model"
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-showForgotPasswordLink={true}
+    data-showPassword={true}
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+    data-usernameStyle={false}
+  />
+</div>
+`;
+
+exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
+<div>
+  <div
+    data-__type="single_sign_on_notice"
+    data-children="ssoEnabled"
+  />
+  <div
+    data-__type="login_pane"
+    data-emailInputPlaceholder="emailInputPlaceholder"
+    data-forgotPasswordAction="forgotPasswordAction"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-instructions="databaseEnterpriseLoginInstructions"
+    data-lock="model"
+    data-passwordInputPlaceholder="passwordInputPlaceholder"
+    data-showForgotPasswordLink={false}
+    data-showPassword={false}
+    data-usernameInputPlaceholder="usernameInputPlaceholder"
+    data-usernameStyle={false}
+  />
+</div>
+`;
+
+exports[`LoginScreen renders SocialButtonsPane when has social connections 1`] = `
+<div>
+  <div
+    data-__type="social_buttons_pane"
+    data-bigButtons={false}
+    data-instructions="socialLoginInstructions"
+    data-labelFn={[Function]}
+    data-lock="model"
+    data-showLoading={false}
+    data-signUp={false}
+  />
+</div>
+`;
+
+exports[`LoginScreen renders empty div by default 1`] = `<div />`;

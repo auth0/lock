@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth0LegacyAPIClient logIn with credentials should call loginWithCredentials 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": true,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with credentials should call loginWithCredentials with auth params 1`] = `
+Object {
+  "audience": "https://mysites.com/api",
+  "nonce": undefined,
+  "scope": "openid offline_access write:users",
+  "sso": true,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with credentials should call popup.authorize when redirect===false 1`] = `
+Object {
+  "nonce": undefined,
+  "owp": true,
+  "sso": true,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": undefined,
+  "state": undefined,
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with social/enterprise (without username and email) should call popup.authorize when redirect===false 1`] = `
+Object {
+  "nonce": undefined,
+  "owp": true,
+  "sso": undefined,
+  "state": undefined,
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with social/enterprise (without username and email) should call popup.authorize with additional authParams 1`] = `
+Object {
+  "audience": "https://mysite.com/api",
+  "nonce": undefined,
+  "owp": true,
+  "scope": "openid offline_access read:users",
+  "sso": undefined,
+  "state": undefined,
+}
+`;
+
+exports[`Auth0LegacyAPIClient logIn with sso and redirect === false should call loginWithResourceOwner 1`] = `
+Object {
+  "nonce": undefined,
+  "sso": false,
+  "state": undefined,
+  "username": "foo",
+}
+`;

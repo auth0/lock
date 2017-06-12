@@ -1,19 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-const AuthButton = (props) => {
-  const { 
-    disabled, 
-    isBig, 
-    label, 
-    onClick, 
-    strategy, 
-    icon,
-    primaryColor,
-    foregroundColor 
-  } = props;
+const AuthButton = props => {
+  const { disabled, isBig, label, onClick, strategy, icon, primaryColor, foregroundColor } = props;
 
-  let className = "auth0-lock-social-button";
-  if (isBig) className += " auth0-lock-social-big-button";
+  let className = 'auth0-lock-social-button';
+  if (isBig) className += ' auth0-lock-social-big-button';
 
   const backgroundStyle = primaryColor ? { backgroundColor: primaryColor } : {};
   const foregroundStyle = foregroundColor ? { color: foregroundColor } : {};
@@ -29,7 +21,7 @@ const AuthButton = (props) => {
       type="button"
     >
       <div className="auth0-lock-social-button-icon" style={iconStyle} />
-      <div className="auth0-lock-social-button-text" style={foregroundStyle} >
+      <div className="auth0-lock-social-button-text" style={foregroundStyle}>
         {label}
       </div>
     </button>
@@ -37,14 +29,14 @@ const AuthButton = (props) => {
 };
 
 AuthButton.propTypes = {
-  disabled: React.PropTypes.bool.isRequired,
-  isBig: React.PropTypes.bool.isRequired,
-  label: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
-  strategy: React.PropTypes.string.isRequired,
-  icon: React.PropTypes.string,
-  primaryColor: React.PropTypes.string,
-  foregroundColor: React.PropTypes.string
+  disabled: PropTypes.bool.isRequired,
+  isBig: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  strategy: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  primaryColor: PropTypes.string,
+  foregroundColor: PropTypes.string
 };
 
 AuthButton.defaultProps = {

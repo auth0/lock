@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "10.8.0-beta.5",
+  "version": "10.16.0",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -17,6 +17,9 @@
     "type": "git",
     "url": "git://github.com/auth0/lock"
   },
+  "engines": {
+    "node": ">=6.9.1"
+  },
   "main": "lib/index.js",
   "scripts": {
     "start": "grunt dev",
@@ -24,81 +27,122 @@
     "design": "grunt design",
     "dev": "grunt dev",
     "dist": "grunt dist",
-    "prepublish": "grunt dist",
-    "test": "zuul -- test/**/*.test.js",
-    "test:browser": "zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
-    "test:cli": "mochify --extension=.jsx --transform=babelify test/**/*.test.js",
-    "test:watch": "mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js",
+    "prepublish": "cross-env BABEL_ENV=npm grunt dist",
+    "precommit": "lint-staged",
+    "lint": "eslint --ext .jsx,.js src/",
+    "test": "cross-env BABEL_ENV=test zuul -- test/**/*.test.js",
+    "test:browser": "cross-env BABEL_ENV=test zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
+    "test:cli": "cross-env BABEL_ENV=test mochify --extension=.jsx --transform=babelify test/**/*.test.js",
+    "test:watch": "cross-env BABEL_ENV=test mochify --watch --extension=.jsx --transform=babelify test/**/*.test.js",
+    "test:jest": "jest --coverage",
+    "test:jest:watch": "jest --watch --coverage",
     "publish:cdn": "ccu",
-    "release": "scripts/release.sh"
+    "release": "scripts/release.sh",
+    "i18n:translate": "grunt dist; node scripts/complete-translations.js"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
+    "babel-eslint": "^7.2.2",
     "babel-loader": "^6.2.5",
     "babel-plugin-stylus-compiler": "^1.4.0",
     "babel-plugin-transform-css-import-to-string": "0.0.2",
     "babel-plugin-version-inline": "^1.0.0",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
-    "browserify": "^12.0.1",
     "bump-version": "^0.5.0",
-    "component-cdn-uploader": "auth0/component-cdn-uploader#1.1.0",
-    "css-loader": "^0.25.0",
-    "eslint": "3.7.1",
-    "eslint-config-auth0-base": "6.0.0",
-    "eslint-plugin-import": "1.16.0",
+    "component-cdn-uploader": "auth0/component-cdn-uploader#v1.3.0",
+    "cross-env": "^3.1.4",
+    "css-loader": "^0.26.1",
+    "dotenv": "^4.0.0",
+    "enzyme": "2.7.0",
+    "eslint": "^3.19.0",
+    "eslint-config-prettier": "^1.7.0",
+    "eslint-plugin-react": "^6.10.3",
     "expect.js": "^0.3.1",
     "flat": "^2.0.1",
     "grunt": "^0.4.5",
     "grunt-babel": "^6.0.0",
-    "grunt-browserify": "4.0.1",
     "grunt-cli": "^0.1.13",
     "grunt-concurrent": "^2.3.1",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
-    "grunt-webpack": "^1.0.18",
+    "grunt-webpack": "^2.0.1",
+    "husky": "^0.13.3",
+    "jest": "19.0.0",
+    "json-beautify": "^1.0.1",
+    "jsonwebtoken": "^7.3.0",
+    "lint-staged": "^3.4.0",
     "mochify": "^2.12.0",
+    "prettier": "^1.2.2",
     "react-addons-test-utils": "^15.0.0 || ^16.0.0",
+    "react-test-renderer": "15.4.2",
     "semver": "^5.3.0",
     "sinon": "^1.15.4",
-    "smart-banner-webpack-plugin": "^2.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "uglify-js": "^2.7.4",
     "unminified-webpack-plugin": "^1.1.1",
     "unreleased": "^0.1.0",
     "watchify": "^3.7.0",
-    "webpack": "^1.13.2",
+    "webpack": "^2.2.1",
     "webpack-core": "^0.6.8",
-    "webpack-dev-server": "^1.16.2",
+    "webpack-dev-server": "^2.3.0",
     "zuul": "3.10.1",
-    "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
+    "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "8.0.4",
+    "auth0-js": "~8.7.0",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
+    "idtoken-verifier": "^1.0.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
-    "password-sheriff": "^1.0.0",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-addons-css-transition-group": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0",
+    "password-sheriff": "^1.1.0",
+    "prop-types": "^15.5.7 || ^16.0.0",
+    "react": "^15.3.0 || ^16.0.0",
+    "react-dom": "^15.3.0 || ^16.0.0",
+    "react-transition-group": "^1.1.3",
+    "superagent": "^3.3.1",
     "trim": "0.0.1",
-    "url-join": "^1.1.0",
-    "idtoken-verifier": "^1.0.1"
+    "url-join": "^1.1.0"
   },
   "cdn-component": {
     "name": "lock",
     "cdn": "https://cdn.auth0.com",
     "mainBundleFile": "lock.min.js",
     "bucket": "assets.us.auth0.com",
-    "localPath": "build",
-    "majorAndMinor": false,
-    "snapshot": false
+    "localPath": "build"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/src/",
+      "<rootDir>/src/__tests__"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/test/",
+      "<rootDir>/lib/",
+      "<rootDir>/src/__tests__/testUtils.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/test/",
+      "<rootDir>/lib/",
+      "<rootDir>/src/__tests__/testUtils.js"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run lint",
+      "prettier --write --print-width 100 --single-quote",
+      "git add"
+    ]
   }
 }

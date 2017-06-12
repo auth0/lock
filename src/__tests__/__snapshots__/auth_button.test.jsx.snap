@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthButton renders correctly 1`] = `
+<button
+  className="auth0-lock-social-button auth0-lock-social-big-button"
+  data-provider="strategy"
+  disabled={false}
+  onClick={[Function]}
+  style={Object {}}
+  type="button"
+>
+  <div
+    className="auth0-lock-social-button-icon"
+    style={Object {}}
+  />
+  <div
+    className="auth0-lock-social-button-text"
+    style={Object {}}
+  >
+    label
+  </div>
+</button>
+`;
+
+exports[`AuthButton renders when \`big\` is false 1`] = `
+<button
+  className="auth0-lock-social-button"
+  data-provider="strategy"
+  disabled={false}
+  onClick={[Function]}
+  style={Object {}}
+  type="button"
+>
+  <div
+    className="auth0-lock-social-button-icon"
+    style={Object {}}
+  />
+  <div
+    className="auth0-lock-social-button-text"
+    style={Object {}}
+  >
+    label
+  </div>
+</button>
+`;
+
+exports[`AuthButton renders with style customizations 1`] = `
+<button
+  className="auth0-lock-social-button auth0-lock-social-big-button"
+  data-provider="strategy"
+  disabled={false}
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "primaryColor",
+    }
+  }
+  type="button"
+>
+  <div
+    className="auth0-lock-social-button-icon"
+    style={
+      Object {
+        "backgroundImage": "url('test')",
+      }
+    }
+  />
+  <div
+    className="auth0-lock-social-button-text"
+    style={
+      Object {
+        "color": "foregroundColor",
+      }
+    }
+  >
+    label
+  </div>
+</button>
+`;

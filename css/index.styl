@@ -117,7 +117,8 @@ tabsHeight = 40px
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     margin 0 auto
     border-radius 5px
-
+    max-height 100vh
+    
     +breakpoint("mobile")
       -webkit-transition -webkit-transform .4s, opacity .3s
       transition transform .4s, opacity .3s
@@ -156,6 +157,9 @@ tabsHeight = 40px
     box-sizing border-box
 
   .auth0-lock-close-button, .auth0-lock-back-button
+    -webkit-box-sizing content-box !important
+    -moz-box-sizing content-box !important
+    box-sizing content-box !important  
     background white
     border-radius 100px
     height 10px
@@ -169,12 +173,12 @@ tabsHeight = 40px
     border 6px solid white
     cursor pointer
     line-height 0
-    
+
     svg
       -webkit-box-sizing content-box
       -moz-box-sizing content-box
       box-sizing content-box
-      
+
     polygon
       fill #373737
 
@@ -254,13 +258,26 @@ tabsHeight = 40px
     display inline-block
     margin 0 0 11px
     vertical-align middle
+    -webkit-transition margin-top .4s
+    transition margin-top .4s
+
+    &.centered
+      margin-top 20px
 
   .auth0-lock-firstname
     font-size 18px
     margin-top 64px
+    text-overflow ellipsis
+    white-space nowrap
+    overflow hidden
+    padding 0 10px
 
   .auth0-lock-name
     font-size 22px
+    text-overflow ellipsis
+    white-space nowrap
+    overflow hidden
+    padding 0 10px
 
 
   // Lock body content
@@ -381,7 +398,19 @@ tabsHeight = 40px
   .auth0-lock-error .auth0-lock-input-wrap
     border-color red
     transition .3s ease-in-out
-
+  .auth0-lock-input-checkbox
+    text-align left
+    display block
+    font-size 12px
+    color rgba(0,0,0,0.54)
+    line-height 22px
+    position relative
+    label input
+      float left
+      margin-top 5px
+    span
+      display block
+      margin-left 20px
 
   // Social
 
@@ -420,6 +449,8 @@ tabsHeight = 40px
     position relative
     width 40px
     height 40px
+    -webkit-transition background-color .2s ease-in-out
+    transition background-color .2s ease-in-out
 
     .auth0-lock-social-button-icon
       width 40px
@@ -476,12 +507,15 @@ tabsHeight = 40px
         transition background 0.3s
         -webkit-transition background 0.3s
 
-      &:hover, &:focus
+      &:hover:not([disabled]), &:focus:not([disabled])
         .auth0-lock-social-button-icon
           background-color rgba(0, 0, 0, .3)
 
         .auth0-lock-social-button-text
           background-color rgba(0, 0, 0, .3)
+
+    &[disabled]
+      background-color #9b9b9b !important
 
 
   // Lock terms content
@@ -530,7 +564,7 @@ tabsHeight = 40px
         vertical-align middle
         &.icon-text
           margin -4px 0 0 5px
-    
+
     .auth0-label-submit
       height 42px
       line-height 42px
@@ -839,6 +873,10 @@ tabsHeight = 40px
   &.auth0-lock-opened
     opacity 1
     pointer-events auto
+    
+    .auth0-lock-center
+      +breakpoint("mobile")
+        overflow-y auto
 
     //mobile view
     @media screen and (max-width: 480px)
@@ -928,7 +966,7 @@ tabsHeight = 40px
       .auth0-lock-form p
         @media screen and (max-width: 480px)
           font-size 14px
-    
+
     .auth0-lock-tabs-container
       //mobile view
       @media screen and (max-width: 480px)
@@ -948,7 +986,7 @@ tabsHeight = 40px
         -webkit-box-sizing border-box
         -moz-box-sizing border-box
         box-sizing border-box
-    
+
     .auth0-lock-sign-up-terms-agreement label input
       @media screen and (max-width: 480px)
         top 2px
@@ -967,7 +1005,7 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         border-radius 0
-    
+
     &.auth0-lock-iphone
       .auth0-lock-body-content
         //mobile view
@@ -998,13 +1036,13 @@ tabsHeight = 40px
         @media screen and (max-width: 480px)
           min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight)
           padding-top 40px
-          
+
       &.auth0-lock-with-terms
         .auth0-lock-body-content
           //mobile view
           @media screen and (max-width: 480px)
             min-height "calc(100vh - %s - 42px)" % (headerHeight + submitHeight + tabsHeight) // - header - submit - tabs - terms
-      
+
       &.auth0-lock-iphone
         .auth0-lock-body-content
           //mobile view
@@ -1081,7 +1119,7 @@ tabsHeight = 40px
     justify-content center
     align-content center
     align-items stretch
-    
+
     &:after
       content ""
       display table

@@ -1,6 +1,6 @@
 import auth0 from 'auth0-js';
-import Auth0LegacyAPIClient from './web_api/legacy_api'
-import Auth0APIClient from './web_api/p2_api'
+import Auth0LegacyAPIClient from './web_api/legacy_api';
+import Auth0APIClient from './web_api/p2_api';
 
 class Auth0WebAPI {
   constructor() {
@@ -8,19 +8,25 @@ class Auth0WebAPI {
   }
 
   setupClient(lockID, clientID, domain, opts) {
-
     const hostedLoginPage = window.location.host === domain;
     // when it is used on on the hosted login page, it shouldn't use popup mode
-    opts.popup = hostedLoginPage ? opts.popup : false;
+    opts.redirect = hostedLoginPage ? true : opts.redirect;
 
     opts.oidcConformant = opts.oidcConformant || false;
+
+    // for cordova and electron we should force popup without SSO so it uses
+    // /ro or /oauth/token for DB connections
+    if (window && (!!window.cordova || !!window.electron)) {
+      opts.redirect = false;
+      opts.sso = false;
+    }
 
     // when it is used on on the hosted login page, it should use the legacy mode
     // (usernamepassword/login) in order to continue the transaction after authentication
     if (hostedLoginPage || !opts.oidcConformant) {
       this.clients[lockID] = new Auth0LegacyAPIClient(clientID, domain, opts);
     } else {
-      this.clients[lockID] = new Auth0APIClient(clientID, domain, opts);
+      this.clients[lockID] = new Auth0APIClient(lockID, clientID, domain, opts);
     }
   }
 
@@ -28,7 +34,7 @@ class Auth0WebAPI {
     this.clients[lockID].logIn(options, authParams, cb);
   }
 
-  signOut(lockID, query) {
+  logout(lockID, query) {
     this.clients[lockID].logout(query);
   }
 
@@ -45,11 +51,15 @@ class Auth0WebAPI {
   }
 
   parseHash(lockID, hash = '', cb) {
-    return this.clients[lockID].parseHash(decodeURIComponent(hash), cb);
+    return this.clients[lockID].parseHash(hash, cb);
   }
 
   getUserInfo(lockID, token, callback) {
     return this.clients[lockID].getUserInfo(token, callback);
+  }
+
+  getProfile(lockID, token, callback) {
+    return this.clients[lockID].getProfile(token, callback);
   }
 
   getSSOData(lockID, ...args) {

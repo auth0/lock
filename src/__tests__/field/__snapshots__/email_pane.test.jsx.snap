@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailPane calls \`swap\` onChange 1`] = `
+Array [
+  "updateEntity",
+  "lock",
+  1,
+  "setEmail",
+  "newUser@example.com",
+]
+`;
+
+exports[`EmailPane renders correctly 1`] = `
+<div
+  data-__type="email_input"
+  data-autoComplete={false}
+  data-invalidHint="invalidErrorHint"
+  data-isValid={false}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="user@example.com"
+/>
+`;
+
+exports[`EmailPane sets \`blankErrorHint\` when username is empty 1`] = `
+<div
+  data-__type="email_input"
+  data-autoComplete={false}
+  data-invalidHint="blankErrorHint"
+  data-isValid={false}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value={undefined}
+/>
+`;
+
+exports[`EmailPane sets autoComplete to true when \`allowAutocomplete\` is true 1`] = `
+<div
+  data-__type="email_input"
+  data-autoComplete={true}
+  data-invalidHint="invalidErrorHint"
+  data-isValid={false}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="user@example.com"
+/>
+`;
+
+exports[`EmailPane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
+<div
+  data-__type="email_input"
+  data-autoComplete={false}
+  data-invalidHint="invalidErrorHint"
+  data-isValid={true}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="user@example.com"
+/>
+`;

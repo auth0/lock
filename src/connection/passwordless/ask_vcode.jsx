@@ -7,33 +7,25 @@ import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { getFieldValue } from '../../field/index';
 import { humanPhoneNumberWithDiallingCode } from '../../field/phone_number';
 
-const Component = ({i18n, model}) => {
+const Component = ({ i18n, model }) => {
   const instructions = isEmail(model)
-    ? i18n.html(
-        "passwordlessEmailCodeInstructions",
-        getFieldValue(model, "email")
-      )
-    : i18n.html(
-        "passwordlessSMSCodeInstructions",
-        humanPhoneNumberWithDiallingCode(model)
-      );
+    ? i18n.html('passwordlessEmailCodeInstructions', getFieldValue(model, 'email'))
+    : i18n.html('passwordlessSMSCodeInstructions', humanPhoneNumberWithDiallingCode(model));
 
   return (
     <VcodePane
       instructions={instructions}
       lock={model}
-      placeholder={i18n.str("codeInputPlaceholder")}
-      resendLabel={i18n.str("resendCodeAction")}
+      placeholder={i18n.str('codeInputPlaceholder')}
+      resendLabel={i18n.str('resendCodeAction')}
       onRestart={restart}
     />
   );
-}
-
+};
 
 export default class VcodeScreen extends Screen {
-
   constructor() {
-    super("vcode");
+    super('vcode');
   }
 
   backHandler() {
@@ -51,5 +43,4 @@ export default class VcodeScreen extends Screen {
   render() {
     return Component;
   }
-
 }

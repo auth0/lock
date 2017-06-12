@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MFACodePane calls \`swap\` onChange 1`] = `
+Array [
+  "updateEntity",
+  "lock",
+  1,
+  [Function],
+  "newUser",
+]
+`;
+
+exports[`MFACodePane renders correctly 1`] = `
+<div
+  data-__type="mfa_code_input"
+  data-invalidHint="mfaCodeErrorHint,6"
+  data-isValid={false}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="mfa"
+/>
+`;
+
+exports[`MFACodePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
+<div
+  data-__type="mfa_code_input"
+  data-invalidHint="mfaCodeErrorHint,6"
+  data-isValid={true}
+  data-onChange={[Function]}
+  data-placeholder="placeholder"
+  data-value="mfa"
+/>
+`;
