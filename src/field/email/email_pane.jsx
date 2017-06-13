@@ -31,10 +31,8 @@ export default class EmailPane extends React.Component {
     const field = c.getField(lock, 'email');
     const value = field.get('value', '');
     const valid = field.get('valid', true);
-    const invalidHint = field.get(
-      'invalidHint',
-      i18n.str(value ? 'invalidErrorHint' : 'blankErrorHint')
-    );
+    const invalidHint =
+      field.get('invalidHint') || i18n.str(value ? 'invalidErrorHint' : 'blankErrorHint');
 
     const isValid = (!forceInvalidVisibility || valid) && !c.isFieldVisiblyInvalid(lock, 'email');
 
