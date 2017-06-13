@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -109,5 +112,6 @@ export default {
   mfaLoginTitle: 'Verificació en 2 passos',
   mfaLoginInstructions: 'Indiqueu el codi de verificació generat per la seva aplicació de mòbil.',
   mfaSubmitLabel: 'Inicia sessió',
-  mfaCodeErrorHint: 'Utilitzeu %d xifres'
+  mfaCodeErrorHint: 'Utilitzeu %d xifres',
+  showPassword: 'Ensenya la contrasenya'
 };

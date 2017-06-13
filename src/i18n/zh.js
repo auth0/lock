@@ -112,5 +112,6 @@ export default {
   mfaSubmitLabel: '登录',
   mfaCodeErrorHint: '使用 %d 位数字',
   forgotPasswordTitle: '重置你的密码',
-  signupTitle: '注册'
+  signupTitle: '注册',
+  showPassword: '显示密码'
 };

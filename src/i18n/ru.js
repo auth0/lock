@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '2-аутентификация',
   mfaLoginInstructions: 'Пожалуйста, введите проверочный код, сгенерированный мобильным приложением.',
   mfaSubmitLabel: 'Авторизоваться',
-  mfaCodeErrorHint: 'Используйте %d номера'
+  mfaCodeErrorHint: 'Используйте %d номера',
+  showPassword: 'Показать пароль'
 };

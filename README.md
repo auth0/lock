@@ -194,6 +194,8 @@ The appearance of the widget and the mechanics of authentication can be customiz
   + **text {String}**: The text to show.
 - **allowAutocomplete {Boolean}**: Determines whether or not the the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
 - **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
+- **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
+
 
 #### Theming options
 

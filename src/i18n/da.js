@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: 'Tofaktorgodkendelse',
   mfaLoginInstructions: 'Indtast venligst bekræftelseskoden genereret af din mobilapplikation.',
   mfaSubmitLabel: 'Log på',
-  mfaCodeErrorHint: 'Brug %d tal'
+  mfaCodeErrorHint: 'Brug %d tal',
+  showPassword: 'Vis adgangskode'
 };

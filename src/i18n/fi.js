@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -38,7 +41,6 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'Kiitos kirjautumisesta.',
     forgotPassword: 'Olemme juuri lähettäneet sinulle sähköpostin salasanan alustusta varten.',
     magicLink: 'Lähetimme sinulle linkin, josta pääset kirjautumaan<br />%s.',
@@ -110,5 +112,6 @@ export default {
   mfaLoginTitle: 'Kaksivaiheinen tarkistus',
   mfaLoginInstructions: 'Ole hyvä ja anna mobiilisovelluksesi luoma tarkistuskoodi.',
   mfaSubmitLabel: 'Kirjaudu',
-  mfaCodeErrorHint: 'Käytä %d numeroa'
+  mfaCodeErrorHint: 'Käytä %d numeroa',
+  showPassword: 'Näytä salasana'
 };

@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '2 kétlépcsős azonosítás',
   mfaLoginInstructions: 'Kérjük adja meg az ellenőrző kódot generált a mobil alkalmazás.',
   mfaSubmitLabel: 'Belépek',
-  mfaCodeErrorHint: 'Használja %d számok'
+  mfaCodeErrorHint: 'Használja %d számok',
+  showPassword: 'Mutasd a jelszót'
 };

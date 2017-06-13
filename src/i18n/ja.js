@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -16,10 +19,11 @@ export default {
       'lock.unauthorized': '権限がありません。もう一度やり直してください。',
       'lock.mfa_registration_required': '多段階認証が必要ですが、デバイスが登録されていません。ご登録をお願いいたします。',
       'lock.mfa_invalid_code': 'コードが不正です。もう一度やり直してください。',
-      password_change_required: '初めてログインする、またはパスワードが期限切れになったため、パスワードを更新する必要があります。', // TODO: verify error code
+      password_change_required: '初めてログインする、またはパスワードが期限切れになったため、パスワードを更新する必要があります。',
       password_leaked: 'アカウントはパスワードが別のウェブサイトで漏洩したためにブロックされました。ブロックを解除する方法についてはメールにて自動送信されます。',
       too_many_attempts: 'このアカウントは、短時間での複数回ログイン試行によりブロックされました。',
-      session_missing: '認証リクエストを完了できませんでした。すべての開いているダイアログを閉じた後にもう一度お試しください。'
+      session_missing: '認証リクエストを完了できませんでした。すべての開いているダイアログを閉じた後にもう一度お試しください。',
+      'hrd.not_matching_email': 'ログインするには、企業の電子メールを使用してください。'
     },
     passwordless: {
       'bad.email': 'メールアドレスが不正です',
@@ -37,7 +41,6 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'ログインに成功しました。',
     forgotPassword: 'パスワードをリセットするためのメールをお送りしました。',
     magicLink: '%sへログインするためのリンクが送信されました。',
@@ -109,5 +112,6 @@ export default {
   mfaLoginTitle: '二段階認証',
   mfaLoginInstructions: 'スマートフォンアプリケーションで生成された確認コードを入力してください。',
   mfaSubmitLabel: 'ログイン',
-  mfaCodeErrorHint: '%d 数字を使用してください'
+  mfaCodeErrorHint: '%d 数字を使用してください',
+  showPassword: 'ログインするには、企業の電子メールを使用してください。'
 };

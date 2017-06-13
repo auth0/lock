@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '兩步驟驗證',
   mfaLoginInstructions: '請輸入您的移動應用程序生成的驗證碼。',
   mfaSubmitLabel: '登錄',
-  mfaCodeErrorHint: '使用%d編號'
+  mfaCodeErrorHint: '使用%d編號',
+  showPassword: '顯示密碼'
 };

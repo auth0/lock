@@ -109,5 +109,6 @@ export default {
   mfaLoginTitle: '2-Step Verification',
   mfaLoginInstructions: 'Bitte geben Sie den Bestätigungscode ein, indem Sie Ihre mobile Anwendung erzeugt.',
   mfaSubmitLabel: 'Einloggen',
-  mfaCodeErrorHint: 'Verwenden %d Zahlen'
+  mfaCodeErrorHint: 'Verwenden %d Zahlen',
+  showPassword: 'Passwort anzeigen'
 };

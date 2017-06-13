@@ -14,7 +14,8 @@ export default class PasswordInput extends React.Component {
     placeholder: PropTypes.string,
     policy: PropTypes.string,
     strengthMessages: PropTypes.object,
-    value: PropTypes.string.isRequired
+    value: PropTypes.string.isRequired,
+    showPassword: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -38,6 +39,7 @@ export default class PasswordInput extends React.Component {
       policy,
       strengthMessages,
       value,
+      showPassword,
       ...props
     } = this.props;
 
@@ -58,7 +60,7 @@ export default class PasswordInput extends React.Component {
       >
         <input
           ref="input"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           name="password"
           className="auth0-lock-input"
           autoComplete="off"

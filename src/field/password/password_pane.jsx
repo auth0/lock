@@ -4,28 +4,41 @@ import PasswordInput from '../../ui/input/password_input';
 import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
 import * as l from '../../core/index';
-import { setPassword } from '../password';
+import { setPassword, setShowPassword } from '../password';
 
 export default class PasswordPane extends React.Component {
-  handleChange(e) {
+  handleChange = e => {
     const { lock, policy } = this.props;
     swap(updateEntity, 'lock', l.id(lock), setPassword, e.target.value, policy);
-  }
+  };
+  handleShowPasswordChange = e => {
+    const { lock } = this.props;
+    swap(updateEntity, 'lock', l.id(lock), setShowPassword, e.target.checked);
+  };
 
   render() {
     const { i18n, lock, placeholder, policy, strengthMessages } = this.props;
-
     return (
-      <PasswordInput
-        value={c.getFieldValue(lock, 'password')}
-        invalidHint={i18n.str('blankErrorHint')}
-        isValid={!c.isFieldVisiblyInvalid(lock, 'password')}
-        onChange={::this.handleChange}
-        placeholder={placeholder}
-        strengthMessages={strengthMessages}
-        disabled={l.submitting(lock)}
-        policy={policy}
-      />
+      <div>
+        <PasswordInput
+          value={c.getFieldValue(lock, 'password')}
+          invalidHint={i18n.str('blankErrorHint')}
+          isValid={!c.isFieldVisiblyInvalid(lock, 'password')}
+          onChange={this.handleChange}
+          placeholder={placeholder}
+          strengthMessages={strengthMessages}
+          disabled={l.submitting(lock)}
+          policy={policy}
+          showPassword={c.getFieldValue(lock, 'showPassword', false)}
+        />
+        {l.ui.allowShowPassword(lock) &&
+          <div className="auth0-lock-show-password">
+            <label>
+              <input type="checkbox" onChange={this.handleShowPasswordChange} />
+              {i18n.html('showPassword')}
+            </label>
+          </div>}
+      </div>
     );
   }
 }

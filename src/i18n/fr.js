@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '2-Step Vérification',
   mfaLoginInstructions: 'Veuillez entrer le code de vérification généré par votre application mobile.',
   mfaSubmitLabel: "S'identifier",
-  mfaCodeErrorHint: 'Utilisez des numéros %d'
+  mfaCodeErrorHint: 'Utilisez des numéros %d',
+  showPassword: 'Montrer le mot de passe'
 };

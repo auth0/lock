@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '2 tvåstegsverifiering',
   mfaLoginInstructions: 'Ange verifieringskoden som genereras av din mobil applikation.',
   mfaSubmitLabel: 'Logga in',
-  mfaCodeErrorHint: 'Använd %d'
+  mfaCodeErrorHint: 'Använd %d',
+  showPassword: 'Visa lösenord'
 };
