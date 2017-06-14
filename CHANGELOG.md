@@ -6,7 +6,7 @@
 
 **Added**
 - Added allowAutoComplete ui option [\#1022](https://github.com/auth0/lock/pull/1022) ([luisrudge](https://github.com/luisrudge))
-- When in OIDC mode enterprise connections always go to IdP page [\#1019](https://github.com/auth0/lock/pull/1019) ([luisrudge](https://github.com/luisrudge))
+- When in OIDC mode, enterprise connections always go to IdP page [\#1019](https://github.com/auth0/lock/pull/1019) ([luisrudge](https://github.com/luisrudge))
 - Added Cross Origin Auth support in OIDC mode [\#1013](https://github.com/auth0/lock/pull/1013) ([luisrudge](https://github.com/luisrudge))
 - Emit authorization_error when username/password fails (invalid_user_password) [\#999](https://github.com/auth0/lock/pull/999) ([luisrudge](https://github.com/luisrudge))
 
