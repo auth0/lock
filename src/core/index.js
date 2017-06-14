@@ -156,7 +156,7 @@ function extractUIOptions(id, options) {
     allowAutocomplete: !!options.allowAutocomplete,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
     scrollGlobalMessagesIntoView: undefined === options.scrollGlobalMessagesIntoView
-      ? false
+      ? true
       : !!options.scrollGlobalMessagesIntoView
   });
 }

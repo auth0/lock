@@ -111,19 +111,6 @@ export default class Chrome extends React.Component {
           setTimeout(() => input.focus(), 17);
         }
       }
-
-      return;
-    }
-
-    if (!prevProps.error && error) {
-      const input = this.findAutofocusInput();
-
-      if (input) {
-        // TODO clear timeout
-        setTimeout(() => input.focus(), 17);
-      }
-
-      return;
     }
   }
 
@@ -332,5 +319,5 @@ Chrome.defaultProps = {
   autofocus: false,
   disableSubmitButton: false,
   showSubmitButton: true,
-  scrollGlobalMessagesIntoView: false
+  scrollGlobalMessagesIntoView: true
 };

@@ -36,7 +36,7 @@ describe('GlobalMessage', () => {
     expect(getBoundingClientRectSpy).toHaveBeenCalled();
     expect(scrollIntoViewSpy).not.toHaveBeenCalled();
   });
-  it('should not call scrollIntoView if parameter is not set', () => {
+  it('should call scrollIntoView if parameter is not set (default is true)', () => {
     const wrapper = mount(<GlobalMessage type="success" message="foo" />);
     const getBoundingClientRectSpy = jest.fn().mockReturnValue({ top: -1 });
     const scrollIntoViewSpy = jest.fn();
@@ -45,7 +45,8 @@ describe('GlobalMessage', () => {
 
     wrapper.getNode().componentDidMount();
 
-    expect(scrollIntoViewSpy).not.toHaveBeenCalled();
+    expect(getBoundingClientRectSpy).toHaveBeenCalled();
+    expect(scrollIntoViewSpy).toHaveBeenCalledWith(true);
   });
   it('should not call scrollIntoView if parameter is set to false', () => {
     const wrapper = mount(<GlobalMessage type="success" message="foo" scrollIntoView={false} />);

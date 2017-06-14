@@ -35,5 +35,5 @@ GlobalMessage.propTypes = {
 };
 
 GlobalMessage.defaultProps = {
-  scrollIntoView: false
+  scrollIntoView: true
 };
