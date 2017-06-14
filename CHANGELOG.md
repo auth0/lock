@@ -1,5 +1,28 @@
 #Change Log
 
+## [v10.17.0](https://github.com/auth0/lock/tree/v10.17.0) (2017-06-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.16.0...v10.17.0)
+
+
+**Added**
+- Added allowAutoComplete ui option [\#1022](https://github.com/auth0/lock/pull/1022) ([luisrudge](https://github.com/luisrudge))
+- When in OIDC mode, enterprise connections always go to IdP page [\#1019](https://github.com/auth0/lock/pull/1019) ([luisrudge](https://github.com/luisrudge))
+- Added Cross Origin Auth support in OIDC mode [\#1013](https://github.com/auth0/lock/pull/1013) ([luisrudge](https://github.com/luisrudge))
+- Emit authorization_error when username/password fails (invalid_user_password) [\#999](https://github.com/auth0/lock/pull/999) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Improved Danish translation [\#1033](https://github.com/auth0/lock/pull/1033) ([denkristoffer](https://github.com/denkristoffer))
+- Scroll to the error message by default [\#1023](https://github.com/auth0/lock/pull/1023) ([m-idler](https://github.com/m-idler))
+- Enabled HTML formatting for flashMessages [\#1017](https://github.com/auth0/lock/pull/1017) ([dariobanfi](https://github.com/dariobanfi))
+- package.json: ~ range allowed for auth0-js dep [\#1015](https://github.com/auth0/lock/pull/1015) ([lexaurin](https://github.com/lexaurin))
+
+**Fixed**
+- Removed extra scroll on mobile view [\#1031](https://github.com/auth0/lock/pull/1031) ([beneliflo](https://github.com/beneliflo))
+- Fixing tooltip error in the email pane [\#1030](https://github.com/auth0/lock/pull/1030) ([luisrudge](https://github.com/luisrudge))
+- Fix react-addons-css-transition-group issue [\#1001](https://github.com/auth0/lock/pull/1001) ([eoinmurray](https://github.com/eoinmurray))
+- Fixed overrides sent to auth0.js [\#997](https://github.com/auth0/lock/pull/997) ([sandrinodimattia](https://github.com/sandrinodimattia))
+
+
 ## [v10.16.0](https://github.com/auth0/lock/tree/v10.16.0) (2017-05-08)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.15.1...v10.16.0)
 
