@@ -134,10 +134,6 @@ export default class Base extends EventEmitter {
             l.emitEvent(m, 'signup ready');
           } else if (screen.name === 'forgotPassword') {
             l.emitEvent(m, 'forgot_password ready');
-          } else if (screen.name === 'lastLogin') {
-            l.emitEvent(m, 'last_login ready');
-          } else if (screen.name === 'mfa.mfaCode') {
-            l.emitEvent(m, 'mfa_login ready');
           }
         }
         this.oldScreenName = screen.name;
