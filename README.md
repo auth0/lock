@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.16.0/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.17.0/lock.min.js"></script>
 ```
 
 From [bower](http://bower.io)
@@ -188,6 +188,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
   + **type {String}**: The message type, it should be `error` or `success`.
   + **text {String}**: The text to show.
 - **allowAutocomplete {Boolean}**: Determines whether or not the the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
+- **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
 
 #### Theming options
 
