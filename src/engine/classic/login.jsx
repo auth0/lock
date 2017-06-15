@@ -129,6 +129,8 @@ export default class Login extends Screen {
   }
 
   submitHandler(model) {
+    l.emitEvent(model, 'signin submit');
+
     if (hasOnlyClassicConnections(model, 'social')) {
       return null;
     }

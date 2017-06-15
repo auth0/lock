@@ -5,6 +5,7 @@ import { authWithUsername, hasScreen } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 import { renderPasswordResetConfirmation } from './password_reset_confirmation';
 import * as i18n from '../../i18n';
+import * as l from '../../core/index';
 
 const Component = ({ i18n, model }) => {
   const headerText = i18n.html('forgotPasswordInstructions') || null;
@@ -37,7 +38,8 @@ export default class ResetPassword extends Screen {
     return i18n.str(m, 'forgotPasswordTitle');
   }
 
-  submitHandler() {
+  submitHandler(m) {
+    l.emitEvent(m, 'forgot_password submit');
     return resetPassword;
   }
 

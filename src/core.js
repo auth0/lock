@@ -40,7 +40,14 @@ export default class Base extends EventEmitter {
       'authorization_error',
       'hash_parsed',
       'signin ready',
-      'signup ready'
+      'signup ready',
+
+      'forgot_password ready',
+      'signin submit',
+      'signup submit',
+      'forgot_password submit',
+      'last_login ready',
+      'mfa_login ready'
     ];
 
     this.id = idu.incremental();
@@ -124,6 +131,12 @@ export default class Base extends EventEmitter {
             l.emitEvent(m, 'signin ready');
           } else if (screen.name === 'main.signUp') {
             l.emitEvent(m, 'signup ready');
+          } else if (screen.name === 'forgotPassword') {
+            l.emitEvent(m, 'forgot_password ready');
+          } else if (screen.name === 'lastLogin') {
+            l.emitEvent(m, 'last_login ready');
+          } else if (screen.name === 'mfa.mfaCode') {
+            l.emitEvent(m, 'mfa_login ready');
           }
         }
         this.oldScreenName = screen.name;
