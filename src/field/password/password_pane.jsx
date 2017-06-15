@@ -19,7 +19,7 @@ export default class PasswordPane extends React.Component {
   render() {
     const { i18n, lock, placeholder, policy, strengthMessages } = this.props;
     return (
-      <div>
+      <div className="auth0-lock-input-show-password">
         <PasswordInput
           value={c.getFieldValue(lock, 'password')}
           invalidHint={i18n.str('blankErrorHint')}
@@ -33,10 +33,8 @@ export default class PasswordPane extends React.Component {
         />
         {l.ui.allowShowPassword(lock) &&
           <div className="auth0-lock-show-password">
-            <label>
-              <input type="checkbox" onChange={this.handleShowPasswordChange} />
-              {i18n.html('showPassword')}
-            </label>
+            <input type="checkbox" id="slideOne" onChange={this.handleShowPasswordChange} />
+            <label htmlFor="slideOne" title={i18n.str('showPassword')} />
           </div>}
       </div>
     );
