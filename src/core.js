@@ -43,11 +43,10 @@ export default class Base extends EventEmitter {
       'signup ready',
 
       'forgot_password ready',
+      'forgot_password submit',
       'signin submit',
       'signup submit',
-      'forgot_password submit',
-      'last_login ready',
-      'mfa_login ready'
+      'federated login'
     ];
 
     this.id = idu.incremental();

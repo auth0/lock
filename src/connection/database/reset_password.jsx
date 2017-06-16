@@ -39,7 +39,6 @@ export default class ResetPassword extends Screen {
   }
 
   submitHandler(m) {
-    l.emitEvent(m, 'forgot_password submit');
     return resetPassword;
   }
 
