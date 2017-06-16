@@ -7,8 +7,10 @@ import { displayName, socialConnections, authButtonsTheme } from '../../connecti
 
 export default class SocialButtonsPane extends React.Component {
   handleAuthButtonClick(lock, provider, isSignUp) {
+    const prov = typeof provider !== 'object' ? provider.toJS() : provider;
+
     l.emitEvent(lock, 'federated login', {
-      ...provider.toJS(),
+      ...prov,
       action: isSignUp ? 'signup' : 'signin'
     });
     return logIn(l.id(lock), provider);

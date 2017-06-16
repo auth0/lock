@@ -65,8 +65,7 @@ describe('SocialButtonsPane', () => {
       <SocialButtonsPane {...defaultProps} instructions="instructions" />
     ).toMatchSnapshot();
   });
-  // TODO: fix `provider.toJS` is not a function (only happens in test)
-  it.skip('calls `logIn` with social connection 1 when first button is clicked', () => {
+  it('calls `logIn` with social connection 1 when first button is clicked', () => {
     let SocialButtonsPane = getComponent();
 
     const wrapper = mount(<SocialButtonsPane {...defaultProps} />);
@@ -78,8 +77,7 @@ describe('SocialButtonsPane', () => {
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
-  // TODO: fix `provider.toJS` is not a function (only happens in test)
-  it.skip('calls `logIn` with social connection 2 when second button is clicked', () => {
+  it('calls `logIn` with social connection 2 when second button is clicked', () => {
     let SocialButtonsPane = getComponent();
 
     const wrapper = mount(<SocialButtonsPane {...defaultProps} />);
