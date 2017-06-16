@@ -6,6 +6,14 @@ import { logIn } from '../../quick-auth/actions';
 import { displayName, socialConnections, authButtonsTheme } from '../../connection/social/index';
 
 export default class SocialButtonsPane extends React.Component {
+  handleAuthButtonClick(lock, provider, isSignUp) {
+    l.emitEvent(lock, 'federated login', {
+      ...provider.toJS(),
+      action: isSignUp ? 'signup' : 'signin'
+    });
+    return logIn(l.id(lock), provider);
+  }
+
   render() {
     // TODO: i don't like that it receives the instructions tanslated
     // but it also takes the t fn
@@ -31,7 +39,7 @@ export default class SocialButtonsPane extends React.Component {
             signUp ? 'signUpWithLabel' : 'loginWithLabel',
             connectionName || displayName(x)
           )}
-          onClick={() => logIn(l.id(lock), x)}
+          onClick={() => this.handleAuthButtonClick(lock, x, signUp)}
           strategy={x.get('strategy')}
           primaryColor={primaryColor}
           foregroundColor={foregroundColor}
