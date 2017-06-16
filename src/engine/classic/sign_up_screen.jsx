@@ -81,7 +81,6 @@ export default class SignUp extends Screen {
   submitHandler(m) {
     if (hasOnlyClassicConnections(m, 'social')) return null;
     if (isSSOEnabled(m)) return enterpriseLogIn;
-    l.emitEvent(m, 'signup submit');
     return signUp;
   }
 

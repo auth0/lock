@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
+import * as l from '../../core/index';
 import Header from './header';
 
 const submitSvg =
@@ -12,6 +13,21 @@ const submitText =
   '<svg focusable="false" class="icon-text" width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Web/Submit/Active" transform="translate(-148.000000, -32.000000)" fill="#FFFFFF"><polygon id="Shape" points="148 33.4 149.4 32 155.4 38 149.4 44 148 42.6 152.6 38"></polygon></g></g></svg>';
 
 class SubmitButton extends React.Component {
+  handleSubmit() {
+    const { label, screenName, contentProps } = this.props;
+    const { model } = contentProps;
+
+    if (screenName === 'main.signUp') {
+      l.emitEvent(model, 'signup submit');
+    } else if (screenName === 'main.login') {
+      l.emitEvent(model, 'signin submit');
+    }
+
+    if (this.props.onSubmit) {
+      this.props.onSubmit(label, screenName);
+    }
+  }
+
   focus() {
     ReactDOM.findDOMNode(this).focus();
   }
@@ -30,6 +46,7 @@ class SubmitButton extends React.Component {
         className="auth0-lock-submit"
         disabled={disabled}
         style={{ backgroundColor: color }}
+        onClick={::this.handleSubmit}
         type="submit"
       >
         <div className="auth0-loading-container">
@@ -44,7 +61,10 @@ class SubmitButton extends React.Component {
 SubmitButton.propTypes = {
   color: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  label: PropTypes.string
+  label: PropTypes.string,
+  screenName: PropTypes.string,
+  onSubmit: PropTypes.func,
+  contentProps: PropTypes.object
 };
 
 const MESSAGE_ANIMATION_DURATION = 250;
@@ -193,6 +213,8 @@ export default class Chrome extends React.Component {
       <SubmitButton
         color={primaryColor}
         disabled={disableSubmitButton}
+        screenName={screenName}
+        contentProps={contentProps}
         key="submit"
         label={submitButtonLabel}
         ref="submit"
@@ -306,6 +328,7 @@ Chrome.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
   logo: PropTypes.string.isRequired,
   primaryColor: PropTypes.string.isRequired,
+  screenName: PropTypes.string.isRequired,
   showSubmitButton: PropTypes.bool.isRequired,
   submitButtonLabel: PropTypes.string,
   success: PropTypes.node,
