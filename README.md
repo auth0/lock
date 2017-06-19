@@ -109,6 +109,11 @@ Lock will emit events during its lifecycle.
 - `authenticated`: emitted after a successful authentication. Has the authentication result as the only argument.
 - `authorization_error`: emitted when authorization fails. Has error as the only argument.
 - `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the default), it will attempt to parse the hash part of the url looking for the result of a login attempt. This is a _low level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the url's hash part.
+- `forgot_password ready`: emitted when the "Forgot password" screen is shown.
+- `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
+- `signin submit`: emitted when the user clicks on the submit button of the "Login" screen.
+- `signup submit`: emitted when the user clicks on the submit button of the "Register" screen.
+- `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments. 
 
 ### show(options)
 
