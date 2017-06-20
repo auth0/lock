@@ -4,25 +4,9 @@ import AuthButton from '../../ui/button/auth_button';
 import * as l from '../../core/index';
 import { logIn } from '../../quick-auth/actions';
 import { displayName, socialConnections, authButtonsTheme } from '../../connection/social/index';
+import { emitFederatedLoginEvent } from './event';
 
 export default class SocialButtonsPane extends React.Component {
-  handleAuthButtonClick(lock, provider, isSignUp) {
-    let prov;
-
-    try {
-      prov = provider.toJS();
-    } catch (e) {
-      prov = provider;
-    }
-
-    l.emitEvent(lock, 'federated login', {
-      name: prov.name,
-      strategy: prov.strategy,
-      action: isSignUp ? 'signup' : 'signin'
-    });
-    return logIn(l.id(lock), provider);
-  }
-
   render() {
     // TODO: i don't like that it receives the instructions tanslated
     // but it also takes the t fn
@@ -48,7 +32,7 @@ export default class SocialButtonsPane extends React.Component {
             signUp ? 'signUpWithLabel' : 'loginWithLabel',
             connectionName || displayName(x)
           )}
-          onClick={() => this.handleAuthButtonClick(lock, x, signUp)}
+          onClick={() => emitFederatedLoginEvent(lock, x, signUp)}
           strategy={x.get('strategy')}
           primaryColor={primaryColor}
           foregroundColor={foregroundColor}
