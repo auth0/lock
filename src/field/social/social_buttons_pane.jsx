@@ -7,6 +7,11 @@ import { displayName, socialConnections, authButtonsTheme } from '../../connecti
 import { emitFederatedLoginEvent } from './event';
 
 export default class SocialButtonsPane extends React.Component {
+  handleSubmit(provider, isSignUp) {
+    emitFederatedLoginEvent(this.props.lock, provider, isSignUp);
+    return logIn(l.id(this.props.lock), provider);
+  }
+
   render() {
     // TODO: i don't like that it receives the instructions tanslated
     // but it also takes the t fn
@@ -32,7 +37,7 @@ export default class SocialButtonsPane extends React.Component {
             signUp ? 'signUpWithLabel' : 'loginWithLabel',
             connectionName || displayName(x)
           )}
-          onClick={() => emitFederatedLoginEvent(lock, x, signUp)}
+          onClick={() => this.handleSubmit(x, signUp)}
           strategy={x.get('strategy')}
           primaryColor={primaryColor}
           foregroundColor={foregroundColor}

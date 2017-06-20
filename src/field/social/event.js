@@ -1,5 +1,4 @@
 import * as l from '../../core/index';
-import { logIn } from '../../quick-auth/actions';
 
 export function emitFederatedLoginEvent(lock, provider, isSignUp) {
   let prov;
@@ -15,5 +14,4 @@ export function emitFederatedLoginEvent(lock, provider, isSignUp) {
     strategy: prov.strategy,
     action: isSignUp ? 'signup' : 'signin'
   });
-  return logIn(l.id(lock), provider);
 }
