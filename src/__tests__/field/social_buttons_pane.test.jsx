@@ -16,6 +16,7 @@ describe('SocialButtonsPane', () => {
     signUp: false,
     disabled: false
   };
+
   beforeEach(() => {
     jest.resetModules();
 
@@ -37,7 +38,8 @@ describe('SocialButtonsPane', () => {
     }));
 
     jest.mock('core/index', () => ({
-      id: () => 1
+      id: () => 1,
+      emitEvent: jest.fn()
     }));
   });
 
