@@ -37,7 +37,7 @@ export default class ResetPassword extends Screen {
     return i18n.str(m, 'forgotPasswordTitle');
   }
 
-  submitHandler(m) {
+  submitHandler() {
     return resetPassword;
   }
 
