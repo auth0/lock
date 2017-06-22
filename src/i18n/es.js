@@ -109,5 +109,6 @@ export default {
   mfaLoginTitle: 'Segundo Factor',
   mfaLoginInstructions: 'Por favor ingrese el código de verificación generado por su aplicación móvil.',
   mfaSubmitLabel: 'Enviar',
-  mfaCodeErrorHint: '%d números'
+  mfaCodeErrorHint: '%d números',
+  showPassword: 'Mostrar contraseña'
 };

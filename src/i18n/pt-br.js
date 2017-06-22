@@ -109,5 +109,6 @@ export default {
   mfaLoginTitle: 'Verificação 2-Step',
   mfaLoginInstructions: 'Digite o código de verificação gerado pela sua aplicação móvel.',
   mfaSubmitLabel: 'Entrar',
-  mfaCodeErrorHint: 'Use números %d'
+  mfaCodeErrorHint: 'Use números %d',
+  showPassword: 'Mostrar senha'
 };

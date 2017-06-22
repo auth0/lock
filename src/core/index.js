@@ -155,6 +155,7 @@ function extractUIOptions(id, options) {
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin,
     allowAutocomplete: !!options.allowAutocomplete,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
+    allowShowPassword: !!options.allowShowPassword,
     scrollGlobalMessagesIntoView: undefined === options.scrollGlobalMessagesIntoView
       ? true
       : !!options.scrollGlobalMessagesIntoView
@@ -189,7 +190,8 @@ export const ui = {
   authButtonsTheme: lock => getUIAttribute(lock, 'authButtonsTheme'),
   rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin')),
   allowAutocomplete: m => tget(m, 'allowAutocomplete', getUIAttribute(m, 'allowAutocomplete')),
-  scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView')
+  scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
+  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword'))
 };
 
 const { get: getAuthAttribute } = dataFns(['core', 'auth']);
@@ -217,8 +219,7 @@ function extractAuthOptions(options) {
     sso,
     state,
     nonce
-  } =
-    options.auth || {};
+  } = options.auth || {};
 
   let { oidcConformant } = options;
 
@@ -584,6 +585,9 @@ export function overrideOptions(m, opts) {
   }
   if (typeof opts.allowAutocomplete === 'boolean') {
     m = tset(m, 'allowAutocomplete', opts.allowAutocomplete);
+  }
+  if (typeof opts.allowShowPassword === 'boolean') {
+    m = tset(m, 'allowShowPassword', opts.allowShowPassword);
   }
 
   return m;

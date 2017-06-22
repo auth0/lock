@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -19,7 +22,8 @@ export default {
       password_change_required: 'Aktualizujte si heslo. Toto je vaše prvé prihláasenie alebo vypršala platnosť hesla.',
       password_leaked: 'Prihlasovacie meno bolo zablokované. Vaše prihlasovacie údaje unikli z inej stránky. Poslali sme Vám e-mail s inštrukciami ako ho odblokujete',
       too_many_attempts: 'Vaše konto bolo zablokované po viacnásobných pokusoch o prihlásenie',
-      session_missing: 'Nedá sa odoslať autentifikačná požiadavka. Prosím zatvorte všetky dialogové okná a skúste to znova.'
+      session_missing: 'Nedá sa odoslať autentifikačná požiadavka. Prosím zatvorte všetky dialogové okná a skúste to znova.',
+      'hrd.not_matching_email': 'Prosím, použite svoj firemný e-mail na prihlásenie.'
     },
     passwordless: {
       'bad.email': 'Neplatný e-mail',
@@ -37,7 +41,6 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'Ďakujeme za prihlásenie.',
     forgotPassword: 'Poslali sme vám e-mail na zmenu hesla.',
     magicLink: 'Poslali sme vám odkaz na prihlásenie<br />to %s.',
@@ -109,5 +112,6 @@ export default {
   mfaLoginTitle: 'Dvojfázové overenie',
   mfaLoginInstructions: 'Prosím zadajte verifikačný kód vygenerovaný vo Vašej mobilnej aplikácii.',
   mfaSubmitLabel: 'Prihlásiť',
-  mfaCodeErrorHint: 'Použite %d číslic'
+  mfaCodeErrorHint: 'Použite %d číslic',
+  showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.'
 };

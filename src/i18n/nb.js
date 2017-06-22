@@ -112,5 +112,6 @@ export default {
   mfaSubmitLabel: 'Logg inn',
   mfaCodeErrorHint: 'Bruk %d siffer',
   forgotPasswordTitle: 'Tilbakestille passordet ditt',
-  signupTitle: 'Melde deg på'
+  signupTitle: 'Melde deg på',
+  showPassword: 'Vis passord'
 };
