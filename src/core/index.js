@@ -217,7 +217,8 @@ function extractAuthOptions(options) {
     sso,
     state,
     nonce
-  } = options.auth || {};
+  } =
+    options.auth || {};
 
   let { oidcConformant } = options;
 
