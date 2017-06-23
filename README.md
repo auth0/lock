@@ -17,16 +17,6 @@ From CDN
 <script src="http://cdn.auth0.com/js/lock/10.17.0/lock.min.js"></script>
 ```
 
-From [bower](http://bower.io)
-
-```sh
-bower install auth0-lock
-```
-
-```html
-<script src="bower_components/auth0-lock/build/lock.min.js"></script>
-```
-
 From [npm](https://npmjs.org)
 
 ```sh
