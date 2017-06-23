@@ -17,9 +17,6 @@
     "type": "git",
     "url": "git://github.com/auth0/lock"
   },
-  "engines": {
-    "node": ">=6.9.1"
-  },
   "main": "lib/index.js",
   "scripts": {
     "start": "grunt dev",
