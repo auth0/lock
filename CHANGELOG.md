@@ -1,5 +1,25 @@
 #Change Log
 
+## [v10.18.0](https://github.com/auth0/lock/tree/v10.18.0) (2017-06-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.17.0...v10.18.0)
+
+
+**Added**
+- Add analytics events [\#1036](https://github.com/auth0/lock/pull/1036) ([francocorreasosa](https://github.com/francocorreasosa))
+- Lang Afrikaans South Africa [\#1035](https://github.com/auth0/lock/pull/1035) ([jdunhin](https://github.com/jdunhin))
+- Adding "show password" option [\#1029](https://github.com/auth0/lock/pull/1029) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Upgrade React to fix IE11 issues [\#1039](https://github.com/auth0/lock/pull/1039) ([luisrudge](https://github.com/luisrudge))
+
+**Removed**
+- Removed node version restriction [\#1043](https://github.com/auth0/lock/pull/1043) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Adding a flag for cross-auth [\#1044](https://github.com/auth0/lock/pull/1044) ([luisrudge](https://github.com/luisrudge))
+- Fix custom connection scopes [\#1038](https://github.com/auth0/lock/pull/1038) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.17.0](https://github.com/auth0/lock/tree/v10.17.0) (2017-06-14)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.16.0...v10.17.0)
 
