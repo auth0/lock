@@ -74,7 +74,7 @@ class Auth0LegacyAPIClient {
 
     delete options.autoLogin;
 
-    const popupHandler = autoLogin && popup ? this.client.popup.preload() : null;
+    const popupHandler = autoLogin && popup && sso ? this.client.popup.preload() : null;
 
     this.client.signup(options, (err, result) => cb(err, result, popupHandler));
   }
