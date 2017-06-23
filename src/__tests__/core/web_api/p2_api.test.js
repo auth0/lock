@@ -66,20 +66,38 @@ describe('Auth0APIClient', () => {
       });
     });
     describe('with credentials', () => {
-      it('should fail when in popup mode', () => {
-        const client = getClient({
-          redirect: false
+      describe('when `overrides._useCrossAuth` is true', () => {
+        it('should fail when in popup mode', () => {
+          const client = getClient({
+            redirect: false,
+            overrides: {
+              __useCrossAuth: true
+            }
+          });
+          expect(() => client.logIn({ username: 'foo' }, {})).toThrowErrorMatchingSnapshot();
         });
-        expect(() => client.logIn({ username: 'foo' }, {})).toThrowErrorMatchingSnapshot();
+        it('should call client.login', () => {
+          const client = getClient({
+            redirect: true,
+            overrides: {
+              __useCrossAuth: true
+            }
+          });
+          const callback = jest.fn();
+          client.logIn({ username: 'foo' }, {}, callback);
+          const mock = getAuth0ClientMock();
+          const loginMock = mock.WebAuth.mock.instances[0].login.mock;
+          assertCallWithCallback(loginMock, callback);
+        });
       });
-      it('should call client.login', () => {
+      it('should call client.client.login by default', () => {
         const client = getClient({
           redirect: true
         });
         const callback = jest.fn();
         client.logIn({ username: 'foo' }, {}, callback);
         const mock = getAuth0ClientMock();
-        const loginMock = mock.WebAuth.mock.instances[0].login.mock;
+        const loginMock = mock.WebAuth.mock.instances[0].client.login.mock;
         assertCallWithCallback(loginMock, callback);
       });
     });

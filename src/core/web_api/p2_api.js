@@ -15,6 +15,7 @@ class Auth0APIClient {
       version: __VERSION__,
       lib_version: auth0.version
     };
+    this._useCrossAuth = !!(opts.overrides && opts.overrides.__useCrossAuth);
 
     this.client = new auth0.WebAuth({
       clientID: clientID,
@@ -52,11 +53,15 @@ class Auth0APIClient {
         this.client.authorize(loginOptions, f);
       }
     } else {
-      if (this.authOpt.popup) {
-        throw new Error('Cross origin login is not supported in popup mode');
-      }
       loginOptions.realm = options.connection;
-      this.client.login(loginOptions, f);
+      if (this._useCrossAuth) {
+        if (this.authOpt.popup) {
+          throw new Error('Cross origin login is not supported in popup mode');
+        }
+        this.client.login(loginOptions, f);
+      } else {
+        this.client.client.login(loginOptions, f);
+      }
     }
   }
 
