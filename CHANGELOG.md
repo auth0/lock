@@ -1,4 +1,4 @@
-#Change Log
+# Change Log
 
 ## [v10.18.0](https://github.com/auth0/lock/tree/v10.18.0) (2017-06-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.17.0...v10.18.0)
