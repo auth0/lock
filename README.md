@@ -466,3 +466,5 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [license-url]: #license
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/auth0-lock
+[david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
+[david-url]: https://david-dm.org/auth0/lock
