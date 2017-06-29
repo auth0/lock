@@ -136,6 +136,10 @@ export default class Login extends Screen {
     if (isHRDDomain(model, databaseUsernameValue(model)) && !l.oidcConformant(model)) {
       return id => startHRD(id, databaseUsernameValue(model));
     }
+    const customResolvedConnection = l.resolvedConnection(model);
+    if (customResolvedConnection && customResolvedConnection.type === 'database') {
+      return databaseLogIn;
+    }
 
     const useDatabaseConnection =
       !isSSOEnabled(model) &&

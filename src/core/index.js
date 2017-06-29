@@ -34,7 +34,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false
         ? false
         : true,
-      prefill: options.prefill || {}
+      prefill: options.prefill || {},
+      connectionResolver: options.connectionResolver
     })
   );
 
@@ -69,6 +70,31 @@ export function useTenantInfo(m) {
 
 export function oidcConformant(m) {
   return get(m, 'oidcConformant');
+}
+
+export function connectionResolver(m) {
+  return get(m, 'connectionResolver');
+}
+
+export function setResolvedConnection(m, resolvedConnection) {
+  if (!resolvedConnection) {
+    return set(m, 'resolvedConnection', undefined);
+  }
+  if (!resolvedConnection.type || !resolvedConnection.name) {
+    throw new Error(
+      'Invalid connection object. The resolved connection must look like: `{ type: "database", name: "connection name" }`.'
+    );
+  }
+  if (resolvedConnection.type !== 'database') {
+    throw new Error(
+      'Invalid connection type. Only database connections can be resolved with a custom resolver.'
+    );
+  }
+  return set(m, 'resolvedConnection', resolvedConnection);
+}
+
+export function resolvedConnection(m) {
+  return get(m, 'resolvedConnection');
 }
 
 export function languageBaseUrl(m) {
