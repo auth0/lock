@@ -14,12 +14,12 @@ export default {
       'lock.network': '서버와의 연결에 실패하였습니다. 다시 시도해 주세요.',
       'lock.popup_closed': '팝업창이 닫혔습니다. 다시 시도해 주세요.',
       'lock.unauthorized': '권한이 없습니다. 다시 시도해 주세요.',
-      'lock.mfa_registration_required': '多段階認証が必要ですが、デバイスが登録されていません。ご登録をお願いいたします。',
+      'lock.mfa_registration_required': '다단계 인증이 필요하지만, 디바이스가 등록되어 있지 않습니다. 먼저 디바이스를 등록하여 주세요.',
       'lock.mfa_invalid_code': '유효하지 않은 코드입니다. 다시 시도해 주세요.',
-      password_change_required: '初めてログインする、またはパスワードが期限切れになったため、パスワードを更新する必要があります。', // TODO: verify error code
-      password_leaked: 'アカウントはパスワードが別のウェブサイトで漏洩したためにブロックされました。ブロックを解除する方法についてはメールにて自動送信されます。',
-      too_many_attempts: 'このアカウントは、短時間での複数回ログイン試行によりブロックされました。',
-      session_missing: '認証リクエストを完了できませんでした。すべての開いているダイアログを閉じた後にもう一度お試しください。'
+      password_change_required: '처음 로그인하거나, 또는 비밀번호의 기한이 만료되어 비밀번호를 갱신해야 합니다.', // TODO: verify error code
+      password_leaked: '본 계정은 외부 접근으로 인한 회원 정보 유출이 우려되어, 보안 상의 문제로 비활성화되었습니다. 계정을 다시 활성화하는 방법은 자동 전송된 이메일에 안내되어 있습니다.',
+      too_many_attempts: '본 계정은 단시간에 복수의 로그인 시도가 감지되어 차단되었습니다.',
+      session_missing: '인증 요청이 완료되지 않았습니다. 열려있는 모든 다이얼로그 창을 닫고 다시 시도해 주시기 바랍니다.'
     },
     passwordless: {
       'bad.email': '이메일 주소가 유효하지 않습니다',
@@ -28,12 +28,12 @@ export default {
     },
     signUp: {
       invalid_password: '비밀번호가 유효하지 않습니다.',
-      'lock.fallback': '申し訳ございません。サインアップ時に何らかの理由によりエラーが発生しました。',
-      password_dictionary_error: 'パスワードは一般的な文字列を避けてください。',
-      password_no_user_info_error: 'ユーザーを含むパスワードは避けてください。',
-      password_strength_error: 'パスワードが脆弱です。',
-      user_exists: 'すでに使用されているユーザーです。',
-      username_exists: 'すでに使用されているユーザーです。'
+      'lock.fallback': '죄송합니다. 특정 오류로 인하여 회원가입에 실패하였습니다.',
+      password_dictionary_error: '비밀번호가 너무 간단합니다.',
+      password_no_user_info_error: '비밀번호에 사용자명이 포함되어 있습니다.',
+      password_strength_error: '비밀번호가 너무 약합니다.',
+      user_exists: '이미 존재하는 사용자입니다.',
+      username_exists: '이미 존재하는 사용자명입니다.'
     }
   },
   success: {
@@ -50,8 +50,8 @@ export default {
   databaseSignUpInstructions: '',
   databaseAlternativeSignUpInstructions: '또는',
   emailInputPlaceholder: 'your@example.com',
-  enterpriseLoginIntructions: '企業の資格情報でログインしてください。',
-  enterpriseActiveLoginInstructions: '%s の資格情報を入力してください',
+  enterpriseLoginIntructions: '기업 자격 증명으로 로그인하여 주세요.',
+  enterpriseActiveLoginInstructions: '%s 의 자격 증명 정보를 입력하여 주세요.',
   failedLabel: '실패하였습니다.',
   forgotPasswordTitle: '비밀번호를 초기화하기',
   forgotPasswordAction: '비밀번호를 잊어버리셨나요?',
@@ -83,7 +83,7 @@ export default {
   passwordlessSMSCodeInstructions: '%s 로 코드가 적힌 SMS를 전송하였습니다.',
   passwordlessSMSInstructions: '전화번호를 입력하여 로그인하거나<br/>또는 새로운 계정을 만들어 주세요.',
   phoneNumberInputPlaceholder: '전화번호',
-  resendCodeAction: 'コードは受け取れましたか？',
+  resendCodeAction: '코드를 전송받지 못하셨나요?',
   resendLabel: '재전송하기',
   resendingLabel: '재전송중...',
   retryLabel: '재시도',
@@ -92,13 +92,13 @@ export default {
   signUpLabel: '회원가입',
   signUpSubmitLabel: '회원가입',
   signUpTerms: '',
-  signUpWithLabel: '%s 로 회원가입',
+  signUpWithLabel: '%s로 회원가입',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
-  ssoEnabled: 'シングルサインオンが有効になっています',
+  ssoEnabled: '통합 인증이 유효합니다.',
   submitLabel: '전송',
   unrecoverableError: '오류가 발생하였습니다.<br />고객센터로 연락하여 주시기 바랍니다.',
-  usernameFormatErrorHint: '%d-%d の文字列、数字、"_"が使用できます。',
+  usernameFormatErrorHint: '%d-%d의 문자, 숫자, "_"이/가 사용 가능합니다.',
   usernameInputPlaceholder: '사용자명',
   usernameOrEmailInputPlaceholder: '사용자명/이메일 주소',
   title: 'Auth0',
