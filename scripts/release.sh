@@ -83,7 +83,7 @@ jq ".version=$QUOTED_NEW_VERSION" package.json > package.json.new
 jq ".version=$QUOTED_NEW_VERSION" bower.json > bower.json.new
 
 echo "Generating tmp changelog"
-echo "#Change Log" > $TMP_CHANGELOG_FILE
+echo "# Change Log" > $TMP_CHANGELOG_FILE
 echo "" >> $TMP_CHANGELOG_FILE
 echo "## [$NEW_V_VERSION](https://github.com/auth0/$REPO_NAME/tree/$NEW_V_VERSION) ($CURR_DATE)" >> $TMP_CHANGELOG_FILE
 echo "[Full Changelog](https://github.com/auth0/$REPO_NAME/compare/$ORIG_V_VERSION...$NEW_V_VERSION)" >> $TMP_CHANGELOG_FILE
@@ -98,7 +98,7 @@ sed -i .old "s/lock\/$ORIG_VERSION\/lock.min.js/lock\/$NEW_VERSION\/lock.min.js/
 
 echo "Updating CHANGELOG.md"
 
-sed "s/\#Change Log//" CHANGELOG.md >> $TMP_CHANGELOG_FILE
+sed "s/\# Change Log//" CHANGELOG.md >> $TMP_CHANGELOG_FILE
 
 echo "Replacing files"
 
