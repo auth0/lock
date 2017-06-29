@@ -13,7 +13,7 @@ export function logIn(id, connection, loginHint) {
   const scopes = connectionScopes.get(connection.get('name'));
   const params = {
     connection: connection.get('name'),
-    connection_scope: scopes ? scopes.toJS() : []
+    connection_scope: scopes ? scopes.toJS() : undefined
   };
 
   if (!l.auth.redirect(m) && connection.get('strategy') === 'facebook') {

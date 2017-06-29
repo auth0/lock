@@ -209,12 +209,19 @@ export function logInSuccess(id, result) {
 }
 
 function logInError(id, fields, error, localHandler) {
+  const errorCode = error.error || error.code;
   localHandler(id, error, fields, () =>
     setTimeout(() => {
       const m = read(getEntity, 'lock', id);
       const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
+      const errorCodesThatEmitAuthorizationErrorEvent = [
+        'blocked_user',
+        'rule_error',
+        'lock.unauthorized',
+        'invalid_user_password'
+      ];
 
-      if (['blocked_user', 'rule_error', 'lock.unauthorized'].indexOf(error.code) > -1) {
+      if (errorCodesThatEmitAuthorizationErrorEvent.indexOf(errorCode) > -1) {
         l.emitAuthorizationErrorEvent(m, error);
       }
 

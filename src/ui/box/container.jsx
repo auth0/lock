@@ -134,7 +134,8 @@ export default class Container extends React.Component {
       tabs,
       terms,
       title,
-      transitionName
+      transitionName,
+      scrollGlobalMessagesIntoView
     } = this.props;
 
     const badge = showBadge ? <BottomBadge link={badgeLink} /> : null;
@@ -185,7 +186,7 @@ export default class Container extends React.Component {
       <div className={className} ref="container">
         {overlay}
         <div className="auth0-lock-center">
-          <form className="auth0-lock-widget" onSubmit={::this.handleSubmit}>
+          <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
             {avatar && <Avatar imageUrl={avatar} />}
             {closeHandler && <CloseButton onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">
@@ -210,6 +211,7 @@ export default class Container extends React.Component {
                 terms={terms}
                 title={title}
                 transitionName={transitionName}
+                scrollGlobalMessagesIntoView={scrollGlobalMessagesIntoView}
               />
             </div>
           </form>
@@ -242,7 +244,8 @@ Container.propTypes = {
   tabs: PropTypes.bool,
   terms: PropTypes.element,
   title: PropTypes.string,
-  transitionName: PropTypes.string.isRequired
+  transitionName: PropTypes.string.isRequired,
+  scrollGlobalMessagesIntoView: PropTypes.bool
   // escHandler
   // submitHandler,
 };
@@ -258,7 +261,8 @@ export const defaultProps = (Container.defaultProps = {
   disableSubmitButton: false,
   isMobile: false,
   isSubmitting: false,
-  logo: `${isFileProtocol ? 'https:' : ''}//cdn.auth0.com/styleguide/1.0.0/img/badge.png`,
+  logo: `${isFileProtocol ? 'https:' : ''}//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
   primaryColor: '#ea5323',
-  showBadge: true
+  showBadge: true,
+  scrollGlobalMessagesIntoView: true
 });

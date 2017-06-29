@@ -2,7 +2,7 @@ import IdTokenVerifier from 'idtoken-verifier';
 import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import request from 'superagent';
-import { normalizeError, loginCallback, normalizeAuthParams } from './helper';
+import { normalizeError, loginCallback, normalizeAuthParams, webAuthOverrides } from './helper';
 import qs from 'qs';
 
 class Auth0LegacyAPIClient {
@@ -27,10 +27,9 @@ class Auth0LegacyAPIClient {
       responseMode: opts.responseMode,
       responseType: opts.responseType,
       plugins: [new CordovaAuth0Plugin()],
+      overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
-      __tenant: opts.overrides && opts.overrides.__tenant,
-      __token_issuer: opts.overrides && opts.overrides.__token_issuer,
       _disableDeprecationWarnings: true
     });
 
@@ -75,7 +74,7 @@ class Auth0LegacyAPIClient {
 
     delete options.autoLogin;
 
-    const popupHandler = autoLogin && popup ? this.client.popup.preload() : null;
+    const popupHandler = autoLogin && popup && sso ? this.client.popup.preload() : null;
 
     this.client.signup(options, (err, result) => cb(err, result, popupHandler));
   }

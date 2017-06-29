@@ -40,7 +40,13 @@ export default class Base extends EventEmitter {
       'authorization_error',
       'hash_parsed',
       'signin ready',
-      'signup ready'
+      'signup ready',
+
+      'forgot_password ready',
+      'forgot_password submit',
+      'signin submit',
+      'signup submit',
+      'federated login'
     ];
 
     this.id = idu.incremental();
@@ -114,7 +120,8 @@ export default class Base extends EventEmitter {
           tabs: screen.renderTabs(m),
           terms: screen.renderTerms(m, i18nProp.html('signUpTerms')),
           title: getScreenTitle(m),
-          transitionName: screen.name === 'loading' ? 'fade' : 'horizontal-fade'
+          transitionName: screen.name === 'loading' ? 'fade' : 'horizontal-fade',
+          scrollGlobalMessagesIntoView: l.ui.scrollGlobalMessagesIntoView(m)
         };
         render(l.ui.containerID(m), props);
 
@@ -124,6 +131,8 @@ export default class Base extends EventEmitter {
             l.emitEvent(m, 'signin ready');
           } else if (screen.name === 'main.signUp') {
             l.emitEvent(m, 'signup ready');
+          } else if (screen.name === 'forgotPassword') {
+            l.emitEvent(m, 'forgot_password ready');
           }
         }
         this.oldScreenName = screen.name;

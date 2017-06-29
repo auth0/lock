@@ -109,5 +109,6 @@ export default {
   mfaLoginTitle: '2-fase di verifica',
   mfaLoginInstructions: 'Si prega di inserire il codice di verifica generato dalla tua applicazione mobile.',
   mfaSubmitLabel: 'Accesso',
-  mfaCodeErrorHint: 'Usare %d numeri'
+  mfaCodeErrorHint: 'Usare %d numeri',
+  showPassword: 'Mostra password'
 };

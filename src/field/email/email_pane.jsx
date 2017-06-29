@@ -26,14 +26,13 @@ export default class EmailPane extends React.Component {
 
   render() {
     const { i18n, lock, placeholder, forceInvalidVisibility = false } = this.props;
+    const allowAutocomplete = l.ui.allowAutocomplete(lock);
 
     const field = c.getField(lock, 'email');
     const value = field.get('value', '');
     const valid = field.get('valid', true);
-    const invalidHint = field.get(
-      'invalidHint',
-      i18n.str(value ? 'invalidErrorHint' : 'blankErrorHint')
-    );
+    const invalidHint =
+      field.get('invalidHint') || i18n.str(value ? 'invalidErrorHint' : 'blankErrorHint');
 
     const isValid = (!forceInvalidVisibility || valid) && !c.isFieldVisiblyInvalid(lock, 'email');
 
@@ -44,6 +43,7 @@ export default class EmailPane extends React.Component {
         isValid={isValid}
         onChange={::this.handleChange}
         placeholder={placeholder}
+        autoComplete={allowAutocomplete}
       />
     );
   }

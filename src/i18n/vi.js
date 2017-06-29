@@ -112,5 +112,6 @@ export default {
   mfaSubmitLabel: 'Đăng nhập',
   mfaCodeErrorHint: 'Chỉ sử dụng %d số',
   forgotPasswordTitle: 'Đặt lại mật khẩu của bạn',
-  signupTitle: 'Đăng ký'
+  signupTitle: 'Đăng ký',
+  showPassword: 'Hiển thị mật khẩu'
 };

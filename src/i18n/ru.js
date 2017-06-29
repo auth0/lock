@@ -12,7 +12,7 @@ export default {
       invalid_user_password: 'Неверный пароль.',
       'lock.fallback': 'Произошла непредвиденная ошибка при попытке авторизации. Приносим свои извинения.',
       'lock.invalid_code': 'Неверный код.',
-      'lock.invalid_email_password': 'Неверный адрес электронной почти или пароль.',
+      'lock.invalid_email_password': 'Неверный адрес электронной почты или пароль.',
       'lock.invalid_username_password': 'Неверное имя пользователя или пароль.',
       'lock.network': 'Нет доступа к серверу. Пожалуйста, проверьте подключение и повторите попытку.',
       'lock.popup_closed': 'Всплывающее окно закрыто, попробуйте еще раз.',
@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '2-аутентификация',
   mfaLoginInstructions: 'Пожалуйста, введите проверочный код, сгенерированный мобильным приложением.',
   mfaSubmitLabel: 'Авторизоваться',
-  mfaCodeErrorHint: 'Используйте %d номера'
+  mfaCodeErrorHint: 'Используйте %d номера',
+  showPassword: 'Показать пароль'
 };

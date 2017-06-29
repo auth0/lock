@@ -23,7 +23,7 @@ export default class UsernameInput extends React.Component {
   }
 
   render() {
-    const { invalidHint, isValid, onChange, ...props } = this.props;
+    const { invalidHint, isValid, onChange, autoComplete, ...props } = this.props;
     const { focused } = this.state;
 
     return (
@@ -40,7 +40,7 @@ export default class UsernameInput extends React.Component {
           name="username"
           className="auth0-lock-input"
           placeholder="username"
-          autoComplete="off"
+          autoComplete={autoComplete ? 'on' : 'off'}
           autoCapitalize="off"
           spellCheck="off"
           autoCorrect="off"

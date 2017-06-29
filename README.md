@@ -14,17 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.15.1/lock.min.js"></script>
-```
-
-From [bower](http://bower.io)
-
-```sh
-bower install auth0-lock
-```
-
-```html
-<script src="bower_components/auth0-lock/build/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.18.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -109,6 +99,11 @@ Lock will emit events during its lifecycle.
 - `authenticated`: emitted after a successful authentication. Has the authentication result as the only argument.
 - `authorization_error`: emitted when authorization fails. Has error as the only argument.
 - `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the default), it will attempt to parse the hash part of the url looking for the result of a login attempt. This is a _low level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the url's hash part.
+- `forgot_password ready`: emitted when the "Forgot password" screen is shown.
+- `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
+- `signin submit`: emitted when the user clicks on the submit button of the "Login" screen.
+- `signup submit`: emitted when the user clicks on the submit button of the "Sign up" screen.
+- `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments. 
 
 ### show(options)
 
@@ -187,6 +182,10 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **flashMessage {Object}**: Shows an `error` or `success` flash message when Lock is shown.
   + **type {String}**: The message type, it should be `error` or `success`.
   + **text {String}**: The text to show.
+- **allowAutocomplete {Boolean}**: Determines whether or not the the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
+- **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
+- **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
+
 
 #### Theming options
 
@@ -463,9 +462,9 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [circleci-url]: https://circleci.com/gh/auth0/lock/tree/master
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
-[david-image]: http://img.shields.io/david/auth0/lock.svg?style=flat-square
-[david-url]: https://david-dm.org/auth0/lock
 [license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
 [license-url]: #license
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/auth0-lock
+[david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
+[david-url]: https://david-dm.org/auth0/lock

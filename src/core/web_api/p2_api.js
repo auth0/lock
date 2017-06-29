@@ -2,7 +2,7 @@ import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
-import { normalizeError, loginCallback, normalizeAuthParams } from './helper';
+import { normalizeError, loginCallback, normalizeAuthParams, webAuthOverrides } from './helper';
 
 class Auth0APIClient {
   constructor(lockID, clientID, domain, opts) {
@@ -15,6 +15,7 @@ class Auth0APIClient {
       version: __VERSION__,
       lib_version: auth0.version
     };
+    this._useCrossAuth = !!(opts.overrides && opts.overrides.__useCrossAuth);
 
     this.client = new auth0.WebAuth({
       clientID: clientID,
@@ -25,10 +26,9 @@ class Auth0APIClient {
       responseType: opts.responseType,
       leeway: opts.leeway || 1,
       plugins: [new CordovaAuth0Plugin()],
+      overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
-      _telemetryInfo: opts._telemetryInfo || default_telemetry,
-      __tenant: opts.overrides && opts.overrides.__tenant,
-      __token_issuer: opts.overrides && opts.overrides.__token_issuer
+      _telemetryInfo: opts._telemetryInfo || default_telemetry
     });
 
     this.authOpt = {
@@ -54,7 +54,14 @@ class Auth0APIClient {
       }
     } else {
       loginOptions.realm = options.connection;
-      this.client.client.login(loginOptions, f);
+      if (this._useCrossAuth) {
+        if (this.authOpt.popup) {
+          throw new Error('Cross origin login is not supported in popup mode');
+        }
+        this.client.login(loginOptions, f);
+      } else {
+        this.client.client.login(loginOptions, f);
+      }
     }
   }
 

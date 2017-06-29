@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
+import * as l from '../../core/index';
 import Header from './header';
 
 const submitSvg =
@@ -12,6 +13,23 @@ const submitText =
   '<svg focusable="false" class="icon-text" width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Web/Submit/Active" transform="translate(-148.000000, -32.000000)" fill="#FFFFFF"><polygon id="Shape" points="148 33.4 149.4 32 155.4 38 149.4 44 148 42.6 152.6 38"></polygon></g></g></svg>';
 
 class SubmitButton extends React.Component {
+  handleSubmit() {
+    const { label, screenName, contentProps } = this.props;
+    const { model } = contentProps;
+
+    if (screenName === 'main.signUp') {
+      l.emitEvent(model, 'signup submit');
+    } else if (screenName === 'main.login') {
+      l.emitEvent(model, 'signin submit');
+    } else if (screenName === 'forgotPassword') {
+      l.emitEvent(model, 'forgot_password submit');
+    }
+
+    if (this.props.onSubmit) {
+      this.props.onSubmit(label, screenName);
+    }
+  }
+
   focus() {
     ReactDOM.findDOMNode(this).focus();
   }
@@ -30,6 +48,7 @@ class SubmitButton extends React.Component {
         className="auth0-lock-submit"
         disabled={disabled}
         style={{ backgroundColor: color }}
+        onClick={::this.handleSubmit}
         type="submit"
       >
         <div className="auth0-loading-container">
@@ -44,7 +63,10 @@ class SubmitButton extends React.Component {
 SubmitButton.propTypes = {
   color: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  label: PropTypes.string
+  label: PropTypes.string,
+  screenName: PropTypes.string,
+  onSubmit: PropTypes.func,
+  contentProps: PropTypes.object
 };
 
 const MESSAGE_ANIMATION_DURATION = 250;
@@ -111,19 +133,6 @@ export default class Chrome extends React.Component {
           setTimeout(() => input.focus(), 17);
         }
       }
-
-      return;
-    }
-
-    if (!prevProps.error && error) {
-      const input = this.findAutofocusInput();
-
-      if (input) {
-        // TODO clear timeout
-        setTimeout(() => input.focus(), 17);
-      }
-
-      return;
     }
   }
 
@@ -185,7 +194,8 @@ export default class Chrome extends React.Component {
       success,
       terms,
       title,
-      transitionName
+      transitionName,
+      scrollGlobalMessagesIntoView
     } = this.props;
 
     const { delayingShowSubmitButton, moving, reverse } = this.state;
@@ -205,16 +215,34 @@ export default class Chrome extends React.Component {
       <SubmitButton
         color={primaryColor}
         disabled={disableSubmitButton}
+        screenName={screenName}
+        contentProps={contentProps}
         key="submit"
         label={submitButtonLabel}
         ref="submit"
       />;
 
+    function wrapGlobalMessage(message) {
+      return typeof message === 'string'
+        ? React.createElement('span', { dangerouslySetInnerHTML: { __html: message } })
+        : message;
+    }
+
     const globalError = error
-      ? <GlobalMessage key="global-error" message={error} type="error" />
+      ? <GlobalMessage
+          key="global-error"
+          message={wrapGlobalMessage(error)}
+          type="error"
+          scrollIntoView={scrollGlobalMessagesIntoView}
+        />
       : null;
     const globalSuccess = success
-      ? <GlobalMessage key="global-success" message={success} type="success" />
+      ? <GlobalMessage
+          key="global-success"
+          message={wrapGlobalMessage(success)}
+          type="success"
+          scrollIntoView={scrollGlobalMessagesIntoView}
+        />
       : null;
 
     const Content = contentComponent;
@@ -302,16 +330,19 @@ Chrome.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
   logo: PropTypes.string.isRequired,
   primaryColor: PropTypes.string.isRequired,
+  screenName: PropTypes.string.isRequired,
   showSubmitButton: PropTypes.bool.isRequired,
   submitButtonLabel: PropTypes.string,
   success: PropTypes.node,
   terms: PropTypes.element,
   title: PropTypes.string,
-  transitionName: PropTypes.string.isRequired
+  transitionName: PropTypes.string.isRequired,
+  scrollGlobalMessagesIntoView: PropTypes.bool
 };
 
 Chrome.defaultProps = {
   autofocus: false,
   disableSubmitButton: false,
-  showSubmitButton: true
+  showSubmitButton: true,
+  scrollGlobalMessagesIntoView: true
 };

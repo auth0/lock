@@ -112,5 +112,6 @@ export default {
   mfaSubmitLabel: 'Přihlásit',
   mfaCodeErrorHint: 'Použijte %d čísel',
   forgotPasswordTitle: 'Obnovit heslo',
-  signupTitle: 'Registrovat se'
+  signupTitle: 'Registrovat se',
+  showPassword: 'Zobrazit heslo'
 };

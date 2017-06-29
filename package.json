@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "10.15.1",
+  "version": "10.18.0",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -16,9 +16,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/auth0/lock"
-  },
-  "engines": {
-    "node": ">=6.9.1"
   },
   "main": "lib/index.js",
   "scripts": {
@@ -38,7 +35,7 @@
     "test:jest:watch": "jest --watch --coverage",
     "publish:cdn": "ccu",
     "release": "scripts/release.sh",
-    "i18n:translate": "grunt dist; node scripts/complete-translations.js"
+    "i18n:translate": "grunt dist && node scripts/complete-translations.js"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -52,7 +49,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
     "bump-version": "^0.5.0",
-    "component-cdn-uploader": "auth0/component-cdn-uploader#1.2.0",
+    "component-cdn-uploader": "auth0/component-cdn-uploader#v1.3.0",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "dotenv": "^4.0.0",
@@ -77,8 +74,8 @@
     "lint-staged": "^3.4.0",
     "mochify": "^2.12.0",
     "prettier": "^1.2.2",
-    "react-addons-test-utils": "^15.0.0 || ^16.0.0",
-    "react-test-renderer": "15.4.2",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^15.6.1",
     "semver": "^5.3.0",
     "sinon": "^1.15.4",
     "stylus": "^0.54.5",
@@ -94,17 +91,17 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "8.6.0",
+    "auth0-js": "~8.7.0",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "idtoken-verifier": "^1.0.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
     "password-sheriff": "^1.1.0",
-    "prop-types": "^15.5.7 || ^16.0.0",
-    "react": "^15.3.0 || ^16.0.0",
-    "react-addons-css-transition-group": "^15.3.0 || ^16.0.0",
-    "react-dom": "^15.3.0 || ^16.0.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1 || ^16.0.0",
+    "react-dom": "^15.6.1 || ^16.0.0",
+    "react-transition-group": "^1.2.0",
     "superagent": "^3.3.1",
     "trim": "0.0.1",
     "url-join": "^1.1.0"

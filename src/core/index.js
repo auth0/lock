@@ -153,7 +153,12 @@ function extractUIOptions(id, options) {
     popupOptions: undefined === options.popupOptions ? {} : options.popupOptions,
     primaryColor: typeof primaryColor === 'string' ? primaryColor : undefined,
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin,
-    authButtonsTheme: typeof authButtons === 'object' ? authButtons : {}
+    allowAutocomplete: !!options.allowAutocomplete,
+    authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
+    allowShowPassword: !!options.allowShowPassword,
+    scrollGlobalMessagesIntoView: undefined === options.scrollGlobalMessagesIntoView
+      ? true
+      : !!options.scrollGlobalMessagesIntoView
   });
 }
 
@@ -183,7 +188,10 @@ export const ui = {
   popupOptions: lock => getUIAttribute(lock, 'popupOptions'),
   primaryColor: lock => getUIAttribute(lock, 'primaryColor'),
   authButtonsTheme: lock => getUIAttribute(lock, 'authButtonsTheme'),
-  rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin'))
+  rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin')),
+  allowAutocomplete: m => tget(m, 'allowAutocomplete', getUIAttribute(m, 'allowAutocomplete')),
+  scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
+  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword'))
 };
 
 const { get: getAuthAttribute } = dataFns(['core', 'auth']);
@@ -574,6 +582,12 @@ export function overrideOptions(m, opts) {
 
   if (typeof opts.rememberLastLogin === 'boolean') {
     m = tset(m, 'rememberLastLogin', opts.rememberLastLogin);
+  }
+  if (typeof opts.allowAutocomplete === 'boolean') {
+    m = tset(m, 'allowAutocomplete', opts.allowAutocomplete);
+  }
+  if (typeof opts.allowShowPassword === 'boolean') {
+    m = tset(m, 'allowShowPassword', opts.allowShowPassword);
   }
 
   return m;

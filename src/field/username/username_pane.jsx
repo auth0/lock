@@ -34,6 +34,7 @@ export default class UsernamePane extends React.Component {
 
   render() {
     const { i18n, lock, placeholder, validateFormat } = this.props;
+    const allowAutocomplete = l.ui.allowAutocomplete(lock);
     const value = c.getFieldValue(lock, 'username');
     const usernameValidation = validateFormat ? getUsernameValidation(lock) : {};
 
@@ -62,6 +63,7 @@ export default class UsernamePane extends React.Component {
         isValid={!c.isFieldVisiblyInvalid(lock, 'username')}
         onChange={::this.handleChange}
         placeholder={placeholder}
+        autoComplete={allowAutocomplete}
       />
     );
   }

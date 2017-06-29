@@ -133,7 +133,7 @@ export default class Login extends Screen {
       return null;
     }
 
-    if (isHRDDomain(model, databaseUsernameValue(model))) {
+    if (isHRDDomain(model, databaseUsernameValue(model)) && !l.oidcConformant(model)) {
       return id => startHRD(id, databaseUsernameValue(model));
     }
 

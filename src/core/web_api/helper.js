@@ -110,6 +110,17 @@ export function loginCallback(redirect, cb) {
     : (error, result) => cb(normalizeError(error), result);
 }
 
-export function normalizeAuthParams({ connection_scope, popup, popupOptions, ...authParams }) {
+export function normalizeAuthParams({ popup, popupOptions, ...authParams }) {
   return authParams;
+}
+
+export function webAuthOverrides({ __tenant, __token_issuer } = {}) {
+  if (__tenant || __token_issuer) {
+    return {
+      __tenant,
+      __token_issuer
+    };
+  }
+
+  return null;
 }

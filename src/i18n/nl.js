@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '2-staps verificatie',
   mfaLoginInstructions: 'Vul de verificatiecode gegenereerd door uw mobiele applicatie.',
   mfaSubmitLabel: 'Log in',
-  mfaCodeErrorHint: 'Gebruik %d nummers'
+  mfaCodeErrorHint: 'Gebruik %d nummers',
+  showPassword: 'Laat wachtwoord zien'
 };

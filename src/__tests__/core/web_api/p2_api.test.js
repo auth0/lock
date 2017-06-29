@@ -21,6 +21,21 @@ describe('Auth0APIClient', () => {
   beforeEach(() => {
     jest.resetModules();
   });
+  describe('init', () => {
+    describe('with overwrites', () => {
+      it('should configure WebAuth with the proper overrides', () => {
+        const client = getClient({
+          overrides: {
+            __tenant: 'tenant1',
+            __token_issuer: 'issuer1'
+          }
+        });
+        const mock = getAuth0ClientMock();
+        const { overrides } = mock.WebAuth.mock.calls[0][0];
+        expect(overrides).toEqual({ __tenant: 'tenant1', __token_issuer: 'issuer1' });
+      });
+    });
+  });
   describe('logIn', () => {
     const assertCallWithCallback = (mock, callbackFunction) => {
       expect(mock.calls.length).toBe(1);
@@ -51,8 +66,34 @@ describe('Auth0APIClient', () => {
       });
     });
     describe('with credentials', () => {
-      it('should call client.login', () => {
-        const client = getClient();
+      describe('when `overrides._useCrossAuth` is true', () => {
+        it('should fail when in popup mode', () => {
+          const client = getClient({
+            redirect: false,
+            overrides: {
+              __useCrossAuth: true
+            }
+          });
+          expect(() => client.logIn({ username: 'foo' }, {})).toThrowErrorMatchingSnapshot();
+        });
+        it('should call client.login', () => {
+          const client = getClient({
+            redirect: true,
+            overrides: {
+              __useCrossAuth: true
+            }
+          });
+          const callback = jest.fn();
+          client.logIn({ username: 'foo' }, {}, callback);
+          const mock = getAuth0ClientMock();
+          const loginMock = mock.WebAuth.mock.instances[0].login.mock;
+          assertCallWithCallback(loginMock, callback);
+        });
+      });
+      it('should call client.client.login by default', () => {
+        const client = getClient({
+          redirect: true
+        });
         const callback = jest.fn();
         client.logIn({ username: 'foo' }, {}, callback);
         const mock = getAuth0ClientMock();

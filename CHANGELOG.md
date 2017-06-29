@@ -1,4 +1,63 @@
-#Change Log
+# Change Log
+
+## [v10.18.0](https://github.com/auth0/lock/tree/v10.18.0) (2017-06-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.17.0...v10.18.0)
+
+
+**Added**
+- Add analytics events [\#1036](https://github.com/auth0/lock/pull/1036) ([francocorreasosa](https://github.com/francocorreasosa))
+- Lang Afrikaans South Africa [\#1035](https://github.com/auth0/lock/pull/1035) ([jdunhin](https://github.com/jdunhin))
+- Adding "show password" option [\#1029](https://github.com/auth0/lock/pull/1029) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Upgrade React to fix IE11 issues [\#1039](https://github.com/auth0/lock/pull/1039) ([luisrudge](https://github.com/luisrudge))
+
+**Removed**
+- Removed node version restriction [\#1043](https://github.com/auth0/lock/pull/1043) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixing empty popup on signup [\#1048](https://github.com/auth0/lock/pull/1048) ([luisrudge](https://github.com/luisrudge))
+- Adding a flag for cross-auth [\#1044](https://github.com/auth0/lock/pull/1044) ([luisrudge](https://github.com/luisrudge))
+- Fix custom connection scopes [\#1038](https://github.com/auth0/lock/pull/1038) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v10.17.0](https://github.com/auth0/lock/tree/v10.17.0) (2017-06-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.16.0...v10.17.0)
+
+
+**Added**
+- Added allowAutoComplete ui option [\#1022](https://github.com/auth0/lock/pull/1022) ([luisrudge](https://github.com/luisrudge))
+- When in OIDC mode, enterprise connections always go to IdP page [\#1019](https://github.com/auth0/lock/pull/1019) ([luisrudge](https://github.com/luisrudge))
+- Added Cross Origin Auth support in OIDC mode [\#1013](https://github.com/auth0/lock/pull/1013) ([luisrudge](https://github.com/luisrudge))
+- Emit authorization_error when username/password fails (invalid_user_password) [\#999](https://github.com/auth0/lock/pull/999) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Improved Danish translation [\#1033](https://github.com/auth0/lock/pull/1033) ([denkristoffer](https://github.com/denkristoffer))
+- Scroll to the error message by default [\#1023](https://github.com/auth0/lock/pull/1023) ([m-idler](https://github.com/m-idler))
+- Enabled HTML formatting for flashMessages [\#1017](https://github.com/auth0/lock/pull/1017) ([dariobanfi](https://github.com/dariobanfi))
+- package.json: ~ range allowed for auth0-js dep [\#1015](https://github.com/auth0/lock/pull/1015) ([lexaurin](https://github.com/lexaurin))
+
+**Fixed**
+- Removed extra scroll on mobile view [\#1031](https://github.com/auth0/lock/pull/1031) ([beneliflo](https://github.com/beneliflo))
+- Fixing tooltip error in the email pane [\#1030](https://github.com/auth0/lock/pull/1030) ([luisrudge](https://github.com/luisrudge))
+- Fix react-addons-css-transition-group issue [\#1001](https://github.com/auth0/lock/pull/1001) ([eoinmurray](https://github.com/eoinmurray))
+- Fixed overrides sent to auth0.js [\#997](https://github.com/auth0/lock/pull/997) ([sandrinodimattia](https://github.com/sandrinodimattia))
+
+
+## [v10.16.0](https://github.com/auth0/lock/tree/v10.16.0) (2017-05-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.15.1...v10.16.0)
+
+
+**Added**
+- Add form method [\#993](https://github.com/auth0/lock/pull/993) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Update badge location for better performance and bundle max-age changes [\#995](https://github.com/auth0/lock/pull/995) ([ramasilveyra](https://github.com/ramasilveyra))
+
+**Fixed**
+- Fix long header title and Error messages overflow [\#990](https://github.com/auth0/lock/pull/990) ([beneliflo](https://github.com/beneliflo))
+- Fix grammar mistake RU [\#988](https://github.com/auth0/lock/pull/988) ([uladar](https://github.com/uladar))
+
 
 ## [v10.15.1](https://github.com/auth0/lock/tree/v10.15.1) (2017-04-25)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.15.0...v10.15.1)
