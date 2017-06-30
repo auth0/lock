@@ -73,7 +73,7 @@ export default {
     numbers: 'Nommers (i.e. 0-9)',
     lengthAtLeast: 'Ten minste %d karakters lank',
     lowerCase: 'kleinletters (a-z)',
-    shouldContain: 'Moet die volgende inhê:',
+    shouldContain: 'Moet die volgende inhe:',
     specialCharacters: 'Spesiale karakters (e.g. !@#$%^&*)',
     upperCase: 'Hoofletters (A-Z)'
   },
