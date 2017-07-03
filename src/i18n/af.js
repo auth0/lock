@@ -103,7 +103,7 @@ export default {
   usernameInputPlaceholder: 'jou gebruikersnaam',
   usernameOrEmailInputPlaceholder: 'gebruikersnaam en e-pos',
   title: 'Auth0',
-  welcome: 'Welkom %s!',
+  welcome: '%s!',
   windowsAuthInstructions: 'Jy konnekteer van jou korporatiewe netwerk&hellip;',
   windowsAuthLabel: 'Windows Goedkeuring',
   mfaInputPlaceholder: 'Kode',
