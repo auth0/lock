@@ -109,6 +109,6 @@ export default {
   mfaInputPlaceholder: 'Kode',
   mfaLoginTitle: '2-Stap Goedkeuring',
   mfaLoginInstructions: 'Vul asseblief die kode in wat deur jou toestel geskep is.',
-  mfaSubmitLabel: 'Teken in',
+  mfaSubmitLabel: 'Gaan voort',
   mfaCodeErrorHint: 'Gebruik %d nommers'
 };
