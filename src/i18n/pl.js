@@ -112,5 +112,6 @@ export default {
   mfaLoginTitle: '2 Weryfikacja dwuetapowa',
   mfaLoginInstructions: 'Podaj kod weryfikacyjny wygenerowany przez aplikację na telefon komórkowy.',
   mfaSubmitLabel: 'Zaloguj Się',
-  mfaCodeErrorHint: 'Użyj %d numery'
+  mfaCodeErrorHint: 'Użyj %d numery',
+  showPassword: 'Pokaż hasło'
 };

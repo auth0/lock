@@ -14,17 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.17.0/lock.min.js"></script>
-```
-
-From [bower](http://bower.io)
-
-```sh
-bower install auth0-lock
-```
-
-```html
-<script src="bower_components/auth0-lock/build/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.18.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -194,6 +184,8 @@ The appearance of the widget and the mechanics of authentication can be customiz
   + **text {String}**: The text to show.
 - **allowAutocomplete {Boolean}**: Determines whether or not the the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
 - **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
+- **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
+
 
 #### Theming options
 
@@ -474,3 +466,5 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [license-url]: #license
 [downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/auth0-lock
+[david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
+[david-url]: https://david-dm.org/auth0/lock

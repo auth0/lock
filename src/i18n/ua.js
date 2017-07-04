@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -109,5 +112,6 @@ export default {
   mfaLoginTitle: 'Дворівнева перевірка',
   mfaLoginInstructions: 'Будь ласка, введіть перевірчий код що був згенерований мобільним додатком.',
   mfaSubmitLabel: 'Авторизуватися',
-  mfaCodeErrorHint: 'Використовуйте %d номери'
+  mfaCodeErrorHint: 'Використовуйте %d номери',
+  showPassword: 'Show password'
 };
