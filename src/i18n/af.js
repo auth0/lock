@@ -50,7 +50,7 @@ export default {
   databaseEnterpriseAlternativeLoginInstructions: 'of',
   databaseSignUpInstructions: '',
   databaseAlternativeSignUpInstructions: 'of',
-  emailInputPlaceholder: 'jou@epos.co.za',
+  emailInputPlaceholder: 'jou@voorbeeld.com',
   enterpriseLoginIntructions: 'Teken in met jou korporatiewe besonderhede.',
   enterpriseActiveLoginInstructions: 'Vul asseblief jou korporatiewe besonderhede in by %s.',
   failedLabel: 'Misluk!',
