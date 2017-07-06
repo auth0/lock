@@ -24,6 +24,19 @@ export default class EmailPane extends React.Component {
     swap(updateEntity, 'lock', l.id(lock), setEmail, e.target.value);
   }
 
+  handleBlur() {
+    const { lock } = this.props;
+    const connectionResolver = l.connectionResolver(lock);
+    if (!connectionResolver) {
+      return;
+    }
+    const { connections, id } = lock.get('client').toJS();
+    const context = { connections, id };
+    connectionResolver(c.getFieldValue(lock, 'email'), context, resolvedConnection => {
+      swap(updateEntity, 'lock', l.id(lock), m => l.setResolvedConnection(m, resolvedConnection));
+    });
+  }
+
   render() {
     const { i18n, lock, placeholder, forceInvalidVisibility = false } = this.props;
     const allowAutocomplete = l.ui.allowAutocomplete(lock);
@@ -42,6 +55,7 @@ export default class EmailPane extends React.Component {
         invalidHint={invalidHint}
         isValid={isValid}
         onChange={::this.handleChange}
+        onBlur={::this.handleBlur}
         placeholder={placeholder}
         autoComplete={allowAutocomplete}
       />
