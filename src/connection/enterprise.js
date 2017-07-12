@@ -147,6 +147,10 @@ export function toggleHRD(m, email) {
     m = setUsername(m, username, 'username', false);
     m = tset(m, 'hrdEmail', email);
   } else {
+    const hrdEmail = tget(m, 'hrdEmail');
+    if (hrdEmail) {
+      m = setUsername(m, hrdEmail, 'email', false);
+    }
     m = tremove(m, 'hrdEmail');
   }
 
