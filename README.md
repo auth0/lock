@@ -308,6 +308,23 @@ var options = {
 - **configurationBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
 - **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
 - **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback url after the user authentication. Defaults to `true`.
+- **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context` and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the username/email input's `onBlur` event, so keep it simple and fast.
+
+```js
+var options = {
+  connectionResolver: function (username, context, cb) {
+    var domain = username.includes('@') && username.split('@')[1];
+    if (domain) {
+      // If the username is test@auth0.com, the connection used will be the `auth0.com` connection.
+      // Make sure you have a database connection with the name `auth0.com`.
+      cb({ type: 'database', name: domain });
+    } else {
+      // Use the default approach to figure it out the connection
+      cb(null);
+    }
+  }
+}
+```
 
 #### Language Dictionary Specification
 

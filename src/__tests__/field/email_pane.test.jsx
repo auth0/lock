@@ -13,7 +13,12 @@ describe('EmailPane', () => {
     i18n: {
       str: (...keys) => keys.join(',')
     },
-    lock: {},
+    lock: Immutable.fromJS({
+      client: {
+        connections: 'connections',
+        id: 'id'
+      }
+    }),
     placeholder: 'placeholder'
   };
 
@@ -40,7 +45,8 @@ describe('EmailPane', () => {
       ui: {
         avatar: () => false,
         allowAutocomplete: () => false
-      }
+      },
+      connectionResolver: () => undefined
     }));
 
     jest.mock('avatar', () => ({
@@ -112,5 +118,60 @@ describe('EmailPane', () => {
     const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('does nothing on blur when there is no custom `connectionResolver`', () => {
+    let EmailPane = getComponent();
+
+    const wrapper = mount(<EmailPane {...defaultProps} />);
+    const props = extractPropsFromWrapper(wrapper);
+    props.onBlur({ target: { value: 'newUser@example.com' } });
+
+    const { mock } = require('store/index').swap;
+    expect(mock.calls.length).toBe(0);
+  });
+  describe('with a custom `connectionResolver`', () => {
+    let connectionResolverMock;
+    let setResolvedConnectionMock;
+    beforeEach(() => {
+      connectionResolverMock = jest.fn();
+      setResolvedConnectionMock = jest.fn();
+      require('core/index').connectionResolver = () => connectionResolverMock;
+      require('core/index').setResolvedConnection = setResolvedConnectionMock;
+    });
+    it('calls `connectionResolver` onBlur', () => {
+      let EmailPane = getComponent();
+
+      const wrapper = mount(<EmailPane {...defaultProps} />);
+      const props = extractPropsFromWrapper(wrapper);
+      props.onBlur({ target: { value: 'newUser@example.com' } });
+
+      const { mock } = connectionResolverMock;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
+    });
+    it('calls `swap` in the `connectionResolver` callback', () => {
+      let EmailPane = getComponent();
+
+      const wrapper = mount(<EmailPane {...defaultProps} />);
+      const props = extractPropsFromWrapper(wrapper);
+      props.onBlur({ target: { value: 'newUser@example.com' } });
+      connectionResolverMock.mock.calls[0][2]('resolvedConnection');
+      const { mock } = require('store/index').swap;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
+    });
+    it.only('`swap` calls `setResolvedConnection`', () => {
+      let EmailPane = getComponent();
+
+      const wrapper = mount(<EmailPane {...defaultProps} />);
+      const props = extractPropsFromWrapper(wrapper);
+      props.onBlur({ target: { value: 'newUser@example.com' } });
+      connectionResolverMock.mock.calls[0][2]('resolvedConnection');
+      require('store/index').swap.mock.calls[0][3]('model');
+
+      const { mock } = setResolvedConnectionMock;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
+    });
   });
 });

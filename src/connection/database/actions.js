@@ -20,9 +20,13 @@ export function logIn(id, needsMFA = false) {
   const m = read(getEntity, 'lock', id);
   const usernameField = databaseLogInWithEmail(m) ? 'email' : 'username';
   const username = c.getFieldValue(m, usernameField);
-
+  const customResolvedConnection = l.resolvedConnection(m);
+  let connectionName = databaseConnectionName(m);
+  if (customResolvedConnection) {
+    connectionName = customResolvedConnection.name;
+  }
   const params = {
-    connection: databaseConnectionName(m),
+    connection: connectionName,
     username: username,
     password: c.getFieldValue(m, 'password')
   };
@@ -167,8 +171,11 @@ export function resetPassword(id) {
 function resetPasswordSuccess(id) {
   const m = read(getEntity, 'lock', id);
   if (hasScreen(m, 'login')) {
-    swap(updateEntity, 'lock', id, m =>
-      setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
+    swap(
+      updateEntity,
+      'lock',
+      id,
+      m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
     );
 
     // TODO: should be handled by box

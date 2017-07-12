@@ -23,7 +23,7 @@ export default class EmailInput extends React.Component {
   }
 
   render() {
-    const { invalidHint, isValid, onChange, autoComplete, ...props } = this.props;
+    const { invalidHint, isValid, autoComplete, ...props } = this.props;
     const { focused } = this.state;
 
     return (
@@ -61,8 +61,11 @@ export default class EmailInput extends React.Component {
     this.setState({ focused: true });
   }
 
-  handleBlur() {
+  handleBlur(e) {
     this.setState({ focused: false });
+    if (this.props.onBlur) {
+      this.props.onBlur(e);
+    }
   }
 }
 
