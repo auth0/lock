@@ -1,5 +1,18 @@
 # Change Log
 
+## [v10.19.0](https://github.com/auth0/lock/tree/v10.19.0) (2017-07-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.18.0...v10.19.0)
+
+
+**Added**
+- Added `oidcConformant` entry to the readme [\#1054](https://github.com/auth0/lock/pull/1054) ([luisrudge](https://github.com/luisrudge))
+- Added a custom connection resolver option [\#1052](https://github.com/auth0/lock/pull/1052) ([luisrudge](https://github.com/luisrudge))
+- Added Korean translation [\#1051](https://github.com/auth0/lock/pull/1051) ([couldseeme](https://github.com/couldseeme))
+
+**Fixed**
+- Set the username to the previously used email when toggling hrd [\#1056](https://github.com/auth0/lock/pull/1056) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.18.0](https://github.com/auth0/lock/tree/v10.18.0) (2017-06-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.17.0...v10.18.0)
 
@@ -309,7 +322,7 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 **Fixed**
 - removed whitespace from input name [\#764](https://github.com/auth0/lock/pull/764) ([dangler](https://github.com/dangler))
 - fixed typo [\#762](https://github.com/auth0/lock/pull/762) ([dev101](https://github.com/dev101))
-# Change Log
+
 
 ## [v10.7.3](https://github.com/auth0/lock/tree/v10.7.3) (2016-12-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.7.2...v10.7.3)

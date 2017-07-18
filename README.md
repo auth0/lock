@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.18.0/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.19.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
