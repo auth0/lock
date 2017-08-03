@@ -8,9 +8,12 @@ import webAPI from '../../core/web_api';
 import sync from '../../sync';
 
 export function initPasswordless(m, opts) {
+  if (opts.auth && opts.auth.redirect === false) {
+    throw new Error('Popup mode is not supported in Passwordless');
+  }
   // TODO: validate opts
 
-  const send = typeof opts.sendCode === 'boolean' && opts.sendCode ? 'code' : 'link';
+  const send = !opts.passwordlessMethod || opts.passwordlessMethod === 'code' ? 'code' : 'link';
 
   m = initNS(m, Map({ send: send }));
   if (opts.defaultLocation && typeof opts.defaultLocation === 'string') {
