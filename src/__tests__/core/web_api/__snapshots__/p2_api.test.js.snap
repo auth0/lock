@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
+exports[`Auth0APIClient getUserCountry should call getUserCountry 1`] = `
+Array [
+  "cb",
+]
+`;
+
+exports[`Auth0APIClient logIn with credentials should call client.client.login by default 1`] = `
 Object {
   "nonce": undefined,
   "realm": undefined,
@@ -26,4 +32,22 @@ Object {
   "sso": undefined,
   "state": undefined,
 }
+`;
+
+exports[`Auth0APIClient passwordlessStart should call client.passwordlessStart 1`] = `
+Array [
+  Object {
+    "foo": "bar",
+  },
+  [Function],
+]
+`;
+
+exports[`Auth0APIClient passwordlessVerify should call client.passwordlessLogin 1`] = `
+Array [
+  Object {
+    "foo": "bar",
+  },
+  [Function],
+]
 `;

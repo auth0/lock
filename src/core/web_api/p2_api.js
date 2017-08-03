@@ -77,8 +77,12 @@ class Auth0APIClient {
     this.client.changePassword(options, cb);
   }
 
-  startPasswordless(options, cb) {
-    this.client.startPasswordless(options, err => cb(normalizeError(err)));
+  passwordlessStart(options, cb) {
+    this.client.passwordlessStart(options, err => cb(normalizeError(err)));
+  }
+
+  passwordlessVerify(options, cb) {
+    this.client.passwordlessLogin(options, err => cb(normalizeError(err)));
   }
 
   parseHash(hash = '', cb) {
@@ -106,7 +110,7 @@ class Auth0APIClient {
   }
 
   getUserCountry(cb) {
-    return this.client.getUserCountry(cb);
+    return this.client.client.getUserCountry(cb);
   }
 }
 

@@ -10,7 +10,8 @@ const getClient = options => {
     loginWithCredentials: jest.fn()
   };
   client.client.client = {
-    loginWithResourceOwner: jest.fn()
+    loginWithResourceOwner: jest.fn(),
+    getUserCountry: jest.fn()
   };
   client.client.redirect = {
     loginWithCredentials: jest.fn()
@@ -198,5 +199,26 @@ describe('Auth0LegacyAPIClient', () => {
         state: '/path?one=two&three=3#4'
       });
     });
+  });
+  it('passwordlessStart should call client.passwordlessStart', () => {
+    const client = getClient({});
+    client.passwordlessStart({ foo: 'bar' }, () => {});
+    const { mock } = client.client.passwordlessStart;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('passwordlessVerify should call client.passwordlessVerify', () => {
+    const client = getClient({});
+    client.passwordlessVerify({ foo: 'bar' }, () => {});
+    const { mock } = client.client.passwordlessVerify;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('getUserCountry should call getUserCountry', () => {
+    const client = getClient({});
+    client.getUserCountry('cb');
+    const { mock } = client.client.client.getUserCountry;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
   });
 });

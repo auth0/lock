@@ -10,7 +10,8 @@ const getClient = (options = {}) => {
     authorize: jest.fn()
   };
   client.client.client = {
-    login: jest.fn()
+    login: jest.fn(),
+    getUserCountry: jest.fn()
   };
   return client;
 };
@@ -83,5 +84,26 @@ describe('Auth0APIClient', () => {
         assertCallWithCallback(loginMock, callback);
       });
     });
+  });
+  it('passwordlessStart should call client.passwordlessStart', () => {
+    const client = getClient({});
+    client.passwordlessStart({ foo: 'bar' }, () => {});
+    const { mock } = client.client.passwordlessStart;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('passwordlessVerify should call client.passwordlessLogin', () => {
+    const client = getClient({});
+    client.passwordlessVerify({ foo: 'bar' }, () => {});
+    const { mock } = client.client.passwordlessLogin;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('getUserCountry should call getUserCountry', () => {
+    const client = getClient({});
+    client.getUserCountry('cb');
+    const { mock } = client.client.client.getUserCountry;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
   });
 });

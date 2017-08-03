@@ -52,4 +52,17 @@ export const setURL = url => {
       writable: true
     });
   });
+  removeDataFromProps(
+    wrapper
+      .find('div')
+      .at(index)
+      .props()
+  );
+};
+
+export const expectMockToMatch = ({ mock }, numberOfCalls) => {
+  expect(mock.calls.length).toBe(numberOfCalls);
+  for (var i = 0; i < numberOfCalls; i++) {
+    expect(mock.calls[i]).toMatchSnapshot();
+  }
 };

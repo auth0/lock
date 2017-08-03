@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Auth0LegacyAPIClient getUserCountry should call getUserCountry 1`] = `
+Array [
+  "cb",
+]
+`;
+
 exports[`Auth0LegacyAPIClient logIn with credentials should call loginWithCredentials 1`] = `
 Object {
   "nonce": undefined,
@@ -65,4 +71,22 @@ Object {
   "state": undefined,
   "username": "foo",
 }
+`;
+
+exports[`Auth0LegacyAPIClient passwordlessStart should call client.passwordlessStart 1`] = `
+Array [
+  Object {
+    "foo": "bar",
+  },
+  [Function],
+]
+`;
+
+exports[`Auth0LegacyAPIClient passwordlessVerify should call client.passwordlessVerify 1`] = `
+Array [
+  Object {
+    "foo": "bar",
+  },
+  [Function],
+]
 `;

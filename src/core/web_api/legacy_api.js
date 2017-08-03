@@ -83,8 +83,12 @@ class Auth0LegacyAPIClient {
     this.client.changePassword(options, cb);
   }
 
-  startPasswordless(options, cb) {
-    this.client.startPasswordless(options, err => cb(normalizeError(err)));
+  passwordlessStart(options, cb) {
+    this.client.passwordlessStart(options, err => cb(normalizeError(err)));
+  }
+
+  passwordlessVerify(options, authParams, cb) {
+    this.client.passwordlessVerify(options, err => cb(normalizeError(err)));
   }
 
   // for legacy, we should not verify the id_token so we reimplemented it here
@@ -189,7 +193,7 @@ class Auth0LegacyAPIClient {
   }
 
   getUserCountry(cb) {
-    return this.client.getUserCountry(cb);
+    return this.client.client.getUserCountry(cb);
   }
 }
 

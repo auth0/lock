@@ -22,10 +22,11 @@
       defaultDatabaseConnection: 'acme',
       prefill: {
         email: 'johnfoo@gmail.com'
-      }
+      },
+      passwordlessMethod: 'code'
     };
 
-    const lock = new Auth0Lock(cid, domain, options);
+    const lock = new Auth0LockPasswordless(cid, domain, options);
     window.lock = lock;
 
     lock.on("authenticated", function (authResult) {

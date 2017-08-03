@@ -38,14 +38,15 @@ class Passwordless {
   }
 
   render(m) {
+    //if there's an error, we should show the error screen no matter what.
+    if (l.hasStopped(m)) {
+      return new ErrorScreen();
+    }
+
     // TODO: remove the detail about the loading pane being pinned,
     // sticky screens should be handled at the box module.
     if (!isDone(m) || m.get('isLoadingPanePinned')) {
       return new LoadingScreen();
-    }
-
-    if (l.hasStopped(m)) {
-      return new ErrorScreen();
     }
 
     if (isEmail(m)) {

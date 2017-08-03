@@ -18,6 +18,8 @@ import * as i18n from './i18n';
 
 import { go } from './sync';
 
+import css from '../css/index.styl';
+
 export default class Base extends EventEmitter {
   constructor(clientID, domain, options = {}, engine) {
     if (typeof clientID != 'string') {
@@ -181,5 +183,24 @@ export default class Base extends EventEmitter {
   runHook(str, m, ...args) {
     if (typeof this.engine[str] != 'function') return m;
     return this.engine[str](m, ...args);
+  }
+}
+
+export function injectStyles() {
+  const styleId = 'auth0-lock-style';
+  let style = document.getElementById(styleId);
+
+  if (!style) {
+    const head = document.getElementsByTagName('head')[0];
+    style = document.createElement('style');
+    style.type = 'text/css';
+    style.setAttribute('id', styleId);
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.innerHTML = css;
   }
 }
