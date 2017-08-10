@@ -101,7 +101,7 @@ export default {
   ssoEnabled: 'Kertakirjautuminen toiminnassa',
   submitLabel: 'Lähetä',
   unrecoverableError: 'Jotain meni vikaan.<br />Ole hyvä ja ota yhteyttä tekniseen tukeen.',
-  usernameFormatErrorHint: 'Käytä %d-%d kirjaimia, numeroita ja "_"',
+  usernameFormatErrorHint: 'Käytä %d-%d kirjaimia, numeroita ja seuraavia merkkejä: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'käyttäjätunnuksesi',
   usernameOrEmailInputPlaceholder: 'käyttäjätunnus/sähköposti',
   title: 'Auth0',

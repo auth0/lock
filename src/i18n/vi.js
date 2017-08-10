@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Đăng nhập 1 lần đã được kích hoạt',
   submitLabel: 'Gửi',
   unrecoverableError: 'Có lỗi hệ thống xảy ra.<br />Vui lòng liên hệ bộ phận kỹ thuật để được giúp đỡ.',
-  usernameFormatErrorHint: 'Chỉ sử dụng %d-%d kí tự, số và "_"',
+  usernameFormatErrorHint: 'Sử dụng các ký tự %d____%d, các con số và các ký tự sau: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Tên tài khoản',
   usernameOrEmailInputPlaceholder: 'Tên tài khoản/Email',
   title: 'Auth0',

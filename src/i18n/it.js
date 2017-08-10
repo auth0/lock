@@ -96,7 +96,7 @@ export default {
   ssoEnabled: 'Single Sign-On abilitati',
   submitLabel: 'Invio',
   unrecoverableError: 'Qualcosa è andato storto.<br />Si prega di contattare il supporto tecnico.',
-  usernameFormatErrorHint: 'Si prega di utilizzare %d-%d lettere, numeri e "_"',
+  usernameFormatErrorHint: 'Usa %d-%d lettere, numeri ei seguenti caratteri: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Nome utente',
   usernameOrEmailInputPlaceholder: 'Nome utente o email',
   title: 'Auth0',

@@ -101,7 +101,7 @@ export default {
   ssoEnabled: 'Single Sign On povolené',
   submitLabel: 'Odoslať',
   unrecoverableError: 'Niečo sa pokazilo.<br />Prosím kontaktujte technickú podporu.',
-  usernameFormatErrorHint: 'Použite %d-%d písmen, číslic a "_"',
+  usernameFormatErrorHint: 'Použite %d-%d písmená, čísla a nasledujúce znaky: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Vaše užívateľské meno',
   usernameOrEmailInputPlaceholder: 'užívateľské meno/e-mail',
   title: 'Auth0',

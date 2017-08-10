@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Єдиний вхід включений',
   submitLabel: 'Відправити',
   unrecoverableError: 'Йой! Сталася непередбачувана помилка.<br />Будь ласка, зверніться в службу технічної підтримки.',
-  usernameFormatErrorHint: 'Використовуйте %d-%d літер, цифр і "_"',
+  usernameFormatErrorHint: 'Use %d-%d letters, numbers and the following characters: "_", ".", "+", "-"',
   usernameInputPlaceholder: "Ваше ім'я користувача",
   usernameOrEmailInputPlaceholder: 'електронної пошти/користувача',
   title: 'Auth0',

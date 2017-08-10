@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Authentification unique activée',
   submitLabel: 'Envoyer',
   unrecoverableError: 'Un problème est survenu.<br />Veuillez contacter l’assistance technique.',
-  usernameFormatErrorHint: 'Utilisez entre %d-%d lettres, chiffres et « _ »',
+  usernameFormatErrorHint: 'Utilisez %d-%d lettres, chiffres et les caractères suivants: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'votre nom d’utilisateur',
   usernameOrEmailInputPlaceholder: 'nom d’utilisateur/adresse de messagerie',
   title: 'Auth0',

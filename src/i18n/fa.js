@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'ورود منفرد فعال است',
   submitLabel: 'ثبت',
   unrecoverableError: 'خطایی رخ داده است.<br />با پشتیبانی تماس بگیرید.',
-  usernameFormatErrorHint: 'از %d-%d حروف, اعداد و "_" استفاده کنید',
+  usernameFormatErrorHint: '%d-%d حروف، اعداد و کاراکترهای زیر را استفاده کنید: "_"، "."، "+"، "-"',
   usernameInputPlaceholder: 'نام کاربری شما',
   usernameOrEmailInputPlaceholder: 'نام کاربری/ایمیل',
   title: 'Auth0',

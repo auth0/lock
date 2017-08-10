@@ -1,10 +1,13 @@
-export default  {
-  error:{
-    forgotPassword:{
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
+export default {
+  error: {
+    forgotPassword: {
       too_many_requests: 'Ai depășit limita de introducere a parolei. Avem rugămintea să așteptați până la următoarea încercare.',
       'lock.fallback': 'Ne pare rău, a apărut o eroare în procesul de recuperare a parolei.'
     },
-    login:{
+    login: {
       blocked_user: 'Utilizatorul este blocat.',
       invalid_user_password: 'Date de conectare greșite.',
       'lock.fallback': 'Ne pare rău, a apărut o eroare în procesul de conectare.',
@@ -22,12 +25,12 @@ export default  {
       session_missing: 'Nu am putut finaliza procesul de autentificare. Avem rugămintea să încercați după ce închideți toate ferestrele deschise.',
       'hrd.not_matching_email': 'Vă rugăm să folosiți adresa de email corporate pentru conectare.'
     },
-    passwordless:{
+    passwordless: {
       'bad.email': 'Adresa de email este invalidă',
       'bad.phone_number': 'Numărul de telefon este invalid',
       'lock.fallback': 'Ne pare rău, ceva nu a funcționat'
     },
-    signUp:{
+    signUp: {
       invalid_password: 'Parolă invalidă.',
       'lock.fallback': 'Ne pare rău, a apărut o eroare în procesul de înregistrare.',
       password_dictionary_error: 'Parola este prea comună.',
@@ -37,7 +40,7 @@ export default  {
       username_exists: 'Nume utilizator existent.'
     }
   },
-  success:{
+  success: {
     logIn: 'Vă mulțumim pentru înregistrare.',
     forgotPassword: 'V-am transmis un email pentru resetarea parolei.',
     magicLink: 'V-am trimis un email pentru a vă înregistra în<br />la %s.',
@@ -65,7 +68,7 @@ export default  {
   loginWithLabel: 'Conectat cu %s',
   notYourAccountAction: 'Nu este contul Dvs?',
   passwordInputPlaceholder: 'parola Dvs',
-  passwordStrength:{
+  passwordStrength: {
     containsAtLeast: 'Includeți cel puțin unul %d din caracterele:',
     identicalChars: 'Nu mai mult de %d caractere identice (e.x., "%s" nu sunt permise)',
     nonEmpty: 'Este necesară o parolă pentru logare',
@@ -99,7 +102,7 @@ export default  {
   ssoEnabled: ' Inregistrare activată',
   submitLabel: 'Trimite',
   unrecoverableError: 'Ceva nu a mers.<br />Avem rugămintea să contacați serviciul de suport tehnic.',
-  usernameFormatErrorHint: 'Utilizează litere %d-%d, numere și "_"',
+  usernameFormatErrorHint: 'Uporabite %d-%d črke, številke in naslednje znake: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'numele tău de utilizator',
   usernameOrEmailInputPlaceholder: 'utilizator/email',
   title: 'Auth0',

@@ -101,7 +101,7 @@ export default {
   ssoEnabled: 'シングルサインオンが有効になっています',
   submitLabel: '送信',
   unrecoverableError: 'エラーが発生しました。<br />サポートへご連絡ください。',
-  usernameFormatErrorHint: '%d-%d の文字列、数字、"_"が使用できます。',
+  usernameFormatErrorHint: '%d-%d文字、数字、および以下の文字を使用します： "_"、 "。"、 "+"、 " - "',
   usernameInputPlaceholder: 'ユーザー',
   usernameOrEmailInputPlaceholder: 'ユーザー/メールアドレス',
   title: 'Auth0',
