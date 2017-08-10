@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`field/username getUsernameValidation() returns database connection's username validation 1`] = `
+Object {
+  "max": 2,
+  "min": 1,
+}
+`;
+
+exports[`field/username setUsername() calls setField 1`] = `
+Array [
+  Object {
+    "validation": null,
+  },
+  "username",
+  "a-username",
+  [Function],
+]
+`;
