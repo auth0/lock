@@ -96,7 +96,7 @@ export default {
   ssoEnabled: 'Single Sign-On aktiviert',
   submitLabel: 'Einreichen',
   unrecoverableError: 'Etwas ist schief gelaufen.<br />Bitte kontaktieren Sie den technischen Support.',
-  usernameFormatErrorHint: 'Verwenden Sie %d-%d Buchstaben, Zahlen und "_"',
+  usernameFormatErrorHint: 'Verwenden Sie %d-%d Buchstaben, Zahlen und die folgenden Zeichen: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'dein Benutzername',
   usernameOrEmailInputPlaceholder: 'Benutzername/E-Mail',
   title: 'Auth0',

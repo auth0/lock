@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Egyszeri bejelentkezés engedélyezve',
   submitLabel: 'Mehet',
   unrecoverableError: 'Valaim hiba történt.<br />Kérlek, lépj kapcsolatba a műszaki ügyfélszolgálattal.',
-  usernameFormatErrorHint: 'Használj %d-%d betűt, számot és "_"-t',
+  usernameFormatErrorHint: 'Használj %d-%d betűket, számokat és a következő karaktereket: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'felhasználóneved',
   usernameOrEmailInputPlaceholder: 'felhasználónév/e-mail',
   title: 'Auth0',

@@ -160,7 +160,7 @@ describe('EmailPane', () => {
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
     });
-    it.only('`swap` calls `setResolvedConnection`', () => {
+    it('`swap` calls `setResolvedConnection`', () => {
       let EmailPane = getComponent();
 
       const wrapper = mount(<EmailPane {...defaultProps} />);

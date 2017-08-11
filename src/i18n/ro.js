@@ -1,10 +1,13 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
-  error:{
-    forgotPassword:{
+  error: {
+    forgotPassword: {
       too_many_requests: 'Dosegli ste omejitev tevila poskusov spremembe gesla. Pred ponovnim poskusom morate poèakati.',
       'lock.fallback': 'al je pri lo do napake pri zahtevi za spremembo gesla.'
     },
-    login:{
+    login: {
       blocked_user: 'Uporabnik je blokiran.',
       invalid_user_password: 'Napaèni podatki za prijavo.',
       'lock.fallback': 'al je pri prijavi pri lo do napake.',
@@ -22,12 +25,12 @@ export default {
       session_missing: 'Zahteve za avtentikacijo ni bilo mo no izpolniti. Zaprite vsa pogovorna okna in poskusite ponovno.',
       'hrd.not_matching_email': 'Za prijavo uporabite svoj slu beni e-po tni naslov.'
     },
-    passwordless:{
+    passwordless: {
       'bad.email': 'Napaèen e-po tni naslov',
       'bad.phone_number': 'Napaèna telefonska tevilka',
       'lock.fallback': 'al je pri lo do napake'
     },
-    signUp:{
+    signUp: {
       invalid_password: 'Napaèno geslo.',
       'lock.fallback': 'al je pri lo do napake pri poskusu prijave.',
       password_dictionary_error: 'Geslo je preveè splo no.',
@@ -37,7 +40,7 @@ export default {
       username_exists: 'Uporabni ko ime e obstaja.'
     }
   },
-  success:{
+  success: {
     logIn: 'Hvala za prijavo.',
     forgotPassword: 'Poslali smo vam e-po to za ponastavitev gesla.',
     magicLink: 'Poslali smo vam povezavo za prijavo v<br /> %s.',
@@ -65,7 +68,7 @@ export default {
   loginWithLabel: 'Prijava v %s',
   notYourAccountAction: 'Ni va raèun?',
   passwordInputPlaceholder: 'va e geslo',
-  passwordStrength:{
+  passwordStrength: {
     containsAtLeast: 'Vsebovati mora vsaj %d naslednjih %d vrst znakov:',
     identicalChars: 'Najveè %d enakih znakov zaporedoma (npr. "%s" ni dovoljeno)',
     nonEmpty: 'Geslo ne sme biti brez znakov',
@@ -99,7 +102,7 @@ export default {
   ssoEnabled: 'Omogoèen posamezen vpis',
   submitLabel: 'Po lji',
   unrecoverableError: 'Pri lo je do napake.<br />Obrnite se na tehnièno pomoè.',
-  usernameFormatErrorHint: 'Uporabite èrke %d-%d, tevilke in "_"',
+  usernameFormatErrorHint: 'Folosiți %d-%d literele, numerele și următoarele caractere: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'va e uporabni ko ime',
   usernameOrEmailInputPlaceholder: 'uporabni ko ime/e-po ta',
   title: 'Auth0',

@@ -101,7 +101,7 @@ export default {
   ssoEnabled: "Activat l'inici de sessió únic",
   submitLabel: 'Envia',
   unrecoverableError: 'Hi ha hagut un error.<br />Contacteu amb el suport tècnic.',
-  usernameFormatErrorHint: 'Useu lletres de %d a %d, xifres i "_"',
+  usernameFormatErrorHint: 'Utilitzeu %d-%d lletres, números i els següents caràcters: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'el seu usuari',
   usernameOrEmailInputPlaceholder: 'usuari/email',
   title: 'Auth0',

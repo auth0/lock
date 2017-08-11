@@ -99,7 +99,7 @@ export default {
   ssoEnabled: '單一簽入已啟用',
   submitLabel: '送出',
   unrecoverableError: '發生錯誤。<br />請聯絡技術人員。',
-  usernameFormatErrorHint: '請使用 %d-%d 個字母、數字或 "_" 的組合',
+  usernameFormatErrorHint: '使用 %d-%d 字母，數字和以下字符：“_”，“。”，“+”，“ - ”',
   usernameInputPlaceholder: '您的帳號',
   usernameOrEmailInputPlaceholder: '帳號 / 電子郵件信箱',
   title: 'Auth0',

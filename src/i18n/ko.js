@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -16,10 +19,11 @@ export default {
       'lock.unauthorized': '권한이 없습니다. 다시 시도해 주세요.',
       'lock.mfa_registration_required': '다단계 인증이 필요하지만, 디바이스가 등록되어 있지 않습니다. 먼저 디바이스를 등록하여 주세요.',
       'lock.mfa_invalid_code': '유효하지 않은 코드입니다. 다시 시도해 주세요.',
-      password_change_required: '처음 로그인하거나, 또는 비밀번호의 기한이 만료되어 비밀번호를 갱신해야 합니다.', // TODO: verify error code
+      password_change_required: '처음 로그인하거나, 또는 비밀번호의 기한이 만료되어 비밀번호를 갱신해야 합니다.',
       password_leaked: '본 계정은 외부 접근으로 인한 회원 정보 유출이 우려되어, 보안 상의 문제로 비활성화되었습니다. 계정을 다시 활성화하는 방법은 자동 전송된 이메일에 안내되어 있습니다.',
       too_many_attempts: '본 계정은 단시간에 복수의 로그인 시도가 감지되어 차단되었습니다.',
-      session_missing: '인증 요청이 완료되지 않았습니다. 열려있는 모든 다이얼로그 창을 닫고 다시 시도해 주시기 바랍니다.'
+      session_missing: '인증 요청이 완료되지 않았습니다. 열려있는 모든 다이얼로그 창을 닫고 다시 시도해 주시기 바랍니다.',
+      'hrd.not_matching_email': '로그인하려면 회사 이메일을 사용하십시오.'
     },
     passwordless: {
       'bad.email': '이메일 주소가 유효하지 않습니다',
@@ -37,7 +41,6 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: '로그인에 성공하였습니다.',
     forgotPassword: '비밀번호를 초기화하기 위한 안내 이메일을 보내드렸습니다.',
     magicLink: '%s로 로그인하기 위한 링크가 전송되었습니다.',
@@ -98,7 +101,7 @@ export default {
   ssoEnabled: '통합 인증이 유효합니다.',
   submitLabel: '전송',
   unrecoverableError: '오류가 발생하였습니다.<br />고객센터로 연락하여 주시기 바랍니다.',
-  usernameFormatErrorHint: '%d-%d의 문자, 숫자, "_"이/가 사용 가능합니다.',
+  usernameFormatErrorHint: '%d-%d 문자, 숫자 및 다음 문자를 사용하십시오 : "_", ".", "+", "-"',
   usernameInputPlaceholder: '사용자명',
   usernameOrEmailInputPlaceholder: '사용자명/이메일 주소',
   title: 'Auth0',
@@ -109,5 +112,6 @@ export default {
   mfaLoginTitle: '2단계 인증',
   mfaLoginInstructions: '스마트폰 어플리케이션으로 생성된 확인 코드를 입력하여 주세요.',
   mfaSubmitLabel: '로그인',
-  mfaCodeErrorHint: '%d 숫자를 사용하여 주세요.'
+  mfaCodeErrorHint: '%d 숫자를 사용하여 주세요.',
+  showPassword: '암호 표시'
 };

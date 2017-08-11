@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Tek oturum açma (SSO) etkinleştirildi',
   submitLabel: 'Gönder',
   unrecoverableError: 'Bir hata oluştu.<br />Lütfen teknik destek ile iletişime geçin.',
-  usernameFormatErrorHint: '%d-%d harflerini, sayıları ve "_" kullanın',
+  usernameFormatErrorHint: '%d-%d harf, sayı ve aşağıdaki karakterleri kullanın: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'kullanıcı adınız',
   usernameOrEmailInputPlaceholder: 'kullanıcı adı/e-posta',
   title: 'Auth0',

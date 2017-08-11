@@ -99,7 +99,7 @@ export default {
   ssoEnabled: '单点登录已激活',
   submitLabel: '提交',
   unrecoverableError: '出现错误。<br/>请联系技术人员。',
-  usernameFormatErrorHint: '请使用 %d-%d 位字母、数字或 "_"的组合',
+  usernameFormatErrorHint: '使用 %d-%d 字母，数字和以下字符：“_”，“。”，“+”，“ - ”',
   usernameInputPlaceholder: '您的用户名',
   usernameOrEmailInputPlaceholder: '用户名/邮箱',
   title: 'Auth0',

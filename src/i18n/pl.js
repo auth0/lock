@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Single Sign-On włączony',
   submitLabel: 'Wyślij',
   unrecoverableError: 'Coś poszło nie tak.<br />Skontaktuj się z pomocą techniczną.',
-  usernameFormatErrorHint: 'Użyj %d-%d liter, cyfr i "_"',
+  usernameFormatErrorHint: 'Użyj liter %d-%d, cyfr i następujących znaków: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Twoja nazwa użytkownika',
   usernameOrEmailInputPlaceholder: 'nazwa użytkownika/email',
   title: 'Auth0',

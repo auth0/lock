@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Single Sign-On aktivert',
   submitLabel: 'Send',
   unrecoverableError: 'Noe gikk galt.<br />Ta kontakt med teknisk support.',
-  usernameFormatErrorHint: 'Bruk %d-%d bokstaver, tall og "_"',
+  usernameFormatErrorHint: 'Bruk %d-%d bokstaver, tall og følgende tegn: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'ditt brukernavn',
   usernameOrEmailInputPlaceholder: 'brukernavn/epost',
   title: 'Auth0',

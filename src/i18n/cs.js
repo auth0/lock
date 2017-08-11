@@ -99,7 +99,7 @@ export default {
   ssoEnabled: 'Single Sign-On aktivován',
   submitLabel: 'Odeslat',
   unrecoverableError: 'Něco se pokazilo.<br />Prosíme spojte se s technickou podporou.',
-  usernameFormatErrorHint: 'Použijte %d-%d písmen, číslic a "_"',
+  usernameFormatErrorHint: 'Použijte %d-%d písmena, čísla a následující znaky: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'vaše uživatelské jméno',
   usernameOrEmailInputPlaceholder: 'uživatelské jméno/email',
   title: 'Auth0',
