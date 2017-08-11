@@ -6,6 +6,7 @@ import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
+import { authButtonsTheme } from '../../connection/social/index';
 
 // TODO: handle this from CSS
 function icon(strategy) {
@@ -18,6 +19,12 @@ function icon(strategy) {
 const Component = ({ i18n, model }) => {
   const headerText = i18n.html('lastLoginInstructions') || null;
   const header = headerText && <p>{headerText}</p>;
+  const theme = authButtonsTheme(model);
+  const connectionName = lastUsedConnection(model).get('name');
+  const buttonTheme = theme.get(connectionName);
+  const primaryColor = buttonTheme && buttonTheme.get('primaryColor');
+  const foregroundColor = buttonTheme && buttonTheme.get('foregroundColor');
+  const buttonIcon = buttonTheme && buttonTheme.get('icon');
 
   const buttonClickHandler = () => {
     logIn(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
@@ -31,6 +38,9 @@ const Component = ({ i18n, model }) => {
       buttonClickHandler={buttonClickHandler}
       header={header}
       strategy={icon(lastUsedConnection(model).get('strategy'))}
+      buttonIcon={buttonIcon}
+      primaryColor={primaryColor}
+      foregroundColor={foregroundColor}
     />
   );
 };
