@@ -1,5 +1,22 @@
 # Change Log
 
+## [v10.20.0](https://github.com/auth0/lock/tree/v10.20.0) (2017-08-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.19.0...v10.20.0)
+
+
+**Added**
+- Add Romanian translations [\#1074](https://github.com/auth0/lock/pull/1074) ([jogee](https://github.com/jogee))
+- Add Slovenian translations [\#1073](https://github.com/auth0/lock/pull/1073) ([jogee](https://github.com/jogee))
+
+**Changed**
+- Update username allowed chars regex [\#1079](https://github.com/auth0/lock/pull/1079) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix custom theme for custom connections [\#1083](https://github.com/auth0/lock/pull/1083) ([luisrudge](https://github.com/luisrudge))
+- Fix spacing using custom signup fields [\#1076](https://github.com/auth0/lock/pull/1076) ([luisrudge](https://github.com/luisrudge))
+- Fixed Slovak translations [\#1069](https://github.com/auth0/lock/pull/1069) ([stajo1](https://github.com/stajo1))
+
+
 ## [v10.19.0](https://github.com/auth0/lock/tree/v10.19.0) (2017-07-18)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.18.0...v10.19.0)
 
