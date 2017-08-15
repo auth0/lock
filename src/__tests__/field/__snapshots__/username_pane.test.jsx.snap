@@ -18,7 +18,6 @@ exports[`UsernamePane renders correctly 1`] = `
   data-autoComplete={false}
   data-invalidHint="invalidErrorHint"
   data-isValid={false}
-  data-onBlur={[Function]}
   data-onChange={[Function]}
   data-placeholder="placeholder"
   data-value="username"
@@ -31,7 +30,6 @@ exports[`UsernamePane sets \`blankErrorHint\` when username is empty 1`] = `
   data-autoComplete={false}
   data-invalidHint="blankErrorHint"
   data-isValid={false}
-  data-onBlur={[Function]}
   data-onChange={[Function]}
   data-placeholder="placeholder"
   data-value={undefined}
@@ -44,7 +42,6 @@ exports[`UsernamePane sets \`usernameFormatErrorHint\` when usernameLooksLikeEma
   data-autoComplete={false}
   data-invalidHint="usernameFormatErrorHint,min,max"
   data-isValid={false}
-  data-onBlur={[Function]}
   data-onChange={[Function]}
   data-placeholder="placeholder"
   data-value="username"
@@ -57,7 +54,6 @@ exports[`UsernamePane sets autoComplete to true when \`allowAutocomplete\` is tr
   data-autoComplete={true}
   data-invalidHint="invalidErrorHint"
   data-isValid={false}
-  data-onBlur={[Function]}
   data-onChange={[Function]}
   data-placeholder="placeholder"
   data-value="username"
@@ -70,36 +66,8 @@ exports[`UsernamePane sets isValid as true when \`isFieldVisiblyInvalid\` is fal
   data-autoComplete={false}
   data-invalidHint="invalidErrorHint"
   data-isValid={true}
-  data-onBlur={[Function]}
   data-onChange={[Function]}
   data-placeholder="placeholder"
   data-value="username"
 />
-`;
-
-exports[`UsernamePane with a custom \`connectionResolver\` \`swap\` calls \`setResolvedConnection\` 1`] = `
-Array [
-  "model",
-  "resolvedConnection",
-]
-`;
-
-exports[`UsernamePane with a custom \`connectionResolver\` calls \`connectionResolver\` onBlur 1`] = `
-Array [
-  "username",
-  Object {
-    "connections": "connections",
-    "id": "id",
-  },
-  [Function],
-]
-`;
-
-exports[`UsernamePane with a custom \`connectionResolver\` calls \`swap\` in the \`connectionResolver\` callback 1`] = `
-Array [
-  "updateEntity",
-  "lock",
-  1,
-  [Function],
-]
 `;
