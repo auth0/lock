@@ -87,7 +87,7 @@ class Auth0LegacyAPIClient {
     this.client.passwordlessStart(options, err => cb(normalizeError(err)));
   }
 
-  passwordlessVerify(options, authParams, cb) {
+  passwordlessVerify(options, cb) {
     this.client.passwordlessVerify(options, err => cb(normalizeError(err)));
   }
 
