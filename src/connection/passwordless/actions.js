@@ -128,11 +128,14 @@ export function logIn(id) {
     params.phoneNumber = phoneNumberWithDiallingCode(m);
   }
   swap(updateEntity, 'lock', id, l.setSubmitting, true);
-  webApi.passwordlessVerify(id, params, l.auth.params(m).toJS(), error => {
+  webApi.passwordlessVerify(id, params, error => {
     let errorMessage;
     if (error) {
       const m = read(getEntity, 'lock', id);
       errorMessage = getErrorMessage(m, error);
+      if (error.logToConsole) {
+        console.error(error.description);
+      }
     }
     return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
   });

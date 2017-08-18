@@ -3,6 +3,18 @@ export function normalizeError(error) {
     return error;
   }
 
+  if (
+    error.error === 'unauthorized_client' &&
+    error.error_description === 'Cross origin login not allowed.'
+  ) {
+    return {
+      code: 'cross_origin_login_not_enabled',
+      error: 'cross_origin_login_not_enabled',
+      description: 'Cross Origin Authencation is not enabled. Please refer to this document to enable it: https://link-to-doc.com',
+      logToConsole: true
+    };
+  }
+
   // TODO: clean this mess, the first checks are for social/popup,
   // then we have some stuff for passwordless and the latter is for
   // db.

@@ -37,15 +37,7 @@ describe('passwordless actions', () => {
     jest.mock('i18n', () => ({ html: (_, keys) => keys.join(',') }));
     jest.mock('core/index', () => ({
       id: () => 'id',
-      setSubmitting: jest.fn(m => m),
-      auth: {
-        params: () => ({
-          toJS: () => ({
-            auth: 'params'
-          }),
-          isEmpty: () => false
-        })
-      }
+      setSubmitting: jest.fn(m => m)
     }));
     jest.mock('store/index', () => ({
       read: jest.fn(() => 'model'),
@@ -209,14 +201,14 @@ describe('passwordless actions', () => {
 
         const error = new Error('foobar');
         error.error = 'some_error_code';
-        require('core/web_api').passwordlessVerify.mock.calls[0][3](error);
+        require('core/web_api').passwordlessVerify.mock.calls[0][2](error);
 
         const { swap } = require('store/index');
         expectMockToMatch(swap, 2);
       });
       it('sets setSubmitting to false', () => {
         actions.logIn('id');
-        require('core/web_api').passwordlessVerify.mock.calls[0][3](null);
+        require('core/web_api').passwordlessVerify.mock.calls[0][2](null);
 
         const { swap } = require('store/index');
         expectMockToMatch(swap, 2);

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`normalizeError maps COA not enabled error 1`] = `
+Object {
+  "code": "cross_origin_login_not_enabled",
+  "description": "Cross Origin Authencation is not enabled. Please refer to this document to enable it: https://link-to-doc.com",
+  "error": "cross_origin_login_not_enabled",
+  "logToConsole": true,
+}
+`;
+
+exports[`webAuthOverrides should omit overrides that are not compatible with WebAuth 1`] = `
+Object {
+  "__tenant": "tenant1",
+  "__token_issuer": "issuer1",
+}
+`;
+
+exports[`webAuthOverrides should return overrides if any field is compatible with WebAuth 1`] = `
+Object {
+  "__tenant": "tenant1",
+  "__token_issuer": "issuer1",
+}
+`;
