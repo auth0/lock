@@ -114,7 +114,11 @@
       prefill: {
         email: 'johnfoo@gmail.com'
       },
-      passwordlessMethod: 'code'
+      passwordlessMethod: 'code',
+      allowedConnections: ['sms', 'acme'],
+      auth: {
+        responseType: 'token id_token'
+      }
     };
     function initLock() {
       var lock = new Auth0Lock(clientId, domain, defaultOptions);
