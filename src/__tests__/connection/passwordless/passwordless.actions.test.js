@@ -37,7 +37,14 @@ describe('passwordless actions', () => {
     jest.mock('i18n', () => ({ html: (_, keys) => keys.join(',') }));
     jest.mock('core/index', () => ({
       id: () => 'id',
-      setSubmitting: jest.fn(m => m)
+      setSubmitting: jest.fn(m => m),
+      auth: {
+        params: () => ({
+          toJS: () => ({
+            auth: 'params'
+          })
+        })
+      }
     }));
     jest.mock('store/index', () => ({
       read: jest.fn(() => 'model'),
