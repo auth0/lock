@@ -119,7 +119,11 @@ function sendSMSError(id, error) {
 
 export function logIn(id) {
   const m = read(getEntity, 'lock', id);
-  const params = { verificationCode: c.getFieldValue(m, 'vcode') };
+  const authParams = l.auth.params(m).toJS();
+  const params = {
+    verificationCode: c.getFieldValue(m, 'vcode'),
+    ...authParams
+  };
   if (isEmail(m)) {
     params.connection = 'email';
     params.email = c.getFieldValue(m, 'email');
