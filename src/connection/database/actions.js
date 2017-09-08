@@ -51,18 +51,27 @@ export function logIn(id, needsMFA = false) {
 export function signUp(id) {
   const m = read(getEntity, 'lock', id);
   const fields = ['email', 'password'];
-  if (databaseConnectionRequiresUsername(m)) fields.push('username');
+  const customConnectionInfo = l.resolvedConnection(m);
+  let connectionName = databaseConnectionName(m);
+  let requiresUsername = databaseConnectionRequiresUsername(m);
+
+  if (customConnectionInfo) {
+    connectionName = customConnectionInfo.name;
+    requiresUsername = customConnectionInfo.requiresUsername;
+  }
+
+  if (requiresUsername) fields.push('username');
   additionalSignUpFields(m).forEach(x => fields.push(x.get('name')));
 
   validateAndSubmit(id, fields, m => {
     const params = {
-      connection: databaseConnectionName(m),
+      connection: connectionName,
       email: c.getFieldValue(m, 'email'),
       password: c.getFieldValue(m, 'password'),
       autoLogin: shouldAutoLogin(m)
     };
 
-    if (databaseConnectionRequiresUsername(m)) {
+    if (requiresUsername) {
       params.username = c.getFieldValue(m, 'username');
     }
 
@@ -78,15 +87,16 @@ export function signUp(id) {
         if (!!popupHandler) {
           popupHandler._current_popup.kill();
         }
+
         setTimeout(() => signUpError(id, error), 250);
       } else {
-        signUpSuccess(id, result, popupHandler, ...args);
+        signUpSuccess(id, connectionName, result, popupHandler, ...args);
       }
     });
   });
 }
 
-function signUpSuccess(id, result, popupHandler) {
+function signUpSuccess(id, connectionName, result, popupHandler) {
   const lock = read(getEntity, 'lock', id);
 
   if (shouldAutoLogin(lock)) {
@@ -94,7 +104,7 @@ function signUpSuccess(id, result, popupHandler) {
 
     // TODO: check options, redirect is missing
     const options = {
-      connection: databaseConnectionName(lock),
+      connection: connectionName,
       username: c.email(lock),
       password: c.password(lock)
     };
