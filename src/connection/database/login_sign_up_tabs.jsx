@@ -69,7 +69,7 @@ class LoginSignUpTab extends React.Component {
 
     return (
       <li className={className}>
-        <a href={href || '#'} onClick={::this.handleClick}>
+        <a href={href || 'javascript:void(0)'} onClick={::this.handleClick}>
           {label}
         </a>
       </li>
