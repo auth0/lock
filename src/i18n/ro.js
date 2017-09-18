@@ -59,7 +59,7 @@ export default {
   forgotPasswordSubmitLabel: 'Email transmis',
   invalidErrorHint: 'Invalid',
   lastLoginInstructions: 'Ultima oară când v-ați conectat',
-  loginAtLabel: 'Conectat la %s',
+  loginAtLabel: ' Autentificați-vă cu %s',
   loginLabel: 'Conectat',
   loginSubmitLabel: 'Conectat',
   loginWithLabel: 'Conectat cu %s',
