@@ -17,12 +17,8 @@ import {
 import * as i18n from '../../i18n';
 
 function connectionName(lock) {
-  const customResolvedConnection = l.resolvedConnection(lock);
-  let connectionName = databaseConnectionName(m);
-  if (customResolvedConnection) {
-    connectionName = customResolvedConnection.name;
-  }
-  return connectionName;
+  const customResolvedConnection = l.resolvedConnection(lock) || {};
+  return customResolvedConnection.name || databaseConnectionName(m);
 }
 
 export function logIn(id, needsMFA = false) {
