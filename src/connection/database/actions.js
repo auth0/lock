@@ -16,17 +16,21 @@ import {
 } from './index';
 import * as i18n from '../../i18n';
 
-export function logIn(id, needsMFA = false) {
-  const m = read(getEntity, 'lock', id);
-  const usernameField = databaseLogInWithEmail(m) ? 'email' : 'username';
-  const username = c.getFieldValue(m, usernameField);
-  const customResolvedConnection = l.resolvedConnection(m);
+function connectionName(lock) {
+  const customResolvedConnection = l.resolvedConnection(lock);
   let connectionName = databaseConnectionName(m);
   if (customResolvedConnection) {
     connectionName = customResolvedConnection.name;
   }
+  return connectionName;
+}
+
+export function logIn(id, needsMFA = false) {
+  const m = read(getEntity, 'lock', id);
+  const usernameField = databaseLogInWithEmail(m) ? 'email' : 'username';
+  const username = c.getFieldValue(m, usernameField);
   const params = {
-    connection: connectionName,
+    connection: connectionName(m),
     username: username,
     password: c.getFieldValue(m, 'password')
   };
