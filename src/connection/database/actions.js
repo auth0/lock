@@ -154,7 +154,7 @@ function autoLogInError(id, error) {
 export function resetPassword(id) {
   validateAndSubmit(id, ['email'], m => {
     const params = {
-      connection: databaseConnectionName(m),
+      connection: connectionName(m),
       email: c.getFieldValue(m, 'email')
     };
 
