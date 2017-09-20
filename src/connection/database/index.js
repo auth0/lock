@@ -282,8 +282,11 @@ export function databaseConnection(m) {
   return defaultDirectory(m) || defaultDatabaseConnection(m) || l.connection(m, 'database');
 }
 
-export function databaseConnectionName(m) {
-  return (databaseConnection(m) || Map()).get('name');
+export function databaseConnectionName(lock) {
+  const customResolvedConnection = l.resolvedConnection(lock);
+  const standardConnection = databaseConnection(lock);
+  const connection = customResolvedConnection || standardConnection || {};
+  return connection.name;
 }
 
 export function forgotPasswordLink(m, notFound = '') {

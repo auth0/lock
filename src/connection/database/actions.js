@@ -16,17 +16,12 @@ import {
 } from './index';
 import * as i18n from '../../i18n';
 
-function connectionName(lock) {
-  const customResolvedConnection = l.resolvedConnection(lock) || {};
-  return customResolvedConnection.name || databaseConnectionName(lock);
-}
-
 export function logIn(id, needsMFA = false) {
   const m = read(getEntity, 'lock', id);
   const usernameField = databaseLogInWithEmail(m) ? 'email' : 'username';
   const username = c.getFieldValue(m, usernameField);
   const params = {
-    connection: connectionName(m),
+    connection: databaseConnectionName(m),
     username: username,
     password: c.getFieldValue(m, 'password')
   };
@@ -154,7 +149,7 @@ function autoLogInError(id, error) {
 export function resetPassword(id) {
   validateAndSubmit(id, ['email'], m => {
     const params = {
-      connection: connectionName(m),
+      connection: databaseConnectionName(m),
       email: c.getFieldValue(m, 'email')
     };
 
