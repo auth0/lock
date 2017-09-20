@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chrome renders correctly 1`] = `
+<div
+  className="auth0-lock-cred-pane auth0-lock-quiet"
+>
+  <div
+    className="auth0-lock-header"
+  >
+    <div
+      className="auth0-lock-header-bg auth0-lock-blur-support"
+    >
+      <div
+        className="auth0-lock-header-bg-blur"
+        style={
+          Object {
+            "backgroundImage": "url('https://cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png')",
+          }
+        }
+      />
+      <div
+        className="auth0-lock-header-bg-solid"
+        style={
+          Object {
+            "backgroundColor": "\\"#ea5323",
+          }
+        }
+      />
+    </div>
+    <div
+      className="auth0-lock-header-welcome"
+    >
+      <img
+        className="auth0-lock-header-logo centered"
+        src="https://cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png"
+      />
+    </div>
+  </div>
+  <span />
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <span>
+      <div
+        style={Object {}}
+      >
+        <div
+          style={
+            Object {
+              "visibility": "inherit",
+            }
+          }
+        >
+          <div
+            className="auth0-lock-view-content"
+          >
+            <div
+              style={
+                Object {
+                  "position": "relative",
+                }
+              }
+            >
+              <div
+                className="auth0-lock-body-content"
+              >
+                <div
+                  className="auth0-lock-content"
+                >
+                  <div
+                    className="auth0-lock-form"
+                  >
+                    <div>
+                      content component
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <button
+    className="auth0-lock-submit"
+    disabled={false}
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "\\"#ea5323",
+      }
+    }
+    type="submit"
+  >
+    <div
+      className="auth0-loading-container"
+    >
+      <div
+        className="auth0-loading"
+      />
+    </div>
+    <span
+      className="auth0-label-submit"
+    >
+      Submit
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<svg focusable=\\"false\\" class=\\"icon-text\\" width=\\"8px\\" height=\\"12px\\" viewBox=\\"0 0 8 12\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\"><g id=\\"Symbols\\" stroke=\\"none\\" stroke-width=\\"1\\" fill=\\"none\\" fill-rule=\\"evenodd\\"><g id=\\"Web/Submit/Active\\" transform=\\"translate(-148.000000, -32.000000)\\" fill=\\"#FFFFFF\\"><polygon id=\\"Shape\\" points=\\"148 33.4 149.4 32 155.4 38 149.4 44 148 42.6 152.6 38\\"></polygon></g></g></svg>",
+          }
+        }
+      />
+    </span>
+  </button>
+  <span />
+</div>
+`;
+
+exports[`Chrome with a custom \`connectionResolver\` calls \`connectionResolver\` onSubmit 1`] = `
+Array [
+  "peter_picked@pickledpepper.com",
+  Object {
+    "connections": Object {
+      "database": Array [
+        Object {
+          "name": "dbA",
+        },
+        Object {
+          "name": "dbB",
+        },
+      ],
+    },
+    "id": "skjd2fhk27s2dyialk53js9dlf",
+  },
+  [Function],
+]
+`;
