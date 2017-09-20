@@ -279,9 +279,8 @@ export function defaultDatabaseConnectionName(m) {
 }
 
 export function databaseConnection(m) {
-  const customResolvedConnection = l.resolvedConnection(lock);
   return (
-    customResolvedConnection ||
+    l.resolvedConnection(m) ||
     defaultDirectory(m) ||
     defaultDatabaseConnection(m) ||
     l.connection(m, 'database')
