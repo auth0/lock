@@ -289,8 +289,7 @@ export function databaseConnection(m) {
 }
 
 export function databaseConnectionName(lock) {
-  const connection = databaseConnection(lock) || new Map();
-  return connection.get('name');
+  return (databaseConnection(lock) || new Map()).get('name');
 }
 
 export function forgotPasswordLink(m, notFound = '') {
