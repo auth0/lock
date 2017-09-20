@@ -279,14 +279,18 @@ export function defaultDatabaseConnectionName(m) {
 }
 
 export function databaseConnection(m) {
-  return defaultDirectory(m) || defaultDatabaseConnection(m) || l.connection(m, 'database');
+  const customResolvedConnection = l.resolvedConnection(lock);
+  return (
+    customResolvedConnection ||
+    defaultDirectory(m) ||
+    defaultDatabaseConnection(m) ||
+    l.connection(m, 'database')
+  );
 }
 
 export function databaseConnectionName(lock) {
-  const customResolvedConnection = l.resolvedConnection(lock);
-  const standardConnection = databaseConnection(lock);
-  const connection = customResolvedConnection || standardConnection || {};
-  return connection.name;
+  const connection = databaseConnection(lock) || new Map();
+  return connection.get('name');
 }
 
 export function forgotPasswordLink(m, notFound = '') {
