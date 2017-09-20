@@ -288,8 +288,8 @@ export function databaseConnection(m) {
   );
 }
 
-export function databaseConnectionName(lock) {
-  return (databaseConnection(lock) || new Map()).get('name');
+export function databaseConnectionName(m) {
+  return (databaseConnection(m) || new Map()).get('name');
 }
 
 export function forgotPasswordLink(m, notFound = '') {
