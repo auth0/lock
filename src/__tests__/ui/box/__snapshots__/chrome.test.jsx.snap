@@ -140,3 +140,19 @@ Array [
   [Function],
 ]
 `;
+
+exports[`Chrome with a custom \`connectionResolver\` calls \`setResolvedConnection\` in the \`swap\` callback 1`] = `
+Array [
+  "model",
+  "resolvedConnection",
+]
+`;
+
+exports[`Chrome with a custom \`connectionResolver\` calls \`swap\` in the \`connectionResolver\` callback 1`] = `
+Array [
+  "updateEntity",
+  "lock",
+  undefined,
+  [Function],
+]
+`;
