@@ -21,10 +21,6 @@ const mockEvent = {
 const getContainer = () => {
   const Container = require('ui/box/container').default;
   return new Container({
-    autofocus: true,
-    contentComponent: () => {
-      return <div>content component</div>;
-    },
     contentProps: {
       i18n: {},
       model: immutable.fromJS({
