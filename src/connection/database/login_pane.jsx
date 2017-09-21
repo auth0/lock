@@ -54,7 +54,7 @@ export default class LoginPane extends React.Component {
       ? <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
-            href={forgotPasswordLink(lock, '#')}
+            href={forgotPasswordLink(lock, 'javascript:void(0)')}
             onClick={forgotPasswordLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
           >
             {forgotPasswordAction}

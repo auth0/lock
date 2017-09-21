@@ -1,5 +1,24 @@
 # Change Log
 
+## [v10.21.0](https://github.com/auth0/lock/tree/v10.21.0) (2017-09-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.20.0...v10.21.0)
+
+
+**Added**
+- Add Estonian Translations [\#1099](https://github.com/auth0/lock/pull/1099) ([meikoudras](https://github.com/meikoudras))
+
+**Changed**
+- Changed the connectionResolver to run onSubmit instead of onBlur [\#1113](https://github.com/auth0/lock/pull/1113) ([luisrudge](https://github.com/luisrudge))
+- Change translate for loginAtLabel [\#1110](https://github.com/auth0/lock/pull/1110) ([radu-carmina](https://github.com/radu-carmina))
+
+**Fixed**
+- Use resolvedConnection where available [\#1111](https://github.com/auth0/lock/pull/1111) ([lukevmorris](https://github.com/lukevmorris))
+- Fix a few svg errors when used with global css rule [\#1103](https://github.com/auth0/lock/pull/1103) ([luisrudge](https://github.com/luisrudge))
+- Links with # should use javascript:void(0) [\#1102](https://github.com/auth0/lock/pull/1102) ([luisrudge](https://github.com/luisrudge))
+- Improve Danish translation [\#1097](https://github.com/auth0/lock/pull/1097) ([havgry](https://github.com/havgry))
+- Fixed translations for Romanian and Slovenian [\#1092](https://github.com/auth0/lock/pull/1092) ([AdrianSima](https://github.com/AdrianSima))
+
+
 ## [v10.20.0](https://github.com/auth0/lock/tree/v10.20.0) (2017-08-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.19.0...v10.20.0)
 

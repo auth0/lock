@@ -279,7 +279,12 @@ export function defaultDatabaseConnectionName(m) {
 }
 
 export function databaseConnection(m) {
-  return defaultDirectory(m) || defaultDatabaseConnection(m) || l.connection(m, 'database');
+  return (
+    l.resolvedConnection(m) ||
+    defaultDirectory(m) ||
+    defaultDatabaseConnection(m) ||
+    l.connection(m, 'database')
+  );
 }
 
 export function databaseConnectionName(m) {

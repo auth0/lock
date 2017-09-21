@@ -31,18 +31,6 @@ export default class UsernamePane extends React.Component {
       validateFormat
     );
   }
-  handleBlur() {
-    const { lock } = this.props;
-    const connectionResolver = l.connectionResolver(lock);
-    if (!connectionResolver) {
-      return;
-    }
-    const { connections, id } = lock.get('client').toJS();
-    const context = { connections, id };
-    connectionResolver(c.getFieldValue(lock, 'username'), context, resolvedConnection => {
-      swap(updateEntity, 'lock', l.id(lock), m => l.setResolvedConnection(m, resolvedConnection));
-    });
-  }
 
   render() {
     const { i18n, lock, placeholder, validateFormat } = this.props;
@@ -74,7 +62,6 @@ export default class UsernamePane extends React.Component {
         invalidHint={invalidHint(value)}
         isValid={!c.isFieldVisiblyInvalid(lock, 'username')}
         onChange={::this.handleChange}
-        onBlur={::this.handleBlur}
         placeholder={placeholder}
         autoComplete={allowAutocomplete}
       />
