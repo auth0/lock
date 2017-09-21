@@ -36,7 +36,11 @@ export default class VcodePane extends React.Component {
           disabled={l.submitting(lock)}
         />
         <p className="auth0-lock-alternative">
-          <a className="auth0-lock-alternative-link" href="#" onClick={::this.handleResendClick}>
+          <a
+            className="auth0-lock-alternative-link"
+            href="javascript:void(0)"
+            onClick={::this.handleResendClick}
+          >
             {resendLabel}
           </a>
         </p>

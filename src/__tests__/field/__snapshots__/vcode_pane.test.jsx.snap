@@ -32,7 +32,7 @@ exports[`VcodePane disable input when submitting 1`] = `
   >
     <a
       className="auth0-lock-alternative-link"
-      href="#"
+      href="javascript:void(0)"
       onClick={[Function]}
     >
       resendLabel
@@ -57,7 +57,7 @@ exports[`VcodePane renders correctly 1`] = `
   >
     <a
       className="auth0-lock-alternative-link"
-      href="#"
+      href="javascript:void(0)"
       onClick={[Function]}
     >
       resendLabel
@@ -82,7 +82,7 @@ exports[`VcodePane sets autoFocus as true when \`isSmallScreen\` is false 1`] = 
   >
     <a
       className="auth0-lock-alternative-link"
-      href="#"
+      href="javascript:void(0)"
       onClick={[Function]}
     >
       resendLabel
@@ -107,7 +107,7 @@ exports[`VcodePane sets isValid as true when \`isFieldVisiblyInvalid\` is false 
   >
     <a
       className="auth0-lock-alternative-link"
-      href="#"
+      href="javascript:void(0)"
       onClick={[Function]}
     >
       resendLabel
@@ -137,7 +137,7 @@ exports[`VcodePane shows header when instructions are available 1`] = `
   >
     <a
       className="auth0-lock-alternative-link"
-      href="#"
+      href="javascript:void(0)"
       onClick={[Function]}
     >
       resendLabel

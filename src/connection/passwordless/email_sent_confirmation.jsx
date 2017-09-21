@@ -16,7 +16,7 @@ class ResendLink extends React.Component {
   render() {
     const { label, onClick } = this.props;
     return (
-      <a className="auth0-lock-resend-link" href="#" onClick={onClick}>
+      <a className="auth0-lock-resend-link" href="javascript:void(0)" onClick={onClick}>
         {label} <span dangerouslySetInnerHTML={{ __html: retrySvg }} />
       </a>
     );
