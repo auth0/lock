@@ -94,7 +94,8 @@ export function setResolvedConnection(m, resolvedConnection) {
 }
 
 export function resolvedConnection(m) {
-  return Map(get(m, 'resolvedConnection'));
+  const conenction = get(m, 'resolvedConnection');
+  return conenction && Map(conenction);
 }
 
 export function languageBaseUrl(m) {
