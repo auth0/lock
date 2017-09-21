@@ -63,11 +63,8 @@ export default class UsernameInput extends React.Component {
     this.setState({ focused: true });
   }
 
-  handleBlur(e) {
+  handleBlur() {
     this.setState({ focused: false });
-    if (this.props.onBlur) {
-      this.props.onBlur(e);
-    }
   }
 }
 

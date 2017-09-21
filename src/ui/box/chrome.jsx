@@ -16,7 +16,6 @@ class SubmitButton extends React.Component {
   handleSubmit() {
     const { label, screenName, contentProps } = this.props;
     const { model } = contentProps;
-
     if (screenName === 'main.signUp') {
       l.emitEvent(model, 'signup submit');
     } else if (screenName === 'main.login') {
@@ -286,7 +285,10 @@ export default class Chrome extends React.Component {
                       <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                     </div>
                   </div>
-                  {terms && <small className="auth0-lock-terms">{terms}</small>}
+                  {terms &&
+                    <small className="auth0-lock-terms">
+                      {terms}
+                    </small>}
                 </div>
               </div>
             </div>

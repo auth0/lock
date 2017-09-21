@@ -1,5 +1,4 @@
 import React from 'react';
-import Immutable from 'immutable';
 import { mount } from 'enzyme';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
@@ -13,12 +12,7 @@ describe('UsernamePane', () => {
     i18n: {
       str: (...keys) => keys.join(',')
     },
-    lock: Immutable.fromJS({
-      client: {
-        connections: 'connections',
-        id: 'id'
-      }
-    }),
+    lock: {},
     placeholder: 'placeholder',
     validateFormat: false,
     usernameStyle: 'any',
@@ -48,8 +42,7 @@ describe('UsernamePane', () => {
       ui: {
         avatar: () => false,
         allowAutocomplete: () => false
-      },
-      connectionResolver: () => undefined
+      }
     }));
 
     jest.mock('avatar', () => ({
@@ -125,60 +118,5 @@ describe('UsernamePane', () => {
     const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
-  });
-  it('does nothing on blur when there is no custom `connectionResolver`', () => {
-    let EmailPane = getComponent();
-
-    const wrapper = mount(<EmailPane {...defaultProps} />);
-    const props = extractPropsFromWrapper(wrapper);
-    props.onBlur({ target: { value: 'newUser@example.com' } });
-
-    const { mock } = require('store/index').swap;
-    expect(mock.calls.length).toBe(0);
-  });
-  describe('with a custom `connectionResolver`', () => {
-    let connectionResolverMock;
-    let setResolvedConnectionMock;
-    beforeEach(() => {
-      connectionResolverMock = jest.fn();
-      setResolvedConnectionMock = jest.fn();
-      require('core/index').connectionResolver = () => connectionResolverMock;
-      require('core/index').setResolvedConnection = setResolvedConnectionMock;
-    });
-    it('calls `connectionResolver` onBlur', () => {
-      let UsernamePane = getComponent();
-
-      const wrapper = mount(<UsernamePane {...defaultProps} />);
-      const props = extractPropsFromWrapper(wrapper);
-      props.onBlur({ target: { value: 'newUser@example.com' } });
-
-      const { mock } = connectionResolverMock;
-      expect(mock.calls.length).toBe(1);
-      expect(mock.calls[0]).toMatchSnapshot();
-    });
-    it('calls `swap` in the `connectionResolver` callback', () => {
-      let UsernamePane = getComponent();
-
-      const wrapper = mount(<UsernamePane {...defaultProps} />);
-      const props = extractPropsFromWrapper(wrapper);
-      props.onBlur({ target: { value: 'newUser@example.com' } });
-      connectionResolverMock.mock.calls[0][2]('resolvedConnection');
-      const { mock } = require('store/index').swap;
-      expect(mock.calls.length).toBe(1);
-      expect(mock.calls[0]).toMatchSnapshot();
-    });
-    it('`swap` calls `setResolvedConnection`', () => {
-      let UsernamePane = getComponent();
-
-      const wrapper = mount(<UsernamePane {...defaultProps} />);
-      const props = extractPropsFromWrapper(wrapper);
-      props.onBlur({ target: { value: 'newUser@example.com' } });
-      connectionResolverMock.mock.calls[0][2]('resolvedConnection');
-      require('store/index').swap.mock.calls[0][3]('model');
-
-      const { mock } = setResolvedConnectionMock;
-      expect(mock.calls.length).toBe(1);
-      expect(mock.calls[0]).toMatchSnapshot();
-    });
   });
 });

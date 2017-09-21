@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container with a custom \`connectionResolver\` calls \`connectionResolver\` onSubmit 1`] = `
+Array [
+  "peter_picked@pickledpepper.com",
+  Object {
+    "connections": Object {
+      "database": Array [
+        Object {
+          "name": "dbA",
+        },
+        Object {
+          "name": "dbB",
+        },
+      ],
+    },
+    "id": "alksdkhasd__test-lock__alsdkhalkshd",
+  },
+  [Function],
+]
+`;
+
+exports[`Container with a custom \`connectionResolver\` calls \`setResolvedConnection\` in the \`swap\` callback 1`] = `
+Array [
+  "model",
+  "resolvedConnection",
+]
+`;
+
+exports[`Container with a custom \`connectionResolver\` calls \`swap\` in the \`connectionResolver\` callback 1`] = `
+Array [
+  "updateEntity",
+  "lock",
+  undefined,
+  [Function],
+]
+`;
