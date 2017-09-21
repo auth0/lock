@@ -1,5 +1,13 @@
 # Change Log
 
+## [v10.21.1](https://github.com/auth0/lock/tree/v10.21.1) (2017-09-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.21.0...v10.21.1)
+
+
+**Fixed**
+- Fix resolved connection not being a Map object [\#1116](https://github.com/auth0/lock/pull/1116) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.21.0](https://github.com/auth0/lock/tree/v10.21.0) (2017-09-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.20.0...v10.21.0)
 
