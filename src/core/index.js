@@ -90,11 +90,15 @@ export function setResolvedConnection(m, resolvedConnection) {
       'Invalid connection type. Only database connections can be resolved with a custom resolver.'
     );
   }
-  return set(m, 'resolvedConnection', resolvedConnection);
+  return set(m, 'resolvedConnection', Immutable.fromJS(resolvedConnection));
 }
 
 export function resolvedConnection(m) {
-  return get(m, 'resolvedConnection');
+  const resolvedConnection = get(m, 'resolvedConnection');
+  if (!resolvedConnection) {
+    return undefined;
+  }
+  return findConnection(m, resolvedConnection.get('name'));
 }
 
 export function languageBaseUrl(m) {

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`setResolvedConnection accepts only database connections 1`] = `"Invalid connection type. Only database connections can be resolved with a custom resolver."`;
+
+exports[`setResolvedConnection sets the connection 1`] = `
+Array [
+  "m",
+  "resolvedConnection",
+  Object {
+    "name": "bar",
+    "type": "database",
+  },
+]
+`;
+
+exports[`setResolvedConnection sets undefined when is called with undefined 1`] = `
+Array [
+  "m",
+  "resolvedConnection",
+  undefined,
+]
+`;
+
+exports[`setResolvedConnection validates format 1`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
+
+exports[`setResolvedConnection validates format 2`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
+
+exports[`setResolvedConnection validates format 3`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
