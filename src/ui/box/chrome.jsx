@@ -5,8 +5,6 @@ import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
 import * as l from '../../core/index';
-import * as c from '../../field/index';
-import { swap, updateEntity } from '../../store/index';
 import Header from './header';
 
 const submitSvg =
@@ -15,7 +13,7 @@ const submitText =
   '<svg focusable="false" class="icon-text" width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Web/Submit/Active" transform="translate(-148.000000, -32.000000)" fill="#FFFFFF"><polygon id="Shape" points="148 33.4 149.4 32 155.4 38 149.4 44 148 42.6 152.6 38"></polygon></g></g></svg>';
 
 class SubmitButton extends React.Component {
-  handleSubmit(e) {
+  handleSubmit() {
     const { label, screenName, contentProps } = this.props;
     const { model } = contentProps;
     if (screenName === 'main.signUp') {
