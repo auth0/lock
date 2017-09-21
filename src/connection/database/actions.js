@@ -20,13 +20,8 @@ export function logIn(id, needsMFA = false) {
   const m = read(getEntity, 'lock', id);
   const usernameField = databaseLogInWithEmail(m) ? 'email' : 'username';
   const username = c.getFieldValue(m, usernameField);
-  const customResolvedConnection = l.resolvedConnection(m);
-  let connectionName = databaseConnectionName(m);
-  if (customResolvedConnection) {
-    connectionName = customResolvedConnection.name;
-  }
   const params = {
-    connection: connectionName,
+    connection: databaseConnectionName(m),
     username: username,
     password: c.getFieldValue(m, 'password')
   };
