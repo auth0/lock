@@ -1,18 +1,26 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import immutable from 'immutable';
-import { expectComponent } from '../../testUtils';
-import { setResolvedConnection } from '../../../core/index';
+import { expectComponent, mockComponent } from '../../testUtils';
+import sync from '../../../sync';
+import { connections } from '../../../core/index';
+import { email } from '../../../field/index';
+import { img } from '../../../utils/preload_utils';
 
 jest.mock('store/index', () => ({
   swap: jest.fn(),
   updateEntity: 'updateEntity'
 }));
 
-const getComponent = () => require('ui/box/chrome').default;
+jest.mock('ui/box/chrome', () => mockComponent('chrome'));
 
-describe('Chrome', () => {
-  const defaultProps = {
+const mockEvent = {
+  preventDefault: () => {}
+};
+
+const getContainer = () => {
+  const Container = require('ui/box/container').default;
+  return new Container({
     autofocus: true,
     contentComponent: () => {
       return <div>content component</div>;
@@ -20,17 +28,11 @@ describe('Chrome', () => {
     contentProps: {
       i18n: {},
       model: immutable.fromJS({
-        core: {
-          connectionResolver: () => {}
-        },
-        sync: {
-          client: {}
-        },
         client: {
           connections: {
             database: [{ name: 'dbA' }, { name: 'dbB' }]
           },
-          id: 'skjd2fhk27s2dyialk53js9dlf'
+          id: 'alksdkhasd__test-lock__alsdkhalkshd'
         },
         field: {
           email: {
@@ -41,27 +43,15 @@ describe('Chrome', () => {
           }
         }
       })
-    },
-    disableSubmitButton: false,
-    isSubmitting: false,
-    logo: 'https://cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png',
-    primaryColor: '"#ea5323',
-    screenName: 'loading',
-    showSubmitButton: true,
-    submitButtonLabel: 'Submit',
-    transitionName: 'fade'
-  };
-
-  it('renders correctly', () => {
-    let Chrome = getComponent();
-    expectComponent(<Chrome {...defaultProps} />).toMatchSnapshot();
+    }
   });
+};
 
+describe('Container', () => {
   it('does not call `connectionResolver` on submit when there is no custom `connectionResolver`', () => {
-    let Chrome = getComponent();
-    const wrapper = mount(<Chrome {...defaultProps} />);
-    const submitButton = wrapper.ref('submit').find('button');
-    submitButton.simulate('click');
+    const c = getContainer();
+
+    c.handleSubmit(mockEvent);
     const { mock } = require('store/index').swap;
     expect(mock.calls.length).toBe(0);
   });
@@ -78,22 +68,16 @@ describe('Chrome', () => {
     });
 
     it('calls `connectionResolver` onSubmit', () => {
-      let Chrome = getComponent();
-
-      const wrapper = mount(<Chrome {...defaultProps} />);
-      const submitButton = wrapper.ref('submit').find('button');
-      submitButton.simulate('click');
+      const c = getContainer();
+      c.handleSubmit(mockEvent);
 
       const { mock } = connectionResolverMock;
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
     });
     it('calls `swap` in the `connectionResolver` callback', () => {
-      let Chrome = getComponent();
-
-      const wrapper = mount(<Chrome {...defaultProps} />);
-      const submitButton = wrapper.ref('submit').find('button');
-      submitButton.simulate('click');
+      const c = getContainer();
+      c.handleSubmit(mockEvent);
 
       connectionResolverMock.mock.calls[0][2]('resolvedConnection');
       const { mock } = require('store/index').swap;
@@ -101,11 +85,8 @@ describe('Chrome', () => {
       expect(mock.calls[0]).toMatchSnapshot();
     });
     it('calls `setResolvedConnection` in the `swap` callback', () => {
-      let Chrome = getComponent();
-
-      const wrapper = mount(<Chrome {...defaultProps} />);
-      const submitButton = wrapper.ref('submit').find('button');
-      submitButton.simulate('click');
+      const c = getContainer();
+      c.handleSubmit(mockEvent);
 
       connectionResolverMock.mock.calls[0][2]('resolvedConnection');
       require('store/index').swap.mock.calls[0][3]('model');
