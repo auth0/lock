@@ -153,6 +153,22 @@ Logs out the user
 lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 ```
 
+## OIDC Conformant Mode
+
+It is strongly encouraged that Lock be used in OIDC Conformant mode when embedding it directly in your application. When this mode is enabled, it will force Lock to use Auth0's current authentication pipeline and will prevent it from reaching legacy endpoints. This mode is not required when using Lock at Auth0's [hosted login page](https://auth0.com/docs/hosted-pages/login).
+
+To enable OIDC conformant mode, pass a flag in the options object.
+
+```js
+var lockOptions = {
+  oidcConformant: true
+}
+```
+
+Using OIDC Conformant mode in Lock necessitates a cross-origin authentication flow which makes use of third party cookies to process the authentication transaction securely. Ensure that **Cross-Origin Authentication** is enabled by switching it on in the [settings](https://manage.auth0.com/#/clients) for your client in the Auth0 dashboard.
+
+For more information, please see the [OIDC adoption guide](https://auth0.com/docs/api-auth/tutorials/adoption) and the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
+
 ### Customization
 
 The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
