@@ -28,7 +28,7 @@ After installing the `auth0-lock` module, you'll need bundle it up along with al
 If you are targeting mobile audiences, it's recommended that you add:
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 ```
 
 ## API
