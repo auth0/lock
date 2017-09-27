@@ -169,6 +169,8 @@ Using OIDC Conformant mode in Lock necessitates a cross-origin authentication fl
 
 For more information, please see the [OIDC adoption guide](https://auth0.com/docs/api-auth/tutorials/adoption) and the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
 
+> Popup mode doesn't work with OIDC conformant clients.
+
 ### Customization
 
 The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
