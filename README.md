@@ -473,6 +473,7 @@ var lock = new Auth0Lock(clientId, domain, options);
 lock.show();
 ```
 
+> Popup mode doesn't work with OIDC conformant clients.
 
 More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/v10/popup-mode).
 
