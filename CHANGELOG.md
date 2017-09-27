@@ -1,5 +1,16 @@
 # Change Log
 
+## [v10.22.0](https://github.com/auth0/lock/tree/v10.22.0) (2017-09-26)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.21.1...v10.22.0)
+
+
+**Added**
+- Adding oidcConformant readme entry [\#1119](https://github.com/auth0/lock/pull/1119) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Make cross origin authentication the default in OIDC mode [\#1124](https://github.com/auth0/lock/pull/1124) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.21.1](https://github.com/auth0/lock/tree/v10.21.1) (2017-09-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.21.0...v10.21.1)
 
