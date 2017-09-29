@@ -60,9 +60,9 @@ export default {
   invalidErrorHint: 'Invalid',
   lastLoginInstructions: 'Ultima oară când v-ați conectat',
   loginAtLabel: ' Autentificați-vă cu %s',
-  loginLabel: 'Conectat',
-  loginSubmitLabel: 'Conectat',
-  loginWithLabel: 'Conectat cu %s',
+  loginLabel: 'Autentificat',
+  loginSubmitLabel: 'Autentificat',
+  loginWithLabel: ' Autentificați-vă cu %s',
   notYourAccountAction: 'Nu este contul Dvs?',
   passwordInputPlaceholder: 'parola Dvs',
   passwordStrength: {
