@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
 import * as l from '../../core/index';
@@ -193,7 +193,7 @@ export default class Chrome extends React.Component {
       success,
       terms,
       title,
-      transitionName,
+      classNames,
       scrollGlobalMessagesIntoView
     } = this.props;
 
@@ -260,21 +260,21 @@ export default class Chrome extends React.Component {
           backgroundColor={primaryColor}
           logoUrl={logo}
         />
-        <ReactCSSTransitionGroup
-          transitionName="global-message"
-          transitionEnterTimeout={MESSAGE_ANIMATION_DURATION}
-          transitionLeaveTimeout={MESSAGE_ANIMATION_DURATION}
-        >
-          {globalSuccess}
-          {globalError}
-        </ReactCSSTransitionGroup>
+        <TransitionGroup>
+          <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
+            <div>
+              {globalSuccess}
+              {globalError}
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
         <div style={{ position: 'relative' }}>
           <MultisizeSlide
             delay={550}
             onDidAppear={::this.onDidAppear}
             onDidSlide={::this.onDidSlide}
             onWillSlide={::this.onWillSlide}
-            transitionName={transitionName}
+            classNames={classNames}
             reverse={reverse}
           >
             <div key={this.mainScreenName()} className="auth0-lock-view-content">
@@ -295,14 +295,16 @@ export default class Chrome extends React.Component {
           </MultisizeSlide>
         </div>
         {submitButton}
-        <ReactCSSTransitionGroup
-          ref="auxiliary"
-          transitionName="slide"
-          transitionEnterTimeout={AUXILIARY_ANIMATION_DURATION}
-          transitionLeaveTimeout={AUXILIARY_ANIMATION_DURATION}
-        >
-          {auxiliaryPane}
-        </ReactCSSTransitionGroup>
+        {auxiliaryPane &&
+          <TransitionGroup>
+            <CSSTransition
+              ref="auxiliary"
+              classNames="slide"
+              timeout={AUXILIARY_ANIMATION_DURATION}
+            >
+              {auxiliaryPane}
+            </CSSTransition>
+          </TransitionGroup>}
       </div>
     );
   }
@@ -338,7 +340,7 @@ Chrome.propTypes = {
   success: PropTypes.node,
   terms: PropTypes.element,
   title: PropTypes.string,
-  transitionName: PropTypes.string.isRequired,
+  classNames: PropTypes.string.isRequired,
   scrollGlobalMessagesIntoView: PropTypes.bool
 };
 
