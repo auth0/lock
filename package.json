@@ -4,7 +4,15 @@
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
-  "keywords": ["auth0", "auth", "openid", "authentication", "passwordless", "browser", "jwt"],
+  "keywords": [
+    "auth0",
+    "auth",
+    "openid",
+    "authentication",
+    "passwordless",
+    "browser",
+    "jwt"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/auth0/lock"
@@ -128,6 +136,10 @@
     "coverageReporters": ["lcov", "text-summary"]
   },
   "lint-staged": {
-    "*.{js,jsx}": ["npm run lint", "prettier --write --print-width 100 --single-quote", "git add"]
+    "*.{js,jsx}": [
+      "npm run lint",
+      "prettier --write --print-width 100 --single-quote",
+      "git add"
+    ]
   }
 }
