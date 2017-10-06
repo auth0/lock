@@ -268,20 +268,20 @@ export default class Chrome extends React.Component {
             </div>
           </CSSTransition>
         </TransitionGroup>
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative' }} ref="screen">
           <MultisizeSlide
             delay={550}
             onDidAppear={::this.onDidAppear}
             onDidSlide={::this.onDidSlide}
             onWillSlide={::this.onWillSlide}
-            classNames={classNames}
+            transitionName={classNames}
             reverse={reverse}
           >
             <div key={this.mainScreenName()} className="auth0-lock-view-content">
               <div style={{ position: 'relative' }}>
                 <div className="auth0-lock-body-content">
                   <div className="auth0-lock-content">
-                    <div className="auth0-lock-form" ref="screen">
+                    <div className="auth0-lock-form">
                       <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                     </div>
                   </div>
