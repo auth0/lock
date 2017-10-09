@@ -4,8 +4,10 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Şifre değiştirme deneme sayısında limite ulaştınız. Tekrar denemeden önce lütfen bekleyin.',
-      'lock.fallback': 'Özür dileriz, şifre değiştirme isteğiniz gerçekleştirilirken bir hata oluştu.'
+      too_many_requests:
+        'Şifre değiştirme deneme sayısında limite ulaştınız. Tekrar denemeden önce lütfen bekleyin.',
+      'lock.fallback':
+        'Özür dileriz, şifre değiştirme isteğiniz gerçekleştirilirken bir hata oluştu.'
     },
     login: {
       blocked_user: 'Kullanıcı engellendi.',
@@ -17,12 +19,16 @@ export default {
       'lock.network': 'Sunucuya ulaşamadık. Lütfen bağlantınızı kontrol edin ve tekrar deneyin.',
       'lock.popup_closed': 'Popup penceresi kapandı. Tekrar deneyin.',
       'lock.unauthorized': 'Yetkiler alınamadı. Tekrar deneyin.',
-      'lock.mfa_registration_required': 'Çok faktörlü kimlik doğrulama gerekmekte ancak cihazınız kayıtlı değil. Devam etmeden önce lütfen cihazınızı kaydettirin.',
+      'lock.mfa_registration_required':
+        'Çok faktörlü kimlik doğrulama gerekmekte ancak cihazınız kayıtlı değil. Devam etmeden önce lütfen cihazınızı kaydettirin.',
       'lock.mfa_invalid_code': 'Hatalı kod. Lütfen tekrar deneyin.',
-      password_change_required: 'İlk defa giriş yaptığınız yada şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.',
-      password_leaked: 'Şifreniz başka bir websitesinde açığa çıktığı için bu giriş denemesi engelledi. Engeli kaldırmak için gereken adımları size email ile gönderdik.',
+      password_change_required:
+        'İlk defa giriş yaptığınız yada şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.',
+      password_leaked:
+        'Şifreniz başka bir websitesinde açığa çıktığı için bu giriş denemesi engelledi. Engeli kaldırmak için gereken adımları size email ile gönderdik.',
       too_many_attempts: 'Çoklu giriş denemesi sonucunda hesabınız bloke oldu.',
-      session_missing: 'Kimlik doğrulama isteği tamamlayamadı. Tüm açık diyaloglar kapattıktan sonra tekrar deneyiniz',
+      session_missing:
+        'Kimlik doğrulama isteği tamamlayamadı. Tüm açık diyaloglar kapattıktan sonra tekrar deneyiniz',
       'hrd.not_matching_email': ', Giriş için kurumsal e-posta kullanın.'
     },
     passwordless: {
@@ -57,7 +63,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Lütfen %s deki şirket kimliğinizi girin.',
   failedLabel: 'Başarısız!',
   forgotPasswordAction: 'Şifrenizi hatırlamıyor musunuz?',
-  forgotPasswordInstructions: 'Lütfen e-posta adresinizi girin. Şifrenizi yenilemek için size e-posta göndereceğiz.',
+  forgotPasswordInstructions:
+    'Lütfen e-posta adresinizi girin. Şifrenizi yenilemek için size e-posta göndereceğiz.',
   forgotPasswordSubmitLabel: 'Email gönder',
   invalidErrorHint: 'Geçersiz',
   lastLoginInstructions: 'En son giriş yaptığınız',
@@ -68,7 +75,8 @@ export default {
   notYourAccountAction: 'Sizin hesabınız değil mi?',
   passwordInputPlaceholder: 'şifreniz',
   passwordStrength: {
-    containsAtLeast: 'En az %d farklı tip karakter kullanılmalıdır. Altta kullanılabilir %d farklı tip listelenmiştir.',
+    containsAtLeast:
+      'En az %d farklı tip karakter kullanılmalıdır. Altta kullanılabilir %d farklı tip listelenmiştir.',
     identicalChars: 'Tek satırda %d den fazla aynı karakter olamaz (ör., "%s" izin verilmez)',
     nonEmpty: 'Boşluksuz şifre gerekli',
     numbers: 'Sayılar (ör. 0-9)',
@@ -78,12 +86,16 @@ export default {
     specialCharacters: 'Özel karakterler (ör. !@#$%^&*)',
     upperCase: 'Büyük harfler (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Aksi halde, giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
+  passwordlessEmailAlternativeInstructions:
+    'Aksi halde, giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
   passwordlessEmailCodeInstructions: '%s adresine kod içeren bir e-posta gönderildi.',
-  passwordlessEmailInstructions: 'Giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
-  passwordlessSMSAlternativeInstructions: 'Aksi halde, giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
+  passwordlessEmailInstructions:
+    'Giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
+  passwordlessSMSAlternativeInstructions:
+    'Aksi halde, giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
   passwordlessSMSCodeInstructions: 'Kod içeren bir SMS gönderildi<br/>%s.',
-  passwordlessSMSInstructions: 'Giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
+  passwordlessSMSInstructions:
+    'Giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
   phoneNumberInputPlaceholder: 'telefon numaranız',
   resendCodeAction: "Kod'u almadınız mı?",
   resendLabel: 'Tekrar gönder',
@@ -99,7 +111,8 @@ export default {
   ssoEnabled: 'Tek oturum açma (SSO) etkinleştirildi',
   submitLabel: 'Gönder',
   unrecoverableError: 'Bir hata oluştu.<br />Lütfen teknik destek ile iletişime geçin.',
-  usernameFormatErrorHint: '%d-%d harf, sayı ve aşağıdaki karakterleri kullanın: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    '%d-%d harf, sayı ve aşağıdaki karakterleri kullanın: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'kullanıcı adınız',
   usernameOrEmailInputPlaceholder: 'kullanıcı adı/e-posta',
   title: 'Auth0',

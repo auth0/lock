@@ -4,15 +4,7 @@
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
-  "keywords": [
-    "auth0",
-    "auth",
-    "openid",
-    "authentication",
-    "passwordless",
-    "browser",
-    "jwt"
-  ],
+  "keywords": ["auth0", "auth", "openid", "authentication", "passwordless", "browser", "jwt"],
   "repository": {
     "type": "git",
     "url": "git://github.com/auth0/lock"
@@ -28,9 +20,12 @@
     "precommit": "lint-staged",
     "lint": "eslint --ext .jsx,.js src/",
     "test": "cross-env BABEL_ENV=test zuul -- test/**/*.test.js",
-    "test:browser": "cross-env BABEL_ENV=test zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
-    "test:cli": "cross-env BABEL_ENV=test mochify --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
-    "test:watch": "cross-env BABEL_ENV=test mochify --watch --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
+    "test:browser":
+      "cross-env BABEL_ENV=test zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
+    "test:cli":
+      "cross-env BABEL_ENV=test mochify --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
+    "test:watch":
+      "cross-env BABEL_ENV=test mochify --watch --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
     "test:jest": "jest --coverage --runInBand",
     "test:jest:watch": "jest --watch --coverage",
     "publish:cdn": "ccu",
@@ -114,13 +109,8 @@
     "localPath": "build"
   },
   "jest": {
-    "modulePaths": [
-      "<rootDir>/src/",
-      "<rootDir>/src/__tests__"
-    ],
-    "setupFiles": [
-      "<rootDir>/src/__tests__/setup-tests.js"
-    ],
+    "modulePaths": ["<rootDir>/src/", "<rootDir>/src/__tests__"],
+    "setupFiles": ["<rootDir>/src/__tests__/setup-tests.js"],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/test/",
@@ -135,16 +125,10 @@
       "<rootDir>/src/__tests__/testUtils.js",
       "<rootDir>/src/__tests__/setup-tests.js"
     ],
-    "coverageReporters": [
-      "lcov",
-      "text-summary"
-    ]
+    "coverageReporters": ["lcov", "text-summary"]
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "npm run lint",
-      "prettier --write --print-width 100 --single-quote",
-      "git add"
-    ]
+    "*.{js,jsx}": ["npm run lint"],
+    "*.{js,jsx,json,html}": ["prettier --write --print-width 100 --single-quote", "git add"]
   }
 }

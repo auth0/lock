@@ -47,11 +47,11 @@ export default class SocialButtonsPane extends React.Component {
       );
     });
 
-    const loading =
-      showLoading &&
+    const loading = showLoading && (
       <div className="auth0-loading-container">
         <div className="auth0-loading" />
-      </div>;
+      </div>
+    );
 
     return (
       <div className="auth-lock-social-buttons-pane">

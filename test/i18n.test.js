@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 import { stub } from 'sinon';
 
 import expect from 'expect.js';
@@ -10,10 +10,9 @@ import esDictionary from '../src/i18n/es';
 
 import * as sync from '../src/sync';
 
-describe("load i18n configuration", () => {
-
+describe('load i18n configuration', () => {
   before(function() {
-    stub(sync, "default", (m, key, opts) => {
+    stub(sync, 'default', (m, key, opts) => {
       m = opts.successFn(m, esDictionary);
       return m;
     });
@@ -24,15 +23,14 @@ describe("load i18n configuration", () => {
   });
 
   it('should merge and warn missing keys', () => {
-
     let i18n = require('../src/i18n');
 
     // We need to initialize the state
     var m = Immutable.fromJS({
-      languageBaseUrl: "https://cdn.auth0.com",
+      languageBaseUrl: 'https://cdn.auth0.com',
       ui: {
         disableWarnings: true,
-        language: "es"
+        language: 'es'
       }
     });
 
@@ -43,11 +41,11 @@ describe("load i18n configuration", () => {
     let en = flatten(enDictionary);
     let es = flatten(esDictionary);
 
-    // We should check that the language has all the keys in the 
+    // We should check that the language has all the keys in the
     // en language and its values should be either es or en.
-    Object.keys(en).forEach( (key) => {
+    Object.keys(en).forEach(key => {
       expect(language).to.have.property(key);
       expect([en[key], es[key]]).to.contain(language[key]);
-    })
+    });
   });
 });

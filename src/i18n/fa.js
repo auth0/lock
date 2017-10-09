@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'بیش از دفعات مجاز تغییر رمز عبور تلاش نموده اید ، لطفا کمی صبر کنید و دوباره تلاش کنید',
+      too_many_requests:
+        'بیش از دفعات مجاز تغییر رمز عبور تلاش نموده اید ، لطفا کمی صبر کنید و دوباره تلاش کنید',
       'lock.fallback': 'متاسفیم ، مشکلی در تغییر رمز عبور رخ داده است.'
     },
     login: {
@@ -17,12 +18,16 @@ export default {
       'lock.network': 'خطا در اتصال به سرور ، لطفا اتصال اینترنت تان را بررسی کنید.',
       'lock.popup_closed': 'پنجره بسته شده است ، لطفا دوباره تلاش کنید.',
       'lock.unauthorized': 'مجوزی اعطا نشده است ، دوباره تلاش کنید.',
-      'lock.mfa_registration_required': 'احراز هویت چند فاکتوری لازم است ، اما دستگاه شما ثبت نشده است، لطفا دستگاه خود را ثبت کنید.',
+      'lock.mfa_registration_required':
+        'احراز هویت چند فاکتوری لازم است ، اما دستگاه شما ثبت نشده است، لطفا دستگاه خود را ثبت کنید.',
       'lock.mfa_invalid_code': 'کد اشتباه است ، دوباره تلاش کنید',
-      password_change_required: 'لازم است تا رمزعبور خود را تغییر دهید ، احتملا برای اولین بار است که وارد سیستم میشوید یا رمز عبور شما منقضی شده است',
-      password_leaked: 'اکانت شما به دلیل لو رفتن در وبسایت دیگری مسدود شده است ، ما مراحل رفع بلاک را برایتان ایمیل خواهیم کرد.',
+      password_change_required:
+        'لازم است تا رمزعبور خود را تغییر دهید ، احتملا برای اولین بار است که وارد سیستم میشوید یا رمز عبور شما منقضی شده است',
+      password_leaked:
+        'اکانت شما به دلیل لو رفتن در وبسایت دیگری مسدود شده است ، ما مراحل رفع بلاک را برایتان ایمیل خواهیم کرد.',
       too_many_attempts: 'اکانت شما به دلیل تلاش های نا موفق متعدد متوالی مسدود شده است',
-      session_missing: 'می تواند درخواست احراز هویت خود را کامل کند. لطفا پس از بستن همه پنجره باز دوباره امتحان کنید',
+      session_missing:
+        'می تواند درخواست احراز هویت خود را کامل کند. لطفا پس از بستن همه پنجره باز دوباره امتحان کنید',
       'hrd.not_matching_email': 'لطفا، استفاده از ایمیل شرکت خود را برای ورود.'
     },
     passwordless: {
@@ -57,7 +62,8 @@ export default {
   enterpriseActiveLoginInstructions: 'اطلاعات سازمانی تان را در %s وارد کنید.',
   failedLabel: 'ناموفق!',
   forgotPasswordAction: 'رمز عبورتان را فراموش کردید?',
-  forgotPasswordInstructions: 'ایمیل خود را وارد کنید ، ما ایمیلی برای ریست کردن رمز عبور برایتان ارسال خواهیم کرد.',
+  forgotPasswordInstructions:
+    'ایمیل خود را وارد کنید ، ما ایمیلی برای ریست کردن رمز عبور برایتان ارسال خواهیم کرد.',
   forgotPasswordSubmitLabel: 'ارسال ایمیل',
   invalidErrorHint: 'نا معتبر',
   lastLoginInstructions: 'آخرین باری که وارد شده اید با',
@@ -78,10 +84,12 @@ export default {
     specialCharacters: 'کاراکتر های اختصاصی (مثل !@#$%^&*)',
     upperCase: 'حروف بزرگ (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'در غیر اینصورت ایمیل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
+  passwordlessEmailAlternativeInstructions:
+    'در غیر اینصورت ایمیل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
   passwordlessEmailCodeInstructions: 'ایمیلی شامل کد به %s ارسال شد.',
   passwordlessEmailInstructions: 'برای ورود ایمیلتان را وارد کنید<br/>یا حسابی ایجاد کنید',
-  passwordlessSMSAlternativeInstructions: 'در غیر اینصورت شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
+  passwordlessSMSAlternativeInstructions:
+    'در غیر اینصورت شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
   passwordlessSMSCodeInstructions: 'پیامکی شامل کد برایتان به شماره <br/> %s ارسال شد.',
   passwordlessSMSInstructions: 'شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
   phoneNumberInputPlaceholder: 'شماره موبایل',

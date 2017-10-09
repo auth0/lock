@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Bạn đã sử dụng tối đa số lần đổi mật khẩu được cho phép. Vui lòng thử lại sau.',
+      too_many_requests:
+        'Bạn đã sử dụng tối đa số lần đổi mật khẩu được cho phép. Vui lòng thử lại sau.',
       'lock.fallback': 'Đã có lỗi xảy ra trong lúc thay đổi mật khẩu, chúng tôi rất lấy làm tiếc.'
     },
     login: {
@@ -17,12 +18,16 @@ export default {
       'lock.network': 'Không thể kết nói đến server. Vui lòng kiểm lại đường truyền và thử lại.',
       'lock.popup_closed': 'Cửa sổ Popup đã đóng. Vui lòng thử lại.',
       'lock.unauthorized': 'Tài khoản không được cấp phép. Vui lòng thử lại.',
-      'lock.mfa_registration_required': 'Xác thực đa yếu tố được yêu cầu nhưng thiết bị của bạn không có đăng ký. Vui lòng đăng ký và thử lại sau.',
+      'lock.mfa_registration_required':
+        'Xác thực đa yếu tố được yêu cầu nhưng thiết bị của bạn không có đăng ký. Vui lòng đăng ký và thử lại sau.',
       'lock.mfa_invalid_code': 'Sai mã số. Vui lòng thử lại.',
-      password_change_required: 'Bạn cần phải thay đổi mật khẩu vì đây là lần đầu bạn đăng nhập, hoặc mật khẩu của bạn đã hết hạn.',
-      password_leaked: 'Tài khoản của bạn đã bị khóa do mật khẩu của bạn đã bị rò rỉ ở 1 website khác. Chúng tôi đã gửi cho bạn 1 email hướng dẫn cách mở khóa tài khoản.',
+      password_change_required:
+        'Bạn cần phải thay đổi mật khẩu vì đây là lần đầu bạn đăng nhập, hoặc mật khẩu của bạn đã hết hạn.',
+      password_leaked:
+        'Tài khoản của bạn đã bị khóa do mật khẩu của bạn đã bị rò rỉ ở 1 website khác. Chúng tôi đã gửi cho bạn 1 email hướng dẫn cách mở khóa tài khoản.',
       too_many_attempts: 'Tài khoản của bạn đã bị khóa do liên tục đăng nhập thất bại nhiều lần.',
-      session_missing: 'Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở',
+      session_missing:
+        'Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở',
       'hrd.not_matching_email': 'Xin vui lòng, sử dụng email công ty của bạn để đăng nhập.'
     },
     passwordless: {
@@ -57,7 +62,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Vui lòng điền thông tin đăng nhập công ty của bạn %s.',
   failedLabel: 'Thất bại!',
   forgotPasswordAction: 'Quên mật khẩu?',
-  forgotPasswordInstructions: 'Vui lòng điền email vào đây. Chúng tôi sẽ gửi thư hướng dẫn phục hồi mật khẩu cho bạn ngay lập tức.',
+  forgotPasswordInstructions:
+    'Vui lòng điền email vào đây. Chúng tôi sẽ gửi thư hướng dẫn phục hồi mật khẩu cho bạn ngay lập tức.',
   forgotPasswordSubmitLabel: 'Gửi email',
   invalidErrorHint: 'Không hợp lệ',
   lastLoginInstructions: 'Lần đăng nhập gần đây nhất của bạn',
@@ -78,10 +84,12 @@ export default {
     specialCharacters: 'Kí tự đặc biệt (e.g. !@#$%^&*)',
     upperCase: 'Chữ in hoa (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Bằng không, nhập email của bạn để đăng nhập<br/>hoặc đăng ký.',
+  passwordlessEmailAlternativeInstructions:
+    'Bằng không, nhập email của bạn để đăng nhập<br/>hoặc đăng ký.',
   passwordlessEmailCodeInstructions: '1 email có mã số đã được gửi tới email %s.',
   passwordlessEmailInstructions: 'Nhập email của bạn để đăng nhập<br/>hoặc đăng ký',
-  passwordlessSMSAlternativeInstructions: 'Bằng không, nhập số điện thoại của bạn để đăng nhập<br/>hoặc đăng ký',
+  passwordlessSMSAlternativeInstructions:
+    'Bằng không, nhập số điện thoại của bạn để đăng nhập<br/>hoặc đăng ký',
   passwordlessSMSCodeInstructions: '1 SMS có mã số đã được gửi <br/>tới %s.',
   passwordlessSMSInstructions: 'Nhập số điện thoại của bạn để đăng nhập<br/>hoặc đăng ký',
   phoneNumberInputPlaceholder: 'Số điện thoại',
@@ -98,8 +106,10 @@ export default {
   socialSignUpInstructions: '',
   ssoEnabled: 'Đăng nhập 1 lần đã được kích hoạt',
   submitLabel: 'Gửi',
-  unrecoverableError: 'Có lỗi hệ thống xảy ra.<br />Vui lòng liên hệ bộ phận kỹ thuật để được giúp đỡ.',
-  usernameFormatErrorHint: 'Sử dụng các ký tự %d____%d, các con số và các ký tự sau: "_", ".", "+", "-"',
+  unrecoverableError:
+    'Có lỗi hệ thống xảy ra.<br />Vui lòng liên hệ bộ phận kỹ thuật để được giúp đỡ.',
+  usernameFormatErrorHint:
+    'Sử dụng các ký tự %d____%d, các con số và các ký tự sau: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Tên tài khoản',
   usernameOrEmailInputPlaceholder: 'Tên tài khoản/Email',
   title: 'Auth0',

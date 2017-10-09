@@ -13,7 +13,13 @@ export default class MFAPane extends React.Component {
 
     const titleElement = title && <h2>{title}</h2>;
 
-    return <div>{titleElement}{header}{pane}</div>;
+    return (
+      <div>
+        {titleElement}
+        {header}
+        {pane}
+      </div>
+    );
   }
 }
 

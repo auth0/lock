@@ -119,9 +119,8 @@ function formatClientConnection(connectionType, strategyName, connection) {
     result.passwordPolicy = connection.passwordPolicy || 'none';
     result.allowSignup = typeof connection.showSignup === 'boolean' ? connection.showSignup : true;
     result.allowForgot = typeof connection.showForgot === 'boolean' ? connection.showForgot : true;
-    result.requireUsername = typeof connection.requires_username === 'boolean'
-      ? connection.requires_username
-      : false;
+    result.requireUsername =
+      typeof connection.requires_username === 'boolean' ? connection.requires_username : false;
     result.validation = formatConnectionValidation(connection.validation);
   }
 

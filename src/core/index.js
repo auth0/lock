@@ -31,9 +31,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       hashCleanup: options.hashCleanup === false ? false : true,
       allowedConnections: Immutable.fromJS(options.allowedConnections || []),
       ui: extractUIOptions(id, options),
-      defaultADUsernameFromEmailPrefix: options.defaultADUsernameFromEmailPrefix === false
-        ? false
-        : true,
+      defaultADUsernameFromEmailPrefix:
+        options.defaultADUsernameFromEmailPrefix === false ? false : true,
       prefill: options.prefill || {},
       connectionResolver: options.connectionResolver
     })
@@ -167,9 +166,10 @@ function extractUIOptions(id, options) {
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
-    autofocus: undefined === options.autofocus
-      ? !(options.container || isSmallScreen())
-      : !!options.autofocus,
+    autofocus:
+      undefined === options.autofocus
+        ? !(options.container || isSmallScreen())
+        : !!options.autofocus,
     avatar: avatar,
     avatarProvider: avatarProvider,
     logo: typeof logo === 'string' ? logo : undefined,
@@ -186,9 +186,10 @@ function extractUIOptions(id, options) {
     allowAutocomplete: !!options.allowAutocomplete,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
     allowShowPassword: !!options.allowShowPassword,
-    scrollGlobalMessagesIntoView: undefined === options.scrollGlobalMessagesIntoView
-      ? true
-      : !!options.scrollGlobalMessagesIntoView
+    scrollGlobalMessagesIntoView:
+      undefined === options.scrollGlobalMessagesIntoView
+        ? true
+        : !!options.scrollGlobalMessagesIntoView
   });
 }
 
@@ -249,7 +250,8 @@ function extractAuthOptions(options) {
     sso,
     state,
     nonce
-  } = options.auth || {};
+  } =
+    options.auth || {};
 
   let { oidcConformant } = options;
 
@@ -308,7 +310,9 @@ function extractAuthOptions(options) {
 }
 
 export function withAuthOptions(m, opts) {
-  return Immutable.fromJS(opts).merge(get(m, 'auth')).toJS();
+  return Immutable.fromJS(opts)
+    .merge(get(m, 'auth'))
+    .toJS();
 }
 
 function extractClientBaseUrlOption(opts, domain) {
@@ -357,9 +361,10 @@ export function extractTenantBaseUrlOption(opts, domain) {
   var domain;
 
   if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
-    domain = parts.length > 3
-      ? 'https://cdn.' + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
-      : AUTH0_US_CDN_URL;
+    domain =
+      parts.length > 3
+        ? 'https://cdn.' + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
+        : AUTH0_US_CDN_URL;
 
     return urljoin(domain, 'tenants', 'v1', `${tenant_name}.js`);
   } else {
@@ -423,7 +428,10 @@ export function allowedConnections(m) {
 
 export function connections(m, type = undefined, ...strategies) {
   if (arguments.length === 1) {
-    return tget(m, 'connections', Map()).filter((v, k) => k !== 'unknown').valueSeq().flatten(true);
+    return tget(m, 'connections', Map())
+      .filter((v, k) => k !== 'unknown')
+      .valueSeq()
+      .flatten(true);
   }
 
   const xs = tget(m, ['connections', type], List());

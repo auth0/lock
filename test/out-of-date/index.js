@@ -4,16 +4,16 @@ import { spy, stub } from 'sinon';
 import Auth0LockPasswordless from '../src/index';
 import WebAPI from '../src/core/web_api';
 
-describe(".parseHash", function() {
+describe('.parseHash', function() {
   beforeEach(function() {
-    this.lock = new Auth0LockPasswordless("c", "d");
+    this.lock = new Auth0LockPasswordless('c', 'd');
     this.client = getLockClient(this.lock);
   });
 
-  it("delegates the call to an Auth0 instance", function() {
-    const hash = "a hash";
-    const returnValue = "fake return value";
-    stub(this.client, "parseHash").returns(returnValue);
+  it('delegates the call to an Auth0 instance', function() {
+    const hash = 'a hash';
+    const returnValue = 'fake return value';
+    stub(this.client, 'parseHash').returns(returnValue);
 
     expect(this.lock.parseHash(hash)).to.be(returnValue);
 
@@ -22,17 +22,17 @@ describe(".parseHash", function() {
   });
 });
 
-describe(".getProfile", function() {
+describe('.getProfile', function() {
   beforeEach(function() {
-    this.lock = new Auth0LockPasswordless("c", "d");
+    this.lock = new Auth0LockPasswordless('c', 'd');
     this.client = getLockClient(this.lock);
   });
 
-  it("delegates the call to an Auth0 instance", function() {
-    const token = "a token";
+  it('delegates the call to an Auth0 instance', function() {
+    const token = 'a token';
     const cb = () => {};
-    const returnValue = "fake return value";
-    stub(this.client, "getProfile").returns(returnValue);
+    const returnValue = 'fake return value';
+    stub(this.client, 'getProfile').returns(returnValue);
 
     expect(this.lock.getProfile(token, cb)).to.be(returnValue);
 

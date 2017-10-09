@@ -37,18 +37,17 @@ const Component = ({ i18n, model }) => {
   const sso = isSSOEnabled(model);
   const onlySocial = hasOnlyClassicConnections(model, 'social');
 
-  const tabs =
-    shouldRenderTabs(model) &&
+  const tabs = shouldRenderTabs(model) && (
     <LoginSignUpTabs
       key="loginsignup"
       lock={model}
       loginLabel={i18n.str('loginLabel')}
       signUpLink={signUpLink(model)}
       signUpLabel={i18n.str('signUpLabel')}
-    />;
+    />
+  );
 
-  const social =
-    l.hasSomeConnections(model, 'social') &&
+  const social = l.hasSomeConnections(model, 'social') && (
     <SocialButtonsPane
       bigButtons={useBigSocialButtons(model)}
       instructions={i18n.html('socialLoginInstructions')}
@@ -56,7 +55,8 @@ const Component = ({ i18n, model }) => {
       lock={model}
       showLoading={onlySocial}
       signUp={false}
-    />;
+    />
+  );
 
   const showPassword =
     !sso && (l.hasSomeConnections(model, 'database') || !!findADConnectionWithoutDomain(model));
@@ -67,15 +67,16 @@ const Component = ({ i18n, model }) => {
     ? 'databaseEnterpriseAlternativeLoginInstructions'
     : 'databaseEnterpriseLoginInstructions';
 
-  const usernameInputPlaceholderKey = databaseUsernameStyle(model) === 'any' ||
-    l.countConnections(model, 'enterprise') > 1
-    ? 'usernameOrEmailInputPlaceholder'
-    : 'usernameInputPlaceholder';
+  const usernameInputPlaceholderKey =
+    databaseUsernameStyle(model) === 'any' || l.countConnections(model, 'enterprise') > 1
+      ? 'usernameOrEmailInputPlaceholder'
+      : 'usernameInputPlaceholder';
 
   const usernameStyle = databaseUsernameStyle(model);
 
-  const login =
-    (sso || l.hasSomeConnections(model, 'database') || l.hasSomeConnections(model, 'enterprise')) &&
+  const login = (sso ||
+    l.hasSomeConnections(model, 'database') ||
+    l.hasSomeConnections(model, 'enterprise')) && (
     <LoginPane
       emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
       forgotPasswordAction={i18n.str('forgotPasswordAction')}
@@ -87,17 +88,22 @@ const Component = ({ i18n, model }) => {
       showPassword={showPassword}
       usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
       usernameStyle={usernameStyle}
-    />;
+    />
+  );
 
-  const ssoNotice =
-    sso &&
-    <SingleSignOnNotice>
-      {i18n.str('ssoEnabled')}
-    </SingleSignOnNotice>;
+  const ssoNotice = sso && <SingleSignOnNotice>{i18n.str('ssoEnabled')}</SingleSignOnNotice>;
 
   const separator = social && login && <PaneSeparator />;
 
-  return <div>{ssoNotice}{tabs}{social}{separator}{login}</div>;
+  return (
+    <div>
+      {ssoNotice}
+      {tabs}
+      {social}
+      {separator}
+      {login}
+    </div>
+  );
 };
 
 export default class Login extends Screen {

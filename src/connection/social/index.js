@@ -25,7 +25,7 @@ export const STRATEGIES = {
   linkedin: 'LinkedIn',
   miicard: 'miiCard',
   paypal: 'PayPal',
-  "paypal-sandbox": "PayPal Sandbox",
+  'paypal-sandbox': 'PayPal Sandbox',
   planningcenter: 'Planning Center',
   renren: '人人',
   salesforce: 'Salesforce',

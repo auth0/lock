@@ -1,8 +1,10 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Hai raggiunto il limite di tentativi di modifica della password . Attendi prima di riprovare.',
-      'lock.fallback': 'Ci dispiace, qualcosa è andato storto durante la richiesta di modifica della password.'
+      too_many_requests:
+        'Hai raggiunto il limite di tentativi di modifica della password . Attendi prima di riprovare.',
+      'lock.fallback':
+        'Ci dispiace, qualcosa è andato storto durante la richiesta di modifica della password.'
     },
     login: {
       blocked_user: 'L’utente è bloccato.',
@@ -11,16 +13,23 @@ export default {
       'lock.invalid_code': 'Codice errato.',
       'lock.invalid_email_password': 'email o password sbagliata.',
       'lock.invalid_username_password': 'Nome utente o password sbagliata.',
-      'lock.network': 'Non siamo riusciti a raggiungere il server. Si prega di controllare la connessione e riprovare.',
+      'lock.network':
+        'Non siamo riusciti a raggiungere il server. Si prega di controllare la connessione e riprovare.',
       'lock.popup_closed': 'Finestra popup chiusa. Riprova per favore.',
       'lock.unauthorized': 'Autorizzazioni non concesse. Riprova per favore.',
-      password_change_required: 'È necessario aggiornare la password perché questa è il primo login, o perché la password è scaduta.',
-      password_leaked: 'Questo accesso è stato bloccato perché la password è trapelato in un altro sito . Ti abbiamo inviato una email con le istruzioni su come sbloccarla.',
-      too_many_attempts: 'Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi.',
-      'lock.mfa_registration_required': 'Autenticazione a più fattori richiesta, ma il dispositivo non è abilitato. Si prega di iscriversi prima di passare.',
+      password_change_required:
+        'È necessario aggiornare la password perché questa è il primo login, o perché la password è scaduta.',
+      password_leaked:
+        'Questo accesso è stato bloccato perché la password è trapelato in un altro sito . Ti abbiamo inviato una email con le istruzioni su come sbloccarla.',
+      too_many_attempts:
+        'Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi.',
+      'lock.mfa_registration_required':
+        'Autenticazione a più fattori richiesta, ma il dispositivo non è abilitato. Si prega di iscriversi prima di passare.',
       'lock.mfa_invalid_code': 'Codice errato. Riprova.',
-      session_missing: 'Impossibile completare la richiesta di autenticazione. Riprova dopo aver chiuso tutte le finestre di dialogo aperte',
-      'hrd.not_matching_email': 'Si prega di utilizzare la posta elettronica aziendale per effettuare il login.'
+      session_missing:
+        'Impossibile completare la richiesta di autenticazione. Riprova dopo aver chiuso tutte le finestre di dialogo aperte',
+      'hrd.not_matching_email':
+        'Si prega di utilizzare la posta elettronica aziendale per effettuare il login.'
     },
     passwordless: {
       'bad.email': 'L’email non è valido ',
@@ -54,7 +63,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Si prega di inserire le credenziali aziendali a  %s.',
   failedLabel: 'Fallito!',
   forgotPasswordAction: 'Non ricordi la password?',
-  forgotPasswordInstructions: "Inserisci l'email. Ti invieremo una email per reimpostare la password.",
+  forgotPasswordInstructions:
+    "Inserisci l'email. Ti invieremo una email per reimpostare la password.",
   forgotPasswordSubmitLabel: "Inviare l'email",
   invalidErrorHint: 'Non valido',
   lastLoginInstructions: 'L’ultima volta hai effettuato l’accesso con',
@@ -75,10 +85,12 @@ export default {
     specialCharacters: 'Caratteri speciali (e.g. !@#$%^&*)',
     upperCase: 'Caratteri maiuscoli (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: "Altrimenti, si prega d’inserire l'email per accedere <br/> o creare un account",
+  passwordlessEmailAlternativeInstructions:
+    "Altrimenti, si prega d’inserire l'email per accedere <br/> o creare un account",
   passwordlessEmailCodeInstructions: 'Una email con il codice è stato inviata %s.',
   passwordlessEmailInstructions: 'Si prega d’inserire la email <br/>o creare un account',
-  passwordlessSMSAlternativeInstructions: 'Altrimenti, si prega d’inserire il numero di telefono per accedere <br/>o creare un account',
+  passwordlessSMSAlternativeInstructions:
+    'Altrimenti, si prega d’inserire il numero di telefono per accedere <br/>o creare un account',
   passwordlessSMSCodeInstructions: 'Un SMS con il codice è stato inviato<br/> a %s.',
   passwordlessSMSInstructions: 'Si prega d’inserire il numero di telefono <br/>o creare un account',
   phoneNumberInputPlaceholder: 'il Suo numero di telefono',
@@ -107,7 +119,8 @@ export default {
   signupTitle: 'Registrazione',
   mfaInputPlaceholder: 'Codice',
   mfaLoginTitle: '2-fase di verifica',
-  mfaLoginInstructions: 'Si prega di inserire il codice di verifica generato dalla tua applicazione mobile.',
+  mfaLoginInstructions:
+    'Si prega di inserire il codice di verifica generato dalla tua applicazione mobile.',
   mfaSubmitLabel: 'Accesso',
   mfaCodeErrorHint: 'Usare %d numeri',
   showPassword: 'Mostra password'

@@ -35,12 +35,14 @@ class SubmitButton extends React.Component {
 
   render() {
     const { color, disabled, label } = this.props;
-    const content = label
-      ? <span className="auth0-label-submit">
-          {label}
-          <span dangerouslySetInnerHTML={{ __html: submitText }} />
-        </span>
-      : <span dangerouslySetInnerHTML={{ __html: submitSvg }} />;
+    const content = label ? (
+      <span className="auth0-label-submit">
+        {label}
+        <span dangerouslySetInnerHTML={{ __html: submitText }} />
+      </span>
+    ) : (
+      <span dangerouslySetInnerHTML={{ __html: submitSvg }} />
+    );
 
     return (
       <button
@@ -208,18 +210,18 @@ export default class Chrome extends React.Component {
       name = '';
     }
 
-    const submitButton =
-      showSubmitButton &&
-      !delayingShowSubmitButton &&
-      <SubmitButton
-        color={primaryColor}
-        disabled={disableSubmitButton}
-        screenName={screenName}
-        contentProps={contentProps}
-        key="submit"
-        label={submitButtonLabel}
-        ref="submit"
-      />;
+    const submitButton = showSubmitButton &&
+      !delayingShowSubmitButton && (
+        <SubmitButton
+          color={primaryColor}
+          disabled={disableSubmitButton}
+          screenName={screenName}
+          contentProps={contentProps}
+          key="submit"
+          label={submitButtonLabel}
+          ref="submit"
+        />
+      );
 
     function wrapGlobalMessage(message) {
       return typeof message === 'string'
@@ -227,22 +229,22 @@ export default class Chrome extends React.Component {
         : message;
     }
 
-    const globalError = error
-      ? <GlobalMessage
-          key="global-error"
-          message={wrapGlobalMessage(error)}
-          type="error"
-          scrollIntoView={scrollGlobalMessagesIntoView}
-        />
-      : null;
-    const globalSuccess = success
-      ? <GlobalMessage
-          key="global-success"
-          message={wrapGlobalMessage(success)}
-          type="success"
-          scrollIntoView={scrollGlobalMessagesIntoView}
-        />
-      : null;
+    const globalError = error ? (
+      <GlobalMessage
+        key="global-error"
+        message={wrapGlobalMessage(error)}
+        type="error"
+        scrollIntoView={scrollGlobalMessagesIntoView}
+      />
+    ) : null;
+    const globalSuccess = success ? (
+      <GlobalMessage
+        key="global-success"
+        message={wrapGlobalMessage(success)}
+        type="success"
+        scrollIntoView={scrollGlobalMessagesIntoView}
+      />
+    ) : null;
 
     const Content = contentComponent;
 
@@ -285,17 +287,14 @@ export default class Chrome extends React.Component {
                       <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                     </div>
                   </div>
-                  {terms &&
-                    <small className="auth0-lock-terms">
-                      {terms}
-                    </small>}
+                  {terms && <small className="auth0-lock-terms">{terms}</small>}
                 </div>
               </div>
             </div>
           </MultisizeSlide>
         </div>
         {submitButton}
-        {auxiliaryPane &&
+        {auxiliaryPane && (
           <TransitionGroup>
             <CSSTransition
               ref="auxiliary"
@@ -304,7 +303,8 @@ export default class Chrome extends React.Component {
             >
               {auxiliaryPane}
             </CSSTransition>
-          </TransitionGroup>}
+          </TransitionGroup>
+        )}
       </div>
     );
   }
