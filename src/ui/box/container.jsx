@@ -204,7 +204,7 @@ export default class Container extends React.Component {
     }
 
     return (
-      <div className={className} ref="container">
+      <div className={className}>
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
