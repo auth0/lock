@@ -155,7 +155,7 @@ export default class Container extends React.Component {
       tabs,
       terms,
       title,
-      transitionName,
+      classNames,
       scrollGlobalMessagesIntoView
     } = this.props;
 
@@ -204,7 +204,7 @@ export default class Container extends React.Component {
     }
 
     return (
-      <div className={className} ref="container">
+      <div className={className}>
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
@@ -231,7 +231,7 @@ export default class Container extends React.Component {
                 tabs={tabs}
                 terms={terms}
                 title={title}
-                transitionName={transitionName}
+                classNames={classNames}
                 scrollGlobalMessagesIntoView={scrollGlobalMessagesIntoView}
               />
             </div>
@@ -265,7 +265,7 @@ Container.propTypes = {
   tabs: PropTypes.bool,
   terms: PropTypes.element,
   title: PropTypes.string,
-  transitionName: PropTypes.string.isRequired,
+  classNames: PropTypes.string.isRequired,
   scrollGlobalMessagesIntoView: PropTypes.bool
   // escHandler
   // submitHandler,

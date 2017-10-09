@@ -9,7 +9,7 @@ Object {
 
 exports[`field/username setUsername() calls setField 1`] = `
 Array [
-  Object {
+  Immutable.Map {
     "validation": null,
   },
   "username",

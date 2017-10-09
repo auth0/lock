@@ -6,9 +6,9 @@ exports[`setResolvedConnection sets the connection 1`] = `
 Array [
   "m",
   "resolvedConnection",
-  Object {
-    "name": "bar",
+  Immutable.Map {
     "type": "database",
+    "name": "bar",
   },
 ]
 `;

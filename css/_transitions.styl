@@ -14,12 +14,12 @@
 
 /*Slide out*/
 
-.slide-leave {
+.slide-exit {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
-.slide-leave.slide-leave-active {
+.slide-exit.slide-exit-active {
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
   -webkit-transition: -webkit-transform .3s ease-in;
@@ -58,13 +58,13 @@
 
 /*vslide out*/
 
-.vslide-leave {
+.vslide-exit {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
 
-.vslide-leave.vslide-leave-active {
+.vslide-exit.vslide-exit-active {
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
   -webkit-transition: -webkit-transform .35s;
@@ -93,7 +93,7 @@
 
 /*Horizontal fade out*/
 
-.horizontal-fade-leave {
+.horizontal-fade-exit {
   opacity: 1;
   position: absolute;
   width: 100%;
@@ -101,7 +101,7 @@
   left: 0;
 }
 
-.horizontal-fade-leave.horizontal-fade-leave-active {
+.horizontal-fade-exit.horizontal-fade-exit-active {
   opacity: 0;
   -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
@@ -132,7 +132,7 @@
 
 /* reverse horizontal fade out */
 
-.reverse-horizontal-fade-leave {
+.reverse-horizontal-fade-exit {
   opacity: 1;
   position: absolute;
   width: 100%;
@@ -140,7 +140,7 @@
   left: 0;
 }
 
-.reverse-horizontal-fade-leave.reverse-horizontal-fade-leave-active {
+.reverse-horizontal-fade-exit.reverse-horizontal-fade-exit-active {
   opacity: 0;
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
@@ -163,7 +163,7 @@
 
 /* fade out*/
 
-.fade-leave {
+.fade-exit {
   opacity: 1;
   position: absolute;
   width: 100%;
@@ -173,7 +173,7 @@
   opacity: 1;
 }
 
-.fade-leave.fade-leave-active {
+.fade-exit.fade-exit-active {
   opacity: 0;
 
   -webkit-transition: opacity .5s linear;
