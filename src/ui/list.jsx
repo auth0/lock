@@ -137,7 +137,6 @@ class List extends React.Component {
 
       const props = {
         highlighted: highlighted,
-        key: x.get('label'),
         label: x.get('label'),
         onClick: () => this.props.onClick(x),
         onMouseMove: () => this.mouseMoveHandler(x)
@@ -145,7 +144,7 @@ class List extends React.Component {
 
       if (highlighted) props.ref = 'highlighted';
 
-      return <Item {...props} />;
+      return <Item key={x.get('label')} {...props} />;
     });
 
     return (
