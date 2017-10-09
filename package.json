@@ -4,7 +4,15 @@
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
-  "keywords": ["auth0", "auth", "openid", "authentication", "passwordless", "browser", "jwt"],
+  "keywords": [
+    "auth0",
+    "auth",
+    "openid",
+    "authentication",
+    "passwordless",
+    "browser",
+    "jwt"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/auth0/lock"
@@ -20,12 +28,9 @@
     "precommit": "lint-staged",
     "lint": "eslint --ext .jsx,.js src/",
     "test": "cross-env BABEL_ENV=test zuul -- test/**/*.test.js",
-    "test:browser":
-      "cross-env BABEL_ENV=test zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
-    "test:cli":
-      "cross-env BABEL_ENV=test mochify --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
-    "test:watch":
-      "cross-env BABEL_ENV=test mochify --watch --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
+    "test:browser": "cross-env BABEL_ENV=test zuul --local 8080 --disable-tunnel -- test/**/*.test.js",
+    "test:cli": "cross-env BABEL_ENV=test mochify --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
+    "test:watch": "cross-env BABEL_ENV=test mochify --watch --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
     "test:jest": "jest --coverage --runInBand",
     "test:jest:watch": "jest --watch --coverage",
     "publish:cdn": "ccu",
@@ -50,9 +55,9 @@
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
-    "eslint": "^3.19.0",
-    "eslint-config-prettier": "^1.7.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint": "^4.8.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.4.0",
     "expect.js": "^0.3.1",
     "flat": "^2.0.1",
     "grunt": "^0.4.5",
@@ -63,13 +68,13 @@
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
     "grunt-webpack": "^2.0.1",
-    "husky": "^0.13.3",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
     "json-beautify": "^1.0.1",
     "jsonwebtoken": "^7.3.0",
-    "lint-staged": "^3.4.0",
+    "lint-staged": "^4.2.3",
     "mochify": "^3.3.0",
-    "prettier": "^1.2.2",
+    "prettier": "^1.7.4",
     "react-test-renderer": "^16.0.0",
     "semver": "^5.3.0",
     "sinon": "^1.15.4",
@@ -109,8 +114,13 @@
     "localPath": "build"
   },
   "jest": {
-    "modulePaths": ["<rootDir>/src/", "<rootDir>/src/__tests__"],
-    "setupFiles": ["<rootDir>/src/__tests__/setup-tests.js"],
+    "modulePaths": [
+      "<rootDir>/src/",
+      "<rootDir>/src/__tests__"
+    ],
+    "setupFiles": [
+      "<rootDir>/src/__tests__/setup-tests.js"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/test/",
@@ -125,9 +135,16 @@
       "<rootDir>/src/__tests__/testUtils.js",
       "<rootDir>/src/__tests__/setup-tests.js"
     ],
-    "coverageReporters": ["lcov", "text-summary"]
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ]
   },
   "lint-staged": {
-    "*.{js,jsx}": ["npm run lint", "prettier --write --print-width 100 --single-quote", "git add"]
+    "*.{js,jsx}": [
+      "npm run lint",
+      "prettier --write --print-width 100 --single-quote",
+      "git add"
+    ]
   }
 }
