@@ -1,15 +1,43 @@
 import Immutable from 'immutable';
 import { dataFns } from '../../utils/data_utils';
+import { clientID, domain } from '../../core/index';
+import { initI18n } from '../../i18n';
+import { setURL } from '../testUtils';
 
 const setResolvedConnection = (...params) => require('core/index').setResolvedConnection(...params);
+const setup = (...params) => require('core/index').setup(...params);
 
 const mockLock = 'm';
 let mockSet;
+let mockInit;
+
+jest.mock('i18n', () => ({
+  initI18n: jest.fn()
+}));
+
 jest.mock('utils/data_utils', () => ({
   dataFns: () => ({
-    set: mockSet
+    get: jest.fn(),
+    set: mockSet,
+    init: mockInit
   })
 }));
+
+describe('setup', () => {
+  beforeEach(() => {
+    mockInit = jest.fn();
+    jest.resetModules();
+  });
+  it('default redirectUrl should not include location.hash', () => {
+    setURL('https://test.com/path/#not-this-part');
+    const options = {};
+    setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
+    const { mock } = mockInit;
+    expect(mock.calls.length).toBe(1);
+    const model = mock.calls[0][1].toJS();
+    expect(model.auth.redirectUrl).toBe('https://test.com/path/');
+  });
+});
 
 describe('setResolvedConnection', () => {
   beforeEach(() => {

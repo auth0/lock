@@ -266,7 +266,7 @@ function extractAuthOptions(options) {
   // if responseType was not set and there is a redirectUrl, it defaults to code. Otherwise token.
   responseType = typeof responseType === 'string' ? responseType : redirectUrl ? 'code' : 'token';
   // now we set the default because we already did the validation
-  redirectUrl = redirectUrl || window.location.href;
+  redirectUrl = redirectUrl || `${window.location.origin}${window.location.pathname}`;
 
   sso = typeof sso === 'boolean' ? sso : true;
 
