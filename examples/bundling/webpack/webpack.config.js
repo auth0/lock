@@ -1,13 +1,20 @@
+var webpack = require('webpack');
+
 module.exports = {
-  entry: "./index.js",
+  entry: './index.js',
   output: {
     filename: 'build.js'
   },
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: 'babel'
-    }]
-  }
+  devServer: {
+    contentBase: './',
+    https: true,
+    port: 3000
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
+  ]
 };
