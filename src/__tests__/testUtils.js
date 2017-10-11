@@ -25,7 +25,12 @@ export const mockComponent = (type, domElement = 'div') => props =>
   });
 
 export const extractPropsFromWrapper = (wrapper, index = 0) =>
-  removeDataFromProps(wrapper.find('div').at(index).props());
+  removeDataFromProps(
+    wrapper
+      .find('div')
+      .at(index)
+      .props()
+  );
 
 //set urls with jest: https://github.com/facebook/jest/issues/890#issuecomment-298594389
 export const setURL = url => {

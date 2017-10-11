@@ -28,9 +28,12 @@ export default class InputWrap extends React.Component {
       wrapClassName += ' auth0-lock-input-wrap-with-icon';
     }
 
-    const errorTooltip = !isValid && invalidHint
-      ? <div className="auth0-lock-error-msg"><span>{invalidHint}</span></div>
-      : null;
+    const errorTooltip =
+      !isValid && invalidHint ? (
+        <div className="auth0-lock-error-msg">
+          <span>{invalidHint}</span>
+        </div>
+      ) : null;
 
     return (
       <div className={blockClassName}>

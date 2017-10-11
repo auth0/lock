@@ -4,8 +4,10 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Olet yrittänyt vaihtaa salasanaa liian monta kertaa. Ole hyvä ja odota ennen kuin yrität uudelleen.',
-      'lock.fallback': 'Olemme pahoillamme, mutta jotain meni vikaan kun salasanaa yritettiin vaihtaa.'
+      too_many_requests:
+        'Olet yrittänyt vaihtaa salasanaa liian monta kertaa. Ole hyvä ja odota ennen kuin yrität uudelleen.',
+      'lock.fallback':
+        'Olemme pahoillamme, mutta jotain meni vikaan kun salasanaa yritettiin vaihtaa.'
     },
     login: {
       blocked_user: 'Käyttäjä on estetty.',
@@ -14,15 +16,21 @@ export default {
       'lock.invalid_code': 'Väärä koodi.',
       'lock.invalid_email_password': 'Väärä sähköposti tai salasana.',
       'lock.invalid_username_password': 'Väärä käyttäjätunnus tai salasana.',
-      'lock.network': 'Emme saa yhteyttä palvelimelle. Ole hyvä ja tarkista yhteys ja yritä sitten uudelleen.',
+      'lock.network':
+        'Emme saa yhteyttä palvelimelle. Ole hyvä ja tarkista yhteys ja yritä sitten uudelleen.',
       'lock.popup_closed': 'Popup ikkuna suljettu. Yritä uudelleen.',
       'lock.unauthorized': 'Käyttöoikeuksia ei myönnetty. Yritä uudelleen.',
-      'lock.mfa_registration_required': 'Monivaiheinen tunnistautuminen vaaditaan, mutta laitettasi ei ole kirjattu. Ole hyvä ja kirjaa laitteesi ennen kuin jatkat.',
+      'lock.mfa_registration_required':
+        'Monivaiheinen tunnistautuminen vaaditaan, mutta laitettasi ei ole kirjattu. Ole hyvä ja kirjaa laitteesi ennen kuin jatkat.',
       'lock.mfa_invalid_code': 'Väärä koodi. Ole hyvä ja yritä uudelleen.',
-      password_change_required: 'Sinun tulee päivittää salasanasi, koska tämä on ensimmäinen kerta kun olet kirjautumassa tai koska salasanasi on vanhentunut.',
-      password_leaked: 'Olemme havainneet mahdollisen tietoturvaongelman tämän tunnuksen kanssa. Suojellaksemme tunnustasi, olemme estäneet tämän kirjautumisen. Sinulle lähetettiin sähköposti, jossa on ohjeet, kuinka saat avattua tunnuksen.',
-      too_many_attempts: 'Tunnuksesi on suljettu useiden peräkkäisten kirjautumisyritysten jälkeen.',
-      session_missing: 'Kirjautumispyyntöäsi ei voitu suorittaa loppuun. Ole hyvä ja yritä uudelleen suljettuasi kaikki avoimet ikkunat',
+      password_change_required:
+        'Sinun tulee päivittää salasanasi, koska tämä on ensimmäinen kerta kun olet kirjautumassa tai koska salasanasi on vanhentunut.',
+      password_leaked:
+        'Olemme havainneet mahdollisen tietoturvaongelman tämän tunnuksen kanssa. Suojellaksemme tunnustasi, olemme estäneet tämän kirjautumisen. Sinulle lähetettiin sähköposti, jossa on ohjeet, kuinka saat avattua tunnuksen.',
+      too_many_attempts:
+        'Tunnuksesi on suljettu useiden peräkkäisten kirjautumisyritysten jälkeen.',
+      session_missing:
+        'Kirjautumispyyntöäsi ei voitu suorittaa loppuun. Ole hyvä ja yritä uudelleen suljettuasi kaikki avoimet ikkunat',
       'hrd.not_matching_email': 'Ole hyvä ja käytä yrityssähköpostiasi kirjautumiseen.'
     },
     passwordless: {
@@ -58,7 +66,8 @@ export default {
   failedLabel: 'Epäonnistui!',
   forgotPasswordTitle: 'Alusta salasanasi',
   forgotPasswordAction: 'Etkö muista salasanaasi?',
-  forgotPasswordInstructions: 'Ole hyvä ja anna sähköpostiosoitteesi. Lähetämme sinulle sähköpostin salasanan alustusta varten.',
+  forgotPasswordInstructions:
+    'Ole hyvä ja anna sähköpostiosoitteesi. Lähetämme sinulle sähköpostin salasanan alustusta varten.',
   forgotPasswordSubmitLabel: 'Lähetä sähköposti',
   invalidErrorHint: 'Epäkelpo',
   lastLoginInstructions: 'Viimeksi kirjauduit',
@@ -79,10 +88,12 @@ export default {
     specialCharacters: 'Erikoismerkkejä (esim. !@#$%^&*)',
     upperCase: 'Isoja kirjaimia (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Muussa tapauksessa, syötä sähköpostisi kirjautuaksesi<br/>tai luo käyttäjätunnus',
+  passwordlessEmailAlternativeInstructions:
+    'Muussa tapauksessa, syötä sähköpostisi kirjautuaksesi<br/>tai luo käyttäjätunnus',
   passwordlessEmailCodeInstructions: 'Koodin sisältävä sähköposti on lähetetty osoitteeseen %s.',
   passwordlessEmailInstructions: 'Syötä sähköpostisi kirjautuaksesi<br/>tai luo käyttäjätunnus',
-  passwordlessSMSAlternativeInstructions: 'Muussa tapauksessa, syötä puhelinnumerosi kirjautuaksesi<br/>tai luo käyttäjätunnus',
+  passwordlessSMSAlternativeInstructions:
+    'Muussa tapauksessa, syötä puhelinnumerosi kirjautuaksesi<br/>tai luo käyttäjätunnus',
   passwordlessSMSCodeInstructions: 'Koodin sisältävä tekstiviesti on lähetetty<br/>numeroon %s.',
   passwordlessSMSInstructions: 'Syötä puhelinnumerosi kirjautuaksesi<br/>tai luo käyttäjätunnus',
   phoneNumberInputPlaceholder: 'puhelinnumerosi',
@@ -101,7 +112,8 @@ export default {
   ssoEnabled: 'Kertakirjautuminen toiminnassa',
   submitLabel: 'Lähetä',
   unrecoverableError: 'Jotain meni vikaan.<br />Ole hyvä ja ota yhteyttä tekniseen tukeen.',
-  usernameFormatErrorHint: 'Käytä %d-%d kirjaimia, numeroita ja seuraavia merkkejä: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Käytä %d-%d kirjaimia, numeroita ja seuraavia merkkejä: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'käyttäjätunnuksesi',
   usernameOrEmailInputPlaceholder: 'käyttäjätunnus/sähköposti',
   title: 'Auth0',

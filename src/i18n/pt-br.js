@@ -1,7 +1,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Você atingiu o limite máximo de tentativas. Por favor aguarde antes de tentar novamente.',
+      too_many_requests:
+        'Você atingiu o limite máximo de tentativas. Por favor aguarde antes de tentar novamente.',
       'lock.fallback': 'Sentimos muito, mas algo deu errado ao requisitar a mudança de senha.'
     },
     login: {
@@ -11,15 +12,20 @@ export default {
       'lock.invalid_code': 'Código inválido.',
       'lock.invalid_email_password': 'Email ou senha inválidos.',
       'lock.invalid_username_password': 'Usuário ou senha inválidos.',
-      'lock.network': 'Não foi possível acessar o servidor. Por favor verifique sua conexão e tente novamente.',
+      'lock.network':
+        'Não foi possível acessar o servidor. Por favor verifique sua conexão e tente novamente.',
       'lock.popup_closed': 'Popup fechada. Tente novamente.',
       'lock.unauthorized': 'Permissões não foram concedidas. Tente novamente.',
-      password_change_required: 'Você precisa atualizar sua senha porque é seu primeiro login, ou porque sua senha expirou.',
-      password_leaked: 'Esse login está bloqueado porque sua senha foi vazada em outro website. Nós lhe enviamos um email com instruções sobre como desbloqueá-lo.',
+      password_change_required:
+        'Você precisa atualizar sua senha porque é seu primeiro login, ou porque sua senha expirou.',
+      password_leaked:
+        'Esse login está bloqueado porque sua senha foi vazada em outro website. Nós lhe enviamos um email com instruções sobre como desbloqueá-lo.',
       too_many_attempts: 'A sua conta foi bloqueada após várias tentativas de login consecutivas.',
-      'lock.mfa_registration_required': 'autenticação multifator é necessário, mas o dispositivo não está inscrito. Por favor, inscrevê-lo antes de prosseguir.',
+      'lock.mfa_registration_required':
+        'autenticação multifator é necessário, mas o dispositivo não está inscrito. Por favor, inscrevê-lo antes de prosseguir.',
       'lock.mfa_invalid_code': 'Código errado. Por favor, tente novamente.',
-      session_missing: 'Não foi possível concluir o seu pedido de autenticação. Por favor tente novamente depois de fechar todos os diálogos abertos',
+      session_missing:
+        'Não foi possível concluir o seu pedido de autenticação. Por favor tente novamente depois de fechar todos os diálogos abertos',
       'hrd.not_matching_email': 'Por favor, use seu e-mail corporativo para acessar.'
     },
     passwordless: {
@@ -54,7 +60,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Por favor entre com suas credenciais corporativas em %s.',
   failedLabel: 'Falha!',
   forgotPasswordAction: 'Esqueceu sua senha?',
-  forgotPasswordInstructions: 'Por favor digite seu endereço de email. Enviarmos um email para resetar sua senha.',
+  forgotPasswordInstructions:
+    'Por favor digite seu endereço de email. Enviarmos um email para resetar sua senha.',
   forgotPasswordSubmitLabel: 'Enviar email',
   invalidErrorHint: 'Inválido',
   lastLoginInstructions: 'Na última vez você entrou com',
@@ -75,10 +82,12 @@ export default {
     specialCharacters: 'Caracteres especiais (ex: !@#$%^&*)',
     upperCase: 'Letras maiúsculas (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Senão, digite seu email para entrar<br/>ou criar uma conta',
+  passwordlessEmailAlternativeInstructions:
+    'Senão, digite seu email para entrar<br/>ou criar uma conta',
   passwordlessEmailCodeInstructions: 'Um email com o código foi enviado para %s.',
   passwordlessEmailInstructions: 'Digite seu email para entrar<br/>ou criar uma conta',
-  passwordlessSMSAlternativeInstructions: 'Senão, digite seu telefone para entrar<br/>ou criar uma conta',
+  passwordlessSMSAlternativeInstructions:
+    'Senão, digite seu telefone para entrar<br/>ou criar uma conta',
   passwordlessSMSCodeInstructions: 'Um SMS com o código foi enviado<br/>para %s.',
   passwordlessSMSInstructions: 'Digite seu telefone para entrar<br/>ou criar uma conta',
   phoneNumberInputPlaceholder: 'seu número de telefone',
@@ -96,7 +105,8 @@ export default {
   ssoEnabled: 'Single Sign-On habilitado',
   submitLabel: 'Enviar',
   unrecoverableError: 'Algo deu errado.<br />Por favor entre em contato com o suporte.',
-  usernameFormatErrorHint: 'Use %d-%d letras, números e os seguintes caracteres: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Use %d-%d letras, números e os seguintes caracteres: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'seu nome de usuário',
   usernameOrEmailInputPlaceholder: 'usuário/email',
   title: 'Auth0',

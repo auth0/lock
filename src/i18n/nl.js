@@ -4,8 +4,10 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'U heeft de limiet van wachtwoord aanpassings pogingen bereikt. Wacht even voor dat u het nog een keer probeert.',
-      'lock.fallback': 'Onze excuses, er is iets fout gegaan bij de de aanvraag voor een wachtwoord aanpassing.'
+      too_many_requests:
+        'U heeft de limiet van wachtwoord aanpassings pogingen bereikt. Wacht even voor dat u het nog een keer probeert.',
+      'lock.fallback':
+        'Onze excuses, er is iets fout gegaan bij de de aanvraag voor een wachtwoord aanpassing.'
     },
     login: {
       blocked_user: 'De gebruiker is geblokkeerd.',
@@ -14,15 +16,21 @@ export default {
       'lock.invalid_code': 'Verkeerde code.',
       'lock.invalid_email_password': 'Verkeerde e-mailadres of wachtwoord.',
       'lock.invalid_username_password': 'Verkeerde gebruikersnaam of wachtwoord.',
-      'lock.network': 'Server is niet bereikbaar. Controleer uw netwerk verbinding en probeer het nog eens.',
+      'lock.network':
+        'Server is niet bereikbaar. Controleer uw netwerk verbinding en probeer het nog eens.',
       'lock.popup_closed': 'Popup venster gesloten. Probeer het nog een keer.',
       'lock.unauthorized': 'Autorisatie geweigerd. Probeer het nog een keer.',
-      password_change_required: 'U moet uw wachtwoord aanpassen omdat dit de eerste keer is dat u inlogt of omdat uw wachtwoord is verlopen.',
-      password_leaked: 'Deze login is geblokkeerd omdat uw wachtwoord is gelekt op een andere website. We hebben een e-mail verstuurd met instructies voor het deblokkeren.',
-      too_many_attempts: 'Uw account is geblokkeerd als gevolg van herhaalde pogingen om in te loggen.',
-      'lock.mfa_registration_required': 'Diverse verificatie is vereist, maar het apparaat is niet geregistreerd. Gelieve in te schrijven voordat verder gaat.',
+      password_change_required:
+        'U moet uw wachtwoord aanpassen omdat dit de eerste keer is dat u inlogt of omdat uw wachtwoord is verlopen.',
+      password_leaked:
+        'Deze login is geblokkeerd omdat uw wachtwoord is gelekt op een andere website. We hebben een e-mail verstuurd met instructies voor het deblokkeren.',
+      too_many_attempts:
+        'Uw account is geblokkeerd als gevolg van herhaalde pogingen om in te loggen.',
+      'lock.mfa_registration_required':
+        'Diverse verificatie is vereist, maar het apparaat is niet geregistreerd. Gelieve in te schrijven voordat verder gaat.',
       'lock.mfa_invalid_code': 'Verkeerde code. Probeer het opnieuw.',
-      session_missing: 'Kan uw authenticatie verzoek niet voltooien. Probeer opnieuw na het sluiten van alle geopende vensters',
+      session_missing:
+        'Kan uw authenticatie verzoek niet voltooien. Probeer opnieuw na het sluiten van alle geopende vensters',
       'hrd.not_matching_email': 'Gelieve gebruik te maken van uw zakelijke e-mail om in te loggen.'
     },
     passwordless: {
@@ -57,7 +65,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Voer uw bedrijfs inloggegevens in op %s.',
   failedLabel: 'Gefaald!',
   forgotPasswordAction: 'Wachtwoord vergeten?',
-  forgotPasswordInstructions: 'Geef uw e-mailadres op. Wij sturen een e-mail voor het resetten van uw wachtwoord.',
+  forgotPasswordInstructions:
+    'Geef uw e-mailadres op. Wij sturen een e-mail voor het resetten van uw wachtwoord.',
   forgotPasswordSubmitLabel: 'Verstuur e-mail',
   invalidErrorHint: 'Ongeldig',
   lastLoginInstructions: 'U bent laatst aangemeld met',
@@ -78,12 +87,16 @@ export default {
     specialCharacters: 'Speciale letters (e.g. !@#$%^&*)',
     upperCase: 'Hoofdletters (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Anders, voer uw e-mailadres in om in te loggen<br/>of creëer een nieuwe gebruikersaccount',
+  passwordlessEmailAlternativeInstructions:
+    'Anders, voer uw e-mailadres in om in te loggen<br/>of creëer een nieuwe gebruikersaccount',
   passwordlessEmailCodeInstructions: 'Er is een e-mail met de code verstuurd naar %s.',
-  passwordlessEmailInstructions: 'Voer uw e-mailadres in om aan te melden <br/>of maak een nieuw account aan',
-  passwordlessSMSAlternativeInstructions: 'Anders, voer uw telefoonnummer in om in te loggen<br/>of creëer een nieuwe gebruikersaccount',
+  passwordlessEmailInstructions:
+    'Voer uw e-mailadres in om aan te melden <br/>of maak een nieuw account aan',
+  passwordlessSMSAlternativeInstructions:
+    'Anders, voer uw telefoonnummer in om in te loggen<br/>of creëer een nieuwe gebruikersaccount',
   passwordlessSMSCodeInstructions: 'Er is een SMS met de code verstuurd <br/>naar %s.',
-  passwordlessSMSInstructions: 'Voer uw telefoonnummer in om in te loggen <br/>of creëer een nieuw gebruikersaccount',
+  passwordlessSMSInstructions:
+    'Voer uw telefoonnummer in om in te loggen <br/>of creëer een nieuw gebruikersaccount',
   phoneNumberInputPlaceholder: 'uw telefoonnummer',
   resendCodeAction: 'Code niet ontvangen?',
   resendLabel: 'Opnieuw verzenden',
@@ -99,7 +112,8 @@ export default {
   ssoEnabled: 'Single Sign-On geactiveerd',
   submitLabel: 'Verzenden',
   unrecoverableError: 'Er ging iets mis.<br/>Neem a.u.b. contact op met de technische support.',
-  usernameFormatErrorHint: 'Gebruik %d-%d letters, cijfers en de volgende tekens: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Gebruik %d-%d letters, cijfers en de volgende tekens: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'uw gebruikersnaam',
   usernameOrEmailInputPlaceholder: 'gebruikersnaam/e-mailadres',
   title: 'Auth0',

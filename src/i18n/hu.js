@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Elérted a jelszóváltoztatási probálkozások engedélyezett számát. Kérlek, várj egy kicsit mielőtt újrapróbálnád!',
+      too_many_requests:
+        'Elérted a jelszóváltoztatási probálkozások engedélyezett számát. Kérlek, várj egy kicsit mielőtt újrapróbálnád!',
       'lock.fallback': 'Sajnáljuk, valami hiba történt a jelszóváltoztatás során.'
     },
     login: {
@@ -14,15 +15,20 @@ export default {
       'lock.invalid_code': 'Hibás PIN.',
       'lock.invalid_email_password': 'Hibás e-mail vagy jelszó.',
       'lock.invalid_username_password': 'Hibás felhasználónév vagy jelszó.',
-      'lock.network': 'A szerver nem elérhető. Kérlek, ellenőrizd az internetkapcsolatot, és próbáld újra.!',
+      'lock.network':
+        'A szerver nem elérhető. Kérlek, ellenőrizd az internetkapcsolatot, és próbáld újra.!',
       'lock.popup_closed': 'A felugró ablak be lett zárva. Próbáld újra!',
       'lock.unauthorized': 'Engedély megtagadva. Próbáld újra!',
-      password_change_required: 'A jelszavadat meg kell változtatnod, mert vagy most lépsz be először, vagy lejárt a jelszavad.',
-      password_leaked: 'Az azonosítót letiltottuk, mert a hozzá tartozó jelszó egy másik honlapon nyilvánosságra került. Küldtünk neked egy e-mailt az azonosító engedélyezésének menetéről.',
+      password_change_required:
+        'A jelszavadat meg kell változtatnod, mert vagy most lépsz be először, vagy lejárt a jelszavad.',
+      password_leaked:
+        'Az azonosítót letiltottuk, mert a hozzá tartozó jelszó egy másik honlapon nyilvánosságra került. Küldtünk neked egy e-mailt az azonosító engedélyezésének menetéről.',
       too_many_attempts: 'Több gyakori bejelentkezés után az azonosítódat letiltottuk.',
-      'lock.mfa_registration_required': 'Többtényezős hitelesítés szükséges, de a készülék nem regisztrálták. Kérjük, regisztrálja azt, mielőtt.',
+      'lock.mfa_registration_required':
+        'Többtényezős hitelesítés szükséges, de a készülék nem regisztrálták. Kérjük, regisztrálja azt, mielőtt.',
       'lock.mfa_invalid_code': 'Rossz kód. Kérlek próbáld újra.',
-      session_missing: 'Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok',
+      session_missing:
+        'Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok',
       'hrd.not_matching_email': 'Kérjük, használja a vállalati e-mail jelentkezned.'
     },
     passwordless: {
@@ -57,7 +63,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Kérlek, add meg a céges azonosítódat a %s honlapon.',
   failedLabel: 'Sikertelen!',
   forgotPasswordAction: 'Nem emlékszel a jelszavadra?',
-  forgotPasswordInstructions: 'Kérlek, add meg az e-mailcímedet! Küldünk neked egy e-mailt a jelszó helyreállításának menetéről.',
+  forgotPasswordInstructions:
+    'Kérlek, add meg az e-mailcímedet! Küldünk neked egy e-mailt a jelszó helyreállításának menetéről.',
   forgotPasswordSubmitLabel: 'E-mail küldése',
   invalidErrorHint: 'Érvénytelen',
   lastLoginInstructions: 'Utolsó bejelentkezés',
@@ -69,7 +76,8 @@ export default {
   passwordInputPlaceholder: 'jelszavad',
   passwordStrength: {
     containsAtLeast: 'Legalább %d alkalommal tartalmazza a következő %d karaktert:',
-    identicalChars: 'Legfeljebb %d azonos karakter szerepelhet egy sorban (pl. "%s" nem engedélyezett)',
+    identicalChars:
+      'Legfeljebb %d azonos karakter szerepelhet egy sorban (pl. "%s" nem engedélyezett)',
     nonEmpty: 'A jelszó nem lehet üres',
     numbers: 'Számok (0-9)',
     lengthAtLeast: 'Legalább %d hosszú',
@@ -78,10 +86,12 @@ export default {
     specialCharacters: 'Különleges karakterek (e.g. !@#$%^&*)',
     upperCase: 'Nagybetűk (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Vagy, bejelentkezéshez vagy feliratkozáshoz<br/>add meg az e-mailcímed',
+  passwordlessEmailAlternativeInstructions:
+    'Vagy, bejelentkezéshez vagy feliratkozáshoz<br/>add meg az e-mailcímed',
   passwordlessEmailCodeInstructions: 'A PIN-t e-mailben elküldük a %s címre.',
   passwordlessEmailInstructions: 'Bejelentkezéshez vagy feliratkozáshoz<br/>add meg az e-mailcímed',
-  passwordlessSMSAlternativeInstructions: 'Vagy, bejelentkezéshez vagy feliratkozáshoz<br/>add meg a telefonszámod',
+  passwordlessSMSAlternativeInstructions:
+    'Vagy, bejelentkezéshez vagy feliratkozáshoz<br/>add meg a telefonszámod',
   passwordlessSMSCodeInstructions: 'A PIN-t SMS-ben elküldtük a %s számra.',
   passwordlessSMSInstructions: 'Bejelentkezéshez vagy feliratkozáshoz<br/>add meg a telefonszámod',
   phoneNumberInputPlaceholder: 'telefonszámod',
@@ -98,8 +108,10 @@ export default {
   socialSignUpInstructions: '',
   ssoEnabled: 'Egyszeri bejelentkezés engedélyezve',
   submitLabel: 'Mehet',
-  unrecoverableError: 'Valaim hiba történt.<br />Kérlek, lépj kapcsolatba a műszaki ügyfélszolgálattal.',
-  usernameFormatErrorHint: 'Használj %d-%d betűket, számokat és a következő karaktereket: "_", ".", "+", "-"',
+  unrecoverableError:
+    'Valaim hiba történt.<br />Kérlek, lépj kapcsolatba a műszaki ügyfélszolgálattal.',
+  usernameFormatErrorHint:
+    'Használj %d-%d betűket, számokat és a következő karaktereket: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'felhasználóneved',
   usernameOrEmailInputPlaceholder: 'felhasználónév/e-mail',
   title: 'Auth0',

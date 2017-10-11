@@ -15,20 +15,20 @@ const QuickAuthPane = props => {
     foregroundColor
   } = props;
 
-  const alternative = alternativeLabel
-    ? <p className="auth0-lock-alternative">
-        <a
-          className="auth0-lock-alternative-link"
-          href="javascript:void(0)"
-          onClick={e => {
-            e.preventDefault();
-            alternativeClickHandler(e);
-          }}
-        >
-          {alternativeLabel}
-        </a>
-      </p>
-    : null;
+  const alternative = alternativeLabel ? (
+    <p className="auth0-lock-alternative">
+      <a
+        className="auth0-lock-alternative-link"
+        href="javascript:void(0)"
+        onClick={e => {
+          e.preventDefault();
+          alternativeClickHandler(e);
+        }}
+      >
+        {alternativeLabel}
+      </a>
+    </p>
+  ) : null;
 
   return (
     <div className="auth0-lock-last-login-pane">

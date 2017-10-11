@@ -27,21 +27,24 @@ class Resend extends React.Component {
   render() {
     const { labels, lock } = this.props;
 
-    const resendLink =
-      m.resendAvailable(lock) &&
+    const resendLink = m.resendAvailable(lock) && (
       <ResendLink
         onClick={::this.handleClick}
         label={m.resendFailed(lock) ? labels.retry : labels.resend}
-      />;
+      />
+    );
 
-    const resendingLabel =
-      m.resendOngoing(lock) && <a className="auth0-lock-resend-link">{labels.resending}</a>;
+    const resendingLabel = m.resendOngoing(lock) && (
+      <a className="auth0-lock-resend-link">{labels.resending}</a>
+    );
 
-    const resendSuccessLabel =
-      m.resendSuccess(lock) && <span className="auth0-lock-sent-label">{labels.sent}</span>;
+    const resendSuccessLabel = m.resendSuccess(lock) && (
+      <span className="auth0-lock-sent-label">{labels.sent}</span>
+    );
 
-    const resendFailedLabel =
-      m.resendFailed(lock) && <span className="auth0-lock-sent-failed-label">{labels.failed}</span>;
+    const resendFailedLabel = m.resendFailed(lock) && (
+      <span className="auth0-lock-sent-failed-label">{labels.failed}</span>
+    );
 
     return (
       <span>

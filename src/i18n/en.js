@@ -1,7 +1,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'You have reached the limit on password change attempts. Please wait before trying again.',
+      too_many_requests:
+        'You have reached the limit on password change attempts. Please wait before trying again.',
       'lock.fallback': "We're sorry, something went wrong when requesting the password change."
     },
     login: {
@@ -14,12 +15,16 @@ export default {
       'lock.network': 'We could not reach the server. Please check your connection and try again.',
       'lock.popup_closed': 'Popup window closed. Try again.',
       'lock.unauthorized': 'Permissions were not granted. Try again.',
-      'lock.mfa_registration_required': 'Multifactor authentication is required but your device is not enrolled. Please enroll it before moving on.',
+      'lock.mfa_registration_required':
+        'Multifactor authentication is required but your device is not enrolled. Please enroll it before moving on.',
       'lock.mfa_invalid_code': 'Wrong code. Please try again.',
-      password_change_required: 'You need to update your password because this is the first time you are logging in, or because your password has expired.', // TODO: verify error code
-      password_leaked: 'We have detected a potential security issue with this account. To protect your account, we have blocked this login. An email was sent with instruction on how to unblock your account.',
+      password_change_required:
+        'You need to update your password because this is the first time you are logging in, or because your password has expired.', // TODO: verify error code
+      password_leaked:
+        'We have detected a potential security issue with this account. To protect your account, we have blocked this login. An email was sent with instruction on how to unblock your account.',
       too_many_attempts: 'Your account has been blocked after multiple consecutive login attempts.',
-      session_missing: "Couldn't complete your authentication request. Please try again after closing all open dialogs",
+      session_missing:
+        "Couldn't complete your authentication request. Please try again after closing all open dialogs",
       'hrd.not_matching_email': 'Please, use your corporate email to login.'
     },
     passwordless: {
@@ -56,7 +61,8 @@ export default {
   failedLabel: 'Failed!',
   forgotPasswordTitle: 'Reset your password',
   forgotPasswordAction: "Don't remember your password?",
-  forgotPasswordInstructions: 'Please enter your email address. We will send you an email to reset your password.',
+  forgotPasswordInstructions:
+    'Please enter your email address. We will send you an email to reset your password.',
   forgotPasswordSubmitLabel: 'Send email',
   invalidErrorHint: 'Invalid',
   lastLoginInstructions: 'Last time you logged in with',
@@ -77,10 +83,12 @@ export default {
     specialCharacters: 'Special characters (e.g. !@#$%^&*)',
     upperCase: 'Upper case letters (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Otherwise, enter your email to sign in<br/>or create an account',
+  passwordlessEmailAlternativeInstructions:
+    'Otherwise, enter your email to sign in<br/>or create an account',
   passwordlessEmailCodeInstructions: 'An email with the code has been sent to %s.',
   passwordlessEmailInstructions: 'Enter your email to sign in<br/>or create an account',
-  passwordlessSMSAlternativeInstructions: 'Otherwise, enter your phone to sign in<br/>or create an account',
+  passwordlessSMSAlternativeInstructions:
+    'Otherwise, enter your phone to sign in<br/>or create an account',
   passwordlessSMSCodeInstructions: 'An SMS with the code has been sent<br/>to %s.',
   passwordlessSMSInstructions: 'Enter your phone to sign in<br/>or create an account',
   phoneNumberInputPlaceholder: 'your phone number',
@@ -100,7 +108,8 @@ export default {
   ssoEnabled: 'Single Sign-On enabled',
   submitLabel: 'Submit',
   unrecoverableError: 'Something went wrong.<br />Please contact technical support.',
-  usernameFormatErrorHint: 'Use %d-%d letters, numbers and the following characters: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Use %d-%d letters, numbers and the following characters: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'your username',
   usernameOrEmailInputPlaceholder: 'username/email',
   title: 'Auth0',

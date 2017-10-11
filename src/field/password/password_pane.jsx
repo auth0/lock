@@ -31,11 +31,12 @@ export default class PasswordPane extends React.Component {
           policy={policy}
           showPassword={c.getFieldValue(lock, 'showPassword', false)}
         />
-        {l.ui.allowShowPassword(lock) &&
+        {l.ui.allowShowPassword(lock) && (
           <div className="auth0-lock-show-password">
             <input type="checkbox" id="slideOne" onChange={this.handleShowPasswordChange} />
             <label htmlFor="slideOne" title={i18n.str('showPassword')} />
-          </div>}
+          </div>
+        )}
       </div>
     );
   }

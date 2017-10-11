@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Dosegli ste omejitev tevila poskusov spremembe gesla. Pred ponovnim poskusom morate poèakati.',
+      too_many_requests:
+        'Dosegli ste omejitev tevila poskusov spremembe gesla. Pred ponovnim poskusom morate poèakati.',
       'lock.fallback': 'al je pri lo do napake pri zahtevi za spremembo gesla.'
     },
     login: {
@@ -17,12 +18,16 @@ export default {
       'lock.network': 'Stre nik ni dosegljiv. Preverite povezavo in poskusite ponovno.',
       'lock.popup_closed': 'Pojavno okno se je zaprlo. Poskusite ponovno.',
       'lock.unauthorized': 'Dostop ni bil dovoljen. Poskusite ponovno.',
-      'lock.mfa_registration_required': 'Zahtevana je veèstranska avtentifikacija, a va a naprava ni vpisana. Pred nadaljevanjem vpi ite svojo napravo.',
+      'lock.mfa_registration_required':
+        'Zahtevana je veèstranska avtentifikacija, a va a naprava ni vpisana. Pred nadaljevanjem vpi ite svojo napravo.',
       'lock.mfa_invalid_code': 'Napaèna koda. Poskusite ponovno.',
-      password_change_required: 'Svoje geslo morate spremeniti, ker je to va a prva prijava, ali pa je va e geslo poteklo.',
-      password_leaked: 'Zaznali smo morebitno varnostno te avo s tem raèunom. Za za èito raèuna smo blokirali prijavo. Poslali smo vam e-po to z navodili za odblokiranje raèuna.',
+      password_change_required:
+        'Svoje geslo morate spremeniti, ker je to va a prva prijava, ali pa je va e geslo poteklo.',
+      password_leaked:
+        'Zaznali smo morebitno varnostno te avo s tem raèunom. Za za èito raèuna smo blokirali prijavo. Poslali smo vam e-po to z navodili za odblokiranje raèuna.',
       too_many_attempts: 'Po veè zaporednih poskusih prijave je bil va raèun blokiran.',
-      session_missing: 'Zahteve za avtentikacijo ni bilo mo no izpolniti. Zaprite vsa pogovorna okna in poskusite ponovno.',
+      session_missing:
+        'Zahteve za avtentikacijo ni bilo mo no izpolniti. Zaprite vsa pogovorna okna in poskusite ponovno.',
       'hrd.not_matching_email': 'Za prijavo uporabite svoj slu beni e-po tni naslov.'
     },
     passwordless: {
@@ -58,7 +63,8 @@ export default {
   failedLabel: 'Napaka!',
   forgotPasswordTitle: 'Ponastavite svoje geslo',
   forgotPasswordAction: 'Ste pozabili geslo?',
-  forgotPasswordInstructions: 'Vnesite svoj e-po tni naslov. Poslali vam bomo sporoèilo za ponastavitev gesla.',
+  forgotPasswordInstructions:
+    'Vnesite svoj e-po tni naslov. Poslali vam bomo sporoèilo za ponastavitev gesla.',
   forgotPasswordSubmitLabel: 'Po lji e-po to',
   invalidErrorHint: 'Napaka',
   lastLoginInstructions: 'Nazadnje ste se prijavili z',
@@ -79,12 +85,16 @@ export default {
     specialCharacters: 'Posebne znake (npr. !@#$%^&*)',
     upperCase: 'Velike èrke (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Lahko tudi vnesete svoj e-po tni naslov za prijavo<br/>ali ustvarjanje raèuna',
+  passwordlessEmailAlternativeInstructions:
+    'Lahko tudi vnesete svoj e-po tni naslov za prijavo<br/>ali ustvarjanje raèuna',
   passwordlessEmailCodeInstructions: 'Poslali smo e-po to s kodo na naslov %s.',
-  passwordlessEmailInstructions: 'Vnesite svoj e-po tni naslov za prijavo<br/>ali ustvarjanje raèuna',
-  passwordlessSMSAlternativeInstructions: 'Lahko tudi vnesete svojo telefonsko tevilo za prijavo<br/>ali ustvarjanje raèuna',
+  passwordlessEmailInstructions:
+    'Vnesite svoj e-po tni naslov za prijavo<br/>ali ustvarjanje raèuna',
+  passwordlessSMSAlternativeInstructions:
+    'Lahko tudi vnesete svojo telefonsko tevilo za prijavo<br/>ali ustvarjanje raèuna',
   passwordlessSMSCodeInstructions: 'Poslali smo SMS s kodo<br/>na tevilko %s.',
-  passwordlessSMSInstructions: 'Vnesite svojo telefonsko tevilko za prijavo<br/>ali ustvarjanje raèuna',
+  passwordlessSMSInstructions:
+    'Vnesite svojo telefonsko tevilko za prijavo<br/>ali ustvarjanje raèuna',
   phoneNumberInputPlaceholder: 'va a telefonska tevilka',
   resendCodeAction: 'Niste prejeli kode?',
   resendLabel: 'Po lji ponovno',
@@ -102,7 +112,8 @@ export default {
   ssoEnabled: 'Omogoèen posamezen vpis',
   submitLabel: 'Po lji',
   unrecoverableError: 'Pri lo je do napake.<br />Obrnite se na tehnièno pomoè.',
-  usernameFormatErrorHint: 'Folosiți %d-%d literele, numerele și următoarele caractere: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Folosiți %d-%d literele, numerele și următoarele caractere: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'va e uporabni ko ime',
   usernameOrEmailInputPlaceholder: 'uporabni ko ime/e-po ta',
   title: 'Auth0',

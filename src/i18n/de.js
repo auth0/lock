@@ -1,7 +1,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Sie haben das Limit für die Rücksetzung des Passworts erreicht. Bitte warten Sie, bevor Sie es erneut versuchen.',
+      too_many_requests:
+        'Sie haben das Limit für die Rücksetzung des Passworts erreicht. Bitte warten Sie, bevor Sie es erneut versuchen.',
       'lock.fallback': 'Beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.'
     },
     login: {
@@ -14,12 +15,17 @@ export default {
       'lock.network': 'Der Server antwortet nicht.<br/>Bitte erneut versuchen.',
       'lock.popup_closed': 'Pop-up-Fenster geschlossen. Versuchen Sie es erneut.',
       'lock.unauthorized': 'Genehmigungen wurden nicht erteilt. Versuchen Sie es erneut.',
-      password_change_required: 'Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.',
-      password_leaked: 'Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.',
-      too_many_attempts: 'Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.',
-      'lock.mfa_registration_required': 'Multi-Faktor-Authentifizierung erforderlich ist, aber Ihr Gerät nicht eingeschrieben. Bitte registrieren sie, bevor er auf.',
+      password_change_required:
+        'Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.',
+      password_leaked:
+        'Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.',
+      too_many_attempts:
+        'Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.',
+      'lock.mfa_registration_required':
+        'Multi-Faktor-Authentifizierung erforderlich ist, aber Ihr Gerät nicht eingeschrieben. Bitte registrieren sie, bevor er auf.',
       'lock.mfa_invalid_code': 'Falscher Code. Bitte versuche es erneut.',
-      session_missing: 'Konnte nicht Ihre Authentifizierungsanforderung abzuschließen. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge Schließen',
+      session_missing:
+        'Konnte nicht Ihre Authentifizierungsanforderung abzuschließen. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge Schließen',
       'hrd.not_matching_email': 'Bitte verwenden Sie Ihre geschäftliche E-Mail anmelden.'
     },
     passwordless: {
@@ -51,10 +57,12 @@ export default {
   databaseAlternativeSignUpInstructions: 'oder',
   emailInputPlaceholder: 'yours@example.com',
   enterpriseLoginIntructions: 'Einloggen mit Ihrem Firmenanmeldeinformationen.',
-  enterpriseActiveLoginInstructions: 'Bitte geben Sie Ihre Unternehmensanmeldeinformationen bei %s.',
+  enterpriseActiveLoginInstructions:
+    'Bitte geben Sie Ihre Unternehmensanmeldeinformationen bei %s.',
   failedLabel: 'Gescheitert!',
   forgotPasswordAction: 'Passwort vergessen?',
-  forgotPasswordInstructions: 'Geben Sie bitte Ihre Email-Adresse ein. Wir werden Ihnen eine E-Mail senden um Ihr Passwort zurücksetzen zu können.',
+  forgotPasswordInstructions:
+    'Geben Sie bitte Ihre Email-Adresse ein. Wir werden Ihnen eine E-Mail senden um Ihr Passwort zurücksetzen zu können.',
   forgotPasswordSubmitLabel: 'E-Mail senden',
   invalidErrorHint: 'Ungültig',
   lastLoginInstructions: 'Letztes Mal waren Sie angemeldet mit',
@@ -75,12 +83,16 @@ export default {
     specialCharacters: 'Sonderzeichen (z. B. !@#$%^&*)',
     upperCase: 'Großbuchstaben (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Andernfalls geben Sie Ihre E-Mail in<br>anmelden oder ein Konto erstellen',
+  passwordlessEmailAlternativeInstructions:
+    'Andernfalls geben Sie Ihre E-Mail in<br>anmelden oder ein Konto erstellen',
   passwordlessEmailCodeInstructions: 'Eine E-Mail mit dem Code wurde %s gesendet.',
-  passwordlessEmailInstructions: 'Geben Sie einfach Ihre E-Mail in<br>anmelden oder ein Konto erstellen',
-  passwordlessSMSAlternativeInstructions: 'Andernfalls geben Sie Ihre Telefon in<br>anmelden oder ein Konto erstellen',
+  passwordlessEmailInstructions:
+    'Geben Sie einfach Ihre E-Mail in<br>anmelden oder ein Konto erstellen',
+  passwordlessSMSAlternativeInstructions:
+    'Andernfalls geben Sie Ihre Telefon in<br>anmelden oder ein Konto erstellen',
   passwordlessSMSCodeInstructions: 'Eine SMS mit dem Code wurde<br>%s gesendet.',
-  passwordlessSMSInstructions: 'Geben Sie Ihre Telefonnummer in<br>anmelden oder ein Konto erstellen',
+  passwordlessSMSInstructions:
+    'Geben Sie Ihre Telefonnummer in<br>anmelden oder ein Konto erstellen',
   phoneNumberInputPlaceholder: 'deine Telefonnummer',
   resendCodeAction: 'Haben Sie nicht den Code bekommen?',
   resendLabel: 'Erneut senden',
@@ -95,8 +107,10 @@ export default {
   socialSignUpInstructions: '',
   ssoEnabled: 'Single Sign-On aktiviert',
   submitLabel: 'Einreichen',
-  unrecoverableError: 'Etwas ist schief gelaufen.<br />Bitte kontaktieren Sie den technischen Support.',
-  usernameFormatErrorHint: 'Verwenden Sie %d-%d Buchstaben, Zahlen und die folgenden Zeichen: "_", ".", "+", "-"',
+  unrecoverableError:
+    'Etwas ist schief gelaufen.<br />Bitte kontaktieren Sie den technischen Support.',
+  usernameFormatErrorHint:
+    'Verwenden Sie %d-%d Buchstaben, Zahlen und die folgenden Zeichen: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'dein Benutzername',
   usernameOrEmailInputPlaceholder: 'Benutzername/E-Mail',
   title: 'Auth0',
@@ -107,7 +121,8 @@ export default {
   signupTitle: 'Anmelden',
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-Step Verification',
-  mfaLoginInstructions: 'Bitte geben Sie den Bestätigungscode ein, indem Sie Ihre mobile Anwendung erzeugt.',
+  mfaLoginInstructions:
+    'Bitte geben Sie den Bestätigungscode ein, indem Sie Ihre mobile Anwendung erzeugt.',
   mfaSubmitLabel: 'Einloggen',
   mfaCodeErrorHint: 'Verwenden %d Zahlen',
   showPassword: 'Passwort anzeigen'

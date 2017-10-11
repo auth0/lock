@@ -101,7 +101,9 @@ function processDatabaseOptions(opts) {
       ) {
         l.warn(
           opts,
-          `Ignoring an element of \`additionalSignUpFields\` because it does not contain valid \`name\` property. Every element of \`additionalSignUpFields\` must be an object with a \`name\` property that is a non-empty string consisting of letters, numbers and underscores. The following names are reserved, and therefore, cannot be used: ${reservedNames.join(', ')}.`
+          `Ignoring an element of \`additionalSignUpFields\` because it does not contain valid \`name\` property. Every element of \`additionalSignUpFields\` must be an object with a \`name\` property that is a non-empty string consisting of letters, numbers and underscores. The following names are reserved, and therefore, cannot be used: ${reservedNames.join(
+            ', '
+          )}.`
         );
         filter = false;
       }
@@ -138,7 +140,9 @@ function processDatabaseOptions(opts) {
       if (type != undefined && (typeof type != 'string' || types.indexOf(type) === -1)) {
         l.warn(
           opts,
-          `When provided, the \`type\` property of an element of \`additionalSignUpFields\` must be one of the following strings: "${types.join('", "')}".`
+          `When provided, the \`type\` property of an element of \`additionalSignUpFields\` must be one of the following strings: "${types.join(
+            '", "'
+          )}".`
         );
         type = undefined;
       }

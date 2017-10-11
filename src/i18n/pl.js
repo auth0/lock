@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Przekroczyłeś limit prób zmiany hasła. Odczekaj chwilę, zanim spróbujesz ponownie.',
+      too_many_requests:
+        'Przekroczyłeś limit prób zmiany hasła. Odczekaj chwilę, zanim spróbujesz ponownie.',
       'lock.fallback': 'Przykro nam, coś poszło nie tak podczas próby zmiany hasła.'
     },
     login: {
@@ -14,15 +15,21 @@ export default {
       'lock.invalid_code': 'Niepoprawny kod.',
       'lock.invalid_email_password': 'Niepoprawny email lub hasło.',
       'lock.invalid_username_password': 'Niepoprawna nazwa użytkownika lub hasło.',
-      'lock.network': 'Kontakt z serwerem nie powiódł się. Sprawdź swoje połączenie i spróbuj ponownie.',
+      'lock.network':
+        'Kontakt z serwerem nie powiódł się. Sprawdź swoje połączenie i spróbuj ponownie.',
       'lock.popup_closed': 'Okno zamknięte. Spróbuj ponownie.',
       'lock.unauthorized': 'Autoryzacja nie została udzielona. Spróbuj ponownie.',
-      password_change_required: 'Musisz zmienić swoje hasło, ponieważ logujesz się po raz pierwszy lub Twoje hasło wygasło.',
-      password_leaked: 'Ta nazwa użytkownika została zablokowana, ponieważ Twoje hasło wyciekło w innym serwisie. Wysłaliśmy do Ciebie email z instrukcją odblokowania konta.',
-      too_many_attempts: 'Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania.',
-      'lock.mfa_registration_required': 'uwierzytelnianie wielopoziomowe jest wymagane, ale urządzenie nie jest zarejestrowany. Proszę zapisać go przed przejściem.',
+      password_change_required:
+        'Musisz zmienić swoje hasło, ponieważ logujesz się po raz pierwszy lub Twoje hasło wygasło.',
+      password_leaked:
+        'Ta nazwa użytkownika została zablokowana, ponieważ Twoje hasło wyciekło w innym serwisie. Wysłaliśmy do Ciebie email z instrukcją odblokowania konta.',
+      too_many_attempts:
+        'Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania.',
+      'lock.mfa_registration_required':
+        'uwierzytelnianie wielopoziomowe jest wymagane, ale urządzenie nie jest zarejestrowany. Proszę zapisać go przed przejściem.',
       'lock.mfa_invalid_code': 'Niepoprawny kod. Proszę spróbuj ponownie.',
-      session_missing: 'Nie udało się zrealizować żądania uwierzytelnienia. Spróbuj ponownie po zamknięciu wszystkich otwartych okien dialogowych',
+      session_missing:
+        'Nie udało się zrealizować żądania uwierzytelnienia. Spróbuj ponownie po zamknięciu wszystkich otwartych okien dialogowych',
       'hrd.not_matching_email': 'Proszę korzystać z firmowego e-mail aby się zalogować.'
     },
     passwordless: {
@@ -57,7 +64,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Wpisz swoje dane firmowe w %s.',
   failedLabel: 'Nie udało się!',
   forgotPasswordAction: 'Nie pamiętasz hasła?',
-  forgotPasswordInstructions: 'Wpisz swój adres email. Wyślemy Ci informację o tym, jak zresetować hasło.',
+  forgotPasswordInstructions:
+    'Wpisz swój adres email. Wyślemy Ci informację o tym, jak zresetować hasło.',
   forgotPasswordSubmitLabel: 'Wyślij email',
   invalidErrorHint: 'Niepoprawnie',
   lastLoginInstructions: 'Ostatnie poprawne logowanie z:',
@@ -69,7 +77,8 @@ export default {
   passwordInputPlaceholder: 'Twoje hasło',
   passwordStrength: {
     containsAtLeast: 'Zawiera przynajmniej %d następujących %d typów znaków:',
-    identicalChars: 'Nie więcej niż %d takich samych znaków pod rząd (np., "%s" nie jest dozwolone)',
+    identicalChars:
+      'Nie więcej niż %d takich samych znaków pod rząd (np., "%s" nie jest dozwolone)',
     nonEmpty: 'Hasło jest wymagane',
     numbers: 'Cyfry (np. 0-9)',
     lengthAtLeast: 'Przynajmniej %d znaków',
@@ -78,10 +87,12 @@ export default {
     specialCharacters: 'Znaki specjalne (np. !@#$%^&*)',
     upperCase: 'Wielkie litery (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'W innym przypadku wpisz adres email, by się zalogować<br/>lub stwórz konto',
+  passwordlessEmailAlternativeInstructions:
+    'W innym przypadku wpisz adres email, by się zalogować<br/>lub stwórz konto',
   passwordlessEmailCodeInstructions: 'Email z kodem został wysłany na adres %s.',
   passwordlessEmailInstructions: 'Wpisz adres email, by się zalogować<br/>lub stwórz konto',
-  passwordlessSMSAlternativeInstructions: 'W innym przypadku wpisz numer telefonu, by się zalogować<br/>lub stwórz konto',
+  passwordlessSMSAlternativeInstructions:
+    'W innym przypadku wpisz numer telefonu, by się zalogować<br/>lub stwórz konto',
   passwordlessSMSCodeInstructions: 'SMS z kodem został wysłany na numer<br/>%s.',
   passwordlessSMSInstructions: 'Wpisz numer telefonu, by się zalogować<br/>lub stwórz konto',
   phoneNumberInputPlaceholder: 'Twój numer telefonu',
@@ -110,7 +121,8 @@ export default {
   signupTitle: 'Zapisz się',
   mfaInputPlaceholder: 'Kod',
   mfaLoginTitle: '2 Weryfikacja dwuetapowa',
-  mfaLoginInstructions: 'Podaj kod weryfikacyjny wygenerowany przez aplikację na telefon komórkowy.',
+  mfaLoginInstructions:
+    'Podaj kod weryfikacyjny wygenerowany przez aplikację na telefon komórkowy.',
   mfaSubmitLabel: 'Zaloguj Się',
   mfaCodeErrorHint: 'Użyj %d numery',
   showPassword: 'Pokaż hasło'
