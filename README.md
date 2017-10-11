@@ -25,6 +25,9 @@ npm install auth0-lock
 
 After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
+> It is expected that you use the development mode when working on your app, and the production mode when deploying your app to the users.
+> You can find instructions for building your app for production with different module bundlers [here](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build).
+
 If you are targeting mobile audiences, it's recommended that you add:
 
 ```html
