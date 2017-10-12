@@ -25,7 +25,7 @@ npm install auth0-lock
 
 After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. See examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
-If you are targeting mobile audiences, we recommended that you add:
+If you are targeting mobile audiences, we recommend that you add:
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -279,7 +279,7 @@ var options = {
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _forgot password screen_ unreachable. Defaults to `true`. Keep in mind that if you are using a database connection with a _custom database_ which doesn't have a _change password script_ the forgot password screen won't be available.
 - **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`. Keep in mind that if the database connection has sign ups _disabled_ or you are using a _custom database_ which doesn't have a _create script_, then the sign up screen won't be available.
 - **defaultDatabaseConnection {String}**: Specifies the database connection that will be used when there is more than one available.
-- **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"login"`, `"signUp"`, and `"forgotPassword"`. If this option is left unspecified, the widget will pick the first screen that is available from the previous list.  If you set `initialScreen` to `"forgotPassword"` we recommended that you set `allowLogin` to `"false"`, otherwise a back button will be shown in the forgot password screen and it might not be clear to the user where is she/he going back.
+- **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"login"`, `"signUp"`, and `"forgotPassword"`. If this option is left unspecified, the widget will pick the first screen that is available from the previous list.  If you set `initialScreen` to `"forgotPassword"` we recommend that you set `allowLogin` to `"false"`, otherwise a back button will be shown in the forgot password screen and it might not be clear to the user where that back button will take them.
 - **loginAfterSignUp {Boolean}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 - **forgotPasswordLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
 - **mustAcceptTerms {Boolean}**: When set to `true` displays a checkbox input along with the terms and conditions that must be checked before signing up. The terms and conditions can be specified via the `languageDictionary` option, see the example below. Defaults to `false`.
