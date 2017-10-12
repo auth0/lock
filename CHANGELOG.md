@@ -1,5 +1,13 @@
 # Change Log
 
+## [v10.23.1](https://github.com/auth0/lock/tree/v10.23.1) (2017-10-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v10.23.1)
+
+
+**Fixed**
+- Using correct suffix for animation [\#1146](https://github.com/auth0/lock/pull/1146) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.23.0](https://github.com/auth0/lock/tree/v10.23.0) (2017-10-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.22.0...v10.23.0)
 
