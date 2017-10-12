@@ -6,7 +6,7 @@
 
 # Lock
 
-[Auth0](https://auth0.com) is an authentication broker that supports social identity providers as well as enterprise identity providers such as Active Directory, LDAP, Google Apps, Salesforce.
+[Auth0](https://auth0.com) is an authentication broker that supports both social and enterprise identity providers, including Active Directory, LDAP, Google Apps, and Salesforce.
 
 ## Install
 
@@ -23,12 +23,12 @@ From [npm](https://npmjs.org)
 npm install auth0-lock
 ```
 
-After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
+After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. See examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
 > It is expected that you use the development mode when working on your app, and the production mode when deploying your app to the users.
 > You can find instructions for building your app for production with different module bundlers [here](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build).
 
-If you are targeting mobile audiences, it's recommended that you add:
+If you are targeting mobile audiences, we recommended that you add:
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -42,7 +42,7 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 
 - **clientId {String}**: Your application _clientId_ in Auth0.
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
-- **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
+- **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 
 #### Example
 
@@ -112,7 +112,7 @@ Lock will emit events during its lifecycle.
 
 Displays the widget, allowing to override some options.
 
-- **options {Object}**: Allows to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
+- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
 #### Example
 
@@ -196,9 +196,9 @@ The appearance of the widget and the mechanics of authentication can be customiz
   - `zh`: Chinese
   - `ja`: Japanese
   - [Check all the available languages](https://github.com/auth0/lock/tree/master/src/i18n)
-- **languageDictionary {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Language Dictionary Specification](#language-dictionary-specification) for the details.
+- **languageDictionary {Object}**: Allows you to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Language Dictionary Specification](#language-dictionary-specification) for the details.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
-- **popupOptions {Object}**: Allows to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
+- **popupOptions {Object}**: Allows you to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **rememberLastLogin {Boolean}**: Determines whether or not to show a screen that allows you to quickly log in with the account you used the last time when the `initialScreen` option is set to to `"login"` (the default). Defaults to `true`.
 - **flashMessage {Object}**: Shows an `error` or `success` flash message when Lock is shown.
   + **type {String}**: The message type, it should be `error` or `success`.
@@ -267,7 +267,7 @@ var options = {
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
 - **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your client or tenant.
-- **connectionScopes {Object}**:  Allows to set scopes to be sent to the oauth2/social connection for authentication.
+- **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social connection for authentication.
 
 #### Social options
 
@@ -277,22 +277,22 @@ var options = {
 
 #### Database options
 
-- **additionalSignUpFields {Array}**: Allows to provide extra input fields during sign up. See [below](#additional-sign-up-fields) more for details. Defaults to `[]`.
+- **additionalSignUpFields {Array}**: Allows you to provide extra input fields during sign up. See [below](#additional-sign-up-fields) more for details. Defaults to `[]`.
 - **allowLogin {Boolean}**: When set to `false` the widget won't display the _login screen_. This is useful if you want to use the widget just for sign ups (the _login and sign up tabs_ in the _sign up screen_ will be hidden) or to reset passwords (the _back button_ in the _forgot password screen_ will be hidden). In such cases you may also need to specify the `initialScreen`, `allowForgotPassword` and `allowSignUp` options. It defaults to `true`.
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _forgot password screen_ unreachable. Defaults to `true`. Keep in mind that if you are using a database connection with a _custom database_ which doesn't have a _change password script_ the forgot password screen won't be available.
-- **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`. Keep in mind that if the database connection has sign ups _disabled_ or you are using a _custom database_ with coesn't have a _create script_, then the sign up screen won't be available.
+- **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`. Keep in mind that if the database connection has sign ups _disabled_ or you are using a _custom database_ which doesn't have a _create script_, then the sign up screen won't be available.
 - **defaultDatabaseConnection {String}**: Specifies the database connection that will be used when there is more than one available.
-- **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"login"`, `"signUp"`, and `"forgotPassword"`. If this option is left unspecified, the widget will pick the first screen that is available from the previous list. Is recommended that you set `allowLogin` to `"false"` when you set `initialScreen` to `"forgotPassword"`, otherwise a back button will be shown in the forgot password screen and it might not be clear to the user where is she/he going back.
+- **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"login"`, `"signUp"`, and `"forgotPassword"`. If this option is left unspecified, the widget will pick the first screen that is available from the previous list.  If you set `initialScreen` to `"forgotPassword"` we recommend that you set `allowLogin` to `"false"`, otherwise a back button will be shown in the forgot password screen and it might not be clear to the user where that back button will take them.
 - **loginAfterSignUp {Boolean}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 - **forgotPasswordLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
-- **mustAcceptTerms {Boolean}**: When set to `true` displays a checkbox input along the terms and conditions that must be checked before signing up. The terms and conditions can be specified via the `languageDictionary` option, see the example below. Defaults to `false`.
-- **prefill {Object}**: Allows to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@auth0.com", username: "someone"}}`. When omitted no initial value will be provided.
+- **mustAcceptTerms {Boolean}**: When set to `true` displays a checkbox input along with the terms and conditions that must be checked before signing up. The terms and conditions can be specified via the `languageDictionary` option, see the example below. Defaults to `false`.
+- **prefill {Object}**: Allows you to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@auth0.com", username: "someone"}}`. When omitted no initial value will be provided.
 - **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
 - **usernameStyle {String}**: Determines what will be used to identify the user for a Database connection that has the `requires_username` flag set, otherwise it will be ignored. Possible values are `"username"` and `"email"` and by default both `username` and `email` are allowed.
 
 #### Enterprise options
 
-- **defaultEnterpriseConnection {String}**: Specifies the enterprise connection which allows to login using an username and a password that will be used when there is more than one available or there is a database connection. If a `defaultDatabaseConnection` is provided the database connection will be used and this option will be ignored.
+- **defaultEnterpriseConnection {String}**: Specifies the enterprise connection which allows you to login using an username and a password that will be used when there is more than one available or there is a database connection. If a `defaultDatabaseConnection` is provided the database connection will be used and this option will be ignored.
 
 #### Example
 
@@ -349,7 +349,7 @@ var options = {
 
 Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, and an `icon` url can also be provided. Also, the initial value can be provided with the `prefill` option, which can be a **string** with the value or a **function** that obtains it. Other options depend on the type of the field, which is defined via the `type` option and defaults to `"text"`.
 
-The new fields are rendered below the regular sign up input fields in the order they are provided.
+Additional sign up fields are rendered below the default fields in the order they are provided.
 
 ##### Text field
 
@@ -459,9 +459,9 @@ var options = {
 
 ### Popup mode
 
-A popup window can be displayed instead of redirecting the user to a social provider website. While this has the advantage of preserving page state, it has some issues. Often times users have popup blockers that prevent the login page from even displaying. There are also known issues with mobile browsers. For example, in recent versions of Chrome on iOS, the login popup does not get [closed properly](https://github.com/auth0/lock/issues/71) after login. For these reasons, we encourage developers to avoid this mode, even with Single Page Apps.
+A popup window can be displayed instead of redirecting the user to a social provider website. While this has the advantage of preserving page state, it has some issues. Often times users have popup blockers that prevent the login page from even displaying. There are also known issues with mobile browsers. For example, in recent versions of Chrome on iOS, the login popup does not [close properly](https://github.com/auth0/lock/issues/71) after login. For these reasons, we encourage developers to avoid this mode, even with Single Page Apps.
 
-If you nevertheless decide to use it, you can activate popup mode by passing the option `auth: {redirect: false}` when constructing `Auth0Lock`.
+If you decide to use popup mode you can activate it by passing the option `auth: {redirect: false}` when constructing `Auth0Lock`.
 
 ```js
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
