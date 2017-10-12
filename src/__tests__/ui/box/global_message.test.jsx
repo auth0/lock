@@ -19,7 +19,7 @@ describe('GlobalMessage', () => {
     wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
     wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.getNode().componentDidMount();
+    wrapper.instance().componentDidMount();
 
     expect(getBoundingClientRectSpy).toHaveBeenCalled();
     expect(scrollIntoViewSpy).toHaveBeenCalledWith(true);
@@ -31,7 +31,7 @@ describe('GlobalMessage', () => {
     wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
     wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.getNode().componentDidMount();
+    wrapper.instance().componentDidMount();
 
     expect(getBoundingClientRectSpy).toHaveBeenCalled();
     expect(scrollIntoViewSpy).not.toHaveBeenCalled();
@@ -43,7 +43,7 @@ describe('GlobalMessage', () => {
     wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
     wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.getNode().componentDidMount();
+    wrapper.instance().componentDidMount();
 
     expect(getBoundingClientRectSpy).toHaveBeenCalled();
     expect(scrollIntoViewSpy).toHaveBeenCalledWith(true);
@@ -55,7 +55,7 @@ describe('GlobalMessage', () => {
     wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRectSpy;
     wrapper.getDOMNode().scrollIntoView = scrollIntoViewSpy;
 
-    wrapper.getNode().componentDidMount();
+    wrapper.instance().componentDidMount();
 
     expect(scrollIntoViewSpy).not.toHaveBeenCalled();
   });

@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Du har nået grænsen for forsøg på at skifte adgangskode. Vent venligst før du prøver igen.',
+      too_many_requests:
+        'Du har nået grænsen for forsøg på at skifte adgangskode. Vent venligst før du prøver igen.',
       'lock.fallback': 'Vi beklager, men der skete en fejl i forespørgslen efter ny adgangskode.'
     },
     login: {
@@ -14,15 +15,20 @@ export default {
       'lock.invalid_code': 'Forkert kode.',
       'lock.invalid_email_password': 'Forkert e-mail eller adgangskode.',
       'lock.invalid_username_password': 'Forkert brugernavn eller adgangskode.',
-      'lock.network': 'Vi kunne ikke få forbindelse til serveren. Kontroller venligst din forbindelse og prøv igen.',
+      'lock.network':
+        'Vi kunne ikke få forbindelse til serveren. Kontroller venligst din forbindelse og prøv igen.',
       'lock.popup_closed': 'Popup-vinduet er lukket. Prøv venligst igen.',
       'lock.unauthorized': 'Tilladelse blev ikke givet. Prøv igen.',
-      password_change_required: 'Du skal opdatere din adgangskode, fordi det er første gang du logger på, eller fordi din adgangskode er udløbet.',
-      password_leaked: 'Dette login er blevet blokeret, fordi din adgangskode er blevet lækket på en anden hjemmeside. Vi har sendt dig en e-mail med instruktioner om, hvordan du fjerner blokeringen.',
+      password_change_required:
+        'Du skal opdatere din adgangskode, fordi det er første gang du logger på, eller fordi din adgangskode er udløbet.',
+      password_leaked:
+        'Dette login er blevet blokeret, fordi din adgangskode er blevet lækket på en anden hjemmeside. Vi har sendt dig en e-mail med instruktioner om, hvordan du fjerner blokeringen.',
       too_many_attempts: 'Din konto er blevet blokeret efter gentagne mislykkede loginforsøg.',
-      'lock.mfa_registration_required': 'Multifaktorgodkendelse er påkrævet, men din enhed er ikke tilmeldt. Tilmeld den venligst før du prøver igen.',
+      'lock.mfa_registration_required':
+        'Multifaktorgodkendelse er påkrævet, men din enhed er ikke tilmeldt. Tilmeld den venligst før du prøver igen.',
       'lock.mfa_invalid_code': 'Forkert kode. Prøv igen.',
-      session_missing: 'Kunne ikke fuldføre din godkendelsesanmodning. Prøv igen efter at have lukket alle åbne dialoger',
+      session_missing:
+        'Kunne ikke fuldføre din godkendelsesanmodning. Prøv igen efter at have lukket alle åbne dialoger',
       'hrd.not_matching_email': 'Brug venligst din virksomheds-e-mail for at logge ind.'
     },
     passwordless: {
@@ -57,7 +63,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Indtast venligst dit login hos %s.',
   failedLabel: 'Mislykkede!',
   forgotPasswordAction: 'Har du glemt dit kodeord?',
-  forgotPasswordInstructions: 'Indtast venligst din e-mail, så sender vi instruktioner til at nulstille dit kodeord.',
+  forgotPasswordInstructions:
+    'Indtast venligst din e-mail, så sender vi instruktioner til at nulstille dit kodeord.',
   forgotPasswordSubmitLabel: 'Send e-mail',
   invalidErrorHint: 'Ugyldig',
   lastLoginInstructions: 'Sidste gang loggede du ind med',
@@ -69,7 +76,8 @@ export default {
   passwordInputPlaceholder: 'dit kodeord',
   passwordStrength: {
     containsAtLeast: 'Skal indeholde mindst %d af de følgende %d typer af karakterer:',
-    identicalChars: 'Ikke mere end %d identiske karakterer efter hinanden (f.eks., "%s" er ikke tilladt)',
+    identicalChars:
+      'Ikke mere end %d identiske karakterer efter hinanden (f.eks., "%s" er ikke tilladt)',
     nonEmpty: 'Ikke-tom adgangskode er påkrævet',
     numbers: 'Numre (f.eks. 0-9)',
     lengthAtLeast: 'Mindst %d karakterer langt',
@@ -78,12 +86,15 @@ export default {
     specialCharacters: 'Specialtegn (f.eks. !@#$%^&*)',
     upperCase: 'Store bogstaver (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Ellers, indtast din e-mail for at logge ind<br/>eller oprette en konto',
+  passwordlessEmailAlternativeInstructions:
+    'Ellers, indtast din e-mail for at logge ind<br/>eller oprette en konto',
   passwordlessEmailCodeInstructions: 'En e-mail med koden er sendt til %s.',
   passwordlessEmailInstructions: 'Indtast din e-mail for at logge ind<br/>eller oprette en konto',
-  passwordlessSMSAlternativeInstructions: 'Ellers, indtast dit telefonnummer for at logge ind<br/>eller oprette en konto',
+  passwordlessSMSAlternativeInstructions:
+    'Ellers, indtast dit telefonnummer for at logge ind<br/>eller oprette en konto',
   passwordlessSMSCodeInstructions: 'En SMS med koden er sendt<br/>til %s.',
-  passwordlessSMSInstructions: 'Indtast dit telefonnummer for at logge ind<br/>eller oprette en konto',
+  passwordlessSMSInstructions:
+    'Indtast dit telefonnummer for at logge ind<br/>eller oprette en konto',
   phoneNumberInputPlaceholder: 'dit telefonnummer',
   resendCodeAction: 'Har du ikke modtaget koden?',
   resendLabel: 'Send igen',

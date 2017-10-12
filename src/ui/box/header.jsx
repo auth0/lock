@@ -58,7 +58,11 @@ class WelcomeMessage extends React.Component {
       message = title;
     }
 
-    return <div className={className} title={message}>{message}</div>;
+    return (
+      <div className={className} title={message}>
+        {message}
+      </div>
+    );
   }
 }
 

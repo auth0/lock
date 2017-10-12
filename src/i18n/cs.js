@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Dosáhli jste limitu v počtu pokusů o změnu hesla. Prosím počkejte před dalším pokusem.',
+      too_many_requests:
+        'Dosáhli jste limitu v počtu pokusů o změnu hesla. Prosím počkejte před dalším pokusem.',
       'lock.fallback': 'Je nám líto, něco se pokazilo při pokusu o změnu hesla.'
     },
     login: {
@@ -14,15 +15,21 @@ export default {
       'lock.invalid_code': 'Chybný kód.',
       'lock.invalid_email_password': 'Chybný email nebo heslo.',
       'lock.invalid_username_password': 'Chybné uživatelské jméno nebo heslo.',
-      'lock.network': 'Nepodařilo se spojit se serverem. Prosím zkontrolujte internetové připojení a zkuste to znovu.',
+      'lock.network':
+        'Nepodařilo se spojit se serverem. Prosím zkontrolujte internetové připojení a zkuste to znovu.',
       'lock.popup_closed': 'Vyskakovací okno zavřeno. Zkuste to znovu.',
       'lock.unauthorized': 'Povolení nebylo uděleno. Zkuste to znovu.',
-      'lock.mfa_registration_required': 'Je vyžadována vícefaktorová autentizace, ale vaše zařízení není registrováno. Prosím registrujte ho, než budete pokračovat.',
+      'lock.mfa_registration_required':
+        'Je vyžadována vícefaktorová autentizace, ale vaše zařízení není registrováno. Prosím registrujte ho, než budete pokračovat.',
       'lock.mfa_invalid_code': 'Chybný kód. Posíme zkuste to znovu.',
-      password_change_required: 'Je třeba aktualizovat heslo, neboť jde o první přihlášení nebo platnost hesla vypršela.',
-      password_leaked: 'Toto uživatelské jméno bylo zablokováno, protože došlo k úniku hesla na jiné webové stránce. Poslali jsme vám instrukce k odblokování na email.',
-      too_many_attempts: 'Váš účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.',
-      session_missing: 'Nemohl dokončit váš požadavek ověřování. Zkuste to znovu po zavření všech otevřených dialogy',
+      password_change_required:
+        'Je třeba aktualizovat heslo, neboť jde o první přihlášení nebo platnost hesla vypršela.',
+      password_leaked:
+        'Toto uživatelské jméno bylo zablokováno, protože došlo k úniku hesla na jiné webové stránce. Poslali jsme vám instrukce k odblokování na email.',
+      too_many_attempts:
+        'Váš účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.',
+      session_missing:
+        'Nemohl dokončit váš požadavek ověřování. Zkuste to znovu po zavření všech otevřených dialogy',
       'hrd.not_matching_email': 'Prosím, použijte pro přihlášení firemní e-mail.'
     },
     passwordless: {
@@ -57,7 +64,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Prosím zadejte údaje ke svému firemnímu účtu %s.',
   failedLabel: 'Chyba!',
   forgotPasswordAction: 'Zapoměli jste heslo?',
-  forgotPasswordInstructions: 'Prosím zadejte svou emailovou adresu. Pošleme vám email, díky němuž budete moci změnit heslo.',
+  forgotPasswordInstructions:
+    'Prosím zadejte svou emailovou adresu. Pošleme vám email, díky němuž budete moci změnit heslo.',
   forgotPasswordSubmitLabel: 'Poslat email',
   invalidErrorHint: 'Nesprávný',
   lastLoginInstructions: 'Naposled jste se přihlásili s',
@@ -78,10 +86,12 @@ export default {
     specialCharacters: 'Zvláštní znaky (např. !@#$%^&*)',
     upperCase: 'Velká písmena (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Případně zadejte svůj email pro přihlášení <br/>nebo vytvoření účtu',
+  passwordlessEmailAlternativeInstructions:
+    'Případně zadejte svůj email pro přihlášení <br/>nebo vytvoření účtu',
   passwordlessEmailCodeInstructions: 'Email s kódem byl odeslán na %s.',
   passwordlessEmailInstructions: 'Zadejte svůj email pro přihlášení<br/>nebo vytvoření účtu',
-  passwordlessSMSAlternativeInstructions: 'Případně zadejte svůj telefon pro přihlášení<br/>nebo vytvoření účtu',
+  passwordlessSMSAlternativeInstructions:
+    'Případně zadejte svůj telefon pro přihlášení<br/>nebo vytvoření účtu',
   passwordlessSMSCodeInstructions: 'SMS s kódem byla odeslána <br/>na %s.',
   passwordlessSMSInstructions: 'Zadejte svůj email pro přihlášení<br/>nebo vytvoření účtu',
   phoneNumberInputPlaceholder: 'vaše telefonní číslo',

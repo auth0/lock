@@ -94,14 +94,18 @@ function validateAllowedConnections(m) {
   if (defaultDatabaseConnectionName(m) && !defaultDatabaseConnection(m)) {
     l.warn(
       m,
-      `The provided default database connection "${defaultDatabaseConnectionName(m)}" is not enabled.`
+      `The provided default database connection "${defaultDatabaseConnectionName(
+        m
+      )}" is not enabled.`
     );
   }
 
   if (defaultEnterpriseConnectionName(m) && !defaultEnterpriseConnection(m)) {
     l.warn(
       m,
-      `The provided default enterprise connection "${defaultEnterpriseConnectionName(m)}" is not enabled or does not allow email/password authentication.`
+      `The provided default enterprise connection "${defaultEnterpriseConnectionName(
+        m
+      )}" is not enabled or does not allow email/password authentication.`
     );
   }
 

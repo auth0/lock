@@ -31,7 +31,9 @@ function validate(validator, value, ...args) {
 // TODO: this should handle icons, and everything.
 // TODO: also there should be a similar fn for regular fields.
 export function registerOptionField(m, field, options, initialValue) {
-  let valid = true, hasInitial = !initialValue, initialOption;
+  let valid = true,
+    hasInitial = !initialValue,
+    initialOption;
   options.forEach(x => {
     valid =
       valid &&
@@ -179,13 +181,13 @@ export function isSelecting(m) {
 
 export function renderOptionSelection(m) {
   const name = m.getIn(['field', 'selecting', 'name']);
-  return isSelecting(m)
-    ? <OptionSelectionPane
-        model={m}
-        name={name}
-        icon={m.getIn(['field', 'selecting', 'icon'])}
-        iconUrl={m.getIn(['field', 'selecting', 'iconUrl'])}
-        items={m.getIn(['field', name, 'options'])}
-      />
-    : null;
+  return isSelecting(m) ? (
+    <OptionSelectionPane
+      model={m}
+      name={name}
+      icon={m.getIn(['field', 'selecting', 'icon'])}
+      iconUrl={m.getIn(['field', 'selecting', 'iconUrl'])}
+      items={m.getIn(['field', name, 'options'])}
+    />
+  ) : null;
 }

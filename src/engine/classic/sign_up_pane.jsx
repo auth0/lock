@@ -25,14 +25,15 @@ export default class SignUpPane extends React.Component {
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
-    const usernamePane = !onlyEmail && databaseConnectionRequiresUsername(model)
-      ? <UsernamePane
+    const usernamePane =
+      !onlyEmail && databaseConnectionRequiresUsername(model) ? (
+        <UsernamePane
           i18n={i18n}
           lock={model}
           placeholder={usernameInputPlaceholder}
           validateFormat={true}
         />
-      : null;
+      ) : null;
 
     const fields =
       !onlyEmail &&
@@ -49,15 +50,15 @@ export default class SignUpPane extends React.Component {
         />
       ));
 
-    const passwordPane =
-      !onlyEmail &&
+    const passwordPane = !onlyEmail && (
       <PasswordPane
         i18n={i18n}
         lock={model}
         placeholder={passwordInputPlaceholder}
         policy={passwordStrengthPolicy(model)}
         strengthMessages={passwordStrengthMessages}
-      />;
+      />
+    );
 
     return (
       <div>

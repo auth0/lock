@@ -45,9 +45,10 @@ export default class PasswordInput extends React.Component {
 
     const { focused, changing } = this.state;
 
-    const passwordStrength = policy && focused && changing
-      ? <PasswordStrength messages={strengthMessages} password={value} policy={policy} />
-      : null;
+    const passwordStrength =
+      policy && focused && changing ? (
+        <PasswordStrength messages={strengthMessages} password={value} policy={policy} />
+      ) : null;
 
     return (
       <InputWrap

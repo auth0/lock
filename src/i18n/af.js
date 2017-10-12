@@ -20,7 +20,8 @@ export default {
       'lock.mfa_registration_required': 'Jou toestel voldoen nie aan vereistes nie.',
       'lock.mfa_invalid_code': 'Verkeerde kode. Probeer asseblief weer.',
       password_change_required: 'Dateer wagwoord op asseblief.',
-      password_leaked: 'Jou rekening het sekuriteitsprobleme. Vir jou veiligheid het ons die rekening geblok. Sien e-pos met instruksies om rekening weer te aktiveer.',
+      password_leaked:
+        'Jou rekening het sekuriteitsprobleme. Vir jou veiligheid het ons die rekening geblok. Sien e-pos met instruksies om rekening weer te aktiveer.',
       too_many_attempts: 'Jou rekening is geblok nadat daar te veel keer probeer inteken is.',
       session_missing: 'Kon nie versoek bevestig nie. Maak asseblief alles toe en probeer weer',
       'hrd.not_matching_email': 'Gebruik asseblief korporatiewe e-pos om in te teken.'
@@ -79,12 +80,15 @@ export default {
     specialCharacters: 'Spesiale karakters (e.g. !@#$%^&*)',
     upperCase: 'Hoofletters (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Andersins vul jou e-pos in om inteken<br/>of skep n rekening',
+  passwordlessEmailAlternativeInstructions:
+    'Andersins vul jou e-pos in om inteken<br/>of skep n rekening',
   passwordlessEmailCodeInstructions: 'E-pos met die kode is gestuur na %s.',
   passwordlessEmailInstructions: 'Vul jou e-pos in om inteken<br/>of skep n rekening',
-  passwordlessSMSAlternativeInstructions: 'Andersins vul jou telefoonnommer in om inteken<br/>of skep n rekening',
+  passwordlessSMSAlternativeInstructions:
+    'Andersins vul jou telefoonnommer in om inteken<br/>of skep n rekening',
   passwordlessSMSCodeInstructions: 'Ons stuur SMS met die kode <br/>na %s.',
-  passwordlessSMSInstructions: 'Vul jou telenfoonnommer in om in te teken <br/>of skep jou rekening',
+  passwordlessSMSInstructions:
+    'Vul jou telenfoonnommer in om in te teken <br/>of skep jou rekening',
   phoneNumberInputPlaceholder: 'jou telefoonnommer',
   resendCodeAction: 'Nie die kode gekry nie?',
   resendLabel: 'Stuur weer',
@@ -101,7 +105,8 @@ export default {
   ssoEnabled: 'Enkel-intekening aktief',
   submitLabel: 'Gaan voort',
   unrecoverableError: 'Iets het verkeerd gegaan.<br />Kontak asseblief ons tegniese span.',
-  usernameFormatErrorHint: 'Gebruik %d-%d letters, nommers en die volgende karakters: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Gebruik %d-%d letters, nommers en die volgende karakters: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'jou gebruikersnaam',
   usernameOrEmailInputPlaceholder: 'gebruikersnaam en e-pos',
   title: 'Auth0',

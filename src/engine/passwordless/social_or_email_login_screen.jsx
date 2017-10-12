@@ -15,19 +15,19 @@ const useSocialBigButtons = m => {
 };
 
 const Component = ({ i18n, model }) => {
-  const social = l.hasSomeConnections(model, 'social')
-    ? <SocialButtonsPane
-        bigButtons={useSocialBigButtons(model)}
-        instructions={i18n.html('socialLoginInstructions')}
-        labelFn={i18n.str}
-        lock={model}
-        signUp={false}
-      />
-    : null;
+  const social = l.hasSomeConnections(model, 'social') ? (
+    <SocialButtonsPane
+      bigButtons={useSocialBigButtons(model)}
+      instructions={i18n.html('socialLoginInstructions')}
+      labelFn={i18n.str}
+      lock={model}
+      signUp={false}
+    />
+  ) : null;
 
-  const email = l.hasSomeConnections(model, 'passwordless', 'email')
-    ? <EmailPane i18n={i18n} lock={model} placeholder={i18n.str('emailInputPlaceholder')} />
-    : null;
+  const email = l.hasSomeConnections(model, 'passwordless', 'email') ? (
+    <EmailPane i18n={i18n} lock={model} placeholder={i18n.str('emailInputPlaceholder')} />
+  ) : null;
 
   // TODO: instructions can't be on EmailPane beacuse it breaks the CSS,
   // all input fields needs to share a parent so the last one doesn't have
@@ -43,7 +43,14 @@ const Component = ({ i18n, model }) => {
 
   const separator = social && email ? <PaneSeparator /> : null;
 
-  return <div>{social}{separator}{header}{email}</div>;
+  return (
+    <div>
+      {social}
+      {separator}
+      {header}
+      {email}
+    </div>
+  );
 };
 
 export default class SocialOrEmailLoginScreen extends Screen {

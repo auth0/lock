@@ -4,7 +4,8 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Du er midlertidig blokkert på grunn av for mange passord-endringsforsøk. Vent litt før du prøver igjen.',
+      too_many_requests:
+        'Du er midlertidig blokkert på grunn av for mange passord-endringsforsøk. Vent litt før du prøver igjen.',
       'lock.fallback': 'Beklager, noe gikk galt med forespørselen om passord endring.'
     },
     login: {
@@ -17,12 +18,16 @@ export default {
       'lock.network': 'Kunne ikke kontakte serveren. Sjekk nettforbindelsen din og prøv igjen.',
       'lock.popup_closed': 'Popup vinduet ble lukket. Prøv igjen.',
       'lock.unauthorized': 'Fikk ikke adgang. Prøv igjen.',
-      'lock.mfa_registration_required': 'Flerfaktor-autentisering er påkrevd, men din enhet er ikke innmeldt. Du må melde den inn før du kan fortsette.',
+      'lock.mfa_registration_required':
+        'Flerfaktor-autentisering er påkrevd, men din enhet er ikke innmeldt. Du må melde den inn før du kan fortsette.',
       'lock.mfa_invalid_code': 'Feil kode. Vennligst forsøk igjen.',
-      password_change_required: 'Du må endre passord fordi dette er første gang du logger inn eller fordi passordet har utløpt.',
-      password_leaked: 'Denne påloggingen er blokkert fordi passordet har blitt lekket på et annet nettsted. Vi har sendt deg en epost med instruksjoner for hvordan du opphever blokkeringen.',
+      password_change_required:
+        'Du må endre passord fordi dette er første gang du logger inn eller fordi passordet har utløpt.',
+      password_leaked:
+        'Denne påloggingen er blokkert fordi passordet har blitt lekket på et annet nettsted. Vi har sendt deg en epost med instruksjoner for hvordan du opphever blokkeringen.',
       too_many_attempts: 'Din konto er blokkert på grunn av for mange påloggingsforsøk.',
-      session_missing: 'Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser',
+      session_missing:
+        'Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser',
       'hrd.not_matching_email': 'Vennligst bruk bedriftens e-post å logge inn.'
     },
     passwordless: {
@@ -57,7 +62,8 @@ export default {
   enterpriseActiveLoginInstructions: 'Fyll inn bedrifts-legitimasjon ved %s.',
   failedLabel: 'Mislyktes!',
   forgotPasswordAction: 'Husker du ikke passordet?',
-  forgotPasswordInstructions: 'Skriv inn epost-adressen din. Vi sender deg en epost for å nullstille passordet.',
+  forgotPasswordInstructions:
+    'Skriv inn epost-adressen din. Vi sender deg en epost for å nullstille passordet.',
   forgotPasswordSubmitLabel: 'Send epost',
   invalidErrorHint: 'Ugyldig',
   lastLoginInstructions: 'Forrige gang logget du inn med',
@@ -78,12 +84,16 @@ export default {
     specialCharacters: 'Spesialtegn (dvs. !@#$%^&*)',
     upperCase: 'Store bokstaver (A-Å)'
   },
-  passwordlessEmailAlternativeInstructions: 'Alternativt, skriv inn din epost-adresse for å logge inn<br>eller opprette en konto',
+  passwordlessEmailAlternativeInstructions:
+    'Alternativt, skriv inn din epost-adresse for å logge inn<br>eller opprette en konto',
   passwordlessEmailCodeInstructions: 'En epost med koden har blitt sendt til %s.',
-  passwordlessEmailInstructions: 'Skriv inn din epost-adresse for å logge inn<br>eller opprette en konto',
-  passwordlessSMSAlternativeInstructions: 'Alternativt, skriv inn ditt telefonnummer for å logge inn<br>eller opprette en konto',
+  passwordlessEmailInstructions:
+    'Skriv inn din epost-adresse for å logge inn<br>eller opprette en konto',
+  passwordlessSMSAlternativeInstructions:
+    'Alternativt, skriv inn ditt telefonnummer for å logge inn<br>eller opprette en konto',
   passwordlessSMSCodeInstructions: 'En SMS med koden har blitt sendt til %s.',
-  passwordlessSMSInstructions: 'Skriv inn ditt telefonnummer for å logge inn<br>eller opprette en konto',
+  passwordlessSMSInstructions:
+    'Skriv inn ditt telefonnummer for å logge inn<br>eller opprette en konto',
   phoneNumberInputPlaceholder: 'ditt telefonnummer',
   resendCodeAction: 'Fikk du ikke koden?',
   resendLabel: 'Send på nytt',

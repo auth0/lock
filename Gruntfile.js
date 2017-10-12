@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         port: 3000,
         https: true,
         webpack: {
-          devtool: 'eval'
+          devtool: 'cheap-module-source-map'
         }
       },
       design: {
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
             path: path.join(__dirname, 'build'),
             filename: 'lock.design.js'
           },
-          devtool: 'eval'
+          devtool: 'cheap-module-source-map'
         }
       }
     },

@@ -37,9 +37,7 @@ module.exports = {
           {
             loader: 'stylus-loader',
             options: {
-              paths: [
-                'node_modules/bootstrap-stylus/stylus'
-              ],
+              paths: ['node_modules/bootstrap-stylus/stylus'],
               preferPathResolver: 'webpack'
             }
           }

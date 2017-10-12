@@ -20,24 +20,19 @@ import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notic
 
 const Component = ({ i18n, model }) => {
   const sso = isSSOEnabled(model) && hasScreen(model, 'login');
-  const ssoNotice =
-    sso &&
-    <SingleSignOnNotice>
-      {i18n.str('ssoEnabled')}
-    </SingleSignOnNotice>;
+  const ssoNotice = sso && <SingleSignOnNotice>{i18n.str('ssoEnabled')}</SingleSignOnNotice>;
 
-  const tabs =
-    !sso &&
-    hasScreen(model, 'login') &&
-    <LoginSignUpTabs
-      key="loginsignup"
-      lock={model}
-      loginLabel={i18n.str('loginLabel')}
-      signUpLabel={i18n.str('signUpLabel')}
-    />;
+  const tabs = !sso &&
+    hasScreen(model, 'login') && (
+      <LoginSignUpTabs
+        key="loginsignup"
+        lock={model}
+        loginLabel={i18n.str('loginLabel')}
+        signUpLabel={i18n.str('signUpLabel')}
+      />
+    );
 
-  const social =
-    l.hasSomeConnections(model, 'social') &&
+  const social = l.hasSomeConnections(model, 'social') && (
     <SocialButtonsPane
       bigButtons={useBigSocialButtons(model)}
       instructions={i18n.html('socialSignUpInstructions')}
@@ -45,14 +40,15 @@ const Component = ({ i18n, model }) => {
       lock={model}
       signUp={true}
       disabled={!termsAccepted(model)}
-    />;
+    />
+  );
 
   const signUpInstructionsKey = social
     ? 'databaseAlternativeSignUpInstructions'
     : 'databaseSignUpInstructions';
 
-  const db =
-    (l.hasSomeConnections(model, 'database') || l.hasSomeConnections(model, 'enterprise')) &&
+  const db = (l.hasSomeConnections(model, 'database') ||
+    l.hasSomeConnections(model, 'enterprise')) && (
     <SignUpPane
       emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
       i18n={i18n}
@@ -62,11 +58,20 @@ const Component = ({ i18n, model }) => {
       passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
       passwordStrengthMessages={i18n.group('passwordStrength')}
       usernameInputPlaceholder={i18n.str('usernameInputPlaceholder')}
-    />;
+    />
+  );
 
   const separator = social && db && <PaneSeparator />;
 
-  return <div>{ssoNotice}{tabs}{social}{separator}{db}</div>;
+  return (
+    <div>
+      {ssoNotice}
+      {tabs}
+      {social}
+      {separator}
+      {db}
+    </div>
+  );
 };
 
 export default class SignUp extends Screen {
@@ -106,11 +111,11 @@ export default class SignUp extends Screen {
 
   renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
-    return terms || mustAcceptTerms(m)
-      ? <SignUpTerms checkHandler={checkHandler} checked={termsAccepted(m)}>
-          {terms}
-        </SignUpTerms>
-      : null;
+    return terms || mustAcceptTerms(m) ? (
+      <SignUpTerms checkHandler={checkHandler} checked={termsAccepted(m)}>
+        {terms}
+      </SignUpTerms>
+    ) : null;
   }
 
   render() {

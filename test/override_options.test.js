@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 import { stub } from 'sinon';
 
 import expect from 'expect.js';
@@ -7,10 +7,9 @@ import Immutable from 'immutable';
 import { overrideOptions } from '../src/core/index';
 import * as i18n from '../src/i18n';
 
-describe("Override state with options on show", () => {
-
+describe('Override state with options on show', () => {
   before(function() {
-    stub(i18n, "initI18n", (m) => {
+    stub(i18n, 'initI18n', m => {
       return m;
     });
   });
@@ -20,7 +19,6 @@ describe("Override state with options on show", () => {
   });
 
   it('should merge and warn missing keys', () => {
-
     var m = Immutable.fromJS({});
 
     var new_options = {
@@ -50,13 +48,13 @@ describe("Override state with options on show", () => {
       core: {
         transient: {
           globalSuccess: 'test',
-          allowedConnections: "facebook",
+          allowedConnections: 'facebook',
           ui: {
             primaryColor: 'red',
             logo: 'http://test.com/logo.png',
             language: 'es',
             dict: {
-              title: "new_title"
+              title: 'new_title'
             }
           },
           authParams: {
@@ -65,6 +63,5 @@ describe("Override state with options on show", () => {
         }
       }
     });
-
   });
 });

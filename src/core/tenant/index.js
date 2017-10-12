@@ -82,17 +82,14 @@ function formatTenantConnection(connectionType, connection) {
 
     result.passwordPolicy = result.passwordPolicy || 'none';
 
-    result.allowSignup = typeof connection.allowSignup === 'boolean'
-      ? connection.allowSignup
-      : true;
+    result.allowSignup =
+      typeof connection.allowSignup === 'boolean' ? connection.allowSignup : true;
 
-    result.allowForgot = typeof connection.allowForgot === 'boolean'
-      ? connection.allowForgot
-      : true;
+    result.allowForgot =
+      typeof connection.allowForgot === 'boolean' ? connection.allowForgot : true;
 
-    result.requireUsername = typeof connection.requiresUsername === 'boolean'
-      ? connection.requiresUsername
-      : false;
+    result.requireUsername =
+      typeof connection.requiresUsername === 'boolean' ? connection.requiresUsername : false;
 
     result.validation = formatConnectionValidation(connection.validation);
   }

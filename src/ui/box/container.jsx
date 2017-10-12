@@ -155,7 +155,7 @@ export default class Container extends React.Component {
       tabs,
       terms,
       title,
-      transitionName,
+      classNames,
       scrollGlobalMessagesIntoView
     } = this.props;
 
@@ -204,7 +204,7 @@ export default class Container extends React.Component {
     }
 
     return (
-      <div className={className} ref="container">
+      <div className={className}>
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
@@ -231,7 +231,7 @@ export default class Container extends React.Component {
                 tabs={tabs}
                 terms={terms}
                 title={title}
-                transitionName={transitionName}
+                classNames={classNames}
                 scrollGlobalMessagesIntoView={scrollGlobalMessagesIntoView}
               />
             </div>
@@ -265,7 +265,7 @@ Container.propTypes = {
   tabs: PropTypes.bool,
   terms: PropTypes.element,
   title: PropTypes.string,
-  transitionName: PropTypes.string.isRequired,
+  classNames: PropTypes.string.isRequired,
   scrollGlobalMessagesIntoView: PropTypes.bool
   // escHandler
   // submitHandler,
@@ -282,7 +282,9 @@ export const defaultProps = (Container.defaultProps = {
   disableSubmitButton: false,
   isMobile: false,
   isSubmitting: false,
-  logo: `${isFileProtocol ? 'https:' : ''}//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
+  logo: `${isFileProtocol
+    ? 'https:'
+    : ''}//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
   primaryColor: '#ea5323',
   showBadge: true,
   scrollGlobalMessagesIntoView: true

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
 import * as l from '../../core/index';
@@ -35,12 +35,14 @@ class SubmitButton extends React.Component {
 
   render() {
     const { color, disabled, label } = this.props;
-    const content = label
-      ? <span className="auth0-label-submit">
-          {label}
-          <span dangerouslySetInnerHTML={{ __html: submitText }} />
-        </span>
-      : <span dangerouslySetInnerHTML={{ __html: submitSvg }} />;
+    const content = label ? (
+      <span className="auth0-label-submit">
+        {label}
+        <span dangerouslySetInnerHTML={{ __html: submitText }} />
+      </span>
+    ) : (
+      <span dangerouslySetInnerHTML={{ __html: submitSvg }} />
+    );
 
     return (
       <button
@@ -193,7 +195,7 @@ export default class Chrome extends React.Component {
       success,
       terms,
       title,
-      transitionName,
+      classNames,
       scrollGlobalMessagesIntoView
     } = this.props;
 
@@ -208,18 +210,18 @@ export default class Chrome extends React.Component {
       name = '';
     }
 
-    const submitButton =
-      showSubmitButton &&
-      !delayingShowSubmitButton &&
-      <SubmitButton
-        color={primaryColor}
-        disabled={disableSubmitButton}
-        screenName={screenName}
-        contentProps={contentProps}
-        key="submit"
-        label={submitButtonLabel}
-        ref="submit"
-      />;
+    const submitButton = showSubmitButton &&
+      !delayingShowSubmitButton && (
+        <SubmitButton
+          color={primaryColor}
+          disabled={disableSubmitButton}
+          screenName={screenName}
+          contentProps={contentProps}
+          key="submit"
+          label={submitButtonLabel}
+          ref="submit"
+        />
+      );
 
     function wrapGlobalMessage(message) {
       return typeof message === 'string'
@@ -227,22 +229,22 @@ export default class Chrome extends React.Component {
         : message;
     }
 
-    const globalError = error
-      ? <GlobalMessage
-          key="global-error"
-          message={wrapGlobalMessage(error)}
-          type="error"
-          scrollIntoView={scrollGlobalMessagesIntoView}
-        />
-      : null;
-    const globalSuccess = success
-      ? <GlobalMessage
-          key="global-success"
-          message={wrapGlobalMessage(success)}
-          type="success"
-          scrollIntoView={scrollGlobalMessagesIntoView}
-        />
-      : null;
+    const globalError = error ? (
+      <GlobalMessage
+        key="global-error"
+        message={wrapGlobalMessage(error)}
+        type="error"
+        scrollIntoView={scrollGlobalMessagesIntoView}
+      />
+    ) : null;
+    const globalSuccess = success ? (
+      <GlobalMessage
+        key="global-success"
+        message={wrapGlobalMessage(success)}
+        type="success"
+        scrollIntoView={scrollGlobalMessagesIntoView}
+      />
+    ) : null;
 
     const Content = contentComponent;
 
@@ -260,49 +262,49 @@ export default class Chrome extends React.Component {
           backgroundColor={primaryColor}
           logoUrl={logo}
         />
-        <ReactCSSTransitionGroup
-          transitionName="global-message"
-          transitionEnterTimeout={MESSAGE_ANIMATION_DURATION}
-          transitionLeaveTimeout={MESSAGE_ANIMATION_DURATION}
-        >
-          {globalSuccess}
-          {globalError}
-        </ReactCSSTransitionGroup>
-        <div style={{ position: 'relative' }}>
+        <TransitionGroup>
+          <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
+            <div>
+              {globalSuccess}
+              {globalError}
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
+        <div style={{ position: 'relative' }} ref="screen">
           <MultisizeSlide
             delay={550}
             onDidAppear={::this.onDidAppear}
             onDidSlide={::this.onDidSlide}
             onWillSlide={::this.onWillSlide}
-            transitionName={transitionName}
+            transitionName={classNames}
             reverse={reverse}
           >
             <div key={this.mainScreenName()} className="auth0-lock-view-content">
               <div style={{ position: 'relative' }}>
                 <div className="auth0-lock-body-content">
                   <div className="auth0-lock-content">
-                    <div className="auth0-lock-form" ref="screen">
+                    <div className="auth0-lock-form">
                       <Content focusSubmit={::this.focusSubmit} {...contentProps} />
                     </div>
                   </div>
-                  {terms &&
-                    <small className="auth0-lock-terms">
-                      {terms}
-                    </small>}
+                  {terms && <small className="auth0-lock-terms">{terms}</small>}
                 </div>
               </div>
             </div>
           </MultisizeSlide>
         </div>
         {submitButton}
-        <ReactCSSTransitionGroup
-          ref="auxiliary"
-          transitionName="slide"
-          transitionEnterTimeout={AUXILIARY_ANIMATION_DURATION}
-          transitionLeaveTimeout={AUXILIARY_ANIMATION_DURATION}
-        >
-          {auxiliaryPane}
-        </ReactCSSTransitionGroup>
+        {auxiliaryPane && (
+          <TransitionGroup>
+            <CSSTransition
+              ref="auxiliary"
+              classNames="slide"
+              timeout={AUXILIARY_ANIMATION_DURATION}
+            >
+              {auxiliaryPane}
+            </CSSTransition>
+          </TransitionGroup>
+        )}
       </div>
     );
   }
@@ -338,7 +340,7 @@ Chrome.propTypes = {
   success: PropTypes.node,
   terms: PropTypes.element,
   title: PropTypes.string,
-  transitionName: PropTypes.string.isRequired,
+  classNames: PropTypes.string.isRequired,
   scrollGlobalMessagesIntoView: PropTypes.bool
 };
 

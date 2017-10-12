@@ -1,35 +1,40 @@
 export default {
   error: {
     forgotPassword: {
-      too_many_requests: 'Sa oled liiga palju kordi üritanud salasõna vahetada. Palun oota enne uuesti proovimist.',
-      'lock.fallback': "Vabandame, midagi läks salasõna vahetamise sooviga valesti."
+      too_many_requests:
+        'Sa oled liiga palju kordi üritanud salasõna vahetada. Palun oota enne uuesti proovimist.',
+      'lock.fallback': 'Vabandame, midagi läks salasõna vahetamise sooviga valesti.'
     },
     login: {
       blocked_user: 'Kasutaja on blokeeritud.',
       invalid_user_password: 'Sellise infoga kasutaja puudub.',
-      'lock.fallback': "Vabandame, midagi läks sisse logides valesti.",
+      'lock.fallback': 'Vabandame, midagi läks sisse logides valesti.',
       'lock.invalid_code': 'Vale kood.',
       'lock.invalid_email_password': 'Vale e-mail või salasõna.',
       'lock.invalid_username_password': 'Vale salasõna või parool.',
       'lock.network': 'Ei saanud serveriga ühendust. Palun kontrolli oma internetiühendust.',
       'lock.popup_closed': 'Hüpikaken suleti. Palun proovi uuesti.',
       'lock.unauthorized': 'Õiguseid ei antud. Palun proovi uuesti.',
-      'lock.mfa_registration_required': 'Mitmetasemeline autentimine on nõutud aga sinu seade ei ole nimekirja lisatud. Palun lisa ta nimekirja.',
+      'lock.mfa_registration_required':
+        'Mitmetasemeline autentimine on nõutud aga sinu seade ei ole nimekirja lisatud. Palun lisa ta nimekirja.',
       'lock.mfa_invalid_code': 'Vale kood. Palun proovi uuesti.',
-      password_change_required: 'Parooli vahetamine on kohustuslik, sest sa logid sisse esimest korda või parool on aegunud.', // TODO: verify error code
-      password_leaked: 'Me oleme avastanud võimaliku turvariski selle kontoga. Sinu konto kaitsmises oleme selle sisselogimise blokeerinud. Sulle saadeti e-mail kuidas blokeering maha võtta.',
+      password_change_required:
+        'Parooli vahetamine on kohustuslik, sest sa logid sisse esimest korda või parool on aegunud.', // TODO: verify error code
+      password_leaked:
+        'Me oleme avastanud võimaliku turvariski selle kontoga. Sinu konto kaitsmises oleme selle sisselogimise blokeerinud. Sulle saadeti e-mail kuidas blokeering maha võtta.',
       too_many_attempts: 'Sinu konto blokeeriti peale mitut ebaõnnestunud sisselogimiskatset.',
-      session_missing: "Sisselogimine ebaõnnestus. Palun proovi uuesti peale kõigi akende sulgemist.",
+      session_missing:
+        'Sisselogimine ebaõnnestus. Palun proovi uuesti peale kõigi akende sulgemist.',
       'hrd.not_matching_email': 'Palun kasuta oma ettevõtte e-maili sisselogimiseks.'
     },
     passwordless: {
       'bad.email': 'Vigane e-mail',
       'bad.phone_number': 'Vigane telefoninumber',
-      'lock.fallback': "Vabandame, midagi läks valesti."
+      'lock.fallback': 'Vabandame, midagi läks valesti.'
     },
     signUp: {
       invalid_password: 'Parool on vigane.',
-      'lock.fallback': "Vabandame, registreerumisel läks midagi valesti.",
+      'lock.fallback': 'Vabandame, registreerumisel läks midagi valesti.',
       password_dictionary_error: 'Parool on liiga tavaline.',
       password_no_user_info_error: 'Parool sisaldab kasutajainfot.',
       password_strength_error: 'Parool on liiga nõrk.',
@@ -40,11 +45,11 @@ export default {
   success: {
     // success messages show above the form or in a confirmation pane
     logIn: 'Täname, et sisse logisid.',
-    forgotPassword: "Me saatsime sulle e-maili, et oma salasõna taastada.",
+    forgotPassword: 'Me saatsime sulle e-maili, et oma salasõna taastada.',
     magicLink: 'Me saatsime sisselogimise lingi aadressile:<br />%s.',
     signUp: 'Täname, et registreerusid.'
   },
-  blankErrorHint: "Ei või olla tühi",
+  blankErrorHint: 'Ei või olla tühi',
   codeInputPlaceholder: 'sinu kood',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: 'või',
@@ -55,8 +60,9 @@ export default {
   enterpriseActiveLoginInstructions: 'Palun sisesta oma ettevõtte sisselogimisinfo %s.',
   failedLabel: 'Ebaõnnestus!',
   forgotPasswordTitle: 'Taasta oma salasõna',
-  forgotPasswordAction: "Ei mäleta salasõna?",
-  forgotPasswordInstructions: 'Palun sisesta oma e-maili aadress. Me saadame sulle e-maili millega saad oma salasõna taastada.',
+  forgotPasswordAction: 'Ei mäleta salasõna?',
+  forgotPasswordInstructions:
+    'Palun sisesta oma e-maili aadress. Me saadame sulle e-maili millega saad oma salasõna taastada.',
   forgotPasswordSubmitLabel: 'Saada e-mail',
   invalidErrorHint: 'Vigane',
   lastLoginInstructions: 'Viimati logisid sisse kasutades:',
@@ -68,7 +74,8 @@ export default {
   passwordInputPlaceholder: 'sinu salasõna',
   passwordStrength: {
     containsAtLeast: 'Sisaldab vähemalt %d järgnevat %d sümbolit:',
-    identicalChars: 'Ei tohi sisaldada rohkem kui %d sama järjestikulist sümbolit (näiteks, "%s" ei ole lubatud)',
+    identicalChars:
+      'Ei tohi sisaldada rohkem kui %d sama järjestikulist sümbolit (näiteks, "%s" ei ole lubatud)',
     nonEmpty: 'Parool ei või olla tühi',
     numbers: 'Numbrid (näiteks 0-9)',
     lengthAtLeast: 'Vähemalt %d tähemärki pikk',
@@ -77,10 +84,12 @@ export default {
     specialCharacters: 'Erilised tähemärgid (näiteks !@#$%^&*)',
     upperCase: 'Suured tähed (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions: 'Muidu, sisesta oma e-mail et sisse logida<br/>või konto luua',
+  passwordlessEmailAlternativeInstructions:
+    'Muidu, sisesta oma e-mail et sisse logida<br/>või konto luua',
   passwordlessEmailCodeInstructions: 'Koodiga e-mail saadeti aadressile: %s.',
   passwordlessEmailInstructions: 'Sisesta oma e-mail, et sisse logida<br/>või konto luua',
-  passwordlessSMSAlternativeInstructions: 'Muidu, sisesta oma telefoninumber, et sisse logida<br/>või konto luua',
+  passwordlessSMSAlternativeInstructions:
+    'Muidu, sisesta oma telefoninumber, et sisse logida<br/>või konto luua',
   passwordlessSMSCodeInstructions: 'SMS koodiga saadeti numbrile: <br/> %s.',
   passwordlessSMSInstructions: 'Sisesta oma telefoninumber, et sisse logida<br/>või konto luua',
   phoneNumberInputPlaceholder: 'sinu telefoninumber',
@@ -100,7 +109,8 @@ export default {
   ssoEnabled: 'Ühine sisselogimine on sees',
   submitLabel: 'Saada',
   unrecoverableError: 'Midagi läks valesti.<br />Palun võta ühendust tehnilise toega.',
-  usernameFormatErrorHint: 'Kasuta %d-%d tähti, numbreid ja järgnevaid sümboleid: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Kasuta %d-%d tähti, numbreid ja järgnevaid sümboleid: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'sinu kasutajanimi',
   usernameOrEmailInputPlaceholder: 'kasutajanimi/e-mail',
   title: 'Auth0',

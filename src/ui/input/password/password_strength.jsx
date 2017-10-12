@@ -28,7 +28,11 @@ export default class PasswordStrength extends React.Component {
 
     prepareMessage(analysis.rules);
 
-    return <div className={className}><List items={analysis.rules} /></div>;
+    return (
+      <div className={className}>
+        <List items={analysis.rules} />
+      </div>
+    );
   }
 }
 
