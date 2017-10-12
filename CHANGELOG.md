@@ -1,5 +1,48 @@
 # Change Log
 
+## [v10.23.0](https://github.com/auth0/lock/tree/v10.23.0) (2017-10-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.22.0...v10.23.0)
+
+
+**Changed**
+- Pinning react version 15.6.2 [\#1142](https://github.com/auth0/lock/pull/1142) ([luisrudge](https://github.com/luisrudge))
+- upgrade auth0.js [\#1137](https://github.com/auth0/lock/pull/1137) ([luisrudge](https://github.com/luisrudge))
+- Upgrade react version [\#1135](https://github.com/auth0/lock/pull/1135) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix defaultUrl sending hash content [\#1132](https://github.com/auth0/lock/pull/1132) ([luisrudge](https://github.com/luisrudge))
+
+
+### ** NOTICE ** 
+We're trying to figure it out how to help customers that want to upgrade to react@16. The ideal would be to move react and react-dom to peerDependencies, but this would be a breaking change for most of our customers, so we're thinking this through.
+
+In the meantime, react@16 works just fine with this codebase. You'll just have to bundle both versions if you're not using yarn. If you are using yarn, however, you can use the `resolutions` field and pin react@16 to your repo.
+
+```
+{
+  "name": "test-test",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "auth0-lock": "^10.23.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "^1.0.14"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "resolutions": {
+    "react": "16.0.0",
+    "react-dom": "16.0.0"
+  }
+}
+```
+
+
 ## [v10.22.0](https://github.com/auth0/lock/tree/v10.22.0) (2017-09-26)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.21.1...v10.22.0)
 
