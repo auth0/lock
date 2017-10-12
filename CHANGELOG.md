@@ -1,5 +1,18 @@
 # Change Log
 
+## [v10.23.0](https://github.com/auth0/lock/tree/v10.23.0) (2017-10-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.22.0...v10.23.0)
+
+
+**Changed**
+- Pinning react version 15.6.2 [\#1142](https://github.com/auth0/lock/pull/1142) ([luisrudge](https://github.com/luisrudge))
+- upgrade auth0.js [\#1137](https://github.com/auth0/lock/pull/1137) ([luisrudge](https://github.com/luisrudge))
+- Upgrade react version [\#1135](https://github.com/auth0/lock/pull/1135) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix defaultUrl sending hash content [\#1132](https://github.com/auth0/lock/pull/1132) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.22.0](https://github.com/auth0/lock/tree/v10.22.0) (2017-09-26)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.21.1...v10.22.0)
 
