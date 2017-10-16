@@ -6,7 +6,8 @@
     "**/lib": true,
     "**/coverage": true,
     "**/examples": true,
-    "**/build": true
+    "**/build": true,
+    "**/support/playground-react": true
   },
   "editor.formatOnSave": true,
   "prettier.printWidth": 100,
