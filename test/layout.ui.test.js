@@ -7,9 +7,7 @@ describe('layout', function() {
 
   describe('with all connection types', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('all', opts, done);
     });
@@ -34,8 +32,7 @@ describe('layout', function() {
   describe('with all connection types, starting on sign up', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'signUp',
-        rememberLastLogin: false
+        initialScreen: 'signUp'
       };
 
       this.lock = h.displayLock('all', opts, done);
@@ -61,8 +58,7 @@ describe('layout', function() {
   describe('with all connection types, starting on forgot password', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'forgotPassword',
-        rememberLastLogin: false
+        initialScreen: 'forgotPassword'
       };
       this.lock = h.displayLock('all', opts, done);
     });
@@ -86,8 +82,7 @@ describe('layout', function() {
   describe('with all connection types, not allowing sign up', function() {
     beforeEach(function(done) {
       const opts = {
-        allowSignUp: false,
-        rememberLastLogin: false
+        allowSignUp: false
       };
 
       this.lock = h.displayLock('all', opts, done);
@@ -112,8 +107,7 @@ describe('layout', function() {
   describe('with all connection types, not allowing forgot password', function() {
     beforeEach(function(done) {
       const opts = {
-        allowForgotPassword: false,
-        rememberLastLogin: false
+        allowForgotPassword: false
       };
 
       this.lock = h.displayLock('all', opts, done);
@@ -140,8 +134,7 @@ describe('layout', function() {
     beforeEach(function(done) {
       const opts = {
         allowForgotPassword: false,
-        allowSignUp: false,
-        rememberLastLogin: false
+        allowSignUp: false
       };
 
       this.lock = h.displayLock('all', opts, done);
@@ -165,9 +158,7 @@ describe('layout', function() {
 
   describe('with a single enterprise connection', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('single enterprise', opts, done);
     });
@@ -190,9 +181,7 @@ describe('layout', function() {
 
   describe('with multiple enterprise connections', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('multiple enterprise', opts, done);
     });
@@ -215,9 +204,7 @@ describe('layout', function() {
 
   describe('with an enterprise and a corporate connections', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('enterprise and corporate', opts, done);
     });
@@ -240,9 +227,7 @@ describe('layout', function() {
 
   describe('with a single corporate connection', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('single corporate', opts, done);
     });
@@ -251,7 +236,7 @@ describe('layout', function() {
       this.lock.hide();
     });
 
-    it('renders the quick auth screen with the right contols', function() {
+    it('renders standard login screen with the right contols', function() {
       expect(h.hasBackButton(this.lock)).to.not.be.ok();
       expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
       expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
@@ -265,9 +250,7 @@ describe('layout', function() {
 
   describe('with multiple corporate connections, one without domain', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('multiple corporate, one without domain', opts, done);
     });
@@ -290,9 +273,7 @@ describe('layout', function() {
 
   describe('with a single database connection', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('single database', opts, done);
     });
@@ -317,8 +298,7 @@ describe('layout', function() {
   describe('with a single database connection, starting on sign up', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'signUp',
-        rememberLastLogin: false
+        initialScreen: 'signUp'
       };
 
       this.lock = h.displayLock('single database', opts, done);
@@ -344,8 +324,7 @@ describe('layout', function() {
   describe('with a single database connection, starting on forgot password', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'forgotPassword',
-        rememberLastLogin: false
+        initialScreen: 'forgotPassword'
       };
       this.lock = h.displayLock('single database', opts, done);
     });
@@ -369,8 +348,7 @@ describe('layout', function() {
   describe('with a single database connection, not allowing sign up', function() {
     beforeEach(function(done) {
       const opts = {
-        allowSignUp: false,
-        rememberLastLogin: false
+        allowSignUp: false
       };
 
       this.lock = h.displayLock('single database', opts, done);
@@ -395,8 +373,7 @@ describe('layout', function() {
   describe('with a single database connection, not allowing forgot password', function() {
     beforeEach(function(done) {
       const opts = {
-        allowForgotPassword: false,
-        rememberLastLogin: false
+        allowForgotPassword: false
       };
 
       this.lock = h.displayLock('single database', opts, done);
@@ -423,8 +400,7 @@ describe('layout', function() {
     beforeEach(function(done) {
       const opts = {
         allowForgotPassword: false,
-        allowSignUp: false,
-        rememberLastLogin: false
+        allowSignUp: false
       };
 
       this.lock = h.displayLock('single database', opts, done);
@@ -457,24 +433,22 @@ describe('layout', function() {
       this.lock.hide();
     });
 
-    it('renders the quick auth screen with the right contols', function() {
+    it('renders standard login screen with the right contols', function() {
       expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+      expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+      expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
+      expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
+      expect(h.hasEmailInput(this.lock)).to.be.ok();
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+      expect(h.hasPasswordInput(this.lock)).to.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not my account
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
   });
 
   describe('in a corporate network', function() {
-    beforeEach(h.stubWebApisForKerberos);
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('kerberos', opts, done);
     });
@@ -482,17 +456,16 @@ describe('layout', function() {
     afterEach(function() {
       this.lock.hide();
     });
-    beforeEach(h.unStubWebApisForKerberos);
 
-    it('renders the quick auth screen with the right contols', function() {
+    it('renders standard login screen with the right contols', function() {
       expect(h.hasBackButton(this.lock)).to.not.be.ok();
       expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
+      expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
       expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not your account
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasUsernameInput(this.lock)).to.be.ok();
+      expect(h.hasPasswordInput(this.lock)).to.be.ok();
+      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // not your account
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
   });
 
@@ -500,8 +473,7 @@ describe('layout', function() {
     beforeEach(function(done) {
       const opts = {
         allowForgotPassword: false,
-        allowSignUp: false,
-        rememberLastLogin: false
+        allowSignUp: false
       };
 
       this.lock = h.displayLock('multiple social', opts, done);

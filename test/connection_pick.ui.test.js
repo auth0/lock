@@ -7,9 +7,7 @@ describe('connection pick', function() {
 
   describe('with several connections of all types', function() {
     beforeEach(function(done) {
-      const opts = {
-        rememberLastLogin: false
-      };
+      const opts = {};
 
       this.lock = h.displayLock('all', opts, done);
     });
@@ -27,8 +25,7 @@ describe('connection pick', function() {
   describe('with single database connection', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['db'],
-        rememberLastLogin: false
+        allowedConnections: ['db']
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -47,8 +44,7 @@ describe('connection pick', function() {
   describe('with multiple database connections', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['db', 'db1'],
-        rememberLastLogin: false
+        allowedConnections: ['db', 'db1']
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -68,8 +64,7 @@ describe('connection pick', function() {
     beforeEach(function(done) {
       const opts = {
         allowedConnections: ['db', 'db1'],
-        defaultDatabaseConnection: 'db1',
-        rememberLastLogin: false
+        defaultDatabaseConnection: 'db1'
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -88,8 +83,7 @@ describe('connection pick', function() {
   describe('with enterprise and database connection', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['db', 'auth0.com'],
-        rememberLastLogin: false
+        allowedConnections: ['db', 'auth0.com']
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -126,8 +120,7 @@ describe('connection pick', function() {
   describe('with an enterprise and a corporate connection', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['auth0.com', 'rolodato.com'],
-        rememberLastLogin: false
+        allowedConnections: ['auth0.com', 'rolodato.com']
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -190,8 +183,7 @@ describe('connection pick', function() {
   describe('with multiple corporate connections, one without domain', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['corporate-no-domain', 'rolodato.com'],
-        rememberLastLogin: false
+        allowedConnections: ['corporate-no-domain', 'rolodato.com']
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -240,8 +232,7 @@ describe('connection pick', function() {
   describe('with multiple corporate connections without domain', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['corporate-no-domain', 'corporate-no-domain1'],
-        rememberLastLogin: false
+        allowedConnections: ['corporate-no-domain', 'corporate-no-domain1']
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -267,8 +258,7 @@ describe('connection pick', function() {
     beforeEach(function(done) {
       const opts = {
         allowedConnections: ['corporate-no-domain', 'corporate-no-domain1'],
-        defaultEnterpriseConnection: 'corporate-no-domain1',
-        rememberLastLogin: false
+        defaultEnterpriseConnection: 'corporate-no-domain1'
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -293,8 +283,7 @@ describe('connection pick', function() {
   describe('with a database and a corporate connection without domain', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['corporate-no-domain', 'db'],
-        rememberLastLogin: false
+        allowedConnections: ['corporate-no-domain', 'db']
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -320,8 +309,7 @@ describe('connection pick', function() {
     beforeEach(function(done) {
       const opts = {
         allowedConnections: ['corporate-no-domain', 'db'],
-        defaultDatabaseConnection: 'db',
-        rememberLastLogin: false
+        defaultDatabaseConnection: 'db'
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -347,8 +335,7 @@ describe('connection pick', function() {
     beforeEach(function(done) {
       const opts = {
         allowedConnections: ['corporate-no-domain', 'db'],
-        defaultEnterpriseConnection: 'corporate-no-domain',
-        rememberLastLogin: false
+        defaultEnterpriseConnection: 'corporate-no-domain'
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -375,8 +362,7 @@ describe('connection pick', function() {
       const opts = {
         allowedConnections: ['corporate-no-domain', 'db'],
         defaultDatabaseConnection: 'db',
-        defaultEnterpriseConnection: 'corporate-no-domain',
-        rememberLastLogin: false
+        defaultEnterpriseConnection: 'corporate-no-domain'
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -401,8 +387,7 @@ describe('connection pick', function() {
   describe('with a single corporate connection', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['corporate'],
-        rememberLastLogin: false
+        allowedConnections: ['corporate']
       };
 
       this.lock = h.displayLock('', opts, done);

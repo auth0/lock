@@ -158,12 +158,12 @@ export default class Base extends EventEmitter {
     removeLock(this.id);
   }
 
-  getProfile(token, cb) {
-    return webAPI.getProfile(this.id, token, cb);
-  }
-
   getUserInfo(token, cb) {
     return webAPI.getUserInfo(this.id, token, cb);
+  }
+
+  checkSession(options, cb) {
+    return webAPI.checkSession(this.id, options, cb);
   }
 
   logout(query = {}) {

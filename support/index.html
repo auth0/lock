@@ -1,49 +1,70 @@
 <!DOCTYPE html>
+
+
 <html>
-<title>Dev</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-<style>
-  body {
-    background-color: #1f1f24;
-  }
-</style>
+
+
+<head>
+  <title>Dev</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+
+  <style>
+    body {
+      background-color: #1f1f24;
+    }
+  </style>
+</head>
 
 <body>
-  <div id="container"></div>
-  <script src="/build/lock.js"></script>
-  <script>
-    const cid = "BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b";
-    const domain = "brucke.auth0.com";
-    const options = {
-      oidcConformant: true,
-      allowShowPassword: true,
-      usernameStyle: 'email',
-      defaultDatabaseConnection: 'acme',
-      prefill: {
-        email: 'johnfoo@gmail.com'
+
+  <div id="container">
+    <script src="/build/lock.js"></script>
+
+
+    <script>
+      const cid = 'BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b';
+      const domain = 'brucke.auth0.com';
+      const options = {
+        allowShowPassword: true,
+        usernameStyle: 'email',
+        defaultDatabaseConnection: 'acme',
+        prefill: {
+          email: 'johnfoo@gmail.com'
+        }
+      };
+
+      const lock = new Auth0Lock(cid, domain, options);
+      window.lock = lock;
+
+      function onAuthenticated(authResult) {
+        console.log(authResult);
+
+        if (!authResult.accessToken) return;
+
+        lock.getUserInfo(authResult.accessToken, function (error, profile) {
+          console.log(error, profile);
+        });
       }
-    };
 
-    const lock = new Auth0Lock(cid, domain, options);
-    window.lock = lock;
+      lock.on('authenticated', onAuthenticated);
 
-    lock.on("authenticated", function (authResult) {
-      console.log(authResult);
-
-      if (!authResult.accessToken) return;
-
-      lock.getUserInfo(authResult.accessToken, function (error, profile) {
-        console.log(error, profile);
+      lock.on('authorization_error', function (error) {
+        console.log('authorization_error', error);
       });
-    });
 
-    lock.on("authorization_error", function (error) {
-      console.log('authorization_error', error);
-    });
+      lock.checkSession({}, function (err, authResult) {
+        if (err) {
+          lock.show();
+        } else {
+          onAuthenticated(authResult);
+        }
+      });
 
-    lock.show();
-  </script>
+    </script>
+  </div>
 </body>
 
 </html>
