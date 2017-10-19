@@ -2,7 +2,8 @@
 
 ## [v11.0.0-beta.1](https://github.com/auth0/lock/tree/v11.0.0-beta.1) (2017-10-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.1...v11.0.0-beta.1)
-
+- Removes everything related to the legacy methods and also upgrades the version of auth0-js.
+It also allows AD connections to hit the co/authenticate endpoint even though this endpoint is still not supporting ad strategies. [\#1150](https://github.com/auth0/lock/pull/1150)
 
 
 ## [v10.23.1](https://github.com/auth0/lock/tree/v10.23.1) (2017-10-12)
