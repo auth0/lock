@@ -27,7 +27,6 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       emitEventFn: emitEventFn,
       hookRunner: hookRunner,
       useTenantInfo: options.__useTenantInfo || false,
-      oidcConformant: options.oidcConformant || false,
       hashCleanup: options.hashCleanup === false ? false : true,
       allowedConnections: Immutable.fromJS(options.allowedConnections || []),
       ui: extractUIOptions(id, options),
@@ -65,10 +64,6 @@ export function tenantBaseUrl(m) {
 
 export function useTenantInfo(m) {
   return get(m, 'useTenantInfo');
-}
-
-export function oidcConformant(m) {
-  return get(m, 'oidcConformant');
 }
 
 export function connectionResolver(m) {
@@ -182,7 +177,6 @@ function extractUIOptions(id, options) {
     mobile: undefined === options.mobile ? false : !!options.mobile,
     popupOptions: undefined === options.popupOptions ? {} : options.popupOptions,
     primaryColor: typeof primaryColor === 'string' ? primaryColor : undefined,
-    rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin,
     allowAutocomplete: !!options.allowAutocomplete,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
     allowShowPassword: !!options.allowShowPassword,
@@ -219,7 +213,6 @@ export const ui = {
   popupOptions: lock => getUIAttribute(lock, 'popupOptions'),
   primaryColor: lock => getUIAttribute(lock, 'primaryColor'),
   authButtonsTheme: lock => getUIAttribute(lock, 'authButtonsTheme'),
-  rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin')),
   allowAutocomplete: m => tget(m, 'allowAutocomplete', getUIAttribute(m, 'allowAutocomplete')),
   scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
   allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword'))
@@ -253,8 +246,6 @@ function extractAuthOptions(options) {
   } =
     options.auth || {};
 
-  let { oidcConformant } = options;
-
   audience = typeof audience === 'string' ? audience : undefined;
   connectionScopes = typeof connectionScopes === 'object' ? connectionScopes : {};
   params = typeof params === 'object' ? params : {};
@@ -272,26 +263,8 @@ function extractAuthOptions(options) {
 
   sso = typeof sso === 'boolean' ? sso : true;
 
-  if (!oidcConformant && trim(params.scope || '') === 'openid profile') {
-    warn(
-      options,
-      "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details."
-    );
-  }
-
-  if (oidcConformant && !redirect && responseType.indexOf('id_token') > -1) {
+  if (!redirect && responseType.indexOf('id_token') > -1) {
     throw new Error("It is not possible to request an 'id_token' while using popup mode.");
-  }
-
-  if (!oidcConformant && audience) {
-    throw new Error(
-      'It is not possible to use the `auth.audience` option when the `oidcConformant` flag is set to false'
-    );
-  }
-
-  // for legacy flow, the scope should default to openid
-  if (!oidcConformant && !params.scope) {
-    params.scope = 'openid';
   }
 
   return Immutable.fromJS({
@@ -618,9 +591,6 @@ export function overrideOptions(m, opts) {
     m = i18n.initI18n(m);
   }
 
-  if (typeof opts.rememberLastLogin === 'boolean') {
-    m = tset(m, 'rememberLastLogin', opts.rememberLastLogin);
-  }
   if (typeof opts.allowAutocomplete === 'boolean') {
     m = tset(m, 'allowAutocomplete', opts.allowAutocomplete);
   }

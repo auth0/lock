@@ -7,9 +7,7 @@ describe('regression', function() {
   after(h.restoreWebApis);
 
   beforeEach(function(done) {
-    const opts = {
-      rememberLastLogin: false
-    };
+    const opts = {};
 
     this.lock = h.displayLock('all', opts, done);
   });
