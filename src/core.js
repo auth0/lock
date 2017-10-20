@@ -161,6 +161,7 @@ export default class Base extends EventEmitter {
   getUserInfo(token, cb) {
     return webAPI.getUserInfo(this.id, token, cb);
   }
+
   getProfile(token, cb) {
     return this.getUserInfo(token, cb);
   }
