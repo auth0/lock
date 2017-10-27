@@ -27,7 +27,6 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       emitEventFn: emitEventFn,
       hookRunner: hookRunner,
       useTenantInfo: options.__useTenantInfo || false,
-      oidcConformant: options.oidcConformant || false,
       hashCleanup: options.hashCleanup === false ? false : true,
       allowedConnections: Immutable.fromJS(options.allowedConnections || []),
       ui: extractUIOptions(id, options),
@@ -65,10 +64,6 @@ export function tenantBaseUrl(m) {
 
 export function useTenantInfo(m) {
   return get(m, 'useTenantInfo');
-}
-
-export function oidcConformant(m) {
-  return get(m, 'oidcConformant');
 }
 
 export function connectionResolver(m) {
@@ -253,8 +248,6 @@ function extractAuthOptions(options) {
   } =
     options.auth || {};
 
-  let { oidcConformant } = options;
-
   audience = typeof audience === 'string' ? audience : undefined;
   connectionScopes = typeof connectionScopes === 'object' ? connectionScopes : {};
   params = typeof params === 'object' ? params : {};
@@ -272,25 +265,11 @@ function extractAuthOptions(options) {
 
   sso = typeof sso === 'boolean' ? sso : true;
 
-  if (!oidcConformant && trim(params.scope || '') === 'openid profile') {
-    warn(
-      options,
-      "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details."
-    );
-  }
-
-  if (oidcConformant && !redirect && responseType.indexOf('id_token') > -1) {
+  if (!redirect && responseType.indexOf('id_token') > -1) {
     throw new Error("It is not possible to request an 'id_token' while using popup mode.");
   }
 
-  if (!oidcConformant && audience) {
-    throw new Error(
-      'It is not possible to use the `auth.audience` option when the `oidcConformant` flag is set to false'
-    );
-  }
-
-  // for legacy flow, the scope should default to openid
-  if (!oidcConformant && !params.scope) {
+  if (!params.scope) {
     params.scope = 'openid';
   }
 

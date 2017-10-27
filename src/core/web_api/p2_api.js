@@ -51,10 +51,11 @@ class Auth0APIClient {
       } else {
         this.client.authorize(loginOptions, f);
       }
+    } else if (!this.authOpt.sso && this.authOpt.popup) {
+      this.client.client.loginWithResourceOwner(loginOptions, f);
+    } else if (this.authOpt.popup) {
+      this.client.popup.loginWithCredentials(loginOptions, f);
     } else {
-      if (this.authOpt.popup) {
-        throw new Error('Cross origin login is not supported in popup mode');
-      }
       loginOptions.realm = options.connection;
       this.client.login(loginOptions, f);
     }
@@ -97,8 +98,7 @@ class Auth0APIClient {
   }
 
   getProfile(token, callback) {
-    const m = read(getEntity, 'lock', this.lockID);
-    l.emitUnrecoverableErrorEvent(m, '`getProfile` is deprecated for oidcConformant clients');
+    this.getUserInfo(token, callback);
   }
 
   getSSOData(...args) {
@@ -107,6 +107,10 @@ class Auth0APIClient {
 
   getUserCountry(cb) {
     return this.client.getUserCountry(cb);
+  }
+
+  checkSession(options, cb) {
+    return this.client.checkSession(options, cb);
   }
 }
 

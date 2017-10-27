@@ -16,12 +16,15 @@
     const cid = "BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b";
     const domain = "brucke.auth0.com";
     const options = {
-      oidcConformant: true,
       allowShowPassword: true,
       usernameStyle: 'email',
       defaultDatabaseConnection: 'acme',
       prefill: {
         email: 'johnfoo@gmail.com'
+      },
+      auth: {
+        redirect: false,
+        sso: false
       }
     };
 
