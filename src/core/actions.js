@@ -194,6 +194,15 @@ export function logIn(
   });
 }
 
+export function checkSession(id, params = {}) {
+  webApi.checkSession(id, params, (err, result) => {
+    if (err) {
+      return logInError(id, [], err);
+    }
+    return logInSuccess(id, result);
+  });
+}
+
 export function logInSuccess(id, result) {
   const m = read(getEntity, 'lock', id);
 

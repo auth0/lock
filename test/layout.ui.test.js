@@ -487,12 +487,12 @@ describe('layout', function() {
     it('renders the quick auth screen with the right contols', function() {
       expect(h.hasBackButton(this.lock)).to.not.be.ok();
       expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
+      expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
       expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not your account
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasUsernameInput(this.lock)).to.be.ok();
+      expect(h.hasPasswordInput(this.lock)).to.be.ok();
+      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // not your account
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
   });
 

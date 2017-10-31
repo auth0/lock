@@ -22,7 +22,7 @@ export function syncRemoteData(m) {
   m = sync(m, 'sso', {
     conditionFn: m => l.auth.sso(m),
     waitFn: m => isSuccess(m, 'client'),
-    syncFn: (m, cb) => fetchSSOData(l.id(m), isADEnabled(m), cb),
+    syncFn: (m, cb) => fetchSSOData(l.id(m), cb),
     successFn: (m, result) => m.mergeIn(['sso'], Immutable.fromJS(result)),
     errorFn: (m, error) => {
       // location.origin is not supported in all browsers

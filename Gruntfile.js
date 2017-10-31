@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         port: 3000,
         https: true,
         webpack: {
-          devtool: 'cheap-module-source-map'
+          devtool: 'source-map'
         }
       },
       design: {
