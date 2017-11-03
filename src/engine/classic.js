@@ -3,6 +3,7 @@ import Login from './classic/login';
 import SignUp from './classic/sign_up_screen';
 import MFALoginScreen from './classic/mfa_login_screen';
 import ResetPassword from '../connection/database/reset_password';
+import { renderSSOScreens } from '../core/sso/index';
 import {
   additionalSignUpFields,
   authWithUsername,
@@ -33,8 +34,10 @@ import KerberosScreen from '../connection/enterprise/kerberos_screen';
 import HRDScreen from '../connection/enterprise/hrd_screen';
 import EnterpriseQuickAuthScreen from '../connection/enterprise/quick_auth_screen';
 import { hasSkippedQuickAuth } from '../quick_auth';
+import { lastUsedConnection } from '../core/sso/index';
 import LoadingScreen from '../core/loading_screen';
 import ErrorScreen from '../core/error_screen';
+import LastLoginScreen from '../core/sso/last_login_screen';
 import { hasError, isDone, isSuccess } from '../sync';
 import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
@@ -170,6 +173,15 @@ class Classic {
       if (!hasSkippedQuickAuth(m) && hasInitialScreen(m, 'login')) {
         if (isInCorpNetwork(m)) {
           return new KerberosScreen();
+        }
+
+        if (l.ui.rememberLastLogin(m)) {
+          const conn = lastUsedConnection(m);
+          if (conn && isSuccess(m, 'sso')) {
+            if (l.hasConnection(m, conn.get('name'))) {
+              return new LastLoginScreen();
+            }
+          }
         }
       }
 

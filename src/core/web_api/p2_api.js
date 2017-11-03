@@ -96,11 +96,17 @@ class Auth0APIClient {
     return this.client.client.userInfo(token, callback);
   }
 
+  getProfile(token, callback) {
+    const m = read(getEntity, 'lock', this.lockID);
+    l.emitUnrecoverableErrorEvent(m, '`getProfile` is deprecated for oidcConformant clients');
+  }
+
+  getSSOData(...args) {
+    return this.client.client.getSSOData(...args);
+  }
+
   getUserCountry(cb) {
     return this.client.getUserCountry(cb);
-  }
-  checkSession(options, cb) {
-    return this.client.checkSession(options, cb);
   }
 }
 

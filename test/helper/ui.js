@@ -6,6 +6,8 @@ import webApi from '../../src/core/web_api';
 import * as gravatarProvider from '../../src/avatar/gravatar_provider';
 import * as ClientSettings from '../../src/core/client/settings';
 import clientSettings from './client_settings';
+import * as SSOData from '../../src/core/sso/data';
+import ssoData from './sso_data';
 
 // stub, mock and spy
 
@@ -19,6 +21,22 @@ export const stubWebApis = () => {
   });
   stub(ClientSettings, 'fetchClientSettings', (...args) => {
     args[args.length - 1](null, clientSettings);
+  });
+  stub(SSOData, 'fetchSSOData', (id, withAD, cb) => {
+    cb(null, withAD ? { connection: {}, ...ssoData } : ssoData);
+  });
+};
+
+export const stubWebApisForKerberos = () => {
+  SSOData.fetchSSOData.restore();
+  stub(SSOData, 'fetchSSOData', (id, withAD, cb) => {
+    cb(null, withAD ? { connection: {}, strategy: 'ad', ...ssoData } : ssoData);
+  });
+};
+export const unStubWebApisForKerberos = () => {
+  SSOData.fetchSSOData.restore();
+  stub(SSOData, 'fetchSSOData', (id, withAD, cb) => {
+    cb(null, withAD ? { connection: {}, ...ssoData } : ssoData);
   });
 };
 
@@ -34,6 +52,7 @@ export const restoreWebApis = () => {
   gravatarProvider.displayName.restore();
   gravatarProvider.url.restore();
   ClientSettings.fetchClientSettings.restore();
+  SSOData.fetchSSOData.restore();
 };
 
 // api call checks

@@ -8,7 +8,8 @@ describe('sign up terms agreement', function() {
   describe('without a mustAcceptTerms opt', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'signUp'
+        initialScreen: 'signUp',
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('single database', opts, done);
@@ -29,7 +30,8 @@ describe('sign up terms agreement', function() {
     beforeEach(function(done) {
       const opts = {
         initialScreen: 'signUp',
-        mustAcceptTerms: true
+        mustAcceptTerms: true,
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('single database', opts, done);
