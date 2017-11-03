@@ -17,7 +17,8 @@ describe('mfa ro', function() {
           webApi.logIn.yields(error);
 
           const opts = {
-            allowedConnections: ['db']
+            allowedConnections: ['db'],
+            rememberLastLogin: false
           };
 
           this.lock = h.displayLock('', opts, done);
@@ -65,7 +66,8 @@ describe('mfa ro', function() {
             .yields(invalidCodeError);
 
           const opts = {
-            allowedConnections: ['db']
+            allowedConnections: ['db'],
+            rememberLastLogin: false
           };
 
           this.lock = h.displayLock('', opts, done);
@@ -102,7 +104,8 @@ describe('mfa ro', function() {
         webApi.logIn.yields(error);
 
         const opts = {
-          allowedConnections: ['db']
+          allowedConnections: ['db'],
+          rememberLastLogin: false
         };
 
         this.lock = h.displayLock('', opts, done);
@@ -136,7 +139,8 @@ describe('mfa ro', function() {
     describe('when mfa enrollment is required', function() {
       beforeEach(function(done) {
         const opts = {
-          initialScreen: 'signUp'
+          initialScreen: 'signUp',
+          rememberLastLogin: false
         };
 
         const error = new Error();

@@ -5,8 +5,7 @@
     "**/bower_components": true,
     "**/lib": true,
     "**/coverage": true,
-    "**/examples": true,
-    "**/build": true
+    "**/examples": true
   },
   "editor.formatOnSave": true,
   "prettier.printWidth": 100,

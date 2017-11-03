@@ -86,7 +86,7 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "^9.0.0-beta.2",
+    "auth0-js": "~8.10.1",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "idtoken-verifier": "^1.0.1",
@@ -129,6 +129,6 @@
   },
   "lint-staged": {
     "*.{js,jsx}": ["npm run lint"],
-    "*.{js,jsx,json}": ["prettier --write --print-width 100 --single-quote", "git add"]
+    "*.{js,jsx,json,html}": ["prettier --write --print-width 100 --single-quote", "git add"]
   }
 }

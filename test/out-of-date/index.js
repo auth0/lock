@@ -22,6 +22,25 @@ describe('.parseHash', function() {
   });
 });
 
+describe('.getProfile', function() {
+  beforeEach(function() {
+    this.lock = new Auth0LockPasswordless('c', 'd');
+    this.client = getLockClient(this.lock);
+  });
+
+  it('delegates the call to an Auth0 instance', function() {
+    const token = 'a token';
+    const cb = () => {};
+    const returnValue = 'fake return value';
+    stub(this.client, 'getProfile').returns(returnValue);
+
+    expect(this.lock.getProfile(token, cb)).to.be(returnValue);
+
+    expect(this.client.getProfile.calledOnce).to.be.ok();
+    expect(this.client.getProfile.lastCall.calledWithExactly(token, cb)).to.be.ok();
+  });
+});
+
 function getLockClient(lock) {
   const client = WebAPI.clients[lock.id];
   if (!client) {

@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LastLoginScreen renders correct icon when strategy is adfs 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="windows"
+/>
+`;
+
+exports[`LastLoginScreen renders correct icon when strategy is google-apps 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="google-apps"
+/>
+`;
+
+exports[`LastLoginScreen renders correct icon when strategy is office365 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="windows"
+/>
+`;
+
+exports[`LastLoginScreen renders correct icon when strategy is some-other-strategy 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="auth0"
+/>
+`;
+
+exports[`LastLoginScreen renders correct icon when strategy is this-strategy-exists 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="auth0"
+/>
+`;
+
+exports[`LastLoginScreen renders correct icon when strategy is waad 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="windows"
+/>
+`;
+
+exports[`LastLoginScreen renders correctly 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="auth0"
+/>
+`;
+
+exports[`LastLoginScreen renders with custom connection theme 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon="icon"
+  data-buttonLabel="lastUsedUsername"
+  data-foregroundColor="foregroundColor"
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor="primaryColor"
+  data-strategy="auth0"
+/>
+`;

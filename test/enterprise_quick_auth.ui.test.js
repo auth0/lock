@@ -8,7 +8,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only an ad connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['ad.com']
+        allowedConnections: ['ad.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -27,7 +28,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only an adfs connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['adfs.com']
+        allowedConnections: ['adfs.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -45,7 +47,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only an auth0-adldap connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['auth0-adldap.com']
+        allowedConnections: ['auth0-adldap.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -64,7 +67,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only a custom connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['custom.com']
+        allowedConnections: ['custom.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -82,7 +86,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only a google-apps connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['google-apps.com']
+        allowedConnections: ['google-apps.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -100,7 +105,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only an ip connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['ip.com']
+        allowedConnections: ['ip.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -118,7 +124,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only a mscrm connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['mscrm.com']
+        allowedConnections: ['mscrm.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -136,7 +143,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only an office365 connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['office365.com']
+        allowedConnections: ['office365.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -154,7 +162,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only a pingfederate connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['pingfederate.com']
+        allowedConnections: ['pingfederate.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -172,7 +181,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only a samlp connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['samlp.com']
+        allowedConnections: ['samlp.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -190,7 +200,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only a sharepoint connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['sharepoint.com']
+        allowedConnections: ['sharepoint.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
@@ -208,7 +219,8 @@ describe('enterprise quick auth', function() {
   describe("when there's only an waad connection", function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['waad.com']
+        allowedConnections: ['waad.com'],
+        rememberLastLogin: false
       };
 
       this.lock = h.displayLock('', opts, done);
