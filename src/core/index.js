@@ -270,7 +270,7 @@ function extractAuthOptions(options) {
   }
 
   if (!params.scope) {
-    params.scope = 'openid';
+    params.scope = 'openid profile email';
   }
 
   return Immutable.fromJS({

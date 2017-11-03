@@ -37,7 +37,9 @@ const Component = ({ i18n, model }) => {
       buttonLabel={lastUsedUsername(model)}
       buttonClickHandler={buttonClickHandler}
       header={header}
-      strategy={icon(lastUsedConnection(model).get('strategy'))}
+      strategy={icon(
+        lastUsedConnection(model).get('strategy') || lastUsedConnection(model).get('name')
+      )}
       buttonIcon={buttonIcon}
       primaryColor={primaryColor}
       foregroundColor={foregroundColor}
