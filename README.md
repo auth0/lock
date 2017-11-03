@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/11.0.0-beta.1/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/11.0.0-beta.2/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -242,7 +242,7 @@ var options = {
 
 #### Authentication options
 
-Authentication options are grouped in the `auth` property of the `options` object.
+Authentication options are grouped in the `auth` property of the `options` object. The default scope used by Lock is `openid profile email`.
 
 ```js
 var options = {
@@ -254,6 +254,7 @@ var options = {
    responseMode: "form_post",
    responseType: "token",
    sso: true,
+   scope: "openid profile email",
    connectionScopes: {
     connectionName: [ 'scope1', 'scope2' ]
    }
