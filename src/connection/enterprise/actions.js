@@ -30,16 +30,6 @@ export function cancelHRD(id) {
   });
 }
 
-const throwIfOidcIsEnabledAndConnectionIsADAndHasUsername = (m, connection, hasUsername) => {
-  const isOIDC = l.oidcConformant(m);
-  const isAD = ['ad', 'adfs', 'office365', 'waad'].indexOf(connection.get('strategy')) >= 0;
-  if (isOIDC && isAD && hasUsername) {
-    throw new Error(
-      'This connection does not support cross origin authentication. Please disable OIDC.'
-    );
-  }
-};
-
 export function logIn(id) {
   const m = read(getEntity, 'lock', id);
   const email = getFieldValue(m, databaseLogInWithEmail(m) ? 'email' : 'username');
@@ -62,8 +52,6 @@ function logInActiveFlow(id) {
   const username = l.defaultADUsernameFromEmailPrefix(m)
     ? emailLocalPart(originalUsername)
     : originalUsername;
-
-  throwIfOidcIsEnabledAndConnectionIsADAndHasUsername(m, connection, !!username);
 
   coreLogIn(id, ['password', usernameField], {
     connection: connection ? connection.get('name') : null,

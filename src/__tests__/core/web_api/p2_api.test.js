@@ -7,10 +7,12 @@ const getClient = (options = {}) => {
   const Auth0APIClient = require('core/web_api/p2_api').default;
   const client = new Auth0APIClient(lockId, clientId, domain, options);
   client.client.popup = {
-    authorize: jest.fn()
+    authorize: jest.fn(),
+    loginWithCredentials: jest.fn()
   };
   client.client.client = {
-    login: jest.fn()
+    login: jest.fn(),
+    loginWithResourceOwner: jest.fn()
   };
   return client;
 };
@@ -66,12 +68,6 @@ describe('Auth0APIClient', () => {
       });
     });
     describe('with credentials', () => {
-      it('should fail when in popup mode', () => {
-        const client = getClient({
-          redirect: false
-        });
-        expect(() => client.logIn({ username: 'foo' }, {})).toThrowErrorMatchingSnapshot();
-      });
       it('should call client.login', () => {
         const client = getClient({
           redirect: true
@@ -81,6 +77,30 @@ describe('Auth0APIClient', () => {
         const mock = getAuth0ClientMock();
         const loginMock = mock.WebAuth.mock.instances[0].login.mock;
         assertCallWithCallback(loginMock, callback);
+      });
+      it('should call client.loginWithResourceOwner when redirect is false and sso is false', () => {
+        const client = getClient({
+          redirect: false,
+          sso: false
+        });
+        const callback = jest.fn();
+        client.logIn({ username: 'foo' }, {}, callback);
+        const mock = getAuth0ClientMock();
+        const loginWithResourceOwnerMock =
+          mock.WebAuth.mock.instances[0].client.loginWithResourceOwner.mock;
+        assertCallWithCallback(loginWithResourceOwnerMock, callback);
+      });
+      it('should call popup.loginWithCredentials when redirect is false and sso is true', () => {
+        const client = getClient({
+          redirect: false,
+          sso: true
+        });
+        const callback = jest.fn();
+        client.logIn({ username: 'foo' }, {}, callback);
+        const mock = getAuth0ClientMock();
+        const loginWithCredentialsMock =
+          mock.WebAuth.mock.instances[0].popup.loginWithCredentials.mock;
+        assertCallWithCallback(loginWithCredentialsMock, callback);
       });
     });
   });

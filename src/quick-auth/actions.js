@@ -1,6 +1,6 @@
 import { skipQuickAuth as skip } from '../quick_auth';
 import { getEntity, read, swap, updateEntity } from '../store/index';
-import { logIn as coreLogIn } from '../core/actions';
+import { logIn as coreLogIn, checkSession as coreCheckSession } from '../core/actions';
 import * as l from '../core/index';
 
 export function skipQuickAuth(id) {
@@ -23,4 +23,17 @@ export function logIn(id, connection, loginHint) {
     params.login_hint = loginHint;
   }
   coreLogIn(id, [], params);
+}
+
+export function checkSession(id, connection, loginHint) {
+  const m = read(getEntity, 'lock', id);
+
+  const connectionScopes = l.auth.connectionScopes(m);
+  const scopes = connectionScopes.get(connection.get('name'));
+  const params = {
+    ...l.auth.params(m).toJS(),
+    connection: connection.get('name')
+  };
+
+  coreCheckSession(id, params);
 }

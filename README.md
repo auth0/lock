@@ -66,15 +66,6 @@ lock.on("authenticated", function(authResult) {
 });
 ```
 
-### getProfile(idToken, callback)
-
-> *Note:* this method is soon to be deprecated, use `getUserInfo` instead.
-
-Once the user has logged in and you are in possesion of an id token, you can obtain the profile with `getProfile`.
-
-- **idToken {String}**: User id token.
-- **callback {Function}**: Will be invoked after the user profile been retrieved.
-
 ### getUserInfo(accessToken, callback)
 
 Once the user has logged in and you are in possesion of an access token, you can obtain the profile with `getUserInfo`.
@@ -156,23 +147,33 @@ Logs out the user
 lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 ```
 
-## OIDC Conformant Mode
 
-It is strongly encouraged that Lock be used in OIDC Conformant mode when embedding it directly in your application. When this mode is enabled, it will force Lock to use Auth0's current authentication pipeline and will prevent it from reaching legacy endpoints. This mode is not required when using Lock at Auth0's [hosted login page](https://auth0.com/docs/hosted-pages/login).
+### checkSession(options, callback)
 
-To enable OIDC conformant mode, pass a flag in the options object.
+The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the hosted login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your client. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js/v8#using-checksession-to-acquire-new-tokens).
+- **options {Object}**: OAuth2 options object to send to Auth0's servers.
+- **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
+
+#### Example
 
 ```js
-var lockOptions = {
-  oidcConformant: true
-}
+lock.checkSession({}, function (error, authResult) {
+  if (error || !authResult) {
+    lock.show();
+  } else {
+    // user has an active session, so we can use the accessToken directly.
+    lock.getUserInfo(authResult.accessToken, function (error, profile) {
+      console.log(error, profile);
+    });
+  }
+});
 ```
 
-Using OIDC Conformant mode in Lock necessitates a cross-origin authentication flow which makes use of third party cookies to process the authentication transaction securely. Ensure that **Cross-Origin Authentication** is enabled by switching it on in the [settings](https://manage.auth0.com/#/clients) for your client in the Auth0 dashboard.
+## OIDC Conformant Mode
 
-For more information, please see the [OIDC adoption guide](https://auth0.com/docs/api-auth/tutorials/adoption) and the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
+Lock uses **Cross-Origin Authentication** and it requires that it's properly configured in the [settings](https://manage.auth0.com/#/clients) for your client in the Auth0 dashboard.
 
-> Popup mode doesn't work with OIDC conformant clients.
+For more information check the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
 
 ### Customization
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Screen from '../screen';
 import QuickAuthPane from '../../ui/pane/quick_auth_pane';
-import { logIn, skipQuickAuth } from '../../quick-auth/actions';
+import { checkSession, skipQuickAuth } from '../../quick-auth/actions';
 import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
@@ -27,7 +27,7 @@ const Component = ({ i18n, model }) => {
   const buttonIcon = buttonTheme && buttonTheme.get('icon');
 
   const buttonClickHandler = () => {
-    logIn(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
+    checkSession(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
   };
 
   return (
@@ -37,7 +37,9 @@ const Component = ({ i18n, model }) => {
       buttonLabel={lastUsedUsername(model)}
       buttonClickHandler={buttonClickHandler}
       header={header}
-      strategy={icon(lastUsedConnection(model).get('strategy'))}
+      strategy={icon(
+        lastUsedConnection(model).get('strategy') || lastUsedConnection(model).get('name')
+      )}
       buttonIcon={buttonIcon}
       primaryColor={primaryColor}
       foregroundColor={foregroundColor}
