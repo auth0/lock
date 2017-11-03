@@ -171,11 +171,9 @@ lock.checkSession({}, function (error, authResult) {
 
 ## OIDC Conformant Mode
 
-Lock requires your client to be set as OIDC in the dashboard. For more information, please see the [`OIDC Conformant adoption guide`](https://auth0.com/docs/api-auth/tutorials/adoption/oidc-conformant).
+Lock uses **Cross-Origin Authentication** and it requires that it's properly configured in the [settings](https://manage.auth0.com/#/clients) for your client in the Auth0 dashboard.
 
-Using OIDC Conformant mode in Lock necessitates a cross-origin authentication flow which makes use of third party cookies to process the authentication transaction securely. Ensure that **Cross-Origin Authentication** is enabled by switching it on in the [settings](https://manage.auth0.com/#/clients) for your client in the Auth0 dashboard.
-
-For more information, please see the [OIDC adoption guide](https://auth0.com/docs/api-auth/tutorials/adoption) and the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
+For more information check the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
 
 ### Customization
 
