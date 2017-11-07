@@ -37,6 +37,19 @@ describe('setup', () => {
     const model = mock.calls[0][1].toJS();
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
+  it('should work with redirect:false and responseType:id_token', () => {
+    const options = {
+      auth: {
+        redirect: false,
+        responseType: 'id_token'
+      }
+    };
+    setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
+    const { mock } = mockInit;
+    expect(mock.calls.length).toBe(1);
+    const model = mock.calls[0][1].toJS();
+    expect(model).toMatchSnapshot();
+  });
 });
 
 describe('setResolvedConnection', () => {
