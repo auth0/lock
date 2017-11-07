@@ -265,10 +265,6 @@ function extractAuthOptions(options) {
 
   sso = typeof sso === 'boolean' ? sso : true;
 
-  if (!redirect && responseType.indexOf('id_token') > -1) {
-    throw new Error("It is not possible to request an 'id_token' while using popup mode.");
-  }
-
   if (!params.scope) {
     params.scope = 'openid profile email';
   }

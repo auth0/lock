@@ -39,6 +39,7 @@ Object {
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call popup.authorize when redirect===false 1`] = `
 Object {
   "nonce": undefined,
+  "owp": true,
   "sso": undefined,
   "state": undefined,
 }

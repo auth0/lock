@@ -47,7 +47,7 @@ class Auth0APIClient {
 
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        this.client.popup.authorize(loginOptions, f);
+        this.client.popup.authorize({ ...loginOptions, owp: true }, f);
       } else {
         this.client.authorize(loginOptions, f);
       }
