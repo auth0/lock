@@ -26,3 +26,62 @@ exports[`setResolvedConnection validates format 1`] = `"Invalid connection objec
 exports[`setResolvedConnection validates format 2`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
 
 exports[`setResolvedConnection validates format 3`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
+
+exports[`setup should work with redirect:false and responseType:id_token 1`] = `
+Object {
+  "allowedConnections": Array [],
+  "auth": Object {
+    "audience": undefined,
+    "autoParseHash": true,
+    "connectionScopes": Object {},
+    "nonce": undefined,
+    "params": Object {
+      "scope": "openid profile email",
+    },
+    "redirect": false,
+    "redirectUrl": "https://test.com/path/",
+    "responseMode": undefined,
+    "responseType": "id_token",
+    "sso": true,
+    "state": undefined,
+  },
+  "clientBaseUrl": "https://domain",
+  "clientID": "clientID",
+  "connectionResolver": undefined,
+  "defaultADUsernameFromEmailPrefix": true,
+  "domain": "domain",
+  "emitEventFn": "emitEventFn",
+  "hashCleanup": true,
+  "hookRunner": "hookRunner",
+  "languageBaseUrl": "https://cdn.auth0.com",
+  "prefill": Object {},
+  "tenantBaseUrl": "https://domain/info-v1.js",
+  "ui": Object {
+    "allowAutocomplete": false,
+    "allowShowPassword": false,
+    "appendContainer": true,
+    "authButtonsTheme": Object {},
+    "autoclose": false,
+    "autofocus": true,
+    "avatar": true,
+    "avatarProvider": Object {
+      "displayName": [Function],
+      "url": [Function],
+    },
+    "closable": true,
+    "containerID": "auth0-lock-container-id",
+    "dict": Object {},
+    "disableWarnings": false,
+    "hideMainScreenTitle": false,
+    "labeledSubmitButton": true,
+    "language": "en",
+    "logo": undefined,
+    "mobile": false,
+    "popupOptions": Object {},
+    "primaryColor": undefined,
+    "rememberLastLogin": true,
+    "scrollGlobalMessagesIntoView": true,
+  },
+  "useTenantInfo": false,
+}
+`;
