@@ -1,5 +1,13 @@
 # Change Log
 
+## [v10.24.0](https://github.com/auth0/lock/tree/v10.24.0) (2017-11-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.23.1...v10.24.0)
+
+
+**Fixed**
+- Upgrading auth0-js with fixed state checking [\#1166](https://github.com/auth0/lock/pull/1166) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v10.23.1](https://github.com/auth0/lock/tree/v10.23.1) (2017-10-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v10.23.1)
 
