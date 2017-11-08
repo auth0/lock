@@ -4,7 +4,6 @@ exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
 Object {
   "nonce": undefined,
   "realm": undefined,
-  "sso": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -15,7 +14,6 @@ exports[`Auth0APIClient logIn with credentials should fail when in popup mode 1`
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
 Object {
   "nonce": undefined,
-  "sso": undefined,
   "state": undefined,
 }
 `;
@@ -23,7 +21,6 @@ Object {
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call popup.authorize when redirect===false 1`] = `
 Object {
   "nonce": undefined,
-  "sso": undefined,
   "state": undefined,
 }
 `;

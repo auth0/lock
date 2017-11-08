@@ -33,7 +33,6 @@ class Auth0APIClient {
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
-      sso: opts.sso,
       nonce: opts.nonce,
       state: opts.state
     };
@@ -65,7 +64,6 @@ class Auth0APIClient {
   }
 
   signUp(options, cb) {
-    const { popup, sso } = this.authOpt;
     const { autoLogin } = options;
 
     delete options.autoLogin;
