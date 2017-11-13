@@ -3,7 +3,8 @@
 ## [v10.24.1](https://github.com/auth0/lock/tree/v10.24.1) (2017-11-13)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.24.0...v10.24.1)
 
-
+**Fixed**
+- Upgraded auth0-js to fix a case where a transaction was not being created
 
 ## [v10.24.0](https://github.com/auth0/lock/tree/v10.24.0) (2017-11-08)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.1...v10.24.0)
