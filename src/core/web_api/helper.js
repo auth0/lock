@@ -110,7 +110,7 @@ export function loginCallback(redirect, cb) {
     : (error, result) => cb(normalizeError(error), result);
 }
 
-export function normalizeAuthParams({ popup, popupOptions, ...authParams }) {
+export function normalizeAuthParams({ popup, ...authParams }) {
   return authParams;
 }
 
