@@ -33,7 +33,6 @@ class Auth0APIClient {
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
-      sso: opts.sso,
       nonce: opts.nonce,
       state: opts.state
     };
@@ -51,8 +50,6 @@ class Auth0APIClient {
       } else {
         this.client.authorize(loginOptions, f);
       }
-    } else if (!this.authOpt.sso && this.authOpt.popup) {
-      this.client.client.loginWithResourceOwner(loginOptions, f);
     } else if (this.authOpt.popup) {
       this.client.popup.loginWithCredentials(loginOptions, f);
     } else {
