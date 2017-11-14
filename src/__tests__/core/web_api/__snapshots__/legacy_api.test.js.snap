@@ -3,6 +3,7 @@
 exports[`Auth0LegacyAPIClient logIn with credentials should call loginWithCredentials 1`] = `
 Object {
   "nonce": undefined,
+  "popupOptions": undefined,
   "sso": true,
   "state": undefined,
   "username": "foo",
@@ -13,6 +14,7 @@ exports[`Auth0LegacyAPIClient logIn with credentials should call loginWithCreden
 Object {
   "audience": "https://mysites.com/api",
   "nonce": undefined,
+  "popupOptions": undefined,
   "scope": "openid offline_access write:users",
   "sso": true,
   "state": undefined,
@@ -24,6 +26,7 @@ exports[`Auth0LegacyAPIClient logIn with credentials should call popup.authorize
 Object {
   "nonce": undefined,
   "owp": true,
+  "popupOptions": undefined,
   "sso": true,
   "state": undefined,
   "username": "foo",
@@ -33,6 +36,7 @@ Object {
 exports[`Auth0LegacyAPIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
 Object {
   "nonce": undefined,
+  "popupOptions": undefined,
   "sso": undefined,
   "state": undefined,
 }
@@ -42,6 +46,7 @@ exports[`Auth0LegacyAPIClient logIn with social/enterprise (without username and
 Object {
   "nonce": undefined,
   "owp": true,
+  "popupOptions": undefined,
   "sso": undefined,
   "state": undefined,
 }
@@ -52,6 +57,7 @@ Object {
   "audience": "https://mysite.com/api",
   "nonce": undefined,
   "owp": true,
+  "popupOptions": undefined,
   "scope": "openid offline_access read:users",
   "sso": undefined,
   "state": undefined,
@@ -61,6 +67,7 @@ Object {
 exports[`Auth0LegacyAPIClient logIn with sso and redirect === false should call loginWithResourceOwner 1`] = `
 Object {
   "nonce": undefined,
+  "popupOptions": undefined,
   "sso": false,
   "state": undefined,
   "username": "foo",
