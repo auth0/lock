@@ -11,8 +11,7 @@ const getClient = (options = {}) => {
     loginWithCredentials: jest.fn()
   };
   client.client.client = {
-    login: jest.fn(),
-    loginWithResourceOwner: jest.fn()
+    login: jest.fn()
   };
   return client;
 };
@@ -78,7 +77,7 @@ describe('Auth0APIClient', () => {
         const loginMock = mock.WebAuth.mock.instances[0].login.mock;
         assertCallWithCallback(loginMock, callback);
       });
-      it('should call client.loginWithResourceOwner when redirect is false and sso is false', () => {
+      it('should call popup.loginWithCredentials when redirect is false and sso is false', () => {
         const client = getClient({
           redirect: false,
           sso: false
@@ -86,9 +85,9 @@ describe('Auth0APIClient', () => {
         const callback = jest.fn();
         client.logIn({ username: 'foo' }, {}, callback);
         const mock = getAuth0ClientMock();
-        const loginWithResourceOwnerMock =
-          mock.WebAuth.mock.instances[0].client.loginWithResourceOwner.mock;
-        assertCallWithCallback(loginWithResourceOwnerMock, callback);
+        const loginWithCredentialsMock =
+          mock.WebAuth.mock.instances[0].popup.loginWithCredentials.mock;
+        assertCallWithCallback(loginWithCredentialsMock, callback);
       });
       it('should call popup.loginWithCredentials when redirect is false and sso is true', () => {
         const client = getClient({

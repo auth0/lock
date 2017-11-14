@@ -4,16 +4,14 @@ exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
 Object {
   "nonce": undefined,
   "realm": undefined,
-  "sso": undefined,
   "state": undefined,
   "username": "foo",
 }
 `;
 
-exports[`Auth0APIClient logIn with credentials should call client.loginWithResourceOwner when redirect is false and sso is false 1`] = `
+exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is false 1`] = `
 Object {
   "nonce": undefined,
-  "sso": false,
   "state": undefined,
   "username": "foo",
 }
@@ -22,7 +20,6 @@ Object {
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is true 1`] = `
 Object {
   "nonce": undefined,
-  "sso": true,
   "state": undefined,
   "username": "foo",
 }
@@ -31,7 +28,6 @@ Object {
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
 Object {
   "nonce": undefined,
-  "sso": undefined,
   "state": undefined,
 }
 `;
@@ -40,7 +36,6 @@ exports[`Auth0APIClient logIn with social/enterprise (without username and email
 Object {
   "nonce": undefined,
   "owp": true,
-  "sso": undefined,
   "state": undefined,
 }
 `;
