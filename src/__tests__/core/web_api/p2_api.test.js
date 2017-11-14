@@ -77,6 +77,18 @@ describe('Auth0APIClient', () => {
         const loginMock = mock.WebAuth.mock.instances[0].login.mock;
         assertCallWithCallback(loginMock, callback);
       });
+      it('should call popup.loginWithCredentials when redirect is false and sso is false', () => {
+        const client = getClient({
+          redirect: false,
+          sso: false
+        });
+        const callback = jest.fn();
+        client.logIn({ username: 'foo' }, {}, callback);
+        const mock = getAuth0ClientMock();
+        const loginWithCredentialsMock =
+          mock.WebAuth.mock.instances[0].popup.loginWithCredentials.mock;
+        assertCallWithCallback(loginWithCredentialsMock, callback);
+      });
       it('should call popup.loginWithCredentials when redirect is false and sso is true', () => {
         const client = getClient({
           redirect: false,

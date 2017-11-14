@@ -9,6 +9,14 @@ Object {
 }
 `;
 
+exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is false 1`] = `
+Object {
+  "nonce": undefined,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is true 1`] = `
 Object {
   "nonce": undefined,
