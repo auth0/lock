@@ -1,5 +1,10 @@
 # Change Log
 
+## [v11.0.0-beta.4](https://github.com/auth0/lock/tree/v11.0.0-beta.4) (2017-11-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.3...v11.0.0-beta.4)
+
+
+
 ## [v11.0.0-beta.3](https://github.com/auth0/lock/tree/v11.0.0-beta.3) (2017-11-14)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.2...v11.0.0-beta.3)
 
