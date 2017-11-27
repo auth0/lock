@@ -29,17 +29,17 @@ const Component = ({ i18n, model }) => {
   const buttonClickHandler = () => {
     checkSession(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
   };
+  const buttonLabel =
+    lastUsedUsername(model) || SOCIAL_STRATEGIES[connectionName] || connectionName;
 
   return (
     <QuickAuthPane
       alternativeLabel={i18n.str('notYourAccountAction')}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
-      buttonLabel={lastUsedUsername(model)}
+      buttonLabel={buttonLabel}
       buttonClickHandler={buttonClickHandler}
       header={header}
-      strategy={icon(
-        lastUsedConnection(model).get('strategy') || lastUsedConnection(model).get('name')
-      )}
+      strategy={icon(lastUsedConnection(model).get('strategy') || connectionName)}
       buttonIcon={buttonIcon}
       primaryColor={primaryColor}
       foregroundColor={foregroundColor}

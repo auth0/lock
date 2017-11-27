@@ -1,5 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LastLoginScreen renders correct buttonLabel uses SOCIAL_STRATEGY mapping when there is not a lastUsedUsername 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="Twitter"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="twitter"
+/>
+`;
+
+exports[`LastLoginScreen renders correct buttonLabel uses lastUsedConnectionName when there is not a lastUsedUsername and no SOCIAL_STRATEGY mapping 1`] = `
+<div
+  data-__type="quick_auth_pane"
+  data-alternativeClickHandler={[Function]}
+  data-alternativeLabel="notYourAccountAction"
+  data-buttonClickHandler={[Function]}
+  data-buttonIcon={undefined}
+  data-buttonLabel="lastUsedConnection"
+  data-foregroundColor={undefined}
+  data-header={
+    <p>
+      lastLoginInstructions
+    </p>
+  }
+  data-primaryColor={undefined}
+  data-strategy="auth0"
+/>
+`;
+
 exports[`LastLoginScreen renders correct icon when strategy is adfs 1`] = `
 <div
   data-__type="quick_auth_pane"
