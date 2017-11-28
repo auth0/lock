@@ -217,7 +217,7 @@ export function logInSuccess(id, result) {
   }
 }
 
-function logInError(id, fields, error, localHandler) {
+function logInError(id, fields, error, localHandler = (_id, _error, _fields, next) => next()) {
   const errorCode = error.error || error.code;
   localHandler(id, error, fields, () =>
     setTimeout(() => {
