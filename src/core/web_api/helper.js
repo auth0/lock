@@ -94,6 +94,13 @@ export function normalizeError(error) {
       description: error.description
     };
   }
+  if (error.error === 'access_denied') {
+    return {
+      code: 'invalid_user_password',
+      error: 'invalid_user_password',
+      description: error.description
+    };
+  }
 
   const result = {
     error: error.code ? error.code : error.statusCode || error.error,
