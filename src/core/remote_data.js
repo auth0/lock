@@ -34,11 +34,11 @@ export function syncRemoteData(m) {
           origin += ':' + location.port;
         }
 
-        const appSettingsUrl = `https://manage.auth0.com/#/applications/${l.clientID(m)}/settings`;
+        const appSettingsUrl = `https://manage.auth0.com/#/clients/${l.clientID(m)}/settings`;
 
         l.warn(
           m,
-          `There was an error fetching the SSO data. This could simply mean that there was a problem with the network. But, if a "Origin" error has been logged before this warning, please add "${origin}" to the "Allowed Origins (CORS)" list in the Auth0 dashboard: ${appSettingsUrl}`
+          `There was an error fetching the SSO data. This could simply mean that there was a problem with the network. But, if a "Origin" error has been logged before this warning, please add "${origin}" to the "Allowed Web Origins" list in the Auth0 dashboard: ${appSettingsUrl}`
         );
       }
     }
