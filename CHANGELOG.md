@@ -1,49 +1,22 @@
 # Change Log
 
-## [v11.0.0-beta.9](https://github.com/auth0/lock/tree/v11.0.0-beta.9) (2017-12-14)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.8...v11.0.0-beta.9)
+## [v11.0.0](https://github.com/auth0/lock/tree/v11.0.0) (2017-12-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v11.0.0)
 
+Lock v11 is designed for embedded login scenarios and **is not supported in centralized login scenarios** (i.e. Hosted Login Pages). You need to keep using Lock v10 in the Hosted Login Page.
 
+The scenarios below use Cross Origin Authentication (https://auth0.com/docs/cross-origin-authentication).
 
-## [v11.0.0-beta.8](https://github.com/auth0/lock/tree/v11.0.0-beta.8) (2017-12-07)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.7...v11.0.0-beta.8)
+We wrote a [Migration Guide](https://auth0.com/docs/libraries/lock/v10/migration-guide) to make upgrading your app easy. If you need help, please reach out to our amazing support team at https://support.auth0.com.
 
+**Breaking change**
+`lock.getProfile` now expects an access\_token as the first parameter. You'll need to update your code to change the parameter sent (v10 expected an id_token).
 
+**Removed**
+The `oidcConformant` flag was used to force Lock v10 to not call legacy endpoints. Lock v11 never uses legacy endpoint so the flag is not needed anymore. If specified, it will be ignored.
 
-## [v11.0.0-beta.7](https://github.com/auth0/lock/tree/v11.0.0-beta.7) (2017-11-30)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.6...v11.0.0-beta.7)
-
-
-
-## [v11.0.0-beta.6](https://github.com/auth0/lock/tree/v11.0.0-beta.6) (2017-11-30)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.5...v11.0.0-beta.6)
-
-
-
-## [v11.0.0-beta.5](https://github.com/auth0/lock/tree/v11.0.0-beta.5) (2017-11-28)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.4...v11.0.0-beta.5)
-
-
-
-## [v11.0.0-beta.4](https://github.com/auth0/lock/tree/v11.0.0-beta.4) (2017-11-27)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.3...v11.0.0-beta.4)
-
-
-
-## [v11.0.0-beta.3](https://github.com/auth0/lock/tree/v11.0.0-beta.3) (2017-11-14)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.2...v11.0.0-beta.3)
-
-
-
-## [v11.0.0-beta.2](https://github.com/auth0/lock/tree/v11.0.0-beta.2) (2017-11-03)
-[Full Changelog](https://github.com/auth0/lock/compare/v11.0.0-beta.1...v11.0.0-beta.2)
-
-
-
-## [v11.0.0-beta.1](https://github.com/auth0/lock/tree/v11.0.0-beta.1) (2017-10-19)
-[Full Changelog](https://github.com/auth0/lock/compare/v10.23.1...v11.0.0-beta.1)
-- Removes everything related to the legacy methods and also upgrades the version of auth0-js.
-It also allows AD connections to hit the co/authenticate endpoint even though this endpoint is still not supporting ad strategies. [\#1150](https://github.com/auth0/lock/pull/1150)
+**Changed**
+Lock v11 default the `scope` parameter to `openid profile email`. This is to make the 'Last Logged in With' window work.
 
 
 ## [v10.23.1](https://github.com/auth0/lock/tree/v10.23.1) (2017-10-12)
