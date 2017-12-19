@@ -33,6 +33,9 @@ If you are targeting mobile audiences, we recommended that you add:
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 ```
+## Cross Origin Authentication
+
+Lock uses **Cross-Origin Authentication**, make sure you understand the considerations you need to take into account by reading the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
 
 ## API
 
@@ -147,10 +150,9 @@ Logs out the user
 lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 ```
 
-
 ### checkSession(options, callback)
 
-The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the hosted login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your client. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js/v8#using-checksession-to-acquire-new-tokens).
+The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the hosted login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your client. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
 - **options {Object}**: OAuth2 options object to send to Auth0's servers.
 - **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
 
@@ -168,12 +170,6 @@ lock.checkSession({}, function (error, authResult) {
   }
 });
 ```
-
-## OIDC Conformant Mode
-
-Lock uses **Cross-Origin Authentication** and it requires that it's properly configured in the [settings](https://manage.auth0.com/#/clients) for your client in the Auth0 dashboard.
-
-For more information check the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
 
 ### Customization
 
@@ -337,7 +333,6 @@ var options = {
 
 A language dictionary is an object that allows you to customize every piece of text the Lock needs to display. For instance, the following code will change the title displayed in the header and the placeholder for the email field.
 
-
 ```js
 var options = {
   languageDictionary: {
@@ -356,7 +351,6 @@ Additional sign up fields are rendered below the default fields in the order the
 ##### Text field
 
 A `validator` function can also be provided.
-
 
 ```js
 var options = {
@@ -421,7 +415,6 @@ var options = {
 }
 ```
 
-
 ##### Checkbox field
 
 To specify a checkbox field use: `type: "checkbox"`
@@ -478,9 +471,7 @@ var lock = new Auth0Lock(clientId, domain, options);
 lock.show();
 ```
 
-> Popup mode doesn't work with OIDC conformant clients.
-
-More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/v10/popup-mode).
+More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/popup-mode).
 
 ## Browser Compatibility
 
