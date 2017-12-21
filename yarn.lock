@@ -394,7 +394,7 @@ atob@~1.1.0:
 
 auth0-js@9.0.0:
   version "9.0.0"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.0.0.tgz#aa472e1c0fe3c5444da790520670be66fad16172"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.0.0.tgz#804d65cd8913bb6d1140d101af622ef6f5260382"
   dependencies:
     base64-js "^1.2.0"
     idtoken-verifier "^1.1.0"
