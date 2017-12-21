@@ -40,6 +40,26 @@ describe('Auth0LegacyAPIClient', () => {
       const { overrides } = mock.WebAuth.mock.calls[0][0];
       expect(overrides).toEqual({ __tenant: 'tenant1', __token_issuer: 'issuer1' });
     });
+    it('forwards options to WebAuth', () => {
+      const options = {
+        redirectUrl: '//bar',
+        responseMode: 'query',
+        responseType: 'code',
+        plugins: [{ name: 'Plugin' }]
+      };
+      const callMapping = {
+        redirectUrl: 'redirectUri',
+        responseMode: 'responseMode',
+        responseType: 'responseType',
+        plugins: 'plugins'
+      };
+      const client = getClient(options);
+      const mock = getAuth0ClientMock();
+      const calledOptions = mock.WebAuth.mock.calls[0][0];
+      Object.keys(options).forEach(optionName => {
+        expect(calledOptions[callMapping[optionName]]).toBe(options[optionName]);
+      });
+    });
   });
 
   describe('logIn', () => {
