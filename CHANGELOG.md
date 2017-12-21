@@ -7,7 +7,7 @@ Lock v11 is designed for embedded login scenarios and **is not supported in cent
 
 The scenarios below use Cross Origin Authentication (https://auth0.com/docs/cross-origin-authentication).
 
-We wrote a [Migration Guide](https://auth0.com/docs/libraries/lock/v10/migration-guide) to make upgrading your app easy. If you need help, please reach out to our amazing support team at https://support.auth0.com.
+We wrote a [Migration Guide](https://auth0.com/docs/libraries/lock/v11/migration-guide) to make upgrading your app easy. If you need help, please reach out to our amazing support team at https://support.auth0.com.
 
 **Breaking change**
 `lock.getProfile` now expects an access\_token as the first parameter. You'll need to update your code to change the parameter sent (v10 expected an id_token).
