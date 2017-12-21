@@ -35,6 +35,19 @@ describe('Auth0APIClient', () => {
         const { overrides } = mock.WebAuth.mock.calls[0][0];
         expect(overrides).toEqual({ __tenant: 'tenant1', __token_issuer: 'issuer1' });
       });
+      it('forwards options to WebAuth', () => {
+        const options = {
+          audience: 'foo',
+          redirectUrl: '//localhost:8080/login/callback',
+          responseMode: 'query',
+          responseType: 'code',
+          leeway: 60,
+          plugins: [{ name: 'ExamplePlugin' }]
+        };
+        const client = getClient(options);
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.calls[0][0]).toMatchSnapshot();
+      });
     });
   });
   describe('logIn', () => {
