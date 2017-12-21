@@ -1,6 +1,6 @@
 # Change Log
 
-## [v11.0.0](https://github.com/auth0/lock/tree/v11.0.0) (2017-12-07)
+## [v11.0.0](https://github.com/auth0/lock/tree/v11.0.0) (2017-12-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v11.0.0)
 
 Lock v11 is designed for embedded login scenarios and **is not supported in centralized login scenarios** (i.e. Hosted Login Pages). You need to keep using Lock v10 in the Hosted Login Page.
