@@ -5,9 +5,7 @@
 
 Lock v11 is designed for embedded login scenarios and **is not supported in centralized login scenarios** (i.e. Hosted Login Pages). You need to keep using Lock v10 in the Hosted Login Page.
 
-The scenarios below use Cross Origin Authentication (https://auth0.com/docs/cross-origin-authentication).
-
-We wrote a [Migration Guide](https://auth0.com/docs/libraries/lock/v11/migration-guide) to make upgrading your app easy. If you need help, please reach out to our amazing support team at https://support.auth0.com.
+We wrote a [Migration Guide](https://auth0.com/docs/libraries/lock/v11/migration-guide) to make upgrading your app easy. 
 
 **Breaking change**
 `lock.getProfile` now expects an access\_token as the first parameter. You'll need to update your code to change the parameter sent (v10 expected an id_token).
@@ -17,7 +15,6 @@ The `oidcConformant` flag was used to force Lock v10 to not call legacy endpoint
 
 **Changed**
 Lock v11 default the `scope` parameter to `openid profile email`. This is to make the 'Last Logged in With' window work.
-
 
 ## [v10.23.1](https://github.com/auth0/lock/tree/v10.23.1) (2017-10-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v10.23.1)
