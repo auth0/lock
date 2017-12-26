@@ -9,6 +9,14 @@ Object {
 }
 `;
 
+exports[`normalizeError should map access_denied error to invalid_user_password 1`] = `
+Object {
+  "code": "invalid_user_password",
+  "description": "foobar",
+  "error": "invalid_user_password",
+}
+`;
+
 exports[`webAuthOverrides should omit overrides that are not compatible with WebAuth 1`] = `
 Object {
   "__tenant": "tenant1",

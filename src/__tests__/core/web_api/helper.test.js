@@ -41,6 +41,6 @@ describe('normalizeError', () => {
       description: error.description
     };
     const actualError = normalizeError(error);
-    expect(actualError).to.be.eql(expectedError);
+    expect(actualError).toMatchSnapshot();
   });
 });
