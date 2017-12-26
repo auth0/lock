@@ -104,9 +104,9 @@
     });
   </script>
   <script>
-    const cid = "BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b";
+    const clientId = "BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b";
     const domain = "brucke.auth0.com";
-    const options = {
+    const defaultOptions = {
       allowShowPassword: true,
       usernameStyle: 'email',
       defaultDatabaseConnection: 'acme',
@@ -114,10 +114,7 @@
         email: 'johnfoo@gmail.com'
       },
       passwordlessMethod: 'code',
-      allowedConnections: ['sms', 'acme'],
-      auth: {
-        responseType: 'token id_token'
-      }
+      allowedConnections: ['sms', 'acme']
     };
     function initLock() {
       var lock = new Auth0Lock(clientId, domain, defaultOptions);
