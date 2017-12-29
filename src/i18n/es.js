@@ -18,11 +18,11 @@ export default {
       password_change_required:
         'Debe actualizar su contraseña porque es la primera vez que ingresa o porque la contraseña está vencida.',
       password_leaked:
-        'Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente. Hemos enviado un email con las instrucciones.',
+        'Este intento ha sido bloqueado ya que usted utilizó la misma contraseña para registrarse en otra aplicación que tuvo una filtración reciente de datos. Hemos enviado un email con instrucciones para desbloquear la cuenta.',
       too_many_attempts:
         'Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos.',
       'lock.mfa_registration_required':
-        'Por favor enrole su dispositivo antes de continuar con el segundo factor.',
+        'Se requiere autenticación multifactor pero su dispositivo no está registrado. Por favor inscríbalo antes de continuar.',
       'lock.mfa_invalid_code': 'Código incorrecto. Por favor vuelva a intentarlo.',
       session_missing:
         'No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente.',
@@ -62,7 +62,7 @@ export default {
   forgotPasswordTitle: 'Restablecer contraseña',
   forgotPasswordAction: '¿Olvidó su contraseña?',
   forgotPasswordInstructions:
-    'Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.',
+    'Por favor escriba su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.',
   forgotPasswordSubmitLabel: 'Enviar email',
   invalidErrorHint: 'Inválido',
   lastLoginInstructions: 'La última vez inició sesión con',
@@ -106,7 +106,7 @@ export default {
   socialSignUpInstructions: '',
   ssoEnabled: 'Inicio de sesión único activado',
   submitLabel: 'Enviar',
-  unrecoverableError: 'Ocurrió un error.<br />Por favor, contacte a soporte técnico.',
+  unrecoverableError: 'Ocurrió un error.<br />Por favor, contacte a nuestro soporte técnico.',
   usernameFormatErrorHint:
     'Use %d-%d letras, números y los siguientes caracteres: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'su usuario',
