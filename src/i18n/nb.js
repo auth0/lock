@@ -47,7 +47,7 @@ export default {
   },
   success: {
     logIn: 'Takk for at du logget inn.',
-    forgotPassword: 'Vi sendte nettop en epost for å nullstille passordet ditt.',
+    forgotPassword: 'Vi sendte nettopp en epost for å nullstille passordet ditt.',
     magicLink: 'Vi sendte en lenke for å logge inn<br>på %s.',
     signUp: 'Takk for at du registrerte deg.'
   },
