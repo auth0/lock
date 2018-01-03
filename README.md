@@ -183,6 +183,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](http://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **language {String}**: Specifies the language of the widget. Defaults to `"en"`. Supported languages are:
+  - `cs`: Czech
   - `de`: German
   - `en`: English
   - `es`: Spanish
