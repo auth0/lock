@@ -24,7 +24,7 @@ class Auth0APIClient {
       responseMode: opts.responseMode,
       responseType: opts.responseType,
       leeway: opts.leeway || 1,
-      plugins: [new CordovaAuth0Plugin()],
+      plugins: opts.plugins || [new CordovaAuth0Plugin()],
       overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry

@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Auth0APIClient init with overwrites forwards options to WebAuth 1`] = `
+Object {
+  "_sendTelemetry": true,
+  "_telemetryInfo": Object {
+    "lib_version": "9.0.1",
+    "name": "lock.js",
+    "version": "11.0.1",
+  },
+  "audience": "foo",
+  "clientID": "cid",
+  "domain": "domain",
+  "leeway": 60,
+  "overrides": Object {
+    "__tenant": "tenant1",
+    "__token_issuer": "issuer1",
+  },
+  "plugins": Array [
+    Object {
+      "name": "ExamplePlugin",
+    },
+  ],
+  "redirectUri": "//localhost:8080/login/callback",
+  "responseMode": "query",
+  "responseType": "code",
+}
+`;
+
 exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
 Object {
   "nonce": undefined,
