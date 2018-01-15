@@ -12,7 +12,10 @@ Object {
   "clientID": "cid",
   "domain": "domain",
   "leeway": 60,
-  "overrides": null,
+  "overrides": Object {
+    "__tenant": "tenant1",
+    "__token_issuer": "issuer1",
+  },
   "plugins": Array [
     Object {
       "name": "ExamplePlugin",

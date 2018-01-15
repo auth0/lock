@@ -24,17 +24,6 @@ describe('Auth0APIClient', () => {
   });
   describe('init', () => {
     describe('with overwrites', () => {
-      it('should configure WebAuth with the proper overrides', () => {
-        const client = getClient({
-          overrides: {
-            __tenant: 'tenant1',
-            __token_issuer: 'issuer1'
-          }
-        });
-        const mock = getAuth0ClientMock();
-        const { overrides } = mock.WebAuth.mock.calls[0][0];
-        expect(overrides).toEqual({ __tenant: 'tenant1', __token_issuer: 'issuer1' });
-      });
       it('forwards options to WebAuth', () => {
         const options = {
           audience: 'foo',
@@ -42,6 +31,10 @@ describe('Auth0APIClient', () => {
           responseMode: 'query',
           responseType: 'code',
           leeway: 60,
+          overrides: {
+            __tenant: 'tenant1',
+            __token_issuer: 'issuer1'
+          },
           plugins: [{ name: 'ExamplePlugin' }]
         };
         const client = getClient(options);
