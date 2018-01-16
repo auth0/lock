@@ -75,6 +75,7 @@
     "sinon": "^1.15.4",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
+    "superagent": "^3.3.1",
     "uglify-js": "^2.7.4",
     "unminified-webpack-plugin": "^1.1.1",
     "unreleased": "^0.1.0",
@@ -86,7 +87,7 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "9.0.1",
+    "auth0-js": "^9.1.0",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "idtoken-verifier": "^1.0.1",
@@ -97,7 +98,6 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-transition-group": "^2.2.1",
-    "superagent": "^3.3.1",
     "trim": "0.0.1",
     "url-join": "^1.1.0"
   },

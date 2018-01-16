@@ -23,7 +23,7 @@ describe('Auth0APIClient', () => {
     jest.resetModules();
   });
   describe('init', () => {
-    describe('with overwrites', () => {
+    describe('with overrides', () => {
       it('forwards options to WebAuth', () => {
         const options = {
           audience: 'foo',
@@ -35,7 +35,8 @@ describe('Auth0APIClient', () => {
             __tenant: 'tenant1',
             __token_issuer: 'issuer1'
           },
-          plugins: [{ name: 'ExamplePlugin' }]
+          plugins: [{ name: 'ExamplePlugin' }],
+          _telemetryInfo: {}
         };
         const client = getClient(options);
         const mock = getAuth0ClientMock();
