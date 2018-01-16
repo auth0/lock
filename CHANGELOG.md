@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.1.0](https://github.com/auth0/lock/tree/v11.1.0) (2018-01-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.0.1...v11.1.0)
+
+
+**Changed**
+- Update auth0.js [\#1225](https://github.com/auth0/lock/pull/1225) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.0.0](https://github.com/auth0/lock/tree/v11.0.0) (2017-12-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v11.0.0)
 
