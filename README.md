@@ -243,14 +243,16 @@ Authentication options are grouped in the `auth` property of the `options` objec
 ```js
 var options = {
   auth: {
-   params: {param1: "value1"},
+   params: {
+    param1: "value1",
+    scope: "openid profile email"
+   },
    autoParseHash: true,
    redirect: true,
    redirectUrl: "some url",
    responseMode: "form_post",
    responseType: "token",
    sso: true,
-   scope: "openid profile email",
    connectionScopes: {
     connectionName: [ 'scope1', 'scope2' ]
    }
