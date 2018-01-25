@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.24.2/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.24.3/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -431,7 +431,7 @@ var options = {
     type: "checkbox",
     name: "newsletter",
     prefill: "true",
-    placeholder: "I hereby agree that I want to receive marketing emails from your company",
+    placeholder: "I hereby agree that I <strong>want<\/strong> to receive marketing emails from your company",
   }]
 }
 ```
