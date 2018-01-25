@@ -134,6 +134,18 @@ export function clearGlobalSuccess(m) {
   return tremove(m, 'globalSuccess');
 }
 
+export function setGlobalInfo(m, str) {
+  return tset(m, 'globalInfo', str);
+}
+
+export function globalInfo(m) {
+  return tget(m, 'globalInfo', '');
+}
+
+export function clearGlobalInfo(m) {
+  return tremove(m, 'globalInfo');
+}
+
 export function rendering(m) {
   return tget(m, 'render', false);
 }
@@ -563,8 +575,9 @@ export function overrideOptions(m, opts) {
   }
 
   if (opts.flashMessage) {
-    const key = 'success' === opts.flashMessage.type ? 'globalSuccess' : 'globalError';
-    m = tset(m, key, opts.flashMessage.text);
+    const { type } = opts.flashMessage;
+    const typeCapitalized = type.charAt(0).toUpperCase() + type.slice(1);
+    m = tset(m, `global${typeCapitalized}`, opts.flashMessage.text);
   }
 
   if (opts.auth && opts.auth.params) {
