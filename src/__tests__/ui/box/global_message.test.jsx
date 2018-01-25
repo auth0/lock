@@ -12,6 +12,11 @@ describe('GlobalMessage', () => {
   it('renders correctly given an error type', () => {
     expectComponent(<GlobalMessage type="error" message="An error occurred." />).toMatchSnapshot();
   });
+  it('renders correctly given an info type', () => {
+    expectComponent(
+      <GlobalMessage type="info" message="Some additional information." />
+    ).toMatchSnapshot();
+  });
   it('should call scrollIntoView if parameter is set and top < 0', () => {
     const wrapper = mount(<GlobalMessage type="success" message="foo" scrollIntoView={true} />);
     const getBoundingClientRectSpy = jest.fn().mockReturnValue({ top: -1 });

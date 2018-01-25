@@ -85,10 +85,11 @@ export function openLock(id, opts) {
   }
 
   if (opts.flashMessage) {
-    if (!opts.flashMessage.type || ['error', 'success'].indexOf(opts.flashMessage.type) === -1) {
+    const supportedTypes = ['error', 'success', 'info'];
+    if (!opts.flashMessage.type || supportedTypes.indexOf(opts.flashMessage.type) === -1) {
       return l.emitUnrecoverableErrorEvent(
         m,
-        "'flashMessage' must provide a valid type ['error','success']"
+        "'flashMessage' must provide a valid type ['error','success','info']"
       );
     }
     if (!opts.flashMessage.text) {
