@@ -11,9 +11,13 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
       onChange={[Function]}
       type="checkbox"
     />
-    <span>
-      placeholder
-    </span>
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "placeholder",
+        }
+      }
+    />
   </label>
 </div>
 `;
