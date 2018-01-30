@@ -114,7 +114,7 @@
         email: 'johnfoo@gmail.com'
       },
       passwordlessMethod: 'code',
-      allowedConnections: ['sms', 'acme']
+      allowedConnections: ['email', 'acme']
     };
     function initLock() {
       var lock = new Auth0Lock(clientId, domain, defaultOptions);
