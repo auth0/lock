@@ -13,7 +13,7 @@ export function initPasswordless(m, opts) {
   }
   // TODO: validate opts
 
-  const send = !opts.passwordlessMethod || opts.passwordlessMethod === 'code' ? 'code' : 'link';
+  const send = opts.passwordlessMethod === 'link' ? 'link' : 'code';
 
   m = initNS(m, Map({ send: send }));
   if (opts.defaultLocation && typeof opts.defaultLocation === 'string') {
