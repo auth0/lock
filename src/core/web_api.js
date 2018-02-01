@@ -7,9 +7,9 @@ class Auth0WebAPI {
   }
 
   setupClient(lockID, clientID, domain, opts) {
-    const hostedLoginPage = window.location.host === domain;
+    const isHostedLoginPage = window.location.host === domain;
     // when it is used on on the hosted login page, it shouldn't use popup mode
-    opts.redirect = hostedLoginPage ? true : opts.redirect;
+    opts.redirect = isHostedLoginPage ? true : opts.redirect;
 
     // for cordova and electron we should force popup without SSO so it uses
     // /ro or /oauth/token for DB connections
@@ -18,7 +18,7 @@ class Auth0WebAPI {
       opts.sso = false;
     }
 
-    this.clients[lockID] = new Auth0APIClient(lockID, clientID, domain, opts);
+    this.clients[lockID] = new Auth0APIClient(lockID, clientID, domain, opts, isHostedLoginPage);
   }
 
   logIn(lockID, options, authParams, cb) {

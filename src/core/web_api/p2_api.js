@@ -5,10 +5,11 @@ import { getEntity, read } from '../../store/index';
 import { normalizeError, loginCallback, normalizeAuthParams, webAuthOverrides } from './helper';
 
 class Auth0APIClient {
-  constructor(lockID, clientID, domain, opts) {
+  constructor(lockID, clientID, domain, opts, isHostedLoginPage) {
     this.lockID = lockID;
     this.client = null;
     this.authOpt = null;
+    this.isHostedLoginPage = isHostedLoginPage;
 
     const default_telemetry = {
       name: 'lock.js',
@@ -52,7 +53,10 @@ class Auth0APIClient {
       }
     } else if (this.authOpt.popup) {
       this.client.popup.loginWithCredentials(loginOptions, f);
+    } else if (this.isHostedLoginPage) {
+      this.client._universalLogin.login(loginOptions, f);
     } else {
+      //embedded
       loginOptions.realm = options.connection;
       this.client.login(loginOptions, f);
     }
