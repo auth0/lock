@@ -54,7 +54,7 @@ class Auth0APIClient {
     } else if (this.authOpt.popup) {
       this.client.popup.loginWithCredentials(loginOptions, f);
     } else if (this.isHostedLoginPage) {
-      this.client._hostedPages.login(loginOptions, f);
+      this.client._universalLogin.login(loginOptions, f);
     } else {
       //embedded
       loginOptions.realm = options.connection;

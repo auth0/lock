@@ -84,7 +84,7 @@ describe('Auth0APIClient', () => {
         const loginMock = mock.WebAuth.mock.instances[0].login.mock;
         assertCallWithCallback(loginMock, callback);
       });
-      it('should call _hostedPages.login when isHostedLoginPage===true', () => {
+      it('should call _universalLogin.login when isHostedLoginPage===true', () => {
         const client = getClient(
           {
             redirect: true
@@ -94,7 +94,7 @@ describe('Auth0APIClient', () => {
         const callback = jest.fn();
         client.logIn({ username: 'foo' }, {}, callback);
         const mock = getAuth0ClientMock();
-        const loginMock = mock.WebAuth.mock.instances[0]._hostedPages.login.mock;
+        const loginMock = mock.WebAuth.mock.instances[0]._universalLogin.login.mock;
         assertCallWithCallback(loginMock, callback);
       });
       it('should call popup.loginWithCredentials when redirect is false and sso is false', () => {
