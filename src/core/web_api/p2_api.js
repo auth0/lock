@@ -1,5 +1,6 @@
 import auth0 from 'auth0-js';
 import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
+import superagent from 'superagent';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
 import { normalizeError, loginCallback, normalizeAuthParams, webAuthOverrides } from './helper';
@@ -9,6 +10,8 @@ class Auth0APIClient {
     this.lockID = lockID;
     this.client = null;
     this.authOpt = null;
+    this.domain = domain;
+    this.isUniversalLogin = window.location.host === domain;
 
     const default_telemetry = {
       name: 'lock.js',
@@ -102,8 +105,17 @@ class Auth0APIClient {
     this.getUserInfo(token, callback);
   }
 
-  getSSOData(...args) {
-    return this.client.client.getSSOData(...args);
+  getSSOData(cb) {
+    if (this.isUniversalLogin) {
+      superagent
+        .get(`https://${this.domain}/user/ssodata`)
+        .withCredentials()
+        .end((err, res) => {
+          cb(err, res.body);
+        });
+    } else {
+      return this.client.client.getSSOData(cb);
+    }
   }
 
   getUserCountry(cb) {
