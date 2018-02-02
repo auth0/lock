@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.2.0](https://github.com/auth0/lock/tree/v11.2.0) (2018-02-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.3...v11.2.0)
+
+
+**Changed**
+- call /ssodata when inside the universal login page [\#1245](https://github.com/auth0/lock/pull/1245) ([luisrudge](https://github.com/luisrudge))
+- Handling embedded and universal login in the same client [\#1243](https://github.com/auth0/lock/pull/1243) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.1.3](https://github.com/auth0/lock/tree/v11.1.3) (2018-01-29)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.1.2...v11.1.3)
 
