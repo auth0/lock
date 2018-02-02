@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Immutable from 'immutable';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { expectComponent, extractPropsFromWrapper, mockComponent, setURL } from 'testUtils';
 
 jest.mock('ui/pane/quick_auth_pane', () => mockComponent('quick_auth_pane'));
 
@@ -26,7 +26,8 @@ describe('LastLoginScreen', () => {
     }));
 
     jest.mock('core/index', () => ({
-      id: () => 'id'
+      id: () => 'id',
+      domain: () => 'me.auth0.com'
     }));
 
     jest.mock('core/sso/index', () => ({
@@ -117,12 +118,25 @@ describe('LastLoginScreen', () => {
       expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
     });
   });
-  it('calls logIn in the buttonClickHandler', () => {
+  it('calls checkSession in the buttonClickHandler when outside of the universal login page', () => {
+    setURL('https://other-url.auth0.com');
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);
     props.buttonClickHandler();
     const { mock } = require('quick-auth/actions').checkSession;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0][0]).toBe('id');
+    expect(mock.calls[0][1].get()).toBe('lastUsedConnection');
+    expect(mock.calls[0][2]).toBe('lastUsedUsername');
+  });
+  it('calls logIn in the buttonClickHandler when inside of the universal login page', () => {
+    setURL('https://me.auth0.com');
+    const Component = getComponent();
+    const wrapper = mount(<Component {...defaultProps} />);
+    const props = extractPropsFromWrapper(wrapper);
+    props.buttonClickHandler();
+    const { mock } = require('quick-auth/actions').logIn;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0][0]).toBe('id');
     expect(mock.calls[0][1].get()).toBe('lastUsedConnection');

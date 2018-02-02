@@ -1,9 +1,11 @@
+import { setURL } from 'testUtils';
+
 jest.mock('auth0-js');
 
 const getClient = (options = {}) => {
   const lockId = 'lockId';
   const clientId = 'cid';
-  const domain = 'domain';
+  const domain = 'me.auth0.com';
   const Auth0APIClient = require('core/web_api/p2_api').default;
   const client = new Auth0APIClient(lockId, clientId, domain, options);
   client.client.popup = {
@@ -42,6 +44,31 @@ describe('Auth0APIClient', () => {
         const client = getClient(options);
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]).toMatchSnapshot();
+      });
+    });
+
+    describe('should set authOpt according options', () => {
+      it('should set sso:true when inside the universal login page', () => {
+        setURL('https://me.auth0.com/');
+        const options = {
+          sso: true
+        };
+        const client = getClient(options);
+        expect(client.authOpt.sso).toBe(true);
+      });
+      it('should set sso:false when inside the universal login page', () => {
+        setURL('https://me.auth0.com/');
+        const options = {
+          sso: false
+        };
+        const client = getClient(options);
+        expect(client.authOpt.sso).toBe(false);
+      });
+      it('should set sso:undefined when outside the universal login page', () => {
+        setURL('https://other-url.auth0.com/');
+        const options = {};
+        const client = getClient(options);
+        expect(client.authOpt.sso).toBe(undefined);
       });
     });
   });

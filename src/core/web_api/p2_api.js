@@ -37,7 +37,8 @@ class Auth0APIClient {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
       nonce: opts.nonce,
-      state: opts.state
+      state: opts.state,
+      sso: this.isUniversalLogin ? opts.sso : undefined
     };
   }
 
