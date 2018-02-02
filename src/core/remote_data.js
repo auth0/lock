@@ -28,7 +28,6 @@ export function syncRemoteData(m) {
       if (error.error === 'consent_required') {
         l.warn(m, error.error_description);
       } else {
-        console.error(error);
         // location.origin is not supported in all browsers
         let origin = location.protocol + '//' + location.hostname;
         if (location.port) {
