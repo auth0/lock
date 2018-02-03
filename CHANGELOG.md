@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.2.1](https://github.com/auth0/lock/tree/v11.2.1) (2018-02-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.0...v11.2.1)
+
+
+**Fixed**
+- DIsable HRD check for passwordless connections [\#1248](https://github.com/auth0/lock/pull/1248) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.2.0](https://github.com/auth0/lock/tree/v11.2.0) (2018-02-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.1.3...v11.2.0)
 
