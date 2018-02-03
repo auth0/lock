@@ -165,6 +165,7 @@ export function isHRDEmailValid(m, str) {
   if (
     isEmail(str) &&
     !l.hasSomeConnections(m, 'database') &&
+    !l.hasSomeConnections(m, 'passwordless') &&
     !findADConnectionWithoutDomain(m) &&
     !matchesEnterpriseConnection(m, str)
   ) {
