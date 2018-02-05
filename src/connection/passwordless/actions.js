@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 import { read, getEntity, swap, updateEntity } from '../../store/index';
-import { closeLock, logIn as coreLogIn, validateAndSubmit } from '../../core/actions';
+import { closeLock, logIn as coreLogIn, validateAndSubmit, logInSuccess } from '../../core/actions';
 import webApi from '../../core/web_api';
 import * as c from '../../field/index';
 import * as l from '../../core/index';
@@ -132,7 +132,7 @@ export function logIn(id) {
     params.phoneNumber = phoneNumberWithDiallingCode(m);
   }
   swap(updateEntity, 'lock', id, l.setSubmitting, true);
-  webApi.passwordlessVerify(id, params, error => {
+  webApi.passwordlessVerify(id, params, (error, result) => {
     let errorMessage;
     if (error) {
       const m = read(getEntity, 'lock', id);
@@ -140,8 +140,10 @@ export function logIn(id) {
       if (error.logToConsole) {
         console.error(error.description);
       }
+      return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+    } else {
+      return logInSuccess(id, result);
     }
-    return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
   });
 }
 

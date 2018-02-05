@@ -34,15 +34,6 @@ describe('passwordless connection', () => {
     beforeEach(() => {
       initPasswordless = require('connection/passwordless/index').initPasswordless;
     });
-    it('should throw an error when `auth.redirect` is false', () => {
-      expect(() =>
-        initPasswordless(null, {
-          auth: {
-            redirect: false
-          }
-        })
-      ).toThrowErrorMatchingSnapshot();
-    });
     describe('calls initNS ', () => {
       it('with send:code when opts.passwordlessMethod is undefined', () => {
         initPasswordless(null, {});
