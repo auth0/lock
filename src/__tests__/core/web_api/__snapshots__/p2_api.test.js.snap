@@ -87,6 +87,7 @@ exports[`Auth0APIClient passwordlessVerify should call client.passwordlessLogin 
 Array [
   Object {
     "foo": "bar",
+    "popup": true,
   },
   [Function],
 ]

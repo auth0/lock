@@ -32,7 +32,8 @@ describe('passwordless actions', () => {
     jest.mock('core/actions', () => ({
       closeLock: jest.fn(),
       logIn: jest.fn(),
-      validateAndSubmit: jest.fn()
+      validateAndSubmit: jest.fn(),
+      logInSuccess: jest.fn()
     }));
     jest.mock('i18n', () => ({ html: (_, keys) => keys.join(',') }));
     jest.mock('core/index', () => ({
@@ -213,12 +214,11 @@ describe('passwordless actions', () => {
         const { swap } = require('store/index');
         expectMockToMatch(swap, 2);
       });
-      it('sets setSubmitting to false', () => {
+      it('calls logInSuccess on success', () => {
         actions.logIn('id');
-        require('core/web_api').passwordlessVerify.mock.calls[0][2](null);
+        require('core/web_api').passwordlessVerify.mock.calls[0][2](null, { result: true });
 
-        const { swap } = require('store/index');
-        expectMockToMatch(swap, 2);
+        expectMockToMatch(require('core/actions').logInSuccess, 1);
       });
     });
   });

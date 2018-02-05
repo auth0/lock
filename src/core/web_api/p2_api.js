@@ -84,7 +84,8 @@ class Auth0APIClient {
   }
 
   passwordlessVerify(options, cb) {
-    this.client.passwordlessLogin(options, err => cb(normalizeError(err)));
+    const verifyOptions = { ...options, popup: this.authOpt.popup };
+    this.client.passwordlessLogin(verifyOptions, (err, result) => cb(normalizeError(err), result));
   }
 
   parseHash(hash = '', cb) {
