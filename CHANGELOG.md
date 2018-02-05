@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.2.2](https://github.com/auth0/lock/tree/v11.2.2) (2018-02-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.1...v11.2.2)
+
+
+**Fixed**
+- Upgrade a0js to fix popup mode with passwordless [\#1251](https://github.com/auth0/lock/pull/1251) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.2.1](https://github.com/auth0/lock/tree/v11.2.1) (2018-02-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.2.0...v11.2.1)
 
