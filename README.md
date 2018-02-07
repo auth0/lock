@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/11.2.2/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.2.2/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -180,7 +180,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **allowedConnections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
-- **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](http://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
+- **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](https://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **language {String}**: Specifies the language of the widget. Defaults to `"en"`. Supported languages are:
   - `de`: German
@@ -220,7 +220,7 @@ var options = {
         displayName: "...", 
         primaryColor: "...", 
         foregroundColor: "...", 
-        icon: "http://.../logo.png"
+        icon: "https://.../logo.png"
       }
     }
   }
@@ -234,7 +234,7 @@ var options = {
   + **displayName {String}**: The name to show instead of the connection name.
   + **primaryColor {String}**: The button's background color. Defaults to `"#eb5424"`.
   + **foregroundColor {String}**: The button's text color. Defaults to `"#FFFFFF"`.
-  + **icon {String}**: The icon's url for the connection. For example:`"http://site.com/logo.png"`.
+  + **icon {String}**: The icon's url for the connection. For example:`"https://site.com/logo.png"`.
 
 #### Authentication options
 
@@ -496,9 +496,9 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [circleci-url]: https://circleci.com/gh/auth0/lock/tree/master
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
-[license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
+[license-image]: https://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
 [license-url]: #license
-[downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
+[downloads-image]: https://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/auth0-lock
 [david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock
