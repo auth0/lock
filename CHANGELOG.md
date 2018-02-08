@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.2.3](https://github.com/auth0/lock/tree/v11.2.3) (2018-02-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.2...v11.2.3)
+
+
+**Fixed**
+- Fixing Auth0LockPasswordless export [\#1259](https://github.com/auth0/lock/pull/1259) ([luisrudge](https://github.com/luisrudge))
+- Fix sso warning [\#1258](https://github.com/auth0/lock/pull/1258) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.2.2](https://github.com/auth0/lock/tree/v11.2.2) (2018-02-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.2.1...v11.2.2)
 
