@@ -23,6 +23,14 @@ From [npm](https://npmjs.org)
 npm install auth0-lock
 ```
 
+Then you can import `Auth0Lock` or `Auth0LockPasswordless` like this:
+
+```js
+import Auth0Lock from 'auth0-lock';
+import { Auth0Lock } from 'auth0-lock';
+import { Auth0LockPasswordless } from 'auth0-lock';
+```
+
 After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. See examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
 > It is expected that you use the development mode when working on your app, and the production mode when deploying your app to the users.
@@ -53,6 +61,36 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0Lock(clientId, domain);
+
+lock.on("authenticated", function(authResult) {
+  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+    if (error) {
+      // Handle error
+      return;
+    }
+
+    localStorage.setItem("accessToken", authResult.accessToken);
+    localStorage.setItem("profile", JSON.stringify(profile));
+
+    // Update DOM
+  });
+});
+```
+
+### new Auth0LockPasswordless(clientID, domain, options)
+
+Initializes a new instance of `Auth0LockPasswordless` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/). You can find this information at your [application settings](https://manage.auth0.com/#/applications).
+
+- **clientId {String}**: Your application _clientId_ in Auth0.
+- **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
+- **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
+
+#### Example
+
+```js
+var clientId = "YOUR_AUTH0_APP_CLIENTID";
+var domain = "YOUR_DOMAIN_AT.auth0.com";
+var lock = new Auth0LockPasswordless(clientId, domain);
 
 lock.on("authenticated", function(authResult) {
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
