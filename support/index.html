@@ -114,8 +114,7 @@
         email: 'johnfoo@gmail.com'
       },
       passwordlessMethod: 'code',
-      allowedConnections: ['email', 'acme', 'twitter'],
-      auth: { sso: true }
+      allowedConnections: ['email', 'acme', 'twitter']
     };
     function initLock() {
       var lock = new Auth0Lock(clientId, domain, defaultOptions);
