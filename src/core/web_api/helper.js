@@ -10,7 +10,8 @@ export function normalizeError(error) {
     return {
       code: 'cross_origin_login_not_enabled',
       error: 'cross_origin_login_not_enabled',
-      description: 'Cross Origin Authencation is not enabled. Please refer to this document to enable it: https://link-to-doc.com',
+      description:
+        'Cross Origin Authencation is not enabled. Please refer to this document to enable it: https://link-to-doc.com',
       logToConsole: true
     };
   }
@@ -103,20 +104,20 @@ export function normalizeError(error) {
     return {
       code: 'rule_error',
       error: 'rule_error',
-      description: error.description
+      description: normalizeDescription(error)
     };
   }
   if (error.error === 'access_denied') {
     return {
       code: 'invalid_user_password',
       error: 'invalid_user_password',
-      description: error.description
+      description: normalizeDescription(error)
     };
   }
 
   const result = {
     error: error.code ? error.code : error.statusCode || error.error,
-    description: error.description || error.code
+    description: normalizeDescription(error) || error.code
   };
 
   // result is used for passwordless and error for database.
@@ -142,4 +143,8 @@ export function webAuthOverrides({ __tenant, __token_issuer } = {}) {
   }
 
   return null;
+}
+
+function normalizeDescription(error) {
+  return error.description || error.error_description || error.errorDescription;
 }
