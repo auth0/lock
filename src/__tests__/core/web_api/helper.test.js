@@ -29,7 +29,7 @@ describe('normalizeError', () => {
     const expectedError = {
       code: 'invalid_user_password',
       error: 'invalid_user_password',
-      description: error.description
+      description: 'foobar'
     };
     const actualError = normalizeError(error);
     expect(actualError).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('normalizeError', () => {
     const expectedError = {
       code: 'invalid_user_password',
       error: 'invalid_user_password',
-      description: error.description
+      description: 'foobar'
     };
     const actualError = normalizeError(error);
     expect(actualError).toMatchSnapshot();
