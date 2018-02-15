@@ -97,7 +97,7 @@ class Auth0APIClient {
         nonce: this.authOpt.nonce,
         state: this.authOpt.state
       },
-      cb
+      (err, result) => cb(normalizeError(err), result)
     );
   }
 
