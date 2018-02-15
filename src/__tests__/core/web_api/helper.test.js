@@ -21,16 +21,7 @@ describe('normalizeError', () => {
     const normalized = normalizeError(undefined);
     expect(normalized).toBe(undefined);
   });
-  it('maps COA not enabled error', () => {
-    const normalized = normalizeError({
-      error: 'unauthorized_client',
-      error_description: 'Cross origin login not allowed.'
-    });
-    expect(normalized).toMatchSnapshot();
-  });
-});
-describe('normalizeError', () => {
-  it('should map access_denied error to invalid_user_password', () => {
+  it('should map access_denied error to invalid_user_password when error.error === access_denied', () => {
     const error = {
       error: 'access_denied',
       description: 'foobar'
@@ -38,7 +29,20 @@ describe('normalizeError', () => {
     const expectedError = {
       code: 'invalid_user_password',
       error: 'invalid_user_password',
-      description: error.description
+      description: 'foobar'
+    };
+    const actualError = normalizeError(error);
+    expect(actualError).toMatchSnapshot();
+  });
+  it('should map access_denied error to invalid_user_password when error.code === access_denied', () => {
+    const error = {
+      code: 'access_denied',
+      description: 'foobar'
+    };
+    const expectedError = {
+      code: 'invalid_user_password',
+      error: 'invalid_user_password',
+      description: 'foobar'
     };
     const actualError = normalizeError(error);
     expect(actualError).toMatchSnapshot();

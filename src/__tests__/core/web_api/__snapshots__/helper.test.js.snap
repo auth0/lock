@@ -1,15 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`normalizeError maps COA not enabled error 1`] = `
+exports[`normalizeError should map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
 Object {
-  "code": "cross_origin_login_not_enabled",
-  "description": "Cross Origin Authencation is not enabled. Please refer to this document to enable it: https://link-to-doc.com",
-  "error": "cross_origin_login_not_enabled",
-  "logToConsole": true,
+  "code": "invalid_user_password",
+  "description": "foobar",
+  "error": "invalid_user_password",
 }
 `;
 
-exports[`normalizeError should map access_denied error to invalid_user_password 1`] = `
+exports[`normalizeError should map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
 Object {
   "code": "invalid_user_password",
   "description": "foobar",
