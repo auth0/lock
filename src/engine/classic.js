@@ -181,7 +181,8 @@ class Classic {
           if (
             lastUsedConnection &&
             isSuccess(m, 'sso') &&
-            l.hasConnection(m, lastUsedConnection.get('name'))
+            l.hasConnection(m, lastUsedConnection.get('name')) &&
+            l.findConnection(m, lastUsedConnection.get('name')).get('type') !== 'passwordless'
           ) {
             return new LastLoginScreen();
           }
