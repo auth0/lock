@@ -43,11 +43,16 @@ export default class Base extends EventEmitter {
       'hash_parsed',
       'signin ready',
       'signup ready',
-
+      'socialOrPhoneNumber ready',
+      'socialOrEmail ready',
+      'vcode ready',
       'forgot_password ready',
       'forgot_password submit',
       'signin submit',
       'signup submit',
+      'socialOrPhoneNumber submit',
+      'socialOrEmail submit',
+      'vcode submit',
       'federated login'
     ];
 
@@ -136,6 +141,12 @@ export default class Base extends EventEmitter {
             l.emitEvent(m, 'signup ready');
           } else if (screen.name === 'forgotPassword') {
             l.emitEvent(m, 'forgot_password ready');
+          } else if (screen.name === 'socialOrEmail') {
+            l.emitEvent(m, 'socialOrEmail ready');
+          } else if (screen.name === 'socialOrPhoneNumber') {
+            l.emitEvent(m, 'socialOrPhoneNumber ready');
+          } else if (screen.name === 'vcode') {
+            l.emitEvent(m, 'vcode ready');
           }
         }
         this.oldScreenName = screen.name;
