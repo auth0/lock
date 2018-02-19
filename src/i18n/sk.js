@@ -72,7 +72,7 @@ export default {
   loginLabel: 'Prihlásenie',
   loginSubmitLabel: 'Prihlásiť',
   loginWithLabel: 'Prihlásiť sa ako %s',
-  notYourAccountAction: 'Nieje to váš účet?',
+  notYourAccountAction: 'Nie je to váš účet?',
   passwordInputPlaceholder: 'Vaše heslo',
   passwordStrength: {
     containsAtLeast: 'Musí obsahovať aspoň %d z nasledujúcich %d druhov zankov:',

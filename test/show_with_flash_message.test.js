@@ -90,5 +90,23 @@ describe('show lock with flash message', function() {
         }
       });
     });
+
+    it('should show an info flash message', function(done) {
+      const lock = new Auth0Lock('cid', 'domain');
+
+      lock.on('show', () => {
+        var hasInfoMessage = h.hasInfoMessage(lock, 'an info message');
+        expect(hasInfoMessage).to.be.ok();
+        lock.hide();
+        done();
+      });
+
+      lock.show({
+        flashMessage: {
+          type: 'info',
+          text: 'an info message'
+        }
+      });
+    });
   });
 });

@@ -170,6 +170,9 @@ export const hasErrorMessage = (lock, message) => {
 export const hasSuccessMessage = (lock, message) => {
   return hasFlashMessage('.auth0-global-message-success', lock, message);
 };
+export const hasInfoMessage = (lock, message) => {
+  return hasFlashMessage('.auth0-global-message-info', lock, message);
+};
 
 export const hasOneSocialButton = hasOneViewFn('.auth0-lock-social-button');
 export const hasOneSocialBigButton = hasOneViewFn(

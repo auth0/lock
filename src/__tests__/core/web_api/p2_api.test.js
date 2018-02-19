@@ -1,9 +1,11 @@
+import { setURL } from 'testUtils';
+
 jest.mock('auth0-js');
 
 const getClient = (options = {}) => {
   const lockId = 'lockId';
   const clientId = 'cid';
-  const domain = 'domain';
+  const domain = 'me.auth0.com';
   const Auth0APIClient = require('core/web_api/p2_api').default;
   const client = new Auth0APIClient(lockId, clientId, domain, options);
   client.client.popup = {
@@ -11,7 +13,8 @@ const getClient = (options = {}) => {
     loginWithCredentials: jest.fn()
   };
   client.client.client = {
-    login: jest.fn()
+    login: jest.fn(),
+    getUserCountry: jest.fn()
   };
   return client;
 };
@@ -23,17 +26,49 @@ describe('Auth0APIClient', () => {
     jest.resetModules();
   });
   describe('init', () => {
-    describe('with overwrites', () => {
-      it('should configure WebAuth with the proper overrides', () => {
-        const client = getClient({
+    describe('with overrides', () => {
+      it('forwards options to WebAuth', () => {
+        const options = {
+          audience: 'foo',
+          redirectUrl: '//localhost:8080/login/callback',
+          responseMode: 'query',
+          responseType: 'code',
+          leeway: 60,
           overrides: {
             __tenant: 'tenant1',
             __token_issuer: 'issuer1'
-          }
-        });
+          },
+          plugins: [{ name: 'ExamplePlugin' }],
+          _telemetryInfo: {}
+        };
+        const client = getClient(options);
         const mock = getAuth0ClientMock();
-        const { overrides } = mock.WebAuth.mock.calls[0][0];
-        expect(overrides).toEqual({ __tenant: 'tenant1', __token_issuer: 'issuer1' });
+        expect(mock.WebAuth.mock.calls[0][0]).toMatchSnapshot();
+      });
+    });
+
+    describe('should set authOpt according options', () => {
+      it('should set sso:true when inside the universal login page', () => {
+        setURL('https://me.auth0.com/');
+        const options = {
+          sso: true
+        };
+        const client = getClient(options);
+        expect(client.authOpt.sso).toBe(true);
+      });
+      it('should set sso:false when inside the universal login page', () => {
+        setURL('https://me.auth0.com/');
+        const options = {
+          sso: false
+        };
+        const client = getClient(options);
+        expect(client.authOpt.sso).toBe(false);
+      });
+      it('should set sso:undefined when outside the universal login page', () => {
+        setURL('https://other-url.auth0.com/');
+        const options = {};
+        const client = getClient(options);
+        expect(client.authOpt.sso).toBe(undefined);
       });
     });
   });
@@ -102,5 +137,26 @@ describe('Auth0APIClient', () => {
         assertCallWithCallback(loginWithCredentialsMock, callback);
       });
     });
+  });
+  it('passwordlessStart should call client.passwordlessStart', () => {
+    const client = getClient({});
+    client.passwordlessStart({ foo: 'bar' }, () => {});
+    const { mock } = client.client.passwordlessStart;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('passwordlessVerify should call client.passwordlessLogin', () => {
+    const client = getClient({});
+    client.passwordlessVerify({ foo: 'bar' }, () => {});
+    const { mock } = client.client.passwordlessLogin;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('getUserCountry should call getUserCountry', () => {
+    const client = getClient({});
+    client.getUserCountry('cb');
+    const { mock } = client.client.client.getUserCountry;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
   });
 });

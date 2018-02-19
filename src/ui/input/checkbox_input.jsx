@@ -13,7 +13,7 @@ export default class CheckboxInput extends React.Component {
             onChange={::this.handleOnChange}
             name={name}
           />
-          <span>{placeholder}</span>
+          <span dangerouslySetInnerHTML={{ __html: placeholder }} />
         </label>
       </div>
     );

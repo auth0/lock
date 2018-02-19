@@ -95,10 +95,6 @@ function formatClientConnections(o) {
     const strategy = o.strategies[i];
     const connectionType = strategyNameToConnectionType(strategy.name);
 
-    if (connectionType === 'passwordless') {
-      continue; // disabled until lock supports passwordless connections within the same engine
-    }
-
     const connections = strategy.connections.map(connection => {
       return formatClientConnection(connectionType, strategy.name, connection);
     });

@@ -23,3 +23,15 @@ exports[`GlobalMessage renders correctly given an error type 1`] = `
   </span>
 </div>
 `;
+
+exports[`GlobalMessage renders correctly given an info type 1`] = `
+<div
+  className="auth0-global-message auth0-global-message-info"
+>
+  <span
+    className="animated fadeInUp"
+  >
+    Some additional information.
+  </span>
+</div>
+`;

@@ -94,7 +94,7 @@ export function normalizeError(error) {
       description: error.description
     };
   }
-  if (error.error === 'access_denied') {
+  if (error.error === 'access_denied' || error.code === 'access_denied') {
     return {
       code: 'invalid_user_password',
       error: 'invalid_user_password',
