@@ -22,6 +22,12 @@ class SubmitButton extends React.Component {
       l.emitEvent(model, 'signin submit');
     } else if (screenName === 'forgotPassword') {
       l.emitEvent(model, 'forgot_password submit');
+    } else if (screenName === 'socialOrEmail') {
+      l.emitEvent(model, 'socialOrEmail submit');
+    } else if (screenName === 'socialOrPhoneNumber') {
+      l.emitEvent(model, 'socialOrPhoneNumber submit');
+    } else if (screenName === 'vcode') {
+      l.emitEvent(model, 'vcode submit');
     }
 
     if (this.props.onSubmit) {
@@ -186,6 +192,7 @@ export default class Chrome extends React.Component {
       contentProps,
       disableSubmitButton,
       error,
+      info,
       isSubmitting,
       logo,
       primaryColor,
@@ -245,6 +252,14 @@ export default class Chrome extends React.Component {
         scrollIntoView={scrollGlobalMessagesIntoView}
       />
     ) : null;
+    const globalInfo = info ? (
+      <GlobalMessage
+        key="global-info"
+        message={wrapGlobalMessage(info)}
+        type="info"
+        scrollIntoView={scrollGlobalMessagesIntoView}
+      />
+    ) : null;
 
     const Content = contentComponent;
 
@@ -267,6 +282,7 @@ export default class Chrome extends React.Component {
             <div>
               {globalSuccess}
               {globalError}
+              {globalInfo}
             </div>
           </CSSTransition>
         </TransitionGroup>
@@ -331,6 +347,7 @@ Chrome.propTypes = {
   contentProps: PropTypes.object.isRequired,
   disableSubmitButton: PropTypes.bool.isRequired,
   error: PropTypes.node,
+  info: PropTypes.node,
   isSubmitting: PropTypes.bool.isRequired,
   logo: PropTypes.string.isRequired,
   primaryColor: PropTypes.string.isRequired,

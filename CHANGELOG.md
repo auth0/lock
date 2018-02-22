@@ -1,5 +1,69 @@
 # Change Log
 
+## [v11.2.3](https://github.com/auth0/lock/tree/v11.2.3) (2018-02-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.2...v11.2.3)
+
+
+**Fixed**
+- Fixing Auth0LockPasswordless export [\#1259](https://github.com/auth0/lock/pull/1259) ([luisrudge](https://github.com/luisrudge))
+- Fix sso warning [\#1258](https://github.com/auth0/lock/pull/1258) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.2.2](https://github.com/auth0/lock/tree/v11.2.2) (2018-02-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.1...v11.2.2)
+
+
+**Fixed**
+- Upgrade a0js to fix popup mode with passwordless [\#1251](https://github.com/auth0/lock/pull/1251) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.2.1](https://github.com/auth0/lock/tree/v11.2.1) (2018-02-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.0...v11.2.1)
+
+
+**Fixed**
+- DIsable HRD check for passwordless connections [\#1248](https://github.com/auth0/lock/pull/1248) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.2.0](https://github.com/auth0/lock/tree/v11.2.0) (2018-02-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.3...v11.2.0)
+
+
+**Changed**
+- call /ssodata when inside the universal login page [\#1245](https://github.com/auth0/lock/pull/1245) ([luisrudge](https://github.com/luisrudge))
+- Handling embedded and universal login in the same client [\#1243](https://github.com/auth0/lock/pull/1243) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.1.3](https://github.com/auth0/lock/tree/v11.1.3) (2018-01-29)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.2...v11.1.3)
+
+**Changed**
+- Update auth0.js [auth0.js changelog](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v913-2018-01-29)
+
+
+
+## [v11.1.2](https://github.com/auth0/lock/tree/v11.1.2) (2018-01-26)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.1...v11.1.2)
+
+**Changed**
+- Update auth0.js [auth0.js changelog](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v912-2018-01-26)
+
+
+## [v11.1.1](https://github.com/auth0/lock/tree/v11.1.1) (2018-01-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.0...v11.1.1)
+
+**Changed**
+- Update auth0.js [auth0.js changelog](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v911-2018-01-24)
+
+
+## [v11.1.0](https://github.com/auth0/lock/tree/v11.1.0) (2018-01-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.0.1...v11.1.0)
+
+
+**Changed**
+- Update auth0.js [\#1225](https://github.com/auth0/lock/pull/1225) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.0.0](https://github.com/auth0/lock/tree/v11.0.0) (2017-12-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v11.0.0)
 

@@ -10,7 +10,7 @@ import sync from '../../sync';
 export function initPasswordless(m, opts) {
   // TODO: validate opts
 
-  const send = typeof opts.sendCode === 'boolean' && opts.sendCode ? 'code' : 'link';
+  const send = opts.passwordlessMethod === 'link' ? 'link' : 'code';
 
   m = initNS(m, Map({ send: send }));
   if (opts.defaultLocation && typeof opts.defaultLocation === 'string') {

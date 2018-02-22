@@ -30,7 +30,7 @@ export default class GlobalMessage extends React.Component {
 
 GlobalMessage.propTypes = {
   message: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['error', 'success']).isRequired,
+  type: PropTypes.oneOf(['error', 'success', 'info']).isRequired,
   scrollIntoView: PropTypes.bool
 };
 

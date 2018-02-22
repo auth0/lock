@@ -14,13 +14,21 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/11.0.1/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.2.3/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
 
 ```sh
 npm install auth0-lock
+```
+
+Then you can import `Auth0Lock` or `Auth0LockPasswordless` like this:
+
+```js
+import Auth0Lock from 'auth0-lock';
+import { Auth0Lock } from 'auth0-lock';
+import { Auth0LockPasswordless } from 'auth0-lock';
 ```
 
 After installing the `auth0-lock` module, you'll need bundle it up along with all of its dependencies. See examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
@@ -41,7 +49,7 @@ Lock uses **Cross-Origin Authentication**, make sure you understand the consider
 
 ### new Auth0Lock(clientID, domain, options)
 
-Initializes a new instance of `Auth0Lock` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/). You can find this information at your [application settings](https://manage.auth0.com/#/applications).
+Initializes a new instance of `Auth0Lock` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/). You can find this information in your [application settings](https://manage.auth0.com/#/applications).
 
 - **clientId {String}**: Your application _clientId_ in Auth0.
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
@@ -53,6 +61,36 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0Lock(clientId, domain);
+
+lock.on("authenticated", function(authResult) {
+  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+    if (error) {
+      // Handle error
+      return;
+    }
+
+    localStorage.setItem("accessToken", authResult.accessToken);
+    localStorage.setItem("profile", JSON.stringify(profile));
+
+    // Update DOM
+  });
+});
+```
+
+### new Auth0LockPasswordless(clientID, domain, options)
+
+Initializes a new instance of `Auth0LockPasswordless` configured with your application `clientID` and your account's `domain` at [Auth0](https://manage.auth0.com/). You can find this information in your [application settings](https://manage.auth0.com/#/applications).
+
+- **clientId {String}**: Your application _clientId_ in Auth0.
+- **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
+- **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
+
+#### Example
+
+```js
+var clientId = "YOUR_AUTH0_APP_CLIENTID";
+var domain = "YOUR_DOMAIN_AT.auth0.com";
+var lock = new Auth0LockPasswordless(clientId, domain);
 
 lock.on("authenticated", function(authResult) {
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
@@ -180,7 +218,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **allowedConnections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.
-- **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](http://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
+- **avatar {Object}**: Determines whether or not an avatar and a user name should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](https://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **language {String}**: Specifies the language of the widget. Defaults to `"en"`. Supported languages are:
   - `de`: German
@@ -220,7 +258,7 @@ var options = {
         displayName: "...", 
         primaryColor: "...", 
         foregroundColor: "...", 
-        icon: "http://.../logo.png"
+        icon: "https://.../logo.png"
       }
     }
   }
@@ -234,7 +272,7 @@ var options = {
   + **displayName {String}**: The name to show instead of the connection name.
   + **primaryColor {String}**: The button's background color. Defaults to `"#eb5424"`.
   + **foregroundColor {String}**: The button's text color. Defaults to `"#FFFFFF"`.
-  + **icon {String}**: The icon's url for the connection. For example:`"http://site.com/logo.png"`.
+  + **icon {String}**: The icon's url for the connection. For example:`"https://site.com/logo.png"`.
 
 #### Authentication options
 
@@ -243,14 +281,16 @@ Authentication options are grouped in the `auth` property of the `options` objec
 ```js
 var options = {
   auth: {
-   params: {param1: "value1"},
+   params: {
+    param1: "value1",
+    scope: "openid profile email"
+   },
    autoParseHash: true,
    redirect: true,
    redirectUrl: "some url",
    responseMode: "form_post",
    responseType: "token",
    sso: true,
-   scope: "openid profile email",
    connectionScopes: {
     connectionName: [ 'scope1', 'scope2' ]
    }
@@ -311,7 +351,7 @@ var options = {
 - **configurationBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
 - **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
 - **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback url after the user authentication. Defaults to `true`.
-- **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context` and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the username/email input's `onBlur` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a github [issue](https://github.com/auth0/lock/issues/new).**
+- **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context` and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a github [issue](https://github.com/auth0/lock/issues/new).**
 
 ```js
 var options = {
@@ -494,9 +534,9 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [circleci-url]: https://circleci.com/gh/auth0/lock/tree/master
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/auth0-lock
-[license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
+[license-image]: https://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
 [license-url]: #license
-[downloads-image]: http://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
+[downloads-image]: https://img.shields.io/npm/dm/auth0-lock.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/auth0-lock
 [david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock

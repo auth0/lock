@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 import { read, getEntity, swap, updateEntity } from '../../store/index';
-import { closeLock, logIn as coreLogIn, validateAndSubmit } from '../../core/actions';
+import { closeLock, logIn as coreLogIn, validateAndSubmit, logInSuccess } from '../../core/actions';
 import webApi from '../../core/web_api';
 import * as c from '../../field/index';
 import * as l from '../../core/index';
@@ -17,19 +17,7 @@ import {
 import { phoneNumberWithDiallingCode } from '../../field/phone_number';
 import * as i18n from '../../i18n';
 
-export function requestPasswordlessEmail(id) {
-  validateAndSubmit(id, ['email'], m => {
-    sendEmail(m, requestPasswordlessEmailSuccess, requestPasswordlessEmailError);
-  });
-}
-
-export function requestPasswordlessEmailSuccess(id) {
-  swap(updateEntity, 'lock', id, lock => {
-    return setPasswordlessStarted(l.setSubmitting(lock, false), true);
-  });
-}
-
-function startPasswordlessErrorMessage(m, error, medium) {
+function getErrorMessage(m, error) {
   let key = error.error;
 
   if (
@@ -45,9 +33,22 @@ function startPasswordlessErrorMessage(m, error, medium) {
   );
 }
 
+export function requestPasswordlessEmail(id) {
+  validateAndSubmit(id, ['email'], m => {
+    sendEmail(m, requestPasswordlessEmailSuccess, requestPasswordlessEmailError);
+  });
+}
+
+export function requestPasswordlessEmailSuccess(id) {
+  swap(updateEntity, 'lock', id, m => {
+    m = l.setSubmitting(m, false);
+    return setPasswordlessStarted(m, true);
+  });
+}
+
 export function requestPasswordlessEmailError(id, error) {
   const m = read(getEntity, 'lock', id);
-  const errorMessage = startPasswordlessErrorMessage(m, error, 'email');
+  const errorMessage = getErrorMessage(m, error);
   return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
 }
 
@@ -67,6 +68,7 @@ function resendEmailError(id, error) {
 
 function sendEmail(m, successFn, errorFn) {
   const params = {
+    connection: 'email',
     email: c.getFieldValue(m, 'email'),
     send: send(m)
   };
@@ -86,7 +88,11 @@ function sendEmail(m, successFn, errorFn) {
 
 export function sendSMS(id) {
   validateAndSubmit(id, ['phoneNumber'], m => {
-    const params = { phoneNumber: phoneNumberWithDiallingCode(m) };
+    const params = {
+      connection: 'sms',
+      phoneNumber: phoneNumberWithDiallingCode(m),
+      send: send(m)
+    };
     webApi.startPasswordless(id, params, error => {
       if (error) {
         setTimeout(() => sendSMSError(id, error), 250);
@@ -97,7 +103,7 @@ export function sendSMS(id) {
   });
 }
 
-export function sendSMSSuccess(id) {
+function sendSMSSuccess(id) {
   swap(updateEntity, 'lock', id, m => {
     m = l.setSubmitting(m, false);
     m = setPasswordlessStarted(m, true);
@@ -105,22 +111,40 @@ export function sendSMSSuccess(id) {
   });
 }
 
-export function sendSMSError(id, error) {
+function sendSMSError(id, error) {
   const m = read(getEntity, 'lock', id);
-  const errorMessage = startPasswordlessErrorMessage(m, error, 'sms');
+  const errorMessage = getErrorMessage(m, error);
   return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
 }
 
 export function logIn(id) {
   const m = read(getEntity, 'lock', id);
-  const params = { passcode: c.getFieldValue(m, 'vcode') };
+  const authParams = l.auth.params(m).toJS();
+  const params = {
+    verificationCode: c.getFieldValue(m, 'vcode'),
+    ...authParams
+  };
   if (isEmail(m)) {
+    params.connection = 'email';
     params.email = c.getFieldValue(m, 'email');
   } else {
+    params.connection = 'sms';
     params.phoneNumber = phoneNumberWithDiallingCode(m);
   }
-
-  coreLogIn(id, ['vcode'], params);
+  swap(updateEntity, 'lock', id, l.setSubmitting, true);
+  webApi.passwordlessVerify(id, params, (error, result) => {
+    let errorMessage;
+    if (error) {
+      const m = read(getEntity, 'lock', id);
+      errorMessage = getErrorMessage(m, error);
+      if (error.logToConsole) {
+        console.error(error.description);
+      }
+      return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+    } else {
+      return logInSuccess(id, result);
+    }
+  });
 }
 
 export function restart(id) {

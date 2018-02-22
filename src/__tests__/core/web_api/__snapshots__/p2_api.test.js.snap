@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Auth0APIClient getUserCountry should call getUserCountry 1`] = `
+Array [
+  "cb",
+]
+`;
+
+exports[`Auth0APIClient init with overrides forwards options to WebAuth 1`] = `
+Object {
+  "_sendTelemetry": true,
+  "_telemetryInfo": Object {},
+  "audience": "foo",
+  "clientID": "cid",
+  "domain": "me.auth0.com",
+  "leeway": 60,
+  "overrides": Object {
+    "__tenant": "tenant1",
+    "__token_issuer": "issuer1",
+  },
+  "plugins": Array [
+    Object {
+      "name": "ExamplePlugin",
+    },
+  ],
+  "redirectUri": "//localhost:8080/login/callback",
+  "responseMode": "query",
+  "responseType": "code",
+}
+`;
+
 exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
 Object {
   "nonce": undefined,
@@ -38,4 +67,23 @@ Object {
   "owp": true,
   "state": undefined,
 }
+`;
+
+exports[`Auth0APIClient passwordlessStart should call client.passwordlessStart 1`] = `
+Array [
+  Object {
+    "foo": "bar",
+  },
+  [Function],
+]
+`;
+
+exports[`Auth0APIClient passwordlessVerify should call client.passwordlessLogin 1`] = `
+Array [
+  Object {
+    "foo": "bar",
+    "popup": true,
+  },
+  [Function],
+]
 `;
