@@ -8,6 +8,8 @@
 - Fix Lock Passwordless feature parity (events and quick auth screen) [\#1267](https://github.com/auth0/lock/pull/1267) ([luisrudge](https://github.com/luisrudge))
 - Removing legacy COA mapping + fixing access_denied mapping [\#1266](https://github.com/auth0/lock/pull/1266) ([luisrudge](https://github.com/luisrudge))
 - Only call getSSOData when rememberLastLogin is true [\#1265](https://github.com/auth0/lock/pull/1265) ([luisrudge](https://github.com/luisrudge))
+- Upgrade auth0-js to 9.3.0. See auth0-js' changelog [here](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v930-2018-02-22).
+
 
 
 ## [v11.2.3](https://github.com/auth0/lock/tree/v11.2.3) (2018-02-08)
