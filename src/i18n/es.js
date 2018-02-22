@@ -22,7 +22,7 @@ export default {
       too_many_attempts:
         'Su cuenta ha sido bloqueada luego de múltiples intentos de inicio de sesión consecutivos.',
       'lock.mfa_registration_required':
-        'Se requiere autenticación multifactor pero su dispositivo no está registrado. Por favor inscríbalo antes de continuar.',
+        'Se requiere autenticación de dos factores. Por favor registre su dispositivo antes de continuar.',
       'lock.mfa_invalid_code': 'Código incorrecto. Por favor vuelva a intentarlo.',
       session_missing:
         'No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente.',
@@ -62,7 +62,7 @@ export default {
   forgotPasswordTitle: 'Restablecer contraseña',
   forgotPasswordAction: '¿Olvidó su contraseña?',
   forgotPasswordInstructions:
-    'Por favor escriba su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.',
+    'Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.',
   forgotPasswordSubmitLabel: 'Enviar email',
   invalidErrorHint: 'Inválido',
   lastLoginInstructions: 'La última vez inició sesión con',
