@@ -21,6 +21,7 @@ export const STRATEGIES = {
   ad: 'AD / LDAP',
   adfs: 'ADFS',
   'auth0-adldap': 'AD/LDAP',
+  'auth0-oidc': 'Auth0 OpenID Connect',
   custom: 'Custom Auth',
   'google-apps': 'Google Apps',
   ip: 'IP Address',
