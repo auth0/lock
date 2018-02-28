@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         "S'han exhaurit els intents per restablir la contrasenya. Espereu una estona i intenteu-ho de nou.",
-      'lock.fallback': 'Hi ha hagut un error en canviar la contrasenya.'
+      'lock.fallback': 'Hi ha hagut un error en canviar la contrasenya.',
+      enterprise_email:
+        "El domini del vostre correu electrònic forma part d'un proveïdor d'identitat empresarial. Per restablir la contrasenya, consulteu l'administrador de seguretat."
     },
     login: {
       blocked_user: "L'usuari està bloquejat.",

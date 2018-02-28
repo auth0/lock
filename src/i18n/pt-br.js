@@ -3,7 +3,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Você atingiu o limite máximo de tentativas. Por favor aguarde antes de tentar novamente.',
-      'lock.fallback': 'Sentimos muito, mas algo deu errado ao requisitar a mudança de senha.'
+      'lock.fallback': 'Sentimos muito, mas algo deu errado ao requisitar a mudança de senha.',
+      enterprise_email:
+        "O domínio do seu e-mail faz parte de um provedor de identidade 'Enterprise'. Para redefinir sua senha, consulte seu administrador de segurança."
     },
     login: {
       blocked_user: 'O usuário está bloqueado.',
@@ -12,7 +14,8 @@ export default {
       'lock.invalid_code': 'Código inválido.',
       'lock.invalid_email_password': 'Email ou senha inválidos.',
       'lock.invalid_username_password': 'Usuário ou senha inválidos.',
-      'lock.network': 'Não foi possível acessar o servidor. Por favor verifique sua conexão e tente novamente.',
+      'lock.network':
+        'Não foi possível acessar o servidor. Por favor verifique sua conexão e tente novamente.',
       'lock.popup_closed': 'Popup fechada. Tente novamente.',
       'lock.unauthorized': 'Permissões não foram concedidas. Tente novamente.',
       password_change_required:

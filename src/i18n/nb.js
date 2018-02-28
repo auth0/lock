@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Du er midlertidig blokkert på grunn av for mange passord-endringsforsøk. Vent litt før du prøver igjen.',
-      'lock.fallback': 'Beklager, noe gikk galt med forespørselen om passord endring.'
+      'lock.fallback': 'Beklager, noe gikk galt med forespørselen om passord endring.',
+      enterprise_email:
+        'E-postdomenet ditt er en del av en Enterprise Identity-leverandør. For å tilbakestille passordet, vennligst se din sikkerhetsadministrator.'
     },
     login: {
       blocked_user: 'Brukeren er blokkert.',

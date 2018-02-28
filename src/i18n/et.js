@@ -1,9 +1,14 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
       too_many_requests:
         'Sa oled liiga palju kordi üritanud salasõna vahetada. Palun oota enne uuesti proovimist.',
-      'lock.fallback': 'Vabandame, midagi läks salasõna vahetamise sooviga valesti.'
+      'lock.fallback': 'Vabandame, midagi läks salasõna vahetamise sooviga valesti.',
+      enterprise_email:
+        'Teie e-posti domeen kuulub ettevõtte identiteedi pakkuja juurde. Parooli lähtestamiseks lugege oma turvameedet.'
     },
     login: {
       blocked_user: 'Kasutaja on blokeeritud.',
@@ -19,7 +24,7 @@ export default {
         'Mitmetasemeline autentimine on nõutud aga sinu seade ei ole nimekirja lisatud. Palun lisa ta nimekirja.',
       'lock.mfa_invalid_code': 'Vale kood. Palun proovi uuesti.',
       password_change_required:
-        'Parooli vahetamine on kohustuslik, sest sa logid sisse esimest korda või parool on aegunud.', // TODO: verify error code
+        'Parooli vahetamine on kohustuslik, sest sa logid sisse esimest korda või parool on aegunud.',
       password_leaked:
         'Me oleme avastanud võimaliku turvariski selle kontoga. Sinu konto kaitsmises oleme selle sisselogimise blokeerinud. Sulle saadeti e-mail kuidas blokeering maha võtta.',
       too_many_attempts: 'Sinu konto blokeeriti peale mitut ebaõnnestunud sisselogimiskatset.',
@@ -43,7 +48,6 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'Täname, et sisse logisid.',
     forgotPassword: 'Me saatsime sulle e-maili, et oma salasõna taastada.',
     magicLink: 'Me saatsime sisselogimise lingi aadressile:<br />%s.',

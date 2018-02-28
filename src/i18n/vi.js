@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Bạn đã sử dụng tối đa số lần đổi mật khẩu được cho phép. Vui lòng thử lại sau.',
-      'lock.fallback': 'Đã có lỗi xảy ra trong lúc thay đổi mật khẩu, chúng tôi rất lấy làm tiếc.'
+      'lock.fallback': 'Đã có lỗi xảy ra trong lúc thay đổi mật khẩu, chúng tôi rất lấy làm tiếc.',
+      enterprise_email:
+        'Tên miền email của bạn là một phần của một nhà cung cấp nhận dạng doanh nghiệp. Để đặt lại mật khẩu của bạn, vui lòng xem quản trị viên bảo mật của bạn.'
     },
     login: {
       blocked_user: 'Tài khoản đã bị khóa.',

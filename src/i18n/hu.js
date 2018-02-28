@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Elérted a jelszóváltoztatási probálkozások engedélyezett számát. Kérlek, várj egy kicsit mielőtt újrapróbálnád!',
-      'lock.fallback': 'Sajnáljuk, valami hiba történt a jelszóváltoztatás során.'
+      'lock.fallback': 'Sajnáljuk, valami hiba történt a jelszóváltoztatás során.',
+      enterprise_email:
+        'Az e-mail domainje egy Enterprise azonosító szolgáltató része. A jelszó visszaállításához kérjük, olvassa el a biztonsági adminisztrátort.'
     },
     login: {
       blocked_user: 'A felhasználó nincsen engedélyezve.',

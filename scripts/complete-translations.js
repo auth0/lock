@@ -44,7 +44,9 @@ const translateKey = async (toTranslate, lang) => {
     .set('Content-Type', 'application/json')
     .query({ tl: lang })
     .query({ q: escapeWildCards(toTranslate) });
-  return restoreWildCards(result.body[0][0][0]);
+  const phrases = result.body[0].map(p => p[0]);
+  const singlePhrase = phrases.join('');
+  return restoreWildCards(singlePhrase);
 };
 
 const run = async () => {
