@@ -31,6 +31,7 @@ Object {
 
 exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
 Object {
+  "cordova": false,
   "nonce": undefined,
   "realm": undefined,
   "state": undefined,
@@ -38,8 +39,21 @@ Object {
 }
 `;
 
+exports[`Auth0APIClient logIn with credentials should call loginWithResourceOwner when redirect is false and sso is true 1`] = `
+Array [
+  Object {
+    "cordova": true,
+    "nonce": undefined,
+    "state": undefined,
+    "username": "foo",
+  },
+  [Function],
+]
+`;
+
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is false 1`] = `
 Object {
+  "cordova": false,
   "nonce": undefined,
   "state": undefined,
   "username": "foo",
@@ -48,6 +62,7 @@ Object {
 
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is true 1`] = `
 Object {
+  "cordova": false,
   "nonce": undefined,
   "state": undefined,
   "username": "foo",
@@ -56,6 +71,7 @@ Object {
 
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
 Object {
+  "cordova": false,
   "nonce": undefined,
   "state": undefined,
 }
@@ -63,6 +79,7 @@ Object {
 
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call popup.authorize when redirect===false 1`] = `
 Object {
+  "cordova": false,
   "nonce": undefined,
   "owp": true,
   "state": undefined,
