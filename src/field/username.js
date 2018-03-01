@@ -35,7 +35,12 @@ export function getUsernameValidation(m) {
   return usernameValidation ? usernameValidation.toJS() : null;
 }
 
-export function setUsername(m, str, usernameStyle = 'username', validateUsernameFormat = true) {
+export function setUsername(
+  m,
+  str = '',
+  usernameStyle = 'username',
+  validateUsernameFormat = true
+) {
   const usernameValidation = validateUsernameFormat ? getUsernameValidation(m) : null;
 
   const validator = value => {
@@ -51,7 +56,7 @@ export function setUsername(m, str, usernameStyle = 'username', validateUsername
     }
   };
 
-  return setField(m, 'username', str, validator);
+  return setField(m, 'username', str.replace(/\s/g, ''), validator);
 }
 
 export function usernameLooksLikeEmail(str) {
