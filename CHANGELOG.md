@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.3.1](https://github.com/auth0/lock/tree/v11.3.1) (2018-02-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.3.0...v11.3.1)
+
+
+**Fixed**
+- Add enterprise mapping to the auth0-oidc strategy [\#1275](https://github.com/auth0/lock/pull/1275) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.3.0](https://github.com/auth0/lock/tree/v11.3.0) (2018-02-22)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.2.3...v11.3.0)
 
