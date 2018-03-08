@@ -15,7 +15,7 @@ export function isEmail(str) {
   return !!result && result[0] !== null;
 }
 
-export function setEmail(m, str = '') {
+export function setEmail(m, str) {
   return setField(m, 'email', str.trim(), str => {
     const validHRDEMail = isHRDEmailValid(m, str);
 

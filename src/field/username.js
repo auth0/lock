@@ -35,12 +35,7 @@ export function getUsernameValidation(m) {
   return usernameValidation ? usernameValidation.toJS() : null;
 }
 
-export function setUsername(
-  m,
-  str = '',
-  usernameStyle = 'username',
-  validateUsernameFormat = true
-) {
+export function setUsername(m, str, usernameStyle = 'username', validateUsernameFormat = true) {
   const usernameValidation = validateUsernameFormat ? getUsernameValidation(m) : null;
 
   const validator = value => {
