@@ -7,7 +7,9 @@ export default {
       too_many_requests:
         'Olet yrittänyt vaihtaa salasanaa liian monta kertaa. Ole hyvä ja odota ennen kuin yrität uudelleen.',
       'lock.fallback':
-        'Olemme pahoillamme, mutta jotain meni vikaan kun salasanaa yritettiin vaihtaa.'
+        'Olemme pahoillamme, mutta jotain meni vikaan kun salasanaa yritettiin vaihtaa.',
+      enterprise_email:
+        'Sähköpostisi verkkotunnus on osa yrityspalvelun tarjoajaa. Voit palauttaa salasanasi turva-järjestelmänvalvojalta.'
     },
     login: {
       blocked_user: 'Käyttäjä on estetty.',

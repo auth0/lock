@@ -3,7 +3,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Se ha alcanzado el límite de intentos para restablecer su contraseña. Por favor, aguarde unos minutos.',
-      'lock.fallback': 'Ocurrió un error al restablecer su contraseña.'
+      'lock.fallback': 'Ocurrió un error al restablecer su contraseña.',
+      enterprise_email:
+        'El dominio de su correo electrónico es parte de un proveedor de identidad Enterprise. Para restablecer su contraseña, consulte a su administrador de seguridad.'
     },
     login: {
       blocked_user: 'El usuario se encuentra bloqueado.',

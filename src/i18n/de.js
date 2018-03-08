@@ -3,7 +3,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Sie haben das Limit für die Rücksetzung des Passworts erreicht. Bitte warten Sie, bevor Sie es erneut versuchen.',
-      'lock.fallback': 'Beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.'
+      'lock.fallback': 'Beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.',
+      enterprise_email:
+        'Die Domain Ihrer E-Mail ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.'
     },
     login: {
       blocked_user: 'Der Benutzer wird blockiert.',

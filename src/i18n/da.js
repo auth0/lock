@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Du har nået grænsen for forsøg på at skifte adgangskode. Vent venligst før du prøver igen.',
-      'lock.fallback': 'Vi beklager, men der skete en fejl i forespørgslen efter ny adgangskode.'
+      'lock.fallback': 'Vi beklager, men der skete en fejl i forespørgslen efter ny adgangskode.',
+      enterprise_email:
+        'Dit e-mail-domæne er en del af en Enterprise Identity-udbyder. For at nulstille dit kodeord, se venligst din sikkerhedsadministrator.'
     },
     login: {
       blocked_user: 'Denne bruger er blokeret.',

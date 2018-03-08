@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Dosegli ste omejitev števila poskusov spremembe gesla. Pred ponovnim poskusom morate počakati.',
-      'lock.fallback': 'Žal je prišlo do napake pri zahtevi za spremembo gesla.'
+      'lock.fallback': 'Žal je prišlo do napake pri zahtevi za spremembo gesla.',
+      enterprise_email:
+        'Domena vašega e-poštnega naslova je del ponudnika identitete podjetja. Če želite ponastaviti geslo, obiščite svojega skrbnika za varnost.'
     },
     login: {
       blocked_user: 'Uporabnik je blokiran.',
@@ -112,7 +114,8 @@ export default {
   ssoEnabled: 'Omogočen posamezen vpis',
   submitLabel: 'Pošlji',
   unrecoverableError: 'Prišlo je do napake.<br />Obrnite se na tehnično pomoč.',
-  usernameFormatErrorHint: 'Uporabite lahko črke %d-%d, števila in naslednje znake: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Uporabite lahko črke %d-%d, števila in naslednje znake: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'vaše uporabniško ime',
   usernameOrEmailInputPlaceholder: 'uporabniško ime/e-pošta',
   title: 'Auth0',

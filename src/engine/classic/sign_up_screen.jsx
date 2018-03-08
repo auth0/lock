@@ -7,7 +7,9 @@ import { hasOnlyClassicConnections, isSSOEnabled, useBigSocialButtons } from '..
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
 import { renderOptionSelection } from '../../field/index';
-import { logIn as enterpriseLogIn } from '../../connection/enterprise/actions';
+import { logIn as enterpriseLogIn, startHRD } from '../../connection/enterprise/actions';
+import { databaseUsernameValue } from '../../connection/database/index';
+import { isHRDDomain } from '../../connection/enterprise';
 import * as l from '../../core/index';
 import * as i18n from '../../i18n';
 
@@ -85,6 +87,9 @@ export default class SignUp extends Screen {
 
   submitHandler(m) {
     if (hasOnlyClassicConnections(m, 'social')) return null;
+    if (isHRDDomain(m, databaseUsernameValue(m))) {
+      return id => startHRD(id, databaseUsernameValue(m));
+    }
     if (isSSOEnabled(m)) return enterpriseLogIn;
     return signUp;
   }
