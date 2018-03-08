@@ -36,11 +36,11 @@ export default class Screen {
   }
 
   getTitle(m) {
-    if (this.isFirstScreen(m)) {
-      return i18n.str(m, 'title');
+    //loading screen will never show a title
+    if (this.name === 'loading') {
+      return '';
     }
-
-    return this.getScreenTitle(m);
+    return this.getScreenTitle(m) || i18n.str(m, 'title');
   }
 
   getScreenTitle(m) {
