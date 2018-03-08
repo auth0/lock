@@ -4,7 +4,7 @@ exports[`field/email setEmail() trims email 1`] = `
 Array [
   Immutable.Map {},
   "email",
-  "email@te  st.com",
+  "email@test.com",
   [Function],
 ]
 `;

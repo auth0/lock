@@ -47,7 +47,7 @@ describe('field/username', () => {
   });
   describe('setUsername()', () => {
     it(`trims username`, () => {
-      username.setUsername(dbConnection, ' a-usern  ame ', 'username', true);
+      username.setUsername(dbConnection, ' a-username ', 'username', true);
       const { mock } = require('field/index').setField;
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
