@@ -46,7 +46,7 @@ describe('field/username', () => {
     });
   });
   describe('setUsername()', () => {
-    it(`removes spaces from username`, () => {
+    it(`trims username`, () => {
       username.setUsername(dbConnection, ' a-usern  ame ', 'username', true);
       const { mock } = require('field/index').setField;
       expect(mock.calls.length).toBe(1);

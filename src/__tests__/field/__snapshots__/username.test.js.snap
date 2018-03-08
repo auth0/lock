@@ -18,7 +18,7 @@ Array [
 ]
 `;
 
-exports[`field/username setUsername() removes spaces from username 1`] = `
+exports[`field/username setUsername() trims username 1`] = `
 Array [
   Immutable.Map {
     "validation": null,

@@ -12,7 +12,7 @@ describe('field/email', () => {
     email = require('field/email');
   });
   describe('setEmail()', () => {
-    it(`removes spaces`, () => {
+    it(`trims email`, () => {
       email.setEmail(Immutable.fromJS({}), ' email@te  st.com ');
       const { mock } = require('field/index').setField;
       expect(mock.calls.length).toBe(1);

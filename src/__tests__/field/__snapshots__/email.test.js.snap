@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`field/email setEmail() removes spaces 1`] = `
+exports[`field/email setEmail() trims email 1`] = `
 Array [
   Immutable.Map {},
   "email",
