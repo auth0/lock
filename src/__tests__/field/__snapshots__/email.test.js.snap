@@ -4,7 +4,7 @@ exports[`field/email setEmail() removes spaces 1`] = `
 Array [
   Immutable.Map {},
   "email",
-  "email@test.com",
+  "email@te  st.com",
   [Function],
 ]
 `;

@@ -56,7 +56,7 @@ export function setUsername(
     }
   };
 
-  return setField(m, 'username', str.replace(/\s/g, ''), validator);
+  return setField(m, 'username', str.trim(), validator);
 }
 
 export function usernameLooksLikeEmail(str) {
