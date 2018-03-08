@@ -17,3 +17,14 @@ Array [
   [Function],
 ]
 `;
+
+exports[`field/username setUsername() trims username 1`] = `
+Array [
+  Immutable.Map {
+    "validation": null,
+  },
+  "username",
+  "a-username",
+  [Function],
+]
+`;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`field/email setEmail() trims email 1`] = `
+Array [
+  Immutable.Map {},
+  "email",
+  "email@test.com",
+  [Function],
+]
+`;

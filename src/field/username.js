@@ -51,7 +51,7 @@ export function setUsername(m, str, usernameStyle = 'username', validateUsername
     }
   };
 
-  return setField(m, 'username', str, validator);
+  return setField(m, 'username', str.trim(), validator);
 }
 
 export function usernameLooksLikeEmail(str) {
