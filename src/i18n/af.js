@@ -5,7 +5,9 @@ export default {
   error: {
     forgotPassword: {
       too_many_requests: 'Jammer, jy het limiet bereik. Probeer asseblief weer later.',
-      'lock.fallback': 'Jammer, iets het verkeerd gegaan terwyl jy wagwoord verander het.'
+      'lock.fallback': 'Jammer, iets het verkeerd gegaan terwyl jy wagwoord verander het.',
+      enterprise_email:
+        "Jou e-pos se domein is deel van 'n Enterprise Identity provider. Om u wagwoord terug te stel, raadpleeg asseblief u sekuriteitsadministrateur."
     },
     login: {
       blocked_user: 'Die gebruiker is geblok.',

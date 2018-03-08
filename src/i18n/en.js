@@ -3,7 +3,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'You have reached the limit on password change attempts. Please wait before trying again.',
-      'lock.fallback': "We're sorry, something went wrong when requesting the password change."
+      'lock.fallback': "We're sorry, something went wrong when requesting the password change.",
+      enterprise_email:
+        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator."
     },
     login: {
       blocked_user: 'The user is blocked.',

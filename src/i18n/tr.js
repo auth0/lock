@@ -7,7 +7,9 @@ export default {
       too_many_requests:
         'Şifre değiştirme deneme sayısında limite ulaştınız. Tekrar denemeden önce lütfen bekleyin.',
       'lock.fallback':
-        'Özür dileriz, şifre değiştirme isteğiniz gerçekleştirilirken bir hata oluştu.'
+        'Özür dileriz, şifre değiştirme isteğiniz gerçekleştirilirken bir hata oluştu.',
+      enterprise_email:
+        'E-postanızın alanı, bir Kurumsal kimlik sağlayıcısının parçasıdır. Parolanızı sıfırlamak için lütfen güvenlik yöneticinize başvurun.'
     },
     login: {
       blocked_user: 'Kullanıcı engellendi.',

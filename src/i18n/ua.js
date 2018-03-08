@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Ви досягли граничної кількості запитів на відновлення паролю. Будь ласка, почекайте перед повторною спробою.',
-      'lock.fallback': 'Йой! Виникла непередбачувана помилка. Перепрошуємо.'
+      'lock.fallback': 'Йой! Виникла непередбачувана помилка. Перепрошуємо.',
+      enterprise_email:
+        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator."
     },
     login: {
       blocked_user: 'Користувач заблокований.',

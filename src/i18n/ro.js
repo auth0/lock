@@ -1,9 +1,14 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
       too_many_requests:
         'Ai depășit limita de introducere a parolei. Avem rugămintea să aștepți până la următoarea încercare.',
-      'lock.fallback': 'Ne pare rău, a apărut o eroare în procesul de recuperare a parolei.'
+      'lock.fallback': 'Ne pare rău, a apărut o eroare în procesul de recuperare a parolei.',
+      enterprise_email:
+        'Domeniul e-mailului dvs. face parte dintr-un furnizor de identitate de tip Enterprise. Pentru a reseta parola, consultați administratorul de securitate.'
     },
     login: {
       blocked_user: 'Utilizatorul este blocat.',
@@ -87,8 +92,7 @@ export default {
   passwordlessEmailAlternativeInstructions:
     'Dacă nu, introdu adresa de email pentru conectare<br/>sau creează un cont.',
   passwordlessEmailCodeInstructions: 'Un email cu codul a fost trimis la %s.',
-  passwordlessEmailInstructions:
-    'Introdu adresa de email pentru conectare<br/>sau creează un cont',
+  passwordlessEmailInstructions: 'Introdu adresa de email pentru conectare<br/>sau creează un cont',
   passwordlessSMSAlternativeInstructions:
     ' Dacă nu, introdu un număr de telefon pentru conectare <br/>sau creează un cont',
   passwordlessSMSCodeInstructions: 'Un SMS cu codul de acces a fost trimis la<br/>la %s.',
@@ -122,8 +126,7 @@ export default {
   windowsAuthLabel: 'Autentificare Windows ',
   mfaInputPlaceholder: 'Cod',
   mfaLoginTitle: 'Verificare în doi pași',
-  mfaLoginInstructions:
-    'Te rugăm să introduci codul de autentificare generat de aplicația mobilă.',
+  mfaLoginInstructions: 'Te rugăm să introduci codul de autentificare generat de aplicația mobilă.',
   mfaSubmitLabel: 'Conectare',
   mfaCodeErrorHint: 'Utilizează %d cifre'
 };

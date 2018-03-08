@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Prekročili ste limit pokusov o zmenu hesla. Prosím počkajte pred ďalším pokusom.',
-      'lock.fallback': 'Prepáčte, zmena hesla nebola úspešná.'
+      'lock.fallback': 'Prepáčte, zmena hesla nebola úspešná.',
+      enterprise_email:
+        'Doména vášho e-mailu je súčasťou poskytovateľa Enterprise Identity. Ak chcete obnoviť svoje heslo, navštívte správcu zabezpečenia.'
     },
     login: {
       blocked_user: 'Užívateľ je blokovaný.',

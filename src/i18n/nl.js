@@ -7,7 +7,9 @@ export default {
       too_many_requests:
         'U heeft de limiet van wachtwoord aanpassings pogingen bereikt. Wacht even voor dat u het nog een keer probeert.',
       'lock.fallback':
-        'Onze excuses, er is iets fout gegaan bij de de aanvraag voor een wachtwoord aanpassing.'
+        'Onze excuses, er is iets fout gegaan bij de de aanvraag voor een wachtwoord aanpassing.',
+      enterprise_email:
+        'Het domein van uw e-mail maakt deel uit van een Enterprise-identiteitsprovider. Raadpleeg uw beveiligingsbeheerder om uw wachtwoord opnieuw in te stellen.'
     },
     login: {
       blocked_user: 'De gebruiker is geblokkeerd.',

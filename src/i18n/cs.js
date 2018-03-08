@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Dosáhl jsi limitu pro počet pokusů o změnu hesla. Prosím počkej před dalším pokusem.',
-      'lock.fallback': 'Je nám líto, ale něco se pokazilo při změně hesla.'
+      'lock.fallback': 'Je nám líto, ale něco se pokazilo při změně hesla.',
+      enterprise_email:
+        'Doména vašeho e-mailu je součástí poskytovatele podnikové identity. Chcete-li obnovit heslo, obraťte se na správce zabezpečení.'
     },
     login: {
       blocked_user: 'Uživatel je blokován.',
@@ -26,8 +28,7 @@ export default {
         'Je třeba aktualizovat heslo, neboť jde o první přihlášení; mohla také vypršet platnost hesla.',
       password_leaked:
         'Zablokovali jsme uživatelský účet, protože došlo k možnému úniku hesla na jiné webové stránce. Poslali jsme instrukce k odblokování na email.',
-      too_many_attempts:
-        'Účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.',
+      too_many_attempts: 'Účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.',
       session_missing:
         'Nemohl jsem dokončit váš požadavek na ověření. Zkus to znovu po zavření všech otevřených dialogových oken.',
       'hrd.not_matching_email': 'Prosím, použijte pro přihlášení firemní e-mail.'
@@ -123,5 +124,5 @@ export default {
   mfaLoginTitle: 'Dvoufázové ověření',
   mfaLoginInstructions: 'Prosím zadej ověřovací kód vygenerovaný mobilní aplikací.',
   mfaSubmitLabel: 'Přihlásit',
-  mfaCodeErrorHint: 'Použijte %d číslic',
+  mfaCodeErrorHint: 'Použijte %d číslic'
 };

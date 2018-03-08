@@ -5,7 +5,8 @@ export default {
   error: {
     forgotPassword: {
       too_many_requests: '비밀번호 변경 요청 횟수가 제한을 초과하였습니다. 시간을 두고 나중에 다시 시도해 주세요.',
-      'lock.fallback': '죄송합니다. 특정 오류로 인해 비밀번호 변경에 실패하였습니다.'
+      'lock.fallback': '죄송합니다. 특정 오류로 인해 비밀번호 변경에 실패하였습니다.',
+      enterprise_email: '이메일 도메인은 엔터프라이즈 ID 제공 업체의 일부입니다. 암호를 재설정하려면 보안 관리자에게 문의하십시오.'
     },
     login: {
       blocked_user: '차단된 사용자 계정입니다.',
