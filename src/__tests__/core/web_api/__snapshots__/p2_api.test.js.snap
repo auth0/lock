@@ -69,6 +69,30 @@ Object {
 }
 `;
 
+exports[`Auth0APIClient parseHash should pass __enableImpersonation when options._enableImpersonation===true 1`] = `
+Array [
+  Object {
+    "__enableImpersonation": true,
+    "hash": "hash",
+    "nonce": undefined,
+    "state": undefined,
+  },
+  "cb",
+]
+`;
+
+exports[`Auth0APIClient parseHash should pass __enableImpersonation:false when options._enableImpersonation is not present 1`] = `
+Array [
+  Object {
+    "__enableImpersonation": false,
+    "hash": "hash",
+    "nonce": undefined,
+    "state": undefined,
+  },
+  "cb",
+]
+`;
+
 exports[`Auth0APIClient passwordlessStart should call client.passwordlessStart 1`] = `
 Array [
   Object {

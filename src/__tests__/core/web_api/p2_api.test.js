@@ -159,4 +159,22 @@ describe('Auth0APIClient', () => {
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
+  describe('parseHash', () => {
+    it('should pass __enableImpersonation:false when options._enableImpersonation is not present', () => {
+      const client = getClient({});
+      client.parseHash('hash', 'cb');
+      const mock = getAuth0ClientMock();
+      const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
+      expect(parseHashMock.calls.length).toBe(1);
+      expect(parseHashMock.calls[0]).toMatchSnapshot();
+    });
+    it('should pass __enableImpersonation when options._enableImpersonation===true', () => {
+      const client = getClient({ _enableImpersonation: true });
+      client.parseHash('hash', 'cb');
+      const mock = getAuth0ClientMock();
+      const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
+      expect(parseHashMock.calls.length).toBe(1);
+      expect(parseHashMock.calls[0]).toMatchSnapshot();
+    });
+  });
 });
