@@ -1,5 +1,20 @@
 # Change Log
 
+## [v11.4.0](https://github.com/auth0/lock/tree/v11.4.0) (2018-03-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.3.1...v11.4.0)
+
+
+**Added**
+- Update auth0.js and add flag to enable impersonation [\#1290](https://github.com/auth0/lock/pull/1290) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Making HRD work in signup page and showing an error when HRD is detected in the forgot password page [\#1278](https://github.com/auth0/lock/pull/1278) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix inconsistent screen title [\#1288](https://github.com/auth0/lock/pull/1288) ([luisrudge](https://github.com/luisrudge))
+- Always remove spaces from email and username [\#1280](https://github.com/auth0/lock/pull/1280) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.3.1](https://github.com/auth0/lock/tree/v11.3.1) (2018-02-28)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.3.0...v11.3.1)
 
