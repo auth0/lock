@@ -12,6 +12,7 @@ class Auth0APIClient {
     this.authOpt = null;
     this.domain = domain;
     this.isUniversalLogin = window.location.host === domain;
+    this._enableImpersonation = !!opts._enableImpersonation;
 
     const default_telemetry = {
       name: 'lock.js',
@@ -93,6 +94,7 @@ class Auth0APIClient {
   parseHash(hash = '', cb) {
     return this.client.parseHash(
       {
+        __enableImpersonation: this._enableImpersonation,
         hash,
         nonce: this.authOpt.nonce,
         state: this.authOpt.state
