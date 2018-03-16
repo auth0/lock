@@ -38,7 +38,8 @@ class Auth0APIClient {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
       nonce: opts.nonce,
-      state: opts.state
+      state: opts.state,
+      cordova: !!opts.cordova
     };
     if (this.isUniversalLogin && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;
@@ -57,6 +58,8 @@ class Auth0APIClient {
       } else {
         this.client.authorize(loginOptions, f);
       }
+    } else if (this.authOpt.popup && this.authOpt.cordova) {
+      this.client.client.loginWithResourceOwner(loginOptions, f);
     } else if (this.authOpt.popup) {
       this.client.popup.loginWithCredentials(loginOptions, f);
     } else {

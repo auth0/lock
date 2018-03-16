@@ -14,7 +14,8 @@ const getClient = (options = {}) => {
   };
   client.client.client = {
     login: jest.fn(),
-    getUserCountry: jest.fn()
+    getUserCountry: jest.fn(),
+    loginWithResourceOwner: jest.fn()
   };
   return client;
 };
@@ -135,6 +136,17 @@ describe('Auth0APIClient', () => {
         const loginWithCredentialsMock =
           mock.WebAuth.mock.instances[0].popup.loginWithCredentials.mock;
         assertCallWithCallback(loginWithCredentialsMock, callback);
+      });
+      it('should call loginWithResourceOwner when redirect is false and sso is true', () => {
+        const client = getClient({
+          redirect: false,
+          cordova: true
+        });
+        const callback = jest.fn();
+        client.logIn({ username: 'foo' }, {}, callback);
+        const { mock } = client.client.client.loginWithResourceOwner;
+        expect(mock.calls.length).toBe(1);
+        expect(mock.calls[0]).toMatchSnapshot();
       });
     });
   });
