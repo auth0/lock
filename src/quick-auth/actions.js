@@ -29,7 +29,7 @@ export function logIn(id, connection, loginHint, prompt) {
 
 export function checkSession(id, connection, loginHint) {
   const m = read(getEntity, 'lock', id);
-  if (l.auth.responseType(m).includes('code')) {
+  if (l.auth.responseType(m).indexOf('code') >= 0) {
     // we need to force a redirect in this case
     // so we use login with prompt=none
     return logIn(id, connection, loginHint, 'none');
