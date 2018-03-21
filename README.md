@@ -85,7 +85,7 @@ Initializes a new instance of `Auth0LockPasswordless` configured with your appli
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
 - **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 
-If both sms and email passwordless connections are enabled [in the dashboard](https://manage.auth0.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or sms, use the [`allowedConnections`](#ui-options) option (`allowedConnections: ['sms' // or 'email']`).
+If both sms and email passwordless connections are enabled [in the dashboard](https://manage.auth0.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or sms, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
 
 #### Example
 
