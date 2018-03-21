@@ -346,6 +346,10 @@ var options = {
 };
 ```
 
+#### Passwordless options
+
+- **passwordlessMethod {String}**: When using `Auth0LockPasswordless`, this option will pick between sending a [code](https://auth0.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://auth0.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values are `code` and `link`. Defaults to `code`. `link` is only available for email passwordless connections.
+
 #### Other options
 
 - **configurationBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
