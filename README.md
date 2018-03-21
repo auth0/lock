@@ -85,7 +85,7 @@ Initializes a new instance of `Auth0LockPasswordless` configured with your appli
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
 - **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 
-If both sms and email passwordless connections are enabled [in the dashboard](https://manage.auth0.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or sms, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
+If both SMS and email passwordless connections are enabled [in the dashboard](https://manage.auth0.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or SMS, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
 
 Fore more information, read our [passwordless docs](https://auth0.com/docs/connections/passwordless).
 
@@ -352,7 +352,7 @@ var options = {
 
 #### Passwordless options
 
-- **passwordlessMethod {String}**: When using `Auth0LockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://auth0.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://auth0.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values are `code` and `link`. Defaults to `code`. Sms passworldess connections will always use `code`.
+- **passwordlessMethod {String}**: When using `Auth0LockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://auth0.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://auth0.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values for email connections are `code` and `link`. Defaults to `code`. SMS passwordless connections will always use `code`.
 
 #### Other options
 
