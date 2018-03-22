@@ -1,5 +1,19 @@
 # Change Log
 
+## [v11.5.0](https://github.com/auth0/lock/tree/v11.5.0) (2018-03-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.4.0...v11.5.0)
+
+
+**Changed**
+- updating auth0-js with impersonation and access token validation changes [\#1308](https://github.com/auth0/lock/pull/1308) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix inconsistent state assignment when parsing a hash [\#1309](https://github.com/auth0/lock/pull/1309) ([luisrudge](https://github.com/luisrudge))
+- Fixed German translations [\#1307](https://github.com/auth0/lock/pull/1307) ([roschaefer](https://github.com/roschaefer))
+- Fixing IE lack of support for `includes` [\#1298](https://github.com/auth0/lock/pull/1298) ([luisrudge](https://github.com/luisrudge))
+- Fix Japanese translations [\#1295](https://github.com/auth0/lock/pull/1295) ([hiro1107](https://github.com/hiro1107))
+
+
 ## [v11.4.0](https://github.com/auth0/lock/tree/v11.4.0) (2018-03-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.3.1...v11.4.0)
 
