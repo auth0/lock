@@ -34,11 +34,16 @@ class Auth0APIClient {
       _telemetryInfo: opts._telemetryInfo || default_telemetry
     });
 
+    var state = opts.state;
+    if (opts.params && opts.params.state) {
+      state = opts.params.state;
+    }
+
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
       nonce: opts.nonce,
-      state: opts.state
+      state: state
     };
     if (this.isUniversalLogin && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;

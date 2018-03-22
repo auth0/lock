@@ -70,6 +70,14 @@ describe('Auth0APIClient', () => {
         const client = getClient(options);
         expect(client.authOpt.sso).toBe(undefined);
       });
+      it('should set state from options.state', () => {
+        const client = getClient({ state: 'foo' });
+        expect(client.authOpt.state).toBe('foo');
+      });
+      it('should set state from options.params.state', () => {
+        const client = getClient({ params: { state: 'foo' } });
+        expect(client.authOpt.state).toBe('foo');
+      });
     });
   });
   describe('logIn', () => {
