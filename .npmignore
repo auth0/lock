@@ -13,3 +13,4 @@ bower.json
 Gruntfile.js
 .css.map
 *~
+.babelrc
