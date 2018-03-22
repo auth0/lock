@@ -17,50 +17,49 @@ export default {
       'lock.network': 'Der Server antwortet nicht.<br/>Bitte erneut versuchen.',
       'lock.popup_closed': 'Pop-up-Fenster geschlossen. Versuchen Sie es erneut.',
       'lock.unauthorized': 'Genehmigungen wurden nicht erteilt. Versuchen Sie es erneut.',
+      'lock.mfa_registration_required':
+      'Eine Multifaktor-Authentifizierung ist erforderlich, aber Ihr Gerät ist nicht registriert. Bitte registrieren Sie es, bevor Sie fortfahren.',
+      'lock.mfa_invalid_code': 'Falscher Code. Bitte versuchen Sie es erneut.',
       password_change_required:
         'Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.',
-      password_leaked:
-        'Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.',
+      password_leaked: 'Wir haben ein potenzielles Sicherheitsproblem mit diesem Konto festgestellt. Um Ihr Konto zu schützen, haben wir diese Anmeldung blockiert. Es wurde eine E-Mail mit einer Anleitung zum Entsperren Ihres Kontos gesendet.',
       too_many_attempts:
         'Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.',
-      'lock.mfa_registration_required':
-        'Multi-Faktor-Authentifizierung erforderlich ist, aber Ihr Gerät nicht eingeschrieben. Bitte registrieren sie, bevor er auf.',
-      'lock.mfa_invalid_code': 'Falscher Code. Bitte versuche es erneut.',
       session_missing:
-        'Konnte nicht Ihre Authentifizierungsanforderung abzuschließen. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge Schließen',
-      'hrd.not_matching_email': 'Bitte verwenden Sie Ihre geschäftliche E-Mail anmelden.'
+        'Ihre Authentifizierungsanfrage konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge geschlossen haben.',
+      'hrd.not_matching_email': 'Bitte verwenden Sie Ihre geschäftliche E-Mail, um sich anzumelden.'
     },
     passwordless: {
       'bad.email': 'Die E-Mail ist ungültig',
       'bad.phone_number': 'Die Telefonnummer ist ungültig',
-      'lock.fallback': 'Es tut uns leid. Etwas ist schief gegangen.'
+      'lock.fallback': 'Es tut uns leid, etwas ist schiefgelaufen.'
     },
     signUp: {
       invalid_password: 'Passwort ist ungültig.',
-      'lock.fallback': 'Beim Verarbeiten der Registrierung ist ein Fehler aufgetreten.',
-      password_dictionary_error: 'Das Passwort ist zu allgemein.',
-      password_no_user_info_error: 'Passwort basiert auf Benutzerinformationen.',
-      password_strength_error: 'Passwort ist nicht sicher genug.',
+      'lock.fallback': 'Es tut uns leid, beim Verarbeiten der Registrierung ist ein Fehler aufgetreten.',
+      password_dictionary_error: 'Das Passwort ist zu häufig.',
+      password_no_user_info_error: 'Das Passwort basiert auf Benutzerinformationen.',
+      password_strength_error: 'Das Passwort ist zu schwach.',
       user_exists: 'Der Nutzer existiert bereits.',
       username_exists: 'Der Nutzername wird bereits verwendet.'
     }
   },
   success: {
     logIn: 'Danke für die Anmeldung.',
-    forgotPassword: 'Sie haben eine E-Mail erhalten, um Ihr Passwort zurückzusetzen.',
-    magicLink: 'Wir senden Ihnen einen Link zu anmelden<br/> um %s.',
-    signUp: "Danke für's Registrieren."
+    forgotPassword: 'Wir haben Ihnen eine E-Mail gesendet, um Ihr Passwort zurückzusetzen.',
+    magicLink: 'Wir haben Ihnen einen Link geschickt, zur Anmeldung<br/>bei %s.',
+    signUp: "Vielen Dank für's Registrieren."
   },
-  blankErrorHint: 'Kann nicht leer sein',
-  codeInputPlaceholder: 'dein Code',
+  blankErrorHint: 'Darf nicht leer sein',
+  codeInputPlaceholder: 'Ihr Code',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: 'oder',
   databaseSignUpInstructions: '',
   databaseAlternativeSignUpInstructions: 'oder',
-  emailInputPlaceholder: 'yours@example.com',
-  enterpriseLoginIntructions: 'Einloggen mit Ihrem Firmenanmeldeinformationen.',
+  emailInputPlaceholder: 'ihremail@example.com',
+  enterpriseLoginIntructions: 'Melden Sie sich mit Ihren Unternehmensanmeldeinformationen an.',
   enterpriseActiveLoginInstructions:
-    'Bitte geben Sie Ihre Unternehmensanmeldeinformationen bei %s.',
+    'Bitte geben Sie Ihre Unternehmensanmeldeinformationen bei %s an.',
   failedLabel: 'Gescheitert!',
   forgotPasswordAction: 'Passwort vergessen?',
   forgotPasswordInstructions:
@@ -75,7 +74,7 @@ export default {
   notYourAccountAction: 'Falscher Account?',
   passwordInputPlaceholder: 'Ihr Passwort',
   passwordStrength: {
-    containsAtLeast: 'Enthält mindestens %d der folgenden %d Arten der Zeichen:',
+    containsAtLeast: 'Enthält mindestens %d der folgenden %d Arten von Zeichen:',
     identicalChars: 'Nicht mehr als %d identische Zeichen in Folge (z. B. "%s" ist nicht erlaubt)',
     nonEmpty: 'Das Passwort darf nicht leer sein',
     numbers: 'Zahlen (z. B. 0-9)',
@@ -86,19 +85,19 @@ export default {
     upperCase: 'Großbuchstaben (A-Z)'
   },
   passwordlessEmailAlternativeInstructions:
-    'Andernfalls geben Sie Ihre E-Mail in<br>anmelden oder ein Konto erstellen',
-  passwordlessEmailCodeInstructions: 'Eine E-Mail mit dem Code wurde %s gesendet.',
+  'Andernfalls geben Sie Ihre E-Mail-Adresse ein,<br/>um sich anzumelden oder ein Konto zu erstellen',
+  passwordlessEmailCodeInstructions: 'Eine E-Mail mit dem Code wurde an %s gesendet.',
   passwordlessEmailInstructions:
-    'Geben Sie einfach Ihre E-Mail in<br>anmelden oder ein Konto erstellen',
+    'Geben Sie Ihre E-Mail-Adresse ein, um sich anzumelden<br/>oder ein Konto zu erstellen',
   passwordlessSMSAlternativeInstructions:
-    'Andernfalls geben Sie Ihre Telefon in<br>anmelden oder ein Konto erstellen',
-  passwordlessSMSCodeInstructions: 'Eine SMS mit dem Code wurde<br>%s gesendet.',
+    'Andernfalls geben Sie Ihre Telefonnummer ein,<br>um sich anzumelden oder ein Konto zu erstellen',
+  passwordlessSMSCodeInstructions: 'Eine SMS mit dem Code wurde gesendet<br/>an %s.',
   passwordlessSMSInstructions:
-    'Geben Sie Ihre Telefonnummer in<br>anmelden oder ein Konto erstellen',
-  phoneNumberInputPlaceholder: 'deine Telefonnummer',
-  resendCodeAction: 'Haben Sie nicht den Code bekommen?',
+    'Geben Sie Ihre Telefonnummer ein,<br>um sich anzumelden oder ein Konto zu erstellen',
+  phoneNumberInputPlaceholder: 'Ihre Telefonnummer',
+  resendCodeAction: 'Haben Sie den Code nicht erhalten?',
   resendLabel: 'Erneut senden',
-  resendingLabel: 'Erneutes Senden...',
+  resendingLabel: 'Wird erneut gesendet...',
   retryLabel: 'Wiederholen',
   sentLabel: 'Senden',
   signUpLabel: 'Registrieren',
@@ -108,24 +107,24 @@ export default {
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
   ssoEnabled: 'Single Sign-On aktiviert',
-  submitLabel: 'Einreichen',
+  submitLabel: 'Absenden',
   unrecoverableError:
-    'Etwas ist schief gelaufen.<br />Bitte kontaktieren Sie den technischen Support.',
+    'Etwas ist schiefgelaufen.<br/>Bitte kontaktieren Sie den technischen Support.',
   usernameFormatErrorHint:
     'Verwenden Sie %d-%d Buchstaben, Zahlen und die folgenden Zeichen: "_", ".", "+", "-"',
-  usernameInputPlaceholder: 'dein Benutzername',
+  usernameInputPlaceholder: 'Ihr Benutzername',
   usernameOrEmailInputPlaceholder: 'Benutzername/E-Mail',
   title: 'Auth0',
   welcome: 'Willkommen %s!',
   windowsAuthInstructions: 'Sie sind über Ihr Firmennetzwerk verbunden&hellip;',
-  windowsAuthLabel: 'Windows Authentication',
-  forgotPasswordTitle: 'Setze dein Passwort zurück',
+  windowsAuthLabel: 'Windows Authentifizierung',
+  forgotPasswordTitle: 'Setzen Sie Ihr Passwort zurück',
   signupTitle: 'Anmelden',
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-Step Verification',
   mfaLoginInstructions:
-    'Bitte geben Sie den Bestätigungscode ein, indem Sie Ihre mobile Anwendung erzeugt.',
-  mfaSubmitLabel: 'Einloggen',
+    'Bitte geben Sie den Bestätigungscode ein, der von Ihrer mobilen Anwendung generiert wurde.',
+  mfaSubmitLabel: 'Anmelden',
   mfaCodeErrorHint: 'Verwenden %d Zahlen',
   showPassword: 'Passwort anzeigen'
 };
