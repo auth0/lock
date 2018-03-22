@@ -69,10 +69,10 @@ Object {
 }
 `;
 
-exports[`Auth0APIClient parseHash should pass __enableImpersonation when options._enableImpersonation===true 1`] = `
+exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true 1`] = `
 Array [
   Object {
-    "__enableImpersonation": true,
+    "__enableIdPInitiatedLogin": true,
     "hash": "hash",
     "nonce": undefined,
     "state": undefined,
@@ -81,10 +81,22 @@ Array [
 ]
 `;
 
-exports[`Auth0APIClient parseHash should pass __enableImpersonation:false when options._enableImpersonation is not present 1`] = `
+exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableImpersonation===true 1`] = `
 Array [
   Object {
-    "__enableImpersonation": false,
+    "__enableIdPInitiatedLogin": true,
+    "hash": "hash",
+    "nonce": undefined,
+    "state": undefined,
+  },
+  "cb",
+]
+`;
+
+exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin:false when options._enableImpersonation and options._enableIdPInitiatedLogin are not present 1`] = `
+Array [
+  Object {
+    "__enableIdPInitiatedLogin": false,
     "hash": "hash",
     "nonce": undefined,
     "state": undefined,
