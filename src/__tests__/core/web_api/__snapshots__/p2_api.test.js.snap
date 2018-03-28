@@ -15,6 +15,7 @@ Object {
   "domain": "me.auth0.com",
   "leeway": 60,
   "overrides": Object {
+    "__jwks_uri": "https://jwks.com",
     "__tenant": "tenant1",
     "__token_issuer": "issuer1",
   },

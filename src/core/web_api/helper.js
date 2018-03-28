@@ -121,13 +121,13 @@ export function normalizeAuthParams({ popup, popupOptions, ...authParams }) {
   return authParams;
 }
 
-export function webAuthOverrides({ __tenant, __token_issuer } = {}) {
-  if (__tenant || __token_issuer) {
+export function webAuthOverrides({ __tenant, __token_issuer, __jwks_uri } = {}) {
+  if (__tenant || __token_issuer || __jwks_uri) {
     return {
       __tenant,
-      __token_issuer
+      __token_issuer,
+      __jwks_uri
     };
   }
-
   return null;
 }
