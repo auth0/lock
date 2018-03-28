@@ -36,7 +36,8 @@ describe('Auth0APIClient', () => {
           leeway: 60,
           overrides: {
             __tenant: 'tenant1',
-            __token_issuer: 'issuer1'
+            __token_issuer: 'issuer1',
+            __jwks_uri: 'https://jwks.com'
           },
           plugins: [{ name: 'ExamplePlugin' }],
           _telemetryInfo: {}
