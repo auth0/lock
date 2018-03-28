@@ -78,6 +78,10 @@ case "$choice" in
   * ) exit 0;;
 esac
 
+git checkout master
+git pull
+git checkout -b prepare-$NEW_V_VERSION
+
 echo "Updating package.json"
 jq ".version=$QUOTED_NEW_VERSION" package.json > package.json.new
 jq ".version=$QUOTED_NEW_VERSION" bower.json > bower.json.new
