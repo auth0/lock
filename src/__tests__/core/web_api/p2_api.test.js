@@ -40,7 +40,11 @@ describe('Auth0APIClient', () => {
             __jwks_uri: 'https://jwks.com'
           },
           plugins: [{ name: 'ExamplePlugin' }],
-          _telemetryInfo: {}
+          _telemetryInfo: {},
+          params: {
+            nonce: 'nonce',
+            state: 'state'
+          }
         };
         const client = getClient(options);
         const mock = getAuth0ClientMock();
@@ -78,6 +82,14 @@ describe('Auth0APIClient', () => {
       it('should set state from options.params.state', () => {
         const client = getClient({ params: { state: 'foo' } });
         expect(client.authOpt.state).toBe('foo');
+      });
+      it('should set nonce from options.nonce', () => {
+        const client = getClient({ nonce: 'foo' });
+        expect(client.authOpt.nonce).toBe('foo');
+      });
+      it('should set nonce from options.params.nonce', () => {
+        const client = getClient({ params: { nonce: 'foo' } });
+        expect(client.authOpt.nonce).toBe('foo');
       });
     });
   });
