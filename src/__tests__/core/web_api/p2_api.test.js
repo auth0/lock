@@ -83,12 +83,20 @@ describe('Auth0APIClient', () => {
         const client = getClient({ params: { state: 'foo' } });
         expect(client.authOpt.state).toBe('foo');
       });
+      it('options.params.state should prevail over options.state', () => {
+        const client = getClient({ state: 'bar', params: { state: 'foo' } });
+        expect(client.authOpt.state).toBe('foo');
+      });
       it('should set nonce from options.nonce', () => {
         const client = getClient({ nonce: 'foo' });
         expect(client.authOpt.nonce).toBe('foo');
       });
       it('should set nonce from options.params.nonce', () => {
         const client = getClient({ params: { nonce: 'foo' } });
+        expect(client.authOpt.nonce).toBe('foo');
+      });
+      it('options.params.nonce should prevail over options.nonce', () => {
+        const client = getClient({ nonce: 'bar', params: { nonce: 'foo' } });
         expect(client.authOpt.nonce).toBe('foo');
       });
     });
