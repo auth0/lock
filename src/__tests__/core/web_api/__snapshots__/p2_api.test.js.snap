@@ -14,6 +14,7 @@ Object {
   "clientID": "cid",
   "domain": "me.auth0.com",
   "leeway": 60,
+  "nonce": "nonce",
   "overrides": Object {
     "__jwks_uri": "https://jwks.com",
     "__tenant": "tenant1",
@@ -27,6 +28,7 @@ Object {
   "redirectUri": "//localhost:8080/login/callback",
   "responseMode": "query",
   "responseType": "code",
+  "state": "state",
 }
 `;
 

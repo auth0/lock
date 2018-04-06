@@ -20,6 +20,16 @@ class Auth0APIClient {
       lib_version: auth0.version
     };
 
+    var state = opts.state;
+    if (opts.params && opts.params.state) {
+      state = opts.params.state;
+    }
+
+    var nonce = opts.nonce;
+    if (opts.params && opts.params.nonce) {
+      nonce = opts.params.nonce;
+    }
+
     this.client = new auth0.WebAuth({
       clientID: clientID,
       domain: domain,
@@ -31,18 +41,15 @@ class Auth0APIClient {
       plugins: opts.plugins || [new CordovaAuth0Plugin()],
       overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
-      _telemetryInfo: opts._telemetryInfo || default_telemetry
+      _telemetryInfo: opts._telemetryInfo || default_telemetry,
+      state,
+      nonce
     });
-
-    var state = opts.state;
-    if (opts.params && opts.params.state) {
-      state = opts.params.state;
-    }
 
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
-      nonce: opts.nonce,
+      nonce: nonce,
       state: state
     };
     if (this.isUniversalLogin && opts.sso !== undefined) {
