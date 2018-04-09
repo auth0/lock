@@ -722,10 +722,10 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 
 This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of `assetsUrl`.
 
-- The application will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/application`). The region is inferred from the `domain`.
+- The application will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
 - The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.auth0.com/js/lock/${lockVersion}/`).
 - The new options have priority over `assetsUrl`.
-- If `assetsUrl` is provided, keep the current behavior: fetch application from `${assetsUrl}/application/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
+- If `assetsUrl` is provided, keep the current behavior: fetch application from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
 
 ## [v10.2.3](https://github.com/auth0/lock/tree/v10.2.3) (2016-10-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.2.3)
