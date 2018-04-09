@@ -34,7 +34,7 @@ export function syncRemoteData(m) {
           origin += ':' + location.port;
         }
 
-        const appSettingsUrl = `https://manage.auth0.com/#/clients/${l.clientID(m)}/settings`;
+        const appSettingsUrl = `https://manage.auth0.com/#/applications/${l.clientID(m)}/settings`;
 
         l.warn(
           m,
