@@ -93,7 +93,7 @@
 
 **Changed**
 - call /ssodata when inside the universal login page [\#1245](https://github.com/auth0/lock/pull/1245) ([luisrudge](https://github.com/luisrudge))
-- Handling embedded and universal login in the same client [\#1243](https://github.com/auth0/lock/pull/1243) ([luisrudge](https://github.com/luisrudge))
+- Handling embedded and universal login in the same application [\#1243](https://github.com/auth0/lock/pull/1243) ([luisrudge](https://github.com/luisrudge))
 
 
 ## [v11.1.3](https://github.com/auth0/lock/tree/v11.1.3) (2018-01-29)
@@ -445,7 +445,7 @@ In the meantime, react@16 works just fine with this codebase. You'll just have t
 -  Don't disable mfa-code input [\#872](https://github.com/auth0/lock/pull/872) ([nikolaseu](https://github.com/nikolaseu))
 - Fix a box-sizing issue that happened when bootstrap was being used with lock [\#868](https://github.com/auth0/lock/pull/868) ([luisrudge](https://github.com/luisrudge))
 - Cleaning params sent to auth0js [\#863](https://github.com/auth0/lock/pull/863) ([luisrudge](https://github.com/luisrudge))
-- Only set prefill values when client is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
+- Only set prefill values when application is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
 
 
 ## [v10.11.0](https://github.com/auth0/lock/tree/v10.11.0) (2017-01-30)
@@ -582,7 +582,7 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 [Full Changelog](https://github.com/auth0/lock/compare/v10.7.1...v10.7.2)
 
 **Fixed**
-- Fix how the tenant and client info url is build to avoid format issues [\#740](https://github.com/auth0/lock/pull/740) ([glena](https://github.com/glena))
+- Fix how the tenant and application info url is build to avoid format issues [\#740](https://github.com/auth0/lock/pull/740) ([glena](https://github.com/glena))
 - Fix: Single saml connection with no domain shows undefined in button [\#738](https://github.com/auth0/lock/pull/738) ([glena](https://github.com/glena))
 
 ## [v10.7.1](https://github.com/auth0/lock/tree/v10.7.1) (2016-11-25)
@@ -709,7 +709,7 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 - fixed ionic page scroll [\#591](https://github.com/auth0/lock/pull/591) ([beneliflo](https://github.com/beneliflo))
 
 **Added:**
-- Add min/max username validation from client info settings [\#611](https://github.com/auth0/lock/pull/611) ([cristiandouce](https://github.com/cristiandouce))
+- Add min/max username validation from application info settings [\#611](https://github.com/auth0/lock/pull/611) ([cristiandouce](https://github.com/cristiandouce))
 - Introduce clientBaseUrl and languageBaseUrl options to deprecate assetsUrl [\#601](https://github.com/auth0/lock/pull/601) ([cristiandouce](https://github.com/cristiandouce))
 - Added Hungarian translations [\#599](https://github.com/auth0/lock/pull/599) ([nagyv](https://github.com/nagyv))
 - Add french translation [\#596](https://github.com/auth0/lock/pull/596) ([RomainFallet](https://github.com/RomainFallet))
@@ -722,10 +722,10 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 
 This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of `assetsUrl`.
 
-- The client will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
+- The application will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/application`). The region is inferred from the `domain`.
 - The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.auth0.com/js/lock/${lockVersion}/`).
 - The new options have priority over `assetsUrl`.
-- If `assetsUrl` is provided, keep the current behavior: fetch client from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
+- If `assetsUrl` is provided, keep the current behavior: fetch application from `${assetsUrl}/application/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
 
 ## [v10.2.3](https://github.com/auth0/lock/tree/v10.2.3) (2016-10-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.2.3)

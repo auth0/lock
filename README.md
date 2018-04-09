@@ -195,7 +195,7 @@ lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 
 ### checkSession(options, callback)
 
-The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the hosted login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your client. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
+The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
 - **options {Object}**: OAuth2 options object to send to Auth0's servers.
 - **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
 
@@ -309,7 +309,7 @@ var options = {
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
-- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your client or tenant.
+- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
 - **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social connection for authentication.
 
 #### Social options
@@ -357,7 +357,7 @@ var options = {
 
 #### Other options
 
-- **configurationBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
+- **configurationBaseUrl {String}**: Overrides application settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
 - **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
 - **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback url after the user authentication. Defaults to `true`.
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context` and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a github [issue](https://github.com/auth0/lock/issues/new).**
