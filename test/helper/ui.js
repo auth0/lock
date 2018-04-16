@@ -134,6 +134,16 @@ const hasInputFn = (name, str) => lock => {
 const hasViewFn = query => lock => !!qView(lock, query);
 const hasOneViewFn = query => lock => qView(lock, query, true).length == 1;
 
+export const logoUrl = lock => {
+  const logo = q(lock, `.auth0-lock-header-logo`);
+  return logo.src;
+};
+
+export const logoLink = lock => {
+  const logo = q(lock, `.auth0-lock-header-welcome > a`);
+  return logo.href;
+};
+
 const isTabCurrent = (lock, regexp) => {
   // TODO: this won't work with translations, we need another
   // mechanism.
