@@ -196,6 +196,8 @@ export function logIn(
 }
 
 export function checkSession(id, params = {}) {
+  const m = read(getEntity, 'lock', id);
+  swap(updateEntity, 'lock', id, m => l.setSubmitting(m, true));
   webApi.checkSession(id, params, (err, result) => {
     if (err) {
       return logInError(id, [], err);

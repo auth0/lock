@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`core.actions checkSession should set submitting on start 1`] = `
+Array [
+  "getEntity",
+  "lock",
+  "id",
+]
+`;
+
+exports[`core.actions checkSession should set submitting on start 2`] = `
+Array [
+  "updateEntity",
+  "lock",
+  "id",
+  [Function],
+]
+`;
+
+exports[`core.actions checkSession should set submitting on start 3`] = `
+Array [
+  "model",
+  true,
+]
+`;
