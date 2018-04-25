@@ -8,8 +8,7 @@
 - Add signup error to valid events [\#1329](https://github.com/auth0/lock/pull/1329) ([yveswehrli](https://github.com/yveswehrli))
 
 **Changed**
-- Upgrade Auth0.js [\#1354](https://github.com/auth0/lock/pull/1354) ([luisrudge](https://github.com/luisrudge))
-
+- Upgrade auth0-js to 9.5.0. See auth0-js' changelog [here](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v950-2018-04-24).
 **Fixed**
 - Show spinner when doing quick auth [\#1346](https://github.com/auth0/lock/pull/1346) ([luisrudge](https://github.com/luisrudge))
 - Fix danish translation [\#1338](https://github.com/auth0/lock/pull/1338) ([luisrudge](https://github.com/luisrudge))
