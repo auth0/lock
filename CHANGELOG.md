@@ -1,5 +1,21 @@
 # Change Log
 
+## [v11.6.0](https://github.com/auth0/lock/tree/v11.6.0) (2018-04-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.5.2...v11.6.0)
+
+
+**Added**
+- Add signup error to valid events [\#1329](https://github.com/auth0/lock/pull/1329) ([yveswehrli](https://github.com/yveswehrli))
+
+**Changed**
+- Upgrade Auth0.js [\#1354](https://github.com/auth0/lock/pull/1354) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Show spinner when doing quick auth [\#1346](https://github.com/auth0/lock/pull/1346) ([luisrudge](https://github.com/luisrudge))
+- Fix danish translation [\#1338](https://github.com/auth0/lock/pull/1338) ([luisrudge](https://github.com/luisrudge))
+- Fix getSSOData not sending custom nonce/state [\#1333](https://github.com/auth0/lock/pull/1333) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.5.2](https://github.com/auth0/lock/tree/v11.5.2) (2018-03-28)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.5.1...v11.5.2)
 
