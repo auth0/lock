@@ -120,6 +120,7 @@ export default class Base extends EventEmitter {
           isModal: l.ui.appendContainer(m),
           isSubmitting: l.submitting(m),
           logo: l.ui.logo(m),
+          logoLink: l.ui.logoLink(m),
           primaryColor: l.ui.primaryColor(m),
           screenName: screen.name,
           showBadge: l.showBadge(m) === true,

@@ -157,9 +157,18 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable ? true : !!options.closable;
+    : undefined === options.closable
+      ? true
+      : !!options.closable;
   const theme = options.theme || {};
-  const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
+  const {
+    labeledSubmitButton,
+    hideMainScreenTitle,
+    logo,
+    logoLink,
+    primaryColor,
+    authButtons
+  } = theme;
 
   const avatar = options.avatar !== null;
   const customAvatarProvider =
@@ -180,6 +189,7 @@ function extractUIOptions(id, options) {
     avatar: avatar,
     avatarProvider: avatarProvider,
     logo: typeof logo === 'string' ? logo : undefined,
+    logoLink: typeof logoLink === 'string' ? logoLink : undefined,
     closable: closable,
     hideMainScreenTitle: !!hideMainScreenTitle,
     labeledSubmitButton: undefined === labeledSubmitButton ? true : !!labeledSubmitButton,
@@ -222,6 +232,7 @@ export const ui = {
   hideMainScreenTitle: lock => getUIAttribute(lock, 'hideMainScreenTitle'),
   language: lock => getUIAttribute(lock, 'language'),
   logo: lock => getUIAttribute(lock, 'logo'),
+  logoLink: lock => getUIAttribute(lock, 'logoLink'),
   mobile: lock => getUIAttribute(lock, 'mobile'),
   popupOptions: lock => getUIAttribute(lock, 'popupOptions'),
   primaryColor: lock => getUIAttribute(lock, 'primaryColor'),
@@ -591,6 +602,10 @@ export function overrideOptions(m, opts) {
 
     if (opts.theme.logo) {
       m = tset(m, ['ui', 'logo'], opts.theme.logo);
+    }
+
+    if (opts.theme.logoLink) {
+      m = tset(m, ['ui', 'logoLink'], opts.theme.logoLink);
     }
   }
 

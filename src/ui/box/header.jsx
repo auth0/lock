@@ -6,13 +6,26 @@ import { BackButton } from './button';
 
 export default class Header extends React.Component {
   render() {
-    const { backHandler, backgroundColor, backgroundUrl, logoUrl, name, title } = this.props;
+    const {
+      backHandler,
+      backgroundColor,
+      backgroundUrl,
+      logoUrl,
+      logoLink,
+      name,
+      title
+    } = this.props;
 
     return (
       <div className="auth0-lock-header">
         {backHandler && <BackButton onClick={backHandler} />}
         <Background imageUrl={backgroundUrl} backgroundColor={backgroundColor} grayScale={!!name} />
-        <Welcome title={title} name={name} imageUrl={name ? undefined : logoUrl} />
+        <Welcome
+          title={title}
+          name={name}
+          logoUrl={name ? undefined : logoUrl}
+          logoLink={logoLink}
+        />
       </div>
     );
   }
@@ -26,14 +39,15 @@ Header.propTypes = {
 
 class Welcome extends React.Component {
   render() {
-    const { name, imageUrl, title } = this.props;
+    const { name, logoUrl, logoLink, title } = this.props;
     const imgClassName = !!title ? 'auth0-lock-header-logo' : 'auth0-lock-header-logo centered';
-    const img = <img className={imgClassName} src={imageUrl} />;
+    const img = <img className={imgClassName} src={logoUrl} />;
+    const logo = logoLink ? <a href={logoLink}>{img}</a> : img;
     const welcome = title ? <WelcomeMessage title={title} name={name} /> : null;
 
     return (
       <div className="auth0-lock-header-welcome">
-        {imageUrl && img}
+        {logoUrl && logo}
         {welcome}
       </div>
     );
@@ -41,7 +55,7 @@ class Welcome extends React.Component {
 }
 
 Welcome.propTypes = {
-  imageUrl: PropTypes.string,
+  logoUrl: PropTypes.string,
   name: PropTypes.string
 };
 

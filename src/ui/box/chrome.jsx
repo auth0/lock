@@ -195,6 +195,7 @@ export default class Chrome extends React.Component {
       info,
       isSubmitting,
       logo,
+      logoLink,
       primaryColor,
       screenName,
       showSubmitButton,
@@ -276,6 +277,7 @@ export default class Chrome extends React.Component {
           backgroundUrl={backgroundUrl}
           backgroundColor={primaryColor}
           logoUrl={logo}
+          logoLink={logoLink}
         />
         <TransitionGroup>
           <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
@@ -350,6 +352,7 @@ Chrome.propTypes = {
   info: PropTypes.node,
   isSubmitting: PropTypes.bool.isRequired,
   logo: PropTypes.string.isRequired,
+  logoLink: PropTypes.string,
   primaryColor: PropTypes.string.isRequired,
   screenName: PropTypes.string.isRequired,
   showSubmitButton: PropTypes.bool.isRequired,

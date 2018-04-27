@@ -147,6 +147,7 @@ export default class Container extends React.Component {
       isModal,
       isSubmitting,
       logo,
+      logoLink,
       primaryColor,
       screenName,
       showBadge,
@@ -224,6 +225,7 @@ export default class Container extends React.Component {
                 info={info}
                 isSubmitting={isSubmitting}
                 logo={logo}
+                logoLink={logoLink}
                 screenName={screenName}
                 primaryColor={primaryColor}
                 ref="chrome"
@@ -260,6 +262,7 @@ Container.propTypes = {
   isModal: PropTypes.bool.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
   logo: PropTypes.string.isRequired,
+  logoLink: PropTypes.string,
   primaryColor: PropTypes.string.isRequired,
   screenName: PropTypes.string.isRequired,
   showBadge: PropTypes.bool.isRequired,

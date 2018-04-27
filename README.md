@@ -257,6 +257,7 @@ var options = {
   theme: {
     labeledSubmitButton: false,
     logo: "https://example.com/assets/logo.png",
+    logoLink: "https://example.com/",
     primaryColor: "green",
     authButtons: {
       connectionName: {
@@ -272,6 +273,7 @@ var options = {
 
 - **labeledSubmitButton {Boolean}**: Indicates whether or not the submit button should have a label. Defaults to `true`. When set to `false` a icon will be shown. The labels can be customized through the `languageDictionary`.
 - **logo {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
+- **logoLink {String}**: When set to a non-empty string, the user will be linked to the provided URL when clicking the logo. 
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `logo` to ensure all colors go well together with the logo's color palette. Defaults to `"#ea5323"`.
 - **authButtons {Object}**: Allows the customization of the custom oauth2 login buttons.
   + **displayName {String}**: The name to show instead of the connection name.

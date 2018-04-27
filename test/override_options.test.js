@@ -38,7 +38,8 @@ describe('Override state with options on show', () => {
       language: 'es',
       theme: {
         primaryColor: 'red',
-        logo: 'http://test.com/logo.png'
+        logo: 'http://test.com/logo.png',
+        logoLink: 'http://test.com/'
       }
     };
 
@@ -52,6 +53,7 @@ describe('Override state with options on show', () => {
           ui: {
             primaryColor: 'red',
             logo: 'http://test.com/logo.png',
+            logoLink: 'http://test.com/',
             language: 'es',
             dict: {
               title: 'new_title'

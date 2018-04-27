@@ -76,6 +76,7 @@ Object {
     "labeledSubmitButton": true,
     "language": "en",
     "logo": undefined,
+    "logoLink": undefined,
     "mobile": false,
     "popupOptions": Object {},
     "primaryColor": undefined,
