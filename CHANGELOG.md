@@ -3,6 +3,8 @@
 ## [v11.6.1](https://github.com/auth0/lock/tree/v11.6.1) (2018-05-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.6.0...v11.6.1)
 
+**Fixed**
+- Fix rendering issue on iOS devices [\#1365](https://github.com/auth0/lock/pull/1365) ([luisrudge](https://github.com/luisrudge))
 
 
 ## [v11.6.0](https://github.com/auth0/lock/tree/v11.6.0) (2018-04-24)
