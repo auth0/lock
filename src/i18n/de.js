@@ -63,7 +63,7 @@ export default {
   failedLabel: 'Gescheitert!',
   forgotPasswordAction: 'Passwort vergessen?',
   forgotPasswordInstructions:
-    'Geben Sie bitte Ihre Email-Adresse ein. Wir werden Ihnen eine E-Mail senden um Ihr Passwort zurücksetzen zu können.',
+    'Geben Sie bitte Ihre E-Mail-Adresse ein. Wir werden Ihnen eine E-Mail senden um Ihr Passwort zurücksetzen zu können.',
   forgotPasswordSubmitLabel: 'E-Mail senden',
   invalidErrorHint: 'Ungültig',
   lastLoginInstructions: 'Letztes Mal waren Sie angemeldet mit',
