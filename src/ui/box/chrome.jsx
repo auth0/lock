@@ -305,6 +305,7 @@ export default class Chrome extends React.Component {
             which doesn't trigger the `onsubmit` event handler, which
             makes impossible to react to handle the submit event, 
             causing the page to send a POST request to `window.location.href`
+            with all the form data.
          */}
         <SubmitButton
           color={primaryColor}
