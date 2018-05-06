@@ -36,6 +36,7 @@ class Renderer {
   render(containerOption, props) {
     const { isModal } = props;
     const container = this.containerManager.ensure(containerOption, isModal);
+    const containerId = container.id;
 
     if (isModal && !this.modals[containerId]) {
       CSSCore.addClass(global.document.getElementsByTagName('html')[0], 'auth0-lock-html');
@@ -50,12 +51,14 @@ class Renderer {
     return component;
   }
 
-  remove(containerId) {
+  remove(containerOption) {
+    const container = this.containerManager.ensure(containerOption, isModal);
+    const containerId = container.id;
     if (this.modals[containerId]) {
       this.modals[containerId].hide();
       setTimeout(() => this.unmount(containerOption), 1000);
     } else {
-      this.unmount(containerId);
+      this.unmount(containerOption);
     }
   }
 
@@ -69,8 +72,10 @@ class Renderer {
       // do nothing if container doesn't exist
     }
 
-    if (this.modals[containerOption]) {
-      delete this.modals[containerOption];
+    const container = this.containerManager.ensure(containerOption, isModal);
+    const containerId = container.id;
+    if (this.modals[containerId]) {
+      delete this.modals[containerId];
 
       CSSCore.removeClass(global.document.getElementsByTagName('html')[0], 'auth0-lock-html');
     }
