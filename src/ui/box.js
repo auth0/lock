@@ -14,7 +14,7 @@ class ContainerManager {
 
     if (!container && shouldAppend) {
       container = global.document.createElement('div');
-      container.id = id;
+      container.id = containerOption || 'auth0-lock-container';
       container.className = 'auth0-lock-container';
       global.document.body.appendChild(container);
     }
