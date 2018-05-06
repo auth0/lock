@@ -4,8 +4,11 @@ import CSSCore from 'fbjs/lib/CSSCore';
 import Container from './box/container';
 
 class ContainerManager {
-  ensure(id, shouldAppend) {
-    let container = global.document.getElementById(id);
+  ensure(containerOption, shouldAppend) {
+    const container =
+          (containerOption instanceof HTMLElement) ? containerOption
+        : (typeof containerOption === 'string') ? global.document.getElementById(containerOption)
+        : null
 
     if (!container && shouldAppend) {
       container = global.document.createElement('div');
