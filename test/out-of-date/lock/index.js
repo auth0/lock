@@ -107,6 +107,21 @@ describe('rendering a lock', function() {
     expect(l.ui.gravatar(renderedLock)).to.be(true);
   });
 
+  describe('with container element option', function() {
+    describe('`container`', function() {
+      const container = document.createElement('div');
+      container.id = 'yolo';
+
+      beforeEach(function() {
+        renderedLock = l.render(lock, modeName, { container: container });
+      });
+
+      it('assings it as the container id', function() {
+        expect(l.ui.containerID(renderedLock)).to.be(container);
+      });
+    });
+  });
+
   describe('with ui option', function() {
     describe('`container`', function() {
       const container = 'someId';

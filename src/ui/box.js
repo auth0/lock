@@ -5,10 +5,12 @@ import Container from './box/container';
 
 class ContainerManager {
   ensure(containerOption, shouldAppend) {
-    const container =
-          (containerOption instanceof HTMLElement) ? containerOption
-        : (typeof containerOption === 'string') ? global.document.getElementById(containerOption)
-        : null
+    let container =
+      containerOption instanceof HTMLElement
+        ? containerOption
+        : typeof containerOption === 'string'
+          ? global.document.getElementById(containerOption)
+          : null;
 
     if (!container && shouldAppend) {
       container = global.document.createElement('div');
@@ -31,9 +33,9 @@ class Renderer {
     this.modals = {};
   }
 
-  render(containerId, props) {
+  render(containerOption, props) {
     const { isModal } = props;
-    const container = this.containerManager.ensure(containerId, isModal);
+    const container = this.containerManager.ensure(containerOption, isModal);
 
     if (isModal && !this.modals[containerId]) {
       CSSCore.addClass(global.document.getElementsByTagName('html')[0], 'auth0-lock-html');
@@ -51,15 +53,15 @@ class Renderer {
   remove(containerId) {
     if (this.modals[containerId]) {
       this.modals[containerId].hide();
-      setTimeout(() => this.unmount(containerId), 1000);
+      setTimeout(() => this.unmount(containerOption), 1000);
     } else {
       this.unmount(containerId);
     }
   }
 
-  unmount(containerId) {
+  unmount(containerOption) {
     try {
-      const container = this.containerManager.ensure(containerId);
+      const container = this.containerManager.ensure(containerOption);
       if (container) {
         ReactDOM.unmountComponentAtNode(container);
       }
@@ -67,8 +69,8 @@ class Renderer {
       // do nothing if container doesn't exist
     }
 
-    if (this.modals[containerId]) {
-      delete this.modals[containerId];
+    if (this.modals[containerOption]) {
+      delete this.modals[containerOption];
 
       CSSCore.removeClass(global.document.getElementsByTagName('html')[0], 'auth0-lock-html');
     }
