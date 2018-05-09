@@ -58,7 +58,7 @@ export default {
   databaseSignUpInstructions: '',
   databaseAlternativeSignUpInstructions: 'or',
   emailInputPlaceholder: 'yours@example.com',
-  enterpriseLoginIntructions: 'Login with your corporate credentials.',
+  enterpriseLoginInstructions: 'Login with your corporate credentials.',
   enterpriseActiveLoginInstructions: 'Please enter your corporate credentials at %s.',
   failedLabel: 'Failed!',
   forgotPasswordTitle: 'Reset your password',
