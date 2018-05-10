@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.5.2/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.6.1/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -193,10 +193,10 @@ Logs out the user
 lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 ```
 
-### checkSession(options, callback)
+### checkSession(params, callback)
 
 The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
-- **options {Object}**: OAuth2 options object to send to Auth0's servers.
+- **params {Object}**: OAuth2 params object to send to Auth0's servers.
 - **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
 
 #### Example
