@@ -33,7 +33,7 @@ export const extractPropsFromWrapper = (wrapper, index = 0) =>
   );
 
 //set urls with jest: https://github.com/facebook/jest/issues/890#issuecomment-298594389
-export const setURL = url => {
+export const setURL = (url, options = {}) => {
   const parser = document.createElement('a');
   parser.href = url;
   [
@@ -47,8 +47,12 @@ export const setURL = url => {
     'search',
     'hash'
   ].forEach(prop => {
+    let value = parser[prop];
+    if (prop === 'origin' && options.noOrigin) {
+      value = null;
+    }
     Object.defineProperty(window.location, prop, {
-      value: parser[prop],
+      value,
       writable: true
     });
   });
