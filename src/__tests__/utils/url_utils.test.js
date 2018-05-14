@@ -7,17 +7,34 @@ describe('url utils', () => {
       expect(getOriginFromUrl('')).toBe(undefined);
       expect(getOriginFromUrl(null)).toBe(undefined);
     });
-    it('should use an anchor to parse the url and return the origin', function() {
+    it('should parse the url and return the origin with https', function() {
       var url = 'https://test.com/example';
       expect(getOriginFromUrl(url)).toBe('https://test.com');
     });
-    it('should use add the `port` when available', function() {
+    it('should parse the url and return the origin with http', function() {
+      var url = 'http://test.com/example';
+      expect(getOriginFromUrl(url)).toBe('http://test.com');
+    });
+    it('should include the `port` when available', function() {
       var url = 'https://localhost:3000/example';
       expect(getOriginFromUrl(url)).toBe('https://localhost:3000');
     });
   });
   describe('getLocationFromUrl', function() {
+    it('should return null for invalid urls', () => {
+      expect(getLocationFromUrl('banana')).toBe(null);
+    });
     const mapping = {
+      'http://localhost:3000/foo?id=1': {
+        href: 'http://localhost:3000/foo?id=1',
+        protocol: 'http:',
+        host: 'localhost:3000',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/foo',
+        search: '?id=1',
+        hash: ''
+      },
       'https://localhost:3000/foo?id=1': {
         href: 'https://localhost:3000/foo?id=1',
         protocol: 'https:',
