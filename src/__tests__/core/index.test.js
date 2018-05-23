@@ -37,6 +37,15 @@ describe('setup', () => {
     const model = mock.calls[0][1].toJS();
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
+  it('default redirectUrl should work when `window.location.origin` is not available', () => {
+    setURL('https://test.com/path/#not-this-part', { noOrigin: true });
+    const options = {};
+    setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
+    const { mock } = mockInit;
+    expect(mock.calls.length).toBe(1);
+    const model = mock.calls[0][1].toJS();
+    expect(model.auth.redirectUrl).toBe('https://test.com/path/');
+  });
   it('should work with redirect:false and responseType:id_token', () => {
     const options = {
       auth: {
