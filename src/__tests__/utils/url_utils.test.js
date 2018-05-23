@@ -55,15 +55,25 @@ describe('url utils', () => {
         search: '',
         hash: ''
       },
-      'https://auth0.com#access_token=foo': {
-        href: 'https://auth0.com#access_token=foo',
+      'https://auth0.com/#access_token=foo': {
+        href: 'https://auth0.com/#access_token=foo',
         protocol: 'https:',
         host: 'auth0.com',
         hostname: 'auth0.com',
         port: undefined,
-        pathname: '',
+        pathname: '/',
         search: '',
         hash: '#access_token=foo'
+      },
+      'https://auth0.com/#/foo/access_token=foo': {
+        href: 'https://auth0.com/#/foo/access_token=foo',
+        protocol: 'https:',
+        host: 'auth0.com',
+        hostname: 'auth0.com',
+        port: undefined,
+        pathname: '/',
+        search: '',
+        hash: '#/foo/access_token=foo'
       }
     };
     for (const url in mapping) {
