@@ -16,8 +16,8 @@ export default {
       invalid_user_password: 'Kimlik bilgileri hatalı.',
       'lock.fallback': 'Özür dileriz, giriş yaparken bir hata oluştu.',
       'lock.invalid_code': 'Hatalı kod.',
-      'lock.invalid_email_password': 'Yanlış e-posta yada şifre.',
-      'lock.invalid_username_password': 'Yanlış kullanıcı adı yada şifre.',
+      'lock.invalid_email_password': 'Yanlış e-posta veya şifre.',
+      'lock.invalid_username_password': 'Yanlış kullanıcı adı veya şifre.',
       'lock.network': 'Sunucuya ulaşamadık. Lütfen bağlantınızı kontrol edin ve tekrar deneyin.',
       'lock.popup_closed': 'Popup penceresi kapandı. Tekrar deneyin.',
       'lock.unauthorized': 'Yetkiler alınamadı. Tekrar deneyin.',
@@ -25,7 +25,7 @@ export default {
         'Çok faktörlü kimlik doğrulama gerekmekte ancak cihazınız kayıtlı değil. Devam etmeden önce lütfen cihazınızı kaydettirin.',
       'lock.mfa_invalid_code': 'Hatalı kod. Lütfen tekrar deneyin.',
       password_change_required:
-        'İlk defa giriş yaptığınız yada şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.',
+        'İlk defa giriş yaptığınız veya şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.',
       password_leaked:
         'Şifreniz başka bir websitesinde açığa çıktığı için bu giriş denemesi engelledi. Engeli kaldırmak için gereken adımları size email ile gönderdik.',
       too_many_attempts: 'Çoklu giriş denemesi sonucunda hesabınız bloke oldu.',
@@ -57,9 +57,9 @@ export default {
   blankErrorHint: 'Boş kalamaz',
   codeInputPlaceholder: 'kodunuz',
   databaseEnterpriseLoginInstructions: '',
-  databaseEnterpriseAlternativeLoginInstructions: 'yada',
+  databaseEnterpriseAlternativeLoginInstructions: 'veya',
   databaseSignUpInstructions: '',
-  databaseAlternativeSignUpInstructions: 'yada',
+  databaseAlternativeSignUpInstructions: 'veya',
   emailInputPlaceholder: 'sizin@ornek.com',
   enterpriseLoginIntructions: 'Şirket kimliğiniz ile giriş yapın.',
   enterpriseActiveLoginInstructions: 'Lütfen %s deki şirket kimliğinizi girin.',
@@ -89,15 +89,15 @@ export default {
     upperCase: 'Büyük harfler (A-Z)'
   },
   passwordlessEmailAlternativeInstructions:
-    'Aksi halde, giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
+    'Aksi halde, giriş yapmak için e-posta adresinizi girin<br/>veya bir hesap oluşturun',
   passwordlessEmailCodeInstructions: '%s adresine kod içeren bir e-posta gönderildi.',
   passwordlessEmailInstructions:
-    'Giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
+    'Giriş yapmak için e-posta adresinizi girin<br/>veya bir hesap oluşturun',
   passwordlessSMSAlternativeInstructions:
-    'Aksi halde, giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
+    'Aksi halde, giriş yapmak için telefon numaranızı girin<br/>veya bir hesap oluşturun',
   passwordlessSMSCodeInstructions: 'Kod içeren bir SMS gönderildi<br/>%s.',
   passwordlessSMSInstructions:
-    'Giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
+    'Giriş yapmak için telefon numaranızı girin<br/>veya bir hesap oluşturun',
   phoneNumberInputPlaceholder: 'telefon numaranız',
   resendCodeAction: "Kod'u almadınız mı?",
   resendLabel: 'Tekrar gönder',
