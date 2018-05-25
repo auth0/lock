@@ -23,6 +23,7 @@ describe('PasswordPane', () => {
     jest.resetModules();
 
     jest.mock('field/index', () => ({
+      isFieldValid: () => true,
       getFieldValue: (m, field) => field,
       isFieldVisiblyInvalid: () => true
     }));
@@ -57,6 +58,12 @@ describe('PasswordPane', () => {
   it('disables input when submitting', () => {
     require('core/index').submitting = () => true;
     const PasswordPane = getComponent();
+
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
+  });
+  it('sets showPasswordStrenghtMessage as true when `isFieldValid` is false', () => {
+    require('field/index').isFieldValid = () => false;
+    let PasswordPane = getComponent();
 
     expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });
