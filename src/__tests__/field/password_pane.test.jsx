@@ -61,8 +61,14 @@ describe('PasswordPane', () => {
 
     expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });
-  it('sets showPasswordStrenghtMessage as true when `isFieldValid` is false', () => {
+  it('sets showPasswordStrengthMessage as true when `isFieldValid` is false', () => {
     require('field/index').isFieldValid = () => false;
+    let PasswordPane = getComponent();
+
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
+  });
+  it('sets showPasswordStrengthMessage as false when `isFieldValid` is true', () => {
+    require('field/index').isFieldValid = () => true;
     let PasswordPane = getComponent();
 
     expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
