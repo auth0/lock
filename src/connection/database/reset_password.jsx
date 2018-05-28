@@ -41,8 +41,11 @@ export default class ResetPassword extends Screen {
     return i18n.str(m, 'forgotPasswordTitle');
   }
   isSubmitDisabled(m) {
-    const tryingToResetPasswordWithHRDEmail = isEnterpriseDomain(m, databaseUsernameValue(m));
-    if (tryingToResetPasswordWithHRDEmail) {
+    const tryingToResetPasswordWithEnterpriseEmail = isEnterpriseDomain(
+      m,
+      databaseUsernameValue(m)
+    );
+    if (tryingToResetPasswordWithEnterpriseEmail) {
       swap(
         updateEntity,
         'lock',
@@ -53,7 +56,7 @@ export default class ResetPassword extends Screen {
     } else {
       swap(updateEntity, 'lock', l.id(m), l.clearGlobalError);
     }
-    return tryingToResetPasswordWithHRDEmail;
+    return tryingToResetPasswordWithEnterpriseEmail;
   }
 
   submitHandler() {
