@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.7.0](https://github.com/auth0/lock/tree/v11.7.0) (2018-05-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.6.1...v11.7.0)
+
+
+**Fixed**
+- Display error for all enterprise connections in the reset password screen [\#1384](https://github.com/auth0/lock/pull/1384) ([luisrudge](https://github.com/luisrudge))
+- Hide password strength message when the password is valid [\#1382](https://github.com/auth0/lock/pull/1382) ([luisrudge](https://github.com/luisrudge))
+- Fixed Turkish translation [\#1379](https://github.com/auth0/lock/pull/1379) ([saltukalakus](https://github.com/saltukalakus))
+- Fix IE default redirect url [\#1373](https://github.com/auth0/lock/pull/1373) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.6.1](https://github.com/auth0/lock/tree/v11.6.1) (2018-05-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.6.0...v11.6.1)
 
