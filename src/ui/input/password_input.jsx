@@ -9,6 +9,7 @@ export const icon =
 export default class PasswordInput extends React.Component {
   static propTypes = {
     invalidHint: PropTypes.string.isRequired,
+    showPasswordStrengthMessage: PropTypes.bool.isRequired,
     isValid: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
@@ -34,6 +35,7 @@ export default class PasswordInput extends React.Component {
   render() {
     const {
       invalidHint,
+      showPasswordStrengthMessage,
       isValid,
       onChange,
       policy,
@@ -46,7 +48,7 @@ export default class PasswordInput extends React.Component {
     const { focused, changing } = this.state;
 
     const passwordStrength =
-      policy && focused && changing ? (
+      policy && focused && changing && showPasswordStrengthMessage ? (
         <PasswordStrength messages={strengthMessages} password={value} policy={policy} />
       ) : null;
 
