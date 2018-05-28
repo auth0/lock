@@ -32,6 +32,7 @@ describe('ResetPasswordScreen', () => {
     }));
   });
   it('isSubmitDisabled returns true when `isEnterpriseDomain` is true', () => {
+    require('connection/enterprise').isEnterpriseDomain = () => true;
     const screen = getScreen();
     expect(screen.isSubmitDisabled()).toBe(true);
     expect(require('store/index').swap.mock.calls[0]).toMatchSnapshot();
