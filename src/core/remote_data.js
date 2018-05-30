@@ -22,7 +22,7 @@ export function syncRemoteData(m) {
   m = sync(m, 'sso', {
     conditionFn: m => l.auth.sso(m) && l.ui.rememberLastLogin(m),
     waitFn: m => isSuccess(m, 'client'),
-    syncFn: (m, cb) => fetchSSOData(l.id(m), cb),
+    syncFn: (m, cb) => fetchSSOData(l.id(m), isADEnabled(m), cb),
     successFn: (m, result) => m.mergeIn(['sso'], Immutable.fromJS(result)),
     errorFn: (m, error) => {
       if (error.error === 'consent_required') {

@@ -123,17 +123,8 @@ class Auth0APIClient {
     this.getUserInfo(token, callback);
   }
 
-  getSSOData(cb) {
-    if (this.isUniversalLogin) {
-      superagent
-        .get(`https://${this.domain}/user/ssodata`)
-        .withCredentials()
-        .end((err, res) => {
-          cb(err, res.body);
-        });
-    } else {
-      return this.client.client.getSSOData(cb);
-    }
+  getSSOData(...params) {
+    return this.client.client.getSSOData(...params);
   }
 
   getUserCountry(cb) {

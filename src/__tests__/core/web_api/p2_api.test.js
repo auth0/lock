@@ -14,7 +14,8 @@ const getClient = (options = {}) => {
   };
   client.client.client = {
     login: jest.fn(),
-    getUserCountry: jest.fn()
+    getUserCountry: jest.fn(),
+    getSSOData: jest.fn()
   };
   return client;
 };
@@ -185,6 +186,13 @@ describe('Auth0APIClient', () => {
     const client = getClient({});
     client.getUserCountry('cb');
     const { mock } = client.client.client.getUserCountry;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
+  it('getSSOData should call client.client.getSSOData', () => {
+    const client = getClient({});
+    client.getSSOData(true, () => {});
+    const { mock } = client.client.client.getSSOData;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
