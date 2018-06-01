@@ -314,7 +314,7 @@ export default class Chrome extends React.Component {
           contentProps={contentProps}
           label={submitButtonLabel}
           ref={el => (this.submitButton = el)}
-          display={shouldShowSubmitButton ? 'initial' : 'none'}
+          display={shouldShowSubmitButton ? 'block' : 'none'}
         />
         {auxiliaryPane && (
           <TransitionGroup>
