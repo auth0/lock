@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.7.1](https://github.com/auth0/lock/tree/v11.7.1) (2018-06-01)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.0...v11.7.1)
+
+
+**Fixed**
+- Fix IE submit button display:initial issue [\#1394](https://github.com/auth0/lock/pull/1394) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.7.0](https://github.com/auth0/lock/tree/v11.7.0) (2018-05-28)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.6.1...v11.7.0)
 
