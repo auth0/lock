@@ -22,20 +22,20 @@ export const stubWebApis = () => {
   stub(ClientSettings, 'fetchClientSettings', (...args) => {
     args[args.length - 1](null, clientSettings);
   });
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
 
 export const stubWebApisForKerberos = () => {
   SSOData.fetchSSOData.restore();
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
 export const unStubWebApisForKerberos = () => {
   SSOData.fetchSSOData.restore();
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
