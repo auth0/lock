@@ -1,5 +1,5 @@
 import { setField } from './index';
 
 export function setVcode(m, str) {
-  return setField(m, 'vcode', str);
+  return setField(m, 'vcode', str.replace(/[\s-]+/g, ''));
 }
