@@ -354,7 +354,12 @@ export function databaseLogInWithEmail(m) {
 }
 
 export function databaseUsernameValue(m) {
-  return getFieldValue(m, databaseLogInWithEmail(m) ? 'email' : 'username');
+  const isEmailOnly = databaseLogInWithEmail(m);
+  if (isEmailOnly) {
+    return getFieldValue(m, 'email');
+  }
+
+  return getFieldValue(m, 'username') || getFieldValue(m, 'email');
 }
 
 export function authWithUsername(m) {

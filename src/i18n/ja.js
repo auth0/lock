@@ -71,7 +71,7 @@ export default {
   passwordInputPlaceholder: 'パスワード',
   passwordStrength: {
     containsAtLeast: '%d が一文字以上含まれる必要があります:',
-    identicalChars: '連続して同じ文字を％d個以上入力できません（例："％s "は使用できません）',
+    identicalChars: '連続して同じ文字を%d個以上入力できません（例："%s "は使用できません）',
     nonEmpty: 'パスワードは必須です',
     numbers: '数字 (0-9)',
     lengthAtLeast: '%d 文字以上',
@@ -81,7 +81,7 @@ export default {
     upperCase: '大文字のアルファベット (A-Z)'
   },
   passwordlessEmailAlternativeInstructions: 'メールアドレスを入力するか<br/>アカウントを作成してください。',
-  passwordlessEmailCodeInstructions: '％s へメールでコードが送信されました。',
+  passwordlessEmailCodeInstructions: '%s へメールでコードが送信されました。',
   passwordlessEmailInstructions: 'メールアドレスを入力してログイン<br/>またはアカウントを作成してください。',
   passwordlessSMSAlternativeInstructions: 'もしくは電話番号を入力してログイン<br/>またはアカウントを作成してください。',
   passwordlessSMSCodeInstructions: '%s へSMSでコードが送信されました。',

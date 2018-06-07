@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Auth0APIClient getSSOData should call client.client.getSSOData 1`] = `
+Array [
+  true,
+  [Function],
+]
+`;
+
 exports[`Auth0APIClient getUserCountry should call getUserCountry 1`] = `
 Array [
   "cb",

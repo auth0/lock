@@ -22,20 +22,20 @@ export const stubWebApis = () => {
   stub(ClientSettings, 'fetchClientSettings', (...args) => {
     args[args.length - 1](null, clientSettings);
   });
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
 
 export const stubWebApisForKerberos = () => {
   SSOData.fetchSSOData.restore();
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
 export const unStubWebApisForKerberos = () => {
   SSOData.fetchSSOData.restore();
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
@@ -191,7 +191,7 @@ export const hasSocialButtons = hasViewFn('.auth0-lock-social-button');
 export const hasSSONotice = hasViewFn('.auth0-sso-notice-container');
 export const hasSubmitButton = hasFn('button.auth0-lock-submit[name=submit]');
 export const hasSubmitButtonVisible = lock =>
-  q(lock, 'button.auth0-lock-submit[name=submit]', false).style.display !== 'none';
+  q(lock, 'button.auth0-lock-submit[name=submit]', false).style.display === 'block';
 export const hasUsernameInput = hasInputFn('username');
 export const isLoginTabCurrent = lock => isTabCurrent(lock, /log in/i);
 export const isSignUpTabCurrent = lock => isTabCurrent(lock, /sign up/i);
