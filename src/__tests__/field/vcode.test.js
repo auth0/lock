@@ -12,8 +12,8 @@ describe('field/vcode', () => {
     vcode = require('field/vcode');
   });
   describe('setVcode()', () => {
-    it(`trims code`, () => {
-      vcode.setVcode(Immutable.fromJS({}), ' 123456 ');
+    it(`removes spaces from code`, () => {
+      vcode.setVcode(Immutable.fromJS({}), ' 123 456 ');
       const { mock } = require('field/index').setField;
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
