@@ -1,5 +1,17 @@
 # Change Log
 
+## [v11.7.2](https://github.com/auth0/lock/tree/v11.7.2) (2018-06-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.1...v11.7.2)
+
+
+**Added**
+- Added an i18n file for the Norwegian Nynorsk language [\#1398](https://github.com/auth0/lock/pull/1398) ([cjrorvik](https://github.com/cjrorvik))
+
+**Fixed**
+- SSO: Fallback to email if the username field is empty [\#1400](https://github.com/auth0/lock/pull/1400) ([sandrinodimattia](https://github.com/sandrinodimattia))
+- Fixed some typos and corrected some mistakes in the Norwegian Bokmaal [\#1399](https://github.com/auth0/lock/pull/1399) ([cjrorvik](https://github.com/cjrorvik))
+
+
 ## [v11.7.1](https://github.com/auth0/lock/tree/v11.7.1) (2018-06-01)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.7.0...v11.7.1)
 
