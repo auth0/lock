@@ -1,7 +1,7 @@
 import Immutable, { List, Map } from 'immutable';
 import { databaseUsernameValue } from '../../../connection/database';
 
-describe.only('databaseUsernameValue', () => {
+describe('databaseUsernameValue', () => {
   const getModel = (email, username, usernameRequired) =>
     Immutable.fromJS({
       field: {
