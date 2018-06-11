@@ -6,9 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Du har nådd grensen for antall forsøk på å endre passord. Vennligst vent en stund før du forsøker på nytt',
-      'lock.fallback': 'Beklager, men noe gikk galt da du forsøkte å endre passordet.',
+      'lock.fallback': 'Beklager, men noe gikk galt når du forsøkte å endre passordet.',
       enterprise_email:
-        'E-postdomenet ditt er en del av en Enterprise Identity-leverandør. For å tilbakestille passordet, vennligst se din sikkerhetsadministrator.',
+        'E-postdomenet ditt er en del av en Enterprise Identity-leverandør. For å tilbakestille passordet, vennligst se din sikkerhetsadministrator.'
     },
     login: {
       blocked_user: 'Denne brukeren er blokkert',
@@ -34,12 +34,12 @@ export default {
         'Vi kunne ikke fullføre forespørselen om autorisering. Forsøk å lukke andre åpne faner eller vinduer, og prøv på nytt.',
       'hrd.not_matching_email': 'Vennligst bruk din korrekte e-postadresse for innlogging.',
       'lock.mfa_registration_required':
-        'Multifaktorautentisering kreves, men enheten din er ikke påmeldt. Vennligst meld deg inn før du går videre.',
+        'Multifaktorautentisering kreves, men enheten din er ikke påmeldt. Vennligst meld deg inn før du går videre.'
     },
     passwordless: {
       'bad.email': 'Ugyldig e-postadresse',
       'bad.phone_number': 'Ugyldig telefonnummer',
-      'lock.fallback': 'Beklager, men noe gikk galt',
+      'lock.fallback': 'Beklager, men noe gikk galt'
     },
     signUp: {
       invalid_password: 'Ugyldig passord.',
@@ -48,14 +48,14 @@ export default {
       password_no_user_info_error: 'Passordet er basert på kjente bruksdata.',
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukeren eksisterer allerede.',
-      username_exists: 'Dette brukernavnet eksisterer allerede.',
-    },
+      username_exists: 'Dette brukernavnet eksisterer allerede.'
+    }
   },
   success: {
     logIn: 'Takk for innloggingen.',
     forgotPassword: 'Vi har akkurat sendt deg en e-post hvor du kan endre ditt passord.',
     magicLink: 'Vi har sendt deg en link for å logge inn på %s.',
-    signUp: 'Takk for registreringen!.',
+    signUp: 'Takk for registreringen!.'
   },
   blankErrorHint: 'Dette feltet kan ikke være tomt',
   codeInputPlaceholder: 'din kode',
@@ -71,10 +71,10 @@ export default {
   forgotPasswordTitle: 'Nullstill ditt passord',
   forgotPasswordAction: 'Har du glemt ditt passord?',
   forgotPasswordInstructions:
-    'Vennligst skriv inn din e-postadresse, og vi vil sende den en e-post hvor du kan nullstille ditt passord.',
+    'Vennligst skriv inn din e-postadresse, og vi vil sende deg en e-post hvor du kan nullstille ditt passord.',
   forgotPasswordSubmitLabel: 'Send e-post',
   invalidErrorHint: 'Ugyldig',
-  lastLoginInstructions: 'Sist gang logget du deg inn med',
+  lastLoginInstructions: 'Sist gang du logget deg inn med',
   loginAtLabel: 'Logg inn som %s',
   loginLabel: 'Logg inn',
   loginSubmitLabel: 'Logg inn',
@@ -84,13 +84,13 @@ export default {
   passwordStrength: {
     containsAtLeast: 'Inneholder minst %d av følgende %d type tegn',
     identicalChars: 'Ikke flere enn %d identiske tegn på rad (eks., "%s" er tillatt)',
-    nonEmpty: 'Ikke-tomt passord kreves',
+    nonEmpty: 'Passordet kan ikke være tomt',
     numbers: 'Tallsifre (eks. 0-9)',
     lengthAtLeast: 'Minst %d tegn',
     lowerCase: 'Små bokstaver (a-z)',
     shouldContain: 'Bør inneholde:',
     specialCharacters: 'Spesialtegn (eks. !@#$%^&*)',
-    upperCase: 'Store bokstaver (A-Z)',
+    upperCase: 'Store bokstaver (A-Z)'
   },
   passwordlessEmailAlternativeInstructions:
     'Eller, skriv inn din e-postadresse for å logge inn <br/> eller opprette en brukerkonto',
@@ -111,12 +111,12 @@ export default {
   showPassword: 'Vis passord',
   signupTitle: 'Registrer deg',
   signUpLabel: 'Registrer deg',
-  signUpSubmitLabel: 'Registrer deg',
+  signUpSubmitLabel: '',
   signUpTerms: '',
   signUpWithLabel: 'Registrer deg med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
-  ssoEnabled: 'Ettstegs innlogging klart',
+  ssoEnabled: 'Ett-stegs innlogging klart',
   submitLabel: 'Send',
   unrecoverableError: 'Noe gikk galt.<br/> Vennligst kontakt teknisk support.',
   usernameFormatErrorHint: 'Bruk %d-%d bokstaver, tall og følgende spesialtegn: "_", ".", "+", "-"',
@@ -130,5 +130,5 @@ export default {
   mfaLoginTitle: '2-stegs verifisering',
   mfaLoginInstructions: 'Vennligst tast inn verifiseringskoden som er generert på din mobilenhet',
   mfaSubmitLabel: 'Logg inn',
-  mfaCodeErrorHint: 'Bruk %d tall',
+  mfaCodeErrorHint: 'Bruk %d tall'
 };

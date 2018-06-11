@@ -71,7 +71,7 @@ export default {
   forgotPasswordTitle: 'Nullstill ditt passord',
   forgotPasswordAction: 'Har du gløymt ditt passord?',
   forgotPasswordInstructions:
-    'Ver venleg og skriv inn di e-postadresse, og vi vil sende den ein e-post der du kan nullstille ditt passord.',
+    'Ver venleg og skriv inn di e-postadresse, og vi vil sende deg ein e-post der du kan nullstille ditt passord.',
   forgotPasswordSubmitLabel: 'Send e-post',
   invalidErrorHint: 'Ugyldig',
   lastLoginInstructions: 'Sist gang du logga deg inn med',
