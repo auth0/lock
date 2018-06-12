@@ -30,13 +30,7 @@ describe('Chrome', () => {
   it('`debug` does not call console.log when !__DEV__', () => {
     global.__DEV__ = false;
     const Chrome = getChrome();
-    var c = new Chrome({
-      contentProps: {
-        model: {
-          toJS: () => 'jsmodel'
-        }
-      }
-    });
+    var c = new Chrome({});
 
     c.debug();
     const { mock } = global.console.log;
