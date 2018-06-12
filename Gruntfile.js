@@ -7,6 +7,9 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
+const getWebpackConfig = ({ dev }) =>
+  Object.assign({}, webpackConfig, dev ? {} : { plugins: undefined });
+
 module.exports = function(grunt) {
   const pkg_info = grunt.file.readJSON('package.json');
 
@@ -39,7 +42,7 @@ module.exports = function(grunt) {
       touch_index: 'touch src/index.js'
     },
     webpack: {
-      options: webpackConfig,
+      options: getWebpackConfig({ dev: false }),
       build: {
         devtool: 'source-map',
         output: {
@@ -53,6 +56,7 @@ module.exports = function(grunt) {
             debug: false
           }),
           new webpack.DefinePlugin({
+            __DEV__: 'false',
             'process.env': {
               NODE_ENV: JSON.stringify('production')
             }
@@ -74,7 +78,7 @@ module.exports = function(grunt) {
     },
     'webpack-dev-server': {
       options: {
-        webpack: webpackConfig,
+        webpack: getWebpackConfig({ dev: true }),
         publicPath: '/build/'
       },
       dev: {

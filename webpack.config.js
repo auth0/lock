@@ -22,6 +22,11 @@ module.exports = {
     modules: true,
     reasons: true
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      __DEV__: 'true'
+    })
+  ],
   module: {
     rules: [
       {
