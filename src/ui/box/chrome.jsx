@@ -166,6 +166,12 @@ export default class Chrome extends React.Component {
     }
   }
 
+  debug = () => {
+    if (__DEV__) {
+      console.log(this.props.contentProps.model.toJS());
+    }
+  };
+
   mainScreenName(str) {
     return (str || this.props.screenName || '').split('.')[0];
   }
@@ -259,14 +265,16 @@ export default class Chrome extends React.Component {
 
     return (
       <div className={className}>
-        <Header
-          title={title}
-          name={name}
-          backHandler={backHandler && ::this.handleBack}
-          backgroundUrl={backgroundUrl}
-          backgroundColor={primaryColor}
-          logoUrl={logo}
-        />
+        <div onClick={this.debug}>
+          <Header
+            title={title}
+            name={name}
+            backHandler={backHandler && ::this.handleBack}
+            backgroundUrl={backgroundUrl}
+            backgroundColor={primaryColor}
+            logoUrl={logo}
+          />
+        </div>
         <TransitionGroup>
           <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
             <div>
