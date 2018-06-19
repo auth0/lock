@@ -43,7 +43,7 @@ export default class ResetPassword extends Screen {
   isSubmitDisabled(m) {
     const tryingToResetPasswordWithEnterpriseEmail = isEnterpriseDomain(
       m,
-      databaseUsernameValue(m)
+      databaseUsernameValue(m, { emailFirst: true })
     );
     if (tryingToResetPasswordWithEnterpriseEmail) {
       swap(
