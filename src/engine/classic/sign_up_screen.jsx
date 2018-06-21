@@ -21,7 +21,7 @@ import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 
 const Component = ({ i18n, model }) => {
-  const sso = isSSOEnabled(model) && hasScreen(model, 'login');
+  const sso = isSSOEnabled(model, { emailFirst: true }) && hasScreen(model, 'login');
   const ssoNotice = sso && <SingleSignOnNotice>{i18n.str('ssoEnabled')}</SingleSignOnNotice>;
 
   const tabs = !sso &&
@@ -87,10 +87,11 @@ export default class SignUp extends Screen {
 
   submitHandler(m) {
     if (hasOnlyClassicConnections(m, 'social')) return null;
-    if (isHRDDomain(m, databaseUsernameValue(m))) {
-      return id => startHRD(id, databaseUsernameValue(m));
+    const username = databaseUsernameValue(m, { emailFirst: true });
+    if (isHRDDomain(m, username)) {
+      return id => startHRD(id, username);
     }
-    if (isSSOEnabled(m)) return enterpriseLogIn;
+    if (isSSOEnabled(m, { emailFirst: true })) return enterpriseLogIn;
     return signUp;
   }
 
