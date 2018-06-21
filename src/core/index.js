@@ -157,7 +157,9 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable ? true : !!options.closable;
+    : undefined === options.closable
+      ? true
+      : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -193,6 +195,7 @@ function extractUIOptions(id, options) {
     allowAutocomplete: !!options.allowAutocomplete,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
     allowShowPassword: !!options.allowShowPassword,
+    allowPasswordAutocomplete: !!options.allowPasswordAutocomplete,
     scrollGlobalMessagesIntoView:
       undefined === options.scrollGlobalMessagesIntoView
         ? true
@@ -229,7 +232,9 @@ export const ui = {
   rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin')),
   allowAutocomplete: m => tget(m, 'allowAutocomplete', getUIAttribute(m, 'allowAutocomplete')),
   scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
-  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword'))
+  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword')),
+  allowPasswordAutocomplete: m =>
+    tget(m, 'allowPasswordAutocomplete', getUIAttribute(m, 'allowPasswordAutocomplete'))
 };
 
 const { get: getAuthAttribute } = dataFns(['core', 'auth']);
@@ -615,6 +620,9 @@ export function overrideOptions(m, opts) {
   }
   if (typeof opts.allowShowPassword === 'boolean') {
     m = tset(m, 'allowShowPassword', opts.allowShowPassword);
+  }
+  if (typeof opts.allowPasswordAutocomplete === 'boolean') {
+    m = tset(m, 'allowPasswordAutocomplete', opts.allowPasswordAutocomplete);
   }
 
   return m;
