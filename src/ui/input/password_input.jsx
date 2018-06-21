@@ -17,7 +17,8 @@ export default class PasswordInput extends React.Component {
     policy: PropTypes.string,
     strengthMessages: PropTypes.object,
     value: PropTypes.string.isRequired,
-    showPassword: PropTypes.bool.isRequired
+    showPassword: PropTypes.bool.isRequired,
+    lock: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -43,6 +44,7 @@ export default class PasswordInput extends React.Component {
       strengthMessages,
       value,
       showPassword,
+      lock,
       ...props
     } = this.props;
 
