@@ -11,7 +11,10 @@ describe('ResetPasswordScreen', () => {
     jest.resetModules();
 
     jest.mock('connection/database/index', () => ({
-      databaseUsernameValue: () => 'foo@test.com'
+      databaseUsernameValue: (model, options) => {
+        expect(options.emailFirst).toBe(true);
+        return 'foo@test.com';
+      }
     }));
 
     jest.mock('connection/enterprise', () => ({

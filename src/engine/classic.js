@@ -42,8 +42,8 @@ import { hasError, isDone, isSuccess } from '../sync';
 import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
 
-export function isSSOEnabled(m) {
-  return matchesEnterpriseConnection(m, databaseUsernameValue(m));
+export function isSSOEnabled(m, options) {
+  return matchesEnterpriseConnection(m, databaseUsernameValue(m, options));
 }
 
 export function matchesEnterpriseConnection(m, usernameValue) {
