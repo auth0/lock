@@ -49,10 +49,6 @@ export default class LoginPane extends React.Component {
         />
       );
 
-    const passwordPane = showPassword ? (
-      <PasswordPane i18n={i18n} lock={lock} placeholder={passwordInputPlaceholder} />
-    ) : null;
-
     const dontRememberPassword =
       showForgotPasswordLink && hasScreen(lock, 'forgotPassword') ? (
         <p className="auth0-lock-alternative">
@@ -70,7 +66,12 @@ export default class LoginPane extends React.Component {
       <div>
         {header}
         {fieldPane}
-        {passwordPane}
+        <PasswordPane
+          i18n={i18n}
+          lock={lock}
+          placeholder={passwordInputPlaceholder}
+          hidden={!showPassword}
+        />
         {dontRememberPassword}
       </div>
     );

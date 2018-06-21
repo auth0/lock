@@ -179,6 +179,9 @@ export const hasOneSocialBigButton = hasOneViewFn(
   '.auth0-lock-social-button.auth0-lock-social-big-button'
 );
 export const hasPasswordInput = hasInputFn('password');
+export const hasHiddenPasswordInput = lock =>
+  hasFn('.auth0-lock-input-block.auth0-lock-input-show-password.auth0-lock-hidden')(lock) &&
+  hasPasswordInput(lock);
 export const hasTermsCheckbox = hasFn(
   ".auth0-lock-sign-up-terms-agreement label input[type='checkbox']"
 );

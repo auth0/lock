@@ -55,6 +55,10 @@ describe('PasswordPane', () => {
     const PasswordPane = getComponent();
     expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });
+  it('renders correct css className when `hidden` is true', () => {
+    const PasswordPane = getComponent();
+    expectComponent(<PasswordPane {...defaultProps} hidden />).toMatchSnapshot();
+  });
   it('disables input when submitting', () => {
     require('core/index').submitting = () => true;
     const PasswordPane = getComponent();
