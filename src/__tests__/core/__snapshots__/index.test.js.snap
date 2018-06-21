@@ -58,6 +58,7 @@ Object {
   "tenantBaseUrl": "https://domain/info-v1.js",
   "ui": Object {
     "allowAutocomplete": false,
+    "allowPasswordAutocomplete": false,
     "allowShowPassword": false,
     "appendContainer": true,
     "authButtonsTheme": Object {},
