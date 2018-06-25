@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "11.4.0",
+  "version": "11.7.2",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -87,7 +87,7 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "^9.3.3",
+    "auth0-js": "^9.6.1",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "immutable": "^3.7.3",

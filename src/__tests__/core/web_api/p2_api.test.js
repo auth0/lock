@@ -14,7 +14,8 @@ const getClient = (options = {}) => {
   };
   client.client.client = {
     login: jest.fn(),
-    getUserCountry: jest.fn()
+    getUserCountry: jest.fn(),
+    getSSOData: jest.fn()
   };
   return client;
 };
@@ -36,10 +37,15 @@ describe('Auth0APIClient', () => {
           leeway: 60,
           overrides: {
             __tenant: 'tenant1',
-            __token_issuer: 'issuer1'
+            __token_issuer: 'issuer1',
+            __jwks_uri: 'https://jwks.com'
           },
           plugins: [{ name: 'ExamplePlugin' }],
-          _telemetryInfo: {}
+          _telemetryInfo: {},
+          params: {
+            nonce: 'nonce',
+            state: 'state'
+          }
         };
         const client = getClient(options);
         const mock = getAuth0ClientMock();
@@ -69,6 +75,30 @@ describe('Auth0APIClient', () => {
         const options = {};
         const client = getClient(options);
         expect(client.authOpt.sso).toBe(undefined);
+      });
+      it('should set state from options.state', () => {
+        const client = getClient({ state: 'foo' });
+        expect(client.authOpt.state).toBe('foo');
+      });
+      it('should set state from options.params.state', () => {
+        const client = getClient({ params: { state: 'foo' } });
+        expect(client.authOpt.state).toBe('foo');
+      });
+      it('options.params.state should prevail over options.state', () => {
+        const client = getClient({ state: 'bar', params: { state: 'foo' } });
+        expect(client.authOpt.state).toBe('foo');
+      });
+      it('should set nonce from options.nonce', () => {
+        const client = getClient({ nonce: 'foo' });
+        expect(client.authOpt.nonce).toBe('foo');
+      });
+      it('should set nonce from options.params.nonce', () => {
+        const client = getClient({ params: { nonce: 'foo' } });
+        expect(client.authOpt.nonce).toBe('foo');
+      });
+      it('options.params.nonce should prevail over options.nonce', () => {
+        const client = getClient({ nonce: 'bar', params: { nonce: 'foo' } });
+        expect(client.authOpt.nonce).toBe('foo');
       });
     });
   });
@@ -159,8 +189,15 @@ describe('Auth0APIClient', () => {
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
+  it('getSSOData should call client.client.getSSOData', () => {
+    const client = getClient({});
+    client.getSSOData(true, () => {});
+    const { mock } = client.client.client.getSSOData;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
+  });
   describe('parseHash', () => {
-    it('should pass __enableImpersonation:false when options._enableImpersonation is not present', () => {
+    it('should pass __enableIdPInitiatedLogin:false when options._enableImpersonation and options._enableIdPInitiatedLogin are not present', () => {
       const client = getClient({});
       client.parseHash('hash', 'cb');
       const mock = getAuth0ClientMock();
@@ -168,8 +205,16 @@ describe('Auth0APIClient', () => {
       expect(parseHashMock.calls.length).toBe(1);
       expect(parseHashMock.calls[0]).toMatchSnapshot();
     });
-    it('should pass __enableImpersonation when options._enableImpersonation===true', () => {
+    it('should pass __enableIdPInitiatedLogin when options._enableImpersonation===true', () => {
       const client = getClient({ _enableImpersonation: true });
+      client.parseHash('hash', 'cb');
+      const mock = getAuth0ClientMock();
+      const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
+      expect(parseHashMock.calls.length).toBe(1);
+      expect(parseHashMock.calls[0]).toMatchSnapshot();
+    });
+    it('should pass __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true', () => {
+      const client = getClient({ _enableIdPInitiatedLogin: true });
       client.parseHash('hash', 'cb');
       const mock = getAuth0ClientMock();
       const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;

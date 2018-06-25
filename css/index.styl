@@ -294,7 +294,7 @@ tabsHeight = 40px
     box-sizing border-box
 
   .auth0-lock-form
-    display block
+    display initial
     -webkit-animation fadeIn .2s
     animation fadeIn .2s
 
@@ -350,6 +350,7 @@ tabsHeight = 40px
       width 12px
       height 14px
       right 14px
+      pointer-events none
 
     .auth0-lock-icon, .auth0-lock-custom-icon
       position absolute
@@ -1360,3 +1361,6 @@ tabsHeight = 40px
 
 input[type="button"]
    cursor pointer
+
+.auth0-lock-hidden
+  display: none

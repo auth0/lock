@@ -2,7 +2,7 @@ import urljoin from 'url-join';
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
-import { parseUrl } from '../utils/url_utils';
+import { getLocationFromUrl, getOriginFromUrl } from '../utils/url_utils';
 import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
@@ -273,7 +273,8 @@ function extractAuthOptions(options) {
   // if responseType was not set and there is a redirectUrl, it defaults to code. Otherwise token.
   responseType = typeof responseType === 'string' ? responseType : redirectUrl ? 'code' : 'token';
   // now we set the default because we already did the validation
-  redirectUrl = redirectUrl || `${window.location.origin}${window.location.pathname}`;
+  redirectUrl =
+    redirectUrl || `${getOriginFromUrl(window.location.href)}${window.location.pathname}`;
 
   sso = typeof sso === 'boolean' ? sso : true;
 
@@ -316,7 +317,7 @@ function extractClientBaseUrlOption(opts, domain) {
   }
 
   const domainUrl = 'https://' + domain;
-  const hostname = parseUrl(domainUrl).hostname;
+  const hostname = getLocationFromUrl(domainUrl).hostname;
   const DOT_AUTH0_DOT_COM = '.auth0.com';
   const AUTH0_US_CDN_URL = 'https://cdn.auth0.com';
   if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
@@ -339,7 +340,7 @@ export function extractTenantBaseUrlOption(opts, domain) {
   }
 
   const domainUrl = 'https://' + domain;
-  const hostname = parseUrl(domainUrl).hostname;
+  const hostname = getLocationFromUrl(domainUrl).hostname;
   const DOT_AUTH0_DOT_COM = '.auth0.com';
   const AUTH0_US_CDN_URL = 'https://cdn.auth0.com';
 

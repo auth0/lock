@@ -117,17 +117,17 @@ export function loginCallback(redirect, cb) {
     : (error, result) => cb(normalizeError(error), result);
 }
 
-export function normalizeAuthParams({ popup, popupOptions, ...authParams }) {
+export function normalizeAuthParams({ popup, ...authParams }) {
   return authParams;
 }
 
-export function webAuthOverrides({ __tenant, __token_issuer } = {}) {
-  if (__tenant || __token_issuer) {
+export function webAuthOverrides({ __tenant, __token_issuer, __jwks_uri } = {}) {
+  if (__tenant || __token_issuer || __jwks_uri) {
     return {
       __tenant,
-      __token_issuer
+      __token_issuer,
+      __jwks_uri
     };
   }
-
   return null;
 }

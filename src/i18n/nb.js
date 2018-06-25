@@ -15,7 +15,7 @@ export default {
       invalid_user_password: 'Feil legitimasjon.',
       'lock.fallback': 'Beklager, noe gikk galt med innloggingsforsøket.',
       'lock.invalid_code': 'Feil kode.',
-      'lock.invalid_email_password': 'Feil epost eller passord.',
+      'lock.invalid_email_password': 'Feil e-post eller passord.',
       'lock.invalid_username_password': 'Feil brukernavn eller passord.',
       'lock.network': 'Kunne ikke kontakte serveren. Sjekk nettforbindelsen din og prøv igjen.',
       'lock.popup_closed': 'Popup vinduet ble lukket. Prøv igjen.',
@@ -33,7 +33,7 @@ export default {
       'hrd.not_matching_email': 'Vennligst bruk bedriftens e-post å logge inn.'
     },
     passwordless: {
-      'bad.email': 'Epost-adressen er ugyldig',
+      'bad.email': 'E-postadressen er ugyldig',
       'bad.phone_number': 'Telefonnummeret er ugyldig',
       'lock.fallback': 'Beklager, noe gikk galt'
     },
@@ -41,7 +41,7 @@ export default {
       invalid_password: 'Passordet er ugyldig.',
       'lock.fallback': 'Beklager, noe gikk galt under registreringen.',
       password_dictionary_error: 'Passordet er for vanlig.',
-      password_no_user_info_error: 'Passordet er basert på bruker-informasjon.',
+      password_no_user_info_error: 'Passordet er basert på kjent bruksdata.',
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Brukeren finnes fra før.',
       username_exists: 'Brukernavnet finnes fra før.'
@@ -49,8 +49,8 @@ export default {
   },
   success: {
     logIn: 'Takk for at du logget inn.',
-    forgotPassword: 'Vi sendte nettopp en epost for å nullstille passordet ditt.',
-    magicLink: 'Vi sendte en lenke for å logge inn<br>på %s.',
+    forgotPassword: 'Vi sendte nettopp en e-post for å nullstille passordet ditt.',
+    magicLink: 'Vi har sendt deg en lenke for å logge inn på<br> %s.',
     signUp: 'Takk for at du registrerte deg.'
   },
   blankErrorHint: 'Kan ikke være tom',
@@ -59,17 +59,17 @@ export default {
   databaseEnterpriseAlternativeLoginInstructions: 'eller',
   databaseSignUpInstructions: '',
   databaseAlternativeSignUpInstructions: 'eller',
-  emailInputPlaceholder: 'din.epost@example.com',
+  emailInputPlaceholder: 'din.epost@example.no',
   enterpriseLoginIntructions: 'Logg inn med bedrifts-legitimasjon.',
   enterpriseActiveLoginInstructions: 'Fyll inn bedrifts-legitimasjon ved %s.',
   failedLabel: 'Mislyktes!',
   forgotPasswordAction: 'Husker du ikke passordet?',
   forgotPasswordInstructions:
-    'Skriv inn epost-adressen din. Vi sender deg en epost for å nullstille passordet.',
-  forgotPasswordSubmitLabel: 'Send epost',
+    'Skriv inn e-postadressen din. Vi sender deg en e-post for å nullstille passordet.',
+  forgotPasswordSubmitLabel: 'Send e-post',
   invalidErrorHint: 'Ugyldig',
   lastLoginInstructions: 'Forrige gang logget du inn med',
-  loginAtLabel: 'Logg inn påLog in at %s',
+  loginAtLabel: 'Logg inn på %s',
   loginLabel: 'Logg inn',
   loginSubmitLabel: 'Logg inn',
   loginWithLabel: 'Logg inn med %s',
@@ -77,7 +77,7 @@ export default {
   passwordInputPlaceholder: 'ditt passord',
   passwordStrength: {
     containsAtLeast: 'Inneholder minst %d av følgende %d type tegn:',
-    identicalChars: 'Ikke mer enn %d like tegn etterhverandre (dvs. "%s" er ikke tillatt)',
+    identicalChars: 'Ikke mer enn %d like tegn etter hverandre (dvs. "%s" er ikke tillatt)',
     nonEmpty: 'Passordet kan ikke være tomt',
     numbers: 'Tall (dvs. 0-9)',
     lengthAtLeast: 'Minst %d tegn langt',
@@ -87,15 +87,15 @@ export default {
     upperCase: 'Store bokstaver (A-Å)'
   },
   passwordlessEmailAlternativeInstructions:
-    'Alternativt, skriv inn din epost-adresse for å logge inn<br>eller opprette en konto',
-  passwordlessEmailCodeInstructions: 'En epost med koden har blitt sendt til %s.',
+    'Alternativt, skriv inn din e-postadresse for å logge inn<br>eller opprette en konto',
+  passwordlessEmailCodeInstructions: 'En e-post med koden har blitt sendt til %s.',
   passwordlessEmailInstructions:
-    'Skriv inn din epost-adresse for å logge inn<br>eller opprette en konto',
+    'Skriv inn din e-postadresse for å logge inn<br>eller opprett en konto',
   passwordlessSMSAlternativeInstructions:
-    'Alternativt, skriv inn ditt telefonnummer for å logge inn<br>eller opprette en konto',
-  passwordlessSMSCodeInstructions: 'En SMS med koden har blitt sendt til %s.',
+    'Alternativt, skriv inn ditt telefonnummer for å logge inn<br>eller opprett en konto',
+  passwordlessSMSCodeInstructions: 'En SMS med koden har blitt sendt<br/>til %s.',
   passwordlessSMSInstructions:
-    'Skriv inn ditt telefonnummer for å logge inn<br>eller opprette en konto',
+    'Skriv inn ditt telefonnummer for å logge inn<br>eller opprett en konto',
   phoneNumberInputPlaceholder: 'ditt telefonnummer',
   resendCodeAction: 'Fikk du ikke koden?',
   resendLabel: 'Send på nytt',
@@ -116,7 +116,7 @@ export default {
   usernameOrEmailInputPlaceholder: 'brukernavn/epost',
   title: 'Auth0',
   welcome: 'Velkommen %s!',
-  windowsAuthInstructions: 'Du er tilkoblet via ditt bedrifts-nettverk&hellip;',
+  windowsAuthInstructions: 'Du er tilkoblet via ditt bedrifts-nettverk;',
   windowsAuthLabel: 'Windows-autentisering',
   mfaInputPlaceholder: 'Kode',
   mfaLoginTitle: 'Tofaktor-verifisering',
@@ -124,6 +124,6 @@ export default {
   mfaSubmitLabel: 'Logg inn',
   mfaCodeErrorHint: 'Bruk %d siffer',
   forgotPasswordTitle: 'Tilbakestille passordet ditt',
-  signupTitle: 'Melde deg på',
+  signupTitle: 'Logg inn',
   showPassword: 'Vis passord'
 };

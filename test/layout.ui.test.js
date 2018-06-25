@@ -184,7 +184,8 @@ describe('layout', function() {
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
       expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
     });
   });
 
@@ -207,7 +208,7 @@ describe('layout', function() {
       expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
       expect(h.hasEmailInput(this.lock)).to.be.ok();
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+      expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
       expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
@@ -232,7 +233,7 @@ describe('layout', function() {
       expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
       expect(h.hasEmailInput(this.lock)).to.be.ok();
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+      expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
       expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
@@ -465,7 +466,8 @@ describe('layout', function() {
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
       expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not my account
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
     });
   });
 
@@ -519,7 +521,8 @@ describe('layout', function() {
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
       expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
     });
   });
 });

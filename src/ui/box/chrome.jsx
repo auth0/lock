@@ -40,7 +40,7 @@ class SubmitButton extends React.Component {
   }
 
   render() {
-    const { color, disabled, label } = this.props;
+    const { color, disabled, label, display } = this.props;
     const content = label ? (
       <span className="auth0-label-submit">
         {label}
@@ -54,8 +54,9 @@ class SubmitButton extends React.Component {
       <button
         className="auth0-lock-submit"
         disabled={disabled}
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: color, display }}
         onClick={::this.handleSubmit}
+        name="submit"
         type="submit"
       >
         <div className="auth0-loading-container">
@@ -217,18 +218,7 @@ export default class Chrome extends React.Component {
       name = '';
     }
 
-    const submitButton = showSubmitButton &&
-      !delayingShowSubmitButton && (
-        <SubmitButton
-          color={primaryColor}
-          disabled={disableSubmitButton}
-          screenName={screenName}
-          contentProps={contentProps}
-          key="submit"
-          label={submitButtonLabel}
-          ref="submit"
-        />
-      );
+    const shouldShowSubmitButton = showSubmitButton && !delayingShowSubmitButton;
 
     function wrapGlobalMessage(message) {
       return typeof message === 'string'
@@ -309,7 +299,23 @@ export default class Chrome extends React.Component {
             </div>
           </MultisizeSlide>
         </div>
-        {submitButton}
+        {/*
+            The submit button should always be included in the DOM.
+            Otherwise, password managers will call `form.submit()`,
+            which doesn't trigger the `onsubmit` event handler, which
+            makes impossible for react to handle the submit event, 
+            causing the page to send a POST request to `window.location.href`
+            with all the form data.
+         */}
+        <SubmitButton
+          color={primaryColor}
+          disabled={disableSubmitButton}
+          screenName={screenName}
+          contentProps={contentProps}
+          label={submitButtonLabel}
+          ref={el => (this.submitButton = el)}
+          display={shouldShowSubmitButton ? 'block' : 'none'}
+        />
         {auxiliaryPane && (
           <TransitionGroup>
             <CSSTransition
@@ -326,7 +332,7 @@ export default class Chrome extends React.Component {
   }
 
   focusSubmit() {
-    this.refs.submit.focus();
+    this.submitButton.focus();
   }
 
   handleBack() {

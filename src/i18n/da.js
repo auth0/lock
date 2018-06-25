@@ -50,7 +50,7 @@ export default {
   },
   success: {
     logIn: 'Tak fordi du loggede ind.',
-    forgotPassword: 'Vi har sendt den en e-mail med instruktioner til at nulstille dit kodeord.',
+    forgotPassword: 'Vi har sendt dig en e-mail med instruktioner til at nulstille dit kodeord.',
     magicLink: 'Vi har sendt dig et link, som du kan bruge til at logge ind<br />i %s.',
     signUp: 'Tak fordi du oprettede en bruger.'
   },

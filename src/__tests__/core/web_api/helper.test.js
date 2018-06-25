@@ -2,12 +2,23 @@ import { webAuthOverrides, normalizeError } from 'core/web_api/helper';
 
 describe('webAuthOverrides', () => {
   it('should return overrides if any field is compatible with WebAuth', function() {
-    expect(webAuthOverrides({ __tenant: 'tenant1', __token_issuer: 'issuer1' })).toMatchSnapshot();
+    expect(
+      webAuthOverrides({
+        __tenant: 'tenant1',
+        __token_issuer: 'issuer1',
+        __jwks_uri: 'https://jwks.com'
+      })
+    ).toMatchSnapshot();
   });
 
   it('should omit overrides that are not compatible with WebAuth', function() {
     expect(
-      webAuthOverrides({ __tenant: 'tenant1', __token_issuer: 'issuer1', backgroundColor: 'blue' })
+      webAuthOverrides({
+        __tenant: 'tenant1',
+        __token_issuer: 'issuer1',
+        __jwks_uri: 'https://jwks.com',
+        backgroundColor: 'blue'
+      })
     ).toMatchSnapshot();
   });
 

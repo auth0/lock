@@ -22,20 +22,20 @@ export const stubWebApis = () => {
   stub(ClientSettings, 'fetchClientSettings', (...args) => {
     args[args.length - 1](null, clientSettings);
   });
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
 
 export const stubWebApisForKerberos = () => {
   SSOData.fetchSSOData.restore();
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
 export const unStubWebApisForKerberos = () => {
   SSOData.fetchSSOData.restore();
-  stub(SSOData, 'fetchSSOData', (id, cb) => {
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
 };
@@ -179,6 +179,9 @@ export const hasOneSocialBigButton = hasOneViewFn(
   '.auth0-lock-social-button.auth0-lock-social-big-button'
 );
 export const hasPasswordInput = hasInputFn('password');
+export const hasHiddenPasswordInput = lock =>
+  hasFn('.auth0-lock-input-block.auth0-lock-input-show-password.auth0-lock-hidden')(lock) &&
+  hasPasswordInput(lock);
 export const hasTermsCheckbox = hasFn(
   ".auth0-lock-sign-up-terms-agreement label input[type='checkbox']"
 );
@@ -189,7 +192,9 @@ export const hasQuickAuthButton = (lock, icon, domain) => {
 };
 export const hasSocialButtons = hasViewFn('.auth0-lock-social-button');
 export const hasSSONotice = hasViewFn('.auth0-sso-notice-container');
-export const hasSubmitButton = hasFn('button.auth0-lock-submit');
+export const hasSubmitButton = hasFn('button.auth0-lock-submit[name=submit]');
+export const hasSubmitButtonVisible = lock =>
+  q(lock, 'button.auth0-lock-submit[name=submit]', false).style.display === 'block';
 export const hasUsernameInput = hasInputFn('username');
 export const isLoginTabCurrent = lock => isTabCurrent(lock, /log in/i);
 export const isSignUpTabCurrent = lock => isTabCurrent(lock, /sign up/i);

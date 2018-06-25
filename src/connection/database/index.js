@@ -353,8 +353,15 @@ export function databaseLogInWithEmail(m) {
   return databaseUsernameStyle(m) === 'email';
 }
 
-export function databaseUsernameValue(m) {
-  return getFieldValue(m, databaseLogInWithEmail(m) ? 'email' : 'username');
+export function databaseUsernameValue(m, options = {}) {
+  const isEmailOnly = databaseLogInWithEmail(m);
+  if (isEmailOnly) {
+    return getFieldValue(m, 'email');
+  }
+  if (options.emailFirst) {
+    return getFieldValue(m, 'email') || getFieldValue(m, 'username');
+  }
+  return getFieldValue(m, 'username') || getFieldValue(m, 'email');
 }
 
 export function authWithUsername(m) {

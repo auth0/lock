@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.4.0/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.7.2/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -85,6 +85,10 @@ Initializes a new instance of `Auth0LockPasswordless` configured with your appli
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
 - **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 
+If both SMS and email passwordless connections are enabled [in the dashboard](https://manage.auth0.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or SMS, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
+
+Fore more information, read our [passwordless docs](https://auth0.com/docs/connections/passwordless).
+
 #### Example
 
 ```js
@@ -138,13 +142,14 @@ Lock will emit events during its lifecycle.
 - `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
 - `signin submit`: emitted when the user clicks on the submit button of the "Login" screen.
 - `signup submit`: emitted when the user clicks on the submit button of the "Sign up" screen.
+- `signup error`: emitted when signup fails. Has the error as an argument.
 - `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments. 
 
 ### show(options)
 
 Displays the widget, allowing to override some options.
 
-- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin` and `flashMessage`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
+- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, `flashMessage` and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
 #### Example
 
@@ -188,10 +193,10 @@ Logs out the user
 lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 ```
 
-### checkSession(options, callback)
+### checkSession(params, callback)
 
-The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the hosted login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your client. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
-- **options {Object}**: OAuth2 options object to send to Auth0's servers.
+The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
+- **params {Object}**: OAuth2 params object to send to Auth0's servers.
 - **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
 
 #### Example
@@ -304,7 +309,7 @@ var options = {
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
-- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your client or tenant.
+- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
 - **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social connection for authentication.
 
 #### Social options
@@ -346,9 +351,13 @@ var options = {
 };
 ```
 
+#### Passwordless options
+
+- **passwordlessMethod {String}**: When using `Auth0LockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://auth0.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://auth0.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values for email connections are `code` and `link`. Defaults to `code`. SMS passwordless connections will always use `code`.
+
 #### Other options
 
-- **configurationBaseUrl {String}**: Overrides client settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
+- **configurationBaseUrl {String}**: Overrides application settings base url. By default it uses Auth0's CDN url when `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
 - **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
 - **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback url after the user authentication. Defaults to `true`.
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context` and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a github [issue](https://github.com/auth0/lock/issues/new).**
@@ -511,7 +520,7 @@ var lock = new Auth0Lock(clientId, domain, options);
 lock.show();
 ```
 
-More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/popup-mode).
+More information can be found in [Auth0's documentation](https://auth0.com/docs/libraries/lock/v11/authentication-modes#popup-mode).
 
 ## Browser Compatibility
 

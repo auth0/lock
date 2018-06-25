@@ -12,13 +12,23 @@ class Auth0APIClient {
     this.authOpt = null;
     this.domain = domain;
     this.isUniversalLogin = window.location.host === domain;
-    this._enableImpersonation = !!opts._enableImpersonation;
+    this._enableIdPInitiatedLogin = !!(opts._enableIdPInitiatedLogin || opts._enableImpersonation);
 
     const default_telemetry = {
       name: 'lock.js',
       version: __VERSION__,
       lib_version: auth0.version
     };
+
+    var state = opts.state;
+    if (opts.params && opts.params.state) {
+      state = opts.params.state;
+    }
+
+    var nonce = opts.nonce;
+    if (opts.params && opts.params.nonce) {
+      nonce = opts.params.nonce;
+    }
 
     this.client = new auth0.WebAuth({
       clientID: clientID,
@@ -31,14 +41,16 @@ class Auth0APIClient {
       plugins: opts.plugins || [new CordovaAuth0Plugin()],
       overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
-      _telemetryInfo: opts._telemetryInfo || default_telemetry
+      _telemetryInfo: opts._telemetryInfo || default_telemetry,
+      state,
+      nonce
     });
 
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
-      nonce: opts.nonce,
-      state: opts.state
+      nonce: nonce,
+      state: state
     };
     if (this.isUniversalLogin && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;
@@ -94,7 +106,7 @@ class Auth0APIClient {
   parseHash(hash = '', cb) {
     return this.client.parseHash(
       {
-        __enableImpersonation: this._enableImpersonation,
+        __enableIdPInitiatedLogin: this._enableIdPInitiatedLogin,
         hash,
         nonce: this.authOpt.nonce,
         state: this.authOpt.state
@@ -111,17 +123,8 @@ class Auth0APIClient {
     this.getUserInfo(token, callback);
   }
 
-  getSSOData(cb) {
-    if (this.isUniversalLogin) {
-      superagent
-        .get(`https://${this.domain}/user/ssodata`)
-        .withCredentials()
-        .end((err, res) => {
-          cb(err, res.body);
-        });
-    } else {
-      return this.client.client.getSSOData(cb);
-    }
+  getSSOData(...params) {
+    return this.client.client.getSSOData(...params);
   }
 
   getUserCountry(cb) {

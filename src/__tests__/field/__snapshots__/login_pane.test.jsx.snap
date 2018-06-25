@@ -12,6 +12,7 @@ exports[`LoginPane hides password link when lock does not have the screen \`forg
   />
   <div
     data-__type="password_pane"
+    data-hidden={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="passwordInputPlaceholder"
@@ -31,6 +32,7 @@ exports[`LoginPane hides password link when showForgotPasswordLink === false 1`]
   />
   <div
     data-__type="password_pane"
+    data-hidden={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="passwordInputPlaceholder"
@@ -47,6 +49,13 @@ exports[`LoginPane hides password pane when showPassword===false 1`] = `
     data-placeholder="usernameInputPlaceholder"
     data-usernameStyle={undefined}
     data-validateFormat={false}
+  />
+  <div
+    data-__type="password_pane"
+    data-hidden={true}
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder"
   />
   <p
     className="auth0-lock-alternative"
@@ -74,6 +83,7 @@ exports[`LoginPane renders correctly 1`] = `
   />
   <div
     data-__type="password_pane"
+    data-hidden={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="passwordInputPlaceholder"
@@ -103,6 +113,7 @@ exports[`LoginPane shows email pane when user usernameStyle === email 1`] = `
   />
   <div
     data-__type="password_pane"
+    data-hidden={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="passwordInputPlaceholder"
@@ -136,6 +147,7 @@ exports[`LoginPane shows header when instructions is not empty 1`] = `
   />
   <div
     data-__type="password_pane"
+    data-hidden={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="passwordInputPlaceholder"
@@ -166,6 +178,7 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
   />
   <div
     data-__type="password_pane"
+    data-hidden={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="passwordInputPlaceholder"
@@ -196,6 +209,7 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 2`] = `
   />
   <div
     data-__type="password_pane"
+    data-hidden={false}
     data-i18n={Object {}}
     data-lock={Object {}}
     data-placeholder="passwordInputPlaceholder"

@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Auth0APIClient getSSOData should call client.client.getSSOData 1`] = `
+Array [
+  true,
+  [Function],
+]
+`;
+
 exports[`Auth0APIClient getUserCountry should call getUserCountry 1`] = `
 Array [
   "cb",
@@ -14,7 +21,9 @@ Object {
   "clientID": "cid",
   "domain": "me.auth0.com",
   "leeway": 60,
+  "nonce": "nonce",
   "overrides": Object {
+    "__jwks_uri": "https://jwks.com",
     "__tenant": "tenant1",
     "__token_issuer": "issuer1",
   },
@@ -26,12 +35,14 @@ Object {
   "redirectUri": "//localhost:8080/login/callback",
   "responseMode": "query",
   "responseType": "code",
+  "state": "state",
 }
 `;
 
 exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
 Object {
   "nonce": undefined,
+  "popupOptions": undefined,
   "realm": undefined,
   "state": undefined,
   "username": "foo",
@@ -41,6 +52,7 @@ Object {
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is false 1`] = `
 Object {
   "nonce": undefined,
+  "popupOptions": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -49,6 +61,7 @@ Object {
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is true 1`] = `
 Object {
   "nonce": undefined,
+  "popupOptions": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -57,6 +70,7 @@ Object {
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
 Object {
   "nonce": undefined,
+  "popupOptions": undefined,
   "state": undefined,
 }
 `;
@@ -65,14 +79,15 @@ exports[`Auth0APIClient logIn with social/enterprise (without username and email
 Object {
   "nonce": undefined,
   "owp": true,
+  "popupOptions": undefined,
   "state": undefined,
 }
 `;
 
-exports[`Auth0APIClient parseHash should pass __enableImpersonation when options._enableImpersonation===true 1`] = `
+exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true 1`] = `
 Array [
   Object {
-    "__enableImpersonation": true,
+    "__enableIdPInitiatedLogin": true,
     "hash": "hash",
     "nonce": undefined,
     "state": undefined,
@@ -81,10 +96,22 @@ Array [
 ]
 `;
 
-exports[`Auth0APIClient parseHash should pass __enableImpersonation:false when options._enableImpersonation is not present 1`] = `
+exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableImpersonation===true 1`] = `
 Array [
   Object {
-    "__enableImpersonation": false,
+    "__enableIdPInitiatedLogin": true,
+    "hash": "hash",
+    "nonce": undefined,
+    "state": undefined,
+  },
+  "cb",
+]
+`;
+
+exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin:false when options._enableImpersonation and options._enableIdPInitiatedLogin are not present 1`] = `
+Array [
+  Object {
+    "__enableIdPInitiatedLogin": false,
     "hash": "hash",
     "nonce": undefined,
     "state": undefined,

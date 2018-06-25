@@ -23,6 +23,7 @@ describe('PasswordPane', () => {
     jest.resetModules();
 
     jest.mock('field/index', () => ({
+      isFieldValid: () => true,
       getFieldValue: (m, field) => field,
       isFieldVisiblyInvalid: () => true
     }));
@@ -54,9 +55,25 @@ describe('PasswordPane', () => {
     const PasswordPane = getComponent();
     expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });
+  it('renders correct css className when `hidden` is true', () => {
+    const PasswordPane = getComponent();
+    expectComponent(<PasswordPane {...defaultProps} hidden />).toMatchSnapshot();
+  });
   it('disables input when submitting', () => {
     require('core/index').submitting = () => true;
     const PasswordPane = getComponent();
+
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
+  });
+  it('sets showPasswordStrengthMessage as true when `isFieldValid` is false', () => {
+    require('field/index').isFieldValid = () => false;
+    let PasswordPane = getComponent();
+
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
+  });
+  it('sets showPasswordStrengthMessage as false when `isFieldValid` is true', () => {
+    require('field/index').isFieldValid = () => true;
+    let PasswordPane = getComponent();
 
     expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
   });

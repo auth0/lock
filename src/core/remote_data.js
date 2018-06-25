@@ -22,7 +22,7 @@ export function syncRemoteData(m) {
   m = sync(m, 'sso', {
     conditionFn: m => l.auth.sso(m) && l.ui.rememberLastLogin(m),
     waitFn: m => isSuccess(m, 'client'),
-    syncFn: (m, cb) => fetchSSOData(l.id(m), cb),
+    syncFn: (m, cb) => fetchSSOData(l.id(m), isADEnabled(m), cb),
     successFn: (m, result) => m.mergeIn(['sso'], Immutable.fromJS(result)),
     errorFn: (m, error) => {
       if (error.error === 'consent_required') {
@@ -34,7 +34,7 @@ export function syncRemoteData(m) {
           origin += ':' + location.port;
         }
 
-        const appSettingsUrl = `https://manage.auth0.com/#/clients/${l.clientID(m)}/settings`;
+        const appSettingsUrl = `https://manage.auth0.com/#/applications/${l.clientID(m)}/settings`;
 
         l.warn(
           m,

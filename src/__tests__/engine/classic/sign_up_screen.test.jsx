@@ -12,10 +12,13 @@ jest.mock('connection/enterprise/single_sign_on_notice', () =>
   mockComponent('single_sign_on_notice')
 );
 
-const getComponent = () => {
+const getScreen = () => {
   const SignUpScreen = require('engine/classic/sign_up_screen').default;
-  const screen = new SignUpScreen();
-  return screen.render();
+  return new SignUpScreen();
+};
+
+const getComponent = () => {
+  return getScreen().render();
 };
 
 describe('SignUpScreen', () => {
@@ -23,6 +26,10 @@ describe('SignUpScreen', () => {
     jest.resetModules();
 
     jest.mock('connection/database/index', () => ({
+      databaseUsernameValue: (model, options) => {
+        expect(options.emailFirst).toBe(true);
+        return 'foo@bar.com';
+      },
       termsAccepted: () => true,
       hasScreen: () => false,
       mustAcceptTerms: () => false
@@ -34,7 +41,10 @@ describe('SignUpScreen', () => {
     }));
     jest.mock('engine/classic', () => ({
       hasOnlyClassicConnections: () => false,
-      isSSOEnabled: () => false,
+      isSSOEnabled: (model, options) => {
+        expect(options.emailFirst).toBe(true);
+        return false;
+      },
       useBigSocialButtons: () => false
     }));
     jest.mock('core/signed_in_confirmation', () => ({
@@ -46,6 +56,10 @@ describe('SignUpScreen', () => {
 
     jest.mock('field/index', () => ({
       renderOptionSelection: () => false
+    }));
+
+    jest.mock('connection/enterprise', () => ({
+      isHRDDomain: () => false
     }));
 
     jest.mock('connection/enterprise/actions', () => ({
@@ -111,6 +125,14 @@ describe('SignUpScreen', () => {
       const Component = getComponent();
 
       expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    });
+  });
+  describe('on Submit, uses `options.emailFirst=true` and', () => {
+    it('calls signup', () => {
+      const screen = getScreen();
+      screen.submitHandler()();
+      const { mock } = require('connection/database/actions').signUp;
+      expect(mock.calls.length).toBe(1);
     });
   });
 });

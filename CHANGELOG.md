@@ -1,5 +1,85 @@
 # Change Log
 
+## [v11.7.2](https://github.com/auth0/lock/tree/v11.7.2) (2018-06-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.1...v11.7.2)
+
+
+**Added**
+- Added an i18n file for the Norwegian Nynorsk language [\#1398](https://github.com/auth0/lock/pull/1398) ([cjrorvik](https://github.com/cjrorvik))
+
+**Fixed**
+- SSO: Fallback to email if the username field is empty [\#1400](https://github.com/auth0/lock/pull/1400) ([sandrinodimattia](https://github.com/sandrinodimattia))
+- Fixed some typos and corrected some mistakes in the Norwegian Bokmaal [\#1399](https://github.com/auth0/lock/pull/1399) ([cjrorvik](https://github.com/cjrorvik))
+
+
+## [v11.7.1](https://github.com/auth0/lock/tree/v11.7.1) (2018-06-01)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.0...v11.7.1)
+
+
+**Fixed**
+- Fix IE submit button display:initial issue [\#1394](https://github.com/auth0/lock/pull/1394) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.7.0](https://github.com/auth0/lock/tree/v11.7.0) (2018-05-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.6.1...v11.7.0)
+
+
+**Fixed**
+- Display error for all enterprise connections in the reset password screen [\#1384](https://github.com/auth0/lock/pull/1384) ([luisrudge](https://github.com/luisrudge))
+- Hide password strength message when the password is valid [\#1382](https://github.com/auth0/lock/pull/1382) ([luisrudge](https://github.com/luisrudge))
+- Fixed Turkish translation [\#1379](https://github.com/auth0/lock/pull/1379) ([saltukalakus](https://github.com/saltukalakus))
+- Fix IE default redirect url [\#1373](https://github.com/auth0/lock/pull/1373) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.6.1](https://github.com/auth0/lock/tree/v11.6.1) (2018-05-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.6.0...v11.6.1)
+
+**Fixed**
+- Fix rendering issue on iOS devices [\#1365](https://github.com/auth0/lock/pull/1365) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.6.0](https://github.com/auth0/lock/tree/v11.6.0) (2018-04-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.5.2...v11.6.0)
+
+
+**Added**
+- Add signup error to valid events [\#1329](https://github.com/auth0/lock/pull/1329) ([yveswehrli](https://github.com/yveswehrli))
+
+**Changed**
+- Upgrade auth0-js to 9.5.0. See auth0-js' changelog [here](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v950-2018-04-24).
+**Fixed**
+- Show spinner when doing quick auth [\#1346](https://github.com/auth0/lock/pull/1346) ([luisrudge](https://github.com/luisrudge))
+- Fix danish translation [\#1338](https://github.com/auth0/lock/pull/1338) ([luisrudge](https://github.com/luisrudge))
+- Fix getSSOData not sending custom nonce/state [\#1333](https://github.com/auth0/lock/pull/1333) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.5.2](https://github.com/auth0/lock/tree/v11.5.2) (2018-03-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.5.1...v11.5.2)
+
+
+**Added**
+- Add jwksURI override option [\#1321](https://github.com/auth0/lock/pull/1321) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.5.1](https://github.com/auth0/lock/tree/v11.5.1) (2018-03-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.5.0...v11.5.1)
+
+
+
+## [v11.5.0](https://github.com/auth0/lock/tree/v11.5.0) (2018-03-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.4.0...v11.5.0)
+
+
+**Changed**
+- updating auth0-js with impersonation and access token validation changes [\#1308](https://github.com/auth0/lock/pull/1308) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix inconsistent state assignment when parsing a hash [\#1309](https://github.com/auth0/lock/pull/1309) ([luisrudge](https://github.com/luisrudge))
+- Fixed German translations [\#1307](https://github.com/auth0/lock/pull/1307) ([roschaefer](https://github.com/roschaefer))
+- Fixing IE lack of support for `includes` [\#1298](https://github.com/auth0/lock/pull/1298) ([luisrudge](https://github.com/luisrudge))
+- Fix Japanese translations [\#1295](https://github.com/auth0/lock/pull/1295) ([hiro1107](https://github.com/hiro1107))
+
+
 ## [v11.4.0](https://github.com/auth0/lock/tree/v11.4.0) (2018-03-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.3.1...v11.4.0)
 
@@ -66,7 +146,7 @@
 
 **Changed**
 - call /ssodata when inside the universal login page [\#1245](https://github.com/auth0/lock/pull/1245) ([luisrudge](https://github.com/luisrudge))
-- Handling embedded and universal login in the same client [\#1243](https://github.com/auth0/lock/pull/1243) ([luisrudge](https://github.com/luisrudge))
+- Handling embedded and universal login in the same application [\#1243](https://github.com/auth0/lock/pull/1243) ([luisrudge](https://github.com/luisrudge))
 
 
 ## [v11.1.3](https://github.com/auth0/lock/tree/v11.1.3) (2018-01-29)
@@ -418,7 +498,7 @@ In the meantime, react@16 works just fine with this codebase. You'll just have t
 -  Don't disable mfa-code input [\#872](https://github.com/auth0/lock/pull/872) ([nikolaseu](https://github.com/nikolaseu))
 - Fix a box-sizing issue that happened when bootstrap was being used with lock [\#868](https://github.com/auth0/lock/pull/868) ([luisrudge](https://github.com/luisrudge))
 - Cleaning params sent to auth0js [\#863](https://github.com/auth0/lock/pull/863) ([luisrudge](https://github.com/luisrudge))
-- Only set prefill values when client is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
+- Only set prefill values when application is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
 
 
 ## [v10.11.0](https://github.com/auth0/lock/tree/v10.11.0) (2017-01-30)
@@ -555,7 +635,7 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 [Full Changelog](https://github.com/auth0/lock/compare/v10.7.1...v10.7.2)
 
 **Fixed**
-- Fix how the tenant and client info url is build to avoid format issues [\#740](https://github.com/auth0/lock/pull/740) ([glena](https://github.com/glena))
+- Fix how the tenant and application info url is build to avoid format issues [\#740](https://github.com/auth0/lock/pull/740) ([glena](https://github.com/glena))
 - Fix: Single saml connection with no domain shows undefined in button [\#738](https://github.com/auth0/lock/pull/738) ([glena](https://github.com/glena))
 
 ## [v10.7.1](https://github.com/auth0/lock/tree/v10.7.1) (2016-11-25)
@@ -682,7 +762,7 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 - fixed ionic page scroll [\#591](https://github.com/auth0/lock/pull/591) ([beneliflo](https://github.com/beneliflo))
 
 **Added:**
-- Add min/max username validation from client info settings [\#611](https://github.com/auth0/lock/pull/611) ([cristiandouce](https://github.com/cristiandouce))
+- Add min/max username validation from application info settings [\#611](https://github.com/auth0/lock/pull/611) ([cristiandouce](https://github.com/cristiandouce))
 - Introduce clientBaseUrl and languageBaseUrl options to deprecate assetsUrl [\#601](https://github.com/auth0/lock/pull/601) ([cristiandouce](https://github.com/cristiandouce))
 - Added Hungarian translations [\#599](https://github.com/auth0/lock/pull/599) ([nagyv](https://github.com/nagyv))
 - Add french translation [\#596](https://github.com/auth0/lock/pull/596) ([RomainFallet](https://github.com/RomainFallet))
@@ -695,10 +775,10 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 
 This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of `assetsUrl`.
 
-- The client will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
+- The application will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
 - The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.auth0.com/js/lock/${lockVersion}/`).
 - The new options have priority over `assetsUrl`.
-- If `assetsUrl` is provided, keep the current behavior: fetch client from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
+- If `assetsUrl` is provided, keep the current behavior: fetch application from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
 
 ## [v10.2.3](https://github.com/auth0/lock/tree/v10.2.3) (2016-10-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.2.3)

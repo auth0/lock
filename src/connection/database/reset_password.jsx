@@ -5,7 +5,7 @@ import { authWithUsername, hasScreen } from './index';
 import { cancelResetPassword, resetPassword } from './actions';
 import { renderPasswordResetConfirmation } from './password_reset_confirmation';
 import { databaseUsernameValue } from '../../connection/database/index';
-import { isHRDDomain } from '../../connection/enterprise';
+import { isEnterpriseDomain } from '../../connection/enterprise';
 import * as i18n from '../../i18n';
 import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
@@ -41,8 +41,11 @@ export default class ResetPassword extends Screen {
     return i18n.str(m, 'forgotPasswordTitle');
   }
   isSubmitDisabled(m) {
-    const tryingToResetPasswordWithHRDEmail = isHRDDomain(m, databaseUsernameValue(m));
-    if (tryingToResetPasswordWithHRDEmail) {
+    const tryingToResetPasswordWithEnterpriseEmail = isEnterpriseDomain(
+      m,
+      databaseUsernameValue(m, { emailFirst: true })
+    );
+    if (tryingToResetPasswordWithEnterpriseEmail) {
       swap(
         updateEntity,
         'lock',
@@ -53,7 +56,7 @@ export default class ResetPassword extends Screen {
     } else {
       swap(updateEntity, 'lock', l.id(m), l.clearGlobalError);
     }
-    return tryingToResetPasswordWithHRDEmail;
+    return tryingToResetPasswordWithEnterpriseEmail;
   }
 
   submitHandler() {

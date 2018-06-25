@@ -132,6 +132,8 @@ function signUpError(id, error) {
     i18n.html(m, ['error', 'signUp', errorKey]) ||
     i18n.html(m, ['error', 'signUp', 'lock.fallback']);
 
+  l.emitEvent(m, 'signup error', error);
+
   swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
 }
 
