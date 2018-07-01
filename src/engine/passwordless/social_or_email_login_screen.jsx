@@ -3,11 +3,15 @@ import Screen from '../../core/screen';
 import EmailPane from '../../field/email/email_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import PaneSeparator from '../../core/pane_separator';
+import { mustAcceptTerms, termsAccepted } from '../../connection/passwordless/index';
+import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
 import { requestPasswordlessEmail } from '../../connection/passwordless/actions';
 import { renderEmailSentConfirmation } from '../../connection/passwordless/email_sent_confirmation';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { useBigButtons } from '../../connection/social/index';
 import * as l from '../../core/index';
+
+import SignUpTerms from '../../connection/database/sign_up_terms';
 
 const useSocialBigButtons = m => {
   const limit = l.connections(m, 'passwordless', 'email').count() === 0 ? 5 : 3;
@@ -22,6 +26,7 @@ const Component = ({ i18n, model }) => {
       labelFn={i18n.str}
       lock={model}
       signUp={false}
+      disabled={!termsAccepted(model)}
     />
   ) : null;
 
@@ -68,5 +73,17 @@ export default class SocialOrEmailLoginScreen extends Screen {
 
   render() {
     return Component;
+  }
+  isSubmitDisabled(m) {
+    return !termsAccepted(m);
+  }
+
+  renderTerms(m, terms) {
+    const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
+    return terms || mustAcceptTerms(m) ? (
+      <SignUpTerms checkHandler={checkHandler} checked={termsAccepted(m)}>
+        {terms}
+      </SignUpTerms>
+    ) : null;
   }
 }
