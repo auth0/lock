@@ -337,6 +337,10 @@ function extractClientBaseUrlOption(opts, domain) {
 
 export function extractTenantBaseUrlOption(opts, domain) {
   if (opts.configurationBaseUrl && typeof opts.configurationBaseUrl === 'string') {
+    if (opts.overrides && opts.overrides.__tenant) {
+      // When using a custom domain and a configuration URL hosted in auth0's cdn
+      return urljoin(opts.configurationBaseUrl, 'tenants', 'v1', `${opts.overrides.__tenant}.js`);
+    }
     return urljoin(opts.configurationBaseUrl, 'info-v1.js');
   }
 

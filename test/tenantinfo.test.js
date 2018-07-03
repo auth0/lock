@@ -6,6 +6,20 @@ import expect from 'expect.js';
 import { extractTenantBaseUrlOption } from '../src/core/index';
 
 describe('extractTenantBaseUrlOption', () => {
+  it('should return the configurationBaseUrl with tenant in path', () => {
+    var url = extractTenantBaseUrlOption(
+      {
+        configurationBaseUrl: 'https://test.com',
+        overrides: {
+          __tenant: 'lbalmaceda'
+        }
+      },
+      'lbalmaceda.auth0.com'
+    );
+
+    expect(url).to.be('https://test.com/tenants/v1/lbalmaceda.js');
+  });
+
   it('should return the configurationBaseUrl', () => {
     var url = extractTenantBaseUrlOption(
       {
