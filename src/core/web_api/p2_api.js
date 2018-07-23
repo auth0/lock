@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js';
-import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
+import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
 import superagent from 'superagent';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
