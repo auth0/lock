@@ -60,7 +60,7 @@ class Auth0APIClient {
   logIn(options, authParams, cb) {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
-    const f = loginCallback(false, cb);
+    const f = loginCallback(false, this.domain, cb);
     const loginOptions = normalizeAuthParams({ ...options, ...this.authOpt, ...authParams });
 
     if (!options.username && !options.email) {

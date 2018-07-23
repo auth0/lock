@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`normalizeError should map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
+exports[`normalizeError access_denied to invalid_user_password mapping domain doesn't match current host should map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
 Object {
   "code": "invalid_user_password",
   "description": "foobar",
@@ -8,7 +8,39 @@ Object {
 }
 `;
 
-exports[`normalizeError should map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
+exports[`normalizeError access_denied to invalid_user_password mapping domain doesn't match current host should map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
+Object {
+  "code": "invalid_user_password",
+  "description": "foobar",
+  "error": "invalid_user_password",
+}
+`;
+
+exports[`normalizeError access_denied to invalid_user_password mapping domain is undefined should map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
+Object {
+  "code": "invalid_user_password",
+  "description": "foobar",
+  "error": "invalid_user_password",
+}
+`;
+
+exports[`normalizeError access_denied to invalid_user_password mapping domain is undefined should map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
+Object {
+  "code": "invalid_user_password",
+  "description": "foobar",
+  "error": "invalid_user_password",
+}
+`;
+
+exports[`normalizeError access_denied to invalid_user_password mapping domain match current host should not map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
+Object {
+  "code": "invalid_user_password",
+  "description": "foobar",
+  "error": "invalid_user_password",
+}
+`;
+
+exports[`normalizeError access_denied to invalid_user_password mapping domain match current host should not map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
 Object {
   "code": "invalid_user_password",
   "description": "foobar",
