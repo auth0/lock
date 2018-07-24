@@ -1,5 +1,21 @@
 # Change Log
 
+## [v11.8.0](https://github.com/auth0/lock/tree/v11.8.0) (2018-07-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.2...v11.8.0)
+
+
+**Added**
+- Add allowPasswordAutocomplete option [\#1419](https://github.com/auth0/lock/pull/1419) ([jshado1](https://github.com/jshado1))
+
+**Changed**
+- Upgrade auth0.js to 9.7.3 [\#1442](https://github.com/auth0/lock/pull/1442) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix Configuration URL when using __tenantInfo and a baseConfigurationURL [\#1425](https://github.com/auth0/lock/pull/1425) ([lbalmaceda](https://github.com/lbalmaceda))
+- Fix SSO screen not showing in some cases [\#1415](https://github.com/auth0/lock/pull/1415) ([luisrudge](https://github.com/luisrudge))
+- In SSO mode, hide the password input instead of removing it from the DOM [\#1407](https://github.com/auth0/lock/pull/1407) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.7.2](https://github.com/auth0/lock/tree/v11.7.2) (2018-06-07)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.7.1...v11.7.2)
 
