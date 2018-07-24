@@ -73,8 +73,9 @@ exports[`SignUpScreen renders SingleSignOnNotice when SSO is enabled and has scr
 <div>
   <div
     data-__type="single_sign_on_notice"
-    data-children="ssoEnabled"
-  />
+  >
+    ssoEnabled
+  </div>
 </div>
 `;
 
