@@ -14,7 +14,8 @@ import {
   hasInitialScreen,
   hasScreen,
   initDatabase,
-  overrideDatabaseOptions
+  overrideDatabaseOptions,
+  resolveAdditionalSignUpFields
 } from '../connection/database/index';
 import {
   defaultEnterpriseConnection,
@@ -151,6 +152,7 @@ class Classic {
 
   willShow(m, opts) {
     m = overrideDatabaseOptions(m, opts);
+    m = resolveAdditionalSignUpFields(m);
     if (isSuccess(m, 'client')) {
       m = validateAllowedConnections(m);
     }
