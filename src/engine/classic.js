@@ -18,6 +18,7 @@ import {
   resolveAdditionalSignUpFields
 } from '../connection/database/index';
 import {
+  isADEnabled,
   defaultEnterpriseConnection,
   defaultEnterpriseConnectionName,
   initEnterprise,

@@ -42,7 +42,7 @@ function processOptions(opts) {
 
   if (defaultEnterpriseConnection != undefined && typeof defaultEnterpriseConnection !== 'string') {
     l.warn(
-      options,
+      opts,
       'The `defaultEnterpriseConnection` option will be ignored, because it is not a string.'
     );
     defaultEnterpriseConnection = undefined;
