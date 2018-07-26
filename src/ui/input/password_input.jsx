@@ -59,7 +59,7 @@ export default class PasswordInput extends React.Component {
 
     return (
       <InputWrap
-        before={passwordStrength}
+        after={passwordStrength}
         focused={focused}
         invalidHint={policy ? undefined : invalidHint}
         isValid={isValid}
