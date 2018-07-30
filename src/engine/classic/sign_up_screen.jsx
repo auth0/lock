@@ -112,7 +112,10 @@ export default class SignUp extends Screen {
   }
 
   getScreenTitle(m) {
-    return i18n.str(m, 'signupTitle');
+    // signpTitle is inconsistent with the rest of the codebase
+    // but, since changing this would be a breaking change, we'll
+    // still support it until the next major version
+    return i18n.str(m, 'signUpTitle') || i18n.str(m, 'signupTitle');
   }
 
   renderTerms(m, terms) {

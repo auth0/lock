@@ -127,6 +127,6 @@ export default {
   mfaSubmitLabel: 'Giriş yap',
   mfaCodeErrorHint: '%d numaralarını kullanın',
   forgotPasswordTitle: 'Parolanızı sıfırlayın',
-  signupTitle: 'Kaydol',
+  signUpTitle: 'Kaydol',
   showPassword: 'Şifreni göster'
 };

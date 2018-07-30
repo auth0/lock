@@ -129,7 +129,7 @@ export default {
   windowsAuthInstructions: 'Vous êtes connecté depuis votre réseau d’entreprise...',
   windowsAuthLabel: 'Authentification Windows',
   forgotPasswordTitle: 'réinitialisez votre mot de passe',
-  signupTitle: "S'inscrire",
+  signUpTitle: "S'inscrire",
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-Step Vérification',
   mfaLoginInstructions:

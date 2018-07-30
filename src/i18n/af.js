@@ -97,7 +97,7 @@ export default {
   resendingLabel: 'Stuur weer...',
   retryLabel: 'Probeer weer',
   sentLabel: 'Gestuur!',
-  signupTitle: 'Registreer',
+  signUpTitle: 'Registreer',
   signUpLabel: 'Registreer',
   signUpSubmitLabel: 'Registreer',
   signUpTerms: '',

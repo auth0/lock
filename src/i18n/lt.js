@@ -3,14 +3,14 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Jūs pasiekėte slaptažodžio keitimų limitą. Prašome palaukti, prieš bandant dar kartą.',
-      'lock.fallback': "Atsiprašome, nesklandumai keičiant slaptažodį.",
+      'lock.fallback': 'Atsiprašome, nesklandumai keičiant slaptažodį.',
       enterprise_email:
-        "Jūsų el.pašto domenas yra Enterprise tapatybės teikėjo dalis. Norėdami iš naujo nustatyti slaptažodį, apsilankykite pas savo saugumo administratorių."
+        'Jūsų el.pašto domenas yra Enterprise tapatybės teikėjo dalis. Norėdami iš naujo nustatyti slaptažodį, apsilankykite pas savo saugumo administratorių.'
     },
     login: {
       blocked_user: 'Vartotojas užblokuotas.',
       invalid_user_password: 'Neteisingas slaptažodis.',
-      'lock.fallback': "Atsiprašome, kažkas nutiko bandant prisijungti.",
+      'lock.fallback': 'Atsiprašome, kažkas nutiko bandant prisijungti.',
       'lock.invalid_code': 'Neteisingas kodas.',
       'lock.invalid_email_password': 'Neteisingas el.pašto adresas arba slaptažodis.',
       'lock.invalid_username_password': 'Neteisingas vartotojo vardas arba slaptažodis.',
@@ -26,17 +26,17 @@ export default {
         'Mes nustatėme galimą saugumo problemą su šia sąskaita. Norėdami apsaugoti jūsų sąskaitą, mes užblokuosime šį prisijungimą. Į jūsų el. paštą buvo išsiųsta instrukcija, kaip atblokuoti jūsų sąskaitą.',
       too_many_attempts: 'Jūsų sąskaita buvo užblokuota, po kelių iš eilės bandymų prisijungti.',
       session_missing:
-        "Nepavyko užbaigti jūsų autentifikavimo prašymo. Bandykite dar kartą uždarius visus atidarytus dialogo langus.",
+        'Nepavyko užbaigti jūsų autentifikavimo prašymo. Bandykite dar kartą uždarius visus atidarytus dialogo langus.',
       'hrd.not_matching_email': 'Prašome naudoti jūsų įmonės el.pašto adresą prisijungimui.'
     },
     passwordless: {
       'bad.email': 'Neteisingas el.pašto adresas',
       'bad.phone_number': 'Neteisingas telefono numeris',
-      'lock.fallback': "Atsiprašome, įvyko netikėta klaida."
+      'lock.fallback': 'Atsiprašome, įvyko netikėta klaida.'
     },
     signUp: {
       invalid_password: 'Slaptažodis neteisingas.',
-      'lock.fallback': "Atsiprašome, kažkas nutiko bandant užsiregistruoti.",
+      'lock.fallback': 'Atsiprašome, kažkas nutiko bandant užsiregistruoti.',
       password_dictionary_error: 'Šis slaptažodis yra per dažnai naudojamas.',
       password_no_user_info_error: 'Slaptažodis remiantis vartotojų informacija.',
       password_strength_error: 'Šis slaptažodis yra per silpnas.',
@@ -47,11 +47,11 @@ export default {
   success: {
     // success messages show above the form or in a confirmation pane
     logIn: 'Ačiū už prisijungimą.',
-    forgotPassword: "Mes išsiuntėme jums el.laišką iš naujo nustatyti slaptažodį.",
+    forgotPassword: 'Mes išsiuntėme jums el.laišką iš naujo nustatyti slaptažodį.',
     magicLink: 'Mes išsiuntėme jums nuorodą į prisijungimą<br />į %s.',
     signUp: 'Dėkojame, kad užsiregistravote.'
   },
-  blankErrorHint: "Laukas negali būti tuščias",
+  blankErrorHint: 'Laukas negali būti tuščias',
   codeInputPlaceholder: 'jūsų kodas',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: 'arba',
@@ -62,7 +62,7 @@ export default {
   enterpriseActiveLoginInstructions: 'Prašome įvesti jūsų įmonės rekvizitus %s.',
   failedLabel: 'Nepavyko!',
   forgotPasswordTitle: 'Atstatyti slaptažodį',
-  forgotPasswordAction: "Negalite prisiminti slaptažodžio?",
+  forgotPasswordAction: 'Negalite prisiminti slaptažodžio?',
   forgotPasswordInstructions:
     'Įveskite jūsų el.pašto adresą. Mes atsiųsime jums laišką iš nustatyti nauja slaptažodį.',
   forgotPasswordSubmitLabel: 'Siųsti laišką',
@@ -100,7 +100,7 @@ export default {
   retryLabel: 'Bandyti dar kartą',
   sentLabel: 'Išsiųsta!',
   showPassword: 'Rodyti slaptažodį',
-  signupTitle: 'Užsiregistruoti',
+  signUpTitle: 'Užsiregistruoti',
   signUpLabel: 'Registracija',
   signUpSubmitLabel: 'Užsiregistruoti',
   signUpTerms: '',
@@ -110,8 +110,7 @@ export default {
   ssoEnabled: 'Single Sign-On įjungtas',
   submitLabel: 'Pateikti',
   unrecoverableError: 'Įvyko netikėta klaida.<br />Prašome susisiekti su technine pagalba.',
-  usernameFormatErrorHint:
-    'Naudokite %d-%d raides, skaičiai ir šie simboliai: "_", ".", "+", "-"',
+  usernameFormatErrorHint: 'Naudokite %d-%d raides, skaičiai ir šie simboliai: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Jūsų vartotojo vardas',
   usernameOrEmailInputPlaceholder: 'el.pašto adresas / vartotojo vardas',
   title: 'Auth0',

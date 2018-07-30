@@ -127,7 +127,7 @@ export default {
   windowsAuthInstructions: 'Вы подключены через корпоративную сеть&hellip;',
   windowsAuthLabel: 'Аутентификация Windows',
   forgotPasswordTitle: 'Сбросить пароль',
-  signupTitle: 'Зарегистрироваться',
+  signUpTitle: 'Зарегистрироваться',
   mfaInputPlaceholder: 'Код',
   mfaLoginTitle: '2-аутентификация',
   mfaLoginInstructions:

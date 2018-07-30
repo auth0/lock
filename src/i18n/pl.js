@@ -120,7 +120,7 @@ export default {
   windowsAuthInstructions: 'Jesteś połączony z sieci firmowej&hellip;',
   windowsAuthLabel: 'Uwierzytelnianie Windows',
   forgotPasswordTitle: 'Zresetuj swoje hasło',
-  signupTitle: 'Zapisz się',
+  signUpTitle: 'Zapisz się',
   mfaInputPlaceholder: 'Kod',
   mfaLoginTitle: '2 Weryfikacja dwuetapowa',
   mfaLoginInstructions:

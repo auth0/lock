@@ -124,6 +124,6 @@ export default {
   mfaSubmitLabel: 'Logg inn',
   mfaCodeErrorHint: 'Bruk %d siffer',
   forgotPasswordTitle: 'Tilbakestille passordet ditt',
-  signupTitle: 'Logg inn',
+  signUpTitle: 'Logg inn',
   showPassword: 'Vis passord'
 };

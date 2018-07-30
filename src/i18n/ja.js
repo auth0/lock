@@ -93,7 +93,7 @@ export default {
   retryLabel: 'もう一度',
   sentLabel: '送信完了',
   showPassword: 'パスワードを表示する',
-  signupTitle: 'ユーザー登録',
+  signUpTitle: 'ユーザー登録',
   signUpLabel: 'ユーザー登録',
   signUpSubmitLabel: 'ユーザー登録',
   signUpTerms: '',

@@ -104,7 +104,7 @@ export default {
   resendingLabel: 'Lähettää uudelleen...',
   retryLabel: 'Yritä uudelleen',
   sentLabel: 'Lähetetty!',
-  signupTitle: 'Rekisteröidy',
+  signUpTitle: 'Rekisteröidy',
   signUpLabel: 'Rekisteröidy',
   signUpSubmitLabel: 'Rekisteröidy',
   signUpTerms: '',

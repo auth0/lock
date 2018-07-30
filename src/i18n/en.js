@@ -100,7 +100,7 @@ export default {
   retryLabel: 'Retry',
   sentLabel: 'Sent!',
   showPassword: 'Show password',
-  signupTitle: 'Sign Up',
+  signUpTitle: 'Sign Up',
   signUpLabel: 'Sign Up',
   signUpSubmitLabel: 'Sign Up',
   signUpTerms: '',

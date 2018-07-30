@@ -118,7 +118,7 @@ export default {
   windowsAuthInstructions: 'Si è connessi dalla rete aziendale&hellip;',
   windowsAuthLabel: 'Autenticazione Windows',
   forgotPasswordTitle: 'Reimposta la tua password',
-  signupTitle: 'Registrazione',
+  signUpTitle: 'Registrazione',
   mfaInputPlaceholder: 'Codice',
   mfaLoginTitle: '2-fase di verifica',
   mfaLoginInstructions:
