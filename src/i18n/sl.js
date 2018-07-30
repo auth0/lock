@@ -104,7 +104,7 @@ export default {
   retryLabel: 'Ponovni poskus',
   sentLabel: 'Poslano!',
   showPassword: 'Pokaži geslo',
-  signupTitle: 'Vpis',
+  signUpTitle: 'Vpis',
   signUpLabel: 'Vpis',
   signUpSubmitLabel: 'Vpis',
   signUpTerms: '',

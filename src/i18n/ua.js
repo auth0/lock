@@ -127,7 +127,7 @@ export default {
   windowsAuthInstructions: 'Ви підключені через корпоративну мережу&hellip;',
   windowsAuthLabel: 'Аутентифікація Windows',
   forgotPasswordTitle: 'Скинути пароль',
-  signupTitle: 'Зареєструватися',
+  signUpTitle: 'Зареєструватися',
   mfaInputPlaceholder: 'Код',
   mfaLoginTitle: 'Дворівнева перевірка',
   mfaLoginInstructions:

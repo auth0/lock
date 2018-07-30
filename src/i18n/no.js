@@ -109,7 +109,7 @@ export default {
   retryLabel: 'Prøv på nytt',
   sentLabel: 'Sendt!',
   showPassword: 'Vis passord',
-  signupTitle: 'Registrer deg',
+  signUpTitle: 'Registrer deg',
   signUpLabel: 'Registrer deg',
   signUpSubmitLabel: '',
   signUpTerms: '',

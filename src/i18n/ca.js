@@ -105,7 +105,7 @@ export default {
   resendingLabel: 'Reenviant...',
   retryLabel: 'Reintenta',
   sentLabel: 'Enviat',
-  signupTitle: 'Registre',
+  signUpTitle: 'Registre',
   signUpLabel: 'Registre',
   signUpSubmitLabel: "Registra'm",
   signUpTerms: '',

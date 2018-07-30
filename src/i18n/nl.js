@@ -123,7 +123,7 @@ export default {
   windowsAuthInstructions: 'U bent verbonden vanaf uw bedrijfsnetwerk&hellip;',
   windowsAuthLabel: 'Windows Authenticatie',
   forgotPasswordTitle: 'Stel je wachtwoord opnieuw in',
-  signupTitle: 'Aanmelden',
+  signUpTitle: 'Aanmelden',
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-staps verificatie',
   mfaLoginInstructions: 'Vul de verificatiecode gegenereerd door uw mobiele applicatie.',

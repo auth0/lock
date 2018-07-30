@@ -108,7 +108,7 @@ export default {
   windowsAuthInstructions: '您已連接到公司網路&hellip;',
   windowsAuthLabel: 'Windows 認證',
   forgotPasswordTitle: '重置你的密碼',
-  signupTitle: '註冊',
+  signUpTitle: '註冊',
   mfaInputPlaceholder: '碼',
   mfaLoginTitle: '兩步驟驗證',
   mfaLoginInstructions: '請輸入您的移動應用程序生成的驗證碼。',

@@ -122,6 +122,6 @@ export default {
   mfaSubmitLabel: 'ورود',
   mfaCodeErrorHint: 'از %d عدد استفاده کنید',
   forgotPasswordTitle: 'تنظیم مجدد کلمه ورود',
-  signupTitle: 'ثبت نام',
+  signUpTitle: 'ثبت نام',
   showPassword: 'نمایش رمز ورود'
 };

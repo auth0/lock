@@ -99,7 +99,7 @@ export default {
   resendingLabel: 'Reenviando...',
   retryLabel: 'Reintentar',
   sentLabel: 'Enviado!',
-  signupTitle: 'Registrarse',
+  signUpTitle: 'Registrarse',
   signUpLabel: 'Registrarse',
   signUpSubmitLabel: 'Registrarse',
   signUpTerms: '',

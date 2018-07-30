@@ -121,7 +121,7 @@ export default {
   windowsAuthInstructions: 'A céged hálózatoddal kapcsolódsz&hellip;',
   windowsAuthLabel: 'Windows bejelentkezés',
   forgotPasswordTitle: 'Állítsd vissza a jelszavad',
-  signupTitle: 'Regisztrálj',
+  signUpTitle: 'Regisztrálj',
   mfaInputPlaceholder: 'Kód',
   mfaLoginTitle: '2 kétlépcsős azonosítás',
   mfaLoginInstructions: 'Kérjük adja meg az ellenőrző kódot generált a mobil alkalmazás.',

@@ -118,7 +118,7 @@ export default {
   windowsAuthInstructions: 'Du är uppkopplad från ditt företagsnätverk&hellip;',
   windowsAuthLabel: 'Windows Authentication',
   forgotPasswordTitle: 'Återställ ditt lösenord',
-  signupTitle: 'Registrera dig',
+  signUpTitle: 'Registrera dig',
   mfaInputPlaceholder: 'Koda',
   mfaLoginTitle: '2 tvåstegsverifiering',
   mfaLoginInstructions: 'Ange verifieringskoden som genereras av din mobil applikation.',

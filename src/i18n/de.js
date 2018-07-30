@@ -18,11 +18,12 @@ export default {
       'lock.popup_closed': 'Pop-up-Fenster geschlossen. Versuchen Sie es erneut.',
       'lock.unauthorized': 'Genehmigungen wurden nicht erteilt. Versuchen Sie es erneut.',
       'lock.mfa_registration_required':
-      'Eine Multifaktor-Authentifizierung ist erforderlich, aber Ihr Gerät ist nicht registriert. Bitte registrieren Sie es, bevor Sie fortfahren.',
+        'Eine Multifaktor-Authentifizierung ist erforderlich, aber Ihr Gerät ist nicht registriert. Bitte registrieren Sie es, bevor Sie fortfahren.',
       'lock.mfa_invalid_code': 'Falscher Code. Bitte versuchen Sie es erneut.',
       password_change_required:
         'Sie müssen Ihr Passwort ändern, da Sie sich zum ersten Mal anmelden oder das Passwort abgelaufen ist.',
-      password_leaked: 'Wir haben ein potenzielles Sicherheitsproblem mit diesem Konto festgestellt. Um Ihr Konto zu schützen, haben wir diese Anmeldung blockiert. Es wurde eine E-Mail mit einer Anleitung zum Entsperren Ihres Kontos gesendet.',
+      password_leaked:
+        'Wir haben ein potenzielles Sicherheitsproblem mit diesem Konto festgestellt. Um Ihr Konto zu schützen, haben wir diese Anmeldung blockiert. Es wurde eine E-Mail mit einer Anleitung zum Entsperren Ihres Kontos gesendet.',
       too_many_attempts:
         'Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.',
       session_missing:
@@ -36,7 +37,8 @@ export default {
     },
     signUp: {
       invalid_password: 'Passwort ist ungültig.',
-      'lock.fallback': 'Es tut uns leid, beim Verarbeiten der Registrierung ist ein Fehler aufgetreten.',
+      'lock.fallback':
+        'Es tut uns leid, beim Verarbeiten der Registrierung ist ein Fehler aufgetreten.',
       password_dictionary_error: 'Das Passwort ist zu häufig.',
       password_no_user_info_error: 'Das Passwort basiert auf Benutzerinformationen.',
       password_strength_error: 'Das Passwort ist zu schwach.',
@@ -85,7 +87,7 @@ export default {
     upperCase: 'Großbuchstaben (A-Z)'
   },
   passwordlessEmailAlternativeInstructions:
-  'Andernfalls geben Sie Ihre E-Mail-Adresse ein,<br/>um sich anzumelden oder ein Konto zu erstellen',
+    'Andernfalls geben Sie Ihre E-Mail-Adresse ein,<br/>um sich anzumelden oder ein Konto zu erstellen',
   passwordlessEmailCodeInstructions: 'Eine E-Mail mit dem Code wurde an %s gesendet.',
   passwordlessEmailInstructions:
     'Geben Sie Ihre E-Mail-Adresse ein, um sich anzumelden<br/>oder ein Konto zu erstellen',
@@ -119,7 +121,7 @@ export default {
   windowsAuthInstructions: 'Sie sind über Ihr Firmennetzwerk verbunden&hellip;',
   windowsAuthLabel: 'Windows Authentifizierung',
   forgotPasswordTitle: 'Setzen Sie Ihr Passwort zurück',
-  signupTitle: 'Anmelden',
+  signUpTitle: 'Anmelden',
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-Step Verification',
   mfaLoginInstructions:
