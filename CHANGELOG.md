@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.8.1](https://github.com/auth0/lock/tree/v11.8.1) (2018-07-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.0...v11.8.1)
+
+
+**Fixed**
+- Fix crash when showing lock for the second time with custom select input [\#1448](https://github.com/auth0/lock/pull/1448) ([luisrudge](https://github.com/luisrudge))
+- Moving the PasswordStrength component to below the password input [\#1444](https://github.com/auth0/lock/pull/1444) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.8.0](https://github.com/auth0/lock/tree/v11.8.0) (2018-07-24)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.7.2...v11.8.0)
 
