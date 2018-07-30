@@ -71,7 +71,7 @@ export default class PasswordInput extends React.Component {
           type={showPassword ? 'text' : 'password'}
           name="password"
           className="auth0-lock-input"
-          autoComplete={allowPasswordAutocomplete}
+          autoComplete={allowPasswordAutocomplete ? 'on' : 'off'}
           autoCapitalize="off"
           onChange={::this.handleOnChange}
           onFocus={::this.handleFocus}
