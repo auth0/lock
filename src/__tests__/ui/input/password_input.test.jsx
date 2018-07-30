@@ -39,4 +39,16 @@ describe('PasswordInput', () => {
       policy: 'policy'
     });
   });
+  test('`allowPasswordAutocomplete=true` sets `autoComplete` as on', () => {
+    require('core/index').ui.allowPasswordAutocomplete = () => true;
+    const Input = getComponent();
+    const wrapper = mount(<Input {...defaultProps} />);
+    expect(wrapper.find('input').props().autoComplete).toBe('on');
+  });
+  test('`allowPasswordAutocomplete=false` sets `autoComplete` as off', () => {
+    require('core/index').ui.allowPasswordAutocomplete = () => false;
+    const Input = getComponent();
+    const wrapper = mount(<Input {...defaultProps} />);
+    expect(wrapper.find('input').props().autoComplete).toBe('off');
+  });
 });
