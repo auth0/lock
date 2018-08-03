@@ -101,4 +101,15 @@ describe('CustomInput', () => {
       expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
     });
   });
+  describe('when type == hidden', () => {
+    beforeEach(() => {
+      defaultProps.type = 'hidden';
+      defaultProps.value = 'hidden_value';
+    });
+    it('renders correctly as a input[type=hidden]', () => {
+      const CustomInput = getComponent();
+
+      expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
+    });
+  });
 });
