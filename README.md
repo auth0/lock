@@ -483,7 +483,7 @@ var options = {
 
 ##### Hidden field
 
-To specify a hidden field use: `type: "hidden"`. The `value` property is required.
+To specify a hidden field use: `type: "hidden"`. Both the `value` and `name` properties are required.
 
 ```js
 var options = {
