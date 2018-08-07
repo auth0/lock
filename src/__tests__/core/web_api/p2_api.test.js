@@ -40,7 +40,11 @@ describe('Auth0APIClient', () => {
             __token_issuer: 'issuer1',
             __jwks_uri: 'https://jwks.com'
           },
-          plugins: [{ name: 'ExamplePlugin' }],
+          plugins: [
+            {
+              name: 'ExamplePlugin'
+            }
+          ],
           _telemetryInfo: {},
           params: {
             nonce: 'nonce',
@@ -77,27 +81,49 @@ describe('Auth0APIClient', () => {
         expect(client.authOpt.sso).toBe(undefined);
       });
       it('should set state from options.state', () => {
-        const client = getClient({ state: 'foo' });
+        const client = getClient({
+          state: 'foo'
+        });
         expect(client.authOpt.state).toBe('foo');
       });
       it('should set state from options.params.state', () => {
-        const client = getClient({ params: { state: 'foo' } });
+        const client = getClient({
+          params: {
+            state: 'foo'
+          }
+        });
         expect(client.authOpt.state).toBe('foo');
       });
       it('options.params.state should prevail over options.state', () => {
-        const client = getClient({ state: 'bar', params: { state: 'foo' } });
+        const client = getClient({
+          state: 'bar',
+          params: {
+            state: 'foo'
+          }
+        });
         expect(client.authOpt.state).toBe('foo');
       });
       it('should set nonce from options.nonce', () => {
-        const client = getClient({ nonce: 'foo' });
+        const client = getClient({
+          nonce: 'foo'
+        });
         expect(client.authOpt.nonce).toBe('foo');
       });
       it('should set nonce from options.params.nonce', () => {
-        const client = getClient({ params: { nonce: 'foo' } });
+        const client = getClient({
+          params: {
+            nonce: 'foo'
+          }
+        });
         expect(client.authOpt.nonce).toBe('foo');
       });
       it('options.params.nonce should prevail over options.nonce', () => {
-        const client = getClient({ nonce: 'bar', params: { nonce: 'foo' } });
+        const client = getClient({
+          nonce: 'bar',
+          params: {
+            nonce: 'foo'
+          }
+        });
         expect(client.authOpt.nonce).toBe('foo');
       });
     });
@@ -137,10 +163,35 @@ describe('Auth0APIClient', () => {
           redirect: true
         });
         const callback = jest.fn();
-        client.logIn({ username: 'foo' }, {}, callback);
+        client.logIn(
+          {
+            username: 'foo'
+          },
+          {},
+          callback
+        );
         const mock = getAuth0ClientMock();
         const loginMock = mock.WebAuth.mock.instances[0].login.mock;
         assertCallWithCallback(loginMock, callback);
+      });
+      it('should use the provided login_hint', () => {
+        const client = getClient({
+          redirect: true
+        });
+        const callback = jest.fn();
+        client.logIn(
+          {
+            email: 'foo',
+            login_hint: 'valid_hint@test.com'
+          },
+          {
+            login_hint: 'invalid_hint@test.com'
+          },
+          callback
+        );
+        const mock = getAuth0ClientMock();
+        const loginMock = mock.WebAuth.mock.instances[0].login.mock;
+        expect(loginMock.calls[0][0].login_hint).toBe('valid_hint@test.com');
       });
       it('should call popup.loginWithCredentials when redirect is false and sso is false', () => {
         const client = getClient({
@@ -148,7 +199,13 @@ describe('Auth0APIClient', () => {
           sso: false
         });
         const callback = jest.fn();
-        client.logIn({ username: 'foo' }, {}, callback);
+        client.logIn(
+          {
+            username: 'foo'
+          },
+          {},
+          callback
+        );
         const mock = getAuth0ClientMock();
         const loginWithCredentialsMock =
           mock.WebAuth.mock.instances[0].popup.loginWithCredentials.mock;
@@ -160,7 +217,13 @@ describe('Auth0APIClient', () => {
           sso: true
         });
         const callback = jest.fn();
-        client.logIn({ username: 'foo' }, {}, callback);
+        client.logIn(
+          {
+            username: 'foo'
+          },
+          {},
+          callback
+        );
         const mock = getAuth0ClientMock();
         const loginWithCredentialsMock =
           mock.WebAuth.mock.instances[0].popup.loginWithCredentials.mock;
@@ -170,14 +233,24 @@ describe('Auth0APIClient', () => {
   });
   it('passwordlessStart should call client.passwordlessStart', () => {
     const client = getClient({});
-    client.passwordlessStart({ foo: 'bar' }, () => {});
+    client.passwordlessStart(
+      {
+        foo: 'bar'
+      },
+      () => {}
+    );
     const { mock } = client.client.passwordlessStart;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
   it('passwordlessVerify should call client.passwordlessLogin', () => {
     const client = getClient({});
-    client.passwordlessVerify({ foo: 'bar' }, () => {});
+    client.passwordlessVerify(
+      {
+        foo: 'bar'
+      },
+      () => {}
+    );
     const { mock } = client.client.passwordlessLogin;
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
@@ -206,7 +279,9 @@ describe('Auth0APIClient', () => {
       expect(parseHashMock.calls[0]).toMatchSnapshot();
     });
     it('should pass __enableIdPInitiatedLogin when options._enableImpersonation===true', () => {
-      const client = getClient({ _enableImpersonation: true });
+      const client = getClient({
+        _enableImpersonation: true
+      });
       client.parseHash('hash', 'cb');
       const mock = getAuth0ClientMock();
       const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
@@ -214,7 +289,9 @@ describe('Auth0APIClient', () => {
       expect(parseHashMock.calls[0]).toMatchSnapshot();
     });
     it('should pass __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true', () => {
-      const client = getClient({ _enableIdPInitiatedLogin: true });
+      const client = getClient({
+        _enableIdPInitiatedLogin: true
+      });
       client.parseHash('hash', 'cb');
       const mock = getAuth0ClientMock();
       const parseHashMock = mock.WebAuth.mock.instances[0].parseHash.mock;
