@@ -1,5 +1,4 @@
 import { setURL } from 'testUtils';
-import { equal } from 'assert';
 
 jest.mock('auth0-js');
 
