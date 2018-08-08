@@ -61,11 +61,25 @@ class Auth0APIClient {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
     const f = loginCallback(false, this.domain, cb);
-    const loginOptions = normalizeAuthParams({ ...options, ...this.authOpt, ...authParams });
+    const loginOptions = normalizeAuthParams({
+      ...options,
+      ...this.authOpt,
+      ...authParams
+    });
+
+    if (options.login_hint) {
+      loginOptions.login_hint = options.login_hint;
+    }
 
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        this.client.popup.authorize({ ...loginOptions, owp: true }, f);
+        this.client.popup.authorize(
+          {
+            ...loginOptions,
+            owp: true
+          },
+          f
+        );
       } else {
         this.client.authorize(loginOptions, f);
       }
@@ -99,7 +113,10 @@ class Auth0APIClient {
   }
 
   passwordlessVerify(options, cb) {
-    const verifyOptions = { ...options, popup: this.authOpt.popup };
+    const verifyOptions = {
+      ...options,
+      popup: this.authOpt.popup
+    };
     this.client.passwordlessLogin(verifyOptions, (err, result) => cb(normalizeError(err), result));
   }
 
