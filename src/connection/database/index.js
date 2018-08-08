@@ -90,7 +90,7 @@ function processDatabaseOptions(opts) {
     additionalSignUpFields = undefined;
   } else if (additionalSignUpFields) {
     additionalSignUpFields = additionalSignUpFields.reduce((r, x) => {
-      let { icon, name, options, placeholder, prefill, type, validator } = x;
+      let { icon, name, options, placeholder, prefill, type, validator, value } = x;
       let filter = true;
 
       const reservedNames = ['email', 'username', 'password'];
@@ -108,10 +108,10 @@ function processDatabaseOptions(opts) {
         filter = false;
       }
 
-      if (typeof placeholder != 'string' || !placeholder) {
+      if (type !== 'hidden' && (typeof placeholder != 'string' || !placeholder)) {
         l.warn(
           opts,
-          'Ignoring an element of `additionalSignUpFields` because it does not contain a valid `placeholder` property. Every element of `additionalSignUpFields` must have a `placeholder` property that is a non-empty string.'
+          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it does not contain a valid \`placeholder\` property. Every element of \`additionalSignUpFields\` must have a \`placeholder\` property that is a non-empty string.`
         );
         filter = false;
       }
@@ -136,7 +136,7 @@ function processDatabaseOptions(opts) {
         prefill = undefined;
       }
 
-      const types = ['select', 'text', 'checkbox'];
+      const types = ['select', 'text', 'checkbox', 'hidden'];
       if (type != undefined && (typeof type != 'string' || types.indexOf(type) === -1)) {
         l.warn(
           opts,
@@ -177,13 +177,20 @@ function processDatabaseOptions(opts) {
       ) {
         l.warn(
           opts,
-          'Ignoring an element of `additionalSignUpFields` because it has a "select" `type` but does not specify an `options` property that is an Array or a function.'
+          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it has a "select" \`type\` but does not specify an \`options\` property that is an Array or a function.`
+        );
+        filter = false;
+      }
+      if (type === 'hidden' && !value) {
+        l.warn(
+          opts,
+          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it has a "hidden" \`type\` but does not specify a \`value\` string.`
         );
         filter = false;
       }
 
       return filter
-        ? r.concat([{ icon, name, options, placeholder, prefill, type, validator }])
+        ? r.concat([{ icon, name, options, placeholder, prefill, type, validator, value }])
         : r;
     }, []);
 
@@ -404,9 +411,14 @@ export function toggleTermsAcceptance(m) {
 
 export function resolveAdditionalSignUpFields(m) {
   return additionalSignUpFields(m).reduce((r, x) => {
-    return x.get('type') === 'select'
-      ? resolveAdditionalSignUpSelectField(r, x)
-      : resolveAdditionalSignUpTextField(r, x);
+    switch (x.get('type')) {
+      case 'select':
+        return resolveAdditionalSignUpSelectField(r, x);
+      case 'hidden':
+        return resolveAdditionalSignUpHiddenField(r, x);
+      default:
+        return resolveAdditionalSignUpTextField(r, x);
+    }
   }, m);
 }
 
@@ -474,4 +486,8 @@ function resolveAdditionalSignUpTextField(m, x) {
   }
 
   return m;
+}
+
+function resolveAdditionalSignUpHiddenField(m, x) {
+  return setField(m, x.get('name'), x.get('value'));
 }

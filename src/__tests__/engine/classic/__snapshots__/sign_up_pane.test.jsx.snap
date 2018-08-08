@@ -105,6 +105,7 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
     data-placeholder="placeholder1"
     data-type="type1"
     data-validator="validator1"
+    data-value="value1"
   />
   <div
     data-__type="custom_input"
@@ -115,6 +116,7 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
     data-placeholder="placeholder2"
     data-type="type2"
     data-validator="validator2"
+    data-value="value2"
   />
 </div>
 `;

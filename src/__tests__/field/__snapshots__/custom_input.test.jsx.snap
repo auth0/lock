@@ -22,6 +22,14 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
 </div>
 `;
 
+exports[`CustomInput when type == hidden renders correctly as a input[type=hidden] 1`] = `
+<input
+  name="custom_input"
+  type="hidden"
+  value="hidden_value"
+/>
+`;
+
 exports[`CustomInput when type == input calls \`changeField\` when changed 1`] = `
 Array [
   1,

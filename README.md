@@ -481,6 +481,20 @@ var options = {
 }
 ```
 
+##### Hidden field
+
+To specify a hidden field use: `type: "hidden"`. Both the `value` and `name` properties are required.
+
+```js
+var options = {
+  additionalSignUpFields: [{
+    type: "hidden",
+    name: "signup_code",
+    value: "foobar123"
+  }]
+}
+```
+
 #### Avatar provider
 
 Lock can show avatars fetched from anywhere. A custom avatar provider can be specified with the `avatar` option by passing an object with the keys `url` and `displayName`. Both properties are functions that take an email and a callback function.

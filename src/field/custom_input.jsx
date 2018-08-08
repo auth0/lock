@@ -6,7 +6,7 @@ import SelectInput from '../ui/input/select_input';
 import CheckboxInput from '../ui/input/checkbox_input';
 import * as l from '../core/index';
 
-const CustomInput = ({ iconUrl, model, name, placeholder, type, validator }) => {
+const CustomInput = ({ iconUrl, model, name, placeholder, type, validator, value }) => {
   const props = {
     iconUrl,
     isValid: !isFieldVisiblyInvalid(model, name),
@@ -31,6 +31,8 @@ const CustomInput = ({ iconUrl, model, name, placeholder, type, validator }) => 
           {...props}
         />
       );
+    case 'hidden':
+      return <input type="hidden" value={value} name={name} />;
     default:
       return (
         <TextInput
