@@ -411,8 +411,7 @@ export function toggleTermsAcceptance(m) {
 
 export function resolveAdditionalSignUpFields(m) {
   return additionalSignUpFields(m).reduce((r, x) => {
-    const type = x.get('type');
-    switch (type) {
+    switch (x.get('type')) {
       case 'select':
         return resolveAdditionalSignUpSelectField(r, x);
       case 'hidden':
