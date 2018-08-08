@@ -111,7 +111,7 @@ function processDatabaseOptions(opts) {
       if (type !== 'hidden' && (typeof placeholder != 'string' || !placeholder)) {
         l.warn(
           opts,
-          'Ignoring an element of `additionalSignUpFields` because it does not contain a valid `placeholder` property. Every element of `additionalSignUpFields` must have a `placeholder` property that is a non-empty string.'
+          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it does not contain a valid \`placeholder\` property. Every element of \`additionalSignUpFields\` must have a \`placeholder\` property that is a non-empty string.`
         );
         filter = false;
       }
@@ -177,14 +177,14 @@ function processDatabaseOptions(opts) {
       ) {
         l.warn(
           opts,
-          'Ignoring an element of `additionalSignUpFields` because it has a "select" `type` but does not specify an `options` property that is an Array or a function.'
+          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it has a "select" \`type\` but does not specify an \`options\` property that is an Array or a function.`
         );
         filter = false;
       }
       if (type === 'hidden' && !value) {
         l.warn(
           opts,
-          'Ignoring an element of `additionalSignUpFields` because it has a "hidden" `type` but does not specify a `value` string'
+          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it has a "hidden" \`type\` but does not specify a \`value\` string.`
         );
         filter = false;
       }
