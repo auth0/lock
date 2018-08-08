@@ -79,8 +79,8 @@ describe('database/index.js', () => {
         });
         expect(modelOutJS.database.additionalSignUpFields).toEqual([
           {
-            name: 'hidden_field',
             type: 'hidden',
+            name: 'hidden_field',
             value: 'hidden_value'
           }
         ]);
