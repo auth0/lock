@@ -489,6 +489,5 @@ function resolveAdditionalSignUpTextField(m, x) {
 }
 
 function resolveAdditionalSignUpHiddenField(m, x) {
-  const name = x.get('name');
-  return setField(m, name, x.get('value'));
+  return setField(m, x.get('name'), x.get('value'));
 }
