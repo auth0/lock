@@ -167,6 +167,7 @@ tabsHeight = 40px
     border-radius 100px
     height 10px
     width 10px
+    padding 0
     position absolute
     top 14px
     right 14px
@@ -176,6 +177,9 @@ tabsHeight = 40px
     border 6px solid white
     cursor pointer
     line-height 0
+    
+    &:focus
+      box-shadow 0 3px 3px rgba(0,0,0,.3)
 
     svg
       -webkit-box-sizing content-box
@@ -322,6 +326,8 @@ tabsHeight = 40px
         color rgba(0,0,0,.87)
         cursor pointer
         margin-bottom 0
+        &:focus
+          text-decoration underline
 
   .auth0-lock-input-block
     position relative
@@ -1142,18 +1148,21 @@ tabsHeight = 40px
       text-align center
       cursor pointer
 
-      a
+      a, span
         padding 11px 10px
         display block
         text-decoration none
         color rgba(#5C666F,.6)
         font-weight 500
 
+      a:focus
+        color rgba(#5C666F,.9)
+
       &.auth0-lock-tabs-current
         box-shadow 0 1px 0 0 #5C666F
         cursor default
 
-        a
+        span
           color #5C666F
 
 // password strength
