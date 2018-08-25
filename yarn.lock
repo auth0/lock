@@ -404,6 +404,12 @@ auth0-js@^9.7.3:
     url-join "^1.1.0"
     winchan "^0.2.0"
 
+auth0-password-policies@auth0/auth0-password-policies#v1.0.1:
+  version "1.0.1"
+  resolved "https://codeload.github.com/auth0/auth0-password-policies/tar.gz/0b3da9b369b122a8b294d496143abfd33311e6b2"
+  dependencies:
+    password-sheriff "^1.1.0"
+
 autoprefixer-stylus@^0.9.4:
   version "0.9.4"
   resolved "https://registry.yarnpkg.com/autoprefixer-stylus/-/autoprefixer-stylus-0.9.4.tgz#760914695dce321c9980b490d81a4385c08d914d"

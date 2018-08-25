@@ -14,7 +14,7 @@ export default class PasswordInput extends React.Component {
     isValid: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
-    policy: PropTypes.string,
+    policy: PropTypes.object,
     strengthMessages: PropTypes.object,
     value: PropTypes.string.isRequired,
     showPassword: PropTypes.bool.isRequired,

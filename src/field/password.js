@@ -1,8 +1,8 @@
-import createPolicy from 'password-sheriff';
+import PasswordPolicy from 'password-sheriff/lib/policy';
 import { setField } from './index';
 
 export function validatePassword(password, policy) {
-  return createPolicy(policy).check(password);
+  return new PasswordPolicy(policy.toJS()).check(password);
 }
 
 export function setPassword(m, password, policy) {

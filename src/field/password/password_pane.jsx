@@ -50,7 +50,7 @@ PasswordPane.propTypes = {
   lock: PropTypes.object.isRequired,
   onChange: PropTypes.func,
   placeholder: PropTypes.string.isRequired,
-  policy: PropTypes.string,
+  policy: PropTypes.object,
   strengthMessages: PropTypes.object,
   hidden: PropTypes.bool
 };
