@@ -8,7 +8,11 @@ describe('field/password', () => {
     passwordField = require('field/password');
   });
   describe('validatePassword()', () => {
-    it(`validates password correctly`, () => {
+    it(`returns true when there is no policy`, () => {
+      const value = passwordField.validatePassword('the-password');
+      expect(value).toBe(true);
+    });
+    it(`validates password correctly when there is a policy`, () => {
       const model = {
         toJS: jest.fn()
       };
