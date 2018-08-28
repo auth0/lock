@@ -1,5 +1,18 @@
 # Change Log
 
+## [v11.9.0](https://github.com/auth0/lock/tree/v11.9.0) (2018-08-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.1...v11.9.0)
+
+
+**Added**
+- Support new minimum password length parameter [\#1472](https://github.com/auth0/lock/pull/1472) ([luisrudge](https://github.com/luisrudge))
+- Improve accessibility [\#1471](https://github.com/auth0/lock/pull/1471) ([andrew-me](https://github.com/andrew-me))
+- Add a new type of additionalSignUpField: hidden [\#1459](https://github.com/auth0/lock/pull/1459) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed login_hint in some enterprise authorize call scenarios [\#1460](https://github.com/auth0/lock/pull/1460) ([cocojoe](https://github.com/cocojoe))
+
+
 ## [v11.8.1](https://github.com/auth0/lock/tree/v11.8.1) (2018-07-30)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.8.0...v11.8.1)
 
