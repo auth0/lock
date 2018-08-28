@@ -19,7 +19,7 @@ export default class InputWrap extends React.Component {
     let iconElement = null;
 
     if (typeof icon === 'string') {
-      iconElement = <span dangerouslySetInnerHTML={{ __html: icon }} />;
+      iconElement = <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: icon }} />;
     } else if (icon) {
       iconElement = icon;
     }
@@ -30,7 +30,7 @@ export default class InputWrap extends React.Component {
 
     const errorTooltip =
       !isValid && invalidHint ? (
-        <div className="auth0-lock-error-msg">
+        <div role="alert" id={`auth0-lock-error-msg-${name}`} className="auth0-lock-error-msg">
           <span>{invalidHint}</span>
         </div>
       ) : null;

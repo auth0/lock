@@ -49,6 +49,9 @@ export default class MFACodeInput extends React.Component {
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
           value={value}
+          aria-label="Multi factor authentication code"
+          aria-invalid={!isValid}
+          aria-describedby={`auth0-lock-error-msg-mfa_code`}
           {...props}
         />
       </InputWrap>
