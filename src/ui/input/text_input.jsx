@@ -39,6 +39,9 @@ export default class TextInput extends React.Component {
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
           value={value}
+          aria-label={name}
+          aria-invalid={!isValid}
+          aria-describedby={`auth0-lock-error-msg-${name}`}
           {...props}
         />
       </InputWrap>

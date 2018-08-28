@@ -119,6 +119,7 @@ export default class Base extends EventEmitter {
           isMobile: l.ui.mobile(m),
           isModal: l.ui.appendContainer(m),
           isSubmitting: l.submitting(m),
+          language: l.ui.language(m),
           logo: l.ui.logo(m),
           primaryColor: l.ui.primaryColor(m),
           screenName: screen.name,

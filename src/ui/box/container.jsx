@@ -205,7 +205,7 @@ export default class Container extends React.Component {
     }
 
     return (
-      <div className={className}>
+      <div className={className} lang={this.props.language}>
         {overlay}
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
@@ -259,6 +259,7 @@ Container.propTypes = {
   isMobile: PropTypes.bool.isRequired,
   isModal: PropTypes.bool.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
+  language: PropTypes.string,
   logo: PropTypes.string.isRequired,
   primaryColor: PropTypes.string.isRequired,
   screenName: PropTypes.string.isRequired,
@@ -285,6 +286,7 @@ export const defaultProps = (Container.defaultProps = {
   disableSubmitButton: false,
   isMobile: false,
   isSubmitting: false,
+  language: 'en',
   logo: `${
     isFileProtocol ? 'https:' : ''
   }//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,

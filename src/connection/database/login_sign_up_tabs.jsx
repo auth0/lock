@@ -11,7 +11,7 @@ export default class LoginSignUpTabs extends React.Component {
     const isLogin = getScreen(lock) === 'login';
 
     return (
-      <div className="auth0-lock-tabs-container">
+      <div role="navigation" className="auth0-lock-tabs-container">
         <ul className="auth0-lock-tabs">
           <LoginSignUpTab
             label={loginLabel}
@@ -69,9 +69,13 @@ class LoginSignUpTab extends React.Component {
 
     return (
       <li className={className}>
-        <a href={href || 'javascript:void(0)'} onClick={::this.handleClick}>
-          {label}
-        </a>
+        {current ? (
+          <span>{label}</span>
+        ) : (
+          <a href={href || 'javascript:void(0)'} onClick={::this.handleClick}>
+            {label}
+          </a>
+        )}
       </li>
     );
   }
