@@ -9,12 +9,20 @@ const svgs = {
 };
 
 const IconButton = ({ name, onClick, svg }) => (
-  <button
+  <span
+    role="button"
+    tabIndex={0}
     className={`auth0-lock-${name}-button`}
     dangerouslySetInnerHTML={{ __html: svg }}
     onClick={e => {
       e.preventDefault();
       onClick();
+    }}
+    onKeyPress={e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        onClick();
+      }
     }}
     aria-label={name}
   />
