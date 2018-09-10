@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "11.9.0",
+  "version": "11.9.1",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",

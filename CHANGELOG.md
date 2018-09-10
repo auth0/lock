@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.9.1](https://github.com/auth0/lock/tree/v11.9.1) (2018-09-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.9.0...v11.9.1)
+
+
+**Fixed**
+- Use span for icon buttons [\#1478](https://github.com/auth0/lock/pull/1478) ([andrew-me](https://github.com/andrew-me))
+
+
 ## [v11.9.0](https://github.com/auth0/lock/tree/v11.9.0) (2018-08-28)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.8.1...v11.9.0)
 
