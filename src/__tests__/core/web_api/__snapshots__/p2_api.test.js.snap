@@ -35,6 +35,7 @@ Object {
   "redirectUri": "//localhost:8080/login/callback",
   "responseMode": "query",
   "responseType": "code",
+  "scope": undefined,
   "state": "state",
 }
 `;
@@ -44,6 +45,7 @@ Object {
   "nonce": undefined,
   "popupOptions": undefined,
   "realm": undefined,
+  "scope": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -53,6 +55,7 @@ exports[`Auth0APIClient logIn with credentials should call popup.loginWithCreden
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -62,6 +65,7 @@ exports[`Auth0APIClient logIn with credentials should call popup.loginWithCreden
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -71,6 +75,7 @@ exports[`Auth0APIClient logIn with social/enterprise (without username and email
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
 }
 `;
@@ -80,6 +85,7 @@ Object {
   "nonce": undefined,
   "owp": true,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
 }
 `;
