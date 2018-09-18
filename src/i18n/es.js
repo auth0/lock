@@ -102,7 +102,6 @@ export default {
   signUpTitle: 'Registrarse',
   signUpLabel: 'Registrarse',
   signUpSubmitLabel: 'Registrarse',
-  signUpTerms: '',
   signUpWithLabel: 'Registrarse con %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -123,5 +122,6 @@ export default {
     'Por favor ingrese el código de verificación generado por su aplicación móvil.',
   mfaSubmitLabel: 'Enviar',
   mfaCodeErrorHint: '%d números',
-  showPassword: 'Mostrar contraseña'
+  showPassword: 'Mostrar contraseña',
+  signUpTerms: 'Al suscribirse usted acepta nuestros términos de servicio y política de privacidad.'
 };

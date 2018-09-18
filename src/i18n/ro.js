@@ -108,7 +108,6 @@ export default {
   signUpTitle: 'Inregistrează-te',
   signUpLabel: ' Inregistrează-te ',
   signUpSubmitLabel: ' Inregistrează-te ',
-  signUpTerms: '',
   signUpWithLabel: ' Inregistrează-te cu %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -128,5 +127,7 @@ export default {
   mfaLoginTitle: 'Verificare în doi pași',
   mfaLoginInstructions: 'Te rugăm să introduci codul de autentificare generat de aplicația mobilă.',
   mfaSubmitLabel: 'Conectare',
-  mfaCodeErrorHint: 'Utilizează %d cifre'
+  mfaCodeErrorHint: 'Utilizează %d cifre',
+  signUpTerms:
+    'Prin înscrierea dvs. sunteți de acord cu termenii și condițiile noastre de utilizare și de politică de confidențialitate.'
 };

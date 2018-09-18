@@ -111,7 +111,6 @@ export default {
   sentLabel: 'Отправлено!',
   signUpLabel: 'Регистрация',
   signUpSubmitLabel: 'Зарегистрироваться',
-  signUpTerms: '',
   signUpWithLabel: 'Зарегистрироваться через %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -134,5 +133,7 @@ export default {
     'Пожалуйста, введите проверочный код, сгенерированный мобильным приложением.',
   mfaSubmitLabel: 'Авторизоваться',
   mfaCodeErrorHint: 'Используйте %d номера',
-  showPassword: 'Показать пароль'
+  showPassword: 'Показать пароль',
+  signUpTerms:
+    'Зарегистрировавшись, вы соглашаетесь с нашими условиями обслуживания и политикой конфиденциальности.'
 };

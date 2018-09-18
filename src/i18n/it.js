@@ -103,7 +103,6 @@ export default {
   sentLabel: 'Inviato!',
   signUpLabel: 'Registrazione',
   signUpSubmitLabel: 'Registrazione',
-  signUpTerms: '',
   signUpWithLabel: 'Registra con %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +124,6 @@ export default {
     'Si prega di inserire il codice di verifica generato dalla tua applicazione mobile.',
   mfaSubmitLabel: 'Accesso',
   mfaCodeErrorHint: 'Usare %d numeri',
-  showPassword: 'Mostra password'
+  showPassword: 'Mostra password',
+  signUpTerms: "Iscrivendoti, accetti i nostri termini di servizio e l'informativa sulla privacy."
 };

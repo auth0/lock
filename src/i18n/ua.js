@@ -110,7 +110,6 @@ export default {
   sentLabel: 'Відправлено!',
   signUpLabel: 'Реєстрація',
   signUpSubmitLabel: 'Зареєструватися',
-  signUpTerms: '',
   signUpWithLabel: 'Зареєструватися через %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -134,5 +133,6 @@ export default {
     'Будь ласка, введіть перевірчий код що був згенерований мобільним додатком.',
   mfaSubmitLabel: 'Авторизуватися',
   mfaCodeErrorHint: 'Використовуйте %d номери',
-  showPassword: 'Show password'
+  showPassword: 'Show password',
+  signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.'
 };

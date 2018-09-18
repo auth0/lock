@@ -108,7 +108,6 @@ export default {
   signUpTitle: 'Registre',
   signUpLabel: 'Registre',
   signUpSubmitLabel: "Registra'm",
-  signUpTerms: '',
   signUpWithLabel: 'Registreu-vos amb %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -128,5 +127,7 @@ export default {
   mfaLoginInstructions: 'Indiqueu el codi de verificació generat per la seva aplicació de mòbil.',
   mfaSubmitLabel: 'Inicia sessió',
   mfaCodeErrorHint: 'Utilitzeu %d xifres',
-  showPassword: 'Ensenya la contrasenya'
+  showPassword: 'Ensenya la contrasenya',
+  signUpTerms:
+    "En inscriure's, accepteu les nostres condicions de servei i la nostra política de privadesa."
 };

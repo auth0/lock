@@ -106,7 +106,6 @@ export default {
   signUpTitle: 'Registreeri',
   signUpLabel: 'Registreeri',
   signUpSubmitLabel: 'Registreeri',
-  signUpTerms: '',
   signUpWithLabel: 'Registreeri kasutades %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +124,6 @@ export default {
   mfaLoginTitle: '2-Sammuline Tuvastamine',
   mfaLoginInstructions: 'Palun sisesta tuvastuskood mille genereeris su mobiilirakendus',
   mfaSubmitLabel: 'Logi sisse',
-  mfaCodeErrorHint: 'Kasuta %d numbrit'
+  mfaCodeErrorHint: 'Kasuta %d numbrit',
+  signUpTerms: 'Registreerudes nõustute meie teenusetingimustega ja privaatsuspoliitikaga.'
 };

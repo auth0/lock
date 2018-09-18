@@ -106,7 +106,6 @@ export default {
   sentLabel: 'Gönderildi!',
   signUpLabel: 'Kaydol',
   signUpSubmitLabel: 'Kaydol',
-  signUpTerms: '',
   signUpWithLabel: '%s ile kaydol',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -128,5 +127,6 @@ export default {
   mfaCodeErrorHint: '%d numaralarını kullanın',
   forgotPasswordTitle: 'Parolanızı sıfırlayın',
   signUpTitle: 'Kaydol',
-  showPassword: 'Şifreni göster'
+  showPassword: 'Şifreni göster',
+  signUpTerms: 'Kaydolarak, hizmet şartlarımızı ve gizlilik politikamızı kabul etmiş olursunuz.'
 };
