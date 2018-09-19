@@ -63,11 +63,16 @@ export function signUp(id) {
 
     if (!additionalSignUpFields(m).isEmpty()) {
       params.user_metadata = {};
+      params.user_metadata.promotion = {};
       additionalSignUpFields(m).forEach(x => {
-        params.user_metadata[x.get('name')] = c.getFieldValue(m, x.get('name'));
+        if (x.get('is_promotion')) {
+          params.user_metadata.promotion[x.get('name')] = c.getFieldValue(m, x.get('name'));
+        } else {
+          params.user_metadata[x.get('name')] = c.getFieldValue(m, x.get('name'));
+        }
       });
     }
-
+    params.user_metadata.promotion = JSON.stringify(params.user_metadata.promotion);
     webApi.signUp(id, params, (error, result, popupHandler, ...args) => {
       if (error) {
         if (!!popupHandler) {
