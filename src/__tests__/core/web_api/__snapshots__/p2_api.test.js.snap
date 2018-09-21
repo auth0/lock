@@ -35,7 +35,7 @@ Object {
   "redirectUri": "//localhost:8080/login/callback",
   "responseMode": "query",
   "responseType": "code",
-  "scope": undefined,
+  "scope": "custom_scope",
   "state": "state",
 }
 `;

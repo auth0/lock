@@ -48,7 +48,8 @@ describe('Auth0APIClient', () => {
           _telemetryInfo: {},
           params: {
             nonce: 'nonce',
-            state: 'state'
+            state: 'state',
+            scope: 'custom_scope'
           }
         };
         const client = getClient(options);
