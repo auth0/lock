@@ -24,14 +24,13 @@ export default class EmailPane extends React.Component {
     swap(updateEntity, 'lock', l.id(lock), setEmail, e.target.value);
   }
 
+  validateEmails(e) {
+    this.confirmedValid = e.target.value === this.refs.mainEmailInput.props.value;
+    console.log(this.confirmedValid);
+  }
+
   render() {
-    const {
-      i18n,
-      lock,
-      placeholder,
-      forceInvalidVisibility = false,
-      confirmEmailInput
-    } = this.props;
+    const { i18n, lock, placeholder, forceInvalidVisibility = false } = this.props;
     const allowAutocomplete = l.ui.allowAutocomplete(lock);
 
     const field = c.getField(lock, 'email');
@@ -51,15 +50,15 @@ export default class EmailPane extends React.Component {
           onChange={::this.handleChange}
           placeholder={placeholder}
           autoComplete={allowAutocomplete}
+          ref="mainEmailInput"
         />
-        {confirmEmailInput && (
+        {l.confirmEmailInput(lock) && (
           <EmailInput
-            value={value}
             invalidHint={invalidHint}
             isValid={isValid}
-            onChange={::this.handleChange}
             placeholder={placeholder}
-            autoComplete={allowAutocomplete}
+            onChange={::this.validateEmails}
+            // confirmedValid={this.confirmedValid}
           />
         )}
       </div>
