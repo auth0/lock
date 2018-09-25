@@ -60,6 +60,7 @@ const Component = ({ i18n, model }) => {
       passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
       passwordStrengthMessages={i18n.group('passwordStrength')}
       usernameInputPlaceholder={i18n.str('usernameInputPlaceholder')}
+      confirmEmailInput={l.confirmEmailInput(model)}
     />
   );
 
