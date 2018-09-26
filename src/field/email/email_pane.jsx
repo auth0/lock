@@ -29,7 +29,8 @@ export default class EmailPane extends React.Component {
   compareEmails(e) {
     const { lock } = this.props;
     swap(updateEntity, 'lock', l.id(lock), setConfirmEmail, e.target.value);
-    this.confirmedValid = e.target.value === this.refs.primaryEmailInput.props.value;
+    this.confirmedValid =
+      e.target.value === '' || e.target.value === this.refs.primaryEmailInput.props.value;
   }
 
   render() {
@@ -45,27 +46,33 @@ export default class EmailPane extends React.Component {
     const isValid = (!forceInvalidVisibility || valid) && !c.isFieldVisiblyInvalid(lock, 'email');
     const confirmValidity = isValid && this.confirmedValid;
 
-    return (
-      <div>
-        <EmailInput
-          value={value}
-          invalidHint={invalidHint}
-          isValid={isValid}
-          onChange={::this.handleChange}
-          placeholder={placeholder}
-          autoComplete={allowAutocomplete}
-          ref="primaryEmailInput"
-        />
-        {l.confirmEmailInput(lock) && (
+    let emailInputs = (
+      <EmailInput
+        value={value}
+        invalidHint={invalidHint}
+        isValid={isValid}
+        onChange={::this.handleChange}
+        placeholder={placeholder}
+        autoComplete={allowAutocomplete}
+        ref="primaryEmailInput"
+      />
+    );
+
+    if (l.confirmEmailInput(lock)) {
+      emailInputs = (
+        <div className={'auth0-lock-input-block'}>
+          {emailInputs}
           <EmailInput
             invalidHint={invalidHint}
             isValid={confirmValidity}
             placeholder={placeholder}
             onChange={::this.compareEmails}
           />
-        )}
-      </div>
-    );
+        </div>
+      );
+    }
+
+    return emailInputs;
   }
 }
 
