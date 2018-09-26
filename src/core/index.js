@@ -33,7 +33,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       defaultADUsernameFromEmailPrefix:
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
       prefill: options.prefill || {},
-      connectionResolver: options.connectionResolver
+      connectionResolver: options.connectionResolver,
+      confirmEmailInput: !!options.confirmEmailInput
     })
   );
 
@@ -157,9 +158,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable
-      ? true
-      : !!options.closable;
+    : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -401,6 +400,10 @@ export function defaultADUsernameFromEmailPrefix(m) {
 
 export function prefill(m) {
   return get(m, 'prefill', {});
+}
+
+export function confirmEmailInput(m) {
+  return get(m, 'confirmEmailInput', {});
 }
 
 export function warn(x, str) {

@@ -120,17 +120,18 @@
         email: 'johnfoo@gmail.com'
       },
       passwordlessMethod: 'code',
-      allowedConnections: ['email', 'acme', 'twitter']
+      allowedConnections: ['email', 'acme', 'twitter'],
+      confirmEmailInput: true
     };
     function initLock() {
       var lock = new Auth0Lock(clientId, domain, defaultOptions);
-      window.localStorage.lastUsed = 'lock'
+      window.localStorage.lastUsed = 'lock';
       subscribeToEvents(lock);
       return lock;
     }
     function initPasswordless() {
       var lockPasswordless = new Auth0LockPasswordless(clientId, domain, defaultOptions);
-      window.localStorage.lastUsed = 'passwordless'
+      window.localStorage.lastUsed = 'passwordless';
       subscribeToEvents(lockPasswordless);
       return lockPasswordless;
     }

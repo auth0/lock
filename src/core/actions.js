@@ -14,6 +14,7 @@ import * as l from './index';
 import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField, hideInvalidFields, clearFields } from '../field/index';
+import * as c from '../field';
 
 export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn);
@@ -166,7 +167,13 @@ export function unpinLoadingPane(id) {
 
 export function validateAndSubmit(id, fields = [], f) {
   swap(updateEntity, 'lock', id, m => {
-    const allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
+    let allFieldsValid = fields.reduce((r, x) => r && isFieldValid(m, x), true);
+
+    if (l.confirmEmailInput(m)) {
+      allFieldsValid =
+        allFieldsValid && c.getFieldValue(m, 'email') === c.getFieldValue(m, 'confirmEmail');
+    }
+
     return allFieldsValid
       ? l.setSubmitting(m, true)
       : fields.reduce((r, x) => showInvalidField(r, x), m);

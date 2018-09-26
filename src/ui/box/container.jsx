@@ -99,7 +99,6 @@ export default class Container extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     this.checkConnectionResolver(() => {
       const { submitHandler } = this.props;
       if (submitHandler) {
@@ -287,9 +286,9 @@ export const defaultProps = (Container.defaultProps = {
   isMobile: false,
   isSubmitting: false,
   language: 'en',
-  logo: `${
-    isFileProtocol ? 'https:' : ''
-  }//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
+  logo: `${isFileProtocol
+    ? 'https:'
+    : ''}//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
   primaryColor: '#ea5323',
   showBadge: true,
   scrollGlobalMessagesIntoView: true
