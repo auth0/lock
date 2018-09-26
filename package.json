@@ -87,7 +87,7 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "^9.7.3",
+    "auth0-js": "^9.8.0",
     "auth0-password-policies": "auth0/auth0-password-policies#v1.0.1",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
