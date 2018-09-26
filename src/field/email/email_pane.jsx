@@ -34,7 +34,13 @@ export default class EmailPane extends React.Component {
   }
 
   render() {
-    const { i18n, lock, placeholder, forceInvalidVisibility = false } = this.props;
+    const {
+      i18n,
+      lock,
+      placeholder,
+      forceInvalidVisibility = false,
+      confirmEmailInput
+    } = this.props;
     const allowAutocomplete = l.ui.allowAutocomplete(lock);
 
     const field = c.getField(lock, 'email');
@@ -58,7 +64,7 @@ export default class EmailPane extends React.Component {
       />
     );
 
-    if (l.confirmEmailInput(lock)) {
+    if (confirmEmailInput) {
       emailInputs = (
         <div className={'auth0-lock-input-block'}>
           {emailInputs}

@@ -99,7 +99,6 @@ export default class Container extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('Submission');
     this.checkConnectionResolver(() => {
       const { submitHandler } = this.props;
       if (submitHandler) {

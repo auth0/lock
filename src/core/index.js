@@ -34,7 +34,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
       prefill: options.prefill || {},
       connectionResolver: options.connectionResolver,
-      confirmEmailInput: options.confirmEmailInput
+      confirmEmailInput: !!options.confirmEmailInput
     })
   );
 
