@@ -26,6 +26,17 @@ export function setEmail(m, str) {
   });
 }
 
+export function setConfirmEmail(m, str) {
+  return setField(m, 'confirmEmail', str.trim(), str => {
+    const validHRDEMail = isHRDEmailValid(m, str);
+
+    return {
+      valid: validateEmail(str) && validHRDEMail,
+      hint: !validHRDEMail ? i18n.html(m, ['error', 'login', 'hrd.not_matching_email']) : undefined
+    };
+  });
+}
+
 export function emailDomain(str) {
   const result = regExp.exec(trim(str.toLowerCase()));
   return result ? result.slice(-2)[0] : '';
