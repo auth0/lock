@@ -48,7 +48,8 @@ describe('Auth0APIClient', () => {
           _telemetryInfo: {},
           params: {
             nonce: 'nonce',
-            state: 'state'
+            state: 'state',
+            scope: 'custom_scope'
           }
         };
         const client = getClient(options);
@@ -125,6 +126,14 @@ describe('Auth0APIClient', () => {
           }
         });
         expect(client.authOpt.nonce).toBe('foo');
+      });
+      it('should set scope from options.params.scope', () => {
+        const client = getClient({
+          params: {
+            scope: 'foo'
+          }
+        });
+        expect(client.authOpt.scope).toBe('foo');
       });
     });
   });

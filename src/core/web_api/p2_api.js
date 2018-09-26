@@ -30,6 +30,8 @@ class Auth0APIClient {
       nonce = opts.params.nonce;
     }
 
+    const scope = opts.params && opts.params.scope;
+
     this.client = new auth0.WebAuth({
       clientID: clientID,
       domain: domain,
@@ -43,14 +45,16 @@ class Auth0APIClient {
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       state,
-      nonce
+      nonce,
+      scope
     });
 
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
-      nonce: nonce,
-      state: state
+      nonce,
+      state,
+      scope
     };
     if (this.isUniversalLogin && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;
