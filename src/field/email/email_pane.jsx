@@ -51,7 +51,6 @@ export default class EmailPane extends React.Component {
             invalidHint={invalidHint}
             isValid={isValid}
             placeholder={placeholder}
-            onChange={::this.validateEmails}
             // confirmedValid={this.confirmedValid}
           />
         )}
