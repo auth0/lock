@@ -404,9 +404,9 @@ auth0-js@^9.8.0:
     url-join "^1.1.0"
     winchan "^0.2.1"
 
-auth0-password-policies@auth0/auth0-password-policies#v1.0.1:
+auth0-password-policies@^1.0.1:
   version "1.0.1"
-  resolved "https://codeload.github.com/auth0/auth0-password-policies/tar.gz/0b3da9b369b122a8b294d496143abfd33311e6b2"
+  resolved "https://registry.yarnpkg.com/auth0-password-policies/-/auth0-password-policies-1.0.1.tgz#d00420b9bd5ac81d37790b1f5c83e5b8a47e9d12"
   dependencies:
     password-sheriff "^1.1.0"
 
