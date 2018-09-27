@@ -3,6 +3,8 @@
 ## [v11.10.0](https://github.com/auth0/lock/tree/v11.10.0) (2018-09-27)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.9.1...v11.10.0)
 
+**Changed**
+- Upgrade Auth0.js to use cookies instead of localStorage by default: [Read more](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v980-2018-09-26)
 
 
 ## [v11.9.1](https://github.com/auth0/lock/tree/v11.9.1) (2018-09-10)
