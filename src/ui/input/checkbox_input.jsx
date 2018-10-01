@@ -3,7 +3,7 @@ import InputWrap from './input_wrap';
 
 export default class CheckboxInput extends React.Component {
   render() {
-    const { name, placeholder, checked } = this.props;
+    const { name, label, placeholder, checked } = this.props;
     return (
       <div className="auth0-lock-input-checkbox">
         <label>
@@ -12,6 +12,7 @@ export default class CheckboxInput extends React.Component {
             checked={checked === 'true'}
             onChange={::this.handleOnChange}
             name={name}
+            aria-label={label || name}
           />
           <span dangerouslySetInnerHTML={{ __html: placeholder }} />
         </label>

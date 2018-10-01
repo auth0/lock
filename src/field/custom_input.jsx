@@ -6,11 +6,12 @@ import SelectInput from '../ui/input/select_input';
 import CheckboxInput from '../ui/input/checkbox_input';
 import * as l from '../core/index';
 
-const CustomInput = ({ iconUrl, model, name, placeholder, type, validator, value }) => {
+const CustomInput = ({ iconUrl, model, name, label, placeholder, type, validator, value }) => {
   const props = {
     iconUrl,
     isValid: !isFieldVisiblyInvalid(model, name),
     name,
+    label,
     placeholder
   };
 
