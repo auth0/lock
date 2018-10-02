@@ -111,7 +111,7 @@ export default {
   showPassword: 'Vis passord',
   signUpTitle: 'Registrer deg',
   signUpLabel: 'Registrer deg',
-  signUpSubmitLabel: '',
+  signUpSubmitLabel: 'Registrer deg',
   signUpTerms: '',
   signUpWithLabel: 'Registrer deg med %s',
   socialLoginInstructions: '',
