@@ -12,12 +12,21 @@ export default class TextInput extends React.Component {
   }
 
   render() {
-    const { iconUrl, invalidHint, isValid, name, label, onChange, value, ...props } = this.props;
+    const {
+      iconUrl,
+      invalidHint,
+      isValid,
+      name,
+      ariaLabel,
+      onChange,
+      value,
+      ...props
+    } = this.props;
     let { icon } = this.props;
     const { focused } = this.state;
 
     if (!icon && typeof iconUrl === 'string' && iconUrl) {
-      icon = <img className="auth0-lock-custom-icon" alt={label || name} src={iconUrl} />;
+      icon = <img className="auth0-lock-custom-icon" alt={ariaLabel || name} src={iconUrl} />;
     }
 
     return (
@@ -39,7 +48,7 @@ export default class TextInput extends React.Component {
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
           value={value}
-          aria-label={label || name}
+          aria-label={ariaLabel || name}
           aria-invalid={!isValid}
           aria-describedby={`auth0-lock-error-msg-${name}`}
           {...props}
