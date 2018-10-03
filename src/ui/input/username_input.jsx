@@ -49,7 +49,7 @@ export default class UsernameInput extends React.Component {
           onBlur={::this.handleBlur}
           aria-label="User name"
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-username`}
+          aria-describedby={!isValid && invalidHint ? `auth0-lock-error-msg-username` : undefined}
           {...props}
         />
       </InputWrap>

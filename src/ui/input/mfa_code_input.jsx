@@ -51,7 +51,7 @@ export default class MFACodeInput extends React.Component {
           value={value}
           aria-label="Multi factor authentication code"
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-mfa_code`}
+          aria-describedby={!isValid && invalidHint ? `auth0-lock-error-msg-mfa_code` : undefined}
           {...props}
         />
       </InputWrap>
