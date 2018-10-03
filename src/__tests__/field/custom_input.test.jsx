@@ -12,6 +12,7 @@ describe('CustomInput', () => {
   const defaultProps = {
     iconUrl: 'iconUrl',
     placeholder: 'placeholder',
+    ariaLabel: 'Custom Input',
     name: 'custom_input',
     model: {},
     validator: 'validator'

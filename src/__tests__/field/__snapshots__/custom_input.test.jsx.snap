@@ -6,6 +6,7 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
 >
   <label>
     <input
+      aria-label="Custom Input"
       checked={false}
       name="custom_input"
       onChange={[Function]}
@@ -42,6 +43,7 @@ Array [
 exports[`CustomInput when type == input renders correctly as a TextInput 1`] = `
 <div
   data-__type="text_input"
+  data-ariaLabel="Custom Input"
   data-iconUrl="iconUrl"
   data-invalidHint="invalid-hint-custom_input"
   data-isValid={false}
@@ -55,6 +57,7 @@ exports[`CustomInput when type == input renders correctly as a TextInput 1`] = `
 exports[`CustomInput when type == input sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
 <div
   data-__type="text_input"
+  data-ariaLabel="Custom Input"
   data-iconUrl="iconUrl"
   data-invalidHint="invalid-hint-custom_input"
   data-isValid={true}
@@ -76,6 +79,7 @@ Array [
 exports[`CustomInput when type === select renders correctly as a SelectInput 1`] = `
 <div
   data-__type="select_input"
+  data-ariaLabel="Custom Input"
   data-iconUrl="iconUrl"
   data-isValid={false}
   data-label={undefined}
@@ -88,6 +92,7 @@ exports[`CustomInput when type === select renders correctly as a SelectInput 1`]
 exports[`CustomInput when type === select sets isValid as true when \`isFieldVisiblyInvalid\` is false 1`] = `
 <div
   data-__type="select_input"
+  data-ariaLabel="Custom Input"
   data-iconUrl="iconUrl"
   data-isValid={true}
   data-label={undefined}
