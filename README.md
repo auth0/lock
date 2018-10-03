@@ -143,7 +143,7 @@ Lock will emit events during its lifecycle.
 - `signin submit`: emitted when the user clicks on the submit button of the "Login" screen.
 - `signup submit`: emitted when the user clicks on the submit button of the "Sign up" screen.
 - `signup error`: emitted when signup fails. Has the error as an argument.
-- `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments. 
+- `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments.
 
 ### show(options)
 
@@ -261,9 +261,9 @@ var options = {
     primaryColor: "green",
     authButtons: {
       connectionName: {
-        displayName: "...", 
-        primaryColor: "...", 
-        foregroundColor: "...", 
+        displayName: "...",
+        primaryColor: "...",
+        foregroundColor: "...",
         icon: "https://.../logo.png"
       }
     }
@@ -408,6 +408,7 @@ var options = {
     name: "address",
     placeholder: "enter your address",
     // The following properties are optional
+    ariaLabel: "Address",
     icon: "https://example.com/assests/address_icon.png",
     prefill: "street 123",
     validator: function(address) {
@@ -436,6 +437,7 @@ var options = {
       {value: "ar", label: "Argentina"}
     ],
     // The following properties are optional
+    ariaLabel: "Location",
     icon: "https://example.com/assests/location_icon.png",
     prefill: "us"
   }]
@@ -455,6 +457,7 @@ var options = {
       // first arg instead of null
       cb(null, options);
     },
+    ariaLabel: "Location",
     icon: "https://example.com/assests/location_icon.png",
     prefill: function(cb) {
       // obtain prefill, in case of error you call cb with the error in the
@@ -477,6 +480,8 @@ var options = {
     name: "newsletter",
     prefill: "true",
     placeholder: "I hereby agree that I want to receive marketing emails from your company",
+    // The following property is optional
+    ariaLabel: "Activate Newsletter"
   }]
 }
 ```
