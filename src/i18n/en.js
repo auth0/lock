@@ -103,7 +103,8 @@ export default {
   signUpTitle: 'Sign Up',
   signUpLabel: 'Sign Up',
   signUpSubmitLabel: 'Sign Up',
-  signUpTerms: '',
+  signUpTerms:
+    'By signing up, you agree to our <a href="https://auth0.com/terms" target="_new">terms of service</a> and <a href="https://auth0.com/privacy" target="_new">privacy policy</a>',
   signUpWithLabel: 'Sign up with %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
