@@ -98,6 +98,7 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
   />
   <div
     data-__type="custom_input"
+    data-ariaLabel="ariaLabel1"
     data-iconUrl="icon1"
     data-model="model"
     data-name="name1"
@@ -109,6 +110,7 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
   />
   <div
     data-__type="custom_input"
+    data-ariaLabel="ariaLabel2"
     data-iconUrl="icon2"
     data-model="model"
     data-name="name2"
