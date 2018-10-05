@@ -113,7 +113,7 @@ lock.on("authenticated", function(authResult) {
 
 ### getUserInfo(accessToken, callback)
 
-Once the user has logged in and you are in possesion of an access token, you can obtain the profile with `getUserInfo`.
+Once the user has logged in and you are in possession of an access token, you can obtain the profile with `getUserInfo`.
 
 - **accessToken {String}**: User access token.
 - **callback {Function}**: Will be invoked after the user profile been retrieved.
@@ -308,7 +308,7 @@ var options = {
 - **autoParseHash {Boolean}**: When set to `true`, Lock will parse the `window.location.hash` string when instantiated. If set to `false`, you'll have to manually resume authentication using the [resumeAuth](#resumeauthhash-callback) method.
 - **redirect {Boolean}**: When set to `true`, the default, _redirect mode_ will be used. Otherwise, _popup mode_ is chosen. See [below](#popup-mode) for more details.
 - **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
-- **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be ommited.
+- **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be omitted.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
 - **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
 - **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social connection for authentication.
