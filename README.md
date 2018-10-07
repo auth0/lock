@@ -553,7 +553,7 @@ More information can be found in [Auth0's documentation](https://auth0.com/docs/
 
 ## Browser Compatibility
 
-We ensure browser compatibility in Chrome, Safari, Firefox, and IE >= 10. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
+We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10. We currently use [zuul](https://github.com/defunctzombie/zuul) along with [Saucelabs](https://saucelabs.com) to run integration tests on each push.
 
 ## Issue Reporting
 
