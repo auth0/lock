@@ -8,6 +8,15 @@
 
 [Auth0](https://auth0.com) is an authentication broker that supports both social and enterprise identity providers, including Active Directory, LDAP, Google Apps, and Salesforce.
 
+## Table of Contents
+1. [Install](#install)
+2. [Cross Origin Authentication](#cross-origin-authentication)
+3. [API](#api)
+4. [Browser Compatibility](#browser-compatibility)
+5. [Issue Reporting](#issue-reporting)
+6. [Author](#author)
+7. [License](#license)
+
 ## Install
 
 From CDN
