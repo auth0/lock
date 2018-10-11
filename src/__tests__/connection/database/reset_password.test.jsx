@@ -35,9 +35,11 @@ describe('ResetPasswordScreen', () => {
     }));
   });
   it('isSubmitDisabled returns true when `isEnterpriseDomain` is true', () => {
+    jest.useFakeTimers();
     require('connection/enterprise').isEnterpriseDomain = () => true;
     const screen = getScreen();
     expect(screen.isSubmitDisabled()).toBe(true);
+    jest.runTimersToTime(50);
     expect(require('store/index').swap.mock.calls[0]).toMatchSnapshot();
   });
   it('isSubmitDisabled returns false when `isEnterpriseDomain` is false', () => {
