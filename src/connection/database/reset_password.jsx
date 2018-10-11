@@ -46,13 +46,15 @@ export default class ResetPassword extends Screen {
       databaseUsernameValue(m, { emailFirst: true })
     );
     if (tryingToResetPasswordWithEnterpriseEmail) {
-      swap(
-        updateEntity,
-        'lock',
-        l.id(m),
-        l.setGlobalError,
-        i18n.str(m, ['error', 'forgotPassword', 'enterprise_email'])
-      );
+      setTimeout(() => {
+        swap(
+          updateEntity,
+          'lock',
+          l.id(m),
+          l.setGlobalError,
+          i18n.str(m, ['error', 'forgotPassword', 'enterprise_email'])
+        );
+      }, 50);
     } else {
       swap(updateEntity, 'lock', l.id(m), l.clearGlobalError);
     }
