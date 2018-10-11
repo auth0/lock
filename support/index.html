@@ -117,10 +117,11 @@
       usernameStyle: 'email',
       defaultDatabaseConnection: 'acme',
       prefill: {
-        email: 'johnfoo@gmail.com'
+        email: 'johnfoo@gmail.com',
+        phoneNumber: '48991721214'
       },
       passwordlessMethod: 'code',
-      allowedConnections: ['email', 'acme', 'twitter']
+      allowedConnections: ['sms', 'acme', 'twitter']
     };
     function initLock() {
       var lock = new Auth0Lock(clientId, domain, defaultOptions);
