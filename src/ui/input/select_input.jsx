@@ -11,7 +11,7 @@ export default class SelectInput extends React.Component {
   }
 
   render() {
-    const { iconUrl, isValid, label, name, onClick, placeholder } = this.props;
+    const { iconUrl, isValid, label, ariaLabel, name, onClick, placeholder } = this.props;
     let { icon } = this.props;
     const { focused } = this.state;
 
@@ -21,7 +21,7 @@ export default class SelectInput extends React.Component {
     }
 
     if (!icon && typeof iconUrl === 'string' && iconUrl) {
-      icon = <img className="auth0-lock-custom-icon" src={iconUrl} />;
+      icon = <img className="auth0-lock-custom-icon" alt={ariaLabel || name} src={iconUrl} />;
     }
 
     let className = 'auth0-lock-input auth0-lock-input-location';
@@ -38,7 +38,7 @@ export default class SelectInput extends React.Component {
           onBlur={::this.handleBlur}
           onKeyDown={::this.handleKeyDown}
           onClick={onClick}
-          aria-label={name}
+          aria-label={ariaLabel || name}
           aria-invalid={!isValid}
           aria-describedby={`auth0-lock-error-msg-${name}`}
         />
