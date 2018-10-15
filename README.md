@@ -125,7 +125,7 @@ lock.on("authenticated", function(authResult) {
 Once the user has logged in and you are in possession of an access token, you can obtain the profile with `getUserInfo`.
 
 - **accessToken {String}**: User access token.
-- **callback {Function}**: Will be invoked after the user profile been retrieved.
+- **callback {Function}**: Will be invoked after the user profile has been retrieved.
 
 #### Example
 
