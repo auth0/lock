@@ -37,16 +37,18 @@ describe('Passwordless Engine', () => {
     it('when prefill options has `email` value', () => {
       const engine = getEngine();
       engine.didReceiveClientSettings('model');
-      expect(require('field/email').setEmail.mock.calls.length).toBe(1);
-      expect(require('field/email').setEmail.mock.calls[0][0]).toBe('model');
-      expect(require('field/email').setEmail.mock.calls[0][1]).toBe('prefill@example.com');
+      const setEmailMockCalls = require('field/email').setEmail.mock.calls;
+      expect(setEmailMockCalls.length).toBe(1);
+      expect(setEmailMockCalls[0][0]).toBe('model');
+      expect(setEmailMockCalls[0][1]).toBe('prefill@example.com');
     });
     it('when prefill options has `phoneNumber` value', () => {
       const engine = getEngine();
       engine.didReceiveClientSettings('model');
-      expect(require('field/phone_number').setPhoneNumber.mock.calls.length).toBe(1);
-      expect(require('field/phone_number').setPhoneNumber.mock.calls[0][0]).toBe('model');
-      expect(require('field/phone_number').setPhoneNumber.mock.calls[0][1]).toBe('12354');
+      const setPhoneNumberMockCalls = require('field/phone_number').setPhoneNumber.mock.calls;
+      expect(setPhoneNumberMockCalls.length).toBe(1);
+      expect(setPhoneNumberMockCalls[0][0]).toBe('model');
+      expect(setPhoneNumberMockCalls[0][1]).toBe('12354');
     });
   });
 });
