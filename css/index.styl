@@ -466,19 +466,23 @@ tabsHeight = 40px
     -webkit-transition background-color .2s ease-in-out
     transition background-color .2s ease-in-out
 
-    &[data-provider^=google], &[data-provider^=google].auth0-lock-social-big-button
+    &[data-provider^=google]
       .auth0-lock-social-button-icon
         background-color: #ffffff
         border: 2px #4285f4 solid
         border-radius: 3px 0px 0px 3px
         height: 36px
-        width: 38px
+        width: 36px
       &:hover, &:focus
         .auth0-lock-social-button-icon
           background-color: #ffffff !important
           border-color: #3367d6
         .auth0-lock-social-button-text
           background-color: #3367d6 !important
+      &.auth0-lock-social-big-button
+        .auth0-lock-social-button-icon
+          background-color: #ffffff
+          width: 38px
 
     .auth0-lock-social-button-icon
       width 40px
