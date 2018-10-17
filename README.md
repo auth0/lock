@@ -327,6 +327,7 @@ var options = {
 - **socialButtonStyle {String}**: Determines the size of the buttons for the social providers. Possible values are `"big"` and `"small"`. The default style depends on the connections that are available:
   - If only social connections are available, it will default to `"big"` when there are 5 connections at most, and default to `"small"` otherwise.
   - If connections from types other than social are also available, it will default to `"big"` when there are 3 social connections at most, and default to `"small"` otherwise.
+  - Keep in mind that some branding guidelines don't allow for icons without a text. If you want to be compliant with those guidelines for any reason, make sure you pick the right style for your application.
 
 #### Database options
 
