@@ -125,7 +125,7 @@ lock.on("authenticated", function(authResult) {
 Once the user has logged in and you are in possession of an access token, you can obtain the profile with `getUserInfo`.
 
 - **accessToken {String}**: User access token.
-- **callback {Function}**: Will be invoked after the user profile been retrieved.
+- **callback {Function}**: Will be invoked after the user profile has been retrieved.
 
 #### Example
 
@@ -145,7 +145,7 @@ Lock will emit events during its lifecycle.
 - `hide`: emitted when Lock is hidden. Has no arguments.
 - `unrecoverable_error`: emitted when there is an unrecoverable error, for instance when no connection is available. Has the error as the only argument.
 - `authenticated`: emitted after a successful authentication. Has the authentication result as the only argument.
-- `authorization_error`: emitted when authorization fails. Has error as the only argument.
+- `authorization_error`: emitted when authorization fails. Has the error as the only argument.
 - `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the default), it will attempt to parse the hash part of the url looking for the result of a login attempt. This is a _low-level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that, this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the url's hash part.
 - `forgot_password ready`: emitted when the "Forgot password" screen is shown.
 - `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
@@ -192,9 +192,9 @@ lock.resumeAuth(hash, function(error, authResult) {
 
 ### logout(options)
 
-Logs out the user
+Logs out the user.
 
-- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout)
+- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout).
 
 #### Example
 
@@ -233,7 +233,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being rendered on a mobile device. Otherwise, it defaults to `true`.
 - **avatar {Object}**: Determines whether or not an avatar and a username should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](https://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
-- **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
+- **container {String}**: The `id` of the HTML element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **language {String}**: Specifies the language of the widget. Defaults to `"en"`. Supported languages are:
   - `de`: German
   - `en`: English
@@ -367,9 +367,9 @@ var options = {
 
 #### Other options
 
-- **configurationBaseUrl {String}**: Overrides application settings base url. By default it uses Auth0's CDN url when the `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
-- **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
-- **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback url after the user authentication. Defaults to `true`.
+- **configurationBaseUrl {String}**: Overrides application settings base URL. By default it uses Auth0's CDN URL when the `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
+- **languageBaseUrl {String}**: Overrides the language source URL for Auth0's provided translations. By default it uses to Auth0's CDN URL `https://cdn.auth0.com`.
+- **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback URL after the user authentication. Defaults to `true`.
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context`, and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a GitHub [issue](https://github.com/auth0/lock/issues/new).**
 
 ```js
@@ -403,7 +403,7 @@ var options = {
 
 #### Additional sign up fields
 
-Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, and an `icon` url can also be provided. Also, the initial value can be provided with the `prefill` option, which can be a **string** with the value or a **function** that obtains it. Other options depend on the type of the field, which is defined via the `type` option and defaults to `"text"`.
+Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, and an `icon` URL can also be provided. Also, the initial value can be provided with the `prefill` option, which can be a **string** with the value or a **function** that obtains it. Other options depend on the type of the field, which is defined via the `type` option and defaults to `"text"`.
 
 Additional sign up fields are rendered below the default fields in the order they are provided.
 
@@ -517,7 +517,7 @@ Lock can show avatars fetched from anywhere. A custom avatar provider can be spe
 var options = {
   avatar: {
     url: function(email, cb) {
-      // obtain url for email, in case of error you call cb with the error in
+      // obtain URL for email, in case of error you call cb with the error in
       // the first arg instead of null
       cb(null, url);
     },
