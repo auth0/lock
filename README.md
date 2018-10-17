@@ -145,7 +145,7 @@ Lock will emit events during its lifecycle.
 - `hide`: emitted when Lock is hidden. Has no arguments.
 - `unrecoverable_error`: emitted when there is an unrecoverable error, for instance when no connection is available. Has the error as the only argument.
 - `authenticated`: emitted after a successful authentication. Has the authentication result as the only argument.
-- `authorization_error`: emitted when authorization fails. Has error as the only argument.
+- `authorization_error`: emitted when authorization fails. Has the error as the only argument.
 - `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the default), it will attempt to parse the hash part of the url looking for the result of a login attempt. This is a _low-level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that, this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the url's hash part.
 - `forgot_password ready`: emitted when the "Forgot password" screen is shown.
 - `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
@@ -192,9 +192,9 @@ lock.resumeAuth(hash, function(error, authResult) {
 
 ### logout(options)
 
-Logs out the user
+Logs out the user.
 
-- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout)
+- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout).
 
 #### Example
 
