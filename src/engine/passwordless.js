@@ -24,7 +24,6 @@ const setPrefill = m => {
   if (typeof email === 'string') {
     m = setEmail(m, email);
   }
-  //todo, prefill location
   if (typeof phoneNumber === 'string') {
     m = setPhoneNumber(m, phoneNumber);
   }
