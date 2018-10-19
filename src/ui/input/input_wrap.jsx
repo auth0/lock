@@ -55,7 +55,7 @@ InputWrap.propTypes = {
     PropTypes.arrayOf(PropTypes.element).isRequired
   ]),
   focused: PropTypes.bool,
-  invalidHint: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  invalidHint: PropTypes.node,
   isValid: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   svg: PropTypes.string
