@@ -7,6 +7,8 @@
 # Lock
 
 [Auth0](https://auth0.com) is an authentication broker that supports both social and enterprise identity providers, including Active Directory, LDAP, Google Apps, and Salesforce.
+Auth0’s Universal Identity Platform for web, mobile and IoT can handle any of them — B2C, B2B, B2E, or a combination.
+Check out your intro video by clicking on the key emoji [:key:](https://fast.wistia.com/embed/iframe/fu7ww3h1yx?autoPlay=true&controlsVisibleOnLoad=true&popover=true&version=v1&videoHeight=360&videoWidth=640)
 
 ## Table of Contents
 1. [Install](#install)
