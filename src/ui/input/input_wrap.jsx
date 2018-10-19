@@ -31,11 +31,7 @@ export default class InputWrap extends React.Component {
     const errorTooltip =
       !isValid && invalidHint ? (
         <div role="alert" id={`auth0-lock-error-msg-${name}`} className="auth0-lock-error-msg">
-          {typeof invalidHint === 'string' ? (
-            <span dangerouslySetInnerHTML={{ __html: invalidHint }} />
-          ) : (
-            invalidHint
-          )}
+          <div className="auth0-lock-error-invalid-hint">{invalidHint}</div>
         </div>
       ) : null;
 
