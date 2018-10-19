@@ -67,9 +67,9 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 #### Example
 
 ```js
-var clientId = "YOUR_AUTH0_APP_CLIENTID";
-var domain = "YOUR_DOMAIN_AT.auth0.com";
-var lock = new Auth0Lock(clientId, domain);
+const clientId = "YOUR_AUTH0_APP_CLIENTID";
+const domain = "YOUR_DOMAIN_AT.auth0.com";
+const lock = new Auth0Lock(clientId, domain);
 
 lock.on("authenticated", function(authResult) {
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
@@ -101,9 +101,9 @@ For more information, read our [passwordless docs](https://auth0.com/docs/connec
 #### Example
 
 ```js
-var clientId = "YOUR_AUTH0_APP_CLIENTID";
-var domain = "YOUR_DOMAIN_AT.auth0.com";
-var lock = new Auth0LockPasswordless(clientId, domain);
+const clientId = "YOUR_AUTH0_APP_CLIENTID";
+const domain = "YOUR_DOMAIN_AT.auth0.com";
+const lock = new Auth0LockPasswordless(clientId, domain);
 
 lock.on("authenticated", function(authResult) {
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
@@ -177,7 +177,7 @@ lock.show({auth: {params: {state: 'auth_state'}}})
 
 If you set the [auth.autoParseHash](#authentication-options) option to `false`, you'll need to call this method to complete the authentication flow. This method is useful when you're using a client-side router that uses a `#` to handle urls (angular2 with `useHash` or react-router with `hashHistory`).
 - **hash {String}**: The hash fragment received from the redirect.
-- **callback {Function}**: Will be invoked after the parse is done. Has an error (if any) as the first argument and the authentication result as the second one. If there is no hash available, both arguments will be `null`.
+- **callback {Function}**: Will be invoked after the parse is done. Has an error (if any) as the first argument and the authentication result as the second argument. If there is no hash available, both arguments will be `null`.
 
 #### Example
 
@@ -263,7 +263,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 Theme options are grouped in the `theme` property of the `options` object.
 
 ```js
-var options = {
+const options = {
   theme: {
     labeledSubmitButton: false,
     logo: "https://example.com/assets/logo.png",
@@ -294,7 +294,7 @@ var options = {
 Authentication options are grouped in the `auth` property of the `options` object. The default scope used by Lock is `openid profile email`.
 
 ```js
-var options = {
+const options = {
   auth: {
    params: {
     param1: "value1",
@@ -351,7 +351,7 @@ var options = {
 #### Example
 
 ```js
-var options = {
+const options = {
   container: "myContainer",
   closable: false,
   languageDictionary: {
@@ -374,7 +374,7 @@ var options = {
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context`, and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a GitHub [issue](https://github.com/auth0/lock/issues/new).**
 
 ```js
-var options = {
+const options = {
   connectionResolver: function (username, context, cb) {
     var domain = username.includes('@') && username.split('@')[1];
     if (domain) {
@@ -394,7 +394,7 @@ var options = {
 A language dictionary is an object that allows you to customize every piece of text the Lock needs to display. For instance, the following code will change the title displayed in the header and the placeholder for the email field.
 
 ```js
-var options = {
+const options = {
   languageDictionary: {
     emailInputPlaceholder: "Please enter your email",
     title: "My Company"
@@ -413,7 +413,7 @@ Additional sign up fields are rendered below the default fields in the order the
 A `validator` function can also be provided.
 
 ```js
-var options = {
+const options = {
   additionalSignUpFields: [{
     name: "address",
     placeholder: "enter your address",
@@ -436,7 +436,7 @@ var options = {
 To specify a select field `type: "select"` needs to be provided along with the `options` property.
 
 ```js
-var options = {
+const options = {
   additionalSignUpFields: [{
     type: "select",
     name: "location",
@@ -457,7 +457,7 @@ var options = {
 The `options` and the `prefill` value can be provided through a function.
 
 ```js
-var options = {
+const options = {
   additionalSignUpFields: [{
     type: "select",
     name: "location",
@@ -484,7 +484,7 @@ To specify a checkbox field use: `type: "checkbox"`
 The `prefill` value can determine the default state of the checkbox and it is required.
 
 ```js
-var options = {
+const options = {
   additionalSignUpFields: [{
     type: "checkbox",
     name: "newsletter",
@@ -501,7 +501,7 @@ var options = {
 To specify a hidden field use: `type: "hidden"`. Both the `value` and `name` properties are required.
 
 ```js
-var options = {
+const options = {
   additionalSignUpFields: [{
     type: "hidden",
     name: "signup_code",
@@ -515,7 +515,7 @@ var options = {
 Lock can show avatars fetched from anywhere. A custom avatar provider can be specified with the `avatar` option by passing an object with the keys `url` and `displayName`. Both properties are functions that take an email and a callback function.
 
 ```js
-var options = {
+const options = {
   avatar: {
     url: function(email, cb) {
       // obtain URL for email, in case of error you call cb with the error in
@@ -538,15 +538,15 @@ A popup window can be displayed instead of redirecting the user to a social prov
 If you decide to use popup mode you can activate it by passing the option `auth: {redirect: false}` when constructing `Auth0Lock`.
 
 ```js
-var clientId = "YOUR_AUTH0_APP_CLIENTID";
-var domain = "YOUR_DOMAIN_AT.auth0.com";
-var options = {
+const clientId = "YOUR_AUTH0_APP_CLIENTID";
+const domain = "YOUR_DOMAIN_AT.auth0.com";
+const options = {
   auth: {
     redirect: false
   }
 };
 
-var lock = new Auth0Lock(clientId, domain, options);
+const lock = new Auth0Lock(clientId, domain, options);
 lock.show();
 ```
 
