@@ -103,7 +103,7 @@ export default {
   resendingLabel: 'Wird erneut gesendet...',
   retryLabel: 'Wiederholen',
   sentLabel: 'Gesendet!',
-  showPassword: 'Passwort anzeigen'
+  showPassword: 'Passwort anzeigen',
   signUpTitle: 'Anmelden',
   signUpLabel: 'Registrieren',
   signUpSubmitLabel: 'Registrieren',
