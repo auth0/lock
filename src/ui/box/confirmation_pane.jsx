@@ -5,8 +5,8 @@ import * as l from '../../core/index';
 
 const ConfirmationPane = ({ backHandler, children, closeHandler, svg }) => (
   <div className="auth0-lock-confirmation">
-    {closeHandler && <CloseButton id={l.id(lock)} onClick={closeHandler} />}
-    {backHandler && <BackButton id={l.id(lock)} onClick={backHandler} />}
+    {closeHandler && <CloseButton lockId={l.id(lock)} onClick={closeHandler} />}
+    {backHandler && <BackButton lockId={l.id(lock)} onClick={backHandler} />}
     <div className="auth0-lock-confirmation-content">
       <span dangerouslySetInnerHTML={{ __html: svg }} />
       {children}

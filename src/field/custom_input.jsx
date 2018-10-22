@@ -20,7 +20,7 @@ const CustomInput = ({ iconUrl, model, name, ariaLabel, placeholder, type, valid
       return (
         <SelectInput
           {...props}
-          id={l.id(model)}
+          lockId={l.id(model)}
           label={getFieldLabel(model, name)}
           onClick={() => startOptionSelection(l.id(model), name, iconUrl)}
         />
@@ -28,7 +28,7 @@ const CustomInput = ({ iconUrl, model, name, ariaLabel, placeholder, type, valid
     case 'checkbox':
       return (
         <CheckboxInput
-          id={l.id(model)}
+          lockId={l.id(model)}
           onChange={e => changeField(l.id(model), name, `${e.target.checked}`, validator)}
           checked={getFieldValue(model, name)}
           {...props}
@@ -39,7 +39,7 @@ const CustomInput = ({ iconUrl, model, name, ariaLabel, placeholder, type, valid
     default:
       return (
         <TextInput
-          id={l.id(model)}
+          lockId={l.id(model)}
           invalidHint={getFieldInvalidHint(model, name)}
           onChange={e => changeField(l.id(model), name, e.target.value, validator)}
           value={getFieldValue(model, name)}

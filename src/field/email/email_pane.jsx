@@ -38,7 +38,7 @@ export default class EmailPane extends React.Component {
 
     return (
       <EmailInput
-        id={l.id(lock)}
+        lockId={l.id(lock)}
         value={value}
         invalidHint={invalidHint}
         isValid={isValid}
