@@ -21,13 +21,13 @@ export default class VcodeInput extends React.Component {
   }
 
   render() {
-    const { isValid, ...props } = this.props;
+    const { lockId, isValid, ...props } = this.props;
     const { focused } = this.state;
 
     return (
       <InputWrap focused={focused} isValid={isValid} name="vcode" icon={svg}>
         <input
-          id="vcode"
+          id={`${lockId}-vcode`}
           ref="input"
           type="tel"
           name="vcode"

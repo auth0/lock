@@ -13,7 +13,7 @@ export default class TextInput extends React.Component {
 
   render() {
     const {
-      id,
+      lockId,
       iconUrl,
       invalidHint,
       isValid,
@@ -39,7 +39,7 @@ export default class TextInput extends React.Component {
         icon={icon}
       >
         <input
-          id={id}
+          id={`${lockId}-${name}`}
           ref="input"
           type="text"
           name={name}

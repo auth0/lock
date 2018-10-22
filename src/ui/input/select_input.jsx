@@ -11,7 +11,7 @@ export default class SelectInput extends React.Component {
   }
 
   render() {
-    const { id, iconUrl, isValid, label, ariaLabel, name, onClick, placeholder } = this.props;
+    const { lockId, iconUrl, isValid, label, ariaLabel, name, onClick, placeholder } = this.props;
     let { icon } = this.props;
     const { focused } = this.state;
 
@@ -30,7 +30,7 @@ export default class SelectInput extends React.Component {
     return (
       <InputWrap focused={focused} isValid={isValid} name="location" icon={icon}>
         <input
-          id={id}
+          id={`${lockId}-${name}`}
           type="button"
           name={name}
           className={className}
