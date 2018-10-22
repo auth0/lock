@@ -39,6 +39,7 @@ export default class MFACodeInput extends React.Component {
         icon={icon}
       >
         <input
+          id="mfa_code"
           ref="input"
           type="text"
           name="mfa_code"

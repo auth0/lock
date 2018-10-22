@@ -27,6 +27,7 @@ export default class VcodeInput extends React.Component {
     return (
       <InputWrap focused={focused} isValid={isValid} name="vcode" icon={svg}>
         <input
+          id="vcode"
           ref="input"
           type="tel"
           name="vcode"

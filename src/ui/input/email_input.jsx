@@ -35,6 +35,7 @@ export default class EmailInput extends React.Component {
         icon={svg}
       >
         <input
+          id="email"
           ref="input"
           type="email"
           name="email"

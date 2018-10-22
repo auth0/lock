@@ -8,6 +8,7 @@ export default class CheckboxInput extends React.Component {
       <div className="auth0-lock-input-checkbox">
         <label>
           <input
+            id={name}
             type="checkbox"
             checked={checked === 'true'}
             onChange={::this.handleOnChange}

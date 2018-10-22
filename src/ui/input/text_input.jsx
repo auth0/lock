@@ -38,6 +38,7 @@ export default class TextInput extends React.Component {
         icon={icon}
       >
         <input
+          id={name}
           ref="input"
           type="text"
           name={name}
