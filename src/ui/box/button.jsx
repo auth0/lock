@@ -10,7 +10,7 @@ const svgs = {
 
 const IconButton = ({ name, onClick, svg }) => (
   <span
-    id={`auth0-lock-${name}-button`}
+    id={`${id}-${name}-button`}
     role="button"
     tabIndex={0}
     className={`auth0-lock-${name}-button`}
@@ -48,8 +48,8 @@ IconButton.propTypes = {
 // export const CloseButton = createButton("close");
 // export const BackButton = createButton("back");
 
-export const CloseButton = ({ onClick }) => (
-  <IconButton name="close" svg={svgs['close']} onClick={onClick} />
+export const CloseButton = ({ id, onClick }) => (
+  <IconButton id={id} name="close" svg={svgs['close']} onClick={onClick} />
 );
 
 CloseButton.propTypes = {
@@ -57,7 +57,7 @@ CloseButton.propTypes = {
 };
 
 export const BackButton = ({ onClick }) => (
-  <IconButton name="back" svg={svgs['back']} onClick={onClick} />
+  <IconButton id={id} name="back" svg={svgs['back']} onClick={onClick} />
 );
 
 BackButton.propTypes = {

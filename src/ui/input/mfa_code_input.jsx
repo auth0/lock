@@ -26,7 +26,7 @@ export default class MFACodeInput extends React.Component {
   }
 
   render() {
-    const { invalidHint, isValid, onChange, value, ...props } = this.props;
+    const { id, invalidHint, isValid, onChange, value, ...props } = this.props;
 
     const { focused } = this.state;
 
@@ -39,7 +39,7 @@ export default class MFACodeInput extends React.Component {
         icon={icon}
       >
         <input
-          id="mfa_code"
+          id={id}
           ref="input"
           type="text"
           name="mfa_code"

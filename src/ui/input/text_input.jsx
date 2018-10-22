@@ -13,6 +13,7 @@ export default class TextInput extends React.Component {
 
   render() {
     const {
+      id,
       iconUrl,
       invalidHint,
       isValid,
@@ -38,7 +39,7 @@ export default class TextInput extends React.Component {
         icon={icon}
       >
         <input
-          id={name}
+          id={id}
           ref="input"
           type="text"
           name={name}

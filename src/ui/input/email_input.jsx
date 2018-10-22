@@ -23,7 +23,7 @@ export default class EmailInput extends React.Component {
   }
 
   render() {
-    const { invalidHint, isValid, autoComplete, ...props } = this.props;
+    const { id, invalidHint, isValid, autoComplete, ...props } = this.props;
     const { focused } = this.state;
 
     return (
@@ -35,7 +35,7 @@ export default class EmailInput extends React.Component {
         icon={svg}
       >
         <input
-          id="email"
+          id={id}
           ref="input"
           type="email"
           name="email"
