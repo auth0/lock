@@ -17,6 +17,7 @@ export default class MFACodePane extends React.Component {
 
     return (
       <MFACodeInput
+        id={l.id(lock)}
         value={c.getFieldValue(lock, 'mfa_code')}
         invalidHint={i18n.str('mfaCodeErrorHint', getMFACodeValidation().length)}
         isValid={!c.isFieldVisiblyInvalid(lock, 'mfa_code')}
