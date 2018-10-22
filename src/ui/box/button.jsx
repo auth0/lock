@@ -10,6 +10,7 @@ const svgs = {
 
 const IconButton = ({ name, onClick, svg }) => (
   <span
+    id={`auth0-lock-${name}-button`}
     role="button"
     tabIndex={0}
     className={`auth0-lock-${name}-button`}
