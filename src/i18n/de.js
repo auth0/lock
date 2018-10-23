@@ -5,7 +5,7 @@ export default {
         'Sie haben das Limit für Rücksetzungsversuche des Passworts erreicht. Bitte warten Sie, bevor Sie es erneut versuchen.',
       'lock.fallback': 'Es tut uns leid, beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.',
       enterprise_email:
-        'Diese Domain Ihrer E-Mail-Adresse ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.'
+        'Die Domain Ihrer E-Mail-Adresse ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.'
     },
     login: {
       blocked_user: 'Der Benutzer wird blockiert.',
