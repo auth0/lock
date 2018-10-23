@@ -10,7 +10,7 @@ import * as l from '../core/index';
 const cycle = (xs, x) => {
   return xs.skipWhile(y => y !== x).get(1, xs.get(0));
 };
-©
+
 export default class FiltrableList extends React.Component {
   constructor(props) {
     super(props);
