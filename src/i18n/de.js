@@ -5,7 +5,7 @@ export default {
         'Sie haben das Limit für Rücksetzungsversuche des Passworts erreicht. Bitte warten Sie, bevor Sie es erneut versuchen.',
       'lock.fallback': 'Es tut uns leid, beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.',
       enterprise_email:
-        'Die Domain Ihrer E-Mail-Adresse ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.'
+        'Diese Domain Ihrer E-Mail-Adresse ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.'
     },
     login: {
       blocked_user: 'Der Benutzer wird blockiert.',
@@ -31,8 +31,8 @@ export default {
       'hrd.not_matching_email': 'Bitte verwenden Sie Ihre geschäftliche E-Mail-Adresse, um sich anzumelden.'
     },
     passwordless: {
-      'bad.email': 'Die E-Mail-Adresse ist ungültig',
-      'bad.phone_number': 'Die Telefonnummer ist ungültig',
+      'bad.email': 'Diese E-Mail-Adresse ist ungültig',
+      'bad.phone_number': 'Diese Telefonnummer ist ungültig',
       'lock.fallback': 'Es tut uns leid, etwas ist schiefgelaufen.'
     },
     signUp: {
