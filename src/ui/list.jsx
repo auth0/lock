@@ -66,7 +66,7 @@ export default class FiltrableList extends React.Component {
   }
 
   render() {
-    const { icon, iconUrl, onCancel, model } = this©.props;
+    const { icon, iconUrl, onCancel, model } = this.props;
     return (
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
