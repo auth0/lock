@@ -48,7 +48,7 @@ export default class EmailInput extends React.Component {
           onBlur={::this.handleBlur}
           aria-label="Email"
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-email`}
+          aria-describedby={!isValid && invalidHint ? `auth0-lock-error-msg-email` : undefined}
           {...props}
         />
       </InputWrap>

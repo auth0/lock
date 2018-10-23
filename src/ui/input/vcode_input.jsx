@@ -38,7 +38,6 @@ export default class VcodeInput extends React.Component {
           onBlur={::this.handleBlur}
           aria-label="vcode"
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-vcode`}
           {...props}
         />
       </InputWrap>
