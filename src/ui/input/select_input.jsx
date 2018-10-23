@@ -41,7 +41,6 @@ export default class SelectInput extends React.Component {
           onClick={onClick}
           aria-label={ariaLabel || name}
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-${name}`}
         />
         <span dangerouslySetInnerHTML={{ __html: arrowSvg }} />
       </InputWrap>

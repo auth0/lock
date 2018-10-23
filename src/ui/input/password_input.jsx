@@ -79,7 +79,9 @@ export default class PasswordInput extends React.Component {
           value={value}
           aria-label="Password"
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-password`}
+          aria-describedby={
+            !isValid && !policy && invalidHint ? `auth0-lock-error-msg-password` : undefined
+          }
           {...props}
         />
       </InputWrap>
