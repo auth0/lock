@@ -10,7 +10,7 @@ import * as l from '../core/index';
 const cycle = (xs, x) => {
   return xs.skipWhile(y => y !== x).get(1, xs.get(0));
 };
-
+©
 export default class FiltrableList extends React.Component {
   constructor(props) {
     super(props);
@@ -66,13 +66,13 @@ export default class FiltrableList extends React.Component {
   }
 
   render() {
-    const { icon, iconUrl, onCancel, model } = this.props;
+    const { icon, iconUrl, onCancel, model } = this©.props;
     return (
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
           <BackButton lockId={l.id(model)} onClick={onCancel} />
           <TextInput
-            lockId={l.id(model)
+            lockId={l.id(model)}
             name="search"
             icon={icon}
             iconUrl={iconUrl}
