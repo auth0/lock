@@ -10,7 +10,6 @@ const getComponent = () => require('field/custom_input').default;
 
 describe('CustomInput', () => {
   const defaultProps = {
-    lockId: 'lockId',
     iconUrl: 'iconUrl',
     placeholder: 'placeholder',
     ariaLabel: 'Custom Input',
