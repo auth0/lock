@@ -50,7 +50,7 @@ export default class TextInput extends React.Component {
           value={value}
           aria-label={ariaLabel || name}
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-${name}`}
+          aria-describedby={!isValid && invalidHint ? `auth0-lock-error-msg-${name}` : undefined}
           {...props}
         />
       </InputWrap>

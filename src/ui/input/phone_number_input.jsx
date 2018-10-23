@@ -26,7 +26,6 @@ export default class PhoneNumberInput extends React.Component {
           onBlur={::this.handleBlur}
           aria-label="Telephone number"
           aria-invalid={!isValid}
-          aria-describedby={`auth0-lock-error-msg-phoneNumber`}
           {...props}
         />
       </InputWrap>
