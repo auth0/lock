@@ -27,7 +27,7 @@ export default {
       too_many_attempts: 'Your account has been blocked after multiple consecutive login attempts.',
       session_missing:
         "Couldn't complete your authentication request. Please try again after closing all open dialogs",
-      'hrd.not_matching_email': 'Please, use your corporate email to login.'
+      'hrd.not_matching_email': 'Please use your corporate email to login.'
     },
     passwordless: {
       'bad.email': 'The email is invalid',
