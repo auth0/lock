@@ -5,6 +5,7 @@ import { cancelOptionSelection, selectOption } from './actions';
 
 export default ({ icon, iconUrl, model, name, items }) => (
   <List
+    model={model}
     icon={icon}
     iconUrl={iconUrl}
     items={items}
