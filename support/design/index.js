@@ -74,7 +74,7 @@ WebAPI.prototype.parseHash = function(lockID, ...args) {
 }
 
 ClientSettings.fetchClientSettings = function(clientID, clientBaseUrl, cb) {
-  // TODO: we should have propper settings for every configuration.
+  // TODO: we should have proper settings for every configuration.
   const settings =  {
     strategies: [
       {
