@@ -1,5 +1,19 @@
 # Change Log
 
+## [v11.11.0](https://github.com/auth0/lock/tree/v11.11.0) (2018-10-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.10.0...v11.11.0)
+
+
+**Added**
+- Add prefill support to Auth0LockPasswordless [\#1505](https://github.com/auth0/lock/pull/1505) ([luisrudge](https://github.com/luisrudge))
+- Add `ariaLabel` option for custom fields [\#1492](https://github.com/auth0/lock/pull/1492) ([Splact](https://github.com/Splact))
+
+**Fixed**
+- Fix google button styles according to google's guidelines [\#1512](https://github.com/auth0/lock/pull/1512) ([luisrudge](https://github.com/luisrudge))
+- [Sustainment] Fixed Reset Password Avatar/Enterprise Issue [\#1504](https://github.com/auth0/lock/pull/1504) ([cocojoe](https://github.com/cocojoe))
+- Remove aria-describedby on missing ref [\#1497](https://github.com/auth0/lock/pull/1497) ([Splact](https://github.com/Splact))
+
+
 ## [v11.10.0](https://github.com/auth0/lock/tree/v11.10.0) (2018-09-27)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.9.1...v11.10.0)
 
