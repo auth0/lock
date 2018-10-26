@@ -156,7 +156,7 @@ Lock will emit events during its lifecycle.
 
 ### show(options)
 
-Displays the widget, allowing to override some options.
+Displays the widget, allowing you to override some options.
 
 - **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, `flashMessage` and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
