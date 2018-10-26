@@ -45,7 +45,7 @@ After installing the `auth0-lock` module, you'll need to bundle it up along with
 > It is expected that you use the development mode when working on your app, and the production mode when deploying your app to the users.
 > You can find instructions for building your app for production with different module bundlers [here](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build).
 
-If you are targeting mobile audiences, we recommended that you add:
+If you are targeting mobile audiences, we recommend that you add:
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -204,7 +204,7 @@ lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 
 ### checkSession(params, callback)
 
-The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
+The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens (https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
 - **params {Object}**: OAuth2 params object to send to Auth0's servers.
 - **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
 
@@ -232,7 +232,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **allowedConnections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being rendered on a mobile device. Otherwise, it defaults to `true`.
-- **avatar {Object}**: Determines whether or not an avatar and a username should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](https://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
+- **avatar {Object}**: Determines whether or not an avatar and a username should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](https://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider, see [below](#avatar-provider).
 - **container {String}**: The `id` of the HTML element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **language {String}**: Specifies the language of the widget. Defaults to `"en"`. Supported languages are:
   - `de`: German
@@ -255,7 +255,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **allowAutocomplete {Boolean}**: Determines whether or not the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
 - **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
 - **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
-- **allowPasswordAutocomplete {Boolean}**: Determines whether the password field will allow autocomplete; setting this to `true` is required for password manager support and to avoid many cases of adverse behavior. Defaults to `false`.
+- **allowPasswordAutocomplete {Boolean}**: Determines whether the password field will allow autocomplete; setting this to `true` is required for password manager support and to avoid many cases of adverse behaviour. Defaults to `false`.
 
 
 #### Theming options
@@ -281,13 +281,13 @@ var options = {
 ```
 
 - **labeledSubmitButton {Boolean}**: Indicates whether or not the submit button should have a label. Defaults to `true`. When set to `false` an icon will be shown. The labels can be customized through the `languageDictionary`.
-- **logo {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
+- **logo {String}**: URL for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `logo` to ensure all colors go well together with the logo's color palette. Defaults to `"#ea5323"`.
 - **authButtons {Object}**: Allows the customization of the custom oauth2 login buttons.
   + **displayName {String}**: The name to show instead of the connection name.
   + **primaryColor {String}**: The button's background color. Defaults to `"#eb5424"`.
   + **foregroundColor {String}**: The button's text color. Defaults to `"#FFFFFF"`.
-  + **icon {String}**: The icon's url for the connection. For example:`"https://site.com/logo.png"`.
+  + **icon {String}**: The icon's URL for the connection. For example:`"https://site.com/logo.png"`.
 
 #### Authentication options
 
@@ -302,7 +302,7 @@ var options = {
    },
    autoParseHash: true,
    redirect: true,
-   redirectUrl: "some url",
+   redirectUrl: "some URL",
    responseMode: "form_post",
    responseType: "token",
    sso: true,
