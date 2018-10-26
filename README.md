@@ -19,7 +19,7 @@
 
 ## Install
 
-From CDN
+From [CDN] (https://auth0.com/docs/libraries/lock/v11/auth0js)
 
 ```html
 <!-- Latest patch release (recommended for production) -->
