@@ -71,7 +71,8 @@ var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0Lock(clientId, domain);
 
-lock.on("authenticated", function(authResult) {
+lock.on("authenticated", function(authResult) 
+{
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
     if (error) {
       // Handle error
