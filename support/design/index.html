@@ -264,54 +264,12 @@ body {
   <div class="lock-container" id="last-login-database-container"></div>
 </div>
 
-<!-- <div class="container">
-  <div class="info">
-    <h2>emailcode</h2>
-  </div>
-  <div class="lock-container" id="emailcode-container"></div>
-</div>
-
-<div class="container">
-  <div class="info">
-    <h2>magiclink</h2>
-  </div>
-  <div class="lock-container" id="magiclink-container"></div>
-</div>
-
-<div class="container">
-  <div class="info">
-    <h2>sms</h2>
-  </div>
-  <div class="lock-container" id="sms-container"></div>
-</div> -->
-
 <div class="container">
   <div class="info">
     <h2>Social</h2>
   </div>
   <div class="lock-container" id="social-container"></div>
 </div>
-
-<!-- <div class="container">
-  <div class="info">
-    <h2>socialOrEmailcode</h2>
-  </div>
-  <div class="lock-container" id="socialOrEmailcode-container"></div>
-</div>
-
-<div class="container">
-  <div class="info">
-    <h2>socialOrMagiclink</h2>
-  </div>
-  <div class="lock-container" id="socialOrMagiclink-container"></div>
-</div>
-
-<div class="container">
-  <div class="info">
-    <h2>socialOrSms</h2>
-  </div>
-  <div class="lock-container" id="socialOrSms-container"></div>
-</div> -->
 
 <div class="container">
   <div class="info">
@@ -501,36 +459,6 @@ body {
    container: "last-login-database-container"
  }).show();
 
- // new Auth0LockPasswordless(cid, domain, {
- //   allowedConnections: ["email"],
- //   auth: { redirect: false, send: "code" },
- //   closable: true,
- //   container: "emailcode-container",
- //   dict: {
- //     email: {
- //       terms: terms
- //     }
- //   },
- //   rememberLastLogin: false
- // }).show();
- //
- // new Auth0LockPasswordless(cid, domain, {
- //   allowedConnections: ["email"],
- //   auth: { redirect: false },
- //   container: "magiclink-container",
- //   dict: {
- //     terms: terms
- //   },
- //   rememberLastLogin: false
- // }).show();
- //
- // new Auth0LockPasswordless(cid, domain, {
- //   allowedConnections: ["sms"],
- //   auth: { redirect: false },
- //   container: "sms-container",
- //   rememberLastLogin: false
- // }).show();
-
  new Auth0Lock(cid, domain, {
    allowedConnections: ["facebook", "twitter", "github", "google-oauth2"],
    auth: { redirect: false },
@@ -539,26 +467,6 @@ body {
    socialButtonStyle: "big"
  }).show();
 
- // new Auth0LockPasswordless(cid, domain, {
- //   allowedConnections: ["email", "facebook", "twitter", "github"],
- //   auth: { redirect: false, send: "code" },
- //   container: "socialOrEmailcode-container",
- //   rememberLastLogin: false
- // }).show();
- //
- // new Auth0LockPasswordless(cid, domain, {
- //   allowedConnections: ["email", "facebook", "twitter", "github"],
- //   auth: { redirect: false },
- //   container: "socialOrMagiclink-container",
- //   rememberLastLogin: false
- // }).show();
- //
- // new Auth0LockPasswordless(cid, domain, {
- //   allowedConnections: ["sms", "facebook", "twitter", "github"],
- //   auth: { redirect: false },
- //   container: "socialOrSms-container",
- //   rememberLastLogin: false
- // }).show();
 
  new Auth0Lock(cid, domain, {
        allowedConnections: ["Username-Password-Authentication", "auth0.com", "rolodato"],
