@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`core/client/index initClient loads password policy 'excellent' correctly with a password_complexity_options option 1`] = `
+Object {
+  "minLength": 4,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'excellent' correctly without a password_complexity_options option 1`] = `
+Object {
+  "minLength": 10,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'fair' correctly with a password_complexity_options option 1`] = `
+Object {
+  "minLength": 4,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'fair' correctly without a password_complexity_options option 1`] = `
+Object {
+  "minLength": 8,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'good' correctly with a password_complexity_options option 1`] = `
+Object {
+  "minLength": 4,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'good' correctly without a password_complexity_options option 1`] = `
+Object {
+  "minLength": 8,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'low' correctly with a password_complexity_options option 1`] = `
+Object {
+  "minLength": 4,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'low' correctly without a password_complexity_options option 1`] = `
+Object {
+  "minLength": 6,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'none' correctly with a password_complexity_options option 1`] = `
+Object {
+  "minLength": 4,
+}
+`;
+
+exports[`core/client/index initClient loads password policy 'none' correctly without a password_complexity_options option 1`] = `
+Object {
+  "minLength": 1,
+}
+`;

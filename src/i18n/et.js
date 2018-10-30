@@ -103,7 +103,7 @@ export default {
   retryLabel: 'Proovi uuesti',
   sentLabel: 'Saadetud!',
   showPassword: 'Näita salasõna',
-  signupTitle: 'Registreeri',
+  signUpTitle: 'Registreeri',
   signUpLabel: 'Registreeri',
   signUpSubmitLabel: 'Registreeri',
   signUpTerms: '',

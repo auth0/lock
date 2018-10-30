@@ -93,7 +93,7 @@ export default {
   resendingLabel: '재전송중...',
   retryLabel: '재시도',
   sentLabel: '전송완료',
-  signupTitle: '회원가입',
+  signUpTitle: '회원가입',
   signUpLabel: '회원가입',
   signUpSubmitLabel: '회원가입',
   signUpTerms: '',

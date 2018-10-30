@@ -103,7 +103,7 @@ export default {
   resendingLabel: 'Posielame...',
   retryLabel: 'Skúsiť znova',
   sentLabel: 'Odoslané!',
-  signupTitle: 'Prihlásiť sa',
+  signUpTitle: 'Prihlásiť sa',
   signUpLabel: 'Registrácia',
   signUpSubmitLabel: 'Registrovať sa',
   signUpTerms: '',

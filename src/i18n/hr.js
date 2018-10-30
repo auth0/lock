@@ -109,7 +109,7 @@ export default {
   retryLabel: 'Pokušaj ponovo',
   sentLabel: 'Poslano!',
   showPassword: 'Prikaži lozinku',
-  signupTitle: 'Registracija',
+  signUpTitle: 'Registracija',
   signUpLabel: 'Registracija',
   signUpSubmitLabel: 'Registracija',
   signUpTerms: '',

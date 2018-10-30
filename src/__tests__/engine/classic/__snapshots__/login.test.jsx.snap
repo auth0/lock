@@ -4,8 +4,9 @@ exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
 <div>
   <div
     data-__type="single_sign_on_notice"
-    data-children="ssoEnabled"
-  />
+  >
+    ssoEnabled
+  </div>
   <div
     data-__type="login_pane"
     data-emailInputPlaceholder="emailInputPlaceholder"
@@ -130,8 +131,9 @@ exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
 <div>
   <div
     data-__type="single_sign_on_notice"
-    data-children="ssoEnabled"
-  />
+  >
+    ssoEnabled
+  </div>
   <div
     data-__type="login_pane"
     data-emailInputPlaceholder="emailInputPlaceholder"

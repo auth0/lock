@@ -167,6 +167,7 @@ tabsHeight = 40px
     border-radius 100px
     height 10px
     width 10px
+    padding 0
     position absolute
     top 14px
     right 14px
@@ -176,6 +177,10 @@ tabsHeight = 40px
     border 6px solid white
     cursor pointer
     line-height 0
+    
+    &:focus
+      outline: none
+      box-shadow 0 3px 3px rgba(0,0,0,.3)
 
     svg
       -webkit-box-sizing content-box
@@ -322,6 +327,8 @@ tabsHeight = 40px
         color rgba(0,0,0,.87)
         cursor pointer
         margin-bottom 0
+        &:focus
+          text-decoration underline
 
   .auth0-lock-input-block
     position relative
@@ -459,14 +466,32 @@ tabsHeight = 40px
     -webkit-transition background-color .2s ease-in-out
     transition background-color .2s ease-in-out
 
+    &[data-provider^=google]
+      .auth0-lock-social-button-icon
+        background-color: #ffffff
+        border: 2px #4285f4 solid
+        border-radius: 3px 0px 0px 3px
+        height: 36px
+        width: 36px
+      &:hover, &:focus
+        .auth0-lock-social-button-icon
+          background-color: #ffffff !important
+          border-color: #3367d6
+        .auth0-lock-social-button-text
+          background-color: #3367d6 !important
+      &.auth0-lock-social-big-button
+        .auth0-lock-social-button-icon
+          background-color: #ffffff
+          width: 38px
+
     .auth0-lock-social-button-icon
       width 40px
       height 40px
       position absolute
       top 0
       left 0
-      transition background-color 0.3s
-      -webkit-transition background-color 0.3s
+      transition background-color 0.3s, border .2s ease-in-out
+      -webkit-transition background-color 0.3s, border .2s ease-in-out
 
     &:hover, &:focus
       .auth0-lock-social-button-icon
@@ -1142,18 +1167,21 @@ tabsHeight = 40px
       text-align center
       cursor pointer
 
-      a
+      a, span
         padding 11px 10px
         display block
         text-decoration none
         color rgba(#5C666F,.6)
         font-weight 500
 
+      a:focus
+        color rgba(#5C666F,.9)
+
       &.auth0-lock-tabs-current
         box-shadow 0 1px 0 0 #5C666F
         cursor default
 
-        a
+        span
           color #5C666F
 
 // password strength
@@ -1268,7 +1296,7 @@ tabsHeight = 40px
     top 1px
     display inline-table
 
-    span
+    .auth0-lock-error-invalid-hint
       background white
       padding 12px 15px
       display block

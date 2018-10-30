@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js';
-import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
+import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
 import superagent from 'superagent';
 import * as l from '../index';
 import { getEntity, read } from '../../store/index';
@@ -30,6 +30,8 @@ class Auth0APIClient {
       nonce = opts.params.nonce;
     }
 
+    const scope = opts.params && opts.params.scope;
+
     this.client = new auth0.WebAuth({
       clientID: clientID,
       domain: domain,
@@ -43,14 +45,16 @@ class Auth0APIClient {
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
       _telemetryInfo: opts._telemetryInfo || default_telemetry,
       state,
-      nonce
+      nonce,
+      scope
     });
 
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
-      nonce: nonce,
-      state: state
+      nonce,
+      state,
+      scope
     };
     if (this.isUniversalLogin && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;
@@ -60,12 +64,26 @@ class Auth0APIClient {
   logIn(options, authParams, cb) {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
-    const f = loginCallback(false, cb);
-    const loginOptions = normalizeAuthParams({ ...options, ...this.authOpt, ...authParams });
+    const f = loginCallback(false, this.domain, cb);
+    const loginOptions = normalizeAuthParams({
+      ...options,
+      ...this.authOpt,
+      ...authParams
+    });
+
+    if (options.login_hint) {
+      loginOptions.login_hint = options.login_hint;
+    }
 
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        this.client.popup.authorize({ ...loginOptions, owp: true }, f);
+        this.client.popup.authorize(
+          {
+            ...loginOptions,
+            owp: true
+          },
+          f
+        );
       } else {
         this.client.authorize(loginOptions, f);
       }
@@ -99,7 +117,10 @@ class Auth0APIClient {
   }
 
   passwordlessVerify(options, cb) {
-    const verifyOptions = { ...options, popup: this.authOpt.popup };
+    const verifyOptions = {
+      ...options,
+      popup: this.authOpt.popup
+    };
     this.client.passwordlessLogin(verifyOptions, (err, result) => cb(normalizeError(err), result));
   }
 

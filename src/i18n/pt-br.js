@@ -116,7 +116,7 @@ export default {
   windowsAuthInstructions: 'Você está conectado da sua rede corporativa&hellip;',
   windowsAuthLabel: 'Autenticação Windows',
   forgotPasswordTitle: 'Redefinir sua senha',
-  signupTitle: 'Inscrever-se',
+  signUpTitle: 'Inscrever-se',
   mfaInputPlaceholder: 'Código',
   mfaLoginTitle: 'Verificação 2-Step',
   mfaLoginInstructions: 'Digite o código de verificação gerado pela sua aplicação móvel.',

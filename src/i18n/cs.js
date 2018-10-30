@@ -103,7 +103,7 @@ export default {
   retryLabel: 'Znovu',
   sentLabel: 'Posláno!',
   showPassword: 'Ukaž heslo',
-  signupTitle: 'Registrace',
+  signUpTitle: 'Registrace',
   signUpLabel: 'Registrace',
   signUpSubmitLabel: 'Registrovat',
   signUpTerms: '',

@@ -105,7 +105,7 @@ export default {
   retryLabel: 'Reîncearcă',
   sentLabel: 'Transmis!',
   showPassword: 'Arată parola',
-  signupTitle: 'Inregistrează-te',
+  signUpTitle: 'Inregistrează-te',
   signUpLabel: ' Inregistrează-te ',
   signUpSubmitLabel: ' Inregistrează-te ',
   signUpTerms: '',

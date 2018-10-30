@@ -64,7 +64,7 @@ export default {
   forgotPasswordTitle: 'Restablecer contraseña',
   forgotPasswordAction: '¿Olvidó su contraseña?',
   forgotPasswordInstructions:
-    'Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.',
+    'Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contraseña.',
   forgotPasswordSubmitLabel: 'Enviar email',
   invalidErrorHint: 'Inválido',
   lastLoginInstructions: 'La última vez inició sesión con',
@@ -99,7 +99,7 @@ export default {
   resendingLabel: 'Reenviando...',
   retryLabel: 'Reintentar',
   sentLabel: 'Enviado!',
-  signupTitle: 'Registrarse',
+  signUpTitle: 'Registrarse',
   signUpLabel: 'Registrarse',
   signUpSubmitLabel: 'Registrarse',
   signUpTerms: '',

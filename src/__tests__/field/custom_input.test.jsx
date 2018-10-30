@@ -12,6 +12,7 @@ describe('CustomInput', () => {
   const defaultProps = {
     iconUrl: 'iconUrl',
     placeholder: 'placeholder',
+    ariaLabel: 'Custom Input',
     name: 'custom_input',
     model: {},
     validator: 'validator'
@@ -96,6 +97,17 @@ describe('CustomInput', () => {
   describe('when type == checkbox', () => {
     beforeEach(() => (defaultProps.type = 'checkbox'));
     it('renders correctly as a CheckBoxInput', () => {
+      const CustomInput = getComponent();
+
+      expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
+    });
+  });
+  describe('when type == hidden', () => {
+    beforeEach(() => {
+      defaultProps.type = 'hidden';
+      defaultProps.value = 'hidden_value';
+    });
+    it('renders correctly as a input[type=hidden]', () => {
       const CustomInput = getComponent();
 
       expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();

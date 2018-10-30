@@ -1,5 +1,74 @@
 # Change Log
 
+## [v11.11.0](https://github.com/auth0/lock/tree/v11.11.0) (2018-10-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.10.0...v11.11.0)
+
+
+**Added**
+- Add prefill support to Auth0LockPasswordless [\#1505](https://github.com/auth0/lock/pull/1505) ([luisrudge](https://github.com/luisrudge))
+- Add `ariaLabel` option for custom fields [\#1492](https://github.com/auth0/lock/pull/1492) ([Splact](https://github.com/Splact))
+
+**Fixed**
+- Fix google button styles according to google's guidelines [\#1512](https://github.com/auth0/lock/pull/1512) ([luisrudge](https://github.com/luisrudge))
+- [Sustainment] Fixed Reset Password Avatar/Enterprise Issue [\#1504](https://github.com/auth0/lock/pull/1504) ([cocojoe](https://github.com/cocojoe))
+- Remove aria-describedby on missing ref [\#1497](https://github.com/auth0/lock/pull/1497) ([Splact](https://github.com/Splact))
+
+
+## [v11.10.0](https://github.com/auth0/lock/tree/v11.10.0) (2018-09-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.9.1...v11.10.0)
+
+**Changed**
+- Upgrade Auth0.js to use cookies instead of localStorage by default: [Read more](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v980-2018-09-26)
+
+
+## [v11.9.1](https://github.com/auth0/lock/tree/v11.9.1) (2018-09-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.9.0...v11.9.1)
+
+
+**Fixed**
+- Use span for icon buttons [\#1478](https://github.com/auth0/lock/pull/1478) ([andrew-me](https://github.com/andrew-me))
+
+
+## [v11.9.0](https://github.com/auth0/lock/tree/v11.9.0) (2018-08-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.1...v11.9.0)
+
+
+**Added**
+- Support new minimum password length parameter [\#1472](https://github.com/auth0/lock/pull/1472) ([luisrudge](https://github.com/luisrudge))
+- Improve accessibility [\#1471](https://github.com/auth0/lock/pull/1471) ([andrew-me](https://github.com/andrew-me))
+- Add a new type of additionalSignUpField: hidden [\#1459](https://github.com/auth0/lock/pull/1459) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed login_hint in some enterprise authorize call scenarios [\#1460](https://github.com/auth0/lock/pull/1460) ([cocojoe](https://github.com/cocojoe))
+
+
+## [v11.8.1](https://github.com/auth0/lock/tree/v11.8.1) (2018-07-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.0...v11.8.1)
+
+
+**Fixed**
+- Fix/sign up title inconsistenty [\#1457](https://github.com/auth0/lock/pull/1457) ([luisrudge](https://github.com/luisrudge))
+- Fix wrong autoComplete value in password_input [\#1456](https://github.com/auth0/lock/pull/1456) ([luisrudge](https://github.com/luisrudge))
+- Fix crash when showing lock for the second time with custom select input [\#1448](https://github.com/auth0/lock/pull/1448) ([luisrudge](https://github.com/luisrudge))
+- Moving the PasswordStrength component to below the password input [\#1444](https://github.com/auth0/lock/pull/1444) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.8.0](https://github.com/auth0/lock/tree/v11.8.0) (2018-07-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.2...v11.8.0)
+
+
+**Added**
+- Add allowPasswordAutocomplete option [\#1419](https://github.com/auth0/lock/pull/1419) ([jshado1](https://github.com/jshado1))
+
+**Changed**
+- Upgrade auth0.js to 9.7.3 [\#1442](https://github.com/auth0/lock/pull/1442) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix Configuration URL when using __tenantInfo and a baseConfigurationURL [\#1425](https://github.com/auth0/lock/pull/1425) ([lbalmaceda](https://github.com/lbalmaceda))
+- Fix SSO screen not showing in some cases [\#1415](https://github.com/auth0/lock/pull/1415) ([luisrudge](https://github.com/luisrudge))
+- In SSO mode, hide the password input instead of removing it from the DOM [\#1407](https://github.com/auth0/lock/pull/1407) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.7.2](https://github.com/auth0/lock/tree/v11.7.2) (2018-06-07)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.7.1...v11.7.2)
 

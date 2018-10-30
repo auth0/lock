@@ -120,7 +120,7 @@ export default {
   windowsAuthInstructions: 'Du er forbundet fra din virksomheds netværk&hellip;',
   windowsAuthLabel: 'Windows Authentication',
   forgotPasswordTitle: 'Nulstil din adgangskode',
-  signupTitle: 'Tilmeld',
+  signUpTitle: 'Tilmeld',
   mfaInputPlaceholder: 'Kode',
   mfaLoginTitle: 'Tofaktorgodkendelse',
   mfaLoginInstructions: 'Indtast venligst bekræftelseskoden genereret af din mobilapplikation.',
