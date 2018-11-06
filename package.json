@@ -28,6 +28,7 @@
       "cross-env BABEL_ENV=test mochify --watch --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
     "test:jest": "jest --coverage --runInBand",
     "test:jest:watch": "jest --watch --coverage",
+    "test:es-check": "es-check es5 'build/*.js'",
     "publish:cdn": "ccu",
     "release": "scripts/release.sh",
     "i18n:translate": "grunt dist && node scripts/complete-translations.js"
@@ -50,6 +51,7 @@
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
+    "es-check": "^4.0.0",
     "eslint": "^4.8.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.4.0",
