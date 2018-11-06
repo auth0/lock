@@ -10,6 +10,7 @@ headerHeight = 118px
 submitHeight = 70px
 iphoneBar = 68px
 tabsHeight = 40px
+loadingSize = 30px
 
 @media screen and (max-width: 480px)
   html.auth0-lock-html body
@@ -652,8 +653,8 @@ tabsHeight = 40px
       position absolute
       top 4px
       left 44%
-      width 30px
-      height 30px
+      width loadingSize
+      height loadingSize
       border-width 2px
       border-style solid
       border-color rgba(0,0,0,.4) rgba(0,0,0,.4) rgba(0,0,0,.2) rgba(0,0,0,.2)
@@ -1140,7 +1141,7 @@ tabsHeight = 40px
         color rgba(#5C666F,.9)
 
       &.auth0-lock-tabs-current
-        box-shadow 0 1px 0 0 #5C666F
+        box-shadow 1px 1px 0 0 #5C666F
         cursor default
 
         span
@@ -1282,6 +1283,12 @@ tabsHeight = 40px
 
 .auth0-lock .auth0-loading-screen
   min-height 42px
+  padding 20px
+  @media screen and (max-width: 480px)
+      position absolute
+      top "calc(50vh - %s)" % headerHeight
+      left "calc(50vw - %s)" % (loadingSize / 2)
+      padding 0
 
   .auth0-loading-container
     display block
