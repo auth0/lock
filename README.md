@@ -23,7 +23,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.10.0/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.11.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -145,8 +145,8 @@ Lock will emit events during its lifecycle.
 - `hide`: emitted when Lock is hidden. Has no arguments.
 - `unrecoverable_error`: emitted when there is an unrecoverable error, for instance when no connection is available. Has the error as the only argument.
 - `authenticated`: emitted after a successful authentication. Has the authentication result as the only argument.
-- `authorization_error`: emitted when authorization fails. Has error as the only argument.
-- `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the default), it will attempt to parse the hash part of the url looking for the result of a login attempt. This is a _low-level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that, this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the url's hash part.
+- `authorization_error`: emitted when authorization fails. Has the error as the only argument.
+- `hash_parsed`: every time a new Auth0Lock object is initialized in redirect mode (the default), it will attempt to parse the hash part of the URL looking for the result of a login attempt. This is a _low-level_ event for advanced use cases and _authenticated_ and _authorization_error_ should be preferred when possible. After that, this event will be emitted with `null` if it couldn't find anything in the hash. It will be emitted with the same argument as the `authenticated` event after a successful login or with the same argument as `authorization_error` if something went wrong. This event won't be emitted in popup mode because there is no need to parse the URL's hash part.
 - `forgot_password ready`: emitted when the "Forgot password" screen is shown.
 - `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
 - `signin submit`: emitted when the user clicks on the submit button of the "Login" screen.
@@ -156,7 +156,7 @@ Lock will emit events during its lifecycle.
 
 ### show(options)
 
-Displays the widget, allowing to override some options.
+Displays the widget, allowing you to override some options.
 
 - **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, `flashMessage` and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
@@ -175,7 +175,7 @@ lock.show({auth: {params: {state: 'auth_state'}}})
 
 ### resumeAuth(hash, callback)
 
-If you set the [auth.autoParseHash](#authentication-options) option to `false`, you'll need to call this method to complete the authentication flow. This method is useful when you're using a client-side router that uses a `#` to handle urls (angular2 with `useHash` or react-router with `hashHistory`).
+If you set the [auth.autoParseHash](#authentication-options) option to `false`, you'll need to call this method to complete the authentication flow. This method is useful when you're using a client-side router that uses a `#` to handle URLs (angular2 with `useHash` or react-router with `hashHistory`).
 - **hash {String}**: The hash fragment received from the redirect.
 - **callback {Function}**: Will be invoked after the parse is done. Has an error (if any) as the first argument and the authentication result as the second one. If there is no hash available, both arguments will be `null`.
 
@@ -192,9 +192,9 @@ lock.resumeAuth(hash, function(error, authResult) {
 
 ### logout(options)
 
-Logs out the user
+Logs out the user.
 
-- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout)
+- **options {Object}**: This is optional and follows the same rules as [this](https://auth0.com/docs/libraries/auth0js#logout).
 
 #### Example
 
@@ -233,7 +233,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being rendered on a mobile device. Otherwise, it defaults to `true`.
 - **avatar {Object}**: Determines whether or not an avatar and a username should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](https://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
-- **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
+- **container {String}**: The `id` of the HTML element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **language {String}**: Specifies the language of the widget. Defaults to `"en"`. Supported languages are:
   - `de`: German
   - `en`: English
@@ -316,10 +316,10 @@ var options = {
 - **params {Object}**: Specifies extra parameters that will be sent when starting a login. Defaults to `{}`.
 - **autoParseHash {Boolean}**: When set to `true`, Lock will parse the `window.location.hash` string when instantiated. If set to `false`, you'll have to manually resume authentication using the [resumeAuth](#resumeauthhash-callback) method.
 - **redirect {Boolean}**: When set to `true`, the default, _redirect mode_ will be used. Otherwise, _popup mode_ is chosen. See [below](#popup-mode) for more details.
-- **redirectUrl {String}**: The url Auth0 will redirect back after authentication. Defaults to the empty string `""` (no redirect URL).
+- **redirectUrl {String}**: The URL Auth0 will redirect back to after authentication. Defaults to the empty string `""` (no redirect URL).
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be omitted.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
-- **sso {Boolean}**:  Determines whether Single Sign On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
+- **sso {Boolean}**:  Determines whether Single Sign-On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
 - **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social connection for authentication.
 
 #### Social options
@@ -327,11 +327,12 @@ var options = {
 - **socialButtonStyle {String}**: Determines the size of the buttons for the social providers. Possible values are `"big"` and `"small"`. The default style depends on the connections that are available:
   - If only social connections are available, it will default to `"big"` when there are 5 connections at most, and default to `"small"` otherwise.
   - If connections from types other than social are also available, it will default to `"big"` when there are 3 social connections at most, and default to `"small"` otherwise.
+  - Keep in mind that some branding guidelines don’t allow the use of icon by itself to represent sign in. If you want to be compliant with those guidelines, make sure you pick the right style for your application.
 
 #### Database options
 
 - **additionalSignUpFields {Array}**: Allows you to provide extra input fields during sign up. See [below](#additional-sign-up-fields) more for details. Defaults to `[]`.
-- **allowLogin {Boolean}**: When set to `false` the widget won't display the _login screen_. This is useful if you want to use the widget just for sign ups (the _login and sign up tabs_ in the _sign up screen_ will be hidden) or to reset passwords (the _back button_ in the _forgot password screen_ will be hidden). In such cases you may also need to specify the `initialScreen`, `allowForgotPassword` and `allowSignUp` options. It defaults to `true`.
+- **allowLogin {Boolean}**: When set to `false` the widget won't display the _login screen_. This is useful if you want to use the widget just for signups (the _login and sign up tabs_ in the _sign up screen_ will be hidden) or to reset passwords (the _back button_ in the _forgot password screen_ will be hidden). In such cases you may also need to specify the `initialScreen`, `allowForgotPassword` and `allowSignUp` options. It defaults to `true`.
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _forgot password screen_ unreachable. Defaults to `true`. Keep in mind that if you are using a database connection with a _custom database_ which doesn't have a _change password script_ the forgot password screen won't be available.
 - **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`. Keep in mind that if the database connection has sign ups _disabled_ or you are using a _custom database_ which doesn't have a _create script_, then the sign up screen won't be available.
 - **defaultDatabaseConnection {String}**: Specifies the database connection that will be used when there is more than one available.
@@ -367,9 +368,9 @@ var options = {
 
 #### Other options
 
-- **configurationBaseUrl {String}**: Overrides application settings base url. By default it uses Auth0's CDN url when the `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
-- **languageBaseUrl {String}**: Overrides the language source url for Auth0's provided translations. By default it uses to Auth0's CDN url `https://cdn.auth0.com`.
-- **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback url after the user authentication. Defaults to `true`.
+- **configurationBaseUrl {String}**: Overrides application settings base URL. By default it uses Auth0's CDN URL when the `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
+- **languageBaseUrl {String}**: Overrides the language source URL for Auth0's provided translations. By default it uses to Auth0's CDN URL `https://cdn.auth0.com`.
+- **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback URL after the user authentication. Defaults to `true`.
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context`, and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a GitHub [issue](https://github.com/auth0/lock/issues/new).**
 
 ```js
@@ -403,7 +404,7 @@ var options = {
 
 #### Additional sign up fields
 
-Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, and an `icon` url can also be provided. Also, the initial value can be provided with the `prefill` option, which can be a **string** with the value or a **function** that obtains it. Other options depend on the type of the field, which is defined via the `type` option and defaults to `"text"`.
+Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, and an `icon` URL can also be provided. Also, the initial value can be provided with the `prefill` option, which can be a **string** with the value or a **function** that obtains it. Other options depend on the type of the field, which is defined via the `type` option and defaults to `"text"`.
 
 Additional sign up fields are rendered below the default fields in the order they are provided.
 
@@ -517,7 +518,7 @@ Lock can show avatars fetched from anywhere. A custom avatar provider can be spe
 var options = {
   avatar: {
     url: function(email, cb) {
-      // obtain url for email, in case of error you call cb with the error in
+      // obtain URL for email, in case of error you call cb with the error in
       // the first arg instead of null
       cb(null, url);
     },
@@ -561,7 +562,7 @@ If you have found a bug or if you have a feature request, please report them at 
 
 ## Author
 
-[Auth0](auth0.com)
+[Auth0](https://auth0.com)
 
 ## License
 

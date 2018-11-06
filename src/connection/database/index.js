@@ -200,7 +200,7 @@ function processDatabaseOptions(opts) {
   }
 
   // TODO: add a warning if it is not a boolean, leave it undefined,
-  // and change accesor fn.
+  // and change accessor fn.
   loginAfterSignUp = loginAfterSignUp === false ? false : true;
 
   return Map({
