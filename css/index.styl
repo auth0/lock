@@ -130,9 +130,12 @@ tabsHeight = 40px
     position relative
 
   .auth0-lock-cred-pane
-    height 100%
-    border-radius 6px
     background white
+    height: 100%
+    min-height: 100%
+    display: flex
+    flex-direction: column
+    border-radius 6px
     position relative
 
     &.horizontal-fade-exit
@@ -158,6 +161,14 @@ tabsHeight = 40px
     overflow hidden
     -webkit-box-sizing border-box
     box-sizing border-box
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+  .auth0-lock-content-wrapper
+    flex: 1
+    flex-shrink: 0
+    overflow: scroll
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
@@ -230,7 +241,7 @@ tabsHeight = 40px
       -webkit-filter blur(40px) grayscale(1)
       -ms-filter blur(40px) grayscale(1)
       filter blur(40px) grayscale(1)
-      -webkit-backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0)
       background-color #fff
       background-position center
       background-repeat no-repeat
@@ -243,7 +254,7 @@ tabsHeight = 40px
         -webkit-filter blur(30px)
         -ms-filter blur(30px)
         filter blur(30px)
-        -webkit-backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0)
         background-position center
         background-size 800px
 
@@ -293,7 +304,6 @@ tabsHeight = 40px
 
 
   .auth0-lock-content
-    padding 20px
     -webkit-box-sizing border-box
     -moz-box-sizing border-box
     box-sizing border-box
@@ -407,7 +417,7 @@ tabsHeight = 40px
         text-align left
 
         &.auth0-lock-input-with-placeholder
-          color rgba(0,0,0,.54);
+          color rgba(0,0,0,.54)
 
   .auth0-lock-error .auth0-lock-input-wrap
     border-color red
@@ -611,6 +621,11 @@ tabsHeight = 40px
       opacity 1
       transition-duration .5s
 
+  .auth0-lock-submit-container
+    flex: 1
+    flex-shrink: 0
+    overflow: scroll
+  
   .auth0-loading-container
     position relative
     display none
@@ -861,10 +876,10 @@ tabsHeight = 40px
     left 15px
     z-index -1
     text-align center
-    padding: 6px 10px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.1);
+    padding: 6px 10px
+    -webkit-border-radius: 3px
+    border-radius: 3px
+    background: rgba(255,255,255,0.1)
 
     .auth0-lock-badge
       display inline-block
@@ -965,8 +980,6 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         background white
-        min-height "calc(100vh - %s)" % (headerHeight + submitHeight)
-        // min-height 375px
         display table
         width 100%
 
@@ -974,22 +987,11 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         width 100%
-        display table-cell
         vertical-align middle
 
       .auth0-lock-form p
         @media screen and (max-width: 480px)
           font-size 14px
-
-    .auth0-lock-tabs-container
-      //mobile view
-      @media screen and (max-width: 480px)
-        position absolute
-        top 0
-        left 0
-        width 100%
-        margin 0
-
 
     .auth0-lock-terms
       @media screen and (max-width: 480px)
@@ -1020,51 +1022,13 @@ tabsHeight = 40px
       @media screen and (max-width: 480px)
         border-radius 0
 
-    &.auth0-lock-iphone
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % (headerHeight + submitHeight + iphoneBar)
-
-    &.auth0-lock-no-submit
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % headerHeight
-
-      &.auth0-lock-iphone
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s)" % (headerHeight + iphoneBar)
-
     &.auth0-lock-with-terms
       .auth0-lock-body-content
         //mobile view
         @media screen and (max-width: 480px)
           margin-bottom 42px
 
-    &.auth0-lock-with-tabs
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight)
-          padding-top 40px
-
-      &.auth0-lock-with-terms
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s - 42px)" % (headerHeight + submitHeight + tabsHeight) // - header - submit - tabs - terms
-
-      &.auth0-lock-iphone
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight + iphoneBar)
-
   // Opened in frame
-
 
   &.auth0-lock-opened-in-frame
     opacity 1
@@ -1115,10 +1079,8 @@ tabsHeight = 40px
 // database mode
 
 .auth0-lock.auth0-lock
-  .auth0-lock-tabs-container
-    margin -20px -20px 20px
-    height tabsHeight
-
+  .auth0-lock-internal-content-wrapper
+    padding 20px
   .auth0-lock-tabs
     background white
     padding 0
@@ -1232,7 +1194,7 @@ tabsHeight = 40px
 
   li
     span
-      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+RXJyb3I8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFzc3dvcmQtUG9saWN5IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJBcnRib2FyZC0xIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAwLjAwMDAwMCwgLTE0OC4wMDAwMDApIj4gICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUwLjAwMDAwMCwgNzUuMDAwMDAwKSI+ICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cC1Db3B5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNS4wMDAwMDAsIDM2LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkVycm9yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS4wMDAwMDAsIDM3LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgICAgIDxlbGxpcHNlIGlkPSJPdmFsLTkwIiBmaWxsPSIjQkU0NTI3IiBjeD0iNiIgY3k9IjYiIHJ4PSI2IiByeT0iNiI+PC9lbGxpcHNlPiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik05LDMuNjA0Mjg1NzEgTDguMzk1NzE0MjksMyBMNiw1LjM5NTcxNDI5IEwzLjYwNDI4NTcxLDMgTDMsMy42MDQyODU3MSBMNS4zOTU3MTQyOSw2IEwzLDguMzk1NzE0MjkgTDMuNjA0Mjg1NzEsOSBMNiw2LjYwNDI4NTcxIEw4LjM5NTcxNDI5LDkgTDksOC4zOTU3MTQyOSBMNi42MDQyODU3MSw2IEw5LDMuNjA0Mjg1NzEgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=');
+      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+RXJyb3I8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFzc3dvcmQtUG9saWN5IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJBcnRib2FyZC0xIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAwLjAwMDAwMCwgLTE0OC4wMDAwMDApIj4gICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUwLjAwMDAwMCwgNzUuMDAwMDAwKSI+ICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cC1Db3B5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNS4wMDAwMDAsIDM2LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkVycm9yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS4wMDAwMDAsIDM3LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgICAgIDxlbGxpcHNlIGlkPSJPdmFsLTkwIiBmaWxsPSIjQkU0NTI3IiBjeD0iNiIgY3k9IjYiIHJ4PSI2IiByeT0iNiI+PC9lbGxpcHNlPiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik05LDMuNjA0Mjg1NzEgTDguMzk1NzE0MjksMyBMNiw1LjM5NTcxNDI5IEwzLjYwNDI4NTcxLDMgTDMsMy42MDQyODU3MSBMNS4zOTU3MTQyOSw2IEwzLDguMzk1NzE0MjkgTDMuNjA0Mjg1NzEsOSBMNiw2LjYwNDI4NTcxIEw4LjM5NTcxNDI5LDkgTDksOC4zOTU3MTQyOSBMNi42MDQyODU3MSw2IEw5LDMuNjA0Mjg1NzEgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=')
       background-position left center
       background-repeat no-repeat
       padding-left 20px
