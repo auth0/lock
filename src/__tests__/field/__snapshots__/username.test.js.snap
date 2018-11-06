@@ -18,13 +18,24 @@ Array [
 ]
 `;
 
-exports[`field/username setUsername() trims username 1`] = `
+exports[`field/username setUsername() doesn't trim the username when the value doesn't contain a @ 1`] = `
 Array [
   Immutable.Map {
     "validation": null,
   },
   "username",
-  "a-username",
+  " a-username ",
+  [Function],
+]
+`;
+
+exports[`field/username setUsername() trims username when the value contains a @ and a . 1`] = `
+Array [
+  Immutable.Map {
+    "validation": null,
+  },
+  "username",
+  "another@username.com",
   [Function],
 ]
 `;

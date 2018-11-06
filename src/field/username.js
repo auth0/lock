@@ -37,6 +37,10 @@ export function getUsernameValidation(m) {
 
 export function setUsername(m, str, usernameStyle = 'username', validateUsernameFormat = true) {
   const usernameValidation = validateUsernameFormat ? getUsernameValidation(m) : null;
+  let value = str;
+  if (usernameLooksLikeEmail(str)) {
+    value = value.trim();
+  }
 
   const validator = value => {
     switch (usernameStyle) {
@@ -51,9 +55,9 @@ export function setUsername(m, str, usernameStyle = 'username', validateUsername
     }
   };
 
-  return setField(m, 'username', str.trim(), validator);
+  return setField(m, 'username', str, validator);
 }
 
 export function usernameLooksLikeEmail(str) {
-  return str.indexOf('@') > -1;
+  return str.indexOf('@') > -1 && str.indexOf('.') > -1;
 }

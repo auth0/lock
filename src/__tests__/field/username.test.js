@@ -46,8 +46,14 @@ describe('field/username', () => {
     });
   });
   describe('setUsername()', () => {
-    it(`trims username`, () => {
+    it(`doesn't trim the username when the value doesn't contain a @`, () => {
       username.setUsername(dbConnection, ' a-username ', 'username', true);
+      const { mock } = require('field/index').setField;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
+    });
+    it(`trims username when the value contains a @ and a .`, () => {
+      username.setUsername(dbConnection, 'another@username.com', 'username', true);
       const { mock } = require('field/index').setField;
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
