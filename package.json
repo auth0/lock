@@ -90,7 +90,7 @@
   },
   "dependencies": {
     "auth0-js": "^9.8.1",
-    "auth0-password-policies": "^1.0.1",
+    "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
     "immutable": "^3.7.3",
