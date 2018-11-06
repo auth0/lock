@@ -480,10 +480,10 @@ auth0-js@^9.8.1:
     url-join "^4.0.0"
     winchan "^0.2.1"
 
-auth0-password-policies@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/auth0-password-policies/-/auth0-password-policies-1.0.1.tgz#d00420b9bd5ac81d37790b1f5c83e5b8a47e9d12"
-  integrity sha512-R1Kx8uo/Bl8Kp+kbtYugnvLVd4EmL6my1ZyP7FFXah6FYM8DumZh3Ks7aVM2/p95s/Z3La0uAVvZy0bzXf/KrQ==
+auth0-password-policies@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/auth0-password-policies/-/auth0-password-policies-1.0.2.tgz#b5ba7454254f0dc51067b37c674bc09b0f96ba30"
+  integrity sha512-ZshousKt+Wfv/iIBS3oQfOsH8NBF9IbL15qd2Qur8YfiQrRjrAT0T7VaesnrytYEHEXkUbHcdxWEAlyr16w20A==
   dependencies:
     password-sheriff "^1.1.0"
 
