@@ -44,7 +44,7 @@ const Component = ({ i18n, model }) => {
   const separator = social && email ? <PaneSeparator /> : null;
 
   return (
-    <div>
+    <div className="auth0-lock-internal-content-wrapper">
       {social}
       {separator}
       {header}

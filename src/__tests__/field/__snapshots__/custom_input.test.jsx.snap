@@ -8,6 +8,7 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
     <input
       aria-label="Custom Input"
       checked={false}
+      id="1-custom_input"
       name="custom_input"
       onChange={[Function]}
       type="checkbox"
@@ -25,6 +26,7 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
 
 exports[`CustomInput when type == hidden renders correctly as a input[type=hidden] 1`] = `
 <input
+  id={1}
   name="custom_input"
   type="hidden"
   value="hidden_value"
@@ -47,6 +49,7 @@ exports[`CustomInput when type == input renders correctly as a TextInput 1`] = `
   data-iconUrl="iconUrl"
   data-invalidHint="invalid-hint-custom_input"
   data-isValid={false}
+  data-lockId={1}
   data-name="custom_input"
   data-onChange={[Function]}
   data-placeholder="placeholder"
@@ -61,6 +64,7 @@ exports[`CustomInput when type == input sets isValid as true when \`isFieldVisib
   data-iconUrl="iconUrl"
   data-invalidHint="invalid-hint-custom_input"
   data-isValid={true}
+  data-lockId={1}
   data-name="custom_input"
   data-onChange={[Function]}
   data-placeholder="placeholder"
@@ -83,6 +87,7 @@ exports[`CustomInput when type === select renders correctly as a SelectInput 1`]
   data-iconUrl="iconUrl"
   data-isValid={false}
   data-label={undefined}
+  data-lockId={1}
   data-name="custom_input"
   data-onClick={[Function]}
   data-placeholder="placeholder"
@@ -96,6 +101,7 @@ exports[`CustomInput when type === select sets isValid as true when \`isFieldVis
   data-iconUrl="iconUrl"
   data-isValid={true}
   data-label={undefined}
+  data-lockId={1}
   data-name="custom_input"
   data-onClick={[Function]}
   data-placeholder="placeholder"

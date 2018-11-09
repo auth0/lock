@@ -41,7 +41,7 @@ const Component = ({ i18n, model }) => {
   const separator = social && phoneNumber ? <PaneSeparator /> : null;
 
   return (
-    <div>
+    <div className="auth0-lock-internal-content-wrapper">
       {social}
       {separator}
       {phoneNumber}
