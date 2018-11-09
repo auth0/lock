@@ -28,6 +28,7 @@ export default class VcodePane extends React.Component {
       <div>
         {header}
         <VcodeInput
+          lockId={l.id(lock)}
           value={c.vcode(lock)}
           isValid={!c.isFieldVisiblyInvalid(lock, 'vcode') && !l.globalError(lock)}
           onChange={::this.handleVcodeChange}
