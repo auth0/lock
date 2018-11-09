@@ -8,8 +8,9 @@ const svgs = {
     '<svg aria-hidden="true" focusable="false" enable-background="new 0 0 128 128" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><polygon fill="#373737" points="123.5429688,11.59375 116.4765625,4.5185547 64.0019531,56.9306641 11.5595703,4.4882813     4.4882813,11.5595703 56.9272461,63.9970703 4.4570313,116.4052734 11.5244141,123.4814453 63.9985352,71.0683594     116.4423828,123.5117188 123.5126953,116.4414063 71.0732422,64.0019531   "></polygon></g></svg>'
 };
 
-const IconButton = ({ name, onClick, svg }) => (
+const IconButton = ({ lockId, name, onClick, svg }) => (
   <span
+    id={`${lockId}-${name}-button`}
     role="button"
     tabIndex={0}
     className={`auth0-lock-${name}-button`}
@@ -47,16 +48,16 @@ IconButton.propTypes = {
 // export const CloseButton = createButton("close");
 // export const BackButton = createButton("back");
 
-export const CloseButton = ({ onClick }) => (
-  <IconButton name="close" svg={svgs['close']} onClick={onClick} />
+export const CloseButton = ({ lockId, onClick }) => (
+  <IconButton lockId={lockId} name="close" svg={svgs['close']} onClick={onClick} />
 );
 
 CloseButton.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-export const BackButton = ({ onClick }) => (
-  <IconButton name="back" svg={svgs['back']} onClick={onClick} />
+export const BackButton = ({ lockId, onClick }) => (
+  <IconButton lockId={lockId} name="back" svg={svgs['back']} onClick={onClick} />
 );
 
 BackButton.propTypes = {
