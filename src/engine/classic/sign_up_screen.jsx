@@ -69,9 +69,11 @@ const Component = ({ i18n, model }) => {
     <div>
       {ssoNotice}
       {tabs}
-      {social}
-      {separator}
-      {db}
+      <div className="auth0-lock-internal-content-wrapper">
+        {social}
+        {separator}
+        {db}
+      </div>
     </div>
   );
 };
