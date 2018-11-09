@@ -112,7 +112,6 @@ export default {
   signUpTitle: 'Registracija',
   signUpLabel: 'Registracija',
   signUpSubmitLabel: 'Registracija',
-  signUpTerms: '',
   signUpWithLabel: 'Registracija s %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -132,5 +131,6 @@ export default {
   mfaLoginInstructions:
     'Upišite kôd za provjeru autentičnosti koji je stvorila vaša mobilna aplikacija.',
   mfaSubmitLabel: 'Prijava',
-  mfaCodeErrorHint: 'Upotrijebi %d brojeve'
+  mfaCodeErrorHint: 'Upotrijebi %d brojeve',
+  signUpTerms: 'Prijavljivanjem prihvaćate naše uvjete pružanja usluge i pravila o privatnosti.'
 };

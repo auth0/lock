@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -21,7 +24,7 @@ export default {
         'Multifaktorinis autentifikavimas yra būtinas, tačiau prietaisas nėra registruotas. Prašome jį užregistruoti prieš tęsiant.',
       'lock.mfa_invalid_code': 'Neteisingas kodas, bandykite dar kartą.',
       password_change_required:
-        'Jums reikia atnaujinti savo slaptažodį, nes prisijungiate pirmą kartą, arba slaptažodis yra negaliojantis.', // TODO: verify error code
+        'Jums reikia atnaujinti savo slaptažodį, nes prisijungiate pirmą kartą, arba slaptažodis yra negaliojantis.',
       password_leaked:
         'Mes nustatėme galimą saugumo problemą su šia sąskaita. Norėdami apsaugoti jūsų sąskaitą, mes užblokuosime šį prisijungimą. Į jūsų el. paštą buvo išsiųsta instrukcija, kaip atblokuoti jūsų sąskaitą.',
       too_many_attempts: 'Jūsų sąskaita buvo užblokuota, po kelių iš eilės bandymų prisijungti.',
@@ -45,7 +48,6 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'Ačiū už prisijungimą.',
     forgotPassword: 'Mes išsiuntėme jums el.laišką iš naujo nustatyti slaptažodį.',
     magicLink: 'Mes išsiuntėme jums nuorodą į prisijungimą<br />į %s.',
@@ -103,7 +105,6 @@ export default {
   signUpTitle: 'Užsiregistruoti',
   signUpLabel: 'Registracija',
   signUpSubmitLabel: 'Užsiregistruoti',
-  signUpTerms: '',
   signUpWithLabel: 'Užsiregistruoti su %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -121,5 +122,7 @@ export default {
   mfaLoginTitle: 'Dviejų žingsnių autentifikacija',
   mfaLoginInstructions: 'Prašome įvesti patvirtinimo kodą sugeneruotą mobiliosios programėlės.',
   mfaSubmitLabel: 'Prisijungti',
-  mfaCodeErrorHint: 'Naudoti %d numerius'
+  mfaCodeErrorHint: 'Naudoti %d numerius',
+  signUpTerms:
+    'Registruodamiesi jūs sutinkate su mūsų paslaugų teikimo sąlygomis ir privatumo politika.'
 };

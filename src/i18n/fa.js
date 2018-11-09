@@ -102,7 +102,6 @@ export default {
   sentLabel: 'ارسال شد!',
   signUpLabel: 'ثبت نام',
   signUpSubmitLabel: 'ثبت نام',
-  signUpTerms: '',
   signUpWithLabel: 'ورود با %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -123,5 +122,6 @@ export default {
   mfaCodeErrorHint: 'از %d عدد استفاده کنید',
   forgotPasswordTitle: 'تنظیم مجدد کلمه ورود',
   signUpTitle: 'ثبت نام',
-  showPassword: 'نمایش رمز ورود'
+  showPassword: 'نمایش رمز ورود',
+  signUpTerms: 'با ثبت نام، با شرایط خدمات و سیاست حفظ حریم خصوصی ما موافقت می کنید.'
 };

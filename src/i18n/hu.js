@@ -104,7 +104,6 @@ export default {
   sentLabel: 'Elküldve!',
   signUpLabel: 'Feliratkozás',
   signUpSubmitLabel: 'Feliratkozás',
-  signUpTerms: '',
   signUpWithLabel: 'Feliratkozás %s-val',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -127,5 +126,7 @@ export default {
   mfaLoginInstructions: 'Kérjük adja meg az ellenőrző kódot generált a mobil alkalmazás.',
   mfaSubmitLabel: 'Belépek',
   mfaCodeErrorHint: 'Használja %d számok',
-  showPassword: 'Mutasd a jelszót'
+  showPassword: 'Mutasd a jelszót',
+  signUpTerms:
+    'Feliratkozással elfogadja a szolgáltatási feltételeinket és az adatvédelmi irányelveinket.'
 };

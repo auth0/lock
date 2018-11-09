@@ -100,7 +100,6 @@ export default {
   signUpTitle: 'Registreer',
   signUpLabel: 'Registreer',
   signUpSubmitLabel: 'Registreer',
-  signUpTerms: '',
   signUpWithLabel: 'Registreer %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -120,5 +119,6 @@ export default {
   mfaLoginInstructions: 'Vul asseblief die kode in wat deur jou toestel geskep is.',
   mfaSubmitLabel: 'Gaan voort',
   mfaCodeErrorHint: 'Gebruik %d nommers',
-  showPassword: 'Wys wagwoord'
+  showPassword: 'Wys wagwoord',
+  signUpTerms: 'Deur u in te teken, stem u in tot ons diensbepalings en privaatheidsbeleid.'
 };
