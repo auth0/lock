@@ -102,7 +102,6 @@ export default {
   sentLabel: 'Đã gửi!',
   signUpLabel: 'Đăng ký',
   signUpSubmitLabel: 'Đăng ký',
-  signUpTerms: '',
   signUpWithLabel: 'Đăng ký với %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +124,7 @@ export default {
   mfaCodeErrorHint: 'Chỉ sử dụng %d số',
   forgotPasswordTitle: 'Đặt lại mật khẩu của bạn',
   signUpTitle: 'Đăng ký',
-  showPassword: 'Hiển thị mật khẩu'
+  showPassword: 'Hiển thị mật khẩu',
+  signUpTerms:
+    'Bằng cách đăng ký, bạn đồng ý với các điều khoản dịch vụ và chính sách bảo mật của chúng tôi.'
 };

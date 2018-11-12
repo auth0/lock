@@ -104,7 +104,6 @@ export default {
   sentLabel: 'Sendt!',
   signUpLabel: 'Registrer deg',
   signUpSubmitLabel: 'Registrer',
-  signUpTerms: '',
   signUpWithLabel: 'Registrer deg med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +124,6 @@ export default {
   mfaCodeErrorHint: 'Bruk %d siffer',
   forgotPasswordTitle: 'Tilbakestille passordet ditt',
   signUpTitle: 'Logg inn',
-  showPassword: 'Vis passord'
+  showPassword: 'Vis passord',
+  signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.'
 };

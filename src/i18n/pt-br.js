@@ -100,7 +100,6 @@ export default {
   sentLabel: 'Enviado!',
   signUpLabel: 'Inscrever',
   signUpSubmitLabel: 'Inscrever',
-  signUpTerms: '',
   signUpWithLabel: 'Inscreva-se com %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -122,5 +121,7 @@ export default {
   mfaLoginInstructions: 'Digite o código de verificação gerado pela sua aplicação móvel.',
   mfaSubmitLabel: 'Entrar',
   mfaCodeErrorHint: 'Use números %d',
-  showPassword: 'Mostrar senha'
+  showPassword: 'Mostrar senha',
+  signUpTerms:
+    'Ao se inscrever, você concorda com nossos termos de serviço e política de privacidade.'
 };

@@ -113,7 +113,6 @@ export default {
   sentLabel: 'Envoyé !',
   signUpLabel: 'Inscription',
   signUpSubmitLabel: 'Inscription',
-  signUpTerms: '',
   signUpWithLabel: 'S’inscrire avec %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -136,5 +135,7 @@ export default {
     'Veuillez entrer le code de vérification généré par votre application mobile.',
   mfaSubmitLabel: "S'identifier",
   mfaCodeErrorHint: 'Utilisez des numéros %d',
-  showPassword: 'Montrer le mot de passe'
+  showPassword: 'Montrer le mot de passe',
+  signUpTerms:
+    "En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité."
 };

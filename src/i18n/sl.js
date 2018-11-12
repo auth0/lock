@@ -107,7 +107,6 @@ export default {
   signUpTitle: 'Vpis',
   signUpLabel: 'Vpis',
   signUpSubmitLabel: 'Vpis',
-  signUpTerms: '',
   signUpWithLabel: 'Vpis z %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -126,5 +125,6 @@ export default {
   mfaLoginTitle: '2-stopenjsko preverjanje',
   mfaLoginInstructions: 'Vnesite kodo za preverjanje, ki jo je sestavila vaša mobilna aplikacija.',
   mfaSubmitLabel: 'Prijava',
-  mfaCodeErrorHint: 'Uporabite številke %d'
+  mfaCodeErrorHint: 'Uporabite številke %d',
+  signUpTerms: 'S prijavo se strinjate z našimi pogoji uporabe in pravilnikom o zasebnosti.'
 };

@@ -107,7 +107,6 @@ export default {
   signUpTitle: 'Rekisteröidy',
   signUpLabel: 'Rekisteröidy',
   signUpSubmitLabel: 'Rekisteröidy',
-  signUpTerms: '',
   signUpWithLabel: 'Rekisteröidy %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -127,5 +126,6 @@ export default {
   mfaLoginInstructions: 'Ole hyvä ja anna mobiilisovelluksesi luoma tarkistuskoodi.',
   mfaSubmitLabel: 'Kirjaudu',
   mfaCodeErrorHint: 'Käytä %d numeroa',
-  showPassword: 'Näytä salasana'
+  showPassword: 'Näytä salasana',
+  signUpTerms: 'Ilmoittautumalla hyväksyt käyttöehdot ja tietosuojakäytännöt.'
 };

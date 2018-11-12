@@ -105,7 +105,6 @@ export default {
   sentLabel: 'Sendt!',
   signUpLabel: 'Opret dig',
   signUpSubmitLabel: 'Opret dig',
-  signUpTerms: '',
   signUpWithLabel: 'Opret dig med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -126,5 +125,6 @@ export default {
   mfaLoginInstructions: 'Indtast venligst bekræftelseskoden genereret af din mobilapplikation.',
   mfaSubmitLabel: 'Log på',
   mfaCodeErrorHint: 'Brug %d tal',
-  showPassword: 'Vis adgangskode'
+  showPassword: 'Vis adgangskode',
+  signUpTerms: 'Ved at tilmelde dig accepterer du vores servicevilkår og privatlivspolitik.'
 };

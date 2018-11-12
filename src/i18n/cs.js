@@ -106,7 +106,6 @@ export default {
   signUpTitle: 'Registrace',
   signUpLabel: 'Registrace',
   signUpSubmitLabel: 'Registrovat',
-  signUpTerms: '',
   signUpWithLabel: 'Registrovat se s %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -124,5 +123,7 @@ export default {
   mfaLoginTitle: 'Dvoufázové ověření',
   mfaLoginInstructions: 'Prosím zadej ověřovací kód vygenerovaný mobilní aplikací.',
   mfaSubmitLabel: 'Přihlásit',
-  mfaCodeErrorHint: 'Použijte %d číslic'
+  mfaCodeErrorHint: 'Použijte %d číslic',
+  signUpTerms:
+    'Tím, že se zaregistrujete, souhlasíte s našimi smluvními podmínkami a zásadami ochrany osobních údajů.'
 };

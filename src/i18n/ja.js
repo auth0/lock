@@ -96,7 +96,6 @@ export default {
   signUpTitle: 'ユーザー登録',
   signUpLabel: 'ユーザー登録',
   signUpSubmitLabel: 'ユーザー登録',
-  signUpTerms: '',
   signUpWithLabel: '%sでユーザー登録',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -114,5 +113,6 @@ export default {
   mfaLoginTitle: '二段階認証',
   mfaLoginInstructions: 'スマートフォンアプリケーションで生成された確認コードを入力してください。',
   mfaSubmitLabel: 'ログイン',
-  mfaCodeErrorHint: '%d個の数字を使用してください'
+  mfaCodeErrorHint: '%d個の数字を使用してください',
+  signUpTerms: 'サインアップすることで、利用規約とプライバシーポリシーに同意したことになります。'
 };

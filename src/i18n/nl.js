@@ -107,7 +107,6 @@ export default {
   sentLabel: 'Verzonden!',
   signUpLabel: 'Aanmelden',
   signUpSubmitLabel: 'Aanmelden',
-  signUpTerms: '',
   signUpWithLabel: 'Aanmelden met %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -129,5 +128,7 @@ export default {
   mfaLoginInstructions: 'Vul de verificatiecode gegenereerd door uw mobiele applicatie.',
   mfaSubmitLabel: 'Log in',
   mfaCodeErrorHint: 'Gebruik %d nummers',
-  showPassword: 'Laat wachtwoord zien'
+  showPassword: 'Laat wachtwoord zien',
+  signUpTerms:
+    'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.'
 };
