@@ -40,6 +40,28 @@ Object {
 }
 `;
 
+exports[`Auth0APIClient logIn should not send spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+}
+`;
+
+exports[`Auth0APIClient logIn should not send spaces in the username 1`] = `
+Object {
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
 exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
 Object {
   "nonce": undefined,
@@ -135,6 +157,18 @@ Array [
 ]
 `;
 
+exports[`Auth0APIClient passwordlessStart should not send spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+}
+`;
+
+exports[`Auth0APIClient passwordlessStart should not send spaces in the phoneNumber 1`] = `
+Object {
+  "phoneNumber": "+554899999",
+}
+`;
+
 exports[`Auth0APIClient passwordlessVerify should call client.passwordlessLogin 1`] = `
 Array [
   Object {
@@ -143,4 +177,42 @@ Array [
   },
   [Function],
 ]
+`;
+
+exports[`Auth0APIClient passwordlessVerify should not send spaces in the email 1`] = `
+Object {
+  "email": " foo@example.com ",
+  "popup": false,
+}
+`;
+
+exports[`Auth0APIClient passwordlessVerify should not send spaces in the phoneNumber 1`] = `
+Object {
+  "phoneNumber": " +554899999 ",
+  "popup": false,
+}
+`;
+
+exports[`Auth0APIClient resetPassword should not send spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+}
+`;
+
+exports[`Auth0APIClient resetPassword should not send spaces in the username 1`] = `
+Object {
+  "username": "foo",
+}
+`;
+
+exports[`Auth0APIClient signUp should not send spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+}
+`;
+
+exports[`Auth0APIClient signUp should not send spaces in the username 1`] = `
+Object {
+  "username": "foo",
+}
 `;
