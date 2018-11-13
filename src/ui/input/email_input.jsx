@@ -23,7 +23,7 @@ export default class EmailInput extends React.Component {
   }
 
   render() {
-    const { invalidHint, isValid, autoComplete, ...props } = this.props;
+    const { lockId, invalidHint, isValid, autoComplete, ...props } = this.props;
     const { focused } = this.state;
 
     return (
@@ -35,6 +35,7 @@ export default class EmailInput extends React.Component {
         icon={svg}
       >
         <input
+          id={`${lockId}-email`}
           ref="input"
           type="email"
           name="email"

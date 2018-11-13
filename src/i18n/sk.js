@@ -106,7 +106,6 @@ export default {
   signUpTitle: 'Prihlásiť sa',
   signUpLabel: 'Registrácia',
   signUpSubmitLabel: 'Registrovať sa',
-  signUpTerms: '',
   signUpWithLabel: 'Prihlásiť sa ako %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +124,7 @@ export default {
   mfaLoginInstructions: 'Prosím zadajte verifikačný kód vygenerovaný vo Vašej mobilnej aplikácii.',
   mfaSubmitLabel: 'Prihlásiť',
   mfaCodeErrorHint: 'Použite %d číslic',
-  showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.'
+  showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.',
+  signUpTerms:
+    'Registráciou vyjadrujete súhlas s našimi zmluvnými podmienkami a pravidlami ochrany osobných údajov.'
 };

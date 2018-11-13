@@ -93,7 +93,6 @@ export default {
   sentLabel: '發送！',
   signUpLabel: '註冊',
   signUpSubmitLabel: '註冊',
-  signUpTerms: '',
   signUpWithLabel: '透過 %s 註冊',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -114,5 +113,6 @@ export default {
   mfaLoginInstructions: '請輸入您的移動應用程序生成的驗證碼。',
   mfaSubmitLabel: '登錄',
   mfaCodeErrorHint: '使用%d編號',
-  showPassword: '顯示密碼'
+  showPassword: '顯示密碼',
+  signUpTerms: '註冊即表示您同意我們的服務條款和隱私政策。'
 };

@@ -105,7 +105,6 @@ export default {
   sentLabel: 'Wysłany!',
   signUpLabel: 'Rejestracja',
   signUpSubmitLabel: 'Zarejestruj się',
-  signUpTerms: '',
   signUpWithLabel: 'Zarejestruj się za pomocą %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -127,5 +126,7 @@ export default {
     'Podaj kod weryfikacyjny wygenerowany przez aplikację na telefon komórkowy.',
   mfaSubmitLabel: 'Zaloguj Się',
   mfaCodeErrorHint: 'Użyj %d numery',
-  showPassword: 'Pokaż hasło'
+  showPassword: 'Pokaż hasło',
+  signUpTerms:
+    'Rejestrując się, akceptujesz nasze warunki korzystania z usługi i politykę prywatności.'
 };

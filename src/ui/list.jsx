@@ -5,6 +5,7 @@ import { BackButton } from './box/button';
 import TextInput from './input/text_input';
 import { isSmallScreen } from '../utils/media_utils';
 import * as su from '../utils/string_utils';
+import * as l from '../core/index';
 
 const cycle = (xs, x) => {
   return xs.skipWhile(y => y !== x).get(1, xs.get(0));
@@ -65,12 +66,13 @@ export default class FiltrableList extends React.Component {
   }
 
   render() {
-    const { icon, iconUrl, onCancel } = this.props;
+    const { icon, iconUrl, onCancel, model } = this.props;
     return (
       <div className="auth0-lock-select-country">
         <div className="auth0-lock-search">
-          <BackButton onClick={onCancel} />
+          <BackButton lockId={l.id(model)} onClick={onCancel} />
           <TextInput
+            lockId={l.id(model)}
             name="search"
             icon={icon}
             iconUrl={iconUrl}

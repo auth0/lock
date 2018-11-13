@@ -1,7 +1,12 @@
 import React from 'react';
 import Screen from '../../core/screen';
 
-import { hasScreen, mustAcceptTerms, termsAccepted } from '../../connection/database/index';
+import {
+  hasScreen,
+  showTerms,
+  mustAcceptTerms,
+  termsAccepted
+} from '../../connection/database/index';
 import { signUp, toggleTermsAcceptance } from '../../connection/database/actions';
 import { hasOnlyClassicConnections, isSSOEnabled, useBigSocialButtons } from '../classic';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
@@ -69,9 +74,11 @@ const Component = ({ i18n, model }) => {
     <div>
       {ssoNotice}
       {tabs}
-      {social}
-      {separator}
-      {db}
+      <div>
+        {social}
+        {separator}
+        {db}
+      </div>
     </div>
   );
 };
@@ -120,8 +127,12 @@ export default class SignUp extends Screen {
 
   renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
-    return terms || mustAcceptTerms(m) ? (
-      <SignUpTerms checkHandler={checkHandler} checked={termsAccepted(m)}>
+    return terms && showTerms(m) ? (
+      <SignUpTerms
+        showCheckbox={mustAcceptTerms(m)}
+        checkHandler={checkHandler}
+        checked={termsAccepted(m)}
+      >
         {terms}
       </SignUpTerms>
     ) : null;

@@ -102,7 +102,6 @@ export default {
   sentLabel: 'Skickats!',
   signUpLabel: 'Registrera dig',
   signUpSubmitLabel: 'Registrera dig',
-  signUpTerms: '',
   signUpWithLabel: 'Registrera dig med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -124,5 +123,6 @@ export default {
   mfaLoginInstructions: 'Ange verifieringskoden som genereras av din mobil applikation.',
   mfaSubmitLabel: 'Logga in',
   mfaCodeErrorHint: 'Använd %d',
-  showPassword: 'Visa lösenord'
+  showPassword: 'Visa lösenord',
+  signUpTerms: 'Genom att anmäla dig godkänner du våra användarvillkor och integritetspolicy.'
 };

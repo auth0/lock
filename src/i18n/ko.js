@@ -96,7 +96,6 @@ export default {
   signUpTitle: '회원가입',
   signUpLabel: '회원가입',
   signUpSubmitLabel: '회원가입',
-  signUpTerms: '',
   signUpWithLabel: '%s로 회원가입',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -115,5 +114,6 @@ export default {
   mfaLoginInstructions: '스마트폰 어플리케이션으로 생성된 확인 코드를 입력하여 주세요.',
   mfaSubmitLabel: '로그인',
   mfaCodeErrorHint: '%d 숫자를 사용하여 주세요.',
-  showPassword: '암호 표시'
+  showPassword: '암호 표시',
+  signUpTerms: '가입하면 서비스 약관 및 개인 정보 취급 방침에 동의하게됩니다.'
 };

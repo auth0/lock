@@ -99,9 +99,11 @@ const Component = ({ i18n, model }) => {
     <div>
       {ssoNotice}
       {tabs}
-      {social}
-      {separator}
-      {login}
+      <div>
+        {social}
+        {separator}
+        {login}
+      </div>
     </div>
   );
 };
