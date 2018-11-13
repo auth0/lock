@@ -40,7 +40,7 @@ Object {
 }
 `;
 
-exports[`Auth0APIClient logIn should not send spaces in the email 1`] = `
+exports[`Auth0APIClient logIn should trim spaces in the email 1`] = `
 Object {
   "email": "foo@example.com",
   "nonce": undefined,
@@ -51,7 +51,7 @@ Object {
 }
 `;
 
-exports[`Auth0APIClient logIn should not send spaces in the mfa_code 1`] = `
+exports[`Auth0APIClient logIn should trim spaces in the mfa_code 1`] = `
 Object {
   "mfa_code": "123456",
   "nonce": undefined,
@@ -63,7 +63,7 @@ Object {
 }
 `;
 
-exports[`Auth0APIClient logIn should not send spaces in the username 1`] = `
+exports[`Auth0APIClient logIn should trim spaces in the username 1`] = `
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
@@ -74,7 +74,7 @@ Object {
 }
 `;
 
-exports[`Auth0APIClient logIn should not send spaces in the username with a space 1`] = `
+exports[`Auth0APIClient logIn should trim spaces in the username with a space 1`] = `
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
@@ -180,13 +180,13 @@ Array [
 ]
 `;
 
-exports[`Auth0APIClient passwordlessStart should not send spaces in the email 1`] = `
+exports[`Auth0APIClient passwordlessStart should trim spaces in the email 1`] = `
 Object {
   "email": "foo@example.com",
 }
 `;
 
-exports[`Auth0APIClient passwordlessStart should not send spaces in the phoneNumber 1`] = `
+exports[`Auth0APIClient passwordlessStart should trim spaces in the phoneNumber 1`] = `
 Object {
   "phoneNumber": "+554899999",
 }
@@ -202,51 +202,51 @@ Array [
 ]
 `;
 
-exports[`Auth0APIClient passwordlessVerify should not send spaces in the email 1`] = `
+exports[`Auth0APIClient passwordlessVerify should trim spaces in the email 1`] = `
 Object {
   "email": " foo@example.com ",
   "popup": false,
 }
 `;
 
-exports[`Auth0APIClient passwordlessVerify should not send spaces in the phoneNumber 1`] = `
+exports[`Auth0APIClient passwordlessVerify should trim spaces in the phoneNumber 1`] = `
 Object {
   "phoneNumber": " +554899999 ",
   "popup": false,
 }
 `;
 
-exports[`Auth0APIClient resetPassword should not send spaces in the email 1`] = `
+exports[`Auth0APIClient resetPassword should trim spaces in the email 1`] = `
 Object {
   "email": "foo@example.com",
 }
 `;
 
-exports[`Auth0APIClient resetPassword should not send spaces in the username 1`] = `
+exports[`Auth0APIClient resetPassword should trim spaces in the username 1`] = `
 Object {
   "username": "foo",
 }
 `;
 
-exports[`Auth0APIClient resetPassword should not send spaces in the username with a space 1`] = `
+exports[`Auth0APIClient resetPassword should trim spaces in the username with a space 1`] = `
 Object {
   "username": "foo bar",
 }
 `;
 
-exports[`Auth0APIClient signUp should not send spaces in the email 1`] = `
+exports[`Auth0APIClient signUp should trim spaces in the email 1`] = `
 Object {
   "email": "foo@example.com",
 }
 `;
 
-exports[`Auth0APIClient signUp should not send spaces in the username 1`] = `
+exports[`Auth0APIClient signUp should trim spaces in the username 1`] = `
 Object {
   "username": "foo",
 }
 `;
 
-exports[`Auth0APIClient signUp should not send spaces in the username with a space 1`] = `
+exports[`Auth0APIClient signUp should trim spaces in the username with a space 1`] = `
 Object {
   "username": "foo bar",
 }

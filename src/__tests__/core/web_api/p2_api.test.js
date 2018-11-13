@@ -242,7 +242,7 @@ describe('Auth0APIClient', () => {
         assertCallWithCallback(loginWithCredentialsMock, callback);
       });
     });
-    describe('should not send spaces in', () => {
+    describe('should trim spaces in', () => {
       let client;
       let callback;
       let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].login.mock;
@@ -296,7 +296,7 @@ describe('Auth0APIClient', () => {
     });
   });
   describe('signUp', () => {
-    describe('should not send spaces in', () => {
+    describe('should trim spaces in', () => {
       let client;
       let callback;
       let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].signup.mock;
@@ -336,7 +336,7 @@ describe('Auth0APIClient', () => {
     });
   });
   describe('resetPassword', () => {
-    describe('should not send spaces in', () => {
+    describe('should trim spaces in', () => {
       let client;
       let callback;
       let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].changePassword.mock;
@@ -388,7 +388,7 @@ describe('Auth0APIClient', () => {
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
     });
-    describe('should not send spaces in', () => {
+    describe('should trim spaces in', () => {
       let client;
       let callback;
       let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].passwordlessStart.mock;
@@ -431,7 +431,7 @@ describe('Auth0APIClient', () => {
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
     });
-    describe('should not send spaces in', () => {
+    describe('should trim spaces in', () => {
       let client;
       let callback;
       let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].passwordlessLogin.mock;
