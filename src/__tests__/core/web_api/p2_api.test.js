@@ -14,6 +14,10 @@ const getClient = (options = {}) => {
   };
   client.client.client = {
     login: jest.fn(),
+    signup: jest.fn(),
+    changePassword: jest.fn(),
+    passwordlessStart: jest.fn(),
+    passwordlessLogin: jest.fn(),
     getUserCountry: jest.fn(),
     getSSOData: jest.fn()
   };
@@ -21,7 +25,12 @@ const getClient = (options = {}) => {
 };
 
 const getAuth0ClientMock = () => require('auth0-js');
-
+const assertCallWithCallback = (mock, callbackFunction) => {
+  expect(mock.calls.length).toBe(1);
+  expect(mock.calls[0][0]).toMatchSnapshot();
+  mock.calls[0][1]();
+  expect(callbackFunction.mock.calls.length).toBe(1);
+};
 describe('Auth0APIClient', () => {
   beforeEach(() => {
     jest.resetModules();
@@ -138,12 +147,6 @@ describe('Auth0APIClient', () => {
     });
   });
   describe('logIn', () => {
-    const assertCallWithCallback = (mock, callbackFunction) => {
-      expect(mock.calls.length).toBe(1);
-      expect(mock.calls[0][0]).toMatchSnapshot();
-      mock.calls[0][1]();
-      expect(callbackFunction.mock.calls.length).toBe(1);
-    };
     describe('with social/enterprise (without username and email)', () => {
       it('should call authorize when redirect===true', () => {
         const client = getClient({
@@ -239,31 +242,226 @@ describe('Auth0APIClient', () => {
         assertCallWithCallback(loginWithCredentialsMock, callback);
       });
     });
+    describe('should trim spaces in', () => {
+      let client;
+      let callback;
+      let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].login.mock;
+      beforeEach(() => {
+        client = getClient({
+          redirect: true
+        });
+        callback = jest.fn();
+      });
+      it('the username', () => {
+        client.logIn(
+          {
+            username: ' foo '
+          },
+          {},
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the username with a space', () => {
+        client.logIn(
+          {
+            username: ' foo bar '
+          },
+          {},
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the email', () => {
+        client.logIn(
+          {
+            email: ' foo@example.com '
+          },
+          {},
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the mfa_code', () => {
+        client.logIn(
+          {
+            username: 'foo',
+            mfa_code: ' 123456 '
+          },
+          {},
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+    });
   });
-  it('passwordlessStart should call client.passwordlessStart', () => {
-    const client = getClient({});
-    client.passwordlessStart(
-      {
-        foo: 'bar'
-      },
-      () => {}
-    );
-    const { mock } = client.client.passwordlessStart;
-    expect(mock.calls.length).toBe(1);
-    expect(mock.calls[0]).toMatchSnapshot();
+  describe('signUp', () => {
+    describe('should trim spaces in', () => {
+      let client;
+      let callback;
+      let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].signup.mock;
+      beforeEach(() => {
+        client = getClient({
+          redirect: true
+        });
+        callback = jest.fn();
+      });
+      it('the username', () => {
+        client.signUp(
+          {
+            username: ' foo '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the username with a space', () => {
+        client.signUp(
+          {
+            username: ' foo bar '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the email', () => {
+        client.signUp(
+          {
+            email: ' foo@example.com '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+    });
   });
-  it('passwordlessVerify should call client.passwordlessLogin', () => {
-    const client = getClient({});
-    client.passwordlessVerify(
-      {
-        foo: 'bar'
-      },
-      () => {}
-    );
-    const { mock } = client.client.passwordlessLogin;
-    expect(mock.calls.length).toBe(1);
-    expect(mock.calls[0]).toMatchSnapshot();
+  describe('resetPassword', () => {
+    describe('should trim spaces in', () => {
+      let client;
+      let callback;
+      let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].changePassword.mock;
+      beforeEach(() => {
+        client = getClient({
+          redirect: true
+        });
+        callback = jest.fn();
+      });
+      it('the username', () => {
+        client.resetPassword(
+          {
+            username: ' foo '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the username with a space', () => {
+        client.resetPassword(
+          {
+            username: ' foo bar '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the email', () => {
+        client.resetPassword(
+          {
+            email: ' foo@example.com '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+    });
   });
+  describe('passwordlessStart', () => {
+    it('should call client.passwordlessStart', () => {
+      const client = getClient({});
+      client.passwordlessStart(
+        {
+          foo: 'bar'
+        },
+        () => {}
+      );
+      const { mock } = client.client.passwordlessStart;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
+    });
+    describe('should trim spaces in', () => {
+      let client;
+      let callback;
+      let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].passwordlessStart.mock;
+      beforeEach(() => {
+        client = getClient({
+          redirect: true
+        });
+        callback = jest.fn();
+      });
+      it('the email', () => {
+        client.passwordlessStart(
+          {
+            email: ' foo@example.com '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the phoneNumber', () => {
+        client.passwordlessStart(
+          {
+            phoneNumber: ' +554899999 '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+    });
+  });
+  describe('passwordlessVerify', () => {
+    it('should call client.passwordlessLogin', () => {
+      const client = getClient({});
+      client.passwordlessVerify(
+        {
+          foo: 'bar'
+        },
+        () => {}
+      );
+      const { mock } = client.client.passwordlessLogin;
+      expect(mock.calls.length).toBe(1);
+      expect(mock.calls[0]).toMatchSnapshot();
+    });
+    describe('should trim spaces in', () => {
+      let client;
+      let callback;
+      let getMock = () => getAuth0ClientMock().WebAuth.mock.instances[0].passwordlessLogin.mock;
+      beforeEach(() => {
+        client = getClient({
+          redirect: true
+        });
+        callback = jest.fn();
+      });
+      it('the email', () => {
+        client.passwordlessVerify(
+          {
+            email: ' foo@example.com '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the phoneNumber', () => {
+        client.passwordlessVerify(
+          {
+            phoneNumber: ' +554899999 '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+    });
+  });
+
   it('getUserCountry should call getUserCountry', () => {
     const client = getClient({});
     client.getUserCountry('cb');
