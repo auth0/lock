@@ -51,6 +51,18 @@ Object {
 }
 `;
 
+exports[`Auth0APIClient logIn should not send spaces in the mfa_code 1`] = `
+Object {
+  "mfa_code": "123456",
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
 exports[`Auth0APIClient logIn should not send spaces in the username 1`] = `
 Object {
   "nonce": undefined,
@@ -59,6 +71,17 @@ Object {
   "scope": undefined,
   "state": undefined,
   "username": "foo",
+}
+`;
+
+exports[`Auth0APIClient logIn should not send spaces in the username with a space 1`] = `
+Object {
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+  "username": "foo bar",
 }
 `;
 
@@ -205,6 +228,12 @@ Object {
 }
 `;
 
+exports[`Auth0APIClient resetPassword should not send spaces in the username with a space 1`] = `
+Object {
+  "username": "foo bar",
+}
+`;
+
 exports[`Auth0APIClient signUp should not send spaces in the email 1`] = `
 Object {
   "email": "foo@example.com",
@@ -214,5 +243,11 @@ Object {
 exports[`Auth0APIClient signUp should not send spaces in the username 1`] = `
 Object {
   "username": "foo",
+}
+`;
+
+exports[`Auth0APIClient signUp should not send spaces in the username with a space 1`] = `
+Object {
+  "username": "foo bar",
 }
 `;

@@ -137,7 +137,7 @@ export function webAuthOverrides({ __tenant, __token_issuer, __jwks_uri } = {}) 
 
 export function trimAuthParams(params = {}) {
   const { ...p } = params;
-  ['username', 'email', 'phoneNumber'].forEach(k => {
+  ['username', 'email', 'phoneNumber', 'mfa_code'].forEach(k => {
     if (typeof p[k] === 'string') {
       p[k] = p[k].trim();
     }

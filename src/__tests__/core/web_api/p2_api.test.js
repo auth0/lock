@@ -262,10 +262,31 @@ describe('Auth0APIClient', () => {
         );
         assertCallWithCallback(getMock(), callback);
       });
+      it('the username with a space', () => {
+        client.logIn(
+          {
+            username: ' foo bar '
+          },
+          {},
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
       it('the email', () => {
         client.logIn(
           {
             email: ' foo@example.com '
+          },
+          {},
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the mfa_code', () => {
+        client.logIn(
+          {
+            username: 'foo',
+            mfa_code: ' 123456 '
           },
           {},
           callback
@@ -289,6 +310,15 @@ describe('Auth0APIClient', () => {
         client.signUp(
           {
             username: ' foo '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the username with a space', () => {
+        client.signUp(
+          {
+            username: ' foo bar '
           },
           callback
         );
@@ -320,6 +350,15 @@ describe('Auth0APIClient', () => {
         client.resetPassword(
           {
             username: ' foo '
+          },
+          callback
+        );
+        assertCallWithCallback(getMock(), callback);
+      });
+      it('the username with a space', () => {
+        client.resetPassword(
+          {
+            username: ' foo bar '
           },
           callback
         );
