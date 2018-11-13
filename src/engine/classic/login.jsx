@@ -99,11 +99,9 @@ const Component = ({ i18n, model }) => {
     <div>
       {ssoNotice}
       {tabs}
-      <div className="auth0-lock-internal-content-wrapper">
-        {social}
-        {separator}
-        {login}
-      </div>
+      {social}
+      {separator}
+      {login}
     </div>
   );
 };
