@@ -2,7 +2,9 @@
 
 exports[`SignUpScreen disables SocialButtonsPane when terms were not accepted 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="social_buttons_pane"
       data-bigButtons={false}
@@ -24,13 +26,17 @@ exports[`SignUpScreen renders LoginSignUpTabs SSO is disabled and has screen log
     data-loginLabel="loginLabel"
     data-signUpLabel="signUpLabel"
   />
-  <div />
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  />
 </div>
 `;
 
 exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="sign_up_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -54,7 +60,9 @@ exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
 
 exports[`SignUpScreen renders SignUpPane when has enterprise connection 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="sign_up_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -83,13 +91,17 @@ exports[`SignUpScreen renders SingleSignOnNotice when SSO is enabled and has scr
   >
     ssoEnabled
   </div>
-  <div />
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  />
 </div>
 `;
 
 exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="social_buttons_pane"
       data-bigButtons={false}
@@ -105,6 +117,8 @@ exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] 
 
 exports[`SignUpScreen renders empty div by default 1`] = `
 <div>
-  <div />
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  />
 </div>
 `;

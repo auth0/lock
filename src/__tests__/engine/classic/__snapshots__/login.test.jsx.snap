@@ -7,7 +7,9 @@ exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
   >
     ssoEnabled
   </div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="login_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -32,7 +34,9 @@ exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
 
 exports[`LoginScreen renders LoginPane when has database connection 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="login_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -57,7 +61,9 @@ exports[`LoginScreen renders LoginPane when has database connection 1`] = `
 
 exports[`LoginScreen renders LoginPane when has enterprise connection 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="login_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -89,7 +95,9 @@ exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled
     data-signUpLabel="signUpLabel"
     data-signUpLink={false}
   />
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="login_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -114,7 +122,9 @@ exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled
 
 exports[`LoginScreen renders LoginSignUpTabs when social connection is enabled and has initial screen signUp and has screen signUp 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="login_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -144,7 +154,9 @@ exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
   >
     ssoEnabled
   </div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="login_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
@@ -169,7 +181,9 @@ exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
 
 exports[`LoginScreen renders SocialButtonsPane when has social connections 1`] = `
 <div>
-  <div>
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  >
     <div
       data-__type="social_buttons_pane"
       data-bigButtons={false}
@@ -185,6 +199,8 @@ exports[`LoginScreen renders SocialButtonsPane when has social connections 1`] =
 
 exports[`LoginScreen renders empty div by default 1`] = `
 <div>
-  <div />
+  <div
+    className="auth0-lock-internal-content-wrapper"
+  />
 </div>
 `;
