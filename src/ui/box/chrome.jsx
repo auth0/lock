@@ -260,49 +260,50 @@ export default class Chrome extends React.Component {
 
     return (
       <div className={className}>
-        <Header
-          title={title}
-          name={name}
-          backHandler={backHandler && ::this.handleBack}
-          backgroundUrl={backgroundUrl}
-          backgroundColor={primaryColor}
-          logoUrl={logo}
-        />
-        <div className="auth0-lock-content-wrapper">
-          <TransitionGroup>
-            <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
-              <div>
-                {globalSuccess}
-                {globalError}
-                {globalInfo}
-              </div>
-            </CSSTransition>
-          </TransitionGroup>
-          <div style={{ position: 'relative' }} ref="screen">
-            <MultisizeSlide
-              delay={550}
-              onDidAppear={::this.onDidAppear}
-              onDidSlide={::this.onDidSlide}
-              onWillSlide={::this.onWillSlide}
-              transitionName={classNames}
-              reverse={reverse}
-            >
-              <div key={this.mainScreenName()} className="auth0-lock-view-content">
-                <div style={{ position: 'relative' }}>
-                  <div className="auth0-lock-body-content">
-                    <div className="auth0-lock-content">
-                      <div className="auth0-lock-form">
-                        <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+        <div className="auth0-lock-cred-pane-internal-wrapper">
+          <Header
+            title={title}
+            name={name}
+            backHandler={backHandler && ::this.handleBack}
+            backgroundUrl={backgroundUrl}
+            backgroundColor={primaryColor}
+            logoUrl={logo}
+          />
+          <div className="auth0-lock-content-wrapper">
+            <TransitionGroup>
+              <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
+                <div>
+                  {globalSuccess}
+                  {globalError}
+                  {globalInfo}
+                </div>
+              </CSSTransition>
+            </TransitionGroup>
+            <div style={{ position: 'relative' }} ref="screen">
+              <MultisizeSlide
+                delay={550}
+                onDidAppear={::this.onDidAppear}
+                onDidSlide={::this.onDidSlide}
+                onWillSlide={::this.onWillSlide}
+                transitionName={classNames}
+                reverse={reverse}
+              >
+                <div key={this.mainScreenName()} className="auth0-lock-view-content">
+                  <div style={{ position: 'relative' }}>
+                    <div className="auth0-lock-body-content">
+                      <div className="auth0-lock-content">
+                        <div className="auth0-lock-form">
+                          <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+                        </div>
                       </div>
+                      {terms && <small className="auth0-lock-terms">{terms}</small>}
                     </div>
-                    {terms && <small className="auth0-lock-terms">{terms}</small>}
                   </div>
                 </div>
-              </div>
-            </MultisizeSlide>
+              </MultisizeSlide>
+            </div>
           </div>
-        </div>
-        {/*
+          {/*
             The submit button should always be included in the DOM.
             Otherwise, password managers will call `form.submit()`,
             which doesn't trigger the `onsubmit` event handler, which
@@ -310,26 +311,27 @@ export default class Chrome extends React.Component {
             causing the page to send a POST request to `window.location.href`
             with all the form data.
          */}
-        <SubmitButton
-          color={primaryColor}
-          disabled={disableSubmitButton}
-          screenName={screenName}
-          contentProps={contentProps}
-          label={submitButtonLabel}
-          ref={el => (this.submitButton = el)}
-          display={shouldShowSubmitButton ? 'block' : 'none'}
-        />
-        {auxiliaryPane && (
-          <TransitionGroup>
-            <CSSTransition
-              ref="auxiliary"
-              classNames="slide"
-              timeout={AUXILIARY_ANIMATION_DURATION}
-            >
-              {auxiliaryPane}
-            </CSSTransition>
-          </TransitionGroup>
-        )}
+          <SubmitButton
+            color={primaryColor}
+            disabled={disableSubmitButton}
+            screenName={screenName}
+            contentProps={contentProps}
+            label={submitButtonLabel}
+            ref={el => (this.submitButton = el)}
+            display={shouldShowSubmitButton ? 'block' : 'none'}
+          />
+          {auxiliaryPane && (
+            <TransitionGroup>
+              <CSSTransition
+                ref="auxiliary"
+                classNames="slide"
+                timeout={AUXILIARY_ANIMATION_DURATION}
+              >
+                {auxiliaryPane}
+              </CSSTransition>
+            </TransitionGroup>
+          )}
+        </div>
       </div>
     );
   }
