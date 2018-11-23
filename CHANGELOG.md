@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.12.1](https://github.com/auth0/lock/tree/v11.12.1) (2018-11-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.0...v11.12.1)
+
+
+**Fixed**
+- Fix `lock is undefined` error in non-redirect scenarios [\#1557](https://github.com/auth0/lock/pull/1557) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.12.0](https://github.com/auth0/lock/tree/v11.12.0) (2018-11-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.11.0...v11.12.0)
 
