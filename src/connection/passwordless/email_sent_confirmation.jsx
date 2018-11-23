@@ -75,7 +75,7 @@ export default class EmailSentConfirmation extends React.Component {
     };
 
     return (
-      <SuccessPane backHandler={::this.handleBack} closeHandler={closeHandler}>
+      <SuccessPane lock={lock} backHandler={::this.handleBack} closeHandler={closeHandler}>
         <p>{i18n.html(lock, ['success', 'magicLink'], c.email(lock))}</p>
         <Resend labels={labels} lock={lock} />
       </SuccessPane>
