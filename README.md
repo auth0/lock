@@ -3,6 +3,8 @@
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
+[![Code Quality: Javascript][lgtm-badge]][lgtm-badge-url]
+[![Total alerts][lgtm-alerts]][lgtm-alerts-url]
 
 # Lock
 
@@ -580,3 +582,7 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [downloads-url]: https://npmjs.org/package/auth0-lock
 [david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock
+[lgtm-badge]: https://img.shields.io/lgtm/grade/javascript/g/auth0/lock.svg?logo=lgtm&logoWidth=18
+[lgtm-badge-url]: https://lgtm.com/projects/g/auth0/lock/context:javascript
+[lgtm-alerts]: https://img.shields.io/lgtm/alerts/g/auth0/lock.svg?logo=lgtm&logoWidth=18
+[lgtm-alerts-url]: https://lgtm.com/projects/g/auth0/lock/alerts
