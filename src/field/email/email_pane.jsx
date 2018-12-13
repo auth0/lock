@@ -45,6 +45,7 @@ export default class EmailPane extends React.Component {
         onChange={::this.handleChange}
         placeholder={placeholder}
         autoComplete={allowAutocomplete}
+        disabled={l.submitting(lock)}
       />
     );
   }

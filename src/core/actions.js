@@ -132,7 +132,7 @@ export function closeLock(id, force = false, callback = () => {}) {
       });
       m = read(getEntity, 'lock', id);
       callback(m);
-    }, 1000);
+    }, l.enableULPCompatibility(m) ? 0 : 1000);
   } else {
     swap(updateEntity, 'lock', id, m => {
       m = hideInvalidFields(m);

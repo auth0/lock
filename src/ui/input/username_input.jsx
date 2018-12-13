@@ -10,18 +10,6 @@ export default class UsernameInput extends React.Component {
     this.state = {};
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const { invalidHint, isValid, value, onChange } = this.props;
-    const { focused } = this.state;
-
-    return (
-      invalidHint != nextProps.invalidHint ||
-      isValid != nextProps.isValid ||
-      value != nextProps.value ||
-      focused != nextState.focused
-    );
-  }
-
   render() {
     const { invalidHint, isValid, onChange, autoComplete, ...props } = this.props;
     const { focused } = this.state;

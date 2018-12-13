@@ -39,6 +39,7 @@ describe('UsernamePane', () => {
 
     jest.mock('core/index', () => ({
       id: () => 1,
+      submitting: () => false,
       ui: {
         avatar: () => false,
         allowAutocomplete: () => false

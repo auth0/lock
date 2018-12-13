@@ -39,7 +39,8 @@ describe('SocialButtonsPane', () => {
 
     jest.mock('core/index', () => ({
       id: () => 1,
-      emitEvent: jest.fn()
+      emitEvent: jest.fn(),
+      submitting: () => false
     }));
   });
 

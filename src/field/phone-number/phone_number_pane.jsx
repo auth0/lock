@@ -28,6 +28,7 @@ export default class PhoneNumberPane extends React.Component {
       <div>
         {header}
         <SelectInput
+          lockId={l.id(lock)}
           icon={icon}
           isValid={!c.isFieldVisiblyInvalid(lock, 'location')}
           name="location"

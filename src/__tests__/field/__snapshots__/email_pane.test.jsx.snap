@@ -14,6 +14,7 @@ exports[`EmailPane renders correctly 1`] = `
 <div
   data-__type="email_input"
   data-autoComplete={false}
+  data-disabled={false}
   data-invalidHint="invalidErrorHint"
   data-isValid={false}
   data-lockId={1}
@@ -27,6 +28,7 @@ exports[`EmailPane sets \`blankErrorHint\` when username is empty 1`] = `
 <div
   data-__type="email_input"
   data-autoComplete={false}
+  data-disabled={false}
   data-invalidHint="blankErrorHint"
   data-isValid={false}
   data-lockId={1}
@@ -40,6 +42,7 @@ exports[`EmailPane sets autoComplete to true when \`allowAutocomplete\` is true 
 <div
   data-__type="email_input"
   data-autoComplete={true}
+  data-disabled={false}
   data-invalidHint="invalidErrorHint"
   data-isValid={false}
   data-lockId={1}
@@ -53,6 +56,7 @@ exports[`EmailPane sets isValid as true when \`isFieldVisiblyInvalid\` is false 
 <div
   data-__type="email_input"
   data-autoComplete={false}
+  data-disabled={false}
   data-invalidHint="invalidErrorHint"
   data-isValid={true}
   data-lockId={1}

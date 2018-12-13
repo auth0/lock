@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Chrome from './chrome';
-import { CloseButton } from './button';
+import { CloseButton, BackButton } from './button';
 import * as l from '../../core/index';
 import * as c from '../../field/index';
 import { swap, updateEntity } from '../../store/index';
@@ -119,6 +119,12 @@ export default class Container extends React.Component {
       closeHandler();
     }
   }
+  handleBack() {
+    const { backHandler, isSubmitting } = this.props;
+    if (!isSubmitting) {
+      backHandler();
+    }
+  }
 
   handleEsc() {
     const { closeHandler, escHandler } = this.props;
@@ -203,6 +209,7 @@ export default class Container extends React.Component {
     if (tabs) {
       className += ' auth0-lock-with-tabs';
     }
+    const lockId = l.id(contentProps.model);
 
     return (
       <div className={className} lang={this.props.language}>
@@ -210,7 +217,14 @@ export default class Container extends React.Component {
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
             {avatar && <Avatar imageUrl={avatar} />}
-            {closeHandler && <CloseButton onClick={::this.handleClose} />}
+            <div className="auth0-lock-buttons">
+              <div className="auth0-lock-button">
+                {backHandler && <BackButton lockId={lockId} onClick={::this.handleBack} />}
+              </div>
+              <div className="auth0-lock-button">
+                {closeHandler && <CloseButton lockId={lockId} onClick={::this.handleClose} />}
+              </div>
+            </div>
             <div className="auth0-lock-widget-container">
               <Chrome
                 autofocus={autofocus}
@@ -287,9 +301,9 @@ export const defaultProps = (Container.defaultProps = {
   isMobile: false,
   isSubmitting: false,
   language: 'en',
-  logo: `${
-    isFileProtocol ? 'https:' : ''
-  }//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
+  logo: `${isFileProtocol
+    ? 'https:'
+    : ''}//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
   primaryColor: '#ea5323',
   showBadge: true,
   scrollGlobalMessagesIntoView: true

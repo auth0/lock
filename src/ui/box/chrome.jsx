@@ -189,7 +189,6 @@ export default class Chrome extends React.Component {
     const {
       avatar,
       auxiliaryPane,
-      backHandler,
       contentComponent,
       contentProps,
       disableSubmitButton,
@@ -207,9 +206,9 @@ export default class Chrome extends React.Component {
       classNames,
       scrollGlobalMessagesIntoView
     } = this.props;
-
     const { delayingShowSubmitButton, moving, reverse } = this.state;
 
+    const enableULPCompatibility = l.enableULPCompatibility(contentProps.model);
     let backgroundUrl, name;
     if (avatar) {
       backgroundUrl = avatar;
@@ -219,7 +218,9 @@ export default class Chrome extends React.Component {
       name = '';
     }
 
-    const shouldShowSubmitButton = showSubmitButton && !delayingShowSubmitButton;
+    const shouldShowSubmitButton = enableULPCompatibility
+      ? showSubmitButton
+      : showSubmitButton && !delayingShowSubmitButton;
 
     function wrapGlobalMessage(message) {
       return typeof message === 'string'
@@ -255,8 +256,23 @@ export default class Chrome extends React.Component {
     const Content = contentComponent;
 
     let className = 'auth0-lock-cred-pane';
-    const isQuiet = !moving && !delayingShowSubmitButton;
+    const isQuiet = enableULPCompatibility ? !moving : !moving && !delayingShowSubmitButton;
     className += isQuiet ? ' auth0-lock-quiet' : ' auth0-lock-moving';
+
+    const bodyContent = (
+      <div key={this.mainScreenName()} className="auth0-lock-view-content">
+        <div style={{ position: 'relative' }}>
+          <div className="auth0-lock-body-content">
+            <div className="auth0-lock-content">
+              <div className="auth0-lock-form">
+                <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+              </div>
+            </div>
+            {terms && <small className="auth0-lock-terms">{terms}</small>}
+          </div>
+        </div>
+      </div>
+    );
 
     return (
       <div className={className}>
@@ -264,7 +280,6 @@ export default class Chrome extends React.Component {
           <Header
             title={title}
             name={name}
-            backHandler={backHandler && ::this.handleBack}
             backgroundUrl={backgroundUrl}
             backgroundColor={primaryColor}
             logoUrl={logo}
@@ -280,27 +295,20 @@ export default class Chrome extends React.Component {
               </CSSTransition>
             </TransitionGroup>
             <div style={{ position: 'relative' }} ref="screen">
-              <MultisizeSlide
-                delay={550}
-                onDidAppear={::this.onDidAppear}
-                onDidSlide={::this.onDidSlide}
-                onWillSlide={::this.onWillSlide}
-                transitionName={classNames}
-                reverse={reverse}
-              >
-                <div key={this.mainScreenName()} className="auth0-lock-view-content">
-                  <div style={{ position: 'relative' }}>
-                    <div className="auth0-lock-body-content">
-                      <div className="auth0-lock-content">
-                        <div className="auth0-lock-form">
-                          <Content focusSubmit={::this.focusSubmit} {...contentProps} />
-                        </div>
-                      </div>
-                      {terms && <small className="auth0-lock-terms">{terms}</small>}
-                    </div>
-                  </div>
-                </div>
-              </MultisizeSlide>
+              {!enableULPCompatibility ? (
+                <MultisizeSlide
+                  delay={550}
+                  onDidAppear={::this.onDidAppear}
+                  onDidSlide={::this.onDidSlide}
+                  onWillSlide={::this.onWillSlide}
+                  transitionName={classNames}
+                  reverse={reverse}
+                >
+                  {bodyContent}
+                </MultisizeSlide>
+              ) : (
+                <div>{bodyContent}</div>
+              )}
             </div>
           </div>
           {/*
@@ -327,7 +335,7 @@ export default class Chrome extends React.Component {
                 classNames="slide"
                 timeout={AUXILIARY_ANIMATION_DURATION}
               >
-                {auxiliaryPane}
+                <div>{auxiliaryPane}</div>
               </CSSTransition>
             </TransitionGroup>
           )}
@@ -339,21 +347,12 @@ export default class Chrome extends React.Component {
   focusSubmit() {
     this.submitButton.focus();
   }
-
-  handleBack() {
-    if (this.sliding) return;
-
-    const { backHandler } = this.props;
-    this.setState({ reverse: true });
-    backHandler();
-  }
 }
 
 Chrome.propTypes = {
   autofocus: PropTypes.bool.isRequired,
   avatar: PropTypes.string,
   auxiliaryPane: PropTypes.element,
-  backHandler: PropTypes.func,
   contentComponent: PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: PropTypes.object.isRequired,
   disableSubmitButton: PropTypes.bool.isRequired,

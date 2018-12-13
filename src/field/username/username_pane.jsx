@@ -64,6 +64,7 @@ export default class UsernamePane extends React.Component {
         onChange={::this.handleChange}
         placeholder={placeholder}
         autoComplete={allowAutocomplete}
+        disabled={l.submitting(lock)}
       />
     );
   }
