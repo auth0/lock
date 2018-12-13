@@ -45,10 +45,10 @@ class Renderer {
     return component;
   }
 
-  remove(containerId) {
+  remove(containerId, enableULPCompatibility) {
     if (this.modals[containerId]) {
       this.modals[containerId].hide();
-      setTimeout(() => this.unmount(containerId), 1000);
+      setTimeout(() => this.unmount(containerId), enableULPCompatibility ? 0 : 1000);
     } else {
       this.unmount(containerId);
     }

@@ -869,6 +869,35 @@ ul.auth0-lock-tabs li.auth0-lock-tabs-current > span {
   visibility: hidden;
   transition: 0.25s;
 }
+.auth0-loading-screen .auth0-loading-container {
+  display: flex;
+  justify-content: center;
+}
+
+.auth0-loading-screen .auth0-loading {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.auth0-loading-screen .auth0-loading:after {
+  content: ' ';
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #dfe3ec;
+  border-color: #dfe3ec transparent #dfe3ec transparent;
+  animation: loading 1.2s linear infinite;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @media screen and (max-width: 480px) {
   .auth0-lock {

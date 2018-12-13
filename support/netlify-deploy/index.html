@@ -6,7 +6,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
   />
-  <link id="auth0-lock-style" rel="stylesheet" href="index.css" />
+  <link id="auth0-lock-style" rel="stylesheet" href="index.p.css" />
   <body>
     <header class="site-header">
       <nav class="navbar navbar-default" role="navigation">
@@ -46,7 +46,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-    <script src="/build/lock.js"></script>
+    <script src="lock.min.js"></script>
     <script id="helper-scripts">
       //this is not related to Auth0. It's just here to make the page work correctly.
       Prism.plugins.NormalizeWhitespace.setDefaults({
@@ -112,66 +112,18 @@
       });
     </script>
     <script>
-      var clientId = 'BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b';
+      var clientId = '1pq2KvItFXnyPHr6JY8fluGY2TErmvRL';
       var domain = 'brucke.auth0.com';
       var defaultOptions = {
         //container: 'lock-root',
         _enableULPCompatibility: true,
+        avatar: null,
+        rememberLastLogin: false,
         allowShowPassword: true,
         usernameStyle: 'email',
         defaultDatabaseConnection: 'acme',
-        rememberLastLogin: false,
-        prefill: {
-          email: 'johnfoo@gmail.com'
-        },
-        //initialScreen: 'signUp',
         passwordlessMethod: 'code',
-        allowedConnections: ['email', 'acme', 'google-oauth2', 'contoso-ad'],
-        auth: {
-          redirect: true,
-          params: {
-            nonce: 'foo',
-            state: 'bar'
-          }
-        },
-        additionalSignUpFields: [
-          {
-            name: 'address',
-            placeholder: 'enter your address',
-            // The following properties are optional
-            ariaLabel: 'Address',
-            icon: 'https://auth0-ulp.herokuapp.com/static/img/theme-generic/key-icon.svg',
-            prefill: 'street 123',
-            validator: function(address) {
-              return {
-                valid: address.length >= 10,
-                hint: 'Must have 10 or more chars' // optional
-              };
-            }
-          },
-          {
-            type: 'select',
-            name: 'location',
-            placeholder: 'choose your location',
-            options: [
-              { value: 'us', label: 'United States' },
-              { value: 'fr', label: 'France' },
-              { value: 'ar', label: 'Argentina' }
-            ],
-            // The following properties are optional
-            ariaLabel: 'Location',
-            icon: 'https://auth0-ulp.herokuapp.com/static/img/theme-generic/key-icon.svg',
-            prefill: 'us'
-          },
-          {
-            type: 'checkbox',
-            name: 'newsletter',
-            prefill: 'true',
-            placeholder: 'I hereby agree that I want to receive marketing emails from your company',
-            // The following property is optional
-            ariaLabel: 'Activate Newsletter'
-          }
-        ]
+        allowedConnections: ['email', 'acme', 'google-oauth2', 'contoso-ad']
       };
       function initLock() {
         var lock = new Auth0Lock(clientId, domain, defaultOptions);
