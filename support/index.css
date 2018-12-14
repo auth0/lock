@@ -13,16 +13,6 @@
   --spacing-4: 32px;
   --spacing-5: 40px;
 }
-body {
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-#root {
-  display: flex;
-  justify-content: center;
-}
 
 .auth0-lock {
   font-family: fakt-web, -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
