@@ -6,7 +6,11 @@
   --gray-color: #f1f1f1;
   --warning-color: #ffdb5f;
   --widget-background-color: #fff;
-  --button-height: 44px;
+  --border-color: #b3bac7;
+  --input-placeholder-color: #B3BAC7;
+  --default-font-color: #333C4D;
+  --button-height: 48px;
+  --input-height: var(--button-height);
   --spacing-1: 8px;
   --spacing-2: 16px;
   --spacing-3: 24px;
@@ -14,8 +18,13 @@
   --spacing-5: 40px;
 }
 
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .auth0-lock {
-  font-family: fakt-web, -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
   font-size: 14px;
   width: 360px;
   max-height: 100vh;
@@ -42,6 +51,11 @@
   flex-direction: column;
   pointer-events: none;
 }
+
+.auth0-lock-cred-pane-internal-wrapper > button:last-child {
+    margin-bottom: 0 !important;
+}
+
 .auth0-lock-container .auth0-lock {
   margin: auto;
   position: relative;
@@ -59,6 +73,7 @@
 .auth0-lock.auth0-lock-opened {
   opacity: 1;
   pointer-events: auto;
+  overflow: visible;
 }
 .auth0-lock.auth0-lock-opened .auth0-lock-overlay {
   opacity: 0.9;
@@ -129,7 +144,7 @@
   position: relative;
 }
 .auth0-lock a {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--primary-color);
   text-decoration: none;
   line-height: 1.5;
@@ -139,7 +154,7 @@
 }
 .auth0-lock-header {
   max-width: 260px;
-  padding-bottom: var(--spacing-3);
+  padding-bottom: var(--spacing-2);
   line-height: 1.5;
   margin: 0 auto;
   text-align: center;
@@ -168,11 +183,12 @@
   margin-top: var(--spacing-2);
   width: 100%;
   padding: 0 var(--spacing-2);
-  margin: var(--spacing-1) 0;
+  margin: var(--spacing-3) 0;
   height: var(--button-height);
   font-family: inherit;
   font-weight: 500;
   font-size: 14px;
+  font-weight: 500;
   outline: none;
   cursor: pointer;
   color: #fff;
@@ -180,28 +196,34 @@
   border-radius: 3px;
   transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 }
+
+.auth0-lock-submit:hover {
+    box-shadow: inset 0px 0px 100px 100px rgba(47,70,100,.16);
+}
+
 .auth0-lock-submit svg {
   display: none;
 }
 .auth0-lock-social-button {
+  position: relative;
   display: flex;
-  padding: 0 var(--spacing-1);
+  padding: 0 0 0 48px;
   background: transparent;
   align-items: center;
   width: 100%;
-  height: 44px;
+  height: var(--button-height);
   font-size: 14px;
   border: 1px solid #b3bac7;
   border-radius: 3px;
-  color: #46526b;
+  color: var(--default-font-color);
   cursor: pointer;
   outline: 0;
-  box-shadow: 0 0 2px 0 #dfe3ec;
+  /* box-shadow: 0 0 2px 0 #dfe3ec; */
   transition: background-color 0.25s ease-in-out;
 }
 
 .auth0-lock-social-button:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(47,70,100,.08);
 }
 
 .auth0-lock-social-button:active,
@@ -214,10 +236,12 @@
   cursor: not-allowed;
 }
 .auth0-lock-social-button-icon {
+  position: absolute;
   display: inline-block;
-  width: 25px;
-  height: 25px;
-  position: relative;
+  width: 18px;
+  height: 18px;
+  left: 16px;
+  /* position: relative; */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -375,13 +399,14 @@
 .auth0-lock-input {
   text-align: left;
   border: 1px solid #b3bac7;
-  box-shadow: inset 1px 1px 2px 0 #eff1f5;
+  /* box-shadow: inset 1px 1px 2px 0 #eff1f5; */
   margin-top: -1px;
   font-family: inherit;
   font-size: 14px;
-  height: 44px;
+  color: var(--default-font-color);
+  height: var(--input-height);
   outline: none;
-  padding-left: var(--spacing-5);
+  padding-left: 48px;
   padding-right: var(--spacing-2);
   width: 100%;
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out,
@@ -404,7 +429,7 @@
 }
 
 .auth0-lock-input::placeholder {
-  color: rgba(0, 0, 0, 0.2);
+  color: var(--input-placeholder-color);
 }
 
 .auth0-lock-input-block {
@@ -422,60 +447,74 @@
   display: inline-block;
   position: absolute;
   z-index: 2;
-  left: 15px;
-  top: 14px;
+  left: 16px;
+  top: 16px;
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+/* .auth0-lock-input-block:focus-within:before {
+    background-color: #0066f9;
+} */
+
+.auth0-lock-input-block:first-of-type .auth0-lock-input {
+    border-radius: 3px 3px 0 0;
+}
+
+.auth0-lock-input-block:last-of-type .auth0-lock-input {
+    border-radius: 0 0 3px 3px;
 }
 
 .auth0-lock-input-block.auth0-lock-input-email::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='16px' height='13px' viewBox='0 0 16 13' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='email' fill='%235C677D'%3E%3Cpath d='M15.9997495,12.5000008 C15.9997495,12.7760004 15.7755687,13 15.4997887,13 L0.500211344,13 C0.223679885,13 -1.26121336e-13,12.7760004 -1.26121336e-13,12.5000008 L-1.26121336e-13,0.49977096 C-1.26121336e-13,0.496270966 0.00200385115,0.493520971 0.00200385115,0.490020977 C0.00200385115,0.483520987 0.00576107206,0.478520996 0.00601155345,0.471521008 C0.0127745511,0.355271203 0.0581116834,0.251021377 0.131001769,0.169771514 C0.139017174,0.16027153 0.135510434,0.146521553 0.144277283,0.137771567 C0.155298464,0.126771586 0.172331199,0.131021579 0.184103825,0.121021595 C0.259248243,0.0585217001 0.351174914,0.0195217655 0.453371323,0.00952178228 C0.472908872,0.00777178521 0.487937755,-0.000478200955 0.507224823,2.17982066e-05 L15.4925247,2.17982066e-05 C15.5120622,-0.000478200955 15.5270911,0.00777178521 15.5463782,0.00952178228 C15.6490756,0.0195217655 15.7410022,0.0587716997 15.8158962,0.121021595 C15.8276688,0.131021579 15.8447015,0.126521586 15.8557227,0.137771567 C15.8644896,0.146771552 15.8609828,0.160521529 15.8689982,0.169771514 C15.9418883,0.251271377 15.9872254,0.355271203 15.9939884,0.471521008 C15.9942389,0.478270996 15.9979961,0.483270988 15.9979961,0.490020977 C15.9979961,0.493520971 16,0.496270966 16,0.49977096 L16,12.5000008 L15.9997495,12.5000008 Z M0.999921725,11.5000025 C0.999921725,11.7757521 1.22385209,12.0000017 1.50013307,12.0000017 L14.4996165,12.0000017 C14.7756469,12.0000017 14.9995773,11.7757521 14.9995773,11.5000025 L14.9995773,1.51801925 L8.36858337,6.82601035 C8.36207085,6.83351034 8.36507663,6.84476032 8.35781267,6.85201031 C8.25887252,6.95101014 8.12912316,6.99476007 7.99962428,6.99201007 C7.86937395,6.99476007 7.73987507,6.95126014 7.64093492,6.85201031 C7.63392144,6.84501032 7.63667674,6.83376034 7.63016422,6.82601035 L0.999420762,1.51801925 L0.999420762,11.5000025 L0.999921725,11.5000025 Z M8.00012524,5.87001196 L14.0833164,1.00027012 L1.91668363,1.00027012 L8.00012524,5.87001196 L8.00012524,5.87001196 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  height: 13px;
-  top: 15px;
-  left: 14px;
+  /* height: 13px; */
+  /* top: 15px; */
+  /* left: 14px; */
 }
 
 .auth0-lock-input-block.auth0-lock-input-password::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='13px' height='16px' viewBox='0 0 13 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Lock' fill='%235C677D'%3E%3Cpath d='M10.9998653,16 L1.99997551,16 C0.895489034,16 0,15.104458 0,14.0001563 L0,7.99987499 C0,6.89532322 0.895489034,5.99953123 1.99997551,5.99953123 L1.99997551,5.99953123 L1.99997551,4.50021095 C1.99997551,2.01509446 4.01470084,0 6.4999204,0 C8.98513997,0 10.9998653,2.01509446 10.9998653,4.50021095 L10.9998653,5.99978124 C12.1043518,5.99978124 12.9998408,6.89532322 12.9998408,7.99987499 L12.9998408,14.0001563 C12.9998408,15.104458 12.1043518,16 10.9998653,16 L10.9998653,16 Z M10.0001275,4.50021095 C10.0001275,2.56737035 8.43289673,1.00004688 6.5001704,1.00004688 C4.56744407,1.00004688 3.00021326,2.56737035 3.00021326,4.50021095 L3.00021326,5.99953123 L10.0001275,5.99953123 L10.0001275,4.50021095 L10.0001275,4.50021095 Z M11.9998531,7.99987499 C11.9998531,7.44734909 11.5521085,6.99957811 10.9998653,6.99957811 L1.99997551,6.99957811 C1.44773227,6.99957811 0.999987755,7.44734909 0.999987755,7.99987499 L0.999987755,14.0001563 C0.999987755,14.5516821 1.44773227,14.9994531 1.99997551,14.9994531 L10.9998653,14.9994531 C11.5521085,14.9994531 11.9998531,14.5516821 11.9998531,14.0001563 L11.9998531,7.99987499 L11.9998531,7.99987499 Z M6.4999204,12.9996094 C6.22392378,12.9996094 5.99992653,12.7755989 5.99992653,12.4998359 L5.99992653,9.4996953 C5.99992653,9.22368236 6.22367379,8.99967186 6.4999204,8.99967186 C6.77616702,8.99967186 6.99991428,9.22368236 6.99991428,9.4996953 L6.99991428,12.4998359 C6.99991428,12.7755989 6.77616702,12.9996094 6.4999204,12.9996094 L6.4999204,12.9996094 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  width: 13px;
-  top: 13px;
+  /* width: 13px; */
+  /* top: 13px; */
 }
 
 .auth0-lock-input-block.auth0-lock-input-username::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='13px' height='16px' viewBox='0 0 13 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='user' fill='%235C677D'%3E%3Cpath d='M11.9166667,14.9336 C11.9166667,11.9877333 9.49135417,9.60053333 6.5,9.60053333 C3.50864583,9.60053333 1.08333333,11.9877333 1.08333333,14.9336 L1.08333333,16 L0,16 L0,14.9336 C0,12.2288 1.70625,9.9208 4.11504167,8.98426667 C2.6300625,8.16133333 1.625,6.5976 1.625,4.80026667 C1.625,2.1496 3.80764583,0 6.5,0 C9.19235417,0 11.375,2.1496 11.375,4.80026667 C11.375,6.5976 10.3699375,8.16133333 8.88495833,8.98426667 C11.2934792,9.9208 13,12.2288 13,14.9336 L13,16 L11.9166667,16 L11.9166667,14.9336 L11.9166667,14.9336 Z M10.2916667,4.80026667 C10.2916667,2.73866667 8.59408333,1.06693333 6.5,1.06693333 C4.40591667,1.06693333 2.70833333,2.73866667 2.70833333,4.80026667 C2.70833333,6.86213333 4.40591667,8.5336 6.5,8.5336 C8.5938125,8.5336 10.2916667,6.8624 10.2916667,4.80026667 L10.2916667,4.80026667 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  width: 13px;
+  /* width: 13px; */
 }
 
 .auth0-lock-input-block.auth0-lock-input-phone-number::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='phone' fill='%235C677D'%3E%3Cpath d='M15.0308175,3.12793661 C15.0308175,3.14418467 15.0293195,3.15793303 15.0273222,3.16843178 C14.6181285,3.44939832 12.3312372,4.9559689 11.9038182,5.22918637 C11.8586297,5.23018625 11.7442851,5.21518803 11.5812567,5.12969821 C11.4072433,5.03870905 10.9006819,4.75499284 10.1918954,4.35179086 L9.64039509,4.03757828 L9.12035202,4.40153493 C8.73387739,4.67275263 7.89351975,5.31842574 6.6145084,6.5942738 C5.32975486,7.87537123 4.68438217,8.71052177 4.4135004,9.0939761 L4.04849657,9.61241436 L4.3640676,10.1630988 C4.66940253,10.6957853 5.03515534,11.3404586 5.14550533,11.5494337 C5.23438451,11.7181636 5.24137501,11.8331499 5.24137501,11.8638962 C5.24137501,11.8686457 5.24137501,11.8731451 5.24087568,11.8766447 C5.00045251,12.2583493 3.44931109,14.5885717 3.16644561,15.0000227 C3.12625025,15.006272 3.0391187,15.0000227 2.93026667,14.9250317 C2.05121163,14.2918571 1.1334592,13.3934641 1.00188806,13.0420059 C1.09001826,11.1704788 2.7392763,8.5440416 5.65431367,5.63713778 C8.5696007,2.73073391 11.1997753,1.08567982 13.0702327,0.999690063 C13.4240017,1.12517512 14.3307691,2.04081607 14.9604132,2.90996257 C15.0046031,2.97445489 15.0308175,3.05394542 15.0308175,3.12793661 L15.0308175,3.12793661 Z M16,3.12793661 C16,2.8634681 15.9201086,2.58400139 15.7503394,2.34078035 C15.7338618,2.31728315 14.0578901,-0.0309371982 13.0872096,0.000309080628 C10.359917,0.0867987804 7.15477398,2.729984 4.94677548,4.93197176 C2.73827765,7.13370955 0.0873812162,10.3305788 1.26121336e-13,13.0607537 L1.26121336e-13,13.083251 C1.26121336e-13,14.0393871 2.32459001,15.719937 2.34755879,15.7359351 C2.97920015,16.1773825 3.67450497,16.0159018 3.95687113,15.6146995 C4.12863763,15.3702287 5.91071512,12.6977969 6.11169192,12.3705859 C6.19882347,12.2276029 6.2417651,12.0538736 6.2417651,11.8641462 C6.2417651,11.6199253 6.17061182,11.3499574 6.03105154,11.085239 C5.89523616,10.8280196 5.45084026,10.0488624 5.23238722,9.66815772 C5.46856617,9.33269767 6.07474215,8.54354165 7.32179693,7.30068967 C8.5601136,6.06533679 9.35727995,5.45540942 9.69606941,5.21793771 C10.0780502,5.43591175 10.8589886,5.87810909 11.116139,6.01309301 C11.6007303,6.26781267 12.0850719,6.29730916 12.4113783,6.09008384 C12.7189602,5.895607 15.379094,4.12581777 15.6317506,3.9433395 C15.8711751,3.77086004 16,3.46264675 16,3.12793661 L16,3.12793661 L16,3.12793661 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  width: 16px;
-  height: 16px;
-  top: 14px;
-  left: 12px;
+  /* width: 16px; */
+  /* height: 16px; */
+  /* top: 14px; */
+  /* left: 12px; */
 }
 
 .auth0-lock-input-block.auth0-lock-input-vcode::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='14px' height='16px' viewBox='0 0 14 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='key-icon' fill='%235C677D'%3E%3Cpath d='M12.3728612,8.65392046 C10.5127353,10.5141563 7.57906026,10.6028912 5.58810476,8.96649124 L3.5603784,10.81367 L5.86468557,13.1229099 L5.1202089,13.8687629 L2.78046315,11.5246153 L1.32721485,12.8479115 L3.73917004,15.2544134 L2.99122945,16 L0,13.0163214 L0.0375702256,12.9790154 C-0.0245139061,12.8028779 0.014921508,12.6035574 0.168133421,12.46366 L4.84043063,8.20758111 C3.25848432,6.21784025 3.36480006,3.32529478 5.20520821,1.48451136 C7.18470612,-0.494837119 10.3936297,-0.494837119 12.3728612,1.48451136 C14.3520926,3.46412631 14.3520926,6.67430551 12.3728612,8.65392046 L12.3728612,8.65392046 Z M11.6206573,2.24502032 C10.0608268,0.684564653 7.53163118,0.684564653 5.97180068,2.24502032 C4.41197018,3.80467657 4.41197018,6.33402172 5.97180068,7.89367797 C7.53163118,9.45386716 10.0608268,9.45386716 11.6206573,7.89367797 C13.1804878,6.33402172 13.1804878,3.8044101 11.6206573,2.24502032 L11.6206573,2.24502032 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  height: 16px;
-  top: 15px;
-  width: 14px;
+  /* height: 16px; */
+  /* top: 15px; */
+  /* width: 14px; */
 }
 
 .auth0-lock-input-block.auth0-lock-input-location::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='phone' fill='%235C677D'%3E%3Cpath d='M15.0308175,3.12793661 C15.0308175,3.14418467 15.0293195,3.15793303 15.0273222,3.16843178 C14.6181285,3.44939832 12.3312372,4.9559689 11.9038182,5.22918637 C11.8586297,5.23018625 11.7442851,5.21518803 11.5812567,5.12969821 C11.4072433,5.03870905 10.9006819,4.75499284 10.1918954,4.35179086 L9.64039509,4.03757828 L9.12035202,4.40153493 C8.73387739,4.67275263 7.89351975,5.31842574 6.6145084,6.5942738 C5.32975486,7.87537123 4.68438217,8.71052177 4.4135004,9.0939761 L4.04849657,9.61241436 L4.3640676,10.1630988 C4.66940253,10.6957853 5.03515534,11.3404586 5.14550533,11.5494337 C5.23438451,11.7181636 5.24137501,11.8331499 5.24137501,11.8638962 C5.24137501,11.8686457 5.24137501,11.8731451 5.24087568,11.8766447 C5.00045251,12.2583493 3.44931109,14.5885717 3.16644561,15.0000227 C3.12625025,15.006272 3.0391187,15.0000227 2.93026667,14.9250317 C2.05121163,14.2918571 1.1334592,13.3934641 1.00188806,13.0420059 C1.09001826,11.1704788 2.7392763,8.5440416 5.65431367,5.63713778 C8.5696007,2.73073391 11.1997753,1.08567982 13.0702327,0.999690063 C13.4240017,1.12517512 14.3307691,2.04081607 14.9604132,2.90996257 C15.0046031,2.97445489 15.0308175,3.05394542 15.0308175,3.12793661 L15.0308175,3.12793661 Z M16,3.12793661 C16,2.8634681 15.9201086,2.58400139 15.7503394,2.34078035 C15.7338618,2.31728315 14.0578901,-0.0309371982 13.0872096,0.000309080628 C10.359917,0.0867987804 7.15477398,2.729984 4.94677548,4.93197176 C2.73827765,7.13370955 0.0873812162,10.3305788 1.26121336e-13,13.0607537 L1.26121336e-13,13.083251 C1.26121336e-13,14.0393871 2.32459001,15.719937 2.34755879,15.7359351 C2.97920015,16.1773825 3.67450497,16.0159018 3.95687113,15.6146995 C4.12863763,15.3702287 5.91071512,12.6977969 6.11169192,12.3705859 C6.19882347,12.2276029 6.2417651,12.0538736 6.2417651,11.8641462 C6.2417651,11.6199253 6.17061182,11.3499574 6.03105154,11.085239 C5.89523616,10.8280196 5.45084026,10.0488624 5.23238722,9.66815772 C5.46856617,9.33269767 6.07474215,8.54354165 7.32179693,7.30068967 C8.5601136,6.06533679 9.35727995,5.45540942 9.69606941,5.21793771 C10.0780502,5.43591175 10.8589886,5.87810909 11.116139,6.01309301 C11.6007303,6.26781267 12.0850719,6.29730916 12.4113783,6.09008384 C12.7189602,5.895607 15.379094,4.12581777 15.6317506,3.9433395 C15.8711751,3.77086004 16,3.46264675 16,3.12793661 L16,3.12793661 L16,3.12793661 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  width: 16px;
-  height: 16px;
-  top: 14px;
-  left: 12px;
+  /* width: 16px; */
+  /* height: 16px; */
+  /* top: 14px; */
+  /* left: 12px; */
 }
 
 .auth0-lock-input-block.auth0-lock-input-search::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EShape%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='phone' fill='%235C677D'%3E%3Cpath d='M15.0308175,3.12793661 C15.0308175,3.14418467 15.0293195,3.15793303 15.0273222,3.16843178 C14.6181285,3.44939832 12.3312372,4.9559689 11.9038182,5.22918637 C11.8586297,5.23018625 11.7442851,5.21518803 11.5812567,5.12969821 C11.4072433,5.03870905 10.9006819,4.75499284 10.1918954,4.35179086 L9.64039509,4.03757828 L9.12035202,4.40153493 C8.73387739,4.67275263 7.89351975,5.31842574 6.6145084,6.5942738 C5.32975486,7.87537123 4.68438217,8.71052177 4.4135004,9.0939761 L4.04849657,9.61241436 L4.3640676,10.1630988 C4.66940253,10.6957853 5.03515534,11.3404586 5.14550533,11.5494337 C5.23438451,11.7181636 5.24137501,11.8331499 5.24137501,11.8638962 C5.24137501,11.8686457 5.24137501,11.8731451 5.24087568,11.8766447 C5.00045251,12.2583493 3.44931109,14.5885717 3.16644561,15.0000227 C3.12625025,15.006272 3.0391187,15.0000227 2.93026667,14.9250317 C2.05121163,14.2918571 1.1334592,13.3934641 1.00188806,13.0420059 C1.09001826,11.1704788 2.7392763,8.5440416 5.65431367,5.63713778 C8.5696007,2.73073391 11.1997753,1.08567982 13.0702327,0.999690063 C13.4240017,1.12517512 14.3307691,2.04081607 14.9604132,2.90996257 C15.0046031,2.97445489 15.0308175,3.05394542 15.0308175,3.12793661 L15.0308175,3.12793661 Z M16,3.12793661 C16,2.8634681 15.9201086,2.58400139 15.7503394,2.34078035 C15.7338618,2.31728315 14.0578901,-0.0309371982 13.0872096,0.000309080628 C10.359917,0.0867987804 7.15477398,2.729984 4.94677548,4.93197176 C2.73827765,7.13370955 0.0873812162,10.3305788 1.26121336e-13,13.0607537 L1.26121336e-13,13.083251 C1.26121336e-13,14.0393871 2.32459001,15.719937 2.34755879,15.7359351 C2.97920015,16.1773825 3.67450497,16.0159018 3.95687113,15.6146995 C4.12863763,15.3702287 5.91071512,12.6977969 6.11169192,12.3705859 C6.19882347,12.2276029 6.2417651,12.0538736 6.2417651,11.8641462 C6.2417651,11.6199253 6.17061182,11.3499574 6.03105154,11.085239 C5.89523616,10.8280196 5.45084026,10.0488624 5.23238722,9.66815772 C5.46856617,9.33269767 6.07474215,8.54354165 7.32179693,7.30068967 C8.5601136,6.06533679 9.35727995,5.45540942 9.69606941,5.21793771 C10.0780502,5.43591175 10.8589886,5.87810909 11.116139,6.01309301 C11.6007303,6.26781267 12.0850719,6.29730916 12.4113783,6.09008384 C12.7189602,5.895607 15.379094,4.12581777 15.6317506,3.9433395 C15.8711751,3.77086004 16,3.46264675 16,3.12793661 L16,3.12793661 L16,3.12793661 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  width: 16px;
-  height: 16px;
-  top: 14px;
-  left: 12px;
+  /* width: 16px; */
+  /* height: 16px; */
+  /* top: 14px; */
+  /* left: 12px; */
 }
 
 .auth0-lock-hidden {
@@ -488,9 +527,9 @@
 .auth0-lock-input-show-password .auth0-lock-show-password {
   position: absolute;
   top: 14px;
-  right: 24px;
-  width: 20px;
-  height: 14px;
+  right: var(--spacing-2);
+  /* width: 20px; */
+  /* height: 14px; */
   z-index: 3;
 }
 .auth0-lock-input-show-password .auth0-lock-show-password input[type='checkbox'] {
@@ -499,7 +538,7 @@
 .auth0-lock-input-show-password .auth0-lock-show-password input[type='checkbox'] + label {
   width: 20px;
   height: 14px;
-  display: inline-block;
+  /* display: inline-block; */
   cursor: pointer;
   vertical-align: top;
 }
@@ -507,7 +546,7 @@
 .auth0-lock-input-show-password .auth0-lock-show-password input[type='checkbox'] + label:after {
   content: 'Show';
   color: var(--primary-color);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .auth0-lock-input-show-password
@@ -518,8 +557,20 @@
 }
 
 .auth0-lock-input-checkbox {
-  margin: var(--spacing-1) 0;
-  text-align: left;
+    position: relative;
+    margin: var(--spacing-2) 0 var(--spacing-3);
+    text-align: left;
+}
+
+.auth0-lock-input-checkbox > label > input[type=checkbox] {
+    position: absolute;
+    top: 3px;
+}
+
+.auth0-lock-input-checkbox > label > span {
+    display: block;
+    padding: 0 0 0 var(--spacing-3);
+    line-height: 1.5;
 }
 
 .auth0-lock-close-button,
@@ -792,27 +843,36 @@
 
 ul.auth0-lock-tabs {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0 var(--spacing-3) 0;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* padding: 0 0 var(--spacing-3) 0; */
+  padding: var(--spacing-3) 0 0 0;
+  margin: 0 0 var(--spacing-4);
+  border-bottom: 1px solid var(--border-color);
 }
 ul.auth0-lock-tabs li a {
   all: unset;
 }
 ul.auth0-lock-tabs li {
   list-style: none;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  flex: 1;
   text-align: center;
   font-size: var(--spacing-2);
   color: var(--primary-color);
   text-decoration: none;
-  line-height: 1.5;
+  /* line-height: 1.5; */
   cursor: pointer;
 }
 ul.auth0-lock-tabs li > span,
 ul.auth0-lock-tabs li > a {
-  border-bottom: 1px solid transparent;
-  padding: var(--spacing-1) var(--spacing-2);
+  position: relative;
+  top: 1px;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 var(--spacing-2);
 }
 
 ul.auth0-lock-tabs li.auth0-lock-tabs-current > span {
@@ -820,13 +880,51 @@ ul.auth0-lock-tabs li.auth0-lock-tabs-current > span {
 }
 
 .auth0-lock-form div > p > span {
+  position: relative;
   display: block;
   text-align: center;
+  line-height: 1.5;
+}
+
+.auth0-lock-form > div:nth-child(1) > p:first-child {
+    margin: 0 0 var(--spacing-3);
+}
+
+.auth0-lock-form div > div > div:nth-child(3) > p:not(.auth0-lock-alternative) {
+    margin: var(--spacing-3) 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.auth0-lock-form div > div > div:nth-child(3) > p > span:before,
+.auth0-lock-form div > div > div:nth-child(3) > p > span:after
+ {
+    content: '';
+    position: absolute;
+    width: calc(50% - var(--spacing-3));
+    height: 1px;
+    background-color: var(--border-color);
+    top: 8px;
+}
+
+.auth0-lock-form div > div > div:nth-child(3) > p > span:before {
+    left: 0;
+}
+
+.auth0-lock-form div > div > div:nth-child(3) > p > span:after {
+    right: 0;
+}
+
+.auth0-lock-alternative {
+    margin: var(--spacing-2) 0 var(--spacing-3) 0;
 }
 
 .auth0-lock-terms {
   display: block;
   margin: var(--spacing-2) 0;
+  font-size: 12px !important;
+  line-height: 1.5;
 }
 
 @keyframes fadeOutDownBig {
