@@ -13,7 +13,7 @@ export default {
       invalid_user_password: 'Λανθασμένα στοιχεία σύνδεσης.',
       'lock.fallback': 'Λυπούμαστε, κάτι πήγε στραβά όταν επιχειρήσατε να συνδεθείτε.',
       'lock.invalid_code': 'Λάθος κωδικός.',
-      'lock.invalid_email_password': 'Λάθος emial ή κωδικός πρόσβασης.',
+      'lock.invalid_email_password': 'Λάθος email ή κωδικός πρόσβασης.',
       'lock.invalid_username_password': 'Λάθος όνομα χρήστη ή κωδικός.',
       'lock.network':
         'Δεν μπορούμε να επικοινωνήσουμε με τον διακομιστή. Ελέγξτε τη σύνδεση σας και δοκιμάστε ξανά.',
