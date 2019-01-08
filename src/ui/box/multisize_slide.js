@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CSSCore from 'fbjs/lib/CSSCore';
+import CSSCore from '../../CSSCore';
 
 export default class Slider extends React.Component {
   constructor(props) {
