@@ -76,7 +76,7 @@ loadingSize = 30px
   font-family "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif
   text-rendering optimizeLegibility
   pointer-events none
-  position fixed
+  position absolute
   bottom 0
   left 0
   width 100%
@@ -132,13 +132,12 @@ loadingSize = 30px
 
   .auth0-lock-cred-pane
     background white
-    height: 100%
-    min-height: 100%
-    display: flex
-    flex-direction: column
     border-radius 6px
     position relative
-    white-space: nowrap
+    display: flex;
+    flex-direction: column;
+    height: 100%
+    min-height: 100%
 
     &.horizontal-fade-exit
       .auth0-lock-content, .auth0-lock-terms
@@ -147,8 +146,12 @@ loadingSize = 30px
 
     &.auth0-lock-moving
       overflow hidden
-
-
+  .auth0-lock-cred-pane-internal-wrapper
+    display: flex
+    flex-direction: column
+    height: 100%
+    min-height: 100%
+  
   // Lock header content
 
 
@@ -168,9 +171,8 @@ loadingSize = 30px
     justify-content: center
 
   .auth0-lock-content-wrapper
-    flex: 1
+    flex-grow: 1
     flex-shrink: 0
-    overflow: scroll
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
@@ -309,12 +311,11 @@ loadingSize = 30px
     -webkit-box-sizing border-box
     -moz-box-sizing border-box
     box-sizing border-box
-    padding 20px
 
   .auth0-lock-form
-    display initial
     -webkit-animation fadeIn .2s
     animation fadeIn .2s
+    padding 20px
 
     h2
       font-size 22px
@@ -498,6 +499,7 @@ loadingSize = 30px
           width: 38px
 
     .auth0-lock-social-button-icon
+      box-sizing: content-box
       width 40px
       height 40px
       position absolute
@@ -643,9 +645,7 @@ loadingSize = 30px
       transition-duration .5s
 
   .auth0-lock-submit-container
-    flex: 1
     flex-shrink: 0
-    overflow: scroll
   
   .auth0-loading-container
     position relative
@@ -1100,6 +1100,11 @@ loadingSize = 30px
 // database mode
 
 .auth0-lock.auth0-lock
+  .auth0-lock-tabs-container
+    margin-left -20px
+    margin-right -20px
+    margin-top -20px
+    margin-bottom 20px
   .auth0-lock-tabs
     background white
     padding 0
@@ -1247,6 +1252,7 @@ loadingSize = 30px
   color red
   font-size 12px
   margin-top 5px
+  white-space nowrap
 
   +breakpoint("mobile")
     color black
@@ -1283,7 +1289,7 @@ loadingSize = 30px
 
 .auth0-lock .auth0-loading-screen
   min-height 42px
-  padding 20px
+  box-sizing border-box
   @media screen and (max-width: 480px)
       position absolute
       top "calc(50vh - %s)" % headerHeight

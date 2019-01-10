@@ -17,7 +17,7 @@ export default class SignedUpConfirmation extends React.Component {
     const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
 
     return (
-      <SuccessPane closeHandler={closeHandler}>
+      <SuccessPane lock={lock} closeHandler={closeHandler}>
         <p>{i18n.html(lock, ['success', 'signUp'])}</p>
       </SuccessPane>
     );
