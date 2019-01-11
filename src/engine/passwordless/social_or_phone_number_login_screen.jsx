@@ -74,7 +74,6 @@ export default class AskSocialNetworkOrPhoneNumber extends Screen {
   }
 
   renderTerms(m, terms) {
-    console.log('foo terms');
     const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
     return terms || mustAcceptTerms(m) ? (
       <SignUpTerms
