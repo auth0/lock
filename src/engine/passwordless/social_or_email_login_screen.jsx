@@ -81,7 +81,11 @@ export default class SocialOrEmailLoginScreen extends Screen {
   renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
     return terms || mustAcceptTerms(m) ? (
-      <SignUpTerms checkHandler={checkHandler} checked={termsAccepted(m)}>
+      <SignUpTerms
+        showCheckbox={mustAcceptTerms(m)}
+        checkHandler={checkHandler}
+        checked={termsAccepted(m)}
+      >
         {terms}
       </SignUpTerms>
     ) : null;
