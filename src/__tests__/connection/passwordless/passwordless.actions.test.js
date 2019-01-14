@@ -224,7 +224,7 @@ describe('passwordless actions', () => {
     });
   });
   describe('toggleTermsAcceptance()', () => {
-    it('calls switchTermsAcceptance()', () => {
+    it('calls internalToggleTermsAcceptance()', () => {
       actions.toggleTermsAcceptance('id');
 
       const { swap } = require('store/index');

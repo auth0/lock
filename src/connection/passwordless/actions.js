@@ -13,7 +13,7 @@ import {
   setPasswordlessStarted,
   setResendFailed,
   setResendSuccess,
-  toggleTermsAcceptance as switchTermsAcceptance
+  toggleTermsAcceptance as internalToggleTermsAcceptance
 } from './index';
 import { phoneNumberWithDiallingCode } from '../../field/phone_number';
 import * as i18n from '../../i18n';
@@ -153,5 +153,5 @@ export function restart(id) {
 }
 
 export function toggleTermsAcceptance(id) {
-  swap(updateEntity, 'lock', id, switchTermsAcceptance);
+  swap(updateEntity, 'lock', id, internalToggleTermsAcceptance);
 }
