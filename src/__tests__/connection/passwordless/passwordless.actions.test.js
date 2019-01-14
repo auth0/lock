@@ -17,7 +17,8 @@ describe('passwordless actions', () => {
       send: () => 'send',
       setPasswordlessStarted: jest.fn(),
       setResendFailed: jest.fn(),
-      setResendSuccess: jest.fn()
+      setResendSuccess: jest.fn(),
+      toggleTermsAcceptance: jest.fn()
     }));
     jest.mock('field/phone_number', () => ({
       phoneNumberWithDiallingCode: () => 'phoneNumberWithDiallingCode'
@@ -220,6 +221,18 @@ describe('passwordless actions', () => {
 
         expectMockToMatch(require('core/actions').logInSuccess, 1);
       });
+    });
+  });
+  describe('toggleTermsAcceptance()', () => {
+    it('calls internalToggleTermsAcceptance()', () => {
+      actions.toggleTermsAcceptance('id');
+
+      const { swap } = require('store/index');
+      expectMockToMatch(swap, 1);
+
+      swap.mock.calls[0][3]('model');
+
+      expectMockToMatch(require('connection/passwordless/index').toggleTermsAcceptance, 1);
     });
   });
   it('restart calls restartPasswordless', () => {

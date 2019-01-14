@@ -11,7 +11,7 @@ import {
   hasScreen,
   setScreen,
   shouldAutoLogin,
-  toggleTermsAcceptance as switchTermsAcceptance,
+  toggleTermsAcceptance as internalToggleTermsAcceptance,
   additionalSignUpFields
 } from './index';
 import * as i18n from '../../i18n';
@@ -220,7 +220,7 @@ export function cancelMFALogin(id) {
 }
 
 export function toggleTermsAcceptance(id) {
-  swap(updateEntity, 'lock', id, switchTermsAcceptance);
+  swap(updateEntity, 'lock', id, internalToggleTermsAcceptance);
 }
 
 export function showLoginMFAActivity(id, fields = ['mfa_code']) {

@@ -9,6 +9,9 @@ import { useBigButtons } from '../../connection/social/index';
 import * as l from '../../core/index';
 
 import { renderOptionSelection } from '../../field/index';
+import { mustAcceptTerms, termsAccepted } from '../../connection/passwordless/index';
+import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
+import SignUpTerms from '../../connection/database/sign_up_terms';
 
 const useSocialBigButtons = m => {
   const limit = l.connections(m, 'passwordless', 'sms').count() === 0 ? 5 : 3;
@@ -23,6 +26,7 @@ const Component = ({ i18n, model }) => {
       labelFn={i18n.str}
       lock={model}
       signUp={false}
+      disabled={!termsAccepted(model)}
     />
   ) : null;
 
@@ -64,5 +68,21 @@ export default class AskSocialNetworkOrPhoneNumber extends Screen {
 
   render() {
     return Component;
+  }
+  isSubmitDisabled(m) {
+    return !termsAccepted(m);
+  }
+
+  renderTerms(m, terms) {
+    const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
+    return terms || mustAcceptTerms(m) ? (
+      <SignUpTerms
+        showCheckbox={mustAcceptTerms(m)}
+        checkHandler={checkHandler}
+        checked={termsAccepted(m)}
+      >
+        {terms}
+      </SignUpTerms>
+    ) : null;
   }
 }
