@@ -23,7 +23,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.12.0/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.13.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -411,7 +411,7 @@ Additional sign up fields are rendered below the default fields in the order the
 
 ##### Text field
 
-A `validator` function can also be provided.
+A `validator` function can also be provided. 
 
 ```js
 var options = {
@@ -429,7 +429,18 @@ var options = {
       };
     }
   }]
-}
+};
+```
+If you don't provide a `validator` function a default validator is applied, which requires the text field to contain some value (be non-empty). You can make a field optional by using a validator that always return `true`:
+
+```js
+var options = {
+  additionalSignUpFields: [{
+    name: "address",
+    placeholder: "enter your address (optional)",
+    validator: function() {return true;}
+  }]
+};
 ```
 
 ##### Select field

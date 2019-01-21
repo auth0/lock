@@ -1,5 +1,27 @@
 # Change Log
 
+## [v11.13.0](https://github.com/auth0/lock/tree/v11.13.0) (2019-01-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.1...v11.13.0)
+
+
+**Added**
+- Adding terms for passwordless [\#1424](https://github.com/auth0/lock/pull/1424) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Don't use storage when inside the Universal Login Page (Auth0.js update) [\#1587](https://github.com/auth0/lock/pull/1587) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed missing scroll issue for sign up [\#1566](https://github.com/auth0/lock/pull/1566) ([degrammer](https://github.com/degrammer))
+
+
+## [v11.12.1](https://github.com/auth0/lock/tree/v11.12.1) (2018-11-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.0...v11.12.1)
+
+
+**Fixed**
+- Fix `lock is undefined` error in non-redirect scenarios [\#1557](https://github.com/auth0/lock/pull/1557) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.12.0](https://github.com/auth0/lock/tree/v11.12.0) (2018-11-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.11.0...v11.12.0)
 
