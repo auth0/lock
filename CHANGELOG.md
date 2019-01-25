@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.13.1](https://github.com/auth0/lock/tree/v11.13.1) (2019-01-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.0...v11.13.1)
+
+
+**Fixed**
+- Upgrade Auth0.js with fix for storage inside the Hosted Login Page [\#1592](https://github.com/auth0/lock/pull/1592) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.13.0](https://github.com/auth0/lock/tree/v11.13.0) (2019-01-15)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.12.1...v11.13.0)
 
