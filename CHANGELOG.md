@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.13.2](https://github.com/auth0/lock/tree/v11.13.2) (2019-01-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.1...v11.13.2)
+
+
+**Fixed**
+- Fix lock center position with scroll across browsers [\#1594](https://github.com/auth0/lock/pull/1594) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.13.1](https://github.com/auth0/lock/tree/v11.13.1) (2019-01-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.13.0...v11.13.1)
 
