@@ -31,6 +31,9 @@ jobs:
       - run: 
           name: Tests
           command: yarn run test:jest
+      - run:
+          name: Visual Tests
+          command: yarn run test:visual
       - store_artifacts:
           path: build
 

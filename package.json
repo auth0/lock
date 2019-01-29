@@ -31,9 +31,12 @@
     "test:es-check": "es-check es5 'build/*.js'",
     "publish:cdn": "ccu",
     "release": "scripts/release.sh",
-    "i18n:translate": "grunt dist && node scripts/complete-translations.js"
+    "i18n:translate": "grunt dist && node scripts/complete-translations.js",
+    "cypress:run": "cross-env APPLITOOLS_CONCURRENCY=100 cypress run",
+    "test:visual": "concurrently  -k -s first \"npm:design\" \"npm:cypress:run\""
   },
   "devDependencies": {
+    "@applitools/eyes.cypress": "^3.3.23",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^6.2.5",
@@ -46,8 +49,10 @@
     "babelify": "^7.2.0",
     "bump-version": "^0.5.0",
     "component-cdn-uploader": "auth0/component-cdn-uploader#v1.3.0",
+    "concurrently": "^4.1.0",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
+    "cypress": "^3.1.4",
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
@@ -118,14 +123,16 @@
       "<rootDir>/test/",
       "<rootDir>/lib/",
       "<rootDir>/src/__tests__/testUtils.js",
-      "<rootDir>/src/__tests__/setup-tests.js"
+      "<rootDir>/src/__tests__/setup-tests.js",
+      "<rootDir>/cypress/"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/test/",
       "<rootDir>/lib/",
       "<rootDir>/src/__tests__/testUtils.js",
-      "<rootDir>/src/__tests__/setup-tests.js"
+      "<rootDir>/src/__tests__/setup-tests.js",
+      "<rootDir>/cypress/"
     ],
     "coverageReporters": ["lcov", "text-summary"]
   },
