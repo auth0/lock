@@ -70,7 +70,7 @@ export default {
   notYourAccountAction: 'これはあなたのアカウントではありませんか？',
   passwordInputPlaceholder: 'パスワード',
   passwordStrength: {
-    containsAtLeast: '下記の%dつのうち%dつ以上含んでください:',
+    containsAtLeast: '%dつ以上の条件を満たす必要があります。（条件は以下の％dつ）',
     identicalChars: '連続して同じ文字を%d個以上入力できません（例: "%s" は使用できません）',
     nonEmpty: 'パスワードは必須です',
     numbers: '数字 (0-9)',
@@ -106,7 +106,7 @@ export default {
   usernameInputPlaceholder: 'ユーザー名',
   usernameOrEmailInputPlaceholder: 'ユーザー名/メールアドレス',
   title: 'Auth0',
-  welcome: '%sへようこそ！',
+  welcome: 'ようこそ%sさん',
   windowsAuthInstructions: '企業ネットワークから接続されています;',
   windowsAuthLabel: 'Windows認証',
   mfaInputPlaceholder: 'コード',
