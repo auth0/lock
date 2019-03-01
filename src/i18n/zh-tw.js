@@ -106,7 +106,7 @@ export default {
   welcome: '歡迎 %s ！',
   windowsAuthInstructions: '您已連接到公司網路&hellip;',
   windowsAuthLabel: 'Windows 認證',
-  forgotPasswordTitle: '重置你的密碼',
+  forgotPasswordTitle: '重置您的密碼',
   signUpTitle: '註冊',
   mfaInputPlaceholder: '碼',
   mfaLoginTitle: '兩步驟驗證',
