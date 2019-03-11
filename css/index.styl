@@ -121,8 +121,6 @@ loadingSize = 30px
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     margin 0 auto
     border-radius 5px
-    max-height 100vh
-    overflow-x auto
 
     +breakpoint("mobile")
       -webkit-transition -webkit-transform .4s, opacity .3s
@@ -150,8 +148,12 @@ loadingSize = 30px
   .auth0-lock-cred-pane-internal-wrapper
     display: flex
     flex-direction: column
-    height: 100%
-    min-height: 100%
+    min-height calc(100vh - 68px)
+    max-height auto
+    +breakpoint("mobile")
+      max-height: calc(100vh - 40px)
+      min-height auto
+      
   
   // Lock header content
 
@@ -159,7 +161,6 @@ loadingSize = 30px
   .auth0-lock-header
     text-align center
     padding 11px
-    height headerHeight
     color #333
     position relative
     background #fff
@@ -170,10 +171,15 @@ loadingSize = 30px
     display: flex
     flex-direction: column
     justify-content: center
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: auto;
 
   .auth0-lock-content-wrapper
     flex-grow: 1
-    flex-shrink: 0
+    flex-shrink: 1
+    flex-basis: auto;
+    overflow: auto;
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
@@ -592,7 +598,6 @@ loadingSize = 30px
     -webkit-box-sizing border-box
     box-sizing border-box
     width 100%
-    height submitHeight
     overflow hidden
     border-radius 0 0 5px 5px
     -webkit-transition .2s ease-in-out
@@ -602,6 +607,9 @@ loadingSize = 30px
     letter-spacing 1px
     font-size 14px
     text-transform uppercase
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: auto;
 
     span
       display inline-block
