@@ -153,6 +153,7 @@ loadingSize = 30px
     +breakpoint("mobile")
       max-height: calc(100vh - 40px)
       min-height auto
+      height auto
       
   
   // Lock header content
@@ -1377,3 +1378,7 @@ input[type="button"]
 
 .auth0-lock-hidden
   display: none
+
+// Hack to fix the height on IE11
+_:-ms-fullscreen, :root .auth0-lock.auth0-lock .auth0-lock-content-wrapper
+  flex-basis: 50vh !important
