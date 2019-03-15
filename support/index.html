@@ -117,7 +117,7 @@
       usernameStyle: 'email',
       defaultDatabaseConnection: 'acme',
       prefill: {
-        
+        email: 'luis@luisrudge.net'
       },
       passwordlessMethod: 'code',
       allowedConnections: ['email', 'acme', 'google-oauth2', 'contoso-ad'],
@@ -126,7 +126,71 @@
           nonce: 'foo',
           state: 'bar'
         }
-      }
+      },additionalSignUpFields: [
+          {
+            name: 'address',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address221',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address1',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address2',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address3',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address4',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address45',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address6',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          },
+          {
+            name: 'address7',
+            placeholder: 'enter your address (optional)',
+            validator: function() {
+              return true;
+            }
+          }
+        ]
     };
     function initLock() {
       var lock = new Auth0Lock(clientId, domain, defaultOptions);
