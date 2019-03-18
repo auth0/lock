@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.14.1](https://github.com/auth0/lock/tree/v11.14.1) (2019-03-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.14.0...v11.14.1)
+
+
+**Fixed**
+- Fix/avatar crop header mobile [\#1621](https://github.com/auth0/lock/pull/1621) ([luisrudge](https://github.com/luisrudge))
+- Improve greek translation [\#1614](https://github.com/auth0/lock/pull/1614) ([esarafianou](https://github.com/esarafianou))
+
+
 ## [v11.14.0](https://github.com/auth0/lock/tree/v11.14.0) (2019-01-30)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.13.2...v11.14.0)
 
