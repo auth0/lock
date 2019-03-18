@@ -7,6 +7,7 @@
 **Fixed**
 - Fix/avatar crop header mobile [\#1621](https://github.com/auth0/lock/pull/1621) ([luisrudge](https://github.com/luisrudge))
 - Improve greek translation [\#1614](https://github.com/auth0/lock/pull/1614) ([esarafianou](https://github.com/esarafianou))
+- Upgrade Auth0.js to 9.10.1
 
 
 ## [v11.14.0](https://github.com/auth0/lock/tree/v11.14.0) (2019-01-30)
