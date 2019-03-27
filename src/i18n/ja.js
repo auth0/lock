@@ -70,7 +70,7 @@ export default {
   notYourAccountAction: 'これはあなたのアカウントではありませんか？',
   passwordInputPlaceholder: 'パスワード',
   passwordStrength: {
-    containsAtLeast: '%dつ以上の条件を満たす必要があります。（条件は以下の％dつ）',
+    containsAtLeast: '%dつ以上の条件を満たす必要があります。（条件は以下の%dつ）',
     identicalChars: '連続して同じ文字を%d個以上入力できません（例: "%s" は使用できません）',
     nonEmpty: 'パスワードは必須です',
     numbers: '数字 (0-9)',
