@@ -104,7 +104,7 @@ export default {
   retryLabel: 'Wiederholen',
   sentLabel: 'Gesendet!',
   showPassword: 'Passwort anzeigen',
-  signUpTitle: 'Anmelden',
+  signUpTitle: 'Registrieren',
   signUpLabel: 'Registrieren',
   signUpSubmitLabel: 'Registrieren',
   signUpWithLabel: 'Registrieren mit %s',
