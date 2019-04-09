@@ -230,7 +230,8 @@ function logInError(id, fields, error, localHandler = (_id, _error, _fields, nex
         'blocked_user',
         'rule_error',
         'lock.unauthorized',
-        'invalid_user_password'
+        'invalid_user_password',
+        'login_required'
       ];
 
       if (errorCodesThatEmitAuthorizationErrorEvent.indexOf(errorCode) > -1) {
