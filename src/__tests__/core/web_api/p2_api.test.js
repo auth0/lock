@@ -39,7 +39,7 @@ describe('Auth0APIClient', () => {
   describe('init', () => {
     describe('with overrides', () => {
       it('uses telemetry set in the `auth0Client` query param if available', () => {
-        const telemetryIn = { fromTest: true, env: { envOverride: true } };
+        const telemetryIn = { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } };
         setURL(`https://auth.myapp.com/authorize?auth0Client=${btoa(JSON.stringify(telemetryIn))}`);
         const options = {
           audience: 'foo',
