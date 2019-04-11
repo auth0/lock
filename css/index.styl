@@ -1028,7 +1028,6 @@ loadingSize = 30px
     .auth0-lock-terms
       @media screen and (max-width: 480px)
         position absolute
-        bottom -42px
         width 100%
         left 0
         -webkit-box-sizing border-box
@@ -1264,37 +1263,6 @@ loadingSize = 30px
   font-size 12px
   margin-top 5px
   white-space nowrap
-
-  +breakpoint("mobile")
-    color black
-    background white
-    box-shadow 0 0 5px 0 rgba(black,.6)
-    margin 0
-    border-radius 3px
-    position absolute
-    left calc(100% + 7px)
-    top 1px
-    display inline-table
-
-    .auth0-lock-error-invalid-hint
-      background white
-      padding 12px 15px
-      display block
-      position relative
-      border-radius 3px
-      z-index 1
-
-    &:after
-      content ""
-      background white
-      height 6px
-      width 6px
-      position absolute
-      pointer-events none
-      box-shadow 0 0 5px 0 rgba(black,.6)
-      right calc(100% - 3px)
-      top 50%
-      transform translateY(-50%) rotate(45deg)
 
 // loading
 
