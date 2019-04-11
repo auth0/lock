@@ -20,20 +20,22 @@ class Auth0APIClient {
 
     const { auth0Client } = qs.parse(window.location.search.substr(1));
     let ulpTelemetry = auth0Client && JSON.parse(atob(auth0Client));
+    const lockTelemetryName = this.isUniversalLogin ? 'lock.js-ulp' : 'lock.js';
+    const auth0jsTelemetryName = this.isUniversalLogin ? 'auth0-js-ulp' : 'auth0-js';
     const default_telemetry = ulpTelemetry
       ? {
           ...ulpTelemetry,
           env: {
             ...ulpTelemetry.env,
-            'lock.js': __VERSION__,
-            'auth0-js': auth0.version.raw
+            [lockTelemetryName]: __VERSION__,
+            [auth0jsTelemetryName]: auth0.version.raw
           }
         }
       : {
-          name: 'lock.js',
+          name: lockTelemetryName,
           version: __VERSION__,
           env: {
-            'auth0-js': auth0.version.raw
+            [auth0jsTelemetryName]: auth0.version.raw
           }
         };
 
