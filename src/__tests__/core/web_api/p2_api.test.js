@@ -1,4 +1,5 @@
 import { setURL } from 'testUtils';
+import { watch } from 'fs';
 
 jest.mock('auth0-js');
 
@@ -37,7 +38,38 @@ describe('Auth0APIClient', () => {
   });
   describe('init', () => {
     describe('with overrides', () => {
+      it('uses telemetry set in the `auth0Client` query param if available', () => {
+        const telemetryIn = { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } };
+        setURL(`https://auth.myapp.com/authorize?auth0Client=${btoa(JSON.stringify(telemetryIn))}`);
+        const options = {
+          audience: 'foo',
+          redirectUrl: '//localhost:8080/login/callback',
+          responseMode: 'query',
+          responseType: 'code',
+          leeway: 60
+        };
+        getClient(options);
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.calls[0][0]).toMatchSnapshot();
+      });
+      it.only('uses default telemetry key when outside the ULP', () => {
+        setURL(`https://auth.myapp.com/authorize`);
+        getClient();
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js');
+        expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain('auth0-js');
+      });
+      it.only('uses different telemetry key when inside the ULP', () => {
+        setURL('https://me.auth0.com/');
+        getClient();
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js-ulp');
+        expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain(
+          'auth0-js-ulp'
+        );
+      });
       it('forwards options to WebAuth', () => {
+        setURL(`https://auth.myapp.com/authorize`);
         const options = {
           audience: 'foo',
           redirectUrl: '//localhost:8080/login/callback',
@@ -54,7 +86,7 @@ describe('Auth0APIClient', () => {
               name: 'ExamplePlugin'
             }
           ],
-          _telemetryInfo: {},
+          _telemetryInfo: { newOption: true },
           params: {
             nonce: 'nonce',
             state: 'state',

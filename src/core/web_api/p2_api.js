@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+import qs from 'qs';
 import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
 import {
   normalizeError,
@@ -17,11 +18,26 @@ class Auth0APIClient {
     this.isUniversalLogin = window.location.host === domain;
     this._enableIdPInitiatedLogin = !!(opts._enableIdPInitiatedLogin || opts._enableImpersonation);
 
-    const default_telemetry = {
-      name: 'lock.js',
-      version: __VERSION__,
-      lib_version: auth0.version
-    };
+    const { auth0Client } = qs.parse(window.location.search.substr(1));
+    let ulpTelemetry = auth0Client && JSON.parse(atob(auth0Client));
+    const lockTelemetryName = this.isUniversalLogin ? 'lock.js-ulp' : 'lock.js';
+    const auth0jsTelemetryName = this.isUniversalLogin ? 'auth0-js-ulp' : 'auth0-js';
+    const default_telemetry = ulpTelemetry
+      ? {
+          ...ulpTelemetry,
+          env: {
+            ...ulpTelemetry.env,
+            [lockTelemetryName]: __VERSION__,
+            [auth0jsTelemetryName]: auth0.version.raw
+          }
+        }
+      : {
+          name: lockTelemetryName,
+          version: __VERSION__,
+          env: {
+            [auth0jsTelemetryName]: auth0.version.raw
+          }
+        };
 
     var state = opts.state;
     if (opts.params && opts.params.state) {
@@ -46,7 +62,10 @@ class Auth0APIClient {
       plugins: opts.plugins || [new CordovaAuth0Plugin()],
       overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
-      _telemetryInfo: opts._telemetryInfo || default_telemetry,
+      _telemetryInfo: {
+        ...default_telemetry,
+        env: { ...default_telemetry.env, ...opts._telemetryInfo }
+      },
       state,
       nonce,
       scope

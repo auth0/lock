@@ -16,7 +16,14 @@ Array [
 exports[`Auth0APIClient init with overrides forwards options to WebAuth 1`] = `
 Object {
   "_sendTelemetry": true,
-  "_telemetryInfo": Object {},
+  "_telemetryInfo": Object {
+    "env": Object {
+      "auth0-js": "9.10.1",
+      "newOption": true,
+    },
+    "name": "lock.js",
+    "version": "11.14.1",
+  },
   "audience": "foo",
   "clientID": "cid",
   "domain": "me.auth0.com",
@@ -37,6 +44,42 @@ Object {
   "responseType": "code",
   "scope": "custom_scope",
   "state": "state",
+}
+`;
+
+exports[`Auth0APIClient init with overrides uses telemetry set in the \`auth0Client\` query param if available 1`] = `
+Object {
+  "_sendTelemetry": true,
+  "_telemetryInfo": Object {
+    "env": Object {
+      "auth0-js": "9.10.1",
+      "envOverride": true,
+      "lock.js": "11.14.1",
+    },
+    "name": "test-sdk",
+    "version": "1.0.0",
+  },
+  "audience": "foo",
+  "clientID": "cid",
+  "domain": "me.auth0.com",
+  "leeway": 60,
+  "nonce": undefined,
+  "overrides": null,
+  "plugins": Array [
+    CordovaPlugin {
+      "extensibilityPoints": Array [
+        "popup.authorize",
+        "popup.getPopupHandler",
+      ],
+      "version": "9.10.1",
+      "webAuth": null,
+    },
+  ],
+  "redirectUri": "//localhost:8080/login/callback",
+  "responseMode": "query",
+  "responseType": "code",
+  "scope": undefined,
+  "state": undefined,
 }
 `;
 
