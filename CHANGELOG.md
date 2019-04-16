@@ -1,5 +1,20 @@
 # Change Log
 
+## [v11.15.0](https://github.com/auth0/lock/tree/v11.15.0) (2019-04-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.14.1...v11.15.0)
+
+
+**Changed**
+- Changes german translation of 'sign up' from 'Anmelden' to 'Registrieren; [\#1627](https://github.com/auth0/lock/pull/1627) ([PapaMufflon](https://github.com/PapaMufflon))
+- Update telemetry format and rules [\#1624](https://github.com/auth0/lock/pull/1624) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix layout when using big string for terms [\#1631](https://github.com/auth0/lock/pull/1631) ([luisrudge](https://github.com/luisrudge))
+- Use new facebook icon [\#1630](https://github.com/auth0/lock/pull/1630) ([luisrudge](https://github.com/luisrudge))
+- Added `login_required` to unhandled authorization errors [\#1629](https://github.com/auth0/lock/pull/1629) ([benhamiltonpro](https://github.com/benhamiltonpro))
+- Fix error message overflow [\#1628](https://github.com/auth0/lock/pull/1628) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.14.1](https://github.com/auth0/lock/tree/v11.14.1) (2019-03-18)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.14.0...v11.14.1)
 
