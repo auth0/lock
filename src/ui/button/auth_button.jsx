@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const AuthButton = props => {
-  const { disabled, isBig, label, onClick, strategy, icon, primaryColor, foregroundColor } = props;
+  const { disabled, label, onClick, strategy, icon, primaryColor, foregroundColor } = props;
 
-  let className = 'auth0-lock-social-button';
-  if (isBig) className += ' auth0-lock-social-big-button';
+  let className = 'auth0-lock-social-button auth0-lock-social-big-button';
 
   const backgroundStyle = primaryColor ? { backgroundColor: primaryColor } : {};
   const foregroundStyle = foregroundColor ? { color: foregroundColor } : {};
@@ -30,7 +29,6 @@ const AuthButton = props => {
 
 AuthButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
-  isBig: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   strategy: PropTypes.string.isRequired,
@@ -40,8 +38,7 @@ AuthButton.propTypes = {
 };
 
 AuthButton.defaultProps = {
-  disabled: false,
-  isBig: true
+  disabled: false
 };
 
 export default AuthButton;

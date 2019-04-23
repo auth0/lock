@@ -50,8 +50,7 @@ describe('LoginScreen', () => {
 
     jest.mock('engine/classic', () => ({
       hasOnlyClassicConnections: () => false,
-      isSSOEnabled: () => false,
-      useBigSocialButtons: () => false
+      isSSOEnabled: () => false
     }));
 
     jest.mock('i18n', () => ({ str: (_, keys) => keys.join(',') }));

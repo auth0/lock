@@ -10,7 +10,6 @@ const getComponent = () => require('field/social/social_buttons_pane').default;
 describe('SocialButtonsPane', () => {
   const defaultProps = {
     lock: {},
-    bigButtons: false,
     labelFn: (...keys) => keys.join(','),
     showLoading: false,
     signUp: false,
@@ -46,10 +45,6 @@ describe('SocialButtonsPane', () => {
   it('renders correctly', () => {
     const SocialButtonsPane = getComponent();
     expectComponent(<SocialButtonsPane {...defaultProps} />).toMatchSnapshot();
-  });
-  it('renders big buttons when bigButtons === true', () => {
-    const SocialButtonsPane = getComponent();
-    expectComponent(<SocialButtonsPane {...defaultProps} bigButtons />).toMatchSnapshot();
   });
   it('disables social buttons when disabled === true', () => {
     const SocialButtonsPane = getComponent();

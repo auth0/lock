@@ -6,22 +6,28 @@ var CONTAINERS = {
 var currentLockContainerSelector;
 var remember;
 
-function bindEvents () {
+function bindEvents() {
   hljs.configure({
     classPrefix: ''
   });
 
-  $('form input, form textarea').on('change keydown keypress keyup mousedown click mouseup', function() {
-    updateShownLock();
-  });
+  $('form input, form textarea').on(
+    'change keydown keypress keyup mousedown click mouseup',
+    function() {
+      updateShownLock();
+    }
+  );
 
   $('form select').on('change', function() {
     updateShownLock();
   });
 
-  $('input[name=container]').on('change keydown keypress keyup mousedown click mouseup', function() {
+  $('input[name=container]').on(
+    'change keydown keypress keyup mousedown click mouseup',
+    function() {
       updateTargetContainer($(this).val());
-  });
+    }
+  );
 
   $('#show-lock').on('click', showLockHandler);
 
@@ -38,7 +44,7 @@ function bindEvents () {
   // a location, ESC will close the selector. So, we use the close button as a
   // flag.
   $('body').on('keydown', function(ev) {
-    if(ev.keyCode === 27 && $('.auth0-lock-opened .auth0-lock-close-button').length) {
+    if (ev.keyCode === 27 && $('.auth0-lock-opened .auth0-lock-close-button').length) {
       showLockHandler();
     }
   });
@@ -51,81 +57,88 @@ function updateShownLock() {
 }
 
 function showLockHandler(ev) {
-    if(ev) {
-      ev.preventDefault();
+  if (ev) {
+    ev.preventDefault();
+  }
+
+  var method = $('[name="method"]').val();
+  var clientID = $('[name="clientID"]').val();
+  var domain = $('[name="domain"]').val();
+
+  try {
+    if ($('.auth0-lock').length) {
+      window.lock.close();
     }
 
-    var method = $('[name="method"]').val();
-    var clientID = $('[name="clientID"]').val();
-    var domain = $('[name="domain"]').val();
+    window.lock = new Auth0LockPasswordless(clientID, domain);
 
-    try {
-      if ($('.auth0-lock').length) {
-        window.lock.close();
-      }
+    var options = getOptions();
 
-      window.lock = new Auth0LockPasswordless(clientID, domain);
+    if (ev) {
+      delete options.container;
+    } else {
+      options.container = 'container';
+    }
 
-      var options = getOptions();
-
-      if (ev) {
-        delete options.container;
-      } else {
-        options.container = "container";
-      }
-
-      // Execute Lock with options
-      lock[method](options, function (err, profile, id_token, access_token, state, refresh_token) {
-        showContainer(CONTAINERS.OUTPUT);
-        $('#output code').removeClass('text-danger');
-        $('#output code').text('');
-
-        if (err) {
-          $('#output code').removeClass('text-danger');
-          $('#output code').text('Lock encountered an error' + (err.description ? ':\n' + err.description : '.'));
-          return;
-        }
-
-        if (method === 'magiclink') {
-          $('#output code').text('Email sent to ' + profile);
-        } else {
-          $('#output code').text('{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}');
-          hljs.highlightBlock(outputContainer.get(0));
-        }
-      });
-
-      setTimeout(function () {
-        remember.except('.auth0-lock-input');
-      }, 0);
-
-
-    } catch (e) {
-      $('#output code').text(e.message);
-      $('#output code').addClass('text-danger');
+    // Execute Lock with options
+    lock[method](options, function(err, profile, id_token, access_token, state, refresh_token) {
       showContainer(CONTAINERS.OUTPUT);
-    }
-}
+      $('#output code').removeClass('text-danger');
+      $('#output code').text('');
 
-function showContainer (container) {
-  switch (container) {
-  case CONTAINERS.CODE: $('#output-tabs a[href="#lock-code-panel"]').tab('show'); break;
-  case CONTAINERS.OUTPUT: $('#output-tabs a[href="#output-panel"]').tab('show'); break;
-  default: break;
+      if (err) {
+        $('#output code').removeClass('text-danger');
+        $('#output code').text(
+          'Lock encountered an error' + (err.description ? ':\n' + err.description : '.')
+        );
+        return;
+      }
+
+      if (method === 'magiclink') {
+        $('#output code').text('Email sent to ' + profile);
+      } else {
+        $('#output code').text(
+          '{\n  access_token: "' + access_token + '",\n  id_token: "' + id_token + '"\n}'
+        );
+        hljs.highlightBlock(outputContainer.get(0));
+      }
+    });
+
+    setTimeout(function() {
+      remember.except('.auth0-lock-input');
+    }, 0);
+  } catch (e) {
+    $('#output code').text(e.message);
+    $('#output code').addClass('text-danger');
+    showContainer(CONTAINERS.OUTPUT);
   }
 }
 
-function updateTargetContainer (selector) {
-  var sanitizedSelector = (selector ? selector.replace("#", "") : '') || 'container';
+function showContainer(container) {
+  switch (container) {
+    case CONTAINERS.CODE:
+      $('#output-tabs a[href="#lock-code-panel"]').tab('show');
+      break;
+    case CONTAINERS.OUTPUT:
+      $('#output-tabs a[href="#output-panel"]').tab('show');
+      break;
+    default:
+      break;
+  }
+}
+
+function updateTargetContainer(selector) {
+  var sanitizedSelector = (selector ? selector.replace('#', '') : '') || 'container';
   $('.lock-container').prop('id', sanitizedSelector);
   currentLockContainerSelector = sanitizedSelector;
 }
 
-function updateLockInitializationCode () {
-   $('#lock-code code').text(getLockInitializationCode());
-   hljs.highlightBlock($('#lock-code code').get(0));
+function updateLockInitializationCode() {
+  $('#lock-code code').text(getLockInitializationCode());
+  hljs.highlightBlock($('#lock-code code').get(0));
 }
 
-function getLockInitializationCode () {
+function getLockInitializationCode() {
   var template = $('#lock-init-template').val();
   var templateValues = {};
 
@@ -137,7 +150,7 @@ function getLockInitializationCode () {
   return Mustache.render(template, templateValues);
 }
 
-function getOptions (container) {
+function getOptions(container) {
   var options = {};
 
   // Strings
@@ -160,35 +173,67 @@ function getOptions (container) {
   options.loginAfterSignUp = !!$('[name="loginAfterSignUp"]:checked').val();
   options.popup = !!$('[name="popup"]:checked').val();
   options.rememberLastLogin = !!$('[name="rememberLastLogin"]:checked').val();
-  options.socialBigButtons = !!$('[name="socialBigButtons"]:checked').val();
 
   // Textareas + parsings
-  try { options.dict = JSON.parse($('[name="dict"]').val()); } catch (e) {}
-  try { options.authParams = JSON.parse($('[name="authParams"]').val() ); } catch (e) {}
-  try { options.popupOptions = JSON.parse($('[name="popupOptions"]').val() ); } catch (e) {}
-  try { options.socialConnections = JSON.parse($('[name="socialConnections"]').val()); } catch (e) {}
+  try {
+    options.dict = JSON.parse($('[name="dict"]').val());
+  } catch (e) {}
+  try {
+    options.authParams = JSON.parse($('[name="authParams"]').val());
+  } catch (e) {}
+  try {
+    options.popupOptions = JSON.parse($('[name="popupOptions"]').val());
+  } catch (e) {}
+  try {
+    options.socialConnections = JSON.parse($('[name="socialConnections"]').val());
+  } catch (e) {}
 
   options = removeDefaultOptions(options);
   return options;
 }
 
 function removeKeys(object, keys, evalFunction) {
-  $.each(keys, function (i, key) {
+  $.each(keys, function(i, key) {
     if (evalFunction(object[key])) {
       delete object[key];
     }
   });
 }
 
-function removeDefaultOptions (options) {
+function removeDefaultOptions(options) {
   // remove keys whit default value true
-  removeKeys(options, ['closable', 'focusInput', 'gravatar', 'loginAfterSignUp', 'rememberLastLogin'], function (value) { return value === true; });
+  removeKeys(
+    options,
+    ['closable', 'focusInput', 'gravatar', 'loginAfterSignUp', 'rememberLastLogin'],
+    function(value) {
+      return value === true;
+    }
+  );
 
   // remove keys whit default value false
-  removeKeys(options, ['autoclose', 'disableWarnings', 'forceJSONP'], function (value) { return value === false; });
+  removeKeys(options, ['autoclose', 'disableWarnings', 'forceJSONP'], function(value) {
+    return value === false;
+  });
 
   // remove keys whit default value empty
-  removeKeys(options, ['container', 'databaseConnection', 'socialConnections', 'dict', 'icon', 'primaryColor', 'authParams', 'callbackURL', 'defaultLocation', 'usernameStyle'], function (value) { return !value; });
+  removeKeys(
+    options,
+    [
+      'container',
+      'databaseConnection',
+      'socialConnections',
+      'dict',
+      'icon',
+      'primaryColor',
+      'authParams',
+      'callbackURL',
+      'defaultLocation',
+      'usernameStyle'
+    ],
+    function(value) {
+      return !value;
+    }
+  );
 
   if (options.defaultLocation && options.defaultLocation.toLowerCase() === 'us') {
     delete options.defaultLocation;
@@ -197,7 +242,7 @@ function removeDefaultOptions (options) {
   return options;
 }
 
-function renderAuthenticationSuccessMessage (authResponse) {
+function renderAuthenticationSuccessMessage(authResponse) {
   var template = $('#authentication-success-template').val();
   var templateValues = {};
 
@@ -213,7 +258,7 @@ function renderAuthenticationSuccessMessage (authResponse) {
   showContainer(CONTAINERS.OUTPUT);
 }
 
-function tryDisplayAuthenticatedFeedback () {
+function tryDisplayAuthenticatedFeedback() {
   var clientID = $('[name="clientID"]').val();
   var domain = $('[name="domain"]').val();
 
@@ -237,13 +282,13 @@ $(function() {
   bindEvents();
   showContainer(CONTAINERS.CODE);
 
-  setTimeout(function () {
+  setTimeout(function() {
     updateLockInitializationCode();
     showLockHandler();
   }, 500);
 
   remember.except('input[name=container]');
-  $("[rel=tooltip]").tooltip({ placement: 'right'});
+  $('[rel=tooltip]').tooltip({ placement: 'right' });
 
   if (window.location.hash) {
     setTimeout(tryDisplayAuthenticatedFeedback, 500);
