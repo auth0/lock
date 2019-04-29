@@ -4,15 +4,13 @@ import React from 'react';
 const AuthButton = props => {
   const { disabled, label, onClick, strategy, icon, primaryColor, foregroundColor } = props;
 
-  let className = 'auth0-lock-social-button auth0-lock-social-big-button';
-
   const backgroundStyle = primaryColor ? { backgroundColor: primaryColor } : {};
   const foregroundStyle = foregroundColor ? { color: foregroundColor } : {};
   const iconStyle = icon ? { backgroundImage: `url('${icon}')` } : {};
 
   return (
     <button
-      className={className}
+      className="auth0-lock-social-button auth0-lock-social-big-button"
       data-provider={strategy}
       disabled={disabled}
       onClick={onClick}
