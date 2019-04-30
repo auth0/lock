@@ -7,12 +7,9 @@ import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
-import { processSocialOptions } from '../connection/social/index';
 import { clientConnections, hasFreeSubscription } from './client/index';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
-
-const { tset: tsetSocial } = dataFns(['social']);
 
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = init(
@@ -157,9 +154,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable
-      ? true
-      : !!options.closable;
+    : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -577,11 +572,6 @@ export function overrideOptions(m, opts) {
 
   if (opts.allowedConnections) {
     m = tset(m, 'allowedConnections', Immutable.fromJS(opts.allowedConnections));
-  }
-
-  if (opts.socialButtonStyle) {
-    let curated = processSocialOptions(opts);
-    m = tsetSocial(m, 'socialButtonStyle', curated.socialButtonStyle);
   }
 
   if (opts.flashMessage) {

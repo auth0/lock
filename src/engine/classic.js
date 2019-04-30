@@ -28,7 +28,6 @@ import {
   quickAuthConnection
 } from '../connection/enterprise';
 import { defaultDirectory, defaultDirectoryName } from '../core/tenant';
-import { initSocial, useBigButtons } from '../connection/social/index';
 import { setEmail } from '../field/email';
 import { setUsername } from '../field/username';
 import * as l from '../core/index';
@@ -58,10 +57,6 @@ export function usernameStyle(m) {
 
 export function hasOnlyClassicConnections(m, type = undefined, ...strategies) {
   return l.hasOnlyConnections(m, type, ...strategies) && !l.hasSomeConnections(m, 'passwordless');
-}
-
-export function useBigSocialButtons(m) {
-  return useBigButtons(m, hasOnlyClassicConnections(m, 'social') ? 5 : 3);
 }
 
 function validateAllowedConnections(m) {
@@ -138,7 +133,6 @@ class Classic {
   };
 
   didInitialize(model, options) {
-    model = initSocial(model, options);
     model = initDatabase(model, options);
     model = initEnterprise(model, options);
 
