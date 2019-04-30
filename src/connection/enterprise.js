@@ -30,7 +30,8 @@ export const STRATEGIES = {
   pingfederate: 'Ping Federate',
   samlp: 'SAML',
   sharepoint: 'SharePoint Apps',
-  waad: 'Windows Azure AD'
+  waad: 'Windows Azure AD',
+  oidc: 'OpenID Connect'
 };
 
 export function initEnterprise(m, opts) {
