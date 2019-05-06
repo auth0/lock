@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.16.0](https://github.com/auth0/lock/tree/v11.16.0) (2019-05-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.15.0...v11.16.0)
+
+
+**Changed**
+- Remove socialButtonStyle option to use small icons [\#1637](https://github.com/auth0/lock/pull/1637) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix IE11 height [\#1641](https://github.com/auth0/lock/pull/1641) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.15.0](https://github.com/auth0/lock/tree/v11.15.0) (2019-04-16)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.14.1...v11.15.0)
 
