@@ -32,7 +32,6 @@ exports[`SocialButtonsPane disables social buttons when disabled === true 1`] = 
       data-disabled={true}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
@@ -43,40 +42,6 @@ exports[`SocialButtonsPane disables social buttons when disabled === true 1`] = 
       data-disabled={true}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections2-strategy"
-    />
-  </div>
-</div>
-`;
-
-exports[`SocialButtonsPane renders big buttons when bigButtons === true 1`] = `
-<div
-  className="auth-lock-social-buttons-pane"
->
-  <div
-    className="auth0-lock-social-buttons-container"
-  >
-    <div
-      data-__type="auth_button"
-      data-disabled={false}
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-isBig={true}
-      data-label="loginWithLabel,authButtonsTheme-displayName"
-      data-onClick={[Function]}
-      data-primaryColor="authButtonsTheme-primaryColor"
-      data-strategy="socialConnections1-strategy"
-    />
-    <div
-      data-__type="auth_button"
-      data-disabled={false}
-      data-foregroundColor="authButtonsTheme-foregroundColor"
-      data-icon="authButtonsTheme-icon"
-      data-isBig={true}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
@@ -98,7 +63,6 @@ exports[`SocialButtonsPane renders correctly 1`] = `
       data-disabled={false}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
@@ -109,7 +73,6 @@ exports[`SocialButtonsPane renders correctly 1`] = `
       data-disabled={false}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
@@ -134,7 +97,6 @@ exports[`SocialButtonsPane shows header when instructions are available 1`] = `
       data-disabled={false}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
@@ -145,7 +107,6 @@ exports[`SocialButtonsPane shows header when instructions are available 1`] = `
       data-disabled={false}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
@@ -167,7 +128,6 @@ exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
       data-disabled={false}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"
@@ -178,7 +138,6 @@ exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
       data-disabled={false}
       data-foregroundColor="authButtonsTheme-foregroundColor"
       data-icon="authButtonsTheme-icon"
-      data-isBig={false}
       data-label="loginWithLabel,authButtonsTheme-displayName"
       data-onClick={[Function]}
       data-primaryColor="authButtonsTheme-primaryColor"

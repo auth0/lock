@@ -5,8 +5,7 @@ import { logIn, checkSession, skipQuickAuth } from '../../quick-auth/actions';
 import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
-import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
-import { authButtonsTheme } from '../../connection/social/index';
+import { STRATEGIES as SOCIAL_STRATEGIES, authButtonsTheme } from '../../connection/social/index';
 
 // TODO: handle this from CSS
 function icon(strategy) {

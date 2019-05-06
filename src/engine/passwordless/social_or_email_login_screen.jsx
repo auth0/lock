@@ -8,20 +8,13 @@ import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
 import { requestPasswordlessEmail } from '../../connection/passwordless/actions';
 import { renderEmailSentConfirmation } from '../../connection/passwordless/email_sent_confirmation';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
-import { useBigButtons } from '../../connection/social/index';
 import * as l from '../../core/index';
 
 import SignUpTerms from '../../connection/database/sign_up_terms';
 
-const useSocialBigButtons = m => {
-  const limit = l.connections(m, 'passwordless', 'email').count() === 0 ? 5 : 3;
-  return useBigButtons(m, limit);
-};
-
 const Component = ({ i18n, model }) => {
   const social = l.hasSomeConnections(model, 'social') ? (
     <SocialButtonsPane
-      bigButtons={useSocialBigButtons(model)}
       instructions={i18n.html('socialLoginInstructions')}
       labelFn={i18n.str}
       lock={model}
