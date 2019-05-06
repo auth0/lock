@@ -7,6 +7,8 @@
 **Changed**
 - Remove socialButtonStyle option to use small icons [\#1637](https://github.com/auth0/lock/pull/1637) ([luisrudge](https://github.com/luisrudge))
 
+*From this release on, the option to display social connections in small styled buttons is no longer available due to branding compliance reasons. All the social connections will now be displayed as large styled buttons.*
+
 **Fixed**
 - Fix IE11 height [\#1641](https://github.com/auth0/lock/pull/1641) ([luisrudge](https://github.com/luisrudge))
 
