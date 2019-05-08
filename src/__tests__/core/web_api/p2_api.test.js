@@ -38,7 +38,7 @@ describe('Auth0APIClient', () => {
     require('core/web_api/helper').getVersion = () => 'lock.version';
   });
   describe('init', () => {
-    describe.only('with overrides', () => {
+    describe('with overrides', () => {
       it('always uses telemetry set in the `auth0Client` query param and inside the ULP', () => {
         const telemetryIn = { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } };
         setURL(`https://me.auth0.com/authorize?auth0Client=${btoa(JSON.stringify(telemetryIn))}`);
