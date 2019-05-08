@@ -144,3 +144,7 @@ export function trimAuthParams(params = {}) {
   });
   return p;
 }
+
+export function getVersion() {
+  return __VERSION__;
+}
