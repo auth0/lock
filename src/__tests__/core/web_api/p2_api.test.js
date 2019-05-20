@@ -1,5 +1,4 @@
 import { setURL } from 'testUtils';
-import { watch } from 'fs';
 
 jest.mock('auth0-js');
 
@@ -35,31 +34,48 @@ const assertCallWithCallback = (mock, callbackFunction) => {
 describe('Auth0APIClient', () => {
   beforeEach(() => {
     jest.resetModules();
+    require('auth0-js').version.raw = 'a0js.version';
+    require('core/web_api/helper').getVersion = () => 'lock.version';
   });
   describe('init', () => {
     describe('with overrides', () => {
-      it('uses telemetry set in the `auth0Client` query param if available', () => {
+      it('always uses telemetry set in the `auth0Client` query param and inside the ULP', () => {
         const telemetryIn = { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } };
-        setURL(`https://auth.myapp.com/authorize?auth0Client=${btoa(JSON.stringify(telemetryIn))}`);
+        setURL(`https://me.auth0.com/authorize?auth0Client=${btoa(JSON.stringify(telemetryIn))}`);
         const options = {
           audience: 'foo',
           redirectUrl: '//localhost:8080/login/callback',
           responseMode: 'query',
           responseType: 'code',
-          leeway: 60
+          leeway: 60,
+          _telemetryInfo: { ignored: true }
         };
         getClient(options);
         const mock = getAuth0ClientMock();
-        expect(mock.WebAuth.mock.calls[0][0]).toMatchSnapshot();
+        expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo).toMatchSnapshot();
       });
-      it.only('uses default telemetry key when outside the ULP', () => {
+      it('overrides telemetry when outside the ULP', () => {
+        setURL(`https://auth.myapp.com/authorize`);
+        const options = {
+          audience: 'foo',
+          redirectUrl: '//localhost:8080/login/callback',
+          responseMode: 'query',
+          responseType: 'code',
+          leeway: 60,
+          _telemetryInfo: { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } }
+        };
+        getClient(options);
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo).toMatchSnapshot();
+      });
+      it('uses default telemetry key when outside the ULP', () => {
         setURL(`https://auth.myapp.com/authorize`);
         getClient();
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js');
         expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain('auth0-js');
       });
-      it.only('uses different telemetry key when inside the ULP', () => {
+      it('uses different telemetry key when inside the ULP', () => {
         setURL('https://me.auth0.com/');
         getClient();
         const mock = getAuth0ClientMock();
@@ -86,7 +102,6 @@ describe('Auth0APIClient', () => {
               name: 'ExamplePlugin'
             }
           ],
-          _telemetryInfo: { newOption: true },
           params: {
             nonce: 'nonce',
             state: 'state',
