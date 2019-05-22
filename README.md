@@ -23,7 +23,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.12.1/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.16.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -321,13 +321,6 @@ var options = {
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
 - **sso {Boolean}**:  Determines whether Single Sign-On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
 - **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social connection for authentication.
-
-#### Social options
-
-- **socialButtonStyle {String}**: Determines the size of the buttons for the social providers. Possible values are `"big"` and `"small"`. The default style depends on the connections that are available:
-  - If only social connections are available, it will default to `"big"` when there are 5 connections at most, and default to `"small"` otherwise.
-  - If connections from types other than social are also available, it will default to `"big"` when there are 3 social connections at most, and default to `"small"` otherwise.
-  - Keep in mind that some branding guidelines don’t allow the use of icon by itself to represent sign in. If you want to be compliant with those guidelines, make sure you pick the right style for your application.
 
 #### Database options
 

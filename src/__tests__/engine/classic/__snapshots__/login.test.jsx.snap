@@ -172,7 +172,6 @@ exports[`LoginScreen renders SocialButtonsPane when has social connections 1`] =
   <div>
     <div
       data-__type="social_buttons_pane"
-      data-bigButtons={false}
       data-instructions="socialLoginInstructions"
       data-labelFn={[Function]}
       data-lock="model"

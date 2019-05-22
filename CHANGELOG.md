@@ -1,5 +1,81 @@
 # Change Log
 
+## [v11.16.0](https://github.com/auth0/lock/tree/v11.16.0) (2019-05-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.15.0...v11.16.0)
+
+
+**Changed**
+- Remove socialButtonStyle option to use small icons [\#1637](https://github.com/auth0/lock/pull/1637) ([luisrudge](https://github.com/luisrudge))
+
+*From this release on, the option to display social connections in small styled buttons is no longer available due to branding compliance reasons. All the social connections will now be displayed as large styled buttons.*
+
+**Fixed**
+- Fix IE11 height [\#1641](https://github.com/auth0/lock/pull/1641) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.15.0](https://github.com/auth0/lock/tree/v11.15.0) (2019-04-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.14.1...v11.15.0)
+
+
+**Changed**
+- Changes german translation of 'sign up' from 'Anmelden' to 'Registrieren; [\#1627](https://github.com/auth0/lock/pull/1627) ([PapaMufflon](https://github.com/PapaMufflon))
+- Update telemetry format and rules [\#1624](https://github.com/auth0/lock/pull/1624) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix layout when using big string for terms [\#1631](https://github.com/auth0/lock/pull/1631) ([luisrudge](https://github.com/luisrudge))
+- Use new facebook icon [\#1630](https://github.com/auth0/lock/pull/1630) ([luisrudge](https://github.com/luisrudge))
+- Added `login_required` to unhandled authorization errors [\#1629](https://github.com/auth0/lock/pull/1629) ([benhamiltonpro](https://github.com/benhamiltonpro))
+- Fix error message overflow [\#1628](https://github.com/auth0/lock/pull/1628) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.14.1](https://github.com/auth0/lock/tree/v11.14.1) (2019-03-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.14.0...v11.14.1)
+
+
+**Fixed**
+- Fix/avatar crop header mobile [\#1621](https://github.com/auth0/lock/pull/1621) ([luisrudge](https://github.com/luisrudge))
+- Improve greek translation [\#1614](https://github.com/auth0/lock/pull/1614) ([esarafianou](https://github.com/esarafianou))
+- Upgrade Auth0.js to 9.10.1
+
+
+## [v11.14.0](https://github.com/auth0/lock/tree/v11.14.0) (2019-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.2...v11.14.0)
+
+
+**Changed**
+- Upgrade Auth0.js to trim email, username and phoneNumber on every request [\#1596](https://github.com/auth0/lock/pull/1596) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.13.2](https://github.com/auth0/lock/tree/v11.13.2) (2019-01-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.1...v11.13.2)
+
+
+**Fixed**
+- Fix lock center position with scroll across browsers [\#1594](https://github.com/auth0/lock/pull/1594) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.13.1](https://github.com/auth0/lock/tree/v11.13.1) (2019-01-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.0...v11.13.1)
+
+
+**Fixed**
+- Upgrade Auth0.js with fix for storage inside the Hosted Login Page [\#1592](https://github.com/auth0/lock/pull/1592) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.13.0](https://github.com/auth0/lock/tree/v11.13.0) (2019-01-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.1...v11.13.0)
+
+
+**Added**
+- Adding terms for passwordless [\#1424](https://github.com/auth0/lock/pull/1424) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Don't use storage when inside the Universal Login Page (Auth0.js update) [\#1587](https://github.com/auth0/lock/pull/1587) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed missing scroll issue for sign up [\#1566](https://github.com/auth0/lock/pull/1566) ([degrammer](https://github.com/degrammer))
+
+
 ## [v11.12.1](https://github.com/auth0/lock/tree/v11.12.1) (2018-11-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.12.0...v11.12.1)
 

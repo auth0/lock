@@ -45,8 +45,7 @@ describe('SignUpScreen', () => {
       isSSOEnabled: (model, options) => {
         expect(options.emailFirst).toBe(true);
         return false;
-      },
-      useBigSocialButtons: () => false
+      }
     }));
     jest.mock('core/signed_in_confirmation', () => ({
       renderSignedInConfirmation: jest.fn()

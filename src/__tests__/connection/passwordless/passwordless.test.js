@@ -51,6 +51,18 @@ describe('passwordless connection', () => {
         });
         expectMockToMatch(mockFns.initNS, 1);
       });
+      it('with mustAcceptTerms:true when opts.mustAcceptTerms is true', () => {
+        initPasswordless(null, {
+          mustAcceptTerms: true
+        });
+        expectMockToMatch(mockFns.initNS, 1);
+      });
+      it('with mustAcceptTerms:false when opts.mustAcceptTerms is false', () => {
+        initPasswordless(null, {
+          mustAcceptTerms: false
+        });
+        expectMockToMatch(mockFns.initNS, 1);
+      });
     });
     it('should load default location via options.defaultLocation', () => {
       initPasswordless(null, {
@@ -69,6 +81,25 @@ describe('passwordless connection', () => {
 
       successFn('model', 'en');
       expectMockToMatch(require('field/phone_number').initLocation, 1);
+    });
+  });
+  describe('mustAcceptTerms()', () => {
+    it('should return `mustAcceptTerms`', () => {
+      require('connection/passwordless/index').mustAcceptTerms('model');
+      expectMockToMatch(mockFns.get, 1);
+    });
+  });
+
+  describe('toggleTermsAcceptance()', () => {
+    it('should tset `termsAccepted` to false when `termsAccepted` is true', () => {
+      mockFns.get.mockReturnValue(true);
+      require('connection/passwordless/index').toggleTermsAcceptance('model');
+      expectMockToMatch(mockFns.tset, 1);
+    });
+    it('should tset `termsAccepted` to true when `termsAccepted` is false', () => {
+      mockFns.get.mockReturnValue(false);
+      require('connection/passwordless/index').toggleTermsAcceptance('model');
+      expectMockToMatch(mockFns.tset, 1);
     });
   });
 });

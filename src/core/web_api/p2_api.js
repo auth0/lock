@@ -1,11 +1,13 @@
 import auth0 from 'auth0-js';
+import qs from 'qs';
 import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
 import {
   normalizeError,
   loginCallback,
   normalizeAuthParams,
   webAuthOverrides,
-  trimAuthParams
+  trimAuthParams,
+  getVersion
 } from './helper';
 
 class Auth0APIClient {
@@ -16,12 +18,7 @@ class Auth0APIClient {
     this.domain = domain;
     this.isUniversalLogin = window.location.host === domain;
     this._enableIdPInitiatedLogin = !!(opts._enableIdPInitiatedLogin || opts._enableImpersonation);
-
-    const default_telemetry = {
-      name: 'lock.js',
-      version: __VERSION__,
-      lib_version: auth0.version
-    };
+    const telemetry = this.getTelemetryInfo(opts._telemetryInfo);
 
     var state = opts.state;
     if (opts.params && opts.params.state) {
@@ -46,7 +43,7 @@ class Auth0APIClient {
       plugins: opts.plugins || [new CordovaAuth0Plugin()],
       overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
-      _telemetryInfo: opts._telemetryInfo || default_telemetry,
+      _telemetryInfo: telemetry,
       state,
       nonce,
       scope
@@ -62,6 +59,50 @@ class Auth0APIClient {
     if (this.isUniversalLogin && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;
     }
+  }
+  getTelemetryInfo(telemetryOverride) {
+    let telemetry;
+    const { auth0Client } = qs.parse(window.location.search.substr(1));
+    let ulpTelemetry = auth0Client && JSON.parse(atob(auth0Client));
+    if (this.isUniversalLogin && ulpTelemetry) {
+      telemetry = {
+        ...ulpTelemetry,
+        env: {
+          ...ulpTelemetry.env,
+          ['lock.js-ulp']: getVersion(),
+          ['auth0-js-ulp']: auth0.version.raw
+        }
+      };
+    }
+    if (this.isUniversalLogin && !ulpTelemetry) {
+      telemetry = {
+        name: 'lock.js-ulp',
+        version: getVersion(),
+        env: {
+          ['auth0-js-ulp']: auth0.version.raw
+        }
+      };
+    }
+    if (!this.isUniversalLogin && telemetryOverride) {
+      telemetry = {
+        ...telemetryOverride,
+        env: {
+          ...telemetryOverride.env,
+          ['lock.js']: getVersion(),
+          ['auth0-js']: auth0.version.raw
+        }
+      };
+    }
+    if (!telemetry) {
+      telemetry = {
+        name: 'lock.js',
+        version: getVersion(),
+        env: {
+          ['auth0-js']: auth0.version.raw
+        }
+      };
+    }
+    return telemetry;
   }
 
   logIn(options, authParams, cb) {

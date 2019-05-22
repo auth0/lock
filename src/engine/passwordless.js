@@ -11,7 +11,6 @@ import {
   isSendLink,
   passwordlessStarted
 } from '../connection/passwordless/index';
-import { initSocial } from '../connection/social/index';
 import { isDone, isSuccess } from '../sync';
 import * as l from '../core/index';
 import { hasSkippedQuickAuth } from '../quick_auth';
@@ -32,7 +31,6 @@ const setPrefill = m => {
 
 class Passwordless {
   didInitialize(m, opts) {
-    m = initSocial(m, opts);
     m = initPasswordless(m, opts);
 
     return m;

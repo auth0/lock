@@ -58,7 +58,7 @@ export default {
   enterpriseActiveLoginInstructions: '请输入您的企业账号 %s。',
   failedLabel: '失败!',
   forgotPasswordAction: '忘记您的密码？',
-  forgotPasswordInstructions: '请输入您的邮箱，我们将为你发送重置密码的邮件。',
+  forgotPasswordInstructions: '请输入您的邮箱，我们将为您发送重置密码的邮件。',
   forgotPasswordSubmitLabel: '发电子邮件',
   invalidErrorHint: '错误',
   lastLoginInstructions: '上次登录的信息为',
@@ -112,7 +112,7 @@ export default {
   mfaLoginInstructions: '请输入您手机应用上显示的验证码。',
   mfaSubmitLabel: '登录',
   mfaCodeErrorHint: '使用 %d 位数字',
-  forgotPasswordTitle: '重置你的密码',
+  forgotPasswordTitle: '重置您的密码',
   signUpTitle: '注册',
   showPassword: '显示密码'
 };
