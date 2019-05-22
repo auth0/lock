@@ -31,7 +31,9 @@ export default {
       'lock.mfa_invalid_code': 'Forkert kode. Prøv igen.',
       session_missing:
         'Kunne ikke fuldføre din godkendelsesanmodning. Prøv igen efter at have lukket alle åbne dialoger',
-      'hrd.not_matching_email': 'Brug venligst din virksomheds-e-mail for at logge ind.'
+      'hrd.not_matching_email': 'Brug venligst din virksomheds-e-mail for at logge ind.',
+      too_many_requests:
+        'I øjeblikket modtager vi flere anmodninger end vi er komfortable med! For at prøve din anmodning igen, kom tilbage om et øjeblik og genindlæs denne side.'
     },
     passwordless: {
       'bad.email': 'Denne e-mail er ugyldig',

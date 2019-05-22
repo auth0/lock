@@ -33,7 +33,9 @@ export default {
       session_missing:
         'Zahtjev za provjerom autentičnosti nije se mogao završiti. Pokušajte ponovno nakon što zatvorite sve otvorene dijaloške okvire.',
       'hrd.not_matching_email':
-        'Upotrijebite svoju poslovnu adresu elektroničke pošte kako biste se prijavili.'
+        'Upotrijebite svoju poslovnu adresu elektroničke pošte kako biste se prijavili.',
+      too_many_requests:
+        'Trenutno primamo više zahtjeva nego što nam je zadovoljstvo! Da biste ponovno isprobali svoj zahtjev, vratite se za kratko vrijeme i ponovo učitajte ovu stranicu.'
     },
     passwordless: {
       'bad.email': 'Neispravna adresa elektroničke pošte',

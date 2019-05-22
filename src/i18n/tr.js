@@ -31,7 +31,9 @@ export default {
       too_many_attempts: 'Çok fazla giriş denemesi sonucunda hesabınız bloke oldu.',
       session_missing:
         'Kimlik doğrulama isteği tamamlanamadı. Tüm açık diyalogları kapattıktan sonra tekrar deneyiniz',
-      'hrd.not_matching_email': ', Giriş için kurumsal e-posta kullanın.'
+      'hrd.not_matching_email': ', Giriş için kurumsal e-posta kullanın.',
+      too_many_requests:
+        'Şu anda rahat olduğumuzdan daha fazla istek alıyoruz! İsteğinizi tekrar denemek için kısa bir süre sonra geri gelin ve bu sayfayı yeniden yükleyin.'
     },
     passwordless: {
       'bad.email': 'E-posta geçerli değil',
@@ -99,7 +101,7 @@ export default {
   passwordlessSMSInstructions:
     'Giriş yapmak için telefon numaranızı girin<br/>veya bir hesap oluşturun',
   phoneNumberInputPlaceholder: 'telefon numaranız',
-  resendCodeAction: "Kodu almadınız mı?",
+  resendCodeAction: 'Kodu almadınız mı?',
   resendLabel: 'Tekrar gönder',
   resendingLabel: 'Tekrar gönderiliyor...',
   retryLabel: 'Yeniden dene',

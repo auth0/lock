@@ -31,7 +31,9 @@ export default {
       too_many_attempts: 'Účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.',
       session_missing:
         'Nemohl jsem dokončit váš požadavek na ověření. Zkus to znovu po zavření všech otevřených dialogových oken.',
-      'hrd.not_matching_email': 'Prosím, použijte pro přihlášení firemní e-mail.'
+      'hrd.not_matching_email': 'Prosím, použijte pro přihlášení firemní e-mail.',
+      too_many_requests:
+        'V současné době dostáváme více požadavků, než jsme spokojeni! Chcete-li svůj požadavek zkusit znovu, za chvíli se vraťte zpět a znovu načtěte tuto stránku.'
     },
     passwordless: {
       'bad.email': 'Email je neplatný.',

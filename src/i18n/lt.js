@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Jūsų sąskaita buvo užblokuota, po kelių iš eilės bandymų prisijungti.',
       session_missing:
         'Nepavyko užbaigti jūsų autentifikavimo prašymo. Bandykite dar kartą uždarius visus atidarytus dialogo langus.',
-      'hrd.not_matching_email': 'Prašome naudoti jūsų įmonės el.pašto adresą prisijungimui.'
+      'hrd.not_matching_email': 'Prašome naudoti jūsų įmonės el.pašto adresą prisijungimui.',
+      too_many_requests:
+        'Šiuo metu mes gauname daugiau užklausų nei mes esame patenkinti! Jei norite iš naujo išbandyti užklausą, sugrįžkite per trumpą laiką ir iš naujo įkelkite šį puslapį.'
     },
     passwordless: {
       'bad.email': 'Neteisingas el.pašto adresas',

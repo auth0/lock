@@ -33,7 +33,9 @@ export default {
         'Tunnuksesi on suljettu useiden peräkkäisten kirjautumisyritysten jälkeen.',
       session_missing:
         'Kirjautumispyyntöäsi ei voitu suorittaa loppuun. Ole hyvä ja yritä uudelleen suljettuasi kaikki avoimet ikkunat',
-      'hrd.not_matching_email': 'Ole hyvä ja käytä yrityssähköpostiasi kirjautumiseen.'
+      'hrd.not_matching_email': 'Ole hyvä ja käytä yrityssähköpostiasi kirjautumiseen.',
+      too_many_requests:
+        'Tällä hetkellä saamme enemmän pyyntöjä kuin olemme tyytyväisiä! Jos haluat kokeilla pyyntöäsi uudelleen, palaa lyhyessä ajassa ja lataa tämä sivu uudelleen.'
     },
     passwordless: {
       'bad.email': 'Sähköposti ei kelpaa',

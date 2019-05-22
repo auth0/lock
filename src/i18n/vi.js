@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Tài khoản của bạn đã bị khóa do liên tục đăng nhập thất bại nhiều lần.',
       session_missing:
         'Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở',
-      'hrd.not_matching_email': 'Xin vui lòng, sử dụng email công ty của bạn để đăng nhập.'
+      'hrd.not_matching_email': 'Xin vui lòng, sử dụng email công ty của bạn để đăng nhập.',
+      too_many_requests:
+        'Hiện tại chúng tôi đang nhận được nhiều yêu cầu hơn chúng tôi cảm thấy thoải mái! Để thử lại yêu cầu của bạn, hãy quay lại trong giây lát và tải lại trang này.'
     },
     passwordless: {
       'bad.email': 'Email không hợp lệ.',

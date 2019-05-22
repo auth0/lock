@@ -35,7 +35,9 @@ export default {
       session_missing:
         "Impossible de terminer votre demande d'authentification. Veuillez essayer de nouveau après la fermeture de tous les dialogues ouverts",
       'hrd.not_matching_email':
-        "Veuillez utiliser votre messagerie d'entreprise pour vous connecter."
+        "Veuillez utiliser votre messagerie d'entreprise pour vous connecter.",
+      too_many_requests:
+        "Actuellement, nous recevons plus de demandes que nous ne sommes à l'aise! Pour réessayer votre demande, revenez dans peu de temps et rechargez cette page."
     },
     passwordless: {
       'bad.email': 'L’adresse de messagerie n’est pas valide',

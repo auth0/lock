@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Din konto er blokkert på grunn av for mange påloggingsforsøk.',
       session_missing:
         'Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser',
-      'hrd.not_matching_email': 'Vennligst bruk bedriftens e-post å logge inn.'
+      'hrd.not_matching_email': 'Vennligst bruk bedriftens e-post å logge inn.',
+      too_many_requests:
+        'For tiden mottar vi flere forespørsler enn vi er komfortable med! For å prøve forespørselen din igjen, kom tilbake om en kort stund og last siden på nytt.'
     },
     passwordless: {
       'bad.email': 'E-postadressen er ugyldig',

@@ -30,7 +30,9 @@ export default {
       'lock.mfa_invalid_code': 'Fel kod. Var god försök igen.',
       session_missing:
         'Det gick inte att slutföra autentiseringsbegäran. Försök igen efter att stänga alla öppna dialoger',
-      'hrd.not_matching_email': 'Använd gärna ditt företags e-post för att logga in.'
+      'hrd.not_matching_email': 'Använd gärna ditt företags e-post för att logga in.',
+      too_many_requests:
+        'För närvarande får vi fler förfrågningar än vi är bekanta med! För att försöka igen, kom tillbaka om ett kort tillfälle och ladda om den här sidan.'
     },
     passwordless: {
       'bad.email': 'Din e-postadress är ogiltig.',

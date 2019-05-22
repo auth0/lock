@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Vaše konto bolo zablokované po viacnásobných pokusoch o prihlásenie',
       session_missing:
         'Nedá sa odoslať autentifikačná požiadavka. Prosím zatvorte všetky dialogové okná a skúste to znova.',
-      'hrd.not_matching_email': 'Prosím, použite svoj firemný e-mail na prihlásenie.'
+      'hrd.not_matching_email': 'Prosím, použite svoj firemný e-mail na prihlásenie.',
+      too_many_requests:
+        'Momentálne dostávame viac žiadostí, ako sme spokojní! Ak chcete znova vyskúšať svoju žiadosť, vráťte sa o chvíľu a znova načítajte túto stránku.'
     },
     passwordless: {
       'bad.email': 'Neplatný e-mail',
