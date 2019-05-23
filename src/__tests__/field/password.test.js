@@ -8,6 +8,10 @@ describe('field/password', () => {
     passwordField = require('field/password');
   });
   describe('validatePassword()', () => {
+    it(`returns false when there is no password`, () => {
+      const value = passwordField.validatePassword('');
+      expect(value).toBe(false);
+    });
     it(`returns true when there is no policy`, () => {
       const value = passwordField.validatePassword('the-password');
       expect(value).toBe(true);
