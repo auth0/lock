@@ -2,6 +2,9 @@ import PasswordPolicy from 'password-sheriff/lib/policy';
 import { setField } from './index';
 
 export function validatePassword(password, policy) {
+  if (!password) {
+    return false;
+  }
   if (!policy) {
     return true;
   }
