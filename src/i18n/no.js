@@ -34,7 +34,9 @@ export default {
         'Vi kunne ikke fullføre forespørselen om autorisering. Forsøk å lukke andre åpne faner eller vinduer, og prøv på nytt.',
       'hrd.not_matching_email': 'Vennligst bruk din korrekte e-postadresse for innlogging.',
       'lock.mfa_registration_required':
-        'Multifaktorautentisering kreves, men enheten din er ikke påmeldt. Vennligst meld deg inn før du går videre.'
+        'Multifaktorautentisering kreves, men enheten din er ikke påmeldt. Vennligst meld deg inn før du går videre.',
+      too_many_requests:
+        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.'
     },
     passwordless: {
       'bad.email': 'Ugyldig e-postadresse',

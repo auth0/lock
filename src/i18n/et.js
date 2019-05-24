@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Sinu konto blokeeriti peale mitut ebaõnnestunud sisselogimiskatset.',
       session_missing:
         'Sisselogimine ebaõnnestus. Palun proovi uuesti peale kõigi akende sulgemist.',
-      'hrd.not_matching_email': 'Palun kasuta oma ettevõtte e-maili sisselogimiseks.'
+      'hrd.not_matching_email': 'Palun kasuta oma ettevõtte e-maili sisselogimiseks.',
+      too_many_requests:
+        'Vabandame. Praegu on päringuid liiga palju. Laadige leht uuesti ja proovige uuesti. Kui see jätkub, proovige hiljem uuesti.'
     },
     passwordless: {
       'bad.email': 'Vigane e-mail',

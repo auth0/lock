@@ -33,7 +33,9 @@ export default {
       session_missing:
         "No s'ha pogut completar la vostra petició d'autenticació. Tanqueu tots els diàlegs oberts i intenteu-ho de nou.",
       'hrd.not_matching_email':
-        'Si us plau, utilitzeu el correu electrònic corporatiu per iniciar sessió.'
+        'Si us plau, utilitzeu el correu electrònic corporatiu per iniciar sessió.',
+      too_many_requests:
+        'Ho sentim. Ara hi ha massa sol·licituds ara mateix. Torneu a carregar la pàgina i torneu-ho a provar. Si això persisteix, torneu-ho a provar més tard.'
     },
     passwordless: {
       'bad.email': "L'adreça de correu no és vàlida",

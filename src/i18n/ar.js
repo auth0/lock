@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -21,13 +24,15 @@ export default {
         'المصادقة المتعددة مطلوبة ولكن جهازك غير مسجل، رجاء سجّل جهازك قبل المضي قدماً.',
       'lock.mfa_invalid_code': 'رمز خاطئ، رجاءً أعد المحاولة.',
       password_change_required:
-        'يجب تحديث كلمة المرور لأنها المرة الأولى للدخول، أو لانتهاء صلاحية كلمة المرور.', // TODO: verify error code
+        'يجب تحديث كلمة المرور لأنها المرة الأولى للدخول، أو لانتهاء صلاحية كلمة المرور.',
       password_leaked:
         'لقد اكتشفنا مشكلة أمنية محتملة في هذا الحساب. لحماية حسابك ، قمنا بحظر هذا الدخول. تم إرسال بريد إلكتروني عن كيفية رفع الحظر عن حسابك.',
       too_many_attempts: 'تم حظر حسابك بعد عدة محاولات متتالية للدخول.',
       session_missing:
         'لم نتمكن من إكمال طلب المصادقة. رجاءً أعد المحاولة بعد إغلاق جميع مربعات الحوار المفتوحة.',
-      'hrd.not_matching_email': 'يرجى استخدام بريد الشركة الإلكتروني للدخول.'
+      'hrd.not_matching_email': 'يرجى استخدام بريد الشركة الإلكتروني للدخول.',
+      too_many_requests:
+        'نحن آسفون. هناك الكثير من الطلبات في الوقت الحالي. يرجى إعادة تحميل الصفحة وحاول مرة أخرى. إذا استمر هذا الأمر ، يرجى إعادة المحاولة لاحقًا.'
     },
     passwordless: {
       'bad.email': 'البريد الإلكتروني غير صالح.',
@@ -45,7 +50,6 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'شكراً للدخول.',
     forgotPassword: 'أرسلنا لك بريداً إلكترونياً لإعادة تعيين كلمة المرور خاصتك.',
     magicLink: 'أرسلنا لك رابطاً للدخول<br/>إلى %s.',
@@ -89,8 +93,7 @@ export default {
     'وإلا، أدخل بريدك الإلكتروني للدخول <br/>أو أنشئ حساباً',
   passwordlessEmailCodeInstructions: 'تم إرسال الرمز إلى البريد الإلكتروني %s',
   passwordlessEmailInstructions: 'أدخل بريدك الإلكتروني للدخول <br/>أو أنشئ حساباً',
-  passwordlessSMSAlternativeInstructions:
-    'وإلا، أدخل رقم هاتفك للدخول <br/>أو أنشئ حساباً',
+  passwordlessSMSAlternativeInstructions: 'وإلا، أدخل رقم هاتفك للدخول <br/>أو أنشئ حساباً',
   passwordlessSMSCodeInstructions: 'تم إرسال الرمز إلى برسالة نصية<br/>إلى %s',
   passwordlessSMSInstructions: 'أدخل رقم هاتفك للدخول <br/>أو أنشئ حساباً',
   phoneNumberInputPlaceholder: 'رقم هاتفك',
@@ -110,8 +113,7 @@ export default {
   ssoEnabled: 'تسجيل الدخول الموحد مفعل',
   submitLabel: 'إرسال',
   unrecoverableError: 'حصل خطأ ما.<br/>رجاءً اتصل بالدعم الفني.',
-  usernameFormatErrorHint:
-    'استخدم %d-%d، أرقام، والمحارف التالية: "_"، "."، "+"، "-"',
+  usernameFormatErrorHint: 'استخدم %d-%d، أرقام، والمحارف التالية: "_"، "."، "+"، "-"',
   usernameInputPlaceholder: 'اسم المستخدم',
   usernameOrEmailInputPlaceholder: 'اسم المستخدم/البريد الإلكتروني',
   title: 'Auth0',

@@ -36,6 +36,7 @@ const processNode = async (enNode, langNode, lang) => {
       await processNode(enNode[enKey], langNode[enKey], lang);
     } else {
       if (!langNode[enKey]) {
+        console.log('translating ', enKey);
         const translation = await translateKey(enNode[enKey], lang);
         langNode[enKey] = translation;
       }

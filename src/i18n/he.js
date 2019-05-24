@@ -1,16 +1,18 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
-      too_many_requests:
-        'הגעת למגבלת הנסיונות לשינוי סיסמא. אנא המתן לפני הנסיון הבא.',
-      'lock.fallback': "אנחנו מתנצלים, משהו השתבש בעת הנסיון לשינוי הסיסמא",
+      too_many_requests: 'הגעת למגבלת הנסיונות לשינוי סיסמא. אנא המתן לפני הנסיון הבא.',
+      'lock.fallback': 'אנחנו מתנצלים, משהו השתבש בעת הנסיון לשינוי הסיסמא',
       enterprise_email:
-        "הדומיין של כתובת המייל שלך הוא חלק מספק זהויות ארגוני. על מנת לאפס את הסיסמא שלך, אנא צור קשר עם אחראי האבטחה בארגון."
+        'הדומיין של כתובת המייל שלך הוא חלק מספק זהויות ארגוני. על מנת לאפס את הסיסמא שלך, אנא צור קשר עם אחראי האבטחה בארגון.'
     },
     login: {
       blocked_user: 'המשתמש חסום.',
       invalid_user_password: 'פרטים לא נכונים.',
-      'lock.fallback': "אנחנו מתנצלים, משהו השתבש בעת הנסיון להיכנס.",
+      'lock.fallback': 'אנחנו מתנצלים, משהו השתבש בעת הנסיון להיכנס.',
       'lock.invalid_code': 'קוד שגוי.',
       'lock.invalid_email_password': 'כתובת מייל או סיסמא שגויים.',
       'lock.invalid_username_password': 'שם משתמש או סיסמא שגויים.',
@@ -26,17 +28,19 @@ export default {
         'בחשבון זה זוהתה בעיית אבטחה פוטנציאלית. על מנת להגן על החשבון שלך, ניסיון הכניסה הנוכחי נחסם. נשלח מייל המכיל הוראות לפתיחת החשבון לשימוש.',
       too_many_attempts: 'חשבונך נחסם לאחר ניסיונות מרובים ורצופים לכניסה.',
       session_missing:
-        "לא ניתן להשלים את ניסיון ההזדהות. אנא נסה שנית לאחר סגירת כל החלונות הפתוחים.",
-      'hrd.not_matching_email': 'על מנת להיכנס, אנא השתמש בחשבון המייל הארגוני שלך'
+        'לא ניתן להשלים את ניסיון ההזדהות. אנא נסה שנית לאחר סגירת כל החלונות הפתוחים.',
+      'hrd.not_matching_email': 'על מנת להיכנס, אנא השתמש בחשבון המייל הארגוני שלך',
+      too_many_requests:
+        'אנחנו מצטערים. יש יותר מדי בקשות כרגע. טען מחדש את הדף ונסה שוב. אם פעולה זו נמשכת, נסה שוב מאוחר יותר.'
     },
     passwordless: {
       'bad.email': 'כתובת המייל אינה תקינה',
       'bad.phone_number': 'מספר הטלפון לא תקין',
-      'lock.fallback': "אנו מתנצלים, משהו השתבש"
+      'lock.fallback': 'אנו מתנצלים, משהו השתבש'
     },
     signUp: {
       invalid_password: 'סיסמא לא תקינה.',
-      'lock.fallback': "אנו מתנצלים, משהו השתבש במהלך ניסיון ההרשמה.",
+      'lock.fallback': 'אנו מתנצלים, משהו השתבש במהלך ניסיון ההרשמה.',
       password_dictionary_error: 'סיסמא שכיחה מדי.',
       password_no_user_info_error: 'סיסמא מבוססת על פרטי המשתמש.',
       password_strength_error: 'סיסמא חלשה מדי.',
@@ -45,13 +49,12 @@ export default {
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'תודה שנכנסת.',
-    forgotPassword: "מייל לשחזור סיסמא נשלח.",
+    forgotPassword: 'מייל לשחזור סיסמא נשלח.',
     magicLink: 'מייל עם קישור לכניסה נשלח אל<br />%s',
     signUp: 'תודה על ההרשמה.'
   },
-  blankErrorHint: "לא יכול להישאר ריק",
+  blankErrorHint: 'לא יכול להישאר ריק',
   codeInputPlaceholder: 'הקוד שלך',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: 'או',
@@ -62,9 +65,8 @@ export default {
   enterpriseActiveLoginInstructions: 'אנא הכנס את פרטי המשתמש הארגוניים שלך ב%s.',
   failedLabel: 'נכשל!',
   forgotPasswordTitle: 'אפס את הסיסמא שלך',
-  forgotPasswordAction: "לא זוכר את הסיסמא שלך?",
-  forgotPasswordInstructions:
-    'אנא הכנס את כתובת המייל שלך. אנחנו נשלח לך מייל לשחזור סיסמא.',
+  forgotPasswordAction: 'לא זוכר את הסיסמא שלך?',
+  forgotPasswordInstructions: 'אנא הכנס את כתובת המייל שלך. אנחנו נשלח לך מייל לשחזור סיסמא.',
   forgotPasswordSubmitLabel: 'שלח מייל',
   invalidErrorHint: 'לא תקין',
   lastLoginInstructions: 'פעם אחרונה שנכנסת עם',
@@ -85,12 +87,10 @@ export default {
     specialCharacters: 'תווים מיוחדים (לדוגמא: !@#$%^&*)',
     upperCase: 'אותיות גדולות (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions:
-    'או הכנס את כתובת המייל שלך לכניסה<br/>או צור חשבון',
+  passwordlessEmailAlternativeInstructions: 'או הכנס את כתובת המייל שלך לכניסה<br/>או צור חשבון',
   passwordlessEmailCodeInstructions: 'מייל עם הקוד נשלח אל %s.',
   passwordlessEmailInstructions: 'הכנס כתובת מייל לכניסה<br/>או צור חשבון',
-  passwordlessSMSAlternativeInstructions:
-    'או הכנס את מספר הטלפון שלך לכניסה<br/>או צור חשבון',
+  passwordlessSMSAlternativeInstructions: 'או הכנס את מספר הטלפון שלך לכניסה<br/>או צור חשבון',
   passwordlessSMSCodeInstructions: 'מסרון עם הקוד נשלח <br/>אל %s.',
   passwordlessSMSInstructions: 'הכנס את מספר הטלפון שלך לכניסה<br/>או צור חשבון',
   phoneNumberInputPlaceholder: 'מספר הטלפון שלך',
@@ -110,8 +110,7 @@ export default {
   ssoEnabled: 'הזדהות חד-פעמית (SSO) מאופשרת',
   submitLabel: 'שלח',
   unrecoverableError: 'משהו השתבש.<br />אנא צור קשר עם התמיכה הטכנית.',
-  usernameFormatErrorHint:
-    'השתמש ב%d-%d אותיות, ספרות והתווים הבאים: "_", ".", "+", "-"',
+  usernameFormatErrorHint: 'השתמש ב%d-%d אותיות, ספרות והתווים הבאים: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'שם המשתמש שלך',
   usernameOrEmailInputPlaceholder: 'שם משתמש/כתובת מייל',
   title: 'Auth0',

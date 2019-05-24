@@ -32,7 +32,9 @@ export default {
       'lock.mfa_invalid_code': 'Niepoprawny kod. Proszę spróbuj ponownie.',
       session_missing:
         'Nie udało się zrealizować żądania uwierzytelnienia. Spróbuj ponownie po zamknięciu wszystkich otwartych okien dialogowych',
-      'hrd.not_matching_email': 'Proszę korzystać z firmowego e-mail aby się zalogować.'
+      'hrd.not_matching_email': 'Proszę korzystać z firmowego e-mail aby się zalogować.',
+      too_many_requests:
+        'Przykro nam. W tej chwili jest zbyt wiele żądań. Załaduj ponownie stronę i spróbuj ponownie. Jeśli problem będzie się powtarzał, spróbuj ponownie później.'
     },
     passwordless: {
       'bad.email': 'Adres email nie jest poprawny',

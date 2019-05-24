@@ -26,7 +26,9 @@ export default {
         'Jou rekening het sekuriteitsprobleme. Vir jou veiligheid het ons die rekening geblok. Sien e-pos met instruksies om rekening weer te aktiveer.',
       too_many_attempts: 'Jou rekening is geblok nadat daar te veel keer probeer inteken is.',
       session_missing: 'Kon nie versoek bevestig nie. Maak asseblief alles toe en probeer weer',
-      'hrd.not_matching_email': 'Gebruik asseblief korporatiewe e-pos om in te teken.'
+      'hrd.not_matching_email': 'Gebruik asseblief korporatiewe e-pos om in te teken.',
+      too_many_requests:
+        'Ons is jammer. Daar is nou te veel versoeke. Herlaai asseblief die bladsy en probeer weer. As dit voortduur, probeer asseblief later weer.'
     },
     passwordless: {
       'bad.email': 'Die e-pos is ongeldig',
