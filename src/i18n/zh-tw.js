@@ -24,7 +24,8 @@ export default {
       'lock.mfa_registration_required': '多因素認證是必需的，但沒有登記您的設備。在移動之前，請報名參加吧。',
       'lock.mfa_invalid_code': '錯誤代碼。請再試一次。',
       session_missing: '無法完成身份驗證請求。請關閉所有打開的對話框後，再試一次',
-      'hrd.not_matching_email': '請使用您的公司電子郵件登錄。'
+      'hrd.not_matching_email': '請使用您的公司電子郵件登錄。',
+      too_many_requests: '我們很抱歉。現在請求太多了。請刷新頁面，然後再試一次。如果仍然存在，請稍後再試。'
     },
     passwordless: {
       'bad.email': '電子信箱錯誤',

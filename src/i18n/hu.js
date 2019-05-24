@@ -31,7 +31,9 @@ export default {
       'lock.mfa_invalid_code': 'Rossz kód. Kérlek próbáld újra.',
       session_missing:
         'Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok',
-      'hrd.not_matching_email': 'Kérjük, használja a vállalati e-mail jelentkezned.'
+      'hrd.not_matching_email': 'Kérjük, használja a vállalati e-mail jelentkezned.',
+      too_many_requests:
+        'Sajnáljuk. Túl sok kérés van. Kérjük, töltse be újra az oldalt, és próbálja újra. Ha ez továbbra is fennáll, próbálkozzon később.'
     },
     passwordless: {
       'bad.email': 'Érvénytelen e-mailcím',

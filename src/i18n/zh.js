@@ -24,7 +24,8 @@ export default {
       'lock.mfa_registration_required': '多因素认证是必需的，但没有登记您的设备。在移动之前，请报名参加吧。',
       'lock.mfa_invalid_code': '错误代码。请再试一次。',
       session_missing: '无法完成身份验证请求。请关闭所有打开的对话框后，再试一次',
-      'hrd.not_matching_email': '请使用您的公司电子邮件登录。'
+      'hrd.not_matching_email': '请使用您的公司电子邮件登录。',
+      too_many_requests: '我们很抱歉。现在请求太多了。请刷新页面，然后再试一次。如果仍然存在，请稍后再试。'
     },
     passwordless: {
       'bad.email': '邮箱错误',
@@ -93,7 +94,7 @@ export default {
   sentLabel: '发送!',
   signUpLabel: '注册',
   signUpSubmitLabel: '注册',
-  signUpTerms: '',
+  signUpTerms: '注册即表示您同意我们的服务条款和隐私政策。',
   signUpWithLabel: '通过 %s 注册',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',

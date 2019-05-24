@@ -33,7 +33,9 @@ export default {
       session_missing:
         'Не вдалося виконати запит аутентифікації. Будь ласка, спробуйте ще раз попередньо закривши всі спливаючі вікна.',
       'hrd.not_matching_email':
-        'Будь ласка, використовуйте адресу вашої корпоративної пошти для входу.'
+        'Будь ласка, використовуйте адресу вашої корпоративної пошти для входу.',
+      too_many_requests:
+        "We're sorry. There are too many requests right now. Please reload the page and try again. If this persists, please try again later."
     },
     passwordless: {
       'bad.email': 'Недійсна адреса електронної пошти',

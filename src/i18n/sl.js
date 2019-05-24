@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Po več zaporednih poskusih napačne prijave je bil vaš račun blokiran.',
       session_missing:
         'Zahteve za avtentikacijo ni bilo možno izpolniti. Zaprite vsa pogovorna okna in poskusite ponovno.',
-      'hrd.not_matching_email': 'Za prijavo uporabite svoj službeni e-poštni naslov.'
+      'hrd.not_matching_email': 'Za prijavo uporabite svoj službeni e-poštni naslov.',
+      too_many_requests:
+        'Žal nam je. Trenutno je preveč zahtev. Ponovno naložite stran in poskusite znova. Če se to ponavlja, poskusite znova pozneje.'
     },
     passwordless: {
       'bad.email': 'Napačen e-poštni naslov',

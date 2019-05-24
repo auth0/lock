@@ -26,7 +26,7 @@ export default {
         'We have detected a potential security issue with this account. To protect your account, we have blocked this login. An email was sent with instruction on how to unblock your account.',
       too_many_attempts: 'Your account has been blocked after multiple consecutive login attempts.',
       too_many_requests:
-        'Currently we are receiving more requests than we are are comfortable with! To try your request again, come back in a short while and reload this page.',
+        "We're sorry. There are too many requests right now. Please reload the page and try again. If this persists, please try again later.",
       session_missing:
         "Couldn't complete your authentication request. Please try again after closing all open dialogs",
       'hrd.not_matching_email': 'Please use your corporate email to login.'

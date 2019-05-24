@@ -28,7 +28,9 @@ export default {
       'lock.mfa_invalid_code': 'Código incorrecto. Por favor vuelva a intentarlo.',
       session_missing:
         'No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente.',
-      'hrd.not_matching_email': 'Por favor, use sus credenciales corporativas.'
+      'hrd.not_matching_email': 'Por favor, use sus credenciales corporativas.',
+      too_many_requests:
+        'Lo sentimos. Hay demasiados peticiones en estos momentos. Por favor, recargue la página y vuelva a intentarlo. Si persiste, por favor vuelva a intentarlo más tarde.'
     },
     passwordless: {
       'bad.email': 'Correo inválido',

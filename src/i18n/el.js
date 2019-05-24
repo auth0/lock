@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -30,7 +33,9 @@ export default {
         'Ο λογαριασμός σας έχει απενεργοποιηθεί λόγω υπέρβασης του ορίου επιτρεπόμενων προσπαθειών σύνδεσης.',
       session_missing:
         'Δεν ήταν δυνατή η ολοκλήρωση του αιτήματος επαλήθευσης ταυτότητας. Δοκιμάστε ξανά μετά το κλείσιμο όλων των ανοιχτών παραθύρων διαλόγου',
-      'hrd.not_matching_email': 'Παρακαλώ χρησιμοποιήστε το εταιρικό σας email για να συνδεθείτε.'
+      'hrd.not_matching_email': 'Παρακαλώ χρησιμοποιήστε το εταιρικό σας email για να συνδεθείτε.',
+      too_many_requests:
+        'Λυπόμαστε. Υπάρχουν πολλά αιτήματα τώρα. Επαναλάβετε τη φόρτωση της σελίδας και προσπαθήστε ξανά. Αν αυτό παραμείνει, δοκιμάστε ξανά αργότερα.'
     },
     passwordless: {
       'bad.email': 'Το email δεν είναι έγκυρο',

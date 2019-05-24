@@ -9,7 +9,7 @@ export default {
         "Il dominio della tua email fa parte di un provider di identità aziendale. Per reimpostare la password, consultare l'amministratore della sicurezza."
     },
     login: {
-      blocked_user: 'L\'utente è bloccato.',
+      blocked_user: "L'utente è bloccato.",
       invalid_user_password: 'Credenziali non corrette.',
       'lock.fallback': 'Ci dispiace, qualcosa è andato storto quando si tenta di accedere.',
       'lock.invalid_code': 'Codice errato.',
@@ -22,7 +22,7 @@ export default {
       password_change_required:
         'È necessario aggiornare la password perché questo è il tuo primo login, o perché la password è scaduta.',
       password_leaked:
-        'Questo accesso è stato bloccato perché la password è trapelata in un altro sito. Ti abbiamo inviato un\'email con le istruzioni su come sbloccarla.',
+        "Questo accesso è stato bloccato perché la password è trapelata in un altro sito. Ti abbiamo inviato un'email con le istruzioni su come sbloccarla.",
       too_many_attempts:
         'Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi.',
       'lock.mfa_registration_required':
@@ -31,10 +31,12 @@ export default {
       session_missing:
         'Impossibile completare la richiesta di autenticazione. Riprova dopo aver chiuso tutte le finestre di dialogo aperte',
       'hrd.not_matching_email':
-        'Si prega di utilizzare la posta elettronica aziendale per effettuare il login.'
+        'Si prega di utilizzare la posta elettronica aziendale per effettuare il login.',
+      too_many_requests:
+        'Ci dispiace. Ci sono troppe richieste in questo momento. Si prega di ricaricare la pagina e riprovare. Se persiste, riprova più tardi.'
     },
     passwordless: {
-      'bad.email': 'L\'email non è valida',
+      'bad.email': "L'email non è valida",
       'bad.phone_number': 'Il numero di telefono non è valido',
       'lock.fallback': 'Ci dispiace, qualcosa è andato storto'
     },
@@ -44,13 +46,13 @@ export default {
       password_dictionary_error: 'La password è troppo comune.',
       password_no_user_info_error: "La password si basa sulle informazioni dell'utente.",
       password_strength_error: 'La password è troppo debole.',
-      user_exists: 'L\'utente esiste già.',
+      user_exists: "L'utente esiste già.",
       username_exists: 'Il nome utente esiste già.'
     }
   },
   success: {
     logIn: 'Login effettuato con successo.',
-    forgotPassword: 'Abbiamo appena inviato un\'email per reimpostare la password.',
+    forgotPassword: "Abbiamo appena inviato un'email per reimpostare la password.",
     magicLink: 'Abbiamo inviato un link per il login<br />a %s.',
     signUp: 'Grazie per esserti iscritto.'
   },
@@ -69,7 +71,7 @@ export default {
     "Inserisci il tuo indirizzo email. Ti invieremo un'email per reimpostare la password.",
   forgotPasswordSubmitLabel: "Inviare l'email",
   invalidErrorHint: 'Non valido',
-  lastLoginInstructions: 'L\'ultima volta hai effettuato l’accesso con',
+  lastLoginInstructions: "L'ultima volta hai effettuato l’accesso con",
   loginAtLabel: 'Accedere a %s',
   loginLabel: 'Accesso',
   loginSubmitLabel: 'Accesso',
@@ -89,8 +91,8 @@ export default {
   },
   passwordlessEmailAlternativeInstructions:
     "Altrimenti, si prega di inserire l'email per accedere<br/>o creare un account",
-  passwordlessEmailCodeInstructions: 'Un\'email con il codice è stata inviata a %s.',
-  passwordlessEmailInstructions: 'Si prega di inserire l\'email<br/>o creare un account',
+  passwordlessEmailCodeInstructions: "Un'email con il codice è stata inviata a %s.",
+  passwordlessEmailInstructions: "Si prega di inserire l'email<br/>o creare un account",
   passwordlessSMSAlternativeInstructions:
     'Altrimenti, si prega d’inserire il numero di telefono per accedere<br/>o creare un account',
   passwordlessSMSCodeInstructions: 'Un SMS con il codice è stato inviato<br/>a %s.',

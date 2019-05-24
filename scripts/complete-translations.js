@@ -36,6 +36,7 @@ const processNode = async (enNode, langNode, lang) => {
       await processNode(enNode[enKey], langNode[enKey], lang);
     } else {
       if (!langNode[enKey]) {
+        console.log('translating ', enKey);
         const translation = await translateKey(enNode[enKey], lang);
         langNode[enKey] = translation;
       }
@@ -57,6 +58,9 @@ const translateKey = async (toTranslate, lang) => {
 const run = async () => {
   const files = await readdirAsync('lib/i18n/');
   for (file of files) {
+    if (file[0] < 'h') {
+      continue;
+    }
     const language = file.split('.')[0];
     if (language !== 'en') {
       await processLanguage(language);

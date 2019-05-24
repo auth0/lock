@@ -3,14 +3,16 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Sie haben das Limit für Rücksetzungsversuche des Passworts erreicht. Bitte warten Sie, bevor Sie es erneut versuchen.',
-      'lock.fallback': 'Es tut uns leid, beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.',
+      'lock.fallback':
+        'Es tut uns leid, beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.',
       enterprise_email:
         'Die Domain Ihrer E-Mail-Adresse ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.'
     },
     login: {
       blocked_user: 'Der Benutzer wird blockiert.',
       invalid_user_password: 'Falsche Anmeldeinformationen.',
-      'lock.fallback': 'Es tut uns leid, beim Verarbeiten der Anmeldung ist ein Fehler aufgetreten.',
+      'lock.fallback':
+        'Es tut uns leid, beim Verarbeiten der Anmeldung ist ein Fehler aufgetreten.',
       'lock.invalid_code': 'Falscher Code.',
       'lock.invalid_email_password': 'Falsche E-Mail-Adresse oder Passwort.',
       'lock.invalid_username_password': 'Falscher Benutzername oder Passwort.',
@@ -28,7 +30,10 @@ export default {
         'Ihr Konto wurde nach mehreren aufeinander folgenden Anmeldeversuche gesperrt.',
       session_missing:
         'Ihre Authentifizierungsanfrage konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut, nachdem Sie alle geöffneten Dialoge geschlossen haben.',
-      'hrd.not_matching_email': 'Bitte verwenden Sie Ihre geschäftliche E-Mail-Adresse, um sich anzumelden.'
+      'hrd.not_matching_email':
+        'Bitte verwenden Sie Ihre geschäftliche E-Mail-Adresse, um sich anzumelden.',
+      too_many_requests:
+        'Es tut uns leid. Im Moment gibt es zu viele Anfragen. Bitte laden Sie die Seite neu und versuchen Sie es erneut. Wenn dies weiterhin der Fall ist, versuchen Sie es später erneut.'
     },
     passwordless: {
       'bad.email': 'Diese E-Mail-Adresse ist ungültig',
@@ -60,8 +65,7 @@ export default {
   databaseAlternativeSignUpInstructions: 'oder',
   emailInputPlaceholder: 'ihremail@example.com',
   enterpriseLoginIntructions: 'Melden Sie sich mit Ihren geschäftlichen Informationen an.',
-  enterpriseActiveLoginInstructions:
-    'Bitte geben Sie Ihre geschäftlichen Informationen bei %s an.',
+  enterpriseActiveLoginInstructions: 'Bitte geben Sie Ihre geschäftlichen Informationen bei %s an.',
   failedLabel: 'Gescheitert!',
   forgotPasswordTitle: 'Setzen Sie Ihr Passwort zurück',
   forgotPasswordAction: 'Passwort vergessen?',

@@ -32,7 +32,9 @@ export default {
         'Contul tău a fost blocat după mai multe încercări nereușite de conectare.',
       session_missing:
         'Nu am putut finaliza procesul de autentificare. Avem rugămintea să încerci după ce închizi toate ferestrele deschise.',
-      'hrd.not_matching_email': 'Te rugăm să folosești adresa de email corporate pentru conectare.'
+      'hrd.not_matching_email': 'Te rugăm să folosești adresa de email corporate pentru conectare.',
+      too_many_requests:
+        'Ne pare rău. Sunt prea multe cereri chiar acum. Reîncărcați pagina și încercați din nou. Dacă acest lucru persistă, încercați din nou mai târziu.'
     },
     passwordless: {
       'bad.email': 'Adresa de email este invalidă',
