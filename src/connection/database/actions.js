@@ -62,9 +62,19 @@ export function signUp(id) {
     }
 
     if (!additionalSignUpFields(m).isEmpty()) {
+      const rootAttributes = ['family_name', 'given_name', 'name', 'nickname', 'picture'];
       params.user_metadata = {};
       additionalSignUpFields(m).forEach(x => {
-        params.user_metadata[x.get('name')] = c.getFieldValue(m, x.get('name'));
+        const fieldName = x.get('name');
+        const fieldValue = c.getFieldValue(m, x.get('name'));
+        if (rootAttributes.includes(fieldName)) {
+          params[fieldName] = fieldValue;
+        } else {
+          if (!params.user_metadata) {
+            params.user_metadata = {};
+          }
+          params.user_metadata[fieldName] = fieldValue;
+        }
       });
     }
 
