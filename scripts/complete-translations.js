@@ -58,9 +58,6 @@ const translateKey = async (toTranslate, lang) => {
 const run = async () => {
   const files = await readdirAsync('lib/i18n/');
   for (file of files) {
-    if (file[0] < 'h') {
-      continue;
-    }
     const language = file.split('.')[0];
     if (language !== 'en') {
       await processLanguage(language);
