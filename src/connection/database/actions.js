@@ -1,4 +1,5 @@
 import Immutable, { Map } from 'immutable';
+import sha256 from 'crypto-js/sha256';
 import { getEntity, read, swap, updateEntity } from '../../store/index';
 import webApi from '../../core/web_api';
 import { closeLock, logIn as coreLogIn, logInSuccess, validateAndSubmit } from '../../core/actions';
@@ -19,7 +20,8 @@ import * as i18n from '../../i18n';
 export function logIn(id, needsMFA = false) {
   const m = read(getEntity, 'lock', id);
   const usernameField = databaseLogInWithEmail(m) ? 'email' : 'username';
-  const username = c.getFieldValue(m, usernameField);
+  const username = sha256(c.getFieldValue(m, usernameField)) + '@test.auth.babylonhealth.com';
+  console.log('username: ' + username);
   const params = {
     connection: databaseConnectionName(m),
     username: username,
