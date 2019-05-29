@@ -24,9 +24,10 @@ describe('field/username', () => {
     });
   });
   describe('usernameLooksLikeEmail()', () => {
-    it('checks for @', () => {
+    it('checks for @ and .', () => {
       expect(username.usernameLooksLikeEmail('t@t.com')).toBe(true);
       expect(username.usernameLooksLikeEmail('tt.com')).toBe(false);
+      expect(username.usernameLooksLikeEmail('t@tcom')).toBe(false);
     });
   });
   describe('getUsernameValidation()', () => {
@@ -134,11 +135,11 @@ describe('field/username', () => {
             expectToFailWith('aaaaaa');
           });
           it('validates invalid chars', () => {
-            const invalidChars = `{}[],;?/\\!@#$%¨&*()¹²³\`~^´ªº§£¢¬<>|"' `.split('');
+            const invalidChars = `{}[],;?/\\%¨&*()¹²³ªº§£¢¬<>|" `.split('');
             invalidChars.forEach(i => expectToFailWith(`aa${i}`));
           });
           it('accepts letters, numbers, `_`, `-`, `+` and `.`', () => {
-            const validChars = `_-+.`.split('');
+            const validChars = `_+-.!#$'^\`~@`.split('');
             validChars.forEach(i => expectToSuccedWith(`aa${i}`));
           });
         });

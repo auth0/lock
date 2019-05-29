@@ -3,8 +3,8 @@ import { validateEmail } from './email';
 import { databaseConnection } from '../connection/database';
 import trim from 'trim';
 
-const DEFAULT_CONNECTION_VALIDATION = { username: { min: 1, max: 15 } };
-const regExp = /^[a-zA-Z0-9_+\-.]+$/;
+const DEFAULT_CONNECTION_VALIDATION = { username: { min: 1, max: 128 } };
+const regExp = /^[a-zA-Z0-9_+\-.!#\$\^`~@']*$/;
 
 function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VALIDATION.username) {
   // If the connection does not have validation settings, it should only check if the field is empty.
@@ -55,5 +55,5 @@ export function setUsername(m, str, usernameStyle = 'username', validateUsername
 }
 
 export function usernameLooksLikeEmail(str) {
-  return str.indexOf('@') > -1;
+  return str.indexOf('@') > -1 && str.indexOf('.') > -1;
 }
