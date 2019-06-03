@@ -16,7 +16,7 @@ Array [
 exports[`Auth0APIClient init with overrides always uses telemetry set in the \`auth0Client\` query param and inside the ULP 1`] = `
 Object {
   "env": Object {
-    "auth0-js-ulp": "a0js.version",
+    "auth0.js-ulp": "a0js.version",
     "envOverride": true,
     "lock.js-ulp": "lock.version",
   },
@@ -30,7 +30,7 @@ Object {
   "_sendTelemetry": true,
   "_telemetryInfo": Object {
     "env": Object {
-      "auth0-js": "a0js.version",
+      "auth0.js": "a0js.version",
     },
     "name": "lock.js",
     "version": "lock.version",
@@ -61,7 +61,7 @@ Object {
 exports[`Auth0APIClient init with overrides overrides telemetry when outside the ULP 1`] = `
 Object {
   "env": Object {
-    "auth0-js": "a0js.version",
+    "auth0.js": "a0js.version",
     "envOverride": true,
     "lock.js": "lock.version",
   },

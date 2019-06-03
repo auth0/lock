@@ -73,7 +73,7 @@ describe('Auth0APIClient', () => {
         getClient();
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js');
-        expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain('auth0-js');
+        expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain('auth0.js');
       });
       it('uses different telemetry key when inside the ULP', () => {
         setURL('https://me.auth0.com/');
@@ -81,7 +81,7 @@ describe('Auth0APIClient', () => {
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js-ulp');
         expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain(
-          'auth0-js-ulp'
+          'auth0.js-ulp'
         );
       });
       it('forwards options to WebAuth', () => {
