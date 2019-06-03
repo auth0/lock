@@ -3,6 +3,9 @@
 ## [v11.16.2](https://github.com/auth0/lock/tree/v11.16.2) (2019-06-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.16.1...v11.16.2)
 
+**Fixed**
+
+- Fixed telemetry
 
 
 ## [v11.16.1](https://github.com/auth0/lock/tree/v11.16.1) (2019-06-03)
