@@ -62,6 +62,28 @@ describe('database/index.js', () => {
   });
   describe('initDatabase', () => {
     describe('calls initNS with the correct additionalSignUpFields', () => {
+      describe('uses the `storage` attribute', () => {
+        const model = Immutable.fromJS({});
+        const modelOut = initDatabase(model, {
+          additionalSignUpFields: [
+            {
+              type: 'hidden',
+              name: 'hidden_field',
+              value: 'hidden_value',
+              storage: 'root'
+            }
+          ]
+        });
+        const modelOutJS = modelOut.toJS();
+        expect(modelOutJS.database.additionalSignUpFields).toEqual([
+          {
+            type: 'hidden',
+            name: 'hidden_field',
+            value: 'hidden_value',
+            storage: 'root'
+          }
+        ]);
+      });
       describe('with a valid hidden field', () => {
         const model = Immutable.fromJS({});
         const modelOut = initDatabase(model, {

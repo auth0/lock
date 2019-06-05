@@ -437,7 +437,7 @@ var options = {
 };
 ```
 
-If you want to save the value in the root of your profile attribute, use `storage: 'root'`. Only a subset of values can be stored this way. The list of attributes that can be added to your root profile is [here](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id). By default, every additional sign up field is stored inside the `user_metadata` object.
+If you want to save the value of the attribute in the root of your profile, use `storage: 'root'`. Only a subset of values can be stored this way. The list of attributes that can be added to your root profile is [here](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id). By default, every additional sign up field is stored inside the `user_metadata` object.
 
 ```js
 var options = {
