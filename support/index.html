@@ -1,131 +1,141 @@
 <!DOCTYPE html>
 <html>
-<title>Dev</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-<link rel="stylesheet" href="https://cdn.auth0.com/styleguide/core/2.0.5/core.min.css" />
-<link rel="stylesheet" href="https://cdn.auth0.com/styleguide/components/2.0.0/components.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css" />
+  <title>Dev</title>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+  />
+  <link rel="stylesheet" href="https://cdn.auth0.com/styleguide/core/2.0.5/core.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.auth0.com/styleguide/components/2.0.0/components.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css"
+  />
 
-<body>
-  <header class="site-header">
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <h1 class="navbar-brand">
-            <a href="https://auth0.com">
-              <span>Auth0</span>
-            </a>
-          </h1>
+  <body>
+    <header class="site-header">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <h1 class="navbar-brand">
+              <a href="https://auth0.com">
+                <span>Auth0</span>
+              </a>
+            </h1>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="btn-show-lock" class="btn btn-default">Show Lock</div>
+          <div id="btn-show-passwordless" class="btn btn-default">Show Lock+Passwordless</div>
         </div>
       </div>
-    </nav>
-  </header>
-  <main class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="btn-show-lock" class="btn btn-default">Show Lock</div>
-        <div id="btn-show-passwordless" class="btn btn-default">Show Lock+Passwordless</div>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="btn-clear-log" class="btn btn-danger">Clear logs</div>
-      </div>
-      <div class="col-sm-12" style="margin-top: 10px; max-height: 800px; overflow: auto;">
-        <pre>
+      <hr />
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="btn-clear-log" class="btn btn-danger">Clear logs</div>
+        </div>
+        <div class="col-sm-12" style="margin-top: 10px; max-height: 800px; overflow: auto;">
+          <pre>
           <code id="logger" class="language-js"></code>
         </pre>
+        </div>
       </div>
-    </div>
-  </main>
-  <script src="https://unpkg.com/jquery@3.2.1/dist/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="/build/lock.js"></script>
-  <script id="helper-scripts">
-    //this is not related to Auth0. It's just here to make the page work correctly.
-    Prism.plugins.NormalizeWhitespace.setDefaults({
-      'remove-trailing': true,
-      'remove-indent': true,
-      'left-trim': true,
-      'right-trim': true,
-    });
-    var logs = [];
-    if (window.localStorage.auth0logs) {
-      logs = JSON.parse(window.localStorage.auth0logs);
-    }
-    function printLogs() {
-      window.localStorage.auth0logs = JSON.stringify(logs);
-      var code = '';
-      logs.forEach(function (l) {
-        code += '\r\n' + JSON.stringify(l, null, 1);
+    </main>
+    <script src="https://unpkg.com/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="/build/lock.js"></script>
+    <script id="helper-scripts">
+      //this is not related to Auth0. It's just here to make the page work correctly.
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-trailing': true,
+        'remove-indent': true,
+        'left-trim': true,
+        'right-trim': true
       });
-      var html = Prism.highlight(code, Prism.languages.javascript);
-      $('#logger').html(html);
-    }
-    function clearLogs() {
-      logs = [];
-      window.localStorage.removeItem('auth0logs');
-      printLogs();
-    }
-    function subscribeToEvents(instance) {
-      var validEvents = [
-        'show',
-        'hide',
-        'unrecoverable_error',
-        'authenticated',
-        'authorization_error',
-        'hash_parsed',
-        'signin ready',
-        'signup ready',
-        'forgot_password ready',
-        'socialOrPhoneNumber ready',
-        'socialOrEmail ready',
-        'vcode ready',
-        'forgot_password submit',
-        'signin submit',
-        'signup submit',
-        'socialOrPhoneNumber submit',
-        'socialOrEmail submit',
-        'vcode submit',
-        'federated login'
-      ];
-      validEvents.forEach(function (e) {
-        instance.on(e, function () {
-          var args = arguments;
-          if (arguments.length === 1) {
-            args = arguments[0];
-          }
-          logs.push({ event: e, arguments: args });
-          printLogs();
+      var logs = [];
+      if (window.localStorage.auth0logs) {
+        logs = JSON.parse(window.localStorage.auth0logs);
+      }
+      function printLogs() {
+        window.localStorage.auth0logs = JSON.stringify(logs);
+        var code = '';
+        logs.forEach(function(l) {
+          code += '\r\n' + JSON.stringify(l, null, 1);
         });
+        var html = Prism.highlight(code, Prism.languages.javascript);
+        $('#logger').html(html);
+      }
+      function clearLogs() {
+        logs = [];
+        window.localStorage.removeItem('auth0logs');
+        printLogs();
+      }
+      function subscribeToEvents(instance) {
+        var validEvents = [
+          'show',
+          'hide',
+          'unrecoverable_error',
+          'authenticated',
+          'authorization_error',
+          'hash_parsed',
+          'signin ready',
+          'signup ready',
+          'forgot_password ready',
+          'socialOrPhoneNumber ready',
+          'socialOrEmail ready',
+          'vcode ready',
+          'forgot_password submit',
+          'signin submit',
+          'signup submit',
+          'socialOrPhoneNumber submit',
+          'socialOrEmail submit',
+          'vcode submit',
+          'federated login'
+        ];
+        validEvents.forEach(function(e) {
+          instance.on(e, function() {
+            var args = arguments;
+            if (arguments.length === 1) {
+              args = arguments[0];
+            }
+            logs.push({ event: e, arguments: args });
+            printLogs();
+          });
+        });
+      }
+      $('#btn-clear-log').on('click', clearLogs);
+      $(function() {
+        printLogs();
       });
-    }
-    $('#btn-clear-log').on('click', clearLogs);
-    $(function () {
-      printLogs();
-    });
-  </script>
-  <script>
-    var clientId = "BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b";
-    var domain = "brucke.auth0.com";
-    var defaultOptions = {
-      allowShowPassword: true,
-      usernameStyle: 'email',
-      defaultDatabaseConnection: 'acme',
-      prefill: {
-        email: 'luis@luisrudge.net'
-      },
-      passwordlessMethod: 'code',
-      auth: {
-        params: {
-          nonce: 'foo',
-          state: 'bar'
-        }
-      },additionalSignUpFields: [
+    </script>
+    <script>
+      var clientId = 'BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b';
+      var domain = 'brucke.auth0.com';
+      var defaultOptions = {
+        allowShowPassword: true,
+        usernameStyle: 'email',
+        defaultDatabaseConnection: 'acme',
+        prefill: {
+          email: 'johnfoo@gmail.com'
+        },
+        passwordlessMethod: 'code',
+        auth: {
+          params: {
+            nonce: 'foo',
+            state: 'bar'
+          }
+        },
+        additionalSignUpFields: [
           {
             name: 'address',
             placeholder: 'enter your address (optional)',
@@ -190,52 +200,51 @@
             }
           }
         ]
-    };
-    function initLock() {
-      var lock = new Auth0Lock(clientId, domain, defaultOptions);
-      window.localStorage.lastUsed = 'lock'
-      subscribeToEvents(lock);
-      return lock;
-    }
-    function initPasswordless() {
-      var lockPasswordless = new Auth0LockPasswordless(clientId, domain, defaultOptions);
-      window.localStorage.lastUsed = 'passwordless'
-      subscribeToEvents(lockPasswordless);
-      return lockPasswordless;
-    }
-    $(function () {
-      $('#btn-show-lock').on('click', function () {
-        clearLogs();
-        var lock = initLock();
-        lock.show({
-          languageDictionary: {
-            title: 'Lock',
-          }
-        });
-      });
-      $('#btn-show-passwordless').on('click', function () {
-        clearLogs();
-        var lockPasswordless = initPasswordless();
-        lockPasswordless.show({
-          languageDictionary: {
-            title: 'Passwordless',
-          }
-        });
-      });
-
-      //make sure we initialize Lock so we can parse the hash
-      var lastUsed = window.localStorage.lastUsed;
-      if (!lastUsed) {
-        return;
+      };
+      function initLock() {
+        var lock = new Auth0Lock(clientId, domain, defaultOptions);
+        window.localStorage.lastUsed = 'lock';
+        subscribeToEvents(lock);
+        return lock;
       }
-      if (lastUsed === 'lock') {
-        initLock();
-      } else {
-        initPasswordless();
+      function initPasswordless() {
+        var lockPasswordless = new Auth0LockPasswordless(clientId, domain, defaultOptions);
+        window.localStorage.lastUsed = 'passwordless';
+        subscribeToEvents(lockPasswordless);
+        return lockPasswordless;
       }
-      window.localStorage.removeItem('lastUsed');
-    });
-  </script>
-</body>
+      $(function() {
+        $('#btn-show-lock').on('click', function() {
+          clearLogs();
+          var lock = initLock();
+          lock.show({
+            languageDictionary: {
+              title: 'Lock'
+            }
+          });
+        });
+        $('#btn-show-passwordless').on('click', function() {
+          clearLogs();
+          var lockPasswordless = initPasswordless();
+          lockPasswordless.show({
+            languageDictionary: {
+              title: 'Passwordless'
+            }
+          });
+        });
 
+        //make sure we initialize Lock so we can parse the hash
+        var lastUsed = window.localStorage.lastUsed;
+        if (!lastUsed) {
+          return;
+        }
+        if (lastUsed === 'lock') {
+          initLock();
+        } else {
+          initPasswordless();
+        }
+        window.localStorage.removeItem('lastUsed');
+      });
+    </script>
+  </body>
 </html>
