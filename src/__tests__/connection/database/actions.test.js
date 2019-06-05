@@ -46,11 +46,11 @@ describe('database/actions.js', () => {
       },
       database: {
         additionalSignUpFields: [
-          { name: 'family_name' },
-          { name: 'given_name' },
-          { name: 'name' },
-          { name: 'nickname' },
-          { name: 'picture' },
+          { name: 'family_name', storage: 'root' },
+          { name: 'given_name', storage: 'root' },
+          { name: 'name', storage: 'root' },
+          { name: 'nickname', storage: 'root' },
+          { name: 'picture', storage: 'root' },
           { name: 'other_prop' }
         ]
       }
