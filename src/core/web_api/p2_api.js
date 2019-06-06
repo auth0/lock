@@ -70,7 +70,7 @@ class Auth0APIClient {
         env: {
           ...ulpTelemetry.env,
           ['lock.js-ulp']: getVersion(),
-          ['auth0-js-ulp']: auth0.version.raw
+          ['auth0.js-ulp']: auth0.version.raw
         }
       };
     }
@@ -79,7 +79,7 @@ class Auth0APIClient {
         name: 'lock.js-ulp',
         version: getVersion(),
         env: {
-          ['auth0-js-ulp']: auth0.version.raw
+          ['auth0.js-ulp']: auth0.version.raw
         }
       };
     }
@@ -89,7 +89,7 @@ class Auth0APIClient {
         env: {
           ...telemetryOverride.env,
           ['lock.js']: getVersion(),
-          ['auth0-js']: auth0.version.raw
+          ['auth0.js']: auth0.version.raw
         }
       };
     }
@@ -98,7 +98,7 @@ class Auth0APIClient {
         name: 'lock.js',
         version: getVersion(),
         env: {
-          ['auth0-js']: auth0.version.raw
+          ['auth0.js']: auth0.version.raw
         }
       };
     }

@@ -73,7 +73,25 @@ describe('Auth0APIClient', () => {
         getClient();
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js');
-        expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain('auth0-js');
+        expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain('auth0.js');
+      });
+      it('overrides auth0.js telemetry key', () => {
+        setURL(`https://auth.myapp.com/authorize`);
+        const options = {
+          audience: 'foo',
+          redirectUrl: '//localhost:8080/login/callback',
+          responseMode: 'query',
+          responseType: 'code',
+          leeway: 60,
+          _telemetryInfo: {
+            name: 'test-sdk',
+            version: '1.0.0',
+            env: { 'auth0.js': 'this-will-be-overriden' }
+          }
+        };
+        getClient(options);
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env['auth0.js']).toBe('a0js.version');
       });
       it('uses different telemetry key when inside the ULP', () => {
         setURL('https://me.auth0.com/');
@@ -81,7 +99,7 @@ describe('Auth0APIClient', () => {
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js-ulp');
         expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain(
-          'auth0-js-ulp'
+          'auth0.js-ulp'
         );
       });
       it('forwards options to WebAuth', () => {

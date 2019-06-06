@@ -1,5 +1,26 @@
 # Change Log
 
+## [v11.16.2](https://github.com/auth0/lock/tree/v11.16.2) (2019-06-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.16.1...v11.16.2)
+
+**Fixed**
+
+- Fixed telemetry
+
+
+## [v11.16.1](https://github.com/auth0/lock/tree/v11.16.1) (2019-06-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.16.0...v11.16.1)
+
+
+**Added**
+- Add error message for too_many_requests [\#1655](https://github.com/auth0/lock/pull/1655) ([luisrudge](https://github.com/luisrudge))
+- Add translation for Bulgarian (bg). [\#1652](https://github.com/auth0/lock/pull/1652) ([alex-mo](https://github.com/alex-mo))
+
+**Fixed**
+- Prevent form submit when password is empty [\#1654](https://github.com/auth0/lock/pull/1654) ([luisrudge](https://github.com/luisrudge))
+- Fix destroying lock instance [\#1653](https://github.com/auth0/lock/pull/1653) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.16.0](https://github.com/auth0/lock/tree/v11.16.0) (2019-05-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.15.0...v11.16.0)
 

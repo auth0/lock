@@ -8,7 +8,11 @@ Object {
         "allowForgot": true,
         "allowSignup": true,
         "name": "test-connection-database",
-        "passwordPolicy": "none",
+        "passwordPolicy": Object {
+          "length": Object {
+            "minLength": 1,
+          },
+        },
         "requireUsername": false,
         "strategy": "auth0",
         "type": "database",
@@ -32,12 +36,15 @@ Object {
         "allowForgot": false,
         "allowSignup": false,
         "name": "test-connection-database",
-        "passwordPolicy": "test-passwordPolicy",
+        "passwordPolicy": Object {
+          "length": Object {
+            "minLength": 1,
+          },
+        },
         "requireUsername": true,
         "strategy": "auth0",
         "type": "database",
         "validation": Object {
-          "passwordPolicy": "test-passwordPolicy",
           "username": Object {
             "max": 15,
             "min": 1,
@@ -62,12 +69,15 @@ Object {
         "allowForgot": false,
         "allowSignup": false,
         "name": "test-connection-database",
-        "passwordPolicy": "test-passwordPolicy",
+        "passwordPolicy": Object {
+          "length": Object {
+            "minLength": 1,
+          },
+        },
         "requireUsername": true,
         "strategy": "auth0",
         "type": "database",
         "validation": Object {
-          "passwordPolicy": "test-passwordPolicy",
           "username": Object {
             "max": 15,
             "min": 1,
@@ -92,12 +102,15 @@ Object {
         "allowForgot": false,
         "allowSignup": false,
         "name": "test-connection-database",
-        "passwordPolicy": "test-passwordPolicy",
+        "passwordPolicy": Object {
+          "length": Object {
+            "minLength": 1,
+          },
+        },
         "requireUsername": true,
         "strategy": "auth0",
         "type": "database",
         "validation": Object {
-          "passwordPolicy": "test-passwordPolicy",
           "username": Object {
             "max": 5,
             "min": 4,
@@ -122,11 +135,49 @@ Object {
         "allowForgot": true,
         "allowSignup": true,
         "name": "test-connection-database",
-        "passwordPolicy": "none",
+        "passwordPolicy": Object {
+          "length": Object {
+            "minLength": 1,
+          },
+        },
         "requireUsername": false,
         "strategy": "auth0",
         "type": "database",
         "validation": null,
+      },
+    ],
+    "enterprise": Array [],
+    "passwordless": Array [],
+    "social": Array [],
+    "unknown": Array [],
+  },
+  "defaultDirectory": null,
+}
+`;
+
+exports[`initTenant() with database connection maps password policy correctly 1`] = `
+Object {
+  "connections": Object {
+    "database": Array [
+      Object {
+        "allowForgot": false,
+        "allowSignup": false,
+        "name": "test-connection-database",
+        "passwordPolicy": Object {
+          "length": Object {
+            "minLength": 6,
+          },
+        },
+        "requireUsername": true,
+        "strategy": "auth0",
+        "type": "database",
+        "validation": Object {
+          "passwordPolicy": "low",
+          "username": Object {
+            "max": 5,
+            "min": 4,
+          },
+        },
       },
     ],
     "enterprise": Array [],
