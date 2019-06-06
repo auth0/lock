@@ -53,7 +53,29 @@ describe('initTenant()', () => {
               requiresUsername: true,
               strategy: 'auth0',
               validation: {
-                passwordPolicy: 'test-passwordPolicy',
+                username: {
+                  min: 4,
+                  max: 5
+                }
+              }
+            }
+          ]
+        }
+      };
+      runTest(initTenant, mockDataFns, client);
+    });
+    it('maps password policy correctly', () => {
+      const client = {
+        connections: {
+          database: [
+            {
+              allowForgot: false,
+              allowSignup: false,
+              name: 'test-connection-database',
+              requiresUsername: true,
+              strategy: 'auth0',
+              validation: {
+                passwordPolicy: 'low', //minLength: 6
                 username: {
                   min: 4,
                   max: 5
@@ -76,7 +98,6 @@ describe('initTenant()', () => {
               requiresUsername: true,
               strategy: 'auth0',
               validation: {
-                passwordPolicy: 'test-passwordPolicy',
                 username: {
                   min: 'foo',
                   max: 'bar'
@@ -99,7 +120,6 @@ describe('initTenant()', () => {
               requiresUsername: true,
               strategy: 'auth0',
               validation: {
-                passwordPolicy: 'test-passwordPolicy',
                 username: {
                   min: 5,
                   max: 4
