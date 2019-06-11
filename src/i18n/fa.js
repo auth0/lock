@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'اکانت شما به دلیل تلاش های نا موفق متعدد متوالی مسدود شده است',
       session_missing:
         'می تواند درخواست احراز هویت خود را کامل کند. لطفا پس از بستن همه پنجره باز دوباره امتحان کنید',
-      'hrd.not_matching_email': 'لطفا، استفاده از ایمیل شرکت خود را برای ورود.'
+      'hrd.not_matching_email': 'لطفا، استفاده از ایمیل شرکت خود را برای ورود.',
+      too_many_requests:
+        'ما متاسفیم. در حال حاضر درخواست های زیادی وجود دارد لطفا صفحه را مجددا بارگذاری کنید و دوباره تلاش کنید. اگر این کار ادامه دارد، لطفا بعدا دوباره امتحان کنید.'
     },
     passwordless: {
       'bad.email': 'ایمیل نا معتبر است.',
@@ -102,7 +104,6 @@ export default {
   sentLabel: 'ارسال شد!',
   signUpLabel: 'ثبت نام',
   signUpSubmitLabel: 'ثبت نام',
-  signUpTerms: '',
   signUpWithLabel: 'ورود با %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -122,6 +123,7 @@ export default {
   mfaSubmitLabel: 'ورود',
   mfaCodeErrorHint: 'از %d عدد استفاده کنید',
   forgotPasswordTitle: 'تنظیم مجدد کلمه ورود',
-  signupTitle: 'ثبت نام',
-  showPassword: 'نمایش رمز ورود'
+  signUpTitle: 'ثبت نام',
+  showPassword: 'نمایش رمز ورود',
+  signUpTerms: 'با ثبت نام، با شرایط خدمات و سیاست حفظ حریم خصوصی ما موافقت می کنید.'
 };

@@ -33,7 +33,9 @@ export default {
       session_missing:
         'Не вдалося виконати запит аутентифікації. Будь ласка, спробуйте ще раз попередньо закривши всі спливаючі вікна.',
       'hrd.not_matching_email':
-        'Будь ласка, використовуйте адресу вашої корпоративної пошти для входу.'
+        'Будь ласка, використовуйте адресу вашої корпоративної пошти для входу.',
+      too_many_requests:
+        "We're sorry. There are too many requests right now. Please reload the page and try again. If this persists, please try again later."
     },
     passwordless: {
       'bad.email': 'Недійсна адреса електронної пошти',
@@ -110,7 +112,6 @@ export default {
   sentLabel: 'Відправлено!',
   signUpLabel: 'Реєстрація',
   signUpSubmitLabel: 'Зареєструватися',
-  signUpTerms: '',
   signUpWithLabel: 'Зареєструватися через %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -127,12 +128,13 @@ export default {
   windowsAuthInstructions: 'Ви підключені через корпоративну мережу&hellip;',
   windowsAuthLabel: 'Аутентифікація Windows',
   forgotPasswordTitle: 'Скинути пароль',
-  signupTitle: 'Зареєструватися',
+  signUpTitle: 'Зареєструватися',
   mfaInputPlaceholder: 'Код',
   mfaLoginTitle: 'Дворівнева перевірка',
   mfaLoginInstructions:
     'Будь ласка, введіть перевірчий код що був згенерований мобільним додатком.',
   mfaSubmitLabel: 'Авторизуватися',
   mfaCodeErrorHint: 'Використовуйте %d номери',
-  showPassword: 'Show password'
+  showPassword: 'Show password',
+  signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.'
 };

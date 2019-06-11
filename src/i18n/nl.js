@@ -33,7 +33,9 @@ export default {
       'lock.mfa_invalid_code': 'Verkeerde code. Probeer het opnieuw.',
       session_missing:
         'Kan uw authenticatie verzoek niet voltooien. Probeer opnieuw na het sluiten van alle geopende vensters',
-      'hrd.not_matching_email': 'Gelieve gebruik te maken van uw zakelijke e-mail om in te loggen.'
+      'hrd.not_matching_email': 'Gelieve gebruik te maken van uw zakelijke e-mail om in te loggen.',
+      too_many_requests:
+        'Het spijt ons. Er zijn op dit moment te veel aanvragen. Laad de pagina opnieuw en probeer het opnieuw. Als dit probleem aanhoudt, probeert u het later opnieuw.'
     },
     passwordless: {
       'bad.email': 'Het e-mailadres is ongeldig',
@@ -107,7 +109,6 @@ export default {
   sentLabel: 'Verzonden!',
   signUpLabel: 'Aanmelden',
   signUpSubmitLabel: 'Aanmelden',
-  signUpTerms: '',
   signUpWithLabel: 'Aanmelden met %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -123,11 +124,13 @@ export default {
   windowsAuthInstructions: 'U bent verbonden vanaf uw bedrijfsnetwerk&hellip;',
   windowsAuthLabel: 'Windows Authenticatie',
   forgotPasswordTitle: 'Stel je wachtwoord opnieuw in',
-  signupTitle: 'Aanmelden',
+  signUpTitle: 'Aanmelden',
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-staps verificatie',
   mfaLoginInstructions: 'Vul de verificatiecode gegenereerd door uw mobiele applicatie.',
   mfaSubmitLabel: 'Log in',
   mfaCodeErrorHint: 'Gebruik %d nummers',
-  showPassword: 'Laat wachtwoord zien'
+  showPassword: 'Laat wachtwoord zien',
+  signUpTerms:
+    'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.'
 };

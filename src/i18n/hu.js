@@ -31,7 +31,9 @@ export default {
       'lock.mfa_invalid_code': 'Rossz kód. Kérlek próbáld újra.',
       session_missing:
         'Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok',
-      'hrd.not_matching_email': 'Kérjük, használja a vállalati e-mail jelentkezned.'
+      'hrd.not_matching_email': 'Kérjük, használja a vállalati e-mail jelentkezned.',
+      too_many_requests:
+        'Sajnáljuk. Túl sok kérés van. Kérjük, töltse be újra az oldalt, és próbálja újra. Ha ez továbbra is fennáll, próbálkozzon később.'
     },
     passwordless: {
       'bad.email': 'Érvénytelen e-mailcím',
@@ -104,7 +106,6 @@ export default {
   sentLabel: 'Elküldve!',
   signUpLabel: 'Feliratkozás',
   signUpSubmitLabel: 'Feliratkozás',
-  signUpTerms: '',
   signUpWithLabel: 'Feliratkozás %s-val',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -121,11 +122,13 @@ export default {
   windowsAuthInstructions: 'A céged hálózatoddal kapcsolódsz&hellip;',
   windowsAuthLabel: 'Windows bejelentkezés',
   forgotPasswordTitle: 'Állítsd vissza a jelszavad',
-  signupTitle: 'Regisztrálj',
+  signUpTitle: 'Regisztrálj',
   mfaInputPlaceholder: 'Kód',
   mfaLoginTitle: '2 kétlépcsős azonosítás',
   mfaLoginInstructions: 'Kérjük adja meg az ellenőrző kódot generált a mobil alkalmazás.',
   mfaSubmitLabel: 'Belépek',
   mfaCodeErrorHint: 'Használja %d számok',
-  showPassword: 'Mutasd a jelszót'
+  showPassword: 'Mutasd a jelszót',
+  signUpTerms:
+    'Feliratkozással elfogadja a szolgáltatási feltételeinket és az adatvédelmi irányelveinket.'
 };

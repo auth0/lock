@@ -11,15 +11,26 @@ import {
   isSendLink,
   passwordlessStarted
 } from '../connection/passwordless/index';
-import { initSocial } from '../connection/social/index';
 import { isDone, isSuccess } from '../sync';
 import * as l from '../core/index';
 import { hasSkippedQuickAuth } from '../quick_auth';
 import * as sso from '../core/sso/index';
+import { setEmail } from '../field/email';
+import { setPhoneNumber } from '../field/phone_number';
+
+const setPrefill = m => {
+  const { email, phoneNumber } = l.prefill(m).toJS();
+  if (typeof email === 'string') {
+    m = setEmail(m, email);
+  }
+  if (typeof phoneNumber === 'string') {
+    m = setPhoneNumber(m, phoneNumber);
+  }
+  return m;
+};
 
 class Passwordless {
   didInitialize(m, opts) {
-    m = initSocial(m, opts);
     m = initPasswordless(m, opts);
 
     return m;
@@ -36,6 +47,7 @@ class Passwordless {
       error.code = 'no_connection';
       m = l.stop(m, error);
     }
+    m = setPrefill(m);
 
     return m;
   }
@@ -80,15 +92,6 @@ class Passwordless {
     } else {
       return passwordlessStarted(m) ? new VcodeScreen() : new SocialOrPhoneNumberLoginScreen();
     }
-
-    setTimeout(() => {
-      const stopError = new Error('Internal error');
-      stopError.code = 'internal_error';
-      stopError.description = "Couldn't find a screen to render";
-      swap(updateEntity, 'lock', l.id(m), l.stop, stopError);
-    }, 0);
-
-    return new ErrorScreen();
   }
 }
 

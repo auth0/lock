@@ -1,4 +1,4 @@
-export function normalizeError(error) {
+export function normalizeError(error, domain) {
   if (!error) {
     return error;
   }
@@ -94,7 +94,10 @@ export function normalizeError(error) {
       description: error.description
     };
   }
-  if (error.error === 'access_denied' || error.code === 'access_denied') {
+  if (
+    window.location.host !== domain &&
+    (error.error === 'access_denied' || error.code === 'access_denied')
+  ) {
     return {
       code: 'invalid_user_password',
       error: 'invalid_user_password',
@@ -111,10 +114,10 @@ export function normalizeError(error) {
   return result.error === undefined && result.description === undefined ? error : result;
 }
 
-export function loginCallback(redirect, cb) {
+export function loginCallback(redirect, domain, cb) {
   return redirect
-    ? error => cb(normalizeError(error))
-    : (error, result) => cb(normalizeError(error), result);
+    ? error => cb(normalizeError(error, domain))
+    : (error, result) => cb(normalizeError(error, domain), result);
 }
 
 export function normalizeAuthParams({ popup, ...authParams }) {
@@ -130,4 +133,18 @@ export function webAuthOverrides({ __tenant, __token_issuer, __jwks_uri } = {}) 
     };
   }
   return null;
+}
+
+export function trimAuthParams(params = {}) {
+  const { ...p } = params;
+  ['username', 'email', 'phoneNumber', 'mfa_code'].forEach(k => {
+    if (typeof p[k] === 'string') {
+      p[k] = p[k].trim();
+    }
+  });
+  return p;
+}
+
+export function getVersion() {
+  return __VERSION__;
 }

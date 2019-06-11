@@ -28,7 +28,9 @@ export default {
       'lock.mfa_invalid_code': 'Código incorrecto. Por favor vuelva a intentarlo.',
       session_missing:
         'No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente.',
-      'hrd.not_matching_email': 'Por favor, use sus credenciales corporativas.'
+      'hrd.not_matching_email': 'Por favor, use sus credenciales corporativas.',
+      too_many_requests:
+        'Lo sentimos. Hay demasiados peticiones en estos momentos. Por favor, recargue la página y vuelva a intentarlo. Si persiste, por favor vuelva a intentarlo más tarde.'
     },
     passwordless: {
       'bad.email': 'Correo inválido',
@@ -64,7 +66,7 @@ export default {
   forgotPasswordTitle: 'Restablecer contraseña',
   forgotPasswordAction: '¿Olvidó su contraseña?',
   forgotPasswordInstructions:
-    'Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contrseña.',
+    'Por favor ingrese su dirección de correo. Le enviaremos las instrucciones para restablecer su contraseña.',
   forgotPasswordSubmitLabel: 'Enviar email',
   invalidErrorHint: 'Inválido',
   lastLoginInstructions: 'La última vez inició sesión con',
@@ -99,10 +101,9 @@ export default {
   resendingLabel: 'Reenviando...',
   retryLabel: 'Reintentar',
   sentLabel: 'Enviado!',
-  signupTitle: 'Registrarse',
+  signUpTitle: 'Registrarse',
   signUpLabel: 'Registrarse',
   signUpSubmitLabel: 'Registrarse',
-  signUpTerms: '',
   signUpWithLabel: 'Registrarse con %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -123,5 +124,6 @@ export default {
     'Por favor ingrese el código de verificación generado por su aplicación móvil.',
   mfaSubmitLabel: 'Enviar',
   mfaCodeErrorHint: '%d números',
-  showPassword: 'Mostrar contraseña'
+  showPassword: 'Mostrar contraseña',
+  signUpTerms: 'Al suscribirse usted acepta nuestros términos de servicio y política de privacidad.'
 };

@@ -10,6 +10,7 @@ headerHeight = 118px
 submitHeight = 70px
 iphoneBar = 68px
 tabsHeight = 40px
+loadingSize = 30px
 
 @media screen and (max-width: 480px)
   html.auth0-lock-html body
@@ -120,8 +121,7 @@ tabsHeight = 40px
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     margin 0 auto
     border-radius 5px
-    max-height 100vh
-    
+
     +breakpoint("mobile")
       -webkit-transition -webkit-transform .4s, opacity .3s
       transition transform .4s, opacity .3s
@@ -130,10 +130,13 @@ tabsHeight = 40px
     position relative
 
   .auth0-lock-cred-pane
-    height 100%
-    border-radius 6px
     background white
+    border-radius 6px
     position relative
+    display: flex;
+    flex-direction: column;
+    height: 100%
+    min-height: 100%
 
     &.horizontal-fade-exit
       .auth0-lock-content, .auth0-lock-terms
@@ -142,15 +145,23 @@ tabsHeight = 40px
 
     &.auth0-lock-moving
       overflow hidden
-
-
+  .auth0-lock-cred-pane-internal-wrapper
+    display: flex
+    flex-direction: column
+    height 100vh
+    max-height auto
+    +breakpoint("mobile")
+      max-height: calc(100vh - 40px)
+      min-height auto
+      height auto
+      
+  
   // Lock header content
 
 
   .auth0-lock-header
     text-align center
     padding 11px
-    height headerHeight
     color #333
     position relative
     background #fff
@@ -158,6 +169,19 @@ tabsHeight = 40px
     overflow hidden
     -webkit-box-sizing border-box
     box-sizing border-box
+    display: flex
+    flex-direction: column
+    justify-content: center
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: auto;
+
+  .auth0-lock-content-wrapper
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: auto;
+    overflow: auto;
+    -webkit-overflow-scrolling touch;
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
@@ -167,6 +191,7 @@ tabsHeight = 40px
     border-radius 100px
     height 10px
     width 10px
+    padding 0
     position absolute
     top 14px
     right 14px
@@ -176,6 +201,10 @@ tabsHeight = 40px
     border 6px solid white
     cursor pointer
     line-height 0
+    
+    &:focus
+      outline: none
+      box-shadow 0 3px 3px rgba(0,0,0,.3)
 
     svg
       -webkit-box-sizing content-box
@@ -225,7 +254,7 @@ tabsHeight = 40px
       -webkit-filter blur(40px) grayscale(1)
       -ms-filter blur(40px) grayscale(1)
       filter blur(40px) grayscale(1)
-      -webkit-backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0)
       background-color #fff
       background-position center
       background-repeat no-repeat
@@ -238,7 +267,7 @@ tabsHeight = 40px
         -webkit-filter blur(30px)
         -ms-filter blur(30px)
         filter blur(30px)
-        -webkit-backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0)
         background-position center
         background-size 800px
 
@@ -288,15 +317,14 @@ tabsHeight = 40px
 
 
   .auth0-lock-content
-    padding 20px
     -webkit-box-sizing border-box
     -moz-box-sizing border-box
     box-sizing border-box
 
   .auth0-lock-form
-    display initial
     -webkit-animation fadeIn .2s
     animation fadeIn .2s
+    padding 20px
 
     h2
       font-size 22px
@@ -322,6 +350,8 @@ tabsHeight = 40px
         color rgba(0,0,0,.87)
         cursor pointer
         margin-bottom 0
+        &:focus
+          text-decoration underline
 
   .auth0-lock-input-block
     position relative
@@ -400,7 +430,7 @@ tabsHeight = 40px
         text-align left
 
         &.auth0-lock-input-with-placeholder
-          color rgba(0,0,0,.54);
+          color rgba(0,0,0,.54)
 
   .auth0-lock-error .auth0-lock-input-wrap
     border-color red
@@ -459,14 +489,33 @@ tabsHeight = 40px
     -webkit-transition background-color .2s ease-in-out
     transition background-color .2s ease-in-out
 
+    &[data-provider^=google]
+      .auth0-lock-social-button-icon
+        background-color: #ffffff
+        border: 2px #4285f4 solid
+        border-radius: 3px 0px 0px 3px
+        height: 36px
+        width: 36px
+      &:hover, &:focus
+        .auth0-lock-social-button-icon
+          background-color: #ffffff !important
+          border-color: #3367d6
+        .auth0-lock-social-button-text
+          background-color: #3367d6 !important
+      &.auth0-lock-social-big-button
+        .auth0-lock-social-button-icon
+          background-color: #ffffff
+          width: 38px
+
     .auth0-lock-social-button-icon
+      box-sizing: content-box
       width 40px
       height 40px
       position absolute
       top 0
       left 0
-      transition background-color 0.3s
-      -webkit-transition background-color 0.3s
+      transition background-color 0.3s, border .2s ease-in-out
+      -webkit-transition background-color 0.3s, border .2s ease-in-out
 
     &:hover, &:focus
       .auth0-lock-social-button-icon
@@ -551,7 +600,6 @@ tabsHeight = 40px
     -webkit-box-sizing border-box
     box-sizing border-box
     width 100%
-    height submitHeight
     overflow hidden
     border-radius 0 0 5px 5px
     -webkit-transition .2s ease-in-out
@@ -561,6 +609,9 @@ tabsHeight = 40px
     letter-spacing 1px
     font-size 14px
     text-transform uppercase
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: auto;
 
     span
       display inline-block
@@ -604,6 +655,9 @@ tabsHeight = 40px
       opacity 1
       transition-duration .5s
 
+  .auth0-lock-submit-container
+    flex-shrink: 0
+  
   .auth0-loading-container
     position relative
     display none
@@ -612,8 +666,8 @@ tabsHeight = 40px
       position absolute
       top 4px
       left 44%
-      width 30px
-      height 30px
+      width loadingSize
+      height loadingSize
       border-width 2px
       border-style solid
       border-color rgba(0,0,0,.4) rgba(0,0,0,.4) rgba(0,0,0,.2) rgba(0,0,0,.2)
@@ -854,10 +908,10 @@ tabsHeight = 40px
     left 15px
     z-index -1
     text-align center
-    padding: 6px 10px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.1);
+    padding: 6px 10px
+    -webkit-border-radius: 3px
+    border-radius: 3px
+    background: rgba(255,255,255,0.1)
 
     .auth0-lock-badge
       display inline-block
@@ -958,8 +1012,6 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         background white
-        min-height "calc(100vh - %s)" % (headerHeight + submitHeight)
-        // min-height 375px
         display table
         width 100%
 
@@ -967,27 +1019,15 @@ tabsHeight = 40px
       //mobile view
       @media screen and (max-width: 480px)
         width 100%
-        display table-cell
         vertical-align middle
 
       .auth0-lock-form p
         @media screen and (max-width: 480px)
           font-size 14px
 
-    .auth0-lock-tabs-container
-      //mobile view
-      @media screen and (max-width: 480px)
-        position absolute
-        top 0
-        left 0
-        width 100%
-        margin 0
-
-
     .auth0-lock-terms
       @media screen and (max-width: 480px)
         position absolute
-        bottom -42px
         width 100%
         left 0
         -webkit-box-sizing border-box
@@ -1013,51 +1053,13 @@ tabsHeight = 40px
       @media screen and (max-width: 480px)
         border-radius 0
 
-    &.auth0-lock-iphone
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % (headerHeight + submitHeight + iphoneBar)
-
-    &.auth0-lock-no-submit
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % headerHeight
-
-      &.auth0-lock-iphone
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s)" % (headerHeight + iphoneBar)
-
     &.auth0-lock-with-terms
       .auth0-lock-body-content
         //mobile view
         @media screen and (max-width: 480px)
           margin-bottom 42px
 
-    &.auth0-lock-with-tabs
-      .auth0-lock-body-content
-        //mobile view
-        @media screen and (max-width: 480px)
-          min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight)
-          padding-top 40px
-
-      &.auth0-lock-with-terms
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s - 42px)" % (headerHeight + submitHeight + tabsHeight) // - header - submit - tabs - terms
-
-      &.auth0-lock-iphone
-        .auth0-lock-body-content
-          //mobile view
-          @media screen and (max-width: 480px)
-            min-height "calc(100vh - %s)" % (headerHeight + submitHeight + tabsHeight + iphoneBar)
-
   // Opened in frame
-
 
   &.auth0-lock-opened-in-frame
     opacity 1
@@ -1109,9 +1111,10 @@ tabsHeight = 40px
 
 .auth0-lock.auth0-lock
   .auth0-lock-tabs-container
-    margin -20px -20px 20px
-    height tabsHeight
-
+    margin-left -20px
+    margin-right -20px
+    margin-top -20px
+    margin-bottom 20px
   .auth0-lock-tabs
     background white
     padding 0
@@ -1142,18 +1145,21 @@ tabsHeight = 40px
       text-align center
       cursor pointer
 
-      a
+      a, span
         padding 11px 10px
         display block
         text-decoration none
         color rgba(#5C666F,.6)
         font-weight 500
 
+      a:focus
+        color rgba(#5C666F,.9)
+
       &.auth0-lock-tabs-current
         box-shadow 0 1px 0 0 #5C666F
         cursor default
 
-        a
+        span
           color #5C666F
 
 // password strength
@@ -1222,7 +1228,7 @@ tabsHeight = 40px
 
   li
     span
-      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+RXJyb3I8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFzc3dvcmQtUG9saWN5IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJBcnRib2FyZC0xIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAwLjAwMDAwMCwgLTE0OC4wMDAwMDApIj4gICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUwLjAwMDAwMCwgNzUuMDAwMDAwKSI+ICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cC1Db3B5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNS4wMDAwMDAsIDM2LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkVycm9yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS4wMDAwMDAsIDM3LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgICAgIDxlbGxpcHNlIGlkPSJPdmFsLTkwIiBmaWxsPSIjQkU0NTI3IiBjeD0iNiIgY3k9IjYiIHJ4PSI2IiByeT0iNiI+PC9lbGxpcHNlPiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik05LDMuNjA0Mjg1NzEgTDguMzk1NzE0MjksMyBMNiw1LjM5NTcxNDI5IEwzLjYwNDI4NTcxLDMgTDMsMy42MDQyODU3MSBMNS4zOTU3MTQyOSw2IEwzLDguMzk1NzE0MjkgTDMuNjA0Mjg1NzEsOSBMNiw2LjYwNDI4NTcxIEw4LjM5NTcxNDI5LDkgTDksOC4zOTU3MTQyOSBMNi42MDQyODU3MSw2IEw5LDMuNjA0Mjg1NzEgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=');
+      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+RXJyb3I8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFzc3dvcmQtUG9saWN5IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJBcnRib2FyZC0xIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAwLjAwMDAwMCwgLTE0OC4wMDAwMDApIj4gICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUwLjAwMDAwMCwgNzUuMDAwMDAwKSI+ICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cC1Db3B5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNS4wMDAwMDAsIDM2LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkVycm9yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS4wMDAwMDAsIDM3LjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgICAgIDxlbGxpcHNlIGlkPSJPdmFsLTkwIiBmaWxsPSIjQkU0NTI3IiBjeD0iNiIgY3k9IjYiIHJ4PSI2IiByeT0iNiI+PC9lbGxpcHNlPiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik05LDMuNjA0Mjg1NzEgTDguMzk1NzE0MjksMyBMNiw1LjM5NTcxNDI5IEwzLjYwNDI4NTcxLDMgTDMsMy42MDQyODU3MSBMNS4zOTU3MTQyOSw2IEwzLDguMzk1NzE0MjkgTDMuNjA0Mjg1NzEsOSBMNiw2LjYwNDI4NTcxIEw4LjM5NTcxNDI5LDkgTDksOC4zOTU3MTQyOSBMNi42MDQyODU3MSw2IEw5LDMuNjA0Mjg1NzEgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=')
       background-position left center
       background-repeat no-repeat
       padding-left 20px
@@ -1256,42 +1262,18 @@ tabsHeight = 40px
   color red
   font-size 12px
   margin-top 5px
-
-  +breakpoint("mobile")
-    color black
-    background white
-    box-shadow 0 0 5px 0 rgba(black,.6)
-    margin 0
-    border-radius 3px
-    position absolute
-    left calc(100% + 7px)
-    top 1px
-    display inline-table
-
-    span
-      background white
-      padding 12px 15px
-      display block
-      position relative
-      border-radius 3px
-      z-index 1
-
-    &:after
-      content ""
-      background white
-      height 6px
-      width 6px
-      position absolute
-      pointer-events none
-      box-shadow 0 0 5px 0 rgba(black,.6)
-      right calc(100% - 3px)
-      top 50%
-      transform translateY(-50%) rotate(45deg)
+  white-space nowrap
 
 // loading
 
 .auth0-lock .auth0-loading-screen
   min-height 42px
+  box-sizing border-box
+  @media screen and (max-width: 480px)
+      position absolute
+      top "calc(50vh - %s)" % headerHeight
+      left "calc(50vw - %s)" % (loadingSize / 2)
+      padding 0
 
   .auth0-loading-container
     display block
@@ -1364,3 +1346,8 @@ input[type="button"]
 
 .auth0-lock-hidden
   display: none
+
+// Hack to fix the height on IE11
+_:-ms-fullscreen, :root .auth0-lock.auth0-lock .auth0-lock-content-wrapper
+  flex-basis: auto !important
+  max-height: 70vh

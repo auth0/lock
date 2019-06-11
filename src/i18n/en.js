@@ -25,9 +25,11 @@ export default {
       password_leaked:
         'We have detected a potential security issue with this account. To protect your account, we have blocked this login. An email was sent with instruction on how to unblock your account.',
       too_many_attempts: 'Your account has been blocked after multiple consecutive login attempts.',
+      too_many_requests:
+        "We're sorry. There are too many requests right now. Please reload the page and try again. If this persists, please try again later.",
       session_missing:
         "Couldn't complete your authentication request. Please try again after closing all open dialogs",
-      'hrd.not_matching_email': 'Please, use your corporate email to login.'
+      'hrd.not_matching_email': 'Please use your corporate email to login.'
     },
     passwordless: {
       'bad.email': 'The email is invalid',
@@ -100,10 +102,10 @@ export default {
   retryLabel: 'Retry',
   sentLabel: 'Sent!',
   showPassword: 'Show password',
-  signupTitle: 'Sign Up',
+  signUpTitle: 'Sign Up',
   signUpLabel: 'Sign Up',
   signUpSubmitLabel: 'Sign Up',
-  signUpTerms: '',
+  signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.',
   signUpWithLabel: 'Sign up with %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',

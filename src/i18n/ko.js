@@ -25,7 +25,8 @@ export default {
         '본 계정은 외부 접근으로 인한 회원 정보 유출이 우려되어, 보안 상의 문제로 비활성화되었습니다. 계정을 다시 활성화하는 방법은 자동 전송된 이메일에 안내되어 있습니다.',
       too_many_attempts: '본 계정은 단시간에 복수의 로그인 시도가 감지되어 차단되었습니다.',
       session_missing: '인증 요청이 완료되지 않았습니다. 열려있는 모든 다이얼로그 창을 닫고 다시 시도해 주시기 바랍니다.',
-      'hrd.not_matching_email': '로그인하려면 회사 이메일을 사용하십시오.'
+      'hrd.not_matching_email': '로그인하려면 회사 이메일을 사용하십시오.',
+      too_many_requests: '우리가 미안해. 지금 요청이 너무 많습니다. 페이지를 새로 고침하고 다시 시도하십시오. 문제가 지속되면 나중에 다시 시도하십시오.'
     },
     passwordless: {
       'bad.email': '이메일 주소가 유효하지 않습니다',
@@ -93,10 +94,9 @@ export default {
   resendingLabel: '재전송중...',
   retryLabel: '재시도',
   sentLabel: '전송완료',
-  signupTitle: '회원가입',
+  signUpTitle: '회원가입',
   signUpLabel: '회원가입',
   signUpSubmitLabel: '회원가입',
-  signUpTerms: '',
   signUpWithLabel: '%s로 회원가입',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -115,5 +115,6 @@ export default {
   mfaLoginInstructions: '스마트폰 어플리케이션으로 생성된 확인 코드를 입력하여 주세요.',
   mfaSubmitLabel: '로그인',
   mfaCodeErrorHint: '%d 숫자를 사용하여 주세요.',
-  showPassword: '암호 표시'
+  showPassword: '암호 표시',
+  signUpTerms: '가입하면 서비스 약관 및 개인 정보 취급 방침에 동의하게됩니다.'
 };

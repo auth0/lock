@@ -2,15 +2,16 @@
 
 exports[`SignUpScreen disables SocialButtonsPane when terms were not accepted 1`] = `
 <div>
-  <div
-    data-__type="social_buttons_pane"
-    data-bigButtons={false}
-    data-disabled={true}
-    data-instructions="socialSignUpInstructions"
-    data-labelFn={[Function]}
-    data-lock="model"
-    data-signUp={true}
-  />
+  <div>
+    <div
+      data-__type="social_buttons_pane"
+      data-disabled={true}
+      data-instructions="socialSignUpInstructions"
+      data-labelFn={[Function]}
+      data-lock="model"
+      data-signUp={true}
+    />
+  </div>
 </div>
 `;
 
@@ -22,50 +23,55 @@ exports[`SignUpScreen renders LoginSignUpTabs SSO is disabled and has screen log
     data-loginLabel="loginLabel"
     data-signUpLabel="signUpLabel"
   />
+  <div />
 </div>
 `;
 
 exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
 <div>
-  <div
-    data-__type="sign_up_pane"
-    data-emailInputPlaceholder="emailInputPlaceholder"
-    data-i18n={
-      Object {
-        "group": [Function],
-        "html": [Function],
-        "str": [Function],
+  <div>
+    <div
+      data-__type="sign_up_pane"
+      data-emailInputPlaceholder="emailInputPlaceholder"
+      data-i18n={
+        Object {
+          "group": [Function],
+          "html": [Function],
+          "str": [Function],
+        }
       }
-    }
-    data-instructions="databaseSignUpInstructions"
-    data-model="model"
-    data-onlyEmail={false}
-    data-passwordInputPlaceholder="passwordInputPlaceholder"
-    data-passwordStrengthMessages="passwordStrength"
-    data-usernameInputPlaceholder="usernameInputPlaceholder"
-  />
+      data-instructions="databaseSignUpInstructions"
+      data-model="model"
+      data-onlyEmail={false}
+      data-passwordInputPlaceholder="passwordInputPlaceholder"
+      data-passwordStrengthMessages="passwordStrength"
+      data-usernameInputPlaceholder="usernameInputPlaceholder"
+    />
+  </div>
 </div>
 `;
 
 exports[`SignUpScreen renders SignUpPane when has enterprise connection 1`] = `
 <div>
-  <div
-    data-__type="sign_up_pane"
-    data-emailInputPlaceholder="emailInputPlaceholder"
-    data-i18n={
-      Object {
-        "group": [Function],
-        "html": [Function],
-        "str": [Function],
+  <div>
+    <div
+      data-__type="sign_up_pane"
+      data-emailInputPlaceholder="emailInputPlaceholder"
+      data-i18n={
+        Object {
+          "group": [Function],
+          "html": [Function],
+          "str": [Function],
+        }
       }
-    }
-    data-instructions="databaseSignUpInstructions"
-    data-model="model"
-    data-onlyEmail={false}
-    data-passwordInputPlaceholder="passwordInputPlaceholder"
-    data-passwordStrengthMessages="passwordStrength"
-    data-usernameInputPlaceholder="usernameInputPlaceholder"
-  />
+      data-instructions="databaseSignUpInstructions"
+      data-model="model"
+      data-onlyEmail={false}
+      data-passwordInputPlaceholder="passwordInputPlaceholder"
+      data-passwordStrengthMessages="passwordStrength"
+      data-usernameInputPlaceholder="usernameInputPlaceholder"
+    />
+  </div>
 </div>
 `;
 
@@ -73,23 +79,30 @@ exports[`SignUpScreen renders SingleSignOnNotice when SSO is enabled and has scr
 <div>
   <div
     data-__type="single_sign_on_notice"
-    data-children="ssoEnabled"
-  />
+  >
+    ssoEnabled
+  </div>
+  <div />
 </div>
 `;
 
 exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] = `
 <div>
-  <div
-    data-__type="social_buttons_pane"
-    data-bigButtons={false}
-    data-disabled={false}
-    data-instructions="socialSignUpInstructions"
-    data-labelFn={[Function]}
-    data-lock="model"
-    data-signUp={true}
-  />
+  <div>
+    <div
+      data-__type="social_buttons_pane"
+      data-disabled={false}
+      data-instructions="socialSignUpInstructions"
+      data-labelFn={[Function]}
+      data-lock="model"
+      data-signUp={true}
+    />
+  </div>
 </div>
 `;
 
-exports[`SignUpScreen renders empty div by default 1`] = `<div />`;
+exports[`SignUpScreen renders empty div by default 1`] = `
+<div>
+  <div />
+</div>
+`;

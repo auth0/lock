@@ -13,10 +13,28 @@ Array [
 ]
 `;
 
+exports[`Auth0APIClient init with overrides always uses telemetry set in the \`auth0Client\` query param and inside the ULP 1`] = `
+Object {
+  "env": Object {
+    "auth0.js-ulp": "a0js.version",
+    "envOverride": true,
+    "lock.js-ulp": "lock.version",
+  },
+  "name": "test-sdk",
+  "version": "1.0.0",
+}
+`;
+
 exports[`Auth0APIClient init with overrides forwards options to WebAuth 1`] = `
 Object {
   "_sendTelemetry": true,
-  "_telemetryInfo": Object {},
+  "_telemetryInfo": Object {
+    "env": Object {
+      "auth0.js": "a0js.version",
+    },
+    "name": "lock.js",
+    "version": "lock.version",
+  },
   "audience": "foo",
   "clientID": "cid",
   "domain": "me.auth0.com",
@@ -35,7 +53,65 @@ Object {
   "redirectUri": "//localhost:8080/login/callback",
   "responseMode": "query",
   "responseType": "code",
+  "scope": "custom_scope",
   "state": "state",
+}
+`;
+
+exports[`Auth0APIClient init with overrides overrides telemetry when outside the ULP 1`] = `
+Object {
+  "env": Object {
+    "auth0.js": "a0js.version",
+    "envOverride": true,
+    "lock.js": "lock.version",
+  },
+  "name": "test-sdk",
+  "version": "1.0.0",
+}
+`;
+
+exports[`Auth0APIClient logIn should trim spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+}
+`;
+
+exports[`Auth0APIClient logIn should trim spaces in the mfa_code 1`] = `
+Object {
+  "mfa_code": "123456",
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
+exports[`Auth0APIClient logIn should trim spaces in the username 1`] = `
+Object {
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+  "username": "foo",
+}
+`;
+
+exports[`Auth0APIClient logIn should trim spaces in the username with a space 1`] = `
+Object {
+  "nonce": undefined,
+  "popupOptions": undefined,
+  "realm": undefined,
+  "scope": undefined,
+  "state": undefined,
+  "username": "foo bar",
 }
 `;
 
@@ -44,6 +120,7 @@ Object {
   "nonce": undefined,
   "popupOptions": undefined,
   "realm": undefined,
+  "scope": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -53,6 +130,7 @@ exports[`Auth0APIClient logIn with credentials should call popup.loginWithCreden
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -62,6 +140,7 @@ exports[`Auth0APIClient logIn with credentials should call popup.loginWithCreden
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
   "username": "foo",
 }
@@ -71,6 +150,7 @@ exports[`Auth0APIClient logIn with social/enterprise (without username and email
 Object {
   "nonce": undefined,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
 }
 `;
@@ -80,6 +160,7 @@ Object {
   "nonce": undefined,
   "owp": true,
   "popupOptions": undefined,
+  "scope": undefined,
   "state": undefined,
 }
 `;
@@ -129,6 +210,18 @@ Array [
 ]
 `;
 
+exports[`Auth0APIClient passwordlessStart should trim spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+}
+`;
+
+exports[`Auth0APIClient passwordlessStart should trim spaces in the phoneNumber 1`] = `
+Object {
+  "phoneNumber": "+554899999",
+}
+`;
+
 exports[`Auth0APIClient passwordlessVerify should call client.passwordlessLogin 1`] = `
 Array [
   Object {
@@ -137,4 +230,54 @@ Array [
   },
   [Function],
 ]
+`;
+
+exports[`Auth0APIClient passwordlessVerify should trim spaces in the email 1`] = `
+Object {
+  "email": " foo@example.com ",
+  "popup": false,
+}
+`;
+
+exports[`Auth0APIClient passwordlessVerify should trim spaces in the phoneNumber 1`] = `
+Object {
+  "phoneNumber": " +554899999 ",
+  "popup": false,
+}
+`;
+
+exports[`Auth0APIClient resetPassword should trim spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+}
+`;
+
+exports[`Auth0APIClient resetPassword should trim spaces in the username 1`] = `
+Object {
+  "username": "foo",
+}
+`;
+
+exports[`Auth0APIClient resetPassword should trim spaces in the username with a space 1`] = `
+Object {
+  "username": "foo bar",
+}
+`;
+
+exports[`Auth0APIClient signUp should trim spaces in the email 1`] = `
+Object {
+  "email": "foo@example.com",
+}
+`;
+
+exports[`Auth0APIClient signUp should trim spaces in the username 1`] = `
+Object {
+  "username": "foo",
+}
+`;
+
+exports[`Auth0APIClient signUp should trim spaces in the username with a space 1`] = `
+Object {
+  "username": "foo bar",
+}
 `;

@@ -35,7 +35,9 @@ export default {
       session_missing:
         "Impossible de terminer votre demande d'authentification. Veuillez essayer de nouveau après la fermeture de tous les dialogues ouverts",
       'hrd.not_matching_email':
-        "Veuillez utiliser votre messagerie d'entreprise pour vous connecter."
+        "Veuillez utiliser votre messagerie d'entreprise pour vous connecter.",
+      too_many_requests:
+        'Nous sommes désolés. Il y a trop de demandes en ce moment. Veuillez recharger la page et réessayer. Si cela persiste, veuillez réessayer ultérieurement.'
     },
     passwordless: {
       'bad.email': 'L’adresse de messagerie n’est pas valide',
@@ -113,7 +115,6 @@ export default {
   sentLabel: 'Envoyé !',
   signUpLabel: 'Inscription',
   signUpSubmitLabel: 'Inscription',
-  signUpTerms: '',
   signUpWithLabel: 'S’inscrire avec %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -129,12 +130,14 @@ export default {
   windowsAuthInstructions: 'Vous êtes connecté depuis votre réseau d’entreprise...',
   windowsAuthLabel: 'Authentification Windows',
   forgotPasswordTitle: 'réinitialisez votre mot de passe',
-  signupTitle: "S'inscrire",
+  signUpTitle: "S'inscrire",
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-Step Vérification',
   mfaLoginInstructions:
     'Veuillez entrer le code de vérification généré par votre application mobile.',
   mfaSubmitLabel: "S'identifier",
   mfaCodeErrorHint: 'Utilisez des numéros %d',
-  showPassword: 'Montrer le mot de passe'
+  showPassword: 'Montrer le mot de passe',
+  signUpTerms:
+    "En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité."
 };

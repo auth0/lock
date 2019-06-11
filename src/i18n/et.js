@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Sinu konto blokeeriti peale mitut ebaõnnestunud sisselogimiskatset.',
       session_missing:
         'Sisselogimine ebaõnnestus. Palun proovi uuesti peale kõigi akende sulgemist.',
-      'hrd.not_matching_email': 'Palun kasuta oma ettevõtte e-maili sisselogimiseks.'
+      'hrd.not_matching_email': 'Palun kasuta oma ettevõtte e-maili sisselogimiseks.',
+      too_many_requests:
+        'Vabandame. Praegu on päringuid liiga palju. Laadige leht uuesti ja proovige uuesti. Kui see jätkub, proovige hiljem uuesti.'
     },
     passwordless: {
       'bad.email': 'Vigane e-mail',
@@ -103,10 +105,9 @@ export default {
   retryLabel: 'Proovi uuesti',
   sentLabel: 'Saadetud!',
   showPassword: 'Näita salasõna',
-  signupTitle: 'Registreeri',
+  signUpTitle: 'Registreeri',
   signUpLabel: 'Registreeri',
   signUpSubmitLabel: 'Registreeri',
-  signUpTerms: '',
   signUpWithLabel: 'Registreeri kasutades %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +126,6 @@ export default {
   mfaLoginTitle: '2-Sammuline Tuvastamine',
   mfaLoginInstructions: 'Palun sisesta tuvastuskood mille genereeris su mobiilirakendus',
   mfaSubmitLabel: 'Logi sisse',
-  mfaCodeErrorHint: 'Kasuta %d numbrit'
+  mfaCodeErrorHint: 'Kasuta %d numbrit',
+  signUpTerms: 'Registreerudes nõustute meie teenusetingimustega ja privaatsuspoliitikaga.'
 };

@@ -1,5 +1,196 @@
 # Change Log
 
+## [v11.16.2](https://github.com/auth0/lock/tree/v11.16.2) (2019-06-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.16.1...v11.16.2)
+
+**Fixed**
+
+- Fixed telemetry
+
+
+## [v11.16.1](https://github.com/auth0/lock/tree/v11.16.1) (2019-06-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.16.0...v11.16.1)
+
+
+**Added**
+- Add error message for too_many_requests [\#1655](https://github.com/auth0/lock/pull/1655) ([luisrudge](https://github.com/luisrudge))
+- Add translation for Bulgarian (bg). [\#1652](https://github.com/auth0/lock/pull/1652) ([alex-mo](https://github.com/alex-mo))
+
+**Fixed**
+- Prevent form submit when password is empty [\#1654](https://github.com/auth0/lock/pull/1654) ([luisrudge](https://github.com/luisrudge))
+- Fix destroying lock instance [\#1653](https://github.com/auth0/lock/pull/1653) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.16.0](https://github.com/auth0/lock/tree/v11.16.0) (2019-05-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.15.0...v11.16.0)
+
+
+**Changed**
+- Remove socialButtonStyle option to use small icons [\#1637](https://github.com/auth0/lock/pull/1637) ([luisrudge](https://github.com/luisrudge))
+
+*From this release on, the option to display social connections in small styled buttons is no longer available due to branding compliance reasons. All the social connections will now be displayed as large styled buttons.*
+
+**Fixed**
+- Fix IE11 height [\#1641](https://github.com/auth0/lock/pull/1641) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.15.0](https://github.com/auth0/lock/tree/v11.15.0) (2019-04-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.14.1...v11.15.0)
+
+
+**Changed**
+- Changes german translation of 'sign up' from 'Anmelden' to 'Registrieren; [\#1627](https://github.com/auth0/lock/pull/1627) ([PapaMufflon](https://github.com/PapaMufflon))
+- Update telemetry format and rules [\#1624](https://github.com/auth0/lock/pull/1624) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix layout when using big string for terms [\#1631](https://github.com/auth0/lock/pull/1631) ([luisrudge](https://github.com/luisrudge))
+- Use new facebook icon [\#1630](https://github.com/auth0/lock/pull/1630) ([luisrudge](https://github.com/luisrudge))
+- Added `login_required` to unhandled authorization errors [\#1629](https://github.com/auth0/lock/pull/1629) ([benhamiltonpro](https://github.com/benhamiltonpro))
+- Fix error message overflow [\#1628](https://github.com/auth0/lock/pull/1628) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.14.1](https://github.com/auth0/lock/tree/v11.14.1) (2019-03-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.14.0...v11.14.1)
+
+
+**Fixed**
+- Fix/avatar crop header mobile [\#1621](https://github.com/auth0/lock/pull/1621) ([luisrudge](https://github.com/luisrudge))
+- Improve greek translation [\#1614](https://github.com/auth0/lock/pull/1614) ([esarafianou](https://github.com/esarafianou))
+- Upgrade Auth0.js to 9.10.1
+
+
+## [v11.14.0](https://github.com/auth0/lock/tree/v11.14.0) (2019-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.2...v11.14.0)
+
+
+**Changed**
+- Upgrade Auth0.js to trim email, username and phoneNumber on every request [\#1596](https://github.com/auth0/lock/pull/1596) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.13.2](https://github.com/auth0/lock/tree/v11.13.2) (2019-01-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.1...v11.13.2)
+
+
+**Fixed**
+- Fix lock center position with scroll across browsers [\#1594](https://github.com/auth0/lock/pull/1594) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.13.1](https://github.com/auth0/lock/tree/v11.13.1) (2019-01-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.0...v11.13.1)
+
+
+**Fixed**
+- Upgrade Auth0.js with fix for storage inside the Hosted Login Page [\#1592](https://github.com/auth0/lock/pull/1592) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.13.0](https://github.com/auth0/lock/tree/v11.13.0) (2019-01-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.1...v11.13.0)
+
+
+**Added**
+- Adding terms for passwordless [\#1424](https://github.com/auth0/lock/pull/1424) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Don't use storage when inside the Universal Login Page (Auth0.js update) [\#1587](https://github.com/auth0/lock/pull/1587) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed missing scroll issue for sign up [\#1566](https://github.com/auth0/lock/pull/1566) ([degrammer](https://github.com/degrammer))
+
+
+## [v11.12.1](https://github.com/auth0/lock/tree/v11.12.1) (2018-11-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.0...v11.12.1)
+
+
+**Fixed**
+- Fix `lock is undefined` error in non-redirect scenarios [\#1557](https://github.com/auth0/lock/pull/1557) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.12.0](https://github.com/auth0/lock/tree/v11.12.0) (2018-11-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.11.0...v11.12.0)
+
+
+**Added**
+- Add ids to inputs and buttons [\#1517](https://github.com/auth0/lock/pull/1517) ([tingaloo](https://github.com/tingaloo))
+- Add `showTerms` option [\#1485](https://github.com/auth0/lock/pull/1485) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Trim auth params before sending to the API (not while typing) [\#1546](https://github.com/auth0/lock/pull/1546) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix padding in all screens [\#1547](https://github.com/auth0/lock/pull/1547) ([luisrudge](https://github.com/luisrudge))
+- Fix IE10 script error [\#1542](https://github.com/auth0/lock/pull/1542) ([luisrudge](https://github.com/luisrudge))
+- Fix mobile styles using different heights [\#1539](https://github.com/auth0/lock/pull/1539) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.11.0](https://github.com/auth0/lock/tree/v11.11.0) (2018-10-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.10.0...v11.11.0)
+
+
+**Added**
+- Add prefill support to Auth0LockPasswordless [\#1505](https://github.com/auth0/lock/pull/1505) ([luisrudge](https://github.com/luisrudge))
+- Add `ariaLabel` option for custom fields [\#1492](https://github.com/auth0/lock/pull/1492) ([Splact](https://github.com/Splact))
+
+**Fixed**
+- Fix google button styles according to google's guidelines [\#1512](https://github.com/auth0/lock/pull/1512) ([luisrudge](https://github.com/luisrudge))
+- [Sustainment] Fixed Reset Password Avatar/Enterprise Issue [\#1504](https://github.com/auth0/lock/pull/1504) ([cocojoe](https://github.com/cocojoe))
+- Remove aria-describedby on missing ref [\#1497](https://github.com/auth0/lock/pull/1497) ([Splact](https://github.com/Splact))
+
+
+## [v11.10.0](https://github.com/auth0/lock/tree/v11.10.0) (2018-09-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.9.1...v11.10.0)
+
+**Changed**
+- Upgrade Auth0.js to use cookies instead of localStorage by default: [Read more](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v980-2018-09-26)
+
+
+## [v11.9.1](https://github.com/auth0/lock/tree/v11.9.1) (2018-09-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.9.0...v11.9.1)
+
+
+**Fixed**
+- Use span for icon buttons [\#1478](https://github.com/auth0/lock/pull/1478) ([andrew-me](https://github.com/andrew-me))
+
+
+## [v11.9.0](https://github.com/auth0/lock/tree/v11.9.0) (2018-08-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.1...v11.9.0)
+
+
+**Added**
+- Support new minimum password length parameter [\#1472](https://github.com/auth0/lock/pull/1472) ([luisrudge](https://github.com/luisrudge))
+- Improve accessibility [\#1471](https://github.com/auth0/lock/pull/1471) ([andrew-me](https://github.com/andrew-me))
+- Add a new type of additionalSignUpField: hidden [\#1459](https://github.com/auth0/lock/pull/1459) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed login_hint in some enterprise authorize call scenarios [\#1460](https://github.com/auth0/lock/pull/1460) ([cocojoe](https://github.com/cocojoe))
+
+
+## [v11.8.1](https://github.com/auth0/lock/tree/v11.8.1) (2018-07-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.0...v11.8.1)
+
+
+**Fixed**
+- Fix/sign up title inconsistenty [\#1457](https://github.com/auth0/lock/pull/1457) ([luisrudge](https://github.com/luisrudge))
+- Fix wrong autoComplete value in password_input [\#1456](https://github.com/auth0/lock/pull/1456) ([luisrudge](https://github.com/luisrudge))
+- Fix crash when showing lock for the second time with custom select input [\#1448](https://github.com/auth0/lock/pull/1448) ([luisrudge](https://github.com/luisrudge))
+- Moving the PasswordStrength component to below the password input [\#1444](https://github.com/auth0/lock/pull/1444) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.8.0](https://github.com/auth0/lock/tree/v11.8.0) (2018-07-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.2...v11.8.0)
+
+
+**Added**
+- Add allowPasswordAutocomplete option [\#1419](https://github.com/auth0/lock/pull/1419) ([jshado1](https://github.com/jshado1))
+
+**Changed**
+- Upgrade auth0.js to 9.7.3 [\#1442](https://github.com/auth0/lock/pull/1442) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix Configuration URL when using __tenantInfo and a baseConfigurationURL [\#1425](https://github.com/auth0/lock/pull/1425) ([lbalmaceda](https://github.com/lbalmaceda))
+- Fix SSO screen not showing in some cases [\#1415](https://github.com/auth0/lock/pull/1415) ([luisrudge](https://github.com/luisrudge))
+- In SSO mode, hide the password input instead of removing it from the DOM [\#1407](https://github.com/auth0/lock/pull/1407) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.7.2](https://github.com/auth0/lock/tree/v11.7.2) (2018-06-07)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.7.1...v11.7.2)
 

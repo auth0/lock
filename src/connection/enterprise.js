@@ -30,7 +30,8 @@ export const STRATEGIES = {
   pingfederate: 'Ping Federate',
   samlp: 'SAML',
   sharepoint: 'SharePoint Apps',
-  waad: 'Windows Azure AD'
+  waad: 'Windows Azure AD',
+  oidc: 'OpenID Connect'
 };
 
 export function initEnterprise(m, opts) {
@@ -42,7 +43,7 @@ function processOptions(opts) {
 
   if (defaultEnterpriseConnection != undefined && typeof defaultEnterpriseConnection !== 'string') {
     l.warn(
-      options,
+      opts,
       'The `defaultEnterpriseConnection` option will be ignored, because it is not a string.'
     );
     defaultEnterpriseConnection = undefined;

@@ -7,7 +7,9 @@ export function observe(key, id, f) {
   subscribe(`${key}-${id}`, (_, oldState, newState) => {
     const m = getEntity(newState, 'lock', id);
     const oldM = getEntity(oldState, 'lock', id);
-    if (m != oldM) f(m);
+    if (m && !m.equals(oldM)) {
+      f(m);
+    }
   });
 }
 

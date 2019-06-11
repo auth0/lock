@@ -1,9 +1,14 @@
 import auth0 from 'auth0-js';
-import CordovaAuth0Plugin from 'auth0-js/plugins/cordova';
-import superagent from 'superagent';
-import * as l from '../index';
-import { getEntity, read } from '../../store/index';
-import { normalizeError, loginCallback, normalizeAuthParams, webAuthOverrides } from './helper';
+import qs from 'qs';
+import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
+import {
+  normalizeError,
+  loginCallback,
+  normalizeAuthParams,
+  webAuthOverrides,
+  trimAuthParams,
+  getVersion
+} from './helper';
 
 class Auth0APIClient {
   constructor(lockID, clientID, domain, opts) {
@@ -13,12 +18,7 @@ class Auth0APIClient {
     this.domain = domain;
     this.isUniversalLogin = window.location.host === domain;
     this._enableIdPInitiatedLogin = !!(opts._enableIdPInitiatedLogin || opts._enableImpersonation);
-
-    const default_telemetry = {
-      name: 'lock.js',
-      version: __VERSION__,
-      lib_version: auth0.version
-    };
+    const telemetry = this.getTelemetryInfo(opts._telemetryInfo);
 
     var state = opts.state;
     if (opts.params && opts.params.state) {
@@ -29,6 +29,8 @@ class Auth0APIClient {
     if (opts.params && opts.params.nonce) {
       nonce = opts.params.nonce;
     }
+
+    const scope = opts.params && opts.params.scope;
 
     this.client = new auth0.WebAuth({
       clientID: clientID,
@@ -41,31 +43,93 @@ class Auth0APIClient {
       plugins: opts.plugins || [new CordovaAuth0Plugin()],
       overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
-      _telemetryInfo: opts._telemetryInfo || default_telemetry,
+      _telemetryInfo: telemetry,
       state,
-      nonce
+      nonce,
+      scope
     });
 
     this.authOpt = {
       popup: !opts.redirect,
       popupOptions: opts.popupOptions,
-      nonce: nonce,
-      state: state
+      nonce,
+      state,
+      scope
     };
     if (this.isUniversalLogin && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;
     }
   }
+  getTelemetryInfo(telemetryOverride) {
+    let telemetry;
+    const { auth0Client } = qs.parse(window.location.search.substr(1));
+    let ulpTelemetry = auth0Client && JSON.parse(atob(auth0Client));
+    if (this.isUniversalLogin && ulpTelemetry) {
+      telemetry = {
+        ...ulpTelemetry,
+        env: {
+          ...ulpTelemetry.env,
+          ['lock.js-ulp']: getVersion(),
+          ['auth0.js-ulp']: auth0.version.raw
+        }
+      };
+    }
+    if (this.isUniversalLogin && !ulpTelemetry) {
+      telemetry = {
+        name: 'lock.js-ulp',
+        version: getVersion(),
+        env: {
+          ['auth0.js-ulp']: auth0.version.raw
+        }
+      };
+    }
+    if (!this.isUniversalLogin && telemetryOverride) {
+      telemetry = {
+        ...telemetryOverride,
+        env: {
+          ...telemetryOverride.env,
+          ['lock.js']: getVersion(),
+          ['auth0.js']: auth0.version.raw
+        }
+      };
+    }
+    if (!telemetry) {
+      telemetry = {
+        name: 'lock.js',
+        version: getVersion(),
+        env: {
+          ['auth0.js']: auth0.version.raw
+        }
+      };
+    }
+    return telemetry;
+  }
 
   logIn(options, authParams, cb) {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
-    const f = loginCallback(false, cb);
-    const loginOptions = normalizeAuthParams({ ...options, ...this.authOpt, ...authParams });
+    const f = loginCallback(false, this.domain, cb);
+    const loginOptions = trimAuthParams(
+      normalizeAuthParams({
+        ...options,
+        ...this.authOpt,
+        ...authParams
+      })
+    );
+
+    if (options.login_hint) {
+      loginOptions.login_hint = options.login_hint;
+    }
 
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
-        this.client.popup.authorize({ ...loginOptions, owp: true }, f);
+        this.client.popup.authorize(
+          {
+            ...loginOptions,
+            owp: true
+          },
+          f
+        );
       } else {
         this.client.authorize(loginOptions, f);
       }
@@ -82,24 +146,23 @@ class Auth0APIClient {
   }
 
   signUp(options, cb) {
-    const { popup, sso } = this.authOpt;
-    const { autoLogin } = options;
-
     delete options.autoLogin;
-
-    this.client.signup(options, (err, result) => cb(err, result));
+    this.client.signup(trimAuthParams(options), (err, result) => cb(err, result));
   }
 
   resetPassword(options, cb) {
-    this.client.changePassword(options, cb);
+    this.client.changePassword(trimAuthParams(options), cb);
   }
 
   passwordlessStart(options, cb) {
-    this.client.passwordlessStart(options, err => cb(normalizeError(err)));
+    this.client.passwordlessStart(trimAuthParams(options), err => cb(normalizeError(err)));
   }
 
   passwordlessVerify(options, cb) {
-    const verifyOptions = { ...options, popup: this.authOpt.popup };
+    const verifyOptions = {
+      ...options,
+      popup: this.authOpt.popup
+    };
     this.client.passwordlessLogin(verifyOptions, (err, result) => cb(normalizeError(err), result));
   }
 

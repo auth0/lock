@@ -18,11 +18,15 @@ const removeDataFromProps = props => {
   return returnedProps;
 };
 
-export const mockComponent = (type, domElement = 'div') => props =>
-  React.createElement(domElement, {
-    'data-__type': type,
-    ...addDataToProps(props)
-  });
+export const mockComponent = (type, domElement = 'div') => ({ children, ...props }) =>
+  React.createElement(
+    domElement,
+    {
+      'data-__type': type,
+      ...addDataToProps(props)
+    },
+    children
+  );
 
 export const extractPropsFromWrapper = (wrapper, index = 0) =>
   removeDataFromProps(

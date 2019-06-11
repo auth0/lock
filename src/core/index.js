@@ -7,12 +7,9 @@ import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
-import { processSocialOptions } from '../connection/social/index';
 import { clientConnections, hasFreeSubscription } from './client/index';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
-
-const { tset: tsetSocial } = dataFns(['social']);
 
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
   let m = init(
@@ -193,6 +190,7 @@ function extractUIOptions(id, options) {
     allowAutocomplete: !!options.allowAutocomplete,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
     allowShowPassword: !!options.allowShowPassword,
+    allowPasswordAutocomplete: !!options.allowPasswordAutocomplete,
     scrollGlobalMessagesIntoView:
       undefined === options.scrollGlobalMessagesIntoView
         ? true
@@ -229,7 +227,9 @@ export const ui = {
   rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin')),
   allowAutocomplete: m => tget(m, 'allowAutocomplete', getUIAttribute(m, 'allowAutocomplete')),
   scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
-  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword'))
+  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword')),
+  allowPasswordAutocomplete: m =>
+    tget(m, 'allowPasswordAutocomplete', getUIAttribute(m, 'allowPasswordAutocomplete'))
 };
 
 const { get: getAuthAttribute } = dataFns(['core', 'auth']);
@@ -332,6 +332,10 @@ function extractClientBaseUrlOption(opts, domain) {
 
 export function extractTenantBaseUrlOption(opts, domain) {
   if (opts.configurationBaseUrl && typeof opts.configurationBaseUrl === 'string') {
+    if (opts.overrides && opts.overrides.__tenant) {
+      // When using a custom domain and a configuration URL hosted in auth0's cdn
+      return urljoin(opts.configurationBaseUrl, 'tenants', 'v1', `${opts.overrides.__tenant}.js`);
+    }
     return urljoin(opts.configurationBaseUrl, 'info-v1.js');
   }
 
@@ -570,11 +574,6 @@ export function overrideOptions(m, opts) {
     m = tset(m, 'allowedConnections', Immutable.fromJS(opts.allowedConnections));
   }
 
-  if (opts.socialButtonStyle) {
-    let curated = processSocialOptions(opts);
-    m = tsetSocial(m, 'socialButtonStyle', curated.socialButtonStyle);
-  }
-
   if (opts.flashMessage) {
     const { type } = opts.flashMessage;
     const typeCapitalized = type.charAt(0).toUpperCase() + type.slice(1);
@@ -615,6 +614,9 @@ export function overrideOptions(m, opts) {
   }
   if (typeof opts.allowShowPassword === 'boolean') {
     m = tset(m, 'allowShowPassword', opts.allowShowPassword);
+  }
+  if (typeof opts.allowPasswordAutocomplete === 'boolean') {
+    m = tset(m, 'allowPasswordAutocomplete', opts.allowPasswordAutocomplete);
   }
 
   return m;

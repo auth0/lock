@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Vaše konto bolo zablokované po viacnásobných pokusoch o prihlásenie',
       session_missing:
         'Nedá sa odoslať autentifikačná požiadavka. Prosím zatvorte všetky dialogové okná a skúste to znova.',
-      'hrd.not_matching_email': 'Prosím, použite svoj firemný e-mail na prihlásenie.'
+      'hrd.not_matching_email': 'Prosím, použite svoj firemný e-mail na prihlásenie.',
+      too_many_requests:
+        'Je nám to ľúto. Momentálne je príliš veľa žiadostí. Načítajte stránku znova a skúste to znova. Ak to pretrváva, skúste to znova neskôr.'
     },
     passwordless: {
       'bad.email': 'Neplatný e-mail',
@@ -103,10 +105,9 @@ export default {
   resendingLabel: 'Posielame...',
   retryLabel: 'Skúsiť znova',
   sentLabel: 'Odoslané!',
-  signupTitle: 'Prihlásiť sa',
+  signUpTitle: 'Prihlásiť sa',
   signUpLabel: 'Registrácia',
   signUpSubmitLabel: 'Registrovať sa',
-  signUpTerms: '',
   signUpWithLabel: 'Prihlásiť sa ako %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +126,7 @@ export default {
   mfaLoginInstructions: 'Prosím zadajte verifikačný kód vygenerovaný vo Vašej mobilnej aplikácii.',
   mfaSubmitLabel: 'Prihlásiť',
   mfaCodeErrorHint: 'Použite %d číslic',
-  showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.'
+  showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.',
+  signUpTerms:
+    'Registráciou vyjadrujete súhlas s našimi zmluvnými podmienkami a pravidlami ochrany osobných údajov.'
 };

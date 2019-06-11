@@ -20,6 +20,11 @@ exports[`OptionSelectionPane renders correctly 1`] = `
   data-icon="icon"
   data-iconUrl="iconUrl"
   data-items="items"
+  data-model={
+    Object {
+      "get": [Function],
+    }
+  }
   data-onCancel={[Function]}
   data-onSelect={[Function]}
 />

@@ -32,30 +32,63 @@ describe('normalizeError', () => {
     const normalized = normalizeError(undefined);
     expect(normalized).toBe(undefined);
   });
-  it('should map access_denied error to invalid_user_password when error.error === access_denied', () => {
-    const error = {
+
+  describe('access_denied to invalid_user_password mapping', function() {
+    const domainMock = 'domainMock';
+    const errorObjWithError = {
       error: 'access_denied',
       description: 'foobar'
     };
-    const expectedError = {
-      code: 'invalid_user_password',
-      error: 'invalid_user_password',
-      description: 'foobar'
-    };
-    const actualError = normalizeError(error);
-    expect(actualError).toMatchSnapshot();
-  });
-  it('should map access_denied error to invalid_user_password when error.code === access_denied', () => {
-    const error = {
+    const errorObjWithCode = {
       code: 'access_denied',
       description: 'foobar'
     };
-    const expectedError = {
-      code: 'invalid_user_password',
-      error: 'invalid_user_password',
-      description: 'foobar'
-    };
-    const actualError = normalizeError(error);
-    expect(actualError).toMatchSnapshot();
+    let currentWindowObj;
+
+    beforeAll(function() {
+      currentWindowObj = global.window;
+      global.window = {
+        locaction: {
+          host: domainMock
+        }
+      };
+    });
+
+    afterAll(function() {
+      global.window = currentWindowObj;
+    });
+
+    describe('domain is undefined', function() {
+      it('should map access_denied error to invalid_user_password when error.error === access_denied', () => {
+        const actualError = normalizeError(errorObjWithError);
+        expect(actualError).toMatchSnapshot();
+      });
+      it('should map access_denied error to invalid_user_password when error.code === access_denied', () => {
+        const actualError = normalizeError(errorObjWithCode);
+        expect(actualError).toMatchSnapshot();
+      });
+    });
+
+    describe("domain doesn't match current host", function() {
+      it('should map access_denied error to invalid_user_password when error.error === access_denied', () => {
+        const actualError = normalizeError(errorObjWithError, 'loremIpsum');
+        expect(actualError).toMatchSnapshot();
+      });
+      it('should map access_denied error to invalid_user_password when error.code === access_denied', () => {
+        const actualError = normalizeError(errorObjWithCode, 'loremIpsum');
+        expect(actualError).toMatchSnapshot();
+      });
+    });
+
+    describe('domain match current host', function() {
+      it('should not map access_denied error to invalid_user_password when error.error === access_denied', () => {
+        const actualError = normalizeError(errorObjWithError, domainMock);
+        expect(actualError).toMatchSnapshot();
+      });
+      it('should not map access_denied error to invalid_user_password when error.code === access_denied', () => {
+        const actualError = normalizeError(errorObjWithCode, domainMock);
+        expect(actualError).toMatchSnapshot();
+      });
+    });
   });
 });

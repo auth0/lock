@@ -30,7 +30,9 @@ export default {
       'lock.mfa_invalid_code': 'Fel kod. Var god försök igen.',
       session_missing:
         'Det gick inte att slutföra autentiseringsbegäran. Försök igen efter att stänga alla öppna dialoger',
-      'hrd.not_matching_email': 'Använd gärna ditt företags e-post för att logga in.'
+      'hrd.not_matching_email': 'Använd gärna ditt företags e-post för att logga in.',
+      too_many_requests:
+        'Vi är ledsna. Det finns för många förfrågningar just nu. Vänligen ladda om sidan och försök igen. Om detta kvarstår, försök igen senare.'
     },
     passwordless: {
       'bad.email': 'Din e-postadress är ogiltig.',
@@ -102,7 +104,6 @@ export default {
   sentLabel: 'Skickats!',
   signUpLabel: 'Registrera dig',
   signUpSubmitLabel: 'Registrera dig',
-  signUpTerms: '',
   signUpWithLabel: 'Registrera dig med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -118,11 +119,12 @@ export default {
   windowsAuthInstructions: 'Du är uppkopplad från ditt företagsnätverk&hellip;',
   windowsAuthLabel: 'Windows Authentication',
   forgotPasswordTitle: 'Återställ ditt lösenord',
-  signupTitle: 'Registrera dig',
+  signUpTitle: 'Registrera dig',
   mfaInputPlaceholder: 'Koda',
   mfaLoginTitle: '2 tvåstegsverifiering',
   mfaLoginInstructions: 'Ange verifieringskoden som genereras av din mobil applikation.',
   mfaSubmitLabel: 'Logga in',
   mfaCodeErrorHint: 'Använd %d',
-  showPassword: 'Visa lösenord'
+  showPassword: 'Visa lösenord',
+  signUpTerms: 'Genom att anmäla dig godkänner du våra användarvillkor och integritetspolicy.'
 };

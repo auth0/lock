@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Din konto er blokkert på grunn av for mange påloggingsforsøk.',
       session_missing:
         'Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser',
-      'hrd.not_matching_email': 'Vennligst bruk bedriftens e-post å logge inn.'
+      'hrd.not_matching_email': 'Vennligst bruk bedriftens e-post å logge inn.',
+      too_many_requests:
+        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.'
     },
     passwordless: {
       'bad.email': 'E-postadressen er ugyldig',
@@ -104,7 +106,6 @@ export default {
   sentLabel: 'Sendt!',
   signUpLabel: 'Registrer deg',
   signUpSubmitLabel: 'Registrer',
-  signUpTerms: '',
   signUpWithLabel: 'Registrer deg med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -124,6 +125,7 @@ export default {
   mfaSubmitLabel: 'Logg inn',
   mfaCodeErrorHint: 'Bruk %d siffer',
   forgotPasswordTitle: 'Tilbakestille passordet ditt',
-  signupTitle: 'Logg inn',
-  showPassword: 'Vis passord'
+  signUpTitle: 'Logg inn',
+  showPassword: 'Vis passord',
+  signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.'
 };

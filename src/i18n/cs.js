@@ -31,7 +31,9 @@ export default {
       too_many_attempts: 'Účet byl zablokován z důvodu příliš velkého počtu pokusů o přihlášení.',
       session_missing:
         'Nemohl jsem dokončit váš požadavek na ověření. Zkus to znovu po zavření všech otevřených dialogových oken.',
-      'hrd.not_matching_email': 'Prosím, použijte pro přihlášení firemní e-mail.'
+      'hrd.not_matching_email': 'Prosím, použijte pro přihlášení firemní e-mail.',
+      too_many_requests:
+        'Omlouváme se. Právě teď je příliš mnoho žádostí. Načtěte stránku znovu a zkuste to znovu. Pokud to trvá, zkuste to znovu později.'
     },
     passwordless: {
       'bad.email': 'Email je neplatný.',
@@ -103,10 +105,9 @@ export default {
   retryLabel: 'Znovu',
   sentLabel: 'Posláno!',
   showPassword: 'Ukaž heslo',
-  signupTitle: 'Registrace',
+  signUpTitle: 'Registrace',
   signUpLabel: 'Registrace',
   signUpSubmitLabel: 'Registrovat',
-  signUpTerms: '',
   signUpWithLabel: 'Registrovat se s %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -124,5 +125,7 @@ export default {
   mfaLoginTitle: 'Dvoufázové ověření',
   mfaLoginInstructions: 'Prosím zadej ověřovací kód vygenerovaný mobilní aplikací.',
   mfaSubmitLabel: 'Přihlásit',
-  mfaCodeErrorHint: 'Použijte %d číslic'
+  mfaCodeErrorHint: 'Použijte %d číslic',
+  signUpTerms:
+    'Tím, že se zaregistrujete, souhlasíte s našimi smluvními podmínkami a zásadami ochrany osobních údajů.'
 };

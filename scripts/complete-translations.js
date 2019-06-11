@@ -11,18 +11,23 @@ const restoreWildCards = str =>
   str.replace(/__( d|d |d)__/gi, '%d').replace(/__( s|s |s)__/gi, '%s');
 
 const processLanguage = async lang => {
-  console.log(`translating: ${lang}`);
-  const langDictionary = require('../lib/i18n/' + lang).default;
-  await processNode(enDictionary, langDictionary, lang);
-  const communityAlert = `
+  try {
+    console.log(`translating: ${lang}`);
+    const langDictionary = require('../lib/i18n/' + lang).default;
+    await processNode(enDictionary, langDictionary, lang);
+    const communityAlert = `
   // This file was automatically translated.
   // Feel free to submit a PR if you find a more accurate translation.
 `;
-  const jsContent = `
+    const jsContent = `
   ${isSupportedByAuth0(lang) ? '' : communityAlert}
   export default ${JSON.stringify(langDictionary, null, 2)};
 `;
-  await writeFileAsync(`src/i18n/${lang}.js`, jsContent);
+    await writeFileAsync(`src/i18n/${lang}.js`, jsContent);
+  } catch (error) {
+    console.log(`Error translating ${lang}.`);
+    console.log(error.message);
+  }
 };
 
 const processNode = async (enNode, langNode, lang) => {
@@ -31,6 +36,7 @@ const processNode = async (enNode, langNode, lang) => {
       await processNode(enNode[enKey], langNode[enKey], lang);
     } else {
       if (!langNode[enKey]) {
+        console.log('translating ', enKey);
         const translation = await translateKey(enNode[enKey], lang);
         langNode[enKey] = translation;
       }

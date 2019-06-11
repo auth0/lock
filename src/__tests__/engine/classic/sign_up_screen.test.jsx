@@ -32,7 +32,8 @@ describe('SignUpScreen', () => {
       },
       termsAccepted: () => true,
       hasScreen: () => false,
-      mustAcceptTerms: () => false
+      mustAcceptTerms: () => false,
+      showTerms: () => true
     }));
 
     jest.mock('connection/database/actions', () => ({
@@ -44,8 +45,7 @@ describe('SignUpScreen', () => {
       isSSOEnabled: (model, options) => {
         expect(options.emailFirst).toBe(true);
         return false;
-      },
-      useBigSocialButtons: () => false
+      }
     }));
     jest.mock('core/signed_in_confirmation', () => ({
       renderSignedInConfirmation: jest.fn()
@@ -134,5 +134,35 @@ describe('SignUpScreen', () => {
       const { mock } = require('connection/database/actions').signUp;
       expect(mock.calls.length).toBe(1);
     });
+  });
+  describe('renders SignupTerms', () => {
+    it('when showTerms() && `terms` are truthy', () => {
+      const screen = getScreen();
+      const terms = screen.renderTerms('m', true);
+      expect(terms).not.toBe(null);
+    });
+    it('with a checkbox when mustAcceptTerms() is true', () => {
+      require('connection/database/index').mustAcceptTerms = () => true;
+      const screen = getScreen();
+      const terms = screen.renderTerms('m', true);
+      expect(terms.props.showCheckbox).toBe(true);
+    });
+    it('without a checkbox when mustAcceptTerms() is true', () => {
+      require('connection/database/index').mustAcceptTerms = () => false;
+      const screen = getScreen();
+      const terms = screen.renderTerms('m', true);
+      expect(terms.props.showCheckbox).toBe(false);
+    });
+  });
+  it('do not render SignupTerms when showTerms() is false', () => {
+    require('connection/database/index').showTerms = () => false;
+    const screen = getScreen();
+    const terms = screen.renderTerms('m', true);
+    expect(terms).toBe(null);
+  });
+  it('do not render SignupTerms when `terms` is falsy', () => {
+    const screen = getScreen();
+    const terms = screen.renderTerms('m', undefined);
+    expect(terms).toBe(null);
   });
 });

@@ -3,7 +3,7 @@ import React from 'react';
 
 export default class InputWrap extends React.Component {
   render() {
-    const { before, focused, invalidHint, isValid, name, icon } = this.props;
+    const { after, focused, invalidHint, isValid, name, icon } = this.props;
     let blockClassName = `auth0-lock-input-block auth0-lock-input-${name}`;
     if (!isValid) {
       blockClassName += ' auth0-lock-error';
@@ -19,7 +19,7 @@ export default class InputWrap extends React.Component {
     let iconElement = null;
 
     if (typeof icon === 'string') {
-      iconElement = <span dangerouslySetInnerHTML={{ __html: icon }} />;
+      iconElement = <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: icon }} />;
     } else if (icon) {
       iconElement = icon;
     }
@@ -30,18 +30,18 @@ export default class InputWrap extends React.Component {
 
     const errorTooltip =
       !isValid && invalidHint ? (
-        <div className="auth0-lock-error-msg">
-          <span>{invalidHint}</span>
+        <div role="alert" id={`auth0-lock-error-msg-${name}`} className="auth0-lock-error-msg">
+          <div className="auth0-lock-error-invalid-hint">{invalidHint}</div>
         </div>
       ) : null;
 
     return (
       <div className={blockClassName}>
-        {before}
         <div className={wrapClassName}>
           {iconElement}
           {this.props.children}
         </div>
+        {after}
         {errorTooltip}
       </div>
     );
@@ -49,13 +49,13 @@ export default class InputWrap extends React.Component {
 }
 
 InputWrap.propTypes = {
-  before: PropTypes.element,
+  after: PropTypes.element,
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element).isRequired
   ]),
   focused: PropTypes.bool,
-  invalidHint: PropTypes.string,
+  invalidHint: PropTypes.node,
   isValid: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   svg: PropTypes.string

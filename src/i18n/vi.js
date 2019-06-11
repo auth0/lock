@@ -30,7 +30,9 @@ export default {
       too_many_attempts: 'Tài khoản của bạn đã bị khóa do liên tục đăng nhập thất bại nhiều lần.',
       session_missing:
         'Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở',
-      'hrd.not_matching_email': 'Xin vui lòng, sử dụng email công ty của bạn để đăng nhập.'
+      'hrd.not_matching_email': 'Xin vui lòng, sử dụng email công ty của bạn để đăng nhập.',
+      too_many_requests:
+        'Chúng tôi xin lỗi. Có quá nhiều yêu cầu ngay bây giờ. Hãy tải lại trang và thử lại. Nếu điều này vẫn còn, vui lòng thử lại sau.'
     },
     passwordless: {
       'bad.email': 'Email không hợp lệ.',
@@ -102,7 +104,6 @@ export default {
   sentLabel: 'Đã gửi!',
   signUpLabel: 'Đăng ký',
   signUpSubmitLabel: 'Đăng ký',
-  signUpTerms: '',
   signUpWithLabel: 'Đăng ký với %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -124,6 +125,8 @@ export default {
   mfaSubmitLabel: 'Đăng nhập',
   mfaCodeErrorHint: 'Chỉ sử dụng %d số',
   forgotPasswordTitle: 'Đặt lại mật khẩu của bạn',
-  signupTitle: 'Đăng ký',
-  showPassword: 'Hiển thị mật khẩu'
+  signUpTitle: 'Đăng ký',
+  showPassword: 'Hiển thị mật khẩu',
+  signUpTerms:
+    'Bằng cách đăng ký, bạn đồng ý với các điều khoản dịch vụ và chính sách bảo mật của chúng tôi.'
 };

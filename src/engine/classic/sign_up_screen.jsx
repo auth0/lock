@@ -1,9 +1,14 @@
 import React from 'react';
 import Screen from '../../core/screen';
 
-import { hasScreen, mustAcceptTerms, termsAccepted } from '../../connection/database/index';
+import {
+  hasScreen,
+  showTerms,
+  mustAcceptTerms,
+  termsAccepted
+} from '../../connection/database/index';
 import { signUp, toggleTermsAcceptance } from '../../connection/database/actions';
-import { hasOnlyClassicConnections, isSSOEnabled, useBigSocialButtons } from '../classic';
+import { hasOnlyClassicConnections, isSSOEnabled } from '../classic';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
 import { renderOptionSelection } from '../../field/index';
@@ -36,7 +41,6 @@ const Component = ({ i18n, model }) => {
 
   const social = l.hasSomeConnections(model, 'social') && (
     <SocialButtonsPane
-      bigButtons={useBigSocialButtons(model)}
       instructions={i18n.html('socialSignUpInstructions')}
       labelFn={i18n.str}
       lock={model}
@@ -69,9 +73,11 @@ const Component = ({ i18n, model }) => {
     <div>
       {ssoNotice}
       {tabs}
-      {social}
-      {separator}
-      {db}
+      <div>
+        {social}
+        {separator}
+        {db}
+      </div>
     </div>
   );
 };
@@ -112,13 +118,20 @@ export default class SignUp extends Screen {
   }
 
   getScreenTitle(m) {
-    return i18n.str(m, 'signupTitle');
+    // signupTitle is inconsistent with the rest of the codebase
+    // but, since changing this would be a breaking change, we'll
+    // still support it until the next major version
+    return i18n.str(m, 'signUpTitle') || i18n.str(m, 'signupTitle');
   }
 
   renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
-    return terms || mustAcceptTerms(m) ? (
-      <SignUpTerms checkHandler={checkHandler} checked={termsAccepted(m)}>
+    return terms && showTerms(m) ? (
+      <SignUpTerms
+        showCheckbox={mustAcceptTerms(m)}
+        checkHandler={checkHandler}
+        checked={termsAccepted(m)}
+      >
         {terms}
       </SignUpTerms>
     ) : null;

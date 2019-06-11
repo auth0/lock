@@ -31,7 +31,9 @@ export default {
       'lock.mfa_invalid_code': 'Forkert kode. Prøv igen.',
       session_missing:
         'Kunne ikke fuldføre din godkendelsesanmodning. Prøv igen efter at have lukket alle åbne dialoger',
-      'hrd.not_matching_email': 'Brug venligst din virksomheds-e-mail for at logge ind.'
+      'hrd.not_matching_email': 'Brug venligst din virksomheds-e-mail for at logge ind.',
+      too_many_requests:
+        'Vi er kede af det. Der er for mange anmodninger lige nu. Venligst genindlæs siden og prøv igen. Hvis dette vedvarer, kan du prøve igen senere.'
     },
     passwordless: {
       'bad.email': 'Denne e-mail er ugyldig',
@@ -105,7 +107,6 @@ export default {
   sentLabel: 'Sendt!',
   signUpLabel: 'Opret dig',
   signUpSubmitLabel: 'Opret dig',
-  signUpTerms: '',
   signUpWithLabel: 'Opret dig med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -120,11 +121,12 @@ export default {
   windowsAuthInstructions: 'Du er forbundet fra din virksomheds netværk&hellip;',
   windowsAuthLabel: 'Windows Authentication',
   forgotPasswordTitle: 'Nulstil din adgangskode',
-  signupTitle: 'Tilmeld',
+  signUpTitle: 'Tilmeld',
   mfaInputPlaceholder: 'Kode',
   mfaLoginTitle: 'Tofaktorgodkendelse',
   mfaLoginInstructions: 'Indtast venligst bekræftelseskoden genereret af din mobilapplikation.',
   mfaSubmitLabel: 'Log på',
   mfaCodeErrorHint: 'Brug %d tal',
-  showPassword: 'Vis adgangskode'
+  showPassword: 'Vis adgangskode',
+  signUpTerms: 'Ved at tilmelde dig accepterer du vores servicevilkår og privatlivspolitik.'
 };

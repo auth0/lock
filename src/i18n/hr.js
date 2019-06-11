@@ -33,7 +33,9 @@ export default {
       session_missing:
         'Zahtjev za provjerom autentičnosti nije se mogao završiti. Pokušajte ponovno nakon što zatvorite sve otvorene dijaloške okvire.',
       'hrd.not_matching_email':
-        'Upotrijebite svoju poslovnu adresu elektroničke pošte kako biste se prijavili.'
+        'Upotrijebite svoju poslovnu adresu elektroničke pošte kako biste se prijavili.',
+      too_many_requests:
+        'Žao nam je. Trenutno ima previše zahtjeva. Ponovo učitajte stranicu i pokušajte ponovno. Ako se to nastavi, pokušajte ponovno kasnije.'
     },
     passwordless: {
       'bad.email': 'Neispravna adresa elektroničke pošte',
@@ -109,10 +111,9 @@ export default {
   retryLabel: 'Pokušaj ponovo',
   sentLabel: 'Poslano!',
   showPassword: 'Prikaži lozinku',
-  signupTitle: 'Registracija',
+  signUpTitle: 'Registracija',
   signUpLabel: 'Registracija',
   signUpSubmitLabel: 'Registracija',
-  signUpTerms: '',
   signUpWithLabel: 'Registracija s %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -132,5 +133,6 @@ export default {
   mfaLoginInstructions:
     'Upišite kôd za provjeru autentičnosti koji je stvorila vaša mobilna aplikacija.',
   mfaSubmitLabel: 'Prijava',
-  mfaCodeErrorHint: 'Upotrijebi %d brojeve'
+  mfaCodeErrorHint: 'Upotrijebi %d brojeve',
+  signUpTerms: 'Prijavljivanjem prihvaćate naše uvjete pružanja usluge i pravila o privatnosti.'
 };

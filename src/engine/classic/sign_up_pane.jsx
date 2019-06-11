@@ -43,10 +43,12 @@ export default class SignUpPane extends React.Component {
           key={x.get('name')}
           model={model}
           name={x.get('name')}
+          ariaLabel={x.get('ariaLabel')}
           options={x.get('options')}
           placeholder={x.get('placeholder')}
           type={x.get('type')}
           validator={x.get('validator')}
+          value={x.get('value')}
         />
       ));
 

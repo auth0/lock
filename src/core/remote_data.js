@@ -38,7 +38,7 @@ export function syncRemoteData(m) {
 
         l.warn(
           m,
-          `There was an error fetching the SSO data. This could simply mean that there was a problem with the network. But, if a "Origin" error has been logged before this warning, please add "${origin}" to the "Allowed Web Origins" list in the Auth0 dashboard: ${appSettingsUrl}`
+          `There was an error fetching the SSO data. This is expected - and not a problem - if the tenant has Seamless SSO enabled. If the tenant doesn't have Seamless SSO enabled, this could simply mean that there was a problem with the network. But, if a "Origin" error has been logged before this warning, please add "${origin}" to the "Allowed Web Origins" list in the Auth0 dashboard: ${appSettingsUrl}`
         );
       }
     }

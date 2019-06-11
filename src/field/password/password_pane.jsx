@@ -32,6 +32,7 @@ export default class PasswordPane extends React.Component {
           disabled={l.submitting(lock)}
           policy={policy}
           showPassword={c.getFieldValue(lock, 'showPassword', false)}
+          lock={lock}
         />
         {l.ui.allowShowPassword(lock) && (
           <div className="auth0-lock-show-password">
@@ -49,7 +50,7 @@ PasswordPane.propTypes = {
   lock: PropTypes.object.isRequired,
   onChange: PropTypes.func,
   placeholder: PropTypes.string.isRequired,
-  policy: PropTypes.string,
+  policy: PropTypes.object,
   strengthMessages: PropTypes.object,
   hidden: PropTypes.bool
 };

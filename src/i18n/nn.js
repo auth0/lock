@@ -8,7 +8,7 @@ export default {
         'Du har nådd grensa for antal forsøk på å endre passord. Ver venleg og vent ei stund før du prøvar på nytt',
       'lock.fallback': 'Beklagar, men noko giekk galt då du prøvde å endre passordet.',
       enterprise_email:
-        'E-postdomenet ditt er ein del av ein Enterprise Identity-leverandør. For å tilbakestille passordet, ver venleg og kontakt din sikkerheitsadministrator.',
+        'E-postdomenet ditt er ein del av ein Enterprise Identity-leverandør. For å tilbakestille passordet, ver venleg og kontakt din sikkerheitsadministrator.'
     },
     login: {
       blocked_user: 'Denne brukaren er blokkert',
@@ -35,11 +35,13 @@ export default {
       'hrd.not_matching_email': 'Ver venleg og bruk di korrekte e-postadresse for innlogging.',
       'lock.mfa_registration_required':
         'Multifaktorautentisering krevast, men enheten din er ikkje påmeldt. Ver venleg og meld deg inn før du går vidare.',
+      too_many_requests:
+        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.'
     },
     passwordless: {
       'bad.email': 'Ugyldig e-postadresse',
       'bad.phone_number': 'Ugyldig telefonnummer',
-      'lock.fallback': 'Beklagar, men noko gjekk galt',
+      'lock.fallback': 'Beklagar, men noko gjekk galt'
     },
     signUp: {
       invalid_password: 'Ugyldig passord.',
@@ -48,14 +50,14 @@ export default {
       password_no_user_info_error: 'Passordet er basert på kjende bruksdata.',
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukaren eksisterer allereie.',
-      username_exists: 'Dette brukernamnet eksisterer allereie.',
-    },
+      username_exists: 'Dette brukernamnet eksisterer allereie.'
+    }
   },
   success: {
     logIn: 'Takk for innlogginga.',
     forgotPassword: 'Vi har akkurat sendt deg ein e-post der du kan endre ditt passord.',
     magicLink: 'Vi har sendt deg ei lenke for å logge inn på %s.',
-    signUp: 'Takk for registreringa!.',
+    signUp: 'Takk for registreringa!.'
   },
   blankErrorHint: 'Dette feltet kan ikkje vere tomt',
   codeInputPlaceholder: 'din kode',
@@ -90,7 +92,7 @@ export default {
     lowerCase: 'Små bokstavar (a-z)',
     shouldContain: 'Bør innehalde:',
     specialCharacters: 'Spesialteikn (t.d. !@#$%^&*)',
-    upperCase: 'Store bokstavar (A-Z)',
+    upperCase: 'Store bokstavar (A-Z)'
   },
   passwordlessEmailAlternativeInstructions:
     'Eller, skriv inn di e-postadresse for å logge inn <br/> eller opprette ein brukerkonto',
@@ -109,10 +111,9 @@ export default {
   retryLabel: 'Prøv på nytt',
   sentLabel: 'Sendt!',
   showPassword: 'Vis passord',
-  signupTitle: 'Registrer deg',
+  signUpTitle: 'Registrer deg',
   signUpLabel: 'Registrer deg',
-  signUpSubmitLabel: '',
-  signUpTerms: '',
+  signUpSubmitLabel: 'Registrer deg',
   signUpWithLabel: 'Registrer deg med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -131,4 +132,5 @@ export default {
   mfaLoginInstructions: 'Ver venleg og tast inn verifiseringskoden som er generert på din mobil',
   mfaSubmitLabel: 'Logg inn',
   mfaCodeErrorHint: 'Bruk %d tall',
+  signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.'
 };

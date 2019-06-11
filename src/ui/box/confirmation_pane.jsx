@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { BackButton, CloseButton } from './button';
+import * as l from '../../core/index';
 
-const ConfirmationPane = ({ backHandler, children, closeHandler, svg }) => (
+const ConfirmationPane = ({ lock, backHandler, children, closeHandler, svg }) => (
   <div className="auth0-lock-confirmation">
-    {closeHandler && <CloseButton onClick={closeHandler} />}
-    {backHandler && <BackButton onClick={backHandler} />}
+    {closeHandler && <CloseButton lockId={l.id(lock)} onClick={closeHandler} />}
+    {backHandler && <BackButton lockId={l.id(lock)} onClick={backHandler} />}
     <div className="auth0-lock-confirmation-content">
       <span dangerouslySetInnerHTML={{ __html: svg }} />
       {children}

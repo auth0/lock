@@ -33,7 +33,9 @@ export default {
         'Tunnuksesi on suljettu useiden peräkkäisten kirjautumisyritysten jälkeen.',
       session_missing:
         'Kirjautumispyyntöäsi ei voitu suorittaa loppuun. Ole hyvä ja yritä uudelleen suljettuasi kaikki avoimet ikkunat',
-      'hrd.not_matching_email': 'Ole hyvä ja käytä yrityssähköpostiasi kirjautumiseen.'
+      'hrd.not_matching_email': 'Ole hyvä ja käytä yrityssähköpostiasi kirjautumiseen.',
+      too_many_requests:
+        'Olemme pahoillamme. Nyt on liian monta pyyntöä. Lataa sivu uudelleen ja yritä uudelleen. Jos tämä jatkuu, yritä myöhemmin uudelleen.'
     },
     passwordless: {
       'bad.email': 'Sähköposti ei kelpaa',
@@ -104,10 +106,9 @@ export default {
   resendingLabel: 'Lähettää uudelleen...',
   retryLabel: 'Yritä uudelleen',
   sentLabel: 'Lähetetty!',
-  signupTitle: 'Rekisteröidy',
+  signUpTitle: 'Rekisteröidy',
   signUpLabel: 'Rekisteröidy',
   signUpSubmitLabel: 'Rekisteröidy',
-  signUpTerms: '',
   signUpWithLabel: 'Rekisteröidy %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -127,5 +128,6 @@ export default {
   mfaLoginInstructions: 'Ole hyvä ja anna mobiilisovelluksesi luoma tarkistuskoodi.',
   mfaSubmitLabel: 'Kirjaudu',
   mfaCodeErrorHint: 'Käytä %d numeroa',
-  showPassword: 'Näytä salasana'
+  showPassword: 'Näytä salasana',
+  signUpTerms: 'Ilmoittautumalla hyväksyt käyttöehdot ja tietosuojakäytännöt.'
 };
