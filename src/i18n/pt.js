@@ -8,12 +8,12 @@ export default {
         'O domínio do seu endereço eletrónico é parte de um fornecedor de identidade empresarial. Para repor a sua palavra-passe, consulte o seu administrador de segurança.'
     },
     login: {
-      blocked_user: 'O utilizador está bloqueado.',
+      blocked_user: 'O usuário está bloqueado.',
       invalid_user_password: 'Credenciais erradas.',
       'lock.fallback': 'Lamentamos, ocorreu um problema ao tentar iniciar sessão.',
       'lock.invalid_code': 'Código errado.',
       'lock.invalid_email_password': 'Endereço de correio eletrónico ou palavra-passe errados.',
-      'lock.invalid_username_password': 'Nome de utilizador ou palavra-passe errados.',
+      'lock.invalid_username_password': 'Nome de usuário ou palavra-passe errados.',
       'lock.network':
         'Não foi possível comunicar com o servidor Verifique a sua ligação e tente novamente.',
       'lock.popup_closed': 'Janela instantânea fechada. Tente novamente.',
@@ -43,10 +43,10 @@ export default {
       invalid_password: 'Palavra-passe inválida.',
       'lock.fallback': 'Lamentamos, ocorreu um problema ao tentar registar-se.',
       password_dictionary_error: 'Palavra-passe demasiado simples.',
-      password_no_user_info_error: 'Palavra-passe baseada nos dados do utilizador.',
+      password_no_user_info_error: 'Palavra-passe baseada nos dados do usuário.',
       password_strength_error: 'Palavra-passe demasiado fraca.',
-      user_exists: 'O utilizador já existe.',
-      username_exists: 'O nome de utilizador já existe.'
+      user_exists: 'O usuário já existe.',
+      username_exists: 'O nome de usuário já existe.'
     },
     success: {
       logIn: 'Obrigado por ter iniciado sessão.',
@@ -113,8 +113,8 @@ export default {
     submitLabel: 'Enviar',
     unrecoverableError: 'Ocorreu um erro.<br />Contacte a assistência técnica.',
     usernameFormatErrorHint: '_", ".", "+", "-"',
-    usernameInputPlaceholder: 'o seu nome de utilizador',
-    usernameOrEmailInputPlaceholder: 'nome de utilizador/endereço de correio eletrónico',
+    usernameInputPlaceholder: 'o seu nome de usuário',
+    usernameOrEmailInputPlaceholder: 'nome de usuário/endereço de correio eletrónico',
     title: 'Auth0',
     welcome: 'Bem-vindo(a) %s!',
     windowsAuthInstructions: 'Ligou-se a partir da sua rede empresarial&hellip;',
