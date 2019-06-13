@@ -1,4 +1,6 @@
 import Immutable, { List, Map } from 'immutable';
+import passwordPolicies from 'auth0-password-policies';
+
 import { dataFns } from '../../utils/data_utils';
 import * as l from '../index';
 
@@ -80,7 +82,7 @@ function formatTenantConnection(connectionType, connection) {
       result.passwordPolicy = connection.validation.passwordPolicy;
     }
 
-    result.passwordPolicy = result.passwordPolicy || 'none';
+    result.passwordPolicy = passwordPolicies[result.passwordPolicy || 'none'];
 
     result.allowSignup =
       typeof connection.allowSignup === 'boolean' ? connection.allowSignup : true;
