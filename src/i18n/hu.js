@@ -1,48 +1,37 @@
-// This file was automatically translated.
-// Feel free to submit a PR if you find a more accurate translation.
-
 export default {
   error: {
     forgotPassword: {
-      too_many_requests:
-        'Elérted a jelszóváltoztatási probálkozások engedélyezett számát. Kérlek, várj egy kicsit mielőtt újrapróbálnád!',
+      too_many_requests: 'Elérted a jelszóváltoztatási probálkozások engedélyezett számát. Kérjük, várj egy kicsit mielőtt újrapróbálnád!',
       'lock.fallback': 'Sajnáljuk, valami hiba történt a jelszóváltoztatás során.',
-      enterprise_email:
-        'Az e-mail domainje egy Enterprise azonosító szolgáltató része. A jelszó visszaállításához kérjük, olvassa el a biztonsági adminisztrátort.'
+      enterprise_email: 'Az e-mail címed egy vállalati azonosítószolgáltatáshoz tartozik. A jelszó visszaállításában a biztonsági adminisztrátor tud segítséget nyújtani.'
     },
     login: {
-      blocked_user: 'A felhasználó nincsen engedélyezve.',
-      invalid_user_password: 'Hibás bejelentkezés.',
+      blocked_user: 'A felhasználó le van tiltva.',
+      invalid_user_password: 'Hibás azonosító adatok.',
       'lock.fallback': 'Sajnáljuk, valami hiba történt a bejelentkezés során.',
       'lock.invalid_code': 'Hibás PIN.',
-      'lock.invalid_email_password': 'Hibás e-mail vagy jelszó.',
+      'lock.invalid_email_password': 'Hibás e-mail cím vagy jelszó.',
       'lock.invalid_username_password': 'Hibás felhasználónév vagy jelszó.',
-      'lock.network':
-        'A szerver nem elérhető. Kérlek, ellenőrizd az internetkapcsolatot, és próbáld újra.!',
+      'lock.network': 'A szerver nem elérhető. Kérjük, ellenőrizd az internetkapcsolatot, és próbáld újra!',
       'lock.popup_closed': 'A felugró ablak be lett zárva. Próbáld újra!',
       'lock.unauthorized': 'Engedély megtagadva. Próbáld újra!',
-      password_change_required:
-        'A jelszavadat meg kell változtatnod, mert vagy most lépsz be először, vagy lejárt a jelszavad.',
-      password_leaked:
-        'Az azonosítót letiltottuk, mert a hozzá tartozó jelszó egy másik honlapon nyilvánosságra került. Küldtünk neked egy e-mailt az azonosító engedélyezésének menetéről.',
-      too_many_attempts: 'Több gyakori bejelentkezés után az azonosítódat letiltottuk.',
-      'lock.mfa_registration_required':
-        'Többtényezős hitelesítés szükséges, de a készülék nem regisztrálták. Kérjük, regisztrálja azt, mielőtt.',
-      'lock.mfa_invalid_code': 'Rossz kód. Kérlek próbáld újra.',
-      session_missing:
-        'Nem tudja teljesíteni a hitelesítési kérelmet. Kérjük, próbálja meg újra zárás után megnyitott párbeszédablakok',
-      'hrd.not_matching_email': 'Kérjük, használja a vállalati e-mail jelentkezned.',
-      too_many_requests:
-        'Sajnáljuk. Túl sok kérés van. Kérjük, töltse be újra az oldalt, és próbálja újra. Ha ez továbbra is fennáll, próbálkozzon később.'
+      'lock.mfa_registration_required': 'Többlépcsős azonosítás szükséges, de a készüléked nincs regisztrálva. Kérjük regisztráld, mielőtt továbblépsz.',
+      'lock.mfa_invalid_code': 'Rossz kód. Kérjük próbáld újra.',
+      password_change_required: 'Meg kell változtatnod a jelszavadat, mert vagy most lépsz be először, vagy lejárt.',
+      password_leaked: 'Az azonosítót letiltottuk, mert a hozzá tartozó jelszó egy másik honlapon nyilvánosságra került. Küldtünk neked egy e-mailt a helyreállítás menetéről.',
+      too_many_attempts: 'Túl sok sikertelen bejelentkezési kísérletet észleltünk, ezért az azonosítód letiltásra került.',
+      too_many_requests: 'Sajnáljuk, de a rendszerünk jelenleg túlterhelt. Kérjük, töltsd újra az oldalt és próbáld meg ismét. Ha továbbra is fennáll a probléma, próbálkozz később.',
+      session_missing: 'Nem sikerült végigvinni az azonosítást. Kérjük, zárd be a párbeszédablakokat és próbáld újra.',
+      'hrd.not_matching_email': 'Kérjük, használd a céges e-mail címed a bejelentkezéshez.',
     },
     passwordless: {
-      'bad.email': 'Érvénytelen e-mailcím',
-      'bad.phone_number': 'Érvénytelen telefonszám',
-      'lock.fallback': 'Sajnáljuk, valami hiba történt'
+      'bad.email': 'Érvénytelen e-mail cím.',
+      'bad.phone_number': 'Érvénytelen telefonszám.',
+      'lock.fallback': 'Sajnáljuk, valami hiba történt.'
     },
     signUp: {
       invalid_password: 'Érvénytelen jelszó.',
-      'lock.fallback': 'Sajnáljuk, a feliratkozás során valami hiba történt.',
+      'lock.fallback': 'Sajnáljuk, valami hiba történt a regisztráció során.',
       password_dictionary_error: 'Túl gyakori jelszó.',
       password_no_user_info_error: 'A jelszó a felhasználói adatokra támaszkodik.',
       password_strength_error: 'Túl gyenge jelszó.',
@@ -51,12 +40,12 @@ export default {
     }
   },
   success: {
-    logIn: 'Köszönjük a bejelentkezésed',
+    logIn: 'Köszönjük, hogy bejelentkeztél.',
     forgotPassword: 'Küldtünk neked egy e-mailt a jelszó visszaállításának menetéről.',
     magicLink: 'Küldtünk neked egy bejelentkezési linket<br />a %s honlaphoz.',
-    signUp: 'Köszönjük, hogy feliratkoztál.'
+    signUp: 'Köszönjük, hogy regisztráltál.'
   },
-  blankErrorHint: 'Nem lehet üres',
+  blankErrorHint: 'Nem lehet üres.',
   codeInputPlaceholder: 'PIN',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: 'vagy',
@@ -64,71 +53,64 @@ export default {
   databaseAlternativeSignUpInstructions: 'vagy',
   emailInputPlaceholder: 'emailcim@example.com',
   enterpriseLoginIntructions: 'Bejelentkezés céges azonosítóval.',
-  enterpriseActiveLoginInstructions: 'Kérlek, add meg a céges azonosítódat a %s honlapon.',
+  enterpriseActiveLoginInstructions: 'Kérjük, add meg a céges azonosítódat a %s honlapon.',
   failedLabel: 'Sikertelen!',
+  forgotPasswordTitle: 'Állítsd vissza a jelszavad',
   forgotPasswordAction: 'Nem emlékszel a jelszavadra?',
-  forgotPasswordInstructions:
-    'Kérlek, add meg az e-mailcímedet! Küldünk neked egy e-mailt a jelszó helyreállításának menetéről.',
+  forgotPasswordInstructions: 'Kérjük, add meg az e-mail címedet! Küldünk neked egy e-mailt a jelszó helyreállításának menetéről.',
   forgotPasswordSubmitLabel: 'E-mail küldése',
   invalidErrorHint: 'Érvénytelen',
   lastLoginInstructions: 'Utolsó bejelentkezés',
   loginAtLabel: 'Bejelentkezés ideje: %s',
   loginLabel: 'Belépés',
   loginSubmitLabel: 'Belépés',
-  loginWithLabel: 'Belépés %s-val',
+  loginWithLabel: '%s belépés',
   notYourAccountAction: 'Nem a te fiókod?',
-  passwordInputPlaceholder: 'jelszavad',
+  passwordInputPlaceholder: 'jelszó',
   passwordStrength: {
-    containsAtLeast: 'Legalább %d alkalommal tartalmazza a következő %d karaktert:',
-    identicalChars:
-      'Legfeljebb %d azonos karakter szerepelhet egy sorban (pl. "%s" nem engedélyezett)',
+    containsAtLeast: 'A következő %d karaktertípust legalább %d alkalommal tartalmazza:',
+    identicalChars: 'Legfeljebb %d azonos karakter szerepelhet egymás után (pl. "%s" nem engedélyezett)',
     nonEmpty: 'A jelszó nem lehet üres',
     numbers: 'Számok (0-9)',
-    lengthAtLeast: 'Legalább %d hosszú',
+    lengthAtLeast: 'Legalább %d karakter hosszú',
     lowerCase: 'Kisbetűk (a-z)',
     shouldContain: 'Tartalmazzon:',
-    specialCharacters: 'Különleges karakterek (e.g. !@#$%^&*)',
+    specialCharacters: 'Különleges karakterek (pl. !@#$%^&*)',
     upperCase: 'Nagybetűk (A-Z)'
   },
-  passwordlessEmailAlternativeInstructions:
-    'Vagy, bejelentkezéshez vagy feliratkozáshoz<br/>add meg az e-mailcímed',
-  passwordlessEmailCodeInstructions: 'A PIN-t e-mailben elküldük a %s címre.',
-  passwordlessEmailInstructions: 'Bejelentkezéshez vagy feliratkozáshoz<br/>add meg az e-mailcímed',
-  passwordlessSMSAlternativeInstructions:
-    'Vagy, bejelentkezéshez vagy feliratkozáshoz<br/>add meg a telefonszámod',
+  passwordlessEmailAlternativeInstructions: 'Vagy bejelentkezéshez vagy regisztrációhoz<br/>add meg az e-mail címed.',
+  passwordlessEmailCodeInstructions: 'A PIN-t e-mailben elküldtük a %s címre.',
+  passwordlessEmailInstructions: 'Bejelentkezéshez vagy regisztrációhoz<br/>add meg az e-mail címed.',
+  passwordlessSMSAlternativeInstructions: 'Vagy bejelentkezéshez vagy regisztrációhoz<br/>add meg a telefonszámod.',
   passwordlessSMSCodeInstructions: 'A PIN-t SMS-ben elküldtük a %s számra.',
-  passwordlessSMSInstructions: 'Bejelentkezéshez vagy feliratkozáshoz<br/>add meg a telefonszámod',
+  passwordlessSMSInstructions: 'Bejelentkezéshez vagy regisztrációhoz<br/>add meg a telefonszámod.',
   phoneNumberInputPlaceholder: 'telefonszámod',
   resendCodeAction: 'Nem kaptad meg a PIN-t?',
   resendLabel: 'Újraküldés',
   resendingLabel: 'Újraküldés...',
   retryLabel: 'Próbáld újra',
   sentLabel: 'Elküldve!',
-  signUpLabel: 'Feliratkozás',
-  signUpSubmitLabel: 'Feliratkozás',
-  signUpWithLabel: 'Feliratkozás %s-val',
+  showPassword: 'Mutasd a jelszót',
+  signUpTitle: 'Regisztrálj',
+  signUpLabel: 'Regisztráció',
+  signUpSubmitLabel: 'Regisztráció',
+  signUpTerms: 'A regisztrációval elfogadom a felhasználási feltételeket és az adatkezelési tájékoztatót.',
+  signUpWithLabel: '%s regisztráció',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
-  ssoEnabled: 'Egyszeri bejelentkezés engedélyezve',
+  ssoEnabled: 'SSO engedélyezve',
   submitLabel: 'Mehet',
-  unrecoverableError:
-    'Valaim hiba történt.<br />Kérlek, lépj kapcsolatba a műszaki ügyfélszolgálattal.',
-  usernameFormatErrorHint:
-    'Használj %d-%d betűket, számokat és a következő karaktereket: "_", ".", "+", "-"',
+  unrecoverableError: 'Valami hiba történt.<br />Kérlek, lépj kapcsolatba az ügyfélszolgálattal.',
+  usernameFormatErrorHint: 'Használj %d-%d betűt, számot és a következő karaktereket: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'felhasználóneved',
   usernameOrEmailInputPlaceholder: 'felhasználónév/e-mail',
   title: 'Auth0',
-  welcome: 'Üdvözöllek %s!',
-  windowsAuthInstructions: 'A céged hálózatoddal kapcsolódsz&hellip;',
+  welcome: 'Üdv %s!',
+  windowsAuthInstructions: 'Céges hálózatról kapcsolódsz&hellip;',
   windowsAuthLabel: 'Windows bejelentkezés',
-  forgotPasswordTitle: 'Állítsd vissza a jelszavad',
-  signUpTitle: 'Regisztrálj',
   mfaInputPlaceholder: 'Kód',
-  mfaLoginTitle: '2 kétlépcsős azonosítás',
-  mfaLoginInstructions: 'Kérjük adja meg az ellenőrző kódot generált a mobil alkalmazás.',
-  mfaSubmitLabel: 'Belépek',
-  mfaCodeErrorHint: 'Használja %d számok',
-  showPassword: 'Mutasd a jelszót',
-  signUpTerms:
-    'Feliratkozással elfogadja a szolgáltatási feltételeinket és az adatvédelmi irányelveinket.'
+  mfaLoginTitle: 'Kétlépcsős azonosítás',
+  mfaLoginInstructions: 'Kérlek, add meg a mobilalkalmazás által generált ellenőrző kódot.',
+  mfaSubmitLabel: 'Belépés',
+  mfaCodeErrorHint: '%d számot kell beírni',
 };
