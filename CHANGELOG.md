@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.16.3](https://github.com/auth0/lock/tree/v11.16.3) (2019-06-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.16.2...v11.16.3)
+
+
+**Added**
+- Add support for Apple strategy [\#1674](https://github.com/auth0/lock/pull/1674) ([astanciu](https://github.com/astanciu))
+
+**Fixed**
+- Fix password policy when using tenant connections [\#1664](https://github.com/auth0/lock/pull/1664) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.16.2](https://github.com/auth0/lock/tree/v11.16.2) (2019-06-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.16.1...v11.16.2)
 
