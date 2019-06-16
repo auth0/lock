@@ -20,7 +20,7 @@ export default {
       password_change_required: 'Meg kell változtatnod a jelszavadat, mert vagy most lépsz be először, vagy lejárt.',
       password_leaked: 'Az azonosítót letiltottuk, mert a hozzá tartozó jelszó egy másik honlapon nyilvánosságra került. Küldtünk neked egy e-mailt a helyreállítás menetéről.',
       too_many_attempts: 'Túl sok sikertelen bejelentkezési kísérletet észleltünk, ezért az azonosítód letiltásra került.',
-      too_many_requests: 'Sajnáljuk, de a rendszerünk jelenleg túlterhelt. Kérjük, töltsd újra az oldalt és próbáld meg ismét. Ha továbbra is fennáll a probléma, próbálkozz később.'
+      too_many_requests: 'Sajnáljuk, de a rendszerünk jelenleg túlterhelt. Kérjük, töltsd újra az oldalt és próbáld meg ismét. Ha továbbra is fennáll a probléma, próbálkozz később.',
       session_missing: 'Nem sikerült végigvinni az azonosítást. Kérjük, zárd be a párbeszédablakokat és próbáld újra.',
       'hrd.not_matching_email': 'Kérjük, használd a céges e-mail címed a bejelentkezéshez.',
     },
@@ -94,7 +94,7 @@ export default {
   signUpTitle: 'Regisztrálj',
   signUpLabel: 'Regisztráció',
   signUpSubmitLabel: 'Regisztráció',
-  signUpTerms: 'A regisztrációval elfogadom a felhasználási feltételeket és az adatkezelési tájékoztatót.'
+  signUpTerms: 'A regisztrációval elfogadom a felhasználási feltételeket és az adatkezelési tájékoztatót.',
   signUpWithLabel: '%s regisztráció',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
