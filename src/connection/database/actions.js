@@ -64,7 +64,20 @@ export function signUp(id) {
     if (!additionalSignUpFields(m).isEmpty()) {
       params.user_metadata = {};
       additionalSignUpFields(m).forEach(x => {
-        params.user_metadata[x.get('name')] = c.getFieldValue(m, x.get('name'));
+        const storage = x.get('storage');
+        const fieldName = x.get('name');
+        const fieldValue = c.getFieldValue(m, x.get('name'));
+        switch (storage) {
+          case 'root':
+            params[fieldName] = fieldValue;
+            break;
+          default:
+            if (!params.user_metadata) {
+              params.user_metadata = {};
+            }
+            params.user_metadata[fieldName] = fieldValue;
+            break;
+        }
       });
     }
 
