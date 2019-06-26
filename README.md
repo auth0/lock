@@ -424,6 +424,7 @@ var options = {
   }]
 };
 ```
+
 If you don't provide a `validator` function a default validator is applied, which requires the text field to contain some value (be non-empty). You can make a field optional by using a validator that always return `true`:
 
 ```js
@@ -432,6 +433,17 @@ var options = {
     name: "address",
     placeholder: "enter your address (optional)",
     validator: function() {return true;}
+  }]
+};
+```
+
+If you want to save the value of the attribute in the root of your profile, use `storage: 'root'`. Only a subset of values can be stored this way. The list of attributes that can be added to your root profile is [here](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id). By default, every additional sign up field is stored inside the `user_metadata` object.
+
+```js
+var options = {
+  additionalSignUpFields: [{
+    name: "name",
+    storage: "root"
   }]
 };
 ```

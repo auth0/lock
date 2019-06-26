@@ -95,7 +95,7 @@ function processDatabaseOptions(opts) {
     additionalSignUpFields = undefined;
   } else if (additionalSignUpFields) {
     additionalSignUpFields = additionalSignUpFields.reduce((r, x) => {
-      let { icon, name, options, placeholder, prefill, type, validator, value } = x;
+      let { icon, name, options, placeholder, prefill, type, validator, value, storage } = x;
       let filter = true;
 
       const reservedNames = ['email', 'username', 'password'];
@@ -195,7 +195,7 @@ function processDatabaseOptions(opts) {
       }
 
       return filter
-        ? r.concat([{ icon, name, options, placeholder, prefill, type, validator, value }])
+        ? r.concat([{ icon, name, options, placeholder, prefill, type, validator, value, storage }])
         : r;
     }, []);
 
