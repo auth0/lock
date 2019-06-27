@@ -9,7 +9,6 @@ const minMax = (value, min, max) => value.length >= min && value.length <= max;
 const getDefaultValidator = field => {
   switch (field) {
     case 'family_name':
-      return str => minMax(trim(str), 1, 150);
     case 'given_name':
       return str => minMax(trim(str), 1, 150);
     case 'name':

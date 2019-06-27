@@ -26,6 +26,7 @@ describe('field/username', () => {
   describe('usernameLooksLikeEmail()', () => {
     it('checks for @ and .', () => {
       expect(username.usernameLooksLikeEmail('t@t.com')).toBe(true);
+      expect(username.usernameLooksLikeEmail('test.email@t.com')).toBe(true);
       expect(username.usernameLooksLikeEmail('tt.com')).toBe(false);
       expect(username.usernameLooksLikeEmail('t@tcom')).toBe(false);
     });
