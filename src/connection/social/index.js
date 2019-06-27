@@ -44,7 +44,8 @@ export const STRATEGIES = {
   yahoo: 'Yahoo!',
   yammer: 'Yammer',
   yandex: 'Yandex',
-  weibo: '新浪微博'
+  weibo: '新浪微博',
+  line: 'Line'
 };
 
 export function displayName(connection) {
