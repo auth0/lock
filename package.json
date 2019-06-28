@@ -94,6 +94,7 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
+    "@auth0/component-cdn-uploader": "auth0/component-cdn-uploader#v2.2.2",
     "auth0-js": "^9.10.4",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "2.3.1",
