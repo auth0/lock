@@ -4,15 +4,30 @@ import trim from 'trim';
 import OptionSelectionPane from './option_selection_pane';
 import * as l from '../core/index';
 
-export function setField(m, field, value, validator = str => trim(str).length > 0, ...args) {
+const minMax = (value, min, max) => value.length >= min && value.length <= max;
+
+const getDefaultValidator = field => {
+  switch (field) {
+    case 'family_name':
+    case 'given_name':
+      return str => minMax(trim(str), 1, 150);
+    case 'name':
+      return str => minMax(trim(str), 1, 300);
+    case 'nickname':
+      return str => minMax(trim(str), 1, 300);
+
+    default:
+      return str => trim(str).length > 0;
+  }
+};
+
+export function setField(m, field, value, validator = getDefaultValidator(field), ...args) {
   const prevValue = m.getIn(['field', field, 'value']);
   const prevShowInvalid = m.getIn(['field', field, 'showInvalid'], false);
   const validation = validate(validator, value, ...args);
-
   return m.mergeIn(
     ['field', field],
-    validation,
-    Map({
+    validation.merge({
       value: value,
       showInvalid: prevShowInvalid && prevValue === value
     })
