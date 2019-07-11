@@ -27,7 +27,7 @@ export default class Cache {
   }
 
   execCallbacks(key, ...args) {
-    this.cbs[key].forEach(f => f(...args));
+    if (this.cbs[key]) this.cbs[key].forEach(f => f(...args));
     delete this.cbs[key];
   }
 }
