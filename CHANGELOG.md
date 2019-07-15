@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.17.0](https://github.com/auth0/lock/tree/v11.17.0) (2019-07-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.16.3...v11.17.0)
+
+
+**Added**
+- Add validation to new root profile attributes [\#1657](https://github.com/auth0/lock/pull/1657) ([luisrudge](https://github.com/luisrudge))
+- Add support for signup with root level attributes [\#1656](https://github.com/auth0/lock/pull/1656) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.16.3](https://github.com/auth0/lock/tree/v11.16.3) (2019-06-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.16.2...v11.16.3)
 
