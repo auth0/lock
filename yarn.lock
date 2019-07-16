@@ -695,7 +695,7 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@^6.0.0, babel-core@^6.0.12, babel-core@^6.0.14, babel-core@^6.17.0, babel-core@^6.26.0:
+babel-core@^6.0.0, babel-core@^6.0.14, babel-core@^6.17.0, babel-core@^6.26.0:
   version "6.26.3"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.3.tgz#b2e2f09e342d0f0c88e2f02e067794125e75c207"
   integrity sha512-6jyFLuDmeidKmUEb3NM+/yawG0M2bDZ9Z1qbZP59cyHLz8kYGKYwpJP0UwUKKUiTRNvxfLesJnTedqczP7cTDA==
@@ -2618,6 +2618,20 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
+
+component-cdn-uploader@auth0/component-cdn-uploader#v2.2.1:
+  version "2.2.1"
+  uid db92e90770ec4cd9d59f88db881cfea5c1a5d9af
+  resolved "https://codeload.github.com/auth0/component-cdn-uploader/tar.gz/db92e90770ec4cd9d59f88db881cfea5c1a5d9af"
+  dependencies:
+    "@auth0/s3" "^1.0.0"
+    chalk "^1.1.3"
+    meow "^3.7.0"
+    mime "^2.3.1"
+    request "^2.78.0"
+    rx "^4.1.0"
+    semver "^5.3.0"
+    walk "^2.3.9"
 
 component-emitter@^1.2.0, component-emitter@^1.2.1:
   version "1.3.0"
@@ -4853,12 +4867,10 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-grunt-babel@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/grunt-babel/-/grunt-babel-6.0.0.tgz#378189b487de1168c4c4a9fc88dd6005b35df960"
-  integrity sha1-N4GJtIfeEWjExKn8iN1gBbNd+WA=
-  dependencies:
-    babel-core "^6.0.12"
+grunt-babel@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/grunt-babel/-/grunt-babel-7.0.0.tgz#13c90c01f154dec214e0eeb5d66ac7c70cedf2d3"
+  integrity sha512-AFilvH/iPbnIYhL4Wx36AJQCaVEvK55xh0tujAt1DIM5tuxYxRsgUPEpwijBU147B+as/ssGuY9/6JYfTiAWpw==
 
 grunt-cli@^0.1.13:
   version "0.1.13"
