@@ -70,7 +70,7 @@
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
     "grunt-webpack": "^2.0.1",
-    "husky": "^0.14.3",
+    "husky": "^3.0.0",
     "jest": "^21.2.1",
     "json-beautify": "^1.0.1",
     "jsonwebtoken": "^7.3.0",
