@@ -68,7 +68,7 @@ export default {
   notYourAccountAction: 'Nem a te fiókod?',
   passwordInputPlaceholder: 'jelszó',
   passwordStrength: {
-    containsAtLeast: 'A következő %d karaktertípust legalább %d alkalommal tartalmazza:',
+    containsAtLeast: 'Legalább %d karaktertípust tartalmaz a következő %d csoportból:',
     identicalChars: 'Legfeljebb %d azonos karakter szerepelhet egymás után (pl. "%s" nem engedélyezett)',
     nonEmpty: 'A jelszó nem lehet üres',
     numbers: 'Számok (0-9)',
