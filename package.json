@@ -57,7 +57,7 @@
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
     "es-check": "^4.0.0",
-    "eslint": "^4.8.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.4.0",
     "expect.js": "^0.3.1",
