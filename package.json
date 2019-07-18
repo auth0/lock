@@ -75,7 +75,7 @@
     "json-beautify": "^1.0.1",
     "jsonwebtoken": "^7.3.0",
     "lint-staged": "^4.2.3",
-    "mochify": "^3.3.0",
+    "mochify": "^6.3.0",
     "prettier": "^1.7.4",
     "react-test-renderer": "^15.6.2",
     "semver": "^6.2.0",
