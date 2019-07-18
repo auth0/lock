@@ -79,7 +79,7 @@
     "prettier": "^1.7.4",
     "react-test-renderer": "^15.6.2",
     "semver": "^6.2.0",
-    "sinon": "^1.15.4",
+    "sinon": "^7.3.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "superagent": "^3.8.2",
