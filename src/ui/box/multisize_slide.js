@@ -172,7 +172,6 @@ class Child extends React.Component {
   componentWillUnmount() {
     if (this.t) {
       clearInterval(this.t);
-      cb();
     }
   }
 
