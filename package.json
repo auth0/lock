@@ -53,7 +53,7 @@
     "component-cdn-uploader": "auth0/component-cdn-uploader#v2.2.1",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
-    "dotenv": "^4.0.0",
+    "dotenv": "^8.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
     "es-check": "^4.0.0",
