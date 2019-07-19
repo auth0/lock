@@ -39,6 +39,7 @@
     "i18n:translate": "grunt dist && node scripts/complete-translations.js"
   },
   "devDependencies": {
+    "@auth0/component-cdn-uploader": "^2.2.2",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^6.2.5",
@@ -50,7 +51,6 @@
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
     "bump-version": "^0.5.0",
-    "component-cdn-uploader": "auth0/component-cdn-uploader#v2.2.1",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "dotenv": "^8.0.0",
@@ -94,7 +94,6 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "@auth0/component-cdn-uploader": "auth0/component-cdn-uploader#v2.2.2",
     "auth0-js": "^9.11.2",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "2.3.1",
