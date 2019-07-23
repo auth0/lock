@@ -3,6 +3,9 @@
 ## [v11.17.1](https://github.com/auth0/lock/tree/v11.17.1) (2019-07-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.17.0...v11.17.1)
 
+**Fixed**
+
+- Use cdn-uploader from NPM.
 
 
 ## [v11.17.0](https://github.com/auth0/lock/tree/v11.17.0) (2019-07-15)
