@@ -257,8 +257,12 @@ function extractAuthOptions(options) {
     sso,
     state,
     nonce
-  } =
-    options.auth || {};
+  } = options.auth || {};
+  if (options.auth && options.auth.redirectUri) {
+    console.warn(
+      "You're sending an `auth` option named `redirectUri`. This option will be ignored. Use `redirectUrl` instead."
+    );
+  }
 
   audience = typeof audience === 'string' ? audience : undefined;
   connectionScopes = typeof connectionScopes === 'object' ? connectionScopes : {};
