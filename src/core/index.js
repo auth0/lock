@@ -251,7 +251,6 @@ function extractAuthOptions(options) {
     params,
     autoParseHash,
     redirect,
-    redirectUri, //invalid prop. it's only here to show a warning
     redirectUrl,
     responseMode,
     responseType,
@@ -259,7 +258,7 @@ function extractAuthOptions(options) {
     state,
     nonce
   } = options.auth || {};
-  if (redirectUri) {
+  if (options.auth && options.auth.redirectUri) {
     console.warn(
       "You're sending an `auth` option named `redirectUri`. This option will be ignored. Use `redirectUrl` instead."
     );
