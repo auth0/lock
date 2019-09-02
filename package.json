@@ -91,7 +91,7 @@
     "webpack-core": "^0.6.8",
     "webpack-dev-server": "^2.3.0",
     "zuul": "3.10.1",
-    "zuul-ngrok": "4.0.0"
+    "four-plus-zuul-ngrok": "4.0.1"
   },
   "dependencies": {
     "auth0-js": "^9.11.2",
