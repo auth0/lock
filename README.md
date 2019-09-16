@@ -48,7 +48,7 @@ After installing the `auth0-lock` module, you'll need to bundle it up along with
 If you are targeting mobile audiences, we recommended that you add:
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 ```
 ## Cross-Origin Authentication
 
