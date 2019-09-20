@@ -36,6 +36,7 @@ Then you can import `Auth0Lock` or `Auth0LockPasswordless` like this:
 
 ```js
 import Auth0Lock from 'auth0-lock';
+// OR
 import { Auth0Lock } from 'auth0-lock';
 import { Auth0LockPasswordless } from 'auth0-lock';
 ```
