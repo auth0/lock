@@ -11451,4 +11451,3 @@ zuul@3.10.1:
     wd "0.3.11"
     xtend "2.1.2"
     yamljs "0.1.4"
-    zuul-localtunnel "1.1.0"
