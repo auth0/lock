@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import { dataFns } from '../../utils/data_utils';
-import { clientID, domain } from '../../core/index';
+import { clientID, domain, loginErrorMessage } from '../../core/index';
 import { initI18n } from '../../i18n';
 import { setURL } from '../testUtils';
 
@@ -12,7 +12,8 @@ let mockSet;
 let mockInit;
 
 jest.mock('i18n', () => ({
-  initI18n: jest.fn()
+  initI18n: jest.fn(),
+  html: jest.fn()
 }));
 
 jest.mock('utils/data_utils', () => ({
@@ -90,5 +91,17 @@ describe('setResolvedConnection', () => {
     setResolvedConnection(mockLock, { type: 'database', name: 'bar' });
     expect(mockSet.mock.calls.length).toBe(1);
     expect(Immutable.Map.isMap(mockSet.mock.calls[0][2])).toBe(true);
+  });
+});
+
+describe('loginErrorMessage', () => {
+  it('maps `password_expired` to `password_change_required`', () => {
+    loginErrorMessage(mockLock, { code: 'password_expired' }, 'type');
+
+    expect(require('i18n').html).toHaveBeenCalledWith(mockLock, [
+      'error',
+      'login',
+      'password_change_required'
+    ]);
   });
 });
