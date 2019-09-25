@@ -44,8 +44,7 @@ export default {
       password_strength_error: 'Password is too weak.',
       user_exists: 'The user already exists.',
       username_exists: 'The username already exists.',
-      social_signup_needs_terms_acception:
-        'Use the checkbox below to indicate that you have read and agree to our terms of service and privacy policy.'
+      social_signup_needs_terms_acception: 'Please agree to the Terms of Service below to continue.'
     }
   },
   success: {
