@@ -1,18 +1,18 @@
-import trim from 'trim';
 import { setField } from './index';
-import { endsWith } from '../utils/string_utils';
 import { isHRDEmailValid } from '../connection/enterprise';
 import * as i18n from '../i18n';
-
-const regExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export function validateEmail(str) {
   return isEmail(str);
 }
 
 export function isEmail(str) {
-  const result = regExp.exec(trim(str.toLowerCase()));
-  return !!result && result[0] !== null;
+  return (
+    typeof str === 'string' &&
+    str.indexOf('@') >= 0 &&
+    str.indexOf('.') >= 0 &&
+    str.indexOf(' ') === -1
+  );
 }
 
 export function setEmail(m, str) {
@@ -27,8 +27,10 @@ export function setEmail(m, str) {
 }
 
 export function emailDomain(str) {
-  const result = regExp.exec(trim(str.toLowerCase()));
-  return result ? result.slice(-2)[0] : '';
+  if (!isEmail(str)) {
+    return '';
+  }
+  return str.split('@')[1].toLowerCase();
 }
 
 export function emailLocalPart(str) {
