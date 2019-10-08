@@ -1,3 +1,5 @@
+import trim from 'trim';
+
 import { setField } from './index';
 import { isHRDEmailValid } from '../connection/enterprise';
 import * as i18n from '../i18n';
@@ -7,12 +9,11 @@ export function validateEmail(str) {
 }
 
 export function isEmail(str) {
-  return (
-    typeof str === 'string' &&
-    str.indexOf('@') >= 0 &&
-    str.indexOf('.') >= 0 &&
-    str.indexOf(' ') === -1
-  );
+  if (typeof str !== 'string') {
+    return false;
+  }
+  const trimmed = trim(str);
+  return trimmed.indexOf('@') >= 0 && trimmed.indexOf('.') >= 0 && trimmed.indexOf(' ') === -1;
 }
 
 export function setEmail(m, str) {

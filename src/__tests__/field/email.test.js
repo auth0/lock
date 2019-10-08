@@ -6,12 +6,14 @@ describe('field/email', () => {
       expect(isEmail('test@test.com')).toBe(true);
       expect(isEmail('test@test.com.br')).toBe(true);
       expect(isEmail('test@移动.移动')).toBe(true);
+      expect(isEmail('test@test.com ')).toBe(true);
+      expect(isEmail(' test@test.com')).toBe(true);
       expect(isEmail(1)).toBe(false);
       expect(isEmail('test@testcom')).toBe(false);
       expect(isEmail('test.test.com')).toBe(false);
     });
-    it('returns false when there is a white space', () => {
-      expect(isEmail('test@test.com ')).toBe(false);
+    it('returns false when there is a white space in the middle of the string', () => {
+      expect(isEmail('test@test. com')).toBe(false);
     });
   });
   describe('emailDomain', () => {
