@@ -5,7 +5,6 @@ exports[`SignUpScreen disables SocialButtonsPane when terms were not accepted 1`
   <div>
     <div
       data-__type="social_buttons_pane"
-      data-disabled={true}
       data-instructions="socialSignUpInstructions"
       data-labelFn={[Function]}
       data-lock="model"
@@ -91,7 +90,6 @@ exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] 
   <div>
     <div
       data-__type="social_buttons_pane"
-      data-disabled={false}
       data-instructions="socialSignUpInstructions"
       data-labelFn={[Function]}
       data-lock="model"

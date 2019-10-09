@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.17.3](https://github.com/auth0/lock/tree/v11.17.3) (2019-10-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.17.2...v11.17.3)
+
+
+**Fixed**
+- Fix Title cropping and password instructions tooltip [\#1728](https://github.com/auth0/lock/pull/1728) ([thisis-Shitanshu](https://github.com/thisis-Shitanshu))
+- Fix pt language issue [\#1726](https://github.com/auth0/lock/pull/1726) ([jogee](https://github.com/jogee))
+
+
 ## [v11.17.2](https://github.com/auth0/lock/tree/v11.17.2) (2019-08-08)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.17.1...v11.17.2)
 
