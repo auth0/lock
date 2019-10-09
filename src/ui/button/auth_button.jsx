@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const AuthButton = props => {
-  const { disabled, label, onClick, strategy, icon, primaryColor, foregroundColor } = props;
+  const { label, onClick, strategy, icon, primaryColor, foregroundColor } = props;
 
   const backgroundStyle = primaryColor ? { backgroundColor: primaryColor } : {};
   const foregroundStyle = foregroundColor ? { color: foregroundColor } : {};
@@ -12,7 +12,6 @@ const AuthButton = props => {
     <button
       className="auth0-lock-social-button auth0-lock-social-big-button"
       data-provider={strategy}
-      disabled={disabled}
       onClick={onClick}
       style={backgroundStyle}
       type="button"

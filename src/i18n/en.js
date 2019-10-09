@@ -43,7 +43,8 @@ export default {
       password_no_user_info_error: 'Password is based on user information.',
       password_strength_error: 'Password is too weak.',
       user_exists: 'The user already exists.',
-      username_exists: 'The username already exists.'
+      username_exists: 'The username already exists.',
+      social_signup_needs_terms_acception: 'Please agree to the Terms of Service below to continue.'
     }
   },
   success: {

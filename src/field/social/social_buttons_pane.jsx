@@ -5,9 +5,14 @@ import * as l from '../../core/index';
 import { logIn } from '../../quick-auth/actions';
 import { displayName, socialConnections, authButtonsTheme } from '../../connection/social/index';
 import { emitFederatedLoginEvent } from './event';
+import { termsAccepted } from '../../connection/database/index';
+import { signUpError } from '../../connection/database/actions';
 
 export default class SocialButtonsPane extends React.Component {
-  handleSubmit(provider, isSignUp) {
+  handleSubmit(lock, provider, isSignUp) {
+    if (isSignUp && !termsAccepted(lock)) {
+      return signUpError(lock.get('id'), { code: 'social_signup_needs_terms_acception' });
+    }
     emitFederatedLoginEvent(this.props.lock, provider, isSignUp);
     return logIn(l.id(this.props.lock), provider);
   }
@@ -15,7 +20,7 @@ export default class SocialButtonsPane extends React.Component {
   render() {
     // TODO: i don't like that it receives the instructions tanslated
     // but it also takes the t fn
-    const { instructions, labelFn, lock, showLoading, signUp, disabled } = this.props;
+    const { instructions, labelFn, lock, showLoading, signUp } = this.props;
 
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
@@ -36,12 +41,11 @@ export default class SocialButtonsPane extends React.Component {
             signUp ? 'signUpWithLabel' : 'loginWithLabel',
             connectionName || displayName(x)
           )}
-          onClick={() => this.handleSubmit(x, signUp)}
+          onClick={() => this.handleSubmit(lock, x, signUp)}
           strategy={x.get('strategy')}
           primaryColor={primaryColor}
           foregroundColor={foregroundColor}
           icon={icon}
-          disabled={disabled}
         />
       );
     });
@@ -68,10 +72,10 @@ SocialButtonsPane.propTypes = {
   lock: PropTypes.object.isRequired,
   showLoading: PropTypes.bool.isRequired,
   signUp: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool
+  e: PropTypes.bool
 };
 
 SocialButtonsPane.defaultProps = {
   showLoading: false,
-  disabled: false
+  e: false
 };

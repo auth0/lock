@@ -29,15 +29,14 @@ const Component = ({ i18n, model }) => {
   const sso = isSSOEnabled(model, { emailFirst: true }) && hasScreen(model, 'login');
   const ssoNotice = sso && <SingleSignOnNotice>{i18n.str('ssoEnabled')}</SingleSignOnNotice>;
 
-  const tabs = !sso &&
-    hasScreen(model, 'login') && (
-      <LoginSignUpTabs
-        key="loginsignup"
-        lock={model}
-        loginLabel={i18n.str('loginLabel')}
-        signUpLabel={i18n.str('signUpLabel')}
-      />
-    );
+  const tabs = !sso && hasScreen(model, 'login') && (
+    <LoginSignUpTabs
+      key="loginsignup"
+      lock={model}
+      loginLabel={i18n.str('loginLabel')}
+      signUpLabel={i18n.str('signUpLabel')}
+    />
+  );
 
   const social = l.hasSomeConnections(model, 'social') && (
     <SocialButtonsPane
@@ -45,7 +44,6 @@ const Component = ({ i18n, model }) => {
       labelFn={i18n.str}
       lock={model}
       signUp={true}
-      disabled={!termsAccepted(model)}
     />
   );
 

@@ -129,7 +129,7 @@ function signUpSuccess(id, result, popupHandler) {
   }
 }
 
-function signUpError(id, error) {
+export function signUpError(id, error) {
   const m = read(getEntity, 'lock', id);
 
   const invalidPasswordKeys = {

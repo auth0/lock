@@ -9,7 +9,12 @@ const getComponent = () => require('field/social/social_buttons_pane').default;
 
 describe('SocialButtonsPane', () => {
   const defaultProps = {
-    lock: {},
+    lock: {
+      get: p => {
+        expect(p).toBe('id');
+        return 'lock-id-1';
+      }
+    },
     labelFn: (...keys) => keys.join(','),
     showLoading: false,
     signUp: false,
@@ -36,6 +41,14 @@ describe('SocialButtonsPane', () => {
       })
     }));
 
+    jest.mock('connection/database/index', () => ({
+      termsAccepted: () => false
+    }));
+
+    jest.mock('connection/database/actions', () => ({
+      signUpError: jest.fn()
+    }));
+
     jest.mock('core/index', () => ({
       id: () => 1,
       emitEvent: jest.fn()
@@ -46,9 +59,17 @@ describe('SocialButtonsPane', () => {
     const SocialButtonsPane = getComponent();
     expectComponent(<SocialButtonsPane {...defaultProps} />).toMatchSnapshot();
   });
-  it('disables social buttons when disabled === true', () => {
+  it('calls signUpError when isSignUp===true and terms were not accepted', () => {
     const SocialButtonsPane = getComponent();
-    expectComponent(<SocialButtonsPane {...defaultProps} disabled />).toMatchSnapshot();
+
+    const wrapper = mount(<SocialButtonsPane {...defaultProps} signUp={true} />);
+    const props = extractPropsFromWrapper(wrapper, 2);
+
+    props.onClick();
+
+    const { mock } = require('connection/database/actions').signUpError;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0]).toMatchSnapshot();
   });
   it('shows loading when showLoading === true', () => {
     const SocialButtonsPane = getComponent();
