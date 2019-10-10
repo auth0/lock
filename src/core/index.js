@@ -154,7 +154,9 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable ? true : !!options.closable;
+    : undefined === options.closable
+    ? true
+    : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -527,6 +529,9 @@ export function loginErrorMessage(m, error, type) {
 
   if (code === 'a0.mfa_invalid_code') {
     code = 'lock.mfa_invalid_code';
+  }
+  if (code === 'password_expired') {
+    code = 'password_change_required';
   }
 
   return (
