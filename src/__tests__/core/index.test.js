@@ -13,7 +13,7 @@ let mockInit;
 
 jest.mock('i18n', () => ({
   initI18n: jest.fn(),
-  html: jest.fn()
+  html: (...keys) => keys.join()
 }));
 
 jest.mock('utils/data_utils', () => ({
@@ -96,12 +96,8 @@ describe('setResolvedConnection', () => {
 
 describe('loginErrorMessage', () => {
   it('maps `password_expired` to `password_change_required`', () => {
-    loginErrorMessage(mockLock, { code: 'password_expired' }, 'type');
+    const result = loginErrorMessage(mockLock, { code: 'password_expired' }, 'type');
 
-    expect(require('i18n').html).toHaveBeenCalledWith(mockLock, [
-      'error',
-      'login',
-      'password_change_required'
-    ]);
+    expect(result).toBe([mockLock, 'error', 'login', 'password_change_required'].join());
   });
 });
