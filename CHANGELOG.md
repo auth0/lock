@@ -1,5 +1,17 @@
 # Change Log
 
+## [v11.18.0](https://github.com/auth0/lock/tree/v11.18.0) (2019-10-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.17.3...v11.18.0)
+
+
+**Changed**
+- Relaxing the email validation [\#1735](https://github.com/auth0/lock/pull/1735) ([luisrudge](https://github.com/luisrudge))
+- Fix social button interactions when terms have not been accepted [\#1733](https://github.com/auth0/lock/pull/1733) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Map password_expired to password_change_required [\#1730](https://github.com/auth0/lock/pull/1730) ([luisrudge](https://github.com/luisrudge))
+
+
 ## [v11.17.3](https://github.com/auth0/lock/tree/v11.17.3) (2019-10-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.17.2...v11.17.3)
 
