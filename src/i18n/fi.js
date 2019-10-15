@@ -49,7 +49,8 @@ export default {
       password_no_user_info_error: 'Salasana perustuu käyttäjätietoihin.',
       password_strength_error: 'Salasana on liian heikko.',
       user_exists: 'Käyttäjä on jo olemassa.',
-      username_exists: 'Käyttäjätunnus on jo olemassa.'
+      username_exists: 'Käyttäjätunnus on jo olemassa.',
+      social_signup_needs_terms_acception: 'Ole hyvä ja hyväksy allaolevat käyttöehdot jatkaaksesi'
     }
   },
   success: {
