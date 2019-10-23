@@ -154,6 +154,7 @@ Lock will emit events during its lifecycle.
 - `signup submit`: emitted when the user clicks on the submit button of the "Sign up" screen.
 - `signup error`: emitted when signup fails. Has the error as an argument.
 - `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments.
+- `sso login`: emitted when the user clicks on an enterprise SSO connection button. Has the lock ID, connection object, and field name as arguments.
 
 ### show(options)
 
