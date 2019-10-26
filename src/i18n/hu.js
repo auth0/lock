@@ -36,7 +36,8 @@ export default {
       password_no_user_info_error: 'A jelszó a felhasználói adatokra támaszkodik.',
       password_strength_error: 'Túl gyenge jelszó.',
       user_exists: 'A felhasználó már létezik.',
-      username_exists: 'A felhasználónév már foglalt.'
+      username_exists: 'A felhasználónév már foglalt.',
+      social_signup_needs_terms_acception: 'Kérjük, fogadd el a felhasználási feltételeket és az adatkezelési tájékoztatót a folytatáshoz!'
     }
   },
   success: {
