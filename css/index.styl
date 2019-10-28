@@ -1348,3 +1348,10 @@ input[type="button"]
 _:-ms-fullscreen, :root .auth0-lock.auth0-lock .auth0-lock-content-wrapper
   flex-basis: auto !important
   max-height: 70vh
+
+// iPhone display fix - https://github.com/auth0/lock/issues/1588
+.auth0-lock-iphone.auth0-lock .auth0-lock-form
+  display: initial;
+
+.auth0-lock-iphone.auth0-lock .auth0-lock-content
+  padding: 20px;
