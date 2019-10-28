@@ -37,7 +37,7 @@ export default {
       password_strength_error: 'Túl gyenge jelszó.',
       user_exists: 'A felhasználó már létezik.',
       username_exists: 'A felhasználónév már foglalt.',
-      social_signup_needs_terms_acception: 'Kérjük, fogadd el a felhasználási feltételeket és az adatkezelési tájékoztatót a folytatáshoz!'
+      social_signup_needs_terms_acception: 'Kérjük, fogadd el a felhasználási feltételeket és az adatkezelési tájékoztatót a folytatáshoz.'
     }
   },
   success: {
