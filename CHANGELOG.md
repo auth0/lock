@@ -1,5 +1,18 @@
 # Change Log
 
+## [v11.18.1](https://github.com/auth0/lock/tree/v11.18.1) (2019-10-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.18.0...v11.18.1)
+
+
+**Added**
+- added hungarian transalation for social_signup_needs_terms_acception [\#1744](https://github.com/auth0/lock/pull/1744) ([smatyas](https://github.com/smatyas))
+- Add a Lock event 'sso login' [\#1742](https://github.com/auth0/lock/pull/1742) ([countergram](https://github.com/countergram))
+- fix: Add missing property for finnish translation [\#1740](https://github.com/auth0/lock/pull/1740) ([petetnt](https://github.com/petetnt))
+
+**Fixed**
+- Reset .auth0-lock-form display to 'initial' for iPhone [\#1745](https://github.com/auth0/lock/pull/1745) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.18.0](https://github.com/auth0/lock/tree/v11.18.0) (2019-10-10)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.17.3...v11.18.0)
 
