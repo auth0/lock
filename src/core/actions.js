@@ -28,6 +28,7 @@ export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn
     domain,
     l.withAuthOptions(m, {
       ...options,
+      isUniversalLoginPage: l.isUniversalLoginPage(m),
       popupOptions: l.ui.popupOptions(m)
     })
   );

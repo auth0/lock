@@ -12,6 +12,7 @@ import { clientConnections, hasFreeSubscription } from './client/index';
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
+  const currentHost = window.location.host;
   let m = init(
     id,
     Immutable.fromJS({
@@ -21,6 +22,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       auth: extractAuthOptions(options),
       clientID: clientID,
       domain: domain,
+      isUniversalLoginPage:
+        currentHost === domain || currentHost === domain.replace('auth0.com', 'auth0.cloud'),
       emitEventFn: emitEventFn,
       hookRunner: hookRunner,
       useTenantInfo: options.__useTenantInfo || false,
@@ -49,6 +52,10 @@ export function clientID(m) {
 
 export function domain(m) {
   return get(m, 'domain');
+}
+
+export function isUniversalLoginPage(m) {
+  return get(m, 'isUniversalLoginPage');
 }
 
 export function clientBaseUrl(m) {
@@ -154,9 +161,7 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable
-    ? true
-    : !!options.closable;
+    : undefined === options.closable ? true : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -259,7 +264,8 @@ function extractAuthOptions(options) {
     sso,
     state,
     nonce
-  } = options.auth || {};
+  } =
+    options.auth || {};
   if (options.auth && options.auth.redirectUri) {
     console.warn(
       "You're sending an `auth` option named `redirectUri`. This option will be ignored. Use `redirectUrl` instead."

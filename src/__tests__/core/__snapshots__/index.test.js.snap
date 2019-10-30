@@ -53,6 +53,7 @@ Object {
   "emitEventFn": "emitEventFn",
   "hashCleanup": true,
   "hookRunner": "hookRunner",
+  "isUniversalLoginPage": false,
   "languageBaseUrl": "https://cdn.auth0.com",
   "prefill": Object {},
   "tenantBaseUrl": "https://domain/info-v1.js",

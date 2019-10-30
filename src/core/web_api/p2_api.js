@@ -16,7 +16,7 @@ class Auth0APIClient {
     this.client = null;
     this.authOpt = null;
     this.domain = domain;
-    this.isUniversalLogin = window.location.host === domain;
+    this.isUniversalLoginPage = opts.isUniversalLoginPage;
     this._enableIdPInitiatedLogin = !!(opts._enableIdPInitiatedLogin || opts._enableImpersonation);
     const telemetry = this.getTelemetryInfo(opts._telemetryInfo);
 
@@ -56,7 +56,7 @@ class Auth0APIClient {
       state,
       scope
     };
-    if (this.isUniversalLogin && opts.sso !== undefined) {
+    if (this.isUniversalLoginPage && opts.sso !== undefined) {
       this.authOpt.sso = opts.sso;
     }
   }
@@ -64,7 +64,7 @@ class Auth0APIClient {
     let telemetry;
     const { auth0Client } = qs.parse(window.location.search.substr(1));
     let ulpTelemetry = auth0Client && JSON.parse(atob(auth0Client));
-    if (this.isUniversalLogin && ulpTelemetry) {
+    if (this.isUniversalLoginPage && ulpTelemetry) {
       telemetry = {
         ...ulpTelemetry,
         env: {
@@ -74,7 +74,7 @@ class Auth0APIClient {
         }
       };
     }
-    if (this.isUniversalLogin && !ulpTelemetry) {
+    if (this.isUniversalLoginPage && !ulpTelemetry) {
       telemetry = {
         name: 'lock.js-ulp',
         version: getVersion(),
@@ -83,7 +83,7 @@ class Auth0APIClient {
         }
       };
     }
-    if (!this.isUniversalLogin && telemetryOverride) {
+    if (!this.isUniversalLoginPage && telemetryOverride) {
       telemetry = {
         ...telemetryOverride,
         env: {
@@ -108,7 +108,7 @@ class Auth0APIClient {
   logIn(options, authParams, cb) {
     // TODO: for passwordless only, try to clean in auth0.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
-    const f = loginCallback(false, this.domain, cb);
+    const f = loginCallback(false, this.isUniversalLoginPage, cb);
     const loginOptions = trimAuthParams(
       normalizeAuthParams({
         ...options,
@@ -155,7 +155,9 @@ class Auth0APIClient {
   }
 
   passwordlessStart(options, cb) {
-    this.client.passwordlessStart(trimAuthParams(options), err => cb(normalizeError(err)));
+    this.client.passwordlessStart(trimAuthParams(options), err =>
+      cb(normalizeError(err, this.isUniversalLoginPage))
+    );
   }
 
   passwordlessVerify(options, cb) {
@@ -163,7 +165,9 @@ class Auth0APIClient {
       ...options,
       popup: this.authOpt.popup
     };
-    this.client.passwordlessLogin(verifyOptions, (err, result) => cb(normalizeError(err), result));
+    this.client.passwordlessLogin(verifyOptions, (err, result) =>
+      cb(normalizeError(err, this.isUniversalLoginPage), result)
+    );
   }
 
   parseHash(hash = '', cb) {

@@ -1,4 +1,4 @@
-export function normalizeError(error, domain) {
+export function normalizeError(error, isUniversalLoginPage) {
   if (!error) {
     return error;
   }
@@ -95,7 +95,7 @@ export function normalizeError(error, domain) {
     };
   }
   if (
-    window.location.host !== domain &&
+    !isUniversalLoginPage &&
     (error.error === 'access_denied' || error.code === 'access_denied')
   ) {
     return {
@@ -114,10 +114,10 @@ export function normalizeError(error, domain) {
   return result.error === undefined && result.description === undefined ? error : result;
 }
 
-export function loginCallback(redirect, domain, cb) {
+export function loginCallback(redirect, isUniversalLoginPage, cb) {
   return redirect
-    ? error => cb(normalizeError(error, domain))
-    : (error, result) => cb(normalizeError(error, domain), result);
+    ? error => cb(normalizeError(error, isUniversalLoginPage))
+    : (error, result) => cb(normalizeError(error, isUniversalLoginPage), result);
 }
 
 export function normalizeAuthParams({ popup, ...authParams }) {

@@ -29,6 +29,26 @@ describe('setup', () => {
     mockInit = jest.fn();
     jest.resetModules();
   });
+  it('sets isUniversalLoginPage to `true` when current host === domain', function() {
+    setURL('https://brucke.auth0.com/authorize');
+    setup('id', 'clientID', 'brucke.auth0.com', {}, 'hookRunner', 'emitEventFn');
+    expect(mockInit.mock.calls[0][1].toJS().isUniversalLoginPage).toBe(true);
+  });
+  it('sets isUniversalLoginPage to `true` when current host === auth0 tenant specific domain', function() {
+    setURL('https://brucke.auth0.cloud/authorize');
+    setup('id', 'clientID', 'brucke.auth0.com', {}, 'hookRunner', 'emitEventFn');
+    expect(mockInit.mock.calls[0][1].toJS().isUniversalLoginPage).toBe(true);
+  });
+  it('sets isUniversalLoginPage to `true` when using a custom domain', function() {
+    setURL('https://auth.example.com/authorize');
+    setup('id', 'clientID', 'auth.example.com', {}, 'hookRunner', 'emitEventFn');
+    expect(mockInit.mock.calls[0][1].toJS().isUniversalLoginPage).toBe(true);
+  });
+  it('sets isUniversalLoginPage to `false` when current host does not match any of the domains', function() {
+    setURL('https://myapp.com/authorize');
+    setup('id', 'clientID', 'brucke.auth0.com', {}, 'hookRunner', 'emitEventFn');
+    expect(mockInit.mock.calls[0][1].toJS().isUniversalLoginPage).toBe(false);
+  });
   it('default redirectUrl should not include location.hash', () => {
     setURL('https://test.com/path/#not-this-part');
     const options = {};

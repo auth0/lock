@@ -26,8 +26,7 @@ const Component = ({ i18n, model }) => {
   const buttonIcon = buttonTheme && buttonTheme.get('icon');
 
   const buttonClickHandler = () => {
-    const isUniversalLogin = window.location.host === l.domain(model);
-    if (isUniversalLogin) {
+    if (l.isUniversalLoginPage(model)) {
       logIn(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
     } else {
       checkSession(l.id(model), lastUsedConnection(model), lastUsedUsername(model));

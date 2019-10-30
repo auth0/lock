@@ -27,7 +27,7 @@ describe('LastLoginScreen', () => {
 
     jest.mock('core/index', () => ({
       id: () => 'id',
-      domain: () => 'me.auth0.com'
+      isUniversalLoginPage: () => true
     }));
 
     jest.mock('core/sso/index', () => ({
@@ -119,7 +119,8 @@ describe('LastLoginScreen', () => {
     });
   });
   it('calls checkSession in the buttonClickHandler when outside of the universal login page', () => {
-    setURL('https://other-url.auth0.com');
+    require('core/index').isUniversalLoginPage = () => false;
+
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);
@@ -131,7 +132,8 @@ describe('LastLoginScreen', () => {
     expect(mock.calls[0][2]).toBe('lastUsedUsername');
   });
   it('calls logIn in the buttonClickHandler when inside of the universal login page', () => {
-    setURL('https://me.auth0.com');
+    require('core/index').isUniversalLoginPage = () => true;
+
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);

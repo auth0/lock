@@ -36,6 +36,7 @@ describe('Auth0APIClient', () => {
     jest.resetModules();
     require('auth0-js').version.raw = 'a0js.version';
     require('core/web_api/helper').getVersion = () => 'lock.version';
+    setURL(`https://me.auth0.com/authorize`);
   });
   describe('init', () => {
     describe('with overrides', () => {
@@ -48,35 +49,36 @@ describe('Auth0APIClient', () => {
           responseMode: 'query',
           responseType: 'code',
           leeway: 60,
-          _telemetryInfo: { ignored: true }
+          _telemetryInfo: { ignored: true },
+          isUniversalLoginPage: true
         };
         getClient(options);
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo).toMatchSnapshot();
       });
       it('overrides telemetry when outside the ULP', () => {
-        setURL(`https://auth.myapp.com/authorize`);
         const options = {
           audience: 'foo',
           redirectUrl: '//localhost:8080/login/callback',
           responseMode: 'query',
           responseType: 'code',
           leeway: 60,
-          _telemetryInfo: { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } }
+          _telemetryInfo: { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } },
+          isUniversalLoginPage: false
         };
         getClient(options);
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo).toMatchSnapshot();
       });
       it('uses default telemetry key when outside the ULP', () => {
-        setURL(`https://auth.myapp.com/authorize`);
-        getClient();
+        getClient({
+          isUniversalLoginPage: false
+        });
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js');
         expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain('auth0.js');
       });
       it('overrides auth0.js telemetry key', () => {
-        setURL(`https://auth.myapp.com/authorize`);
         const options = {
           audience: 'foo',
           redirectUrl: '//localhost:8080/login/callback',
@@ -87,15 +89,15 @@ describe('Auth0APIClient', () => {
             name: 'test-sdk',
             version: '1.0.0',
             env: { 'auth0.js': 'this-will-be-overriden' }
-          }
+          },
+          isUniversalLoginPage: false
         };
         getClient(options);
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env['auth0.js']).toBe('a0js.version');
       });
       it('uses different telemetry key when inside the ULP', () => {
-        setURL('https://me.auth0.com/');
-        getClient();
+        getClient({ isUniversalLoginPage: true });
         const mock = getAuth0ClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js-ulp');
         expect(Object.keys(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env)).toContain(
@@ -103,7 +105,6 @@ describe('Auth0APIClient', () => {
         );
       });
       it('forwards options to WebAuth', () => {
-        setURL(`https://auth.myapp.com/authorize`);
         const options = {
           audience: 'foo',
           redirectUrl: '//localhost:8080/login/callback',
@@ -124,7 +125,8 @@ describe('Auth0APIClient', () => {
             nonce: 'nonce',
             state: 'state',
             scope: 'custom_scope'
-          }
+          },
+          isUniversalLoginPage: false
         };
         const client = getClient(options);
         const mock = getAuth0ClientMock();
@@ -134,9 +136,9 @@ describe('Auth0APIClient', () => {
 
     describe('should set authOpt according options', () => {
       it('should set sso:true when inside the universal login page', () => {
-        setURL('https://me.auth0.com/');
         const options = {
-          sso: true
+          sso: true,
+          isUniversalLoginPage: true
         };
         const client = getClient(options);
         expect(client.authOpt.sso).toBe(true);
@@ -144,14 +146,14 @@ describe('Auth0APIClient', () => {
       it('should set sso:false when inside the universal login page', () => {
         setURL('https://me.auth0.com/');
         const options = {
-          sso: false
+          sso: false,
+          isUniversalLoginPage: true
         };
         const client = getClient(options);
         expect(client.authOpt.sso).toBe(false);
       });
       it('should set sso:undefined when outside the universal login page', () => {
-        setURL('https://other-url.auth0.com/');
-        const options = {};
+        const options = { isUniversalLoginPage: false };
         const client = getClient(options);
         expect(client.authOpt.sso).toBe(undefined);
       });

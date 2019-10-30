@@ -69,24 +69,24 @@ describe('normalizeError', () => {
       });
     });
 
-    describe("domain doesn't match current host", function() {
+    describe('is not inside Universal Login Page', function() {
       it('should map access_denied error to invalid_user_password when error.error === access_denied', () => {
-        const actualError = normalizeError(errorObjWithError, 'loremIpsum');
+        const actualError = normalizeError(errorObjWithError, false);
         expect(actualError).toMatchSnapshot();
       });
       it('should map access_denied error to invalid_user_password when error.code === access_denied', () => {
-        const actualError = normalizeError(errorObjWithCode, 'loremIpsum');
+        const actualError = normalizeError(errorObjWithCode, false);
         expect(actualError).toMatchSnapshot();
       });
     });
 
-    describe('domain match current host', function() {
+    describe('is inside Universal Login Page', function() {
       it('should not map access_denied error to invalid_user_password when error.error === access_denied', () => {
-        const actualError = normalizeError(errorObjWithError, domainMock);
+        const actualError = normalizeError(errorObjWithError, true);
         expect(actualError).toMatchSnapshot();
       });
       it('should not map access_denied error to invalid_user_password when error.code === access_denied', () => {
-        const actualError = normalizeError(errorObjWithCode, domainMock);
+        const actualError = normalizeError(errorObjWithCode, true);
         expect(actualError).toMatchSnapshot();
       });
     });
