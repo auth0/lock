@@ -97,6 +97,8 @@ export function signUp(id) {
 function signUpSuccess(id, result, popupHandler) {
   const lock = read(getEntity, 'lock', id);
 
+  l.emitEvent(m, 'signup success', result);
+
   if (shouldAutoLogin(lock)) {
     swap(updateEntity, 'lock', id, m => m.set('signedUp', true));
 

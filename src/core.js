@@ -50,6 +50,7 @@ export default class Base extends EventEmitter {
       'forgot_password submit',
       'signin submit',
       'signup submit',
+      'signup success',
       'signup error',
       'socialOrPhoneNumber submit',
       'socialOrEmail submit',
