@@ -1,6 +1,6 @@
 {
-  "name": "auth0-lock-signup-event",
-  "version": "11.18.3",
+  "name": "auth0-lock",
+  "version": "11.18.1",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:fostergn/lock.git"
+    "url": "git://github.com/auth0/lock"
   },
   "main": "lib/index.js",
   "scripts": {
