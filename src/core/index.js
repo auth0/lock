@@ -23,7 +23,7 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       clientID: clientID,
       domain: domain,
       isUniversalLoginPage:
-        currentHost === domain || currentHost === domain.replace('auth0.com', 'auth0.cloud'),
+        currentHost === domain || currentHost === domain.replace('auth0.com', 'auth0users.com'),
       emitEventFn: emitEventFn,
       hookRunner: hookRunner,
       useTenantInfo: options.__useTenantInfo || false,
@@ -161,7 +161,9 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable ? true : !!options.closable;
+    : undefined === options.closable
+    ? true
+    : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -264,8 +266,7 @@ function extractAuthOptions(options) {
     sso,
     state,
     nonce
-  } =
-    options.auth || {};
+  } = options.auth || {};
   if (options.auth && options.auth.redirectUri) {
     console.warn(
       "You're sending an `auth` option named `redirectUri`. This option will be ignored. Use `redirectUrl` instead."

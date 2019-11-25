@@ -35,7 +35,7 @@ describe('setup', () => {
     expect(mockInit.mock.calls[0][1].toJS().isUniversalLoginPage).toBe(true);
   });
   it('sets isUniversalLoginPage to `true` when current host === auth0 tenant specific domain', function() {
-    setURL('https://brucke.auth0.cloud/authorize');
+    setURL('https://brucke.auth0users.com/authorize');
     setup('id', 'clientID', 'brucke.auth0.com', {}, 'hookRunner', 'emitEventFn');
     expect(mockInit.mock.calls[0][1].toJS().isUniversalLoginPage).toBe(true);
   });
