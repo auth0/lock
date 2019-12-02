@@ -145,6 +145,7 @@ export function signUpError(id, error) {
 
   const errorMessage =
     i18n.html(m, ['error', 'signUp', errorKey]) ||
+    i18n.html(m, ['error', 'singUp', error.code]) ||
     i18n.html(m, ['error', 'signUp', 'lock.fallback']);
 
   l.emitEvent(m, 'signup error', error);
