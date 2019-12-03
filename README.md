@@ -71,16 +71,18 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0Lock(clientId, domain);
+var accessToken = null;
+var profile = null;
 
 lock.on("authenticated", function(authResult) {
-  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+  lock.getUserInfo(authResult.accessToken, function(error, profileResult) {
     if (error) {
       // Handle error
       return;
     }
 
-    localStorage.setItem("accessToken", authResult.accessToken);
-    localStorage.setItem("profile", JSON.stringify(profile));
+    accessToken = authResult.accessToken;
+    profile = profileResult;
 
     // Update DOM
   });
@@ -105,16 +107,18 @@ For more information, read our [passwordless docs](https://auth0.com/docs/connec
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0LockPasswordless(clientId, domain);
+var accessToken = null;
+var profile = null;
 
 lock.on("authenticated", function(authResult) {
-  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+  lock.getUserInfo(authResult.accessToken, function(error, profileResult) {
     if (error) {
       // Handle error
       return;
     }
 
-    localStorage.setItem("accessToken", authResult.accessToken);
-    localStorage.setItem("profile", JSON.stringify(profile));
+    accessToken = authResult.accessToken;
+    profile = profileResult;
 
     // Update DOM
   });
