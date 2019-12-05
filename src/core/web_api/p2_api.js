@@ -190,6 +190,10 @@ class Auth0APIClient {
     return this.client.client.getSSOData(...params);
   }
 
+  getChallenge(...params) {
+    return this.client.client.getChallenge(...params);
+  }
+
   getUserCountry(cb) {
     return this.client.client.getUserCountry(cb);
   }

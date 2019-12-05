@@ -359,6 +359,53 @@ loadingSize = 30px
     &:last-child
       margin-bottom 0
 
+  .auth0-lock-captcha
+    position: relative;
+    height: 72px;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
+    border-radius: 3px;
+    margin-top: 24px;
+
+    .auth0-lock-captcha-image
+      position: absolute;
+      width: 120px;
+      height: 40px;
+      left: 16px;
+      top: 16px;
+      background-size: contain;
+
+    .auth0-lock-captcha-refresh
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      right: 16px;
+      top: 16px;
+      border: 1px solid #eee;
+      border-radius: 3px;
+      padding: 0;
+
+      svg, .test-titi
+        position: absolute;
+        top: 12.5px;
+        left: 12.5px;
+        width: 15px;
+        height: 15px;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+
+        path
+          fill: #888;
+
+  .auth0-lock-input-block.auth0-lock-input-captcha
+    svg.auth0-lock-icon
+      width: 20px
+      height: 20px
+      top: 10px
+      left: 9.5px
+
   .auth0-lock-input-wrap
     border-radius 3px
     border 1px solid #f1f1f1

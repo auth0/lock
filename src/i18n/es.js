@@ -60,6 +60,8 @@ export default {
   databaseSignUpInstructions: '',
   databaseAlternativeSignUpInstructions: 'o',
   emailInputPlaceholder: 'correo@ejemplo.com',
+  captchaCodeInputPlaceholder: 'Introduzca el código de arriba',
+  captchaMathInputPlaceholder: 'Resuelva la formula de arriba',
   enterpriseLoginIntructions: 'Inicie sesión con sus credenciales corporativas.',
   enterpriseActiveLoginInstructions: 'Ingrese las credenciales corporativas de %s.',
   failedLabel: 'Error!',

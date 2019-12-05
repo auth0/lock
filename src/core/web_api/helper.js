@@ -105,6 +105,14 @@ export function normalizeError(error, domain) {
     };
   }
 
+  if (error.code === 'invalid_captcha') {
+    return {
+      code: 'invalid_captcha',
+      code: 'invalid_captcha',
+      description: error.description
+    };
+  }
+
   const result = {
     error: error.code ? error.code : error.statusCode || error.error,
     description: error.description || error.code

@@ -3,9 +3,10 @@ import React from 'react';
 import EmailPane from '../../field/email/email_pane';
 import UsernamePane from '../../field/username/username_pane';
 import PasswordPane from '../../field/password/password_pane';
-import { showResetPasswordActivity } from './actions';
+import { showResetPasswordActivity, swapCaptcha } from './actions';
 import { hasScreen, forgotPasswordLink } from './index';
 import * as l from '../../core/index';
+import CaptchaPane from '../../field/captcha/captcha_pane';
 
 export default class LoginPane extends React.Component {
   handleDontRememberPasswordClick(e) {
@@ -49,6 +50,11 @@ export default class LoginPane extends React.Component {
         />
       );
 
+    const captchaPane =
+      l.captcha(lock) && l.captcha(lock).get('required') ? (
+        <CaptchaPane i18n={i18n} lock={lock} onReload={() => swapCaptcha(l.id(lock), false)} />
+      ) : null;
+
     const dontRememberPassword =
       showForgotPasswordLink && hasScreen(lock, 'forgotPassword') ? (
         <p className="auth0-lock-alternative">
@@ -72,6 +78,7 @@ export default class LoginPane extends React.Component {
           placeholder={passwordInputPlaceholder}
           hidden={!showPassword}
         />
+        {captchaPane}
         {dontRememberPassword}
       </div>
     );
