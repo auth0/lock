@@ -26,7 +26,7 @@ describe('AuthButton', () => {
   });
   it('should trigger onClick when clicked', () => {
     const wrapper = mount(<AuthButton {...defaultProps} />);
-    wrapper.find('button').simulate('click');
+    wrapper.find('a').simulate('click');
     expect(defaultProps.onClick.mock.calls.length).toBe(1);
   });
 });

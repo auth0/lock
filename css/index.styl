@@ -183,6 +183,9 @@ loadingSize = 30px
     -webkit-overflow-scrolling touch;
     overflow-x: auto;
 
+    @media screen and (min-width: 481px)
+      overflow-x: inherit;
+
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
     -moz-box-sizing content-box !important
@@ -532,6 +535,7 @@ loadingSize = 30px
     height 40px
     -webkit-transition background-color .2s ease-in-out
     transition background-color .2s ease-in-out
+    cursor: pointer
 
     &[data-provider^=google]
       .auth0-lock-social-button-icon
@@ -1395,3 +1399,10 @@ input[type="button"]
 _:-ms-fullscreen, :root .auth0-lock.auth0-lock .auth0-lock-content-wrapper
   flex-basis: auto !important
   max-height: 70vh
+
+// iPhone display fix - https://github.com/auth0/lock/issues/1588
+.auth0-lock-iphone.auth0-lock .auth0-lock-form
+  display: initial;
+
+.auth0-lock-iphone.auth0-lock .auth0-lock-content
+  padding: 20px;

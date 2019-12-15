@@ -64,6 +64,11 @@ function logInActiveFlow(id) {
 function logInSSO(id, connection) {
   const m = read(getEntity, 'lock', id);
   const field = databaseLogInWithEmail(m) ? 'email' : 'username';
+  l.emitEvent(m, 'sso login', {
+    lockID: id,
+    connection: connection,
+    field: field
+  });
   coreLogIn(id, [field], {
     connection: connection.get('name'),
     login_hint: getFieldValue(m, field)

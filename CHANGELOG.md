@@ -1,5 +1,32 @@
 # Change Log
 
+## [v11.19.0](https://github.com/auth0/lock/tree/v11.19.0) (2019-12-04)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.18.1...v11.19.0)
+
+
+**Added**
+- New Feature: Signup Success Event [\#1754](https://github.com/auth0/lock/pull/1754) ([fostergn](https://github.com/fostergn))
+
+**Fixed**
+- [SDK-1191] Lock social buttons now render as links instead of buttons [\#1760](https://github.com/auth0/lock/pull/1760) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SDK-1141] Altered readme samples to remove ref to localstorage [\#1759](https://github.com/auth0/lock/pull/1759) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Applied overflow style only on mobile views [\#1758](https://github.com/auth0/lock/pull/1758) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Bugfix for WebExtension [\#1750](https://github.com/auth0/lock/pull/1750) ([STK913](https://github.com/STK913))
+
+
+## [v11.18.1](https://github.com/auth0/lock/tree/v11.18.1) (2019-10-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.18.0...v11.18.1)
+
+
+**Added**
+- added hungarian transalation for social_signup_needs_terms_acception [\#1744](https://github.com/auth0/lock/pull/1744) ([smatyas](https://github.com/smatyas))
+- Add a Lock event 'sso login' [\#1742](https://github.com/auth0/lock/pull/1742) ([countergram](https://github.com/countergram))
+- fix: Add missing property for finnish translation [\#1740](https://github.com/auth0/lock/pull/1740) ([petetnt](https://github.com/petetnt))
+
+**Fixed**
+- Reset .auth0-lock-form display to 'initial' for iPhone [\#1745](https://github.com/auth0/lock/pull/1745) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.18.0](https://github.com/auth0/lock/tree/v11.18.0) (2019-10-10)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.17.3...v11.18.0)
 
