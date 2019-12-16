@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.20.0](https://github.com/auth0/lock/tree/v11.20.0) (2019-12-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.19.0...v11.20.0)
+
+
+**Added**
+- add captcha support [\#1765](https://github.com/auth0/lock/pull/1765) ([jfromaniello](https://github.com/jfromaniello))
+
+**Security**
+- [SDK-980] Bumped auth0.js to 9.12.0 [\#1767](https://github.com/auth0/lock/pull/1767) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.19.0](https://github.com/auth0/lock/tree/v11.19.0) (2019-12-04)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.18.1...v11.19.0)
 
