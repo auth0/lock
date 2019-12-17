@@ -38,6 +38,39 @@ Object {
   "audience": "foo",
   "clientID": "cid",
   "domain": "me.auth0.com",
+  "leeway": 30,
+  "nonce": "nonce",
+  "overrides": Object {
+    "__jwks_uri": "https://jwks.com",
+    "__tenant": "tenant1",
+    "__token_issuer": "issuer1",
+  },
+  "plugins": Array [
+    Object {
+      "name": "ExamplePlugin",
+    },
+  ],
+  "redirectUri": "//localhost:8080/login/callback",
+  "responseMode": "query",
+  "responseType": "code",
+  "scope": "custom_scope",
+  "state": "state",
+}
+`;
+
+exports[`Auth0APIClient init with overrides forwards options to WebAuth with a default leeway 1`] = `
+Object {
+  "_sendTelemetry": true,
+  "_telemetryInfo": Object {
+    "env": Object {
+      "auth0.js": "a0js.version",
+    },
+    "name": "lock.js",
+    "version": "lock.version",
+  },
+  "audience": "foo",
+  "clientID": "cid",
+  "domain": "me.auth0.com",
   "leeway": 60,
   "nonce": "nonce",
   "overrides": Object {
