@@ -39,7 +39,7 @@ class Auth0APIClient {
       redirectUri: opts.redirectUrl,
       responseMode: opts.responseMode,
       responseType: opts.responseType,
-      leeway: opts.leeway || 1,
+      leeway: opts.leeway || 60,
       plugins: opts.plugins || [new CordovaAuth0Plugin()],
       overrides: webAuthOverrides(opts.overrides),
       _sendTelemetry: opts._sendTelemetry === false ? false : true,
