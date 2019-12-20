@@ -34,6 +34,7 @@ const Captcha = ({ lock, i18n, onReload }) => {
       onChange={handleChange}
       onReload={onReload}
       value={value}
+      invalidHint={i18n.str('blankErrorHint')}
     />
   );
 };
