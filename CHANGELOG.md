@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.20.1](https://github.com/auth0/lock/tree/v11.20.1) (2019-12-20)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.0...v11.20.1)
+
+
+**Fixed**
+- Set the default token validation leeway to 60 sec [\#1770](https://github.com/auth0/lock/pull/1770) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.20.0](https://github.com/auth0/lock/tree/v11.20.0) (2019-12-16)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.19.0...v11.20.0)
 
