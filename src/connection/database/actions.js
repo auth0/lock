@@ -28,8 +28,9 @@ export function logIn(id, needsMFA = false) {
 
   const fields = [usernameField, 'password'];
 
-  const captcha = c.getFieldValue(m, 'captcha');
-  if (captcha) {
+  const isCaptchaRequired = l.captcha(m) && l.captcha(m).get('required');
+  if (isCaptchaRequired) {
+    const captcha = c.getFieldValue(m, 'captcha');
     params['captcha'] = captcha;
     fields.push('captcha');
   }

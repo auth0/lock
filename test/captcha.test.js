@@ -39,8 +39,9 @@ describe('captcha', function() {
     it('should require another challenge when clicking the refresh button', function(done) {
       h.clickRefreshCaptchaButton(this.lock);
       setTimeout(() => {
-        expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage)
-          .to.equal(`url("${requiredResponse2.image}")`);
+        expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
+          `url("${requiredResponse2.image}")`
+        );
         done();
       }, 200);
     });
@@ -48,6 +49,11 @@ describe('captcha', function() {
     it('should submit the captcha provided by the user', function() {
       h.logInWithEmailPasswordAndCaptcha(this.lock);
       expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+    });
+
+    it('should not submit the form if the captcha is not provided', function() {
+      h.logInWithEmailAndPassword(this.lock);
+      expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
     });
   });
 
