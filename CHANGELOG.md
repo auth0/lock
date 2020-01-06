@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.20.2](https://github.com/auth0/lock/tree/v11.20.2) (2020-01-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.1...v11.20.2)
+
+
+**Fixed**
+- [CAUTH-277] prevent posting when captcha is required and empty [\#1774](https://github.com/auth0/lock/pull/1774) ([jfromaniello](https://github.com/jfromaniello))
+
+
 ## [v11.20.1](https://github.com/auth0/lock/tree/v11.20.1) (2019-12-20)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.20.0...v11.20.1)
 
