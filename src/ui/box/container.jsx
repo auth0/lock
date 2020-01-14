@@ -157,7 +157,8 @@ export default class Container extends React.Component {
       terms,
       title,
       classNames,
-      scrollGlobalMessagesIntoView
+      scrollGlobalMessagesIntoView,
+      suppressSubmitOverlay
     } = this.props;
 
     const badge = showBadge ? <BottomBadge link={badgeLink} /> : null;
@@ -178,7 +179,7 @@ export default class Container extends React.Component {
       className += ' auth0-lock-mobile';
     }
 
-    if (isSubmitting) {
+    if (isSubmitting && !suppressSubmitOverlay) {
       className += ' auth0-lock-mode-loading';
     }
 
@@ -270,7 +271,8 @@ Container.propTypes = {
   terms: PropTypes.element,
   title: PropTypes.string,
   classNames: PropTypes.string.isRequired,
-  scrollGlobalMessagesIntoView: PropTypes.bool
+  scrollGlobalMessagesIntoView: PropTypes.bool,
+  suppressSubmitOverlay: PropTypes.bool
   // escHandler
   // submitHandler,
 };

@@ -152,6 +152,14 @@ export function stopRendering(m) {
   return tremove(m, 'render');
 }
 
+export function setSupressSubmitOverlay(m, b) {
+  return set(m, 'suppressSubmitOverlay', b);
+}
+
+export function suppressSubmitOverlay(m) {
+  return get(m, 'suppressSubmitOverlay');
+}
+
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false

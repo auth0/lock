@@ -132,7 +132,8 @@ export default class Base extends EventEmitter {
           terms: screen.renderTerms(m, i18nProp.html('signUpTerms')),
           title: getScreenTitle(m),
           classNames: screen.name === 'loading' ? 'fade' : 'horizontal-fade',
-          scrollGlobalMessagesIntoView: l.ui.scrollGlobalMessagesIntoView(m)
+          scrollGlobalMessagesIntoView: l.ui.scrollGlobalMessagesIntoView(m),
+          suppressSubmitOverlay: l.suppressSubmitOverlay(m) || false
         };
         render(l.ui.containerID(m), props);
 

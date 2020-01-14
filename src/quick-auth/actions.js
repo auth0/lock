@@ -24,6 +24,14 @@ export function logIn(id, connection, loginHint, prompt) {
   if (prompt) {
     params.prompt = prompt;
   }
+
+  if (connection.get('strategy') === 'apple') {
+    swap(updateEntity, 'lock', l.id(m), l.setSupressSubmitOverlay, true);
+  } else {
+    swap(updateEntity, 'lock', l.id(m), l.setSupressSubmitOverlay, false);
+  }
+
+  params.isSubmitting = false;
   coreLogIn(id, [], params);
 }
 
