@@ -1,5 +1,17 @@
 # Change Log
 
+## [v11.20.3](https://github.com/auth0/lock/tree/v11.20.3) (2020-01-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.2...v11.20.3)
+
+
+**Changed**
+- Bumped Auth0.js to 9.12.2 [\#1780](https://github.com/auth0/lock/pull/1780) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Prevent loading overlay from showing when using Sign In With Apple [\#1779](https://github.com/auth0/lock/pull/1779) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- Fix translation pt-PT [\#1776](https://github.com/auth0/lock/pull/1776) ([mario-moura-silva](https://github.com/mario-moura-silva))
+
+
 ## [v11.20.2](https://github.com/auth0/lock/tree/v11.20.2) (2020-01-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.20.1...v11.20.2)
 
