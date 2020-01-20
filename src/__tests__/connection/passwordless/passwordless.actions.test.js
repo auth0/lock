@@ -1,6 +1,5 @@
 import passwordless from 'connection/passwordless/actions';
 import { expectMockToMatch } from 'testUtils';
-import { emitAuthorizationErrorEvent } from '../../../core';
 
 jest.useFakeTimers();
 
