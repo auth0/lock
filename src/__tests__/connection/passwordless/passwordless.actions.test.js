@@ -209,7 +209,7 @@ describe('passwordless actions', () => {
     });
 
     describe('on webApi.passwordlessVerify() callback', () => {
-      describe('when there is an eror', () => {
+      describe('when there is an error', () => {
         it('formats the error', () => {
           actions.logIn('id');
 
