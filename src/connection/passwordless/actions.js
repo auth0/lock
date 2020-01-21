@@ -141,6 +141,7 @@ export function logIn(id) {
       if (error.logToConsole) {
         console.error(error.description);
       }
+      l.emitAuthorizationErrorEvent(m, error);
       return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
     } else {
       return logInSuccess(id, result);
