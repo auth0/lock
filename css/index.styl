@@ -148,7 +148,7 @@ loadingSize = 30px
   .auth0-lock-cred-pane-internal-wrapper
     display: flex
     flex-direction: column
-    height 100vh
+    calculateHeight()
     max-height auto
     +breakpoint("mobile")
       max-height: calc(100vh - 40px)
@@ -1048,7 +1048,7 @@ loadingSize = 30px
     .auth0-lock-widget-container
       //mobile view
       @media screen and (max-width: 480px)
-        height 100%
+        calculateHeight()
 
     .auth0-lock-cred-pane
       //mobile view

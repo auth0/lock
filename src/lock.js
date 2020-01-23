@@ -1,10 +1,15 @@
-import Core, { injectStyles, css } from './core';
+import Core, { injectStyles, setWindowHeightStyle } from './core';
 import classic from './engine/classic';
 
 export default class Auth0Lock extends Core {
   constructor(clientID, domain, options) {
     super(clientID, domain, options, classic);
     injectStyles();
+    setWindowHeightStyle();
+
+    window.addEventListener('resize', () => {
+      setWindowHeightStyle();
+    });
   }
 }
 

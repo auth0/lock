@@ -224,3 +224,15 @@ export function injectStyles() {
     style.innerHTML = css;
   }
 }
+
+/**
+ * Calculates the window innerHeight and sets the --vh style property on :root,
+ * which is then taken advantage of by the CSS.
+ * This important as `innerHeight` will take into account any UI chrome on mobile devices, fixing
+ * an issue where the login button is cut off towards the bottom of the screen.
+ * Values are in pixels multiplied by 1% to convert them to vh.
+ */
+export function setWindowHeightStyle() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
