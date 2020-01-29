@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.20.4](https://github.com/auth0/lock/tree/v11.20.4) (2020-01-29)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.3...v11.20.4)
+
+
+**Fixed**
+- Fix for login button being cut off on some mobile devices [\#1785](https://github.com/auth0/lock/pull/1785) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Emit authorization_error event on passwordless error [\#1784](https://github.com/auth0/lock/pull/1784) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.20.3](https://github.com/auth0/lock/tree/v11.20.3) (2020-01-15)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.20.2...v11.20.3)
 
