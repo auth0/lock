@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.21.0](https://github.com/auth0/lock/tree/v11.21.0) (2020-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.4...v11.21.0)
+
+
+**Security**
+- Make placeholder text-only, add new placeholderHTML for additionalSignUpFields [\#1788](https://github.com/auth0/lock/pull/1788) ([davidpatrick](https://github.com/davidpatrick))
+
+
 ## [v11.20.4](https://github.com/auth0/lock/tree/v11.20.4) (2020-01-29)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.20.3...v11.20.4)
 
