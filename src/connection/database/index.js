@@ -95,7 +95,18 @@ function processDatabaseOptions(opts) {
     additionalSignUpFields = undefined;
   } else if (additionalSignUpFields) {
     additionalSignUpFields = additionalSignUpFields.reduce((r, x) => {
-      let { icon, name, options, placeholder, prefill, type, validator, value, storage } = x;
+      let {
+        icon,
+        name,
+        options,
+        placeholder,
+        placeholderHTML,
+        prefill,
+        type,
+        validator,
+        value,
+        storage
+      } = x;
       let filter = true;
 
       const reservedNames = ['email', 'username', 'password'];
@@ -113,12 +124,23 @@ function processDatabaseOptions(opts) {
         filter = false;
       }
 
-      if (type !== 'hidden' && (typeof placeholder != 'string' || !placeholder)) {
+      if (
+        type !== 'hidden' &&
+        (typeof placeholder != 'string' || !placeholder) &&
+        (typeof placeholderHTML != 'string' || !placeholderHTML)
+      ) {
         l.warn(
           opts,
-          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it does not contain a valid \`placeholder\` property. Every element of \`additionalSignUpFields\` must have a \`placeholder\` property that is a non-empty string.`
+          `Ignoring an element of \`additionalSignUpFields\` (${name}) because it does not contain a valid \`placeholder\` or \`placeholderHTML\` property. Every element of \`additionalSignUpFields\` must have a \`placeholder\` or \`placeholderHTML\` property that is a non-empty string.`
         );
         filter = false;
+      }
+
+      if (placeholderHTML && placeholder) {
+        l.warn(
+          opts,
+          'When provided, the `placeholderHTML` property of an element of `additionalSignUpFields` will override the `placeholder` property of that element'
+        );
       }
 
       if (icon != undefined && (typeof icon != 'string' || !icon)) {
@@ -195,7 +217,20 @@ function processDatabaseOptions(opts) {
       }
 
       return filter
-        ? r.concat([{ icon, name, options, placeholder, prefill, type, validator, value, storage }])
+        ? r.concat([
+            {
+              icon,
+              name,
+              options,
+              placeholder,
+              placeholderHTML,
+              prefill,
+              type,
+              validator,
+              value,
+              storage
+            }
+          ])
         : r;
     }, []);
 
