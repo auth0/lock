@@ -75,3 +75,11 @@ breakpoint(point, value = 0)
 @-webkit-keyframes rotate
   0%{-webkit-transform: rotate(0deg);}
   100%{-webkit-transform: rotate(360deg);}
+
+/*
+  Calculates container height based on --vh :root property, set using JavaScript.
+  Includes a fallback to 100vh for browsers that don't support custom properties.
+*/
+calculateHeight()
+  height 100vh
+  height calc(var(--vh, 1vh) * 100)

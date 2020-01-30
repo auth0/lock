@@ -46,7 +46,8 @@ describe('passwordless actions', () => {
             auth: 'params'
           })
         })
-      }
+      },
+      emitAuthorizationErrorEvent: jest.fn()
     }));
     jest.mock('store/index', () => ({
       read: jest.fn(() => 'model'),
@@ -195,26 +196,42 @@ describe('passwordless actions', () => {
       expectMockToMatch(read, 1);
       expectMockToMatch(swap, 1);
     });
+
     it('calls webApi.passwordlessVerify() with sms options', () => {
       actions.logIn('id');
       expectMockToMatch(require('core/web_api').passwordlessVerify, 1);
     });
+
     it('calls webApi.passwordlessVerify() with email options', () => {
       require('connection/passwordless/index').isEmail = () => true;
       actions.logIn('id');
       expectMockToMatch(require('core/web_api').passwordlessVerify, 1);
     });
+
     describe('on webApi.passwordlessVerify() callback', () => {
-      it('formats error when there is an error ', () => {
-        actions.logIn('id');
+      describe('when there is an error', () => {
+        it('formats the error', () => {
+          actions.logIn('id');
 
-        const error = new Error('foobar');
-        error.error = 'some_error_code';
-        require('core/web_api').passwordlessVerify.mock.calls[0][2](error);
+          const error = new Error('foobar');
+          error.error = 'some_error_code';
+          require('core/web_api').passwordlessVerify.mock.calls[0][2](error);
 
-        const { swap } = require('store/index');
-        expectMockToMatch(swap, 2);
+          const { swap } = require('store/index');
+          expectMockToMatch(swap, 2);
+        });
+
+        it('emits the "authorization_error" event', () => {
+          actions.logIn('id');
+
+          const error = new Error('foobar');
+          error.error = 'some_error_code';
+          require('core/web_api').passwordlessVerify.mock.calls[0][2](error);
+
+          expectMockToMatch(require('core/index').emitAuthorizationErrorEvent, 1);
+        });
       });
+
       it('calls logInSuccess on success', () => {
         actions.logIn('id');
         require('core/web_api').passwordlessVerify.mock.calls[0][2](null, { result: true });
