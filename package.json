@@ -36,7 +36,8 @@
     "test:es-check": "es-check es5 'build/*.js'",
     "publish:cdn": "ccu --trace",
     "release": "scripts/release.sh",
-    "i18n:translate": "grunt dist && node scripts/complete-translations.js"
+    "i18n:translate": "grunt dist && node scripts/complete-translations.js",
+    "i18n:validate": "node -r esm scripts/lang-audit.js"
   },
   "devDependencies": {
     "@auth0/component-cdn-uploader": "^2.2.2",
