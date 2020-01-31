@@ -163,6 +163,8 @@ const run = async () => {
   }
 
   console.log(`Coverage: ${chalk.yellow(coverage.toFixed(2))}%`);
+
+  return missing;
 };
 
-run();
+run().then(process.exit);
