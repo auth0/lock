@@ -1,54 +1,168 @@
-const fs = require('fs');
 const path_module = require('path');
 const NodeESModuleLoader = require('node-es-module-loader');
-const langs = {};
-const missingLangs = {};
-
+const emojic = require('emojic');
+const chalk = require('chalk');
+const glob = require('glob');
 const directory = path_module.join(__dirname, '..', 'src', 'i18n');
 const loader = new NodeESModuleLoader(directory);
 
-function LoadModules(path) {
-  fs.lstat(path, function(err, stat) {
-    if (stat.isDirectory()) {
-      // we have a directory: do a tree walk
-      fs.readdir(path, function(err, files) {
-        let f,
-          l = files.length;
-
-        for (let i = 0; i < l; i++) {
-          if (/\.js$/.test(files[i])) {
-            f = path_module.join(path, files[i]);
-            LoadModules(f);
-          }
-        }
-      });
-    } else {
-      // we have a file: load it
-      // require(path)(module_holder);
-      loader.import(path).then(r => console.log(r.default));
-    }
-  });
-}
-
-const processObject = obj => {
-  // console.log(obj.default);
+/**
+ * Flattens an object recursively so that any nested objects are refered to on the root object using
+ * a key path.
+ * e.g. turns:
+ * {
+ *    obj: {
+ *      nestedObject: {
+ *        someKey: 'string'
+ *      }
+ *    }
+ * }
+ *
+ * into:
+ *
+ * {
+ *  'obj.nestedObject.someKey': 'string'
+ * }
+ *
+ * This makes it much easier to compare keys later.
+ *
+ * @param {string} obj The object to flatten
+ * @param {*} keyPath A culmulative list of flattened keys
+ */
+const flattenObject = (obj, cumulative = []) => {
+  let keys = {};
 
   for (key of Object.keys(obj)) {
-    let objPath = key;
-    console.log(key);
-
-    if (typeof obj.default[key] === 'object') {
-      const subPath = processObject(obj.default[key]);
-      return `${objPath} -> ${subPath}`;
+    if (typeof obj[key] === 'object') {
+      const subKeys = flattenObject(obj[key], cumulative.concat(key));
+      keys = { ...keys, ...subKeys };
     } else {
-      return `"${obj.default[key]}"`;
+      const prefix = cumulative.length ? `${cumulative.join('.')}.` : '';
+      keys[`${prefix}${key}`] = obj[key];
     }
   }
+
+  return keys;
 };
 
-loader.import(path_module.join(directory, 'en.js')).then(en => {
-  const p = processObject(en.default);
-  console.log(p);
+/**
+ * Compares two objects and returns some stats about which keys are missing
+ * in obj2 compared to obj1
+ * @param {*} obj1
+ * @param {*} obj2
+ */
+const compareKeys = (obj1, obj2) => {
+  const result = {
+    matched: [],
+    missing: [],
+    total: Object.keys(obj1).length
+  };
 
-  // LoadModules(directory);
-});
+  for (key of Object.keys(obj1)) {
+    if (!(key in obj2)) {
+      result.missing.push({ key, text: obj1[key] });
+    } else {
+      result.matched.push({ key, original: obj1[key], translation: obj2[key] });
+    }
+  }
+
+  return result;
+};
+
+/**
+ * Validates a i18n language module compared to a reference object.
+ * @param {string} reference The reference object. A lang file that has been loaded and flattened.
+ * @param {string} path The full module path of the module to compare to the reference.
+ */
+const validateLangFile = async (reference, path, verbose) => {
+  console.log(`Processing ${chalk.green(path_module.relative(process.cwd(), path))}`);
+
+  const stats = {
+    coverage: 0,
+    total: 0,
+    missing: 0
+  };
+
+  const lang = await loader.import(path);
+  const langFlattened = flattenObject(lang.default.default);
+
+  const result = compareKeys(reference, langFlattened);
+
+  if (verbose) {
+    for (key of Object.keys(reference)) {
+      if (key in langFlattened) {
+        console.log(chalk.green(`${key}: ${langFlattened[key]}`));
+      } else {
+        console.log(chalk.red(`${key}: ${reference[key]}`));
+      }
+    }
+
+    console.log();
+  }
+
+  console.log(emojic.whiteCheckMark + ` Found ${result.total} keys`);
+
+  if (result.missing.length) {
+    console.log(`${emojic.x} Found ${result.missing.length} missing keys`);
+
+    for (missing of result.missing) {
+      console.log(
+        chalk.red(
+          `Missing translation for ${path_module.basename(path)} -> ${missing.key} = "${
+            missing.text
+          }"`
+        )
+      );
+    }
+  }
+
+  stats.total = result.total;
+  stats.missing = result.missing.length;
+  stats.coverage = stats.total / stats.missing;
+
+  return stats;
+};
+
+const run = async () => {
+  // Load the 'en' lang file to act as the reference for all others
+  const en = await loader.import(path_module.join(directory, 'en.js'));
+  const enBenchmark = flattenObject(en.default.default, []);
+
+  const args = process.argv.slice(2);
+  let filePattern = args[0] ? args[0] : '*.js';
+
+  const verbose = args.includes('-v');
+
+  // Grab all the module files we want to compare to
+  const modules = glob.sync(path_module.join(__dirname, '..', 'src', 'i18n', filePattern));
+  let files = 0;
+  let coverage = 0;
+  let total = 0;
+  let missing = 0;
+
+  for (file of modules) {
+    const stats = await validateLangFile(enBenchmark, file, verbose);
+    console.log('');
+
+    files++;
+    total += stats.total;
+    missing += stats.missing;
+  }
+
+  coverage = (1 - missing / total) * 100;
+
+  // report
+  console.log(chalk.green(`Processed ${total} keys across ${files} file/s`));
+
+  if (missing > 0) {
+    console.log(
+      chalk.red(
+        `Missing ${missing} translation keys (average ${(missing / files).toFixed(1)} per file)`
+      )
+    );
+  }
+
+  console.log(`Coverage: ${chalk.yellow(coverage.toFixed(2))}%`);
+};
+
+run();
