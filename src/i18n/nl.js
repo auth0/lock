@@ -49,7 +49,9 @@ export default {
       password_no_user_info_error: 'Wachtwoord is gebaseerd op gebruikers informatie.',
       password_strength_error: 'Wachtwoord is niet sterk genoeg.',
       user_exists: 'Gebruiker bestaat al.',
-      username_exists: 'Gebruikersnaam bestaat al.'
+      username_exists: 'Gebruikersnaam bestaat al.',
+      social_signup_needs_terms_acception:
+        'Ga akkoord met de onderstaande Servicevoorwaarden om door te gaan.'
     }
   },
   success: {
@@ -132,5 +134,7 @@ export default {
   mfaCodeErrorHint: 'Gebruik %d nummers',
   showPassword: 'Laat wachtwoord zien',
   signUpTerms:
-    'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.'
+    'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.',
+  captchaCodeInputPlaceholder: 'Voer de hierboven getoonde code in',
+  captchaMathInputPlaceholder: 'Los de bovenstaande formule op'
 };
