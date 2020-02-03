@@ -4,7 +4,7 @@
 [Full Changelog](https://github.com/auth0/lock/compare/v11.21.0...v11.21.1)
 
 
-**Added**
+**Fixed**
 - [SDK-1300] Added missing translation keys for 6 EU languages [\#1791](https://github.com/auth0/lock/pull/1791) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 
