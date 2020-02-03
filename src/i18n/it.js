@@ -47,7 +47,9 @@ export default {
       password_no_user_info_error: "La password si basa sulle informazioni dell'utente.",
       password_strength_error: 'La password è troppo debole.',
       user_exists: "L'utente esiste già.",
-      username_exists: 'Il nome utente esiste già.'
+      username_exists: 'Il nome utente esiste già.',
+      social_signup_needs_terms_acception:
+        'Si prega di accettare i Termini di servizio di seguito per continuare.'
     }
   },
   success: {
@@ -127,5 +129,7 @@ export default {
   mfaSubmitLabel: 'Accedere',
   mfaCodeErrorHint: 'Usare %d numeri',
   showPassword: 'Mostra password',
-  signUpTerms: "Iscrivendoti, accetti i nostri termini di servizio e l'informativa sulla privacy."
+  signUpTerms: "Iscrivendoti, accetti i nostri termini di servizio e l'informativa sulla privacy.",
+  captchaCodeInputPlaceholder: 'Inserisci il codice mostrato sopra',
+  captchaMathInputPlaceholder: 'Risolvi la formula mostrata sopra'
 };
