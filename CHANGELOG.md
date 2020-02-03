@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.21.1](https://github.com/auth0/lock/tree/v11.21.1) (2020-02-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.21.0...v11.21.1)
+
+
+**Added**
+- [SDK-1300] Added missing translation keys for 6 EU languages [\#1791](https://github.com/auth0/lock/pull/1791) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.21.0](https://github.com/auth0/lock/tree/v11.21.0) (2020-01-30)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.20.4...v11.21.0)
 
