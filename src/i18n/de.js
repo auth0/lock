@@ -52,7 +52,8 @@ export default {
       password_strength_error: 'Das Passwort ist zu schwach.',
       user_exists: 'Der Nutzer existiert bereits.',
       username_exists: 'Der Nutzername wird bereits verwendet.',
-      social_signup_needs_terms_acception: 'Akzeptieren Sie bitte unsere Nutzungsbedingungen.'
+      social_signup_needs_terms_acception:
+        'Bitte stimmen Sie den untenstehenden Nutzungsbedingungen zu, um fortzufahren.'
     }
   },
   success: {
@@ -138,6 +139,6 @@ export default {
   mfaCodeErrorHint: 'Verwenden %d Zahlen',
   signUpTerms:
     'Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen und Datenschutzbestimmungen zu.',
-  captchaCodeInputPlaceholder: 'Geben Sie den oben gezeigten Code ein',
-  captchaMathInputPlaceholder: 'Löse die oben gezeigte Formel'
+  captchaCodeInputPlaceholder: 'Geben Sie den oben angezeigten Code ein.',
+  captchaMathInputPlaceholder: 'Lösen Sie die oben gezeigte Formel.'
 };
