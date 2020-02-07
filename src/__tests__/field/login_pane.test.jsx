@@ -12,7 +12,8 @@ jest.mock('connection/database/actions');
 
 const mockId = 1;
 jest.mock('core/index', () => ({
-  id: () => mockId
+  id: () => mockId,
+  captcha: () => undefined
 }));
 
 import LoginPane from 'connection/database/login_pane';
@@ -58,8 +59,8 @@ describe('LoginPane', () => {
       ).toMatchSnapshot();
     });
     it('when lock does not have the screen `forgotPassword`', () => {
-      databaseIndexMock.hasScreen.mockImplementation(
-        (l, screenName) => (screenName === 'forgotPassword' ? false : true)
+      databaseIndexMock.hasScreen.mockImplementation((l, screenName) =>
+        screenName === 'forgotPassword' ? false : true
       );
       expectComponent(<LoginPane {...defaultProps} />).toMatchSnapshot();
     });

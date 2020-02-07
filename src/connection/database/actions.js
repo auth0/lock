@@ -28,6 +28,13 @@ export function logIn(id, needsMFA = false) {
 
   const fields = [usernameField, 'password'];
 
+  const isCaptchaRequired = l.captcha(m) && l.captcha(m).get('required');
+  if (isCaptchaRequired) {
+    const captcha = c.getFieldValue(m, 'captcha');
+    params['captcha'] = captcha;
+    fields.push('captcha');
+  }
+
   const mfaCode = c.getFieldValue(m, 'mfa_code');
   if (needsMFA) {
     params['mfa_code'] = mfaCode;
@@ -39,7 +46,12 @@ export function logIn(id, needsMFA = false) {
       return showLoginMFAActivity(id);
     }
 
-    return next();
+    if (error) {
+      const wasInvalid = error && error.code === 'invalid_captcha';
+      return swapCaptcha(id, wasInvalid, next);
+    }
+
+    next();
   });
 }
 
@@ -240,4 +252,22 @@ export function toggleTermsAcceptance(id) {
 
 export function showLoginMFAActivity(id, fields = ['mfa_code']) {
   swap(updateEntity, 'lock', id, setScreen, 'mfaLogin', fields);
+}
+
+/**
+ * Get a new challenge and display the new captcha image.
+ *
+ * @param {number} id The id of the Lock instance.
+ * @param {boolean} wasInvalid A boolean indicating if the previous captcha was invalid.
+ * @param {Function} [next] A callback.
+ */
+export function swapCaptcha(id, wasInvalid, next) {
+  return webApi.getChallenge(id, (err, newCaptcha) => {
+    if (!err && newCaptcha) {
+      swap(updateEntity, 'lock', id, l.setCaptcha, newCaptcha, wasInvalid);
+    }
+    if (next) {
+      next();
+    }
+  });
 }

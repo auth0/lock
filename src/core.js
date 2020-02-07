@@ -132,7 +132,8 @@ export default class Base extends EventEmitter {
           terms: screen.renderTerms(m, i18nProp.html('signUpTerms')),
           title: getScreenTitle(m),
           classNames: screen.name === 'loading' ? 'fade' : 'horizontal-fade',
-          scrollGlobalMessagesIntoView: l.ui.scrollGlobalMessagesIntoView(m)
+          scrollGlobalMessagesIntoView: l.ui.scrollGlobalMessagesIntoView(m),
+          suppressSubmitOverlay: l.suppressSubmitOverlay(m) || false
         };
         render(l.ui.containerID(m), props);
 
@@ -222,4 +223,16 @@ export function injectStyles() {
   } else {
     style.innerHTML = css;
   }
+}
+
+/**
+ * Calculates the window innerHeight and sets the --vh style property on :root,
+ * which is then taken advantage of by the CSS.
+ * This important as `innerHeight` will take into account any UI chrome on mobile devices, fixing
+ * an issue where the login button is cut off towards the bottom of the screen.
+ * Values are in pixels multiplied by 1% to convert them to vh.
+ */
+export function setWindowHeightStyle() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 }

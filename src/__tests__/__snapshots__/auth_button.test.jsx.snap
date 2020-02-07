@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthButton renders correctly 1`] = `
-<button
+<a
   className="auth0-lock-social-button auth0-lock-social-big-button"
   data-provider="strategy"
   onClick={[Function]}
@@ -18,11 +18,11 @@ exports[`AuthButton renders correctly 1`] = `
   >
     label
   </div>
-</button>
+</a>
 `;
 
 exports[`AuthButton renders with style customizations 1`] = `
-<button
+<a
   className="auth0-lock-social-button auth0-lock-social-big-button"
   data-provider="strategy"
   onClick={[Function]}
@@ -51,5 +51,5 @@ exports[`AuthButton renders with style customizations 1`] = `
   >
     label
   </div>
-</button>
+</a>
 `;

@@ -8,6 +8,7 @@ import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
 import { clientConnections, hasFreeSubscription } from './client/index';
+import * as captchaField from '../field/captcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
@@ -149,6 +150,14 @@ export function rendering(m) {
 
 export function stopRendering(m) {
   return tremove(m, 'render');
+}
+
+export function setSupressSubmitOverlay(m, b) {
+  return set(m, 'suppressSubmitOverlay', b);
+}
+
+export function suppressSubmitOverlay(m) {
+  return get(m, 'suppressSubmitOverlay');
 }
 
 function extractUIOptions(id, options) {
@@ -400,6 +409,15 @@ export function defaultADUsernameFromEmailPrefix(m) {
   return get(m, 'defaultADUsernameFromEmailPrefix', true);
 }
 
+export function setCaptcha(m, value, wasInvalid) {
+  m = captchaField.reset(m, wasInvalid);
+  return set(m, 'captcha', Immutable.fromJS(value));
+}
+
+export function captcha(m) {
+  return get(m, 'captcha');
+}
+
 export function prefill(m) {
   return get(m, 'prefill', {});
 }
@@ -532,6 +550,12 @@ export function loginErrorMessage(m, error, type) {
   }
   if (code === 'password_expired') {
     code = 'password_change_required';
+  }
+
+  if (code === 'invalid_captcha') {
+    return captcha(m).get('type') === 'code'
+      ? i18n.html(m, 'captchaCodeInputPlaceholder')
+      : i18n.html(m, 'captchaMathInputPlaceholder');
   }
 
   return (

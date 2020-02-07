@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quick-auth.actions calls logIn with the correct parameters 1`] = `
+Array [
+  "id",
+  Array [],
+  Object {
+    "connection": "name",
+    "connection_scope": undefined,
+    "isSubmitting": false,
+    "login_hint": "hint",
+    "prompt": "prompt",
+  },
+]
+`;
+
+exports[`quick-auth.actions sets display to "popup" when using facebook and there's no redirect 1`] = `
+Array [
+  "id",
+  Array [],
+  Object {
+    "connection": "name",
+    "connection_scope": undefined,
+    "display": "popup",
+    "isSubmitting": false,
+  },
+]
+`;

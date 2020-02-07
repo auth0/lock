@@ -6,7 +6,17 @@ import SelectInput from '../ui/input/select_input';
 import CheckboxInput from '../ui/input/checkbox_input';
 import * as l from '../core/index';
 
-const CustomInput = ({ iconUrl, model, name, ariaLabel, placeholder, type, validator, value }) => {
+const CustomInput = ({
+  iconUrl,
+  model,
+  name,
+  ariaLabel,
+  placeholder,
+  placeholderHTML,
+  type,
+  validator,
+  value
+}) => {
   const props = {
     iconUrl,
     isValid: !isFieldVisiblyInvalid(model, name),
@@ -31,6 +41,7 @@ const CustomInput = ({ iconUrl, model, name, ariaLabel, placeholder, type, valid
           lockId={l.id(model)}
           onChange={e => changeField(l.id(model), name, `${e.target.checked}`, validator)}
           checked={getFieldValue(model, name)}
+          placeholderHTML={placeholderHTML}
           {...props}
         />
       );

@@ -1,11 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import immutable from 'immutable';
 import { expectComponent, mockComponent } from '../../testUtils';
-import sync from '../../../sync';
-import { connections } from '../../../core/index';
-import { email } from '../../../field/index';
-import { img } from '../../../utils/preload_utils';
 
 jest.mock('store/index', () => ({
   swap: jest.fn(),
@@ -18,29 +13,36 @@ const mockEvent = {
   preventDefault: () => {}
 };
 
-const getContainer = () => {
+const getContainer = opts => {
   const Container = require('ui/box/container').default;
-  return new Container({
-    contentProps: {
-      i18n: {},
-      model: immutable.fromJS({
-        client: {
-          connections: {
-            database: [{ name: 'dbA' }, { name: 'dbB' }]
+
+  const props = Object.assign(
+    {},
+    {
+      contentProps: {
+        i18n: {},
+        model: immutable.fromJS({
+          client: {
+            connections: {
+              database: [{ name: 'dbA' }, { name: 'dbB' }]
+            },
+            id: 'alksdkhasd__test-lock__alsdkhalkshd'
           },
-          id: 'alksdkhasd__test-lock__alsdkhalkshd'
-        },
-        field: {
-          email: {
-            invalidHint: null,
-            showInvalid: false,
-            valid: true,
-            value: 'peter_picked@pickledpepper.com'
+          field: {
+            email: {
+              invalidHint: null,
+              showInvalid: false,
+              valid: true,
+              value: 'peter_picked@pickledpepper.com'
+            }
           }
-        }
-      })
-    }
-  });
+        })
+      }
+    },
+    opts
+  );
+
+  return new Container(props);
 };
 
 describe('Container', () => {
@@ -89,6 +91,32 @@ describe('Container', () => {
       const { mock } = setResolvedConnectionMock;
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
+    });
+  });
+
+  describe('when suppressSubmitOverlay is true', () => {
+    it('it does not display the overlay when submitting', () => {
+      const Container = require('ui/box/container').default;
+
+      const props = {
+        autoFocus: false,
+        badgeLink: 'http://badge.link',
+        contentComponent: null,
+        contentProps: {},
+        disableSubmitButton: false,
+        isMobile: false,
+        isModal: false,
+        isSubmitting: true,
+        logo: '',
+        primaryColor: '',
+        screenName: 'Test',
+        showBadge: false,
+        classNames: '',
+        suppressSubmitOverlay: true
+      };
+
+      // Emitted snapshot should not add 'auth0-lock-mode-loading' class to the container div
+      expectComponent(<Container {...props} />).toMatchSnapshot();
     });
   });
 });

@@ -25,6 +25,7 @@ export const stubWebApis = () => {
   stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
+  stubGetChallenge();
 };
 
 export const stubWebApisForKerberos = () => {
@@ -49,6 +50,7 @@ export const assertAuthorizeRedirection = cb => {
 
 export const restoreWebApis = () => {
   webApi.logIn.restore();
+  webApi.getChallenge.restore();
   gravatarProvider.displayName.restore();
   gravatarProvider.url.restore();
   ClientSettings.fetchClientSettings.restore();
@@ -103,7 +105,7 @@ export const displayLock = (name, opts = {}, done = () => {}, show_ops = {}) => 
 
 // queries
 
-const q = (lock, query, all = false) => {
+export const q = (lock, query, all = false) => {
   query = `#auth0-lock-container-${lock.id} ${query}`;
   const method = all ? 'querySelectorAll' : 'querySelector';
   return global.document[method](query);
@@ -217,6 +219,10 @@ const clickFn = (lock, query) => click(lock, query);
 export const clickTermsCheckbox = checkFn(
   ".auth0-lock-sign-up-terms-agreement label input[type='checkbox']"
 );
+
+export const clickRefreshCaptchaButton = (lock, connection) =>
+  clickFn(lock, `.auth0-lock-captcha-refresh`);
+
 export const clickSocialConnectionButton = (lock, connection) =>
   clickFn(lock, `.auth0-lock-social-button[data-provider='${connection}']`);
 const fillInput = (lock, name, str) => {
@@ -226,6 +232,7 @@ const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
 
 export const fillEmailInput = fillInputFn('email');
 export const fillPasswordInput = fillInputFn('password');
+export const fillCaptchaInput = fillInputFn('captcha');
 export const fillUsernameInput = fillInputFn('username');
 export const fillMFACodeInput = fillInputFn('mfa_code');
 
@@ -278,6 +285,13 @@ export const logInWithEmailAndPassword = lock => {
   submit(lock);
 };
 
+export const logInWithEmailPasswordAndCaptcha = lock => {
+  fillEmailInput(lock, 'someone@example.com');
+  fillPasswordInput(lock, 'mypass');
+  fillCaptchaInput(lock, 'captchaValue');
+  submit(lock);
+};
+
 export const logInWithUsernameAndPassword = lock => {
   fillUsernameInput(lock, 'someone');
   fillPasswordInput(lock, 'mypass');
@@ -294,4 +308,16 @@ export const testAsync = (fn, done) => {
   } catch (e) {
     done(e);
   }
+};
+
+export const stubGetChallenge = (result = { required: false }) => {
+  if (typeof webApi.getChallenge.restore === 'function') {
+    webApi.getChallenge.restore();
+  }
+  return stub(webApi, 'getChallenge', (lockID, callback) => {
+    if(Array.isArray(result)) {
+      return callback(null, result.shift());
+    }
+    callback(null, result);
+  });
 };

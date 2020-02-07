@@ -1,3 +1,6 @@
+// Some of this file has been automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -48,7 +51,9 @@ export default {
       password_no_user_info_error: 'Das Passwort basiert auf Benutzerinformationen.',
       password_strength_error: 'Das Passwort ist zu schwach.',
       user_exists: 'Der Nutzer existiert bereits.',
-      username_exists: 'Der Nutzername wird bereits verwendet.'
+      username_exists: 'Der Nutzername wird bereits verwendet.',
+      social_signup_needs_terms_acception:
+        'Bitte stimmen Sie den untenstehenden Nutzungsbedingungen zu, um fortzufahren.'
     }
   },
   success: {
@@ -133,5 +138,7 @@ export default {
   mfaSubmitLabel: 'Anmelden',
   mfaCodeErrorHint: 'Verwenden %d Zahlen',
   signUpTerms:
-    'Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen und Datenschutzbestimmungen zu.'
+    'Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen und Datenschutzbestimmungen zu.',
+  captchaCodeInputPlaceholder: 'Geben Sie den oben angezeigten Code ein.',
+  captchaMathInputPlaceholder: 'Lösen Sie die oben gezeigte Formel.'
 };

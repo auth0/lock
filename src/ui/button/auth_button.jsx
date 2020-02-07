@@ -9,7 +9,7 @@ const AuthButton = props => {
   const iconStyle = icon ? { backgroundImage: `url('${icon}')` } : {};
 
   return (
-    <button
+    <a
       className="auth0-lock-social-button auth0-lock-social-big-button"
       data-provider={strategy}
       onClick={onClick}
@@ -20,7 +20,7 @@ const AuthButton = props => {
       <div className="auth0-lock-social-button-text" style={foregroundStyle}>
         {label}
       </div>
-    </button>
+    </a>
   );
 };
 

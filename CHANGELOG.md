@@ -1,5 +1,83 @@
 # Change Log
 
+## [v11.21.1](https://github.com/auth0/lock/tree/v11.21.1) (2020-02-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.21.0...v11.21.1)
+
+
+**Fixed**
+- [SDK-1300] Added missing translation keys for 6 EU languages [\#1791](https://github.com/auth0/lock/pull/1791) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.21.0](https://github.com/auth0/lock/tree/v11.21.0) (2020-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.4...v11.21.0)
+
+
+**Security**
+- Make placeholder text-only, add new placeholderHTML for additionalSignUpFields [\#1788](https://github.com/auth0/lock/pull/1788) ([davidpatrick](https://github.com/davidpatrick))
+
+
+## [v11.20.4](https://github.com/auth0/lock/tree/v11.20.4) (2020-01-29)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.3...v11.20.4)
+
+
+**Fixed**
+- Fix for login button being cut off on some mobile devices [\#1785](https://github.com/auth0/lock/pull/1785) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Emit authorization_error event on passwordless error [\#1784](https://github.com/auth0/lock/pull/1784) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.20.3](https://github.com/auth0/lock/tree/v11.20.3) (2020-01-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.2...v11.20.3)
+
+
+**Changed**
+- Bumped Auth0.js to 9.12.2 [\#1780](https://github.com/auth0/lock/pull/1780) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Prevent loading overlay from showing when using Sign In With Apple [\#1779](https://github.com/auth0/lock/pull/1779) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- Fix translation pt-PT [\#1776](https://github.com/auth0/lock/pull/1776) ([mario-moura-silva](https://github.com/mario-moura-silva))
+
+
+## [v11.20.2](https://github.com/auth0/lock/tree/v11.20.2) (2020-01-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.1...v11.20.2)
+
+
+**Fixed**
+- [CAUTH-277] prevent posting when captcha is required and empty [\#1774](https://github.com/auth0/lock/pull/1774) ([jfromaniello](https://github.com/jfromaniello))
+
+
+## [v11.20.1](https://github.com/auth0/lock/tree/v11.20.1) (2019-12-20)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.0...v11.20.1)
+
+
+**Fixed**
+- Set the default token validation leeway to 60 sec [\#1770](https://github.com/auth0/lock/pull/1770) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.20.0](https://github.com/auth0/lock/tree/v11.20.0) (2019-12-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.19.0...v11.20.0)
+
+
+**Added**
+- add captcha support [\#1765](https://github.com/auth0/lock/pull/1765) ([jfromaniello](https://github.com/jfromaniello))
+
+**Security**
+- [SDK-980] Bumped auth0.js to 9.12.0 [\#1767](https://github.com/auth0/lock/pull/1767) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.19.0](https://github.com/auth0/lock/tree/v11.19.0) (2019-12-04)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.18.1...v11.19.0)
+
+
+**Added**
+- New Feature: Signup Success Event [\#1754](https://github.com/auth0/lock/pull/1754) ([fostergn](https://github.com/fostergn))
+
+**Fixed**
+- [SDK-1191] Lock social buttons now render as links instead of buttons [\#1760](https://github.com/auth0/lock/pull/1760) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SDK-1141] Altered readme samples to remove ref to localstorage [\#1759](https://github.com/auth0/lock/pull/1759) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Applied overflow style only on mobile views [\#1758](https://github.com/auth0/lock/pull/1758) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Bugfix for WebExtension [\#1750](https://github.com/auth0/lock/pull/1750) ([STK913](https://github.com/STK913))
+
+
 ## [v11.18.1](https://github.com/auth0/lock/tree/v11.18.1) (2019-10-28)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.18.0...v11.18.1)
 

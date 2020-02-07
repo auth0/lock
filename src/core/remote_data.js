@@ -5,6 +5,8 @@ import { fetchSSOData } from './sso/data';
 import * as l from './index';
 import { isADEnabled } from '../connection/enterprise'; // shouldn't depend on this
 import sync, { isSuccess } from '../sync';
+import webApi from './web_api';
+import { setCaptcha } from '../core/index';
 
 export function syncRemoteData(m) {
   if (l.useTenantInfo(m)) {
@@ -42,6 +44,15 @@ export function syncRemoteData(m) {
         );
       }
     }
+  });
+
+  m = sync(m, 'captcha', {
+    syncFn: (m, cb) => {
+      webApi.getChallenge(m.get('id'), (err, r) => {
+        cb(null, r);
+      });
+    },
+    successFn: setCaptcha
   });
 
   return m;

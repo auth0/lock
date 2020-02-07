@@ -47,7 +47,7 @@ describe('Auth0APIClient', () => {
           redirectUrl: '//localhost:8080/login/callback',
           responseMode: 'query',
           responseType: 'code',
-          leeway: 60,
+          leeway: 30,
           _telemetryInfo: { ignored: true }
         };
         getClient(options);
@@ -61,7 +61,7 @@ describe('Auth0APIClient', () => {
           redirectUrl: '//localhost:8080/login/callback',
           responseMode: 'query',
           responseType: 'code',
-          leeway: 60,
+          leeway: 30,
           _telemetryInfo: { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } }
         };
         getClient(options);
@@ -82,7 +82,7 @@ describe('Auth0APIClient', () => {
           redirectUrl: '//localhost:8080/login/callback',
           responseMode: 'query',
           responseType: 'code',
-          leeway: 60,
+          leeway: 30,
           _telemetryInfo: {
             name: 'test-sdk',
             version: '1.0.0',
@@ -109,7 +109,35 @@ describe('Auth0APIClient', () => {
           redirectUrl: '//localhost:8080/login/callback',
           responseMode: 'query',
           responseType: 'code',
-          leeway: 60,
+          leeway: 30,
+          overrides: {
+            __tenant: 'tenant1',
+            __token_issuer: 'issuer1',
+            __jwks_uri: 'https://jwks.com'
+          },
+          plugins: [
+            {
+              name: 'ExamplePlugin'
+            }
+          ],
+          params: {
+            nonce: 'nonce',
+            state: 'state',
+            scope: 'custom_scope'
+          }
+        };
+        const client = getClient(options);
+        const mock = getAuth0ClientMock();
+        expect(mock.WebAuth.mock.calls[0][0]).toMatchSnapshot();
+      });
+
+      it('forwards options to WebAuth with a default leeway', () => {
+        setURL(`https://auth.myapp.com/authorize`);
+        const options = {
+          audience: 'foo',
+          redirectUrl: '//localhost:8080/login/callback',
+          responseMode: 'query',
+          responseType: 'code',
           overrides: {
             __tenant: 'tenant1',
             __token_issuer: 'issuer1',

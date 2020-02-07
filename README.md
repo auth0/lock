@@ -23,7 +23,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.18.3/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.21.1/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -71,16 +71,18 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0Lock(clientId, domain);
+var accessToken = null;
+var profile = null;
 
 lock.on("authenticated", function(authResult) {
-  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+  lock.getUserInfo(authResult.accessToken, function(error, profileResult) {
     if (error) {
       // Handle error
       return;
     }
 
-    localStorage.setItem("accessToken", authResult.accessToken);
-    localStorage.setItem("profile", JSON.stringify(profile));
+    accessToken = authResult.accessToken;
+    profile = profileResult;
 
     // Update DOM
   });
@@ -105,16 +107,18 @@ For more information, read our [passwordless docs](https://auth0.com/docs/connec
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
 var lock = new Auth0LockPasswordless(clientId, domain);
+var accessToken = null;
+var profile = null;
 
 lock.on("authenticated", function(authResult) {
-  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+  lock.getUserInfo(authResult.accessToken, function(error, profileResult) {
     if (error) {
       // Handle error
       return;
     }
 
-    localStorage.setItem("accessToken", authResult.accessToken);
-    localStorage.setItem("profile", JSON.stringify(profile));
+    accessToken = authResult.accessToken;
+    profile = profileResult;
 
     // Update DOM
   });
@@ -154,6 +158,7 @@ Lock will emit events during its lifecycle.
 - `signup submit`: emitted when the user clicks on the submit button of the "Sign up" screen.
 - `signup success`: emitted when the user successfully signs up.
 - `signup error`: emitted when signup fails. Has the error as an argument.
+- `signup success`: emitted when signup succeeds. Has the error as an argument.
 - `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments.
 - `sso login`: emitted when the user clicks on an enterprise SSO connection button. Has the lock ID, connection object, and field name as arguments.
 
@@ -510,7 +515,9 @@ var options = {
     name: "newsletter",
     prefill: "true",
     placeholder: "I hereby agree that I want to receive marketing emails from your company",
-    // The following property is optional
+    // placeholderHTML - is an optional field  and overrides the value of placeholder
+    placeholderHTML: "<b>I hereby agree that I want to receive marketing emails from your company</b>",
+    // ariaLabel - is an optional field
     ariaLabel: "Activate Newsletter"
   }]
 }

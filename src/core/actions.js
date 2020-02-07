@@ -171,7 +171,6 @@ export function validateAndSubmit(id, fields = [], f) {
       ? l.setSubmitting(m, true)
       : fields.reduce((r, x) => showInvalidField(r, x), m);
   });
-
   const m = read(getEntity, 'lock', id);
   if (l.submitting(m)) {
     f(m);
