@@ -76,7 +76,7 @@ export default {
   loginAtLabel: 'Log in at %s',
   loginLabel: 'Log In',
   loginSubmitLabel: 'Log In',
-  loginWithLabel: 'Log in with %s',
+  loginWithLabel: 'Sign in with %s',
   notYourAccountAction: 'Not your account?',
   passwordInputPlaceholder: 'your password',
   passwordStrength: {
@@ -109,7 +109,7 @@ export default {
   signUpLabel: 'Sign Up',
   signUpSubmitLabel: 'Sign Up',
   signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.',
-  signUpWithLabel: 'Sign up with %s',
+  signUpWithLabel: 'Sign in with %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
   ssoEnabled: 'Single Sign-On enabled',
