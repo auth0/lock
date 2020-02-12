@@ -16,8 +16,8 @@ const AuthButton = props => {
       style={backgroundStyle}
       type="button"
     >
-      <div className="auth0-lock-social-button-icon" style={iconStyle} />
       <div className="auth0-lock-social-button-text" style={foregroundStyle}>
+        <div className="auth0-lock-social-button-icon" style={iconStyle} />
         {label}
       </div>
     </a>
