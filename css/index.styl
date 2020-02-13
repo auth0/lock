@@ -538,21 +538,20 @@ loadingSize = 30px
     cursor: pointer
 
     &[data-provider^=google]
+      .auth0-lock-social-button-text
+        color: #333!important
+
       .auth0-lock-social-button-icon
-        background-color: #ffffff
-        border: 2px #4285f4 solid
-        border-radius: 3px 0px 0px 3px
         height: 36px
         width: 36px
       &:hover:not([disabled]), &:focus:not([disabled])
         .auth0-lock-social-button-icon
-          background-color: #ffffff !important
-          border-color: #3367d6
         .auth0-lock-social-button-text
-          background-color: #3367d6 !important
+          background-color: #f0f0f0 !important
       &.auth0-lock-social-big-button
+        background-color: #ffffff
+        border: 1px solid #bfbebe
         .auth0-lock-social-button-icon
-          background-color: #ffffff
           width: 38px
 
     .auth0-lock-social-button-icon
