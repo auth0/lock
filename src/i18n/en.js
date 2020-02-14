@@ -109,7 +109,7 @@ export default {
   signUpLabel: 'Sign Up',
   signUpSubmitLabel: 'Sign Up',
   signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.',
-  signUpWithLabel: 'Sign in with %s',
+  signUpWithLabel: 'Sign up with %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
   ssoEnabled: 'Single Sign-On enabled',
