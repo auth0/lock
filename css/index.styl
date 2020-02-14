@@ -179,9 +179,16 @@ loadingSize = 30px
   .auth0-lock-content-wrapper
     flex-grow: 1
     flex-shrink: 1
-    flex-basis: auto;
-    -webkit-overflow-scrolling touch;
-    overflow-x: auto;
+    flex-basis: auto
+    -webkit-overflow-scrolling touch
+    overflow-x: auto
+    overflow-y: scroll
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+    &::-webkit-scrollbar
+      width: 0
+      height: 0
 
     @media screen and (min-width: 481px)
       overflow-x: inherit;
