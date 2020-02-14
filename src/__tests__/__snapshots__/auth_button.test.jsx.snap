@@ -9,13 +9,13 @@ exports[`AuthButton renders correctly 1`] = `
   type="button"
 >
   <div
-    className="auth0-lock-social-button-icon"
-    style={Object {}}
-  />
-  <div
     className="auth0-lock-social-button-text"
     style={Object {}}
   >
+    <div
+      className="auth0-lock-social-button-icon"
+      style={Object {}}
+    />
     label
   </div>
 </a>
@@ -34,14 +34,6 @@ exports[`AuthButton renders with style customizations 1`] = `
   type="button"
 >
   <div
-    className="auth0-lock-social-button-icon"
-    style={
-      Object {
-        "backgroundImage": "url('test')",
-      }
-    }
-  />
-  <div
     className="auth0-lock-social-button-text"
     style={
       Object {
@@ -49,6 +41,14 @@ exports[`AuthButton renders with style customizations 1`] = `
       }
     }
   >
+    <div
+      className="auth0-lock-social-button-icon"
+      style={
+        Object {
+          "backgroundImage": "url('test')",
+        }
+      }
+    />
     label
   </div>
 </a>
