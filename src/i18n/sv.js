@@ -46,7 +46,8 @@ export default {
       password_no_user_info_error: 'Lösenordet baseras på personuppgifter.',
       password_strength_error: 'Lösenordet är för svagt.',
       user_exists: 'Användaren finns redan.',
-      username_exists: 'Användarnamnet finns redan.'
+      username_exists: 'Användarnamnet finns redan.',
+      social_signup_needs_terms_acception: 'Godkänn användarvillkoren nedan för att fortsätta.'
     }
   },
   success: {
@@ -126,5 +127,7 @@ export default {
   mfaSubmitLabel: 'Logga in',
   mfaCodeErrorHint: 'Använd %d',
   showPassword: 'Visa lösenord',
-  signUpTerms: 'Genom att anmäla dig godkänner du våra användarvillkor och integritetspolicy.'
+  signUpTerms: 'Genom att anmäla dig godkänner du våra användarvillkor och integritetspolicy.',
+  captchaCodeInputPlaceholder: 'Ange koden som visas ovan',
+  captchaMathInputPlaceholder: 'Lös formeln som visas ovan'
 };

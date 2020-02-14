@@ -23,7 +23,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.21.0/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.21.1/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -156,8 +156,8 @@ Lock will emit events during its lifecycle.
 - `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
 - `signin submit`: emitted when the user clicks on the submit button of the "Login" screen.
 - `signup submit`: emitted when the user clicks on the submit button of the "Sign up" screen.
+- `signup success`: emitted when the user successfully signs up.
 - `signup error`: emitted when signup fails. Has the error as an argument.
-- `signup success`: emitted when signup succeeds. Has the error as an argument.
 - `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments.
 - `sso login`: emitted when the user clicks on an enterprise SSO connection button. Has the lock ID, connection object, and field name as arguments.
 

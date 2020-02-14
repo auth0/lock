@@ -37,7 +37,7 @@ export default class EmailInput extends React.Component {
         <input
           id={`${lockId}-email`}
           ref="input"
-          type="text"
+          type="email"
           inputMode="email"
           name="email"
           className="auth0-lock-input"
