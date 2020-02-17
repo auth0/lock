@@ -76,7 +76,7 @@ export default {
   loginAtLabel: 'Log in at %s',
   loginLabel: 'Log In',
   loginSubmitLabel: 'Log In',
-  loginWithLabel: 'Log in with %s',
+  loginWithLabel: 'Sign in with %s',
   notYourAccountAction: 'Not your account?',
   passwordInputPlaceholder: 'your password',
   passwordStrength: {
