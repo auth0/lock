@@ -1,5 +1,17 @@
 # Change Log
 
+## [v11.22.0](https://github.com/auth0/lock/tree/v11.22.0) (2020-02-17)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.21.1...v11.22.0)
+
+**Changed**
+- [SDK-1373] Added style rules to handle overflow and scroll [\#1803](https://github.com/auth0/lock/pull/1803) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SDK-1361] Adjust styling for social buttons and Apple compliance [\#1801](https://github.com/auth0/lock/pull/1801) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Return results with signup success callback [\#1799](https://github.com/auth0/lock/pull/1799) ([bstaley](https://github.com/bstaley))
+
+**Fixed**
+- [SDK-1374] Email input now uses type="email" [\#1802](https://github.com/auth0/lock/pull/1802) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.21.1](https://github.com/auth0/lock/tree/v11.21.1) (2020-02-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.21.0...v11.21.1)
 
