@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "auth0-lock": "^10.22.0"
+    "auth0-lock": "^11.21.0"
   },
   "devDependencies": {
     "cross-env": "^5.0.5",

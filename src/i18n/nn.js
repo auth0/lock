@@ -50,7 +50,8 @@ export default {
       password_no_user_info_error: 'Passordet er basert på kjende bruksdata.',
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukaren eksisterer allereie.',
-      username_exists: 'Dette brukernamnet eksisterer allereie.'
+      username_exists: 'Dette brukernamnet eksisterer allereie.',
+      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.'
     }
   },
   success: {
@@ -132,5 +133,7 @@ export default {
   mfaLoginInstructions: 'Ver venleg og tast inn verifiseringskoden som er generert på din mobil',
   mfaSubmitLabel: 'Logg inn',
   mfaCodeErrorHint: 'Bruk %d tall',
-  signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.'
+  signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.',
+  captchaCodeInputPlaceholder: 'Tast inn koden vist over',
+  captchaMathInputPlaceholder: 'Løs formelen vist ovenfor'
 };
