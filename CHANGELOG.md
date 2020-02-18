@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.22.1](https://github.com/auth0/lock/tree/v11.22.1) (2020-02-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.0...v11.22.1)
+
+
+**Fixed**
+- [SDK-1361] Fix missing padding on social buttons [\#1808](https://github.com/auth0/lock/pull/1808) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.22.0](https://github.com/auth0/lock/tree/v11.22.0) (2020-02-17)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.21.1...v11.22.0)
 
