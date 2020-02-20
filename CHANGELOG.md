@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.22.2](https://github.com/auth0/lock/tree/v11.22.2) (2020-02-20)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.1...v11.22.2)
+
+
+**Changed**
+- Change Sign in with Apple button background to full black [\#1811](https://github.com/auth0/lock/pull/1811) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- Update cs.js - plural adjustments [\#1810](https://github.com/auth0/lock/pull/1810) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.22.1](https://github.com/auth0/lock/tree/v11.22.1) (2020-02-18)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.22.0...v11.22.1)
 
