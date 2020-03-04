@@ -112,6 +112,12 @@ function signUpSuccess(id, result, popupHandler) {
   l.emitEvent(lock, 'signup success', result);
 
   if (shouldAutoLogin(lock)) {
+    const isCaptchaRequired = l.captcha(lock) && l.captcha(lock).get('required');
+
+    if (isCaptchaRequired) {
+      return successCaptchaRequired(id);
+    }
+
     swap(updateEntity, 'lock', id, m => m.set('signedUp', true));
 
     // TODO: check options, redirect is missing
@@ -172,6 +178,20 @@ function autoLogInError(id, error) {
     } else {
       return l.setSubmitting(m, false, errorMessage);
     }
+  });
+}
+
+function successCaptchaRequired(id) {
+  swap(updateEntity, 'lock', id, m => {
+    if (!hasScreen(m, 'login')) {
+      return l.setSubmitting(m, false);
+    }
+    // _ prevents cleaning the fields
+    m = l.setSubmitting(setScreen(m, 'login', ['_']), false);
+
+    const message = i18n.str(m, ['error', 'signUp', 'captcha_required']);
+
+    return l.setGlobalSuccess(m, message);
   });
 }
 
