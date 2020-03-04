@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.22.3](https://github.com/auth0/lock/tree/v11.22.3) (2020-03-04)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.2...v11.22.3)
+
+
+**Fixed**
+- [SDK-1389] Applied appearance styles for Bootstrap in Safari [\#1815](https://github.com/auth0/lock/pull/1815) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.22.2](https://github.com/auth0/lock/tree/v11.22.2) (2020-02-20)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.22.1...v11.22.2)
 
