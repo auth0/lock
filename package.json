@@ -89,6 +89,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "superagent": "^3.8.2",
+    "tmp": "^0.1.0",
     "uglify-js": "^2.7.4",
     "unminified-webpack-plugin": "^1.1.1",
     "unreleased": "^0.1.0",
