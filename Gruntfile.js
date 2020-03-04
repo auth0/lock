@@ -2,10 +2,32 @@
 
 const path = require('path');
 const fs = require('fs');
+const tmp = require('tmp');
 const pkg = require('./package');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
+const { spawnSync } = require('child_process');
+
+/**
+ * This is a helper function to generate valid certs using mkcert.
+ * If mkcert is not installed it will return false.
+ */
+function getDevCerts() {
+  let result = false;
+  const tmpDir = tmp.dirSync({ unsafeCleanup: true, prefix: 'lock-dev-' });
+
+  try {
+    spawnSync('mkcert', ['localhost'], { cwd: tmpDir.name });
+    result = {
+      key: fs.readFileSync(path.join(tmpDir.name, 'localhost-key.pem')),
+      cert: fs.readFileSync(path.join(tmpDir.name, 'localhost.pem'))
+    };
+  } catch (err) {}
+
+  tmpDir.removeCallback();
+  return result;
+}
 
 module.exports = function(grunt) {
   const pkg_info = grunt.file.readJSON('package.json');
@@ -67,7 +89,9 @@ module.exports = function(grunt) {
           new webpack.BannerPlugin({
             raw: false,
             entryOnly: true,
-            banner: `lock v${pkg_info.version}\n\nAuthor: ${pkg_info.author}\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`
+            banner: `lock v${pkg_info.version}\n\nAuthor: ${
+              pkg_info.author
+            }\nDate: ${new Date().toLocaleString()}\nLicense: ${pkg_info.license}\n`
           })
         ]
       }
@@ -80,7 +104,7 @@ module.exports = function(grunt) {
       dev: {
         hot: true,
         port: 3000,
-        https: true,
+        https: getDevCerts() || true,
         webpack: {
           devtool: 'source-map'
         }
