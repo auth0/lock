@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.22.4](https://github.com/auth0/lock/tree/v11.22.4) (2020-03-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.3...v11.22.4)
+
+
+**Fixed**
+- [CAUTH-373] do not autologin the user if captcha is required [\#1818](https://github.com/auth0/lock/pull/1818) ([jfromaniello](https://github.com/jfromaniello))
+
+
 ## [v11.22.3](https://github.com/auth0/lock/tree/v11.22.3) (2020-03-04)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.22.2...v11.22.3)
 
