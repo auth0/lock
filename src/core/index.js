@@ -552,12 +552,6 @@ export function loginErrorMessage(m, error, type) {
     code = 'password_change_required';
   }
 
-  if (code === 'invalid_captcha') {
-    return captcha(m).get('type') === 'code'
-      ? i18n.html(m, 'captchaCodeInputPlaceholder')
-      : i18n.html(m, 'captchaMathInputPlaceholder');
-  }
-
   return (
     i18n.html(m, ['error', 'login', code]) || i18n.html(m, ['error', 'login', 'lock.fallback'])
   );

@@ -10,6 +10,7 @@ export default {
     login: {
       blocked_user: 'El usuario se encuentra bloqueado.',
       invalid_user_password: 'Credenciales inválidas.',
+      invalid_captcha: 'El texto ingresado es incorrecto. <br /> Por favor, vuelva a intentarlo.',
       'lock.fallback': 'Ocurrió un error al iniciar sesión.',
       'lock.invalid_code': 'Código inválido.',
       'lock.invalid_email_password': 'Correo y contraseña inválidos.',
@@ -39,6 +40,8 @@ export default {
     },
     signUp: {
       invalid_password: 'La contraseña es inválida.',
+      captcha_required:
+        'Ingrese el código que se muestra a continuación para finalizar el registro.',
       'lock.fallback': 'Ocurrió un error durante el registro.',
       password_dictionary_error: 'La constraseña es muy común.',
       password_no_user_info_error: 'La constraseña es similar a los datos del usuario.',

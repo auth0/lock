@@ -10,6 +10,7 @@ export default {
     login: {
       blocked_user: 'The user is blocked.',
       invalid_user_password: 'Wrong credentials.',
+      invalid_captcha: 'The text you entered was incorrect. <br /> Please try again.',
       'lock.fallback': "We're sorry, something went wrong when attempting to log in.",
       'lock.invalid_code': 'Wrong code.',
       'lock.invalid_email_password': 'Wrong email or password.',
@@ -38,6 +39,7 @@ export default {
     },
     signUp: {
       invalid_password: 'Password is invalid.',
+      captcha_required: 'Enter the code shown below to finish signing up.',
       'lock.fallback': "We're sorry, something went wrong when attempting to sign up.",
       password_dictionary_error: 'Password is too common.',
       password_no_user_info_error: 'Password is based on user information.',
