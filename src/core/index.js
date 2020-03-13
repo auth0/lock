@@ -34,7 +34,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
       prefill: options.prefill || {},
       connectionResolver: options.connectionResolver,
-      enableULPCompatibility: options._enableULPCompatibility === true
+      enableULPCompatibility: options._enableULPCompatibility === true,
+      organization: options.organization
     })
   );
 
@@ -73,6 +74,14 @@ export function enableULPCompatibility(m) {
 
 export function connectionResolver(m) {
   return get(m, 'connectionResolver');
+}
+
+export function useOrganizationInfo(m) {
+  return !!get(m, 'organization');
+}
+
+export function organization(m) {
+  return get(m, 'organization');
 }
 
 export function setResolvedConnection(m, resolvedConnection) {
@@ -162,7 +171,9 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable ? true : !!options.closable;
+    : undefined === options.closable
+    ? true
+    : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -265,8 +276,7 @@ function extractAuthOptions(options) {
     sso,
     state,
     nonce
-  } =
-    options.auth || {};
+  } = options.auth || {};
 
   audience = typeof audience === 'string' ? audience : undefined;
   connectionScopes = typeof connectionScopes === 'object' ? connectionScopes : {};

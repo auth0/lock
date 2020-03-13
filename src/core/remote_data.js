@@ -7,7 +7,13 @@ import { isADEnabled } from '../connection/enterprise'; // shouldn't depend on t
 import sync, { isSuccess } from '../sync';
 
 export function syncRemoteData(m) {
-  if (l.useTenantInfo(m)) {
+  if (l.useOrganizationInfo(m)) {
+    m = sync(m, 'client', {
+      syncFn: (m, cb) => cb(null, l.organization(m).toJS()),
+      // TODO: replace syncTenantSettingsSuccess with a proper method
+      successFn: (m, result) => syncTenantSettingsSuccess(m, l.clientID(m), result)
+    });
+  } else if (l.useTenantInfo(m)) {
     m = sync(m, 'client', {
       syncFn: (m, cb) => fetchTenantSettings(l.tenantBaseUrl(m), cb),
       successFn: (m, result) => syncTenantSettingsSuccess(m, l.clientID(m), result)
