@@ -33,7 +33,8 @@ export default {
         'Doğrulama tələbi yerinə yetirilə bilmədi. Bütün açıq dialoqları bağladıqdan sonra yenidən cəhd edin',
       'hrd.not_matching_email': ', Giriş üçün korporativ e-poçtdan istifadə edin.',
       too_many_requests:
-        'Üzr istəyirik. Hazırda çox sayda müraciət var. Zəhmət olmasa səhifəni yenidən yükləyin və yenidən cəhd edin. Bu davam edərsə, daha sonra yenidən cəhd edin.'
+        'Üzr istəyirik. Hazırda çox sayda müraciət var. Zəhmət olmasa səhifəni yenidən yükləyin və yenidən cəhd edin. Bu davam edərsə, daha sonra yenidən cəhd edin.',
+      invalid_captcha: 'Daxil etdiyiniz mətn səhv idi. <br /> Lütfən, yenidən cəhd edin.'
     },
     passwordless: {
       'bad.email': 'E-poçt düzgün deyil',
@@ -47,7 +48,9 @@ export default {
       password_no_user_info_error: 'Şifrə istifadəçi məlumatlarını ehtiva edir.',
       password_strength_error: 'Şifrə çox sadədir.',
       user_exists: 'Bu istifadəçi artıq mövcuddur.',
-      username_exists: 'Bu istifadəçi adı istifadə olunur.'
+      username_exists: 'Bu istifadəçi adı istifadə olunur.',
+      captcha_required: 'Qeydiyyatı başa çatdırmaq üçün aşağıda göstərilən kodu daxil edin.',
+      social_signup_needs_terms_acception: 'Xahiş edirik davam etmək üçün aşağıda göstərilən Xidmət şərtlərinə razılıq verin.'
     }
   },
   success: {
@@ -130,5 +133,7 @@ export default {
   forgotPasswordTitle: 'Şifrənizi sıfırlayın',
   signUpTitle: 'Qeydiyyatdan Keç',
   showPassword: 'Şifrəni göstər',
-  signUpTerms: 'Qeydiyyatdan keçərək xidmət və məxfilik siyasətimizlə razılaşırsınız.'
+  signUpTerms: 'Qeydiyyatdan keçərək xidmət və məxfilik siyasətimizlə razılaşırsınız.',
+  captchaCodeInputPlaceholder: 'Yuxarıda göstərilən kodu daxil edin',
+  captchaMathInputPlaceholder: 'Yuxarıda göstərilən düsturu həll edin'
 };
