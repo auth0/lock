@@ -23,7 +23,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.22.4/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.22.5/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
