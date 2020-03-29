@@ -31,6 +31,7 @@ const Component = ({ i18n, model }) => {
       instructions={i18n.html(phoneNumberInstructionsI18nKey)}
       lock={model}
       placeholder={i18n.str('phoneNumberInputPlaceholder')}
+      invalidHint={i18n.str('phoneNumberInputInvalidHint')}
     />
   ) : null;
 
