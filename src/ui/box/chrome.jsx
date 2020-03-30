@@ -307,7 +307,7 @@ export default class Chrome extends React.Component {
             The submit button should always be included in the DOM.
             Otherwise, password managers will call `form.submit()`,
             which doesn't trigger the `onsubmit` event handler, which
-            makes impossible for react to handle the submit event, 
+            makes impossible for react to handle the submit event,
             causing the page to send a POST request to `window.location.href`
             with all the form data.
          */}
