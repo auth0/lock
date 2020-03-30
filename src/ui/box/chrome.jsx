@@ -261,46 +261,48 @@ export default class Chrome extends React.Component {
     return (
       <div className={className}>
         <div className="auth0-lock-cred-pane-internal-wrapper">
-          <Header
-            title={title}
-            name={name}
-            backHandler={backHandler && ::this.handleBack}
-            backgroundUrl={backgroundUrl}
-            backgroundColor={primaryColor}
-            logoUrl={logo}
-          />
           <div className="auth0-lock-content-wrapper">
-            <TransitionGroup>
-              <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
-                <div>
-                  {globalSuccess}
-                  {globalError}
-                  {globalInfo}
-                </div>
-              </CSSTransition>
-            </TransitionGroup>
-            <div style={{ position: 'relative' }} ref="screen">
-              <MultisizeSlide
-                delay={550}
-                onDidAppear={::this.onDidAppear}
-                onDidSlide={::this.onDidSlide}
-                onWillSlide={::this.onWillSlide}
-                transitionName={classNames}
-                reverse={reverse}
-              >
-                <div key={this.mainScreenName()} className="auth0-lock-view-content">
-                  <div style={{ position: 'relative' }}>
-                    <div className="auth0-lock-body-content">
-                      <div className="auth0-lock-content">
-                        <div className="auth0-lock-form">
-                          <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+            <Header
+              title={title}
+              name={name}
+              backHandler={backHandler && ::this.handleBack}
+              backgroundUrl={backgroundUrl}
+              backgroundColor={primaryColor}
+              logoUrl={logo}
+            />
+            <div className="auth0-lock-content-body-wrapper">
+              <TransitionGroup>
+                <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
+                  <div>
+                    {globalSuccess}
+                    {globalError}
+                    {globalInfo}
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
+              <div style={{ position: 'relative' }} ref="screen">
+                <MultisizeSlide
+                  delay={550}
+                  onDidAppear={::this.onDidAppear}
+                  onDidSlide={::this.onDidSlide}
+                  onWillSlide={::this.onWillSlide}
+                  transitionName={classNames}
+                  reverse={reverse}
+                >
+                  <div key={this.mainScreenName()} className="auth0-lock-view-content">
+                    <div style={{ position: 'relative' }}>
+                      <div className="auth0-lock-body-content">
+                        <div className="auth0-lock-content">
+                          <div className="auth0-lock-form">
+                            <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+                          </div>
                         </div>
+                        {terms && <small className="auth0-lock-terms">{terms}</small>}
                       </div>
-                      {terms && <small className="auth0-lock-terms">{terms}</small>}
                     </div>
                   </div>
-                </div>
-              </MultisizeSlide>
+                </MultisizeSlide>
+              </div>
             </div>
           </div>
           {/*
