@@ -84,7 +84,7 @@ const AUXILIARY_ANIMATION_DURATION = 350;
 export default class Chrome extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { moving: false, reverse: false };
+    this.state = { moving: false, reverse: false, headerHeight: 0 };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -143,6 +143,11 @@ export default class Chrome extends React.Component {
         }
       }
     }
+  }
+
+  componentDidMount() {
+    const height = this.header.getDOMNode().clientHeight;
+    this.setState({ headerHeight: height });
   }
 
   onWillSlide() {
@@ -269,8 +274,12 @@ export default class Chrome extends React.Component {
               backgroundUrl={backgroundUrl}
               backgroundColor={primaryColor}
               logoUrl={logo}
+              ref={el => (this.header = el)}
             />
-            <div className="auth0-lock-content-body-wrapper">
+            <div
+              className="auth0-lock-content-body-wrapper"
+              style={{ marginTop: this.state.headerHeight }}
+            >
               <TransitionGroup>
                 <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
                   <div>
