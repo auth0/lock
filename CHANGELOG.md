@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.22.5](https://github.com/auth0/lock/tree/v11.22.5) (2020-03-25)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.4...v11.22.5)
+
+
+**Added**
+- add Azerbaijan language [\#1828](https://github.com/auth0/lock/pull/1828) ([Haqverdi](https://github.com/Haqverdi))
+
+
 ## [v11.22.4](https://github.com/auth0/lock/tree/v11.22.4) (2020-03-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.22.3...v11.22.4)
 
