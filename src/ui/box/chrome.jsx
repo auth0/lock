@@ -146,8 +146,7 @@ export default class Chrome extends React.Component {
   }
 
   componentDidMount() {
-    const height = this.header.getDOMNode().clientHeight;
-    this.setState({ headerHeight: height });
+    this.setState({ headerHeight: this.getHeaderSize() });
   }
 
   onWillSlide() {
@@ -188,6 +187,19 @@ export default class Chrome extends React.Component {
     if (error) {
       error.focus();
     }
+  }
+
+  // Record the header element so that we can retrieve its size when the
+  // component renders
+  setHeaderElement(element) {
+    this.header = element;
+  }
+
+  // Get the size (rather than the element itself), as returning
+  // the element makes this difficult to test (we can't reasonably enforce the size
+  // as it's not rendered to a screen).
+  getHeaderSize() {
+    return this.header ? this.header.getDOMNode().clientHeight : 0;
   }
 
   render() {
@@ -274,8 +286,9 @@ export default class Chrome extends React.Component {
               backgroundUrl={backgroundUrl}
               backgroundColor={primaryColor}
               logoUrl={logo}
-              ref={el => (this.header = el)}
+              ref={::this.setHeaderElement}
             />
+
             <div
               className="auth0-lock-content-body-wrapper"
               style={{ marginTop: this.state.headerHeight }}
@@ -314,6 +327,7 @@ export default class Chrome extends React.Component {
               </div>
             </div>
           </div>
+
           {/*
             The submit button should always be included in the DOM.
             Otherwise, password managers will call `form.submit()`,
@@ -322,6 +336,7 @@ export default class Chrome extends React.Component {
             causing the page to send a POST request to `window.location.href`
             with all the form data.
          */}
+
           <SubmitButton
             color={primaryColor}
             disabled={disableSubmitButton}
