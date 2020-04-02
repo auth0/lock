@@ -84,7 +84,7 @@ const AUXILIARY_ANIMATION_DURATION = 350;
 export default class Chrome extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { moving: false, reverse: false };
+    this.state = { moving: false, reverse: false, headerHeight: 0 };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -145,6 +145,10 @@ export default class Chrome extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({ headerHeight: this.getHeaderSize() });
+  }
+
   onWillSlide() {
     this.setState({ moving: true });
     this.sliding = true;
@@ -183,6 +187,19 @@ export default class Chrome extends React.Component {
     if (error) {
       error.focus();
     }
+  }
+
+  // Record the header element so that we can retrieve its size when the
+  // component renders
+  setHeaderElement(element) {
+    this.header = element;
+  }
+
+  // Get the size (rather than the element itself), as returning
+  // the element makes this difficult to test (we can't reasonably enforce the size
+  // as it's not rendered to a screen).
+  getHeaderSize() {
+    return this.header ? this.header.getDOMNode().clientHeight : 0;
   }
 
   render() {
@@ -261,48 +278,56 @@ export default class Chrome extends React.Component {
     return (
       <div className={className}>
         <div className="auth0-lock-cred-pane-internal-wrapper">
-          <Header
-            title={title}
-            name={name}
-            backHandler={backHandler && ::this.handleBack}
-            backgroundUrl={backgroundUrl}
-            backgroundColor={primaryColor}
-            logoUrl={logo}
-          />
           <div className="auth0-lock-content-wrapper">
-            <TransitionGroup>
-              <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
-                <div>
-                  {globalSuccess}
-                  {globalError}
-                  {globalInfo}
-                </div>
-              </CSSTransition>
-            </TransitionGroup>
-            <div style={{ position: 'relative' }} ref="screen">
-              <MultisizeSlide
-                delay={550}
-                onDidAppear={::this.onDidAppear}
-                onDidSlide={::this.onDidSlide}
-                onWillSlide={::this.onWillSlide}
-                transitionName={classNames}
-                reverse={reverse}
-              >
-                <div key={this.mainScreenName()} className="auth0-lock-view-content">
-                  <div style={{ position: 'relative' }}>
-                    <div className="auth0-lock-body-content">
-                      <div className="auth0-lock-content">
-                        <div className="auth0-lock-form">
-                          <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+            <Header
+              title={title}
+              name={name}
+              backHandler={backHandler && ::this.handleBack}
+              backgroundUrl={backgroundUrl}
+              backgroundColor={primaryColor}
+              logoUrl={logo}
+              ref={::this.setHeaderElement}
+            />
+
+            <div
+              className="auth0-lock-content-body-wrapper"
+              style={{ marginTop: this.state.headerHeight }}
+            >
+              <TransitionGroup>
+                <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
+                  <div>
+                    {globalSuccess}
+                    {globalError}
+                    {globalInfo}
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
+              <div style={{ position: 'relative' }} ref="screen">
+                <MultisizeSlide
+                  delay={550}
+                  onDidAppear={::this.onDidAppear}
+                  onDidSlide={::this.onDidSlide}
+                  onWillSlide={::this.onWillSlide}
+                  transitionName={classNames}
+                  reverse={reverse}
+                >
+                  <div key={this.mainScreenName()} className="auth0-lock-view-content">
+                    <div style={{ position: 'relative' }}>
+                      <div className="auth0-lock-body-content">
+                        <div className="auth0-lock-content">
+                          <div className="auth0-lock-form">
+                            <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+                          </div>
                         </div>
+                        {terms && <small className="auth0-lock-terms">{terms}</small>}
                       </div>
-                      {terms && <small className="auth0-lock-terms">{terms}</small>}
                     </div>
                   </div>
-                </div>
-              </MultisizeSlide>
+                </MultisizeSlide>
+              </div>
             </div>
           </div>
+
           {/*
             The submit button should always be included in the DOM.
             Otherwise, password managers will call `form.submit()`,
@@ -311,6 +336,7 @@ export default class Chrome extends React.Component {
             causing the page to send a POST request to `window.location.href`
             with all the form data.
          */}
+
           <SubmitButton
             color={primaryColor}
             disabled={disableSubmitButton}
