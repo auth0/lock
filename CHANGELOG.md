@@ -1,5 +1,17 @@
 # Change Log
 
+## [v11.23.0](https://github.com/auth0/lock/tree/v11.23.0) (2020-04-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.5...v11.23.0)
+
+
+**Added**
+- Add invalidHint to phoneNumberInput (fix issue #1836) [\#1837](https://github.com/auth0/lock/pull/1837) ([blankg](https://github.com/blankg))
+
+**Fixed**
+- [SDK-1413] Re-added scrollbars and fixed password strength popup clip issue [\#1839](https://github.com/auth0/lock/pull/1839) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- add translate 'social_signup_needs_terms_acception' for japanese [\#1835](https://github.com/auth0/lock/pull/1835) ([mag-chang](https://github.com/mag-chang))
+
+
 ## [v11.22.5](https://github.com/auth0/lock/tree/v11.22.5) (2020-03-25)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.22.4...v11.22.5)
 
