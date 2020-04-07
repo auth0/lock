@@ -25,6 +25,7 @@ export default class CaptchaPane extends React.Component {
       return (
         <div
           style={{ transform: 'scale(0.86)', transformOrigin: '0 0', position: 'relative' }}
+          className="auth0-lock-recaptchav2"
           ref={el => renderRecaptcha(lock, el, { sitekey: captcha.get('siteKey') })}
         />
       );
