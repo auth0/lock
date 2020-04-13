@@ -110,7 +110,13 @@ describe('captcha', function() {
         this.lock.hide();
       });
 
+      it('should load the captcha script', function() {
+        console.log(document.location);
+        expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+      });
+
       it('should show the captcha input', function() {
+        console.log(h.q(this.lock, 'script', true));
         expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
       });
 

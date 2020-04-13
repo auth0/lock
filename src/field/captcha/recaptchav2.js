@@ -2,6 +2,7 @@ import { Set } from 'immutable';
 import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store';
 import * as captcha from '../captcha';
+import React from 'react';
 
 function isScriptAvailable(scriptUrl) {
   //check the window object
@@ -60,3 +61,11 @@ export function render(lock, element, properties) {
 
   renderElement(lock, element, properties);
 }
+
+export default ({ lock, siteKey }) => (
+  <div
+    style={{ transform: 'scale(0.86)', transformOrigin: '0 0', position: 'relative' }}
+    className="auth0-lock-recaptchav2"
+    ref={el => render(lock, el, { siteKey })}
+  />
+);

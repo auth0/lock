@@ -7,7 +7,7 @@ import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
 import * as captchaField from '../captcha';
 import { getFieldValue, isFieldVisiblyInvalid } from '../index';
-import { render as renderRecaptcha } from './recaptchav2';
+import RecaptchaV2 from './recaptchav2';
 
 export default class CaptchaPane extends React.Component {
   render() {
@@ -22,13 +22,7 @@ export default class CaptchaPane extends React.Component {
     const captcha = l.captcha(lock);
 
     if (captcha.get('provider') === 'recaptchav2') {
-      return (
-        <div
-          style={{ transform: 'scale(0.86)', transformOrigin: '0 0', position: 'relative' }}
-          className="auth0-lock-recaptchav2"
-          ref={el => renderRecaptcha(lock, el, { sitekey: captcha.get('siteKey') })}
-        />
-      );
+      return <RecaptchaV2 lock={lock} siteKey={captcha.get('siteKey')} />;
     }
 
     const placeholder =
@@ -64,5 +58,3 @@ CaptchaPane.propTypes = {
 CaptchaPane.defaultProps = {
   error: false
 };
-
-// export default Captcha;
