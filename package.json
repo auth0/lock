@@ -115,6 +115,9 @@
     "trim": "0.0.1",
     "url-join": "^1.1.0"
   },
+  "resolutions": {
+    "minimist": "^0.2.1"
+  },
   "ccu": {
     "name": "lock",
     "cdn": "https://cdn.auth0.com",
