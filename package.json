@@ -78,7 +78,7 @@
     "husky": "^0.14.3",
     "jest": "^21.2.1",
     "json-beautify": "^1.0.1",
-    "jsonwebtoken": "^7.3.0",
+    "jsonwebtoken": "^8.5.1",
     "lint-staged": "^4.2.3",
     "mochify": "^6.3.0",
     "node-es-module-loader": "^0.3.8",
@@ -126,7 +126,8 @@
     "lodash": "^4.17.15",
     "underscore.string": "^3.3.5",
     "tunnel-agent": "^0.6.0",
-    "request": "^2.68.0"
+    "request": "^2.68.0",
+    "hoek": "^4.2.1"
   },
   "ccu": {
     "name": "lock",
