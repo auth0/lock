@@ -125,7 +125,8 @@
     "mime": "^1.4.1",
     "lodash": "^4.17.15",
     "underscore.string": "^3.3.5",
-    "tunnel-agent": "^0.6.0"
+    "tunnel-agent": "^0.6.0",
+    "request": "^2.68.0"
   },
   "ccu": {
     "name": "lock",
