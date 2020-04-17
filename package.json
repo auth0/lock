@@ -118,7 +118,8 @@
   "resolutions": {
     "minimist": "^0.2.1",
     "handlebars": "^4.7.6",
-    "set-value": "^3.0.2"
+    "set-value": "^3.0.2",
+    "js-yaml": "^3.13.1"
   },
   "ccu": {
     "name": "lock",
