@@ -127,7 +127,8 @@
     "underscore.string": "^3.3.5",
     "tunnel-agent": "^0.6.0",
     "request": "^2.68.0",
-    "hoek": "^4.2.1"
+    "hoek": "^4.2.1",
+    "mem": "6.1.0"
   },
   "ccu": {
     "name": "lock",
