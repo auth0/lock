@@ -116,7 +116,8 @@
     "url-join": "^1.1.0"
   },
   "resolutions": {
-    "minimist": "^0.2.1"
+    "minimist": "^0.2.1",
+    "handlebars": "^4.7.6"
   },
   "ccu": {
     "name": "lock",
