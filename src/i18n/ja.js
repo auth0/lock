@@ -40,7 +40,8 @@ export default {
       password_no_user_info_error: 'ユーザー情報を含むパスワードは避けてください。',
       password_strength_error: 'パスワードが脆弱です。',
       user_exists: 'すでに登録されているユーザーです。',
-      username_exists: 'すでに使用されているユーザー名です。'
+      username_exists: 'すでに使用されているユーザー名です。',
+      social_signup_needs_terms_acception: 'サインアップするには以下の利用規約・プライバシーボリシーに同意してください。'
     }
   },
   success: {

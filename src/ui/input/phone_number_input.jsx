@@ -11,11 +11,17 @@ export default class PhoneNumberInput extends React.Component {
   }
 
   render() {
-    const { isValid, ...props } = this.props;
+    const { isValid, invalidHint, ...props } = this.props;
     const { focused } = this.state;
 
     return (
-      <InputWrap focused={focused} isValid={isValid} name="phone-number" icon={svg}>
+      <InputWrap
+        focused={focused}
+        isValid={isValid}
+        invalidHint={invalidHint}
+        name="phone-number"
+        icon={svg}
+      >
         <input
           ref="input"
           type="tel"
@@ -26,6 +32,9 @@ export default class PhoneNumberInput extends React.Component {
           onBlur={::this.handleBlur}
           aria-label="Telephone number"
           aria-invalid={!isValid}
+          aria-describedby={
+            !isValid && invalidHint ? `auth0-lock-error-msg-phone-number` : undefined
+          }
           {...props}
         />
       </InputWrap>

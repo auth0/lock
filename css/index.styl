@@ -157,8 +157,6 @@ loadingSize = 30px
 
 
   // Lock header content
-
-
   .auth0-lock-header
     text-align center
     padding 11px
@@ -172,9 +170,12 @@ loadingSize = 30px
     display: flex
     flex-direction: column
     justify-content: center
-    flex-shrink: 0;
-    flex-grow: 0;
-    flex-basis: auto;
+    flex-shrink: 0
+    flex-grow: 0
+    flex-basis: auto
+    position: absolute
+    width: 100%
+    z-index: 100
 
   .auth0-lock-content-wrapper
     flex-grow: 1
@@ -182,16 +183,9 @@ loadingSize = 30px
     flex-basis: auto
     -webkit-overflow-scrolling touch
     overflow-x: auto
-    overflow-y: scroll
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
 
-    &::-webkit-scrollbar
-      width: 0
-      height: 0
-
-    @media screen and (min-width: 481px)
-      overflow-x: inherit;
+  .auth0-lock-content-body-wrapper
+    padding-top 10px
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
@@ -1302,7 +1296,7 @@ loadingSize = 30px
 
   li.auth0-lock-checked
     color #7ED321
-    span
+    & > span
       background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTMgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+R3JvdXAgNDwvdGl0bGU+ICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiAgICA8ZGVmcz48L2RlZnM+ICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgaWQ9IklwaG9uZS02LS0tTmF0aXZlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDQuMDAwMDAwLCAtMjQwLjAwMDAwMCkiPiAgICAgICAgICAgIDxnIGlkPSJHcm91cC00IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NC4xMTQ5NzMsIDI0MC4wMDAwMDApIj4gICAgICAgICAgICAgICAgPGVsbGlwc2UgaWQ9Ik92YWwtOTAiIGZpbGw9IiM4MEQxMzUiIGN4PSI2IiBjeT0iNiIgcng9IjYiIHJ5PSI2Ij48L2VsbGlwc2U+ICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik00LjU0MjM1MzYxLDcuNzMzNzgwNzYgTDIuNjQ1ODIxNDksNS44NjgwMDg5NSBMMiw2LjQ5ODg4MTQzIEw0LjU0MjM1MzYxLDkgTDEwLDMuNjMwODcyNDggTDkuMzU4NzI2NTUsMyBMNC41NDIzNTM2MSw3LjczMzc4MDc2IFoiIGlkPSJTaGFwZSIgZmlsbD0iI0ZGRkZGRiI+PC9wYXRoPiAgICAgICAgICAgIDwvZz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==')
 
 // input error string
