@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yarn install --verbose
+yarn --verbose
 
 MATCHER=${2:-"*"}
 NPM_TAG=${3:-"beta"}
