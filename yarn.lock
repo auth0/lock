@@ -7215,10 +7215,10 @@ mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24, mime-types@~2.1.6:
   dependencies:
     mime-db "1.40.0"
 
-mime@1.2.5, mime@1.6.0, mime@^1.4.1, mime@^1.5.0, mime@^2.0.3, mime@^2.3.1, mime@~1.2.9:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
-  integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
+mime@1.2.5, mime@1.4.1, mime@1.6.0, mime@^1.4.1, mime@^1.5.0, mime@^2.0.3, mime@^2.3.1, mime@~1.2.9:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
+  integrity sha512-KI1+qOZu5DcW6wayYHSzR/tXKCDC5Om4s1z2QJjDULzLcmf3DvzS7oluY4HCTrc+9FiKmWUgeNLg7W3uIQvxtQ==
 
 mimic-fn@^1.0.0:
   version "1.2.0"
