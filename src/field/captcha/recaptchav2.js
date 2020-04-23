@@ -11,11 +11,7 @@ function isScriptAvailable(scriptUrl) {
   }
   //check the scripts element, it might be loading
   const allScripts = new Set(document.scripts);
-  const exists = allScripts.some(s => s.src === scriptUrl);
-  if (exists) {
-    return true;
-  }
-  return false;
+  return allScripts.some(s => s.src === scriptUrl);
 }
 
 function injectGoogleCaptchaIfMissing(lock) {
