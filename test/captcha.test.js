@@ -99,7 +99,7 @@ describe('captcha', function() {
     });
   });
 
-  describe('recaptchav2', () => {
+  describe.only('recaptchav2', () => {
     describe('when the api returns a new challenge', function() {
       beforeEach(function(done) {
         this.stub = h.stubGetChallenge([recaptchav2Response]);
@@ -125,8 +125,9 @@ describe('captcha', function() {
     });
 
     describe('when the challenge api returns required: false', function() {
+      let notRequiredStub;
       beforeEach(function(done) {
-        h.stubGetChallenge({
+        notRequiredStub = h.stubGetChallenge({
           required: false
         });
         this.lock = h.displayLock('', lockOpts, done);
@@ -141,18 +142,25 @@ describe('captcha', function() {
       });
 
       describe('when the form submission fails and the transaction starts requiring a challenge', function() {
+        let challengeStub;
         beforeEach(function(done) {
           h.assertAuthorizeRedirection((lockID, options, authParams, cb) => {
+            console.log(' received request')
             cb(new Error('bad request'));
-            setTimeout(done, 300);
+            // We wait 250ms to display errors
+            setTimeout(done, 260);
           });
-          h.stubGetChallenge(recaptchav2Response);
+
+          challengeStub = h.stubGetChallenge(recaptchav2Response);
           h.fillEmailInput(this.lock, 'someone@example.com');
           h.fillPasswordInput(this.lock, 'mypass');
           h.submitForm(this.lock);
+          console.log('submitted')
         });
 
         it('should call the challenge api again and show the input', function() {
+          expect(notRequiredStub.calledOnce).to.be.true;
+          expect(challengeStub.calledOnce).to.be.true;
           expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
         });
       });
