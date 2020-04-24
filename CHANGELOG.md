@@ -1,5 +1,18 @@
 # Change Log
 
+## [v11.23.1](https://github.com/auth0/lock/tree/v11.23.1) (2020-04-20)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.23.0...v11.23.1)
+
+
+**Fixed**
+- [ESD-5299] Bug with the special characters password hint  [\#1847](https://github.com/auth0/lock/pull/1847) ([adamjmcgrath](https://github.com/adamjmcgrath))
+- [ESD-5397] Fix header z-index [\#1846](https://github.com/auth0/lock/pull/1846) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+- Upgraded dependencies from security advisories [\#1848](https://github.com/auth0/lock/pull/1848) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Bump auth0-js from 9.13.1 to 9.13.2 [\#1844](https://github.com/auth0/lock/pull/1844) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+
 ## [v11.23.0](https://github.com/auth0/lock/tree/v11.23.0) (2020-04-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.22.5...v11.23.0)
 
