@@ -99,7 +99,7 @@ describe('captcha', function() {
     });
   });
 
-  describe.only('recaptchav2', () => {
+  describe('recaptchav2', () => {
     describe('when the api returns a new challenge', function() {
       beforeEach(function(done) {
         this.stub = h.stubGetChallenge([recaptchav2Response]);
