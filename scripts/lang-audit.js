@@ -7,7 +7,7 @@ const directory = path_module.join(__dirname, '..', 'src', 'i18n');
 const loader = new NodeESModuleLoader(directory);
 
 /**
- * Flattens an object recursively so that any nested objects are refered to on the root object using
+ * Flattens an object recursively so that any nested objects are referred to on the root object using
  * a key path.
  * e.g. turns:
  * {

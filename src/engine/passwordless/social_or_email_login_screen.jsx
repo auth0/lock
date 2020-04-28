@@ -26,7 +26,7 @@ const Component = ({ i18n, model }) => {
     <EmailPane i18n={i18n} lock={model} placeholder={i18n.str('emailInputPlaceholder')} />
   ) : null;
 
-  // TODO: instructions can't be on EmailPane beacuse it breaks the CSS,
+  // TODO: instructions can't be on EmailPane because it breaks the CSS,
   // all input fields needs to share a parent so the last one doesn't have
   // a bottom margin.
   //
