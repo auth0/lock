@@ -1,6 +1,5 @@
 .DS_Store
 coverage/
-build/
 css/index.css
 lib/
 node_modules/
