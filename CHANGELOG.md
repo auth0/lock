@@ -5,6 +5,11 @@
 
 
 
+## [v11.23.2](https://github.com/auth0/lock/tree/v11.23.2) (2020-04-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.23.2...v11.23.2)
+
+
+
 ## [v11.23.1](https://github.com/auth0/lock/tree/v11.23.1) (2020-04-20)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.23.0...v11.23.1)
 
