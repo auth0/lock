@@ -2,7 +2,7 @@
  * lock v11.23.1
  *
  * Author: Auth0 <support@auth0.com> (http://auth0.com)
- * Date: 4/30/2020, 7:01:28 PM
+ * Date: 4/30/2020, 7:40:13 PM
  * License: MIT
  *
  */ /******/ (function(modules) {
@@ -41862,23 +41862,26 @@ object-assign
                                   terms
                                 )
                             )
+                          ),
+                          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                            SubmitButton,
+                            {
+                              color: primaryColor,
+                              disabled: disableSubmitButton,
+                              screenName: screenName,
+                              contentProps: contentProps,
+                              label: submitButtonLabel,
+                              ref: function ref(el) {
+                                return (_this5.submitButton = el);
+                              },
+                              display: shouldShowSubmitButton ? 'block' : 'none'
+                            }
                           )
                         )
                       )
                     )
                   )
                 ),
-                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(SubmitButton, {
-                  color: primaryColor,
-                  disabled: disableSubmitButton,
-                  screenName: screenName,
-                  contentProps: contentProps,
-                  label: submitButtonLabel,
-                  ref: function ref(el) {
-                    return (_this5.submitButton = el);
-                  },
-                  display: shouldShowSubmitButton ? 'block' : 'none'
-                }),
                 auxiliaryPane &&
                   __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_3_react_transition_group__['TransitionGroup'],
