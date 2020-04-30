@@ -21,7 +21,7 @@ export default class CaptchaPane extends React.Component {
 
     const captcha = l.captcha(lock);
 
-    if (captcha.get('provider') === 'recaptchav2') {
+    if (captcha.get('provider') === 'recaptcha_v2') {
       return <RecaptchaV2 lock={lock} siteKey={captcha.get('siteKey')} />;
     }
 

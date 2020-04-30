@@ -20,7 +20,7 @@ const svgCaptchaRequiredResponse2 = {
 
 const recaptchav2Response = {
   required: true,
-  provider: 'recaptchav2',
+  provider: 'recaptcha_v2',
   siteKey: 'my_site_key'
 };
 
@@ -145,7 +145,6 @@ describe('captcha', function() {
         let challengeStub;
         beforeEach(function(done) {
           h.assertAuthorizeRedirection((lockID, options, authParams, cb) => {
-            console.log(' received request')
             cb(new Error('bad request'));
             // We wait 250ms to display errors
             setTimeout(done, 260);
@@ -155,7 +154,6 @@ describe('captcha', function() {
           h.fillEmailInput(this.lock, 'someone@example.com');
           h.fillPasswordInput(this.lock, 'mypass');
           h.submitForm(this.lock);
-          console.log('submitted')
         });
 
         it('should call the challenge api again and show the input', function() {

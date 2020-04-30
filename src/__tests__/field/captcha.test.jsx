@@ -37,7 +37,10 @@ describe('CaptchaPane', () => {
   describe('recaptchav2', () => {
     let wrapper;
     beforeAll(() => {
-      const lockMock = createLockMock({ provider: 'recaptchav2', siteKey: 'mySiteKey' });
+      const lockMock = createLockMock({
+        provider: 'recaptcha_v2',
+        siteKey: 'mySiteKey'
+      });
       const i8nMock = createI18nMock();
       const onReloadMock = jest.fn();
 
