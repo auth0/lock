@@ -322,19 +322,18 @@ export default class Chrome extends React.Component {
                         {terms && <small className="auth0-lock-terms">{terms}</small>}
                       </div>
                     </div>
-
-                    <SubmitButton
-                      color={primaryColor}
-                      disabled={disableSubmitButton}
-                      screenName={screenName}
-                      contentProps={contentProps}
-                      label={submitButtonLabel}
-                      ref={el => (this.submitButton = el)}
-                      display={shouldShowSubmitButton ? 'block' : 'none'}
-                    />
                   </div>
                 </MultisizeSlide>
               </div>
+              <SubmitButton
+                color={primaryColor}
+                disabled={disableSubmitButton}
+                screenName={screenName}
+                contentProps={contentProps}
+                label={submitButtonLabel}
+                ref={el => (this.submitButton = el)}
+                display={shouldShowSubmitButton ? 'block' : 'none'}
+              />
             </div>
           </div>
 
