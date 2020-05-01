@@ -15,7 +15,7 @@ function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VAL
 
   const lowercased = trim(str.toLowerCase());
 
-  // chekc min value matched
+  // check min value matched
   if (lowercased.length < settings.min) {
     return false;
   }
