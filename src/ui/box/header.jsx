@@ -7,8 +7,6 @@ import { BackButton } from './button';
 
 export default class Header extends React.Component {
   setHeaderHeightStyle(headerElement) {
-    console.log(headerElement);
-
     if (headerElement) {
       const height = headerElement.clientHeight || 0;
       document.documentElement.style.setProperty('--header-height', `${height}px`);
