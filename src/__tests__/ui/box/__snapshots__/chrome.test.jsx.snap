@@ -21,11 +21,6 @@ exports[`Chrome can dislay all global messages together 1`] = `
       />
       <div
         className="auth0-lock-content-body-wrapper"
-        style={
-          Object {
-            "marginTop": 200,
-          }
-        }
       >
         <div>
           <div>
@@ -175,11 +170,6 @@ exports[`Chrome renders correctly when there is a global information message 1`]
       />
       <div
         className="auth0-lock-content-body-wrapper"
-        style={
-          Object {
-            "marginTop": 200,
-          }
-        }
       >
         <div>
           <div>
@@ -301,11 +291,6 @@ exports[`Chrome renders correctly when there is a global message 1`] = `
       />
       <div
         className="auth0-lock-content-body-wrapper"
-        style={
-          Object {
-            "marginTop": 200,
-          }
-        }
       >
         <div>
           <div>
@@ -427,11 +412,6 @@ exports[`Chrome renders correctly when there is a global success message 1`] = `
       />
       <div
         className="auth0-lock-content-body-wrapper"
-        style={
-          Object {
-            "marginTop": 200,
-          }
-        }
       >
         <div>
           <div>
@@ -553,11 +533,6 @@ exports[`Chrome renders correctly with basic props 1`] = `
       />
       <div
         className="auth0-lock-content-body-wrapper"
-        style={
-          Object {
-            "marginTop": 200,
-          }
-        }
       >
         <div>
           <div />
