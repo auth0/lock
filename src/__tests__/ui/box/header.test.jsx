@@ -45,4 +45,22 @@ describe('Header', () => {
 
     expectComponent(<Header {...props} />).toMatchSnapshot();
   });
+
+  it('sets the header size property on the document element', () => {
+    const spy = jest.spyOn(document.documentElement.style, 'setProperty');
+
+    const props = {
+      title: 'This is the header',
+      name: 'Header',
+      logoUrl: 'some-logo.png',
+      backgroundUrl: 'some-image.png',
+      backgroundColor: 'red'
+    };
+
+    expectComponent(<Header {...props} />, {
+      createNodeMock: () => ({ clientHeight: 100 })
+    }).toMatchSnapshot();
+
+    expect(spy).toHaveBeenCalledWith('--header-height', '100px');
+  });
 });

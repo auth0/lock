@@ -37,6 +37,43 @@ exports[`Header renders correctly with basic props 1`] = `
 </div>
 `;
 
+exports[`Header sets the header size property on the document element 1`] = `
+<div
+  className="auth0-lock-header"
+>
+  <div
+    className="auth0-lock-header-bg auth0-lock-blur-support"
+  >
+    <div
+      className="auth0-lock-header-bg-blur auth0-lock-no-grayscale"
+      style={
+        Object {
+          "backgroundImage": "url('some-image.png')",
+        }
+      }
+    />
+    <div
+      className="auth0-lock-header-bg-solid"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
+    />
+  </div>
+  <div
+    className="auth0-lock-header-welcome"
+  >
+    <div
+      className="auth0-lock-firstname"
+      title="Header"
+    >
+      Header
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Header shows the back button when there is a handler 1`] = `
 <div
   className="auth0-lock-header"
