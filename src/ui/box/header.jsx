@@ -6,11 +6,19 @@ import { BackButton } from './button';
 // TODO: simplify this mess :)
 
 export default class Header extends React.Component {
-  setHeaderHeightStyle(headerElement) {
-    if (headerElement) {
-      const height = headerElement.clientHeight || 0;
+  setHeaderHeightStyle() {
+    if (this.elm) {
+      const height = this.elm.clientHeight || 0;
       document.documentElement.style.setProperty('--header-height', `${height}px`);
     }
+  }
+
+  componentDidMount() {
+    this.setHeaderHeightStyle();
+  }
+
+  getRef(elm) {
+    this.elm = elm;
   }
 
   getDOMNode() {
@@ -21,7 +29,7 @@ export default class Header extends React.Component {
     const { backHandler, backgroundColor, backgroundUrl, logoUrl, name, title } = this.props;
 
     return (
-      <div className="auth0-lock-header" ref={::this.setHeaderHeightStyle}>
+      <div className="auth0-lock-header" ref={::this.getRef}>
         {backHandler && <BackButton onClick={backHandler} />}
         <Background imageUrl={backgroundUrl} backgroundColor={backgroundColor} grayScale={!!name} />
         <Welcome title={title} name={name} imageUrl={name ? undefined : logoUrl} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { expectComponent } from 'testUtils';
+import { mount } from 'enzyme';
 
 const getComponent = () => require('ui/box/header').default;
 
@@ -8,6 +9,28 @@ describe('Header', () => {
 
   beforeEach(() => {
     Header = getComponent();
+  });
+
+  it('sets --header-height', () => {
+    const props = {
+      title: 'This is the header',
+      name: 'Header',
+      logoUrl: 'some-logo.png',
+      backgroundUrl: 'some-image.png',
+      backgroundColor: 'red'
+    };
+
+    jest.spyOn(document.documentElement.style, 'setProperty');
+    jest.spyOn(Header.prototype, 'getRef').mockImplementation(function() {
+      this.elm = {
+        clientHeight: 99
+      };
+    });
+    mount(<Header {...props} />);
+    expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
+      '--header-height',
+      '99px'
+    );
   });
 
   it('renders correctly with basic props', () => {
