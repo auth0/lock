@@ -186,6 +186,17 @@ describe('passwordless actions', () => {
         const { read, swap } = require('store/index');
         expectMockToMatch(swap, 1);
       });
+      it('emits the "authorization_error" event', () => {
+        actions.sendSMS('id');
+        require('core/actions').validateAndSubmit.mock.calls[0][2]('model');
+        const error = new Error('foobar');
+        error.error = 'some_error_code';
+        require('core/web_api').startPasswordless.mock.calls[0][2](error);
+
+        jest.runAllTimers();
+
+        expectMockToMatch(require('core/index').emitAuthorizationErrorEvent, 1);
+      });
     });
   });
   describe('login()', () => {
