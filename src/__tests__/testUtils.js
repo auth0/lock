@@ -1,8 +1,8 @@
 import React from 'react'; // eslint-disable-line
 import renderer from 'react-test-renderer';
 
-export const expectComponent = children => {
-  const component = renderer.create(children);
+export const expectComponent = (children, opts) => {
+  const component = renderer.create(children, opts);
   return expect(component);
 };
 
@@ -40,26 +40,18 @@ export const extractPropsFromWrapper = (wrapper, index = 0) =>
 export const setURL = (url, options = {}) => {
   const parser = document.createElement('a');
   parser.href = url;
-  [
-    'href',
-    'protocol',
-    'host',
-    'hostname',
-    'origin',
-    'port',
-    'pathname',
-    'search',
-    'hash'
-  ].forEach(prop => {
-    let value = parser[prop];
-    if (prop === 'origin' && options.noOrigin) {
-      value = null;
+  ['href', 'protocol', 'host', 'hostname', 'origin', 'port', 'pathname', 'search', 'hash'].forEach(
+    prop => {
+      let value = parser[prop];
+      if (prop === 'origin' && options.noOrigin) {
+        value = null;
+      }
+      Object.defineProperty(window.location, prop, {
+        value,
+        writable: true
+      });
     }
-    Object.defineProperty(window.location, prop, {
-      value,
-      writable: true
-    });
-  });
+  );
 };
 
 export const expectMockToMatch = ({ mock }, numberOfCalls) => {

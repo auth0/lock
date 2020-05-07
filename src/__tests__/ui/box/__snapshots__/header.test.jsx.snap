@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly with basic props 1`] = `
+<div
+  className="auth0-lock-header"
+>
+  <div
+    className="auth0-lock-header-bg auth0-lock-blur-support"
+  >
+    <div
+      className="auth0-lock-header-bg-blur auth0-lock-no-grayscale"
+      style={
+        Object {
+          "backgroundImage": "url('some-image.png')",
+        }
+      }
+    />
+    <div
+      className="auth0-lock-header-bg-solid"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
+    />
+  </div>
+  <div
+    className="auth0-lock-header-welcome"
+  >
+    <div
+      className="auth0-lock-firstname"
+      title="Header"
+    >
+      Header
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Header sets the header size property on the document element 1`] = `
+<div
+  className="auth0-lock-header"
+>
+  <div
+    className="auth0-lock-header-bg auth0-lock-blur-support"
+  >
+    <div
+      className="auth0-lock-header-bg-blur auth0-lock-no-grayscale"
+      style={
+        Object {
+          "backgroundImage": "url('some-image.png')",
+        }
+      }
+    />
+    <div
+      className="auth0-lock-header-bg-solid"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
+    />
+  </div>
+  <div
+    className="auth0-lock-header-welcome"
+  >
+    <div
+      className="auth0-lock-firstname"
+      title="Header"
+    >
+      Header
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Header shows the back button when there is a handler 1`] = `
+<div
+  className="auth0-lock-header"
+>
+  <span
+    aria-label="back"
+    className="auth0-lock-back-button"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<svg aria-hidden=\\"true\\" focusable=\\"false\\" enable-background=\\"new 0 0 24 24\\" version=\\"1.0\\" viewBox=\\"0 0 24 24\\" xml:space=\\"preserve\\" xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\"> <polyline fill=\\"none\\" points=\\"12.5,21 3.5,12 12.5,3 \\" stroke=\\"#000000\\" stroke-miterlimit=\\"10\\" stroke-width=\\"2\\"></polyline> <line fill=\\"none\\" stroke=\\"#000000\\" stroke-miterlimit=\\"10\\" stroke-width=\\"2\\" x1=\\"22\\" x2=\\"3.5\\" y1=\\"12\\" y2=\\"12\\"></line> </svg>",
+      }
+    }
+    id="undefined-back-button"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    role="button"
+    tabIndex={0}
+  />
+  <div
+    className="auth0-lock-header-bg auth0-lock-blur-support"
+  >
+    <div
+      className="auth0-lock-header-bg-blur auth0-lock-no-grayscale"
+      style={
+        Object {
+          "backgroundImage": "url('some-image.png')",
+        }
+      }
+    />
+    <div
+      className="auth0-lock-header-bg-solid"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
+    />
+  </div>
+  <div
+    className="auth0-lock-header-welcome"
+  >
+    <div
+      className="auth0-lock-firstname"
+      title="Header"
+    >
+      Header
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Header shows the logoUrl when there is no name 1`] = `
+<div
+  className="auth0-lock-header"
+>
+  <div
+    className="auth0-lock-header-bg auth0-lock-blur-support"
+  >
+    <div
+      className="auth0-lock-header-bg-blur"
+      style={
+        Object {
+          "backgroundImage": "url('some-image.png')",
+        }
+      }
+    />
+    <div
+      className="auth0-lock-header-bg-solid"
+      style={
+        Object {
+          "backgroundColor": "red",
+        }
+      }
+    />
+  </div>
+  <div
+    className="auth0-lock-header-welcome"
+  >
+    <img
+      alt=""
+      className="auth0-lock-header-logo"
+      src="some-logo.png"
+    />
+    <div
+      className="auth0-lock-name"
+      title="This is the header"
+    >
+      This is the header
+    </div>
+  </div>
+</div>
+`;
