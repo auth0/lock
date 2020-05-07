@@ -115,6 +115,7 @@ function sendSMSSuccess(id) {
 function sendSMSError(id, error) {
   const m = read(getEntity, 'lock', id);
   const errorMessage = getErrorMessage(m, error);
+  l.emitAuthorizationErrorEvent(m, error);
   return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
 }
 
