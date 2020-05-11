@@ -1,5 +1,18 @@
 # Change Log
 
+## [v11.24.0](https://github.com/auth0/lock/tree/v11.24.0) (2020-05-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.23.1...v11.24.0)
+
+
+**Added**
+- Add support for google recaptcha [\#1845](https://github.com/auth0/lock/pull/1845) ([kusold](https://github.com/kusold))
+
+**Fixed**
+- Fix header height calculation for large titles [\#1859](https://github.com/auth0/lock/pull/1859) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Typo fix in username.js [\#1857](https://github.com/auth0/lock/pull/1857) ([thduttonuk](https://github.com/thduttonuk))
+- Fix send sms error event [\#1856](https://github.com/auth0/lock/pull/1856) ([blankg](https://github.com/blankg))
+
+
 ## [v11.23.1](https://github.com/auth0/lock/tree/v11.23.1) (2020-04-20)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.23.0...v11.23.1)
 
