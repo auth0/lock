@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecaptchaV2 should match the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    lock={
+      Immutable.Map {
+        "id": "__lock-id__",
+        "core": Immutable.Map {
+          "captcha": Immutable.Map {
+            "provider": "recaptchav2",
+            "siteKey": "mySiteKey",
+          },
+          "transient": Immutable.Map {
+            "ui": Immutable.Map {
+              "language": "en-US",
+            },
+          },
+        },
+      }
+    }
+    siteKey="mySiteKey"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "auth0-lock-recaptchav2",
+      "style": Object {
+        "position": "relative",
+        "transform": "scale(0.86)",
+        "transformOrigin": "0 0",
+      },
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "auth0-lock-recaptchav2",
+        "style": Object {
+          "position": "relative",
+          "transform": "scale(0.86)",
+          "transformOrigin": "0 0",
+        },
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
+          },
+        },
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

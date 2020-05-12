@@ -26,7 +26,6 @@ describe('Chrome', () => {
 
   beforeEach(() => {
     Chrome = getComponent();
-    Chrome.prototype.getHeaderSize = jest.fn(() => 200);
   });
 
   it('renders correctly with basic props', () => {
