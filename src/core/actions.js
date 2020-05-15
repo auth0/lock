@@ -15,8 +15,8 @@ import { img as preload } from '../utils/preload_utils';
 import { defaultProps } from '../ui/box/container';
 import { isFieldValid, showInvalidField, hideInvalidFields, clearFields } from '../field/index';
 
-export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn) {
-  let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn);
+export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn) {
+  let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn);
 
   m = syncRemoteData(m);
 
