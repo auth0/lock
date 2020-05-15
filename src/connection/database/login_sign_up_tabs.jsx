@@ -4,7 +4,6 @@ import { showLoginActivity, showSignUpActivity } from './actions';
 import * as l from '../../core/index';
 import { getScreen } from './index';
 import { closeLock } from '../../core/actions';
-import { read } from '../../store';
 
 export default class LoginSignUpTabs extends React.Component {
   render() {
