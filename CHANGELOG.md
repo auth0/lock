@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.24.1](https://github.com/auth0/lock/tree/v11.24.1) (2020-05-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.0...v11.24.1)
+
+
+**Fixed**
+- [ESD-6221] Remove CSS variable from header height calculation [\#1867](https://github.com/auth0/lock/pull/1867) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.24.0](https://github.com/auth0/lock/tree/v11.24.0) (2020-05-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.23.1...v11.24.0)
 
