@@ -54,7 +54,7 @@ describe('setup', () => {
         responseType: 'id_token'
       }
     };
-    setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
+    setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn', 'handleEventFn');
     const { mock } = mockInit;
     expect(mock.calls.length).toBe(1);
     const model = mock.calls[0][1].toJS();

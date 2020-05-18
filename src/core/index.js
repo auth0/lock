@@ -12,7 +12,7 @@ import * as captchaField from '../field/captcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
-export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
+export function setup(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn) {
   let m = init(
     id,
     Immutable.fromJS({
@@ -31,7 +31,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       defaultADUsernameFromEmailPrefix:
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
       prefill: options.prefill || {},
-      connectionResolver: options.connectionResolver
+      connectionResolver: options.connectionResolver,
+      handleEventFn: handleEventFn
     })
   );
 
@@ -512,6 +513,11 @@ export function emitEvent(m, str, ...args) {
       throw new Error(...args);
     }
   }, 0);
+}
+
+export function handleEvent(m, str, ...args) {
+  const handleEventFn = get(m, 'handleEventFn');
+  handleEventFn(str, ...args);
 }
 
 export function loginErrorMessage(m, error, type) {

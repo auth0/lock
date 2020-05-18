@@ -84,7 +84,7 @@ const AUXILIARY_ANIMATION_DURATION = 350;
 export default class Chrome extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { moving: false, reverse: false };
+    this.state = { moving: false, reverse: false, headerHeight: 0 };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -145,6 +145,14 @@ export default class Chrome extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const fn = () => this.setState({ headerHeight: this.getHeaderSize() });
+    const m = this.props.contentProps.model;
+
+    l.handleEvent(m, 'signup ready', fn);
+    l.handleEvent(m, 'signin ready', fn);
+  }
+
   onWillSlide() {
     this.setState({ moving: true });
     this.sliding = true;
@@ -156,7 +164,8 @@ export default class Chrome extends React.Component {
   }
 
   onDidAppear() {
-    this.setState({ moving: false });
+    this.setState({ moving: false, headerHeight: this.getHeaderSize() });
+
     if (this.state.delayingShowSubmitButton) {
       this.setState({ delayingShowSubmitButton: false });
     }
@@ -183,6 +192,19 @@ export default class Chrome extends React.Component {
     if (error) {
       error.focus();
     }
+  }
+
+  // Record the header element so that we can retrieve its size when the
+  // component renders
+  setHeaderElement(element) {
+    this.header = element;
+  }
+
+  // Get the size (rather than the element itself), as returning
+  // the element makes this difficult to test (we can't reasonably enforce the size
+  // as it's not rendered to a screen).
+  getHeaderSize() {
+    return this.header ? this.header.getDOMNode().clientHeight : 0;
   }
 
   render() {
@@ -269,9 +291,13 @@ export default class Chrome extends React.Component {
               backgroundUrl={backgroundUrl}
               backgroundColor={primaryColor}
               logoUrl={logo}
+              ref={::this.setHeaderElement}
             />
 
-            <div className="auth0-lock-content-body-wrapper">
+            <div
+              className="auth0-lock-content-body-wrapper"
+              style={{ marginTop: this.state.headerHeight }}
+            >
               <TransitionGroup>
                 <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
                   <div>
