@@ -51,6 +51,7 @@ Object {
   "defaultADUsernameFromEmailPrefix": true,
   "domain": "domain",
   "emitEventFn": "emitEventFn",
+  "handleEventFn": "handleEventFn",
   "hashCleanup": true,
   "hookRunner": "hookRunner",
   "languageBaseUrl": "https://cdn.auth0.com",
