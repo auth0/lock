@@ -59,12 +59,13 @@ describe('Chrome', () => {
     const component = create(<Chrome {...defaultProps} />);
     const instance = component.getInstance();
 
-    expect(instance.state.headerHeight).toBe(0);
+    expect(instance.state.headerHeight).toBe(200);
     expect(component).toMatchSnapshot();
 
+    Chrome.prototype.getHeaderSize.mockReturnValue(250);
     triggerEvent('signin ready');
 
-    expect(instance.state.headerHeight).toBe(200);
+    expect(instance.state.headerHeight).toBe(250);
     expect(component).toMatchSnapshot();
   });
 
@@ -72,12 +73,13 @@ describe('Chrome', () => {
     const component = create(<Chrome {...defaultProps} />);
     const instance = component.getInstance();
 
-    expect(instance.state.headerHeight).toBe(0);
+    expect(instance.state.headerHeight).toBe(200);
     expect(component).toMatchSnapshot();
+    Chrome.prototype.getHeaderSize.mockReturnValue(250);
 
     triggerEvent('signup ready');
 
-    expect(instance.state.headerHeight).toBe(200);
+    expect(instance.state.headerHeight).toBe(250);
     expect(component).toMatchSnapshot();
   });
 
