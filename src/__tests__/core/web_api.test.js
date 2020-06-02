@@ -9,11 +9,11 @@ describe('Auth0WebApi', () => {
   const client = () => Auth0WebApi.clients[LOCK_ID];
 
   beforeEach(() => {
-    originalWindow = window;
+    originalWindow = global.window;
   });
 
   afterEach(() => {
-    window = originalWindow;
+    global.window = originalWindow;
   });
 
   describe('setupClient', () => {
