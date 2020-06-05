@@ -87,6 +87,7 @@ export default class Chrome extends React.Component {
     this.state = { moving: false, reverse: false, headerHeight: 0 };
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps) {
     const { auxiliaryPane, showSubmitButton } = this.props;
     const { delayingShowSubmitButton } = this.state;
@@ -151,6 +152,7 @@ export default class Chrome extends React.Component {
 
     l.handleEvent(m, 'signup ready', fn);
     l.handleEvent(m, 'signin ready', fn);
+    fn();
   }
 
   onWillSlide() {
