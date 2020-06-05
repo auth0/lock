@@ -18,8 +18,19 @@ describe('Auth0WebApi', () => {
 
   describe('setupClient', () => {
     it('sets the correct options when is on the hosted login page', () => {
+      delete global.window.location;
+      window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, { redirect: true });
-      expect(Auth0WebApi).toMatchSnapshot();
+
+      expect(client()).toEqual(
+        expect.objectContaining({
+          isUniversalLogin: true,
+          domain: DEFAULT_DOMAIN,
+          authOpt: {
+            popup: false
+          }
+        })
+      );
     });
 
     it('sets redirect: true when on the same origin as the specified domain', () => {
