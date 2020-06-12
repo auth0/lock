@@ -22,41 +22,6 @@ describe('captcha', function() {
   before(h.stubWebApis);
   after(h.restoreWebApis);
 
-  describe('when the api returns a new challenge', function() {
-    beforeEach(function(done) {
-      this.stub = h.stubGetChallenge([requiredResponse1, requiredResponse2]);
-      this.lock = h.displayLock('', lockOpts, done);
-    });
-
-    afterEach(function() {
-      this.lock.hide();
-    });
-
-    it('should show the captcha input', function() {
-      expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
-    });
-
-    it('should require another challenge when clicking the refresh button', function(done) {
-      h.clickRefreshCaptchaButton(this.lock);
-      setTimeout(() => {
-        expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
-          `url("${requiredResponse2.image}")`
-        );
-        done();
-      }, 200);
-    });
-
-    it('should submit the captcha provided by the user', function() {
-      h.logInWithEmailPasswordAndCaptcha(this.lock);
-      expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
-    });
-
-    it('should not submit the form if the captcha is not provided', function() {
-      h.logInWithEmailAndPassword(this.lock);
-      expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-    });
-  });
-
   describe('when the challenge api returns required: false', function() {
     beforeEach(function(done) {
       h.stubGetChallenge({
@@ -88,6 +53,44 @@ describe('captcha', function() {
       it('should call the challenge api again and show the input', function() {
         expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
       });
+    });
+  });
+
+  describe('when the api returns a new challenge', function() {
+    beforeEach(function(done) {
+      this.stub = h.stubGetChallenge([requiredResponse1, requiredResponse2]);
+      this.lock = h.displayLock('', lockOpts, done);
+    });
+
+    afterEach(function() {
+      this.lock.hide();
+    });
+
+    it('should require another challenge when clicking the refresh button', function(done) {
+      h.clickRefreshCaptchaButton(this.lock);
+      setTimeout(() => {
+        expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
+          `url("${requiredResponse2.image}")`
+        );
+        done();
+      }, 200);
+    });
+
+    it('should submit the captcha provided by the user', function() {
+      h.logInWithEmailPasswordAndCaptcha(this.lock);
+      expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+    });
+
+    it('should not submit the form if the captcha is not provided', function() {
+      h.logInWithEmailAndPassword(this.lock);
+      expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+    });
+
+    it('should show the captcha input', function(done) {
+      setTimeout(() => {
+        expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+        done();
+      }, 200);
     });
   });
 });
