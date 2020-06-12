@@ -39,8 +39,11 @@ describe('captcha', function() {
         this.lock.hide();
       });
 
-      it('should show the captcha input', function() {
-        expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+      it('should show the captcha input', function(done) {
+        setTimeout(() => {
+          expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+          done();
+        }, 500);
       });
 
       it('should require another challenge when clicking the refresh button', function(done) {
