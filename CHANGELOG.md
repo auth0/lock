@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.24.2](https://github.com/auth0/lock/tree/v11.24.2) (2020-06-05)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.1...v11.24.2)
+
+
+**Fixed**
+- [SDK-1556] Apply window height style to root document for Passwordless UI [\#1878](https://github.com/auth0/lock/pull/1878) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Add !hostedLoginPage condition to redirect check [\#1876](https://github.com/auth0/lock/pull/1876) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Header height not updated when Lock dialog is closed and reopened [\#1874](https://github.com/auth0/lock/pull/1874) ([adamjmcgrath](https://github.com/adamjmcgrath))
+- z-index needs to be less than the close button to avoid hiding it [\#1872](https://github.com/auth0/lock/pull/1872) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
+
 ## [v11.24.1](https://github.com/auth0/lock/tree/v11.24.1) (2020-05-18)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.24.0...v11.24.1)
 

@@ -40,8 +40,8 @@ export default class InputWrap extends React.Component {
         <div className={wrapClassName}>
           {iconElement}
           {this.props.children}
+          {after}
         </div>
-        {after}
         {errorTooltip}
       </div>
     );
