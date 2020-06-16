@@ -83,8 +83,6 @@ function registerLanguageDictionary(language, dictionary) {
   languageDictionaries[language] = Immutable.fromJS(dictionary);
 }
 
-registerLanguageDictionary('en', enDictionary);
-
 preload({
   method: 'registerLanguageDictionary',
   cb: registerLanguageDictionary
