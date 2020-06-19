@@ -1,5 +1,17 @@
 # Change Log
 
+## [v11.24.3](https://github.com/auth0/lock/tree/v11.24.3) (2020-06-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.2...v11.24.3)
+
+
+**Fixed**
+- Allows i18n en lang override [\#1885](https://github.com/auth0/lock/pull/1885) ([davidpatrick](https://github.com/davidpatrick))
+- Show the "Can't be blank" message under the password input [\#1882](https://github.com/auth0/lock/pull/1882) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
+**Security**
+- [Security] Bump websocket-extensions from 0.1.3 to 0.1.4 [\#1880](https://github.com/auth0/lock/pull/1880) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+
 ## [v11.24.2](https://github.com/auth0/lock/tree/v11.24.2) (2020-06-05)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.24.1...v11.24.2)
 
