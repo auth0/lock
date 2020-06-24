@@ -31,7 +31,7 @@ const badgeSvg = (
 
 const BottomBadge = ({ link }) => (
   <span className="auth0-lock-badge-bottom">
-    <a href={link} target="_blank" className="auth0-lock-badge">
+    <a href={link} target="_blank" className="auth0-lock-badge" rel="noopener noreferrer">
       Protected with {badgeSvg}
     </a>
   </span>

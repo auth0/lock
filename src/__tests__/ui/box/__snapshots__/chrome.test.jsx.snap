@@ -23,7 +23,7 @@ exports[`Chrome can dislay all global messages together 1`] = `
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 0,
+            "marginTop": 200,
           }
         }
       >
@@ -182,7 +182,7 @@ exports[`Chrome correctly sets the header size when the "signin ready" event is 
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 0,
+            "marginTop": 200,
           }
         }
       >
@@ -298,7 +298,7 @@ exports[`Chrome correctly sets the header size when the "signin ready" event is 
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 200,
+            "marginTop": 250,
           }
         }
       >
@@ -414,7 +414,7 @@ exports[`Chrome correctly sets the header size when the "signup ready" event is 
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 0,
+            "marginTop": 200,
           }
         }
       >
@@ -530,7 +530,7 @@ exports[`Chrome correctly sets the header size when the "signup ready" event is 
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 200,
+            "marginTop": 250,
           }
         }
       >
@@ -646,7 +646,7 @@ exports[`Chrome renders correctly when there is a global information message 1`]
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 0,
+            "marginTop": 200,
           }
         }
       >
@@ -777,7 +777,7 @@ exports[`Chrome renders correctly when there is a global message 1`] = `
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 0,
+            "marginTop": 200,
           }
         }
       >
@@ -908,7 +908,7 @@ exports[`Chrome renders correctly when there is a global success message 1`] = `
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 0,
+            "marginTop": 200,
           }
         }
       >
@@ -1039,7 +1039,7 @@ exports[`Chrome renders correctly with basic props 1`] = `
         className="auth0-lock-content-body-wrapper"
         style={
           Object {
-            "marginTop": 0,
+            "marginTop": 200,
           }
         }
       >
