@@ -1,6 +1,6 @@
 import { Simulate } from 'react-dom/test-utils';
+import Immutable, { Map } from 'immutable';
 import { stub } from 'sinon';
-import { Map } from 'immutable';
 import Auth0Lock from '../../src/index';
 import webApi from '../../src/core/web_api';
 import * as gravatarProvider from '../../src/avatar/gravatar_provider';
@@ -8,6 +8,11 @@ import * as ClientSettings from '../../src/core/client/settings';
 import clientSettings from './client_settings';
 import * as SSOData from '../../src/core/sso/data';
 import ssoData from './sso_data';
+import enDictionary from '../../src/i18n/en';
+import * as i18n from '../../src/i18n';
+import { dataFns } from '../../src/utils/data_utils';
+
+const { set } = dataFns(['i18n']);
 
 // stub, mock and spy
 
@@ -26,6 +31,13 @@ export const stubWebApis = () => {
     cb(null, ssoData);
   });
   stubGetChallenge();
+  stubI18n();
+};
+
+export const stubI18n = () => {
+  stub(i18n, 'initI18n', m => {
+    return set(m, 'strings', Immutable.fromJS(enDictionary));
+  });
 };
 
 export const stubWebApisForKerberos = () => {
@@ -39,6 +51,10 @@ export const unStubWebApisForKerberos = () => {
   stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
     cb(null, ssoData);
   });
+};
+
+export const unstubI18n = () => {
+  i18n.initI18n.restore();
 };
 
 export const assertAuthorizeRedirection = cb => {
@@ -55,6 +71,7 @@ export const restoreWebApis = () => {
   gravatarProvider.url.restore();
   ClientSettings.fetchClientSettings.restore();
   SSOData.fetchSSOData.restore();
+  unstubI18n();
 };
 
 // api call checks
@@ -315,7 +332,7 @@ export const stubGetChallenge = (result = { required: false }) => {
     webApi.getChallenge.restore();
   }
   return stub(webApi, 'getChallenge', (lockID, callback) => {
-    if(Array.isArray(result)) {
+    if (Array.isArray(result)) {
       return callback(null, result.shift());
     }
     callback(null, result);
