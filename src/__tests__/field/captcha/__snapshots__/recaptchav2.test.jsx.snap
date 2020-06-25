@@ -3,14 +3,14 @@
 exports[`RecaptchaV2 should match the snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ReCAPTCHA
     lock={
       Immutable.Map {
         "id": "__lock-id__",
         "core": Immutable.Map {
           "captcha": Immutable.Map {
             "provider": "recaptchav2",
-            "siteKey": "mySiteKey",
+            "sitekey": "mySiteKey",
           },
           "transient": Immutable.Map {
             "ui": Immutable.Map {
@@ -20,7 +20,10 @@ ShallowWrapper {
         },
       }
     }
-    siteKey="mySiteKey"
+    onChange={[Function]}
+    onErrored={[Function]}
+    onExpired={[Function]}
+    sitekey="mySiteKey"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

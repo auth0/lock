@@ -7,7 +7,7 @@ import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
 import * as captchaField from '../captcha';
 import { getFieldValue, isFieldVisiblyInvalid } from '../index';
-import RecaptchaV2 from './recaptchav2';
+import { ReCAPTCHA } from './recaptchav2';
 
 export default class CaptchaPane extends React.Component {
   render() {
@@ -15,14 +15,30 @@ export default class CaptchaPane extends React.Component {
 
     const lockId = l.id(lock);
 
-    function handleChange(e) {
-      swap(updateEntity, 'lock', lockId, captchaField.set, e.target.value);
-    }
-
     const captcha = l.captcha(lock);
 
     if (captcha.get('provider') === 'recaptcha_v2') {
-      return <RecaptchaV2 lock={lock} siteKey={captcha.get('siteKey')} />;
+      function handleChange(value) {
+        swap(updateEntity, 'lock', lockId, captchaField.set, value);
+      }
+
+      function reset() {
+        handleChange();
+      }
+
+      return (
+        <ReCAPTCHA
+          sitekey={captcha.get('siteKey')}
+          onChange={handleChange}
+          onExpired={reset}
+          hl={l.ui.language(lock)}
+          value={captchaField.getValue(lock)}
+        />
+      );
+    }
+
+    function handleChange(e) {
+      swap(updateEntity, 'lock', lockId, captchaField.set, e.target.value);
     }
 
     const placeholder =

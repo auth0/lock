@@ -1,67 +1,115 @@
+import { createRef } from '../../utils/createRef';
 import React from 'react';
-import { Set } from 'immutable';
-import * as l from '../../core/index';
-import { swap, updateEntity } from '../../store';
-import * as captcha from '../captcha';
+import propTypes from 'prop-types';
 
-function isScriptAvailable(scriptUrl) {
-  //check the window object
-  if (window.grecaptcha && typeof window.grecaptcha.render === 'function') {
-    return true;
+const noop = () => {};
+
+export class ReCAPTCHA extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    //this version of react doesn't have React.createRef
+    this.ref = createRef();
+
+    this.changeHandler = value => {
+      this.setState({ value }, () => {
+        this.props.onChange(value);
+      });
+    };
+
+    this.expiredHandler = () => {
+      let value = '';
+      this.setState({ value }, () => {
+        this.props.onChange(value);
+        this.props.onExpired();
+      });
+    };
+
+    this.erroredHandler = () => {
+      let value = '';
+      this.setState({ value }, () => {
+        this.props.onChange(value);
+        this.props.onErrored();
+      });
+    };
   }
-  //check the scripts element, it might be loading
-  const allScripts = new Set(document.scripts);
-  return allScripts.some(s => s.src === scriptUrl);
-}
 
-function injectGoogleCaptchaIfMissing(lock) {
-  const lang = l.ui.language(lock);
-  const scriptUrl = `https://www.google.com/recaptcha/api.js?hl=${lang}`;
-  if (isScriptAvailable(scriptUrl)) {
-    return;
-  }
-  const script = document.createElement('script');
-  script.src = scriptUrl;
-  script.async = true;
-  document.body.appendChild(script);
-}
+  static loadScript(props, element = document.body, callback = noop) {
+    const callbackName = `recatpchaCallback_${Math.floor(Math.random() * 1000001)}`;
+    const scriptUrl = `https://www.google.com/recaptcha/api.js?hl=${props.hl}&onload=${callbackName}`;
+    const script = document.createElement('script');
 
-/**
- * waits until google recaptcha is ready and renders
- */
-function renderElement(lock, el, prop) {
-  if (!window.grecaptcha || typeof window.grecaptcha.render !== 'function') {
-    return setTimeout(() => renderElement(lock, el, prop), 100);
+    window[callbackName] = () => {
+      delete window[callbackName];
+      callback(null, script);
+    };
+
+    script.src = scriptUrl;
+    script.async = true;
+    element.appendChild(script);
   }
 
-  const id = l.id(lock);
-  try {
-    window.grecaptcha.render(el, {
-      callback: value => {
-        swap(updateEntity, 'lock', id, captcha.set, value, false);
-      },
-      'expired-callback': () => {
-        swap(updateEntity, 'lock', id, captcha.reset);
-      },
-      ...prop
+  componentWillUnmount() {
+    if (!this.scriptNode) {
+      return;
+    }
+    document.body.removeChild(this.scriptNode);
+  }
+
+  componentDidMount() {
+    ReCAPTCHA.loadScript(this.props, document.body, (err, scriptNode) => {
+      this.scriptNode = scriptNode;
+      this.widgetId = window.grecaptcha.render(this.ref.current, {
+        callback: this.changeHandler,
+        'expired-callback': this.expiredHandler,
+        'error-callback': this.erroredHandler,
+        sitekey: this.props.sitekey
+      });
     });
-  } catch (err) {}
-}
-
-export function render(lock, element, properties) {
-  if (!element || element.innerHTML !== '') {
-    return;
   }
 
-  injectGoogleCaptchaIfMissing(lock);
+  reset() {
+    window.grecaptcha.reset(this.widgetId);
+  }
 
-  renderElement(lock, element, properties);
+  render() {
+    return (
+      <div
+        style={{ transform: 'scale(0.86)', transformOrigin: '0 0', position: 'relative' }}
+        className="auth0-lock-recaptchav2"
+        ref={this.ref}
+      />
+    );
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.value !== prevState.value) {
+      return { value: nextProps.value };
+    } else {
+      return null;
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.value !== this.props.value && this.props.value === '') {
+      this.reset();
+    }
+  }
 }
 
-export default ({ lock, siteKey }) => (
-  <div
-    style={{ transform: 'scale(0.86)', transformOrigin: '0 0', position: 'relative' }}
-    className="auth0-lock-recaptchav2"
-    ref={el => render(lock, el, { sitekey: siteKey })}
-  />
-);
+ReCAPTCHA.displayName = 'ReCAPTCHA';
+
+ReCAPTCHA.propTypes = {
+  sitekey: propTypes.string.isRequired,
+  onChange: propTypes.func,
+  onExpired: propTypes.func,
+  onErrored: propTypes.func,
+  hl: propTypes.string,
+  value: propTypes.string
+};
+
+ReCAPTCHA.defaultProps = {
+  onChange: noop,
+  onExpired: noop,
+  onErrored: noop
+};
