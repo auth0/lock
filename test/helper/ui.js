@@ -133,7 +133,6 @@ const qView = (lock, query, all = false) => {
   // DOM. Both are siblings, and the one that is entering (that is,
   // the one that will remain visible) is always the first sibling.
   const view = q(lock, '.auth0-lock-view-content');
-  // console.log(view.innerHTML);
   const method = all ? 'querySelectorAll' : 'querySelector';
   return view ? view[method](query) : null;
 };
