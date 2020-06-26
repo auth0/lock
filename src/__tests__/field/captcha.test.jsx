@@ -3,14 +3,14 @@ import { mount } from 'enzyme';
 import I from 'immutable';
 
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import RecaptchaV2 from '../../field/captcha/recaptchav2';
+import { ReCAPTCHA } from '../../field/captcha/recaptchav2';
 import CaptchaInput from '../../ui/input/captcha_input';
 
-const createLockMock = ({ provider = 'none', siteKey = '' } = {}) =>
+const createLockMock = ({ provider = 'auth0', required = true, siteKey = '' } = {}) =>
   I.fromJS({
     id: '__lock-id__',
     core: {
-      captcha: { provider, siteKey }
+      captcha: { provider, siteKey, required: required }
     }
   });
 
@@ -48,11 +48,11 @@ describe('CaptchaPane', () => {
     });
 
     it('should render reCaptcha if provider is recaptchav2', () => {
-      expect(wrapper.find(RecaptchaV2)).toHaveLength(1);
+      expect(wrapper.find(ReCAPTCHA)).toHaveLength(1);
     });
 
     it('should pass the sitekey', () => {
-      expect(wrapper.find(RecaptchaV2).props().siteKey).toBe('mySiteKey');
+      expect(wrapper.find(ReCAPTCHA).props().sitekey).toBe('mySiteKey');
     });
   });
 });
