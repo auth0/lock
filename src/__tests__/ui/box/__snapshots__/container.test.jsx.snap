@@ -11,6 +11,7 @@ exports[`Container when suppressSubmitOverlay is true it does not display the ov
     <form
       className="auth0-lock-widget"
       method="post"
+      noValidate={true}
       onSubmit={[Function]}
     >
       <div
