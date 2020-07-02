@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Auth0 Community
+    url: https://community.auth0.com/c/sdks/5
+    about: Discuss this SDK in the Auth0 Community forums
+  - name: Library Documentation
+    url: https://auth0.com/docs/libraries/lock/v11
+    about: Read the library docs on Auth0.com
