@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.24.4](https://github.com/auth0/lock/tree/v11.24.4) (2020-07-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.3...v11.24.4)
+
+
+**Changed**
+- [SDK-1756] Remove HTML5 novalidate attribute from Lock form [\#1890](https://github.com/auth0/lock/pull/1890) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Bump auth0-js to 9.13.3 [\#1889](https://github.com/auth0/lock/pull/1889) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.24.3](https://github.com/auth0/lock/tree/v11.24.3) (2020-06-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.24.2...v11.24.3)
 
