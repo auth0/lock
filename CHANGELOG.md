@@ -5,7 +5,7 @@
 
 
 **Changed**
-- [SDK-1756] Remove HTML5 novalidate attribute from Lock form [\#1890](https://github.com/auth0/lock/pull/1890) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SDK-1756] Add HTML5 novalidate attribute to Lock form to remove native browser validation [\#1890](https://github.com/auth0/lock/pull/1890) ([stevehobbsdev](https://github.com/stevehobbsdev))
 - Bump auth0-js to 9.13.3 [\#1889](https://github.com/auth0/lock/pull/1889) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 
