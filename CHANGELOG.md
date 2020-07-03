@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.24.5](https://github.com/auth0/lock/tree/v11.24.5) (2020-07-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.4...v11.24.5)
+
+
+**Fixed**
+- [SDK-1738] Remove subtle transition on header element [\#1892](https://github.com/auth0/lock/pull/1892) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.24.4](https://github.com/auth0/lock/tree/v11.24.4) (2020-07-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.24.3...v11.24.4)
 
