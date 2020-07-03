@@ -7,7 +7,7 @@ daysUntilStale: 30
 daysUntilClose: 7
 
 # Issues or Pull Requests with these labels will never be considered stale. Set to `[]` to disable
-exemptLabels: ['needs investigation']
+exemptLabels: ['needs investigation', 'bug']
 
 # Set to true to ignore issues with an assignee (defaults to false)
 exemptAssignees: true
