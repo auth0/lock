@@ -23,12 +23,20 @@ const Component = ({ i18n, model }) => {
   const connection = quickAuthConnection(model);
   const connectionName = connection.getIn(['name']);
   const connectionDomain = connection.getIn(['domains', 0]);
+  const connectionDisplayName = connection.getIn(['displayName']) || null;
+  const preferConnectionDisplayName = l.ui.preferConnectionDisplayName(model);
 
   const buttonTheme = theme.get(connection.get('name'));
 
   const buttonLabel =
     (buttonTheme && buttonTheme.get('displayName')) ||
-    (connectionDomain && i18n.str('loginAtLabel', connectionDomain)) ||
+    (connectionDomain &&
+      i18n.str(
+        'loginAtLabel',
+        preferConnectionDisplayName && connectionDisplayName
+          ? connectionDisplayName
+          : connectionDomain
+      )) ||
     i18n.str('loginAtLabel', connectionName);
 
   const primaryColor = buttonTheme && buttonTheme.get('primaryColor');
