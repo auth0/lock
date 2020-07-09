@@ -80,6 +80,7 @@ Object {
     "logo": undefined,
     "mobile": false,
     "popupOptions": Object {},
+    "preferConnectionDisplayName": false,
     "primaryColor": undefined,
     "rememberLastLogin": true,
     "scrollGlobalMessagesIntoView": true,

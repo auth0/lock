@@ -110,7 +110,8 @@ function formatClientConnection(connectionType, strategyName, connection) {
   const result = {
     name: connection.name,
     strategy: strategyName,
-    type: connectionType
+    type: connectionType,
+    displayName: connection.display_name
   };
 
   if (connectionType === 'database') {
