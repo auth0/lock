@@ -17,9 +17,7 @@ function icon(strategy) {
 const Component = ({ i18n, model }) => {
   const headerText = i18n.html('enterpriseLoginIntructions') || null;
   const header = headerText && <p>{headerText}</p>;
-
   const theme = authButtonsTheme(model);
-
   const connection = quickAuthConnection(model);
   const connectionName = connection.getIn(['name']);
   const connectionDomain = connection.getIn(['domains', 0]);
