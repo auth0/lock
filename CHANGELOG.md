@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.25.0](https://github.com/auth0/lock/tree/v11.25.0) (2020-07-09)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.5...v11.25.0)
+
+
+**Added**
+- [SDK-1710] Allow Lock to use connection display name field from client configuration file [\#1896](https://github.com/auth0/lock/pull/1896) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.24.5](https://github.com/auth0/lock/tree/v11.24.5) (2020-07-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.24.4...v11.24.5)
 
