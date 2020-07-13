@@ -85,6 +85,23 @@ describe('The quick auth screen', () => {
     expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
 
+  it('renders the connection using the connection display name when preferConnectionDisplayName is true and there are no IdP domains configured', () => {
+    const mockConnection = I.fromJS({
+      name: 'Test',
+      displayName: 'My Connection'
+    });
+
+    const { quickAuthConnection } = require('connection/enterprise');
+    quickAuthConnection.mockReturnValue(mockConnection);
+
+    const l = require('core/index');
+    l.ui.preferConnectionDisplayName.mockReturnValue(true);
+
+    const Component = getComponent();
+
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+  });
+
   it('renders the connection using the connection name when there is no domain available', () => {
     const mockConnection = I.fromJS({
       name: 'Test'
