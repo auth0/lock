@@ -10,7 +10,8 @@ export default {
     login: {
       blocked_user: 'The user is blocked.',
       invalid_user_password: 'Wrong credentials.',
-      invalid_captcha: 'The text you entered was incorrect. <br /> Please try again.',
+      invalid_captcha: 'Solve the challenge question to verify you are not a robot.',
+      invalid_recaptcha: 'Select the checkbox to verify you are not a robot.',
       'lock.fallback': "We're sorry, something went wrong when attempting to log in.",
       'lock.invalid_code': 'Wrong code.',
       'lock.invalid_email_password': 'Wrong email or password.',

@@ -560,6 +560,13 @@ export function loginErrorMessage(m, error, type) {
     code = 'password_change_required';
   }
 
+  if (code === 'invalid_captcha') {
+    const currentCaptcha = get(m, 'captcha');
+    if (currentCaptcha && currentCaptcha.get('provider') === 'recaptcha_v2') {
+      code = 'invalid_recaptcha';
+    }
+  }
+
   return (
     i18n.html(m, ['error', 'login', code]) || i18n.html(m, ['error', 'login', 'lock.fallback'])
   );
