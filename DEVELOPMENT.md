@@ -28,7 +28,6 @@ To interactively perform tests using Jest's `watch` mode, use:
 ```
 yarn test:jest:watch
 ```
-```
 
 ## The SDK Playground
 
