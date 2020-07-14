@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.25.1](https://github.com/auth0/lock/tree/v11.25.1) (2020-07-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.25.0...v11.25.1)
+
+
+**Fixed**
+- [SDK-1809] Connection display name is used even when no IdP domains are available [\#1898](https://github.com/auth0/lock/pull/1898) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.25.0](https://github.com/auth0/lock/tree/v11.25.0) (2020-07-09)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.24.5...v11.25.0)
 
