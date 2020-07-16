@@ -32,7 +32,9 @@ export default {
         'Sisselogimine ebaõnnestus. Palun proovi uuesti peale kõigi akende sulgemist.',
       'hrd.not_matching_email': 'Palun kasuta oma ettevõtte e-maili sisselogimiseks.',
       too_many_requests:
-        'Vabandame. Praegu on päringuid liiga palju. Laadige leht uuesti ja proovige uuesti. Kui see jätkub, proovige hiljem uuesti.'
+        'Vabandame. Praegu on päringuid liiga palju. Laadige leht uuesti ja proovige uuesti. Kui see jätkub, proovige hiljem uuesti.',
+      invalid_captcha: 'Lahendage väljakutseküsimus ja veenduge, et te pole robot.',
+      invalid_recaptcha: 'Valige märkeruut, et kontrollida, kas te pole robot.'
     },
     passwordless: {
       'bad.email': 'Vigane e-mail',
@@ -46,7 +48,9 @@ export default {
       password_no_user_info_error: 'Parool sisaldab kasutajainfot.',
       password_strength_error: 'Parool on liiga nõrk.',
       user_exists: 'Selline kasutaja on juba olemas.',
-      username_exists: 'Selline kasutajanimi on juba olemas.'
+      username_exists: 'Selline kasutajanimi on juba olemas.',
+      captcha_required: 'Registreerumise lõpetamiseks sisestage allpool näidatud kood.',
+      social_signup_needs_terms_acception: 'Jätkamiseks nõustuge allolevate teenusetingimustega.'
     }
   },
   success: {
@@ -127,5 +131,7 @@ export default {
   mfaLoginInstructions: 'Palun sisesta tuvastuskood mille genereeris su mobiilirakendus',
   mfaSubmitLabel: 'Logi sisse',
   mfaCodeErrorHint: 'Kasuta %d numbrit',
-  signUpTerms: 'Registreerudes nõustute meie teenusetingimustega ja privaatsuspoliitikaga.'
+  signUpTerms: 'Registreerudes nõustute meie teenusetingimustega ja privaatsuspoliitikaga.',
+  captchaCodeInputPlaceholder: 'Sisestage ülal näidatud kood',
+  captchaMathInputPlaceholder: 'Lahendage ülaltoodud valem'
 };

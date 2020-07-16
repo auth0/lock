@@ -32,7 +32,9 @@ export default {
         'Nepavyko užbaigti jūsų autentifikavimo prašymo. Bandykite dar kartą uždarius visus atidarytus dialogo langus.',
       'hrd.not_matching_email': 'Prašome naudoti jūsų įmonės el.pašto adresą prisijungimui.',
       too_many_requests:
-        'Mes atsiprašome. Šiuo metu yra per daug užklausų. Atnaujinkite puslapį ir bandykite dar kartą. Jei tai išlieka, bandykite dar kartą vėliau.'
+        'Mes atsiprašome. Šiuo metu yra per daug užklausų. Atnaujinkite puslapį ir bandykite dar kartą. Jei tai išlieka, bandykite dar kartą vėliau.',
+      invalid_captcha: 'Išspręskite iššūkio klausimą ir įsitikinkite, kad nesate robotas.',
+      invalid_recaptcha: 'Pažymėkite žymimąjį laukelį, kad patikrintumėte, ar nesate robotas.'
     },
     passwordless: {
       'bad.email': 'Neteisingas el.pašto adresas',
@@ -46,7 +48,10 @@ export default {
       password_no_user_info_error: 'Slaptažodis remiantis vartotojų informacija.',
       password_strength_error: 'Šis slaptažodis yra per silpnas.',
       user_exists: 'Vartotojas jau egzistuoja.',
-      username_exists: 'Vartotojo vardas jau egzistuoja.'
+      username_exists: 'Vartotojo vardas jau egzistuoja.',
+      captcha_required: 'Norėdami baigti registraciją, įveskite žemiau pateiktą kodą.',
+      social_signup_needs_terms_acception:
+        'Norėdami tęsti, sutikite su toliau pateiktomis paslaugų teikimo sąlygomis.'
     }
   },
   success: {
@@ -126,5 +131,7 @@ export default {
   mfaSubmitLabel: 'Prisijungti',
   mfaCodeErrorHint: 'Naudoti %d numerius',
   signUpTerms:
-    'Registruodamiesi jūs sutinkate su mūsų paslaugų teikimo sąlygomis ir privatumo politika.'
+    'Registruodamiesi jūs sutinkate su mūsų paslaugų teikimo sąlygomis ir privatumo politika.',
+  captchaCodeInputPlaceholder: 'Įveskite aukščiau parodytą kodą',
+  captchaMathInputPlaceholder: 'Išspręskite aukščiau parodytą formulę'
 };

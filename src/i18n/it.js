@@ -33,7 +33,9 @@ export default {
       'hrd.not_matching_email':
         'Si prega di utilizzare la posta elettronica aziendale per effettuare il login.',
       too_many_requests:
-        'Ci dispiace. Ci sono troppe richieste in questo momento. Si prega di ricaricare la pagina e riprovare. Se persiste, riprova più tardi.'
+        'Ci dispiace. Ci sono troppe richieste in questo momento. Si prega di ricaricare la pagina e riprovare. Se persiste, riprova più tardi.',
+      invalid_captcha: 'Risolvi la domanda di verifica per verificare che non sei un robot.',
+      invalid_recaptcha: 'Seleziona la casella di controllo per verificare che non sei un robot.'
     },
     passwordless: {
       'bad.email': "L'email non è valida",
@@ -49,7 +51,8 @@ export default {
       user_exists: "L'utente esiste già.",
       username_exists: 'Il nome utente esiste già.',
       social_signup_needs_terms_acception:
-        'Si prega di accettare i Termini di servizio di seguito per continuare.'
+        'Si prega di accettare i Termini di servizio di seguito per continuare.',
+      captcha_required: 'Inserisci il codice mostrato di seguito per completare la registrazione.'
     }
   },
   success: {

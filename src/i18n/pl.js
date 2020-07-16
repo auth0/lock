@@ -34,7 +34,9 @@ export default {
         'Nie udało się zrealizować żądania uwierzytelnienia. Spróbuj ponownie po zamknięciu wszystkich otwartych okien dialogowych',
       'hrd.not_matching_email': 'Proszę korzystać z firmowego e-mail aby się zalogować.',
       too_many_requests:
-        'Przykro nam. W tej chwili jest zbyt wiele żądań. Załaduj ponownie stronę i spróbuj ponownie. Jeśli problem będzie się powtarzał, spróbuj ponownie później.'
+        'Przykro nam. W tej chwili jest zbyt wiele żądań. Załaduj ponownie stronę i spróbuj ponownie. Jeśli problem będzie się powtarzał, spróbuj ponownie później.',
+      invalid_captcha: 'Rozwiąż pytanie kontrolne, aby sprawdzić, czy nie jesteś robotem.',
+      invalid_recaptcha: 'Zaznacz pole wyboru, aby potwierdzić, że nie jesteś robotem.'
     },
     passwordless: {
       'bad.email': 'Adres email nie jest poprawny',
@@ -48,7 +50,9 @@ export default {
       password_no_user_info_error: 'Hasło oparte jest na informacjach o użytkowniku.',
       password_strength_error: 'Hasło jest zbyt słabe.',
       user_exists: 'Użytkownik już istnieje.',
-      username_exists: 'Nazwa użytkownika już istnieje.'
+      username_exists: 'Nazwa użytkownika już istnieje.',
+      captcha_required: 'Wpisz poniższy kod, aby zakończyć rejestrację.',
+      social_signup_needs_terms_acception: 'Zaakceptuj poniższe Warunki usługi, aby kontynuować.'
     }
   },
   success: {
@@ -130,5 +134,7 @@ export default {
   mfaCodeErrorHint: 'Użyj %d numery',
   showPassword: 'Pokaż hasło',
   signUpTerms:
-    'Rejestrując się, akceptujesz nasze warunki korzystania z usługi i politykę prywatności.'
+    'Rejestrując się, akceptujesz nasze warunki korzystania z usługi i politykę prywatności.',
+  captchaCodeInputPlaceholder: 'Wpisz kod pokazany powyżej',
+  captchaMathInputPlaceholder: 'Rozwiąż powyższy wzór'
 };

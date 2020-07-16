@@ -37,15 +37,23 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "auth0-lock-recaptchav2",
-      "style": Object {
-        "position": "relative",
-        "transform": "scale(0.86)",
-        "transformOrigin": "0 0",
-      },
+      "children": <div
+        className="auth0-lock-recaptchav2"
+      />,
+      "className": "auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error",
     },
-    "ref": [Function],
-    "rendered": null,
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "auth0-lock-recaptchav2",
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": "div",
+    },
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -54,15 +62,23 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "auth0-lock-recaptchav2",
-        "style": Object {
-          "position": "relative",
-          "transform": "scale(0.86)",
-          "transformOrigin": "0 0",
-        },
+        "children": <div
+          className="auth0-lock-recaptchav2"
+        />,
+        "className": "auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error",
       },
-      "ref": [Function],
-      "rendered": null,
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "auth0-lock-recaptchav2",
+        },
+        "ref": [Function],
+        "rendered": null,
+        "type": "div",
+      },
       "type": "div",
     },
   ],

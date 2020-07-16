@@ -35,7 +35,9 @@ export default {
       'hrd.not_matching_email':
         'Si us plau, utilitzeu el correu electrònic corporatiu per iniciar sessió.',
       too_many_requests:
-        'Ho sentim. Ara hi ha massa sol·licituds ara mateix. Torneu a carregar la pàgina i torneu-ho a provar. Si això persisteix, torneu-ho a provar més tard.'
+        'Ho sentim. Ara hi ha massa sol·licituds ara mateix. Torneu a carregar la pàgina i torneu-ho a provar. Si això persisteix, torneu-ho a provar més tard.',
+      invalid_captcha: 'Resoleu la pregunta de desafiament per verificar que no sou un robot.',
+      invalid_recaptcha: 'Seleccioneu la casella de verificació per verificar que no sou un robot.'
     },
     passwordless: {
       'bad.email': "L'adreça de correu no és vàlida",
@@ -49,7 +51,10 @@ export default {
       password_no_user_info_error: "La contrasenya es basa en les dades de l'usuari.",
       password_strength_error: 'La contrasenya és massa feble.',
       user_exists: 'Ja existeix aquest usuari.',
-      username_exists: "Ja existeix aquest nom d'usuari."
+      username_exists: "Ja existeix aquest nom d'usuari.",
+      captcha_required:
+        'Introduïu el codi que es mostra a continuació per finalitzar la inscripció.',
+      social_signup_needs_terms_acception: 'Per continuar, accepteu les Condicions del servei.'
     }
   },
   success: {
@@ -131,5 +136,7 @@ export default {
   mfaCodeErrorHint: 'Utilitzeu %d xifres',
   showPassword: 'Ensenya la contrasenya',
   signUpTerms:
-    "En inscriure's, accepteu les nostres condicions de servei i la nostra política de privadesa."
+    "En inscriure's, accepteu les nostres condicions de servei i la nostra política de privadesa.",
+  captchaCodeInputPlaceholder: 'Introduïu el codi anterior',
+  captchaMathInputPlaceholder: 'Resoleu la fórmula mostrada anteriorment'
 };

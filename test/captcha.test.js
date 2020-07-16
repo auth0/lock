@@ -1,5 +1,6 @@
 import expect from 'expect.js';
 import * as h from './helper/ui';
+import en from '../src/i18n/en';
 
 const lockOpts = {
   allowedConnections: ['db'],
@@ -63,7 +64,8 @@ describe('captcha', function() {
 
       it('should not submit the form if the captcha is not provided', function() {
         h.logInWithEmailAndPassword(this.lock);
-        expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+        expect(h.wasLoginAttemptedWith({})).to.not.be.ok()
+        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
       });
     });
 
@@ -124,6 +126,7 @@ describe('captcha', function() {
       it('should not submit the form if the captcha is not provided', function() {
         h.logInWithEmailAndPassword(this.lock);
         expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
       });
     });
 

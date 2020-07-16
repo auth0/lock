@@ -28,9 +28,13 @@ export function logIn(id, needsMFA = false) {
 
   const fields = [usernameField, 'password'];
 
-  const isCaptchaRequired = l.captcha(m) && l.captcha(m).get('required');
+  const captchaConfig = l.captcha(m);
+  const isCaptchaRequired = captchaConfig && l.captcha(m).get('required');
   if (isCaptchaRequired) {
     const captcha = c.getFieldValue(m, 'captcha');
+    if (!captcha) {
+      return showMissingCaptcha(captchaConfig, m, id);
+    }
     params['captcha'] = captcha;
     fields.push('captcha');
   }
@@ -53,6 +57,17 @@ export function logIn(id, needsMFA = false) {
 
     next();
   });
+}
+
+function showMissingCaptcha(captchaConfig, m, id) {
+  const captchaError =
+    captchaConfig.get('provider') === 'recaptcha_v2' ? 'invalid_recaptcha' : 'invalid_captcha';
+  const errorMessage = i18n.html(m, ['error', 'login', captchaError]);
+  swap(updateEntity, 'lock', id, m => {
+    m = l.setSubmitting(m, false, errorMessage);
+    return c.showInvalidField(m, 'captcha');
+  });
+  return m;
 }
 
 export function signUp(id) {
@@ -161,11 +176,18 @@ export function signUpError(id, error) {
   const errorKey =
     (error.code === 'invalid_password' && invalidPasswordKeys[error.name]) || error.code;
 
-  const errorMessage =
+  let errorMessage =
     i18n.html(m, ['error', 'signUp', errorKey]) ||
     i18n.html(m, ['error', 'signUp', 'lock.fallback']);
 
   l.emitEvent(m, 'signup error', error);
+
+  if (errorKey === 'invalid_captcha') {
+    errorMessage = i18n.html(m, ['error', 'login', errorKey]);
+    return swapCaptcha(id, true, () => {
+      swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+    });
+  }
 
   swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
 }

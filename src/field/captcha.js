@@ -1,8 +1,6 @@
 import { setField, setFieldShowInvalid, getFieldValue } from './index';
 
-const onResetCallbacks = [];
-
-export function validate(captcha) {
+function validate(captcha) {
   return !!captcha;
 }
 

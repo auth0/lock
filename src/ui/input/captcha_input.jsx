@@ -54,7 +54,7 @@ export default class CaptchaInput extends React.Component {
         </div>
         <InputWrap
           focused={focused}
-          invalidHint={invalidHint}
+          invalidHint=""
           isValid={isValid}
           name="captcha"
           icon={inputIconSVG}

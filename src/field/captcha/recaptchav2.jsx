@@ -73,12 +73,18 @@ export class ReCAPTCHA extends React.Component {
   }
 
   render() {
+    // style={{ border: !this.props.isValid ? '1px solid #dd4b39' : ''}}
     return (
-      <div
-        style={{ transform: 'scale(0.86)', transformOrigin: '0 0', position: 'relative' }}
-        className="auth0-lock-recaptchav2"
-        ref={this.ref}
-      />
+      <div className={
+          this.props.isValid ?
+            "auth0-lock-recaptcha-block" :
+            "auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error"
+            }>
+        <div
+          className="auth0-lock-recaptchav2"
+          ref={this.ref}
+        />
+      </div>
     );
   }
 
@@ -105,7 +111,8 @@ ReCAPTCHA.propTypes = {
   onExpired: propTypes.func,
   onErrored: propTypes.func,
   hl: propTypes.string,
-  value: propTypes.string
+  value: propTypes.string,
+  isValid: propTypes.bool
 };
 
 ReCAPTCHA.defaultProps = {

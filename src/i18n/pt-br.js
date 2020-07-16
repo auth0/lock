@@ -30,7 +30,9 @@ export default {
         'Não foi possível concluir o seu pedido de autenticação. Por favor tente novamente depois de fechar todos os diálogos abertos',
       'hrd.not_matching_email': 'Por favor, use seu email corporativo para acessar.',
       too_many_requests:
-        'Sentimos muito, mas existem muitos acessos agora. Por favor, recarregue a página e tente novamente. Se isso persistir, tente novamente mais tarde.'
+        'Sentimos muito, mas existem muitos acessos agora. Por favor, recarregue a página e tente novamente. Se isso persistir, tente novamente mais tarde.',
+      invalid_captcha: 'Resolva a questão do desafio para verificar se você não é um robô.',
+      invalid_recaptcha: 'Marque a caixa de seleção para verificar se você não é um robô.'
     },
     passwordless: {
       'bad.email': 'O email é inválido',
@@ -44,7 +46,10 @@ export default {
       password_no_user_info_error: 'A senha é baseado em informações do usuário.',
       password_strength_error: 'A senha é muito fraca.',
       user_exists: 'O usuário já existe.',
-      username_exists: 'O nome de usuário já existe.'
+      username_exists: 'O nome de usuário já existe.',
+      captcha_required: 'Digite o código mostrado abaixo para concluir a inscrição.',
+      social_signup_needs_terms_acception:
+        'Concorde com os Termos de Serviço abaixo para continuar.'
     }
   },
   success: {
@@ -125,5 +130,7 @@ export default {
   mfaCodeErrorHint: 'Use números %d',
   showPassword: 'Mostrar senha',
   signUpTerms:
-    'Ao se inscrever, você concorda com nossos termos de serviço e política de privacidade.'
+    'Ao se inscrever, você concorda com nossos termos de serviço e política de privacidade.',
+  captchaCodeInputPlaceholder: 'Digite o código mostrado acima',
+  captchaMathInputPlaceholder: 'Resolva a fórmula mostrada acima'
 };
