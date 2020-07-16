@@ -37,7 +37,9 @@ export default {
       'hrd.not_matching_email':
         "Veuillez utiliser votre messagerie d'entreprise pour vous connecter.",
       too_many_requests:
-        'Nous sommes désolés. Il y a trop de demandes en ce moment. Veuillez recharger la page et réessayer. Si cela persiste, veuillez réessayer ultérieurement.'
+        'Nous sommes désolés. Il y a trop de demandes en ce moment. Veuillez recharger la page et réessayer. Si cela persiste, veuillez réessayer ultérieurement.',
+      invalid_captcha: "Résolvez la question du défi pour vérifier que vous n'êtes pas un robot.",
+      invalid_recaptcha: "Cochez la case pour vérifier que vous n'êtes pas un robot."
     },
     passwordless: {
       'bad.email': 'L’adresse de messagerie n’est pas valide',
@@ -52,7 +54,10 @@ export default {
       password_no_user_info_error: 'Le mot de passe est basé sur des informations utilisateur.',
       password_strength_error: 'La force du mot de passe est trop faible.',
       user_exists: 'Cet utilisateur existe déjà.',
-      username_exists: 'Ce nom d’utilisateur existe déjà.'
+      username_exists: 'Ce nom d’utilisateur existe déjà.',
+      captcha_required: 'Saisissez le code ci-dessous pour terminer votre inscription.',
+      social_signup_needs_terms_acception:
+        "Veuillez accepter les conditions d'utilisation ci-dessous pour continuer."
     }
   },
   success: {
@@ -139,5 +144,7 @@ export default {
   mfaCodeErrorHint: 'Utilisez des numéros %d',
   showPassword: 'Montrer le mot de passe',
   signUpTerms:
-    "En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité."
+    "En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.",
+  captchaCodeInputPlaceholder: 'Entrez le code ci-dessus',
+  captchaMathInputPlaceholder: 'Résolvez la formule ci-dessus'
 };

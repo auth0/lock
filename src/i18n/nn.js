@@ -36,7 +36,9 @@ export default {
       'lock.mfa_registration_required':
         'Multifaktorautentisering krevast, men enheten din er ikkje påmeldt. Ver venleg og meld deg inn før du går vidare.',
       too_many_requests:
-        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.'
+        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.',
+      invalid_captcha: 'Løs utfordringsspørsmålet for å bekrefte at du ikke er en robot.',
+      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.'
     },
     passwordless: {
       'bad.email': 'Ugyldig e-postadresse',
@@ -51,7 +53,8 @@ export default {
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukaren eksisterer allereie.',
       username_exists: 'Dette brukernamnet eksisterer allereie.',
-      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.'
+      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.',
+      captcha_required: 'Skriv inn koden nedenfor for å avslutte registreringen.'
     }
   },
   success: {

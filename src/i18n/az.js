@@ -6,8 +6,7 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Şifrəni dəyişdirməyə cəhdlərin sayında maksimal həddə çatmısınız. Xahiş edirik bir daha cəhd etmədən əvvəl gözləyin.',
-      'lock.fallback':
-        'Bağışlayın, şifrənizi dəyişdirmə sorğusu işlənərkən xəta baş verdi.',
+      'lock.fallback': 'Bağışlayın, şifrənizi dəyişdirmə sorğusu işlənərkən xəta baş verdi.',
       enterprise_email:
         'E-poçtunuzun sahəsi korporativ kimlik təminatçısının bir hissəsidir. Şifrənizi yenidən qurmaq üçün təhlükəsizlik administratorunuzla əlaqə saxlayın.'
     },
@@ -16,14 +15,15 @@ export default {
       invalid_user_password: 'Məlumatlar yalnışdır.',
       'lock.fallback': 'Üzr istəyirik, giriş zamanı səhv oldu.',
       'lock.invalid_code': 'Yalnış kod.',
-        'lock.invalid_email_password': 'Yalnış e-poçt və ya şifrə.',
+      'lock.invalid_email_password': 'Yalnış e-poçt və ya şifrə.',
       'lock.invalid_username_password': 'Yanlış istifadəçi adı və ya şifrə.',
-      'lock.network': 'Server ilə əlaqə qura bilmədik. Lütfən bağlantınızı yoxlayın və yenidən cəhd edin.',
+      'lock.network':
+        'Server ilə əlaqə qura bilmədik. Lütfən bağlantınızı yoxlayın və yenidən cəhd edin.',
       'lock.popup_closed': 'Pop-up pəncərə bağlandı. Yenidən cəhd edin.',
       'lock.unauthorized': 'Səlahiyyətlər əldə edilə bilmədi. Təkrar cəhd edin.',
       'lock.mfa_registration_required':
         'Çox faktorlu identifikasiya tələb olunur, lakin cihazınız qeydiyyatdan keçməyib. Lütfən, davam etməzdən əvvəl cihazınızı qeydiyyata alın.',
-        'lock.mfa_invalid_code': 'Yalnış kod. Xahiş edirik yenidən cəhd edin.',
+      'lock.mfa_invalid_code': 'Yalnış kod. Xahiş edirik yenidən cəhd edin.',
       password_change_required:
         'Şifrənizi ilk dəfə daxil etdiyiniz və ya şifrənizin müddəti bitdiyinə görə yeniləməlisiniz.',
       password_leaked:
@@ -34,7 +34,8 @@ export default {
       'hrd.not_matching_email': ', Giriş üçün korporativ e-poçtdan istifadə edin.',
       too_many_requests:
         'Üzr istəyirik. Hazırda çox sayda müraciət var. Zəhmət olmasa səhifəni yenidən yükləyin və yenidən cəhd edin. Bu davam edərsə, daha sonra yenidən cəhd edin.',
-      invalid_captcha: 'Daxil etdiyiniz mətn səhv idi. <br /> Lütfən, yenidən cəhd edin.'
+      invalid_captcha: 'Daxil etdiyiniz mətn səhv idi. <br /> Lütfən, yenidən cəhd edin.',
+      invalid_recaptcha: 'Robot olmadığınızı təsdiqləmək üçün onay qutusunu seçin.'
     },
     passwordless: {
       'bad.email': 'E-poçt düzgün deyil',
@@ -50,7 +51,8 @@ export default {
       user_exists: 'Bu istifadəçi artıq mövcuddur.',
       username_exists: 'Bu istifadəçi adı istifadə olunur.',
       captcha_required: 'Qeydiyyatı başa çatdırmaq üçün aşağıda göstərilən kodu daxil edin.',
-      social_signup_needs_terms_acception: 'Xahiş edirik davam etmək üçün aşağıda göstərilən Xidmət şərtlərinə razılıq verin.'
+      social_signup_needs_terms_acception:
+        'Xahiş edirik davam etmək üçün aşağıda göstərilən Xidmət şərtlərinə razılıq verin.'
     }
   },
   success: {
@@ -67,7 +69,8 @@ export default {
   databaseAlternativeSignUpInstructions: 'və ya',
   emailInputPlaceholder: 'mail@example.com',
   enterpriseLoginIntructions: 'Şirkətinizin məlumatları ilə daxil olun.',
-  enterpriseActiveLoginInstructions: 'Zəhmət olmasa %s ilə şirkətinizin kimlik nömrəsini daxil edin.',
+  enterpriseActiveLoginInstructions:
+    'Zəhmət olmasa %s ilə şirkətinizin kimlik nömrəsini daxil edin.',
   failedLabel: 'Uğursuz!',
   forgotPasswordAction: 'Şifrənizi xatırlamırsınız?',
   forgotPasswordInstructions:

@@ -32,7 +32,9 @@ export default {
         'Det gick inte att slutföra autentiseringsbegäran. Försök igen efter att stänga alla öppna dialoger',
       'hrd.not_matching_email': 'Använd gärna ditt företags e-post för att logga in.',
       too_many_requests:
-        'Vi är ledsna. Det finns för många förfrågningar just nu. Vänligen ladda om sidan och försök igen. Om detta kvarstår, försök igen senare.'
+        'Vi är ledsna. Det finns för många förfrågningar just nu. Vänligen ladda om sidan och försök igen. Om detta kvarstår, försök igen senare.',
+      invalid_captcha: 'Lös utmaningsfrågan för att verifiera att du inte är en robot.',
+      invalid_recaptcha: 'Markera kryssrutan för att verifiera att du inte är en robot.'
     },
     passwordless: {
       'bad.email': 'Din e-postadress är ogiltig.',
@@ -47,7 +49,8 @@ export default {
       password_strength_error: 'Lösenordet är för svagt.',
       user_exists: 'Användaren finns redan.',
       username_exists: 'Användarnamnet finns redan.',
-      social_signup_needs_terms_acception: 'Godkänn användarvillkoren nedan för att fortsätta.'
+      social_signup_needs_terms_acception: 'Godkänn användarvillkoren nedan för att fortsätta.',
+      captcha_required: 'Ange koden som visas nedan för att avsluta registreringen.'
     }
   },
   success: {

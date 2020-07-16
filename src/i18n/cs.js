@@ -33,7 +33,9 @@ export default {
         'Nemohli jsme dokončit váš požadavek na ověření. Zkuste to znovu po zavření všech otevřených dialogových oken.',
       'hrd.not_matching_email': 'Prosím, použijte pro přihlášení firemní e-mail.',
       too_many_requests:
-        'Omlouváme se. Právě teď je příliš mnoho žádostí. Načtěte stránku znovu a zkuste to znovu. Pokud to trvá, zkuste to znovu později.'
+        'Omlouváme se. Právě teď je příliš mnoho žádostí. Načtěte stránku znovu a zkuste to znovu. Pokud to trvá, zkuste to znovu později.',
+      invalid_captcha: 'Vyřešte výzvu a ověřte, že nejste robot.',
+      invalid_recaptcha: 'Zaškrtnutím políčka ověřte, že nejste robot.'
     },
     passwordless: {
       'bad.email': 'Email je neplatný.',
@@ -47,7 +49,10 @@ export default {
       password_no_user_info_error: 'Heslo vychází z uživatelského jména.',
       password_strength_error: 'Heslo je příliš slabé.',
       user_exists: 'Uživatel už existuje.',
-      username_exists: 'Uživatelské jméno už existuje.'
+      username_exists: 'Uživatelské jméno už existuje.',
+      captcha_required: 'Chcete-li dokončit registraci, zadejte níže uvedený kód.',
+      social_signup_needs_terms_acception:
+        'Pokračujte prosím souhlasem s níže uvedenými smluvními podmínkami.'
     }
   },
   success: {
@@ -114,7 +119,8 @@ export default {
   ssoEnabled: 'Single Sign-On aktivován',
   submitLabel: 'Odeslat',
   unrecoverableError: 'Něco se pokazilo.<br />Prosíme spojte se s technickou podporou.',
-  usernameFormatErrorHint: 'Použijte písmena %d-%d, číslice a následující znaky: "_", ".", "+", "-"',
+  usernameFormatErrorHint:
+    'Použijte písmena %d-%d, číslice a následující znaky: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'uživatelské jméno',
   usernameOrEmailInputPlaceholder: 'uživatelské jméno či email',
   title: 'Auth0',
@@ -127,5 +133,7 @@ export default {
   mfaSubmitLabel: 'Přihlásit',
   mfaCodeErrorHint: 'Použijte %d číslic',
   signUpTerms:
-    'Tím, že se zaregistrujete, souhlasíte s našimi smluvními podmínkami a zásadami ochrany osobních údajů.'
+    'Tím, že se zaregistrujete, souhlasíte s našimi smluvními podmínkami a zásadami ochrany osobních údajů.',
+  captchaCodeInputPlaceholder: 'Zadejte výše uvedený kód',
+  captchaMathInputPlaceholder: 'Vyřešte výše uvedený vzorec'
 };

@@ -1,6 +1,3 @@
-// Some of this file has been automatically translated.
-// Feel free to submit a PR if you find a more accurate translation.
-
 export default {
   error: {
     forgotPassword: {
@@ -36,7 +33,11 @@ export default {
       'hrd.not_matching_email':
         'Bitte verwenden Sie Ihre geschäftliche E-Mail-Adresse, um sich anzumelden.',
       too_many_requests:
-        'Es tut uns leid. Im Moment gibt es zu viele Anfragen. Bitte laden Sie die Seite neu und versuchen Sie es erneut. Wenn dies weiterhin der Fall ist, versuchen Sie es später erneut.'
+        'Es tut uns leid. Im Moment gibt es zu viele Anfragen. Bitte laden Sie die Seite neu und versuchen Sie es erneut. Wenn dies weiterhin der Fall ist, versuchen Sie es später erneut.',
+      invalid_captcha:
+        'Lösen Sie die Herausforderungsfrage, um sicherzustellen, dass Sie kein Roboter sind.',
+      invalid_recaptcha:
+        'Aktivieren Sie das Kontrollkästchen, um sicherzustellen, dass Sie kein Roboter sind.'
     },
     passwordless: {
       'bad.email': 'Diese E-Mail-Adresse ist ungültig',
@@ -53,7 +54,8 @@ export default {
       user_exists: 'Der Nutzer existiert bereits.',
       username_exists: 'Der Nutzername wird bereits verwendet.',
       social_signup_needs_terms_acception:
-        'Bitte stimmen Sie den untenstehenden Nutzungsbedingungen zu, um fortzufahren.'
+        'Bitte stimmen Sie den untenstehenden Nutzungsbedingungen zu, um fortzufahren.',
+      captcha_required: 'Geben Sie den unten gezeigten Code ein, um die Anmeldung abzuschließen.'
     }
   },
   success: {

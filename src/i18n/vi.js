@@ -32,7 +32,9 @@ export default {
         'Không thể hoàn tất yêu cầu xác thực của bạn. Vui lòng thử lại sau khi đóng tất cả các hộp thoại mở',
       'hrd.not_matching_email': 'Xin vui lòng, sử dụng email công ty của bạn để đăng nhập.',
       too_many_requests:
-        'Chúng tôi xin lỗi. Có quá nhiều yêu cầu ngay bây giờ. Hãy tải lại trang và thử lại. Nếu điều này vẫn còn, vui lòng thử lại sau.'
+        'Chúng tôi xin lỗi. Có quá nhiều yêu cầu ngay bây giờ. Hãy tải lại trang và thử lại. Nếu điều này vẫn còn, vui lòng thử lại sau.',
+      invalid_captcha: 'Giải quyết câu hỏi thử thách để xác minh bạn không phải là robot.',
+      invalid_recaptcha: 'Chọn hộp kiểm để xác minh bạn không phải là robot.'
     },
     passwordless: {
       'bad.email': 'Email không hợp lệ.',
@@ -46,7 +48,10 @@ export default {
       password_no_user_info_error: 'Mật khẩu giống thông tin cá nhân.',
       password_strength_error: 'Mật khẩu quá yếu.',
       user_exists: 'Tài khoản đã có người sử dụng.',
-      username_exists: 'Tài khoản đã có người sử dụng.'
+      username_exists: 'Tài khoản đã có người sử dụng.',
+      captcha_required: 'Nhập mã hiển thị dưới đây để hoàn tất đăng ký.',
+      social_signup_needs_terms_acception:
+        'Vui lòng đồng ý với Điều khoản dịch vụ bên dưới để tiếp tục.'
     }
   },
   success: {
@@ -128,5 +133,7 @@ export default {
   signUpTitle: 'Đăng ký',
   showPassword: 'Hiển thị mật khẩu',
   signUpTerms:
-    'Bằng cách đăng ký, bạn đồng ý với các điều khoản dịch vụ và chính sách bảo mật của chúng tôi.'
+    'Bằng cách đăng ký, bạn đồng ý với các điều khoản dịch vụ và chính sách bảo mật của chúng tôi.',
+  captchaCodeInputPlaceholder: 'Nhập mã hiển thị ở trên',
+  captchaMathInputPlaceholder: 'Giải các công thức hiển thị ở trên'
 };

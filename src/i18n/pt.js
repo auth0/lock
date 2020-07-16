@@ -1,3 +1,6 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
@@ -32,7 +35,9 @@ export default {
       'hrd.not_matching_email':
         'Utilize o seu endereço de correio eletrónico empresarial para iniciar sessão.',
       too_many_requests:
-        'Nós lamentamos. Existem muitos pedidos agora. Por favor, recarregue a página e tente denovo. Se isso persistir, tente novamente mais tarde.'
+        'Nós lamentamos. Existem muitos pedidos agora. Por favor, recarregue a página e tente denovo. Se isso persistir, tente novamente mais tarde.',
+      invalid_captcha: 'Resolva a questão do desafio para verificar se você não é um robô.',
+      invalid_recaptcha: 'Marque a caixa de seleção para verificar se você não é um robô.'
     },
     passwordless: {
       'bad.email': 'O endereço de correio eletrónico é inválido',
@@ -46,7 +51,10 @@ export default {
       password_no_user_info_error: 'Palavra-passe baseada nos dados do utilizador.',
       password_strength_error: 'Palavra-passe demasiado fraca.',
       user_exists: 'O utilizador já existe.',
-      username_exists: 'O nome de utilizador já existe.'
+      username_exists: 'O nome de utilizador já existe.',
+      captcha_required: 'Digite o código mostrado abaixo para concluir a inscrição.',
+      social_signup_needs_terms_acception:
+        'Concorde com os Termos de Serviço abaixo para continuar.'
     }
   },
   success: {
@@ -129,5 +137,7 @@ export default {
   mfaCodeErrorHint: 'Use %d numbers',
   showPassword: 'Mostrar palavra-passe',
   signUpTerms:
-    'Ao registar-se, está a aceitar os nossos termos de serviço e a nossa política de privacidade.'
+    'Ao registar-se, está a aceitar os nossos termos de serviço e a nossa política de privacidade.',
+  captchaCodeInputPlaceholder: 'Digite o código mostrado acima',
+  captchaMathInputPlaceholder: 'Resolva a fórmula mostrada acima'
 };

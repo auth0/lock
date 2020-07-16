@@ -32,7 +32,9 @@ export default {
         'Kunne ikke fullføre godkjennings forespørsel. Vennligst prøv igjen etter å lukke alle åpne dialogbokser',
       'hrd.not_matching_email': 'Vennligst bruk bedriftens e-post å logge inn.',
       too_many_requests:
-        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.'
+        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.',
+      invalid_captcha: 'Løs utfordringsspørsmålet for å bekrefte at du ikke er en robot.',
+      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.'
     },
     passwordless: {
       'bad.email': 'E-postadressen er ugyldig',
@@ -47,7 +49,8 @@ export default {
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Brukeren finnes fra før.',
       username_exists: 'Brukernavnet finnes fra før.',
-      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.'
+      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.',
+      captcha_required: 'Skriv inn koden nedenfor for å avslutte registreringen.'
     }
   },
   success: {

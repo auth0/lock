@@ -33,7 +33,9 @@ export default {
         'Kunne ikke fuldføre din godkendelsesanmodning. Prøv igen efter at have lukket alle åbne dialoger',
       'hrd.not_matching_email': 'Brug venligst din virksomheds-e-mail for at logge ind.',
       too_many_requests:
-        'Vi er kede af det. Der er for mange anmodninger lige nu. Venligst genindlæs siden og prøv igen. Hvis dette vedvarer, kan du prøve igen senere.'
+        'Vi er kede af det. Der er for mange anmodninger lige nu. Venligst genindlæs siden og prøv igen. Hvis dette vedvarer, kan du prøve igen senere.',
+      invalid_captcha: 'Løs udfordringsspørgsmålet for at kontrollere, at du ikke er en robot.',
+      invalid_recaptcha: 'Marker afkrydsningsfeltet for at kontrollere, at du ikke er en robot.'
     },
     passwordless: {
       'bad.email': 'Denne e-mail er ugyldig',
@@ -49,7 +51,8 @@ export default {
       user_exists: 'Denne bruger eksisterer allerede.',
       username_exists: 'Dette brugernavn eksisterer allerede.',
       social_signup_needs_terms_acception:
-        'Du accepterer servicevilkårene nedenfor for at fortsætte.'
+        'Du accepterer servicevilkårene nedenfor for at fortsætte.',
+      captcha_required: 'Indtast nedenstående kode for at afslutte tilmeldingen.'
     }
   },
   success: {
