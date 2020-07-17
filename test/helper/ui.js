@@ -18,6 +18,8 @@ const { set } = dataFns(['i18n']);
 
 export const stubWebApis = () => {
   stub(webApi, 'logIn').returns(undefined);
+  stub(webApi, 'signUp').returns(undefined);
+
   stub(gravatarProvider, 'displayName', (email, cb) => {
     cb(null, 'someone');
   });
@@ -64,8 +66,16 @@ export const assertAuthorizeRedirection = cb => {
   stub(webApi, 'logIn', cb);
 };
 
+export const assertSignUp = cb => {
+  if (webApi.signUp.restore) {
+    webApi.signUp.restore();
+  }
+  stub(webApi, 'signUp', cb);
+};
+
 export const restoreWebApis = () => {
   webApi.logIn.restore();
+  webApi.signUp.restore();
   webApi.getChallenge.restore();
   gravatarProvider.displayName.restore();
   gravatarProvider.url.restore();
@@ -78,6 +88,14 @@ export const restoreWebApis = () => {
 
 export const wasLoginAttemptedWith = params => {
   const lastCall = webApi.logIn.lastCall;
+  if (!lastCall) return false;
+  const paramsFromLastCall = lastCall.args[1];
+
+  return Map(params).reduce((r, v, k) => r && paramsFromLastCall[k] === v, true);
+};
+
+export const wasSignUpAttemptedWith = params => {
+  const lastCall = webApi.signUp.lastCall;
   if (!lastCall) return false;
   const paramsFromLastCall = lastCall.args[1];
 
@@ -249,6 +267,7 @@ const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
 
 export const fillEmailInput = fillInputFn('email');
 export const fillPasswordInput = fillInputFn('password');
+export const fillComplexPassword = lock => fillInputFn('password')(lock, generateComplexPassword());
 export const fillCaptchaInput = fillInputFn('captcha');
 export const fillUsernameInput = fillInputFn('username');
 export const fillMFACodeInput = fillInputFn('mfa_code');
@@ -305,6 +324,32 @@ export const logInWithEmailAndPassword = lock => {
 export const logInWithEmailPasswordAndCaptcha = lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, 'mypass');
+  fillCaptchaInput(lock, 'captchaValue');
+  submit(lock);
+};
+
+/**
+ * The mocked connection has password policy "fair". So I need an strong password
+ */
+function generateComplexPassword() {
+  var result = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-*/=?>~><';
+  var charactersLength = characters.length;
+  for (var i = 0; i < 50; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+export const signUpWithEmailAndPassword = lock => {
+  fillEmailInput(lock, 'someone@example.com');
+  fillPasswordInput(lock, generateComplexPassword());
+  submit(lock);
+};
+
+export const signUpWithEmailPasswordAndCaptcha = lock => {
+  fillEmailInput(lock, 'someone@example.com');
+  fillPasswordInput(lock, generateComplexPassword());
   fillCaptchaInput(lock, 'captchaValue');
   submit(lock);
 };

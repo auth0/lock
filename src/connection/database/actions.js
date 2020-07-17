@@ -28,15 +28,9 @@ export function logIn(id, needsMFA = false) {
 
   const fields = [usernameField, 'password'];
 
-  const captchaConfig = l.captcha(m);
-  const isCaptchaRequired = captchaConfig && l.captcha(m).get('required');
-  if (isCaptchaRequired) {
-    const captcha = c.getFieldValue(m, 'captcha');
-    if (!captcha) {
-      return showMissingCaptcha(captchaConfig, m, id);
-    }
-    params['captcha'] = captcha;
-    fields.push('captcha');
+  const isCaptchaValid = setCaptchaParams(m, params, fields);
+  if (!isCaptchaValid) {
+    return showMissingCaptcha(m, id);
   }
 
   const mfaCode = c.getFieldValue(m, 'mfa_code');
@@ -59,17 +53,6 @@ export function logIn(id, needsMFA = false) {
   });
 }
 
-function showMissingCaptcha(captchaConfig, m, id) {
-  const captchaError =
-    captchaConfig.get('provider') === 'recaptcha_v2' ? 'invalid_recaptcha' : 'invalid_captcha';
-  const errorMessage = i18n.html(m, ['error', 'login', captchaError]);
-  swap(updateEntity, 'lock', id, m => {
-    m = l.setSubmitting(m, false, errorMessage);
-    return c.showInvalidField(m, 'captcha');
-  });
-  return m;
-}
-
 export function signUp(id) {
   const m = read(getEntity, 'lock', id);
   const fields = ['email', 'password'];
@@ -83,6 +66,11 @@ export function signUp(id) {
       password: c.getFieldValue(m, 'password'),
       autoLogin: shouldAutoLogin(m)
     };
+
+    const isCaptchaValid = setCaptchaParams(m, params, fields);
+    if (!isCaptchaValid) {
+      return showMissingCaptcha(m, id);
+    }
 
     if (databaseConnectionRequiresUsername(m)) {
       params.username = c.getFieldValue(m, 'username');
@@ -113,7 +101,10 @@ export function signUp(id) {
         if (!!popupHandler) {
           popupHandler._current_popup.kill();
         }
-        setTimeout(() => signUpError(id, error), 250);
+        const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
+        swapCaptcha(id, wasInvalidCaptcha, () => {
+          setTimeout(() => signUpError(id, error), 250);
+        });
       } else {
         signUpSuccess(id, result, popupHandler, ...args);
       }
@@ -127,12 +118,6 @@ function signUpSuccess(id, result, popupHandler) {
   l.emitEvent(lock, 'signup success', result);
 
   if (shouldAutoLogin(lock)) {
-    const isCaptchaRequired = l.captcha(lock) && l.captcha(lock).get('required');
-
-    if (isCaptchaRequired) {
-      return successCaptchaRequired(id);
-    }
-
     swap(updateEntity, 'lock', id, m => m.set('signedUp', true));
 
     // TODO: check options, redirect is missing
@@ -200,20 +185,6 @@ function autoLogInError(id, error) {
     } else {
       return l.setSubmitting(m, false, errorMessage);
     }
-  });
-}
-
-function successCaptchaRequired(id) {
-  swap(updateEntity, 'lock', id, m => {
-    if (!hasScreen(m, 'login')) {
-      return l.setSubmitting(m, false);
-    }
-    // _ prevents cleaning the fields
-    m = l.setSubmitting(setScreen(m, 'login', ['_']), false);
-
-    const message = i18n.str(m, ['error', 'signUp', 'captcha_required']);
-
-    return l.setGlobalSuccess(m, message);
   });
 }
 
@@ -312,4 +283,48 @@ export function swapCaptcha(id, wasInvalid, next) {
       next();
     }
   });
+}
+
+/**
+ * Display the error message of missing captcha in the header of lock.
+ *
+ * @param {Object} m model
+ * @param {Number} id
+ */
+function showMissingCaptcha(m, id) {
+  const captchaConfig = l.captcha(m);
+  const captchaError =
+    captchaConfig.get('provider') === 'recaptcha_v2' ? 'invalid_recaptcha' : 'invalid_captcha';
+  const errorMessage = i18n.html(m, ['error', 'login', captchaError]);
+  swap(updateEntity, 'lock', id, m => {
+    m = l.setSubmitting(m, false, errorMessage);
+    return c.showInvalidField(m, 'captcha');
+  });
+  return m;
+}
+
+/**
+ * Set the captcha value in the fields object before sending the request.
+ *
+ * @param {Object} m model
+ * @param {Object} params
+ * @param {Object} fields
+ *
+ * @returns {Boolean} returns true if is required and missing the response from the user
+ */
+function setCaptchaParams(m, params, fields) {
+  const captchaConfig = l.captcha(m);
+  const isCaptchaRequired = captchaConfig && l.captcha(m).get('required');
+  if (!isCaptchaRequired) {
+    return true;
+  }
+  const captcha = c.getFieldValue(m, 'captcha');
+  //captcha required and missing
+  if (!captcha) {
+    return false;
+  }
+
+  params['captcha'] = captcha;
+  fields.push('captcha');
+  return true;
 }
