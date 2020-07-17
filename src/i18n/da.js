@@ -51,8 +51,7 @@ export default {
       user_exists: 'Denne bruger eksisterer allerede.',
       username_exists: 'Dette brugernavn eksisterer allerede.',
       social_signup_needs_terms_acception:
-        'Du accepterer servicevilkårene nedenfor for at fortsætte.',
-      captcha_required: 'Indtast nedenstående kode for at afslutte tilmeldingen.'
+        'Du accepterer servicevilkårene nedenfor for at fortsætte.'
     }
   },
   success: {

@@ -54,8 +54,7 @@ export default {
       user_exists: 'Der Nutzer existiert bereits.',
       username_exists: 'Der Nutzername wird bereits verwendet.',
       social_signup_needs_terms_acception:
-        'Bitte stimmen Sie den untenstehenden Nutzungsbedingungen zu, um fortzufahren.',
-      captcha_required: 'Geben Sie den unten gezeigten Code ein, um die Anmeldung abzuschließen.'
+        'Bitte stimmen Sie den untenstehenden Nutzungsbedingungen zu, um fortzufahren.'
     }
   },
   success: {

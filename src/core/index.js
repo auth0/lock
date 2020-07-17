@@ -418,6 +418,9 @@ export function setCaptcha(m, value, wasInvalid) {
 }
 
 export function captcha(m) {
+  //some tests send an string as model.
+  // https://github.com/auth0/lock/blob/82f56187698528699478bd429858cf91e387763c/src/__tests__/engine/classic/sign_up_pane.test.jsx#L28
+  if (typeof m !== 'object') { return; }
   return get(m, 'captcha');
 }
 

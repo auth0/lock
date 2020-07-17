@@ -45,7 +45,6 @@ export default {
       password_strength_error: 'Wagwoord is swak.',
       user_exists: 'Gebruiker bestaan reeds.',
       username_exists: 'Gebruikersnaam bestaan reeds.',
-      captcha_required: 'Voer die kode hieronder in om aan te sluit.',
       social_signup_needs_terms_acception:
         'Gee toestemming tot die onderstaande diensbepalings om voort te gaan.'
     }

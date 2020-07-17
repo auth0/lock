@@ -41,8 +41,6 @@ export default {
     },
     signUp: {
       invalid_password: 'La contraseña es inválida.',
-      captcha_required:
-        'Ingrese el código que se muestra a continuación para finalizar el registro.',
       'lock.fallback': 'Ocurrió un error durante el registro.',
       password_dictionary_error: 'La constraseña es muy común.',
       password_no_user_info_error: 'La constraseña es similar a los datos del usuario.',

@@ -51,7 +51,6 @@ export default {
       password_strength_error: 'Ненадійний пароль.',
       user_exists: 'Такий користувач уже існує.',
       username_exists: 'Таке ім’я користувача уже існує.',
-      captcha_required: 'Введіть наведений нижче код, щоб закінчити реєстрацію.',
       social_signup_needs_terms_acception:
         'Прийміть наведені нижче Умови надання послуг, щоб продовжити.'
     }

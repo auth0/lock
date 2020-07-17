@@ -55,7 +55,6 @@ export default {
       password_strength_error: 'Пароль слишком слабый.',
       user_exists: 'Пользователь уже существует.',
       username_exists: 'Имя пользователя уже существует.',
-      captcha_required: 'Введите код, указанный ниже, чтобы завершить регистрацию.',
       social_signup_needs_terms_acception:
         'Пожалуйста, согласитесь с Условиями обслуживания ниже, чтобы продолжить.'
     }

@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'Šis slaptažodis yra per silpnas.',
       user_exists: 'Vartotojas jau egzistuoja.',
       username_exists: 'Vartotojo vardas jau egzistuoja.',
-      captcha_required: 'Norėdami baigti registraciją, įveskite žemiau pateiktą kodą.',
       social_signup_needs_terms_acception:
         'Norėdami tęsti, sutikite su toliau pateiktomis paslaugų teikimo sąlygomis.'
     }

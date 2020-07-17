@@ -50,7 +50,6 @@ export default {
       password_strength_error: 'Şifrə çox sadədir.',
       user_exists: 'Bu istifadəçi artıq mövcuddur.',
       username_exists: 'Bu istifadəçi adı istifadə olunur.',
-      captcha_required: 'Qeydiyyatı başa çatdırmaq üçün aşağıda göstərilən kodu daxil edin.',
       social_signup_needs_terms_acception:
         'Xahiş edirik davam etmək üçün aşağıda göstərilən Xidmət şərtlərinə razılıq verin.'
     }

@@ -147,6 +147,7 @@ describe('mfa ro', function() {
         error.error = 'a0.mfa_registration_required';
 
         webApi.logIn.yields(error);
+        webApi.signUp.restore();
         stub(webApi, 'signUp').yields();
 
         this.lock = h.displayLock('single database', opts, done);

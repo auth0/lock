@@ -75,7 +75,9 @@ export const assertSignUp = cb => {
 
 export const restoreWebApis = () => {
   webApi.logIn.restore();
-  webApi.signUp.restore();
+  if (webApi.signUp.restore) {
+    webApi.signUp.restore();
+  }
   webApi.getChallenge.restore();
   gravatarProvider.displayName.restore();
   gravatarProvider.url.restore();

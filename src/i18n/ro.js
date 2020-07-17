@@ -51,7 +51,6 @@ export default {
       password_strength_error: 'Parola este prea ușoară.',
       user_exists: 'Utilizator existent.',
       username_exists: 'Nume utilizator existent.',
-      captcha_required: 'Introduceți codul prezentat mai jos pentru a finaliza înregistrarea.',
       social_signup_needs_terms_acception:
         'Vă rugăm să acceptați Termenii și condițiile de mai jos pentru a continua.'
     }

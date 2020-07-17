@@ -50,7 +50,6 @@ export default {
       password_strength_error: 'Şifre çok zayıf.',
       user_exists: 'Bu kullanıcı zaten var.',
       username_exists: 'Bu kullanıcı adı kullanımda.',
-      captcha_required: 'Kayıt işlemini tamamlamak için aşağıda gösterilen kodu girin.',
       social_signup_needs_terms_acception:
         "Devam etmek için lütfen aşağıdaki Hizmet Şartları'nı kabul edin."
     }

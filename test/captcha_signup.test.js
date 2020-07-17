@@ -26,7 +26,7 @@ const recaptchav2Response = {
   siteKey: 'my_site_key'
 };
 
-describe.only('captcha on signup', function() {
+describe('captcha on signup', function() {
   before(h.stubWebApis);
   after(h.restoreWebApis);
 

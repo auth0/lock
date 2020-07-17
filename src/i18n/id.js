@@ -51,8 +51,6 @@ export default {
       password_strength_error: 'Kata sandi terlalu lemah.',
       user_exists: 'Pengguna sudah ada.',
       username_exists: 'Nama pengguna sudah ada.',
-      captcha_required:
-        'Masukkan kode yang ditunjukkan di bawah ini untuk menyelesaikan pendaftaran.',
       social_signup_needs_terms_acception:
         'Harap setujui Persyaratan Layanan di bawah ini untuk melanjutkan.'
     }

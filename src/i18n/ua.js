@@ -53,7 +53,6 @@ export default {
       password_strength_error: 'Пароль занадто слабкий.',
       user_exists: 'Користувач вже існує.',
       username_exists: "Ім'я користувача вже існує.",
-      captcha_required: 'Введіть наведений нижче код, щоб закінчити реєстрацію.',
       social_signup_needs_terms_acception:
         'Прийміть наведені нижче Умови надання послуг, щоб продовжити.'
     }

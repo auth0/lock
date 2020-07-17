@@ -40,7 +40,6 @@ export default {
     },
     signUp: {
       invalid_password: 'Password is invalid.',
-      captcha_required: 'Enter the code shown below to finish signing up.',
       'lock.fallback': "We're sorry, something went wrong when attempting to sign up.",
       password_dictionary_error: 'Password is too common.',
       password_no_user_info_error: 'Password is based on user information.',

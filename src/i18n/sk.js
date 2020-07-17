@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'Heslo je príliš slabé.',
       user_exists: 'Používateľ už existuje.',
       username_exists: 'Užívateľské meno už existuje.',
-      captcha_required: 'Ak chcete dokončiť registráciu, zadajte kód uvedený nižšie.',
       social_signup_needs_terms_acception:
         'Ak chcete pokračovať, súhlaste so Zmluvnými podmienkami uvedenými nižšie.'
     }

@@ -53,8 +53,7 @@ export default {
       user_exists: 'Gebruiker bestaat al.',
       username_exists: 'Gebruikersnaam bestaat al.',
       social_signup_needs_terms_acception:
-        'Ga akkoord met de onderstaande Servicevoorwaarden om door te gaan.',
-      captcha_required: 'Voer de onderstaande code in om het aanmelden te voltooien.'
+        'Ga akkoord met de onderstaande Servicevoorwaarden om door te gaan.'
     }
   },
   success: {

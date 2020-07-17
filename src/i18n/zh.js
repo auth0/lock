@@ -45,7 +45,6 @@ export default {
       password_strength_error: '密码过于简单。',
       user_exists: '该账号已存在。',
       username_exists: '该用户名已存在。',
-      captcha_required: '输入下面显示的代码以完成注册。',
       social_signup_needs_terms_acception: '请同意下面的服务条款以继续。'
     }
   },

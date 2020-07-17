@@ -52,8 +52,6 @@ export default {
       password_strength_error: 'La contrasenya és massa feble.',
       user_exists: 'Ja existeix aquest usuari.',
       username_exists: "Ja existeix aquest nom d'usuari.",
-      captcha_required:
-        'Introduïu el codi que es mostra a continuació per finalitzar la inscripció.',
       social_signup_needs_terms_acception: 'Per continuar, accepteu les Condicions del servei.'
     }
   },

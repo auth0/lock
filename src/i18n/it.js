@@ -51,8 +51,7 @@ export default {
       user_exists: "L'utente esiste già.",
       username_exists: 'Il nome utente esiste già.',
       social_signup_needs_terms_acception:
-        'Si prega di accettare i Termini di servizio di seguito per continuare.',
-      captcha_required: 'Inserisci il codice mostrato di seguito per completare la registrazione.'
+        'Si prega di accettare i Termini di servizio di seguito per continuare.'
     }
   },
   success: {

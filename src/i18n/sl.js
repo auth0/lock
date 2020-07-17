@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'Geslo je prešibko.',
       user_exists: 'Uporabnik že obstaja.',
       username_exists: 'Uporabniško ime že obstaja.',
-      captcha_required: 'Vnesite kodo, prikazano spodaj, da se dokončate s prijavo.',
       social_signup_needs_terms_acception: 'Za nadaljevanje se strinjajte s pogoji storitve spodaj.'
     }
   },

@@ -52,9 +52,7 @@ export default {
       password_strength_error: 'Salasana on liian heikko.',
       user_exists: 'Käyttäjä on jo olemassa.',
       username_exists: 'Käyttäjätunnus on jo olemassa.',
-      social_signup_needs_terms_acception:
-        'Ole hyvä ja hyväksy alla olevat käyttöehdot jatkaaksesi',
-      captcha_required: 'Kirjoita alla oleva koodi päättääksesi rekisteröinnin.'
+      social_signup_needs_terms_acception: 'Ole hyvä ja hyväksy alla olevat käyttöehdot jatkaaksesi'
     }
   },
   success: {
