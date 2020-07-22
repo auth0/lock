@@ -53,7 +53,6 @@ export default {
       password_strength_error: 'Паролата е много несигурна.',
       user_exists: 'Този профил вече съществува.',
       username_exists: 'Това потребителско име вече съществува.',
-      captcha_required: 'Въведете кода, показан по-долу, за да завършите регистрацията.',
       social_signup_needs_terms_acception:
         'Моля, приемете Общите условия по-долу, за да продължите.'
     }

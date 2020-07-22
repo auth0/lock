@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'Mật khẩu quá yếu.',
       user_exists: 'Tài khoản đã có người sử dụng.',
       username_exists: 'Tài khoản đã có người sử dụng.',
-      captcha_required: 'Nhập mã hiển thị dưới đây để hoàn tất đăng ký.',
       social_signup_needs_terms_acception:
         'Vui lòng đồng ý với Điều khoản dịch vụ bên dưới để tiếp tục.'
     }

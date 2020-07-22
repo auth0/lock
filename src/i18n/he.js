@@ -48,7 +48,6 @@ export default {
       password_strength_error: 'סיסמא חלשה מדי.',
       user_exists: 'משתמש קיים במערכת.',
       username_exists: 'שם המשתמש קיים במערכת.',
-      captcha_required: 'הזן את הקוד המופיע למטה כדי לסיים את ההרשמה.',
       social_signup_needs_terms_acception: 'אנא הסכים לתנאי השירות שלהלן כדי להמשיך.'
     }
   },

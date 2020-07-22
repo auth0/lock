@@ -51,7 +51,6 @@ export default {
       password_strength_error: 'Kata laluan terlalu lemah.',
       user_exists: 'Pengguna ini sudah wujud.',
       username_exists: 'Nama pengguna ini sudah wujud.',
-      captcha_required: 'Masukkan kod yang ditunjukkan di bawah untuk menyelesaikan pendaftaran.',
       social_signup_needs_terms_acception:
         'Harap bersetuju dengan Syarat Perkhidmatan di bawah untuk meneruskan.'
     }

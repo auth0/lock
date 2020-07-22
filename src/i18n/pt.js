@@ -52,7 +52,6 @@ export default {
       password_strength_error: 'Palavra-passe demasiado fraca.',
       user_exists: 'O utilizador já existe.',
       username_exists: 'O nome de utilizador já existe.',
-      captcha_required: 'Digite o código mostrado abaixo para concluir a inscrição.',
       social_signup_needs_terms_acception:
         'Concorde com os Termos de Serviço abaixo para continuar.'
     }

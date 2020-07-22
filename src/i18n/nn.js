@@ -21,8 +21,6 @@ export default {
         'Får ikkje kontakt med tenaren, ver venleg og kontroller di dekning eller nettverkstilkopling, og prøv på nytt.',
       'lock.popup_closed': 'Popup-vindauge lukka. Prøv på nytt.',
       'lock.unauthorized': 'Tilgang ikkje tillete. Prøv på nytt.',
-      'Lock.mfa_registration_required':
-        'Fleirstegsautorisering er påkrevd, men din enhet er godkjent. Fullfør registreringa for å gå videre.',
       'lock.mfa_invalid_code': 'Feil kode! Prøv på nytt.',
       password_change_required:
         'Du må oppdatere ditt passord, fordi dette anten er den fyrste gongen du loggar inn, eller at ditt passord har gått ut.',
@@ -53,8 +51,7 @@ export default {
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukaren eksisterer allereie.',
       username_exists: 'Dette brukernamnet eksisterer allereie.',
-      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.',
-      captcha_required: 'Skriv inn koden nedenfor for å avslutte registreringen.'
+      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.'
     }
   },
   success: {

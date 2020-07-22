@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'Lozinka je previše slaba.',
       user_exists: 'Korisnik već postoji.',
       username_exists: 'Korisničko ime već postoji.',
-      captcha_required: 'Унесите код приказан доле да бисте се завршили са пријавом.',
       social_signup_needs_terms_acception:
         'Прихватите доле наведене Услове услуге да бисте наставили.'
     }

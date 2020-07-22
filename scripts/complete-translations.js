@@ -34,6 +34,7 @@ const processLanguage = async lang => {
     console.log(`translating: ${lang}`);
     const langDictionary = require('../lib/i18n/' + lang).default;
     await processNode(enDictionary, langDictionary, lang);
+    cleanNode(enDictionary, langDictionary);
     const communityAlert = `
   // This file was automatically translated.
   // Feel free to submit a PR if you find a more accurate translation.
@@ -58,6 +59,22 @@ const processNode = async (enNode, langNode, lang) => {
         console.log('translating ', enKey);
         const translation = await translateKey(enNode[enKey], lang);
         langNode[enKey] = translation;
+      }
+    }
+  }
+};
+
+/**
+ *  delete deprecate translations that are not longer present in the english language
+ */
+const cleanNode = (enNode, langNode) => {
+  for (let key of Object.keys(langNode)) {
+    if (typeof langNode[key] === 'object') {
+      cleanNode(enNode[key], langNode[key]);
+    } else {
+      if (typeof enNode[key] === 'undefined') {
+        console.log('removing', key);
+        delete langNode[key];
       }
     }
   }

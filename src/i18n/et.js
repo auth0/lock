@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'Parool on liiga nõrk.',
       user_exists: 'Selline kasutaja on juba olemas.',
       username_exists: 'Selline kasutajanimi on juba olemas.',
-      captcha_required: 'Registreerumise lõpetamiseks sisestage allpool näidatud kood.',
       social_signup_needs_terms_acception: 'Jätkamiseks nõustuge allolevate teenusetingimustega.'
     }
   },

@@ -49,8 +49,7 @@ export default {
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Brukeren finnes fra før.',
       username_exists: 'Brukernavnet finnes fra før.',
-      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.',
-      captcha_required: 'Skriv inn koden nedenfor for å avslutte registreringen.'
+      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.'
     }
   },
   success: {

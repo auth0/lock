@@ -49,7 +49,6 @@ export default {
       password_strength_error: '비밀번호가 너무 약합니다.',
       user_exists: '이미 존재하는 사용자입니다.',
       username_exists: '이미 존재하는 사용자명입니다.',
-      captcha_required: '가입을 마치려면 아래 표시된 코드를 입력하십시오.',
       social_signup_needs_terms_acception: '계속하려면 아래 서비스 약관에 동의하십시오.'
     }
   },

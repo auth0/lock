@@ -52,8 +52,7 @@ export default {
       user_exists: 'すでに登録されているユーザーです。',
       username_exists: 'すでに使用されているユーザー名です。',
       social_signup_needs_terms_acception:
-        'サインアップするには以下の利用規約・プライバシーボリシーに同意してください。',
-      captcha_required: '以下のコードを入力して、サインアップを完了してください。'
+        'サインアップするには以下の利用規約・プライバシーボリシーに同意してください。'
     }
   },
   success: {

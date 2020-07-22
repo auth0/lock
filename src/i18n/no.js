@@ -21,8 +21,6 @@ export default {
         'Får ikke kontakt med serveren, vennligst kontrollèr din dekning eller nettverkstilkobling, og forsøk på nytt.',
       'lock.popup_closed': 'Popup-vindu lukket. Prøv på nytt.',
       'lock.unauthorized': 'Tilgang ikke tillatt. Forsøk på nytt.',
-      'Lock.mfa_registration_required':
-        'Flerstegs-autorisering er påkrevd, men din enhet er godkjent. Fullfør registreringen for å gå videre.',
       'lock.mfa_invalid_code': 'Feil kode! Forsøk på nytt.',
       password_change_required:
         'Du må oppdatere ditt passord, fordi dette enten er den første gangen du logger inn, eller at ditt passord har utløpt.',
@@ -53,8 +51,7 @@ export default {
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukeren eksisterer allerede.',
       username_exists: 'Dette brukernavnet eksisterer allerede.',
-      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.',
-      captcha_required: 'Skriv inn koden nedenfor for å avslutte registreringen.'
+      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.'
     }
   },
   success: {

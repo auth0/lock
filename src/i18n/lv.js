@@ -50,7 +50,6 @@ export default {
       password_strength_error: 'Parrole ir pārāk vienkārša.',
       user_exists: 'Lietotājs jau eksistē.',
       username_exists: 'Lietotājvārds jau eksistē.',
-      captcha_required: 'Ievadiet zemāk redzamo kodu, lai pabeigtu reģistrēšanos.',
       social_signup_needs_terms_acception:
         'Lai turpinātu, lūdzu, piekrītiet tālāk sniegtajiem pakalpojumu sniegšanas noteikumiem.'
     }

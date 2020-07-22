@@ -51,7 +51,6 @@ export default {
       password_strength_error: 'Hasło jest zbyt słabe.',
       user_exists: 'Użytkownik już istnieje.',
       username_exists: 'Nazwa użytkownika już istnieje.',
-      captcha_required: 'Wpisz poniższy kod, aby zakończyć rejestrację.',
       social_signup_needs_terms_acception: 'Zaakceptuj poniższe Warunki usługi, aby kontynuować.'
     }
   },

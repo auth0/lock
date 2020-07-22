@@ -49,8 +49,7 @@ export default {
       password_strength_error: 'Lösenordet är för svagt.',
       user_exists: 'Användaren finns redan.',
       username_exists: 'Användarnamnet finns redan.',
-      social_signup_needs_terms_acception: 'Godkänn användarvillkoren nedan för att fortsätta.',
-      captcha_required: 'Ange koden som visas nedan för att avsluta registreringen.'
+      social_signup_needs_terms_acception: 'Godkänn användarvillkoren nedan för att fortsätta.'
     }
   },
   success: {

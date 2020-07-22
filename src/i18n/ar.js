@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'كلمة المرور ضعيفة جداً.',
       user_exists: 'المستخدم موجود بالفعل.',
       username_exists: 'اسم المستخدم موجود بالفعل.',
-      captcha_required: 'أدخل الرمز الموضح أدناه لإنهاء الاشتراك.',
       social_signup_needs_terms_acception: 'يرجى الموافقة على شروط الخدمة أدناه للمتابعة.'
     }
   },

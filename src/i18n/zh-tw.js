@@ -45,7 +45,6 @@ export default {
       password_strength_error: '密碼太簡單。',
       user_exists: '該使用者已存在。',
       username_exists: '該帳號已存在。',
-      captcha_required: '輸入下面顯示的代碼以完成註冊。',
       social_signup_needs_terms_acception: '請同意下面的服務條款以繼續。'
     }
   },

@@ -55,7 +55,6 @@ export default {
       password_strength_error: 'La force du mot de passe est trop faible.',
       user_exists: 'Cet utilisateur existe déjà.',
       username_exists: 'Ce nom d’utilisateur existe déjà.',
-      captcha_required: 'Saisissez le code ci-dessous pour terminer votre inscription.',
       social_signup_needs_terms_acception:
         "Veuillez accepter les conditions d'utilisation ci-dessous pour continuer."
     }

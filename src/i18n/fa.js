@@ -49,7 +49,6 @@ export default {
       password_strength_error: 'رمز عبور بسیار ضعیف است.',
       user_exists: 'کاربر قبلا ثبت شده است.',
       username_exists: 'نام کاربری قبلا ثبت شده است.',
-      captcha_required: 'برای پایان کار ، کد نشان داده شده در زیر را وارد کنید.',
       social_signup_needs_terms_acception: 'لطفاً برای ادامه با شرایط خدمات زیر موافقت کنید.'
     }
   },
