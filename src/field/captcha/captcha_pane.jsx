@@ -7,7 +7,7 @@ import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
 import * as captchaField from '../captcha';
 import { getFieldValue, isFieldVisiblyInvalid } from '../index';
-import { ReCAPTCHA } from './recaptchav2.jsx';
+import { ReCAPTCHA } from './recaptchav2';
 
 export default class CaptchaPane extends React.Component {
   render() {
