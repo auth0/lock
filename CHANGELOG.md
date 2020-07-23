@@ -1,5 +1,19 @@
 # Change Log
 
+## [v11.26.0](https://github.com/auth0/lock/tree/v11.26.0) (2020-07-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.25.1...v11.26.0)
+
+
+**Added**
+- [CAUTH-423] Add captcha in the sign-up flow [\#1902](https://github.com/auth0/lock/pull/1902) ([jfromaniello](https://github.com/jfromaniello))
+
+**Changed**
+- [CAUTH-511] improve error handling on missing captcha [\#1900](https://github.com/auth0/lock/pull/1900) ([jfromaniello](https://github.com/jfromaniello))
+
+**Fixed**
+- [SDK-1284] Fix for "growing" tabs when repeatedly clicked [\#1904](https://github.com/auth0/lock/pull/1904) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.25.1](https://github.com/auth0/lock/tree/v11.25.1) (2020-07-14)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.25.0...v11.25.1)
 
