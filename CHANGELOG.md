@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.26.1](https://github.com/auth0/lock/tree/v11.26.1) (2020-07-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.26.0...v11.26.1)
+
+
+**Fixed**
+- fix issue #1906 - remove extension from import [\#1907](https://github.com/auth0/lock/pull/1907) ([jfromaniello](https://github.com/jfromaniello))
+
+
 ## [v11.26.0](https://github.com/auth0/lock/tree/v11.26.0) (2020-07-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.25.1...v11.26.0)
 
