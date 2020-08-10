@@ -28,11 +28,9 @@ export function logIn(id, needsMFA = false) {
 
   const fields = [usernameField, 'password'];
 
-  const isCaptchaRequired = l.captcha(m) && l.captcha(m).get('required');
-  if (isCaptchaRequired) {
-    const captcha = c.getFieldValue(m, 'captcha');
-    params['captcha'] = captcha;
-    fields.push('captcha');
+  const isCaptchaValid = setCaptchaParams(m, params, fields);
+  if (!isCaptchaValid) {
+    return showMissingCaptcha(m, id);
   }
 
   const mfaCode = c.getFieldValue(m, 'mfa_code');
@@ -69,6 +67,11 @@ export function signUp(id) {
       autoLogin: shouldAutoLogin(m)
     };
 
+    const isCaptchaValid = setCaptchaParams(m, params, fields);
+    if (!isCaptchaValid) {
+      return showMissingCaptcha(m, id);
+    }
+
     if (databaseConnectionRequiresUsername(m)) {
       params.username = c.getFieldValue(m, 'username');
     }
@@ -98,7 +101,10 @@ export function signUp(id) {
         if (!!popupHandler) {
           popupHandler._current_popup.kill();
         }
-        setTimeout(() => signUpError(id, error), 250);
+        const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
+        swapCaptcha(id, wasInvalidCaptcha, () => {
+          setTimeout(() => signUpError(id, error), 250);
+        });
       } else {
         signUpSuccess(id, result, popupHandler, ...args);
       }
@@ -109,7 +115,7 @@ export function signUp(id) {
 function signUpSuccess(id, result, popupHandler) {
   const lock = read(getEntity, 'lock', id);
 
-  l.emitEvent(lock, 'signup success');
+  l.emitEvent(lock, 'signup success', result);
 
   if (shouldAutoLogin(lock)) {
     swap(updateEntity, 'lock', id, m => m.set('signedUp', true));
@@ -155,11 +161,18 @@ export function signUpError(id, error) {
   const errorKey =
     (error.code === 'invalid_password' && invalidPasswordKeys[error.name]) || error.code;
 
-  const errorMessage =
+  let errorMessage =
     i18n.html(m, ['error', 'signUp', errorKey]) ||
     i18n.html(m, ['error', 'signUp', 'lock.fallback']);
 
   l.emitEvent(m, 'signup error', error);
+
+  if (errorKey === 'invalid_captcha') {
+    errorMessage = i18n.html(m, ['error', 'login', errorKey]);
+    return swapCaptcha(id, true, () => {
+      swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+    });
+  }
 
   swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
 }
@@ -270,4 +283,48 @@ export function swapCaptcha(id, wasInvalid, next) {
       next();
     }
   });
+}
+
+/**
+ * Display the error message of missing captcha in the header of lock.
+ *
+ * @param {Object} m model
+ * @param {Number} id
+ */
+function showMissingCaptcha(m, id) {
+  const captchaConfig = l.captcha(m);
+  const captchaError =
+    captchaConfig.get('provider') === 'recaptcha_v2' ? 'invalid_recaptcha' : 'invalid_captcha';
+  const errorMessage = i18n.html(m, ['error', 'login', captchaError]);
+  swap(updateEntity, 'lock', id, m => {
+    m = l.setSubmitting(m, false, errorMessage);
+    return c.showInvalidField(m, 'captcha');
+  });
+  return m;
+}
+
+/**
+ * Set the captcha value in the fields object before sending the request.
+ *
+ * @param {Object} m model
+ * @param {Object} params
+ * @param {Object} fields
+ *
+ * @returns {Boolean} returns true if is required and missing the response from the user
+ */
+function setCaptchaParams(m, params, fields) {
+  const captchaConfig = l.captcha(m);
+  const isCaptchaRequired = captchaConfig && l.captcha(m).get('required');
+  if (!isCaptchaRequired) {
+    return true;
+  }
+  const captcha = c.getFieldValue(m, 'captcha');
+  //captcha required and missing
+  if (!captcha) {
+    return false;
+  }
+
+  params['captcha'] = captcha;
+  fields.push('captcha');
+  return true;
 }

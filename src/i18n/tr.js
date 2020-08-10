@@ -33,7 +33,9 @@ export default {
         'Kimlik doğrulama isteği tamamlanamadı. Tüm açık diyalogları kapattıktan sonra tekrar deneyiniz',
       'hrd.not_matching_email': ', Giriş için kurumsal e-posta kullanın.',
       too_many_requests:
-        'Üzgünüz. Şu anda çok fazla istek var. Lütfen sayfayı tekrar yükleyin ve tekrar deneyin. Bu devam ederse, lütfen daha sonra tekrar deneyin.'
+        'Üzgünüz. Şu anda çok fazla istek var. Lütfen sayfayı tekrar yükleyin ve tekrar deneyin. Bu devam ederse, lütfen daha sonra tekrar deneyin.',
+      invalid_captcha: 'Robot olmadığınızı doğrulamak için meydan okuma sorusunu çözün.',
+      invalid_recaptcha: 'Robot olmadığınızı doğrulamak için onay kutusunu seçin.'
     },
     passwordless: {
       'bad.email': 'E-posta geçerli değil',
@@ -47,7 +49,9 @@ export default {
       password_no_user_info_error: 'Şifre kullanıcı bilgilerini içeriyor.',
       password_strength_error: 'Şifre çok zayıf.',
       user_exists: 'Bu kullanıcı zaten var.',
-      username_exists: 'Bu kullanıcı adı kullanımda.'
+      username_exists: 'Bu kullanıcı adı kullanımda.',
+      social_signup_needs_terms_acception:
+        "Devam etmek için lütfen aşağıdaki Hizmet Şartları'nı kabul edin."
     }
   },
   success: {
@@ -130,5 +134,7 @@ export default {
   forgotPasswordTitle: 'Parolanızı sıfırlayın',
   signUpTitle: 'Kaydol',
   showPassword: 'Şifreni göster',
-  signUpTerms: 'Kaydolarak, hizmet şartlarımızı ve gizlilik politikamızı kabul etmiş olursunuz.'
+  signUpTerms: 'Kaydolarak, hizmet şartlarımızı ve gizlilik politikamızı kabul etmiş olursunuz.',
+  captchaCodeInputPlaceholder: 'Yukarıda gösterilen kodu girin',
+  captchaMathInputPlaceholder: 'Yukarıda gösterilen formülü çözün'
 };

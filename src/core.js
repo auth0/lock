@@ -62,10 +62,10 @@ export default class Base extends EventEmitter {
     this.engine = engine;
     const hookRunner = ::this.runHook;
     const emitEventFn = this.emit.bind(this);
-
+    const handleEventFn = this.on.bind(this);
     go(this.id);
 
-    let m = setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn);
+    let m = setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn);
     this.on('newListener', type => {
       if (this.validEvents.indexOf(type) === -1) {
         l.emitUnrecoverableErrorEvent(m, `Invalid event "${type}".`);

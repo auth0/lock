@@ -33,7 +33,9 @@ export default {
         'Kunne ikke fuldføre din godkendelsesanmodning. Prøv igen efter at have lukket alle åbne dialoger',
       'hrd.not_matching_email': 'Brug venligst din virksomheds-e-mail for at logge ind.',
       too_many_requests:
-        'Vi er kede af det. Der er for mange anmodninger lige nu. Venligst genindlæs siden og prøv igen. Hvis dette vedvarer, kan du prøve igen senere.'
+        'Vi er kede af det. Der er for mange anmodninger lige nu. Venligst genindlæs siden og prøv igen. Hvis dette vedvarer, kan du prøve igen senere.',
+      invalid_captcha: 'Løs udfordringsspørgsmålet for at kontrollere, at du ikke er en robot.',
+      invalid_recaptcha: 'Marker afkrydsningsfeltet for at kontrollere, at du ikke er en robot.'
     },
     passwordless: {
       'bad.email': 'Denne e-mail er ugyldig',
@@ -47,7 +49,9 @@ export default {
       password_no_user_info_error: 'Adgangskoden indeholder information om din bruger.',
       password_strength_error: 'Adgangskoden er for svag.',
       user_exists: 'Denne bruger eksisterer allerede.',
-      username_exists: 'Dette brugernavn eksisterer allerede.'
+      username_exists: 'Dette brugernavn eksisterer allerede.',
+      social_signup_needs_terms_acception:
+        'Du accepterer servicevilkårene nedenfor for at fortsætte.'
     }
   },
   success: {
@@ -128,5 +132,7 @@ export default {
   mfaSubmitLabel: 'Log på',
   mfaCodeErrorHint: 'Brug %d tal',
   showPassword: 'Vis adgangskode',
-  signUpTerms: 'Ved at tilmelde dig accepterer du vores servicevilkår og privatlivspolitik.'
+  signUpTerms: 'Ved at tilmelde dig accepterer du vores servicevilkår og privatlivspolitik.',
+  captchaCodeInputPlaceholder: 'Indtast koden vist ovenfor',
+  captchaMathInputPlaceholder: 'Løs formlen vist ovenfor'
 };

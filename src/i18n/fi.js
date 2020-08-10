@@ -35,7 +35,9 @@ export default {
         'Kirjautumispyyntöäsi ei voitu suorittaa loppuun. Ole hyvä ja yritä uudelleen suljettuasi kaikki avoimet ikkunat',
       'hrd.not_matching_email': 'Ole hyvä ja käytä yrityssähköpostiasi kirjautumiseen.',
       too_many_requests:
-        'Olemme pahoillamme. Nyt on liian monta pyyntöä. Lataa sivu uudelleen ja yritä uudelleen. Jos tämä jatkuu, yritä myöhemmin uudelleen.'
+        'Olemme pahoillamme. Nyt on liian monta pyyntöä. Lataa sivu uudelleen ja yritä uudelleen. Jos tämä jatkuu, yritä myöhemmin uudelleen.',
+      invalid_captcha: 'Ratkaise haastekysymys varmistaaksesi, että et ole robotti.',
+      invalid_recaptcha: 'Valitse valintaruutu varmistaaksesi, että et ole robotti.'
     },
     passwordless: {
       'bad.email': 'Sähköposti ei kelpaa',
@@ -130,5 +132,7 @@ export default {
   mfaSubmitLabel: 'Kirjaudu',
   mfaCodeErrorHint: 'Käytä %d numeroa',
   showPassword: 'Näytä salasana',
-  signUpTerms: 'Ilmoittautumalla hyväksyt käyttöehdot ja tietosuojakäytännöt.'
+  signUpTerms: 'Ilmoittautumalla hyväksyt käyttöehdot ja tietosuojakäytännöt.',
+  captchaCodeInputPlaceholder: 'Kirjoita yllä oleva koodi',
+  captchaMathInputPlaceholder: 'Ratkaise yllä esitetty kaava'
 };

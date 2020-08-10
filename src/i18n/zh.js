@@ -6,7 +6,8 @@ export default {
     forgotPassword: {
       too_many_requests: '您尝试登录次数过多 请稍后再试。',
       'lock.fallback': '对不起，请求修改密码时出现错误。',
-      enterprise_email: '您的电子邮件域名是企业身份提供者的一部分。要重置您的密码，请联系您的安全管理员。'
+      enterprise_email:
+        '您的电子邮件域名是企业身份提供者的一部分。要重置您的密码，请联系您的安全管理员。'
     },
     login: {
       blocked_user: '该账号已被锁定。',
@@ -21,11 +22,15 @@ export default {
       password_change_required: '由于这是第一次登录或者您的密码已过期，请更新密码。',
       password_leaked: '由于您的密码在其他网站已泄露，该账户已被锁定，请查看邮件解除锁定。',
       too_many_attempts: '由于登录操作太频繁，您的帐号已被锁定。',
-      'lock.mfa_registration_required': '多因素认证是必需的，但没有登记您的设备。在移动之前，请报名参加吧。',
+      'lock.mfa_registration_required':
+        '多因素认证是必需的，但没有登记您的设备。在移动之前，请报名参加吧。',
       'lock.mfa_invalid_code': '错误代码。请再试一次。',
       session_missing: '无法完成身份验证请求。请关闭所有打开的对话框后，再试一次',
       'hrd.not_matching_email': '请使用您的公司电子邮件登录。',
-      too_many_requests: '我们很抱歉。现在请求太多了。请刷新页面，然后再试一次。如果仍然存在，请稍后再试。'
+      too_many_requests:
+        '我们很抱歉。现在请求太多了。请刷新页面，然后再试一次。如果仍然存在，请稍后再试。',
+      invalid_captcha: '解决挑战问题以验证您不是机器人。',
+      invalid_recaptcha: '选中复选框以确认您不是机器人。'
     },
     passwordless: {
       'bad.email': '邮箱错误',
@@ -39,7 +44,8 @@ export default {
       password_no_user_info_error: '密码中出现账号信息。',
       password_strength_error: '密码过于简单。',
       user_exists: '该账号已存在。',
-      username_exists: '该用户名已存在。'
+      username_exists: '该用户名已存在。',
+      social_signup_needs_terms_acception: '请同意下面的服务条款以继续。'
     }
   },
   success: {
@@ -115,5 +121,7 @@ export default {
   mfaCodeErrorHint: '使用 %d 位数字',
   forgotPasswordTitle: '重置您的密码',
   signUpTitle: '注册',
-  showPassword: '显示密码'
+  showPassword: '显示密码',
+  captchaCodeInputPlaceholder: '输入上面显示的代码',
+  captchaMathInputPlaceholder: '解决上面显示的公式'
 };

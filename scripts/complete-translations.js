@@ -1,9 +1,28 @@
+if (!process.env.GOOGLE_TRANSLATE_API_KEY) {
+  console.error(`
+In order to run this script you need to follow this procedure:
+
+1. create a project in google cloud console https://console.cloud.google.com/
+2. Go to APIs & Services -> Credentials, then create an API Key. Copy this API key you will need it later.
+3. Go to APIs & Services -> Library, and then enable Google Translate.
+4. run this command as follows:
+
+$  GOOGLE_TRANSLATE_API_KEY=<api key> npm i18n:translate
+
+note: leave an space on the beginning of the command so the key don't get stored in your history file.
+`);
+
+  process.exit(1);
+}
+
 const fs = require('fs');
 const { promisify } = require('util');
 const readdirAsync = promisify(fs.readdir);
 const writeFileAsync = promisify(fs.writeFile);
-const request = require('superagent');
 const enDictionary = require('../lib/i18n/en').default;
+const { Translate } = require('@google-cloud/translate').v2;
+
+const translator = new Translate({ key: process.env.GOOGLE_TRANSLATE_API_KEY });
 
 const isSupportedByAuth0 = lang => ['en', 'es', 'pt-br', 'it', 'de'].includes(lang);
 const escapeWildCards = str => str.replace(/\%d/gi, '__d__').replace(/\%s/gi, '__s__');
@@ -15,6 +34,7 @@ const processLanguage = async lang => {
     console.log(`translating: ${lang}`);
     const langDictionary = require('../lib/i18n/' + lang).default;
     await processNode(enDictionary, langDictionary, lang);
+    cleanNode(enDictionary, langDictionary);
     const communityAlert = `
   // This file was automatically translated.
   // Feel free to submit a PR if you find a more accurate translation.
@@ -35,7 +55,7 @@ const processNode = async (enNode, langNode, lang) => {
     if (typeof enNode[enKey] === 'object') {
       await processNode(enNode[enKey], langNode[enKey], lang);
     } else {
-      if (!langNode[enKey]) {
+      if (!langNode[enKey] && enNode[enKey]) {
         console.log('translating ', enKey);
         const translation = await translateKey(enNode[enKey], lang);
         langNode[enKey] = translation;
@@ -44,15 +64,32 @@ const processNode = async (enNode, langNode, lang) => {
   }
 };
 
+/**
+ *  delete deprecate translations that are not longer present in the english language
+ */
+const cleanNode = (enNode, langNode) => {
+  for (let key of Object.keys(langNode)) {
+    if (typeof langNode[key] === 'object') {
+      cleanNode(enNode[key], langNode[key]);
+    } else {
+      if (typeof enNode[key] === 'undefined') {
+        console.log('removing', key);
+        delete langNode[key];
+      }
+    }
+  }
+};
+
 const translateKey = async (toTranslate, lang) => {
-  const result = await request
-    .get('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&dt=t')
-    .set('Content-Type', 'application/json')
-    .query({ tl: lang })
-    .query({ q: escapeWildCards(toTranslate) });
-  const phrases = result.body[0].map(p => p[0]);
-  const singlePhrase = phrases.join('');
-  return restoreWildCards(singlePhrase);
+  if (lang == 'ua') {
+    //Note: "ua" is not a valid language code, the actual lang code is uk-ua
+    //which is Ukraine Ukrainian. Google Translate fails with ua and with uk-ua
+    //so we default here to Ukrainian.
+    lang = 'uk';
+  }
+  const input = escapeWildCards(toTranslate);
+  const [translation] = await translator.translate(input, lang);
+  return restoreWildCards(translation);
 };
 
 const run = async () => {

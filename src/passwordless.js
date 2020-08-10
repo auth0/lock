@@ -1,10 +1,15 @@
-import Core, { injectStyles, css } from './core';
+import Core, { injectStyles, setWindowHeightStyle } from './core';
 import passwordless from './engine/passwordless';
 
 export default class Auth0LockPasswordless extends Core {
   constructor(clientID, domain, options) {
     super(clientID, domain, options, passwordless);
     injectStyles();
+    setWindowHeightStyle();
+
+    window.addEventListener('resize', () => {
+      setWindowHeightStyle();
+    });
   }
 }
 

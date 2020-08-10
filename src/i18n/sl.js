@@ -32,7 +32,9 @@ export default {
         'Zahteve za avtentikacijo ni bilo možno izpolniti. Zaprite vsa pogovorna okna in poskusite ponovno.',
       'hrd.not_matching_email': 'Za prijavo uporabite svoj službeni e-poštni naslov.',
       too_many_requests:
-        'Žal nam je. Trenutno je preveč zahtev. Ponovno naložite stran in poskusite znova. Če se to ponavlja, poskusite znova pozneje.'
+        'Žal nam je. Trenutno je preveč zahtev. Ponovno naložite stran in poskusite znova. Če se to ponavlja, poskusite znova pozneje.',
+      invalid_captcha: 'Rešite izzivno vprašanje in preverite, ali niste robot.',
+      invalid_recaptcha: 'Izberite potrditveno polje, da preverite, da niste robot.'
     },
     passwordless: {
       'bad.email': 'Napačen e-poštni naslov',
@@ -46,7 +48,8 @@ export default {
       password_no_user_info_error: 'Geslo temelji na informacijah o uporabniku.',
       password_strength_error: 'Geslo je prešibko.',
       user_exists: 'Uporabnik že obstaja.',
-      username_exists: 'Uporabniško ime že obstaja.'
+      username_exists: 'Uporabniško ime že obstaja.',
+      social_signup_needs_terms_acception: 'Za nadaljevanje se strinjajte s pogoji storitve spodaj.'
     }
   },
   success: {
@@ -128,5 +131,7 @@ export default {
   mfaLoginInstructions: 'Vnesite kodo za preverjanje, ki jo je sestavila vaša mobilna aplikacija.',
   mfaSubmitLabel: 'Prijava',
   mfaCodeErrorHint: 'Uporabite številke %d',
-  signUpTerms: 'S prijavo se strinjate z našimi pogoji uporabe in pravilnikom o zasebnosti.'
+  signUpTerms: 'S prijavo se strinjate z našimi pogoji uporabe in pravilnikom o zasebnosti.',
+  captchaCodeInputPlaceholder: 'Vnesite kodo, prikazano zgoraj',
+  captchaMathInputPlaceholder: 'Rešite zgoraj prikazano formulo'
 };

@@ -12,7 +12,7 @@ import * as captchaField from '../field/captcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
-export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
+export function setup(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn) {
   let m = init(
     id,
     Immutable.fromJS({
@@ -31,7 +31,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       defaultADUsernameFromEmailPrefix:
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
       prefill: options.prefill || {},
-      connectionResolver: options.connectionResolver
+      connectionResolver: options.connectionResolver,
+      handleEventFn: handleEventFn
     })
   );
 
@@ -199,6 +200,7 @@ function extractUIOptions(id, options) {
     primaryColor: typeof primaryColor === 'string' ? primaryColor : undefined,
     rememberLastLogin: undefined === options.rememberLastLogin ? true : !!options.rememberLastLogin,
     allowAutocomplete: !!options.allowAutocomplete,
+    preferConnectionDisplayName: !!options.preferConnectionDisplayName,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
     allowShowPassword: !!options.allowShowPassword,
     allowPasswordAutocomplete: !!options.allowPasswordAutocomplete,
@@ -235,6 +237,7 @@ export const ui = {
   popupOptions: lock => getUIAttribute(lock, 'popupOptions'),
   primaryColor: lock => getUIAttribute(lock, 'primaryColor'),
   authButtonsTheme: lock => getUIAttribute(lock, 'authButtonsTheme'),
+  preferConnectionDisplayName: lock => getUIAttribute(lock, 'preferConnectionDisplayName'),
   rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin')),
   allowAutocomplete: m => tget(m, 'allowAutocomplete', getUIAttribute(m, 'allowAutocomplete')),
   scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
@@ -415,6 +418,9 @@ export function setCaptcha(m, value, wasInvalid) {
 }
 
 export function captcha(m) {
+  //some tests send an string as model.
+  // https://github.com/auth0/lock/blob/82f56187698528699478bd429858cf91e387763c/src/__tests__/engine/classic/sign_up_pane.test.jsx#L28
+  if (typeof m !== 'object') { return; }
   return get(m, 'captcha');
 }
 
@@ -514,6 +520,11 @@ export function emitEvent(m, str, ...args) {
   }, 0);
 }
 
+export function handleEvent(m, str, ...args) {
+  const handleEventFn = get(m, 'handleEventFn');
+  handleEventFn(str, ...args);
+}
+
 export function loginErrorMessage(m, error, type) {
   // NOTE: previous version of lock checked for status codes and, at
   // some point, if the status code was 401 it defaults to an
@@ -553,9 +564,10 @@ export function loginErrorMessage(m, error, type) {
   }
 
   if (code === 'invalid_captcha') {
-    return captcha(m).get('type') === 'code'
-      ? i18n.html(m, 'captchaCodeInputPlaceholder')
-      : i18n.html(m, 'captchaMathInputPlaceholder');
+    const currentCaptcha = get(m, 'captcha');
+    if (currentCaptcha && currentCaptcha.get('provider') === 'recaptcha_v2') {
+      code = 'invalid_recaptcha';
+    }
   }
 
   return (

@@ -34,7 +34,9 @@ export default {
         'Nu am putut finaliza procesul de autentificare. Avem rugămintea să încerci după ce închizi toate ferestrele deschise.',
       'hrd.not_matching_email': 'Te rugăm să folosești adresa de email corporate pentru conectare.',
       too_many_requests:
-        'Ne pare rău. Sunt prea multe cereri chiar acum. Reîncărcați pagina și încercați din nou. Dacă acest lucru persistă, încercați din nou mai târziu.'
+        'Ne pare rău. Sunt prea multe cereri chiar acum. Reîncărcați pagina și încercați din nou. Dacă acest lucru persistă, încercați din nou mai târziu.',
+      invalid_captcha: 'Rezolvați întrebarea pentru a verifica dacă nu sunteți un robot.',
+      invalid_recaptcha: 'Selectați caseta pentru a verifica dacă nu sunteți un robot.'
     },
     passwordless: {
       'bad.email': 'Adresa de email este invalidă',
@@ -48,7 +50,9 @@ export default {
       password_no_user_info_error: 'Parola este similară cu utilizatorul.',
       password_strength_error: 'Parola este prea ușoară.',
       user_exists: 'Utilizator existent.',
-      username_exists: 'Nume utilizator existent.'
+      username_exists: 'Nume utilizator existent.',
+      social_signup_needs_terms_acception:
+        'Vă rugăm să acceptați Termenii și condițiile de mai jos pentru a continua.'
     }
   },
   success: {
@@ -131,5 +135,7 @@ export default {
   mfaSubmitLabel: 'Conectare',
   mfaCodeErrorHint: 'Utilizează %d cifre',
   signUpTerms:
-    'Prin înscrierea dvs. sunteți de acord cu termenii și condițiile noastre de utilizare și de politică de confidențialitate.'
+    'Prin înscrierea dvs. sunteți de acord cu termenii și condițiile noastre de utilizare și de politică de confidențialitate.',
+  captchaCodeInputPlaceholder: 'Introduceți codul prezentat mai sus',
+  captchaMathInputPlaceholder: 'Rezolvați formula prezentată mai sus'
 };

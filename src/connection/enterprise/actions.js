@@ -30,19 +30,30 @@ export function cancelHRD(id) {
   });
 }
 
+function getConnectionScopesFrom(m, connection) {
+  const connectionScopes = l.auth.connectionScopes(m);
+  return connectionScopes.get(connection.get('name'));
+}
+
 export function logIn(id) {
   const m = read(getEntity, 'lock', id);
   const email = getFieldValue(m, databaseLogInWithEmail(m) ? 'email' : 'username');
   const ssoConnection = matchConnection(m, email);
+  const enterpriseConnection = enterpriseActiveFlowConnection(m);
+  const connectionScopes = getConnectionScopesFrom(m, ssoConnection || enterpriseConnection);
+
+  const params = {
+    connection_scope: connectionScopes ? connectionScopes.toJS() : undefined
+  };
 
   if (ssoConnection && !isHRDActive(m)) {
-    return logInSSO(id, ssoConnection);
+    return logInSSO(id, ssoConnection, params);
   }
 
-  logInActiveFlow(id);
+  logInActiveFlow(id, params);
 }
 
-function logInActiveFlow(id) {
+function logInActiveFlow(id, params) {
   const m = read(getEntity, 'lock', id);
   const usernameField = isHRDActive(m) || !databaseLogInWithEmail(m) ? 'username' : 'email';
 
@@ -54,6 +65,7 @@ function logInActiveFlow(id) {
     : originalUsername;
 
   coreLogIn(id, ['password', usernameField], {
+    ...params,
     connection: connection ? connection.get('name') : null,
     username: username,
     password: getFieldValue(m, 'password'),
@@ -61,15 +73,18 @@ function logInActiveFlow(id) {
   });
 }
 
-function logInSSO(id, connection) {
+function logInSSO(id, connection, params) {
   const m = read(getEntity, 'lock', id);
   const field = databaseLogInWithEmail(m) ? 'email' : 'username';
+
   l.emitEvent(m, 'sso login', {
     lockID: id,
     connection: connection,
     field: field
   });
+
   coreLogIn(id, [field], {
+    ...params,
     connection: connection.get('name'),
     login_hint: getFieldValue(m, field)
   });

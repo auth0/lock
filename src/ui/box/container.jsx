@@ -31,7 +31,7 @@ const badgeSvg = (
 
 const BottomBadge = ({ link }) => (
   <span className="auth0-lock-badge-bottom">
-    <a href={link} target="_blank" className="auth0-lock-badge">
+    <a href={link} target="_blank" className="auth0-lock-badge" rel="noopener noreferrer">
       Protected with {badgeSvg}
     </a>
   </span>
@@ -209,7 +209,12 @@ export default class Container extends React.Component {
       <div className={className} lang={this.props.language}>
         {overlay}
         <div className="auth0-lock-center">
-          <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
+          <form
+            className="auth0-lock-widget"
+            method="post"
+            noValidate
+            onSubmit={::this.handleSubmit}
+          >
             {avatar && <Avatar imageUrl={avatar} />}
             {closeHandler && <CloseButton onClick={::this.handleClose} />}
             <div className="auth0-lock-widget-container">

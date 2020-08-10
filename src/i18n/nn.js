@@ -21,8 +21,6 @@ export default {
         'Får ikkje kontakt med tenaren, ver venleg og kontroller di dekning eller nettverkstilkopling, og prøv på nytt.',
       'lock.popup_closed': 'Popup-vindauge lukka. Prøv på nytt.',
       'lock.unauthorized': 'Tilgang ikkje tillete. Prøv på nytt.',
-      'Lock.mfa_registration_required':
-        'Fleirstegsautorisering er påkrevd, men din enhet er godkjent. Fullfør registreringa for å gå videre.',
       'lock.mfa_invalid_code': 'Feil kode! Prøv på nytt.',
       password_change_required:
         'Du må oppdatere ditt passord, fordi dette anten er den fyrste gongen du loggar inn, eller at ditt passord har gått ut.',
@@ -36,7 +34,9 @@ export default {
       'lock.mfa_registration_required':
         'Multifaktorautentisering krevast, men enheten din er ikkje påmeldt. Ver venleg og meld deg inn før du går vidare.',
       too_many_requests:
-        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.'
+        'Vi er lei oss. Det er for mange forespørsler akkurat nå. Vennligst last siden og prøv igjen. Hvis dette vedvarer, vennligst prøv igjen senere.',
+      invalid_captcha: 'Løs utfordringsspørsmålet for å bekrefte at du ikke er en robot.',
+      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.'
     },
     passwordless: {
       'bad.email': 'Ugyldig e-postadresse',
@@ -50,7 +50,8 @@ export default {
       password_no_user_info_error: 'Passordet er basert på kjende bruksdata.',
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukaren eksisterer allereie.',
-      username_exists: 'Dette brukernamnet eksisterer allereie.'
+      username_exists: 'Dette brukernamnet eksisterer allereie.',
+      social_signup_needs_terms_acception: 'Vennligst godta vilkårene nedenfor for å fortsette.'
     }
   },
   success: {
@@ -132,5 +133,7 @@ export default {
   mfaLoginInstructions: 'Ver venleg og tast inn verifiseringskoden som er generert på din mobil',
   mfaSubmitLabel: 'Logg inn',
   mfaCodeErrorHint: 'Bruk %d tall',
-  signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.'
+  signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.',
+  captchaCodeInputPlaceholder: 'Tast inn koden vist over',
+  captchaMathInputPlaceholder: 'Løs formelen vist ovenfor'
 };

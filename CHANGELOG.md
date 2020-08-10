@@ -1,5 +1,203 @@
 # Change Log
 
+## [v11.26.1](https://github.com/auth0/lock/tree/v11.26.1) (2020-07-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.26.0...v11.26.1)
+
+
+**Fixed**
+- fix issue #1906 - remove extension from import [\#1907](https://github.com/auth0/lock/pull/1907) ([jfromaniello](https://github.com/jfromaniello))
+
+
+## [v11.26.0](https://github.com/auth0/lock/tree/v11.26.0) (2020-07-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.25.1...v11.26.0)
+
+
+**Added**
+- [CAUTH-423] Add captcha in the sign-up flow [\#1902](https://github.com/auth0/lock/pull/1902) ([jfromaniello](https://github.com/jfromaniello))
+
+**Changed**
+- [CAUTH-511] improve error handling on missing captcha [\#1900](https://github.com/auth0/lock/pull/1900) ([jfromaniello](https://github.com/jfromaniello))
+
+**Fixed**
+- [SDK-1284] Fix for "growing" tabs when repeatedly clicked [\#1904](https://github.com/auth0/lock/pull/1904) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.25.1](https://github.com/auth0/lock/tree/v11.25.1) (2020-07-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.25.0...v11.25.1)
+
+
+**Fixed**
+- [SDK-1809] Connection display name is used even when no IdP domains are available [\#1898](https://github.com/auth0/lock/pull/1898) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.25.0](https://github.com/auth0/lock/tree/v11.25.0) (2020-07-09)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.5...v11.25.0)
+
+
+**Added**
+- [SDK-1710] Allow Lock to use connection display name field from client configuration file [\#1896](https://github.com/auth0/lock/pull/1896) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.24.5](https://github.com/auth0/lock/tree/v11.24.5) (2020-07-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.4...v11.24.5)
+
+
+**Fixed**
+- [SDK-1738] Remove subtle transition on header element [\#1892](https://github.com/auth0/lock/pull/1892) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.24.4](https://github.com/auth0/lock/tree/v11.24.4) (2020-07-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.3...v11.24.4)
+
+
+**Changed**
+- [SDK-1756] Add HTML5 novalidate attribute to Lock form to remove native browser validation [\#1890](https://github.com/auth0/lock/pull/1890) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Bump auth0-js to 9.13.3 [\#1889](https://github.com/auth0/lock/pull/1889) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.24.3](https://github.com/auth0/lock/tree/v11.24.3) (2020-06-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.2...v11.24.3)
+
+
+**Fixed**
+- Allows i18n en lang override [\#1885](https://github.com/auth0/lock/pull/1885) ([davidpatrick](https://github.com/davidpatrick))
+- Show the "Can't be blank" message under the password input [\#1882](https://github.com/auth0/lock/pull/1882) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
+**Security**
+- [Security] Bump websocket-extensions from 0.1.3 to 0.1.4 [\#1880](https://github.com/auth0/lock/pull/1880) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+
+## [v11.24.2](https://github.com/auth0/lock/tree/v11.24.2) (2020-06-05)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.1...v11.24.2)
+
+
+**Fixed**
+- [SDK-1556] Apply window height style to root document for Passwordless UI [\#1878](https://github.com/auth0/lock/pull/1878) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Add !hostedLoginPage condition to redirect check [\#1876](https://github.com/auth0/lock/pull/1876) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Header height not updated when Lock dialog is closed and reopened [\#1874](https://github.com/auth0/lock/pull/1874) ([adamjmcgrath](https://github.com/adamjmcgrath))
+- z-index needs to be less than the close button to avoid hiding it [\#1872](https://github.com/auth0/lock/pull/1872) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
+
+## [v11.24.1](https://github.com/auth0/lock/tree/v11.24.1) (2020-05-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.24.0...v11.24.1)
+
+
+**Fixed**
+- [ESD-6221] Remove CSS variable from header height calculation [\#1867](https://github.com/auth0/lock/pull/1867) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.24.0](https://github.com/auth0/lock/tree/v11.24.0) (2020-05-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.23.1...v11.24.0)
+
+
+**Added**
+- Add support for google recaptcha [\#1845](https://github.com/auth0/lock/pull/1845) ([kusold](https://github.com/kusold))
+
+**Fixed**
+- Fix header height calculation for large titles [\#1859](https://github.com/auth0/lock/pull/1859) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Typo fix in username.js [\#1857](https://github.com/auth0/lock/pull/1857) ([thduttonuk](https://github.com/thduttonuk))
+- Fix send sms error event [\#1856](https://github.com/auth0/lock/pull/1856) ([blankg](https://github.com/blankg))
+
+
+## [v11.23.1](https://github.com/auth0/lock/tree/v11.23.1) (2020-04-20)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.23.0...v11.23.1)
+
+
+**Fixed**
+- [ESD-5299] Bug with the special characters password hint  [\#1847](https://github.com/auth0/lock/pull/1847) ([adamjmcgrath](https://github.com/adamjmcgrath))
+- [ESD-5397] Fix header z-index [\#1846](https://github.com/auth0/lock/pull/1846) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+- Upgraded dependencies from security advisories [\#1848](https://github.com/auth0/lock/pull/1848) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Bump auth0-js from 9.13.1 to 9.13.2 [\#1844](https://github.com/auth0/lock/pull/1844) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+
+## [v11.23.0](https://github.com/auth0/lock/tree/v11.23.0) (2020-04-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.5...v11.23.0)
+
+
+**Added**
+- Add invalidHint to phoneNumberInput (fix issue #1836) [\#1837](https://github.com/auth0/lock/pull/1837) ([blankg](https://github.com/blankg))
+
+**Fixed**
+- [SDK-1413] Re-added scrollbars and fixed password strength popup clip issue [\#1839](https://github.com/auth0/lock/pull/1839) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Add 'social_signup_needs_terms_acception' Japanese translation [\#1835](https://github.com/auth0/lock/pull/1835) ([mag-chang](https://github.com/mag-chang))
+
+**Dependencies**
+
+- Bumped auth0-js to 9.13.1 [\#1842](https://github.com/auth0/lock/pull/1842) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+## [v11.22.5](https://github.com/auth0/lock/tree/v11.22.5) (2020-03-25)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.4...v11.22.5)
+
+
+**Added**
+- add Azerbaijan language [\#1828](https://github.com/auth0/lock/pull/1828) ([Haqverdi](https://github.com/Haqverdi))
+
+
+## [v11.22.4](https://github.com/auth0/lock/tree/v11.22.4) (2020-03-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.3...v11.22.4)
+
+
+**Fixed**
+- [CAUTH-373] do not autologin the user if captcha is required [\#1818](https://github.com/auth0/lock/pull/1818) ([jfromaniello](https://github.com/jfromaniello))
+
+
+## [v11.22.3](https://github.com/auth0/lock/tree/v11.22.3) (2020-03-04)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.2...v11.22.3)
+
+
+**Fixed**
+- [SDK-1389] Applied appearance styles for Bootstrap in Safari [\#1815](https://github.com/auth0/lock/pull/1815) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.22.2](https://github.com/auth0/lock/tree/v11.22.2) (2020-02-20)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.1...v11.22.2)
+
+
+**Changed**
+- Change Sign in with Apple button background to full black [\#1811](https://github.com/auth0/lock/pull/1811) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- Update cs.js - plural adjustments [\#1810](https://github.com/auth0/lock/pull/1810) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.22.1](https://github.com/auth0/lock/tree/v11.22.1) (2020-02-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.22.0...v11.22.1)
+
+
+**Fixed**
+- [SDK-1361] Fix missing padding on social buttons [\#1808](https://github.com/auth0/lock/pull/1808) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.22.0](https://github.com/auth0/lock/tree/v11.22.0) (2020-02-17)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.21.1...v11.22.0)
+
+**Changed**
+- [SDK-1373] Added style rules to handle overflow and scroll [\#1803](https://github.com/auth0/lock/pull/1803) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SDK-1361] Adjust styling for social buttons and Apple compliance [\#1801](https://github.com/auth0/lock/pull/1801) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Return results with signup success callback [\#1799](https://github.com/auth0/lock/pull/1799) ([bstaley](https://github.com/bstaley))
+
+**Fixed**
+- [SDK-1374] Email input now uses type="email" [\#1802](https://github.com/auth0/lock/pull/1802) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.21.1](https://github.com/auth0/lock/tree/v11.21.1) (2020-02-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.21.0...v11.21.1)
+
+
+**Fixed**
+- [SDK-1300] Added missing translation keys for 6 EU languages [\#1791](https://github.com/auth0/lock/pull/1791) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.21.0](https://github.com/auth0/lock/tree/v11.21.0) (2020-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.20.4...v11.21.0)
+
+
+**Security**
+- Make placeholder text-only, add new placeholderHTML for additionalSignUpFields [\#1788](https://github.com/auth0/lock/pull/1788) ([davidpatrick](https://github.com/davidpatrick))
+
+
 ## [v11.20.4](https://github.com/auth0/lock/tree/v11.20.4) (2020-01-29)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.20.3...v11.20.4)
 

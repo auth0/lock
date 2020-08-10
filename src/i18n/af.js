@@ -28,7 +28,9 @@ export default {
       session_missing: 'Kon nie versoek bevestig nie. Maak asseblief alles toe en probeer weer',
       'hrd.not_matching_email': 'Gebruik asseblief korporatiewe e-pos om in te teken.',
       too_many_requests:
-        'Ons is jammer. Daar is nou te veel versoeke. Herlaai asseblief die bladsy en probeer weer. As dit voortduur, probeer asseblief later weer.'
+        'Ons is jammer. Daar is nou te veel versoeke. Herlaai asseblief die bladsy en probeer weer. As dit voortduur, probeer asseblief later weer.',
+      invalid_captcha: "Los die uitdagingsvraag om te verifieer dat u nie 'n robot is nie.",
+      invalid_recaptcha: "Kies die merkblokkie om te verifieer dat u nie 'n robot is nie."
     },
     passwordless: {
       'bad.email': 'Die e-pos is ongeldig',
@@ -42,7 +44,9 @@ export default {
       password_no_user_info_error: 'Wagwoord kan nie persoonlike inligting bevat nie.',
       password_strength_error: 'Wagwoord is swak.',
       user_exists: 'Gebruiker bestaan reeds.',
-      username_exists: 'Gebruikersnaam bestaan reeds.'
+      username_exists: 'Gebruikersnaam bestaan reeds.',
+      social_signup_needs_terms_acception:
+        'Gee toestemming tot die onderstaande diensbepalings om voort te gaan.'
     }
   },
   success: {
@@ -122,5 +126,7 @@ export default {
   mfaSubmitLabel: 'Gaan voort',
   mfaCodeErrorHint: 'Gebruik %d nommers',
   showPassword: 'Wys wagwoord',
-  signUpTerms: 'Deur u in te teken, stem u in tot ons diensbepalings en privaatheidsbeleid.'
+  signUpTerms: 'Deur u in te teken, stem u in tot ons diensbepalings en privaatheidsbeleid.',
+  captchaCodeInputPlaceholder: 'Voer die kode hierbo in',
+  captchaMathInputPlaceholder: 'Los die formule hierbo getoon'
 };

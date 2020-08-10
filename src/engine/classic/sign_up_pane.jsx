@@ -8,6 +8,9 @@ import {
   databaseConnectionRequiresUsername,
   passwordStrengthPolicy
 } from '../../connection/database/index';
+import CaptchaPane from '../../field/captcha/captcha_pane';
+import * as l from '../../core/index';
+import { swapCaptcha } from '../../connection/database/actions';
 
 export default class SignUpPane extends React.Component {
   render() {
@@ -46,11 +49,17 @@ export default class SignUpPane extends React.Component {
           ariaLabel={x.get('ariaLabel')}
           options={x.get('options')}
           placeholder={x.get('placeholder')}
+          placeholderHTML={x.get('placeholderHTML')}
           type={x.get('type')}
           validator={x.get('validator')}
           value={x.get('value')}
         />
       ));
+
+    const captchaPane =
+      l.captcha(model) && l.captcha(model).get('required') ? (
+        <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false)} />
+      ) : null;
 
     const passwordPane = !onlyEmail && (
       <PasswordPane
@@ -68,6 +77,7 @@ export default class SignUpPane extends React.Component {
         <EmailPane i18n={i18n} lock={model} placeholder={emailInputPlaceholder} />
         {usernamePane}
         {passwordPane}
+        {captchaPane}
         {fields}
       </div>
     );

@@ -33,7 +33,11 @@ export default {
       'hrd.not_matching_email':
         'Bitte verwenden Sie Ihre geschäftliche E-Mail-Adresse, um sich anzumelden.',
       too_many_requests:
-        'Es tut uns leid. Im Moment gibt es zu viele Anfragen. Bitte laden Sie die Seite neu und versuchen Sie es erneut. Wenn dies weiterhin der Fall ist, versuchen Sie es später erneut.'
+        'Es tut uns leid. Im Moment gibt es zu viele Anfragen. Bitte laden Sie die Seite neu und versuchen Sie es erneut. Wenn dies weiterhin der Fall ist, versuchen Sie es später erneut.',
+      invalid_captcha:
+        'Lösen Sie die Herausforderungsfrage, um sicherzustellen, dass Sie kein Roboter sind.',
+      invalid_recaptcha:
+        'Aktivieren Sie das Kontrollkästchen, um sicherzustellen, dass Sie kein Roboter sind.'
     },
     passwordless: {
       'bad.email': 'Diese E-Mail-Adresse ist ungültig',
@@ -48,7 +52,9 @@ export default {
       password_no_user_info_error: 'Das Passwort basiert auf Benutzerinformationen.',
       password_strength_error: 'Das Passwort ist zu schwach.',
       user_exists: 'Der Nutzer existiert bereits.',
-      username_exists: 'Der Nutzername wird bereits verwendet.'
+      username_exists: 'Der Nutzername wird bereits verwendet.',
+      social_signup_needs_terms_acception:
+        'Bitte stimmen Sie den untenstehenden Nutzungsbedingungen zu, um fortzufahren.'
     }
   },
   success: {
@@ -133,5 +139,7 @@ export default {
   mfaSubmitLabel: 'Anmelden',
   mfaCodeErrorHint: 'Verwenden %d Zahlen',
   signUpTerms:
-    'Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen und Datenschutzbestimmungen zu.'
+    'Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen und Datenschutzbestimmungen zu.',
+  captchaCodeInputPlaceholder: 'Geben Sie den oben angezeigten Code ein.',
+  captchaMathInputPlaceholder: 'Lösen Sie die oben gezeigte Formel.'
 };

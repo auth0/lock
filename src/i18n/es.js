@@ -10,6 +10,7 @@ export default {
     login: {
       blocked_user: 'El usuario se encuentra bloqueado.',
       invalid_user_password: 'Credenciales inválidas.',
+      invalid_captcha: 'El texto ingresado es incorrecto. <br /> Por favor, vuelva a intentarlo.',
       'lock.fallback': 'Ocurrió un error al iniciar sesión.',
       'lock.invalid_code': 'Código inválido.',
       'lock.invalid_email_password': 'Correo y contraseña inválidos.',
@@ -30,7 +31,8 @@ export default {
         'No es posible completar el proceso de Autenticación. Por favor, cierre todas las ventanas e intente nuevamente.',
       'hrd.not_matching_email': 'Por favor, use sus credenciales corporativas.',
       too_many_requests:
-        'Lo sentimos. Hay demasiados peticiones en estos momentos. Por favor, recargue la página y vuelva a intentarlo. Si persiste, por favor vuelva a intentarlo más tarde.'
+        'Lo sentimos. Hay demasiados peticiones en estos momentos. Por favor, recargue la página y vuelva a intentarlo. Si persiste, por favor vuelva a intentarlo más tarde.',
+      invalid_recaptcha: 'Seleccione la casilla de verificación para verificar que no es un robot.'
     },
     passwordless: {
       'bad.email': 'Correo inválido',
@@ -44,7 +46,8 @@ export default {
       password_no_user_info_error: 'La constraseña es similar a los datos del usuario.',
       password_strength_error: 'La contraseña es muy débil.',
       user_exists: 'El usuario ya existe.',
-      username_exists: 'El nombre de usuario se encuentra en uso.'
+      username_exists: 'El nombre de usuario se encuentra en uso.',
+      social_signup_needs_terms_acception: 'Acepte los Términos de Servicio para continuar.'
     }
   },
   success: {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 1`] = `
+exports[`CustomInput when type == checkbox and when placeholderHTML is set renders correctly as a CheckBoxInput 1`] = `
 <div
   className="auth0-lock-input-checkbox"
 >
@@ -16,10 +16,30 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
     <span
       dangerouslySetInnerHTML={
         Object {
-          "__html": "placeholder",
+          "__html": "<b>Placeholder</b>",
         }
       }
     />
+  </label>
+</div>
+`;
+
+exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 1`] = `
+<div
+  className="auth0-lock-input-checkbox"
+>
+  <label>
+    <input
+      aria-label="Custom Input"
+      checked={false}
+      id="1-custom_input"
+      name="custom_input"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span>
+      placeholder
+    </span>
   </label>
 </div>
 `;

@@ -31,7 +31,9 @@ export default {
         'לא ניתן להשלים את ניסיון ההזדהות. אנא נסה שנית לאחר סגירת כל החלונות הפתוחים.',
       'hrd.not_matching_email': 'על מנת להיכנס, אנא השתמש בחשבון המייל הארגוני שלך',
       too_many_requests:
-        'אנחנו מצטערים. יש יותר מדי בקשות כרגע. טען מחדש את הדף ונסה שוב. אם פעולה זו נמשכת, נסה שוב מאוחר יותר.'
+        'אנחנו מצטערים. יש יותר מדי בקשות כרגע. טען מחדש את הדף ונסה שוב. אם פעולה זו נמשכת, נסה שוב מאוחר יותר.',
+      invalid_captcha: 'לפתור את שאלת האתגר כדי לוודא שאתה לא רובוט.',
+      invalid_recaptcha: 'בחר בתיבת הסימון כדי לוודא שאתה לא רובוט.'
     },
     passwordless: {
       'bad.email': 'כתובת המייל אינה תקינה',
@@ -45,7 +47,8 @@ export default {
       password_no_user_info_error: 'סיסמא מבוססת על פרטי המשתמש.',
       password_strength_error: 'סיסמא חלשה מדי.',
       user_exists: 'משתמש קיים במערכת.',
-      username_exists: 'שם המשתמש קיים במערכת.'
+      username_exists: 'שם המשתמש קיים במערכת.',
+      social_signup_needs_terms_acception: 'אנא הסכים לתנאי השירות שלהלן כדי להמשיך.'
     }
   },
   success: {
@@ -121,5 +124,7 @@ export default {
   mfaLoginTitle: 'אימות דו-שלבי',
   mfaLoginInstructions: 'אנא הזן את קוד האימות שנוצר על ידי האפליקציה שלך.',
   mfaSubmitLabel: 'כניסה',
-  mfaCodeErrorHint: 'השתמש ב%d ספרות'
+  mfaCodeErrorHint: 'השתמש ב%d ספרות',
+  captchaCodeInputPlaceholder: 'הזן את הקוד שמוצג למעלה',
+  captchaMathInputPlaceholder: 'לפתור את הנוסחה שמוצגת למעלה'
 };

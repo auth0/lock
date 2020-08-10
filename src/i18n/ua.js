@@ -35,7 +35,9 @@ export default {
       'hrd.not_matching_email':
         'Будь ласка, використовуйте адресу вашої корпоративної пошти для входу.',
       too_many_requests:
-        "We're sorry. There are too many requests right now. Please reload the page and try again. If this persists, please try again later."
+        "We're sorry. There are too many requests right now. Please reload the page and try again. If this persists, please try again later.",
+      invalid_captcha: 'Вирішіть складне питання, щоб переконатися, що ви не робот.',
+      invalid_recaptcha: 'Установіть прапорець, щоб переконатися, що ви не робот.'
     },
     passwordless: {
       'bad.email': 'Недійсна адреса електронної пошти',
@@ -50,7 +52,9 @@ export default {
       password_no_user_info_error: 'Пароль ґрунтується на інформації про користувача.',
       password_strength_error: 'Пароль занадто слабкий.',
       user_exists: 'Користувач вже існує.',
-      username_exists: "Ім'я користувача вже існує."
+      username_exists: "Ім'я користувача вже існує.",
+      social_signup_needs_terms_acception:
+        'Прийміть наведені нижче Умови надання послуг, щоб продовжити.'
     }
   },
   success: {
@@ -136,5 +140,7 @@ export default {
   mfaSubmitLabel: 'Авторизуватися',
   mfaCodeErrorHint: 'Використовуйте %d номери',
   showPassword: 'Show password',
-  signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.'
+  signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.',
+  captchaCodeInputPlaceholder: 'Введіть код, показаний вище',
+  captchaMathInputPlaceholder: 'Розв’яжіть формулу, показану вище'
 };

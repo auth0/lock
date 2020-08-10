@@ -1,6 +1,6 @@
-import { setField, setFieldShowInvalid } from './index';
+import { setField, setFieldShowInvalid, getFieldValue } from './index';
 
-export function validate(captcha) {
+function validate(captcha) {
   return !!captcha;
 }
 
@@ -14,4 +14,8 @@ export function set(m, captcha, wasInvalid) {
 
 export function reset(m, wasInvalid) {
   return set(m, '', wasInvalid);
+}
+
+export function getValue(m) {
+  return getFieldValue(m, 'captcha');
 }

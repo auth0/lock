@@ -115,7 +115,7 @@ describe('rendering a lock', function() {
         renderedLock = l.render(lock, modeName, { container: container });
       });
 
-      it('assings it as the container id', function() {
+      it('assigns it as the container id', function() {
         expect(l.ui.containerID(renderedLock)).to.be(container);
       });
 

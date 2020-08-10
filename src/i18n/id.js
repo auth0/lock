@@ -1,57 +1,67 @@
+// This file was automatically translated.
+// Feel free to submit a PR if you find a more accurate translation.
+
 export default {
   error: {
     forgotPassword: {
       too_many_requests:
         'Anda telah mencapai batas upaya perubahan kata sandi. Harap tunggu sebelum mencoba lagi.',
-      'lock.fallback': "Maaf, terjadi kesalahan saat meminta perubahan kata sandi.",
+      'lock.fallback': 'Maaf, terjadi kesalahan saat meminta perubahan kata sandi.',
       enterprise_email:
-        "Domain email Anda adalah bagian dari penyedia identitas Perusahaan. Untuk mengatur ulang kata sandi, harap lihat administrator keamanan Anda."
+        'Domain email Anda adalah bagian dari penyedia identitas Perusahaan. Untuk mengatur ulang kata sandi, harap lihat administrator keamanan Anda.'
     },
     login: {
       blocked_user: 'Pengguna diblokir.',
       invalid_user_password: 'Kredensial salah.',
-      'lock.fallback': "Maaf, terjadi kesalahan saat berusaha untuk masuk log.",
+      'lock.fallback': 'Maaf, terjadi kesalahan saat berusaha untuk masuk log.',
       'lock.invalid_code': 'Kode salah.',
       'lock.invalid_email_password': 'Email atau kata sandi salah.',
       'lock.invalid_username_password': 'Nama pengguna atau kata sandi salah.',
-      'lock.network': 'Kami tidak dapat menjangkau server. Harap periksa koneksi internet Anda dan coba lagi.',
+      'lock.network':
+        'Kami tidak dapat menjangkau server. Harap periksa koneksi internet Anda dan coba lagi.',
       'lock.popup_closed': 'Jendela sembul ditutup. Coba lagi.',
       'lock.unauthorized': 'Izin tidak diberikan. Coba lagi.',
       'lock.mfa_registration_required':
         'Autentikasi multifaktor diperlukan tetapi perangkat Anda tidak terdaftar. Harap daftarkan perangkat sebelum melanjutkan.',
       'lock.mfa_invalid_code': 'Kode salah. Harap coba lagi.',
       password_change_required:
-        'Anda harus memperbarui kata sandi karena ini pertama kali Anda masuk log, atau karena kata sandi Anda kedaluwarsa.', // TODO: verify error code
+        'Anda harus memperbarui kata sandi karena ini pertama kali Anda masuk log, atau karena kata sandi Anda kedaluwarsa.',
       password_leaked:
         'Kami telah mendeteksi adanya masalah keamanan dengan akun ini. Untuk melindungi akun Anda, kami telah memblokir log ini. Email telah dikirimkan disertai instruksi untuk mengurungkan blokir akun Anda.',
       too_many_attempts: 'Akun Anda telah diblokir setelah mencoba masuk log berulang-ulang.',
       session_missing:
-        "Tidak bisa menyelesaikan permintaan autentikasi Anda. Harap coba lagi setelah menutup semua dialog yang terbuka.",
-      'hrd.not_matching_email': 'Harap gunakan email perusahaan Anda untuk masuk log.'
+        'Tidak bisa menyelesaikan permintaan autentikasi Anda. Harap coba lagi setelah menutup semua dialog yang terbuka.',
+      'hrd.not_matching_email': 'Harap gunakan email perusahaan Anda untuk masuk log.',
+      invalid_captcha:
+        'Selesaikan pertanyaan tantangan untuk memverifikasi bahwa Anda bukan robot.',
+      invalid_recaptcha: 'Pilih kotak centang untuk memverifikasi bahwa Anda bukan robot.',
+      too_many_requests:
+        'Kami meminta maaf. Ada terlalu banyak permintaan saat ini. Harap muat ulang halaman dan coba lagi. Jika ini terus berlanjut, silakan coba lagi nanti.'
     },
     passwordless: {
       'bad.email': 'Email ini tidak valid.',
       'bad.phone_number': 'Nomor telepon tidak valid.',
-      'lock.fallback': "Maaf, terjadi kesalahan"
+      'lock.fallback': 'Maaf, terjadi kesalahan'
     },
     signUp: {
       invalid_password: 'Kata sandi tidak valid.',
-      'lock.fallback': "Maaf, terjadi kesalahan saat mencoba mendaftar.",
+      'lock.fallback': 'Maaf, terjadi kesalahan saat mencoba mendaftar.',
       password_dictionary_error: 'Kata sandi terlalu umum.',
       password_no_user_info_error: 'Kata sandi didasarkan pada informasi pengguna.',
       password_strength_error: 'Kata sandi terlalu lemah.',
       user_exists: 'Pengguna sudah ada.',
-      username_exists: 'Nama pengguna sudah ada.'
+      username_exists: 'Nama pengguna sudah ada.',
+      social_signup_needs_terms_acception:
+        'Harap setujui Persyaratan Layanan di bawah ini untuk melanjutkan.'
     }
   },
   success: {
-    // success messages show above the form or in a confirmation pane
     logIn: 'Terima kasih sudah masuk log.',
-    forgotPassword: "Kami baru saja mengirimi Anda email untuk mengatur ulang kata sandi Anda.",
+    forgotPassword: 'Kami baru saja mengirimi Anda email untuk mengatur ulang kata sandi Anda.',
     magicLink: 'Kami mengirimi Anda tautan untuk masuk log dalam<br />hingga %s.',
     signUp: 'Terima kasih sudah mendaftar.'
   },
-  blankErrorHint: "Wajib diisi",
+  blankErrorHint: 'Wajib diisi',
   codeInputPlaceholder: 'kode Anda',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: 'atau',
@@ -62,7 +72,7 @@ export default {
   enterpriseActiveLoginInstructions: 'Harap masukkan kredensial perusahaan pada %s.',
   failedLabel: 'Gagal!',
   forgotPasswordTitle: 'Atur ulang kata sandi Anda',
-  forgotPasswordAction: "Tidak ingat kata sandi Anda?",
+  forgotPasswordAction: 'Tidak ingat kata sandi Anda?',
   forgotPasswordInstructions:
     'Harap masukkan alamat email Anda. Kami akan mengirimi Anda email untuk mengatur ulang kata sandi Anda.',
   forgotPasswordSubmitLabel: 'Kirim email',
@@ -76,7 +86,8 @@ export default {
   passwordInputPlaceholder: 'kata sandi Anda',
   passwordStrength: {
     containsAtLeast: 'Berisi setidaknya %d dari %d jenis karakter:',
-    identicalChars: 'Tidak boleh lebih dari %d karakter identik dalam satu baris (mis. "%s" tidak diizinkan)',
+    identicalChars:
+      'Tidak boleh lebih dari %d karakter identik dalam satu baris (mis. "%s" tidak diizinkan)',
     nonEmpty: 'Kata sandi wajib diisi',
     numbers: 'Angka (yaitu: 0-9)',
     lengthAtLeast: 'Panjang setidaknya %d karakter',
@@ -110,8 +121,7 @@ export default {
   ssoEnabled: 'Sign-On Tunggal diaktifkan',
   submitLabel: 'Kirim',
   unrecoverableError: 'Terjadi kesalahan.<br />Harap hubungi staf teknis.',
-  usernameFormatErrorHint:
-    'Gunakan huruf %d-%d, angka, dan karakter berikut: "_", ".", "+", "-"',
+  usernameFormatErrorHint: 'Gunakan huruf %d-%d, angka, dan karakter berikut: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'nama pengguna Anda',
   usernameOrEmailInputPlaceholder: 'nama pengguna/email',
   title: 'Auth0',
@@ -120,7 +130,10 @@ export default {
   windowsAuthLabel: 'Autentikasi Windows',
   mfaInputPlaceholder: 'Kode',
   mfaLoginTitle: 'Verifikasi 2 Langkah',
-  mfaLoginInstructions: 'Harap masukkan kode verifikasi yang dihasilkan oleh aplikasi seluler Anda.',
+  mfaLoginInstructions:
+    'Harap masukkan kode verifikasi yang dihasilkan oleh aplikasi seluler Anda.',
   mfaSubmitLabel: 'Masuk log',
-  mfaCodeErrorHint: 'Gunakan %d angka'
+  mfaCodeErrorHint: 'Gunakan %d angka',
+  captchaCodeInputPlaceholder: 'Masukkan kode yang ditunjukkan di atas',
+  captchaMathInputPlaceholder: 'Selesaikan rumus yang ditunjukkan di atas'
 };

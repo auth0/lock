@@ -17,17 +17,19 @@ function icon(strategy) {
 const Component = ({ i18n, model }) => {
   const headerText = i18n.html('enterpriseLoginIntructions') || null;
   const header = headerText && <p>{headerText}</p>;
-
   const theme = authButtonsTheme(model);
-
   const connection = quickAuthConnection(model);
   const connectionName = connection.getIn(['name']);
   const connectionDomain = connection.getIn(['domains', 0]);
-
+  const connectionDisplayName = connection.getIn(['displayName']) || null;
+  const preferConnectionDisplayName = l.ui.preferConnectionDisplayName(model);
   const buttonTheme = theme.get(connection.get('name'));
 
   const buttonLabel =
     (buttonTheme && buttonTheme.get('displayName')) ||
+    (preferConnectionDisplayName &&
+      connectionDisplayName &&
+      i18n.str('loginAtLabel', connectionDisplayName)) ||
     (connectionDomain && i18n.str('loginAtLabel', connectionDomain)) ||
     i18n.str('loginAtLabel', connectionName);
 

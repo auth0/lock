@@ -32,7 +32,9 @@ export default {
         'لم نتمكن من إكمال طلب المصادقة. رجاءً أعد المحاولة بعد إغلاق جميع مربعات الحوار المفتوحة.',
       'hrd.not_matching_email': 'يرجى استخدام بريد الشركة الإلكتروني للدخول.',
       too_many_requests:
-        'نحن آسفون. هناك الكثير من الطلبات في الوقت الحالي. يرجى إعادة تحميل الصفحة وحاول مرة أخرى. إذا استمر هذا الأمر ، يرجى إعادة المحاولة لاحقًا.'
+        'نحن آسفون. هناك الكثير من الطلبات في الوقت الحالي. يرجى إعادة تحميل الصفحة وحاول مرة أخرى. إذا استمر هذا الأمر ، يرجى إعادة المحاولة لاحقًا.',
+      invalid_captcha: 'حل سؤال التحدي للتحقق من أنك لست روبوت.',
+      invalid_recaptcha: 'حدد مربع الاختيار للتحقق من أنك لست روبوتًا.'
     },
     passwordless: {
       'bad.email': 'البريد الإلكتروني غير صالح.',
@@ -46,7 +48,8 @@ export default {
       password_no_user_info_error: 'ترتكز كلمة المرور على اسم المستخدم.',
       password_strength_error: 'كلمة المرور ضعيفة جداً.',
       user_exists: 'المستخدم موجود بالفعل.',
-      username_exists: 'اسم المستخدم موجود بالفعل.'
+      username_exists: 'اسم المستخدم موجود بالفعل.',
+      social_signup_needs_terms_acception: 'يرجى الموافقة على شروط الخدمة أدناه للمتابعة.'
     }
   },
   success: {
@@ -124,5 +127,7 @@ export default {
   mfaLoginTitle: 'التحقق بخطوتين',
   mfaLoginInstructions: 'رجاءً أدخل رمز التأكيد المولّد باستخدام التطبيق',
   mfaSubmitLabel: 'دخول',
-  mfaCodeErrorHint: 'استخدم %d رقم'
+  mfaCodeErrorHint: 'استخدم %d رقم',
+  captchaCodeInputPlaceholder: 'أدخل الرمز الموضح أعلاه',
+  captchaMathInputPlaceholder: 'حل الصيغة الموضحة أعلاه'
 };

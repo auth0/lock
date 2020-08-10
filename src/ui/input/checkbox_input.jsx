@@ -1,9 +1,8 @@
 import React from 'react';
-import InputWrap from './input_wrap';
 
 export default class CheckboxInput extends React.Component {
   render() {
-    const { lockId, name, ariaLabel, placeholder, checked } = this.props;
+    const { lockId, name, ariaLabel, placeholder, checked, placeholderHTML } = this.props;
     return (
       <div className="auth0-lock-input-checkbox">
         <label>
@@ -15,7 +14,11 @@ export default class CheckboxInput extends React.Component {
             name={name}
             aria-label={ariaLabel || name}
           />
-          <span dangerouslySetInnerHTML={{ __html: placeholder }} />
+          {placeholderHTML ? (
+            <span dangerouslySetInnerHTML={{ __html: placeholderHTML }} />
+          ) : (
+            <span>{placeholder}</span>
+          )}
         </label>
       </div>
     );

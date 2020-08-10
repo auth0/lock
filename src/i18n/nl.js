@@ -35,7 +35,9 @@ export default {
         'Kan uw authenticatie verzoek niet voltooien. Probeer opnieuw na het sluiten van alle geopende vensters',
       'hrd.not_matching_email': 'Gelieve gebruik te maken van uw zakelijke e-mail om in te loggen.',
       too_many_requests:
-        'Het spijt ons. Er zijn op dit moment te veel aanvragen. Laad de pagina opnieuw en probeer het opnieuw. Als dit probleem aanhoudt, probeert u het later opnieuw.'
+        'Het spijt ons. Er zijn op dit moment te veel aanvragen. Laad de pagina opnieuw en probeer het opnieuw. Als dit probleem aanhoudt, probeert u het later opnieuw.',
+      invalid_captcha: 'Los de uitdagingsvraag op om te verifiëren dat je geen robot bent.',
+      invalid_recaptcha: 'Selecteer het selectievakje om te verifiëren dat u geen robot bent.'
     },
     passwordless: {
       'bad.email': 'Het e-mailadres is ongeldig',
@@ -49,7 +51,9 @@ export default {
       password_no_user_info_error: 'Wachtwoord is gebaseerd op gebruikers informatie.',
       password_strength_error: 'Wachtwoord is niet sterk genoeg.',
       user_exists: 'Gebruiker bestaat al.',
-      username_exists: 'Gebruikersnaam bestaat al.'
+      username_exists: 'Gebruikersnaam bestaat al.',
+      social_signup_needs_terms_acception:
+        'Ga akkoord met de onderstaande Servicevoorwaarden om door te gaan.'
     }
   },
   success: {
@@ -132,5 +136,7 @@ export default {
   mfaCodeErrorHint: 'Gebruik %d nummers',
   showPassword: 'Laat wachtwoord zien',
   signUpTerms:
-    'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.'
+    'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.',
+  captchaCodeInputPlaceholder: 'Voer de hierboven getoonde code in',
+  captchaMathInputPlaceholder: 'Los de bovenstaande formule op'
 };

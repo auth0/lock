@@ -20,7 +20,7 @@ export default class PhoneNumberPane extends React.Component {
   }
 
   render() {
-    const { instructions, lock, placeholder } = this.props;
+    const { instructions, lock, placeholder, invalidHint } = this.props;
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
 
@@ -38,6 +38,7 @@ export default class PhoneNumberPane extends React.Component {
         <PhoneNumberInput
           value={c.phoneNumber(lock)}
           isValid={!c.isFieldVisiblyInvalid(lock, 'phoneNumber')}
+          invalidHint={invalidHint}
           onChange={::this.handlePhoneNumberChange}
           placeholder={placeholder}
           disabled={l.submitting(lock)}
@@ -50,5 +51,6 @@ export default class PhoneNumberPane extends React.Component {
 PhoneNumberPane.propTypes = {
   instructions: PropTypes.element,
   lock: PropTypes.object.isRequired,
-  placeholder: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired,
+  invalidHint: PropTypes.string
 };

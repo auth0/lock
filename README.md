@@ -23,7 +23,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.20.4/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.26.1/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -156,8 +156,8 @@ Lock will emit events during its lifecycle.
 - `forgot_password submit`: emitted when the user clicks on the submit button of the "Forgot password" screen.
 - `signin submit`: emitted when the user clicks on the submit button of the "Login" screen.
 - `signup submit`: emitted when the user clicks on the submit button of the "Sign up" screen.
+- `signup success`: emitted when the user successfully signs up.
 - `signup error`: emitted when signup fails. Has the error as an argument.
-- `signup success`: emitted when signup succeeds. Has the error as an argument.
 - `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments.
 - `sso login`: emitted when the user clicks on an enterprise SSO connection button. Has the lock ID, connection object, and field name as arguments.
 
@@ -263,6 +263,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
 - **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
 - **allowPasswordAutocomplete {Boolean}**: Determines whether the password field will allow autocomplete; setting this to `true` is required for password manager support and to avoid many cases of adverse behavior. Defaults to `false`.
+- **preferConnectionDisplayName {Boolean}**: If true, Lock will try to use the connection display name as configured in the manage dashboard, if available.
 
 
 #### Theming options
@@ -327,7 +328,7 @@ var options = {
 - **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be omitted.
 - **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
 - **sso {Boolean}**:  Determines whether Single Sign-On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
-- **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social connection for authentication.
+- **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social/enterprise connection for authentication.
 
 #### Database options
 
@@ -514,7 +515,9 @@ var options = {
     name: "newsletter",
     prefill: "true",
     placeholder: "I hereby agree that I want to receive marketing emails from your company",
-    // The following property is optional
+    // placeholderHTML - is an optional field  and overrides the value of placeholder
+    placeholderHTML: "<b>I hereby agree that I want to receive marketing emails from your company</b>",
+    // ariaLabel - is an optional field
     ariaLabel: "Activate Newsletter"
   }]
 }

@@ -32,7 +32,9 @@ export default {
         'Nedá sa odoslať autentifikačná požiadavka. Prosím zatvorte všetky dialogové okná a skúste to znova.',
       'hrd.not_matching_email': 'Prosím, použite svoj firemný e-mail na prihlásenie.',
       too_many_requests:
-        'Je nám to ľúto. Momentálne je príliš veľa žiadostí. Načítajte stránku znova a skúste to znova. Ak to pretrváva, skúste to znova neskôr.'
+        'Je nám to ľúto. Momentálne je príliš veľa žiadostí. Načítajte stránku znova a skúste to znova. Ak to pretrváva, skúste to znova neskôr.',
+      invalid_captcha: 'Vyriešte výzvu a overte, či nie ste robot.',
+      invalid_recaptcha: 'Začiarknutím políčka overíte, či nie ste robot.'
     },
     passwordless: {
       'bad.email': 'Neplatný e-mail',
@@ -46,7 +48,9 @@ export default {
       password_no_user_info_error: 'Heslo je založené na užívateľských informáciách.',
       password_strength_error: 'Heslo je príliš slabé.',
       user_exists: 'Používateľ už existuje.',
-      username_exists: 'Užívateľské meno už existuje.'
+      username_exists: 'Užívateľské meno už existuje.',
+      social_signup_needs_terms_acception:
+        'Ak chcete pokračovať, súhlaste so Zmluvnými podmienkami uvedenými nižšie.'
     }
   },
   success: {
@@ -128,5 +132,7 @@ export default {
   mfaCodeErrorHint: 'Použite %d číslic',
   showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.',
   signUpTerms:
-    'Registráciou vyjadrujete súhlas s našimi zmluvnými podmienkami a pravidlami ochrany osobných údajov.'
+    'Registráciou vyjadrujete súhlas s našimi zmluvnými podmienkami a pravidlami ochrany osobných údajov.',
+  captchaCodeInputPlaceholder: 'Zadajte vyššie uvedený kód',
+  captchaMathInputPlaceholder: 'Vyriešte vyššie uvedený vzorec'
 };

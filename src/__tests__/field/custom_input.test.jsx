@@ -101,6 +101,16 @@ describe('CustomInput', () => {
 
       expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
     });
+
+    describe('and when placeholderHTML is set', () => {
+      it('renders correctly as a CheckBoxInput', () => {
+        const CustomInput = getComponent();
+
+        expectComponent(
+          <CustomInput {...defaultProps} placeholderHTML={'<b>Placeholder</b>'} />
+        ).toMatchSnapshot();
+      });
+    });
   });
   describe('when type == hidden', () => {
     beforeEach(() => {
