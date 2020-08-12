@@ -41,6 +41,10 @@ export function initI18n(m) {
         assertLanguage(m, overrided.toJS(), enDictionary);
 
         return set(m, 'strings', defaultDictionary.mergeDeep(overrided));
+      },
+      recoverResult: m,
+      errorFn: (m, error) => {
+        l.warn(m, error.message + ' Falling back to default dictionary.');
       }
     });
   } else {
