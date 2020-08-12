@@ -4,7 +4,7 @@
 [Full Changelog](https://github.com/auth0/lock/compare/v11.26.1...v11.26.2)
 
 **Fixed**
-- i18n asset recovery [\#1912](https://github.com/auth0/lock/pull/1912) ([davidpatrick](https://github.com/davidpatrick))
+- Fallback to default language dictionary when the language file cannot be loaded [\#1912](https://github.com/auth0/lock/pull/1912) ([davidpatrick](https://github.com/davidpatrick))
 - [SDK-1813] Send connection scope config to enterprise connections [\#1910](https://github.com/auth0/lock/pull/1910) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 **Security**
