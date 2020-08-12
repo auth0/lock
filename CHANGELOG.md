@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.26.2](https://github.com/auth0/lock/tree/v11.26.2) (2020-08-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.26.1...v11.26.2)
+
+**Fixed**
+- Fallback to default language dictionary when the language file cannot be loaded [\#1912](https://github.com/auth0/lock/pull/1912) ([davidpatrick](https://github.com/davidpatrick))
+- [SDK-1813] Send connection scope config to enterprise connections [\#1910](https://github.com/auth0/lock/pull/1910) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+- [Security] Bump elliptic from 6.4.1 to 6.5.3 [\#1909](https://github.com/auth0/lock/pull/1909) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+
 ## [v11.26.1](https://github.com/auth0/lock/tree/v11.26.1) (2020-07-23)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.26.0...v11.26.1)
 
