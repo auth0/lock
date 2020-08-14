@@ -1,5 +1,11 @@
 # Change Log
 
+## [v11.26.3](https://github.com/auth0/lock/tree/v11.26.3) (2020-08-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.26.2...v11.26.3)
+
+**Security**
+- [SEC-512] Replace usage of i18n.html with i18n.str in Passwordless verification code UI ([stevehobbsdev](https://github.com/stevehobbsdev))
+
 ## [v11.26.2](https://github.com/auth0/lock/tree/v11.26.2) (2020-08-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.26.1...v11.26.2)
 
