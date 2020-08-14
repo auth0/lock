@@ -11,10 +11,10 @@ const Component = ({ i18n, model }) => {
 
   var headerText;
 
-  if (domain != null) {
-    headerText = i18n.html('enterpriseActiveLoginInstructions', domain);
+  if (domain !== null) {
+    headerText = i18n.str('enterpriseActiveLoginInstructions', domain);
   } else {
-    headerText = i18n.html('enterpriseLoginIntructions');
+    headerText = i18n.str('enterpriseLoginIntructions');
   }
 
   headerText = headerText || null;

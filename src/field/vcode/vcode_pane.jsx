@@ -51,7 +51,7 @@ export default class VcodePane extends React.Component {
 }
 
 VcodePane.propTypes = {
-  instructions: PropTypes.element,
+  instructions: PropTypes.string,
   lock: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
   resendLabel: PropTypes.string.isRequired,

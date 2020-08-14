@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AskVCode renders correctly when logging in with a phone number 1`] = `
+<div
+  data-__type="vcode_pane"
+  data-instructions="An SMS with the code has been sent to [ '+44 456 789' ]."
+  data-lock={
+    Immutable.Map {
+      "id": "__lock-id__",
+      "i18n": Immutable.Map {
+        "strings": Immutable.Map {
+          "passwordlessEmailCodeInstructions": "An email with the code has been sent to %s.",
+          "passwordlessSMSCodeInstructions": "An SMS with the code has been sent to %s.",
+        },
+      },
+      "field": Immutable.Map {
+        "phoneNumber": Immutable.Map {
+          "valid": true,
+          "value": "456 789",
+          "showInvalid": false,
+        },
+        "location": Immutable.Map {
+          "country": "United Kingdom",
+          "diallingCode": "+44",
+          "isoCode": "UK",
+          "label": "+44 UK United Kingdom",
+          "value": "+44 UK",
+          "options": Immutable.List [
+            Immutable.Map {
+              "country": "United Kingdom",
+              "diallingCode": "+44",
+              "isoCode": "UK",
+              "label": "+44 UK United Kingdom",
+              "value": "+44 UK",
+            },
+          ],
+          "showInvalid": false,
+          "valid": true,
+        },
+      },
+    }
+  }
+  data-onRestart={[Function]}
+  data-placeholder=" []"
+  data-resendLabel=" []"
+/>
+`;
+
+exports[`AskVCode renders correctly when logging in with email 1`] = `
+<div
+  data-__type="vcode_pane"
+  data-instructions="An email with the code has been sent to [ 'test@user.com' ]."
+  data-lock={
+    Immutable.Map {
+      "id": "__lock-id__",
+      "i18n": Immutable.Map {
+        "strings": Immutable.Map {
+          "passwordlessEmailCodeInstructions": "An email with the code has been sent to %s.",
+          "passwordlessSMSCodeInstructions": "An SMS with the code has been sent to %s.",
+        },
+      },
+      "field": Immutable.Map {
+        "email": Immutable.Map {
+          "valid": true,
+          "value": "test@user.com",
+          "showInvalid": false,
+        },
+      },
+    }
+  }
+  data-onRestart={[Function]}
+  data-placeholder=" []"
+  data-resendLabel=" []"
+/>
+`;

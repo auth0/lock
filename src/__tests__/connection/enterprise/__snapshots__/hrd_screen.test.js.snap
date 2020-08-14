@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HRDScreen Component renders correctly when there is an enterprise domain 1`] = `
+<div
+  data-__type="hrd_pane"
+  data-header={
+    <p>
+      Please enter your corporate credentials at [ 'domain.com' ].
+    </p>
+  }
+  data-i18n={
+    Object {
+      "str": [Function],
+    }
+  }
+  data-model={
+    Immutable.Map {
+      "id": "__lock-id__",
+      "i18n": Immutable.Map {
+        "strings": Immutable.Map {
+          "enterpriseLoginIntructions": "Login with your corporate credentials.",
+          "enterpriseActiveLoginInstructions": "Please enter your corporate credentials at %s.",
+        },
+      },
+    }
+  }
+  data-passwordInputPlaceholder=" []"
+  data-usernameInputPlaceholder=" []"
+/>
+`;
+
+exports[`HRDScreen Component renders correctly when there is no enterprise domain 1`] = `
+<div
+  data-__type="hrd_pane"
+  data-header={
+    <p>
+      Login with your corporate credentials. []
+    </p>
+  }
+  data-i18n={
+    Object {
+      "str": [Function],
+    }
+  }
+  data-model={
+    Immutable.Map {
+      "id": "__lock-id__",
+      "i18n": Immutable.Map {
+        "strings": Immutable.Map {
+          "enterpriseLoginIntructions": "Login with your corporate credentials.",
+          "enterpriseActiveLoginInstructions": "Please enter your corporate credentials at %s.",
+        },
+      },
+    }
+  }
+  data-passwordInputPlaceholder=" []"
+  data-usernameInputPlaceholder=" []"
+/>
+`;

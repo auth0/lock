@@ -98,7 +98,7 @@ export default {
   passwordlessEmailInstructions: 'Enter your email to sign in<br/>or create an account',
   passwordlessSMSAlternativeInstructions:
     'Otherwise, enter your phone to sign in<br/>or create an account',
-  passwordlessSMSCodeInstructions: 'An SMS with the code has been sent<br/>to %s.',
+  passwordlessSMSCodeInstructions: 'An SMS with the code has been sent to %s.',
   passwordlessSMSInstructions: 'Enter your phone to sign in<br/>or create an account',
   phoneNumberInputPlaceholder: 'your phone number',
   resendCodeAction: 'Did not get the code?',

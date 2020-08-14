@@ -9,8 +9,8 @@ import { humanPhoneNumberWithDiallingCode } from '../../field/phone_number';
 
 const Component = ({ i18n, model }) => {
   const instructions = isEmail(model)
-    ? i18n.html('passwordlessEmailCodeInstructions', getFieldValue(model, 'email'))
-    : i18n.html('passwordlessSMSCodeInstructions', humanPhoneNumberWithDiallingCode(model));
+    ? i18n.str('passwordlessEmailCodeInstructions', getFieldValue(model, 'email'))
+    : i18n.str('passwordlessSMSCodeInstructions', humanPhoneNumberWithDiallingCode(model));
 
   return (
     <VcodePane
