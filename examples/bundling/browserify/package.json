@@ -15,7 +15,7 @@
     ]
   },
   "dependencies": {
-    "auth0-lock": "^10.7.0"
+    "auth0-lock": "^11.26.3"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
