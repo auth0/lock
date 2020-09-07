@@ -13,7 +13,8 @@ jest.mock('connection/database/actions');
 const mockId = 1;
 jest.mock('core/index', () => ({
   id: () => mockId,
-  captcha: () => undefined
+  captcha: () => undefined,
+  connectionResolver: jest.fn()
 }));
 
 import LoginPane from 'connection/database/login_pane';
@@ -30,10 +31,15 @@ describe('LoginPane', () => {
     usernameInputPlaceholder: 'usernameInputPlaceholder'
   };
   const databaseIndexMock = require('connection/database/index');
+  const coreMock = require('core/index');
 
   beforeEach(() => {
     databaseIndexMock.hasScreen.mockImplementation(() => true);
     databaseIndexMock.forgotPasswordLink.mockImplementation(() => 'forgotPasswordLink');
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it('renders correctly', () => {
@@ -43,6 +49,10 @@ describe('LoginPane', () => {
     expectComponent(<LoginPane {...defaultProps} instructions="instructions" />).toMatchSnapshot();
   });
   it('shows email pane when user usernameStyle === email', () => {
+    expectComponent(<LoginPane {...defaultProps} usernameStyle="email" />).toMatchSnapshot();
+  });
+  it('shows username pane when connectionResolver is specified, even if usernameStyle is email', () => {
+    coreMock.connectionResolver.mockImplementation(() => () => true);
     expectComponent(<LoginPane {...defaultProps} usernameStyle="email" />).toMatchSnapshot();
   });
   it('shows username pane when user usernameStyle !== email', () => {
