@@ -25,6 +25,11 @@ function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VAL
     return false;
   }
 
+  // check if user name is an email
+  if (validateEmail(str) === true) {
+    return false;
+  }
+
   // check allowed characters matched
   const result = regExp.exec(lowercased);
   return !!(result && result[0]);
