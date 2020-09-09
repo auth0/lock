@@ -3,6 +3,7 @@
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Flock.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Flock?ref=badge_shield)
 
 # Lock
 
@@ -606,3 +607,6 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [downloads-url]: https://npmjs.org/package/auth0-lock
 [david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Flock.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Flock?ref=badge_large)
