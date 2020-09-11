@@ -166,6 +166,37 @@ exports[`LoginPane shows header when instructions is not empty 1`] = `
 </div>
 `;
 
+exports[`LoginPane shows username pane when connectionResolver is specified, even if usernameStyle is email 1`] = `
+<div>
+  <div
+    data-__type="username_pane"
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="usernameInputPlaceholder"
+    data-usernameStyle="email"
+    data-validateFormat={false}
+  />
+  <div
+    data-__type="password_pane"
+    data-hidden={false}
+    data-i18n={Object {}}
+    data-lock={Object {}}
+    data-placeholder="passwordInputPlaceholder"
+  />
+  <p
+    className="auth0-lock-alternative"
+  >
+    <a
+      className="auth0-lock-alternative-link"
+      href="forgotPasswordLink"
+      onClick={undefined}
+    >
+      forgotPasswordAction
+    </a>
+  </p>
+</div>
+`;
+
 exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
 <div>
   <div

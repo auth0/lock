@@ -36,7 +36,7 @@ export const STRATEGIES = {
   soundcloud: 'Soundcloud',
   thecity: 'The City',
   'thecity-sandbox': 'The City (sandbox)',
-  thirtysevensignals: '37 Signals',
+  thirtysevensignals: 'Basecamp',
   twitter: 'Twitter',
   vkontakte: 'vKontakte',
   windowslive: 'Microsoft Account',
