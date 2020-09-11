@@ -1,5 +1,4 @@
 import trim from 'trim';
-import _isEmail from 'validator/lib/isEmail';
 
 import { setField } from './index';
 import { isHRDEmailValid } from '../connection/enterprise';
@@ -14,7 +13,7 @@ export function isEmail(str) {
     return false;
   }
   const trimmed = trim(str);
-  return _isEmail(trimmed);
+  return trimmed.indexOf('@') >= 0 && trimmed.indexOf('.') >= 0 && trimmed.indexOf(' ') === -1;
 }
 
 export function setEmail(m, str) {
