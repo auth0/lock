@@ -62,7 +62,8 @@ function processDatabaseOptions(opts) {
     mustAcceptTerms,
     showTerms,
     signUpLink,
-    usernameStyle
+    usernameStyle,
+    signUpFieldsStrictValidation
   } = opts;
 
   let { initialScreen, screens } = processScreenOptions(opts);
@@ -89,6 +90,10 @@ function processDatabaseOptions(opts) {
 
   if (!assertMaybeBoolean(opts, 'showTerms')) {
     showTerms = true;
+  }
+
+  if (!assertMaybeBoolean(opts, 'signUpFieldsStrictValidation')) {
+    signUpFieldsStrictValidation = false;
   }
 
   if (!assertMaybeArray(opts, 'additionalSignUpFields')) {
@@ -253,7 +258,8 @@ function processDatabaseOptions(opts) {
     showTerms,
     screens,
     signUpLink,
-    usernameStyle
+    usernameStyle,
+    signUpFieldsStrictValidation
   })
     .filter(x => typeof x !== 'undefined')
     .toJS();
@@ -444,6 +450,10 @@ export function additionalSignUpFields(m) {
 
 export function showTerms(m) {
   return get(m, 'showTerms', true);
+}
+
+export function signUpFieldsStrictValidation(m) {
+  return get(m, 'signUpFieldsStrictValidation', false);
 }
 
 export function mustAcceptTerms(m) {

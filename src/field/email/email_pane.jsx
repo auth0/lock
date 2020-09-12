@@ -9,19 +9,21 @@ import { debouncedRequestAvatar, requestAvatar } from '../../avatar';
 
 export default class EmailPane extends React.Component {
   componentDidMount() {
-    const { lock } = this.props;
+    const { lock, strictValidation } = this.props;
     if (l.ui.avatar(lock) && c.email(lock)) {
       requestAvatar(l.id(lock), c.email(lock));
     }
+
+    swap(updateEntity, 'lock', l.id(lock), setEmail, c.email(lock), strictValidation);
   }
 
   handleChange(e) {
-    const { lock } = this.props;
+    const { lock, strictValidation } = this.props;
     if (l.ui.avatar(lock)) {
       debouncedRequestAvatar(l.id(lock), e.target.value);
     }
 
-    swap(updateEntity, 'lock', l.id(lock), setEmail, e.target.value);
+    swap(updateEntity, 'lock', l.id(lock), setEmail, e.target.value, strictValidation);
   }
 
   render() {
@@ -53,5 +55,6 @@ export default class EmailPane extends React.Component {
 EmailPane.propTypes = {
   i18n: PropTypes.object.isRequired,
   lock: PropTypes.object.isRequired,
-  placeholder: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired,
+  strictValidation: PropTypes.bool.isRequired
 };

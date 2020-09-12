@@ -6,7 +6,12 @@ import trim from 'trim';
 const DEFAULT_CONNECTION_VALIDATION = { username: { min: 1, max: 15 } };
 const regExp = /^[a-zA-Z0-9_+\-.!#\$\^`~@']*$/;
 
-function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VALIDATION.username) {
+function validateUsername(
+  str,
+  validateFormat,
+  settings = DEFAULT_CONNECTION_VALIDATION.username,
+  strictValidation = false
+) {
   // If the connection does not have validation settings, it should only check if the field is empty.
   // validateFormat overrides this logic to disable validation on login (login should never validate format)
   if (!validateFormat || settings == null) {
@@ -26,7 +31,7 @@ function validateUsername(str, validateFormat, settings = DEFAULT_CONNECTION_VAL
   }
 
   // check if user name is an email
-  if (validateEmail(str) === true) {
+  if (strictValidation && validateEmail(str) === true) {
     return false;
   }
 
@@ -40,7 +45,13 @@ export function getUsernameValidation(m) {
   return usernameValidation ? usernameValidation.toJS() : null;
 }
 
-export function setUsername(m, str, usernameStyle = 'username', validateUsernameFormat = true) {
+export function setUsername(
+  m,
+  str,
+  usernameStyle = 'username',
+  validateUsernameFormat = true,
+  strictValidation = false
+) {
   const usernameValidation = validateUsernameFormat ? getUsernameValidation(m) : null;
 
   const validator = value => {
@@ -48,11 +59,16 @@ export function setUsername(m, str, usernameStyle = 'username', validateUsername
       case 'email':
         return validateEmail(value);
       case 'username':
-        return validateUsername(value, validateUsernameFormat, usernameValidation);
+        return validateUsername(
+          value,
+          validateUsernameFormat,
+          usernameValidation,
+          strictValidation
+        );
       default:
         return usernameLooksLikeEmail(value)
           ? validateEmail(value)
-          : validateUsername(value, validateUsernameFormat, usernameValidation);
+          : validateUsername(value, validateUsernameFormat, usernameValidation, strictValidation);
     }
   };
 

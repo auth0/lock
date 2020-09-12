@@ -42,6 +42,7 @@ export default class LoginPane extends React.Component {
           lock={lock}
           forceInvalidVisibility={!showPassword}
           placeholder={emailInputPlaceholder}
+          strictValidation={false}
         />
       ) : (
         <UsernamePane
@@ -50,6 +51,7 @@ export default class LoginPane extends React.Component {
           placeholder={usernameInputPlaceholder}
           usernameStyle={usernameStyle}
           validateFormat={false}
+          strictValidation={false}
         />
       );
 

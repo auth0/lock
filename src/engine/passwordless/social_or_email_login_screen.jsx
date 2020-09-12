@@ -23,7 +23,12 @@ const Component = ({ i18n, model }) => {
   ) : null;
 
   const email = l.hasSomeConnections(model, 'passwordless', 'email') ? (
-    <EmailPane i18n={i18n} lock={model} placeholder={i18n.str('emailInputPlaceholder')} />
+    <EmailPane
+      i18n={i18n}
+      lock={model}
+      placeholder={i18n.str('emailInputPlaceholder')}
+      strictValidation={false}
+    />
   ) : null;
 
   // TODO: instructions can't be on EmailPane because it breaks the CSS,

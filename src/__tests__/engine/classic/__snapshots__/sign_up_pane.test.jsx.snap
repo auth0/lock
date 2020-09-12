@@ -12,6 +12,7 @@ exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
     }
     data-lock="model"
     data-placeholder="emailInputPlaceholder"
+    data-strictValidation={true}
   />
   <div
     data-__type="password_pane"
@@ -41,6 +42,7 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
     }
     data-lock="model"
     data-placeholder="emailInputPlaceholder"
+    data-strictValidation={true}
   />
   <div
     data-__type="username_pane"
@@ -52,6 +54,7 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
     }
     data-lock="model"
     data-placeholder="usernameInputPlaceholder"
+    data-strictValidation={true}
     data-validateFormat={true}
   />
   <div
@@ -82,6 +85,7 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
     }
     data-lock="model"
     data-placeholder="emailInputPlaceholder"
+    data-strictValidation={true}
   />
   <div
     data-__type="password_pane"
@@ -137,6 +141,7 @@ exports[`SignUpPane renders only email by default 1`] = `
     }
     data-lock="model"
     data-placeholder="emailInputPlaceholder"
+    data-strictValidation={true}
   />
 </div>
 `;
@@ -156,6 +161,7 @@ exports[`SignUpPane shows header when instructions are available 1`] = `
     }
     data-lock="model"
     data-placeholder="emailInputPlaceholder"
+    data-strictValidation={true}
   />
 </div>
 `;

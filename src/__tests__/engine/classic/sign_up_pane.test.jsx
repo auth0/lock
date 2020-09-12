@@ -17,7 +17,8 @@ describe('SignUpPane', () => {
     jest.mock('connection/database/index', () => ({
       additionalSignUpFields: () => [],
       databaseConnectionRequiresUsername: () => false,
-      passwordStrengthPolicy: () => 'passwordStrengthPolicy'
+      passwordStrengthPolicy: () => 'passwordStrengthPolicy',
+      signUpFieldsStrictValidation: () => true
     }));
   });
   const defaultProps = {
@@ -30,7 +31,8 @@ describe('SignUpPane', () => {
     onlyEmail: true,
     passwordInputPlaceholder: 'passwordInputPlaceholder',
     passwordStrengthMessages: 'passwordStrengthMessages',
-    usernameInputPlaceholder: 'usernameInputPlaceholder'
+    usernameInputPlaceholder: 'usernameInputPlaceholder',
+    strictValidation: false
   };
   it('renders only email by default', () => {
     const Component = getComponent();
