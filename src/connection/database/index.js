@@ -389,6 +389,10 @@ export function databaseConnectionRequiresUsername(m) {
 
 export function databaseUsernameStyle(m) {
   if (l.hasSomeConnections(m, 'database')) {
+    if (l.connectionResolver(m)) {
+      return 'username';
+    }
+
     return databaseConnectionRequiresUsername(m) ? get(m, 'usernameStyle', 'any') : 'email';
   }
 
