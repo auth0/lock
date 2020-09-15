@@ -8,19 +8,28 @@ import { setUsername, usernameLooksLikeEmail, getUsernameValidation } from '../u
 import { debouncedRequestAvatar, requestAvatar } from '../../avatar';
 
 export default class UsernamePane extends React.Component {
-  componentDidMount() {
-    const { lock } = this.props;
+  componentDidMount(e) {
+    const { lock, validateFormat, usernameStyle, strictValidation } = this.props;
     if (l.ui.avatar(lock) && c.username(lock)) {
       requestAvatar(l.id(lock), c.username(lock));
     }
+    swap(
+      updateEntity,
+      'lock',
+      l.id(lock),
+      setUsername,
+      c.username(lock),
+      usernameStyle,
+      validateFormat,
+      strictValidation
+    );
   }
 
   handleChange(e) {
-    const { lock, validateFormat, usernameStyle } = this.props;
+    const { lock, validateFormat, usernameStyle, strictValidation } = this.props;
     if (l.ui.avatar(lock)) {
       debouncedRequestAvatar(l.id(lock), e.target.value);
     }
-
     swap(
       updateEntity,
       'lock',
@@ -28,7 +37,8 @@ export default class UsernamePane extends React.Component {
       setUsername,
       e.target.value,
       usernameStyle,
-      validateFormat
+      validateFormat,
+      strictValidation
     );
   }
 
@@ -80,7 +90,8 @@ UsernamePane.propTypes = {
   lock: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
   validateFormat: PropTypes.bool.isRequired,
-  usernameStyle: PropTypes.oneOf(['any', 'email', 'username'])
+  usernameStyle: PropTypes.oneOf(['any', 'email', 'username']),
+  strictValidation: PropTypes.bool.isRequired
 };
 
 UsernamePane.defaultProps = {

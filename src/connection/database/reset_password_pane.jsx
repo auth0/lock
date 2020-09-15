@@ -15,7 +15,12 @@ export default class ResetPasswordPane extends React.Component {
     return (
       <div>
         {header}
-        <EmailPane i18n={i18n} lock={lock} placeholder={emailInputPlaceholder} />
+        <EmailPane
+          i18n={i18n}
+          lock={lock}
+          placeholder={emailInputPlaceholder}
+          strictValidation={false}
+        />
       </div>
     );
   }

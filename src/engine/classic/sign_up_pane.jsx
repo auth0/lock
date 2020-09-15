@@ -6,7 +6,8 @@ import CustomInput from '../../field/custom_input';
 import {
   additionalSignUpFields,
   databaseConnectionRequiresUsername,
-  passwordStrengthPolicy
+  passwordStrengthPolicy,
+  signUpFieldsStrictValidation
 } from '../../connection/database/index';
 import CaptchaPane from '../../field/captcha/captcha_pane';
 import * as l from '../../core/index';
@@ -35,6 +36,7 @@ export default class SignUpPane extends React.Component {
           lock={model}
           placeholder={usernameInputPlaceholder}
           validateFormat={true}
+          strictValidation={signUpFieldsStrictValidation(model)}
         />
       ) : null;
 
@@ -74,7 +76,12 @@ export default class SignUpPane extends React.Component {
     return (
       <div>
         {header}
-        <EmailPane i18n={i18n} lock={model} placeholder={emailInputPlaceholder} />
+        <EmailPane
+          i18n={i18n}
+          lock={model}
+          placeholder={emailInputPlaceholder}
+          strictValidation={signUpFieldsStrictValidation(model)}
+        />
         {usernamePane}
         {passwordPane}
         {captchaPane}
