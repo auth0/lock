@@ -19,11 +19,18 @@ export default class PasswordPane extends React.Component {
   render() {
     const { i18n, lock, placeholder, policy, strengthMessages, hidden } = this.props;
     const hiddenCss = hidden ? ' auth0-lock-hidden' : '';
+
+    // TODO: invalidErrorHint and blankErrorHint are deprecated.
+    // They are kept for backwards compatibiliy in the code for the customers overwriting
+    // them with languageDictionary. They can be removed in the next major release.
+    const invalidHint = c.getFieldValue(lock, 'password')
+      ? i18n.str('invalidErrorHint') || i18n.str('invalidPasswordErrorHint')
+      : i18n.str('blankErrorHint') || i18n.str('blankPasswordErrorHint');
     return (
       <div className={`auth0-lock-input-block auth0-lock-input-show-password${hiddenCss}`}>
         <PasswordInput
           value={c.getFieldValue(lock, 'password')}
-          invalidHint={i18n.str('blankErrorHint')}
+          invalidHint={invalidHint}
           showPasswordStrengthMessage={!c.isFieldValid(lock, 'password')}
           isValid={!c.isFieldVisiblyInvalid(lock, 'password')}
           onChange={this.handleChange}

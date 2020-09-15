@@ -48,9 +48,15 @@ export default class UsernamePane extends React.Component {
     const value = c.getFieldValue(lock, 'username');
     const usernameValidation = validateFormat ? getUsernameValidation(lock) : {};
 
+    // TODO: invalidErrorHint and blankErrorHint are deprecated.
+    // They are kept for backwards compatibiliy in the code for the customers overwriting
+    // them with languageDictionary. They can be removed in the next major release.
     const invalidHintKey = str => {
-      if (!str) return 'blankErrorHint';
-      if (usernameLooksLikeEmail(str) || !validateFormat) return 'invalidErrorHint';
+      if (!str) {
+        return i18n.str('blankErrorHint') ? 'blankErrorHint' : 'blankUsernameErrorHint';
+      }
+      if (usernameLooksLikeEmail(str) || !validateFormat)
+        return i18n.str('invalidErrorHint') ? 'invalidErrorHint' : 'invalidUsernameErrorHint';
       return 'usernameFormatErrorHint';
     };
 

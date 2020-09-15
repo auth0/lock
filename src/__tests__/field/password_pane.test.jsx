@@ -106,4 +106,9 @@ describe('PasswordPane', () => {
     expect(mock.calls.length).toBe(1);
     expect(mock.calls[0]).toMatchSnapshot();
   });
+  it('sets `blankErrorHint` when password is empty', () => {
+    require('field/index').getFieldValue = (m, field) => '';
+    const PasswordPane = getComponent();
+    expectComponent(<PasswordPane {...defaultProps} />).toMatchSnapshot();
+  });
 });
