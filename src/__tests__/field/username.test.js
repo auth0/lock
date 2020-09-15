@@ -135,6 +135,9 @@ describe('field/username', () => {
           it('validates max length', () => {
             expectToFailWith('aaaaaa');
           });
+          it('email is used as user name', () => {
+            expectToFailWith('a@a.com');
+          });
           it('validates invalid chars', () => {
             const invalidChars = `{}[],;?/\\%¨&*()¹²³ªº§£¢¬<>|" `.split('');
             invalidChars.forEach(i => expectToFailWith(`aa${i}`));

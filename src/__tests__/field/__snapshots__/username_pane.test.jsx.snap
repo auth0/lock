@@ -9,6 +9,7 @@ Array [
   "newUser",
   "any",
   false,
+  false,
 ]
 `;
 

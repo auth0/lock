@@ -18,7 +18,8 @@ describe('UsernamePane', () => {
     usernameStyle: 'any',
     showForgotPasswordLink: true,
     showPassword: true,
-    usernameInputPlaceholder: 'usernameInputPlaceholder'
+    usernameInputPlaceholder: 'usernameInputPlaceholder',
+    strictValidation: false
   };
 
   beforeEach(() => {
@@ -116,7 +117,7 @@ describe('UsernamePane', () => {
     props.onChange({ target: { value: 'newUser' } });
 
     const { mock } = require('store/index').swap;
-    expect(mock.calls.length).toBe(1);
-    expect(mock.calls[0]).toMatchSnapshot();
+    expect(mock.calls.length).toBe(2);
+    expect(mock.calls[1]).toMatchSnapshot();
   });
 });

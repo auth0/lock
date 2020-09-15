@@ -14,7 +14,8 @@ describe('EmailPane', () => {
       str: (...keys) => keys.join(',')
     },
     lock: {},
-    placeholder: 'placeholder'
+    placeholder: 'placeholder',
+    strictValidation: false
   };
 
   beforeEach(() => {
@@ -110,7 +111,7 @@ describe('EmailPane', () => {
     props.onChange({ target: { value: 'newUser@example.com' } });
 
     const { mock } = require('store/index').swap;
-    expect(mock.calls.length).toBe(1);
-    expect(mock.calls[0]).toMatchSnapshot();
+    expect(mock.calls.length).toBe(2);
+    expect(mock.calls[1]).toMatchSnapshot();
   });
 });
