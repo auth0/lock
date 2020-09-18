@@ -1,5 +1,21 @@
 # Change Log
 
+## [v11.27.0](https://github.com/auth0/lock/tree/v11.27.0) (2020-09-18)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.26.3...v11.27.0)
+
+
+**Changed**
+- Better flash error messages on incorrect, empty fields. [\#1923](https://github.com/auth0/lock/pull/1923) ([saltukalakus](https://github.com/saltukalakus))
+- [SDK-1946] Update Basecamp logo [\#1922](https://github.com/auth0/lock/pull/1922) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- [SDK-1911] Always use UsernamePane when using custom resolver [\#1918](https://github.com/auth0/lock/pull/1918) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+- Dependencies [\#1924](https://github.com/auth0/lock/pull/1924) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Add license scan report and status [\#1920](https://github.com/auth0/lock/pull/1920) ([fossabot](https://github.com/fossabot))
+
+
 ## [v11.26.3](https://github.com/auth0/lock/tree/v11.26.3) (2020-08-14)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.26.2...v11.26.3)
 
