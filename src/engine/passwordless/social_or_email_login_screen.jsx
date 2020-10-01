@@ -3,7 +3,7 @@ import Screen from '../../core/screen';
 import EmailPane from '../../field/email/email_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import PaneSeparator from '../../core/pane_separator';
-import { mustAcceptTerms, termsAccepted } from '../../connection/passwordless/index';
+import { mustAcceptTerms, termsAccepted, showTerms } from '../../connection/passwordless/index';
 import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
 import { requestPasswordlessEmail } from '../../connection/passwordless/actions';
 import { renderEmailSentConfirmation } from '../../connection/passwordless/email_sent_confirmation';
@@ -77,7 +77,7 @@ export default class SocialOrEmailLoginScreen extends Screen {
 
   renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
-    return terms || mustAcceptTerms(m) ? (
+    return terms && showTerms(m) ? (
       <SignUpTerms
         showCheckbox={mustAcceptTerms(m)}
         checkHandler={checkHandler}
