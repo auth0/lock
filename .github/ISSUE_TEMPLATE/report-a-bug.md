@@ -4,6 +4,7 @@ about: Have you found a bug or issue? Create a bug report for this SDK
 title: ''
 labels: bug report
 assignees: ''
+
 ---
 
 **Please do not report security vulnerabilities here**. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
