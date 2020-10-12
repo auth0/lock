@@ -54,6 +54,7 @@ export default class Base extends EventEmitter {
       'signup error',
       'socialOrPhoneNumber submit',
       'socialOrEmail submit',
+      'sso login',
       'vcode submit',
       'federated login'
     ];
