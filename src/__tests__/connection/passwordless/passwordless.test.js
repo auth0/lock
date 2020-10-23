@@ -63,6 +63,22 @@ describe('passwordless connection', () => {
         });
         expectMockToMatch(mockFns.initNS, 1);
       });
+      it('with showTerms:true when opts.showTerms is undefined', () => {
+        initPasswordless(null, {});
+        expectMockToMatch(mockFns.initNS, 1);
+      });
+      it('with showTerms:true when opts.showTerms is true', () => {
+        initPasswordless(null, {
+          showTerms: true
+        });
+        expectMockToMatch(mockFns.initNS, 1);
+      });
+      it('with showTerms:false when opts.showTerms is false', () => {
+        initPasswordless(null, {
+          showTerms: false
+        });
+        expectMockToMatch(mockFns.initNS, 1);
+      });
     });
     it('should load default location via options.defaultLocation', () => {
       initPasswordless(null, {
@@ -89,7 +105,6 @@ describe('passwordless connection', () => {
       expectMockToMatch(mockFns.get, 1);
     });
   });
-
   describe('toggleTermsAcceptance()', () => {
     it('should tset `termsAccepted` to false when `termsAccepted` is true', () => {
       mockFns.get.mockReturnValue(true);
