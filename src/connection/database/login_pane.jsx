@@ -9,10 +9,10 @@ import * as l from '../../core/index';
 import CaptchaPane from '../../field/captcha/captcha_pane';
 
 export default class LoginPane extends React.Component {
-  handleDontRememberPasswordClick(e) {
+  handleDontRememberPasswordClick = e => {
     e.preventDefault();
     showResetPasswordActivity(l.id(this.props.lock));
-  }
+  };
 
   render() {
     const {
@@ -65,8 +65,8 @@ export default class LoginPane extends React.Component {
         <p className="auth0-lock-alternative">
           <a
             className="auth0-lock-alternative-link"
-            href={forgotPasswordLink(lock, 'javascript:void(0)')}
-            onClick={forgotPasswordLink(lock) ? undefined : ::this.handleDontRememberPasswordClick}
+            href={forgotPasswordLink(lock, '#')}
+            onClick={forgotPasswordLink(lock) ? undefined : this.handleDontRememberPasswordClick}
           >
             {forgotPasswordAction}
           </a>

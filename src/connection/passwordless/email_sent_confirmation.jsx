@@ -16,7 +16,7 @@ class ResendLink extends React.Component {
   render() {
     const { label, onClick } = this.props;
     return (
-      <a className="auth0-lock-resend-link" href="javascript:void(0)" onClick={onClick}>
+      <a className="auth0-lock-resend-link" href="#" onClick={onClick}>
         {label} <span dangerouslySetInnerHTML={{ __html: retrySvg }} />
       </a>
     );
@@ -29,7 +29,7 @@ class Resend extends React.Component {
 
     const resendLink = m.resendAvailable(lock) && (
       <ResendLink
-        onClick={::this.handleClick}
+        onClick={this.handleClick}
         label={m.resendFailed(lock) ? labels.retry : labels.resend}
       />
     );
@@ -56,16 +56,16 @@ class Resend extends React.Component {
     );
   }
 
-  handleClick(e) {
+  handleClick = e => {
     e.preventDefault();
     resendEmail(l.id(this.props.lock));
-  }
+  };
 }
 
 export default class EmailSentConfirmation extends React.Component {
   render() {
     const { lock } = this.props;
-    const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
+    const closeHandler = l.ui.closable(lock) ? this.handleClose : undefined;
     const labels = {
       failed: i18n.str(lock, 'failedLabel'),
       resend: i18n.str(lock, 'resendLabel'),
@@ -75,7 +75,11 @@ export default class EmailSentConfirmation extends React.Component {
     };
 
     return (
-      <SuccessPane lock={lock} backHandler={::this.handleBack} closeHandler={closeHandler}>
+      <SuccessPane
+        lock={lock}
+        backHandler={() => this.handleBack()}
+        closeHandler={() => closeHandler()}
+      >
         <p>{i18n.html(lock, ['success', 'magicLink'], c.email(lock))}</p>
         <Resend labels={labels} lock={lock} />
       </SuccessPane>

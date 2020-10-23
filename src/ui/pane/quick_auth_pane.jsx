@@ -19,7 +19,7 @@ const QuickAuthPane = props => {
     <p className="auth0-lock-alternative">
       <a
         className="auth0-lock-alternative-link"
-        href="javascript:void(0)"
+        href="#"
         onClick={e => {
           e.preventDefault();
           alternativeClickHandler(e);
