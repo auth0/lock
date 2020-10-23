@@ -8,7 +8,7 @@ import PaneSeparator from '../../core/pane_separator';
 import * as l from '../../core/index';
 
 import { renderOptionSelection } from '../../field/index';
-import { mustAcceptTerms, termsAccepted } from '../../connection/passwordless/index';
+import { mustAcceptTerms, termsAccepted, showTerms } from '../../connection/passwordless/index';
 import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
 import SignUpTerms from '../../connection/database/sign_up_terms';
 
@@ -68,7 +68,7 @@ export default class AskSocialNetworkOrPhoneNumber extends Screen {
 
   renderTerms(m, terms) {
     const checkHandler = mustAcceptTerms(m) ? () => toggleTermsAcceptance(l.id(m)) : undefined;
-    return terms || mustAcceptTerms(m) ? (
+    return terms && showTerms(m) ? (
       <SignUpTerms
         showCheckbox={mustAcceptTerms(m)}
         checkHandler={checkHandler}
