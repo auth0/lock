@@ -1,5 +1,15 @@
 # Change Log
 
+## [v11.27.1](https://github.com/auth0/lock/tree/v11.27.1) (2020-10-26)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.27.0...v11.27.1)
+
+
+**Fixed**
+- Remove top padding from wrapper element [\#1939](https://github.com/auth0/lock/pull/1939) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Remove javascript:void(0) from links that do not navigate [\#1938](https://github.com/auth0/lock/pull/1938) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Respect showTerms option for passworless [\#1931](https://github.com/auth0/lock/pull/1931) ([saltukalakus](https://github.com/saltukalakus))
+
+
 ## [v11.27.0](https://github.com/auth0/lock/tree/v11.27.0) (2020-09-18)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.26.3...v11.27.0)
 
