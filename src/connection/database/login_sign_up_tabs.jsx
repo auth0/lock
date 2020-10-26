@@ -54,14 +54,14 @@ LoginSignUpTabs.propTypes = {
 };
 
 class LoginSignUpTab extends React.Component {
-  handleClick(e) {
+  handleClick = e => {
     if (this.props.href) {
       this.props.clickWithHrefHandler();
     } else {
       e.preventDefault();
       this.props.clickHandler();
     }
-  }
+  };
 
   render() {
     const { current, href, label } = this.props;
@@ -72,7 +72,7 @@ class LoginSignUpTab extends React.Component {
         {current ? (
           <span>{label}</span>
         ) : (
-          <a href={href || 'javascript:void(0)'} onClick={::this.handleClick}>
+          <a href={href || '#'} onClick={this.handleClick}>
             {label}
           </a>
         )}
