@@ -108,9 +108,12 @@ loadingSize = 30px
 
   .auth0-lock-center
     +breakpoint("mobile")
-      vertical-align middle
-      display table-cell
-      margin auto
+      // vertical-align middle
+      // display table-cell
+      // margin auto
+      padding 40px
+      height 100%
+      display flex
 
   .auth0-lock-widget
     width 300px
@@ -119,7 +122,7 @@ loadingSize = 30px
     transform translateY(100%) scale(.8)
     -webkit-transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
-    margin 0 auto
+    margin auto
     border-radius 5px
 
     +breakpoint("mobile")
@@ -150,8 +153,9 @@ loadingSize = 30px
     flex-direction: column
     calculateHeight()
     max-height auto
+
     +breakpoint("mobile")
-      max-height: calc(100vh - 40px)
+      // max-height: calc(100vh - 40px)
       min-height auto
       height auto
 
@@ -182,7 +186,9 @@ loadingSize = 30px
     flex-shrink: 1
     flex-basis: auto
     -webkit-overflow-scrolling touch
-    overflow-x: auto
+    overflow-x auto
+    +breakpoint("mobile")
+      overflow-x inherit
 
   .auth0-lock-content-body-wrapper
     // padding-top 10px
