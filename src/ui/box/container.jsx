@@ -59,6 +59,7 @@ class EscKeyDownHandler {
 }
 
 const IPHONE = global.navigator && !!global.navigator.userAgent.match(/iPhone/i);
+const isAppleWebkitSafari = () => navigator.userAgent.match(/AppleWebKit.+Version\/.+Safari/);
 
 export default class Container extends React.Component {
   constructor(props) {
@@ -88,6 +89,14 @@ export default class Container extends React.Component {
 
     if (this.props.closeHandler) {
       this.escKeydown = new EscKeyDownHandler(::this.handleEsc);
+    }
+
+    // This is designed to fix a Webkit issue where the Lock widget is sometimes
+    // not drawn inside a popup.
+    if (isAppleWebkitSafari()) {
+      setTimeout(() => {
+        document.querySelector('.auth0-lock').style.fontSize = '1rem';
+      }, 100);
     }
   }
 
