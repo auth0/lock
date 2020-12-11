@@ -5770,9 +5770,9 @@ inherits@2.0.3:
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.7.tgz#a09363e1911972ea16d7a8851005d84cf09a9a84"
+  integrity sha512-iKpRpXP+CrP2jyrxvg1kMUpXDyRUFDWurxbnVT1vQPx+Wz9uCYsMIqYuSBLV+PAaZG/d7kRLKRFc9oDMsH+mFQ==
 
 inline-source-map@~0.6.0:
   version "0.6.2"
@@ -7573,10 +7573,10 @@ mime-types@~1.0.1:
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-1.0.2.tgz#995ae1392ab8affcbfcb2641dd054e943c0d5dce"
   integrity sha1-mVrhOSq4r/y/yyZB3QVOlDwNXc4=
 
-mime@1.2.2, mime@~1.2.7:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.7.tgz#c7a13f33a7073d9900f288436b06b3a16200865b"
-  integrity sha1-x6E/M6cHPZkA8ohDawazoWIAhls=
+mime@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.2.tgz#b9d6355bf53e8d7d56693130e451daff340148cf"
+  integrity sha1-udY1W/U+jX1WaTEw5FHa/zQBSM8=
 
 mime@1.2.5:
   version "1.2.5"
@@ -7597,6 +7597,11 @@ mime@~1.2.11, mime@~1.2.9:
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.11.tgz#58203eed86e3a5ef17aed2b7d9ebd47f0a60dd10"
   integrity sha1-WCA+7Ybjpe8XrtK32evUfwpg3RA=
+
+mime@~1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.7.tgz#c7a13f33a7073d9900f288436b06b3a16200865b"
+  integrity sha1-x6E/M6cHPZkA8ohDawazoWIAhls=
 
 mimic-fn@^1.0.0:
   version "1.2.0"
