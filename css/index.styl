@@ -83,8 +83,6 @@ loadingSize = 30px
   height 100%
   right 0
   z-index 1000000
-  +breakpoint("mobile")
-    display table
 
   a
     text-decoration none
@@ -108,9 +106,6 @@ loadingSize = 30px
 
   .auth0-lock-center
     +breakpoint("mobile")
-      // vertical-align middle
-      // display table-cell
-      // margin auto
       padding 40px
       height 100%
       display flex
@@ -171,15 +166,12 @@ loadingSize = 30px
     overflow hidden
     -webkit-box-sizing border-box
     box-sizing border-box
-    display: flex
-    flex-direction: column
-    justify-content: center
-    flex-shrink: 0
-    flex-grow: 0
-    flex-basis: auto
-    position: absolute
-    width: 100%
-    z-index: 99
+    display flex
+    flex-direction column
+    justify-content center
+    flex-shrink 0
+    flex-grow 0
+    flex-basis auto
 
   .auth0-lock-content-wrapper
     flex-grow: 1
@@ -191,7 +183,7 @@ loadingSize = 30px
       overflow-x inherit
 
   .auth0-lock-content-body-wrapper
-    // padding-top 10px
+    padding-top 10px
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
