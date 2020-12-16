@@ -105,8 +105,6 @@ module.exports = function(grunt) {
         hot: true,
         port: 3000,
         https: getDevCerts() || true,
-        // host: 'bs-local.com',
-        // disableHostCheck: true,
         webpack: {
           devtool: 'source-map'
         }
