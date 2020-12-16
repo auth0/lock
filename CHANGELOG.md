@@ -1,5 +1,17 @@
 # Change Log
 
+## [v11.27.2](https://github.com/auth0/lock/tree/v11.27.2) (2020-12-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.27.1...v11.27.2)
+
+
+**Changed**
+- Update cs.js [\#1944](https://github.com/auth0/lock/pull/1944) ([HopXXII](https://github.com/HopXXII))
+
+**Fixed**
+- [ESD-10361] Fix password strength popup overflow issue [\#1949](https://github.com/auth0/lock/pull/1949) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [ESD-10373] Fix rendering of Lock inside popup on first open [\#1948](https://github.com/auth0/lock/pull/1948) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.27.1](https://github.com/auth0/lock/tree/v11.27.1) (2020-10-26)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.27.0...v11.27.1)
 
