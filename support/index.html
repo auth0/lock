@@ -120,8 +120,8 @@
       });
     </script>
     <script>
-      var clientId = 'BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b';
-      var domain = 'brucke.auth0.com';
+      var clientId = 'TgqxTDJFG2G3H5TjqvIEEVL5i6IcZGye';
+      var domain = 'elkdanger.eu.auth0.com';
       var defaultOptions = {
         mustAcceptTerms: true,
         initialScreen: 'signUp',
@@ -139,22 +139,22 @@
             state: 'bar'
           }
         },
-        additionalSignUpFields: [
-          {
-            name: 'name',
-            placeholder: 'name',
-            validator: function() {
-              return true;
-            }
-          },
-          {
-            name: 'other_name',
-            placeholder: 'other name',
-            validator: function() {
-              return true;
-            }
-          }
-        ]
+        // additionalSignUpFields: [
+        //   {
+        //     name: 'name',
+        //     placeholder: 'name',
+        //     validator: function() {
+        //       return true;
+        //     }
+        //   },
+        //   {
+        //     name: 'other_name',
+        //     placeholder: 'other name',
+        //     validator: function() {
+        //       return true;
+        //     }
+        //   }
+        // ]
       };
       function initLock() {
         var lock = new Auth0Lock(clientId, domain, defaultOptions);
