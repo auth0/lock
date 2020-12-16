@@ -28,10 +28,15 @@ Header.propTypes = {
 };
 
 class Welcome extends React.Component {
+  // Cause a reflow when the image is loaded to fix an issue with the Lock content sometimes
+  // not rendering in a popup on first load.
+  // https://github.com/auth0/lock/issues/1942
+  onImageLoad = () => (document.querySelector('.auth0-lock').style.fontSize = '1rem');
+
   render() {
     const { name, imageUrl, title } = this.props;
     const imgClassName = !!title ? 'auth0-lock-header-logo' : 'auth0-lock-header-logo centered';
-    const img = <img alt="" className={imgClassName} src={imageUrl} />;
+    const img = <img alt="" className={imgClassName} src={imageUrl} onLoad={this.onImageLoad} />;
     const welcome = title ? <WelcomeMessage title={title} name={name} /> : null;
 
     return (
