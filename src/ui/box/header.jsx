@@ -3,8 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BackButton } from './button';
 
-// TODO: simplify this mess :)
-
 export default class Header extends React.Component {
   getDOMNode() {
     return ReactDOM.findDOMNode(this);

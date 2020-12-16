@@ -83,8 +83,6 @@ loadingSize = 30px
   height 100%
   right 0
   z-index 1000000
-  +breakpoint("mobile")
-    display table
 
   a
     text-decoration none
@@ -107,10 +105,11 @@ loadingSize = 30px
     transition opacity .2s ease-in .4s
 
   .auth0-lock-center
+    box-sizing border-box
     +breakpoint("mobile")
-      vertical-align middle
-      display table-cell
-      margin auto
+      padding 40px
+      height 100%
+      display flex
 
   .auth0-lock-widget
     width 300px
@@ -119,7 +118,7 @@ loadingSize = 30px
     transform translateY(100%) scale(.8)
     -webkit-transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
     transition-timing-function cubic-bezier(.3, 0, 0, 1.4)
-    margin 0 auto
+    margin auto
     border-radius 5px
 
     +breakpoint("mobile")
@@ -150,8 +149,8 @@ loadingSize = 30px
     flex-direction: column
     calculateHeight()
     max-height auto
+
     +breakpoint("mobile")
-      max-height: calc(100vh - 40px)
       min-height auto
       height auto
 
@@ -167,25 +166,24 @@ loadingSize = 30px
     overflow hidden
     -webkit-box-sizing border-box
     box-sizing border-box
-    display: flex
-    flex-direction: column
-    justify-content: center
-    flex-shrink: 0
-    flex-grow: 0
-    flex-basis: auto
-    position: absolute
-    width: 100%
-    z-index: 99
+    display flex
+    flex-direction column
+    justify-content center
+    flex-shrink 0
+    flex-grow 0
+    flex-basis auto
 
   .auth0-lock-content-wrapper
     flex-grow: 1
     flex-shrink: 1
     flex-basis: auto
     -webkit-overflow-scrolling touch
-    overflow-x: auto
+    overflow-x auto
+    +breakpoint("mobile")
+      overflow-x inherit
 
   .auth0-lock-content-body-wrapper
-    // padding-top 10px
+    padding-top 10px
 
   .auth0-lock-close-button, .auth0-lock-back-button
     -webkit-box-sizing content-box !important
