@@ -92,7 +92,7 @@ export function signUp(id) {
       if (signUpHideUsernameField(m)) {
         const usernameValidation = databaseConnection(m).getIn(['validation', 'username']);
         const range = usernameValidation ? usernameValidation.toJS() : { max: 15 };
-        params.username = generateRandomUsername(range.max - 1);
+        params.username = generateRandomUsername(range.max);
       } else {
         params.username = c.getFieldValue(m, 'username');
       }
