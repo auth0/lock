@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SignUpPane onlyEmail is false hide UsernamePane when databaseConnectionRequiresUsername is true and signUpHideUsernameField is true 1`] = `
+<div>
+  <div
+    data-__type="email_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="emailInputPlaceholder"
+    data-strictValidation={true}
+  />
+</div>
+`;
+
 exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
 <div>
   <div
@@ -30,7 +47,7 @@ exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
 </div>
 `;
 
-exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectionRequiresUsername is true 1`] = `
+exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectionRequiresUsername is true and signUpHideUsernameField is false 1`] = `
 <div>
   <div
     data-__type="email_pane"

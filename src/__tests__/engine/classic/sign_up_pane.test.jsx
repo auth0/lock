@@ -59,11 +59,19 @@ describe('SignUpPane', () => {
 
       expectComponent(<Component {...defaultProps} onlyEmail={false} />).toMatchSnapshot();
     });
-    it('shows UsernamePane when databaseConnectionRequiresUsername is true', () => {
+    it('shows UsernamePane when databaseConnectionRequiresUsername is true and signUpHideUsernameField is false', () => {
       require('connection/database/index').databaseConnectionRequiresUsername = () => true;
+      require('connection/database/index').signUpHideUsernameField = () => false;
       const Component = getComponent();
 
       expectComponent(<Component {...defaultProps} onlyEmail={false} />).toMatchSnapshot();
+    });
+    it('hide UsernamePane when databaseConnectionRequiresUsername is true and signUpHideUsernameField is true', () => {
+      require('connection/database/index').databaseConnectionRequiresUsername = () => true;
+      require('connection/database/index').signUpHideUsernameField = () => true;
+      const Component = getComponent();
+
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
     });
   });
 });

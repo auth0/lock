@@ -7,7 +7,8 @@ import {
   additionalSignUpFields,
   databaseConnectionRequiresUsername,
   passwordStrengthPolicy,
-  signUpFieldsStrictValidation
+  signUpFieldsStrictValidation,
+  signUpHideUsernameField
 } from '../../connection/database/index';
 import CaptchaPane from '../../field/captcha/captcha_pane';
 import * as l from '../../core/index';
@@ -30,7 +31,7 @@ export default class SignUpPane extends React.Component {
     const header = headerText && <p>{headerText}</p>;
 
     const usernamePane =
-      !onlyEmail && databaseConnectionRequiresUsername(model) ? (
+      !onlyEmail && databaseConnectionRequiresUsername(model) && !signUpHideUsernameField(model) ? (
         <UsernamePane
           i18n={i18n}
           lock={model}

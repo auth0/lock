@@ -5,6 +5,7 @@ import { closeLock, logIn as coreLogIn, logInSuccess, validateAndSubmit } from '
 import * as l from '../../core/index';
 import * as c from '../../field/index';
 import {
+  databaseConnection,
   databaseConnectionName,
   databaseConnectionRequiresUsername,
   databaseLogInWithEmail,
@@ -12,7 +13,8 @@ import {
   setScreen,
   shouldAutoLogin,
   toggleTermsAcceptance as internalToggleTermsAcceptance,
-  additionalSignUpFields
+  additionalSignUpFields,
+  signUpHideUsernameField
 } from './index';
 import * as i18n from '../../i18n';
 
@@ -53,10 +55,24 @@ export function logIn(id, needsMFA = false) {
   });
 }
 
+function generateRandomUsername(length) {
+  let result = '';
+  const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
 export function signUp(id) {
   const m = read(getEntity, 'lock', id);
   const fields = ['email', 'password'];
-  if (databaseConnectionRequiresUsername(m)) fields.push('username');
+
+  // Skip the username validation if signUpHideUsernameField option is enabled.
+  // We will generate a random username to avoid name collusion before we make the signup API call.
+  if (databaseConnectionRequiresUsername(m) && !signUpHideUsernameField(m)) fields.push('username');
+
   additionalSignUpFields(m).forEach(x => fields.push(x.get('name')));
 
   validateAndSubmit(id, fields, m => {
@@ -73,7 +89,13 @@ export function signUp(id) {
     }
 
     if (databaseConnectionRequiresUsername(m)) {
-      params.username = c.getFieldValue(m, 'username');
+      if (signUpHideUsernameField(m)) {
+        const usernameValidation = databaseConnection(m).getIn(['validation', 'username']);
+        const range = usernameValidation ? usernameValidation.toJS() : { max: 15 };
+        params.username = generateRandomUsername(range.max - 1);
+      } else {
+        params.username = c.getFieldValue(m, 'username');
+      }
     }
 
     if (!additionalSignUpFields(m).isEmpty()) {

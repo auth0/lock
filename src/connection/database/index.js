@@ -63,7 +63,8 @@ function processDatabaseOptions(opts) {
     showTerms,
     signUpLink,
     usernameStyle,
-    signUpFieldsStrictValidation
+    signUpFieldsStrictValidation,
+    signUpHideUsernameField
   } = opts;
 
   let { initialScreen, screens } = processScreenOptions(opts);
@@ -94,6 +95,10 @@ function processDatabaseOptions(opts) {
 
   if (!assertMaybeBoolean(opts, 'signUpFieldsStrictValidation')) {
     signUpFieldsStrictValidation = false;
+  }
+
+  if (!assertMaybeBoolean(opts, 'signUpHideUsernameField')) {
+    signUpHideUsernameField = false;
   }
 
   if (!assertMaybeArray(opts, 'additionalSignUpFields')) {
@@ -259,7 +264,8 @@ function processDatabaseOptions(opts) {
     screens,
     signUpLink,
     usernameStyle,
-    signUpFieldsStrictValidation
+    signUpFieldsStrictValidation,
+    signUpHideUsernameField
   })
     .filter(x => typeof x !== 'undefined')
     .toJS();
@@ -454,6 +460,10 @@ export function showTerms(m) {
 
 export function signUpFieldsStrictValidation(m) {
   return get(m, 'signUpFieldsStrictValidation', false);
+}
+
+export function signUpHideUsernameField(m) {
+  return get(m, 'signUpHideUsernameField', false);
 }
 
 export function mustAcceptTerms(m) {
