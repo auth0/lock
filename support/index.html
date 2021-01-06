@@ -127,34 +127,8 @@
         initialScreen: 'signUp',
         allowShowPassword: true,
         usernameStyle: 'email',
-        signUpFieldsStrictValidation: true,
-        defaultDatabaseConnection: 'acme',
-        prefill: {
-          email: 'johnfoo@gmail.com'
-        },
-        passwordlessMethod: 'code',
-        auth: {
-          params: {
-            nonce: 'foo',
-            state: 'bar'
-          }
-        },
-        additionalSignUpFields: [
-          {
-            name: 'name',
-            placeholder: 'name',
-            validator: function() {
-              return true;
-            }
-          },
-          {
-            name: 'other_name',
-            placeholder: 'other name',
-            validator: function() {
-              return true;
-            }
-          }
-        ]
+        defaultDatabaseConnection: 'steve-db',
+        loginAfterSignUp: false
       };
       function initLock() {
         var lock = new Auth0Lock(clientId, domain, defaultOptions);
