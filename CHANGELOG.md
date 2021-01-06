@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.28.0](https://github.com/auth0/lock/tree/v11.28.0) (2021-01-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.27.2...v11.28.0)
+
+**Added**
+- An option to hide username in signup view [\#1954](https://github.com/auth0/lock/pull/1954) ([saltukalakus](https://github.com/saltukalakus))
+
+**Changed**
+- Wording and spelling fixes to Bulgarian language file [\#1953](https://github.com/auth0/lock/pull/1953) ([maximnaidenov](https://github.com/maximnaidenov))
+
 ## [v11.27.2](https://github.com/auth0/lock/tree/v11.27.2) (2020-12-16)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.27.1...v11.27.2)
 
