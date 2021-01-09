@@ -41,7 +41,6 @@ export default class EmailPane extends React.Component {
         : i18n.str('blankErrorHint') || i18n.str('blankEmailErrorHint');
     const invalidHint = field.get('invalidHint') || errMessage;
 
-
     let isValid = (!forceInvalidVisibility || valid) && !c.isFieldVisiblyInvalid(lock, 'email');
     // Hide the error message for the blank email in Enterprise HRD only mode when the password field is hidden.
     isValid = (forceInvalidVisibility && value === '') ? true : isValid;
