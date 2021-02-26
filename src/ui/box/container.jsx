@@ -99,6 +99,11 @@ export default class Container extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // Safari does not disable form submits when the submit button is disabled
+    // on single input (eg. passwordless) forms, so disable it manually.
+    if (this.props.disableSubmitButton) {
+      return;
+    }
 
     this.checkConnectionResolver(() => {
       const { submitHandler } = this.props;
