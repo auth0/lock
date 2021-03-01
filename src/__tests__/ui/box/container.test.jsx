@@ -54,6 +54,24 @@ describe('Container', () => {
     expect(mock.calls.length).toBe(0);
   });
 
+  it('should submit the form when the submit button is not disabled', () => {
+    const c = getContainer({ disableSubmitButton: false });
+    const connectionResolverMock = jest.fn();
+    require('core/index').connectionResolver = () => connectionResolverMock;
+
+    c.handleSubmit(mockEvent);
+    expect(connectionResolverMock).toHaveBeenCalled();
+  });
+
+  it('should not submit the form when the submit button is disabled', () => {
+    const c = getContainer({ disableSubmitButton: true });
+    const connectionResolverMock = jest.fn();
+    require('core/index').connectionResolver = () => connectionResolverMock;
+
+    c.handleSubmit(mockEvent);
+    expect(connectionResolverMock).not.toHaveBeenCalled();
+  });
+
   describe('with a custom `connectionResolver`', () => {
     let connectionResolverMock;
     let setResolvedConnectionMock;
