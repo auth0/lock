@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.28.1](https://github.com/auth0/lock/tree/v11.28.1) (2021-03-01)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.28.0...v11.28.1)
+
+
+**Fixed**
+- Disable form submit manually for passwordless Safari [\#1968](https://github.com/auth0/lock/pull/1968) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
+**Security**
+- Upgrade trim version to fix security issue [\#1960](https://github.com/auth0/lock/pull/1960) ([blankg](https://github.com/blankg))
+
+
 ## [v11.28.0](https://github.com/auth0/lock/tree/v11.28.0) (2021-01-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.27.2...v11.28.0)
 
