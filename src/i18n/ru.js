@@ -114,7 +114,7 @@ export default {
     'Введите адрес электронной почты, чтобы войти<br/>или зарегистрироваться',
   passwordlessSMSAlternativeInstructions:
     'Либо введите Ваш номер телефона, чтобы войти<br/>или зарегистрироваться',
-  passwordlessSMSCodeInstructions: 'СМС с кодом было отправлено<br/>на %s.',
+  passwordlessSMSCodeInstructions: 'СМС с кодом было отправлено на %s.',
   passwordlessSMSInstructions: 'Введите Ваш номер телефона, чтобы войти<br/>или зарегистрироваться',
   phoneNumberInputPlaceholder: 'Ваш номер телефона',
   resendCodeAction: 'Не получили код?',

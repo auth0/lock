@@ -111,7 +111,7 @@ export default {
     'Geben Sie Ihre E-Mail-Adresse ein, um sich anzumelden<br/>oder ein Konto zu erstellen',
   passwordlessSMSAlternativeInstructions:
     'Andernfalls geben Sie Ihre Telefonnummer ein,<br>um sich anzumelden oder ein Konto zu erstellen',
-  passwordlessSMSCodeInstructions: 'Eine SMS mit dem Code wurde gesendet<br/>an %s.',
+  passwordlessSMSCodeInstructions: 'Eine SMS mit dem Code wurde gesendet an %s.',
   passwordlessSMSInstructions:
     'Geben Sie Ihre Telefonnummer ein,<br>um sich anzumelden oder ein Konto zu erstellen',
   phoneNumberInputPlaceholder: 'Ihre Telefonnummer',

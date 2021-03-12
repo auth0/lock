@@ -109,7 +109,7 @@ export default {
     'Введіть адресу електронної пошти, щоб увійти в <br/> або створити обліковий запис',
   passwordlessSMSAlternativeInstructions:
     'В іншому випадку введіть номер телефону, щоб увійти в <br/> або створити обліковий запис',
-  passwordlessSMSCodeInstructions: 'SMS-повідомлення з кодом відправлено <br/> на %s.',
+  passwordlessSMSCodeInstructions: 'SMS-повідомлення з кодом відправлено на %s.',
   passwordlessSMSInstructions:
     'Введіть номер телефону, щоб увійти в <br/> або створити обліковий запис',
   phoneNumberInputPlaceholder: 'ваш номер телефону',

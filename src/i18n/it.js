@@ -106,7 +106,7 @@ export default {
   passwordlessEmailInstructions: "Si prega di inserire l'email<br/>o creare un account",
   passwordlessSMSAlternativeInstructions:
     'Altrimenti, si prega d’inserire il numero di telefono per accedere<br/>o creare un account',
-  passwordlessSMSCodeInstructions: 'Un SMS con il codice è stato inviato<br/>a %s.',
+  passwordlessSMSCodeInstructions: 'Un SMS con il codice è stato inviato a %s.',
   passwordlessSMSInstructions: 'Si prega di inserire il numero di telefono<br/>o creare un account',
   phoneNumberInputPlaceholder: 'il tuo numero di telefono',
   resendCodeAction: 'Non hai ottenuto il codice?',

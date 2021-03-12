@@ -105,7 +105,7 @@ export default {
     'Skriv inn din e-postadresse for å logge inn<br>eller opprett en konto',
   passwordlessSMSAlternativeInstructions:
     'Alternativt, skriv inn ditt telefonnummer for å logge inn<br>eller opprett en konto',
-  passwordlessSMSCodeInstructions: 'En SMS med koden har blitt sendt<br/>til %s.',
+  passwordlessSMSCodeInstructions: 'En SMS med koden har blitt sendt til %s.',
   passwordlessSMSInstructions:
     'Skriv inn ditt telefonnummer for å logge inn<br>eller opprett en konto',
   phoneNumberInputPlaceholder: 'ditt telefonnummer',

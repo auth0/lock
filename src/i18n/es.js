@@ -105,7 +105,7 @@ export default {
   passwordlessEmailInstructions: 'Ingrese su email para iniciar sesión<br/>o registrarse',
   passwordlessSMSAlternativeInstructions:
     'También puede ingresar su teléfono<br/>para iniciar sesión o registrarse',
-  passwordlessSMSCodeInstructions: 'Se ha enviado un SMS con el código<br/>a %s.',
+  passwordlessSMSCodeInstructions: 'Se ha enviado un SMS con el código a %s.',
   passwordlessSMSInstructions: 'Ingrese su teléfono para iniciar sesión<br/>o registrarse',
   phoneNumberInputPlaceholder: 'número de teléfono',
   resendCodeAction: '¿No recibió el código?',

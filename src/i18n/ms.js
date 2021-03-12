@@ -110,7 +110,7 @@ export default {
   passwordlessEmailInstructions: 'Masukkan e-mel anda untuk log masuk<br/>atau mencipta akaun',
   passwordlessSMSAlternativeInstructions:
     'Jika tidak, masukkan nombor telefon anda untuk log masuk<br/>atau mencipta akaun',
-  passwordlessSMSCodeInstructions: 'SMS dengan kod telah dihantar<br/>ke %s.',
+  passwordlessSMSCodeInstructions: 'SMS dengan kod telah dihantar ke %s.',
   passwordlessSMSInstructions:
     'Masukkan nombor telefon anda untuk log masuk<br/>atau mencipta akaun',
   phoneNumberInputPlaceholder: 'nombor telefon anda',

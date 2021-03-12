@@ -104,7 +104,7 @@ export default {
   passwordlessEmailInstructions: 'برای ورود ایمیلتان را وارد کنید<br/>یا حسابی ایجاد کنید',
   passwordlessSMSAlternativeInstructions:
     'در غیر اینصورت شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
-  passwordlessSMSCodeInstructions: 'پیامکی شامل کد برایتان به شماره <br/> %s ارسال شد.',
+  passwordlessSMSCodeInstructions: 'پیامکی شامل کد برایتان به شماره %s ارسال شد.',
   passwordlessSMSInstructions: 'شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
   phoneNumberInputPlaceholder: 'شماره موبایل',
   resendCodeAction: 'آیا کد را دریافت نموده اید?',

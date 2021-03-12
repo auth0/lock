@@ -108,7 +108,7 @@ export default {
     'Ievadiet savu e-pasta adresi, lai pieteiktos<br/>vai izveidotu kontu',
   passwordlessSMSAlternativeInstructions:
     'Vai arī ievadiet savu tālruņa numuru, lai pieteiktos<br/>vai izveidotu kontu',
-  passwordlessSMSCodeInstructions: 'Īsziņa ar kodu ir nosūtīta<br/>uz adresi %s.',
+  passwordlessSMSCodeInstructions: 'Īsziņa ar kodu ir nosūtīta uz adresi %s.',
   passwordlessSMSInstructions:
     'Ievadiet savu tālruņa numuru, lai pieteiktos<br/>vai izveidotu kontu',
   phoneNumberInputPlaceholder: 'jūsu tālruņa numurs',

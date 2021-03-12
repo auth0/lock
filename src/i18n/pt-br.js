@@ -103,7 +103,7 @@ export default {
   passwordlessEmailInstructions: 'Digite seu email para entrar<br/>ou criar uma conta',
   passwordlessSMSAlternativeInstructions:
     'Senão, digite seu telefone para entrar<br/>ou criar uma conta',
-  passwordlessSMSCodeInstructions: 'Um SMS com o código foi enviado<br/>para %s.',
+  passwordlessSMSCodeInstructions: 'Um SMS com o código foi enviado para %s.',
   passwordlessSMSInstructions: 'Digite seu telefone para entrar<br/>ou criar uma conta',
   phoneNumberInputPlaceholder: 'seu número de telefone',
   resendCodeAction: 'Não recebeu o código?',

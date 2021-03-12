@@ -107,7 +107,7 @@ export default {
   passwordlessEmailInstructions: 'Wpisz adres email, by się zalogować<br/>lub stwórz konto',
   passwordlessSMSAlternativeInstructions:
     'W innym przypadku wpisz numer telefonu, by się zalogować<br/>lub stwórz konto',
-  passwordlessSMSCodeInstructions: 'SMS z kodem został wysłany na numer<br/>%s.',
+  passwordlessSMSCodeInstructions: 'SMS z kodem został wysłany na numer %s.',
   passwordlessSMSInstructions: 'Wpisz numer telefonu, by się zalogować<br/>lub stwórz konto',
   phoneNumberInputPlaceholder: 'Twój numer telefonu',
   resendCodeAction: 'Nie otrzymałeś/-aś kodu?',

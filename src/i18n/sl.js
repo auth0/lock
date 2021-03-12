@@ -106,7 +106,7 @@ export default {
     'Vnesite svoj e-poštni naslov za prijavo<br/>ali ustvarjanje računa',
   passwordlessSMSAlternativeInstructions:
     'Lahko tudi vnesete svojo telefonsko številko za prijavo<br/>ali ustvarjanje računa',
-  passwordlessSMSCodeInstructions: 'Poslali smo SMS s kodo<br/>na številko %s.',
+  passwordlessSMSCodeInstructions: 'Poslali smo SMS s kodo na številko %s.',
   passwordlessSMSInstructions:
     'Vnesite svojo telefonsko številko za prijavo<br/>ali ustvarjanje računa',
   phoneNumberInputPlaceholder: 'vaša telefonska številka',
