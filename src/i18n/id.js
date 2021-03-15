@@ -109,7 +109,7 @@ export default {
   passwordlessEmailInstructions: 'Masukkan email Anda untuk masuk<br/>atau buat akun',
   passwordlessSMSAlternativeInstructions:
     'Atau, masukkan nomor telepon Anda untuk masuk<br/>atau buat akun',
-  passwordlessSMSCodeInstructions: 'SMS dengan kode telah dikirimkan<br/>ke %s.',
+  passwordlessSMSCodeInstructions: 'SMS dengan kode telah dikirimkan ke %s.',
   passwordlessSMSInstructions: 'Masukkan nomor telepon Anda untuk masuk<br/>atau buat akun',
   phoneNumberInputPlaceholder: 'nomor telepon Anda',
   resendCodeAction: 'Tidak mendapatkan kodenya?',

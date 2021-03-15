@@ -101,7 +101,7 @@ export default {
   passwordlessEmailInstructions: 'Vul jou e-pos in om inteken<br/>of skep n rekening',
   passwordlessSMSAlternativeInstructions:
     'Andersins vul jou telefoonnommer in om inteken<br/>of skep n rekening',
-  passwordlessSMSCodeInstructions: 'Ons stuur SMS met die kode <br/>na %s.',
+  passwordlessSMSCodeInstructions: 'Ons stuur SMS met die kode na %s.',
   passwordlessSMSInstructions:
     'Vul jou telenfoonnommer in om in te teken <br/>of skep jou rekening',
   phoneNumberInputPlaceholder: 'jou telefoonnommer',

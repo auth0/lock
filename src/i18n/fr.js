@@ -115,7 +115,7 @@ export default {
     'Entrez votre adresse de messagerie pour vous connecter<br/>ou créez un compte',
   passwordlessSMSAlternativeInstructions:
     'Sinon saisissez votre numéro de téléphone pour vous connecter<br/>ou créez un compte',
-  passwordlessSMSCodeInstructions: 'Un SMS avec le code a été envoyé<br/>à %s.',
+  passwordlessSMSCodeInstructions: 'Un SMS avec le code a été envoyé à %s.',
   passwordlessSMSInstructions:
     'Saisissez votre numéro de téléphone pour vous connecter<br/>ou créez un compte',
   phoneNumberInputPlaceholder: 'votre numéro de téléphone',

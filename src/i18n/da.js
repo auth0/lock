@@ -107,7 +107,7 @@ export default {
   passwordlessEmailInstructions: 'Indtast din e-mail for at logge ind<br/>eller oprette en konto',
   passwordlessSMSAlternativeInstructions:
     'Ellers, indtast dit telefonnummer for at logge ind<br/>eller oprette en konto',
-  passwordlessSMSCodeInstructions: 'En SMS med koden er sendt<br/>til %s.',
+  passwordlessSMSCodeInstructions: 'En SMS med koden er sendt til %s.',
   passwordlessSMSInstructions:
     'Indtast dit telefonnummer for at logge ind<br/>eller oprette en konto',
   phoneNumberInputPlaceholder: 'dit telefonnummer',

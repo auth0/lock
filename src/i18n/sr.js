@@ -107,7 +107,7 @@ export default {
     'Unesite adresu e-pošte da biste se prijavili<br/> ili kreirali nalog',
   passwordlessSMSAlternativeInstructions:
     'U suprotnom, unesite broj telefona da biste se prijavili<br/> ili kreirajte nalog',
-  passwordlessSMSCodeInstructions: 'SMS poruka sa kôdom poslata je <br/>na %s.',
+  passwordlessSMSCodeInstructions: 'SMS poruka sa kôdom poslata je na %s.',
   passwordlessSMSInstructions:
     'Unesite broj telefona da biste se prijavili<br/> ili kreirajte nalog',
   phoneNumberInputPlaceholder: 'vaš broj telefona',

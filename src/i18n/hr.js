@@ -111,7 +111,7 @@ export default {
     'Upišite svoju adresu elektroničke pošte kako biste se prijavili<br/>ili napravite račun.',
   passwordlessSMSAlternativeInstructions:
     'U protivnom, upišite svoj broj telefona kako biste se prijavili<br/>ili napravite račun.',
-  passwordlessSMSCodeInstructions: 'Tekstualna poruka s kôdom poslana vam je<br/>na %s.',
+  passwordlessSMSCodeInstructions: 'Tekstualna poruka s kôdom poslana vam je na %s.',
   passwordlessSMSInstructions:
     'Upišite svoj broj telefona kako biste se prijavili<br/>ili napravite račun.',
   phoneNumberInputPlaceholder: 'vaš broj telefona',

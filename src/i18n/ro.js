@@ -108,7 +108,7 @@ export default {
   passwordlessEmailInstructions: 'Introdu adresa de email pentru conectare<br/>sau creează un cont',
   passwordlessSMSAlternativeInstructions:
     ' Dacă nu, introdu un număr de telefon pentru conectare <br/>sau creează un cont',
-  passwordlessSMSCodeInstructions: 'Un SMS cu codul de acces a fost trimis la<br/>la %s.',
+  passwordlessSMSCodeInstructions: 'Un SMS cu codul de acces a fost trimis la la %s.',
   passwordlessSMSInstructions:
     'Introdu numărul de telefon pentru conectare<br/>sau creează un cont',
   phoneNumberInputPlaceholder: 'numărul tău de telefon',

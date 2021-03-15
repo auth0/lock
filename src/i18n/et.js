@@ -106,7 +106,7 @@ export default {
   passwordlessEmailInstructions: 'Sisesta oma e-mail, et sisse logida<br/>või konto luua',
   passwordlessSMSAlternativeInstructions:
     'Muidu, sisesta oma telefoninumber, et sisse logida<br/>või konto luua',
-  passwordlessSMSCodeInstructions: 'SMS koodiga saadeti numbrile: <br/> %s.',
+  passwordlessSMSCodeInstructions: 'SMS koodiga saadeti numbrile: %s.',
   passwordlessSMSInstructions: 'Sisesta oma telefoninumber, et sisse logida<br/>või konto luua',
   phoneNumberInputPlaceholder: 'sinu telefoninumber',
   resendCodeAction: 'Kas said koodi kätte?',

@@ -108,7 +108,7 @@ export default {
     'Giriş yapmak için e-posta adresinizi girin<br/>veya bir hesap oluşturun',
   passwordlessSMSAlternativeInstructions:
     'Aksi halde, giriş yapmak için telefon numaranızı girin<br/>veya bir hesap oluşturun',
-  passwordlessSMSCodeInstructions: 'Size kod içeren bir SMS gönderdik<br/>%s.',
+  passwordlessSMSCodeInstructions: 'Size kod içeren bir SMS gönderdik %s.',
   passwordlessSMSInstructions:
     'Giriş yapmak için telefon numaranızı girin<br/>veya bir hesap oluşturun',
   phoneNumberInputPlaceholder: 'telefon numaranız',
