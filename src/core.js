@@ -66,6 +66,7 @@ export default class Base extends EventEmitter {
     go(this.id);
 
     let m = setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn);
+
     this.on('newListener', type => {
       if (this.validEvents.indexOf(type) === -1) {
         l.emitUnrecoverableErrorEvent(m, `Invalid event "${type}".`);
@@ -201,6 +202,14 @@ export default class Base extends EventEmitter {
   }
 
   runHook(str, m, ...args) {
+    const publicHooks = l.hooks(m).toJS();
+
+    if (typeof publicHooks[str] === 'function') {
+      publicHooks[str](...args);
+
+      return m;
+    }
+
     if (typeof this.engine[str] != 'function') return m;
     return this.engine[str](m, ...args);
   }

@@ -101,7 +101,7 @@
           'socialOrPhoneNumber submit',
           'socialOrEmail submit',
           'vcode submit',
-          'federated login'
+          'federated login',
         ];
         validEvents.forEach(function(e) {
           instance.on(e, function() {
@@ -124,7 +124,7 @@
       var domain = 'brucke.auth0.com';
       var defaultOptions = {
         mustAcceptTerms: true,
-        initialScreen: 'signUp',
+        initialScreen: 'login',
         allowShowPassword: true,
         usernameStyle: 'email',
         signUpFieldsStrictValidation: true,
@@ -154,7 +154,12 @@
               return true;
             }
           }
-        ]
+        ],
+        hooks: {
+          submitting: function() {
+            console.log('Hello from submitting hook');
+          }
+        }
       };
       function initLock() {
         var lock = new Auth0Lock(clientId, domain, defaultOptions);

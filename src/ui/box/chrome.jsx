@@ -20,6 +20,7 @@ class SubmitButton extends React.Component {
       l.emitEvent(model, 'signup submit');
     } else if (screenName === 'main.login') {
       l.emitEvent(model, 'signin submit');
+      l.runHook(model, 'submitting');
     } else if (screenName === 'forgotPassword') {
       l.emitEvent(model, 'forgot_password submit');
     } else if (screenName === 'socialOrEmail') {
