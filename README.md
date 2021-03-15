@@ -423,7 +423,7 @@ var options = {
     placeholder: "enter your address",
     // The following properties are optional
     ariaLabel: "Address",
-    icon: "https://example.com/assests/address_icon.png",
+    icon: "https://example.com/assets/address_icon.png",
     prefill: "street 123",
     validator: function(address) {
       return {
@@ -475,7 +475,7 @@ var options = {
     ],
     // The following properties are optional
     ariaLabel: "Location",
-    icon: "https://example.com/assests/location_icon.png",
+    icon: "https://example.com/assets/location_icon.png",
     prefill: "us"
   }]
 }
@@ -495,7 +495,7 @@ var options = {
       cb(null, options);
     },
     ariaLabel: "Location",
-    icon: "https://example.com/assests/location_icon.png",
+    icon: "https://example.com/assets/location_icon.png",
     prefill: function(cb) {
       // obtain prefill, in case of error you call cb with the error in the
       // first arg instead of null
