@@ -184,12 +184,14 @@ export function logIn(
   logInErrorHandler = (_id, error, _fields, next) => next()
 ) {
   validateAndSubmit(id, fields, m => {
-    webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
-      if (error) {
-        setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250);
-      } else {
-        logInSuccess(id, result);
-      }
+    l.runHook(m, 'submitting', function() {
+      webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
+        if (error) {
+          setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250);
+        } else {
+          logInSuccess(id, result);
+        }
+      });
     });
   });
 }

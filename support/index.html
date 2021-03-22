@@ -156,8 +156,9 @@
           }
         ],
         hooks: {
-          submitting: function() {
+          submitting: function(done) {
             console.log('Hello from submitting hook');
+            done();
           }
         }
       };
