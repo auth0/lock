@@ -558,8 +558,8 @@ export function loginErrorMessage(m, error, type) {
     return i18n.html(m, ['error', 'login', 'lock.network']);
   }
 
-  // Custom rule error (except blocked_user)
-  if (error.code === 'rule_error') {
+  // Custom rule or hook error (except blocked_user)
+  if (error.code === 'rule_error' || error.code === 'hook_error') {
     return error.description || i18n.html(m, ['error', 'login', 'lock.fallback']);
   }
 
