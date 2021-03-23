@@ -172,6 +172,7 @@ export function validateAndSubmit(id, fields = [], f) {
       : fields.reduce((r, x) => showInvalidField(r, x), m);
   });
   const m = read(getEntity, 'lock', id);
+
   if (l.submitting(m)) {
     f(m);
   }
@@ -227,6 +228,7 @@ export function logInSuccess(id, result) {
 
 function logInError(id, fields, error, localHandler = (_id, _error, _fields, next) => next()) {
   const errorCode = error.error || error.code;
+
   localHandler(id, error, fields, () =>
     setTimeout(() => {
       const m = read(getEntity, 'lock', id);
