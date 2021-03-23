@@ -39,8 +39,6 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn, ha
     })
   );
 
-  console.log(m.toJS());
-
   m = i18n.initI18n(m);
 
   return m;
