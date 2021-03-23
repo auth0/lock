@@ -58,8 +58,6 @@ export default class Base extends EventEmitter {
       'federated login'
     ];
 
-    this.validPublicHooks = ['submitting'];
-
     this.id = idu.incremental();
     this.engine = engine;
     const hookRunner = ::this.runHook;
@@ -205,7 +203,7 @@ export default class Base extends EventEmitter {
   runHook(str, m, ...args) {
     const publicHooks = l.hooks(m).toJS();
 
-    if (this.validPublicHooks.indexOf(str) !== -1) {
+    if (l.validPublicHooks.indexOf(str) !== -1) {
       // If the SDK has been configured with a hook handler, run it.
       if (typeof publicHooks[str] === 'function') {
         publicHooks[str](...args);

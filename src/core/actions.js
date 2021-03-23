@@ -185,7 +185,7 @@ export function logIn(
 ) {
   validateAndSubmit(id, fields, m => {
     try {
-      l.runHook(m, 'submitting', function() {
+      l.runHook(m, 'loggingIn', function() {
         webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
           if (error) {
             setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250);
@@ -229,7 +229,6 @@ function logInError(id, fields, error, localHandler = (_id, _error, _fields, nex
   const errorCode = error.error || error.code;
   localHandler(id, error, fields, () =>
     setTimeout(() => {
-      console.log(error);
       const m = read(getEntity, 'lock', id);
       const errorMessage = l.loginErrorMessage(m, error, loginType(fields));
       const errorCodesThatEmitAuthorizationErrorEvent = [

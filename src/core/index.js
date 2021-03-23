@@ -12,6 +12,8 @@ import * as captchaField from '../field/captcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
+export const validPublicHooks = ['loggingIn'];
+
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn) {
   let m = init(
     id,
@@ -219,7 +221,6 @@ function extractUIOptions(id, options) {
 }
 
 function extractHookOptions(options) {
-  const validPublicHooks = ['submitting'];
   const hooks = {};
 
   validPublicHooks.forEach(hookName => {
