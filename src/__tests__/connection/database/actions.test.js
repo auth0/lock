@@ -13,10 +13,17 @@ jest.mock('core/web_api', () => ({
 }));
 
 describe('database/actions.js', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
   it('signUp splits root attributes correctly', () => {
     const id = 1;
+    const hookRunner = jest.fn((str, m, fn) => fn());
+
     require('connection/database/index').databaseConnectionName = () => 'test-connection';
     require('connection/database/index').shouldAutoLogin = () => true;
+
     const m = Immutable.fromJS({
       field: {
         email: {
@@ -55,7 +62,7 @@ describe('database/actions.js', () => {
         ]
       },
       core: {
-        hookRunner: jest.fn().mockImplementation((str, m, fn) => fn())
+        hookRunner
       }
     });
     swap(setEntity, 'lock', id, m);
@@ -87,5 +94,47 @@ describe('database/actions.js', () => {
         other_prop: 'test-other'
       }
     });
+  });
+
+  it('runs the signingUp hook on signUp', () => {
+    const id = 1;
+
+    require('connection/database/index').databaseConnectionName = () => 'test-connection';
+    require('connection/database/index').shouldAutoLogin = () => true;
+
+    const hookRunner = jest.fn((str, m, fn) => fn());
+
+    const m = Immutable.fromJS({
+      field: {
+        email: {
+          value: 'test@email.com'
+        },
+        password: {
+          value: 'testpass'
+        }
+      },
+      core: {
+        hookRunner
+      }
+    });
+
+    swap(setEntity, 'lock', id, m);
+
+    signUp(id);
+
+    const {
+      validateAndSubmit: { mock: validateAndSubmitMock }
+    } = coreActionsMock();
+
+    validateAndSubmitMock.calls[0][2](m);
+
+    const {
+      signUp: { mock: signUpMock }
+    } = webApiMock();
+
+    expect(hookRunner).toHaveBeenCalledTimes(1);
+    expect(hookRunner).toHaveBeenCalledWith('signingUp', m, expect.any(Function));
+    expect(signUpMock.calls.length).toBe(1);
+    expect(signUpMock.calls[0][0]).toBe(id);
   });
 });
