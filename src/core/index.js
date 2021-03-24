@@ -12,7 +12,7 @@ import * as captchaField from '../field/captcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
-export const validPublicHooks = ['loggingIn'];
+export const validPublicHooks = ['loggingIn', 'signingUp'];
 
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn) {
   let m = init(
@@ -113,6 +113,7 @@ export function submitting(m) {
 }
 
 export function setGlobalError(m, str) {
+  console.log('Setting error:', str);
   return tset(m, 'globalError', str);
 }
 
@@ -121,6 +122,7 @@ export function globalError(m) {
 }
 
 export function clearGlobalError(m) {
+  console.log('Clearing error');
   return tremove(m, 'globalError');
 }
 

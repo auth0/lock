@@ -158,7 +158,12 @@
         hooks: {
           loggingIn: function(done) {
             console.log('Hello from submitting hook');
-            throw { code: 'hook_error', description: 'this is a custom error' }
+            // throw { code: 'hook_error', description: 'this is a custom error' }
+            done();
+          },
+          signingUp: function(done) {
+            console.log('Hello from signingUp hook');
+            // throw { code: 'hook_error', description: 'this is a custom error' }
             done();
           }
         }
