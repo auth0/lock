@@ -53,17 +53,24 @@ describe('database/actions.js', () => {
           { name: 'picture', storage: 'root' },
           { name: 'other_prop' }
         ]
+      },
+      core: {
+        hookRunner: jest.fn().mockImplementation((str, m, fn) => fn())
       }
     });
     swap(setEntity, 'lock', id, m);
     signUp(id);
-    const { validateAndSubmit: { mock: validateAndSubmitMock } } = coreActionsMock();
+    const {
+      validateAndSubmit: { mock: validateAndSubmitMock }
+    } = coreActionsMock();
     expect(validateAndSubmitMock.calls.length).toBe(1);
     expect(validateAndSubmitMock.calls[0][0]).toBe(id);
     expect(validateAndSubmitMock.calls[0][1]).toContain('email');
     expect(validateAndSubmitMock.calls[0][1]).toContain('password');
     validateAndSubmitMock.calls[0][2](m);
-    const { signUp: { mock: signUpMock } } = webApiMock();
+    const {
+      signUp: { mock: signUpMock }
+    } = webApiMock();
     expect(signUpMock.calls.length).toBe(1);
     expect(signUpMock.calls[0][0]).toBe(id);
     expect(signUpMock.calls[0][1]).toMatchObject({
