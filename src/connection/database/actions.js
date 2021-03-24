@@ -131,7 +131,11 @@ export function signUp(id) {
     };
 
     try {
-      l.runHook(m, 'signingUp', () => {
+      // For now, always pass 'null' for the context as we don't need it yet.
+      // If we need it later, it'll save a breaking change in hooks already in use.
+      const context = null;
+
+      l.runHook(m, 'signingUp', context, () => {
         webApi.signUp(id, params, (error, result, popupHandler, ...args) => {
           if (error) {
             errorHandler(error, popupHandler);

@@ -156,14 +156,14 @@
           }
         ],
         hooks: {
-          loggingIn: function(done) {
+          loggingIn: function(context, done) {
+            // Currently, context is always null but might be used in the future.
             console.log('Hello from submitting hook');
-            // throw { code: 'hook_error', description: 'this is a custom error' }
             done();
           },
-          signingUp: function(done) {
+          signingUp: function(context, done) {
+            // Currently, context is always null but might be used in the future.
             console.log('Hello from signingUp hook');
-            // throw { code: 'hook_error', description: 'this is a custom error' }
             done();
           }
         }

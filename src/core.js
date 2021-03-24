@@ -212,8 +212,8 @@ export default class Base extends EventEmitter {
 
       // Ensure the hook callback function is executed in the absence of a hook handler,
       // so that execution may continue.
-      if (typeof args[0] === 'function') {
-        args[0]();
+      if (typeof args[1] === 'function') {
+        args[1]();
       }
 
       return m;

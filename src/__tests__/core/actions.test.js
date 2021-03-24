@@ -53,7 +53,7 @@ describe('core.actions', () => {
         done();
       });
 
-      l.runHook.mockImplementation((m, hook, fn) => {
+      l.runHook.mockImplementation((m, hook, context, fn) => {
         expect(hook).toEqual('loggingIn');
         fn();
       });

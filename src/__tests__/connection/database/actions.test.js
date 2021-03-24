@@ -19,7 +19,7 @@ describe('database/actions.js', () => {
 
   it('signUp splits root attributes correctly', () => {
     const id = 1;
-    const hookRunner = jest.fn((str, m, fn) => fn());
+    const hookRunner = jest.fn((str, m, context, fn) => fn());
 
     require('connection/database/index').databaseConnectionName = () => 'test-connection';
     require('connection/database/index').shouldAutoLogin = () => true;
@@ -102,7 +102,7 @@ describe('database/actions.js', () => {
     require('connection/database/index').databaseConnectionName = () => 'test-connection';
     require('connection/database/index').shouldAutoLogin = () => true;
 
-    const hookRunner = jest.fn((str, m, fn) => fn());
+    const hookRunner = jest.fn((str, m, context, fn) => fn());
 
     const m = Immutable.fromJS({
       field: {
@@ -133,7 +133,7 @@ describe('database/actions.js', () => {
     } = webApiMock();
 
     expect(hookRunner).toHaveBeenCalledTimes(1);
-    expect(hookRunner).toHaveBeenCalledWith('signingUp', m, expect.any(Function));
+    expect(hookRunner).toHaveBeenCalledWith('signingUp', m, null, expect.any(Function));
     expect(signUpMock.calls.length).toBe(1);
     expect(signUpMock.calls[0][0]).toBe(id);
   });

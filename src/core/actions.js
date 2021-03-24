@@ -186,7 +186,11 @@ export function logIn(
 ) {
   validateAndSubmit(id, fields, m => {
     try {
-      l.runHook(m, 'loggingIn', function() {
+      // For now, always pass 'null' for the context as we don't need it yet.
+      // If we need it later, it'll save a breaking change in hooks already in use.
+      const context = null;
+
+      l.runHook(m, 'loggingIn', context, function() {
         webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
           if (error) {
             setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250);
