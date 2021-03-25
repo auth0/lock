@@ -370,6 +370,58 @@ var options = {
 
 - **passwordlessMethod {String}**: When using `Auth0LockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://auth0.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://auth0.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values for email connections are `code` and `link`. Defaults to `code`. SMS passwordless connections will always use `code`.
 
+#### Hooks
+
+Lock supports hooks that can be used to integrate into various procedures within Lock.
+
+| Name | Description |
+|----|-----|
+| `loggingIn` | Called when the user presses the login button; after validating the login form, but before calling the login endpoint |
+| `signingUp` | Called when the user presses the button on the sign-up page; after validating the signup form, but before calling the sign up endpoint |
+
+**API**
+Both hooks accept two arguments:
+
+| Name | Description |
+|----|----|
+| `context` | this argument is currently always `null` but serves as a future-proofing mechanism to support providing additional data without us requiring breaking changes to the library |
+| `cb` | a callback function to call when the hook is finished. Execution of the user journey is blocked until this function is called by the hook |
+
+**API**
+
+Specify your hooks using a new `hooks` configuration item when setting up the library:
+
+```js
+new Auth0Lock('client ID', 'domain', {
+  hooks: {
+    loggingIn: function(context, cb) {
+      console.log('Hello from the login hook!');
+      cb();
+    },
+    signingUp: function(context, cb) {
+      console.log('Hello from the sign-up hook!');
+      cb();
+    }
+});
+```
+
+**Error handling**
+
+The developer can throw an error to block the login or sign-up process. The developer can either specify a specific object and show the error on the page, or throw a generic error which causes Lock to show a fallback error:
+
+```js
+new Auth0Lock('client ID', 'domain', {
+  hooks: {
+    loggingIn: function(context, cb) {
+      // Throw an object with code: `hook_error` to display this on the Login screen
+      throw { code: 'hook_error', description: 'There was an error in the login hook!' };
+
+      // Throw something generic to show a fallback error message
+      throw "Some error happened";
+    },
+});
+```
+
 #### Other options
 
 - **configurationBaseUrl {String}**: Overrides application settings base URL. By default it uses Auth0's CDN URL when the `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
