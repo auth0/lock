@@ -55,7 +55,8 @@ export default class Base extends EventEmitter {
       'socialOrPhoneNumber submit',
       'socialOrEmail submit',
       'vcode submit',
-      'federated login'
+      'federated login',
+      'ssodata fetched'
     ];
 
     this.id = idu.incremental();
