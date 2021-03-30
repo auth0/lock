@@ -113,7 +113,6 @@ export function submitting(m) {
 }
 
 export function setGlobalError(m, str) {
-  console.log('Setting error:', str);
   return tset(m, 'globalError', str);
 }
 
@@ -122,7 +121,6 @@ export function globalError(m) {
 }
 
 export function clearGlobalError(m) {
-  console.log('Clearing error');
   return tremove(m, 'globalError');
 }
 
