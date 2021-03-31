@@ -20,7 +20,7 @@ jest.mock('core/sso/data', () => ({
 
 describe('remote_data.syncRemoteData()', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   describe('calls getSSOData with AD information', () => {
@@ -34,11 +34,7 @@ describe('remote_data.syncRemoteData()', () => {
         const ssoCall = require('sync').mock.calls.find(c => c[1] === 'sso');
         ssoCall[2].syncFn('model', jest.fn());
 
-        const [
-          id,
-          sendADInformation,
-          callback
-        ] = require('core/sso/data').fetchSSOData.mock.calls[0];
+        const [, sendADInformation, ,] = require('core/sso/data').fetchSSOData.mock.calls[0];
 
         expect(sendADInformation).toBe(isAdEnabled);
         expect(l.emitEvent).toHaveBeenCalledWith('model', 'ssodata fetched', expect.anything());
