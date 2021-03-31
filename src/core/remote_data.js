@@ -27,7 +27,7 @@ export function syncRemoteData(m) {
     syncFn: (m, cb) => {
       fetchSSOData(l.id(m), isADEnabled(m), (...args) => {
         l.emitEvent(m, 'ssodata fetched', args);
-        cb();
+        cb(...args);
       });
     },
     successFn: (m, result) => m.mergeIn(['sso'], Immutable.fromJS(result)),
