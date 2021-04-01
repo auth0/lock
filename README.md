@@ -161,6 +161,7 @@ Lock will emit events during its lifecycle.
 - `signup error`: emitted when signup fails. Has the error as an argument.
 - `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments.
 - `sso login`: emitted when the user clicks on an enterprise SSO connection button. Has the lock ID, connection object, and field name as arguments.
+- `ssodata fetched`: emitted when the SSOData endpoint was called, usually as a result of an internal `checkSession` call. Has the error and the SSOData object as arguments.
 
 ### show(options)
 
