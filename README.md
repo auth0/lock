@@ -423,6 +423,8 @@ new Auth0Lock('client ID', 'domain', {
 });
 ```
 
+**Note:** The error's `description` field is not sanitized by the SDK and so any content that reflects user input or could otherwise display dangerous HTML should be sanitized by your hook.
+
 #### Other options
 
 - **configurationBaseUrl {String}**: Overrides application settings base URL. By default it uses Auth0's CDN URL when the `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
