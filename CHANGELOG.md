@@ -1,5 +1,20 @@
 # Change Log
 
+## [v11.29.0](https://github.com/auth0/lock/tree/v11.29.0) (2021-04-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.28.1...v11.29.0)
+
+
+**Added**
+- [SDK-2412] Add event for SSO data fetch [\#1977](https://github.com/auth0/lock/pull/1977) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SDK-2306] Add login and signup hooks [\#1976](https://github.com/auth0/lock/pull/1976) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- [ESD-12716] fix issue with recaptcha in mobile [\#1978](https://github.com/auth0/lock/pull/1978) ([jfromaniello](https://github.com/jfromaniello))
+- Fixes typo "assests" to "assets" [\#1975](https://github.com/auth0/lock/pull/1975) ([morkro](https://github.com/morkro))
+- Remove line breaks from passwordless vcode entry instructions [\#1974](https://github.com/auth0/lock/pull/1974) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Remove padding from screen tabs [\#1971](https://github.com/auth0/lock/pull/1971) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.28.1](https://github.com/auth0/lock/tree/v11.28.1) (2021-03-01)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.28.0...v11.28.1)
 
