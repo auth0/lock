@@ -65,6 +65,22 @@ export class ReCAPTCHA extends React.Component {
         'error-callback': this.erroredHandler,
         sitekey: this.props.sitekey
       });
+      /*
+        This is a hack for the following conflicting css-rule:
+
+        @media screen and (max-width: 480px)
+        html.auth0-lock-html body > * {
+            display: none;
+        }
+      */
+      const fixInterval = setInterval(() => {
+        const iframe = document.querySelector(`iframe[title="recaptcha challenge"]`);
+        if (!iframe) {
+          return;
+        }
+        iframe.parentNode.parentNode.style.display = 'block';
+        clearInterval(fixInterval);
+      }, 300);
     });
   }
 
@@ -75,15 +91,14 @@ export class ReCAPTCHA extends React.Component {
   render() {
     // style={{ border: !this.props.isValid ? '1px solid #dd4b39' : ''}}
     return (
-      <div className={
-          this.props.isValid ?
-            "auth0-lock-recaptcha-block" :
-            "auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error"
-            }>
-        <div
-          className="auth0-lock-recaptchav2"
-          ref={this.ref}
-        />
+      <div
+        className={
+          this.props.isValid
+            ? 'auth0-lock-recaptcha-block'
+            : 'auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error'
+        }
+      >
+        <div className="auth0-lock-recaptchav2" ref={this.ref} />
       </div>
     );
   }
