@@ -118,19 +118,35 @@ export function signUp(id) {
       });
     }
 
-    webApi.signUp(id, params, (error, result, popupHandler, ...args) => {
-      if (error) {
-        if (!!popupHandler) {
-          popupHandler._current_popup.kill();
-        }
-        const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
-        swapCaptcha(id, wasInvalidCaptcha, () => {
-          setTimeout(() => signUpError(id, error), 250);
-        });
-      } else {
-        signUpSuccess(id, result, popupHandler, ...args);
+    const errorHandler = (error, popupHandler) => {
+      if (!!popupHandler) {
+        popupHandler._current_popup.kill();
       }
-    });
+
+      const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
+
+      swapCaptcha(id, wasInvalidCaptcha, () => {
+        setTimeout(() => signUpError(id, error), 250);
+      });
+    };
+
+    try {
+      // For now, always pass 'null' for the context as we don't need it yet.
+      // If we need it later, it'll save a breaking change in hooks already in use.
+      const context = null;
+
+      l.runHook(m, 'signingUp', context, () => {
+        webApi.signUp(id, params, (error, result, popupHandler, ...args) => {
+          if (error) {
+            errorHandler(error, popupHandler);
+          } else {
+            signUpSuccess(id, result, popupHandler, ...args);
+          }
+        });
+      });
+    } catch (e) {
+      errorHandler(e);
+    }
   });
 }
 
@@ -180,6 +196,8 @@ export function signUpError(id, error) {
     PasswordStrengthError: 'password_strength_error'
   };
 
+  l.emitEvent(m, 'signup error', error);
+
   const errorKey =
     (error.code === 'invalid_password' && invalidPasswordKeys[error.name]) || error.code;
 
@@ -187,7 +205,10 @@ export function signUpError(id, error) {
     i18n.html(m, ['error', 'signUp', errorKey]) ||
     i18n.html(m, ['error', 'signUp', 'lock.fallback']);
 
-  l.emitEvent(m, 'signup error', error);
+  if (error.code === 'hook_error') {
+    swap(updateEntity, 'lock', id, l.setSubmitting, false, error.description || errorMessage);
+    return;
+  }
 
   if (errorKey === 'invalid_captcha') {
     errorMessage = i18n.html(m, ['error', 'login', errorKey]);

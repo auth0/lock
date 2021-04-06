@@ -126,7 +126,7 @@
       var domain = 'brucke.auth0.com';
       var defaultOptions = {
         mustAcceptTerms: true,
-        initialScreen: 'signUp',
+        initialScreen: 'login',
         allowShowPassword: true,
         usernameStyle: 'email',
         signUpFieldsStrictValidation: true,
@@ -156,7 +156,19 @@
               return true;
             }
           }
-        ]
+        ],
+        hooks: {
+          loggingIn: function(context, done) {
+            // Currently, context is always null but might be used in the future.
+            console.log('Hello from submitting hook');
+            done();
+          },
+          signingUp: function(context, done) {
+            // Currently, context is always null but might be used in the future.
+            console.log('Hello from signingUp hook');
+            done();
+          }
+        }
       };
       function initLock() {
         var lock = new Auth0Lock(clientId, domain, defaultOptions);

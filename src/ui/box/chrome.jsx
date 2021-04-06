@@ -27,7 +27,6 @@ class SubmitButton extends React.Component {
     } else if (screenName === 'socialOrPhoneNumber') {
       l.emitEvent(model, 'socialOrPhoneNumber submit');
     } else if (screenName === 'vcode') {
-      l.emitEvent(model, 'vcode submit');
     }
 
     if (this.props.onSubmit) {

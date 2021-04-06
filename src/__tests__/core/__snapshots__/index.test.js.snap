@@ -54,6 +54,7 @@ Object {
   "handleEventFn": "handleEventFn",
   "hashCleanup": true,
   "hookRunner": "hookRunner",
+  "hooks": Object {},
   "languageBaseUrl": "https://cdn.auth0.com",
   "prefill": Object {},
   "tenantBaseUrl": "https://domain/info-v1.js",

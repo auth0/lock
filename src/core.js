@@ -68,6 +68,7 @@ export default class Base extends EventEmitter {
     go(this.id);
 
     let m = setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn);
+
     this.on('newListener', type => {
       if (this.validEvents.indexOf(type) === -1) {
         l.emitUnrecoverableErrorEvent(m, `Invalid event "${type}".`);
@@ -139,7 +140,6 @@ export default class Base extends EventEmitter {
         };
         render(l.ui.containerID(m), props);
 
-        // TODO: hack so we can start testing the beta
         if (!this.oldScreenName || this.oldScreenName != screen.name) {
           if (screen.name === 'main.login') {
             l.emitEvent(m, 'signin ready');
@@ -203,6 +203,24 @@ export default class Base extends EventEmitter {
   }
 
   runHook(str, m, ...args) {
+    const publicHooks = l.hooks(m).toJS();
+
+    if (l.validPublicHooks.indexOf(str) !== -1) {
+      // If the SDK has been configured with a hook handler, run it.
+      if (typeof publicHooks[str] === 'function') {
+        publicHooks[str](...args);
+        return m;
+      }
+
+      // Ensure the hook callback function is executed in the absence of a hook handler,
+      // so that execution may continue.
+      if (typeof args[1] === 'function') {
+        args[1]();
+      }
+
+      return m;
+    }
+
     if (typeof this.engine[str] != 'function') return m;
     return this.engine[str](m, ...args);
   }
