@@ -92,8 +92,11 @@ function sendEmail(m, successFn, errorFn) {
 
 export function sendSMS(id) {
   validateAndSubmit(id, ['phoneNumber'], m => {
+    const connections = l.connections(m, 'passwordless', 'sms');
+    const connectionName = connections.size > 0 ? connections.first().get('name') : 'sms';
+
     const params = {
-      connection: 'sms',
+      connection: connectionName,
       phoneNumber: phoneNumberWithDiallingCode(m),
       send: send(m)
     };

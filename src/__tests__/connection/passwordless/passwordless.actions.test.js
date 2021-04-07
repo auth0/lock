@@ -166,6 +166,22 @@ describe('passwordless actions', () => {
       require('core/actions').validateAndSubmit.mock.calls[0][2]('model');
       expectMockToMatch(require('core/web_api').startPasswordless, 1);
     });
+    it('calls startPasswordless with a custom SMS connection', () => {
+      actions.sendSMS('id');
+
+      require('core/index').connections.mockImplementation(() =>
+        Immutable.fromJS([
+          {
+            name: 'custom-connection',
+            strategy: 'sms',
+            type: 'passwordless'
+          }
+        ])
+      );
+
+      require('core/actions').validateAndSubmit.mock.calls[0][2]('model');
+      expectMockToMatch(require('core/web_api').startPasswordless, 1);
+    });
     it('calls setPasswordlessStarted() on success', () => {
       actions.sendSMS('id');
       require('core/actions').validateAndSubmit.mock.calls[0][2]('model');
