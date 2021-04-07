@@ -68,8 +68,11 @@ function resendEmailError(id, error) {
 }
 
 function sendEmail(m, successFn, errorFn) {
+  const connections = l.connections(m, 'passwordless', 'email');
+  const connectionName = connections.size > 0 ? connections.first().get('name') : 'email';
+
   const params = {
-    connection: 'email',
+    connection: connectionName,
     email: c.getFieldValue(m, 'email'),
     send: send(m)
   };
