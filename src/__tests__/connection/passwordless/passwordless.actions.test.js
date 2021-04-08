@@ -49,7 +49,8 @@ describe('passwordless actions', () => {
         })
       },
       emitAuthorizationErrorEvent: jest.fn(),
-      connections: jest.fn()
+      connections: jest.fn(),
+      useCustomPasswordlessConnection: jest.fn(() => false)
     }));
     jest.mock('store/index', () => ({
       read: jest.fn(() => 'model'),
@@ -84,6 +85,8 @@ describe('passwordless actions', () => {
           }
         ])
       );
+
+      require('core/index').useCustomPasswordlessConnection.mockReturnValue(true);
 
       require('core/actions').validateAndSubmit.mock.calls[0][2]('model');
       expectMockToMatch(require('core/web_api').startPasswordless, 1);

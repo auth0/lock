@@ -29,6 +29,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn, ha
       useTenantInfo: options.__useTenantInfo || false,
       hashCleanup: options.hashCleanup === false ? false : true,
       allowedConnections: Immutable.fromJS(options.allowedConnections || []),
+      useCustomPasswordlessConnection:
+        options.useCustomPasswordlessConnection === true ? true : false,
       ui: extractUIOptions(id, options),
       defaultADUsernameFromEmailPrefix:
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
@@ -517,13 +519,22 @@ export function filterConnections(m) {
 
   const order = allowed.count() === 0 ? _ => 0 : c => allowed.indexOf(c.get('name'));
 
-  return tset(
+  m = tset(
     m,
     'connections',
     clientConnections(m).map(cs => {
       return cs.filter(c => order(c) >= 0).sort((c1, c2) => order(c1) - order(c2));
     })
   );
+
+  console.log(clientConnections(m).toJS());
+  console.log(connections(m).toJS());
+
+  return m;
+}
+
+export function useCustomPasswordlessConnection(m) {
+  return get(m, 'useCustomPasswordlessConnection');
 }
 
 export function runHook(m, str, ...args) {
