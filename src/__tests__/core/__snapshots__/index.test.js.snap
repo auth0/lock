@@ -86,6 +86,7 @@ Object {
     "rememberLastLogin": true,
     "scrollGlobalMessagesIntoView": true,
   },
+  "useCustomPasswordlessConnection": false,
   "useTenantInfo": false,
 }
 `;
