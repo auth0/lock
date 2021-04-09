@@ -519,18 +519,13 @@ export function filterConnections(m) {
 
   const order = allowed.count() === 0 ? _ => 0 : c => allowed.indexOf(c.get('name'));
 
-  m = tset(
+  return tset(
     m,
     'connections',
     clientConnections(m).map(cs => {
       return cs.filter(c => order(c) >= 0).sort((c1, c2) => order(c1) - order(c2));
     })
   );
-
-  console.log(clientConnections(m).toJS());
-  console.log(connections(m).toJS());
-
-  return m;
 }
 
 export function useCustomPasswordlessConnection(m) {
