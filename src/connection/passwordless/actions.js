@@ -96,7 +96,10 @@ function sendEmail(m, successFn, errorFn) {
 export function sendSMS(id) {
   validateAndSubmit(id, ['phoneNumber'], m => {
     const connections = l.connections(m, 'passwordless', 'sms');
-    const connectionName = connections.size > 0 ? connections.first().get('name') : 'sms';
+    const connectionName =
+      connections.size > 0 && l.useCustomPasswordlessConnection(m)
+        ? connections.first().get('name')
+        : 'sms';
 
     const params = {
       connection: connectionName,

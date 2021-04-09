@@ -182,7 +182,9 @@ describe('passwordless actions', () => {
         ])
       );
 
+      require('core/index').useCustomPasswordlessConnection.mockReturnValue(true);
       require('core/actions').validateAndSubmit.mock.calls[0][2]('model');
+
       expectMockToMatch(require('core/web_api').startPasswordless, 1);
     });
     it('calls setPasswordlessStarted() on success', () => {
