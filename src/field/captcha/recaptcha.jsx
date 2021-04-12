@@ -4,6 +4,30 @@ import propTypes from 'prop-types';
 
 const noop = () => {};
 
+const RECAPTCHA_V2_PROVIDER = 'recaptcha_v2';
+const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
+
+export const isRecaptcha = provider =>
+  provider === RECAPTCHA_ENTERPRISE_PROVIDER || provider === RECAPTCHA_V2_PROVIDER;
+
+const globalForProvider = provider => {
+  switch (provider) {
+    case RECAPTCHA_V2_PROVIDER:
+      return window.grecaptcha;
+    case RECAPTCHA_ENTERPRISE_PROVIDER:
+      return window.grecaptcha.enterprise;
+  }
+};
+
+const scriptForProvider = (provider, lang, callback) => {
+  switch (provider) {
+    case RECAPTCHA_V2_PROVIDER:
+      return `https://www.google.com/recaptcha/api.js?hl=${lang}&onload=${callback}`;
+    case RECAPTCHA_ENTERPRISE_PROVIDER:
+      return `https://www.google.com/recaptcha/enterprise.js?render=explicit&hl=${lang}&onload=${callback}`;
+  }
+};
+
 export class ReCAPTCHA extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +60,7 @@ export class ReCAPTCHA extends React.Component {
 
   static loadScript(props, element = document.body, callback = noop) {
     const callbackName = `recatpchaCallback_${Math.floor(Math.random() * 1000001)}`;
-    const scriptUrl = `https://www.google.com/recaptcha/api.js?hl=${props.hl}&onload=${callbackName}`;
+    const scriptUrl = scriptForProvider(props.provider, props.hl, callbackName);
     const script = document.createElement('script');
 
     window[callbackName] = () => {
@@ -59,7 +83,10 @@ export class ReCAPTCHA extends React.Component {
   componentDidMount() {
     ReCAPTCHA.loadScript(this.props, document.body, (err, scriptNode) => {
       this.scriptNode = scriptNode;
-      this.widgetId = window.grecaptcha.render(this.ref.current, {
+      const global = globalForProvider(this.props.provider);
+
+      // if this is enterprise then we change this to window.grecaptcha.enterprise.render
+      this.widgetId = global.render(this.ref.current, {
         callback: this.changeHandler,
         'expired-callback': this.expiredHandler,
         'error-callback': this.erroredHandler,
@@ -85,7 +112,8 @@ export class ReCAPTCHA extends React.Component {
   }
 
   reset() {
-    window.grecaptcha.reset(this.widgetId);
+    const global = globalForProvider(this.props.provider);
+    global.reset(this.widgetId);
   }
 
   render() {
@@ -121,6 +149,7 @@ export class ReCAPTCHA extends React.Component {
 ReCAPTCHA.displayName = 'ReCAPTCHA';
 
 ReCAPTCHA.propTypes = {
+  provider: propTypes.string.isRequired,
   sitekey: propTypes.string.isRequired,
   onChange: propTypes.func,
   onExpired: propTypes.func,

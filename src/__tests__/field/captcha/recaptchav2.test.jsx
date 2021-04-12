@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import I from 'immutable';
 
-import { ReCAPTCHA } from '../../../field/captcha/recaptchav2';
+import { ReCAPTCHA } from '../../../field/captcha/recaptcha';
 
 const createLockMock = ({ provider = 'none', sitekey = '' } = {}) =>
   I.fromJS({
