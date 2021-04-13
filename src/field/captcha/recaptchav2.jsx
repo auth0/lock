@@ -74,7 +74,7 @@ export class ReCAPTCHA extends React.Component {
 
   render() {
     /*
-      This is a hack for the following conflicting css-rule:
+      This is an override for the following conflicting css-rule:
 
       @media screen and (max-width: 480px)
       html.auth0-lock-html body > * {
@@ -83,13 +83,17 @@ export class ReCAPTCHA extends React.Component {
     */
     const fixInterval = setInterval(() => {
       let iframes = Array.from(document.querySelectorAll(`iframe[title="recaptcha challenge"]`));
+
       iframes = iframes.filter(iframe => iframe.parentNode.parentNode.style.display !== 'block');
+
       if (iframes.length === 0) {
         return;
       }
+
       iframes.forEach(iframe => {
         iframe.parentNode.parentNode.style.display = 'block';
       });
+
       clearInterval(fixInterval);
     }, 300);
 
