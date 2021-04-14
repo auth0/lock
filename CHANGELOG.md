@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.29.1](https://github.com/auth0/lock/tree/v11.29.1) (2021-04-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.29.0...v11.29.1)
+
+
+**Fixed**
+- fix ESD-12716: move CSS display override to render function to fix recaptcha on sign-up [\#1983](https://github.com/auth0/lock/pull/1983) ([jfromaniello](https://github.com/jfromaniello))
+
+
 ## [v11.29.0](https://github.com/auth0/lock/tree/v11.29.0) (2021-04-06)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.28.1...v11.29.0)
 
