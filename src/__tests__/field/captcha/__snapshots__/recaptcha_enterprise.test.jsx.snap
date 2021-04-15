@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recaptcha v2 should match the snapshot 1`] = `
+exports[`Recaptcha Enterprise should match the snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ReCAPTCHA
@@ -9,7 +9,7 @@ ShallowWrapper {
         "id": "__lock-id__",
         "core": Immutable.Map {
           "captcha": Immutable.Map {
-            "provider": "recaptcha_v2",
+            "provider": "recaptcha_enterprise",
             "sitekey": "mySiteKey",
           },
           "transient": Immutable.Map {
@@ -23,7 +23,7 @@ ShallowWrapper {
     onChange={[Function]}
     onErrored={[Function]}
     onExpired={[Function]}
-    provider="recaptcha_v2"
+    provider="recaptcha_enterprise"
     sitekey="mySiteKey"
   />,
   Symbol(enzyme.__renderer__): Object {

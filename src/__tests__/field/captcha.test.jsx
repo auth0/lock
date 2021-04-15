@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import I from 'immutable';
 
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { ReCAPTCHA } from '../../field/captcha/recaptchav2';
+import { ReCAPTCHA } from '../../field/captcha/recaptcha';
 import CaptchaInput from '../../ui/input/captcha_input';
 
 const createLockMock = ({ provider = 'auth0', required = true, siteKey = '' } = {}) =>
@@ -48,6 +48,28 @@ describe('CaptchaPane', () => {
     });
 
     it('should render reCaptcha if provider is recaptchav2', () => {
+      expect(wrapper.find(ReCAPTCHA)).toHaveLength(1);
+    });
+
+    it('should pass the sitekey', () => {
+      expect(wrapper.find(ReCAPTCHA).props().sitekey).toBe('mySiteKey');
+    });
+  });
+
+  describe('recaptcha enterprise', () => {
+    let wrapper;
+    beforeAll(() => {
+      const lockMock = createLockMock({
+        provider: 'recaptcha_enterprise',
+        siteKey: 'mySiteKey'
+      });
+      const i8nMock = createI18nMock();
+      const onReloadMock = jest.fn();
+
+      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
+    });
+
+    it('should render reCaptcha if provider is recaptcha_enterprise', () => {
       expect(wrapper.find(ReCAPTCHA)).toHaveLength(1);
     });
 
