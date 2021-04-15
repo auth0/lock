@@ -29,6 +29,8 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn, ha
       useTenantInfo: options.__useTenantInfo || false,
       hashCleanup: options.hashCleanup === false ? false : true,
       allowedConnections: Immutable.fromJS(options.allowedConnections || []),
+      useCustomPasswordlessConnection:
+        options.useCustomPasswordlessConnection === true ? true : false,
       ui: extractUIOptions(id, options),
       defaultADUsernameFromEmailPrefix:
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
@@ -524,6 +526,10 @@ export function filterConnections(m) {
       return cs.filter(c => order(c) >= 0).sort((c1, c2) => order(c1) - order(c2));
     })
   );
+}
+
+export function useCustomPasswordlessConnection(m) {
+  return get(m, 'useCustomPasswordlessConnection');
 }
 
 export function runHook(m, str, ...args) {
