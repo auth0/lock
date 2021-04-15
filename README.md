@@ -24,7 +24,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.29.0/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.29.1/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -99,6 +99,8 @@ Initializes a new instance of `Auth0LockPasswordless` configured with your appli
 - **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 
 If both SMS and email passwordless connections are enabled [in the dashboard](https://manage.auth0.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or SMS, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
+
+If using an [additional passwordless connection](#additional-passwordless-connections) that has been created through the Management API, you must specify the connection in `allowedConnections` and also enable the `useCustomPasswordlessConnection` flag in the options.
 
 For more information, read our [passwordless docs](https://auth0.com/docs/connections/passwordless).
 
@@ -370,6 +372,18 @@ var options = {
 #### Passwordless options
 
 - **passwordlessMethod {String}**: When using `Auth0LockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://auth0.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://auth0.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values for email connections are `code` and `link`. Defaults to `code`. SMS passwordless connections will always use `code`.
+- **useCustomPasswordlessConnection {Boolean}**: Enables the use of a custom passwordless connection (see below).
+
+#### Additional passwordless connections
+
+By default, only two passwordless connections are available: `email` and `sms`. However, it is possible to create additional passwordless connections that employ the `email` or `sms` strategy through the Management API. To use these connections in Lock, you must:
+
+1. Specify the custom connection in the `allowedConnections` option, and
+2. Enable the `useCustomPasswordlessConnection` flag in the options
+
+Users logging in using this connection should then be associated with the correct passwordless connection and this can be verified in [the logs](https://manage.auth0.com/#/logs).
+
+**Note:** If you specify more than one connection in `allowedConnections`, the first one will always be used.
 
 #### Hooks
 
