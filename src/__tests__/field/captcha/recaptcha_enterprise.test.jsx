@@ -38,7 +38,7 @@ describe('Recaptcha Enterprise', () => {
       ReCAPTCHA.loadScript({ hl: 'en-US', provider: 'recaptcha_enterprise' }, document.body);
       expect(document.body.innerHTML).toContain('<div id="renderTest">');
       expect(document.body.innerHTML).toContain(
-        '<script src="https://www.google.com/recaptcha/enterprise.js?render=explicit'
+        '<script src="https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit'
       );
     });
   });
