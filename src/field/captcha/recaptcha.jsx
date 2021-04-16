@@ -24,7 +24,7 @@ const scriptForProvider = (provider, lang, callback) => {
     case RECAPTCHA_V2_PROVIDER:
       return `https://www.google.com/recaptcha/api.js?hl=${lang}&onload=${callback}`;
     case RECAPTCHA_ENTERPRISE_PROVIDER:
-      return `https://www.google.com/recaptcha/enterprise.js?render=explicit&hl=${lang}&onload=${callback}`;
+      return `https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl=${lang}&onload=${callback}`;
   }
 };
 
