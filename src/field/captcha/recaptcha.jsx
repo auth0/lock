@@ -10,7 +10,7 @@ const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
 export const isRecaptcha = provider =>
   provider === RECAPTCHA_ENTERPRISE_PROVIDER || provider === RECAPTCHA_V2_PROVIDER;
 
-const globalForProvider = provider => {
+const getRecaptchaProvider = provider => {
   switch (provider) {
     case RECAPTCHA_V2_PROVIDER:
       return window.grecaptcha;
@@ -83,7 +83,7 @@ export class ReCAPTCHA extends React.Component {
   componentDidMount() {
     ReCAPTCHA.loadScript(this.props, document.body, (err, scriptNode) => {
       this.scriptNode = scriptNode;
-      const provider = globalForProvider(this.props.provider);
+      const provider = getRecaptchaProvider(this.props.provider);
 
       // if this is enterprise then we change this to window.grecaptcha.enterprise.render
       this.widgetId = provider.render(this.ref.current, {
@@ -96,7 +96,7 @@ export class ReCAPTCHA extends React.Component {
   }
 
   reset() {
-    const provider = globalForProvider(this.props.provider);
+    const provider = getRecaptchaProvider(this.props.provider);
     provider.reset(this.widgetId);
   }
 
