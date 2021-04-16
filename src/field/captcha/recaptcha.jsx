@@ -83,10 +83,10 @@ export class ReCAPTCHA extends React.Component {
   componentDidMount() {
     ReCAPTCHA.loadScript(this.props, document.body, (err, scriptNode) => {
       this.scriptNode = scriptNode;
-      const global = globalForProvider(this.props.provider);
+      const provider = globalForProvider(this.props.provider);
 
       // if this is enterprise then we change this to window.grecaptcha.enterprise.render
-      this.widgetId = global.render(this.ref.current, {
+      this.widgetId = provider.render(this.ref.current, {
         callback: this.changeHandler,
         'expired-callback': this.expiredHandler,
         'error-callback': this.erroredHandler,
@@ -96,8 +96,8 @@ export class ReCAPTCHA extends React.Component {
   }
 
   reset() {
-    const global = globalForProvider(this.props.provider);
-    global.reset(this.widgetId);
+    const provider = globalForProvider(this.props.provider);
+    provider.reset(this.widgetId);
   }
 
   render() {
