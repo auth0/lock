@@ -38,7 +38,7 @@ describe('Recaptcha v2', () => {
       ReCAPTCHA.loadScript({ hl: 'en-US', provider: 'recaptcha_v2' }, document.body);
       expect(document.body.innerHTML).toContain('<div id="renderTest">');
       expect(document.body.innerHTML).toContain(
-        '<script src="https://www.google.com/recaptcha/api.js?hl=en-US'
+        '<script src="https://www.recaptcha.net/recaptcha/api.js?hl=en-US'
       );
     });
   });
