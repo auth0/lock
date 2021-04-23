@@ -110,16 +110,24 @@ export class ReCAPTCHA extends React.Component {
       }
     */
     const fixInterval = setInterval(() => {
-      let iframes = Array.from(document.querySelectorAll(`iframe[title="recaptcha challenge"]`));
+      const iframes = Array.from(document.querySelectorAll(`iframe[src*="recaptcha"]`));
 
-      iframes = iframes.filter(iframe => iframe.parentNode.parentNode.style.display !== 'block');
+      const containers = iframes
+        .map(iframe => iframe.parentNode.parentNode)
+        .filter(container => {
+          return (
+            container &&
+            container.parentNode === document.body &&
+            container.style.display !== 'block'
+          );
+        });
 
-      if (iframes.length === 0) {
+      if (containers.length === 0) {
         return;
       }
 
-      iframes.forEach(iframe => {
-        iframe.parentNode.parentNode.style.display = 'block';
+      containers.forEach(iframe => {
+        iframe.style.display = 'block';
       });
 
       clearInterval(fixInterval);
