@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.30.0](https://github.com/auth0/lock/tree/v11.30.0) (2021-04-26)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.29.1...v11.30.0)
+
+
+**Added**
+- Recaptcha Enterprise support [\#1986](https://github.com/auth0/lock/pull/1986) ([akmjenkins](https://github.com/akmjenkins))
+
+**Fixed**
+- [ESD-12716]fix recaptcha on mobile when lang is not English [\#1988](https://github.com/auth0/lock/pull/1988) ([jfromaniello](https://github.com/jfromaniello))
+
+
 ## [v11.29.1](https://github.com/auth0/lock/tree/v11.29.1) (2021-04-14)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.29.0...v11.29.1)
 
