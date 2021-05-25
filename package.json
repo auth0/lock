@@ -118,6 +118,9 @@
     "url-join": "^1.1.0",
     "validator": "^13.6.0"
   },
+  "resolutions": {
+    "node-fetch": "^2.6.1"
+  },
   "ccu": {
     "name": "lock",
     "cdn": "https://cdn.auth0.com",
