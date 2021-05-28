@@ -37,13 +37,14 @@ export default class EmailPane extends React.Component {
     // TODO: invalidErrorHint and blankErrorHint are deprecated.
     // They are kept for backwards compatibiliy in the code for the customers overwriting
     // them with languageDictionary. They can be removed in the next major release.
-    const errMessage = value ? i18n.str('invalidErrorHint') || i18n.str('invalidEmailErrorHint')
-        : i18n.str('blankErrorHint') || i18n.str('blankEmailErrorHint');
+    const errMessage = value
+      ? i18n.str('invalidErrorHint') || i18n.str('invalidEmailErrorHint')
+      : i18n.str('blankErrorHint') || i18n.str('blankEmailErrorHint');
     const invalidHint = field.get('invalidHint') || errMessage;
 
     let isValid = (!forceInvalidVisibility || valid) && !c.isFieldVisiblyInvalid(lock, 'email');
     // Hide the error message for the blank email in Enterprise HRD only mode when the password field is hidden.
-    isValid = (forceInvalidVisibility && value === '') ? true : isValid;
+    isValid = forceInvalidVisibility && value === '' ? true : isValid;
 
     return (
       <EmailInput
@@ -54,6 +55,7 @@ export default class EmailPane extends React.Component {
         onChange={::this.handleChange}
         placeholder={placeholder}
         autoComplete={allowAutocomplete}
+        disabled={l.submitting(lock)}
       />
     );
   }
