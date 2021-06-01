@@ -790,13 +790,13 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-auth0-js@^9.16.1:
-  version "9.16.1"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.16.1.tgz#9e87d2543c488b27838ee2beb4e295710be80a34"
-  integrity sha512-y9R4xuXIWTQB7cV4ensYwCDGiPoQSyjVnKCj1wf4Y1XGOuORj/in8w7szPdl8F9tYS+bpyndgA2Up58JcljD3w==
+auth0-js@^9.16.2:
+  version "9.16.2"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.16.2.tgz#7c4ca32add3d8f7419ce33deb8f4839179606779"
+  integrity sha512-cF1nRjmMDezmhJ+ZwwYp23F0gPqU0zNmF/VvTpcwvCrEMl9lAvkCd4iburN1I7G8SYaaIYEfcGedCphpDZw6OQ==
   dependencies:
     base64-js "^1.3.0"
-    idtoken-verifier "^2.1.1"
+    idtoken-verifier "^2.1.2"
     js-cookie "^2.2.0"
     qs "^6.7.0"
     superagent "^5.3.1"
@@ -3142,10 +3142,10 @@ crypto-browserify@^3.0.0, crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
-crypto-js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.0.0.tgz#2904ab2677a9d042856a2ea2ef80de92e4a36dcc"
-  integrity sha512-bzHZN8Pn+gS7DQA6n+iUmBfl0hO5DJq++QP3U6uTucDtk/0iGpXd/Gg7CGR0p8tJhofJyaKoWBuJI4eAO00BBg==
+crypto-js@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
 
 css-color-names@0.0.4:
   version "0.0.4"
@@ -5831,13 +5831,13 @@ icss-replace-symbols@^1.1.0:
   resolved "https://registry.yarnpkg.com/icss-replace-symbols/-/icss-replace-symbols-1.1.0.tgz#06ea6f83679a7749e386cfe1fe812ae5db223ded"
   integrity sha1-Bupvg2ead0njhs/h/oEq5dsiPe0=
 
-idtoken-verifier@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/idtoken-verifier/-/idtoken-verifier-2.1.1.tgz#f9c92a62be11286d21f78cc4b0de2fce7708f685"
-  integrity sha512-nUdRiU6GOH7MOtpOK6WJTGftoFzviVraSaLi+KKwp+K7hu+PUpvxfCwOOvzKBqzJ78b+nL1qfyzkjbvrMYQ4Xw==
+idtoken-verifier@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/idtoken-verifier/-/idtoken-verifier-2.1.2.tgz#185ec29b70400b47a1d48b068e7b95d1bbf7dcef"
+  integrity sha512-YMHiP9zAMjB+pWreV4EHnIj3XCQ168+InWirVRFeRtlsMQIK61S+LLnyLGI8EL0wtlk/v7ya69Gjfio3P9/7Gw==
   dependencies:
     base64-js "^1.3.0"
-    crypto-js "^4.0.0"
+    crypto-js "3.3.0"
     es6-promise "^4.2.8"
     jsbn "^1.1.0"
     unfetch "^4.1.0"
