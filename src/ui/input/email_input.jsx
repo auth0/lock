@@ -11,14 +11,15 @@ export default class EmailInput extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { invalidHint, isValid, value, onChange } = this.props;
+    const { invalidHint, isValid, value, disabled, onChange } = this.props;
     const { focused } = this.state;
 
     return (
       invalidHint != nextProps.invalidHint ||
       isValid != nextProps.isValid ||
       value != nextProps.value ||
-      focused != nextState.focused
+      focused != nextState.focused ||
+      disabled != nextProps.disabled
     );
   }
 
