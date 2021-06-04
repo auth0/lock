@@ -15,6 +15,8 @@ export default class CheckboxInput extends React.Component {
             aria-label={ariaLabel || name}
           />
           {placeholderHTML ? (
+            // placeholderHTML allows raw HTML
+            // eslint-disable-next-line react/no-danger
             <span dangerouslySetInnerHTML={{ __html: placeholderHTML }} />
           ) : (
             <span>{placeholder}</span>

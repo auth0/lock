@@ -14,17 +14,7 @@ export default class InputWrap extends React.Component {
       wrapClassName += ' auth0-lock-focused';
     }
 
-    // NOTE: Ugly hack until we upgrade to React 15 which has better
-    // support for SVG.
-    let iconElement = null;
-
-    if (typeof icon === 'string') {
-      iconElement = <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: icon }} />;
-    } else if (icon) {
-      iconElement = icon;
-    }
-
-    if (iconElement) {
+    if (icon) {
       wrapClassName += ' auth0-lock-input-wrap-with-icon';
     }
 
@@ -38,7 +28,7 @@ export default class InputWrap extends React.Component {
     return (
       <div className={blockClassName}>
         <div className={wrapClassName}>
-          {iconElement}
+          {icon}
           {this.props.children}
           {after}
         </div>
@@ -58,5 +48,5 @@ InputWrap.propTypes = {
   invalidHint: PropTypes.node,
   isValid: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
-  svg: PropTypes.string
+  icon: PropTypes.object
 };

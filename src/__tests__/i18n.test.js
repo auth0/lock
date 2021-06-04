@@ -49,4 +49,17 @@ describe('i18n', () => {
       expect(syncSpy).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('when html is called', () => {
+    it('should sanitize the input and not allow for javascript to be passed through', () => {
+      const i18n = require('../i18n');
+      const strings = {
+        test: '<img src=1 href=1 onerror="javascript:alert(1)"></img>'
+      };
+      const m = Immutable.fromJS({ i18n: { strings } });
+      const html = i18n.html(m, 'test');
+      expect(html.props.dangerouslySetInnerHTML.__html).not.toMatch(/javascript:alert/);
+      expect(html.props.dangerouslySetInnerHTML.__html).toEqual('<img href="1" src="1">');
+    });
+  });
 });

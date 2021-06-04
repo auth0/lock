@@ -9,6 +9,7 @@
     "react/display-name": 0,
     "react/prop-types": 1,
     "react/no-find-dom-node": 1,
-    "react/no-string-refs": 1
+    "react/no-string-refs": 1,
+    "react/no-danger": 2
   }
 }

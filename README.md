@@ -586,7 +586,8 @@ var options = {
     name: "newsletter",
     prefill: "true",
     placeholder: "I hereby agree that I want to receive marketing emails from your company",
-    // placeholderHTML - is an optional field  and overrides the value of placeholder
+    // placeholderHTML - is an optional field and overrides the value of placeholder
+    // do not use user inputted data for HTML fields as they are vulnerable to XSS
     placeholderHTML: "<b>I hereby agree that I want to receive marketing emails from your company</b>",
     // ariaLabel - is an optional field
     ariaLabel: "Activate Newsletter"
