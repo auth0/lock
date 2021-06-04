@@ -103,7 +103,7 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "^9.13.3",
+    "auth0-js": "^9.16.2",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "2.3.1",
     "immutable": "^3.7.3",
@@ -117,6 +117,9 @@
     "trim": "1.0.0",
     "url-join": "^1.1.0",
     "validator": "^13.6.0"
+  },
+  "resolutions": {
+    "node-fetch": "^2.6.1"
   },
   "ccu": {
     "name": "lock",
