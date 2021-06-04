@@ -1,5 +1,20 @@
 # Change Log
 
+## [v11.30.1](https://github.com/auth0/lock/tree/v11.30.1) (2021-06-04)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.0...v11.30.1)
+
+
+**Changed**
+- Update fa.js [\#2000](https://github.com/auth0/lock/pull/2000) ([alirezagit](https://github.com/alirezagit))
+
+**Fixed**
+- [SDK-2588] Avoid multiple simultaneous HTTP calls [\#1998](https://github.com/auth0/lock/pull/1998) ([frederikprijck](https://github.com/frederikprijck))
+
+**Security**
+- Update auth0-js + node-fetch [\#1996](https://github.com/auth0/lock/pull/1996) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SEC-687, SEC-700] For more information on this security release, please see [the release on GitHub](https://github.com/auth0/lock/releases/tag/v11.30.1).
+
+
 ## [v11.30.0](https://github.com/auth0/lock/tree/v11.30.0) (2021-04-26)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.29.1...v11.30.0)
 
