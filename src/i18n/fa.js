@@ -99,13 +99,13 @@ export default {
     upperCase: 'حروف بزرگ (A-Z)'
   },
   passwordlessEmailAlternativeInstructions:
-    'در غیر اینصورت ایمیل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
+    'در غیر اینصورت ایمیل خود را وارد کنید',
   passwordlessEmailCodeInstructions: 'ارسال شد %s ایمیلی شامل کد به',
-  passwordlessEmailInstructions: 'برای ورود ایمیلتان را وارد کنید<br/>یا حسابی ایجاد کنید',
+  passwordlessEmailInstructions: 'برای ورود ایمیلتان را وارد کنید',
   passwordlessSMSAlternativeInstructions:
     'در غیر اینصورت شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
   passwordlessSMSCodeInstructions: 'ارسال شد %s پیامکی شامل کد برایتان به شماره',
-  passwordlessSMSInstructions: 'شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
+  passwordlessSMSInstructions: 'شماره موبایل خود را وارد کنید',
   phoneNumberInputPlaceholder: 'شماره موبایل',
   resendCodeAction: 'آیا کد را دریافت نموده اید؟',
   resendLabel: 'ارسال مجدد',
