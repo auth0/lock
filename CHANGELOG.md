@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.30.2](https://github.com/auth0/lock/tree/v11.30.2) (2021-06-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.1...v11.30.2)
+
+
+**Changed**
+- [ESD-13941] Implement a DOMPurify hook to enable target attributes on links [\#2006](https://github.com/auth0/lock/pull/2006) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.30.1](https://github.com/auth0/lock/tree/v11.30.1) (2021-06-04)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.30.0...v11.30.1)
 
