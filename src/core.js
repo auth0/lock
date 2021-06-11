@@ -2,6 +2,8 @@ import { EventEmitter } from 'events';
 import { getEntity, observe, read } from './store/index';
 import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
+import { initSanitizer } from './sanitizer';
+
 import {
   closeLock,
   resumeAuth,
@@ -62,10 +64,13 @@ export default class Base extends EventEmitter {
 
     this.id = idu.incremental();
     this.engine = engine;
+
     const hookRunner = ::this.runHook;
     const emitEventFn = this.emit.bind(this);
     const handleEventFn = this.on.bind(this);
+
     go(this.id);
+    initSanitizer();
 
     let m = setupLock(this.id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn);
 
