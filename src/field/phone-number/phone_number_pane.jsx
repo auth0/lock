@@ -56,7 +56,7 @@ export default class PhoneNumberPane extends React.Component {
           name="location"
           placeholder=""
           label={humanLocation(lock)}
-          onClick={() => startOptionSelection(l.id(lock), 'location', '', <IconSvg />)}
+          onClick={() => startOptionSelection(l.id(lock), 'location', '', IconSvg)}
         />
         <PhoneNumberInput
           value={c.phoneNumber(lock)}
