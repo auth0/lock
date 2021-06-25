@@ -23,7 +23,7 @@
     "build": "grunt build",
     "design": "grunt design",
     "dev": "grunt dev",
-    "yarn rele": "grunt dist",
+    "dist": "grunt dist",
     "prepublish": "cross-env BABEL_ENV=npm grunt dist",
     "precommit": "lint-staged",
     "lint": "eslint --ext .jsx,.js src/",
