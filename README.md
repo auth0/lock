@@ -24,7 +24,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.27.1/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.30.3/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -100,6 +100,8 @@ Initializes a new instance of `Auth0LockPasswordless` configured with your appli
 
 If both SMS and email passwordless connections are enabled [in the dashboard](https://manage.auth0.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or SMS, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
 
+If using an [additional passwordless connection](#additional-passwordless-connections) that has been created through the Management API, you must specify the connection in `allowedConnections` and also enable the `useCustomPasswordlessConnection` flag in the options.
+
 For more information, read our [passwordless docs](https://auth0.com/docs/connections/passwordless).
 
 #### Example
@@ -161,6 +163,7 @@ Lock will emit events during its lifecycle.
 - `signup error`: emitted when signup fails. Has the error as an argument.
 - `federated login`: emitted when the user clicks on a social connection button. Has the connection name and the strategy as arguments.
 - `sso login`: emitted when the user clicks on an enterprise SSO connection button. Has the lock ID, connection object, and field name as arguments.
+- `ssodata fetched`: emitted when the SSOData endpoint was called, usually as a result of an internal `checkSession` call. Has the error and the SSOData object as arguments.
 
 ### show(options)
 
@@ -346,6 +349,7 @@ var options = {
 - **prefill {Object}**: Allows you to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@auth0.com", username: "someone"}}`. When omitted no initial value will be provided.
 - **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
 - **usernameStyle {String}**: Determines what will be used to identify the user for a Database connection that has the `requires_username` flag set, otherwise it will be ignored. Possible values are `"username"` and `"email"` and by default both `username` and `email` are allowed.
+- **signUpHideUsernameField {Boolean}**: When set to `true` hides the _username_ input during sign up for a Database connection that has the `requires_username` flag set. Defaults to `false`.
 
 #### Enterprise options
 
@@ -368,6 +372,72 @@ var options = {
 #### Passwordless options
 
 - **passwordlessMethod {String}**: When using `Auth0LockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://auth0.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://auth0.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values for email connections are `code` and `link`. Defaults to `code`. SMS passwordless connections will always use `code`.
+- **useCustomPasswordlessConnection {Boolean}**: Enables the use of a custom passwordless connection (see below).
+
+#### Additional passwordless connections
+
+By default, only two passwordless connections are available: `email` and `sms`. However, it is possible to create additional passwordless connections that employ the `email` or `sms` strategy through the Management API. To use these connections in Lock, you must:
+
+1. Specify the custom connection in the `allowedConnections` option, and
+2. Enable the `useCustomPasswordlessConnection` flag in the options
+
+Users logging in using this connection should then be associated with the correct passwordless connection and this can be verified in [the logs](https://manage.auth0.com/#/logs).
+
+**Note:** If you specify more than one connection in `allowedConnections`, the first one will always be used.
+
+#### Hooks
+
+Lock supports hooks that can be used to integrate into various procedures within Lock.
+
+| Name | Description |
+|----|-----|
+| `loggingIn` | Called when the user presses the login button; after validating the login form, but before calling the login endpoint |
+| `signingUp` | Called when the user presses the button on the sign-up page; after validating the signup form, but before calling the sign up endpoint |
+
+**API**
+Both hooks accept two arguments:
+
+| Name | Description |
+|----|----|
+| `context` | this argument is currently always `null` but serves as a future-proofing mechanism to support providing additional data without us requiring breaking changes to the library |
+| `cb` | a callback function to call when the hook is finished. Execution of the user journey is blocked until this function is called by the hook |
+
+**API**
+
+Specify your hooks using a new `hooks` configuration item when setting up the library:
+
+```js
+new Auth0Lock('client ID', 'domain', {
+  hooks: {
+    loggingIn: function(context, cb) {
+      console.log('Hello from the login hook!');
+      cb();
+    },
+    signingUp: function(context, cb) {
+      console.log('Hello from the sign-up hook!');
+      cb();
+    }
+});
+```
+
+**Error handling**
+
+The developer can throw an error to block the login or sign-up process. The developer can either specify a specific object and show the error on the page, or throw a generic error which causes Lock to show a fallback error:
+
+```js
+new Auth0Lock('client ID', 'domain', {
+  hooks: {
+    loggingIn: function(context, cb) {
+      // Throw an object with code: `hook_error` to display this on the Login screen
+      throw { code: 'hook_error', description: 'There was an error in the login hook!' };
+
+      // Throw something generic to show a fallback error message
+      throw "Some error happened";
+    },
+});
+```
+
+**Note:** The error's `description` field is not sanitized by the SDK and so any content that reflects user input or could otherwise display dangerous HTML should be sanitized by your hook.
 
 #### Other options
 
@@ -422,7 +492,7 @@ var options = {
     placeholder: "enter your address",
     // The following properties are optional
     ariaLabel: "Address",
-    icon: "https://example.com/assests/address_icon.png",
+    icon: "https://example.com/assets/address_icon.png",
     prefill: "street 123",
     validator: function(address) {
       return {
@@ -474,7 +544,7 @@ var options = {
     ],
     // The following properties are optional
     ariaLabel: "Location",
-    icon: "https://example.com/assests/location_icon.png",
+    icon: "https://example.com/assets/location_icon.png",
     prefill: "us"
   }]
 }
@@ -494,7 +564,7 @@ var options = {
       cb(null, options);
     },
     ariaLabel: "Location",
-    icon: "https://example.com/assests/location_icon.png",
+    icon: "https://example.com/assets/location_icon.png",
     prefill: function(cb) {
       // obtain prefill, in case of error you call cb with the error in the
       // first arg instead of null
@@ -516,7 +586,8 @@ var options = {
     name: "newsletter",
     prefill: "true",
     placeholder: "I hereby agree that I want to receive marketing emails from your company",
-    // placeholderHTML - is an optional field  and overrides the value of placeholder
+    // placeholderHTML - is an optional field and overrides the value of placeholder
+    // do not use user inputted data for HTML fields as they are vulnerable to XSS
     placeholderHTML: "<b>I hereby agree that I want to receive marketing emails from your company</b>",
     // ariaLabel - is an optional field
     ariaLabel: "Activate Newsletter"

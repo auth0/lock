@@ -37,7 +37,7 @@ describe('Login with connection scopes', () => {
   });
 
   describe('for an SSO connection', () => {
-    it.only('passes connectionScopes to the connection', () => {
+    it('passes connectionScopes to the connection', () => {
       lock = l.setup('__lock__', 'client', 'domain', {
         auth: {
           connectionScopes: {
@@ -67,7 +67,7 @@ describe('Login with connection scopes', () => {
   });
 
   describe('for a non-SSO connection', () => {
-    it.only('passes connectionScopes to the connection', () => {
+    it('passes connectionScopes to the connection', () => {
       lock = l.setup('__lock__', 'client', 'domain', {
         auth: {
           connectionScopes: {

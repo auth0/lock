@@ -1,5 +1,102 @@
 # Change Log
 
+## [v11.30.3](https://github.com/auth0/lock/tree/v11.30.3) (2021-06-25)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.2...v11.30.3)
+
+
+**Fixed**
+- Fix country dialing code dropdown [\#2009](https://github.com/auth0/lock/pull/2009) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
+
+## [v11.30.2](https://github.com/auth0/lock/tree/v11.30.2) (2021-06-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.1...v11.30.2)
+
+
+**Changed**
+- [ESD-13941] Implement a DOMPurify hook to enable target attributes on links [\#2006](https://github.com/auth0/lock/pull/2006) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.30.1](https://github.com/auth0/lock/tree/v11.30.1) (2021-06-04)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.0...v11.30.1)
+
+
+**Changed**
+- Update fa.js [\#2000](https://github.com/auth0/lock/pull/2000) ([alirezagit](https://github.com/alirezagit))
+
+**Fixed**
+- [SDK-2588] Avoid multiple simultaneous HTTP calls [\#1998](https://github.com/auth0/lock/pull/1998) ([frederikprijck](https://github.com/frederikprijck))
+
+**Security**
+- Update auth0-js + node-fetch [\#1996](https://github.com/auth0/lock/pull/1996) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SEC-687, SEC-700] For more information on this security release, please see [the release on GitHub](https://github.com/auth0/lock/releases/tag/v11.30.1).
+
+
+## [v11.30.0](https://github.com/auth0/lock/tree/v11.30.0) (2021-04-26)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.29.1...v11.30.0)
+
+
+**Added**
+- Recaptcha Enterprise support [\#1986](https://github.com/auth0/lock/pull/1986) ([akmjenkins](https://github.com/akmjenkins))
+
+**Fixed**
+- [ESD-12716]fix recaptcha on mobile when lang is not English [\#1988](https://github.com/auth0/lock/pull/1988) ([jfromaniello](https://github.com/jfromaniello))
+
+
+## [v11.29.1](https://github.com/auth0/lock/tree/v11.29.1) (2021-04-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.29.0...v11.29.1)
+
+
+**Fixed**
+- fix ESD-12716: move CSS display override to render function to fix recaptcha on sign-up [\#1983](https://github.com/auth0/lock/pull/1983) ([jfromaniello](https://github.com/jfromaniello))
+
+
+## [v11.29.0](https://github.com/auth0/lock/tree/v11.29.0) (2021-04-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.28.1...v11.29.0)
+
+
+**Added**
+- [SDK-2412] Add event for SSO data fetch [\#1977](https://github.com/auth0/lock/pull/1977) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [SDK-2306] Add login and signup hooks [\#1976](https://github.com/auth0/lock/pull/1976) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- [ESD-12716] fix issue with recaptcha in mobile [\#1978](https://github.com/auth0/lock/pull/1978) ([jfromaniello](https://github.com/jfromaniello))
+- Fixes typo "assests" to "assets" [\#1975](https://github.com/auth0/lock/pull/1975) ([morkro](https://github.com/morkro))
+- Remove line breaks from passwordless vcode entry instructions [\#1974](https://github.com/auth0/lock/pull/1974) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Remove padding from screen tabs [\#1971](https://github.com/auth0/lock/pull/1971) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
+## [v11.28.1](https://github.com/auth0/lock/tree/v11.28.1) (2021-03-01)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.28.0...v11.28.1)
+
+
+**Fixed**
+- Disable form submit manually for passwordless Safari [\#1968](https://github.com/auth0/lock/pull/1968) ([adamjmcgrath](https://github.com/adamjmcgrath))
+
+**Security**
+- Upgrade trim version to fix security issue [\#1960](https://github.com/auth0/lock/pull/1960) ([blankg](https://github.com/blankg))
+
+
+## [v11.28.0](https://github.com/auth0/lock/tree/v11.28.0) (2021-01-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.27.2...v11.28.0)
+
+**Added**
+- An option to hide username in signup view [\#1954](https://github.com/auth0/lock/pull/1954) ([saltukalakus](https://github.com/saltukalakus))
+
+**Changed**
+- Wording and spelling fixes to Bulgarian language file [\#1953](https://github.com/auth0/lock/pull/1953) ([maximnaidenov](https://github.com/maximnaidenov))
+
+## [v11.27.2](https://github.com/auth0/lock/tree/v11.27.2) (2020-12-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.27.1...v11.27.2)
+
+
+**Changed**
+- Update cs.js [\#1944](https://github.com/auth0/lock/pull/1944) ([HopXXII](https://github.com/HopXXII))
+
+**Fixed**
+- [ESD-10361] Fix password strength popup overflow issue [\#1949](https://github.com/auth0/lock/pull/1949) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- [ESD-10373] Fix rendering of Lock inside popup on first open [\#1948](https://github.com/auth0/lock/pull/1948) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+
 ## [v11.27.1](https://github.com/auth0/lock/tree/v11.27.1) (2020-10-26)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.27.0...v11.27.1)
 

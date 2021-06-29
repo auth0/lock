@@ -172,6 +172,7 @@ export function validateAndSubmit(id, fields = [], f) {
       : fields.reduce((r, x) => showInvalidField(r, x), m);
   });
   const m = read(getEntity, 'lock', id);
+
   if (l.submitting(m)) {
     f(m);
   }
@@ -184,13 +185,23 @@ export function logIn(
   logInErrorHandler = (_id, error, _fields, next) => next()
 ) {
   validateAndSubmit(id, fields, m => {
-    webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
-      if (error) {
-        setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250);
-      } else {
-        logInSuccess(id, result);
-      }
-    });
+    try {
+      // For now, always pass 'null' for the context as we don't need it yet.
+      // If we need it later, it'll save a breaking change in hooks already in use.
+      const context = null;
+
+      l.runHook(m, 'loggingIn', context, function() {
+        webApi.logIn(id, params, l.auth.params(m).toJS(), (error, result) => {
+          if (error) {
+            setTimeout(() => logInError(id, fields, error, logInErrorHandler), 250);
+          } else {
+            logInSuccess(id, result);
+          }
+        });
+      });
+    } catch (e) {
+      setTimeout(() => logInError(id, fields, e, logInErrorHandler), 250);
+    }
   });
 }
 
@@ -221,6 +232,7 @@ export function logInSuccess(id, result) {
 
 function logInError(id, fields, error, localHandler = (_id, _error, _fields, next) => next()) {
   const errorCode = error.error || error.code;
+
   localHandler(id, error, fields, () =>
     setTimeout(() => {
       const m = read(getEntity, 'lock', id);

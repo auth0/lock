@@ -109,7 +109,7 @@ export default {
     'Voer uw e-mailadres in om aan te melden <br/>of maak een nieuw account aan',
   passwordlessSMSAlternativeInstructions:
     'Anders, voer uw telefoonnummer in om in te loggen<br/>of creëer een nieuwe gebruikersaccount',
-  passwordlessSMSCodeInstructions: 'Er is een SMS met de code verstuurd <br/>naar %s.',
+  passwordlessSMSCodeInstructions: 'Er is een SMS met de code verstuurd naar %s.',
   passwordlessSMSInstructions:
     'Voer uw telefoonnummer in om in te loggen <br/>of creëer een nieuw gebruikersaccount',
   phoneNumberInputPlaceholder: 'uw telefoonnummer',

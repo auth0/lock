@@ -109,7 +109,7 @@ export default {
     'Skriv inn din e-postadresse for å logge inn<br/>eller opprette en brukerkonto',
   passwordlessSMSAlternativeInstructions:
     'Eller, tast inn ditt mobilnummer for å logge inn<br/>eller opprette en brukerkonto',
-  passwordlessSMSCodeInstructions: 'En SMS med kode er sendt<br/>til %s.',
+  passwordlessSMSCodeInstructions: 'En SMS med kode er sendt til %s.',
   passwordlessSMSInstructions:
     'Tast inn ditt mobilnummer for å logge inn<br/>eller opprette en brukerkonto',
   phoneNumberInputPlaceholder: 'ditt mobilnummer',

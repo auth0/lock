@@ -21,7 +21,7 @@ export default {
       'lock.popup_closed': 'پنجره بسته شده است ، لطفا دوباره تلاش کنید.',
       'lock.unauthorized': 'مجوزی اعطا نشده است ، دوباره تلاش کنید.',
       'lock.mfa_registration_required':
-        'احراز هویت چند فاکتوری لازم است ، اما دستگاه شما ثبت نشده است، لطفا دستگاه خود را ثبت کنید.',
+        'احراز هویت چند مرحله ای لازم است ، اما دستگاه شما ثبت نشده است، لطفا دستگاه خود را ثبت کنید.',
       'lock.mfa_invalid_code': 'کد اشتباه است ، دوباره تلاش کنید',
       password_change_required:
         'لازم است تا رمزعبور خود را تغییر دهید ، احتملا برای اولین بار است که وارد سیستم میشوید یا رمز عبور شما منقضی شده است',
@@ -54,15 +54,15 @@ export default {
   },
   success: {
     logIn: 'با تشکر از ورود شما.',
-    forgotPassword: 'ما ایمیلی برای تغییر رمز عبور برایتان ارسال کردیم.',
-    magicLink: 'ما لینک ورود را برایتان ایمیل کردیم<br />به %s.',
-    signUp: 'تشکر از ثبت نام شما.'
+    forgotPassword: 'ایمیلی برای تغییر رمز عبور برایتان ارسال کردیم.',
+    magicLink: 'لینک ورود را برایتان ایمیل کردیم<br />به %s.',
+    signUp: 'از ثبت نام شما متشکریم.'
   },
   blankErrorHint: '',
-  blankPasswordErrorHint: 'نباید خالی باشد',
-  blankEmailErrorHint: 'نباید خالی باشد',
-  blankUsernameErrorHint: 'نباید خالی باشد',
-  blankCaptchaErrorHint: 'نباید خالی باشد',
+  blankPasswordErrorHint: 'کادر نباید خالی باشد',
+  blankEmailErrorHint: 'کادر نباید خالی باشد',
+  blankUsernameErrorHint: 'کادر نباید خالی باشد',
+  blankCaptchaErrorHint: 'کادر نباید خالی باشد',
   codeInputPlaceholder: 'کد شما',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: 'یا',
@@ -72,7 +72,7 @@ export default {
   enterpriseLoginIntructions: 'ورد با استفاده از اطلاعات سازمانی.',
   enterpriseActiveLoginInstructions: 'اطلاعات سازمانی تان را در %s وارد کنید.',
   failedLabel: 'ناموفق!',
-  forgotPasswordAction: 'رمز عبورتان را فراموش کردید?',
+  forgotPasswordAction: 'رمز عبورتان را فراموش کردید؟',
   forgotPasswordInstructions:
     'ایمیل خود را وارد کنید ، ما ایمیلی برای ریست کردن رمز عبور برایتان ارسال خواهیم کرد.',
   forgotPasswordSubmitLabel: 'ارسال ایمیل',
@@ -104,7 +104,7 @@ export default {
   passwordlessEmailInstructions: 'برای ورود ایمیلتان را وارد کنید<br/>یا حسابی ایجاد کنید',
   passwordlessSMSAlternativeInstructions:
     'در غیر اینصورت شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
-  passwordlessSMSCodeInstructions: 'پیامکی شامل کد برایتان به شماره <br/> %s ارسال شد.',
+  passwordlessSMSCodeInstructions: 'پیامکی شامل کد برایتان به شماره %s ارسال شد.',
   passwordlessSMSInstructions: 'شماره موبایل خود را وارد کنید<br/>یا حسابی ایجاد کنید',
   phoneNumberInputPlaceholder: 'شماره موبایل',
   resendCodeAction: 'آیا کد را دریافت نموده اید?',
@@ -135,7 +135,7 @@ export default {
   forgotPasswordTitle: 'تنظیم مجدد کلمه ورود',
   signUpTitle: 'ثبت نام',
   showPassword: 'نمایش رمز ورود',
-  signUpTerms: 'با ثبت نام، با شرایط خدمات و سیاست حفظ حریم خصوصی ما موافقت می کنید.',
+  signUpTerms: 'با ثبت نام در سایت، شرایط خدمات و سیاست حفظ حریم خصوصی ما را می پذیرید.',
   captchaCodeInputPlaceholder: 'کد نشان داده شده در بالا را وارد کنید',
   captchaMathInputPlaceholder: 'فرمول نشان داده شده در بالا را حل کنید'
 };

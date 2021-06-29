@@ -109,7 +109,7 @@ export default {
   passwordlessEmailInstructions: 'Indiqueu el vostre email per iniciar sessió<br/>o registrar-vos',
   passwordlessSMSAlternativeInstructions:
     'Altrament, introduïu el vostre telèfon per iniciar sessió<br/>o registrar-vos',
-  passwordlessSMSCodeInstructions: 'Se us ha enviat un SMS amb el codi<br/>a %s.',
+  passwordlessSMSCodeInstructions: 'Se us ha enviat un SMS amb el codi a %s.',
   passwordlessSMSInstructions: 'Indiqueu el vostre telèfon per iniciar sessió<br/>o registrar-vos',
   phoneNumberInputPlaceholder: 'número de telèfon',
   resendCodeAction: 'No heu rebut el codi?',

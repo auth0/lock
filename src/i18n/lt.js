@@ -106,7 +106,7 @@ export default {
   passwordlessEmailInstructions: 'Įveskite el.pašto adresą prisijungti<br/>arba susikurti paskyrą',
   passwordlessSMSAlternativeInstructions:
     'Arba įveskite telefono numerį prisijungti<br/>arba susikurti paskyrą',
-  passwordlessSMSCodeInstructions: 'SMS su kodu buvo išsiųstas<br/>į %s.',
+  passwordlessSMSCodeInstructions: 'SMS su kodu buvo išsiųstas į %s.',
   passwordlessSMSInstructions: 'Įveskite telefono numerį prisijungti<br/>arba susikurti paskyrą',
   phoneNumberInputPlaceholder: 'Jūsų telefono numeris',
   resendCodeAction: 'Negavote kodo?',

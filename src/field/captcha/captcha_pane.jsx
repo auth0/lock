@@ -7,7 +7,7 @@ import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
 import * as captchaField from '../captcha';
 import { getFieldValue, isFieldVisiblyInvalid } from '../index';
-import { ReCAPTCHA } from './recaptchav2';
+import { ReCAPTCHA, isRecaptcha } from './recaptcha';
 
 export default class CaptchaPane extends React.Component {
   render() {
@@ -20,7 +20,9 @@ export default class CaptchaPane extends React.Component {
     const value = getFieldValue(lock, 'captcha');
     const isValid = !isFieldVisiblyInvalid(lock, 'captcha');
 
-    if (captcha.get('provider') === 'recaptcha_v2') {
+    const provider = captcha.get('provider');
+
+    if (isRecaptcha(provider)) {
       function handleChange(value) {
         swap(updateEntity, 'lock', lockId, captchaField.set, value);
       }
@@ -31,6 +33,7 @@ export default class CaptchaPane extends React.Component {
 
       return (
         <ReCAPTCHA
+          provider={provider}
           sitekey={captcha.get('siteKey')}
           onChange={handleChange}
           onExpired={reset}

@@ -109,7 +109,7 @@ export default {
     'Giriş üçün e-mail adresinizi daxil edin<br/>və ya qeydiyyatdan keçin',
   passwordlessSMSAlternativeInstructions:
     'Əks halda, giriş üçün telefon nömrənizi daxil edin<br/>və ya qeydiyyatdan keçin',
-  passwordlessSMSCodeInstructions: 'Sizə SMS göndərdik<br/>%s.',
+  passwordlessSMSCodeInstructions: 'Sizə SMS göndərdik %s.',
   passwordlessSMSInstructions:
     'Giriş üçün telefon nömrənizi daxil edin<br/>və ya qeydiyyatdan keçin',
   phoneNumberInputPlaceholder: 'telefon nömrəniz',

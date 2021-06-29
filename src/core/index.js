@@ -12,6 +12,8 @@ import * as captchaField from '../field/captcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
+export const validPublicHooks = ['loggingIn', 'signingUp'];
+
 export function setup(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn) {
   let m = init(
     id,
@@ -27,12 +29,15 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn, ha
       useTenantInfo: options.__useTenantInfo || false,
       hashCleanup: options.hashCleanup === false ? false : true,
       allowedConnections: Immutable.fromJS(options.allowedConnections || []),
+      useCustomPasswordlessConnection:
+        options.useCustomPasswordlessConnection === true ? true : false,
       ui: extractUIOptions(id, options),
       defaultADUsernameFromEmailPrefix:
         options.defaultADUsernameFromEmailPrefix === false ? false : true,
       prefill: options.prefill || {},
       connectionResolver: options.connectionResolver,
-      handleEventFn: handleEventFn
+      handleEventFn: handleEventFn,
+      hooks: extractHookOptions(options)
     })
   );
 
@@ -161,6 +166,10 @@ export function suppressSubmitOverlay(m) {
   return get(m, 'suppressSubmitOverlay');
 }
 
+export function hooks(m) {
+  return get(m, 'hooks');
+}
+
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
@@ -209,6 +218,18 @@ function extractUIOptions(id, options) {
         ? true
         : !!options.scrollGlobalMessagesIntoView
   });
+}
+
+function extractHookOptions(options) {
+  const hooks = {};
+
+  validPublicHooks.forEach(hookName => {
+    if (options.hooks && typeof options.hooks[hookName] === 'function') {
+      hooks[hookName] = options.hooks[hookName];
+    }
+  });
+
+  return new Immutable.fromJS(hooks);
 }
 
 const { get: getUI, set: setUI } = dataFns(['core', 'ui']);
@@ -420,7 +441,9 @@ export function setCaptcha(m, value, wasInvalid) {
 export function captcha(m) {
   //some tests send an string as model.
   // https://github.com/auth0/lock/blob/82f56187698528699478bd429858cf91e387763c/src/__tests__/engine/classic/sign_up_pane.test.jsx#L28
-  if (typeof m !== 'object') { return; }
+  if (typeof m !== 'object') {
+    return;
+  }
   return get(m, 'captcha');
 }
 
@@ -505,6 +528,10 @@ export function filterConnections(m) {
   );
 }
 
+export function useCustomPasswordlessConnection(m) {
+  return get(m, 'useCustomPasswordlessConnection');
+}
+
 export function runHook(m, str, ...args) {
   return get(m, 'hookRunner')(str, m, ...args);
 }
@@ -536,8 +563,8 @@ export function loginErrorMessage(m, error, type) {
     return i18n.html(m, ['error', 'login', 'lock.network']);
   }
 
-  // Custom rule error (except blocked_user)
-  if (error.code === 'rule_error') {
+  // Custom rule or hook error (except blocked_user)
+  if (error.code === 'rule_error' || error.code === 'hook_error') {
     return error.description || i18n.html(m, ['error', 'login', 'lock.fallback']);
   }
 

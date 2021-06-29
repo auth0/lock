@@ -108,7 +108,7 @@ export default {
   passwordlessEmailInstructions: 'Syötä sähköpostisi kirjautuaksesi<br/>tai luo käyttäjätunnus',
   passwordlessSMSAlternativeInstructions:
     'Muussa tapauksessa, syötä puhelinnumerosi kirjautuaksesi<br/>tai luo käyttäjätunnus',
-  passwordlessSMSCodeInstructions: 'Koodin sisältävä tekstiviesti on lähetetty<br/>numeroon %s.',
+  passwordlessSMSCodeInstructions: 'Koodin sisältävä tekstiviesti on lähetetty numeroon %s.',
   passwordlessSMSInstructions: 'Syötä puhelinnumerosi kirjautuaksesi<br/>tai luo käyttäjätunnus',
   phoneNumberInputPlaceholder: 'puhelinnumerosi',
   resendCodeAction: 'Etkö saanut koodia?',

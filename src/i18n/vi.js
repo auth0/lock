@@ -105,7 +105,7 @@ export default {
   passwordlessEmailInstructions: 'Nhập email của bạn để đăng nhập<br/>hoặc đăng ký',
   passwordlessSMSAlternativeInstructions:
     'Bằng không, nhập số điện thoại của bạn để đăng nhập<br/>hoặc đăng ký',
-  passwordlessSMSCodeInstructions: '1 SMS có mã số đã được gửi <br/>tới %s.',
+  passwordlessSMSCodeInstructions: '1 SMS có mã số đã được gửi tới %s.',
   passwordlessSMSInstructions: 'Nhập số điện thoại của bạn để đăng nhập<br/>hoặc đăng ký',
   phoneNumberInputPlaceholder: 'Số điện thoại',
   resendCodeAction: 'Không nhận được mã số?',

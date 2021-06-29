@@ -1,6 +1,7 @@
 import React from 'react';
 import Immutable, { Map } from 'immutable';
 import { format } from 'util';
+import { sanitize } from 'dompurify';
 import sync from './sync';
 import * as l from './core/index';
 import { dataFns } from './utils/data_utils';
@@ -14,8 +15,11 @@ export function str(m, keyPath, ...args) {
 
 export function html(m, keyPath, ...args) {
   const html = str(m, keyPath, ...args);
-
-  return html ? React.createElement('span', { dangerouslySetInnerHTML: { __html: html } }) : null;
+  // dangerouslySetInnerHTML input is sanitized using dompurify
+  // eslint-disable-next-line react/no-danger
+  return html
+    ? React.createElement('span', { dangerouslySetInnerHTML: { __html: sanitize(html) } })
+    : null;
 }
 
 export function group(m, keyPath) {

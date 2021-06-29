@@ -104,7 +104,7 @@ export default {
   passwordlessEmailInstructions: 'Ange din e-postadress för att logga in<br>eller skapa ett konto',
   passwordlessSMSAlternativeInstructions:
     'Annars, ange ditt telefonnummer för att logga in<br>eller skapa ett konto',
-  passwordlessSMSCodeInstructions: 'Ett SMS med koden har skickats<br>till %s.',
+  passwordlessSMSCodeInstructions: 'Ett SMS med koden har skickats till %s.',
   passwordlessSMSInstructions: 'Ange ditt telefonnummer för att logga in<br>eller skapa ett konto',
   phoneNumberInputPlaceholder: 'ditt telefonnummer',
   resendCodeAction: 'Fick du ingen kod?',

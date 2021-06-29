@@ -17,11 +17,11 @@ const createLockMock = ({ provider = 'none', sitekey = '' } = {}) =>
     }
   });
 
-describe('Recaptcha v2', () => {
+describe('Recaptcha Enterprise', () => {
   it('should match the snapshot', () => {
-    const mockLock = createLockMock({ provider: 'recaptcha_v2', sitekey: 'mySiteKey' });
+    const mockLock = createLockMock({ provider: 'recaptcha_enterprise', sitekey: 'mySiteKey' });
     const wrapper = shallow(
-      <ReCAPTCHA provider={'recaptcha_v2'} lock={mockLock} sitekey={'mySiteKey'} />
+      <ReCAPTCHA provider={'recaptcha_enterprise'} lock={mockLock} sitekey={'mySiteKey'} />
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -35,10 +35,10 @@ describe('Recaptcha v2', () => {
       document.getElementById('renderTest').remove();
     });
     it('injects the script', () => {
-      ReCAPTCHA.loadScript({ hl: 'en-US', provider: 'recaptcha_v2' }, document.body);
+      ReCAPTCHA.loadScript({ hl: 'en-US', provider: 'recaptcha_enterprise' }, document.body);
       expect(document.body.innerHTML).toContain('<div id="renderTest">');
       expect(document.body.innerHTML).toContain(
-        '<script src="https://www.recaptcha.net/recaptcha/api.js?hl=en-US'
+        '<script src="https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit'
       );
     });
   });

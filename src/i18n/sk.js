@@ -107,7 +107,7 @@ export default {
   passwordlessEmailInstructions: 'Pre prihlásenie zadajte váš e-mail<br/>alebo vytvorte účet',
   passwordlessSMSAlternativeInstructions:
     'Buď, zadajte vaše telefónne číslo pre prihlásenie<br/>alebo vytvorte účet',
-  passwordlessSMSCodeInstructions: 'Poslali sme Vám SMS s kódom<br/>na telefónne číslo %s.',
+  passwordlessSMSCodeInstructions: 'Poslali sme Vám SMS s kódom na telefónne číslo %s.',
   passwordlessSMSInstructions:
     'Pre prihlásenie zadajte Vaše telefónne číslo<br/>alebo vytvorte účet',
   phoneNumberInputPlaceholder: 'Vaše telefónne číslo',

@@ -55,34 +55,6 @@ describe('Chrome', () => {
     expectComponent(<Chrome {...defaultProps} />).toMatchSnapshot();
   });
 
-  it('correctly sets the header size when the "signin ready" event is triggered', () => {
-    const component = create(<Chrome {...defaultProps} />);
-    const instance = component.getInstance();
-
-    expect(instance.state.headerHeight).toBe(200);
-    expect(component).toMatchSnapshot();
-
-    Chrome.prototype.getHeaderSize.mockReturnValue(250);
-    triggerEvent('signin ready');
-
-    expect(instance.state.headerHeight).toBe(250);
-    expect(component).toMatchSnapshot();
-  });
-
-  it('correctly sets the header size when the "signup ready" event is triggered', () => {
-    const component = create(<Chrome {...defaultProps} />);
-    const instance = component.getInstance();
-
-    expect(instance.state.headerHeight).toBe(200);
-    expect(component).toMatchSnapshot();
-    Chrome.prototype.getHeaderSize.mockReturnValue(250);
-
-    triggerEvent('signup ready');
-
-    expect(instance.state.headerHeight).toBe(250);
-    expect(component).toMatchSnapshot();
-  });
-
   it('renders correctly when there is a global message', () => {
     const props = {
       ...defaultProps,

@@ -112,7 +112,7 @@ export default {
     'Για να συνδεθείτε εισάγετε το email σας <br/> ή δημιουργήστε έναν λογαριασμό',
   passwordlessSMSAlternativeInstructions:
     'Διαφορετικά, για να συνδεθείτε εισάγετε τοv αριθμό κινητού σας <br/> ή δημιουργήστε έναν λογαριασμό',
-  passwordlessSMSCodeInstructions: 'Ένα SMS με τον κωδικό σας έχει σταλθεί στο:<br/> %s.',
+  passwordlessSMSCodeInstructions: 'Ένα SMS με τον κωδικό σας έχει σταλθεί στο:  %s.',
   passwordlessSMSInstructions:
     'Για να συνδεθείτε εισάγετε τοv αριθμό κινητού σας <br/> ή δημιουργήστε έναν λογαριασμό',
   phoneNumberInputPlaceholder: 'το κινητό σας',

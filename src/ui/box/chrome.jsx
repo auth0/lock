@@ -1,16 +1,74 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { sanitize } from 'dompurify';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
 import * as l from '../../core/index';
 import Header from './header';
 
-const submitSvg =
-  '<svg aria-hidden="true" focusable="false" width="43px" height="42px" viewBox="0 0 43 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="Lock" sketch:type="MSArtboardGroup" transform="translate(-280.000000, -3592.000000)"><g id="SMS" sketch:type="MSLayerGroup" transform="translate(153.000000, 3207.000000)"><g id="Group" sketch:type="MSShapeGroup"><g id="Login" transform="translate(0.000000, 369.000000)"><g id="Btn"><g id="Oval-302-+-Shape" transform="translate(128.000000, 17.000000)"><circle id="Oval-302" stroke="#FFFFFF" stroke-width="2" cx="20.5" cy="20" r="20"></circle><path d="M17.8,15.4 L19.2,14 L25.2,20 L19.2,26 L17.8,24.6 L22.4,20 L17.8,15.4 Z" id="Shape" fill="#FFFFFF"></path></g></g></g></g></g></g></g></svg>';
-const submitText =
-  '<svg aria-hidden="true" focusable="false" class="icon-text" width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Web/Submit/Active" transform="translate(-148.000000, -32.000000)" fill="#FFFFFF"><polygon id="Shape" points="148 33.4 149.4 32 155.4 38 149.4 44 148 42.6 152.6 38"></polygon></g></g></svg>';
+const SubmitSvg = () => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    width="43px"
+    height="42px"
+    viewBox="0 0 43 42"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g id="Lock" transform="translate(-280.000000, -3592.000000)">
+        <g id="SMS" transform="translate(153.000000, 3207.000000)">
+          <g id="Group">
+            <g id="Login" transform="translate(0.000000, 369.000000)">
+              <g id="Btn">
+                <g id="Oval-302-+-Shape" transform="translate(128.000000, 17.000000)">
+                  <circle
+                    id="Oval-302"
+                    stroke="#FFFFFF"
+                    strokeWidth="2"
+                    cx="20.5"
+                    cy="20"
+                    r="20"
+                  ></circle>
+                  <path
+                    d="M17.8,15.4 L19.2,14 L25.2,20 L19.2,26 L17.8,24.6 L22.4,20 L17.8,15.4 Z"
+                    id="Shape"
+                    fill="#FFFFFF"
+                  ></path>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
+const SubmitTextSvg = () => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    className="icon-text"
+    width="8px"
+    height="12px"
+    viewBox="0 0 8 12"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g id="Symbols" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g id="Web/Submit/Active" transform="translate(-148.000000, -32.000000)" fill="#FFFFFF">
+        <polygon
+          id="Shape"
+          points="148 33.4 149.4 32 155.4 38 149.4 44 148 42.6 152.6 38"
+        ></polygon>
+      </g>
+    </g>
+  </svg>
+);
 
 class SubmitButton extends React.Component {
   handleSubmit() {
@@ -27,7 +85,6 @@ class SubmitButton extends React.Component {
     } else if (screenName === 'socialOrPhoneNumber') {
       l.emitEvent(model, 'socialOrPhoneNumber submit');
     } else if (screenName === 'vcode') {
-      l.emitEvent(model, 'vcode submit');
     }
 
     if (this.props.onSubmit) {
@@ -44,10 +101,10 @@ class SubmitButton extends React.Component {
     const content = label ? (
       <span className="auth0-label-submit">
         {label}
-        <span dangerouslySetInnerHTML={{ __html: submitText }} />
+        <SubmitTextSvg />
       </span>
     ) : (
-      <span dangerouslySetInnerHTML={{ __html: submitSvg }} />
+      <SubmitSvg />
     );
 
     return (
@@ -72,6 +129,7 @@ class SubmitButton extends React.Component {
 SubmitButton.propTypes = {
   color: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
+  display: PropTypes.string,
   label: PropTypes.string,
   screenName: PropTypes.string,
   onSubmit: PropTypes.func,
@@ -146,15 +204,6 @@ export default class Chrome extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const fn = () => this.setState({ headerHeight: this.getHeaderSize() });
-    const m = this.props.contentProps.model;
-
-    l.handleEvent(m, 'signup ready', fn);
-    l.handleEvent(m, 'signin ready', fn);
-    fn();
-  }
-
   onWillSlide() {
     this.setState({ moving: true });
     this.sliding = true;
@@ -166,7 +215,7 @@ export default class Chrome extends React.Component {
   }
 
   onDidAppear() {
-    this.setState({ moving: false, headerHeight: this.getHeaderSize() });
+    this.setState({ moving: false });
 
     if (this.state.delayingShowSubmitButton) {
       this.setState({ delayingShowSubmitButton: false });
@@ -194,19 +243,6 @@ export default class Chrome extends React.Component {
     if (error) {
       error.focus();
     }
-  }
-
-  // Record the header element so that we can retrieve its size when the
-  // component renders
-  setHeaderElement(element) {
-    this.header = element;
-  }
-
-  // Get the size (rather than the element itself), as returning
-  // the element makes this difficult to test (we can't reasonably enforce the size
-  // as it's not rendered to a screen).
-  getHeaderSize() {
-    return this.header ? this.header.getDOMNode().clientHeight : 0;
   }
 
   render() {
@@ -247,7 +283,9 @@ export default class Chrome extends React.Component {
 
     function wrapGlobalMessage(message) {
       return typeof message === 'string'
-        ? React.createElement('span', { dangerouslySetInnerHTML: { __html: message } })
+        ? // dangerouslySetInnerHTML input is sanitized using dompurify
+          // eslint-disable-next-line react/no-danger
+          React.createElement('span', { dangerouslySetInnerHTML: { __html: sanitize(message) } })
         : message;
     }
 
@@ -293,7 +331,6 @@ export default class Chrome extends React.Component {
               backgroundUrl={backgroundUrl}
               backgroundColor={primaryColor}
               logoUrl={logo}
-              ref={::this.setHeaderElement}
             />
 
             <div

@@ -8,7 +8,7 @@ const ConfirmationPane = ({ lock, backHandler, children, closeHandler, svg }) =>
     {closeHandler && <CloseButton lockId={l.id(lock)} onClick={closeHandler} />}
     {backHandler && <BackButton lockId={l.id(lock)} onClick={backHandler} />}
     <div className="auth0-lock-confirmation-content">
-      <span dangerouslySetInnerHTML={{ __html: svg }} />
+      <span>{svg}</span>
       {children}
     </div>
   </div>
@@ -21,7 +21,7 @@ ConfirmationPane.propTypes = {
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element).isRequired
   ]),
-  svg: PropTypes.string.isRequired
+  svg: PropTypes.element.isRequired
 };
 
 export default ConfirmationPane;

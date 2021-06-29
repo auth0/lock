@@ -54,6 +54,24 @@ describe('Container', () => {
     expect(mock.calls.length).toBe(0);
   });
 
+  it('should submit the form when the form is not yet submitting', () => {
+    const c = getContainer({ isSubmitting: false });
+    const connectionResolverMock = jest.fn();
+    require('core/index').connectionResolver = () => connectionResolverMock;
+
+    c.handleSubmit(mockEvent);
+    expect(connectionResolverMock).toHaveBeenCalled();
+  });
+
+  it('should not submit the form when the form is already submitting', () => {
+    const c = getContainer({ isSubmitting: true });
+    const connectionResolverMock = jest.fn();
+    require('core/index').connectionResolver = () => connectionResolverMock;
+
+    c.handleSubmit(mockEvent);
+    expect(connectionResolverMock).not.toHaveBeenCalled();
+  });
+
   describe('with a custom `connectionResolver`', () => {
     let connectionResolverMock;
     let setResolvedConnectionMock;

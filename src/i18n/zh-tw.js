@@ -97,7 +97,7 @@ export default {
   passwordlessEmailCodeInstructions: '代碼已透過電子郵件送到 %s 。',
   passwordlessEmailInstructions: '輸入電子郵件信箱登入<br>或是建立帳號。',
   passwordlessSMSAlternativeInstructions: '您還可以使用手機號碼登入<br>或是建立帳號。',
-  passwordlessSMSCodeInstructions: '代碼已透過簡訊發送到<br> %s 。',
+  passwordlessSMSCodeInstructions: '代碼已透過簡訊發送到 %s 。',
   passwordlessSMSInstructions: '輸入手機號碼登入<br>或是建立帳號',
   phoneNumberInputPlaceholder: '您的手機號碼',
   resendCodeAction: '沒有收到代碼？',

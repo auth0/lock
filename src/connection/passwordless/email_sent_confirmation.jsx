@@ -9,15 +9,30 @@ import * as m from './index';
 
 import * as i18n from '../../i18n'; // TODO: can't we get this from pops?
 
-const retrySvg =
-  '<svg focusable="false" height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <path d="M27.877,19.662c0.385-1.23,0.607-2.531,0.607-3.884c0-7.222-5.83-13.101-13.029-13.194v4.238    c4.863,0.093,8.793,4.071,8.793,8.956c0,0.678-0.088,1.332-0.232,1.966l-3.963-1.966l2.76,8.199l8.197-2.762L27.877,19.662z"></path> <path d="M7.752,16.222c0-0.678,0.088-1.332,0.232-1.967l3.963,1.967l-2.76-8.199L0.99,10.785l3.133,1.553    c-0.384,1.23-0.607,2.531-0.607,3.885c0,7.223,5.83,13.1,13.03,13.194v-4.238C11.682,25.086,7.752,21.107,7.752,16.222z"></path> </svg>';
+const RetrySvgIcon = (
+  <svg
+    focusable="false"
+    height="32px"
+    style={{ enableBackground: 'new 0 0 32 32' }}
+    version="1.1"
+    viewBox="0 0 32 32"
+    width="32px"
+    xmlSpace="preserve"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    {' '}
+    <path d="M27.877,19.662c0.385-1.23,0.607-2.531,0.607-3.884c0-7.222-5.83-13.101-13.029-13.194v4.238    c4.863,0.093,8.793,4.071,8.793,8.956c0,0.678-0.088,1.332-0.232,1.966l-3.963-1.966l2.76,8.199l8.197-2.762L27.877,19.662z"></path>
+    <path d="M7.752,16.222c0-0.678,0.088-1.332,0.232-1.967l3.963,1.967l-2.76-8.199L0.99,10.785l3.133,1.553    c-0.384,1.23-0.607,2.531-0.607,3.885c0,7.223,5.83,13.1,13.03,13.194v-4.238C11.682,25.086,7.752,21.107,7.752,16.222z"></path>
+  </svg>
+);
 
 class ResendLink extends React.Component {
   render() {
     const { label, onClick } = this.props;
     return (
       <a className="auth0-lock-resend-link" href="#" onClick={onClick}>
-        {label} <span dangerouslySetInnerHTML={{ __html: retrySvg }} />
+        {label} <span>{RetrySvgIcon}</span>
       </a>
     );
   }

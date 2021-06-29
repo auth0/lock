@@ -112,7 +112,7 @@ export default {
     'Введіть адресу електронної пошти для того щоб<br>увійти або зареєструватися',
   passwordlessSMSAlternativeInstructions:
     'Або введіть ваш номер телефону для того щоб<br>увійти або зареєструватися',
-  passwordlessSMSCodeInstructions: 'СМС з кодом було відправлено<br/>на %s.',
+  passwordlessSMSCodeInstructions: 'СМС з кодом було відправлено на %s.',
   passwordlessSMSInstructions:
     'Введіть ваш номер телефону для того щоб<br>увійти або зареєструватися',
   phoneNumberInputPlaceholder: 'Ваш номер телефону',

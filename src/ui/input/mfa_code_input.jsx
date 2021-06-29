@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import InputWrap from './input_wrap';
-import { icon } from './password_input';
+import { IconSvg } from './password_input';
 
 export default class MFACodeInput extends React.Component {
   static propTypes = {
@@ -36,7 +36,7 @@ export default class MFACodeInput extends React.Component {
         invalidHint={invalidHint}
         isValid={isValid}
         name="mfa_code"
-        icon={icon}
+        icon={IconSvg}
       >
         <input
           id={`${lockId}-mfa_code`}

@@ -35,6 +35,7 @@
         <div class="col-sm-12">
           <div id="btn-show-lock" class="btn btn-default">Show Lock</div>
           <div id="btn-show-passwordless" class="btn btn-default">Show Lock+Passwordless</div>
+          <div id="btn-logout" class="btn btn-default">Log out</div>
         </div>
       </div>
       <hr />
@@ -101,7 +102,8 @@
           'socialOrPhoneNumber submit',
           'socialOrEmail submit',
           'vcode submit',
-          'federated login'
+          'federated login',
+          'ssodata fetched'
         ];
         validEvents.forEach(function(e) {
           instance.on(e, function() {
@@ -124,7 +126,7 @@
       var domain = 'brucke.auth0.com';
       var defaultOptions = {
         mustAcceptTerms: true,
-        initialScreen: 'signUp',
+        initialScreen: 'login',
         allowShowPassword: true,
         usernameStyle: 'email',
         signUpFieldsStrictValidation: true,
@@ -154,7 +156,19 @@
               return true;
             }
           }
-        ]
+        ],
+        hooks: {
+          loggingIn: function(context, done) {
+            // Currently, context is always null but might be used in the future.
+            console.log('Hello from submitting hook');
+            done();
+          },
+          signingUp: function(context, done) {
+            // Currently, context is always null but might be used in the future.
+            console.log('Hello from signingUp hook');
+            done();
+          }
+        }
       };
       function initLock() {
         var lock = new Auth0Lock(clientId, domain, defaultOptions);
@@ -187,6 +201,10 @@
             }
           });
         });
+        $('#btn-logout').on('click', function() {
+          var lock = new Auth0Lock(clientId, domain, defaultOptions);
+          lock.logout();
+        })
 
         //make sure we initialize Lock so we can parse the hash
         var lastUsed = window.localStorage.lastUsed;

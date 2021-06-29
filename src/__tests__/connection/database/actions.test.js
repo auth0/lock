@@ -13,10 +13,17 @@ jest.mock('core/web_api', () => ({
 }));
 
 describe('database/actions.js', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
   it('signUp splits root attributes correctly', () => {
     const id = 1;
+    const hookRunner = jest.fn((str, m, context, fn) => fn());
+
     require('connection/database/index').databaseConnectionName = () => 'test-connection';
     require('connection/database/index').shouldAutoLogin = () => true;
+
     const m = Immutable.fromJS({
       field: {
         email: {
@@ -53,17 +60,24 @@ describe('database/actions.js', () => {
           { name: 'picture', storage: 'root' },
           { name: 'other_prop' }
         ]
+      },
+      core: {
+        hookRunner
       }
     });
     swap(setEntity, 'lock', id, m);
     signUp(id);
-    const { validateAndSubmit: { mock: validateAndSubmitMock } } = coreActionsMock();
+    const {
+      validateAndSubmit: { mock: validateAndSubmitMock }
+    } = coreActionsMock();
     expect(validateAndSubmitMock.calls.length).toBe(1);
     expect(validateAndSubmitMock.calls[0][0]).toBe(id);
     expect(validateAndSubmitMock.calls[0][1]).toContain('email');
     expect(validateAndSubmitMock.calls[0][1]).toContain('password');
     validateAndSubmitMock.calls[0][2](m);
-    const { signUp: { mock: signUpMock } } = webApiMock();
+    const {
+      signUp: { mock: signUpMock }
+    } = webApiMock();
     expect(signUpMock.calls.length).toBe(1);
     expect(signUpMock.calls[0][0]).toBe(id);
     expect(signUpMock.calls[0][1]).toMatchObject({
@@ -80,5 +94,47 @@ describe('database/actions.js', () => {
         other_prop: 'test-other'
       }
     });
+  });
+
+  it('runs the signingUp hook on signUp', () => {
+    const id = 1;
+
+    require('connection/database/index').databaseConnectionName = () => 'test-connection';
+    require('connection/database/index').shouldAutoLogin = () => true;
+
+    const hookRunner = jest.fn((str, m, context, fn) => fn());
+
+    const m = Immutable.fromJS({
+      field: {
+        email: {
+          value: 'test@email.com'
+        },
+        password: {
+          value: 'testpass'
+        }
+      },
+      core: {
+        hookRunner
+      }
+    });
+
+    swap(setEntity, 'lock', id, m);
+
+    signUp(id);
+
+    const {
+      validateAndSubmit: { mock: validateAndSubmitMock }
+    } = coreActionsMock();
+
+    validateAndSubmitMock.calls[0][2](m);
+
+    const {
+      signUp: { mock: signUpMock }
+    } = webApiMock();
+
+    expect(hookRunner).toHaveBeenCalledTimes(1);
+    expect(hookRunner).toHaveBeenCalledWith('signingUp', m, null, expect.any(Function));
+    expect(signUpMock.calls.length).toBe(1);
+    expect(signUpMock.calls[0][0]).toBe(id);
   });
 });

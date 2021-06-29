@@ -97,7 +97,7 @@ export default {
   passwordlessEmailCodeInstructions: '代码已通过邮件发送到 %s。',
   passwordlessEmailInstructions: '输入邮箱登录<br/>或者创建账号。',
   passwordlessSMSAlternativeInstructions: '您还可以通过手机号码登录<br/>或者创建账号。',
-  passwordlessSMSCodeInstructions: '代码已通过短信发送到<br/> %s。',
+  passwordlessSMSCodeInstructions: '代码已通过短信发送到 %s。',
   passwordlessSMSInstructions: '输入手机号码登录<br/>或者创建账号',
   phoneNumberInputPlaceholder: '您的手机号码',
   resendCodeAction: '没有收到号码?',

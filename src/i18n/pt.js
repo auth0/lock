@@ -110,7 +110,7 @@ export default {
     'Introduza o seu endereço de correio eletrónico para iniciar sessão<br/>ou criar uma conta',
   passwordlessSMSAlternativeInstructions:
     'Caso contrário, introduza o seu número de telefone para iniciar sessão<br/>ou criar uma conta',
-  passwordlessSMSCodeInstructions: 'Foi enviada mensagem por SMS com o código<br/>para %s.',
+  passwordlessSMSCodeInstructions: 'Foi enviada mensagem por SMS com o código para %s.',
   passwordlessSMSInstructions:
     'Introduza o seu número de telefone para iniciar sessão<br/>ou criar uma conta',
   phoneNumberInputPlaceholder: 'o seu número de telefone',
