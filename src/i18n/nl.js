@@ -72,7 +72,7 @@ export default {
   databaseEnterpriseAlternativeLoginInstructions: 'of',
   databaseSignUpInstructions: '',
   databaseAlternativeSignUpInstructions: 'of',
-  emailInputPlaceholder: 'iemand@voorbeeld.nl',
+  emailInputPlaceholder: 'iemand@example.com',
   enterpriseLoginIntructions: 'Login met de gegevens van uw bedrijf.',
   enterpriseActiveLoginInstructions: 'Voer de logingegevens van uw bedrijf in op %s.',
   failedLabel: 'Gefaald!',
