@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.30.4](https://github.com/auth0/lock/tree/v11.30.4) (2021-07-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.3...v11.30.4)
+
+
+**Fixed**
+- Updated Dutch translations [\#2013](https://github.com/auth0/lock/pull/2013) ([erombouts](https://github.com/erombouts))
+
+
 ## [v11.30.3](https://github.com/auth0/lock/tree/v11.30.3) (2021-06-25)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.30.2...v11.30.3)
 
