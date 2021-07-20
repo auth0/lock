@@ -350,6 +350,7 @@ var options = {
 - **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
 - **usernameStyle {String}**: Determines what will be used to identify the user for a Database connection that has the `requires_username` flag set, otherwise it will be ignored. Possible values are `"username"` and `"email"` and by default both `username` and `email` are allowed.
 - **signUpHideUsernameField {Boolean}**: When set to `true` hides the _username_ input during sign up for a Database connection that has the `requires_username` flag set. Defaults to `false`.
+- **signUpFieldsStrictValidation {Boolean}**: When set to `true`, the _email_ input on the sign-up page is validated using [`validator`](https://www.npmjs.com/package/validator). Otherwise, a very loose check is made on the format before being fully validate on the server. Defaults to `false`.
 
 #### Enterprise options
 
