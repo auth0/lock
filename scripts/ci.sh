@@ -84,15 +84,9 @@ npm_release()
   fi
 }
 
-
 # Test
-if [ -n "$SAUCE_USERNAME" ]
-then
-  yarn run test
-else
-  yarn run test:cli
-  yarn run test:jest
-fi
+yarn run test:jest
+yarn run test:cli
 
 # Clean
 rm -f build/*.js
