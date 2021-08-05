@@ -29,7 +29,7 @@
     "lint": "eslint --ext .jsx,.js src/",
     "test:cli": "cross-env BABEL_ENV=test karma start --browsers ChromeHeadless --single-run=true",
     "test:watch": "cross-env BABEL_ENV=test karma start --browsers Chrome",
-    "test:browserstack": "cross-env BABEL_ENV=test karma start --browsers bs_safari",
+    "test:browserstack": "cross-env BABEL_ENV=test karma start",
     "test:jest": "jest --coverage --runInBand",
     "test:jest:watch": "jest --watch --coverage",
     "test:es-check": "es-check es5 'build/*.js'",

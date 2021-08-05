@@ -69,6 +69,14 @@ module.exports = function(config) {
         os_version: '10',
         displayName: 'Chrome on Windows 10'
       },
+      bs_edge_windows: {
+        base: 'BrowserStack',
+        browser: 'edge',
+        browser_version: 'latest',
+        os: 'Windows',
+        os_version: '10',
+        displayName: 'Chrome on Windows 10'
+      },
       bs_firefox_windows: {
         base: 'BrowserStack',
         browser: 'firefox',
@@ -99,6 +107,11 @@ module.exports = function(config) {
       }
     },
 
-    browsers: ['bs_chrome_windows', 'bs_firefox_windows', 'bs_safari', 'bs_ie11_windows']
+    browsers: [
+      'bs_chrome_windows',
+      'bs_firefox_windows',
+      'bs_safari',
+      /*'bs_ie11_windows', */ 'bs_edge_windows'
+    ]
   });
 };
