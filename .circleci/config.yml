@@ -2,7 +2,7 @@ version: 2
 jobs:
   build-and-test:
     docker:
-      - image: circleci/node:10.16.0-browsers
+      - image: circleci/node:10.18
     environment:
           LANG: en_US.UTF-8
     steps:
@@ -24,13 +24,13 @@ jobs:
             - ~/.cache/yarn
       - run: 
           name: Build
-          command: yarn run build
+          command: yarn build
       - run: 
-          name: Setup Test Env
-          command: yarn run test:cli
-      - run: 
-          name: Tests
-          command: yarn run test:jest
+          name: Unit Tests
+          command: yarn test
+      - run:
+          name: Browser Tests
+          command: yarn test:e2e:browserstack
       - store_artifacts:
           path: build
 
