@@ -49,6 +49,12 @@ module.exports = function(config) {
 
     singleRun: true,
 
+    browserNoActivityTimeout: 60000,
+
+    browserDisconnectTimeout: 20000,
+
+    browserDisconnectTolerance: 3,
+
     // level of logging
     logLevel: config.LOG_INFO,
 
@@ -111,7 +117,8 @@ module.exports = function(config) {
       'bs_chrome_windows',
       'bs_firefox_windows',
       'bs_safari',
-      /*'bs_ie11_windows', */ 'bs_edge_windows'
+      'bs_ie11_windows',
+      'bs_edge_windows'
     ]
   });
 };
