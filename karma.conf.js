@@ -61,7 +61,7 @@ module.exports = function(config) {
     browserStack: {
       username: process.env.BROWSERSTACK_USERNAME,
       accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-      name: 'DX-SDK Acceptance Tests',
+      name: 'Lock.js Browser Tests',
       project: 'Lock.js SDK'
     },
 
