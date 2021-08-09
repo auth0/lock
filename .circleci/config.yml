@@ -2,7 +2,7 @@ version: 2
 jobs:
   build-and-test:
     docker:
-      - image: circleci/node:10.18
+      - image: circleci/node:14.15
     environment:
           LANG: en_US.UTF-8
     steps:
