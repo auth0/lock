@@ -67,10 +67,13 @@ describe('captcha on signup', function() {
         expect(h.wasSignUpAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
       });
 
-      it('should not submit the form if the captcha is not provided', function() {
-        h.signUpWithEmailAndPassword(this.lock);
-        expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+      it('should not submit the form if the captcha is not provided', function(done) {
+        setTimeout(function() {
+          h.signUpWithEmailAndPassword(this.lock);
+          expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
+          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+          done();
+        }, 500);
       });
     });
 
