@@ -18,8 +18,10 @@ describe('executing public hooks', () => {
         };
 
         const lock = h.displayLock('test', options, () => {
-          h.logInWithEmailAndPassword(lock);
-          expect(h.hasErrorMessage(lock)).not.to.be.ok();
+          h.waitForEmailAndPasswordInput(lock, () => {
+            h.logInWithEmailAndPassword(lock);
+            expect(h.hasErrorMessage(lock)).not.to.be.ok();
+          });
         });
       });
 

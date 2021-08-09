@@ -317,6 +317,17 @@ export const waitUntilErrorExists = (lock, cb, timeout) =>
 
 // login
 
+export const waitForEmailAndPasswordInput = (lock, cb, timeout) => {
+  waitUntilInputExists(
+    lock,
+    'email',
+    () => {
+      waitUntilInputExists(lock, 'password', cb, timeout);
+    },
+    timeout
+  );
+};
+
 export const logInWithEmailAndPassword = lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, 'mypass');
