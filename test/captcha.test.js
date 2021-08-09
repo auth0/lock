@@ -125,10 +125,14 @@ describe('captcha', function() {
         expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
       });
 
-      it('should not submit the form if the captcha is not provided', function() {
-        h.logInWithEmailAndPassword(this.lock);
-        expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+      it('should not submit the form if the captcha is not provided', function(done) {
+        const _this = this;
+        setTimeout(function() {
+          h.logInWithEmailAndPassword(_this.lock);
+          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+          expect(h.hasErrorMessage(_this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+          done();
+        });
       });
     });
 
