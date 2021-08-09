@@ -14,7 +14,8 @@ module.exports = function(config) {
       'karma-babel-preprocessor',
       'karma-browserstack-launcher',
       'karma-chrome-launcher',
-      'karma-browserify'
+      'karma-browserify',
+      'karma-mocha-reporter'
     ],
 
     // list of files / patterns to load in the browser
@@ -39,7 +40,7 @@ module.exports = function(config) {
     },
 
     // test results reporter to use
-    reporters: ['progress', 'BrowserStack'],
+    reporters: ['mocha', 'BrowserStack'],
 
     // web server port
     port: 9876,
@@ -63,6 +64,10 @@ module.exports = function(config) {
       accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
       name: 'Lock.js Browser Tests',
       project: 'Lock.js SDK'
+    },
+
+    mochaReporter: {
+      output: 'minimal'
     },
 
     // define browsers
