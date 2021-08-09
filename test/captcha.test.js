@@ -126,11 +126,10 @@ describe('captcha', function() {
       });
 
       it('should not submit the form if the captcha is not provided', function(done) {
-        const _this = this;
-        setTimeout(function() {
-          h.logInWithEmailAndPassword(_this.lock);
+        h.waitForEmailAndPasswordInput(this.lock, () => {
+          h.logInWithEmailAndPassword(this.lock);
           expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(_this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
           done();
         });
       });
