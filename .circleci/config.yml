@@ -5,6 +5,8 @@ jobs:
       - image: circleci/node:14.15
     environment:
           LANG: en_US.UTF-8
+    context:
+      - browserstack-env
     steps:
       - checkout
       - run: 
