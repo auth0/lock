@@ -328,10 +328,19 @@ export const waitForEmailAndPasswordInput = (lock, cb, timeout) => {
   );
 };
 
-export const logInWithEmailAndPassword = lock => {
-  fillEmailInput(lock, 'someone@example.com');
-  fillPasswordInput(lock, 'mypass');
-  submit(lock);
+export const logInWithEmailAndPassword = (lock, cb) => {
+  const fn = () => {
+    fillEmailInput(lock, 'someone@example.com');
+    fillPasswordInput(lock, 'mypass');
+    submit(lock);
+    if (cb) cb();
+  };
+
+  if (cb) {
+    waitForEmailAndPasswordInput(lock, () => fn());
+  } else {
+    fn();
+  }
 };
 
 export const logInWithEmailPasswordAndCaptcha = lock => {
