@@ -19,8 +19,9 @@ describe('connection pick', function() {
     });
 
     it('logs in with the first database connection in the client settings', function() {
-      h.logInWithEmailAndPassword(this.lock);
-      expect(h.wasLoginAttemptedWith({ connection: 'db' })).to.be.ok();
+      h.logInWithEmailAndPassword(this.lock, () => {
+        expect(h.wasLoginAttemptedWith({ connection: 'db' })).to.be.ok();
+      });
     });
   });
 
@@ -39,8 +40,9 @@ describe('connection pick', function() {
     });
 
     it('logs in with the only one available', function() {
-      h.logInWithEmailAndPassword(this.lock);
-      expect(h.wasLoginAttemptedWith({ connection: 'db' })).to.be.ok();
+      h.logInWithEmailAndPassword(this.lock, () => {
+        expect(h.wasLoginAttemptedWith({ connection: 'db' })).to.be.ok();
+      });
     });
   });
 
@@ -59,8 +61,9 @@ describe('connection pick', function() {
     });
 
     it('logins with first one', function() {
-      h.logInWithEmailAndPassword(this.lock);
-      expect(h.wasLoginAttemptedWith({ connection: 'db' })).to.be.ok();
+      h.logInWithEmailAndPassword(this.lock, () => {
+        expect(h.wasLoginAttemptedWith({ connection: 'db' })).to.be.ok();
+      });
     });
   });
 
@@ -80,8 +83,9 @@ describe('connection pick', function() {
     });
 
     it('logins with the default one', function() {
-      h.logInWithEmailAndPassword(this.lock);
-      expect(h.wasLoginAttemptedWith({ connection: 'db1' })).to.be.ok();
+      h.logInWithEmailAndPassword(this.lock, () => {
+        expect(h.wasLoginAttemptedWith({ connection: 'db1' })).to.be.ok();
+      });
     });
   });
 
@@ -112,8 +116,8 @@ describe('connection pick', function() {
     });
 
     describe("when the email doesn't match the enterprise connection", function() {
-      beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+      beforeEach(function(done) {
+        h.logInWithEmailAndPassword(this.lock, done);
       });
 
       it('logins with the database connection', function() {
@@ -142,7 +146,7 @@ describe('connection pick', function() {
         h.fillEmailInput(this.lock, 'someone@auth0.com');
       });
 
-      it('logins with the enterprise connection', function() {
+      it('logs in with the enterprise connection', function() {
         expect(h.hasSSONotice(this.lock)).to.be.ok();
         h.submit(this.lock);
         expect(h.wasLoginAttemptedWith({ connection: 'auth0.com' })).to.be.ok();
@@ -305,8 +309,8 @@ describe('connection pick', function() {
     });
 
     describe('when the email and password inputs are filled', function() {
-      beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+      beforeEach(function(done) {
+        h.logInWithEmailAndPassword(this.lock, done);
       });
 
       it('logins with the database connection', function() {
@@ -332,8 +336,8 @@ describe('connection pick', function() {
     });
 
     describe('when the email and password inputs are filled', function() {
-      beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+      beforeEach(function(done) {
+        h.logInWithEmailAndPassword(this.lock, done);
       });
 
       it('logins with the database connection', function() {
@@ -359,8 +363,8 @@ describe('connection pick', function() {
     });
 
     describe('when the email and password inputs are filled', function() {
-      beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+      beforeEach(function(done) {
+        h.logInWithEmailAndPassword(this.lock, done);
       });
 
       it('logins with the corporate connection', function() {
@@ -387,8 +391,8 @@ describe('connection pick', function() {
     });
 
     describe('when the email and password inputs are filled', function() {
-      beforeEach(function() {
-        h.logInWithEmailAndPassword(this.lock);
+      beforeEach(function(done) {
+        h.logInWithEmailAndPassword(this.lock, done);
       });
 
       it('logins with the database connection', function() {

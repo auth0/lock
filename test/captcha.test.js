@@ -60,14 +60,17 @@ describe('captcha', function() {
       });
 
       it('should submit the captcha provided by the user', function() {
-        h.logInWithEmailPasswordAndCaptcha(this.lock);
-        expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+        h.logInWithEmailPasswordAndCaptcha(this.lock, () => {
+          expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+        });
       });
 
-      it('should not submit the form if the captcha is not provided', function() {
-        h.logInWithEmailAndPassword(this.lock);
-        expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+      it('should not submit the form if the captcha is not provided', function(done) {
+        h.logInWithEmailAndPassword(this.lock, () => {
+          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+          done();
+        });
       });
     });
 
@@ -126,8 +129,7 @@ describe('captcha', function() {
       });
 
       it('should not submit the form if the captcha is not provided', function(done) {
-        h.waitForEmailAndPasswordInput(this.lock, () => {
-          h.logInWithEmailAndPassword(this.lock);
+        h.logInWithEmailAndPassword(this.lock, () => {
           expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
           expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
           done();

@@ -63,18 +63,19 @@ describe('captcha on signup', function() {
       });
 
       it('should submit the captcha provided by the user', function() {
-        h.signUpWithEmailPasswordAndCaptcha(this.lock);
-        expect(h.wasSignUpAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+        h.signUpWithEmailPasswordAndCaptcha(this.lock, () => {
+          expect(h.wasSignUpAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+        });
       });
 
       it('should not submit the form if the captcha is not provided', function(done) {
-        const _this = this;
-        setTimeout(function() {
-          h.signUpWithEmailAndPassword(_this.lock);
-          expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(_this.lock, en.error.login.invalid_captcha)).to.be.ok();
-          done();
-        }, 1000);
+        h.waitForEmailAndPasswordInput(this.lock, () => {
+          h.signUpWithEmailAndPassword(this.lock, () => {
+            expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+            done();
+          });
+        });
       });
     });
 
@@ -132,10 +133,14 @@ describe('captcha on signup', function() {
         expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
       });
 
-      it('should not submit the form if the captcha is not provided', function() {
-        h.signUpWithEmailAndPassword(this.lock);
-        expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+      it('should not submit the form if the captcha is not provided', function(done) {
+        h.waitForEmailAndPasswordInput(this.lock, () => {
+          h.signUpWithEmailAndPassword(this.lock, () => {
+            expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+            done();
+          });
+        });
       });
     });
 
