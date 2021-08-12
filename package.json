@@ -115,7 +115,7 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-transition-group": "^2.2.1",
-    "trim": "1.0.0",
+    "trim": "1.0.1",
     "url-join": "^1.1.0",
     "validator": "^13.6.0"
   },
