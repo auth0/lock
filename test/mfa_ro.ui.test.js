@@ -80,18 +80,20 @@ describe('mfa ro', function() {
         });
 
         it('shows wrong code error', function(done) {
-          h.fillEmailInput(this.lock, 'someone@example.com');
-          h.fillPasswordInput(this.lock, 'mypass');
-          h.submitForm(this.lock);
-
-          h.waitUntilInputExists(this.lock, 'mfa_code', () => {
-            h.fillMFACodeInput(this.lock, '123456');
+          h.waitForEmailAndPasswordInput(this.lock, () => {
+            h.fillEmailInput(this.lock, 'someone@example.com');
+            h.fillPasswordInput(this.lock, 'mypass');
             h.submitForm(this.lock);
 
-            h.waitUntilErrorExists(this.lock, () => {
-              h.testAsync(() => {
-                expect(h.haveShownError(this.lock, 'Wrong code. Please try again.')).to.be.ok();
-              }, done);
+            h.waitUntilInputExists(this.lock, 'mfa_code', () => {
+              h.fillMFACodeInput(this.lock, '123456');
+              h.submitForm(this.lock);
+
+              h.waitUntilErrorExists(this.lock, () => {
+                h.testAsync(() => {
+                  expect(h.haveShownError(this.lock, 'Wrong code. Please try again.')).to.be.ok();
+                }, done);
+              });
             });
           });
         });
@@ -167,21 +169,23 @@ describe('mfa ro', function() {
       });
 
       it('show an error', function(done) {
-        h.fillEmailInput(this.lock, 'someone@example.com');
-        h.fillPasswordInput(this.lock, 'mYpass123');
-        h.submitForm(this.lock);
+        h.waitForEmailAndPasswordInput(this.lock, () => {
+          h.fillEmailInput(this.lock, 'someone@example.com');
+          h.fillPasswordInput(this.lock, 'mYpass123');
+          h.submitForm(this.lock);
 
-        h.waitUntilErrorExists(this.lock, () =>
-          h.testAsync(() => {
-            expect(
-              h.haveShownError(
-                this.lock,
-                'Multifactor authentication is required but your device ' +
-                  'is not enrolled. Please enroll it before moving on.'
-              )
-            ).to.be.ok();
-          }, done)
-        );
+          h.waitUntilErrorExists(this.lock, () =>
+            h.testAsync(() => {
+              expect(
+                h.haveShownError(
+                  this.lock,
+                  'Multifactor authentication is required but your device ' +
+                    'is not enrolled. Please enroll it before moving on.'
+                )
+              ).to.be.ok();
+            }, done)
+          );
+        });
       });
     });
   });
