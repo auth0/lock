@@ -1,5 +1,4 @@
 import expect from 'expect.js';
-import Auth0Lock from '../src/index';
 import * as h from './helper/ui';
 
 describe('show lock connection scopes', function() {
@@ -20,21 +19,19 @@ describe('show lock connection scopes', function() {
     h.restoreWebApis();
   });
 
-  it('should show an error flash message', function(done) {
-    const _this = this;
+  it('should redirect to /authorize for social login using Facebook', function(done) {
+    h.assertAuthorizeRedirection((lockID, options, authParams) => {
+      expect(options).to.be.an('object');
+      expect(options.connection).to.be('facebook');
+      expect(options.connection_scope).to.be.an('array');
+      expect(options.connection_scope).to.have.length(2);
+      expect(options.connection_scope).to.contain('scope_1');
+      expect(options.connection_scope).to.contain('scope_2');
+      done();
+    });
 
-    setTimeout(() => {
-      h.assertAuthorizeRedirection((lockID, options, authParams) => {
-        expect(options).to.be.an('object');
-        expect(options.connection).to.be('facebook');
-        expect(options.connection_scope).to.be.an('array');
-        expect(options.connection_scope).to.have.length(2);
-        expect(options.connection_scope).to.contain('scope_1');
-        expect(options.connection_scope).to.contain('scope_2');
-        done();
-      });
-
-      h.clickSocialConnectionButton(_this.lock, 'facebook');
-    }, 500);
+    h.waitUntilExists(this.lock, '.auth0-lock-social-button', () =>
+      h.clickSocialConnectionButton(this.lock, 'facebook')
+    );
   });
 });
