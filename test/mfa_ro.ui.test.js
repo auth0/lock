@@ -29,25 +29,27 @@ describe('mfa ro', function() {
         });
 
         it('logs in using mfa screen', function(done) {
-          h.fillEmailInput(this.lock, 'someone@example.com');
-          h.fillPasswordInput(this.lock, 'mypass');
-          h.submitForm(this.lock);
+          h.waitForEmailAndPasswordInput(this.lock, () => {
+            h.fillEmailInput(this.lock, 'someone@example.com');
+            h.fillPasswordInput(this.lock, 'mypass');
+            h.submitForm(this.lock);
 
-          h.waitUntilInputExists(this.lock, 'mfa_code', () =>
-            h.testAsync(() => {
-              h.fillMFACodeInput(this.lock, '123456');
-              h.submit(this.lock);
+            h.waitUntilInputExists(this.lock, 'mfa_code', () =>
+              h.testAsync(() => {
+                h.fillMFACodeInput(this.lock, '123456');
+                h.submit(this.lock);
 
-              expect(
-                h.wasLoginAttemptedWith({
-                  connection: 'db',
-                  username: 'someone@example.com',
-                  password: 'mypass',
-                  mfa_code: '123456'
-                })
-              ).to.be.ok();
-            }, done)
-          );
+                expect(
+                  h.wasLoginAttemptedWith({
+                    connection: 'db',
+                    username: 'someone@example.com',
+                    password: 'mypass',
+                    mfa_code: '123456'
+                  })
+                ).to.be.ok();
+              }, done)
+            );
+          });
         });
       });
 

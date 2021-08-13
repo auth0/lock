@@ -94,19 +94,20 @@ describe('captcha on signup', function() {
       });
 
       describe('when the form submission fails and the transaction starts requiring a challenge', function() {
-        beforeEach(function(done) {
+        it('should call the challenge api again and show the input', function(done) {
           h.assertSignUp((lockID, options, cb) => {
             cb(new Error('bad request'));
             setTimeout(done, 300);
           });
-          h.stubGetChallenge(svgCaptchaRequiredResponse1);
-          h.fillEmailInput(this.lock, 'someone@example.com');
-          h.fillComplexPassword(this.lock);
-          h.submitForm(this.lock);
-        });
 
-        it('should call the challenge api again and show the input', function() {
-          expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+          h.waitForEmailAndPasswordInput(this.lock, () => {
+            h.stubGetChallenge(svgCaptchaRequiredResponse1);
+            h.fillEmailInput(this.lock, 'someone@example.com');
+            h.fillComplexPassword(this.lock);
+            h.submitForm(this.lock);
+
+            expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+          });
         });
       });
     });

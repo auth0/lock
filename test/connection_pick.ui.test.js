@@ -104,8 +104,11 @@ describe('connection pick', function() {
     });
 
     describe('when the email matches the enterprise connection', function() {
-      beforeEach(function() {
-        h.fillEmailInput(this.lock, 'someone@auth0.com');
+      beforeEach(function(done) {
+        h.waitForEmailAndPasswordInput(this.lock, () => {
+          h.fillEmailInput(this.lock, 'someone@auth0.com');
+          done();
+        });
       });
 
       it('logins with the enterprise connection', function() {
