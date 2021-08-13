@@ -19,20 +19,23 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function(done) {
-      const _this = this;
-
-      setTimeout(function() {
-        expect(h.hasBackButton(_this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(_this.lock)).to.be.ok();
-        expect(h.isLoginTabCurrent(_this.lock)).to.be.ok();
-        expect(h.hasSocialButtons(_this.lock)).to.be.ok();
-        expect(h.hasEmailInput(_this.lock)).to.be.ok();
-        expect(h.hasUsernameInput(_this.lock)).to.not.be.ok();
-        expect(h.hasPasswordInput(_this.lock)).to.be.ok();
-        expect(h.hasAlternativeLink(_this.lock)).to.be.ok(); // forgot password
-        expect(h.hasSubmitButton(_this.lock)).to.be.ok();
-        done();
-      }, 1000);
+      h.waitUntilExists(
+        this.lock,
+        'button.auth0-lock-submit',
+        () => {
+          expect(h.hasBackButton(this.lock)).to.not.be.ok();
+          expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+          expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
+          expect(h.hasSocialButtons(this.lock)).to.be.ok();
+          expect(h.hasEmailInput(this.lock)).to.be.ok();
+          expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+          expect(h.hasPasswordInput(this.lock)).to.be.ok();
+          expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
+          expect(h.hasSubmitButton(this.lock)).to.be.ok();
+          done();
+        },
+        1000
+      );
     });
   });
 

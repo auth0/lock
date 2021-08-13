@@ -231,10 +231,10 @@ describe('enterprise quick auth', function() {
     });
 
     it('shows a login button with the windows icon', function() {
-      const _this = this;
-
-      setTimeout(
-        () => expect(h.hasQuickAuthButton(_this.lock, 'windows', 'waad.com')).to.be.ok(),
+      h.waitUntilExists(
+        this.lock,
+        `.auth0-lock-social-button`,
+        () => expect(h.hasQuickAuthButton(this.lock, 'windows', 'waad.com')).to.be.ok(),
         500
       );
     });
