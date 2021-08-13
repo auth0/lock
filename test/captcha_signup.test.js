@@ -69,12 +69,10 @@ describe('captcha on signup', function() {
       });
 
       it('should not submit the form if the captcha is not provided', function(done) {
-        h.waitForEmailAndPasswordInput(this.lock, () => {
-          h.signUpWithEmailAndPassword(this.lock, () => {
-            expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
-            done();
-          });
+        h.signUpWithEmailAndPassword(this.lock, () => {
+          expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
+          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+          done();
         });
       });
     });

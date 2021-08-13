@@ -116,25 +116,27 @@ describe('mfa ro', function() {
       });
 
       it('show an error', function(done) {
-        h.fillEmailInput(this.lock, 'someone@example.com');
-        h.fillPasswordInput(this.lock, 'mypass');
-        h.submitForm(this.lock);
+        h.waitForEmailAndPasswordInput(this.lock, () => {
+          h.fillEmailInput(this.lock, 'someone@example.com');
+          h.fillPasswordInput(this.lock, 'mypass');
+          h.submitForm(this.lock);
 
-        h.waitUntilErrorExists(this.lock, () =>
-          h.testAsync(
-            () => {
-              expect(
-                h.haveShownError(
-                  this.lock,
-                  'Multifactor authentication is required but your ' +
-                    'device is not enrolled. Please enroll it before moving on.'
-                )
-              ).to.be.ok();
-            },
-            done,
-            2000
-          )
-        );
+          h.waitUntilErrorExists(this.lock, () =>
+            h.testAsync(
+              () => {
+                expect(
+                  h.haveShownError(
+                    this.lock,
+                    'Multifactor authentication is required but your ' +
+                      'device is not enrolled. Please enroll it before moving on.'
+                  )
+                ).to.be.ok();
+              },
+              done,
+              2000
+            )
+          );
+        });
       });
     });
   });
