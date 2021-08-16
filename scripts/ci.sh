@@ -84,21 +84,15 @@ npm_release()
   fi
 }
 
-
 # Test
-if [ -n "$SAUCE_USERNAME" ]
-then
-  yarn run test
-else
-  yarn run test:cli
-  yarn run test:jest
-fi
+yarn test
+yarn test:e2e
 
 # Clean
 rm -f build/*.js
 
 # Build & Release Webpack Bundle
-yarn run dist build
+yarn dist build
 git checkout -b dist
 bower_release
 new_line
@@ -106,7 +100,7 @@ cdn_release "$VERSION"
 new_line
 
 # Build & Release NPM
-yarn run prepublish
+yarn prepublish
 npm_release "$VERSION"
 
 git checkout master

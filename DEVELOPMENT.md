@@ -3,7 +3,7 @@
 Requires:
 
 - [Yarn](https://yarnpkg.com/)
-- Node 10.x
+- >= Node 10.18.1
 
 ## Building
 
@@ -20,13 +20,23 @@ yarn build
 Unit tests can be executed using [Jest](https://jestjs.io/) by issuing the following command:
 
 ```
-yarn test:jest
+yarn test
 ```
 
 To interactively perform tests using Jest's `watch` mode, use:
 
 ```
-yarn test:jest:watch
+yarn test:watch
+```
+
+End-to-end tests can be executed locally using [Karma](https://karma-runner.github.io/), in both watch and CLI mode:
+
+```
+# CLI mode using Chrome Headless browser:
+yarn test:e2e
+
+# Watch mode using Chrome desktop browser, in watch mode:
+yarn test:e2e:watch
 ```
 
 ## The SDK Playground

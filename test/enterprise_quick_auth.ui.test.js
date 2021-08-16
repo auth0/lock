@@ -97,8 +97,11 @@ describe('enterprise quick auth', function() {
       this.lock.hide();
     });
 
-    it('shows a login button with the google icon', function() {
-      expect(h.hasQuickAuthButton(this.lock, 'google-apps', 'google-apps.com')).to.be.ok();
+    it('shows a login button with the google icon', function(done) {
+      h.waitUntilExists(this.lock, '.auth0-lock-social-button', () => {
+        expect(h.hasQuickAuthButton(this.lock, 'google-apps', 'google-apps.com')).to.be.ok();
+        done();
+      });
     });
   });
 
@@ -231,7 +234,12 @@ describe('enterprise quick auth', function() {
     });
 
     it('shows a login button with the windows icon', function() {
-      expect(h.hasQuickAuthButton(this.lock, 'windows', 'waad.com')).to.be.ok();
+      h.waitUntilExists(
+        this.lock,
+        `.auth0-lock-social-button`,
+        () => expect(h.hasQuickAuthButton(this.lock, 'windows', 'waad.com')).to.be.ok(),
+        500
+      );
     });
   });
 });

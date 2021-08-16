@@ -9,3 +9,4 @@ npm-debug.log
 .css.map
 .idea/
 .env
+local.log

@@ -18,16 +18,24 @@ describe('layout', function() {
       this.lock.hide();
     });
 
-    it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
-      expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+    it('renders the login screen with the right contols', function(done) {
+      h.waitUntilExists(
+        this.lock,
+        'button.auth0-lock-submit',
+        () => {
+          expect(h.hasBackButton(this.lock)).to.not.be.ok();
+          expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+          expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
+          expect(h.hasSocialButtons(this.lock)).to.be.ok();
+          expect(h.hasEmailInput(this.lock)).to.be.ok();
+          expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+          expect(h.hasPasswordInput(this.lock)).to.be.ok();
+          expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
+          expect(h.hasSubmitButton(this.lock)).to.be.ok();
+          done();
+        },
+        1000
+      );
     });
   });
 
@@ -46,15 +54,17 @@ describe('layout', function() {
     });
 
     it('renders the sign up screen with the right controls', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
-      expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -72,14 +82,16 @@ describe('layout', function() {
     });
 
     it('renders the forgot password screen with the right controls', function() {
-      expect(h.hasBackButton(this.lock)).to.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -98,14 +110,16 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -124,15 +138,17 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
-      expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -152,14 +168,16 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -177,15 +195,17 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
-      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+        expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
+      });
     });
   });
 
@@ -203,14 +223,16 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -228,14 +250,16 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -253,14 +277,16 @@ describe('layout', function() {
     });
 
     it('renders the quick auth screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -278,14 +304,16 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -303,15 +331,17 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
-      expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -330,15 +360,17 @@ describe('layout', function() {
     });
 
     it('renders the sign up screen with the right controls', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
-      expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -356,14 +388,16 @@ describe('layout', function() {
     });
 
     it('renders the forgot password screen with the right controls', function() {
-      expect(h.hasBackButton(this.lock)).to.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok();
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -382,14 +416,16 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -408,15 +444,17 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
-      expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -436,14 +474,16 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -459,15 +499,17 @@ describe('layout', function() {
     });
 
     it('renders the quick auth screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not my account
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
-      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not my account
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+        expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
+      });
     });
   });
 
@@ -487,14 +529,16 @@ describe('layout', function() {
     beforeEach(h.unStubWebApisForKerberos);
 
     it('renders the quick auth screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // not your account
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // not your account
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      });
     });
   });
 
@@ -514,15 +558,17 @@ describe('layout', function() {
     });
 
     it('renders the login screen with the right contols', function() {
-      expect(h.hasBackButton(this.lock)).to.not.be.ok();
-      expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasSocialButtons(this.lock)).to.be.ok();
-      expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.be.ok();
-      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
+      h.waitUntilExists(this.lock, 'button.auth0-lock-submit', () => {
+        expect(h.hasBackButton(this.lock)).to.not.be.ok();
+        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasSocialButtons(this.lock)).to.be.ok();
+        expect(h.hasEmailInput(this.lock)).to.not.be.ok();
+        expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
+        expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+        expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
+        expect(h.hasSubmitButton(this.lock)).to.be.ok();
+        expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
+      });
     });
   });
 });

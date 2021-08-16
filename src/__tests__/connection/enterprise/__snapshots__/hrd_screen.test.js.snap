@@ -5,7 +5,7 @@ exports[`HRDScreen Component renders correctly when there is an enterprise domai
   data-__type="hrd_pane"
   data-header={
     <p>
-      Please enter your corporate credentials at domain.com.
+      Please enter your corporate credentials at [ 'domain.com' ].
     </p>
   }
   data-i18n={

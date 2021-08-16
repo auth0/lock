@@ -1,3 +1,5 @@
+'use strict';
+
 import expect from 'expect.js';
 import * as h from './helper/ui';
 import en from '../src/i18n/en';
@@ -58,14 +60,17 @@ describe('captcha', function() {
       });
 
       it('should submit the captcha provided by the user', function() {
-        h.logInWithEmailPasswordAndCaptcha(this.lock);
-        expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+        h.logInWithEmailPasswordAndCaptcha(this.lock, () => {
+          expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+        });
       });
 
-      it('should not submit the form if the captcha is not provided', function() {
-        h.logInWithEmailAndPassword(this.lock);
-        expect(h.wasLoginAttemptedWith({})).to.not.be.ok()
-        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+      it('should not submit the form if the captcha is not provided', function(done) {
+        h.logInWithEmailAndPassword(this.lock, () => {
+          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+          done();
+        });
       });
     });
 
@@ -123,10 +128,12 @@ describe('captcha', function() {
         expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
       });
 
-      it('should not submit the form if the captcha is not provided', function() {
-        h.logInWithEmailAndPassword(this.lock);
-        expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-        expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+      it('should not submit the form if the captcha is not provided', function(done) {
+        h.logInWithEmailAndPassword(this.lock, () => {
+          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+          done();
+        });
       });
     });
 

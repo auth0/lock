@@ -18,8 +18,9 @@ describe('executing public hooks', () => {
         };
 
         const lock = h.displayLock('test', options, () => {
-          h.logInWithEmailAndPassword(lock);
-          expect(h.hasErrorMessage(lock)).not.to.be.ok();
+          h.logInWithEmailAndPassword(lock, () => {
+            expect(h.hasErrorMessage(lock)).not.to.be.ok();
+          });
         });
       });
 
@@ -34,17 +35,17 @@ describe('executing public hooks', () => {
         };
 
         const lock = h.displayLock('test', options, () => {
-          h.logInWithEmailAndPassword(lock);
-
-          h.waitUntilErrorExists(
-            lock,
-            () => {
-              expect(h.hasErrorMessage(lock, 'This is a custom error')).to.be.ok();
-              lock.hide();
-              done();
-            },
-            1000
-          );
+          h.logInWithEmailAndPassword(lock, () => {
+            h.waitUntilErrorExists(
+              lock,
+              () => {
+                expect(h.hasErrorMessage(lock, 'This is a custom error')).to.be.ok();
+                lock.hide();
+                done();
+              },
+              1000
+            );
+          });
         });
       });
 
@@ -59,17 +60,17 @@ describe('executing public hooks', () => {
         };
 
         const lock = h.displayLock('test', options, () => {
-          h.logInWithEmailAndPassword(lock);
-
-          h.waitUntilErrorExists(
-            lock,
-            () => {
-              expect(h.hasErrorMessage(lock, en.error.login['lock.fallback'])).to.be.ok();
-              lock.hide();
-              done();
-            },
-            1000
-          );
+          h.logInWithEmailAndPassword(lock, () => {
+            h.waitUntilErrorExists(
+              lock,
+              () => {
+                expect(h.hasErrorMessage(lock, en.error.login['lock.fallback'])).to.be.ok();
+                lock.hide();
+                done();
+              },
+              1000
+            );
+          });
         });
       });
     });
@@ -88,8 +89,9 @@ describe('executing public hooks', () => {
 
         const lock = h.displayLock('test', options, () => {
           expect(h.isSignUpTabCurrent(lock)).to.be.ok();
-          h.signUpWithEmailAndPassword(lock);
-          expect(h.hasErrorMessage(lock)).not.to.be.ok();
+          h.signUpWithEmailAndPassword(lock, () => {
+            expect(h.hasErrorMessage(lock)).not.to.be.ok();
+          });
         });
       });
 
@@ -105,17 +107,17 @@ describe('executing public hooks', () => {
         };
 
         const lock = h.displayLock('test', options, () => {
-          h.signUpWithEmailAndPassword(lock);
-
-          h.waitUntilErrorExists(
-            lock,
-            () => {
-              expect(h.hasErrorMessage(lock, 'This is a custom error')).to.be.ok();
-              lock.hide();
-              done();
-            },
-            2000
-          );
+          h.signUpWithEmailAndPassword(lock, () => {
+            h.waitUntilErrorExists(
+              lock,
+              () => {
+                expect(h.hasErrorMessage(lock, 'This is a custom error')).to.be.ok();
+                lock.hide();
+                done();
+              },
+              2000
+            );
+          });
         });
       });
 
@@ -131,17 +133,17 @@ describe('executing public hooks', () => {
         };
 
         const lock = h.displayLock('test', options, () => {
-          h.signUpWithEmailAndPassword(lock);
-
-          h.waitUntilErrorExists(
-            lock,
-            () => {
-              expect(h.hasErrorMessage(lock, en.error.signUp['lock.fallback'])).to.be.ok();
-              lock.hide();
-              done();
-            },
-            1000
-          );
+          h.signUpWithEmailAndPassword(lock, () => {
+            h.waitUntilErrorExists(
+              lock,
+              () => {
+                expect(h.hasErrorMessage(lock, en.error.signUp['lock.fallback'])).to.be.ok();
+                lock.hide();
+                done();
+              },
+              1000
+            );
+          });
         });
       });
     });
@@ -157,9 +159,10 @@ describe('executing public hooks', () => {
       };
 
       const lock = h.displayLock('test', options, () => {
-        h.logInWithEmailAndPassword(lock);
-        expect(h.hasErrorMessage(lock)).not.to.be.ok();
-        done();
+        h.logInWithEmailAndPassword(lock, () => {
+          expect(h.hasErrorMessage(lock)).not.to.be.ok();
+          done();
+        });
       });
     });
   });

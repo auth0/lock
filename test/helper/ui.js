@@ -317,18 +317,40 @@ export const waitUntilErrorExists = (lock, cb, timeout) =>
 
 // login
 
-export const logInWithEmailAndPassword = lock => {
+export const waitForEmailAndPasswordInput = (lock, cb, timeout) => {
+  waitUntilInputExists(
+    lock,
+    'email',
+    () => {
+      waitUntilInputExists(lock, 'password', cb, timeout);
+    },
+    timeout
+  );
+};
+
+const loginWaitFn = fn => (lock, cb) => {
+  if (cb) {
+    waitForEmailAndPasswordInput(lock, () => {
+      fn(lock);
+      cb();
+    });
+  } else {
+    fn(lock);
+  }
+};
+
+export const logInWithEmailAndPassword = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, 'mypass');
   submit(lock);
-};
+});
 
-export const logInWithEmailPasswordAndCaptcha = lock => {
+export const logInWithEmailPasswordAndCaptcha = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, 'mypass');
   fillCaptchaInput(lock, 'captchaValue');
   submit(lock);
-};
+});
 
 /**
  * The mocked connection has password policy "fair". So I need an strong password
@@ -343,18 +365,18 @@ function generateComplexPassword() {
   return result;
 }
 
-export const signUpWithEmailAndPassword = lock => {
+export const signUpWithEmailAndPassword = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, generateComplexPassword());
   submit(lock);
-};
+});
 
-export const signUpWithEmailPasswordAndCaptcha = lock => {
+export const signUpWithEmailPasswordAndCaptcha = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, generateComplexPassword());
   fillCaptchaInput(lock, 'captchaValue');
   submit(lock);
-};
+});
 
 export const logInWithUsernameAndPassword = lock => {
   fillUsernameInput(lock, 'someone');

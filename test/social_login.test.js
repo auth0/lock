@@ -1,5 +1,4 @@
 import expect from 'expect.js';
-import Auth0Lock from '../src/index';
 import * as h from './helper/ui';
 
 describe('show lock connection scopes', function() {
@@ -20,7 +19,7 @@ describe('show lock connection scopes', function() {
     h.restoreWebApis();
   });
 
-  it('should show an error flash message', function(done) {
+  it('should redirect to /authorize for social login using Facebook', function(done) {
     h.assertAuthorizeRedirection((lockID, options, authParams) => {
       expect(options).to.be.an('object');
       expect(options.connection).to.be('facebook');
@@ -30,6 +29,9 @@ describe('show lock connection scopes', function() {
       expect(options.connection_scope).to.contain('scope_2');
       done();
     });
-    h.clickSocialConnectionButton(this.lock, 'facebook');
+
+    h.waitUntilExists(this.lock, '.auth0-lock-social-button', () =>
+      h.clickSocialConnectionButton(this.lock, 'facebook')
+    );
   });
 });

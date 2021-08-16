@@ -1,41 +1,72 @@
-version: 2
+version: 2.1
+executors:
+  docker-executor:
+    docker:
+      - image: circleci/node:14.15
 jobs:
   build-and-test:
-    docker:
-      - image: circleci/node:10.16.0-browsers
+    executor: docker-executor
     environment:
-          LANG: en_US.UTF-8
+      LANG: en_US.UTF-8
     steps:
       - checkout
       - run: 
           name: Update Yarn
           command: 'sudo npm update -g yarn'
-      - restore-cache:
+      - restore_cache:
           name: Restore Yarn Package Cache
-          keys: 
-            - yarn-packages-{{ checksum "yarn.lock" }}
+          key: yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install
-      - save-cache:
+      - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - run: 
           name: Build
-          command: yarn run build
+          command: yarn build
       - run: 
-          name: Setup Test Env
-          command: yarn run test:cli
-      - run: 
-          name: Tests
-          command: yarn run test:jest
+          name: Unit Tests
+          command: yarn test
       - store_artifacts:
           path: build
+
+  browserstack:
+    executor: docker-executor
+    environment:
+      LANG: en_US.UTF-8
+    steps:
+      - checkout
+      - run: 
+          name: Update Yarn
+          command: 'sudo npm update -g yarn'
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run: 
+          name: Build
+          command: yarn build
+      - run:
+          name: Browser Tests
+          command: yarn test:e2e:browserstack
 
 workflows:
   version: 2
   build-test-report:
     jobs:
       - build-and-test
+      - browserstack:
+          requires:
+            - build-and-test
+          context:
+            - browserstack-env
