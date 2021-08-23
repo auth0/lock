@@ -18,7 +18,7 @@ const Component = ({ i18n, model }) => {
       instructions={i18n.html('socialLoginInstructions')}
       labelFn={i18n.str}
       lock={model}
-      signUp={true}
+      signUp={false}
     />
   ) : null;
 
