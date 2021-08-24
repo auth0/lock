@@ -112,7 +112,7 @@
   "dependencies": {
     "auth0-js": "^9.16.3",
     "auth0-password-policies": "^1.0.2",
-    "blueimp-md5": "2.3.1",
+    "blueimp-md5": "^2.18.0",
     "dompurify": "^2.2.8",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.1",
@@ -122,7 +122,7 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-transition-group": "^2.2.1",
-    "trim": "1.0.0",
+    "trim": "^1.0.1",
     "url-join": "^1.1.0",
     "validator": "^13.6.0"
   },
