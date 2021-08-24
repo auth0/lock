@@ -10,3 +10,4 @@ npm-debug.log
 .idea/
 .env
 local.log
+yarn-error.log
