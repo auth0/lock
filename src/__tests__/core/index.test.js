@@ -29,6 +29,7 @@ describe('setup', () => {
     mockInit = jest.fn();
     jest.resetModules();
   });
+
   it('default redirectUrl should not include location.hash', () => {
     setURL('https://test.com/path/#not-this-part');
     const options = {};
@@ -38,6 +39,7 @@ describe('setup', () => {
     const model = mock.calls[0][1].toJS();
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
+
   it('default redirectUrl should work when `window.location.origin` is not available', () => {
     setURL('https://test.com/path/#not-this-part', { noOrigin: true });
     const options = {};
@@ -47,6 +49,7 @@ describe('setup', () => {
     const model = mock.calls[0][1].toJS();
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
+
   it('should work with redirect:false and responseType:id_token', () => {
     const options = {
       auth: {
@@ -54,11 +57,97 @@ describe('setup', () => {
         responseType: 'id_token'
       }
     };
+
     setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn', 'handleEventFn');
     const { mock } = mockInit;
     expect(mock.calls.length).toBe(1);
     const model = mock.calls[0][1].toJS();
     expect(model).toMatchSnapshot();
+  });
+
+  it('default clientBaseUrl should use the specified domain', () => {
+    const { mock } = mockInit;
+
+    setup(
+      'id',
+      'clientID',
+      'my-tenant.us.auth0.com',
+      {},
+      'hookRunner',
+      'emitEventFn',
+      'handleEventFn'
+    );
+
+    expect(mock.calls.length).toBe(1);
+
+    const model = mock.calls[0][1].toJS();
+    expect(model.clientBaseUrl).toBe('https://my-tenant.us.auth0.com');
+  });
+
+  it('clientBaseUrl should use clientBaseUrl if given', () => {
+    const { mock } = mockInit;
+
+    setup(
+      'id',
+      'clientID',
+      'my-tenant.us.auth0.com',
+      {
+        clientBaseUrl: 'https://client-base-url.example.com',
+        configurationBaseUrl: 'https://config-base-url.example.com',
+        assetsUrl: 'https://assets-url.example.com'
+      },
+      'hookRunner',
+      'emitEventFn',
+      'handleEventFn'
+    );
+
+    expect(mock.calls.length).toBe(1);
+
+    const model = mock.calls[0][1].toJS();
+    expect(model.clientBaseUrl).toBe('https://client-base-url.example.com');
+  });
+
+  it('clientBaseUrl should use configurationBaseUrl if given', () => {
+    const { mock } = mockInit;
+
+    setup(
+      'id',
+      'clientID',
+      'my-tenant.us.auth0.com',
+      {
+        configurationBaseUrl: 'https://config-base-url.example.com',
+        assetsUrl: 'https://assets-url.example.com'
+      },
+      'hookRunner',
+      'emitEventFn',
+      'handleEventFn'
+    );
+
+    expect(mock.calls.length).toBe(1);
+
+    const model = mock.calls[0][1].toJS();
+    expect(model.clientBaseUrl).toBe('https://config-base-url.example.com');
+  });
+
+  it('clientBaseUrl should use assetsUrl if given', () => {
+    const { mock } = mockInit;
+
+    setup(
+      'id',
+      'clientID',
+      'my-tenant.us.auth0.com',
+      {
+        assetsUrl: 'https://assets-url.example.com'
+      },
+      'hookRunner',
+      'emitEventFn',
+      'handleEventFn'
+    );
+
+    expect(mock.calls.length).toBe(1);
+
+    const model = mock.calls[0][1].toJS();
+    expect(model.clientBaseUrl).toBe('https://assets-url.example.com');
   });
 });
 

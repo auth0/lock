@@ -355,18 +355,7 @@ function extractClientBaseUrlOption(opts, domain) {
     return opts.assetsUrl;
   }
 
-  const domainUrl = 'https://' + domain;
-  const hostname = getLocationFromUrl(domainUrl).hostname;
-  const DOT_AUTH0_DOT_COM = '.auth0.com';
-  const AUTH0_US_CDN_URL = 'https://cdn.auth0.com';
-  if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
-    const parts = hostname.split('.');
-    return parts.length > 3
-      ? 'https://cdn.' + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
-      : AUTH0_US_CDN_URL;
-  } else {
-    return domainUrl;
-  }
+  return `https://${domain}`;
 }
 
 export function extractTenantBaseUrlOption(opts, domain) {
