@@ -374,19 +374,12 @@ export function extractTenantBaseUrlOption(opts, domain) {
   const domainUrl = 'https://' + domain;
   const hostname = getLocationFromUrl(domainUrl).hostname;
   const DOT_AUTH0_DOT_COM = '.auth0.com';
-  const AUTH0_US_CDN_URL = 'https://cdn.auth0.com';
-
-  const parts = hostname.split('.');
-  const tenant_name = parts[0];
-  var domain;
 
   if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
-    domain =
-      parts.length > 3
-        ? 'https://cdn.' + parts[parts.length - 3] + DOT_AUTH0_DOT_COM
-        : AUTH0_US_CDN_URL;
+    const parts = hostname.split('.');
+    const tenant_name = parts[0];
 
-    return urljoin(domain, 'tenants', 'v1', `${tenant_name}.js`);
+    return urljoin(domainUrl, 'tenants', 'v1', `${tenant_name}.js`);
   } else {
     return urljoin(domainUrl, 'info-v1.js');
   }

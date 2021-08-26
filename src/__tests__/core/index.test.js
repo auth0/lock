@@ -65,89 +65,182 @@ describe('setup', () => {
     expect(model).toMatchSnapshot();
   });
 
-  it('default clientBaseUrl should use the specified domain', () => {
-    const { mock } = mockInit;
+  describe('clientBaseUrl', () => {
+    it('should default to the specified domain', () => {
+      const { mock } = mockInit;
 
-    setup(
-      'id',
-      'clientID',
-      'my-tenant.us.auth0.com',
-      {},
-      'hookRunner',
-      'emitEventFn',
-      'handleEventFn'
-    );
+      setup(
+        'id',
+        'clientID',
+        'my-tenant.us.auth0.com',
+        {},
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
 
-    expect(mock.calls.length).toBe(1);
+      expect(mock.calls.length).toBe(1);
 
-    const model = mock.calls[0][1].toJS();
-    expect(model.clientBaseUrl).toBe('https://my-tenant.us.auth0.com');
+      const model = mock.calls[0][1].toJS();
+      expect(model.clientBaseUrl).toBe('https://my-tenant.us.auth0.com');
+    });
+
+    it('should use the clientBaseUrl option if given', () => {
+      const { mock } = mockInit;
+
+      setup(
+        'id',
+        'clientID',
+        'my-tenant.us.auth0.com',
+        {
+          clientBaseUrl: 'https://client-base-url.example.com',
+          configurationBaseUrl: 'https://config-base-url.example.com',
+          assetsUrl: 'https://assets-url.example.com'
+        },
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
+
+      expect(mock.calls.length).toBe(1);
+
+      const model = mock.calls[0][1].toJS();
+      expect(model.clientBaseUrl).toBe('https://client-base-url.example.com');
+    });
+
+    it('should use configurationBaseUrl if given', () => {
+      const { mock } = mockInit;
+
+      setup(
+        'id',
+        'clientID',
+        'my-tenant.us.auth0.com',
+        {
+          configurationBaseUrl: 'https://config-base-url.example.com',
+          assetsUrl: 'https://assets-url.example.com'
+        },
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
+
+      expect(mock.calls.length).toBe(1);
+
+      const model = mock.calls[0][1].toJS();
+      expect(model.clientBaseUrl).toBe('https://config-base-url.example.com');
+    });
+
+    it('should use assetsUrl if given', () => {
+      const { mock } = mockInit;
+
+      setup(
+        'id',
+        'clientID',
+        'my-tenant.us.auth0.com',
+        {
+          assetsUrl: 'https://assets-url.example.com'
+        },
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
+
+      expect(mock.calls.length).toBe(1);
+
+      const model = mock.calls[0][1].toJS();
+      expect(model.clientBaseUrl).toBe('https://assets-url.example.com');
+    });
   });
 
-  it('clientBaseUrl should use clientBaseUrl if given', () => {
-    const { mock } = mockInit;
+  describe('tenantBaseUrl', () => {
+    it('tenantBaseUrl should default to domain URL when using auth0.com', () => {
+      const { mock } = mockInit;
 
-    setup(
-      'id',
-      'clientID',
-      'my-tenant.us.auth0.com',
-      {
-        clientBaseUrl: 'https://client-base-url.example.com',
-        configurationBaseUrl: 'https://config-base-url.example.com',
-        assetsUrl: 'https://assets-url.example.com'
-      },
-      'hookRunner',
-      'emitEventFn',
-      'handleEventFn'
-    );
+      setup(
+        'id',
+        'clientID',
+        'my-tenant.us.auth0.com',
+        {
+          __useTenantInfo: true
+        },
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
 
-    expect(mock.calls.length).toBe(1);
+      expect(mock.calls.length).toBe(1);
 
-    const model = mock.calls[0][1].toJS();
-    expect(model.clientBaseUrl).toBe('https://client-base-url.example.com');
-  });
+      const model = mock.calls[0][1].toJS();
+      expect(model.tenantBaseUrl).toBe('https://my-tenant.us.auth0.com/tenants/v1/my-tenant.js');
+    });
 
-  it('clientBaseUrl should use configurationBaseUrl if given', () => {
-    const { mock } = mockInit;
+    it('should default to domain URL when using a custom domain', () => {
+      const { mock } = mockInit;
 
-    setup(
-      'id',
-      'clientID',
-      'my-tenant.us.auth0.com',
-      {
-        configurationBaseUrl: 'https://config-base-url.example.com',
-        assetsUrl: 'https://assets-url.example.com'
-      },
-      'hookRunner',
-      'emitEventFn',
-      'handleEventFn'
-    );
+      setup(
+        'id',
+        'clientID',
+        'auth.my-tenant.com',
+        {
+          __useTenantInfo: true
+        },
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
 
-    expect(mock.calls.length).toBe(1);
+      expect(mock.calls.length).toBe(1);
 
-    const model = mock.calls[0][1].toJS();
-    expect(model.clientBaseUrl).toBe('https://config-base-url.example.com');
-  });
+      const model = mock.calls[0][1].toJS();
+      expect(model.tenantBaseUrl).toBe('https://auth.my-tenant.com/info-v1.js');
+    });
 
-  it('clientBaseUrl should use assetsUrl if given', () => {
-    const { mock } = mockInit;
+    it('should use configurationBaseUrl if specified', () => {
+      const { mock } = mockInit;
 
-    setup(
-      'id',
-      'clientID',
-      'my-tenant.us.auth0.com',
-      {
-        assetsUrl: 'https://assets-url.example.com'
-      },
-      'hookRunner',
-      'emitEventFn',
-      'handleEventFn'
-    );
+      setup(
+        'id',
+        'clientID',
+        'auth.my-tenant.com',
+        {
+          __useTenantInfo: true,
+          configurationBaseUrl: 'https://config-base-url.com'
+        },
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
 
-    expect(mock.calls.length).toBe(1);
+      expect(mock.calls.length).toBe(1);
 
-    const model = mock.calls[0][1].toJS();
-    expect(model.clientBaseUrl).toBe('https://assets-url.example.com');
+      const model = mock.calls[0][1].toJS();
+      expect(model.tenantBaseUrl).toBe('https://config-base-url.com/info-v1.js');
+    });
+
+    it('should use configurationBaseUrl with a custom tenant if specified', () => {
+      const { mock } = mockInit;
+
+      setup(
+        'id',
+        'clientID',
+        'auth.my-tenant.com',
+        {
+          __useTenantInfo: true,
+          configurationBaseUrl: 'https://config-base-url.com',
+          overrides: {
+            __tenant: 'custom-tenant'
+          }
+        },
+        'hookRunner',
+        'emitEventFn',
+        'handleEventFn'
+      );
+
+      expect(mock.calls.length).toBe(1);
+
+      const model = mock.calls[0][1].toJS();
+      expect(model.tenantBaseUrl).toBe('https://config-base-url.com/tenants/v1/custom-tenant.js');
+    });
   });
 });
 
