@@ -375,7 +375,8 @@ export function extractTenantBaseUrlOption(opts, domain) {
   const hostname = getLocationFromUrl(domainUrl).hostname;
   const DOT_AUTH0_DOT_COM = '.auth0.com';
 
-  if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
+  // prettier-ignore
+  if (endsWith(hostname, DOT_AUTH0_DOT_COM)) { // lgtm [js/incomplete-url-substring-sanitization]
     const parts = hostname.split('.');
     const tenant_name = parts[0];
 
