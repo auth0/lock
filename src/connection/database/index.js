@@ -48,7 +48,7 @@ function assertMaybeString(opts, name) {
 }
 
 function assertMaybeArray(opts, name) {
-  const valid = opts[name] === undefined || global.Array.isArray(opts[name]);
+  const valid = opts[name] === undefined || window.Array.isArray(opts[name]);
   if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not an array.`);
   return valid;
 }
@@ -209,7 +209,7 @@ function processDatabaseOptions(opts) {
       }
 
       if (
-        (options != undefined && !global.Array.isArray(options) && typeof options != 'function') ||
+        (options != undefined && !window.Array.isArray(options) && typeof options != 'function') ||
         (type === 'select' && options === undefined)
       ) {
         l.warn(

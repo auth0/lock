@@ -1,7 +1,7 @@
 import Auth0 from 'auth0-js';
 
-if (!global.Auth0) {
-  global.Auth0 = {};
+if (!window.Auth0) {
+  window.Auth0 = {};
 }
 
 const cbs = {};
@@ -11,7 +11,7 @@ export function load(attrs) {
 
   if (!cbs[method]) {
     cbs[method] = [];
-    global.Auth0[method] = function(...args) {
+    window.Auth0[method] = function(...args) {
       cbs[method] = cbs[method].filter(x => {
         if (x.check(...args)) {
           setTimeout(() => x.cb(null, ...args), 0);
@@ -29,9 +29,9 @@ export function load(attrs) {
 
   if (count > 1) return;
 
-  const script = global.document.createElement('script');
+  const script = window.document.createElement('script');
   script.src = url;
-  global.document.getElementsByTagName('head')[0].appendChild(script);
+  window.document.getElementsByTagName('head')[0].appendChild(script);
 
   const handleError = err => {
     cbs[method] = cbs[method].filter(x => {
@@ -55,5 +55,5 @@ export function load(attrs) {
 }
 
 export function preload({ method, cb }) {
-  global.Auth0[method] = cb;
+  window.Auth0[method] = cb;
 }

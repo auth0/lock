@@ -46,8 +46,8 @@ describe('normalizeError', () => {
     let currentWindowObj;
 
     beforeAll(function() {
-      currentWindowObj = global.window;
-      global.window = {
+      currentWindowObj = window.window;
+      window.window = {
         locaction: {
           host: domainMock
         }
@@ -55,7 +55,7 @@ describe('normalizeError', () => {
     });
 
     afterAll(function() {
-      global.window = currentWindowObj;
+      window.window = currentWindowObj;
     });
 
     describe('domain is undefined', function() {

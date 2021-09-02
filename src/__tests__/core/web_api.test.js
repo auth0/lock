@@ -9,16 +9,16 @@ describe('Auth0WebApi', () => {
   const client = () => Auth0WebApi.clients[LOCK_ID];
 
   beforeEach(() => {
-    originalWindow = global.window;
+    originalWindow = window.window;
   });
 
   afterEach(() => {
-    global.window = originalWindow;
+    window.window = originalWindow;
   });
 
   describe('setupClient', () => {
     it('sets the correct options when is on the hosted login page', () => {
-      delete global.window.location;
+      delete window.location;
       window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, { redirect: true });
 
@@ -34,7 +34,7 @@ describe('Auth0WebApi', () => {
     });
 
     it('sets redirect: true when on the same origin as the specified domain', () => {
-      delete global.window.location;
+      delete window.location;
       window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
 
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});
@@ -42,7 +42,7 @@ describe('Auth0WebApi', () => {
     });
 
     it('sets redirect: false when on a different origin as the specified domain', () => {
-      delete global.window.location;
+      delete window.location;
       window.location = { ...originalWindow.location, host: 'test-other.com', search: '' };
 
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});
@@ -50,7 +50,7 @@ describe('Auth0WebApi', () => {
     });
 
     it('forces popup and sso mode for cordova, only when not running in the hosted environment', () => {
-      delete global.window.location;
+      delete window.location;
       window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
       window.cordova = true;
 
@@ -60,7 +60,7 @@ describe('Auth0WebApi', () => {
     });
 
     it('forces popup and sso mode for electron, only when not running in the hosted environment', () => {
-      delete global.window.location;
+      delete window.location;
       window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
       window.electron = true;
 
