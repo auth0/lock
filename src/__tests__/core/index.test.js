@@ -153,7 +153,7 @@ describe('setup', () => {
   });
 
   describe('tenantBaseUrl', () => {
-    it('tenantBaseUrl should default to domain URL when using auth0.com', () => {
+    it('should default to domain URL when using auth0.com', () => {
       const { mock } = mockInit;
 
       setup(
