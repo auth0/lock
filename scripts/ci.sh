@@ -99,8 +99,5 @@ new_line
 cdn_release "$VERSION"
 new_line
 
-# Build & Release NPM
-yarn prepublish
-
 git checkout master
 git branch -D dist
