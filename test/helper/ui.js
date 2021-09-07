@@ -145,7 +145,7 @@ export const displayLock = (name, opts = {}, done = () => {}, show_ops = {}) => 
 export const q = (lock, query, all = false) => {
   query = `#auth0-lock-container-${lock.id} ${query}`;
   const method = all ? 'querySelectorAll' : 'querySelector';
-  return global.document[method](query);
+  return window.document[method](query);
 };
 
 const qView = (lock, query, all = false) => {
