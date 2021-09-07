@@ -101,7 +101,6 @@ new_line
 
 # Build & Release NPM
 yarn prepublish
-npm_release "$VERSION"
 
 git checkout master
 git branch -D dist
