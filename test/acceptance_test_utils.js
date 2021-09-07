@@ -36,7 +36,7 @@ export function constructLock(cid = 'a', domain = 'a') {
 function q(lock, query, all = false) {
   query = `#auth0-lock-container-${lock.id} ${query}`;
   const method = all ? 'querySelectorAll' : 'querySelector';
-  return global.document[method](query);
+  return window.document[method](query);
 }
 
 function qLock(lock, ensure = false) {
@@ -132,7 +132,7 @@ export function stubWebApis() {
 }
 
 export function restoreWebApis() {
-  global.localStorage.clear(); // TODO: This doesn't belong here
+  window.localStorage.clear(); // TODO: This doesn't belong here
   webApi.signIn.restore();
   webApi.startPasswordless.restore();
   gravatarActions.debouncedRequestGravatar.restore();

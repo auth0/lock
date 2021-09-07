@@ -5,6 +5,6 @@ import Adapter from 'enzyme-adapter-react-15';
 configure({ adapter: new Adapter() });
 
 //jest polyfills
-global.requestAnimationFrame = function(callback) {
+window.requestAnimationFrame = function(callback) {
   setTimeout(callback, 0);
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Immutable, { Map } from 'immutable';
-import { format } from 'util';
+import format from './utils/format';
 import { sanitize } from 'dompurify';
 import sync from './sync';
 import * as l from './core/index';

@@ -27,13 +27,13 @@ describe('fetching image', function() {
 
   beforeEach(function() {
     img = { addEventListener: spy() };
-    stub(global.document, 'createElement').returns(img);
+    stub(window.document, 'createElement').returns(img);
     success = spy();
     fail = spy();
   });
 
   afterEach(function() {
-    global.document.createElement.restore();
+    window.document.createElement.restore();
   });
 
   describe('for an invalid email', function() {

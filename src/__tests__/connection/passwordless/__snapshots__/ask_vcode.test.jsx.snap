@@ -3,7 +3,7 @@
 exports[`AskVCode renders correctly when logging in with a phone number 1`] = `
 <div
   data-__type="vcode_pane"
-  data-instructions="An SMS with the code has been sent to [ '+44 456 789' ]."
+  data-instructions="An SMS with the code has been sent to +44 456 789."
   data-lock={
     Immutable.Map {
       "id": "__lock-id__",
@@ -49,7 +49,7 @@ exports[`AskVCode renders correctly when logging in with a phone number 1`] = `
 exports[`AskVCode renders correctly when logging in with email 1`] = `
 <div
   data-__type="vcode_pane"
-  data-instructions="An email with the code has been sent to [ 'test@user.com' ]."
+  data-instructions="An email with the code has been sent to test@user.com."
   data-lock={
     Immutable.Map {
       "id": "__lock-id__",

@@ -60,6 +60,6 @@ export function getState() {
 
 // DEV
 // store.addWatch("keepHistory", (key, oldState, newState) => {
-//   if (!global.window.h) global.window.h = []; global.window.h.push(newState);
+//   if (!window.h) window.h = []; window.h.push(newState);
 //   console.debug("something changed", newState.toJS());
 // });

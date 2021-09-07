@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import PasswordPolicy from 'password-sheriff/lib/policy';
-import util from 'util';
+import format from '../../../utils/format';
 
 export default class PasswordStrength extends React.Component {
   render() {
@@ -18,7 +18,7 @@ export default class PasswordStrength extends React.Component {
             o.message = messages[o.code];
           }
 
-          o.message = util.format(o.message, ...(o.format || []));
+          o.message = format(o.message, ...(o.format || []));
 
           if (o.items) {
             prepareMessage(o.items);
@@ -50,7 +50,13 @@ class List extends React.Component {
   render() {
     const { items } = this.props;
 
-    return items && items.length ? <ul>{items.map((x, i) => <Item {...x} key={i} />)}</ul> : null;
+    return items && items.length ? (
+      <ul>
+        {items.map((x, i) => (
+          <Item {...x} key={i} />
+        ))}
+      </ul>
+    ) : null;
   }
 }
 

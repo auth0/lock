@@ -10,7 +10,9 @@ export default (m, key, opts) => {
 
   const status = opts.waitFn
     ? 'waiting'
-    : !opts.conditionFn || opts.conditionFn(m) ? 'pending' : 'no';
+    : !opts.conditionFn || opts.conditionFn(m)
+    ? 'pending'
+    : 'no';
 
   return set(
     m,
@@ -28,7 +30,7 @@ export default (m, key, opts) => {
   );
 };
 
-const syncStatusKey = key => (global.Array.isArray(key) ? key : [key]).concat(['syncStatus']);
+const syncStatusKey = key => (window.Array.isArray(key) ? key : [key]).concat(['syncStatus']);
 const getStatus = (m, key) => get(m, syncStatusKey(key));
 const setStatus = (m, key, str) => set(m, syncStatusKey(key), str);
 const getProp = (m, key, name) => get(m, key).get(name);
@@ -53,7 +55,11 @@ const process = (m, id) => {
     if (getStatus(r, k) === 'pending') {
       r = setStatus(r, k, 'loading');
       let called = false;
-      getProp(r, k, 'syncFn')(r, (error, result) => {
+      getProp(
+        r,
+        k,
+        'syncFn'
+      )(r, (error, result) => {
         if (called) return;
         called = true;
         setTimeout(() => {
