@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm install -g yarn
+
 yarn install
 
 MATCHER=${2:-"*"}
