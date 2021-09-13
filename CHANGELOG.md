@@ -1,5 +1,16 @@
 # Change Log
 
+## [v11.30.5](https://github.com/auth0/lock/tree/v11.30.5) (2021-09-13)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.4...v11.30.5)
+
+**Changed**
+
+[SDK-2708] Use `domain` value for client assets download instead of `cdn.*.auth0.com` [\#2029](https://github.com/auth0/lock/pull/2029) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+
+Inline `util.format` and replace usage of `global` for `window` [\#2030](https://github.com/auth0/lock/pull/2030) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
 ## [v11.30.4](https://github.com/auth0/lock/tree/v11.30.4) (2021-07-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.30.3...v11.30.4)
 
