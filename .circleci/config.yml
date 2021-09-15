@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  ship: auth0/ship@0.2.0
 executors:
   docker-executor:
     docker:
@@ -63,6 +61,7 @@ jobs:
           command: yarn test:e2e:browserstack
 
 workflows:
+  version: 2
   build-test-report:
     jobs:
       - build-and-test
@@ -71,14 +70,3 @@ workflows:
             - build-and-test
           context:
             - browserstack-env
-      - ship/node-publish:
-          pkg-manager: yarn
-          requires:
-            - browserstack
-          context:
-            - publish-npm
-            - publish-gh
-          filters:
-            branches:
-              only:
-                - master
