@@ -73,8 +73,6 @@ workflows:
             - browserstack-env
       - ship/node-publish:
           pkg-manager: yarn
-          requires:
-            - browserstack
           context:
             - publish-npm
             - publish-gh
@@ -82,3 +80,4 @@ workflows:
             branches:
               only:
                 - master
+
