@@ -12,7 +12,7 @@ jobs:
       LANG: en_US.UTF-8
     steps:
       - checkout
-      - run: 
+      - run:
           name: Update Yarn
           command: 'sudo npm update -g yarn'
       - restore_cache:
@@ -26,10 +26,16 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run: 
+      - run:
           name: Build
           command: yarn build
-      - run: 
+      - run:
+          name: ES5 compatibility check
+          command: yarn test:es-check
+      - run:
+          name: Validate language files
+          command: yarn i18n:validate
+      - run:
           name: Unit Tests
           command: yarn test
       - store_artifacts:
@@ -41,7 +47,7 @@ jobs:
       LANG: en_US.UTF-8
     steps:
       - checkout
-      - run: 
+      - run:
           name: Update Yarn
           command: 'sudo npm update -g yarn'
       - restore_cache:
@@ -55,7 +61,7 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run: 
+      - run:
           name: Build
           command: yarn build
       - run:
@@ -80,4 +86,3 @@ workflows:
             branches:
               only:
                 - master
-
