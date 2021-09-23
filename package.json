@@ -25,7 +25,7 @@
     "dev": "grunt dev",
     "dist": "grunt dist",
     "prepublish": "cross-env BABEL_ENV=npm grunt dist",
-    "precommit": "lint-staged",
+    "precommit": "yarn test:es-check && lint-staged",
     "lint": "eslint --ext .jsx,.js src/",
     "test:e2e": "cross-env BABEL_ENV=test karma start --browsers ChromeHeadless",
     "test:e2e:watch": "cross-env BABEL_ENV=test karma start --browsers Chrome --single-run=false",
