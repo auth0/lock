@@ -19,7 +19,8 @@ export default {
       'lock.invalid_code': 'Chybný kód.',
       'lock.invalid_email_password': 'Chybný e-mail nebo heslo.',
       'lock.invalid_username_password': 'Chybné uživatelské jméno nebo heslo.',
-      'lock.network': 'Nepodařilo se spojit se serverem. Prosím zkontrolujte připojení a zkuste to znovu.',
+      'lock.network':
+        'Nepodařilo se spojit se serverem. Prosím zkontrolujte připojení a zkuste to znovu.',
       'lock.popup_closed': 'Vyskakovací okno zavřeno. Zkuste to znovu.',
       'lock.unauthorized': 'Oprávnění nebyla udělena. Zkuste to znovu.',
       'lock.mfa_registration_required':
@@ -33,8 +34,8 @@ export default {
       too_many_requests:
         'Omlouváme se. Právě teď je příliš mnoho žádostí. Načtěte stránku znovu a zkuste to znovu. Pokud to trvá, zkuste to znovu později.',
       session_missing:
-          'Nemohli jsme dokončit váš požadavek na ověření. Zkuste to znovu po zavření všech otevřených dialogových oken.',
-        'hrd.not_matching_email': 'Prosím pro přihlášení použijte svůj firemní e-mail.',
+        'Nemohli jsme dokončit váš požadavek na ověření. Zkuste to znovu po zavření všech otevřených dialogových oken.',
+      'hrd.not_matching_email': 'Prosím pro přihlášení použijte svůj firemní e-mail.'
     },
     passwordless: {
       'bad.email': 'E-mail je neplatný',
@@ -49,7 +50,8 @@ export default {
       password_strength_error: 'Heslo je příliš slabé.',
       user_exists: 'Uživatel již existuje.',
       username_exists: 'Uživatelské jméno již existuje.',
-      social_signup_needs_terms_acception: 'Pro pokračování prosím potvrďte souhlas s níže uvedenými smluvními podmínkami.'
+      social_signup_needs_terms_acception:
+        'Pro pokračování prosím potvrďte souhlas s níže uvedenými smluvními podmínkami.'
     }
   },
   success: {
