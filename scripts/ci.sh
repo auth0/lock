@@ -10,11 +10,6 @@ NPM_TAG=${3:-"beta"}
 NPM_NAME=$(node scripts/utils/attribute.js name)
 VERSION=$(node scripts/utils/attribute.js version)
 
-NPM_BIN=$(npm bin)
-STABLE=$($NPM_BIN/semver $VERSION -r "*")
-
-# Enable failing on exit status here because semver exits with 1 when the range
-# doesn't match.
 set -e
 
 new_line()
