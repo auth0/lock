@@ -10,6 +10,7 @@
 [Auth0](https://auth0.com) is an authentication broker that supports both social and enterprise identity providers, including Active Directory, LDAP, Google Apps, and Salesforce.
 
 ## Table of Contents
+
 1. [Install](#install)
 2. [Cross Origin Authentication](#cross-origin-authentication)
 3. [API](#api)
@@ -24,7 +25,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.30.5/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.30.6/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -50,8 +51,9 @@ After installing the `auth0-lock` module, you'll need to bundle it up along with
 If you are targeting mobile audiences, we recommended that you add:
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 ```
+
 ## Cross-Origin Authentication
 
 Lock uses **Cross-Origin Authentication**, make sure you understand the considerations you need to take into account by reading the [Cross-Origin Authentication documentation](https://auth0.com/docs/cross-origin-authentication).
@@ -69,14 +71,14 @@ Initializes a new instance of `Auth0Lock` configured with your application `clie
 #### Example
 
 ```js
-var clientId = "YOUR_AUTH0_APP_CLIENTID";
-var domain = "YOUR_DOMAIN_AT.auth0.com";
+var clientId = 'YOUR_AUTH0_APP_CLIENTID';
+var domain = 'YOUR_DOMAIN_AT.auth0.com';
 var lock = new Auth0Lock(clientId, domain);
 var accessToken = null;
 var profile = null;
 
-lock.on("authenticated", function(authResult) {
-  lock.getUserInfo(authResult.accessToken, function(error, profileResult) {
+lock.on('authenticated', function (authResult) {
+  lock.getUserInfo(authResult.accessToken, function (error, profileResult) {
     if (error) {
       // Handle error
       return;
@@ -107,14 +109,14 @@ For more information, read our [passwordless docs](https://auth0.com/docs/connec
 #### Example
 
 ```js
-var clientId = "YOUR_AUTH0_APP_CLIENTID";
-var domain = "YOUR_DOMAIN_AT.auth0.com";
+var clientId = 'YOUR_AUTH0_APP_CLIENTID';
+var domain = 'YOUR_DOMAIN_AT.auth0.com';
 var lock = new Auth0LockPasswordless(clientId, domain);
 var accessToken = null;
 var profile = null;
 
-lock.on("authenticated", function(authResult) {
-  lock.getUserInfo(authResult.accessToken, function(error, profileResult) {
+lock.on('authenticated', function (authResult) {
+  lock.getUserInfo(authResult.accessToken, function (error, profileResult) {
     if (error) {
       // Handle error
       return;
@@ -138,9 +140,9 @@ Once the user has logged in and you are in possession of an access token, you ca
 #### Example
 
 ```js
-lock.getUserInfo(accessToken, function(error, profile) {
+lock.getUserInfo(accessToken, function (error, profile) {
   if (!error) {
-    alert("hello " + profile.name);
+    alert('hello ' + profile.name);
   }
 });
 ```
@@ -178,24 +180,25 @@ Displays the widget, allowing you to override some options.
 lock.show();
 
 // will override the allowedConnections option passed to the constructor, if any
-lock.show({allowedConnections: ["twitter", "facebook"]})
+lock.show({ allowedConnections: ['twitter', 'facebook'] });
 
 // will override the entire auth.params object passed to the constructor, if any
-lock.show({auth: {params: {state: 'auth_state'}}})
+lock.show({ auth: { params: { state: 'auth_state' } } });
 ```
 
 ### resumeAuth(hash, callback)
 
 If you set the [auth.autoParseHash](#authentication-options) option to `false`, you'll need to call this method to complete the authentication flow. This method is useful when you're using a client-side router that uses a `#` to handle URLs (angular2 with `useHash` or react-router with `hashHistory`).
+
 - **hash {String}**: The hash fragment received from the redirect.
 - **callback {Function}**: Will be invoked after the parse is done. Has an error (if any) as the first argument and the authentication result as the second one. If there is no hash available, both arguments will be `null`.
 
 #### Example
 
 ```js
-lock.resumeAuth(hash, function(error, authResult) {
+lock.resumeAuth(hash, function (error, authResult) {
   if (error) {
-    alert("Could not parse hash");
+    alert('Could not parse hash');
   }
   console.log(authResult.accessToken);
 });
@@ -216,6 +219,7 @@ lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 ### checkSession(params, callback)
 
 The checkSession method allows you to acquire a new token from Auth0 for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
+
 - **params {Object}**: OAuth2 params object to send to Auth0's servers.
 - **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
 
@@ -261,14 +265,13 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **popupOptions {Object}**: Allows you to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **rememberLastLogin {Boolean}**: Determines whether or not to show a screen that allows you to quickly log in with the account you used the last time when the `initialScreen` option is set to `"login"` (the default). Defaults to `true`.
 - **flashMessage {Object}**: Shows an `error` or `success` flash message when Lock is shown.
-  + **type {String}**: The message type, it should be `error` or `success`.
-  + **text {String}**: The text to show.
+  - **type {String}**: The message type, it should be `error` or `success`.
+  - **text {String}**: The text to show.
 - **allowAutocomplete {Boolean}**: Determines whether or not the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
 - **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
 - **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
 - **allowPasswordAutocomplete {Boolean}**: Determines whether the password field will allow autocomplete; setting this to `true` is required for password manager support and to avoid many cases of adverse behavior. Defaults to `false`.
 - **preferConnectionDisplayName {Boolean}**: If true, Lock will try to use the connection display name as configured in the manage dashboard, if available.
-
 
 #### Theming options
 
@@ -278,14 +281,14 @@ Theme options are grouped in the `theme` property of the `options` object.
 var options = {
   theme: {
     labeledSubmitButton: false,
-    logo: "https://example.com/assets/logo.png",
-    primaryColor: "green",
+    logo: 'https://example.com/assets/logo.png',
+    primaryColor: 'green',
     authButtons: {
       connectionName: {
-        displayName: "...",
-        primaryColor: "...",
-        foregroundColor: "...",
-        icon: "https://.../logo.png"
+        displayName: '...',
+        primaryColor: '...',
+        foregroundColor: '...',
+        icon: 'https://.../logo.png'
       }
     }
   }
@@ -296,10 +299,10 @@ var options = {
 - **logo {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
 - **primaryColor {String}**: Defines the primary color of the Lock, all colors used in the widget will be calculated from it. This option is useful when providing a custom `logo` to ensure all colors go well together with the logo's color palette. Defaults to `"#ea5323"`.
 - **authButtons {Object}**: Allows the customization of the custom oauth2 login buttons.
-  + **displayName {String}**: The name to show instead of the connection name.
-  + **primaryColor {String}**: The button's background color. Defaults to `"#eb5424"`.
-  + **foregroundColor {String}**: The button's text color. Defaults to `"#FFFFFF"`.
-  + **icon {String}**: The icon's url for the connection. For example:`"https://site.com/logo.png"`.
+  - **displayName {String}**: The name to show instead of the connection name.
+  - **primaryColor {String}**: The button's background color. Defaults to `"#eb5424"`.
+  - **foregroundColor {String}**: The button's text color. Defaults to `"#FFFFFF"`.
+  - **icon {String}**: The icon's url for the connection. For example:`"https://site.com/logo.png"`.
 
 #### Authentication options
 
@@ -308,19 +311,19 @@ Authentication options are grouped in the `auth` property of the `options` objec
 ```js
 var options = {
   auth: {
-   params: {
-    param1: "value1",
-    scope: "openid profile email"
-   },
-   autoParseHash: true,
-   redirect: true,
-   redirectUrl: "some url",
-   responseMode: "form_post",
-   responseType: "token",
-   sso: true,
-   connectionScopes: {
-    connectionName: [ 'scope1', 'scope2' ]
-   }
+    params: {
+      param1: 'value1',
+      scope: 'openid profile email'
+    },
+    autoParseHash: true,
+    redirect: true,
+    redirectUrl: 'some url',
+    responseMode: 'form_post',
+    responseType: 'token',
+    sso: true,
+    connectionScopes: {
+      connectionName: ['scope1', 'scope2']
+    }
   }
 };
 ```
@@ -329,10 +332,10 @@ var options = {
 - **autoParseHash {Boolean}**: When set to `true`, Lock will parse the `window.location.hash` string when instantiated. If set to `false`, you'll have to manually resume authentication using the [resumeAuth](#resumeauthhash-callback) method.
 - **redirect {Boolean}**: When set to `true`, the default, _redirect mode_ will be used. Otherwise, _popup mode_ is chosen. See [below](#popup-mode) for more details.
 - **redirectUrl {String}**: The URL Auth0 will redirect back to after authentication. Defaults to the empty string `""` (no redirect URL).
-- **responseMode {String}**:  Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be omitted.
-- **responseType {String}**:  Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
-- **sso {Boolean}**:  Determines whether Single Sign-On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
-- **connectionScopes {Object}**:  Allows you to set scopes to be sent to the oauth2/social/enterprise connection for authentication.
+- **responseMode {String}**: Should be set to `"form_post"` if you want the code or the token to be transmitted via an HTTP POST request to the `redirectUrl` instead of being included in its query or fragment parts. Otherwise, it should be omitted.
+- **responseType {String}**: Should be set to `"token"` for Single Page Applications, and `"code"` otherwise. Also, `"id_token"` is supported for the first case. Defaults to `"code"` when `redirectUrl` is provided, and to `"token"` otherwise.
+- **sso {Boolean}**: Determines whether Single Sign-On is enabled or not in **Lock**. The Auth0 SSO session will be created regardless of this option if SSO is enabled for your application or tenant.
+- **connectionScopes {Object}**: Allows you to set scopes to be sent to the oauth2/social/enterprise connection for authentication.
 
 #### Database options
 
@@ -341,7 +344,7 @@ var options = {
 - **allowForgotPassword {Boolean}**: When set to `false` hides the _"Don't remember your password?"_ link in the _login screen_, making the _forgot password screen_ unreachable. Defaults to `true`. Keep in mind that if you are using a database connection with a _custom database_ which doesn't have a _change password script_ the forgot password screen won't be available.
 - **allowSignUp {Boolean}**: When set to `false` hides the _login and sign up tabs_ in the _login screen_, making the _sign up screen_ unreachable. Defaults to `true`. Keep in mind that if the database connection has sign ups _disabled_ or you are using a _custom database_ which doesn't have a _create script_, then the sign up screen won't be available.
 - **defaultDatabaseConnection {String}**: Specifies the database connection that will be used when there is more than one available.
-- **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"login"`, `"signUp"`, and `"forgotPassword"`. If this option is left unspecified, the widget will pick the first screen that is available from the previous list.  If you set `initialScreen` to `"forgotPassword"` we recommend that you set `allowLogin` to `"false"`, otherwise a back button will be shown in the forgot password screen and it might not be clear to the user where that back button will take them.
+- **initialScreen {String}**: Name of the screen that will be shown when the widget is opened. Valid values are `"login"`, `"signUp"`, and `"forgotPassword"`. If this option is left unspecified, the widget will pick the first screen that is available from the previous list. If you set `initialScreen` to `"forgotPassword"` we recommend that you set `allowLogin` to `"false"`, otherwise a back button will be shown in the forgot password screen and it might not be clear to the user where that back button will take them.
 - **loginAfterSignUp {Boolean}**: Determines whether or not the user will be automatically signed in after a successful sign up. Defaults to `true`.
 - **forgotPasswordLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
 - **showTerms {Boolean}**: When set to `true` displays the `languageDictionary.signUpTerms` string. Defaults to `true`.
@@ -360,11 +363,12 @@ var options = {
 
 ```js
 var options = {
-  container: "myContainer",
+  container: 'myContainer',
   closable: false,
   languageDictionary: {
-    signUpTerms: "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.",
-    title: "My Company",
+    signUpTerms:
+      "I agree to the <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.",
+    title: 'My Company'
   },
   autofocus: false
 };
@@ -390,18 +394,18 @@ Users logging in using this connection should then be associated with the correc
 
 Lock supports hooks that can be used to integrate into various procedures within Lock.
 
-| Name | Description |
-|----|-----|
-| `loggingIn` | Called when the user presses the login button; after validating the login form, but before calling the login endpoint |
+| Name        | Description                                                                                                                            |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `loggingIn` | Called when the user presses the login button; after validating the login form, but before calling the login endpoint                  |
 | `signingUp` | Called when the user presses the button on the sign-up page; after validating the signup form, but before calling the sign up endpoint |
 
 **API**
 Both hooks accept two arguments:
 
-| Name | Description |
-|----|----|
+| Name      | Description                                                                                                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `context` | this argument is currently always `null` but serves as a future-proofing mechanism to support providing additional data without us requiring breaking changes to the library |
-| `cb` | a callback function to call when the hook is finished. Execution of the user journey is blocked until this function is called by the hook |
+| `cb`      | a callback function to call when the hook is finished. Execution of the user journey is blocked until this function is called by the hook                                    |
 
 **API**
 
@@ -460,7 +464,7 @@ var options = {
       cb(null);
     }
   }
-}
+};
 ```
 
 #### Language Dictionary Specification
@@ -470,9 +474,9 @@ A language dictionary is an object that allows you to customize every piece of t
 ```js
 var options = {
   languageDictionary: {
-    emailInputPlaceholder: "Please enter your email",
-    title: "My Company"
-  },
+    emailInputPlaceholder: 'Please enter your email',
+    title: 'My Company'
+  }
 };
 ```
 
@@ -484,24 +488,26 @@ Additional sign up fields are rendered below the default fields in the order the
 
 ##### Text field
 
-A `validator` function can also be provided. 
+A `validator` function can also be provided.
 
 ```js
 var options = {
-  additionalSignUpFields: [{
-    name: "address",
-    placeholder: "enter your address",
-    // The following properties are optional
-    ariaLabel: "Address",
-    icon: "https://example.com/assets/address_icon.png",
-    prefill: "street 123",
-    validator: function(address) {
-      return {
-         valid: address.length >= 10,
-         hint: "Must have 10 or more chars" // optional
-      };
+  additionalSignUpFields: [
+    {
+      name: 'address',
+      placeholder: 'enter your address',
+      // The following properties are optional
+      ariaLabel: 'Address',
+      icon: 'https://example.com/assets/address_icon.png',
+      prefill: 'street 123',
+      validator: function (address) {
+        return {
+          valid: address.length >= 10,
+          hint: 'Must have 10 or more chars' // optional
+        };
+      }
     }
-  }]
+  ]
 };
 ```
 
@@ -509,11 +515,15 @@ If you don't provide a `validator` function a default validator is applied, whic
 
 ```js
 var options = {
-  additionalSignUpFields: [{
-    name: "address",
-    placeholder: "enter your address (optional)",
-    validator: function() {return true;}
-  }]
+  additionalSignUpFields: [
+    {
+      name: 'address',
+      placeholder: 'enter your address (optional)',
+      validator: function () {
+        return true;
+      }
+    }
+  ]
 };
 ```
 
@@ -521,10 +531,12 @@ If you want to save the value of the attribute in the root of your profile, use 
 
 ```js
 var options = {
-  additionalSignUpFields: [{
-    name: "name",
-    storage: "root"
-  }]
+  additionalSignUpFields: [
+    {
+      name: 'name',
+      storage: 'root'
+    }
+  ]
 };
 ```
 
@@ -534,45 +546,49 @@ To specify a select field `type: "select"` needs to be provided along with the `
 
 ```js
 var options = {
-  additionalSignUpFields: [{
-    type: "select",
-    name: "location",
-    placeholder: "choose your location",
-    options: [
-      {value: "us", label: "United States"},
-      {value: "fr", label: "France"},
-      {value: "ar", label: "Argentina"}
-    ],
-    // The following properties are optional
-    ariaLabel: "Location",
-    icon: "https://example.com/assets/location_icon.png",
-    prefill: "us"
-  }]
-}
+  additionalSignUpFields: [
+    {
+      type: 'select',
+      name: 'location',
+      placeholder: 'choose your location',
+      options: [
+        { value: 'us', label: 'United States' },
+        { value: 'fr', label: 'France' },
+        { value: 'ar', label: 'Argentina' }
+      ],
+      // The following properties are optional
+      ariaLabel: 'Location',
+      icon: 'https://example.com/assets/location_icon.png',
+      prefill: 'us'
+    }
+  ]
+};
 ```
 
 The `options` and the `prefill` value can be provided through a function.
 
 ```js
 var options = {
-  additionalSignUpFields: [{
-    type: "select",
-    name: "location",
-    placeholder: "choose your location",
-    options: function(cb) {
-      // obtain options, in case of error you call cb with the error in the
-      // first arg instead of null
-      cb(null, options);
-    },
-    ariaLabel: "Location",
-    icon: "https://example.com/assets/location_icon.png",
-    prefill: function(cb) {
-      // obtain prefill, in case of error you call cb with the error in the
-      // first arg instead of null
-      cb(null, prefill);
+  additionalSignUpFields: [
+    {
+      type: 'select',
+      name: 'location',
+      placeholder: 'choose your location',
+      options: function (cb) {
+        // obtain options, in case of error you call cb with the error in the
+        // first arg instead of null
+        cb(null, options);
+      },
+      ariaLabel: 'Location',
+      icon: 'https://example.com/assets/location_icon.png',
+      prefill: function (cb) {
+        // obtain prefill, in case of error you call cb with the error in the
+        // first arg instead of null
+        cb(null, prefill);
+      }
     }
-  }]
-}
+  ]
+};
 ```
 
 ##### Checkbox field
@@ -582,18 +598,21 @@ The `prefill` value can determine the default state of the checkbox and it is re
 
 ```js
 var options = {
-  additionalSignUpFields: [{
-    type: "checkbox",
-    name: "newsletter",
-    prefill: "true",
-    placeholder: "I hereby agree that I want to receive marketing emails from your company",
-    // placeholderHTML - is an optional field and overrides the value of placeholder
-    // do not use user inputted data for HTML fields as they are vulnerable to XSS
-    placeholderHTML: "<b>I hereby agree that I want to receive marketing emails from your company</b>",
-    // ariaLabel - is an optional field
-    ariaLabel: "Activate Newsletter"
-  }]
-}
+  additionalSignUpFields: [
+    {
+      type: 'checkbox',
+      name: 'newsletter',
+      prefill: 'true',
+      placeholder: 'I hereby agree that I want to receive marketing emails from your company',
+      // placeholderHTML - is an optional field and overrides the value of placeholder
+      // do not use user inputted data for HTML fields as they are vulnerable to XSS
+      placeholderHTML:
+        '<b>I hereby agree that I want to receive marketing emails from your company</b>',
+      // ariaLabel - is an optional field
+      ariaLabel: 'Activate Newsletter'
+    }
+  ]
+};
 ```
 
 ##### Hidden field
@@ -602,12 +621,14 @@ To specify a hidden field use: `type: "hidden"`. Both the `value` and `name` pro
 
 ```js
 var options = {
-  additionalSignUpFields: [{
-    type: "hidden",
-    name: "signup_code",
-    value: "foobar123"
-  }]
-}
+  additionalSignUpFields: [
+    {
+      type: 'hidden',
+      name: 'signup_code',
+      value: 'foobar123'
+    }
+  ]
+};
 ```
 
 #### Avatar provider
@@ -617,12 +638,12 @@ Lock can show avatars fetched from anywhere. A custom avatar provider can be spe
 ```js
 var options = {
   avatar: {
-    url: function(email, cb) {
+    url: function (email, cb) {
       // obtain URL for email, in case of error you call cb with the error in
       // the first arg instead of null
       cb(null, url);
     },
-    displayName: function(email, cb) {
+    displayName: function (email, cb) {
       // obtain displayName for email, in case of error you call cb with the
       // error in the first arg instead of null
       cb(null, displayName);
@@ -638,8 +659,8 @@ A popup window can be displayed instead of redirecting the user to a social prov
 If you decide to use popup mode you can activate it by passing the option `auth: {redirect: false}` when constructing `Auth0Lock`.
 
 ```js
-var clientId = "YOUR_AUTH0_APP_CLIENTID";
-var domain = "YOUR_DOMAIN_AT.auth0.com";
+var clientId = 'YOUR_AUTH0_APP_CLIENTID';
+var domain = 'YOUR_DOMAIN_AT.auth0.com';
 var options = {
   auth: {
     redirect: false
@@ -668,7 +689,6 @@ If you have found a bug or if you have a feature request, please report them at 
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
-
 [circleci-image]: https://img.shields.io/circleci/project/github/auth0/lock.svg?style=flat-square
 [circleci-url]: https://circleci.com/gh/auth0/lock/tree/master
 [npm-image]: https://img.shields.io/npm/v/auth0-lock.svg?style=flat-square
@@ -679,6 +699,5 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 [downloads-url]: https://npmjs.org/package/auth0-lock
 [david-image]: https://david-dm.org/auth0/lock/status.svg?style=flat-square
 [david-url]: https://david-dm.org/auth0/lock
-
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Flock.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Flock?ref=badge_large)
