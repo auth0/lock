@@ -9,10 +9,23 @@ import { isEnterpriseDomain } from '../../connection/enterprise';
 import * as i18n from '../../i18n';
 import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
+import { isEmail, setEmail } from '../../field/email';
+import { getField } from '../../field';
 
 const Component = ({ i18n, model }) => {
   const headerText = i18n.html('forgotPasswordInstructions') || null;
   const header = headerText && <p>{headerText}</p>;
+  const connectionResolver = l.connectionResolver(model);
+
+  // When using a custom connection resolver, `usernameStyle` is always 'username' (as opposed to 'email').
+  // If the user has entered an email address as the username, and a custom resolver is being used, copy the
+  // value from the 'username' field to the 'email' field so that `EmailPane` can render it.
+  if (connectionResolver) {
+    const field = getField(model, 'username');
+    const value = field.get('value', '');
+
+    swap(updateEntity, 'lock', l.id(model), setEmail, isEmail(value, false) ? value : '', false);
+  }
 
   return (
     <ResetPasswordPane
