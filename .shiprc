@@ -3,5 +3,5 @@
         "bower.json": [],
         "README.md": []
     },
-    "postbump": "yarn dist build && git add -f build/"
+    "postbump": "yarn dist build"
 }
