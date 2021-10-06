@@ -43,7 +43,7 @@
         <div class="col-sm-12">
           <div id="btn-clear-log" class="btn btn-danger">Clear logs</div>
         </div>
-        <div class="col-sm-12" style="margin-top: 10px; max-height: 800px; overflow: auto;">
+        <div class="col-sm-12" style="margin-top: 10px; max-height: 800px; overflow: auto">
           <pre>
           <code id="logger" class="language-js"></code>
         </pre>
@@ -70,7 +70,7 @@
       function printLogs() {
         window.localStorage.auth0logs = JSON.stringify(logs);
         var code = '';
-        logs.forEach(function(l) {
+        logs.forEach(function (l) {
           code += '\r\n' + JSON.stringify(l, null, 1);
         });
         var html = Prism.highlight(code, Prism.languages.javascript);
@@ -105,8 +105,8 @@
           'federated login',
           'ssodata fetched'
         ];
-        validEvents.forEach(function(e) {
-          instance.on(e, function() {
+        validEvents.forEach(function (e) {
+          instance.on(e, function () {
             var args = arguments;
             if (arguments.length === 1) {
               args = arguments[0];
@@ -117,7 +117,7 @@
         });
       }
       $('#btn-clear-log').on('click', clearLogs);
-      $(function() {
+      $(function () {
         printLogs();
       });
     </script>
@@ -145,30 +145,34 @@
           {
             name: 'name',
             placeholder: 'name',
-            validator: function() {
+            validator: function () {
               return true;
             }
           },
           {
             name: 'other_name',
             placeholder: 'other name',
-            validator: function() {
+            validator: function () {
               return true;
             }
           }
         ],
         hooks: {
-          loggingIn: function(context, done) {
+          loggingIn: function (context, done) {
             // Currently, context is always null but might be used in the future.
             console.log('Hello from submitting hook');
             done();
           },
-          signingUp: function(context, done) {
+          signingUp: function (context, done) {
             // Currently, context is always null but might be used in the future.
             console.log('Hello from signingUp hook');
             done();
           }
-        }
+        } /*,
+        connectionResolver: function (username, context, cb) {
+          console.log('Invoking connection resolver');
+          cb({ type: 'database', name: 'acme' });
+        }*/
       };
       function initLock() {
         var lock = new Auth0Lock(clientId, domain, defaultOptions);
@@ -182,8 +186,8 @@
         subscribeToEvents(lockPasswordless);
         return lockPasswordless;
       }
-      $(function() {
-        $('#btn-show-lock').on('click', function() {
+      $(function () {
+        $('#btn-show-lock').on('click', function () {
           clearLogs();
           var lock = initLock();
           lock.show({
@@ -192,7 +196,7 @@
             }
           });
         });
-        $('#btn-show-passwordless').on('click', function() {
+        $('#btn-show-passwordless').on('click', function () {
           clearLogs();
           var lockPasswordless = initPasswordless();
           lockPasswordless.show({
@@ -201,10 +205,10 @@
             }
           });
         });
-        $('#btn-logout').on('click', function() {
+        $('#btn-logout').on('click', function () {
           var lock = new Auth0Lock(clientId, domain, defaultOptions);
           lock.logout();
-        })
+        });
 
         //make sure we initialize Lock so we can parse the hash
         var lastUsed = window.localStorage.lastUsed;
