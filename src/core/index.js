@@ -216,7 +216,8 @@ function extractUIOptions(id, options) {
     scrollGlobalMessagesIntoView:
       undefined === options.scrollGlobalMessagesIntoView
         ? true
-        : !!options.scrollGlobalMessagesIntoView
+        : !!options.scrollGlobalMessagesIntoView,
+    forceAutoHeight: !!options.forceAutoHeight
   });
 }
 
@@ -264,7 +265,8 @@ export const ui = {
   scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
   allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword')),
   allowPasswordAutocomplete: m =>
-    tget(m, 'allowPasswordAutocomplete', getUIAttribute(m, 'allowPasswordAutocomplete'))
+    tget(m, 'allowPasswordAutocomplete', getUIAttribute(m, 'allowPasswordAutocomplete')),
+  forceAutoHeight: m => tget(m, 'forceAutoHeight', getUIAttribute(m, 'forceAutoHeight'))
 };
 
 const { get: getAuthAttribute } = dataFns(['core', 'auth']);

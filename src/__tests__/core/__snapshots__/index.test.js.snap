@@ -75,6 +75,7 @@ Object {
     "containerID": "auth0-lock-container-id",
     "dict": Object {},
     "disableWarnings": false,
+    "forceAutoHeight": false,
     "hideMainScreenTitle": false,
     "labeledSubmitButton": true,
     "language": "en",
