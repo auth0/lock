@@ -272,6 +272,7 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
 - **allowPasswordAutocomplete {Boolean}**: Determines whether the password field will allow autocomplete; setting this to `true` is required for password manager support and to avoid many cases of adverse behavior. Defaults to `false`.
 - **preferConnectionDisplayName {Boolean}**: If true, Lock will try to use the connection display name as configured in the manage dashboard, if available.
+- **forceAutoHeight {Boolean}**: If true, Lock will use the `height: auto!important` style on the wrapping div, which may be useful in some circumstances where `height: 100vh` is undesirable (see [\#1963](https://github.com/auth0/lock/issues/1963)). Defaults to `false`.
 
 #### Theming options
 
