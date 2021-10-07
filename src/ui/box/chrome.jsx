@@ -7,7 +7,6 @@ import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
 import * as l from '../../core/index';
 import Header from './header';
-import classnames from 'classnames';
 
 const SubmitSvg = () => (
   <svg
@@ -269,8 +268,6 @@ export default class Chrome extends React.Component {
       scrollGlobalMessagesIntoView
     } = this.props;
 
-    const { model } = contentProps;
-
     const { delayingShowSubmitButton, moving, reverse } = this.state;
 
     let backgroundUrl, name;
@@ -318,20 +315,14 @@ export default class Chrome extends React.Component {
     ) : null;
 
     const Content = contentComponent;
+
+    let className = 'auth0-lock-cred-pane';
     const isQuiet = !moving && !delayingShowSubmitButton;
-
-    const className = classnames('auth0-lock-cred-pane', {
-      'auth0-lock-quiet': isQuiet,
-      'auth0-lock-moving': !isQuiet
-    });
-
-    const internalWrapperClass = classnames('auth0-lock-cred-pane-internal-wrapper', {
-      'auto-height': l.ui.forceAutoHeight(model)
-    });
+    className += isQuiet ? ' auth0-lock-quiet' : ' auth0-lock-moving';
 
     return (
       <div className={className}>
-        <div className={internalWrapperClass}>
+        <div className="auth0-lock-cred-pane-internal-wrapper">
           <div className="auth0-lock-content-wrapper">
             <Header
               title={title}
