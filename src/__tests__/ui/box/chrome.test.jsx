@@ -1,6 +1,5 @@
 import React from 'react';
 import immutable from 'immutable';
-import { create } from 'react-test-renderer';
 
 import { expectComponent, mockComponent } from 'testUtils';
 const getComponent = () => require('ui/box/chrome').default;
@@ -22,7 +21,10 @@ const triggerEvent = name => {
 jest.mock('core/index', () => ({
   handleEvent: jest.fn((_, event, fn) => {
     mockEventRegister[event] = fn;
-  })
+  }),
+  ui: {
+    forceAutoHeight: jest.fn().mockReturnValue(false)
+  }
 }));
 
 const defaultProps = {
@@ -83,6 +85,19 @@ describe('Chrome', () => {
   });
 
   it('can dislay all global messages together', () => {
+    const props = {
+      ...defaultProps,
+      info: 'This is an information message',
+      success: 'This is a success message',
+      error: 'There is an error'
+    };
+
+    expectComponent(<Chrome {...props} />).toMatchSnapshot();
+  });
+
+  it('adds the auto-height class when forceAutoHeight UI prop is true', () => {
+    require('core/index').ui.forceAutoHeight.mockReturnValue(true);
+
     const props = {
       ...defaultProps,
       info: 'This is an information message',
