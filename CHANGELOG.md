@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.31.0](https://github.com/auth0/lock/tree/v11.31.0) (2021-10-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.30.6...v11.31.0)
+
+**Added**
+- [SDK-2295] Add forceAutoHeight property to UI config [\#2050](https://github.com/auth0/lock/pull/2050) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- [SDK-2823] Fix password reset when using custom connection resolver [\#2048](https://github.com/auth0/lock/pull/2048) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
 ## [v11.30.6](https://github.com/auth0/lock/tree/v11.30.6) (2021-09-27)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.30.5...v11.30.6)
