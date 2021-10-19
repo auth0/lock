@@ -10,14 +10,16 @@
 import Auth0Lock from './index';
 import Auth0LockPasswordless from './passwordless';
 
-if (typeof window.define == 'function' && window.define.amd) {
-  window.define('auth0Lock', function() {
-    return Auth0Lock;
-  });
-  window.define('auth0LockPasswordless', function() {
-    return Auth0LockPasswordless;
-  });
-} else if (window.window) {
-  window.Auth0Lock = Auth0Lock;
-  window.Auth0LockPasswordless = Auth0LockPasswordless;
+if (typeof window !== 'undefined') {
+  if (typeof window.define == 'function' && window.define.amd) {
+    window.define('auth0Lock', function () {
+      return Auth0Lock;
+    });
+    window.define('auth0LockPasswordless', function () {
+      return Auth0LockPasswordless;
+    });
+  } else if (window.window) {
+    window.Auth0Lock = Auth0Lock;
+    window.Auth0LockPasswordless = Auth0LockPasswordless;
+  }
 }

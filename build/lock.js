@@ -1,8 +1,8 @@
 /*!
- * lock v11.31.0
+ * lock v11.31.0-build.8
  * 
  * Author: Auth0 <support@auth0.com> (http://auth0.com)
- * Date: 15/10/2021, 16:04:30
+ * Date: 19/10/2021, 13:02:33
  * License: MIT
  * 
  *//******/ (function(modules) { // webpackBootstrap
@@ -7452,7 +7452,7 @@ function assertLanguage(m, language, base) {
 function syncLang(m, language, _cb) {
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__utils_cdn_utils__["a" /* load */])({
     method: 'registerLanguageDictionary',
-    url: __WEBPACK_IMPORTED_MODULE_5__core_index__["languageBaseUrl"](m) + '/js/lock/' + '11.31.0' + '/' + language + '.js',
+    url: __WEBPACK_IMPORTED_MODULE_5__core_index__["languageBaseUrl"](m) + '/js/lock/' + '11.31.0-build.8' + '/' + language + '.js',
     check: function check(str) {
       return str && str === language;
     },
@@ -7468,10 +7468,12 @@ function registerLanguageDictionary(language, dictionary) {
   languageDictionaries[language] = __WEBPACK_IMPORTED_MODULE_1_immutable___default.a.fromJS(dictionary);
 }
 
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__utils_cdn_utils__["b" /* preload */])({
-  method: 'registerLanguageDictionary',
-  cb: registerLanguageDictionary
-});
+if (typeof window !== 'undefined') {
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__utils_cdn_utils__["b" /* preload */])({
+    method: 'registerLanguageDictionary',
+    cb: registerLanguageDictionary
+  });
+}
 
 /***/ }),
 /* 13 */
@@ -14744,7 +14746,7 @@ QuickAuthPane.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_auth0_js__ = __webpack_require__(101);
 
 
-if (!window.Auth0) {
+if (typeof window !== 'undefined' && !window.Auth0) {
   window.Auth0 = {};
 }
 
@@ -18976,7 +18978,7 @@ var Auth0LockPasswordless = function (_Core) {
 /* harmony default export */ __webpack_exports__["a"] = (Auth0LockPasswordless);
 
 
-Auth0LockPasswordless.version = '11.31.0';
+Auth0LockPasswordless.version = '11.31.0-build.8';
 
 /***/ }),
 /* 101 */
@@ -20345,7 +20347,7 @@ var EscKeyDownHandler = function () {
   return EscKeyDownHandler;
 }();
 
-var IPHONE = window.navigator && !!window.navigator.userAgent.match(/iPhone/i);
+var IPHONE = typeof window !== 'undefined' && window.navigator && !!window.navigator.userAgent.match(/iPhone/i);
 
 var Container = function (_React$Component) {
   _inherits(Container, _React$Component);
@@ -20617,7 +20619,7 @@ Container.propTypes = {
 };
 
 // NOTE: detecting the file protocol is important for things like electron.
-var isFileProtocol = window.window && window.location && window.location.protocol === 'file:';
+var isFileProtocol = typeof window !== 'undefined' && window.window && window.location && window.location.protocol === 'file:';
 
 var defaultProps = Container.defaultProps = {
   autofocus: false,
@@ -25691,16 +25693,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-if (typeof window.define == 'function' && window.define.amd) {
-  window.define('auth0Lock', function () {
-    return __WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */];
-  });
-  window.define('auth0LockPasswordless', function () {
-    return __WEBPACK_IMPORTED_MODULE_1__passwordless__["a" /* default */];
-  });
-} else if (window.window) {
-  window.Auth0Lock = __WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */];
-  window.Auth0LockPasswordless = __WEBPACK_IMPORTED_MODULE_1__passwordless__["a" /* default */];
+if (typeof window !== 'undefined') {
+  if (typeof window.define == 'function' && window.define.amd) {
+    window.define('auth0Lock', function () {
+      return __WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */];
+    });
+    window.define('auth0LockPasswordless', function () {
+      return __WEBPACK_IMPORTED_MODULE_1__passwordless__["a" /* default */];
+    });
+  } else if (window.window) {
+    window.Auth0Lock = __WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */];
+    window.Auth0LockPasswordless = __WEBPACK_IMPORTED_MODULE_1__passwordless__["a" /* default */];
+  }
 }
 
 /***/ }),
@@ -27241,7 +27245,7 @@ function trimAuthParams() {
 }
 
 function getVersion() {
-  return '11.31.0';
+  return '11.31.0-build.8';
 }
 
 /***/ }),
@@ -29289,7 +29293,7 @@ var Auth0Lock = function (_Core) {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Auth0Lock);
-Auth0Lock.version = '11.31.0';
+Auth0Lock.version = '11.31.0-build.8';
 
 // TODO: should we have different telemetry for classic/passwordless?
 // TODO: should we set telemetry info before each request?
@@ -30299,13 +30303,16 @@ WelcomeMessage.propTypes = {
 };
 
 var cssBlurSupport = function () {
-  // Check stolen from Modernizr, see https://github.com/Modernizr/Modernizr/blob/29eab707f7a2fb261c8a9c538370e97eb1f86e25/feature-detects/css/filters.js
-  var isEdge = window.navigator && !!window.navigator.userAgent.match(/Edge/i);
-  if (typeof window.document === 'undefined' || isEdge) return false;
+  if (typeof window !== 'undefined') {
+    // Check stolen from Modernizr, see https://github.com/Modernizr/Modernizr/blob/29eab707f7a2fb261c8a9c538370e97eb1f86e25/feature-detects/css/filters.js
+    var isEdge = window.navigator && !!window.navigator.userAgent.match(/Edge/i);
+    if (typeof window.document === 'undefined' || isEdge) return false;
 
-  var el = window.document.createElement('div');
-  el.style.cssText = 'filter: blur(2px); -webkit-filter: blur(2px)';
-  return !!el.style.length && (window.document.documentMode === undefined || window.document.documentMode > 9);
+    var el = window.document.createElement('div');
+    el.style.cssText = 'filter: blur(2px); -webkit-filter: blur(2px)';
+
+    return !!el.style.length && (window.document.documentMode === undefined || window.document.documentMode > 9);
+  }
 }();
 
 var Background = function (_React$Component4) {
