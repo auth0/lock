@@ -423,6 +423,7 @@ new Auth0Lock('client ID', 'domain', {
       console.log('Hello from the sign-up hook!');
       cb();
     }
+  }
 });
 ```
 
@@ -439,7 +440,8 @@ new Auth0Lock('client ID', 'domain', {
 
       // Throw something generic to show a fallback error message
       throw "Some error happened";
-    },
+    }
+  }
 });
 ```
 
