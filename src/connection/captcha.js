@@ -38,6 +38,7 @@ export function showMissingCaptcha(m, id) {
 export function setCaptchaParams(m, params, fields) {
   const captchaConfig = l.captcha(m);
   const isCaptchaRequired = captchaConfig && l.captcha(m).get('required');
+
   if (!isCaptchaRequired) {
     return true;
   }
