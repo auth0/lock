@@ -1,7 +1,7 @@
 import I from 'immutable';
 import { logIn } from '../../../connection/enterprise/actions';
 import * as l from '../../../core/index';
-import { setField, getFieldValue } from '../../../field/index';
+import { setField } from '../../../field/index';
 
 jest.mock('connection/database/index', () => ({
   databaseLogInWithEmail: jest.fn(() => true)
@@ -63,6 +63,27 @@ describe('Login with connection scopes', () => {
         connection: 'sso-connection',
         login_hint: 'test@test.com'
       });
+    });
+
+    it('should throw an error if the captcha was not completed', () => {
+      lock = l.setup('__lock__', 'client', 'domain', {});
+      lock = setField(lock, 'email', 'test@test.com');
+
+      lock = l.setCaptcha(lock, {
+        required: true,
+        provider: 'recaptcha_v2'
+      });
+
+      require('store/index').read.mockReturnValue(lock);
+
+      require('connection/enterprise').matchConnection.mockReturnValue(
+        I.fromJS({ name: 'sso-connection' })
+      );
+
+      const coreActions = require('core/actions');
+
+      logIn('__lock__');
+      expect(coreActions.logIn).not.toHaveBeenCalled();
     });
   });
 

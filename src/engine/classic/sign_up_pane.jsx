@@ -12,7 +12,7 @@ import {
 } from '../../connection/database/index';
 import CaptchaPane from '../../field/captcha/captcha_pane';
 import * as l from '../../core/index';
-import { swapCaptcha } from '../../connection/database/actions';
+import { swapCaptcha } from '../../connection/captcha';
 
 export default class SignUpPane extends React.Component {
   render() {
