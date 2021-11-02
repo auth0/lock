@@ -1,12 +1,24 @@
 # Change Log
 
+## [v11.31.1](https://github.com/auth0/lock/tree/v11.31.1) (2021-11-02)
+
+[Full Changelog](https://github.com/auth0/lock/compare/v11.31.0...v11.31.1)
+
+**Fixed**
+
+- Guard references to window on module load [\#2057](https://github.com/auth0/lock/pull/2057) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Ensure Captcha is completed before authenticating with enterprise SSO connection [\#2060](https://github.com/auth0/lock/pull/2060) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
 ## [v11.31.0](https://github.com/auth0/lock/tree/v11.31.0) (2021-10-15)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.30.6...v11.31.0)
 
 **Added**
+
 - [SDK-2295] Add forceAutoHeight property to UI config [\#2050](https://github.com/auth0/lock/pull/2050) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 **Fixed**
+
 - [SDK-2823] Fix password reset when using custom connection resolver [\#2048](https://github.com/auth0/lock/pull/2048) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 ## [v11.30.6](https://github.com/auth0/lock/tree/v11.30.6) (2021-09-27)
