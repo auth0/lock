@@ -58,7 +58,10 @@ class EscKeyDownHandler {
   }
 }
 
-const IPHONE = window.navigator && !!window.navigator.userAgent.match(/iPhone/i);
+const IPHONE =
+  typeof window !== 'undefined' &&
+  window.navigator &&
+  !!window.navigator.userAgent.match(/iPhone/i);
 
 export default class Container extends React.Component {
   constructor(props) {
@@ -288,7 +291,11 @@ Container.propTypes = {
 };
 
 // NOTE: detecting the file protocol is important for things like electron.
-const isFileProtocol = window.window && window.location && window.location.protocol === 'file:';
+const isFileProtocol =
+  typeof window !== 'undefined' &&
+  window.window &&
+  window.location &&
+  window.location.protocol === 'file:';
 
 export const defaultProps = (Container.defaultProps = {
   autofocus: false,

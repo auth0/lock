@@ -91,7 +91,9 @@ function registerLanguageDictionary(language, dictionary) {
   languageDictionaries[language] = Immutable.fromJS(dictionary);
 }
 
-preload({
-  method: 'registerLanguageDictionary',
-  cb: registerLanguageDictionary
-});
+if (typeof window !== 'undefined') {
+  preload({
+    method: 'registerLanguageDictionary',
+    cb: registerLanguageDictionary
+  });
+}

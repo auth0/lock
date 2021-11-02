@@ -1,6 +1,6 @@
 import Auth0 from 'auth0-js';
 
-if (!window.Auth0) {
+if (typeof window !== 'undefined' && !window.Auth0) {
   window.Auth0 = {};
 }
 
@@ -11,7 +11,7 @@ export function load(attrs) {
 
   if (!cbs[method]) {
     cbs[method] = [];
-    window.Auth0[method] = function(...args) {
+    window.Auth0[method] = function (...args) {
       cbs[method] = cbs[method].filter(x => {
         if (x.check(...args)) {
           setTimeout(() => x.cb(null, ...args), 0);

@@ -78,13 +78,18 @@ WelcomeMessage.propTypes = {
   name: PropTypes.string
 };
 
-const cssBlurSupport = (function() {
+const cssBlurSupport = (function () {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
   // Check stolen from Modernizr, see https://github.com/Modernizr/Modernizr/blob/29eab707f7a2fb261c8a9c538370e97eb1f86e25/feature-detects/css/filters.js
   const isEdge = window.navigator && !!window.navigator.userAgent.match(/Edge/i);
   if (typeof window.document === 'undefined' || isEdge) return false;
 
   const el = window.document.createElement('div');
   el.style.cssText = 'filter: blur(2px); -webkit-filter: blur(2px)';
+
   return (
     !!el.style.length &&
     (window.document.documentMode === undefined || window.document.documentMode > 9)
