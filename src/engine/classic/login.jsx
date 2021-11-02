@@ -33,7 +33,7 @@ function shouldRenderTabs(m) {
     return hasScreen(m, 'signUp');
 }
 
-const Component = ({ i18n, model }) => {
+const LoginComponent = ({ i18n, model }) => {
   const sso = isSSOEnabled(model);
   const onlySocial = hasOnlyClassicConnections(model, 'social');
 
@@ -153,6 +153,6 @@ export default class Login extends Screen {
   }
 
   render() {
-    return Component;
+    return LoginComponent;
   }
 }
