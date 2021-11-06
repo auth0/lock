@@ -760,13 +760,13 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-auth0-js@^9.16.4:
-  version "9.16.4"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.16.4.tgz#24f4d4f20687674c9f070a9f6f32b1e8a1f3a106"
-  integrity sha512-H0ddClKHG+6g6CoOXAvJiz9VvnuEr78YQh9rvYvYCnXTr6hcbMA92249VEQiX7a8rFoCsY4FBcEx/J+ZFyW0cg==
+auth0-js@^9.17.0:
+  version "9.17.0"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.17.0.tgz#4f669f0aa4af75761802a1235de821443d20b8b9"
+  integrity sha512-rqHhOq6ZgOaHwz0e46YywsGW4Y2wLF3Fu+y2wT94vbEFNAi5vyJHJYVyNAetAN7w7Ljhda/7SsUs/usuEMRBpQ==
   dependencies:
     base64-js "^1.5.1"
-    idtoken-verifier "^2.2.1"
+    idtoken-verifier "^2.2.2"
     js-cookie "^2.2.0"
     qs "^6.10.1"
     superagent "^5.3.1"
@@ -5285,10 +5285,10 @@ icss-replace-symbols@^1.1.0:
   resolved "https://registry.yarnpkg.com/icss-replace-symbols/-/icss-replace-symbols-1.1.0.tgz#06ea6f83679a7749e386cfe1fe812ae5db223ded"
   integrity sha1-Bupvg2ead0njhs/h/oEq5dsiPe0=
 
-idtoken-verifier@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/idtoken-verifier/-/idtoken-verifier-2.2.1.tgz#a7f3eb3b2bdfd4fb67b35220fa133ec361582359"
-  integrity sha512-iNwR4BVl5x+7AUbehxkZPPsiVfBsCVK5f18WbZwT8uTfhpDlIhdX00nK/74Rg4lMi+4rWWCDjJfBM7CmBjJU5g==
+idtoken-verifier@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/idtoken-verifier/-/idtoken-verifier-2.2.2.tgz#0d91a2f92231ebd763e5098d2ac44f038eb1068b"
+  integrity sha512-PFNivtWIUKFt0B53FOACLAM2PaejEwB/wh6fPqlWoLGMWP05JKGJyKyMv/uS9kduevEfRhHaSVdoLYUnQ0YmsA==
   dependencies:
     base64-js "^1.5.1"
     crypto-js "^4.1.1"
