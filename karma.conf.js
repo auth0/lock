@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
   process.env.CHROME_BIN = require('puppeteer').executablePath();
 
   config.set({
@@ -118,12 +118,6 @@ module.exports = function(config) {
       }
     },
 
-    browsers: [
-      'bs_chrome_windows',
-      'bs_firefox_windows',
-      'bs_safari',
-      'bs_ie11_windows',
-      'bs_edge_windows'
-    ]
+    browsers: ['bs_chrome_windows']
   });
 };
