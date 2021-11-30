@@ -118,6 +118,7 @@ module.exports = function (config) {
       }
     },
 
+    // only actually run these browsers
     browsers: ['bs_chrome_windows']
   });
 };
