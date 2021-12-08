@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SignUpPane hides the Captcha pane for SSO connections 1`] = `
+<div>
+  <Unknown
+    i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    lock="model"
+    placeholder="emailInputPlaceholder"
+    strictValidation={true}
+  />
+</div>
+`;
+
 exports[`SignUpPane onlyEmail is false hide UsernamePane when databaseConnectionRequiresUsername is true and signUpHideUsernameField is true 1`] = `
 <div>
   <div
@@ -179,6 +195,60 @@ exports[`SignUpPane shows header when instructions are available 1`] = `
     data-lock="model"
     data-placeholder="emailInputPlaceholder"
     data-strictValidation={true}
+  />
+</div>
+`;
+
+exports[`SignUpPane shows the Captcha pane 1`] = `
+<div>
+  <Unknown
+    i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    lock="model"
+    placeholder="emailInputPlaceholder"
+    strictValidation={true}
+  />
+  <CaptchaPane
+    error={false}
+    i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    lock="model"
+    onReload={[Function]}
+  />
+</div>
+`;
+
+exports[`SignUpPane shows the Captcha pane for SSO (ADFS) connections 1`] = `
+<div>
+  <Unknown
+    i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    lock="model"
+    placeholder="emailInputPlaceholder"
+    strictValidation={true}
+  />
+  <CaptchaPane
+    error={false}
+    i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    lock="model"
+    onReload={[Function]}
   />
 </div>
 `;
