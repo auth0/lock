@@ -24,6 +24,7 @@ export function logIn(id, needsMFA = false) {
   const m = read(getEntity, 'lock', id);
   const usernameField = databaseLogInWithEmail(m) ? 'email' : 'username';
   const username = c.getFieldValue(m, usernameField);
+
   const params = {
     connection: databaseConnectionName(m),
     username: username,
@@ -31,13 +32,14 @@ export function logIn(id, needsMFA = false) {
   };
 
   const fields = [usernameField, 'password'];
-
   const isCaptchaValid = setCaptchaParams(m, params, fields);
+
   if (!isCaptchaValid) {
     return showMissingCaptcha(m, id);
   }
 
   const mfaCode = c.getFieldValue(m, 'mfa_code');
+
   if (needsMFA) {
     params['mfa_code'] = mfaCode;
     fields.push('mfa_code');

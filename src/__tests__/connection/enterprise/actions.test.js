@@ -4,7 +4,8 @@ import * as l from '../../../core/index';
 import { setField } from '../../../field/index';
 
 jest.mock('connection/database/index', () => ({
-  databaseLogInWithEmail: jest.fn(() => true)
+  databaseLogInWithEmail: jest.fn(() => true),
+  databaseUsernameValue: jest.fn()
 }));
 
 jest.mock('store/index', () => ({
@@ -17,7 +18,8 @@ jest.mock('store/index', () => ({
 jest.mock('connection/enterprise', () => ({
   matchConnection: jest.fn(),
   enterpriseActiveFlowConnection: jest.fn(),
-  isHRDActive: jest.fn()
+  isHRDActive: jest.fn(),
+  isEnterpriseDomain: jest.fn()
 }));
 
 jest.mock('core/actions', () => ({
@@ -65,10 +67,12 @@ describe('Login with connection scopes', () => {
       });
     });
 
-    it('should throw an error if the captcha was not completed', () => {
+    it('should not throw an error if the captcha was not completed', () => {
       lock = l.setup('__lock__', 'client', 'domain', {});
       lock = setField(lock, 'email', 'test@test.com');
 
+      // This will be specified in the response from the /challenge endpoint if the
+      // dashboard settings have Captcha as 'required', regardless of connection being used.
       lock = l.setCaptcha(lock, {
         required: true,
         provider: 'recaptcha_v2'
@@ -83,7 +87,7 @@ describe('Login with connection scopes', () => {
       const coreActions = require('core/actions');
 
       logIn('__lock__');
-      expect(coreActions.logIn).not.toHaveBeenCalled();
+      expect(coreActions.logIn).toHaveBeenCalled();
     });
   });
 
