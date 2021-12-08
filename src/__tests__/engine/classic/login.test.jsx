@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { expectComponent, mockComponent } from 'testUtils';
 
 jest.mock('core/pane_separator', () => mockComponent('pane_separator'));
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));
