@@ -11,7 +11,8 @@ jest.mock('ui/input/password/password_strength', () => mockComponent('password_s
 jest.mock('core/index', () => ({
   ui: {
     allowPasswordAutocomplete: () => false
-  }
+  },
+  id: jest.fn(() => 'lock')
 }));
 
 const getComponent = () => require('ui/input/password_input').default;

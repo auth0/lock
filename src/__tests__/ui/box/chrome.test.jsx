@@ -24,7 +24,8 @@ jest.mock('core/index', () => ({
   }),
   ui: {
     forceAutoHeight: jest.fn().mockReturnValue(false)
-  }
+  },
+  id: jest.fn(() => 'lock')
 }));
 
 const defaultProps = {
