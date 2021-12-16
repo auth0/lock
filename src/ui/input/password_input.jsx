@@ -86,6 +86,7 @@ export default class PasswordInput extends React.Component {
         <input
           ref="input"
           type={showPassword ? 'text' : 'password'}
+          id={`${l.id(lock)}-password`}
           name="password"
           className="auth0-lock-input"
           autoComplete={allowPasswordAutocomplete ? 'on' : 'off'}

@@ -98,7 +98,9 @@ class SubmitButton extends React.Component {
   }
 
   render() {
-    const { color, disabled, label, display } = this.props;
+    const { color, disabled, label, display, contentProps } = this.props;
+    const { model } = contentProps;
+
     const content = label ? (
       <span className="auth0-label-submit">
         {label}
@@ -110,6 +112,7 @@ class SubmitButton extends React.Component {
 
     return (
       <button
+        id={`${l.id(model)}-submit`}
         className="auth0-lock-submit"
         disabled={disabled}
         style={{ backgroundColor: color, display }}
