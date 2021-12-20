@@ -105,14 +105,14 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
-    "auth0-js": "^9.16.4",
+    "auth0-js": "^9.18.0",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.1",
     "dompurify": "^2.2.8",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.6",
     "password-sheriff": "^1.1.1",
     "prop-types": "^15.6.0",
     "qs": "^6.7.0",
