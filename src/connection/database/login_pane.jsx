@@ -8,6 +8,9 @@ import { swapCaptcha } from '../captcha';
 import { hasScreen, forgotPasswordLink } from './index';
 import * as l from '../../core/index';
 import CaptchaPane from '../../field/captcha/captcha_pane';
+import { isSSOEnabled } from '../../engine/classic';
+import { isHRDDomain } from '../enterprise';
+import { databaseUsernameValue } from '../database';
 
 export default class LoginPane extends React.Component {
   handleDontRememberPasswordClick = e => {
@@ -32,6 +35,7 @@ export default class LoginPane extends React.Component {
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
     const resolver = l.connectionResolver(lock);
+    const sso = isSSOEnabled(lock);
 
     // Should never validate format on login because of custom db connection and import mode.
     // If a custom resolver is in use, always use UsernamePane without validating format,
@@ -57,7 +61,9 @@ export default class LoginPane extends React.Component {
       );
 
     const captchaPane =
-      l.captcha(lock) && l.captcha(lock).get('required') ? (
+      l.captcha(lock) &&
+      l.captcha(lock).get('required') &&
+      (isHRDDomain(lock, databaseUsernameValue(lock)) || !sso) ? (
         <CaptchaPane i18n={i18n} lock={lock} onReload={() => swapCaptcha(l.id(lock), false)} />
       ) : null;
 

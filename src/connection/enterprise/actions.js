@@ -49,14 +49,14 @@ export function logIn(id) {
     connection_scope: connectionScopes ? connectionScopes.toJS() : undefined
   };
 
-  const isCaptchaValid = setCaptchaParams(m, params, fields);
-
-  if (!isCaptchaValid) {
-    return showMissingCaptcha(m, id);
-  }
-
   if (ssoConnection && !isHRDActive(m)) {
     return logInSSO(id, ssoConnection, params);
+  }
+
+  const isCaptchaValid = setCaptchaParams(m, params, fields);
+
+  if (!isCaptchaValid && !ssoConnection) {
+    return showMissingCaptcha(m, id);
   }
 
   logInActiveFlow(id, params);

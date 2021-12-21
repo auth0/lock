@@ -2,7 +2,7 @@
  * lock v11.31.1
  * 
  * Author: Auth0 <support@auth0.com> (http://auth0.com)
- * Date: 02/11/2021, 15:17:19
+ * Date: 08/12/2021, 14:08:01
  * License: MIT
  * 
  *//******/ (function(modules) { // webpackBootstrap
@@ -1853,7 +1853,7 @@ module.exports = ReactDOMComponentTree;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_trim__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_trim___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_trim__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_tenant__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_enterprise__ = __webpack_require__(14);
 
 
 
@@ -7519,92 +7519,6 @@ module.exports = ExecutionEnvironment;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__i18n__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connection_database_index__ = __webpack_require__(10);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-var Screen = function () {
-  function Screen(name) {
-    _classCallCheck(this, Screen);
-
-    this.name = name;
-  }
-
-  Screen.prototype.backHandler = function backHandler() {
-    return null;
-  };
-
-  Screen.prototype.escHandler = function escHandler() {
-    return null;
-  };
-
-  Screen.prototype.submitButtonLabel = function submitButtonLabel(m) {
-    return __WEBPACK_IMPORTED_MODULE_1__i18n__["str"](m, ['submitLabel']);
-  };
-
-  Screen.prototype.isFirstScreen = function isFirstScreen(m) {
-    var firstScreenName = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__connection_database_index__["k" /* getInitialScreen */])(m);
-    var currentScreenNameParts = this.name.split('.');
-    var currentScreenName = currentScreenNameParts[1] || currentScreenNameParts[0];
-
-    // if signup and login is enabled, both are the first screen in this scenario and
-    // neither of them should show the title
-    if (currentScreenName === 'signUp' && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__connection_database_index__["i" /* hasScreen */])(m, 'login')) {
-      return true;
-    }
-
-    var initialScreens = [firstScreenName, 'loading', 'lastLogin'];
-
-    return initialScreens.indexOf(currentScreenName) !== -1;
-  };
-
-  Screen.prototype.getTitle = function getTitle(m) {
-    //loading screen will never show a title
-    if (this.name === 'loading') {
-      return '';
-    }
-    return this.getScreenTitle(m) || __WEBPACK_IMPORTED_MODULE_1__i18n__["str"](m, 'title');
-  };
-
-  Screen.prototype.getScreenTitle = function getScreenTitle(m) {
-    return __WEBPACK_IMPORTED_MODULE_1__i18n__["str"](m, 'title');
-  };
-
-  Screen.prototype.submitHandler = function submitHandler() {
-    return null;
-  };
-
-  Screen.prototype.isSubmitDisabled = function isSubmitDisabled(m) {
-    return false;
-  };
-
-  Screen.prototype.renderAuxiliaryPane = function renderAuxiliaryPane() {
-    return null;
-  };
-
-  Screen.prototype.renderTabs = function renderTabs() {
-    return false;
-  };
-
-  Screen.prototype.renderTerms = function renderTerms() {
-    return null;
-  };
-
-  return Screen;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Screen);
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return STRATEGIES; });
 /* harmony export (immutable) */ __webpack_exports__["f"] = initEnterprise;
 /* harmony export (immutable) */ __webpack_exports__["e"] = defaultEnterpriseConnection;
@@ -7630,7 +7544,7 @@ var Screen = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_data_utils__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__field_email__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__field_username__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__engine_classic__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__engine_classic__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__database_index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__store_index__ = __webpack_require__(8);
 
@@ -7816,6 +7730,92 @@ function isHRDEmailValid(m, str) {
 
   return true;
 }
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__i18n__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connection_database_index__ = __webpack_require__(10);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+var Screen = function () {
+  function Screen(name) {
+    _classCallCheck(this, Screen);
+
+    this.name = name;
+  }
+
+  Screen.prototype.backHandler = function backHandler() {
+    return null;
+  };
+
+  Screen.prototype.escHandler = function escHandler() {
+    return null;
+  };
+
+  Screen.prototype.submitButtonLabel = function submitButtonLabel(m) {
+    return __WEBPACK_IMPORTED_MODULE_1__i18n__["str"](m, ['submitLabel']);
+  };
+
+  Screen.prototype.isFirstScreen = function isFirstScreen(m) {
+    var firstScreenName = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__connection_database_index__["k" /* getInitialScreen */])(m);
+    var currentScreenNameParts = this.name.split('.');
+    var currentScreenName = currentScreenNameParts[1] || currentScreenNameParts[0];
+
+    // if signup and login is enabled, both are the first screen in this scenario and
+    // neither of them should show the title
+    if (currentScreenName === 'signUp' && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__connection_database_index__["i" /* hasScreen */])(m, 'login')) {
+      return true;
+    }
+
+    var initialScreens = [firstScreenName, 'loading', 'lastLogin'];
+
+    return initialScreens.indexOf(currentScreenName) !== -1;
+  };
+
+  Screen.prototype.getTitle = function getTitle(m) {
+    //loading screen will never show a title
+    if (this.name === 'loading') {
+      return '';
+    }
+    return this.getScreenTitle(m) || __WEBPACK_IMPORTED_MODULE_1__i18n__["str"](m, 'title');
+  };
+
+  Screen.prototype.getScreenTitle = function getScreenTitle(m) {
+    return __WEBPACK_IMPORTED_MODULE_1__i18n__["str"](m, 'title');
+  };
+
+  Screen.prototype.submitHandler = function submitHandler() {
+    return null;
+  };
+
+  Screen.prototype.isSubmitDisabled = function isSubmitDisabled(m) {
+    return false;
+  };
+
+  Screen.prototype.renderAuxiliaryPane = function renderAuxiliaryPane() {
+    return null;
+  };
+
+  Screen.prototype.renderTabs = function renderTabs() {
+    return false;
+  };
+
+  Screen.prototype.renderTerms = function renderTerms() {
+    return null;
+  };
+
+  return Screen;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Screen);
 
 /***/ }),
 /* 16 */
@@ -8241,7 +8241,7 @@ function renderSignedInConfirmation(lock) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_validator_lib_isEmail__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_validator_lib_isEmail___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_validator_lib_isEmail__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__connection_enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__connection_enterprise__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__i18n__ = __webpack_require__(12);
 
 
@@ -9168,7 +9168,7 @@ var Auth0WebAPI = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__field_index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__i18n__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__captcha__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__captcha__ = __webpack_require__(47);
 
 
 
@@ -9186,6 +9186,7 @@ function logIn(id) {
   var m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__store_index__["d" /* read */])(__WEBPACK_IMPORTED_MODULE_1__store_index__["e" /* getEntity */], 'lock', id);
   var usernameField = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__index__["l" /* databaseLogInWithEmail */])(m) ? 'email' : 'username';
   var username = __WEBPACK_IMPORTED_MODULE_5__field_index__["c" /* getFieldValue */](m, usernameField);
+
   var params = {
     connection: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__index__["m" /* databaseConnectionName */])(m),
     username: username,
@@ -9193,13 +9194,14 @@ function logIn(id) {
   };
 
   var fields = [usernameField, 'password'];
-
   var isCaptchaValid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__captcha__["a" /* setCaptchaParams */])(m, params, fields);
+
   if (!isCaptchaValid) {
     return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__captcha__["b" /* showMissingCaptcha */])(m, id);
   }
 
   var mfaCode = __WEBPACK_IMPORTED_MODULE_5__field_index__["c" /* getFieldValue */](m, 'mfa_code');
+
   if (needsMFA) {
     params['mfa_code'] = mfaCode;
     fields.push('mfa_code');
@@ -9831,7 +9833,7 @@ exports.right = function(str){
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__field_index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__index__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__field_phone_number__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__field_phone_number__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__i18n__ = __webpack_require__(12);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -10016,7 +10018,7 @@ function toggleTermsAcceptance(id) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_immutable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_immutable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__field_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__field_phone_number__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__field_phone_number__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_data_utils__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_web_api__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__sync__ = __webpack_require__(28);
@@ -11136,6 +11138,231 @@ module.exports = ReactElement;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = isSSOEnabled;
+/* harmony export (immutable) */ __webpack_exports__["a"] = matchesEnterpriseConnection;
+/* unused harmony export usernameStyle */
+/* harmony export (immutable) */ __webpack_exports__["c"] = hasOnlyClassicConnections;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classic_login__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classic_sign_up_screen__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classic_mfa_login_screen__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__connection_database_reset_password__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_sso_index__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__connection_database_index__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_enterprise__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_tenant__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__field_email__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__field_username__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_index__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__connection_enterprise_kerberos_screen__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__connection_enterprise_hrd_screen__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__connection_enterprise_quick_auth_screen__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__quick_auth__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__core_loading_screen__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__core_error_screen__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__core_sso_last_login_screen__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__sync__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__field_index__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__store_index__ = __webpack_require__(8);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function isSSOEnabled(m, options) {
+  return matchesEnterpriseConnection(m, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["a" /* databaseUsernameValue */])(m, options));
+}
+
+function matchesEnterpriseConnection(m, usernameValue) {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["b" /* isEnterpriseDomain */])(m, usernameValue);
+}
+
+function usernameStyle(m) {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["b" /* authWithUsername */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["c" /* isADEnabled */])(m) ? 'username' : 'email';
+}
+
+function hasOnlyClassicConnections(m) {
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+
+  for (var _len = arguments.length, strategies = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    strategies[_key - 2] = arguments[_key];
+  }
+
+  return __WEBPACK_IMPORTED_MODULE_11__core_index__["hasOnlyConnections"].apply(__WEBPACK_IMPORTED_MODULE_11__core_index__, [m, type].concat(strategies)) && !__WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'passwordless');
+}
+
+function validateAllowedConnections(m) {
+  var anyDBConnection = __WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'database');
+  var anySocialConnection = __WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'social');
+  var anyEnterpriseConnection = __WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'enterprise');
+
+  if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
+    var error = new Error('At least one database, enterprise or social connection needs to be available.');
+    error.code = 'no_connection';
+    m = __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"](m, error);
+  } else if (!anyDBConnection && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["c" /* hasInitialScreen */])(m, 'forgotPassword')) {
+    var _error = new Error('The `initialScreen` option was set to "forgotPassword" but no database connection is available.');
+    _error.code = 'unavailable_initial_screen';
+    m = __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"](m, _error);
+  } else if (!anyDBConnection && !anySocialConnection && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["c" /* hasInitialScreen */])(m, 'signUp')) {
+    var _error2 = new Error('The `initialScreen` option was set to "signUp" but no database or social connection is available.');
+    _error2.code = 'unavailable_initial_screen';
+    m = __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"](m, _error2);
+  }
+
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__core_tenant__["a" /* defaultDirectoryName */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__core_tenant__["b" /* defaultDirectory */])(m)) {
+    __WEBPACK_IMPORTED_MODULE_11__core_index__["error"](m, 'The account\'s default directory "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__core_tenant__["a" /* defaultDirectoryName */])(m) + '" is not enabled.');
+  }
+
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["d" /* defaultDatabaseConnectionName */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["e" /* defaultDatabaseConnection */])(m)) {
+    __WEBPACK_IMPORTED_MODULE_11__core_index__["warn"](m, 'The provided default database connection "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["d" /* defaultDatabaseConnectionName */])(m) + '" is not enabled.');
+  }
+
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["d" /* defaultEnterpriseConnectionName */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["e" /* defaultEnterpriseConnection */])(m)) {
+    __WEBPACK_IMPORTED_MODULE_11__core_index__["warn"](m, 'The provided default enterprise connection "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["d" /* defaultEnterpriseConnectionName */])(m) + '" is not enabled or does not allow email/password authentication.');
+  }
+
+  return m;
+}
+
+var setPrefill = function setPrefill(m) {
+  var _l$prefill$toJS = __WEBPACK_IMPORTED_MODULE_11__core_index__["prefill"](m).toJS(),
+      email = _l$prefill$toJS.email,
+      username = _l$prefill$toJS.username;
+
+  if (typeof email === 'string') m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__field_email__["d" /* setEmail */])(m, email);
+  if (typeof username === 'string') m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__field_username__["a" /* setUsername */])(m, username, 'username', false);
+  return m;
+};
+
+function createErrorScreen(m, stopError) {
+  setTimeout(function () {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_21__store_index__["b" /* swap */])(__WEBPACK_IMPORTED_MODULE_21__store_index__["c" /* updateEntity */], 'lock', __WEBPACK_IMPORTED_MODULE_11__core_index__["id"](m), __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"], stopError);
+  }, 0);
+
+  return new __WEBPACK_IMPORTED_MODULE_17__core_error_screen__["a" /* default */]();
+}
+
+var Classic = function () {
+  function Classic() {
+    _classCallCheck(this, Classic);
+  }
+
+  Classic.prototype.didInitialize = function didInitialize(model, options) {
+    model = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["f" /* initDatabase */])(model, options);
+    model = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["f" /* initEnterprise */])(model, options);
+
+    return model;
+  };
+
+  Classic.prototype.didReceiveClientSettings = function didReceiveClientSettings(m) {
+    m = validateAllowedConnections(m);
+    m = setPrefill(m);
+    return m;
+  };
+
+  Classic.prototype.willShow = function willShow(m, opts) {
+    m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["g" /* overrideDatabaseOptions */])(m, opts);
+    m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["h" /* resolveAdditionalSignUpFields */])(m);
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__sync__["b" /* isSuccess */])(m, 'client')) {
+      m = validateAllowedConnections(m);
+    }
+    return m;
+  };
+
+  Classic.prototype.render = function render(m) {
+    //if there's an error, we should show the error screen no matter what.
+    if (__WEBPACK_IMPORTED_MODULE_11__core_index__["hasStopped"](m)) {
+      return new __WEBPACK_IMPORTED_MODULE_17__core_error_screen__["a" /* default */]();
+    }
+
+    // TODO: remove the detail about the loading pane being pinned,
+    // sticky screens should be handled at the box module.
+    if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__sync__["c" /* isDone */])(m) || m.get('isLoadingPanePinned')) {
+      return new __WEBPACK_IMPORTED_MODULE_16__core_loading_screen__["a" /* default */]();
+    }
+
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'login')) {
+      if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_15__quick_auth__["a" /* hasSkippedQuickAuth */])(m) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["c" /* hasInitialScreen */])(m, 'login')) {
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["g" /* isInCorpNetwork */])(m)) {
+          return new __WEBPACK_IMPORTED_MODULE_12__connection_enterprise_kerberos_screen__["a" /* default */]();
+        }
+
+        if (__WEBPACK_IMPORTED_MODULE_11__core_index__["ui"].rememberLastLogin(m)) {
+          var lastUsedConnection = __WEBPACK_IMPORTED_MODULE_5__core_sso_index__["a" /* lastUsedConnection */](m);
+          var lastUsedUsername = __WEBPACK_IMPORTED_MODULE_5__core_sso_index__["b" /* lastUsedUsername */](m);
+          if (lastUsedConnection && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__sync__["b" /* isSuccess */])(m, 'sso') && __WEBPACK_IMPORTED_MODULE_11__core_index__["hasConnection"](m, lastUsedConnection.get('name')) && __WEBPACK_IMPORTED_MODULE_11__core_index__["findConnection"](m, lastUsedConnection.get('name')).get('type') !== 'passwordless') {
+            return new __WEBPACK_IMPORTED_MODULE_18__core_sso_last_login_screen__["a" /* default */]();
+          }
+        }
+      }
+
+      if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["h" /* quickAuthConnection */])(m)) {
+        return new __WEBPACK_IMPORTED_MODULE_14__connection_enterprise_quick_auth_screen__["a" /* default */]();
+      }
+
+      if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["i" /* isHRDActive */])(m)) {
+        return new __WEBPACK_IMPORTED_MODULE_13__connection_enterprise_hrd_screen__["a" /* default */]();
+      }
+    }
+
+    if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'login') && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'signUp') && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'forgotPassword')) {
+      var errorMessage = 'No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.';
+      var noAvailableScreenError = new Error(errorMessage);
+      noAvailableScreenError.code = 'internal_error';
+      noAvailableScreenError.description = errorMessage;
+      return createErrorScreen(m, noAvailableScreenError);
+    }
+
+    var Screen = Classic.SCREENS[__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["j" /* getScreen */])(m)];
+    if (Screen) {
+      return new Screen();
+    }
+    var noScreenError = new Error('Internal error');
+    noScreenError.code = 'internal_error';
+    noScreenError.description = 'Couldn\'t find a screen "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["j" /* getScreen */])(m) + '"';
+    return createErrorScreen(m, noScreenError);
+  };
+
+  return Classic;
+}();
+
+Classic.SCREENS = {
+  login: __WEBPACK_IMPORTED_MODULE_1__classic_login__["a" /* default */],
+  forgotPassword: __WEBPACK_IMPORTED_MODULE_4__connection_database_reset_password__["a" /* default */],
+  signUp: __WEBPACK_IMPORTED_MODULE_2__classic_sign_up_screen__["a" /* default */],
+  mfaLogin: __WEBPACK_IMPORTED_MODULE_3__classic_mfa_login_screen__["a" /* default */]
+};
+
+
+/* harmony default export */ __webpack_exports__["d"] = (new Classic());
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["b"] = initLocation;
 /* unused harmony export validatePhoneNumber */
 /* harmony export (immutable) */ __webpack_exports__["a"] = setPhoneNumber;
@@ -11197,7 +11424,7 @@ function humanLocation(m) {
 }
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var _ = {};
@@ -11315,7 +11542,7 @@ module.exports = _;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(99)))
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11592,7 +11819,7 @@ var EventPluginHub = {
 module.exports = EventPluginHub;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11606,7 +11833,7 @@ module.exports = EventPluginHub;
 
 
 
-var EventPluginHub = __webpack_require__(41);
+var EventPluginHub = __webpack_require__(42);
 var EventPluginUtils = __webpack_require__(86);
 
 var accumulateInto = __webpack_require__(140);
@@ -11729,7 +11956,7 @@ var EventPropagators = {
 module.exports = EventPropagators;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11778,7 +12005,7 @@ var ReactInstanceMap = {
 module.exports = ReactInstanceMap;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11840,7 +12067,7 @@ SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 module.exports = SyntheticUIEvent;
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11882,7 +12109,7 @@ function reactProdInvariant(code) {
 module.exports = reactProdInvariant;
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11967,7 +12194,7 @@ function swapCaptcha(id, wasInvalid, next) {
 }
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12042,7 +12269,7 @@ function authButtonsTheme(m) {
 }
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12057,7 +12284,7 @@ var PaneSeparator = function PaneSeparator() {
 /* harmony default export */ __webpack_exports__["a"] = (PaneSeparator);
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12074,231 +12301,6 @@ function lastUsedConnection(m) {
 function lastUsedUsername(m) {
   return m.getIn(['sso', 'lastUsedUsername'], '');
 }
-
-/***/ }),
-/* 50 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["b"] = isSSOEnabled;
-/* harmony export (immutable) */ __webpack_exports__["a"] = matchesEnterpriseConnection;
-/* unused harmony export usernameStyle */
-/* harmony export (immutable) */ __webpack_exports__["c"] = hasOnlyClassicConnections;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classic_login__ = __webpack_require__(182);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classic_sign_up_screen__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classic_mfa_login_screen__ = __webpack_require__(183);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__connection_database_reset_password__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_sso_index__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__connection_database_index__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_enterprise__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_tenant__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__field_email__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__field_username__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__connection_enterprise_kerberos_screen__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__connection_enterprise_hrd_screen__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__connection_enterprise_quick_auth_screen__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__quick_auth__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__core_loading_screen__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__core_error_screen__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__core_sso_last_login_screen__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__sync__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__field_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__store_index__ = __webpack_require__(8);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function isSSOEnabled(m, options) {
-  return matchesEnterpriseConnection(m, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["a" /* databaseUsernameValue */])(m, options));
-}
-
-function matchesEnterpriseConnection(m, usernameValue) {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["b" /* isEnterpriseDomain */])(m, usernameValue);
-}
-
-function usernameStyle(m) {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["b" /* authWithUsername */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["c" /* isADEnabled */])(m) ? 'username' : 'email';
-}
-
-function hasOnlyClassicConnections(m) {
-  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-
-  for (var _len = arguments.length, strategies = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    strategies[_key - 2] = arguments[_key];
-  }
-
-  return __WEBPACK_IMPORTED_MODULE_11__core_index__["hasOnlyConnections"].apply(__WEBPACK_IMPORTED_MODULE_11__core_index__, [m, type].concat(strategies)) && !__WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'passwordless');
-}
-
-function validateAllowedConnections(m) {
-  var anyDBConnection = __WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'database');
-  var anySocialConnection = __WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'social');
-  var anyEnterpriseConnection = __WEBPACK_IMPORTED_MODULE_11__core_index__["hasSomeConnections"](m, 'enterprise');
-
-  if (!anyDBConnection && !anySocialConnection && !anyEnterpriseConnection) {
-    var error = new Error('At least one database, enterprise or social connection needs to be available.');
-    error.code = 'no_connection';
-    m = __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"](m, error);
-  } else if (!anyDBConnection && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["c" /* hasInitialScreen */])(m, 'forgotPassword')) {
-    var _error = new Error('The `initialScreen` option was set to "forgotPassword" but no database connection is available.');
-    _error.code = 'unavailable_initial_screen';
-    m = __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"](m, _error);
-  } else if (!anyDBConnection && !anySocialConnection && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["c" /* hasInitialScreen */])(m, 'signUp')) {
-    var _error2 = new Error('The `initialScreen` option was set to "signUp" but no database or social connection is available.');
-    _error2.code = 'unavailable_initial_screen';
-    m = __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"](m, _error2);
-  }
-
-  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__core_tenant__["a" /* defaultDirectoryName */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__core_tenant__["b" /* defaultDirectory */])(m)) {
-    __WEBPACK_IMPORTED_MODULE_11__core_index__["error"](m, 'The account\'s default directory "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__core_tenant__["a" /* defaultDirectoryName */])(m) + '" is not enabled.');
-  }
-
-  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["d" /* defaultDatabaseConnectionName */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["e" /* defaultDatabaseConnection */])(m)) {
-    __WEBPACK_IMPORTED_MODULE_11__core_index__["warn"](m, 'The provided default database connection "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["d" /* defaultDatabaseConnectionName */])(m) + '" is not enabled.');
-  }
-
-  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["d" /* defaultEnterpriseConnectionName */])(m) && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["e" /* defaultEnterpriseConnection */])(m)) {
-    __WEBPACK_IMPORTED_MODULE_11__core_index__["warn"](m, 'The provided default enterprise connection "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["d" /* defaultEnterpriseConnectionName */])(m) + '" is not enabled or does not allow email/password authentication.');
-  }
-
-  return m;
-}
-
-var setPrefill = function setPrefill(m) {
-  var _l$prefill$toJS = __WEBPACK_IMPORTED_MODULE_11__core_index__["prefill"](m).toJS(),
-      email = _l$prefill$toJS.email,
-      username = _l$prefill$toJS.username;
-
-  if (typeof email === 'string') m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__field_email__["d" /* setEmail */])(m, email);
-  if (typeof username === 'string') m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__field_username__["a" /* setUsername */])(m, username, 'username', false);
-  return m;
-};
-
-function createErrorScreen(m, stopError) {
-  setTimeout(function () {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_21__store_index__["b" /* swap */])(__WEBPACK_IMPORTED_MODULE_21__store_index__["c" /* updateEntity */], 'lock', __WEBPACK_IMPORTED_MODULE_11__core_index__["id"](m), __WEBPACK_IMPORTED_MODULE_11__core_index__["stop"], stopError);
-  }, 0);
-
-  return new __WEBPACK_IMPORTED_MODULE_17__core_error_screen__["a" /* default */]();
-}
-
-var Classic = function () {
-  function Classic() {
-    _classCallCheck(this, Classic);
-  }
-
-  Classic.prototype.didInitialize = function didInitialize(model, options) {
-    model = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["f" /* initDatabase */])(model, options);
-    model = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["f" /* initEnterprise */])(model, options);
-
-    return model;
-  };
-
-  Classic.prototype.didReceiveClientSettings = function didReceiveClientSettings(m) {
-    m = validateAllowedConnections(m);
-    m = setPrefill(m);
-    return m;
-  };
-
-  Classic.prototype.willShow = function willShow(m, opts) {
-    m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["g" /* overrideDatabaseOptions */])(m, opts);
-    m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["h" /* resolveAdditionalSignUpFields */])(m);
-    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__sync__["b" /* isSuccess */])(m, 'client')) {
-      m = validateAllowedConnections(m);
-    }
-    return m;
-  };
-
-  Classic.prototype.render = function render(m) {
-    //if there's an error, we should show the error screen no matter what.
-    if (__WEBPACK_IMPORTED_MODULE_11__core_index__["hasStopped"](m)) {
-      return new __WEBPACK_IMPORTED_MODULE_17__core_error_screen__["a" /* default */]();
-    }
-
-    // TODO: remove the detail about the loading pane being pinned,
-    // sticky screens should be handled at the box module.
-    if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__sync__["c" /* isDone */])(m) || m.get('isLoadingPanePinned')) {
-      return new __WEBPACK_IMPORTED_MODULE_16__core_loading_screen__["a" /* default */]();
-    }
-
-    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'login')) {
-      if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_15__quick_auth__["a" /* hasSkippedQuickAuth */])(m) && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["c" /* hasInitialScreen */])(m, 'login')) {
-        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["g" /* isInCorpNetwork */])(m)) {
-          return new __WEBPACK_IMPORTED_MODULE_12__connection_enterprise_kerberos_screen__["a" /* default */]();
-        }
-
-        if (__WEBPACK_IMPORTED_MODULE_11__core_index__["ui"].rememberLastLogin(m)) {
-          var lastUsedConnection = __WEBPACK_IMPORTED_MODULE_5__core_sso_index__["a" /* lastUsedConnection */](m);
-          var lastUsedUsername = __WEBPACK_IMPORTED_MODULE_5__core_sso_index__["b" /* lastUsedUsername */](m);
-          if (lastUsedConnection && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__sync__["b" /* isSuccess */])(m, 'sso') && __WEBPACK_IMPORTED_MODULE_11__core_index__["hasConnection"](m, lastUsedConnection.get('name')) && __WEBPACK_IMPORTED_MODULE_11__core_index__["findConnection"](m, lastUsedConnection.get('name')).get('type') !== 'passwordless') {
-            return new __WEBPACK_IMPORTED_MODULE_18__core_sso_last_login_screen__["a" /* default */]();
-          }
-        }
-      }
-
-      if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["h" /* quickAuthConnection */])(m)) {
-        return new __WEBPACK_IMPORTED_MODULE_14__connection_enterprise_quick_auth_screen__["a" /* default */]();
-      }
-
-      if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__connection_enterprise__["i" /* isHRDActive */])(m)) {
-        return new __WEBPACK_IMPORTED_MODULE_13__connection_enterprise_hrd_screen__["a" /* default */]();
-      }
-    }
-
-    if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'login') && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'signUp') && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["i" /* hasScreen */])(m, 'forgotPassword')) {
-      var errorMessage = 'No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.';
-      var noAvailableScreenError = new Error(errorMessage);
-      noAvailableScreenError.code = 'internal_error';
-      noAvailableScreenError.description = errorMessage;
-      return createErrorScreen(m, noAvailableScreenError);
-    }
-
-    var Screen = Classic.SCREENS[__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["j" /* getScreen */])(m)];
-    if (Screen) {
-      return new Screen();
-    }
-    var noScreenError = new Error('Internal error');
-    noScreenError.code = 'internal_error';
-    noScreenError.description = 'Couldn\'t find a screen "' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__connection_database_index__["j" /* getScreen */])(m) + '"';
-    return createErrorScreen(m, noScreenError);
-  };
-
-  return Classic;
-}();
-
-Classic.SCREENS = {
-  login: __WEBPACK_IMPORTED_MODULE_1__classic_login__["a" /* default */],
-  forgotPassword: __WEBPACK_IMPORTED_MODULE_4__connection_database_reset_password__["a" /* default */],
-  signUp: __WEBPACK_IMPORTED_MODULE_2__classic_sign_up_screen__["a" /* default */],
-  mfaLogin: __WEBPACK_IMPORTED_MODULE_3__classic_mfa_login_screen__["a" /* default */]
-};
-
-
-/* harmony default export */ __webpack_exports__["d"] = (new Classic());
 
 /***/ }),
 /* 51 */
@@ -12424,7 +12426,7 @@ EmailPane.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ui_button_auth_button__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__quick_auth_actions__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__connection_social_index__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__connection_social_index__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__event__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_database_index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__connection_database_actions__ = __webpack_require__(27);
@@ -13317,7 +13319,7 @@ module.exports = ReactBrowserEventEmitter;
 
 
 
-var SyntheticUIEvent = __webpack_require__(44);
+var SyntheticUIEvent = __webpack_require__(45);
 var ViewportMetrics = __webpack_require__(139);
 
 var getEventModifierState = __webpack_require__(94);
@@ -13900,12 +13902,12 @@ var SignUpTerms = function SignUpTerms(_ref) {
 /* harmony export (immutable) */ __webpack_exports__["c"] = cancelHRD;
 /* harmony export (immutable) */ __webpack_exports__["b"] = logIn;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__enterprise__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__field_index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__field_email__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_actions__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__captcha__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__captcha__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__database_index__ = __webpack_require__(10);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -13955,14 +13957,14 @@ function logIn(id) {
     connection_scope: connectionScopes ? connectionScopes.toJS() : undefined
   };
 
-  var isCaptchaValid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__captcha__["a" /* setCaptchaParams */])(m, params, fields);
-
-  if (!isCaptchaValid) {
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__captcha__["b" /* showMissingCaptcha */])(m, id);
-  }
-
   if (ssoConnection && !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__enterprise__["i" /* isHRDActive */])(m)) {
     return logInSSO(id, ssoConnection, params);
+  }
+
+  var isCaptchaValid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__captcha__["a" /* setCaptchaParams */])(m, params, fields);
+
+  if (!isCaptchaValid && !ssoConnection) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__captcha__["b" /* showMissingCaptcha */])(m, id);
   }
 
   logInActiveFlow(id, params);
@@ -16712,7 +16714,7 @@ module.exports = function GetIntrinsic(name, allowMissing) {
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var format = __webpack_require__(40).format;
+var format = __webpack_require__(41).format;
 
 var PasswordPolicyError = __webpack_require__(256);
 
@@ -16847,7 +16849,7 @@ module.exports = PasswordPolicy;
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(40);
+var _ = __webpack_require__(41);
 
 /* OWASP Special Characters: https://www.owasp.org/index.php/Password_special_characters */
 var specialCharacters = [' ', '!', '"', '#', '\\$', '%', '&', '\'', '\\(', '\\)', '\\*', '\\+', ',', '-', '\\.', '/', ':', ';', '<', '=', '>', '\\?', '@', '\\[', '\\\\', '\\]', '\\^', '_','`','{','\\|', '}','~'].join('|');
@@ -18059,7 +18061,7 @@ module.exports = ReactErrorUtils;
 var _prodInvariant = __webpack_require__(5);
 
 var ReactCurrentOwner = __webpack_require__(25);
-var ReactInstanceMap = __webpack_require__(43);
+var ReactInstanceMap = __webpack_require__(44);
 var ReactInstrumentation = __webpack_require__(17);
 var ReactUpdates = __webpack_require__(22);
 
@@ -19737,8 +19739,8 @@ function setWindowHeightStyle() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_auth0_password_policies__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_auth0_password_policies___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_auth0_password_policies__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_data_utils__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__connection_social_index__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__connection_enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__connection_social_index__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__connection_enterprise__ = __webpack_require__(14);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -19904,7 +19906,7 @@ function clientConnections(m) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index__ = __webpack_require__(1);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19962,7 +19964,7 @@ ErrorPane.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index__ = __webpack_require__(1);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20039,13 +20041,13 @@ LoadingPane.propTypes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ui_pane_quick_auth_pane__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__quick_auth_actions__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signed_in_confirmation__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_social_index__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_social_index__ = __webpack_require__(48);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20211,14 +20213,10 @@ var CaptchaPane = function (_React$Component) {
         lock = _props.lock,
         onReload = _props.onReload;
 
-
     var lockId = __WEBPACK_IMPORTED_MODULE_3__core_index__["id"](lock);
-
     var captcha = __WEBPACK_IMPORTED_MODULE_3__core_index__["captcha"](lock);
-
     var value = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__index__["c" /* getFieldValue */])(lock, 'captcha');
     var isValid = !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__index__["k" /* isFieldVisiblyInvalid */])(lock, 'captcha');
-
     var provider = captcha.get('provider');
 
     if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__recaptcha__["a" /* isRecaptcha */])(provider)) {
@@ -22554,7 +22552,7 @@ var ReactDOMComponentTree = __webpack_require__(9);
 var ReactDOMContainerInfo = __webpack_require__(281);
 var ReactDOMFeatureFlags = __webpack_require__(283);
 var ReactFeatureFlags = __webpack_require__(134);
-var ReactInstanceMap = __webpack_require__(43);
+var ReactInstanceMap = __webpack_require__(44);
 var ReactInstrumentation = __webpack_require__(17);
 var ReactMarkupChecksum = __webpack_require__(297);
 var ReactReconciler = __webpack_require__(36);
@@ -24895,7 +24893,7 @@ exports.classNamesShape = classNamesShape;
 
 
 
-var _prodInvariant = __webpack_require__(45),
+var _prodInvariant = __webpack_require__(46),
     _assign = __webpack_require__(7);
 
 var ReactNoopUpdateQueue = __webpack_require__(156);
@@ -25042,7 +25040,7 @@ module.exports = {
 
 
 
-var _prodInvariant = __webpack_require__(45);
+var _prodInvariant = __webpack_require__(46);
 
 var ReactCurrentOwner = __webpack_require__(25);
 
@@ -25756,15 +25754,21 @@ if (typeof window !== 'undefined') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__field_username_username_pane__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__field_password_password_pane__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__captcha__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__captcha__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__field_captcha_captcha_pane__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__engine_classic__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__enterprise__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__database__ = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
 
 
 
@@ -25816,6 +25820,7 @@ var LoginPane = function (_React$Component) {
       headerText
     );
     var resolver = __WEBPACK_IMPORTED_MODULE_8__core_index__["connectionResolver"](lock);
+    var sso = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__engine_classic__["b" /* isSSOEnabled */])(lock);
 
     // Should never validate format on login because of custom db connection and import mode.
     // If a custom resolver is in use, always use UsernamePane without validating format,
@@ -25835,7 +25840,7 @@ var LoginPane = function (_React$Component) {
       strictValidation: false
     });
 
-    var captchaPane = __WEBPACK_IMPORTED_MODULE_8__core_index__["captcha"](lock) && __WEBPACK_IMPORTED_MODULE_8__core_index__["captcha"](lock).get('required') ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__field_captcha_captcha_pane__["a" /* default */], { i18n: i18n, lock: lock, onReload: function onReload() {
+    var captchaPane = __WEBPACK_IMPORTED_MODULE_8__core_index__["captcha"](lock) && __WEBPACK_IMPORTED_MODULE_8__core_index__["captcha"](lock).get('required') && (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__enterprise__["k" /* isHRDDomain */])(lock, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__database__["a" /* databaseUsernameValue */])(lock)) || !sso) ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__field_captcha_captcha_pane__["a" /* default */], { i18n: i18n, lock: lock, onReload: function onReload() {
         return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__captcha__["c" /* swapCaptcha */])(__WEBPACK_IMPORTED_MODULE_8__core_index__["id"](lock), false);
       } }) : null;
 
@@ -26052,13 +26057,13 @@ function renderPasswordResetConfirmation(m) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reset_password_pane__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__password_reset_confirmation__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__connection_database_index__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_enterprise__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__i18n__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_index__ = __webpack_require__(8);
@@ -26386,11 +26391,11 @@ HRDPane.propTypes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_signed_in_confirmation__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hrd_pane__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__enterprise__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__i18n__ = __webpack_require__(12);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26478,12 +26483,12 @@ var HRDScreen = function (_Screen) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ui_pane_quick_auth_pane__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__quick_auth_actions__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_signed_in_confirmation__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__enterprise__ = __webpack_require__(14);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26552,13 +26557,13 @@ var KerberosScreen = function (_Screen) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ui_pane_quick_auth_pane__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__quick_auth_actions__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_signed_in_confirmation__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__enterprise__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_social_index__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__enterprise__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_social_index__ = __webpack_require__(48);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26647,13 +26652,13 @@ var QuickAuthScreen = function (_Screen) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__field_vcode_vcode_pane__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_signed_in_confirmation__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__field_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__field_phone_number__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__field_phone_number__ = __webpack_require__(40);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26967,7 +26972,7 @@ function syncClientSettingsSuccess(m, result) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tenant_settings__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sso_data__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__connection_enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__connection_enterprise__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__sync__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__web_api__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_index__ = __webpack_require__(1);
@@ -27509,19 +27514,19 @@ var Auth0APIClient = function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__field_social_social_buttons_pane__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__connection_database_login_pane__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_pane_separator__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_pane_separator__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__connection_database_index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__connection_database_actions__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_signed_in_confirmation__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__connection_database_login_sign_up_tabs__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__connection_enterprise_actions__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__connection_enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__connection_enterprise__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__connection_enterprise_single_sign_on_notice__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__classic__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__classic__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__i18n__ = __webpack_require__(12);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27682,7 +27687,7 @@ var Login = function (_Screen) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connection_database_mfa_pane__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__i18n__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__connection_database_actions__ = __webpack_require__(27);
@@ -27765,7 +27770,7 @@ var MFALoginScreen = function (_Screen) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__connection_database_index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__field_captcha_captcha_pane__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__connection_captcha__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__connection_captcha__ = __webpack_require__(47);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -27875,19 +27880,19 @@ var SignUpPane = function (_React$Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connection_database_index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__connection_database_actions__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classic__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classic__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_signed_in_confirmation__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__connection_database_signed_up_confirmation__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__field_index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__connection_enterprise_actions__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__connection_enterprise__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__connection_enterprise__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__i18n__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__sign_up_pane__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_pane_separator__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_pane_separator__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__connection_database_sign_up_terms__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__field_social_social_buttons_pane__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__connection_database_login_sign_up_tabs__ = __webpack_require__(106);
@@ -28059,9 +28064,9 @@ var SignUp = function (_Screen) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__sync__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__quick_auth__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_sso_index__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_sso_index__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__field_email__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__field_phone_number__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__field_phone_number__ = __webpack_require__(40);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
@@ -28164,10 +28169,10 @@ var Passwordless = function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__field_email_email_pane__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__field_social_social_buttons_pane__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_pane_separator__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_pane_separator__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__connection_passwordless_index__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__connection_passwordless_actions__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__connection_passwordless_email_sent_confirmation__ = __webpack_require__(175);
@@ -28290,12 +28295,12 @@ var SocialOrEmailLoginScreen = function (_Screen) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_screen__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connection_passwordless_actions__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__field_phone_number_phone_number_pane__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__field_social_social_buttons_pane__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_signed_in_confirmation__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_pane_separator__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_pane_separator__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__field_index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__connection_passwordless_index__ = __webpack_require__(33);
@@ -28888,7 +28893,7 @@ function setShowPassword(m, checked) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_index__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__phone_number__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__phone_number__ = __webpack_require__(40);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -29297,7 +29302,7 @@ exports.default = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__engine_classic__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__engine_classic__ = __webpack_require__(39);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -36394,7 +36399,7 @@ module.exports = PasswordPolicyError;
 /* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(40);
+var _ = __webpack_require__(41);
 
 var contains = __webpack_require__(81);
 
@@ -36476,7 +36481,7 @@ module.exports = {
 /* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(40);
+var _ = __webpack_require__(41);
 
 function assert(options, password) {
   if (!password) {
@@ -36537,7 +36542,7 @@ module.exports = {
 /* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(40);
+var _ = __webpack_require__(41);
 
 /* A rule should contain explain and rule methods */
 // TODO explain explain
@@ -38067,7 +38072,7 @@ module.exports = AutoFocusUtils;
 
 
 
-var EventPropagators = __webpack_require__(42);
+var EventPropagators = __webpack_require__(43);
 var ExecutionEnvironment = __webpack_require__(13);
 var FallbackCompositionState = __webpack_require__(274);
 var SyntheticCompositionEvent = __webpack_require__(311);
@@ -38672,8 +38677,8 @@ module.exports = CSSPropertyOperations;
 
 
 
-var EventPluginHub = __webpack_require__(41);
-var EventPropagators = __webpack_require__(42);
+var EventPluginHub = __webpack_require__(42);
+var EventPropagators = __webpack_require__(43);
 var ExecutionEnvironment = __webpack_require__(13);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactUpdates = __webpack_require__(22);
@@ -39065,7 +39070,7 @@ module.exports = DefaultEventPluginOrder;
 
 
 
-var EventPropagators = __webpack_require__(42);
+var EventPropagators = __webpack_require__(43);
 var ReactDOMComponentTree = __webpack_require__(9);
 var SyntheticMouseEvent = __webpack_require__(59);
 
@@ -39699,7 +39704,7 @@ var React = __webpack_require__(37);
 var ReactComponentEnvironment = __webpack_require__(89);
 var ReactCurrentOwner = __webpack_require__(25);
 var ReactErrorUtils = __webpack_require__(90);
-var ReactInstanceMap = __webpack_require__(43);
+var ReactInstanceMap = __webpack_require__(44);
 var ReactInstrumentation = __webpack_require__(17);
 var ReactNodeTypes = __webpack_require__(138);
 var ReactReconciler = __webpack_require__(36);
@@ -40720,7 +40725,7 @@ var DOMLazyTree = __webpack_require__(34);
 var DOMNamespaces = __webpack_require__(84);
 var DOMProperty = __webpack_require__(35);
 var DOMPropertyOperations = __webpack_require__(130);
-var EventPluginHub = __webpack_require__(41);
+var EventPluginHub = __webpack_require__(42);
 var EventPluginRegistry = __webpack_require__(85);
 var ReactBrowserEventEmitter = __webpack_require__(58);
 var ReactDOMComponentFlags = __webpack_require__(131);
@@ -43163,7 +43168,7 @@ module.exports = REACT_ELEMENT_TYPE;
 
 
 
-var EventPluginHub = __webpack_require__(41);
+var EventPluginHub = __webpack_require__(42);
 
 function runEventQueueInBatch(events) {
   EventPluginHub.enqueueEvents(events);
@@ -43357,7 +43362,7 @@ module.exports = ReactEventListener;
 
 
 var DOMProperty = __webpack_require__(35);
-var EventPluginHub = __webpack_require__(41);
+var EventPluginHub = __webpack_require__(42);
 var EventPluginUtils = __webpack_require__(86);
 var ReactComponentEnvironment = __webpack_require__(89);
 var ReactEmptyComponent = __webpack_require__(133);
@@ -43449,7 +43454,7 @@ module.exports = ReactMarkupChecksum;
 var _prodInvariant = __webpack_require__(5);
 
 var ReactComponentEnvironment = __webpack_require__(89);
-var ReactInstanceMap = __webpack_require__(43);
+var ReactInstanceMap = __webpack_require__(44);
 var ReactInstrumentation = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(25);
@@ -44841,7 +44846,7 @@ module.exports = SVGDOMPropertyConfig;
 
 
 
-var EventPropagators = __webpack_require__(42);
+var EventPropagators = __webpack_require__(43);
 var ExecutionEnvironment = __webpack_require__(13);
 var ReactDOMComponentTree = __webpack_require__(9);
 var ReactInputSelection = __webpack_require__(136);
@@ -45036,7 +45041,7 @@ module.exports = SelectEventPlugin;
 var _prodInvariant = __webpack_require__(5);
 
 var EventListener = __webpack_require__(122);
-var EventPropagators = __webpack_require__(42);
+var EventPropagators = __webpack_require__(43);
 var ReactDOMComponentTree = __webpack_require__(9);
 var SyntheticAnimationEvent = __webpack_require__(309);
 var SyntheticClipboardEvent = __webpack_require__(310);
@@ -45047,7 +45052,7 @@ var SyntheticMouseEvent = __webpack_require__(59);
 var SyntheticDragEvent = __webpack_require__(312);
 var SyntheticTouchEvent = __webpack_require__(316);
 var SyntheticTransitionEvent = __webpack_require__(317);
-var SyntheticUIEvent = __webpack_require__(44);
+var SyntheticUIEvent = __webpack_require__(45);
 var SyntheticWheelEvent = __webpack_require__(318);
 
 var emptyFunction = __webpack_require__(21);
@@ -45422,7 +45427,7 @@ module.exports = SyntheticDragEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(44);
+var SyntheticUIEvent = __webpack_require__(45);
 
 /**
  * @interface FocusEvent
@@ -45501,7 +45506,7 @@ module.exports = SyntheticInputEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(44);
+var SyntheticUIEvent = __webpack_require__(45);
 
 var getEventCharCode = __webpack_require__(93);
 var getEventKey = __webpack_require__(323);
@@ -45588,7 +45593,7 @@ module.exports = SyntheticKeyboardEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(44);
+var SyntheticUIEvent = __webpack_require__(45);
 
 var getEventModifierState = __webpack_require__(94);
 
@@ -45865,7 +45870,7 @@ var _prodInvariant = __webpack_require__(5);
 
 var ReactCurrentOwner = __webpack_require__(25);
 var ReactDOMComponentTree = __webpack_require__(9);
-var ReactInstanceMap = __webpack_require__(43);
+var ReactInstanceMap = __webpack_require__(44);
 
 var getHostComponentFromComposite = __webpack_require__(142);
 var invariant = __webpack_require__(3);
@@ -47197,7 +47202,7 @@ module.exports = KeyEscapeUtils;
 
 
 
-var _prodInvariant = __webpack_require__(45);
+var _prodInvariant = __webpack_require__(46);
 
 var invariant = __webpack_require__(3);
 
@@ -47878,7 +47883,7 @@ module.exports = lowPriorityWarning;
  */
 
 
-var _prodInvariant = __webpack_require__(45);
+var _prodInvariant = __webpack_require__(46);
 
 var ReactElement = __webpack_require__(38);
 
@@ -47920,7 +47925,7 @@ module.exports = onlyChild;
 
 
 
-var _prodInvariant = __webpack_require__(45);
+var _prodInvariant = __webpack_require__(46);
 
 var ReactCurrentOwner = __webpack_require__(25);
 var REACT_ELEMENT_TYPE = __webpack_require__(155);
@@ -48285,7 +48290,8 @@ var default_email_options = {
   allow_utf8_local_part: true,
   require_tld: true,
   blacklisted_chars: '',
-  ignore_max_length: false
+  ignore_max_length: false,
+  host_blacklist: []
 };
 /* eslint-disable max-len */
 
@@ -48369,8 +48375,13 @@ function isEmail(str, options) {
 
   var parts = str.split('@');
   var domain = parts.pop();
-  var user = parts.join('@');
   var lower_domain = domain.toLowerCase();
+
+  if (options.host_blacklist.includes(lower_domain)) {
+    return false;
+  }
+
+  var user = parts.join('@');
 
   if (options.domain_specific_validation && (lower_domain === 'gmail.com' || lower_domain === 'googlemail.com')) {
     /*
@@ -48384,7 +48395,7 @@ function isEmail(str, options) {
 
     var username = user.split('+')[0]; // Dots are not included in gmail length restriction
 
-    if (!(0, _isByteLength.default)(username.replace('.', ''), {
+    if (!(0, _isByteLength.default)(username.replace(/\./g, ''), {
       min: 6,
       max: 30
     })) {
@@ -48474,7 +48485,8 @@ var default_fqdn_options = {
   require_tld: true,
   allow_underscores: false,
   allow_trailing_dot: false,
-  allow_numeric_tld: false
+  allow_numeric_tld: false,
+  allow_wildcard: false
 };
 
 function isFQDN(str, options) {
@@ -48484,6 +48496,12 @@ function isFQDN(str, options) {
 
   if (options.allow_trailing_dot && str[str.length - 1] === '.') {
     str = str.substring(0, str.length - 1);
+  }
+  /* Remove the optional wildcard before checking validity */
+
+
+  if (options.allow_wildcard === true && str.indexOf('*.') === 0) {
+    str = str.substring(2);
   }
 
   var parts = str.split('.');
@@ -48495,12 +48513,12 @@ function isFQDN(str, options) {
       return false;
     }
 
-    if (!/^([a-z\u00a1-\uffff]{2,}|xn[a-z0-9-]{2,})$/i.test(tld)) {
+    if (!/^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$/i.test(tld)) {
       return false;
-    } // disallow spaces && special characers
+    } // disallow spaces
 
 
-    if (/[\s\u2002-\u200B\u202F\u205F\u3000\uFEFF\uDB40\uDC20\u00A9\uFFFD]/.test(tld)) {
+    if (/\s/.test(tld)) {
       return false;
     }
   } // reject numeric TLDs

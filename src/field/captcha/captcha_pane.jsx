@@ -12,14 +12,10 @@ import { ReCAPTCHA, isRecaptcha } from './recaptcha';
 export default class CaptchaPane extends React.Component {
   render() {
     const { i18n, lock, onReload } = this.props;
-
     const lockId = l.id(lock);
-
     const captcha = l.captcha(lock);
-
     const value = getFieldValue(lock, 'captcha');
     const isValid = !isFieldVisiblyInvalid(lock, 'captcha');
-
     const provider = captcha.get('provider');
 
     if (isRecaptcha(provider)) {

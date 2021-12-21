@@ -13,6 +13,9 @@ import {
 import CaptchaPane from '../../field/captcha/captcha_pane';
 import * as l from '../../core/index';
 import { swapCaptcha } from '../../connection/captcha';
+import { isHRDDomain } from '../../connection/enterprise';
+import { databaseUsernameValue } from '../../connection/database/index';
+import { isSSOEnabled } from '../classic';
 
 export default class SignUpPane extends React.Component {
   render() {
@@ -29,6 +32,7 @@ export default class SignUpPane extends React.Component {
 
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
+    const sso = isSSOEnabled(model);
 
     const usernamePane =
       !onlyEmail && databaseConnectionRequiresUsername(model) && !signUpHideUsernameField(model) ? (
@@ -60,7 +64,9 @@ export default class SignUpPane extends React.Component {
       ));
 
     const captchaPane =
-      l.captcha(model) && l.captcha(model).get('required') ? (
+      l.captcha(model) &&
+      l.captcha(model).get('required') &&
+      (isHRDDomain(model, databaseUsernameValue(model)) || !sso) ? (
         <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false)} />
       ) : null;
 
