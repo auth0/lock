@@ -1,5 +1,12 @@
 # Change Log
 
+## [v11.32.0](https://github.com/auth0/lock/tree/v11.32.0) (2022-01-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.31.1...v11.32.0)
+
+**Fixed**
+- [SDK-2970] Remove captcha for enterprise SSO connections [\#2071](https://github.com/auth0/lock/pull/2071) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Add ID attributes to password field + submit button [\#2072](https://github.com/auth0/lock/pull/2072) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
 ## [v11.31.1](https://github.com/auth0/lock/tree/v11.31.1) (2021-11-02)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.31.0...v11.31.1)
