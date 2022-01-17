@@ -114,7 +114,7 @@
     "jsonp": "^0.2.1",
     "node-fetch": "^2.6.6",
     "password-sheriff": "^1.1.1",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.8.0",
     "qs": "^6.10.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
