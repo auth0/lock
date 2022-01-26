@@ -46,7 +46,8 @@ class Auth0APIClient {
       _telemetryInfo: telemetry,
       state,
       nonce,
-      scope
+      scope,
+      legacySameSiteCookie: opts.legacySameSiteCookie
     });
 
     this.authOpt = {
