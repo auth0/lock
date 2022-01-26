@@ -760,10 +760,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-auth0-js@^9.18.1:
-  version "9.18.1"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.18.1.tgz#1a3b3c7431c086bcd51aa07562bd09ba5c125ba7"
-  integrity sha512-inGWJ11k7+si/B0LJjip8GUQXhfVWN/Ne3IOtmnTJTKDpiXiq+lDFz6y04jaFyOEmvpmn7Gp6SmawTGtoFVJQw==
+auth0-js@^9.19.0:
+  version "9.19.0"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.19.0.tgz#09fcf97465c5a9a93b23c63056f9e45d8d4b3be2"
+  integrity sha512-PbzzGqtcfUZj3jnPqEcJYoWH+YNMmHI9woRYBY1VZn+GaU5NIWR1H/2ZAx5ZERZXvte6qQsu2FDNB8V+1N9Ahg==
   dependencies:
     base64-js "^1.5.1"
     idtoken-verifier "^2.2.2"
