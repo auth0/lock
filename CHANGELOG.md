@@ -1,5 +1,18 @@
 # Change Log
 
+## [v11.32.1](https://github.com/auth0/lock/tree/v11.32.1) (2022-01-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.32.0...v11.32.1)
+
+**Changed**
+- Update auth0-js and support legacySameSiteCookie option [\#2089](https://github.com/auth0/lock/pull/2089) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+- Bump log4js from 6.3.0 to 6.4.0 [\#2087](https://github.com/auth0/lock/pull/2087) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Security upgrade node-fetch to 2.6.7 [\#2085](https://github.com/auth0/lock/pull/2085) ([evansims](https://github.com/evansims))
+- [Snyk] Upgrade prop-types from 15.7.2 to 15.8.0 [\#2083](https://github.com/auth0/lock/pull/2083) ([snyk-bot](https://github.com/snyk-bot))
+- Bump engine.io from 4.1.1 to 4.1.2 [\#2082](https://github.com/auth0/lock/pull/2082) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump follow-redirects from 1.14.4 to 1.14.7 [\#2081](https://github.com/auth0/lock/pull/2081) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v11.32.0](https://github.com/auth0/lock/tree/v11.32.0) (2022-01-07)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.31.1...v11.32.0)
 
