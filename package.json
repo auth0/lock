@@ -105,7 +105,7 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
-    "auth0-js": "^9.18.0",
+    "auth0-js": "^9.19.0",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.1",

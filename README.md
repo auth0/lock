@@ -415,11 +415,11 @@ Specify your hooks using a new `hooks` configuration item when setting up the li
 ```js
 new Auth0Lock('client ID', 'domain', {
   hooks: {
-    loggingIn: function(context, cb) {
+    loggingIn: function (context, cb) {
       console.log('Hello from the login hook!');
       cb();
     },
-    signingUp: function(context, cb) {
+    signingUp: function (context, cb) {
       console.log('Hello from the sign-up hook!');
       cb();
     }
@@ -434,12 +434,12 @@ The developer can throw an error to block the login or sign-up process. The deve
 ```js
 new Auth0Lock('client ID', 'domain', {
   hooks: {
-    loggingIn: function(context, cb) {
+    loggingIn: function (context, cb) {
       // Throw an object with code: `hook_error` to display this on the Login screen
       throw { code: 'hook_error', description: 'There was an error in the login hook!' };
 
       // Throw something generic to show a fallback error message
-      throw "Some error happened";
+      throw 'Some error happened';
     }
   }
 });
@@ -453,6 +453,7 @@ new Auth0Lock('client ID', 'domain', {
 - **languageBaseUrl {String}**: Overrides the language source URL for Auth0's provided translations. By default it uses to Auth0's CDN URL `https://cdn.auth0.com`.
 - **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback URL after the user authentication. Defaults to `true`.
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context`, and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a GitHub [issue](https://github.com/auth0/lock/issues/new).**
+- **legacySameSiteCookie**: If `false`, no compatibility cookies will be created for those browsers that do not understand the `SameSite` attribute. Defaults to `true`
 
 ```js
 var options = {

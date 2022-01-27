@@ -39,6 +39,7 @@ Object {
   "clientID": "cid",
   "domain": "me.auth0.com",
   "leeway": 30,
+  "legacySameSiteCookie": undefined,
   "nonce": "nonce",
   "overrides": Object {
     "__jwks_uri": "https://jwks.com",
@@ -72,6 +73,7 @@ Object {
   "clientID": "cid",
   "domain": "me.auth0.com",
   "leeway": 60,
+  "legacySameSiteCookie": undefined,
   "nonce": "nonce",
   "overrides": Object {
     "__jwks_uri": "https://jwks.com",
