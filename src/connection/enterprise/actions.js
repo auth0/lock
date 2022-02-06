@@ -9,7 +9,7 @@ import { getFieldValue, hideInvalidFields } from '../../field/index';
 import { emailLocalPart } from '../../field/email';
 import { logIn as coreLogIn } from '../../core/actions';
 import * as l from '../../core/index';
-import { setCaptchaParams, showMissingCaptcha } from '../captcha';
+import { setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
 
 // TODO: enterprise connections should not depend on database
 // connections. However, we now allow a username input to contain also
@@ -73,13 +73,21 @@ function logInActiveFlow(id, params) {
     ? emailLocalPart(originalUsername)
     : originalUsername;
 
-  coreLogIn(id, ['password', usernameField], {
-    ...params,
-    connection: connection ? connection.get('name') : null,
-    username: username,
-    password: getFieldValue(m, 'password'),
-    login_hint: username
-  });
+  coreLogIn(
+    id,
+    ['password', usernameField],
+    {
+      ...params,
+      connection: connection ? connection.get('name') : null,
+      username: username,
+      password: getFieldValue(m, 'password'),
+      login_hint: username
+    },
+    (id, error, fields, next) => {
+      const wasCaptchaInvalid = error && error.code === 'invalid captcha';
+      swapCaptcha(id, wasCaptchaInvalid, next);
+    }
+  );
 }
 
 function logInSSO(id, connection, params) {

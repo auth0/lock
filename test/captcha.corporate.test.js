@@ -27,7 +27,9 @@ const recaptchav2Response = {
   siteKey: 'my_site_key'
 };
 
-describe('captcha', function () {
+const lockConfigName = 'single corporate';
+
+describe('captcha (corporate connection)', function () {
   before(h.stubWebApis);
   after(h.restoreWebApis);
 
@@ -35,7 +37,7 @@ describe('captcha', function () {
     describe('when the api returns a new challenge', function () {
       beforeEach(function (done) {
         this.stub = h.stubGetChallenge([svgCaptchaRequiredResponse1, svgCaptchaRequiredResponse2]);
-        this.lock = h.displayLock('', lockOpts, done);
+        this.lock = h.displayLock(lockConfigName, lockOpts, done);
       });
 
       afterEach(function () {
@@ -51,6 +53,7 @@ describe('captcha', function () {
 
       it('should require another challenge when clicking the refresh button', function (done) {
         h.clickRefreshCaptchaButton(this.lock);
+
         setTimeout(() => {
           expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
             `url("${svgCaptchaRequiredResponse2.image}")`
@@ -59,14 +62,15 @@ describe('captcha', function () {
         }, 200);
       });
 
-      it('should submit the captcha provided by the user', function () {
-        h.logInWithEmailPasswordAndCaptcha(this.lock, () => {
+      it('should submit the captcha provided by the user', function (done) {
+        h.logInWithUsernamePasswordAndCaptcha(this.lock, () => {
           expect(h.wasLoginAttemptedWith({ captcha: 'captchaValue' })).to.be.ok();
+          done();
         });
       });
 
       it('should not submit the form if the captcha is not provided', function (done) {
-        h.logInWithEmailAndPassword(this.lock, () => {
+        h.logInWithUsernameAndPassword(this.lock, () => {
           expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
           expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
           done();
@@ -79,7 +83,8 @@ describe('captcha', function () {
         h.stubGetChallenge({
           required: false
         });
-        this.lock = h.displayLock('', lockOpts, done);
+
+        this.lock = h.displayLock(lockConfigName, lockOpts, done);
       });
 
       afterEach(function () {
@@ -98,7 +103,7 @@ describe('captcha', function () {
           });
 
           h.stubGetChallenge(svgCaptchaRequiredResponse1);
-          h.fillEmailInput(this.lock, 'someone@example.com');
+          h.fillUsernameInput(this.lock, 'someone');
           h.fillPasswordInput(this.lock, 'mypass');
           h.submitForm(this.lock);
         });
@@ -114,7 +119,7 @@ describe('captcha', function () {
     describe('when the api returns a new challenge', function () {
       beforeEach(function (done) {
         this.stub = h.stubGetChallenge([recaptchav2Response]);
-        this.lock = h.displayLock('', lockOpts, done);
+        this.lock = h.displayLock(lockConfigName, lockOpts, done);
       });
 
       afterEach(function () {
@@ -130,7 +135,7 @@ describe('captcha', function () {
       });
 
       it('should not submit the form if the captcha is not provided', function (done) {
-        h.logInWithEmailAndPassword(this.lock, () => {
+        h.logInWithUsernameAndPassword(this.lock, () => {
           expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
           expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
           done();
@@ -165,7 +170,7 @@ describe('captcha', function () {
           });
 
           challengeStub = h.stubGetChallenge(recaptchav2Response);
-          h.fillEmailInput(this.lock, 'someone@example.com');
+          h.fillUsernameInput(this.lock, 'someone@example.com');
           h.fillPasswordInput(this.lock, 'mypass');
           h.submitForm(this.lock);
         });
