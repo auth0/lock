@@ -90,7 +90,7 @@ export default {
   loginAtLabel: 'Anmelden bei %s',
   loginLabel: 'Anmelden',
   loginSubmitLabel: 'Anmelden',
-  loginWithLabel: 'Anmelden mit %s',
+  loginWithLabel: 'Mit %s anmelden',
   notYourAccountAction: 'Falsches Konto?',
   passwordInputPlaceholder: 'Ihr Passwort',
   passwordStrength: {
