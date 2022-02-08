@@ -328,9 +328,26 @@ export const waitForEmailAndPasswordInput = (lock, cb, timeout) => {
   );
 };
 
-const loginWaitFn = fn => (lock, cb) => {
+export const waitForUsernameAndPasswordInput = (lock, cb, timeout) => {
+  waitUntilInputExists(
+    lock,
+    'username',
+    () => {
+      waitUntilInputExists(lock, 'password', cb, timeout);
+    },
+    timeout
+  );
+};
+
+/**
+ * Builds a function that waits for waitFn to complete (usually something that looks for elements to appear on screen) before executing fn. Used as a building block to contruct higher-order waiting functions.
+ * @param {*} fn The function to execute when waitFn has completed
+ * @param {*} waitFn The 'waiting' function that blocks fn, usually something that waits for elements to appear
+ * @returns A function that can be given a lock instance and a callback for when the function has completed
+ */
+const loginWaitFn = (fn, waitFn) => (lock, cb) => {
   if (cb) {
-    waitForEmailAndPasswordInput(lock, () => {
+    waitFn(lock, () => {
       fn(lock);
       cb();
     });
@@ -343,14 +360,14 @@ export const logInWithEmailAndPassword = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, 'mypass');
   submit(lock);
-});
+}, waitForEmailAndPasswordInput);
 
 export const logInWithEmailPasswordAndCaptcha = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, 'mypass');
   fillCaptchaInput(lock, 'captchaValue');
   submit(lock);
-});
+}, waitForEmailAndPasswordInput);
 
 /**
  * The mocked connection has password policy "fair". So I need an strong password
@@ -369,20 +386,27 @@ export const signUpWithEmailAndPassword = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, generateComplexPassword());
   submit(lock);
-});
+}, waitForEmailAndPasswordInput);
 
 export const signUpWithEmailPasswordAndCaptcha = loginWaitFn(lock => {
   fillEmailInput(lock, 'someone@example.com');
   fillPasswordInput(lock, generateComplexPassword());
   fillCaptchaInput(lock, 'captchaValue');
   submit(lock);
-});
+}, waitForEmailAndPasswordInput);
 
-export const logInWithUsernameAndPassword = lock => {
+export const logInWithUsernameAndPassword = loginWaitFn(lock => {
   fillUsernameInput(lock, 'someone');
   fillPasswordInput(lock, 'mypass');
   submit(lock);
-};
+}, waitForUsernameAndPasswordInput);
+
+export const logInWithUsernamePasswordAndCaptcha = loginWaitFn(lock => {
+  fillUsernameInput(lock, 'someone');
+  fillPasswordInput(lock, 'mypass');
+  fillCaptchaInput(lock, 'captchaValue');
+  submit(lock);
+}, waitForUsernameAndPasswordInput);
 
 // Helps to keep the context of what happened on a test that
 // was executed as part of an async flow, the normal use
