@@ -114,13 +114,18 @@ describe('Login with connection scopes', () => {
 
       logIn('__lock__');
 
-      expect(coreActions.logIn).toHaveBeenCalledWith('__lock__', ['password', 'username'], {
-        connection_scope: ['offline_access'],
-        connection: 'enterprise-connection',
-        username: 'test',
-        password: 'test',
-        login_hint: 'test'
-      });
+      expect(coreActions.logIn).toHaveBeenCalledWith(
+        '__lock__',
+        ['password', 'username'],
+        {
+          connection_scope: ['offline_access'],
+          connection: 'enterprise-connection',
+          username: 'test',
+          password: 'test',
+          login_hint: 'test'
+        },
+        expect.any(Function)
+      );
     });
   });
 });
