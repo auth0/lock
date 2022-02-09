@@ -1,5 +1,18 @@
 # Change Log
 
+## [v11.32.2](https://github.com/auth0/lock/tree/v11.32.2) (2022-02-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.32.1...v11.32.2)
+
+**Changed**
+- align german loginWithLabel translation with Apple Guidelines [\#2097](https://github.com/auth0/lock/pull/2097) ([Steffen911](https://github.com/Steffen911))
+
+**Fixed**
+- [SDK-3087] Captcha for single enterprise AD connections [\#2096](https://github.com/auth0/lock/pull/2096) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+- [Snyk] Upgrade qs from 6.10.2 to 6.10.3 [\#2095](https://github.com/auth0/lock/pull/2095) ([snyk-bot](https://github.com/snyk-bot))
+- Bump cached-path-relative from 1.0.2 to 1.1.0 [\#2091](https://github.com/auth0/lock/pull/2091) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v11.32.1](https://github.com/auth0/lock/tree/v11.32.1) (2022-01-27)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.32.0...v11.32.1)
 
