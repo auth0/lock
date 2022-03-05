@@ -67,15 +67,17 @@ function resendEmailError(id, error) {
   swap(updateEntity, 'lock', id, setResendFailed);
 }
 
-function sendEmail(m, successFn, errorFn) {
-  const connections = l.connections(m, 'passwordless', 'email');
-  const connectionName =
-    connections.size > 0 && l.useCustomPasswordlessConnection(m)
-      ? connections.first().get('name')
-      : 'email';
+function getPasswordlessConnectionName(defaultPasswordlessConnection) {
+  const connections = l.connections(m, 'passwordless', defaultPasswordlessConnection);
+  
+  return connections.size > 0 && l.useCustomPasswordlessConnection(m)
+        ? connections.first().get('name')
+        : defaultPasswordlessConnection;  
+}
 
+function sendEmail(m, successFn, errorFn) {
   const params = {
-    connection: connectionName,
+    connection: getPasswordlessConnectionName('email'),
     email: c.getFieldValue(m, 'email'),
     send: send(m)
   };
@@ -95,14 +97,8 @@ function sendEmail(m, successFn, errorFn) {
 
 export function sendSMS(id) {
   validateAndSubmit(id, ['phoneNumber'], m => {
-    const connections = l.connections(m, 'passwordless', 'sms');
-    const connectionName =
-      connections.size > 0 && l.useCustomPasswordlessConnection(m)
-        ? connections.first().get('name')
-        : 'sms';
-
     const params = {
-      connection: connectionName,
+      connection: getPasswordlessConnectionName('sms'),
       phoneNumber: phoneNumberWithDiallingCode(m),
       send: send(m)
     };
@@ -139,10 +135,10 @@ export function logIn(id) {
     ...authParams
   };
   if (isEmail(m)) {
-    params.connection = 'email';
+    params.connection = getPasswordlessConnectionName('email');
     params.email = c.getFieldValue(m, 'email');
   } else {
-    params.connection = 'sms';
+    params.connection = getPasswordlessConnectionName('sms');
     params.phoneNumber = phoneNumberWithDiallingCode(m);
   }
   swap(updateEntity, 'lock', id, l.setSubmitting, true);
