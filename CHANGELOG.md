@@ -1,25 +1,55 @@
 # Change Log
 
+## [v11.33.0](https://github.com/auth0/lock/tree/v11.33.0) (2022-05-05)
+
+[Full Changelog](https://github.com/auth0/lock/compare/v11.32.2...v11.33.0)
+
+**Important**
+
+This release contains a change to how [custom signup fields](https://github.com/auth0/lock/#additional-sign-up-fields) are processed. From this release, all HTML tags are stripped from user input into any custom signup field before being sent to Auth0 to register the user. This is a security measure to help mitigate from potential XSS attacks in signup verification emails.
+
+If you would be affected by this change and require HTML to be specified in a custom signup field, please leave us some feedback in our [issue tracker](https://github.com/auth0/lock/issues).
+
+**Changed**
+
+- ui box - div replaced by main [\#2114](https://github.com/auth0/lock/pull/2114) ([piwysocki](https://github.com/piwysocki))
+- More complete support for custom passwordless connections [\#2105](https://github.com/auth0/lock/pull/2105) ([peter-isgfunds](https://github.com/peter-isgfunds))
+
+**Fixed**
+
+- fix: initialize reset password inside componentDidMount [\#2111](https://github.com/auth0/lock/pull/2111) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+
+- [Snyk] Upgrade dompurify from 2.3.4 to 2.3.5 [\#2101](https://github.com/auth0/lock/pull/2101) ([snyk-bot](https://github.com/snyk-bot))
+
 ## [v11.32.2](https://github.com/auth0/lock/tree/v11.32.2) (2022-02-08)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.32.1...v11.32.2)
 
 **Changed**
+
 - align german loginWithLabel translation with Apple Guidelines [\#2097](https://github.com/auth0/lock/pull/2097) ([Steffen911](https://github.com/Steffen911))
 
 **Fixed**
+
 - [SDK-3087] Captcha for single enterprise AD connections [\#2096](https://github.com/auth0/lock/pull/2096) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 **Security**
+
 - [Snyk] Upgrade qs from 6.10.2 to 6.10.3 [\#2095](https://github.com/auth0/lock/pull/2095) ([snyk-bot](https://github.com/snyk-bot))
 - Bump cached-path-relative from 1.0.2 to 1.1.0 [\#2091](https://github.com/auth0/lock/pull/2091) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v11.32.1](https://github.com/auth0/lock/tree/v11.32.1) (2022-01-27)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.32.0...v11.32.1)
 
 **Changed**
+
 - Update auth0-js and support legacySameSiteCookie option [\#2089](https://github.com/auth0/lock/pull/2089) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 **Security**
+
 - Bump log4js from 6.3.0 to 6.4.0 [\#2087](https://github.com/auth0/lock/pull/2087) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Security upgrade node-fetch to 2.6.7 [\#2085](https://github.com/auth0/lock/pull/2085) ([evansims](https://github.com/evansims))
 - [Snyk] Upgrade prop-types from 15.7.2 to 15.8.0 [\#2083](https://github.com/auth0/lock/pull/2083) ([snyk-bot](https://github.com/snyk-bot))
@@ -27,9 +57,11 @@
 - Bump follow-redirects from 1.14.4 to 1.14.7 [\#2081](https://github.com/auth0/lock/pull/2081) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v11.32.0](https://github.com/auth0/lock/tree/v11.32.0) (2022-01-07)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.31.1...v11.32.0)
 
 **Fixed**
+
 - [SDK-2970] Remove captcha for enterprise SSO connections [\#2071](https://github.com/auth0/lock/pull/2071) ([stevehobbsdev](https://github.com/stevehobbsdev))
 - Add ID attributes to password field + submit button [\#2072](https://github.com/auth0/lock/pull/2072) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
