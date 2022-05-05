@@ -25,7 +25,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.32.2/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.33.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -489,6 +489,8 @@ var options = {
 Extra input fields can be added to the sign up screen with the `additionalSignUpFields` option. Every input must have a `name` and a `placeholder`, and an `icon` URL can also be provided. Also, the initial value can be provided with the `prefill` option, which can be a **string** with the value or a **function** that obtains it. Other options depend on the type of the field, which is defined via the `type` option and defaults to `"text"`.
 
 Additional sign up fields are rendered below the default fields in the order they are provided.
+
+:warning: **Note**: From `11.33.0` onwards, all HTML tags are stripped from user input into custom signup fields.
 
 ##### Text field
 
