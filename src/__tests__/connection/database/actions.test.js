@@ -137,4 +137,75 @@ describe('database/actions.js', () => {
     expect(signUpMock.calls.length).toBe(1);
     expect(signUpMock.calls[0][0]).toBe(id);
   });
+
+  it('sanitizes additionalSignUp fields using dompurify', () => {
+    const id = 1;
+    const hookRunner = jest.fn((str, m, context, fn) => fn());
+
+    require('connection/database/index').databaseConnectionName = () => 'test-connection';
+    require('connection/database/index').shouldAutoLogin = () => true;
+
+    // Test different fields using some examples from DOMPurify
+    // https://github.com/cure53/DOMPurify#some-purification-samples-please
+    const m = Immutable.fromJS({
+      field: {
+        email: {
+          value: 'test@email.com'
+        },
+        password: {
+          value: 'testpass'
+        },
+        family_name: {
+          value: 'Test <a href="https://www.google.co.uk">Fake link</a>' // HTML but not malicious
+        },
+        given_name: {
+          value: '<img src=x onerror=alert(1)//>'
+        },
+        name: {
+          value: '<p>abc<iframe//src=jAva&Tab;script:alert(3)>def</p>'
+        },
+        other_name: {
+          value:
+            '<div onclick=alert(0)><form onsubmit=alert(1)><input onfocus=alert(2) name=parentNode>123</form></div>'
+        }
+      },
+      database: {
+        additionalSignUpFields: [
+          { name: 'family_name', storage: 'root' },
+          { name: 'given_name', storage: 'root' },
+          { name: 'name', storage: 'root' },
+          { name: 'other_name' }
+        ]
+      },
+      core: {
+        hookRunner
+      }
+    });
+
+    swap(setEntity, 'lock', id, m);
+    signUp(id);
+
+    const {
+      validateAndSubmit: { mock: validateAndSubmitMock }
+    } = coreActionsMock();
+
+    validateAndSubmitMock.calls[0][2](m);
+
+    const {
+      signUp: { mock: signUpMock }
+    } = webApiMock();
+
+    expect(signUpMock.calls[0][1]).toMatchObject({
+      connection: 'test-connection',
+      email: 'test@email.com',
+      password: 'testpass',
+      autoLogin: true,
+      family_name: 'Test Fake link',
+      given_name: '',
+      name: 'abc',
+      user_metadata: {
+        other_name: '123'
+      }
+    });
+  });
 });
