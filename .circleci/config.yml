@@ -4,7 +4,7 @@ orbs:
 executors:
   docker-executor:
     docker:
-      - image: cimg/node:14.19
+      - image: cimg/node:14.19-browsers
 jobs:
   build-and-test:
     executor: docker-executor
