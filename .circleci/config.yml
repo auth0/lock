@@ -14,7 +14,7 @@ jobs:
       - checkout
       - run:
           name: Update Yarn
-          command: 'sudo npm update -g yarn'
+          command: 'npm update -g yarn'
       - restore_cache:
           name: Restore Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
