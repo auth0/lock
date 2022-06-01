@@ -2,7 +2,7 @@
 
 npm install -g yarn
 
-yarn install
+yarn install --frozen-lockfile
 
 MATCHER=${2:-"*"}
 NPM_TAG=${3:-"beta"}

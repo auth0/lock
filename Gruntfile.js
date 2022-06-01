@@ -34,10 +34,10 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: pkg_info,
-    clean: {
-      build: ['build/'],
-      dev: ['build/'],
-      dist: ['lib/']
+      clean: {
+        build: ['build/'],
+        dev: ['build/'],
+        dist: ['lib/']
     },
     babel: {
       dist: {
