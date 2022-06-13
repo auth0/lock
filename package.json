@@ -93,7 +93,7 @@
     "puppeteer": "^10.1.0",
     "react-test-renderer": "^15.6.2",
     "sinon": "^1.15.4",
-    "stylus": "^0.54.5",
+    "stylus": "^0.58.1",
     "stylus-loader": "^2.3.1",
     "tmp": "^0.2.1",
     "uglify-js": "^2.7.4",
