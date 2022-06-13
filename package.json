@@ -56,7 +56,7 @@
     "bump-version": "^0.5.0",
     "chalk": "^4.1.2",
     "cross-env": "^7.0.3",
-    "css-loader": "^0.26.1",
+    "css-loader": "^0.28.11",
     "emojic": "^1.1.15",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
