@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.33.1](https://github.com/auth0/lock/tree/v11.33.1) (2022-06-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.33.0...v11.33.1)
+
+**Fixed**
+- Move captcha pane below additional signup fields in UI [\#2135](https://github.com/auth0/lock/pull/2135) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Security**
+- [Snyk] Upgrade dompurify from 2.3.6 to 2.3.7 [\#2132](https://github.com/auth0/lock/pull/2132) ([snyk-bot](https://github.com/snyk-bot))
+
 ## [v11.33.0](https://github.com/auth0/lock/tree/v11.33.0) (2022-05-05)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.32.2...v11.33.0)
