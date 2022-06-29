@@ -1,8 +1,8 @@
 /*!
- * lock v11.33.1
+ * lock v11.33.2
  * 
  * Author: Auth0 <support@auth0.com> (http://auth0.com)
- * Date: 14/06/2022, 11:55:16
+ * Date: 29/06/2022, 12:31:01
  * License: MIT
  * 
  *//******/ (function(modules) { // webpackBootstrap
@@ -7452,7 +7452,7 @@ function assertLanguage(m, language, base) {
 function syncLang(m, language, _cb) {
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__utils_cdn_utils__["a" /* load */])({
     method: 'registerLanguageDictionary',
-    url: __WEBPACK_IMPORTED_MODULE_5__core_index__["languageBaseUrl"](m) + '/js/lock/' + '11.33.1' + '/' + language + '.js',
+    url: __WEBPACK_IMPORTED_MODULE_5__core_index__["languageBaseUrl"](m) + '/js/lock/' + '11.33.2' + '/' + language + '.js',
     check: function check(str) {
       return str && str === language;
     },
@@ -19353,7 +19353,7 @@ var Auth0LockPasswordless = function (_Core) {
 /* harmony default export */ __webpack_exports__["a"] = (Auth0LockPasswordless);
 
 
-Auth0LockPasswordless.version = '11.33.1';
+Auth0LockPasswordless.version = '11.33.2';
 
 /***/ }),
 /* 103 */
@@ -27542,7 +27542,7 @@ function trimAuthParams() {
 }
 
 function getVersion() {
-  return '11.33.1';
+  return '11.33.2';
 }
 
 /***/ }),
@@ -29597,7 +29597,7 @@ var Auth0Lock = function (_Core) {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Auth0Lock);
-Auth0Lock.version = '11.33.1';
+Auth0Lock.version = '11.33.2';
 
 // TODO: should we have different telemetry for classic/passwordless?
 // TODO: should we set telemetry info before each request?
