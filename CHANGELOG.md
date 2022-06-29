@@ -1,5 +1,13 @@
 # Change Log
 
+## [v11.33.2](https://github.com/auth0/lock/tree/v11.33.2) (2022-06-29)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.33.1...v11.33.2)
+
+**Changed**
+- Bump qs from 6.10.5 to 6.11.0 [\#2147](https://github.com/auth0/lock/pull/2147) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump shell-quote from 1.7.2 to 1.7.3 [\#2145](https://github.com/auth0/lock/pull/2145) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump prettier from 2.7.0 to 2.7.1 [\#2144](https://github.com/auth0/lock/pull/2144) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v11.33.1](https://github.com/auth0/lock/tree/v11.33.1) (2022-06-14)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.0...v11.33.1)
 
