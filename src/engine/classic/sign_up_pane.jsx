@@ -91,8 +91,8 @@ export default class SignUpPane extends React.Component {
         />
         {usernamePane}
         {passwordPane}
-        {captchaPane}
         {fields}
+        {captchaPane}
       </div>
     );
   }
