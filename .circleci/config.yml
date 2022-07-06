@@ -78,6 +78,8 @@ workflows:
           context:
             - browserstack-env
       - ship/node-publish:
+          requires:
+            - build-and-test
           pkg-manager: yarn
           context:
             - publish-npm
