@@ -2,6 +2,8 @@ import React from 'react';
 import Screen from '../../core/screen';
 import EmailPane from '../../field/email/email_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
+// import CaptchaPane from '../../field/captcha/captcha_pane';
+// import { swapCaptcha } from '../captcha';
 import PaneSeparator from '../../core/pane_separator';
 import { mustAcceptTerms, termsAccepted, showTerms } from '../../connection/passwordless/index';
 import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
@@ -45,12 +47,20 @@ const Component = ({ i18n, model }) => {
 
   const separator = social && email ? <PaneSeparator /> : null;
 
+  // const captchaPane =
+  // l.captcha(model) &&
+  // l.captcha(model).get('required') &&
+  // (isHRDDomain(model, databaseUsernameValue(model)) || !sso) ? (
+  //   <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false)} />
+  // ) : null;
+
   return (
     <div>
       {social}
       {separator}
       {header}
       {email}
+      {/* {captchaPane} */}
     </div>
   );
 };
