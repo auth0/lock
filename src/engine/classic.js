@@ -42,13 +42,14 @@ import LastLoginScreen from '../core/sso/last_login_screen';
 import { hasError, isDone, isSuccess } from '../sync';
 import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
+import * as MatchesEnterpriseConnection from './matchesEnterpriseConnection'
 
 export function isSSOEnabled(m, options) {
-  return matchesEnterpriseConnection(m, databaseUsernameValue(m, options));
+  return MatchesEnterpriseConnection.isSSOEnabled(m, options)
 }
 
 export function matchesEnterpriseConnection(m, usernameValue) {
-  return isEnterpriseDomain(m, usernameValue);
+  return MatchesEnterpriseConnection.matchesEnterpriseConnection(m, usernameValue)
 }
 
 export function usernameStyle(m) {

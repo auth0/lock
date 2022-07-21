@@ -1,6 +1,7 @@
 import React from 'react';
 import { expectShallowComponent } from 'testUtils';
 import { mockComponent } from 'testUtils';
+import {expectComponent} from "../../testUtils";
 // import SocialOrEmailLoginScreen from 'engine/passwordless/social_or_email_login_screen'
 
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));

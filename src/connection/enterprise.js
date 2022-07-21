@@ -6,7 +6,7 @@ import { emailDomain, emailLocalPart } from '../field/email';
 import { setUsername } from '../field/username';
 import { getFieldValue } from '../field/index';
 import { isEmail } from '../field/email';
-import { isSSOEnabled, matchesEnterpriseConnection } from '../engine/classic';
+import { matchesEnterpriseConnection } from '../engine/matchesEnterpriseConnection'
 import { databaseUsernameValue } from './database/index';
 
 import { swap, updateEntity } from '../store/index';
