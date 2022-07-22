@@ -3,16 +3,12 @@ import React from 'react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
-//there's a circular dependency with this module, so we need to mock it
-// jest.mock('engine/classic');
 jest.mock('connection/enterprise');
 jest.mock('core/index');
 
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));
-// jest.mock('core/error_screen', () => mockComponent('error_screen'));
-// jest.mock('core/loading_screen', () => mockComponent('loading_screen'));
 jest.mock('field/email/email_pane', () => mockComponent('email_pane'));
-// jest.mock('field/captcha/captcha_pane', () => mockComponent('captcha_pane'));
+jest.mock('field/captcha/captcha_pane', () => mockComponent('captcha_pane'));
 jest.mock('core/pane_separator', () => mockComponent('pane_separator'));
 jest.mock('connection/database/sign_up_terms', () => mockComponent('sign_up_terms'));
 jest.mock('connection/passwordless/index', () => ({
@@ -61,6 +57,18 @@ describe('email passwordless', () => {
 
   it('renders correctly', () => {
     const Component = getComponent();
+
+    expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+  });
+
+  it('renders a captcha', () => {
+    const Component = getComponent();
+
+    require('core/index').captcha.mockReturnValue({
+      get() {
+        return true;
+      }
+    });
 
     expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
