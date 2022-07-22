@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`email passwordless renders correctly 1`] = `
+<div>
+  <div
+    data-__type="social_buttons_pane"
+    data-instructions="socialLoginInstructions"
+    data-labelFn={[Function]}
+    data-lock="model"
+    data-signUp={true}
+  />
+  <div
+    data-__type="pane_separator"
+  />
+  <p>
+    passwordlessEmailAlternativeInstructions
+  </p>
+  <div
+    data-__type="email_pane"
+    data-i18n={
+      Object {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-lock="model"
+    data-placeholder="emailInputPlaceholder"
+    data-strictValidation={false}
+  />
+</div>
+`;

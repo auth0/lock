@@ -1,10 +1,12 @@
+import { keyDefinitions } from 'puppeteer';
 import React from 'react';
-import { mount } from 'enzyme';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
 //there's a circular dependency with this module, so we need to mock it
-jest.mock('engine/classic');
+// jest.mock('engine/classic');
+jest.mock('connection/enterprise');
+jest.mock('core/index');
 
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));
 // jest.mock('core/error_screen', () => mockComponent('error_screen'));
@@ -16,7 +18,6 @@ jest.mock('connection/database/sign_up_terms', () => mockComponent('sign_up_term
 jest.mock('connection/passwordless/index', () => ({
   isEmail: jest.fn()
 }));
-
 
 const getComponent = () => {
   const SocialOrEmailScreen = require('engine/passwordless/social_or_email_login_screen').default;
@@ -40,13 +41,24 @@ describe('email passwordless', () => {
     jest.mock('core/signed_in_confirmation', () => ({
       renderSignedInConfirmation: jest.fn()
     }));
+
+    jest.mock('connection/enterprise', () => ({
+      isHRDEmailValid: jest.fn(() => false)
+    }));
+
+    jest.mock('core/index', () => ({
+      hasSomeConnections: jest.fn(() => true)
+    }));
   });
+
   const defaultProps = {
     i18n: {
-      str: (...keys) => keys.join(',')
+      str: (...keys) => keys.join(','),
+      html: (...keys) => keys.join(',')
     },
     model: 'model'
   };
+
   it('renders correctly', () => {
     const Component = getComponent();
 
