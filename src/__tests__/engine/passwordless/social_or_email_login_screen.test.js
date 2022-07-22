@@ -1,4 +1,3 @@
-import { keyDefinitions } from 'puppeteer';
 import React from 'react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
