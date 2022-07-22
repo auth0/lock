@@ -1,10 +1,7 @@
-import { keyDefinitions } from 'puppeteer';
 import React from 'react';
 
 import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
 
-//there's a circular dependency with this module, so we need to mock it
-// jest.mock('engine/classic');
 jest.mock('connection/enterprise');
 jest.mock('core/index');
 
