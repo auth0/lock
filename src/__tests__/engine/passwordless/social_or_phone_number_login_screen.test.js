@@ -6,7 +6,7 @@ jest.mock('connection/enterprise');
 jest.mock('core/index');
 
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));
-jest.mock('field/email/email_pane', () => mockComponent('email_pane'));
+jest.mock('field/phone-number/phone_number_pane', () => mockComponent('phone_number_pane'));
 jest.mock('field/captcha/captcha_pane', () => mockComponent('captcha_pane'));
 jest.mock('core/pane_separator', () => mockComponent('pane_separator'));
 jest.mock('connection/database/sign_up_terms', () => mockComponent('sign_up_terms'));
@@ -15,12 +15,12 @@ jest.mock('connection/passwordless/index', () => ({
 }));
 
 const getComponent = () => {
-  const SocialOrEmailScreen = require('engine/passwordless/social_or_email_login_screen').default;
-  const screen = new SocialOrEmailScreen();
+  const SocialOrPhoneNumberScreen = require('engine/passwordless/social_or_phone_number_login_screen').default;
+  const screen = new SocialOrPhoneNumberScreen();
   return screen.render();
 };
 
-describe('email passwordless', () => {
+describe('sms passwordless', () => {
   beforeEach(() => {
     jest.resetModules();
     jest.resetAllMocks();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`email passwordless renders a captcha 1`] = `
+exports[`sms passwordless renders a captcha 1`] = `
 <div>
   <div
     data-__type="social_buttons_pane"
@@ -12,20 +12,12 @@ exports[`email passwordless renders a captcha 1`] = `
   <div
     data-__type="pane_separator"
   />
-  <p>
-    passwordlessEmailAlternativeInstructions
-  </p>
   <div
-    data-__type="email_pane"
-    data-i18n={
-      Object {
-        "html": [Function],
-        "str": [Function],
-      }
-    }
+    data-__type="phone_number_pane"
+    data-instructions="passwordlessSMSAlternativeInstructions"
+    data-invalidHint="phoneNumberInputInvalidHint"
     data-lock="model"
-    data-placeholder="emailInputPlaceholder"
-    data-strictValidation={false}
+    data-placeholder="phoneNumberInputPlaceholder"
   />
   <div
     data-__type="captcha_pane"
@@ -41,7 +33,7 @@ exports[`email passwordless renders a captcha 1`] = `
 </div>
 `;
 
-exports[`email passwordless renders correctly 1`] = `
+exports[`sms passwordless renders correctly 1`] = `
 <div>
   <div
     data-__type="social_buttons_pane"
@@ -53,20 +45,12 @@ exports[`email passwordless renders correctly 1`] = `
   <div
     data-__type="pane_separator"
   />
-  <p>
-    passwordlessEmailAlternativeInstructions
-  </p>
   <div
-    data-__type="email_pane"
-    data-i18n={
-      Object {
-        "html": [Function],
-        "str": [Function],
-      }
-    }
+    data-__type="phone_number_pane"
+    data-instructions="passwordlessSMSAlternativeInstructions"
+    data-invalidHint="phoneNumberInputInvalidHint"
     data-lock="model"
-    data-placeholder="emailInputPlaceholder"
-    data-strictValidation={false}
+    data-placeholder="phoneNumberInputPlaceholder"
   />
 </div>
 `;

@@ -3,6 +3,7 @@ import Screen from '../../core/screen';
 import { sendSMS } from '../../connection/passwordless/actions';
 import PhoneNumberPane from '../../field/phone-number/phone_number_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
+import CaptchaPane from '../../field/captcha/captcha_pane';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import PaneSeparator from '../../core/pane_separator';
 import * as l from '../../core/index';
@@ -11,6 +12,8 @@ import { renderOptionSelection } from '../../field/index';
 import { mustAcceptTerms, termsAccepted, showTerms } from '../../connection/passwordless/index';
 import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
 import SignUpTerms from '../../connection/database/sign_up_terms';
+import { isHRDDomain } from '../../connection/enterprise';
+import { databaseUsernameValue } from '../../connection/database';
 
 const Component = ({ i18n, model }) => {
   const social = l.hasSomeConnections(model, 'social') ? (
@@ -35,6 +38,13 @@ const Component = ({ i18n, model }) => {
     />
   ) : null;
 
+  const captchaPane =
+  l.captcha(model) &&
+  l.captcha(model).get('required') &&
+  (isHRDDomain(model, databaseUsernameValue(model)) || !sso) ? (
+    <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false)} />
+  ) : null;
+
   const separator = social && phoneNumber ? <PaneSeparator /> : null;
 
   return (
@@ -42,6 +52,7 @@ const Component = ({ i18n, model }) => {
       {social}
       {separator}
       {phoneNumber}
+      {captchaPane}
     </div>
   );
 };
