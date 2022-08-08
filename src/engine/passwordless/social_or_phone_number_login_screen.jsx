@@ -12,8 +12,6 @@ import { renderOptionSelection } from '../../field/index';
 import { mustAcceptTerms, termsAccepted, showTerms } from '../../connection/passwordless/index';
 import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
 import SignUpTerms from '../../connection/database/sign_up_terms';
-import { isHRDDomain } from '../../connection/enterprise';
-import { databaseUsernameValue } from '../../connection/database';
 
 const Component = ({ i18n, model }) => {
   const social = l.hasSomeConnections(model, 'social') ? (
