@@ -51,8 +51,8 @@ const Component = ({ i18n, model }) => {
 
   const captchaPane =
   l.captcha(model) &&
-  l.captcha(model).get('required') &&
-  (isHRDDomain(model, databaseUsernameValue(model))) ? (
+  l.captcha(model).get('required')
+  ? (
     <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false)} />
   ) : null;
 
