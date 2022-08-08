@@ -10,8 +10,6 @@ import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
 import { requestPasswordlessEmail } from '../../connection/passwordless/actions';
 import { renderEmailSentConfirmation } from '../../connection/passwordless/email_sent_confirmation';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
-import { isHRDDomain } from '../../connection/enterprise';
-import { databaseUsernameValue } from '../../connection/database';
 import * as l from '../../core/index';
 
 import SignUpTerms from '../../connection/database/sign_up_terms';
