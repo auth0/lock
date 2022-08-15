@@ -47,6 +47,7 @@ export default {
       'lock.fallback':
         '申し訳ございません。ユーザー登録時に何らかの理由によりエラーが発生しました。',
       password_dictionary_error: 'パスワードが単純すぎます。',
+      password_leaked: 'この資格情報の組み合わせは、別の Web サイトで公開されたデータ侵害で検出されました。 アカウントを作成する前に、別のパスワードを使用して安全に保管してください。',
       password_no_user_info_error: 'ユーザー情報を含むパスワードは避けてください。',
       password_strength_error: 'パスワードが脆弱です。',
       user_exists: 'すでに登録されているユーザーです。',

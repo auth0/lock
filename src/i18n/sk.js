@@ -45,6 +45,7 @@ export default {
       invalid_password: 'Neplatné heslo.',
       'lock.fallback': 'Prepáčte, pokus o prihlásenie neprebehol v poriadku.',
       password_dictionary_error: 'Heslo je príliš všeobecné',
+      password_leaked: 'Táto kombinácia poverení bola zistená pri porušení verejných údajov na inej webovej lokalite. Pred vytvorením účtu použite iné heslo, aby ste ho udržali v bezpečí.',
       password_no_user_info_error: 'Heslo je založené na užívateľských informáciách.',
       password_strength_error: 'Heslo je príliš slabé.',
       user_exists: 'Používateľ už existuje.',

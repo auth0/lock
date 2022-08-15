@@ -45,6 +45,7 @@ export default {
       invalid_password: 'Mật khẩu không hợp lệ.',
       'lock.fallback': 'Đã có lỗi xảy ra trong lúc đăng ký, chúng tôi rất lấy làm tiếc.',
       password_dictionary_error: 'Mật khẩu quá dễ đoán.',
+      password_leaked: 'Tổ hợp thông tin xác thực này đã được phát hiện trong một vụ vi phạm dữ liệu công khai trên một trang web khác. Trước khi tài khoản của bạn được tạo, vui lòng sử dụng một mật khẩu khác để bảo mật.',
       password_no_user_info_error: 'Mật khẩu giống thông tin cá nhân.',
       password_strength_error: 'Mật khẩu quá yếu.',
       user_exists: 'Tài khoản đã có người sử dụng.',

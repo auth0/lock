@@ -45,6 +45,7 @@ export default {
       invalid_password: 'Lozinka je nevažeća.',
       'lock.fallback': 'Žao nam je, došlo je do greške prilikom pokušaja registracije.',
       password_dictionary_error: 'Lozinka je previše česta.',
+      password_leaked: 'Ова комбинација акредитива је откривена приликом повреде јавних података на другој веб локацији. Пре него што направите налог, користите другу лозинку да бисте га заштитили.',
       password_no_user_info_error: 'Lozinka se zasniva na podacima korisnika.',
       password_strength_error: 'Lozinka je previše slaba.',
       user_exists: 'Korisnik već postoji.',

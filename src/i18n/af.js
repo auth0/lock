@@ -41,6 +41,7 @@ export default {
       invalid_password: 'Wagwoord is ongeldig.',
       'lock.fallback': 'Jammer, jou intekening het misluk.',
       password_dictionary_error: 'Wagwoord is te eenvoudig.',
+      password_leaked: "Hierdie kombinasie van geloofsbriewe is opgespoor in 'n publieke data-oortreding op 'n ander webwerf. Voordat jou rekening geskep word, gebruik asseblief 'n ander wagwoord om dit veilig te hou.",
       password_no_user_info_error: 'Wagwoord kan nie persoonlike inligting bevat nie.',
       password_strength_error: 'Wagwoord is swak.',
       user_exists: 'Gebruiker bestaan reeds.',

@@ -48,6 +48,7 @@ export default {
       invalid_password: 'Het wachtwoord is ongeldig.',
       'lock.fallback': 'Onze excuses, er is iets mis gegaan bij het registreren.',
       password_dictionary_error: 'Het wachtwoord is een te bekend woord.',
+      password_leaked: 'Deze combinatie van inloggegevens is gedetecteerd bij een openbaar datalek op een andere website. Voordat uw account wordt aangemaakt, dient u een ander wachtwoord te gebruiken om het veilig te houden.',
       password_no_user_info_error: 'Het wachtwoord is gebaseerd op gebruikers informatie.',
       password_strength_error: 'Het wachtwoord is niet sterk genoeg.',
       user_exists: 'De gebruiker bestaat al.',

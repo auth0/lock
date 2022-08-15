@@ -46,6 +46,7 @@ export default {
       invalid_password: 'Şifrə yanlışdır.',
       'lock.fallback': 'Üzr istəyirik, qeydiyyatdan keçmə zamanı səhv oldu.',
       password_dictionary_error: 'Şifrə çox sadədir.',
+      password_leaked: 'Etibarnamələrin bu kombinasiyası başqa vebsaytda ictimai məlumatların pozulması zamanı aşkar edilib. Hesabınızı yaratmazdan əvvəl onu təhlükəsiz saxlamaq üçün başqa parol istifadə edin.',
       password_no_user_info_error: 'Şifrə istifadəçi məlumatlarını ehtiva edir.',
       password_strength_error: 'Şifrə çox sadədir.',
       user_exists: 'Bu istifadəçi artıq mövcuddur.',
