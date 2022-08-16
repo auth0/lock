@@ -1,5 +1,11 @@
 # Change Log
 
+## [v11.33.3](https://github.com/auth0/lock/tree/v11.33.3) (2022-08-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.33.2...v11.33.3)
+
+**Added**
+- IAMRISK-1725 Add password_leaked error label for Signup [\#2160](https://github.com/auth0/lock/pull/2160) ([robinbijlani](https://github.com/robinbijlani))
+
 ## [v11.33.2](https://github.com/auth0/lock/tree/v11.33.2) (2022-06-29)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.1...v11.33.2)
 
