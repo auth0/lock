@@ -45,6 +45,7 @@ export default {
       invalid_password: 'Slaptažodis neteisingas.',
       'lock.fallback': 'Atsiprašome, kažkas nutiko bandant užsiregistruoti.',
       password_dictionary_error: 'Šis slaptažodis yra per dažnai naudojamas.',
+      password_leaked: 'Šis kredencialų derinys buvo aptiktas per viešųjų duomenų pažeidimą kitoje svetainėje. Prieš kurdami paskyrą naudokite kitą slaptažodį, kad ji būtų saugi.',
       password_no_user_info_error: 'Slaptažodis remiantis vartotojų informacija.',
       password_strength_error: 'Šis slaptažodis yra per silpnas.',
       user_exists: 'Vartotojas jau egzistuoja.',

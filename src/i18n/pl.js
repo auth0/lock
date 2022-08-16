@@ -47,6 +47,7 @@ export default {
       invalid_password: 'Hasło nie jest poprawne.',
       'lock.fallback': 'Przykro nam, coś poszło nie tak podczas próby rejestracji.',
       password_dictionary_error: 'Hasło jest zbyt oczywiste.',
+      password_leaked: 'Ta kombinacja danych uwierzytelniających została wykryta podczas naruszenia danych publicznych na innej stronie internetowej. Przed utworzeniem konta użyj innego hasła, aby było ono bezpieczne.',
       password_no_user_info_error: 'Hasło oparte jest na informacjach o użytkowniku.',
       password_strength_error: 'Hasło jest zbyt słabe.',
       user_exists: 'Użytkownik już istnieje.',

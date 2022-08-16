@@ -47,6 +47,7 @@ export default {
       invalid_password: 'Parolă invalidă.',
       'lock.fallback': 'Ne pare rău, a apărut o eroare în procesul de înregistrare.',
       password_dictionary_error: 'Parola este prea comună.',
+      password_leaked: 'Această combinație de acreditări a fost detectată într-o încălcare a datelor publice pe un alt site web. Înainte de a vă crea contul, vă rugăm să utilizați o altă parolă pentru a-l păstra în siguranță.',
       password_no_user_info_error: 'Parola este similară cu utilizatorul.',
       password_strength_error: 'Parola este prea ușoară.',
       user_exists: 'Utilizator existent.',

@@ -45,6 +45,7 @@ export default {
       invalid_password: 'Lösenordet är ogiltigt.',
       'lock.fallback': 'Något gick fel vid registreringen.',
       password_dictionary_error: 'Lösenordet är för vanligt.',
+      password_leaked: 'Denna kombination av referenser upptäcktes i ett offentligt dataintrång på en annan webbplats. Innan ditt konto skapas, använd ett annat lösenord för att hålla det säkert.',
       password_no_user_info_error: 'Lösenordet baseras på personuppgifter.',
       password_strength_error: 'Lösenordet är för svagt.',
       user_exists: 'Användaren finns redan.',

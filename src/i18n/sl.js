@@ -45,6 +45,7 @@ export default {
       invalid_password: 'Napačno geslo.',
       'lock.fallback': 'Žal je prišlo do napake pri poskusu prijave.',
       password_dictionary_error: 'Geslo je preveč splošno.',
+      password_leaked: 'Ta kombinacija poverilnic je bila odkrita pri kršitvi javnih podatkov na drugem spletnem mestu. Preden ustvarite svoj račun, uporabite drugo geslo, da bo varen.',
       password_no_user_info_error: 'Geslo temelji na informacijah o uporabniku.',
       password_strength_error: 'Geslo je prešibko.',
       user_exists: 'Uporabnik že obstaja.',

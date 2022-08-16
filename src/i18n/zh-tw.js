@@ -41,6 +41,7 @@ export default {
       invalid_password: '密碼錯誤',
       'lock.fallback': '對不起，註冊時發生錯誤。',
       password_dictionary_error: '密碼過於常見。',
+      password_leaked: '在另一個網站的公共數據洩露中檢測到這種憑據組合。 在創建您的帳戶之前，請使用不同的密碼以確保其安全。',
       password_no_user_info_error: '密碼中出現帳號訊息。',
       password_strength_error: '密碼太簡單。',
       user_exists: '該使用者已存在。',

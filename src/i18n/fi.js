@@ -48,6 +48,7 @@ export default {
       invalid_password: 'Salasana ei kelpaa.',
       'lock.fallback': 'Olemme pahoillamme, mutta jotain meni vikaan kirjautumisen yhteydessä.',
       password_dictionary_error: 'Salasana on liian yleinen.',
+      password_leaked: 'Tämä valtuustietojen yhdistelmä havaittiin julkisessa tietoturvaloukkauksessa toisella verkkosivustolla. Ennen kuin luot tilisi, käytä toista salasanaa sen suojaamiseksi.',
       password_no_user_info_error: 'Salasana perustuu käyttäjätietoihin.',
       password_strength_error: 'Salasana on liian heikko.',
       user_exists: 'Käyttäjä on jo olemassa.',

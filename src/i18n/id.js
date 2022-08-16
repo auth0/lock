@@ -47,6 +47,7 @@ export default {
       invalid_password: 'Kata sandi tidak valid.',
       'lock.fallback': 'Maaf, terjadi kesalahan saat mencoba mendaftar.',
       password_dictionary_error: 'Kata sandi terlalu umum.',
+      password_leaked: 'Kombinasi kredensial ini terdeteksi dalam pelanggaran data publik di situs web lain. Sebelum akun Anda dibuat, harap gunakan kata sandi yang berbeda untuk menjaganya tetap aman.',
       password_no_user_info_error: 'Kata sandi didasarkan pada informasi pengguna.',
       password_strength_error: 'Kata sandi terlalu lemah.',
       user_exists: 'Pengguna sudah ada.',

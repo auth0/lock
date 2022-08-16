@@ -43,6 +43,7 @@ export default {
       invalid_password: 'La contraseña es inválida.',
       'lock.fallback': 'Ocurrió un error durante el registro.',
       password_dictionary_error: 'La constraseña es muy común.',
+      password_leaked: 'Esta combinación de credenciales se detectó en una violación de datos públicos en otro sitio web. Antes de crear su cuenta, utilice una contraseña diferente para mantenerla segura.',
       password_no_user_info_error: 'La constraseña es similar a los datos del usuario.',
       password_strength_error: 'La contraseña es muy débil.',
       user_exists: 'El usuario ya existe.',

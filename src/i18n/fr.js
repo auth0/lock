@@ -51,6 +51,7 @@ export default {
       'lock.fallback':
         'Nous sommes désolés, un problème est survenu lors de la tentative d’inscription.',
       password_dictionary_error: 'Le mot de passe est trop commun.',
+      password_leaked: "Cette combinaison d'informations d'identification a été détectée lors d'une violation de données publiques sur un autre site Web. Avant la création de votre compte, veuillez utiliser un mot de passe différent pour le garder en sécurité.",
       password_no_user_info_error: 'Le mot de passe est basé sur des informations utilisateur.',
       password_strength_error: 'La force du mot de passe est trop faible.',
       user_exists: 'Cet utilisateur existe déjà.',

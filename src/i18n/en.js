@@ -42,6 +42,7 @@ export default {
       invalid_password: 'Password is invalid.',
       'lock.fallback': "We're sorry, something went wrong when attempting to sign up.",
       password_dictionary_error: 'Password is too common.',
+      password_leaked: 'This combination of credentials was detected in a public data breach on another website. Before your account is created, please use a different password to keep it secure.',
       password_no_user_info_error: 'Password is based on user information.',
       password_strength_error: 'Password is too weak.',
       user_exists: 'The user already exists.',

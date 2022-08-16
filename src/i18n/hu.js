@@ -47,6 +47,7 @@ export default {
       invalid_password: 'Érvénytelen jelszó.',
       'lock.fallback': 'Sajnáljuk, valami hiba történt a regisztráció során.',
       password_dictionary_error: 'Túl gyakori jelszó.',
+      password_leaked: 'A hitelesítő adatoknak ezt a kombinációját egy másik webhelyen történt nyilvános adatvédelmi incidens során észlelték. Mielőtt létrehozná fiókját, a biztonság megőrzése érdekében használjon másik jelszót.',
       password_no_user_info_error: 'A jelszó a felhasználói adatokra támaszkodik.',
       password_strength_error: 'Túl gyenge jelszó.',
       user_exists: 'A felhasználó már létezik.',

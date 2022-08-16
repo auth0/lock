@@ -49,6 +49,7 @@ export default {
       'lock.fallback':
         'Es tut uns leid, beim Verarbeiten der Registrierung ist ein Fehler aufgetreten.',
       password_dictionary_error: 'Das Passwort ist zu verbreitet.',
+      password_leaked: 'Diese Kombination von Anmeldeinformationen wurde bei einer öffentlichen Datenschutzverletzung auf einer anderen Website entdeckt. Bevor Ihr Konto erstellt wird, verwenden Sie bitte ein anderes Passwort, um es zu schützen.',
       password_no_user_info_error: 'Das Passwort basiert auf Benutzerinformationen.',
       password_strength_error: 'Das Passwort ist zu schwach.',
       user_exists: 'Der Nutzer existiert bereits.',
