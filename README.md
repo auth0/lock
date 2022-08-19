@@ -685,7 +685,9 @@ We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10. We curr
 
 ## Issue Reporting
 
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+If you have found a bug, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+
+:warning: **Note:** We are no longer supporting requests for new features. Only requests for bug fixes or security patches will be considered.
 
 ## Author
 
