@@ -14,6 +14,8 @@ Thank you in advance for helping us to improve this library! Please read through
 By submitting an Issue to this repository, you agree to the terms within the Auth0 Code of Conduct (https://github.com/auth0/open-source-template/blob/master/CODE-OF-CONDUCT.md).
 -->
 
+:warning: **Note:** We are no longer supporting requests for new features. Only requests for bug fixes or security patches will be considered.
+
 ### Describe the problem
 
 <!--
