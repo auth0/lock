@@ -9,7 +9,7 @@ import { authButtonsTheme } from '../../connection/social/index';
 
 // TODO: handle this from CSS
 function icon(strategy) {
-  if (strategy === 'google-apps') return strategy;
+  if (strategy === 'google-apps' || strategy === 'okta') return strategy;
   if (~['adfs', 'office365', 'waad'].indexOf(strategy)) return 'windows';
   return 'auth0';
 }
