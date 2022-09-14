@@ -25,7 +25,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.33.3/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.34.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -490,7 +490,7 @@ Extra input fields can be added to the sign up screen with the `additionalSignUp
 
 Additional sign up fields are rendered below the default fields in the order they are provided.
 
-:warning: **Note**: From `11.33.3` onwards, all HTML tags are stripped from user input into custom signup fields.
+:warning: **Note**: From `11.34.0` onwards, all HTML tags are stripped from user input into custom signup fields.
 
 ##### Text field
 
