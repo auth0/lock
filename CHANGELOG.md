@@ -1,5 +1,11 @@
 # Change Log
 
+## [v11.34.0](https://github.com/auth0/lock/tree/v11.34.0) (2022-09-14)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.33.3...v11.34.0)
+
+**Added**
+- FDR-297: Adding okta for enterprise [\#2172](https://github.com/auth0/lock/pull/2172) ([jamescgarrett](https://github.com/jamescgarrett))
+
 ## [v11.33.3](https://github.com/auth0/lock/tree/v11.33.3) (2022-08-16)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.2...v11.33.3)
 
