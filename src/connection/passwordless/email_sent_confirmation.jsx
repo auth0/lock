@@ -80,7 +80,7 @@ class Resend extends React.Component {
 export default class EmailSentConfirmation extends React.Component {
   render() {
     const { lock } = this.props;
-    const closeHandler = l.ui.closable(lock) ? this.handleClose : undefined;
+    const closeHandler = l.ui.closable(lock) ? ::this.handleClose : undefined;
     const labels = {
       failed: i18n.str(lock, 'failedLabel'),
       resend: i18n.str(lock, 'resendLabel'),
@@ -93,7 +93,7 @@ export default class EmailSentConfirmation extends React.Component {
       <SuccessPane
         lock={lock}
         backHandler={() => this.handleBack()}
-        closeHandler={() => closeHandler()}
+        closeHandler={closeHandler}
       >
         <p>{i18n.html(lock, ['success', 'magicLink'], c.email(lock))}</p>
         <Resend labels={labels} lock={lock} />
