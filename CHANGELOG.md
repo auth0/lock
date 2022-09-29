@@ -1,5 +1,14 @@
 # Change Log
 
+## [v11.34.1](https://github.com/auth0/lock/tree/v11.34.1) (2022-09-29)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.34.0...v11.34.1)
+
+**Fixed**
+- [ESD-22705] Don't pass function to ConfirmationPane unless closable is enabled [\#2176](https://github.com/auth0/lock/pull/2176) ([ewanharris](https://github.com/ewanharris))
+
+**Security**
+- [ESD-22866] Disable spellcheck and autocorrect on all sensitive input fields [\#2178](https://github.com/auth0/lock/pull/2178) ([ewanharris](https://github.com/ewanharris))
+
 ## [v11.34.0](https://github.com/auth0/lock/tree/v11.34.0) (2022-09-14)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.3...v11.34.0)
 
