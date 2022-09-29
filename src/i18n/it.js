@@ -46,6 +46,7 @@ export default {
       invalid_password: 'La password non è valida.',
       'lock.fallback': "Ci dispiace, qualcosa è andato storto quando si tenta l'iscrizione.",
       password_dictionary_error: 'La password è troppo comune.',
+      password_leaked: 'Questa combinazione di credenziali è stata rilevata in una violazione dei dati pubblici su un altro sito Web. Prima di creare il tuo account, utilizza una password diversa per mantenerlo sicuro.',
       password_no_user_info_error: "La password si basa sulle informazioni dell'utente.",
       password_strength_error: 'La password è troppo debole.',
       user_exists: "L'utente esiste già.",

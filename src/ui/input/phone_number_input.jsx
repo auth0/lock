@@ -49,6 +49,8 @@ export default class PhoneNumberInput extends React.Component {
           name="phoneNumber"
           className="auth0-lock-input auth0-lock-input-number"
           autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
           aria-label="Telephone number"

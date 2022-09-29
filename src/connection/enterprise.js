@@ -31,7 +31,8 @@ export const STRATEGIES = {
   samlp: 'SAML',
   sharepoint: 'SharePoint Apps',
   waad: 'Windows Azure AD',
-  oidc: 'OpenID Connect'
+  oidc: 'OpenID Connect',
+  okta: 'Okta Workforce'
 };
 
 export function initEnterprise(m, opts) {

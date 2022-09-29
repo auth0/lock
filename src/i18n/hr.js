@@ -48,6 +48,7 @@ export default {
       invalid_password: 'Lozinka je neispravna.',
       'lock.fallback': 'Ispričavamo se, ali nešto je pošlo po zlu tijekom pokušaja registracije.',
       password_dictionary_error: 'Lozinka je uobičajena.',
+      password_leaked: 'Ova kombinacija vjerodajnica otkrivena je u povredi javnih podataka na drugoj web stranici. Prije izrade vašeg računa upotrijebite drugu zaporku kako biste ga zaštitili.',
       password_no_user_info_error: 'Lozinka se zasniva na korisničkim podatcima.',
       password_strength_error: 'Lozinka je preslaba.',
       user_exists: 'Korisnik već postoji.',

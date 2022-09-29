@@ -45,6 +45,7 @@ export default {
       invalid_password: '비밀번호가 유효하지 않습니다.',
       'lock.fallback': '죄송합니다. 특정 오류로 인하여 회원가입에 실패하였습니다.',
       password_dictionary_error: '비밀번호가 너무 간단합니다.',
+      password_leaked: '이 자격 증명 조합은 다른 웹사이트의 공개 데이터 침해에서 감지되었습니다. 계정을 생성하기 전에 보안을 유지하기 위해 다른 비밀번호를 사용하십시오.',
       password_no_user_info_error: '비밀번호에 사용자명이 포함되어 있습니다.',
       password_strength_error: '비밀번호가 너무 약합니다.',
       user_exists: '이미 존재하는 사용자입니다.',

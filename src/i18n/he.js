@@ -44,6 +44,7 @@ export default {
       invalid_password: 'סיסמא לא תקינה.',
       'lock.fallback': 'אנו מתנצלים, משהו השתבש במהלך ניסיון ההרשמה.',
       password_dictionary_error: 'סיסמא שכיחה מדי.',
+      password_leaked: 'שילוב זה של אישורים זוהה בפרצת מידע ציבורית באתר אחר. לפני יצירת החשבון שלך, אנא השתמש בסיסמה אחרת כדי לשמור על אבטחתו.',
       password_no_user_info_error: 'סיסמא מבוססת על פרטי המשתמש.',
       password_strength_error: 'סיסמא חלשה מדי.',
       user_exists: 'משתמש קיים במערכת.',

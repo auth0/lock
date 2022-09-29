@@ -46,6 +46,7 @@ export default {
       invalid_password: 'Nederīga parole.',
       'lock.fallback': 'Diemžēl, mēģinot reģistrēties, radās problēma.',
       password_dictionary_error: 'Parrole ir pārāk bieži sastopama.',
+      password_leaked: 'Šī akreditācijas datu kombinācija tika konstatēta publiska datu pārkāpuma rezultātā citā vietnē. Pirms konta izveides, lūdzu, izmantojiet citu paroli, lai tas būtu drošībā.',
       password_no_user_info_error: 'Paroles pamatā ir lietotāja informācija.',
       password_strength_error: 'Parrole ir pārāk vienkārša.',
       user_exists: 'Lietotājs jau eksistē.',

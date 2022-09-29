@@ -114,6 +114,8 @@ export default class CaptchaInput extends React.Component {
             placeholder={placeholder}
             autoComplete="off"
             autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck="false"
             onChange={::this.handleOnChange}
             onFocus={::this.handleFocus}
             onBlur={::this.handleBlur}

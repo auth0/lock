@@ -48,6 +48,7 @@ export default {
       invalid_password: 'La contrasenya no és vàlida.',
       'lock.fallback': 'Hi ha hagut un error durant el registre.',
       password_dictionary_error: 'La contrasenya és massa comú.',
+      password_leaked: 'Aquesta combinació de credencials es va detectar en una violació de dades públiques en un altre lloc web. Abans de crear el vostre compte, utilitzeu una contrasenya diferent per mantenir-lo segur.',
       password_no_user_info_error: "La contrasenya es basa en les dades de l'usuari.",
       password_strength_error: 'La contrasenya és massa feble.',
       user_exists: 'Ja existeix aquest usuari.',

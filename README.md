@@ -25,7 +25,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.33.2/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.34.0/lock.min.js"></script>
 ```
 
 From [npm](https://npmjs.org)
@@ -490,7 +490,7 @@ Extra input fields can be added to the sign up screen with the `additionalSignUp
 
 Additional sign up fields are rendered below the default fields in the order they are provided.
 
-:warning: **Note**: From `11.33.2` onwards, all HTML tags are stripped from user input into custom signup fields.
+:warning: **Note**: From `11.34.0` onwards, all HTML tags are stripped from user input into custom signup fields.
 
 ##### Text field
 
@@ -685,7 +685,9 @@ We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10. We curr
 
 ## Issue Reporting
 
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+If you have found a bug, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+
+:warning: **Note:** We are no longer supporting requests for new features. Only requests for bug fixes or security patches will be considered.
 
 ## Author
 

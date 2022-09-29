@@ -43,6 +43,7 @@ export default {
       invalid_password: 'A senha é inválida.',
       'lock.fallback': 'Sentimos muito, algo deu errado ao tentar se inscrever.',
       password_dictionary_error: 'A senha é muito comum.',
+      password_leaked: 'Essa combinação de credenciais foi detectada em uma violação de dados públicos em outro site. Antes de criar sua conta, use uma senha diferente para mantê-la segura.',
       password_no_user_info_error: 'A senha é baseado em informações do usuário.',
       password_strength_error: 'A senha é muito fraca.',
       user_exists: 'O usuário já existe.',

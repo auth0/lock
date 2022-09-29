@@ -46,6 +46,7 @@ export default {
       invalid_password: 'Adgangskoden er ugyldigt',
       'lock.fallback': 'Vi beklager, men der skete en fejl, da du forsøgte at oprette dig.',
       password_dictionary_error: 'Adgangskoden er for almindelig.',
+      password_leaked: 'Denne kombination af legitimationsoplysninger blev opdaget i et offentligt databrud på et andet websted. Før din konto oprettes, skal du bruge en anden adgangskode for at holde den sikker.',
       password_no_user_info_error: 'Adgangskoden indeholder information om din bruger.',
       password_strength_error: 'Adgangskoden er for svag.',
       user_exists: 'Denne bruger eksisterer allerede.',

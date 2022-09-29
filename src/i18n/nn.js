@@ -47,6 +47,7 @@ export default {
       invalid_password: 'Ugyldig passord.',
       'lock.fallback': 'Beklagar, men noko gjekk skeis i registreringa.',
       password_dictionary_error: 'Passordet er for enkelt.',
+      password_leaked: 'Denne kombinasjonen av legitimasjon ble oppdaget i et offentlig datainnbrudd på et annet nettsted. Før kontoen din opprettes, vennligst bruk et annet passord for å holde det sikkert.',
       password_no_user_info_error: 'Passordet er basert på kjende bruksdata.',
       password_strength_error: 'Passordet er for svakt.',
       user_exists: 'Denne brukaren eksisterer allereie.',

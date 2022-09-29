@@ -48,6 +48,7 @@ export default {
       invalid_password: 'Palavra-passe inválida.',
       'lock.fallback': 'Lamentamos, ocorreu um problema ao tentar registar-se.',
       password_dictionary_error: 'Palavra-passe demasiado simples.',
+      password_leaked: 'Essa combinação de credenciais foi detectada em uma violação de dados públicos em outro site. Antes de criar sua conta, use uma senha diferente para mantê-la segura.',
       password_no_user_info_error: 'Palavra-passe baseada nos dados do utilizador.',
       password_strength_error: 'Palavra-passe demasiado fraca.',
       user_exists: 'O utilizador já existe.',

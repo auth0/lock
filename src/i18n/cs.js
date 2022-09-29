@@ -46,6 +46,7 @@ export default {
       invalid_password: 'Heslo je neplatné.',
       'lock.fallback': 'Je nám líto, při pokusu o registraci se něco pokazilo.',
       password_dictionary_error: 'Heslo je příliš obvyklé.',
+      password_leaked: 'Tato kombinace přihlašovacích údajů byla zjištěna při porušení veřejných údajů na jiném webu. Před vytvořením účtu použijte jiné heslo, aby byl zabezpečen.',
       password_no_user_info_error: 'Heslo vychází z uživatelských údajů.',
       password_strength_error: 'Heslo je příliš slabé.',
       user_exists: 'Uživatel již existuje.',

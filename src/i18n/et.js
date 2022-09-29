@@ -45,6 +45,7 @@ export default {
       invalid_password: 'Parool on vigane.',
       'lock.fallback': 'Vabandame, registreerumisel läks midagi valesti.',
       password_dictionary_error: 'Parool on liiga tavaline.',
+      password_leaked: 'See volikirjade kombinatsioon tuvastati teisel veebisaidil avalike andmetega seotud rikkumises. Enne konto loomist kasutage selle turvalisuse tagamiseks teist parooli.',
       password_no_user_info_error: 'Parool sisaldab kasutajainfot.',
       password_strength_error: 'Parool on liiga nõrk.',
       user_exists: 'Selline kasutaja on juba olemas.',

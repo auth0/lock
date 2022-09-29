@@ -47,6 +47,7 @@ export default {
       invalid_password: 'Kata laluan tidak sah.',
       'lock.fallback': 'Harap maaf, sesuatu berlaku semasa cuba untuk mendaftar.',
       password_dictionary_error: 'Kata laluan terlalu biasa.',
+      password_leaked: 'Gabungan bukti kelayakan ini telah dikesan dalam pelanggaran data awam di tapak web lain. Sebelum akaun anda dibuat, sila gunakan kata laluan yang berbeza untuk memastikannya selamat.',
       password_no_user_info_error: 'Kata laluan adalah berdasarkan maklumat pengguna.',
       password_strength_error: 'Kata laluan terlalu lemah.',
       user_exists: 'Pengguna ini sudah wujud.',

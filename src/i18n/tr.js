@@ -46,6 +46,7 @@ export default {
       invalid_password: 'Şifre geçersiz.',
       'lock.fallback': 'Özür dileriz, kaydolurken bir hata oluştu.',
       password_dictionary_error: 'Şifre çok genel.',
+      password_leaked: 'Bu kimlik bilgileri kombinasyonu, başka bir web sitesinde herkese açık bir veri ihlali sırasında tespit edildi. Hesabınız oluşturulmadan önce, güvenliğini sağlamak için lütfen farklı bir şifre kullanın.',
       password_no_user_info_error: 'Şifre kullanıcı bilgilerini içeriyor.',
       password_strength_error: 'Şifre çok zayıf.',
       user_exists: 'Bu kullanıcı zaten var.',
