@@ -46,6 +46,8 @@ export default class MFACodeInput extends React.Component {
           className="auth0-lock-input"
           autoComplete="off"
           autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck="false"
           onChange={::this.handleOnChange}
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}

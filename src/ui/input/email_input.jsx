@@ -67,6 +67,8 @@ export default class EmailInput extends React.Component {
           placeholder="yours@example.com"
           autoComplete={autoComplete ? 'on' : 'off'}
           autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck="false"
           onChange={::this.handleOnChange}
           onFocus={::this.handleFocus}
           onBlur={::this.handleBlur}
