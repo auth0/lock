@@ -105,8 +105,8 @@ export default class SignUp extends Screen {
 
   renderAuxiliaryPane(lock) {
     return (
-      renderSignedInConfirmation(lock) ||
       renderSignedUpConfirmation(lock) ||
+      renderSignedInConfirmation(lock) ||
       renderOptionSelection(lock)
     );
   }
