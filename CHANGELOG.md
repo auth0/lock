@@ -1,5 +1,11 @@
 # Change Log
 
+## [v11.34.2](https://github.com/auth0/lock/tree/v11.34.2) (2022-10-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.34.1...v11.34.2)
+
+**Fixed**
+- [SDK-3657] Render sign up confirmation before sign in [\#2180](https://github.com/auth0/lock/pull/2180) ([ewanharris](https://github.com/ewanharris))
+
 ## [v11.34.1](https://github.com/auth0/lock/tree/v11.34.1) (2022-09-29)
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.0...v11.34.1)
 
