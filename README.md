@@ -3,7 +3,6 @@
 [Auth0](https://auth0.com) is an authentication broker that supports both social and enterprise identity providers, including Active Directory, LDAP, Google Apps, and Salesforce.
 
 ![Release](https://img.shields.io/npm/v/auth0-lock)
-[![Codecov](https://img.shields.io/codecov/c/github/auth0/lock)](https://codecov.io/gh/auth0/lock)
 ![Downloads](https://img.shields.io/npm/dw/auth0-lock)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 ![CircleCI](https://img.shields.io/circleci/build/github/auth0/lock)
