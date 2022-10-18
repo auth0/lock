@@ -13,8 +13,7 @@
 - [Docs Site](https://auth0.com/docs) - explore our Docs site and learn more about Auth0.
 
 ## Getting Started
-
-## Browser Compatibility
+### Browser Compatibility
 
 We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10.
 
@@ -34,6 +33,24 @@ From CDN
 ```
 
 ### Configure Auth0
+
+Create a **Single Page Application** in the [Auth0 Dashboard](https://manage.auth0.com/#/applications).
+
+> **If you're using an existing application**, verify that you have configured the following settings in your Single Page Application:
+>
+> - Click on the "Settings" tab of your application's page.
+> - Ensure that "Token Endpoint Authentication Method" under "Application Properties" is set to "None"
+> - Scroll down and click on the "Show Advanced Settings" link.
+> - Under "Advanced Settings", click on the "OAuth" tab.
+> - Ensure that "JsonWebToken Signature Algorithm" is set to `RS256` and that "OIDC Conformant" is enabled.
+Next, configure the following URLs for your application under the "Application URIs" section of the "Settings" page:
+
+- **Allowed Callback URLs**: `http://localhost:3000`
+- **Allowed Logout URLs**: `http://localhost:3000`
+- **Allowed Web Origins**: `http://localhost:3000`
+
+> These URLs should reflect the origins that your application is running on. **Allowed Callback URLs** may also include a path, depending on where you're handling the callback (see below).
+Take note of the **Client ID** and **Domain** values under the "Basic Information" section. You'll need these values in the next step.
 
 ### Configure the SDK
 
