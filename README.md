@@ -9,7 +9,7 @@
 
 ## Documentation 
 
-- [FAQs](./FAQ.md) - frequently asked questions about auth0-spa-js SDK.
+- [FAQs](https://github.com/auth0/lock/blob/master/FAQ.md) - frequently asked questions about lock.
 - [Docs Site](https://auth0.com/docs) - explore our Docs site and learn more about Auth0.
 
 ## Getting Started
@@ -100,7 +100,7 @@ document.getElementById('login').addEventListener('click', () => {
 });.
 ````
 
-For other comprehensive examples and documentation on the configuration options, see the [EXAMPLES.md](./EXAMPLES.md) document.
+For other comprehensive examples and documentation on the configuration options, see the [EXAMPLES.md](https://github.com/auth0/lock/blob/master/EXAMPLES.md) document.
 
 ## Feedback
 
@@ -110,7 +110,7 @@ We appreciate feedback and contribution to this repo! Before you get started, pl
 
 - [Auth0's general contribution guidelines](https://github.com/auth0/open-source-template/blob/master/GENERAL-CONTRIBUTING.md)
 - [Auth0's code of conduct guidelines](https://github.com/auth0/open-source-template/blob/master/CODE-OF-CONDUCT.md)
-- [This repo's contribution guide](./DEVELOPMENT.md)
+- [This repo's contribution guide](https://github.com/auth0/lock/blob/master/DEVELOPMENT.md)
 
 ### Raise an issue
 
@@ -126,14 +126,14 @@ Please do not report security vulnerabilities on the public GitHub issue tracker
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./auth0_dark_mode.png" width="150">
-    <source media="(prefers-color-scheme: light)" srcset="./auth0_light_mode.png" width="150">
-    <img alt="Auth0 Logo" src="./auth0_light_mode.png" width="150">
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.auth0.com/website/sdks/logos/auth0_dark_mode.png" width="150">
+    <source media="(prefers-color-scheme: light)" srcset="https://cdn.auth0.com/website/sdks/logos/auth0_light_mode.png" width="150">
+    <img alt="Auth0 Logo" src="https://cdn.auth0.com/website/sdks/logos/auth0_light_mode.png" width="150">
   </picture>
 </p>
 <p align="center">
   Auth0 is an easy to implement, adaptable authentication and authorization platform. To learn more checkout <a href="https://auth0.com/why-auth0">Why Auth0?</a>
 </p>
 <p align="center">
-  This project is licensed under the MIT license. See the <a href="./LICENSE"> LICENSE</a> file for more info.
+  This project is licensed under the MIT license. See the <a href="https://github.com/auth0/lock/blob/master/LICENSE"> LICENSE</a> file for more info.
 </p>
