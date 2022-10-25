@@ -1,6 +1,4 @@
-# Lock
-
-[Auth0](https://auth0.com) is an authentication broker that supports both social and enterprise identity providers, including Active Directory, LDAP, Google Apps, and Salesforce.
+![Auth0's configurable login form for web applications](https://cdn.auth0.com/website/sdks/banners/lock-banner.png)
 
 ![Release](https://img.shields.io/npm/v/auth0-lock)
 ![Downloads](https://img.shields.io/npm/dw/auth0-lock)
