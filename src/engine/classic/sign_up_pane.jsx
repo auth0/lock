@@ -18,6 +18,11 @@ import { databaseUsernameValue } from '../../connection/database/index';
 import { isSSOEnabled } from '../classic';
 
 export default class SignUpPane extends React.Component {
+  componentDidMount() {
+    const event = new CustomEvent('SIGNUP-DID-MOUNT', { detail: null });
+    window.dispatchEvent(event);
+  }
+
   render() {
     const {
       emailInputPlaceholder,

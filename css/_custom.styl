@@ -1,0 +1,47 @@
+@charset "UTF-8";
+  
+@require "_mixins&keyframes"
+
+
+.eco-custom.eco-custom.auth0-lock.auth0-lock
+
+  .auth0-lock-header-bg-solid
+    background transparent
+
+  .auth0-lock-header
+    background transparent
+    max-width 492px
+    margin 0 auto
+
+  .auth0-lock-header-bg
+    background transparent
+    // @media screen and (max-width: 480px)
+    +breakpoint("mobile")
+      // background rgba(#f1f1f1,.8)
+      background transparent
+
+    .auth0-lock-header-bg-blur
+      background-color transparent
+
+  .auth0-lock-cred-pane 
+    background transparent
+
+  .auth0-lock-tabs
+    background-color transparent
+
+  .auth0-lock-badge-bottom 
+    background transparent
+
+  &.auth0-lock-opened
+    .auth0-lock-body-content
+      @media screen and (max-width: 480px)
+        background transparent
+    .auth0-lock-overlay
+      background var(--bg)
+    .auth0-lock-widget
+      @media screen and (max-width: 480px)
+        background var(--bg)
+
+html.auth0-lock-html body .eco-custom.auth0-lock-container
+  @media screen and (max-width: 480px)
+    background transparent

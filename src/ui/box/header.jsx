@@ -119,7 +119,8 @@ class Background extends React.Component {
 
     const solidProps = {
       className: 'auth0-lock-header-bg-solid',
-      style: { backgroundColor: backgroundColor }
+      // style: { backgroundColor: backgroundColor }
+      // style: { backgroundColor: 'white' }
     };
 
     return (

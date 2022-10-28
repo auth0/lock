@@ -332,6 +332,16 @@ export default class Chrome extends React.Component {
       'auto-height': l.ui.forceAutoHeight(model)
     });
 
+
+    let submitBtnColor = primaryColor; 
+
+    if (screenName === 'main.signUp') {
+      submitBtnColor = '#46c30e'
+    } else if (screenName === 'main.login') {
+      submitBtnColor = '#fb6514'
+    }
+
+
     return (
       <div className={className}>
         <div className={internalWrapperClass}>
@@ -394,7 +404,7 @@ export default class Chrome extends React.Component {
          */}
 
           <SubmitButton
-            color={primaryColor}
+            color={submitBtnColor}
             disabled={disableSubmitButton}
             screenName={screenName}
             contentProps={contentProps}

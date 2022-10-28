@@ -1,227 +1,208 @@
 <!DOCTYPE html>
 <html>
-  <title>Dev</title>
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-  />
-  <link rel="stylesheet" href="https://cdn.auth0.com/styleguide/core/2.0.5/core.min.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdn.auth0.com/styleguide/components/2.0.0/components.min.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css"
-  />
-
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Sign In</title>
+    <link rel="icon" type="image/x-icon" href="https://hub.ecosurety.com/favicon.ico">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+  </head>
   <body>
-    <header class="site-header">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <h1 class="navbar-brand">
-              <a href="https://auth0.com">
-                <span>Auth0</span>
-              </a>
-            </h1>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div id="btn-show-lock" class="btn btn-default">Show Lock</div>
-          <div id="btn-show-passwordless" class="btn btn-default">Show Lock+Passwordless</div>
-          <div id="btn-logout" class="btn btn-default">Log out</div>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-sm-12">
-          <div id="btn-clear-log" class="btn btn-danger">Clear logs</div>
-        </div>
-        <div class="col-sm-12" style="margin-top: 10px; max-height: 800px; overflow: auto">
-          <pre>
-          <code id="logger" class="language-js"></code>
-        </pre>
-        </div>
-      </div>
-    </main>
-    <script src="https://unpkg.com/jquery@3.2.1/dist/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-    <script src="/build/lock.js"></script>
-    <script id="helper-scripts">
-      //this is not related to Auth0. It's just here to make the page work correctly.
-      Prism.plugins.NormalizeWhitespace.setDefaults({
-        'remove-trailing': true,
-        'remove-indent': true,
-        'left-trim': true,
-        'right-trim': true
-      });
-      var logs = [];
-      if (window.localStorage.auth0logs) {
-        logs = JSON.parse(window.localStorage.auth0logs);
+    <!--[if IE 8]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE 9]>
+      <script src="https://cdn.auth0.com/js/base64.js"></script>
+      <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
+    <![endif]-->
+    <style>
+      :root {
+        --color--primary1: #12239e;
+        --color--primary2: #344054;
+        --color--primary3: #fb6514;
+        --color--primary4: #46c30e;
+        --tsp: 0.6;
+        --color--primary1-tsp: rgb(18, 35, 158, 0.03);
+        --color--primary2-tsp: rgb(52, 64, 84, 0.03);
+        --color--primary3-tsp: rgb(251, 101, 20, 0.1);
+        --color--primary4-tsp: rgb(70, 195, 14, 0.1);
+        --bg: linear-gradient(
+          110deg,
+          var(--color--primary3-tsp) 0 12%,
+          var(--color--primary2-tsp) 12% 17%,
+          #ffffff 17% 83%,
+          var(--color--primary1-tsp) 83% 88%,
+          var(--color--primary4-tsp) 88% 100%
+        );
       }
-      function printLogs() {
-        window.localStorage.auth0logs = JSON.stringify(logs);
-        var code = '';
-        logs.forEach(function (l) {
-          code += '\r\n' + JSON.stringify(l, null, 1);
-        });
-        var html = Prism.highlight(code, Prism.languages.javascript);
-        $('#logger').html(html);
+      .agreedEmailPhone {
+        display: block;
+        margin: 24px 0 12px;
+        text-align: left;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.54);
+        line-height: 22px;
       }
-      function clearLogs() {
-        logs = [];
-        window.localStorage.removeItem('auth0logs');
-        printLogs();
+      .auth0-lock.auth0-lock form.auth0-lock-widget {
+        /* width: 420px; */
+        max-width: 802px;
       }
-      function subscribeToEvents(instance) {
-        var validEvents = [
-          'show',
-          'hide',
-          'unrecoverable_error',
-          'authenticated',
-          'authorization_error',
-          'hash_parsed',
-          'signin ready',
-          'signup ready',
-          'forgot_password ready',
-          'socialOrPhoneNumber ready',
-          'socialOrEmail ready',
-          'vcode ready',
-          'forgot_password submit',
-          'signin submit',
-          'signup submit',
-          'signup success',
-          'socialOrPhoneNumber submit',
-          'socialOrEmail submit',
-          'vcode submit',
-          'federated login',
-          'ssodata fetched'
-        ];
-        validEvents.forEach(function (e) {
-          instance.on(e, function () {
-            var args = arguments;
-            if (arguments.length === 1) {
-              args = arguments[0];
-            }
-            logs.push({ event: e, arguments: args });
-            printLogs();
-          });
-        });
-      }
-      $('#btn-clear-log').on('click', clearLogs);
-      $(function () {
-        printLogs();
-      });
-    </script>
+    </style>
+    <!-- <script src="https://cdn.auth0.com/js/lock/11.32/lock.min.js"></script> -->
+    <!-- <script src="/build/lock.js"></script> -->
+    <script src="https://deft-swan-479dfe.netlify.app/lock.min.js"></script>
+    
     <script>
-      var clientId = 'BWDP9XS89CJq1w6Nzq7iFOHsTh6ChS2b';
-      var domain = 'brucke.auth0.com';
-      var defaultOptions = {
-        mustAcceptTerms: true,
-        initialScreen: 'login',
-        allowShowPassword: true,
-        usernameStyle: 'email',
-        signUpFieldsStrictValidation: true,
-        defaultDatabaseConnection: 'acme',
-        prefill: {
-          email: 'johnfoo@gmail.com'
-        },
-        passwordlessMethod: 'code',
-        auth: {
-          params: {
-            nonce: 'foo',
-            state: 'bar'
+      const showMessage = () => {
+        // setTimeout(() => {
+        const emailContactAgreed = document.getElementsByName('emailContactAgreed')[0];
+        if (emailContactAgreed) {
+          const container0 = document.getElementById('customer-phone-email-message');
+          if (!container0) {
+            const grandparent = emailContactAgreed.parentElement.parentElement;
+
+            const container = document.createElement('span');
+            container.id = 'customer-phone-email-message';
+            container.innerText =
+              'If you are interested in a Subscription or Enterprise plan, are you happy for us to contact you to discuss setting it up (we are currently processing applications manually):';
+            container.classList.add('agreedEmailPhone');
+            grandparent.before(container);
           }
+        }
+
+        // showMessage(); // the user might switch between tabs, so we need a constant check
+        // }, 2000);
+      };
+      window.addEventListener('SIGNUP-DID-MOUNT', e => {
+        showMessage();
+      });
+
+      // Decode utf8 characters properly
+      var config = JSON.parse(
+        decodeURIComponent(
+          escape(
+            window.atob(
+              '@@config@@'
+            )
+          )
+        )
+      );
+      
+      config.extraParams = config.extraParams || {};
+      var connection = config.connection;
+      var prompt = config.prompt;
+      var languageDictionary;
+      var language;
+
+      if (config.dict && config.dict.signin && config.dict.signin.title) {
+        // SIGNUP + LOGIN title must be empty
+        languageDictionary = { title: '', signUpTitle: '' };
+      } else if (typeof config.dict === 'string') {
+        language = config.dict;
+      }
+
+      const initialScreen = window.location.href.includes('signup') ? 'signUp' : 'login';
+      var loginHint = config.extraParams.login_hint;
+      // var colors = config.colors || {};
+      var colors = {
+        // page_background: 'magenta',
+        // page_background: 'linear-gradient(110deg, var(--color--primary1-tsp), var(--color--primary2-tsp), var(--color--primary3-tsp), var(--color--primary4-tsp))',
+        // page_background: 'linear-gradient(110deg, var(--color--primary1-tsp), var(--color--primary3-tsp), var(--color--primary2-tsp), var(--color--primary4-tsp))',
+        // page_background: 'linear-gradient(110deg, var(--color--primary3-tsp), var(--color--primary2-tsp), var(--color--primary4-tsp), var(--color--primary1-tsp))',
+        primary: 'green'
+      };
+
+      // Available Lock configuration options: https://auth0.com/docs/libraries/lock/v11/configuration
+      var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
+        initialScreen,
+        auth: {
+          redirectUrl: config.callbackURL,
+          responseType:
+            (config.internalOptions || {}).response_type ||
+            (config.callbackOnLocationHash ? 'token' : 'code'),
+          params: config.internalOptions
         },
+        configurationBaseUrl: config.clientConfigurationBaseUrl,
+        overrides: {
+          __tenant: config.auth0Tenant,
+          __token_issuer: config.authorizationServer.issuer
+        },
+        assetsUrl: config.assetsUrl,
+        allowedConnections: connection ? [connection] : null,
+        rememberLastLogin: !prompt,
+        language: language,
+        languageBaseUrl: config.languageBaseUrl,
+        languageDictionary: languageDictionary,
+        theme: {
+          // logo: 'https://uploads-ssl.webflow.com/620e3b236b04e67aa3f645e2/62273a28f4ceb0d26d92f815_Ecosurety%20Hub%20Logo%20150x58.svg',
+          logo: 'https://hub.ecosurety.com/ecosurety-hub-logo-min.svg',
+          primaryColor: colors.primary ? colors.primary : 'green'
+        },
+        prefill: loginHint ? { email: loginHint, username: loginHint } : null,
+        closable: false,
+        defaultADUsernameFromEmailPrefix: false,
+        title: '',
+        //loginAfterSignUp: false,
         additionalSignUpFields: [
           {
-            name: 'name',
-            placeholder: 'name',
-            validator: function () {
-              return true;
-            }
+            name: 'firstName',
+            placeholder: 'First name'
           },
           {
-            name: 'other_name',
-            placeholder: 'other name',
-            validator: function () {
-              return true;
-            }
-          }
-        ],
-        hooks: {
-          loggingIn: function (context, done) {
-            // Currently, context is always null but might be used in the future.
-            console.log('Hello from submitting hook');
-            done();
+            name: 'lastName',
+            placeholder: 'Last name'
           },
-          signingUp: function (context, done) {
-            // Currently, context is always null but might be used in the future.
-            console.log('Hello from signingUp hook');
-            done();
+          {
+            type: 'select',
+            name: 'tierId',
+            placeholder: 'Tier',
+            options: [
+              { value: 'basic', label: 'Basic' },
+              { value: 'subscription', label: 'Subscription' },
+              { value: 'enterprise', label: 'Enterprise' }
+            ]
+          },
+          {
+            name: 'companyName',
+            placeholder: 'Company name'
+          },
+          {
+            name: 'phoneNumber',
+            placeholder: 'Phone'
+          },
+          {
+            type: 'checkbox',
+            name: 'emailContactAgreed',
+            prefill: 'true',
+            placeholder: "I'm happy to be contacted by Ecosurety by email"
+          },
+          {
+            type: 'checkbox',
+            name: 'phoneContactAgreed',
+            prefill: 'true',
+            placeholder: "I'm happy to be contacted by Ecosurety by phone"
           }
-        } /*,
-        connectionResolver: function (username, context, cb) {
-          console.log('Invoking connection resolver');
-          cb({ type: 'database', name: 'acme' });
-        }*/
-      };
-      function initLock() {
-        var lock = new Auth0Lock(clientId, domain, defaultOptions);
-        window.localStorage.lastUsed = 'lock';
-        subscribeToEvents(lock);
-        return lock;
-      }
-      function initPasswordless() {
-        var lockPasswordless = new Auth0LockPasswordless(clientId, domain, defaultOptions);
-        window.localStorage.lastUsed = 'passwordless';
-        subscribeToEvents(lockPasswordless);
-        return lockPasswordless;
-      }
-      $(function () {
-        $('#btn-show-lock').on('click', function () {
-          clearLogs();
-          var lock = initLock();
-          lock.show({
-            languageDictionary: {
-              title: 'Lock'
-            }
-          });
-        });
-        $('#btn-show-passwordless').on('click', function () {
-          clearLogs();
-          var lockPasswordless = initPasswordless();
-          lockPasswordless.show({
-            languageDictionary: {
-              title: 'Passwordless'
-            }
-          });
-        });
-        $('#btn-logout').on('click', function () {
-          var lock = new Auth0Lock(clientId, domain, defaultOptions);
-          lock.logout();
-        });
-
-        //make sure we initialize Lock so we can parse the hash
-        var lastUsed = window.localStorage.lastUsed;
-        if (!lastUsed) {
-          return;
-        }
-        if (lastUsed === 'lock') {
-          initLock();
-        } else {
-          initPasswordless();
-        }
-        window.localStorage.removeItem('lastUsed');
+        ]
       });
+
+      if (colors.page_background) {
+        var css =
+          '.auth0-lock.auth0-lock .auth0-lock-overlay { background: ' +
+          colors.page_background +
+          ' }';
+        var style = document.createElement('style');
+
+        style.appendChild(document.createTextNode(css));
+
+        document.body.appendChild(style);
+      }
+
+      lock.show();
+      //  lock.on('show', () => {console.log('z')});
     </script>
   </body>
 </html>

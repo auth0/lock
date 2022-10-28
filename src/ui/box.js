@@ -10,7 +10,7 @@ class ContainerManager {
     if (!container && shouldAppend) {
       container = window.document.createElement('main');
       container.id = id;
-      container.className = 'auth0-lock-container';
+      container.className = 'eco-custom auth0-lock-container';
       window.document.body.appendChild(container);
     }
 

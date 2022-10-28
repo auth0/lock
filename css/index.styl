@@ -5,6 +5,7 @@
 @import "_animate"
 @import "_transitions"
 @import "_mixins&keyframes"
+@import "_custom"
 
 headerHeight = 100%
 submitHeight = 70px
@@ -27,6 +28,12 @@ loadingSize = 30px
   height auto !important
 
 // Lock base style
+
+.auth0-lock-content-body-wrapper 
+  // border 1px solid azure
+  margin-left auto
+  margin-right auto
+  max-width 480px
 
 
 .auth0-lock.auth0-lock
@@ -116,7 +123,9 @@ loadingSize = 30px
       display flex
 
   .auth0-lock-widget
-    width 300px
+    // width 300px
+    width: 800px;
+    // border: 1px solid magenta;
     opacity 0
     -webkit-transform translateY(100%) scale(.8)
     transform translateY(100%) scale(.8)
@@ -162,7 +171,9 @@ loadingSize = 30px
   // Lock header content
   .auth0-lock-header
     text-align center
-    padding 11px
+    // padding 11px
+    padding-bottom 11px
+    // border 3px dashed black
     color #333
     position relative
     background #fff
@@ -176,6 +187,8 @@ loadingSize = 30px
     flex-shrink 0
     flex-grow 0
     flex-basis auto
+    @media screen and (max-width: 480px)
+        padding 11px
 
   .auth0-lock-content-wrapper
     flex-grow: 1
@@ -246,7 +259,8 @@ loadingSize = 30px
     left 0
     pointer-events none
     +breakpoint("mobile")
-      background rgba(#f1f1f1,.8)
+      // background rgba(#f1f1f1,.8)
+      background: white
 
     .auth0-lock-header-bg-blur
       display none
@@ -288,14 +302,18 @@ loadingSize = 30px
     position relative
 
   .auth0-lock-header-logo
-    width auto
-    height 58px
-    display inline-block
-    margin 0 0 11px
+    // width auto
+    width 100%
+    // height 58px
+    // display inline-block
+    // margin 0 0 11px
     vertical-align middle
 
     &.centered
-      margin-top 20px
+      // margin-top 20px
+      // margin-top: -15px
+      @media screen and (max-width: 480px)
+        margin-top 0
 
   .auth0-lock-firstname
     font-size 18px
@@ -616,7 +634,7 @@ loadingSize = 30px
 
 
   .auth0-lock-terms
-    background #EEE
+    // background #EEE
     text-align center
     display block
     font-size 12px
@@ -639,7 +657,11 @@ loadingSize = 30px
     box-sizing border-box
     width 100%
     overflow hidden
-    border-radius 0 0 5px 5px
+    // border-radius 0 0 5px 5px
+    border-radius 5px 5px 5px 5px
+    display block
+    max-width 482px
+    margin 0 auto
     -webkit-transition .2s ease-in-out
     transition .2s ease-in-out
 
@@ -832,7 +854,8 @@ loadingSize = 30px
         +breakpoint("mobile")
           padding 10px 20px
         &.auth0-lock-list-code-highlighted
-          background-color #2EB5FF
+          // background-color #2EB5FF
+          background-color #12239e
           color white
 
 
@@ -949,11 +972,15 @@ loadingSize = 30px
     padding: 6px 10px
     -webkit-border-radius: 3px
     border-radius: 3px
-    background: rgba(255,255,255,0.1)
+    // background: rgba(255,255,255,0.1)
+    background white
+    // color #5C666F
+    color #67737d
 
     .auth0-lock-badge
       display inline-block
       color rgba(white,.7)
+      color #67737d
       font-size 14px
 
       svg
@@ -965,6 +992,9 @@ loadingSize = 30px
           g#LogoBadge
             fill #EB5424
             fill-opacity 1
+          g#LogoText
+            fill rgba(0, 0, 0, 0.87)
+            fill #67737d
 
 
   // Opened in modal
@@ -1021,8 +1051,10 @@ loadingSize = 30px
         -webkit-transition -webkit-transform .6s, opacity .6s
         transition transform .6s, opacity .6s
         -webkit-transition-delay .5s
+        -webkit-transition-delay .2s
         transition-delay .5s
-        box-shadow 0 0 40px 4px #111118
+        transition-delay .2s
+        // box-shadow 0 0 40px 4px #111118
 
       // mobile view
       @media screen and (max-width: 480px)
@@ -1036,9 +1068,11 @@ loadingSize = 30px
         border-radius 0
 
     .auth0-lock-widget-container
+      margin-top -48px
       //mobile view
       @media screen and (max-width: 480px)
         calculateHeight()
+        margin-top unset
 
     .auth0-lock-cred-pane
       //mobile view
@@ -1402,3 +1436,4 @@ input[type="button"]
 _:-ms-fullscreen, :root .auth0-lock.auth0-lock .auth0-lock-content-wrapper
   flex-basis: auto !important
   max-height: 70vh
+
