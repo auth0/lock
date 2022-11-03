@@ -180,6 +180,7 @@ export default class Base extends EventEmitter {
   }
 
   destroy() {
+    console.log('destroying..');
     removeLock(this.id);
   }
 

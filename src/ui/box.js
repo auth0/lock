@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import CSSCore from '../CSSCore';
 import Container from './box/container';
 
@@ -35,18 +35,26 @@ class Renderer {
     if (isModal && !this.modals[containerId]) {
       CSSCore.addClass(window.document.getElementsByTagName('html')[0], 'auth0-lock-html');
     }
-    // eslint-disable-next-line
-    const component = ReactDOM.render(<Container {...props} />, container);
 
+    const root = !this.modals[containerId]
+      ? ReactDOM.createRoot(container)
+      : this.modals[containerId].root;
+
+    // eslint-disable-next-line
+    const component = root.render(<Container {...props} />);
+    console.log(component);
     if (isModal) {
-      this.modals[containerId] = component;
+      this.modals[containerId] = { component, root };
     }
+
+    console.log(this.modals);
 
     return component;
   }
 
   remove(containerId) {
     if (this.modals[containerId]) {
+      console.log(this.modals);
       this.modals[containerId].hide();
       setTimeout(() => this.unmount(containerId), 1000);
     } else {
@@ -57,6 +65,7 @@ class Renderer {
   unmount(containerId) {
     try {
       const container = this.containerManager.ensure(containerId);
+      console.log(container);
       if (container) {
         ReactDOM.unmountComponentAtNode(container);
       }
