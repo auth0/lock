@@ -9,7 +9,6 @@ scripts/
 src/
 support/
 test/
-bower.json
 Gruntfile.js
 .css.map
 *~
