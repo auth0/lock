@@ -60,6 +60,7 @@
     "css-loader": "^0.28.11",
     "emojic": "^1.1.15",
     "enzyme": "^3.1.0",
+    "@cfaester/enzyme-adapter-react-18": "^0.6.0",
     "es-check": "^6.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
