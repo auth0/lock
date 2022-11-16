@@ -7,7 +7,6 @@
 
 ## Documentation 
 
-- [FAQs](https://github.com/auth0/lock/blob/master/FAQ.md) - frequently asked questions about lock.
 - [Docs Site](https://auth0.com/docs) - explore our Docs site and learn more about Auth0.
 
 ## Getting Started
