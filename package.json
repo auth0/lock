@@ -4,6 +4,7 @@
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
+  "homepage": "https://github.com/auth0/lock",
   "keywords": [
     "auth0",
     "auth",
