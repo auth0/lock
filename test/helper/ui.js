@@ -227,6 +227,9 @@ const hasFlashMessage = (query, lock, message) => {
 export const hasErrorMessage = (lock, message) => {
   return hasFlashMessage('.auth0-global-message-error', lock, message);
 };
+export const hasErrorMessageElement = lock => {
+  return q(lock, '.auth0-global-message-error');
+};
 export const hasSuccessMessage = (lock, message) => {
   return hasFlashMessage('.auth0-global-message-success', lock, message);
 };
