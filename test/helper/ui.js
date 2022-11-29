@@ -227,10 +227,6 @@ const hasFlashMessage = (query, lock, message) => {
 export const hasErrorMessage = (lock, message) => {
   return hasFlashMessage('.auth0-global-message-error', lock, message);
 };
-export const hasErrorMessageElement = lock => {
-  return q(lock, '.auth0-global-message-error');
-
-}
 export const hasSuccessMessage = (lock, message) => {
   return hasFlashMessage('.auth0-global-message-success', lock, message);
 };
@@ -339,6 +335,12 @@ export const waitUntilInputExists = (lock, name, cb, timeout) =>
 
 export const waitUntilErrorExists = (lock, cb, timeout) =>
   waitUntilExists(lock, '.auth0-global-message-error span', cb, timeout);
+
+export const waitUntilSuccessFlashExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-global-message-success', cb, timeout);
+
+export const waitUntilInfoFlashExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-global-message-info', cb, timeout);
 
 export const waitForSSONotice = (lock, cb, timeout) =>
   waitUntilExists(lock, '.auth0-sso-notice-container', cb, timeout);

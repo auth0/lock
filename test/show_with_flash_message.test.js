@@ -79,10 +79,12 @@ describe('show lock with flash message', function () {
       const lock = new Auth0Lock('cid', 'domain');
 
       lock.on('show', () => {
-        var hasSuccessMessage = h.hasSuccessMessage(lock, 'success message');
-        expect(hasSuccessMessage).to.be.ok();
-        lock.hide();
-        done();
+        h.waitUntilSuccessFlashExists(lock, () => {
+          var hasSuccessMessage = h.hasSuccessMessage(lock, 'success message');
+          expect(hasSuccessMessage).to.be.ok();
+          lock.hide();
+          done();
+        });
       });
 
       lock.show({
@@ -97,10 +99,12 @@ describe('show lock with flash message', function () {
       const lock = new Auth0Lock('cid', 'domain');
 
       lock.on('show', () => {
-        var hasInfoMessage = h.hasInfoMessage(lock, 'an info message');
-        expect(hasInfoMessage).to.be.ok();
-        lock.hide();
-        done();
+        h.waitUntilInfoFlashExists(lock, () => {
+          var hasInfoMessage = h.hasInfoMessage(lock, 'an info message');
+          expect(hasInfoMessage).to.be.ok();
+          lock.hide();
+          done();
+        });
       });
 
       lock.show({
