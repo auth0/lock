@@ -71,9 +71,11 @@ describe('captcha on signup', function () {
 
       it('should not submit the form if the captcha is not provided', function (done) {
         h.signUpWithEmailAndPassword(this.lock, () => {
-          expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
-          done();
+          h.waitUntilErrorExists(this.lock, () => {
+            expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+            done();
+          });
         });
       });
     });
@@ -107,7 +109,9 @@ describe('captcha on signup', function () {
             h.fillComplexPassword(this.lock);
             h.submitForm(this.lock);
 
-            expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+            h.waitUntilInputExists(this.lock, 'captcha', () => {
+              expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+            });
           });
         });
       });
@@ -136,9 +140,11 @@ describe('captcha on signup', function () {
       it('should not submit the form if the captcha is not provided', function (done) {
         h.waitForEmailAndPasswordInput(this.lock, () => {
           h.signUpWithEmailAndPassword(this.lock, () => {
-            expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
-            done();
+            h.waitUntilErrorExists(this.lock, () => {
+              expect(h.wasSignUpAttemptedWith({})).not.to.be.ok();
+              expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+              done();
+            });
           });
         });
       });

@@ -38,7 +38,9 @@ class Renderer {
     // eslint-disable-next-line
     const root = this.modals[containerId] ? this.modals[containerId].root : createRoot(container);
 
-    this.modals[containerId] = { root };
+    if (!this.modals[containerId]) {
+      this.modals[containerId] = { root };
+    }
 
     root.render(
       <Container

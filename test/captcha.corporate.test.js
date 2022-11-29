@@ -71,9 +71,11 @@ describe('captcha (corporate connection)', function () {
 
       it('should not submit the form if the captcha is not provided', function (done) {
         h.logInWithUsernameAndPassword(this.lock, () => {
-          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
-          done();
+          h.waitUntilErrorExists(this.lock, () => {
+            expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+            done();
+          });
         });
       });
     });
@@ -136,9 +138,11 @@ describe('captcha (corporate connection)', function () {
 
       it('should not submit the form if the captcha is not provided', function (done) {
         h.logInWithUsernameAndPassword(this.lock, () => {
-          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
-          done();
+          h.waitUntilErrorExists(this.lock, () => {
+            expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+            done();
+          });
         });
       });
     });
