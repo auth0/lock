@@ -1,4 +1,9 @@
 {
-  "plugins": ["version-inline", "transform-css-import-to-string", "babel-plugin-stylus-compiler"],
+  "plugins": [
+    "version-inline",
+    "transform-css-import-to-string",
+    "babel-plugin-stylus-compiler",
+    "@babel/plugin-proposal-function-bind"
+  ],
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }

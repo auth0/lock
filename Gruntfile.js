@@ -142,11 +142,13 @@ module.exports = function (grunt) {
   grunt.registerTask('design', ['prepare_dev', 'webpack-dev-server:design']);
   grunt.registerMultiTask('i18n', 'Prepares i18n files to be hosted in CDN', function () {
     var languages = {};
+
     var Auth0 = {
       registerLanguageDictionary: function (lang, dict) {
         languages[lang] = dict;
       }
     };
+
     this.files.forEach(function (file) {
       var filename = file.src[0];
       var lang = path.basename(filename, '.js');
