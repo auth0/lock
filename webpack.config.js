@@ -16,7 +16,6 @@ module.exports = {
     aggregateTimeout: 500,
     poll: true
   },
-  inline: true,
   stats: {
     colors: true,
     modules: true,
