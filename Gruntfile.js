@@ -29,7 +29,7 @@ function getDevCerts() {
   return result;
 }
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   const pkg_info = grunt.file.readJSON('package.json');
 
   grunt.initConfig({
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       touch_index: 'touch src/index.js'
     },
     webpack: {
-      options: webpackConfig,
+      options: { ...webpackConfig, mode: 'production' },
       build: {
         devtool: 'source-map',
         output: {
@@ -80,11 +80,6 @@ module.exports = function(grunt) {
             }
           }),
           new webpack.optimize.AggressiveMergingPlugin(),
-          new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false, screw_ie8: true },
-            sourceMap: true,
-            comments: false
-          }),
           new UnminifiedWebpackPlugin(),
           new webpack.BannerPlugin({
             raw: false,
@@ -146,14 +141,14 @@ module.exports = function(grunt) {
   grunt.registerTask('prepare_dev', ['clean:dev']);
   grunt.registerTask('dev', ['prepare_dev', 'webpack-dev-server:dev']);
   grunt.registerTask('design', ['prepare_dev', 'webpack-dev-server:design']);
-  grunt.registerMultiTask('i18n', 'Prepares i18n files to be hosted in CDN', function() {
+  grunt.registerMultiTask('i18n', 'Prepares i18n files to be hosted in CDN', function () {
     var languages = {};
     var Auth0 = {
-      registerLanguageDictionary: function(lang, dict) {
+      registerLanguageDictionary: function (lang, dict) {
         languages[lang] = dict;
       }
     };
-    this.files.forEach(function(file) {
+    this.files.forEach(function (file) {
       var filename = file.src[0];
       var lang = path.basename(filename, '.js');
       var dict = require('./' + filename).default || require('./' + filename);
