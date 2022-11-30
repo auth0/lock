@@ -3,7 +3,6 @@
 const path = require('path');
 const fs = require('fs');
 const tmp = require('tmp');
-const pkg = require('./package');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
