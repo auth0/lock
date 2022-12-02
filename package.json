@@ -67,7 +67,7 @@
     "babel-plugin-stylus-compiler": "^1.4.0",
     "babel-plugin-transform-css-import-to-string": "0.0.2",
     "babel-plugin-version-inline": "^1.0.0",
-    "babelify": "^8.0.0",
+    "babelify": "^10.0.0",
     "browserify": "^17.0.0",
     "bump-version": "^0.5.0",
     "chalk": "^4.1.2",
@@ -96,8 +96,8 @@
     "jest-environment-jsdom": "^29.3.1",
     "jest-environment-jsdom-global": "^4.0.0",
     "json-beautify": "^1.0.1",
-    "karma": "^6.3.4",
-    "karma-babel-preprocessor": "^7.0.0",
+    "karma": "^6.4.1",
+    "karma-babel-preprocessor": "^8.0.2",
     "karma-browserify": "^8.1.0",
     "karma-browserstack-launcher": "^1.6.0",
     "karma-chrome-launcher": "^3.1.0",
@@ -138,10 +138,6 @@
     "trim": "^1.0.1",
     "url-join": "^1.1.0",
     "validator": "^13.6.0"
-  },
-  "resolutions": {
-    "node-fetch": "^2.6.1",
-    "crypto-js": "^4.1.1"
   },
   "ccu": {
     "name": "lock",
