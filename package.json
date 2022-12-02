@@ -112,7 +112,6 @@
     "dompurify": "^2.3.7",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.1",
-    "node-fetch": "^2.6.1",
     "password-sheriff": "^1.1.1",
     "prop-types": "^15.8.0",
     "qs": "^6.10.3",
