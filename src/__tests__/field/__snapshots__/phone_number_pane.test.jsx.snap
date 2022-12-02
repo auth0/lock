@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PhoneNumberPane calls \`startOptionSelection\` when SelectInput is clicked 1`] = `
-Array [
+[
   1,
   "location",
   "",
@@ -46,7 +46,7 @@ Array [
 `;
 
 exports[`PhoneNumberPane calls \`swap\` when PhoneNumberInput changes 1`] = `
-Array [
+[
   "updateEntity",
   "lock",
   1,
@@ -107,7 +107,6 @@ exports[`PhoneNumberPane disables input when submitting 1`] = `
   <div
     data-__type="phone_number_input"
     data-disabled={true}
-    data-invalidHint={undefined}
     data-isValid={false}
     data-onChange={[Function]}
     data-placeholder="placeholder"
@@ -168,7 +167,6 @@ exports[`PhoneNumberPane renders correctly 1`] = `
   <div
     data-__type="phone_number_input"
     data-disabled={false}
-    data-invalidHint={undefined}
     data-isValid={false}
     data-onChange={[Function]}
     data-placeholder="placeholder"
@@ -229,7 +227,6 @@ exports[`PhoneNumberPane sets isValid as true when \`isFieldVisiblyInvalid\` is 
   <div
     data-__type="phone_number_input"
     data-disabled={false}
-    data-invalidHint={undefined}
     data-isValid={true}
     data-onChange={[Function]}
     data-placeholder="placeholder"
@@ -295,7 +292,6 @@ exports[`PhoneNumberPane shows header when instructions are available 1`] = `
   <div
     data-__type="phone_number_input"
     data-disabled={false}
-    data-invalidHint={undefined}
     data-isValid={false}
     data-onChange={[Function]}
     data-placeholder="placeholder"

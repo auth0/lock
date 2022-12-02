@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`initTenant() filters clientConnections 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [
-      Object {
+{
+  "connections": {
+    "database": [
+      {
         "allowForgot": true,
         "allowSignup": true,
         "name": "test-connection-database",
-        "passwordPolicy": Object {
-          "length": Object {
+        "passwordPolicy": {
+          "length": {
             "minLength": 1,
           },
         },
@@ -19,124 +19,124 @@ Object {
         "validation": null,
       },
     ],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }
 `;
 
 exports[`initTenant() with database connection fixes validation when username.min > username.max 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [
-      Object {
+{
+  "connections": {
+    "database": [
+      {
         "allowForgot": false,
         "allowSignup": false,
         "name": "test-connection-database",
-        "passwordPolicy": Object {
-          "length": Object {
+        "passwordPolicy": {
+          "length": {
             "minLength": 1,
           },
         },
         "requireUsername": true,
         "strategy": "auth0",
         "type": "database",
-        "validation": Object {
-          "username": Object {
+        "validation": {
+          "username": {
             "max": 15,
             "min": 1,
           },
         },
       },
     ],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }
 `;
 
 exports[`initTenant() with database connection fixes validation when values are not numbers 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [
-      Object {
+{
+  "connections": {
+    "database": [
+      {
         "allowForgot": false,
         "allowSignup": false,
         "name": "test-connection-database",
-        "passwordPolicy": Object {
-          "length": Object {
+        "passwordPolicy": {
+          "length": {
             "minLength": 1,
           },
         },
         "requireUsername": true,
         "strategy": "auth0",
         "type": "database",
-        "validation": Object {
-          "username": Object {
+        "validation": {
+          "username": {
             "max": 15,
             "min": 1,
           },
         },
       },
     ],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }
 `;
 
 exports[`initTenant() with database connection maps connection correctly with all the properties 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [
-      Object {
+{
+  "connections": {
+    "database": [
+      {
         "allowForgot": false,
         "allowSignup": false,
         "name": "test-connection-database",
-        "passwordPolicy": Object {
-          "length": Object {
+        "passwordPolicy": {
+          "length": {
             "minLength": 1,
           },
         },
         "requireUsername": true,
         "strategy": "auth0",
         "type": "database",
-        "validation": Object {
-          "username": Object {
+        "validation": {
+          "username": {
             "max": 5,
             "min": 4,
           },
         },
       },
     ],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }
 `;
 
 exports[`initTenant() with database connection maps connection correctly with defaults 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [
-      Object {
+{
+  "connections": {
+    "database": [
+      {
         "allowForgot": true,
         "allowSignup": true,
         "name": "test-connection-database",
-        "passwordPolicy": Object {
-          "length": Object {
+        "passwordPolicy": {
+          "length": {
             "minLength": 1,
           },
         },
@@ -146,84 +146,84 @@ Object {
         "validation": null,
       },
     ],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }
 `;
 
 exports[`initTenant() with database connection maps password policy correctly 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [
-      Object {
+{
+  "connections": {
+    "database": [
+      {
         "allowForgot": false,
         "allowSignup": false,
         "name": "test-connection-database",
-        "passwordPolicy": Object {
-          "length": Object {
+        "passwordPolicy": {
+          "length": {
             "minLength": 6,
           },
         },
         "requireUsername": true,
         "strategy": "auth0",
         "type": "database",
-        "validation": Object {
+        "validation": {
           "passwordPolicy": "low",
-          "username": Object {
+          "username": {
             "max": 5,
             "min": 4,
           },
         },
       },
     ],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }
 `;
 
 exports[`initTenant() with enterprise connection maps connection correctly 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [],
-    "enterprise": Array [
-      Object {
+{
+  "connections": {
+    "database": [],
+    "enterprise": [
+      {
         "domains": "domains",
         "name": "test-connection-enterprise",
         "strategy": "auth0",
         "type": "enterprise",
       },
     ],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }
 `;
 
 exports[`initTenant() with other connection types maps connection correctly 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [
-      Object {
+{
+  "connections": {
+    "database": [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [
+      {
         "name": "test-connection-other_type",
         "strategy": "auth0",
         "type": "social",
       },
     ],
-    "unknown": Array [
-      Object {
+    "unknown": [
+      {
         "name": "??",
         "strategy": "??",
         "type": "unknown",
@@ -235,13 +235,13 @@ Object {
 `;
 
 exports[`initTenant() with passwordless connection maps connection correctly 1`] = `
-Object {
-  "connections": Object {
-    "database": Array [],
-    "enterprise": Array [],
-    "passwordless": Array [],
-    "social": Array [],
-    "unknown": Array [],
+{
+  "connections": {
+    "database": [],
+    "enterprise": [],
+    "passwordless": [],
+    "social": [],
+    "unknown": [],
   },
   "defaultDirectory": null,
 }

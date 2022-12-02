@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VcodePane calls \`onRestart\` when alternative link is clicked 1`] = `
-Array [
+[
   1,
 ]
 `;
 
 exports[`VcodePane calls \`swap\` when VcodeInput changes 1`] = `
-Array [
+[
   "updateEntity",
   "lock",
   1,

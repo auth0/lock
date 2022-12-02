@@ -8,16 +8,16 @@ exports[`The quick auth screen renders the connection using the connection displ
     className="auth0-lock-social-button auth0-lock-social-big-button"
     data-provider="auth0"
     onClick={[Function]}
-    style={Object {}}
+    style={{}}
     type="button"
   >
     <div
       className="auth0-lock-social-button-icon"
-      style={Object {}}
+      style={{}}
     />
     <div
       className="auth0-lock-social-button-text"
-      style={Object {}}
+      style={{}}
     >
       loginAtLabel,My Connection
     </div>
@@ -40,16 +40,16 @@ exports[`The quick auth screen renders the connection using the connection domai
     className="auth0-lock-social-button auth0-lock-social-big-button"
     data-provider="auth0"
     onClick={[Function]}
-    style={Object {}}
+    style={{}}
     type="button"
   >
     <div
       className="auth0-lock-social-button-icon"
-      style={Object {}}
+      style={{}}
     />
     <div
       className="auth0-lock-social-button-text"
-      style={Object {}}
+      style={{}}
     >
       loginAtLabel,test.com
     </div>
@@ -72,16 +72,16 @@ exports[`The quick auth screen renders the connection using the connection name 
     className="auth0-lock-social-button auth0-lock-social-big-button"
     data-provider="auth0"
     onClick={[Function]}
-    style={Object {}}
+    style={{}}
     type="button"
   >
     <div
       className="auth0-lock-social-button-icon"
-      style={Object {}}
+      style={{}}
     />
     <div
       className="auth0-lock-social-button-text"
-      style={Object {}}
+      style={{}}
     >
       loginAtLabel,Test
     </div>
@@ -104,16 +104,16 @@ exports[`The quick auth screen renders the connection using the display name whe
     className="auth0-lock-social-button auth0-lock-social-big-button"
     data-provider="auth0"
     onClick={[Function]}
-    style={Object {}}
+    style={{}}
     type="button"
   >
     <div
       className="auth0-lock-social-button-icon"
-      style={Object {}}
+      style={{}}
     />
     <div
       className="auth0-lock-social-button-text"
-      style={Object {}}
+      style={{}}
     >
       loginAtLabel,My Connection
     </div>
@@ -136,16 +136,16 @@ exports[`The quick auth screen renders the connection using the domain 1`] = `
     className="auth0-lock-social-button auth0-lock-social-big-button"
     data-provider="auth0"
     onClick={[Function]}
-    style={Object {}}
+    style={{}}
     type="button"
   >
     <div
       className="auth0-lock-social-button-icon"
-      style={Object {}}
+      style={{}}
     />
     <div
       className="auth0-lock-social-button-text"
-      style={Object {}}
+      style={{}}
     >
       loginAtLabel,test.com
     </div>

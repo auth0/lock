@@ -3,7 +3,7 @@
 exports[`setResolvedConnection accepts only database connections 1`] = `"Invalid connection type. Only database connections can be resolved with a custom resolver."`;
 
 exports[`setResolvedConnection sets the connection 1`] = `
-Array [
+[
   "m",
   "resolvedConnection",
   Immutable.Map {
@@ -14,32 +14,32 @@ Array [
 `;
 
 exports[`setResolvedConnection sets undefined when is called with undefined 1`] = `
-Array [
+[
   "m",
   "resolvedConnection",
   undefined,
 ]
 `;
 
-exports[`setResolvedConnection validates format 1`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
+exports[`setResolvedConnection validates format 1`] = `"Invalid connection object. The resolved connection must look like: \`{ type: "database", name: "connection name" }\`."`;
 
-exports[`setResolvedConnection validates format 2`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
+exports[`setResolvedConnection validates format 2`] = `"Invalid connection object. The resolved connection must look like: \`{ type: "database", name: "connection name" }\`."`;
 
-exports[`setResolvedConnection validates format 3`] = `"Invalid connection object. The resolved connection must look like: \`{ type: \\"database\\", name: \\"connection name\\" }\`."`;
+exports[`setResolvedConnection validates format 3`] = `"Invalid connection object. The resolved connection must look like: \`{ type: "database", name: "connection name" }\`."`;
 
 exports[`setup should work with redirect:false and responseType:id_token 1`] = `
-Object {
-  "allowedConnections": Array [],
-  "auth": Object {
+{
+  "allowedConnections": [],
+  "auth": {
     "audience": undefined,
     "autoParseHash": true,
-    "connectionScopes": Object {},
+    "connectionScopes": {},
     "nonce": undefined,
-    "params": Object {
+    "params": {
       "scope": "openid profile email",
     },
     "redirect": false,
-    "redirectUrl": "https://test.com/path/",
+    "redirectUrl": "http://localhost/",
     "responseMode": undefined,
     "responseType": "id_token",
     "sso": true,
@@ -54,26 +54,26 @@ Object {
   "handleEventFn": "handleEventFn",
   "hashCleanup": true,
   "hookRunner": "hookRunner",
-  "hooks": Object {},
+  "hooks": {},
   "languageBaseUrl": "https://cdn.auth0.com",
-  "prefill": Object {},
+  "prefill": {},
   "tenantBaseUrl": "https://domain/info-v1.js",
-  "ui": Object {
+  "ui": {
     "allowAutocomplete": false,
     "allowPasswordAutocomplete": false,
     "allowShowPassword": false,
     "appendContainer": true,
-    "authButtonsTheme": Object {},
+    "authButtonsTheme": {},
     "autoclose": false,
     "autofocus": true,
     "avatar": true,
-    "avatarProvider": Object {
+    "avatarProvider": {
       "displayName": [Function],
       "url": [Function],
     },
     "closable": true,
     "containerID": "auth0-lock-container-id",
-    "dict": Object {},
+    "dict": {},
     "disableWarnings": false,
     "forceAutoHeight": false,
     "hideMainScreenTitle": false,
@@ -81,7 +81,7 @@ Object {
     "language": "en",
     "logo": undefined,
     "mobile": false,
-    "popupOptions": Object {},
+    "popupOptions": {},
     "preferConnectionDisplayName": false,
     "primaryColor": undefined,
     "rememberLastLogin": true,

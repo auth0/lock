@@ -4,17 +4,17 @@ exports[`AuthButton renders correctly 1`] = `
 <a
   className="auth0-lock-social-button auth0-lock-social-big-button"
   data-provider="strategy"
-  onClick={[Function]}
-  style={Object {}}
+  onClick={[MockFunction]}
+  style={{}}
   type="button"
 >
   <div
     className="auth0-lock-social-button-icon"
-    style={Object {}}
+    style={{}}
   />
   <div
     className="auth0-lock-social-button-text"
-    style={Object {}}
+    style={{}}
   >
     label
   </div>
@@ -25,9 +25,9 @@ exports[`AuthButton renders with style customizations 1`] = `
 <a
   className="auth0-lock-social-button auth0-lock-social-big-button"
   data-provider="strategy"
-  onClick={[Function]}
+  onClick={[MockFunction]}
   style={
-    Object {
+    {
       "backgroundColor": "primaryColor",
     }
   }
@@ -36,7 +36,7 @@ exports[`AuthButton renders with style customizations 1`] = `
   <div
     className="auth0-lock-social-button-icon"
     style={
-      Object {
+      {
         "backgroundImage": "url('test')",
       }
     }
@@ -44,7 +44,7 @@ exports[`AuthButton renders with style customizations 1`] = `
   <div
     className="auth0-lock-social-button-text"
     style={
-      Object {
+      {
         "color": "foregroundColor",
       }
     }

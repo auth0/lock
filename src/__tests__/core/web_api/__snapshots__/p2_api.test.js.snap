@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Auth0APIClient getSSOData should call client.client.getSSOData 1`] = `
-Array [
+[
   true,
   [Function],
 ]
 `;
 
 exports[`Auth0APIClient getUserCountry should call getUserCountry 1`] = `
-Array [
+[
   "cb",
 ]
 `;
 
 exports[`Auth0APIClient init with overrides always uses telemetry set in the \`auth0Client\` query param and inside the ULP 1`] = `
-Object {
-  "env": Object {
+{
+  "env": {
     "auth0.js-ulp": "a0js.version",
     "envOverride": true,
     "lock.js-ulp": "lock.version",
@@ -26,10 +26,10 @@ Object {
 `;
 
 exports[`Auth0APIClient init with overrides forwards options to WebAuth 1`] = `
-Object {
+{
   "_sendTelemetry": true,
-  "_telemetryInfo": Object {
-    "env": Object {
+  "_telemetryInfo": {
+    "env": {
       "auth0.js": "a0js.version",
     },
     "name": "lock.js",
@@ -41,13 +41,13 @@ Object {
   "leeway": 30,
   "legacySameSiteCookie": undefined,
   "nonce": "nonce",
-  "overrides": Object {
+  "overrides": {
     "__jwks_uri": "https://jwks.com",
     "__tenant": "tenant1",
     "__token_issuer": "issuer1",
   },
-  "plugins": Array [
-    Object {
+  "plugins": [
+    {
       "name": "ExamplePlugin",
     },
   ],
@@ -60,10 +60,10 @@ Object {
 `;
 
 exports[`Auth0APIClient init with overrides forwards options to WebAuth with a default leeway 1`] = `
-Object {
+{
   "_sendTelemetry": true,
-  "_telemetryInfo": Object {
-    "env": Object {
+  "_telemetryInfo": {
+    "env": {
       "auth0.js": "a0js.version",
     },
     "name": "lock.js",
@@ -75,13 +75,13 @@ Object {
   "leeway": 60,
   "legacySameSiteCookie": undefined,
   "nonce": "nonce",
-  "overrides": Object {
+  "overrides": {
     "__jwks_uri": "https://jwks.com",
     "__tenant": "tenant1",
     "__token_issuer": "issuer1",
   },
-  "plugins": Array [
-    Object {
+  "plugins": [
+    {
       "name": "ExamplePlugin",
     },
   ],
@@ -94,8 +94,8 @@ Object {
 `;
 
 exports[`Auth0APIClient init with overrides overrides telemetry when outside the ULP 1`] = `
-Object {
-  "env": Object {
+{
+  "env": {
     "auth0.js": "a0js.version",
     "envOverride": true,
     "lock.js": "lock.version",
@@ -106,7 +106,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn should trim spaces in the email 1`] = `
-Object {
+{
   "email": "foo@example.com",
   "nonce": undefined,
   "popupOptions": undefined,
@@ -117,7 +117,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn should trim spaces in the mfa_code 1`] = `
-Object {
+{
   "mfa_code": "123456",
   "nonce": undefined,
   "popupOptions": undefined,
@@ -129,7 +129,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn should trim spaces in the username 1`] = `
-Object {
+{
   "nonce": undefined,
   "popupOptions": undefined,
   "realm": undefined,
@@ -140,7 +140,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn should trim spaces in the username with a space 1`] = `
-Object {
+{
   "nonce": undefined,
   "popupOptions": undefined,
   "realm": undefined,
@@ -151,7 +151,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn with credentials should call client.login 1`] = `
-Object {
+{
   "nonce": undefined,
   "popupOptions": undefined,
   "realm": undefined,
@@ -162,7 +162,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is false 1`] = `
-Object {
+{
   "nonce": undefined,
   "popupOptions": undefined,
   "scope": undefined,
@@ -172,7 +172,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn with credentials should call popup.loginWithCredentials when redirect is false and sso is true 1`] = `
-Object {
+{
   "nonce": undefined,
   "popupOptions": undefined,
   "scope": undefined,
@@ -182,7 +182,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call authorize when redirect===true 1`] = `
-Object {
+{
   "nonce": undefined,
   "popupOptions": undefined,
   "scope": undefined,
@@ -191,7 +191,7 @@ Object {
 `;
 
 exports[`Auth0APIClient logIn with social/enterprise (without username and email) should call popup.authorize when redirect===false 1`] = `
-Object {
+{
   "nonce": undefined,
   "owp": true,
   "popupOptions": undefined,
@@ -201,8 +201,8 @@ Object {
 `;
 
 exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableIdPInitiatedLogin===true 1`] = `
-Array [
-  Object {
+[
+  {
     "__enableIdPInitiatedLogin": true,
     "hash": "hash",
     "nonce": undefined,
@@ -213,8 +213,8 @@ Array [
 `;
 
 exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin when options._enableImpersonation===true 1`] = `
-Array [
-  Object {
+[
+  {
     "__enableIdPInitiatedLogin": true,
     "hash": "hash",
     "nonce": undefined,
@@ -225,8 +225,8 @@ Array [
 `;
 
 exports[`Auth0APIClient parseHash should pass __enableIdPInitiatedLogin:false when options._enableImpersonation and options._enableIdPInitiatedLogin are not present 1`] = `
-Array [
-  Object {
+[
+  {
     "__enableIdPInitiatedLogin": false,
     "hash": "hash",
     "nonce": undefined,
@@ -237,8 +237,8 @@ Array [
 `;
 
 exports[`Auth0APIClient passwordlessStart should call client.passwordlessStart 1`] = `
-Array [
-  Object {
+[
+  {
     "foo": "bar",
   },
   [Function],
@@ -246,20 +246,20 @@ Array [
 `;
 
 exports[`Auth0APIClient passwordlessStart should trim spaces in the email 1`] = `
-Object {
+{
   "email": "foo@example.com",
 }
 `;
 
 exports[`Auth0APIClient passwordlessStart should trim spaces in the phoneNumber 1`] = `
-Object {
+{
   "phoneNumber": "+554899999",
 }
 `;
 
 exports[`Auth0APIClient passwordlessVerify should call client.passwordlessLogin 1`] = `
-Array [
-  Object {
+[
+  {
     "foo": "bar",
     "popup": true,
   },
@@ -268,51 +268,51 @@ Array [
 `;
 
 exports[`Auth0APIClient passwordlessVerify should trim spaces in the email 1`] = `
-Object {
+{
   "email": " foo@example.com ",
   "popup": false,
 }
 `;
 
 exports[`Auth0APIClient passwordlessVerify should trim spaces in the phoneNumber 1`] = `
-Object {
+{
   "phoneNumber": " +554899999 ",
   "popup": false,
 }
 `;
 
 exports[`Auth0APIClient resetPassword should trim spaces in the email 1`] = `
-Object {
+{
   "email": "foo@example.com",
 }
 `;
 
 exports[`Auth0APIClient resetPassword should trim spaces in the username 1`] = `
-Object {
+{
   "username": "foo",
 }
 `;
 
 exports[`Auth0APIClient resetPassword should trim spaces in the username with a space 1`] = `
-Object {
+{
   "username": "foo bar",
 }
 `;
 
 exports[`Auth0APIClient signUp should trim spaces in the email 1`] = `
-Object {
+{
   "email": "foo@example.com",
 }
 `;
 
 exports[`Auth0APIClient signUp should trim spaces in the username 1`] = `
-Object {
+{
   "username": "foo",
 }
 `;
 
 exports[`Auth0APIClient signUp should trim spaces in the username with a space 1`] = `
-Object {
+{
   "username": "foo bar",
 }
 `;

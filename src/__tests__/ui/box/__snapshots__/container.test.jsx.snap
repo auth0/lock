@@ -20,26 +20,16 @@ exports[`Container when suppressSubmitOverlay is true it does not display the ov
         <div
           data-__type="chrome"
           data-autofocus={false}
-          data-auxiliaryPane={undefined}
-          data-avatar={undefined}
-          data-backHandler={undefined}
           data-classNames=""
           data-contentComponent={null}
-          data-contentProps={Object {}}
+          data-contentProps={{}}
           data-disableSubmitButton={false}
-          data-error={undefined}
-          data-info={undefined}
           data-isSubmitting={true}
           data-logo=""
           data-primaryColor=""
           data-screenName="Test"
           data-scrollGlobalMessagesIntoView={true}
           data-showSubmitButton={false}
-          data-submitButtonLabel={undefined}
-          data-success={undefined}
-          data-tabs={undefined}
-          data-terms={undefined}
-          data-title={undefined}
         />
       </div>
     </form>
@@ -48,15 +38,15 @@ exports[`Container when suppressSubmitOverlay is true it does not display the ov
 `;
 
 exports[`Container with a custom \`connectionResolver\` calls \`connectionResolver\` onSubmit 1`] = `
-Array [
+[
   "peter_picked@pickledpepper.com",
-  Object {
-    "connections": Object {
-      "database": Array [
-        Object {
+  {
+    "connections": {
+      "database": [
+        {
           "name": "dbA",
         },
-        Object {
+        {
           "name": "dbB",
         },
       ],
@@ -68,14 +58,14 @@ Array [
 `;
 
 exports[`Container with a custom \`connectionResolver\` calls \`setResolvedConnection\` in the \`swap\` callback 1`] = `
-Array [
+[
   "model",
   "resolvedConnection",
 ]
 `;
 
 exports[`Container with a custom \`connectionResolver\` calls \`swap\` in the \`connectionResolver\` callback 1`] = `
-Array [
+[
   "updateEntity",
   "lock",
   undefined,

@@ -56,7 +56,7 @@ describe('ResetPasswordScreen', () => {
     require('connection/enterprise').isEnterpriseDomain = () => true;
     const screen = getScreen();
     expect(screen.isSubmitDisabled()).toBe(true);
-    jest.runTimersToTime(50);
+    jest.advanceTimersByTime(50);
     expect(require('store/index').swap.mock.calls[0]).toMatchSnapshot();
   });
 

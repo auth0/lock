@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmailPane calls \`swap\` onChange 1`] = `
-Array [
+[
   "updateEntity",
   "lock",
   1,
@@ -35,7 +35,6 @@ exports[`EmailPane sets \`blankErrorHint\` when username is empty 1`] = `
   data-lockId={1}
   data-onChange={[Function]}
   data-placeholder="placeholder"
-  data-value={undefined}
 />
 `;
 

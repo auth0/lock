@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`normalizeError access_denied to invalid_user_password mapping domain doesn't match current host should map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
-Object {
+{
   "code": "invalid_user_password",
   "description": "foobar",
   "error": "invalid_user_password",
@@ -9,7 +9,7 @@ Object {
 `;
 
 exports[`normalizeError access_denied to invalid_user_password mapping domain doesn't match current host should map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
-Object {
+{
   "code": "invalid_user_password",
   "description": "foobar",
   "error": "invalid_user_password",
@@ -17,7 +17,7 @@ Object {
 `;
 
 exports[`normalizeError access_denied to invalid_user_password mapping domain is undefined should map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
-Object {
+{
   "code": "invalid_user_password",
   "description": "foobar",
   "error": "invalid_user_password",
@@ -25,7 +25,7 @@ Object {
 `;
 
 exports[`normalizeError access_denied to invalid_user_password mapping domain is undefined should map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
-Object {
+{
   "code": "invalid_user_password",
   "description": "foobar",
   "error": "invalid_user_password",
@@ -33,7 +33,7 @@ Object {
 `;
 
 exports[`normalizeError access_denied to invalid_user_password mapping domain match current host should not map access_denied error to invalid_user_password when error.code === access_denied 1`] = `
-Object {
+{
   "code": "invalid_user_password",
   "description": "foobar",
   "error": "invalid_user_password",
@@ -41,7 +41,7 @@ Object {
 `;
 
 exports[`normalizeError access_denied to invalid_user_password mapping domain match current host should not map access_denied error to invalid_user_password when error.error === access_denied 1`] = `
-Object {
+{
   "code": "invalid_user_password",
   "description": "foobar",
   "error": "invalid_user_password",
@@ -49,7 +49,7 @@ Object {
 `;
 
 exports[`webAuthOverrides should omit overrides that are not compatible with WebAuth 1`] = `
-Object {
+{
   "__jwks_uri": "https://jwks.com",
   "__tenant": "tenant1",
   "__token_issuer": "issuer1",
@@ -57,7 +57,7 @@ Object {
 `;
 
 exports[`webAuthOverrides should return overrides if any field is compatible with WebAuth 1`] = `
-Object {
+{
   "__jwks_uri": "https://jwks.com",
   "__tenant": "tenant1",
   "__token_issuer": "issuer1",
