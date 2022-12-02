@@ -12,7 +12,7 @@ export default class Slider extends React.Component {
   // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps) {
     // TODO: take a prop to identify what are we rendering instead of
-    // infering it from children keys so we can accept more than one
+    // inferring it from children keys so we can accept more than one
     // child (we are already wrapping them).
     if (this.state.children.current.key != nextProps.children.key) {
       this.setState({

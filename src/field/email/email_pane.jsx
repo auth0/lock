@@ -35,7 +35,7 @@ export default class EmailPane extends React.Component {
     const valid = field.get('valid', true);
 
     // TODO: invalidErrorHint and blankErrorHint are deprecated.
-    // They are kept for backwards compatibiliy in the code for the customers overwriting
+    // They are kept for backwards compatibility in the code for the customers overwriting
     // them with languageDictionary. They can be removed in the next major release.
     const errMessage = value
       ? i18n.str('invalidErrorHint') || i18n.str('invalidEmailErrorHint')

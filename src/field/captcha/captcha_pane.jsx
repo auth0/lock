@@ -50,7 +50,7 @@ export default class CaptchaPane extends React.Component {
         : i18n.str(`captchaMathInputPlaceholder`);
 
     // TODO: blankErrorHint is deprecated.
-    // It is kept for backwards compatibiliy in the code for the customers overwriting
+    // It is kept for backwards compatibility in the code for the customers overwriting
     // it with languageDictionary. It can be removed in the next major release.
     return (
       <CaptchaInput
