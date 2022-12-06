@@ -1,4 +1,27 @@
-var path = require('path');
+const { spawnSync } = require('child_process');
+const fs = require('fs');
+const tmp = require('tmp');
+const path = require('path');
+
+/**
+ * This is a helper function to generate valid certs using mkcert.
+ * If mkcert is not installed it will return false.
+ */
+function getDevCerts() {
+  let result = false;
+  const tmpDir = tmp.dirSync({ unsafeCleanup: true, prefix: 'lock-dev-' });
+
+  try {
+    spawnSync('mkcert', ['localhost'], { cwd: tmpDir.name });
+    result = {
+      key: fs.readFileSync(path.join(tmpDir.name, 'localhost-key.pem')),
+      cert: fs.readFileSync(path.join(tmpDir.name, 'localhost.pem'))
+    };
+  } catch (err) {}
+
+  tmpDir.removeCallback();
+  return result;
+}
 
 module.exports = {
   entry: './src/browser.js',
@@ -10,11 +33,21 @@ module.exports = {
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.js', '.jsx', '.styl']
   },
+  devtool: 'eval',
   progress: true,
   watch: true,
   watchOptions: {
     aggregateTimeout: 500,
     poll: true
+  },
+  devServer: {
+    hot: true,
+    port: 3000,
+    https: getDevCerts() || true,
+    static: {
+      directory: path.join(__dirname, 'support'),
+      publicPath: '/support'
+    }
   },
   stats: {
     colors: true,

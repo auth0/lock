@@ -71,6 +71,7 @@
     "browserify": "^17.0.0",
     "bump-version": "^0.5.0",
     "chalk": "^4.1.2",
+    "core-js": "^3.26.1",
     "cross-env": "^7.0.3",
     "css-loader": "^0.28.11",
     "emojic": "^1.1.15",
@@ -119,7 +120,7 @@
     "watchify": "^4.0.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "auth0-js": "^9.19.0",

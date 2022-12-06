@@ -6,7 +6,7 @@
  * Those who use browserify will install with npm and require the module,
  * the package.json file points to index.js.
  */
-
+import 'core-js';
 import Auth0Lock from './index';
 import Auth0LockPasswordless from './passwordless';
 

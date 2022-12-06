@@ -1,32 +1,9 @@
 'use strict';
 
 const path = require('path');
-const fs = require('fs');
-const tmp = require('tmp');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
-const { spawnSync } = require('child_process');
-
-/**
- * This is a helper function to generate valid certs using mkcert.
- * If mkcert is not installed it will return false.
- */
-function getDevCerts() {
-  let result = false;
-  const tmpDir = tmp.dirSync({ unsafeCleanup: true, prefix: 'lock-dev-' });
-
-  try {
-    spawnSync('mkcert', ['localhost'], { cwd: tmpDir.name });
-    result = {
-      key: fs.readFileSync(path.join(tmpDir.name, 'localhost-key.pem')),
-      cert: fs.readFileSync(path.join(tmpDir.name, 'localhost.pem'))
-    };
-  } catch (err) {}
-
-  tmpDir.removeCallback();
-  return result;
-}
 
 module.exports = function (grunt) {
   const pkg_info = grunt.file.readJSON('package.json');
@@ -60,8 +37,9 @@ module.exports = function (grunt) {
       touch_index: 'touch src/index.js'
     },
     webpack: {
-      options: { ...webpackConfig, mode: 'production' },
       build: {
+        ...webpackConfig,
+        mode: 'production',
         devtool: 'source-map',
         output: {
           path: path.join(__dirname, 'build'),
@@ -92,17 +70,11 @@ module.exports = function (grunt) {
     },
     'webpack-dev-server': {
       options: {
-        webpack: webpackConfig,
-        publicPath: '/build/'
-      },
-      dev: {
-        hot: true,
-        port: 3000,
-        https: getDevCerts() || true,
-        webpack: {
-          devtool: 'source-map'
+        output: {
+          publicPath: '/build/'
         }
       },
+      dev: webpackConfig,
       design: {
         webpack: {
           entry: './support/design/index.js',
