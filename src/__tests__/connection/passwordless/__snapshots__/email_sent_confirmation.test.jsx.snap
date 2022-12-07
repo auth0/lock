@@ -91,7 +91,6 @@ exports[`EmailSentConfirmation renders correctly 1`] = `
         href="#"
         onClick={[Function]}
       >
-        
          
         <span>
           <svg

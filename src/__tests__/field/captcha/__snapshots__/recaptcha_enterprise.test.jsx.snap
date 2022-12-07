@@ -28,8 +28,10 @@ ShallowWrapper {
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -84,18 +86,26 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactEighteenAdapter {
       "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
         "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
-            "prevContext": true,
+            "onSetState": true,
           },
           "getChildContext": Object {
-            "calledByRenderer": true,
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
           },
         },
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
       },
     },
     Symbol(enzyme.__providerValues__): undefined,

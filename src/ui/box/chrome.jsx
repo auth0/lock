@@ -150,7 +150,7 @@ export default class Chrome extends React.Component {
   }
 
   // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { auxiliaryPane, showSubmitButton } = this.props;
     const { delayingShowSubmitButton } = this.state;
 

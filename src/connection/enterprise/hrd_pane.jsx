@@ -33,7 +33,7 @@ export default class HRDPane extends React.Component {
 }
 
 HRDPane.propTypes = {
-  header: PropTypes.string,
+  header: PropTypes.element,
   i18n: PropTypes.object.isRequired,
   model: PropTypes.object.isRequired,
   passwordInputPlaceholder: PropTypes.string.isRequired,

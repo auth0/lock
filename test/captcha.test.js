@@ -67,9 +67,11 @@ describe('captcha', function () {
 
       it('should not submit the form if the captcha is not provided', function (done) {
         h.logInWithEmailAndPassword(this.lock, () => {
-          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
-          done();
+          h.waitUntilErrorExists(this.lock, () => {
+            expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+            done();
+          });
         });
       });
     });
@@ -131,9 +133,11 @@ describe('captcha', function () {
 
       it('should not submit the form if the captcha is not provided', function (done) {
         h.logInWithEmailAndPassword(this.lock, () => {
-          expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
-          done();
+          h.waitUntilErrorExists(this.lock, () => {
+            expect(h.wasLoginAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+            done();
+          });
         });
       });
     });
@@ -171,9 +175,11 @@ describe('captcha', function () {
         });
 
         it('should call the challenge api again and show the input', function () {
-          expect(notRequiredStub.calledOnce).to.be.true;
-          expect(challengeStub.calledOnce).to.be.true;
-          expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+          h.waitUntilExists(this.lock, '.auth0-lock-recaptchav2', () => {
+            expect(notRequiredStub.calledOnce).to.be.true;
+            expect(challengeStub.calledOnce).to.be.true;
+            expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+          });
         });
       });
     });

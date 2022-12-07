@@ -96,6 +96,27 @@ export const wasLoginAttemptedWith = params => {
   return Map(params).reduce((r, v, k) => r && paramsFromLastCall[k] === v, true);
 };
 
+export const wasLoginAttemptedWithAsync = (params, cb, timeout = 1000) => {
+  const startTime = Date.now();
+
+  const int = setInterval(() => {
+    const lastCall = webApi.logIn.getCall(0);
+
+    if (lastCall) {
+      const paramsFromLastCall = lastCall.args[1];
+
+      cb(Map(params).reduce((r, v, k) => r && paramsFromLastCall[k] === v, true));
+      clearInterval(int);
+      return;
+    }
+
+    if (Date.now() - startTime > timeout) {
+      clearInterval(int);
+      throw Error('Timeout waiting for login attempt');
+    }
+  }, 10);
+};
+
 export const wasSignUpAttemptedWith = params => {
   const lastCall = webApi.signUp.lastCall;
   if (!lastCall) return false;
@@ -314,6 +335,15 @@ export const waitUntilInputExists = (lock, name, cb, timeout) =>
 
 export const waitUntilErrorExists = (lock, cb, timeout) =>
   waitUntilExists(lock, '.auth0-global-message-error span', cb, timeout);
+
+export const waitUntilSuccessFlashExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-global-message-success', cb, timeout);
+
+export const waitUntilInfoFlashExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-global-message-info', cb, timeout);
+
+export const waitForSSONotice = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-sso-notice-container', cb, timeout);
 
 // login
 
