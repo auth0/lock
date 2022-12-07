@@ -26,6 +26,7 @@ function getDevCerts() {
 module.exports = {
   entry: './src/browser.js',
   mode: 'development',
+  target: 'browserslist',
   output: {
     path: path.join(__dirname, '../build'),
     filename: 'lock.js'
@@ -33,7 +34,7 @@ module.exports = {
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.js', '.jsx', '.styl']
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   progress: true,
   watch: true,
   watchOptions: {
