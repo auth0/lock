@@ -50,13 +50,16 @@ describe('captcha', function () {
       });
 
       it('should require another challenge when clicking the refresh button', function (done) {
-        h.clickRefreshCaptchaButton(this.lock);
-        setTimeout(() => {
-          expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
-            `url("${svgCaptchaRequiredResponse2.image}")`
-          );
-          done();
-        }, 200);
+        h.waitUntilExists(this.lock, '.auth0-lock-captcha-refresh', () => {
+          h.clickRefreshCaptchaButton(this.lock);
+
+          setTimeout(() => {
+            expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
+              `url("${svgCaptchaRequiredResponse2.image}")`
+            );
+            done();
+          }, 200);
+        });
       });
 
       it('should submit the captcha provided by the user', function () {
@@ -105,8 +108,11 @@ describe('captcha', function () {
           h.submitForm(this.lock);
         });
 
-        it('should call the challenge api again and show the input', function () {
-          expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+        it('should call the challenge api again and show the input', function (done) {
+          h.waitUntilCaptchaExists(this.lock, () => {
+            expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+            done();
+          });
         });
       });
     });
@@ -123,12 +129,11 @@ describe('captcha', function () {
         this.lock.hide();
       });
 
-      it('should load the captcha script', function () {
-        expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
-      });
-
-      it('should show the captcha input', function () {
-        expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+      it('should load the captcha script and show input', function (done) {
+        h.waitUntilExists(this.lock, '.auth0-lock-recaptchav2', () => {
+          expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+          done();
+        });
       });
 
       it('should not submit the form if the captcha is not provided', function (done) {
@@ -174,11 +179,12 @@ describe('captcha', function () {
           h.submitForm(this.lock);
         });
 
-        it('should call the challenge api again and show the input', function () {
+        it('should call the challenge api again and show the input', function (done) {
           h.waitUntilExists(this.lock, '.auth0-lock-recaptchav2', () => {
             expect(notRequiredStub.calledOnce).to.be.true;
             expect(challengeStub.calledOnce).to.be.true;
             expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+            done();
           });
         });
       });

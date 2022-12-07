@@ -336,6 +336,9 @@ export const waitUntilExists = (lock, selector, cb, timeout = 1000) => {
 export const waitUntilInputExists = (lock, name, cb, timeout) =>
   waitUntilExists(lock, `.auth0-lock-input-${name} input`, cb, timeout);
 
+export const waitUntilCaptchaExists = (lock, cb, timeout) =>
+  waitUntilInputExists(lock, 'captcha', cb, timeout);
+
 export const waitUntilErrorExists = (lock, cb, timeout) =>
   waitUntilExists(lock, '.auth0-global-message-error span', cb, timeout);
 
@@ -348,6 +351,8 @@ export const waitUntilInfoFlashExists = (lock, cb, timeout) =>
 export const waitForSSONotice = (lock, cb, timeout) =>
   waitUntilExists(lock, '.auth0-sso-notice-container', cb, timeout);
 
+export const waitForQuickAuthButton = (lock, icon, cb, timeout) =>
+  waitUntilExists(lock, `.auth0-lock-social-button[data-provider^="${icon}"]`, cb, timeout);
 // login
 
 export const waitForEmailAndPasswordInput = (lock, cb, timeout) => {
