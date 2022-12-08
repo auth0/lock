@@ -9,8 +9,8 @@ export function normalizeError(error, domain) {
 
   // TODO: the following checks were copied from https://github.com/auth0/lock/blob/0a5abf1957c9bb746b0710b274d0feed9b399958/index.js#L1263-L1288
   // Some of the checks are missing because I couldn't reproduce them and I'm
-  // affraid they'll break existent functionality if add them.
-  // We need a better errror handling story in auth0.js.
+  // afraid they'll break existent functionality if add them.
+  // We need a better error handling story in auth0.js.
 
   if (error.status === 'User closed the popup window') {
     // {

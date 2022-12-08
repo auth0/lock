@@ -23,7 +23,7 @@ export function initDatabase(m, options) {
 
 function assertMaybeBoolean(opts, name) {
   const valid = opts[name] === undefined || typeof opts[name] === 'boolean';
-  if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not a booelan.`);
+  if (!valid) l.warn(opts, `The \`${name}\` option will be ignored, because it is not a boolean.`);
   return valid;
 }
 

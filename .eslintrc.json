@@ -6,11 +6,11 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "react/display-name": 0,
-    "react/prop-types": 1,
-    "react/no-find-dom-node": 1,
-    "react/no-string-refs": 1,
-    "react/no-danger": 2
+    "react/display-name": "off",
+    "react/prop-types": "warn",
+    "react/no-find-dom-node": "warn",
+    "react/no-string-refs": "warn",
+    "react/no-danger": "error"
   },
   "plugins": ["react"],
   "settings": {

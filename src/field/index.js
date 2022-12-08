@@ -69,7 +69,7 @@ export function registerOptionField(m, field, options, initialValue) {
     );
     stopError.code = 'invalid_select_field';
     // TODO: in the future we might want to return the result of the
-    // operation along with the model insteand of stopping the
+    // operation along with the model instead of stopping the
     // rendering, like [false, m] in the case of failure and [true, m]
     // in the case of success.
     return l.stop(m, stopError);
