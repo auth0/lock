@@ -41,7 +41,6 @@ describe('setup', () => {
   });
 
   it.only('default redirectUrl should work when `window.location.origin` is not available', () => {
-    // setURL('https://test.com/path/#not-this-part', { noOrigin: true });
     jsdom.reconfigure({
       url: 'https://test.com/path/#not-this-part'
     });
