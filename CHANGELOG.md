@@ -1,47 +1,73 @@
 # Change Log
 
+## [v12.0.0-beta.0](https://github.com/auth0/lock/tree/v12.0.0-beta.0) (2022-12-08)
+
+[Full Changelog](https://github.com/auth0/lock/compare/v11.34.2...v12.0.0-beta.0)
+
+:warning: This is a **beta release** of Lock.js v12 that includes an upgrade to React 18, and should not be used in production. If you find any issues, please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12-beta&template=report_a_bug.md&title=).
+
+**Changed**
+
+- Upgrade to React 18 [\#2209](https://github.com/auth0/lock/pull/2209) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Upgrade to Webpack 5, Jest 29, Babel 8 [\#2213](https://github.com/auth0/lock/pull/2213) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- bump dependencies to latest patch and fix typos [\#2210](https://github.com/auth0/lock/pull/2210) ([piwysocki](https://github.com/piwysocki))
+
 ## [v11.34.2](https://github.com/auth0/lock/tree/v11.34.2) (2022-10-10)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.1...v11.34.2)
 
 **Fixed**
+
 - [SDK-3657] Render sign up confirmation before sign in [\#2180](https://github.com/auth0/lock/pull/2180) ([ewanharris](https://github.com/ewanharris))
 
 ## [v11.34.1](https://github.com/auth0/lock/tree/v11.34.1) (2022-09-29)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.0...v11.34.1)
 
 **Fixed**
+
 - [ESD-22705] Don't pass function to ConfirmationPane unless closable is enabled [\#2176](https://github.com/auth0/lock/pull/2176) ([ewanharris](https://github.com/ewanharris))
 
 **Security**
+
 - [ESD-22866] Disable spellcheck and autocorrect on all sensitive input fields [\#2178](https://github.com/auth0/lock/pull/2178) ([ewanharris](https://github.com/ewanharris))
 
 ## [v11.34.0](https://github.com/auth0/lock/tree/v11.34.0) (2022-09-14)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.3...v11.34.0)
 
 **Added**
+
 - FDR-297: Adding okta for enterprise [\#2172](https://github.com/auth0/lock/pull/2172) ([jamescgarrett](https://github.com/jamescgarrett))
 
 ## [v11.33.3](https://github.com/auth0/lock/tree/v11.33.3) (2022-08-16)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.2...v11.33.3)
 
 **Added**
+
 - IAMRISK-1725 Add password_leaked error label for Signup [\#2160](https://github.com/auth0/lock/pull/2160) ([robinbijlani](https://github.com/robinbijlani))
 
 ## [v11.33.2](https://github.com/auth0/lock/tree/v11.33.2) (2022-06-29)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.1...v11.33.2)
 
 **Changed**
+
 - Bump qs from 6.10.5 to 6.11.0 [\#2147](https://github.com/auth0/lock/pull/2147) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump shell-quote from 1.7.2 to 1.7.3 [\#2145](https://github.com/auth0/lock/pull/2145) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump prettier from 2.7.0 to 2.7.1 [\#2144](https://github.com/auth0/lock/pull/2144) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v11.33.1](https://github.com/auth0/lock/tree/v11.33.1) (2022-06-14)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v11.33.0...v11.33.1)
 
 **Fixed**
+
 - Move captcha pane below additional signup fields in UI [\#2135](https://github.com/auth0/lock/pull/2135) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 **Security**
+
 - [Snyk] Upgrade dompurify from 2.3.6 to 2.3.7 [\#2132](https://github.com/auth0/lock/pull/2132) ([snyk-bot](https://github.com/snyk-bot))
 
 ## [v11.33.0](https://github.com/auth0/lock/tree/v11.33.0) (2022-05-05)

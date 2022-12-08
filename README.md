@@ -7,11 +7,12 @@
 
 > :warning: This is a beta release for Lock.js v12 that includes an upgrade to React 18. Getting issues? Please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12-beta&template=report_a_bug.md&title=).
 
-## Documentation 
+## Documentation
 
 - [Docs Site](https://auth0.com/docs) - explore our Docs site and learn more about Auth0.
 
 ## Getting Started
+
 ### Browser Compatibility
 
 We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10.
@@ -28,7 +29,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.34.2/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/12.0.0/lock.min.js"></script>
 ```
 
 ### Configure Auth0
@@ -42,34 +43,34 @@ Create a **Single Page Application** in the [Auth0 Dashboard](https://manage.aut
 > - Scroll down and click on the "Show Advanced Settings" link.
 > - Under "Advanced Settings", click on the "OAuth" tab.
 > - Ensure that "JsonWebToken Signature Algorithm" is set to `RS256` and that "OIDC Conformant" is enabled.
-Next, configure the following URLs for your application under the "Application URIs" section of the "Settings" page:
+>   Next, configure the following URLs for your application under the "Application URIs" section of the "Settings" page:
 
 - **Allowed Callback URLs**: `http://localhost:3000`
 - **Allowed Logout URLs**: `http://localhost:3000`
 - **Allowed Web Origins**: `http://localhost:3000`
 
 > These URLs should reflect the origins that your application is running on. **Allowed Callback URLs** may also include a path, depending on where you're handling the callback (see below).
-Take note of the **Client ID** and **Domain** values under the "Basic Information" section. You'll need these values in the next step.
+> Take note of the **Client ID** and **Domain** values under the "Basic Information" section. You'll need these values in the next step.
 
 ### Configure the SDK
 
-Create either an `Auth0Lock` or `Auth0LockPasswordless` instance. 
+Create either an `Auth0Lock` or `Auth0LockPasswordless` instance.
 
 #### Auth0Lock
 
-````js
+```js
 import { Auth0Lock } from 'auth0-lock';
 
 const lock = new Auth0Lock('{YOUR_AUTH0_CLIENT_ID}', '{YOUR_AUTH0_DOMAIN}');
-````
+```
 
 #### Auth0LockPasswordless
 
-````js
+```js
 import { Auth0LockPasswordless } from 'auth0-lock';
 
 const lock = new Auth0LockPasswordless('{YOUR_AUTH0_CLIENT_ID}', '{YOUR_AUTH0_DOMAIN}');
-````
+```
 
 ### Logging In
 
@@ -79,7 +80,7 @@ You can then configure a listener for the `authenticated` event to retrieve an a
 <button id="login">Click to Login</button>
 ```
 
-````js
+```js
 lock.on('authenticated', function (authResult) {
   lock.getUserInfo(authResult.accessToken, function (error, profileResult) {
     if (error) {
@@ -97,7 +98,7 @@ lock.on('authenticated', function (authResult) {
 document.getElementById('login').addEventListener('click', () => {
   lock.show()
 });.
-````
+```
 
 For other comprehensive examples and documentation on the configuration options, see the [EXAMPLES.md](https://github.com/auth0/lock/blob/master/EXAMPLES.md) document.
 
