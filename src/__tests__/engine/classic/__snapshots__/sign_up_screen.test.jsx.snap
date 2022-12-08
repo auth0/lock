@@ -33,7 +33,7 @@ exports[`SignUpScreen renders SignUpPane when has database connection 1`] = `
       data-__type="sign_up_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-i18n={
-        Object {
+        {
           "group": [Function],
           "html": [Function],
           "str": [Function],
@@ -57,7 +57,7 @@ exports[`SignUpScreen renders SignUpPane when has enterprise connection 1`] = `
       data-__type="sign_up_pane"
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-i18n={
-        Object {
+        {
           "group": [Function],
           "html": [Function],
           "str": [Function],

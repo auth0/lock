@@ -40,8 +40,11 @@ describe('setup', () => {
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
 
-  it('default redirectUrl should work when `window.location.origin` is not available', () => {
-    setURL('https://test.com/path/#not-this-part', { noOrigin: true });
+  it.only('default redirectUrl should work when `window.location.origin` is not available', () => {
+    jsdom.reconfigure({
+      url: 'https://test.com/path/#not-this-part'
+    });
+
     const options = {};
     setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
     const { mock } = mockInit;

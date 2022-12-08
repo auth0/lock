@@ -15,7 +15,7 @@ exports[`CustomInput when type == checkbox and when placeholderHTML is set rende
     />
     <span
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "<b>Placeholder</b>",
         }
       }
@@ -54,7 +54,7 @@ exports[`CustomInput when type == hidden renders correctly as a input[type=hidde
 `;
 
 exports[`CustomInput when type == input calls \`changeField\` when changed 1`] = `
-Array [
+[
   1,
   "custom_input",
   "newUser",
@@ -93,7 +93,7 @@ exports[`CustomInput when type == input sets isValid as true when \`isFieldVisib
 `;
 
 exports[`CustomInput when type === select calls \`startOptionSelection\` when clicked 1`] = `
-Array [
+[
   1,
   "custom_input",
   "iconUrl",
@@ -106,7 +106,6 @@ exports[`CustomInput when type === select renders correctly as a SelectInput 1`]
   data-ariaLabel="Custom Input"
   data-iconUrl="iconUrl"
   data-isValid={false}
-  data-label={undefined}
   data-lockId={1}
   data-name="custom_input"
   data-onClick={[Function]}
@@ -120,7 +119,6 @@ exports[`CustomInput when type === select sets isValid as true when \`isFieldVis
   data-ariaLabel="Custom Input"
   data-iconUrl="iconUrl"
   data-isValid={true}
-  data-label={undefined}
   data-lockId={1}
   data-name="custom_input"
   data-onClick={[Function]}

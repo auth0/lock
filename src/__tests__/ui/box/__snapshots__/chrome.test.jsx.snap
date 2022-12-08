@@ -12,17 +12,14 @@ exports[`Chrome adds the auto-height class when forceAutoHeight UI prop is true 
     >
       <div
         data-__type="header"
-        data-backHandler={undefined}
         data-backgroundColor="white"
         data-backgroundUrl="avatar"
         data-logoUrl="logo"
-        data-name={undefined}
-        data-title={undefined}
       />
       <div
         className="auth0-lock-content-body-wrapper"
         style={
-          Object {
+          {
             "marginTop": 0,
           }
         }
@@ -34,7 +31,7 @@ exports[`Chrome adds the auto-height class when forceAutoHeight UI prop is true 
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "This is a success message",
                     }
                   }
@@ -48,7 +45,7 @@ exports[`Chrome adds the auto-height class when forceAutoHeight UI prop is true 
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "There is an error",
                     }
                   }
@@ -62,7 +59,7 @@ exports[`Chrome adds the auto-height class when forceAutoHeight UI prop is true 
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "This is an information message",
                     }
                   }
@@ -75,7 +72,7 @@ exports[`Chrome adds the auto-height class when forceAutoHeight UI prop is true 
         </div>
         <div
           style={
-            Object {
+            {
               "position": "relative",
             }
           }
@@ -94,7 +91,7 @@ exports[`Chrome adds the auto-height class when forceAutoHeight UI prop is true 
             >
               <div
                 style={
-                  Object {
+                  {
                     "position": "relative",
                   }
                 }
@@ -134,7 +131,7 @@ exports[`Chrome adds the auto-height class when forceAutoHeight UI prop is true 
       name="submit"
       onClick={[Function]}
       style={
-        Object {
+        {
           "backgroundColor": "white",
           "display": "block",
         }
@@ -225,17 +222,14 @@ exports[`Chrome can dislay all global messages together 1`] = `
     >
       <div
         data-__type="header"
-        data-backHandler={undefined}
         data-backgroundColor="white"
         data-backgroundUrl="avatar"
         data-logoUrl="logo"
-        data-name={undefined}
-        data-title={undefined}
       />
       <div
         className="auth0-lock-content-body-wrapper"
         style={
-          Object {
+          {
             "marginTop": 0,
           }
         }
@@ -247,7 +241,7 @@ exports[`Chrome can dislay all global messages together 1`] = `
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "This is a success message",
                     }
                   }
@@ -261,7 +255,7 @@ exports[`Chrome can dislay all global messages together 1`] = `
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "There is an error",
                     }
                   }
@@ -275,7 +269,7 @@ exports[`Chrome can dislay all global messages together 1`] = `
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "This is an information message",
                     }
                   }
@@ -288,7 +282,7 @@ exports[`Chrome can dislay all global messages together 1`] = `
         </div>
         <div
           style={
-            Object {
+            {
               "position": "relative",
             }
           }
@@ -307,7 +301,7 @@ exports[`Chrome can dislay all global messages together 1`] = `
             >
               <div
                 style={
-                  Object {
+                  {
                     "position": "relative",
                   }
                 }
@@ -347,7 +341,7 @@ exports[`Chrome can dislay all global messages together 1`] = `
       name="submit"
       onClick={[Function]}
       style={
-        Object {
+        {
           "backgroundColor": "white",
           "display": "block",
         }
@@ -438,17 +432,14 @@ exports[`Chrome renders correctly when there is a global information message 1`]
     >
       <div
         data-__type="header"
-        data-backHandler={undefined}
         data-backgroundColor="white"
         data-backgroundUrl="avatar"
         data-logoUrl="logo"
-        data-name={undefined}
-        data-title={undefined}
       />
       <div
         className="auth0-lock-content-body-wrapper"
         style={
-          Object {
+          {
             "marginTop": 0,
           }
         }
@@ -460,7 +451,7 @@ exports[`Chrome renders correctly when there is a global information message 1`]
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "This is an information message",
                     }
                   }
@@ -473,7 +464,7 @@ exports[`Chrome renders correctly when there is a global information message 1`]
         </div>
         <div
           style={
-            Object {
+            {
               "position": "relative",
             }
           }
@@ -492,7 +483,7 @@ exports[`Chrome renders correctly when there is a global information message 1`]
             >
               <div
                 style={
-                  Object {
+                  {
                     "position": "relative",
                   }
                 }
@@ -532,7 +523,7 @@ exports[`Chrome renders correctly when there is a global information message 1`]
       name="submit"
       onClick={[Function]}
       style={
-        Object {
+        {
           "backgroundColor": "white",
           "display": "block",
         }
@@ -623,17 +614,14 @@ exports[`Chrome renders correctly when there is a global message 1`] = `
     >
       <div
         data-__type="header"
-        data-backHandler={undefined}
         data-backgroundColor="white"
         data-backgroundUrl="avatar"
         data-logoUrl="logo"
-        data-name={undefined}
-        data-title={undefined}
       />
       <div
         className="auth0-lock-content-body-wrapper"
         style={
-          Object {
+          {
             "marginTop": 0,
           }
         }
@@ -645,7 +633,7 @@ exports[`Chrome renders correctly when there is a global message 1`] = `
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "There is an error",
                     }
                   }
@@ -658,7 +646,7 @@ exports[`Chrome renders correctly when there is a global message 1`] = `
         </div>
         <div
           style={
-            Object {
+            {
               "position": "relative",
             }
           }
@@ -677,7 +665,7 @@ exports[`Chrome renders correctly when there is a global message 1`] = `
             >
               <div
                 style={
-                  Object {
+                  {
                     "position": "relative",
                   }
                 }
@@ -717,7 +705,7 @@ exports[`Chrome renders correctly when there is a global message 1`] = `
       name="submit"
       onClick={[Function]}
       style={
-        Object {
+        {
           "backgroundColor": "white",
           "display": "block",
         }
@@ -808,17 +796,14 @@ exports[`Chrome renders correctly when there is a global success message 1`] = `
     >
       <div
         data-__type="header"
-        data-backHandler={undefined}
         data-backgroundColor="white"
         data-backgroundUrl="avatar"
         data-logoUrl="logo"
-        data-name={undefined}
-        data-title={undefined}
       />
       <div
         className="auth0-lock-content-body-wrapper"
         style={
-          Object {
+          {
             "marginTop": 0,
           }
         }
@@ -830,7 +815,7 @@ exports[`Chrome renders correctly when there is a global success message 1`] = `
               data-message={
                 <span
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "This is a success message",
                     }
                   }
@@ -843,7 +828,7 @@ exports[`Chrome renders correctly when there is a global success message 1`] = `
         </div>
         <div
           style={
-            Object {
+            {
               "position": "relative",
             }
           }
@@ -862,7 +847,7 @@ exports[`Chrome renders correctly when there is a global success message 1`] = `
             >
               <div
                 style={
-                  Object {
+                  {
                     "position": "relative",
                   }
                 }
@@ -902,7 +887,7 @@ exports[`Chrome renders correctly when there is a global success message 1`] = `
       name="submit"
       onClick={[Function]}
       style={
-        Object {
+        {
           "backgroundColor": "white",
           "display": "block",
         }
@@ -993,17 +978,14 @@ exports[`Chrome renders correctly with basic props 1`] = `
     >
       <div
         data-__type="header"
-        data-backHandler={undefined}
         data-backgroundColor="white"
         data-backgroundUrl="avatar"
         data-logoUrl="logo"
-        data-name={undefined}
-        data-title={undefined}
       />
       <div
         className="auth0-lock-content-body-wrapper"
         style={
-          Object {
+          {
             "marginTop": 0,
           }
         }
@@ -1013,7 +995,7 @@ exports[`Chrome renders correctly with basic props 1`] = `
         </div>
         <div
           style={
-            Object {
+            {
               "position": "relative",
             }
           }
@@ -1032,7 +1014,7 @@ exports[`Chrome renders correctly with basic props 1`] = `
             >
               <div
                 style={
-                  Object {
+                  {
                     "position": "relative",
                   }
                 }
@@ -1072,7 +1054,7 @@ exports[`Chrome renders correctly with basic props 1`] = `
       name="submit"
       onClick={[Function]}
       style={
-        Object {
+        {
           "backgroundColor": "white",
           "display": "block",
         }

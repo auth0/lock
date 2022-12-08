@@ -110,8 +110,11 @@ describe('captcha (corporate connection)', function () {
           h.submitForm(this.lock);
         });
 
-        it('should call the challenge api again and show the input', function () {
-          expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+        it('should call the challenge api again and show the input', function (done) {
+          h.waitUntilCaptchaExists(this.lock, () => {
+            expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+            done();
+          });
         });
       });
     });
@@ -128,8 +131,11 @@ describe('captcha (corporate connection)', function () {
         this.lock.hide();
       });
 
-      it('should load the captcha script', function () {
-        expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+      it('should load the captcha script', function (done) {
+        h.waitUntilExists(this.lock, '.auth0-lock-recaptchav2', () => {
+          expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+          done();
+        });
       });
 
       it('should show the captcha input', function () {
@@ -179,10 +185,13 @@ describe('captcha (corporate connection)', function () {
           h.submitForm(this.lock);
         });
 
-        it('should call the challenge api again and show the input', function () {
-          expect(notRequiredStub.calledOnce).to.be.true;
-          expect(challengeStub.calledOnce).to.be.true;
-          expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+        it('should call the challenge api again and show the input', function (done) {
+          h.waitUntilExists(this.lock, '.auth0-lock-recaptchav2', () => {
+            expect(notRequiredStub.calledOnce).to.be.true;
+            expect(challengeStub.calledOnce).to.be.true;
+            expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+            done();
+          });
         });
       });
     });

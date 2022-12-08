@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { getEntity, observe, read } from './store/index';
+import { observe } from './store/index';
 import { remove, render } from './ui/box';
 import webAPI from './core/web_api';
 import { initSanitizer } from './sanitizer';
@@ -14,7 +14,6 @@ import {
   updateLock
 } from './core/actions';
 import * as l from './core/index';
-import * as c from './field/index';
 import * as idu from './utils/id_utils';
 import * as i18n from './i18n';
 

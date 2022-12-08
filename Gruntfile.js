@@ -1,35 +1,11 @@
 'use strict';
 
 const path = require('path');
-const fs = require('fs');
-const tmp = require('tmp');
-const pkg = require('./package');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
-const { spawnSync } = require('child_process');
 
-/**
- * This is a helper function to generate valid certs using mkcert.
- * If mkcert is not installed it will return false.
- */
-function getDevCerts() {
-  let result = false;
-  const tmpDir = tmp.dirSync({ unsafeCleanup: true, prefix: 'lock-dev-' });
-
-  try {
-    spawnSync('mkcert', ['localhost'], { cwd: tmpDir.name });
-    result = {
-      key: fs.readFileSync(path.join(tmpDir.name, 'localhost-key.pem')),
-      cert: fs.readFileSync(path.join(tmpDir.name, 'localhost.pem'))
-    };
-  } catch (err) {}
-
-  tmpDir.removeCallback();
-  return result;
-}
-
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   const pkg_info = grunt.file.readJSON('package.json');
 
   grunt.initConfig({
@@ -61,8 +37,9 @@ module.exports = function(grunt) {
       touch_index: 'touch src/index.js'
     },
     webpack: {
-      options: webpackConfig,
       build: {
+        ...webpackConfig,
+        mode: 'production',
         devtool: 'source-map',
         output: {
           path: path.join(__dirname, 'build'),
@@ -80,11 +57,6 @@ module.exports = function(grunt) {
             }
           }),
           new webpack.optimize.AggressiveMergingPlugin(),
-          new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false, screw_ie8: true },
-            sourceMap: true,
-            comments: false
-          }),
           new UnminifiedWebpackPlugin(),
           new webpack.BannerPlugin({
             raw: false,
@@ -98,17 +70,11 @@ module.exports = function(grunt) {
     },
     'webpack-dev-server': {
       options: {
-        webpack: webpackConfig,
-        publicPath: '/build/'
-      },
-      dev: {
-        hot: true,
-        port: 3000,
-        https: getDevCerts() || true,
-        webpack: {
-          devtool: 'source-map'
+        output: {
+          publicPath: '/build/'
         }
       },
+      dev: webpackConfig,
       design: {
         webpack: {
           entry: './support/design/index.js',
@@ -146,14 +112,16 @@ module.exports = function(grunt) {
   grunt.registerTask('prepare_dev', ['clean:dev']);
   grunt.registerTask('dev', ['prepare_dev', 'webpack-dev-server:dev']);
   grunt.registerTask('design', ['prepare_dev', 'webpack-dev-server:design']);
-  grunt.registerMultiTask('i18n', 'Prepares i18n files to be hosted in CDN', function() {
+  grunt.registerMultiTask('i18n', 'Prepares i18n files to be hosted in CDN', function () {
     var languages = {};
+
     var Auth0 = {
-      registerLanguageDictionary: function(lang, dict) {
+      registerLanguageDictionary: function (lang, dict) {
         languages[lang] = dict;
       }
     };
-    this.files.forEach(function(file) {
+
+    this.files.forEach(function (file) {
       var filename = file.src[0];
       var lang = path.basename(filename, '.js');
       var dict = require('./' + filename).default || require('./' + filename);

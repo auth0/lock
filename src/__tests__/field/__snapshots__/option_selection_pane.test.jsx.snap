@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OptionSelectionPane calls \`cancelOptionSelection\` when cancelled 1`] = `
-Array [
+[
   "id",
 ]
 `;
 
 exports[`OptionSelectionPane calls \`selectOption\` when selected 1`] = `
-Array [
+[
   "id",
   "option_selection_pane",
   "selected",
@@ -21,7 +21,7 @@ exports[`OptionSelectionPane renders correctly 1`] = `
   data-iconUrl="iconUrl"
   data-items="items"
   data-model={
-    Object {
+    {
       "get": [Function],
     }
   }
