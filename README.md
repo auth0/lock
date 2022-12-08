@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 ![CircleCI](https://img.shields.io/circleci/build/github/auth0/lock)
 
+> :warning: This is a beta release for Lock.js v12 that includes an upgrade to React 18. Getting issues? Please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12-beta&template=report_a_bug.md&title=).
+
 ## Documentation 
 
 - [Docs Site](https://auth0.com/docs) - explore our Docs site and learn more about Auth0.
