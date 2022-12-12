@@ -19,17 +19,10 @@ We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10.
 
 ### Installation
 
-Using [npm](https://npmjs.org) in your project directory run the following command:
+Using [npm](https://npmjs.org) in your project directory run the following command, making sure to use the `beta` tag:
 
 ```sh
-npm install auth0-lock
-```
-
-From CDN
-
-```html
-<!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/12.0.0/lock.min.js"></script>
+npm install auth0-lock@beta
 ```
 
 ### Configure Auth0
