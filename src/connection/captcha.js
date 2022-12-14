@@ -9,6 +9,7 @@ import webApi from '../core/web_api';
  *
  * @param {Object} m model
  * @param {Number} id
+ * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
  */
 export function showMissingCaptcha(m, id, isPasswordless = false) {
   const captchaConfig = isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m);
@@ -31,11 +32,12 @@ export function showMissingCaptcha(m, id, isPasswordless = false) {
  *
  * @param {Object} m model
  * @param {Object} params
+ * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
  * @param {Object} fields
  *
  * @returns {Boolean} returns true if is required and missing the response from the user
  */
-export function setCaptchaParams(m, params, isPasswordless = false, fields) {
+export function setCaptchaParams(m, params, isPasswordless, fields) {
   const captchaConfig = isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m);
   const isCaptchaRequired = captchaConfig && captchaConfig.get('required');
 
@@ -57,10 +59,11 @@ export function setCaptchaParams(m, params, isPasswordless = false, fields) {
  * Get a new challenge and display the new captcha image.
  *
  * @param {number} id The id of the Lock instance.
+ * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow.
  * @param {boolean} wasInvalid A boolean indicating if the previous captcha was invalid.
  * @param {Function} [next] A callback.
  */
-export function swapCaptcha(id, isPasswordless = false, wasInvalid, next) {
+export function swapCaptcha(id, isPasswordless, wasInvalid, next) {
   if (isPasswordless) {
     return webApi.getPasswordlessChallenge(id, (err, newCaptcha) => {
       if (!err && newCaptcha) {
