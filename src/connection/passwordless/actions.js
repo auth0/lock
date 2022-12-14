@@ -181,6 +181,7 @@ export function logIn(id) {
 
 export function restart(id) {
   swap(updateEntity, 'lock', id, restartPasswordless);
+  swapCaptcha(id, true, false);
 }
 
 export function toggleTermsAcceptance(id) {
