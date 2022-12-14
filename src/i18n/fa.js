@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': 'ایمیل نا معتبر است.',
       'bad.phone_number': 'شماره تلفن نامعتبر است.',
-      'lock.fallback': 'متاسفیم ، خطایی رخ داده است.'
+      'lock.fallback': 'متاسفیم ، خطایی رخ داده است.',
+      invalid_captcha: 'حل مسئله چالش برای تأیید اینکه ربات نیستید.',
+      invalid_recaptcha: 'کادر تأیید را انتخاب کنید تا تأیید کنید که روبات نیستید.'
     },
     signUp: {
       invalid_password: 'رمز نامعتبر است.',

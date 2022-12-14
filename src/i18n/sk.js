@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': 'Neplatný e-mail',
       'bad.phone_number': 'Neplatné telefónne číslo',
-      'lock.fallback': 'Ospravedlňujeme sa, niečo nie je v poriadku'
+      'lock.fallback': 'Ospravedlňujeme sa, niečo nie je v poriadku',
+      invalid_captcha: 'Vyriešte výzvu a overte, či nie ste robot.',
+      invalid_recaptcha: 'Začiarknutím políčka overíte, či nie ste robot.'
     },
     signUp: {
       invalid_password: 'Neplatné heslo.',

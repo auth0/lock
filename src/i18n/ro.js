@@ -41,7 +41,9 @@ export default {
     passwordless: {
       'bad.email': 'Adresa de email este invalidă',
       'bad.phone_number': 'Numărul de telefon este invalid',
-      'lock.fallback': 'Ne pare rău, ceva nu a funcționat'
+      'lock.fallback': 'Ne pare rău, ceva nu a funcționat',
+      invalid_captcha: 'Rezolvați întrebarea pentru a verifica dacă nu sunteți un robot.',
+      invalid_recaptcha: 'Selectați caseta pentru a verifica dacă nu sunteți un robot.'
     },
     signUp: {
       invalid_password: 'Parolă invalidă.',
