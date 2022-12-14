@@ -851,9 +851,9 @@ atob@^2.1.2:
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
 auth0-js@^9.19.2:
-  version "9.19.2"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.19.2.tgz#f51cb1b532086d4fa25ec3b7412a16b1fbdb282c"
-  integrity sha512-4IPAbD0E/vYl+eN3rAoA9/4zq8Yg0tbsCQL/fKJsjh0l2rKNu0GWortNcRxmS62nHPt9LXKdMtTKU0x2UQVWsQ==
+  version "9.20.0"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.20.0.tgz#80d140a6741f677f5295f2b38e750e23961726fe"
+  integrity sha512-g158V/fP+QHZqvLjqc5nsdLmJkLz8ceMQjkkrfybPXK7a6uPsJXqTEft9aQp8Y5w6qyyLi9EGD5df+iGGiTaVQ==
   dependencies:
     base64-js "^1.5.1"
     idtoken-verifier "^2.2.2"
