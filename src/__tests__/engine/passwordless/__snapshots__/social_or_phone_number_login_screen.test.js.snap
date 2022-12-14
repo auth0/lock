@@ -27,6 +27,7 @@ exports[`sms passwordless renders a captcha 1`] = `
         "str": [Function],
       }
     }
+    data-isPasswordless={true}
     data-lock="model"
     data-onReload={[Function]}
   />
