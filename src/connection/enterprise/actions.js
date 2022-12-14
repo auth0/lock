@@ -53,7 +53,7 @@ export function logIn(id) {
     return logInSSO(id, ssoConnection, params);
   }
 
-  const isCaptchaValid = setCaptchaParams(m, params, fields);
+  const isCaptchaValid = setCaptchaParams(m, params, false, fields);
 
   if (!isCaptchaValid && !ssoConnection) {
     return showMissingCaptcha(m, id);
@@ -85,7 +85,7 @@ function logInActiveFlow(id, params) {
     },
     (id, error, fields, next) => {
       const wasCaptchaInvalid = error && error.code === 'invalid captcha';
-      swapCaptcha(id, wasCaptchaInvalid, next);
+      swapCaptcha(id, false, wasCaptchaInvalid, next);
     }
   );
 }

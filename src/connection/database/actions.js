@@ -33,7 +33,7 @@ export function logIn(id, needsMFA = false) {
   };
 
   const fields = [usernameField, 'password'];
-  const isCaptchaValid = setCaptchaParams(m, params, fields);
+  const isCaptchaValid = setCaptchaParams(m, params, false, fields);
 
   if (!isCaptchaValid) {
     return showMissingCaptcha(m, id);
@@ -53,7 +53,7 @@ export function logIn(id, needsMFA = false) {
 
     if (error) {
       const wasInvalid = error && error.code === 'invalid_captcha';
-      return swapCaptcha(id, wasInvalid, next);
+      return swapCaptcha(id, false, wasInvalid, next);
     }
 
     next();
@@ -88,7 +88,7 @@ export function signUp(id) {
       autoLogin: shouldAutoLogin(m)
     };
 
-    const isCaptchaValid = setCaptchaParams(m, params, fields);
+    const isCaptchaValid = setCaptchaParams(m, params, false, fields);
     if (!isCaptchaValid) {
       return showMissingCaptcha(m, id);
     }
@@ -131,7 +131,7 @@ export function signUp(id) {
 
       const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
 
-      swapCaptcha(id, wasInvalidCaptcha, () => {
+      swapCaptcha(id, false, wasInvalidCaptcha, () => {
         setTimeout(() => signUpError(id, error), 250);
       });
     };
@@ -218,7 +218,7 @@ export function signUpError(id, error) {
 
   if (errorKey === 'invalid_captcha') {
     errorMessage = i18n.html(m, ['error', 'login', errorKey]);
-    return swapCaptcha(id, true, () => {
+    return swapCaptcha(id, false, true, () => {
       swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
     });
   }

@@ -36,7 +36,9 @@ export default {
     passwordless: {
       'bad.email': 'The email is invalid',
       'bad.phone_number': 'The phone number is invalid',
-      'lock.fallback': "We're sorry, something went wrong"
+      'lock.fallback': "We're sorry, something went wrong",
+      invalid_captcha: 'Solve the challenge question to verify you are not a robot.',
+      invalid_recaptcha: 'Select the checkbox to verify you are not a robot.'
     },
     signUp: {
       invalid_password: 'Password is invalid.',

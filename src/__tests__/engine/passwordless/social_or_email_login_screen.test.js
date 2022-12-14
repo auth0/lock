@@ -46,7 +46,7 @@ describe('email passwordless', () => {
 
     jest.mock('core/index', () => ({
       hasSomeConnections: jest.fn(() => true),
-      captcha: jest.fn()
+      passwordlessCaptcha: jest.fn()
     }));
   });
 
@@ -67,7 +67,7 @@ describe('email passwordless', () => {
   it('renders a captcha', () => {
     const Component = getComponent();
 
-    require('core/index').captcha.mockReturnValue({
+    require('core/index').passwordlessCaptcha.mockReturnValue({
       get() {
         return true;
       }

@@ -9,6 +9,7 @@ import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
 import { clientConnections, hasFreeSubscription } from './client/index';
 import * as captchaField from '../field/captcha';
+import * as passwordlessCaptchaField from '../field/passwordlessCaptcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
@@ -421,6 +422,11 @@ export function setCaptcha(m, value, wasInvalid) {
   return set(m, 'captcha', Immutable.fromJS(value));
 }
 
+export function setPasswordlessCaptcha(m, value, wasInvalid) {
+  m = passwordlessCaptchaField.reset(m, wasInvalid);
+  return set(m, 'passwordlessCaptcha', Immutable.fromJS(value));
+}
+
 export function captcha(m) {
   //some tests send an string as model.
   // https://github.com/auth0/lock/blob/82f56187698528699478bd429858cf91e387763c/src/__tests__/engine/classic/sign_up_pane.test.jsx#L28
@@ -428,6 +434,13 @@ export function captcha(m) {
     return;
   }
   return get(m, 'captcha');
+}
+
+export function passwordlessCaptcha(m) {
+  if (typeof m !== 'object') {
+    return;
+  }
+  return get(m, 'passwordlessCaptcha');
 }
 
 export function prefill(m) {
