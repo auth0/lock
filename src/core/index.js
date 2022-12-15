@@ -9,7 +9,6 @@ import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
 import { clientConnections, hasFreeSubscription } from './client/index';
 import * as captchaField from '../field/captcha';
-import * as passwordlessCaptchaField from '../field/passwordlessCaptcha';
 
 const { get, init, remove, reset, set, tget, tset, tremove } = dataFns(['core']);
 
@@ -423,7 +422,7 @@ export function setCaptcha(m, value, wasInvalid) {
 }
 
 export function setPasswordlessCaptcha(m, value, wasInvalid) {
-  m = passwordlessCaptchaField.reset(m, wasInvalid);
+  m = captchaField.reset(m, wasInvalid);
   return set(m, 'passwordlessCaptcha', Immutable.fromJS(value));
 }
 
