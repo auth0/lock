@@ -42,7 +42,9 @@ export default {
     passwordless: {
       'bad.email': 'Diese E-Mail-Adresse ist ungültig',
       'bad.phone_number': 'Diese Telefonnummer ist ungültig',
-      'lock.fallback': 'Es tut uns leid, etwas ist schiefgelaufen.'
+      'lock.fallback': 'Es tut uns leid, etwas ist schiefgelaufen.',
+      invalid_captcha: 'Lösen Sie die Herausforderungsfrage, um sicherzustellen, dass Sie kein Roboter sind.',
+      invalid_recaptcha: 'Aktivieren Sie das Kontrollkästchen, um sicherzustellen, dass Sie kein Roboter sind.'
     },
     signUp: {
       invalid_password: 'Passwort ist ungültig.',
