@@ -852,7 +852,7 @@ atob@^2.1.2:
 
 auth0-js@^9.20.0:
   version "9.20.0"
-  resolved "https://a0us.jfrog.io/a0us/api/npm/npm/auth0-js/-/auth0-js-9.20.0.tgz#80d140a6741f677f5295f2b38e750e23961726fe"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.20.0.tgz#80d140a6741f677f5295f2b38e750e23961726fe"
   integrity sha512-g158V/fP+QHZqvLjqc5nsdLmJkLz8ceMQjkkrfybPXK7a6uPsJXqTEft9aQp8Y5w6qyyLi9EGD5df+iGGiTaVQ==
   dependencies:
     base64-js "^1.5.1"
