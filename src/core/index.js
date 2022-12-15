@@ -588,7 +588,11 @@ export function loginErrorMessage(m, error, type) {
 
   if (code === 'invalid_captcha') {
     const currentCaptcha = get(m, 'captcha');
-    if (currentCaptcha && currentCaptcha.get('provider') === 'recaptcha_v2') {
+    if (
+      currentCaptcha && (
+        currentCaptcha.get('provider') === 'recaptcha_v2' ||
+        currentCaptcha.get('provider') === 'recaptcha_enterprise'
+      )) {
       code = 'invalid_recaptcha';
     }
   }

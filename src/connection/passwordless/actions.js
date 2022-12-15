@@ -30,7 +30,10 @@ function getErrorMessage(m, id, error) {
 
   if (error.code === 'invalid_captcha') {
     const captchaConfig = l.passwordlessCaptcha(m);
-    key = captchaConfig.get('provider') === 'recaptcha_v2' ? 'invalid_recaptcha' : 'invalid_captcha';
+    key = (
+      captchaConfig.get('provider') === 'recaptcha_v2' ||
+      captchaConfig.get('provider') === 'recaptcha_enterprise'
+    ) ? 'invalid_recaptcha' : 'invalid_captcha';
   }
 
   return (
