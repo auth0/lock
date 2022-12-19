@@ -26,7 +26,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/11.34.2/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.35.0/lock.min.js"></script>
 ```
 
 ### Configure Auth0
