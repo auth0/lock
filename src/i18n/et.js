@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': 'Vigane e-mail',
       'bad.phone_number': 'Vigane telefoninumber',
-      'lock.fallback': 'Vabandame, midagi läks valesti.'
+      'lock.fallback': 'Vabandame, midagi läks valesti.',
+      invalid_captcha: 'Lahendage väljakutseküsimus ja veenduge, et te pole robot.',
+      invalid_recaptcha: 'Valige märkeruut, et kontrollida, kas te pole robot.'
     },
     signUp: {
       invalid_password: 'Parool on vigane.',

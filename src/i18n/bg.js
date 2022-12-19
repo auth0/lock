@@ -41,7 +41,9 @@ export default {
     passwordless: {
       'bad.email': 'Имейлът е невалиден',
       'bad.phone_number': 'Телефонният номер е невалиден',
-      'lock.fallback': 'Съжаляваме, възникна грешка'
+      'lock.fallback': 'Съжаляваме, възникна грешка',
+      invalid_captcha: 'Решете задачата, за да се уверим, че не сте робот.',
+      invalid_recaptcha: 'Поставете отметка, за да се уверим, че не сте робот.'
     },
     signUp: {
       invalid_password: 'Паролата е невалидна.',

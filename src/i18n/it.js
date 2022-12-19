@@ -40,7 +40,9 @@ export default {
     passwordless: {
       'bad.email': "L'email non è valida",
       'bad.phone_number': 'Il numero di telefono non è valido',
-      'lock.fallback': 'Ci dispiace, qualcosa è andato storto'
+      'lock.fallback': 'Ci dispiace, qualcosa è andato storto',
+      invalid_captcha: 'Risolvi la domanda di verifica per verificare che non sei un robot.',
+      invalid_recaptcha: 'Seleziona la casella di controllo per verificare che non sei un robot.'
     },
     signUp: {
       invalid_password: 'La password non è valida.',

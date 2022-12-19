@@ -41,7 +41,9 @@ export default {
     passwordless: {
       'bad.email': 'Adres email nie jest poprawny',
       'bad.phone_number': 'Numer telefonu nie jest poprawny',
-      'lock.fallback': 'Przykro nam, coś poszło nie tak'
+      'lock.fallback': 'Przykro nam, coś poszło nie tak',
+      invalid_captcha: 'Rozwiąż pytanie kontrolne, aby sprawdzić, czy nie jesteś robotem.',
+      invalid_recaptcha: 'Zaznacz pole wyboru, aby potwierdzić, że nie jesteś robotem.'
     },
     signUp: {
       invalid_password: 'Hasło nie jest poprawne.',

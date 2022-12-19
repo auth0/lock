@@ -421,13 +421,17 @@ export function setCaptcha(m, value, wasInvalid) {
   return set(m, 'captcha', Immutable.fromJS(value));
 }
 
+export function setPasswordlessCaptcha(m, value, wasInvalid) {
+  m = captchaField.reset(m, wasInvalid);
+  return set(m, 'passwordlessCaptcha', Immutable.fromJS(value));
+}
+
 export function captcha(m) {
-  //some tests send an string as model.
-  // https://github.com/auth0/lock/blob/82f56187698528699478bd429858cf91e387763c/src/__tests__/engine/classic/sign_up_pane.test.jsx#L28
-  if (typeof m !== 'object') {
-    return;
-  }
   return get(m, 'captcha');
+}
+
+export function passwordlessCaptcha(m) {
+  return get(m, 'passwordlessCaptcha');
 }
 
 export function prefill(m) {
@@ -575,7 +579,11 @@ export function loginErrorMessage(m, error, type) {
 
   if (code === 'invalid_captcha') {
     const currentCaptcha = get(m, 'captcha');
-    if (currentCaptcha && currentCaptcha.get('provider') === 'recaptcha_v2') {
+    if (
+      currentCaptcha && (
+        currentCaptcha.get('provider') === 'recaptcha_v2' ||
+        currentCaptcha.get('provider') === 'recaptcha_enterprise'
+      )) {
       code = 'invalid_recaptcha';
     }
   }

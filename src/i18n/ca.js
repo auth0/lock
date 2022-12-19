@@ -42,7 +42,9 @@ export default {
     passwordless: {
       'bad.email': "L'adreça de correu no és vàlida",
       'bad.phone_number': 'El número de telèfon no és vàlid',
-      'lock.fallback': 'Quelcom ha fet fallida'
+      'lock.fallback': 'Quelcom ha fet fallida',
+      invalid_captcha: 'Resoleu la pregunta de desafiament per verificar que no sou un robot.',
+      invalid_recaptcha: 'Seleccioneu la casella de verificació per verificar que no sou un robot.'
     },
     signUp: {
       invalid_password: 'La contrasenya no és vàlida.',
