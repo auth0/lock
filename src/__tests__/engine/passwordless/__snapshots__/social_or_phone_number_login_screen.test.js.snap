@@ -22,7 +22,7 @@ exports[`sms passwordless renders a captcha 1`] = `
   <div
     data-__type="captcha_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
