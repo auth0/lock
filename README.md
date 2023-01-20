@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 ![CircleCI](https://img.shields.io/circleci/build/github/auth0/lock)
 
-> :warning: This is a beta release for Lock.js v12 that includes an upgrade to React 18. Getting issues? Please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12-beta&template=report_a_bug.md&title=).
+> :warning: Lock is built using React 18 from v12 onwards. Getting issues? Please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12&template=report_a_bug.md&title=).
 
 ## Documentation
 
@@ -15,14 +15,14 @@
 
 ### Browser Compatibility
 
-We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10.
+We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 11.
 
 ### Installation
 
-Using [npm](https://npmjs.org) in your project directory run the following command, making sure to use the `beta` tag:
+Install Lock into your project using [npm](https://npmjs.org):
 
 ```sh
-npm install auth0-lock@beta
+npm install auth0-lock
 ```
 
 ### Configure Auth0
@@ -47,7 +47,7 @@ Create a **Single Page Application** in the [Auth0 Dashboard](https://manage.aut
 
 ### Configure the SDK
 
-Create either an `Auth0Lock` or `Auth0LockPasswordless` instance.
+Create either an `Auth0Lock` or `Auth0LockPasswordless` instance, depending on your use case:
 
 #### Auth0Lock
 
@@ -67,7 +67,7 @@ const lock = new Auth0LockPasswordless('{YOUR_AUTH0_CLIENT_ID}', '{YOUR_AUTH0_DO
 
 ### Logging In
 
-You can then configure a listener for the `authenticated` event to retrieve an access token and call `show` to display the Lock widget.
+Configure a listener for the `authenticated` event to retrieve an access token and call `show` to display the Lock widget.
 
 ```html
 <button id="login">Click to Login</button>
@@ -88,6 +88,7 @@ lock.on('authenticated', function (authResult) {
   });
 });
 
+// Show the widget when the login button is clicked
 document.getElementById('login').addEventListener('click', () => {
   lock.show()
 });.
