@@ -6,6 +6,8 @@
 
 > :warning: Lock is built using React 18 from v12 onwards. Getting issues? Please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12&template=report_a_bug.md&title=).
 
+> :warning: From v12 onwards, we no longer publish to Bower.
+
 ## Documentation
 
 - [Docs Site](https://auth0.com/docs) - explore our Docs site and learn more about Auth0.
@@ -24,6 +26,12 @@ Install Lock into your project using [npm](https://npmjs.org):
 npm install auth0-lock
 ```
 
+From CDN
+
+```html
+<!-- Latest patch release (recommended for production) -->
+<script src="https://cdn.auth0.com/js/lock/12.0.0/lock.min.js"></script>
+```
 ### Configure Auth0
 
 Create a **Single Page Application** in the [Auth0 Dashboard](https://manage.auth0.com/#/applications).

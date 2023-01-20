@@ -1,4 +1,19 @@
 # Change Log
+
+## [v12.0.0](https://github.com/auth0/lock/tree/v12.0.0) (2023-01-20)
+
+[Full Changelog](https://github.com/auth0/lock/compare/v11.35.0...v12.0.0)
+
+Lock is now built using React 18, which resolves a number of security vulnerabilities and improves performance. If you encounter any issues relating to this upgrade, please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12&template=report_a_bug.md&title=).
+
+Despite the major version bump, **v12 is completely API-compatible with v11**.
+
+**Changed**
+
+- Upgrade to React 18 [\#2209](https://github.com/auth0/lock/pull/2209) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Upgrade to Webpack 5 [\#2213](https://github.com/auth0/lock/pull/2213) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Various dependency bumps [see the full changelog](https://github.com/auth0/lock/compare/v11.35.0...v12.0.0)
+
 ## [v11.35.0](https://github.com/auth0/lock/tree/v11.35.0) (2022-12-19)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.2...v11.35.0)
