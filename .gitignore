@@ -11,3 +11,4 @@ npm-debug.log
 local.log
 yarn-error.log
 build/
+.yarn/
