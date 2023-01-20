@@ -40,7 +40,9 @@ export default {
     passwordless: {
       'bad.email': 'E-mail je neplatný',
       'bad.phone_number': 'Telefonní číslo je neplatné',
-      'lock.fallback': 'Je nám líto, něco se pokazilo'
+      'lock.fallback': 'Je nám líto, něco se pokazilo',
+      invalid_captcha: 'Vyřešte úlohu, abychom ověřili, že nejste robot.',
+      invalid_recaptcha: 'Zaškrtněte políčko, abychom ověřili, že nejste robot.'
     },
     signUp: {
       invalid_password: 'Heslo je neplatné.',

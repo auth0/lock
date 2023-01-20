@@ -9,12 +9,15 @@ import webApi from '../core/web_api';
  *
  * @param {Object} m model
  * @param {Number} id
+ * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
  */
-export function showMissingCaptcha(m, id) {
-  const captchaConfig = l.captcha(m);
+export function showMissingCaptcha(m, id, isPasswordless = false) {
+  const captchaConfig = isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m);
 
-  const captchaError =
-    captchaConfig.get('provider') === 'recaptcha_v2' ? 'invalid_recaptcha' : 'invalid_captcha';
+  const captchaError = (
+    captchaConfig.get('provider') === 'recaptcha_v2' ||
+    captchaConfig.get('provider') === 'recaptcha_enterprise'
+  ) ? 'invalid_recaptcha' : 'invalid_captcha';
 
   const errorMessage = i18n.html(m, ['error', 'login', captchaError]);
 
@@ -31,13 +34,14 @@ export function showMissingCaptcha(m, id) {
  *
  * @param {Object} m model
  * @param {Object} params
+ * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
  * @param {Object} fields
  *
  * @returns {Boolean} returns true if is required and missing the response from the user
  */
-export function setCaptchaParams(m, params, fields) {
-  const captchaConfig = l.captcha(m);
-  const isCaptchaRequired = captchaConfig && l.captcha(m).get('required');
+export function setCaptchaParams(m, params, isPasswordless, fields) {
+  const captchaConfig = isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m);
+  const isCaptchaRequired = captchaConfig && captchaConfig.get('required');
 
   if (!isCaptchaRequired) {
     return true;
@@ -57,10 +61,21 @@ export function setCaptchaParams(m, params, fields) {
  * Get a new challenge and display the new captcha image.
  *
  * @param {number} id The id of the Lock instance.
+ * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow.
  * @param {boolean} wasInvalid A boolean indicating if the previous captcha was invalid.
  * @param {Function} [next] A callback.
  */
-export function swapCaptcha(id, wasInvalid, next) {
+export function swapCaptcha(id, isPasswordless, wasInvalid, next) {
+  if (isPasswordless) {
+    return webApi.getPasswordlessChallenge(id, (err, newCaptcha) => {
+      if (!err && newCaptcha) {
+        swap(updateEntity, 'lock', id, l.setPasswordlessCaptcha, newCaptcha, wasInvalid);
+      }
+      if (next) {
+        next();
+      }
+    });
+  }
   return webApi.getChallenge(id, (err, newCaptcha) => {
     if (!err && newCaptcha) {
       swap(updateEntity, 'lock', id, l.setCaptcha, newCaptcha, wasInvalid);

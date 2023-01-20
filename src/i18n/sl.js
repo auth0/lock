@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': 'Napačen e-poštni naslov',
       'bad.phone_number': 'Napačna telefonska številka',
-      'lock.fallback': 'Žal je prišlo do napake'
+      'lock.fallback': 'Žal je prišlo do napake',
+      invalid_captcha: 'Rešite izzivno vprašanje in preverite, ali niste robot.',
+      invalid_recaptcha: 'Izberite potrditveno polje, da preverite, da niste robot.'
     },
     signUp: {
       invalid_password: 'Napačno geslo.',

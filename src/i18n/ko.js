@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': '이메일 주소가 유효하지 않습니다',
       'bad.phone_number': '전화번호가 유효하지 않습니다',
-      'lock.fallback': '죄송합니다. 오류가 발생하였습니다'
+      'lock.fallback': '죄송합니다. 오류가 발생하였습니다',
+      invalid_captcha: '로봇이 아닌 사람인지 확인하기 위해 챌린지 질문을 해결하십시오.',
+      invalid_recaptcha: '로봇이 아닌지 확인하려면 확인란을 선택하십시오.'
     },
     signUp: {
       invalid_password: '비밀번호가 유효하지 않습니다.',

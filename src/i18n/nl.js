@@ -42,7 +42,9 @@ export default {
     passwordless: {
       'bad.email': 'Het e-mailadres is ongeldig',
       'bad.phone_number': 'Het telefoonnummer is ongeldig',
-      'lock.fallback': 'Onze excuses, er is iets fout gegaan.'
+      'lock.fallback': 'Onze excuses, er is iets fout gegaan.',
+      invalid_captcha: 'Los de vraag op om te verifiëren dat u geen robot bent.',
+      invalid_recaptcha: 'Selecteer het vakje om te verifiëren dat u geen robot bent.'
     },
     signUp: {
       invalid_password: 'Het wachtwoord is ongeldig.',

@@ -40,7 +40,9 @@ export default {
     passwordless: {
       'bad.email': 'E-poçt düzgün deyil',
       'bad.phone_number': 'Telefon nömrəsi düzgün deyil',
-      'lock.fallback': 'Üzr istəyirik, səhv oldu'
+      'lock.fallback': 'Üzr istəyirik, səhv oldu',
+      invalid_captcha: 'Daxil etdiyiniz mətn səhv idi. <br /> Lütfən, yenidən cəhd edin.',
+      invalid_recaptcha: 'Robot olmadığınızı təsdiqləmək üçün onay qutusunu seçin.'
     },
     signUp: {
       invalid_password: 'Şifrə yanlışdır.',

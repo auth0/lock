@@ -35,7 +35,9 @@ export default {
     passwordless: {
       'bad.email': 'Die e-pos is ongeldig',
       'bad.phone_number': 'Die telefoonnommer is ongeldig',
-      'lock.fallback': 'Jammer, iets het verkeerd gegaan'
+      'lock.fallback': 'Jammer, iets het verkeerd gegaan',
+      invalid_captcha: "Los die uitdagingsvraag om te verifieer dat u nie 'n robot is nie.",
+      invalid_recaptcha: "Kies die merkblokkie om te verifieer dat u nie 'n robot is nie."
     },
     signUp: {
       invalid_password: 'Wagwoord is ongeldig.',

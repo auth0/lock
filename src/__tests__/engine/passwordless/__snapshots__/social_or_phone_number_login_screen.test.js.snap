@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sms passwordless renders a captcha 1`] = `
+<div>
+  <div
+    data-__type="social_buttons_pane"
+    data-instructions="socialLoginInstructions"
+    data-labelFn={[Function]}
+    data-lock="model"
+    data-signUp={true}
+  />
+  <div
+    data-__type="pane_separator"
+  />
+  <div
+    data-__type="phone_number_pane"
+    data-instructions="passwordlessSMSAlternativeInstructions"
+    data-invalidHint="phoneNumberInputInvalidHint"
+    data-lock="model"
+    data-placeholder="phoneNumberInputPlaceholder"
+  />
+  <div
+    data-__type="captcha_pane"
+    data-i18n={
+      {
+        "html": [Function],
+        "str": [Function],
+      }
+    }
+    data-isPasswordless={true}
+    data-lock="model"
+    data-onReload={[Function]}
+  />
+</div>
+`;
+
+exports[`sms passwordless renders correctly 1`] = `
+<div>
+  <div
+    data-__type="social_buttons_pane"
+    data-instructions="socialLoginInstructions"
+    data-labelFn={[Function]}
+    data-lock="model"
+    data-signUp={true}
+  />
+  <div
+    data-__type="pane_separator"
+  />
+  <div
+    data-__type="phone_number_pane"
+    data-instructions="passwordlessSMSAlternativeInstructions"
+    data-invalidHint="phoneNumberInputInvalidHint"
+    data-lock="model"
+    data-placeholder="phoneNumberInputPlaceholder"
+  />
+</div>
+`;

@@ -1,6 +1,5 @@
-import { Map } from 'immutable';
 import { read, getEntity, swap, updateEntity } from '../../store/index';
-import { closeLock, logIn as coreLogIn, validateAndSubmit, logInSuccess } from '../../core/actions';
+import { validateAndSubmit, logInSuccess } from '../../core/actions';
 import webApi from '../../core/web_api';
 import * as c from '../../field/index';
 import * as l from '../../core/index';
@@ -17,8 +16,9 @@ import {
 } from './index';
 import { phoneNumberWithDiallingCode } from '../../field/phone_number';
 import * as i18n from '../../i18n';
+import { setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
 
-function getErrorMessage(m, error) {
+function getErrorMessage(m, id, error) {
   let key = error.error;
 
   if (
@@ -28,15 +28,28 @@ function getErrorMessage(m, error) {
     key = 'bad.phone_number';
   }
 
+  if (error.code === 'invalid_captcha') {
+    const captchaConfig = l.passwordlessCaptcha(m);
+    key = (
+      captchaConfig.get('provider') === 'recaptcha_v2' ||
+      captchaConfig.get('provider') === 'recaptcha_enterprise'
+    ) ? 'invalid_recaptcha' : 'invalid_captcha';
+  }
+
   return (
     i18n.html(m, ['error', 'passwordless', key]) ||
     i18n.html(m, ['error', 'passwordless', 'lock.fallback'])
   );
 }
 
+function swapCaptchaAfterError(id, error){
+  const wasCaptchaInvalid = error && error.code === 'invalid_captcha';
+  swapCaptcha(id, true, wasCaptchaInvalid);
+}
+
 export function requestPasswordlessEmail(id) {
   validateAndSubmit(id, ['email'], m => {
-    sendEmail(m, requestPasswordlessEmailSuccess, requestPasswordlessEmailError);
+    sendEmail(m, id, requestPasswordlessEmailSuccess, requestPasswordlessEmailError);
   });
 }
 
@@ -49,14 +62,15 @@ export function requestPasswordlessEmailSuccess(id) {
 
 export function requestPasswordlessEmailError(id, error) {
   const m = read(getEntity, 'lock', id);
-  const errorMessage = getErrorMessage(m, error);
-  return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+  const errorMessage = getErrorMessage(m, id, error);
+  swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+  swapCaptchaAfterError(id, error);
 }
 
 export function resendEmail(id) {
   swap(updateEntity, 'lock', id, resend);
   const m = read(getEntity, 'lock', id);
-  sendEmail(m, resendEmailSuccess, resendEmailError);
+  sendEmail(m, id, resendEmailSuccess, resendEmailError);
 }
 
 function resendEmailSuccess(id) {
@@ -75,7 +89,7 @@ function getPasswordlessConnectionName(m, defaultPasswordlessConnection) {
     : defaultPasswordlessConnection;
 }
 
-function sendEmail(m, successFn, errorFn) {
+function sendEmail(m, id, successFn, errorFn) {
   const params = {
     connection: getPasswordlessConnectionName(m, 'email'),
     email: c.getFieldValue(m, 'email'),
@@ -84,6 +98,11 @@ function sendEmail(m, successFn, errorFn) {
 
   if (isSendLink(m) && !l.auth.params(m).isEmpty()) {
     params.authParams = l.auth.params(m).toJS();
+  }
+  const isCaptchaValid = setCaptchaParams(m, params, true, []);
+
+  if (!isCaptchaValid) {
+    return showMissingCaptcha(m, id, true);
   }
 
   webApi.startPasswordless(l.id(m), params, error => {
@@ -102,6 +121,10 @@ export function sendSMS(id) {
       phoneNumber: phoneNumberWithDiallingCode(m),
       send: send(m)
     };
+    const isCaptchaValid = setCaptchaParams(m, params, true, []);
+    if (!isCaptchaValid) {
+      return showMissingCaptcha(m, id, true);
+    }
     webApi.startPasswordless(id, params, error => {
       if (error) {
         setTimeout(() => sendSMSError(id, error), 250);
@@ -122,9 +145,10 @@ function sendSMSSuccess(id) {
 
 function sendSMSError(id, error) {
   const m = read(getEntity, 'lock', id);
-  const errorMessage = getErrorMessage(m, error);
+  const errorMessage = getErrorMessage(m, id, error);
   l.emitAuthorizationErrorEvent(m, error);
-  return swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+  swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
+  swapCaptchaAfterError(id, error);
 }
 
 export function logIn(id) {
@@ -146,7 +170,7 @@ export function logIn(id) {
     let errorMessage;
     if (error) {
       const m = read(getEntity, 'lock', id);
-      errorMessage = getErrorMessage(m, error);
+      errorMessage = getErrorMessage(m, id, error);
       if (error.logToConsole) {
         console.error(error.description);
       }
@@ -160,6 +184,7 @@ export function logIn(id) {
 
 export function restart(id) {
   swap(updateEntity, 'lock', id, restartPasswordless);
+  swapCaptcha(id, true, false);
 }
 
 export function toggleTermsAcceptance(id) {

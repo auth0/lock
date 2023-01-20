@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': 'Neteisingas el.pašto adresas',
       'bad.phone_number': 'Neteisingas telefono numeris',
-      'lock.fallback': 'Atsiprašome, įvyko netikėta klaida.'
+      'lock.fallback': 'Atsiprašome, įvyko netikėta klaida.',
+      invalid_captcha: 'Išspręskite iššūkio klausimą ir įsitikinkite, kad nesate robotas.',
+      invalid_recaptcha: 'Pažymėkite žymimąjį laukelį, kad patikrintumėte, ar nesate robotas.'
     },
     signUp: {
       invalid_password: 'Slaptažodis neteisingas.',

@@ -40,7 +40,9 @@ export default {
     passwordless: {
       'bad.email': 'Nederīga e-pasta adrese',
       'bad.phone_number': 'Nederīgs tālruņa numurs',
-      'lock.fallback': 'Diemžēl radās problēma'
+      'lock.fallback': 'Diemžēl radās problēma',
+      invalid_captcha: 'Atrisiniet izaicinājuma jautājumu, lai pārliecinātos, ka neesat robots.',
+      invalid_recaptcha: 'Atzīmējiet izvēles rūtiņu, lai pārliecinātos, ka neesat robots.'
     },
     signUp: {
       invalid_password: 'Nederīga parole.',
