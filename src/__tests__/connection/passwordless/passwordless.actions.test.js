@@ -29,7 +29,8 @@ describe('passwordless actions', () => {
     }));
     jest.mock('core/web_api', () => ({
       startPasswordless: jest.fn(),
-      passwordlessVerify: jest.fn()
+      passwordlessVerify: jest.fn(),
+      getPasswordlessChallenge: jest.fn()
     }));
     jest.mock('core/actions', () => ({
       closeLock: jest.fn(),
@@ -50,7 +51,8 @@ describe('passwordless actions', () => {
       },
       emitAuthorizationErrorEvent: jest.fn(),
       connections: jest.fn(),
-      useCustomPasswordlessConnection: jest.fn(() => false)
+      useCustomPasswordlessConnection: jest.fn(() => false),
+      passwordlessCaptcha: jest.fn()
     }));
     jest.mock('store/index', () => ({
       read: jest.fn(() => 'model'),

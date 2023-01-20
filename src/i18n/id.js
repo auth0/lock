@@ -41,7 +41,9 @@ export default {
     passwordless: {
       'bad.email': 'Email ini tidak valid.',
       'bad.phone_number': 'Nomor telepon tidak valid.',
-      'lock.fallback': 'Maaf, terjadi kesalahan'
+      'lock.fallback': 'Maaf, terjadi kesalahan',
+      invalid_captcha: 'Selesaikan pertanyaan tantangan untuk memverifikasi bahwa Anda bukan robot.',
+      invalid_recaptcha: 'Pilih kotak centang untuk memverifikasi bahwa Anda bukan robot.'
     },
     signUp: {
       invalid_password: 'Kata sandi tidak valid.',

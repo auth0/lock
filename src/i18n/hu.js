@@ -41,7 +41,9 @@ export default {
     passwordless: {
       'bad.email': 'Érvénytelen e-mail cím.',
       'bad.phone_number': 'Érvénytelen telefonszám.',
-      'lock.fallback': 'Sajnáljuk, valami hiba történt.'
+      'lock.fallback': 'Sajnáljuk, valami hiba történt.',
+      invalid_captcha: 'Oldja meg a kihívást, és ellenőrizze, hogy nem robot.',
+      invalid_recaptcha: 'Jelölje be a jelölőnégyzetet annak ellenőrzéséhez, hogy nem robot vagy-e.'
     },
     signUp: {
       invalid_password: 'Érvénytelen jelszó.',

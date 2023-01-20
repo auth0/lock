@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': 'Din e-postadress är ogiltig.',
       'bad.phone_number': 'Ditt telefonnummer är ogiltigt.',
-      'lock.fallback': 'Något gick fel.'
+      'lock.fallback': 'Något gick fel.',
+      invalid_captcha: 'Lös utmaningsfrågan för att verifiera att du inte är en robot.',
+      invalid_recaptcha: 'Markera kryssrutan för att verifiera att du inte är en robot.'
     },
     signUp: {
       invalid_password: 'Lösenordet är ogiltigt.',

@@ -42,7 +42,9 @@ export default {
     passwordless: {
       'bad.email': 'Neispravna adresa elektroničke pošte',
       'bad.phone_number': 'Neispravan broj telefona',
-      'lock.fallback': 'Ispričavamo se, ali nešto je pošlo po zlu.'
+      'lock.fallback': 'Ispričavamo se, ali nešto je pošlo po zlu.',
+      invalid_captcha: 'Riješite izazovno pitanje kako biste provjerili da niste robot.',
+      invalid_recaptcha: 'Označite potvrdni okvir da biste potvrdili da niste robot.'
     },
     signUp: {
       invalid_password: 'Lozinka je neispravna.',

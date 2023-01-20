@@ -39,7 +39,9 @@ export default {
     passwordless: {
       'bad.email': 'Email không hợp lệ.',
       'bad.phone_number': 'Số điện thoại không hợp lệ.',
-      'lock.fallback': 'Đã có lỗi xãy ra, chúng tôi rất lấy làm tiếc.'
+      'lock.fallback': 'Đã có lỗi xãy ra, chúng tôi rất lấy làm tiếc.',
+      invalid_captcha: 'Giải quyết câu hỏi thử thách để xác minh bạn không phải là robot.',
+      invalid_recaptcha: 'Chọn hộp kiểm để xác minh bạn không phải là robot.'
     },
     signUp: {
       invalid_password: 'Mật khẩu không hợp lệ.',

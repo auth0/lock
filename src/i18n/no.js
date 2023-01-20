@@ -41,7 +41,9 @@ export default {
     passwordless: {
       'bad.email': 'Ugyldig e-postadresse',
       'bad.phone_number': 'Ugyldig telefonnummer',
-      'lock.fallback': 'Beklager, men noe gikk galt'
+      'lock.fallback': 'Beklager, men noe gikk galt',
+      invalid_captcha: 'Løs utfordringsspørsmålet for å bekrefte at du ikke er en robot.',
+      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.'
     },
     signUp: {
       invalid_password: 'Ugyldig passord.',

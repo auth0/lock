@@ -35,7 +35,9 @@ export default {
     passwordless: {
       'bad.email': '邮箱错误',
       'bad.phone_number': '手机号码格式不正确。',
-      'lock.fallback': '对不起，出现错误。'
+      'lock.fallback': '对不起，出现错误。',
+      invalid_captcha: '解决挑战问题以验证您不是机器人。',
+      invalid_recaptcha: '选中复选框以确认您不是机器人。'
     },
     signUp: {
       invalid_password: '密码错误',

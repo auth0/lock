@@ -41,7 +41,9 @@ export default {
     passwordless: {
       'bad.email': 'E-mel ini tidak sah',
       'bad.phone_number': 'Nombor telefon tidak sah',
-      'lock.fallback': 'Harap maaf, sesuatu berlaku'
+      'lock.fallback': 'Harap maaf, sesuatu berlaku',
+      invalid_captcha: 'Selesaikan soalan cabaran untuk mengesahkan bahawa anda bukan robot.',
+      invalid_recaptcha: 'Pilih kotak pilihan untuk mengesahkan bahawa anda bukan robot.'
     },
     signUp: {
       invalid_password: 'Kata laluan tidak sah.',

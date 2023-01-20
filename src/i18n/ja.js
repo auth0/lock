@@ -40,7 +40,9 @@ export default {
     passwordless: {
       'bad.email': 'メールアドレスが不正です',
       'bad.phone_number': '電話番号が不正です',
-      'lock.fallback': '申し訳ございません。エラーが発生しました。'
+      'lock.fallback': '申し訳ございません。エラーが発生しました。',
+      invalid_captcha: 'チャレンジ質問を解いて、ロボットではないことを確認してください。',
+      invalid_recaptcha: 'チェックボックスを選択して、ロボットでないことを確認します。'
     },
     signUp: {
       invalid_password: 'パスワードが不正です。',

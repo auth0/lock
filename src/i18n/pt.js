@@ -42,7 +42,9 @@ export default {
     passwordless: {
       'bad.email': 'O endereço de correio eletrónico é inválido',
       'bad.phone_number': 'O número de telefone é inválido',
-      'lock.fallback': 'Lamentamos, correu um erro.'
+      'lock.fallback': 'Lamentamos, correu um erro.',
+      invalid_captcha: 'Resolva a questão do desafio para verificar se você não é um robô.',
+      invalid_recaptcha: 'Marque a caixa de seleção para verificar se você não é um robô.'
     },
     signUp: {
       invalid_password: 'Palavra-passe inválida.',

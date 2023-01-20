@@ -195,6 +195,10 @@ class Auth0APIClient {
     return this.client.client.getChallenge(...params);
   }
 
+  getPasswordlessChallenge(...params) {
+    return this.client.client.passwordless.getChallenge(...params);
+  }
+
   getUserCountry(cb) {
     return this.client.client.getUserCountry(cb);
   }
