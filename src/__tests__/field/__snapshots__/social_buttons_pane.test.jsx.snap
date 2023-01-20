@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SocialButtonsPane calls \`logIn\` with social connection 1 when first button is clicked 1`] = `
-Array [
+[
   1,
-  Object {
+  {
     "get": [Function],
     "item": 1,
   },
@@ -11,9 +11,9 @@ Array [
 `;
 
 exports[`SocialButtonsPane calls \`logIn\` with social connection 2 when second button is clicked 1`] = `
-Array [
+[
   1,
-  Object {
+  {
     "get": [Function],
     "item": 2,
   },
@@ -21,9 +21,9 @@ Array [
 `;
 
 exports[`SocialButtonsPane calls signUpError when isSignUp===true and terms were not accepted 1`] = `
-Array [
+[
   "lock-id-1",
-  Object {
+  {
     "code": "social_signup_needs_terms_acception",
   },
 ]

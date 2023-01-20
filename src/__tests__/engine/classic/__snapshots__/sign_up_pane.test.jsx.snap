@@ -4,7 +4,7 @@ exports[`SignUpPane hides the Captcha pane for SSO connections 1`] = `
 <div>
   <Unknown
     i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -21,7 +21,7 @@ exports[`SignUpPane onlyEmail is false hide UsernamePane when databaseConnection
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -38,7 +38,7 @@ exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -50,7 +50,7 @@ exports[`SignUpPane onlyEmail is false shows PasswordPane 1`] = `
   <div
     data-__type="password_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -68,7 +68,7 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -80,7 +80,7 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
   <div
     data-__type="username_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -93,7 +93,7 @@ exports[`SignUpPane onlyEmail is false shows UsernamePane when databaseConnectio
   <div
     data-__type="password_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -111,7 +111,7 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -123,7 +123,7 @@ exports[`SignUpPane onlyEmail is false shows custom fields when additionalSignUp
   <div
     data-__type="password_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -167,7 +167,7 @@ exports[`SignUpPane renders only email by default 1`] = `
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -187,7 +187,7 @@ exports[`SignUpPane shows header when instructions are available 1`] = `
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -203,7 +203,7 @@ exports[`SignUpPane shows the Captcha pane 1`] = `
 <div>
   <Unknown
     i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -215,7 +215,7 @@ exports[`SignUpPane shows the Captcha pane 1`] = `
   <CaptchaPane
     error={false}
     i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -230,7 +230,7 @@ exports[`SignUpPane shows the Captcha pane for SSO (ADFS) connections 1`] = `
 <div>
   <Unknown
     i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -242,7 +242,7 @@ exports[`SignUpPane shows the Captcha pane for SSO (ADFS) connections 1`] = `
   <CaptchaPane
     error={false}
     i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }

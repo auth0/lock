@@ -3,7 +3,7 @@
 Requires:
 
 - [Yarn](https://yarnpkg.com/)
-- >= Node 10.18.1
+- [Node LTS](https://nodejs.org)
 
 ## Building
 

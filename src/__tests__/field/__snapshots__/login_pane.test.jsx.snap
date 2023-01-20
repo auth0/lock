@@ -4,18 +4,17 @@ exports[`LoginPane hides password link when lock does not have the screen \`forg
 <div>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
-    data-usernameStyle={undefined}
     data-validateFormat={false}
   />
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
 </div>
@@ -25,18 +24,17 @@ exports[`LoginPane hides password link when showForgotPasswordLink === false 1`]
 <div>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
-    data-usernameStyle={undefined}
     data-validateFormat={false}
   />
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
 </div>
@@ -46,18 +44,17 @@ exports[`LoginPane hides password pane when showPassword===false 1`] = `
 <div>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
-    data-usernameStyle={undefined}
     data-validateFormat={false}
   />
   <div
     data-__type="password_pane"
     data-hidden={true}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
   <p
@@ -66,7 +63,6 @@ exports[`LoginPane hides password pane when showPassword===false 1`] = `
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}
     >
       forgotPasswordAction
     </a>
@@ -78,18 +74,17 @@ exports[`LoginPane renders correctly 1`] = `
 <div>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
-    data-usernameStyle={undefined}
     data-validateFormat={false}
   />
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
   <p
@@ -98,7 +93,6 @@ exports[`LoginPane renders correctly 1`] = `
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}
     >
       forgotPasswordAction
     </a>
@@ -111,16 +105,16 @@ exports[`LoginPane shows email pane when user usernameStyle === email 1`] = `
   <div
     data-__type="email_pane"
     data-forceInvalidVisibility={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="emailInputPlaceholder"
     data-strictValidation={false}
   />
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
   <p
@@ -129,7 +123,6 @@ exports[`LoginPane shows email pane when user usernameStyle === email 1`] = `
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}
     >
       forgotPasswordAction
     </a>
@@ -144,18 +137,17 @@ exports[`LoginPane shows header when instructions is not empty 1`] = `
   </p>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
-    data-usernameStyle={undefined}
     data-validateFormat={false}
   />
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
   <p
@@ -164,7 +156,6 @@ exports[`LoginPane shows header when instructions is not empty 1`] = `
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}
     >
       forgotPasswordAction
     </a>
@@ -176,8 +167,8 @@ exports[`LoginPane shows username pane when connectionResolver is specified, eve
 <div>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
     data-usernameStyle="email"
@@ -186,8 +177,8 @@ exports[`LoginPane shows username pane when connectionResolver is specified, eve
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
   <p
@@ -196,7 +187,6 @@ exports[`LoginPane shows username pane when connectionResolver is specified, eve
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}
     >
       forgotPasswordAction
     </a>
@@ -208,8 +198,8 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
 <div>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
     data-usernameStyle="any"
@@ -218,8 +208,8 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
   <p
@@ -228,7 +218,6 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 1`] = `
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}
     >
       forgotPasswordAction
     </a>
@@ -240,8 +229,8 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 2`] = `
 <div>
   <div
     data-__type="username_pane"
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="usernameInputPlaceholder"
     data-strictValidation={false}
     data-usernameStyle="username"
@@ -250,8 +239,8 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 2`] = `
   <div
     data-__type="password_pane"
     data-hidden={false}
-    data-i18n={Object {}}
-    data-lock={Object {}}
+    data-i18n={{}}
+    data-lock={{}}
     data-placeholder="passwordInputPlaceholder"
   />
   <p
@@ -260,7 +249,6 @@ exports[`LoginPane shows username pane when user usernameStyle !== email 2`] = `
     <a
       className="auth0-lock-alternative-link"
       href="forgotPasswordLink"
-      onClick={undefined}
     >
       forgotPasswordAction
     </a>

@@ -3,7 +3,7 @@
 exports[`LoginPane hides the captcha for SSO connections 1`] = `
 <div>
   <UsernamePane
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -16,7 +16,7 @@ exports[`LoginPane hides the captcha for SSO connections 1`] = `
   />
   <PasswordPane
     hidden={false}
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -30,7 +30,7 @@ exports[`LoginPane hides the captcha for SSO connections 1`] = `
 exports[`LoginPane renders a captcha 1`] = `
 <div>
   <UsernamePane
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -43,7 +43,7 @@ exports[`LoginPane renders a captcha 1`] = `
   />
   <PasswordPane
     hidden={false}
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -53,7 +53,7 @@ exports[`LoginPane renders a captcha 1`] = `
   />
   <CaptchaPane
     error={false}
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -67,7 +67,7 @@ exports[`LoginPane renders a captcha 1`] = `
 exports[`LoginPane renders correctly 1`] = `
 <div>
   <UsernamePane
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -80,7 +80,7 @@ exports[`LoginPane renders correctly 1`] = `
   />
   <PasswordPane
     hidden={false}
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -94,7 +94,7 @@ exports[`LoginPane renders correctly 1`] = `
 exports[`LoginPane shows the captcha for SSO (ADFS) connections 1`] = `
 <div>
   <UsernamePane
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -107,7 +107,7 @@ exports[`LoginPane shows the captcha for SSO (ADFS) connections 1`] = `
   />
   <PasswordPane
     hidden={false}
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",
@@ -117,7 +117,7 @@ exports[`LoginPane shows the captcha for SSO (ADFS) connections 1`] = `
   />
   <CaptchaPane
     error={false}
-    i18n={Object {}}
+    i18n={{}}
     lock={
       Immutable.Map {
         "id": "__lock-id__",

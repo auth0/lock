@@ -70,16 +70,8 @@ export default class CaptchaInput extends React.Component {
   }
 
   render() {
-    const {
-      lockId,
-      image,
-      value,
-      placeholder,
-      onReload,
-      invalidHint,
-      isValid,
-      ...props
-    } = this.props;
+    const { lockId, image, value, placeholder, onReload, invalidHint, isValid, ...props } =
+      this.props;
     const { focused } = this.state;
 
     return (

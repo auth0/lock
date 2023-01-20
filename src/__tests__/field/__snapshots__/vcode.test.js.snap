@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`field/vcode setVcode() removes spaces from code 1`] = `
-Array [
+[
   Immutable.Map {},
   "vcode",
   "123456",

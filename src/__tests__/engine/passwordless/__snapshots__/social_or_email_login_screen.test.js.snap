@@ -18,7 +18,7 @@ exports[`email passwordless renders a captcha 1`] = `
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -30,7 +30,7 @@ exports[`email passwordless renders a captcha 1`] = `
   <div
     data-__type="captcha_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }
@@ -60,7 +60,7 @@ exports[`email passwordless renders correctly 1`] = `
   <div
     data-__type="email_pane"
     data-i18n={
-      Object {
+      {
         "html": [Function],
         "str": [Function],
       }

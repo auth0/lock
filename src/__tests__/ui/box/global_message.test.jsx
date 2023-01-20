@@ -76,6 +76,7 @@ describe('GlobalMessage', () => {
   });
   it('should strip out HTML tags if given a string', () => {
     const wrapper = mount(<GlobalMessage type="success" message="<b>Success!</b>" />);
+
     expect(wrapper.html()).toBe(
       '<div class="auth0-global-message auth0-global-message-success"><span class="animated fadeInUp">' +
         '&lt;b&gt;Success!&lt;/b&gt;</span></div>'

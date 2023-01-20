@@ -96,6 +96,27 @@ export const wasLoginAttemptedWith = params => {
   return Map(params).reduce((r, v, k) => r && paramsFromLastCall[k] === v, true);
 };
 
+export const wasLoginAttemptedWithAsync = (params, cb, timeout = 1000) => {
+  const startTime = Date.now();
+
+  const int = setInterval(() => {
+    const lastCall = webApi.logIn.getCall(0);
+
+    if (lastCall) {
+      const paramsFromLastCall = lastCall.args[1];
+
+      cb(Map(params).reduce((r, v, k) => r && paramsFromLastCall[k] === v, true));
+      clearInterval(int);
+      return;
+    }
+
+    if (Date.now() - startTime > timeout) {
+      clearInterval(int);
+      throw Error('Timeout waiting for login attempt');
+    }
+  }, 10);
+};
+
 export const wasSignUpAttemptedWith = params => {
   const lastCall = webApi.signUp.lastCall;
   if (!lastCall) return false;
@@ -206,6 +227,9 @@ const hasFlashMessage = (query, lock, message) => {
 export const hasErrorMessage = (lock, message) => {
   return hasFlashMessage('.auth0-global-message-error', lock, message);
 };
+export const hasErrorMessageElement = lock => {
+  return q(lock, '.auth0-global-message-error');
+};
 export const hasSuccessMessage = (lock, message) => {
   return hasFlashMessage('.auth0-global-message-success', lock, message);
 };
@@ -312,9 +336,23 @@ export const waitUntilExists = (lock, selector, cb, timeout = 1000) => {
 export const waitUntilInputExists = (lock, name, cb, timeout) =>
   waitUntilExists(lock, `.auth0-lock-input-${name} input`, cb, timeout);
 
+export const waitUntilCaptchaExists = (lock, cb, timeout) =>
+  waitUntilInputExists(lock, 'captcha', cb, timeout);
+
 export const waitUntilErrorExists = (lock, cb, timeout) =>
   waitUntilExists(lock, '.auth0-global-message-error span', cb, timeout);
 
+export const waitUntilSuccessFlashExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-global-message-success', cb, timeout);
+
+export const waitUntilInfoFlashExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-global-message-info', cb, timeout);
+
+export const waitForSSONotice = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.auth0-sso-notice-container', cb, timeout);
+
+export const waitForQuickAuthButton = (lock, icon, cb, timeout) =>
+  waitUntilExists(lock, `.auth0-lock-social-button[data-provider^="${icon}"]`, cb, timeout);
 // login
 
 export const waitForEmailAndPasswordInput = (lock, cb, timeout) => {

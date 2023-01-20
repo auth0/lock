@@ -81,6 +81,7 @@ workflows:
           requires:
             - build-and-test
           pkg-manager: yarn
+          node-version: 18.12.1
           context:
             - publish-npm
             - publish-gh
@@ -88,3 +89,4 @@ workflows:
             branches:
               only:
                 - master
+                - beta

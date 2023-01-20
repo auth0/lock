@@ -2,37 +2,11 @@
   "plugins": [
     "version-inline",
     "transform-css-import-to-string",
-    "babel-plugin-stylus-compiler"
+    "babel-plugin-stylus-compiler",
+    "@babel/plugin-proposal-function-bind"
   ],
   "presets": [
-    [
-      "es2015",
-      {
-        "loose": true,
-        "modules": false
-      }
-    ],
-    "stage-0",
-    "react"
-  ],
-  "env": {
-    "test": {
-      "plugins": [
-        "transform-es2015-modules-commonjs"
-      ]
-    },
-    "npm": {
-      "presets": [
-        [
-          "es2015",
-          {
-            "loose": true,
-            "modules": "commonjs"
-          }
-        ],
-        "stage-0",
-        "react"
-      ]
-    }
-  }
+    ["@babel/preset-env", { "useBuiltIns": "entry", "corejs": "3.26.1" }],
+    "@babel/preset-react"
+  ]
 }

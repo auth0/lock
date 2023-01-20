@@ -79,7 +79,7 @@ exports[`EmailSentConfirmation renders correctly 1`] = `
     <p>
       <span
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": " ",
           }
         }
@@ -91,14 +91,13 @@ exports[`EmailSentConfirmation renders correctly 1`] = `
         href="#"
         onClick={[Function]}
       >
-        
          
         <span>
           <svg
             focusable="false"
             height="32px"
             style={
-              Object {
+              {
                 "enableBackground": "new 0 0 32 32",
               }
             }

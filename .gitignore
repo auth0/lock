@@ -10,3 +10,5 @@ npm-debug.log
 .env
 local.log
 yarn-error.log
+build/
+.yarn/

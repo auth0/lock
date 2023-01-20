@@ -5,7 +5,7 @@ exports[`HRDPane renders correctly 1`] = `
   <header />
   <UsernamePane
     i18n={
-      Object {
+      {
         "group": [Function],
         "html": [Function],
         "initI18n": [Function],
@@ -24,7 +24,7 @@ exports[`HRDPane renders correctly 1`] = `
   />
   <PasswordPane
     i18n={
-      Object {
+      {
         "group": [Function],
         "html": [Function],
         "initI18n": [Function],
@@ -46,7 +46,7 @@ exports[`HRDPane renders the captcha if required 1`] = `
   <header />
   <UsernamePane
     i18n={
-      Object {
+      {
         "group": [Function],
         "html": [Function],
         "initI18n": [Function],
@@ -65,7 +65,7 @@ exports[`HRDPane renders the captcha if required 1`] = `
   />
   <PasswordPane
     i18n={
-      Object {
+      {
         "group": [Function],
         "html": [Function],
         "initI18n": [Function],
@@ -82,7 +82,7 @@ exports[`HRDPane renders the captcha if required 1`] = `
   <CaptchaPane
     error={false}
     i18n={
-      Object {
+      {
         "group": [Function],
         "html": [Function],
         "initI18n": [Function],

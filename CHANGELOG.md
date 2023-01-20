@@ -1,5 +1,4 @@
 # Change Log
-
 ## [v11.35.0](https://github.com/auth0/lock/tree/v11.35.0) (2022-12-19)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.2...v11.35.0)
@@ -18,6 +17,17 @@
 - Update okta logo [\#2201](https://github.com/auth0/lock/pull/2201) ([jamescgarrett](https://github.com/jamescgarrett))
 - Update readme to match new design [\#2187](https://github.com/auth0/lock/pull/2187) ([ewanharris](https://github.com/ewanharris))
 
+## [v12.0.0-beta.0](https://github.com/auth0/lock/tree/v12.0.0-beta.0) (2022-12-08)
+
+[Full Changelog](https://github.com/auth0/lock/compare/v11.34.2...v12.0.0-beta.0)
+
+:warning: This is a **beta release** of Lock.js v12 that includes an upgrade to React 18, and should not be used in production. If you find any issues, please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12-beta&template=report_a_bug.md&title=).
+
+**Changed**
+
+- Upgrade to React 18 [\#2209](https://github.com/auth0/lock/pull/2209) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- Upgrade to Webpack 5, Jest 29, Babel 8 [\#2213](https://github.com/auth0/lock/pull/2213) ([stevehobbsdev](https://github.com/stevehobbsdev))
+- bump dependencies to latest patch and fix typos [\#2210](https://github.com/auth0/lock/pull/2210) ([piwysocki](https://github.com/piwysocki))
 ## [v11.34.2](https://github.com/auth0/lock/tree/v11.34.2) (2022-10-10)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.1...v11.34.2)

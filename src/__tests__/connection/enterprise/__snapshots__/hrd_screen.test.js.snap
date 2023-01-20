@@ -9,7 +9,7 @@ exports[`HRDScreen Component renders correctly when there is an enterprise domai
     </p>
   }
   data-i18n={
-    Object {
+    {
       "str": [Function],
     }
   }
@@ -38,7 +38,7 @@ exports[`HRDScreen Component renders correctly when there is no enterprise domai
     </p>
   }
   data-i18n={
-    Object {
+    {
       "str": [Function],
     }
   }

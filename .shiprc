@@ -1,7 +1,6 @@
 {
-    "files": {
-        "bower.json": [],
-        "README.md": []
-    },
-    "postbump": "yarn dist build"
+  "files": {
+    "README.md": []
+  },
+  "postbump": "yarn dist build"
 }

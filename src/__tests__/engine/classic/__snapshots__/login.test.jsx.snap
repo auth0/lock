@@ -13,7 +13,7 @@ exports[`LoginScreen renders LoginPane when SSO is enabled 1`] = `
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-forgotPasswordAction="forgotPasswordAction"
       data-i18n={
-        Object {
+        {
           "html": [Function],
           "str": [Function],
         }
@@ -38,7 +38,7 @@ exports[`LoginScreen renders LoginPane when has database connection 1`] = `
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-forgotPasswordAction="forgotPasswordAction"
       data-i18n={
-        Object {
+        {
           "html": [Function],
           "str": [Function],
         }
@@ -63,7 +63,7 @@ exports[`LoginScreen renders LoginPane when has enterprise connection 1`] = `
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-forgotPasswordAction="forgotPasswordAction"
       data-i18n={
-        Object {
+        {
           "html": [Function],
           "str": [Function],
         }
@@ -95,7 +95,7 @@ exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-forgotPasswordAction="forgotPasswordAction"
       data-i18n={
-        Object {
+        {
           "html": [Function],
           "str": [Function],
         }
@@ -120,7 +120,7 @@ exports[`LoginScreen renders LoginSignUpTabs when social connection is enabled a
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-forgotPasswordAction="forgotPasswordAction"
       data-i18n={
-        Object {
+        {
           "html": [Function],
           "str": [Function],
         }
@@ -150,7 +150,7 @@ exports[`LoginScreen renders SingleSignOnNotice when SSO is enabled 1`] = `
       data-emailInputPlaceholder="emailInputPlaceholder"
       data-forgotPasswordAction="forgotPasswordAction"
       data-i18n={
-        Object {
+        {
           "html": [Function],
           "str": [Function],
         }

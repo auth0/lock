@@ -41,8 +41,11 @@ describe('captcha on signup', function () {
         this.lock.hide();
       });
 
-      it('sign-up tab should be active', function () {
-        expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
+      it('sign-up tab should be active', function (done) {
+        h.waitUntilExists(this.lock, '.auth0-lock-tabs-current', () => {
+          expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
+          done();
+        });
       });
 
       it('should show the captcha input', function (done) {
@@ -53,13 +56,16 @@ describe('captcha on signup', function () {
       });
 
       it('should require another challenge when clicking the refresh button', function (done) {
-        h.clickRefreshCaptchaButton(this.lock);
-        setTimeout(() => {
-          expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
-            `url("${svgCaptchaRequiredResponse2.image}")`
-          );
-          done();
-        }, 200);
+        h.waitUntilExists(this.lock, '.auth0-lock-captcha-refresh', () => {
+          h.clickRefreshCaptchaButton(this.lock);
+
+          setTimeout(() => {
+            expect(h.q(this.lock, '.auth0-lock-captcha-image').style.backgroundImage).to.equal(
+              `url("${svgCaptchaRequiredResponse2.image}")`
+            );
+            done();
+          }, 200);
+        });
       });
 
       it('should submit the captcha provided by the user', function (done) {
@@ -71,9 +77,11 @@ describe('captcha on signup', function () {
 
       it('should not submit the form if the captcha is not provided', function (done) {
         h.signUpWithEmailAndPassword(this.lock, () => {
-          expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-          expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
-          done();
+          h.waitUntilErrorExists(this.lock, () => {
+            expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
+            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_captcha)).to.be.ok();
+            done();
+          });
         });
       });
     });
@@ -107,7 +115,9 @@ describe('captcha on signup', function () {
             h.fillComplexPassword(this.lock);
             h.submitForm(this.lock);
 
-            expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+            h.waitUntilInputExists(this.lock, 'captcha', () => {
+              expect(h.qInput(this.lock, 'captcha', false)).to.be.ok();
+            });
           });
         });
       });
@@ -125,20 +135,21 @@ describe('captcha on signup', function () {
         this.lock.hide();
       });
 
-      it('should load the captcha script', function () {
-        expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
-      });
-
-      it('should show the captcha input', function () {
-        expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+      it('should load the captcha script and input', function (done) {
+        h.waitUntilExists(this.lock, '.auth0-lock-recaptchav2', () => {
+          expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
+          done();
+        });
       });
 
       it('should not submit the form if the captcha is not provided', function (done) {
         h.waitForEmailAndPasswordInput(this.lock, () => {
           h.signUpWithEmailAndPassword(this.lock, () => {
-            expect(h.wasSignUpAttemptedWith({})).to.not.be.ok();
-            expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
-            done();
+            h.waitUntilErrorExists(this.lock, () => {
+              expect(h.wasSignUpAttemptedWith({})).not.to.be.ok();
+              expect(h.hasErrorMessage(this.lock, en.error.login.invalid_recaptcha)).to.be.ok();
+              done();
+            });
           });
         });
       });
