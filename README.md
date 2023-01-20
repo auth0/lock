@@ -1,5 +1,4 @@
 ![Auth0's configurable login form for web applications](https://cdn.auth0.com/website/sdks/banners/lock-banner.png)
-
 ![Release](https://img.shields.io/npm/v/auth0-lock)
 ![Downloads](https://img.shields.io/npm/dw/auth0-lock)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
