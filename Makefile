@@ -15,7 +15,7 @@ test:
 
 build:
 	@echo "Running build..."
-	rm -f build/*.js && yarn dist build
+	rm -rf dist && rm -rf build && yarn dist build
 
 publish:
 	@echo "Running cdn-publish..."
