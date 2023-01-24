@@ -19,4 +19,4 @@ build:
 
 publish:
 	@echo "Running cdn-publish..."
-	npm run publish:cdn
+	yarn publish:cdn
