@@ -451,7 +451,7 @@ Auth0.registerLanguageDictionary('en', {
 });
 ```
 
-> **Note:**
+> **Note**
 > Not all the language keys are provided here for this example. Typically all the keys must be specified ([see an example language file](https://github.com/auth0/lock/blob/master/src/i18n/en.js)). For keys that are not specified, Lock will fall back to the default English language file.
 
 ### Additional sign up fields
