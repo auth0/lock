@@ -396,7 +396,7 @@ new Auth0Lock('client ID', 'domain', {
 ### Other options
 
 - **configurationBaseUrl {String}**: Overrides application settings base URL. By default it uses Auth0's CDN URL when the `domain` has the format `*.auth0.com`. Otherwise, it uses the provided `domain`.
-- **languageBaseUrl {String}**: Overrides the language source URL for Auth0's provided translations. By default it uses to Auth0's CDN URL `https://cdn.auth0.com`.
+- **languageBaseUrl {String}**: Overrides the language source URL for Auth0's provided translations. By default it uses to Auth0's CDN URL `https://cdn.auth0.com` ([see below for details](#using-languagebaseurl-and-custom-language-files))
 - **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback URL after the user authentication. Defaults to `true`.
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context`, and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a GitHub [issue](https://github.com/auth0/lock/issues/new).**
 - **legacySameSiteCookie**: If `false`, no compatibility cookies will be created for those browsers that do not understand the `SameSite` attribute. Defaults to `true`. **Note**: this setting only has an effect when running on an HTTPS domain; if HTTP is used, no legacy cookies are created regardless of this setting.
@@ -429,6 +429,30 @@ var options = {
   }
 };
 ```
+
+#### Using `languageBaseUrl` and custom language files
+
+By default, language files are loaded from Auth0's CDN. `languageBaseUrl` can be used to specify a different location where language files are hosted, including any new language files you author for your application. Here's an example of a custom language file. Note the call to `Auth0.registerLanguageDictionary` that wraps the language content:
+
+```js
+Auth0.registerLanguageDictionary('en', {
+  error: {
+    forgotPassword: {
+      too_many_requests:
+        'You have reached the limit on password change attempts. Please wait before trying again.',
+      'lock.fallback': "We're sorry, something went wrong when requesting the password change.",
+      enterprise_email:
+        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator."
+    }
+  },
+  {
+    // ..
+  }
+});
+```
+
+> **Note:**
+> Not all the language keys are provided here for this example. Typically all the keys must be specified ([see an example language file](https://github.com/auth0/lock/blob/master/src/i18n/en.js)). For keys that are not specified, Lock will fall back to the default English language file.
 
 ### Additional sign up fields
 
