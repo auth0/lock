@@ -460,7 +460,8 @@ Extra input fields can be added to the sign up screen with the `additionalSignUp
 
 Additional sign up fields are rendered below the default fields in the order they are provided.
 
-:warning: **Note**: From `11.34.2` onwards, all HTML tags are stripped from user input into custom signup fields.
+> **Note**
+> From `11.33.0` onwards, all HTML tags are stripped from user input into custom signup fields.
 
 #### Text field
 
