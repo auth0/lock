@@ -39,7 +39,7 @@ export const STRATEGIES = {
   thirtysevensignals: 'Basecamp',
   twitter: 'Twitter',
   vkontakte: 'vKontakte',
-  windowslive: 'Microsoft Account',
+  windowslive: 'Microsoft',
   wordpress: 'Wordpress',
   yahoo: 'Yahoo!',
   yammer: 'Yammer',
