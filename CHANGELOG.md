@@ -1,5 +1,11 @@
 # Change Log
 
+## [v11.35.1](https://github.com/auth0/lock/tree/v11.35.1) (2023-02-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.35.0...v11.35.1)
+
+**Changed**
+- FDR-487 - feat: update microsoft button [\#2261](https://github.com/auth0/lock/pull/2261) ([jamescgarrett](https://github.com/jamescgarrett))
+
 ## [v11.35.0](https://github.com/auth0/lock/tree/v11.35.0) (2022-12-19)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.2...v11.35.0)
