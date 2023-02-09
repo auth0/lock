@@ -30,15 +30,7 @@ const RefreshIconSvg = () => (
       d="M17.5496 8.77262C17.007 5.01122 13.8021 2.11002 9.88989 2.11002C6.79596 2.11002 4.14611 3.93257 2.896 6.55065H7.11154C7.41852 6.55065 7.66749 6.79935 7.66749 7.10579C7.66749 7.41251 7.41879 7.66205 7.11154 7.66205H2.47938H1.30282C1.30781 7.64318 1.3092 7.62291 1.3142 7.60404C1.23426 7.56296 1.16987 7.50217 1.11824 7.42889C1.10325 7.40918 1.09048 7.39086 1.07827 7.36977C1.04746 7.3112 1.02998 7.24791 1.02193 7.17935C1.01776 7.15326 1 7.133 1 7.10552C1 7.08997 1.00722 7.0772 1.00888 7.06166V1.5582C1.00888 1.25176 1.25757 1.0025 1.56427 1.0025C1.87125 1.0025 2.11994 1.25148 2.11994 1.5582V5.61994C3.6293 2.87224 6.53311 1 9.88989 1C14.4182 1 18.1481 4.39195 18.6951 8.77235H17.5496V8.77262ZM9.88989 17.655C12.9841 17.655 15.6337 15.833 16.8841 13.2152H12.6685C12.3615 13.2152 12.1128 12.967 12.1128 12.6595C12.1128 12.3525 12.3615 12.1043 12.6685 12.1043H17.3004C17.3004 12.1041 17.3007 12.1035 17.3007 12.1032H18.4775C18.4725 12.1221 18.4709 12.1424 18.4659 12.161C18.5461 12.2021 18.6105 12.2631 18.6621 12.3367C18.6774 12.3564 18.6893 12.3744 18.7018 12.3955C18.7326 12.4541 18.7504 12.5174 18.7584 12.5859C18.7626 12.612 18.7803 12.632 18.7803 12.6598C18.7803 12.675 18.7728 12.6881 18.7717 12.7031V18.2076C18.7717 18.5144 18.523 18.7628 18.2161 18.7628C17.9091 18.7628 17.6604 18.5144 17.6604 18.2076V14.1451C16.151 16.8928 13.2469 18.765 9.89017 18.765C5.36209 18.765 1.63255 15.3739 1.08493 10.9935H2.23041C2.77331 14.7549 5.97799 17.655 9.88989 17.655Z"
       fill="black"
     />
-    <mask
-      id="mask0"
-      mask-type="alpha"
-      maskUnits="userSpaceOnUse"
-      x="1"
-      y="1"
-      width="18"
-      height="18"
-    >
+    <mask id="mask0" maskUnits="userSpaceOnUse" x="1" y="1" width="18" height="18">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -69,9 +61,31 @@ export default class CaptchaInput extends React.Component {
     );
   }
 
+  handleOnChange = e => {
+    if (this.props.onChange) {
+      this.props.onChange(e);
+    }
+  };
+
+  handleReload = e => {
+    if (this.props.onReload) {
+      e.preventDefault();
+      this.props.onReload(e);
+    }
+  };
+
+  handleFocus = () => {
+    this.setState({ focused: true });
+  };
+
+  handleBlur = () => {
+    this.setState({ focused: false });
+  };
+
   render() {
     const { lockId, image, value, placeholder, onReload, invalidHint, isValid, ...props } =
       this.props;
+
     const { focused } = this.state;
 
     return (
@@ -81,11 +95,8 @@ export default class CaptchaInput extends React.Component {
             className="auth0-lock-captcha-image"
             style={{ backgroundImage: `url(${image})` }}
           ></div>
-          <button
-            type="button"
-            onClick={::this.handleReload}
-            className="auth0-lock-captcha-refresh"
-          >
+
+          <button type="button" onClick={this.handleReload} className="auth0-lock-captcha-refresh">
             <RefreshIconSvg />
           </button>
         </div>
@@ -108,9 +119,9 @@ export default class CaptchaInput extends React.Component {
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck="false"
-            onChange={::this.handleOnChange}
-            onFocus={::this.handleFocus}
-            onBlur={::this.handleBlur}
+            onChange={this.handleOnChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
             aria-label="Email"
             aria-invalid={!isValid}
             aria-describedby={!isValid && invalidHint ? `auth0-lock-error-msg-email` : undefined}
@@ -120,26 +131,5 @@ export default class CaptchaInput extends React.Component {
         </InputWrap>
       </div>
     );
-  }
-
-  handleOnChange(e) {
-    if (this.props.onChange) {
-      this.props.onChange(e);
-    }
-  }
-
-  handleReload(e) {
-    if (this.props.onReload) {
-      e.preventDefault();
-      this.props.onReload(e);
-    }
-  }
-
-  handleFocus() {
-    this.setState({ focused: true });
-  }
-
-  handleBlur() {
-    this.setState({ focused: false });
   }
 }
