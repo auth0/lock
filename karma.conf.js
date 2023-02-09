@@ -118,6 +118,6 @@ module.exports = function (config) {
       }
     },
 
-    browsers: ['bs_chrome_windows', 'bs_ie11_windows']
+    browsers: ['bs_chrome_windows']
   });
 };
