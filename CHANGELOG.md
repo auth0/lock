@@ -1,5 +1,14 @@
 # Change Log
 
+## [v12.0.2](https://github.com/auth0/lock/tree/v12.0.2) (2023-02-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.0.1...v12.0.2)
+
+**Changed**
+- Slight tweaks to Captcha input component handler methods + refresh button mask [\#2272](https://github.com/auth0/lock/pull/2272) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+**Fixed**
+- Fix for when component is undefined on unmount [\#2271](https://github.com/auth0/lock/pull/2271) ([codetheweb](https://github.com/codetheweb))
+
 ## [v12.0.1](https://github.com/auth0/lock/tree/v12.0.1) (2023-02-01)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.0.0...v12.0.1)
 
