@@ -55,7 +55,7 @@ class Renderer {
   }
 
   remove(containerId) {
-    if (this.modals[containerId]) {
+    if (this.modals[containerId] && this.modals[containerId].component) {
       this.modals[containerId].component.hide();
       setTimeout(() => this.unmount(containerId), 1000);
     } else {
