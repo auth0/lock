@@ -82,6 +82,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.4.0",
     "esm": "^3.2.25",
+    "events": "^3.3.0",
     "expect.js": "^0.3.1",
     "flat": "^5.0.2",
     "glob": "^7.1.7",
