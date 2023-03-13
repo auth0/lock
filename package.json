@@ -60,7 +60,7 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@cfaester/enzyme-adapter-react-18": "^0.6.0",
+    "@cfaester/enzyme-adapter-react-18": "^0.7.0",
     "@google-cloud/translate": "^6.0.2",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^29.3.1",
