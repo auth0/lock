@@ -1167,10 +1167,10 @@
     winston "3.2.1"
     wrap-ansi "^6.2.0"
 
-"@cfaester/enzyme-adapter-react-18@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@cfaester/enzyme-adapter-react-18/-/enzyme-adapter-react-18-0.6.0.tgz#38994075edc1a4d1cd12fc6818d8b7d74f6b765f"
-  integrity sha512-68pqLvXsH0OVr6vWYvjTybEAM4piLqpeIYR5wuPnFzjPGKy7oZdIjJAMwMoBCvvio1zMjyzBzj5dCbg4O2JQnA==
+"@cfaester/enzyme-adapter-react-18@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@cfaester/enzyme-adapter-react-18/-/enzyme-adapter-react-18-0.7.0.tgz#92d81903855ed542ab54d2241a787c1b95883d0a"
+  integrity sha512-24rdgq6ncwmuyHizvKpdPUSczx5PjIhSr+LfXH/q5/Y28WbNZB6iGIqQ2iSiXp41qs+lutRIQQgwRJIf/a1N9w==
   dependencies:
     enzyme-shallow-equal "^1.0.0"
     react-is "^18.0.0"
