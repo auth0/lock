@@ -18,9 +18,9 @@ body:
     attributes:
       label: Checklist
       options:
-        - label: I have looked into the [Readme](https://github.com/auth0/Lock#readme) and [Examples](https://github.com/auth0/Lock/blob/master/EXAMPLES.md), and have not found a suitable solution or answer.
+        - label: I have looked into the [Readme](https://github.com/auth0/lock#readme) and [Examples](https://github.com/auth0/lock/blob/master/EXAMPLES.md), and have not found a suitable solution or answer.
           required: true
-        - label: I have searched the [issues](https://github.com/auth0/Lock/issues) and have not found a suitable solution or answer.
+        - label: I have searched the [issues](https://github.com/auth0/lock/issues) and have not found a suitable solution or answer.
           required: true
         - label: I have searched the [Auth0 Community](https://community.auth0.com) forums and have not found a suitable solution or answer.
           required: true
