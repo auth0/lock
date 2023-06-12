@@ -56,6 +56,28 @@ describe('CaptchaPane', () => {
     });
   });
 
+  describe('hcaptcha', () => {
+    let wrapper;
+    beforeAll(() => {
+      const lockMock = createLockMock({
+        provider: 'hcaptcha',
+        siteKey: 'mySiteKey'
+      });
+      const i8nMock = createI18nMock();
+      const onReloadMock = jest.fn();
+
+      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
+    });
+
+    it('should render hCaptcha if provider is recaptchav2', () => {
+      expect(wrapper.find(ReCAPTCHA)).toHaveLength(1);
+    });
+
+    it('should pass the sitekey', () => {
+      expect(wrapper.find(ReCAPTCHA).props().sitekey).toBe('mySiteKey');
+    });
+  });
+
   describe('recaptcha enterprise', () => {
     let wrapper;
     beforeAll(() => {
