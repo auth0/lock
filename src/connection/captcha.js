@@ -16,7 +16,8 @@ export function showMissingCaptcha(m, id, isPasswordless = false) {
 
   const captchaError = (
     captchaConfig.get('provider') === 'recaptcha_v2' ||
-    captchaConfig.get('provider') === 'recaptcha_enterprise'
+    captchaConfig.get('provider') === 'recaptcha_enterprise' ||
+    captchaConfig.get('provider') === 'hcaptcha'
   ) ? 'invalid_recaptcha' : 'invalid_captcha';
 
   const errorMessage = i18n.html(m, ['error', 'login', captchaError]);

@@ -6,9 +6,10 @@ const noop = () => {};
 
 const RECAPTCHA_V2_PROVIDER = 'recaptcha_v2';
 const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
+const HCAPTCHA_PROVIDER = 'hcaptcha';
 
 export const isRecaptcha = provider =>
-  provider === RECAPTCHA_ENTERPRISE_PROVIDER || provider === RECAPTCHA_V2_PROVIDER;
+  provider === RECAPTCHA_ENTERPRISE_PROVIDER || provider === RECAPTCHA_V2_PROVIDER || provider === HCAPTCHA_PROVIDER;
 
 const getRecaptchaProvider = provider => {
   switch (provider) {
@@ -16,6 +17,8 @@ const getRecaptchaProvider = provider => {
       return window.grecaptcha;
     case RECAPTCHA_ENTERPRISE_PROVIDER:
       return window.grecaptcha.enterprise;
+    case HCAPTCHA_PROVIDER:
+      return window.hcaptcha;
   }
 };
 
@@ -25,6 +28,8 @@ const scriptForProvider = (provider, lang, callback) => {
       return `https://www.recaptcha.net/recaptcha/api.js?hl=${lang}&onload=${callback}`;
     case RECAPTCHA_ENTERPRISE_PROVIDER:
       return `https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl=${lang}&onload=${callback}`;
+    case HCAPTCHA_PROVIDER:
+      return `https://js.hcaptcha.com/1/api.js?hl=${lang}&onload=${callback}`;
   }
 };
 
