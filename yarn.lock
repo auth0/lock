@@ -460,12 +460,12 @@
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
 
 "@babel/plugin-proposal-pipeline-operator@^7.0.0":
-  version "7.18.9"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-pipeline-operator/-/plugin-proposal-pipeline-operator-7.18.9.tgz#66a60666efd9c29c7ec4d3e2ccb38f9d97994237"
-  integrity sha512-Pc33e6m8f4MJhRXVCUwiKZNtEm+W2CUPHIL0lyJNtkp+w6d75CLw3gsBKQ81VAMUgT9jVPIEU8gwJ5nJgmJ1Ag==
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-pipeline-operator/-/plugin-proposal-pipeline-operator-7.22.5.tgz#b8de7272264bec2c8cf9b22e7889bb33af54c4a4"
+  integrity sha512-nSgHJB3uP+DORxBVhQgjub0qtU/LGj/mBDz2kQEGy1EUDy3f92VWDeB3J3/41ZjVLWmkNWOd6yjdNb4a5wDfZQ==
   dependencies:
-    "@babel/helper-plugin-utils" "^7.18.9"
-    "@babel/plugin-syntax-pipeline-operator" "^7.18.6"
+    "@babel/helper-plugin-utils" "^7.22.5"
+    "@babel/plugin-syntax-pipeline-operator" "^7.22.5"
 
 "@babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2":
   version "7.21.0-placeholder-for-preset-env.2"
@@ -649,12 +649,12 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-pipeline-operator@^7.18.6":
-  version "7.18.6"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-pipeline-operator/-/plugin-syntax-pipeline-operator-7.18.6.tgz#daa44d460bba23478c329a0e8bbee433a681fd43"
-  integrity sha512-pFtIdQomJtkTHWcNsGXhjJ5YUkL+AxJnP4G+Ol85UO6uT2fpHTPYLLE5bBeRA9cxf25qa/VKsJ3Fi67Gyqe3rA==
+"@babel/plugin-syntax-pipeline-operator@^7.22.5":
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-pipeline-operator/-/plugin-syntax-pipeline-operator-7.22.5.tgz#181fd9276aa72e75a408e07b929b457b732c16db"
+  integrity sha512-7yuGXd+h8gpR14FnPDTTCd5TfC/1B9njNZJT29GJ7UFF/WVbzkZy7728DynrENqgImqj5xyPTQAo8si9n3QVJQ==
   dependencies:
-    "@babel/helper-plugin-utils" "^7.18.6"
+    "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-syntax-private-property-in-object@^7.14.5":
   version "7.14.5"
