@@ -7,11 +7,11 @@ const noop = () => {};
 const RECAPTCHA_V2_PROVIDER = 'recaptcha_v2';
 const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
 const HCAPTCHA_PROVIDER = 'hcaptcha';
+const AUTH0_PROVIDER = 'auth0'
 
-export const isRecaptcha = provider =>
-  provider === RECAPTCHA_ENTERPRISE_PROVIDER || provider === RECAPTCHA_V2_PROVIDER || provider === HCAPTCHA_PROVIDER;
+export const isExtendedCaptcha = provider => provider !== AUTH0_PROVIDER;
 
-const getRecaptchaProvider = provider => {
+const getCaptchaProvider = provider => {
   switch (provider) {
     case RECAPTCHA_V2_PROVIDER:
       return window.grecaptcha;
@@ -33,7 +33,18 @@ const scriptForProvider = (provider, lang, callback) => {
   }
 };
 
-export class ReCAPTCHA extends React.Component {
+const providerDomPrefix = (provider) => {
+  switch (provider) {
+    case RECAPTCHA_V2_PROVIDER:
+      return 'recaptcha';
+    case RECAPTCHA_ENTERPRISE_PROVIDER:
+      return 'recaptcha';
+    case HCAPTCHA_PROVIDER:
+      return 'hcaptcha';
+  }
+}
+
+export class ExtendedCaptcha extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -64,7 +75,7 @@ export class ReCAPTCHA extends React.Component {
   }
 
   static loadScript(props, element = document.body, callback = noop) {
-    const callbackName = `recatpchaCallback_${Math.floor(Math.random() * 1000001)}`;
+    const callbackName = `${providerDomPrefix(props.provider)}Callback_${Math.floor(Math.random() * 1000001)}`;
     const scriptUrl = scriptForProvider(props.provider, props.hl, callbackName);
     const script = document.createElement('script');
 
@@ -86,9 +97,9 @@ export class ReCAPTCHA extends React.Component {
   }
 
   componentDidMount() {
-    ReCAPTCHA.loadScript(this.props, document.body, (err, scriptNode) => {
+    ExtendedCaptcha.loadScript(this.props, document.body, (err, scriptNode) => {
       this.scriptNode = scriptNode;
-      const provider = getRecaptchaProvider(this.props.provider);
+      const provider = getCaptchaProvider(this.props.provider);
 
       // if this is enterprise then we change this to window.grecaptcha.enterprise.render
       this.widgetId = provider.render(this.ref.current, {
@@ -101,7 +112,7 @@ export class ReCAPTCHA extends React.Component {
   }
 
   reset() {
-    const provider = getRecaptchaProvider(this.props.provider);
+    const provider = getCaptchaProvider(this.props.provider);
     provider.reset(this.widgetId);
   }
 
@@ -115,7 +126,7 @@ export class ReCAPTCHA extends React.Component {
       }
     */
     const fixInterval = setInterval(() => {
-      const iframes = Array.from(document.querySelectorAll(`iframe[src*="recaptcha"]`));
+      const iframes = Array.from(document.querySelectorAll(`iframe[src*="${providerDomPrefix(this.props.provider)}"]`));
 
       const containers = iframes
         .map(iframe => iframe.parentNode.parentNode)
@@ -142,11 +153,14 @@ export class ReCAPTCHA extends React.Component {
       <div
         className={
           this.props.isValid
-            ? 'auth0-lock-recaptcha-block'
-            : 'auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error'
+            ? `auth0-lock-${providerDomPrefix(this.props.provider)}-block`
+            : `auth0-lock-${providerDomPrefix(this.props.provider)}-block auth0-lock-${providerDomPrefix(this.props.provider)}-block-error`
         }
       >
-        <div className="auth0-lock-recaptchav2" ref={this.ref} />
+        {
+          // Do I need to account for Auth0 provider?
+        }
+        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} ref={this.ref} />
       </div>
     );
   }
@@ -166,9 +180,10 @@ export class ReCAPTCHA extends React.Component {
   }
 }
 
-ReCAPTCHA.displayName = 'ReCAPTCHA';
+// TO DO: Confirm this change will not introduce unintended behavior for customers
+ExtendedCaptcha.displayName = 'ExtendedCaptcha';
 
-ReCAPTCHA.propTypes = {
+ExtendedCaptcha.propTypes = {
   provider: propTypes.string.isRequired,
   sitekey: propTypes.string.isRequired,
   onChange: propTypes.func,
@@ -179,7 +194,7 @@ ReCAPTCHA.propTypes = {
   isValid: propTypes.bool
 };
 
-ReCAPTCHA.defaultProps = {
+ExtendedCaptcha.defaultProps = {
   onChange: noop,
   onExpired: noop,
   onErrored: noop
