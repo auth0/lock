@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import I from 'immutable';
 
-import { ReCAPTCHA } from '../../../field/captcha/recaptcha';
+import { ExtendedCaptcha } from '../../../field/captcha/extended_captcha';
 
 const createLockMock = ({ provider = 'none', sitekey = '' } = {}) =>
   I.fromJS({
@@ -21,7 +21,7 @@ describe('hCaptcha', () => {
   it('should match the snapshot', () => {
     const mockLock = createLockMock({ provider: 'hcaptcha', sitekey: 'mySiteKey' });
     const wrapper = shallow(
-      <ReCAPTCHA provider={'hcaptcha'} lock={mockLock} sitekey={'mySiteKey'} />
+      <ExtendedCaptcha provider={'hcaptcha'} lock={mockLock} sitekey={'mySiteKey'} />
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -35,7 +35,7 @@ describe('hCaptcha', () => {
       document.getElementById('renderTest').remove();
     });
     it('injects the script', () => {
-      ReCAPTCHA.loadScript({ hl: 'en-US', provider: 'hcaptcha' }, document.body);
+      ExtendedCaptcha.loadScript({ hl: 'en-US', provider: 'hcaptcha' }, document.body);
       expect(document.body.innerHTML).toContain('<div id="renderTest">');
       expect(document.body.innerHTML).toContain(
         '<script src="https://js.hcaptcha.com/1/api.js?hl=en-US'

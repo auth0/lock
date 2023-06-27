@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import I from 'immutable';
 
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { ReCAPTCHA } from '../../field/captcha/recaptcha';
+import { ExtendedCaptcha } from '../../field/captcha/extended_captcha';
 import CaptchaInput from '../../ui/input/captcha_input';
 
 const createLockMock = ({ provider = 'auth0', required = true, siteKey = '' } = {}) =>
@@ -47,12 +47,12 @@ describe('CaptchaPane', () => {
       wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
     });
 
-    it('should render reCaptcha if provider is recaptchav2', () => {
-      expect(wrapper.find(ReCAPTCHA)).toHaveLength(1);
+    it('should render ExtendedCaptcha if provider is recaptchav2', () => {
+      expect(wrapper.find(ExtendedCaptcha)).toHaveLength(1);
     });
 
     it('should pass the sitekey', () => {
-      expect(wrapper.find(ReCAPTCHA).props().sitekey).toBe('mySiteKey');
+      expect(wrapper.find(ExtendedCaptcha).props().sitekey).toBe('mySiteKey');
     });
   });
 
@@ -69,12 +69,12 @@ describe('CaptchaPane', () => {
       wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
     });
 
-    it('should render hCaptcha if provider is recaptchav2', () => {
-      expect(wrapper.find(ReCAPTCHA)).toHaveLength(1);
+    it('should render ExtendedCaptcha if provider is hCaptcha', () => {
+      expect(wrapper.find(ExtendedCaptcha)).toHaveLength(1);
     });
 
     it('should pass the sitekey', () => {
-      expect(wrapper.find(ReCAPTCHA).props().sitekey).toBe('mySiteKey');
+      expect(wrapper.find(ExtendedCaptcha).props().sitekey).toBe('mySiteKey');
     });
   });
 
@@ -91,12 +91,12 @@ describe('CaptchaPane', () => {
       wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
     });
 
-    it('should render reCaptcha if provider is recaptcha_enterprise', () => {
-      expect(wrapper.find(ReCAPTCHA)).toHaveLength(1);
+    it('should render ExtendedCaptcha if provider is recaptcha_enterprise', () => {
+      expect(wrapper.find(ExtendedCaptcha)).toHaveLength(1);
     });
 
     it('should pass the sitekey', () => {
-      expect(wrapper.find(ReCAPTCHA).props().sitekey).toBe('mySiteKey');
+      expect(wrapper.find(ExtendedCaptcha).props().sitekey).toBe('mySiteKey');
     });
   });
 });
