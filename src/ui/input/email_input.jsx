@@ -13,6 +13,7 @@ const SVG = (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     className="auth0-lock-icon auth0-lock-icon-box"
   >
+    <title>Email icon</title>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="32px" transform="translate(-2155.000000, -2317.000000)" fill="#373A39">
         <g id="Group-856" transform="translate(1.000000, 1.000000)">
