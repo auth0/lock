@@ -56,6 +56,28 @@ describe('CaptchaPane', () => {
     });
   });
 
+  describe('friendly captcha', () => {
+    let wrapper;
+    beforeAll(() => {
+      const lockMock = createLockMock({
+        provider: 'friendly_captcha',
+        siteKey: 'mySiteKey'
+      });
+      const i8nMock = createI18nMock();
+      const onReloadMock = jest.fn();
+
+      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
+    });
+
+    it('should render ExtendedCaptcha if provider is friendly captcha', () => {
+      expect(wrapper.find(ExtendedCaptcha)).toHaveLength(1);
+    });
+
+    it('should pass the sitekey', () => {
+      expect(wrapper.find(ExtendedCaptcha).props().sitekey).toBe('mySiteKey');
+    });
+  });
+
   describe('hcaptcha', () => {
     let wrapper;
     beforeAll(() => {

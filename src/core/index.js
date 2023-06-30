@@ -583,7 +583,8 @@ export function loginErrorMessage(m, error, type) {
       currentCaptcha && (
         currentCaptcha.get('provider') === 'recaptcha_v2' ||
         currentCaptcha.get('provider') === 'recaptcha_enterprise' ||
-        currentCaptcha.get('provider') === 'hcaptcha'
+        currentCaptcha.get('provider') === 'hcaptcha' ||
+        captchaConfig.get('provider') === 'friendly_captcha'
       )) {
       code = 'invalid_recaptcha';
     }

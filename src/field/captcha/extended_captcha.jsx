@@ -7,6 +7,8 @@ const noop = () => {};
 const RECAPTCHA_V2_PROVIDER = 'recaptcha_v2';
 const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
 const HCAPTCHA_PROVIDER = 'hcaptcha';
+const FRIENDLY_CAPTCHA_PROVIDER = 'friendly_captcha';
+
 const AUTH0_PROVIDER = 'auth0'
 
 export const isExtendedCaptcha = provider => provider !== AUTH0_PROVIDER;
@@ -19,6 +21,8 @@ const getCaptchaProvider = provider => {
       return window.grecaptcha.enterprise;
     case HCAPTCHA_PROVIDER:
       return window.hcaptcha;
+    case FRIENDLY_CAPTCHA_PROVIDER:
+      return window.friendlyChallenge;
   }
 };
 
@@ -30,6 +34,8 @@ const scriptForProvider = (provider, lang, callback) => {
       return `https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl=${lang}&onload=${callback}`;
     case HCAPTCHA_PROVIDER:
       return `https://js.hcaptcha.com/1/api.js?hl=${lang}&onload=${callback}`;
+    case FRIENDLY_CAPTCHA_PROVIDER:
+      return 'https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.12/widget.min.js';
   }
 };
 
@@ -41,6 +47,8 @@ const providerDomPrefix = (provider) => {
       return 'recaptcha';
     case HCAPTCHA_PROVIDER:
       return 'hcaptcha';
+    case FRIENDLY_CAPTCHA_PROVIDER:
+      return 'friendly-captcha'
   }
 }
 
@@ -86,6 +94,11 @@ export class ExtendedCaptcha extends React.Component {
 
     script.src = scriptUrl;
     script.async = true;
+    script.defer = true;
+    if (props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
+      script.onload = window[callbackName];
+    }
+
     element.appendChild(script);
   }
 
@@ -101,21 +114,35 @@ export class ExtendedCaptcha extends React.Component {
       this.scriptNode = scriptNode;
       const provider = getCaptchaProvider(this.props.provider);
 
-      // if this is enterprise then we change this to window.grecaptcha.enterprise.render
-      this.widgetId = provider.render(this.ref.current, {
-        callback: this.changeHandler,
-        'expired-callback': this.expiredHandler,
-        'error-callback': this.erroredHandler,
-        sitekey: this.props.sitekey
-      });
+      if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
+        this.widgetInstance = new global.WidgetInstance(this.ref.current, {
+          sitekey: this.props.sitekey,
+          language: this.props.hl,
+          doneCallback: this.changeHandler,
+          errorCallback: this.erroredHandler,
+        });
+      } else {
+        // if this is enterprise then we change this to window.grecaptcha.enterprise.render
+        this.widgetId = provider.render(this.ref.current, {
+          callback: this.changeHandler,
+          'expired-callback': this.expiredHandler,
+          'error-callback': this.erroredHandler,
+          sitekey: this.props.sitekey
+        });
+      }
     });
   }
 
   reset() {
     const provider = getCaptchaProvider(this.props.provider);
-    provider.reset(this.widgetId);
+    if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) { 
+      if (this.widgetInstance) {
+        this.widgetInstance.reset();
+      }
+    } else {
+      provider.reset(this.widgetId);
+    }
   }
-
   render() {
     /*
       This is an override for the following conflicting css-rule:
