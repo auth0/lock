@@ -119,6 +119,19 @@ Displays the widget, allowing you to override some options.
 
 - **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
+#### Example
+
+```js
+// without options
+lock.show();
+
+// will override the allowedConnections option passed to the constructor, if any
+lock.show({ allowedConnections: ['twitter', 'facebook'] });
+
+// will override the entire auth.params object passed to the constructor, if any
+lock.show({ auth: { params: { state: 'auth_state' } } });
+```
+
 #### Flash message
 
 Configuration for `flashMessage` can be specified when using `show` to display a configurable message when Lock is opened. It contains the following properties:
@@ -133,19 +146,6 @@ lock.show({
     text: 'This is an error message'
   }
 }
-```
-
-#### Example
-
-```js
-// without options
-lock.show();
-
-// will override the allowedConnections option passed to the constructor, if any
-lock.show({ allowedConnections: ['twitter', 'facebook'] });
-
-// will override the entire auth.params object passed to the constructor, if any
-lock.show({ auth: { params: { state: 'auth_state' } } });
 ```
 
 ### resumeAuth(hash, callback)
