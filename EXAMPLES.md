@@ -117,7 +117,23 @@ Lock will emit events during its lifecycle.
 
 Displays the widget, allowing you to override some options.
 
-- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, `flashMessage` and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
+- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
+
+#### Flash message
+
+Configuration for `flashMessage` can be specified when using `show` to display a configurable message when Lock is opened. It contains the following properties:
+
+- **type {String}**: The message type, it should be `error` or `success`.
+- **text {String}**: The text to show.
+
+```js
+lock.show({
+  flashMessage: {
+    type: 'error',
+    text: 'This is an error message'
+  }
+}
+```
 
 #### Example
 
