@@ -147,5 +147,6 @@ export default {
   mfaSubmitLabel: 'Belépés',
   mfaCodeErrorHint: '%d számot kell beírni',
   captchaCodeInputPlaceholder: 'Írja be a fenti kódot',
-  captchaMathInputPlaceholder: 'Oldja meg a fenti képletet'
+  captchaMathInputPlaceholder: 'Oldja meg a fenti képletet',
+  logoAltText: 'Logó'
 };

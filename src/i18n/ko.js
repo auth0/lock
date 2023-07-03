@@ -143,5 +143,6 @@ export default {
   showPassword: '암호 표시',
   signUpTerms: '가입하면 서비스 약관 및 개인 정보 취급 방침에 동의하게됩니다.',
   captchaCodeInputPlaceholder: '위에 표시된 코드를 입력하십시오',
-  captchaMathInputPlaceholder: '위에 표시된 공식을 해결'
+  captchaMathInputPlaceholder: '위에 표시된 공식을 해결',
+  logoAltText: '심벌 마크'
 };

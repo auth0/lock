@@ -133,5 +133,6 @@ export default {
   signUpTitle: '注册',
   showPassword: '显示密码',
   captchaCodeInputPlaceholder: '输入上面显示的代码',
-  captchaMathInputPlaceholder: '解决上面显示的公式'
+  captchaMathInputPlaceholder: '解决上面显示的公式',
+  logoAltText: '標識'
 };

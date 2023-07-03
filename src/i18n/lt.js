@@ -142,5 +142,6 @@ export default {
   signUpTerms:
     'Registruodamiesi jūs sutinkate su mūsų paslaugų teikimo sąlygomis ir privatumo politika.',
   captchaCodeInputPlaceholder: 'Įveskite aukščiau parodytą kodą',
-  captchaMathInputPlaceholder: 'Išspręskite aukščiau parodytą formulę'
+  captchaMathInputPlaceholder: 'Išspręskite aukščiau parodytą formulę',
+  logoAltText: 'Logotipas'
 };

@@ -144,5 +144,6 @@ export default {
   mfaSubmitLabel: 'Prijavi me',
   mfaCodeErrorHint: 'Koristite %d broj(ev)a',
   captchaCodeInputPlaceholder: 'Унесите код приказан горе',
-  captchaMathInputPlaceholder: 'Решите горњу формулу'
+  captchaMathInputPlaceholder: 'Решите горњу формулу',
+  logoAltText: 'Лого'
 };

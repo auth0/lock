@@ -146,5 +146,6 @@ export default {
   mfaSubmitLabel: 'Log Masuk',
   mfaCodeErrorHint: 'Gunakan %d angka',
   captchaCodeInputPlaceholder: 'Masukkan kod yang ditunjukkan di atas',
-  captchaMathInputPlaceholder: 'Selesaikan formula yang ditunjukkan di atas'
+  captchaMathInputPlaceholder: 'Selesaikan formula yang ditunjukkan di atas',
+  logoAltText: 'Logo'
 };

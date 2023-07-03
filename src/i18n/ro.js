@@ -147,5 +147,6 @@ export default {
   signUpTerms:
     'Prin înscrierea dvs. sunteți de acord cu termenii și condițiile noastre de utilizare și de politică de confidențialitate.',
   captchaCodeInputPlaceholder: 'Introduceți codul prezentat mai sus',
-  captchaMathInputPlaceholder: 'Rezolvați formula prezentată mai sus'
+  captchaMathInputPlaceholder: 'Rezolvați formula prezentată mai sus',
+  logoAltText: 'Siglă'
 };

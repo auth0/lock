@@ -139,5 +139,6 @@ export default {
   mfaSubmitLabel: 'دخول',
   mfaCodeErrorHint: 'استخدم %d رقم',
   captchaCodeInputPlaceholder: 'أدخل الرمز الموضح أعلاه',
-  captchaMathInputPlaceholder: 'حل الصيغة الموضحة أعلاه'
+  captchaMathInputPlaceholder: 'حل الصيغة الموضحة أعلاه',
+  logoAltText: 'شعار'
 };

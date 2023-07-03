@@ -146,5 +146,6 @@ export default {
   signUpTerms:
     "En inscriure's, accepteu les nostres condicions de servei i la nostra política de privadesa.",
   captchaCodeInputPlaceholder: 'Introduïu el codi anterior',
-  captchaMathInputPlaceholder: 'Resoleu la fórmula mostrada anteriorment'
+  captchaMathInputPlaceholder: 'Resoleu la fórmula mostrada anteriorment',
+  logoAltText: 'Logotip'
 };

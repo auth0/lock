@@ -133,5 +133,6 @@ export default {
   showPassword: '顯示密碼',
   signUpTerms: '註冊即表示您同意我們的服務條款和隱私政策。',
   captchaCodeInputPlaceholder: '輸入上面顯示的代碼',
-  captchaMathInputPlaceholder: '解決上面顯示的公式'
+  captchaMathInputPlaceholder: '解決上面顯示的公式',
+  logoAltText: '標識'
 };

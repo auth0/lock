@@ -146,5 +146,6 @@ export default {
   showPassword: 'Şifreni göster',
   signUpTerms: 'Kaydolarak, hizmet şartlarımızı ve gizlilik politikamızı kabul etmiş olursunuz.',
   captchaCodeInputPlaceholder: 'Yukarıda gösterilen kodu girin',
-  captchaMathInputPlaceholder: 'Yukarıda gösterilen formülü çözün'
+  captchaMathInputPlaceholder: 'Yukarıda gösterilen formülü çözün',
+  logoAltText: 'Logo'
 };

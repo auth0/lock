@@ -142,5 +142,6 @@ export default {
   mfaCodeErrorHint: 'Kasuta %d numbrit',
   signUpTerms: 'Registreerudes nõustute meie teenusetingimustega ja privaatsuspoliitikaga.',
   captchaCodeInputPlaceholder: 'Sisestage ülal näidatud kood',
-  captchaMathInputPlaceholder: 'Lahendage ülaltoodud valem'
+  captchaMathInputPlaceholder: 'Lahendage ülaltoodud valem',
+  logoAltText: 'Logo'
 };

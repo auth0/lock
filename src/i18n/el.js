@@ -151,5 +151,6 @@ export default {
   mfaSubmitLabel: 'Σύνδεση',
   mfaCodeErrorHint: 'Χρησιμοποιήστε %d αριθμούς',
   captchaCodeInputPlaceholder: 'Εισαγάγετε τον κωδικό που φαίνεται παραπάνω',
-  captchaMathInputPlaceholder: 'Λύστε τον τύπο που φαίνεται παραπάνω'
+  captchaMathInputPlaceholder: 'Λύστε τον τύπο που φαίνεται παραπάνω',
+  logoAltText: 'Λογότυπο'
 };

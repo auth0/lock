@@ -138,5 +138,6 @@ export default {
   showPassword: 'Wys wagwoord',
   signUpTerms: 'Deur u in te teken, stem u in tot ons diensbepalings en privaatheidsbeleid.',
   captchaCodeInputPlaceholder: 'Voer die kode hierbo in',
-  captchaMathInputPlaceholder: 'Los die formule hierbo getoon'
+  captchaMathInputPlaceholder: 'Los die formule hierbo getoon',
+  logoAltText: 'Logo'
 };

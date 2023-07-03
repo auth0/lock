@@ -148,5 +148,6 @@ export default {
   signUpTerms:
     'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.',
   captchaCodeInputPlaceholder: 'Voer de hierboven getoonde code in',
-  captchaMathInputPlaceholder: 'Los de bovenstaande formule op'
+  captchaMathInputPlaceholder: 'Los de bovenstaande formule op',
+  logoAltText: 'Logo'
 };

@@ -145,5 +145,6 @@ export default {
   mfaSubmitLabel: 'Pieteikties',
   mfaCodeErrorHint: 'Izmantojiet %d ciparus',
   captchaCodeInputPlaceholder: 'Ievadiet iepriekš parādīto kodu',
-  captchaMathInputPlaceholder: 'Atrisiniet iepriekš parādīto formulu'
+  captchaMathInputPlaceholder: 'Atrisiniet iepriekš parādīto formulu',
+  logoAltText: 'Logotips'
 };

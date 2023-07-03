@@ -144,5 +144,6 @@ export default {
   showPassword: 'Vis adgangskode',
   signUpTerms: 'Ved at tilmelde dig accepterer du vores servicevilkår og privatlivspolitik.',
   captchaCodeInputPlaceholder: 'Indtast koden vist ovenfor',
-  captchaMathInputPlaceholder: 'Løs formlen vist ovenfor'
+  captchaMathInputPlaceholder: 'Løs formlen vist ovenfor',
+  logoAltText: 'Logo'
 };

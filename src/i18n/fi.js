@@ -144,5 +144,6 @@ export default {
   showPassword: 'Näytä salasana',
   signUpTerms: 'Ilmoittautumalla hyväksyt käyttöehdot ja tietosuojakäytännöt.',
   captchaCodeInputPlaceholder: 'Kirjoita yllä oleva koodi',
-  captchaMathInputPlaceholder: 'Ratkaise yllä esitetty kaava'
+  captchaMathInputPlaceholder: 'Ratkaise yllä esitetty kaava',
+  logoAltText: 'Logo'
 };

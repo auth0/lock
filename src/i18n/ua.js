@@ -152,5 +152,6 @@ export default {
   showPassword: 'Show password',
   signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.',
   captchaCodeInputPlaceholder: 'Введіть код, показаний вище',
-  captchaMathInputPlaceholder: 'Розв’яжіть формулу, показану вище'
+  captchaMathInputPlaceholder: 'Розв’яжіть формулу, показану вище',
+  logoAltText: 'логотип'
 };

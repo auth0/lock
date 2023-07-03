@@ -142,5 +142,6 @@ export default {
   showPassword: 'Vis passord',
   signUpTerms: 'Ved å registrere deg, godtar du våre vilkår for bruk og personvern.',
   captchaCodeInputPlaceholder: 'Tast inn koden vist over',
-  captchaMathInputPlaceholder: 'Løs formelen vist ovenfor'
+  captchaMathInputPlaceholder: 'Løs formelen vist ovenfor',
+  logoAltText: 'Logo'
 };

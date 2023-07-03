@@ -141,5 +141,6 @@ export default {
   showPassword: 'Visa lösenord',
   signUpTerms: 'Genom att anmäla dig godkänner du våra användarvillkor och integritetspolicy.',
   captchaCodeInputPlaceholder: 'Ange koden som visas ovan',
-  captchaMathInputPlaceholder: 'Lös formeln som visas ovan'
+  captchaMathInputPlaceholder: 'Lös formeln som visas ovan',
+  logoAltText: 'Logotyp'
 };

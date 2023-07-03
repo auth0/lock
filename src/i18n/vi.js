@@ -144,5 +144,6 @@ export default {
   signUpTerms:
     'Bằng cách đăng ký, bạn đồng ý với các điều khoản dịch vụ và chính sách bảo mật của chúng tôi.',
   captchaCodeInputPlaceholder: 'Nhập mã hiển thị ở trên',
-  captchaMathInputPlaceholder: 'Giải các công thức hiển thị ở trên'
+  captchaMathInputPlaceholder: 'Giải các công thức hiển thị ở trên',
+  logoAltText: 'Logo'
 };

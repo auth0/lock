@@ -136,5 +136,6 @@ export default {
   mfaSubmitLabel: 'כניסה',
   mfaCodeErrorHint: 'השתמש ב%d ספרות',
   captchaCodeInputPlaceholder: 'הזן את הקוד שמוצג למעלה',
-  captchaMathInputPlaceholder: 'לפתור את הנוסחה שמוצגת למעלה'
+  captchaMathInputPlaceholder: 'לפתור את הנוסחה שמוצגת למעלה',
+  logoAltText: 'סֵמֶל'
 };

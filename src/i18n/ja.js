@@ -146,5 +146,6 @@ export default {
   mfaCodeErrorHint: '%d個の数字を使用してください',
   signUpTerms: 'サインアップすることで、利用規約とプライバシーポリシーに同意したことになります。',
   captchaCodeInputPlaceholder: '上記のコードを入力してください',
-  captchaMathInputPlaceholder: '上記の式を解きます'
+  captchaMathInputPlaceholder: '上記の式を解きます',
+  logoAltText: 'ロゴ'
 };

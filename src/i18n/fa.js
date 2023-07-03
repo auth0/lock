@@ -140,5 +140,6 @@ export default {
   showPassword: 'نمایش رمز ورود',
   signUpTerms: 'با ثبت نام در سایت، شرایط خدمات و سیاست حفظ حریم خصوصی ما را می پذیرید.',
   captchaCodeInputPlaceholder: 'کد نشان داده شده در بالا را وارد کنید',
-  captchaMathInputPlaceholder: 'فرمول نشان داده شده در بالا را حل کنید'
+  captchaMathInputPlaceholder: 'فرمول نشان داده شده در بالا را حل کنید',
+  logoAltText: 'لوگو'
 };

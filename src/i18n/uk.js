@@ -147,5 +147,6 @@ export default {
   mfaSubmitLabel: 'Вхід',
   mfaCodeErrorHint: 'Використайте %d цифр',
   captchaCodeInputPlaceholder: 'Введіть код, показаний вище',
-  captchaMathInputPlaceholder: 'Розв’яжіть формулу, показану вище'
+  captchaMathInputPlaceholder: 'Розв’яжіть формулу, показану вище',
+  logoAltText: 'логотип'
 };

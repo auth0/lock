@@ -272,7 +272,7 @@ export default class Chrome extends React.Component {
       scrollGlobalMessagesIntoView
     } = this.props;
 
-    const { model } = contentProps;
+    const { model, i18n } = contentProps;
 
     const { delayingShowSubmitButton, moving, reverse } = this.state;
 
@@ -343,6 +343,7 @@ export default class Chrome extends React.Component {
               backgroundUrl={backgroundUrl}
               backgroundColor={primaryColor}
               logoUrl={logo}
+              i18n={i18n}
             />
 
             <div

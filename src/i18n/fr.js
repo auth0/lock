@@ -155,5 +155,6 @@ export default {
   signUpTerms:
     "En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.",
   captchaCodeInputPlaceholder: 'Entrez le code ci-dessus',
-  captchaMathInputPlaceholder: 'Résolvez la formule ci-dessus'
+  captchaMathInputPlaceholder: 'Résolvez la formule ci-dessus',
+  logoAltText: 'Logo'
 };

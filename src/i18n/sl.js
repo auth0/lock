@@ -143,5 +143,6 @@ export default {
   mfaCodeErrorHint: 'Uporabite številke %d',
   signUpTerms: 'S prijavo se strinjate z našimi pogoji uporabe in pravilnikom o zasebnosti.',
   captchaCodeInputPlaceholder: 'Vnesite kodo, prikazano zgoraj',
-  captchaMathInputPlaceholder: 'Rešite zgoraj prikazano formulo'
+  captchaMathInputPlaceholder: 'Rešite zgoraj prikazano formulo',
+  logoAltText: 'Logotip'
 };

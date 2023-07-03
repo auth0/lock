@@ -144,5 +144,6 @@ export default {
   mfaLoginTitle: 'Dvoufázové ověření',
   mfaLoginInstructions: 'Prosím zadejte ověřovací kód vygenerovaný vaší mobilní aplikací.',
   mfaSubmitLabel: 'Přihlásit',
-  mfaCodeErrorHint: 'Použijte %d číslic'
+  mfaCodeErrorHint: 'Použijte %d číslic',
+  logoAltText: 'Logo'
 };

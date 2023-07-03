@@ -144,5 +144,6 @@ export default {
   signUpTerms:
     'Registráciou vyjadrujete súhlas s našimi zmluvnými podmienkami a pravidlami ochrany osobných údajov.',
   captchaCodeInputPlaceholder: 'Zadajte vyššie uvedený kód',
-  captchaMathInputPlaceholder: 'Vyriešte vyššie uvedený vzorec'
+  captchaMathInputPlaceholder: 'Vyriešte vyššie uvedený vzorec',
+  logoAltText: 'Logo'
 };

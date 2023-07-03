@@ -147,5 +147,6 @@ export default {
   showPassword: 'Şifrəni göstər',
   signUpTerms: 'Qeydiyyatdan keçərək xidmət və məxfilik siyasətimizlə razılaşırsınız.',
   captchaCodeInputPlaceholder: 'Yuxarıda göstərilən kodu daxil edin',
-  captchaMathInputPlaceholder: 'Yuxarıda göstərilən düsturu həll edin'
+  captchaMathInputPlaceholder: 'Yuxarıda göstərilən düsturu həll edin',
+  logoAltText: 'Logo'
 };

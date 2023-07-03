@@ -143,5 +143,6 @@ export default {
   showPassword: 'Mostra password',
   signUpTerms: "Iscrivendoti, accetti i nostri termini di servizio e l'informativa sulla privacy.",
   captchaCodeInputPlaceholder: 'Inserisci il codice mostrato sopra',
-  captchaMathInputPlaceholder: 'Risolvi la formula mostrata sopra'
+  captchaMathInputPlaceholder: 'Risolvi la formula mostrata sopra',
+  logoAltText: 'Logo'
 };

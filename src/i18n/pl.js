@@ -145,5 +145,6 @@ export default {
   signUpTerms:
     'Rejestrując się, akceptujesz nasze warunki korzystania z usługi i politykę prywatności.',
   captchaCodeInputPlaceholder: 'Wpisz kod pokazany powyżej',
-  captchaMathInputPlaceholder: 'Rozwiąż powyższy wzór'
+  captchaMathInputPlaceholder: 'Rozwiąż powyższy wzór',
+  logoAltText: 'Logo'
 };

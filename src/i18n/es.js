@@ -140,5 +140,6 @@ export default {
   mfaSubmitLabel: 'Enviar',
   mfaCodeErrorHint: '%d números',
   showPassword: 'Mostrar contraseña',
-  signUpTerms: 'Al suscribirse usted acepta nuestros términos de servicio y política de privacidad.'
+  signUpTerms: 'Al suscribirse usted acepta nuestros términos de servicio y política de privacidad.',
+  logoAltText: 'Logo'
 };

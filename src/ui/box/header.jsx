@@ -9,13 +9,13 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const { backHandler, backgroundColor, backgroundUrl, logoUrl, name, title } = this.props;
+    const { backHandler, backgroundColor, backgroundUrl, logoUrl, name, title, i18n } = this.props;
 
     return (
       <div className="auth0-lock-header">
         {backHandler && <BackButton onClick={backHandler} />}
         <Background imageUrl={backgroundUrl} backgroundColor={backgroundColor} grayScale={!!name} />
-        <Welcome title={title} name={name} imageUrl={name ? undefined : logoUrl} />
+        <Welcome title={title} name={name} imageUrl={name ? undefined : logoUrl} i18n={i18n} />
       </div>
     );
   }
@@ -34,9 +34,16 @@ class Welcome extends React.Component {
   onImageLoad = () => (document.querySelector('.auth0-lock').style.fontSize = '1rem');
 
   render() {
-    const { name, imageUrl, title } = this.props;
+    const { name, imageUrl, title, i18n } = this.props;
     const imgClassName = !!title ? 'auth0-lock-header-logo' : 'auth0-lock-header-logo centered';
-    const img = <img alt="Logo" className={imgClassName} src={imageUrl} onLoad={this.onImageLoad} />;
+    const img = (
+      <img
+        alt={i18n.str('logoAltText')}
+        className={imgClassName}
+        src={imageUrl}
+        onLoad={this.onImageLoad}
+      />
+    );
     const welcome = title ? <WelcomeMessage title={title} name={name} /> : null;
 
     return (

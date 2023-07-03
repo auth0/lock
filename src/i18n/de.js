@@ -151,5 +151,6 @@ export default {
   signUpTerms:
     'Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen und Datenschutzbestimmungen zu.',
   captchaCodeInputPlaceholder: 'Geben Sie den oben angezeigten Code ein.',
-  captchaMathInputPlaceholder: 'Lösen Sie die oben gezeigte Formel.'
+  captchaMathInputPlaceholder: 'Lösen Sie die oben gezeigte Formel.',
+  logoAltText: 'Logo'
 };

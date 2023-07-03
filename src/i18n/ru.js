@@ -153,5 +153,6 @@ export default {
   signUpTerms:
     'Зарегистрировавшись, вы соглашаетесь с нашими условиями обслуживания и политикой конфиденциальности.',
   captchaCodeInputPlaceholder: 'Введите код, указанный выше',
-  captchaMathInputPlaceholder: 'Решите формулу, показанную выше'
+  captchaMathInputPlaceholder: 'Решите формулу, показанную выше',
+  logoAltText: 'Логотип'
 };

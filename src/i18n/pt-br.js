@@ -141,5 +141,6 @@ export default {
   signUpTerms:
     'Ao se inscrever, você concorda com nossos termos de serviço e política de privacidade.',
   captchaCodeInputPlaceholder: 'Digite o código mostrado acima',
-  captchaMathInputPlaceholder: 'Resolva a fórmula mostrada acima'
+  captchaMathInputPlaceholder: 'Resolva a fórmula mostrada acima',
+  logoAltText: 'Logotipo'
 };
