@@ -33,7 +33,8 @@ const defaultProps = {
   contentProps: {
     model: immutable.fromJS({
       id: '__lock_id__'
-    })
+    }),
+    i18n: {}, 
   },
   avatar: 'avatar',
   isSubmitting: false,
