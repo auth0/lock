@@ -68,11 +68,11 @@ class LoginSignUpTab extends React.Component {
     const className = current ? 'auth0-lock-tabs-current' : '';
 
     return (
-      <li className={className}>
+      <li className={className} aria-current={current}>
         {current ? (
           <span>{label}</span>
         ) : (
-          <a href={href || '#'} onClick={this.handleClick} aria-current="true">
+          <a href={href || '#'} onClick={this.handleClick}>
             {label}
           </a>
         )}
