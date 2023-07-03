@@ -72,7 +72,7 @@ class LoginSignUpTab extends React.Component {
         {current ? (
           <span>{label}</span>
         ) : (
-          <a href={href || '#'} onClick={this.handleClick} aria-current="page">
+          <a href={href || '#'} onClick={this.handleClick} aria-current="true">
             {label}
           </a>
         )}
