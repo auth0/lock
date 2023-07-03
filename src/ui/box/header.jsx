@@ -36,7 +36,7 @@ class Welcome extends React.Component {
   render() {
     const { name, imageUrl, title } = this.props;
     const imgClassName = !!title ? 'auth0-lock-header-logo' : 'auth0-lock-header-logo centered';
-    const img = <img alt="" className={imgClassName} src={imageUrl} onLoad={this.onImageLoad} />;
+    const img = <img alt="Logo" className={imgClassName} src={imageUrl} onLoad={this.onImageLoad} />;
     const welcome = title ? <WelcomeMessage title={title} name={name} /> : null;
 
     return (
