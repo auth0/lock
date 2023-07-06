@@ -115,7 +115,7 @@ export class ExtendedCaptcha extends React.Component {
       const provider = getCaptchaProvider(this.props.provider);
 
       if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
-        this.widgetInstance = new global.WidgetInstance(this.ref.current, {
+        this.widgetInstance = new provider.WidgetInstance(this.ref.current, {
           sitekey: this.props.sitekey,
           language: this.props.hl,
           doneCallback: this.changeHandler,
