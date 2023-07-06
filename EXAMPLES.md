@@ -117,7 +117,7 @@ Lock will emit events during its lifecycle.
 
 Displays the widget, allowing you to override some options.
 
-- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, `flashMessage` and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
+- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
 
 #### Example
 
@@ -130,6 +130,22 @@ lock.show({ allowedConnections: ['twitter', 'facebook'] });
 
 // will override the entire auth.params object passed to the constructor, if any
 lock.show({ auth: { params: { state: 'auth_state' } } });
+```
+
+#### Flash message
+
+Configuration for `flashMessage` can be specified when using `show` to display a configurable message when Lock is opened. It contains the following properties:
+
+- **type {String}**: The message type, it should be `error` or `success`.
+- **text {String}**: The text to show.
+
+```js
+lock.show({
+  flashMessage: {
+    type: 'error',
+    text: 'This is an error message'
+  }
+}
 ```
 
 ### resumeAuth(hash, callback)
@@ -210,9 +226,6 @@ The appearance of the widget and the mechanics of authentication can be customiz
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **popupOptions {Object}**: Allows you to customize the location of the popup in the screen. Any [position and size feature](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features) allowed by `window.open` is accepted. Defaults to `{}`.
 - **rememberLastLogin {Boolean}**: Determines whether or not to show a screen that allows you to quickly log in with the account you used the last time when the `initialScreen` option is set to `"login"` (the default). Defaults to `true`.
-- **flashMessage {Object}**: Shows an `error` or `success` flash message when Lock is shown.
-  - **type {String}**: The message type, it should be `error` or `success`.
-  - **text {String}**: The text to show.
 - **allowAutocomplete {Boolean}**: Determines whether or not the email or username inputs will allow autocomplete (`<input autocomplete />`). Defaults to `false`.
 - **scrollGlobalMessagesIntoView {Boolean}**: Determines whether or not a globalMessage should be scrolled into the user's viewport. Defaults to `true`.
 - **allowShowPassword {Boolean}**: Determines whether or not add a checkbox to show the password when typing it. Defaults to `false`.
