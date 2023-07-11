@@ -11,7 +11,7 @@ const FRIENDLY_CAPTCHA_PROVIDER = 'friendly_captcha';
 
 const AUTH0_PROVIDER = 'auth0'
 
-export const isExtendedCaptcha = provider => provider !== AUTH0_PROVIDER;
+export const isThirdPartyCaptcha = provider => provider !== AUTH0_PROVIDER;
 
 const getCaptchaProvider = provider => {
   switch (provider) {
@@ -52,7 +52,7 @@ const providerDomPrefix = (provider) => {
   }
 }
 
-export class ExtendedCaptcha extends React.Component {
+export class ThirdPartyCaptcha extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -110,7 +110,7 @@ export class ExtendedCaptcha extends React.Component {
   }
 
   componentDidMount() {
-    ExtendedCaptcha.loadScript(this.props, document.body, (err, scriptNode) => {
+    ThirdPartyCaptcha.loadScript(this.props, document.body, (err, scriptNode) => {
       this.scriptNode = scriptNode;
       const provider = getCaptchaProvider(this.props.provider);
 
@@ -184,9 +184,6 @@ export class ExtendedCaptcha extends React.Component {
             : `auth0-lock-${providerDomPrefix(this.props.provider)}-block auth0-lock-${providerDomPrefix(this.props.provider)}-block-error`
         }
       >
-        {
-          // Do I need to account for Auth0 provider?
-        }
         <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} ref={this.ref} />
       </div>
     );
@@ -208,9 +205,9 @@ export class ExtendedCaptcha extends React.Component {
 }
 
 // TO DO: Confirm this change will not introduce unintended behavior for customers
-ExtendedCaptcha.displayName = 'ExtendedCaptcha';
+ThirdPartyCaptcha.displayName = 'ThirdPartyCaptcha';
 
-ExtendedCaptcha.propTypes = {
+ThirdPartyCaptcha.propTypes = {
   provider: propTypes.string.isRequired,
   sitekey: propTypes.string.isRequired,
   onChange: propTypes.func,
@@ -221,7 +218,7 @@ ExtendedCaptcha.propTypes = {
   isValid: propTypes.bool
 };
 
-ExtendedCaptcha.defaultProps = {
+ThirdPartyCaptcha.defaultProps = {
   onChange: noop,
   onExpired: noop,
   onErrored: noop
