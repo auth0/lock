@@ -40,13 +40,20 @@ describe('Login with connection scopes', () => {
 
   describe('for an SSO connection', () => {
     it('passes connectionScopes to the connection', () => {
-      lock = l.setup('__lock__', 'client', 'domain', {
-        auth: {
-          connectionScopes: {
-            'sso-connection': ['offline_access']
+      lock = l.setup(
+        '__lock__',
+        'client',
+        'domain',
+        {
+          auth: {
+            connectionScopes: {
+              'sso-connection': ['offline_access']
+            }
           }
-        }
-      });
+        },
+        null,
+        () => {}
+      );
 
       lock = setField(lock, 'email', 'test@test.com');
 
@@ -68,7 +75,7 @@ describe('Login with connection scopes', () => {
     });
 
     it('should not throw an error if the captcha was not completed', () => {
-      lock = l.setup('__lock__', 'client', 'domain', {});
+      lock = l.setup('__lock__', 'client', 'domain', {}, null, () => {});
       lock = setField(lock, 'email', 'test@test.com');
 
       // This will be specified in the response from the /challenge endpoint if the
