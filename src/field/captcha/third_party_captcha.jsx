@@ -50,7 +50,7 @@ const providerDomPrefix = (provider) => {
     case HCAPTCHA_PROVIDER:
       return 'hcaptcha';
     case FRIENDLY_CAPTCHA_PROVIDER:
-      return 'friendly-captcha'
+      return 'friendly-captcha';
   }
 }
 
