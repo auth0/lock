@@ -70,7 +70,6 @@
     "babel-plugin-version-inline": "^1.0.0",
     "babelify": "^10.0.0",
     "browserify": "^17.0.0",
-    "bump-version": "^0.5.0",
     "chalk": "^4.1.2",
     "core-js": "^3.26.1",
     "cross-env": "^7.0.3",
