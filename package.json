@@ -116,7 +116,6 @@
     "stylus": "^0.59.0",
     "stylus-loader": "^2.3.1",
     "tmp": "^0.2.1",
-    "uglify-js": "^2.7.4",
     "unminified-webpack-plugin": "^3.0.0",
     "unreleased": "^0.1.0",
     "watchify": "^4.0.0",
