@@ -9,9 +9,11 @@ const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
 const HCAPTCHA_PROVIDER = 'hcaptcha';
 const FRIENDLY_CAPTCHA_PROVIDER = 'friendly_captcha';
 
-const AUTH0_PROVIDER = 'auth0'
-
-export const isThirdPartyCaptcha = provider => provider !== AUTH0_PROVIDER;
+export const isThirdPartyCaptcha = provider =>
+  provider === RECAPTCHA_ENTERPRISE_PROVIDER
+  || provider === RECAPTCHA_V2_PROVIDER
+  || provider === HCAPTCHA_PROVIDER
+  || provider === FRIENDLY_CAPTCHA_PROVIDER;
 
 const getCaptchaProvider = provider => {
   switch (provider) {
