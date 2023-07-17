@@ -6,16 +6,25 @@ const noop = () => {};
 
 const RECAPTCHA_V2_PROVIDER = 'recaptcha_v2';
 const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
+const HCAPTCHA_PROVIDER = 'hcaptcha';
+const FRIENDLY_CAPTCHA_PROVIDER = 'friendly_captcha';
 
-export const isRecaptcha = provider =>
-  provider === RECAPTCHA_ENTERPRISE_PROVIDER || provider === RECAPTCHA_V2_PROVIDER;
+export const isThirdPartyCaptcha = provider =>
+  provider === RECAPTCHA_ENTERPRISE_PROVIDER
+  || provider === RECAPTCHA_V2_PROVIDER
+  || provider === HCAPTCHA_PROVIDER
+  || provider === FRIENDLY_CAPTCHA_PROVIDER;
 
-const getRecaptchaProvider = provider => {
+const getCaptchaProvider = provider => {
   switch (provider) {
     case RECAPTCHA_V2_PROVIDER:
       return window.grecaptcha;
     case RECAPTCHA_ENTERPRISE_PROVIDER:
       return window.grecaptcha.enterprise;
+    case HCAPTCHA_PROVIDER:
+      return window.hcaptcha;
+    case FRIENDLY_CAPTCHA_PROVIDER:
+      return window.friendlyChallenge;
   }
 };
 
@@ -25,10 +34,27 @@ const scriptForProvider = (provider, lang, callback) => {
       return `https://www.recaptcha.net/recaptcha/api.js?hl=${lang}&onload=${callback}`;
     case RECAPTCHA_ENTERPRISE_PROVIDER:
       return `https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl=${lang}&onload=${callback}`;
+    case HCAPTCHA_PROVIDER:
+      return `https://js.hcaptcha.com/1/api.js?hl=${lang}&onload=${callback}`;
+    case FRIENDLY_CAPTCHA_PROVIDER:
+      return 'https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.12/widget.min.js';
   }
 };
 
-export class ReCAPTCHA extends React.Component {
+const providerDomPrefix = (provider) => {
+  switch (provider) {
+    case RECAPTCHA_V2_PROVIDER:
+      return 'recaptcha';
+    case RECAPTCHA_ENTERPRISE_PROVIDER:
+      return 'recaptcha';
+    case HCAPTCHA_PROVIDER:
+      return 'hcaptcha';
+    case FRIENDLY_CAPTCHA_PROVIDER:
+      return 'friendly-captcha';
+  }
+}
+
+export class ThirdPartyCaptcha extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -59,7 +85,7 @@ export class ReCAPTCHA extends React.Component {
   }
 
   static loadScript(props, element = document.body, callback = noop) {
-    const callbackName = `recatpchaCallback_${Math.floor(Math.random() * 1000001)}`;
+    const callbackName = `${providerDomPrefix(props.provider)}Callback_${Math.floor(Math.random() * 1000001)}`;
     const scriptUrl = scriptForProvider(props.provider, props.hl, callbackName);
     const script = document.createElement('script');
 
@@ -70,6 +96,11 @@ export class ReCAPTCHA extends React.Component {
 
     script.src = scriptUrl;
     script.async = true;
+    script.defer = true;
+    if (props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
+      script.onload = window[callbackName];
+    }
+
     element.appendChild(script);
   }
 
@@ -81,25 +112,39 @@ export class ReCAPTCHA extends React.Component {
   }
 
   componentDidMount() {
-    ReCAPTCHA.loadScript(this.props, document.body, (err, scriptNode) => {
+    ThirdPartyCaptcha.loadScript(this.props, document.body, (err, scriptNode) => {
       this.scriptNode = scriptNode;
-      const provider = getRecaptchaProvider(this.props.provider);
+      const provider = getCaptchaProvider(this.props.provider);
 
-      // if this is enterprise then we change this to window.grecaptcha.enterprise.render
-      this.widgetId = provider.render(this.ref.current, {
-        callback: this.changeHandler,
-        'expired-callback': this.expiredHandler,
-        'error-callback': this.erroredHandler,
-        sitekey: this.props.sitekey
-      });
+      if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
+        this.widgetInstance = new provider.WidgetInstance(this.ref.current, {
+          sitekey: this.props.sitekey,
+          language: this.props.hl,
+          doneCallback: this.changeHandler,
+          errorCallback: this.erroredHandler,
+        });
+      } else {
+        // if this is enterprise then we change this to window.grecaptcha.enterprise.render
+        this.widgetId = provider.render(this.ref.current, {
+          callback: this.changeHandler,
+          'expired-callback': this.expiredHandler,
+          'error-callback': this.erroredHandler,
+          sitekey: this.props.sitekey
+        });
+      }
     });
   }
 
   reset() {
-    const provider = getRecaptchaProvider(this.props.provider);
-    provider.reset(this.widgetId);
+    const provider = getCaptchaProvider(this.props.provider);
+    if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) { 
+      if (this.widgetInstance) {
+        this.widgetInstance.reset();
+      }
+    } else {
+      provider.reset(this.widgetId);
+    }
   }
-
   render() {
     /*
       This is an override for the following conflicting css-rule:
@@ -110,7 +155,7 @@ export class ReCAPTCHA extends React.Component {
       }
     */
     const fixInterval = setInterval(() => {
-      const iframes = Array.from(document.querySelectorAll(`iframe[src*="recaptcha"]`));
+      const iframes = Array.from(document.querySelectorAll(`iframe[src*="${providerDomPrefix(this.props.provider)}"]`));
 
       const containers = iframes
         .map(iframe => iframe.parentNode.parentNode)
@@ -137,11 +182,11 @@ export class ReCAPTCHA extends React.Component {
       <div
         className={
           this.props.isValid
-            ? 'auth0-lock-recaptcha-block'
-            : 'auth0-lock-recaptcha-block auth0-lock-recaptcha-block-error'
+            ? `auth0-lock-${providerDomPrefix(this.props.provider)}-block`
+            : `auth0-lock-${providerDomPrefix(this.props.provider)}-block auth0-lock-${providerDomPrefix(this.props.provider)}-block-error`
         }
       >
-        <div className="auth0-lock-recaptchav2" ref={this.ref} />
+        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} ref={this.ref} />
       </div>
     );
   }
@@ -161,9 +206,10 @@ export class ReCAPTCHA extends React.Component {
   }
 }
 
-ReCAPTCHA.displayName = 'ReCAPTCHA';
+// TO DO: Confirm this change will not introduce unintended behavior for customers
+ThirdPartyCaptcha.displayName = 'ThirdPartyCaptcha';
 
-ReCAPTCHA.propTypes = {
+ThirdPartyCaptcha.propTypes = {
   provider: propTypes.string.isRequired,
   sitekey: propTypes.string.isRequired,
   onChange: propTypes.func,
@@ -174,7 +220,7 @@ ReCAPTCHA.propTypes = {
   isValid: propTypes.bool
 };
 
-ReCAPTCHA.defaultProps = {
+ThirdPartyCaptcha.defaultProps = {
   onChange: noop,
   onExpired: noop,
   onErrored: noop
