@@ -1,5 +1,14 @@
 # Change Log
 
+## [v12.1.0](https://github.com/auth0/lock/tree/v12.1.0) (2023-07-17)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.0.2...v12.1.0)
+
+**Added**
+- Added support for hCaptcha and Friendly Captcha [\#2387](https://github.com/auth0/lock/pull/2387) ([DominickBattistini](https://github.com/DominickBattistini))
+
+**Changed**
+- WelcomeMessage header text marked as heading [\#2373](https://github.com/auth0/lock/pull/2373) ([piwysocki](https://github.com/piwysocki))
+
 ## [v12.0.2](https://github.com/auth0/lock/tree/v12.0.2) (2023-02-10)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.0.1...v12.0.2)
 

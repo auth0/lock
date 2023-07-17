@@ -7,7 +7,7 @@ import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
 import * as captchaField from '../captcha';
 import { getFieldValue, isFieldVisiblyInvalid } from '../index';
-import { ReCAPTCHA, isRecaptcha } from './recaptcha';
+import { ThirdPartyCaptcha, isThirdPartyCaptcha } from './third_party_captcha';
 
 export default class CaptchaPane extends React.Component {
   render() {
@@ -18,7 +18,7 @@ export default class CaptchaPane extends React.Component {
     const isValid = !isFieldVisiblyInvalid(lock, 'captcha');
     const provider = captcha.get('provider');
 
-    if (isRecaptcha(provider)) {
+    if (isThirdPartyCaptcha(provider)) {
       function handleChange(value) {
         swap(updateEntity, 'lock', lockId, captchaField.set, value);
       }
@@ -28,7 +28,7 @@ export default class CaptchaPane extends React.Component {
       }
 
       return (
-        <ReCAPTCHA
+        <ThirdPartyCaptcha
           provider={provider}
           sitekey={captcha.get('siteKey')}
           onChange={handleChange}

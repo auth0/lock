@@ -41,7 +41,7 @@ jobs:
       - store_artifacts:
           path: build
 
-  browserstack:
+  e2e:
     executor: docker-executor
     environment:
       LANG: en_US.UTF-8
@@ -66,20 +66,18 @@ jobs:
           command: yarn build
       - run:
           name: Browser Tests
-          command: yarn test:e2e:browserstack
+          command: yarn test:e2e
 
 workflows:
   build-test-report:
     jobs:
       - build-and-test
-      - browserstack:
+      - e2e:
           requires:
             - build-and-test
-          context:
-            - browserstack-env
       - ship/node-publish:
           requires:
-            - build-and-test
+            - e2e
           pkg-manager: yarn
           node-version: 18.12.1
           context:
