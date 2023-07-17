@@ -67,7 +67,7 @@ class WelcomeMessage extends React.Component {
     }
 
     return (
-      <div className={className} title={message}>
+      <div className={className} title={message} role="heading" aria-level="1">
         {message}
       </div>
     );

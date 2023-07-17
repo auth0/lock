@@ -17,11 +17,11 @@ const createLockMock = ({ provider = 'none', sitekey = '' } = {}) =>
     }
   });
 
-describe('Recaptcha Enterprise', () => {
+describe('hCaptcha', () => {
   it('should match the snapshot', () => {
-    const mockLock = createLockMock({ provider: 'recaptcha_enterprise', sitekey: 'mySiteKey' });
+    const mockLock = createLockMock({ provider: 'hcaptcha', sitekey: 'mySiteKey' });
     const wrapper = shallow(
-      <ThirdPartyCaptcha provider={'recaptcha_enterprise'} lock={mockLock} sitekey={'mySiteKey'} />
+      <ThirdPartyCaptcha provider={'hcaptcha'} lock={mockLock} sitekey={'mySiteKey'} />
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -35,10 +35,10 @@ describe('Recaptcha Enterprise', () => {
       document.getElementById('renderTest').remove();
     });
     it('injects the script', () => {
-      ThirdPartyCaptcha.loadScript({ hl: 'en-US', provider: 'recaptcha_enterprise' }, document.body);
+      ThirdPartyCaptcha.loadScript({ hl: 'en-US', provider: 'hcaptcha' }, document.body);
       expect(document.body.innerHTML).toContain('<div id="renderTest">');
       expect(document.body.innerHTML).toContain(
-        '<script src="https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit'
+        '<script src="https://js.hcaptcha.com/1/api.js?hl=en-US'
       );
     });
   });

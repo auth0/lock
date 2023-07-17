@@ -59,7 +59,7 @@ export default class LoginPane extends React.Component {
           strictValidation={false}
         />
       );
-
+    
     const captchaPane =
       l.captcha(lock) &&
       l.captcha(lock).get('required') &&
