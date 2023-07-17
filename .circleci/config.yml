@@ -79,7 +79,7 @@ workflows:
             - browserstack-env
       - ship/node-publish:
           requires:
-            - build-and-test
+            - browserstack
           pkg-manager: yarn
           node-version: 18.12.1
           context:
