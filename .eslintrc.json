@@ -4,7 +4,7 @@
     "browser": true,
     "es6": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "rules": {
     "react/display-name": "off",
     "react/prop-types": "warn",
