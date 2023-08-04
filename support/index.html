@@ -155,7 +155,17 @@
             validator: function () {
               return true;
             }
-          }
+          },
+          {
+            type: 'checkbox',
+            name: 'newsletter',
+            prefill: 'false',
+            placeholder: 'I hereby agree that I want to receive marketing emails from your company',
+            validator: (value) => ({
+                valid: value === 'true',
+                hint: 'This is a mandatory field',
+            }),
+        },
         ],
         hooks: {
           loggingIn: function (context, done) {
