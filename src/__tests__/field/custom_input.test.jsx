@@ -97,6 +97,7 @@ describe('CustomInput', () => {
   describe('when type == checkbox', () => {
     beforeEach(() => (defaultProps.type = 'checkbox'));
     it('renders correctly as a CheckBoxInput', () => {
+      require('field/index').isFieldVisiblyInvalid = () => false;
       const CustomInput = getComponent();
 
       expectComponent(<CustomInput {...defaultProps} />).toMatchSnapshot();
@@ -104,12 +105,22 @@ describe('CustomInput', () => {
 
     describe('and when placeholderHTML is set', () => {
       it('renders correctly as a CheckBoxInput', () => {
+        require('field/index').isFieldVisiblyInvalid = () => false;
+
         const CustomInput = getComponent();
 
         expectComponent(
           <CustomInput {...defaultProps} placeholderHTML={'<b>Placeholder</b>'} />
         ).toMatchSnapshot();
       });
+    });
+
+    it('shows an error when value is incorrect', () => {
+      const CustomInput = getComponent();
+
+      expectComponent(
+        <CustomInput {...defaultProps} placeholderHTML={'<b>Placeholder</b>'} />
+      ).toMatchSnapshot();
     });
   });
   describe('when type == hidden', () => {
