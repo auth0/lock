@@ -39,7 +39,6 @@ Create a **Single Page Application** in the [Auth0 Dashboard](https://manage.aut
 > **If you're using an existing application**, verify that you have configured the following settings in your Single Page Application:
 >
 > - Click on the "Settings" tab of your application's page.
-> - Ensure that "Token Endpoint Authentication Method" under "Application Properties" is set to "None"
 > - Scroll down and click on the "Show Advanced Settings" link.
 > - Under "Advanced Settings", click on the "OAuth" tab.
 > - Ensure that "JsonWebToken Signature Algorithm" is set to `RS256` and that "OIDC Conformant" is enabled.
