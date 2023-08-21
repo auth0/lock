@@ -1,0 +1,60 @@
+name: Build and Test
+
+on:
+  merge_group:
+  workflow_dispatch:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  authorize:
+    name: Authorize
+    environment: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: true
+
+  run:
+    needs: authorize # Require approval before running on forked pull requests
+
+    name: Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build package
+        run: npm run build
+
+      - name: Run `es-check`
+        run: npm run test:es-check
+
+      - name: Run `i18n:validate`
+        run: npm run i18n:validate
+
+      - name: Run Jest unit tests
+        run: npm run test
+
+      - name: Run Karma end-to-end tests
+        run: npm run test:e2e
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # pin@3.1.4

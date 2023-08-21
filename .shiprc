@@ -1,6 +1,0 @@
-{
-  "files": {
-    "README.md": []
-  },
-  "postbump": "yarn dist build"
-}

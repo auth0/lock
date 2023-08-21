@@ -2,7 +2,6 @@
 
 Requires:
 
-- [Yarn](https://yarnpkg.com/)
 - [Node LTS](https://nodejs.org)
 
 ## Building
@@ -12,7 +11,7 @@ The SDK uses [Webpack](https://webpack.js.org/) to compile all JavaScript assets
 To perform a build, use the `build` script:
 
 ```
-yarn build
+npm run build
 ```
 
 ## Running Tests
@@ -20,23 +19,23 @@ yarn build
 Unit tests can be executed using [Jest](https://jestjs.io/) by issuing the following command:
 
 ```
-yarn test
+npm run test
 ```
 
 To interactively perform tests using Jest's `watch` mode, use:
 
 ```
-yarn test:watch
+npm run test:watch
 ```
 
 End-to-end tests can be executed locally using [Karma](https://karma-runner.github.io/), in both watch and CLI mode:
 
 ```
 # CLI mode using Chrome Headless browser:
-yarn test:e2e
+npm run test:e2e
 
 # Watch mode using Chrome desktop browser, in watch mode:
-yarn test:e2e:watch
+npm run test:e2e:watch
 ```
 
 ## The SDK Playground
@@ -44,7 +43,7 @@ yarn test:e2e:watch
 To test the SDK manually and play around with the various options and features, you can invoke the Playground by using:
 
 ```
-yarn start
+npm start
 ```
 
 Next, open `https://localhost:3000/support`, which will display a simple web app that allows you to interact with Auth0 to test functionality. The HTML template in `support/index.html` can be modified to test various different pieces of functionality.
@@ -59,7 +58,7 @@ You can then use another SPA app to log in using this tenant that has this custo
 
 You may need to run Lock using HTTPS with a valid certificate if you want to do this testing in Safari, as Safari will not load mixed content pages, and will also not load HTTPS with untrusted testing certificates.
 
-Lock can already support HTTPS just by running `yarn start` if you have `mkcert` installed.
+Lock can already support HTTPS just by running `npm start` if you have `mkcert` installed.
 
 To install `mkcert`:
 
@@ -71,7 +70,7 @@ brew install nss # if you use Firefox
 mkcert install
 
 # Serve lock
-yarn start
+npm start
 ```
 
 Once Lock has started, use another SPA app to log in using a tenant with the template customized as above.

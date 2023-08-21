@@ -1,24 +1,42 @@
 name: Semgrep
 
 on:
-  pull_request: {}
-
+  merge_group:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
   push:
-    branches: ["master", "main"]
-
+    branches:
+      - master
   schedule:
     - cron: '30 0 1,15 * *'
 
+permissions:
+  contents: read
+
 jobs:
-  semgrep:
-    name: Scan
+  authorize:
+    name: Authorize
+    environment: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
     runs-on: ubuntu-latest
+    steps:
+      - run: true
+
+  run:
+    if: (github.actor != 'dependabot[bot]')
+    needs: authorize # Require approval before running on forked pull requests
+
+    name: Run
+    runs-on: ubuntu-latest
+
     container:
       image: returntocorp/semgrep
-    # Skip any PR created by dependabot to avoid permission issues
-    if: (github.actor != 'dependabot[bot]')
+
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.ref }}
 
       - run: semgrep ci
         env:
