@@ -1,0 +1,70 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish-npm:
+    name: 'NPM'
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build release
+        run: rm -rf dist && rm -rf build && npm run dist && npm run build
+
+      - name: Publish release to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish release to CDN
+        run: ccu --trace
+
+  publish-gh:
+    needs: publish-npm # Don't publish to GitHub Packages until NPM is done
+
+    name: 'GitHub Packages'
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build release
+        run: rm -rf dist && rm -rf build && npm run dist && npm run build
+
+      - name: Publish release to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
