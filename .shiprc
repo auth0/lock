@@ -1,0 +1,6 @@
+{
+  "files": {
+    "README.md": []
+  },
+  "postbump": "npm run dist && npm run build"
+}
