@@ -2,9 +2,12 @@ name: Publish Release
 
 on:
   workflow_dispatch:
-  release:
-    types:
-      - published
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+' # Release versions
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-beta.[0-9]+' # Beta versions
+      - '[0-9]+.[0-9]+.[0-9]+-beta.[0-9]+'
 
 permissions:
   contents: read
@@ -27,7 +30,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build release
         run: rm -rf dist && rm -rf build && npm run dist && npm run build
@@ -59,7 +62,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build release
         run: rm -rf dist && rm -rf build && npm run dist && npm run build
