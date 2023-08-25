@@ -33,6 +33,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Echo env
+        run: echo "NODE_VERSION $NODE_VERSION"
+        env:
+          NODE_VERSION: ${{ env.NODE_VERSION }}
       - name: Checkout code
         uses: actions/checkout@v3
 
