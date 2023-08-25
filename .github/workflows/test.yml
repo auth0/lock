@@ -37,6 +37,11 @@ jobs:
         run: echo "NODE_VERSION $NODE_VERSION"
         env:
           NODE_VERSION: ${{ env.NODE_VERSION }}
+          
+      - name: Echo vars
+        run: echo "NODE_VERSION $NODE_VERSION"
+        env:
+          NODE_VERSION: ${{ vars.NODE_VERSION }}
       - name: Checkout code
         uses: actions/checkout@v3
 
