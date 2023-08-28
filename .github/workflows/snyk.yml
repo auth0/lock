@@ -23,22 +23,20 @@ concurrency:
 jobs:
   authorize:
     name: Authorize
-    environment: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
+    environment: ${{ github.actor != 'dependabot[bot]' && github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
     runs-on: ubuntu-latest
     steps:
       - run: true
 
   check:
-    # Skip running test for dependabot.
-    if: (github.actor != 'dependabot[bot]')
     needs: authorize
 
     name: Check for Vulnerabilities
     runs-on: ubuntu-latest
 
     steps:
-      - if: github.event_name == 'merge_group'
-        run: exit 0 # Skip running test for merge queues.
+      - if: github.actor == 'dependabot[bot]' || github.event_name == 'merge_group'
+        run: exit 0 # Skip unnecessary test runs for dependabot and merge queues. Artifically flag as successful, as this is a required check for branch protection.
 
       - uses: actions/checkout@v3
         with:

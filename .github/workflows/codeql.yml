@@ -20,9 +20,6 @@ permissions:
 
 jobs:
   analyze:
-    # Skip running test for dependabot.
-    if: (github.actor != 'dependabot[bot]')
-
     name: Analyze
     runs-on: ubuntu-latest
 
@@ -32,8 +29,8 @@ jobs:
         language: [javascript]
 
     steps:
-      - if: github.event_name == 'merge_group'
-        run: exit 0 # Skip running test for merge queues.
+      - if: github.actor == 'dependabot[bot]' || github.event_name == 'merge_group'
+        run: exit 0 # Skip unnecessary test runs for dependabot and merge queues. Artifically flag as successful, as this is a required check for branch protection.
 
       - name: Checkout
         uses: actions/checkout@v3
