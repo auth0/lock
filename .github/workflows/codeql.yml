@@ -2,10 +2,14 @@ name: CodeQL
 
 on:
   merge_group:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
   push:
-    branches: ['master', 'v6', 'v7', 'v8', 'v9-optional-signup-username', 'v9', 'v10']
-  pull_request:
-    branches: ['master']
+    branches:
+      - master
+      - v*
   schedule:
     - cron: '11 10 * * 4'
 
@@ -16,6 +20,9 @@ permissions:
 
 jobs:
   analyze:
+    # Skip running test for dependabot.
+    if: (github.actor != 'dependabot[bot]')
+
     name: Analyze
     runs-on: ubuntu-latest
 
@@ -25,8 +32,13 @@ jobs:
         language: [javascript]
 
     steps:
+      - if: github.event_name == 'merge_group'
+        run: exit 0 # Skip running test for merge queues.
+
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.ref }}
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
