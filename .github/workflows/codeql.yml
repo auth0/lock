@@ -38,8 +38,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.ref }}
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
