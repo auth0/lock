@@ -14,7 +14,7 @@ export default class CheckboxInput extends React.Component {
       invalidHint
     } = this.props;
 
-    const spanClass = invalidHint ? 'dont-show-as-invalid' : 'show-as-invalid'
+    const spanClass = invalidHint ? '' : 'no-hint'
 
     return (
       <InputWrap

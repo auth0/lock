@@ -18,7 +18,7 @@ exports[`CustomInput when type == checkbox and when placeholderHTML is set rende
         type="checkbox"
       />
       <span
-        className="dont-show-as-invalid"
+        className=""
         dangerouslySetInnerHTML={
           {
             "__html": "<b>Placeholder</b>",
@@ -48,7 +48,7 @@ exports[`CustomInput when type == checkbox highlights placeholder text when no i
         type="checkbox"
       />
       <span
-        className="show-as-invalid"
+        className="no-hint"
         dangerouslySetInnerHTML={
           {
             "__html": "<b>Placeholder</b>",
@@ -78,7 +78,7 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
         type="checkbox"
       />
       <span
-        className="dont-show-as-invalid"
+        className=""
       >
         placeholder
       </span>
@@ -105,7 +105,7 @@ exports[`CustomInput when type == checkbox shows an error when value is incorrec
         type="checkbox"
       />
       <span
-        className="dont-show-as-invalid"
+        className=""
         dangerouslySetInnerHTML={
           {
             "__html": "<b>Placeholder</b>",
