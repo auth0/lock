@@ -122,6 +122,16 @@ describe('CustomInput', () => {
         <CustomInput {...defaultProps} placeholderHTML={'<b>Placeholder</b>'} />
       ).toMatchSnapshot();
     });
+
+    it('highlights placeholder text when no invalid hint is provided', () => {
+      require('field/index').getFieldInvalidHint = () => undefined;
+
+      const CustomInput = getComponent();
+
+      expectComponent(
+        <CustomInput {...defaultProps} placeholderHTML={'<b>Placeholder</b>'} />
+      ).toMatchSnapshot();
+    });
   });
   describe('when type == hidden', () => {
     beforeEach(() => {

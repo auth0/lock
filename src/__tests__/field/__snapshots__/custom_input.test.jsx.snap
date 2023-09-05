@@ -18,6 +18,37 @@ exports[`CustomInput when type == checkbox and when placeholderHTML is set rende
         type="checkbox"
       />
       <span
+        className="dont-show-as-invalid"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<b>Placeholder</b>",
+          }
+        }
+      />
+    </label>
+  </div>
+</div>
+`;
+
+exports[`CustomInput when type == checkbox highlights placeholder text when no invalid hint is provided 1`] = `
+<div
+  className="auth0-lock-input-block auth0-lock-input-custom_input auth0-lock-error auth0-lock-input-checkbox"
+>
+  <div
+    className="auth0-lock-input-wrap"
+  >
+    <label>
+      <input
+        aria-invalid={true}
+        aria-label="Custom Input"
+        checked={false}
+        id="1-custom_input"
+        name="custom_input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        className="show-as-invalid"
         dangerouslySetInnerHTML={
           {
             "__html": "<b>Placeholder</b>",
@@ -46,7 +77,9 @@ exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 
         onChange={[Function]}
         type="checkbox"
       />
-      <span>
+      <span
+        className="dont-show-as-invalid"
+      >
         placeholder
       </span>
     </label>
@@ -72,6 +105,7 @@ exports[`CustomInput when type == checkbox shows an error when value is incorrec
         type="checkbox"
       />
       <span
+        className="dont-show-as-invalid"
         dangerouslySetInnerHTML={
           {
             "__html": "<b>Placeholder</b>",
