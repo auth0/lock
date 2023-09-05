@@ -14,6 +14,8 @@ export default class CheckboxInput extends React.Component {
       invalidHint
     } = this.props;
 
+    const spanClass = invalidHint ? 'dont-show-as-invalid' : 'show-as-invalid'
+
     return (
       <InputWrap
         invalidHint={invalidHint}
@@ -34,9 +36,9 @@ export default class CheckboxInput extends React.Component {
           {placeholderHTML ? (
             // placeholderHTML allows raw HTML
             // eslint-disable-next-line react/no-danger
-            <span dangerouslySetInnerHTML={{ __html: placeholderHTML }} />
+            <span className={spanClass} dangerouslySetInnerHTML={{ __html: placeholderHTML }} />
           ) : (
-            <span>{placeholder}</span>
+            <span className={spanClass}>{placeholder}</span>
           )}
         </label>
       </InputWrap>
