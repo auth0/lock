@@ -39,6 +39,7 @@ const CustomInput = ({
       return (
         <CheckboxInput
           lockId={l.id(model)}
+          invalidHint={getFieldInvalidHint(model, name)}
           onChange={e => changeField(l.id(model), name, `${e.target.checked}`, validator)}
           checked={getFieldValue(model, name)}
           placeholderHTML={placeholderHTML}

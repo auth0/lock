@@ -2,45 +2,129 @@
 
 exports[`CustomInput when type == checkbox and when placeholderHTML is set renders correctly as a CheckBoxInput 1`] = `
 <div
-  className="auth0-lock-input-checkbox"
+  className="auth0-lock-input-block auth0-lock-input-custom_input auth0-lock-input-checkbox"
 >
-  <label>
-    <input
-      aria-label="Custom Input"
-      checked={false}
-      id="1-custom_input"
-      name="custom_input"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <span
-      dangerouslySetInnerHTML={
-        {
-          "__html": "<b>Placeholder</b>",
+  <div
+    className="auth0-lock-input-wrap"
+  >
+    <label>
+      <input
+        aria-invalid={false}
+        aria-label="Custom Input"
+        checked={false}
+        id="1-custom_input"
+        name="custom_input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        className=""
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<b>Placeholder</b>",
+          }
         }
-      }
-    />
-  </label>
+      />
+    </label>
+  </div>
+</div>
+`;
+
+exports[`CustomInput when type == checkbox highlights placeholder text when no invalid hint is provided 1`] = `
+<div
+  className="auth0-lock-input-block auth0-lock-input-custom_input auth0-lock-error auth0-lock-input-checkbox"
+>
+  <div
+    className="auth0-lock-input-wrap"
+  >
+    <label>
+      <input
+        aria-invalid={true}
+        aria-label="Custom Input"
+        checked={false}
+        id="1-custom_input"
+        name="custom_input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        className="no-hint"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<b>Placeholder</b>",
+          }
+        }
+      />
+    </label>
+  </div>
 </div>
 `;
 
 exports[`CustomInput when type == checkbox renders correctly as a CheckBoxInput 1`] = `
 <div
-  className="auth0-lock-input-checkbox"
+  className="auth0-lock-input-block auth0-lock-input-custom_input auth0-lock-input-checkbox"
 >
-  <label>
-    <input
-      aria-label="Custom Input"
-      checked={false}
-      id="1-custom_input"
-      name="custom_input"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <span>
-      placeholder
-    </span>
-  </label>
+  <div
+    className="auth0-lock-input-wrap"
+  >
+    <label>
+      <input
+        aria-invalid={false}
+        aria-label="Custom Input"
+        checked={false}
+        id="1-custom_input"
+        name="custom_input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        className=""
+      >
+        placeholder
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`CustomInput when type == checkbox shows an error when value is incorrect 1`] = `
+<div
+  className="auth0-lock-input-block auth0-lock-input-custom_input auth0-lock-error auth0-lock-input-checkbox"
+>
+  <div
+    className="auth0-lock-input-wrap"
+  >
+    <label>
+      <input
+        aria-invalid={true}
+        aria-label="Custom Input"
+        checked={false}
+        id="1-custom_input"
+        name="custom_input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        className=""
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<b>Placeholder</b>",
+          }
+        }
+      />
+    </label>
+  </div>
+  <div
+    className="auth0-lock-error-msg"
+    id="auth0-lock-error-msg-custom_input"
+    role="alert"
+  >
+    <div
+      className="auth0-lock-error-invalid-hint"
+    >
+      invalid-hint-custom_input
+    </div>
+  </div>
 </div>
 `;
 
