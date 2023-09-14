@@ -2,10 +2,14 @@ name: CodeQL
 
 on:
   merge_group:
-  push:
-    branches: ['master', 'v6', 'v7', 'v8', 'v9-optional-signup-username', 'v9', 'v10']
   pull_request:
-    branches: ['master']
+    types:
+      - opened
+      - synchronize
+  push:
+    branches:
+      - master
+      - v*
   schedule:
     - cron: '11 10 * * 4'
 
@@ -13,6 +17,10 @@ permissions:
   actions: read
   contents: read
   security-events: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
   analyze:
@@ -25,8 +33,11 @@ jobs:
         language: [javascript]
 
     steps:
+      - if: github.actor == 'dependabot[bot]' || github.event_name == 'merge_group'
+        run: exit 0 # Skip unnecessary test runs for dependabot and merge queues. Artifically flag as successful, as this is a required check for branch protection.
+
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
