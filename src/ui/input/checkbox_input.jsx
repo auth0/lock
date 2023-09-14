@@ -1,10 +1,28 @@
 import React from 'react';
+import InputWrap from './input_wrap';
 
 export default class CheckboxInput extends React.Component {
   render() {
-    const { lockId, name, ariaLabel, placeholder, checked, placeholderHTML } = this.props;
+    const {
+      lockId,
+      name,
+      ariaLabel,
+      placeholder,
+      checked,
+      placeholderHTML,
+      isValid,
+      invalidHint
+    } = this.props;
+
+    const spanClass = invalidHint ? '' : 'no-hint'
+
     return (
-      <div className="auth0-lock-input-checkbox">
+      <InputWrap
+        invalidHint={invalidHint}
+        isValid={isValid}
+        name={name}
+        className="auth0-lock-input-checkbox"
+      >
         <label>
           <input
             id={`${lockId}-${name}`}
@@ -13,16 +31,17 @@ export default class CheckboxInput extends React.Component {
             onChange={::this.handleOnChange}
             name={name}
             aria-label={ariaLabel || name}
+            aria-invalid={!isValid}
           />
           {placeholderHTML ? (
             // placeholderHTML allows raw HTML
             // eslint-disable-next-line react/no-danger
-            <span dangerouslySetInnerHTML={{ __html: placeholderHTML }} />
+            <span className={spanClass} dangerouslySetInnerHTML={{ __html: placeholderHTML }} />
           ) : (
-            <span>{placeholder}</span>
+            <span className={spanClass}>{placeholder}</span>
           )}
         </label>
-      </div>
+      </InputWrap>
     );
   }
 

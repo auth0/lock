@@ -3,10 +3,14 @@ import React from 'react';
 
 export default class InputWrap extends React.Component {
   render() {
-    const { after, focused, invalidHint, isValid, name, icon } = this.props;
+    const { after, focused, invalidHint, isValid, name, icon, className } = this.props;
     let blockClassName = `auth0-lock-input-block auth0-lock-input-${name}`;
     if (!isValid) {
       blockClassName += ' auth0-lock-error';
+    }
+
+    if (className) {
+      blockClassName += ` ${className}`;
     }
 
     let wrapClassName = 'auth0-lock-input-wrap';
