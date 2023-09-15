@@ -1,5 +1,11 @@
 # Change Log
 
+## [v12.2.0](https://github.com/auth0/lock/tree/v12.2.0) (2023-09-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.1.0...v12.2.0)
+
+**Added**
+- Wrap CheckBoxInput in InputWrapper to provide visual feedback [\#2423](https://github.com/auth0/lock/pull/2423) ([ewanharris](https://github.com/ewanharris))
+
 ## [v12.1.0](https://github.com/auth0/lock/tree/v12.1.0) (2023-07-17)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.0.2...v12.1.0)
 
