@@ -20,7 +20,6 @@ on:
 permissions:
   contents: read
   id-token: write # For publishing to NPM with provenance. Allows developers to run `npm audit signatures` and verify release signature of SDK. @see https://github.blog/2023-04-19-introducing-npm-package-provenance/
-  packages: write # For cross-publishing to GitHub Packages registry.
 
 env:
   NODE_VERSION: 18
