@@ -2,5 +2,5 @@
   "files": {
     "README.md": []
   },
-  "postbump": "npm run dist && npm run build"
+  "postbump": "yarn dist build"
 }
