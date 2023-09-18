@@ -27,22 +27,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
+          cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn
 
       - name: Build release
-        run: rm -rf dist && rm -rf build && npm run dist && npm run build
-
+        run: rm -rf dist && rm -rf build && yarn dist build
       - name: Publish release to NPM
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish release to CDN
-        run: ccu --trace
 
   publish-gh:
     needs: publish-npm # Don't publish to GitHub Packages until NPM is done
@@ -60,13 +56,13 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn
 
       - name: Build release
-        run: rm -rf dist && rm -rf build && npm run dist && npm run build
+        run: rm -rf dist && rm -rf build && yarn dist build
 
       - name: Publish release to GitHub Packages
         run: npm publish
