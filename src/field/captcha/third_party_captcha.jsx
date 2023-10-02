@@ -79,7 +79,7 @@ const loadScript = (url, attributes) => {
 
 const removeScript = (url) => {
   var scripts = window.document.querySelectorAll('script[src="' + url + '"]');
-  scripts.forEach(function (script) {
+  scripts.forEach((script) => {
     script.remove();
   });
 };
@@ -88,7 +88,6 @@ export class ThirdPartyCaptcha extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       retryCount: 0,
       scriptUrl: ''
@@ -123,13 +122,14 @@ export class ThirdPartyCaptcha extends React.Component {
     const { provider, hl, clientSubdomain, sitekey } = this.props;
     const callbackName = `${providerDomPrefix(provider)}Callback_${Math.floor(Math.random() * 1000001)}`;
     const scriptUrl = scriptForProvider(provider, hl, callbackName, clientSubdomain, sitekey);
+    this.setState({ scriptUrl });
     const attributes = {
       async: true,
       defer: true
     };
     if (provider === ARKOSE_PROVIDER) {
       attributes['data-callback'] = callbackName;
-      attributes['onerror'] = function () {
+      attributes['onerror'] = () => {
         if (this.state.retryCount < MAX_RETRY) {
           removeScript(scriptUrl);
           loadScript(scriptUrl, attributes);
@@ -141,7 +141,7 @@ export class ThirdPartyCaptcha extends React.Component {
         removeScript(scriptUrl);
         this.changeHandler('BYPASS_CAPTCHA');
       };
-      window[callbackName] = function (arkose) {
+      window[callbackName] = (arkose) => {
         callback(arkose);
       };
     } else {
@@ -169,35 +169,26 @@ export class ThirdPartyCaptcha extends React.Component {
     this.injectCaptchaScript((arkose) => {
       const provider = getCaptchaProvider(this.props.provider);
       if (this.props.provider === ARKOSE_PROVIDER) {
-        var handleArkose = function (event) {
-          setTimeout(function () {
-            arkose.run();
-          }, TIMEOUT_MS);
-          // TODO: This should prevent the form from submitting
-          event.preventDefault();
-        };
-        var getFormElement = function () {
-          return window.document.querySelector('form.auth0-lock-widget');
-        };
-        getFormElement().addEventListener('submit', handleArkose);
         arkose.setConfig({
-          onCompleted: function (response) {
-            this.changeHandler(response.token);
-            getFormElement().submit();
+          onReady: () => {
+            arkose.run();
           },
-          onError: function () {
+          onCompleted: (response) => {
+            this.changeHandler(response.token);
+          },
+          onError: () => {
             if (this.state.retryCount < MAX_RETRY) {
               arkose.reset();
               // To ensure reset is successful, we need to set a timeout here
-              setTimeout(function () {
+              setTimeout(() => {
                 arkose.run();
               }, TIMEOUT_MS);
               this.setState((prevState) => ({
                 retryCount: prevState.retryCount + 1
               }));
+            } else {
+              this.changeHandler('BYPASS_CAPTCHA');
             }
-            this.changeHandler('BYPASS_CAPTCHA');
-            getFormElement().removeEventListener('submit', handleArkose);
           }
         });
       } else if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
