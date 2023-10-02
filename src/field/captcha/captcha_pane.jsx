@@ -31,6 +31,7 @@ export default class CaptchaPane extends React.Component {
         <ThirdPartyCaptcha
           provider={provider}
           sitekey={captcha.get('siteKey')}
+          clientSubdomain={captcha.get('clientSubdomain')}
           onChange={handleChange}
           onExpired={reset}
           hl={l.ui.language(lock)}
