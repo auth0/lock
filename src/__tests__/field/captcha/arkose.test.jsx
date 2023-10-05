@@ -10,7 +10,7 @@ describe('Arkose', () => {
   });
 
   it('injects the script', () => {
-    const script = [...window.document.querySelectorAll('script')].find(s => s.src.match("https://client-api.arkoselabs.com/v2/mySiteKey/api.js"));
+    const script = [...window.document.querySelectorAll('script')].find(s => s.src.startsWith("https://client-api.arkoselabs.com/v2/mySiteKey/api.js"));
     expect(script).not.toBeUndefined();
   });
 });

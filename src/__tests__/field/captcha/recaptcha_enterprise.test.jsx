@@ -10,7 +10,7 @@ describe('Recaptcha Enterprise', () => {
   });
 
   it('injects the script', () => {
-    const script = [...window.document.querySelectorAll('script')].find(s => s.src.match("https://www.recaptcha.net/recaptcha/enterprise.js"));
+    const script = [...window.document.querySelectorAll('script')].find(s => s.src.startsWith("https://www.recaptcha.net/recaptcha/enterprise.js"));
     expect(script).not.toBeUndefined();
   });
 });

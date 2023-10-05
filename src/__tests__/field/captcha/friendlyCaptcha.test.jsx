@@ -10,7 +10,7 @@ describe('friendly captcha', () => {
   });
 
   it('injects the script', () => {
-    const script = [...window.document.querySelectorAll('script')].find(s => s.src.match("https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.12/widget.min.js"));
+    const script = [...window.document.querySelectorAll('script')].find(s => s.src.startsWith("https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.12/widget.min.js"));
     expect(script).not.toBeUndefined();
   });
 });

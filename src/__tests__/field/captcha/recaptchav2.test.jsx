@@ -10,7 +10,7 @@ describe('Recaptcha v2', () => {
   });
 
   it('injects the script', () => {
-    const script = [...window.document.querySelectorAll('script')].find(s => s.src.match("https://www.recaptcha.net/recaptcha/api.js"));
+    const script = [...window.document.querySelectorAll('script')].find(s => s.src.startsWith("https://www.recaptcha.net/recaptcha/api.js"));
     expect(script).not.toBeUndefined();
   });
 });

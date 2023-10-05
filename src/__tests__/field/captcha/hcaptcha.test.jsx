@@ -10,7 +10,7 @@ describe('hCaptcha', () => {
   });
 
   it('injects the script', () => {
-    const script = [...window.document.querySelectorAll('script')].find(s => s.src.match("https://js.hcaptcha.com/1/api.js"));
+    const script = [...window.document.querySelectorAll('script')].find(s => s.src.startsWith("https://js.hcaptcha.com/1/api.js"));
     expect(script).not.toBeUndefined();
   });
 });
