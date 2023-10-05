@@ -65,7 +65,7 @@ const providerDomPrefix = (provider) => {
 };
 
 const loadScript = (url, attributes) => {
-  var script = window.document.createElement('script');
+  var script = document.createElement('script');
   for (var attr in attributes) {
     if (attr.startsWith('data-')) {
       script.dataset[attr.replace('data-', '')] = attributes[attr];
@@ -78,7 +78,7 @@ const loadScript = (url, attributes) => {
 };
 
 const removeScript = (url) => {
-  var scripts = window.document.querySelectorAll('script[src="' + url + '"]');
+  var scripts = document.body.querySelectorAll('script[src="' + url + '"]');
   scripts.forEach((script) => {
     script.remove();
   });

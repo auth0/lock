@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`friendly captcha should match the snapshot 1`] = `ShallowWrapper {}`;
+exports[`friendly captcha should match the snapshot 1`] = `
+<div
+  className="auth0-lock-friendly-captcha-block auth0-lock-friendly-captcha-block-error"
+>
+  <div
+    className="auth0-lock-friendly-captcha"
+  />
+</div>
+`;
