@@ -98,6 +98,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: yarn
