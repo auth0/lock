@@ -1,5 +1,11 @@
 # Change Log
 
+## [v12.3.0](https://github.com/auth0/lock/tree/v12.3.0) (2023-10-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.2.0...v12.3.0)
+
+**Added**
+- [IAMRISK-2603] Add support for Arkose [\#2455](https://github.com/auth0/lock/pull/2455) ([srijonsaha](https://github.com/srijonsaha))
+
 ## [v12.2.0](https://github.com/auth0/lock/tree/v12.2.0) (2023-09-15)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.1.0...v12.2.0)
 
