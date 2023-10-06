@@ -12,6 +12,11 @@ on:
         required: true
         default: ''
         type: string
+      tag:
+        description: The tag being published. This should be latest, beta or any tag you wish to support.
+        required: true
+        default: latest
+        type: string
       dry-run:
         type: boolean
         description: Perform a publishing dry run. This will not publish the release, but will validate the release and log the commands that would be run.
@@ -107,7 +112,7 @@ jobs:
         run: rm -rf dist && rm -rf build && yarn dist build
 
       - name: Publish release to NPM
-        run: npm publish --provenance --tag ${{ needs.configure.outputs.vtag }} ${{ needs.configure.outputs.dry-run }}
+        run: npm publish --provenance --tag ${{ github.event.inputs.tag }} ${{ needs.configure.outputs.dry-run }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
