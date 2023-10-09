@@ -131,15 +131,11 @@ describe('captcha (corporate connection)', function () {
         this.lock.hide();
       });
 
-      it('should load the captcha script', function (done) {
+      it('should load the captcha script and show the captcha input', function (done) {
         h.waitUntilExists(this.lock, '.auth0-lock-recaptchav2', () => {
           expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
           done();
         });
-      });
-
-      it('should show the captcha input', function () {
-        expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
       });
 
       it('should not submit the form if the captcha is not provided', function (done) {
