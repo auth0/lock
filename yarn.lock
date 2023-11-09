@@ -469,12 +469,12 @@
     "@babel/plugin-syntax-optional-chaining" "^7.8.3"
 
 "@babel/plugin-proposal-pipeline-operator@^7.0.0":
-  version "7.22.15"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-pipeline-operator/-/plugin-proposal-pipeline-operator-7.22.15.tgz#02711e858ea4996dd50bbdd8a278b347f6344276"
-  integrity sha512-tk81rXNA4T/AQc4zFhIIJp9OSmY8rmy46G7LXiPm4+/X8A0A0f9ri6yjEIj3fYqZQYrQnX9uuWXppPGsEesYtg==
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-pipeline-operator/-/plugin-proposal-pipeline-operator-7.23.3.tgz#98048c0c1700801f41a89455b79dc54727be1dac"
+  integrity sha512-8TDc1vEx+YRaGiF8J8w/XcADaBuqc0RnokaMRrHdX7Vx74WhmxPU8wtM/OHSXvgw45P9tlHS/l0YDpNXwLghmQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
-    "@babel/plugin-syntax-pipeline-operator" "^7.22.5"
+    "@babel/plugin-syntax-pipeline-operator" "^7.23.3"
 
 "@babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2":
   version "7.21.0-placeholder-for-preset-env.2"
@@ -643,10 +643,10 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-pipeline-operator@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-pipeline-operator/-/plugin-syntax-pipeline-operator-7.22.5.tgz#181fd9276aa72e75a408e07b929b457b732c16db"
-  integrity sha512-7yuGXd+h8gpR14FnPDTTCd5TfC/1B9njNZJT29GJ7UFF/WVbzkZy7728DynrENqgImqj5xyPTQAo8si9n3QVJQ==
+"@babel/plugin-syntax-pipeline-operator@^7.23.3":
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-pipeline-operator/-/plugin-syntax-pipeline-operator-7.23.3.tgz#04fb797ccaac27622f491d0babced1b5793a5ba7"
+  integrity sha512-xypNE8ptJ5buVtgAAOZzN3gIV6McZfMA27GMhy70a8auQIxbLW9g/uKsaoWqUHdPJgpsXYjVD+5oDyS6pRvraA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
