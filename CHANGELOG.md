@@ -1,7 +1,7 @@
 # Change Log
 
-## [v12.2.1](https://github.com/auth0/lock/tree/v12.2.1) (2023-11-13)
-[Full Changelog](https://github.com/auth0/lock/compare/v12.2.0...v12.2.1)
+## [v12.3.1](https://github.com/auth0/lock/tree/v12.3.1) (2023-11-13)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.3.0...v12.3.1)
 
 **Security**
 - Bump auth0-js to solve crypto-js vulnerability [\#2492](https://github.com/auth0/lock/pull/2492) ([frederikprijck](https://github.com/frederikprijck))
