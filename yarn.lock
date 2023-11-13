@@ -2678,13 +2678,13 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-auth0-js@^9.22.0:
-  version "9.23.2"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.23.2.tgz#9760dc207c074995efd6fbc4d7b585e05709c85b"
-  integrity sha512-RiUBalXymeGjF0Ap/IyjKnsILO44eaFrSJDqchox6wUUWnJATGjEQLMTLzjWn8R1wZVKBGu1Fv7PPSViWhcYVQ==
+auth0-js@^9.23.3:
+  version "9.23.3"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.23.3.tgz#ec3c1e04eeb409fac780c84d32388dd80d3a52d7"
+  integrity sha512-VVh3/1SiECWlwDU3XQ3Xhg40W9Buu18jYZYO93PEerApacm508v67SxBLKh5WeCGaqCUyPamU+NusguhWVn1Qw==
   dependencies:
     base64-js "^1.5.1"
-    idtoken-verifier "^2.2.2"
+    idtoken-verifier "^2.2.4"
     js-cookie "^2.2.0"
     minimist "^1.2.5"
     qs "^6.10.1"
@@ -4051,7 +4051,7 @@ crypto-browserify@^3.0.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
-crypto-js@^4.1.1:
+crypto-js@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.2.0.tgz#4d931639ecdfd12ff80e8186dba6af2c2e856631"
   integrity sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==
@@ -6410,13 +6410,13 @@ icss-utils@^2.1.0:
   dependencies:
     postcss "^6.0.1"
 
-idtoken-verifier@^2.2.2:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/idtoken-verifier/-/idtoken-verifier-2.2.3.tgz#1758e9b0596f7036134938d63e107a72045622b8"
-  integrity sha512-hhpzB+MRgEvbwqzRLFdVbG55lKdXQVfeYEjAA2qu0UC72MSLeR0nX7P7rY5Dycz1aISHPOwq80hIPFoJ/+SItA==
+idtoken-verifier@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/idtoken-verifier/-/idtoken-verifier-2.2.4.tgz#5749bd3fc9b757db40ad764484173584fb19fb55"
+  integrity sha512-5t7O8cNHpJBB8FnwLD0qFZqy/+qGICObQKUl0njD6vXKHhpZPLEe8LU7qv/GBWB3Qv5e/wAIFHYVi4SoQwdOxQ==
   dependencies:
     base64-js "^1.5.1"
-    crypto-js "^4.1.1"
+    crypto-js "^4.2.0"
     es6-promise "^4.2.8"
     jsbn "^1.1.0"
     unfetch "^4.2.0"
