@@ -138,7 +138,7 @@ describe('CaptchaPane', () => {
       });
     });
 
-    it('renderParams', () => {
+    it('renderParams not auth0_v2', () => {
       const renderParams = getRenderParams({
         props: { provider: 'not_auth0_v2', hl: 'en', sitekey: 'mySiteKey' },
         changeHandler: () => {},
