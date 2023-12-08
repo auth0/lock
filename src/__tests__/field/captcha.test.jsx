@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import I from 'immutable';
 
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { ThirdPartyCaptcha } from '../../field/captcha/third_party_captcha';
+import { ThirdPartyCaptcha, getRenderParams } from '../../field/captcha/third_party_captcha';
 import CaptchaInput from '../../ui/input/captcha_input';
 
 const createLockMock = ({ provider = 'auth0', required = true, siteKey = '', clientSubdomain = '' } = {}) =>
@@ -119,6 +119,38 @@ describe('CaptchaPane', () => {
 
     it('should pass the sitekey', () => {
       expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
+    });
+
+    it('renderParams auth0_v2', () => {
+      const renderParams = getRenderParams({
+        props: { provider: 'auth0_v2', hl: 'en', sitekey: 'mySiteKey' },
+        changeHandler: () => {},
+        expiredHandler: () => {},
+        erroredHandler: () => {}
+      });
+      expect(renderParams).toMatchObject({
+        sitekey: 'mySiteKey',
+        language: 'en',
+        callback: expect.any(Function),
+        'expired-callback': expect.any(Function),
+        'error-callback': expect.any(Function),
+        theme: 'light'
+      });
+    });
+
+    it('renderParams', () => {
+      const renderParams = getRenderParams({
+        props: { provider: 'not_auth0_v2', hl: 'en', sitekey: 'mySiteKey' },
+        changeHandler: () => {},
+        expiredHandler: () => {},
+        erroredHandler: () => {}
+      });
+      expect(renderParams).toMatchObject({
+        sitekey: 'mySiteKey',
+        callback: expect.any(Function),
+        'expired-callback': expect.any(Function),
+        'error-callback': expect.any(Function)
+      });
     });
   });
 
