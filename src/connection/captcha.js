@@ -18,6 +18,7 @@ export function showMissingCaptcha(m, id, isPasswordless = false) {
     captchaConfig.get('provider') === 'recaptcha_v2' ||
     captchaConfig.get('provider') === 'recaptcha_enterprise' ||
     captchaConfig.get('provider') === 'hcaptcha' ||
+    captchaConfig.get('provider') === 'auth0_v2' ||
     captchaConfig.get('provider') === 'friendly_captcha' 
   ) ? 'invalid_recaptcha' : 'invalid_captcha';
 

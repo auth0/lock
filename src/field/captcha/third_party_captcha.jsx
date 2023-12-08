@@ -9,6 +9,7 @@ const RECAPTCHA_ENTERPRISE_PROVIDER = 'recaptcha_enterprise';
 const HCAPTCHA_PROVIDER = 'hcaptcha';
 const FRIENDLY_CAPTCHA_PROVIDER = 'friendly_captcha';
 const ARKOSE_PROVIDER = 'arkose';
+const AUTH0_V2_CAPTCHA_PROVIDER = 'auth0_v2';
 const TIMEOUT_MS = 500;
 const MAX_RETRY = 3;
 
@@ -17,7 +18,8 @@ export const isThirdPartyCaptcha = provider =>
   || provider === RECAPTCHA_V2_PROVIDER
   || provider === HCAPTCHA_PROVIDER
   || provider === FRIENDLY_CAPTCHA_PROVIDER
-  || provider === ARKOSE_PROVIDER;
+  || provider === ARKOSE_PROVIDER
+  || provider === AUTH0_V2_CAPTCHA_PROVIDER;
 
 const getCaptchaProvider = provider => {
   switch (provider) {
@@ -31,6 +33,8 @@ const getCaptchaProvider = provider => {
       return window.friendlyChallenge;
     case ARKOSE_PROVIDER:
       return window.arkose;
+    case AUTH0_V2_CAPTCHA_PROVIDER:
+      return window.turnstile;
   }
 };
 
@@ -46,6 +50,8 @@ const scriptForProvider = (provider, lang, callback, clientSubdomain, siteKey) =
       return 'https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.12/widget.min.js';
     case ARKOSE_PROVIDER:
       return 'https://' + clientSubdomain + '.arkoselabs.com/v2/' + siteKey + '/api.js';
+    case AUTH0_V2_CAPTCHA_PROVIDER:
+      return `https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=${callback}`;
   }
 };
 
@@ -61,6 +67,8 @@ const providerDomPrefix = (provider) => {
       return 'friendly-captcha';
     case ARKOSE_PROVIDER:
       return 'arkose';
+    case AUTH0_V2_CAPTCHA_PROVIDER:
+      return 'auth0-v2';
   }
 };
 
@@ -199,13 +207,18 @@ export class ThirdPartyCaptcha extends React.Component {
           errorCallback: this.erroredHandler,
         });
       } else {
-        // if this is enterprise then we change this to window.grecaptcha.enterprise.render
-        this.widgetId = provider.render(this.ref.current, {
+        const renderParams = {
           callback: this.changeHandler,
           'expired-callback': this.expiredHandler,
           'error-callback': this.erroredHandler,
           sitekey: this.props.sitekey
-        });
+        }
+        if (this.props.provider === AUTH0_V2_CAPTCHA_PROVIDER) {
+          renderParams.language = this.props.hl;
+          renderParams.theme = 'light';
+        }
+        // if this is enterprise then we change this to window.grecaptcha.enterprise.render
+        this.widgetId = provider.render(this.ref.current, renderParams);
       }
     });
   }
