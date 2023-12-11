@@ -38,15 +38,15 @@ const getCaptchaProvider = provider => {
   }
 };
 
-export const getRenderParams = (self) => {
+export const getRenderParams = (provider, sitekey, hl, changeHandler, expiredHandler, erroredHandler) => {
   const renderParams = {
-    callback: self.changeHandler,
-    'expired-callback': self.expiredHandler,
-    'error-callback': self.erroredHandler,
-    sitekey: self.props.sitekey
-  }
-  if (self.props.provider === AUTH0_V2_CAPTCHA_PROVIDER) {
-    renderParams.language = self.props.hl;
+    callback: changeHandler,
+    'expired-callback': expiredHandler,
+    'error-callback': erroredHandler,
+    sitekey: sitekey
+  };
+  if (provider === AUTH0_V2_CAPTCHA_PROVIDER) {
+    renderParams.language = hl;
     renderParams.theme = 'light';
   }
   return renderParams;
@@ -221,7 +221,14 @@ export class ThirdPartyCaptcha extends React.Component {
           errorCallback: this.erroredHandler,
         });
       } else {
-        const renderParams = getRenderParams(this);
+        const renderParams = getRenderParams(
+          this.props.provider,
+          this.props.sitekey,
+          this.props.hl,
+          this.changeHandler,
+          this.expiredHandler,
+          this.erroredHandler
+        );
         // if this is enterprise then we change this to window.grecaptcha.enterprise.render
         this.widgetId = provider.render(this.ref.current, renderParams);
       }

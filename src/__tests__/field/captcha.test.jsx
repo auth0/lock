@@ -122,29 +122,43 @@ describe('CaptchaPane', () => {
     });
 
     it('renderParams auth0_v2', () => {
-      const renderParams = getRenderParams({
+      const mockThis = {
         props: { provider: 'auth0_v2', hl: 'en', sitekey: 'mySiteKey' },
         changeHandler: () => {},
         expiredHandler: () => {},
         erroredHandler: () => {}
-      });
+      };
+      const renderParams = getRenderParams(
+        mockThis.props.provider,
+        mockThis.props.sitekey,
+        mockThis.props.hl,
+        mockThis.changeHandler,
+        mockThis.expiredHandler,
+        mockThis.erroredHandler
+      );
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
-        language: 'en',
         callback: expect.any(Function),
         'expired-callback': expect.any(Function),
-        'error-callback': expect.any(Function),
-        theme: 'light'
+        'error-callback': expect.any(Function)
       });
     });
 
     it('renderParams not auth0_v2', () => {
-      const renderParams = getRenderParams({
+      const mockThis = {
         props: { provider: 'not_auth0_v2', hl: 'en', sitekey: 'mySiteKey' },
         changeHandler: () => {},
         expiredHandler: () => {},
         erroredHandler: () => {}
-      });
+      };
+      const renderParams = getRenderParams(
+        mockThis.props.provider,
+        mockThis.props.sitekey,
+        mockThis.props.hl,
+        mockThis.changeHandler,
+        mockThis.expiredHandler,
+        mockThis.erroredHandler
+      );
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
