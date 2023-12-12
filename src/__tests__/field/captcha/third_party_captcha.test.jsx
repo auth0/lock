@@ -40,7 +40,7 @@ describe('ThirdPartyCaptcha', () => {
       shallowWrapper.componentDidMount();
     });
 
-    it('should pass the sitekey', () => {
+    it('should have correct renderParams', () => {
       const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
@@ -76,7 +76,7 @@ describe('ThirdPartyCaptcha', () => {
       shallowWrapper.componentDidMount();
     });
 
-    it('should pass the sitekey', () => {
+    it('should have correct renderParams', () => {
       const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
@@ -114,7 +114,7 @@ describe('ThirdPartyCaptcha', () => {
       shallowWrapper.componentDidMount();
     });
 
-    it('should pass the sitekey', () => {
+    it('should have correct renderParams', () => {
       const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
@@ -150,7 +150,7 @@ describe('ThirdPartyCaptcha', () => {
       shallowWrapper.componentDidMount();
     });
 
-    it('should pass the sitekey', () => {
+    it('should have correct renderParams', () => {
       const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
@@ -186,7 +186,7 @@ describe('ThirdPartyCaptcha', () => {
       shallowWrapper.componentDidMount();
     });
 
-    it('should pass the sitekey', () => {
+    it('should have correct renderParams', () => {
       const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
@@ -223,7 +223,7 @@ describe('ThirdPartyCaptcha', () => {
       shallowWrapper.componentDidMount();
     });
 
-    it('should pass the sitekey', () => {
+    it('should have correct renderParams', () => {
       const { renderParams } = shallowWrapper;
       expect(renderParams).toBeUndefined();
     });
