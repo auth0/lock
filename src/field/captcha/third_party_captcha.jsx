@@ -131,28 +131,28 @@ export class ThirdPartyCaptcha extends React.Component {
       return {};
     }
 
-    if(this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
+    if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
       return {
         sitekey: this.props.sitekey,
         language: this.props.hl,
         doneCallback: this.changeHandler,
-        errorCallback: this.erroredHandler,
-      }
+        errorCallback: this.erroredHandler
+      };
     }
 
     let renderParams = {
       sitekey: this.props.sitekey,
       callback: this.changeHandler,
       'expired-callback': this.expiredHandler,
-      'error-callback': this.erroredHandler,
-    }
+      'error-callback': this.erroredHandler
+    };
 
     if (this.props.provider === AUTH0_V2_CAPTCHA_PROVIDER) {
       renderParams = {
         ...renderParams,
         language: this.props.hl,
         theme: 'light'
-      }
+      };
     }
 
     return renderParams;
@@ -328,19 +328,7 @@ ThirdPartyCaptcha.propTypes = {
   value: propTypes.string,
   isValid: propTypes.bool
 };
-ThirdPartyCaptcha.getRenderParams = () =>{
-  const renderParams = {
-    callback: this.changeHandler,
-    'expired-callback': this.expiredHandler,
-    'error-callback': this.erroredHandler,
-    sitekey: this.props.sitekey
-  };
-  if (this.props.provider === AUTH0_V2_CAPTCHA_PROVIDER) {
-    renderParams.language = this.props.hl;
-    renderParams.theme = 'light';
-  }
-  return renderParams;
-}
+
 ThirdPartyCaptcha.defaultProps = {
   onChange: noop,
   onExpired: noop,
