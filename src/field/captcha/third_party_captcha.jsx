@@ -38,20 +38,6 @@ const getCaptchaProvider = provider => {
   }
 };
 
-export const getRenderParams = (provider, sitekey, hl, changeHandler, expiredHandler, erroredHandler) => {
-  const renderParams = {
-    callback: changeHandler,
-    'expired-callback': expiredHandler,
-    'error-callback': erroredHandler,
-    sitekey: sitekey
-  };
-  if (provider === AUTH0_V2_CAPTCHA_PROVIDER) {
-    renderParams.language = hl;
-    renderParams.theme = 'light';
-  }
-  return renderParams;
-};
-
 const scriptForProvider = (provider, lang, callback, clientSubdomain, siteKey) => {
   switch (provider) {
     case RECAPTCHA_V2_PROVIDER:
@@ -137,9 +123,41 @@ export class ThirdPartyCaptcha extends React.Component {
         this.props.onChange(value);
         this.props.onErrored();
       });
-    };
+    };  
   }
 
+  getRenderParams() {
+    if (this.props.provider === ARKOSE_PROVIDER) {
+      return {};
+    }
+
+    if(this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
+      return {
+        sitekey: this.props.sitekey,
+        language: this.props.hl,
+        doneCallback: this.changeHandler,
+        errorCallback: this.erroredHandler,
+      }
+    }
+
+    let renderParams = {
+      sitekey: this.props.sitekey,
+      callback: this.changeHandler,
+      'expired-callback': this.expiredHandler,
+      'error-callback': this.erroredHandler,
+    }
+
+    if (this.props.provider === AUTH0_V2_CAPTCHA_PROVIDER) {
+      renderParams = {
+        ...renderParams,
+        language: this.props.hl,
+        theme: 'light'
+      }
+    }
+
+    return renderParams;
+  }
+  
   injectCaptchaScript(callback = noop) {
     const { provider, hl, clientSubdomain, sitekey } = this.props;
     const callbackName = `${providerDomPrefix(provider)}Callback_${Math.floor(Math.random() * 1000001)}`;
@@ -188,6 +206,8 @@ export class ThirdPartyCaptcha extends React.Component {
   }
 
   componentDidMount() {
+    // grab the render params outside of the callback just to spy on it in the test
+    const renderParams = this.getRenderParams();
     this.injectCaptchaScript((arkose) => {
       const provider = getCaptchaProvider(this.props.provider);
       if (this.props.provider === ARKOSE_PROVIDER) {
@@ -214,21 +234,8 @@ export class ThirdPartyCaptcha extends React.Component {
           }
         });
       } else if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
-        this.widgetInstance = new provider.WidgetInstance(this.ref.current, {
-          sitekey: this.props.sitekey,
-          language: this.props.hl,
-          doneCallback: this.changeHandler,
-          errorCallback: this.erroredHandler,
-        });
+        this.widgetInstance = new provider.WidgetInstance(this.ref.current, renderParams);
       } else {
-        const renderParams = getRenderParams(
-          this.props.provider,
-          this.props.sitekey,
-          this.props.hl,
-          this.changeHandler,
-          this.expiredHandler,
-          this.erroredHandler
-        );
         // if this is enterprise then we change this to window.grecaptcha.enterprise.render
         this.widgetId = provider.render(this.ref.current, renderParams);
       }
@@ -321,7 +328,19 @@ ThirdPartyCaptcha.propTypes = {
   value: propTypes.string,
   isValid: propTypes.bool
 };
-
+ThirdPartyCaptcha.getRenderParams = () =>{
+  const renderParams = {
+    callback: this.changeHandler,
+    'expired-callback': this.expiredHandler,
+    'error-callback': this.erroredHandler,
+    sitekey: this.props.sitekey
+  };
+  if (this.props.provider === AUTH0_V2_CAPTCHA_PROVIDER) {
+    renderParams.language = this.props.hl;
+    renderParams.theme = 'light';
+  }
+  return renderParams;
+}
 ThirdPartyCaptcha.defaultProps = {
   onChange: noop,
   onExpired: noop,
