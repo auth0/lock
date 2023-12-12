@@ -63,7 +63,7 @@ describe('ThirdPartyCaptcha', () => {
         />
       ).instance();
       act(() => {
-        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
 
         wrapper.componentDidMount();
 
@@ -103,7 +103,7 @@ describe('ThirdPartyCaptcha', () => {
         />
       ).instance();
       act(() => {
-        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
 
         wrapper.componentDidMount();
         jest.spyOn(global.window.friendlyChallenge, 'WidgetInstance');
@@ -143,7 +143,7 @@ describe('ThirdPartyCaptcha', () => {
         />
       ).instance();
       act(() => {
-        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
 
         wrapper.componentDidMount();
 
@@ -182,7 +182,7 @@ describe('ThirdPartyCaptcha', () => {
         />
       ).instance();
       act(() => {
-        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
 
         wrapper.componentDidMount();
 
@@ -223,7 +223,7 @@ describe('ThirdPartyCaptcha', () => {
         />
       ).instance();
       act(() => {
-        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+        const injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
 
         wrapper.componentDidMount();
 
