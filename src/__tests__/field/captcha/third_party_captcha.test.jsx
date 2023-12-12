@@ -50,6 +50,7 @@ describe('ThirdPartyCaptcha', () => {
       });
       expect(renderParams.language).toBeUndefined();
       expect(renderParams.theme).toBeUndefined();
+      expect(Object.keys(renderParams)).toHaveLength(4);
     });
   });
 
@@ -87,6 +88,7 @@ describe('ThirdPartyCaptcha', () => {
       expect(renderParams.callback).toBeUndefined();
       expect(renderParams['expired-callback']).toBeUndefined();
       expect(renderParams['error-callback']).toBeUndefined();
+      expect(Object.keys(renderParams)).toHaveLength(4);
     });
   });
 
@@ -122,6 +124,7 @@ describe('ThirdPartyCaptcha', () => {
       });
       expect(renderParams.language).toBeUndefined();
       expect(renderParams.theme).toBeUndefined();
+      expect(Object.keys(renderParams)).toHaveLength(4);
     });
   });
 
@@ -157,6 +160,7 @@ describe('ThirdPartyCaptcha', () => {
         language: 'en',
         theme: 'light'
       });
+      expect(Object.keys(renderParams)).toHaveLength(6);
     });
   });
 
@@ -192,6 +196,7 @@ describe('ThirdPartyCaptcha', () => {
       });
       expect(renderParams.language).toBeUndefined();
       expect(renderParams.theme).toBeUndefined();
+      expect(Object.keys(renderParams)).toHaveLength(4);
     });
   });
 
@@ -220,10 +225,7 @@ describe('ThirdPartyCaptcha', () => {
 
     it('should pass the sitekey', () => {
       const { renderParams } = shallowWrapper;
-      expect(renderParams).toEqual({
-        sitekey: 'mySiteKey'
-      });
-      expect(Object.keys(renderParams)).toHaveLength(1);
+      expect(renderParams).toBeUndefined();
     });
   });
 });

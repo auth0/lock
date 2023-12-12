@@ -131,6 +131,8 @@ export class ThirdPartyCaptcha extends React.Component {
 
   getRenderParams() {
     if (this.props.provider === ARKOSE_PROVIDER) {
+      // Arkose doesn't use render params
+      delete this.renderParams;
       return;
     }
 
