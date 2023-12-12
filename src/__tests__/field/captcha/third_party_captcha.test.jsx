@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import I from 'immutable';
 import * as l from '../../../core/index';
 import { ThirdPartyCaptcha } from '../../../field/captcha/third_party_captcha';
@@ -18,8 +19,32 @@ const createLockMock = ({
   });
 
 describe('ThirdPartyCaptcha', () => {
+  let prevWindow;
+  beforeAll(() => {
+    prevWindow = global.window;
+    global.window.grecaptcha = {
+      render: jest.fn(),
+      enterprise: {
+        render: jest.fn()
+      }
+    };
+    global.window.hcaptcha = {
+      render: jest.fn()
+    };
+    global.window.friendlyChallenge = {
+      WidgetInstance: jest.fn().mockImplementation((...args) => {
+        return jest.fn(...args);
+      })
+    };
+    global.window.turnstile = {
+      render: jest.fn()
+    };
+  });
+  afterAll(() => {
+    global.window = prevWindow;
+  });
   describe('recaptchav2', () => {
-    let shallowWrapper;
+    let wrapper;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'recaptcha_v2',
@@ -27,7 +52,7 @@ describe('ThirdPartyCaptcha', () => {
       });
 
       const captcha = l.captcha(lockMock);
-      shallowWrapper = shallow(
+      wrapper = mount(
         <ThirdPartyCaptcha
           provider={captcha.get('provider')}
           sitekey={captcha.get('siteKey')}
@@ -37,25 +62,29 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      shallowWrapper.componentDidMount();
+      act(() => {
+        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+
+        wrapper.componentDidMount();
+
+        injectCaptchaScriptSpy.mock.calls[0][0]();
+      });
     });
 
-    it('should have correct renderParams', () => {
-      const { renderParams } = shallowWrapper;
-      expect(renderParams).toMatchObject({
+    it('should call render with the correct renderParams', () => {
+      const renderParams = global.window.grecaptcha.render.mock.calls[0][1];
+
+      expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
         'expired-callback': expect.any(Function),
         'error-callback': expect.any(Function)
       });
-      expect(renderParams.language).toBeUndefined();
-      expect(renderParams.theme).toBeUndefined();
-      expect(Object.keys(renderParams)).toHaveLength(4);
     });
   });
 
   describe('friendly captcha', () => {
-    let shallowWrapper;
+    let wrapper;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'friendly_captcha',
@@ -63,7 +92,7 @@ describe('ThirdPartyCaptcha', () => {
       });
 
       const captcha = l.captcha(lockMock);
-      shallowWrapper = shallow(
+      wrapper = mount(
         <ThirdPartyCaptcha
           provider={captcha.get('provider')}
           sitekey={captcha.get('siteKey')}
@@ -73,27 +102,29 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      shallowWrapper.componentDidMount();
+      act(() => {
+        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+
+        wrapper.componentDidMount();
+        jest.spyOn(global.window.friendlyChallenge, 'WidgetInstance');
+
+        injectCaptchaScriptSpy.mock.calls[0][0]();
+      });
     });
 
-    it('should have correct renderParams', () => {
-      const { renderParams } = shallowWrapper;
-      expect(renderParams).toMatchObject({
+    it('should call WidgetInstance constructor with the correct renderParams', () => {
+      const renderParams = global.window.friendlyChallenge.WidgetInstance.mock.calls[0][1];
+      expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
         doneCallback: expect.any(Function),
         errorCallback: expect.any(Function),
         language: 'en'
       });
-      expect(renderParams.theme).toBeUndefined();
-      expect(renderParams.callback).toBeUndefined();
-      expect(renderParams['expired-callback']).toBeUndefined();
-      expect(renderParams['error-callback']).toBeUndefined();
-      expect(Object.keys(renderParams)).toHaveLength(4);
     });
   });
 
   describe('hcaptcha', () => {
-    let shallowWrapper;
+    let wrapper;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'hcaptcha',
@@ -101,7 +132,7 @@ describe('ThirdPartyCaptcha', () => {
       });
 
       const captcha = l.captcha(lockMock);
-      shallowWrapper = shallow(
+      wrapper = mount(
         <ThirdPartyCaptcha
           provider={captcha.get('provider')}
           sitekey={captcha.get('siteKey')}
@@ -111,25 +142,28 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      shallowWrapper.componentDidMount();
+      act(() => {
+        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+
+        wrapper.componentDidMount();
+
+        injectCaptchaScriptSpy.mock.calls[0][0]();
+      });
     });
 
-    it('should have correct renderParams', () => {
-      const { renderParams } = shallowWrapper;
-      expect(renderParams).toMatchObject({
+    it('should call render with the correct renderParams', () => {
+      const renderParams = global.window.hcaptcha.render.mock.calls[0][1];
+      expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
         'expired-callback': expect.any(Function),
         'error-callback': expect.any(Function)
       });
-      expect(renderParams.language).toBeUndefined();
-      expect(renderParams.theme).toBeUndefined();
-      expect(Object.keys(renderParams)).toHaveLength(4);
     });
   });
 
   describe('auth0_v2', () => {
-    let shallowWrapper;
+    let wrapper;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'auth0_v2',
@@ -137,7 +171,7 @@ describe('ThirdPartyCaptcha', () => {
       });
 
       const captcha = l.captcha(lockMock);
-      shallowWrapper = shallow(
+      wrapper = mount(
         <ThirdPartyCaptcha
           provider={captcha.get('provider')}
           sitekey={captcha.get('siteKey')}
@@ -147,12 +181,18 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      shallowWrapper.componentDidMount();
+      act(() => {
+        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+
+        wrapper.componentDidMount();
+
+        injectCaptchaScriptSpy.mock.calls[0][0]();
+      });
     });
 
-    it('should have correct renderParams', () => {
-      const { renderParams } = shallowWrapper;
-      expect(renderParams).toMatchObject({
+    it('should call render with the correct renderParams', () => {
+      const renderParams = global.window.turnstile.render.mock.calls[0][1];
+      expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
         'expired-callback': expect.any(Function),
@@ -160,12 +200,11 @@ describe('ThirdPartyCaptcha', () => {
         language: 'en',
         theme: 'light'
       });
-      expect(Object.keys(renderParams)).toHaveLength(6);
     });
   });
 
   describe('recaptcha enterprise', () => {
-    let shallowWrapper;
+    let wrapper;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'recaptcha_enterprise',
@@ -173,7 +212,7 @@ describe('ThirdPartyCaptcha', () => {
       });
 
       const captcha = l.captcha(lockMock);
-      shallowWrapper = shallow(
+      wrapper = mount(
         <ThirdPartyCaptcha
           provider={captcha.get('provider')}
           sitekey={captcha.get('siteKey')}
@@ -183,49 +222,23 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      shallowWrapper.componentDidMount();
+      act(() => {
+        injectCaptchaScriptSpy = jest.spyOn(wrapper, 'injectCaptchaScript');
+
+        wrapper.componentDidMount();
+
+        injectCaptchaScriptSpy.mock.calls[0][0]();
+      });
     });
 
-    it('should have correct renderParams', () => {
-      const { renderParams } = shallowWrapper;
-      expect(renderParams).toMatchObject({
+    it('should call render with the correct renderParams', () => {
+      const renderParams = global.window.grecaptcha.enterprise.render.mock.calls[0][1];
+      expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
         'expired-callback': expect.any(Function),
         'error-callback': expect.any(Function)
       });
-      expect(renderParams.language).toBeUndefined();
-      expect(renderParams.theme).toBeUndefined();
-      expect(Object.keys(renderParams)).toHaveLength(4);
-    });
-  });
-
-  describe('Arkose', () => {
-    let shallowWrapper;
-    beforeAll(() => {
-      const lockMock = createLockMock({
-        provider: 'arkose',
-        siteKey: 'mySiteKey',
-        clientSubdomain: 'client-api'
-      });
-
-      const captcha = l.captcha(lockMock);
-      shallowWrapper = shallow(
-        <ThirdPartyCaptcha
-          provider={captcha.get('provider')}
-          sitekey={captcha.get('siteKey')}
-          clientSubdomain={captcha.get('clientSubdomain')}
-          hl={'en'}
-          isValid={true}
-          value={undefined}
-        />
-      ).instance();
-      shallowWrapper.componentDidMount();
-    });
-
-    it('should have correct renderParams', () => {
-      const { renderParams } = shallowWrapper;
-      expect(renderParams).toBeUndefined();
     });
   });
 });

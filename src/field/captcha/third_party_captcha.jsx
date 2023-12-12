@@ -209,7 +209,6 @@ export class ThirdPartyCaptcha extends React.Component {
   }
 
   componentDidMount() {
-    // grab the render params outside of the callback just to spy on it in the test
     this.getRenderParams();
     this.injectCaptchaScript((arkose) => {
       const provider = getCaptchaProvider(this.props.provider);
