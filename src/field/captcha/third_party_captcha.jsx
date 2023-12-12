@@ -124,38 +124,39 @@ export class ThirdPartyCaptcha extends React.Component {
         this.props.onErrored();
       });
     };  
+    this.renderParams = {
+      sitekey: this.props.sitekey,
+    }
   }
 
   getRenderParams() {
     if (this.props.provider === ARKOSE_PROVIDER) {
-      return {};
+      return;
     }
 
     if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
-      return {
-        sitekey: this.props.sitekey,
+      this.renderParams = {
+        ...this.renderParams,
         language: this.props.hl,
         doneCallback: this.changeHandler,
         errorCallback: this.erroredHandler
       };
+      return;
     }
-
-    let renderParams = {
-      sitekey: this.props.sitekey,
+    this.renderParams = {
+      ...this.renderParams,
       callback: this.changeHandler,
       'expired-callback': this.expiredHandler,
       'error-callback': this.erroredHandler
     };
 
     if (this.props.provider === AUTH0_V2_CAPTCHA_PROVIDER) {
-      renderParams = {
-        ...renderParams,
+      this.renderParams = {
+        ...this.renderParams,
         language: this.props.hl,
         theme: 'light'
       };
     }
-
-    return renderParams;
   }
   
   injectCaptchaScript(callback = noop) {
@@ -207,7 +208,7 @@ export class ThirdPartyCaptcha extends React.Component {
 
   componentDidMount() {
     // grab the render params outside of the callback just to spy on it in the test
-    const renderParams = this.getRenderParams();
+    this.getRenderParams();
     this.injectCaptchaScript((arkose) => {
       const provider = getCaptchaProvider(this.props.provider);
       if (this.props.provider === ARKOSE_PROVIDER) {
@@ -234,10 +235,10 @@ export class ThirdPartyCaptcha extends React.Component {
           }
         });
       } else if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
-        this.widgetInstance = new provider.WidgetInstance(this.ref.current, renderParams);
+        this.widgetInstance = new provider.WidgetInstance(this.ref.current, this.renderParams);
       } else {
         // if this is enterprise then we change this to window.grecaptcha.enterprise.render
-        this.widgetId = provider.render(this.ref.current, renderParams);
+        this.widgetId = provider.render(this.ref.current, this.renderParams);
       }
     });
   }

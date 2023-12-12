@@ -20,7 +20,6 @@ const createLockMock = ({
 describe('ThirdPartyCaptcha', () => {
   describe('recaptchav2', () => {
     let shallowWrapper;
-    let getRenderParamsSpy;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'recaptcha_v2',
@@ -38,12 +37,11 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      getRenderParamsSpy = jest.spyOn(shallowWrapper, 'getRenderParams');
       shallowWrapper.componentDidMount();
     });
 
     it('should pass the sitekey', () => {
-      const renderParams = getRenderParamsSpy.mock.results[0].value;
+      const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
@@ -57,7 +55,6 @@ describe('ThirdPartyCaptcha', () => {
 
   describe('friendly captcha', () => {
     let shallowWrapper;
-    let getRenderParamsSpy;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'friendly_captcha',
@@ -75,12 +72,11 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      getRenderParamsSpy = jest.spyOn(shallowWrapper, 'getRenderParams');
       shallowWrapper.componentDidMount();
     });
 
     it('should pass the sitekey', () => {
-      const renderParams = getRenderParamsSpy.mock.results[0].value;
+      const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
         doneCallback: expect.any(Function),
@@ -96,7 +92,6 @@ describe('ThirdPartyCaptcha', () => {
 
   describe('hcaptcha', () => {
     let shallowWrapper;
-    let getRenderParamsSpy;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'hcaptcha',
@@ -114,12 +109,11 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      getRenderParamsSpy = jest.spyOn(shallowWrapper, 'getRenderParams');
       shallowWrapper.componentDidMount();
     });
 
     it('should pass the sitekey', () => {
-      const renderParams = getRenderParamsSpy.mock.results[0].value;
+      const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
@@ -133,7 +127,6 @@ describe('ThirdPartyCaptcha', () => {
 
   describe('auth0_v2', () => {
     let shallowWrapper;
-    let getRenderParamsSpy;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'auth0_v2',
@@ -151,12 +144,11 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      getRenderParamsSpy = jest.spyOn(shallowWrapper, 'getRenderParams');
       shallowWrapper.componentDidMount();
     });
 
     it('should pass the sitekey', () => {
-      const renderParams = getRenderParamsSpy.mock.results[0].value;
+      const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
@@ -170,7 +162,6 @@ describe('ThirdPartyCaptcha', () => {
 
   describe('recaptcha enterprise', () => {
     let shallowWrapper;
-    let getRenderParamsSpy;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'recaptcha_enterprise',
@@ -188,12 +179,11 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      getRenderParamsSpy = jest.spyOn(shallowWrapper, 'getRenderParams');
       shallowWrapper.componentDidMount();
     });
 
     it('should pass the sitekey', () => {
-      const renderParams = getRenderParamsSpy.mock.results[0].value;
+      const { renderParams } = shallowWrapper;
       expect(renderParams).toMatchObject({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
@@ -207,7 +197,6 @@ describe('ThirdPartyCaptcha', () => {
 
   describe('Arkose', () => {
     let shallowWrapper;
-    let getRenderParamsSpy;
     beforeAll(() => {
       const lockMock = createLockMock({
         provider: 'arkose',
@@ -226,13 +215,15 @@ describe('ThirdPartyCaptcha', () => {
           value={undefined}
         />
       ).instance();
-      getRenderParamsSpy = jest.spyOn(shallowWrapper, 'getRenderParams');
       shallowWrapper.componentDidMount();
     });
 
     it('should pass the sitekey', () => {
-      const renderParams = getRenderParamsSpy.mock.results[0].value;
-      expect(renderParams).toEqual({});
+      const { renderParams } = shallowWrapper;
+      expect(renderParams).toEqual({
+        sitekey: 'mySiteKey'
+      });
+      expect(Object.keys(renderParams)).toHaveLength(1);
     });
   });
 });
