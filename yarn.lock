@@ -2678,9 +2678,9 @@ atob@^2.1.2:
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
 auth0-js@^9.23.3:
-  version "9.23.3"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.23.3.tgz#ec3c1e04eeb409fac780c84d32388dd80d3a52d7"
-  integrity sha512-VVh3/1SiECWlwDU3XQ3Xhg40W9Buu18jYZYO93PEerApacm508v67SxBLKh5WeCGaqCUyPamU+NusguhWVn1Qw==
+  version "9.24.0"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.24.0.tgz#90cf91c0450c0af7d52d859ee00abc7865d2839b"
+  integrity sha512-yBTsPrjg2Kf3sB7xacxiIM1tmJcAyoOwhEsAm093iozvU9C99d1O/Jd/qVKzYbcsBmJDc9vrumUC91nlMzabiQ==
   dependencies:
     base64-js "^1.5.1"
     idtoken-verifier "^2.2.4"
