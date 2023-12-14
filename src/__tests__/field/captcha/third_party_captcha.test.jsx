@@ -20,6 +20,7 @@ const createLockMock = ({
 
 describe('ThirdPartyCaptcha', () => {
   let prevWindow;
+  let counter = 0;
   beforeAll(() => {
     prevWindow = global.window;
     global.window.grecaptcha = {
@@ -37,7 +38,11 @@ describe('ThirdPartyCaptcha', () => {
       })
     };
     global.window.turnstile = {
-      render: jest.fn()
+      render: jest.fn(),
+      reset: () => {
+        global.window.turnstile.render(...global.window.turnstile.render.mock.calls[counter]);
+        counter++;
+      }
     };
   });
   afterAll(() => {
@@ -179,6 +184,7 @@ describe('ThirdPartyCaptcha', () => {
           hl={'en'}
           isValid={true}
           value={undefined}
+          onChange={jest.fn()}
         />
       ).instance();
       act(() => {
@@ -198,8 +204,29 @@ describe('ThirdPartyCaptcha', () => {
         'expired-callback': expect.any(Function),
         'error-callback': expect.any(Function),
         language: 'en',
-        theme: 'light'
+        theme: 'light',
+        retry: 'never'
       });
+    });
+
+    it('should retry 3 times on error and then set value to BYPASS_CAPTCHA dummy token for failOpen', () => {
+      const renderParams = global.window.turnstile.render.mock.calls[0][1];
+      for (let i = 0; i < 3; i++) {
+        const renderParams = global.window.turnstile.render.mock.calls[i][1];
+        act(() => {
+          renderParams['error-callback']();
+        });
+        const { retryCount } = wrapper.state;
+        const { value } = wrapper.props;
+        expect(retryCount).toBe(i + 1);
+        expect(value).toBe(undefined);
+      }
+
+      act(() => renderParams['error-callback']());
+
+      const { onChange } = wrapper.props;
+      expect(onChange.mock.calls).toHaveLength(1);
+      expect(onChange.mock.calls[0][0]).toBe('BYPASS_CAPTCHA');
     });
   });
 
