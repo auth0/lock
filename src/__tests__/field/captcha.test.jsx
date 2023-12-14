@@ -100,6 +100,28 @@ describe('CaptchaPane', () => {
     });
   });
 
+  describe('auth0_v2', () => {
+    let wrapper;
+    beforeAll(() => {
+      const lockMock = createLockMock({
+        provider: 'auth0_v2',
+        siteKey: 'mySiteKey'
+      });
+      const i8nMock = createI18nMock();
+      const onReloadMock = jest.fn();
+
+      wrapper = mount(<CaptchaPane lock={lockMock} onReload={onReloadMock} i18n={i8nMock} />);
+    });
+
+    it('should render ThirdPartyCaptcha if provider is auth0_v2', () => {
+      expect(wrapper.find(ThirdPartyCaptcha)).toHaveLength(1);
+    });
+
+    it('should pass the sitekey', () => {
+      expect(wrapper.find(ThirdPartyCaptcha).props().sitekey).toBe('mySiteKey');
+    });
+  });
+
   describe('recaptcha enterprise', () => {
     let wrapper;
     beforeAll(() => {
