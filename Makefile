@@ -7,16 +7,16 @@
 
 install:
 	@echo "Running install..."
-	yarn install
+	npm run install
 
 test:
 	@echo "Running test..."
-	yarn test
+	npm run test
 
 build:
 	@echo "Running build..."
-	rm -rf dist && rm -rf build && yarn dist build
+	rm -rf dist && rm -rf build && npm run build
 
 publish:
 	@echo "Running cdn-publish..."
-	yarn publish:cdn
+	npm run publish:cdn

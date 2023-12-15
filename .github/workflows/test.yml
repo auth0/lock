@@ -34,25 +34,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn
+        run: npm ci
 
       - name: Build package
-        run: yarn build
+        run: npm run build
 
       - name: Run `es-check`
-        run: yarn test:es-check
+        run: npm run test:es-check
 
       - name: Run `i18n:validate`
-        run: yarn i18n:validate
+        run: npm run i18n:validate
 
       - name: Run Jest unit tests
-        run: yarn test
+        run: npm run test
 
       - name: Run Karma end-to-end tests
-        run: yarn test:e2e
+        run: npm run test:e2e
 
       - name: Upload coverage
         uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # pin@3.1.4
