@@ -15,7 +15,7 @@ test:
 
 build:
 	@echo "Running build..."
-	rm -rf dist && rm -rf build && npm run dist build
+	rm -rf dist && rm -rf build && npm run build
 
 publish:
 	@echo "Running cdn-publish..."
