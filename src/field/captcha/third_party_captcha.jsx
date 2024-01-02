@@ -176,7 +176,7 @@ export class ThirdPartyCaptcha extends React.Component {
       async: true,
       defer: true
     };
-    if (provider === ARKOSE_PROVIDER) {
+    if (provider === ARKOSE_PROVIDER || provider === AUTH0_V2_CAPTCHA_PROVIDER) {
       attributes['data-callback'] = callbackName;
       attributes['onerror'] = () => {
         if (this.state.retryCount < MAX_RETRY) {
@@ -192,23 +192,6 @@ export class ThirdPartyCaptcha extends React.Component {
       };
       window[callbackName] = arkose => {
         callback(arkose);
-      };
-    } else if (provider === AUTH0_V2_CAPTCHA_PROVIDER) {
-      attributes['error-callback'] = () => {
-        if (this.state.retryCount < MAX_RETRY) {
-          removeScript(scriptUrl);
-          loadScript(scriptUrl, attributes);
-          this.setState(prevState => ({
-            retryCount: prevState.retryCount + 1
-          }));
-          return;
-        }
-        removeScript(scriptUrl);
-        this.changeHandler('BYPASS_CAPTCHA');
-      };
-      window[callbackName] = () => {
-        delete window[callbackName];
-        callback();
       };
     } else {
       window[callbackName] = () => {
