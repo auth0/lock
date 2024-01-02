@@ -21,6 +21,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "grunt dev",
+    "prebuild": "grunt dist",
     "build": "grunt build",
     "design": "grunt design",
     "dev": "grunt dev",
