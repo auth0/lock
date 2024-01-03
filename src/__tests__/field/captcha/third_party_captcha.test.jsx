@@ -205,7 +205,8 @@ describe('ThirdPartyCaptcha', () => {
         'error-callback': expect.any(Function),
         language: 'en',
         theme: 'light',
-        retry: 'never'
+        retry: 'never',
+        'response-field': false
       });
     });
 

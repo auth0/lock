@@ -150,6 +150,7 @@ export class ThirdPartyCaptcha extends React.Component {
         language: this.props.hl,
         theme: 'light',
         retry: 'never',
+        'response-field': false,
         'error-callback': () => {
           if (this.state.retryCount < MAX_RETRY) {
             getCaptchaProvider(this.props.provider).reset(this.widgetId);
