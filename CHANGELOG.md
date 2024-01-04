@@ -1,5 +1,14 @@
 # Change Log
 
+## [v12.4.0](https://github.com/auth0/lock/tree/v12.4.0) (2024-01-04)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.3.1...v12.4.0)
+
+**Added**
+- [IAMRISK-2916] Added support for Auth0 v2 captcha provider [\#2503](https://github.com/auth0/lock/pull/2503) ([alexkoumarianos-okta](https://github.com/alexkoumarianos-okta))
+
+**Changed**
+- [IAMRISK-3010] Added support for auth0_v2 captcha failOpen [\#2507](https://github.com/auth0/lock/pull/2507) ([alexkoumarianos-okta](https://github.com/alexkoumarianos-okta))
+
 ## [v12.3.1](https://github.com/auth0/lock/tree/v12.3.1) (2023-11-13)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.3.0...v12.3.1)
 
