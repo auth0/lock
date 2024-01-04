@@ -148,7 +148,21 @@ export class ThirdPartyCaptcha extends React.Component {
       renderParams = {
         ...renderParams,
         language: this.props.hl,
-        theme: 'light'
+        theme: 'light',
+        retry: 'never',
+        'response-field': false,
+        'error-callback': () => {
+          if (this.state.retryCount < MAX_RETRY) {
+            getCaptchaProvider(this.props.provider).reset(this.widgetId);
+            this.setState(prevState => ({
+              retryCount: prevState.retryCount + 1
+            }));
+          } else {
+            // similar implementation to ARKOSE_PROVIDER failOpen
+            this.changeHandler('BYPASS_CAPTCHA');
+          }
+          return true;
+        }
       };
     }
     return renderParams;
@@ -163,13 +177,13 @@ export class ThirdPartyCaptcha extends React.Component {
       async: true,
       defer: true
     };
-    if (provider === ARKOSE_PROVIDER) {
+    if (provider === ARKOSE_PROVIDER || provider === AUTH0_V2_CAPTCHA_PROVIDER) {
       attributes['data-callback'] = callbackName;
       attributes['onerror'] = () => {
         if (this.state.retryCount < MAX_RETRY) {
           removeScript(scriptUrl);
           loadScript(scriptUrl, attributes);
-          this.setState((prevState) => ({
+          this.setState(prevState => ({
             retryCount: prevState.retryCount + 1
           }));
           return;
@@ -177,7 +191,7 @@ export class ThirdPartyCaptcha extends React.Component {
         removeScript(scriptUrl);
         this.changeHandler('BYPASS_CAPTCHA');
       };
-      window[callbackName] = (arkose) => {
+      window[callbackName] = arkose => {
         callback(arkose);
       };
     } else {
@@ -185,7 +199,7 @@ export class ThirdPartyCaptcha extends React.Component {
         delete window[callbackName];
         callback();
       };
-  
+
       if (provider === FRIENDLY_CAPTCHA_PROVIDER) {
         attributes['onload'] = window[callbackName];
       }
