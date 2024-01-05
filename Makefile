@@ -7,7 +7,7 @@
 
 install:
 	@echo "Running install..."
-	npm run install
+	npm install
 
 test:
 	@echo "Running test..."
