@@ -244,6 +244,11 @@ export function resetPassword(id) {
       email: c.getFieldValue(m, 'email')
     };
 
+    const isCaptchaValid = setCaptchaParams(m, params, false, [], true);
+    if (!isCaptchaValid) {
+      return showMissingCaptcha(m, id, false, true);
+    }
+
     webApi.resetPassword(id, params, (error, ...args) => {
       if (error) {
         setTimeout(() => resetPasswordError(id, error), 250);

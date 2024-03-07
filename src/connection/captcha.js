@@ -11,8 +11,8 @@ import webApi from '../core/web_api';
  * @param {Number} id
  * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
  */
-export function showMissingCaptcha(m, id, isPasswordless = false) {
-  const captchaConfig = isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m);
+export function showMissingCaptcha(m, id, isPasswordless = false, isPasswordReset = false) {
+  const captchaConfig = isPasswordReset ? l.resetPasswordCaptcha(m) : (isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m));
 
   const captchaError = (
     captchaConfig.get('provider') === 'recaptcha_v2' ||
@@ -42,8 +42,8 @@ export function showMissingCaptcha(m, id, isPasswordless = false) {
  *
  * @returns {Boolean} returns true if is required and missing the response from the user
  */
-export function setCaptchaParams(m, params, isPasswordless, fields) {
-  const captchaConfig = isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m);
+export function setCaptchaParams(m, params, isPasswordless, fields, isPasswordReset) {
+  const captchaConfig = isPasswordReset ? l.resetPasswordCaptcha(m) : (isPasswordless ? l.passwordlessCaptcha(m) : l.captcha(m));
   const isCaptchaRequired = captchaConfig && captchaConfig.get('required');
 
   if (!isCaptchaRequired) {
@@ -68,7 +68,17 @@ export function setCaptchaParams(m, params, isPasswordless, fields) {
  * @param {boolean} wasInvalid A boolean indicating if the previous captcha was invalid.
  * @param {Function} [next] A callback.
  */
-export function swapCaptcha(id, isPasswordless, wasInvalid, next) {
+export function swapCaptcha(id, isPasswordless, wasInvalid, next, isPasswordReset) {
+  if (isPasswordReset) {
+    return webApi.getResetPasswordChallenge(id, (err, newCaptcha) => {
+      if (!err && newCaptcha) {
+        swap(updateEntity, 'lock', id, l.setResetPasswordCaptcha, newCaptcha, wasInvalid);
+      }
+      if (next) {
+        next();
+      }
+    });
+  }
   if (isPasswordless) {
     return webApi.getPasswordlessChallenge(id, (err, newCaptcha) => {
       if (!err && newCaptcha) {

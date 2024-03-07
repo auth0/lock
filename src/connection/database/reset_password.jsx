@@ -11,6 +11,7 @@ import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
 import { isEmail, setEmail } from '../../field/email';
 import { getField } from '../../field';
+import CaptchaPane from '../../field/captcha/captcha_pane';
 
 class Component extends React.Component {
   componentDidMount() {
@@ -33,13 +34,22 @@ class Component extends React.Component {
     const headerText = i18n.html('forgotPasswordInstructions') || null;
     const header = headerText && <p>{headerText}</p>;
 
+    const captchaPane =
+      l.resetPasswordCaptcha(model) &&
+      l.resetPasswordCaptcha(model).get('required') ? (
+        <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false, false, null, true)} />
+      ) : null;
+
     return (
-      <ResetPasswordPane
-        emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
-        header={header}
-        i18n={i18n}
-        lock={model}
-      />
+      <div>
+        <ResetPasswordPane
+          emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
+          header={header}
+          i18n={i18n}
+          lock={model}
+        />
+        {captchaPane}
+      </div>
     );
   }
 }
