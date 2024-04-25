@@ -21,13 +21,13 @@ exports[`sms passwordless renders a captcha 1`] = `
   />
   <div
     data-__type="captcha_pane"
+    data-flow="passwordless"
     data-i18n={
       {
         "html": [Function],
         "str": [Function],
       }
     }
-    data-isPasswordless={true}
     data-lock="model"
     data-onReload={[Function]}
   />

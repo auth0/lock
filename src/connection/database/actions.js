@@ -19,7 +19,7 @@ import {
 } from './index';
 
 import * as i18n from '../../i18n';
-import { setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
+import { Flow, setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
 
 export function logIn(id, needsMFA = false) {
   const m = read(getEntity, 'lock', id);
@@ -33,7 +33,7 @@ export function logIn(id, needsMFA = false) {
   };
 
   const fields = [usernameField, 'password'];
-  const isCaptchaValid = setCaptchaParams(m, params, false, false, fields);
+  const isCaptchaValid = setCaptchaParams(m, params, Flow.DEFAULT, fields);
 
   if (!isCaptchaValid) {
     return showMissingCaptcha(m, id);
@@ -53,7 +53,7 @@ export function logIn(id, needsMFA = false) {
 
     if (error) {
       const wasInvalid = error && error.code === 'invalid_captcha';
-      return swapCaptcha(id, false, false, wasInvalid, next);
+      return swapCaptcha(id, Flow.DEFAULT, wasInvalid, next);
     }
 
     next();
@@ -88,7 +88,7 @@ export function signUp(id) {
       autoLogin: shouldAutoLogin(m)
     };
 
-    const isCaptchaValid = setCaptchaParams(m, params, false, false, fields);
+    const isCaptchaValid = setCaptchaParams(m, params, Flow.DEFAULT, fields);
     if (!isCaptchaValid) {
       return showMissingCaptcha(m, id);
     }
@@ -131,7 +131,7 @@ export function signUp(id) {
 
       const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
 
-      swapCaptcha(id, false, false, wasInvalidCaptcha, () => {
+      swapCaptcha(id, Flow.DEFAULT, wasInvalidCaptcha, () => {
         setTimeout(() => signUpError(id, error), 250);
       });
     };
@@ -218,7 +218,7 @@ export function signUpError(id, error) {
 
   if (errorKey === 'invalid_captcha') {
     errorMessage = i18n.html(m, ['error', 'login', errorKey]);
-    return swapCaptcha(id, false, false, true, () => {
+    return swapCaptcha(id, Flow.DEFAULT, true, () => {
       swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
     });
   }
@@ -244,9 +244,9 @@ export function resetPassword(id) {
       email: c.getFieldValue(m, 'email')
     };
 
-    const isCaptchaValid = setCaptchaParams(m, params, false, true, ['email']);
+    const isCaptchaValid = setCaptchaParams(m, params, Flow.PASSWORD_RESET, ['email']);
     if (!isCaptchaValid) {
-      return showMissingCaptcha(m, id, false, true);
+      return showMissingCaptcha(m, id, Flow.PASSWORD_RESET);
     }
 
     webApi.resetPassword(id, params, error => {
@@ -290,7 +290,7 @@ function resetPasswordError(id, error) {
     i18n.html(m, ['error', 'forgotPassword', error.code]) ||
     i18n.html(m, ['error', 'forgotPassword', 'lock.fallback']);
   
-  swapCaptcha(id, false, true, error.code === 'invalid_captcha', () => {
+  swapCaptcha(id, Flow.PASSWORD_RESET, error.code === 'invalid_captcha', () => {
     swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
   });
 }

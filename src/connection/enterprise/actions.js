@@ -9,7 +9,7 @@ import { getFieldValue, hideInvalidFields } from '../../field/index';
 import { emailLocalPart } from '../../field/email';
 import { logIn as coreLogIn } from '../../core/actions';
 import * as l from '../../core/index';
-import { setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
+import { Flow, setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
 
 // TODO: enterprise connections should not depend on database
 // connections. However, we now allow a username input to contain also
@@ -53,7 +53,7 @@ export function logIn(id) {
     return logInSSO(id, ssoConnection, params);
   }
 
-  const isCaptchaValid = setCaptchaParams(m, params, false, false, fields);
+  const isCaptchaValid = setCaptchaParams(m, params, Flow.DEFAULT, fields);
 
   if (!isCaptchaValid && !ssoConnection) {
     return showMissingCaptcha(m, id);
@@ -85,7 +85,7 @@ function logInActiveFlow(id, params) {
     },
     (id, error, fields, next) => {
       const wasCaptchaInvalid = error && error.code === 'invalid captcha';
-      swapCaptcha(id, false, false, wasCaptchaInvalid, next);
+      swapCaptcha(id, Flow.DEFAULT, wasCaptchaInvalid, next);
     }
   );
 }

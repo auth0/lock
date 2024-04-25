@@ -12,9 +12,9 @@ import { getCaptchaConfig } from '../../connection/captcha';
 
 export default class CaptchaPane extends React.Component {
   render() {
-    const { i18n, lock, onReload, isPasswordless, isPasswordReset } = this.props;
+    const { i18n, lock, onReload, flow } = this.props;
     const lockId = l.id(lock);
-    const captcha = getCaptchaConfig(lock, isPasswordless, isPasswordReset);
+    const captcha = getCaptchaConfig(lock, flow);
     const value = getFieldValue(lock, 'captcha');
     const isValid = !isFieldVisiblyInvalid(lock, 'captcha');
     const provider = captcha.get('provider');
@@ -74,7 +74,7 @@ CaptchaPane.propTypes = {
   lock: PropTypes.object.isRequired,
   error: PropTypes.bool,
   onReload: PropTypes.func.isRequired,
-  isPasswordless: PropTypes.bool,
+  flow: PropTypes.string,
   isPasswordReset: PropTypes.bool
 };
 

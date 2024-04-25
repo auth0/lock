@@ -4,7 +4,7 @@ import { sendSMS } from '../../connection/passwordless/actions';
 import PhoneNumberPane from '../../field/phone-number/phone_number_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { swapCaptcha } from '../../connection/captcha';
+import { Flow, swapCaptcha } from '../../connection/captcha';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import PaneSeparator from '../../core/pane_separator';
 import * as l from '../../core/index';
@@ -39,7 +39,7 @@ const Component = ({ i18n, model }) => {
 
   const captchaPane = l.passwordlessCaptcha(model) && l.passwordlessCaptcha(model).get('required')
     ? (
-      <CaptchaPane i18n={i18n} lock={model} isPasswordless={true} onReload={() => swapCaptcha(l.id(model), true, false, false)} />
+      <CaptchaPane i18n={i18n} lock={model} flow={Flow.PASSWORDLESS} onReload={() => swapCaptcha(l.id(model), Flow.PASSWORDLESS, false)} />
     ) : null;
 
   const separator = social && phoneNumber ? <PaneSeparator /> : null;

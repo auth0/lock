@@ -4,17 +4,22 @@ import * as i18n from '../i18n';
 import { swap, updateEntity } from '../store/index';
 import webApi from '../core/web_api';
 
+export const Flow = Object.freeze({
+  DEFAULT: 'default',
+  PASSWORDLESS: 'passwordless',
+  PASSWORD_RESET: 'password_reset',
+});
+
 /**
  * Return the captcha config object based on the type of flow.
  * 
  * @param {Object} m model
- * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
- * @param {Boolean} isPasswordReset Whether the captcha is being rendered in a password reset flow
+ * @param {Flow} flow Which flow the captcha is being rendered in
  */
-export function getCaptchaConfig(m, isPasswordless, isPasswordReset) {
-  if (isPasswordReset) {
+export function getCaptchaConfig(m, flow) {
+  if (flow === Flow.PASSWORD_RESET) {
     return l.resetPasswordCaptcha(m);
-  } else if (isPasswordless) {
+  } else if (flow === Flow.PASSWORDLESS) {
     return l.passwordlessCaptcha(m);
   } else {
     return l.captcha(m);
@@ -26,11 +31,10 @@ export function getCaptchaConfig(m, isPasswordless, isPasswordReset) {
  *
  * @param {Object} m model
  * @param {Number} id
- * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
- * @param {Boolean} isPasswordReset Whether the captcha is being rendered in a password reset flow
+ * @param {Flow} flow Which flow the captcha is being rendered in
  */
-export function showMissingCaptcha(m, id, isPasswordless = false, isPasswordReset = false) {
-  const captchaConfig = getCaptchaConfig(m, isPasswordless, isPasswordReset);
+export function showMissingCaptcha(m, id, flow = Flow.DEFAULT) {
+  const captchaConfig = getCaptchaConfig(m, flow);
 
   const captchaError = (
     captchaConfig.get('provider') === 'recaptcha_v2' ||
@@ -56,21 +60,19 @@ export function showMissingCaptcha(m, id, isPasswordless = false, isPasswordRese
  *
  * @param {Object} m model
  * @param {Object} params
- * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow
- * @param {Boolean} isPasswordReset Whether the captcha is being rendered in a password reset flow
+ * @param {Flow} flow Which flow the captcha is being rendered in
  * @param {Object} fields
  *
  * @returns {Boolean} returns true if is required and missing the response from the user
  */
-export function setCaptchaParams(m, params, isPasswordless, isPasswordReset, fields) {
-  const captchaConfig = getCaptchaConfig(m, isPasswordless, isPasswordReset);
+export function setCaptchaParams(m, params, flow, fields) {
+  const captchaConfig = getCaptchaConfig(m, flow);
   const isCaptchaRequired = captchaConfig && captchaConfig.get('required');
 
   if (!isCaptchaRequired) {
     return true;
   }
   const captcha = c.getFieldValue(m, 'captcha');
-  console.log('captcha: ', captcha);
   // captcha required and missing
   if (!captcha) {
     return false;
@@ -85,13 +87,12 @@ export function setCaptchaParams(m, params, isPasswordless, isPasswordReset, fie
  * Get a new challenge and display the new captcha image.
  *
  * @param {number} id The id of the Lock instance.
- * @param {Boolean} isPasswordless Whether the captcha is being rendered in a passwordless flow.
- * @param {Boolean} isPasswordReset Whether the captcha is being rendered in a password reset flow.
+ * @param {Flow} flow Which flow the captcha is being rendered in.
  * @param {boolean} wasInvalid A boolean indicating if the previous captcha was invalid.
  * @param {Function} [next] A callback.
  */
-export function swapCaptcha(id, isPasswordless, isPasswordReset, wasInvalid, next) {
-  if (isPasswordReset) {
+export function swapCaptcha(id, flow, wasInvalid, next) {
+  if (flow === Flow.PASSWORD_RESET) {
     return webApi.getResetPasswordChallenge(id, (err, newCaptcha) => {
       if (!err && newCaptcha) {
         swap(updateEntity, 'lock', id, l.setResetPasswordCaptcha, newCaptcha, wasInvalid);
@@ -100,7 +101,7 @@ export function swapCaptcha(id, isPasswordless, isPasswordReset, wasInvalid, nex
         next();
       }
     });
-  } else if (isPasswordless) {
+  } else if (flow === Flow.PASSWORDLESS) {
     return webApi.getPasswordlessChallenge(id, (err, newCaptcha) => {
       if (!err && newCaptcha) {
         swap(updateEntity, 'lock', id, l.setPasswordlessCaptcha, newCaptcha, wasInvalid);

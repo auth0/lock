@@ -3,7 +3,7 @@ import React from 'react';
 import UsernamePane from '../../field/username/username_pane';
 import PasswordPane from '../../field/password/password_pane';
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { swapCaptcha } from '../captcha';
+import { Flow, swapCaptcha } from '../captcha';
 import * as l from '../../core/index';
 
 export default class HRDPane extends React.Component {
@@ -12,7 +12,7 @@ export default class HRDPane extends React.Component {
 
     const captchaPane =
       l.captcha(model) && l.captcha(model).get('required') ? (
-        <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false, false, false)} />
+        <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), Flow.DEFAULT, false)} />
       ) : null;
 
     return (

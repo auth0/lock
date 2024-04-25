@@ -3,7 +3,7 @@ import React from 'react';
 import EmailPane from '../../field/email/email_pane';
 import * as l from '../../core/index';
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { swapCaptcha } from '../../connection/captcha';
+import { Flow, swapCaptcha } from '../../connection/captcha';
 
 export default class ResetPasswordPane extends React.Component {
   static propTypes = {
@@ -17,7 +17,7 @@ export default class ResetPasswordPane extends React.Component {
     const captchaPane =
       l.resetPasswordCaptcha(lock) &&
       l.resetPasswordCaptcha(lock).get('required') ? (
-        <CaptchaPane i18n={i18n} lock={lock} onReload={() => swapCaptcha(l.id(lock), false, true, false, null)} />
+        <CaptchaPane i18n={i18n} lock={lock} flow={Flow.PASSWORD_RESET} onReload={() => swapCaptcha(l.id(lock), Flow.PASSWORD_RESET, false, null)} />
       ) : null;
 
     return (
