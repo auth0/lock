@@ -5,7 +5,9 @@ export default {
         'Você atingiu o limite máximo de tentativas. Por favor aguarde antes de tentar novamente.',
       'lock.fallback': 'Sentimos muito, mas algo deu errado ao requisitar a mudança de senha.',
       enterprise_email:
-        "O domínio do seu e-mail faz parte de um provedor de identidade 'Enterprise'. Para redefinir sua senha, consulte seu administrador de segurança."
+        "O domínio do seu e-mail faz parte de um provedor de identidade 'Enterprise'. Para redefinir sua senha, consulte seu administrador de segurança.",
+      invalid_captcha: 'Resolva a questão do desafio para verificar se você não é um robô.',
+      invalid_recaptcha: 'Marque a caixa de seleção para verificar se você não é um robô.'
     },
     login: {
       blocked_user: 'O usuário está bloqueado.',

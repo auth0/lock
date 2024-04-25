@@ -8,7 +8,9 @@ export default {
         'Anda telah mencapai had percubaan penukaran kata laluan. Sila tunggu sebelum mencuba lagi.',
       'lock.fallback': 'Harap maaf, sesuatu berlaku semasa meminta penukaran kata laluan.',
       enterprise_email:
-        'Domain e-mel anda merupakan sebahagian daripada penyedia identiti Perusahaan. Untuk menetapkan semula kata laluan anda, sila berjumpa dengan pentadbir keselamatan anda.'
+        'Domain e-mel anda merupakan sebahagian daripada penyedia identiti Perusahaan. Untuk menetapkan semula kata laluan anda, sila berjumpa dengan pentadbir keselamatan anda.',
+      invalid_captcha: 'Selesaikan soalan cabaran untuk mengesahkan bahawa anda bukan robot.',
+      invalid_recaptcha: 'Pilih kotak pilihan untuk mengesahkan bahawa anda bukan robot.',
     },
     login: {
       blocked_user: 'Pengguna ini disekat.',

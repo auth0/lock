@@ -8,7 +8,9 @@ export default {
         'Du har nått gränsen för maximalt antal försök att ändra ditt lösenord. Vänta och försök sedan igen.',
       'lock.fallback': 'Något gick fel när vi försökte ändra ditt lösenord.',
       enterprise_email:
-        'Din e-post domän är en del av en företagsidentitetsleverantör. För att återställa ditt lösenord, se din säkerhetsadministratör.'
+        'Din e-post domän är en del av en företagsidentitetsleverantör. För att återställa ditt lösenord, se din säkerhetsadministratör.',
+      invalid_captcha: 'Lös utmaningsfrågan för att verifiera att du inte är en robot.',
+      invalid_recaptcha: 'Markera kryssrutan för att verifiera att du inte är en robot.'
     },
     login: {
       blocked_user: 'Användaren är spärrad.',

@@ -5,7 +5,9 @@ export default {
         'Se ha alcanzado el límite de intentos para restablecer su contraseña. Por favor, aguarde unos minutos.',
       'lock.fallback': 'Ocurrió un error al restablecer su contraseña.',
       enterprise_email:
-        'El dominio de su correo electrónico es parte de un proveedor de identidad Enterprise. Para restablecer su contraseña, consulte a su administrador de seguridad.'
+        'El dominio de su correo electrónico es parte de un proveedor de identidad Enterprise. Para restablecer su contraseña, consulte a su administrador de seguridad.',
+      invalid_captcha: 'El texto ingresado es incorrecto. <br /> Por favor, vuelva a intentarlo.',
+      invalid_recaptcha: 'Seleccione la casilla de verificación para verificar que no es un robot.'
     },
     login: {
       blocked_user: 'El usuario se encuentra bloqueado.',

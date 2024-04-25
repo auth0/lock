@@ -8,7 +8,9 @@ export default {
         'Şifrəni dəyişdirməyə cəhdlərin sayında maksimal həddə çatmısınız. Xahiş edirik bir daha cəhd etmədən əvvəl gözləyin.',
       'lock.fallback': 'Bağışlayın, şifrənizi dəyişdirmə sorğusu işlənərkən xəta baş verdi.',
       enterprise_email:
-        'E-poçtunuzun sahəsi korporativ kimlik təminatçısının bir hissəsidir. Şifrənizi yenidən qurmaq üçün təhlükəsizlik administratorunuzla əlaqə saxlayın.'
+        'E-poçtunuzun sahəsi korporativ kimlik təminatçısının bir hissəsidir. Şifrənizi yenidən qurmaq üçün təhlükəsizlik administratorunuzla əlaqə saxlayın.',
+      invalid_captcha: 'Daxil etdiyiniz mətn səhv idi. <br /> Lütfən, yenidən cəhd edin.',
+      invalid_recaptcha: 'Robot olmadığınızı təsdiqləmək üçün onay qutusunu seçin.'
     },
     login: {
       blocked_user: 'İstifadəçi bloklandı.',

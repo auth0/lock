@@ -9,7 +9,9 @@ export default {
       'lock.fallback':
         'Ispričavamo se, ali nešto je pošlo po zlu tijekom obrade zahtjeva za promjenom lozinke.',
       enterprise_email:
-        'Domena vaše e-pošte dio je davatelja identiteta tvrtke. Da biste poništili zaporku, obratite se svom administratoru za sigurnost.'
+        'Domena vaše e-pošte dio je davatelja identiteta tvrtke. Da biste poništili zaporku, obratite se svom administratoru za sigurnost.',
+      invalid_captcha: 'Riješite izazovno pitanje kako biste provjerili da niste robot.',
+      invalid_recaptcha: 'Označite potvrdni okvir da biste potvrdili da niste robot.'
     },
     login: {
       blocked_user: 'Korisnik je blokiran.',

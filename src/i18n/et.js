@@ -8,7 +8,9 @@ export default {
         'Sa oled liiga palju kordi üritanud salasõna vahetada. Palun oota enne uuesti proovimist.',
       'lock.fallback': 'Vabandame, midagi läks salasõna vahetamise sooviga valesti.',
       enterprise_email:
-        'Teie e-posti domeen kuulub ettevõtte identiteedi pakkuja juurde. Parooli lähtestamiseks lugege oma turvameedet.'
+        'Teie e-posti domeen kuulub ettevõtte identiteedi pakkuja juurde. Parooli lähtestamiseks lugege oma turvameedet.',
+      invalid_captcha: 'Lahendage väljakutseküsimus ja veenduge, et te pole robot.',
+      invalid_recaptcha: 'Valige märkeruut, et kontrollida, kas te pole robot.'
     },
     login: {
       blocked_user: 'Kasutaja on blokeeritud.',

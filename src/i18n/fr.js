@@ -9,7 +9,9 @@ export default {
       'lock.fallback':
         'Nous sommes désolés, un problème est survenu lors de la demande de changement de mot de passe.',
       enterprise_email:
-        "Le domaine de votre messagerie fait partie d'un fournisseur d'identité d'entreprise. Pour réinitialiser votre mot de passe, veuillez contacter votre administrateur de sécurité."
+        "Le domaine de votre messagerie fait partie d'un fournisseur d'identité d'entreprise. Pour réinitialiser votre mot de passe, veuillez contacter votre administrateur de sécurité.",
+      invalid_captcha: "Résolvez la question du défi pour vérifier que vous n'êtes pas un robot.",
+      invalid_recaptcha: "Cochez la case pour vérifier que vous n'êtes pas un robot."
     },
     login: {
       blocked_user: 'L’utilisateur est bloqué.',

@@ -8,7 +8,9 @@ export default {
         'Elérted a jelszóváltoztatási probálkozások engedélyezett számát. Kérjük, várj egy kicsit mielőtt újrapróbálnád!',
       'lock.fallback': 'Sajnáljuk, valami hiba történt a jelszóváltoztatás során.',
       enterprise_email:
-        'Az e-mail címed egy vállalati azonosítószolgáltatáshoz tartozik. A jelszó visszaállításában a biztonsági adminisztrátor tud segítséget nyújtani.'
+        'Az e-mail címed egy vállalati azonosítószolgáltatáshoz tartozik. A jelszó visszaállításában a biztonsági adminisztrátor tud segítséget nyújtani.',
+      invalid_captcha: 'Oldja meg a kihívást, és ellenőrizze, hogy nem robot.',
+      invalid_recaptcha: 'Jelölje be a jelölőnégyzetet annak ellenőrzéséhez, hogy nem robot vagy-e.'
     },
     login: {
       blocked_user: 'A felhasználó le van tiltva.',

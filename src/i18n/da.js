@@ -8,7 +8,9 @@ export default {
         'Du har nået grænsen for forsøg på at skifte adgangskode. Vent venligst før du prøver igen.',
       'lock.fallback': 'Vi beklager, men der skete en fejl i forespørgslen efter ny adgangskode.',
       enterprise_email:
-        'Dit e-mail-domæne er en del af en Enterprise Identity-udbyder. For at nulstille dit kodeord, se venligst din sikkerhedsadministrator.'
+        'Dit e-mail-domæne er en del af en Enterprise Identity-udbyder. For at nulstille dit kodeord, se venligst din sikkerhedsadministrator.',
+      invalid_captcha: 'Løs udfordringsspørgsmålet for at kontrollere, at du ikke er en robot.',
+      invalid_recaptcha: 'Marker afkrydsningsfeltet for at kontrollere, at du ikke er en robot.'
     },
     login: {
       blocked_user: 'Denne bruger er blokeret.',

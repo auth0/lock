@@ -6,7 +6,11 @@ export default {
       'lock.fallback':
         'Es tut uns leid, beim Zurücksetzen des Passworts ist ein Fehler aufgetreten.',
       enterprise_email:
-        'Die Domain Ihrer E-Mail-Adresse ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.'
+        'Die Domain Ihrer E-Mail-Adresse ist Teil eines Enterprise Identity Providers. Um Ihr Passwort zurückzusetzen, wenden Sie sich bitte an Ihren Sicherheitsadministrator.',
+      invalid_captcha:
+        'Lösen Sie die Herausforderungsfrage, um sicherzustellen, dass Sie kein Roboter sind.',
+      invalid_recaptcha:
+        'Aktivieren Sie das Kontrollkästchen, um sicherzustellen, dass Sie kein Roboter sind.'
     },
     login: {
       blocked_user: 'Der Benutzer wird blockiert.',

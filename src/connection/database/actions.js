@@ -285,9 +285,18 @@ function resetPasswordSuccess(id) {
 
 function resetPasswordError(id, error) {
   const m = read(getEntity, 'lock', id);
+  let key = error.code;
+  
+  if (error.code === 'invalid_captcha') {
+    const captchaConfig = l.resetPasswordCaptcha(m);
+    key = (
+      captchaConfig.get('provider') === 'recaptcha_v2' ||
+      captchaConfig.get('provider') === 'recaptcha_enterprise'
+    ) ? 'invalid_recaptcha' : 'invalid_captcha';
+  }
 
   const errorMessage =
-    i18n.html(m, ['error', 'forgotPassword', error.code]) ||
+    i18n.html(m, ['error', 'forgotPassword', key]) ||
     i18n.html(m, ['error', 'forgotPassword', 'lock.fallback']);
   
   swapCaptcha(id, Flow.PASSWORD_RESET, error.code === 'invalid_captcha', () => {

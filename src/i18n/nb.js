@@ -8,7 +8,9 @@ export default {
         'Du er midlertidig blokkert på grunn av for mange passord-endringsforsøk. Vent litt før du prøver igjen.',
       'lock.fallback': 'Beklager, noe gikk galt med forespørselen om passord endring.',
       enterprise_email:
-        'E-postdomenet ditt er en del av en Enterprise Identity-leverandør. For å tilbakestille passordet, vennligst se din sikkerhetsadministrator.'
+        'E-postdomenet ditt er en del av en Enterprise Identity-leverandør. For å tilbakestille passordet, vennligst se din sikkerhetsadministrator.',
+      invalid_captcha: 'Løs utfordringsspørsmålet for å bekrefte at du ikke er en robot.',
+      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.'
     },
     login: {
       blocked_user: 'Brukeren er blokkert.',

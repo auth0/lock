@@ -7,7 +7,9 @@ export default {
       too_many_requests: '嘗試登入次數太多，請稍後再試。',
       'lock.fallback': '對不起，修改密碼時發生錯誤。',
       enterprise_email:
-        '您的電子郵件域名是企業身份提供者的一部分。要重置您的密碼，請聯繫您的安全管理員。'
+        '您的電子郵件域名是企業身份提供者的一部分。要重置您的密碼，請聯繫您的安全管理員。',
+      invalid_captcha: '解決挑戰問題以驗證您不是機器人。',
+      invalid_recaptcha: '選中復選框以確認您不是機器人。'
     },
     login: {
       blocked_user: '帳號已被鎖定。',

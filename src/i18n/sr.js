@@ -8,7 +8,9 @@ export default {
         'Dostigli ste ograničenje broja pokušaja promene lozinke. Sačekajte pre nego što pokušate ponovo.',
       'lock.fallback': 'Žao nam je, došlo je do greške prilikom slanja zahteva za promenu lozinke.',
       enterprise_email:
-        'Domen vaše adrese e-pošte pripada kompanijskom dobavljaču identiteta. Da biste ponovo postavili lozinku, obratite se administratoru bezbednosti.'
+        'Domen vaše adrese e-pošte pripada kompanijskom dobavljaču identiteta. Da biste ponovo postavili lozinku, obratite se administratoru bezbednosti.',
+      invalid_captcha: 'Решите изазовно питање да бисте потврдили да нисте робот.',
+      invalid_recaptcha: 'Потврдите избор у пољу за потврду да нисте робот.'
     },
     login: {
       blocked_user: 'Korisnik je blokiran.',

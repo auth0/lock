@@ -8,7 +8,9 @@ export default {
         'Du har nådd grensa for antal forsøk på å endre passord. Ver venleg og vent ei stund før du prøvar på nytt',
       'lock.fallback': 'Beklagar, men noko giekk galt då du prøvde å endre passordet.',
       enterprise_email:
-        'E-postdomenet ditt er ein del av ein Enterprise Identity-leverandør. For å tilbakestille passordet, ver venleg og kontakt din sikkerheitsadministrator.'
+        'E-postdomenet ditt er ein del av ein Enterprise Identity-leverandør. For å tilbakestille passordet, ver venleg og kontakt din sikkerheitsadministrator.',
+      invalid_captcha: 'Løs utfordringsspørsmålet for å bekrefte at du ikke er en robot.',
+      invalid_recaptcha: 'Merk av i avmerkingsboksen for å bekrefte at du ikke er en robot.'
     },
     login: {
       blocked_user: 'Denne brukaren er blokkert',

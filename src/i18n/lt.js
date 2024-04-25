@@ -8,7 +8,9 @@ export default {
         'Jūs pasiekėte slaptažodžio keitimų limitą. Prašome palaukti, prieš bandant dar kartą.',
       'lock.fallback': 'Atsiprašome, nesklandumai keičiant slaptažodį.',
       enterprise_email:
-        'Jūsų el.pašto domenas yra Enterprise tapatybės teikėjo dalis. Norėdami iš naujo nustatyti slaptažodį, apsilankykite pas savo saugumo administratorių.'
+        'Jūsų el.pašto domenas yra Enterprise tapatybės teikėjo dalis. Norėdami iš naujo nustatyti slaptažodį, apsilankykite pas savo saugumo administratorių.',
+      invalid_captcha: 'Išspręskite iššūkio klausimą ir įsitikinkite, kad nesate robotas.',
+      invalid_recaptcha: 'Pažymėkite žymimąjį laukelį, kad patikrintumėte, ar nesate robotas.'
     },
     login: {
       blocked_user: 'Vartotojas užblokuotas.',

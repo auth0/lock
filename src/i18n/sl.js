@@ -8,7 +8,9 @@ export default {
         'Dosegli ste omejitev števila poskusov spremembe gesla. Pred ponovnim poskusom morate počakati.',
       'lock.fallback': 'Žal je prišlo do napake pri zahtevi za spremembo gesla.',
       enterprise_email:
-        'Domena vašega e-poštnega naslova je del ponudnika identitete podjetja. Če želite ponastaviti geslo, obiščite svojega skrbnika za varnost.'
+        'Domena vašega e-poštnega naslova je del ponudnika identitete podjetja. Če želite ponastaviti geslo, obiščite svojega skrbnika za varnost.',
+      invalid_captcha: 'Rešite izzivno vprašanje in preverite, ali niste robot.',
+      invalid_recaptcha: 'Izberite potrditveno polje, da preverite, da niste robot.'
     },
     login: {
       blocked_user: 'Uporabnik je blokiran.',
