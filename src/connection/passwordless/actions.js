@@ -35,7 +35,8 @@ function getErrorMessage(m, id, error) {
       captchaConfig.get('provider') === 'recaptcha_enterprise' ||
       captchaConfig.get('provider') === 'hcaptcha' ||
       captchaConfig.get('provider') === 'auth0_v2' ||
-      captchaConfig.get('provider') === 'friendly_captcha'
+      captchaConfig.get('provider') === 'friendly_captcha' ||
+      captchaConfig.get('provider') === 'arkose'
     ) ? 'invalid_recaptcha' : 'invalid_captcha';
   }
 
