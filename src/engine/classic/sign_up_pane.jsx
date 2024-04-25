@@ -67,7 +67,7 @@ export default class SignUpPane extends React.Component {
       l.captcha(model) &&
       l.captcha(model).get('required') &&
       (isHRDDomain(model, databaseUsernameValue(model)) || !sso) ? (
-        <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false, false)} />
+        <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false, false, false)} />
       ) : null;
 
     const passwordPane = !onlyEmail && (

@@ -39,7 +39,7 @@ const Component = ({ i18n, model }) => {
 
   const captchaPane = l.passwordlessCaptcha(model) && l.passwordlessCaptcha(model).get('required')
     ? (
-      <CaptchaPane i18n={i18n} lock={model} isPasswordless={true} onReload={() => swapCaptcha(l.id(model), true, false)} />
+      <CaptchaPane i18n={i18n} lock={model} isPasswordless={true} onReload={() => swapCaptcha(l.id(model), true, false, false)} />
     ) : null;
 
   const separator = social && phoneNumber ? <PaneSeparator /> : null;

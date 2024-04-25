@@ -8,12 +8,13 @@ import { swap, updateEntity } from '../../store/index';
 import * as captchaField from '../captcha';
 import { getFieldValue, isFieldVisiblyInvalid } from '../index';
 import { ThirdPartyCaptcha, isThirdPartyCaptcha } from './third_party_captcha';
+import { getCaptchaConfig } from '../../connection/captcha';
 
 export default class CaptchaPane extends React.Component {
   render() {
-    const { i18n, lock, onReload, isPasswordless } = this.props;
+    const { i18n, lock, onReload, isPasswordless, isPasswordReset } = this.props;
     const lockId = l.id(lock);
-    const captcha = isPasswordless ? l.passwordlessCaptcha(lock) : l.captcha(lock);
+    const captcha = getCaptchaConfig(lock, isPasswordless, isPasswordReset);
     const value = getFieldValue(lock, 'captcha');
     const isValid = !isFieldVisiblyInvalid(lock, 'captcha');
     const provider = captcha.get('provider');
@@ -72,7 +73,9 @@ CaptchaPane.propTypes = {
   i18n: PropTypes.object.isRequired,
   lock: PropTypes.object.isRequired,
   error: PropTypes.bool,
-  onReload: PropTypes.func.isRequired
+  onReload: PropTypes.func.isRequired,
+  isPasswordless: PropTypes.bool,
+  isPasswordReset: PropTypes.bool
 };
 
 CaptchaPane.defaultProps = {
