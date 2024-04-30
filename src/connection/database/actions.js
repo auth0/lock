@@ -288,7 +288,7 @@ function resetPasswordError(id, error) {
   let key = error.code;
   
   if (error.code === 'invalid_captcha') {
-    const captchaConfig = l.resetPasswordCaptcha(m);
+    const captchaConfig = l.passwordResetCaptcha(m);
     key = (
       captchaConfig.get('provider') === 'recaptcha_v2' ||
       captchaConfig.get('provider') === 'recaptcha_enterprise'

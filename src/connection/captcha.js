@@ -18,7 +18,7 @@ export const Flow = Object.freeze({
  */
 export function getCaptchaConfig(m, flow) {
   if (flow === Flow.PASSWORD_RESET) {
-    return l.resetPasswordCaptcha(m);
+    return l.passwordResetCaptcha(m);
   } else if (flow === Flow.PASSWORDLESS) {
     return l.passwordlessCaptcha(m);
   } else {
@@ -93,9 +93,9 @@ export function setCaptchaParams(m, params, flow, fields) {
  */
 export function swapCaptcha(id, flow, wasInvalid, next) {
   if (flow === Flow.PASSWORD_RESET) {
-    return webApi.getResetPasswordChallenge(id, (err, newCaptcha) => {
+    return webApi.getPasswordResetChallenge(id, (err, newCaptcha) => {
       if (!err && newCaptcha) {
-        swap(updateEntity, 'lock', id, l.setResetPasswordCaptcha, newCaptcha, wasInvalid);
+        swap(updateEntity, 'lock', id, l.setPasswordResetCaptcha, newCaptcha, wasInvalid);
       }
       if (next) {
         next();

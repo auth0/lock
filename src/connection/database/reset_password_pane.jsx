@@ -15,8 +15,8 @@ export default class ResetPasswordPane extends React.Component {
     const { emailInputPlaceholder, header, i18n, lock } = this.props;
 
     const captchaPane =
-      l.resetPasswordCaptcha(lock) &&
-      l.resetPasswordCaptcha(lock).get('required') ? (
+      l.passwordResetCaptcha(lock) &&
+      l.passwordResetCaptcha(lock).get('required') ? (
         <CaptchaPane i18n={i18n} lock={lock} flow={Flow.PASSWORD_RESET} onReload={() => swapCaptcha(l.id(lock), Flow.PASSWORD_RESET, false, null)} />
       ) : null;
 

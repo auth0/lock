@@ -426,9 +426,9 @@ export function setPasswordlessCaptcha(m, value, wasInvalid) {
   return set(m, 'passwordlessCaptcha', Immutable.fromJS(value));
 }
 
-export function setResetPasswordCaptcha(m, value, wasInvalid) {
+export function setPasswordResetCaptcha(m, value, wasInvalid) {
   m = captchaField.reset(m, wasInvalid);
-  return set(m, 'resetPasswordCaptcha', Immutable.fromJS(value));
+  return set(m, 'passwordResetCaptcha', Immutable.fromJS(value));
 }
 
 export function captcha(m) {
@@ -439,8 +439,8 @@ export function passwordlessCaptcha(m) {
   return get(m, 'passwordlessCaptcha');
 }
 
-export function resetPasswordCaptcha(m) {
-  return get(m, 'resetPasswordCaptcha');
+export function passwordResetCaptcha(m) {
+  return get(m, 'passwordResetCaptcha');
 }
 
 export function prefill(m) {
