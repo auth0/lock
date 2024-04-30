@@ -8,7 +8,10 @@ export default {
         'Anda telah mencapai batas upaya perubahan kata sandi. Harap tunggu sebelum mencoba lagi.',
       'lock.fallback': 'Maaf, terjadi kesalahan saat meminta perubahan kata sandi.',
       enterprise_email:
-        'Domain email Anda adalah bagian dari penyedia identitas Perusahaan. Untuk mengatur ulang kata sandi, harap lihat administrator keamanan Anda.'
+        'Domain email Anda adalah bagian dari penyedia identitas Perusahaan. Untuk mengatur ulang kata sandi, harap lihat administrator keamanan Anda.',
+      invalid_captcha: 
+        'Selesaikan pertanyaan tantangan untuk memverifikasi bahwa Anda bukan robot.',
+      invalid_recaptcha: 'Pilih kotak centang untuk memverifikasi bahwa Anda bukan robot.'
     },
     login: {
       blocked_user: 'Pengguna diblokir.',

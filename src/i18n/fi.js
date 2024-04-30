@@ -9,7 +9,9 @@ export default {
       'lock.fallback':
         'Olemme pahoillamme, mutta jotain meni vikaan kun salasanaa yritettiin vaihtaa.',
       enterprise_email:
-        'Sähköpostisi verkkotunnus on osa yrityspalvelun tarjoajaa. Voit palauttaa salasanasi turva-järjestelmänvalvojalta.'
+        'Sähköpostisi verkkotunnus on osa yrityspalvelun tarjoajaa. Voit palauttaa salasanasi turva-järjestelmänvalvojalta.',
+      invalid_captcha: 'Ratkaise haastekysymys varmistaaksesi, että et ole robotti.',
+      invalid_recaptcha: 'Valitse valintaruutu varmistaaksesi, että et ole robotti.'
     },
     login: {
       blocked_user: 'Käyttäjä on estetty.',

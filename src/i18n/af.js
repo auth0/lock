@@ -7,7 +7,9 @@ export default {
       too_many_requests: 'Jammer, jy het limiet bereik. Probeer asseblief weer later.',
       'lock.fallback': 'Jammer, iets het verkeerd gegaan terwyl jy wagwoord verander het.',
       enterprise_email:
-        "Jou e-pos se domein is deel van 'n Enterprise Identity provider. Om u wagwoord terug te stel, raadpleeg asseblief u sekuriteitsadministrateur."
+        "Jou e-pos se domein is deel van 'n Enterprise Identity provider. Om u wagwoord terug te stel, raadpleeg asseblief u sekuriteitsadministrateur.",
+      invalid_captcha: "Los die uitdagingsvraag om te verifieer dat u nie 'n robot is nie.",
+      invalid_recaptcha: "Kies die merkblokkie om te verifieer dat u nie 'n robot is nie."
     },
     login: {
       blocked_user: 'Die gebruiker is geblok.',

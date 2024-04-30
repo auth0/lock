@@ -8,7 +8,9 @@ export default {
         'Ви досягли граничної кількості запитів на відновлення паролю. Будь ласка, почекайте перед повторною спробою.',
       'lock.fallback': 'Йой! Виникла непередбачувана помилка. Перепрошуємо.',
       enterprise_email:
-        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator."
+        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator.",
+      invalid_captcha: 'Вирішіть складне питання, щоб переконатися, що ви не робот.',
+      invalid_recaptcha: 'Установіть прапорець, щоб переконатися, що ви не робот.'
     },
     login: {
       blocked_user: 'Користувач заблокований.',

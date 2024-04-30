@@ -9,7 +9,9 @@ export default {
       'lock.fallback':
         'Onze excuses, er is iets fout gegaan bij de de aanvraag voor een wachtwoord wijziging.',
       enterprise_email:
-        'Het domein van uw e-mail maakt deel uit van een Enterprise-identiteitsprovider. Raadpleeg uw beveiligingsbeheerder om uw wachtwoord opnieuw in te stellen.'
+        'Het domein van uw e-mail maakt deel uit van een Enterprise-identiteitsprovider. Raadpleeg uw beveiligingsbeheerder om uw wachtwoord opnieuw in te stellen.',
+      invalid_captcha: 'Los de vraag op om te verifiëren dat u geen robot bent.',
+      invalid_recaptcha: 'Selecteer het vakje om te verifiëren dat u geen robot bent.'
     },
     login: {
       blocked_user: 'De gebruiker is geblokkeerd.',

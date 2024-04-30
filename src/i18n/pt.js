@@ -8,7 +8,9 @@ export default {
         'Foi atingido o limite de tentativas de alteração da palavra-passe. Aguarde antes de tentar novamente.',
       'lock.fallback': 'Lamentamos, ocorreu um problema ao solicitar a alteração da palavra-passe.',
       enterprise_email:
-        'O domínio do seu endereço eletrónico é parte de um fornecedor de identidade empresarial. Para repor a sua palavra-passe, consulte o seu administrador de segurança.'
+        'O domínio do seu endereço eletrónico é parte de um fornecedor de identidade empresarial. Para repor a sua palavra-passe, consulte o seu administrador de segurança.',
+      invalid_captcha: 'Resolva a questão do desafio para verificar se você não é um robô.',
+      invalid_recaptcha: 'Marque a caixa de seleção para verificar se você não é um robô.'
     },
     login: {
       blocked_user: 'O utilizador está bloqueado.',

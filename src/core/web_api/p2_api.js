@@ -199,6 +199,10 @@ class Auth0APIClient {
     return this.client.client.passwordless.getChallenge(...params);
   }
 
+  getPasswordResetChallenge(...params) {
+    return this.client.client.dbConnection.getPasswordResetChallenge(...params);
+  }
+
   getUserCountry(cb) {
     return this.client.client.getUserCountry(cb);
   }

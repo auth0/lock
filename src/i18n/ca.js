@@ -8,7 +8,9 @@ export default {
         "S'han exhaurit els intents per restablir la contrasenya. Espereu una estona i intenteu-ho de nou.",
       'lock.fallback': 'Hi ha hagut un error en canviar la contrasenya.',
       enterprise_email:
-        "El domini del vostre correu electrònic forma part d'un proveïdor d'identitat empresarial. Per restablir la contrasenya, consulteu l'administrador de seguretat."
+        "El domini del vostre correu electrònic forma part d'un proveïdor d'identitat empresarial. Per restablir la contrasenya, consulteu l'administrador de seguretat.",
+      invalid_captcha: 'Resoleu la pregunta de desafiament per verificar que no sou un robot.',
+      invalid_recaptcha: 'Seleccioneu la casella de verificació per verificar que no sou un robot.'
     },
     login: {
       blocked_user: "L'usuari està bloquejat.",

@@ -16,7 +16,7 @@ import {
 } from './index';
 import { phoneNumberWithDiallingCode } from '../../field/phone_number';
 import * as i18n from '../../i18n';
-import { setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
+import { Flow, setCaptchaParams, showMissingCaptcha, swapCaptcha } from '../captcha';
 
 function getErrorMessage(m, id, error) {
   let key = error.error;
@@ -35,7 +35,8 @@ function getErrorMessage(m, id, error) {
       captchaConfig.get('provider') === 'recaptcha_enterprise' ||
       captchaConfig.get('provider') === 'hcaptcha' ||
       captchaConfig.get('provider') === 'auth0_v2' ||
-      captchaConfig.get('provider') === 'friendly_captcha'
+      captchaConfig.get('provider') === 'friendly_captcha' ||
+      captchaConfig.get('provider') === 'arkose'
     ) ? 'invalid_recaptcha' : 'invalid_captcha';
   }
 
@@ -47,7 +48,7 @@ function getErrorMessage(m, id, error) {
 
 function swapCaptchaAfterError(id, error){
   const wasCaptchaInvalid = error && error.code === 'invalid_captcha';
-  swapCaptcha(id, true, wasCaptchaInvalid);
+  swapCaptcha(id, Flow.PASSWORDLESS, wasCaptchaInvalid);
 }
 
 export function requestPasswordlessEmail(id) {
@@ -102,7 +103,7 @@ function sendEmail(m, id, successFn, errorFn) {
   if (isSendLink(m) && !l.auth.params(m).isEmpty()) {
     params.authParams = l.auth.params(m).toJS();
   }
-  const isCaptchaValid = setCaptchaParams(m, params, true, []);
+  const isCaptchaValid = setCaptchaParams(m, params, Flow.PASSWORDLESS, []);
 
   if (!isCaptchaValid) {
     return showMissingCaptcha(m, id, true);
@@ -124,7 +125,7 @@ export function sendSMS(id) {
       phoneNumber: phoneNumberWithDiallingCode(m),
       send: send(m)
     };
-    const isCaptchaValid = setCaptchaParams(m, params, true, []);
+    const isCaptchaValid = setCaptchaParams(m, params, Flow.PASSWORDLESS, []);
     if (!isCaptchaValid) {
       return showMissingCaptcha(m, id, true);
     }
@@ -187,7 +188,7 @@ export function logIn(id) {
 
 export function restart(id) {
   swap(updateEntity, 'lock', id, restartPasswordless);
-  swapCaptcha(id, true, false);
+  swapCaptcha(id, Flow.PASSWORDLESS, false);
 }
 
 export function toggleTermsAcceptance(id) {

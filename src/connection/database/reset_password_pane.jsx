@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import EmailPane from '../../field/email/email_pane';
 import * as l from '../../core/index';
+import CaptchaPane from '../../field/captcha/captcha_pane';
+import { Flow, swapCaptcha } from '../../connection/captcha';
 
 export default class ResetPasswordPane extends React.Component {
   static propTypes = {
@@ -12,6 +14,12 @@ export default class ResetPasswordPane extends React.Component {
   render() {
     const { emailInputPlaceholder, header, i18n, lock } = this.props;
 
+    const captchaPane =
+      l.passwordResetCaptcha(lock) &&
+      l.passwordResetCaptcha(lock).get('required') ? (
+        <CaptchaPane i18n={i18n} lock={lock} flow={Flow.PASSWORD_RESET} onReload={() => swapCaptcha(l.id(lock), Flow.PASSWORD_RESET, false, null)} />
+      ) : null;
+
     return (
       <div>
         {header}
@@ -21,6 +29,7 @@ export default class ResetPasswordPane extends React.Component {
           placeholder={emailInputPlaceholder}
           strictValidation={false}
         />
+        {captchaPane}
       </div>
     );
   }

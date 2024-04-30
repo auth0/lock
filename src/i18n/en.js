@@ -5,7 +5,9 @@ export default {
         'You have reached the limit on password change attempts. Please wait before trying again.',
       'lock.fallback': "We're sorry, something went wrong when requesting the password change.",
       enterprise_email:
-        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator."
+        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator.",
+      invalid_captcha: 'Solve the challenge question to verify you are not a robot.',
+      invalid_recaptcha: 'Select the checkbox to verify you are not a robot.'
     },
     login: {
       blocked_user: 'The user is blocked.',

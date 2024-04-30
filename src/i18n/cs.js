@@ -8,7 +8,9 @@ export default {
         'Dosáhli jste limitu počtu pokusů o změnu hesla. Před dalším pokusem prosím počkejte.',
       'lock.fallback': 'Je nám líto, ale něco se pokazilo při žádosti o změnu hesla.',
       enterprise_email:
-        'Doména vašeho e-mailu je součástí poskytovatele podnikové identity. Chcete-li obnovit heslo, obraťte se na svého správce zabezpečení.'
+        'Doména vašeho e-mailu je součástí poskytovatele podnikové identity. Chcete-li obnovit heslo, obraťte se na svého správce zabezpečení.',
+      invalid_captcha: 'Vyřešte úlohu, abychom ověřili, že nejste robot.',
+      invalid_recaptcha: 'Zaškrtněte políčko, abychom ověřili, že nejste robot.'        
     },
     login: {
       blocked_user: 'Uživatel je blokován.',

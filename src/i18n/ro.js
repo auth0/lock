@@ -8,7 +8,9 @@ export default {
         'Ai depășit limita de introducere a parolei. Avem rugămintea să aștepți până la următoarea încercare.',
       'lock.fallback': 'Ne pare rău, a apărut o eroare în procesul de recuperare a parolei.',
       enterprise_email:
-        'Domeniul e-mailului dvs. face parte dintr-un furnizor de identitate de tip Enterprise. Pentru a reseta parola, consultați administratorul de securitate.'
+        'Domeniul e-mailului dvs. face parte dintr-un furnizor de identitate de tip Enterprise. Pentru a reseta parola, consultați administratorul de securitate.',
+      invalid_captcha: 'Rezolvați întrebarea pentru a verifica dacă nu sunteți un robot.',
+      invalid_recaptcha: 'Selectați caseta pentru a verifica dacă nu sunteți un robot.'
     },
     login: {
       blocked_user: 'Utilizatorul este blocat.',

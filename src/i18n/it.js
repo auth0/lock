@@ -6,7 +6,9 @@ export default {
       'lock.fallback':
         'Ci dispiace, qualcosa è andato storto durante la richiesta di modifica della password.',
       enterprise_email:
-        "Il dominio della tua email fa parte di un provider di identità aziendale. Per reimpostare la password, consultare l'amministratore della sicurezza."
+        "Il dominio della tua email fa parte di un provider di identità aziendale. Per reimpostare la password, consultare l'amministratore della sicurezza.",
+      invalid_captcha: 'Risolvi la domanda di verifica per verificare che non sei un robot.',
+      invalid_recaptcha: 'Seleziona la casella di controllo per verificare che non sei un robot.'
     },
     login: {
       blocked_user: "L'utente è bloccato.",

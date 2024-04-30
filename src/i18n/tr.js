@@ -9,7 +9,9 @@ export default {
       'lock.fallback':
         'Özür dileriz, şifre değiştirme isteğiniz gerçekleştirilirken bir hata oluştu.',
       enterprise_email:
-        'E-postanızın alanı, bir kurumsal kimlik sağlayıcısının parçasıdır. Parolanızı sıfırlamak için lütfen güvenlik yöneticinize başvurun.'
+        'E-postanızın alanı, bir kurumsal kimlik sağlayıcısının parçasıdır. Parolanızı sıfırlamak için lütfen güvenlik yöneticinize başvurun.',
+      invalid_captcha: 'Robot olmadığınızı doğrulamak için meydan okuma sorusunu çözün.',
+      invalid_recaptcha: 'Robot olmadığınızı doğrulamak için onay kutusunu seçin.'
     },
     login: {
       blocked_user: 'Kullanıcı engellendi.',

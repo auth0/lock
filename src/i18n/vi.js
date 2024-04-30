@@ -8,7 +8,9 @@ export default {
         'Bạn đã sử dụng tối đa số lần đổi mật khẩu được cho phép. Vui lòng thử lại sau.',
       'lock.fallback': 'Đã có lỗi xảy ra trong lúc thay đổi mật khẩu, chúng tôi rất lấy làm tiếc.',
       enterprise_email:
-        'Tên miền email của bạn là một phần của một nhà cung cấp nhận dạng doanh nghiệp. Để đặt lại mật khẩu của bạn, vui lòng xem quản trị viên bảo mật của bạn.'
+        'Tên miền email của bạn là một phần của một nhà cung cấp nhận dạng doanh nghiệp. Để đặt lại mật khẩu của bạn, vui lòng xem quản trị viên bảo mật của bạn.',
+      invalid_captcha: 'Giải quyết câu hỏi thử thách để xác minh bạn không phải là robot.',
+      invalid_recaptcha: 'Chọn hộp kiểm để xác minh bạn không phải là robot.'
     },
     login: {
       blocked_user: 'Tài khoản đã bị khóa.',

@@ -8,7 +8,9 @@ export default {
         'Jūs sasniedzāt atļauto paroles maiņas mēģinājumu skaitu. Lūdzu, uzgaidiet, pirms mēģinat vēlreiz.',
       'lock.fallback': 'Diemžēl, pieprasot paroles maiņu, radās problēma.',
       enterprise_email:
-        'Jūsu e-pasta domēns ir daļa no uzņēmuma identitātes nodrošinātāja. Lai atiestatītu paroli, lūdzu, sazinieties ar administratoru.'
+        'Jūsu e-pasta domēns ir daļa no uzņēmuma identitātes nodrošinātāja. Lai atiestatītu paroli, lūdzu, sazinieties ar administratoru.',
+      invalid_captcha: 'Atrisiniet izaicinājuma jautājumu, lai pārliecinātos, ka neesat robots.',
+      invalid_recaptcha: 'Atzīmējiet izvēles rūtiņu, lai pārliecinātos, ka neesat robots.'
     },
     login: {
       blocked_user: 'Lietotājs ir bloķēts.',

@@ -426,12 +426,21 @@ export function setPasswordlessCaptcha(m, value, wasInvalid) {
   return set(m, 'passwordlessCaptcha', Immutable.fromJS(value));
 }
 
+export function setPasswordResetCaptcha(m, value, wasInvalid) {
+  m = captchaField.reset(m, wasInvalid);
+  return set(m, 'passwordResetCaptcha', Immutable.fromJS(value));
+}
+
 export function captcha(m) {
   return get(m, 'captcha');
 }
 
 export function passwordlessCaptcha(m) {
   return get(m, 'passwordlessCaptcha');
+}
+
+export function passwordResetCaptcha(m) {
+  return get(m, 'passwordResetCaptcha');
 }
 
 export function prefill(m) {
@@ -585,7 +594,8 @@ export function loginErrorMessage(m, error, type) {
         currentCaptcha.get('provider') === 'recaptcha_enterprise' ||
         currentCaptcha.get('provider') === 'hcaptcha' ||
         currentCaptcha.get('provider') === 'auth0_v2' ||
-        captchaConfig.get('provider') === 'friendly_captcha'
+        currentCaptcha.get('provider') === 'friendly_captcha' ||
+        currentCaptcha.get('provider') === 'arkose'
       )) {
       code = 'invalid_recaptcha';
     }

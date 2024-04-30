@@ -3,7 +3,7 @@ import Screen from '../../core/screen';
 import EmailPane from '../../field/email/email_pane';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import CaptchaPane from '../../field/captcha/captcha_pane';
-import { swapCaptcha } from '../../connection/captcha';
+import { Flow, swapCaptcha } from '../../connection/captcha';
 import PaneSeparator from '../../core/pane_separator';
 import { mustAcceptTerms, termsAccepted, showTerms } from '../../connection/passwordless/index';
 import { toggleTermsAcceptance } from '../../connection/passwordless/actions';
@@ -49,7 +49,7 @@ const Component = ({ i18n, model }) => {
 
   const captchaPane = l.passwordlessCaptcha(model) && l.passwordlessCaptcha(model).get('required')
     ? (
-      <CaptchaPane i18n={i18n} lock={model} isPasswordless={true} onReload={() => swapCaptcha(l.id(model), true, false)} />
+      <CaptchaPane i18n={i18n} lock={model} flow={Flow.PASSWORDLESS} onReload={() => swapCaptcha(l.id(model), Flow.PASSWORDLESS, false)} />
     ) : null;
 
   return (

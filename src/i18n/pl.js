@@ -8,7 +8,9 @@ export default {
         'Przekroczyłeś limit prób zmiany hasła. Odczekaj chwilę, zanim spróbujesz ponownie.',
       'lock.fallback': 'Przykro nam, coś poszło nie tak podczas próby zmiany hasła.',
       enterprise_email:
-        'Domena Twojego adresu e-mail jest częścią dostawcy tożsamości korporacyjnej. Aby zresetować hasło, skontaktuj się z administratorem bezpieczeństwa.'
+        'Domena Twojego adresu e-mail jest częścią dostawcy tożsamości korporacyjnej. Aby zresetować hasło, skontaktuj się z administratorem bezpieczeństwa.',
+      invalid_captcha: 'Rozwiąż pytanie kontrolne, aby sprawdzić, czy nie jesteś robotem.',
+      invalid_recaptcha: 'Zaznacz pole wyboru, aby potwierdzić, że nie jesteś robotem.'
     },
     login: {
       blocked_user: 'Ten użytkownik jest zablokowany.',
