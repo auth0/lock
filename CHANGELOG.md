@@ -1,5 +1,10 @@
 # Change Log
 
+## [v12.5.0](https://github.com/auth0/lock/tree/v12.5.0) (2024-04-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.4.0...v12.5.0)
+
+- Support captchas in reset password flow [\#2547](https://github.com/auth0/lock/pull/2547) ([srijonsaha](https://github.com/srijonsaha))
+
 ## [v12.4.0](https://github.com/auth0/lock/tree/v12.4.0) (2024-01-04)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.3.1...v12.4.0)
 
