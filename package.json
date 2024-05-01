@@ -111,7 +111,7 @@
     "puppeteer": "^10.1.0",
     "react-test-renderer": "^18.2.0",
     "sinon": "^1.15.4",
-    "stylus": "^0.62.0",
+    "stylus": "^0.63.0",
     "stylus-loader": "^3.0.2",
     "tmp": "^0.2.1",
     "unminified-webpack-plugin": "^3.0.0",
