@@ -262,12 +262,14 @@ export function resetPassword(id) {
 function resetPasswordSuccess(id) {
   const m = read(getEntity, 'lock', id);
   if (hasScreen(m, 'login')) {
-    swap(
-      updateEntity,
-      'lock',
-      id,
-      m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
-    );
+    swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+      swap(
+          updateEntity,
+          'lock',
+          id,
+          m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
+      );
+    });
 
     // TODO: should be handled by box
     setTimeout(() => {
@@ -278,7 +280,9 @@ function resetPasswordSuccess(id) {
     if (l.ui.autoclose(m)) {
       closeLock(id);
     } else {
-      swap(updateEntity, 'lock', id, m => l.setSubmitting(m, false).set('passwordResetted', true));
+      swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+        swap(updateEntity, 'lock', id, m => l.setSubmitting(m, false).set('passwordResetted', true));
+      });
     }
   }
 }
