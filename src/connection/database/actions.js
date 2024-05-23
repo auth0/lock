@@ -305,15 +305,21 @@ function resetPasswordError(id, error) {
 }
 
 export function showLoginActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'login', fields);
+  swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+    swap(updateEntity, 'lock', id, setScreen, 'login', fields);
+  });
 }
 
 export function showSignUpActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+  swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+    swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+  });
 }
 
 export function showResetPasswordActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
+  swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+    swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
+  });
 }
 
 export function cancelResetPassword(id) {
