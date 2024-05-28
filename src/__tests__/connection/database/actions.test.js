@@ -7,7 +7,6 @@ import {
 } from '../../../connection/database/actions';
 import { swap, setEntity } from '../../../store';
 import { swapCaptcha } from "../../../connection/captcha";
-import { hasScreen } from "../../../connection/database";
 
 const webApiMock = () => require('core/web_api');
 const coreActionsMock = () => require('core/actions');
@@ -228,191 +227,78 @@ describe('database/actions.js', () => {
     });
   });
 
-  describe('resetPasswordSuccess', () => {
-    it('runs swap CAPTCHA', () => {
-      const id = 2;
-      const m = Immutable.fromJS({
-        field: {
-          email: {
-            value: 'test@email.com'
-          },
-          password: {
-            value: 'testpass'
-          },
-          family_name: {
-            value: 'test-family-name'
-          },
-          given_name: {
-            value: 'test-given-name'
-          },
-          name: {
-            value: 'test-name'
-          },
-          nickname: {
-            value: 'test-nickname'
-          },
-          picture: {
-            value: 'test-pic'
-          },
-          other_prop: {
-            value: 'test-other'
-          }
+  describe('exported functions', () => {
+    const id = 2;
+    const m = Immutable.fromJS({
+      field: {
+        email: {
+          value: 'test@email.com'
         },
-        database: {
-          additionalSignUpFields: [
-            { name: 'family_name', storage: 'root' },
-            { name: 'given_name', storage: 'root' },
-            { name: 'name', storage: 'root' },
-            { name: 'nickname', storage: 'root' },
-            { name: 'picture', storage: 'root' },
-            { name: 'other_prop' }
-          ]
+        password: {
+          value: 'testpass'
         },
-      });
-      swap(setEntity, 'lock', id, m);
-      resetPasswordSuccess(id);
-      expect(swapCaptcha.mock.calls.length).toEqual(1);
+        family_name: {
+          value: 'test-family-name'
+        },
+        given_name: {
+          value: 'test-given-name'
+        },
+        name: {
+          value: 'test-name'
+        },
+        nickname: {
+          value: 'test-nickname'
+        },
+        picture: {
+          value: 'test-pic'
+        },
+        other_prop: {
+          value: 'test-other'
+        }
+      },
+      database: {
+        additionalSignUpFields: [
+          { name: 'family_name', storage: 'root' },
+          { name: 'given_name', storage: 'root' },
+          { name: 'name', storage: 'root' },
+          { name: 'nickname', storage: 'root' },
+          { name: 'picture', storage: 'root' },
+          { name: 'other_prop' }
+        ]
+      },
     });
-  });
 
-  describe('showResetPasswordActivity', () => {
-    it('runs swap CAPTCHA', () => {
-      const id = 2;
-      const m = Immutable.fromJS({
-        field: {
-          email: {
-            value: 'test@email.com'
-          },
-          password: {
-            value: 'testpass'
-          },
-          family_name: {
-            value: 'test-family-name'
-          },
-          given_name: {
-            value: 'test-given-name'
-          },
-          name: {
-            value: 'test-name'
-          },
-          nickname: {
-            value: 'test-nickname'
-          },
-          picture: {
-            value: 'test-pic'
-          },
-          other_prop: {
-            value: 'test-other'
-          }
-        },
-        database: {
-          additionalSignUpFields: [
-            { name: 'family_name', storage: 'root' },
-            { name: 'given_name', storage: 'root' },
-            { name: 'name', storage: 'root' },
-            { name: 'nickname', storage: 'root' },
-            { name: 'picture', storage: 'root' },
-            { name: 'other_prop' }
-          ]
-        },
+    describe('resetPasswordSuccess', () => {
+      it('runs swap CAPTCHA', () => {
+        swap(setEntity, 'lock', id, m);
+        resetPasswordSuccess(id);
+        expect(swapCaptcha.mock.calls.length).toEqual(1);
       });
-      swap(setEntity, 'lock', id, m);
-      showResetPasswordActivity(id);
-      expect(swapCaptcha.mock.calls.length).toEqual(1);
     });
-  });
 
-  describe('showLoginActivity', () => {
-    it('runs swap CAPTCHA', () => {
-      const id = 2;
-      const m = Immutable.fromJS({
-        field: {
-          email: {
-            value: 'test@email.com'
-          },
-          password: {
-            value: 'testpass'
-          },
-          family_name: {
-            value: 'test-family-name'
-          },
-          given_name: {
-            value: 'test-given-name'
-          },
-          name: {
-            value: 'test-name'
-          },
-          nickname: {
-            value: 'test-nickname'
-          },
-          picture: {
-            value: 'test-pic'
-          },
-          other_prop: {
-            value: 'test-other'
-          }
-        },
-        database: {
-          additionalSignUpFields: [
-            { name: 'family_name', storage: 'root' },
-            { name: 'given_name', storage: 'root' },
-            { name: 'name', storage: 'root' },
-            { name: 'nickname', storage: 'root' },
-            { name: 'picture', storage: 'root' },
-            { name: 'other_prop' }
-          ]
-        },
+    describe('showResetPasswordActivity', () => {
+      it('runs swap CAPTCHA', () => {
+        swap(setEntity, 'lock', id, m);
+        showResetPasswordActivity(id);
+        expect(swapCaptcha.mock.calls.length).toEqual(1);
       });
-      swap(setEntity, 'lock', id, m);
-      showLoginActivity(id);
-      expect(swapCaptcha.mock.calls.length).toEqual(1);
     });
-  });
 
-  describe('showSignupActivity', () => {
-    it('runs swap CAPTCHA', () => {
-      const id = 2;
-      const m = Immutable.fromJS({
-        field: {
-          email: {
-            value: 'test@email.com'
-          },
-          password: {
-            value: 'testpass'
-          },
-          family_name: {
-            value: 'test-family-name'
-          },
-          given_name: {
-            value: 'test-given-name'
-          },
-          name: {
-            value: 'test-name'
-          },
-          nickname: {
-            value: 'test-nickname'
-          },
-          picture: {
-            value: 'test-pic'
-          },
-          other_prop: {
-            value: 'test-other'
-          }
-        },
-        database: {
-          additionalSignUpFields: [
-            { name: 'family_name', storage: 'root' },
-            { name: 'given_name', storage: 'root' },
-            { name: 'name', storage: 'root' },
-            { name: 'nickname', storage: 'root' },
-            { name: 'picture', storage: 'root' },
-            { name: 'other_prop' }
-          ]
-        },
+    describe('showLoginActivity', () => {
+      it('runs swap CAPTCHA', () => {
+        swap(setEntity, 'lock', id, m);
+        showLoginActivity(id);
+        expect(swapCaptcha.mock.calls.length).toEqual(1);
       });
-      swap(setEntity, 'lock', id, m);
-      showSignUpActivity(id);
-      expect(swapCaptcha.mock.calls.length).toEqual(1);
+    });
+
+    describe('showSignupActivity', () => {
+      it('runs swap CAPTCHA', () => {
+        swap(setEntity, 'lock', id, m);
+        showSignUpActivity(id);
+        expect(swapCaptcha.mock.calls.length).toEqual(1);
+      });
     });
   });
-});
+  })
+
