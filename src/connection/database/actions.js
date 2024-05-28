@@ -259,7 +259,7 @@ export function resetPassword(id) {
   });
 }
 
-function resetPasswordSuccess(id) {
+export function resetPasswordSuccess(id) {
   const m = read(getEntity, 'lock', id);
   if (hasScreen(m, 'login')) {
     swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {

@@ -1,12 +1,31 @@
 import Immutable, { List, Map } from 'immutable';
-import { signUp } from '../../../connection/database/actions';
+import {
+  signUp,
+  resetPasswordSuccess,
+  showResetPasswordActivity,
+  showLoginActivity, showSignUpActivity
+} from '../../../connection/database/actions';
 import { swap, setEntity } from '../../../store';
+import { swapCaptcha } from "../../../connection/captcha";
+import { hasScreen } from "../../../connection/database";
 
 const webApiMock = () => require('core/web_api');
 const coreActionsMock = () => require('core/actions');
+
 jest.mock('core/actions', () => ({
   validateAndSubmit: jest.fn()
 }));
+
+jest.mock('../../../connection/captcha', () => {
+  const originalCaptcha = jest.requireActual('../../../connection/captcha');
+  return {
+    __esModule: true,
+    ...originalCaptcha,
+    swapCaptcha: jest.fn((id, flow, wasInvalid, next) => {
+      next();
+    }),
+  }
+});
 
 jest.mock('core/web_api', () => ({
   signUp: jest.fn()
@@ -206,6 +225,194 @@ describe('database/actions.js', () => {
       user_metadata: {
         other_name: '123'
       }
+    });
+  });
+
+  describe('resetPasswordSuccess', () => {
+    it('runs swap CAPTCHA', () => {
+      const id = 2;
+      const m = Immutable.fromJS({
+        field: {
+          email: {
+            value: 'test@email.com'
+          },
+          password: {
+            value: 'testpass'
+          },
+          family_name: {
+            value: 'test-family-name'
+          },
+          given_name: {
+            value: 'test-given-name'
+          },
+          name: {
+            value: 'test-name'
+          },
+          nickname: {
+            value: 'test-nickname'
+          },
+          picture: {
+            value: 'test-pic'
+          },
+          other_prop: {
+            value: 'test-other'
+          }
+        },
+        database: {
+          additionalSignUpFields: [
+            { name: 'family_name', storage: 'root' },
+            { name: 'given_name', storage: 'root' },
+            { name: 'name', storage: 'root' },
+            { name: 'nickname', storage: 'root' },
+            { name: 'picture', storage: 'root' },
+            { name: 'other_prop' }
+          ]
+        },
+      });
+      swap(setEntity, 'lock', id, m);
+      resetPasswordSuccess(id);
+      expect(swapCaptcha.mock.calls.length).toEqual(1);
+    });
+  });
+
+  describe('showResetPasswordActivity', () => {
+    it('runs swap CAPTCHA', () => {
+      const id = 2;
+      const m = Immutable.fromJS({
+        field: {
+          email: {
+            value: 'test@email.com'
+          },
+          password: {
+            value: 'testpass'
+          },
+          family_name: {
+            value: 'test-family-name'
+          },
+          given_name: {
+            value: 'test-given-name'
+          },
+          name: {
+            value: 'test-name'
+          },
+          nickname: {
+            value: 'test-nickname'
+          },
+          picture: {
+            value: 'test-pic'
+          },
+          other_prop: {
+            value: 'test-other'
+          }
+        },
+        database: {
+          additionalSignUpFields: [
+            { name: 'family_name', storage: 'root' },
+            { name: 'given_name', storage: 'root' },
+            { name: 'name', storage: 'root' },
+            { name: 'nickname', storage: 'root' },
+            { name: 'picture', storage: 'root' },
+            { name: 'other_prop' }
+          ]
+        },
+      });
+      swap(setEntity, 'lock', id, m);
+      showResetPasswordActivity(id);
+      expect(swapCaptcha.mock.calls.length).toEqual(1);
+    });
+  });
+
+  describe('showLoginActivity', () => {
+    it('runs swap CAPTCHA', () => {
+      const id = 2;
+      const m = Immutable.fromJS({
+        field: {
+          email: {
+            value: 'test@email.com'
+          },
+          password: {
+            value: 'testpass'
+          },
+          family_name: {
+            value: 'test-family-name'
+          },
+          given_name: {
+            value: 'test-given-name'
+          },
+          name: {
+            value: 'test-name'
+          },
+          nickname: {
+            value: 'test-nickname'
+          },
+          picture: {
+            value: 'test-pic'
+          },
+          other_prop: {
+            value: 'test-other'
+          }
+        },
+        database: {
+          additionalSignUpFields: [
+            { name: 'family_name', storage: 'root' },
+            { name: 'given_name', storage: 'root' },
+            { name: 'name', storage: 'root' },
+            { name: 'nickname', storage: 'root' },
+            { name: 'picture', storage: 'root' },
+            { name: 'other_prop' }
+          ]
+        },
+      });
+      swap(setEntity, 'lock', id, m);
+      showLoginActivity(id);
+      expect(swapCaptcha.mock.calls.length).toEqual(1);
+    });
+  });
+
+  describe('showSignupActivity', () => {
+    it('runs swap CAPTCHA', () => {
+      const id = 2;
+      const m = Immutable.fromJS({
+        field: {
+          email: {
+            value: 'test@email.com'
+          },
+          password: {
+            value: 'testpass'
+          },
+          family_name: {
+            value: 'test-family-name'
+          },
+          given_name: {
+            value: 'test-given-name'
+          },
+          name: {
+            value: 'test-name'
+          },
+          nickname: {
+            value: 'test-nickname'
+          },
+          picture: {
+            value: 'test-pic'
+          },
+          other_prop: {
+            value: 'test-other'
+          }
+        },
+        database: {
+          additionalSignUpFields: [
+            { name: 'family_name', storage: 'root' },
+            { name: 'given_name', storage: 'root' },
+            { name: 'name', storage: 'root' },
+            { name: 'nickname', storage: 'root' },
+            { name: 'picture', storage: 'root' },
+            { name: 'other_prop' }
+          ]
+        },
+      });
+      swap(setEntity, 'lock', id, m);
+      showSignUpActivity(id);
+      expect(swapCaptcha.mock.calls.length).toEqual(1);
     });
   });
 });
