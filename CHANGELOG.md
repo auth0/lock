@@ -1,59 +1,83 @@
 # Change Log
 
+## [v12.5.1](https://github.com/auth0/lock/tree/v12.5.1) (2024-05-30)
+
+[Full Changelog](https://github.com/auth0/lock/compare/v12.5.0...v12.5.1)
+
+- Swap CAPTCHA on each reload [\#2560](https://github.com/auth0/lock/pull/2560) ([josh-cain](https://github.com/josh-cain))
+
 ## [v12.5.0](https://github.com/auth0/lock/tree/v12.5.0) (2024-04-30)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.4.0...v12.5.0)
 
 - Support captchas in reset password flow [\#2547](https://github.com/auth0/lock/pull/2547) ([srijonsaha](https://github.com/srijonsaha))
 
 ## [v12.4.0](https://github.com/auth0/lock/tree/v12.4.0) (2024-01-04)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.3.1...v12.4.0)
 
 **Added**
+
 - [IAMRISK-2916] Added support for Auth0 v2 captcha provider [\#2503](https://github.com/auth0/lock/pull/2503) ([alexkoumarianos-okta](https://github.com/alexkoumarianos-okta))
 
 **Changed**
+
 - [IAMRISK-3010] Added support for auth0_v2 captcha failOpen [\#2507](https://github.com/auth0/lock/pull/2507) ([alexkoumarianos-okta](https://github.com/alexkoumarianos-okta))
 
 ## [v12.3.1](https://github.com/auth0/lock/tree/v12.3.1) (2023-11-13)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.3.0...v12.3.1)
 
 **Security**
+
 - Bump auth0-js to solve crypto-js vulnerability [\#2492](https://github.com/auth0/lock/pull/2492) ([frederikprijck](https://github.com/frederikprijck))
 
 ## [v12.3.0](https://github.com/auth0/lock/tree/v12.3.0) (2023-10-06)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.2.0...v12.3.0)
 
 **Added**
+
 - [IAMRISK-2603] Add support for Arkose [\#2455](https://github.com/auth0/lock/pull/2455) ([srijonsaha](https://github.com/srijonsaha))
 
 ## [v12.2.0](https://github.com/auth0/lock/tree/v12.2.0) (2023-09-15)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.1.0...v12.2.0)
 
 **Added**
+
 - Wrap CheckBoxInput in InputWrapper to provide visual feedback [\#2423](https://github.com/auth0/lock/pull/2423) ([ewanharris](https://github.com/ewanharris))
 
 ## [v12.1.0](https://github.com/auth0/lock/tree/v12.1.0) (2023-07-17)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.0.2...v12.1.0)
 
 **Added**
+
 - Added support for hCaptcha and Friendly Captcha [\#2387](https://github.com/auth0/lock/pull/2387) ([DominickBattistini](https://github.com/DominickBattistini))
 
 **Changed**
+
 - WelcomeMessage header text marked as heading [\#2373](https://github.com/auth0/lock/pull/2373) ([piwysocki](https://github.com/piwysocki))
 
 ## [v12.0.2](https://github.com/auth0/lock/tree/v12.0.2) (2023-02-10)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.0.1...v12.0.2)
 
 **Changed**
+
 - Slight tweaks to Captcha input component handler methods + refresh button mask [\#2272](https://github.com/auth0/lock/pull/2272) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 **Fixed**
+
 - Fix for when component is undefined on unmount [\#2271](https://github.com/auth0/lock/pull/2271) ([codetheweb](https://github.com/codetheweb))
 
 ## [v12.0.1](https://github.com/auth0/lock/tree/v12.0.1) (2023-02-01)
+
 [Full Changelog](https://github.com/auth0/lock/compare/v12.0.0...v12.0.1)
 
 **Changed**
+
 - FDR-487 - feat: update microsoft button [\#2259](https://github.com/auth0/lock/pull/2259) ([jamescgarrett](https://github.com/jamescgarrett))
 
 ## [v12.0.0](https://github.com/auth0/lock/tree/v12.0.0) (2023-01-20)
@@ -99,6 +123,7 @@ Despite the major version bump, **v12 is completely API-compatible with v11**.
 - Upgrade to React 18 [\#2209](https://github.com/auth0/lock/pull/2209) ([stevehobbsdev](https://github.com/stevehobbsdev))
 - Upgrade to Webpack 5, Jest 29, Babel 8 [\#2213](https://github.com/auth0/lock/pull/2213) ([stevehobbsdev](https://github.com/stevehobbsdev))
 - bump dependencies to latest patch and fix typos [\#2210](https://github.com/auth0/lock/pull/2210) ([piwysocki](https://github.com/piwysocki))
+
 ## [v11.34.2](https://github.com/auth0/lock/tree/v11.34.2) (2022-10-10)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v11.34.1...v11.34.2)

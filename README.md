@@ -30,8 +30,9 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/12.5.0/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/12.5.1/lock.min.js"></script>
 ```
+
 ### Configure Auth0
 
 Create a **Single Page Application** in the [Auth0 Dashboard](https://manage.auth0.com/#/applications).
