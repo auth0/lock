@@ -311,8 +311,7 @@ function resetPasswordError(id, error) {
 export function showLoginActivity(id, fields = ['password']) {
   const m = read(getEntity, 'lock', id);
   const captchaConfig = l.captcha(m);
-  const captchaProvider = captchaConfig.get('provider');
-  if (captchaProvider === 'arkose') {
+  if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'login', fields);
   } else {
     swapCaptcha(id, 'login', false, () => {
@@ -324,8 +323,7 @@ export function showLoginActivity(id, fields = ['password']) {
 export function showSignUpActivity(id, fields = ['password']) {
   const m = read(getEntity, 'lock', id);
   const captchaConfig = l.captcha(m);
-  const captchaProvider = captchaConfig.get('provider');
-  if (captchaProvider === 'arkose') {
+  if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
   } else {
     swapCaptcha(id, 'login', false, () => {
@@ -337,8 +335,7 @@ export function showSignUpActivity(id, fields = ['password']) {
 export function showResetPasswordActivity(id, fields = ['password']) {
   const m = read(getEntity, 'lock', id);
   const captchaConfig = l.passwordResetCaptcha(m);
-  const captchaProvider = captchaConfig.get('provider');
-  if (captchaProvider === 'arkose') {
+  if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
   } else {
     swapCaptcha(id, 'login', false, () => {

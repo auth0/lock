@@ -229,7 +229,8 @@ describe('database/actions.js', () => {
 
   describe('exported functions', () => {
     const id = 2;
-    const m = Immutable.fromJS({
+    const hookRunner = jest.fn((str, m, context, fn) => fn());
+    const mCaptcha = Immutable.fromJS({
       field: {
         email: {
           value: 'test@email.com'
@@ -266,11 +267,17 @@ describe('database/actions.js', () => {
           { name: 'other_prop' }
         ]
       },
+      captcha: {
+        provider: 'auth0'
+      },
+      passwordResetCaptcha: {
+        provider: 'auth0'
+      },
     });
 
     describe('resetPasswordSuccess', () => {
       it('runs swap CAPTCHA', () => {
-        swap(setEntity, 'lock', id, m);
+        swap(setEntity, 'lock', id, mCaptcha);
         resetPasswordSuccess(id);
         expect(swapCaptcha.mock.calls.length).toEqual(1);
       });
@@ -278,7 +285,7 @@ describe('database/actions.js', () => {
 
     describe('showResetPasswordActivity', () => {
       it('runs swap CAPTCHA', () => {
-        swap(setEntity, 'lock', id, m);
+        swap(setEntity, 'lock', id, mCaptcha);
         showResetPasswordActivity(id);
         expect(swapCaptcha.mock.calls.length).toEqual(1);
       });
@@ -286,7 +293,7 @@ describe('database/actions.js', () => {
 
     describe('showLoginActivity', () => {
       it('runs swap CAPTCHA', () => {
-        swap(setEntity, 'lock', id, m);
+        swap(setEntity, 'lock', id, mCaptcha);
         showLoginActivity(id);
         expect(swapCaptcha.mock.calls.length).toEqual(1);
       });
@@ -294,7 +301,7 @@ describe('database/actions.js', () => {
 
     describe('showSignupActivity', () => {
       it('runs swap CAPTCHA', () => {
-        swap(setEntity, 'lock', id, m);
+        swap(setEntity, 'lock', id, mCaptcha);
         showSignUpActivity(id);
         expect(swapCaptcha.mock.calls.length).toEqual(1);
       });
