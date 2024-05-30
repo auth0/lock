@@ -229,7 +229,6 @@ describe('database/actions.js', () => {
 
   describe('exported functions', () => {
     const id = 2;
-    const hookRunner = jest.fn((str, m, context, fn) => fn());
     const mCaptcha = Immutable.fromJS({
       field: {
         email: {
