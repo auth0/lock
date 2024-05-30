@@ -259,15 +259,17 @@ export function resetPassword(id) {
   });
 }
 
-function resetPasswordSuccess(id) {
+export function resetPasswordSuccess(id) {
   const m = read(getEntity, 'lock', id);
   if (hasScreen(m, 'login')) {
-    swap(
-      updateEntity,
-      'lock',
-      id,
-      m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
-    );
+    swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+      swap(
+          updateEntity,
+          'lock',
+          id,
+          m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
+      );
+    });
 
     // TODO: should be handled by box
     setTimeout(() => {
@@ -278,7 +280,9 @@ function resetPasswordSuccess(id) {
     if (l.ui.autoclose(m)) {
       closeLock(id);
     } else {
-      swap(updateEntity, 'lock', id, m => l.setSubmitting(m, false).set('passwordResetted', true));
+      swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+        swap(updateEntity, 'lock', id, m => l.setSubmitting(m, false).set('passwordResetted', true));
+      });
     }
   }
 }
@@ -305,15 +309,39 @@ function resetPasswordError(id, error) {
 }
 
 export function showLoginActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'login', fields);
+  const m = read(getEntity, 'lock', id);
+  const captchaConfig = l.captcha(m);
+  if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
+    swap(updateEntity, 'lock', id, setScreen, 'login', fields);
+  } else {
+    swapCaptcha(id, 'login', false, () => {
+      swap(updateEntity, 'lock', id, setScreen, 'login', fields);
+    });
+  }
 }
 
 export function showSignUpActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+  const m = read(getEntity, 'lock', id);
+  const captchaConfig = l.captcha(m);
+  if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
+    swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+  } else {
+    swapCaptcha(id, 'login', false, () => {
+      swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+    });
+  }
 }
 
 export function showResetPasswordActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
+  const m = read(getEntity, 'lock', id);
+  const captchaConfig = l.passwordResetCaptcha(m);
+  if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
+    swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
+  } else {
+    swapCaptcha(id, 'login', false, () => {
+      swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
+    });
+  }
 }
 
 export function cancelResetPassword(id) {
