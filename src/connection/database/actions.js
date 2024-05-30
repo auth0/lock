@@ -309,21 +309,42 @@ function resetPasswordError(id, error) {
 }
 
 export function showLoginActivity(id, fields = ['password']) {
-  swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+  const m = read(getEntity, 'lock', id);
+  const captchaConfig = l.captcha(m);
+  const captchaProvider = captchaConfig.get('provider');
+  if (captchaProvider === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'login', fields);
-  });
+  } else {
+    swapCaptcha(id, 'login', false, () => {
+      swap(updateEntity, 'lock', id, setScreen, 'login', fields);
+    });
+  }
 }
 
 export function showSignUpActivity(id, fields = ['password']) {
-  swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+  const m = read(getEntity, 'lock', id);
+  const captchaConfig = l.captcha(m);
+  const captchaProvider = captchaConfig.get('provider');
+  if (captchaProvider === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
-  });
+  } else {
+    swapCaptcha(id, 'login', false, () => {
+      swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+    });
+  }
 }
 
 export function showResetPasswordActivity(id, fields = ['password']) {
-  swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
+  const m = read(getEntity, 'lock', id);
+  const captchaConfig = l.passwordResetCaptcha(m);
+  const captchaProvider = captchaConfig.get('provider');
+  if (captchaProvider === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
-  });
+  } else {
+    swapCaptcha(id, 'login', false, () => {
+      swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
+    });
+  }
 }
 
 export function cancelResetPassword(id) {
