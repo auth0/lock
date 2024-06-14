@@ -316,6 +316,9 @@ export class ThirdPartyCaptcha extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (this.props.provider === HCAPTCHA_PROVIDER) {
+      window[this.props.provider] = undefined;
+    }
     if (prevProps.value !== this.props.value && this.props.value === '') {
       this.reset();
     }
