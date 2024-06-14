@@ -302,7 +302,7 @@ export class ThirdPartyCaptcha extends React.Component {
             : `auth0-lock-${providerDomPrefix(this.props.provider)}-block auth0-lock-${providerDomPrefix(this.props.provider)}-block-error`
         }
       >
-        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} ref={this.ref} />
+        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} id={this.props.provider === HCAPTCHA_PROVIDER ? 'h-captcha' : ''} ref={this.ref} />
       </div>
     );
   }
@@ -316,11 +316,12 @@ export class ThirdPartyCaptcha extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.provider === HCAPTCHA_PROVIDER) {
-      window[this.props.provider] = undefined;
-    }
+    let hCaptchaComponent = document.getElementById("h-captcha");
     if (prevProps.value !== this.props.value && this.props.value === '') {
       this.reset();
+    }
+    if (this.props.provider === HCAPTCHA_PROVIDER && hCaptchaComponent && window[this.props.provider]) {
+      window[this.props.provider].render('h-captcha', this.getRenderParams());
     }
   }
 }

@@ -13,8 +13,4 @@ describe('hCaptcha', () => {
     const script = [...window.document.querySelectorAll('script')].find(s => s.src.startsWith("https://js.hcaptcha.com/1/api.js"));
     expect(script).not.toBeUndefined();
   });
-
-  it('resets the window element', () => {
-    expect(window?.hcaptcha).toBeUndefined();
-  })
 });
