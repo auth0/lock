@@ -6,6 +6,7 @@ exports[`hCaptcha should match the snapshot 1`] = `
 >
   <div
     className="auth0-lock-hcaptcha"
+    id="h-captcha"
   />
 </div>
 `;
