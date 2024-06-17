@@ -72,6 +72,14 @@ const providerDomPrefix = (provider) => {
   }
 };
 
+const providerComponentId = (provider) => {
+  if (provider === HCAPTCHA_PROVIDER) {
+    return 'h-captcha';
+  } else {
+    return '';
+  }
+};
+
 const loadScript = (url, attributes) => {
   var script = document.createElement('script');
   for (var attr in attributes) {
@@ -302,7 +310,7 @@ export class ThirdPartyCaptcha extends React.Component {
             : `auth0-lock-${providerDomPrefix(this.props.provider)}-block auth0-lock-${providerDomPrefix(this.props.provider)}-block-error`
         }
       >
-        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} id={this.props.provider === HCAPTCHA_PROVIDER ? 'h-captcha' : ''} ref={this.ref} />
+        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} id={providerComponentId(this.props.provider)} ref={this.ref} />
       </div>
     );
   }
