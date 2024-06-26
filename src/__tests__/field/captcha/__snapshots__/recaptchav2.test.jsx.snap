@@ -6,6 +6,7 @@ exports[`Recaptcha v2 should match the snapshot 1`] = `
 >
   <div
     className="auth0-lock-recaptchav2"
+    id=""
   />
 </div>
 `;
