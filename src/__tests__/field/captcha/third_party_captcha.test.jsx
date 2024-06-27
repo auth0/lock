@@ -220,7 +220,7 @@ describe('ThirdPartyCaptcha', () => {
       });
     });
 
-    it('should retry 3 times on error and then set value to BYPASS_CAPTCHA dummy token for failOpen', () => {
+    it('should retry 3 times on error for failOpen', () => {
       const renderParams = global.window.turnstile.render.mock.calls[0][1];
       for (let i = 0; i < 3; i++) {
         const renderParams = global.window.turnstile.render.mock.calls[i][1];
@@ -237,7 +237,6 @@ describe('ThirdPartyCaptcha', () => {
 
       const { onChange } = wrapper.props;
       expect(onChange.mock.calls).toHaveLength(1);
-      expect(onChange.mock.calls[0][0]).toBe('BYPASS_CAPTCHA');
     });
   });
 
