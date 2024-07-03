@@ -157,14 +157,24 @@ describe('ThirdPartyCaptcha', () => {
     });
 
     it('should call render with the correct renderParams', () => {
-      const renderParams = global.window.hcaptcha.render.mock.calls[0][1];
+      const renderCalls = global.window.hcaptcha.render.mock.calls;
+      const renderParams = renderCalls[0][1];
       expect(renderParams).toEqual({
         sitekey: 'mySiteKey',
         callback: expect.any(Function),
         'expired-callback': expect.any(Function),
         'error-callback': expect.any(Function)
       });
+      expect(renderCalls.length).toEqual(1);
     });
+
+    it('should call render on update', () => {
+      act(() => {
+        wrapper.setState();
+        const renderCalls = global.window.hcaptcha.render.mock.calls;
+        expect(renderCalls.length).toEqual(1);
+      })
+    })
   });
 
   describe('auth0_v2', () => {

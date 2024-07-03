@@ -72,6 +72,14 @@ const providerDomPrefix = (provider) => {
   }
 };
 
+const providerComponentId = (provider) => {
+  if (provider === HCAPTCHA_PROVIDER) {
+    return 'h-captcha';
+  } else {
+    return '';
+  }
+};
+
 const loadScript = (url, attributes) => {
   var script = document.createElement('script');
   for (var attr in attributes) {
@@ -301,7 +309,7 @@ export class ThirdPartyCaptcha extends React.Component {
             : `auth0-lock-${providerDomPrefix(this.props.provider)}-block auth0-lock-${providerDomPrefix(this.props.provider)}-block-error`
         }
       >
-        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} ref={this.ref} />
+        <div className={`auth0-lock-${providerDomPrefix(this.props.provider) === 'recaptcha' ? 'recaptchav2' : providerDomPrefix(this.props.provider)}`} id={providerComponentId(this.props.provider)} ref={this.ref} />
       </div>
     );
   }
@@ -315,8 +323,12 @@ export class ThirdPartyCaptcha extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    let hCaptchaComponent = document.getElementById("h-captcha");
     if (prevProps.value !== this.props.value && this.props.value === '') {
       this.reset();
+    }
+    if (this.props.provider === HCAPTCHA_PROVIDER && hCaptchaComponent && window[this.props.provider]) {
+      window[this.props.provider].render('h-captcha', this.getRenderParams());
     }
   }
 }
