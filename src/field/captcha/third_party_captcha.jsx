@@ -131,7 +131,7 @@ export class ThirdPartyCaptcha extends React.Component {
         this.props.onChange(value);
         this.props.onErrored();
       });
-    };  
+    };
   }
 
   getRenderParams() {
@@ -166,8 +166,9 @@ export class ThirdPartyCaptcha extends React.Component {
               retryCount: prevState.retryCount + 1
             }));
           } else {
+            //
             // similar implementation to ARKOSE_PROVIDER failOpen
-            this.changeHandler('BYPASS_CAPTCHA');
+            this.changeHandler();
           }
           return true;
         }
@@ -175,7 +176,7 @@ export class ThirdPartyCaptcha extends React.Component {
     }
     return renderParams;
   }
-  
+
   injectCaptchaScript(callback = noop) {
     const { provider, hl, clientSubdomain, sitekey } = this.props;
     const callbackName = `${providerDomPrefix(provider)}Callback_${Math.floor(Math.random() * 1000001)}`;
@@ -260,7 +261,7 @@ export class ThirdPartyCaptcha extends React.Component {
 
   reset() {
     const provider = getCaptchaProvider(this.props.provider);
-    if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) { 
+    if (this.props.provider === FRIENDLY_CAPTCHA_PROVIDER) {
       if (this.widgetInstance) {
         this.widgetInstance.reset();
       }

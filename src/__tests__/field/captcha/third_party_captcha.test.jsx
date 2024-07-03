@@ -237,7 +237,6 @@ describe('ThirdPartyCaptcha', () => {
 
       const { onChange } = wrapper.props;
       expect(onChange.mock.calls).toHaveLength(1);
-      expect(onChange.mock.calls[0][0]).toBe('BYPASS_CAPTCHA');
     });
   });
 
