@@ -421,6 +421,11 @@ export function setCaptcha(m, value, wasInvalid) {
   return set(m, 'captcha', Immutable.fromJS(value));
 }
 
+export function setSignupChallenge(m, value, wasInvalid) {
+  m = captchaField.reset(m, wasInvalid);
+  return set(m, 'signupCaptcha', Immutable.fromJS(value));
+}
+
 export function setPasswordlessCaptcha(m, value, wasInvalid) {
   m = captchaField.reset(m, wasInvalid);
   return set(m, 'passwordlessCaptcha', Immutable.fromJS(value));
@@ -433,6 +438,10 @@ export function setPasswordResetCaptcha(m, value, wasInvalid) {
 
 export function captcha(m) {
   return get(m, 'captcha');
+}
+
+export function signupCaptcha(m) {
+  return get(m, 'signupCaptcha');
 }
 
 export function passwordlessCaptcha(m) {
