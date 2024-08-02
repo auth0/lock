@@ -113,15 +113,6 @@ export function swapCaptcha(id, flow, wasInvalid, next) {
         next();
       }
     });
-  } else if (flow === Flow.PASSWORDLESS) {
-    return webApi.getPasswordlessChallenge(id, (err, newCaptcha) => {
-      if (!err && newCaptcha) {
-        swap(updateEntity, 'lock', id, l.setPasswordlessCaptcha, newCaptcha, wasInvalid);
-      }
-      if (next) {
-        next();
-      }
-    });
   } else if (flow === Flow.SIGNUP) {
     return webApi.getSingupChallenge(id, (err, newCaptcha) => {
       if (!err && newCaptcha) {
