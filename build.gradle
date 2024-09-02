@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    testImplementation group: 'org.awaitility', name: 'awaitility', version: '4.2.1'
+    testImplementation group: 'org.awaitility', name: 'awaitility', version: '4.2.2'
 }
