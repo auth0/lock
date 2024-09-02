@@ -1,3 +1,7 @@
 plugins {
     id "io.freefair.lombok" version "8.7"
 }
+
+dependencies {
+    testImplementation group: 'org.awaitility', name: 'awaitility', version: '4.2.1'
+}
