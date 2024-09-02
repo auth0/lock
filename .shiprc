@@ -1,7 +1,0 @@
-{
-  "files": {
-    "README.md": [],
-    ".version": []
-  },
-  "postbump": "npm run build"
-}

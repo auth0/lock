@@ -1,8 +1,0 @@
-.circleci/
-.github/
-.vscode/
-css/
-examples/
-support/
-test/
-Gruntfile.js
