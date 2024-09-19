@@ -290,7 +290,7 @@ export function resetPasswordSuccess(id) {
 function resetPasswordError(id, error) {
   const m = read(getEntity, 'lock', id);
   let key = error.code;
-  
+
   if (error.code === 'invalid_captcha') {
     const captchaConfig = l.passwordResetCaptcha(m);
     key = (
@@ -302,7 +302,7 @@ function resetPasswordError(id, error) {
   const errorMessage =
     i18n.html(m, ['error', 'forgotPassword', key]) ||
     i18n.html(m, ['error', 'forgotPassword', 'lock.fallback']);
-  
+
   swapCaptcha(id, Flow.PASSWORD_RESET, error.code === 'invalid_captcha', () => {
     swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
   });
@@ -322,12 +322,12 @@ export function showLoginActivity(id, fields = ['password']) {
 
 export function showSignUpActivity(id, fields = ['password']) {
   const m = read(getEntity, 'lock', id);
-  const captchaConfig = l.captcha(m);
+  const captchaConfig = l.signupCaptcha(m);
   if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
   } else {
-    swapCaptcha(id, 'login', false, () => {
-      swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+    swapCaptcha(id, Flow.SIGNUP, false, () => {
+      swap(updateEntity, 'lock', id, setScreen, Flow.SIGNUP, fields);
     });
   }
 }

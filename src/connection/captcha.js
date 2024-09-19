@@ -6,13 +6,14 @@ import webApi from '../core/web_api';
 
 export const Flow = Object.freeze({
   DEFAULT: 'default',
+  SIGNUP: 'signup',
   PASSWORDLESS: 'passwordless',
   PASSWORD_RESET: 'password_reset',
 });
 
 /**
  * Return the captcha config object based on the type of flow.
- * 
+ *
  * @param {Object} m model
  * @param {Flow} flow Which flow the captcha is being rendered in
  */
@@ -21,6 +22,8 @@ export function getCaptchaConfig(m, flow) {
     return l.passwordResetCaptcha(m);
   } else if (flow === Flow.PASSWORDLESS) {
     return l.passwordlessCaptcha(m);
+  } else if (flow === Flow.SIGNUP) {
+    return l.signupCaptcha(m);
   } else {
     return l.captcha(m);
   }
@@ -42,7 +45,7 @@ export function showMissingCaptcha(m, id, flow = Flow.DEFAULT) {
     captchaConfig.get('provider') === 'hcaptcha' ||
     captchaConfig.get('provider') === 'auth0_v2' ||
     captchaConfig.get('provider') === 'friendly_captcha' ||
-    captchaConfig.get('provider') === 'arkose' 
+    captchaConfig.get('provider') === 'arkose'
   ) ? 'invalid_recaptcha' : 'invalid_captcha';
 
   const errorMessage = i18n.html(m, ['error', 'login', captchaError]);
@@ -105,6 +108,15 @@ export function swapCaptcha(id, flow, wasInvalid, next) {
     return webApi.getPasswordlessChallenge(id, (err, newCaptcha) => {
       if (!err && newCaptcha) {
         swap(updateEntity, 'lock', id, l.setPasswordlessCaptcha, newCaptcha, wasInvalid);
+      }
+      if (next) {
+        next();
+      }
+    });
+  } else if (flow === Flow.SIGNUP) {
+    return webApi.getSignupChallenge(id, (err, newCaptcha) => {
+      if (!err && newCaptcha) {
+        swap(updateEntity, 'lock', id, l.setSignupChallenge, newCaptcha, wasInvalid);
       }
       if (next) {
         next();
