@@ -88,7 +88,7 @@ export function signUp(id) {
       autoLogin: shouldAutoLogin(m)
     };
 
-    const isCaptchaValid = setCaptchaParams(m, params, Flow.DEFAULT, fields);
+    const isCaptchaValid = setCaptchaParams(m, params, Flow.SIGNUP, fields);
     if (!isCaptchaValid) {
       return showMissingCaptcha(m, id);
     }
@@ -327,7 +327,7 @@ export function showSignUpActivity(id, fields = ['password']) {
     swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
   } else {
     swapCaptcha(id, Flow.SIGNUP, false, () => {
-      swap(updateEntity, 'lock', id, setScreen, Flow.SIGNUP, fields);
+      swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
     });
   }
 }
