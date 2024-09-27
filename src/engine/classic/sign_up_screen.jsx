@@ -51,8 +51,6 @@ const Component = ({ i18n, model }) => {
     ? 'databaseAlternativeSignUpInstructions'
     : 'databaseSignUpInstructions';
 
-  console.log('this is in signupscreen banana we should be here')
-
   const db = (l.hasSomeConnections(model, 'database') ||
     l.hasSomeConnections(model, 'enterprise')) && (
     <SignUpPane
