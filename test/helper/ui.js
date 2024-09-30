@@ -33,6 +33,7 @@ export const stubWebApis = () => {
     cb(null, ssoData);
   });
   stubGetChallenge();
+  stubGetSignupChallenge();
   stubI18n();
 };
 
@@ -79,6 +80,7 @@ export const restoreWebApis = () => {
     webApi.signUp.restore();
   }
   webApi.getChallenge.restore();
+  webApi.getSignupChallenge.restore();
   gravatarProvider.displayName.restore();
   gravatarProvider.url.restore();
   ClientSettings.fetchClientSettings.restore();
