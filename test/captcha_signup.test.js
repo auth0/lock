@@ -33,7 +33,7 @@ describe('captcha on signup', function () {
   describe('svg-captcha', () => {
     describe('when the api returns a new challenge', function () {
       beforeEach(function (done) {
-        this.stub = h.stubGetChallenge([svgCaptchaRequiredResponse1, svgCaptchaRequiredResponse2]);
+        this.stub = h.stubGetSignupChallenge([svgCaptchaRequiredResponse1, svgCaptchaRequiredResponse2]);
         this.lock = h.displayLock('', lockOpts, done);
       });
 
@@ -88,7 +88,7 @@ describe('captcha on signup', function () {
 
     describe('when the challenge api returns required: false', function () {
       beforeEach(function (done) {
-        h.stubGetChallenge({
+        h.stubGetSignupChallenge({
           required: false
         });
         this.lock = h.displayLock('', lockOpts, done);
@@ -110,7 +110,7 @@ describe('captcha on signup', function () {
           });
 
           h.waitForEmailAndPasswordInput(this.lock, () => {
-            h.stubGetChallenge(svgCaptchaRequiredResponse1);
+            h.stubGetSignupChallenge(svgCaptchaRequiredResponse1);
             h.fillEmailInput(this.lock, 'someone@example.com');
             h.fillComplexPassword(this.lock);
             h.submitForm(this.lock);
@@ -127,7 +127,7 @@ describe('captcha on signup', function () {
   describe('recaptcha', () => {
     describe('when the api returns a new challenge', function () {
       beforeEach(function (done) {
-        this.stub = h.stubGetChallenge([recaptchav2Response]);
+        this.stub = h.stubGetSignupChallenge([recaptchav2Response]);
         this.lock = h.displayLock('', lockOpts, done);
       });
 
@@ -158,7 +158,7 @@ describe('captcha on signup', function () {
     describe('when the challenge api returns required: false', function () {
       let notRequiredStub;
       beforeEach(function (done) {
-        notRequiredStub = h.stubGetChallenge({
+        notRequiredStub = h.stubGetSignupChallenge({
           required: false
         });
         this.lock = h.displayLock('', lockOpts, done);
@@ -181,7 +181,7 @@ describe('captcha on signup', function () {
             setTimeout(done, 260);
           });
 
-          challengeStub = h.stubGetChallenge(recaptchav2Response);
+          challengeStub = h.stubGetSignupChallenge(recaptchav2Response);
           h.fillEmailInput(this.lock, 'someone@example.com');
           h.fillComplexPassword(this.lock);
           h.submitForm(this.lock);

@@ -469,3 +469,15 @@ export const stubGetChallenge = (result = { required: false }) => {
     callback(null, result);
   });
 };
+
+export const stubGetSignupChallenge = (result = { required: false }) => {
+  if (typeof webApi.getSignupChallenge.restore === 'function') {
+    webApi.getSignupChallenge.restore();
+  }
+  return stub(webApi, 'getSignupChallenge', (lockID, callback) => {
+    if (Array.isArray(result)) {
+      return callback(null, result.shift());
+    }
+    callback(null, result);
+  });
+};
