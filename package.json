@@ -125,7 +125,7 @@
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.2",
-    "dompurify": "^2.3.12",
+    "dompurify": "^2.5.4",
     "immutable": "^3.7.6",
     "jsonp": "^0.2.1",
     "password-sheriff": "^1.1.1",
