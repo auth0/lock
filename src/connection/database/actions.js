@@ -131,7 +131,7 @@ export function signUp(id) {
 
       const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
 
-      swapCaptcha(id, Flow.DEFAULT, wasInvalidCaptcha, () => {
+      swapCaptcha(id, Flow.SIGNUP, wasInvalidCaptcha, () => {
         setTimeout(() => signUpError(id, error), 250);
       });
     };
