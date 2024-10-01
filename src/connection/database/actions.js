@@ -90,7 +90,7 @@ export function signUp(id) {
 
     const isCaptchaValid = setCaptchaParams(m, params, Flow.SIGNUP, fields);
     if (!isCaptchaValid) {
-      return showMissingCaptcha(m, id);
+      return showMissingCaptcha(m, id, Flow.SIGNUP);
     }
 
     if (databaseConnectionRequiresUsername(m)) {
