@@ -99,7 +99,6 @@ describe('captcha on signup', function () {
       });
 
       it('should not show the captcha input', function () {
-        console.log('banana penguin', this.lock);
         expect(h.qInput(this.lock, 'captcha', false)).to.not.be.ok();
       });
 
