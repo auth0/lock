@@ -88,9 +88,9 @@ export function signUp(id) {
       autoLogin: shouldAutoLogin(m)
     };
 
-    const isCaptchaValid = setCaptchaParams(m, params, Flow.DEFAULT, fields);
+    const isCaptchaValid = setCaptchaParams(m, params, Flow.SIGNUP, fields);
     if (!isCaptchaValid) {
-      return showMissingCaptcha(m, id);
+      return showMissingCaptcha(m, id, Flow.SIGNUP);
     }
 
     if (databaseConnectionRequiresUsername(m)) {
@@ -131,7 +131,7 @@ export function signUp(id) {
 
       const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
 
-      swapCaptcha(id, Flow.DEFAULT, wasInvalidCaptcha, () => {
+      swapCaptcha(id, Flow.SIGNUP, wasInvalidCaptcha, () => {
         setTimeout(() => signUpError(id, error), 250);
       });
     };
@@ -290,7 +290,7 @@ export function resetPasswordSuccess(id) {
 function resetPasswordError(id, error) {
   const m = read(getEntity, 'lock', id);
   let key = error.code;
-  
+
   if (error.code === 'invalid_captcha') {
     const captchaConfig = l.passwordResetCaptcha(m);
     key = (
@@ -302,7 +302,7 @@ function resetPasswordError(id, error) {
   const errorMessage =
     i18n.html(m, ['error', 'forgotPassword', key]) ||
     i18n.html(m, ['error', 'forgotPassword', 'lock.fallback']);
-  
+
   swapCaptcha(id, Flow.PASSWORD_RESET, error.code === 'invalid_captcha', () => {
     swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
   });
@@ -322,11 +322,11 @@ export function showLoginActivity(id, fields = ['password']) {
 
 export function showSignUpActivity(id, fields = ['password']) {
   const m = read(getEntity, 'lock', id);
-  const captchaConfig = l.captcha(m);
+  const captchaConfig = l.signupCaptcha(m);
   if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
   } else {
-    swapCaptcha(id, 'login', false, () => {
+    swapCaptcha(id, Flow.SIGNUP, false, () => {
       swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
     });
   }

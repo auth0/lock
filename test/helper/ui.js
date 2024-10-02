@@ -33,6 +33,7 @@ export const stubWebApis = () => {
     cb(null, ssoData);
   });
   stubGetChallenge();
+  stubGetSignupChallenge();
   stubI18n();
 };
 
@@ -79,6 +80,7 @@ export const restoreWebApis = () => {
     webApi.signUp.restore();
   }
   webApi.getChallenge.restore();
+  webApi.getSignupChallenge.restore();
   gravatarProvider.displayName.restore();
   gravatarProvider.url.restore();
   ClientSettings.fetchClientSettings.restore();
@@ -463,6 +465,18 @@ export const stubGetChallenge = (result = { required: false }) => {
     webApi.getChallenge.restore();
   }
   return stub(webApi, 'getChallenge', (lockID, callback) => {
+    if (Array.isArray(result)) {
+      return callback(null, result.shift());
+    }
+    callback(null, result);
+  });
+};
+
+export const stubGetSignupChallenge = (result = { required: false }) => {
+  if (typeof webApi.getSignupChallenge.restore === 'function') {
+    webApi.getSignupChallenge.restore();
+  }
+  return stub(webApi, 'getSignupChallenge', (lockID, callback) => {
     if (Array.isArray(result)) {
       return callback(null, result.shift());
     }

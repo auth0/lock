@@ -214,6 +214,7 @@ exports[`SignUpPane shows the Captcha pane 1`] = `
   />
   <CaptchaPane
     error={false}
+    flow="signup"
     i18n={
       {
         "html": [Function],
@@ -241,6 +242,7 @@ exports[`SignUpPane shows the Captcha pane for SSO (ADFS) connections 1`] = `
   />
   <CaptchaPane
     error={false}
+    flow="signup"
     i18n={
       {
         "html": [Function],
