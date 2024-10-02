@@ -157,10 +157,12 @@ describe('captcha on signup', function () {
 
     describe('when the challenge api returns required: false', function () {
       let notRequiredStub;
+      let loginGetChallengeStub;
       beforeEach(function (done) {
         notRequiredStub = h.stubGetSignupChallenge({
           required: false
         });
+        loginGetChallengeStub = h.stubGetChallenge([recaptchav2Response]);
         this.lock = h.displayLock('', lockOpts, done);
       });
 
@@ -169,6 +171,7 @@ describe('captcha on signup', function () {
       });
 
       it('should not show the captcha input', function () {
+        expect(loginGetChallengeStub.calledOnce).to.be.false;
         expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.not.be.ok();
       });
 
@@ -181,7 +184,7 @@ describe('captcha on signup', function () {
             setTimeout(done, 260);
           });
 
-          challengeStub = h.stubGetSignupChallenge(recaptchav2Response);
+          challengeStub = h.stubGetSignupChallenge([recaptchav2Response]);
           h.fillEmailInput(this.lock, 'someone@example.com');
           h.fillComplexPassword(this.lock);
           h.submitForm(this.lock);
@@ -190,6 +193,7 @@ describe('captcha on signup', function () {
         it('should call the challenge api again and show the input', function () {
           expect(notRequiredStub.calledOnce).to.be.true;
           expect(challengeStub.calledOnce).to.be.true;
+          expect(loginGetChallengeStub.calledOnce).to.be.false;
           expect(h.q(this.lock, '.auth0-lock-recaptchav2')).to.be.ok();
         });
       });
