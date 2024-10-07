@@ -338,7 +338,7 @@ export function showResetPasswordActivity(id, fields = ['password']) {
   if (captchaConfig && captchaConfig.get('provider') === 'arkose') {
     swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
   } else {
-    swapCaptcha(id, 'login', false, () => {
+    swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
       swap(updateEntity, 'lock', id, setScreen, 'forgotPassword', fields);
     });
   }
