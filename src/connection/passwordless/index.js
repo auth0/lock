@@ -14,6 +14,16 @@ export function initPasswordless(m, opts) {
   const showTerms = opts.showTerms === undefined ? true : !!opts.showTerms;
 
   m = initNS(m, Map({ send, mustAcceptTerms, showTerms }));
+
+  m = sync(m, 'passwordlessCaptcha', {
+    syncFn: (m, cb) => {
+      webAPI.getPasswordlessChallenge(m.get('id'), (err, r) => {
+        cb(null, r);
+      });
+    },
+    successFn: l.setPasswordlessCaptcha
+  });
+
   if (opts.defaultLocation && typeof opts.defaultLocation === 'string') {
     m = initLocation(m, opts.defaultLocation.toUpperCase());
   } else {
