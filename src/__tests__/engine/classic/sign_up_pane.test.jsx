@@ -1,6 +1,7 @@
 import React from 'react';
 import { expectComponent, mockComponent } from 'testUtils';
 import { expectShallowComponent } from '../../testUtils';
+import { Flow } from '../../../connection/captcha';
 
 jest.mock('field/email/email_pane', () => mockComponent('email_pane'));
 jest.mock('field/password/password_pane', () => mockComponent('password_pane'));
@@ -8,7 +9,7 @@ jest.mock('field/username/username_pane', () => mockComponent('username_pane'));
 jest.mock('field/custom_input', () => mockComponent('custom_input'));
 
 jest.mock('core/index', () => ({
-  captcha: jest.fn()
+  signupCaptcha: jest.fn()
 }));
 
 jest.mock('engine/classic', () => ({
@@ -38,6 +39,7 @@ describe('SignUpPane', () => {
       str: (...keys) => keys.join(','),
       html: (...keys) => keys.join(',')
     },
+    flow: Flow.SIGNUP,
     model: 'model',
     emailInputPlaceholder: 'emailInputPlaceholder',
     onlyEmail: true,
@@ -58,7 +60,7 @@ describe('SignUpPane', () => {
   });
 
   it('shows the Captcha pane', () => {
-    require('core/index').captcha.mockReturnValue({
+    require('core/index').signupCaptcha.mockReturnValue({
       get() {
         return true;
       }
@@ -72,7 +74,7 @@ describe('SignUpPane', () => {
   });
 
   it('hides the Captcha pane for SSO connections', () => {
-    require('core/index').captcha.mockReturnValue({
+    require('core/index').signupCaptcha.mockReturnValue({
       get() {
         return true;
       }
@@ -86,7 +88,7 @@ describe('SignUpPane', () => {
   });
 
   it('shows the Captcha pane for SSO (ADFS) connections', () => {
-    require('core/index').captcha.mockReturnValue({
+    require('core/index').signupCaptcha.mockReturnValue({
       get() {
         return true;
       }
