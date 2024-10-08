@@ -288,6 +288,13 @@ export const clickRefreshCaptchaButton = (lock, connection) =>
 
 export const clickSocialConnectionButton = (lock, connection) =>
   clickFn(lock, `.auth0-lock-social-button[data-provider='${connection}']`);
+
+export const clickSignUpTab = (lock) => {
+  // there is no id for the unselected tab (Login is selected by default)
+  const signUpTab = window.document['querySelector']('.auth0-lock-tabs > li:nth-child(2) > a');
+  Simulate.click(signUpTab, {});
+}
+
 const fillInput = (lock, name, str) => {
   Simulate.change(qInput(lock, name, true), { target: { value: str } });
 };
