@@ -6,6 +6,8 @@ import { dataFns } from '../../utils/data_utils';
 const { get, initNS, tget, tremove, tset } = dataFns(['passwordless']);
 import webAPI from '../../core/web_api';
 import sync from '../../sync';
+import webApi from '../../core/web_api';
+import { setPasswordlessCaptcha } from '../../core/index';
 
 export function initPasswordless(m, opts) {
   // TODO: validate opts
@@ -14,6 +16,16 @@ export function initPasswordless(m, opts) {
   const showTerms = opts.showTerms === undefined ? true : !!opts.showTerms;
 
   m = initNS(m, Map({ send, mustAcceptTerms, showTerms }));
+
+  m = sync(m, 'passwordlessCaptcha', {
+    syncFn: (m, cb) => {
+      webApi.getPasswordlessChallenge(m.get('id'), (err, r) => {
+        cb(null, r);
+      });
+    },
+    successFn: setPasswordlessCaptcha
+  });
+
   if (opts.defaultLocation && typeof opts.defaultLocation === 'string') {
     m = initLocation(m, opts.defaultLocation.toUpperCase());
   } else {
