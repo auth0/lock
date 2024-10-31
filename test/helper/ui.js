@@ -33,6 +33,7 @@ export const stubWebApis = () => {
     cb(null, ssoData);
   });
   stubGetChallenge();
+  stubGetSignupChallenge();
   stubI18n();
 };
 
@@ -79,6 +80,7 @@ export const restoreWebApis = () => {
     webApi.signUp.restore();
   }
   webApi.getChallenge.restore();
+  webApi.getSignupChallenge.restore();
   gravatarProvider.displayName.restore();
   gravatarProvider.url.restore();
   ClientSettings.fetchClientSettings.restore();
@@ -286,6 +288,13 @@ export const clickRefreshCaptchaButton = (lock, connection) =>
 
 export const clickSocialConnectionButton = (lock, connection) =>
   clickFn(lock, `.auth0-lock-social-button[data-provider='${connection}']`);
+
+export const clickSignUpTab = (lock) => {
+  // there is no id for the unselected tab (Login is selected by default)
+  const signUpTab = window.document['querySelector']('.auth0-lock-tabs > li:nth-child(2) > a');
+  Simulate.click(signUpTab, {});
+};
+
 const fillInput = (lock, name, str) => {
   Simulate.change(qInput(lock, name, true), { target: { value: str } });
 };
@@ -463,6 +472,18 @@ export const stubGetChallenge = (result = { required: false }) => {
     webApi.getChallenge.restore();
   }
   return stub(webApi, 'getChallenge', (lockID, callback) => {
+    if (Array.isArray(result)) {
+      return callback(null, result.shift());
+    }
+    callback(null, result);
+  });
+};
+
+export const stubGetSignupChallenge = (result = { required: false }) => {
+  if (typeof webApi.getSignupChallenge.restore === 'function') {
+    webApi.getSignupChallenge.restore();
+  }
+  return stub(webApi, 'getSignupChallenge', (lockID, callback) => {
     if (Array.isArray(result)) {
       return callback(null, result.shift());
     }

@@ -195,6 +195,10 @@ class Auth0APIClient {
     return this.client.client.getChallenge(...params);
   }
 
+  getSignupChallenge(...params) {
+    return this.client.client.dbConnection.getSignupChallenge(...params);
+  }
+
   getPasswordlessChallenge(...params) {
     return this.client.client.passwordless.getChallenge(...params);
   }
