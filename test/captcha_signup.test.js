@@ -34,12 +34,14 @@ describe('captcha on signup', function () {
       beforeEach(function (done) {
         this.stub = h.stubGetChallenge({ required: false });
         this.stub = h.stubGetSignupChallenge([svgCaptchaRequiredResponse1, svgCaptchaRequiredResponse2]);
-        this.lock = h.displayLock('', lockOpts, () =>  {
-          h.clickSignUpTab();
-          h.waitUntilExists(this.lock, '.auth0-lock-with-terms', () => {
-            done();
+        setTimeout(() =>  {
+          this.lock = h.displayLock('', lockOpts, () =>  {
+            h.clickSignUpTab();
+            h.waitUntilExists(this.lock, '.auth0-lock-with-terms', () => {
+              done();
+            });
           });
-        });
+        }, 1000);
       });
 
       afterEach(function () {
