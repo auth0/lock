@@ -60,24 +60,5 @@ export function syncRemoteData(m) {
     successFn: setCaptcha
   });
 
-  m = sync(m, 'passwordlessCaptcha', {
-    syncFn: (m, cb) => {
-      webApi.getPasswordlessChallenge(m.get('id'), (err, r) => {
-        cb(null, r);
-      });
-    },
-    successFn: setPasswordlessCaptcha
-  });
-
-  m = sync(m, 'passwordResetCaptcha', {
-    syncFn: (m, cb) => {
-      webApi.getPasswordResetChallenge(m.get('id'), (err, r) => {
-        cb(null, r);
-      });
-    },
-    successFn: setPasswordResetCaptcha
-  });
-
-
   return m;
 }

@@ -89,9 +89,9 @@ describe('passwordless connection', () => {
     it('should call webAPI.getUserCountry when there is no default location', () => {
       initPasswordless(null, {});
       const sync = require('sync');
-      expectMockToMatch(sync, 1);
+      expectMockToMatch(sync, 2);
 
-      const { syncFn, successFn } = sync.mock.calls[0][2];
+      const { syncFn, successFn } = sync.mock.calls[1][2];
       syncFn(null, 'cb');
       expectMockToMatch(require('core/web_api').getUserCountry, 1);
 
