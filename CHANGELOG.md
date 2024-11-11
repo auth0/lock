@@ -1,5 +1,18 @@
 # Change Log
 
+## [v13.0.0](https://github.com/auth0/lock/tree/v13.0.0) (2024-11-11)
+[Full Changelog](https://github.com/auth0/lock/compare/v12.5.1...v13.0.0)
+
+**Added**
+- [IAMRISK-3539] Use signup classic endpoint for captcha [\#2587](https://github.com/auth0/lock/pull/2587) ([TSLarson](https://github.com/TSLarson))
+
+**Fixed**
+- [IAMRISK-3554] hcaptcha bug fix [\#2566](https://github.com/auth0/lock/pull/2566) ([Treterten](https://github.com/Treterten))
+
+**Security**
+- ci: changed the trigger from pull_request_target to pull_request for better security [\#2584](https://github.com/auth0/lock/pull/2584) ([nandan-bhat](https://github.com/nandan-bhat))
+- Update codeowner file with new GitHub team name [\#2572](https://github.com/auth0/lock/pull/2572) ([stevenwong-okta](https://github.com/stevenwong-okta))
+
 ## [v12.5.1](https://github.com/auth0/lock/tree/v12.5.1) (2024-05-30)
 
 [Full Changelog](https://github.com/auth0/lock/compare/v12.5.0...v12.5.1)
