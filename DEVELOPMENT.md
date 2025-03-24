@@ -1,6 +1,6 @@
 ## Environment
 
-Requires:
+Requires: 
 
 - [Node LTS](https://nodejs.org)
 
