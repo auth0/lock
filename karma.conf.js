@@ -114,7 +114,7 @@ module.exports = function (config) {
       },
       chrome_headless: {
         base: 'Chrome',
-        flags: ['--headless', '--no-sandbox']
+        flags: ['--headless']
       }
     },
 
