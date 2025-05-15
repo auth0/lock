@@ -52,6 +52,8 @@ jobs:
         run: npm run test
 
       - name: Run Karma end-to-end tests
+        env:
+          CI: true
         run: npm run test:e2e
 
       - name: Upload coverage
