@@ -1,8 +1,6 @@
 module.exports = function (config) {
   process.env.CHROME_BIN = require('puppeteer').executablePath();
 
-  const isCI = process.env.CI;
-
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -80,7 +78,8 @@ module.exports = function (config) {
         browser_version: 'latest',
         os: 'Windows',
         os_version: '10',
-        displayName: 'Chrome on Windows 10'
+        displayName: 'Chrome on Windows 10',
+        flags: ['--no-sandbox']
       },
       bs_edge_windows: {
         base: 'BrowserStack',
@@ -116,10 +115,14 @@ module.exports = function (config) {
       },
       chrome_headless: {
         base: 'Chrome',
-        flags: isCI ? ['--headless', '--no-sandbox'] : ['--headless']
+        flags: ['--headless']
+      },
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
       }
     },
 
-    browsers: ['chrome_headless']
+    browsers: [process.env.CI ? 'ChromeHeadlessNoSandbox' : 'ChromeHeadless']
   });
 };
