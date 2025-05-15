@@ -33,7 +33,7 @@
     "test:e2e:browserstack": "cross-env BABEL_ENV=test karma start",
     "test": "jest --coverage --runInBand",
     "test:watch": "jest --watch --coverage",
-    "test:es-check": "es-check es5 'build/*.js'",
+    "test:es-check": "es-check es2017 'build/*.js'",
     "publish:cdn": "ccu --trace",
     "i18n:translate": "grunt dist && node scripts/complete-translations.js && npm run i18n:prettier && npm run build",
     "i18n:prettier": "prettier --write src/i18n/*",
