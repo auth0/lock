@@ -124,6 +124,7 @@
     "auth0-js": "^9.27.0",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
+    "chokidar": "^3.6.0",
     "classnames": "^2.3.2",
     "dompurify": "^2.5.4",
     "immutable": "^3.7.6",
@@ -137,6 +138,9 @@
     "trim": "^1.0.1",
     "url-join": "^1.1.0",
     "validator": "^13.6.0"
+  },
+  "overrides": {
+    "cheerio": "1.0.0-rc.12"
   },
   "ccu": {
     "name": "lock",
@@ -188,5 +192,8 @@
     "*.{js,jsx,json}": [
       "prettier --write"
     ]
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.3"
   }
 }
