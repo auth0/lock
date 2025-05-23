@@ -78,7 +78,7 @@ module.exports = function (config) {
         browser_version: 'latest',
         os: 'Windows',
         os_version: '10',
-        displayName: 'Chrome on Windows 10',
+        displayName: 'Chrome on Windows 10'
       },
       bs_edge_windows: {
         base: 'BrowserStack',
