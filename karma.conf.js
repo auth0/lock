@@ -79,7 +79,6 @@ module.exports = function (config) {
         os: 'Windows',
         os_version: '10',
         displayName: 'Chrome on Windows 10',
-        flags: ['--no-sandbox']
       },
       bs_edge_windows: {
         base: 'BrowserStack',

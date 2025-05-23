@@ -16,7 +16,7 @@
 
 ### Browser Compatibility
 
-We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 11.
+We ensure browser compatibility in Chrome, Safari, Firefox.
 
 ### Installation
 
