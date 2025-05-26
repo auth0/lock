@@ -115,9 +115,13 @@ module.exports = function (config) {
       chrome_headless: {
         base: 'Chrome',
         flags: ['--headless']
+      },
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
       }
     },
 
-    browsers: ['bs_chrome_windows']
+    browsers: [process.env.CI ? 'ChromeHeadlessNoSandbox' : 'ChromeHeadless']
   });
 };
