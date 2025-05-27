@@ -64,7 +64,7 @@
     "@cfaester/enzyme-adapter-react-18": "^0.8.0",
     "@google-cloud/translate": "^6.0.2",
     "babel-jest": "^29.3.1",
-    "babel-loader": "8.3.0",
+    "babel-loader": "8.4.1",
     "babel-plugin-stylus-compiler": "^1.4.0",
     "babel-plugin-transform-css-import-to-string": "0.0.2",
     "babel-plugin-version-inline": "^1.0.0",
