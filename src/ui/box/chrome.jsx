@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { sanitize } from 'dompurify';
+import DOMPurify from 'dompurify';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import MultisizeSlide from './multisize_slide';
 import GlobalMessage from './global_message';
@@ -291,7 +291,7 @@ export default class Chrome extends React.Component {
       return typeof message === 'string'
         ? // dangerouslySetInnerHTML input is sanitized using dompurify
           // eslint-disable-next-line react/no-danger
-          React.createElement('span', { dangerouslySetInnerHTML: { __html: sanitize(message) } })
+          React.createElement('span', { dangerouslySetInnerHTML: { __html: DOMPurify.sanitize(message) } })
         : message;
     }
 

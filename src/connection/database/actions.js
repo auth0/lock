@@ -3,7 +3,7 @@ import webApi from '../../core/web_api';
 import { closeLock, logIn as coreLogIn, logInSuccess, validateAndSubmit } from '../../core/actions';
 import * as l from '../../core/index';
 import * as c from '../../field/index';
-import { sanitize } from 'dompurify';
+import DOMPurify from 'dompurify';
 
 import {
   databaseConnection,
@@ -108,7 +108,7 @@ export function signUp(id) {
       additionalSignUpFields(m).forEach(x => {
         const storage = x.get('storage');
         const fieldName = x.get('name');
-        const fieldValue = sanitize(c.getFieldValue(m, x.get('name')), { ALLOWED_TAGS: [] });
+        const fieldValue = DOMPurify.sanitize(c.getFieldValue(m, x.get('name')), { ALLOWED_TAGS: [] });
 
         switch (storage) {
           case 'root':
@@ -264,10 +264,10 @@ export function resetPasswordSuccess(id) {
   if (hasScreen(m, 'login')) {
     swapCaptcha(id, Flow.PASSWORD_RESET, false, () => {
       swap(
-          updateEntity,
-          'lock',
-          id,
-          m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
+        updateEntity,
+        'lock',
+        id,
+        m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
       );
     });
 
