@@ -30,7 +30,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.auth0.com/js/lock/13.0.0/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/14.0.0/lock.min.js"></script>
 ```
 
 ### Configure Auth0
