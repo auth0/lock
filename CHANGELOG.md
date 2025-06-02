@@ -4,6 +4,7 @@
 [Full Changelog](https://github.com/auth0/lock/compare/v13.0.0...v14.0.0)
 
 **⚠️ BREAKING CHANGES**
+- Dropped support for Internet Explorer (IE).
 - Update dependencies and refactor DOMPurify usage to default import [\#2606](https://github.com/auth0/lock/pull/2606) ([developerkunal](https://github.com/developerkunal))
 
 **Added**
