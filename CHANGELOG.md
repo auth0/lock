@@ -1,5 +1,14 @@
 # Change Log
 
+## [v14.0.0](https://github.com/auth0/lock/tree/v14.0.0) (2025-06-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v13.0.0...v14.0.0)
+
+**⚠️ BREAKING CHANGES**
+- Update dependencies and refactor DOMPurify usage to default import [\#2606](https://github.com/auth0/lock/pull/2606) ([developerkunal](https://github.com/developerkunal))
+
+**Added**
+- Add support for social connection Sign in with Shop [\#2602](https://github.com/auth0/lock/pull/2602) ([reinisb](https://github.com/reinisb))
+
 ## [v13.0.0](https://github.com/auth0/lock/tree/v13.0.0) (2024-11-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.5.1...v13.0.0)
 
