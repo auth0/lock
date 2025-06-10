@@ -3,7 +3,7 @@
 # SHELL := /bin/bash
 # .SHELLFLAGS = -ec
 
-.PHONY: install lint test build cdn-publish
+.PHONY: install lint test build publish
 
 # Puppeteer and config/cache directories
 PUPPETEER_CACHE_DIR := $(CURDIR)/.puppeteer-cache
@@ -29,6 +29,6 @@ build:
 	@echo "Running build..."
 	rm -rf dist && rm -rf build && npm run build
 
-cdn-publish:
+publish:
 	@echo "Running cdn-publish..."
 	npm run publish:cdn
