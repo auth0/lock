@@ -5,12 +5,20 @@
 
 .PHONY: install lint test build cdn-publish
 
-# Define a local cache directory for Puppeteer to avoid permission issues
+# Puppeteer and config/cache directories
 PUPPETEER_CACHE_DIR := $(CURDIR)/.puppeteer-cache
+XDG_CONFIG_HOME := $(WORKSPACE)@tmp/.chromium
+XDG_CACHE_HOME := $(WORKSPACE)@tmp/.chromium
 
 install:
-	@echo "Running install with Puppeteer cache dir: $(PUPPETEER_CACHE_DIR)"
-	PUPPETEER_CACHE_DIR=$(PUPPETEER_CACHE_DIR) npm install
+	@echo "Running install..."
+	mkdir -p $(PUPPETEER_CACHE_DIR)
+	mkdir -p $(XDG_CONFIG_HOME)
+	mkdir -p $(XDG_CACHE_HOME)
+	XDG_CONFIG_HOME=$(XDG_CONFIG_HOME) \
+	XDG_CACHE_HOME=$(XDG_CACHE_HOME) \
+	PUPPETEER_CACHE_DIR=$(PUPPETEER_CACHE_DIR) \
+	npm install
 
 test:
 	@echo "Running test..."

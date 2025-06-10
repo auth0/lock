@@ -11,3 +11,5 @@ npm-debug.log
 local.log
 build/
 .puppeteer-cache/
+.npm-home/
+.chromium/
