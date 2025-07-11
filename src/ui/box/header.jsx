@@ -60,10 +60,10 @@ class WelcomeMessage extends React.Component {
 
     if (name) {
       className = 'auth0-lock-firstname';
-      message = name;
+      message = `${name} ankita`;
     } else {
       className = 'auth0-lock-name';
-      message = title;
+      message = `${title} ankita`;
     }
 
     return (
