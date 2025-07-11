@@ -1,14 +1,16 @@
+// karma.conf.js
 module.exports = function (config) {
+  // Point Chrome to the Puppeteer‐bundled binary
   process.env.CHROME_BIN = require('puppeteer').executablePath();
 
   config.set({
-    // base path that will be used to resolve all patterns (eg. files, exclude)
+    // base path, that will be used to resolve files and exclude
     basePath: '',
 
     // frameworks to use
     frameworks: ['mocha', 'browserify'],
 
-    //plugins
+    // plugins
     plugins: [
       'karma-mocha',
       'karma-babel-preprocessor',
@@ -22,17 +24,22 @@ module.exports = function (config) {
     files: [
       'test/**/*.test.js',
       'test/setup.js',
-      {
-        pattern: 'src/!(__tests__)/**/*.jsx?',
-        type: 'js'
-      }
+      // include all JS/JSX under src, but we'll exclude __tests__ folders below
+      { pattern: 'src/**/*.js?(x)', watched: false }
     ],
 
+    // files to exclude
+    exclude: [
+      'src/**/__tests__/**'
+    ],
+
+    // preprocess matching files before serving them to the browser
     preprocessors: {
-      'src/!(__tests__)/**/*.jsx?': ['browserify'],
+      'src/**/*.js?(x)': ['browserify'],
       'test/**/*.js': ['browserify']
     },
 
+    // browserify configuration
     browserify: {
       debug: true,
       transform: ['babelify'],
@@ -48,17 +55,18 @@ module.exports = function (config) {
     // enable / disable colors in the output (reporters and logs)
     colors: true,
 
+    // Continuous Integration mode
     singleRun: true,
 
+    // timeouts
     browserNoActivityTimeout: 60000,
-
-    browserDisconnectTimeout: 30000,
-
-    browserDisconnectTolerance: 10,
+    browserDisconnectTimeout:    30000,
+    browserDisconnectTolerance:  10,
 
     // level of logging
     logLevel: config.LOG_INFO,
 
+    // BrowserStack credentials & config
     browserStack: {
       username: process.env.BROWSERSTACK_USERNAME,
       accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
@@ -70,8 +78,9 @@ module.exports = function (config) {
       output: 'minimal'
     },
 
-    // define browsers
+    // define custom launchers
     customLaunchers: {
+      // BrowserStack launchers
       bs_chrome_windows: {
         base: 'BrowserStack',
         browser: 'chrome',
@@ -86,7 +95,7 @@ module.exports = function (config) {
         browser_version: 'latest',
         os: 'Windows',
         os_version: '10',
-        displayName: 'Chrome on Windows 10'
+        displayName: 'Edge on Windows 10'
       },
       bs_firefox_windows: {
         base: 'BrowserStack',
@@ -102,22 +111,31 @@ module.exports = function (config) {
         browser_version: 'latest',
         os: 'OS X',
         os_version: 'Big Sur',
-        displayName: 'Latest Safari on Big Sur'
+        displayName: 'Safari on Big Sur'
       },
       bs_ie11_windows: {
         base: 'BrowserStack',
         browser: 'IE',
-        browser_version: 'latest',
+        browser_version: '11.0',
         os: 'Windows',
         os_version: '10',
         displayName: 'IE11 on Windows 10'
       },
-      chrome_headless: {
-        base: 'Chrome',
-        flags: ['--headless']
+
+      // Headless Chrome for CI/local without sandbox
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-gpu',
+          '--remote-debugging-port=9222'
+        ]
       }
     },
 
-    browsers: ['bs_chrome_windows']
+    // pick which browsers to run on; override via --browsers CLI if needed
+    // for CI (npm run test:e2e) we'll default to headless
+    browsers: ['ChromeHeadlessNoSandbox']
   });
 };
