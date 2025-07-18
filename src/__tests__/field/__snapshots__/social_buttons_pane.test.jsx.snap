@@ -32,6 +32,7 @@ exports[`SocialButtonsPane calls signUpError when isSignUp===true and terms were
 exports[`SocialButtonsPane renders correctly 1`] = `
 <div
   className="auth-lock-social-buttons-pane"
+  tabIndex={0}
 >
   <div
     className="auth0-lock-social-buttons-container"
@@ -61,6 +62,7 @@ exports[`SocialButtonsPane renders correctly 1`] = `
 exports[`SocialButtonsPane shows header when instructions are available 1`] = `
 <div
   className="auth-lock-social-buttons-pane"
+  tabIndex={0}
 >
   <p>
     instructions
@@ -93,6 +95,7 @@ exports[`SocialButtonsPane shows header when instructions are available 1`] = `
 exports[`SocialButtonsPane shows loading when showLoading === true 1`] = `
 <div
   className="auth-lock-social-buttons-pane"
+  tabIndex={0}
 >
   <div
     className="auth0-lock-social-buttons-container"
