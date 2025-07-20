@@ -1,10 +1,8 @@
 const path_module = require('path');
-const NodeESModuleLoader = require('node-es-module-loader');
 const emojic = require('emojic');
 const chalk = require('chalk');
 const glob = require('glob');
 const directory = path_module.join(__dirname, '..', 'src', 'i18n');
-const loader = new NodeESModuleLoader(directory);
 
 /**
  * Flattens an object recursively so that any nested objects are referred to on the root object using
@@ -83,8 +81,8 @@ const validateLangFile = async (reference, path, verbose) => {
     missing: 0
   };
 
-  const lang = await loader.import(path);
-  const langFlattened = flattenObject(lang.default.default);
+  const lang = await import(path);
+  const langFlattened = flattenObject(lang.default);
 
   const result = compareKeys(reference, langFlattened);
 
@@ -125,8 +123,8 @@ const validateLangFile = async (reference, path, verbose) => {
 
 const run = async () => {
   // Load the 'en' lang file to act as the reference for all others
-  const en = await loader.import(path_module.join(directory, 'en.js'));
-  const enBenchmark = flattenObject(en.default.default, []);
+  const en = await import(path_module.join(directory, 'en.js'));
+  const enBenchmark = flattenObject(en.default, []);
 
   const args = process.argv.slice(2);
   let filePattern = args[0] ? args[0] : '*.js';
