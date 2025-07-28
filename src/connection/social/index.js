@@ -33,6 +33,7 @@ export const STRATEGIES = {
   evernote: 'Evernote',
   'evernote-sandbox': 'Evernote (sandbox)',
   shopify: 'Shopify',
+  shop: 'Shop',
   soundcloud: 'Soundcloud',
   thecity: 'The City',
   'thecity-sandbox': 'The City (sandbox)',

@@ -1,5 +1,11 @@
 # Change Log
 
+## [v13.1.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-07-17)
+
+**Added**
+- Add support for social connection Sign in with Shop [\#2602](https://github.com/auth0/lock/pull/2602) ([reinisb](https://github.com/reinisb))
+- fix: Rename shop strategy [\#2641](https://github.com/auth0/lock/pull/2641) ([omarquazi-okta](https://github.com/omarquazi-okta)) 
+
 ## [v13.0.0](https://github.com/auth0/lock/tree/v13.0.0) (2024-11-11)
 [Full Changelog](https://github.com/auth0/lock/compare/v12.5.1...v13.0.0)
 
