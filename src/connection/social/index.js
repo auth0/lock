@@ -38,7 +38,7 @@ export const STRATEGIES = {
   thecity: 'The City',
   'thecity-sandbox': 'The City (sandbox)',
   thirtysevensignals: 'Basecamp',
-  twitter: 'Twitter',
+  twitter: 'X',
   vkontakte: 'vKontakte',
   windowslive: 'Microsoft',
   wordpress: 'Wordpress',
