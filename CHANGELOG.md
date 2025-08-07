@@ -8,6 +8,7 @@ omarquazi-okta](https://github.com/omarquazi-okta))
 - Fix: social connection names not showing displayName correctly [\#2651](https://github.com/auth0/lock/pull/2651) ([
 omarquazi-okta](https://github.com/omarquazi-okta))
 - Fix: Accessibility Issues [\#2624](https://github.com/auth0/lock/pull/2624) ([ankita10119](https://github.com/ankita10119))
+- security: Remove vulnerable node-es-module-loader dependency (SEC-2160) [\#2629](https://github.com/auth0/lock/pull/2629) ([harekrishnarai](https://github.com/harekrishnarai))
 
 ## [v13.1.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-07-17)
 
