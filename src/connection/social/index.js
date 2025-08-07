@@ -51,7 +51,7 @@ export const STRATEGIES = {
 
 export function displayName(connection) {
   if (['oauth1', 'oauth2'].indexOf(connection.get('strategy')) !== -1) {
-    return connection.get('name');
+    return connection.get('displayName') || connection.get('name');
   }
   return STRATEGIES[connection.get('strategy')];
 }
