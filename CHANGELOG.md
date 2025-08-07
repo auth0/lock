@@ -1,5 +1,14 @@
 # Change Log
 
+## [v13.2.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-08-07)
+
+**Fixes**
+- Update old Twitter icon and name to "X" [\#2649](https://github.com/auth0/lock/pull/2649) ([
+omarquazi-okta](https://github.com/omarquazi-okta))
+- Fix: social connection names not showing displayName correctly [\#2651](https://github.com/auth0/lock/pull/2651) ([
+omarquazi-okta](https://github.com/omarquazi-okta))
+- Fix: Accessibility Issues [\#2624](https://github.com/auth0/lock/pull/2624) ([ankita10119](https://github.com/ankita10119))
+
 ## [v13.1.0](https://github.com/auth0/lock/tree/v13.1.0) (2025-07-17)
 
 **Added**
