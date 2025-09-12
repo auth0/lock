@@ -1,38 +1,5 @@
 # Change Log
 
-## [v14.1.0](https://github.com/auth0/lock/tree/v14.1.0) (2025-09-12)
-[Full Changelog](https://github.com/auth0/lock/compare/v14.0.0...v14.1.0)
-
-**Changed**
-- chore(deps-dev): Bump karma from 6.4.3 to 6.4.4 [\#2668](https://github.com/auth0/lock/pull/2668) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps): Bump pbkdf2 from 3.1.2 to 3.1.3 [\#2633](https://github.com/auth0/lock/pull/2633) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps): Bump validator from 13.15.0 to 13.15.15 [\#2620](https://github.com/auth0/lock/pull/2620) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps): Bump sha.js from 2.4.11 to 2.4.12 [\#2661](https://github.com/auth0/lock/pull/2661) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps): Bump cipher-base from 1.0.4 to 1.0.6 [\#2662](https://github.com/auth0/lock/pull/2662) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps): Bump codecov/codecov-action from 5.4.3 to 5.5.1 [\#2666](https://github.com/auth0/lock/pull/2666) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps-dev): Bump puppeteer from 24.9.0 to 24.19.0 [\#2667](https://github.com/auth0/lock/pull/2667) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps-dev): Bump tmp from 0.2.3 to 0.2.5 [\#2656](https://github.com/auth0/lock/pull/2656) ([dependabot[bot]](https://github.com/apps/dependabot))
-- security: bump fsevents to latest(SEC- 2161) [\#2643](https://github.com/auth0/lock/pull/2643) ([katesaikishore](https://github.com/katesaikishore))
-- chore(deps-dev): Bump eslint-plugin-react from 7.34.1 to 7.37.5 [\#2617](https://github.com/auth0/lock/pull/2617) ([dependabot[bot]](https://github.com/apps/dependabot))
-- chore(deps): Bump @grpc/grpc-js and @google-cloud/translate [\#2565](https://github.com/auth0/lock/pull/2565) ([dependabot[bot]](https://github.com/apps/dependabot))
-
-**Fixed**
-- Fix: social connection names not showing displayName correctly [\#2651](https://github.com/auth0/lock/pull/2651) ([omarquazi-okta](https://github.com/omarquazi-okta))
-- Update old Twitter icon and name to "X" [\#2649](https://github.com/auth0/lock/pull/2649) ([omarquazi-okta](https://github.com/omarquazi-okta))
-- Fix issue 2546 - TypeError: Super expression must either be null or a function [\#2578](https://github.com/auth0/lock/pull/2578) ([Hworden](https://github.com/Hworden))
-- Fix: Accessibility Issues #2624 [\#2642](https://github.com/auth0/lock/pull/2642) ([ankita10119](https://github.com/ankita10119))
-- fix: Rename shop strategy [\#2641](https://github.com/auth0/lock/pull/2641) ([omarquazi-okta](https://github.com/omarquazi-okta))
-- Fix release pipeline cdn [\#2628](https://github.com/auth0/lock/pull/2628) ([developerkunal](https://github.com/developerkunal))
-- Fix Release PIPELINE [\#2627](https://github.com/auth0/lock/pull/2627) ([developerkunal](https://github.com/developerkunal))
-- chore: update .gitignore and Makefile for Puppeteer cache and config directories [\#2626](https://github.com/auth0/lock/pull/2626) ([developerkunal](https://github.com/developerkunal))
-- Fix Makefile for Puppeteer cache support [\#2625](https://github.com/auth0/lock/pull/2625) ([developerkunal](https://github.com/developerkunal))
-
-**Removed**
-- chore(ci): Remove Semgrep GHA Workflow [\#2650](https://github.com/auth0/lock/pull/2650) ([eduardoboronat-okta](https://github.com/eduardoboronat-okta))
-
-**Security**
-- security: Remove vulnerable node-es-module-loader dependency (SEC-2160) [\#2629](https://github.com/auth0/lock/pull/2629) ([harekrishnarai](https://github.com/harekrishnarai))
-
 ## [v14.0.0](https://github.com/auth0/lock/tree/v14.0.0) (2025-06-02)
 [Full Changelog](https://github.com/auth0/lock/compare/v13.0.0...v14.0.0)
 
