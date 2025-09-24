@@ -341,7 +341,11 @@ body {
    },
    rememberLastLogin: false
  }).show();
+ 
 
+// TODO. Need to fix the captcha not showing issue when this option is selected
+// Jira Task: ten-321
+// Assignee: Princeton Ebanks
  new Auth0Lock(cid, domain, {
    allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "auth0.com", "rolodato"],
    auth: { redirect: false, sso: false },
