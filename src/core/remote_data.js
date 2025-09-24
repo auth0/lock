@@ -6,7 +6,7 @@ import * as l from './index';
 import { isADEnabled } from '../connection/enterprise'; // shouldn't depend on this
 import sync, { isSuccess } from '../sync';
 import webApi from './web_api';
-import { setCaptcha, setPasswordlessCaptcha, setPasswordResetCaptcha } from '../core/index';
+import { setCaptcha, setPasswordlessCaptcha, setPasswordResetCaptcha, setSignupChallenge } from '../core/index';
 
 export function syncRemoteData(m) {
   if (l.useTenantInfo(m)) {
@@ -58,6 +58,15 @@ export function syncRemoteData(m) {
       });
     },
     successFn: setCaptcha
+  });
+
+  m = sync(m, 'signupCaptcha', {
+    syncFn: (m, cb) => {
+      webApi.getSignupChallenge(m.get('id'), (err, r) => {
+        cb(null, r);
+      });
+    },
+    successFn: setSignupChallenge
   });
 
   return m;
