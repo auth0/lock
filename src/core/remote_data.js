@@ -62,7 +62,7 @@ export function syncRemoteData(m) {
 
   m = sync(m, 'signupCaptcha', {
     syncFn: (m, cb) => {
-      webApi.getChallenge(m.get('id'), (err, r) => {
+      webApi.getSignupChallenge(m.get('id'), (err, r) => {
         cb(null, r);
       });
     },
