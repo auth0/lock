@@ -8,7 +8,7 @@ import sync, { isSuccess } from '../sync';
 import webApi from './web_api';
 import { setCaptcha, setSignupChallenge } from '../core/index';
 
-export function syncRemoteData(m) {
+export function syncRemoteData(m, initialScreen = 'login') {
   if (l.useTenantInfo(m)) {
     m = sync(m, 'client', {
       syncFn: (m, cb) => fetchTenantSettings(l.tenantBaseUrl(m), cb),
@@ -51,23 +51,26 @@ export function syncRemoteData(m) {
     }
   });
 
-  m = sync(m, 'captcha', {
-    syncFn: (m, cb) => {
-      webApi.getChallenge(m.get('id'), (err, r) => {
-        cb(null, r);
-      });
-    },
-    successFn: setCaptcha
-  });
-
-  m = sync(m, 'signupCaptcha', {
-    syncFn: (m, cb) => {
-      webApi.getSignupChallenge(m.get('id'), (err, r) => {
-        cb(null, r);
-      });
-    },
-    successFn: setSignupChallenge
-  });
+  if (initialScreen === 'login') {
+    m = sync(m, 'captcha', {
+      syncFn: (m, cb) => {
+        webApi.getChallenge(m.get('id'), (err, r) => {
+          cb(null, r);
+        });
+      },
+      successFn: setCaptcha
+    });
+  }
+  else if (initialScreen === 'signUp') {
+    m = sync(m, 'signupCaptcha', {
+      syncFn: (m, cb) => {
+        webApi.getSignupChallenge(m.get('id'), (err, r) => {
+          cb(null, r);
+        });
+      },
+      successFn: setSignupChallenge
+    });
+  }
 
   return m;
 }

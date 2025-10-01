@@ -52,26 +52,37 @@ describe('remote_data.syncRemoteData()', () => {
   });
 
   describe('captcha syncing', () => {
-    it('should sync both login captcha and signup captcha', () => {
+    it('should sync login captcha when initialScreen is login', () => {
       const syncRemoteData = getSyncRemoteData();
-      syncRemoteData('mockModel');
+      syncRemoteData('mockModel', 'login');
 
       const syncCalls = require('sync').mock.calls;
-      
       const captchaCall = syncCalls.find(c => c[1] === 'captcha');
       const signupCaptchaCall = syncCalls.find(c => c[1] === 'signupCaptcha');
 
       expect(captchaCall).toBeDefined();
+      expect(signupCaptchaCall).toBeUndefined();
+    });
+
+    it('should sync signup captcha when initialScreen is signUp', () => {
+      const syncRemoteData = getSyncRemoteData();
+      syncRemoteData('mockModel', 'signUp');
+
+      const syncCalls = require('sync').mock.calls;
+      const captchaCall = syncCalls.find(c => c[1] === 'captcha');
+      const signupCaptchaCall = syncCalls.find(c => c[1] === 'signupCaptcha');
+
+      expect(captchaCall).toBeUndefined();
       expect(signupCaptchaCall).toBeDefined();
     });
 
-    it('should call webApi.getChallenge when captcha syncFn is executed', () => {
+    it('should call webApi.getChallenge when login captcha syncFn is executed', () => {
       const mockModel = { get: jest.fn().mockReturnValue('test-id') };
       const syncRemoteData = getSyncRemoteData();
       
       require('core/web_api').getChallenge.mockClear();
       
-      syncRemoteData(mockModel);
+      syncRemoteData(mockModel, 'login');
 
       const syncCalls = require('sync').mock.calls;
       const captchaCall = syncCalls.find(c => c[1] === 'captcha');
@@ -88,7 +99,7 @@ describe('remote_data.syncRemoteData()', () => {
       
       require('core/web_api').getSignupChallenge.mockClear();
       
-      syncRemoteData(mockModel);
+      syncRemoteData(mockModel, 'signUp');
 
       const syncCalls = require('sync').mock.calls;
       const signupCaptchaCall = syncCalls.find(c => c[1] === 'signupCaptcha');
@@ -99,39 +110,40 @@ describe('remote_data.syncRemoteData()', () => {
       expect(require('core/web_api').getSignupChallenge).toHaveBeenCalledWith('test-id', expect.any(Function));
     });
 
-    it('should sync both login captcha and signup captcha with proper keys', () => {
+    it('should default to login captcha when no initialScreen is provided', () => {
       const syncRemoteData = getSyncRemoteData();
-      syncRemoteData('mockModel');
-
-      const syncCalls = require('sync').mock.calls;
-      const syncKeys = syncCalls.map(call => call[1]);
-      
-      expect(syncKeys).toContain('captcha');
-      expect(syncKeys).toContain('signupCaptcha');
-    });
-
-    it('should configure captcha syncs with syncFn functions', () => {
-      const syncRemoteData = getSyncRemoteData();
-      syncRemoteData('mockModel');
+      syncRemoteData('mockModel'); // No second parameter
 
       const syncCalls = require('sync').mock.calls;
       const captchaCall = syncCalls.find(c => c[1] === 'captcha');
       const signupCaptchaCall = syncCalls.find(c => c[1] === 'signupCaptcha');
       
-      expect(captchaCall[2].syncFn).toEqual(expect.any(Function));
-      expect(signupCaptchaCall[2].syncFn).toEqual(expect.any(Function));
+      expect(captchaCall).toBeDefined();
+      expect(signupCaptchaCall).toBeUndefined();
     });
 
-    it('should handle webApi errors gracefully', () => {
+    it('should not sync any captcha for other initialScreen values', () => {
+      const syncRemoteData = getSyncRemoteData();
+      syncRemoteData('mockModel', 'forgotPassword');
+
+      const syncCalls = require('sync').mock.calls;
+      const captchaCall = syncCalls.find(c => c[1] === 'captcha');
+      const signupCaptchaCall = syncCalls.find(c => c[1] === 'signupCaptcha');
+      
+      expect(captchaCall).toBeUndefined();
+      expect(signupCaptchaCall).toBeUndefined();
+    });
+
+    it('should handle webApi.getSignupChallenge errors gracefully', () => {
       const mockModel = { get: jest.fn().mockReturnValue('test-id') };
       const syncRemoteData = getSyncRemoteData();
-      syncRemoteData(mockModel);
+      syncRemoteData(mockModel, 'signUp');
 
       const syncCalls = require('sync').mock.calls;
       const signupCaptchaCall = syncCalls.find(c => c[1] === 'signupCaptcha');
       
       require('core/web_api').getSignupChallenge.mockImplementation((id, cb) => {
-        cb(new Error('Network error'), null);
+        cb(new Error('404 Not Found'), null);
       });
 
       const mockCallback = jest.fn();
@@ -140,24 +152,22 @@ describe('remote_data.syncRemoteData()', () => {
       expect(mockCallback).toHaveBeenCalledWith(null, null);
     });
 
-    it('should handle successful webApi response', () => {
+    it('should handle webApi.getChallenge errors gracefully', () => {
       const mockModel = { get: jest.fn().mockReturnValue('test-id') };
       const syncRemoteData = getSyncRemoteData();
-      syncRemoteData(mockModel);
+      syncRemoteData(mockModel, 'login');
 
       const syncCalls = require('sync').mock.calls;
-      const signupCaptchaCall = syncCalls.find(c => c[1] === 'signupCaptcha');
+      const captchaCall = syncCalls.find(c => c[1] === 'captcha');
       
-      const mockCaptchaResponse = { required: true, siteKey: 'test-key' };
-      
-      require('core/web_api').getSignupChallenge.mockImplementation((id, cb) => {
-        cb(null, mockCaptchaResponse);
+      require('core/web_api').getChallenge.mockImplementation((id, cb) => {
+        cb(new Error('Network error'), null);
       });
 
       const mockCallback = jest.fn();
-      signupCaptchaCall[2].syncFn(mockModel, mockCallback);
+      captchaCall[2].syncFn(mockModel, mockCallback);
 
-      expect(mockCallback).toHaveBeenCalledWith(null, mockCaptchaResponse);
+      expect(mockCallback).toHaveBeenCalledWith(null, null);
     });
   });
 });
