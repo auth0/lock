@@ -18,8 +18,8 @@ import { isFieldValid, showInvalidField, hideInvalidFields, clearFields } from '
 export function setupLock(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn) {
   let m = l.setup(id, clientID, domain, options, hookRunner, emitEventFn, handleEventFn);
 
-  m = syncRemoteData(m);
-
+  m = syncRemoteData(m, options?.initialScreen);
+  
   preload(l.ui.logo(m) || defaultProps.logo);
 
   webApi.setupClient(

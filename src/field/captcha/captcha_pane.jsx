@@ -17,6 +17,12 @@ export default class CaptchaPane extends React.Component {
     const captcha = getCaptchaConfig(lock, flow);
     const value = getFieldValue(lock, 'captcha');
     const isValid = !isFieldVisiblyInvalid(lock, 'captcha');
+
+    // If no captcha config, don't render anything
+    if (!captcha) {
+      return null;
+    }
+
     const provider = captcha.get('provider');
 
     if (isThirdPartyCaptcha(provider)) {
