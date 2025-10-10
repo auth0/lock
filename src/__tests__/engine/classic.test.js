@@ -12,12 +12,15 @@ describe('Classic Engine', () => {
   });
   test('willShow calls `resolveAdditionalSignUpFields`', () => {
     const classic = getClassic();
-    const model = classic.willShow(model, {});
-    expect(model.resolveAdditionalSignUpFields).toBe(true);
+    const inputModel = {};
+    const resultModel = classic.willShow(inputModel, {});
+    expect(resultModel.resolveAdditionalSignUpFields).toBe(true);
+
   });
   test('willShow calls `overrideDatabaseOptions`', () => {
     const classic = getClassic();
-    const model = classic.willShow(model, {});
-    expect(model.overrideDatabaseOptions).toBe(true);
+    const inputModel = {};
+    const resultModel = classic.willShow(inputModel, {});
+    expect(resultModel.overrideDatabaseOptions).toBe(true);
   });
 });
