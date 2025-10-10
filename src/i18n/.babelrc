@@ -1,4 +1,0 @@
-{
-  "plugins": ["version-inline", "transform-css-import-to-string", "babel-plugin-stylus-compiler"],
-  "presets": ["@babel/preset-env"]
-}
