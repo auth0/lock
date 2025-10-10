@@ -8,35 +8,41 @@ const setResolvedConnection = (...params) => require('core/index').setResolvedCo
 const setup = (...params) => require('core/index').setup(...params);
 
 const mockLock = 'm';
-let mockSet;
-let mockInit;
 
 jest.mock('i18n', () => ({
   initI18n: jest.fn(),
   html: (...keys) => keys.join()
 }));
 
-jest.mock('utils/data_utils', () => ({
-  dataFns: () => ({
-    get: jest.fn(),
-    set: mockSet,
-    init: mockInit
-  })
-}));
+
+jest.mock('utils/data_utils', () => {
+  const mockSet = jest.fn();
+  const mockInit = jest.fn();
+
+  return {
+    mockSet,
+    mockInit,
+    dataFns: () => ({
+      get: jest.fn(),
+      set: mockSet,
+      init: mockInit
+    })
+  };
+});
+
+const { mockSet, mockInit } = require('utils/data_utils');
 
 describe('setup', () => {
   beforeEach(() => {
-    mockInit = jest.fn();
-    jest.resetModules();
+     jest.clearAllMocks();
   });
 
   it('default redirectUrl should not include location.hash', () => {
     setURL('https://test.com/path/#not-this-part');
     const options = {};
     setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
-    const { mock } = mockInit;
-    expect(mock.calls.length).toBe(1);
-    const model = mock.calls[0][1].toJS();
+    expect(mockInit.mock.calls.length).toBe(1);
+    const model = mockInit.mock.calls[0][1].toJS();
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
 
@@ -47,9 +53,8 @@ describe('setup', () => {
 
     const options = {};
     setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
-    const { mock } = mockInit;
-    expect(mock.calls.length).toBe(1);
-    const model = mock.calls[0][1].toJS();
+    expect(mockInit.mock.calls.length).toBe(1);
+    const model = mockInit.mock.calls[0][1].toJS();
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
 
@@ -249,7 +254,6 @@ describe('setup', () => {
 
 describe('setResolvedConnection', () => {
   beforeEach(() => {
-    mockSet = jest.fn();
     jest.resetModules();
   });
   it('sets undefined when is called with undefined', () => {
