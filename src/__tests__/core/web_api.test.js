@@ -1,5 +1,4 @@
 import Auth0WebApi from '../../core/web_api';
-import Auth0APIClient from '../../core/web_api/p2_api';
 import { JSDOM } from 'jsdom';
 
 jest.mock('../../core/web_api/p2_api', () => {
