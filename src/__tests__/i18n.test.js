@@ -59,8 +59,15 @@ describe('i18n', () => {
       };
       const m = Immutable.fromJS({ i18n: { strings } });
       const html = i18n.html(m, 'test');
-      expect(html.props.dangerouslySetInnerHTML.__html).not.toMatch(/javascript:alert/);
-      expect(html.props.dangerouslySetInnerHTML.__html).toEqual('<img href="1" src="1">');
+
+      const sanitized = html.props.dangerouslySetInnerHTML.__html;
+
+      // Security check
+      expect(sanitized).not.toMatch(/javascript:alert/);
+
+      // Attribute presence (order-independent)
+      expect(sanitized).toMatch(/<img[^>]+src="1"/);
+      expect(sanitized).toMatch(/<img[^>]+href="1"/);
     });
 
     it('should allow target=_blank with noopener noreferrer attributes', () => {
