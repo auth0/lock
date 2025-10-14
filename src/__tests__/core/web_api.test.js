@@ -75,14 +75,6 @@ describe('Auth0WebApi', () => {
       expect(client().isUniversalLogin).toBe(true);
     });
 
-    xit('sets redirect: true when on the same origin as the specified domain', () => {
-      
-      setWindowLocation(`https://${DEFAULT_DOMAIN}/`);
-      Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});
-
-      expect(client().authOpt.popup).toBe(false); // because redirect = true
-    });
-
     it('sets redirect: false when on a different origin as the specified domain', () => {
       setWindowLocation('https://different-origin.com/');
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});
