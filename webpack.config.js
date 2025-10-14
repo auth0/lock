@@ -60,7 +60,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-       exclude: /node_modules\/(?!(auth0-password-policies)\/)/
+        exclude: /node_modules\/(?!(auth0-password-policies)\/)/
       },
       {
         test: /\.styl$/,
