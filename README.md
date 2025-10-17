@@ -3,6 +3,7 @@
 ![Downloads](https://img.shields.io/npm/dw/auth0-lock)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/auth0/lock/actions/workflows/test.yml/badge.svg)](https://github.com/auth0/lock/actions/workflows/test.yml)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/auth0/lock)
 
 > :warning: Lock is built using React 18 from v12 onwards. Getting issues? Please [submit a bug report](https://github.com/auth0/lock/issues/new?assignees=&labels=bug+report,v12&template=report_a_bug.md&title=).
 
