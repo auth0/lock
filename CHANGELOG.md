@@ -1,5 +1,14 @@
 # Change Log
 
+## [v14.2.0](https://github.com/auth0/lock/tree/v14.2.0) (2025-10-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.1.0...v14.2.0)
+
+**Added**
+- feat: add Claude Code PR Review workflow [\#2679](https://github.com/auth0/lock/pull/2679) ([ankita10119](https://github.com/ankita10119))
+
+**Fixed**
+- fix: captcha not rendering for initial signup screen in classic login  [\#2677](https://github.com/auth0/lock/pull/2677) ([paebanks](https://github.com/paebanks))
+
 ## [v14.1.0](https://github.com/auth0/lock/tree/v14.1.0) (2025-09-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.0.0...v14.1.0)
 
