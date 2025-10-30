@@ -60,7 +60,7 @@ describe('i18n', () => {
       const m = Immutable.fromJS({ i18n: { strings } });
       const html = i18n.html(m, 'test');
       expect(html.props.dangerouslySetInnerHTML.__html).not.toMatch(/javascript:alert/);
-      expect(html.props.dangerouslySetInnerHTML.__html).toEqual('<img href="1" src="1">');
+      expect(html.props.dangerouslySetInnerHTML.__html).toMatch(/<img (src="1" href="1"|href="1" src="1")>/);
     });
 
     it('should allow target=_blank with noopener noreferrer attributes', () => {

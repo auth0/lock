@@ -40,7 +40,7 @@
     "i18n:validate": "node -r esm scripts/lang-audit.js"
   },
   "devDependencies": {
-    "@auth0/component-cdn-uploader": "^2.2.2",
+    "@auth0/component-cdn-uploader": "^2.4.0",
     "@babel/core": "^7.0.0",
     "@babel/eslint-parser": "^7.22.9",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -94,8 +94,7 @@
     "grunt-webpack": "^5.0.0",
     "husky": "^7.0.2",
     "jest": "^29.3.1",
-    "jest-environment-jsdom": "^29.3.1",
-    "jest-environment-jsdom-global": "^4.0.0",
+    "jest-environment-jsdom": "^30.2.0",
     "karma": "^6.4.1",
     "karma-babel-preprocessor": "^8.0.2",
     "karma-browserify": "^8.1.0",
@@ -119,7 +118,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "auth0-js": "^9.27.0",
+    "auth0-js": "^9.29.0",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.2",
@@ -158,6 +157,7 @@
       "<rootDir>/src/__tests__"
     ],
     "setupFiles": [
+      "<rootDir>/src/test-setup/polyfills.js",
       "<rootDir>/src/__tests__/setup-tests.js"
     ],
     "coveragePathIgnorePatterns": [
@@ -165,20 +165,25 @@
       "<rootDir>/test/",
       "<rootDir>/lib/",
       "<rootDir>/src/__tests__/testUtils.js",
-      "<rootDir>/src/__tests__/setup-tests.js"
+      "<rootDir>/src/__tests__/setup-tests.js",
+      "<rootDir>/src/test-setup/"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/test/",
       "<rootDir>/lib/",
       "<rootDir>/src/__tests__/testUtils.js",
-      "<rootDir>/src/__tests__/setup-tests.js"
+      "<rootDir>/src/__tests__/setup-tests.js",
+      "<rootDir>/src/test-setup/"
     ],
     "coverageReporters": [
       "lcov",
       "text-summary"
     ],
-    "testEnvironment": "jest-environment-jsdom-global"
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "cheerio": "<rootDir>/node_modules/cheerio/dist/commonjs/index.js"
+    }
   },
   "lint-staged": {
     "*.{js,jsx}": [

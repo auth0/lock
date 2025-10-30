@@ -49,11 +49,48 @@ export const extractPropsFromWrapper = (wrapper, index = 0) =>
 
 // Newer (> Jest v22) versions don't allow modification of location.href
 // but can use `jsdom.reconfigure` when `jsdom` is exposed globally.
-// https://www.npmjs.com/package/jest-environment-jsdom-global
+// This replaces the functionality from jest-environment-jsdom-global
 export const setURL = url => {
-  jsdom.reconfigure({
-    url
-  });
+  if (global.jsdom && global.jsdom.reconfigure) {
+    global.jsdom.reconfigure({
+      url
+    });
+  } else {
+    // Fallback for cases where jsdom might not be available
+    const mockURL = new URL(url);
+    const mockLocation = {
+      href: mockURL.href,
+      protocol: mockURL.protocol,
+      host: mockURL.host,
+      hostname: mockURL.hostname,
+      port: mockURL.port,
+      pathname: mockURL.pathname,
+      search: mockURL.search,
+      hash: mockURL.hash,
+      origin: mockURL.origin,
+      toString: () => mockURL.href,
+      assign: jest.fn(),
+      replace: jest.fn(),
+      reload: jest.fn()
+    };
+    
+    // Force override window.location
+    try {
+      delete window.location;
+      window.location = mockLocation;
+    } catch (error) {
+      try {
+        Object.defineProperty(window, 'location', {
+          value: mockLocation,
+          writable: true,
+          configurable: true
+        });
+      } catch (e) {
+        // Store in global for fallback access
+        global.mockLocation = mockLocation;
+      }
+    }
+  }
 };
 
 export const expectMockToMatch = ({ mock }, numberOfCalls) => {

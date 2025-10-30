@@ -3,6 +3,7 @@ import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
 import { getLocationFromUrl, getOriginFromUrl } from '../utils/url_utils';
+import { getCurrentLocationHref, getCurrentLocationPathname } from '../utils/browser';
 import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
@@ -315,7 +316,7 @@ function extractAuthOptions(options) {
   responseType = typeof responseType === 'string' ? responseType : redirectUrl ? 'code' : 'token';
   // now we set the default because we already did the validation
   redirectUrl =
-    redirectUrl || `${getOriginFromUrl(window.location.href)}${window.location.pathname}`;
+    redirectUrl || `${getOriginFromUrl(getCurrentLocationHref())}${getCurrentLocationPathname()}`;
 
   sso = typeof sso === 'boolean' ? sso : true;
 

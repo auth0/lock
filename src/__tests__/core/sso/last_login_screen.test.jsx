@@ -45,6 +45,11 @@ describe('LastLoginScreen', () => {
         get: () => undefined
       })
     }));
+
+    // Mock the browser utility module
+    jest.mock('utils/browser', () => ({
+      isUniversalLoginPage: jest.fn()
+    }));
   });
   const defaultProps = {
     i18n: {
@@ -119,7 +124,9 @@ describe('LastLoginScreen', () => {
     });
   });
   it('calls checkSession in the buttonClickHandler when outside of the universal login page', () => {
-    setURL('https://other-url.auth0.com');
+    // Mock the utility function to return false (not universal login)
+    require('utils/browser').isUniversalLoginPage.mockReturnValue(false);
+    
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);
@@ -131,7 +138,9 @@ describe('LastLoginScreen', () => {
     expect(mock.calls[0][2]).toBe('lastUsedUsername');
   });
   it('calls logIn in the buttonClickHandler when inside of the universal login page', () => {
-    setURL('https://me.auth0.com');
+    // Mock the utility function to return true (universal login)
+    require('utils/browser').isUniversalLoginPage.mockReturnValue(true);
+    
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);

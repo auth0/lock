@@ -6,6 +6,7 @@ import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
 import { STRATEGIES as SOCIAL_STRATEGIES, authButtonsTheme } from '../../connection/social/index';
+import { isUniversalLoginPage } from '../../utils/browser';
 
 // TODO: handle this from CSS
 function icon(strategy) {
@@ -26,7 +27,7 @@ const Component = ({ i18n, model }) => {
   const buttonIcon = buttonTheme && buttonTheme.get('icon');
 
   const buttonClickHandler = () => {
-    const isUniversalLogin = window.location.host === l.domain(model);
+    const isUniversalLogin = isUniversalLoginPage(l.domain(model));
     if (isUniversalLogin) {
       logIn(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
     } else {

@@ -1,6 +1,7 @@
 import auth0 from 'auth0-js';
 import qs from 'qs';
 import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
+import { isUniversalLoginPage, getCurrentLocationSearch } from '../../utils/browser';
 import {
   normalizeError,
   loginCallback,
@@ -16,7 +17,7 @@ class Auth0APIClient {
     this.client = null;
     this.authOpt = null;
     this.domain = domain;
-    this.isUniversalLogin = window.location.host === domain;
+    this.isUniversalLogin = isUniversalLoginPage(domain);
     this._enableIdPInitiatedLogin = !!(opts._enableIdPInitiatedLogin || opts._enableImpersonation);
     const telemetry = this.getTelemetryInfo(opts._telemetryInfo);
 
@@ -63,7 +64,7 @@ class Auth0APIClient {
   }
   getTelemetryInfo(telemetryOverride) {
     let telemetry;
-    const { auth0Client } = qs.parse(window.location.search.substr(1));
+    const { auth0Client } = qs.parse(getCurrentLocationSearch().substr(1));
     let ulpTelemetry = auth0Client && JSON.parse(atob(auth0Client));
     if (this.isUniversalLogin && ulpTelemetry) {
       telemetry = {

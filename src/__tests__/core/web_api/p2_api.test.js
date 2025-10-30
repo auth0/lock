@@ -2,6 +2,12 @@ import { setURL } from 'testUtils';
 
 jest.mock('auth0-js');
 
+// Mock the browser utilities
+jest.mock('../../../utils/browser', () => ({
+  isUniversalLoginPage: jest.fn(),
+  getCurrentLocationSearch: jest.fn()
+}));
+
 const getClient = (options = {}) => {
   const lockId = 'lockId';
   const clientId = 'cid';
@@ -36,12 +42,23 @@ describe('Auth0APIClient', () => {
     jest.resetModules();
     require('auth0-js').version.raw = 'a0js.version';
     require('core/web_api/helper').getVersion = () => 'lock.version';
+    
+    // Reset browser utility mocks
+    const browserUtils = require('../../../utils/browser');
+    browserUtils.isUniversalLoginPage.mockReturnValue(false); // Default to false
+    browserUtils.getCurrentLocationSearch.mockReturnValue(''); // Default to empty
   });
   describe('init', () => {
     describe('with overrides', () => {
       it('always uses telemetry set in the `auth0Client` query param and inside the ULP', () => {
+        // Mock that we're inside the ULP
+        require('../../../utils/browser').isUniversalLoginPage.mockReturnValue(true);
+        
         const telemetryIn = { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } };
-        setURL(`https://me.auth0.com/authorize?auth0Client=${btoa(JSON.stringify(telemetryIn))}`);
+        const auth0ClientParam = btoa(JSON.stringify(telemetryIn));
+        require('../../../utils/browser').getCurrentLocationSearch.mockReturnValue(`?auth0Client=${auth0ClientParam}`);
+        
+        setURL(`https://me.auth0.com/authorize?auth0Client=${auth0ClientParam}`);
         const options = {
           audience: 'foo',
           redirectUrl: '//localhost:8080/login/callback',
@@ -94,6 +111,9 @@ describe('Auth0APIClient', () => {
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env['auth0.js']).toBe('a0js.version');
       });
       it('uses different telemetry key when inside the ULP', () => {
+        // Mock that we're inside the ULP
+        require('../../../utils/browser').isUniversalLoginPage.mockReturnValue(true);
+        
         setURL('https://me.auth0.com/');
         getClient();
         const mock = getAuth0ClientMock();
@@ -162,6 +182,9 @@ describe('Auth0APIClient', () => {
 
     describe('should set authOpt according options', () => {
       it('should set sso:true when inside the universal login page', () => {
+        // Mock that we're inside the ULP
+        require('../../../utils/browser').isUniversalLoginPage.mockReturnValue(true);
+        
         setURL('https://me.auth0.com/');
         const options = {
           sso: true
@@ -170,6 +193,9 @@ describe('Auth0APIClient', () => {
         expect(client.authOpt.sso).toBe(true);
       });
       it('should set sso:false when inside the universal login page', () => {
+        // Mock that we're inside the ULP
+        require('../../../utils/browser').isUniversalLoginPage.mockReturnValue(true);
+        
         setURL('https://me.auth0.com/');
         const options = {
           sso: false

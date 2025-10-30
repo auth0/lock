@@ -2,7 +2,13 @@ import Immutable from 'immutable';
 import { dataFns } from '../../utils/data_utils';
 import { clientID, domain, loginErrorMessage } from '../../core/index';
 import { initI18n } from '../../i18n';
-import { setURL } from '../testUtils';
+
+// Mock the browser utilities
+jest.mock('../../utils/browser', () => ({
+  getCurrentLocationHref: jest.fn(),
+  getCurrentLocationPathname: jest.fn(),
+  isUniversalLoginPage: jest.fn()
+}));
 
 const setResolvedConnection = (...params) => require('core/index').setResolvedConnection(...params);
 const setup = (...params) => require('core/index').setup(...params);
@@ -28,10 +34,18 @@ describe('setup', () => {
   beforeEach(() => {
     mockInit = jest.fn();
     jest.resetModules();
+    
+    // Set default mock values for browser utilities
+    const browserUtils = require('../../utils/browser');
+    browserUtils.getCurrentLocationHref.mockReturnValue('http://localhost/');
+    browserUtils.getCurrentLocationPathname.mockReturnValue('/');
   });
 
   it('default redirectUrl should not include location.hash', () => {
-    setURL('https://test.com/path/#not-this-part');
+    // Mock the browser utility functions to return the expected URL
+    require('../../utils/browser').getCurrentLocationHref.mockReturnValue('https://test.com/path/#not-this-part');
+    require('../../utils/browser').getCurrentLocationPathname.mockReturnValue('/path/');
+    
     const options = {};
     setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
     const { mock } = mockInit;
@@ -40,10 +54,10 @@ describe('setup', () => {
     expect(model.auth.redirectUrl).toBe('https://test.com/path/');
   });
 
-  it.only('default redirectUrl should work when `window.location.origin` is not available', () => {
-    jsdom.reconfigure({
-      url: 'https://test.com/path/#not-this-part'
-    });
+  it('default redirectUrl should work when `window.location.origin` is not available', () => {
+    // Mock the browser utility functions to return the expected URL
+    require('../../utils/browser').getCurrentLocationHref.mockReturnValue('https://test.com/path/#not-this-part');
+    require('../../utils/browser').getCurrentLocationPathname.mockReturnValue('/path/');
 
     const options = {};
     setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
