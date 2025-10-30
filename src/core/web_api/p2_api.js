@@ -65,7 +65,15 @@ class Auth0APIClient {
   getTelemetryInfo(telemetryOverride) {
     let telemetry;
     const { auth0Client } = qs.parse(getCurrentLocationSearch().substr(1));
-    let ulpTelemetry = auth0Client && JSON.parse(atob(auth0Client));
+    let ulpTelemetry;
+    if (auth0Client) {
+      try {
+        ulpTelemetry = JSON.parse(atob(auth0Client));
+      } catch (e) {
+        // Invalid auth0Client parameter, ignore it
+        ulpTelemetry = null;
+      }
+    }
     if (this.isUniversalLogin && ulpTelemetry) {
       telemetry = {
         ...ulpTelemetry,

@@ -3,8 +3,7 @@
     "version-inline",
     "transform-css-import-to-string", 
     "babel-plugin-stylus-compiler",
-    "@babel/plugin-proposal-function-bind",
-    "@babel/plugin-proposal-object-rest-spread"
+    "@babel/plugin-proposal-function-bind"
   ],
   "presets": [
     ["@babel/preset-env", { 
@@ -14,7 +13,6 @@
         "browsers": ["ie >= 11"],
         "node": "8"
       },
-      "spec": true,
       "forceAllTransforms": true
     }],
     "@babel/preset-react"

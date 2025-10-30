@@ -7,6 +7,7 @@ jest.mock('field/email/email_pane', () => mockComponent('email_pane'));
 jest.mock('field/password/password_pane', () => mockComponent('password_pane'));
 jest.mock('field/username/username_pane', () => mockComponent('username_pane'));
 jest.mock('field/custom_input', () => mockComponent('custom_input'));
+jest.mock('field/captcha/captcha_pane', () => mockComponent('captcha_pane'));
 
 jest.mock('core/index', () => ({
   signupCaptcha: jest.fn()

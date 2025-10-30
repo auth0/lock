@@ -5,7 +5,7 @@ import Adapter from '@cfaester/enzyme-adapter-react-18';
 configure({ adapter: new Adapter() });
 
 // Store current mock for proper cleanup
-// Store current mock for proper cleanup - not currently used
+let currentLocationMock = null;
 
 // Create a location mock that works with JSDOM's restrictions
 const createLocationMock = (url) => {
@@ -33,25 +33,8 @@ const setWindowLocation = (mockLocation) => {
   currentLocationMock = mockLocation;
   
   // Force override window.location using Object.defineProperty
-  // Force override window.location using Object.defineProperty
   try {
     delete window.location;
-    window.location = mockLocation;
-  } catch (error) {
-    // If that fails, try with Object.defineProperty
-    try {
-      Object.defineProperty(window, 'location', {
-        value: mockLocation,
-        writable: true,
-        configurable: true
-      });
-    } catch (e) {
-      // Final fallback - store in global for manual access
-      // This may indicate tests expecting window.location will fail
-      console.warn('Could not mock window.location, using global.mockLocation fallback');
-      global.mockLocation = mockLocation;
-    }
-  }
     window.location = mockLocation;
   } catch (error) {
     // If that fails, try with Object.defineProperty

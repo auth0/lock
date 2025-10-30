@@ -20,8 +20,12 @@ if (typeof global.performance === 'undefined') {
 }
 
 // Web API polyfills for Node.js environment
+// Proper Web Streams API polyfill (required by undici/fetch)
 if (typeof global.ReadableStream === 'undefined') {
-  global.ReadableStream = require('stream').Readable;
+  const { ReadableStream, WritableStream, TransformStream } = require('web-streams-polyfill');
+  global.ReadableStream = ReadableStream;
+  global.WritableStream = WritableStream;
+  global.TransformStream = TransformStream;
 }
 
 // MessagePort polyfill - basic implementation
