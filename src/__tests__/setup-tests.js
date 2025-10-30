@@ -4,9 +4,6 @@ import Adapter from '@cfaester/enzyme-adapter-react-18';
 
 configure({ adapter: new Adapter() });
 
-// Store the original location for restoration
-const originalLocation = window.location;
-
 // Store current mock for proper cleanup
 let currentLocationMock = null;
 

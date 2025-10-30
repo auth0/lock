@@ -1,12 +1,38 @@
 {
   "plugins": [
     "version-inline",
-    "transform-css-import-to-string",
+    "transform-css-import-to-string", 
     "babel-plugin-stylus-compiler",
-    "@babel/plugin-proposal-function-bind"
+    "@babel/plugin-proposal-function-bind",
+    "@babel/plugin-proposal-object-rest-spread"
   ],
   "presets": [
-    ["@babel/preset-env", { "useBuiltIns": "entry", "corejs": "3.26.1" }],
+    ["@babel/preset-env", { 
+      "useBuiltIns": "entry", 
+      "corejs": "3.26.1",
+      "targets": {
+        "browsers": ["ie >= 11"],
+        "node": "8"
+      },
+      "spec": true,
+      "forceAllTransforms": true
+    }],
     "@babel/preset-react"
-  ]
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        ["@babel/preset-env", { 
+          "useBuiltIns": "entry", 
+          "corejs": "3.26.1",
+          "targets": {
+            "browsers": ["ie >= 11"]
+          },
+          "forceAllTransforms": true,
+          "spec": true
+        }],
+        "@babel/preset-react"
+      ]
+    }
+  }
 }

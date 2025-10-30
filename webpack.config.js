@@ -60,7 +60,27 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: path.join(__dirname, 'node_modules')
+        exclude: /node_modules\/(?!auth0-password-policies)/,
+        options: {
+          plugins: [
+            'version-inline',
+            'transform-css-import-to-string', 
+            'babel-plugin-stylus-compiler',
+            '@babel/plugin-proposal-function-bind'
+          ],
+          presets: [
+            ['@babel/preset-env', { 
+              useBuiltIns: 'entry', 
+              corejs: '3.26.1',
+              targets: {
+                ie: '11'
+              },
+              forceAllTransforms: true,
+              spec: true
+            }],
+            '@babel/preset-react'
+          ]
+        }
       },
       {
         test: /\.styl$/,

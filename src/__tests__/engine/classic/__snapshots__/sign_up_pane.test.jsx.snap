@@ -2,7 +2,7 @@
 
 exports[`SignUpPane hides the Captcha pane for SSO connections 1`] = `
 <div>
-  <Unknown
+  <bound 
     i18n={
       {
         "html": [Function],
@@ -201,7 +201,7 @@ exports[`SignUpPane shows header when instructions are available 1`] = `
 
 exports[`SignUpPane shows the Captcha pane 1`] = `
 <div>
-  <Unknown
+  <bound 
     i18n={
       {
         "html": [Function],
@@ -229,7 +229,7 @@ exports[`SignUpPane shows the Captcha pane 1`] = `
 
 exports[`SignUpPane shows the Captcha pane for SSO (ADFS) connections 1`] = `
 <div>
-  <Unknown
+  <bound 
     i18n={
       {
         "html": [Function],
