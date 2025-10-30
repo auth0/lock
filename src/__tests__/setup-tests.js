@@ -5,7 +5,7 @@ import Adapter from '@cfaester/enzyme-adapter-react-18';
 configure({ adapter: new Adapter() });
 
 // Store current mock for proper cleanup
-let currentLocationMock = null;
+// Store current mock for proper cleanup - not currently used
 
 // Create a location mock that works with JSDOM's restrictions
 const createLocationMock = (url) => {
