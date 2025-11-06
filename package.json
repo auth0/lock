@@ -169,6 +169,7 @@
       "<rootDir>/lib/",
       "<rootDir>/src/__tests__/testUtils.js",
       "<rootDir>/src/__tests__/setup-tests.js",
+      "<rootDir>/src/__tests__/shared/locationMockUtil.js",
       "<rootDir>/src/test-setup/"
     ],
     "testPathIgnorePatterns": [
@@ -177,6 +178,7 @@
       "<rootDir>/lib/",
       "<rootDir>/src/__tests__/testUtils.js",
       "<rootDir>/src/__tests__/setup-tests.js",
+      "<rootDir>/src/__tests__/shared/locationMockUtil.js",
       "<rootDir>/src/test-setup/"
     ],
     "coverageReporters": [

@@ -64,7 +64,11 @@ class Auth0APIClient {
   }
   getTelemetryInfo(telemetryOverride) {
     let telemetry;
-    const { auth0Client } = qs.parse(getCurrentLocationSearch().substr(1));
+    const currentSearch = getCurrentLocationSearch();
+    const searchParams = typeof currentSearch === 'string' && currentSearch.length > 0 
+      ? currentSearch.slice(1) 
+      : '';
+    const { auth0Client } = qs.parse(searchParams);
     let ulpTelemetry;
     if (auth0Client) {
       try {

@@ -1,7 +1,7 @@
 import React from 'react'; // eslint-disable-line
 import renderer from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import { JavascriptModulesPlugin } from 'webpack';
+import { mockWindowLocation } from './shared/locationMockUtil';
 
 export const expectComponent = (children, opts) => {
   const component = renderer.create(children, opts);
@@ -56,40 +56,8 @@ export const setURL = url => {
       url
     });
   } else {
-    // Fallback for cases where jsdom might not be available
-    const mockURL = new URL(url);
-    const mockLocation = {
-      href: mockURL.href,
-      protocol: mockURL.protocol,
-      host: mockURL.host,
-      hostname: mockURL.hostname,
-      port: mockURL.port,
-      pathname: mockURL.pathname,
-      search: mockURL.search,
-      hash: mockURL.hash,
-      origin: mockURL.origin,
-      toString: () => mockURL.href,
-      assign: jest.fn(),
-      replace: jest.fn(),
-      reload: jest.fn()
-    };
-    
-    // Force override window.location
-    try {
-      delete window.location;
-      window.location = mockLocation;
-    } catch (error) {
-      try {
-        Object.defineProperty(window, 'location', {
-          value: mockLocation,
-          writable: true,
-          configurable: true
-        });
-      } catch (e) {
-        // Store in global for fallback access
-        global.mockLocation = mockLocation;
-      }
-    }
+    // Use shared utility to avoid code duplication and ensure consistency
+    mockWindowLocation(url);
   }
 };
 

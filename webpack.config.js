@@ -64,7 +64,7 @@ module.exports = {
         options: {
           plugins: [
             'version-inline',
-            'transform-css-import-to-string', 
+            'transform-css-import-to-string',
             'babel-plugin-stylus-compiler',
             '@babel/plugin-proposal-function-bind'
           ],
