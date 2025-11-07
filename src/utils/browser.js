@@ -37,106 +37,33 @@ export const isUniversalLoginPage = (domain) => {
 };
 
 /**
- * Get the current location href
- * This can be mocked in tests
- * 
- * @returns {string} - Current page URL or fallback URL
- * 
- * Fallbacks are used in:
- * - Server-side rendering environments
- * - Test environments with mocked/restricted window.location
- * - Web Workers or other contexts without window.location
+ * Safely access window.location properties with proper error handling
+ * @param {string} property - The location property to access
+ * @param {any} fallback - Fallback value if property is not accessible
+ * @param {string} functionName - Name of the calling function for logging
+ * @returns {any} - Property value or fallback
  */
-export const getCurrentLocationHref = () => {
+const safeLocationAccess = (property, fallback, functionName) => {
   try {
-    // Check if window and location exist
     if (typeof window === 'undefined' || !window.location) {
       if (process.env.NODE_ENV === 'development') {
-        console.warn('getCurrentLocationHref: window.location not available, using fallback URL');
+        console.warn(`${functionName}: window.location not available, using fallback`);
       }
-      return 'http://localhost/';
+      return fallback;
     }
-    return window.location.href;
+    return window.location[property];
   } catch (error) {
-    // Only catch specific errors related to restricted access
     if (error.name === 'SecurityError' || error.message.includes('cross-origin') || 
         error.message.includes('Permission denied')) {
       if (process.env.NODE_ENV === 'development') {
-        console.warn('getCurrentLocationHref: Cross-origin access restricted, using fallback URL', error.message);
+        console.warn(`${functionName}: Cross-origin access restricted, using fallback`, error.message);
       }
-      return 'http://localhost/';
+      return fallback;
     }
-    // Re-throw unexpected errors to avoid hiding bugs
     throw error;
   }
 };
 
-/**
- * Get the current location pathname
- * This can be mocked in tests
- * 
- * @returns {string} - Current page pathname or fallback pathname
- * 
- * Fallbacks are used in:
- * - Server-side rendering environments
- * - Test environments with mocked/restricted window.location
- * - Web Workers or other contexts without window.location
- */
-export const getCurrentLocationPathname = () => {
-  try {
-    // Check if window and location exist
-    if (typeof window === 'undefined' || !window.location) {
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('getCurrentLocationPathname: window.location not available, using fallback pathname');
-      }
-      return '/';
-    }
-    return window.location.pathname;
-  } catch (error) {
-    // Only catch specific errors related to restricted access
-    if (error.name === 'SecurityError' || error.message.includes('cross-origin') || 
-        error.message.includes('Permission denied')) {
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('getCurrentLocationPathname: Cross-origin access restricted, using fallback pathname', error.message);
-      }
-      return '/';
-    }
-    // Re-throw unexpected errors to avoid hiding bugs
-    throw error;
-  }
-};
-
-/**
- * Get the current location search
- * This can be mocked in tests
- * 
- * @returns {string} - Current page search parameters or empty string
- * 
- * Fallbacks are used in:
- * - Server-side rendering environments  
- * - Test environments with mocked/restricted window.location
- * - Web Workers or other contexts without window.location
- */
-export const getCurrentLocationSearch = () => {
-  try {
-    // Check if window and location exist
-    if (typeof window === 'undefined' || !window.location) {
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('getCurrentLocationSearch: window.location not available, returning empty string');
-      }
-      return '';
-    }
-    return window.location.search;
-  } catch (error) {
-    // Only catch specific errors related to restricted access
-    if (error.name === 'SecurityError' || error.message.includes('cross-origin') || 
-        error.message.includes('Permission denied')) {
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('getCurrentLocationSearch: Cross-origin access restricted, returning empty string', error.message);
-      }
-      return '';
-    }
-    // Re-throw unexpected errors to avoid hiding bugs
-    throw error;
-  }
-};
+export const getCurrentLocationHref = () => safeLocationAccess('href', 'http://localhost/', 'getCurrentLocationHref');
+export const getCurrentLocationPathname = () => safeLocationAccess('pathname', '/', 'getCurrentLocationPathname');
+export const getCurrentLocationSearch = () => safeLocationAccess('search', '', 'getCurrentLocationSearch');
