@@ -79,14 +79,12 @@ class Auth0APIClient {
       }
     }
     if (this.isUniversalLogin && ulpTelemetry) {
-      telemetry = {
-        ...ulpTelemetry,
-        env: {
-          ...ulpTelemetry.env,
-          ['lock.js-ulp']: getVersion(),
-          ['auth0.js-ulp']: auth0.version.raw
-        }
-      };
+      telemetry = Object.assign({}, ulpTelemetry, {
+        env: Object.assign({}, ulpTelemetry.env, {
+          'lock.js-ulp': getVersion(),
+          'auth0.js-ulp': auth0.version.raw
+        })
+      });
     }
     if (this.isUniversalLogin && !ulpTelemetry) {
       telemetry = {
@@ -98,14 +96,12 @@ class Auth0APIClient {
       };
     }
     if (!this.isUniversalLogin && telemetryOverride) {
-      telemetry = {
-        ...telemetryOverride,
-        env: {
-          ...telemetryOverride.env,
-          ['lock.js']: getVersion(),
-          ['auth0.js']: auth0.version.raw
-        }
-      };
+      telemetry = Object.assign({}, telemetryOverride, {
+        env: Object.assign({}, telemetryOverride.env, {
+          'lock.js': getVersion(),
+          'auth0.js': auth0.version.raw
+        })
+      });
     }
     if (!telemetry) {
       telemetry = {
@@ -124,11 +120,9 @@ class Auth0APIClient {
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
     const f = loginCallback(false, this.domain, cb);
     const loginOptions = trimAuthParams(
-      normalizeAuthParams({
-        ...options,
-        ...this.authOpt,
-        ...authParams
-      })
+      normalizeAuthParams(
+        Object.assign({}, options, this.authOpt, authParams)
+      )
     );
 
     if (options.login_hint) {
@@ -138,10 +132,9 @@ class Auth0APIClient {
     if (!options.username && !options.email) {
       if (this.authOpt.popup) {
         this.client.popup.authorize(
-          {
-            ...loginOptions,
+          Object.assign({}, loginOptions, {
             owp: true
-          },
+          }),
           f
         );
       } else {
@@ -173,10 +166,9 @@ class Auth0APIClient {
   }
 
   passwordlessVerify(options, cb) {
-    const verifyOptions = {
-      ...options,
+    const verifyOptions = Object.assign({}, options, {
       popup: this.authOpt.popup
-    };
+    });
     this.client.passwordlessLogin(verifyOptions, (err, result) => cb(normalizeError(err), result));
   }
 
