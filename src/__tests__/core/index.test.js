@@ -41,9 +41,8 @@ describe('setup', () => {
   });
 
   it.only('default redirectUrl should work when `window.location.origin` is not available', () => {
-    jsdom.reconfigure({
-      url: 'https://test.com/path/#not-this-part'
-    });
+    delete window.location;
+    window.location = new URL('https://test.com/path/#not-this-part');
 
     const options = {};
     setup('id', 'clientID', 'domain', options, 'hookRunner', 'emitEventFn');
