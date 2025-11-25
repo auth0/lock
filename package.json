@@ -40,7 +40,7 @@
     "i18n:validate": "node -r esm scripts/lang-audit.js"
   },
   "devDependencies": {
-    "@auth0/component-cdn-uploader": "^2.4.0",
+    "@auth0/component-cdn-uploader": "^2.4.2",
     "@babel/core": "^7.0.0",
     "@babel/eslint-parser": "^7.22.9",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
