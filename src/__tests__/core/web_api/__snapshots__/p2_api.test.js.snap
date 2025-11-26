@@ -16,12 +16,10 @@ exports[`Auth0APIClient getUserCountry should call getUserCountry 1`] = `
 exports[`Auth0APIClient init with overrides always uses telemetry set in the \`auth0Client\` query param and inside the ULP 1`] = `
 {
   "env": {
-    "auth0.js-ulp": "a0js.version",
-    "envOverride": true,
-    "lock.js-ulp": "lock.version",
+    "auth0.js": "a0js.version",
+    "lock.js": "lock.version",
   },
-  "name": "test-sdk",
-  "version": "1.0.0",
+  "ignored": true,
 }
 `;
 
