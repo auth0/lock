@@ -177,7 +177,7 @@
       "lcov",
       "text-summary"
     ],
-    "testEnvironment": "jest-environment-jsdom"
+    "testEnvironment": "<rootDir>/customJsdomEnvironment.js"
   },
   "lint-staged": {
     "*.{js,jsx}": [
