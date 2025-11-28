@@ -1,7 +1,9 @@
 import Auth0WebApi from '../../core/web_api';
+import { setURL } from '../testUtils';
 
 describe('Auth0WebApi', () => {
   let originalWindow;
+  let originalLocation;
 
   const LOCK_ID = 'lock-id';
   const CLIENT_ID = 'client-id';
@@ -10,16 +12,18 @@ describe('Auth0WebApi', () => {
 
   beforeEach(() => {
     originalWindow = window.window;
+    originalLocation = window.location;
   });
 
   afterEach(() => {
     window.window = originalWindow;
+    delete window.location;
+    window.location = originalLocation;
   });
 
   describe('setupClient', () => {
     it('sets the correct options when is on the hosted login page', () => {
-      delete window.location;
-      window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
+      setURL(`https://${DEFAULT_DOMAIN}/`);
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, { redirect: true });
 
       expect(client()).toEqual(
@@ -34,24 +38,21 @@ describe('Auth0WebApi', () => {
     });
 
     it('sets redirect: true when on the same origin as the specified domain', () => {
-      delete window.location;
-      window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
+      setURL(`https://${DEFAULT_DOMAIN}/`);
 
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});
       expect(client().authOpt.popup).toBe(false);
     });
 
     it('sets redirect: false when on a different origin as the specified domain', () => {
-      delete window.location;
-      window.location = { ...originalWindow.location, host: 'test-other.com', search: '' };
+      setURL('https://test-other.com/');
 
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});
       expect(client().authOpt.popup).toBe(true);
     });
 
     it('forces popup and sso mode for cordova, only when not running in the hosted environment', () => {
-      delete window.location;
-      window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
+      setURL(`https://${DEFAULT_DOMAIN}/`);
       window.cordova = true;
 
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});
@@ -60,8 +61,7 @@ describe('Auth0WebApi', () => {
     });
 
     it('forces popup and sso mode for electron, only when not running in the hosted environment', () => {
-      delete window.location;
-      window.location = { ...originalWindow.location, host: DEFAULT_DOMAIN, search: '' };
+      setURL(`https://${DEFAULT_DOMAIN}/`);
       window.electron = true;
 
       Auth0WebApi.setupClient(LOCK_ID, CLIENT_ID, DEFAULT_DOMAIN, {});

@@ -39,7 +39,7 @@ exports[`setup should work with redirect:false and responseType:id_token 1`] = `
       "scope": "openid profile email",
     },
     "redirect": false,
-    "redirectUrl": "http://localhost/",
+    "redirectUrl": "https://test.com/path/",
     "responseMode": undefined,
     "responseType": "id_token",
     "sso": true,

@@ -48,11 +48,34 @@ export const extractPropsFromWrapper = (wrapper, index = 0) =>
   removeDataFromProps(wrapper.find('div').at(index).props());
 
 // Newer (> Jest v22) versions don't allow modification of location.href
-// but can use `jsdom.reconfigure` when `jsdom` is exposed globally.
-// https://www.npmjs.com/package/jest-environment-jsdom-global
+// Try jsdom.reconfigure() first (via custom environment), then fall back to property mocking
 export const setURL = url => {
-  jsdom.reconfigure({
-    url
+  // Approach 1: Use jsdom.reconfigure() if available (cleanest)
+  if (global.jsdom && typeof global.jsdom.reconfigure === 'function') {
+    global.jsdom.reconfigure({ url });
+    return;
+  }
+
+  // Approach 2: Fallback - Mock location properties with Object.defineProperty
+  const parsedUrl = new URL(url);
+
+  delete window.location;
+  Object.defineProperty(window, 'location', {
+    value: {
+      href: parsedUrl.href,
+      origin: parsedUrl.origin,
+      protocol: parsedUrl.protocol,
+      host: parsedUrl.host,
+      hostname: parsedUrl.hostname,
+      port: parsedUrl.port,
+      pathname: parsedUrl.pathname,
+      search: parsedUrl.search,
+      hash: parsedUrl.hash,
+      // Add toString for debugging
+      toString: () => parsedUrl.href
+    },
+    writable: true,
+    configurable: true
   });
 };
 
