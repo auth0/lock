@@ -5,6 +5,7 @@ import { CloseButton } from './button';
 import * as l from '../../core/index';
 import * as c from '../../field/index';
 import { swap, updateEntity } from '../../store/index';
+import { databaseUsernameValue } from '../../connection/database/index';
 
 const badgeSvg = (
   <svg focusable="false" width="58px" height="21px" viewBox="0 0 462 168">
@@ -69,7 +70,7 @@ export default class Container extends React.Component {
     this.state = { isOpen: false };
   }
   checkConnectionResolver(done) {
-    const { contentProps } = this.props;
+    const { contentProps, screenName } = this.props;
     const lock = contentProps.model;
     const connectionResolver = l.connectionResolver(lock);
     if (!connectionResolver) {
@@ -77,7 +78,12 @@ export default class Container extends React.Component {
     }
     const { connections, id } = lock.get('client').toJS();
     const context = { connections, id };
-    const userInputValue = c.getFieldValue(lock, 'username') || c.getFieldValue(lock, 'email');
+
+    // On signUp screen, use emailFirst option to prioritize email over username
+    // On login screen, use default behavior (username first)
+    const isSignUpScreen = screenName && screenName.includes('signUp');
+    const userInputValue = databaseUsernameValue(lock, isSignUpScreen ? { emailFirst: true } : {});
+
     connectionResolver(userInputValue, context, resolvedConnection => {
       swap(updateEntity, 'lock', l.id(lock), m => l.setResolvedConnection(m, resolvedConnection));
       done();
