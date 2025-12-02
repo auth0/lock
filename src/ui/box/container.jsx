@@ -81,7 +81,7 @@ export default class Container extends React.Component {
 
     // On signUp screen, use emailFirst option to prioritize email over username
     // On login screen, use default behavior (username first)
-    const isSignUpScreen = screenName && screenName.includes('signUp');
+    const isSignUpScreen = screenName === 'main.signUp';
     const userInputValue = databaseUsernameValue(lock, isSignUpScreen ? { emailFirst: true } : {});
 
     connectionResolver(userInputValue, context, resolvedConnection => {
