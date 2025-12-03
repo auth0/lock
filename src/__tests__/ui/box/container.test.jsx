@@ -9,6 +9,10 @@ jest.mock('store/index', () => ({
 
 jest.mock('ui/box/chrome', () => mockComponent('chrome'));
 
+jest.mock('connection/database/index', () => ({
+  databaseUsernameValue: jest.fn()
+}));
+
 const mockEvent = {
   preventDefault: () => {}
 };
@@ -75,12 +79,23 @@ describe('Container', () => {
   describe('with a custom `connectionResolver`', () => {
     let connectionResolverMock;
     let setResolvedConnectionMock;
+    let databaseUsernameValueMock;
 
     beforeEach(() => {
       connectionResolverMock = jest.fn();
       setResolvedConnectionMock = jest.fn();
+      databaseUsernameValueMock = require('connection/database/index').databaseUsernameValue;
+
+      // Set default return value for databaseUsernameValue mock
+      databaseUsernameValueMock.mockReturnValue('peter_picked@pickledpepper.com');
+
       require('core/index').connectionResolver = () => connectionResolverMock;
       require('core/index').setResolvedConnection = setResolvedConnectionMock;
+    });
+
+    afterEach(() => {
+      // Reset mock between tests and restore default return value
+      databaseUsernameValueMock.mockReset().mockReturnValue('peter_picked@pickledpepper.com');
     });
 
     it('calls `connectionResolver` onSubmit', () => {
@@ -110,6 +125,54 @@ describe('Container', () => {
       expect(mock.calls.length).toBe(1);
       expect(mock.calls[0]).toMatchSnapshot();
     });
+
+    it('prioritizes email over username on signUp screen', () => {
+      databaseUsernameValueMock.mockReturnValue('test@example.com');
+
+      const c = getContainer({ screenName: 'main.signUp' });
+      c.handleSubmit(mockEvent);
+
+      // Should call databaseUsernameValue with emailFirst: true
+      expect(databaseUsernameValueMock).toHaveBeenCalledWith(
+        expect.anything(),
+        { emailFirst: true }
+      );
+
+      // connectionResolver should receive the email value
+      const { mock } = connectionResolverMock;
+      expect(mock.calls[0][0]).toBe('test@example.com');
+    });
+
+    it('prioritizes username over email on login screen', () => {
+      databaseUsernameValueMock.mockReturnValue('testuser');
+
+      const c = getContainer({ screenName: 'main.login' });
+      c.handleSubmit(mockEvent);
+
+      // Should call databaseUsernameValue with empty options (default behavior)
+      expect(databaseUsernameValueMock).toHaveBeenCalledWith(
+        expect.anything(),
+        {}
+      );
+
+      // connectionResolver should receive the username value
+      const { mock } = connectionResolverMock;
+      expect(mock.calls[0][0]).toBe('testuser');
+    });
+
+    it('uses default behavior when screenName is not main.signUp', () => {
+      databaseUsernameValueMock.mockReturnValue('defaultvalue');
+
+      const c = getContainer({ screenName: 'forgotPassword' });
+      c.handleSubmit(mockEvent);
+
+      // Should call databaseUsernameValue with empty options (default behavior)
+      expect(databaseUsernameValueMock).toHaveBeenCalledWith(
+        expect.anything(),
+        {}
+      );
+    });
+
   });
 
   describe('when suppressSubmitOverlay is true', () => {
