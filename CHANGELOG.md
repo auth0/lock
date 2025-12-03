@@ -1,5 +1,11 @@
 # Change Log
 
+## [v14.2.1](https://github.com/auth0/lock/tree/v14.2.1) (2025-12-03)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.2.0...v14.2.1)
+
+**Fixed**
+- Fix: connectionResolver receives incorrect field value when switching between Login and Sign-up tabs [\#2697](https://github.com/auth0/lock/pull/2697) ([ankita10119](https://github.com/ankita10119))
+
 ## [v14.2.0](https://github.com/auth0/lock/tree/v14.2.0) (2025-10-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.1.0...v14.2.0)
 
