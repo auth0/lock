@@ -15,10 +15,11 @@ export default class MFACodeInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   focus() {
-    this.refs.input && this.refs.input.focus();
+    this.inputRef.current && this.inputRef.current.focus();
   }
 
   hasFocus() {
@@ -40,7 +41,7 @@ export default class MFACodeInput extends React.Component {
       >
         <input
           id={`${lockId}-mfa_code`}
-          ref="input"
+          ref={this.inputRef}
           type="text"
           name="mfa_code"
           className="auth0-lock-input"

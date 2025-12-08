@@ -7,6 +7,7 @@ export default class Slider extends React.Component {
   constructor(props) {
     super(props);
     this.state = { children: { current: props.children } };
+    this.childRefs = {};
   }
 
   // eslint-disable-next-line react/no-deprecated
@@ -38,12 +39,12 @@ export default class Slider extends React.Component {
       const { transitionName } = this.state;
       const { current, prev } = this.state.children;
       const { reverse } = this.props;
-      const currentComponent = this.refs[current.key];
-      const prevComponent = this.refs[prev.key];
+      const currentComponent = this.childRefs[current.key] && this.childRefs[current.key].current;
+      const prevComponent = this.childRefs[prev.key] && this.childRefs[prev.key].current;
 
       const transition = (component, className, delay) => {
-        // eslint-disable-next-line
-        const node = ReactDOM.findDOMNode(component);
+        // Get the DOM node directly from the component's node property
+        const node = component.node;
         const activeClassName = `${className}-active`;
 
         CSSCore.addClass(node, className);
@@ -88,8 +89,13 @@ export default class Slider extends React.Component {
     const { current, prev } = this.state.children;
     const children = prev ? [current, prev] : [current];
     const childrenToRender = children.map(child => {
+      // Create a ref for this child if it doesn't exist
+      if (!this.childRefs[child.key]) {
+        this.childRefs[child.key] = React.createRef();
+      }
+
       return React.cloneElement(React.createElement(Child, {}, child), {
-        ref: child.key,
+        ref: this.childRefs[child.key],
         key: child.key
       });
     });

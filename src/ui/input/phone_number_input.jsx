@@ -29,6 +29,7 @@ export default class PhoneNumberInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   render() {
@@ -44,7 +45,7 @@ export default class PhoneNumberInput extends React.Component {
         icon={IconSvg}
       >
         <input
-          ref="input"
+          ref={this.inputRef}
           type="tel"
           name="phoneNumber"
           className="auth0-lock-input auth0-lock-input-number"
@@ -65,9 +66,9 @@ export default class PhoneNumberInput extends React.Component {
   }
 
   focus() {
-    if (!this.refs.input) return;
+    if (!this.inputRef.current) return;
 
-    this.refs.input.focus();
+    this.inputRef.current.focus();
     this.handleFocus();
   }
 

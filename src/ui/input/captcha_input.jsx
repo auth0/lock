@@ -46,6 +46,7 @@ export default class CaptchaInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -109,7 +110,7 @@ export default class CaptchaInput extends React.Component {
         >
           <input
             id={`${lockId}-captcha`}
-            ref="input"
+            ref={this.inputRef}
             type="text"
             inputMode="text"
             name="captcha"
