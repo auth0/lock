@@ -44,7 +44,8 @@ export default {
       'bad.phone_number': 'Il numero di telefono non è valido',
       'lock.fallback': 'Ci dispiace, qualcosa è andato storto',
       invalid_captcha: 'Risolvi la domanda di verifica per verificare che non sei un robot.',
-      invalid_recaptcha: 'Seleziona la casella di controllo per verificare che non sei un robot.'
+      invalid_recaptcha: 'Seleziona la casella di controllo per verificare che non sei un robot.',
+      too_many_attempts: 'Il suo account è stato bloccato dopo vari tentativi di accesso consecutivi.'
     },
     signUp: {
       invalid_password: 'La password non è valida.',

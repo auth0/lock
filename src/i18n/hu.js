@@ -45,7 +45,8 @@ export default {
       'bad.phone_number': 'Érvénytelen telefonszám.',
       'lock.fallback': 'Sajnáljuk, valami hiba történt.',
       invalid_captcha: 'Oldja meg a kihívást, és ellenőrizze, hogy nem robot.',
-      invalid_recaptcha: 'Jelölje be a jelölőnégyzetet annak ellenőrzéséhez, hogy nem robot vagy-e.'
+      invalid_recaptcha: 'Jelölje be a jelölőnégyzetet annak ellenőrzéséhez, hogy nem robot vagy-e.',
+      too_many_attempts: 'Túl sok sikertelen bejelentkezési kísérletet észleltünk, ezért az azonosítód letiltásra került.'
     },
     signUp: {
       invalid_password: 'Érvénytelen jelszó.',

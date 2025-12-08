@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'Neplatné telefónne číslo',
       'lock.fallback': 'Ospravedlňujeme sa, niečo nie je v poriadku',
       invalid_captcha: 'Vyriešte výzvu a overte, či nie ste robot.',
-      invalid_recaptcha: 'Začiarknutím políčka overíte, či nie ste robot.'
+      invalid_recaptcha: 'Začiarknutím políčka overíte, či nie ste robot.',
+      too_many_attempts: 'Vaše konto bolo zablokované po viacnásobných pokusoch o prihlásenie'
     },
     signUp: {
       invalid_password: 'Neplatné heslo.',
