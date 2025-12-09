@@ -106,7 +106,7 @@
     "mocha": "^11.5.0",
     "prettier": "^2.4.1",
     "puppeteer": "^24.9.0",
-    "react-test-renderer": "^19.2.1",
+    "react-test-renderer": "^18.2.0",
     "sinon": "^1.15.4",
     "stylus": "^0.64.0",
     "stylus-loader": "^3.0.2",
@@ -129,8 +129,8 @@
     "password-sheriff": "^1.1.1",
     "prop-types": "^15.8.0",
     "qs": "^6.10.3",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-transition-group": "^4.4.5",
     "trim": "^1.0.1",
     "url-join": "^1.1.0",
@@ -189,5 +189,8 @@
   },
   "optionalDependencies": {
     "fsevents": "^2.3.3"
+  },
+  "overrides": {
+    "cheerio": "1.0.0-rc.12"
   }
 }
