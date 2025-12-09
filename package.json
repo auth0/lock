@@ -119,7 +119,7 @@
   },
   "dependencies": {
     "auth0-js": "^9.29.0",
-    "auth0-password-policies": "^1.0.2",
+    "auth0-password-policies": "1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.2",
     "dompurify": "^3.2.5",
