@@ -248,9 +248,7 @@ export default class Chrome extends React.Component {
 
   findAutofocusInput(ref) {
     const node = ref || this.screenRef.current;
-    // If ref is a DOM node, use it directly; otherwise it's a React ref
-    const domNode = node instanceof HTMLElement ? node : node;
-    return domNode.querySelector('input');
+    return node.querySelector('input');
   }
 
   focusError() {
@@ -427,7 +425,7 @@ export default class Chrome extends React.Component {
                 classNames="slide"
                 timeout={AUXILIARY_ANIMATION_DURATION}
               >
-                <div ref={this.auxiliaryPaneRef}>{auxiliaryPane}</div>
+                {React.cloneElement(auxiliaryPane, { ref: this.auxiliaryPaneRef })}
               </CSSTransition>
             </TransitionGroup>
           )}

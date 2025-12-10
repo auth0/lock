@@ -44,7 +44,9 @@ export default class Slider extends React.Component {
 
       const transition = (component, className, delay) => {
         // Get the DOM node directly from the component's node property
-        const node = component.node;
+        const node = component?.node;
+        if (!node) return;
+
         const activeClassName = `${className}-active`;
 
         CSSCore.addClass(node, className);
@@ -132,6 +134,7 @@ class Child extends React.Component {
   node;
 
   componentWillSlideIn(slide) {
+    if (!this.node) return;
     this.setState({
       height: slide.height,
       originalHeight: parseInt(window.getComputedStyle(this.node, null).height, 10),
@@ -172,6 +175,7 @@ class Child extends React.Component {
   }
 
   componentWillSlideOut(cb) {
+    if (!this.node) return;
     const size = window.getComputedStyle(this.node, null).height;
     cb({ height: parseInt(size, 10), reverse: this.reverse });
   }
