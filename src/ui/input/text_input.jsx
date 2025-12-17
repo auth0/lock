@@ -5,6 +5,7 @@ export default class TextInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.inputRef = React.createRef();
   }
 
   hasFocus() {
@@ -40,7 +41,7 @@ export default class TextInput extends React.Component {
       >
         <input
           id={`${lockId}-${name}`}
-          ref="input"
+          ref={this.inputRef}
           type="text"
           name={name}
           className="auth0-lock-input"

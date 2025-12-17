@@ -1,5 +1,11 @@
 # Change Log
 
+## [v14.2.2](https://github.com/auth0/lock/tree/v14.2.2) (2025-12-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.2.1...v14.2.2)
+
+**Fixed**
+- Fix: Auth0-Lock Error with React 19 and Nextjs 15 [\#2701](https://github.com/auth0/lock/pull/2701) ([ankita10119](https://github.com/ankita10119))
+
 ## [v14.2.1](https://github.com/auth0/lock/tree/v14.2.1) (2025-12-03)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.0...v14.2.1)
 
