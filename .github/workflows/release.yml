@@ -18,7 +18,7 @@ jobs:
   release:
     uses: ./.github/workflows/npm-release.yml
     with:
-      node-version: 18
+      node-version: 24
       require-build: true
     secrets:
       npm-token: ${{ secrets.NPM_TOKEN }}
