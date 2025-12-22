@@ -2,6 +2,7 @@ const path_module = require('path');
 const emojic = require('emojic');
 const chalk = require('chalk');
 const glob = require('glob');
+const { pathToFileURL } = require('url');
 const directory = path_module.join(__dirname, '..', 'src', 'i18n');
 
 /**
@@ -81,7 +82,7 @@ const validateLangFile = async (reference, path, verbose) => {
     missing: 0
   };
 
-  const lang = await import(path);
+  const lang = await import(pathToFileURL(path).href);
   const langFlattened = flattenObject(lang.default);
 
   const result = compareKeys(reference, langFlattened);
@@ -123,7 +124,8 @@ const validateLangFile = async (reference, path, verbose) => {
 
 const run = async () => {
   // Load the 'en' lang file to act as the reference for all others
-  const en = await import(path_module.join(directory, 'en.js'));
+  const enPath = path_module.join(directory, 'en.js');
+  const en = await import(pathToFileURL(enPath).href);
   const enBenchmark = flattenObject(en.default, []);
 
   const args = process.argv.slice(2);
