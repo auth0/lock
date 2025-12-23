@@ -46,7 +46,8 @@ export default {
       'bad.phone_number': 'Nomor telepon tidak valid.',
       'lock.fallback': 'Maaf, terjadi kesalahan',
       invalid_captcha: 'Selesaikan pertanyaan tantangan untuk memverifikasi bahwa Anda bukan robot.',
-      invalid_recaptcha: 'Pilih kotak centang untuk memverifikasi bahwa Anda bukan robot.'
+      invalid_recaptcha: 'Pilih kotak centang untuk memverifikasi bahwa Anda bukan robot.',
+      too_many_attempts: 'Akun Anda telah diblokir setelah mencoba masuk log berulang-ulang.'
     },
     signUp: {
       invalid_password: 'Kata sandi tidak valid.',

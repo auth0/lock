@@ -43,7 +43,8 @@ export default {
       'bad.phone_number': 'Neteisingas telefono numeris',
       'lock.fallback': 'Atsiprašome, įvyko netikėta klaida.',
       invalid_captcha: 'Išspręskite iššūkio klausimą ir įsitikinkite, kad nesate robotas.',
-      invalid_recaptcha: 'Pažymėkite žymimąjį laukelį, kad patikrintumėte, ar nesate robotas.'
+      invalid_recaptcha: 'Pažymėkite žymimąjį laukelį, kad patikrintumėte, ar nesate robotas.',
+      too_many_attempts: 'Jūsų sąskaita buvo užblokuota, po kelių iš eilės bandymų prisijungti.'
     },
     signUp: {
       invalid_password: 'Slaptažodis neteisingas.',

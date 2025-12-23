@@ -46,7 +46,8 @@ export default {
       'bad.phone_number': 'El número de telèfon no és vàlid',
       'lock.fallback': 'Quelcom ha fet fallida',
       invalid_captcha: 'Resoleu la pregunta de desafiament per verificar que no sou un robot.',
-      invalid_recaptcha: 'Seleccioneu la casella de verificació per verificar que no sou un robot.'
+      invalid_recaptcha: 'Seleccioneu la casella de verificació per verificar que no sou un robot.',
+      too_many_attempts: "Hi ha hagut massa intents consecutius fallits d'inici de sessió, i se us ha bloquejat l'accés."
     },
     signUp: {
       invalid_password: 'La contrasenya no és vàlida.',
