@@ -21,5 +21,4 @@ jobs:
       node-version: 18
       require-build: true
     secrets:
-      npm-token: ${{ secrets.NPM_TOKEN }}
       github-token: ${{ secrets.GITHUB_TOKEN }}
