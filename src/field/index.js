@@ -1,6 +1,5 @@
 import React from 'react';
 import { Map } from 'immutable';
-import trim from 'trim';
 import OptionSelectionPane from './option_selection_pane';
 import * as l from '../core/index';
 
@@ -10,14 +9,14 @@ const getDefaultValidator = field => {
   switch (field) {
     case 'family_name':
     case 'given_name':
-      return str => minMax(trim(str), 1, 150);
+      return str => minMax(str.trim(), 1, 150);
     case 'name':
-      return str => minMax(trim(str), 1, 300);
+      return str => minMax(str.trim(), 1, 300);
     case 'nickname':
-      return str => minMax(trim(str), 1, 300);
+      return str => minMax(str.trim(), 1, 300);
 
     default:
-      return str => trim(str).length > 0;
+      return str => str.trim().length > 0;
   }
 };
 

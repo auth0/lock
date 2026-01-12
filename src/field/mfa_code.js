@@ -1,13 +1,12 @@
 import { setField } from './index';
 import { validateEmail } from './email';
 import { databaseConnection } from '../connection/database';
-import trim from 'trim';
 
 const DEFAULT_VALIDATION = { mfa_code: { length: 6 } };
 const regExp = /^[0-9]+$/;
 
 function validateMFACode(str, settings = DEFAULT_VALIDATION.mfa_code) {
-  const value = trim(str);
+  const value = str.trim();
 
   // check min value matched
   if (value.length < settings.length) {

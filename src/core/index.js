@@ -4,7 +4,6 @@ import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
 import { getLocationFromUrl, getOriginFromUrl } from '../utils/url_utils';
 import * as i18n from '../i18n';
-import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
 import { dataFns } from '../utils/data_utils';
 import { clientConnections, hasFreeSubscription } from './client/index';
@@ -201,7 +200,7 @@ function extractUIOptions(id, options) {
     closable: closable,
     hideMainScreenTitle: !!hideMainScreenTitle,
     labeledSubmitButton: undefined === labeledSubmitButton ? true : !!labeledSubmitButton,
-    language: undefined === options.language ? 'en' : trim(options.language || '').toLowerCase(),
+    language: undefined === options.language ? 'en' : (options.language || '').trim().toLowerCase(),
     dict: typeof options.languageDictionary === 'object' ? options.languageDictionary : {},
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     mobile: undefined === options.mobile ? false : !!options.mobile,
@@ -598,14 +597,14 @@ export function loginErrorMessage(m, error, type) {
   if (code === 'invalid_captcha') {
     const currentCaptcha = get(m, 'captcha');
     if (
-      currentCaptcha && (
-        currentCaptcha.get('provider') === 'recaptcha_v2' ||
+      currentCaptcha &&
+      (currentCaptcha.get('provider') === 'recaptcha_v2' ||
         currentCaptcha.get('provider') === 'recaptcha_enterprise' ||
         currentCaptcha.get('provider') === 'hcaptcha' ||
         currentCaptcha.get('provider') === 'auth0_v2' ||
         currentCaptcha.get('provider') === 'friendly_captcha' ||
-        currentCaptcha.get('provider') === 'arkose'
-      )) {
+        currentCaptcha.get('provider') === 'arkose')
+    ) {
       code = 'invalid_recaptcha';
     }
   }
