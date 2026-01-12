@@ -37,7 +37,7 @@
     "publish:cdn": "ccu --trace",
     "i18n:translate": "grunt dist && node scripts/complete-translations.js && npm run i18n:prettier && npm run build",
     "i18n:prettier": "prettier --write src/i18n/*",
-    "i18n:validate": "node scripts/lang-audit.js"
+    "i18n:validate": "node scripts/lang-audit.mjs"
   },
   "devDependencies": {
     "@auth0/component-cdn-uploader": "^2.4.2",
@@ -128,7 +128,7 @@
     "jsonp": "^0.2.1",
     "password-sheriff": "^1.1.1",
     "prop-types": "^15.8.0",
-    "qs": "^6.10.3",
+    "qs": "^6.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-transition-group": "^4.4.5",
