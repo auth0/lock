@@ -1,8 +1,13 @@
-const path_module = require('path');
-const emojic = require('emojic');
-const chalk = require('chalk');
-const glob = require('glob');
-const directory = path_module.join(__dirname, '..', 'src', 'i18n');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import emojic from 'emojic';
+import chalk from 'chalk';
+import glob from 'glob';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const directory = path.join(__dirname, '..', 'src', 'i18n');
 
 /**
  * Flattens an object recursively so that any nested objects are referred to on the root object using
@@ -30,7 +35,7 @@ const directory = path_module.join(__dirname, '..', 'src', 'i18n');
 const flattenObject = (obj, cumulative = []) => {
   let keys = {};
 
-  for (key of Object.keys(obj)) {
+  for (const key of Object.keys(obj)) {
     if (typeof obj[key] === 'object') {
       const subKeys = flattenObject(obj[key], cumulative.concat(key));
       keys = { ...keys, ...subKeys };
@@ -56,7 +61,7 @@ const compareKeys = (obj1, obj2) => {
     total: Object.keys(obj1).length
   };
 
-  for (key of Object.keys(obj1)) {
+  for (const key of Object.keys(obj1)) {
     if (!(key in obj2)) {
       result.missing.push({ key, text: obj1[key] });
     } else {
@@ -72,8 +77,8 @@ const compareKeys = (obj1, obj2) => {
  * @param {string} reference The reference object. A lang file that has been loaded and flattened.
  * @param {string} path The full module path of the module to compare to the reference.
  */
-const validateLangFile = async (reference, path, verbose) => {
-  console.log(`Processing ${chalk.green(path_module.relative(process.cwd(), path))}`);
+const validateLangFile = async (reference, filePath, verbose) => {
+  console.log(`Processing ${chalk.green(path.relative(process.cwd(), filePath))}`);
 
   const stats = {
     coverage: 0,
@@ -81,13 +86,13 @@ const validateLangFile = async (reference, path, verbose) => {
     missing: 0
   };
 
-  const lang = await import(path);
+  const lang = await import(filePath);
   const langFlattened = flattenObject(lang.default);
 
   const result = compareKeys(reference, langFlattened);
 
   if (verbose) {
-    for (key of Object.keys(reference)) {
+    for (const key of Object.keys(reference)) {
       if (key in langFlattened) {
         console.log(chalk.green(`${key}: ${langFlattened[key]}`));
       } else {
@@ -103,10 +108,10 @@ const validateLangFile = async (reference, path, verbose) => {
   if (result.missing.length) {
     console.log(`${emojic.x} Found ${result.missing.length} missing keys`);
 
-    for (missing of result.missing) {
+    for (const missing of result.missing) {
       console.log(
         chalk.red(
-          `Missing translation for ${path_module.basename(path)} -> ${missing.key} = "${
+          `Missing translation for ${path.basename(filePath)} -> ${missing.key} = "${
             missing.text
           }"`
         )
@@ -123,7 +128,7 @@ const validateLangFile = async (reference, path, verbose) => {
 
 const run = async () => {
   // Load the 'en' lang file to act as the reference for all others
-  const en = await import(path_module.join(directory, 'en.js'));
+  const en = await import(path.join(directory, 'en.js'));
   const enBenchmark = flattenObject(en.default, []);
 
   const args = process.argv.slice(2);
@@ -132,13 +137,13 @@ const run = async () => {
   const verbose = args.includes('-v');
 
   // Grab all the module files we want to compare to
-  const modules = glob.sync(path_module.join(__dirname, '..', 'src', 'i18n', filePattern));
+  const modules = glob.sync(path.join(__dirname, '..', 'src', 'i18n', filePattern));
   let files = 0;
   let coverage = 0;
   let total = 0;
   let missing = 0;
 
-  for (file of modules) {
+  for (const file of modules) {
     const stats = await validateLangFile(enBenchmark, file, verbose);
     console.log('');
 
