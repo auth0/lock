@@ -1,5 +1,14 @@
 # Change Log
 
+## [v14.2.3](https://github.com/auth0/lock/tree/v14.2.3) (2026-01-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.2.2...v14.2.3)
+
+**Added**
+- feat: add too_many_attempts error to passwordless [\#2700](https://github.com/auth0/lock/pull/2700) ([avamachado-okta](https://github.com/avamachado-okta))
+
+**Changed**
+- Update: Upgrade Node.js from 18 to 22 [\#2711](https://github.com/auth0/lock/pull/2711) ([ankita10119](https://github.com/ankita10119))
+
 ## [v14.2.2](https://github.com/auth0/lock/tree/v14.2.2) (2025-12-16)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.1...v14.2.2)
 
