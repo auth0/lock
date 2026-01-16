@@ -242,7 +242,8 @@ function logInError(id, fields, error, localHandler = (_id, _error, _fields, nex
         'rule_error',
         'lock.unauthorized',
         'invalid_user_password',
-        'login_required'
+        'login_required',
+        'too_many_attempts'
       ];
 
       if (errorCodesThatEmitAuthorizationErrorEvent.indexOf(errorCode) > -1) {
