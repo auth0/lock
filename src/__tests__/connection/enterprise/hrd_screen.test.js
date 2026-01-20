@@ -58,7 +58,6 @@ describe('HRDScreen Component', () => {
 
   it('does not show "undefined" in message when enterprise domain is undefined', () => {
     require('connection/enterprise').enterpriseDomain.mockImplementation(() => undefined);
-    const Component = getComponent();
     const { str } = i18nProp;
     
     // Should use the fallback message without domain placeholder
