@@ -67,9 +67,8 @@ describe('HRDScreen Component', () => {
   });
 
   it('does not show "undefined" in message when enterprise domain is null', () => {
-    require('connection/enterprise').enterpriseDomain.mockImplementation(() => null);
-    const Component = getComponent();
-    
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => null);    
+    const { str } = i18nProp;
     // Should use the fallback message without domain placeholder  
     const expectedMessage = str('enterpriseLoginIntructions');
     expect(expectedMessage).toContain('Login with your corporate credentials.');
