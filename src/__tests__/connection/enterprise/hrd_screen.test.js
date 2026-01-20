@@ -49,4 +49,41 @@ describe('HRDScreen Component', () => {
     const Component = getComponent();
     expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
   });
+
+  it('renders correctly when enterprise domain is undefined', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => undefined);
+    const Component = getComponent();
+    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+  });
+
+  it('does not show "undefined" in message when enterprise domain is undefined', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => undefined);
+    const { str } = i18nProp;
+    
+    // Should use the fallback message without domain placeholder
+    const expectedMessage = str('enterpriseLoginIntructions');
+    expect(expectedMessage).toContain('Login with your corporate credentials.');
+    expect(expectedMessage).not.toContain('undefined');
+  });
+
+  it('does not show "undefined" in message when enterprise domain is null', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => null);    
+    const { str } = i18nProp;
+    // Should use the fallback message without domain placeholder  
+    const expectedMessage = str('enterpriseLoginIntructions');
+    expect(expectedMessage).toContain('Login with your corporate credentials.');
+    expect(expectedMessage).not.toContain('undefined');
+  });
+
+  it('uses fallback message when enterprise domain is empty string', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => '');
+    const Component = getComponent();
+    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+  });
+
+  it('uses fallback message when enterprise domain is whitespace only', () => {
+    require('connection/enterprise').enterpriseDomain.mockImplementation(() => '   ');
+    const Component = getComponent();
+    expectComponent(<Component model={lock} i18n={i18nProp} />).toMatchSnapshot();
+  });
 });
