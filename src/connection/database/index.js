@@ -9,7 +9,6 @@ import {
 } from '../../field/index';
 import { dataFns } from '../../utils/data_utils';
 import sync from '../../sync';
-import trim from 'trim';
 import { defaultDirectory } from '../../core/tenant';
 import { findADConnectionWithoutDomain } from '../../connection/enterprise';
 
@@ -41,7 +40,7 @@ function assertMaybeEnum(opts, name, a) {
 
 function assertMaybeString(opts, name) {
   const valid =
-    opts[name] === undefined || (typeof opts[name] === 'string' && trim(opts[name]).length > 0);
+    opts[name] === undefined || (typeof opts[name] === 'string' && opts[name].trim().length > 0);
   if (!valid)
     l.warn(opts, `The \`${name}\` option will be ignored, because it is not a non-empty string.`);
   return valid;
