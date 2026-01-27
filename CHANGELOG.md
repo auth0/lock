@@ -1,5 +1,13 @@
 # Change Log
 
+## [v14.2.4](https://github.com/auth0/lock/tree/v14.2.4) (2026-01-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.2.3...v14.2.4)
+
+**Fixed**
+- fix: update className and InputWrap name in SelectInput component (#2534) [\#2719](https://github.com/auth0/lock/pull/2719) ([ankita10119](https://github.com/ankita10119))
+- fix: handle undefined and empty domain values in HRD screen (#2526) [\#2720](https://github.com/auth0/lock/pull/2720) ([ankita10119](https://github.com/ankita10119))
+- fix: add 'too_many_attempts' to error codes in logInError function [\#2718](https://github.com/auth0/lock/pull/2718) ([ankita10119](https://github.com/ankita10119))
+
 ## [v14.2.3](https://github.com/auth0/lock/tree/v14.2.3) (2026-01-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.2...v14.2.3)
 
