@@ -124,7 +124,7 @@
     "classnames": "^2.3.2",
     "dompurify": "^3.2.5",
     "events": "^3.3.0",
-    "immutable": "^3.7.6",
+    "immutable": "^4.3.8",
     "jsonp": "^0.2.1",
     "password-sheriff": "^1.1.1",
     "prop-types": "^15.8.0",
