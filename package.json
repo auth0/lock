@@ -156,6 +156,11 @@
       "<rootDir>/src/",
       "<rootDir>/src/__tests__"
     ],
+    "moduleNameMapper": {
+      "^cheerio$": "<rootDir>/node_modules/cheerio/dist/commonjs/index.js",
+      "^cheerio/lib/utils$": "<rootDir>/node_modules/cheerio/dist/commonjs/utils.js",
+      "^undici$": "<rootDir>/src/__tests__/__mocks__/undici.js"
+    },
     "setupFiles": [
       "<rootDir>/src/__tests__/setup-tests.js"
     ],
@@ -171,7 +176,8 @@
       "<rootDir>/test/",
       "<rootDir>/lib/",
       "<rootDir>/src/__tests__/testUtils.js",
-      "<rootDir>/src/__tests__/setup-tests.js"
+      "<rootDir>/src/__tests__/setup-tests.js",
+      "<rootDir>/src/__tests__/__mocks__/"
     ],
     "coverageReporters": [
       "lcov",
