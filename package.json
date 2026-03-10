@@ -170,7 +170,8 @@
       "/node_modules/",
       "<rootDir>/test/",
       "<rootDir>/lib/",
-      "<rootDir>/src/__tests__/testUtils.js"
+      "<rootDir>/src/__tests__/testUtils.js",
+      "<rootDir>/src/__tests__/setup-tests.js"
     ],
     "coverageReporters": [
       "lcov",
