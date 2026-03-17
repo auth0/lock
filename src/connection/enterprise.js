@@ -79,7 +79,7 @@ export function matchConnection(m, email, strategies = []) {
   const target = emailDomain(email);
   if (!target) return false;
   return l.connections(m, 'enterprise', ...strategies).find(x => {
-    return x.get('domains').contains(target);
+    return x.get('domains', List()).contains(target);
   });
 }
 
