@@ -18,6 +18,10 @@ describe('matchConnection', () => {
 
     const m = I.fromJS({ id: '__lock__' });
 
-    expect(() => matchConnection(m, 'test@example.com')).not.toThrow();
+    let result;
+    expect(() => {
+      result = matchConnection(m, 'test@example.com');
+    }).not.toThrow();
+    expect(result).toBeFalsy();
   });
 });
