@@ -1,5 +1,12 @@
 # Change Log
 
+## [v14.2.5](https://github.com/auth0/lock/tree/v14.2.5) (2026-03-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.2.4...v14.2.5)
+
+**Fixed**
+- Fix: TypeError when CordovaAuth0Plugin is not a constructor (auth0-js 9.30.1+)  [\#2742](https://github.com/auth0/lock/pull/2742) ([ankita10119](https://github.com/ankita10119))
+- Fix: TypeError in matchConnection for enterprise connections with no domains [\#2736](https://github.com/auth0/lock/pull/2736) ([ankita10119](https://github.com/ankita10119))
+
 ## [v14.2.4](https://github.com/auth0/lock/tree/v14.2.4) (2026-01-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.3...v14.2.4)
 
