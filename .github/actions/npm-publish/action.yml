@@ -21,7 +21,6 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
-        cache: 'npm'
         registry-url: 'https://registry.npmjs.org'
 
     - name: Update npm
@@ -31,7 +30,7 @@ runs:
     - name: Install dependencies
       if: inputs.require-build == 'true'
       shell: bash
-      run: npm ci --include=dev
+      run: npm install --include=dev
 
     - name: Build package
       if: inputs.require-build == 'true'
