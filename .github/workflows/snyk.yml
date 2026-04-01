@@ -33,6 +33,14 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.ref }}
 
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
       - uses: snyk/actions/node@9adf32b1121593767fc3c057af55b55db032dc04 # pin@1.0.0
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
