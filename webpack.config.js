@@ -58,6 +58,20 @@ module.exports = {
   module: {
     rules: [
       {
+        // auth0-password-policies uses ES2020+ syntax (optional chaining) that
+        // must be transpiled for the IE 11 / ES2017 build target. Babel's
+        // .babelrc is file-relative and does not apply across package
+        // boundaries, so presets are passed explicitly here.
+        test: /\.js$/,
+        include: path.join(__dirname, 'node_modules', 'auth0-password-policies'),
+        loader: 'babel-loader',
+        options: {
+          presets: [['@babel/preset-env', { useBuiltIns: 'entry', corejs: '3.26.1' }]],
+          configFile: false,
+          babelrc: false
+        }
+      },
+      {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: path.join(__dirname, 'node_modules')
