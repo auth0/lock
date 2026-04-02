@@ -25,6 +25,9 @@ lock.checkSession({}, function (error: auth0.Auth0Error, authResult: AuthResult 
 // show with options
 const showOptions: Auth0LockShowOptions = {
     allowedConnections: ["twitter", "facebook"],
+    allowAutocomplete: true,
+    allowPasswordAutocomplete: false,
+    allowShowPassword: true,
     allowSignUp: true,
     allowForgotPassword: false,
     auth: {
@@ -40,8 +43,9 @@ const showOptions: Auth0LockShowOptions = {
         type: "error",
         text: "an error has occurred",
     },
-    rememberLastLogin: false,
+    language: "en",
     languageDictionary: { title: "test" },
+    rememberLastLogin: false,
 };
 
 lock.show(showOptions);
@@ -89,7 +93,7 @@ new Auth0Lock(CLIENT_ID, DOMAIN, {
     preferConnectionDisplayName: true,
     useCustomPasswordlessConnection: true,
     emailFirst: true,
-    connectionResolver: (context, callback) => {
+    connectionResolver: (userInput, context, callback) => {
         callback({ name: "my-connection" });
     },
     hooks: {
@@ -119,7 +123,7 @@ const allOptions: Auth0LockConstructorOptions = {
     clientBaseUrl: "http://www.example.com",
     closable: true,
     configurationBaseUrl: "https://cdn.auth0.com",
-    connectionResolver: (context, callback) => { callback({ name: "my-connection" }); },
+    connectionResolver: (userInput, context, callback) => { callback({ name: "my-connection" }); },
     container: "myContainer",
     defaultADUsernameFromEmailPrefix: false,
     defaultDatabaseConnection: "Username-Password-Authentication",
@@ -139,24 +143,28 @@ const allOptions: Auth0LockConstructorOptions = {
     languageBaseUrl: "http://www.example.com",
     languageDictionary: { title: "My App" },
     leeway: 30,
+    legacySameSiteCookie: false,
     loginAfterSignUp: true,
     mobile: false,
     mustAcceptTerms: false,
-    oidcConformant: true,
     popupOptions: { width: 500, height: 600, left: 100, top: 100 },
     preferConnectionDisplayName: false,
     prefill: { email: "user@example.com" },
     rememberLastLogin: true,
     scrollGlobalMessagesIntoView: true,
     showTerms: true,
-    signupLink: "https://example.com/signup",
     signUpFieldsStrictValidation: true,
+    signUpHideUsernameField: false,
+    signUpLink: "https://example.com/signup",
     socialButtonStyle: "big",
     theme: { primaryColor: "#ea5323" },
     useCustomPasswordlessConnection: false,
     usernameStyle: "username",
     _enableImpersonation: false,
     _enableIdPInitiatedLogin: false,
+    _sendTelemetry: true,
+    _telemetryInfo: { name: "my-sdk", version: "1.0.0", env: { "auth0.js": "9.0.0" } },
+    __useTenantInfo: false,
 };
 
 new Auth0Lock(CLIENT_ID, DOMAIN, allOptions);

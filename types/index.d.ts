@@ -144,7 +144,7 @@ interface Auth0LockConstructorOptions {
     clientBaseUrl?: string | undefined;
     closable?: boolean | undefined;
     configurationBaseUrl?: string | undefined;
-    connectionResolver?: ((context: any, callback: (connection: any) => void) => void) | undefined;
+    connectionResolver?: ((userInput: string, context: any, callback: (connection: any) => void) => void) | undefined;
     container?: string | undefined;
     defaultADUsernameFromEmailPrefix?: boolean | undefined;
     defaultDatabaseConnection?: string | undefined;
@@ -161,24 +161,28 @@ interface Auth0LockConstructorOptions {
     languageBaseUrl?: string | undefined;
     languageDictionary?: any;
     leeway?: number | undefined;
+    legacySameSiteCookie?: boolean | undefined;
     loginAfterSignUp?: boolean | undefined;
     mobile?: boolean | undefined;
     mustAcceptTerms?: boolean | undefined;
-    oidcConformant?: boolean | undefined;
     popupOptions?: Auth0LockPopupOptions | undefined;
     preferConnectionDisplayName?: boolean | undefined;
     prefill?: { email?: string | undefined; username?: string | undefined } | undefined;
     rememberLastLogin?: boolean | undefined;
     scrollGlobalMessagesIntoView?: boolean | undefined;
     showTerms?: boolean | undefined;
-    signupLink?: string | undefined;
     signUpFieldsStrictValidation?: boolean | undefined;
+    signUpHideUsernameField?: boolean | undefined;
+    signUpLink?: string | undefined;
     socialButtonStyle?: "big" | "small" | undefined;
     theme?: Auth0LockThemeOptions | undefined;
     useCustomPasswordlessConnection?: boolean | undefined;
-    usernameStyle?: string | undefined;
+    usernameStyle?: "email" | "username" | undefined;
     _enableImpersonation?: boolean | undefined;
     _enableIdPInitiatedLogin?: boolean | undefined;
+    _sendTelemetry?: boolean | undefined;
+    _telemetryInfo?: { name?: string | undefined; version?: string | undefined; env?: Record<string, string> | undefined } | undefined;
+    __useTenantInfo?: boolean | undefined;
 }
 
 interface Auth0LockFlashMessageOptions {
@@ -188,14 +192,18 @@ interface Auth0LockFlashMessageOptions {
 
 interface Auth0LockShowOptions {
     allowedConnections?: string[] | undefined;
+    allowAutocomplete?: boolean | undefined;
     allowForgotPassword?: boolean | undefined;
     allowLogin?: boolean | undefined;
+    allowPasswordAutocomplete?: boolean | undefined;
+    allowShowPassword?: boolean | undefined;
     allowSignUp?: boolean | undefined;
     auth?: Auth0LockAuthOptions | undefined;
     initialScreen?: "login" | "signUp" | "forgotPassword" | undefined;
     flashMessage?: Auth0LockFlashMessageOptions | undefined;
-    rememberLastLogin?: boolean | undefined;
+    language?: string | undefined;
     languageDictionary?: any;
+    rememberLastLogin?: boolean | undefined;
 }
 
 interface Auth0IdTokenPayload {
@@ -256,7 +264,7 @@ interface Auth0LockStatic extends Auth0LockCore {
 
 // additional options for passwordless mode
 interface Auth0LockPasswordlessConstructorOptions extends Auth0LockConstructorOptions {
-    passwordlessMethod?: string | undefined;
+    passwordlessMethod?: "code" | "link" | undefined;
 }
 
 interface Auth0LockPasswordlessStatic extends Auth0LockCore {
