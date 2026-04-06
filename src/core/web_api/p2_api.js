@@ -1,6 +1,6 @@
 import auth0 from 'auth0-js';
 import qs from 'qs';
-import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
+const CordovaAuth0Plugin = require('auth0-js/dist/cordova-auth0-plugin.min.js');
 import {
   normalizeError,
   loginCallback,
