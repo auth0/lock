@@ -1,6 +1,5 @@
 import auth0 from 'auth0-js';
 import qs from 'qs';
-import CordovaAuth0Plugin from 'auth0-js/dist/cordova-auth0-plugin.min.js';
 import {
   normalizeError,
   loginCallback,
@@ -9,6 +8,11 @@ import {
   trimAuthParams,
   getVersion
 } from './helper';
+
+// require() used intentionally: cordova-auth0-plugin.min.js is a UMD bundle;
+// webpack 5 cannot statically resolve a default export from module.exports,
+// so import-default syntax would emit a warning.
+const CordovaAuth0Plugin = require('auth0-js/dist/cordova-auth0-plugin.min.js');
 
 class Auth0APIClient {
   constructor(lockID, clientID, domain, opts) {
