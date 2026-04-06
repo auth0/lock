@@ -1,5 +1,20 @@
 # Change Log
 
+## [v14.3.0](https://github.com/auth0/lock/tree/v14.3.0) (2026-04-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v14.2.5...v14.3.0)
+
+**Added**
+- feat(types): ship TypeScript definitions directly from the lock repo, supersedes `@types/auth0-lock` [\#2763](https://github.com/auth0/lock/pull/2763) ([ankita10119](https://github.com/ankita10119))
+
+**Changed**
+- chore(deps): upgrade webpack-dev-server to v5, auth0-password-policies to 3.1.0, and fix dev setup  [\#2771](https://github.com/auth0/lock/pull/2771) ([ankita10119](https://github.com/ankita10119))
+
+**Deprecated**
+- chore: remove deprecated yammer, renren, miicard strategies [\#2747](https://github.com/auth0/lock/pull/2747) ([omarquazi-okta](https://github.com/omarquazi-okta))
+
+**Fixed**
+- Fix: TypeError in matchConnection and findADConnectionWithoutDomain for enterprise connections with null/undefined domains (#2749)  [\#2758](https://github.com/auth0/lock/pull/2758) ([ankita10119](https://github.com/ankita10119))
+
 ## [v14.2.5](https://github.com/auth0/lock/tree/v14.2.5) (2026-03-19)
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.4...v14.2.5)
 
