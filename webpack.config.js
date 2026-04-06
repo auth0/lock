@@ -2,6 +2,8 @@ const { spawnSync } = require('child_process');
 const fs = require('fs');
 const tmp = require('tmp');
 const path = require('path');
+const pkg = require('./package.json');
+const coreJsVersion = pkg.devDependencies['core-js'].replace(/^\^/, '');
 
 /**
  * This is a helper function to generate valid certs using mkcert.
@@ -70,7 +72,7 @@ module.exports = {
         include: path.join(__dirname, 'node_modules', 'auth0-password-policies'),
         loader: 'babel-loader',
         options: {
-          presets: [['@babel/preset-env', { useBuiltIns: 'entry', corejs: '3.26.1' }]],
+          presets: [['@babel/preset-env', { useBuiltIns: 'entry', corejs: coreJsVersion }]],
           configFile: false,
           babelrc: false
         }
