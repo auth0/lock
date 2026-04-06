@@ -4,7 +4,7 @@
 [Full Changelog](https://github.com/auth0/lock/compare/v14.2.5...v14.3.0)
 
 **Added**
-- feat(types): ship TypeScript definitions directly from the lock repo [\#2763](https://github.com/auth0/lock/pull/2763) ([ankita10119](https://github.com/ankita10119))
+- feat(types): ship TypeScript definitions directly from the lock repo, supersedes `@types/auth0-lock` [\#2763](https://github.com/auth0/lock/pull/2763) ([ankita10119](https://github.com/ankita10119))
 
 **Changed**
 - chore(deps): upgrade webpack-dev-server to v5, auth0-password-policies to 3.1.0, and fix dev setup  [\#2771](https://github.com/auth0/lock/pull/2771) ([ankita10119](https://github.com/ankita10119))
