@@ -1,7 +1,6 @@
 import { setField } from './index';
 import { validateEmail } from './email';
 import { databaseConnection } from '../connection/database';
-import trim from 'trim';
 
 const DEFAULT_CONNECTION_VALIDATION = { username: { min: 1, max: 15 } };
 const regExp = /^[a-zA-Z0-9_+\-.!#\$\^`~@']*$/;
@@ -15,10 +14,10 @@ function validateUsername(
   // If the connection does not have validation settings, it should only check if the field is empty.
   // validateFormat overrides this logic to disable validation on login (login should never validate format)
   if (!validateFormat || settings == null) {
-    return trim(str).length > 0;
+    return str.trim().length > 0;
   }
 
-  const lowercased = trim(str.toLowerCase());
+  const lowercased = str.toLowerCase().trim();
 
   // check min value matched
   if (lowercased.length < settings.min) {

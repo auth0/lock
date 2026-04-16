@@ -1,4 +1,3 @@
-import trim from 'trim';
 import _isEmail from 'validator/lib/isEmail';
 
 import { setField } from './index';
@@ -13,7 +12,7 @@ export function isEmail(str, strictValidation = false) {
   if (typeof str !== 'string') {
     return false;
   }
-  const trimmed = trim(str);
+  const trimmed = str.trim();
   return strictValidation
     ? _isEmail(str)
     : trimmed.indexOf('@') >= 0 && trimmed.indexOf('.') >= 0 && trimmed.indexOf(' ') === -1;
