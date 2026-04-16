@@ -624,7 +624,6 @@ require.register("yields-uniq-selector/index.js", function(exports, require, mod
  */
 
 var index = require('indexof');
-var trim = require('trim');
 
 /**
  * Export `uniq`
@@ -659,7 +658,7 @@ function uniq(el, arr){
  */
 
 function selector(el){
-  var classname = trim(el.className.baseVal ? el.className.baseVal : el.className);
+  var classname = (el.className.baseVal ? el.className.baseVal : el.className).trim();
   var i = el.parentNode && 9 == el.parentNode.nodeType ? -1 : index(el);
 
   return el.tagName.toLowerCase()

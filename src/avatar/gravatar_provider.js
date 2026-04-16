@@ -1,12 +1,11 @@
 import blueimp from 'blueimp-md5';
-import trim from 'trim';
 import jsonp from '../utils/jsonp_utils';
 import { validateEmail } from '../field/email';
 
 const md5 = blueimp.md5 || blueimp;
 
 function normalize(str) {
-  return typeof str === 'string' ? trim(str.toLowerCase()) : '';
+  return typeof str === 'string' ? str.toLowerCase().trim() : '';
 }
 
 export function displayName(email, cb) {
