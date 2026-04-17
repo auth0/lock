@@ -79,7 +79,7 @@ export function matchConnection(m, email, strategies = []) {
   const target = emailDomain(email);
   if (!target) return false;
   return l.connections(m, 'enterprise', ...strategies).find(x => {
-    return x.get('domains', List()).contains(target);
+    return (x.get('domains') || List()).contains(target);
   });
 }
 
@@ -108,7 +108,7 @@ export function isADEnabled(m) {
 
 export function findADConnectionWithoutDomain(m, name = undefined) {
   return l.connections(m, 'enterprise', 'ad', 'auth0-adldap').find(x => {
-    return x.get('domains').isEmpty() && (!name || x.get('name') === name);
+    return (x.get('domains') || List()).isEmpty() && (!name || x.get('name') === name);
   });
 }
 
