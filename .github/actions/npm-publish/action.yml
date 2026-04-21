@@ -21,7 +21,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
-        registry-url: 'https://registry.npmjs.org'
+        package-manager-cache: false
 
     - name: Update npm
       shell: bash
@@ -48,6 +48,6 @@ runs:
         else
           TAG="latest"
         fi
-        npm publish --tag $TAG
+        npm publish --provenance --registry https://registry.npmjs.org --tag $TAG
       env:
         VERSION: ${{ inputs.version }}

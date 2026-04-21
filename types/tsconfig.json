@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "lib": ["es6", "dom"],
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "noEmit": true,
+        "skipLibCheck": true,
+        "baseUrl": "..",
+        "paths": {
+            "auth0-lock": ["types/index.d.ts"]
+        }
+    },
+    "files": [
+        "index.d.ts",
+        "auth0-lock-tests.ts"
+    ]
+}

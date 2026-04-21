@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "14.2.5",
+  "version": "14.3.0",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "url": "git://github.com/auth0/lock"
   },
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "start": "grunt dev",
     "prebuild": "grunt dist",
@@ -63,6 +64,7 @@
     "@babel/preset-react": "^7.0.0",
     "@cfaester/enzyme-adapter-react-18": "^0.8.0",
     "@google-cloud/translate": "^9.1.0",
+    "@types/auth0-js": "^9.21.6",
     "babel-jest": "^29.3.1",
     "babel-loader": "8.4.1",
     "babel-plugin-stylus-compiler": "^1.4.0",
@@ -115,18 +117,18 @@
     "watchify": "^4.0.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
     "auth0-js": "^9.29.0",
-    "auth0-password-policies": "^1.0.2",
+    "auth0-password-policies": "^3.1.0",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.2",
     "dompurify": "^3.2.5",
     "events": "^3.3.0",
     "immutable": "^3.7.6",
     "jsonp": "^0.2.1",
-    "password-sheriff": "^1.1.1",
+    "password-sheriff": "^2.0.0",
     "prop-types": "^15.8.0",
     "qs": "^6.14.1",
     "react": "^18.2.0",
