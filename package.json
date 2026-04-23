@@ -120,22 +120,22 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "auth0-js": "^9.27.0",
+    "auth0-js": "^9.29.0",
     "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.2",
     "dompurify": "^2.5.4",
-    "immutable": "^3.7.6",
+    "immutable": "^3.8.3",
     "jsonp": "^0.2.1",
     "password-sheriff": "^1.1.1",
     "prop-types": "^15.8.0",
-    "qs": "^6.10.3",
+    "qs": "^6.14.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-transition-group": "^2.2.1",
     "trim": "^1.0.1",
     "url-join": "^1.1.0",
-    "validator": "^13.6.0"
+    "validator": "^13.15.22"
   },
   "ccu": {
     "name": "lock",
