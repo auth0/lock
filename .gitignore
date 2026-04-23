@@ -13,3 +13,4 @@ build/
 .puppeteer-cache/
 .npm-home/
 .chromium/
+package-lock.json

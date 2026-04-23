@@ -21,8 +21,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
-        cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
+        package-manager-cache: false
 
     - name: Update npm
       shell: bash
@@ -31,7 +30,7 @@ runs:
     - name: Install dependencies
       if: inputs.require-build == 'true'
       shell: bash
-      run: npm ci --include=dev
+      run: npm install --include=dev
 
     - name: Build package
       if: inputs.require-build == 'true'
@@ -49,6 +48,6 @@ runs:
         else
           TAG="latest"
         fi
-        npm publish --tag $TAG
+        npm publish --provenance --registry https://registry.npmjs.org --tag $TAG
       env:
         VERSION: ${{ inputs.version }}
