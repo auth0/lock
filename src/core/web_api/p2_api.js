@@ -21,7 +21,6 @@ class Auth0APIClient {
     this.authOpt = null;
     this.domain = domain;
     this.isUniversalLogin = window.location.host === domain;
-    this._enableIdPInitiatedLogin = !!(opts._enableIdPInitiatedLogin || opts._enableImpersonation);
     const telemetry = this.getTelemetryInfo(opts._telemetryInfo);
 
     var state = opts.state;
@@ -174,7 +173,6 @@ class Auth0APIClient {
   parseHash(hash = '', cb) {
     return this.client.parseHash(
       {
-        __enableIdPInitiatedLogin: this._enableIdPInitiatedLogin,
         hash,
         nonce: this.authOpt.nonce,
         state: this.authOpt.state
