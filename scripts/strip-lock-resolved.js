@@ -6,11 +6,16 @@ const path = require('path');
 
 const lockfilePath = path.resolve(__dirname, '..', 'package-lock.json');
 
-if (!fs.existsSync(lockfilePath)) {
-  process.exit(0);
+let lock;
+try {
+  const rfd = fs.openSync(lockfilePath, 'r');
+  const content = fs.readFileSync(rfd, 'utf8');
+  fs.closeSync(rfd);
+  lock = JSON.parse(content);
+} catch (e) {
+  if (e.code === 'ENOENT') process.exit(0);
+  throw e;
 }
-
-const lock = JSON.parse(fs.readFileSync(lockfilePath, 'utf8'));
 
 // lockfile v2/v3 — flat packages map
 if (lock.packages) {
@@ -27,5 +32,7 @@ function stripDeps(deps) {
 }
 stripDeps(lock.dependencies);
 
-fs.writeFileSync(lockfilePath, JSON.stringify(lock, null, 2) + '\n');
+const wfd = fs.openSync(lockfilePath, 'w');
+fs.writeFileSync(wfd, JSON.stringify(lock, null, 2) + '\n');
+fs.closeSync(wfd);
 console.log('Stripped resolved fields from package-lock.json');
