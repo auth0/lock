@@ -6,33 +6,37 @@ const path = require('path');
 
 const lockfilePath = path.resolve(__dirname, '..', 'package-lock.json');
 
-let lock;
+// Open once in read+write mode — single path resolution, no TOCTOU window.
+let fd;
 try {
-  const rfd = fs.openSync(lockfilePath, 'r');
-  const content = fs.readFileSync(rfd, 'utf8');
-  fs.closeSync(rfd);
-  lock = JSON.parse(content);
+  fd = fs.openSync(lockfilePath, 'r+');
 } catch (e) {
   if (e.code === 'ENOENT') process.exit(0);
   throw e;
 }
 
-// lockfile v2/v3 — flat packages map
-if (lock.packages) {
-  Object.values(lock.packages).forEach(pkg => delete pkg.resolved);
-}
+try {
+  const lock = JSON.parse(fs.readFileSync(fd, 'utf8'));
 
-// lockfile v1 — nested dependencies
-function stripDeps(deps) {
-  if (!deps) return;
-  Object.values(deps).forEach(dep => {
-    delete dep.resolved;
-    stripDeps(dep.dependencies);
-  });
-}
-stripDeps(lock.dependencies);
+  // lockfile v2/v3 — flat packages map
+  if (lock.packages) {
+    Object.values(lock.packages).forEach(pkg => delete pkg.resolved);
+  }
 
-const wfd = fs.openSync(lockfilePath, 'w');
-fs.writeFileSync(wfd, JSON.stringify(lock, null, 2) + '\n');
-fs.closeSync(wfd);
-console.log('Stripped resolved fields from package-lock.json');
+  // lockfile v1 — nested dependencies
+  function stripDeps(deps) {
+    if (!deps) return;
+    Object.values(deps).forEach(dep => {
+      delete dep.resolved;
+      stripDeps(dep.dependencies);
+    });
+  }
+  stripDeps(lock.dependencies);
+
+  const output = JSON.stringify(lock, null, 2) + '\n';
+  fs.ftruncateSync(fd, 0);
+  fs.writeSync(fd, output, 0, 'utf8');
+  console.log('Stripped resolved fields from package-lock.json');
+} finally {
+  fs.closeSync(fd);
+}
