@@ -38,7 +38,8 @@
     "publish:cdn": "ccu --trace",
     "i18n:translate": "grunt dist && node scripts/complete-translations.js && npm run i18n:prettier && npm run build",
     "i18n:prettier": "prettier --write src/i18n/*",
-    "i18n:validate": "node scripts/lang-audit.mjs"
+    "i18n:validate": "node scripts/lang-audit.mjs",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@auth0/component-cdn-uploader": "^3.0.2",
