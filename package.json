@@ -188,6 +188,9 @@
     ],
     "*.{js,jsx,json}": [
       "prettier --write"
+    ],
+    "package-lock.json": [
+      "node scripts/strip-lock-resolved.js"
     ]
   },
   "optionalDependencies": {
