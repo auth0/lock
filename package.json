@@ -40,7 +40,7 @@
     "i18n:validate": "node -r esm scripts/lang-audit.js"
   },
   "devDependencies": {
-    "@auth0/component-cdn-uploader": "^2.2.2",
+    "@auth0/component-cdn-uploader": "^3.0.2",
     "@babel/core": "^7.0.0",
     "@babel/eslint-parser": "^7.22.9",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -127,7 +127,7 @@
     "dompurify": "^2.5.4",
     "immutable": "^3.8.3",
     "jsonp": "^0.2.1",
-    "password-sheriff": "^1.1.1",
+    "password-sheriff": "^1.3.1",
     "prop-types": "^15.8.0",
     "qs": "^6.15.1",
     "react": "^18.2.0",
@@ -182,6 +182,9 @@
       "text-summary"
     ],
     "testEnvironment": "jest-environment-jsdom-global"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.3"
   },
   "lint-staged": {
     "*.{js,jsx}": [
