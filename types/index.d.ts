@@ -178,8 +178,6 @@ interface Auth0LockConstructorOptions {
     theme?: Auth0LockThemeOptions | undefined;
     useCustomPasswordlessConnection?: boolean | undefined;
     usernameStyle?: "email" | "username" | undefined;
-    _enableImpersonation?: boolean | undefined;
-    _enableIdPInitiatedLogin?: boolean | undefined;
     _sendTelemetry?: boolean | undefined;
     _telemetryInfo?: { name?: string | undefined; version?: string | undefined; env?: Record<string, string> | undefined } | undefined;
     __useTenantInfo?: boolean | undefined;
