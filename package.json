@@ -40,7 +40,7 @@
     "i18n:validate": "node -r esm scripts/lang-audit.js"
   },
   "devDependencies": {
-    "@auth0/component-cdn-uploader": "^2.2.2",
+    "@auth0/component-cdn-uploader": "^3.0.2",
     "@babel/core": "^7.0.0",
     "@babel/eslint-parser": "^7.22.9",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -136,6 +136,9 @@
     "trim": "^1.0.1",
     "url-join": "^1.1.0",
     "validator": "^13.15.35"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.3"
   },
   "overrides": {
     "@babel/runtime": "^7.26.10"
