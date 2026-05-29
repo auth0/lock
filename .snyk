@@ -1,14 +1,6 @@
 # Snyk (https://snyk.io) policy file
 version: v1.25.0
 ignore:
-  SNYK-JS-AUTH0JS-16438973:
-    - '*':
-        reason: >-
-          auth0-js@10.0.0 (which fixes this) introduces superagent@10.x as a
-          new dependency. superagent@10.x ships ES6+ syntax and is not ES5
-          compatible. Lock v13 maintains IE11 compatibility and requires ES5.
-          Cannot upgrade until a fix is available that preserves ES5 support.
-        expires: '2027-01-01T00:00:00.000Z'
   SNYK-JS-DOMPURIFY-16131135:
     - '*':
         reason: >-
